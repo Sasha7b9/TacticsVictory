@@ -1,3 +1,7 @@
+*.ilk
+*.pdb
+*.tlog
+
 # Compiled Object files
 *.slo
 *.lo
