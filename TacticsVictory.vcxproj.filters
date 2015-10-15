@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{aefe52c5-5e5d-4b3c-907c-9135ea69ff52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor">
+      <UniqueIdentifier>{852fa7b2-2495-4c9e-a86d-6179221f664a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{25e846e1-383e-45f1-ba67-2cabaee29e55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{9861c149-92c0-4a12-97f7-a91535dc54bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{b058d452-c8aa-497f-b9b5-3af7f008806d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Logic">
+      <UniqueIdentifier>{6e6c5bff-a767-4771-9d86-3fdddb722a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects">
+      <UniqueIdentifier>{4b3d6648-6863-4bd9-921e-0d5a51257e09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Elements">
+      <UniqueIdentifier>{9fa16773-12d3-4bbe-9eee-3304675445b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Logic">
+      <UniqueIdentifier>{613f17d7-b447-44ed-a03d-d85e3c4dd4c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Menu">
+      <UniqueIdentifier>{d59d81ce-e79a-4ceb-97b2-8ee04f28064d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\MenuEditor">
+      <UniqueIdentifier>{b1c2cabb-6352-4d4c-90e0-f7ecce681c26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\MenuGame">
+      <UniqueIdentifier>{4488c4f0-230a-4221-9d2c-2cb09099ca42}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Core\Camera.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Log.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Math.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Editor\Editor.cpp">
+      <Filter>Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Logic\Movinator.cpp">
+      <Filter>Game\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Logic\Rotator.cpp">
+      <Filter>Game\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Scene.cpp">
+      <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Level.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\Button.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\Cursor.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\CursorShapes.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\DropDownListWithTextAndButton.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\GovernorFloat.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\Image.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\Label.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\Slider.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\SliderInt.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\SliderWithTextAndButtons.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\Window.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Logic\LineTranslator1D.cpp">
+      <Filter>GUI\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Logic\LineTranslator2D.cpp">
+      <Filter>GUI\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\Console.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\ConsoleParser.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\Menu.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\MenuMain.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\MenuOptions.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\WindowVariables.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\GUI.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GlobalVars.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Settings.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SettingsTypes.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TacticsVictory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TacticsVictoryHandlers.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\PanelBottom.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\PanelMain.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\PanelMap.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Triangle.cpp">
+      <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Plane.cpp">
+      <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\TerrainBlock.cpp">
+      <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain.cpp">
+      <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\ButtonToggled.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\MenuEditor\MenuEditor.cpp">
+      <Filter>GUI\MenuEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\MenuGame\MenuGame.cpp">
+      <Filter>GUI\MenuGame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\Tab.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Core\Camera.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Log.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Math.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Editor\Editor.h">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Logic\Movinator.h">
+      <Filter>Game\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Logic\Rotator.h">
+      <Filter>Game\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Scene.h">
+      <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Level.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\Button.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\Cursor.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\CursorShapes.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\DropDownListWithTextAndButton.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\GovernorFloat.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\Image.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\Label.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\Slider.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\SliderInt.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\SliderWithTextAndButtons.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\Window.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Logic\LineTranslator1D.h">
+      <Filter>GUI\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Logic\LineTranslator2D.h">
+      <Filter>GUI\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\Console.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\ConsoleParser.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\Menu.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\MenuMain.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\MenuOptions.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\WindowVariables.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GUI.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defines.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GlobalVars.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Settings.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SettingsTypes.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stdafx.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TacticsVictory.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TacticsVictoryHandlers.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\PanelBottom.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\PanelMain.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\PanelMap.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Triangle.h">
+      <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Plane.h">
+      <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\TerrainBlock.h">
+      <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain.h">
+      <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\ButtonToggled.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\MenuEditor\MenuEditor.h">
+      <Filter>GUI\MenuEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\MenuGame\MenuGame.h">
+      <Filter>GUI\MenuGame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\Tab.h">
+      <Filter>GUI\Elements</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
