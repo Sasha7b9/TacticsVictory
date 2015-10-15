@@ -4,8 +4,8 @@
 		<width>1600</width>
 		<height>1000</height>
 	</screen>
-	<brightness>16</brightness>
-	<volume>50</volume>
+	<brightness>42</brightness>
+	<volume>82</volume>
 	<max_occluder_triangles>5000</max_occluder_triangles>
 	<language>1</language>
 	<texture>

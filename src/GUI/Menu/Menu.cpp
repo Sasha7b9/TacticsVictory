@@ -9,14 +9,18 @@ tvMenu::tvMenu(Context *context) :
 
     SetFixedSize(SET::WINDOW::SIZE);
 
-    menuMain = this->CreateChild<tvMenuMain>();
+    menuMain = new tvMenuMain(gContext);
     menuMain->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
+    AddChild(menuMain);
 
     menuOptions = new tvMenuOptions(gContext);
     menuOptions->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
+    AddChild(menuOptions);
 
     SubscribeToEvent(menuOptions, E_MENU, HANDLER(tvMenu, HandleMenuEvent));
     SubscribeToEvent(menuMain, E_MENU, HANDLER(tvMenu, HandleMenuEvent));
+
+    SetClipChildren(true);
 }
 
 void tvMenu::RegisterObject(Context* context)

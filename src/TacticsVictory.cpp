@@ -66,6 +66,7 @@ void TacticsVictory::CreateComponents()
     gDebugRenderer = gScene->GetComponent<DebugRenderer>();
 
     gTime = new Time(gContext);
+
     gGUI = new tvGUI();
 }
 

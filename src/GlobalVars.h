@@ -20,12 +20,13 @@ extern Font             *gFont;
 extern Time             *gTime;
 
 extern tvCamera             *gCamera;
+extern tvCursor             *gCursor;
+extern tvEditor             *gEditor;
+extern tvSettings           *gSet;
+
+extern tvGUI                *gGUI;
+extern tvConsole            *gConsole;
+extern tvWindowVariables    *gWindowVars;
 extern tvMenu               *gMenu;
 extern tvMenuGame           *gMenuGame;
 extern tvMenuEditor         *gMenuEditor;
-extern tvCursor             *gCursor;
-extern tvConsole            *gConsole;
-extern tvWindowVariables    *gWindowVars;
-extern tvEditor             *gEditor;
-extern tvSettings           *gSet;
-extern tvGUI                *gGUI;

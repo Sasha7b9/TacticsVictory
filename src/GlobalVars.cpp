@@ -19,9 +19,8 @@ PhysicsWorld    *gPhysicsWorld = nullptr;
 Font            *gFont = nullptr;
 Time            *gTime = nullptr;
 
+tvWindowVariables   *gWindowVars = nullptr;
 tvCamera        *gCamera = nullptr;
-tvConsole       *gConsole = nullptr;
-tvWindowVariables *gWindowVars = nullptr;
 tvMenu          *gMenu = nullptr;
 tvCursor        *gCursor = nullptr;
 tvMenuGame      *gMenuGame = nullptr;
@@ -29,3 +28,4 @@ tvMenuEditor    *gMenuEditor = nullptr;
 tvEditor        *gEditor = nullptr;
 tvSettings      *gSet = nullptr;
 tvGUI           *gGUI = nullptr;
+tvConsole       *gConsole = nullptr;

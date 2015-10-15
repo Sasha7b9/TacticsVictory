@@ -10,7 +10,13 @@ tvMenuMain::tvMenuMain(Context *context) :
     SharedPtr<tvLabel> text(tvLabel::Create("Tactics Victory", 20));
     AddChild(text);
 
-    buttonNewGame  = new tvButton(this, "New game");
+    SharedPtr<Button> btnTest(new Button(gContext));
+    btnTest->SetStyleAuto();
+    btnTest->SetFixedSize(50, 20);
+    AddChild(btnTest);
+
+    buttonNewGame  = new tvButton(0, "New game");
+    AddChild(buttonNewGame);
     buttonEditor = new tvButton(this, "Editor");
     buttonOptions = new tvButton(this, "Options");
     buttonExit = new tvButton(this, "Exit");
