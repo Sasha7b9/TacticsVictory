@@ -29,3 +29,5 @@ tvEditor        *gEditor = nullptr;
 tvSettings      *gSet = nullptr;
 tvGUI           *gGUI = nullptr;
 tvConsole       *gConsole = nullptr;
+tvMenuMain      *gMenuMain = nullptr;
+tvMenuOptions   *gMenuOptions = nullptr;

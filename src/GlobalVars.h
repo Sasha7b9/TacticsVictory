@@ -28,5 +28,7 @@ extern tvGUI                *gGUI;
 extern tvConsole            *gConsole;
 extern tvWindowVariables    *gWindowVars;
 extern tvMenu               *gMenu;
+extern tvMenuMain           *gMenuMain;
 extern tvMenuGame           *gMenuGame;
 extern tvMenuEditor         *gMenuEditor;
+extern tvMenuOptions        *gMenuOptions;

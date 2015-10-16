@@ -33,6 +33,4 @@ private:
     void HandleMenuEvent(StringHash eventType, VariantMap& eventData);
 
     Text *text = nullptr;
-    SharedPtr<tvMenuMain>    menuMain;
-    SharedPtr<tvMenuOptions> menuOptions;
 };
