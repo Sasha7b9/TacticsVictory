@@ -1,6 +1,11 @@
 #include <stdafx.h>
 
 
+tvGUI::tvGUI() : Object(gContext)
+{
+
+}
+
 static void RegstrationObjects()
 {
     tvButton::RegisterObject(gContext);
