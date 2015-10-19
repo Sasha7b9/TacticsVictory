@@ -1,6 +1,9 @@
 #include <stdafx.h>
 
 
+#include "GUI/GUI.h"
+
+
 tvMenuMain::tvMenuMain(Context *context) :
     tvWindow(context)
 {
@@ -9,12 +12,7 @@ tvMenuMain::tvMenuMain(Context *context) :
 
     SharedPtr<tvLabel> text(tvLabel::Create("Tactics Victory", 20));
     AddChild(text);
-
-    SharedPtr<Button> btnTest(new Button(gContext));
-    btnTest->SetStyleAuto();
-    btnTest->SetFixedSize(50, 20);
-    AddChild(btnTest);
-
+    
     buttonNewGame  = new tvButton(0, "New game");
     AddChild(buttonNewGame);
     buttonEditor = new tvButton(this, "Editor");

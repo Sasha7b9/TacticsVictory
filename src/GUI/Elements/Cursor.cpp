@@ -1,6 +1,10 @@
 #include <stdafx.h>
 
 
+#include "GUI/GUI.h"
+#include "Cursor.h"
+
+
 tvCursor::tvCursor() : Object(gContext)
 {
     cursor = new Cursor(gContext);
@@ -58,7 +62,7 @@ void tvCursor::Update(float dT)
         int height = gGraphics->GetHeight();
         int numFrame = (int)angle0 / 10;
 
-        if(!gMenu->IsVisible())
+        if(!gGUI->MenuIsVisible())
         {
             if(posX < delta && posY < delta)
             {

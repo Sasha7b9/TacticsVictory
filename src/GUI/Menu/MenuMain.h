@@ -14,7 +14,8 @@ public:
     void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
 
 private:
-    tvMenuMain& operator=(const tvMenuMain&) {};
+    tvMenuMain& operator=(const tvMenuMain&)
+    {};
 
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
 

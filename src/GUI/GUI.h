@@ -19,8 +19,18 @@ enum
 class tvGUI : public Object
 {
     OBJECT(tvGUI);
+
 public:
     tvGUI();
+
     void Create();
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
+    bool MenuIsVisible();
+    void SetVisibleMenu(bool visible);
+    void SetVisibleMenu(tvWindow *menuWindow, bool visible);
+
+private:
+    tvGUI& operator=(const tvGUI&)
+    {};
+    void HandleGuiEvent(StringHash eventType, VariantMap& eventData);
 };

@@ -1,10 +1,14 @@
 #include <stdafx.h>
 
 
+#include "GUI/GUI.h"
+
+
 #pragma warning(push)
 #pragma warning(disable:4100)
 DEFINE_APPLICATION_MAIN(TacticsVictory)
 #pragma warning(pop)
+
 
 
 TacticsVictory::TacticsVictory(Context* context) :
@@ -141,7 +145,7 @@ void TacticsVictory::CreateNewGame()
 {
     SharedPtr<tvScene> scene(new tvScene());
     gCamera->SetEnabled(true);
-    gMenu->SetVisible(false);
+    gGUI->SetVisibleMenu(false);
     gMenuGame->SetVisible(true);
     File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
     gUIRoot->SaveXML(file);
@@ -154,7 +158,7 @@ void TacticsVictory::CreateEditorSession()
     {
         gEditor = new tvEditor(gContext);
     }
-    gMenu->SetVisible(false);
+    gGUI->SetVisibleMenu(false);
     gMenuEditor->SetVisible(true);
     gCamera->SetEnabled(true);
     gEditor->Run();

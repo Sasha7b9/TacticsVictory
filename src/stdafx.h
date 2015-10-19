@@ -280,7 +280,6 @@ class tvWindowVariables;
 #include "GUI/Logic/LineTranslator1D.h"
 #include "GUI/Logic/LineTranslator2D.h"
 
-#include "GUI/Menu/Menu.h"
 #include "GUI/Menu/Console.h"
 #include "GUI/Menu/ConsoleParser.h"
 #include "GUI/Menu/MenuMain.h"
@@ -293,8 +292,6 @@ class tvWindowVariables;
 #include "GUI/MenuGame/MenuGame.h"
 
 #include "GUI/MenuEditor/MenuEditor.h"
-
-#include "GUI/GUI.h"
 
 #include "Settings.h"
 #include "TacticsVictory.h"

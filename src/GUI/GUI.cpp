@@ -1,6 +1,9 @@
 #include <stdafx.h>
 
 
+#include "GUI.h"
+
+
 tvGUI::tvGUI() : Object(gContext)
 {
 
@@ -11,7 +14,6 @@ static void RegstrationObjects()
     tvButton::RegisterObject(gContext);
     tvButtonToggled::RegisterObject(gContext);
     tvWindow::RegisterObject(gContext);
-    tvMenu::RegisterObject(gContext);
     tvMenuMain::RegisterObject(gContext);
     tvMenuOptions::RegisterObject(gContext);
     tvTab::RegisterObject(gContext);
@@ -94,8 +96,16 @@ void tvGUI::Create()
     gWindowVars->AddFunctionFloat("Camera pitch", GetCameraPitch, nullptr);
     gWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
 
-    gMenu = new tvMenu(gContext);
-    gUIRoot->AddChild(gMenu);
+    gMenuMain = new tvMenuMain(gContext);
+    gMenuMain->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
+    gUIRoot->AddChild(gMenuMain);
+    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(tvGUI, HandleGuiEvent));
+
+    gMenuOptions = new tvMenuOptions(gContext);
+    gMenuOptions->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
+    gUIRoot->AddChild(gMenuOptions);
+    SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(tvGUI, HandleGuiEvent));
+    gMenuOptions->SetVisible(false);
 
     gMenuGame = new tvMenuGame(gContext);
     gMenuGame->SetVisible(false);
@@ -119,4 +129,42 @@ bool tvGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
         return gMenuEditor->CheckOnDeadZoneForCursorBottomScreen(x);
     }
     return false;
+}
+
+bool tvGUI::MenuIsVisible()
+{
+    return gMenuMain->IsVisible() || gMenuOptions->IsVisible();
+}
+
+void tvGUI::SetVisibleMenu(bool visible)
+{
+    gMenuMain->SetVisible(visible);
+    gMenuOptions->SetVisible(visible);
+}
+
+void tvGUI::SetVisibleMenu(tvWindow *menuWindow, bool visible)
+{
+    menuWindow->SetVisible(visible);
+    if(visible)
+    {
+        menuWindow->BringToFront();
+    }
+}
+
+void tvGUI::HandleGuiEvent(StringHash, VariantMap& eventData)
+{
+    uint action = eventData[MenuEvent::P_TYPE].GetUInt();
+
+    if(action == MenuEvent_ExitInOS)
+    {
+        gEngine->Exit();
+    }
+    else if(action == MenuEvent_MenuOptionsOpen)
+    {
+        SetVisibleMenu(gMenuOptions, !gMenuOptions->IsVisible());
+    }
+    else if(action == MenuEvent_MenuOptionsClose)
+    {
+        gUIRoot->RemoveChild(gMenuOptions);
+    }
 }

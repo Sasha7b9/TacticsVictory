@@ -1,7 +1,9 @@
 #include <stdafx.h>
 
 
+#include "GUI/GUI.h"
 #include "GUI/Elements/SliderInt.h"
+#include "MenuOptions.h"
 
 
 tvMenuOptions::tvMenuOptions(Context *context) :

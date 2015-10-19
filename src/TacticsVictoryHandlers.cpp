@@ -1,6 +1,9 @@
 #include <stdafx.h>
 
 
+#include "GUI/GUI.h"
+
+
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
 {
     if(drawDebug)
@@ -18,22 +21,29 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
 
     if(key == Urho3D::KEY_F1)
     {
-        gConsole->Toggle();
+        gConsole->Toggle(); 
     } 
     else if(key == Urho3D::KEY_ESC)
     {
-        if(gEngineConsole->IsVisible())
+        if(gGUI->MenuIsVisible())
+        {
+            if(gMenuOptions->IsVisible())
+            {
+                gGUI->SetVisibleMenu(gMenuOptions, false);
+            }
+        }
+        else if(gEngineConsole->IsVisible())
         {
             gEngineConsole->SetVisible(false);
         }
-        else if(!gMenu->IsVisible())
+        else if(!gGUI->MenuIsVisible())
         {
-            gMenu->SetVisible(true);
+            gGUI->SetVisibleMenu(true);
             gCamera->SetEnabled(false);
         }
-        else if(gMenu->IsVisible())
+        else if(gGUI->MenuIsVisible())
         {
-            gMenu->SetVisible(false);
+            gGUI->SetVisibleMenu(false);
             gCamera->SetEnabled(true);
         }
     }

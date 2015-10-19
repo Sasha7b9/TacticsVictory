@@ -20,7 +20,6 @@ Font            *gFont = nullptr;
 Time            *gTime = nullptr;
 
 tvCamera        *gCamera = nullptr;
-tvMenu          *gMenu = nullptr;
 tvCursor        *gCursor = nullptr;
 tvMenuGame      *gMenuGame = nullptr;
 tvMenuEditor    *gMenuEditor = nullptr;

@@ -108,9 +108,6 @@
     <ClCompile Include="src\GUI\Menu\ConsoleParser.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Menu\Menu.cpp">
-      <Filter>GUI\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\Menu\MenuMain.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
@@ -173,6 +170,9 @@
     </ClCompile>
     <ClCompile Include="src\GUI\Elements\Tab.cpp">
       <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\MenuConfirmExit.cpp">
+      <Filter>GUI\Menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -245,9 +245,6 @@
     <ClInclude Include="src\GUI\Menu\ConsoleParser.h">
       <Filter>GUI\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\Menu\Menu.h">
-      <Filter>GUI\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="src\GUI\Menu\MenuMain.h">
       <Filter>GUI\Menu</Filter>
     </ClInclude>
@@ -313,6 +310,9 @@
     </ClInclude>
     <ClInclude Include="src\GUI\Elements\Tab.h">
       <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\MenuConfirmExit.h">
+      <Filter>GUI\Menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
