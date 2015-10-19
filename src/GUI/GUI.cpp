@@ -1,6 +1,11 @@
 #include <stdafx.h>
 
 
+tvGUI::tvGUI() : Object(gContext)
+{
+
+}
+
 static void RegstrationObjects()
 {
     tvButton::RegisterObject(gContext);
@@ -75,7 +80,6 @@ void tvGUI::Create()
 {
     RegstrationObjects();
 
-    /*
     gConsole = new tvConsole(gContext);
     gUIRoot->AddChild(gConsole);
 
@@ -89,12 +93,10 @@ void tvGUI::Create()
     gWindowVars->AddFunctionFloat("Camera pos Z", GetPosCameraZ, SetPosCameraZ);
     gWindowVars->AddFunctionFloat("Camera pitch", GetCameraPitch, nullptr);
     gWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
-    */
 
     gMenu = new tvMenu(gContext);
     gUIRoot->AddChild(gMenu);
 
-    /*
     gMenuGame = new tvMenuGame(gContext);
     gMenuGame->SetVisible(false);
     gUIRoot->AddChild(gMenuGame);
@@ -102,7 +104,6 @@ void tvGUI::Create()
     gMenuEditor = new tvMenuEditor(gContext);
     gMenuEditor->SetVisible(false);
     gUIRoot->AddChild(gMenuEditor);
-    */
 
     gCursor = new tvCursor();
 }

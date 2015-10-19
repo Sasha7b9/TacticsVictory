@@ -1,5 +1,6 @@
 *.ilk
 *.pdb
+<<<<<<< HEAD
 *.tlog
 *.log
 
@@ -78,3 +79,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+=======
+*.*log
+Debug/TacticsVictory.tlog
+>>>>>>> 4df3d6f1a1944bd93145fefbd24f87750020500d
