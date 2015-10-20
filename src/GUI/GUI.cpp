@@ -2,30 +2,53 @@
 
 
 #include "GUI.h"
+#include "GUI/Elements/Tab.h"
+#include "GUI/Elements/Button.h"
+#include "GUI/Elements/ButtonToggled.h"
+#include "GUI/Elements/Cursor.h"
+#include "GUI/Elements/Label.h"
+#include "GUI/Elements/Slider.h"
+#include "GUI/Elements/SliderInt.h"
+#include "GUI/Elements/GovernorFloat.h"
+#include "Core/Camera.h"
+#include "GUI/Menu/MenuMain.h"
+#include "GUI/Menu/MenuOptions.h"
+#include "GUI/MenuGame/MenuGame.h"
+#include "GUI/Menu/PanelBottom.h"
+#include "GUI/Menu/PanelMap.h"
+#include "GUI/Menu/PanelMain.h"
+#include "GUI/Menu/Console.h"
+#include "GUI/Menu/WindowVariables.h"
+#include "GUI/MenuEditor/MenuEditor.h"
 
 
-tvGUI::tvGUI() : Object(gContext)
+vGUI::vGUI() : Object(gContext)
 {
 
 }
 
+vGUI::~vGUI()
+{
+    SAFE_DELETE(gCursor);
+}
+
 static void RegstrationObjects()
 {
-    tvButton::RegisterObject(gContext);
-    tvButtonToggled::RegisterObject(gContext);
-    tvWindow::RegisterObject(gContext);
-    tvMenuMain::RegisterObject(gContext);
-    tvMenuOptions::RegisterObject(gContext);
-    tvTab::RegisterObject(gContext);
-    tvLabel::RegisterObject(gContext);
-    tvSlider::RegisterObject(gContext);
-    tvSliderInt::RegisterObject(gContext);
-    GovernorCell::RegisterObject(gContext);
-    tvGovernorFloat::RegisterObject(gContext);
-    tvPanelBottom::RegisterObject(gContext);
-    tvPanelMap::RegisterObject(gContext);
-    tvPanelMain::RegisterObject(gContext);
-    tvMenuEditor::RegisterObject(gContext);
+    vButton::RegisterObject(gContext);
+    vButtonToggled::RegisterObject(gContext);
+    vWindow::RegisterObject(gContext);
+    vMenuMain::RegisterObject(gContext);
+    vMenuOptions::RegisterObject(gContext);
+    vTab::RegisterObject(gContext);
+    vLabel::RegisterObject(gContext);
+    vSlider::RegisterObject(gContext);
+    vSliderInt::RegisterObject(gContext);
+    vGovernorCell::RegisterObject(gContext);
+    vGovernorFloat::RegisterObject(gContext);
+    vPanelBottom::RegisterObject(gContext);
+    vPanelMap::RegisterObject(gContext);
+    vPanelMain::RegisterObject(gContext);
+    vMenuEditor::RegisterObject(gContext);
 }
 
 static float GetPosCameraY()
@@ -78,14 +101,14 @@ static float GetCameraYaw()
     return angle.YawAngle();
 }
 
-void tvGUI::Create()
+void vGUI::Create()
 {
     RegstrationObjects();
 
-    gConsole = new tvConsole(gContext);
+    gConsole = new vConsole(gContext);
     gUIRoot->AddChild(gConsole);
 
-    gWindowVars = new tvWindowVariables(gContext);
+    gWindowVars = new vWindowVariables(gContext);
     gUIRoot->AddChild(gWindowVars);
     gWindowVars->SetVisible(false);
     gWindowVars->SetPosition(1000, 500);
@@ -96,29 +119,29 @@ void tvGUI::Create()
     gWindowVars->AddFunctionFloat("Camera pitch", GetCameraPitch, nullptr);
     gWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
 
-    gMenuMain = new tvMenuMain(gContext);
+    gMenuMain = new vMenuMain(gContext);
     gMenuMain->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
     gUIRoot->AddChild(gMenuMain);
-    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(tvGUI, HandleGuiEvent));
+    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(vGUI, HandleGuiEvent));
 
-    gMenuOptions = new tvMenuOptions(gContext);
+    gMenuOptions = new vMenuOptions(gContext);
     gMenuOptions->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
     gUIRoot->AddChild(gMenuOptions);
-    SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(tvGUI, HandleGuiEvent));
+    SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(vGUI, HandleGuiEvent));
     gMenuOptions->SetVisible(false);
 
-    gMenuGame = new tvMenuGame(gContext);
+    gMenuGame = new vMenuGame(gContext);
     gMenuGame->SetVisible(false);
     gUIRoot->AddChild(gMenuGame);
 
-    gMenuEditor = new tvMenuEditor(gContext);
+    gMenuEditor = new vMenuEditor(gContext);
     gMenuEditor->SetVisible(false);
     gUIRoot->AddChild(gMenuEditor);
 
-    gCursor = new tvCursor();
+    gCursor = new vCursor();
 }
 
-bool tvGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
+bool vGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
 {
     if (gMenuGame->IsVisible())
     {
@@ -131,18 +154,18 @@ bool tvGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
     return false;
 }
 
-bool tvGUI::MenuIsVisible()
+bool vGUI::MenuIsVisible()
 {
     return gMenuMain->IsVisible() || gMenuOptions->IsVisible();
 }
 
-void tvGUI::SetVisibleMenu(bool visible)
+void vGUI::SetVisibleMenu(bool visible)
 {
     gMenuMain->SetVisible(visible);
     gMenuOptions->SetVisible(visible);
 }
 
-void tvGUI::SetVisibleMenu(tvWindow *menuWindow, bool visible)
+void vGUI::SetVisibleMenu(vWindow *menuWindow, bool visible)
 {
     menuWindow->SetVisible(visible);
     if(visible)
@@ -151,7 +174,7 @@ void tvGUI::SetVisibleMenu(tvWindow *menuWindow, bool visible)
     }
 }
 
-void tvGUI::HandleGuiEvent(StringHash, VariantMap& eventData)
+void vGUI::HandleGuiEvent(StringHash, VariantMap& eventData)
 {
     uint action = eventData[MenuEvent::P_TYPE].GetUInt();
 

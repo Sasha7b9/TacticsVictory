@@ -1,15 +1,17 @@
 #include <stdafx.h>
 
 
-#include "GUI/GUI.h"
 #include "Cursor.h"
+#include "GUI/GUI.h"
+#include "GUI/Elements/CursorShapes.h"
+#include "GUI/Elements/Image.h"
 
 
-tvCursor::tvCursor() : Object(gContext)
+vCursor::vCursor() : Object(gContext)
 {
     cursor = new Cursor(gContext);
 
-    tvImage image(50, 50);
+    vImage image(50, 50);
 
     image.Clear({0.0f, 0.0f, 1.0f, 1.0f});
 
@@ -17,25 +19,25 @@ tvCursor::tvCursor() : Object(gContext)
     gUI->SetCursor(cursor);
     cursor->SetPosition(gGraphics->GetWidth() / 2, gGraphics->GetHeight() / 2);
 
-    shapes = new tvCursorShapes();
+    shapes = new vCursorShapes();
 }
 
-void tvCursor::Show()
+void vCursor::Show()
 {
     hidden = false;
 }
 
-void tvCursor::Hide()
+void vCursor::Hide()
 {
     hidden = true;
 }
 
-SharedPtr<Cursor> tvCursor::GetCursor()
+SharedPtr<Cursor> vCursor::GetCursor()
 {
     return cursor;
 }
 
-void tvCursor::Update(float dT)
+void vCursor::Update(float dT)
 {
     
     const float speed = 500.0f;
@@ -50,7 +52,7 @@ void tvCursor::Update(float dT)
 
     if(hidden)
     {
-        SharedPtr<tvImage> image(new tvImage(1, 1));
+        SharedPtr<vImage> image(new vImage(1, 1));
         cursor->DefineShape("Normal", image->GetImage(), {0, 0, image->GetImage()->GetWidth(), image->GetImage()->GetHeight()}, {0, 0});
     }
     else
@@ -122,17 +124,17 @@ void tvCursor::Update(float dT)
         {
             type = selected ? TypeCursor_Selected : TypeCursor_Normal;
         }
-        SharedPtr<tvImage> image = shapes->GetShape(type, type <= TypeCursor_Selected ? (int)(angle0) : numFrame);
+        SharedPtr<vImage> image = shapes->GetShape(type, type <= TypeCursor_Selected ? (int)(angle0) : numFrame);
         cursor->DefineShape("Normal", image->GetImage(), {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
     }
 }
 
-void tvCursor::SetNormal()
+void vCursor::SetNormal()
 {
     selected = false;
 }
 
-void tvCursor::SetSelected()
+void vCursor::SetSelected()
 {
     selected = true;
 }

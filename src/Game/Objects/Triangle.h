@@ -1,17 +1,17 @@
 #pragma once
 
 
-class tvTriangle
+class vTriangle
 {
 public:
-    tvTriangle(const Vector3 &v0 = Vector3::ZERO, const Vector3 &v1 = Vector3::ZERO, const Vector3 &v2 = Vector3::ZERO);
+    vTriangle(const Vector3 &v0 = Vector3::ZERO, const Vector3 &v1 = Vector3::ZERO, const Vector3 &v2 = Vector3::ZERO);
 
-    bool IsEquals(const tvTriangle &triangle);
+    bool IsEquals(const vTriangle &triangle);
     bool IsZero();
 
     Vector3 v0;
     Vector3 v1;
     Vector3 v2;
 
-    static tvTriangle ZERO;
+    static vTriangle ZERO;
 };

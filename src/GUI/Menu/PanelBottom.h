@@ -1,16 +1,19 @@
 #pragma once
 
 
-class tvPanelBottom : public tvWindow
+#include "GUI/Elements/Window.h"
+
+
+class vPanelBottom : public vWindow
 {
-    OBJECT(tvPanelBottom);
+    OBJECT(vPanelBottom);
 
 public:
-    tvPanelBottom(Context *context);
+    vPanelBottom(Context *context);
 
     static void RegisterObject(Context *context);
 
 private:
-    tvPanelBottom& operator=(const tvPanelBottom&)
+    vPanelBottom& operator=(const vPanelBottom&)
     {};
 };

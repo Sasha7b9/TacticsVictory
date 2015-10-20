@@ -1,22 +1,22 @@
 #pragma once
 
 
-class tvButtonToggled : public CheckBox
+class vButtonToggled : public CheckBox
 {
-    OBJECT(tvButtonToggled)
+    OBJECT(vButtonToggled)
 
 public:
-    tvButtonToggled(Context *context);
-    tvButtonToggled(UIElement *uielement, char *text, int width = -1, int height = -1);
+    vButtonToggled(Context *context);
+    vButtonToggled(UIElement *uielement, char *text, int width = -1, int height = -1);
 
     static void RegisterObject(Context *context);
 
     void SetText(char *text);
 
 private:
-    tvButtonToggled& operator=(const tvButtonToggled&) {};
+    vButtonToggled& operator=(const vButtonToggled&) {};
 
-    SharedPtr<tvLabel> label;
+    SharedPtr<vLabel> label;
 
     void HandleMouseUp(StringHash eventType, VariantMap &eventData);
 };

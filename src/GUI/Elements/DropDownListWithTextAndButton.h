@@ -1,19 +1,19 @@
 #pragma once
 
 
-class tvDropDownListWithTextAndButton : public UIElement
+class vDropDownListWithTextAndButton : public UIElement
 {
-    OBJECT(tvDropDownListWithTextAndButton);
+    OBJECT(vDropDownListWithTextAndButton);
 
 public:
-    tvDropDownListWithTextAndButton(char *text, int widthText, int widthDDList);
+    vDropDownListWithTextAndButton(char *text, int widthText, int widthDDList);
     void AddItem(char *text);
     void SetSelection(uint index);
 
-    static SharedPtr<tvDropDownListWithTextAndButton> Create(Window *window, char *text, int widthText, int widthDDList, int numItems, char * items[]);
+    static SharedPtr<vDropDownListWithTextAndButton> Create(Window *window, char *text, int widthText, int widthDDList, int numItems, char * items[]);
 
 private:
-    tvDropDownListWithTextAndButton& operator=(const tvDropDownListWithTextAndButton&)
+    vDropDownListWithTextAndButton& operator=(const vDropDownListWithTextAndButton&)
     {};
 
     void HandleItemSelected(StringHash eventType, VariantMap& eventData);

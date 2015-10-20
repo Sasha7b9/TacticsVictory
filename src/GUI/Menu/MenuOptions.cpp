@@ -1,23 +1,28 @@
 #include <stdafx.h>
 
 
+#include "MenuOptions.h"
 #include "GUI/GUI.h"
 #include "GUI/Elements/SliderInt.h"
-#include "MenuOptions.h"
+#include "GUI/Elements/Button.h"
+#include "GUI/Elements/Cursor.h"
+#include "GUI/Elements/Label.h"
+#include "GUI/Elements/SliderWithTextAndButtons.h"
+#include "GUI/Elements/DropDownListWithTextAndButton.h"
 
 
-tvMenuOptions::tvMenuOptions(Context *context) :
-    tvWindow(context)
+vMenuOptions::vMenuOptions(Context *context) :
+    vWindow(context)
 {
     SetLayout(Urho3D::LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
     SetName("Options menu");
 
-    SharedPtr<tvLabel> label(tvLabel::Create("Options", 20));
+    SharedPtr<vLabel> label(vLabel::Create("Options", 20));
     AddChild(label);
 
 #define CREATE_SWTAB(name, text, min, max, startIndex)                                  \
-    name = new tvSliderWithTextAndButtons(this, text, min, max);                        \
-    SubscribeToEvent(name, E_SLIDERINTCHANGED, HANDLER(tvMenuOptions, HandleOnSlider)); \
+    name = new vSliderWithTextAndButtons(this, text, min, max);                        \
+    SubscribeToEvent(name, E_SLIDERINTCHANGED, HANDLER(vMenuOptions, HandleOnSlider)); \
     name->SetValue(startIndex);
 
     CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, gSet->GetInt(TV_BRIGHTNESS));
@@ -30,8 +35,8 @@ tvMenuOptions::tvMenuOptions(Context *context) :
     int width1 = SET::MENU::DDLIST::WIDTH;
 
 #define CREATE_DDLWTAB(name, text, num, itms, startIndex)   \
-    name = tvDropDownListWithTextAndButton::Create(this, text, width0, width1, num, itms);  \
-    SubscribeToEvent(name, E_ITEMSELECTED, HANDLER(tvMenuOptions, HandleItemSelected));     \
+    name = vDropDownListWithTextAndButton::Create(this, text, width0, width1, num, itms);  \
+    SubscribeToEvent(name, E_ITEMSELECTED, HANDLER(vMenuOptions, HandleItemSelected));     \
     name->SetSelection(startIndex);
 
     char *items[] = { "English", "Russian" };
@@ -65,10 +70,10 @@ tvMenuOptions::tvMenuOptions(Context *context) :
     SharedPtr<UIElement> layout(CreateChild<UIElement>());
     layout->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_CENTER);
 
-    buttonClose = new tvButton(0, "Close", 100);
-    SubscribeToEvent(buttonClose, E_RELEASED, HANDLER(tvMenuOptions, HandleButtonRelease));
-    SubscribeToEvent(buttonClose, E_HOVERBEGIN, HANDLER(tvMenuOptions, HandleHoverBegin));
-    SubscribeToEvent(buttonClose, E_HOVEREND, HANDLER(tvMenuOptions, HandleHoverEnd));
+    buttonClose = new vButton(0, "Close", 100);
+    SubscribeToEvent(buttonClose, E_RELEASED, HANDLER(vMenuOptions, HandleButtonRelease));
+    SubscribeToEvent(buttonClose, E_HOVERBEGIN, HANDLER(vMenuOptions, HandleHoverBegin));
+    SubscribeToEvent(buttonClose, E_HOVEREND, HANDLER(vMenuOptions, HandleHoverEnd));
     layout->AddChild(buttonClose);
     AddChild(layout);
     layout->SetMinHeight(buttonClose->GetHeight());
@@ -84,22 +89,22 @@ tvMenuOptions::tvMenuOptions(Context *context) :
     label->SetPosition(x, y);
 }
 
-void tvMenuOptions::RegisterObject(Context *context)
+void vMenuOptions::RegisterObject(Context *context)
 {
-    context->RegisterFactory<tvMenuOptions>("UI");
+    context->RegisterFactory<vMenuOptions>("UI");
 
-    COPY_BASE_ATTRIBUTES(tvWindow);
+    COPY_BASE_ATTRIBUTES(vWindow);
 }
 
-void tvMenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
+void vMenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 {
-    tvDropDownListWithTextAndButton *ddList = (tvDropDownListWithTextAndButton*)eventData[Urho3D::ItemSelected::P_ELEMENT].GetPtr();
+    vDropDownListWithTextAndButton *ddList = (vDropDownListWithTextAndButton*)eventData[Urho3D::ItemSelected::P_ELEMENT].GetPtr();
     int index = eventData[Urho3D::ItemSelected::P_SELECTION].GetInt();
 
     if(ddList == ddlLanguage)
     {
         gLocalization->SetLanguage(index == 0 ? "en" : "ru");
-        tvLabel::ReloadLanguage();
+        vLabel::ReloadLanguage();
         gSet->SetInt(TV_LANGUAGE, index);
     }
     else if(ddList == ddlTextureQuality)
@@ -142,9 +147,9 @@ void tvMenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     }
 }
 
-void tvMenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
+void vMenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 {
-    tvSliderWithTextAndButtons *slider = (tvSliderWithTextAndButtons*)eventData[SliderIntChanged::P_ELEMENT].GetPtr();
+    vSliderWithTextAndButtons *slider = (vSliderWithTextAndButtons*)eventData[SliderIntChanged::P_ELEMENT].GetPtr();
     int value = eventData[SliderIntChanged::P_VALUE].GetInt();
 
     if(slider == sliderMaxOccluderTriangles)
@@ -162,7 +167,7 @@ void tvMenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
     }
 }
 
-void tvMenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
+void vMenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
     eventData = GetEventDataMap();
@@ -170,12 +175,12 @@ void tvMenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
     SendEvent(E_MENU, eventData);
 }
 
-void tvMenuOptions::HandleHoverBegin(StringHash, VariantMap&)
+void vMenuOptions::HandleHoverBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
-void tvMenuOptions::HandleHoverEnd(StringHash, VariantMap&)
+void vMenuOptions::HandleHoverEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
 }

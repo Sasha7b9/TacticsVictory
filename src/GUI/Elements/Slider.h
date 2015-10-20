@@ -1,16 +1,16 @@
 #pragma once
 
 
-class tvSlider : public Slider
+class vSlider : public Slider
 {
-    OBJECT(tvSlider);
+    OBJECT(vSlider);
 public:
-    tvSlider(Context *context);
+    vSlider(Context *context);
 
     static void RegisterObject(Context *context);
-    static SharedPtr<tvSlider> Create(Window *window, char *text);
+    static SharedPtr<vSlider> Create(Window *window, char *text);
 
 private:
-    tvSlider& operator=(const tvSlider&)
+    vSlider& operator=(const vSlider&)
     {};
 };

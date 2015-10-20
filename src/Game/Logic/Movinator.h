@@ -1,19 +1,19 @@
 #pragma once
 
 
-class tvMovinator : public LogicComponent
+class vMovinator : public LogicComponent
 {
-    OBJECT(tvMovinator);
+    OBJECT(vMovinator);
     
 public:
-    tvMovinator(Context *context);
+    vMovinator(Context *context);
 
     void SetMoveSpeed(float speed);
     void SetCenter(const Vector3 &vec);
     virtual void Update(float time);
 
 private:
-    tvMovinator& operator=(const tvMovinator&) {};
+    vMovinator& operator=(const vMovinator&) {};
     float speed = 0.0f;
     float angle = 0.0f;
     Vector3 center;

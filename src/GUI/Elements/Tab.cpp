@@ -2,27 +2,28 @@
 
 
 #include "Tab.h"
+#include "GUI/Elements/ButtonToggled.h"
 
 
-tvTab::tvTab(Context *context) : 
-    tvWindow(context)
+vTab::vTab(Context *context) : 
+    vWindow(context)
 {
-    buttonTitle = new tvButtonToggled(gContext);
+    buttonTitle = new vButtonToggled(gContext);
     //SetMovable(false);
 }
 
-void tvTab::RegisterObject(Context *context)
+void vTab::RegisterObject(Context *context)
 {
-    context->RegisterFactory<tvTab>("UI");
+    context->RegisterFactory<vTab>("UI");
 
-    COPY_BASE_ATTRIBUTES(tvWindow);
+    COPY_BASE_ATTRIBUTES(vWindow);
 }
 
-SharedPtr<tvTab> tvTab::Create(UIElement *uilelemnt, char *title)
+SharedPtr<vTab> vTab::Create(UIElement *uilelemnt, char *title)
 {
-    SharedPtr<tvTab> tab(uilelemnt->CreateChild<tvTab>());
+    SharedPtr<vTab> tab(uilelemnt->CreateChild<vTab>());
 
-    tab->buttonTitle = uilelemnt->CreateChild<tvButtonToggled>();
+    tab->buttonTitle = uilelemnt->CreateChild<vButtonToggled>();
     tab->buttonTitle->SetText(title);
 
     return tab;

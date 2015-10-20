@@ -1,8 +1,14 @@
 #include <stdafx.h>
 
 
-GovernorCell::GovernorCell(Context *context) :
-    tvWindow(context)
+#include "GovernorFloat.h"
+#include "GUI/Elements/Button.h"
+#include "GUI/Elements/Cursor.h"
+#include "GUI/Elements/Label.h"
+
+
+vGovernorCell::vGovernorCell(Context *context) :
+    vWindow(context)
 {
     SetMovable(false);
     SetStyleAuto();
@@ -19,26 +25,26 @@ GovernorCell::GovernorCell(Context *context) :
     label->SetPosition(1, -1);
     AddChild(label);
 
-    SubscribeToEvent(E_UIMOUSECLICK, HANDLER(GovernorCell, HandleMouseDown));
-    SubscribeToEvent(E_MOUSEBUTTONUP, HANDLER(GovernorCell, HandleMouseUp));
-    SubscribeToEvent(E_MOUSEMOVE, HANDLER(GovernorCell, HandleMouseMove));
-    SubscribeToEvent(this, E_HOVERBEGIN, HANDLER(GovernorCell, HandleHoverBegin));
-    SubscribeToEvent(this, E_HOVEREND, HANDLER(GovernorCell, HandleHoverEnd));
+    SubscribeToEvent(E_UIMOUSECLICK, HANDLER(vGovernorCell, HandleMouseDown));
+    SubscribeToEvent(E_MOUSEBUTTONUP, HANDLER(vGovernorCell, HandleMouseUp));
+    SubscribeToEvent(E_MOUSEMOVE, HANDLER(vGovernorCell, HandleMouseMove));
+    SubscribeToEvent(this, E_HOVERBEGIN, HANDLER(vGovernorCell, HandleHoverBegin));
+    SubscribeToEvent(this, E_HOVEREND, HANDLER(vGovernorCell, HandleHoverEnd));
 }
 
-void GovernorCell::SetSelected()
+void vGovernorCell::SetSelected()
 {
     selected = true;
     SetSymbol(symbol);
 }
 
-void GovernorCell::SetNormal()
+void vGovernorCell::SetNormal()
 {
     selected = false;
     SetSymbol(symbol);
 }
 
-void GovernorCell::SetSymbol(char symbol_)
+void vGovernorCell::SetSymbol(char symbol_)
 {
     symbol = symbol_;
     label->SetText(String(symbol));
@@ -46,7 +52,7 @@ void GovernorCell::SetSymbol(char symbol_)
     label->SetColor(selected ? Color::YELLOW : Color::WHITE);
 }
 
-void GovernorCell::SetSymbolWithEvent(char symbol_)
+void vGovernorCell::SetSymbolWithEvent(char symbol_)
 {
     symbol = symbol_;
     label->SetText(String(symbol));
@@ -59,12 +65,12 @@ void GovernorCell::SetSymbolWithEvent(char symbol_)
     SendEvent(E_GOVERNORCELLCHANGED, eventData);
 }
 
-char GovernorCell::GetSymbol()
+char vGovernorCell::GetSymbol()
 {
     return symbol;
 }
 
-void GovernorCell::HandleMouseDown(StringHash, VariantMap&)
+void vGovernorCell::HandleMouseDown(StringHash, VariantMap&)
 {
     if(type == CellType_Static)
     {
@@ -80,7 +86,7 @@ void GovernorCell::HandleMouseDown(StringHash, VariantMap&)
     }
 }
 
-void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
+void vGovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
 {
     if(type == CellType_Static)
     {
@@ -103,7 +109,7 @@ void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
     }
 }
 
-void GovernorCell::ChangeValue(int delta)
+void vGovernorCell::ChangeValue(int delta)
 {
     if(type == CellType_Sign)
     {
@@ -136,7 +142,7 @@ void GovernorCell::ChangeValue(int delta)
     }
 }
 
-void GovernorCell::HandleMouseUp(StringHash, VariantMap&)
+void vGovernorCell::HandleMouseUp(StringHash, VariantMap&)
 {
     if(type == CellType_Static)
     {
@@ -147,13 +153,13 @@ void GovernorCell::HandleMouseUp(StringHash, VariantMap&)
     SetNormal();
 }
 
-void GovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
+void vGovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
 {
     if(type == CellType_Static)
     {
         return;
     }
-    GovernorCell *cell = (GovernorCell*)eventData[Urho3D::HoverBegin::P_ELEMENT].GetPtr();
+    vGovernorCell *cell = (vGovernorCell*)eventData[Urho3D::HoverBegin::P_ELEMENT].GetPtr();
     if(cell == this)
     {
         mouseOver = true;
@@ -161,7 +167,7 @@ void GovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
     }
 }
 
-void GovernorCell::HandleHoverEnd(StringHash, VariantMap&)
+void vGovernorCell::HandleHoverEnd(StringHash, VariantMap&)
 {
     if(type == CellType_Static)
     {
@@ -172,28 +178,28 @@ void GovernorCell::HandleHoverEnd(StringHash, VariantMap&)
     gCursor->SetNormal();
 }
 
-void GovernorCell::RegisterObject(Context *context)
+void vGovernorCell::RegisterObject(Context *context)
 {
-    context->RegisterFactory<GovernorCell>("UI");
+    context->RegisterFactory<vGovernorCell>("UI");
 
-    COPY_BASE_ATTRIBUTES(tvWindow);
+    COPY_BASE_ATTRIBUTES(vWindow);
 }
 
-tvGovernorFloat::tvGovernorFloat(Context *context) :
-    tvWindow(context)
+vGovernorFloat::vGovernorFloat(Context *context) :
+    vWindow(context)
 {
     SetMovable(false);
     SetStyle("WindowNoBorder");
 
     int widthLabel = 168;
 
-    label = tvLabel::Create("Camera position Y", 8, widthLabel, 13);
+    label = vLabel::Create("Camera position Y", 8, widthLabel, 13);
     label->SetAlignment(Urho3D::HA_LEFT, Urho3D::VA_CENTER);
     AddChild(label);
 
     for(int i = 0; i < numCells; i++)
     {
-        SharedPtr<GovernorCell> cell(new GovernorCell(context));
+        SharedPtr<vGovernorCell> cell(new vGovernorCell(context));
         cell->SetPosition(i * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + widthLabel + (i > 1 ? SET::MENU::GOVERNOR::CELL::WIDTH : 0), 0);
         cell->SetSymbol((char)(0x30 + i));
         AddChild(cell);
@@ -209,10 +215,10 @@ tvGovernorFloat::tvGovernorFloat(Context *context) :
             cell->SetType(CellType_Digit);
             cell->SetSymbol('0');
         }
-        SubscribeToEvent(E_GOVERNORCELLCHANGED, HANDLER(tvGovernorFloat, HandleGovernorCellChanged));
+        SubscribeToEvent(E_GOVERNORCELLCHANGED, HANDLER(vGovernorFloat, HandleGovernorCellChanged));
     }
 
-    SharedPtr<GovernorCell> cell(new GovernorCell(context));
+    SharedPtr<vGovernorCell> cell(new vGovernorCell(context));
     cell->SetType(CellType_Static);
     cell->SetPosition(2 * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + widthLabel, 0);
     cell->SetSymbol('.');
@@ -225,18 +231,18 @@ tvGovernorFloat::tvGovernorFloat(Context *context) :
     AddChild(buttonDown);
     buttonDown->SetPosition((numCells + 1) * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + 4 + widthLabel, 0);
 
-    SubscribeToEvent(buttonDown, E_HOVERBEGIN, HANDLER(tvGovernorFloat, HandleHoverButtonBegin));
-    SubscribeToEvent(buttonDown, E_HOVEREND, HANDLER(tvGovernorFloat, HandleHoverButtonEnd));
+    SubscribeToEvent(buttonDown, E_HOVERBEGIN, HANDLER(vGovernorFloat, HandleHoverButtonBegin));
+    SubscribeToEvent(buttonDown, E_HOVEREND, HANDLER(vGovernorFloat, HandleHoverButtonEnd));
 }
 
-void tvGovernorFloat::RegisterObject(Context *context)
+void vGovernorFloat::RegisterObject(Context *context)
 {
-    context->RegisterFactory<tvGovernorFloat>("UI");
+    context->RegisterFactory<vGovernorFloat>("UI");
 
-    COPY_BASE_ATTRIBUTES(tvWindow);
+    COPY_BASE_ATTRIBUTES(vWindow);
 }
 
-void tvGovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF funcWrite_)
+void vGovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF funcWrite_)
 {
     funcRead = funcRead_;
     funcWrite = funcWrite_;
@@ -247,7 +253,7 @@ void tvGovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF 
     WriteValue(value);
 }
 
-void tvGovernorFloat::Update(float timeStep)
+void vGovernorFloat::Update(float timeStep)
 {
     UIElement::Update(timeStep);
 
@@ -264,7 +270,7 @@ void tvGovernorFloat::Update(float timeStep)
     }
 }
 
-void tvGovernorFloat::WriteValue(float value)
+void vGovernorFloat::WriteValue(float value)
 {
     int order = 0;
     int mantiss = 0;
@@ -281,7 +287,7 @@ static char NextDigit(int *mantiss)
     return retValue;
 }
 
-void tvGovernorFloat::WriteMantiss(int mantiss)
+void vGovernorFloat::WriteMantiss(int mantiss)
 {
     cells[0]->SetSymbol(mantiss >= 0 ? '+' : '-');
 
@@ -296,7 +302,7 @@ void tvGovernorFloat::WriteMantiss(int mantiss)
     }
 }
 
-void tvGovernorFloat::WriteOrder(int order)
+void vGovernorFloat::WriteOrder(int order)
 {
     cells[7]->SetSymbol(order >= 0 ? '+' : '-');
 
@@ -311,7 +317,7 @@ void tvGovernorFloat::WriteOrder(int order)
     }
 }
 
-void tvGovernorFloat::GetOrderAndMantiss(float value, int *order, int *mantiss)
+void vGovernorFloat::GetOrderAndMantiss(float value, int *order, int *mantiss)
 {
     static const int SIZE_BUFFER = 30;
     char buffer[SIZE_BUFFER];
@@ -357,7 +363,7 @@ void tvGovernorFloat::GetOrderAndMantiss(float value, int *order, int *mantiss)
     *mantiss *= sign;
 }
 
-float tvGovernorFloat::GetValue()
+float vGovernorFloat::GetValue()
 {
     int pow = 1;
     int mantiss = 0;
@@ -395,17 +401,17 @@ float tvGovernorFloat::GetValue()
     return value;
 }
 
-void tvGovernorFloat::HandleGovernorCellChanged(StringHash, VariantMap&)
+void vGovernorFloat::HandleGovernorCellChanged(StringHash, VariantMap&)
 {
     valueChanged = true;
 }
 
-void tvGovernorFloat::HandleHoverButtonBegin(StringHash, VariantMap&)
+void vGovernorFloat::HandleHoverButtonBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
-void tvGovernorFloat::HandleHoverButtonEnd(StringHash, VariantMap&)
+void vGovernorFloat::HandleHoverButtonEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
 }

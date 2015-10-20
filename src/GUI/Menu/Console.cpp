@@ -1,8 +1,12 @@
 #include <stdafx.h>
 
 
-tvConsole::tvConsole(Context *context) :
-    tvWindow(context)
+#include "Console.h"
+#include "GUI/Menu/ConsoleParser.h"
+
+
+vConsole::vConsole(Context *context) :
+    vWindow(context)
 {
     SetVisible(false);
 
@@ -30,10 +34,10 @@ tvConsole::tvConsole(Context *context) :
     text->SetPosition(0, 0);
     AddChild(text);
 
-    SubscribeToEvent(lineEdit, E_TEXTFINISHED, HANDLER(tvConsole, HandleFinishedText));
+    SubscribeToEvent(lineEdit, E_TEXTFINISHED, HANDLER(vConsole, HandleFinishedText));
 }
 
-void tvConsole::Toggle()
+void vConsole::Toggle()
 {
    SetVisible(!IsVisible());
    if(IsVisible())
@@ -42,7 +46,7 @@ void tvConsole::Toggle()
    }
 }
 
-void tvConsole::HandleFinishedText(StringHash, VariantMap&)
+void vConsole::HandleFinishedText(StringHash, VariantMap&)
 {
     String command = lineEdit->GetText();
     if(command.Empty())

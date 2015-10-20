@@ -200,98 +200,48 @@ using Urho3D::Corner;
 
 #include "defines.h"
 
-class tvButton;
-class tvButtonToggled;
+class vButton;
+class vButtonToggled;
 
-class tvCamera;
-class tvConsole;
-class tvCursor;
-class tvCursorShapes;
+class vCamera;
+class vConsole;
+class vCursor;
+class vCursorShapes;
 
-class tvDropDownListWithTextAndButton;
+class vDropDownListWithTextAndButton;
 
-class tvEditor;
+class vEditor;
 
-class tvGovernorFloat;
-class tvGUI;
+class vGovernorFloat;
+class vGUI;
 
-class tvImage;
+class vImage;
 
-class tvLabel;
-class tvLineTranslator1D;
-class tvLineTranslator2D;
+class vLabel;
+class vLineTranslator1D;
+class vLineTranslator2D;
 
-class tvMenu;
-class tvMenuGame;
-class tvMenuEditor;
-class tvMenuMain;
-class tvMenuOptions;
+class vMenu;
+class vMenuGame;
+class vMenuEditor;
+class vMenuMain;
+class vMenuOptions;
 
-class tvPanelBottom;
-class tvPanelMain;
-class tvPanelMap;
-class tvPlane;
+class vPanelBottom;
+class vPanelMain;
+class vPanelMap;
+class vPlane;
 
-class tvSettings;
-class tvSliderWithTextAndButtons;
+class vSettings;
+class vSliderWithTextAndButtons;
 
-class tvTab;
-class tvTerrain;
-class tvTerrainBlock;
-class tvTriangle;
+class vTab;
+class vTerrain;
+class vTerrainBlock;
+class vTriangle;
 
-class tvWindowVariables;
+class vWindowVariables;
 
 #include "SettingsTypes.h"
-
 #include "GlobalVars.h"
-
-#include "GUI/Elements/Window.h"
-#include "GUI/Elements/Tab.h"
-
-#include "Core/Camera.h"
-#include "Core/Math.h"
-
-#include "Editor/Editor.h"
-
-#include "Game/Logic/Movinator.h"
-#include "Game/Logic/Rotator.h"
-
-#include "Game/Objects/Plane.h"
-#include "Game/Objects/Scene.h"
-#include "Game/Objects/TerrainBlock.h"
-#include "Game/Objects/Terrain.h"
-#include "Game/Objects/Triangle.h"
-
-#include "Game/Level.h"
-
-#include "GUI/Elements/Button.h"
-#include "GUI/Elements/ButtonToggled.h"
-#include "GUI/Elements/Cursor.h"
-#include "GUI/Elements/CursorShapes.h"
-#include "GUI/Elements/DropDownListWithTextAndButton.h"
-#include "GUI/Elements/GovernorFloat.h"
-#include "GUI/Elements/Label.h"
-#include "GUI/Elements/Image.h"
-#include "GUI/Elements/Slider.h"
-#include "GUI/Elements/SliderInt.h"
-#include "GUI/Elements/SliderWithTextAndButtons.h"
-
-#include "GUI/Logic/LineTranslator1D.h"
-#include "GUI/Logic/LineTranslator2D.h"
-
-#include "GUI/Menu/Console.h"
-#include "GUI/Menu/ConsoleParser.h"
-#include "GUI/Menu/MenuMain.h"
-#include "GUI/Menu/MenuOptions.h"
-#include "GUI/Menu/WindowVariables.h"
-#include "GUI/Menu/PanelBottom.h"
-#include "GUI/Menu/PanelMap.h"
-#include "GUI/Menu/PanelMain.h"
-
-#include "GUI/MenuGame/MenuGame.h"
-
-#include "GUI/MenuEditor/MenuEditor.h"
-
 #include "Settings.h"
-#include "TacticsVictory.h"

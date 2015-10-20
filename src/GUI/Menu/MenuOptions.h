@@ -1,23 +1,26 @@
 #pragma once
 
 
+#include "GUI/Elements/Window.h"
+
+
 enum
 {
     MenuEvent_MenuOptionsClose
 };
 
 
-class tvMenuOptions : public tvWindow
+class vMenuOptions : public vWindow
 {
-    OBJECT(tvMenuOptions)
+    OBJECT(vMenuOptions)
 
 public:
-    tvMenuOptions(Context *context);
+    vMenuOptions(Context *context);
 
     static void RegisterObject(Context *context);
 
 private:
-    tvMenuOptions& operator=(const tvMenuOptions&) {};
+    vMenuOptions& operator=(const vMenuOptions&) {};
 
     void HandleItemSelected(StringHash eventType, VariantMap& eventData);
     void HandleOnSlider(StringHash evenType, VariantMap& eventData);
@@ -27,20 +30,20 @@ private:
 
     HashMap<Slider*, uint> mapSlidersActions;
 
-    SharedPtr<tvSliderWithTextAndButtons> sliderBrightness;
-    SharedPtr<tvSliderWithTextAndButtons> sliderMaxOccluderTriangles;
-    SharedPtr<tvSliderWithTextAndButtons> sliderVolume;
+    SharedPtr<vSliderWithTextAndButtons> sliderBrightness;
+    SharedPtr<vSliderWithTextAndButtons> sliderMaxOccluderTriangles;
+    SharedPtr<vSliderWithTextAndButtons> sliderVolume;
 
-    SharedPtr<tvDropDownListWithTextAndButton> ddlLanguage;
-    SharedPtr<tvDropDownListWithTextAndButton> ddlTextureQuality;
-    SharedPtr<tvDropDownListWithTextAndButton> ddlMaterialQuality;
-    SharedPtr<tvDropDownListWithTextAndButton> ddlTextureAnisotropy;
-    SharedPtr<tvDropDownListWithTextAndButton> ddlShadowsEnabled;
-    SharedPtr<tvDropDownListWithTextAndButton> ddlSpecularLighting;
-    SharedPtr<tvDropDownListWithTextAndButton> ddlShadowMapSize;
-    SharedPtr<tvDropDownListWithTextAndButton> ddlShadowQuality;
-    SharedPtr<tvDropDownListWithTextAndButton> ddlDynamicInstancing;
+    SharedPtr<vDropDownListWithTextAndButton> ddlLanguage;
+    SharedPtr<vDropDownListWithTextAndButton> ddlTextureQuality;
+    SharedPtr<vDropDownListWithTextAndButton> ddlMaterialQuality;
+    SharedPtr<vDropDownListWithTextAndButton> ddlTextureAnisotropy;
+    SharedPtr<vDropDownListWithTextAndButton> ddlShadowsEnabled;
+    SharedPtr<vDropDownListWithTextAndButton> ddlSpecularLighting;
+    SharedPtr<vDropDownListWithTextAndButton> ddlShadowMapSize;
+    SharedPtr<vDropDownListWithTextAndButton> ddlShadowQuality;
+    SharedPtr<vDropDownListWithTextAndButton> ddlDynamicInstancing;
     PODVector<int> shadowMapSizes;
-    SharedPtr<tvButton> buttonClose;
+    SharedPtr<vButton> buttonClose;
     IntVector2 dragBeginPosition;
 };

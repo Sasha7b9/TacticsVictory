@@ -1,7 +1,11 @@
 #include <stdafx.h>
 
 
-tvCamera::tvCamera()
+#include "Camera.h"
+#include "GUI/Elements/Cursor.h"
+
+
+vCamera::vCamera()
 {
     cameraNode = gScene->CreateChild("Camera");
 
@@ -19,24 +23,24 @@ tvCamera::tvCamera()
     SetupViewport();
 }
 
-Vector3 tvCamera::GetPosition()
+Vector3 vCamera::GetPosition()
 {
     return cameraNode->GetPosition();
 }
 
-void tvCamera::SetPosition(const Vector3 &position)
+void vCamera::SetPosition(const Vector3 &position)
 {
     cameraNode->SetPosition(position);
 }
 
-void tvCamera::SetPosition(const Vector3& position, const Vector3& lookAt_)
+void vCamera::SetPosition(const Vector3& position, const Vector3& lookAt_)
 {
     cameraNode->SetPosition(position);
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
-void tvCamera::RotateOn(float _yaw, float _pitch)
+void vCamera::RotateOn(float _yaw, float _pitch)
 {
     if(!enabled)
     {
@@ -47,13 +51,13 @@ void tvCamera::RotateOn(float _yaw, float _pitch)
     cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
 }
 
-void tvCamera::LookAt(const Vector3 &lookAt_)
+void vCamera::LookAt(const Vector3 &lookAt_)
 {
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
-void tvCamera::Move(float time)
+void vCamera::Move(float time)
 {
     if(!enabled)
     {
@@ -156,7 +160,7 @@ void tvCamera::Move(float time)
     }
 }
 
-void tvCamera::SetPitch(float newPitch)
+void vCamera::SetPitch(float newPitch)
 {
     Quaternion rotation = cameraNode->GetRotation();
     float yaw = rotation.YawAngle();
@@ -168,7 +172,7 @@ void tvCamera::SetPitch(float newPitch)
     cameraNode->RotateAround(lookAt, rotateNeed, Urho3D::TS_WORLD);
 }
 
-void tvCamera::MoveOn(Direction direction, float distance)
+void vCamera::MoveOn(Direction direction, float distance)
 {
     if(!enabled)
     {
@@ -262,18 +266,18 @@ void tvCamera::MoveOn(Direction direction, float distance)
     }
 }
 
-void tvCamera::SetEnabled(bool _enabled)
+void vCamera::SetEnabled(bool _enabled)
 {
     enabled = _enabled;
 }
 
-void tvCamera::SetupViewport()
+void vCamera::SetupViewport()
 {
     SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<Camera>()));
     gRenderer->SetViewport(0, viewport);
 }
 
-SharedPtr<Node> tvCamera::GetNode()
+SharedPtr<Node> vCamera::GetNode()
 {
     return cameraNode;
 }

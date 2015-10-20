@@ -1,8 +1,14 @@
 #include <stdafx.h>
 
 
-tvPanelMain::tvPanelMain(Context *context) :
-    tvWindow(context)
+#include "PanelMain.h"
+#include "GUI/Elements/Tab.h"
+#include "GUI/Elements/ButtonToggled.h"
+#include "GUI/Logic/LineTranslator2D.h"
+
+
+vPanelMain::vPanelMain(Context *context) :
+    vWindow(context)
 {
     SetName("PanelMain");
 
@@ -13,27 +19,27 @@ tvPanelMain::tvPanelMain(Context *context) :
     IntVector2 posStart = {SET::PANEL::MAP::WIDTH - 1, gGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAIN::HEIGHT + 1};
     IntVector2 posFinish = {SET::PANEL::MAP::WIDTH - 1, gGraphics->GetHeight()};
 
-    translator = new tvLineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), tvLineTranslator2D::State_PointStart);
+    translator = new vLineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), vLineTranslator2D::State_PointStart);
 }
 
-void tvPanelMain::RegisterObject(Context *context)
+void vPanelMain::RegisterObject(Context *context)
 {
-    context->RegisterFactory<tvPanelMain>("UI");
+    context->RegisterFactory<vPanelMain>("UI");
 
-    COPY_BASE_ATTRIBUTES(tvWindow);
+    COPY_BASE_ATTRIBUTES(vWindow);
 }
 
-void tvPanelMain::Update(float dT)
+void vPanelMain::Update(float dT)
 {
     SetPosition(translator->Update(dT));
 }
 
-void tvPanelMain::Toggle()
+void vPanelMain::Toggle()
 {
     translator->Toggle();
 }
 
-void tvPanelMain::AddTab(SharedPtr<tvTab> tab)
+void vPanelMain::AddTab(SharedPtr<vTab> tab)
 {
     static const int x0 = 10;
     static const int y0 = 4;
@@ -55,7 +61,7 @@ void tvPanelMain::AddTab(SharedPtr<tvTab> tab)
 
     tabs.Push(tab);
 
-    SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(tvPanelMain, HandleToggedTitle));
+    SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(vPanelMain, HandleToggedTitle));
 
     AddChild(tab);
 
@@ -63,9 +69,9 @@ void tvPanelMain::AddTab(SharedPtr<tvTab> tab)
     tab->SetFixedSize(GetWidth(), GetHeight() - y0 - tab->buttonTitle->GetHeight() + 1);
 }
 
-void tvPanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
+void vPanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
 {
-    tvButtonToggled *button = (tvButtonToggled*)eventData[Urho3D::Toggled::P_ELEMENT].GetPtr();
+    vButtonToggled *button = (vButtonToggled*)eventData[Urho3D::Toggled::P_ELEMENT].GetPtr();
     bool state = (bool)eventData[Urho3D::Toggled::P_STATE].GetBool();
 
     if(state)
@@ -76,7 +82,7 @@ void tvPanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
             {
                 UnsubscribeFromEvent(tab->buttonTitle, Urho3D::E_TOGGLED);
                 tab->buttonTitle->SetChecked(false);
-                SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(tvPanelMain, HandleToggedTitle));
+                SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(vPanelMain, HandleToggedTitle));
             }
         }
     }

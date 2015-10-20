@@ -1,38 +1,42 @@
 #include <stdafx.h>
 
 
+#include "MenuMain.h"
 #include "GUI/GUI.h"
+#include "GUI/Elements/Button.h"
+#include "GUI/Elements/Cursor.h"
+#include "GUI/Elements/Label.h"
 
 
-tvMenuMain::tvMenuMain(Context *context) :
-    tvWindow(context)
+vMenuMain::vMenuMain(Context *context) :
+    vWindow(context)
 {
     SetLayout(Urho3D::LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
 
-    SharedPtr<tvLabel> text(tvLabel::Create("Tactics Victory", 20));
+    SharedPtr<vLabel> text(vLabel::Create("Tactics Victory", 20));
     AddChild(text);
     
-    buttonNewGame  = new tvButton(0, "New game");
+    buttonNewGame  = new vButton(0, "New game");
     AddChild(buttonNewGame);
-    buttonEditor = new tvButton(this, "Editor");
-    buttonOptions = new tvButton(this, "Options");
-    buttonExit = new tvButton(this, "Exit");
-    SubscribeToEvent(buttonOptions, E_RELEASED, HANDLER(tvMenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonOptions, E_HOVERBEGIN, HANDLER(tvMenuMain, HandleHoverBegin));
-    SubscribeToEvent(buttonOptions, E_HOVEREND, HANDLER(tvMenuMain, HandleHoverEnd));
+    buttonEditor = new vButton(this, "Editor");
+    buttonOptions = new vButton(this, "Options");
+    buttonExit = new vButton(this, "Exit");
+    SubscribeToEvent(buttonOptions, E_RELEASED, HANDLER(vMenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonOptions, E_HOVERBEGIN, HANDLER(vMenuMain, HandleHoverBegin));
+    SubscribeToEvent(buttonOptions, E_HOVEREND, HANDLER(vMenuMain, HandleHoverEnd));
 
-    SubscribeToEvent(buttonEditor, E_RELEASED, HANDLER(tvMenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonEditor, E_HOVERBEGIN, HANDLER(tvMenuMain, HandleHoverBegin));
-    SubscribeToEvent(buttonEditor, E_HOVEREND, HANDLER(tvMenuMain, HandleHoverEnd));
+    SubscribeToEvent(buttonEditor, E_RELEASED, HANDLER(vMenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonEditor, E_HOVERBEGIN, HANDLER(vMenuMain, HandleHoverBegin));
+    SubscribeToEvent(buttonEditor, E_HOVEREND, HANDLER(vMenuMain, HandleHoverEnd));
 
-    SubscribeToEvent(buttonNewGame, E_RELEASED, HANDLER(tvMenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonNewGame, E_HOVERBEGIN, HANDLER(tvMenuMain, HandleHoverBegin));
-    SubscribeToEvent(buttonNewGame, E_HOVEREND, HANDLER(tvMenuMain, HandleHoverEnd));
+    SubscribeToEvent(buttonNewGame, E_RELEASED, HANDLER(vMenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonNewGame, E_HOVERBEGIN, HANDLER(vMenuMain, HandleHoverBegin));
+    SubscribeToEvent(buttonNewGame, E_HOVEREND, HANDLER(vMenuMain, HandleHoverEnd));
 
-    SubscribeToEvent(buttonExit, E_RELEASED, HANDLER(tvMenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, E_HOVERBEGIN, HANDLER(tvMenuMain, HandleHoverBegin));
-    SubscribeToEvent(buttonExit, E_HOVEREND, HANDLER(tvMenuMain, HandleHoverEnd));
+    SubscribeToEvent(buttonExit, E_RELEASED, HANDLER(vMenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, E_HOVERBEGIN, HANDLER(vMenuMain, HandleHoverBegin));
+    SubscribeToEvent(buttonExit, E_HOVEREND, HANDLER(vMenuMain, HandleHoverEnd));
 
     text->SetWidth(GetWidth());
 
@@ -42,14 +46,14 @@ tvMenuMain::tvMenuMain(Context *context) :
     mapButtonsActions[buttonExit] = MenuEvent_ExitInOS;
 }
 
-void tvMenuMain::RegisterObject(Context* context)
+void vMenuMain::RegisterObject(Context* context)
 {
-    context->RegisterFactory<tvMenuMain>("UI");
+    context->RegisterFactory<vMenuMain>("UI");
 
-    COPY_BASE_ATTRIBUTES(tvWindow);
+    COPY_BASE_ATTRIBUTES(vWindow);
 }
 
-void tvMenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
+void vMenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
     eventData = GetEventDataMap();
@@ -62,12 +66,12 @@ void tvMenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
 }
 
-void tvMenuMain::HandleHoverBegin(StringHash, VariantMap&)
+void vMenuMain::HandleHoverBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
-void tvMenuMain::HandleHoverEnd(StringHash, VariantMap&)
+void vMenuMain::HandleHoverEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
 }

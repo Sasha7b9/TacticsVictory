@@ -1,18 +1,25 @@
 #include <stdafx.h>
 
 
-tvMenuGame::tvMenuGame(Context* context) :
+#include "MenuGame.h"
+#include "GUI/Elements/Button.h"
+#include "GUI/Menu/PanelMap.h"
+#include "GUI/Menu/PanelMain.h"
+#include "GUI/Menu/PanelBottom.h"
+
+
+vMenuGame::vMenuGame(Context* context) :
     UIElement(context)
 {
     SetFixedSize(gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT));
 
-    panelMap = new tvPanelMap(context);
+    panelMap = new vPanelMap(context);
     AddChild(panelMap);
 
-    panelMain = new tvPanelMain(context);
+    panelMain = new vPanelMain(context);
     AddChild(panelMain);
 
-    panelBottom = new tvPanelBottom(context);
+    panelBottom = new vPanelBottom(context);
     AddChild(panelBottom);
     panelBottom->SetPosition(0, gGraphics->GetHeight() - panelBottom->GetHeight());
 
@@ -22,27 +29,27 @@ tvMenuGame::tvMenuGame(Context* context) :
     int x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
     int y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
     buttonMap = panelBottom->AddButton("Map", x, y, width, height);
-    SubscribeToEvent(buttonMap, E_RELEASED, HANDLER(tvMenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMap, E_RELEASED, HANDLER(vMenuGame, HandleButtonRelease));
 
     x = (int)(gSet->GetInt(TV_PANEL_MAP_WIDTH) * 1.5f) - width / 2;
     buttonMainPanel = panelBottom->AddButton("Panel", x, y, width, height);
-    SubscribeToEvent(buttonMainPanel, E_RELEASED, HANDLER(tvMenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMainPanel, E_RELEASED, HANDLER(vMenuGame, HandleButtonRelease));
 
     x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
     buttonMenu = panelBottom->AddButton("Manu", x, y, width, height);
-    SubscribeToEvent(buttonMenu, E_RELEASED, HANDLER(tvMenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMenu, E_RELEASED, HANDLER(vMenuGame, HandleButtonRelease));
 }
 
-void tvMenuGame::RegisterObject(Context* context)
+void vMenuGame::RegisterObject(Context* context)
 {
-    context->RegisterFactory<tvMenuGame>("UI");
+    context->RegisterFactory<vMenuGame>("UI");
 
     COPY_BASE_ATTRIBUTES(UIElement);
 }
 
-void tvMenuGame::HandleButtonRelease(StringHash, VariantMap &eventData)
+void vMenuGame::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
-    tvButton *button = (tvButton*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    vButton *button = (vButton*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
 
     if(button == buttonMap)
     {
@@ -54,12 +61,12 @@ void tvMenuGame::HandleButtonRelease(StringHash, VariantMap &eventData)
     }
 }
 
-bool tvMenuGame::IntersectionX(tvButton *button, int x)
+bool vMenuGame::IntersectionX(vButton *button, int x)
 {
     return x >= button->GetPosition().x_ && x <= button->GetPosition().x_ + button->GetWidth();
 }
 
-bool tvMenuGame::CheckOnDeadZoneForCursorBottomScreen(int x)
+bool vMenuGame::CheckOnDeadZoneForCursorBottomScreen(int x)
 {
     return IntersectionX(buttonMap, x) || IntersectionX(buttonMainPanel, x) || IntersectionX(buttonMenu, x);
 }

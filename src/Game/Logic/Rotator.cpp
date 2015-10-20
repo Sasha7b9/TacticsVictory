@@ -1,7 +1,10 @@
 #include <stdafx.h>
 
 
-tvRotator::tvRotator(Context* context) :
+#include "Rotator.h"
+
+
+vRotator::vRotator(Context* context) :
     LogicComponent(context),
     rotationSpeed(Vector3::ZERO)
 {
@@ -9,12 +12,12 @@ tvRotator::tvRotator(Context* context) :
     SetUpdateEventMask(Urho3D::USE_UPDATE);
 }
 
-void tvRotator::SetRotationSpeed(const Vector3& speed)
+void vRotator::SetRotationSpeed(const Vector3& speed)
 {
     rotationSpeed = speed;
 }
 
-void tvRotator::Update(float timeStep)
+void vRotator::Update(float timeStep)
 {
     // Components have their scene node as a member variable for convenient access. Rotate the scene node now: construct a
     // rotation quaternion from Euler angles, scale rotation speed with the scene update time step

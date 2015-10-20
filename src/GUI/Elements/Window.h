@@ -1,12 +1,12 @@
 #pragma once
 
 
-class tvWindow : public Window
+class vWindow : public Window
 {
-    OBJECT(tvWindow)
+    OBJECT(vWindow)
 
 public:
-    tvWindow(Context *context);
+    vWindow(Context *context);
 
     static void RegisterObject(Context *context);
 
@@ -14,11 +14,11 @@ public:
     bool IsChildOfParent();
     void Toggle();
 
-    SharedPtr<tvButton> AddButton(char *text, int x, int y, int width = -1, int height = -1);
-    SharedPtr<tvButtonToggled> AddButtonToggled(char *text, int x, int y, int width, int height);
+    SharedPtr<vButton> AddButton(char *text, int x, int y, int width = -1, int height = -1);
+    SharedPtr<vButtonToggled> AddButtonToggled(char *text, int x, int y, int width, int height);
 
 protected:
-    tvWindow& operator=(const tvWindow&)
+    vWindow& operator=(const vWindow&)
     {};
 
     HashMap<Button*, uint> mapButtonsActions;

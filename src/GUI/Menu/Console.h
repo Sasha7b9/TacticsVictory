@@ -1,12 +1,15 @@
 #pragma once
 
 
-class tvConsole : public tvWindow
+#include "GUI/Elements/Window.h"
+
+
+class vConsole : public vWindow
 {
-    OBJECT(tvConsole);
+    OBJECT(vConsole);
 
 public:
-    tvConsole(Context *context);
+    vConsole(Context *context);
 
     void Toggle();
     void HandleFinishedText(StringHash eventType, VariantMap& eventData);

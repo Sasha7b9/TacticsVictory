@@ -2,6 +2,14 @@
 
 
 #include "GUI/GUI.h"
+#include "Core/Camera.h"
+#include "Editor/Editor.h"
+#include "Game/Objects/Scene.h"
+#include "Game/Logic/Rotator.h"
+#include "Game/Logic/Movinator.h"
+#include "GUI/MenuGame/MenuGame.h"
+#include "GUI/MenuEditor/MenuEditor.h"
+#include "TacticsVictory.h"
 
 
 #pragma warning(push)
@@ -19,7 +27,7 @@ TacticsVictory::TacticsVictory(Context* context) :
 
 void TacticsVictory::Setup()
 {
-    gSet = new tvSettings();
+    gSet = new vSettings();
     gFileSystem = GetSubsystem<FileSystem>();
     gSet->Load();
 
@@ -44,7 +52,6 @@ void TacticsVictory::Stop()
     SAFE_DELETE(gEditor);
     SAFE_DELETE(gScene);
     SAFE_DELETE(gCamera);
-    SAFE_DELETE(gCursor);
 }
 
 void TacticsVictory::CreateComponents()
@@ -71,13 +78,13 @@ void TacticsVictory::CreateComponents()
 
     gTime = new Time(gContext);
 
-    gGUI = new tvGUI();
+    gGUI = new vGUI();
 }
 
 void TacticsVictory::RegistrationFactories()
 {
-    gContext->RegisterFactory<tvRotator>();
-    gContext->RegisterFactory<tvMovinator>();
+    gContext->RegisterFactory<vRotator>();
+    gContext->RegisterFactory<vMovinator>();
 }
 
 void TacticsVictory::Start()
@@ -101,7 +108,7 @@ void TacticsVictory::Start()
     
     InitLocalizationSystem();
 
-    gCamera = new tvCamera();
+    gCamera = new vCamera();
 
     gGUI->Create();
 
@@ -156,7 +163,7 @@ void TacticsVictory::CreateEditorSession()
 {
     if(!gEditor)
     {
-        gEditor = new tvEditor(gContext);
+        gEditor = new vEditor(gContext);
     }
     gGUI->SetVisibleMenu(false);
     gMenuEditor->SetVisible(true);

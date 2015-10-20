@@ -1,12 +1,15 @@
 #pragma once
 
 
-class tvPanelMain : public tvWindow
+#include "GUI/Elements/Window.h"
+
+
+class vPanelMain : public vWindow
 {
-    OBJECT(tvPanelMain);
+    OBJECT(vPanelMain);
 
 public:
-    tvPanelMain(Context *context = gContext);
+    vPanelMain(Context *context = gContext);
 
     virtual void Update(float dT);
 
@@ -14,14 +17,14 @@ public:
 
     void Toggle();
 
-    void AddTab(SharedPtr<tvTab> tab);
+    void AddTab(SharedPtr<vTab> tab);
 
 private:
-    tvPanelMain& operator=(const tvPanelMain&)
+    vPanelMain& operator=(const vPanelMain&)
     {};
 
-    SharedPtr<tvLineTranslator2D> translator;
-    Vector<SharedPtr<tvTab>> tabs;
+    SharedPtr<vLineTranslator2D> translator;
+    Vector<SharedPtr<vTab>> tabs;
 
     void HandleToggedTitle(StringHash eventType, VariantMap &eventData);
 };

@@ -1,6 +1,13 @@
 #include <stdafx.h>
 
 
+#include "Scene.h"
+#include "Core/Camera.h"
+#include "Game/Logic/Movinator.h"
+#include "Game/Level.h"
+#include "Game/Objects/TerrainBlock.h"
+
+
 tvScene::tvScene() :
     Object(gContext)
 {
@@ -24,15 +31,15 @@ void tvScene::Create()
     float dColor = 0.2f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    Vector<Vector<float> > level = Level::Load("input.txt");
-    //Vector<Vector<float> > level = Level::CreateRandom(100, 100);
+    Vector<Vector<float> > level = vLevel::Load("input.txt");
+    //Vector<Vector<float> > level = vLevel::CreateRandom(100, 100);
 
-    SharedPtr<tvTerrainBlock> terrain;
-    terrain = new tvTerrainBlock(level);
+    SharedPtr<vTerrainBlock> terrain;
+    terrain = new vTerrainBlock(level);
 
     SharedPtr<Node> lightNode;
     lightNode = gScene->CreateChild("LigthNode");
-    tvMovinator *movinator = lightNode->CreateComponent<tvMovinator>();
+    vMovinator *movinator = lightNode->CreateComponent<vMovinator>();
     movinator->SetCenter({level[0].Size() / 2.0f, 25.0f, -(level.Size() / 2.0f)});
     movinator->SetMoveSpeed(0.5f);
 

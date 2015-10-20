@@ -1,11 +1,11 @@
 #pragma once
 
 
-class tvImage : public Resource
+class vImage : public Resource
 {
-    OBJECT(tvImage);
+    OBJECT(vImage);
 public:
-    tvImage(int width, int height);
+    vImage(int width, int height);
 
     SharedPtr<Image> GetImage();
 
@@ -24,7 +24,7 @@ public:
     void SetHotSpot(int x, int y);
 
 private:
-    tvImage& operator=(const tvImage&)
+    vImage& operator=(const vImage&)
     {};
     SharedPtr<Image> image;
 

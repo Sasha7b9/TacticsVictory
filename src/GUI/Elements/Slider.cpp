@@ -1,27 +1,30 @@
 #include <stdafx.h>
 
 
-tvSlider::tvSlider(Context *context) :
+#include "Slider.h"
+
+
+vSlider::vSlider(Context *context) :
     Slider(context)
 {
 
 }
 
-void tvSlider::RegisterObject(Context *context)
+void vSlider::RegisterObject(Context *context)
 {
-    context->RegisterFactory<tvSlider>("UI");
+    context->RegisterFactory<vSlider>("UI");
 
     COPY_BASE_ATTRIBUTES(Slider);
 }
 
-SharedPtr<tvSlider> tvSlider::Create(Window *window, char *text_)
+SharedPtr<vSlider> vSlider::Create(Window *window, char *text_)
 {
     SharedPtr<Text> text(new Text(gContext));
     text->SetText(gLocalization->Get(text_));
     text->SetStyle("MainMenuButton");
     window->AddChild(text);
 
-    SharedPtr<tvSlider> slider(gUIRoot->CreateChild<tvSlider>());
+    SharedPtr<vSlider> slider(gUIRoot->CreateChild<vSlider>());
     slider->SetMinHeight(15);
     window->AddChild(slider);
     slider->SetRange(1.0f);

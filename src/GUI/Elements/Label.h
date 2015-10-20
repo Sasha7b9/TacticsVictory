@@ -1,19 +1,19 @@
 #pragma once
 
 
-class tvLabel : public Text
+class vLabel : public Text
 {
-    OBJECT(tvLabel);
+    OBJECT(vLabel);
 public:
-    tvLabel(Context *context);
+    vLabel(Context *context);
 
     static void RegisterObject(Context *context);
-    static SharedPtr<tvLabel> Create(char *text, int sizeFont, int width = -1, int height = -1);
+    static SharedPtr<vLabel> Create(char *text, int sizeFont, int width = -1, int height = -1);
     static void ReloadLanguage();
     
     void SetNewText(const char *text);
 
 private:
-    tvLabel& operator=(const tvLabel&)
+    vLabel& operator=(const vLabel&)
     {};
 };

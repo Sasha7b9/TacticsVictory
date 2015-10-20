@@ -1,25 +1,28 @@
 #pragma once
 
 
-class tvSliderWithTextAndButtons : public UIElement
+#include "GUI/Elements/SliderInt.h"
+
+
+class vSliderWithTextAndButtons : public UIElement
 {
-    OBJECT(tvSliderWithTextAndButtons);
+    OBJECT(vSliderWithTextAndButtons);
 
 public:
-    tvSliderWithTextAndButtons(UIElement *uielement, char *text, int min, int max);
+    vSliderWithTextAndButtons(UIElement *uielement, char *text, int min, int max);
 
     void SetRange(int min, int max);
     void SetValue(int value);
 
 private:
-    tvSliderWithTextAndButtons& operator=(const tvSliderWithTextAndButtons&) {};
+    vSliderWithTextAndButtons& operator=(const vSliderWithTextAndButtons&) {};
 
     void HandleSliderIntChanged(StringHash eventType, VariantMap& eventData);
     void HandleButtonDown(StringHash eventType, VariantMap& eventData);
     void HandleHoverBegin(StringHash eventType, VariantMap& eventData);
     void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
 
-    SharedPtr<tvSliderInt> slider;
+    SharedPtr<vSliderInt> slider;
     SharedPtr<Text> textValue;
     SharedPtr<Button> buttonLeft;
     SharedPtr<Button> buttonRight;

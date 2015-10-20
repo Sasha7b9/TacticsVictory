@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "GUI/Elements/Window.h"
+
+
 enum CellType
 {
     CellType_Static,
@@ -16,12 +19,12 @@ EVENT(E_GOVERNORCELLCHANGED, GovernorCellChanged)
 }
 
 
-class GovernorCell : public tvWindow
+class vGovernorCell : public vWindow
 {
-    OBJECT(GovernorCell);
+    OBJECT(vGovernorCell);
 
 public:
-    GovernorCell(Context *context);
+    vGovernorCell(Context *context);
 
     static void RegisterObject(Context *context);
 
@@ -38,7 +41,7 @@ public:
     void HandleMouseMove(StringHash eventType, VariantMap& eventData);
 
 private:
-    GovernorCell& operator=(const GovernorCell&)
+    vGovernorCell& operator=(const vGovernorCell&)
     {};
 
     void ChangeValue(int delta);
@@ -55,12 +58,12 @@ private:
 };
 
 
-class tvGovernorFloat : public tvWindow
+class vGovernorFloat : public vWindow
 {
-    OBJECT(tvGovernorFloat);
+    OBJECT(vGovernorFloat);
 
 public:
-    tvGovernorFloat(Context *context);
+    vGovernorFloat(Context *context);
 
     static void RegisterObject(Context *context);
 
@@ -73,7 +76,7 @@ public:
     void HandleHoverButtonEnd(StringHash eventType, VariantMap& eventData);
 
 private:
-    tvGovernorFloat& operator=(const tvGovernorFloat&)
+    vGovernorFloat& operator=(const vGovernorFloat&)
     {};
 
     void WriteValue(float value);
@@ -82,9 +85,9 @@ private:
     void WriteOrder(int order);
     float GetValue();
 
-    Vector<SharedPtr<GovernorCell> > cells;
+    Vector<SharedPtr<vGovernorCell> > cells;
     SharedPtr<Button> buttonDown;
-    SharedPtr<tvLabel> label;
+    SharedPtr<vLabel> label;
     int numCells = 11;
     pFuncFV funcRead = nullptr;
     pFuncVF funcWrite = nullptr;

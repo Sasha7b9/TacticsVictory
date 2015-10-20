@@ -2,15 +2,18 @@
 
 
 #include "Editor.h"
+#include "Core/Camera.h"
+#include "Game/Level.h"
+#include "GUI/Elements/Cursor.h"
 
 
-tvEditor::tvEditor(Context *context) : Object(context)
+vEditor::vEditor(Context *context) : Object(context)
 {
-    currentPlane = tvPlane::ZERO;
+    currentPlane = vPlane::ZERO;
 }
 
 
-void tvEditor::Run()
+void vEditor::Run()
 {
     Node* zoneNode = gScene->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
@@ -19,10 +22,10 @@ void tvEditor::Run()
     float dColor = 0.3f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    //Vector<Vector<float> > level = Level::CreateRandom(100, 100);
-    Vector<Vector<float> > level = Level::Load("input.txt");
+    //Vector<Vector<float> > level = vLevel::CreateRandom(100, 100);
+    Vector<Vector<float> > level = vLevel::Load("input.txt");
 
-    terrain = new tvTerrain(level);
+    terrain = new vTerrain(level);
 
     SharedPtr<Node> lightNode(gScene->CreateChild("LightNode"));
 
@@ -39,10 +42,10 @@ void tvEditor::Run()
     gCamera->SetPosition({0.0f, 25.0f, 0.0f}, {level[0].Size() / 2.0f, 0.0f, -(level.Size() / 2.0f)});
     lightNode->SetPosition({level[0].Size() / 2.0f, 50.0f, -(level.Size() / 2.0f)});
 
-    SubscribeToEvent(E_POSTRENDERUPDATE, HANDLER(tvEditor, HandlePostRenderUpdate));
+    SubscribeToEvent(E_POSTRENDERUPDATE, HANDLER(vEditor, HandlePostRenderUpdate));
 }
 
-void tvEditor::HandlePostRenderUpdate(StringHash, VariantMap &eventData)
+void vEditor::HandlePostRenderUpdate(StringHash, VariantMap &eventData)
 {
     IntVector2 pos = gCursor->GetCursor()->GetPosition();
 
@@ -51,7 +54,7 @@ void tvEditor::HandlePostRenderUpdate(StringHash, VariantMap &eventData)
 
     Ray ray = gCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
 
-    tvPlane plane = terrain->GetIntersection(ray);
+    vPlane plane = terrain->GetIntersection(ray);
 
     if(!plane.IsZero())
     {

@@ -1,12 +1,15 @@
 #pragma once
 
 
-class tvMenuMain : public tvWindow
+#include "GUI/Elements/Window.h"
+
+
+class vMenuMain : public vWindow
 {
-    OBJECT(tvMenuMain);
+    OBJECT(vMenuMain);
 
 public:
-    tvMenuMain(Context *context);
+    vMenuMain(Context *context);
 
     static void RegisterObject(Context *context);
 
@@ -14,13 +17,13 @@ public:
     void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
 
 private:
-    tvMenuMain& operator=(const tvMenuMain&)
+    vMenuMain& operator=(const vMenuMain&)
     {};
 
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
 
-    SharedPtr<tvButton> buttonNewGame;
-    SharedPtr<tvButton> buttonEditor;
-    SharedPtr<tvButton> buttonExit;
-    SharedPtr<tvButton> buttonOptions;
+    SharedPtr<vButton> buttonNewGame;
+    SharedPtr<vButton> buttonEditor;
+    SharedPtr<vButton> buttonExit;
+    SharedPtr<vButton> buttonOptions;
 };

@@ -2,20 +2,21 @@
 
 
 #include "ButtonToggled.h"
+#include "GUI/Elements/Label.h"
 
 
-tvButtonToggled::tvButtonToggled(Context *context) :
+vButtonToggled::vButtonToggled(Context *context) :
     CheckBox(context)
 {
     SetStyleAuto();
-    label = tvLabel::Create("", SET::MENU::FONT::SIZE::ITEM);
+    label = vLabel::Create("", SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 }
 
-tvButtonToggled::tvButtonToggled(UIElement * uielement, char * text, int width, int height) :
+vButtonToggled::vButtonToggled(UIElement * uielement, char * text, int width, int height) :
     CheckBox(gContext)
 {
-    label = tvLabel::Create(text, SET::MENU::FONT::SIZE::ITEM);
+    label = vLabel::Create(text, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 
     if(uielement)
@@ -41,14 +42,14 @@ tvButtonToggled::tvButtonToggled(UIElement * uielement, char * text, int width, 
     }
 }
 
-void tvButtonToggled::RegisterObject(Context *context)
+void vButtonToggled::RegisterObject(Context *context)
 {
-    context->RegisterFactory<tvButtonToggled>("UI");
+    context->RegisterFactory<vButtonToggled>("UI");
 
     COPY_BASE_ATTRIBUTES(CheckBox);
 }
 
-void tvButtonToggled::SetText(char *text)
+void vButtonToggled::SetText(char *text)
 {
     label->SetNewText(text);
 }

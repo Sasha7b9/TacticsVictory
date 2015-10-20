@@ -1,9 +1,9 @@
 #pragma once
 
 
-class tvLineTranslator2D : public Object
+class vLineTranslator2D : public Object
 {
-    OBJECT(tvLineTranslator2D);
+    OBJECT(vLineTranslator2D);
 
 public:
 
@@ -15,15 +15,15 @@ public:
         State_MoveToStart
     };
 
-    tvLineTranslator2D(const IntVector2 &start, const IntVector2 &finish, float speed, State startPosition);
+    vLineTranslator2D(const IntVector2 &start, const IntVector2 &finish, float speed, State startPosition);
 
     IntVector2 Update(float dT);
     void Toggle();
 
 private:
-    tvLineTranslator2D& operator=(const tvLineTranslator2D&)
+    vLineTranslator2D& operator=(const vLineTranslator2D&)
     {};
 
-    SharedPtr<tvLineTranslator1D> translatorX;
-    SharedPtr<tvLineTranslator1D> translatorY;
+    SharedPtr<vLineTranslator1D> translatorX;
+    SharedPtr<vLineTranslator1D> translatorY;
 };

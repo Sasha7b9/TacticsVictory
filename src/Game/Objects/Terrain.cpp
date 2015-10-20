@@ -2,9 +2,11 @@
 
 
 #include "Terrain.h"
+#include "Game/Objects/Plane.h"
+#include "Game//Objects/TerrainBlock.h"
 
 
-tvTerrain::tvTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
+vTerrain::vTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
 {
     uint mapSizeX = map[0].Size();
     uint mapSizeZ = map.Size();
@@ -24,13 +26,13 @@ tvTerrain::tvTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
         for(uint z = 0; z < numBlocksInZ; z++)
         {
             Vector<Vector<float> > subMap = ExtractSubMap(x  * sizeBlock, z * sizeBlock, sizeBlock);
-            SharedPtr<tvTerrainBlock> block(new tvTerrainBlock(subMap, {(float)(x * sizeBlock) - 1.0f, 0.0f, -(float)(z * sizeBlock) + 1.0f}));
+            SharedPtr<vTerrainBlock> block(new vTerrainBlock(subMap, {(float)(x * sizeBlock) - 1.0f, 0.0f, -(float)(z * sizeBlock) + 1.0f}));
             blocks[z][x] = block;
         }
     }
 }
 
-void tvTerrain::SetHeight(uint row, uint col, float height)
+void vTerrain::SetHeight(uint row, uint col, float height)
 {
     map[row][col] = height;
 
@@ -42,7 +44,7 @@ void tvTerrain::SetHeight(uint row, uint col, float height)
 }
 
 // NOTE Size of the returned array size + 2
-Vector<Vector<float> > tvTerrain::ExtractSubMap(uint startX, uint startZ, uint size)
+Vector<Vector<float> > vTerrain::ExtractSubMap(uint startX, uint startZ, uint size)
 {
     Vector<Vector<float> > subMap;
     subMap.Resize((uint)size + 2);
@@ -109,11 +111,11 @@ Vector<Vector<float> > tvTerrain::ExtractSubMap(uint startX, uint startZ, uint s
     return subMap;
 }
 
-tvPlane tvTerrain::GetIntersection(Ray &ray)
+vPlane vTerrain::GetIntersection(Ray &ray)
 {
-    tvPlane plane = tvPlane::ZERO;
+    vPlane plane = vPlane::ZERO;
     Vector<float> distances;
-    Vector<tvPlane> planes;
+    Vector<vPlane> planes;
     for(uint x = 0; x < numBlocksInX; x++)
     {
         for(uint z = 0; z < numBlocksInZ; z++)
@@ -123,7 +125,7 @@ tvPlane tvTerrain::GetIntersection(Ray &ray)
             if(distance != Urho3D::M_INFINITY)
             {
                 distances.Push(distance);
-                planes.Push(isClosing ? tvPlane::ZERO : plane);
+                planes.Push(isClosing ? vPlane::ZERO : plane);
             }
         }
     }
@@ -142,7 +144,7 @@ tvPlane tvTerrain::GetIntersection(Ray &ray)
     }
     else
     {
-        plane = tvPlane::ZERO;
+        plane = vPlane::ZERO;
     }
 
     return plane;

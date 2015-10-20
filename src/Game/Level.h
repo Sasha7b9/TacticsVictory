@@ -1,10 +1,10 @@
 #pragma once
 
 
-class Level
+class vLevel
 {
 public:
-    Level();
+    vLevel();
 
     static Vector<Vector<float> > Load(char *fileName);             // Load from file simple level (from height map)
     static Vector<Vector<float> > Create(int sizeZ, int sizeX);     // Create a new simpe level height == 0.0f; 

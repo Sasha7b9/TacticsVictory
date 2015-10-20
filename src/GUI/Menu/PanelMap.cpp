@@ -1,8 +1,15 @@
 #include <stdafx.h>
 
 
-tvPanelMap::tvPanelMap(Context *context) :
-    tvWindow(context)
+#include "PanelMap.h"
+#include "Core/Camera.h"
+#include "Game/Level.h"
+#include "GUI/Elements/Image.h"
+#include "GUI/Logic/LineTranslator2D.h"
+
+
+vPanelMap::vPanelMap(Context *context) :
+    vWindow(context)
 {
     SetName("PanelMap");
 
@@ -13,23 +20,23 @@ tvPanelMap::tvPanelMap(Context *context) :
     IntVector2 posStart = {0, gGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAP::HEIGHT + 1};
     IntVector2 posFinish = {-SET::PANEL::MAP::WIDTH, posStart.y_};
 
-    translator = new tvLineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), tvLineTranslator2D::State_PointStart);
+    translator = new vLineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), vLineTranslator2D::State_PointStart);
 }
 
 
-void tvPanelMap::RegisterObject(Context *context)
+void vPanelMap::RegisterObject(Context *context)
 {
-    context->RegisterFactory<tvPanelMap>("UI");
+    context->RegisterFactory<vPanelMap>("UI");
 
-    COPY_BASE_ATTRIBUTES(tvWindow);
+    COPY_BASE_ATTRIBUTES(vWindow);
 }
 
-void tvPanelMap::Toggle()
+void vPanelMap::Toggle()
 {
     translator->Toggle();
 }
 
-void tvPanelMap::Update(float dT)
+void vPanelMap::Update(float dT)
 {
     SetPosition(translator->Update(dT));
 
@@ -40,7 +47,7 @@ void tvPanelMap::Update(float dT)
 
     if(first)
     {
-        map = Level::Get();
+        map = vLevel::Get();
 
         if(map.Empty())
         {
@@ -66,7 +73,7 @@ void tvPanelMap::Update(float dT)
             x0 = (int)(GetWidth() / 2.0f - (scale * sizeX) / 2.0f);
         }
 
-        imageMap = new tvImage(GetWidth(), GetHeight());
+        imageMap = new vImage(GetWidth(), GetHeight());
 
         imageMap->Clear(Color::BLACK);
         imageMap->DrawRectangle(0, 0, GetWidth() - 1, GetHeight() - 1, Color::WHITE);
@@ -113,7 +120,7 @@ void tvPanelMap::Update(float dT)
         {1.0f, 0.0f}
     };
 
-    SharedPtr<tvImage> image(new tvImage(imageMap->GetWidth(), imageMap->GetHeight()));
+    SharedPtr<vImage> image(new vImage(imageMap->GetWidth(), imageMap->GetHeight()));
 
     uchar *data = imageMap->GetImage()->GetData();
 
@@ -151,7 +158,7 @@ void tvPanelMap::Update(float dT)
     SetFullImageRect();
 }
 
-bool tvPanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPointOut)
+bool vPanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPointOut)
 {
     Camera *camera = gCamera->GetNode()->GetComponent<Camera>();
     Plane planeX0Z({0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f});
@@ -167,12 +174,12 @@ bool tvPanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPoi
     return true;
 }
 
-float tvPanelMap::GetMapHeight(uint x, uint y)
+float vPanelMap::GetMapHeight(uint x, uint y)
 {
     return map[y][x];
 }
 
-float tvPanelMap::GetMaxHeight()
+float vPanelMap::GetMaxHeight()
 {
     uint sizeX = SizeXMap();
     uint sizeY = SizeYMap();
@@ -193,12 +200,12 @@ float tvPanelMap::GetMaxHeight()
     return height;
 }
 
-uint tvPanelMap::SizeXMap()
+uint vPanelMap::SizeXMap()
 {
     return map[0].Size();
 }
 
-uint tvPanelMap::SizeYMap()
+uint vPanelMap::SizeYMap()
 {
     return map.Size();
 }

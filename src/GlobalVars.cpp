@@ -19,15 +19,15 @@ PhysicsWorld    *gPhysicsWorld = nullptr;
 Font            *gFont = nullptr;
 Time            *gTime = nullptr;
 
-tvCamera        *gCamera = nullptr;
-tvCursor        *gCursor = nullptr;
-tvMenuGame      *gMenuGame = nullptr;
-tvMenuEditor    *gMenuEditor = nullptr;
-tvEditor        *gEditor = nullptr;
-tvSettings      *gSet = nullptr;
-tvGUI           *gGUI = nullptr;
-tvConsole       *gConsole = nullptr;
-tvMenuMain      *gMenuMain = nullptr;
-tvMenuOptions   *gMenuOptions = nullptr;
+vCamera        *gCamera = nullptr;
+vCursor        *gCursor = nullptr;
+vMenuGame      *gMenuGame = nullptr;
+vMenuEditor    *gMenuEditor = nullptr;
+vEditor        *gEditor = nullptr;
+vSettings      *gSet = nullptr;
+vGUI           *gGUI = nullptr;
+vConsole       *gConsole = nullptr;
+vMenuMain      *gMenuMain = nullptr;
+vMenuOptions   *gMenuOptions = nullptr;
 
-tvWindowVariables   *gWindowVars = nullptr;
+vWindowVariables   *gWindowVars = nullptr;

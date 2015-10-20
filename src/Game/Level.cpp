@@ -1,10 +1,13 @@
 #include <stdafx.h>
 
 
-Vector<Vector<float> > Level::map;
+#include "Level.h"
 
 
-Level::Level()
+Vector<Vector<float> > vLevel::map;
+
+
+vLevel::vLevel()
 {
 
 }
@@ -46,12 +49,12 @@ static int PushToVector(const char *data, Vector<float> *vec)
     return retValue;
 }
 
-Vector<Vector<float> > Level::Get()
+Vector<Vector<float> > vLevel::Get()
 {
     return map;
 }
 
-Vector<Vector<float> > Level::Load(char *fileName)
+Vector<Vector<float> > vLevel::Load(char *fileName)
 {
     SharedPtr<File> fileRead;
     fileRead = new File(gContext);
@@ -90,7 +93,7 @@ Vector<Vector<float> > Level::Load(char *fileName)
     return map;
 }
 
-Vector<Vector<float> > Level::Create(int sizeZ, int sizeX)
+Vector<Vector<float> > vLevel::Create(int sizeZ, int sizeX)
 {
     map.Clear();
 
@@ -107,7 +110,7 @@ Vector<Vector<float> > Level::Create(int sizeZ, int sizeX)
     return map;
 }
 
-Vector<Vector<float> > Level::CreateRandom(int sizeZ, int sizeX)
+Vector<Vector<float> > vLevel::CreateRandom(int sizeZ, int sizeX)
 {
     map.Clear();
 

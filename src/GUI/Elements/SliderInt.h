@@ -8,14 +8,14 @@ EVENT(E_SLIDERINTCHANGED, SliderIntChanged)
 }
 
 
-class tvSliderInt : public Slider
+class vSliderInt : public Slider
 {
-    OBJECT(tvSliderInt);
+    OBJECT(vSliderInt);
 public:
-    tvSliderInt(Context *context);
+    vSliderInt(Context *context);
 
     static void RegisterObject(Context* context);
-    static SharedPtr<tvSliderInt> Create(UIElement *uielement, const IntVector2 &size);
+    static SharedPtr<vSliderInt> Create(UIElement *uielement, const IntVector2 &size);
 
     void SetRange(int min, int max);
     virtual void OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Cursor* cursor);
@@ -23,7 +23,7 @@ public:
     void SetValueInt(int value);
 
 private:
-    tvSliderInt& operator=(const tvSliderInt&)
+    vSliderInt& operator=(const vSliderInt&)
     {};
 
     int min = 0;

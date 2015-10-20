@@ -1,12 +1,15 @@
 #pragma once
 
 
-class tvWindowVariables : public tvWindow
+#include "GUI/Elements/Window.h"
+
+
+class vWindowVariables : public vWindow
 {
-    OBJECT(tvWindowVariables);
+    OBJECT(vWindowVariables);
 
 public:
-    tvWindowVariables(Context *context);
+    vWindowVariables(Context *context);
 
     void SetVar(float *var, char *title);
     void AddFunctionFloat(char *title, pFuncFV funcRead, pFuncVF funcWrite);
@@ -15,6 +18,6 @@ private:
     float *var = nullptr;
     char *title = nullptr;
 
-    SharedPtr<tvLabel> label;
-    SharedPtr<tvGovernorFloat> governor;
+    SharedPtr<vLabel> label;
+    SharedPtr<vGovernorFloat> governor;
 };

@@ -1,12 +1,15 @@
 #pragma once
 
 
-class tvPanelMap : public tvWindow
+#include "GUI/Elements/Window.h"
+
+
+class vPanelMap : public vWindow
 {
-    OBJECT(tvPanelMap);
+    OBJECT(vPanelMap);
 
 public:
-    tvPanelMap(Context *context);
+    vPanelMap(Context *context);
 
     virtual void Update(float timeStep);
 
@@ -15,12 +18,12 @@ public:
     void Toggle();
 
 private:
-    tvPanelMap& operator=(const tvPanelMap&)
+    vPanelMap& operator=(const vPanelMap&)
     {};
 
     Vector<Vector<float> > map;
-    SharedPtr<tvLineTranslator2D> translator;
-    SharedPtr<tvImage> imageMap;
+    SharedPtr<vLineTranslator2D> translator;
+    SharedPtr<vImage> imageMap;
     int x0 = 0;
     int y0 = 0;
     float scale = 0.0f;

@@ -16,21 +16,25 @@ enum
 };
 
 
-class tvGUI : public Object
+class vWindow;
+
+
+class vGUI : public Object
 {
-    OBJECT(tvGUI);
+    OBJECT(vGUI);
 
 public:
-    tvGUI();
+    vGUI();
+    ~vGUI();
 
     void Create();
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
     bool MenuIsVisible();
     void SetVisibleMenu(bool visible);
-    void SetVisibleMenu(tvWindow *menuWindow, bool visible);
+    void SetVisibleMenu(vWindow *menuWindow, bool visible);
 
 private:
-    tvGUI& operator=(const tvGUI&)
+    vGUI& operator=(const vGUI&)
     {};
     void HandleGuiEvent(StringHash eventType, VariantMap& eventData);
 };

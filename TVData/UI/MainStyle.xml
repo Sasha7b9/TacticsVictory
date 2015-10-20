@@ -10,7 +10,7 @@
         <attribute name="Checked Image Offset" value="16 0" />
         <attribute name="Hover Image Offset" value="0 16" />
     </element>
-    <element type="tvButtonToggled" style="CheckBox">
+    <element type="vButtonToggled" style="CheckBox">
         <attribute name="Font" value="Font;Fonts/CRL.ttf" />
         <attribute name="Font Size" value="15" />
         <attribute name="Min Size" value="110 20" />

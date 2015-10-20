@@ -1,13 +1,16 @@
 #include <stdafx.h>
 
 
-tvSliderInt::tvSliderInt(Context *context) :
+#include "SliderInt.h"
+
+
+vSliderInt::vSliderInt(Context *context) :
     Slider(context)
 {
 
 }
 
-void tvSliderInt::SetRange(int min_, int max_)
+void vSliderInt::SetRange(int min_, int max_)
 {
     min = min_;
     max = max_;
@@ -17,7 +20,7 @@ void tvSliderInt::SetRange(int min_, int max_)
     Slider::SetRange(max - delta);
 }
 
-void tvSliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Cursor* cursor)
+void vSliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Cursor* cursor)
 {
     Slider::OnDragMove(position, screenPosition, deltaPos, buttons, qualifiers, cursor);
 
@@ -33,12 +36,12 @@ void tvSliderInt::OnDragMove(const IntVector2& position, const IntVector2& scree
     }
 }
 
-int tvSliderInt::GetValueInt()
+int vSliderInt::GetValueInt()
 {
     return value;
 }
 
-void tvSliderInt::SetValueInt(int newValue)
+void vSliderInt::SetValueInt(int newValue)
 {
     if(newValue >= min && newValue <= max && value != newValue)
     {
@@ -51,16 +54,16 @@ void tvSliderInt::SetValueInt(int newValue)
     }
 }
 
-void tvSliderInt::RegisterObject(Context* context)
+void vSliderInt::RegisterObject(Context* context)
 {
-    context->RegisterFactory<tvSliderInt>("UI");
+    context->RegisterFactory<vSliderInt>("UI");
 
     COPY_BASE_ATTRIBUTES(Slider);
 }
 
-SharedPtr<tvSliderInt> tvSliderInt::Create(UIElement *uielement, const IntVector2 &size)
+SharedPtr<vSliderInt> vSliderInt::Create(UIElement *uielement, const IntVector2 &size)
 {
-    SharedPtr<tvSliderInt> slider(gUIRoot->CreateChild<tvSliderInt>());
+    SharedPtr<vSliderInt> slider(gUIRoot->CreateChild<vSliderInt>());
     slider->SetFixedSize(size);
     slider->SetStyle("Slider");
 

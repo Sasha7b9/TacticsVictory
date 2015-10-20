@@ -1,6 +1,10 @@
 #include <stdafx.h>
 
 
+#include "ConsoleParser.h"
+#include "GUI/Menu/WindowVariables.h"
+
+
 void ConsoleParser::Execute(const String &string)
 {
     Vector<String> words = string.Split(' ');

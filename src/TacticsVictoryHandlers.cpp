@@ -2,6 +2,11 @@
 
 
 #include "GUI/GUI.h"
+#include "GUI/Elements/Cursor.h"
+#include "GUI/Menu/Console.h"
+#include "GUI/Menu/MenuOptions.h"
+#include "Core/Camera.h"
+#include "TacticsVictory.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
@@ -90,7 +95,10 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
     float time = eventData[Urho3D::Update::P_TIMESTEP].GetFloat();
     gCamera->Move(time);
 
-    gCursor->Update(time);
+    if (gCursor)
+    {
+        gCursor->Update(time);
+    }
 
     LOGINFOF("%d", gUIRoot->IsHovering());
 }

@@ -1,13 +1,16 @@
 #pragma once
 
 
-class tvCursorShapes : public Object
+#include "Cursor.h"
+
+
+class vCursorShapes : public Object
 {
-    OBJECT(tvCursorShapes);
+    OBJECT(vCursorShapes);
 public:
-    tvCursorShapes() : Object(gContext)
+    vCursorShapes() : Object(gContext)
     {};
-    SharedPtr<tvImage> GetShape(TypeCursor type, int numFrame);
+    SharedPtr<vImage> GetShape(TypeCursor type, int numFrame);
 
 private:
 
@@ -23,7 +26,7 @@ private:
     void CreateDownRight(int numFrame);
     void CreateBusy(int numFrame);
 
-    void FillGradient(tvImage *image, TypeCursor type, int numFrame);
+    void FillGradient(vImage *image, TypeCursor type, int numFrame);
 
 public:
     struct StructShape
@@ -38,9 +41,9 @@ public:
     };
 
 private:
-    tvCursorShapes& operator=(const tvCursorShapes&)
+    vCursorShapes& operator=(const vCursorShapes&)
     {};
-    HashMap<StructShape, SharedPtr<tvImage> > map;
+    HashMap<StructShape, SharedPtr<vImage> > map;
 
     int dimensionTriangleSmall = 50;
     int dimensionTriangleBig = 100;

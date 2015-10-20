@@ -1,12 +1,12 @@
 #pragma once
 
 
-class tvPlane
+class vPlane
 {
 public:
-    tvPlane(const Vector3 &v0 = Vector3::ZERO, const Vector3 &v1 = Vector3::ZERO, const Vector3 &v2 = Vector3::ZERO, const Vector3 &v3 = Vector3::ZERO);
+    vPlane(const Vector3 &v0 = Vector3::ZERO, const Vector3 &v1 = Vector3::ZERO, const Vector3 &v2 = Vector3::ZERO, const Vector3 &v3 = Vector3::ZERO);
 
-    bool IsEquals(const tvPlane &plane);
+    bool IsEquals(const vPlane &plane);
     bool IsZero();
 
     Vector3 v0;
@@ -17,5 +17,5 @@ public:
     uint row = 0;
     uint col = 0;
 
-    static tvPlane ZERO;
+    static vPlane ZERO;
 };

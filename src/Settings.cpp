@@ -1,16 +1,16 @@
 #include <stdafx.h>
 
-bool operator==(const tvSettings::IntKey & keyleft, const tvSettings::IntKey& keyright)
+bool operator==(const vSettings::IntKey & keyleft, const vSettings::IntKey& keyright)
 {
     return keyleft.str == keyright.str;
 }
 
-bool operator==(const tvSettings::FloatKey & keyLeft, const tvSettings::FloatKey& keyRight)
+bool operator==(const vSettings::FloatKey & keyLeft, const vSettings::FloatKey& keyRight)
 {
     return keyLeft.str == keyRight.str;
 }
 
-bool tvSettings::Load()
+bool vSettings::Load()
 {
     nameFile = String("settings.xml");
 
@@ -56,7 +56,7 @@ bool tvSettings::Load()
     return false;
 }
 
-int tvSettings::GetInt(char *elem, char *name)
+int vSettings::GetInt(char *elem, char *name)
 {
     int retValue = mapIntChild[IntKey(elem, name)];
     if(!GetIntFromChild(elem, name, &retValue))
@@ -66,7 +66,7 @@ int tvSettings::GetInt(char *elem, char *name)
     return retValue;
 }
 
-int tvSettings::GetInt(char *name)
+int vSettings::GetInt(char *name)
 {
     int retValue = mapIntChild[IntKey(name)];
     if(!GetIntFromChild(name, &retValue))
@@ -76,7 +76,7 @@ int tvSettings::GetInt(char *name)
     return retValue;
 }
 
-float tvSettings::GetFloat(char *elem, char *name)
+float vSettings::GetFloat(char *elem, char *name)
 {
     float retValue = mapFloatChild[FloatKey(elem, name)];
     if (!GetFloatFromChild(elem, name, &retValue))
@@ -99,17 +99,17 @@ float tvSettings::GetFloat(char *elem, char *name)
     }                                                   \
     childName.SetValue(String(value));
 
-void tvSettings::SetInt(char *category, char *name, int value)
+void vSettings::SetInt(char *category, char *name, int value)
 {
     COMMON_BLOCK;
 }
 
-void tvSettings::SetFloat(char *category, char *name, float value)
+void vSettings::SetFloat(char *category, char *name, float value)
 {
     COMMON_BLOCK;
 }
 
-void tvSettings::SetInt(char *name, int value)
+void vSettings::SetInt(char *name, int value)
 {
     XMLElement child = root.GetChild(name);
     if (child == 0)
@@ -120,14 +120,14 @@ void tvSettings::SetInt(char *name, int value)
     child.SetValue(String(value));
 }
 
-void tvSettings::Save()
+void vSettings::Save()
 {
     File outFile(gContext);
     outFile.Open(nameFile, Urho3D::FILE_WRITE);
     file->Save(outFile);
 }
 
-bool tvSettings::GetIntFromChild(char *category, char *name, int *value)
+bool vSettings::GetIntFromChild(char *category, char *name, int *value)
 {
     if (!root.HasChild(category))
     {
@@ -144,7 +144,7 @@ bool tvSettings::GetIntFromChild(char *category, char *name, int *value)
     return true;
 }
 
-bool tvSettings::GetFloatFromChild(char *category, char *name, float *value)
+bool vSettings::GetFloatFromChild(char *category, char *name, float *value)
 {
     if (!root.HasChild(category))
     {
@@ -159,7 +159,7 @@ bool tvSettings::GetFloatFromChild(char *category, char *name, float *value)
     return true;
 }
 
-bool tvSettings::GetIntFromChild(char *name, int *value)
+bool vSettings::GetIntFromChild(char *name, int *value)
 {
     if (!root.HasChild(name))
     {

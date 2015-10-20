@@ -19,15 +19,15 @@ extern PhysicsWorld     *gPhysicsWorld;
 extern Font             *gFont;
 extern Time             *gTime;
 
-extern tvCamera             *gCamera;
-extern tvCursor             *gCursor;
-extern tvEditor             *gEditor;
-extern tvSettings           *gSet;
+extern vCamera             *gCamera;
+extern vCursor             *gCursor;
+extern vEditor             *gEditor;
+extern vSettings           *gSet;
 
-extern tvGUI                *gGUI;
-extern tvConsole            *gConsole;
-extern tvWindowVariables    *gWindowVars;
-extern tvMenuMain           *gMenuMain;
-extern tvMenuGame           *gMenuGame;
-extern tvMenuEditor         *gMenuEditor;
-extern tvMenuOptions        *gMenuOptions;
+extern vGUI                *gGUI;
+extern vConsole            *gConsole;
+extern vWindowVariables    *gWindowVars;
+extern vMenuMain           *gMenuMain;
+extern vMenuGame           *gMenuGame;
+extern vMenuEditor         *gMenuEditor;
+extern vMenuOptions        *gMenuOptions;

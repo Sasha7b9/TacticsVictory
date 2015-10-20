@@ -1,6 +1,6 @@
 #pragma once
 
-class tvSettings
+class vSettings
 {
 public:
     bool Load();

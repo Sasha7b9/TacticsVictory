@@ -1,20 +1,25 @@
 #include <stdafx.h>
 
 
-tvButton::tvButton(Context *context) :
+#include "Button.h"
+#include "GUI/Elements/Cursor.h"
+#include "GUI/Elements/Label.h"
+
+
+vButton::vButton(Context *context) :
     Button(context)
 {
     SetStyle("MainMenuButton");
 
-    label = tvLabel::Create("", SET::MENU::FONT::SIZE::ITEM);
+    label = vLabel::Create("", SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 }
 
-tvButton::tvButton(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
+vButton::vButton(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
     Button(gContext)
 {
     SetStyle("MainMenuButton");
-    label = tvLabel::Create(text, SET::MENU::FONT::SIZE::ITEM);
+    label = vLabel::Create(text, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 
     if (uielement)
@@ -39,34 +44,34 @@ tvButton::tvButton(UIElement *uielement, char *text, int width /* = -1 */, int h
         SetFixedSize(width, height);
     }
 
-    SubscribeToEvent(this, E_HOVERBEGIN, HANDLER(tvButton, HandleHoverBegin));
-    SubscribeToEvent(this, E_HOVEREND, HANDLER(tvButton, HandleHoverEnd));
-    SubscribeToEvent(this, E_MOUSEBUTTONDOWN, HANDLER(tvButton, HandleMouseDown));
+    SubscribeToEvent(this, E_HOVERBEGIN, HANDLER(vButton, HandleHoverBegin));
+    SubscribeToEvent(this, E_HOVEREND, HANDLER(vButton, HandleHoverEnd));
+    SubscribeToEvent(this, E_MOUSEBUTTONDOWN, HANDLER(vButton, HandleMouseDown));
 }
 
-void tvButton::RegisterObject(Context *context)
+void vButton::RegisterObject(Context *context)
 {
-    context->RegisterFactory<tvButton>("UI");
+    context->RegisterFactory<vButton>("UI");
 
     COPY_BASE_ATTRIBUTES(Button);
 }
 
-void tvButton::SetText(char *text)
+void vButton::SetText(char *text)
 {
     label->SetNewText(text);
 }
 
-void tvButton::HandleHoverBegin(StringHash, VariantMap&)
+void vButton::HandleHoverBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
-void tvButton::HandleHoverEnd(StringHash, VariantMap&)
+void vButton::HandleHoverEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
 }
 
-void tvButton::HandleMouseDown(StringHash, VariantMap&)
+void vButton::HandleMouseDown(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }

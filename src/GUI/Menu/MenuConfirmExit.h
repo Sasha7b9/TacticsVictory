@@ -1,7 +1,10 @@
 #pragma once
 
 
-class tvMenuConfirmExit : public tvWindow
+#include "GUI/Elements/Window.h"
+
+
+class tvMenuConfirmExit : public vWindow
 {
     OBJECT(tvMenuConfirmExit);
 

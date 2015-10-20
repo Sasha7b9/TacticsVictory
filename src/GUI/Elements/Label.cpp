@@ -1,9 +1,12 @@
 #include <stdafx.h>
 
 
+#include "Label.h"
+
+
 struct StructText
 {
-    tvLabel* label;
+    vLabel* label;
     const char* text;
 };
 
@@ -11,7 +14,7 @@ struct StructText
 static PODVector<StructText> mapTexts;  // »спользуетс€ дл€ перезагрузки при изменении €зыка
 
 
-void tvLabel::ReloadLanguage()
+void vLabel::ReloadLanguage()
 {
     for(PODVector<StructText>::Iterator i = mapTexts.Begin(); i != mapTexts.End(); i++)
     {
@@ -20,22 +23,22 @@ void tvLabel::ReloadLanguage()
 }
 
 
-tvLabel::tvLabel(Context *context) :
+vLabel::vLabel(Context *context) :
     Text(context)
 {
 
 }
 
-void tvLabel::RegisterObject(Context *context)
+void vLabel::RegisterObject(Context *context)
 {
-    context->RegisterFactory<tvLabel>("UI");
+    context->RegisterFactory<vLabel>("UI");
 
     COPY_BASE_ATTRIBUTES(Text);
 }
 
-SharedPtr<tvLabel> tvLabel::Create(char *text_, int sizeFont, int width /* = -1 */, int height /* = -1 */)
+SharedPtr<vLabel> vLabel::Create(char *text_, int sizeFont, int width /* = -1 */, int height /* = -1 */)
 {
-    SharedPtr<tvLabel> text(new tvLabel(gContext));
+    SharedPtr<vLabel> text(new vLabel(gContext));
     text->SetFont(gFont, sizeFont);
     text->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_CENTER);
 
@@ -64,7 +67,7 @@ SharedPtr<tvLabel> tvLabel::Create(char *text_, int sizeFont, int width /* = -1 
     return text;
 }
 
-void tvLabel::SetNewText(const char *text)
+void vLabel::SetNewText(const char *text)
 {
     for(uint i = 0; i < mapTexts.Size(); i++)
     {

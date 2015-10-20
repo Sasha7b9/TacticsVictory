@@ -1,7 +1,11 @@
 #include <stdafx.h>
 
 
-tvLineTranslator1D::tvLineTranslator1D(int start_, int finish_, float speed_, State startPosition) :
+#include "LineTranslator1D.h"
+#include "Core/Math.h"
+
+
+vLineTranslator1D::vLineTranslator1D(int start_, int finish_, float speed_, State startPosition) :
     Object(gContext),
     start((float)start_), finish((float)finish_), speed(fabs(speed_))
 {
@@ -10,7 +14,7 @@ tvLineTranslator1D::tvLineTranslator1D(int start_, int finish_, float speed_, St
     position = startPosition == State_PointStart ? start : finish;
 }
 
-void tvLineTranslator1D::Toggle()
+void vLineTranslator1D::Toggle()
 {
     if(state == State_MoveToFinish || state == State_MoveToStart)
     {
@@ -32,7 +36,7 @@ void tvLineTranslator1D::Toggle()
     }
 }
 
-int tvLineTranslator1D::Update(float dT)
+int vLineTranslator1D::Update(float dT)
 {
     if(state == State_PointStart)
     {

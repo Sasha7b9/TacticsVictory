@@ -1,14 +1,18 @@
 #include <stdafx.h>
 
 
-tvImage::tvImage(int width, int height) : Resource(gContext)
+#include "Image.h"
+#include "Core/Math.h"
+
+
+vImage::vImage(int width, int height) : Resource(gContext)
 {
     image = new Image(gContext);
 
     image->SetSize(width, height, 4);
 }
 
-void tvImage::SetPoint(uint x, uint y, const Color& color)
+void vImage::SetPoint(uint x, uint y, const Color& color)
 {
     if(x < (uint)image->GetWidth() && y < (uint)image->GetHeight())
     {
@@ -16,7 +20,7 @@ void tvImage::SetPoint(uint x, uint y, const Color& color)
     }
 }
 
-void tvImage::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
+void vImage::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
 {
     if((x1 - x0) == 0 && (y1 - y0) == 0)
     {
@@ -70,7 +74,7 @@ void tvImage::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
     }
 }
 
-void tvImage::DrawRectangle(int x, int y, int width, int height, const Color &color)
+void vImage::DrawRectangle(int x, int y, int width, int height, const Color &color)
 {
     DrawLine(x, y, x + width, y, color);
     DrawLine(x + width, y, x + width, y + height, color);
@@ -78,7 +82,7 @@ void tvImage::DrawRectangle(int x, int y, int width, int height, const Color &co
     DrawLine(x, y, x, y + height, color);
 }
 
-void tvImage::FillRectangle(int x0, int y0, int width, int height, const Color &color)
+void vImage::FillRectangle(int x0, int y0, int width, int height, const Color &color)
 {
     for(int x = x0; x < x0 + width; x++)
     {
@@ -86,17 +90,17 @@ void tvImage::FillRectangle(int x0, int y0, int width, int height, const Color &
     }
 }
 
-void tvImage::Clear(const Color &color)
+void vImage::Clear(const Color &color)
 {
     image->Clear(color);
 }
 
-SharedPtr<Image> tvImage::GetImage()
+SharedPtr<Image> vImage::GetImage()
 {
     return image;
 }
 
-void tvImage::FillRegion(int x, int y, const Color &color)
+void vImage::FillRegion(int x, int y, const Color &color)
 {
     replacedColor = image->GetPixel(x, y);
 
@@ -105,7 +109,7 @@ void tvImage::FillRegion(int x, int y, const Color &color)
     Replace4Points(x, y, color);
 }
 
-void tvImage::Replace4Points(int x, int y, const Color &color)
+void vImage::Replace4Points(int x, int y, const Color &color)
 {
     if(y > 0)                       // upper pixel
     {
@@ -141,7 +145,7 @@ void tvImage::Replace4Points(int x, int y, const Color &color)
     }
 }
 
-void tvImage::FillRegion(int x, int y, const Color &color, const Color &colorBound)
+void vImage::FillRegion(int x, int y, const Color &color, const Color &colorBound)
 {
     boundingColor = colorBound;
 
@@ -162,7 +166,7 @@ void tvImage::FillRegion(int x, int y, const Color &color, const Color &colorBou
     }
 
 
-void tvImage::Replace4PointsBound(int x, int y, const Color &color)
+void vImage::Replace4PointsBound(int x, int y, const Color &color)
 {
     if(y > 0)
     {
@@ -182,17 +186,17 @@ void tvImage::Replace4PointsBound(int x, int y, const Color &color)
     }
 }
 
-int tvImage::GetWidth()
+int vImage::GetWidth()
 {
     return image->GetWidth();
 }
 
-int tvImage::GetHeight()
+int vImage::GetHeight()
 {
     return image->GetHeight();
 }
 
-void tvImage::DrawPolyline(const Color &color, int numPoints, int *xy)
+void vImage::DrawPolyline(const Color &color, int numPoints, int *xy)
 {
     int numLines = numPoints - 1;
 
@@ -202,7 +206,7 @@ void tvImage::DrawPolyline(const Color &color, int numPoints, int *xy)
     }
 }
 
-void tvImage::DrawCircle(float x, float y, float radius, const Color &color, float step)
+void vImage::DrawCircle(float x, float y, float radius, const Color &color, float step)
 {
     for (float angle = 0.0f; angle < 360.0f; angle += step)
     {
@@ -210,12 +214,12 @@ void tvImage::DrawCircle(float x, float y, float radius, const Color &color, flo
     }
 }
 
-IntVector2 tvImage::GetHotSpot()
+IntVector2 vImage::GetHotSpot()
 {
     return hotSpot;
 }
 
-void tvImage::SetHotSpot(int x, int y)
+void vImage::SetHotSpot(int x, int y)
 {
     hotSpot.x_ = x;
     hotSpot.y_ = y;
