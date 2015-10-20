@@ -19,15 +19,16 @@ PhysicsWorld    *gPhysicsWorld = nullptr;
 Font            *gFont = nullptr;
 Time            *gTime = nullptr;
 
-vCamera        *gCamera = nullptr;
-vCursor        *gCursor = nullptr;
-vMenuGame      *gMenuGame = nullptr;
-vMenuEditor    *gMenuEditor = nullptr;
-vEditor        *gEditor = nullptr;
-vSettings      *gSet = nullptr;
-vGUI           *gGUI = nullptr;
-vConsole       *gConsole = nullptr;
-vMenuMain      *gMenuMain = nullptr;
-vMenuOptions   *gMenuOptions = nullptr;
+lCamera        *gCamera = nullptr;
+lCursor        *gCursor = nullptr;
+lMenuGame      *gMenuGame = nullptr;
+lMenuEditor    *gMenuEditor = nullptr;
+lEditor        *gEditor = nullptr;
+lSettings      *gSet = nullptr;
+lGUI           *gGUI = nullptr;
+lConsole       *gConsole = nullptr;
+lMenuMain      *gMenuMain = nullptr;
+lMenuOptions   *gMenuOptions = nullptr;
 
-vWindowVariables   *gWindowVars = nullptr;
+lMenuConfirmExit    *gMenuConfirmExit = nullptr;
+lWindowVariables    *gWindowVars = nullptr;

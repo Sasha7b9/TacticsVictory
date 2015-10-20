@@ -7,11 +7,11 @@
 #include "GUI/Elements/Image.h"
 
 
-vCursor::vCursor() : Object(gContext)
+lCursor::lCursor() : Object(gContext)
 {
     cursor = new Cursor(gContext);
 
-    vImage image(50, 50);
+    lImage image(50, 50);
 
     image.Clear({0.0f, 0.0f, 1.0f, 1.0f});
 
@@ -19,25 +19,25 @@ vCursor::vCursor() : Object(gContext)
     gUI->SetCursor(cursor);
     cursor->SetPosition(gGraphics->GetWidth() / 2, gGraphics->GetHeight() / 2);
 
-    shapes = new vCursorShapes();
+    shapes = new lCursorShapes();
 }
 
-void vCursor::Show()
+void lCursor::Show()
 {
     hidden = false;
 }
 
-void vCursor::Hide()
+void lCursor::Hide()
 {
     hidden = true;
 }
 
-SharedPtr<Cursor> vCursor::GetCursor()
+SharedPtr<Cursor> lCursor::GetCursor()
 {
     return cursor;
 }
 
-void vCursor::Update(float dT)
+void lCursor::Update(float dT)
 {
     
     const float speed = 500.0f;
@@ -52,7 +52,7 @@ void vCursor::Update(float dT)
 
     if(hidden)
     {
-        SharedPtr<vImage> image(new vImage(1, 1));
+        SharedPtr<lImage> image(new lImage(1, 1));
         cursor->DefineShape("Normal", image->GetImage(), {0, 0, image->GetImage()->GetWidth(), image->GetImage()->GetHeight()}, {0, 0});
     }
     else
@@ -124,17 +124,17 @@ void vCursor::Update(float dT)
         {
             type = selected ? TypeCursor_Selected : TypeCursor_Normal;
         }
-        SharedPtr<vImage> image = shapes->GetShape(type, type <= TypeCursor_Selected ? (int)(angle0) : numFrame);
+        SharedPtr<lImage> image = shapes->GetShape(type, type <= TypeCursor_Selected ? (int)(angle0) : numFrame);
         cursor->DefineShape("Normal", image->GetImage(), {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
     }
 }
 
-void vCursor::SetNormal()
+void lCursor::SetNormal()
 {
     selected = false;
 }
 
-void vCursor::SetSelected()
+void lCursor::SetSelected()
 {
     selected = true;
 }

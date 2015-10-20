@@ -13,18 +13,18 @@ using Urho3D::C_BOTTOMRIGHT;
 using Urho3D::C_BOTTOMLEFT;
 
 
-bool operator ==(const vTerrainBlock::MapPlaneKey& keyleft, const vTerrainBlock::MapPlaneKey& keyRight)
+bool operator ==(const lTerrainBlock::MapPlaneKey& keyleft, const lTerrainBlock::MapPlaneKey& keyRight)
 {
     return keyleft.d0 == keyRight.d0 && keyleft.d1 == keyRight.d1 && keyleft.d2 == keyRight.d2;
 }
 
-bool operator ==(const vTerrainBlock::MapCornerKey& keyLeft, const vTerrainBlock::MapCornerKey& keyRight)
+bool operator ==(const lTerrainBlock::MapCornerKey& keyLeft, const lTerrainBlock::MapCornerKey& keyRight)
 {
     return keyLeft.dLeft == keyRight.dLeft && keyLeft.dTop == keyRight.dTop && keyLeft.dTopLeft == keyRight.dTopLeft && keyLeft.dDiagLeft == keyRight.dDiagLeft && keyLeft.dDiagTop == keyRight.dDiagTop;
 }
 
 
-vTerrainBlock::vTerrainBlock(Vector<Vector<float> > &eMap, const Vector3 &shift_) :
+lTerrainBlock::lTerrainBlock(Vector<Vector<float> > &eMap, const Vector3 &shift_) :
     Object(gContext),
     shift(shift_)
 {
@@ -40,7 +40,7 @@ vTerrainBlock::vTerrainBlock(Vector<Vector<float> > &eMap, const Vector3 &shift_
     Rebuild(eMap);
 }
 
-void vTerrainBlock::Rebuild(Vector<Vector<float>> &map_)
+void lTerrainBlock::Rebuild(Vector<Vector<float>> &map_)
 {
     float timeStart = gTime->GetElapsedTime();
     SAFE_DELETE_ARRAY(bufVert);
@@ -124,33 +124,33 @@ void vTerrainBlock::Rebuild(Vector<Vector<float>> &map_)
     LOGINFOF("%f ms", (gTime->GetElapsedTime() - timeStart) * 1000.0f);
 }
 
-vTerrainBlock::~vTerrainBlock()
+lTerrainBlock::~lTerrainBlock()
 {
     SAFE_DELETE_ARRAY(bufVert);
     SAFE_DELETE_ARRAY(bufInd);
 }
 
-void vTerrainBlock::PushNormal(const Vector3 &normal)
+void lTerrainBlock::PushNormal(const Vector3 &normal)
 {
     vertexes.Push(normal.x_);
     vertexes.Push(normal.y_);
     vertexes.Push(normal.z_);
 }
 
-void vTerrainBlock::PushCoord(const Vector3 &coord)
+void lTerrainBlock::PushCoord(const Vector3 &coord)
 {
     vertexes.Push(coord.x_ + shift.x_);
     vertexes.Push(coord.y_ + shift.y_);
     vertexes.Push(coord.z_ + shift.z_);
 }
 
-void vTerrainBlock::PushTexCoord(float x, float y)
+void lTerrainBlock::PushTexCoord(float x, float y)
 {
     vertexes.Push(x);
     vertexes.Push(y);
 }
 
-void vTerrainBlock::AddPlane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3, float dTex)
+void lTerrainBlock::AddPlane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3, float dTex)
 {
     uint startIndex = vertexes.Size() / 8;
 
@@ -195,7 +195,7 @@ void vTerrainBlock::AddPlane(const Vector3 &p0, const Vector3 &p1, const Vector3
     }
 }
 
-void vTerrainBlock::AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, float dTex)
+void lTerrainBlock::AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, float dTex)
 {
     if(p0 == p1 || p1 == p2 || p2 == p0)
     {
@@ -225,7 +225,7 @@ void vTerrainBlock::AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vect
     bufIndClosingTriangles.Push(startIndex + 1U);
 }
 
-void vTerrainBlock::Add2Plane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3)
+void lTerrainBlock::Add2Plane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3)
 {
     float delta = fabs(p0.y_ - p2.y_);
 
@@ -233,7 +233,7 @@ void vTerrainBlock::Add2Plane(const Vector3 &p0, const Vector3 &p1, const Vector
     //AddPlane(p0, p3, p2, p1, delta == 0.0f ? 1.0f : -delta);
 }
 
-void vTerrainBlock::AddPlaneWithSubplanes(uint row, uint col)
+void lTerrainBlock::AddPlaneWithSubplanes(uint row, uint col)
 {
     Add2Plane(CoordCorner(row, col, C_TOPLEFT), CoordCorner(row, col, C_TOPRIGHT), CoordCorner(row, col, C_BOTTOMRIGHT), CoordCorner(row, col, C_BOTTOMLEFT));
 
@@ -251,12 +251,12 @@ void vTerrainBlock::AddPlaneWithSubplanes(uint row, uint col)
     }
 }
 
-float vTerrainBlock::HeightCell(uint row, uint col)
+float lTerrainBlock::HeightCell(uint row, uint col)
 {
     return (float)map[row][col];
 }
 
-void vTerrainBlock::AddSidePlane(uint row, uint col, Direction dir)
+void lTerrainBlock::AddSidePlane(uint row, uint col, Direction dir)
 {
     if(dir == DIR_UP)
     {
@@ -274,12 +274,12 @@ void vTerrainBlock::AddSidePlane(uint row, uint col, Direction dir)
     }
 }
 
-void vTerrainBlock::AddUpPlane(uint row, uint col)
+void lTerrainBlock::AddUpPlane(uint row, uint col)
 {
     Add2Plane(CoordCorner(row - 1, col, C_BOTTOMLEFT), CoordCorner(row - 1, col, C_BOTTOMRIGHT), CoordCorner(row, col, C_TOPRIGHT), CoordCorner(row, col, C_TOPLEFT));
 }
 
-void vTerrainBlock::AddLeftPlane(uint row, uint col)
+void lTerrainBlock::AddLeftPlane(uint row, uint col)
 {
     Add2Plane(CoordCorner(row, col - 1, C_BOTTOMRIGHT), CoordCorner(row, col - 1, C_TOPRIGHT), CoordCorner(row, col, C_TOPLEFT), CoordCorner(row, col, C_BOTTOMLEFT));
 }
@@ -295,7 +295,7 @@ void vTerrainBlock::AddLeftPlane(uint row, uint col)
 #define PUSH_CORNERS(dLeft, dTopLeft, dTop, dDiagLeft, dDiagTop, dRow00, dCol00, cor00, dRow01, dCol01, cor01, dRow10, dCol10, cor10, dRow11, dCol11, cor11) \
     mapCornerTopLeft[MapCornerKey(dLeft, dTopLeft, dTop, dDiagLeft, dDiagTop)] = MapCornerValue(dRow00, dCol00, cor00, dRow01, dCol01, cor01, dRow10, dCol10, cor10, dRow11, dCol11, cor11);
 
-void vTerrainBlock::PrepareHashMaps()
+void lTerrainBlock::PrepareHashMaps()
 {
     const float delta = 0.1f;
 
@@ -461,7 +461,7 @@ void vTerrainBlock::PrepareHashMaps()
 #define H_LEFT_EQUALS   HEIGHT_LEFT == height
 
 
-Vector3 vTerrainBlock::CoordCorner(uint row, uint col, Corner corner)
+Vector3 lTerrainBlock::CoordCorner(uint row, uint col, Corner corner)
 {
     float height = HeightCell(row, col);
 
@@ -542,7 +542,7 @@ Vector3 vTerrainBlock::CoordCorner(uint row, uint col, Corner corner)
     AddTriangle(CORN(0, 0, C_TOPLEFT), CORN(dX0, dY0, dir0), CORN(dX1, dY1, dir1), 1.0f);
 
 
-void vTerrainBlock::AddTopLeftCornerPlanes(uint row, uint col)
+void lTerrainBlock::AddTopLeftCornerPlanes(uint row, uint col)
 {
     float height = HeightCell(row, col);
 
@@ -562,10 +562,10 @@ void vTerrainBlock::AddTopLeftCornerPlanes(uint row, uint col)
     }
 }
 
-float vTerrainBlock::GetIntersection(Ray &ray, vPlane &plane, bool &isClosingTriangleOut)
+float lTerrainBlock::GetIntersection(Ray &ray, lPlane &plane, bool &isClosingTriangleOut)
 {
     float distPlane = GetIntersectionPlane(ray, plane);
-    vTriangle triangle;
+    lTriangle triangle;
     float distClosing = GetIntersectionClosingTriangle(ray, triangle);
 
     float distance = Urho3D::M_INFINITY;
@@ -589,7 +589,7 @@ float vTerrainBlock::GetIntersection(Ray &ray, vPlane &plane, bool &isClosingTri
     return distance;
 }
 
-float vTerrainBlock::GetIntersectionPlane(Ray &ray, vPlane &plane)
+float lTerrainBlock::GetIntersectionPlane(Ray &ray, lPlane &plane)
 {
     float distance = Urho3D::M_INFINITY;
 
@@ -598,7 +598,7 @@ float vTerrainBlock::GetIntersectionPlane(Ray &ray, vPlane &plane)
         uint numPlanes = bufIndPlanes.Size() / 4;
 
         Vector<float> distances;
-        Vector<vPlane> planes;
+        Vector<lPlane> planes;
 
         for(uint i = 0; i < numPlanes; i++)
         {
@@ -645,7 +645,7 @@ float vTerrainBlock::GetIntersectionPlane(Ray &ray, vPlane &plane)
     return distance;
 }
 
-float vTerrainBlock::GetIntersectionClosingTriangle(Ray &ray, vTriangle &triangle)
+float lTerrainBlock::GetIntersectionClosingTriangle(Ray &ray, lTriangle &triangle)
 {
     float distance = Urho3D::M_INFINITY;
 
@@ -654,7 +654,7 @@ float vTerrainBlock::GetIntersectionClosingTriangle(Ray &ray, vTriangle &triangl
         uint numTriangles = bufIndClosingTriangles.Size() / 3;
 
         Vector<float> distances;
-        Vector<vTriangle> triangles;
+        Vector<lTriangle> triangles;
 
         for(uint i = 0; i < numTriangles; i++)
         {
@@ -693,7 +693,7 @@ float vTerrainBlock::GetIntersectionClosingTriangle(Ray &ray, vTriangle &triangl
     return distance;
 }
 
-void vTerrainBlock::CalculateBoundingBox()
+void lTerrainBlock::CalculateBoundingBox()
 {
     boundingBox.Clear();
 

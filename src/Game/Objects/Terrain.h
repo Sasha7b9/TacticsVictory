@@ -1,24 +1,24 @@
 #pragma once
 
 
-class vTerrain : public Object
+class lTerrain : public Object
 {
-    OBJECT(vTerrain);
+    OBJECT(lTerrain);
 
 public:
-    vTerrain(Vector<Vector<float> > &map);
+    lTerrain(Vector<Vector<float> > &map);
 
-    vPlane GetIntersection(Ray &ray);
+    lPlane GetIntersection(Ray &ray);
 
     void SetHeight(uint row, uint col, float height);
 
 private:
-    vTerrain& operator=(const vTerrain&)
+    lTerrain& operator=(const lTerrain&)
     {};
 
     const uint sizeBlock = 50;
     Vector<Vector<float> >map;
-    Vector<Vector<SharedPtr<vTerrainBlock>>> blocks;
+    Vector<Vector<SharedPtr<lTerrainBlock>>> blocks;
     uint numBlocksInZ = 0;
     uint numBlocksInX = 0;
 

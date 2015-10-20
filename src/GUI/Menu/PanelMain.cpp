@@ -7,8 +7,8 @@
 #include "GUI/Logic/LineTranslator2D.h"
 
 
-vPanelMain::vPanelMain(Context *context) :
-    vWindow(context)
+lPanelMain::lPanelMain(Context *context) :
+    lWindow(context)
 {
     SetName("PanelMain");
 
@@ -19,27 +19,27 @@ vPanelMain::vPanelMain(Context *context) :
     IntVector2 posStart = {SET::PANEL::MAP::WIDTH - 1, gGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAIN::HEIGHT + 1};
     IntVector2 posFinish = {SET::PANEL::MAP::WIDTH - 1, gGraphics->GetHeight()};
 
-    translator = new vLineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), vLineTranslator2D::State_PointStart);
+    translator = new lLineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), lLineTranslator2D::State_PointStart);
 }
 
-void vPanelMain::RegisterObject(Context *context)
+void lPanelMain::RegisterObject(Context *context)
 {
-    context->RegisterFactory<vPanelMain>("UI");
+    context->RegisterFactory<lPanelMain>("UI");
 
-    COPY_BASE_ATTRIBUTES(vWindow);
+    COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-void vPanelMain::Update(float dT)
+void lPanelMain::Update(float dT)
 {
     SetPosition(translator->Update(dT));
 }
 
-void vPanelMain::Toggle()
+void lPanelMain::Toggle()
 {
     translator->Toggle();
 }
 
-void vPanelMain::AddTab(SharedPtr<vTab> tab)
+void lPanelMain::AddTab(SharedPtr<lTab> tab)
 {
     static const int x0 = 10;
     static const int y0 = 4;
@@ -61,7 +61,7 @@ void vPanelMain::AddTab(SharedPtr<vTab> tab)
 
     tabs.Push(tab);
 
-    SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(vPanelMain, HandleToggedTitle));
+    SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(lPanelMain, HandleToggedTitle));
 
     AddChild(tab);
 
@@ -69,9 +69,9 @@ void vPanelMain::AddTab(SharedPtr<vTab> tab)
     tab->SetFixedSize(GetWidth(), GetHeight() - y0 - tab->buttonTitle->GetHeight() + 1);
 }
 
-void vPanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
+void lPanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
 {
-    vButtonToggled *button = (vButtonToggled*)eventData[Urho3D::Toggled::P_ELEMENT].GetPtr();
+    lButtonToggled *button = (lButtonToggled*)eventData[Urho3D::Toggled::P_ELEMENT].GetPtr();
     bool state = (bool)eventData[Urho3D::Toggled::P_STATE].GetBool();
 
     if(state)
@@ -82,7 +82,7 @@ void vPanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
             {
                 UnsubscribeFromEvent(tab->buttonTitle, Urho3D::E_TOGGLED);
                 tab->buttonTitle->SetChecked(false);
-                SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(vPanelMain, HandleToggedTitle));
+                SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(lPanelMain, HandleToggedTitle));
             }
         }
     }

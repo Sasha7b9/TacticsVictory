@@ -19,15 +19,16 @@ extern PhysicsWorld     *gPhysicsWorld;
 extern Font             *gFont;
 extern Time             *gTime;
 
-extern vCamera             *gCamera;
-extern vCursor             *gCursor;
-extern vEditor             *gEditor;
-extern vSettings           *gSet;
+extern lCamera             *gCamera;
+extern lCursor             *gCursor;
+extern lEditor             *gEditor;
+extern lSettings           *gSet;
 
-extern vGUI                *gGUI;
-extern vConsole            *gConsole;
-extern vWindowVariables    *gWindowVars;
-extern vMenuMain           *gMenuMain;
-extern vMenuGame           *gMenuGame;
-extern vMenuEditor         *gMenuEditor;
-extern vMenuOptions        *gMenuOptions;
+extern lGUI                *gGUI;
+extern lConsole            *gConsole;
+extern lWindowVariables    *gWindowVars;
+extern lMenuMain           *gMenuMain;
+extern lMenuGame           *gMenuGame;
+extern lMenuEditor         *gMenuEditor;
+extern lMenuOptions        *gMenuOptions;
+extern lMenuConfirmExit    *gMenuConfirmExit;

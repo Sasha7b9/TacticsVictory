@@ -1,7 +1,7 @@
 #pragma once
 
 
-class vCamera
+class lCamera
 {
 public:
     enum Direction
@@ -15,7 +15,7 @@ public:
         Direction_RotateYAW,
         Direction_RotatePITCH
     };
-    vCamera();
+    lCamera();
 
     void RotateOn(float yaw, float pitch);
     void Move(float time);

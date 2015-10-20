@@ -4,12 +4,12 @@
 #include "GUI/Elements/Window.h"
 
 
-class vConsole : public vWindow
+class lConsole : public lWindow
 {
-    OBJECT(vConsole);
+    OBJECT(lConsole);
 
 public:
-    vConsole(Context *context);
+    lConsole(Context *context);
 
     void Toggle();
     void HandleFinishedText(StringHash eventType, VariantMap& eventData);

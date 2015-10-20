@@ -6,7 +6,7 @@
 #include "GUI/Elements/Label.h"
 
 
-vDropDownListWithTextAndButton::vDropDownListWithTextAndButton(char *text_, int widthText, int widthDDList) :
+lDropDownListWithTextAndButton::lDropDownListWithTextAndButton(char *text_, int widthText, int widthDDList) :
     UIElement(gContext)
 {
     SharedPtr<Window> window(new Window(gContext));
@@ -16,7 +16,7 @@ vDropDownListWithTextAndButton::vDropDownListWithTextAndButton(char *text_, int 
 
     window->SetLayout(Urho3D::LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
 
-    SharedPtr<vLabel> text(vLabel::Create(text_, 15, widthText));
+    SharedPtr<lLabel> text(lLabel::Create(text_, 15, widthText));
     text->SetStyle("Window");
     text->SetFixedHeight(SET::MENU::TEXT::HEIGHT);
     window->AddChild(text);
@@ -31,28 +31,28 @@ vDropDownListWithTextAndButton::vDropDownListWithTextAndButton(char *text_, int 
     ddList->SetResizePopup(true);
     window->AddChild(ddList);
 
-    SubscribeToEvent(ddList, E_ITEMSELECTED, HANDLER(vDropDownListWithTextAndButton, HandleItemSelected));
-    SubscribeToEvent(ddList, E_HOVERBEGIN, HANDLER(vDropDownListWithTextAndButton, HandleHoverBegin));
-    SubscribeToEvent(ddList, E_HOVEREND, HANDLER(vDropDownListWithTextAndButton, HandleHoverEnd));
+    SubscribeToEvent(ddList, E_ITEMSELECTED, HANDLER(lDropDownListWithTextAndButton, HandleItemSelected));
+    SubscribeToEvent(ddList, E_HOVERBEGIN, HANDLER(lDropDownListWithTextAndButton, HandleHoverBegin));
+    SubscribeToEvent(ddList, E_HOVEREND, HANDLER(lDropDownListWithTextAndButton, HandleHoverEnd));
 
     buttonLeft = new Button(gContext);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
-    SubscribeToEvent(buttonLeft, E_PRESSED, HANDLER(vDropDownListWithTextAndButton, HandleButtonDown));
-    SubscribeToEvent(buttonLeft, E_HOVERBEGIN, HANDLER(vDropDownListWithTextAndButton, HandleHoverBegin));
-    SubscribeToEvent(buttonLeft, E_HOVEREND, HANDLER(vDropDownListWithTextAndButton, HandleHoverEnd));
+    SubscribeToEvent(buttonLeft, E_PRESSED, HANDLER(lDropDownListWithTextAndButton, HandleButtonDown));
+    SubscribeToEvent(buttonLeft, E_HOVERBEGIN, HANDLER(lDropDownListWithTextAndButton, HandleHoverBegin));
+    SubscribeToEvent(buttonLeft, E_HOVEREND, HANDLER(lDropDownListWithTextAndButton, HandleHoverEnd));
 
     buttonRight = new Button(gContext);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
-    SubscribeToEvent(buttonRight, E_PRESSED, HANDLER(vDropDownListWithTextAndButton, HandleButtonDown));
-    SubscribeToEvent(buttonRight, E_HOVERBEGIN, HANDLER(vDropDownListWithTextAndButton, HandleHoverBegin));
-    SubscribeToEvent(buttonRight, E_HOVEREND, HANDLER(vDropDownListWithTextAndButton, HandleHoverEnd));
+    SubscribeToEvent(buttonRight, E_PRESSED, HANDLER(lDropDownListWithTextAndButton, HandleButtonDown));
+    SubscribeToEvent(buttonRight, E_HOVERBEGIN, HANDLER(lDropDownListWithTextAndButton, HandleHoverBegin));
+    SubscribeToEvent(buttonRight, E_HOVEREND, HANDLER(lDropDownListWithTextAndButton, HandleHoverEnd));
 
     SetMinSize(window->GetWidth(), window->GetHeight());
 }
 
-void vDropDownListWithTextAndButton::SetSelection(uint index)
+void lDropDownListWithTextAndButton::SetSelection(uint index)
 {
     ddList->SetSelection(index);
     VariantMap& eventData = GetEventDataMap();
@@ -61,12 +61,12 @@ void vDropDownListWithTextAndButton::SetSelection(uint index)
     SendEvent(E_ITEMSELECTED, eventData);
 }
 
-void vDropDownListWithTextAndButton::AddItem(char *text)
+void lDropDownListWithTextAndButton::AddItem(char *text)
 {
-    ddList->AddItem(vLabel::Create(text, 16));
+    ddList->AddItem(lLabel::Create(text, 16));
 }
 
-void vDropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& eventData_)
+void lDropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& eventData_)
 {
     VariantMap &eventData = GetEventDataMap();
     eventData[Urho3D::ItemSelected::P_ELEMENT] = this;
@@ -74,7 +74,7 @@ void vDropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& 
     SendEvent(E_ITEMSELECTED, eventData);
 }
 
-void vDropDownListWithTextAndButton::HandleButtonDown(StringHash, VariantMap& eventData)
+void lDropDownListWithTextAndButton::HandleButtonDown(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Urho3D::Pressed::P_ELEMENT].GetPtr();
 
@@ -98,9 +98,9 @@ void vDropDownListWithTextAndButton::HandleButtonDown(StringHash, VariantMap& ev
     SendEvent(E_ITEMSELECTED, eventData);
 }
 
-SharedPtr<vDropDownListWithTextAndButton> vDropDownListWithTextAndButton::Create(Window *window, char *text, int widthText, int widthDDList, int numItems, char *items[])
+SharedPtr<lDropDownListWithTextAndButton> lDropDownListWithTextAndButton::Create(Window *window, char *text, int widthText, int widthDDList, int numItems, char *items[])
 {
-    SharedPtr<vDropDownListWithTextAndButton> ddl(new vDropDownListWithTextAndButton(text, widthText, widthDDList));
+    SharedPtr<lDropDownListWithTextAndButton> ddl(new lDropDownListWithTextAndButton(text, widthText, widthDDList));
     for(int i = 0; i < numItems; i++)
     {
         ddl->AddItem(items[i]);
@@ -110,12 +110,12 @@ SharedPtr<vDropDownListWithTextAndButton> vDropDownListWithTextAndButton::Create
     return ddl;
 }
 
-void vDropDownListWithTextAndButton::HandleHoverBegin(StringHash, VariantMap&)
+void lDropDownListWithTextAndButton::HandleHoverBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
-void vDropDownListWithTextAndButton::HandleHoverEnd(StringHash, VariantMap&)
+void lDropDownListWithTextAndButton::HandleHoverEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
 }

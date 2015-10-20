@@ -200,47 +200,48 @@ using Urho3D::Corner;
 
 #include "defines.h"
 
-class vButton;
-class vButtonToggled;
+class lButton;
+class lButtonToggled;
 
-class vCamera;
-class vConsole;
-class vCursor;
-class vCursorShapes;
+class lCamera;
+class lConsole;
+class lCursor;
+class lCursorShapes;
 
-class vDropDownListWithTextAndButton;
+class lDropDownListWithTextAndButton;
 
-class vEditor;
+class lEditor;
 
-class vGovernorFloat;
-class vGUI;
+class lGovernorFloat;
+class lGUI;
 
-class vImage;
+class lImage;
 
-class vLabel;
-class vLineTranslator1D;
-class vLineTranslator2D;
+class lLabel;
+class lLineTranslator1D;
+class lLineTranslator2D;
 
-class vMenu;
-class vMenuGame;
-class vMenuEditor;
-class vMenuMain;
-class vMenuOptions;
+class lMenu;
+class lMenuConfirmExit;
+class lMenuEditor;
+class lMenuGame;
+class lMenuMain;
+class lMenuOptions;
 
-class vPanelBottom;
-class vPanelMain;
-class vPanelMap;
-class vPlane;
+class lPanelBottom;
+class lPanelMain;
+class lPanelMap;
+class lPlane;
 
-class vSettings;
-class vSliderWithTextAndButtons;
+class lSettings;
+class lSliderWithTextAndButtons;
 
-class vTab;
-class vTerrain;
-class vTerrainBlock;
-class vTriangle;
+class lTab;
+class lTerrain;
+class lTerrainBlock;
+class lTriangle;
 
-class vWindowVariables;
+class lWindowVariables;
 
 #include "SettingsTypes.h"
 #include "GlobalVars.h"

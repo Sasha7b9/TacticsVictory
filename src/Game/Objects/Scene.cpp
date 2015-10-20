@@ -34,8 +34,8 @@ void tvScene::Create()
     Vector<Vector<float> > level = vLevel::Load("input.txt");
     //Vector<Vector<float> > level = vLevel::CreateRandom(100, 100);
 
-    SharedPtr<vTerrainBlock> terrain;
-    terrain = new vTerrainBlock(level);
+    SharedPtr<lTerrainBlock> terrain;
+    terrain = new lTerrainBlock(level);
 
     SharedPtr<Node> lightNode;
     lightNode = gScene->CreateChild("LigthNode");

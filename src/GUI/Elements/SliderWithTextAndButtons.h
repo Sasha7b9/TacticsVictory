@@ -4,18 +4,18 @@
 #include "GUI/Elements/SliderInt.h"
 
 
-class vSliderWithTextAndButtons : public UIElement
+class lSliderWithTextAndButtons : public UIElement
 {
-    OBJECT(vSliderWithTextAndButtons);
+    OBJECT(lSliderWithTextAndButtons);
 
 public:
-    vSliderWithTextAndButtons(UIElement *uielement, char *text, int min, int max);
+    lSliderWithTextAndButtons(UIElement *uielement, char *text, int min, int max);
 
     void SetRange(int min, int max);
     void SetValue(int value);
 
 private:
-    vSliderWithTextAndButtons& operator=(const vSliderWithTextAndButtons&) {};
+    lSliderWithTextAndButtons& operator=(const lSliderWithTextAndButtons&) {};
 
     void HandleSliderIntChanged(StringHash eventType, VariantMap& eventData);
     void HandleButtonDown(StringHash eventType, VariantMap& eventData);

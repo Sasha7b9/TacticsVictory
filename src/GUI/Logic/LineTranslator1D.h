@@ -1,9 +1,9 @@
 #pragma once
 
 
-class vLineTranslator1D : public Object
+class lLineTranslator1D : public Object
 {
-    OBJECT(vLineTranslator1D);
+    OBJECT(lLineTranslator1D);
 
 public:
 
@@ -15,13 +15,13 @@ public:
         State_MoveToStart
     };
 
-    vLineTranslator1D(int start, int finish, float speed, State startPosition);
+    lLineTranslator1D(int start, int finish, float speed, State startPosition);
 
     int Update(float dT);
     void Toggle();
 
 private:
-    vLineTranslator1D& operator=(const vLineTranslator1D&)
+    lLineTranslator1D& operator=(const lLineTranslator1D&)
     {};
 
     float position = 0.0f;

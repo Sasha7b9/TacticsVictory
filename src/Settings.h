@@ -1,6 +1,6 @@
 #pragma once
 
-class vSettings
+class lSettings
 {
 public:
     bool Load();

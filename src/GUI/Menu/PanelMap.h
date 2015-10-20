@@ -4,12 +4,12 @@
 #include "GUI/Elements/Window.h"
 
 
-class vPanelMap : public vWindow
+class lPanelMap : public lWindow
 {
-    OBJECT(vPanelMap);
+    OBJECT(lPanelMap);
 
 public:
-    vPanelMap(Context *context);
+    lPanelMap(Context *context);
 
     virtual void Update(float timeStep);
 
@@ -18,12 +18,12 @@ public:
     void Toggle();
 
 private:
-    vPanelMap& operator=(const vPanelMap&)
+    lPanelMap& operator=(const lPanelMap&)
     {};
 
     Vector<Vector<float> > map;
-    SharedPtr<vLineTranslator2D> translator;
-    SharedPtr<vImage> imageMap;
+    SharedPtr<lLineTranslator2D> translator;
+    SharedPtr<lImage> imageMap;
     int x0 = 0;
     int y0 = 0;
     float scale = 0.0f;

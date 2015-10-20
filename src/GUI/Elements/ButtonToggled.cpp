@@ -5,18 +5,18 @@
 #include "GUI/Elements/Label.h"
 
 
-vButtonToggled::vButtonToggled(Context *context) :
+lButtonToggled::lButtonToggled(Context *context) :
     CheckBox(context)
 {
     SetStyleAuto();
-    label = vLabel::Create("", SET::MENU::FONT::SIZE::ITEM);
+    label = lLabel::Create("", SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 }
 
-vButtonToggled::vButtonToggled(UIElement * uielement, char * text, int width, int height) :
+lButtonToggled::lButtonToggled(UIElement * uielement, char * text, int width, int height) :
     CheckBox(gContext)
 {
-    label = vLabel::Create(text, SET::MENU::FONT::SIZE::ITEM);
+    label = lLabel::Create(text, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 
     if(uielement)
@@ -42,14 +42,14 @@ vButtonToggled::vButtonToggled(UIElement * uielement, char * text, int width, in
     }
 }
 
-void vButtonToggled::RegisterObject(Context *context)
+void lButtonToggled::RegisterObject(Context *context)
 {
-    context->RegisterFactory<vButtonToggled>("UI");
+    context->RegisterFactory<lButtonToggled>("UI");
 
     COPY_BASE_ATTRIBUTES(CheckBox);
 }
 
-void vButtonToggled::SetText(char *text)
+void lButtonToggled::SetText(char *text)
 {
     label->SetNewText(text);
 }

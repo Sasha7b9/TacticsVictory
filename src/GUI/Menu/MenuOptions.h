@@ -10,40 +10,38 @@ enum
 };
 
 
-class vMenuOptions : public vWindow
+class lMenuOptions : public lWindow
 {
-    OBJECT(vMenuOptions)
+    OBJECT(lMenuOptions)
 
 public:
-    vMenuOptions(Context *context);
+    lMenuOptions(Context *context);
 
     static void RegisterObject(Context *context);
 
 private:
-    vMenuOptions& operator=(const vMenuOptions&) {};
+    lMenuOptions& operator=(const lMenuOptions&) {};
 
     void HandleItemSelected(StringHash eventType, VariantMap& eventData);
     void HandleOnSlider(StringHash evenType, VariantMap& eventData);
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
-    void HandleHoverBegin(StringHash eventType, VariantMap& eventData);
-    void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
 
     HashMap<Slider*, uint> mapSlidersActions;
 
-    SharedPtr<vSliderWithTextAndButtons> sliderBrightness;
-    SharedPtr<vSliderWithTextAndButtons> sliderMaxOccluderTriangles;
-    SharedPtr<vSliderWithTextAndButtons> sliderVolume;
+    SharedPtr<lSliderWithTextAndButtons> sliderBrightness;
+    SharedPtr<lSliderWithTextAndButtons> sliderMaxOccluderTriangles;
+    SharedPtr<lSliderWithTextAndButtons> sliderVolume;
 
-    SharedPtr<vDropDownListWithTextAndButton> ddlLanguage;
-    SharedPtr<vDropDownListWithTextAndButton> ddlTextureQuality;
-    SharedPtr<vDropDownListWithTextAndButton> ddlMaterialQuality;
-    SharedPtr<vDropDownListWithTextAndButton> ddlTextureAnisotropy;
-    SharedPtr<vDropDownListWithTextAndButton> ddlShadowsEnabled;
-    SharedPtr<vDropDownListWithTextAndButton> ddlSpecularLighting;
-    SharedPtr<vDropDownListWithTextAndButton> ddlShadowMapSize;
-    SharedPtr<vDropDownListWithTextAndButton> ddlShadowQuality;
-    SharedPtr<vDropDownListWithTextAndButton> ddlDynamicInstancing;
+    SharedPtr<lDropDownListWithTextAndButton> ddlLanguage;
+    SharedPtr<lDropDownListWithTextAndButton> ddlTextureQuality;
+    SharedPtr<lDropDownListWithTextAndButton> ddlMaterialQuality;
+    SharedPtr<lDropDownListWithTextAndButton> ddlTextureAnisotropy;
+    SharedPtr<lDropDownListWithTextAndButton> ddlShadowsEnabled;
+    SharedPtr<lDropDownListWithTextAndButton> ddlSpecularLighting;
+    SharedPtr<lDropDownListWithTextAndButton> ddlShadowMapSize;
+    SharedPtr<lDropDownListWithTextAndButton> ddlShadowQuality;
+    SharedPtr<lDropDownListWithTextAndButton> ddlDynamicInstancing;
     PODVector<int> shadowMapSizes;
-    SharedPtr<vButton> buttonClose;
+    SharedPtr<lButton> buttonClose;
     IntVector2 dragBeginPosition;
 };

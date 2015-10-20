@@ -11,18 +11,18 @@
 #include "GUI/Elements/DropDownListWithTextAndButton.h"
 
 
-vMenuOptions::vMenuOptions(Context *context) :
-    vWindow(context)
+lMenuOptions::lMenuOptions(Context *context) :
+    lWindow(context)
 {
     SetLayout(Urho3D::LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
     SetName("Options menu");
 
-    SharedPtr<vLabel> label(vLabel::Create("Options", 20));
+    SharedPtr<lLabel> label(lLabel::Create("Options", 20));
     AddChild(label);
 
 #define CREATE_SWTAB(name, text, min, max, startIndex)                                  \
-    name = new vSliderWithTextAndButtons(this, text, min, max);                        \
-    SubscribeToEvent(name, E_SLIDERINTCHANGED, HANDLER(vMenuOptions, HandleOnSlider)); \
+    name = new lSliderWithTextAndButtons(this, text, min, max);                        \
+    SubscribeToEvent(name, E_SLIDERINTCHANGED, HANDLER(lMenuOptions, HandleOnSlider)); \
     name->SetValue(startIndex);
 
     CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, gSet->GetInt(TV_BRIGHTNESS));
@@ -35,8 +35,8 @@ vMenuOptions::vMenuOptions(Context *context) :
     int width1 = SET::MENU::DDLIST::WIDTH;
 
 #define CREATE_DDLWTAB(name, text, num, itms, startIndex)   \
-    name = vDropDownListWithTextAndButton::Create(this, text, width0, width1, num, itms);  \
-    SubscribeToEvent(name, E_ITEMSELECTED, HANDLER(vMenuOptions, HandleItemSelected));     \
+    name = lDropDownListWithTextAndButton::Create(this, text, width0, width1, num, itms);  \
+    SubscribeToEvent(name, E_ITEMSELECTED, HANDLER(lMenuOptions, HandleItemSelected));     \
     name->SetSelection(startIndex);
 
     char *items[] = { "English", "Russian" };
@@ -70,10 +70,8 @@ vMenuOptions::vMenuOptions(Context *context) :
     SharedPtr<UIElement> layout(CreateChild<UIElement>());
     layout->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_CENTER);
 
-    buttonClose = new vButton(0, "Close", 100);
-    SubscribeToEvent(buttonClose, E_RELEASED, HANDLER(vMenuOptions, HandleButtonRelease));
-    SubscribeToEvent(buttonClose, E_HOVERBEGIN, HANDLER(vMenuOptions, HandleHoverBegin));
-    SubscribeToEvent(buttonClose, E_HOVEREND, HANDLER(vMenuOptions, HandleHoverEnd));
+    buttonClose = new lButton(0, "Close", 100);
+    SubscribeToEvent(buttonClose, E_RELEASED, HANDLER(lMenuOptions, HandleButtonRelease));
     layout->AddChild(buttonClose);
     AddChild(layout);
     layout->SetMinHeight(buttonClose->GetHeight());
@@ -89,22 +87,22 @@ vMenuOptions::vMenuOptions(Context *context) :
     label->SetPosition(x, y);
 }
 
-void vMenuOptions::RegisterObject(Context *context)
+void lMenuOptions::RegisterObject(Context *context)
 {
-    context->RegisterFactory<vMenuOptions>("UI");
+    context->RegisterFactory<lMenuOptions>("UI");
 
-    COPY_BASE_ATTRIBUTES(vWindow);
+    COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-void vMenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
+void lMenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 {
-    vDropDownListWithTextAndButton *ddList = (vDropDownListWithTextAndButton*)eventData[Urho3D::ItemSelected::P_ELEMENT].GetPtr();
+    lDropDownListWithTextAndButton *ddList = (lDropDownListWithTextAndButton*)eventData[Urho3D::ItemSelected::P_ELEMENT].GetPtr();
     int index = eventData[Urho3D::ItemSelected::P_SELECTION].GetInt();
 
     if(ddList == ddlLanguage)
     {
         gLocalization->SetLanguage(index == 0 ? "en" : "ru");
-        vLabel::ReloadLanguage();
+        lLabel::ReloadLanguage();
         gSet->SetInt(TV_LANGUAGE, index);
     }
     else if(ddList == ddlTextureQuality)
@@ -147,9 +145,9 @@ void vMenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     }
 }
 
-void vMenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
+void lMenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 {
-    vSliderWithTextAndButtons *slider = (vSliderWithTextAndButtons*)eventData[SliderIntChanged::P_ELEMENT].GetPtr();
+    lSliderWithTextAndButtons *slider = (lSliderWithTextAndButtons*)eventData[SliderIntChanged::P_ELEMENT].GetPtr();
     int value = eventData[SliderIntChanged::P_VALUE].GetInt();
 
     if(slider == sliderMaxOccluderTriangles)
@@ -167,20 +165,10 @@ void vMenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
     }
 }
 
-void vMenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
+void lMenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
     eventData = GetEventDataMap();
     eventData[MenuEvent::P_TYPE] = mapButtonsActions[button];
     SendEvent(E_MENU, eventData);
-}
-
-void vMenuOptions::HandleHoverBegin(StringHash, VariantMap&)
-{
-    gCursor->SetSelected();
-}
-
-void vMenuOptions::HandleHoverEnd(StringHash, VariantMap&)
-{
-    gCursor->SetNormal();
 }

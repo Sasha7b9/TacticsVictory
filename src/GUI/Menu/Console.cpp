@@ -5,8 +5,8 @@
 #include "GUI/Menu/ConsoleParser.h"
 
 
-vConsole::vConsole(Context *context) :
-    vWindow(context)
+lConsole::lConsole(Context *context) :
+    lWindow(context)
 {
     SetVisible(false);
 
@@ -34,10 +34,10 @@ vConsole::vConsole(Context *context) :
     text->SetPosition(0, 0);
     AddChild(text);
 
-    SubscribeToEvent(lineEdit, E_TEXTFINISHED, HANDLER(vConsole, HandleFinishedText));
+    SubscribeToEvent(lineEdit, E_TEXTFINISHED, HANDLER(lConsole, HandleFinishedText));
 }
 
-void vConsole::Toggle()
+void lConsole::Toggle()
 {
    SetVisible(!IsVisible());
    if(IsVisible())
@@ -46,7 +46,7 @@ void vConsole::Toggle()
    }
 }
 
-void vConsole::HandleFinishedText(StringHash, VariantMap&)
+void lConsole::HandleFinishedText(StringHash, VariantMap&)
 {
     String command = lineEdit->GetText();
     if(command.Empty())

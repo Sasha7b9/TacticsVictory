@@ -4,16 +4,21 @@
 #include "GUI/Elements/Window.h"
 
 
-class tvMenuConfirmExit : public vWindow
+class lMenuConfirmExit : public lWindow
 {
-    OBJECT(tvMenuConfirmExit);
+    OBJECT(lMenuConfirmExit);
 
 public:
-    tvMenuConfirmExit(Context *context);
+    lMenuConfirmExit(Context *context);
 
     static void RegisterObject(Context *context);
 
 private:
-    tvMenuConfirmExit& operator=(const tvMenuConfirmExit&)
+    lMenuConfirmExit& operator=(const lMenuConfirmExit&)
     {};
+
+    void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
+
+    SharedPtr<lButton> buttonOk;
+    SharedPtr<lButton> buttonCancel;
 };

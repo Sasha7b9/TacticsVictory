@@ -1,17 +1,17 @@
 #pragma once
 
 
-class vTerrainBlock : public Object
+class lTerrainBlock : public Object
 {
-    OBJECT(vTerrainBlock)
+    OBJECT(lTerrainBlock)
 
 public:
     // NOTE row == 0 and col == 0 arrent added to terrain. From them information for creation of the left and top sides undertakes
-    vTerrainBlock(Vector<Vector<float> > &map, const Vector3 &shift = Vector3::ZERO);
-    ~vTerrainBlock();
+    lTerrainBlock(Vector<Vector<float> > &map, const Vector3 &shift = Vector3::ZERO);
+    ~lTerrainBlock();
 
     // If function return isClosingTriangleOut == true, return distance for inactive triangle
-    float GetIntersection(Ray &ray, vPlane &plane, bool &isClosingTriangleOut);
+    float GetIntersection(Ray &ray, lPlane &plane, bool &isClosingTriangleOut);
     void Rebuild(Vector<Vector<float>> &map_);
 
 private:
@@ -40,8 +40,8 @@ private:
     void AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, float dTex);
     void AddTopLeftCornerPlanes(uint row, uint col);
     void CalculateBoundingBox();
-    float GetIntersectionPlane(Ray &ray, vPlane &plane);
-    float GetIntersectionClosingTriangle(Ray &ray, vTriangle &triangle);
+    float GetIntersectionPlane(Ray &ray, lPlane &plane);
+    float GetIntersectionClosingTriangle(Ray &ray, lTriangle &triangle);
 
     Vector<Vector<float> > map;
     Vector<float> vertexes;         // Здесь будем подготавливать вершины для буфера
@@ -154,5 +154,5 @@ private:
 
     HashMap<MapCornerKey, MapCornerValue> mapCornerTopLeft;
 
-    vTerrainBlock& operator=(const vTerrainBlock&) {};
+    lTerrainBlock& operator=(const lTerrainBlock&) {};
 };

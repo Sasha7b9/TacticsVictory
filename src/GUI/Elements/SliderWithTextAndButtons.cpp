@@ -6,7 +6,7 @@
 #include "GUI/Elements/Label.h"
 
 
-vSliderWithTextAndButtons::vSliderWithTextAndButtons(UIElement *uielement, char *text_, int min, int max) :
+lSliderWithTextAndButtons::lSliderWithTextAndButtons(UIElement *uielement, char *text_, int min, int max) :
     UIElement(gContext)
 {
     SharedPtr<Window> window(new Window(gContext));
@@ -16,29 +16,29 @@ vSliderWithTextAndButtons::vSliderWithTextAndButtons(UIElement *uielement, char 
  
     window->SetLayout(Urho3D::LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
 
-    SharedPtr<vLabel> text(vLabel::Create(text_, 15, SET::MENU::TEXT::WIDTH));
+    SharedPtr<lLabel> text(lLabel::Create(text_, 15, SET::MENU::TEXT::WIDTH));
     window->AddChild(text);
     
     slider = vSliderInt::Create(window, SET::MENU::SLIDER::SIZE);
-    SubscribeToEvent(slider, E_SLIDERINTCHANGED, HANDLER(vSliderWithTextAndButtons, HandleSliderIntChanged));
-    SubscribeToEvent(slider, E_HOVERBEGIN, HANDLER(vSliderWithTextAndButtons, HandleHoverBegin));
-    SubscribeToEvent(slider, E_HOVEREND, HANDLER(vSliderWithTextAndButtons, HandleHoverEnd));
+    SubscribeToEvent(slider, E_SLIDERINTCHANGED, HANDLER(lSliderWithTextAndButtons, HandleSliderIntChanged));
+    SubscribeToEvent(slider, E_HOVERBEGIN, HANDLER(lSliderWithTextAndButtons, HandleHoverBegin));
+    SubscribeToEvent(slider, E_HOVEREND, HANDLER(lSliderWithTextAndButtons, HandleHoverEnd));
 
     buttonLeft = new Button(gContext);
     buttonLeft->SetRepeat(0.25f, 20.0f);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
-    SubscribeToEvent(buttonLeft, E_PRESSED, HANDLER(vSliderWithTextAndButtons, HandleButtonDown));
-    SubscribeToEvent(buttonLeft, E_HOVERBEGIN, HANDLER(vSliderWithTextAndButtons, HandleHoverBegin));
-    SubscribeToEvent(buttonLeft, E_HOVEREND, HANDLER(vSliderWithTextAndButtons, HandleHoverEnd));
+    SubscribeToEvent(buttonLeft, E_PRESSED, HANDLER(lSliderWithTextAndButtons, HandleButtonDown));
+    SubscribeToEvent(buttonLeft, E_HOVERBEGIN, HANDLER(lSliderWithTextAndButtons, HandleHoverBegin));
+    SubscribeToEvent(buttonLeft, E_HOVEREND, HANDLER(lSliderWithTextAndButtons, HandleHoverEnd));
 
     buttonRight = new Button(gContext);
     buttonRight->SetRepeat(0.25f, 20.0f);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
-    SubscribeToEvent(buttonRight, E_PRESSED, HANDLER(vSliderWithTextAndButtons, HandleButtonDown));
-    SubscribeToEvent(buttonRight, E_HOVERBEGIN, HANDLER(vSliderWithTextAndButtons, HandleHoverBegin));
-    SubscribeToEvent(buttonRight, E_HOVEREND, HANDLER(vSliderWithTextAndButtons, HandleHoverEnd));
+    SubscribeToEvent(buttonRight, E_PRESSED, HANDLER(lSliderWithTextAndButtons, HandleButtonDown));
+    SubscribeToEvent(buttonRight, E_HOVERBEGIN, HANDLER(lSliderWithTextAndButtons, HandleHoverBegin));
+    SubscribeToEvent(buttonRight, E_HOVEREND, HANDLER(lSliderWithTextAndButtons, HandleHoverEnd));
 
     textValue = new Text(gContext);
     textValue->SetFixedWidth(35);
@@ -56,17 +56,17 @@ vSliderWithTextAndButtons::vSliderWithTextAndButtons(UIElement *uielement, char 
     }
 }
 
-void vSliderWithTextAndButtons::SetRange(int min, int max)
+void lSliderWithTextAndButtons::SetRange(int min, int max)
 {
     slider->SetRange(min, max);
 }
 
-void vSliderWithTextAndButtons::SetValue(int value)
+void lSliderWithTextAndButtons::SetValue(int value)
 {
     slider->SetValueInt(value);
 }
 
-void vSliderWithTextAndButtons::HandleSliderIntChanged(StringHash, VariantMap& eventData_)
+void lSliderWithTextAndButtons::HandleSliderIntChanged(StringHash, VariantMap& eventData_)
 {
     int value = slider->GetValueInt();
     textValue->SetText(String(value));
@@ -77,7 +77,7 @@ void vSliderWithTextAndButtons::HandleSliderIntChanged(StringHash, VariantMap& e
     SendEvent(E_SLIDERINTCHANGED, eventData);
 }
 
-void vSliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventData)
+void lSliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Urho3D::Pressed::P_ELEMENT].GetPtr();
     int value = slider->GetValueInt();
@@ -92,12 +92,12 @@ void vSliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventDa
     }
 }
 
-void vSliderWithTextAndButtons::HandleHoverBegin(StringHash, VariantMap&)
+void lSliderWithTextAndButtons::HandleHoverBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
-void vSliderWithTextAndButtons::HandleHoverEnd(StringHash, VariantMap&)
+void lSliderWithTextAndButtons::HandleHoverEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
 }

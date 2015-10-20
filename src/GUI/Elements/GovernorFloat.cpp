@@ -8,7 +8,7 @@
 
 
 vGovernorCell::vGovernorCell(Context *context) :
-    vWindow(context)
+    lWindow(context)
 {
     SetMovable(false);
     SetStyleAuto();
@@ -182,18 +182,18 @@ void vGovernorCell::RegisterObject(Context *context)
 {
     context->RegisterFactory<vGovernorCell>("UI");
 
-    COPY_BASE_ATTRIBUTES(vWindow);
+    COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-vGovernorFloat::vGovernorFloat(Context *context) :
-    vWindow(context)
+lGovernorFloat::lGovernorFloat(Context *context) :
+    lWindow(context)
 {
     SetMovable(false);
     SetStyle("WindowNoBorder");
 
     int widthLabel = 168;
 
-    label = vLabel::Create("Camera position Y", 8, widthLabel, 13);
+    label = lLabel::Create("Camera position Y", 8, widthLabel, 13);
     label->SetAlignment(Urho3D::HA_LEFT, Urho3D::VA_CENTER);
     AddChild(label);
 
@@ -215,7 +215,7 @@ vGovernorFloat::vGovernorFloat(Context *context) :
             cell->SetType(CellType_Digit);
             cell->SetSymbol('0');
         }
-        SubscribeToEvent(E_GOVERNORCELLCHANGED, HANDLER(vGovernorFloat, HandleGovernorCellChanged));
+        SubscribeToEvent(E_GOVERNORCELLCHANGED, HANDLER(lGovernorFloat, HandleGovernorCellChanged));
     }
 
     SharedPtr<vGovernorCell> cell(new vGovernorCell(context));
@@ -231,18 +231,18 @@ vGovernorFloat::vGovernorFloat(Context *context) :
     AddChild(buttonDown);
     buttonDown->SetPosition((numCells + 1) * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + 4 + widthLabel, 0);
 
-    SubscribeToEvent(buttonDown, E_HOVERBEGIN, HANDLER(vGovernorFloat, HandleHoverButtonBegin));
-    SubscribeToEvent(buttonDown, E_HOVEREND, HANDLER(vGovernorFloat, HandleHoverButtonEnd));
+    SubscribeToEvent(buttonDown, E_HOVERBEGIN, HANDLER(lGovernorFloat, HandleHoverButtonBegin));
+    SubscribeToEvent(buttonDown, E_HOVEREND, HANDLER(lGovernorFloat, HandleHoverButtonEnd));
 }
 
-void vGovernorFloat::RegisterObject(Context *context)
+void lGovernorFloat::RegisterObject(Context *context)
 {
-    context->RegisterFactory<vGovernorFloat>("UI");
+    context->RegisterFactory<lGovernorFloat>("UI");
 
-    COPY_BASE_ATTRIBUTES(vWindow);
+    COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-void vGovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF funcWrite_)
+void lGovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF funcWrite_)
 {
     funcRead = funcRead_;
     funcWrite = funcWrite_;
@@ -253,7 +253,7 @@ void vGovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF f
     WriteValue(value);
 }
 
-void vGovernorFloat::Update(float timeStep)
+void lGovernorFloat::Update(float timeStep)
 {
     UIElement::Update(timeStep);
 
@@ -270,7 +270,7 @@ void vGovernorFloat::Update(float timeStep)
     }
 }
 
-void vGovernorFloat::WriteValue(float value)
+void lGovernorFloat::WriteValue(float value)
 {
     int order = 0;
     int mantiss = 0;
@@ -287,7 +287,7 @@ static char NextDigit(int *mantiss)
     return retValue;
 }
 
-void vGovernorFloat::WriteMantiss(int mantiss)
+void lGovernorFloat::WriteMantiss(int mantiss)
 {
     cells[0]->SetSymbol(mantiss >= 0 ? '+' : '-');
 
@@ -302,7 +302,7 @@ void vGovernorFloat::WriteMantiss(int mantiss)
     }
 }
 
-void vGovernorFloat::WriteOrder(int order)
+void lGovernorFloat::WriteOrder(int order)
 {
     cells[7]->SetSymbol(order >= 0 ? '+' : '-');
 
@@ -317,7 +317,7 @@ void vGovernorFloat::WriteOrder(int order)
     }
 }
 
-void vGovernorFloat::GetOrderAndMantiss(float value, int *order, int *mantiss)
+void lGovernorFloat::GetOrderAndMantiss(float value, int *order, int *mantiss)
 {
     static const int SIZE_BUFFER = 30;
     char buffer[SIZE_BUFFER];
@@ -363,7 +363,7 @@ void vGovernorFloat::GetOrderAndMantiss(float value, int *order, int *mantiss)
     *mantiss *= sign;
 }
 
-float vGovernorFloat::GetValue()
+float lGovernorFloat::GetValue()
 {
     int pow = 1;
     int mantiss = 0;
@@ -401,17 +401,17 @@ float vGovernorFloat::GetValue()
     return value;
 }
 
-void vGovernorFloat::HandleGovernorCellChanged(StringHash, VariantMap&)
+void lGovernorFloat::HandleGovernorCellChanged(StringHash, VariantMap&)
 {
     valueChanged = true;
 }
 
-void vGovernorFloat::HandleHoverButtonBegin(StringHash, VariantMap&)
+void lGovernorFloat::HandleHoverButtonBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
-void vGovernorFloat::HandleHoverButtonEnd(StringHash, VariantMap&)
+void lGovernorFloat::HandleHoverButtonEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
 }

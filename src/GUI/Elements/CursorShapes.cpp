@@ -5,7 +5,7 @@
 #include "GUI/Elements/Image.h"
 
 
-bool operator==(const vCursorShapes::StructShape& keyLeft, const vCursorShapes::StructShape& keyRight)
+bool operator==(const lCursorShapes::StructShape& keyLeft, const lCursorShapes::StructShape& keyRight)
 {
     return keyLeft.numFrame == keyRight.numFrame && keyLeft.type == keyRight.type;
 }
@@ -15,22 +15,22 @@ bool operator==(const vCursorShapes::StructShape& keyLeft, const vCursorShapes::
 #define transparent {0.0f, 0.0f, 0.0f, 0.0f}
 
 
-SharedPtr<vImage> vCursorShapes::GetShape(TypeCursor type, int numFrame)
+SharedPtr<lImage> lCursorShapes::GetShape(TypeCursor type, int numFrame)
 {
-    typedef void(vCursorShapes::*pToFunc)(int);
+    typedef void(lCursorShapes::*pToFunc)(int);
     const pToFunc funcs[TypeCursor_Size] =
     {
-        &vCursorShapes::CreateNormal,
-        &vCursorShapes::CreateSelected,
-        &vCursorShapes::CreateLeft,
-        &vCursorShapes::CreateUp,
-        &vCursorShapes::CreateRight,
-        &vCursorShapes::CreateDown,
-        &vCursorShapes::CreateTopLeft,
-        &vCursorShapes::CreateTopRight,
-        &vCursorShapes::CreateDownLeft,
-        &vCursorShapes::CreateDownRight,
-        &vCursorShapes::CreateBusy
+        &lCursorShapes::CreateNormal,
+        &lCursorShapes::CreateSelected,
+        &lCursorShapes::CreateLeft,
+        &lCursorShapes::CreateUp,
+        &lCursorShapes::CreateRight,
+        &lCursorShapes::CreateDown,
+        &lCursorShapes::CreateTopLeft,
+        &lCursorShapes::CreateTopRight,
+        &lCursorShapes::CreateDownLeft,
+        &lCursorShapes::CreateDownRight,
+        &lCursorShapes::CreateBusy
     };
 
     StructShape key = {type, numFrame};
@@ -44,7 +44,7 @@ SharedPtr<vImage> vCursorShapes::GetShape(TypeCursor type, int numFrame)
     return map[key];
 }
 
-void vCursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int *y2)
+void lCursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int *y2)
 {
     float size = 100.0f;
 
@@ -64,11 +64,11 @@ void vCursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int
     int buffer[] = {val0, val1, val2, val3, val4, val5, val6, val7};            \
     image->DrawPolyline(color, num, buffer);
 
-void vCursorShapes::CreateNormal(int numFrame)
+void lCursorShapes::CreateNormal(int numFrame)
 {
     int size = 100;
 
-    SharedPtr<vImage> image(new vImage(size, size));
+    SharedPtr<lImage> image(new lImage(size, size));
     image->Clear(transparent);
 
     int x1, y1, x2, y2;
@@ -86,11 +86,11 @@ void vCursorShapes::CreateNormal(int numFrame)
     map[key] = image;
 }
 
-void vCursorShapes::CreateSelected(int numFrame)
+void lCursorShapes::CreateSelected(int numFrame)
 {
     int size = 100;
 
-    SharedPtr<vImage> image(new vImage(size, size));
+    SharedPtr<lImage> image(new lImage(size, size));
     image->Clear(transparent);
 
     float angle0 = (float)numFrame;
@@ -134,9 +134,9 @@ void vCursorShapes::CreateSelected(int numFrame)
     map[key] = image;
 }
 
-void vCursorShapes::CreateLeft(int numFrame)
+void lCursorShapes::CreateLeft(int numFrame)
 {
-    SharedPtr<vImage> image(new vImage(dimensionTriangleBig, dimensionTriangleBig));
+    SharedPtr<lImage> image(new lImage(dimensionTriangleBig, dimensionTriangleBig));
 
     int width = dimensionTriangleSmall;
     int height = dimensionTriangleBig;
@@ -153,9 +153,9 @@ void vCursorShapes::CreateLeft(int numFrame)
     map[key] = image;
 }
 
-void vCursorShapes::CreateRight(int numFrame)
+void lCursorShapes::CreateRight(int numFrame)
 {
-    SharedPtr<vImage> image(new vImage(dimensionTriangleBig, dimensionTriangleBig));
+    SharedPtr<lImage> image(new lImage(dimensionTriangleBig, dimensionTriangleBig));
 
     int width = dimensionTriangleSmall;
     int height = dimensionTriangleBig;
@@ -172,9 +172,9 @@ void vCursorShapes::CreateRight(int numFrame)
     map[key] = image;
 }
 
-void vCursorShapes::CreateUp(int numFrame)
+void lCursorShapes::CreateUp(int numFrame)
 {
-    SharedPtr<vImage> image(new vImage(dimensionTriangleBig, dimensionTriangleBig));
+    SharedPtr<lImage> image(new lImage(dimensionTriangleBig, dimensionTriangleBig));
 
     int width = dimensionTriangleBig;
     int height = dimensionTriangleSmall;
@@ -191,9 +191,9 @@ void vCursorShapes::CreateUp(int numFrame)
     map[key] = image;
 }
 
-void vCursorShapes::CreateDown(int numFrame)
+void lCursorShapes::CreateDown(int numFrame)
 {
-    SharedPtr<vImage> image(new vImage(dimensionTriangleBig, dimensionTriangleBig));
+    SharedPtr<lImage> image(new lImage(dimensionTriangleBig, dimensionTriangleBig));
 
     int width = dimensionTriangleBig;
     int height = dimensionTriangleSmall;
@@ -208,9 +208,9 @@ void vCursorShapes::CreateDown(int numFrame)
     map[key] = image;
 }
 
-void vCursorShapes::CreateTopLeft(int numFrame)
+void lCursorShapes::CreateTopLeft(int numFrame)
 {
-    SharedPtr<vImage> image(new vImage(dimensionTriangleBig, dimensionTriangleBig));
+    SharedPtr<lImage> image(new lImage(dimensionTriangleBig, dimensionTriangleBig));
     
     int size = (int)(dimensionTriangleSmall * 1.41f);
 
@@ -224,10 +224,10 @@ void vCursorShapes::CreateTopLeft(int numFrame)
     map[key] = image;
 }
 
-void vCursorShapes::CreateTopRight(int numFrame)
+void lCursorShapes::CreateTopRight(int numFrame)
 {
     int size = (int)(dimensionTriangleSmall * 1.41f);
-    SharedPtr<vImage> image(new vImage(size + 1, size + 1));
+    SharedPtr<lImage> image(new lImage(size + 1, size + 1));
     
     FillGradient(image, TypeCursor_TopRight, numFrame);
 
@@ -239,10 +239,10 @@ void vCursorShapes::CreateTopRight(int numFrame)
     map[key] = image;
 }
 
-void vCursorShapes::CreateDownLeft(int numFrame)
+void lCursorShapes::CreateDownLeft(int numFrame)
 {
     int size = (int)(dimensionTriangleSmall * 1.41f);
-    SharedPtr<vImage> image(new vImage(size + 1, size + 1));
+    SharedPtr<lImage> image(new lImage(size + 1, size + 1));
     
     FillGradient(image, TypeCursor_DownLeft, numFrame);
 
@@ -254,11 +254,11 @@ void vCursorShapes::CreateDownLeft(int numFrame)
     map[key] = image;
 }
 
-void vCursorShapes::CreateDownRight(int numFrame)
+void lCursorShapes::CreateDownRight(int numFrame)
 {
     int size = (int)(dimensionTriangleSmall * 1.41f);
 
-    SharedPtr<vImage> image(new vImage(size + 1, size + 1));
+    SharedPtr<lImage> image(new lImage(size + 1, size + 1));
 
     FillGradient(image, TypeCursor_DownRight, numFrame);
 
@@ -270,10 +270,10 @@ void vCursorShapes::CreateDownRight(int numFrame)
     map[key] = image;
 }
 
-void vCursorShapes::CreateBusy(int numFrame)
+void lCursorShapes::CreateBusy(int numFrame)
 {
     int size = 72;
-    SharedPtr<vImage> image(new vImage(size, size));
+    SharedPtr<lImage> image(new lImage(size, size));
 
     FillGradient(image, TypeCursor_Busy, numFrame);
 
@@ -318,7 +318,7 @@ void vCursorShapes::CreateBusy(int numFrame)
     image->DrawLine(x0_, y0_, x1_, y1_, {colorComponent, colorComponent, colorComponent, 1.0f});    \
     CORRECTION_COLOR
 
-void vCursorShapes::FillGradient(vImage *image, TypeCursor type, int numFrame)
+void lCursorShapes::FillGradient(lImage *image, TypeCursor type, int numFrame)
 {
     int width = image->GetWidth();
     int height = image->GetHeight();

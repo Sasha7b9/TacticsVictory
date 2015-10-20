@@ -4,16 +4,16 @@
 #include "GUI/Elements/Window.h"
 
 
-class vPanelBottom : public vWindow
+class lPanelBottom : public lWindow
 {
-    OBJECT(vPanelBottom);
+    OBJECT(lPanelBottom);
 
 public:
-    vPanelBottom(Context *context);
+    lPanelBottom(Context *context);
 
     static void RegisterObject(Context *context);
 
 private:
-    vPanelBottom& operator=(const vPanelBottom&)
+    lPanelBottom& operator=(const lPanelBottom&)
     {};
 };

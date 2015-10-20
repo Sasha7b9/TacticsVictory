@@ -5,14 +5,14 @@
 #include "Core/Math.h"
 
 
-vImage::vImage(int width, int height) : Resource(gContext)
+lImage::lImage(int width, int height) : Resource(gContext)
 {
     image = new Image(gContext);
 
     image->SetSize(width, height, 4);
 }
 
-void vImage::SetPoint(uint x, uint y, const Color& color)
+void lImage::SetPoint(uint x, uint y, const Color& color)
 {
     if(x < (uint)image->GetWidth() && y < (uint)image->GetHeight())
     {
@@ -20,7 +20,7 @@ void vImage::SetPoint(uint x, uint y, const Color& color)
     }
 }
 
-void vImage::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
+void lImage::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
 {
     if((x1 - x0) == 0 && (y1 - y0) == 0)
     {
@@ -74,7 +74,7 @@ void vImage::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
     }
 }
 
-void vImage::DrawRectangle(int x, int y, int width, int height, const Color &color)
+void lImage::DrawRectangle(int x, int y, int width, int height, const Color &color)
 {
     DrawLine(x, y, x + width, y, color);
     DrawLine(x + width, y, x + width, y + height, color);
@@ -82,7 +82,7 @@ void vImage::DrawRectangle(int x, int y, int width, int height, const Color &col
     DrawLine(x, y, x, y + height, color);
 }
 
-void vImage::FillRectangle(int x0, int y0, int width, int height, const Color &color)
+void lImage::FillRectangle(int x0, int y0, int width, int height, const Color &color)
 {
     for(int x = x0; x < x0 + width; x++)
     {
@@ -90,17 +90,17 @@ void vImage::FillRectangle(int x0, int y0, int width, int height, const Color &c
     }
 }
 
-void vImage::Clear(const Color &color)
+void lImage::Clear(const Color &color)
 {
     image->Clear(color);
 }
 
-SharedPtr<Image> vImage::GetImage()
+SharedPtr<Image> lImage::GetImage()
 {
     return image;
 }
 
-void vImage::FillRegion(int x, int y, const Color &color)
+void lImage::FillRegion(int x, int y, const Color &color)
 {
     replacedColor = image->GetPixel(x, y);
 
@@ -109,7 +109,7 @@ void vImage::FillRegion(int x, int y, const Color &color)
     Replace4Points(x, y, color);
 }
 
-void vImage::Replace4Points(int x, int y, const Color &color)
+void lImage::Replace4Points(int x, int y, const Color &color)
 {
     if(y > 0)                       // upper pixel
     {
@@ -145,7 +145,7 @@ void vImage::Replace4Points(int x, int y, const Color &color)
     }
 }
 
-void vImage::FillRegion(int x, int y, const Color &color, const Color &colorBound)
+void lImage::FillRegion(int x, int y, const Color &color, const Color &colorBound)
 {
     boundingColor = colorBound;
 
@@ -166,7 +166,7 @@ void vImage::FillRegion(int x, int y, const Color &color, const Color &colorBoun
     }
 
 
-void vImage::Replace4PointsBound(int x, int y, const Color &color)
+void lImage::Replace4PointsBound(int x, int y, const Color &color)
 {
     if(y > 0)
     {
@@ -186,17 +186,17 @@ void vImage::Replace4PointsBound(int x, int y, const Color &color)
     }
 }
 
-int vImage::GetWidth()
+int lImage::GetWidth()
 {
     return image->GetWidth();
 }
 
-int vImage::GetHeight()
+int lImage::GetHeight()
 {
     return image->GetHeight();
 }
 
-void vImage::DrawPolyline(const Color &color, int numPoints, int *xy)
+void lImage::DrawPolyline(const Color &color, int numPoints, int *xy)
 {
     int numLines = numPoints - 1;
 
@@ -206,7 +206,7 @@ void vImage::DrawPolyline(const Color &color, int numPoints, int *xy)
     }
 }
 
-void vImage::DrawCircle(float x, float y, float radius, const Color &color, float step)
+void lImage::DrawCircle(float x, float y, float radius, const Color &color, float step)
 {
     for (float angle = 0.0f; angle < 360.0f; angle += step)
     {
@@ -214,12 +214,12 @@ void vImage::DrawCircle(float x, float y, float radius, const Color &color, floa
     }
 }
 
-IntVector2 vImage::GetHotSpot()
+IntVector2 lImage::GetHotSpot()
 {
     return hotSpot;
 }
 
-void vImage::SetHotSpot(int x, int y)
+void lImage::SetHotSpot(int x, int y)
 {
     hotSpot.x_ = x;
     hotSpot.y_ = y;

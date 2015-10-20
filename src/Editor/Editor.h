@@ -5,20 +5,20 @@
 #include "Game/Objects/Terrain.h"
 
 
-class vEditor : public Object
+class lEditor : public Object
 {
-    OBJECT(vEditor);
+    OBJECT(lEditor);
 public:
-    vEditor(Context *context);
+    lEditor(Context *context);
     void Run();
 
 private:
 
-    SharedPtr<vTerrain> terrain;
-    vPlane currentPlane;
+    SharedPtr<lTerrain> terrain;
+    lPlane currentPlane;
 
     void HandlePostRenderUpdate(StringHash eventType, VariantMap &eventData);
 
-    vEditor& operator=(const vEditor&)
+    lEditor& operator=(const lEditor&)
     {};
 };

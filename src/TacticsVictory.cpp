@@ -27,7 +27,7 @@ TacticsVictory::TacticsVictory(Context* context) :
 
 void TacticsVictory::Setup()
 {
-    gSet = new vSettings();
+    gSet = new lSettings();
     gFileSystem = GetSubsystem<FileSystem>();
     gSet->Load();
 
@@ -78,7 +78,7 @@ void TacticsVictory::CreateComponents()
 
     gTime = new Time(gContext);
 
-    gGUI = new vGUI();
+    gGUI = new lGUI();
 }
 
 void TacticsVictory::RegistrationFactories()
@@ -108,7 +108,7 @@ void TacticsVictory::Start()
     
     InitLocalizationSystem();
 
-    gCamera = new vCamera();
+    gCamera = new lCamera();
 
     gGUI->Create();
 
@@ -163,7 +163,7 @@ void TacticsVictory::CreateEditorSession()
 {
     if(!gEditor)
     {
-        gEditor = new vEditor(gContext);
+        gEditor = new lEditor(gContext);
     }
     gGUI->SetVisibleMenu(false);
     gMenuEditor->SetVisible(true);

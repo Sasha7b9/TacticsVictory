@@ -1,4 +1,5 @@
 *.ilk
 *.pdb
 *.*log
+*.log
 Debug/TacticsVictory.tlog

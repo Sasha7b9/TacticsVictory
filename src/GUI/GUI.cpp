@@ -19,36 +19,38 @@
 #include "GUI/Menu/PanelMain.h"
 #include "GUI/Menu/Console.h"
 #include "GUI/Menu/WindowVariables.h"
+#include "GUI/Menu/MenuConfirmExit.h"
 #include "GUI/MenuEditor/MenuEditor.h"
 
 
-vGUI::vGUI() : Object(gContext)
+lGUI::lGUI() : Object(gContext)
 {
 
 }
 
-vGUI::~vGUI()
+lGUI::~lGUI()
 {
     SAFE_DELETE(gCursor);
 }
 
 static void RegstrationObjects()
 {
-    vButton::RegisterObject(gContext);
-    vButtonToggled::RegisterObject(gContext);
-    vWindow::RegisterObject(gContext);
-    vMenuMain::RegisterObject(gContext);
-    vMenuOptions::RegisterObject(gContext);
-    vTab::RegisterObject(gContext);
-    vLabel::RegisterObject(gContext);
+    lButton::RegisterObject(gContext);
+    lButtonToggled::RegisterObject(gContext);
+    lWindow::RegisterObject(gContext);
+    lMenuMain::RegisterObject(gContext);
+    lMenuOptions::RegisterObject(gContext);
+    lMenuConfirmExit::RegisterObject(gContext);
+    lTab::RegisterObject(gContext);
+    lLabel::RegisterObject(gContext);
     vSlider::RegisterObject(gContext);
     vSliderInt::RegisterObject(gContext);
     vGovernorCell::RegisterObject(gContext);
-    vGovernorFloat::RegisterObject(gContext);
-    vPanelBottom::RegisterObject(gContext);
-    vPanelMap::RegisterObject(gContext);
-    vPanelMain::RegisterObject(gContext);
-    vMenuEditor::RegisterObject(gContext);
+    lGovernorFloat::RegisterObject(gContext);
+    lPanelBottom::RegisterObject(gContext);
+    lPanelMap::RegisterObject(gContext);
+    lPanelMain::RegisterObject(gContext);
+    lMenuEditor::RegisterObject(gContext);
 }
 
 static float GetPosCameraY()
@@ -101,14 +103,14 @@ static float GetCameraYaw()
     return angle.YawAngle();
 }
 
-void vGUI::Create()
+void lGUI::Create()
 {
     RegstrationObjects();
 
-    gConsole = new vConsole(gContext);
+    gConsole = new lConsole(gContext);
     gUIRoot->AddChild(gConsole);
 
-    gWindowVars = new vWindowVariables(gContext);
+    gWindowVars = new lWindowVariables(gContext);
     gUIRoot->AddChild(gWindowVars);
     gWindowVars->SetVisible(false);
     gWindowVars->SetPosition(1000, 500);
@@ -119,29 +121,33 @@ void vGUI::Create()
     gWindowVars->AddFunctionFloat("Camera pitch", GetCameraPitch, nullptr);
     gWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
 
-    gMenuMain = new vMenuMain(gContext);
+    gMenuMain = new lMenuMain(gContext);
     gMenuMain->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
     gUIRoot->AddChild(gMenuMain);
-    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(vGUI, HandleGuiEvent));
+    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(lGUI, HandleGuiEvent));
 
-    gMenuOptions = new vMenuOptions(gContext);
+    gMenuOptions = new lMenuOptions(gContext);
     gMenuOptions->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
     gUIRoot->AddChild(gMenuOptions);
-    SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(vGUI, HandleGuiEvent));
+    SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(lGUI, HandleGuiEvent));
     gMenuOptions->SetVisible(false);
 
-    gMenuGame = new vMenuGame(gContext);
+    gMenuGame = new lMenuGame(gContext);
     gMenuGame->SetVisible(false);
     gUIRoot->AddChild(gMenuGame);
 
-    gMenuEditor = new vMenuEditor(gContext);
+    gMenuEditor = new lMenuEditor(gContext);
     gMenuEditor->SetVisible(false);
     gUIRoot->AddChild(gMenuEditor);
 
-    gCursor = new vCursor();
+    gMenuConfirmExit = new lMenuConfirmExit(gContext);
+    gUIRoot->AddChild(gMenuConfirmExit);
+    gMenuConfirmExit->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
+
+    gCursor = new lCursor();
 }
 
-bool vGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
+bool lGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
 {
     if (gMenuGame->IsVisible())
     {
@@ -154,18 +160,18 @@ bool vGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
     return false;
 }
 
-bool vGUI::MenuIsVisible()
+bool lGUI::MenuIsVisible()
 {
     return gMenuMain->IsVisible() || gMenuOptions->IsVisible();
 }
 
-void vGUI::SetVisibleMenu(bool visible)
+void lGUI::SetVisibleMenu(bool visible)
 {
     gMenuMain->SetVisible(visible);
     gMenuOptions->SetVisible(visible);
 }
 
-void vGUI::SetVisibleMenu(vWindow *menuWindow, bool visible)
+void lGUI::SetVisibleMenu(lWindow *menuWindow, bool visible)
 {
     menuWindow->SetVisible(visible);
     if(visible)
@@ -174,7 +180,7 @@ void vGUI::SetVisibleMenu(vWindow *menuWindow, bool visible)
     }
 }
 
-void vGUI::HandleGuiEvent(StringHash, VariantMap& eventData)
+void lGUI::HandleGuiEvent(StringHash, VariantMap& eventData)
 {
     uint action = eventData[MenuEvent::P_TYPE].GetUInt();
 

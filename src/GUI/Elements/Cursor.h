@@ -18,11 +18,11 @@ enum TypeCursor
 };
 
 
-class vCursor : public Object
+class lCursor : public Object
 {
-    OBJECT(vCursor)
+    OBJECT(lCursor)
 public:
-    vCursor();
+    lCursor();
 
     SharedPtr<Cursor> GetCursor();
 
@@ -36,9 +36,9 @@ public:
 
 private:
     SharedPtr<Cursor> cursor;
-    SharedPtr<vCursorShapes> shapes;
+    SharedPtr<lCursorShapes> shapes;
 
-    vCursor& operator=(const vCursor&)
+    lCursor& operator=(const lCursor&)
     {};
 
     bool selected = false;

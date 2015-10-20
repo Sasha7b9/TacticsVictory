@@ -6,20 +6,20 @@
 #include "GUI/Elements/Label.h"
 
 
-vButton::vButton(Context *context) :
+lButton::lButton(Context *context) :
     Button(context)
 {
     SetStyle("MainMenuButton");
 
-    label = vLabel::Create("", SET::MENU::FONT::SIZE::ITEM);
+    label = lLabel::Create("", SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 }
 
-vButton::vButton(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
+lButton::lButton(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
     Button(gContext)
 {
     SetStyle("MainMenuButton");
-    label = vLabel::Create(text, SET::MENU::FONT::SIZE::ITEM);
+    label = lLabel::Create(text, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 
     if (uielement)
@@ -44,34 +44,34 @@ vButton::vButton(UIElement *uielement, char *text, int width /* = -1 */, int hei
         SetFixedSize(width, height);
     }
 
-    SubscribeToEvent(this, E_HOVERBEGIN, HANDLER(vButton, HandleHoverBegin));
-    SubscribeToEvent(this, E_HOVEREND, HANDLER(vButton, HandleHoverEnd));
-    SubscribeToEvent(this, E_MOUSEBUTTONDOWN, HANDLER(vButton, HandleMouseDown));
+    SubscribeToEvent(this, E_HOVERBEGIN, HANDLER(lButton, HandleHoverBegin));
+    SubscribeToEvent(this, E_HOVEREND, HANDLER(lButton, HandleHoverEnd));
+    SubscribeToEvent(this, E_MOUSEBUTTONDOWN, HANDLER(lButton, HandleMouseDown));
 }
 
-void vButton::RegisterObject(Context *context)
+void lButton::RegisterObject(Context *context)
 {
-    context->RegisterFactory<vButton>("UI");
+    context->RegisterFactory<lButton>("UI");
 
     COPY_BASE_ATTRIBUTES(Button);
 }
 
-void vButton::SetText(char *text)
+void lButton::SetText(char *text)
 {
     label->SetNewText(text);
 }
 
-void vButton::HandleHoverBegin(StringHash, VariantMap&)
+void lButton::HandleHoverBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
-void vButton::HandleHoverEnd(StringHash, VariantMap&)
+void lButton::HandleHoverEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
 }
 
-void vButton::HandleMouseDown(StringHash, VariantMap&)
+void lButton::HandleMouseDown(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }

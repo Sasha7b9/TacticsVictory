@@ -4,12 +4,12 @@
 #include "GUI/Elements/Window.h"
 
 
-class vPanelMain : public vWindow
+class lPanelMain : public lWindow
 {
-    OBJECT(vPanelMain);
+    OBJECT(lPanelMain);
 
 public:
-    vPanelMain(Context *context = gContext);
+    lPanelMain(Context *context = gContext);
 
     virtual void Update(float dT);
 
@@ -17,14 +17,14 @@ public:
 
     void Toggle();
 
-    void AddTab(SharedPtr<vTab> tab);
+    void AddTab(SharedPtr<lTab> tab);
 
 private:
-    vPanelMain& operator=(const vPanelMain&)
+    lPanelMain& operator=(const lPanelMain&)
     {};
 
-    SharedPtr<vLineTranslator2D> translator;
-    Vector<SharedPtr<vTab>> tabs;
+    SharedPtr<lLineTranslator2D> translator;
+    Vector<SharedPtr<lTab>> tabs;
 
     void HandleToggedTitle(StringHash eventType, VariantMap &eventData);
 };

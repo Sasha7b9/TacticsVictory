@@ -4,26 +4,23 @@
 #include "GUI/Elements/Window.h"
 
 
-class vMenuMain : public vWindow
+class lMenuMain : public lWindow
 {
-    OBJECT(vMenuMain);
+    OBJECT(lMenuMain);
 
 public:
-    vMenuMain(Context *context);
+    lMenuMain(Context *context);
 
     static void RegisterObject(Context *context);
 
-    void HandleHoverBegin(StringHash eventType, VariantMap& eventData);
-    void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
-
 private:
-    vMenuMain& operator=(const vMenuMain&)
+    lMenuMain& operator=(const lMenuMain&)
     {};
 
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
 
-    SharedPtr<vButton> buttonNewGame;
-    SharedPtr<vButton> buttonEditor;
-    SharedPtr<vButton> buttonExit;
-    SharedPtr<vButton> buttonOptions;
+    SharedPtr<lButton> buttonNewGame;
+    SharedPtr<lButton> buttonEditor;
+    SharedPtr<lButton> buttonExit;
+    SharedPtr<lButton> buttonOptions;
 };

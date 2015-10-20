@@ -7,13 +7,13 @@
 #include "GUI/Elements/Cursor.h"
 
 
-vEditor::vEditor(Context *context) : Object(context)
+lEditor::lEditor(Context *context) : Object(context)
 {
-    currentPlane = vPlane::ZERO;
+    currentPlane = lPlane::ZERO;
 }
 
 
-void vEditor::Run()
+void lEditor::Run()
 {
     Node* zoneNode = gScene->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
@@ -25,7 +25,7 @@ void vEditor::Run()
     //Vector<Vector<float> > level = vLevel::CreateRandom(100, 100);
     Vector<Vector<float> > level = vLevel::Load("input.txt");
 
-    terrain = new vTerrain(level);
+    terrain = new lTerrain(level);
 
     SharedPtr<Node> lightNode(gScene->CreateChild("LightNode"));
 
@@ -42,10 +42,10 @@ void vEditor::Run()
     gCamera->SetPosition({0.0f, 25.0f, 0.0f}, {level[0].Size() / 2.0f, 0.0f, -(level.Size() / 2.0f)});
     lightNode->SetPosition({level[0].Size() / 2.0f, 50.0f, -(level.Size() / 2.0f)});
 
-    SubscribeToEvent(E_POSTRENDERUPDATE, HANDLER(vEditor, HandlePostRenderUpdate));
+    SubscribeToEvent(E_POSTRENDERUPDATE, HANDLER(lEditor, HandlePostRenderUpdate));
 }
 
-void vEditor::HandlePostRenderUpdate(StringHash, VariantMap &eventData)
+void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &eventData)
 {
     IntVector2 pos = gCursor->GetCursor()->GetPosition();
 
@@ -54,7 +54,7 @@ void vEditor::HandlePostRenderUpdate(StringHash, VariantMap &eventData)
 
     Ray ray = gCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
 
-    vPlane plane = terrain->GetIntersection(ray);
+    lPlane plane = terrain->GetIntersection(ray);
 
     if(!plane.IsZero())
     {

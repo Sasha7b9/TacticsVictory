@@ -1,29 +1,29 @@
 #pragma once
 
 
-class vMenuGame : public UIElement
+class lMenuGame : public UIElement
 {
-    OBJECT(vMenuGame)
+    OBJECT(lMenuGame)
 
 public:
-    vMenuGame(Context* context);
+    lMenuGame(Context* context);
 
     static void RegisterObject(Context* context);
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
 
 private:
-    vMenuGame& operator=(const vMenuGame&)
+    lMenuGame& operator=(const lMenuGame&)
     {};
 
-    SharedPtr<vButton> buttonMap;
-    SharedPtr<vButton> buttonMainPanel;
-    SharedPtr<vButton> buttonMenu;
+    SharedPtr<lButton> buttonMap;
+    SharedPtr<lButton> buttonMainPanel;
+    SharedPtr<lButton> buttonMenu;
 
-    SharedPtr<vPanelBottom> panelBottom;
-    SharedPtr<vPanelMap>    panelMap;
-    SharedPtr<vPanelMain>   panelMain;
+    SharedPtr<lPanelBottom> panelBottom;
+    SharedPtr<lPanelMap>    panelMap;
+    SharedPtr<lPanelMain>   panelMain;
 
     void HandleButtonRelease(StringHash, VariantMap &eventData);
 
-    bool IntersectionX(vButton *button, int x);
+    bool IntersectionX(lButton *button, int x);
 };

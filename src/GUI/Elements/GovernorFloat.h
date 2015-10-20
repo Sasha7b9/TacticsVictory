@@ -19,7 +19,7 @@ EVENT(E_GOVERNORCELLCHANGED, GovernorCellChanged)
 }
 
 
-class vGovernorCell : public vWindow
+class vGovernorCell : public lWindow
 {
     OBJECT(vGovernorCell);
 
@@ -58,12 +58,12 @@ private:
 };
 
 
-class vGovernorFloat : public vWindow
+class lGovernorFloat : public lWindow
 {
-    OBJECT(vGovernorFloat);
+    OBJECT(lGovernorFloat);
 
 public:
-    vGovernorFloat(Context *context);
+    lGovernorFloat(Context *context);
 
     static void RegisterObject(Context *context);
 
@@ -76,7 +76,7 @@ public:
     void HandleHoverButtonEnd(StringHash eventType, VariantMap& eventData);
 
 private:
-    vGovernorFloat& operator=(const vGovernorFloat&)
+    lGovernorFloat& operator=(const lGovernorFloat&)
     {};
 
     void WriteValue(float value);
@@ -87,7 +87,7 @@ private:
 
     Vector<SharedPtr<vGovernorCell> > cells;
     SharedPtr<Button> buttonDown;
-    SharedPtr<vLabel> label;
+    SharedPtr<lLabel> label;
     int numCells = 11;
     pFuncFV funcRead = nullptr;
     pFuncVF funcWrite = nullptr;

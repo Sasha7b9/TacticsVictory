@@ -19,6 +19,7 @@ name = ':\\Archiv\\TacticsVictory\\TacticsVictory' + date.strftime("_%Y_%m_%d_%H
 strings =   "7z.exe a " + 'c' + name, \
             "7z.exe a " + 'f' + name, \
             "7z.exe a " + 'h' + name, \
+            "7z.exe a " + 'i' + name, \
             "pause"
 
 RunCommands(strings)

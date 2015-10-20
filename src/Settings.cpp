@@ -1,16 +1,16 @@
 #include <stdafx.h>
 
-bool operator==(const vSettings::IntKey & keyleft, const vSettings::IntKey& keyright)
+bool operator==(const lSettings::IntKey & keyleft, const lSettings::IntKey& keyright)
 {
     return keyleft.str == keyright.str;
 }
 
-bool operator==(const vSettings::FloatKey & keyLeft, const vSettings::FloatKey& keyRight)
+bool operator==(const lSettings::FloatKey & keyLeft, const lSettings::FloatKey& keyRight)
 {
     return keyLeft.str == keyRight.str;
 }
 
-bool vSettings::Load()
+bool lSettings::Load()
 {
     nameFile = String("settings.xml");
 
@@ -56,7 +56,7 @@ bool vSettings::Load()
     return false;
 }
 
-int vSettings::GetInt(char *elem, char *name)
+int lSettings::GetInt(char *elem, char *name)
 {
     int retValue = mapIntChild[IntKey(elem, name)];
     if(!GetIntFromChild(elem, name, &retValue))
@@ -66,7 +66,7 @@ int vSettings::GetInt(char *elem, char *name)
     return retValue;
 }
 
-int vSettings::GetInt(char *name)
+int lSettings::GetInt(char *name)
 {
     int retValue = mapIntChild[IntKey(name)];
     if(!GetIntFromChild(name, &retValue))
@@ -76,7 +76,7 @@ int vSettings::GetInt(char *name)
     return retValue;
 }
 
-float vSettings::GetFloat(char *elem, char *name)
+float lSettings::GetFloat(char *elem, char *name)
 {
     float retValue = mapFloatChild[FloatKey(elem, name)];
     if (!GetFloatFromChild(elem, name, &retValue))
@@ -99,17 +99,17 @@ float vSettings::GetFloat(char *elem, char *name)
     }                                                   \
     childName.SetValue(String(value));
 
-void vSettings::SetInt(char *category, char *name, int value)
+void lSettings::SetInt(char *category, char *name, int value)
 {
     COMMON_BLOCK;
 }
 
-void vSettings::SetFloat(char *category, char *name, float value)
+void lSettings::SetFloat(char *category, char *name, float value)
 {
     COMMON_BLOCK;
 }
 
-void vSettings::SetInt(char *name, int value)
+void lSettings::SetInt(char *name, int value)
 {
     XMLElement child = root.GetChild(name);
     if (child == 0)
@@ -120,14 +120,14 @@ void vSettings::SetInt(char *name, int value)
     child.SetValue(String(value));
 }
 
-void vSettings::Save()
+void lSettings::Save()
 {
     File outFile(gContext);
     outFile.Open(nameFile, Urho3D::FILE_WRITE);
     file->Save(outFile);
 }
 
-bool vSettings::GetIntFromChild(char *category, char *name, int *value)
+bool lSettings::GetIntFromChild(char *category, char *name, int *value)
 {
     if (!root.HasChild(category))
     {
@@ -144,7 +144,7 @@ bool vSettings::GetIntFromChild(char *category, char *name, int *value)
     return true;
 }
 
-bool vSettings::GetFloatFromChild(char *category, char *name, float *value)
+bool lSettings::GetFloatFromChild(char *category, char *name, float *value)
 {
     if (!root.HasChild(category))
     {
@@ -159,7 +159,7 @@ bool vSettings::GetFloatFromChild(char *category, char *name, float *value)
     return true;
 }
 
-bool vSettings::GetIntFromChild(char *name, int *value)
+bool lSettings::GetIntFromChild(char *name, int *value)
 {
     if (!root.HasChild(name))
     {

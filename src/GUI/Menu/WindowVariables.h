@@ -4,12 +4,12 @@
 #include "GUI/Elements/Window.h"
 
 
-class vWindowVariables : public vWindow
+class lWindowVariables : public lWindow
 {
-    OBJECT(vWindowVariables);
+    OBJECT(lWindowVariables);
 
 public:
-    vWindowVariables(Context *context);
+    lWindowVariables(Context *context);
 
     void SetVar(float *var, char *title);
     void AddFunctionFloat(char *title, pFuncFV funcRead, pFuncVF funcWrite);
@@ -18,6 +18,6 @@ private:
     float *var = nullptr;
     char *title = nullptr;
 
-    SharedPtr<vLabel> label;
-    SharedPtr<vGovernorFloat> governor;
+    SharedPtr<lLabel> label;
+    SharedPtr<lGovernorFloat> governor;
 };

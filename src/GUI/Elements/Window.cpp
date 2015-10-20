@@ -6,7 +6,7 @@
 #include "GUI/Elements/ButtonToggled.h"
 
 
-vWindow::vWindow(Context *context) :
+lWindow::lWindow(Context *context) :
     Window(context)
 {
     SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
@@ -14,40 +14,40 @@ vWindow::vWindow(Context *context) :
     SetMovable(true);
 }
 
-void vWindow::RegisterObject(Context *context)
+void lWindow::RegisterObject(Context *context)
 {
-    context->RegisterFactory<vWindow>("UI");
+    context->RegisterFactory<lWindow>("UI");
 
     COPY_BASE_ATTRIBUTES(Window);
 }
 
-void vWindow::SetInCenterRect(const IntRect& rect)
+void lWindow::SetInCenterRect(const IntRect& rect)
 {
     int x = (rect.right_ + rect.left_) / 2 - GetWidth() / 2;
     int y = (rect.bottom_ + rect.top_) / 2 - GetHeight() / 2;
     SetPosition(x, y);
 }
 
-bool vWindow::IsChildOfParent()
+bool lWindow::IsChildOfParent()
 {
     return gUIRoot->FindChild(this) != Urho3D::M_MAX_UNSIGNED;
 }
 
-void vWindow::Toggle()
+void lWindow::Toggle()
 {
     SetVisible(!IsVisible());
 }
 
-SharedPtr<vButton> vWindow::AddButton(char *text, int x, int y, int width, int height)
+SharedPtr<lButton> lWindow::AddButton(char *text, int x, int y, int width, int height)
 {
-    SharedPtr<vButton> retButton(new vButton(this, text, width, height));
+    SharedPtr<lButton> retButton(new lButton(this, text, width, height));
     retButton->SetPosition(x, y);
     return retButton;
 }
 
-SharedPtr<vButtonToggled> vWindow::AddButtonToggled(char *text, int x, int y, int width, int height)
+SharedPtr<lButtonToggled> lWindow::AddButtonToggled(char *text, int x, int y, int width, int height)
 {
-    SharedPtr<vButtonToggled> retButton(new vButtonToggled(this, text, width, height));
+    SharedPtr<lButtonToggled> retButton(new lButtonToggled(this, text, width, height));
     retButton->SetPosition(x, y);
     return retButton;
 }

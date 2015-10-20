@@ -8,8 +8,8 @@
 #include "GUI/Logic/LineTranslator2D.h"
 
 
-vPanelMap::vPanelMap(Context *context) :
-    vWindow(context)
+lPanelMap::lPanelMap(Context *context) :
+    lWindow(context)
 {
     SetName("PanelMap");
 
@@ -20,23 +20,23 @@ vPanelMap::vPanelMap(Context *context) :
     IntVector2 posStart = {0, gGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAP::HEIGHT + 1};
     IntVector2 posFinish = {-SET::PANEL::MAP::WIDTH, posStart.y_};
 
-    translator = new vLineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), vLineTranslator2D::State_PointStart);
+    translator = new lLineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), lLineTranslator2D::State_PointStart);
 }
 
 
-void vPanelMap::RegisterObject(Context *context)
+void lPanelMap::RegisterObject(Context *context)
 {
-    context->RegisterFactory<vPanelMap>("UI");
+    context->RegisterFactory<lPanelMap>("UI");
 
-    COPY_BASE_ATTRIBUTES(vWindow);
+    COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-void vPanelMap::Toggle()
+void lPanelMap::Toggle()
 {
     translator->Toggle();
 }
 
-void vPanelMap::Update(float dT)
+void lPanelMap::Update(float dT)
 {
     SetPosition(translator->Update(dT));
 
@@ -73,7 +73,7 @@ void vPanelMap::Update(float dT)
             x0 = (int)(GetWidth() / 2.0f - (scale * sizeX) / 2.0f);
         }
 
-        imageMap = new vImage(GetWidth(), GetHeight());
+        imageMap = new lImage(GetWidth(), GetHeight());
 
         imageMap->Clear(Color::BLACK);
         imageMap->DrawRectangle(0, 0, GetWidth() - 1, GetHeight() - 1, Color::WHITE);
@@ -120,7 +120,7 @@ void vPanelMap::Update(float dT)
         {1.0f, 0.0f}
     };
 
-    SharedPtr<vImage> image(new vImage(imageMap->GetWidth(), imageMap->GetHeight()));
+    SharedPtr<lImage> image(new lImage(imageMap->GetWidth(), imageMap->GetHeight()));
 
     uchar *data = imageMap->GetImage()->GetData();
 
@@ -158,7 +158,7 @@ void vPanelMap::Update(float dT)
     SetFullImageRect();
 }
 
-bool vPanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPointOut)
+bool lPanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPointOut)
 {
     Camera *camera = gCamera->GetNode()->GetComponent<Camera>();
     Plane planeX0Z({0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f});
@@ -174,12 +174,12 @@ bool vPanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPoin
     return true;
 }
 
-float vPanelMap::GetMapHeight(uint x, uint y)
+float lPanelMap::GetMapHeight(uint x, uint y)
 {
     return map[y][x];
 }
 
-float vPanelMap::GetMaxHeight()
+float lPanelMap::GetMaxHeight()
 {
     uint sizeX = SizeXMap();
     uint sizeY = SizeYMap();
@@ -200,12 +200,12 @@ float vPanelMap::GetMaxHeight()
     return height;
 }
 
-uint vPanelMap::SizeXMap()
+uint lPanelMap::SizeXMap()
 {
     return map[0].Size();
 }
 
-uint vPanelMap::SizeYMap()
+uint lPanelMap::SizeYMap()
 {
     return map.Size();
 }

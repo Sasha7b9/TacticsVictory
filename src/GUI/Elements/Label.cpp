@@ -6,7 +6,7 @@
 
 struct StructText
 {
-    vLabel* label;
+    lLabel* label;
     const char* text;
 };
 
@@ -14,31 +14,35 @@ struct StructText
 static PODVector<StructText> mapTexts;  // »спользуетс€ дл€ перезагрузки при изменении €зыка
 
 
-void vLabel::ReloadLanguage()
+void lLabel::ReloadLanguage()
 {
     for(PODVector<StructText>::Iterator i = mapTexts.Begin(); i != mapTexts.End(); i++)
     {
-        i->label->SetText(gLocalization->Get(i->text));
+        const char *text = i->text;
+        if(*text)                   // WARN here it is unclear why there is an empty line. See function SetNewText.
+        {
+            i->label->SetText(gLocalization->Get(text));
+        }
     }
 }
 
 
-vLabel::vLabel(Context *context) :
+lLabel::lLabel(Context *context) :
     Text(context)
 {
 
 }
 
-void vLabel::RegisterObject(Context *context)
+void lLabel::RegisterObject(Context *context)
 {
-    context->RegisterFactory<vLabel>("UI");
+    context->RegisterFactory<lLabel>("UI");
 
     COPY_BASE_ATTRIBUTES(Text);
 }
 
-SharedPtr<vLabel> vLabel::Create(char *text_, int sizeFont, int width /* = -1 */, int height /* = -1 */)
+SharedPtr<lLabel> lLabel::Create(char *text_, int sizeFont, int width /* = -1 */, int height /* = -1 */)
 {
-    SharedPtr<vLabel> text(new vLabel(gContext));
+    SharedPtr<lLabel> text(new lLabel(gContext));
     text->SetFont(gFont, sizeFont);
     text->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_CENTER);
 
@@ -67,7 +71,7 @@ SharedPtr<vLabel> vLabel::Create(char *text_, int sizeFont, int width /* = -1 */
     return text;
 }
 
-void vLabel::SetNewText(const char *text)
+void lLabel::SetNewText(const char *text)
 {
     for(uint i = 0; i < mapTexts.Size(); i++)
     {
