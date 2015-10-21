@@ -5,6 +5,10 @@
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Menu/Console.h"
 #include "GUI/Menu/MenuOptions.h"
+#include "GUI/Menu/MenuMain.h"
+#include "GUI/Menu/MenuConfirmExit.h"
+#include "GUI/GuiEditor/GuiEditor.h"
+#include "GUI/GuiGame/GuiGame.h"
 #include "Core/Camera.h"
 #include "TacticsVictory.h"
 
@@ -27,29 +31,63 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     if(key == Urho3D::KEY_F1)
     {
         gConsole->Toggle(); 
-    } 
+    }
     else if(key == Urho3D::KEY_ESC)
     {
-        if(gGUI->MenuIsVisible())
-        {
-            if(gMenuOptions->IsVisible())
-            {
-                gGUI->SetVisibleMenu(gMenuOptions, false);
-            }
-        }
-        else if(gEngineConsole->IsVisible())
+        if (gEngineConsole->IsVisible())            // Engine console is opened
         {
             gEngineConsole->SetVisible(false);
         }
-        else if(!gGUI->MenuIsVisible())
+        else if (gConsole->IsVisible())             // Console is opened
         {
-            gGUI->SetVisibleMenu(true);
-            gCamera->SetEnabled(false);
+            gConsole->Toggle();
         }
-        else if(gGUI->MenuIsVisible())
+        else if (gGuiGame->IsVisible())             // We are in game
         {
-            gGUI->SetVisibleMenu(false);
-            gCamera->SetEnabled(true);
+            if (gGUI->MenuIsVisible())
+            {
+                gScene->SetTimeScale(1.0f);
+                gGUI->RemoveFromScreen();
+                gCamera->SetEnabled(true);
+            }
+            else
+            {
+                gScene->SetTimeScale(0.0f);
+                gGUI->AddToScreen();
+                gCamera->SetEnabled(false);
+            }
+        }
+        else if (gGuiEditor->IsVisible())           // We are in editor
+        {
+            if (gGUI->MenuIsVisible())
+            {
+                gGUI->RemoveFromScreen();
+                gCamera->SetEnabled(true);
+                gScene->SetTimeScale(1.0f);
+            }
+            else
+            {
+                gGUI->AddToScreen();
+                gCamera->SetEnabled(false);
+                gScene->SetTimeScale(0.0f);
+            }
+        }
+        else if (gGUI->MenuIsVisible())             // We are int main screen
+        {
+            if (gMenuOptions->IsVisible())
+            {
+                gGUI->SetVisibleMenu(gMenuOptions, false);
+            }
+            else if (gMenuMain->IsVisible())
+            {
+                gMenuMain->SetVisible(false);
+                gMenuConfirmExit->SetVisible(true);
+            }
+            else if (gMenuConfirmExit->IsVisible())
+            {
+                gMenuMain->SetVisible(true);
+                gMenuConfirmExit->SetVisible(false);
+            }
         }
     }
     else if(key == Urho3D::KEY_F11)
@@ -99,6 +137,4 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
     {
         gCursor->Update(time);
     }
-
-    LOGINFOF("%d", gUIRoot->IsHovering());
 }

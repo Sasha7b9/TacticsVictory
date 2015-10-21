@@ -31,11 +31,11 @@
     <Filter Include="GUI\Menu">
       <UniqueIdentifier>{d59d81ce-e79a-4ceb-97b2-8ee04f28064d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GUI\MenuEditor">
-      <UniqueIdentifier>{b1c2cabb-6352-4d4c-90e0-f7ecce681c26}</UniqueIdentifier>
+    <Filter Include="GUI\GuiEditor">
+      <UniqueIdentifier>{68b3d7bd-e4e3-495b-8196-ae51b4c67593}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GUI\MenuGame">
-      <UniqueIdentifier>{4488c4f0-230a-4221-9d2c-2cb09099ca42}</UniqueIdentifier>
+    <Filter Include="GUI\GuiGame">
+      <UniqueIdentifier>{6e57eb6d-acd4-4580-b878-0bc53db797e0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -162,17 +162,17 @@
     <ClCompile Include="src\GUI\Elements\ButtonToggled.cpp">
       <Filter>GUI\Elements</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\MenuEditor\MenuEditor.cpp">
-      <Filter>GUI\MenuEditor</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\MenuGame\MenuGame.cpp">
-      <Filter>GUI\MenuGame</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\Elements\Tab.cpp">
       <Filter>GUI\Elements</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\Menu\MenuConfirmExit.cpp">
       <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\GuiEditor\GuiEditor.cpp">
+      <Filter>GUI\GuiEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\GuiGame\GuiGame.cpp">
+      <Filter>GUI\GuiGame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -302,17 +302,20 @@
     <ClInclude Include="src\GUI\Elements\ButtonToggled.h">
       <Filter>GUI\Elements</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\MenuEditor\MenuEditor.h">
-      <Filter>GUI\MenuEditor</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\MenuGame\MenuGame.h">
-      <Filter>GUI\MenuGame</Filter>
-    </ClInclude>
     <ClInclude Include="src\GUI\Elements\Tab.h">
       <Filter>GUI\Elements</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\Menu\MenuConfirmExit.h">
       <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\MenuEvents.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GuiEditor\GuiEditor.h">
+      <Filter>GUI\GuiEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GuiGame\GuiGame.h">
+      <Filter>GUI\GuiGame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

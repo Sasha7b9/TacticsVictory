@@ -6,6 +6,7 @@
 #include "GUI/Elements/Button.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
+#include "GUI/Menu/MenuConfirmExit.h"
 
 
 lMenuMain::lMenuMain(Context *context) :
@@ -45,12 +46,21 @@ void lMenuMain::RegisterObject(Context* context)
 void lMenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
-    eventData = GetEventDataMap();
-    eventData[MenuEvent::P_TYPE] = mapButtonsActions[button];
-    SendEvent(E_MENU, eventData);
 
-    if(button == buttonNewGame)
+    if (button == buttonExit)
     {
-        buttonExit->SetText("Exit from game");
+        gMenuMain->SetVisible(false);
+        gGUI->SetVisibleMenu(gMenuConfirmExit, true);
+    }
+    else
+    {
+        eventData = GetEventDataMap();
+        eventData[MenuEvent::P_TYPE] = mapButtonsActions[button];
+        SendEvent(E_MENU, eventData);
+
+        if (button == buttonNewGame)
+        {
+            buttonExit->SetText("Exit from game");
+        }
     }
 }

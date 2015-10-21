@@ -18,6 +18,7 @@ private:
     lPlane currentPlane;
 
     void HandlePostRenderUpdate(StringHash eventType, VariantMap &eventData);
+    void HandleKeyDown(StringHash eventType, VariantMap& eventData);
 
     lEditor& operator=(const lEditor&)
     {};

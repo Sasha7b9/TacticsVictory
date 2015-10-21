@@ -173,8 +173,6 @@ using Urho3D::XMLFile;
 
 using Urho3D::Zone;
 
-using Urho3D::E_SLIDERCHANGED;
-using Urho3D::E_PRESSED;
 using Urho3D::E_RELEASED;
 using Urho3D::E_UPDATE;
 using Urho3D::E_POSTRENDERUPDATE;
@@ -182,7 +180,6 @@ using Urho3D::E_KEYDOWN;
 using Urho3D::E_UIMOUSECLICK;
 using Urho3D::E_UIMOUSECLICKEND;
 using Urho3D::E_MOUSEMOVE;
-using Urho3D::E_MOUSEBUTTONDOWN;
 using Urho3D::E_MOUSEBUTTONUP;
 using Urho3D::E_DRAGBEGIN;
 using Urho3D::E_DRAGMOVE;
@@ -223,8 +220,8 @@ class lLineTranslator2D;
 
 class lMenu;
 class lMenuConfirmExit;
-class lMenuEditor;
-class lMenuGame;
+class lGuiEditor;
+class lGuiGame;
 class lMenuMain;
 class lMenuOptions;
 

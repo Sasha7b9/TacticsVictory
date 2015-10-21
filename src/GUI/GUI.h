@@ -1,19 +1,7 @@
 #pragma once
 
 
-EVENT(E_MENU, MenuEvent)
-{
-    PARAM(P_TYPE, MenuEventType);
-}
-
-
-enum
-{
-    MenuEvent_MenuOptionsOpen = 0,
-    MenuEvent_NewGame = 1,
-    MenuEvent_OpenEditor = 3,
-    MenuEvent_ExitInOS = 4
-};
+#include "GUI/Menu/MenuEvents.h"
 
 
 class lWindow;
@@ -32,9 +20,17 @@ public:
     bool MenuIsVisible();
     void SetVisibleMenu(bool visible);
     void SetVisibleMenu(lWindow *menuWindow, bool visible);
+    // Return true, if cursor over the menu
+    bool UnderCursor();
+
+    void RemoveFromScreen();
+    void AddToScreen();
 
 private:
     lGUI& operator=(const lGUI&)
     {};
-    void HandleGuiEvent(StringHash eventType, VariantMap& eventData);
+    void HandleMenuEvent(StringHash eventType, VariantMap& eventData);
+
+    bool shownMenuMain = false;
+    bool shownMenuOptions = false;
 };

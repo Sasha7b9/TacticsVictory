@@ -46,7 +46,7 @@ lButton::lButton(UIElement *uielement, char *text, int width /* = -1 */, int hei
 
     SubscribeToEvent(this, E_HOVERBEGIN, HANDLER(lButton, HandleHoverBegin));
     SubscribeToEvent(this, E_HOVEREND, HANDLER(lButton, HandleHoverEnd));
-    SubscribeToEvent(this, E_MOUSEBUTTONDOWN, HANDLER(lButton, HandleMouseDown));
+    SubscribeToEvent(this, Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lButton, HandleMouseDown));
 }
 
 void lButton::RegisterObject(Context *context)

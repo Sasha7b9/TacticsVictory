@@ -21,8 +21,8 @@ Time            *gTime = nullptr;
 
 lCamera        *gCamera = nullptr;
 lCursor        *gCursor = nullptr;
-lMenuGame      *gMenuGame = nullptr;
-lMenuEditor    *gMenuEditor = nullptr;
+lGuiGame      *gGuiGame = nullptr;
+lGuiEditor    *gGuiEditor = nullptr;
 lEditor        *gEditor = nullptr;
 lSettings      *gSet = nullptr;
 lGUI           *gGUI = nullptr;

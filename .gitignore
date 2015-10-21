@@ -2,4 +2,8 @@
 *.pdb
 *.*log
 *.log
+*.obj
+*.dll
+*.pch
+*.exe
 Debug/TacticsVictory.tlog

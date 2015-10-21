@@ -28,7 +28,7 @@ lSliderWithTextAndButtons::lSliderWithTextAndButtons(UIElement *uielement, char 
     buttonLeft->SetRepeat(0.25f, 20.0f);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
-    SubscribeToEvent(buttonLeft, E_PRESSED, HANDLER(lSliderWithTextAndButtons, HandleButtonDown));
+    SubscribeToEvent(buttonLeft, Urho3D::E_PRESSED, HANDLER(lSliderWithTextAndButtons, HandleButtonDown));
     SubscribeToEvent(buttonLeft, E_HOVERBEGIN, HANDLER(lSliderWithTextAndButtons, HandleHoverBegin));
     SubscribeToEvent(buttonLeft, E_HOVEREND, HANDLER(lSliderWithTextAndButtons, HandleHoverEnd));
 
@@ -36,7 +36,7 @@ lSliderWithTextAndButtons::lSliderWithTextAndButtons(UIElement *uielement, char 
     buttonRight->SetRepeat(0.25f, 20.0f);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
-    SubscribeToEvent(buttonRight, E_PRESSED, HANDLER(lSliderWithTextAndButtons, HandleButtonDown));
+    SubscribeToEvent(buttonRight, Urho3D::E_PRESSED, HANDLER(lSliderWithTextAndButtons, HandleButtonDown));
     SubscribeToEvent(buttonRight, E_HOVERBEGIN, HANDLER(lSliderWithTextAndButtons, HandleHoverBegin));
     SubscribeToEvent(buttonRight, E_HOVEREND, HANDLER(lSliderWithTextAndButtons, HandleHoverEnd));
 

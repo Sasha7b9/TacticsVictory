@@ -57,13 +57,13 @@ void lPanelMain::AddTab(SharedPtr<lTab> tab)
     if(tabs.Empty())
     {
         tab->buttonTitle->SetChecked(true);
+        currentTab = tab;
+        AddChild(tab);
     }
 
     tabs.Push(tab);
 
     SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(lPanelMain, HandleToggedTitle));
-
-    AddChild(tab);
 
     tab->SetPosition(0, y0 + tab->buttonTitle->GetHeight() - 1);
     tab->SetFixedSize(GetWidth(), GetHeight() - y0 - tab->buttonTitle->GetHeight() + 1);
@@ -83,6 +83,18 @@ void lPanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
                 UnsubscribeFromEvent(tab->buttonTitle, Urho3D::E_TOGGLED);
                 tab->buttonTitle->SetChecked(false);
                 SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(lPanelMain, HandleToggedTitle));
+            }
+            else
+            {
+                RemoveChild(currentTab);
+                for (auto tab : tabs)
+                {
+                    if (tab->buttonTitle == button)
+                    {
+                        AddChild(tab);
+                        currentTab = tab;
+                    }
+                }
             }
         }
     }

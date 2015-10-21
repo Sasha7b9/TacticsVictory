@@ -13,7 +13,7 @@ public:
 
     static void RegisterObject(Context *context);
 
-    static SharedPtr<lTab> Create(UIElement *uilement, char *title);
+    static SharedPtr<lTab> Create(char *title);
 
     SharedPtr<lButtonToggled> buttonTitle;
 };

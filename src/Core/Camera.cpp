@@ -3,6 +3,7 @@
 
 #include "Camera.h"
 #include "GUI/Elements/Cursor.h"
+#include "GUI/GUI.h"
 
 
 lCamera::lCamera()
@@ -42,19 +43,35 @@ void lCamera::SetPosition(const Vector3& position, const Vector3& lookAt_)
 
 void lCamera::RotateOn(float _yaw, float _pitch)
 {
-    if(!enabled)
+    if (enabled)
     {
-        return;
+        yaw += _yaw;
+        pitch += _pitch;
+        cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
     }
-    yaw += _yaw;
-    pitch += _pitch;
-    cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
+}
+
+void lCamera::SetYAW(float _yaw)
+{
+    if (enabled)
+    {
+        Vector3 deltaPos = cameraNode->GetPosition();
+        cameraNode->SetPosition(Vector3::ZERO);
+
+        yaw = _yaw;
+        cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
+
+        cameraNode->SetPosition(-deltaPos);
+    }
 }
 
 void lCamera::LookAt(const Vector3 &lookAt_)
 {
+    Vector3 delta = lookAt_ - lookAt;
+
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
+    cameraNode->SetPosition(cameraNode->GetPosition() + delta);
 }
 
 void lCamera::Move(float time)
@@ -114,7 +131,7 @@ void lCamera::Move(float time)
     int dX = gInput->GetMouseMoveX();
     int dY = gInput->GetMouseMoveY();
 
-    if(dX || dY)
+    if((dX || dY) && !gGUI->UnderCursor())
     {
         IntVector2 posCursor = gCursor->GetCursor()->GetPosition();
         posCursor.x_ -= dX;
@@ -149,6 +166,7 @@ void lCamera::Move(float time)
             {
                 MoveOn(Direction_Back, -dY / k);
             }
+            gCursor->GetCursor()->SetPosition(posCursor);
         }
     }
 

@@ -42,6 +42,7 @@ SharedPtr<lButton> lWindow::AddButton(char *text, int x, int y, int width, int h
 {
     SharedPtr<lButton> retButton(new lButton(this, text, width, height));
     retButton->SetPosition(x, y);
+    AddChild(retButton);
     return retButton;
 }
 

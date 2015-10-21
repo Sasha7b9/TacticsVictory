@@ -12,11 +12,12 @@ public:
 
     void SetHeight(uint row, uint col, float height);
 
+    static const uint SIZE_BLOCK = 50;
+
 private:
     lTerrain& operator=(const lTerrain&)
     {};
 
-    const uint sizeBlock = 50;
     Vector<Vector<float> >map;
     Vector<Vector<SharedPtr<lTerrainBlock>>> blocks;
     uint numBlocksInZ = 0;

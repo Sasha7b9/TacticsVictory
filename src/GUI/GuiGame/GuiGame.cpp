@@ -1,14 +1,14 @@
 #include <stdafx.h>
 
 
-#include "MenuGame.h"
+#include "GuiGame.h"
 #include "GUI/Elements/Button.h"
 #include "GUI/Menu/PanelMap.h"
 #include "GUI/Menu/PanelMain.h"
 #include "GUI/Menu/PanelBottom.h"
 
 
-lMenuGame::lMenuGame(Context* context) :
+lGuiGame::lGuiGame(Context* context) :
     UIElement(context)
 {
     SetFixedSize(gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT));
@@ -29,25 +29,25 @@ lMenuGame::lMenuGame(Context* context) :
     int x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
     int y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
     buttonMap = panelBottom->AddButton("Map", x, y, width, height);
-    SubscribeToEvent(buttonMap, E_RELEASED, HANDLER(lMenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMap, E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
 
     x = (int)(gSet->GetInt(TV_PANEL_MAP_WIDTH) * 1.5f) - width / 2;
     buttonMainPanel = panelBottom->AddButton("Panel", x, y, width, height);
-    SubscribeToEvent(buttonMainPanel, E_RELEASED, HANDLER(lMenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMainPanel, E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
 
     x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
     buttonMenu = panelBottom->AddButton("Manu", x, y, width, height);
-    SubscribeToEvent(buttonMenu, E_RELEASED, HANDLER(lMenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMenu, E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
 }
 
-void lMenuGame::RegisterObject(Context* context)
+void lGuiGame::RegisterObject(Context* context)
 {
-    context->RegisterFactory<lMenuGame>("UI");
+    context->RegisterFactory<lGuiGame>("UI");
 
     COPY_BASE_ATTRIBUTES(UIElement);
 }
 
-void lMenuGame::HandleButtonRelease(StringHash, VariantMap &eventData)
+void lGuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
     lButton *button = (lButton*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
 
@@ -61,12 +61,17 @@ void lMenuGame::HandleButtonRelease(StringHash, VariantMap &eventData)
     }
 }
 
-bool lMenuGame::IntersectionX(lButton *button, int x)
+bool lGuiGame::IntersectionX(lButton *button, int x)
 {
     return x >= button->GetPosition().x_ && x <= button->GetPosition().x_ + button->GetWidth();
 }
 
-bool lMenuGame::CheckOnDeadZoneForCursorBottomScreen(int x)
+bool lGuiGame::CheckOnDeadZoneForCursorBottomScreen(int x)
 {
     return IntersectionX(buttonMap, x) || IntersectionX(buttonMainPanel, x) || IntersectionX(buttonMenu, x);
+}
+
+bool lGuiGame::IsInside(IntVector2 &position)
+{
+    return IsVisible() && (panelBottom->IsInside(position, true) || panelMain->IsInside(position, true) || panelMap->IsInside(position, true));
 }

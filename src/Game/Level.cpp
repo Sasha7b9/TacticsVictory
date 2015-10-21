@@ -2,6 +2,7 @@
 
 
 #include "Level.h"
+#include "Game/Objects/Terrain.h"
 
 
 Vector<Vector<float> > vLevel::map;
@@ -88,6 +89,18 @@ Vector<Vector<float> > vLevel::Load(char *fileName)
             }
         }
         fileRead->Close();
+    }
+
+    uint numRows = map.Size();
+
+    map.Resize((numRows / lTerrain::SIZE_BLOCK) * lTerrain::SIZE_BLOCK);
+
+
+    uint numCols = map[0].Size();
+
+    for (int i = 0; i < map.Size(); i++)
+    {
+        map[i].Resize((numCols / lTerrain::SIZE_BLOCK) * lTerrain::SIZE_BLOCK);
     }
 
     return map;

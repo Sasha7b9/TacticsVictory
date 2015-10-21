@@ -42,7 +42,6 @@ lTerrainBlock::lTerrainBlock(Vector<Vector<float> > &eMap, const Vector3 &shift_
 
 void lTerrainBlock::Rebuild(Vector<Vector<float>> &map_)
 {
-    float timeStart = gTime->GetElapsedTime();
     SAFE_DELETE_ARRAY(bufVert);
     SAFE_DELETE_ARRAY(bufInd);
 
@@ -120,8 +119,6 @@ void lTerrainBlock::Rebuild(Vector<Vector<float>> &map_)
     //shape->SetBox({-100.0f, -1.0f, -100.0f}, {100.0f, 1.0f, 100.0f});
 
     CalculateBoundingBox();
-
-    LOGINFOF("%f ms", (gTime->GetElapsedTime() - timeStart) * 1000.0f);
 }
 
 lTerrainBlock::~lTerrainBlock()

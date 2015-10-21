@@ -12,9 +12,9 @@ lImage::lImage(int width, int height) : Resource(gContext)
     image->SetSize(width, height, 4);
 }
 
-void lImage::SetPoint(uint x, uint y, const Color& color)
+void lImage::SetPoint(int x, int y, const Color& color)
 {
-    if(x < (uint)image->GetWidth() && y < (uint)image->GetHeight())
+    if(x < image->GetWidth() && y < image->GetHeight())
     {
         image->SetPixel((int)x, (int)y, color);
     }
@@ -49,7 +49,7 @@ void lImage::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
     int e = 2 * dy - dx;
     for(int i = 0; i <= dx; i++)
     {
-        SetPoint((uint)x, (uint)y, color);
+        SetPoint(x, y, color);
         while(e >= 0)
         {
             if(exchange)
@@ -156,6 +156,38 @@ void lImage::FillRegion(int x, int y, const Color &color, const Color &colorBoun
     }
 }
 
+void lImage::CopyImage(int x0, int y0, lImage &inImage)
+{
+    int xMin = x0;
+    int xMax = xMin + inImage.GetWidth();
+    if (xMax >= GetWidth())
+    {
+        xMax = GetWidth() - 1;
+    }
+
+    int yMin = y0;
+    int yMax = yMin + inImage.GetHeight();
+    if (yMax >= GetHeight())
+    {
+        yMax = GetHeight() - 1;
+    }
+
+    for (int x = x0; x < xMax; x++)
+    {
+        for (int y = y0; y < yMax; y++)
+        {
+            int curX = x - x0;
+            int curY = y - y0;
+            Color color = inImage.GetImage()->GetPixel(curX, curY);
+
+            if (color.a_ > 0.5f)
+            {
+                SetPoint(x, y, color);
+            }
+        }
+    }
+}
+
 
 #define FILL(a, b)                              \
     Color col = image->GetPixel(a, b);          \
@@ -186,12 +218,12 @@ void lImage::Replace4PointsBound(int x, int y, const Color &color)
     }
 }
 
-int lImage::GetWidth()
+int lImage::GetWidth() const
 {
     return image->GetWidth();
 }
 
-int lImage::GetHeight()
+int lImage::GetHeight() const
 {
     return image->GetHeight();
 }
@@ -210,11 +242,11 @@ void lImage::DrawCircle(float x, float y, float radius, const Color &color, floa
 {
     for (float angle = 0.0f; angle < 360.0f; angle += step)
     {
-        SetPoint((uint)(x + Cos(angle) * radius + 0.5f), (uint)(y + Sin(angle) * radius + 0.5f), color);
+        SetPoint((int)(x + Cos(angle) * radius + 0.5f), (int)(y + Sin(angle) * radius + 0.5f), color);
     }
 }
 
-IntVector2 lImage::GetHotSpot()
+IntVector2 lImage::GetHotSpot() const
 {
     return hotSpot;
 }

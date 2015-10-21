@@ -1,30 +1,30 @@
 #pragma once
 
 
-class lMenuEditor : public UIElement
+class lGuiGame : public UIElement
 {
-    OBJECT(lMenuEditor)
+    OBJECT(lGuiGame)
 
 public:
-    lMenuEditor(Context* context);
+    lGuiGame(Context* context);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context* context);
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
+    bool IsInside(IntVector2 &position);
 
 private:
-    lMenuEditor& operator=(const lMenuEditor&) {};
+    lGuiGame& operator=(const lGuiGame&)
+    {};
 
     SharedPtr<lButton> buttonMap;
     SharedPtr<lButton> buttonMainPanel;
     SharedPtr<lButton> buttonMenu;
 
-    SharedPtr<lButtonToggled> buttonMainFile;
-
     SharedPtr<lPanelBottom> panelBottom;
     SharedPtr<lPanelMap>    panelMap;
     SharedPtr<lPanelMain>   panelMain;
 
-    void HandleButtonRelease(StringHash eventType, VariantMap &eventData);
+    void HandleButtonRelease(StringHash, VariantMap &eventData);
 
     bool IntersectionX(lButton *button, int x);
 };

@@ -79,8 +79,6 @@ void lCursorShapes::CreateNormal(int numFrame)
 
     DRAW_LINE(border, 4, 0, 0, x1, y1, x2, y2, 0, 0);
 
-    //image->FillRegion(size - 1, size - 1, transparent, border);
-
     StructShape key = {TypeCursor_Normal, numFrame};
 
     map[key] = image;
@@ -93,41 +91,15 @@ void lCursorShapes::CreateSelected(int numFrame)
     SharedPtr<lImage> image(new lImage(size, size));
     image->Clear(transparent);
 
-    float angle0 = (float)numFrame;
-    float angle1 = numFrame + 180.0f;
+    int x1, y1, x2, y2;
 
-    float radius = size / 6.0f;
+    CalcXYforNormal(numFrame, &x1, &y1, &x2, &y2);
 
-    float x1 = size / 2.0f + Cos(angle0) * radius;
-    float y1 = size / 2.0f + Sin(angle0) * radius;
+    FillGradient(image, TypeCursor_Selected, numFrame);
 
-    float x2 = size / 2.0f + Cos(angle1) * radius;
-    float y2 = size / 2.0f + Sin(angle1) * radius;
+    DRAW_LINE(border, 4, 0, 0, x1, y1, x2, y2, 0, 0);
 
-    image->DrawLine(0, 0, (int)x1, (int)y1, Color::WHITE);
-    image->DrawLine(0, 0, (int)x2, (int)y2, Color::WHITE);
-    image->DrawLine(0, 0, (int)((x1 + x2) / 2.0f), (int)((y1 + y2) / 2.0f), Color::WHITE);
-    image->DrawLine((int)x1, (int)y1, (int)x2, (int)y2, Color::WHITE);
-
-    float delta = 10.0f;
-
-    if(angle0 > 225.0f - delta && angle0 < 225.0f + delta || angle0 > 45.0f - delta && angle0 < 45.0f + delta)
-    {
-
-    }
-    else
-    {
-        if(angle0 > 45.0f && angle0 < 225.0f)
-        {
-            image->FillRegion(size / 3 + 1, size / 3 - 1, Color::YELLOW);
-            image->FillRegion(size / 3 - 1, size / 3 + 1, Color::BLACK);
-        }
-        else
-        {
-            image->FillRegion(size / 3 + 1, size / 3 - 1, Color::BLACK);
-            image->FillRegion(size / 3 - 1, size / 3 + 1, Color::YELLOW);
-        }
-    }
+    FillGradient(image, TypeCursor_Selected, numFrame + 360);   // Draw circle
 
     StructShape key = {TypeCursor_Selected, numFrame};
 
@@ -314,8 +286,8 @@ void lCursorShapes::CreateBusy(int numFrame)
     }                   
 
 #undef DRAW_LINE
-#define DRAW_LINE(x0_, y0_, x1_, y1_)                                                               \
-    image->DrawLine(x0_, y0_, x1_, y1_, {colorComponent, colorComponent, colorComponent, 1.0f});    \
+#define DRAW_LINE(img, x0_, y0_, x1_, y1_)                                                               \
+    img->DrawLine(x0_, y0_, x1_, y1_, {colorComponent, colorComponent, colorComponent, 1.0f});    \
     CORRECTION_COLOR
 
 void lCursorShapes::FillGradient(lImage *image, TypeCursor type, int numFrame)
@@ -329,7 +301,7 @@ void lCursorShapes::FillGradient(lImage *image, TypeCursor type, int numFrame)
 
         for(int i = 0; i < width; i++)
         {
-            DRAW_LINE(i, 0, i, height);
+            DRAW_LINE(image, i, 0, i, height);
         }
     }
     else if(type == TypeCursor_Up || type == TypeCursor_Down)
@@ -338,7 +310,7 @@ void lCursorShapes::FillGradient(lImage *image, TypeCursor type, int numFrame)
 
         for(int i = 0; i < height; i++)
         {
-            DRAW_LINE(0, i, width, i);
+            DRAW_LINE(image, 0, i, width, i);
         }
     }
     else if(type == TypeCursor_TopLeft || type == TypeCursor_DownRight)
@@ -347,11 +319,11 @@ void lCursorShapes::FillGradient(lImage *image, TypeCursor type, int numFrame)
 
         for(int x = 1; x < width; x++)
         {
-            DRAW_LINE(x, 0, 0, x);
+            DRAW_LINE(image, x, 0, 0, x);
         }
         for(int x = 0; x < width; x++)
         {
-            DRAW_LINE(x, height, width, x);
+            DRAW_LINE(image, x, height, width, x);
         }
     }
     else if(type == TypeCursor_TopRight || type == TypeCursor_DownLeft)
@@ -360,11 +332,11 @@ void lCursorShapes::FillGradient(lImage *image, TypeCursor type, int numFrame)
 
         for(int y = height; y > 0; y--)
         {
-            DRAW_LINE(0, y, height - y, height);
+            DRAW_LINE(image, 0, y, height - y, height);
         }
         for(int x = 0; x < width; x++)
         {
-            DRAW_LINE(x, 0, width, height - x);
+            DRAW_LINE(image, x, 0, width, height - x);
         }
     }
     else if (type == TypeCursor_Busy)
@@ -380,37 +352,67 @@ void lCursorShapes::FillGradient(lImage *image, TypeCursor type, int numFrame)
 
         for (int x = 0; x < width; x++)
         {
-            DRAW_LINE(x, 0, width - x, height);
+            DRAW_LINE(image, x, 0, width - x, height);
         }
         for (int y = 0; y < height; y++)
         {
-            DRAW_LINE(width, y, 0, height - y);
+            DRAW_LINE(image, width, y, 0, height - y);
         }
     }
-    else if(type == TypeCursor_Normal)
+    else if(type == TypeCursor_Normal || type == TypeCursor_Selected)
     {
-        int x1, y1, x2, y2;
-
-        CalcXYforNormal(numFrame, &x1, &y1, &x2, &y2);
-
-        float dX = (float)fabs((double)(x2 - x1));
-        float dY = (float)fabs((double)(y2 - y1));
-
-        float numSteps = (dY > dX) ? dY : dX;
-        numSteps *= 200.0f;
-
-        float dColor = 1.0f / numSteps;
-        float colorComponent = 0.0f;
-
-        float stepX = (x2 - x1) / numSteps;
-        float stepY = (y2 - y1) / numSteps;
-
-        int step = 0;
-
-        for (float x = (float)x1, y = (float)y1; step < numSteps; step++, x += stepX, y += stepY)
+        if (type == TypeCursor_Selected && numFrame >= 360) // if numFrame > 360 - draw circle
         {
-            image->DrawLine(0, 0, (int)(x), (int)(y), {colorComponent, colorComponent, colorComponent, 1.0f});
-            colorComponent += dColor;
+            numFrame -= 360;
+            SharedPtr<lImage> imageCircle(new lImage(width, height));
+
+            float k = 2.0f;
+            float dColor = 1.0f / 360.0f / k;
+            float colorComponent = numFrame * dColor * 2 * k;
+            if (numFrame > 180)
+            {
+                colorComponent = 1.0f - (numFrame - 180) * dColor * 2 * k;
+                dColor = -dColor;
+            }
+
+            for (int x = 0; x < width; x++)
+            {
+                DRAW_LINE(imageCircle, x, 0, width - x, height);
+            }
+            for (int y = 0; y < height; y++)
+            {
+                DRAW_LINE(imageCircle, width, y, 0, height - y);
+            }
+
+            imageCircle->DrawCircle(width / 2.0f, height / 2.0f, 17.0f, border);
+            imageCircle->FillRegion(1, 1, transparent, border);
+            image->CopyImage(0, 0, *imageCircle);
+        }
+        else
+        {
+            int x1, y1, x2, y2;
+
+            CalcXYforNormal(numFrame, &x1, &y1, &x2, &y2);
+
+            float dX = (float)fabs((double)(x2 - x1));
+            float dY = (float)fabs((double)(y2 - y1));
+
+            float numSteps = (dY > dX) ? dY : dX;
+            numSteps *= 200.0f;
+
+            float dColor = 1.0f / numSteps;
+            float colorComponent = 0.0f;
+
+            float stepX = (x2 - x1) / numSteps;
+            float stepY = (y2 - y1) / numSteps;
+
+            int step = 0;
+
+            for (float x = (float)x1, y = (float)y1; step < numSteps; step++, x += stepX, y += stepY)
+            {
+                image->DrawLine(0, 0, (int)(x), (int)(y), {colorComponent, colorComponent, colorComponent, 1.0f});
+                colorComponent += dColor;
+            }
         }
     }
 }

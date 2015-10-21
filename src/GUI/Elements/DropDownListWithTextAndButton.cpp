@@ -38,14 +38,14 @@ lDropDownListWithTextAndButton::lDropDownListWithTextAndButton(char *text_, int 
     buttonLeft = new Button(gContext);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
-    SubscribeToEvent(buttonLeft, E_PRESSED, HANDLER(lDropDownListWithTextAndButton, HandleButtonDown));
+    SubscribeToEvent(buttonLeft, Urho3D::E_PRESSED, HANDLER(lDropDownListWithTextAndButton, HandleButtonDown));
     SubscribeToEvent(buttonLeft, E_HOVERBEGIN, HANDLER(lDropDownListWithTextAndButton, HandleHoverBegin));
     SubscribeToEvent(buttonLeft, E_HOVEREND, HANDLER(lDropDownListWithTextAndButton, HandleHoverEnd));
 
     buttonRight = new Button(gContext);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
-    SubscribeToEvent(buttonRight, E_PRESSED, HANDLER(lDropDownListWithTextAndButton, HandleButtonDown));
+    SubscribeToEvent(buttonRight, Urho3D::E_PRESSED, HANDLER(lDropDownListWithTextAndButton, HandleButtonDown));
     SubscribeToEvent(buttonRight, E_HOVERBEGIN, HANDLER(lDropDownListWithTextAndButton, HandleHoverBegin));
     SubscribeToEvent(buttonRight, E_HOVEREND, HANDLER(lDropDownListWithTextAndButton, HandleHoverEnd));
 

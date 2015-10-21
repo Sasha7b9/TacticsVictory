@@ -13,14 +13,15 @@
 #include "Core/Camera.h"
 #include "GUI/Menu/MenuMain.h"
 #include "GUI/Menu/MenuOptions.h"
-#include "GUI/MenuGame/MenuGame.h"
+#include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/PanelBottom.h"
 #include "GUI/Menu/PanelMap.h"
 #include "GUI/Menu/PanelMain.h"
 #include "GUI/Menu/Console.h"
 #include "GUI/Menu/WindowVariables.h"
 #include "GUI/Menu/MenuConfirmExit.h"
-#include "GUI/MenuEditor/MenuEditor.h"
+#include "GUI/GuiEditor/GuiEditor.h"
+#include "GUI/Menu/MenuEvents.h"
 
 
 lGUI::lGUI() : Object(gContext)
@@ -50,7 +51,7 @@ static void RegstrationObjects()
     lPanelBottom::RegisterObject(gContext);
     lPanelMap::RegisterObject(gContext);
     lPanelMain::RegisterObject(gContext);
-    lMenuEditor::RegisterObject(gContext);
+    lGuiEditor::RegisterObject(gContext);
 }
 
 static float GetPosCameraY()
@@ -124,45 +125,48 @@ void lGUI::Create()
     gMenuMain = new lMenuMain(gContext);
     gMenuMain->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
     gUIRoot->AddChild(gMenuMain);
-    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(lGUI, HandleGuiEvent));
+    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(lGUI, HandleMenuEvent));
 
     gMenuOptions = new lMenuOptions(gContext);
     gMenuOptions->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
     gUIRoot->AddChild(gMenuOptions);
-    SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(lGUI, HandleGuiEvent));
+    SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(lGUI, HandleMenuEvent));
     gMenuOptions->SetVisible(false);
 
-    gMenuGame = new lMenuGame(gContext);
-    gMenuGame->SetVisible(false);
-    gUIRoot->AddChild(gMenuGame);
+    gGuiGame = new lGuiGame(gContext);
+    gGuiGame->SetVisible(false);
+    gUIRoot->AddChild(gGuiGame);
 
-    gMenuEditor = new lMenuEditor(gContext);
-    gMenuEditor->SetVisible(false);
-    gUIRoot->AddChild(gMenuEditor);
+    gGuiEditor = new lGuiEditor(gContext);
+    gGuiEditor->SetName("GuiEditor");
+    gGuiEditor->SetVisible(false);
+    gUIRoot->AddChild(gGuiEditor);
 
     gMenuConfirmExit = new lMenuConfirmExit(gContext);
     gUIRoot->AddChild(gMenuConfirmExit);
     gMenuConfirmExit->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
+    gMenuConfirmExit->SetVisible(false);
+    SubscribeToEvent(gMenuConfirmExit, E_MENU, HANDLER(lGUI, HandleMenuEvent));
 
     gCursor = new lCursor();
 }
 
 bool lGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
 {
-    if (gMenuGame->IsVisible())
+    if (gGuiGame->IsVisible())
     {
-        return gMenuGame->CheckOnDeadZoneForCursorBottomScreen(x);
+        return gGuiGame->CheckOnDeadZoneForCursorBottomScreen(x);
     }
-    else if (gMenuEditor->IsVisible())
+    else if (gGuiEditor->IsVisible())
     {
-        return gMenuEditor->CheckOnDeadZoneForCursorBottomScreen(x);
+        return gGuiEditor->CheckOnDeadZoneForCursorBottomScreen(x);
     }
     return false;
 }
 
 bool lGUI::MenuIsVisible()
 {
-    return gMenuMain->IsVisible() || gMenuOptions->IsVisible();
+    return gMenuMain->IsVisible() || gMenuOptions->IsVisible() || gMenuConfirmExit->IsVisible();
 }
 
 void lGUI::SetVisibleMenu(bool visible)
@@ -180,7 +184,7 @@ void lGUI::SetVisibleMenu(lWindow *menuWindow, bool visible)
     }
 }
 
-void lGUI::HandleGuiEvent(StringHash, VariantMap& eventData)
+void lGUI::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     uint action = eventData[MenuEvent::P_TYPE].GetUInt();
 
@@ -196,4 +200,26 @@ void lGUI::HandleGuiEvent(StringHash, VariantMap& eventData)
     {
         gUIRoot->RemoveChild(gMenuOptions);
     }
+}
+
+void lGUI::RemoveFromScreen()
+{
+    shownMenuMain = gMenuMain->IsVisible();
+    shownMenuOptions = gMenuOptions->IsVisible();
+
+    gMenuMain->SetVisible(false);
+    gMenuOptions->SetVisible(false);
+}
+
+void lGUI::AddToScreen()
+{
+    gMenuMain->SetVisible(shownMenuMain);
+    gMenuOptions->SetVisible(shownMenuOptions);
+}
+
+bool lGUI::UnderCursor()
+{
+    IntVector2 pos = gCursor->GetCursor()->GetPosition();
+
+    return gGuiEditor->IsInside(pos) || gGuiGame->IsInside(pos);
 }

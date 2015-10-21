@@ -11,8 +11,8 @@ lTerrain::lTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
     uint mapSizeX = map[0].Size();
     uint mapSizeZ = map.Size();
 
-    numBlocksInZ = mapSizeZ / sizeBlock;
-    numBlocksInX = mapSizeX / sizeBlock;
+    numBlocksInZ = mapSizeZ / SIZE_BLOCK;
+    numBlocksInX = mapSizeX / SIZE_BLOCK;
 
     blocks.Resize(numBlocksInZ);
 
@@ -25,8 +25,8 @@ lTerrain::lTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
     {
         for(uint z = 0; z < numBlocksInZ; z++)
         {
-            Vector<Vector<float> > subMap = ExtractSubMap(x  * sizeBlock, z * sizeBlock, sizeBlock);
-            SharedPtr<lTerrainBlock> block(new lTerrainBlock(subMap, {(float)(x * sizeBlock) - 1.0f, 0.0f, -(float)(z * sizeBlock) + 1.0f}));
+            Vector<Vector<float> > subMap = ExtractSubMap(x  * SIZE_BLOCK, z * SIZE_BLOCK, SIZE_BLOCK);
+            SharedPtr<lTerrainBlock> block(new lTerrainBlock(subMap, {(float)(x * SIZE_BLOCK) - 1.0f, 0.0f, -(float)(z * SIZE_BLOCK) + 1.0f}));
             blocks[z][x] = block;
         }
     }
@@ -36,10 +36,10 @@ void lTerrain::SetHeight(uint row, uint col, float height)
 {
     map[row][col] = height;
 
-    uint posZ = row / sizeBlock;
-    uint posX = col / sizeBlock;
+    uint posZ = row / SIZE_BLOCK;
+    uint posX = col / SIZE_BLOCK;
 
-    Vector<Vector<float> > subMap = ExtractSubMap(posX * sizeBlock, posZ * sizeBlock, sizeBlock);
+    Vector<Vector<float> > subMap = ExtractSubMap(posX * SIZE_BLOCK, posZ * SIZE_BLOCK, SIZE_BLOCK);
     blocks[posZ][posZ]->Rebuild(subMap);
 }
 

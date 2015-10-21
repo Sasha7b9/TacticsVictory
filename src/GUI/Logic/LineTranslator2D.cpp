@@ -20,5 +20,8 @@ void lLineTranslator2D::Toggle()
 
 IntVector2 lLineTranslator2D::Update(float dT)
 {
-    return IntVector2(translatorX->Update(dT), translatorY->Update(dT));
+    int x = translatorX->Update(dT);
+    int y = translatorY->Update(dT);
+
+    return IntVector2(x, y);
 }

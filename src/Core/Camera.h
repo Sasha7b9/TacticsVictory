@@ -18,6 +18,7 @@ public:
     lCamera();
 
     void RotateOn(float yaw, float pitch);
+    void SetYAW(float yaw);
     void Move(float time);
     void SetEnabled(bool enabled);
     Vector3 GetPosition();

@@ -170,7 +170,7 @@ bool lSettings::GetIntFromChild(char *name, int *value)
 }
 
 
-const float SET::PANEL::SPEED = 1000.0f;
+const float SET::PANEL::SPEED = 100000.0f;
 const IntVector2 SET::WINDOW::SIZE = {SET::WINDOW::WIDTH, SET::WINDOW::HEIGHT};
 const IntVector2 SET::PANEL::BOTTOM::SIZE = {SET::PANEL::BOTTOM::WIDTH, SET::PANEL::BOTTOM::HEIGHT};
 const IntVector2 SET::PANEL::MAP::SIZE = {SET::PANEL::MAP::WIDTH, SET::PANEL::MAP::HEIGHT};

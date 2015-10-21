@@ -5,6 +5,7 @@
 #include "Core/Camera.h"
 #include "Game/Level.h"
 #include "GUI/Elements/Image.h"
+#include "GUI/Elements/Cursor.h"
 #include "GUI/Logic/LineTranslator2D.h"
 
 
@@ -21,6 +22,9 @@ lPanelMap::lPanelMap(Context *context) :
     IntVector2 posFinish = {-SET::PANEL::MAP::WIDTH, posStart.y_};
 
     translator = new lLineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), lLineTranslator2D::State_PointStart);
+
+    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lPanelMap, HandleMouseDown));
+    SubscribeToEvent(Urho3D::E_MOUSEMOVE, HANDLER(lPanelMap, HandleMouseMove));
 }
 
 
@@ -40,11 +44,11 @@ void lPanelMap::Update(float dT)
 {
     SetPosition(translator->Update(dT));
 
-    if(!parent_->IsVisible())
+    if (!parent_->IsVisible())
     {
         return;
     }
-
+    
     if(first)
     {
         map = vLevel::Get();
@@ -98,7 +102,7 @@ void lPanelMap::Update(float dT)
 
                 //if(prevY + 1 == posY)
                 {
-                    imageMap->SetPoint((uint)(1 + posX), (uint)(1 + posY), col);
+                    imageMap->SetPoint(1 + posX, 1 + posY, col);
                 }
                 /*
                 else
@@ -208,4 +212,32 @@ uint lPanelMap::SizeXMap()
 uint lPanelMap::SizeYMap()
 {
     return map.Size();
+}
+
+void lPanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
+{
+    if (parent_->IsVisible() && IsInside(gCursor->GetCursor()->GetPosition(), true))
+    {
+        int buttons = (int)eventData[Urho3D::MouseButtonDown::P_BUTTONS].GetInt();
+
+        if (buttons == Urho3D::MOUSEB_RIGHT)
+        {
+            IntVector2 coordMap = gCursor->GetCursor()->GetPosition() - GetPosition();
+
+            float xSpace = (coordMap.x_ - x0) / scale;
+            float zSpace = -(coordMap.y_ - y0) / scale;
+
+            gCamera->LookAt({xSpace, 0.0f, zSpace});
+        }
+    }
+}
+
+void lPanelMap::HandleMouseMove(StringHash eventType, VariantMap &eventData)
+{
+    if (parent_->IsVisible() && IsInside(gCursor->GetCursor()->GetPosition(), true) && (int)eventData[Urho3D::MouseMove::P_BUTTONS].GetInt() == Urho3D::MOUSEB_RIGHT)
+    {
+        eventData = GetEventDataMap();
+        eventData[Urho3D::MouseButtonDown::P_BUTTONS] = Urho3D::MOUSEB_RIGHT;
+        HandleMouseDown(eventType, eventData);
+    }
 }

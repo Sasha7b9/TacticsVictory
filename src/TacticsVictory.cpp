@@ -7,8 +7,8 @@
 #include "Game/Objects/Scene.h"
 #include "Game/Logic/Rotator.h"
 #include "Game/Logic/Movinator.h"
-#include "GUI/MenuGame/MenuGame.h"
-#include "GUI/MenuEditor/MenuEditor.h"
+#include "GUI/GuiGame/GuiGame.h"
+#include "GUI/GuiEditor/GuiEditor.h"
 #include "TacticsVictory.h"
 
 
@@ -152,8 +152,8 @@ void TacticsVictory::CreateNewGame()
 {
     SharedPtr<tvScene> scene(new tvScene());
     gCamera->SetEnabled(true);
-    gGUI->SetVisibleMenu(false);
-    gMenuGame->SetVisible(true);
+    gGUI->RemoveFromScreen();
+    gGuiGame->SetVisible(true);
     File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
     gUIRoot->SaveXML(file);
     file.Close();
@@ -165,8 +165,8 @@ void TacticsVictory::CreateEditorSession()
     {
         gEditor = new lEditor(gContext);
     }
-    gGUI->SetVisibleMenu(false);
-    gMenuEditor->SetVisible(true);
+    gGUI->RemoveFromScreen();
+    gGuiEditor->SetVisible(true);
     gCamera->SetEnabled(true);
     gEditor->Run();
 }

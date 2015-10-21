@@ -29,6 +29,9 @@ private:
     float scale = 0.0f;
     bool first = true;
 
+    void HandleMouseDown(StringHash eventType, VariantMap &eventData);
+    void HandleMouseMove(StringHash eventType, VariantMap &eventData);
+
     float GetMapHeight(uint x, uint y);
     float GetMaxHeight();
     uint SizeXMap();

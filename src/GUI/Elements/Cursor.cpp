@@ -64,7 +64,7 @@ void lCursor::Update(float dT)
         int height = gGraphics->GetHeight();
         int numFrame = (int)angle0 / 10;
 
-        if(!gGUI->MenuIsVisible())
+        if(!gGUI->MenuIsVisible() && !gGUI->UnderCursor())
         {
             if(posX < delta && posY < delta)
             {

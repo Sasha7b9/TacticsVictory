@@ -26,5 +26,7 @@ private:
     SharedPtr<lLineTranslator2D> translator;
     Vector<SharedPtr<lTab>> tabs;
 
+    SharedPtr<lTab> currentTab;
+
     void HandleToggedTitle(StringHash eventType, VariantMap &eventData);
 };
