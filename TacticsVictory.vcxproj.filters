@@ -174,6 +174,9 @@
     <ClCompile Include="src\GUI\GuiGame\GuiGame.cpp">
       <Filter>GUI\GuiGame</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\Elements\Hint.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -316,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="src\GUI\GuiGame\GuiGame.h">
       <Filter>GUI\GuiGame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\Hint.h">
+      <Filter>GUI\Elements</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

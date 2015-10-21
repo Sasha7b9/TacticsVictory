@@ -21,24 +21,33 @@ lGuiEditor::lGuiEditor(Context* context) :
     panelMain = new lPanelMain(gContext);
     AddChild(panelMain);
 
+    int width = 100;
+    int height = 19;
+    int dY = 24;
+    int y = 10;
+
     // Tab "File"
     SharedPtr<lTab> tabFile(lTab::Create("File"));
-    SharedPtr<lButton> btnFileOpen = tabFile->AddButton("Open", 10, 10);
+    SharedPtr<lButton> btnFileOpen = tabFile->AddButton("Load", 10, y, width, height);
+    btnFileOpen->SetHint("Load map from file");
+    SharedPtr<lButton> btnFileSave = tabFile->AddButton("Save", 10, y += dY, width, height);
+    btnFileSave->SetHint("Save map to file");
+    SharedPtr<lButton> btnNewMap = tabFile->AddButton("New map", 10, y += dY, width, height);
+    btnNewMap->SetHint("Create new map");
     panelMain->AddTab(tabFile);
 
     // Tab "Edit"
     SharedPtr<lTab> tabEdit(lTab::Create("Edit"));
-    SharedPtr<lButton> btnFileSave = tabEdit->AddButton("Save", 200, 10);
     panelMain->AddTab(tabEdit);
 
     panelBottom = new lPanelBottom(gContext);
     panelBottom->SetPosition(0, gSet->GetInt(TV_SCREEN_HEIGHT) - gSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
 
-    int width = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_WIDTH);
-    int height = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_HEIGHT);
+    width = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_WIDTH);
+    height = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_HEIGHT);
 
     int x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
-    int y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
+    y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
 
     buttonMap = panelBottom->AddButton("Map", x, y, width, height);
     SubscribeToEvent(buttonMap, E_RELEASED, HANDLER(lGuiEditor, HandleButtonRelease));

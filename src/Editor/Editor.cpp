@@ -5,6 +5,7 @@
 #include "Core/Camera.h"
 #include "Game/Level.h"
 #include "GUI/Elements/Cursor.h"
+#include "GUI/Elements/Hint.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 
@@ -44,8 +45,9 @@ void lEditor::Run()
     gCamera->SetPosition({0.0f, 25.0f, 0.0f}, {level[0].Size() / 2.0f, 0.0f, -(level.Size() / 2.0f)});
     lightNode->SetPosition({level[0].Size() / 2.0f, 50.0f, -(level.Size() / 2.0f)});
 
-    SubscribeToEvent(E_POSTRENDERUPDATE, HANDLER(lEditor, HandlePostRenderUpdate));
-    SubscribeToEvent(E_KEYDOWN, HANDLER(lEditor, HandleKeyDown));
+    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(lEditor, HandlePostRenderUpdate));
+    SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(lEditor, HandleKeyDown));
+    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lEditor, HandleMouseDown));
 }
 
 void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &eventData)
@@ -91,8 +93,14 @@ void lEditor::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         gGuiEditor->TogglePanelMap();
     }
-    else if (key == Urho3D::KEY_B)
+}
+
+void lEditor::HandleMouseDown(StringHash, VariantMap&)
+{
+    if(gHint && gCounterHint != 0)
     {
-        gCamera->SetYAW(0.0f);
+        gUIRoot->RemoveChild(gHint);
+        gHint = nullptr;
     }
+    gCounterHint++;
 }

@@ -123,9 +123,9 @@ void TacticsVictory::InitLocalizationSystem()
 
 void TacticsVictory::SubscribeToEvents()
 {
-    SubscribeToEvent(E_UPDATE, HANDLER(TacticsVictory, HandleUpdate));
-    SubscribeToEvent(E_POSTRENDERUPDATE, HANDLER(TacticsVictory, HandlePostRenderUpdate));
-    SubscribeToEvent(E_KEYDOWN, HANDLER(TacticsVictory, HandleKeyDown));
+    SubscribeToEvent(Urho3D::E_UPDATE, HANDLER(TacticsVictory, HandleUpdate));
+    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(TacticsVictory, HandlePostRenderUpdate));
+    SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(TacticsVictory, HandleKeyDown));
     SubscribeToEvent(E_MENU, HANDLER(TacticsVictory, HandleMenuEvent));
 }
 

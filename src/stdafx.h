@@ -174,9 +174,6 @@ using Urho3D::XMLFile;
 using Urho3D::Zone;
 
 using Urho3D::E_RELEASED;
-using Urho3D::E_UPDATE;
-using Urho3D::E_POSTRENDERUPDATE;
-using Urho3D::E_KEYDOWN;
 using Urho3D::E_UIMOUSECLICK;
 using Urho3D::E_UIMOUSECLICKEND;
 using Urho3D::E_MOUSEMOVE;
@@ -211,6 +208,8 @@ class lEditor;
 
 class lGovernorFloat;
 class lGUI;
+
+class lHint;
 
 class lImage;
 

@@ -41,37 +41,18 @@ void lCamera::SetPosition(const Vector3& position, const Vector3& lookAt_)
     cameraNode->LookAt(lookAt);
 }
 
-void lCamera::RotateOn(float _yaw, float _pitch)
-{
-    if (enabled)
-    {
-        yaw += _yaw;
-        pitch += _pitch;
-        cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
-    }
-}
-
-void lCamera::SetYAW(float _yaw)
-{
-    if (enabled)
-    {
-        Vector3 deltaPos = cameraNode->GetPosition();
-        cameraNode->SetPosition(Vector3::ZERO);
-
-        yaw = _yaw;
-        cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
-
-        cameraNode->SetPosition(-deltaPos);
-    }
-}
-
 void lCamera::LookAt(const Vector3 &lookAt_)
 {
-    Vector3 delta = lookAt_ - lookAt;
-
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
+}
+
+void lCamera::ParallelTranslateLookAt(const Vector3 &lookAt_)
+{
+    Vector3 delta = lookAt_ - lookAt;
+    lookAt = lookAt_;
     cameraNode->SetPosition(cameraNode->GetPosition() + delta);
+    cameraNode->LookAt(lookAt);
 }
 
 void lCamera::Move(float time)

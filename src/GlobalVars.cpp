@@ -32,3 +32,5 @@ lMenuOptions   *gMenuOptions = nullptr;
 
 lMenuConfirmExit    *gMenuConfirmExit = nullptr;
 lWindowVariables    *gWindowVars = nullptr;
+lHint               *gHint = nullptr;
+int                 *gCounterHint = 0;

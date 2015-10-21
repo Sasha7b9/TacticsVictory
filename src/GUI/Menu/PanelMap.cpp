@@ -227,7 +227,7 @@ void lPanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
             float xSpace = (coordMap.x_ - x0) / scale;
             float zSpace = -(coordMap.y_ - y0) / scale;
 
-            gCamera->LookAt({xSpace, 0.0f, zSpace});
+            gCamera->ParallelTranslateLookAt({xSpace, 0.0f, zSpace});
         }
     }
 }

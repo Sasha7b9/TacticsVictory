@@ -8,6 +8,7 @@
 #include "GUI/Menu/MenuMain.h"
 #include "GUI/Menu/MenuConfirmExit.h"
 #include "GUI/GuiEditor/GuiEditor.h"
+#include "GUi/Elements/Hint.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "Core/Camera.h"
 #include "TacticsVictory.h"
@@ -27,6 +28,8 @@ void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
 void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
 {
     int key = eventData[Urho3D::KeyDown::P_KEY].GetInt();
+
+    gUIRoot->RemoveChild(gHint);
 
     if(key == Urho3D::KEY_F1)
     {

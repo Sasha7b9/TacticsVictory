@@ -4,6 +4,7 @@
 #include "Button.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
+#include "GUI/Elements/Hint.h"
 
 
 lButton::lButton(Context *context) :
@@ -61,6 +62,11 @@ void lButton::SetText(char *text)
     label->SetNewText(text);
 }
 
+void lButton::SetHint(char *text)
+{
+    hint = new lHint(text);
+}
+
 void lButton::HandleHoverBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
@@ -74,4 +80,25 @@ void lButton::HandleHoverEnd(StringHash, VariantMap&)
 void lButton::HandleMouseDown(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
+}
+
+void lButton::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Cursor* cursor)
+{
+    Button::OnClickBegin(position, screenPosition, button, buttons, qualifiers, cursor);
+
+    if(buttons == Urho3D::MOUSEB_RIGHT)
+    {
+        if(hint)
+        {
+            if(gHint)
+            {
+                gUIRoot->RemoveChild(gHint);
+            }
+            hint->SetPosition(screenPosition.x_, screenPosition.y_ - hint->GetHeight());
+            gUIRoot->AddChild(hint);
+            hint->BringToFront();
+            gHint = hint;
+            gCounterHint = 0;
+        }
+    }
 }

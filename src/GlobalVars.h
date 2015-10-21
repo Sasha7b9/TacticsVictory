@@ -32,3 +32,5 @@ extern lGuiGame            *gGuiGame;
 extern lGuiEditor          *gGuiEditor;
 extern lMenuOptions        *gMenuOptions;
 extern lMenuConfirmExit    *gMenuConfirmExit;
+extern lHint               *gHint;
+extern int                 *gCounterHint;

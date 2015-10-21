@@ -352,6 +352,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\Elements\CursorShapes.cpp" />
     <ClCompile Include="src\GUI\Elements\DropDownListWithTextAndButton.cpp" />
     <ClCompile Include="src\GUI\Elements\GovernorFloat.cpp" />
+    <ClCompile Include="src\GUI\Elements\Hint.cpp" />
     <ClCompile Include="src\GUI\Elements\Image.cpp" />
     <ClCompile Include="src\GUI\Elements\Label.cpp" />
     <ClCompile Include="src\GUI\Elements\Slider.cpp" />
@@ -402,6 +403,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\Elements\CursorShapes.h" />
     <ClInclude Include="src\GUI\Elements\DropDownListWithTextAndButton.h" />
     <ClInclude Include="src\GUI\Elements\GovernorFloat.h" />
+    <ClInclude Include="src\GUI\Elements\Hint.h" />
     <ClInclude Include="src\GUI\Elements\Image.h" />
     <ClInclude Include="src\GUI\Elements\Label.h" />
     <ClInclude Include="src\GUI\Elements\Slider.h" />
