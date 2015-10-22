@@ -14,6 +14,7 @@
 #include "Editor/Editor.h"
 #include "Game/Level.h"
 #include "Core/Camera.h"
+#include "GlobalFunctions.h"
 
 
 lGuiEditor::lGuiEditor(Context* context) :
@@ -106,7 +107,10 @@ void lGuiEditor::HandleButtonRelease(StringHash, VariantMap &eventData)
     else if (button == btnNewMap)
     {
         windowNewMap->SetVisible(!windowNewMap->IsVisible());
-        windowNewMap->BringToFront();
+        if(windowNewMap->IsVisible())
+        {
+            windowNewMap->BringToFront();
+        }
     }
 }
 
@@ -159,7 +163,7 @@ void lGuiEditor::CreateWindows()
     SubscribeToEvent(buttonCreateMap, Urho3D::E_RELEASED, HANDLER(lGuiEditor, HandleCreateNewMap));
 
     windowNewMap->SetFixedSize(windowNewMap->GetSize());
-    windowNewMap->SetInCenterScreen();
+    SetWindowInCenterScreen(windowNewMap);
     gUIRoot->AddChild(windowNewMap);
     windowNewMap->SetVisible(false);
 }
@@ -197,6 +201,11 @@ void lGuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
             gCamera->SetEnabled(true);
             gScene->SetTimeScale(1.0f);
         }
+        else if(gFileSelector)
+        {
+            UnsubscribeFromEvent(gFileSelector, Urho3D::E_FILESELECTED);
+            SAFE_DELETE(gFileSelector);
+        }
         else
         {
             if (windowNewMap->IsVisible())
@@ -216,10 +225,33 @@ void lGuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
 
 void lGuiEditor::HandleOpenMapFromFile(StringHash, VariantMap&)
 {
+    gFileSelector = new FileSelector(gContext);
 
+    XMLFile *style = gCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
+    gFileSelector->SetDefaultStyle(style);
+    gFileSelector->SetButtonTexts("Ok", "Cancel");
+    gFileSelector->GetWindow()->SetResizable(false);
+
+    SetWindowInCenterScreen(gFileSelector->GetWindow());
+
+    SubscribeToEvent(gFileSelector, Urho3D::E_FILESELECTED, HANDLER(lGuiEditor, HandleFileOpen));
 }
 
 void lGuiEditor::HandleSaveMapToFile(StringHash, VariantMap&)
 {
 
+}
+
+void lGuiEditor::HandleFileOpen(StringHash, VariantMap& eventData)
+{
+    UnsubscribeFromEvent(gFileSelector, Urho3D::E_FILESELECTED);
+
+    bool ok = (bool)eventData[Urho3D::FileSelected::P_OK].GetBool();
+
+    if(ok)
+    {
+
+    }
+    
+    SAFE_DELETE(gFileSelector);
 }

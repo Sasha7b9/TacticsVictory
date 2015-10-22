@@ -46,6 +46,7 @@ typedef unsigned char uchar;
 #include <Urho3D/UI/Button.h>
 #include <Urho3D/UI/Cursor.h>
 #include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/UI/FileSelector.h>
 #include <Urho3D/UI/LineEdit.h>
 #include <Urho3D/UI/ScrollBar.h>
 #include <Urho3D/UI/Sprite.h>
@@ -101,6 +102,7 @@ using Urho3D::DropDownList;
 using Urho3D::Engine;
 
 using Urho3D::File;
+using Urho3D::FileSelector;
 using Urho3D::FileSystem;
 using Urho3D::Font;
 

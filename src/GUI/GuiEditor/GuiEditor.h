@@ -39,6 +39,7 @@ private:
     void HandleKeyDown(StringHash, VariantMap&);
     void HandleOpenMapFromFile(StringHash, VariantMap&);
     void HandleSaveMapToFile(StringHash, VariantMap&);
+    void HandleFileOpen(StringHash, VariantMap&);
 
     bool IntersectionX(lButton *button, int x);
     void CreateWindows();

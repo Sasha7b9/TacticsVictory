@@ -55,7 +55,8 @@ void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &)
     {
         return;
     }
-    if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor())
+
+    if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT | Urho3D::MOUSEB_MIDDLE))
     {
         IntVector2 pos = gCursor->GetCursor()->GetPosition();
 

@@ -23,13 +23,6 @@ void lWindow::RegisterObject(Context *context)
     COPY_BASE_ATTRIBUTES(Window);
 }
 
-void lWindow::SetInCenterScreen()
-{
-    int x = (gSet->GetInt(TV_SCREEN_WIDTH)) / 2 - GetWidth() / 2;
-    int y = (gSet->GetInt(TV_SCREEN_HEIGHT)) / 2 - GetHeight() / 2;
-    SetPosition(x, y);
-}
-
 bool lWindow::IsChildOfParent()
 {
     return gUIRoot->FindChild(this) != Urho3D::M_MAX_UNSIGNED;

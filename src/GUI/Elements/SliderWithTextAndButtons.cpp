@@ -6,8 +6,9 @@
 #include "GUI/Elements/Label.h"
 
 
-lSliderWithTextAndButtons::lSliderWithTextAndButtons(UIElement *uielement, char *text_, int min, int max) :
-    UIElement(gContext)
+lSliderWithTextAndButtons::lSliderWithTextAndButtons(UIElement *uielement, char *text_, int min, int max, int step_) :
+    UIElement(gContext),
+    step(step_)
 {
     SharedPtr<Window> window(new Window(gContext));
     window->SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
