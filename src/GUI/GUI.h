@@ -26,6 +26,7 @@ public:
     void RemoveFromScreen();
     void AddToScreen();
 
+
 private:
     lGUI& operator=(const lGUI&)
     {};

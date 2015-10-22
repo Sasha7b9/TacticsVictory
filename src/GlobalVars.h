@@ -19,10 +19,12 @@ extern PhysicsWorld     *gPhysicsWorld;
 extern Font             *gFont;
 extern Time             *gTime;
 
-extern lCamera             *gCamera;
-extern lCursor             *gCursor;
-extern lEditor             *gEditor;
-extern lSettings           *gSet;
+extern lCamera          *gCamera;
+extern lCursor          *gCursor;
+extern lEditor          *gEditor;
+extern lSettings        *gSet;
+extern lLevel           *gLevel;
+extern lTerrain         *gTerrain;
 
 extern lGUI                *gGUI;
 extern lConsole            *gConsole;

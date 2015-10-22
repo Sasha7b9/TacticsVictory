@@ -173,19 +173,6 @@ using Urho3D::XMLFile;
 
 using Urho3D::Zone;
 
-using Urho3D::E_RELEASED;
-using Urho3D::E_UIMOUSECLICK;
-using Urho3D::E_UIMOUSECLICKEND;
-using Urho3D::E_MOUSEMOVE;
-using Urho3D::E_MOUSEBUTTONUP;
-using Urho3D::E_DRAGBEGIN;
-using Urho3D::E_DRAGMOVE;
-using Urho3D::E_DRAGEND;
-using Urho3D::E_ITEMSELECTED;
-using Urho3D::E_TEXTFINISHED;
-using Urho3D::E_HOVERBEGIN;
-using Urho3D::E_HOVEREND;
-
 using Urho3D::Corner;
 
 #include <d3d9types.h>
@@ -214,6 +201,7 @@ class lHint;
 class lImage;
 
 class lLabel;
+class lLevel;
 class lLineTranslator1D;
 class lLineTranslator2D;
 

@@ -25,10 +25,10 @@ void lEditor::Run()
     float dColor = 0.3f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    //Vector<Vector<float> > level = vLevel::CreateRandom(100, 100);
-    Vector<Vector<float> > level = vLevel::Load("input.txt");
+    //Vector<Vector<float> > level = gLevel->CreateRandom(100, 100);
+    Vector<Vector<float> > level = gLevel->Load("input.txt");
 
-    terrain = new lTerrain(level);
+    gTerrain = new lTerrain(level);
 
     SharedPtr<Node> lightNode(gScene->CreateChild("LightNode"));
 
@@ -40,7 +40,6 @@ void lEditor::Run()
     light->SetShadowBias(Urho3D::BiasParameters(0.00025f, 0.5f));
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
-    gRenderer->SetShadowMapSize(2048);
 
     gCamera->SetPosition({0.0f, 25.0f, 0.0f}, {level[0].Size() / 2.0f, 0.0f, -(level.Size() / 2.0f)});
     lightNode->SetPosition({level[0].Size() / 2.0f, 50.0f, -(level.Size() / 2.0f)});
@@ -50,8 +49,12 @@ void lEditor::Run()
     SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lEditor, HandleMouseDown));
 }
 
-void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &eventData)
+void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &)
 {
+    if (gTerrain->Empty())
+    {
+        return;
+    }
     if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor())
     {
         IntVector2 pos = gCursor->GetCursor()->GetPosition();
@@ -61,7 +64,7 @@ void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &eventData)
 
         Ray ray = gCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
 
-        lPlane plane = terrain->GetIntersection(ray);
+        lPlane plane = gTerrain->GetIntersection(ray);
 
         if (!plane.IsZero())
         {
@@ -72,13 +75,15 @@ void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &eventData)
         }
     }
 
+    /*
     float deltaStep = (float)eventData[Urho3D::PostRenderUpdate::P_TIMESTEP].GetFloat();
 
     static float currentHeight = 0.0f;
 
     currentHeight += deltaStep * 10.0f;
 
-    terrain->SetHeight(5, 5, currentHeight);
+    gTerrain->SetHeight(5, 5, currentHeight);
+    */
 }
 
 void lEditor::HandleKeyDown(StringHash, VariantMap& eventData)
@@ -104,3 +109,4 @@ void lEditor::HandleMouseDown(StringHash, VariantMap&)
     }
     gCounterHint++;
 }
+

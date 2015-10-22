@@ -45,8 +45,8 @@ lButton::lButton(UIElement *uielement, char *text, int width /* = -1 */, int hei
         SetFixedSize(width, height);
     }
 
-    SubscribeToEvent(this, E_HOVERBEGIN, HANDLER(lButton, HandleHoverBegin));
-    SubscribeToEvent(this, E_HOVEREND, HANDLER(lButton, HandleHoverEnd));
+    SubscribeToEvent(this, Urho3D::E_HOVERBEGIN, HANDLER(lButton, HandleHoverBegin));
+    SubscribeToEvent(this, Urho3D::E_HOVEREND, HANDLER(lButton, HandleHoverEnd));
     SubscribeToEvent(this, Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lButton, HandleMouseDown));
 }
 

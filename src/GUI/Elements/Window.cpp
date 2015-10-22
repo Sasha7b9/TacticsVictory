@@ -3,7 +3,9 @@
 
 #include "Window.h"
 #include "GUI/Elements/Button.h"
+#include "GUI/Elements/Label.h"
 #include "GUI/Elements/ButtonToggled.h"
+#include "GUI/Elements/SliderWithTextAndButtons.h"
 
 
 lWindow::lWindow(Context *context) :
@@ -21,10 +23,10 @@ void lWindow::RegisterObject(Context *context)
     COPY_BASE_ATTRIBUTES(Window);
 }
 
-void lWindow::SetInCenterRect(const IntRect& rect)
+void lWindow::SetInCenterScreen()
 {
-    int x = (rect.right_ + rect.left_) / 2 - GetWidth() / 2;
-    int y = (rect.bottom_ + rect.top_) / 2 - GetHeight() / 2;
+    int x = (gSet->GetInt(TV_SCREEN_WIDTH)) / 2 - GetWidth() / 2;
+    int y = (gSet->GetInt(TV_SCREEN_HEIGHT)) / 2 - GetHeight() / 2;
     SetPosition(x, y);
 }
 
@@ -38,10 +40,18 @@ void lWindow::Toggle()
     SetVisible(!IsVisible());
 }
 
+bool lWindow::IsInside(IntVector2 position, bool isScreen)
+{
+    return Window::IsInside(position, isScreen) && IsVisible() && parent_;
+}
+
 SharedPtr<lButton> lWindow::AddButton(char *text, int x, int y, int width, int height)
 {
     SharedPtr<lButton> retButton(new lButton(this, text, width, height));
-    retButton->SetPosition(x, y);
+    if (x != -1 && y != -1)
+    {
+        retButton->SetPosition(x, y);
+    }
     AddChild(retButton);
     return retButton;
 }
@@ -50,5 +60,24 @@ SharedPtr<lButtonToggled> lWindow::AddButtonToggled(char *text, int x, int y, in
 {
     SharedPtr<lButtonToggled> retButton(new lButtonToggled(this, text, width, height));
     retButton->SetPosition(x, y);
+    AddChild(retButton);
     return retButton;
+}
+
+SharedPtr<lSliderWithTextAndButtons> lWindow::AddSlider(char *text, int min, int max, int x, int y)
+{
+    SharedPtr<lSliderWithTextAndButtons> slider(new lSliderWithTextAndButtons(this, text, min, max));
+    AddChild(slider);
+    if (x != -1 && y != -1)
+    {
+        slider->SetPosition(x, y);
+    }
+    return slider;
+}
+
+SharedPtr<lLabel> lWindow::AddLabel(char *text)
+{
+    SharedPtr<lLabel> label(lLabel::Create(text));
+    AddChild(label);
+    return label;
 }

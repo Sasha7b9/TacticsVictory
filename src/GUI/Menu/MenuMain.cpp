@@ -9,8 +9,8 @@
 #include "GUI/Menu/MenuConfirmExit.h"
 
 
-lMenuMain::lMenuMain(Context *context) :
-    lWindow(context)
+lMenuMain::lMenuMain(Context *) :
+    lWindow()
 {
     SetLayout(Urho3D::LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
@@ -23,10 +23,10 @@ lMenuMain::lMenuMain(Context *context) :
     buttonEditor = new lButton(this, "Editor");
     buttonOptions = new lButton(this, "Options");
     buttonExit = new lButton(this, "Exit");
-    SubscribeToEvent(buttonOptions, E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonEditor, E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonNewGame, E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonOptions, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonEditor, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonNewGame, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
 
     text->SetWidth(GetWidth());
 

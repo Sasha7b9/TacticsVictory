@@ -13,8 +13,6 @@ public:
     void Run();
 
 private:
-
-    SharedPtr<lTerrain> terrain;
     lPlane currentPlane;
 
     void HandlePostRenderUpdate(StringHash eventType, VariantMap &eventData);

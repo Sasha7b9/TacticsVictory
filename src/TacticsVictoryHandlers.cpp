@@ -62,18 +62,6 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
         }
         else if (gGuiEditor->IsVisible())           // We are in editor
         {
-            if (gGUI->MenuIsVisible())
-            {
-                gGUI->RemoveFromScreen();
-                gCamera->SetEnabled(true);
-                gScene->SetTimeScale(1.0f);
-            }
-            else
-            {
-                gGUI->AddToScreen();
-                gCamera->SetEnabled(false);
-                gScene->SetTimeScale(0.0f);
-            }
         }
         else if (gGUI->MenuIsVisible())             // We are int main screen
         {

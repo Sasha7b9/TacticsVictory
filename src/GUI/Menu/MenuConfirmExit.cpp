@@ -9,8 +9,8 @@
 
 
 
-lMenuConfirmExit::lMenuConfirmExit(Context *context) :
-    lWindow(context)
+lMenuConfirmExit::lMenuConfirmExit(Context *) :
+    lWindow()
 {
     SetLayout(Urho3D::LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
     SharedPtr<lLabel> label(lLabel::Create("Exit in OS?", 20));
@@ -22,8 +22,8 @@ lMenuConfirmExit::lMenuConfirmExit(Context *context) :
     buttonOk = new lButton(layer, "Ok");
     buttonCancel = new lButton(layer, "Cancel");
 
-    SubscribeToEvent(buttonOk, E_RELEASED, HANDLER(lMenuConfirmExit, HandleButtonRelease));
-    SubscribeToEvent(buttonCancel, E_RELEASED, HANDLER(lMenuConfirmExit, HandleButtonRelease));
+    SubscribeToEvent(buttonOk, Urho3D::E_RELEASED, HANDLER(lMenuConfirmExit, HandleButtonRelease));
+    SubscribeToEvent(buttonCancel, Urho3D::E_RELEASED, HANDLER(lMenuConfirmExit, HandleButtonRelease));
 
     AddChild(layer);
 }

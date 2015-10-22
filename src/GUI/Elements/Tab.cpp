@@ -5,8 +5,8 @@
 #include "GUI/Elements/ButtonToggled.h"
 
 
-lTab::lTab(Context *context) : 
-    lWindow(context)
+lTab::lTab(Context *) : 
+    lWindow()
 {
     buttonTitle = new lButtonToggled(gContext);
     SetMovable(false);

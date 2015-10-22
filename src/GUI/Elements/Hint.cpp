@@ -5,7 +5,7 @@
 #include "GUI/Elements/Label.h"
 
 
-lHint::lHint(char *text_) : lWindow(gContext), text(text_)
+lHint::lHint(char *text_) : lWindow(), text(text_)
 {
     SharedPtr<lLabel> label(lLabel::Create(text, 20));
     AddChild(label);

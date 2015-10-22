@@ -45,7 +45,7 @@ static void RegstrationObjects()
     lTab::RegisterObject(gContext);
     lLabel::RegisterObject(gContext);
     vSlider::RegisterObject(gContext);
-    vSliderInt::RegisterObject(gContext);
+    lSliderInt::RegisterObject(gContext);
     vGovernorCell::RegisterObject(gContext);
     lGovernorFloat::RegisterObject(gContext);
     lPanelBottom::RegisterObject(gContext);
@@ -123,12 +123,12 @@ void lGUI::Create()
     gWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
 
     gMenuMain = new lMenuMain(gContext);
-    gMenuMain->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
+    gMenuMain->SetInCenterScreen();
     gUIRoot->AddChild(gMenuMain);
     SubscribeToEvent(gMenuMain, E_MENU, HANDLER(lGUI, HandleMenuEvent));
 
     gMenuOptions = new lMenuOptions(gContext);
-    gMenuOptions->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
+    gMenuOptions->SetInCenterScreen();
     gUIRoot->AddChild(gMenuOptions);
     SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(lGUI, HandleMenuEvent));
     gMenuOptions->SetVisible(false);
@@ -144,7 +144,7 @@ void lGUI::Create()
 
     gMenuConfirmExit = new lMenuConfirmExit(gContext);
     gUIRoot->AddChild(gMenuConfirmExit);
-    gMenuConfirmExit->SetInCenterRect({0, 0, gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT)});
+    gMenuConfirmExit->SetInCenterScreen();
     gMenuConfirmExit->SetVisible(false);
     SubscribeToEvent(gMenuConfirmExit, E_MENU, HANDLER(lGUI, HandleMenuEvent));
 

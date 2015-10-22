@@ -29,15 +29,15 @@ lGuiGame::lGuiGame(Context* context) :
     int x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
     int y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
     buttonMap = panelBottom->AddButton("Map", x, y, width, height);
-    SubscribeToEvent(buttonMap, E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMap, Urho3D::E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
 
     x = (int)(gSet->GetInt(TV_PANEL_MAP_WIDTH) * 1.5f) - width / 2;
     buttonMainPanel = panelBottom->AddButton("Panel", x, y, width, height);
-    SubscribeToEvent(buttonMainPanel, E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMainPanel, Urho3D::E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
 
     x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
     buttonMenu = panelBottom->AddButton("Manu", x, y, width, height);
-    SubscribeToEvent(buttonMenu, E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
 }
 
 void lGuiGame::RegisterObject(Context* context)

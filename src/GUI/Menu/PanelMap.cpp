@@ -25,6 +25,7 @@ lPanelMap::lPanelMap(Context *context) :
 
     SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lPanelMap, HandleMouseDown));
     SubscribeToEvent(Urho3D::E_MOUSEMOVE, HANDLER(lPanelMap, HandleMouseMove));
+    SubscribeToEvent(E_MAP_CHANGED, HANDLER(lPanelMap, HandleMapChanged));
 }
 
 
@@ -49,16 +50,11 @@ void lPanelMap::Update(float dT)
         return;
     }
     
-    if(first)
+    if(redrawMap)
     {
-        map = vLevel::Get();
+        map = gLevel->Get();
 
-        if(map.Empty())
-        {
-            return;
-        }
-
-        first = false;
+        redrawMap = false;
 
         uint sizeX = SizeXMap();
         uint sizeY = SizeYMap();
@@ -100,16 +96,9 @@ void lPanelMap::Update(float dT)
                 float color = GetMapHeight(x, y) * scaleColor;
                 Color col = {stand + color, stand + color, stand + color};
 
-                //if(prevY + 1 == posY)
                 {
                     imageMap->SetPoint(1 + posX, 1 + posY, col);
                 }
-                /*
-                else
-                {
-                image->FillRectangle(prevX + 1, prevY + 1, posX - prevX - 1, posY - prevY - 1, col);
-                }
-                */
                 prevY = posY;
             }
             prevX = posX;
@@ -206,12 +195,12 @@ float lPanelMap::GetMaxHeight()
 
 uint lPanelMap::SizeXMap()
 {
-    return map[0].Size();
+    return map.Empty() ? 0 : map[0].Size();
 }
 
 uint lPanelMap::SizeYMap()
 {
-    return map.Size();
+    return map.Empty() ? 0 : map.Size();
 }
 
 void lPanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
@@ -240,4 +229,9 @@ void lPanelMap::HandleMouseMove(StringHash eventType, VariantMap &eventData)
         eventData[Urho3D::MouseButtonDown::P_BUTTONS] = Urho3D::MOUSEB_RIGHT;
         HandleMouseDown(eventType, eventData);
     }
+}
+
+void lPanelMap::HandleMapChanged(StringHash, VariantMap&)
+{
+    redrawMap = true;
 }

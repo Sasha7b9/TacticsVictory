@@ -362,6 +362,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\Elements\Window.cpp" />
     <ClCompile Include="src\GUI\GUI.cpp" />
     <ClCompile Include="src\GUI\GuiEditor\GuiEditor.cpp" />
+    <ClCompile Include="src\GUI\GuiEditor\WindowNewMap.cpp" />
     <ClCompile Include="src\GUI\GuiGame\GuiGame.cpp" />
     <ClCompile Include="src\GUI\Logic\LineTranslator1D.cpp" />
     <ClCompile Include="src\GUI\Logic\LineTranslator2D.cpp" />
@@ -413,6 +414,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\Elements\Window.h" />
     <ClInclude Include="src\GUI\GUI.h" />
     <ClInclude Include="src\GUI\GuiEditor\GuiEditor.h" />
+    <ClInclude Include="src\GUI\GuiEditor\WindowNewMap.h" />
     <ClInclude Include="src\GUI\GuiGame\GuiGame.h" />
     <ClInclude Include="src\GUI\Logic\LineTranslator1D.h" />
     <ClInclude Include="src\GUI\Logic\LineTranslator2D.h" />

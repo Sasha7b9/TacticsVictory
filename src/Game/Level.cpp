@@ -5,10 +5,10 @@
 #include "Game/Objects/Terrain.h"
 
 
-Vector<Vector<float> > vLevel::map;
+Vector<Vector<float> > lLevel::map;
 
 
-vLevel::vLevel()
+lLevel::lLevel(Context *context) : Object(context)
 {
 
 }
@@ -50,12 +50,12 @@ static int PushToVector(const char *data, Vector<float> *vec)
     return retValue;
 }
 
-Vector<Vector<float> > vLevel::Get()
+Vector<Vector<float> > lLevel::Get()
 {
     return map;
 }
 
-Vector<Vector<float> > vLevel::Load(char *fileName)
+Vector<Vector<float> > lLevel::Load(char *fileName)
 {
     SharedPtr<File> fileRead;
     fileRead = new File(gContext);
@@ -106,7 +106,7 @@ Vector<Vector<float> > vLevel::Load(char *fileName)
     return map;
 }
 
-Vector<Vector<float> > vLevel::Create(int sizeZ, int sizeX)
+Vector<Vector<float> > lLevel::Create(int sizeZ, int sizeX)
 {
     map.Clear();
 
@@ -120,10 +120,13 @@ Vector<Vector<float> > vLevel::Create(int sizeZ, int sizeX)
         map.Push(str);
     }
 
+    VariantMap eventData = GetEventDataMap();
+    SendEvent(E_MAP_CHANGED, eventData);
+
     return map;
 }
 
-Vector<Vector<float> > vLevel::CreateRandom(int sizeZ, int sizeX)
+Vector<Vector<float> > lLevel::CreateRandom(int sizeZ, int sizeX)
 {
     map.Clear();
 
@@ -139,5 +142,25 @@ Vector<Vector<float> > vLevel::CreateRandom(int sizeZ, int sizeX)
         map.Push(str);
     }
 
+    VariantMap eventData = GetEventDataMap();
+    SendEvent(E_MAP_CHANGED, eventData);
+
     return map;
+}
+
+void lLevel::Clear()
+{
+    map.Clear();
+    VariantMap eventData = GetEventDataMap();
+    SendEvent(E_MAP_CHANGED, eventData);
+}
+
+uint lLevel::GetWidth()
+{
+    return map.Empty() ? 0 : map[0].Size();
+}
+
+uint lLevel::GetHeight()
+{
+    return map.Empty() ? 0 : map.Size();
 }

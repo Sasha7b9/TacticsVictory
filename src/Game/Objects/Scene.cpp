@@ -31,8 +31,8 @@ void tvScene::Create()
     float dColor = 0.2f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    Vector<Vector<float> > level = vLevel::Load("input.txt");
-    //Vector<Vector<float> > level = vLevel::CreateRandom(100, 100);
+    Vector<Vector<float> > level = gLevel->Load("input.txt");
+    //Vector<Vector<float> > level = lLevel::CreateRandom(100, 100);
 
     SharedPtr<lTerrainBlock> terrain;
     terrain = new lTerrainBlock(level);

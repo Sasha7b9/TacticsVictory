@@ -46,5 +46,18 @@
     "Cancel":               { "ru":"Нет" },
     "Load":                 { "ru":"Загрузить" },
     "Save":                 { "ru":"Сохранить" },
-    "New map":              { "ru":"Новая карта" }
+    "New map":              { "ru":"Новая карта" },
+    "CreateNewMap":         { "en":"Creation of new map",
+                              "ru":"Создание новой карты" },
+    "Dimension X":          { "ru":"Размер X" },
+    "Dimension Y":          { "ru":"Размер Y" },
+    "Clear":                { "ru":"Очистить" },
+    "loadMapFromFile":      { "en":"Load map from file",
+                              "ru":"Загрузить карту из файла" },
+    "saveMapToFile":        { "en":"Save map to file",
+                                "ru":"Сохранить карту в файл" },
+    "createNewMap":         { "en":"Create new map",
+                                "ru":"Создать новую карту" },
+    "clearLandscape":       { "en":"Clear landscape",
+                                "ru":"Очистить ландашафт" }
 }

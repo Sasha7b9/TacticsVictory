@@ -14,15 +14,15 @@
 lMenuOptions::lMenuOptions(Context *context) :
     lWindow(context)
 {
-    SetLayout(Urho3D::LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
+    SET_VERTICAL_LAYOUT(this);
     SetName("Options menu");
 
     SharedPtr<lLabel> label(lLabel::Create("Options", 20));
     AddChild(label);
 
 #define CREATE_SWTAB(name, text, min, max, startIndex)                                  \
-    name = new lSliderWithTextAndButtons(this, text, min, max);                        \
-    SubscribeToEvent(name, E_SLIDERINTCHANGED, HANDLER(lMenuOptions, HandleOnSlider)); \
+    name = new lSliderWithTextAndButtons(this, text, min, max);                         \
+    SubscribeToEvent(name, E_SLIDERINTCHANGED, HANDLER(lMenuOptions, HandleOnSlider));  \
     name->SetValue(startIndex);
 
     CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, gSet->GetInt(TV_BRIGHTNESS));
@@ -36,7 +36,7 @@ lMenuOptions::lMenuOptions(Context *context) :
 
 #define CREATE_DDLWTAB(name, text, num, itms, startIndex)   \
     name = lDropDownListWithTextAndButton::Create(this, text, width0, width1, num, itms);  \
-    SubscribeToEvent(name, E_ITEMSELECTED, HANDLER(lMenuOptions, HandleItemSelected));     \
+    SubscribeToEvent(name, Urho3D::E_ITEMSELECTED, HANDLER(lMenuOptions, HandleItemSelected));     \
     name->SetSelection(startIndex);
 
     char *items[] = { "English", "Russian" };
@@ -71,7 +71,7 @@ lMenuOptions::lMenuOptions(Context *context) :
     layout->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_CENTER);
 
     buttonClose = new lButton(0, "Close", 100);
-    SubscribeToEvent(buttonClose, E_RELEASED, HANDLER(lMenuOptions, HandleButtonRelease));
+    SubscribeToEvent(buttonClose, Urho3D::E_RELEASED, HANDLER(lMenuOptions, HandleButtonRelease));
     layout->AddChild(buttonClose);
     AddChild(layout);
     layout->SetMinHeight(buttonClose->GetHeight());

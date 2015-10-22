@@ -27,10 +27,11 @@ private:
     int x0 = 0;
     int y0 = 0;
     float scale = 0.0f;
-    bool first = true;
+    bool redrawMap = true;
 
     void HandleMouseDown(StringHash eventType, VariantMap &eventData);
     void HandleMouseMove(StringHash eventType, VariantMap &eventData);
+    void HandleMapChanged(StringHash, VariantMap&);
 
     float GetMapHeight(uint x, uint y);
     float GetMaxHeight();

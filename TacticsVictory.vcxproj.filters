@@ -177,6 +177,9 @@
     <ClCompile Include="src\GUI\Elements\Hint.cpp">
       <Filter>GUI\Elements</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\GuiEditor\WindowNewMap.cpp">
+      <Filter>GUI\GuiEditor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -322,6 +325,9 @@
     </ClInclude>
     <ClInclude Include="src\GUI\Elements\Hint.h">
       <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GuiEditor\WindowNewMap.h">
+      <Filter>GUI\GuiEditor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

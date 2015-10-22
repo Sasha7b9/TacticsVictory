@@ -4,13 +4,13 @@
 #include "SliderInt.h"
 
 
-vSliderInt::vSliderInt(Context *context) :
+lSliderInt::lSliderInt(Context *context) :
     Slider(context)
 {
 
 }
 
-void vSliderInt::SetRange(int min_, int max_)
+void lSliderInt::SetRange(int min_, int max_)
 {
     min = min_;
     max = max_;
@@ -20,7 +20,7 @@ void vSliderInt::SetRange(int min_, int max_)
     Slider::SetRange(max - delta);
 }
 
-void vSliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Cursor* cursor)
+void lSliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Cursor* cursor)
 {
     Slider::OnDragMove(position, screenPosition, deltaPos, buttons, qualifiers, cursor);
 
@@ -36,12 +36,12 @@ void vSliderInt::OnDragMove(const IntVector2& position, const IntVector2& screen
     }
 }
 
-int vSliderInt::GetValueInt()
+int lSliderInt::GetValueInt()
 {
     return value;
 }
 
-void vSliderInt::SetValueInt(int newValue)
+void lSliderInt::SetValueInt(int newValue)
 {
     if(newValue >= min && newValue <= max && value != newValue)
     {
@@ -54,16 +54,16 @@ void vSliderInt::SetValueInt(int newValue)
     }
 }
 
-void vSliderInt::RegisterObject(Context* context)
+void lSliderInt::RegisterObject(Context* context)
 {
-    context->RegisterFactory<vSliderInt>("UI");
+    context->RegisterFactory<lSliderInt>("UI");
 
     COPY_BASE_ATTRIBUTES(Slider);
 }
 
-SharedPtr<vSliderInt> vSliderInt::Create(UIElement *uielement, const IntVector2 &size)
+SharedPtr<lSliderInt> lSliderInt::Create(UIElement *uielement, const IntVector2 &size)
 {
-    SharedPtr<vSliderInt> slider(gUIRoot->CreateChild<vSliderInt>());
+    SharedPtr<lSliderInt> slider(gUIRoot->CreateChild<lSliderInt>());
     slider->SetFixedSize(size);
     slider->SetStyle("Slider");
 

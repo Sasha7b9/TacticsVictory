@@ -34,7 +34,7 @@ lConsole::lConsole(Context *context) :
     text->SetPosition(0, 0);
     AddChild(text);
 
-    SubscribeToEvent(lineEdit, E_TEXTFINISHED, HANDLER(lConsole, HandleFinishedText));
+    SubscribeToEvent(lineEdit, Urho3D::E_TEXTFINISHED, HANDLER(lConsole, HandleFinishedText));
 }
 
 void lConsole::Toggle()

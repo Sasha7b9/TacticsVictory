@@ -32,6 +32,11 @@ lTerrain::lTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
     }
 }
 
+lTerrain::~lTerrain()
+{
+    Clear();
+}
+
 void lTerrain::SetHeight(uint row, uint col, float height)
 {
     map[row][col] = height;
@@ -148,4 +153,25 @@ lPlane lTerrain::GetIntersection(Ray &ray)
     }
 
     return plane;
+}
+
+void lTerrain::Clear()
+{
+    map.Resize(0);
+
+    for (auto row : blocks)
+    {
+        for (auto block : row)
+        {
+            block->Clear();
+        }
+    }
+
+    blocks.Resize(0);
+}
+
+
+bool lTerrain::Empty()
+{
+    return blocks.Empty();
 }

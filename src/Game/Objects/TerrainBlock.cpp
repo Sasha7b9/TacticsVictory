@@ -40,6 +40,11 @@ lTerrainBlock::lTerrainBlock(Vector<Vector<float> > &eMap, const Vector3 &shift_
     Rebuild(eMap);
 }
 
+void lTerrainBlock::Clear()
+{
+    gScene->RemoveChild(node);
+}
+
 void lTerrainBlock::Rebuild(Vector<Vector<float>> &map_)
 {
     SAFE_DELETE_ARRAY(bufVert);

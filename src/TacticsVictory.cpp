@@ -10,6 +10,7 @@
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "TacticsVictory.h"
+#include "Game/Level.h"
 
 
 #pragma warning(push)
@@ -42,6 +43,8 @@ void TacticsVictory::Setup()
 
 void TacticsVictory::Stop()
 {
+    SAFE_DELETE(gTerrain);
+    SAFE_DELETE(gLevel);
     SAFE_DELETE(gGUI);
     SAFE_DELETE(gTime);
     File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
@@ -79,6 +82,8 @@ void TacticsVictory::CreateComponents()
     gTime = new Time(gContext);
 
     gGUI = new lGUI();
+
+    gLevel = new lLevel();
 }
 
 void TacticsVictory::RegistrationFactories()

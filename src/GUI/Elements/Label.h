@@ -5,10 +5,10 @@ class lLabel : public Text
 {
     OBJECT(lLabel);
 public:
-    lLabel(Context *context);
+    lLabel(Context *context = gContext);
 
     static void RegisterObject(Context *context);
-    static SharedPtr<lLabel> Create(char *text, int sizeFont, int width = -1, int height = -1);
+    static SharedPtr<lLabel> Create(char *text, int sizeFont = 20, int width = -1, int height = -1);
     static void ReloadLanguage();
     
     void SetNewText(const char *text);

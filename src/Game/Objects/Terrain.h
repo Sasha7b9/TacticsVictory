@@ -7,10 +7,13 @@ class lTerrain : public Object
 
 public:
     lTerrain(Vector<Vector<float> > &map);
+    ~lTerrain();
 
     lPlane GetIntersection(Ray &ray);
 
     void SetHeight(uint row, uint col, float height);
+    void Clear();
+    bool Empty();
 
     static const uint SIZE_BLOCK = 50;
 

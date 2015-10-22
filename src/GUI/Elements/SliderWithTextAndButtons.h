@@ -13,6 +13,7 @@ public:
 
     void SetRange(int min, int max);
     void SetValue(int value);
+    int GetValue();
 
 private:
     lSliderWithTextAndButtons& operator=(const lSliderWithTextAndButtons&) {};
@@ -22,7 +23,7 @@ private:
     void HandleHoverBegin(StringHash eventType, VariantMap& eventData);
     void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
 
-    SharedPtr<vSliderInt> slider;
+    SharedPtr<lSliderInt> slider;
     SharedPtr<Text> textValue;
     SharedPtr<Button> buttonLeft;
     SharedPtr<Button> buttonRight;

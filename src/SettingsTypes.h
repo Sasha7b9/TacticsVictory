@@ -1,5 +1,9 @@
 #pragma once
 
+
+#define SET_VERTICAL_LAYOUT(elem)   elem->SetLayout(Urho3D::LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
+
+
 #define TV_SCREEN_WIDTH             "screen", "width"
 #define TV_SCREEN_HEIGHT            "screen", "height"
 #define TV_TEXTURE_QUALITY          "texture", "quality"

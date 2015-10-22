@@ -7,8 +7,8 @@
 #include "GUI/Elements/Label.h"
 
 
-vGovernorCell::vGovernorCell(Context *context) :
-    lWindow(context)
+vGovernorCell::vGovernorCell(Context *) :
+    lWindow()
 {
     SetMovable(false);
     SetStyleAuto();
@@ -25,11 +25,11 @@ vGovernorCell::vGovernorCell(Context *context) :
     label->SetPosition(1, -1);
     AddChild(label);
 
-    SubscribeToEvent(E_UIMOUSECLICK, HANDLER(vGovernorCell, HandleMouseDown));
-    SubscribeToEvent(E_MOUSEBUTTONUP, HANDLER(vGovernorCell, HandleMouseUp));
-    SubscribeToEvent(E_MOUSEMOVE, HANDLER(vGovernorCell, HandleMouseMove));
-    SubscribeToEvent(this, E_HOVERBEGIN, HANDLER(vGovernorCell, HandleHoverBegin));
-    SubscribeToEvent(this, E_HOVEREND, HANDLER(vGovernorCell, HandleHoverEnd));
+    SubscribeToEvent(Urho3D::E_UIMOUSECLICK, HANDLER(vGovernorCell, HandleMouseDown));
+    SubscribeToEvent(Urho3D::E_MOUSEBUTTONUP, HANDLER(vGovernorCell, HandleMouseUp));
+    SubscribeToEvent(Urho3D::E_MOUSEMOVE, HANDLER(vGovernorCell, HandleMouseMove));
+    SubscribeToEvent(this, Urho3D::E_HOVERBEGIN, HANDLER(vGovernorCell, HandleHoverBegin));
+    SubscribeToEvent(this, Urho3D::E_HOVEREND, HANDLER(vGovernorCell, HandleHoverEnd));
 }
 
 void vGovernorCell::SetSelected()
@@ -186,7 +186,7 @@ void vGovernorCell::RegisterObject(Context *context)
 }
 
 lGovernorFloat::lGovernorFloat(Context *context) :
-    lWindow(context)
+    lWindow()
 {
     SetMovable(false);
     SetStyle("WindowNoBorder");
@@ -231,8 +231,8 @@ lGovernorFloat::lGovernorFloat(Context *context) :
     AddChild(buttonDown);
     buttonDown->SetPosition((numCells + 1) * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + 4 + widthLabel, 0);
 
-    SubscribeToEvent(buttonDown, E_HOVERBEGIN, HANDLER(lGovernorFloat, HandleHoverButtonBegin));
-    SubscribeToEvent(buttonDown, E_HOVEREND, HANDLER(lGovernorFloat, HandleHoverButtonEnd));
+    SubscribeToEvent(buttonDown, Urho3D::E_HOVERBEGIN, HANDLER(lGovernorFloat, HandleHoverButtonBegin));
+    SubscribeToEvent(buttonDown, Urho3D::E_HOVEREND, HANDLER(lGovernorFloat, HandleHoverButtonEnd));
 }
 
 void lGovernorFloat::RegisterObject(Context *context)

@@ -13,6 +13,7 @@ public:
     // If function return isClosingTriangleOut == true, return distance for inactive triangle
     float GetIntersection(Ray &ray, lPlane &plane, bool &isClosingTriangleOut);
     void Rebuild(Vector<Vector<float>> &map_);
+    void Clear();
 
 private:
     enum Direction

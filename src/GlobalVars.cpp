@@ -1,6 +1,5 @@
 #include <stdafx.h>
 
-
 Localization    *gLocalization = nullptr;
 UI              *gUI = nullptr;
 UIElement       *gUIRoot = nullptr;
@@ -19,18 +18,20 @@ PhysicsWorld    *gPhysicsWorld = nullptr;
 Font            *gFont = nullptr;
 Time            *gTime = nullptr;
 
-lCamera        *gCamera = nullptr;
-lCursor        *gCursor = nullptr;
-lGuiGame      *gGuiGame = nullptr;
-lGuiEditor    *gGuiEditor = nullptr;
-lEditor        *gEditor = nullptr;
-lSettings      *gSet = nullptr;
-lGUI           *gGUI = nullptr;
-lConsole       *gConsole = nullptr;
-lMenuMain      *gMenuMain = nullptr;
-lMenuOptions   *gMenuOptions = nullptr;
+lCamera         *gCamera = nullptr;
+lCursor         *gCursor = nullptr;
+lGuiGame        *gGuiGame = nullptr;
+lGuiEditor      *gGuiEditor = nullptr;
+lEditor         *gEditor = nullptr;
+lSettings       *gSet = nullptr;
+lGUI            *gGUI = nullptr;
+lConsole        *gConsole = nullptr;
+lMenuMain       *gMenuMain = nullptr;
+lMenuOptions    *gMenuOptions = nullptr;
 
 lMenuConfirmExit    *gMenuConfirmExit = nullptr;
 lWindowVariables    *gWindowVars = nullptr;
 lHint               *gHint = nullptr;
 int                 *gCounterHint = 0;
+lLevel              *gLevel = nullptr;
+lTerrain            *gTerrain = nullptr;
