@@ -13,8 +13,6 @@ public:
     static void RegisterObject(Context *context);
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
     bool IsInside(IntVector2 &position);
-    void TogglePanelMain();
-    void TogglePanelMap();
 
 private:
     lGuiEditor& operator=(const lGuiEditor&) {};
@@ -32,14 +30,17 @@ private:
     SharedPtr<lPanelMain>   panelMain;
 
     SharedPtr<lWindow>      windowNewMap;
+    SharedPtr<lSliderWithTextAndButtons> sliderSizeNewMapX;
+    SharedPtr<lSliderWithTextAndButtons> sliderSizeNewMapY;
 
     void HandleButtonRelease(StringHash, VariantMap&);
     void HandleCreateNewMap(StringHash, VariantMap&);
     void HandleClearTerrain(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
-    void HandleOpenMapFromFile(StringHash, VariantMap&);
-    void HandleSaveMapToFile(StringHash, VariantMap&);
-    void HandleFileOpen(StringHash, VariantMap&);
+    void HandleButtonFileLoad(StringHash, VariantMap&);
+    void HandleButtonFileSave(StringHash, VariantMap&);
+    void HandleFileSelectorLoadLandscape(StringHash, VariantMap&);
+    void HandleFileSelectorSaveLandscape(StringHash, VariantMap&);
 
     bool IntersectionX(lButton *button, int x);
     void CreateWindows();

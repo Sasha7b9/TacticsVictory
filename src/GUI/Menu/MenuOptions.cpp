@@ -20,16 +20,16 @@ lMenuOptions::lMenuOptions(Context *context) :
     SharedPtr<lLabel> label(lLabel::Create("Options", 20));
     AddChild(label);
 
-#define CREATE_SWTAB(name, text, min, max, startIndex)                                  \
-    name = new lSliderWithTextAndButtons(this, text, min, max);                         \
+#define CREATE_SWTAB(name, text, min, max, step, startIndex)                                  \
+    name = new lSliderWithTextAndButtons(this, text, min, max, step);                         \
     SubscribeToEvent(name, E_SLIDERINTCHANGED, HANDLER(lMenuOptions, HandleOnSlider));  \
     name->SetValue(startIndex);
 
-    CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, gSet->GetInt(TV_BRIGHTNESS));
+    CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, 1, gSet->GetInt(TV_BRIGHTNESS));
 
-    CREATE_SWTAB(sliderVolume, "Volume", 0, 100, gSet->GetInt(TV_VOLUME));
+    CREATE_SWTAB(sliderVolume, "Volume", 0, 100, 1, gSet->GetInt(TV_VOLUME));
 
-    CREATE_SWTAB(sliderMaxOccluderTriangles, "Max occluder triangles", 0, 5000, gSet->GetInt(TV_MAX_OCCLUDER_TRIANGLES));
+    CREATE_SWTAB(sliderMaxOccluderTriangles, "Max occluder triangles", 0, 5000, 1, gSet->GetInt(TV_MAX_OCCLUDER_TRIANGLES));
 
     int width0 = SET::MENU::TEXT::WIDTH;
     int width1 = SET::MENU::DDLIST::WIDTH;
@@ -101,9 +101,16 @@ void lMenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 
     if(ddList == ddlLanguage)
     {
-        gLocalization->SetLanguage(index == 0 ? "en" : "ru");
-        lLabel::ReloadLanguage();
-        gSet->SetInt(TV_LANGUAGE, index);
+        static bool first = true;
+        if (first)
+        {
+            first = false;
+        }
+        else
+        {
+            gLocalization->SetLanguage(index == 0 ? "en" : "ru");
+            gSet->SetInt(TV_LANGUAGE, index);
+        }
     }
     else if(ddList == ddlTextureQuality)
     {

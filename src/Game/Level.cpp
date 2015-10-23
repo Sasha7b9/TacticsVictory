@@ -3,6 +3,7 @@
 
 #include "Level.h"
 #include "Game/Objects/Terrain.h"
+#include "Core/Math.h"
 
 
 Vector<Vector<float> > lLevel::map;
@@ -57,6 +58,8 @@ Vector<Vector<float> > lLevel::Get()
 
 Vector<Vector<float> > lLevel::Load(char *fileName)
 {
+    map.Clear();
+
     SharedPtr<File> fileRead;
     fileRead = new File(gContext);
     if(fileRead->Open(fileName, Urho3D::FILE_READ))
@@ -106,6 +109,34 @@ Vector<Vector<float> > lLevel::Load(char *fileName)
     return map;
 }
 
+bool lLevel::Save(String fileName)
+{
+    SharedPtr<File> fileWrite(new File(gContext));
+
+    if (fileWrite->Open(fileName, Urho3D::FILE_WRITE))
+    {
+        for (uint row = 0; row < map.Size(); row++)
+        {
+            String line;
+            for (uint col = 0; col < map[0].Size(); col++)
+            {
+                line += String(map[row][col]);
+                if (col != map[0].Size() - 1)
+                {
+                    line += " ";
+                }
+            }
+            fileWrite->WriteLine(line);
+        }
+        fileWrite->Close();
+    }
+    else
+    {
+        return false;
+    }
+    return true;
+}
+
 Vector<Vector<float> > lLevel::Create(int sizeZ, int sizeX)
 {
     map.Clear();
@@ -126,17 +157,55 @@ Vector<Vector<float> > lLevel::Create(int sizeZ, int sizeX)
     return map;
 }
 
-Vector<Vector<float> > lLevel::CreateRandom(int sizeZ, int sizeX)
+Vector<Vector<float> > lLevel::CreateRandom(uint numRows, uint numCols)
 {
     map.Clear();
 
-    for (int x = 0; x < sizeX; x++)
+    int minHeight = 0;
+    int maxHeight = 20;
+
+    int maxDelta = 2;
+
+    Vector<float> str;
+
+    srand((uint)time(NULL));
+
+    Urho3D::SetRandomSeed((uint)rand());
+
+    str.Push((float)Math::Random(minHeight, maxHeight));
+
+    for (uint col = 1; col < numCols; col++)
+    {
+        int min = Math::LimitBelow((int)str[col - 1] - maxDelta, minHeight);
+        int max = Math::LimitAbove((int)str[col - 1] + maxDelta, maxHeight);
+
+        str.Push((float)Math::Random(min, max));
+    }
+
+    map.Push(str);
+
+    for (uint row = 1; row < numRows; row++)
     {
         Vector<float> str;
 
-        for (int z = 0; z < sizeZ; z++)
+        int min = Math::LimitBelow((int)map[row - 1][0] - maxDelta, minHeight);
+        int max = Math::LimitAbove((int)map[row - 1][0] + maxDelta, maxHeight);
+
+        str.Push((float)Math::Random(min, max));
+
+        for (uint col = 1; col < numCols; col++)
         {
-            str.Push((float)(int)Random(5.0f, 10.0f));
+            int min = Math::LimitBelow((int)str[col - 1] - maxDelta, minHeight);
+            int max = Math::LimitAbove((int)str[col - 1] + maxDelta, maxHeight);
+
+            int value = Math::Random(min, max);
+
+            while (value < map[row - 1][col] - maxDelta || value > map[row - 1][col] + maxDelta)
+            {
+                value = Math::Random(min, max);
+            }
+
+            str.Push((float)value);
         }
 
         map.Push(str);

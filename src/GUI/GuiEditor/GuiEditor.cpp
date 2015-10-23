@@ -39,24 +39,25 @@ lGuiEditor::lGuiEditor(Context* context) :
 
     SharedPtr<lButton> btnFileOpen = tabFile->AddButton("Load", 10, y, width, height);
     btnFileOpen->SetHint("loadMapFromFile");
-    SubscribeToEvent(btnFileOpen, Urho3D::E_RELEASED, HANDLER(lGuiEditor, HandleOpenMapFromFile));
+    SubscribeToEvent(btnFileOpen, Urho3D::E_RELEASED, HANDLER(lGuiEditor, HandleButtonFileLoad));
 
     SharedPtr<lButton> btnFileSave = tabFile->AddButton("Save", 10, y += dY, width, height);
     btnFileSave->SetHint("saveMapToFile");
-    SubscribeToEvent(btnFileSave, Urho3D::E_RELEASED, HANDLER(lGuiEditor, HandleSaveMapToFile));
-
-    btnNewMap = tabFile->AddButton("New map", 10, y += dY, width, height);
-    btnNewMap->SetHint("createNewMap");
-    SubscribeToEvent(btnNewMap, Urho3D::E_RELEASED, HANDLER(lGuiEditor, HandleButtonRelease));
-
-    SharedPtr<lButton> btnClearTerrain = tabFile->AddButton("Clear", 10, y += dY, width, height);
-    btnClearTerrain->SetHint("clearLandscape");
-    SubscribeToEvent(btnClearTerrain, Urho3D::E_RELEASED, HANDLER(lGuiEditor, HandleClearTerrain));
+    SubscribeToEvent(btnFileSave, Urho3D::E_RELEASED, HANDLER(lGuiEditor, HandleButtonFileSave));
 
     // Tab "Edit"
     SharedPtr<lTab> tabEdit(lTab::Create("Edit"));
     panelMain->AddTab(tabEdit);
 
+    btnNewMap = tabEdit->AddButton("New map", 10, y = 10, width, height);
+    btnNewMap->SetHint("createNewMap");
+    SubscribeToEvent(btnNewMap, Urho3D::E_RELEASED, HANDLER(lGuiEditor, HandleButtonRelease));
+
+    SharedPtr<lButton> btnClearLandscape = tabEdit->AddButton("Clear", 10, y += dY, width, height);
+    btnClearLandscape->SetHint("clearLandscape");
+    SubscribeToEvent(btnClearLandscape, Urho3D::E_RELEASED, HANDLER(lGuiEditor, HandleClearTerrain));
+
+    // Panel bottom
     panelBottom = new lPanelBottom(gContext);
     panelBottom->SetPosition(0, gSet->GetInt(TV_SCREEN_HEIGHT) - gSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
 
@@ -138,16 +139,6 @@ bool lGuiEditor::IsInside(IntVector2 &position)
         position.y_ < gSet->GetInt(TV_SCREEN_HEIGHT) - 1;
 }
 
-void lGuiEditor::TogglePanelMain()
-{
-    panelMain->Toggle();
-}
-
-void lGuiEditor::TogglePanelMap()
-{
-    panelMap->Toggle();
-}
-
 void lGuiEditor::CreateWindows()
 {
     windowNewMap = new lWindow();
@@ -155,10 +146,10 @@ void lGuiEditor::CreateWindows()
     SET_VERTICAL_LAYOUT(windowNewMap);
 
     windowNewMap->AddLabel("CreateNewMap");
-    SharedPtr<lSliderWithTextAndButtons> sliderX = windowNewMap->AddSlider("Dimension X", 0, 100);
-    sliderX->SetValue(50);
-    SharedPtr<lSliderWithTextAndButtons> sliderY = windowNewMap->AddSlider("Dimension Y", 0, 100);
-    sliderY->SetValue(50);
+    sliderSizeNewMapX = windowNewMap->AddSlider("Dimension X", 50, 250, 50);
+    sliderSizeNewMapX->SetValue(150);
+    sliderSizeNewMapY = windowNewMap->AddSlider("Dimension Y", 50, 250, 50);
+    sliderSizeNewMapY->SetValue(150);
     SharedPtr<lButton> buttonCreateMap = windowNewMap->AddButton("Create");
     SubscribeToEvent(buttonCreateMap, Urho3D::E_RELEASED, HANDLER(lGuiEditor, HandleCreateNewMap));
 
@@ -170,7 +161,7 @@ void lGuiEditor::CreateWindows()
 
 void lGuiEditor::HandleCreateNewMap(StringHash, VariantMap&)
 {
-    Vector<Vector<float>> map = gLevel->CreateRandom(50, 100);
+    Vector<Vector<float>> map = gLevel->CreateRandom((uint)sliderSizeNewMapY->GetValue(), (uint)sliderSizeNewMapX->GetValue());
     SAFE_DELETE(gTerrain);
     gTerrain = new lTerrain(map);
     windowNewMap->SetVisible(false);
@@ -180,8 +171,15 @@ void lGuiEditor::HandleCreateNewMap(StringHash, VariantMap&)
 
 void lGuiEditor::HandleClearTerrain(StringHash, VariantMap&)
 {
-    gLevel->Clear();
-    gTerrain->Clear();
+    for (uint row = 0; row < gTerrain->NumRows(); row++)
+    {
+        for (uint col = 0; col < gTerrain->NumCols(); col++)
+        {
+            gTerrain->SetHeight(row, col, 0.0f);
+        }
+    }
+
+    gTerrain->Update();
 }
 
 void lGuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
@@ -193,6 +191,17 @@ void lGuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
 
     int key = eventData[Urho3D::KeyDown::P_KEY].GetInt();
 
+    if (gFileSelector->GetWindow()->IsVisible())
+    {
+        if (key == Urho3D::KEY_ESC)
+        {
+            UnsubscribeFromEvent(gFileSelector, Urho3D::E_FILESELECTED);
+            gFileSelector->GetWindow()->SetVisible(false);
+            gCamera->SetEnabled(true);
+        }
+        return;
+    }
+
     if (key == Urho3D::KEY_ESC)
     {
         if (gGUI->MenuIsVisible())
@@ -200,11 +209,6 @@ void lGuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
             gGUI->RemoveFromScreen();
             gCamera->SetEnabled(true);
             gScene->SetTimeScale(1.0f);
-        }
-        else if(gFileSelector)
-        {
-            UnsubscribeFromEvent(gFileSelector, Urho3D::E_FILESELECTED);
-            SAFE_DELETE(gFileSelector);
         }
         else
         {
@@ -221,28 +225,43 @@ void lGuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
         }
         
     }
+    else if (key == Urho3D::KEY_P)
+    {
+        panelMain->Toggle();
+    }
+    else if (key == Urho3D::KEY_M)
+    {
+        panelMap->Toggle();
+    }
 }
 
-void lGuiEditor::HandleOpenMapFromFile(StringHash, VariantMap&)
+void lGuiEditor::HandleButtonFileLoad(StringHash, VariantMap&)
 {
-    gFileSelector = new FileSelector(gContext);
+    gCamera->SetEnabled(false);
 
-    XMLFile *style = gCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
-    gFileSelector->SetDefaultStyle(style);
-    gFileSelector->SetButtonTexts("Ok", "Cancel");
-    gFileSelector->GetWindow()->SetResizable(false);
+    Vector<String> filters;
 
-    SetWindowInCenterScreen(gFileSelector->GetWindow());
+    filters.Push("*.map");
 
-    SubscribeToEvent(gFileSelector, Urho3D::E_FILESELECTED, HANDLER(lGuiEditor, HandleFileOpen));
+    OpenFileSelector("Load landscape", "Load", "Cancel", filters);
+
+    SubscribeToEvent(gFileSelector, Urho3D::E_FILESELECTED, HANDLER(lGuiEditor, HandleFileSelectorLoadLandscape));
 }
 
-void lGuiEditor::HandleSaveMapToFile(StringHash, VariantMap&)
+void lGuiEditor::HandleButtonFileSave(StringHash, VariantMap&)
 {
+    gCamera->SetEnabled(false);
 
+    Vector<String> filters;
+
+    filters.Push("*.map");
+
+    OpenFileSelector("Save landscape", "Save", "Cancel", filters);
+
+    SubscribeToEvent(gFileSelector, Urho3D::E_FILESELECTED, HANDLER(lGuiEditor, HandleFileSelectorSaveLandscape));
 }
 
-void lGuiEditor::HandleFileOpen(StringHash, VariantMap& eventData)
+void lGuiEditor::HandleFileSelectorLoadLandscape(StringHash, VariantMap& eventData)
 {
     UnsubscribeFromEvent(gFileSelector, Urho3D::E_FILESELECTED);
 
@@ -250,8 +269,31 @@ void lGuiEditor::HandleFileOpen(StringHash, VariantMap& eventData)
 
     if(ok)
     {
-
+        Vector<Vector<float>> map = gLevel->Load((char*)((String)eventData[Urho3D::FileSelected::P_FILENAME].GetString()).CString());
+        SAFE_DELETE(gTerrain);
+        gTerrain = new lTerrain(map);
+        gCamera->SetPosition({gLevel->GetWidth() / 2.0f, 20.0f, -(float)gLevel->GetHeight()}, {gLevel->GetWidth() / 2.0f, 0.0f, -(gLevel->GetHeight() / 2.0f)});
     }
     
-    SAFE_DELETE(gFileSelector);
+    gFileSelector->GetWindow()->SetVisible(false);
+
+    gCamera->SetEnabled(true);
+}
+
+void lGuiEditor::HandleFileSelectorSaveLandscape(StringHash, VariantMap& eventData)
+{
+    UnsubscribeFromEvent(gFileSelector, Urho3D::E_FILESELECTED);
+
+    bool ok = (bool)eventData[Urho3D::FileSelected::P_OK].GetBool();
+
+    if (ok)
+    {
+        String fileName = (String)eventData[Urho3D::FileSelected::P_FILENAME].GetString();
+        fileName = ReplaceExtension(fileName, ".map");
+        gLevel->Save(fileName);
+    }
+
+    gFileSelector->GetWindow()->SetVisible(false);
+
+    gCamera->SetEnabled(true);
 }

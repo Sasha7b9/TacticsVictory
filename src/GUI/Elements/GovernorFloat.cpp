@@ -247,7 +247,7 @@ void lGovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF f
     funcRead = funcRead_;
     funcWrite = funcWrite_;
     title = title_;
-    label->SetNewText(title);
+    label->SetText(title);
 
     float value = funcRead();
     WriteValue(value);

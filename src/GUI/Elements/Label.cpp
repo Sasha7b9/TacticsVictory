@@ -4,33 +4,10 @@
 #include "Label.h"
 
 
-struct StructText
-{
-    lLabel* label;
-    const char* text;
-};
-
-
-static PODVector<StructText> mapTexts;  // »спользуетс€ дл€ перезагрузки при изменении €зыка
-
-
-void lLabel::ReloadLanguage()
-{
-    for(PODVector<StructText>::Iterator i = mapTexts.Begin(); i != mapTexts.End(); i++)
-    {
-        const char *text = i->text;
-        if(*text)                   // WARN here it is unclear why there is an empty line. See function SetNewText.
-        {
-            i->label->SetText(gLocalization->Get(text));
-        }
-    }
-}
-
-
 lLabel::lLabel(Context *context) :
     Text(context)
 {
-
+    SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, HANDLER(lLabel, HandleChangeLanguage));
 }
 
 void lLabel::RegisterObject(Context *context)
@@ -43,11 +20,9 @@ void lLabel::RegisterObject(Context *context)
 SharedPtr<lLabel> lLabel::Create(char *text_, int sizeFont, int width /* = -1 */, int height /* = -1 */)
 {
     SharedPtr<lLabel> text(new lLabel(gContext));
+    text->text = text_;
     text->SetFont(gFont, sizeFont);
     text->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_CENTER);
-
-    StructText str = {text, text_};
-    mapTexts.Push(str);
 
     if(width == -1 && height == -1)
     {
@@ -66,19 +41,19 @@ SharedPtr<lLabel> lLabel::Create(char *text_, int sizeFont, int width /* = -1 */
         text->SetFixedSize(width, height);
     }
 
-    text->SetText(gLocalization->Get(text_));
+    text->SetText(text_);
 
     return text;
 }
 
-void lLabel::SetNewText(const char *text)
+void lLabel::SetText(char *text_)
 {
-    for(uint i = 0; i < mapTexts.Size(); i++)
-    {
-        if(mapTexts[i].label == this)
-        {
-            mapTexts[i].text = text;
-            SetText(gLocalization->Get(text));
-        }
-    }
+    text = text_;
+
+    Text::SetText(gLocalization->Get(text));
+}
+
+void lLabel::HandleChangeLanguage(StringHash, VariantMap&)
+{
+    Text::SetText((char*)gLocalization->Get(text).CString());
 }

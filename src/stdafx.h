@@ -41,6 +41,7 @@ typedef unsigned char uchar;
 #include <Urho3D/Input/InputEvents.h>
 
 #include <Urho3D/Math/MathDefs.h>
+#include <Urho3D/Math/Random.h>
 
 #include <Urho3D/UI/UI.h>
 #include <Urho3D/UI/Button.h>
@@ -65,6 +66,7 @@ typedef unsigned char uchar;
 #include <Urho3D/Physics/PhysicsWorld.h>
 #include <Urho3D/Physics/RigidBody.h>
 
+#include <Urho3D/Resource/ResourceEvents.h>
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Resource/XMLFile.h>
 #include <Urho3D/Resource/Localization.h>
@@ -80,6 +82,8 @@ typedef unsigned char uchar;
 #include <Urho3D/DebugNew.h>
 
 #include <cfloat>
+
+#include <ctime>
 
 using Urho3D::BiasParameters;
 using Urho3D::BoundingBox;

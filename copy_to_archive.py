@@ -20,7 +20,6 @@ strings =   "7z.exe a " + 'c:\\' + name, \
             "7z.exe a " + 'f:\\' + name, \
             "7z.exe a " + 'h:\\' + name, \
             "7z.exe a " + 'i:\\' + name, \
-            "7z.exe a " + 'f:\\GoogleDisk\\' + name, \
             "pause"
 
 RunCommands(strings)

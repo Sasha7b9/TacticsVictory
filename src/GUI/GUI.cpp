@@ -123,6 +123,8 @@ void lGUI::Create()
     gWindowVars->AddFunctionFloat("Camera pitch", GetCameraPitch, nullptr);
     gWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
 
+    gLocalization->SetLanguage("en");
+
     gMenuMain = new lMenuMain(gContext);
     SetWindowInCenterScreen(gMenuMain);
     gUIRoot->AddChild(gMenuMain);
@@ -150,6 +152,8 @@ void lGUI::Create()
     SubscribeToEvent(gMenuConfirmExit, E_MENU, HANDLER(lGUI, HandleMenuEvent));
 
     gCursor = new lCursor();
+
+    gLocalization->SetLanguage(gSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
 }
 
 bool lGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
@@ -167,7 +171,9 @@ bool lGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
 
 bool lGUI::MenuIsVisible()
 {
-    return gMenuMain->IsVisible() || gMenuOptions->IsVisible() || gMenuConfirmExit->IsVisible();
+    return gMenuMain->IsVisible() ||
+        gMenuOptions->IsVisible() ||
+        gMenuConfirmExit->IsVisible();
 }
 
 void lGUI::SetVisibleMenu(bool visible)
@@ -222,5 +228,5 @@ bool lGUI::UnderCursor()
 {
     IntVector2 pos = gCursor->GetCursor()->GetPosition();
 
-    return gGuiEditor->IsInside(pos) || gGuiGame->IsInside(pos);
+    return gGuiEditor->IsInside(pos) || gGuiGame->IsInside(pos) || (gFileSelector->GetWindow()->IsVisible());
 }

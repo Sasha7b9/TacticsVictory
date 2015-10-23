@@ -16,7 +16,7 @@ public:
 
     SharedPtr<lButton> AddButton(char *text, int x = -1, int y = -1, int width = -1, int height = -1);
     SharedPtr<lButtonToggled> AddButtonToggled(char *text, int x, int y, int width, int height);
-    SharedPtr<lSliderWithTextAndButtons> AddSlider(char *text, int min, int max, int x = -1, int y = -1);
+    SharedPtr<lSliderWithTextAndButtons> AddSlider(char *text, int min, int max, int step, int x = -1, int y = -1);
     SharedPtr<lLabel> AddLabel(char *text);
 
 protected:

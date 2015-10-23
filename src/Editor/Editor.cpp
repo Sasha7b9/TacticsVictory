@@ -26,7 +26,7 @@ void lEditor::Run()
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
     //Vector<Vector<float> > level = gLevel->CreateRandom(100, 100);
-    Vector<Vector<float> > level = gLevel->Load("input.txt");
+    Vector<Vector<float> > level = gLevel->Load("input.map");
 
     gTerrain = new lTerrain(level);
 
@@ -45,7 +45,6 @@ void lEditor::Run()
     lightNode->SetPosition({level[0].Size() / 2.0f, 50.0f, -(level.Size() / 2.0f)});
 
     SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(lEditor, HandlePostRenderUpdate));
-    SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(lEditor, HandleKeyDown));
     SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lEditor, HandleMouseDown));
 }
 
@@ -85,20 +84,6 @@ void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
     gTerrain->SetHeight(5, 5, currentHeight);
     */
-}
-
-void lEditor::HandleKeyDown(StringHash, VariantMap& eventData)
-{
-    int key = eventData[Urho3D::KeyDown::P_KEY].GetInt();
-
-    if (key == Urho3D::KEY_P)
-    {
-        gGuiEditor->TogglePanelMain();
-    }
-    else if (key == Urho3D::KEY_M)
-    {
-        gGuiEditor->TogglePanelMap();
-    }
 }
 
 void lEditor::HandleMouseDown(StringHash, VariantMap&)

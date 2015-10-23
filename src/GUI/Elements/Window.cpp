@@ -57,9 +57,9 @@ SharedPtr<lButtonToggled> lWindow::AddButtonToggled(char *text, int x, int y, in
     return retButton;
 }
 
-SharedPtr<lSliderWithTextAndButtons> lWindow::AddSlider(char *text, int min, int max, int x, int y)
+SharedPtr<lSliderWithTextAndButtons> lWindow::AddSlider(char *text, int min, int max, int step, int x, int y)
 {
-    SharedPtr<lSliderWithTextAndButtons> slider(new lSliderWithTextAndButtons(this, text, min, max));
+    SharedPtr<lSliderWithTextAndButtons> slider(new lSliderWithTextAndButtons(this, text, min, max, step));
     AddChild(slider);
     if (x != -1 && y != -1)
     {

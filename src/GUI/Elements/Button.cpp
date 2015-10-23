@@ -59,7 +59,7 @@ void lButton::RegisterObject(Context *context)
 
 void lButton::SetText(char *text)
 {
-    label->SetNewText(text);
+    label->SetText(text);
 }
 
 void lButton::SetHint(char *text)

@@ -13,4 +13,7 @@ public:
 
 private:
     char *text;
+    SharedPtr<lLabel> label;
+
+    void HandleChangeLanguage(StringHash, VariantMap&);
 };

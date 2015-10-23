@@ -7,10 +7,18 @@
 
 lHint::lHint(char *text_) : lWindow(), text(text_)
 {
-    SharedPtr<lLabel> label(lLabel::Create(text, 20));
+    label = lLabel::Create(text, 20);
     AddChild(label);
 
-    SetFixedSize(label->GetWidth() + 10, label->GetHeight() + 10);
+    SetSize(label->GetWidth() + 10, label->GetHeight() + 10);
 
     SetMovable(false);
+
+    SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, HANDLER(lHint, HandleChangeLanguage));
+}
+
+void lHint::HandleChangeLanguage(StringHash, VariantMap&)
+{
+    label->SetText(text);
+    SetSize(label->GetWidth() + 10, label->GetHeight() + 10);
 }

@@ -11,6 +11,7 @@
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "TacticsVictory.h"
 #include "Game/Level.h"
+#include "GlobalFunctions.h"
 
 
 #pragma warning(push)
@@ -43,6 +44,7 @@ void TacticsVictory::Setup()
 
 void TacticsVictory::Stop()
 {
+    SAFE_DELETE(gFileSelector);
     SAFE_DELETE(gTerrain);
     SAFE_DELETE(gLevel);
     SAFE_DELETE(gGUI);
@@ -116,6 +118,10 @@ void TacticsVictory::Start()
     gCamera = new lCamera();
 
     gGUI->Create();
+
+    gFileSelector = new FileSelector(gContext);
+    gFileSelector->GetWindow()->SetModal(false);
+    gFileSelector->GetWindow()->SetVisible(false);
 
     SubscribeToEvents();
 }

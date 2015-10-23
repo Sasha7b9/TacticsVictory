@@ -15,10 +15,17 @@ lTerrain::lTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
     numBlocksInX = mapSizeX / SIZE_BLOCK;
 
     blocks.Resize(numBlocksInZ);
+    heightChanged.Resize(numBlocksInZ);
 
     for(uint i = 0; i < blocks.Size(); i++)
     {
         blocks[i].Resize(numBlocksInX);
+        heightChanged[i].Resize(numBlocksInX);
+
+        for (uint col = 0; col < numBlocksInX; col++)
+        {
+            heightChanged[i][col] = false;
+        }
     }
 
     for(uint x = 0; x < numBlocksInX; x++)
@@ -37,15 +44,39 @@ lTerrain::~lTerrain()
     Clear();
 }
 
+uint lTerrain::NumRows()
+{
+    return map.Size();
+}
+
+uint lTerrain::NumCols()
+{
+    return map[0].Size();
+}
+
 void lTerrain::SetHeight(uint row, uint col, float height)
 {
     map[row][col] = height;
 
-    uint posZ = row / SIZE_BLOCK;
-    uint posX = col / SIZE_BLOCK;
+    heightChanged[row / SIZE_BLOCK][col / SIZE_BLOCK] = true;
+}
 
-    Vector<Vector<float> > subMap = ExtractSubMap(posX * SIZE_BLOCK, posZ * SIZE_BLOCK, SIZE_BLOCK);
-    blocks[posZ][posZ]->Rebuild(subMap);
+void lTerrain::Update()
+{
+    for (uint x = 0; x < numBlocksInX; x++)
+    {
+        for (uint y = 0; y < numBlocksInZ; y++)
+        {
+            if (heightChanged[y][x])
+            {
+                uint startX = x * SIZE_BLOCK;
+                uint startY = y * SIZE_BLOCK;
+                Vector<Vector<float>> subMap = ExtractSubMap(startX, startY, SIZE_BLOCK);
+                blocks[y][x]->Rebuild(subMap);
+                heightChanged[y][x] = false;
+            }
+        }
+    }
 }
 
 // NOTE Size of the returned array size + 2

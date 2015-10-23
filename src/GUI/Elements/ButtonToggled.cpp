@@ -51,5 +51,5 @@ void lButtonToggled::RegisterObject(Context *context)
 
 void lButtonToggled::SetText(char *text)
 {
-    label->SetNewText(text);
+    label->SetText(text);
 }

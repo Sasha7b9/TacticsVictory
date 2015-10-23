@@ -10,10 +10,11 @@ lSliderInt::lSliderInt(Context *context) :
 
 }
 
-void lSliderInt::SetRange(int min_, int max_)
+void lSliderInt::SetRange(int min_, int max_, int step_)
 {
-    min = min_;
-    max = max_;
+    step = step_;
+    min = min_ / step;
+    max = max_ / step;
 
     delta = (float)min;
 
@@ -31,27 +32,49 @@ void lSliderInt::OnDragMove(const IntVector2& position, const IntVector2& screen
         value = newValue;
         VariantMap& eventData = GetEventDataMap();
         eventData[SliderIntChanged::P_ELEMENT] = this;
-        eventData[SliderIntChanged::P_VALUE] = value;
+        eventData[SliderIntChanged::P_VALUE] = value * step;
         SendEvent(E_SLIDERINTCHANGED, eventData);
     }
 }
 
 int lSliderInt::GetValueInt()
 {
-    return value;
+    return value * step;
+}
+
+int lSliderInt::GetValueMax()
+{
+    return max * step;
+}
+
+int lSliderInt::GetValueMin()
+{
+    return min * step;
 }
 
 void lSliderInt::SetValueInt(int newValue)
 {
+    newValue = newValue / step;
+
     if(newValue >= min && newValue <= max && value != newValue)
     {
         value = newValue;
-        Slider::SetValue((float)newValue + delta);
+        Slider::SetValue((float)newValue - delta);
         VariantMap& eventData = GetEventDataMap();
         eventData[SliderIntChanged::P_ELEMENT] = this;
-        eventData[SliderIntChanged::P_VALUE] = value;
+        eventData[SliderIntChanged::P_VALUE] = value * step;
         SendEvent(E_SLIDERINTCHANGED, eventData);
     }
+}
+
+void lSliderInt::Increase()
+{
+    SetValueInt(GetValueInt() + step);
+}
+
+void lSliderInt::Decrease()
+{
+    SetValueInt(GetValueInt() - step);
 }
 
 void lSliderInt::RegisterObject(Context* context)

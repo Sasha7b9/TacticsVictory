@@ -6,9 +6,8 @@
 #include "GUI/Elements/Label.h"
 
 
-lSliderWithTextAndButtons::lSliderWithTextAndButtons(UIElement *uielement, char *text_, int min, int max, int step_) :
-    UIElement(gContext),
-    step(step_)
+lSliderWithTextAndButtons::lSliderWithTextAndButtons(UIElement *uielement, char *text_, int min, int max, int step) :
+    UIElement(gContext)
 {
     SharedPtr<Window> window(new Window(gContext));
     window->SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
@@ -49,7 +48,7 @@ lSliderWithTextAndButtons::lSliderWithTextAndButtons(UIElement *uielement, char 
 
     SetMinSize(window->GetWidth(), window->GetHeight());
 
-    SetRange(min, max);
+    SetRange(min, max, step);
 
     if(uielement)
     {
@@ -57,9 +56,9 @@ lSliderWithTextAndButtons::lSliderWithTextAndButtons(UIElement *uielement, char 
     }
 }
 
-void lSliderWithTextAndButtons::SetRange(int min, int max)
+void lSliderWithTextAndButtons::SetRange(int min, int max, int step)
 {
-    slider->SetRange(min, max);
+    slider->SetRange(min, max, step);
 }
 
 void lSliderWithTextAndButtons::SetValue(int value)
@@ -85,11 +84,11 @@ void lSliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventDa
 
     if(button == buttonLeft)
     {
-        slider->SetValueInt(value - 1);
+        slider->Decrease();
     }
     else if(button == buttonRight)
     {
-        slider->SetValueInt(value + 1);
+        slider->Increase();
     }
 }
 
@@ -106,4 +105,14 @@ void lSliderWithTextAndButtons::HandleHoverEnd(StringHash, VariantMap&)
 int lSliderWithTextAndButtons::GetValue()
 {
     return slider->GetValueInt();
+}
+
+int lSliderWithTextAndButtons::GetValueMin()
+{
+    return slider->GetValueMin();
+}
+
+int lSliderWithTextAndButtons::GetValueMax()
+{
+    return slider->GetValueMax();
 }
