@@ -18,6 +18,7 @@ extern FileSystem       *gFileSystem;
 extern PhysicsWorld     *gPhysicsWorld;
 extern Font             *gFont;
 extern Time             *gTime;
+extern FileSelector     *gFileSelector;
 
 extern lCamera          *gCamera;
 extern lCursor          *gCursor;

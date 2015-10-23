@@ -130,7 +130,7 @@ void lCamera::Move(float time)
         }
         else if((dX || dY) && gInput->GetMouseButtonDown(Urho3D::MOUSEB_MIDDLE))
         {
-            float k = 3.0f;
+            float k = 20.0f;
             if(dX > 0)
             {
                 MoveOn(Direction_Left, dX / k);

@@ -345,6 +345,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Objects\Terrain.cpp" />
     <ClCompile Include="src\Game\Objects\TerrainBlock.cpp" />
     <ClCompile Include="src\Game\Objects\Triangle.cpp" />
+    <ClCompile Include="src\GlobalFunctions.cpp" />
     <ClCompile Include="src\GlobalVars.cpp" />
     <ClCompile Include="src\GUI\Elements\Button.cpp" />
     <ClCompile Include="src\GUI\Elements\ButtonToggled.cpp" />
@@ -397,6 +398,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Objects\Terrain.h" />
     <ClInclude Include="src\Game\Objects\TerrainBlock.h" />
     <ClInclude Include="src\Game\Objects\Triangle.h" />
+    <ClInclude Include="src\GlobalFunctions.h" />
     <ClInclude Include="src\GlobalVars.h" />
     <ClInclude Include="src\GUI\Elements\Button.h" />
     <ClInclude Include="src\GUI\Elements\ButtonToggled.h" />

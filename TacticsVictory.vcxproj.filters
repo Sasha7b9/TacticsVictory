@@ -180,6 +180,9 @@
     <ClCompile Include="src\GUI\GuiEditor\WindowNewMap.cpp">
       <Filter>GUI\GuiEditor</Filter>
     </ClCompile>
+    <ClCompile Include="src\GlobalFunctions.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -328,6 +331,9 @@
     </ClInclude>
     <ClInclude Include="src\GUI\GuiEditor\WindowNewMap.h">
       <Filter>GUI\GuiEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GlobalFunctions.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

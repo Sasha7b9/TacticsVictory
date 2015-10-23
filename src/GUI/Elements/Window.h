@@ -10,7 +10,6 @@ public:
 
     static void RegisterObject(Context *context);
 
-    void SetInCenterScreen();
     bool IsChildOfParent();
     void Toggle();
     bool IsInside(IntVector2 position, bool isScreen);

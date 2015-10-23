@@ -17,6 +17,7 @@ FileSystem      *gFileSystem = nullptr;
 PhysicsWorld    *gPhysicsWorld = nullptr;
 Font            *gFont = nullptr;
 Time            *gTime = nullptr;
+FileSelector    *gFileSelector = nullptr;
 
 lCamera         *gCamera = nullptr;
 lCursor         *gCursor = nullptr;

@@ -22,6 +22,7 @@
 #include "GUI/Menu/MenuConfirmExit.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/MenuEvents.h"
+#include "GlobalFunctions.h"
 
 
 lGUI::lGUI() : Object(gContext)
@@ -123,12 +124,12 @@ void lGUI::Create()
     gWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
 
     gMenuMain = new lMenuMain(gContext);
-    gMenuMain->SetInCenterScreen();
+    SetWindowInCenterScreen(gMenuMain);
     gUIRoot->AddChild(gMenuMain);
     SubscribeToEvent(gMenuMain, E_MENU, HANDLER(lGUI, HandleMenuEvent));
 
     gMenuOptions = new lMenuOptions(gContext);
-    gMenuOptions->SetInCenterScreen();
+    SetWindowInCenterScreen(gMenuOptions);
     gUIRoot->AddChild(gMenuOptions);
     SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(lGUI, HandleMenuEvent));
     gMenuOptions->SetVisible(false);
@@ -144,7 +145,7 @@ void lGUI::Create()
 
     gMenuConfirmExit = new lMenuConfirmExit(gContext);
     gUIRoot->AddChild(gMenuConfirmExit);
-    gMenuConfirmExit->SetInCenterScreen();
+    SetWindowInCenterScreen(gMenuConfirmExit);
     gMenuConfirmExit->SetVisible(false);
     SubscribeToEvent(gMenuConfirmExit, E_MENU, HANDLER(lGUI, HandleMenuEvent));
 

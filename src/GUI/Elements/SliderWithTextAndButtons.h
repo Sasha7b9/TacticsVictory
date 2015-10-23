@@ -9,7 +9,7 @@ class lSliderWithTextAndButtons : public UIElement
     OBJECT(lSliderWithTextAndButtons);
 
 public:
-    lSliderWithTextAndButtons(UIElement *uielement, char *text, int min, int max);
+    lSliderWithTextAndButtons(UIElement *uielement, char *text, int min, int max, int step = 1);
 
     void SetRange(int min, int max);
     void SetValue(int value);
@@ -27,4 +27,6 @@ private:
     SharedPtr<Text> textValue;
     SharedPtr<Button> buttonLeft;
     SharedPtr<Button> buttonRight;
+
+    int step = 1;
 };
