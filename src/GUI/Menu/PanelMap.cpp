@@ -59,25 +59,11 @@ void lPanelMap::Update(float dT)
         uint sizeX = SizeXMap();
         uint sizeY = SizeYMap();
 
-        float scaleX = (GetWidth() - 2) / (float)sizeX;
-        float scaleY = (GetHeight() - 2) / (float)sizeY;
+        uint sizeMap = sizeX > sizeY ? sizeX : sizeY;
 
-        scale = scaleX < scaleY ? scaleX : scaleY;
-
-        if(scaleX < scaleY)
-        {
-            y0 = (int)(GetHeight() / 2.0f - (scale * sizeY) / 2.0f);
-        }
-        else
-        {
-            x0 = (int)(GetWidth() / 2.0f - (scale * sizeX) / 2.0f);
-        }
-
-        imageMap = new lImage(GetWidth(), GetHeight());
+        imageMap = new lImage((int)sizeMap, (int)sizeMap);
 
         imageMap->Clear(Color::BLACK);
-        imageMap->DrawRectangle(0, 0, GetWidth() - 1, GetHeight() - 1, Color::WHITE);
-
 
         float maxHeight = GetMaxHeight();
         float stand = 0.0f;
@@ -87,22 +73,37 @@ void lPanelMap::Update(float dT)
         int prevY = 0;
         int posX = 0;
 
+        uint x0 = 0, y0 = 0;
+
+        if(sizeX < sizeMap)
+        {
+            x0 = (sizeMap - sizeX) / 2;
+        }
+        if(sizeY < sizeMap)
+        {
+            y0 = (sizeMap - sizeY) / 2;
+        }
+
         for(uint x = 0; x < sizeX; x++)
         {
             for(uint y = 0; y < sizeY; y++)
             {
-                posX = (int)((float)x0 + scale * x + 0.5f);
-                int posY = (int)((float)y0 + scale * y + 0.5f);
+                posX = (int)(x0 + x);
+                int posY = (int)(y0 + y);
                 float color = GetMapHeight(x, y) * scaleColor;
                 Color col = {stand + color, stand + color, stand + color};
 
                 {
-                    imageMap->SetPoint(1 + posX, 1 + posY, col);
+                    imageMap->SetPoint(posX, posY, col);
                 }
                 prevY = posY;
             }
             prevX = posX;
         }
+
+        imageMap->GetImage()->Resize(GetWidth(), GetHeight());
+
+        imageMap->DrawRectangle(0, 0, GetWidth() - 1, GetHeight() - 1, Color::WHITE);
     }
 
     Vector2 points[4] =
@@ -119,8 +120,27 @@ void lPanelMap::Update(float dT)
 
     image->GetImage()->SetData(data);
 
+    uint sizeX = SizeXMap();
+    uint sizeY = SizeYMap();
+
+    float scaleX = (GetWidth() - 2) / (float)sizeX;
+    float scaleY = (GetHeight() - 2) / (float)sizeY;
+
+    scale = scaleX < scaleY ? scaleX : scaleY;
+
+    if(scaleX < scaleY)
+    {
+        x0 = 0;
+        y0 = (int)(GetHeight() / 2.0f - (scale * sizeY) / 2.0f);
+    }
+    else
+    {
+        x0 = (int)(GetWidth() / 2.0f - (scale * sizeX) / 2.0f);
+        y0 = 0;
+    }
+
 #define DRAW_LINE(p0, p1)   \
-    image->DrawLine((int)(x0 + p0.x_ * scale), (int)(y0 - p0.y_ * scale), (int)(x0 + p1.x_ * scale), (int)(y0 - p1.y_ * scale), Color::WHITE);
+    image->DrawLine((int)(x0 + p0.x_ * scale), (int)(y0 - p0.y_ * scale), (int)(x0 + p1.x_ * scale), (int)(y0 - p1.y_ * scale), Color::BLUE);
 
     Vector2 point0;
     if(FindIntersectionX0Z(points[0], point0))
