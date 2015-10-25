@@ -42,7 +42,7 @@ void lEditor::Run()
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
 
-    gCamera->SetPosition({0.0f, 25.0f, 0.0f}, {level[0].Size() / 2.0f, 0.0f, -(level.Size() / 2.0f)});
+    gCamera->SetPosition({10.0f, 20.0f, -5.0f}, {10.0f, 0.0f, 0.0f});
     lightNode->SetPosition({level[0].Size() / 2.0f, 50.0f, -(level.Size() / 2.0f)});
 
     SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(lEditor, HandlePostRenderUpdate));
@@ -66,8 +66,8 @@ void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &)
     if(!selectedPlane.IsZero())
     {
         Color color = Color::BLUE;
-        gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v1, selectedPlane.v2, color, true);
-        gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, true);
+        gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v1, selectedPlane.v2, color, false);
+        gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
     }
 
     if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT | Urho3D::MOUSEB_MIDDLE))
@@ -117,7 +117,7 @@ void lEditor::HandleMouseDown(StringHash, VariantMap&)
     }
     gCounterHint++;
 
-    if(gInput->GetMouseButtonDown(Urho3D::MOUSEB_LEFT))
+    if(gInput->GetMouseButtonDown(Urho3D::MOUSEB_LEFT) && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_MIDDLE) && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT))
     {
         selectedPlane = lPlane::ZERO;
 
@@ -148,5 +148,7 @@ void lEditor::HandleKeyDown(StringHash, VariantMap& eventData)
             gTerrain->SetHeight(row, col, height + 1.0f);
             gTerrain->Update();
         }
+        height = gTerrain->GetHeight(row, col) + 0.2f;
+        selectedPlane.SetY(height);
     }
 }

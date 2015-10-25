@@ -9,6 +9,7 @@ public:
     bool IsEquals(const lPlane &plane);
     bool IsZero();
     void CalculateRowCol();
+    void SetY(float y);
 
     Vector3 v0;
     Vector3 v1;

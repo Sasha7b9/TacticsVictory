@@ -36,3 +36,8 @@ void lPlane::CalculateRowCol()
     col = (uint)((xMax + xMin) / 2.0f);
     row = (uint)((zMin + zMax) / 2.0f);
 }
+
+void lPlane::SetY(float y)
+{
+    v0.y_ = v1.y_ = v2.y_ = v3.y_ = y;
+}
