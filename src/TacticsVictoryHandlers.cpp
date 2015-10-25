@@ -6,7 +6,7 @@
 #include "GUI/Menu/Console.h"
 #include "GUI/Menu/MenuOptions.h"
 #include "GUI/Menu/MenuMain.h"
-#include "GUI/Menu/MenuConfirmExit.h"
+#include "GUI/Menu/WindowConfirmExit.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUi/Elements/Hint.h"
 #include "GUI/GuiGame/GuiGame.h"
@@ -72,12 +72,12 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
             else if (gMenuMain->IsVisible())
             {
                 gMenuMain->SetVisible(false);
-                gMenuConfirmExit->SetVisible(true);
+                gWindowConfirmExit->SetVisible(true);
             }
-            else if (gMenuConfirmExit->IsVisible())
+            else if (gWindowConfirmExit->IsVisible())
             {
                 gMenuMain->SetVisible(true);
-                gMenuConfirmExit->SetVisible(false);
+                gWindowConfirmExit->SetVisible(false);
             }
         }
     }

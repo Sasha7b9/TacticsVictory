@@ -25,3 +25,8 @@ IntVector2 lLineTranslator2D::Update(float dT)
 
     return IntVector2(x, y);
 }
+
+lLineTranslator2D::State lLineTranslator2D::GetState()
+{
+    return (State)translatorX->GetState();
+}

@@ -19,6 +19,7 @@ lButton::lButton(Context *context) :
 lButton::lButton(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
     Button(gContext)
 {
+    SetStyleAuto(gUIRoot->GetDefaultStyle());
     SetStyle("MainMenuButton");
     label = lLabel::Create(text, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);

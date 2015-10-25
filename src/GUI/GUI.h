@@ -25,7 +25,8 @@ public:
 
     void RemoveFromScreen();
     void AddToScreen();
-
+    void SetVisibleWindow(lWindow *window, bool visible);
+    void SetUnvisibleAllWindows();
 
 private:
     lGUI& operator=(const lGUI&)

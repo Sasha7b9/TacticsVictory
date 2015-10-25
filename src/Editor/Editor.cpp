@@ -13,6 +13,7 @@
 lEditor::lEditor(Context *context) : Object(context)
 {
     currentPlane = lPlane::ZERO;
+    selectedPlane = lPlane::ZERO;
 }
 
 
@@ -30,7 +31,7 @@ void lEditor::Run()
 
     gTerrain = new lTerrain(level);
 
-    SharedPtr<Node> lightNode(gScene->CreateChild("LightNode"));
+    lightNode = gScene->CreateChild("LightNode");
 
     SharedPtr<Light> light(lightNode->CreateComponent<Light>());
     lightNode->SetScale(0.01f);
@@ -46,13 +47,27 @@ void lEditor::Run()
 
     SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(lEditor, HandlePostRenderUpdate));
     SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lEditor, HandleMouseDown));
+    SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(lEditor, HandleKeyDown));
+}
+
+void lEditor::ClearScene()
+{
+    SAFE_DELETE(gTerrain);
+    gScene->RemoveChild(lightNode);
 }
 
 void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &)
 {
-    if (gTerrain->Empty())
+    if (!gTerrain || gTerrain->Empty())
     {
         return;
+    }
+
+    if(!selectedPlane.IsZero())
+    {
+        Color color = Color::BLUE;
+        gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v1, selectedPlane.v2, color, true);
+        gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, true);
     }
 
     if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT | Urho3D::MOUSEB_MIDDLE))
@@ -64,14 +79,21 @@ void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
         Ray ray = gCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
 
-        lPlane plane = gTerrain->GetIntersection(ray);
+        currentPlane = gTerrain->GetIntersection(ray);
 
-        if (!plane.IsZero())
+        if (!currentPlane.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
         {
-            currentPlane = plane;
-            Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE;
-            gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
-            gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
+            if(!selectedPlane.IsEquals(currentPlane))
+            {
+                Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE;
+                gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
+                gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
+            }
+            gCursor->SetSelected();
+        }
+        else
+        {
+            gCursor->SetNormal();
         }
     }
 
@@ -94,5 +116,37 @@ void lEditor::HandleMouseDown(StringHash, VariantMap&)
         gHint = nullptr;
     }
     gCounterHint++;
+
+    if(gInput->GetMouseButtonDown(Urho3D::MOUSEB_LEFT))
+    {
+        selectedPlane = lPlane::ZERO;
+
+        if(!currentPlane.IsZero())
+        {
+            selectedPlane = currentPlane;
+            selectedPlane.CalculateRowCol();
+        }
+    }
 }
 
+void lEditor::HandleKeyDown(StringHash, VariantMap& eventData)
+{
+    int key = eventData[Urho3D::KeyDown::P_KEY].GetInt();
+
+    if(!selectedPlane.IsZero())
+    {
+        uint row = selectedPlane.row;
+        uint col = selectedPlane.col;
+        int height = gTerrain->GetHeight(row, col);
+        if(key == Urho3D::KEY_KP_MINUS)
+        {
+            gTerrain->SetHeight(row, col, height - 1.0f);
+            gTerrain->Update();
+        }
+        else if(key == Urho3D::KEY_KP_PLUS)
+        {
+            gTerrain->SetHeight(row, col, height + 1.0f);
+            gTerrain->Update();
+        }
+    }
+}

@@ -34,11 +34,6 @@ void lPanelMain::Update(float dT)
     SetPosition(translator->Update(dT));
 }
 
-void lPanelMain::Toggle()
-{
-    translator->Toggle();
-}
-
 void lPanelMain::AddTab(SharedPtr<lTab> tab)
 {
     static const int x0 = 10;

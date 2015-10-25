@@ -80,7 +80,6 @@ void lSliderWithTextAndButtons::HandleSliderIntChanged(StringHash, VariantMap& e
 void lSliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Urho3D::Pressed::P_ELEMENT].GetPtr();
-    int value = slider->GetValueInt();
 
     if(button == buttonLeft)
     {

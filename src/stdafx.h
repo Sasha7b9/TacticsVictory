@@ -212,7 +212,6 @@ class lLineTranslator1D;
 class lLineTranslator2D;
 
 class lMenu;
-class lMenuConfirmExit;
 class lGuiEditor;
 class lGuiGame;
 class lMenuMain;
@@ -231,7 +230,10 @@ class lTerrain;
 class lTerrainBlock;
 class lTriangle;
 
+class lWindowConfirmExit;
+class lWindowPause;
 class lWindowVariables;
+
 
 #include "SettingsTypes.h"
 #include "GlobalVars.h"

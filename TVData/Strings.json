@@ -35,6 +35,7 @@
     "Exit from game":       { "ru":"Выйти из игры" },
     "Variables":            { "ru":"Переменные" },
     "Map":                  { "ru":"Карта" },
+    "Interface":            { "ru":"Интерфейс" },
     "Panel":                { "ru":"Панель" },
     "Menu":                 { "ru":"Меню" },
     "File":                 { "ru":"Файл" },
@@ -57,5 +58,8 @@
     "createNewMap":         { "en":"Create new map",
                                 "ru":"Создать новую карту" },
     "clearLandscape":       { "en":"Clear landscape",
-                                "ru":"Очистить ландашафт" }
+                                "ru":"Очистить ландашафт" },
+    "Landscape":            { "ru":"Ландшафт" },
+    "PAUSE":                { "ru":"ПАУЗА" },
+    "Exit in main menu?":   { "ru":"Выйти в главное меню?" }
 }

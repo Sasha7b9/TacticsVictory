@@ -36,11 +36,6 @@ void lPanelMap::RegisterObject(Context *context)
     COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-void lPanelMap::Toggle()
-{
-    translator->Toggle();
-}
-
 void lPanelMap::Update(float dT)
 {
     SetPosition(translator->Update(dT));

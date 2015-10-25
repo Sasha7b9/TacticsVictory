@@ -61,6 +61,11 @@ void lTerrain::SetHeight(uint row, uint col, float height)
     heightChanged[row / SIZE_BLOCK][col / SIZE_BLOCK] = true;
 }
 
+float lTerrain::GetHeight(uint row, uint col)
+{
+    return map[row][col];
+}
+
 void lTerrain::Update()
 {
     for (uint x = 0; x < numBlocksInX; x++)

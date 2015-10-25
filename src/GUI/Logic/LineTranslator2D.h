@@ -19,6 +19,7 @@ public:
 
     IntVector2 Update(float dT);
     void Toggle();
+    State GetState();
 
 private:
     lLineTranslator2D& operator=(const lLineTranslator2D&)

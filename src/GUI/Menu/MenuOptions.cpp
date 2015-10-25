@@ -14,7 +14,7 @@
 lMenuOptions::lMenuOptions(Context *context) :
     lWindow(context)
 {
-    SET_VERTICAL_LAYOUT(this);
+    SET_VERTICAL_LAYOUT_0_6(this);
     SetName("Options menu");
 
     SharedPtr<lLabel> label(lLabel::Create("Options", 20));

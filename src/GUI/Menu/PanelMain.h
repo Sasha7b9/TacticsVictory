@@ -15,15 +15,12 @@ public:
 
     static void RegisterObject(Context *context);
 
-    void Toggle();
-
     void AddTab(SharedPtr<lTab> tab);
 
 private:
     lPanelMain& operator=(const lPanelMain&)
     {};
 
-    SharedPtr<lLineTranslator2D> translator;
     Vector<SharedPtr<lTab>> tabs;
 
     SharedPtr<lTab> currentTab;

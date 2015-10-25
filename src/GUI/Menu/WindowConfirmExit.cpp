@@ -1,7 +1,7 @@
 #include <stdafx.h>
 
 
-#include "MenuConfirmExit.h"
+#include "WindowConfirmExit.h"
 #include "GUI/Elements/Button.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/GUI.h"
@@ -9,33 +9,33 @@
 
 
 
-lMenuConfirmExit::lMenuConfirmExit(Context *) :
+lWindowConfirmExit::lWindowConfirmExit(Context *) :
     lWindow()
 {
-    SetLayout(Urho3D::LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
-    SharedPtr<lLabel> label(lLabel::Create("Exit in OS?", 20));
+    SET_VERTICAL_LAYOUT_0_6(this);
+    SharedPtr<lLabel> label(lLabel::Create("Exit in OS?"));
     AddChild(label);
 
     SharedPtr<UIElement> layer(CreateChild<UIElement>());
-    layer->SetLayout(Urho3D::LM_HORIZONTAL, 6, IntRect(6, 6, 6, 6));
+    SET_HORIZONTAL_LAYOUT_6_6(layer);
     
     buttonOk = new lButton(layer, "Ok");
     buttonCancel = new lButton(layer, "Cancel");
 
-    SubscribeToEvent(buttonOk, Urho3D::E_RELEASED, HANDLER(lMenuConfirmExit, HandleButtonRelease));
-    SubscribeToEvent(buttonCancel, Urho3D::E_RELEASED, HANDLER(lMenuConfirmExit, HandleButtonRelease));
+    SubscribeToEvent(buttonOk, Urho3D::E_RELEASED, HANDLER(lWindowConfirmExit, HandleButtonRelease));
+    SubscribeToEvent(buttonCancel, Urho3D::E_RELEASED, HANDLER(lWindowConfirmExit, HandleButtonRelease));
 
     AddChild(layer);
 }
 
-void lMenuConfirmExit::RegisterObject(Context *context)
+void lWindowConfirmExit::RegisterObject(Context *context)
 {
-    context->RegisterFactory<lMenuConfirmExit>("UI");
+    context->RegisterFactory<lWindowConfirmExit>("UI");
 
     COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-void lMenuConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
+void lWindowConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
 
@@ -47,7 +47,7 @@ void lMenuConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     else if (button == buttonCancel)
     {
-        gMenuConfirmExit->SetVisible(false);
+        gWindowConfirmExit->SetVisible(false);
         gMenuMain->SetVisible(true);
     }
 

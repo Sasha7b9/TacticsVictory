@@ -17,8 +17,7 @@ public:
 private:
     lGuiEditor& operator=(const lGuiEditor&) {};
 
-    SharedPtr<lButton> buttonMap;
-    SharedPtr<lButton> buttonMainPanel;
+    SharedPtr<lButton> buttonInterface;
     SharedPtr<lButton> buttonMenu;
 
     SharedPtr<lButtonToggled> buttonMainFile;
@@ -30,11 +29,18 @@ private:
     SharedPtr<lPanelMain>   panelMain;
 
     SharedPtr<lWindow>      windowNewMap;
+    SharedPtr<lWindow>      windowMenu;
+    SharedPtr<lWindow>      windowConfirmExit;
     SharedPtr<lSliderWithTextAndButtons> sliderSizeNewMapX;
     SharedPtr<lSliderWithTextAndButtons> sliderSizeNewMapY;
 
+    void HandleMouseDown(StringHash, VariantMap&);
     void HandleButtonRelease(StringHash, VariantMap&);
     void HandleCreateNewMap(StringHash, VariantMap&);
+    void HandleExit(StringHash, VariantMap&);
+    void HandleOptions(StringHash, VariantMap&);
+    void HandleExitOk(StringHash, VariantMap&);
+    void HandleExitCancel(StringHash, VariantMap&);
     void HandleClearTerrain(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
     void HandleButtonFileLoad(StringHash, VariantMap&);
@@ -44,4 +50,5 @@ private:
 
     bool IntersectionX(lButton *button, int x);
     void CreateWindows();
+    void ToggleInterfacePanels();
 };

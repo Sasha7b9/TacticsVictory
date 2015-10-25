@@ -19,6 +19,10 @@ public:
 
     int Update(float dT);
     void Toggle();
+    State GetState()
+    {
+        return state;
+    }
 
 private:
     lLineTranslator1D& operator=(const lLineTranslator1D&)

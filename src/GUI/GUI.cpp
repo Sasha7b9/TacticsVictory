@@ -19,7 +19,7 @@
 #include "GUI/Menu/PanelMain.h"
 #include "GUI/Menu/Console.h"
 #include "GUI/Menu/WindowVariables.h"
-#include "GUI/Menu/MenuConfirmExit.h"
+#include "GUI/Menu/WindowConfirmExit.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/MenuEvents.h"
 #include "GlobalFunctions.h"
@@ -42,7 +42,7 @@ static void RegstrationObjects()
     lWindow::RegisterObject(gContext);
     lMenuMain::RegisterObject(gContext);
     lMenuOptions::RegisterObject(gContext);
-    lMenuConfirmExit::RegisterObject(gContext);
+    lWindowConfirmExit::RegisterObject(gContext);
     lTab::RegisterObject(gContext);
     lLabel::RegisterObject(gContext);
     vSlider::RegisterObject(gContext);
@@ -145,11 +145,11 @@ void lGUI::Create()
     gGuiEditor->SetVisible(false);
     gUIRoot->AddChild(gGuiEditor);
 
-    gMenuConfirmExit = new lMenuConfirmExit(gContext);
-    gUIRoot->AddChild(gMenuConfirmExit);
-    SetWindowInCenterScreen(gMenuConfirmExit);
-    gMenuConfirmExit->SetVisible(false);
-    SubscribeToEvent(gMenuConfirmExit, E_MENU, HANDLER(lGUI, HandleMenuEvent));
+    gWindowConfirmExit = new lWindowConfirmExit(gContext);
+    gUIRoot->AddChild(gWindowConfirmExit);
+    SetWindowInCenterScreen(gWindowConfirmExit);
+    gWindowConfirmExit->SetVisible(false);
+    SubscribeToEvent(gWindowConfirmExit, E_MENU, HANDLER(lGUI, HandleMenuEvent));
 
     gCursor = new lCursor();
 
@@ -173,7 +173,7 @@ bool lGUI::MenuIsVisible()
 {
     return gMenuMain->IsVisible() ||
         gMenuOptions->IsVisible() ||
-        gMenuConfirmExit->IsVisible();
+        gWindowConfirmExit->IsVisible();
 }
 
 void lGUI::SetVisibleMenu(bool visible)
@@ -229,4 +229,33 @@ bool lGUI::UnderCursor()
     IntVector2 pos = gCursor->GetCursor()->GetPosition();
 
     return gGuiEditor->IsInside(pos) || gGuiGame->IsInside(pos) || (gFileSelector->GetWindow()->IsVisible());
+}
+
+void lGUI::SetVisibleWindow(lWindow *window, bool visible)
+{
+    window->SetVisible(visible);
+    if(visible)
+    {
+        while(!gOpenedWindow.Empty())
+        {
+            lWindow *window = gOpenedWindow.Back();
+            window->SetVisible(false);
+            gOpenedWindow.Remove(window);
+        }
+        gOpenedWindow.Push(window);
+    }
+    else
+    {
+        gOpenedWindow.Remove(window);
+    }
+}
+
+void lGUI::SetUnvisibleAllWindows()
+{
+    while(!gOpenedWindow.Empty())
+    {
+        lWindow *window = gOpenedWindow.Back();
+        window->SetVisible(false);
+        gOpenedWindow.Remove(window);
+    }
 }

@@ -54,4 +54,40 @@ public:
 
         return (rnd % delta) + min;
     }
+
+    template <class T> static T Min(T val0, T val1, T val2, T val3)
+    {
+        T min = val0;
+        if(val1 < min)
+        {
+            min = val1;
+        }
+        if(val2 < min)
+        {
+            min = val2;
+        }
+        if(val3 < min)
+        {
+            min = val3;
+        }
+        return min;
+    }
+
+    template <class T> static T Max(T val0, T val1, T val2, T val3)
+    {
+        T max = val0;
+        if(val1 > max)
+        {
+            max = val1;
+        }
+        if(val2 > max)
+        {
+            max = val2;
+        }
+        if(val3 > max)
+        {
+            max = val3;
+        }
+        return max;
+    }
 };

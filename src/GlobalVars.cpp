@@ -30,9 +30,10 @@ lConsole        *gConsole = nullptr;
 lMenuMain       *gMenuMain = nullptr;
 lMenuOptions    *gMenuOptions = nullptr;
 
-lMenuConfirmExit    *gMenuConfirmExit = nullptr;
+lWindowConfirmExit    *gWindowConfirmExit = nullptr;
 lWindowVariables    *gWindowVars = nullptr;
 lHint               *gHint = nullptr;
 int                 *gCounterHint = 0;
 lLevel              *gLevel = nullptr;
 lTerrain            *gTerrain = nullptr;
+Vector<lWindow*>    gOpenedWindow;

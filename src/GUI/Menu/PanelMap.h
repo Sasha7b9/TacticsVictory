@@ -15,14 +15,11 @@ public:
 
     static void RegisterObject(Context *context);
 
-    void Toggle();
-
 private:
     lPanelMap& operator=(const lPanelMap&)
     {};
 
     Vector<Vector<float> > map;
-    SharedPtr<lLineTranslator2D> translator;
     SharedPtr<lImage> imageMap;
     int x0 = 0;
     int y0 = 0;

@@ -4,17 +4,17 @@
 #include "GUI/Elements/Window.h"
 
 
-class lMenuConfirmExit : public lWindow
+class lWindowConfirmExit : public lWindow
 {
-    OBJECT(lMenuConfirmExit);
+    OBJECT(lWindowConfirmExit);
 
 public:
-    lMenuConfirmExit(Context *context);
+    lWindowConfirmExit(Context *context);
 
     static void RegisterObject(Context *context);
 
 private:
-    lMenuConfirmExit& operator=(const lMenuConfirmExit&)
+    lWindowConfirmExit& operator=(const lWindowConfirmExit&)
     {};
 
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);

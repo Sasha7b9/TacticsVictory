@@ -11,12 +11,17 @@ class lEditor : public Object
 public:
     lEditor(Context *context);
     void Run();
+    void ClearScene();
 
 private:
     lPlane currentPlane;
+    lPlane selectedPlane;
 
-    void HandlePostRenderUpdate(StringHash eventType, VariantMap &eventData);
-    void HandleMouseDown(StringHash eventType, VariantMap& eventData);
+    SharedPtr<Node> lightNode;
+
+    void HandlePostRenderUpdate(StringHash, VariantMap&);
+    void HandleMouseDown(StringHash, VariantMap&);
+    void HandleKeyDown(StringHash, VariantMap&);
 
     lEditor& operator=(const lEditor&)
     {};

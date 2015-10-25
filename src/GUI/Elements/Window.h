@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "GUI/Logic/LineTranslator2D.h"
+
+
 class lWindow : public Window
 {
     OBJECT(lWindow)
@@ -13,6 +16,7 @@ public:
     bool IsChildOfParent();
     void Toggle();
     bool IsInside(IntVector2 position, bool isScreen);
+    SharedPtr<lLineTranslator2D> GetTranslator();
 
     SharedPtr<lButton> AddButton(char *text, int x = -1, int y = -1, int width = -1, int height = -1);
     SharedPtr<lButtonToggled> AddButtonToggled(char *text, int x, int y, int width, int height);
@@ -24,4 +28,5 @@ protected:
     {};
 
     HashMap<Button*, uint> mapButtonsActions;
+    SharedPtr<lLineTranslator2D> translator;
 };

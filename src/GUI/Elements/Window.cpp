@@ -30,7 +30,15 @@ bool lWindow::IsChildOfParent()
 
 void lWindow::Toggle()
 {
-    SetVisible(!IsVisible());
+    if(translator)
+    {
+        translator->Toggle();
+    }
+}
+
+SharedPtr<lLineTranslator2D> lWindow::GetTranslator()
+{
+    return translator;
 }
 
 bool lWindow::IsInside(IntVector2 position, bool isScreen)

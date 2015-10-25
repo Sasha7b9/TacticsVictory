@@ -1,6 +1,9 @@
 #pragma once
 
 
+class lWindow;
+
+
 extern Localization     *gLocalization;
 extern UI               *gUI;
 extern UIElement        *gUIRoot;
@@ -27,13 +30,14 @@ extern lSettings        *gSet;
 extern lLevel           *gLevel;
 extern lTerrain         *gTerrain;
 
-extern lGUI                *gGUI;
-extern lConsole            *gConsole;
-extern lWindowVariables    *gWindowVars;
-extern lMenuMain           *gMenuMain;
-extern lGuiGame            *gGuiGame;
-extern lGuiEditor          *gGuiEditor;
-extern lMenuOptions        *gMenuOptions;
-extern lMenuConfirmExit    *gMenuConfirmExit;
-extern lHint               *gHint;
-extern int                 *gCounterHint;
+extern lGUI                 *gGUI;
+extern lConsole             *gConsole;
+extern lWindowVariables     *gWindowVars;
+extern lMenuMain            *gMenuMain;
+extern lGuiGame             *gGuiGame;
+extern lGuiEditor           *gGuiEditor;
+extern lMenuOptions         *gMenuOptions;
+extern lWindowConfirmExit   *gWindowConfirmExit;
+extern lHint                *gHint;
+extern int                  *gCounterHint;
+extern Vector<lWindow*>     gOpenedWindow;

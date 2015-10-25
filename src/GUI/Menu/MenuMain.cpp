@@ -6,7 +6,7 @@
 #include "GUI/Elements/Button.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
-#include "GUI/Menu/MenuConfirmExit.h"
+#include "GUI/Menu/WindowConfirmExit.h"
 
 
 lMenuMain::lMenuMain(Context *) :
@@ -50,7 +50,7 @@ void lMenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
     if (button == buttonExit)
     {
         gMenuMain->SetVisible(false);
-        gGUI->SetVisibleMenu(gMenuConfirmExit, true);
+        gGUI->SetVisibleMenu(gWindowConfirmExit, true);
     }
     else
     {

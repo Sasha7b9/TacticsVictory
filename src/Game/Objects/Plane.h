@@ -8,6 +8,7 @@ public:
 
     bool IsEquals(const lPlane &plane);
     bool IsZero();
+    void CalculateRowCol();
 
     Vector3 v0;
     Vector3 v1;
