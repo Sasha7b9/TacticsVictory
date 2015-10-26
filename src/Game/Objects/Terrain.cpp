@@ -3,7 +3,8 @@
 
 #include "Terrain.h"
 #include "Game/Objects/Plane.h"
-#include "Game//Objects/TerrainBlock.h"
+#include "Game/Objects/Line.h"
+#include "Game/Objects/TerrainSegment.h"
 
 
 lTerrain::lTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
@@ -11,32 +12,37 @@ lTerrain::lTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
     uint mapSizeX = map[0].Size();
     uint mapSizeZ = map.Size();
 
-    numBlocksInZ = mapSizeZ / SIZE_BLOCK;
-    numBlocksInX = mapSizeX / SIZE_BLOCK;
+    numSegmentsInZ = mapSizeZ / SIZE_SEGMENT;
+    numSegmentsInX = mapSizeX / SIZE_SEGMENT;
 
-    blocks.Resize(numBlocksInZ);
-    heightChanged.Resize(numBlocksInZ);
+    segments.Resize(numSegmentsInZ);
+    heightChanged.Resize(numSegmentsInZ);
 
-    for(uint i = 0; i < blocks.Size(); i++)
+    for(uint i = 0; i < segments.Size(); i++)
     {
-        blocks[i].Resize(numBlocksInX);
-        heightChanged[i].Resize(numBlocksInX);
+        segments[i].Resize(numSegmentsInX);
+        heightChanged[i].Resize(numSegmentsInX);
 
-        for (uint col = 0; col < numBlocksInX; col++)
+        for (uint col = 0; col < numSegmentsInX; col++)
         {
             heightChanged[i][col] = false;
         }
     }
 
-    for(uint x = 0; x < numBlocksInX; x++)
+    for(uint x = 0; x < numSegmentsInX; x++)
     {
-        for(uint z = 0; z < numBlocksInZ; z++)
+        for(uint z = 0; z < numSegmentsInZ; z++)
         {
-            Vector<Vector<float> > subMap = ExtractSubMap(x  * SIZE_BLOCK, z * SIZE_BLOCK, SIZE_BLOCK);
-            SharedPtr<lTerrainBlock> block(new lTerrainBlock(subMap, {(float)(x * SIZE_BLOCK) - 1.0f, 0.0f, -(float)(z * SIZE_BLOCK) + 1.0f}));
-            blocks[z][x] = block;
+            Vector<Vector<float>> subMap = ExtractSubMap(x  * SIZE_SEGMENT, z * SIZE_SEGMENT, SIZE_SEGMENT);
+            SharedPtr<lTerrainSegment> segment(new lTerrainSegment(subMap, CalculateShift(x, z)));
+            segments[z][x] = segment;
         }
     }
+}
+
+Vector3 lTerrain::CalculateShift(uint xSegment, uint zSegment)
+{
+    return Vector3((float)(xSegment * SIZE_SEGMENT) - 1.0f, 0.0f, -(float)(zSegment * SIZE_SEGMENT) + 1.0f);
 }
 
 lTerrain::~lTerrain()
@@ -58,7 +64,7 @@ void lTerrain::SetHeight(uint row, uint col, float height)
 {
     map[row][col] = height;
 
-    heightChanged[row / SIZE_BLOCK][col / SIZE_BLOCK] = true;
+    heightChanged[row / SIZE_SEGMENT][col / SIZE_SEGMENT] = true;
 }
 
 float lTerrain::GetHeight(uint row, uint col)
@@ -66,18 +72,30 @@ float lTerrain::GetHeight(uint row, uint col)
     return map[row][col];
 }
 
+lPlane lTerrain::GetPlane(uint row, uint col)
+{
+    uint rowSegment = row / SIZE_SEGMENT;
+    uint colSegment = col / SIZE_SEGMENT;
+    uint rowPlane = row - (row / SIZE_SEGMENT) * SIZE_SEGMENT;
+    uint colPlane = col - (col / SIZE_SEGMENT) * SIZE_SEGMENT;
+    lPlane plane = segments[rowSegment][colSegment]->GetPlane(rowPlane, colPlane);
+    plane.row = row;
+    plane.col = col;
+    return plane;
+}
+
 void lTerrain::Update()
 {
-    for (uint x = 0; x < numBlocksInX; x++)
+    for (uint x = 0; x < numSegmentsInX; x++)
     {
-        for (uint y = 0; y < numBlocksInZ; y++)
+        for (uint y = 0; y < numSegmentsInZ; y++)
         {
             if (heightChanged[y][x])
             {
-                uint startX = x * SIZE_BLOCK;
-                uint startY = y * SIZE_BLOCK;
-                Vector<Vector<float>> subMap = ExtractSubMap(startX, startY, SIZE_BLOCK);
-                blocks[y][x]->Rebuild(subMap);
+                uint startX = x * SIZE_SEGMENT;
+                uint startY = y * SIZE_SEGMENT;
+                Vector<Vector<float>> subMap = ExtractSubMap(startX, startY, SIZE_SEGMENT);
+                segments[y][x]->Rebuild(subMap);
                 heightChanged[y][x] = false;
             }
         }
@@ -152,17 +170,17 @@ Vector<Vector<float> > lTerrain::ExtractSubMap(uint startX, uint startZ, uint si
     return subMap;
 }
 
-lPlane lTerrain::GetIntersection(Ray &ray)
+lPlane lTerrain::GetIntersectionPlane(Ray &ray)
 {
     lPlane plane = lPlane::ZERO;
     Vector<float> distances;
     Vector<lPlane> planes;
-    for(uint x = 0; x < numBlocksInX; x++)
+    for(uint x = 0; x < numSegmentsInX; x++)
     {
-        for(uint z = 0; z < numBlocksInZ; z++)
+        for(uint z = 0; z < numSegmentsInZ; z++)
         {
             bool isClosing = true;
-            float distance = blocks[z][x]->GetIntersection(ray, plane, isClosing);
+            float distance = segments[z][x]->GetIntersectionPlane(ray, plane, isClosing);
             if(distance != Urho3D::M_INFINITY)
             {
                 distances.Push(distance);
@@ -191,11 +209,23 @@ lPlane lTerrain::GetIntersection(Ray &ray)
     return plane;
 }
 
+lLine lTerrain::GetIntersectionEdge(Ray &ray)
+{
+    lPlane plane = GetIntersectionPlane(ray);
+
+    if (plane.IsZero())
+    {
+        return lLine::ZERO;
+    }
+
+    return plane.NearEdge(ray);
+}
+
 void lTerrain::Clear()
 {
     map.Resize(0);
 
-    for (auto row : blocks)
+    for (auto row : segments)
     {
         for (auto block : row)
         {
@@ -203,11 +233,11 @@ void lTerrain::Clear()
         }
     }
 
-    blocks.Resize(0);
+    segments.Resize(0);
 }
 
 
 bool lTerrain::Empty()
 {
-    return blocks.Empty();
+    return segments.Empty();
 }

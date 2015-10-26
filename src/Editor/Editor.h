@@ -3,6 +3,7 @@
 
 #include "Game/Objects/Plane.h"
 #include "Game/Objects/Terrain.h"
+#include "Game/Objects/Line.h"
 
 
 class lEditor : public Object
@@ -16,6 +17,9 @@ public:
 private:
     lPlane currentPlane;
     lPlane selectedPlane;
+
+    lLine currentEdge;
+    lLine selectedEdge;
 
     SharedPtr<Node> lightNode;
 

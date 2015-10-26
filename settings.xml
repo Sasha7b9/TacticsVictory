@@ -17,7 +17,7 @@
 	</material>
 	<shadow>
 		<draw>1</draw>
-		<map_size>4</map_size>
+		<map_size>3</map_size>
 	</shadow>
 	<lighting>
 		<specular>1</specular>

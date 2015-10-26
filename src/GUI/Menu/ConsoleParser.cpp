@@ -22,7 +22,7 @@ void ConsoleParser::Execute(const String &string)
     {
         if(size == 1)
         {
-            gWindowVars->Toggle();
+            gWindowVars->SetVisible(!gWindowVars->IsVisible());
         }
         else if(size == 2)
         {

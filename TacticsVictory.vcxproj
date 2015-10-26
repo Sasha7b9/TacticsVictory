@@ -340,10 +340,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Level.cpp" />
     <ClCompile Include="src\Game\Logic\Movinator.cpp" />
     <ClCompile Include="src\Game\Logic\Rotator.cpp" />
+    <ClCompile Include="src\Game\Objects\Line.cpp" />
     <ClCompile Include="src\Game\Objects\Plane.cpp" />
     <ClCompile Include="src\Game\Objects\Scene.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain.cpp" />
-    <ClCompile Include="src\Game\Objects\TerrainBlock.cpp" />
+    <ClCompile Include="src\Game\Objects\TerrainSegment.cpp" />
     <ClCompile Include="src\Game\Objects\Triangle.cpp" />
     <ClCompile Include="src\GlobalFunctions.cpp" />
     <ClCompile Include="src\GlobalVars.cpp" />
@@ -392,10 +393,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Level.h" />
     <ClInclude Include="src\Game\Logic\Movinator.h" />
     <ClInclude Include="src\Game\Logic\Rotator.h" />
+    <ClInclude Include="src\Game\Objects\Line.h" />
     <ClInclude Include="src\Game\Objects\Plane.h" />
     <ClInclude Include="src\Game\Objects\Scene.h" />
     <ClInclude Include="src\Game\Objects\Terrain.h" />
-    <ClInclude Include="src\Game\Objects\TerrainBlock.h" />
+    <ClInclude Include="src\Game\Objects\TerrainSegment.h" />
     <ClInclude Include="src\Game\Objects\Triangle.h" />
     <ClInclude Include="src\GlobalFunctions.h" />
     <ClInclude Include="src\GlobalVars.h" />

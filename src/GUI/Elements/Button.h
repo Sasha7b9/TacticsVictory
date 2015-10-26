@@ -23,10 +23,9 @@ private:
     {};
 
     SharedPtr<lLabel> label;
-
-    void HandleHoverBegin(StringHash eventType, VariantMap &eventData);
-    void HandleHoverEnd(StringHash eventType, VariantMap &eventData);
-    void HandleMouseDown(StringHash eventType, VariantMap &eventData);
-
     SharedPtr<lHint> hint;
+
+    void HandleHoverBegin(StringHash, VariantMap&);
+    void HandleHoverEnd(StringHash, VariantMap&);
+    void HandleMouseDown(StringHash, VariantMap&);
 };

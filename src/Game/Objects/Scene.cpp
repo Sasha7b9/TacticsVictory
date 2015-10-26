@@ -5,7 +5,7 @@
 #include "Core/Camera.h"
 #include "Game/Logic/Movinator.h"
 #include "Game/Level.h"
-#include "Game/Objects/TerrainBlock.h"
+#include "Game/Objects/TerrainSegment.h"
 
 
 tvScene::tvScene() :
@@ -31,11 +31,11 @@ void tvScene::Create()
     float dColor = 0.2f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    Vector<Vector<float> > level = gLevel->Load("input.txt");
+    Vector<Vector<float> > level = gLevel->Load("input.map");
     //Vector<Vector<float> > level = lLevel::CreateRandom(100, 100);
 
-    SharedPtr<lTerrainBlock> terrain;
-    terrain = new lTerrainBlock(level);
+    SharedPtr<lTerrainSegment> terrain;
+    terrain = new lTerrainSegment(level);
 
     SharedPtr<Node> lightNode;
     lightNode = gScene->CreateChild("LigthNode");

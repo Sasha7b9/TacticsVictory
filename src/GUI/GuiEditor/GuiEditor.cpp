@@ -7,6 +7,7 @@
 #include "GUI/Elements/Label.h"
 #include "GUI/Elements/ButtonToggled.h"
 #include "GUI/Elements/SliderWithTextAndButtons.h"
+#include "GUI/Elements/DropDownListWithTextAndButton.h"
 #include "GUI/Menu/PanelMap.h"
 #include "GUI/Menu/PanelMain.h"
 #include "GUI/Menu/MenuOptions.h"
@@ -31,7 +32,7 @@ lGuiEditor::lGuiEditor(Context* context) :
 
     int width = 100;
     int height = 19;
-    int dY = 24;
+    int dY = 30;
     int y = 10;
 
     // Tab "File"
@@ -57,6 +58,22 @@ lGuiEditor::lGuiEditor(Context* context) :
     SharedPtr<lButton> btnClearLandscape = tabLandscape->AddButton("Clear", 10, y += dY, width, height);
     btnClearLandscape->SetHint("clearLandscape");
     SubscribeToEvent(btnClearLandscape, Urho3D::E_RELEASED, HANDLER(lGuiEditor, HandleClearTerrain));
+
+    SharedPtr<lSliderWithTextAndButtons> sliderHeightDefault = tabLandscape->AddSlider("", -100, 100, 1, btnClearLandscape->GetPosition().x_ + btnClearLandscape->GetWidth() + 5, y - 2, 0, 20);
+    sliderHeightDefault->SetValue(0);
+    sliderHeightDefault->SetHint("hintSliderDefaultHeight");
+
+    SharedPtr<lSliderWithTextAndButtons> sliderSizeBrushX = tabLandscape->AddSlider("Brush X", 1, 10, 1, 10, y += dY, 75, 50);
+    sliderSizeBrushX->SetValue(1);
+    sliderSizeBrushX->SetHint("hintSliderSizeBrushX");
+
+    SharedPtr<lSliderWithTextAndButtons> sliderSizeBrushY = tabLandscape->AddSlider("Brush Y", 1, 10, 1, 10, y += dY, 75, 50);
+    sliderSizeBrushY->SetValue(1);
+    sliderSizeBrushY->SetHint("hintSliderSizeBrushY");
+
+    char *items[] = { "Plane", "Edge" };
+    SharedPtr<lDropDownListWithTextAndButton> ddListModeSelect = tabLandscape->AddDDList("Mode select", 100, 80, 2, items, 10, y += dY);
+    SubscribeToEvent(ddListModeSelect, Urho3D::E_ITEMSELECTED, HANDLER(lGuiEditor, HandleModeSelectChanged));
 
     // Panel bottom
     panelBottom = new lPanelBottom(gContext);
@@ -334,6 +351,7 @@ void lGuiEditor::HandleFileSelectorSaveLandscape(StringHash, VariantMap& eventDa
     {
         String fileName = (String)eventData[Urho3D::FileSelected::P_FILENAME].GetString();
         fileName = ReplaceExtension(fileName, ".map");
+        gLevel->SetMap(gTerrain->GetMap());
         gLevel->Save(fileName);
     }
 
@@ -369,4 +387,11 @@ void lGuiEditor::HandleOptions(StringHash, VariantMap&)
 void lGuiEditor::HandleMouseDown(StringHash, VariantMap&)
 {
     
+}
+
+void lGuiEditor::HandleModeSelectChanged(StringHash, VariantMap& eventData)
+{
+    int index = eventData[Urho3D::ItemSelected::P_SELECTION].GetInt();
+
+    modeSelect = (ModeSelect)index;
 }

@@ -10,6 +10,7 @@
 #include "GUI/Elements/Slider.h"
 #include "GUI/Elements/SliderInt.h"
 #include "GUI/Elements/GovernorFloat.h"
+#include "GUI/Elements/SliderWithTextAndButtons.h"
 #include "Core/Camera.h"
 #include "GUI/Menu/MenuMain.h"
 #include "GUI/Menu/MenuOptions.h"
@@ -53,6 +54,7 @@ static void RegstrationObjects()
     lPanelMap::RegisterObject(gContext);
     lPanelMain::RegisterObject(gContext);
     lGuiEditor::RegisterObject(gContext);
+    lSliderWithTextAndButtons::RegisterObject(gContext);
 }
 
 static float GetPosCameraY()

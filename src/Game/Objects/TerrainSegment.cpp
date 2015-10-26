@@ -1,7 +1,7 @@
 #include <stdafx.h>
 
 
-#include "TerrainBlock.h"
+#include "TerrainSegment.h"
 #include "Core/Math.h"
 #include "Game/Objects/Plane.h"
 #include "Game/Objects/Triangle.h"
@@ -13,18 +13,18 @@ using Urho3D::C_BOTTOMRIGHT;
 using Urho3D::C_BOTTOMLEFT;
 
 
-bool operator ==(const lTerrainBlock::MapPlaneKey& keyleft, const lTerrainBlock::MapPlaneKey& keyRight)
+bool operator ==(const lTerrainSegment::MapPlaneKey& keyleft, const lTerrainSegment::MapPlaneKey& keyRight)
 {
     return keyleft.d0 == keyRight.d0 && keyleft.d1 == keyRight.d1 && keyleft.d2 == keyRight.d2;
 }
 
-bool operator ==(const lTerrainBlock::MapCornerKey& keyLeft, const lTerrainBlock::MapCornerKey& keyRight)
+bool operator ==(const lTerrainSegment::MapCornerKey& keyLeft, const lTerrainSegment::MapCornerKey& keyRight)
 {
     return keyLeft.dLeft == keyRight.dLeft && keyLeft.dTop == keyRight.dTop && keyLeft.dTopLeft == keyRight.dTopLeft && keyLeft.dDiagLeft == keyRight.dDiagLeft && keyLeft.dDiagTop == keyRight.dDiagTop;
 }
 
 
-lTerrainBlock::lTerrainBlock(Vector<Vector<float> > &eMap, const Vector3 &shift_) :
+lTerrainSegment::lTerrainSegment(Vector<Vector<float>> &eMap, const Vector3 &shift_) :
     Object(gContext),
     shift(shift_)
 {
@@ -40,12 +40,12 @@ lTerrainBlock::lTerrainBlock(Vector<Vector<float> > &eMap, const Vector3 &shift_
     Rebuild(eMap);
 }
 
-void lTerrainBlock::Clear()
+void lTerrainSegment::Clear()
 {
     gScene->RemoveChild(node);
 }
 
-void lTerrainBlock::Rebuild(Vector<Vector<float>> &map_)
+void lTerrainSegment::Rebuild(Vector<Vector<float>> &map_)
 {
     SAFE_DELETE_ARRAY(bufVert);
     SAFE_DELETE_ARRAY(bufInd);
@@ -126,33 +126,33 @@ void lTerrainBlock::Rebuild(Vector<Vector<float>> &map_)
     CalculateBoundingBox();
 }
 
-lTerrainBlock::~lTerrainBlock()
+lTerrainSegment::~lTerrainSegment()
 {
     SAFE_DELETE_ARRAY(bufVert);
     SAFE_DELETE_ARRAY(bufInd);
 }
 
-void lTerrainBlock::PushNormal(const Vector3 &normal)
+void lTerrainSegment::PushNormal(const Vector3 &normal)
 {
     vertexes.Push(normal.x_);
     vertexes.Push(normal.y_);
     vertexes.Push(normal.z_);
 }
 
-void lTerrainBlock::PushCoord(const Vector3 &coord)
+void lTerrainSegment::PushCoord(const Vector3 &coord)
 {
     vertexes.Push(coord.x_ + shift.x_);
     vertexes.Push(coord.y_ + shift.y_);
     vertexes.Push(coord.z_ + shift.z_);
 }
 
-void lTerrainBlock::PushTexCoord(float x, float y)
+void lTerrainSegment::PushTexCoord(float x, float y)
 {
     vertexes.Push(x);
     vertexes.Push(y);
 }
 
-void lTerrainBlock::AddPlane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3, float dTex)
+void lTerrainSegment::AddPlane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3, float dTex)
 {
     uint startIndex = vertexes.Size() / 8;
 
@@ -197,7 +197,7 @@ void lTerrainBlock::AddPlane(const Vector3 &p0, const Vector3 &p1, const Vector3
     }
 }
 
-void lTerrainBlock::AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, float dTex)
+void lTerrainSegment::AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, float dTex)
 {
     if(p0 == p1 || p1 == p2 || p2 == p0)
     {
@@ -227,7 +227,7 @@ void lTerrainBlock::AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vect
     bufIndClosingTriangles.Push(startIndex + 1U);
 }
 
-void lTerrainBlock::Add2Plane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3)
+void lTerrainSegment::Add2Plane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3)
 {
     float delta = fabs(p0.y_ - p2.y_);
 
@@ -235,7 +235,7 @@ void lTerrainBlock::Add2Plane(const Vector3 &p0, const Vector3 &p1, const Vector
     //AddPlane(p0, p3, p2, p1, delta == 0.0f ? 1.0f : -delta);
 }
 
-void lTerrainBlock::AddPlaneWithSubplanes(uint row, uint col)
+void lTerrainSegment::AddPlaneWithSubplanes(uint row, uint col)
 {
     Add2Plane(CoordCorner(row, col, C_TOPLEFT), CoordCorner(row, col, C_TOPRIGHT), CoordCorner(row, col, C_BOTTOMRIGHT), CoordCorner(row, col, C_BOTTOMLEFT));
 
@@ -253,12 +253,25 @@ void lTerrainBlock::AddPlaneWithSubplanes(uint row, uint col)
     }
 }
 
-float lTerrainBlock::HeightCell(uint row, uint col)
+lPlane lTerrainSegment::GetPlane(uint row, uint col)
+{
+    lPlane plane;
+
+    //  + Vector3(-1.0f, 0.0f, 1.0f)
+    plane.v0 = CoordCorner(row + 1, col + 1, C_TOPLEFT) + shift;
+    plane.v1 = CoordCorner(row + 1, col + 1, C_TOPRIGHT) + shift;
+    plane.v2 = CoordCorner(row + 1, col + 1, C_BOTTOMRIGHT) + shift;
+    plane.v3 = CoordCorner(row + 1, col + 1, C_BOTTOMLEFT) + shift;
+
+    return plane;
+}
+
+float lTerrainSegment::HeightCell(uint row, uint col)
 {
     return (float)map[row][col];
 }
 
-void lTerrainBlock::AddSidePlane(uint row, uint col, Direction dir)
+void lTerrainSegment::AddSidePlane(uint row, uint col, Direction dir)
 {
     if(dir == DIR_UP)
     {
@@ -276,12 +289,12 @@ void lTerrainBlock::AddSidePlane(uint row, uint col, Direction dir)
     }
 }
 
-void lTerrainBlock::AddUpPlane(uint row, uint col)
+void lTerrainSegment::AddUpPlane(uint row, uint col)
 {
     Add2Plane(CoordCorner(row - 1, col, C_BOTTOMLEFT), CoordCorner(row - 1, col, C_BOTTOMRIGHT), CoordCorner(row, col, C_TOPRIGHT), CoordCorner(row, col, C_TOPLEFT));
 }
 
-void lTerrainBlock::AddLeftPlane(uint row, uint col)
+void lTerrainSegment::AddLeftPlane(uint row, uint col)
 {
     Add2Plane(CoordCorner(row, col - 1, C_BOTTOMRIGHT), CoordCorner(row, col - 1, C_TOPRIGHT), CoordCorner(row, col, C_TOPLEFT), CoordCorner(row, col, C_BOTTOMLEFT));
 }
@@ -297,9 +310,13 @@ void lTerrainBlock::AddLeftPlane(uint row, uint col)
 #define PUSH_CORNERS(dLeft, dTopLeft, dTop, dDiagLeft, dDiagTop, dRow00, dCol00, cor00, dRow01, dCol01, cor01, dRow10, dCol10, cor10, dRow11, dCol11, cor11) \
     mapCornerTopLeft[MapCornerKey(dLeft, dTopLeft, dTop, dDiagLeft, dDiagTop)] = MapCornerValue(dRow00, dCol00, cor00, dRow01, dCol01, cor01, dRow10, dCol10, cor10, dRow11, dCol11, cor11);
 
-void lTerrainBlock::PrepareHashMaps()
+#define PUSH_CORNERS2(dLeft, dTopLeft, dTop, dDiagLeft, dDiagTop, dRow00, dCol00, cor00, dRow01, dCol01, cor01, dRow10, dCol10, cor10, dRow11, dCol11, cor11, dRow12, dCol12, cor12) \
+    mapCornerTopLeft[MapCornerKey(dLeft, dTopLeft, dTop, dDiagLeft, dDiagTop)] = MapCornerValue(dRow00, dCol00, cor00, dRow01, dCol01, cor01, dRow10, dCol10, cor10, dRow11, dCol11, cor11, dRow12, dCol12, cor12);
+
+void lTerrainSegment::PrepareHashMaps()
 {
     const float delta = 0.1f;
+    bool jumper = false;
 
     PUSH_TOP_LEFT(-1, -1, -1, delta, delta);
     PUSH_TOP_LEFT(0, -1, -1, 0, delta);
@@ -323,6 +340,11 @@ void lTerrainBlock::PrepareHashMaps()
     PUSH_TOP_LEFT(1, 1, -1, delta, delta);
     PUSH_TOP_LEFT(1, -1, 1, delta, delta);
     PUSH_TOP_LEFT(-1, 0, -1, delta, delta);
+    PUSH_TOP_LEFT(-1, 1, -1, delta, delta);
+    PUSH_TOP_LEFT(-1, 1, 0, delta, 0);
+    PUSH_TOP_LEFT(1, -1, 0, delta, 0);
+    PUSH_TOP_LEFT(1, 0, 1, delta, delta);
+    PUSH_TOP_LEFT(1, 0, -1, delta, delta);
 
     PUSH_TOP_RIGHT(-1, -1, -1, -delta, delta);
     PUSH_TOP_RIGHT(0, 1, 0, -delta, delta);
@@ -348,6 +370,9 @@ void lTerrainBlock::PrepareHashMaps()
     PUSH_TOP_RIGHT(-1, 0, 1, -delta, delta);
     PUSH_TOP_RIGHT(1, -1, 1, -delta, delta);
     PUSH_TOP_RIGHT(1, 0, -1, -delta, delta);
+    PUSH_TOP_RIGHT(0, -1, 1, -delta, 0);
+    PUSH_TOP_RIGHT(-1, 0, -1, -delta, delta);
+    PUSH_TOP_RIGHT(0, 1, -1, -delta, 0);
 
     PUSH_BTM_RIGHT(-1, -1, -1, -delta, -delta);
     PUSH_BTM_RIGHT(1, 0, 0, -delta, delta);
@@ -372,6 +397,10 @@ void lTerrainBlock::PrepareHashMaps()
     PUSH_BTM_RIGHT(1, -1, 1, -delta, -delta);
     PUSH_BTM_RIGHT(-1, 1, -1, -delta, -delta);
     PUSH_BTM_RIGHT(-1, 0, -1, -delta, -delta);
+    PUSH_BTM_RIGHT(-1, 1, 0, -delta, 0);
+    PUSH_BTM_RIGHT(1, 0, 1, -delta, -delta);
+    PUSH_BTM_RIGHT(1, -1, 0, -delta, 0);
+    PUSH_BTM_RIGHT(-1, 0, 1, -delta, -delta);
 
     PUSH_BTM_LEFT(-1, -1, -1, delta, -delta);
     PUSH_BTM_LEFT(0, -1, -1, delta, 0);
@@ -396,9 +425,46 @@ void lTerrainBlock::PrepareHashMaps()
     PUSH_BTM_LEFT(-1, -1, 1, delta, -delta);
     PUSH_BTM_LEFT(-1, 0, 1, delta, -delta);
     PUSH_BTM_LEFT(1, 0, 1, delta, -delta);
+    PUSH_BTM_LEFT(0, -1, 1, delta, 0);
+    PUSH_BTM_LEFT(0, 1, -1, delta, 0);
+    PUSH_BTM_LEFT(1, -1, 1, delta, -delta);
+    PUSH_BTM_LEFT(-1, 0, -1, delta, -delta);
+
+    if (jumper)
+    {
+        PUSH_CORNERS(-1, 0, -1,     -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+        PUSH_CORNER(1, 0, 1, 1, 1, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
+        PUSH_CORNERS(-1, 1, -1, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+        PUSH_CORNERS(-1, -1, -1, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    }
+    else
+    {
+        PUSH_CORNERS2(-1, 0, -1, -1, -1, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT, -1, 0, C_BOTTOMLEFT, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT);
+        PUSH_CORNERS(1, 0, 1, 1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+        PUSH_CORNERS2(-1, 1, -1, -1, -1, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT, -1, 0, C_BOTTOMLEFT, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT);
+        PUSH_CORNERS2(-1, -1, -1, -1, -1, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT, -1, 0, C_BOTTOMLEFT, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT);
+    }
+
+    PUSH_CORNERS(-1, -1, -1, -1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(-1, 0, 1,      -1, 1,  0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT,  -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(-1, -1, 1,     1, 1,   0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT,  -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, 1, 1,       -1, 1,  0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT,  -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(-1, -1, -1, 1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(-1, -1, 1, -1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, 1, 1, 1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, 1, -1, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, 1, 1, 1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, 1, 1,       -1, -1, 0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT,  -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, -1, -1, 1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, -1, -1, 1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(-1, -1, -1, 1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, -1, 1, 1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(-1, 1, 1, -1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(-1, 1, 1, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, 1, -1, 1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, 0, -1, 1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
 
     PUSH_CORNER(0, 1, 1,        -1, 1,  -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, 0, 1,      -1, 1,  0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT,  -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
     PUSH_CORNER(-1, -1, -1,     0, 1,   0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
     PUSH_CORNER(1, 1, 1,        1, 0,   0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
     PUSH_CORNER(-1, -1, -1,     1, 0,   0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
@@ -407,29 +473,21 @@ void lTerrainBlock::PrepareHashMaps()
     PUSH_CORNER(1, 1, 0,        -1, -1, 0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT);
     PUSH_CORNER(1, 1, 1,        -1, 0,  0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
     PUSH_CORNER(-1, -1, -1,     -1, 0,  0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, -1, 1,     1, 1,   0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNER(0, 1, -1,       -1, -1, -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
     PUSH_CORNER(0, -1, 1,       1, 1,   -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(1, 1, 1,       -1, 1,  0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, -1, -1,    -1, 1,  0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, -1, -1,    1, -1,  0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, -1, 1,     -1, 1,  0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(1, 1, 1,       1, -1,  0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(1, 1, -1,      -1, -1, 0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(1, 1, 1,       1, 1,   0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNER(1, -1, -1,      1, 0,   0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
     PUSH_CORNER(0, -1, -1,      1, -1,  -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(1, 1, 1,       -1, -1,  0, -1,  C_TOPRIGHT,    -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(1, -1, -1,     1, -1,  0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(1, -1, -1,     1, 1,   0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, -1, -1,    1, 1,   0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(1, -1, 1,      1, 1,   0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, -1, -1,    -1, -1, 0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, 1, 1,      -1, 1,  0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, 0, -1,     -1, -1, 0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNER(0, 1, 1,        -1, -1, -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, 1, 1,      -1, -1, 0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNER(1, 1, 1,        0, 1, 0, -1, C_TOPRIGHT,        -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(-1, 1, 1,       -1, 0, 0, -1, C_TOPRIGHT,       -1, -1, C_BOTTOMRIGHT);
+    PUSH_CORNER(1, 1, -1, 0, -1, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(-1, 1, 0, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT);
+    PUSH_CORNER(-1, -1, -1, 0, -1, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(1, -1, 0, 1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT);
+    PUSH_CORNER(0, -1, -1, 1, 1, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(1, 1, 1, 0, -1, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(-1, -1, 0, -1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT);
+    PUSH_CORNER(-1, -1, 0, 1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT);
 }
 
 #define CORNER_TOPLEFT(dX, dZ)  return Vector3((float)col + dX, height, -((float)row + dZ))
@@ -463,7 +521,7 @@ void lTerrainBlock::PrepareHashMaps()
 #define H_LEFT_EQUALS   HEIGHT_LEFT == height
 
 
-Vector3 lTerrainBlock::CoordCorner(uint row, uint col, Corner corner)
+Vector3 lTerrainSegment::CoordCorner(uint row, uint col, Corner corner)
 {
     float height = HeightCell(row, col);
 
@@ -543,8 +601,11 @@ Vector3 lTerrainBlock::CoordCorner(uint row, uint col, Corner corner)
 #define ADD_TRIANGLE(dX0, dY0, dir0, dX1, dY1, dir1)    \
     AddTriangle(CORN(0, 0, C_TOPLEFT), CORN(dX0, dY0, dir0), CORN(dX1, dY1, dir1), 1.0f);
 
+#define ADD_TRIANGLE2(dX0, dY0, dir0, dX1, dY1, dir1, dX2, dY2, dir2)   \
+    AddTriangle(CORN(dX0, dY0, dir0), CORN(dX1, dY1, dir1), CORN(dX2, dY2, dir2), 1.0f);
 
-void lTerrainBlock::AddTopLeftCornerPlanes(uint row, uint col)
+
+void lTerrainSegment::AddTopLeftCornerPlanes(uint row, uint col)
 {
     float height = HeightCell(row, col);
 
@@ -560,11 +621,18 @@ void lTerrainBlock::AddTopLeftCornerPlanes(uint row, uint col)
     {
         MapCornerValue value = mapCornerTopLeft[key];
         ADD_TRIANGLE(value.dRow00, value.dCol00, value.corner00, value.dRow01, value.dCol01, value.corner01);
-        ADD_TRIANGLE(value.dRow10, value.dCol10, value.corner10, value.dRow11, value.dCol11, value.corner11);
+        if (value.dRow10 != value.dRow11 || value.dRow11 != value.dRow12 || value.dCol10 != value.dCol11 || value.dCol11 != value.dCol12 || value.corner10 != value.corner11 || value.corner11 != value.corner12)
+        {
+            ADD_TRIANGLE2(value.dRow10, value.dCol10, value.corner10, value.dRow11, value.dCol11, value.corner11, value.dRow12, value.dCol12, value.corner12);
+        }
+        else
+        {
+            ADD_TRIANGLE(value.dRow10, value.dCol10, value.corner10, value.dRow11, value.dCol11, value.corner11);
+        }
     }
 }
 
-float lTerrainBlock::GetIntersection(Ray &ray, lPlane &plane, bool &isClosingTriangleOut)
+float lTerrainSegment::GetIntersectionPlane(Ray &ray, lPlane &plane, bool &isClosingTriangleOut)
 {
     float distPlane = GetIntersectionPlane(ray, plane);
     lTriangle triangle;
@@ -591,7 +659,7 @@ float lTerrainBlock::GetIntersection(Ray &ray, lPlane &plane, bool &isClosingTri
     return distance;
 }
 
-float lTerrainBlock::GetIntersectionPlane(Ray &ray, lPlane &plane)
+float lTerrainSegment::GetIntersectionPlane(Ray &ray, lPlane &plane)
 {
     float distance = Urho3D::M_INFINITY;
 
@@ -647,7 +715,7 @@ float lTerrainBlock::GetIntersectionPlane(Ray &ray, lPlane &plane)
     return distance;
 }
 
-float lTerrainBlock::GetIntersectionClosingTriangle(Ray &ray, lTriangle &triangle)
+float lTerrainSegment::GetIntersectionClosingTriangle(Ray &ray, lTriangle &triangle)
 {
     float distance = Urho3D::M_INFINITY;
 
@@ -695,7 +763,7 @@ float lTerrainBlock::GetIntersectionClosingTriangle(Ray &ray, lTriangle &triangl
     return distance;
 }
 
-void lTerrainBlock::CalculateBoundingBox()
+void lTerrainSegment::CalculateBoundingBox()
 {
     boundingBox.Clear();
 

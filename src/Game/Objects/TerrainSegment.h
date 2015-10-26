@@ -1,17 +1,18 @@
 #pragma once
 
 
-class lTerrainBlock : public Object
+class lTerrainSegment : public Object
 {
-    OBJECT(lTerrainBlock)
+    OBJECT(lTerrainSegment)
 
 public:
     // NOTE row == 0 and col == 0 arrent added to terrain. From them information for creation of the left and top sides undertakes
-    lTerrainBlock(Vector<Vector<float> > &map, const Vector3 &shift = Vector3::ZERO);
-    ~lTerrainBlock();
+    lTerrainSegment(Vector<Vector<float>> &map, const Vector3 &shift = Vector3::ZERO);
+    ~lTerrainSegment();
 
     // If function return isClosingTriangleOut == true, return distance for inactive triangle
-    float GetIntersection(Ray &ray, lPlane &plane, bool &isClosingTriangleOut);
+    float GetIntersectionPlane(Ray &ray, lPlane &plane, bool &isClosingTriangleOut);
+    lPlane GetPlane(uint row, uint col);
     void Rebuild(Vector<Vector<float>> &map_);
     void Clear();
 
@@ -44,7 +45,7 @@ private:
     float GetIntersectionPlane(Ray &ray, lPlane &plane);
     float GetIntersectionClosingTriangle(Ray &ray, lTriangle &triangle);
 
-    Vector<Vector<float> > map;
+    Vector<Vector<float>> map;
     Vector<float> vertexes;         // «десь будем подготавливать вершины дл€ буфера
     Vector<uint> indexes;           // «десь будем подготавливать индексы дл€ буфера
     uint widthMap = 0;
@@ -121,11 +122,12 @@ public:
         MapCornerValue()
         {};
         MapCornerValue(int _dRow00, int _dCol00, Corner _corner00, int _dRow01, int _dCol01, Corner _corner01,
-                       int _dRow10 = 0, int _dCol10 = 0, Corner _corner10 = Urho3D::C_TOPLEFT, int _dRow11 = 0, int _dCol11 = 0, Corner _corner11 = Urho3D::C_TOPLEFT) :
+                       int _dRow10 = 0, int _dCol10 = 0, Corner _corner10 = Urho3D::C_TOPLEFT, int _dRow11 = 0, int _dCol11 = 0, Corner _corner11 = Urho3D::C_TOPLEFT, int _dRow12 = 0, int _dCol12 = 0, Corner _corner12 = Urho3D::C_TOPLEFT) :
                        dRow00(_dRow00), dCol00(_dCol00), corner00(_corner00),
                        dRow01(_dRow01), dCol01(_dCol01), corner01(_corner01),
                        dRow10(_dRow10), dCol10(_dCol10), corner10(_corner10),
-                       dRow11(_dRow11), dCol11(_dCol11), corner11(_corner11)
+                       dRow11(_dRow11), dCol11(_dCol11), corner11(_corner11),
+                       dRow12(_dRow12), dCol12(_dCol12), corner12(_corner12)
         {};
         // Ёдо данные дл€ первого, об€зательного треугольника
         int dRow00 = 0;
@@ -144,6 +146,11 @@ public:
         int dRow11 = 0;
         int dCol11 = 0;
         Corner corner11 = Urho3D::C_TOPLEFT;
+
+        // Used if triangles no general top, adjacent to a corner
+        int dRow12 = 0;
+        int dCol12 = 0;
+        Corner corner12 = Urho3D::C_TOPLEFT;
     };
 
 private:
@@ -155,5 +162,5 @@ private:
 
     HashMap<MapCornerKey, MapCornerValue> mapCornerTopLeft;
 
-    lTerrainBlock& operator=(const lTerrainBlock&) {};
+    lTerrainSegment& operator=(const lTerrainSegment&) {};
 };

@@ -3,6 +3,7 @@
 
 #include "Plane.h"
 #include "Core/Math.h"
+#include "Game/Objects/Line.h"
 
 
 lPlane lPlane::ZERO = lPlane(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);
@@ -40,4 +41,33 @@ void lPlane::CalculateRowCol()
 void lPlane::SetY(float y)
 {
     v0.y_ = v1.y_ = v2.y_ = v3.y_ = y;
+}
+
+lLine lPlane::NearEdge(Ray &ray)
+{
+    lLine lines[] =
+    {
+        lLine(v0, v1),
+        lLine(v1, v2),
+        lLine(v2, v3),
+        lLine(v3, v0)
+    };
+
+    int index = -1;
+
+    float distance = 1e3f;
+
+    for (int i = 0; i < 4; i++)
+    {
+        Ray rayEdge(lines[i].start, lines[i].end - lines[i].start);
+        Vector3 closestPoint = ray.ClosestPoint(rayEdge);
+        float dist = rayEdge.Distance(closestPoint);
+        if (dist < distance)
+        {
+            distance = dist;
+            index = i;
+        }
+    }
+
+    return lLine(lines[index].start, lines[index].end);
 }

@@ -68,19 +68,19 @@ void lCamera::Move(float time)
 
     TypeCursor cursor = gCursor->GetType();
 
-    if(cursor == TypeCursor_Up || cursor == TypeCursor_TopLeft || cursor == TypeCursor_TopRight || gInput->GetKeyDown(Urho3D::KEY_UP))
+    if(cursor == TypeCursor_Up || cursor == TypeCursor_TopLeft || cursor == TypeCursor_TopRight || (gInput->GetKeyDown(Urho3D::KEY_UP) && arrowEnabled))
     {
         MoveOn(Direction_Forward, distance);
     }
-    if(cursor == TypeCursor_Down || cursor == TypeCursor_DownLeft || cursor == TypeCursor_DownRight || gInput->GetKeyDown(Urho3D::KEY_DOWN))
+    if(cursor == TypeCursor_Down || cursor == TypeCursor_DownLeft || cursor == TypeCursor_DownRight || (gInput->GetKeyDown(Urho3D::KEY_DOWN) && arrowEnabled))
     {
         MoveOn(Direction_Back, distance);
     }
-    if(cursor == TypeCursor_Left || cursor == TypeCursor_TopLeft || cursor == TypeCursor_DownLeft || gInput->GetKeyDown(Urho3D::KEY_LEFT))
+    if(cursor == TypeCursor_Left || cursor == TypeCursor_TopLeft || cursor == TypeCursor_DownLeft || (gInput->GetKeyDown(Urho3D::KEY_LEFT) && arrowEnabled))
     {
         MoveOn(Direction_Left, distance);
     }
-    if(cursor == TypeCursor_Right || cursor == TypeCursor_TopRight || cursor == TypeCursor_DownRight || gInput->GetKeyDown(Urho3D::KEY_RIGHT))
+    if(cursor == TypeCursor_Right || cursor == TypeCursor_TopRight || cursor == TypeCursor_DownRight || (gInput->GetKeyDown(Urho3D::KEY_RIGHT) && arrowEnabled))
     {
         MoveOn(Direction_Right, distance);
     }

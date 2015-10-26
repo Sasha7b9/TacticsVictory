@@ -14,6 +14,12 @@ public:
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
     bool IsInside(IntVector2 &position);
 
+    enum ModeSelect
+    {
+        ModeSelect_Plane,
+        ModeSelect_Edge
+    } modeSelect = ModeSelect_Plane;
+
 private:
     lGuiEditor& operator=(const lGuiEditor&) {};
 
@@ -47,6 +53,7 @@ private:
     void HandleButtonFileSave(StringHash, VariantMap&);
     void HandleFileSelectorLoadLandscape(StringHash, VariantMap&);
     void HandleFileSelectorSaveLandscape(StringHash, VariantMap&);
+    void HandleModeSelectChanged(StringHash, VariantMap&);
 
     bool IntersectionX(lButton *button, int x);
     void CreateWindows();

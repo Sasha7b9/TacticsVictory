@@ -24,17 +24,20 @@ public:
     void SetPosition(const Vector3 &position);
     void LookAt(const Vector3& lookAt);
     void SetPosition(const Vector3& position, const Vector3& lookAt);
+    void DisableArrows() { arrowEnabled = false; };
+    void EnableArrows() { arrowEnabled = true; };
     SharedPtr<Node> GetNode();
 
 private:
-    void SetupViewport();
-    void MoveOn(Direction direction, float distance);
-    void SetPitch(float pitch);
-
     SharedPtr<Node> cameraNode;
     float yaw = 76.0f;
     float pitch = 28.0f;
     SharedPtr<Light> light;
     bool enabled = false;
     Vector3 lookAt;
+    bool arrowEnabled = true;
+
+    void SetupViewport();
+    void MoveOn(Direction direction, float distance);
+    void SetPitch(float pitch);
 };

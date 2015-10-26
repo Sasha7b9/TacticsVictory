@@ -153,9 +153,6 @@
     <ClCompile Include="src\Game\Objects\Plane.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\TerrainBlock.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Objects\Terrain.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
@@ -179,6 +176,12 @@
     </ClCompile>
     <ClCompile Include="src\GUI\Menu\WindowConfirmExit.cpp">
       <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\TerrainSegment.cpp">
+      <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Line.cpp">
+      <Filter>Game\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -299,9 +302,6 @@
     <ClInclude Include="src\Game\Objects\Plane.h">
       <Filter>Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\TerrainBlock.h">
-      <Filter>Game\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Objects\Terrain.h">
       <Filter>Game\Objects</Filter>
     </ClInclude>
@@ -328,6 +328,12 @@
     </ClInclude>
     <ClInclude Include="src\GUI\Menu\WindowConfirmExit.h">
       <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\TerrainSegment.h">
+      <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Line.h">
+      <Filter>Game\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

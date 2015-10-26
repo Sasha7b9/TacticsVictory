@@ -96,14 +96,14 @@ Vector<Vector<float> > lLevel::Load(char *fileName)
 
     uint numRows = map.Size();
 
-    map.Resize((numRows / lTerrain::SIZE_BLOCK) * lTerrain::SIZE_BLOCK);
+    map.Resize((numRows / lTerrain::SIZE_SEGMENT) * lTerrain::SIZE_SEGMENT);
 
 
     uint numCols = map[0].Size();
 
     for (uint i = 0; i < map.Size(); i++)
     {
-        map[i].Resize((numCols / lTerrain::SIZE_BLOCK) * lTerrain::SIZE_BLOCK);
+        map[i].Resize((numCols / lTerrain::SIZE_SEGMENT) * lTerrain::SIZE_SEGMENT);
     }
 
     return map;
@@ -232,4 +232,9 @@ uint lLevel::GetWidth()
 uint lLevel::GetHeight()
 {
     return map.Empty() ? 0 : map.Size();
+}
+
+void lLevel::SetMap(Vector<Vector<float>> map_)
+{
+    map = map_;
 }

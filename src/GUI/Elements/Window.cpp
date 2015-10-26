@@ -6,6 +6,7 @@
 #include "GUI/Elements/Label.h"
 #include "GUI/Elements/ButtonToggled.h"
 #include "GUI/Elements/SliderWithTextAndButtons.h"
+#include "GUI/Elements/DropDownListWithTextAndButton.h"
 
 
 lWindow::lWindow(Context *context) :
@@ -65,15 +66,25 @@ SharedPtr<lButtonToggled> lWindow::AddButtonToggled(char *text, int x, int y, in
     return retButton;
 }
 
-SharedPtr<lSliderWithTextAndButtons> lWindow::AddSlider(char *text, int min, int max, int step, int x, int y)
+SharedPtr<lSliderWithTextAndButtons> lWindow::AddSlider(char *text, int min, int max, int step, int x, int y, int widthText, int widthRoller)
 {
-    SharedPtr<lSliderWithTextAndButtons> slider(new lSliderWithTextAndButtons(this, text, min, max, step));
+    SharedPtr<lSliderWithTextAndButtons> slider(new lSliderWithTextAndButtons(this, text, min, max, step, widthText, widthRoller));
     AddChild(slider);
     if (x != -1 && y != -1)
     {
         slider->SetPosition(x, y);
     }
     return slider;
+}
+
+SharedPtr<lDropDownListWithTextAndButton> lWindow::AddDDList(char *text, int widthText, int widthDDList, int numItems, char *items[], int x, int y)
+{
+    SharedPtr<lDropDownListWithTextAndButton> ddList(lDropDownListWithTextAndButton::Create(this, text, widthText, widthDDList, numItems, items));
+    if (x != -1 && y != -1)
+    {
+        ddList->SetPosition(x, y);
+    }
+    return ddList;
 }
 
 SharedPtr<lLabel> lWindow::AddLabel(char *text)

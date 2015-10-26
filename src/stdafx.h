@@ -208,6 +208,7 @@ class lImage;
 
 class lLabel;
 class lLevel;
+class lLine;
 class lLineTranslator1D;
 class lLineTranslator2D;
 
@@ -227,7 +228,7 @@ class lSliderWithTextAndButtons;
 
 class lTab;
 class lTerrain;
-class lTerrainBlock;
+class lTerrainSegment;
 class lTriangle;
 
 class lWindowConfirmExit;

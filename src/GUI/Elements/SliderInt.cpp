@@ -56,7 +56,7 @@ void lSliderInt::SetValueInt(int newValue)
 {
     newValue = newValue / step;
 
-    if(newValue >= min && newValue <= max && value != newValue)
+    if(newValue >= min && newValue <= max)
     {
         value = newValue;
         Slider::SetValue((float)newValue - delta);

@@ -22,11 +22,12 @@ public:
     void Clear();
     uint GetWidth();
     uint GetHeight();
+    void SetMap(Vector<Vector<float>> map);
 
 private:
     lLevel& operator=(const lLevel&)
     {
     };
 
-    static Vector<Vector<float> > map;
+    static Vector<Vector<float>> map;
 };

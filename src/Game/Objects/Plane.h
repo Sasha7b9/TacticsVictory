@@ -10,6 +10,7 @@ public:
     bool IsZero();
     void CalculateRowCol();
     void SetY(float y);
+    lLine NearEdge(Ray &ray);
 
     Vector3 v0;
     Vector3 v1;

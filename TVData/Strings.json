@@ -61,5 +61,16 @@
                                 "ru":"Очистить ландашафт" },
     "Landscape":            { "ru":"Ландшафт" },
     "PAUSE":                { "ru":"ПАУЗА" },
-    "Exit in main menu?":   { "ru":"Выйти в главное меню?" }
+    "Exit in main menu?":   { "ru":"Выйти в главное меню?" },
+    "hintSliderDefaultHeight":  { "en":"This value will fill a landscape after cleaning",
+                                    "ru":"Этим значением будет заполнен ландшафт после очистки" },
+    "Brush X":              { "ru":"Кисть X" },
+    "Brush Y":              { "ru":"Кисть Y" },
+    "hintSliderSizeBrushX": { "en":"Set of the size X of a brush",
+                                "ru":"Установка размера Х кисти"},
+    "hintSliderSizeBrushY": { "en":"Set of the size Y of a brush",
+                                "ru":"Установка размера Y кисти"},
+    "Plane":                { "ru":"Плоскость" },
+    "Edge":                 { "ru":"Ребро" },
+    "Mode select":          { "ru":"Режим выбора" }
 }

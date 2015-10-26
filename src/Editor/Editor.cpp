@@ -63,31 +63,75 @@ void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &)
         return;
     }
 
-    if(!selectedPlane.IsZero())
+    IntVector2 pos = gCursor->GetCursor()->GetPosition();
+
+    float relX = (float)pos.x_ / gGraphics->GetWidth();
+    float relY = (float)pos.y_ / gGraphics->GetHeight();
+
+    Ray ray = gCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
+
+    if (gGuiEditor->modeSelect == lGuiEditor::ModeSelect_Plane)
     {
-        Color color = Color::BLUE;
-        gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v1, selectedPlane.v2, color, false);
-        gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
+        if (!selectedPlane.IsZero())
+        {
+            Color color = Color::BLUE;
+            gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v1, selectedPlane.v2, color, false);
+            gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
+        }
+
+        if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT | Urho3D::MOUSEB_MIDDLE))
+        {
+            currentPlane = gTerrain->GetIntersectionPlane(ray);
+
+            if (!currentPlane.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
+            {
+                if (!selectedPlane.IsEquals(currentPlane))
+                {
+                    Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE;
+                    gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
+                    gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
+                }
+                gCursor->SetSelected();
+            }
+            else
+            {
+                gCursor->SetNormal();
+            }
+        }
     }
 
-    if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT | Urho3D::MOUSEB_MIDDLE))
+    if (gGuiEditor->modeSelect == lGuiEditor::ModeSelect_Edge)
     {
-        IntVector2 pos = gCursor->GetCursor()->GetPosition();
-
-        float relX = (float)pos.x_ / gGraphics->GetWidth();
-        float relY = (float)pos.y_ / gGraphics->GetHeight();
-
-        Ray ray = gCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
-
-        currentPlane = gTerrain->GetIntersection(ray);
-
-        if (!currentPlane.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
+        if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT | Urho3D::MOUSEB_MIDDLE))
         {
-            if(!selectedPlane.IsEquals(currentPlane))
+            currentEdge = gTerrain->GetIntersectionEdge(ray);
+
+            if (!currentEdge.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
             {
                 Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE;
-                gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
-                gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
+
+                float dX = fabs(currentEdge.start.x_ - currentEdge.end.x_);
+                float dZ = fabs(currentEdge.start.z_ - currentEdge.end.z_);
+
+                gDebugRenderer->AddLine(currentEdge.start, currentEdge.end, color, false);
+
+                float d = 0.005f;
+                int numLines = 20;
+
+                if (dZ > dX)
+                {
+                    for (int i = 0; i < numLines; i++)
+                    {
+                        gDebugRenderer->AddLine(currentEdge.start + Vector3(d * i - d * numLines / 2, 0.0f, 0.0f), currentEdge.end + Vector3(d * i - d * numLines / 2, 0.0f, 0.0f), color, false);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < numLines; i++)
+                    {
+                        gDebugRenderer->AddLine(currentEdge.start + Vector3(0.0f, 0.0f, d * i - d * numLines / 2), currentEdge.end + Vector3(0.0f, 0.0f, d * i - d * numLines / 2), color, false);
+                    }
+                }
             }
             gCursor->SetSelected();
         }
@@ -110,6 +154,10 @@ void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
 void lEditor::HandleMouseDown(StringHash, VariantMap&)
 {
+    if (gGUI->UnderCursor())
+    {
+        return;
+    }
     if(gHint && gCounterHint != 0)
     {
         gUIRoot->RemoveChild(gHint);
@@ -117,14 +165,27 @@ void lEditor::HandleMouseDown(StringHash, VariantMap&)
     }
     gCounterHint++;
 
-    if(gInput->GetMouseButtonDown(Urho3D::MOUSEB_LEFT) && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_MIDDLE) && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT))
+    if (gGuiEditor->modeSelect == lGuiEditor::ModeSelect_Plane)
     {
-        selectedPlane = lPlane::ZERO;
-
-        if(!currentPlane.IsZero())
+        if (gInput->GetMouseButtonDown(Urho3D::MOUSEB_LEFT) && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_MIDDLE) && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT))
         {
-            selectedPlane = currentPlane;
-            selectedPlane.CalculateRowCol();
+            if (!selectedPlane.IsEquals(lPlane::ZERO) && selectedPlane.IsEquals(currentPlane))
+            {
+                selectedPlane = lPlane::ZERO;
+                gCamera->EnableArrows();
+            }
+            else
+            {
+                selectedPlane = lPlane::ZERO;
+                gCamera->EnableArrows();
+
+                if (!currentPlane.IsZero())
+                {
+                    selectedPlane = currentPlane;
+                    selectedPlane.CalculateRowCol();
+                    gCamera->DisableArrows();
+                }
+            }
         }
     }
 }
@@ -137,7 +198,7 @@ void lEditor::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         uint row = selectedPlane.row;
         uint col = selectedPlane.col;
-        int height = gTerrain->GetHeight(row, col);
+        float height = gTerrain->GetHeight(row, col);
         if(key == Urho3D::KEY_KP_MINUS)
         {
             gTerrain->SetHeight(row, col, height - 1.0f);
@@ -148,7 +209,35 @@ void lEditor::HandleKeyDown(StringHash, VariantMap& eventData)
             gTerrain->SetHeight(row, col, height + 1.0f);
             gTerrain->Update();
         }
-        height = gTerrain->GetHeight(row, col) + 0.2f;
-        selectedPlane.SetY(height);
+        selectedPlane = gTerrain->GetPlane(row, col);
+
+        if (key == Urho3D::KEY_LEFT)
+        {
+            if (col > 0)
+            {
+                selectedPlane = gTerrain->GetPlane(row, col - 1);
+            }
+        }
+        else if (key == Urho3D::KEY_RIGHT)
+        {
+            if (col < gLevel->GetWidth() - 1)
+            {
+                selectedPlane = gTerrain->GetPlane(row, col + 1);
+            }
+        }
+        else if (key == Urho3D::KEY_UP)
+        {
+            if (row > 0)
+            {
+                selectedPlane = gTerrain->GetPlane(row - 1, col);
+            }
+        }
+        else if (key == Urho3D::KEY_DOWN)
+        {
+            if (row < gLevel->GetHeight() - 1)
+            {
+                selectedPlane = gTerrain->GetPlane(row + 1, col);
+            }
+        }
     }
 }
