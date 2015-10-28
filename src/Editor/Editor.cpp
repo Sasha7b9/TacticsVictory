@@ -8,6 +8,7 @@
 #include "GUI/Elements/Hint.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
+#include "Game/Objects/T-34-76-2.h"
 
 
 lEditor::lEditor(Context *context) : Object(context)
@@ -48,6 +49,22 @@ void lEditor::Run()
     SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(lEditor, HandlePostRenderUpdate));
     SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lEditor, HandleMouseDown));
     SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(lEditor, HandleKeyDown));
+
+    for (int i = 0; i < 1; i++)
+    {
+        SharedPtr<lT34_76_2> tank(new lT34_76_2());
+        tank->SetPosition(Vector3(3.0f, 2.0f, -2.0f) + Vector3(5.0f, 0.0f, 0.0f) * i);
+    }
+
+    /*
+    Node* modelNode = gScene->CreateChild("Tank");
+    modelNode->SetPosition({4.5f, 0.5f, -5.0f});
+    modelNode->SetScale(0.15f);
+    StaticModel *modelObject = modelNode->CreateComponent<StaticModel>();
+    modelObject->SetModel(gCache->GetResource<Model>("Models/T-34-76-2.mdl"));
+    //modelObject->SetMaterial(gCache->GetResource<Material>("Materials/T-34-76-2_05.xml"));
+    modelObject->SetCastShadows(true);
+    */
 }
 
 void lEditor::ClearScene()
@@ -154,16 +171,17 @@ void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
 void lEditor::HandleMouseDown(StringHash, VariantMap&)
 {
-    if (gGUI->UnderCursor())
-    {
-        return;
-    }
-    if(gHint && gCounterHint != 0)
+    if (gHint && gCounterHint != 0)
     {
         gUIRoot->RemoveChild(gHint);
         gHint = nullptr;
     }
     gCounterHint++;
+
+    if (gGUI->UnderCursor())
+    {
+        return;
+    }
 
     if (gGuiEditor->modeSelect == lGuiEditor::ModeSelect_Plane)
     {

@@ -90,4 +90,18 @@ public:
         }
         return max;
     }
+
+    template <class T> static T Max(T val0, T val1, T val2)
+    {
+        T max = val0;
+        if (val1 > max)
+        {
+            max = val1;
+        }
+        if (val2 > max)
+        {
+            max = val2;
+        }
+        return max;
+    }
 };

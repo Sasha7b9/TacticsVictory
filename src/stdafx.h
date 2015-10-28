@@ -70,6 +70,8 @@ typedef unsigned char uchar;
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Resource/XMLFile.h>
 #include <Urho3D/Resource/Localization.h>
+#include <Urho3D/Resource/JSONFile.h>
+
 
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Scene.h>
@@ -120,6 +122,11 @@ using Urho3D::IndexBuffer;
 using Urho3D::Input;
 using Urho3D::IntRect;
 using Urho3D::IntVector2;
+
+using Urho3D::JSONFile;
+using Urho3D::JSONValue;
+using Urho3D::JSONValueType;
+using Urho3D::JSONNumberType;
 
 using Urho3D::Light;
 using Urho3D::LineEdit;

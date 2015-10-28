@@ -317,8 +317,9 @@ void lTerrainSegment::PrepareHashMaps()
 {
     const float delta = 0.1f;
     bool jumper = false;
+    bool smoothing = true;
 
-    PUSH_TOP_LEFT(-1, -1, -1, delta, delta);
+    PUSH_TOP_LEFT(-1, -1, -1, smoothing ? delta : 0, delta);
     PUSH_TOP_LEFT(0, -1, -1, 0, delta);
     PUSH_TOP_LEFT(0, 0, 1, -delta, delta);
     PUSH_TOP_LEFT(-1, -1, 0, delta, 0);
@@ -358,7 +359,7 @@ void lTerrainSegment::PrepareHashMaps()
     PUSH_TOP_RIGHT(1, 0, 1, -delta, delta);
     PUSH_TOP_RIGHT(1, -1, -1, -delta, delta);
     PUSH_TOP_RIGHT(1, 1, -1, -delta, delta);
-    PUSH_TOP_RIGHT(-1, -1, 1, -delta, delta);
+    PUSH_TOP_RIGHT(-1, -1, 1, smoothing ? -delta : 0, delta);
     PUSH_TOP_RIGHT(1, 1, 1, -delta, delta);
     PUSH_TOP_RIGHT(-1, 0, 0, delta, delta);
     PUSH_TOP_RIGHT(0, 0, -1, -delta, -delta);
@@ -383,7 +384,7 @@ void lTerrainSegment::PrepareHashMaps()
     PUSH_BTM_RIGHT(0, -1, -1, 0, -delta);
     PUSH_BTM_RIGHT(0, 1, 1, 0, -delta);
     
-    PUSH_BTM_RIGHT(1, -1, -1, -delta, -delta);
+    PUSH_BTM_RIGHT(1, -1, -1, smoothing ? -delta : 0, -delta);
     PUSH_BTM_RIGHT(0, 0, -1, delta, -delta);
     PUSH_BTM_RIGHT(1, 1, 1, -delta, -delta);
     PUSH_BTM_RIGHT(0, -1, 0, -delta, -delta);
@@ -402,7 +403,7 @@ void lTerrainSegment::PrepareHashMaps()
     PUSH_BTM_RIGHT(1, -1, 0, -delta, 0);
     PUSH_BTM_RIGHT(-1, 0, 1, -delta, -delta);
 
-    PUSH_BTM_LEFT(-1, -1, -1, delta, -delta);
+    PUSH_BTM_LEFT(-1, -1, -1, smoothing ? delta : 0, -delta);
     PUSH_BTM_LEFT(0, -1, -1, delta, 0);
     PUSH_BTM_LEFT(0, 0, 1, delta, delta);
     PUSH_BTM_LEFT(1, 0, 0, -delta, -delta);
@@ -432,7 +433,7 @@ void lTerrainSegment::PrepareHashMaps()
 
     if (jumper)
     {
-        PUSH_CORNERS(-1, 0, -1,     -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+        PUSH_CORNERS(-1, 0, -1, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
         PUSH_CORNER(1, 0, 1, 1, 1, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
         PUSH_CORNERS(-1, 1, -1, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
         PUSH_CORNERS(-1, -1, -1, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
@@ -446,15 +447,15 @@ void lTerrainSegment::PrepareHashMaps()
     }
 
     PUSH_CORNERS(-1, -1, -1, -1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, 0, 1,      -1, 1,  0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT,  -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(-1, -1, 1,     1, 1,   0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT,  -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(1, 1, 1,       -1, 1,  0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT,  -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(-1, 0, 1, -1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(-1, -1, 1, 1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, 1, 1, -1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNERS(-1, -1, -1, 1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNERS(-1, -1, 1, -1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNERS(1, 1, 1, 1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNERS(1, 1, -1, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNERS(1, 1, 1, 1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNERS(1, 1, 1,       -1, -1, 0, -1, C_TOPRIGHT,      -1, -1, C_BOTTOMRIGHT,  -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNERS(1, 1, 1, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNERS(1, -1, -1, 1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNERS(1, -1, -1, 1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNERS(-1, -1, -1, 1, 1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
@@ -464,22 +465,22 @@ void lTerrainSegment::PrepareHashMaps()
     PUSH_CORNERS(1, 1, -1, 1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNERS(1, 0, -1, 1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
 
-    PUSH_CORNER(0, 1, 1,        -1, 1,  -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(-1, -1, -1,     0, 1,   0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(1, 1, 1,        1, 0,   0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(-1, -1, -1,     1, 0,   0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(1, 1, 0,        1, -1,  0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT);
-    PUSH_CORNER(-1, -1, 1,      0, 1,   0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(1, 1, 0,        -1, -1, 0, -1,  C_TOPRIGHT,     -1, -1, C_BOTTOMRIGHT);
-    PUSH_CORNER(1, 1, 1,        -1, 0,  0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(-1, -1, -1,     -1, 0,  0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(0, 1, -1,       -1, -1, -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(0, -1, 1,       1, 1,   -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(1, -1, -1,      1, 0,   0, -1,  C_TOPRIGHT,     -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(0, -1, -1,      1, -1,  -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(0, 1, 1,        -1, -1, -1, -1, C_BOTTOMRIGHT,  -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(1, 1, 1,        0, 1, 0, -1, C_TOPRIGHT,        -1, 0, C_BOTTOMLEFT);
-    PUSH_CORNER(-1, 1, 1,       -1, 0, 0, -1, C_TOPRIGHT,       -1, -1, C_BOTTOMRIGHT);
+    PUSH_CORNER(0, 1, 1, -1, 1, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(-1, -1, -1, 1, 0, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(-1, -1, -1, 0, 1, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(1, 1, 1, 1, 0, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(1, 1, 0, 1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT);
+    PUSH_CORNER(-1, -1, 1, 0, 1, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(1, 1, 0, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT);
+    PUSH_CORNER(1, 1, 1, -1, 0, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(-1, -1, -1, -1, 0, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(0, 1, -1, -1, -1, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(0, -1, 1, 1, 1, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(1, -1, -1, 1, 0, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(0, -1, -1, 1, -1, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(0, 1, 1, -1, -1, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(1, 1, 1, 0, 1, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
+    PUSH_CORNER(-1, 1, 1, -1, 0, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT);
     PUSH_CORNER(1, 1, -1, 0, -1, 0, -1, C_TOPRIGHT, -1, 0, C_BOTTOMLEFT);
     PUSH_CORNER(-1, 1, 0, -1, -1, 0, -1, C_TOPRIGHT, -1, -1, C_BOTTOMRIGHT);
     PUSH_CORNER(-1, -1, -1, 0, -1, -1, -1, C_BOTTOMRIGHT, -1, 0, C_BOTTOMLEFT);

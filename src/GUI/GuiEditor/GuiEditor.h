@@ -26,8 +26,6 @@ private:
     SharedPtr<lButton> buttonInterface;
     SharedPtr<lButton> buttonMenu;
 
-    SharedPtr<lButtonToggled> buttonMainFile;
-
     SharedPtr<lButton> btnNewMap;
 
     SharedPtr<lPanelBottom> panelBottom;
@@ -42,18 +40,29 @@ private:
 
     void HandleMouseDown(StringHash, VariantMap&);
     void HandleButtonRelease(StringHash, VariantMap&);
-    void HandleCreateNewMap(StringHash, VariantMap&);
     void HandleExit(StringHash, VariantMap&);
     void HandleOptions(StringHash, VariantMap&);
     void HandleExitOk(StringHash, VariantMap&);
     void HandleExitCancel(StringHash, VariantMap&);
-    void HandleClearTerrain(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
-    void HandleButtonFileLoad(StringHash, VariantMap&);
-    void HandleButtonFileSave(StringHash, VariantMap&);
+
+    // Tab "File"
+    void HandleFileLoad(StringHash, VariantMap&);
+    void HandleFileSave(StringHash, VariantMap&);
     void HandleFileSelectorLoadLandscape(StringHash, VariantMap&);
     void HandleFileSelectorSaveLandscape(StringHash, VariantMap&);
-    void HandleModeSelectChanged(StringHash, VariantMap&);
+
+    // Tab "Edit"
+    void HandleEditUndo(StringHash, VariantMap&);
+    void HandleEditRedo(StringHash, VariantMap&);
+
+    // Tab "Landscape"
+    void HandleLandscapeCreateNewMap(StringHash, VariantMap&);
+    void HandleLandscapeClearTerrain(StringHash, VariantMap&);
+    void HandleLandscapeModeSelectChanged(StringHash, VariantMap&);
+
+    // Tab "Objects"
+    void HandleObjectsAdd(StringHash, VariantMap&);
 
     bool IntersectionX(lButton *button, int x);
     void CreateWindows();

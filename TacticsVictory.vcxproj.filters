@@ -183,6 +183,21 @@
     <ClCompile Include="src\Game\Objects\Line.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Objects\Object.cpp">
+      <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\DynamicObject.cpp">
+      <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\StaticObject.cpp">
+      <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\MovingObject.cpp">
+      <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\T-34-76-2.cpp">
+      <Filter>Game\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -333,6 +348,21 @@
       <Filter>Game\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Line.h">
+      <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Object.h">
+      <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\StaticObject.h">
+      <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\DynamicObject.h">
+      <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\MovingObject.h">
+      <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\T-34-76-2.h">
       <Filter>Game\Objects</Filter>
     </ClInclude>
   </ItemGroup>

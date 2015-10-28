@@ -72,5 +72,15 @@
                                 "ru":"Установка размера Y кисти"},
     "Plane":                { "ru":"Плоскость" },
     "Edge":                 { "ru":"Ребро" },
-    "Mode select":          { "ru":"Режим выбора" }
+    "Mode select":          { "ru":"Режим выбора" },
+    "hintEditUndo":         { "en":"To cancel previous action",
+                                "ru":"Отменяет предыдущее действие" },
+    "hintEditRedo":         { "en":"Returns to previous action",
+                                "ru":"Возвращает предыдущее действие" },
+    "Undo":                 { "ru":"Отменить" },
+    "Redo":                 { "ru":"Вернуть" },
+    "Objects":              { "ru":"Объекты" },
+    "Add":                  { "ru":"Добавить" },
+    "hintObjectsAdd":       { "en":"Add new object in factory",
+                                "ru":"Добавить новый объект в фабрику" }
 }
