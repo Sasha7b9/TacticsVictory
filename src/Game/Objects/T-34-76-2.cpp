@@ -12,7 +12,7 @@ lT34_76_2::lT34_76_2() : lMovingObject()
 
 void lT34_76_2::Load()
 {
-    JSONFile *file = gCache->GetResource<JSONFile>("Models/T-34-76-2.json");
+    JSONFile *file = gCache->GetResource<JSONFile>("Models/Tank.json");
 
     JSONValue modelValue = file->GetRoot().Get("model");
     JSONValue fileNameValue = modelValue.Get("name");

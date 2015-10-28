@@ -50,10 +50,21 @@ void lEditor::Run()
     SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lEditor, HandleMouseDown));
     SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(lEditor, HandleKeyDown));
 
+    /*
     for (int i = 0; i < 1; i++)
     {
         SharedPtr<lT34_76_2> tank(new lT34_76_2());
         tank->SetPosition(Vector3(3.0f, 2.0f, -2.0f) + Vector3(5.0f, 0.0f, 0.0f) * i);
+    }
+    */
+
+    for(uint row = 0; row < 50; row++)
+    {
+        for(uint col = 0; col < 50; col++)
+        {
+            SharedPtr<lT34_76_2> tank(new lT34_76_2());
+            tank->SetPosition(Vector3(float(col), gTerrain->GetHeight(row, col), -float(row)));
+        }
     }
 
     /*
