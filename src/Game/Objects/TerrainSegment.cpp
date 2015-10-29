@@ -3,25 +3,14 @@
 
 #include "TerrainSegment.h"
 #include "Core/Math.h"
-#include "Game/Objects/Plane.h"
-#include "Game/Objects/Triangle.h"
+#include "Graphics/Objects/Plane.h"
+#include "Graphics/Objects/Triangle.h"
 
 
 using Urho3D::C_TOPLEFT;
 using Urho3D::C_TOPRIGHT;
 using Urho3D::C_BOTTOMRIGHT;
 using Urho3D::C_BOTTOMLEFT;
-
-
-bool operator ==(const lTerrainSegment::MapPlaneKey& keyleft, const lTerrainSegment::MapPlaneKey& keyRight)
-{
-    return keyleft.d0 == keyRight.d0 && keyleft.d1 == keyRight.d1 && keyleft.d2 == keyRight.d2;
-}
-
-bool operator ==(const lTerrainSegment::MapCornerKey& keyLeft, const lTerrainSegment::MapCornerKey& keyRight)
-{
-    return keyLeft.dLeft == keyRight.dLeft && keyLeft.dTop == keyRight.dTop && keyLeft.dTopLeft == keyRight.dTopLeft && keyLeft.dDiagLeft == keyRight.dDiagLeft && keyLeft.dDiagTop == keyRight.dDiagTop;
-}
 
 
 lTerrainSegment::lTerrainSegment(Vector<Vector<float>> &eMap, const Vector3 &shift_) :
@@ -107,7 +96,7 @@ void lTerrainSegment::Rebuild(Vector<Vector<float>> &map_)
 
     model->SetVertexBuffers(vbVector, morpRange, morpRange);
     model->SetIndexBuffers(ibVector);
-    //model->SetBoundingBox(BoundingBox(Vector3(minX, minY, minZ), Vector3(maxX, maxY, maxZ)));
+
     model->SetBoundingBox(BoundingBox(Vector3(-1000.0f, -1000.0f, -1000.0f), Vector3(1000.0f, 1000.0f, 1000.0f)));
 
     if(!object->GetModel())

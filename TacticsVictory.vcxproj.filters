@@ -37,6 +37,12 @@
     <Filter Include="GUI\GuiGame">
       <UniqueIdentifier>{6e57eb6d-acd4-4580-b878-0bc53db797e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{8ceb9ef6-a411-44c2-a209-a4782c289b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Objects">
+      <UniqueIdentifier>{4dabc02e-8c79-4e84-a0c9-ab30752f19f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Camera.cpp">
@@ -147,12 +153,6 @@
     <ClCompile Include="src\GUI\Menu\PanelMap.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Triangle.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Plane.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Objects\Terrain.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
@@ -180,9 +180,6 @@
     <ClCompile Include="src\Game\Objects\TerrainSegment.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Line.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Objects\Object.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
@@ -195,8 +192,17 @@
     <ClCompile Include="src\Game\Objects\MovingObject.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\T-34-76-2.cpp">
+    <ClCompile Include="src\Game\Objects\Tank.cpp">
       <Filter>Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Objects\Line.cpp">
+      <Filter>Graphics\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Objects\Plane.cpp">
+      <Filter>Graphics\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Objects\Triangle.cpp">
+      <Filter>Graphics\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -311,12 +317,6 @@
     <ClInclude Include="src\GUI\Menu\PanelMap.h">
       <Filter>GUI\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Triangle.h">
-      <Filter>Game\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Plane.h">
-      <Filter>Game\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Objects\Terrain.h">
       <Filter>Game\Objects</Filter>
     </ClInclude>
@@ -347,9 +347,6 @@
     <ClInclude Include="src\Game\Objects\TerrainSegment.h">
       <Filter>Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Line.h">
-      <Filter>Game\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Objects\Object.h">
       <Filter>Game\Objects</Filter>
     </ClInclude>
@@ -362,8 +359,17 @@
     <ClInclude Include="src\Game\Objects\MovingObject.h">
       <Filter>Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\T-34-76-2.h">
+    <ClInclude Include="src\Game\Objects\Tank.h">
       <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Objects\Line.h">
+      <Filter>Graphics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Objects\Plane.h">
+      <Filter>Graphics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Objects\Triangle.h">
+      <Filter>Graphics\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

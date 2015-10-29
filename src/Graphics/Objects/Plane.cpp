@@ -3,7 +3,7 @@
 
 #include "Plane.h"
 #include "Core/Math.h"
-#include "Game/Objects/Line.h"
+#include "Graphics/Objects/Line.h"
 
 
 lPlane lPlane::ZERO = lPlane(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);

@@ -1,32 +1,44 @@
 #include <stdafx.h>
 
 
-#include "T-34-76-2.h"
+#include "Tank.h"
 #include "Core/Math.h"
 
 
-lT34_76_2::lT34_76_2() : lMovingObject()
+HashMap<lTank::Key, lTank::TankStruct> lTank::parameters;
+
+
+lTank::lTank(Type type_) : lMovingObject(), type(type_)
 {
+    if (parameters.Empty())
+    {
+        parameters[Small] = TankStruct(Small, "Models/Tank.json");
+        parameters[T_34_76] = TankStruct(T_34_76, "Models/T-34-76-2.json");
+    }
+
     Load();
 }
 
-void lT34_76_2::Load()
+void lTank::Load()
 {
-    JSONFile *file = gCache->GetResource<JSONFile>("Models/Tank.json");
+    char *fileName = parameters[type].fileName;
+    JSONFile *file = gCache->GetResource<JSONFile>(fileName);
 
     JSONValue modelValue = file->GetRoot().Get("model");
-    JSONValue fileNameValue = modelValue.Get("name");
-    String fileName = fileNameValue.GetString();
+
+    String fileModel = modelValue.Get("fileModel").GetString();
+    String fileMaterials = modelValue.Get("fileMaterials").GetString();
 
     modelNode = gScene->CreateChild("Tank");
     modelObject = modelNode->CreateComponent<StaticModel>();
-    modelObject->SetModel(gCache->GetResource<Model>(fileName));
+    modelObject->SetModel(gCache->GetResource<Model>(fileModel));
+    modelObject->ApplyMaterialList(fileMaterials);
     modelObject->SetCastShadows(true);
 
     Normalize();
 }
 
-void lT34_76_2::Normalize()
+void lTank::Normalize()
 {
     Vector3 pos = modelNode->GetPosition();
     modelNode->SetPosition({0.0f, 0.0f, 0.0f});

@@ -8,7 +8,7 @@
 #include "GUI/Elements/Hint.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
-#include "Game/Objects/T-34-76-2.h"
+#include "Game/Objects/Tank.h"
 
 
 lEditor::lEditor(Context *context) : Object(context)
@@ -20,6 +20,7 @@ lEditor::lEditor(Context *context) : Object(context)
 
 void lEditor::Run()
 {
+    LOGINFO("Begin create editor");
     Node* zoneNode = gScene->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
     zone->SetBoundingBox(BoundingBox(-50.0f, 50.0f));
@@ -27,8 +28,7 @@ void lEditor::Run()
     float dColor = 0.3f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    //Vector<Vector<float> > level = gLevel->CreateRandom(100, 100);
-    Vector<Vector<float> > level = gLevel->Load("input.map");
+    Vector<Vector<float> > level = gLevel->Load("TVData/Game/Levels/level.map");
 
     gTerrain = new lTerrain(level);
 
@@ -44,28 +44,21 @@ void lEditor::Run()
     light->SetEnabled(true);
 
     gCamera->SetPosition({10.0f, 20.0f, -5.0f}, {10.0f, 0.0f, 0.0f});
-    lightNode->SetPosition({level[0].Size() / 2.0f, 50.0f, -(level.Size() / 2.0f)});
+    lightNode->SetPosition({5.0f, 10.0f, -5.0f});
 
     SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(lEditor, HandlePostRenderUpdate));
     SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lEditor, HandleMouseDown));
     SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(lEditor, HandleKeyDown));
-
-    /*
-    for (int i = 0; i < 1; i++)
+    
+    for(uint row = 0; row < 150; row++)
     {
-        SharedPtr<lT34_76_2> tank(new lT34_76_2());
-        tank->SetPosition(Vector3(3.0f, 2.0f, -2.0f) + Vector3(5.0f, 0.0f, 0.0f) * i);
-    }
-    */
-
-    for(uint row = 0; row < 50; row++)
-    {
-        for(uint col = 0; col < 50; col++)
+        for(uint col = 0; col < 150; col++)
         {
-            SharedPtr<lT34_76_2> tank(new lT34_76_2());
+            SharedPtr<lTank> tank(new lTank(lTank::Small));
             tank->SetPosition(Vector3(float(col), gTerrain->GetHeight(row, col), -float(row)));
         }
     }
+    LOGINFO("End create editor");
 
     /*
     Node* modelNode = gScene->CreateChild("Tank");

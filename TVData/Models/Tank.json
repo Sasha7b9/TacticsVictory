@@ -1,5 +1,6 @@
 {
-	"model": {
-		"name": "Models/Tank.mdl"
-	}
+    "model": {
+        "fileModel": "Models/Tank.mdl",
+        "fileMaterials": "Models/Tank.txt"
+    }
 }

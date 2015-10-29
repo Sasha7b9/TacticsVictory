@@ -22,6 +22,7 @@ extern PhysicsWorld     *gPhysicsWorld;
 extern Font             *gFont;
 extern Time             *gTime;
 extern FileSelector     *gFileSelector;
+extern Log              *gLog;
 
 extern lCamera          *gCamera;
 extern lCursor          *gCursor;

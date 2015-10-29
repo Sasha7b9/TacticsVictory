@@ -1,9 +1,9 @@
 #pragma once
 
 
-#include "Game/Objects/Plane.h"
+#include "Graphics/Objects/Plane.h"
 #include "Game/Objects/Terrain.h"
-#include "Game/Objects/Line.h"
+#include "Graphics/Objects/Line.h"
 
 
 class lEditor : public Object

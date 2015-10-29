@@ -78,20 +78,23 @@ public:
     class MapPlaneKey
     {
     public:
-        MapPlaneKey() : d0(0), d1(0), d2(0) {};
-        MapPlaneKey(int _d0, int _d1, int _d2) : d0(_d0), d1(_d1), d2(_d2) {};
+        MapPlaneKey(int _d0 = 0, int _d1 = 0, int _d2 = 0) : d0(_d0), d1(_d1), d2(_d2) {};
         int d0;
         int d1;
         int d2;
 
         unsigned ToHash () const { return (uint)((d0 + 1) << 4) + ((d1 + 1) << 2) + (d2 + 1); }
+
+        bool operator ==(const lTerrainSegment::MapPlaneKey& keyRight) const
+        {
+            return d0 == keyRight.d0 && d1 == keyRight.d1 && d2 == keyRight.d2;
+        }
     };
 
     class MapPlaneValue
     {
     public:
-        MapPlaneValue() : dX(0), dZ(0) {};
-        MapPlaneValue(float _dX, float _dZ) : dX(_dX), dZ(_dZ) {};
+        MapPlaneValue(float _dX = 0, float _dZ = 0) : dX(_dX), dZ(_dZ) {};
         float dX;
         float dZ;
     };
@@ -99,9 +102,7 @@ public:
     class MapCornerKey
     {
     public:
-        MapCornerKey()
-        {};
-        MapCornerKey(int _dLeft, int _dTopLeft, int _dTop, int _dDiagLeft, int _dDiagTop) :
+        MapCornerKey(int _dLeft = 0, int _dTopLeft = 0, int _dTop = 0, int _dDiagLeft = 0, int _dDiagTop = 0) :
             dLeft(_dLeft), dTopLeft(_dTopLeft), dTop(_dTop), dDiagLeft(_dDiagLeft), dDiagTop(_dDiagTop)
         {};
         int dLeft = 0;          // Если < 0, левая ячейка ниже данной, если == 0, то равны по высоте
@@ -114,14 +115,17 @@ public:
         {
             return (uint)((dLeft + 1) + ((dTopLeft + 1) << 2) + ((dTopLeft + 1) << 4) + ((dDiagLeft + 1) << 6) + ((dDiagTop + 1) << 8));
         }
+
+        bool operator==(const lTerrainSegment::MapCornerKey& keyRight) const
+        {
+            return dLeft == keyRight.dLeft && dTop == keyRight.dTop && dTopLeft == keyRight.dTopLeft && dDiagLeft == keyRight.dDiagLeft && dDiagTop == keyRight.dDiagTop;
+        }
     };
 
     class MapCornerValue
     {
     public:
-        MapCornerValue()
-        {};
-        MapCornerValue(int _dRow00, int _dCol00, Corner _corner00, int _dRow01, int _dCol01, Corner _corner01,
+        MapCornerValue(int _dRow00 = 0, int _dCol00 = 0, Corner _corner00 = Urho3D::C_TOPLEFT, int _dRow01 = 0, int _dCol01 = 0, Corner _corner01 = Urho3D::C_TOPLEFT,
                        int _dRow10 = 0, int _dCol10 = 0, Corner _corner10 = Urho3D::C_TOPLEFT, int _dRow11 = 0, int _dCol11 = 0, Corner _corner11 = Urho3D::C_TOPLEFT, int _dRow12 = 0, int _dCol12 = 0, Corner _corner12 = Urho3D::C_TOPLEFT) :
                        dRow00(_dRow00), dCol00(_dCol00), corner00(_corner00),
                        dRow01(_dRow01), dCol01(_dCol01), corner01(_corner01),

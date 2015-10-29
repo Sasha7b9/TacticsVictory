@@ -51,6 +51,7 @@ void TacticsVictory::Stop()
     SAFE_DELETE(gGUI);
     SAFE_DELETE(gTime);
     File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
+    LOGINFO("Now save ui");
     gUIRoot->SaveXML(file);
     gSet->Save();
     SAFE_DELETE(gSet);
@@ -58,6 +59,9 @@ void TacticsVictory::Stop()
     SAFE_DELETE(gEditor);
     SAFE_DELETE(gScene);
     SAFE_DELETE(gCamera);
+
+    gLog->Close();
+    SAFE_DELETE(gLog);
 }
 
 void TacticsVictory::CreateComponents()
@@ -98,6 +102,10 @@ void TacticsVictory::RegistrationFactories()
 void TacticsVictory::Start()
 {
     Application::Start();
+
+    gLog = new Log(gContext);
+    gLog->Open("log.txt");
+    gLog->SetLevel(Urho3D::LOG_DEBUG);
 
     RegistrationFactories();
 
@@ -168,9 +176,6 @@ void TacticsVictory::CreateNewGame()
     gCamera->SetEnabled(true);
     gGUI->RemoveFromScreen();
     gGuiGame->SetVisible(true);
-    File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
-    gUIRoot->SaveXML(file);
-    file.Close();
 }
 
 void TacticsVictory::CreateEditorSession()

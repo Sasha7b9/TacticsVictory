@@ -116,6 +116,7 @@ using Urho3D::Geometry;
 using Urho3D::Graphics;
 
 using Urho3D::HashMap;
+using Urho3D::HashSet;
 
 using Urho3D::Image;
 using Urho3D::IndexBuffer;
@@ -131,6 +132,7 @@ using Urho3D::JSONNumberType;
 using Urho3D::Light;
 using Urho3D::LineEdit;
 using Urho3D::Localization;
+using Urho3D::Log;
 using Urho3D::LogicComponent;
 
 using Urho3D::Material;
@@ -141,6 +143,7 @@ using Urho3D::Node;
 using Urho3D::Object;
 using Urho3D::Octree;
 
+using Urho3D::Pair;
 using Urho3D::PhysicsWorld;
 using Urho3D::Plane;
 using Urho3D::PODVector;
@@ -234,6 +237,7 @@ class lSettings;
 class lSliderWithTextAndButtons;
 
 class lTab;
+class lTank;
 class lTerrain;
 class lTerrainSegment;
 class lTriangle;

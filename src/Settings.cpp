@@ -12,7 +12,7 @@ bool operator==(const lSettings::FloatKey & keyLeft, const lSettings::FloatKey& 
 
 bool lSettings::Load()
 {
-    nameFile = String("settings.xml");
+    nameFile = String("TVData/settings.xml");
 
     mapIntChild[IntKey(TV_SCREEN_WIDTH)] = SET::WINDOW::WIDTH;
     mapIntChild[IntKey(TV_SCREEN_HEIGHT)] = SET::WINDOW::HEIGHT;

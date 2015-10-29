@@ -1,0 +1,673 @@
+[Thu Oct 29 20:18:34 2015] INFO: Opened log file log.txt
+[Thu Oct 29 20:18:34 2015] INFO: Added resource path C:/My/TacticsVictory/Debug/../TVData/
+[Thu Oct 29 20:18:34 2015] DEBUG: Loading resource Fonts/tech.fnt
+[Thu Oct 29 20:18:34 2015] DEBUG: Loading resource Textures/TacticsVictoryIcon.png
+[Thu Oct 29 20:18:34 2015] DEBUG: Loading resource UI/ConsoleStyle.xml
+[Thu Oct 29 20:18:34 2015] DEBUG: Loading resource Textures/UI.png
+[Thu Oct 29 20:18:34 2015] DEBUG: Loading temporary resource Textures/UI.xml
+[Thu Oct 29 20:18:34 2015] DEBUG: Loading resource Fonts/Anonymous Pro.ttf
+[Thu Oct 29 20:18:34 2015] DEBUG: Font face Anonymous Pro (8pt) has 624 glyphs
+[Thu Oct 29 20:18:34 2015] DEBUG: Loading resource UI/MainStyle.xml
+[Thu Oct 29 20:18:34 2015] DEBUG: Loading resource Strings.json
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::LoadJSON(source): override translation, string ID="createNewMap", language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::LoadJSON(source): override translation, string ID="createNewMap", language="ru"
+[Thu Oct 29 20:18:34 2015] DEBUG: Loading resource Textures/tvUI.png
+[Thu Oct 29 20:18:34 2015] DEBUG: Loading temporary resource Textures/tvUI.xml
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] DEBUG: Bitmap font face tech has 205 glyphs
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera pos Y") not found translation, language="ru"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera pos X") not found translation, language="ru"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera pos Z") not found translation, language="ru"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera pitch") not found translation, language="ru"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera yaw") not found translation, language="ru"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Variables") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera pos Y") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera pos X") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera pos Z") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera pitch") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Camera yaw") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Tactics Victory") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("New game") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Editor") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Options") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Options") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Brightness") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Volume") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Max occluder triangles") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Language") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("English") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Russian") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Texture quality") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Low") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Medium") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("High") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Texture anisotropy") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("x1") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("x2") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("x4") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("x8") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("x16") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("x32") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Material quality") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Low") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Medium") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("High") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Max") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Shadows") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Off") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("On") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Specular lighting") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Off") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("On") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Dynamic instancing") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Off") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("On") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Shadow map size") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("64") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("128") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("256") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("512") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("1024") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("2048") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("4096") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("8192") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("16384") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Shadow quality") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("low 16bit") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("low 24bit") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("high 16bit") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("high 24bit") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Close") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Map") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Panel") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Manu") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("File") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Load") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Save") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Edit") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Undo") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Redo") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Landscape") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("New map") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Clear") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Brush X") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Brush Y") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Mode select") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Texture in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Image Rect in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Resize Border in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Plane") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Edge") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Objects") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Add") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Interface") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Menu") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Dimension X") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Dimension Y") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Create") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Options") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Exit in main menu?") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Ok") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Cancel") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Exit in OS?") not found translation, language="en"
+[Thu Oct 29 20:18:34 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:34 2015] WARNING: Localization::Get("Ok") not found translation, language="en"
+[Thu Oct 29 20:18:35 2015] WARNING: Unknown attribute Font in XML data
+[Thu Oct 29 20:18:35 2015] WARNING: Unknown attribute Font Size in XML data
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Cancel") not found translation, language="en"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Camera pos Y") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Camera pos X") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Camera pos Z") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Camera pitch") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Camera yaw") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Max occluder triangles") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Language") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("English") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Russian") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("x1") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("x2") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("x4") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("x8") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("x16") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("x32") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Dynamic instancing") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Shadow map size") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("64") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("128") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("256") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("512") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("1024") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("2048") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("4096") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("8192") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("16384") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Manu") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] WARNING: Localization::Get("Create") not found translation, language="ru"
+[Thu Oct 29 20:18:35 2015] DEBUG: Reloading shaders
+[Thu Oct 29 20:18:35 2015] DEBUG: Loading resource Shaders/HLSL/Basic.hlsl
+[Thu Oct 29 20:18:35 2015] DEBUG: Loaded cached vertex shader Basic(DIFFMAP VERTEXCOLOR)
+[Thu Oct 29 20:18:35 2015] DEBUG: Loaded cached pixel shader Basic(ALPHAMASK DIFFMAP VERTEXCOLOR)
+[Thu Oct 29 20:18:35 2015] DEBUG: Loaded cached pixel shader Basic(ALPHAMAP VERTEXCOLOR)
+[Thu Oct 29 20:18:36 2015] INFO: Begin create editor
+[Thu Oct 29 20:18:36 2015] DEBUG: Loading resource Materials/TVTerrain.xml
+[Thu Oct 29 20:18:36 2015] DEBUG: Loading resource Techniques/DiffNormalPacked.xml
+[Thu Oct 29 20:18:36 2015] DEBUG: Loading resource Techniques/Diff.xml
+[Thu Oct 29 20:18:36 2015] DEBUG: Loading resource Textures/Terrain.png
+[Thu Oct 29 20:18:36 2015] DEBUG: Loading resource Textures/StoneNormal.dds
+[Thu Oct 29 20:18:36 2015] DEBUG: Loading resource Models/Tank.json
+[Thu Oct 29 20:18:36 2015] DEBUG: Loading resource Models/Tank.mdl
+[Thu Oct 29 20:18:36 2015] DEBUG: Loading resource Materials/01 - Default.xml
+[Thu Oct 29 20:19:16 2015] INFO: End create editor
+[Thu Oct 29 20:19:16 2015] ERROR: Could not create texture
+[Thu Oct 29 20:19:16 2015] ERROR: Could not create texture
+[Thu Oct 29 20:19:16 2015] DEBUG: Loading resource Shaders/HLSL/Shadow.hlsl
+[Thu Oct 29 20:19:16 2015] DEBUG: Loading resource Shaders/HLSL/LitSolid.hlsl
+[Thu Oct 29 20:19:16 2015] DEBUG: Resized instancing buffer to 4096
+[Thu Oct 29 20:19:16 2015] DEBUG: Loaded cached vertex shader Shadow(INSTANCED)
+[Thu Oct 29 20:19:16 2015] DEBUG: Loaded cached pixel shader Shadow()
+[Thu Oct 29 20:19:16 2015] DEBUG: Loaded cached vertex shader Shadow()
+[Thu Oct 29 20:19:16 2015] DEBUG: Loaded cached vertex shader LitSolid(INSTANCED NOUV PERPIXEL POINTLIGHT SHADOW)
+[Thu Oct 29 20:19:16 2015] DEBUG: Loaded cached pixel shader LitSolid(AMBIENT PERPIXEL POINTLIGHT SHADOW SPECULAR)
+[Thu Oct 29 20:19:16 2015] DEBUG: Loaded cached vertex shader LitSolid(PERPIXEL POINTLIGHT SHADOW)
+[Thu Oct 29 20:19:16 2015] DEBUG: Loaded cached pixel shader LitSolid(AMBIENT DIFFMAP PERPIXEL POINTLIGHT SHADOW SPECULAR)
+[Thu Oct 29 20:19:16 2015] DEBUG: Loaded cached vertex shader Basic(VERTEXCOLOR)
+[Thu Oct 29 20:19:16 2015] DEBUG: Loaded cached pixel shader Basic(VERTEXCOLOR)
+[Thu Oct 29 20:19:20 2015] DEBUG: Resized instancing buffer to 8192
+[Thu Oct 29 20:19:21 2015] DEBUG: Resized instancing buffer to 16384
+[Thu Oct 29 20:19:25 2015] DEBUG: Resized instancing buffer to 32768
+[Thu Oct 29 20:19:26 2015] DEBUG: Resized instancing buffer to 65536
+[Thu Oct 29 20:19:27 2015] DEBUG: Resized instancing buffer to 131072
+[Thu Oct 29 20:19:27 2015] DEBUG: Loaded cached vertex shader LitSolid(INSTANCED NOUV)
+[Thu Oct 29 20:19:27 2015] DEBUG: Loaded cached pixel shader LitSolid()
+[Thu Oct 29 20:19:28 2015] DEBUG: Resized instancing buffer to 262144
+[Thu Oct 29 20:19:38 2015] DEBUG: Loaded cached vertex shader LitSolid(NOUV PERPIXEL POINTLIGHT SHADOW)
+[Thu Oct 29 20:19:55 2015] ERROR: Could not create texture
+[Thu Oct 29 20:20:44 2015] INFO: Now save ui
+[Thu Oct 29 20:20:44 2015] ERROR: Could not remove popup implicit attributes
+
+Used resources:
+Textures/Ramp.png
+Textures/Spot.png
+Textures/UI.png
+Textures/tvUI.png
+Fonts/tech_0.tga
+Textures/Terrain.png
+Textures/StoneNormal.dds
+Techniques/NoTexture.xml
+Techniques/DiffNormalPacked.xml
+Techniques/Diff.xml
+RenderPaths/Forward.xml
+UI/MessageBox.xml
+UI/ConsoleStyle.xml
+UI/MainStyle.xml
+Fonts/tech.fnt
+Fonts/Anonymous Pro.ttf
+Textures/TacticsVictoryIcon.png
+Strings.json
+Models/Tank.json
+Shaders/HLSL/Basic.hlsl
+Shaders/HLSL/Shadow.hlsl
+Shaders/HLSL/LitSolid.hlsl
+Materials/TVTerrain.xml
+Materials/01 - Default.xml
+Models/Tank.mdl
