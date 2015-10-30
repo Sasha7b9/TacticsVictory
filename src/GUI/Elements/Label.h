@@ -7,7 +7,7 @@ class lLabel : public Text
 public:
     lLabel(Context *context = gContext);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context *context = gContext);
     static SharedPtr<lLabel> Create(char *text, int sizeFont = 20, int width = -1, int height = -1);
     void SetText(char *text);
     

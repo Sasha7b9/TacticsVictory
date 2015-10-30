@@ -91,6 +91,8 @@ void TacticsVictory::CreateComponents()
     gGUI = new lGUI();
 
     gLevel = new lLevel();
+
+    lScene::RegisterObject();
 }
 
 void TacticsVictory::RegistrationFactories()
@@ -172,7 +174,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 
 void TacticsVictory::CreateNewGame()
 {
-    SharedPtr<tvScene> scene(new tvScene());
+    scene = new lScene();
     gCamera->SetEnabled(true);
     gGUI->RemoveFromScreen();
     gGuiGame->SetVisible(true);

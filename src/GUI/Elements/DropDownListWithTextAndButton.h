@@ -6,7 +6,12 @@ class lDropDownListWithTextAndButton : public UIElement
     OBJECT(lDropDownListWithTextAndButton);
 
 public:
+    lDropDownListWithTextAndButton(Context *context = gContext);
+
     lDropDownListWithTextAndButton(char *text, int widthText, int widthDDList);
+
+    static void RegisterObject(Context* context = gContext);
+
     void AddItem(char *text);
     void SetSelection(uint index);
 

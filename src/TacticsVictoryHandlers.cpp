@@ -12,6 +12,7 @@
 #include "GUI/GuiGame/GuiGame.h"
 #include "Core/Camera.h"
 #include "TacticsVictory.h"
+#include "Game/Objects/Scene.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
@@ -127,5 +128,10 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
     if (gCursor)
     {
         gCursor->Update(time);
+    }
+
+    if (scene)
+    {
+        scene->Update();
     }
 }

@@ -1,17 +1,18 @@
 #pragma once
 
 
-class lHint;
+#include "Label.h"
+#include "Hint.h"
 
 
 class lButton : public Button
 {
     OBJECT(lButton);
 public:
-    lButton(Context *context);
+    lButton(Context *context = gContext);
     lButton(UIElement *uielement, char *text, int widht = -1, int height = -1);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context *context = gContext);
 
     void SetText(char *text);
     void SetHint(char *text);
@@ -27,5 +28,4 @@ private:
 
     void HandleHoverBegin(StringHash, VariantMap&);
     void HandleHoverEnd(StringHash, VariantMap&);
-    void HandleMouseDown(StringHash, VariantMap&);
 };

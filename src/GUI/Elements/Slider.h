@@ -5,9 +5,9 @@ class vSlider : public Slider
 {
     OBJECT(vSlider);
 public:
-    vSlider(Context *context);
+    vSlider(Context *context = gContext);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context *context = gContext);
     static SharedPtr<vSlider> Create(Window *window, char *text);
 
 private:

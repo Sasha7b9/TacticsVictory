@@ -6,6 +6,13 @@
 #include "GUI/Elements/Label.h"
 
 
+lDropDownListWithTextAndButton::lDropDownListWithTextAndButton(Context *context) :
+    UIElement(context)
+{
+
+}
+
+
 lDropDownListWithTextAndButton::lDropDownListWithTextAndButton(char *text_, int widthText, int widthDDList) :
     UIElement(gContext)
 {
@@ -59,6 +66,13 @@ void lDropDownListWithTextAndButton::SetSelection(uint index)
     eventData[Urho3D::ItemSelected::P_ELEMENT] = this;
     eventData[Urho3D::ItemSelected::P_SELECTION] = ddList->GetSelection();
     SendEvent(Urho3D::E_ITEMSELECTED, eventData);
+}
+
+void lDropDownListWithTextAndButton::RegisterObject(Context* context)
+{
+    context->RegisterFactory<lDropDownListWithTextAndButton>("UI");
+
+    COPY_BASE_ATTRIBUTES(UIElement);
 }
 
 void lDropDownListWithTextAndButton::AddItem(char *text)

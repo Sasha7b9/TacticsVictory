@@ -204,6 +204,9 @@
     <ClCompile Include="src\Graphics\Objects\Triangle.cpp">
       <Filter>Graphics\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\Elements\ButtonSwitch.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -370,6 +373,9 @@
     </ClInclude>
     <ClInclude Include="src\Graphics\Objects\Triangle.h">
       <Filter>Graphics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\ButtonSwitch.h">
+      <Filter>GUI\Elements</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

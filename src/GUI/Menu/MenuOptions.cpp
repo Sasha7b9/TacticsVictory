@@ -39,9 +39,6 @@ lMenuOptions::lMenuOptions(Context *context) :
     SubscribeToEvent(name, Urho3D::E_ITEMSELECTED, HANDLER(lMenuOptions, HandleItemSelected));     \
     name->SetSelection(startIndex);
 
-    char *items[] = { "English", "Russian" };
-    CREATE_DDLWTAB(ddlLanguage, "Language", 2, items, (uint)gSet->GetInt(TV_LANGUAGE));
-
     char *items1[] = {"Low", "Medium", "High"};
     CREATE_DDLWTAB(ddlTextureQuality, "Texture quality", 3, items1, (uint)gSet->GetInt(TV_TEXTURE_QUALITY));
 
@@ -99,20 +96,7 @@ void lMenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     lDropDownListWithTextAndButton *ddList = (lDropDownListWithTextAndButton*)eventData[Urho3D::ItemSelected::P_ELEMENT].GetPtr();
     int index = eventData[Urho3D::ItemSelected::P_SELECTION].GetInt();
 
-    if(ddList == ddlLanguage)
-    {
-        static bool first = true;
-        if (first)
-        {
-            first = false;
-        }
-        else
-        {
-            gLocalization->SetLanguage(index == 0 ? "en" : "ru");
-            gSet->SetInt(TV_LANGUAGE, index);
-        }
-    }
-    else if(ddList == ddlTextureQuality)
+    if(ddList == ddlTextureQuality)
     {
         gRenderer->SetTextureQuality(index);
         gSet->SetInt(TV_TEXTURE_QUALITY, index);

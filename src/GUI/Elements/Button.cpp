@@ -48,7 +48,6 @@ lButton::lButton(UIElement *uielement, char *text, int width /* = -1 */, int hei
 
     SubscribeToEvent(this, Urho3D::E_HOVERBEGIN, HANDLER(lButton, HandleHoverBegin));
     SubscribeToEvent(this, Urho3D::E_HOVEREND, HANDLER(lButton, HandleHoverEnd));
-    SubscribeToEvent(this, Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lButton, HandleMouseDown));
 }
 
 void lButton::RegisterObject(Context *context)
@@ -76,11 +75,6 @@ void lButton::HandleHoverBegin(StringHash, VariantMap&)
 void lButton::HandleHoverEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
-}
-
-void lButton::HandleMouseDown(StringHash, VariantMap&)
-{
-    gCursor->SetSelected();
 }
 
 void lButton::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Cursor* cursor)

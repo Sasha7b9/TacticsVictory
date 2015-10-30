@@ -15,9 +15,9 @@ class lMenuOptions : public lWindow
     OBJECT(lMenuOptions)
 
 public:
-    lMenuOptions(Context *context);
+    lMenuOptions(Context *context = gContext);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context *context = gContext);
 
 private:
     lMenuOptions& operator=(const lMenuOptions&) {};
@@ -32,7 +32,6 @@ private:
     SharedPtr<lSliderWithTextAndButtons> sliderMaxOccluderTriangles;
     SharedPtr<lSliderWithTextAndButtons> sliderVolume;
 
-    SharedPtr<lDropDownListWithTextAndButton> ddlLanguage;
     SharedPtr<lDropDownListWithTextAndButton> ddlTextureQuality;
     SharedPtr<lDropDownListWithTextAndButton> ddlMaterialQuality;
     SharedPtr<lDropDownListWithTextAndButton> ddlTextureAnisotropy;

@@ -9,9 +9,9 @@ class lMenuMain : public lWindow
     OBJECT(lMenuMain);
 
 public:
-    lMenuMain(Context *context);
+    lMenuMain(Context *context = gContext);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context *context = gContext);
 
 private:
     lMenuMain& operator=(const lMenuMain&)
@@ -23,4 +23,5 @@ private:
     SharedPtr<lButton> buttonEditor;
     SharedPtr<lButton> buttonExit;
     SharedPtr<lButton> buttonOptions;
+    SharedPtr<lButtonSwitch> buttonLanguage;
 };

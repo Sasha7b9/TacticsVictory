@@ -46,7 +46,7 @@ public:
         return value > max ? max : value;
     }
 
-    static int Random(int min, int max)
+    static int RandomInt(int min, int max)
     {
         int rnd = Urho3D::Rand();
 

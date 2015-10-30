@@ -11,7 +11,7 @@ class lWindow : public Window
 public:
     lWindow(Context *context = gContext);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context *context = gContext);
 
     bool IsChildOfParent();
     void Toggle();

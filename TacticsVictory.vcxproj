@@ -365,6 +365,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\Elements\Slider.cpp" />
     <ClCompile Include="src\GUI\Elements\SliderInt.cpp" />
     <ClCompile Include="src\GUI\Elements\SliderWithTextAndButtons.cpp" />
+    <ClCompile Include="src\GUI\Elements\ButtonSwitch.cpp" />
     <ClCompile Include="src\GUI\Elements\Tab.cpp" />
     <ClCompile Include="src\GUI\Elements\Window.cpp" />
     <ClCompile Include="src\GUI\GUI.cpp" />
@@ -423,6 +424,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\Elements\Slider.h" />
     <ClInclude Include="src\GUI\Elements\SliderInt.h" />
     <ClInclude Include="src\GUI\Elements\SliderWithTextAndButtons.h" />
+    <ClInclude Include="src\GUI\Elements\ButtonSwitch.h" />
     <ClInclude Include="src\GUI\Elements\Tab.h" />
     <ClInclude Include="src\GUI\Elements\Window.h" />
     <ClInclude Include="src\GUI\GUI.h" />

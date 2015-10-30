@@ -8,9 +8,10 @@ class lGuiEditor : public UIElement
     OBJECT(lGuiEditor)
 
 public:
-    lGuiEditor(Context* context);
+    lGuiEditor(Context* context = gContext);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context *context = gContext);
+
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
     bool IsInside(IntVector2 &position);
 

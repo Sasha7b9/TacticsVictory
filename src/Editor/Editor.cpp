@@ -28,7 +28,7 @@ void lEditor::Run()
     float dColor = 0.3f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    Vector<Vector<float> > level = gLevel->Load("TVData/Game/Levels/level.map");
+    Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
 
     gTerrain = new lTerrain(level);
 
@@ -50,9 +50,9 @@ void lEditor::Run()
     SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lEditor, HandleMouseDown));
     SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(lEditor, HandleKeyDown));
     
-    for(uint row = 0; row < 150; row++)
+    for(uint row = 0; row < 10; row++)
     {
-        for(uint col = 0; col < 150; col++)
+        for(uint col = 0; col < 10; col++)
         {
             SharedPtr<lTank> tank(new lTank(lTank::Small));
             tank->SetPosition(Vector3(float(col), gTerrain->GetHeight(row, col), -float(row)));

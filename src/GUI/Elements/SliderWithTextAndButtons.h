@@ -9,9 +9,11 @@ class lSliderWithTextAndButtons : public UIElement
     OBJECT(lSliderWithTextAndButtons);
 
 public:
+    lSliderWithTextAndButtons(Context *context = gContext);
+
     lSliderWithTextAndButtons(UIElement *uielement, char *text, int min, int max, int step, int widthText = -1, int widthRoller = -1);
 
-    static void RegisterObject(Context* context);
+    static void RegisterObject(Context* context = gContext);
 
     void SetRange(int min, int max, int step);
     void SetValue(int value);

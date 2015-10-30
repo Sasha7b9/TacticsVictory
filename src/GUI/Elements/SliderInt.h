@@ -12,9 +12,9 @@ class lSliderInt : public Slider
 {
     OBJECT(lSliderInt);
 public:
-    lSliderInt(Context *context);
+    lSliderInt(Context *context = gContext);
 
-    static void RegisterObject(Context* context);
+    static void RegisterObject(Context* context = gContext);
     static SharedPtr<lSliderInt> Create(UIElement *uielement, const IntVector2 &size);
 
     void SetRange(int min, int max, int step = 1);

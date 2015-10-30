@@ -9,6 +9,7 @@ public:
     lObject();
 
     void SetPosition(const Vector3& pos);
+    Vector3 GetPosition();
 
 protected:
     SharedPtr<Node> modelNode;

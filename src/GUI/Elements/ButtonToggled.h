@@ -6,10 +6,10 @@ class lButtonToggled : public CheckBox
     OBJECT(lButtonToggled)
 
 public:
-    lButtonToggled(Context *context);
+    lButtonToggled(Context *context = gContext);
     lButtonToggled(UIElement *uielement, char *text, int width = -1, int height = -1);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context *context = gContext);
 
     void SetText(char *text);
 

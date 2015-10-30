@@ -11,7 +11,7 @@ class lWindowConfirmExit : public lWindow
 public:
     lWindowConfirmExit(Context *context);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context *context = gContext);
 
 private:
     lWindowConfirmExit& operator=(const lWindowConfirmExit&)

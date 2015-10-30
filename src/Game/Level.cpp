@@ -74,7 +74,7 @@ Vector<Vector<float> > lLevel::Load(char *fileName)
 
         while(data < end)
         {
-            if(*data == 0x0d)
+            if(*data == '\n' || *data == 0x0d)
             {
                 map.Push(curString);
                 curString.Clear();
@@ -172,14 +172,14 @@ Vector<Vector<float> > lLevel::CreateRandom(uint numRows, uint numCols)
 
     Urho3D::SetRandomSeed((uint)rand());
 
-    str.Push((float)Math::Random(minHeight, maxHeight));
+    str.Push((float)Math::RandomInt(minHeight, maxHeight));
 
     for (uint col = 1; col < numCols; col++)
     {
         int min = Math::LimitBelow((int)str[col - 1] - maxDelta, minHeight);
         int max = Math::LimitAbove((int)str[col - 1] + maxDelta, maxHeight);
 
-        str.Push((float)Math::Random(min, max));
+        str.Push((float)Math::RandomInt(min, max));
     }
 
     map.Push(str);
@@ -191,18 +191,18 @@ Vector<Vector<float> > lLevel::CreateRandom(uint numRows, uint numCols)
         int min = Math::LimitBelow((int)map[row - 1][0] - maxDelta, minHeight);
         int max = Math::LimitAbove((int)map[row - 1][0] + maxDelta, maxHeight);
 
-        str.Push((float)Math::Random(min, max));
+        str.Push((float)Math::RandomInt(min, max));
 
         for (uint col = 1; col < numCols; col++)
         {
             int min = Math::LimitBelow((int)str[col - 1] - maxDelta, minHeight);
             int max = Math::LimitAbove((int)str[col - 1] + maxDelta, maxHeight);
 
-            int value = Math::Random(min, max);
+            int value = Math::RandomInt(min, max);
 
             while (value < map[row - 1][col] - maxDelta || value > map[row - 1][col] + maxDelta)
             {
-                value = Math::Random(min, max);
+                value = Math::RandomInt(min, max);
             }
 
             str.Push((float)value);

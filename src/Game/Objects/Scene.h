@@ -1,16 +1,26 @@
 #pragma once
 
 
-class tvScene : public Object
+#include "Game/Objects/Tank.h"
+
+
+class lScene : public Object
 {
-    OBJECT(tvScene)
+    OBJECT(lScene)
 
 public:
-    tvScene();
+    lScene(Context *context = gContext);
 
+    static void RegisterObject(Context *context = gContext);
+
+    void Update();
     void Create();
 
 private:
-    tvScene& operator=(const tvScene&)
+    lScene& operator=(const lScene&)
     {};
+
+    Vector<SharedPtr<lTank>> tanks;
+
+    bool Raycast(float maxDistance, Vector3 &hitPos, Drawable*& hitDrawable);
 };

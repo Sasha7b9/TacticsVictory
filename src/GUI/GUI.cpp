@@ -4,8 +4,10 @@
 #include "GUI.h"
 #include "GUI/Elements/Tab.h"
 #include "GUI/Elements/Button.h"
+#include "GUI/Elements/ButtonSwitch.h"
 #include "GUI/Elements/ButtonToggled.h"
 #include "GUI/Elements/Cursor.h"
+#include "GUI/Elements/DropDownListWithTextAndButton.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/Elements/Slider.h"
 #include "GUI/Elements/SliderInt.h"
@@ -38,23 +40,25 @@ lGUI::~lGUI()
 
 static void RegstrationObjects()
 {
-    lButton::RegisterObject(gContext);
-    lButtonToggled::RegisterObject(gContext);
-    lWindow::RegisterObject(gContext);
-    lMenuMain::RegisterObject(gContext);
-    lMenuOptions::RegisterObject(gContext);
-    lWindowConfirmExit::RegisterObject(gContext);
-    lTab::RegisterObject(gContext);
-    lLabel::RegisterObject(gContext);
-    vSlider::RegisterObject(gContext);
-    lSliderInt::RegisterObject(gContext);
-    vGovernorCell::RegisterObject(gContext);
-    lGovernorFloat::RegisterObject(gContext);
-    lPanelBottom::RegisterObject(gContext);
-    lPanelMap::RegisterObject(gContext);
-    lPanelMain::RegisterObject(gContext);
-    lGuiEditor::RegisterObject(gContext);
-    lSliderWithTextAndButtons::RegisterObject(gContext);
+    lButton::RegisterObject();
+    lButtonSwitch::RegisterObject();
+    lButtonToggled::RegisterObject();
+    lWindow::RegisterObject();
+    lMenuMain::RegisterObject();
+    lMenuOptions::RegisterObject();
+    lWindowConfirmExit::RegisterObject();
+    lTab::RegisterObject();
+    lLabel::RegisterObject();
+    vSlider::RegisterObject();
+    lSliderInt::RegisterObject();
+    vGovernorCell::RegisterObject();
+    lGovernorFloat::RegisterObject();
+    lPanelBottom::RegisterObject();
+    lPanelMap::RegisterObject();
+    lPanelMain::RegisterObject();
+    lGuiEditor::RegisterObject();
+    lSliderWithTextAndButtons::RegisterObject();
+    lDropDownListWithTextAndButton::RegisterObject();
 }
 
 static float GetPosCameraY()
@@ -111,6 +115,11 @@ void lGUI::Create()
 {
     RegstrationObjects();
 
+    gMenuMain = new lMenuMain(gContext);
+    SetWindowInCenterScreen(gMenuMain);
+    gUIRoot->AddChild(gMenuMain);
+    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(lGUI, HandleMenuEvent));
+
     gConsole = new lConsole(gContext);
     gUIRoot->AddChild(gConsole);
 
@@ -126,11 +135,6 @@ void lGUI::Create()
     gWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
 
     gLocalization->SetLanguage("en");
-
-    gMenuMain = new lMenuMain(gContext);
-    SetWindowInCenterScreen(gMenuMain);
-    gUIRoot->AddChild(gMenuMain);
-    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(lGUI, HandleMenuEvent));
 
     gMenuOptions = new lMenuOptions(gContext);
     SetWindowInCenterScreen(gMenuOptions);

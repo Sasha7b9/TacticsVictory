@@ -24,9 +24,9 @@ class vGovernorCell : public lWindow
     OBJECT(vGovernorCell);
 
 public:
-    vGovernorCell(Context *context);
+    vGovernorCell(Context *context = gContext);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context *context = gContext);
 
     void SetSymbol(char symbol);
     char GetSymbol();
@@ -63,9 +63,9 @@ class lGovernorFloat : public lWindow
     OBJECT(lGovernorFloat);
 
 public:
-    lGovernorFloat(Context *context);
+    lGovernorFloat(Context *context = gContext);
 
-    static void RegisterObject(Context *context);
+    static void RegisterObject(Context *context = gContext);
 
     virtual void Update(float timeStep);
 

@@ -24,12 +24,13 @@ private:
     void SaveSettings();
 
     void SubscribeToEvents();
-    void HandleUpdate(StringHash eventType, VariantMap& eventData);
-    void HandleMenuEvent(StringHash eventType, VariantMap& eventData);
-    void HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData);
-    void HandleKeyDown(StringHash eventType, VariantMap& eventData);
+    void HandleUpdate(StringHash, VariantMap&);
+    void HandleMenuEvent(StringHash, VariantMap&);
+    void HandlePostRenderUpdate(StringHash, VariantMap&);
+    void HandleKeyDown(StringHash, VariantMap&);
 
     bool drawDebug = false;
+    SharedPtr<lScene> scene;
 
     TacticsVictory& operator=(const TacticsVictory&)
     {};

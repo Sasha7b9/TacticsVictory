@@ -7,6 +7,13 @@
 #include "GUI/Elements/Hint.h"
 
 
+lSliderWithTextAndButtons::lSliderWithTextAndButtons(Context *context) :
+    UIElement(context)
+{
+
+}
+
+
 lSliderWithTextAndButtons::lSliderWithTextAndButtons(UIElement *uielement, char *text_, int min, int max, int step, int widthText, int widthRoller) :
     UIElement(gContext)
 {
@@ -66,7 +73,7 @@ lSliderWithTextAndButtons::lSliderWithTextAndButtons(UIElement *uielement, char 
 
 void lSliderWithTextAndButtons::RegisterObject(Context* context)
 {
-    context->RegisterFactory<lWindow>("UI");
+    context->RegisterFactory<lSliderWithTextAndButtons>("UI");
 
     COPY_BASE_ATTRIBUTES(UIElement);
 }

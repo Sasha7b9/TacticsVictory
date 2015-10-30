@@ -4,6 +4,7 @@
 #include "MenuMain.h"
 #include "GUI/GUI.h"
 #include "GUI/Elements/Button.h"
+#include "GUI/Elements/ButtonSwitch.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/Menu/WindowConfirmExit.h"
@@ -18,15 +19,19 @@ lMenuMain::lMenuMain(Context *) :
     SharedPtr<lLabel> text(lLabel::Create("Tactics Victory", 20));
     AddChild(text);
     
-    buttonNewGame  = new lButton(0, "New game");
-    AddChild(buttonNewGame);
+    buttonNewGame  = new lButton(this, "New game");
     buttonEditor = new lButton(this, "Editor");
     buttonOptions = new lButton(this, "Options");
+    buttonLanguage = new lButtonSwitch(this, "Language : EN");
+    buttonLanguage->AddState("Language : RU");
+    buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
     buttonExit = new lButton(this, "Exit");
+
     SubscribeToEvent(buttonOptions, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonEditor, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonNewGame, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonExit, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonLanguage, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
 
     text->SetWidth(GetWidth());
 
@@ -51,6 +56,12 @@ void lMenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
     {
         gMenuMain->SetVisible(false);
         gGUI->SetVisibleMenu(gWindowConfirmExit, true);
+    
+    }
+    else if (button == buttonLanguage)
+    {
+        gLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
+        gSet->SetInt(TV_LANGUAGE, (int)buttonLanguage->GetState());
     }
     else
     {

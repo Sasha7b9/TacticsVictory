@@ -9,11 +9,11 @@ class lPanelMap : public lWindow
     OBJECT(lPanelMap);
 
 public:
-    lPanelMap(Context *context);
+    lPanelMap(Context *context = gContext);
+
+    static void RegisterObject(Context *context = gContext);
 
     virtual void Update(float timeStep);
-
-    static void RegisterObject(Context *context);
 
 private:
     lPanelMap& operator=(const lPanelMap&)

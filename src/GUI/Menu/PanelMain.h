@@ -11,10 +11,9 @@ class lPanelMain : public lWindow
 public:
     lPanelMain(Context *context = gContext);
 
+    static void RegisterObject(Context *context = gContext);
+
     virtual void Update(float dT);
-
-    static void RegisterObject(Context *context);
-
     void AddTab(SharedPtr<lTab> tab);
 
 private:
