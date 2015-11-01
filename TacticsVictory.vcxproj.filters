@@ -43,6 +43,9 @@
     <Filter Include="Graphics\Objects">
       <UniqueIdentifier>{4dabc02e-8c79-4e84-a0c9-ab30752f19f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Path">
+      <UniqueIdentifier>{d95f9b66-18c2-4dec-88bd-11fee010c993}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Camera.cpp">
@@ -209,6 +212,15 @@
     </ClCompile>
     <ClCompile Include="src\Game\PathIndicator.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Path\Path.cpp">
+      <Filter>Game\Path</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Path\PathSegment.cpp">
+      <Filter>Game\Path</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Path\WaveAlgorithm.cpp">
+      <Filter>Game\Path</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -382,6 +394,15 @@
     </ClInclude>
     <ClInclude Include="src\Game\PathIndicator.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Path\Path.h">
+      <Filter>Game\Path</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Path\PathSegment.h">
+      <Filter>Game\Path</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Path\WaveAlgorithm.h">
+      <Filter>Game\Path</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

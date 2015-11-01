@@ -16,6 +16,7 @@ public:
 
     void SetHeight(uint row, uint col, float height);
     float GetHeight(uint row, uint col);
+    float GetHeight(int row, int col);
     void Update();                                      // Call this function after SetHeight() for applying changes.
 
     void Clear();

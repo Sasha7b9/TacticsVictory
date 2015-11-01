@@ -3,6 +3,7 @@
 
 #include "Game/Objects/Tank.h"
 #include "Game/PathIndicator.h"
+#include "Game/Path/Path.h"
 
 
 class lScene : public Object
@@ -23,6 +24,7 @@ private:
 
     Vector<SharedPtr<lTank>> tanks;
     lPathIndicator pathIndicator;
+    lPath path;
 
     void HandleMouseDown(StringHash, VariantMap&);
 };

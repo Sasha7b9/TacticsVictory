@@ -241,6 +241,7 @@ class lPanelBottom;
 class lPanelMain;
 class lPanelMap;
 class lPlane;
+class lPath;
 class lPathIndicator;
 
 class lScene;

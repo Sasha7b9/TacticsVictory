@@ -80,6 +80,8 @@ void lScene::Create()
     gRenderer->SetShadowMapSize(2048);
 
     gCamera->SetPosition({0.0f, 25.0f, 0.0f}, {level[0].Size() / 2.0f, 0.0f, -(level.Size() / 2.0f)});
+
+    path.SetTerrain(gTerrain);
 }
 
 void lScene::Update()

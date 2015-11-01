@@ -348,6 +348,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Objects\Terrain.cpp" />
     <ClCompile Include="src\Game\Objects\TerrainSegment.cpp" />
     <ClCompile Include="src\Game\PathIndicator.cpp" />
+    <ClCompile Include="src\Game\Path\Path.cpp" />
+    <ClCompile Include="src\Game\Path\PathSegment.cpp" />
+    <ClCompile Include="src\Game\Path\WaveAlgorithm.cpp" />
     <ClCompile Include="src\Game\Scene.cpp" />
     <ClCompile Include="src\GlobalFunctions.cpp" />
     <ClCompile Include="src\GlobalVars.cpp" />
@@ -408,6 +411,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Objects\Terrain.h" />
     <ClInclude Include="src\Game\Objects\TerrainSegment.h" />
     <ClInclude Include="src\Game\PathIndicator.h" />
+    <ClInclude Include="src\Game\Path\Path.h" />
+    <ClInclude Include="src\Game\Path\PathSegment.h" />
+    <ClInclude Include="src\Game\Path\WaveAlgorithm.h" />
     <ClInclude Include="src\Game\Scene.h" />
     <ClInclude Include="src\GlobalFunctions.h" />
     <ClInclude Include="src\GlobalVars.h" />
