@@ -6,5 +6,6 @@
 *.dll
 *.pch
 *.exe
+log.txt
 Debug/TacticsVictory.tlog
 Debug/CoreData/Shaders/HLSL
