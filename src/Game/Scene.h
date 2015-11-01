@@ -2,6 +2,7 @@
 
 
 #include "Game/Objects/Tank.h"
+#include "Game/PathIndicator.h"
 
 
 class lScene : public Object
@@ -21,6 +22,7 @@ private:
     {};
 
     Vector<SharedPtr<lTank>> tanks;
+    lPathIndicator pathIndicator;
 
-    bool Raycast(float maxDistance, Vector3 &hitPos, Drawable*& hitDrawable);
+    void HandleMouseDown(StringHash, VariantMap&);
 };

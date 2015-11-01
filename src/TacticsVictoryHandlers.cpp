@@ -12,7 +12,7 @@
 #include "GUI/GuiGame/GuiGame.h"
 #include "Core/Camera.h"
 #include "TacticsVictory.h"
-#include "Game/Objects/Scene.h"
+#include "Game/Scene.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)

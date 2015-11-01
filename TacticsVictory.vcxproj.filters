@@ -63,9 +63,6 @@
     <ClCompile Include="src\Game\Logic\Rotator.cpp">
       <Filter>Game\Logic</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Scene.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Level.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -207,6 +204,12 @@
     <ClCompile Include="src\GUI\Elements\ButtonSwitch.cpp">
       <Filter>GUI\Elements</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Scene.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\PathIndicator.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -226,9 +229,6 @@
     </ClInclude>
     <ClInclude Include="src\Game\Logic\Rotator.h">
       <Filter>Game\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Scene.h">
-      <Filter>Game\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Level.h">
       <Filter>Game</Filter>
@@ -376,6 +376,12 @@
     </ClInclude>
     <ClInclude Include="src\GUI\Elements\ButtonSwitch.h">
       <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Scene.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\PathIndicator.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

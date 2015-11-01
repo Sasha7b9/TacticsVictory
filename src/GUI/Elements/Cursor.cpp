@@ -2,6 +2,7 @@
 
 
 #include "Cursor.h"
+#include "Core/Camera.h"
 #include "GUI/GUI.h"
 #include "GUI/Elements/CursorShapes.h"
 #include "GUI/Elements/Image.h"
@@ -137,4 +138,34 @@ void lCursor::SetNormal()
 void lCursor::SetSelected()
 {
     selected = true;
+}
+
+Drawable* lCursor::GetRaycastNode(float maxDistance, Vector3 *hitPos_)
+{
+    if(gUI->GetElementAt(gUI->GetCursorPosition(), true))
+    {
+        return nullptr;
+    }
+
+    Ray ray = gCamera->GetCursorRay();
+    PODVector<RayQueryResult> results;
+    RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, maxDistance, Urho3D::DRAWABLE_GEOMETRY);
+
+    //HiresTimer timer;
+    //timer.Reset();
+    gScene->GetComponent<Octree>()->RaycastSingle(query);
+    //LOGINFOF("Calculate raycast node %f us", (float)timer.GetUSec(false));
+
+    if(results.Size())
+    {
+        RayQueryResult& result = results[0];
+        Vector3 hitPos = result.position_;
+        if(hitPos_)
+        {
+            *hitPos_ = hitPos;
+        }
+        return result.drawable_;
+    }
+
+    return nullptr;
 }

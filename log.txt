@@ -1,627 +1,1636 @@
-[Fri Oct 30 16:56:27 2015] INFO: Opened log file log.txt
-[Fri Oct 30 16:56:27 2015] INFO: Added resource path C:/My/TacticsVictory/Debug/../TVData/
-[Fri Oct 30 16:56:27 2015] DEBUG: Loading resource Fonts/tech.fnt
-[Fri Oct 30 16:56:27 2015] DEBUG: Loading resource Textures/TacticsVictoryIcon.png
-[Fri Oct 30 16:56:27 2015] DEBUG: Loading resource UI/ConsoleStyle.xml
-[Fri Oct 30 16:56:27 2015] DEBUG: Loading resource Textures/UI.png
-[Fri Oct 30 16:56:27 2015] DEBUG: Loading temporary resource Textures/UI.xml
-[Fri Oct 30 16:56:27 2015] DEBUG: Loading resource Fonts/Anonymous Pro.ttf
-[Fri Oct 30 16:56:27 2015] DEBUG: Font face Anonymous Pro (8pt) has 624 glyphs
-[Fri Oct 30 16:56:27 2015] DEBUG: Loading resource UI/MainStyle.xml
-[Fri Oct 30 16:56:27 2015] DEBUG: Loading resource Strings.json
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::LoadJSON(source): override translation, string ID="createNewMap", language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::LoadJSON(source): override translation, string ID="createNewMap", language="ru"
-[Fri Oct 30 16:56:27 2015] DEBUG: Loading resource Textures/tvUI.png
-[Fri Oct 30 16:56:27 2015] DEBUG: Loading temporary resource Textures/tvUI.xml
-[Fri Oct 30 16:56:27 2015] DEBUG: Bitmap font face tech has 205 glyphs
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Language : EN") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Language : RU") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pos Y") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pos X") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pos Z") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pitch") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera yaw") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Tactics Victory") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("New game") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Editor") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Options") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Language : RU") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Variables") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pos Y") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pos X") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pos Z") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pitch") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera yaw") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Options") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Brightness") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Volume") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Max occluder triangles") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Texture quality") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Low") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Medium") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("High") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Texture anisotropy") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x1") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x2") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x4") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x8") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x16") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x32") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Material quality") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Low") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Medium") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("High") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Max") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Shadows") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Off") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("On") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Specular lighting") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Off") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("On") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Dynamic instancing") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Off") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("On") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Shadow map size") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("64") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("128") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("256") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("512") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("1024") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("2048") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("4096") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("8192") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("16384") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Shadow quality") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("low 16bit") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("low 24bit") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("high 16bit") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("high 24bit") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Close") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Map") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Panel") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Manu") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("File") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Load") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Save") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Edit") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Undo") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Redo") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Landscape") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("New map") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Clear") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Brush X") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Brush Y") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Mode select") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Texture in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Image Rect in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Resize Border in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Plane") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Edge") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Objects") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Add") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Interface") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Menu") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Dimension X") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Dimension Y") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing left alignment because parent element has horizontal layout
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Create") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Options") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Exit in main menu?") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Ok") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Cancel") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Exit in OS?") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Forcing top alignment because parent element has vertical layout
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Ok") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Unknown attribute Font Size in XML data
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Cancel") not found translation, language="en"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Language : RU") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pos Y") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pos X") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pos Z") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera pitch") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Camera yaw") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Max occluder triangles") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x1") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x2") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x4") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x8") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x16") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("x32") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Dynamic instancing") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Shadow map size") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("64") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("128") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("256") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("512") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("1024") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("2048") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("4096") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("8192") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("16384") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Manu") not found translation, language="ru"
-[Fri Oct 30 16:56:27 2015] WARNING: Localization::Get("Create") not found translation, language="ru"
-[Fri Oct 30 16:56:28 2015] DEBUG: Reloading shaders
-[Fri Oct 30 16:56:28 2015] DEBUG: Loading resource Shaders/HLSL/Basic.hlsl
-[Fri Oct 30 16:56:28 2015] DEBUG: Loaded cached vertex shader Basic(DIFFMAP VERTEXCOLOR)
-[Fri Oct 30 16:56:28 2015] DEBUG: Loaded cached pixel shader Basic(ALPHAMASK DIFFMAP VERTEXCOLOR)
-[Fri Oct 30 16:56:28 2015] DEBUG: Loaded cached pixel shader Basic(ALPHAMAP VERTEXCOLOR)
-[Fri Oct 30 16:56:28 2015] DEBUG: Loading resource Materials/TVTerrain.xml
-[Fri Oct 30 16:56:28 2015] DEBUG: Loading resource Techniques/DiffNormalPacked.xml
-[Fri Oct 30 16:56:29 2015] DEBUG: Loading resource Techniques/Diff.xml
-[Fri Oct 30 16:56:29 2015] DEBUG: Loading resource Textures/Terrain.png
-[Fri Oct 30 16:56:29 2015] DEBUG: Loading resource Textures/StoneNormal.dds
-[Fri Oct 30 16:56:29 2015] DEBUG: Loading resource Models/Tank.json
-[Fri Oct 30 16:56:29 2015] DEBUG: Loading resource Models/Tank.mdl
-[Fri Oct 30 16:56:29 2015] DEBUG: Loading resource Materials/01 - Default.xml
-[Fri Oct 30 16:56:31 2015] ERROR: Could not create texture
-[Fri Oct 30 16:56:31 2015] DEBUG: Loading resource Shaders/HLSL/Shadow.hlsl
-[Fri Oct 30 16:56:31 2015] DEBUG: Loading resource Shaders/HLSL/LitSolid.hlsl
-[Fri Oct 30 16:56:31 2015] DEBUG: Resized instancing buffer to 16384
-[Fri Oct 30 16:56:31 2015] DEBUG: Loaded cached vertex shader Shadow()
-[Fri Oct 30 16:56:31 2015] DEBUG: Loaded cached pixel shader Shadow()
-[Fri Oct 30 16:56:31 2015] DEBUG: Loaded cached vertex shader Shadow(INSTANCED)
-[Fri Oct 30 16:56:31 2015] DEBUG: Loaded cached vertex shader LitSolid(PERPIXEL POINTLIGHT SHADOW)
-[Fri Oct 30 16:56:31 2015] DEBUG: Loaded cached pixel shader LitSolid(AMBIENT DIFFMAP PERPIXEL POINTLIGHT SHADOW SPECULAR)
-[Fri Oct 30 16:56:31 2015] DEBUG: Loaded cached vertex shader LitSolid(INSTANCED NOUV PERPIXEL POINTLIGHT SHADOW)
-[Fri Oct 30 16:56:31 2015] DEBUG: Loaded cached pixel shader LitSolid(AMBIENT PERPIXEL POINTLIGHT SHADOW SPECULAR)
-[Fri Oct 30 16:57:00 2015] INFO: Now save ui
-[Fri Oct 30 16:57:00 2015] ERROR: Could not remove popup implicit attributes
+[Sun Nov 01 19:09:12 2015] INFO: Opened log file log.txt
+[Sun Nov 01 19:09:12 2015] INFO: Added resource path C:/My/TacticsVictory/Debug/../TVData/
+[Sun Nov 01 19:09:12 2015] DEBUG: Loading resource Fonts/tech.fnt
+[Sun Nov 01 19:09:12 2015] DEBUG: Loading resource Textures/TacticsVictoryIcon.png
+[Sun Nov 01 19:09:12 2015] DEBUG: Loading resource UI/ConsoleStyle.xml
+[Sun Nov 01 19:09:12 2015] DEBUG: Loading resource Textures/UI.png
+[Sun Nov 01 19:09:12 2015] DEBUG: Loading temporary resource Textures/UI.xml
+[Sun Nov 01 19:09:12 2015] DEBUG: Loading resource Fonts/Anonymous Pro.ttf
+[Sun Nov 01 19:09:12 2015] DEBUG: Font face Anonymous Pro (8pt) has 624 glyphs
+[Sun Nov 01 19:09:12 2015] DEBUG: Loading resource UI/MainStyle.xml
+[Sun Nov 01 19:09:12 2015] DEBUG: Loading resource Strings.json
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::LoadJSON(source): override translation, string ID="createNewMap", language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::LoadJSON(source): override translation, string ID="createNewMap", language="ru"
+[Sun Nov 01 19:09:12 2015] DEBUG: Loading resource Textures/tvUI.png
+[Sun Nov 01 19:09:12 2015] DEBUG: Loading temporary resource Textures/tvUI.xml
+[Sun Nov 01 19:09:12 2015] DEBUG: Bitmap font face tech has 205 glyphs
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Language : EN") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Language : RU") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pos Y") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pos X") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pos Z") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pitch") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera position Y") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera yaw") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Tactics Victory") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("New game") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Editor") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Options") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Language : RU") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Variables") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pos Y") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pos X") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pos Z") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pitch") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera yaw") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Options") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Brightness") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Volume") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Max occluder triangles") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Texture quality") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Low") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Medium") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("High") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Texture anisotropy") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x1") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x2") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x4") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x8") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x16") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x32") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Material quality") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Low") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Medium") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("High") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Max") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Shadows") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Off") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("On") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Specular lighting") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Off") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("On") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Dynamic instancing") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Off") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("On") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Shadow map size") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("64") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("128") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("256") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("512") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("1024") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("2048") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("4096") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("8192") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("16384") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Shadow quality") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("low 16bit") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("low 24bit") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("high 16bit") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("high 24bit") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Close") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Map") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Panel") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Manu") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("File") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Load") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Save") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Edit") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Undo") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Redo") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Landscape") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("New map") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Clear") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Brush X") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Brush Y") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Mode select") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Texture in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Image Rect in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Resize Border in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Plane") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Edge") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Objects") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Add") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Interface") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Menu") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Dimension X") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Dimension Y") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing left alignment because parent element has horizontal layout
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Create") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Options") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Exit in main menu?") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Ok") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Cancel") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Exit in OS?") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Forcing top alignment because parent element has vertical layout
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Ok") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Unknown attribute Font Size in XML data
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Cancel") not found translation, language="en"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Language : RU") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pos Y") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pos X") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pos Z") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera pitch") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Camera yaw") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Max occluder triangles") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x1") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x2") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x4") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x8") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x16") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("x32") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Dynamic instancing") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Shadow map size") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("64") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("128") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("256") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("512") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("1024") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("2048") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("4096") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("8192") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("16384") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Manu") not found translation, language="ru"
+[Sun Nov 01 19:09:12 2015] WARNING: Localization::Get("Create") not found translation, language="ru"
+[Sun Nov 01 19:09:13 2015] DEBUG: Reloading shaders
+[Sun Nov 01 19:09:13 2015] DEBUG: Loading resource Shaders/HLSL/Basic.hlsl
+[Sun Nov 01 19:09:13 2015] DEBUG: Loaded cached vertex shader Basic(DIFFMAP VERTEXCOLOR)
+[Sun Nov 01 19:09:13 2015] DEBUG: Loaded cached pixel shader Basic(ALPHAMASK DIFFMAP VERTEXCOLOR)
+[Sun Nov 01 19:09:13 2015] DEBUG: Loaded cached pixel shader Basic(ALPHAMAP VERTEXCOLOR)
+[Sun Nov 01 19:09:14 2015] DEBUG: Loading resource Materials/TVTerrain.xml
+[Sun Nov 01 19:09:14 2015] DEBUG: Loading resource Techniques/DiffNormalPacked.xml
+[Sun Nov 01 19:09:14 2015] DEBUG: Loading resource Techniques/Diff.xml
+[Sun Nov 01 19:09:14 2015] DEBUG: Loading resource Textures/Terrain.png
+[Sun Nov 01 19:09:14 2015] DEBUG: Loading resource Textures/StoneNormal.dds
+[Sun Nov 01 19:09:14 2015] DEBUG: Loading resource Models/Tank.json
+[Sun Nov 01 19:09:14 2015] DEBUG: Loading resource Models/Tank.mdl
+[Sun Nov 01 19:09:14 2015] DEBUG: Loading resource Materials/01 - Default.xml
+[Sun Nov 01 19:09:17 2015] DEBUG: Loading resource Shaders/HLSL/LitSolid.hlsl
+[Sun Nov 01 19:09:17 2015] DEBUG: Loaded cached vertex shader LitSolid(PERPIXEL POINTLIGHT)
+[Sun Nov 01 19:09:17 2015] DEBUG: Loaded cached pixel shader LitSolid(AMBIENT DIFFMAP PERPIXEL POINTLIGHT SPECULAR)
+[Sun Nov 01 19:09:17 2015] DEBUG: Loaded cached vertex shader LitSolid(INSTANCED NOUV PERPIXEL POINTLIGHT)
+[Sun Nov 01 19:09:17 2015] DEBUG: Loaded cached pixel shader LitSolid(AMBIENT PERPIXEL POINTLIGHT SPECULAR)
+[Sun Nov 01 19:09:17 2015] DEBUG: Loading resource Materials/Decals/PathDecal.xml
+[Sun Nov 01 19:09:17 2015] DEBUG: Loading resource Techniques/Decals/PathDecal.xml
+[Sun Nov 01 19:09:17 2015] DEBUG: Loading resource Textures/Decals/PathDecal.png
+[Sun Nov 01 19:09:18 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:18 2015] DEBUG: Loaded cached vertex shader LitSolid()
+[Sun Nov 01 19:09:18 2015] DEBUG: Loaded cached pixel shader LitSolid(DIFFMAP)
+[Sun Nov 01 19:09:18 2015] DEBUG: Loaded cached pixel shader LitSolid(DIFFMAP PERPIXEL POINTLIGHT)
+[Sun Nov 01 19:09:18 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:18 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:18 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:18 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:18 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:18 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:18 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:18 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:18 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:19 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:19 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:19 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:19 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:19 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:19 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:19 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:19 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:19 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:19 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:20 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:20 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:20 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:20 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:20 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:20 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:20 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:20 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:20 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:20 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:20 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:21 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:21 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:21 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:21 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:21 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:21 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:21 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:21 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:21 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:21 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:22 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:22 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:22 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:22 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:22 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:22 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:22 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:24 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:25 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:26 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:27 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:28 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:29 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:29 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:29 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:29 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:29 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:29 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:30 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:30 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:30 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:30 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:30 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:30 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:30 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:30 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:31 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:32 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:33 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Loaded cached vertex shader LitSolid(NOUV PERPIXEL POINTLIGHT)
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:34 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:35 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:36 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:37 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:38 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:39 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:40 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:41 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:42 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:43 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:44 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:45 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:46 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:47 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:48 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:49 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:50 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:51 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:52 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:53 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:54 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:55 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] DEBUG: Added decal with 4 vertices
+[Sun Nov 01 19:09:56 2015] INFO: Now save ui
+[Sun Nov 01 19:09:56 2015] ERROR: Could not remove popup implicit attributes
 
 Used resources:
 Textures/Ramp.png
@@ -631,9 +1640,11 @@ Textures/tvUI.png
 Fonts/tech_0.tga
 Textures/Terrain.png
 Textures/StoneNormal.dds
+Textures/Decals/PathDecal.png
 Techniques/NoTexture.xml
 Techniques/DiffNormalPacked.xml
 Techniques/Diff.xml
+Techniques/Decals/PathDecal.xml
 RenderPaths/Forward.xml
 UI/MessageBox.xml
 UI/ConsoleStyle.xml
@@ -644,8 +1655,8 @@ Textures/TacticsVictoryIcon.png
 Strings.json
 Models/Tank.json
 Shaders/HLSL/Basic.hlsl
-Shaders/HLSL/Shadow.hlsl
 Shaders/HLSL/LitSolid.hlsl
 Materials/TVTerrain.xml
 Materials/01 - Default.xml
+Materials/Decals/PathDecal.xml
 Models/Tank.mdl

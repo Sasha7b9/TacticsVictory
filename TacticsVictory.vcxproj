@@ -343,11 +343,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Objects\DynamicObject.cpp" />
     <ClCompile Include="src\Game\Objects\MovingObject.cpp" />
     <ClCompile Include="src\Game\Objects\Object.cpp" />
-    <ClCompile Include="src\Game\Objects\Scene.cpp" />
     <ClCompile Include="src\Game\Objects\StaticObject.cpp" />
     <ClCompile Include="src\Game\Objects\Tank.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain.cpp" />
     <ClCompile Include="src\Game\Objects\TerrainSegment.cpp" />
+    <ClCompile Include="src\Game\PathIndicator.cpp" />
+    <ClCompile Include="src\Game\Scene.cpp" />
     <ClCompile Include="src\GlobalFunctions.cpp" />
     <ClCompile Include="src\GlobalVars.cpp" />
     <ClCompile Include="src\Graphics\Objects\Line.cpp" />
@@ -402,11 +403,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Objects\DynamicObject.h" />
     <ClInclude Include="src\Game\Objects\MovingObject.h" />
     <ClInclude Include="src\Game\Objects\Object.h" />
-    <ClInclude Include="src\Game\Objects\Scene.h" />
     <ClInclude Include="src\Game\Objects\StaticObject.h" />
     <ClInclude Include="src\Game\Objects\Tank.h" />
     <ClInclude Include="src\Game\Objects\Terrain.h" />
     <ClInclude Include="src\Game\Objects\TerrainSegment.h" />
+    <ClInclude Include="src\Game\PathIndicator.h" />
+    <ClInclude Include="src\Game\Scene.h" />
     <ClInclude Include="src\GlobalFunctions.h" />
     <ClInclude Include="src\GlobalVars.h" />
     <ClInclude Include="src\Graphics\Objects\Line.h" />

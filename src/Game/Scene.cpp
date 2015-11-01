@@ -14,6 +14,8 @@ lScene::lScene(Context *context) :
     Object(context)
 {
     Create();
+
+    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lScene, HandleMouseDown));
 }
 
 void lScene::RegisterObject(Context *context)
@@ -31,33 +33,30 @@ void lScene::Create()
     Zone* zone = zoneNode->CreateComponent<Zone>();
     // Set same volume as the Octree, set a close bluish fog and some ambient light
     zone->SetBoundingBox(BoundingBox(-1000.0f, 1000.0f));
-    zone->SetFogColor(Color::BLUE);
-    zone->SetFogHeightScale(10000.0f);
-    zone->SetFogStart(0.0f);
-    zone->SetFogEnd(1000.0f);
+    //zone->SetFogColor(Color::BLUE);
+    //zone->SetFogHeightScale(10000.0f);
+    //zone->SetFogStart(0.0f);
+    //zone->SetFogEnd(1000.0f);
     float dColor = 0.1f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
     gTerrain = new lTerrain(level);
 
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < 100; i++)
     {
         int x = Math::RandomInt(0, (int)gLevel->GetWidth() - 1);
         int y = Math::RandomInt(0, (int)gLevel->GetHeight() - 1);
 
-        //if (!tanks.Empty())
-        //{
-            for (auto tank : tanks)
+        for (auto tank : tanks)
+        {
+            Vector3 pos = tank->GetPosition();
+            if ((int)pos.x_ == x && -(int)pos.z_ == y)
             {
-                Vector3 pos = tank->GetPosition();
-                if ((int)pos.x_ == x && -(int)pos.z_ == y)
-                {
-                    i--;
-                    continue;
-                }
+                i--;
+                continue;
             }
-        //}
+        }
 
         SharedPtr<lTank> tank(new lTank(lTank::Small));
         tank->SetPosition({float(x), (float)gTerrain->GetHeight((uint)y, (uint)x), (float)-y});
@@ -83,43 +82,43 @@ void lScene::Create()
     gCamera->SetPosition({0.0f, 25.0f, 0.0f}, {level[0].Size() / 2.0f, 0.0f, -(level.Size() / 2.0f)});
 }
 
-bool lScene::Raycast(float maxDistance, Vector3 &hitPos, Drawable*& hitDrawable)
-{
-    hitDrawable = nullptr;
-
-    IntVector2 pos = gCursor->GetCursor()->GetPosition();
-
-    if (gUI->GetElementAt(pos, true))
-    {
-        return false;
-    }
-
-    Camera* camera = gCamera->GetNode()->GetComponent<Camera>();
-
-    Ray ray = camera->GetScreenRay((float)pos.x_ / gGraphics->GetWidth(), (float)pos.y_ / gGraphics->GetHeight());
-    PODVector<RayQueryResult> results;
-    RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, maxDistance, Urho3D::DRAWABLE_GEOMETRY);
-    gScene->GetComponent<Octree>()->RaycastSingle(query);
-    if (results.Size())
-    {
-        RayQueryResult& result = results[0];
-        hitPos = result.position_;
-        hitDrawable = result.drawable_;
-        return true;
-    }
-    return false;
-}
-
 void lScene::Update()
 {
-    
     Vector3 hitPos;
-    Drawable *hitDrawable;
-    
-    if (Raycast(1000.0f, hitPos, hitDrawable))
+    Drawable *drawable = gCursor->GetRaycastNode(1000.0f, &hitPos);
+
+    static int counter = 0;
+    counter++;
+
+    if(counter & 1)
     {
-        Node* node = hitDrawable->GetNode();
-        node->GetName() == "Terrain" ? gCursor->SetNormal() : gCursor->SetSelected();
+        return;
     }
-    LOGINFOF
+
+    if (drawable)
+    {
+        pathIndicator.SetInCurrentCursorPosition(drawable, &hitPos);
+
+        String name = drawable->GetNode()->GetName();
+        if(name == NODE_TERRAIN)
+        {
+            gCursor->SetNormal();
+        }
+        else
+        {
+            gCursor->SetSelected();
+        }
+    }
+}
+
+void lScene::HandleMouseDown(StringHash, VariantMap& eventData)
+{
+    int buttons = (int)eventData[Urho3D::MouseButtonDown::P_BUTTONS].GetInt();
+
+    if(buttons != Urho3D::MOUSEB_LEFT)
+    {
+        return;
+    }
+
+    pathIndicator.SetInCurrentCursorPosition();
 }

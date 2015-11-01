@@ -23,7 +23,7 @@ lTerrainSegment::lTerrainSegment(Vector<Vector<float>> &eMap, const Vector3 &shi
     ib = new IndexBuffer(gContext);
     geometry = new Geometry(gContext);
     model = new Model(gContext);
-    node = gScene->CreateChild("Terrain");
+    node = gScene->CreateChild(NODE_TERRAIN);
     object = node->CreateComponent<StaticModel>();
 
     Rebuild(eMap);

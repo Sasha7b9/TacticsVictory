@@ -25,6 +25,7 @@ typedef unsigned char uchar;
 
 #include <Urho3D/Graphics/Camera.h>
 #include <Urho3D/Graphics/DebugRenderer.h>
+#include <Urho3D/Graphics/DecalSet.h>
 #include <Urho3D/Graphics/Drawable.h>
 #include <Urho3D/Graphics/Geometry.h>
 #include <Urho3D/Graphics/Graphics.h>
@@ -104,6 +105,7 @@ using Urho3D::Cursor;
 
 using Urho3D::DebugHud;
 using Urho3D::DebugRenderer;
+using Urho3D::DecalSet;
 using Urho3D::Drawable;
 using Urho3D::DropDownList;
 
@@ -119,6 +121,7 @@ using Urho3D::Graphics;
 
 using Urho3D::HashMap;
 using Urho3D::HashSet;
+using Urho3D::HiresTimer;
 
 using Urho3D::Image;
 using Urho3D::IndexBuffer;
@@ -174,6 +177,7 @@ using Urho3D::Technique;
 using Urho3D::Texture;
 using Urho3D::Texture2D;
 using Urho3D::Time;
+using Urho3D::Timer;
 using Urho3D::Text;
 
 using Urho3D::VariantMap;
@@ -237,6 +241,7 @@ class lPanelBottom;
 class lPanelMain;
 class lPanelMap;
 class lPlane;
+class lPathIndicator;
 
 class lScene;
 class lSettings;

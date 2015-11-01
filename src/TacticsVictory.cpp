@@ -4,7 +4,7 @@
 #include "GUI/GUI.h"
 #include "Core/Camera.h"
 #include "Editor/Editor.h"
-#include "Game/Objects/Scene.h"
+#include "Game/Scene.h"
 #include "Game/Logic/Rotator.h"
 #include "Game/Logic/Movinator.h"
 #include "GUI/GuiGame/GuiGame.h"

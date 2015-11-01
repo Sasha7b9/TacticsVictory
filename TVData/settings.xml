@@ -10,14 +10,14 @@
 	<language>1</language>
 	<texture>
 		<quality>2</quality>
-		<anisotropy>0</anisotropy>
+		<anisotropy>5</anisotropy>
 	</texture>
 	<material>
 		<quality>0</quality>
 	</material>
 	<shadow>
-		<draw>1</draw>
-		<map_size>6</map_size>
+		<draw>0</draw>
+		<map_size>8</map_size>
 	</shadow>
 	<lighting>
 		<specular>1</specular>
