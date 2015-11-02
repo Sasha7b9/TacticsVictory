@@ -71,6 +71,13 @@ lTilePath::lTilePath() : Object(gContext)
     decal->AddDecal(object, {0.5f, 0.05f, -0.5f}, Quaternion(90.0f, 90.0f, 0.0f), 0.8f, 1.0f, 1.0f, Vector2::ZERO, Vector2::ONE);
 }
 
+lTilePath::lTilePath(const lTilePath &tile) : Object(gContext)
+{
+    node = gScene->CreateChild("lTitlePath");
+    SharedPtr<StaticModel> object(tile.node->GetComponent<StaticModel>());
+    node->AddComponent(object, 0, Urho3D::LOCAL);
+}
+
 lTilePath::~lTilePath()
 {
 }
@@ -89,7 +96,9 @@ void lTilePath::Add(Vector3 &pos)
 {
     if(numTilesAll == numTilesEnabled)
     {
-        SharedPtr<lTilePath> tile(new lTilePath());
+        SharedPtr<lTilePath> tile;
+        //tile = numTilesAll > 0 ? new lTilePath(*tiles[0]) : new lTilePath();
+        tile = new lTilePath();
         tile->SetPosition(pos);
         tiles.Push(tile);
         numTilesEnabled++;

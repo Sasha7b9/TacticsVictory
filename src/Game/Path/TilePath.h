@@ -6,6 +6,7 @@ class lTilePath : public Object
     OBJECT(lTilePath);
 public:
     lTilePath();
+    lTilePath(const lTilePath &tile);
     ~lTilePath();
     void SetPosition(const Vector3 &pos);
     void SetVisible(bool visible);
