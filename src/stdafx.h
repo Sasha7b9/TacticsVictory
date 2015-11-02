@@ -252,6 +252,7 @@ class lTab;
 class lTank;
 class lTerrain;
 class lTerrainSegment;
+class lTilePath;
 class lTriangle;
 
 class lWindowConfirmExit;

@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "Game/Path/PathWave.h"
+
+
 class lPathIndicator
 {
 public:
@@ -11,4 +14,5 @@ public:
 
 private:
     SharedPtr<DecalSet> decal;
+    PathWave pathFinder;
 };

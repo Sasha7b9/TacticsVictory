@@ -5,6 +5,7 @@
 #include "Core/Camera.h"
 #include "Editor/Editor.h"
 #include "Game/Scene.h"
+#include "Game/Path/TilePath.h"
 #include "Game/Logic/Rotator.h"
 #include "Game/Logic/Movinator.h"
 #include "GUI/GuiGame/GuiGame.h"
@@ -45,6 +46,7 @@ void TacticsVictory::Setup()
 
 void TacticsVictory::Stop()
 {
+    lTilePath::RemoveAll();
     SAFE_DELETE(gFileSelector);
     SAFE_DELETE(gTerrain);
     SAFE_DELETE(gLevel);

@@ -63,7 +63,7 @@ void WaveAlgorithm::CalculateWaves(Coord coord, int numWave)
             else
             {
                 cells[row][col].numWave = numWave;
-                cells[row][col].parent = Coord(row, col + 1);
+                cells[row][col].parent = Coord((int)row, (int)(col + 1));
                 CalculateWaves(Coord((int)row, (int)col), numWave + 1);
             }
         }

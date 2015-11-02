@@ -18,11 +18,17 @@ private:
     struct StructPath
     {
         PODVector<Coord> path;
-        bool isCalculated = false;      // If true, path for end point is calculated;
+        PODVector<Coord> pathLeft;
+        PODVector<Coord> pathRight;
+        PODVector<Coord> pathTop;
+        PODVector<Coord> pathBottom;
+        bool isCalculated = false;
     };
 
     Vector<Vector<StructPath>> paths;   // Here stored calculated paths to end;
 
     void Prepare();
     void CalculatePath(Coord start, Coord end);
+    void WritePath(PODVector<Coord> path);
+    PODVector<Coord> ReversePath(PODVector<Coord> path);
 };

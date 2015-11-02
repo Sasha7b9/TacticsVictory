@@ -1,10 +1,16 @@
 #pragma once
 
 
+#pragma warning(push)
+#pragma warning(disable:4520)
 struct Coord
 {
-    Coord(int row_ = 0, int col_ = 0) : row(row_), col(col_)
-    {};
+    explicit Coord(int row_ = 0, int col_ = 0) : row(row_), col(col_)
+    {
+    };
+    explicit Coord(uint row_ = 0, uint col_ = 0) : Coord((int)row_, (int)col_)
+    {
+    }
     int row = 0;
     int col = 0;
     bool operator ==(const Coord& rhs) const
@@ -18,6 +24,7 @@ struct Coord
         return *this;
     }
 };
+#pragma warning(pop)
 
 
 class PathSegment

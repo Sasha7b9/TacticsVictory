@@ -74,7 +74,7 @@ float lTerrain::GetHeight(uint row, uint col)
 
 float lTerrain::GetHeight(int row, int col)
 {
-    return map[row][col];
+    return map[(uint)row][(uint)col];
 }
 
 lPlane lTerrain::GetPlane(uint row, uint col)
