@@ -4,21 +4,32 @@
 #include "TilePath.h"
 
 
-Vector<SharedPtr<lTilePath>> lTilePath::tiles;
-uint lTilePath::numTilesAll = 0;
-uint lTilePath::numTilesEnabled = 0;
+static uint numTilesAll = 0;
+static uint numTilesEnabled = 0;
+static Vector<SharedPtr<lTilePath>> tiles;
 
 
-lTilePath::lTilePath() : Object(gContext)
+lTilePath::lTilePath(bool create) : Object(gContext)
 {
+    if(!create)
+    {
+        return;
+    }
+
+    static Mutex mutex;
+    mutex.Acquire();
+
+    Timer timer;
+
     node = gScene->CreateChild("lTilePath");
 
-    if (tiles.Size() == 0)
+    if(tiles.Size() == 0)
     {
         SharedPtr<VertexBuffer> vb(new VertexBuffer(gContext));
         SharedPtr<IndexBuffer> ib(new IndexBuffer(gContext));
         SharedPtr<Geometry> geometry(new Geometry(gContext));
         SharedPtr<Model> model(new Model(gContext));
+
         SharedPtr<StaticModel> object(node->CreateComponent<StaticModel>());
 
         const float vertexes[4 * (3 + 2 + 3)] =
@@ -78,6 +89,10 @@ lTilePath::lTilePath() : Object(gContext)
         SharedPtr<StaticModel> object((StaticModel*)node->CloneComponent(tiles[0]->node->GetComponent<StaticModel>()));
         SharedPtr<DecalSet> decal((DecalSet*)node->CloneComponent(tiles[0]->node->GetComponent<DecalSet>()));
     }
+
+    LOGINFOF("time create %d ms", timer.GetMSec(false));
+
+    mutex.Release();
 }
 
 lTilePath::~lTilePath()
@@ -86,29 +101,51 @@ lTilePath::~lTilePath()
 
 void lTilePath::SetPosition(const Vector3 &pos)
 {
-    node->SetPosition(pos + Vector3(0.0f, 0.05f, 0.0f));
+    if(node)
+    {
+        node->SetPosition(pos + Vector3(0.0f, 0.05f, 0.0f));
+    }
 }
 
 void lTilePath::SetVisible(bool visible)
 {
-    visible ? gScene->NodeAdded(node) : gScene->NodeRemoved(node);
+    if(node)
+    {
+        visible ? gScene->NodeAdded(node) : gScene->NodeRemoved(node);
+    }
 }
 
 void lTilePath::Add(Vector3 &pos)
 {
     if(numTilesAll == numTilesEnabled)
     {
-        SharedPtr<lTilePath> tile;
-        tile = new lTilePath();
-        tile->SetPosition(pos);
-        tiles.Push(tile);
-        numTilesEnabled++;
-        numTilesAll++;
+        if(numTilesAll == 0)
+        {
+            numTilesAll = numTilesEnabled = 1;
+            SharedPtr<lTilePath> tile(new lTilePath());
+            tile->SetPosition(pos);
+            tiles.Push(tile);
+            for(int i = 0; i < 200; i++)
+            {
+                SharedPtr<lTilePath> tile(new lTilePath(false));
+                tiles.Push(tile);
+            }
+        }
+        else
+        {
+            lThreadLoadPath *thread = new lThreadLoadPath(pos, numTilesAll);
+
+            numTilesEnabled++;
+            numTilesAll++;
+
+            thread->Run();
+        }
     }
     else if(numTilesEnabled < numTilesAll)
     {
         tiles[numTilesEnabled]->SetVisible(true);
         tiles[numTilesEnabled]->SetPosition(pos);
+
         numTilesEnabled++;
     }
 }
@@ -126,4 +163,22 @@ void lTilePath::RemoveAll()
 {
     DisableAll();
     tiles.Resize(0);
+}
+
+lThreadLoadPath::lThreadLoadPath(Vector3 pos_, uint posInVector_) : 
+    Thread(),
+    Object(gContext),
+    pos(pos_),
+    posInVector(posInVector_)
+{
+
+}
+
+void lThreadLoadPath::ThreadFunction()
+{
+    SharedPtr<lTilePath> tile(new lTilePath());
+
+    tile->SetPosition(pos);
+    tile->SetVisible(false);
+    tiles[posInVector] = tile;
 }
