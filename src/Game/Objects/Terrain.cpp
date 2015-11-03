@@ -246,3 +246,14 @@ bool lTerrain::Empty()
 {
     return segments.Empty();
 }
+
+void lTerrain::SetVisible(bool visible)
+{
+    for (auto row : segments)
+    {
+        for (auto seg : row)
+        {
+            seg->SetVisible(visible);
+        }
+    }
+}

@@ -180,18 +180,6 @@
     <ClCompile Include="src\Game\Objects\TerrainSegment.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Object.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\DynamicObject.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\StaticObject.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\MovingObject.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Objects\Tank.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
@@ -357,18 +345,6 @@
       <Filter>GUI\Menu</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\TerrainSegment.h">
-      <Filter>Game\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Object.h">
-      <Filter>Game\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\StaticObject.h">
-      <Filter>Game\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\DynamicObject.h">
-      <Filter>Game\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\MovingObject.h">
       <Filter>Game\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Tank.h">

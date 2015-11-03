@@ -1,11 +1,10 @@
 #pragma once
 
 
-#include "MovingObject.h"
-
-
-class lTank : public lMovingObject
+class lTank : public LogicComponent
 {
+    OBJECT(lTank);
+
 public:
     enum Type
     {
@@ -13,15 +12,22 @@ public:
         T_34_76
     };
 
-    lTank(Type type);
+    lTank(Context *context = gContext);
 
-    void Load();
-    void Normalize();
+    static void RegisterObject(Context* context = gContext);
+
+    void Init(Type type);
+    void SetPosition(const Vector3& pos);
+    Vector3 GetPosition();
 
 private:
     lTank& operator=(const lTank&) {};
 
-private:
+    void LoadFromFile();
+    void Normalize();
+
+
+
     struct TankStruct
     {
         TankStruct(Type type_ = Small, char* fileName_ = 0) : type(type_), fileName(fileName_) {};
@@ -29,7 +35,6 @@ private:
         char *fileName;
     };
 
-public:
     struct Key
     {
         Key(Type type_ = Small) : type(type_) {};
@@ -46,4 +51,7 @@ public:
     Type type;
 
     static HashMap<Key, TankStruct> parameters;
+
+    SharedPtr<StaticModel> modelObject;
+    Vector3 deltaPos;
 };

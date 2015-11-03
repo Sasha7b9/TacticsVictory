@@ -24,5 +24,7 @@ private:
     Vector<SharedPtr<lTank>> tanks;
     lPathIndicator pathIndicator;
 
+    void RegisterObjects();
+
     void HandleMouseDown(StringHash, VariantMap&);
 };

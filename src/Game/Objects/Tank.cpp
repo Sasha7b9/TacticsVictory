@@ -8,18 +8,28 @@
 HashMap<lTank::Key, lTank::TankStruct> lTank::parameters;
 
 
-lTank::lTank(Type type_) : lMovingObject(), type(type_)
+lTank::lTank(Context *context) : LogicComponent(context)
 {
     if (parameters.Empty())
     {
         parameters[Small] = TankStruct(Small, "Models/Tank.json");
         parameters[T_34_76] = TankStruct(T_34_76, "Models/T-34-76-2.json");
     }
-
-    Load();
 }
 
-void lTank::Load()
+void lTank::RegisterObject(Context* context)
+{
+    context->RegisterFactory<lTank>();
+}
+
+void lTank::Init(Type type_)
+{
+    type = type_;
+    LoadFromFile();
+    Normalize();
+}
+
+void lTank::LoadFromFile()
 {
     char *fileName = parameters[type].fileName;
     JSONFile *file = gCache->GetResource<JSONFile>(fileName);
@@ -29,20 +39,17 @@ void lTank::Load()
     String fileModel = modelValue.Get("fileModel").GetString();
     String fileMaterials = modelValue.Get("fileMaterials").GetString();
 
-    modelNode = gScene->CreateChild("Tank");
-    modelObject = modelNode->CreateComponent<StaticModel>();
+    modelObject = node_->CreateComponent<StaticModel>();
     modelObject->SetModel(gCache->GetResource<Model>(fileModel));
     modelObject->ApplyMaterialList(fileMaterials);
     modelObject->SetCastShadows(true);
-
-    Normalize();
 }
 
 void lTank::Normalize()
 {
-    Vector3 pos = modelNode->GetPosition();
-    modelNode->SetPosition({0.0f, 0.0f, 0.0f});
-    modelNode->SetScale(1.0f);
+    Vector3 pos = node_->GetPosition();
+    node_->SetPosition({0.0f, 0.0f, 0.0f});
+    node_->SetScale(1.0f);
 
     BoundingBox box = modelObject->GetModel()->GetBoundingBox();
 
@@ -50,14 +57,24 @@ void lTank::Normalize()
 
     float divider = Math::Max(delta.x_, delta.y_, delta.z_);
 
-    float k = 0.75f;
+    float k = 1.0f;
     Vector3 scale = {k / divider, k / divider, k / divider};
 
     deltaPos.y_ = -box.min_.y_ / divider * k;
     deltaPos.z_ = -(box.max_.z_ + box.min_.z_) / 2.0f / divider * k - 0.5f;
     deltaPos.x_ = (box.max_.x_ + box.min_.x_) / 2.0f / divider * k + 0.5f;
 
-    modelNode->SetScale(scale);
+    node_->SetScale(scale);
 
     SetPosition(pos);
+}
+
+void lTank::SetPosition(const Vector3& pos)
+{
+    node_->SetPosition(pos + deltaPos);
+}
+
+Vector3 lTank::GetPosition()
+{
+    return node_->GetPosition() - deltaPos;
 }

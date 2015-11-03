@@ -13,7 +13,6 @@
 #include "TacticsVictory.h"
 #include "Game/Level.h"
 #include "GlobalFunctions.h"
-#include "Game/Objects/MovingObject.h"
 
 
 #pragma warning(push)
@@ -137,8 +136,6 @@ void TacticsVictory::Start()
     gFileSelector->GetWindow()->SetVisible(false);
 
     SubscribeToEvents();
-
-    lMovingObject object;
 }
 
 void TacticsVictory::InitLocalizationSystem()

@@ -15,6 +15,7 @@ public:
     lPlane GetPlane(uint row, uint col);
     void Rebuild(Vector<Vector<float>> &map_);
     void Clear();
+    void SetVisible(bool visible);
 
 private:
     enum Direction

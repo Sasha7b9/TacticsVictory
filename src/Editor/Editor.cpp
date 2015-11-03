@@ -37,27 +37,30 @@ void lEditor::Run()
     SharedPtr<Light> light(lightNode->CreateComponent<Light>());
     lightNode->SetScale(0.01f);
     light->SetLightType(Urho3D::LIGHT_POINT);
-    light->SetRange(100.0f);
+    light->SetRange(1000.0f);
     light->SetCastShadows(true);
     light->SetShadowBias(Urho3D::BiasParameters(0.00025f, 0.5f));
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
 
-    gCamera->SetPosition({10.0f, 20.0f, -5.0f}, {10.0f, 0.0f, 0.0f});
-    lightNode->SetPosition({5.0f, 10.0f, -5.0f});
+    gCamera->SetPosition({(float)gTerrain->NumCols() / 2, 5.0f, -(float)gTerrain->NumRows() / 2 - 10.0f}, {(float)gTerrain->NumCols() / 2, 0.0f, -(float)gTerrain->NumRows() / 2});
+    lightNode->SetPosition({(float)gTerrain->NumCols() / 2, 50.0f, -(float)gTerrain->NumRows() / 2});
 
     SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(lEditor, HandlePostRenderUpdate));
     SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lEditor, HandleMouseDown));
     SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(lEditor, HandleKeyDown));
     
+    /*
     for(uint row = 0; row < 10; row++)
     {
         for(uint col = 0; col < 10; col++)
         {
-            SharedPtr<lTank> tank(new lTank(lTank::Small));
+            SharedPtr<lTank> tank(new lTank());
+            tank->Init(lTank::Small);
             tank->SetPosition(Vector3(float(col), gTerrain->GetHeight(row, col), -float(row)));
         }
     }
+    */
     LOGINFO("End create editor");
 
     /*
@@ -102,7 +105,9 @@ void lEditor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
         if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT | Urho3D::MOUSEB_MIDDLE))
         {
+            Timer timer;
             currentPlane = gTerrain->GetIntersectionPlane(ray);
+            LOGINFOF("time find plane %d ms", timer.GetMSec(false));
 
             if (!currentPlane.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
             {

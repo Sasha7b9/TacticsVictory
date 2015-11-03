@@ -14,9 +14,16 @@
 lScene::lScene(Context *context) :
     Object(context)
 {
+    RegisterObjects();
+
     Create();
 
     SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lScene, HandleMouseDown));
+}
+
+void lScene::RegisterObjects()
+{
+    lTank::RegisterObject();
 }
 
 void lScene::RegisterObject(Context *context)
@@ -59,9 +66,10 @@ void lScene::Create()
             }
         }
 
-        SharedPtr<lTank> tank(new lTank(lTank::Small));
+        SharedPtr<Node> nodeTank(gScene->CreateChild(NODE_TANK));
+        SharedPtr<lTank> tank(nodeTank->CreateComponent<lTank>());
+        tank->Init(lTank::Small);
         tank->SetPosition({float(x), (float)gTerrain->GetHeight((uint)y, (uint)x), (float)-y});
-        tanks.Push(tank);
     }
 
     SharedPtr<Node> lightNode;
@@ -85,16 +93,15 @@ void lScene::Create()
 
 void lScene::Update()
 {
-    Vector3 hitPos;
-    Drawable *drawable = gCursor->GetRaycastNode(1000.0f, &hitPos);
-
-    static int counter = 0;
-    counter++;
-
-    if(counter & 1)
+    static Timer timer;
+    if(timer.GetMSec(false) < 100)
     {
         return;
     }
+    timer.Reset();
+
+    Vector3 hitPos;
+    Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
 
     if (drawable)
     {
@@ -105,10 +112,14 @@ void lScene::Update()
         {
             gCursor->SetNormal();
         }
-        else
+        else if (name == NODE_TANK)
         {
             gCursor->SetSelected();
         }
+    }
+    else
+    {
+        gCursor->SetNormal();
     }
 }
 

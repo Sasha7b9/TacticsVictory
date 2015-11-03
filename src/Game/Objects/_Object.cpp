@@ -4,9 +4,9 @@
 #include "Object.h"
 
 
-lObject::lObject() : Object(gContext)
+lObject::lObject(Context *context) : Object(context)
 {
-
+    modelNode = gScene->CreateChild(NODE_GAME_OBJECT);
 }
 
 void lObject::SetPosition(const Vector3& pos)

@@ -24,6 +24,7 @@ public:
     uint NumRows();
     uint NumCols();
     Vector<Vector<float>> GetMap() { return map; };
+    void SetVisible(bool visible);
 
     static const uint SIZE_SEGMENT = 50;
 

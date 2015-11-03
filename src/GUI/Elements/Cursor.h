@@ -33,7 +33,7 @@ public:
     void Hide();
     void Show();
     TypeCursor GetType()    { return type; };
-    Drawable* GetRaycastNode(float maxDistance, Vector3 *hitPos = 0);
+    Drawable* GetRaycastNode(Vector3 *hitPos = 0);
 
 private:
     SharedPtr<Cursor> cursor;

@@ -12,3 +12,5 @@ typedef short unsigned uint16;
 #define SAFE_DELETE_ARRAY(x) if(x) delete[]x; x = nullptr;
 
 #define NODE_TERRAIN "Terrain"
+#define NODE_TANK "Tank"
+

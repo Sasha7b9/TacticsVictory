@@ -18,6 +18,9 @@ typedef unsigned short ushort;
 typedef unsigned char uchar;
 
 
+#include <Urho3D/Core/Mutex.h>
+#include <Urho3D/Core/Thread.h>
+
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Engine/DebugHud.h>
 #include <Urho3D/Engine/Engine.h>
@@ -98,6 +101,7 @@ using Urho3D::CascadeParameters;
 using Urho3D::CheckBox;
 using Urho3D::CollisionShape;
 using Urho3D::Color;
+using Urho3D::Component;
 using Urho3D::Console;
 using Urho3D::Context;
 using Urho3D::Cos;
@@ -142,6 +146,7 @@ using Urho3D::LogicComponent;
 
 using Urho3D::Material;
 using Urho3D::Model;
+using Urho3D::Mutex;
 
 using Urho3D::Node;
 
@@ -179,6 +184,7 @@ using Urho3D::Texture2D;
 using Urho3D::Time;
 using Urho3D::Timer;
 using Urho3D::Text;
+using Urho3D::Thread;
 
 using Urho3D::VariantMap;
 using Urho3D::Vector;

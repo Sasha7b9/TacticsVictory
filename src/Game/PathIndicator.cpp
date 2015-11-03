@@ -24,7 +24,7 @@ void lPathIndicator::SetInCurrentCursorPosition(Drawable *hitDrawable, Vector3 *
     if(!hitDrawable)
     {
         hitPos = &pos;
-        hitDrawable = gCursor->GetRaycastNode(1000.0f, hitPos);
+        hitDrawable = gCursor->GetRaycastNode(hitPos);
     }
 
     if(hitDrawable)

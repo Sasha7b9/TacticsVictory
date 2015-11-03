@@ -97,7 +97,13 @@ void lTerrainSegment::Rebuild(Vector<Vector<float>> &map_)
     model->SetVertexBuffers(vbVector, morpRange, morpRange);
     model->SetIndexBuffers(ibVector);
 
-    model->SetBoundingBox(BoundingBox(Vector3(-1000.0f, -1000.0f, -1000.0f), Vector3(1000.0f, 1000.0f, 1000.0f)));
+    //model->SetBoundingBox(BoundingBox(Vector3(-1000.0f, -1000.0f, -1000.0f), Vector3(1000.0f, 1000.0f, 1000.0f)));
+
+    CalculateBoundingBox();
+    //boundingBox.min_.x_ = -boundingBox.max_.x_;
+    //boundingBox.min_.y_ = -boundingBox.max_.y_;
+    //boundingBox.max_.z_ = -boundingBox.min_.z_;
+    model->SetBoundingBox(boundingBox);
 
     if(!object->GetModel())
     {
@@ -111,8 +117,6 @@ void lTerrainSegment::Rebuild(Vector<Vector<float>> &map_)
     //CollisionShape *shape = node->CreateComponent<CollisionShape>();
     //shape->SetTriangleMesh(model);
     //shape->SetBox({-100.0f, -1.0f, -100.0f}, {100.0f, 1.0f, 100.0f});
-
-    CalculateBoundingBox();
 }
 
 lTerrainSegment::~lTerrainSegment()
@@ -767,4 +771,9 @@ void lTerrainSegment::CalculateBoundingBox()
         float z = bufVert[index * 8 + 2];
         boundingBox.Merge({x, y, z});
     }
+}
+
+void lTerrainSegment::SetVisible(bool visible)
+{
+    visible ? gScene->NodeAdded(node) : gScene->NodeRemoved(node);
 }

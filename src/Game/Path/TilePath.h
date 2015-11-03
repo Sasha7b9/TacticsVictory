@@ -6,7 +6,6 @@ class lTilePath : public Object
     OBJECT(lTilePath);
 public:
     lTilePath();
-    lTilePath(const lTilePath &tile);
     ~lTilePath();
     void SetPosition(const Vector3 &pos);
     void SetVisible(bool visible);
@@ -19,8 +18,12 @@ private:
     lTilePath& operator=(const lTilePath&)
     {};
     SharedPtr<Node> node;
+};
 
-    static uint numTilesAll;
-    static uint numTilesEnabled;
-    static Vector<SharedPtr<lTilePath>> tiles;
+
+class lThreadLoadPath : public Thread
+{
+public:
+    virtual void ThreadFunction();
+private:
 };

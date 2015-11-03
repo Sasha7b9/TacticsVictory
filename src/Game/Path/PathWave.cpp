@@ -73,6 +73,30 @@ void PathWave::FillNearCells(uint row, uint col, int numWave)
 
         if (newRow < gTerrain->NumRows() && newCol < gTerrain->NumCols() && cells[newRow][newCol].numWave == -1 && gTerrain->GetHeight(newRow, newCol) == heightStart)
         {
+            if (i == 6 && gTerrain->GetHeight(row, col + 1) != heightStart)
+            {
+                continue;
+            }
+            if (i == 4 && gTerrain->GetHeight(row, col - 1) != heightStart)
+            {
+                continue;
+            }
+            if (i == 5 && gTerrain->GetHeight(row - 1, col) != heightStart)
+            {
+                continue;
+            }
+            if (i == 7 && gTerrain->GetHeight(newRow, col) != heightStart)
+            {
+                continue;
+            }
+            if (i == 4 && gTerrain->GetHeight(row - 1, col) != heightStart)
+            {
+                continue;
+            }
+            if (i == 5 && gTerrain->GetHeight(row, col + 1) != heightStart)
+            {
+                continue;
+            }
             cells[newRow][newCol].numWave = numWave;
         }
     }

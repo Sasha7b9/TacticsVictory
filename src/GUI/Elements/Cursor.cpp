@@ -6,6 +6,7 @@
 #include "GUI/GUI.h"
 #include "GUI/Elements/CursorShapes.h"
 #include "GUI/Elements/Image.h"
+#include "Game/Objects/Terrain.h"
 
 
 lCursor::lCursor() : Object(gContext)
@@ -140,7 +141,7 @@ void lCursor::SetSelected()
     selected = true;
 }
 
-Drawable* lCursor::GetRaycastNode(float maxDistance, Vector3 *hitPos_)
+Drawable* lCursor::GetRaycastNode(Vector3 *hitPos_)
 {
     if(gUI->GetElementAt(gUI->GetCursorPosition(), true))
     {
@@ -149,12 +150,8 @@ Drawable* lCursor::GetRaycastNode(float maxDistance, Vector3 *hitPos_)
 
     Ray ray = gCamera->GetCursorRay();
     PODVector<RayQueryResult> results;
-    RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, maxDistance, Urho3D::DRAWABLE_GEOMETRY);
-
-    //HiresTimer timer;
-    //timer.Reset();
+    RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, Urho3D::M_INFINITY, Urho3D::DRAWABLE_GEOMETRY);
     gScene->GetComponent<Octree>()->RaycastSingle(query);
-    //LOGINFOF("Calculate raycast node %f us", (float)timer.GetUSec(false));
 
     if(results.Size())
     {

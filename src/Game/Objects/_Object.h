@@ -6,7 +6,7 @@ class lObject : public Object
     OBJECT(lObject);
 
 public:
-    lObject();
+    lObject(Context *context = gContext);
 
     void SetPosition(const Vector3& pos);
     Vector3 GetPosition();
@@ -18,5 +18,4 @@ protected:
 
 private:
     lObject& operator=(const lObject&) {};
-
 };
