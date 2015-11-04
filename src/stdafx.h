@@ -22,6 +22,7 @@
 #include <Urho3D/Engine/Console.h>
 
 #include <Urho3D/Graphics/Camera.h>
+#include <Urho3D/Graphics/CustomGeometry.h>
 #include <Urho3D/Graphics/DebugRenderer.h>
 #include <Urho3D/Graphics/DecalSet.h>
 #include <Urho3D/Graphics/Drawable.h>
@@ -102,6 +103,7 @@
 #define UContext            Urho3D::Context
 #define UCos                Urho3D::Cos
 #define UCursor             Urho3D::Cursor
+#define UCustomGeometry     Urho3D::CustomGeometry
 
 #define UDebugHud           Urho3D::DebugHud
 #define UDebugRenderer      Urho3D::DebugRenderer
@@ -116,29 +118,29 @@
 #define UFileSystem         Urho3D::FileSystem
 #define UFont               Urho3D::Font
 
-using Urho3D::Geometry;
-using Urho3D::Graphics;
+#define UGeometry           Urho3D::Geometry
+#define UGraphics           Urho3D::Graphics
 
-using Urho3D::HashMap;
-using Urho3D::HashSet;
-using Urho3D::HiresTimer;
+#define UHashMap            Urho3D::HashMap
+#define UHashSet            Urho3D::HashSet
+#define UHiresTimer         Urho3D::HiresTimer
 
-#define UImage Urho3D::Image
-using Urho3D::IndexBuffer;
-using Urho3D::Input;
-using Urho3D::IntRect;
-using Urho3D::IntVector2;
+#define UImage              Urho3D::Image
+#define UIndexBuffer        Urho3D::IndexBuffer
+#define UInput              Urho3D::Input
+#define UIntRect            Urho3D::IntRect
+#define UIntVector2         Urho3D::IntVector2
 
-using Urho3D::JSONFile;
-using Urho3D::JSONValue;
-using Urho3D::JSONValueType;
-using Urho3D::JSONNumberType;
+using   Urho3D::JSONFile;
+using   Urho3D::JSONValue;
+using   Urho3D::JSONValueType;
+using   Urho3D::JSONNumberType;
 
-using Urho3D::Light;
-using Urho3D::LineEdit;
-using Urho3D::Localization;
-#define ULog Urho3D::Log
-using Urho3D::LogicComponent;
+#define ULight              Urho3D::Light
+#define ULineEdit           Urho3D::LineEdit
+#define ULocalization       Urho3D::Localization
+#define ULog                Urho3D::Log
+#define ULogicComponent     Urho3D::LogicComponent
 
 using Urho3D::Material;
 using Urho3D::Model;

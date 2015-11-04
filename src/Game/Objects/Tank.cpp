@@ -5,7 +5,7 @@
 #include "Core/Math.h"
 
 
-HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
+UHashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
 
 
 Tank::Tank(UContext *context) : LogicComponent(context)

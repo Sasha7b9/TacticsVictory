@@ -36,7 +36,7 @@ GuiGame::GuiGame(UContext* context) :
     SubscribeToEvent(buttonMainPanel, Urho3D::E_RELEASED, HANDLER(GuiGame, HandleButtonRelease));
 
     x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
-    buttonMenu = panelBottom->AddButton("Manu", x, y, width, height);
+    buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
     SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, HANDLER(GuiGame, HandleButtonRelease));
 }
 
@@ -71,7 +71,7 @@ bool GuiGame::CheckOnDeadZoneForCursorBottomScreen(int x)
     return IntersectionX(buttonMap, x) || IntersectionX(buttonMainPanel, x) || IntersectionX(buttonMenu, x);
 }
 
-bool GuiGame::IsInside(IntVector2 &position)
+bool GuiGame::IsInside(UIntVector2 &position)
 {
     return IsVisible() && (panelBottom->IsInside(position, true) || panelMain->IsInside(position, true) || panelMap->IsInside(position, true));
 }

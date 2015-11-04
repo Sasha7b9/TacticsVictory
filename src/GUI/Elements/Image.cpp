@@ -246,7 +246,7 @@ void Image::DrawCircle(float x, float y, float radius, const UColor &color, floa
     }
 }
 
-IntVector2 Image::GetHotSpot() const
+UIntVector2 Image::GetHotSpot() const
 {
     return hotSpot;
 }

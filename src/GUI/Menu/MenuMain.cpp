@@ -13,10 +13,10 @@
 MenuMain::MenuMain(UContext *) :
     lWindow()
 {
-    SetLayout(Urho3D::LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
+    SetLayout(Urho3D::LM_VERTICAL, 6, UIntRect(6, 6, 6, 6));
     SetName("Main menu");
 
-    SharedPtr<Label> text(Label::Create("Tactics Victory", 20, -1, -1, Urho3D::VA_TOP));
+    SharedPtr<Label> text(Label::Create("Tactics Victory", 20, -1, -1));
     AddChild(text);
     
     buttonNewGame  = new ButtonMain(this, "New game");

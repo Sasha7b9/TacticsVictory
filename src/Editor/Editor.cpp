@@ -34,7 +34,7 @@ void Editor::Run()
 
     lightNode = gScene->CreateChild("LightNode");
 
-    SharedPtr<Light> light(lightNode->CreateComponent<Light>());
+    SharedPtr<ULight> light(lightNode->CreateComponent<ULight>());
     lightNode->SetScale(0.01f);
     light->SetLightType(Urho3D::LIGHT_POINT);
     light->SetRange(1000.0f);
@@ -87,7 +87,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
         return;
     }
 
-    IntVector2 pos = gCursor->GetCursor()->GetPosition();
+    UIntVector2 pos = gCursor->GetCursor()->GetPosition();
 
     float relX = (float)pos.x_ / gGraphics->GetWidth();
     float relY = (float)pos.y_ / gGraphics->GetHeight();

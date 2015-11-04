@@ -26,7 +26,7 @@ private:
     void HandleOnSlider(StringHash evenType, VariantMap& eventData);
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
 
-    HashMap<Slider*, uint> mapSlidersActions;
+    UHashMap<Slider*, uint> mapSlidersActions;
 
     SharedPtr<SliderWithTextAndButtons> sliderBrightness;
     SharedPtr<SliderWithTextAndButtons> sliderMaxOccluderTriangles;
@@ -42,5 +42,5 @@ private:
     SharedPtr<DropDownListWithTextAndButton> ddlDynamicInstancing;
     PODVector<int> shadowMapSizes;
     SharedPtr<ButtonMain> buttonClose;
-    IntVector2 dragBeginPosition;
+    UIntVector2 dragBeginPosition;
 };

@@ -20,8 +20,8 @@ TerrainSegment::TerrainSegment(Vector<Vector<float>> &eMap, const Vector3 &shift
     PrepareHashMaps();
 
     vb = new VertexBuffer(gContext);
-    ib = new IndexBuffer(gContext);
-    geometry = new Geometry(gContext);
+    ib = new UIndexBuffer(gContext);
+    geometry = new UGeometry(gContext);
     model = new Model(gContext);
     node = gScene->CreateChild(NODE_TERRAIN);
     object = node->CreateComponent<StaticModel>();

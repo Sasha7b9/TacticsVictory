@@ -21,7 +21,7 @@ public:
     int GetHeight() const;
     void DrawPolyline(const UColor &color, int numPoints, int *xy);
     void DrawCircle(float x, float y, float radius, const UColor &color, float step = 1.0f);
-    IntVector2 GetHotSpot() const;
+    UIntVector2 GetHotSpot() const;
     void SetHotSpot(int x, int y);
 
 private:
@@ -34,5 +34,5 @@ private:
     
     UColor replacedColor;
     UColor boundingColor;
-    IntVector2 hotSpot;
+    UIntVector2 hotSpot;
 };

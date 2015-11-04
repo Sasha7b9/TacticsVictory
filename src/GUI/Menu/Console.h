@@ -15,7 +15,7 @@ public:
     void HandleFinishedText(StringHash eventType, VariantMap& eventData);
 
 private:
-    SharedPtr<LineEdit> lineEdit;
+    SharedPtr<ULineEdit> lineEdit;
     SharedPtr<UText> text;
     SharedPtr<ScrollBar> scrollBar;
 

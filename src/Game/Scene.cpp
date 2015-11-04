@@ -80,7 +80,7 @@ void Scene::Create()
     movinator->SetCenter({level[0].Size() / 2.0f, 25.0f, -(level.Size() / 2.0f)});
     movinator->SetMoveSpeed(0.5f);
 
-    Light *light = lightNode->CreateComponent<Light>();
+    ULight *light = lightNode->CreateComponent<ULight>();
     lightNode->SetScale(0.01f);
     light->SetLightType(Urho3D::LIGHT_POINT);
     light->SetRange(1000.0f);

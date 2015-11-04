@@ -10,7 +10,7 @@ public:
 
     static void RegisterObject(UContext* context);
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
-    bool IsInside(IntVector2 &position);
+    bool IsInside(UIntVector2 &position);
 
 private:
     GuiGame& operator=(const GuiGame&)

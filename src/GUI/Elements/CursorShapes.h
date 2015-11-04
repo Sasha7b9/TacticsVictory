@@ -43,7 +43,7 @@ public:
 private:
     CursorShapes& operator=(const CursorShapes&)
     {};
-    HashMap<StructShape, SharedPtr<Image> > map;
+    UHashMap<StructShape, SharedPtr<Image> > map;
 
     int dimensionTriangleSmall = 50;
     int dimensionTriangleBig = 100;

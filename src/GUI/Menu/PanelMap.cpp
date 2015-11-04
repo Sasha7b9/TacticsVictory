@@ -18,8 +18,8 @@ PanelMap::PanelMap(UContext *context) :
 
     SetMovable(false);
 
-    IntVector2 posStart = {0, gGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAP::HEIGHT + 1};
-    IntVector2 posFinish = {-SET::PANEL::MAP::WIDTH, posStart.y_};
+    UIntVector2 posStart = {0, gGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAP::HEIGHT + 1};
+    UIntVector2 posFinish = {-SET::PANEL::MAP::WIDTH, posStart.y_};
 
     translator = new LineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
 
@@ -226,7 +226,7 @@ void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
 
         if (buttons == Urho3D::MOUSEB_RIGHT)
         {
-            IntVector2 coordMap = gCursor->GetCursor()->GetPosition() - GetPosition();
+            UIntVector2 coordMap = gCursor->GetCursor()->GetPosition() - GetPosition();
 
             float xSpace = (coordMap.x_ - x0) / scale;
             float zSpace = -(coordMap.y_ - y0) / scale;

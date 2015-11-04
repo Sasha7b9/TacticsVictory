@@ -17,12 +17,12 @@ void Label::RegisterObject(UContext *context)
     COPY_BASE_ATTRIBUTES(UText);
 }
 
-SharedPtr<Label> Label::Create(char *text_, int sizeFont, int width /* = -1 */, int height /* = -1 */, Urho3D::VerticalAlignment va)
+SharedPtr<Label> Label::Create(char *text_, int sizeFont, int width /* = -1 */, int height /* = -1 */, Urho3D::HorizontalAlignment ha, Urho3D::VerticalAlignment va)
 {
     SharedPtr<Label> text(new Label(gContext));
     text->text = text_;
     text->SetFont(gFont, sizeFont);
-    text->SetAlignment(Urho3D::HA_CENTER, va);
+    text->SetAlignment(ha, va);
 
     if(width == -1 && height == -1)
     {

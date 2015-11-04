@@ -42,7 +42,7 @@ SharedPtr<LineTranslator2D> lWindow::GetTranslator()
     return translator;
 }
 
-bool lWindow::IsInside(IntVector2 position, bool isScreen)
+bool lWindow::IsInside(UIntVector2 position, bool isScreen)
 {
     return Window::IsInside(position, isScreen) && IsVisible() && parent_;
 }

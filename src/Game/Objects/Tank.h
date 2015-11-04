@@ -1,7 +1,7 @@
 #pragma once
 
 
-class Tank : public LogicComponent
+class Tank : public ULogicComponent
 {
     OBJECT(Tank);
 
@@ -50,7 +50,7 @@ private:
 
     Type type;
 
-    static HashMap<Key, TankStruct> parameters;
+    static UHashMap<Key, TankStruct> parameters;
 
     SharedPtr<StaticModel> modelObject;
     Vector3 deltaPos;

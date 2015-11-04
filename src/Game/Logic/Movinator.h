@@ -1,7 +1,7 @@
 #pragma once
 
 
-class Movinator : public LogicComponent
+class Movinator : public ULogicComponent
 {
     OBJECT(Movinator);
     

@@ -21,7 +21,7 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
     window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
     AddChild(window);
 
-    window->SetLayout(Urho3D::LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
+    window->SetLayout(Urho3D::LM_HORIZONTAL, 3, UIntRect(3, 3, 3, 3));
 
     SharedPtr<Label> text(Label::Create(text_, 15, widthText));
     text->SetStyle("Window");

@@ -15,7 +15,7 @@ public:
 
     bool IsChildOfParent();
     void Toggle();
-    bool IsInside(IntVector2 position, bool isScreen);
+    bool IsInside(UIntVector2 position, bool isScreen);
     SharedPtr<LineTranslator2D> GetTranslator();
 
     SharedPtr<ButtonMain> AddButton(char *text, int x = -1, int y = -1, int width = -1, int height = -1);
@@ -28,6 +28,6 @@ protected:
     lWindow& operator=(const lWindow&)
     {};
 
-    HashMap<UButton*, uint> mapButtonsActions;
+    UHashMap<UButton*, uint> mapButtonsActions;
     SharedPtr<LineTranslator2D> translator;
 };

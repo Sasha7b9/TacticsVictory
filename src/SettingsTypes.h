@@ -1,9 +1,9 @@
 #pragma once
 
 
-#define SET_VERTICAL_LAYOUT_0_0(elem)   elem->SetLayout(Urho3D::LM_VERTICAL, 0, IntRect(0, 0, 0, 0));
-#define SET_VERTICAL_LAYOUT_0_6(elem)   elem->SetLayout(Urho3D::LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
-#define SET_HORIZONTAL_LAYOUT_6_6(elem)   elem->SetLayout(Urho3D::LM_HORIZONTAL, 6, IntRect(6, 6, 6, 6));
+#define SET_VERTICAL_LAYOUT_0_0(elem)   elem->SetLayout(Urho3D::LM_VERTICAL, 0, UIntRect(0, 0, 0, 0));
+#define SET_VERTICAL_LAYOUT_0_6(elem)   elem->SetLayout(Urho3D::LM_VERTICAL, 0, UIntRect(6, 6, 6, 6));
+#define SET_HORIZONTAL_LAYOUT_6_6(elem)   elem->SetLayout(Urho3D::LM_HORIZONTAL, 6, UIntRect(6, 6, 6, 6));
 
 
 #define TV_SCREEN_WIDTH             "screen", "width"

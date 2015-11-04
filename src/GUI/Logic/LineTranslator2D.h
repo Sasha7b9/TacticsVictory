@@ -15,9 +15,9 @@ public:
         State_MoveToStart
     };
 
-    LineTranslator2D(const IntVector2 &start, const IntVector2 &finish, float speed, State startPosition);
+    LineTranslator2D(const UIntVector2 &start, const UIntVector2 &finish, float speed, State startPosition);
 
-    IntVector2 Update(float dT);
+    UIntVector2 Update(float dT);
     void Toggle();
     State GetState();
 

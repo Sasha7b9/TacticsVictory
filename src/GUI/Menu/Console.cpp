@@ -13,7 +13,7 @@ Console::Console(UContext *context) :
     SetSize(1500, 300);
     SetResizable(true);
 
-    lineEdit = gUIRoot->CreateChild<LineEdit>();
+    lineEdit = gUIRoot->CreateChild<ULineEdit>();
     lineEdit->SetStyle("LineEdit");
     lineEdit->SetSize(GetWidth(), 15);
     lineEdit->SetPosition(0, GetHeight() - 15);

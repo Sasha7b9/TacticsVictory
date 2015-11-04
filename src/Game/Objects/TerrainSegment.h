@@ -66,11 +66,11 @@ private:
     Vector3 shift;
 
     SharedPtr<VertexBuffer> vb;
-    SharedPtr<IndexBuffer> ib;
-    SharedPtr<Geometry> geometry;
+    SharedPtr<UIndexBuffer> ib;
+    SharedPtr<UGeometry> geometry;
     SharedPtr<Model> model;
     Vector<SharedPtr<VertexBuffer> > vbVector;
-    Vector<SharedPtr<IndexBuffer> > ibVector;
+    Vector<SharedPtr<UIndexBuffer> > ibVector;
     PODVector<unsigned> morpRange;
     SharedPtr<Node> node;
     SharedPtr<StaticModel> object;
@@ -160,12 +160,12 @@ public:
 
 private:
 
-    HashMap<MapPlaneKey, MapPlaneValue> mapTopLeft;
-    HashMap<MapPlaneKey, MapPlaneValue> mapTopRight;
-    HashMap<MapPlaneKey, MapPlaneValue> mapBtmRight;
-    HashMap<MapPlaneKey, MapPlaneValue> mapBtmLeft;
+    UHashMap<MapPlaneKey, MapPlaneValue> mapTopLeft;
+    UHashMap<MapPlaneKey, MapPlaneValue> mapTopRight;
+    UHashMap<MapPlaneKey, MapPlaneValue> mapBtmRight;
+    UHashMap<MapPlaneKey, MapPlaneValue> mapBtmLeft;
 
-    HashMap<MapCornerKey, MapCornerValue> mapCornerTopLeft;
+    UHashMap<MapCornerKey, MapCornerValue> mapCornerTopLeft;
 
     TerrainSegment& operator=(const TerrainSegment&) {};
 };

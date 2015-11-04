@@ -1,18 +1,18 @@
 #include <stdafx.h>
 
-Localization    *gLocalization = nullptr;
+ULocalization   *gLocalization = nullptr;
 UI              *gUI = nullptr;
 UIElement       *gUIRoot = nullptr;
 ResourceCache   *gCache = nullptr;
 UEngine         *gEngine = nullptr;
-Input           *gInput = nullptr;
+UInput          *gInput = nullptr;
 Renderer        *gRenderer = nullptr;
 UDebugRenderer  *gDebugRenderer = nullptr;
 UContext        *gContext = nullptr;
 UScene          *gScene = nullptr;
 UConsole        *gEngineConsole = nullptr;
 UDebugHud       *gDebugHud = nullptr;
-Graphics        *gGraphics = nullptr;
+UGraphics       *gGraphics = nullptr;
 UFileSystem     *gFileSystem = nullptr;
 PhysicsWorld    *gPhysicsWorld = nullptr;
 UFont           *gFont = nullptr;

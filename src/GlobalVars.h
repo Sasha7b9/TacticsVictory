@@ -4,19 +4,19 @@
 class lWindow;
 
 
-extern Localization     *gLocalization;
+extern ULocalization    *gLocalization;
 extern UI               *gUI;
 extern UIElement        *gUIRoot;
 extern ResourceCache    *gCache;
 extern UEngine          *gEngine;
-extern Input            *gInput;
+extern UInput           *gInput;
 extern Renderer         *gRenderer;
 extern UDebugRenderer   *gDebugRenderer;
 extern UContext         *gContext;
 extern UScene           *gScene;
 extern UConsole         *gEngineConsole;
 extern UDebugHud        *gDebugHud;
-extern Graphics         *gGraphics;
+extern UGraphics        *gGraphics;
 extern UFileSystem      *gFileSystem;
 extern PhysicsWorld     *gPhysicsWorld;
 extern UFont            *gFont;

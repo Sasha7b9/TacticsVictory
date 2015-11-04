@@ -22,12 +22,12 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
     AddChild(window);
  
-    window->SetLayout(Urho3D::LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
+    window->SetLayout(Urho3D::LM_HORIZONTAL, 3, UIntRect(3, 3, 3, 3));
 
-    SharedPtr<Label> text(Label::Create(text_, 15, widthText == -1 ? SET::MENU::TEXT::WIDTH : widthText));
+    SharedPtr<Label> text(Label::Create(text_, 15, widthText == -1 ? SET::MENU::TEXT::WIDTH : widthText, -1));
     window->AddChild(text);
     
-    IntVector2 sizeSlider = SET::MENU::SLIDER::SIZE;
+    UIntVector2 sizeSlider = SET::MENU::SLIDER::SIZE;
     if (widthRoller != -1)
     {
         sizeSlider.x_ = widthRoller;

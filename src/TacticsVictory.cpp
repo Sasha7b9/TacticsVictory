@@ -67,14 +67,14 @@ void TacticsVictory::Stop()
 
 void TacticsVictory::CreateComponents()
 {
-    gLocalization = GetSubsystem<Localization>();
+    gLocalization = GetSubsystem<ULocalization>();
     gUI = GetSubsystem<UI>();
     gCache = GetSubsystem<ResourceCache>();
 
     gEngine = GetSubsystem<UEngine>();
-    gInput = GetSubsystem<Input>();
+    gInput = GetSubsystem<UInput>();
     gRenderer = GetSubsystem<Renderer>();
-    gGraphics = GetSubsystem<Graphics>();
+    gGraphics = GetSubsystem<UGraphics>();
 
     gScene = new UScene(gContext);
     // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)

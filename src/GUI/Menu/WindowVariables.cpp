@@ -12,7 +12,7 @@ WindowVariables::WindowVariables(UContext *context) :
     SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowNoBorder");
 
-    SetLayout(Urho3D::LM_VERTICAL, 3, IntRect(3, 3, 3, 3));
+    SetLayout(Urho3D::LM_VERTICAL, 3, UIntRect(3, 3, 3, 3));
     label = Label::Create("Variables", 8, 200, 20);
     label->SetPosition(0, 0);
     label->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_TOP);

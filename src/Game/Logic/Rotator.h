@@ -1,7 +1,7 @@
 #pragma once
 
 
-class Rotator : public LogicComponent
+class Rotator : public ULogicComponent
 {
     OBJECT(Rotator);
     
