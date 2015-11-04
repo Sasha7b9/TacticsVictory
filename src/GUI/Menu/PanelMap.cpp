@@ -9,7 +9,7 @@
 #include "GUI/Logic/LineTranslator2D.h"
 
 
-lPanelMap::lPanelMap(Context *context) :
+PanelMap::PanelMap(UContext *context) :
     lWindow(context)
 {
     SetName("PanelMap");
@@ -21,22 +21,22 @@ lPanelMap::lPanelMap(Context *context) :
     IntVector2 posStart = {0, gGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAP::HEIGHT + 1};
     IntVector2 posFinish = {-SET::PANEL::MAP::WIDTH, posStart.y_};
 
-    translator = new lLineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), lLineTranslator2D::State_PointStart);
+    translator = new LineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
 
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lPanelMap, HandleMouseDown));
-    SubscribeToEvent(Urho3D::E_MOUSEMOVE, HANDLER(lPanelMap, HandleMouseMove));
-    SubscribeToEvent(E_MAP_CHANGED, HANDLER(lPanelMap, HandleMapChanged));
+    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(PanelMap, HandleMouseDown));
+    SubscribeToEvent(Urho3D::E_MOUSEMOVE, HANDLER(PanelMap, HandleMouseMove));
+    SubscribeToEvent(E_MAP_CHANGED, HANDLER(PanelMap, HandleMapChanged));
 }
 
 
-void lPanelMap::RegisterObject(Context *context)
+void PanelMap::RegisterObject(UContext *context)
 {
-    context->RegisterFactory<lPanelMap>("UI");
+    context->RegisterFactory<PanelMap>("UI");
 
     COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-void lPanelMap::Update(float dT)
+void PanelMap::Update(float dT)
 {
     SetPosition(translator->Update(dT));
 
@@ -56,9 +56,9 @@ void lPanelMap::Update(float dT)
 
         uint sizeMap = sizeX > sizeY ? sizeX : sizeY;
 
-        imageMap = new lImage((int)sizeMap, (int)sizeMap);
+        imageMap = new Image((int)sizeMap, (int)sizeMap);
 
-        imageMap->Clear(Color::BLACK);
+        imageMap->Clear(UColor::BLACK);
 
         float maxHeight = GetMaxHeight();
         float stand = 0.0f;
@@ -86,7 +86,7 @@ void lPanelMap::Update(float dT)
                 posX = (int)(x0 + x);
                 int posY = (int)(y0 + y);
                 float color = GetMapHeight(x, y) * scaleColor;
-                Color col = {stand + color, stand + color, stand + color};
+                UColor col = {stand + color, stand + color, stand + color};
 
                 {
                     imageMap->SetPoint(posX, posY, col);
@@ -96,9 +96,9 @@ void lPanelMap::Update(float dT)
             prevX = posX;
         }
 
-        imageMap->GetImage()->Resize(GetWidth(), GetHeight());
+        imageMap->GetUImage()->Resize(GetWidth(), GetHeight());
 
-        imageMap->DrawRectangle(0, 0, GetWidth() - 1, GetHeight() - 1, Color::WHITE);
+        imageMap->DrawRectangle(0, 0, GetWidth() - 1, GetHeight() - 1, UColor::WHITE);
     }
 
     Vector2 points[4] =
@@ -109,11 +109,11 @@ void lPanelMap::Update(float dT)
         {1.0f, 0.0f}
     };
 
-    SharedPtr<lImage> image(new lImage(imageMap->GetWidth(), imageMap->GetHeight()));
+    SharedPtr<Image> image(new Image(imageMap->GetWidth(), imageMap->GetHeight()));
 
-    uchar *data = imageMap->GetImage()->GetData();
+    uchar *data = imageMap->GetUImage()->GetData();
 
-    image->GetImage()->SetData(data);
+    image->GetUImage()->SetData(data);
 
     uint sizeX = SizeXMap();
     uint sizeY = SizeYMap();
@@ -135,7 +135,7 @@ void lPanelMap::Update(float dT)
     }
 
 #define DRAW_LINE(p0, p1)   \
-    image->DrawLine((int)(x0 + p0.x_ * scale), (int)(y0 - p0.y_ * scale), (int)(x0 + p1.x_ * scale), (int)(y0 - p1.y_ * scale), Color::BLUE);
+    image->DrawLine((int)(x0 + p0.x_ * scale), (int)(y0 - p0.y_ * scale), (int)(x0 + p1.x_ * scale), (int)(y0 - p1.y_ * scale), UColor::BLUE);
 
     Vector2 point0;
     if(FindIntersectionX0Z(points[0], point0))
@@ -160,17 +160,17 @@ void lPanelMap::Update(float dT)
 
     SharedPtr<Texture2D> texture(new Texture2D(gContext));
     texture->SetSize(GetWidth(), GetHeight(), D3DFMT_X8R8G8B8);
-    texture->SetData(image->GetImage());
+    texture->SetData(image->GetUImage());
 
     SetTexture(texture);
     SetFullImageRect();
 }
 
-bool lPanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPointOut)
+bool PanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPointOut)
 {
-    Camera *camera = gCamera->GetNode()->GetComponent<Camera>();
-    Plane planeX0Z({0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f});
-    Ray ray = camera->GetScreenRay(screenPoint.x_, screenPoint.y_);
+    UCamera *camera = gCamera->GetNode()->GetComponent<UCamera>();
+    UPlane planeX0Z({0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f});
+    URay ray = camera->GetScreenRay(screenPoint.x_, screenPoint.y_);
     float distanceHit = ray.HitDistance(planeX0Z);
     if(distanceHit == Urho3D::M_INFINITY)
     {
@@ -182,12 +182,12 @@ bool lPanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPoin
     return true;
 }
 
-float lPanelMap::GetMapHeight(uint x, uint y)
+float PanelMap::GetMapHeight(uint x, uint y)
 {
     return map[y][x];
 }
 
-float lPanelMap::GetMaxHeight()
+float PanelMap::GetMaxHeight()
 {
     uint sizeX = SizeXMap();
     uint sizeY = SizeYMap();
@@ -208,17 +208,17 @@ float lPanelMap::GetMaxHeight()
     return height;
 }
 
-uint lPanelMap::SizeXMap()
+uint PanelMap::SizeXMap()
 {
     return map.Empty() ? 0 : map[0].Size();
 }
 
-uint lPanelMap::SizeYMap()
+uint PanelMap::SizeYMap()
 {
     return map.Empty() ? 0 : map.Size();
 }
 
-void lPanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
+void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
 {
     if (parent_->IsVisible() && IsInside(gCursor->GetCursor()->GetPosition(), true))
     {
@@ -236,7 +236,7 @@ void lPanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
     }
 }
 
-void lPanelMap::HandleMouseMove(StringHash eventType, VariantMap &eventData)
+void PanelMap::HandleMouseMove(StringHash eventType, VariantMap &eventData)
 {
     if (parent_->IsVisible() && IsInside(gCursor->GetCursor()->GetPosition(), true) && (int)eventData[Urho3D::MouseMove::P_BUTTONS].GetInt() == Urho3D::MOUSEB_RIGHT)
     {
@@ -246,7 +246,7 @@ void lPanelMap::HandleMouseMove(StringHash eventType, VariantMap &eventData)
     }
 }
 
-void lPanelMap::HandleMapChanged(StringHash, VariantMap&)
+void PanelMap::HandleMapChanged(StringHash, VariantMap&)
 {
     redrawMap = true;
 }

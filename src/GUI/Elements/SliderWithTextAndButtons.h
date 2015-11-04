@@ -4,16 +4,16 @@
 #include "GUI/Elements/SliderInt.h"
 
 
-class lSliderWithTextAndButtons : public UIElement
+class SliderWithTextAndButtons : public UIElement
 {
-    OBJECT(lSliderWithTextAndButtons);
+    OBJECT(SliderWithTextAndButtons);
 
 public:
-    lSliderWithTextAndButtons(Context *context = gContext);
+    SliderWithTextAndButtons(UContext *context = gContext);
 
-    lSliderWithTextAndButtons(UIElement *uielement, char *text, int min, int max, int step, int widthText = -1, int widthRoller = -1);
+    SliderWithTextAndButtons(UIElement *uielement, char *text, int min, int max, int step, int widthText = -1, int widthRoller = -1);
 
-    static void RegisterObject(Context* context = gContext);
+    static void RegisterObject(UContext* context = gContext);
 
     void SetRange(int min, int max, int step);
     void SetValue(int value);
@@ -23,13 +23,13 @@ public:
     void SetHint(char *text);
 
 private:
-    lSliderWithTextAndButtons& operator=(const lSliderWithTextAndButtons&) {};
+    SliderWithTextAndButtons& operator=(const SliderWithTextAndButtons&) {};
 
     SharedPtr<lSliderInt> slider;
-    SharedPtr<Text> textValue;
-    SharedPtr<Button> buttonLeft;
-    SharedPtr<Button> buttonRight;
-    SharedPtr<lHint> hint;
+    SharedPtr<UText> textValue;
+    SharedPtr<UButton> buttonLeft;
+    SharedPtr<UButton> buttonRight;
+    SharedPtr<Hint> hint;
 
     void HandleSliderIntChanged(StringHash, VariantMap&);
     void HandleButtonDown(StringHash, VariantMap&);

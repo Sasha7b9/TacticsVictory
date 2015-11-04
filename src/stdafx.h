@@ -13,11 +13,6 @@
 #pragma warning(disable:4266)
 
 
-typedef unsigned int uint;
-typedef unsigned short ushort;
-typedef unsigned char uchar;
-
-
 #include <Urho3D/Core/Mutex.h>
 #include <Urho3D/Core/Thread.h>
 
@@ -92,33 +87,34 @@ typedef unsigned char uchar;
 
 #include <ctime>
 
-using Urho3D::BiasParameters;
-using Urho3D::BoundingBox;
-using Urho3D::Button;
+#define UBiasParameters     Urho3D::BiasParameters
+#define UBoundingBox        Urho3D::BoundingBox
+#define UButton             Urho3D::Button
 
-using Urho3D::Camera;
-using Urho3D::CascadeParameters;
-using Urho3D::CheckBox;
-using Urho3D::CollisionShape;
-using Urho3D::Color;
-using Urho3D::Component;
-using Urho3D::Console;
-using Urho3D::Context;
-using Urho3D::Cos;
-using Urho3D::Cursor;
 
-using Urho3D::DebugHud;
-using Urho3D::DebugRenderer;
-using Urho3D::DecalSet;
-using Urho3D::Drawable;
-using Urho3D::DropDownList;
+#define UCamera             Urho3D::Camera
+#define UCascadeParameters  Urho3D::CascadeParameters
+#define UCheckBox           Urho3D::CheckBox
+#define UCollisionShape     Urho3D::CollisionShape
+#define UColor              Urho3D::Color
+#define UCompnent           Urho3D::Component
+#define UConsole            Urho3D::Console
+#define UContext            Urho3D::Context
+#define UCos                Urho3D::Cos
+#define UCursor             Urho3D::Cursor
 
-using Urho3D::Engine;
+#define UDebugHud           Urho3D::DebugHud
+#define UDebugRenderer      Urho3D::DebugRenderer
+#define UDecalSet           Urho3D::DecalSet
+#define UDrawable           Urho3D::Drawable
+#define UDropDownList       Urho3D::DropDownList
 
-using Urho3D::File;
-using Urho3D::FileSelector;
-using Urho3D::FileSystem;
-using Urho3D::Font;
+#define UEngine             Urho3D::Engine
+
+#define UFile               Urho3D::File
+#define UFileSelector       Urho3D::FileSelector
+#define UFileSystem         Urho3D::FileSystem
+#define UFont               Urho3D::Font
 
 using Urho3D::Geometry;
 using Urho3D::Graphics;
@@ -127,7 +123,7 @@ using Urho3D::HashMap;
 using Urho3D::HashSet;
 using Urho3D::HiresTimer;
 
-using Urho3D::Image;
+#define UImage Urho3D::Image
 using Urho3D::IndexBuffer;
 using Urho3D::Input;
 using Urho3D::IntRect;
@@ -141,7 +137,7 @@ using Urho3D::JSONNumberType;
 using Urho3D::Light;
 using Urho3D::LineEdit;
 using Urho3D::Localization;
-using Urho3D::Log;
+#define ULog Urho3D::Log
 using Urho3D::LogicComponent;
 
 using Urho3D::Material;
@@ -150,18 +146,19 @@ using Urho3D::Mutex;
 
 using Urho3D::Node;
 
-using Urho3D::Object;
+#define UObject Urho3D::Object
+
 using Urho3D::Octree;
 
 using Urho3D::Pair;
 using Urho3D::PhysicsWorld;
-using Urho3D::Plane;
+#define UPlane Urho3D::Plane
 using Urho3D::PODVector;
 
 using Urho3D::Quaternion;
 
 using Urho3D::Random;
-using Urho3D::Ray;
+#define URay Urho3D::Ray
 using Urho3D::RayQueryResult;
 using Urho3D::RayOctreeQuery;
 using Urho3D::Renderer;
@@ -169,7 +166,7 @@ using Urho3D::Resource;
 using Urho3D::ResourceCache;
 using Urho3D::RigidBody;
 
-using Urho3D::Scene;
+#define UScene Urho3D::Scene
 using Urho3D::ScrollBar;
 using Urho3D::SharedPtr;
 using Urho3D::Slider;
@@ -183,7 +180,7 @@ using Urho3D::Texture;
 using Urho3D::Texture2D;
 using Urho3D::Time;
 using Urho3D::Timer;
-using Urho3D::Text;
+#define UText Urho3D::Text
 using Urho3D::Thread;
 
 using Urho3D::VariantMap;
@@ -211,59 +208,58 @@ using Urho3D::Corner;
 
 #include "defines.h"
 
-class lButton;
-class lButtonSwitch;
-class lButtonToggled;
+class ButtonMain;
+class ButtonSwitch;
+class ButtonToggled;
 
-class lCamera;
-class lConsole;
-class lCursor;
-class lCursorShapes;
+class Camera;
+class Console;
+class Cursor;
+class CursorShapes;
 
-class lDropDownListWithTextAndButton;
+class DropDownListWithTextAndButton;
 
-class lEditor;
+class Editor;
 
-class lGovernorFloat;
-class lGUI;
+class GovernorFloat;
+class GUI;
 
-class lHint;
+class Hint;
 
-class lImage;
+class Image;
 
-class lLabel;
-class lLevel;
-class lLine;
-class lLineTranslator1D;
-class lLineTranslator2D;
+class Label;
+class Level;
+class Line;
+class LineTranslator1D;
+class LineTranslator2D;
 
-class lMenu;
-class lGuiEditor;
-class lGuiGame;
-class lMenuMain;
-class lMenuOptions;
+class GuiEditor;
+class GuiGame;
+class MenuMain;
+class MenuOptions;
 
-class lPanelBottom;
-class lPanelMain;
-class lPanelMap;
-class lPlane;
-class lPath;
-class lPathIndicator;
+class PanelBottom;
+class PanelMain;
+class PanelMap;
+class Plane;
+class Path;
+class PathIndicator;
 
-class lScene;
-class lSettings;
-class lSliderWithTextAndButtons;
+class Scene;
+class Settings;
+class SliderWithTextAndButtons;
 
-class lTab;
-class lTank;
-class lTerrain;
-class lTerrainSegment;
-class lTilePath;
-class lTriangle;
+class Tab;
+class Tank;
+class Terrain;
+class TerrainSegment;
+class TilePath;
+class Triangle;
 
-class lWindowConfirmExit;
-class lWindowPause;
-class lWindowVariables;
+class WindowConfirmExit;
+class WindowPause;
+class WindowVariables;
 
 
 #include "SettingsTypes.h"

@@ -4,7 +4,7 @@
 #include "SliderInt.h"
 
 
-lSliderInt::lSliderInt(Context *context) :
+lSliderInt::lSliderInt(UContext *context) :
     Slider(context)
 {
 
@@ -21,7 +21,7 @@ void lSliderInt::SetRange(int min_, int max_, int step_)
     Slider::SetRange(max - delta);
 }
 
-void lSliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Cursor* cursor)
+void lSliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, UCursor* cursor)
 {
     Slider::OnDragMove(position, screenPosition, deltaPos, buttons, qualifiers, cursor);
 
@@ -77,7 +77,7 @@ void lSliderInt::Decrease()
     SetValueInt(GetValueInt() - step);
 }
 
-void lSliderInt::RegisterObject(Context* context)
+void lSliderInt::RegisterObject(UContext* context)
 {
     context->RegisterFactory<lSliderInt>("UI");
 

@@ -5,32 +5,32 @@
 #include "GUI/Elements/Image.h"
 
 
-bool operator==(const lCursorShapes::StructShape& keyLeft, const lCursorShapes::StructShape& keyRight)
+bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::StructShape& keyRight)
 {
     return keyLeft.numFrame == keyRight.numFrame && keyLeft.type == keyRight.type;
 }
 
 
-#define border       Color::CYAN
+#define border       UColor::CYAN
 #define transparent {0.0f, 0.0f, 0.0f, 0.0f}
 
 
-SharedPtr<lImage> lCursorShapes::GetShape(TypeCursor type, int numFrame)
+SharedPtr<Image> CursorShapes::GetShape(TypeCursor type, int numFrame)
 {
-    typedef void(lCursorShapes::*pToFunc)(int);
+    typedef void(CursorShapes::*pToFunc)(int);
     const pToFunc funcs[TypeCursor_Size] =
     {
-        &lCursorShapes::CreateNormal,
-        &lCursorShapes::CreateSelected,
-        &lCursorShapes::CreateLeft,
-        &lCursorShapes::CreateUp,
-        &lCursorShapes::CreateRight,
-        &lCursorShapes::CreateDown,
-        &lCursorShapes::CreateTopLeft,
-        &lCursorShapes::CreateTopRight,
-        &lCursorShapes::CreateDownLeft,
-        &lCursorShapes::CreateDownRight,
-        &lCursorShapes::CreateBusy
+        &CursorShapes::CreateNormal,
+        &CursorShapes::CreateSelected,
+        &CursorShapes::CreateLeft,
+        &CursorShapes::CreateUp,
+        &CursorShapes::CreateRight,
+        &CursorShapes::CreateDown,
+        &CursorShapes::CreateTopLeft,
+        &CursorShapes::CreateTopRight,
+        &CursorShapes::CreateDownLeft,
+        &CursorShapes::CreateDownRight,
+        &CursorShapes::CreateBusy
     };
 
     StructShape key = {type, numFrame};
@@ -44,7 +44,7 @@ SharedPtr<lImage> lCursorShapes::GetShape(TypeCursor type, int numFrame)
     return map[key];
 }
 
-void lCursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int *y2)
+void CursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int *y2)
 {
     float size = 100.0f;
 
@@ -53,10 +53,10 @@ void lCursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int
 
     float radius = size / 6.0f;
 
-    *x1 = (int)(size / 2.0f + Cos(angle0) * radius);
+    *x1 = (int)(size / 2.0f + UCos(angle0) * radius);
     *y1 = (int)(size / 2.0f + Sin(angle0) * radius);
 
-    *x2 = (int)(size / 2.0f + Cos(angle1) * radius);
+    *x2 = (int)(size / 2.0f + UCos(angle1) * radius);
     *y2 = (int)(size / 2.0f + Sin(angle1) * radius);
 }
 
@@ -64,11 +64,11 @@ void lCursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int
     int buffer[] = {val0, val1, val2, val3, val4, val5, val6, val7};            \
     image->DrawPolyline(color, num, buffer);
 
-void lCursorShapes::CreateNormal(int numFrame)
+void CursorShapes::CreateNormal(int numFrame)
 {
     int size = 100;
 
-    SharedPtr<lImage> image(new lImage(size, size));
+    SharedPtr<Image> image(new Image(size, size));
     image->Clear(transparent);
 
     int x1, y1, x2, y2;
@@ -84,11 +84,11 @@ void lCursorShapes::CreateNormal(int numFrame)
     map[key] = image;
 }
 
-void lCursorShapes::CreateSelected(int numFrame)
+void CursorShapes::CreateSelected(int numFrame)
 {
     int size = 100;
 
-    SharedPtr<lImage> image(new lImage(size, size));
+    SharedPtr<Image> image(new Image(size, size));
     image->Clear(transparent);
 
     int x1, y1, x2, y2;
@@ -106,9 +106,9 @@ void lCursorShapes::CreateSelected(int numFrame)
     map[key] = image;
 }
 
-void lCursorShapes::CreateLeft(int numFrame)
+void CursorShapes::CreateLeft(int numFrame)
 {
-    SharedPtr<lImage> image(new lImage(dimensionTriangleBig, dimensionTriangleBig));
+    SharedPtr<Image> image(new Image(dimensionTriangleBig, dimensionTriangleBig));
 
     int width = dimensionTriangleSmall;
     int height = dimensionTriangleBig;
@@ -125,9 +125,9 @@ void lCursorShapes::CreateLeft(int numFrame)
     map[key] = image;
 }
 
-void lCursorShapes::CreateRight(int numFrame)
+void CursorShapes::CreateRight(int numFrame)
 {
-    SharedPtr<lImage> image(new lImage(dimensionTriangleBig, dimensionTriangleBig));
+    SharedPtr<Image> image(new Image(dimensionTriangleBig, dimensionTriangleBig));
 
     int width = dimensionTriangleSmall;
     int height = dimensionTriangleBig;
@@ -144,9 +144,9 @@ void lCursorShapes::CreateRight(int numFrame)
     map[key] = image;
 }
 
-void lCursorShapes::CreateUp(int numFrame)
+void CursorShapes::CreateUp(int numFrame)
 {
-    SharedPtr<lImage> image(new lImage(dimensionTriangleBig, dimensionTriangleBig));
+    SharedPtr<Image> image(new Image(dimensionTriangleBig, dimensionTriangleBig));
 
     int width = dimensionTriangleBig;
     int height = dimensionTriangleSmall;
@@ -163,9 +163,9 @@ void lCursorShapes::CreateUp(int numFrame)
     map[key] = image;
 }
 
-void lCursorShapes::CreateDown(int numFrame)
+void CursorShapes::CreateDown(int numFrame)
 {
-    SharedPtr<lImage> image(new lImage(dimensionTriangleBig, dimensionTriangleBig));
+    SharedPtr<Image> image(new Image(dimensionTriangleBig, dimensionTriangleBig));
 
     int width = dimensionTriangleBig;
     int height = dimensionTriangleSmall;
@@ -180,9 +180,9 @@ void lCursorShapes::CreateDown(int numFrame)
     map[key] = image;
 }
 
-void lCursorShapes::CreateTopLeft(int numFrame)
+void CursorShapes::CreateTopLeft(int numFrame)
 {
-    SharedPtr<lImage> image(new lImage(dimensionTriangleBig, dimensionTriangleBig));
+    SharedPtr<Image> image(new Image(dimensionTriangleBig, dimensionTriangleBig));
     
     int size = (int)(dimensionTriangleSmall * 1.41f);
 
@@ -196,10 +196,10 @@ void lCursorShapes::CreateTopLeft(int numFrame)
     map[key] = image;
 }
 
-void lCursorShapes::CreateTopRight(int numFrame)
+void CursorShapes::CreateTopRight(int numFrame)
 {
     int size = (int)(dimensionTriangleSmall * 1.41f);
-    SharedPtr<lImage> image(new lImage(size + 1, size + 1));
+    SharedPtr<Image> image(new Image(size + 1, size + 1));
     
     FillGradient(image, TypeCursor_TopRight, numFrame);
 
@@ -211,10 +211,10 @@ void lCursorShapes::CreateTopRight(int numFrame)
     map[key] = image;
 }
 
-void lCursorShapes::CreateDownLeft(int numFrame)
+void CursorShapes::CreateDownLeft(int numFrame)
 {
     int size = (int)(dimensionTriangleSmall * 1.41f);
-    SharedPtr<lImage> image(new lImage(size + 1, size + 1));
+    SharedPtr<Image> image(new Image(size + 1, size + 1));
     
     FillGradient(image, TypeCursor_DownLeft, numFrame);
 
@@ -226,11 +226,11 @@ void lCursorShapes::CreateDownLeft(int numFrame)
     map[key] = image;
 }
 
-void lCursorShapes::CreateDownRight(int numFrame)
+void CursorShapes::CreateDownRight(int numFrame)
 {
     int size = (int)(dimensionTriangleSmall * 1.41f);
 
-    SharedPtr<lImage> image(new lImage(size + 1, size + 1));
+    SharedPtr<Image> image(new Image(size + 1, size + 1));
 
     FillGradient(image, TypeCursor_DownRight, numFrame);
 
@@ -242,10 +242,10 @@ void lCursorShapes::CreateDownRight(int numFrame)
     map[key] = image;
 }
 
-void lCursorShapes::CreateBusy(int numFrame)
+void CursorShapes::CreateBusy(int numFrame)
 {
     int size = 72;
-    SharedPtr<lImage> image(new lImage(size, size));
+    SharedPtr<Image> image(new Image(size, size));
 
     FillGradient(image, TypeCursor_Busy, numFrame);
 
@@ -290,7 +290,7 @@ void lCursorShapes::CreateBusy(int numFrame)
     img->DrawLine(x0_, y0_, x1_, y1_, {colorComponent, colorComponent, colorComponent, 1.0f});    \
     CORRECTION_COLOR
 
-void lCursorShapes::FillGradient(lImage *image, TypeCursor type, int numFrame)
+void CursorShapes::FillGradient(Image *image, TypeCursor type, int numFrame)
 {
     int width = image->GetWidth();
     int height = image->GetHeight();
@@ -364,7 +364,7 @@ void lCursorShapes::FillGradient(lImage *image, TypeCursor type, int numFrame)
         if (type == TypeCursor_Selected && numFrame >= 360) // if numFrame > 360 - draw circle
         {
             numFrame -= 360;
-            SharedPtr<lImage> imageCircle(new lImage(width, height));
+            SharedPtr<Image> imageCircle(new Image(width, height));
 
             float k = 2.0f;
             float dColor = 1.0f / 360.0f / k;

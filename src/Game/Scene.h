@@ -5,24 +5,24 @@
 #include "Game/PathIndicator.h"
 
 
-class lScene : public Object
+class Scene : public UObject
 {
-    OBJECT(lScene)
+    OBJECT(Scene)
 
 public:
-    lScene(Context *context = gContext);
+    Scene(UContext *context = gContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
     void Update();
     void Create();
 
 private:
-    lScene& operator=(const lScene&)
+    Scene& operator=(const Scene&)
     {};
 
-    Vector<SharedPtr<lTank>> tanks;
-    lPathIndicator pathIndicator;
+    Vector<SharedPtr<Tank>> tanks;
+    PathIndicator pathIndicator;
 
     void RegisterObjects();
 

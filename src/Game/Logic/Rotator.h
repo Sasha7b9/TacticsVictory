@@ -1,12 +1,12 @@
 #pragma once
 
 
-class vRotator : public LogicComponent
+class Rotator : public LogicComponent
 {
-    OBJECT(vRotator);
+    OBJECT(Rotator);
     
 public:
-    vRotator(Context* context);
+    Rotator(UContext* context);
     
     void SetRotationSpeed(const Vector3& speed);
     virtual void Update(float timeStep);
@@ -14,6 +14,6 @@ public:
     const Vector3& GetRotationSpeed() const { return rotationSpeed; }
     
 private:
-    vRotator& operator=(const vRotator&) {};
+    Rotator& operator=(const Rotator&) {};
     Vector3 rotationSpeed;
 };

@@ -7,12 +7,12 @@ EVENT(E_MAP_CHANGED, MapChanged)
 }
 
 
-class lLevel : public Object
+class Level : public Urho3D::Object
 {
-    OBJECT(lLevel);
+    OBJECT(Level);
 
 public:
-    lLevel(Context *context = gContext);
+    Level(UContext *context = gContext);
 
     Vector<Vector<float>> Load(char *fileName);             // Load from file simple level (from height map)
     bool Save(String fileName);
@@ -25,7 +25,7 @@ public:
     void SetMap(Vector<Vector<float>> map);
 
 private:
-    lLevel& operator=(const lLevel&)
+    Level& operator=(const Level&)
     {
     };
 

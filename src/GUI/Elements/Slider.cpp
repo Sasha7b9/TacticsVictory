@@ -4,13 +4,13 @@
 #include "Slider.h"
 
 
-vSlider::vSlider(Context *context) :
+vSlider::vSlider(UContext *context) :
     Slider(context)
 {
 
 }
 
-void vSlider::RegisterObject(Context *context)
+void vSlider::RegisterObject(UContext *context)
 {
     context->RegisterFactory<vSlider>("UI");
 
@@ -19,7 +19,7 @@ void vSlider::RegisterObject(Context *context)
 
 SharedPtr<vSlider> vSlider::Create(Window *window, char *text_)
 {
-    SharedPtr<Text> text(new Text(gContext));
+    SharedPtr<UText> text(new UText(gContext));
     text->SetText(gLocalization->Get(text_));
     text->SetStyle("MainMenuButton");
     window->AddChild(text);

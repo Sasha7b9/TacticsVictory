@@ -4,13 +4,13 @@
 #include "Cursor.h"
 
 
-class lCursorShapes : public Object
+class CursorShapes : public UObject
 {
-    OBJECT(lCursorShapes);
+    OBJECT(CursorShapes);
 public:
-    lCursorShapes() : Object(gContext)
+    CursorShapes() : Object(gContext)
     {};
-    SharedPtr<lImage> GetShape(TypeCursor type, int numFrame);
+    SharedPtr<Image> GetShape(TypeCursor type, int numFrame);
 
 private:
 
@@ -26,7 +26,7 @@ private:
     void CreateDownRight(int numFrame);
     void CreateBusy(int numFrame);
 
-    void FillGradient(lImage *image, TypeCursor type, int numFrame);
+    void FillGradient(Image *image, TypeCursor type, int numFrame);
 
 public:
     struct StructShape
@@ -41,9 +41,9 @@ public:
     };
 
 private:
-    lCursorShapes& operator=(const lCursorShapes&)
+    CursorShapes& operator=(const CursorShapes&)
     {};
-    HashMap<StructShape, SharedPtr<lImage> > map;
+    HashMap<StructShape, SharedPtr<Image> > map;
 
     int dimensionTriangleSmall = 50;
     int dimensionTriangleBig = 100;

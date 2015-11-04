@@ -7,17 +7,22 @@
 #include "Game/Path/TilePath.h"
 
 
-lPathIndicator::lPathIndicator()
+PathIndicator::PathIndicator()
 {
     
 }
 
-void lPathIndicator::SetInCurrentCursorPosition(Drawable *hitDrawable, Vector3 *hitPos)
+void PathIndicator::Init()
 {
-    if(decal)
-    {
-        decal->RemoveAllDecals();
-    }
+    pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
+}
+
+void PathIndicator::SetInCurrentCursorPosition(UDrawable *hitDrawable, Vector3 *hitPos)
+{
+    static int numFrame = 0;
+    static Timer timer;
+    uint timeEnter = timer.GetMSec(false);
+    //LOGINFOF("Time enter %d, frame %d", timer.GetMSec(false), numFrame++);
 
     Vector3 pos;
 
@@ -26,67 +31,40 @@ void lPathIndicator::SetInCurrentCursorPosition(Drawable *hitDrawable, Vector3 *
         hitPos = &pos;
         hitDrawable = gCursor->GetRaycastNode(hitPos);
     }
+    uint time0 = timer.GetMSec(false);
+    //LOGINFOF("point 0 - %d", time0 - timeEnter);
 
     if(hitDrawable)
     {
-        static HiresTimer timerFull;
-        timerFull.Reset();
-        static long long timeFull = 0;
-
         Node *node = hitDrawable->GetNode();
+
+    uint time1 = timer.GetMSec(false);
+    //LOGINFOF("point 1 - %d", time1 - time0);
+
         if(node->GetName() == NODE_TERRAIN)
         {
-
-
-
-            static HiresTimer timerDisable;
-            timerDisable.Reset();
-            long long timeDisable = 0;
-
-            lTilePath::DisableAll();
-
-            timeDisable += timerDisable.GetUSec(false);
-            LOGINFOF("time disable %d", timeDisable / 1000);
-
-
-            static HiresTimer timerFindPath;
-            timerFindPath.Reset();
-            long long timeFindPath = 0;
+            TilePath::DisableAll();
 
             Coord start(gTerrain->NumRows() / 2, gTerrain->NumCols() / 2);
             PODVector<Coord> path = pathFinder.FindPath(start, Coord((uint)-hitPos->z_, (uint)hitPos->x_));
 
-            if(path.Size() == 0)
+    uint time2 = timer.GetMSec(false);
+    //LOGINFOF("point 2 - %d", time2 - time1);
+
+            if (path.Size() != 0)
             {
-                return;
+                for (uint i = 0; i < path.Size(); i++)
+                {
+                    hitPos->x_ = (float)path[i].col;
+                    hitPos->z_ = -(float)(path[i].row);
+                    hitPos->y_ = (float)(int)hitPos->y_;
+                    TilePath::Add(*hitPos);
+
+                }
+    //LOGINFOF("point 3 - %d", timer.GetMSec(false) - time2);
             }
-
-            timeFindPath += timerFindPath.GetUSec(false);
-            LOGINFOF("time find path %d", timeFindPath / 1000);
-
-
-
-            static HiresTimer timer;
-            timer.Reset();
-            static long long timeAdd = 0;
-
-            for (uint i = 0; i < path.Size(); i++)
-            {
-                hitPos->x_ = (float)path[i].col;
-                hitPos->z_ = -(float)(path[i].row);
-                hitPos->y_ = (float)(int)hitPos->y_;
-                lTilePath::Add(*hitPos);
-
-            }
-            timeAdd += timer.GetUSec(false);
-            LOGINFOF("time add %d", timeAdd / 1000);
-
-
-
-
         }
-
-        timeFull += timerFull.GetUSec(false);
-        LOGINFOF("time full %d", timeFull / 1000);
     }
+
+    //LOGINFOF("time release %d, time full %d", timer.GetMSec(false), timer.GetMSec(false) - timeEnter);
 }

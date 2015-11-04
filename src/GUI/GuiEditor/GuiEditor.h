@@ -3,14 +3,14 @@
 
 class lWindow;
 
-class lGuiEditor : public UIElement
+class GuiEditor : public UIElement
 {
-    OBJECT(lGuiEditor)
+    OBJECT(GuiEditor)
 
 public:
-    lGuiEditor(Context* context = gContext);
+    GuiEditor(UContext* context = gContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
     bool IsInside(IntVector2 &position);
@@ -22,22 +22,22 @@ public:
     } modeSelect = ModeSelect_Plane;
 
 private:
-    lGuiEditor& operator=(const lGuiEditor&) {};
+    GuiEditor& operator=(const GuiEditor&) {};
 
-    SharedPtr<lButton> buttonInterface;
-    SharedPtr<lButton> buttonMenu;
+    SharedPtr<ButtonMain> buttonInterface;
+    SharedPtr<ButtonMain> buttonMenu;
 
-    SharedPtr<lButton> btnNewMap;
+    SharedPtr<ButtonMain> btnNewMap;
 
-    SharedPtr<lPanelBottom> panelBottom;
-    SharedPtr<lPanelMap>    panelMap;
-    SharedPtr<lPanelMain>   panelMain;
+    SharedPtr<PanelBottom> panelBottom;
+    SharedPtr<PanelMap>    panelMap;
+    SharedPtr<PanelMain>   panelMain;
 
     SharedPtr<lWindow>      windowNewMap;
     SharedPtr<lWindow>      windowMenu;
     SharedPtr<lWindow>      windowConfirmExit;
-    SharedPtr<lSliderWithTextAndButtons> sliderSizeNewMapX;
-    SharedPtr<lSliderWithTextAndButtons> sliderSizeNewMapY;
+    SharedPtr<SliderWithTextAndButtons> sliderSizeNewMapX;
+    SharedPtr<SliderWithTextAndButtons> sliderSizeNewMapY;
 
     void HandleMouseDown(StringHash, VariantMap&);
     void HandleButtonRelease(StringHash, VariantMap&);
@@ -65,7 +65,7 @@ private:
     // Tab "Objects"
     void HandleObjectsAdd(StringHash, VariantMap&);
 
-    bool IntersectionX(lButton *button, int x);
+    bool IntersectionX(ButtonMain *button, int x);
     void CreateWindows();
     void ToggleInterfacePanels();
 };

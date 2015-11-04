@@ -1,9 +1,9 @@
 #pragma once
 
 
-class lTank : public LogicComponent
+class Tank : public LogicComponent
 {
-    OBJECT(lTank);
+    OBJECT(Tank);
 
 public:
     enum Type
@@ -12,16 +12,16 @@ public:
         T_34_76
     };
 
-    lTank(Context *context = gContext);
+    Tank(UContext *context = gContext);
 
-    static void RegisterObject(Context* context = gContext);
+    static void RegisterObject(UContext* context = gContext);
 
     void Init(Type type);
     void SetPosition(const Vector3& pos);
     Vector3 GetPosition();
 
 private:
-    lTank& operator=(const lTank&) {};
+    Tank& operator=(const Tank&) {};
 
     void LoadFromFile();
     void Normalize();

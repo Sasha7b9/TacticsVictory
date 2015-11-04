@@ -352,7 +352,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Graphics\Objects\Line.cpp" />
     <ClCompile Include="src\Graphics\Objects\Plane.cpp" />
     <ClCompile Include="src\Graphics\Objects\Triangle.cpp" />
-    <ClCompile Include="src\GUI\Elements\Button.cpp" />
+    <ClCompile Include="src\GUI\Elements\ButtonMain.cpp" />
     <ClCompile Include="src\GUI\Elements\ButtonToggled.cpp" />
     <ClCompile Include="src\GUI\Elements\Cursor.cpp" />
     <ClCompile Include="src\GUI\Elements\CursorShapes.cpp" />
@@ -410,7 +410,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Graphics\Objects\Line.h" />
     <ClInclude Include="src\Graphics\Objects\Plane.h" />
     <ClInclude Include="src\Graphics\Objects\Triangle.h" />
-    <ClInclude Include="src\GUI\Elements\Button.h" />
+    <ClInclude Include="src\GUI\Elements\ButtonMain.h" />
     <ClInclude Include="src\GUI\Elements\ButtonToggled.h" />
     <ClInclude Include="src\GUI\Elements\Cursor.h" />
     <ClInclude Include="src\GUI\Elements\CursorShapes.h" />

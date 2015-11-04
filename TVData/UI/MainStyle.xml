@@ -11,7 +11,7 @@
         <attribute name="Hover Image Offset" value="0 16" />
     </element>
     <element type="lButtonToggled" style="CheckBox">
-        <attribute name="Font" value="Font;Fonts/CRL.ttf" />
+        <attribute name="Font" value="Fonts/CRL.ttf" />
         <attribute name="Font Size" value="15" />
         <attribute name="Min Size" value="110 20" />
         <attribute name="Image Rect" value= "16 0 32 16" />
@@ -19,8 +19,8 @@
         <attribute name="Checked Image Offset" value="64 0" />
         <attribute name="Hover Image Offset" value="0 16" />
     </element>
-<element type="MainMenuButton" style="Button" auto="false">
-        <attribute name="Font" value="Font;Fonts/CRL.ttf" />
+    <element type="MainMenuButton" style="Button" auto="false">
+        <attribute name="Font" value="Fonts/CRL.ttf" />
         <attribute name="Font Size" value="15" />
         <attribute name="Min Size" value="50 25"/>
         <attribute name="Image Rect" value="16 0 32 16" />
@@ -35,6 +35,12 @@
         <attribute name="Resize Border" value="8 8 8 8" />
     </element>
     <element type="WindowMenu" style="BorderImage">
+        <attribute name="Font" value="Font;Fonts/tech.fnt" />
+        <attribute name="Image Rect" value="48 0 64 16" />
+        <attribute name="Border" value="4 4 4 4" />
+        <attribute name="Resize Border" value="8 8 8 8" />
+    </element>
+    <element type="MainMenu" style="BorderImage">
         <attribute name="Font" value="Font;Fonts/tech.fnt" />
         <attribute name="Image Rect" value="48 0 64 16" />
         <attribute name="Border" value="4 4 4 4" />

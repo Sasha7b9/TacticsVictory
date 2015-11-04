@@ -11,45 +11,47 @@
 #include "Game/Path/TilePath.h"
 
 
-lScene::lScene(Context *context) :
+Scene::Scene(UContext *context) :
     Object(context)
 {
     RegisterObjects();
 
     Create();
 
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(lScene, HandleMouseDown));
+    pathIndicator.Init();
+
+    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(Scene, HandleMouseDown));
 }
 
-void lScene::RegisterObjects()
+void Scene::RegisterObjects()
 {
-    lTank::RegisterObject();
+    Tank::RegisterObject();
 }
 
-void lScene::RegisterObject(Context *context)
+void Scene::RegisterObject(UContext *context)
 {
-    context->RegisterFactory<lScene>();
+    context->RegisterFactory<Scene>();
 }
 
-void lScene::Create()
+void Scene::Create()
 {
     // Create a Zone component into a child scene node. The Zone controls ambient lighting and fog settings. Like the Octree,
     // it also defines its volume with a bounding box, but can be rotated (so it does not need to be aligned to the world X, Y
-    // and Z axes.) Drawable objects "pick up" the zone they belong to and use it when rendering; several zones can exist
+    // and Z axes.) UDrawable objects "pick up" the zone they belong to and use it when rendering; several zones can exist
 
     Node* zoneNode = gScene->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
     // Set same volume as the Octree, set a close bluish fog and some ambient light
-    zone->SetBoundingBox(BoundingBox(-1000.0f, 1000.0f));
-    //zone->SetFogColor(Color::BLUE);
+    zone->SetBoundingBox(UBoundingBox(-1000.0f, 1000.0f));
+    //zone->SetFogColor(UColor::BLUE);
     //zone->SetFogHeightScale(10000.0f);
     //zone->SetFogStart(0.0f);
     //zone->SetFogEnd(1000.0f);
     float dColor = 0.1f;
-    zone->SetAmbientColor(Color(dColor, dColor, dColor));
+    zone->SetAmbientColor(UColor(dColor, dColor, dColor));
 
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
-    gTerrain = new lTerrain(level);
+    gTerrain = new Terrain(level);
 
     for (int i = 0; i < 100; i++)
     {
@@ -67,14 +69,14 @@ void lScene::Create()
         }
 
         SharedPtr<Node> nodeTank(gScene->CreateChild(NODE_TANK));
-        SharedPtr<lTank> tank(nodeTank->CreateComponent<lTank>());
-        tank->Init(lTank::Small);
+        SharedPtr<Tank> tank(nodeTank->CreateComponent<Tank>());
+        tank->Init(Tank::Small);
         tank->SetPosition({float(x), (float)gTerrain->GetHeight((uint)y, (uint)x), (float)-y});
     }
 
     SharedPtr<Node> lightNode;
     lightNode = gScene->CreateChild("LigthNode");
-    vMovinator *movinator = lightNode->CreateComponent<vMovinator>();
+    Movinator *movinator = lightNode->CreateComponent<Movinator>();
     movinator->SetCenter({level[0].Size() / 2.0f, 25.0f, -(level.Size() / 2.0f)});
     movinator->SetMoveSpeed(0.5f);
 
@@ -84,24 +86,26 @@ void lScene::Create()
     light->SetRange(1000.0f);
     light->SetCastShadows(true);
     light->SetShadowBias(Urho3D::BiasParameters(0.00025f, 0.5f));
-    light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
+    light->SetShadowCascade(UCascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
     gRenderer->SetShadowMapSize(2048);
 
     gCamera->SetPosition({0.0f, 25.0f, 0.0f}, {level[0].Size() / 2.0f, 0.0f, -(level.Size() / 2.0f)});
 }
 
-void lScene::Update()
+void Scene::Update()
 {
+    /*
     static Timer timer;
     if(timer.GetMSec(false) < 100)
     {
         return;
     }
     timer.Reset();
+    */
 
     Vector3 hitPos;
-    Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
+    UDrawable *drawable = gCursor->GetRaycastNode(&hitPos);
 
     if (drawable)
     {
@@ -123,7 +127,7 @@ void lScene::Update()
     }
 }
 
-void lScene::HandleMouseDown(StringHash, VariantMap& eventData)
+void Scene::HandleMouseDown(StringHash, VariantMap& eventData)
 {
     int buttons = (int)eventData[Urho3D::MouseButtonDown::P_BUTTONS].GetInt();
 

@@ -9,25 +9,25 @@ class lWindow : public Window
     OBJECT(lWindow)
 
 public:
-    lWindow(Context *context = gContext);
+    lWindow(UContext *context = gContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
     bool IsChildOfParent();
     void Toggle();
     bool IsInside(IntVector2 position, bool isScreen);
-    SharedPtr<lLineTranslator2D> GetTranslator();
+    SharedPtr<LineTranslator2D> GetTranslator();
 
-    SharedPtr<lButton> AddButton(char *text, int x = -1, int y = -1, int width = -1, int height = -1);
-    SharedPtr<lButtonToggled> AddButtonToggled(char *text, int x, int y, int width, int height);
-    SharedPtr<lSliderWithTextAndButtons> AddSlider(char *text, int min, int max, int step, int x = -1, int y = -1, int widthText = -1, int widthRoller = -1);
-    SharedPtr<lDropDownListWithTextAndButton> AddDDList(char *text, int widthText, int widthDDList, int numItems, char *items[], int x = -1, int y = -1);
-    SharedPtr<lLabel> AddLabel(char *text);
+    SharedPtr<ButtonMain> AddButton(char *text, int x = -1, int y = -1, int width = -1, int height = -1);
+    SharedPtr<ButtonToggled> AddButtonToggled(char *text, int x, int y, int width, int height);
+    SharedPtr<SliderWithTextAndButtons> AddSlider(char *text, int min, int max, int step, int x = -1, int y = -1, int widthText = -1, int widthRoller = -1);
+    SharedPtr<DropDownListWithTextAndButton> AddDDList(char *text, int widthText, int widthDDList, int numItems, char *items[], int x = -1, int y = -1);
+    SharedPtr<Label> AddLabel(char *text);
 
 protected:
     lWindow& operator=(const lWindow&)
     {};
 
-    HashMap<Button*, uint> mapButtonsActions;
-    SharedPtr<lLineTranslator2D> translator;
+    HashMap<UButton*, uint> mapButtonsActions;
+    SharedPtr<LineTranslator2D> translator;
 };

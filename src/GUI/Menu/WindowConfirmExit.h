@@ -4,21 +4,21 @@
 #include "GUI/Elements/Window.h"
 
 
-class lWindowConfirmExit : public lWindow
+class WindowConfirmExit : public lWindow
 {
-    OBJECT(lWindowConfirmExit);
+    OBJECT(WindowConfirmExit);
 
 public:
-    lWindowConfirmExit(Context *context);
+    WindowConfirmExit(UContext *context);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
 private:
-    lWindowConfirmExit& operator=(const lWindowConfirmExit&)
+    WindowConfirmExit& operator=(const WindowConfirmExit&)
     {};
 
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
 
-    SharedPtr<lButton> buttonOk;
-    SharedPtr<lButton> buttonCancel;
+    SharedPtr<ButtonMain> buttonOk;
+    SharedPtr<ButtonMain> buttonCancel;
 };

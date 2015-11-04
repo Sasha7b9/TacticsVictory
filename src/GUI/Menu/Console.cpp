@@ -5,7 +5,7 @@
 #include "GUI/Menu/ConsoleParser.h"
 
 
-lConsole::lConsole(Context *context) :
+Console::Console(UContext *context) :
     lWindow(context)
 {
     SetVisible(false);
@@ -28,16 +28,16 @@ lConsole::lConsole(Context *context) :
     scrollBar->SetRange(0.0f);
     AddChild(scrollBar);
 
-    text = gUIRoot->CreateChild<Text>();
+    text = gUIRoot->CreateChild<UText>();
     text->SetStyle("WindowMenu");
     text->SetFixedSize(GetWidth() - 10, GetHeight() - 15);
     text->SetPosition(0, 0);
     AddChild(text);
 
-    SubscribeToEvent(lineEdit, Urho3D::E_TEXTFINISHED, HANDLER(lConsole, HandleFinishedText));
+    SubscribeToEvent(lineEdit, Urho3D::E_TEXTFINISHED, HANDLER(Console, HandleFinishedText));
 }
 
-void lConsole::Toggle()
+void Console::Toggle()
 {
    SetVisible(!IsVisible());
    if(IsVisible())
@@ -46,7 +46,7 @@ void lConsole::Toggle()
    }
 }
 
-void lConsole::HandleFinishedText(StringHash, VariantMap&)
+void Console::HandleFinishedText(StringHash, VariantMap&)
 {
     String command = lineEdit->GetText();
     if(command.Empty())

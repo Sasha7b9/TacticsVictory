@@ -1,18 +1,18 @@
 #pragma once
 
 
-class lLabel : public Text
+class Label : public UText
 {
-    OBJECT(lLabel);
+    OBJECT(Label);
 public:
-    lLabel(Context *context = gContext);
+    Label(UContext *context = gContext);
 
-    static void RegisterObject(Context *context = gContext);
-    static SharedPtr<lLabel> Create(char *text, int sizeFont = 20, int width = -1, int height = -1);
+    static void RegisterObject(UContext *context = gContext);
+    static SharedPtr<Label> Create(char *text, int sizeFont = 20, int width = -1, int height = -1, Urho3D::VerticalAlignment va = Urho3D::VA_TOP);
     void SetText(char *text);
     
 private:
-    lLabel& operator=(const lLabel&)
+    Label& operator=(const Label&)
     {};
 
     void HandleChangeLanguage(StringHash, VariantMap&);

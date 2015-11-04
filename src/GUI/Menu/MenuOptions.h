@@ -10,17 +10,17 @@ enum
 };
 
 
-class lMenuOptions : public lWindow
+class MenuOptions : public lWindow
 {
-    OBJECT(lMenuOptions)
+    OBJECT(MenuOptions)
 
 public:
-    lMenuOptions(Context *context = gContext);
+    MenuOptions(UContext *context = gContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
 private:
-    lMenuOptions& operator=(const lMenuOptions&) {};
+    MenuOptions& operator=(const MenuOptions&) {};
 
     void HandleItemSelected(StringHash eventType, VariantMap& eventData);
     void HandleOnSlider(StringHash evenType, VariantMap& eventData);
@@ -28,19 +28,19 @@ private:
 
     HashMap<Slider*, uint> mapSlidersActions;
 
-    SharedPtr<lSliderWithTextAndButtons> sliderBrightness;
-    SharedPtr<lSliderWithTextAndButtons> sliderMaxOccluderTriangles;
-    SharedPtr<lSliderWithTextAndButtons> sliderVolume;
+    SharedPtr<SliderWithTextAndButtons> sliderBrightness;
+    SharedPtr<SliderWithTextAndButtons> sliderMaxOccluderTriangles;
+    SharedPtr<SliderWithTextAndButtons> sliderVolume;
 
-    SharedPtr<lDropDownListWithTextAndButton> ddlTextureQuality;
-    SharedPtr<lDropDownListWithTextAndButton> ddlMaterialQuality;
-    SharedPtr<lDropDownListWithTextAndButton> ddlTextureAnisotropy;
-    SharedPtr<lDropDownListWithTextAndButton> ddlShadowsEnabled;
-    SharedPtr<lDropDownListWithTextAndButton> ddlSpecularLighting;
-    SharedPtr<lDropDownListWithTextAndButton> ddlShadowMapSize;
-    SharedPtr<lDropDownListWithTextAndButton> ddlShadowQuality;
-    SharedPtr<lDropDownListWithTextAndButton> ddlDynamicInstancing;
+    SharedPtr<DropDownListWithTextAndButton> ddlTextureQuality;
+    SharedPtr<DropDownListWithTextAndButton> ddlMaterialQuality;
+    SharedPtr<DropDownListWithTextAndButton> ddlTextureAnisotropy;
+    SharedPtr<DropDownListWithTextAndButton> ddlShadowsEnabled;
+    SharedPtr<DropDownListWithTextAndButton> ddlSpecularLighting;
+    SharedPtr<DropDownListWithTextAndButton> ddlShadowMapSize;
+    SharedPtr<DropDownListWithTextAndButton> ddlShadowQuality;
+    SharedPtr<DropDownListWithTextAndButton> ddlDynamicInstancing;
     PODVector<int> shadowMapSizes;
-    SharedPtr<lButton> buttonClose;
+    SharedPtr<ButtonMain> buttonClose;
     IntVector2 dragBeginPosition;
 };

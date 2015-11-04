@@ -7,13 +7,13 @@
 class lWindow;
 
 
-class lGUI : public Object
+class GUI : public UObject
 {
-    OBJECT(lGUI);
+    OBJECT(GUI);
 
 public:
-    lGUI();
-    ~lGUI();
+    GUI();
+    ~GUI();
 
     void Create();
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
@@ -29,7 +29,7 @@ public:
     void SetUnvisibleAllWindows();
 
 private:
-    lGUI& operator=(const lGUI&)
+    GUI& operator=(const GUI&)
     {};
     void HandleMenuEvent(StringHash eventType, VariantMap& eventData);
 

@@ -6,20 +6,20 @@
 #include "Graphics/Objects/Line.h"
 
 
-class lEditor : public Object
+class Editor : public UObject
 {
-    OBJECT(lEditor);
+    OBJECT(Editor);
 public:
-    lEditor(Context *context);
+    Editor(UContext *context);
     void Run();
     void ClearScene();
 
 private:
-    lPlane currentPlane;
-    lPlane selectedPlane;
+    Plane currentPlane;
+    Plane selectedPlane;
 
-    lLine currentEdge;
-    lLine selectedEdge;
+    Line currentEdge;
+    Line selectedEdge;
 
     SharedPtr<Node> lightNode;
 
@@ -27,6 +27,6 @@ private:
     void HandleMouseDown(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
 
-    lEditor& operator=(const lEditor&)
+    Editor& operator=(const Editor&)
     {};
 };

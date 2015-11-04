@@ -1,16 +1,16 @@
 #include <stdafx.h>
 
-bool operator==(const lSettings::IntKey & keyleft, const lSettings::IntKey& keyright)
+bool operator==(const Settings::IntKey & keyleft, const Settings::IntKey& keyright)
 {
     return keyleft.str == keyright.str;
 }
 
-bool operator==(const lSettings::FloatKey & keyLeft, const lSettings::FloatKey& keyRight)
+bool operator==(const Settings::FloatKey & keyLeft, const Settings::FloatKey& keyRight)
 {
     return keyLeft.str == keyRight.str;
 }
 
-bool lSettings::Load()
+bool Settings::Load()
 {
     nameFile = String("TVData/settings.xml");
 
@@ -34,7 +34,7 @@ bool lSettings::Load()
 
     mapFloatChild[FloatKey(TV_PANEL_SPEED)] = SET::PANEL::SPEED;
 
-    File inFile(gContext);
+    UFile inFile(gContext);
     if(inFile.Open(nameFile, Urho3D::FILE_READ))
     {
         file = new XMLFile(gContext);
@@ -56,7 +56,7 @@ bool lSettings::Load()
     return false;
 }
 
-int lSettings::GetInt(char *elem, char *name)
+int Settings::GetInt(char *elem, char *name)
 {
     int retValue = mapIntChild[IntKey(elem, name)];
     if(!GetIntFromChild(elem, name, &retValue))
@@ -66,7 +66,7 @@ int lSettings::GetInt(char *elem, char *name)
     return retValue;
 }
 
-int lSettings::GetInt(char *name)
+int Settings::GetInt(char *name)
 {
     int retValue = mapIntChild[IntKey(name)];
     if(!GetIntFromChild(name, &retValue))
@@ -76,7 +76,7 @@ int lSettings::GetInt(char *name)
     return retValue;
 }
 
-float lSettings::GetFloat(char *elem, char *name)
+float Settings::GetFloat(char *elem, char *name)
 {
     float retValue = mapFloatChild[FloatKey(elem, name)];
     if (!GetFloatFromChild(elem, name, &retValue))
@@ -99,17 +99,17 @@ float lSettings::GetFloat(char *elem, char *name)
     }                                                   \
     childName.SetValue(String(value));
 
-void lSettings::SetInt(char *category, char *name, int value)
+void Settings::SetInt(char *category, char *name, int value)
 {
     COMMON_BLOCK;
 }
 
-void lSettings::SetFloat(char *category, char *name, float value)
+void Settings::SetFloat(char *category, char *name, float value)
 {
     COMMON_BLOCK;
 }
 
-void lSettings::SetInt(char *name, int value)
+void Settings::SetInt(char *name, int value)
 {
     XMLElement child = root.GetChild(name);
     if (child == 0)
@@ -120,14 +120,14 @@ void lSettings::SetInt(char *name, int value)
     child.SetValue(String(value));
 }
 
-void lSettings::Save()
+void Settings::Save()
 {
-    File outFile(gContext);
+    UFile outFile(gContext);
     outFile.Open(nameFile, Urho3D::FILE_WRITE);
     file->Save(outFile);
 }
 
-bool lSettings::GetIntFromChild(char *category, char *name, int *value)
+bool Settings::GetIntFromChild(char *category, char *name, int *value)
 {
     if (!root.HasChild(category))
     {
@@ -144,7 +144,7 @@ bool lSettings::GetIntFromChild(char *category, char *name, int *value)
     return true;
 }
 
-bool lSettings::GetFloatFromChild(char *category, char *name, float *value)
+bool Settings::GetFloatFromChild(char *category, char *name, float *value)
 {
     if (!root.HasChild(category))
     {
@@ -159,7 +159,7 @@ bool lSettings::GetFloatFromChild(char *category, char *name, float *value)
     return true;
 }
 
-bool lSettings::GetIntFromChild(char *name, int *value)
+bool Settings::GetIntFromChild(char *name, int *value)
 {
     if (!root.HasChild(name))
     {

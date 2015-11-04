@@ -5,19 +5,31 @@
 #include "Game/Objects/Terrain.h"
 
 
+void PathWave::SetSize(uint numRows, uint numCols)
+{
+    this->numRows = numRows;
+    this->numCols = numCols;
+
+    cells.Resize(numRows);
+    for (auto &row : cells)
+    {
+        row.Resize(numCols);
+    }
+}
+
+
 PODVector<Coord> PathWave::FindPath(Coord start, Coord end)
 {
-    PODVector<Coord> path;
+    static PODVector<Coord> path;
+    path.Clear();
 
     if(gTerrain->GetHeight(start.row, start.col) != gTerrain->GetHeight(end.row, end.col))
     {
         return path;
     }
 
-    cells.Resize(gTerrain->NumRows());
     for (auto &row : cells)
     {
-        row.Resize(gTerrain->NumCols());
         for (auto cell : row)
         {
             cell.numWave = -1;

@@ -69,9 +69,6 @@
     <ClCompile Include="src\Game\Level.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Elements\Button.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\Elements\Cursor.cpp">
       <Filter>GUI\Elements</Filter>
     </ClCompile>
@@ -207,6 +204,9 @@
     <ClCompile Include="src\Game\Path\TilePath.cpp">
       <Filter>Game\Path</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\Elements\ButtonMain.cpp">
+      <Filter>GUI\Elements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -229,9 +229,6 @@
     </ClInclude>
     <ClInclude Include="src\Game\Level.h">
       <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\Button.h">
-      <Filter>GUI\Elements</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\Elements\Cursor.h">
       <Filter>GUI\Elements</Filter>
@@ -373,6 +370,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\Path\TilePath.h">
       <Filter>Game\Path</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\ButtonMain.h">
+      <Filter>GUI\Elements</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

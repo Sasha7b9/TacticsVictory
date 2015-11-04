@@ -1,18 +1,18 @@
 #pragma once
 
 
-class lTerrainSegment : public Object
+class TerrainSegment : public UObject
 {
-    OBJECT(lTerrainSegment)
+    OBJECT(TerrainSegment)
 
 public:
     // NOTE row == 0 and col == 0 arrent added to terrain. From them information for creation of the left and top sides undertakes
-    lTerrainSegment(Vector<Vector<float>> &map, const Vector3 &shift = Vector3::ZERO);
-    ~lTerrainSegment();
+    TerrainSegment(Vector<Vector<float>> &map, const Vector3 &shift = Vector3::ZERO);
+    ~TerrainSegment();
 
     // If function return isClosingTriangleOut == true, return distance for inactive triangle
-    float GetIntersectionPlane(Ray &ray, lPlane &plane, bool &isClosingTriangleOut);
-    lPlane GetPlane(uint row, uint col);
+    float GetIntersectionPlane(URay &ray, Plane &plane, bool &isClosingTriangleOut);
+    Plane GetPlane(uint row, uint col);
     void Rebuild(Vector<Vector<float>> &map_);
     void Clear();
     void SetVisible(bool visible);
@@ -43,8 +43,8 @@ private:
     void AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, float dTex);
     void AddTopLeftCornerPlanes(uint row, uint col);
     void CalculateBoundingBox();
-    float GetIntersectionPlane(Ray &ray, lPlane &plane);
-    float GetIntersectionClosingTriangle(Ray &ray, lTriangle &triangle);
+    float GetIntersectionPlane(URay &ray, Plane &plane);
+    float GetIntersectionClosingTriangle(URay &ray, Triangle &triangle);
 
     Vector<Vector<float>> map;
     Vector<float> vertexes;         // Здесь будем подготавливать вершины для буфера
@@ -59,7 +59,7 @@ private:
     uint numInd = 0;
 
     Vector<uint> bufIndPlanes;          // Buffer for indexes of the edited planes
-    BoundingBox boundingBox;
+    UBoundingBox boundingBox;
 
     Vector<uint> bufIndClosingTriangles; // The buffer for triangles which can't be chosen
 
@@ -86,7 +86,7 @@ public:
 
         unsigned ToHash () const { return (uint)((d0 + 1) << 4) + ((d1 + 1) << 2) + (d2 + 1); }
 
-        bool operator ==(const lTerrainSegment::MapPlaneKey& keyRight) const
+        bool operator ==(const TerrainSegment::MapPlaneKey& keyRight) const
         {
             return d0 == keyRight.d0 && d1 == keyRight.d1 && d2 == keyRight.d2;
         }
@@ -117,7 +117,7 @@ public:
             return (uint)((dLeft + 1) + ((dTopLeft + 1) << 2) + ((dTopLeft + 1) << 4) + ((dDiagLeft + 1) << 6) + ((dDiagTop + 1) << 8));
         }
 
-        bool operator==(const lTerrainSegment::MapCornerKey& keyRight) const
+        bool operator==(const TerrainSegment::MapCornerKey& keyRight) const
         {
             return dLeft == keyRight.dLeft && dTop == keyRight.dTop && dTopLeft == keyRight.dTopLeft && dDiagLeft == keyRight.dDiagLeft && dDiagTop == keyRight.dDiagTop;
         }
@@ -167,5 +167,5 @@ private:
 
     HashMap<MapCornerKey, MapCornerValue> mapCornerTopLeft;
 
-    lTerrainSegment& operator=(const lTerrainSegment&) {};
+    TerrainSegment& operator=(const TerrainSegment&) {};
 };

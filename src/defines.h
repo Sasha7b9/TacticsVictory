@@ -7,6 +7,9 @@ typedef void(*pFuncVI)(int);
 
 typedef long int int64;
 typedef short unsigned uint16;
+typedef unsigned int uint;
+typedef unsigned short ushort;
+typedef unsigned char uchar;
 
 #define SAFE_DELETE(x) if(x) delete x; x = nullptr;
 #define SAFE_DELETE_ARRAY(x) if(x) delete[]x; x = nullptr;

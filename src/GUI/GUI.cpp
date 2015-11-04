@@ -3,7 +3,7 @@
 
 #include "GUI.h"
 #include "GUI/Elements/Tab.h"
-#include "GUI/Elements/Button.h"
+#include "GUI/Elements/ButtonMain.h"
 #include "GUI/Elements/ButtonSwitch.h"
 #include "GUI/Elements/ButtonToggled.h"
 #include "GUI/Elements/Cursor.h"
@@ -28,37 +28,37 @@
 #include "GlobalFunctions.h"
 
 
-lGUI::lGUI() : Object(gContext)
+GUI::GUI() : Object(gContext)
 {
 
 }
 
-lGUI::~lGUI()
+GUI::~GUI()
 {
     SAFE_DELETE(gCursor);
 }
 
 static void RegstrationObjects()
 {
-    lButton::RegisterObject();
-    lButtonSwitch::RegisterObject();
-    lButtonToggled::RegisterObject();
+    ButtonMain::RegisterObject();
+    ButtonSwitch::RegisterObject();
+    ButtonToggled::RegisterObject();
     lWindow::RegisterObject();
-    lMenuMain::RegisterObject();
-    lMenuOptions::RegisterObject();
-    lWindowConfirmExit::RegisterObject();
-    lTab::RegisterObject();
-    lLabel::RegisterObject();
+    MenuMain::RegisterObject();
+    MenuOptions::RegisterObject();
+    WindowConfirmExit::RegisterObject();
+    Tab::RegisterObject();
+    Label::RegisterObject();
     vSlider::RegisterObject();
     lSliderInt::RegisterObject();
     vGovernorCell::RegisterObject();
-    lGovernorFloat::RegisterObject();
-    lPanelBottom::RegisterObject();
-    lPanelMap::RegisterObject();
-    lPanelMain::RegisterObject();
-    lGuiEditor::RegisterObject();
-    lSliderWithTextAndButtons::RegisterObject();
-    lDropDownListWithTextAndButton::RegisterObject();
+    GovernorFloat::RegisterObject();
+    PanelBottom::RegisterObject();
+    PanelMap::RegisterObject();
+    PanelMain::RegisterObject();
+    GuiEditor::RegisterObject();
+    SliderWithTextAndButtons::RegisterObject();
+    DropDownListWithTextAndButton::RegisterObject();
 }
 
 static float GetPosCameraY()
@@ -111,19 +111,19 @@ static float GetCameraYaw()
     return angle.YawAngle();
 }
 
-void lGUI::Create()
+void GUI::Create()
 {
     RegstrationObjects();
 
-    gMenuMain = new lMenuMain(gContext);
+    gMenuMain = new MenuMain(gContext);
     SetWindowInCenterScreen(gMenuMain);
     gUIRoot->AddChild(gMenuMain);
-    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(lGUI, HandleMenuEvent));
+    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(GUI, HandleMenuEvent));
 
-    gConsole = new lConsole(gContext);
+    gConsole = new Console(gContext);
     gUIRoot->AddChild(gConsole);
 
-    gWindowVars = new lWindowVariables(gContext);
+    gWindowVars = new WindowVariables(gContext);
     gUIRoot->AddChild(gWindowVars);
     gWindowVars->SetVisible(false);
     gWindowVars->SetPosition(1000, 500);
@@ -136,33 +136,33 @@ void lGUI::Create()
 
     gLocalization->SetLanguage("en");
 
-    gMenuOptions = new lMenuOptions(gContext);
+    gMenuOptions = new MenuOptions(gContext);
     SetWindowInCenterScreen(gMenuOptions);
     gUIRoot->AddChild(gMenuOptions);
-    SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(lGUI, HandleMenuEvent));
+    SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(GUI, HandleMenuEvent));
     gMenuOptions->SetVisible(false);
 
-    gGuiGame = new lGuiGame(gContext);
+    gGuiGame = new GuiGame(gContext);
     gGuiGame->SetVisible(false);
     gUIRoot->AddChild(gGuiGame);
 
-    gGuiEditor = new lGuiEditor(gContext);
+    gGuiEditor = new GuiEditor(gContext);
     gGuiEditor->SetName("GuiEditor");
     gGuiEditor->SetVisible(false);
     gUIRoot->AddChild(gGuiEditor);
 
-    gWindowConfirmExit = new lWindowConfirmExit(gContext);
+    gWindowConfirmExit = new WindowConfirmExit(gContext);
     gUIRoot->AddChild(gWindowConfirmExit);
     SetWindowInCenterScreen(gWindowConfirmExit);
     gWindowConfirmExit->SetVisible(false);
-    SubscribeToEvent(gWindowConfirmExit, E_MENU, HANDLER(lGUI, HandleMenuEvent));
+    SubscribeToEvent(gWindowConfirmExit, E_MENU, HANDLER(GUI, HandleMenuEvent));
 
-    gCursor = new lCursor();
+    gCursor = new Cursor();
 
     gLocalization->SetLanguage(gSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
 }
 
-bool lGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
+bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
 {
     if (gGuiGame->IsVisible())
     {
@@ -175,20 +175,20 @@ bool lGUI::GheckOnDeadZoneForCursorBottomScreen(int x)
     return false;
 }
 
-bool lGUI::MenuIsVisible()
+bool GUI::MenuIsVisible()
 {
     return gMenuMain->IsVisible() ||
         gMenuOptions->IsVisible() ||
         gWindowConfirmExit->IsVisible();
 }
 
-void lGUI::SetVisibleMenu(bool visible)
+void GUI::SetVisibleMenu(bool visible)
 {
     gMenuMain->SetVisible(visible);
     gMenuOptions->SetVisible(visible);
 }
 
-void lGUI::SetVisibleMenu(lWindow *menuWindow, bool visible)
+void GUI::SetVisibleMenu(lWindow *menuWindow, bool visible)
 {
     menuWindow->SetVisible(visible);
     if(visible)
@@ -197,7 +197,7 @@ void lGUI::SetVisibleMenu(lWindow *menuWindow, bool visible)
     }
 }
 
-void lGUI::HandleMenuEvent(StringHash, VariantMap& eventData)
+void GUI::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     uint action = eventData[MenuEvent::P_TYPE].GetUInt();
 
@@ -215,7 +215,7 @@ void lGUI::HandleMenuEvent(StringHash, VariantMap& eventData)
     }
 }
 
-void lGUI::RemoveFromScreen()
+void GUI::RemoveFromScreen()
 {
     shownMenuMain = gMenuMain->IsVisible();
     shownMenuOptions = gMenuOptions->IsVisible();
@@ -224,20 +224,20 @@ void lGUI::RemoveFromScreen()
     gMenuOptions->SetVisible(false);
 }
 
-void lGUI::AddToScreen()
+void GUI::AddToScreen()
 {
     gMenuMain->SetVisible(shownMenuMain);
     gMenuOptions->SetVisible(shownMenuOptions);
 }
 
-bool lGUI::UnderCursor()
+bool GUI::UnderCursor()
 {
     IntVector2 pos = gCursor->GetCursor()->GetPosition();
 
     return gGuiEditor->IsInside(pos) || gGuiGame->IsInside(pos) || (gFileSelector->GetWindow()->IsVisible());
 }
 
-void lGUI::SetVisibleWindow(lWindow *window, bool visible)
+void GUI::SetVisibleWindow(lWindow *window, bool visible)
 {
     window->SetVisible(visible);
     if(visible)
@@ -256,7 +256,7 @@ void lGUI::SetVisibleWindow(lWindow *window, bool visible)
     }
 }
 
-void lGUI::SetUnvisibleAllWindows()
+void GUI::SetUnvisibleAllWindows()
 {
     while(!gOpenedWindow.Empty())
     {

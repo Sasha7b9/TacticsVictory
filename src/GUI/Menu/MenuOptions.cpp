@@ -4,25 +4,25 @@
 #include "MenuOptions.h"
 #include "GUI/GUI.h"
 #include "GUI/Elements/SliderInt.h"
-#include "GUI/Elements/Button.h"
+#include "GUI/Elements/ButtonMain.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/Elements/SliderWithTextAndButtons.h"
 #include "GUI/Elements/DropDownListWithTextAndButton.h"
 
 
-lMenuOptions::lMenuOptions(Context *context) :
+MenuOptions::MenuOptions(UContext *context) :
     lWindow(context)
 {
     SET_VERTICAL_LAYOUT_0_6(this);
     SetName("Options menu");
 
-    SharedPtr<lLabel> label(lLabel::Create("Options", 20));
+    SharedPtr<Label> label(Label::Create("Options", 20));
     AddChild(label);
 
 #define CREATE_SWTAB(name, text, min, max, step, startIndex)                                  \
-    name = new lSliderWithTextAndButtons(this, text, min, max, step);                         \
-    SubscribeToEvent(name, E_SLIDERINTCHANGED, HANDLER(lMenuOptions, HandleOnSlider));  \
+    name = new SliderWithTextAndButtons(this, text, min, max, step);                         \
+    SubscribeToEvent(name, E_SLIDERINTCHANGED, HANDLER(MenuOptions, HandleOnSlider));  \
     name->SetValue(startIndex);
 
     CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, 1, gSet->GetInt(TV_BRIGHTNESS));
@@ -35,8 +35,8 @@ lMenuOptions::lMenuOptions(Context *context) :
     int width1 = SET::MENU::DDLIST::WIDTH;
 
 #define CREATE_DDLWTAB(name, text, num, itms, startIndex)   \
-    name = lDropDownListWithTextAndButton::Create(this, text, width0, width1, num, itms);  \
-    SubscribeToEvent(name, Urho3D::E_ITEMSELECTED, HANDLER(lMenuOptions, HandleItemSelected));     \
+    name = DropDownListWithTextAndButton::Create(this, text, width0, width1, num, itms);  \
+    SubscribeToEvent(name, Urho3D::E_ITEMSELECTED, HANDLER(MenuOptions, HandleItemSelected));     \
     name->SetSelection(startIndex);
 
     char *items1[] = {"Low", "Medium", "High"};
@@ -65,10 +65,10 @@ lMenuOptions::lMenuOptions(Context *context) :
     CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, (uint)gRenderer->GetShadowQuality());
 
     SharedPtr<UIElement> layout(CreateChild<UIElement>());
-    layout->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_CENTER);
+    layout->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_TOP);
 
-    buttonClose = new lButton(0, "Close", 100);
-    SubscribeToEvent(buttonClose, Urho3D::E_RELEASED, HANDLER(lMenuOptions, HandleButtonRelease));
+    buttonClose = new ButtonMain(0, "Close", 100);
+    SubscribeToEvent(buttonClose, Urho3D::E_RELEASED, HANDLER(MenuOptions, HandleButtonRelease));
     layout->AddChild(buttonClose);
     AddChild(layout);
     layout->SetMinHeight(buttonClose->GetHeight());
@@ -84,16 +84,16 @@ lMenuOptions::lMenuOptions(Context *context) :
     label->SetPosition(x, y);
 }
 
-void lMenuOptions::RegisterObject(Context *context)
+void MenuOptions::RegisterObject(UContext *context)
 {
-    context->RegisterFactory<lMenuOptions>("UI");
+    context->RegisterFactory<MenuOptions>("UI");
 
     COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-void lMenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
+void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 {
-    lDropDownListWithTextAndButton *ddList = (lDropDownListWithTextAndButton*)eventData[Urho3D::ItemSelected::P_ELEMENT].GetPtr();
+    DropDownListWithTextAndButton *ddList = (DropDownListWithTextAndButton*)eventData[Urho3D::ItemSelected::P_ELEMENT].GetPtr();
     int index = eventData[Urho3D::ItemSelected::P_SELECTION].GetInt();
 
     if(ddList == ddlTextureQuality)
@@ -136,9 +136,9 @@ void lMenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     }
 }
 
-void lMenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
+void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 {
-    lSliderWithTextAndButtons *slider = (lSliderWithTextAndButtons*)eventData[SliderIntChanged::P_ELEMENT].GetPtr();
+    SliderWithTextAndButtons *slider = (SliderWithTextAndButtons*)eventData[SliderIntChanged::P_ELEMENT].GetPtr();
     int value = eventData[SliderIntChanged::P_VALUE].GetInt();
 
     if(slider == sliderMaxOccluderTriangles)
@@ -156,9 +156,9 @@ void lMenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
     }
 }
 
-void lMenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
+void MenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    Button *button = (Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    UButton *button = (UButton*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
     eventData = GetEventDataMap();
     eventData[MenuEvent::P_TYPE] = mapButtonsActions[button];
     SendEvent(E_MENU, eventData);

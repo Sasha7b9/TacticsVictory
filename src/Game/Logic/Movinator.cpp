@@ -4,23 +4,23 @@
 #include "Movinator.h"
 
 
-vMovinator::vMovinator(Context *context) :
+Movinator::Movinator(UContext *context) :
     LogicComponent(context)
 {
     SetUpdateEventMask(Urho3D::USE_UPDATE);
 }
 
-void vMovinator::SetMoveSpeed(float speedMoving)
+void Movinator::SetMoveSpeed(float speedMoving)
 {
     speed = speedMoving;
 }
 
-void vMovinator::SetCenter(const Vector3 &vec)
+void Movinator::SetCenter(const Vector3 &vec)
 {
     center = vec;
 }
 
-void vMovinator::Update(float time)
+void Movinator::Update(float time)
 {
     float y = center.y_;
     angle += speed * time;

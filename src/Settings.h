@@ -1,6 +1,6 @@
 #pragma once
 
-class lSettings
+class Settings
 {
 public:
     bool Load();

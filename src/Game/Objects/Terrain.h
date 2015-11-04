@@ -1,18 +1,18 @@
 #pragma once
 
 
-class lTerrain : public Object
+class Terrain : public UObject
 {
-    OBJECT(lTerrain);
+    OBJECT(Terrain);
 
 public:
-    lTerrain(Vector<Vector<float> > &map);
-    ~lTerrain();
+    Terrain(Vector<Vector<float> > &map);
+    ~Terrain();
 
-    lPlane GetIntersectionPlane(Ray &ray);
-    lPlane GetPlane(uint row, uint col);
+    Plane GetIntersectionPlane(URay &ray);
+    Plane GetPlane(uint row, uint col);
 
-    lLine  GetIntersectionEdge(Ray &ray);
+    Line  GetIntersectionEdge(URay &ray);
 
     void SetHeight(uint row, uint col, float height);
     float GetHeight(uint row, uint col);
@@ -29,13 +29,13 @@ public:
     static const uint SIZE_SEGMENT = 50;
 
 private:
-    lTerrain& operator=(const lTerrain&)
+    Terrain& operator=(const Terrain&)
     {};
 
     Vector<Vector<float>> map;
     Vector<Vector<bool>>  heightChanged;
 
-    Vector<Vector<SharedPtr<lTerrainSegment>>> segments;
+    Vector<Vector<SharedPtr<TerrainSegment>>> segments;
     uint numSegmentsInZ = 0;
     uint numSegmentsInX = 0;
 

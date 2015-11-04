@@ -7,7 +7,7 @@
 #include "Game/Objects/TerrainSegment.h"
 
 
-lTerrain::lTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
+Terrain::Terrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
 {
     uint mapSizeX = map[0].Size();
     uint mapSizeZ = map.Size();
@@ -34,62 +34,62 @@ lTerrain::lTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
         for(uint z = 0; z < numSegmentsInZ; z++)
         {
             Vector<Vector<float>> subMap = ExtractSubMap(x  * SIZE_SEGMENT, z * SIZE_SEGMENT, SIZE_SEGMENT);
-            SharedPtr<lTerrainSegment> segment(new lTerrainSegment(subMap, CalculateShift(x, z)));
+            SharedPtr<TerrainSegment> segment(new TerrainSegment(subMap, CalculateShift(x, z)));
             segments[z][x] = segment;
         }
     }
 }
 
-Vector3 lTerrain::CalculateShift(uint xSegment, uint zSegment)
+Vector3 Terrain::CalculateShift(uint xSegment, uint zSegment)
 {
     return Vector3((float)(xSegment * SIZE_SEGMENT) - 1.0f, 0.0f, -(float)(zSegment * SIZE_SEGMENT) + 1.0f);
 }
 
-lTerrain::~lTerrain()
+Terrain::~Terrain()
 {
     Clear();
 }
 
-uint lTerrain::NumRows()
+uint Terrain::NumRows()
 {
     return map.Size();
 }
 
-uint lTerrain::NumCols()
+uint Terrain::NumCols()
 {
     return map[0].Size();
 }
 
-void lTerrain::SetHeight(uint row, uint col, float height)
+void Terrain::SetHeight(uint row, uint col, float height)
 {
     map[row][col] = height;
 
     heightChanged[row / SIZE_SEGMENT][col / SIZE_SEGMENT] = true;
 }
 
-float lTerrain::GetHeight(uint row, uint col)
+float Terrain::GetHeight(uint row, uint col)
 {
     return map[row][col];
 }
 
-float lTerrain::GetHeight(int row, int col)
+float Terrain::GetHeight(int row, int col)
 {
     return map[(uint)row][(uint)col];
 }
 
-lPlane lTerrain::GetPlane(uint row, uint col)
+Plane Terrain::GetPlane(uint row, uint col)
 {
     uint rowSegment = row / SIZE_SEGMENT;
     uint colSegment = col / SIZE_SEGMENT;
     uint rowPlane = row - (row / SIZE_SEGMENT) * SIZE_SEGMENT;
     uint colPlane = col - (col / SIZE_SEGMENT) * SIZE_SEGMENT;
-    lPlane plane = segments[rowSegment][colSegment]->GetPlane(rowPlane, colPlane);
+    Plane plane = segments[rowSegment][colSegment]->GetPlane(rowPlane, colPlane);
     plane.row = row;
     plane.col = col;
     return plane;
 }
 
-void lTerrain::Update()
+void Terrain::Update()
 {
     for (uint x = 0; x < numSegmentsInX; x++)
     {
@@ -108,7 +108,7 @@ void lTerrain::Update()
 }
 
 // NOTE Size of the returned array size + 2
-Vector<Vector<float> > lTerrain::ExtractSubMap(uint startX, uint startZ, uint size)
+Vector<Vector<float> > Terrain::ExtractSubMap(uint startX, uint startZ, uint size)
 {
     Vector<Vector<float> > subMap;
     subMap.Resize((uint)size + 2);
@@ -175,11 +175,11 @@ Vector<Vector<float> > lTerrain::ExtractSubMap(uint startX, uint startZ, uint si
     return subMap;
 }
 
-lPlane lTerrain::GetIntersectionPlane(Ray &ray)
+Plane Terrain::GetIntersectionPlane(URay &ray)
 {
-    lPlane plane = lPlane::ZERO;
+    Plane plane = Plane::ZERO;
     Vector<float> distances;
-    Vector<lPlane> planes;
+    Vector<Plane> planes;
     for(uint x = 0; x < numSegmentsInX; x++)
     {
         for(uint z = 0; z < numSegmentsInZ; z++)
@@ -189,7 +189,7 @@ lPlane lTerrain::GetIntersectionPlane(Ray &ray)
             if(distance != Urho3D::M_INFINITY)
             {
                 distances.Push(distance);
-                planes.Push(isClosing ? lPlane::ZERO : plane);
+                planes.Push(isClosing ? Plane::ZERO : plane);
             }
         }
     }
@@ -208,25 +208,25 @@ lPlane lTerrain::GetIntersectionPlane(Ray &ray)
     }
     else
     {
-        plane = lPlane::ZERO;
+        plane = Plane::ZERO;
     }
 
     return plane;
 }
 
-lLine lTerrain::GetIntersectionEdge(Ray &ray)
+Line Terrain::GetIntersectionEdge(URay &ray)
 {
-    lPlane plane = GetIntersectionPlane(ray);
+    Plane plane = GetIntersectionPlane(ray);
 
     if (plane.IsZero())
     {
-        return lLine::ZERO;
+        return Line::ZERO;
     }
 
     return plane.NearEdge(ray);
 }
 
-void lTerrain::Clear()
+void Terrain::Clear()
 {
     map.Resize(0);
 
@@ -242,12 +242,12 @@ void lTerrain::Clear()
 }
 
 
-bool lTerrain::Empty()
+bool Terrain::Empty()
 {
     return segments.Empty();
 }
 
-void lTerrain::SetVisible(bool visible)
+void Terrain::SetVisible(bool visible)
 {
     for (auto row : segments)
     {

@@ -3,35 +3,35 @@
 
 #include "MenuMain.h"
 #include "GUI/GUI.h"
-#include "GUI/Elements/Button.h"
+#include "GUI/Elements/ButtonMain.h"
 #include "GUI/Elements/ButtonSwitch.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/Menu/WindowConfirmExit.h"
 
 
-lMenuMain::lMenuMain(Context *) :
+MenuMain::MenuMain(UContext *) :
     lWindow()
 {
     SetLayout(Urho3D::LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
 
-    SharedPtr<lLabel> text(lLabel::Create("Tactics Victory", 20));
+    SharedPtr<Label> text(Label::Create("Tactics Victory", 20, -1, -1, Urho3D::VA_TOP));
     AddChild(text);
     
-    buttonNewGame  = new lButton(this, "New game");
-    buttonEditor = new lButton(this, "Editor");
-    buttonOptions = new lButton(this, "Options");
-    buttonLanguage = new lButtonSwitch(this, "Language : EN");
+    buttonNewGame  = new ButtonMain(this, "New game");
+    buttonEditor = new ButtonMain(this, "Editor");
+    buttonOptions = new ButtonMain(this, "Options");
+    buttonLanguage = new ButtonSwitch(this, "Language : EN");
     buttonLanguage->AddState("Language : RU");
     buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
-    buttonExit = new lButton(this, "Exit");
+    buttonExit = new ButtonMain(this, "Exit");
 
-    SubscribeToEvent(buttonOptions, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonEditor, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonNewGame, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonLanguage, Urho3D::E_RELEASED, HANDLER(lMenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonOptions, Urho3D::E_RELEASED, HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonEditor, Urho3D::E_RELEASED, HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonNewGame, Urho3D::E_RELEASED, HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, Urho3D::E_RELEASED, HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonLanguage, Urho3D::E_RELEASED, HANDLER(MenuMain, HandleButtonRelease));
 
     text->SetWidth(GetWidth());
 
@@ -41,16 +41,16 @@ lMenuMain::lMenuMain(Context *) :
     mapButtonsActions[buttonExit] = MenuEvent_ExitInOS;
 }
 
-void lMenuMain::RegisterObject(Context* context)
+void MenuMain::RegisterObject(UContext* context)
 {
-    context->RegisterFactory<lMenuMain>("UI");
+    context->RegisterFactory<MenuMain>("UI");
 
     COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-void lMenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
+void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    Button *button = (Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    UButton *button = (UButton*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
 
     if (button == buttonExit)
     {

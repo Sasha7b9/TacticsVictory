@@ -22,7 +22,7 @@ DEFINE_APPLICATION_MAIN(TacticsVictory)
 
 
 
-TacticsVictory::TacticsVictory(Context* context) :
+TacticsVictory::TacticsVictory(UContext* context) :
     Application(context)
 {
     gContext = context;
@@ -30,12 +30,12 @@ TacticsVictory::TacticsVictory(Context* context) :
 
 void TacticsVictory::Setup()
 {
-    gSet = new lSettings();
-    gFileSystem = GetSubsystem<FileSystem>();
+    gSet = new Settings();
+    gFileSystem = GetSubsystem<UFileSystem>();
     gSet->Load();
 
     engineParameters_["WindowTitle"] = GetTypeName();
-    engineParameters_["LogName"] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
+    engineParameters_["LogName"] = GetSubsystem<UFileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_["FullScreen"] = false;
     engineParameters_["Headless"] = false;
     engineParameters_["TextureQuality"] = 32;
@@ -45,13 +45,13 @@ void TacticsVictory::Setup()
 
 void TacticsVictory::Stop()
 {
-    lTilePath::RemoveAll();
+    TilePath::RemoveAll();
     SAFE_DELETE(gFileSelector);
     SAFE_DELETE(gTerrain);
     SAFE_DELETE(gLevel);
     SAFE_DELETE(gGUI);
     SAFE_DELETE(gTime);
-    File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
+    UFile file(gContext, "ui.xml", Urho3D::FILE_WRITE);
     LOGINFO("Now save ui");
     gUIRoot->SaveXML(file);
     gSet->Save();
@@ -71,12 +71,12 @@ void TacticsVictory::CreateComponents()
     gUI = GetSubsystem<UI>();
     gCache = GetSubsystem<ResourceCache>();
 
-    gEngine = GetSubsystem<Engine>();
+    gEngine = GetSubsystem<UEngine>();
     gInput = GetSubsystem<Input>();
     gRenderer = GetSubsystem<Renderer>();
     gGraphics = GetSubsystem<Graphics>();
 
-    gScene = new Scene(gContext);
+    gScene = new UScene(gContext);
     // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
     gScene->CreateComponent<Octree>();
 
@@ -84,29 +84,29 @@ void TacticsVictory::CreateComponents()
 
     gUIRoot = gUI->GetRoot();
 
-    gScene->CreateComponent<DebugRenderer>();
-    gDebugRenderer = gScene->GetComponent<DebugRenderer>();
+    gScene->CreateComponent<UDebugRenderer>();
+    gDebugRenderer = gScene->GetComponent<UDebugRenderer>();
 
     gTime = new Time(gContext);
 
-    gGUI = new lGUI();
+    gGUI = new GUI();
 
-    gLevel = new lLevel();
+    gLevel = new Level();
 
-    lScene::RegisterObject();
+    Scene::RegisterObject();
 }
 
 void TacticsVictory::RegistrationFactories()
 {
-    gContext->RegisterFactory<vRotator>();
-    gContext->RegisterFactory<vMovinator>();
+    gContext->RegisterFactory<Rotator>();
+    gContext->RegisterFactory<Movinator>();
 }
 
 void TacticsVictory::Start()
 {
     Application::Start();
 
-    gLog = new Log(gContext);
+    gLog = new ULog(gContext);
     gLog->Open("log.txt");
     gLog->SetLevel(Urho3D::LOG_INFO);
 
@@ -115,7 +115,7 @@ void TacticsVictory::Start()
     CreateComponents();
 
     gCache->AddResourceDir(gFileSystem->GetProgramDir() + "../TVData");
-    gFont = gCache->GetResource<Font>(SET::MENU::FONT::NAME);
+    gFont = gCache->GetResource<UFont>(SET::MENU::FONT::NAME);
     //gCache->AddResourceDir(gFileSystem->GetProgramDir() + "TVData");
 
 
@@ -127,11 +127,11 @@ void TacticsVictory::Start()
     
     InitLocalizationSystem();
 
-    gCamera = new lCamera();
+    gCamera = new Camera();
 
     gGUI->Create();
 
-    gFileSelector = new FileSelector(gContext);
+    gFileSelector = new UFileSelector(gContext);
     gFileSelector->GetWindow()->SetModal(false);
     gFileSelector->GetWindow()->SetVisible(false);
 
@@ -154,7 +154,7 @@ void TacticsVictory::SubscribeToEvents()
 
 void TacticsVictory::SetWindowTitleAndIcon()
 {
-    Image* icon = gCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
+    UImage* icon = gCache->GetResource<UImage>("Textures/TacticsVictoryIcon.png");
     gGraphics->SetWindowIcon(icon);
     gGraphics->SetWindowTitle(L"Тактика победы");
 }
@@ -173,7 +173,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 
 void TacticsVictory::CreateNewGame()
 {
-    scene = new lScene();
+    scene = new Scene();
     gCamera->SetEnabled(true);
     gGUI->RemoveFromScreen();
     gGuiGame->SetVisible(true);
@@ -183,7 +183,7 @@ void TacticsVictory::CreateEditorSession()
 {
     if(!gEditor)
     {
-        gEditor = new lEditor(gContext);
+        gEditor = new Editor(gContext);
     }
     gGUI->RemoveFromScreen();
     gGuiEditor->SetVisible(true);

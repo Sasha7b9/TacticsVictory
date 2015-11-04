@@ -4,7 +4,7 @@
 #include "PanelBottom.h"
 
 
-lPanelBottom::lPanelBottom(Context *context) :
+PanelBottom::PanelBottom(UContext *context) :
     lWindow(context)
 {
     SetName("PanelBottom");
@@ -12,9 +12,9 @@ lPanelBottom::lPanelBottom(Context *context) :
     SetMovable(false);
 }
 
-void lPanelBottom::RegisterObject(Context *context)
+void PanelBottom::RegisterObject(UContext *context)
 {
-    context->RegisterFactory<lPanelBottom>("UI");
+    context->RegisterFactory<PanelBottom>("UI");
 
     COPY_BASE_ATTRIBUTES(lWindow);
 }

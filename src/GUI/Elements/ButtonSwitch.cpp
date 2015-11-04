@@ -4,33 +4,33 @@
 #include "ButtonSwitch.h"
 
 
-lButtonSwitch::lButtonSwitch(Context *context) :
-    lButton(context)
+ButtonSwitch::ButtonSwitch(UContext *context) :
+    ButtonMain(context)
 {
 
 }
 
-lButtonSwitch::lButtonSwitch(UIElement *uielement, char *text, int width, int height) :
-    lButton(uielement, text, width, height)
+ButtonSwitch::ButtonSwitch(UIElement *uielement, char *text, int width, int height) :
+    ButtonMain(uielement, text, width, height)
 {
     items.Push(text);
 
-    SubscribeToEvent(this, Urho3D::E_RELEASED, HANDLER(lButtonSwitch, HandleButtonRelease));
+    SubscribeToEvent(this, Urho3D::E_RELEASED, HANDLER(ButtonSwitch, HandleButtonRelease));
 }
 
-void lButtonSwitch::RegisterObject(Context *context)
+void ButtonSwitch::RegisterObject(UContext *context)
 {
-    context->RegisterFactory<lButtonSwitch>("UI");
+    context->RegisterFactory<ButtonSwitch>("UI");
 
-    COPY_BASE_ATTRIBUTES(lButton);
+    COPY_BASE_ATTRIBUTES(ButtonMain);
 }
 
-void lButtonSwitch::AddState(char *item)
+void ButtonSwitch::AddState(char *item)
 {
     items.Push(item);
 }
 
-void lButtonSwitch::HandleButtonRelease(StringHash, VariantMap&)
+void ButtonSwitch::HandleButtonRelease(StringHash, VariantMap&)
 {
     state++;
     if (state == items.Size())
@@ -41,12 +41,12 @@ void lButtonSwitch::HandleButtonRelease(StringHash, VariantMap&)
     SetText(items[state]);
 }
 
-uint lButtonSwitch::GetState()
+uint ButtonSwitch::GetState()
 {
     return state;
 }
 
-void lButtonSwitch::SetState(uint state_)
+void ButtonSwitch::SetState(uint state_)
 {
     state = state_;
     SetText(items[state]);

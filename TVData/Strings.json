@@ -46,8 +46,6 @@
     "Load":                 { "ru":"Загрузить" },
     "Save":                 { "ru":"Сохранить" },
     "New map":              { "ru":"Новая карта" },
-    "CreateNewMap":         { "en":"Creation of new map",
-                              "ru":"Создание новой карты" },
     "Dimension X":          { "ru":"Размер X" },
     "Dimension Y":          { "ru":"Размер Y" },
     "Clear":                { "ru":"Очистить" },
@@ -82,5 +80,7 @@
     "Objects":              { "ru":"Объекты" },
     "Add":                  { "ru":"Добавить" },
     "hintObjectsAdd":       { "en":"Add new object in factory",
-                                "ru":"Добавить новый объект в фабрику" }
+                                "ru":"Добавить новый объект в фабрику" },
+    "Language : EN":        { "ru":"Language : EN" },
+    "Language : RU":        { "ru":"Language : RU" }
 }

@@ -2,42 +2,42 @@
 
 
 #include "WindowConfirmExit.h"
-#include "GUI/Elements/Button.h"
+#include "GUI/Elements/ButtonMain.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/GUI.h"
 #include "GUI/Menu/MenuMain.h"
 
 
 
-lWindowConfirmExit::lWindowConfirmExit(Context *) :
+WindowConfirmExit::WindowConfirmExit(UContext *) :
     lWindow()
 {
     SET_VERTICAL_LAYOUT_0_6(this);
-    SharedPtr<lLabel> label(lLabel::Create("Exit in OS?"));
+    SharedPtr<Label> label(Label::Create("Exit in OS?"));
     AddChild(label);
 
     SharedPtr<UIElement> layer(CreateChild<UIElement>());
     SET_HORIZONTAL_LAYOUT_6_6(layer);
     
-    buttonOk = new lButton(layer, "Ok");
-    buttonCancel = new lButton(layer, "Cancel");
+    buttonOk = new ButtonMain(layer, "Ok");
+    buttonCancel = new ButtonMain(layer, "Cancel");
 
-    SubscribeToEvent(buttonOk, Urho3D::E_RELEASED, HANDLER(lWindowConfirmExit, HandleButtonRelease));
-    SubscribeToEvent(buttonCancel, Urho3D::E_RELEASED, HANDLER(lWindowConfirmExit, HandleButtonRelease));
+    SubscribeToEvent(buttonOk, Urho3D::E_RELEASED, HANDLER(WindowConfirmExit, HandleButtonRelease));
+    SubscribeToEvent(buttonCancel, Urho3D::E_RELEASED, HANDLER(WindowConfirmExit, HandleButtonRelease));
 
     AddChild(layer);
 }
 
-void lWindowConfirmExit::RegisterObject(Context *context)
+void WindowConfirmExit::RegisterObject(UContext *context)
 {
-    context->RegisterFactory<lWindowConfirmExit>("UI");
+    context->RegisterFactory<WindowConfirmExit>("UI");
 
     COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-void lWindowConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
+void WindowConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    Button *button = (Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    UButton *button = (UButton*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
 
     if (button == buttonOk)
     {

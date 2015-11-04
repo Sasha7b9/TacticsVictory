@@ -6,11 +6,11 @@
 #include "GUI/GUI.h"
 
 
-lCamera::lCamera()
+Camera::Camera()
 {
     cameraNode = gScene->CreateChild("Camera");
 
-    Camera *camera = cameraNode->CreateComponent<Camera>();
+    UCamera *camera = cameraNode->CreateComponent<UCamera>();
     camera->SetFarClip(1000.0f);
     camera->SetNearClip(1.0f);
     cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
@@ -24,30 +24,30 @@ lCamera::lCamera()
     SetupViewport();
 }
 
-Vector3 lCamera::GetPosition()
+Vector3 Camera::GetPosition()
 {
     return cameraNode->GetPosition();
 }
 
-void lCamera::SetPosition(const Vector3 &position)
+void Camera::SetPosition(const Vector3 &position)
 {
     cameraNode->SetPosition(position);
 }
 
-void lCamera::SetPosition(const Vector3& position, const Vector3& lookAt_)
+void Camera::SetPosition(const Vector3& position, const Vector3& lookAt_)
 {
     cameraNode->SetPosition(position);
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
-void lCamera::LookAt(const Vector3 &lookAt_)
+void Camera::LookAt(const Vector3 &lookAt_)
 {
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
-void lCamera::ParallelTranslateLookAt(const Vector3 &lookAt_)
+void Camera::ParallelTranslateLookAt(const Vector3 &lookAt_)
 {
     Vector3 delta = lookAt_ - lookAt;
     lookAt = lookAt_;
@@ -55,7 +55,7 @@ void lCamera::ParallelTranslateLookAt(const Vector3 &lookAt_)
     cameraNode->LookAt(lookAt);
 }
 
-void lCamera::Move(float time)
+void Camera::Move(float time)
 {
     if(!enabled)
     {
@@ -159,7 +159,7 @@ void lCamera::Move(float time)
     }
 }
 
-void lCamera::SetPitch(float newPitch)
+void Camera::SetPitch(float newPitch)
 {
     Quaternion rotation = cameraNode->GetRotation();
     float yaw = rotation.YawAngle();
@@ -167,11 +167,11 @@ void lCamera::SetPitch(float newPitch)
 
     float angleNeed = newPitch - pitch;
 
-    Quaternion rotateNeed(-angleNeed, {Sin(yaw + 270.0f), 0.0f, Cos(yaw + 270.0f)});
+    Quaternion rotateNeed(-angleNeed, {Sin(yaw + 270.0f), 0.0f, UCos(yaw + 270.0f)});
     cameraNode->RotateAround(lookAt, rotateNeed, Urho3D::TS_WORLD);
 }
 
-void lCamera::MoveOn(Direction direction, float distance)
+void Camera::MoveOn(Direction direction, float distance)
 {
     if(!enabled)
     {
@@ -204,7 +204,7 @@ void lCamera::MoveOn(Direction direction, float distance)
         else
         {
             const float delta = 270.0f;
-            Quaternion rotate(-distance, {Sin(yaw + delta), 0.0f, Cos(yaw + delta)});
+            Quaternion rotate(-distance, {Sin(yaw + delta), 0.0f, UCos(yaw + delta)});
             cameraNode->RotateAround(lookAt, rotate, Urho3D::TS_WORLD);
         }
     }
@@ -222,7 +222,7 @@ void lCamera::MoveOn(Direction direction, float distance)
     }
 
     float sinYaw = Sin(yaw);
-    float cosYaw = Cos(yaw);
+    float cosYaw = UCos(yaw);
 
     float dX = distance * sinYaw;
     float dZ = distance * cosYaw;
@@ -265,24 +265,24 @@ void lCamera::MoveOn(Direction direction, float distance)
     }
 }
 
-void lCamera::SetEnabled(bool _enabled)
+void Camera::SetEnabled(bool _enabled)
 {
     enabled = _enabled;
 }
 
-void lCamera::SetupViewport()
+void Camera::SetupViewport()
 {
-    SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<Camera>()));
+    SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<UCamera>()));
     gRenderer->SetViewport(0, viewport);
 }
 
-SharedPtr<Node> lCamera::GetNode()
+SharedPtr<Node> Camera::GetNode()
 {
     return cameraNode;
 }
 
-Ray lCamera::GetCursorRay()
+URay Camera::GetCursorRay()
 {
     IntVector2 pos = gUI->GetCursorPosition();
-    return cameraNode->GetComponent<Camera>()->GetScreenRay((float)pos.x_ / gGraphics->GetWidth(), (float)pos.y_ / gGraphics->GetHeight());
+    return cameraNode->GetComponent<UCamera>()->GetScreenRay((float)pos.x_ / gGraphics->GetWidth(), (float)pos.y_ / gGraphics->GetHeight());
 }

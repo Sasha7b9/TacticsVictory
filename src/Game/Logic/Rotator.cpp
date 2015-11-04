@@ -4,7 +4,7 @@
 #include "Rotator.h"
 
 
-vRotator::vRotator(Context* context) :
+Rotator::Rotator(UContext* context) :
     LogicComponent(context),
     rotationSpeed(Vector3::ZERO)
 {
@@ -12,12 +12,12 @@ vRotator::vRotator(Context* context) :
     SetUpdateEventMask(Urho3D::USE_UPDATE);
 }
 
-void vRotator::SetRotationSpeed(const Vector3& speed)
+void Rotator::SetRotationSpeed(const Vector3& speed)
 {
     rotationSpeed = speed;
 }
 
-void vRotator::Update(float timeStep)
+void Rotator::Update(float timeStep)
 {
     // Components have their scene node as a member variable for convenient access. Rotate the scene node now: construct a
     // rotation quaternion from Euler angles, scale rotation speed with the scene update time step

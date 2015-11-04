@@ -4,25 +4,25 @@
 #include "Label.h"
 
 
-lLabel::lLabel(Context *context) :
-    Text(context)
+Label::Label(UContext *context) :
+    UText(context)
 {
-    SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, HANDLER(lLabel, HandleChangeLanguage));
+    SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, HANDLER(Label, HandleChangeLanguage));
 }
 
-void lLabel::RegisterObject(Context *context)
+void Label::RegisterObject(UContext *context)
 {
-    context->RegisterFactory<lLabel>("UI");
+    context->RegisterFactory<Label>("UI");
 
-    COPY_BASE_ATTRIBUTES(Text);
+    COPY_BASE_ATTRIBUTES(UText);
 }
 
-SharedPtr<lLabel> lLabel::Create(char *text_, int sizeFont, int width /* = -1 */, int height /* = -1 */)
+SharedPtr<Label> Label::Create(char *text_, int sizeFont, int width /* = -1 */, int height /* = -1 */, Urho3D::VerticalAlignment va)
 {
-    SharedPtr<lLabel> text(new lLabel(gContext));
+    SharedPtr<Label> text(new Label(gContext));
     text->text = text_;
     text->SetFont(gFont, sizeFont);
-    text->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_CENTER);
+    text->SetAlignment(Urho3D::HA_CENTER, va);
 
     if(width == -1 && height == -1)
     {
@@ -46,14 +46,14 @@ SharedPtr<lLabel> lLabel::Create(char *text_, int sizeFont, int width /* = -1 */
     return text;
 }
 
-void lLabel::SetText(char *text_)
+void Label::SetText(char *text_)
 {
     text = text_;
 
-    Text::SetText(gLocalization->Get(text));
+    UText::SetText(gLocalization->Get(text));
 }
 
-void lLabel::HandleChangeLanguage(StringHash, VariantMap&)
+void Label::HandleChangeLanguage(StringHash, VariantMap&)
 {
-    Text::SetText((char*)gLocalization->Get(text).CString());
+    UText::SetText((char*)gLocalization->Get(text).CString());
 }

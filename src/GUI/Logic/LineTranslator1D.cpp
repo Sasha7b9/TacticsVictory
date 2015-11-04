@@ -5,7 +5,7 @@
 #include "Core/Math.h"
 
 
-lLineTranslator1D::lLineTranslator1D(int start_, int finish_, float speed_, State startPosition) :
+LineTranslator1D::LineTranslator1D(int start_, int finish_, float speed_, State startPosition) :
     Object(gContext),
     start((float)start_), finish((float)finish_), speed(fabs(speed_))
 {
@@ -14,7 +14,7 @@ lLineTranslator1D::lLineTranslator1D(int start_, int finish_, float speed_, Stat
     position = startPosition == State_PointStart ? start : finish;
 }
 
-void lLineTranslator1D::Toggle()
+void LineTranslator1D::Toggle()
 {
     if(state == State_MoveToFinish || state == State_MoveToStart)
     {
@@ -36,7 +36,7 @@ void lLineTranslator1D::Toggle()
     }
 }
 
-int lLineTranslator1D::Update(float dT)
+int LineTranslator1D::Update(float dT)
 {
     if(state == State_PointStart)
     {

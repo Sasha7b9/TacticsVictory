@@ -32,6 +32,7 @@ class PathWave
 public:
 
     PODVector<Coord> FindPath(Coord start, Coord end);
+    void SetSize(uint numRows, uint numCols);
 
 private:
     struct Cell
@@ -42,6 +43,9 @@ private:
 
     Vector<Vector<Cell>> cells;
     float heightStart = 0.0f;
+
+    uint numRows = 0;
+    uint numCols = 0;
 
     void DrawWave(int numWave);
     void FillNearCells(uint row, uint col, int numWave);

@@ -4,19 +4,19 @@
 #include "GUI/Elements/Window.h"
 
 
-class lConsole : public lWindow
+class Console : public lWindow
 {
-    OBJECT(lConsole);
+    OBJECT(Console);
 
 public:
-    lConsole(Context *context);
+    Console(UContext *context);
 
     void Toggle();
     void HandleFinishedText(StringHash eventType, VariantMap& eventData);
 
 private:
     SharedPtr<LineEdit> lineEdit;
-    SharedPtr<Text> text;
+    SharedPtr<UText> text;
     SharedPtr<ScrollBar> scrollBar;
 
 

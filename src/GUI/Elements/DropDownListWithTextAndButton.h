@@ -1,24 +1,24 @@
 #pragma once
 
 
-class lDropDownListWithTextAndButton : public UIElement
+class DropDownListWithTextAndButton : public UIElement
 {
-    OBJECT(lDropDownListWithTextAndButton);
+    OBJECT(DropDownListWithTextAndButton);
 
 public:
-    lDropDownListWithTextAndButton(Context *context = gContext);
+    DropDownListWithTextAndButton(UContext *context = gContext);
 
-    lDropDownListWithTextAndButton(char *text, int widthText, int widthDDList);
+    DropDownListWithTextAndButton(char *text, int widthText, int widthDDList);
 
-    static void RegisterObject(Context* context = gContext);
+    static void RegisterObject(UContext* context = gContext);
 
     void AddItem(char *text);
     void SetSelection(uint index);
 
-    static SharedPtr<lDropDownListWithTextAndButton> Create(Window *window, char *text, int widthText, int widthDDList, int numItems, char * items[]);
+    static SharedPtr<DropDownListWithTextAndButton> Create(Window *window, char *text, int widthText, int widthDDList, int numItems, char * items[]);
 
 private:
-    lDropDownListWithTextAndButton& operator=(const lDropDownListWithTextAndButton&)
+    DropDownListWithTextAndButton& operator=(const DropDownListWithTextAndButton&)
     {};
 
     void HandleItemSelected(StringHash eventType, VariantMap& eventData);
@@ -26,7 +26,7 @@ private:
     void HandleHoverBegin(StringHash eventType, VariantMap& eventData);
     void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
 
-    SharedPtr<DropDownList> ddList;
-    SharedPtr<Button> buttonLeft;
-    SharedPtr<Button> buttonRight;
+    SharedPtr<UDropDownList> ddList;
+    SharedPtr<UButton> buttonLeft;
+    SharedPtr<UButton> buttonRight;
 };

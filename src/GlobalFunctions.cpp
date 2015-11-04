@@ -12,7 +12,7 @@ void SetWindowInCenterScreen(Window *window)
 void OpenFileSelector(char *title, char *textOk, char *textCancel, Vector<String> &filters)
 {
     SAFE_DELETE(gFileSelector);
-    gFileSelector = new FileSelector(gContext);
+    gFileSelector = new UFileSelector(gContext);
     XMLFile *style = gCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
     gFileSelector->SetDefaultStyle(style);
 

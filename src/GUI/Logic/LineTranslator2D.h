@@ -1,9 +1,9 @@
 #pragma once
 
 
-class lLineTranslator2D : public Object
+class LineTranslator2D : public UObject
 {
-    OBJECT(lLineTranslator2D);
+    OBJECT(LineTranslator2D);
 
 public:
 
@@ -15,16 +15,16 @@ public:
         State_MoveToStart
     };
 
-    lLineTranslator2D(const IntVector2 &start, const IntVector2 &finish, float speed, State startPosition);
+    LineTranslator2D(const IntVector2 &start, const IntVector2 &finish, float speed, State startPosition);
 
     IntVector2 Update(float dT);
     void Toggle();
     State GetState();
 
 private:
-    lLineTranslator2D& operator=(const lLineTranslator2D&)
+    LineTranslator2D& operator=(const LineTranslator2D&)
     {};
 
-    SharedPtr<lLineTranslator1D> translatorX;
-    SharedPtr<lLineTranslator1D> translatorY;
+    SharedPtr<LineTranslator1D> translatorX;
+    SharedPtr<LineTranslator1D> translatorY;
 };

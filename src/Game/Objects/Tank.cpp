@@ -5,10 +5,10 @@
 #include "Core/Math.h"
 
 
-HashMap<lTank::Key, lTank::TankStruct> lTank::parameters;
+HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
 
 
-lTank::lTank(Context *context) : LogicComponent(context)
+Tank::Tank(UContext *context) : LogicComponent(context)
 {
     if (parameters.Empty())
     {
@@ -17,19 +17,19 @@ lTank::lTank(Context *context) : LogicComponent(context)
     }
 }
 
-void lTank::RegisterObject(Context* context)
+void Tank::RegisterObject(UContext* context)
 {
-    context->RegisterFactory<lTank>();
+    context->RegisterFactory<Tank>();
 }
 
-void lTank::Init(Type type_)
+void Tank::Init(Type type_)
 {
     type = type_;
     LoadFromFile();
     Normalize();
 }
 
-void lTank::LoadFromFile()
+void Tank::LoadFromFile()
 {
     char *fileName = parameters[type].fileName;
     JSONFile *file = gCache->GetResource<JSONFile>(fileName);
@@ -45,13 +45,13 @@ void lTank::LoadFromFile()
     modelObject->SetCastShadows(true);
 }
 
-void lTank::Normalize()
+void Tank::Normalize()
 {
     Vector3 pos = node_->GetPosition();
     node_->SetPosition({0.0f, 0.0f, 0.0f});
     node_->SetScale(1.0f);
 
-    BoundingBox box = modelObject->GetModel()->GetBoundingBox();
+    UBoundingBox box = modelObject->GetModel()->GetBoundingBox();
 
     Vector3 delta = box.max_ - box.min_;
 
@@ -69,12 +69,12 @@ void lTank::Normalize()
     SetPosition(pos);
 }
 
-void lTank::SetPosition(const Vector3& pos)
+void Tank::SetPosition(const Vector3& pos)
 {
     node_->SetPosition(pos + deltaPos);
 }
 
-Vector3 lTank::GetPosition()
+Vector3 Tank::GetPosition()
 {
     return node_->GetPosition() - deltaPos;
 }

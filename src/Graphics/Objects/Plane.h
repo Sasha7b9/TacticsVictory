@@ -1,16 +1,16 @@
 #pragma once
 
 
-class lPlane
+class Plane
 {
 public:
-    lPlane(const Vector3 &v0 = Vector3::ZERO, const Vector3 &v1 = Vector3::ZERO, const Vector3 &v2 = Vector3::ZERO, const Vector3 &v3 = Vector3::ZERO);
+    Plane(const Vector3 &v0 = Vector3::ZERO, const Vector3 &v1 = Vector3::ZERO, const Vector3 &v2 = Vector3::ZERO, const Vector3 &v3 = Vector3::ZERO);
 
-    bool IsEquals(const lPlane &plane);
+    bool IsEquals(const Plane &plane);
     bool IsZero();
     void CalculateRowCol();
     void SetY(float y);
-    lLine NearEdge(Ray &ray);
+    Line NearEdge(URay &ray);
 
     Vector3 v0;
     Vector3 v1;
@@ -20,5 +20,5 @@ public:
     uint row = 0;
     uint col = 0;
 
-    static lPlane ZERO;
+    static Plane ZERO;
 };

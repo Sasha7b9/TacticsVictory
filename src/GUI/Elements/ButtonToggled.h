@@ -1,22 +1,22 @@
 #pragma once
 
 
-class lButtonToggled : public CheckBox
+class ButtonToggled : public UCheckBox
 {
-    OBJECT(lButtonToggled)
+    OBJECT(ButtonToggled)
 
 public:
-    lButtonToggled(Context *context = gContext);
-    lButtonToggled(UIElement *uielement, char *text, int width = -1, int height = -1);
+    ButtonToggled(UContext *context = gContext);
+    ButtonToggled(UIElement *uielement, char *text, int width = -1, int height = -1);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
     void SetText(char *text);
 
 private:
-    lButtonToggled& operator=(const lButtonToggled&) {};
+    ButtonToggled& operator=(const ButtonToggled&) {};
 
-    SharedPtr<lLabel> label;
+    SharedPtr<Label> label;
 
     void HandleMouseUp(StringHash eventType, VariantMap &eventData);
 };

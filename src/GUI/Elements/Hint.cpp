@@ -5,19 +5,19 @@
 #include "GUI/Elements/Label.h"
 
 
-lHint::lHint(char *text_) : lWindow(), text(text_)
+Hint::Hint(char *text_) : lWindow(), text(text_)
 {
-    label = lLabel::Create(text, 20);
+    label = Label::Create(text, 20);
     AddChild(label);
 
     SetSize(label->GetWidth() + 10, label->GetHeight() + 10);
 
     SetMovable(false);
 
-    SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, HANDLER(lHint, HandleChangeLanguage));
+    SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, HANDLER(Hint, HandleChangeLanguage));
 }
 
-void lHint::HandleChangeLanguage(StringHash, VariantMap&)
+void Hint::HandleChangeLanguage(StringHash, VariantMap&)
 {
     label->SetText(text);
     SetSize(label->GetWidth() + 10, label->GetHeight() + 10);

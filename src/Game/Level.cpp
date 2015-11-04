@@ -6,10 +6,10 @@
 #include "Core/Math.h"
 
 
-Vector<Vector<float> > lLevel::map;
+Vector<Vector<float> > Level::map;
 
 
-lLevel::lLevel(Context *context) : Object(context)
+Level::Level(UContext *context) : Object(context)
 {
 
 }
@@ -51,17 +51,17 @@ static int PushToVector(const char *data, Vector<float> *vec)
     return retValue;
 }
 
-Vector<Vector<float> > lLevel::Get()
+Vector<Vector<float> > Level::Get()
 {
     return map;
 }
 
-Vector<Vector<float> > lLevel::Load(char *fileName)
+Vector<Vector<float> > Level::Load(char *fileName)
 {
     map.Clear();
 
-    SharedPtr<File> fileRead;
-    fileRead = new File(gContext);
+    SharedPtr<UFile> fileRead;
+    fileRead = new UFile(gContext);
     if(fileRead->Open(fileName, Urho3D::FILE_READ))
     {
         String str = fileRead->ReadString();
@@ -96,22 +96,22 @@ Vector<Vector<float> > lLevel::Load(char *fileName)
 
     uint numRows = map.Size();
 
-    map.Resize((numRows / lTerrain::SIZE_SEGMENT) * lTerrain::SIZE_SEGMENT);
+    map.Resize((numRows / Terrain::SIZE_SEGMENT) * Terrain::SIZE_SEGMENT);
 
 
     uint numCols = map[0].Size();
 
     for (uint i = 0; i < map.Size(); i++)
     {
-        map[i].Resize((numCols / lTerrain::SIZE_SEGMENT) * lTerrain::SIZE_SEGMENT);
+        map[i].Resize((numCols / Terrain::SIZE_SEGMENT) * Terrain::SIZE_SEGMENT);
     }
 
     return map;
 }
 
-bool lLevel::Save(String fileName)
+bool Level::Save(String fileName)
 {
-    SharedPtr<File> fileWrite(new File(gContext));
+    SharedPtr<UFile> fileWrite(new UFile(gContext));
 
     if (fileWrite->Open(fileName, Urho3D::FILE_WRITE))
     {
@@ -137,7 +137,7 @@ bool lLevel::Save(String fileName)
     return true;
 }
 
-Vector<Vector<float> > lLevel::Create(int sizeZ, int sizeX)
+Vector<Vector<float> > Level::Create(int sizeZ, int sizeX)
 {
     map.Clear();
 
@@ -157,7 +157,7 @@ Vector<Vector<float> > lLevel::Create(int sizeZ, int sizeX)
     return map;
 }
 
-Vector<Vector<float> > lLevel::CreateRandom(uint numRows, uint numCols)
+Vector<Vector<float> > Level::CreateRandom(uint numRows, uint numCols)
 {
     map.Clear();
 
@@ -217,24 +217,24 @@ Vector<Vector<float> > lLevel::CreateRandom(uint numRows, uint numCols)
     return map;
 }
 
-void lLevel::Clear()
+void Level::Clear()
 {
     map.Clear();
     VariantMap eventData = GetEventDataMap();
     SendEvent(E_MAP_CHANGED, eventData);
 }
 
-uint lLevel::GetWidth()
+uint Level::GetWidth()
 {
     return map.Empty() ? 0 : map[0].Size();
 }
 
-uint lLevel::GetHeight()
+uint Level::GetHeight()
 {
     return map.Empty() ? 0 : map.Size();
 }
 
-void lLevel::SetMap(Vector<Vector<float>> map_)
+void Level::SetMap(Vector<Vector<float>> map_)
 {
     map = map_;
 }

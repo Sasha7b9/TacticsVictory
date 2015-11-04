@@ -9,37 +9,37 @@
 #include "Game/Objects/Terrain.h"
 
 
-lCursor::lCursor() : Object(gContext)
+Cursor::Cursor() : Object(gContext)
 {
-    cursor = new Cursor(gContext);
+    cursor = new UCursor(gContext);
 
-    lImage image(50, 50);
+    Image image(50, 50);
 
     image.Clear({0.0f, 0.0f, 1.0f, 1.0f});
 
-    cursor->DefineShape("Normal", image.GetImage(), {0, 0, 50, 50}, {0, 0});
+    cursor->DefineShape("Normal", image.GetUImage(), {0, 0, 50, 50}, {0, 0});
     gUI->SetCursor(cursor);
     cursor->SetPosition(gGraphics->GetWidth() / 2, gGraphics->GetHeight() / 2);
 
-    shapes = new lCursorShapes();
+    shapes = new CursorShapes();
 }
 
-void lCursor::Show()
+void Cursor::Show()
 {
     hidden = false;
 }
 
-void lCursor::Hide()
+void Cursor::Hide()
 {
     hidden = true;
 }
 
-SharedPtr<Cursor> lCursor::GetCursor()
+SharedPtr<UCursor> Cursor::GetCursor()
 {
     return cursor;
 }
 
-void lCursor::Update(float dT)
+void Cursor::Update(float dT)
 {
     
     const float speed = 500.0f;
@@ -54,8 +54,8 @@ void lCursor::Update(float dT)
 
     if(hidden)
     {
-        SharedPtr<lImage> image(new lImage(1, 1));
-        cursor->DefineShape("Normal", image->GetImage(), {0, 0, image->GetImage()->GetWidth(), image->GetImage()->GetHeight()}, {0, 0});
+        SharedPtr<Image> image(new Image(1, 1));
+        cursor->DefineShape("Normal", image->GetUImage(), {0, 0, image->GetUImage()->GetWidth(), image->GetUImage()->GetHeight()}, {0, 0});
     }
     else
     {
@@ -126,29 +126,29 @@ void lCursor::Update(float dT)
         {
             type = selected ? TypeCursor_Selected : TypeCursor_Normal;
         }
-        SharedPtr<lImage> image = shapes->GetShape(type, type <= TypeCursor_Selected ? (int)(angle0) : numFrame);
-        cursor->DefineShape("Normal", image->GetImage(), {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
+        SharedPtr<Image> image = shapes->GetShape(type, type <= TypeCursor_Selected ? (int)(angle0) : numFrame);
+        cursor->DefineShape("Normal", image->GetUImage(), {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
     }
 }
 
-void lCursor::SetNormal()
+void Cursor::SetNormal()
 {
     selected = false;
 }
 
-void lCursor::SetSelected()
+void Cursor::SetSelected()
 {
     selected = true;
 }
 
-Drawable* lCursor::GetRaycastNode(Vector3 *hitPos_)
+UDrawable* Cursor::GetRaycastNode(Vector3 *hitPos_)
 {
     if(gUI->GetElementAt(gUI->GetCursorPosition(), true))
     {
         return nullptr;
     }
 
-    Ray ray = gCamera->GetCursorRay();
+    URay ray = gCamera->GetCursorRay();
     PODVector<RayQueryResult> results;
     RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, Urho3D::M_INFINITY, Urho3D::DRAWABLE_GEOMETRY);
     gScene->GetComponent<Octree>()->RaycastSingle(query);

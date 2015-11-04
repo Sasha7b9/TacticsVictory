@@ -4,15 +4,16 @@
 #include "Game/Path/PathWave.h"
 
 
-class lPathIndicator
+class PathIndicator
 {
 public:
-    lPathIndicator();
+    PathIndicator();
+
+    void Init();
 
     void SetVisible(bool visible);
-    void SetInCurrentCursorPosition(Drawable *hitDrawable = 0, Vector3 *hitPos = 0);  // To establish the floating image in a cursor position
+    void SetInCurrentCursorPosition(UDrawable *hitDrawable = 0, Vector3 *hitPos = 0);  // To establish the floating image in a cursor position
 
 private:
-    SharedPtr<DecalSet> decal;
     PathWave pathFinder;
 };

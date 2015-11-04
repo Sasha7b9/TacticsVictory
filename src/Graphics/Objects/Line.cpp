@@ -4,20 +4,20 @@
 #include "Line.h"
 
 
-lLine lLine::ZERO = lLine();
+Line Line::ZERO = Line();
 
-lLine::lLine(const Vector3 &start_, const Vector3 &end_)
+Line::Line(const Vector3 &start_, const Vector3 &end_)
 {
     start = start_;
     end = end_;
 }
 
-bool lLine::IsEquals(const lLine &line)
+bool Line::IsEquals(const Line &line)
 {
     return start == line.start && end == line.end;
 }
 
-bool lLine::IsZero()
+bool Line::IsZero()
 {
     return start == Vector3::ZERO && end == Vector3::ZERO;
 }

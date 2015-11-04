@@ -18,13 +18,13 @@ enum TypeCursor
 };
 
 
-class lCursor : public Object
+class Cursor : public Urho3D::Object
 {
-    OBJECT(lCursor)
+    OBJECT(Cursor)
 public:
-    lCursor();
+    Cursor();
 
-    SharedPtr<Cursor> GetCursor();
+    SharedPtr<UCursor> GetCursor();
 
     void Update(float dT);
 
@@ -33,13 +33,13 @@ public:
     void Hide();
     void Show();
     TypeCursor GetType()    { return type; };
-    Drawable* GetRaycastNode(Vector3 *hitPos = 0);
+    UDrawable* GetRaycastNode(Vector3 *hitPos = 0);
 
 private:
-    SharedPtr<Cursor> cursor;
-    SharedPtr<lCursorShapes> shapes;
+    SharedPtr<UCursor> cursor;
+    SharedPtr<CursorShapes> shapes;
 
-    lCursor& operator=(const lCursor&)
+    Cursor& operator=(const Cursor&)
     {};
 
     bool selected = false;

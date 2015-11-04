@@ -24,9 +24,9 @@ class vGovernorCell : public lWindow
     OBJECT(vGovernorCell);
 
 public:
-    vGovernorCell(Context *context = gContext);
+    vGovernorCell(UContext *context = gContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
     void SetSymbol(char symbol);
     char GetSymbol();
@@ -47,7 +47,7 @@ private:
     void ChangeValue(int delta);
     void SetSymbolWithEvent(char symbol);
 
-    SharedPtr<Text> label;
+    SharedPtr<UText> label;
     char symbol = 0;
     bool mouseIsDown = false;
     bool mouseOver = false;
@@ -58,14 +58,14 @@ private:
 };
 
 
-class lGovernorFloat : public lWindow
+class GovernorFloat : public lWindow
 {
-    OBJECT(lGovernorFloat);
+    OBJECT(GovernorFloat);
 
 public:
-    lGovernorFloat(Context *context = gContext);
+    GovernorFloat(UContext *context = gContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
     virtual void Update(float timeStep);
 
@@ -76,7 +76,7 @@ public:
     void HandleHoverButtonEnd(StringHash eventType, VariantMap& eventData);
 
 private:
-    lGovernorFloat& operator=(const lGovernorFloat&)
+    GovernorFloat& operator=(const GovernorFloat&)
     {};
 
     void WriteValue(float value);
@@ -86,8 +86,8 @@ private:
     float GetValue();
 
     Vector<SharedPtr<vGovernorCell> > cells;
-    SharedPtr<Button> buttonDown;
-    SharedPtr<lLabel> label;
+    SharedPtr<UButton> buttonDown;
+    SharedPtr<Label> label;
     int numCells = 11;
     pFuncFV funcRead = nullptr;
     pFuncVF funcWrite = nullptr;

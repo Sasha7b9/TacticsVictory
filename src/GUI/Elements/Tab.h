@@ -4,16 +4,16 @@
 #include "GUI/Elements/Window.h"
 
 
-class lTab : public lWindow
+class Tab : public lWindow
 {
-    OBJECT(lTab);
+    OBJECT(Tab);
 
 public:
-    lTab(Context *context = gContext);
+    Tab(UContext *context = gContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
-    static SharedPtr<lTab> Create(char *title);
+    static SharedPtr<Tab> Create(char *title);
 
-    SharedPtr<lButtonToggled> buttonTitle;
+    SharedPtr<ButtonToggled> buttonTitle;
 };

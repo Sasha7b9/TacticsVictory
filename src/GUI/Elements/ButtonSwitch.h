@@ -1,25 +1,25 @@
 #pragma once
 
 
-#include "Button.h"
+#include "ButtonMain.h"
 
 
-class lButtonSwitch : public lButton
+class ButtonSwitch : public ButtonMain
 {
-    OBJECT(lButtonSwitch);
+    OBJECT(ButtonSwitch);
 
 public:
-    lButtonSwitch(Context *context = gContext);
-    lButtonSwitch(UIElement *uielement, char *text, int width = -1, int height = -1);
+    ButtonSwitch(UContext *context = gContext);
+    ButtonSwitch(UIElement *uielement, char *text, int width = -1, int height = -1);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
     void AddState(char *item);
     void SetState(uint state);
     uint GetState();
 
 private:
-    lButtonSwitch& operator=(const lButtonSwitch&) {};
+    ButtonSwitch& operator=(const ButtonSwitch&) {};
 
     PODVector<char*> items;
     uint state = 0;

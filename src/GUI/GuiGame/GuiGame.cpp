@@ -2,24 +2,24 @@
 
 
 #include "GuiGame.h"
-#include "GUI/Elements/Button.h"
+#include "GUI/Elements/ButtonMain.h"
 #include "GUI/Menu/PanelMap.h"
 #include "GUI/Menu/PanelMain.h"
 #include "GUI/Menu/PanelBottom.h"
 
 
-lGuiGame::lGuiGame(Context* context) :
+GuiGame::GuiGame(UContext* context) :
     UIElement(context)
 {
     SetFixedSize(gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT));
 
-    panelMap = new lPanelMap(context);
+    panelMap = new PanelMap(context);
     AddChild(panelMap);
 
-    panelMain = new lPanelMain(context);
+    panelMain = new PanelMain(context);
     AddChild(panelMain);
 
-    panelBottom = new lPanelBottom(context);
+    panelBottom = new PanelBottom(context);
     AddChild(panelBottom);
     panelBottom->SetPosition(0, gGraphics->GetHeight() - panelBottom->GetHeight());
 
@@ -29,27 +29,27 @@ lGuiGame::lGuiGame(Context* context) :
     int x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
     int y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
     buttonMap = panelBottom->AddButton("Map", x, y, width, height);
-    SubscribeToEvent(buttonMap, Urho3D::E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMap, Urho3D::E_RELEASED, HANDLER(GuiGame, HandleButtonRelease));
 
     x = (int)(gSet->GetInt(TV_PANEL_MAP_WIDTH) * 1.5f) - width / 2;
     buttonMainPanel = panelBottom->AddButton("Panel", x, y, width, height);
-    SubscribeToEvent(buttonMainPanel, Urho3D::E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMainPanel, Urho3D::E_RELEASED, HANDLER(GuiGame, HandleButtonRelease));
 
     x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
     buttonMenu = panelBottom->AddButton("Manu", x, y, width, height);
-    SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, HANDLER(lGuiGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, HANDLER(GuiGame, HandleButtonRelease));
 }
 
-void lGuiGame::RegisterObject(Context* context)
+void GuiGame::RegisterObject(UContext* context)
 {
-    context->RegisterFactory<lGuiGame>("UI");
+    context->RegisterFactory<GuiGame>("UI");
 
     COPY_BASE_ATTRIBUTES(UIElement);
 }
 
-void lGuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
+void GuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
-    lButton *button = (lButton*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    ButtonMain *button = (ButtonMain*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
 
     if(button == buttonMap)
     {
@@ -61,17 +61,17 @@ void lGuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
     }
 }
 
-bool lGuiGame::IntersectionX(lButton *button, int x)
+bool GuiGame::IntersectionX(ButtonMain *button, int x)
 {
     return x >= button->GetPosition().x_ && x <= button->GetPosition().x_ + button->GetWidth();
 }
 
-bool lGuiGame::CheckOnDeadZoneForCursorBottomScreen(int x)
+bool GuiGame::CheckOnDeadZoneForCursorBottomScreen(int x)
 {
     return IntersectionX(buttonMap, x) || IntersectionX(buttonMainPanel, x) || IntersectionX(buttonMenu, x);
 }
 
-bool lGuiGame::IsInside(IntVector2 &position)
+bool GuiGame::IsInside(IntVector2 &position)
 {
     return IsVisible() && (panelBottom->IsInside(position, true) || panelMain->IsInside(position, true) || panelMap->IsInside(position, true));
 }

@@ -7,7 +7,7 @@
 #include "GUI/Logic/LineTranslator2D.h"
 
 
-lPanelMain::lPanelMain(Context *context) :
+PanelMain::PanelMain(UContext *context) :
     lWindow(context)
 {
     SetName("PanelMain");
@@ -19,22 +19,22 @@ lPanelMain::lPanelMain(Context *context) :
     IntVector2 posStart = {SET::PANEL::MAP::WIDTH - 1, gGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAIN::HEIGHT + 1};
     IntVector2 posFinish = {SET::PANEL::MAP::WIDTH - 1, gGraphics->GetHeight()};
 
-    translator = new lLineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), lLineTranslator2D::State_PointStart);
+    translator = new LineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
 }
 
-void lPanelMain::RegisterObject(Context *context)
+void PanelMain::RegisterObject(UContext *context)
 {
-    context->RegisterFactory<lPanelMain>("UI");
+    context->RegisterFactory<PanelMain>("UI");
 
     COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-void lPanelMain::Update(float dT)
+void PanelMain::Update(float dT)
 {
     SetPosition(translator->Update(dT));
 }
 
-void lPanelMain::AddTab(SharedPtr<lTab> tab)
+void PanelMain::AddTab(SharedPtr<Tab> tab)
 {
     static const int x0 = 10;
     static const int y0 = 4;
@@ -58,15 +58,15 @@ void lPanelMain::AddTab(SharedPtr<lTab> tab)
 
     tabs.Push(tab);
 
-    SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(lPanelMain, HandleToggedTitle));
+    SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(PanelMain, HandleToggedTitle));
 
     tab->SetPosition(0, y0 + tab->buttonTitle->GetHeight() - 1);
     tab->SetFixedSize(GetWidth(), GetHeight() - y0 - tab->buttonTitle->GetHeight() + 1);
 }
 
-void lPanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
+void PanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
 {
-    lButtonToggled *button = (lButtonToggled*)eventData[Urho3D::Toggled::P_ELEMENT].GetPtr();
+    ButtonToggled *button = (ButtonToggled*)eventData[Urho3D::Toggled::P_ELEMENT].GetPtr();
     bool state = (bool)eventData[Urho3D::Toggled::P_STATE].GetBool();
 
     if(state)
@@ -77,7 +77,7 @@ void lPanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
             {
                 UnsubscribeFromEvent(tab->buttonTitle, Urho3D::E_TOGGLED);
                 tab->buttonTitle->SetChecked(false);
-                SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(lPanelMain, HandleToggedTitle));
+                SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(PanelMain, HandleToggedTitle));
             }
             else
             {

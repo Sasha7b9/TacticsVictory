@@ -4,14 +4,14 @@
 #include "TilePath.h"
 
 
-Vector<SharedPtr<lTilePath>> lTilePath::tiles;
-uint lTilePath::numTilesAll = 0;
-uint lTilePath::numTilesEnabled = 0;
+Vector<SharedPtr<TilePath>> TilePath::tiles;
+uint TilePath::numTilesAll = 0;
+uint TilePath::numTilesEnabled = 0;
 
 
-lTilePath::lTilePath() : Object(gContext)
+TilePath::TilePath() : Object(gContext)
 {
-    node = gScene->CreateChild("lTilePath");
+    node = gScene->CreateChild("TilePath");
 
     if (tiles.Size() == 0)
     {
@@ -61,7 +61,7 @@ lTilePath::lTilePath() : Object(gContext)
         rez = model->SetVertexBuffers(vbVector, morpRange, morpRange);
         rez = model->SetIndexBuffers(ibVector);
 
-        model->SetBoundingBox(BoundingBox(Vector3(-1.0f, -1.0f, -1.0f), Vector3(1.0f, 1.0f, 1.0f)));
+        model->SetBoundingBox(UBoundingBox(Vector3(-1.0f, -1.0f, -1.0f), Vector3(1.0f, 1.0f, 1.0f)));
 
         object->SetModel(model);
         //object->SetMaterial(gCache->GetResource<Material>("Materials/TVTerrain.xml"));
@@ -69,41 +69,47 @@ lTilePath::lTilePath() : Object(gContext)
         object->SetCastShadows(true);
 
         // Draw decal
-        SharedPtr<DecalSet> decal(node->CreateComponent<DecalSet>());
+        SharedPtr<UDecalSet> decal(node->CreateComponent<UDecalSet>());
         decal->SetMaterial(gCache->GetResource<Material>("Materials/Decals/PathDecal.xml"));
         decal->AddDecal(object, {0.5f, 0.01f, -0.5f}, Quaternion(90.0f, 90.0f, 0.0f), 0.8f, 1.0f, 1.0f, Vector2::ZERO, Vector2::ONE);
     }
     else
     {
         SharedPtr<StaticModel> object((StaticModel*)node->CloneComponent(tiles[0]->node->GetComponent<StaticModel>()));
-        SharedPtr<DecalSet> decal((DecalSet*)node->CloneComponent(tiles[0]->node->GetComponent<DecalSet>()));
+        SharedPtr<UDecalSet> decal((UDecalSet*)node->CloneComponent(tiles[0]->node->GetComponent<UDecalSet>()));
     }
 }
 
-lTilePath::~lTilePath()
+TilePath::~TilePath()
 {
 }
 
-void lTilePath::SetPosition(const Vector3 &pos)
+void TilePath::SetPosition(const Vector3 &pos)
 {
     node->SetPosition(pos + Vector3(0.0f, 0.05f, 0.0f));
 }
 
-void lTilePath::SetVisible(bool visible)
+void TilePath::SetVisible(bool visible)
 {
     visible ? gScene->NodeAdded(node) : gScene->NodeRemoved(node);
 }
 
-void lTilePath::Add(Vector3 &pos)
+void TilePath::Add(Vector3 &pos)
 {
     if(numTilesAll == numTilesEnabled)
     {
-        SharedPtr<lTilePath> tile;
-        tile = new lTilePath();
-        tile->SetPosition(pos);
-        tiles.Push(tile);
+        for (int i = 0; i < 500; i++)
+        {
+            SharedPtr<TilePath> tile(new TilePath());
+            tile->SetVisible(false);
+            tiles.Push(tile);
+        }
+
+        numTilesAll += 500;
+
+        tiles[numTilesEnabled]->SetVisible(true);
+        tiles[numTilesEnabled]->SetPosition(pos);
         numTilesEnabled++;
-        numTilesAll++;
     }
     else if(numTilesEnabled < numTilesAll)
     {
@@ -113,7 +119,7 @@ void lTilePath::Add(Vector3 &pos)
     }
 }
 
-void lTilePath::DisableAll()
+void TilePath::DisableAll()
 {
     for(auto tile : tiles)
     {
@@ -122,7 +128,7 @@ void lTilePath::DisableAll()
     numTilesEnabled = 0;
 }
 
-void lTilePath::RemoveAll()
+void TilePath::RemoveAll()
 {
     DisableAll();
     tiles.Resize(0);

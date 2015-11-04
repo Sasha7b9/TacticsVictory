@@ -19,9 +19,9 @@ void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
 {
     if(drawDebug)
     {
-        gDebugRenderer->AddLine(Vector3::ZERO, {100.0f, 0.0f, 0.0f}, Color::RED);
-        gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 100.0f, 0.0f}, Color::GREEN);
-        gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 100.0f}, Color::BLUE);
+        gDebugRenderer->AddLine(Vector3::ZERO, {100.0f, 0.0f, 0.0f}, UColor::RED);
+        gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 100.0f, 0.0f}, UColor::GREEN);
+        gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 100.0f}, UColor::BLUE);
         //gRenderer->DrawDebugGeometry(false);
     }
 }
@@ -94,7 +94,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         if(key == '9')
         {
-            Image screenshot(context_);
+            UImage screenshot(context_);
             gGraphics->TakeScreenShot(screenshot);
             screenshot.SavePNG(gFileSystem->GetProgramDir() + "Data/Screenshot_" +
                                Time::GetTimeStamp().Replaced(':', '_').Replaced('.', '_').Replaced(' ', '_') + ".png");

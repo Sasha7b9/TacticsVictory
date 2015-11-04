@@ -4,23 +4,23 @@
 #include "GUI/Elements/Window.h"
 
 
-class lPanelMap : public lWindow
+class PanelMap : public lWindow
 {
-    OBJECT(lPanelMap);
+    OBJECT(PanelMap);
 
 public:
-    lPanelMap(Context *context = gContext);
+    PanelMap(UContext *context = gContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
     virtual void Update(float timeStep);
 
 private:
-    lPanelMap& operator=(const lPanelMap&)
+    PanelMap& operator=(const PanelMap&)
     {};
 
     Vector<Vector<float> > map;
-    SharedPtr<lImage> imageMap;
+    SharedPtr<Image> imageMap;
     int x0 = 0;
     int y0 = 0;
     float scale = 0.0f;

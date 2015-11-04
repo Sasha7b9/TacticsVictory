@@ -4,25 +4,25 @@
 #include "GUI/Elements/Window.h"
 
 
-class lPanelMain : public lWindow
+class PanelMain : public lWindow
 {
-    OBJECT(lPanelMain);
+    OBJECT(PanelMain);
 
 public:
-    lPanelMain(Context *context = gContext);
+    PanelMain(UContext *context = gContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(UContext *context = gContext);
 
     virtual void Update(float dT);
-    void AddTab(SharedPtr<lTab> tab);
+    void AddTab(SharedPtr<Tab> tab);
 
 private:
-    lPanelMain& operator=(const lPanelMain&)
+    PanelMain& operator=(const PanelMain&)
     {};
 
-    Vector<SharedPtr<lTab>> tabs;
+    Vector<SharedPtr<Tab>> tabs;
 
-    SharedPtr<lTab> currentTab;
+    SharedPtr<Tab> currentTab;
 
     void HandleToggedTitle(StringHash eventType, VariantMap &eventData);
 };

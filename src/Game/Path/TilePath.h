@@ -1,12 +1,12 @@
 #pragma once
 
 
-class lTilePath : public Object
+class TilePath : public UObject
 {
-    OBJECT(lTilePath);
+    OBJECT(TilePath);
 public:
-    lTilePath();
-    ~lTilePath();
+    TilePath();
+    ~TilePath();
     void SetPosition(const Vector3 &pos);
     void SetVisible(bool visible);
 
@@ -15,11 +15,11 @@ public:
     static void RemoveAll();
 
 private:
-    lTilePath& operator=(const lTilePath&)
+    TilePath& operator=(const TilePath&)
     {};
     SharedPtr<Node> node;
 
     static uint numTilesAll;
     static uint numTilesEnabled;
-    static Vector<SharedPtr<lTilePath>> tiles;
+    static Vector<SharedPtr<TilePath>> tiles;
 };

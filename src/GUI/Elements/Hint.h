@@ -4,16 +4,16 @@
 #include "GUI/Elements/Window.h"
 
 
-class lHint : public lWindow
+class Hint : public lWindow
 {
-    OBJECT(lHint);
+    OBJECT(Hint);
 
 public:
-    lHint(char *text);
+    Hint(char *text);
 
 private:
     char *text;
-    SharedPtr<lLabel> label;
+    SharedPtr<Label> label;
 
     void HandleChangeLanguage(StringHash, VariantMap&);
 };

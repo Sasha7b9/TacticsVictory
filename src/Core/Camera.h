@@ -1,7 +1,7 @@
 #pragma once
 
 
-class lCamera
+class Camera
 {
 public:
     enum Direction
@@ -15,7 +15,7 @@ public:
         Direction_RotateYAW,
         Direction_RotatePITCH
     };
-    lCamera();
+    Camera();
 
     void Move(float time);
     void ParallelTranslateLookAt(const Vector3 &lookAt);
@@ -27,7 +27,7 @@ public:
     void DisableArrows() { arrowEnabled = false; };
     void EnableArrows() { arrowEnabled = true; };
     SharedPtr<Node> GetNode();
-    Ray GetCursorRay();
+    URay GetCursorRay();
 
 private:
     SharedPtr<Node> cameraNode;
