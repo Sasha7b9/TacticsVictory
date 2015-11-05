@@ -9,9 +9,9 @@ class lWindow : public Window
     OBJECT(lWindow)
 
 public:
-    lWindow(UContext *context = gContext);
+    lWindow(Context *context = gContext);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
     bool IsChildOfParent();
     void Toggle();
@@ -28,6 +28,6 @@ protected:
     lWindow& operator=(const lWindow&)
     {};
 
-    UHashMap<UButton*, uint> mapButtonsActions;
+    UHashMap<Urho3D::Button*, uint> mapButtonsActions;
     SharedPtr<LineTranslator2D> translator;
 };

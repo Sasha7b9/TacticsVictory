@@ -6,9 +6,9 @@ class GuiGame : public UIElement
     OBJECT(GuiGame)
 
 public:
-    GuiGame(UContext* context);
+    GuiGame(Context* context);
 
-    static void RegisterObject(UContext* context);
+    static void RegisterObject(Context* context);
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
     bool IsInside(UIntVector2 &position);
 

@@ -88,27 +88,13 @@
 
 #include <ctime>
 
-#define UBiasParameters     Urho3D::BiasParameters
-#define UBoundingBox        Urho3D::BoundingBox
-#define UButton             Urho3D::Button
 
-
-#define UCamera             Urho3D::Camera
-#define UCascadeParameters  Urho3D::CascadeParameters
-#define UCheckBox           Urho3D::CheckBox
-#define UCollisionShape     Urho3D::CollisionShape
-#define UColor              Urho3D::Color
 #define UCompnent           Urho3D::Component
 #define UConsole            Urho3D::Console
-#define UContext            Urho3D::Context
-#define UCos                Urho3D::Cos
 #define UCursor             Urho3D::Cursor
-#define UCustomGeometry     Urho3D::CustomGeometry
 
 #define UDebugHud           Urho3D::DebugHud
-#define UDebugRenderer      Urho3D::DebugRenderer
 #define UDecalSet           Urho3D::DecalSet
-#define UDrawable           Urho3D::Drawable
 #define UDropDownList       Urho3D::DropDownList
 
 #define UEngine             Urho3D::Engine
@@ -123,7 +109,6 @@
 
 #define UHashMap            Urho3D::HashMap
 #define UHashSet            Urho3D::HashSet
-#define UHiresTimer         Urho3D::HiresTimer
 
 #define UImage              Urho3D::Image
 #define UIndexBuffer        Urho3D::IndexBuffer
@@ -131,16 +116,34 @@
 #define UIntRect            Urho3D::IntRect
 #define UIntVector2         Urho3D::IntVector2
 
-using   Urho3D::JSONFile;
-using   Urho3D::JSONValue;
-using   Urho3D::JSONValueType;
-using   Urho3D::JSONNumberType;
-
 #define ULight              Urho3D::Light
 #define ULineEdit           Urho3D::LineEdit
-#define ULocalization       Urho3D::Localization
 #define ULog                Urho3D::Log
-#define ULogicComponent     Urho3D::LogicComponent
+
+#define UPlane              Urho3D::Plane
+
+using Urho3D::BiasParameters;
+using Urho3D::BoundingBox;
+
+using Urho3D::CascadeParameters;
+using Urho3D::CollisionShape;
+using Urho3D::Color;
+using Urho3D::Context;
+using Urho3D::Cos;
+using Urho3D::CustomGeometry;
+
+using Urho3D::DebugRenderer;
+using Urho3D::Drawable;
+
+using Urho3D::JSONFile;
+using Urho3D::JSONValue;
+using Urho3D::JSONValueType;
+using Urho3D::JSONNumberType;
+
+using Urho3D::HiresTimer;
+
+using Urho3D::Localization;
+using Urho3D::LogicComponent;
 
 using Urho3D::Material;
 using Urho3D::Model;
@@ -148,19 +151,17 @@ using Urho3D::Mutex;
 
 using Urho3D::Node;
 
-#define UObject Urho3D::Object
-
+using Urho3D::Object;
 using Urho3D::Octree;
 
 using Urho3D::Pair;
 using Urho3D::PhysicsWorld;
-#define UPlane Urho3D::Plane
 using Urho3D::PODVector;
 
 using Urho3D::Quaternion;
 
 using Urho3D::Random;
-#define URay Urho3D::Ray
+using Urho3D::Ray;
 using Urho3D::RayQueryResult;
 using Urho3D::RayOctreeQuery;
 using Urho3D::Renderer;
@@ -168,7 +169,6 @@ using Urho3D::Resource;
 using Urho3D::ResourceCache;
 using Urho3D::RigidBody;
 
-#define UScene Urho3D::Scene
 using Urho3D::ScrollBar;
 using Urho3D::SharedPtr;
 using Urho3D::Slider;
@@ -182,7 +182,6 @@ using Urho3D::Texture;
 using Urho3D::Texture2D;
 using Urho3D::Time;
 using Urho3D::Timer;
-#define UText Urho3D::Text
 using Urho3D::Thread;
 
 using Urho3D::VariantMap;

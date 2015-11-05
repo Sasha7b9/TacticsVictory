@@ -11,40 +11,45 @@ uint TilePath::numTilesEnabled = 0;
 
 TilePath::TilePath() : Object(gContext)
 {
-    const float vertexes[4 * (3 + 2)] =
+    float d = 0.0f;
+
+    node = gScene->CreateChild(NODE_TILE_PATH);
+
+    if (tiles.Size() == 0)
     {
-        0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-        1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-        1.0f, 0.0f, -1.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, -1.0f, 0.0f, 1.0f
-    };
+        const float vertexes[4 * (3 + 2)] =
+        {
+            0.0f + d, 0.0f, 0.0f + d, 0.0f, 0.0f,
+            1.0f - d, 0.0f, 0.0f + d, 1.0f, 0.0f,
+            1.0f - d, 0.0f, -1.0f + d, 1.0f, 1.0f,
+            0.0f + d, 0.0f, -1.0f + d, 0.0f, 1.0f
+        };
 
-    const uint16 indexes[6] =
-    {
-        2, 1, 0,
-        3, 2, 0
-    };
+        const uint16 indexes[6] =
+        {
+            2, 1, 0,
+            3, 2, 0
+        };
 
-    node = gScene->CreateChild("TilePath");
+        SharedPtr<CustomGeometry> geometry(node->CreateComponent<CustomGeometry>());
 
-    SharedPtr<UCustomGeometry> geometry(node->CreateComponent<UCustomGeometry>());
+        geometry->BeginGeometry(0, Urho3D::TRIANGLE_LIST);
 
-    geometry->BeginGeometry(0, Urho3D::TRIANGLE_LIST);
+        for (int i = 0; i < 6; i++)
+        {
+            const float *p = vertexes + indexes[i] * 5;
+            geometry->DefineVertex(Vector3(*p++, *p++, *p++));
+            geometry->DefineTexCoord(Vector2(*p++, *p));
+        }
 
-    for(int i = 0; i < 6; i++)
-    {
-        const float *p = vertexes + indexes[i] * 5;
-        geometry->DefineVertex(Vector3(*p++, *p++, *p++));
-        geometry->DefineTexCoord(Vector2(*p++, *p));
+        geometry->SetMaterial(gCache->GetResource<Material>("Materials/Decals/PathDecal.xml"));
+
+        geometry->Commit();
     }
-
-    geometry->Commit();
-
-    geometry->SetMaterial(gCache->GetResource<Material>("Materials/Decals/PathDecal.xml"));
-
-    Material* material = geometry->GetMaterial(0);
-
-    geometry->Commit();
+    else
+    {
+        SharedPtr<CustomGeometry> geometry((CustomGeometry*)node->CloneComponent(tiles[0]->node->GetComponent<CustomGeometry>()));
+    }
 }
 
 TilePath::~TilePath()
@@ -53,7 +58,7 @@ TilePath::~TilePath()
 
 void TilePath::SetPosition(const Vector3 &pos)
 {
-    node->SetPosition(pos + Vector3(0.0f, 0.05f, 0.0f));
+    node->SetPosition(pos + Vector3(1.0f, 0.05f, -1.0f));
 }
 
 void TilePath::SetVisible(bool visible)

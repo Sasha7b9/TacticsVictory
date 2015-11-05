@@ -24,9 +24,9 @@ class vGovernorCell : public lWindow
     OBJECT(vGovernorCell);
 
 public:
-    vGovernorCell(UContext *context = gContext);
+    vGovernorCell(Context *context = gContext);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
     void SetSymbol(char symbol);
     char GetSymbol();
@@ -47,7 +47,7 @@ private:
     void ChangeValue(int delta);
     void SetSymbolWithEvent(char symbol);
 
-    SharedPtr<UText> label;
+    SharedPtr<Urho3D::Text> label;
     char symbol = 0;
     bool mouseIsDown = false;
     bool mouseOver = false;
@@ -63,9 +63,9 @@ class GovernorFloat : public lWindow
     OBJECT(GovernorFloat);
 
 public:
-    GovernorFloat(UContext *context = gContext);
+    GovernorFloat(Context *context = gContext);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
     virtual void Update(float timeStep);
 
@@ -86,7 +86,7 @@ private:
     float GetValue();
 
     Vector<SharedPtr<vGovernorCell> > cells;
-    SharedPtr<UButton> buttonDown;
+    SharedPtr<Urho3D::Button> buttonDown;
     SharedPtr<Label> label;
     int numCells = 11;
     pFuncFV funcRead = nullptr;

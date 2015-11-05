@@ -1,7 +1,7 @@
 #pragma once
 
 
-class TilePath : public UObject
+class TilePath : public Object
 {
     OBJECT(TilePath);
 public:

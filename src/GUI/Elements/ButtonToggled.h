@@ -1,15 +1,15 @@
 #pragma once
 
 
-class ButtonToggled : public UCheckBox
+class ButtonToggled : public Urho3D::CheckBox
 {
     OBJECT(ButtonToggled)
 
 public:
-    ButtonToggled(UContext *context = gContext);
+    ButtonToggled(Context *context = gContext);
     ButtonToggled(UIElement *uielement, char *text, int width = -1, int height = -1);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
     void SetText(char *text);
 

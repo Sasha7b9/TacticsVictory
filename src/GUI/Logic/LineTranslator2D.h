@@ -1,7 +1,7 @@
 #pragma once
 
 
-class LineTranslator2D : public UObject
+class LineTranslator2D : public Object
 {
     OBJECT(LineTranslator2D);
 

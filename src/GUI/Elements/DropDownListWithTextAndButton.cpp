@@ -6,7 +6,7 @@
 #include "GUI/Elements/Label.h"
 
 
-DropDownListWithTextAndButton::DropDownListWithTextAndButton(UContext *context) :
+DropDownListWithTextAndButton::DropDownListWithTextAndButton(Context *context) :
     UIElement(context)
 {
 
@@ -42,14 +42,14 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
     SubscribeToEvent(ddList, Urho3D::E_HOVERBEGIN, HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
     SubscribeToEvent(ddList, Urho3D::E_HOVEREND, HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
 
-    buttonLeft = new UButton(gContext);
+    buttonLeft = new Urho3D::Button(gContext);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
     SubscribeToEvent(buttonLeft, Urho3D::E_PRESSED, HANDLER(DropDownListWithTextAndButton, HandleButtonDown));
     SubscribeToEvent(buttonLeft, Urho3D::E_HOVERBEGIN, HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
     SubscribeToEvent(buttonLeft, Urho3D::E_HOVEREND, HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
 
-    buttonRight = new UButton(gContext);
+    buttonRight = new Urho3D::Button(gContext);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
     SubscribeToEvent(buttonRight, Urho3D::E_PRESSED, HANDLER(DropDownListWithTextAndButton, HandleButtonDown));
@@ -68,7 +68,7 @@ void DropDownListWithTextAndButton::SetSelection(uint index)
     SendEvent(Urho3D::E_ITEMSELECTED, eventData);
 }
 
-void DropDownListWithTextAndButton::RegisterObject(UContext* context)
+void DropDownListWithTextAndButton::RegisterObject(Context* context)
 {
     context->RegisterFactory<DropDownListWithTextAndButton>("UI");
 
@@ -90,7 +90,7 @@ void DropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& e
 
 void DropDownListWithTextAndButton::HandleButtonDown(StringHash, VariantMap& eventData)
 {
-    UButton *button = (UButton*)eventData[Urho3D::Pressed::P_ELEMENT].GetPtr();
+    Urho3D::Button *button = (Urho3D::Button*)eventData[Urho3D::Pressed::P_ELEMENT].GetPtr();
 
     uint currentItem = ddList->GetSelection();
     uint numItems = ddList->GetNumItems();

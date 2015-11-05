@@ -7,7 +7,7 @@
 class lWindow;
 
 
-class GUI : public UObject
+class GUI : public Object
 {
     OBJECT(GUI);
 

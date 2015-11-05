@@ -9,9 +9,9 @@ class PanelBottom : public lWindow
     OBJECT(PanelBottom);
 
 public:
-    PanelBottom(UContext *context = gContext);
+    PanelBottom(Context *context = gContext);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
 private:
     PanelBottom& operator=(const PanelBottom&)

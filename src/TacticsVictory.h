@@ -6,7 +6,7 @@ class TacticsVictory : public Urho3D::Application
     OBJECT(TacticsVictory);
 
 public:
-    TacticsVictory(UContext* context);
+    TacticsVictory(Context* context);
 
     virtual void Setup();
     virtual void Start();
@@ -30,7 +30,7 @@ private:
     void HandleKeyDown(StringHash, VariantMap&);
 
     bool drawDebug = false;
-    SharedPtr<Scene> scene;
+    Scene *scene = nullptr;
 
     TacticsVictory& operator=(const TacticsVictory&)
     {};

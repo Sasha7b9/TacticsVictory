@@ -10,7 +10,7 @@ public:
     bool IsZero();
     void CalculateRowCol();
     void SetY(float y);
-    Line NearEdge(URay &ray);
+    Line NearEdge(Ray &ray);
 
     Vector3 v0;
     Vector3 v1;

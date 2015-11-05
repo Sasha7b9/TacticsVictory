@@ -7,7 +7,7 @@
 #include "GUI/Elements/Label.h"
 
 
-vGovernorCell::vGovernorCell(UContext *) :
+vGovernorCell::vGovernorCell(Context *) :
     lWindow()
 {
     SetMovable(false);
@@ -16,7 +16,7 @@ vGovernorCell::vGovernorCell(UContext *) :
     //ApplyAttributes();
     SetFixedSize(SET::MENU::GOVERNOR::CELL::SIZE);
 
-    label = new UText(gContext);
+    label = new Urho3D::Text(gContext);
     label->SetFont(gFont, 8);
     label->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_CENTER);
 
@@ -49,7 +49,7 @@ void vGovernorCell::SetSymbol(char symbol_)
     symbol = symbol_;
     label->SetText(String(symbol));
     label->SetPosition(symbol == '0' ? 0 : 1, -1);
-    label->SetColor(selected ? UColor::YELLOW : UColor::WHITE);
+    label->SetColor(selected ? Color::YELLOW : Color::WHITE);
 }
 
 void vGovernorCell::SetSymbolWithEvent(char symbol_)
@@ -57,7 +57,7 @@ void vGovernorCell::SetSymbolWithEvent(char symbol_)
     symbol = symbol_;
     label->SetText(String(symbol));
     label->SetPosition(symbol == '0' ? 0 : 1, -1);
-    label->SetColor(selected ? UColor::YELLOW : UColor::WHITE);
+    label->SetColor(selected ? Color::YELLOW : Color::WHITE);
 
     VariantMap eventData = GetEventDataMap();
     eventData[GovernorCellChanged::P_ELEMENT] = this;
@@ -178,14 +178,14 @@ void vGovernorCell::HandleHoverEnd(StringHash, VariantMap&)
     gCursor->SetNormal();
 }
 
-void vGovernorCell::RegisterObject(UContext *context)
+void vGovernorCell::RegisterObject(Context *context)
 {
     context->RegisterFactory<vGovernorCell>("UI");
 
     COPY_BASE_ATTRIBUTES(lWindow);
 }
 
-GovernorFloat::GovernorFloat(UContext *context) :
+GovernorFloat::GovernorFloat(Context *context) :
     lWindow()
 {
     SetMovable(false);
@@ -226,7 +226,7 @@ GovernorFloat::GovernorFloat(UContext *context) :
 
     SetFixedSize((SET::MENU::GOVERNOR::CELL::WIDTH - 1) * (numCells + 1) + 17 + widthLabel, SET::MENU::GOVERNOR::CELL::HEIGHT);
 
-    buttonDown = new UButton(gContext);
+    buttonDown = new Urho3D::Button(gContext);
     buttonDown->SetStyle("DropDownButtonDown");
     AddChild(buttonDown);
     buttonDown->SetPosition((numCells + 1) * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + 4 + widthLabel, 0);
@@ -235,7 +235,7 @@ GovernorFloat::GovernorFloat(UContext *context) :
     SubscribeToEvent(buttonDown, Urho3D::E_HOVEREND, HANDLER(GovernorFloat, HandleHoverButtonEnd));
 }
 
-void GovernorFloat::RegisterObject(UContext *context)
+void GovernorFloat::RegisterObject(Context *context)
 {
     context->RegisterFactory<GovernorFloat>("UI");
 

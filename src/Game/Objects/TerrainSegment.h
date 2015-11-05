@@ -1,7 +1,7 @@
 #pragma once
 
 
-class TerrainSegment : public UObject
+class TerrainSegment : public Object
 {
     OBJECT(TerrainSegment)
 
@@ -11,7 +11,7 @@ public:
     ~TerrainSegment();
 
     // If function return isClosingTriangleOut == true, return distance for inactive triangle
-    float GetIntersectionPlane(URay &ray, Plane &plane, bool &isClosingTriangleOut);
+    float GetIntersectionPlane(Ray &ray, Plane &plane, bool &isClosingTriangleOut);
     Plane GetPlane(uint row, uint col);
     void Rebuild(Vector<Vector<float>> &map_);
     void Clear();
@@ -43,8 +43,8 @@ private:
     void AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, float dTex);
     void AddTopLeftCornerPlanes(uint row, uint col);
     void CalculateBoundingBox();
-    float GetIntersectionPlane(URay &ray, Plane &plane);
-    float GetIntersectionClosingTriangle(URay &ray, Triangle &triangle);
+    float GetIntersectionPlane(Ray &ray, Plane &plane);
+    float GetIntersectionClosingTriangle(Ray &ray, Triangle &triangle);
 
     Vector<Vector<float>> map;
     Vector<float> vertexes;         // Здесь будем подготавливать вершины для буфера
@@ -59,7 +59,7 @@ private:
     uint numInd = 0;
 
     Vector<uint> bufIndPlanes;          // Buffer for indexes of the edited planes
-    UBoundingBox boundingBox;
+    BoundingBox boundingBox;
 
     Vector<uint> bufIndClosingTriangles; // The buffer for triangles which can't be chosen
 

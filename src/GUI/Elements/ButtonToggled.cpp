@@ -5,8 +5,8 @@
 #include "GUI/Elements/Label.h"
 
 
-ButtonToggled::ButtonToggled(UContext *context) :
-    UCheckBox(context)
+ButtonToggled::ButtonToggled(Context *context) :
+    Urho3D::CheckBox(context)
 {
     SetStyleAuto();
     label = Label::Create("", SET::MENU::FONT::SIZE::ITEM);
@@ -14,7 +14,7 @@ ButtonToggled::ButtonToggled(UContext *context) :
 }
 
 ButtonToggled::ButtonToggled(UIElement * uielement, char * text, int width, int height) :
-    UCheckBox(gContext)
+    Urho3D::CheckBox(gContext)
 {
     label = Label::Create(text, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
@@ -42,11 +42,11 @@ ButtonToggled::ButtonToggled(UIElement * uielement, char * text, int width, int 
     }
 }
 
-void ButtonToggled::RegisterObject(UContext *context)
+void ButtonToggled::RegisterObject(Context *context)
 {
     context->RegisterFactory<ButtonToggled>("UI");
 
-    COPY_BASE_ATTRIBUTES(UCheckBox);
+    COPY_BASE_ATTRIBUTES(Urho3D::CheckBox);
 }
 
 void ButtonToggled::SetText(char *text)

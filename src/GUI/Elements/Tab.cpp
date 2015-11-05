@@ -5,14 +5,14 @@
 #include "GUI/Elements/ButtonToggled.h"
 
 
-Tab::Tab(UContext *) : 
+Tab::Tab(Context *) : 
     lWindow()
 {
     buttonTitle = new ButtonToggled(gContext);
     SetMovable(false);
 }
 
-void Tab::RegisterObject(UContext *context)
+void Tab::RegisterObject(Context *context)
 {
     context->RegisterFactory<Tab>("UI");
 

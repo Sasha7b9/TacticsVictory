@@ -12,7 +12,7 @@ class Level : public Urho3D::Object
     OBJECT(Level);
 
 public:
-    Level(UContext *context = gContext);
+    Level(Context *context = gContext);
 
     Vector<Vector<float>> Load(char *fileName);             // Load from file simple level (from height map)
     bool Save(String fileName);

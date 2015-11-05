@@ -9,9 +9,9 @@ class MenuMain : public lWindow
     OBJECT(MenuMain);
 
 public:
-    MenuMain(UContext *context = gContext);
+    MenuMain(Context *context = gContext);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
 private:
     MenuMain& operator=(const MenuMain&)

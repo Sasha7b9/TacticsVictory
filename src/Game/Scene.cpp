@@ -11,7 +11,7 @@
 #include "Game/Path/TilePath.h"
 
 
-Scene::Scene(UContext *context) :
+Scene::Scene(Context *context) :
     Object(context)
 {
     RegisterObjects();
@@ -23,12 +23,17 @@ Scene::Scene(UContext *context) :
     SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(Scene, HandleMouseDown));
 }
 
+Scene::~Scene()
+{
+    pathIndicator.Stop();
+}
+
 void Scene::RegisterObjects()
 {
     Tank::RegisterObject();
 }
 
-void Scene::RegisterObject(UContext *context)
+void Scene::RegisterObject(Context *context)
 {
     context->RegisterFactory<Scene>();
 }
@@ -37,18 +42,18 @@ void Scene::Create()
 {
     // Create a Zone component into a child scene node. The Zone controls ambient lighting and fog settings. Like the Octree,
     // it also defines its volume with a bounding box, but can be rotated (so it does not need to be aligned to the world X, Y
-    // and Z axes.) UDrawable objects "pick up" the zone they belong to and use it when rendering; several zones can exist
+    // and Z axes.) Drawable objects "pick up" the zone they belong to and use it when rendering; several zones can exist
 
     Node* zoneNode = gScene->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
     // Set same volume as the Octree, set a close bluish fog and some ambient light
-    zone->SetBoundingBox(UBoundingBox(-1000.0f, 1000.0f));
-    //zone->SetFogColor(UColor::BLUE);
+    zone->SetBoundingBox(BoundingBox(-1000.0f, 1000.0f));
+    //zone->SetFogColor(Color::BLUE);
     //zone->SetFogHeightScale(10000.0f);
     //zone->SetFogStart(0.0f);
     //zone->SetFogEnd(1000.0f);
     float dColor = 0.1f;
-    zone->SetAmbientColor(UColor(dColor, dColor, dColor));
+    zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
     gTerrain = new Terrain(level);
@@ -85,8 +90,8 @@ void Scene::Create()
     light->SetLightType(Urho3D::LIGHT_POINT);
     light->SetRange(1000.0f);
     light->SetCastShadows(true);
-    light->SetShadowBias(Urho3D::BiasParameters(0.00025f, 0.5f));
-    light->SetShadowCascade(UCascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
+    light->SetShadowBias(BiasParameters(0.00025f, 0.5f));
+    light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
     gRenderer->SetShadowMapSize(2048);
 
@@ -95,22 +100,11 @@ void Scene::Create()
 
 void Scene::Update()
 {
-    /*
-    static Timer timer;
-    if(timer.GetMSec(false) < 100)
-    {
-        return;
-    }
-    timer.Reset();
-    */
-
     Vector3 hitPos;
-    UDrawable *drawable = gCursor->GetRaycastNode(&hitPos);
+    Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
 
     if (drawable)
     {
-        pathIndicator.SetInCurrentCursorPosition(drawable, &hitPos);
-
         String name = drawable->GetNode()->GetName();
         if(name == NODE_TERRAIN)
         {
@@ -125,6 +119,8 @@ void Scene::Update()
     {
         gCursor->SetNormal();
     }
+
+    pathIndicator.Update();
 }
 
 void Scene::HandleMouseDown(StringHash, VariantMap& eventData)
@@ -133,8 +129,81 @@ void Scene::HandleMouseDown(StringHash, VariantMap& eventData)
 
     if(buttons != Urho3D::MOUSEB_LEFT)
     {
+        if (buttons == Urho3D::MOUSEB_RIGHT)
+        {
+            pathIndicator.Enable(false);
+        }
         return;
     }
 
-    pathIndicator.SetInCurrentCursorPosition();
+    Vector3 hitCoord;
+    Drawable *object = gCursor->GetRaycastNode(&hitCoord);
+
+    if (!object)
+    {
+        return;
+    }
+
+    Node *node = object->GetNode();
+    String name = node->GetName();
+
+    if (name == NODE_TANK)
+    {
+        Tank *tank = node->GetComponent<Tank>();
+        SetSelected(tank, !tank->IsSelected());
+
+        Vector3 position = node->GetPosition();
+        Coord coord((uint)-position.z_, (uint)(position.x_));
+
+        pathIndicator.SetStartPosition(coord);
+        pathIndicator.Enable(false);
+        if(tank->IsSelected())
+        {
+            pathIndicator.Enable(true);
+        }
+    }
+    else if (name == NODE_TERRAIN)
+    {
+        pathIndicator.Enable(false);
+        Tank *tank = GetSelected();
+
+        if(tank)
+        {
+            SetSelected(tank, false);
+            tank->SetPath(pathIndicator.GetPath());
+        }
+    }
+}
+
+void Scene::SetSelected(Tank *tank, bool selected)
+{
+    if(selected)
+    {
+        const Vector<SharedPtr<Node>> &nodes = gScene->GetChildren();
+        for(SharedPtr<Node> node : nodes)
+        {
+            Tank *tank = node->GetComponent<Tank>();
+            if(tank)
+            {
+                tank->SetSelected(false);
+            }
+        }
+    }
+    tank->SetSelected(selected);
+}
+
+Tank* Scene::GetSelected()
+{
+    const Vector<SharedPtr<Node>> &nodes = gScene->GetChildren();
+
+    for(SharedPtr<Node> node : nodes)
+    {
+        Tank *tank = node->GetComponent<Tank>();
+        if(tank && tank->IsSelected())
+        {
+            return tank;
+        }
+    }
+    
+    return nullptr;
 }

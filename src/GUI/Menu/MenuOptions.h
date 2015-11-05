@@ -15,9 +15,9 @@ class MenuOptions : public lWindow
     OBJECT(MenuOptions)
 
 public:
-    MenuOptions(UContext *context = gContext);
+    MenuOptions(Context *context = gContext);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
 private:
     MenuOptions& operator=(const MenuOptions&) {};

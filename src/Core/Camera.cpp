@@ -10,7 +10,7 @@ Camera::Camera()
 {
     cameraNode = gScene->CreateChild("Camera");
 
-    UCamera *camera = cameraNode->CreateComponent<UCamera>();
+    Urho3D::Camera *camera = cameraNode->CreateComponent<Urho3D::Camera>();
     camera->SetFarClip(1000.0f);
     camera->SetNearClip(1.0f);
     cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
@@ -167,7 +167,7 @@ void Camera::SetPitch(float newPitch)
 
     float angleNeed = newPitch - pitch;
 
-    Quaternion rotateNeed(-angleNeed, {Sin(yaw + 270.0f), 0.0f, UCos(yaw + 270.0f)});
+    Quaternion rotateNeed(-angleNeed, {Sin(yaw + 270.0f), 0.0f, Cos(yaw + 270.0f)});
     cameraNode->RotateAround(lookAt, rotateNeed, Urho3D::TS_WORLD);
 }
 
@@ -204,7 +204,7 @@ void Camera::MoveOn(Direction direction, float distance)
         else
         {
             const float delta = 270.0f;
-            Quaternion rotate(-distance, {Sin(yaw + delta), 0.0f, UCos(yaw + delta)});
+            Quaternion rotate(-distance, {Sin(yaw + delta), 0.0f, Cos(yaw + delta)});
             cameraNode->RotateAround(lookAt, rotate, Urho3D::TS_WORLD);
         }
     }
@@ -222,7 +222,7 @@ void Camera::MoveOn(Direction direction, float distance)
     }
 
     float sinYaw = Sin(yaw);
-    float cosYaw = UCos(yaw);
+    float cosYaw = Cos(yaw);
 
     float dX = distance * sinYaw;
     float dZ = distance * cosYaw;
@@ -272,7 +272,7 @@ void Camera::SetEnabled(bool _enabled)
 
 void Camera::SetupViewport()
 {
-    SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<UCamera>()));
+    SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<Urho3D::Camera>()));
     gRenderer->SetViewport(0, viewport);
 }
 
@@ -281,8 +281,8 @@ SharedPtr<Node> Camera::GetNode()
     return cameraNode;
 }
 
-URay Camera::GetCursorRay()
+Ray Camera::GetCursorRay()
 {
     UIntVector2 pos = gUI->GetCursorPosition();
-    return cameraNode->GetComponent<UCamera>()->GetScreenRay((float)pos.x_ / gGraphics->GetWidth(), (float)pos.y_ / gGraphics->GetHeight());
+    return cameraNode->GetComponent<Urho3D::Camera>()->GetScreenRay((float)pos.x_ / gGraphics->GetWidth(), (float)pos.y_ / gGraphics->GetHeight());
 }

@@ -22,7 +22,7 @@ DEFINE_APPLICATION_MAIN(TacticsVictory)
 
 
 
-TacticsVictory::TacticsVictory(UContext* context) :
+TacticsVictory::TacticsVictory(Context* context) :
     Application(context)
 {
     gContext = context;
@@ -46,11 +46,11 @@ void TacticsVictory::Setup()
 void TacticsVictory::Stop()
 {
     TilePath::RemoveAll();
+    SAFE_DELETE(scene);
     SAFE_DELETE(gFileSelector);
     SAFE_DELETE(gTerrain);
     SAFE_DELETE(gLevel);
     SAFE_DELETE(gGUI);
-    SAFE_DELETE(gTime);
     UFile file(gContext, "ui.xml", Urho3D::FILE_WRITE);
     LOGINFO("Now save ui");
     gUIRoot->SaveXML(file);
@@ -67,7 +67,7 @@ void TacticsVictory::Stop()
 
 void TacticsVictory::CreateComponents()
 {
-    gLocalization = GetSubsystem<ULocalization>();
+    gLocalization = GetSubsystem<Localization>();
     gUI = GetSubsystem<UI>();
     gCache = GetSubsystem<ResourceCache>();
 
@@ -76,7 +76,7 @@ void TacticsVictory::CreateComponents()
     gRenderer = GetSubsystem<Renderer>();
     gGraphics = GetSubsystem<UGraphics>();
 
-    gScene = new UScene(gContext);
+    gScene = new Urho3D::Scene(gContext);
     // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
     gScene->CreateComponent<Octree>();
 
@@ -84,10 +84,8 @@ void TacticsVictory::CreateComponents()
 
     gUIRoot = gUI->GetRoot();
 
-    gScene->CreateComponent<UDebugRenderer>();
-    gDebugRenderer = gScene->GetComponent<UDebugRenderer>();
-
-    gTime = new Time(gContext);
+    gScene->CreateComponent<DebugRenderer>();
+    gDebugRenderer = gScene->GetComponent<DebugRenderer>();
 
     gGUI = new GUI();
 
@@ -106,6 +104,8 @@ void TacticsVictory::Start()
 {
     Application::Start();
 
+    gTime = GetSubsystem<Time>();
+
     gLog = new ULog(gContext);
     gLog->Open("log.txt");
     gLog->SetLevel(Urho3D::LOG_INFO);
@@ -116,8 +116,6 @@ void TacticsVictory::Start()
 
     gCache->AddResourceDir(gFileSystem->GetProgramDir() + "../TVData");
     gFont = gCache->GetResource<UFont>(SET::MENU::FONT::NAME);
-    //gCache->AddResourceDir(gFileSystem->GetProgramDir() + "TVData");
-
 
     SetWindowTitleAndIcon();
     CreateConsoleAndDebugHud();
@@ -136,6 +134,8 @@ void TacticsVictory::Start()
     gFileSelector->GetWindow()->SetVisible(false);
 
     SubscribeToEvents();
+
+    CreateNewGame();
 }
 
 void TacticsVictory::InitLocalizationSystem()

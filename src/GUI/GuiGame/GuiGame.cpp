@@ -8,7 +8,7 @@
 #include "GUI/Menu/PanelBottom.h"
 
 
-GuiGame::GuiGame(UContext* context) :
+GuiGame::GuiGame(Context* context) :
     UIElement(context)
 {
     SetFixedSize(gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT));
@@ -40,7 +40,7 @@ GuiGame::GuiGame(UContext* context) :
     SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, HANDLER(GuiGame, HandleButtonRelease));
 }
 
-void GuiGame::RegisterObject(UContext* context)
+void GuiGame::RegisterObject(Context* context)
 {
     context->RegisterFactory<GuiGame>("UI");
 

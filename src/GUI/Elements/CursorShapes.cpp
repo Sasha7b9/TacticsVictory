@@ -11,8 +11,19 @@ bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::St
 }
 
 
-#define border       UColor::CYAN
+#define border       Color::CYAN
 #define transparent {0.0f, 0.0f, 0.0f, 0.0f}
+
+
+CursorShapes::CursorShapes() : Object(gContext)
+{
+    /*
+    for (int iType = 0; iType < TypeCursor_Size; iType++)
+    {
+        SharedPtr<Image> shape = GetShape((TypeCursor)iType, 0);
+    }
+    */
+}
 
 
 SharedPtr<Image> CursorShapes::GetShape(TypeCursor type, int numFrame)
@@ -53,10 +64,10 @@ void CursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int 
 
     float radius = size / 6.0f;
 
-    *x1 = (int)(size / 2.0f + UCos(angle0) * radius);
+    *x1 = (int)(size / 2.0f + Cos(angle0) * radius);
     *y1 = (int)(size / 2.0f + Sin(angle0) * radius);
 
-    *x2 = (int)(size / 2.0f + UCos(angle1) * radius);
+    *x2 = (int)(size / 2.0f + Cos(angle1) * radius);
     *y2 = (int)(size / 2.0f + Sin(angle1) * radius);
 }
 
@@ -66,6 +77,8 @@ void CursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int 
 
 void CursorShapes::CreateNormal(int numFrame)
 {
+    numFrame *= 10;
+
     int size = 100;
 
     SharedPtr<Image> image(new Image(size, size));
@@ -79,13 +92,15 @@ void CursorShapes::CreateNormal(int numFrame)
 
     DRAW_LINE(border, 4, 0, 0, x1, y1, x2, y2, 0, 0);
 
-    StructShape key = {TypeCursor_Normal, numFrame};
+    StructShape key = {TypeCursor_Normal, numFrame / 10};
 
     map[key] = image;
 }
 
 void CursorShapes::CreateSelected(int numFrame)
 {
+    numFrame *= 10;
+
     int size = 100;
 
     SharedPtr<Image> image(new Image(size, size));
@@ -101,7 +116,7 @@ void CursorShapes::CreateSelected(int numFrame)
 
     FillGradient(image, TypeCursor_Selected, numFrame + 360);   // Draw circle
 
-    StructShape key = {TypeCursor_Selected, numFrame};
+    StructShape key = {TypeCursor_Selected, numFrame / 10};
 
     map[key] = image;
 }

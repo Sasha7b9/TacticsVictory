@@ -626,7 +626,7 @@ void TerrainSegment::AddTopLeftCornerPlanes(uint row, uint col)
     }
 }
 
-float TerrainSegment::GetIntersectionPlane(URay &ray, Plane &plane, bool &isClosingTriangleOut)
+float TerrainSegment::GetIntersectionPlane(Ray &ray, Plane &plane, bool &isClosingTriangleOut)
 {
     float distPlane = GetIntersectionPlane(ray, plane);
     Triangle triangle;
@@ -653,7 +653,7 @@ float TerrainSegment::GetIntersectionPlane(URay &ray, Plane &plane, bool &isClos
     return distance;
 }
 
-float TerrainSegment::GetIntersectionPlane(URay &ray, Plane &plane)
+float TerrainSegment::GetIntersectionPlane(Ray &ray, Plane &plane)
 {
     float distance = Urho3D::M_INFINITY;
 
@@ -709,7 +709,7 @@ float TerrainSegment::GetIntersectionPlane(URay &ray, Plane &plane)
     return distance;
 }
 
-float TerrainSegment::GetIntersectionClosingTriangle(URay &ray, Triangle &triangle)
+float TerrainSegment::GetIntersectionClosingTriangle(Ray &ray, Triangle &triangle)
 {
     float distance = Urho3D::M_INFINITY;
 

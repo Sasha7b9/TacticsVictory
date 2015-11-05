@@ -4,7 +4,7 @@
 #include "Movinator.h"
 
 
-Movinator::Movinator(UContext *context) :
+Movinator::Movinator(Context *context) :
     LogicComponent(context)
 {
     SetUpdateEventMask(Urho3D::USE_UPDATE);

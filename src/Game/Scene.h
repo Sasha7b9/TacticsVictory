@@ -2,20 +2,24 @@
 
 
 #include "Game/Objects/Tank.h"
-#include "Game/PathIndicator.h"
+#include "Game/Path/PathIndicator.h"
 
 
-class Scene : public UObject
+class Scene : public Object
 {
     OBJECT(Scene)
 
 public:
-    Scene(UContext *context = gContext);
+    Scene(Context *context = gContext);
+    ~Scene();
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
     void Update();
     void Create();
+
+    void SetSelected(Tank *node, bool selected);
+    Tank* GetSelected();
 
 private:
     Scene& operator=(const Scene&)

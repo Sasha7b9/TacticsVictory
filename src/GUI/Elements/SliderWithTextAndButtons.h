@@ -9,11 +9,11 @@ class SliderWithTextAndButtons : public UIElement
     OBJECT(SliderWithTextAndButtons);
 
 public:
-    SliderWithTextAndButtons(UContext *context = gContext);
+    SliderWithTextAndButtons(Context *context = gContext);
 
     SliderWithTextAndButtons(UIElement *uielement, char *text, int min, int max, int step, int widthText = -1, int widthRoller = -1);
 
-    static void RegisterObject(UContext* context = gContext);
+    static void RegisterObject(Context* context = gContext);
 
     void SetRange(int min, int max, int step);
     void SetValue(int value);
@@ -26,9 +26,9 @@ private:
     SliderWithTextAndButtons& operator=(const SliderWithTextAndButtons&) {};
 
     SharedPtr<lSliderInt> slider;
-    SharedPtr<UText> textValue;
-    SharedPtr<UButton> buttonLeft;
-    SharedPtr<UButton> buttonRight;
+    SharedPtr<Urho3D::Text> textValue;
+    SharedPtr<Urho3D::Button> buttonLeft;
+    SharedPtr<Urho3D::Button> buttonRight;
     SharedPtr<Hint> hint;
 
     void HandleSliderIntChanged(StringHash, VariantMap&);

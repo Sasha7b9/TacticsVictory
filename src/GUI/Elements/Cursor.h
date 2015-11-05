@@ -18,7 +18,7 @@ enum TypeCursor
 };
 
 
-class Cursor : public Urho3D::Object
+class Cursor : public Object
 {
     OBJECT(Cursor)
 public:
@@ -33,7 +33,7 @@ public:
     void Hide();
     void Show();
     TypeCursor GetType()    { return type; };
-    UDrawable* GetRaycastNode(Vector3 *hitPos = 0);
+    Drawable* GetRaycastNode(Vector3 *hitPos = 0);
 
 private:
     SharedPtr<UCursor> cursor;

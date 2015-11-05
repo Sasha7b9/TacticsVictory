@@ -1,15 +1,15 @@
 #include <stdafx.h>
 
-ULocalization   *gLocalization = nullptr;
+Localization    *gLocalization = nullptr;
 UI              *gUI = nullptr;
 UIElement       *gUIRoot = nullptr;
 ResourceCache   *gCache = nullptr;
 UEngine         *gEngine = nullptr;
 UInput          *gInput = nullptr;
 Renderer        *gRenderer = nullptr;
-UDebugRenderer  *gDebugRenderer = nullptr;
-UContext        *gContext = nullptr;
-UScene          *gScene = nullptr;
+DebugRenderer   *gDebugRenderer = nullptr;
+Context         *gContext = nullptr;
+Urho3D::Scene   *gScene = nullptr;
 UConsole        *gEngineConsole = nullptr;
 UDebugHud       *gDebugHud = nullptr;
 UGraphics       *gGraphics = nullptr;

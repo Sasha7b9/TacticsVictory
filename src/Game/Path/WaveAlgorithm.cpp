@@ -5,124 +5,171 @@
 #include "Game/Objects/Terrain.h"
 
 
-PODVector<Coord> WaveAlgorithm::GetPath(Coord start, Coord end)
+static int dRow[] = {0, -1, 0, 1, -1, -1, 1, 1};
+static int dCol[] = {-1, 0, 1, 0, -1, 1, 1, -1};
+
+
+WaveAlgorithm::WaveAlgorithm() : Thread()
 {
-    cells.Resize(gTerrain->NumRows());
 
-    for(uint row = 0; row < gTerrain->NumRows(); row++)
+}
+
+WaveAlgorithm::~WaveAlgorithm()
+{
+    Stop();
+}
+
+void WaveAlgorithm::SetSize(uint numRows, uint numCols)
+{
+    this->numRows = numRows;
+    this->numCols = numCols;
+
+    cells.Resize(numRows);
+    for (auto &row : cells)
     {
-        cells[row].Resize(gTerrain->NumCols());
-        for(uint col = 0; col < gTerrain->NumCols(); col++)
-        {
-            cells[row][col].numWave = -1;
-        }
+        row.Resize(numCols);
     }
+}
 
-    this->end = end;
-    height = gTerrain->GetHeight(start.row, start.col);
+void WaveAlgorithm::StartFind(Coord start_, Coord end_)
+{
+    start = start_;
+    end = end_;
+    Run();
+}
 
-    cells[(uint)start.row][(uint)start.col].numWave = 0;
+bool WaveAlgorithm::PathIsFound()
+{
+    return pathIsFound;
+}
 
-    CalculateWaves(start, 1);
-
-    PODVector<Coord> path;
-
-    if(cells[(uint)start.row][(uint)start.col].numWave == -2)
-    {
-        return path;
-    }
-
-    Coord coord = end;
-
-    do
-    {
-        path.Insert(0, coord);
-        coord = cells[(uint)coord.row][(uint)coord.col].parent;
-    } while(!(coord == start));
-
-    path.Insert(0, coord);
-
+PODVector<Coord> WaveAlgorithm::GetPath()
+{
+    Stop();
     return path;
 }
 
-void WaveAlgorithm::CalculateWaves(Coord coord, int numWave)
+void WaveAlgorithm::ThreadFunction()
 {
-    uint col = (uint)coord.col;
-    uint row = (uint)coord.row;
+    pathIsFound = false;
+    path.Clear();
+    FindPath();
+    pathIsFound = true;
+}
 
-    // Left
-    if(col > 0)
+void WaveAlgorithm::FindPath()
+{
+    if (gTerrain->GetHeight(start.row, start.col) != gTerrain->GetHeight(end.row, end.col))
     {
-        col--;
-        if(cells[row][col].numWave == -1)
+        return;
+    }
+
+    if (start == end)
+    {
+        path.Push(start);
+        return;
+    }
+
+    for (auto &row : cells)
+    {
+        for (auto &cell : row)
         {
-            if(gTerrain->GetHeight(row, col) != height)
+            cell.numWave = -1;
+        }
+    }
+
+    heightStart = gTerrain->GetHeight(start.row, start.col);
+
+    Vector<Wave> waves;
+
+    Wave wave;
+    SetCell(wave, start.row, start.col, 0);
+
+    waves.Push(wave);
+
+    do
+    {
+        NextWave(waves);
+    } while(waves[waves.Size() - 1].Size() && !Contain(waves[waves.Size() - 1], end));
+
+    if(Contain(waves[waves.Size() - 1], end))
+    {
+        path.Push(end);
+        while(!(path[0] == start))
+        {
+            AddPrevWave(path);
+        }
+    }
+    else
+    {
+        path.Push(start);
+    }
+}
+
+bool WaveAlgorithm::Contain(Wave &wave, Coord &coord)
+{
+    for (auto &crd : wave)
+    {
+        if (crd == coord)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void WaveAlgorithm::SetCell(Wave &wave, uint row, uint col, int numWave)
+{
+    wave.Push(Coord(row, col));
+    cells[row][col].numWave = numWave;
+}
+
+void WaveAlgorithm::NextWave(Vector<Wave> &waves)
+{
+    int numWave = (int)waves.Size();
+    Wave &prevWave = waves[(uint)numWave - 1];
+    Wave wave;
+
+    for (auto coord : prevWave)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            int iRow = (int)coord.row + dRow[i];
+            int iCol = (int)coord.col + dCol[i];
+
+            uint newRow = (uint)iRow;
+            uint newCol = (uint)iCol;
+
+            if (newRow < numRows && newCol < numCols && cells[newRow][newCol].numWave == -1 && gTerrain->GetHeight(newRow, newCol) == heightStart)
             {
-                cells[row][col].numWave = -2;
-            }
-            else
-            {
-                cells[row][col].numWave = numWave;
-                cells[row][col].parent = Coord((int)row, (int)(col + 1));
-                CalculateWaves(Coord((int)row, (int)col), numWave + 1);
+                SetCell(wave, newRow, newCol, numWave);
             }
         }
     }
 
-    // Top
-    if(row > 0)
-    {
-        row--;
-        if(cells[row][col].numWave == -1)
-        {
-            if(gTerrain->GetHeight(row, col) != height)
-            {
-                cells[row][col].numWave = -2;
-            }
-            else
-            {
-                cells[row][col].numWave = numWave;
-                cells[row][col].parent = Coord(row + 1, col);
-                CalculateWaves(Coord(row, col), numWave + 1);
-            }
-        }
-    }
+    waves.Push(wave);
+}
 
-    // Right
-    if(col < gTerrain->NumCols() - 1)
-    {
-        col++;
-        if(cells[row][col].numWave == -1)
-        {
-            if(gTerrain->GetHeight(row, col) != height)
-            {
-                cells[row][col].numWave = -2;
-            }
-            else
-            {
-                cells[row][col].numWave = numWave;
-                cells[row][col].parent = Coord(row, col - 1);
-                CalculateWaves(Coord(row, col), numWave + 1);
-            }
-        }
-    }
+void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path)
+{
+    Coord coord = path[0];
+    uint row = coord.row;
+    uint col = coord.col;
+    int numWave = cells[row][col].numWave;
 
-    // Bottom
-    if(row < gTerrain->NumRows() - 1)
+    for (int i = 0; i < 8; i++)
     {
-        row++;
-        if(cells[row][col].numWave == -1)
+        int iRow = (int)row + dRow[i];
+        int iCol = (int)col + dCol[i];
+
+        uint newRow = (uint)iRow;
+        uint newCol = (uint)iCol;
+
+        if (newRow < gTerrain->NumRows() && newCol < gTerrain->NumCols() && cells[newRow][newCol].numWave == numWave - 1)
         {
-            if(gTerrain->GetHeight(row, col) != height)
-            {
-                cells[row][col].numWave = -2;
-            }
-            else
-            {
-                cells[row][col].numWave = numWave;
-                cells[row][col].parent = Coord(row - 1, col);
-                CalculateWaves(Coord(row, col), numWave + 1);
-            }
+            path.Insert(0, Coord(newRow, newCol));
+            return;
         }
     }
 }

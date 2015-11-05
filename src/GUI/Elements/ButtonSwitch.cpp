@@ -4,7 +4,7 @@
 #include "ButtonSwitch.h"
 
 
-ButtonSwitch::ButtonSwitch(UContext *context) :
+ButtonSwitch::ButtonSwitch(Context *context) :
     ButtonMain(context)
 {
 
@@ -18,7 +18,7 @@ ButtonSwitch::ButtonSwitch(UIElement *uielement, char *text, int width, int heig
     SubscribeToEvent(this, Urho3D::E_RELEASED, HANDLER(ButtonSwitch, HandleButtonRelease));
 }
 
-void ButtonSwitch::RegisterObject(UContext *context)
+void ButtonSwitch::RegisterObject(Context *context)
 {
     context->RegisterFactory<ButtonSwitch>("UI");
 

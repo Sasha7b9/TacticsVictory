@@ -9,7 +9,7 @@
 #include "GUI/Logic/LineTranslator2D.h"
 
 
-PanelMap::PanelMap(UContext *context) :
+PanelMap::PanelMap(Context *context) :
     lWindow(context)
 {
     SetName("PanelMap");
@@ -29,7 +29,7 @@ PanelMap::PanelMap(UContext *context) :
 }
 
 
-void PanelMap::RegisterObject(UContext *context)
+void PanelMap::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelMap>("UI");
 
@@ -58,7 +58,7 @@ void PanelMap::Update(float dT)
 
         imageMap = new Image((int)sizeMap, (int)sizeMap);
 
-        imageMap->Clear(UColor::BLACK);
+        imageMap->Clear(Color::BLACK);
 
         float maxHeight = GetMaxHeight();
         float stand = 0.0f;
@@ -86,7 +86,7 @@ void PanelMap::Update(float dT)
                 posX = (int)(x0 + x);
                 int posY = (int)(y0 + y);
                 float color = GetMapHeight(x, y) * scaleColor;
-                UColor col = {stand + color, stand + color, stand + color};
+                Color col = {stand + color, stand + color, stand + color};
 
                 {
                     imageMap->SetPoint(posX, posY, col);
@@ -98,7 +98,7 @@ void PanelMap::Update(float dT)
 
         imageMap->GetUImage()->Resize(GetWidth(), GetHeight());
 
-        imageMap->DrawRectangle(0, 0, GetWidth() - 1, GetHeight() - 1, UColor::WHITE);
+        imageMap->DrawRectangle(0, 0, GetWidth() - 1, GetHeight() - 1, Color::WHITE);
     }
 
     Vector2 points[4] =
@@ -135,7 +135,7 @@ void PanelMap::Update(float dT)
     }
 
 #define DRAW_LINE(p0, p1)   \
-    image->DrawLine((int)(x0 + p0.x_ * scale), (int)(y0 - p0.y_ * scale), (int)(x0 + p1.x_ * scale), (int)(y0 - p1.y_ * scale), UColor::BLUE);
+    image->DrawLine((int)(x0 + p0.x_ * scale), (int)(y0 - p0.y_ * scale), (int)(x0 + p1.x_ * scale), (int)(y0 - p1.y_ * scale), Color::BLUE);
 
     Vector2 point0;
     if(FindIntersectionX0Z(points[0], point0))
@@ -168,9 +168,9 @@ void PanelMap::Update(float dT)
 
 bool PanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPointOut)
 {
-    UCamera *camera = gCamera->GetNode()->GetComponent<UCamera>();
+    Urho3D::Camera *camera = gCamera->GetNode()->GetComponent<Urho3D::Camera>();
     UPlane planeX0Z({0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f});
-    URay ray = camera->GetScreenRay(screenPoint.x_, screenPoint.y_);
+    Ray ray = camera->GetScreenRay(screenPoint.x_, screenPoint.y_);
     float distanceHit = ray.HitDistance(planeX0Z);
     if(distanceHit == Urho3D::M_INFINITY)
     {

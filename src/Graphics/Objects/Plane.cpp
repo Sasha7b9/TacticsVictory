@@ -43,7 +43,7 @@ void Plane::SetY(float y)
     v0.y_ = v1.y_ = v2.y_ = v3.y_ = y;
 }
 
-Line Plane::NearEdge(URay &ray)
+Line Plane::NearEdge(Ray &ray)
 {
     Line lines[] =
     {
@@ -59,7 +59,7 @@ Line Plane::NearEdge(URay &ray)
 
     for (int i = 0; i < 4; i++)
     {
-        URay rayEdge(lines[i].start, lines[i].end - lines[i].start);
+        Ray rayEdge(lines[i].start, lines[i].end - lines[i].start);
         Vector3 closestPoint = ray.ClosestPoint(rayEdge);
         float dist = rayEdge.Distance(closestPoint);
         if (dist < distance)

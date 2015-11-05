@@ -41,7 +41,11 @@ SharedPtr<UCursor> Cursor::GetCursor()
 
 void Cursor::Update(float dT)
 {
-    
+    static Timer timerFull;
+
+    Timer timerUpdate;
+    static uint timeUpdate = 0;
+
     const float speed = 500.0f;
     static float angle0 = 0.0f;
 
@@ -126,8 +130,30 @@ void Cursor::Update(float dT)
         {
             type = selected ? TypeCursor_Selected : TypeCursor_Normal;
         }
-        SharedPtr<Image> image = shapes->GetShape(type, type <= TypeCursor_Selected ? (int)(angle0) : numFrame);
-        cursor->DefineShape("Normal", image->GetUImage(), {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
+        static TypeCursor prevType = TypeCursor_Size;
+        static int prevFrame = -1;
+
+        if (prevType != type || prevFrame != numFrame)
+        {
+            prevFrame = numFrame;
+            prevType = type;
+
+            SharedPtr<Image> image = shapes->GetShape(type, numFrame);
+            cursor->DefineShape("Normal", image->GetUImage(), {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
+        }
+        else
+        {
+            //LOGINFO("Prev type");
+        }
+    }
+
+    timeUpdate += timerUpdate.GetMSec(false);
+
+    if (timerFull.GetMSec(false) >= 1000)
+    {
+        //LOGINFOF("cursor update %d ms for 1s, %d%%", timeUpdate, (int)((float)timeUpdate / timerFull.GetMSec(false) * 100.0f));
+        timerFull.Reset();
+        timeUpdate = 0;
     }
 }
 
@@ -141,21 +167,26 @@ void Cursor::SetSelected()
     selected = true;
 }
 
-UDrawable* Cursor::GetRaycastNode(Vector3 *hitPos_)
+Drawable* Cursor::GetRaycastNode(Vector3 *hitPos_)
 {
     if(gUI->GetElementAt(gUI->GetCursorPosition(), true))
     {
         return nullptr;
     }
 
-    URay ray = gCamera->GetCursorRay();
+    Ray ray = gCamera->GetCursorRay();
     PODVector<RayQueryResult> results;
     RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, Urho3D::M_INFINITY, Urho3D::DRAWABLE_GEOMETRY);
-    gScene->GetComponent<Octree>()->RaycastSingle(query);
+    gScene->GetComponent<Octree>()->Raycast(query);
 
     if(results.Size())
     {
         RayQueryResult& result = results[0];
+        String name = result.drawable_->GetNode()->GetName();
+        if (result.drawable_->GetNode()->GetName() == NODE_TILE_PATH && results.Size() > 1)
+        {
+            result = results[1];
+        }
         Vector3 hitPos = result.position_;
         if(hitPos_)
         {

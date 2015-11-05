@@ -6,11 +6,11 @@
 #include "Graphics/Objects/Line.h"
 
 
-class Editor : public UObject
+class Editor : public Object
 {
     OBJECT(Editor);
 public:
-    Editor(UContext *context);
+    Editor(Context *context);
     void Run();
     void ClearScene();
 

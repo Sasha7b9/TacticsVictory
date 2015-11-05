@@ -195,17 +195,20 @@
     <ClCompile Include="src\Game\Scene.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\PathIndicator.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Path\PathWave.cpp">
-      <Filter>Game\Path</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Path\TilePath.cpp">
       <Filter>Game\Path</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\Elements\ButtonMain.cpp">
       <Filter>GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Path\WaveAlgorithm.cpp">
+      <Filter>Game\Path</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Path\PathIndicator.cpp">
+      <Filter>Game\Path</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Logic\Translator.cpp">
+      <Filter>Game\Logic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -362,17 +365,20 @@
     <ClInclude Include="src\Game\Scene.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\PathIndicator.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Path\PathWave.h">
-      <Filter>Game\Path</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Path\TilePath.h">
       <Filter>Game\Path</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\Elements\ButtonMain.h">
       <Filter>GUI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Path\WaveAlgorithm.h">
+      <Filter>Game\Path</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Path\PathIndicator.h">
+      <Filter>Game\Path</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Logic\Translator.h">
+      <Filter>Game\Logic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

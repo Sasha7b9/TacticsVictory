@@ -19,7 +19,7 @@
 #include "GlobalFunctions.h"
 
 
-GuiEditor::GuiEditor(UContext* context) :
+GuiEditor::GuiEditor(Context* context) :
     UIElement(context)
 {
     SetFixedSize(gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT));
@@ -125,7 +125,7 @@ GuiEditor::GuiEditor(UContext* context) :
     SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(GuiEditor, HandleKeyDown));
 }
 
-void GuiEditor::RegisterObject(UContext *context)
+void GuiEditor::RegisterObject(Context *context)
 {
     context->RegisterFactory<GuiEditor>("UI");
 

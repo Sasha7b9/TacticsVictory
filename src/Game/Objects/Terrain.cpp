@@ -175,7 +175,7 @@ Vector<Vector<float> > Terrain::ExtractSubMap(uint startX, uint startZ, uint siz
     return subMap;
 }
 
-Plane Terrain::GetIntersectionPlane(URay &ray)
+Plane Terrain::GetIntersectionPlane(Ray &ray)
 {
     Plane plane = Plane::ZERO;
     Vector<float> distances;
@@ -214,7 +214,7 @@ Plane Terrain::GetIntersectionPlane(URay &ray)
     return plane;
 }
 
-Line Terrain::GetIntersectionEdge(URay &ray)
+Line Terrain::GetIntersectionEdge(Ray &ray)
 {
     Plane plane = GetIntersectionPlane(ray);
 

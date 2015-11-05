@@ -9,9 +9,9 @@ class Tab : public lWindow
     OBJECT(Tab);
 
 public:
-    Tab(UContext *context = gContext);
+    Tab(Context *context = gContext);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
     static SharedPtr<Tab> Create(char *title);
 

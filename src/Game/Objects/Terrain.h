@@ -1,7 +1,7 @@
 #pragma once
 
 
-class Terrain : public UObject
+class Terrain : public Object
 {
     OBJECT(Terrain);
 
@@ -9,10 +9,10 @@ public:
     Terrain(Vector<Vector<float> > &map);
     ~Terrain();
 
-    Plane GetIntersectionPlane(URay &ray);
+    Plane GetIntersectionPlane(Ray &ray);
     Plane GetPlane(uint row, uint col);
 
-    Line  GetIntersectionEdge(URay &ray);
+    Line  GetIntersectionEdge(Ray &ray);
 
     void SetHeight(uint row, uint col, float height);
     float GetHeight(uint row, uint col);

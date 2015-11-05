@@ -9,7 +9,7 @@
 #include "GUI/Elements/DropDownListWithTextAndButton.h"
 
 
-lWindow::lWindow(UContext *context) :
+lWindow::lWindow(Context *context) :
     Window(context)
 {
     SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
@@ -17,7 +17,7 @@ lWindow::lWindow(UContext *context) :
     SetMovable(true);
 }
 
-void lWindow::RegisterObject(UContext *context)
+void lWindow::RegisterObject(Context *context)
 {
     context->RegisterFactory<lWindow>("UI");
 

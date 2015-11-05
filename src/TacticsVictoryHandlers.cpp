@@ -19,9 +19,9 @@ void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
 {
     if(drawDebug)
     {
-        gDebugRenderer->AddLine(Vector3::ZERO, {100.0f, 0.0f, 0.0f}, UColor::RED);
-        gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 100.0f, 0.0f}, UColor::GREEN);
-        gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 100.0f}, UColor::BLUE);
+        gDebugRenderer->AddLine(Vector3::ZERO, {100.0f, 0.0f, 0.0f}, Color::RED);
+        gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 100.0f, 0.0f}, Color::GREEN);
+        gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 100.0f}, Color::BLUE);
         //gRenderer->DrawDebugGeometry(false);
     }
 }
@@ -123,6 +123,9 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
 void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
 {
     float time = eventData[Urho3D::Update::P_TIMESTEP].GetFloat();
+
+    //LOGINFOF("time frame %f, time from begin %f, fps %f", time, gTime->GetElapsedTime(), gTime->GetFrameNumber() / gTime->GetElapsedTime());
+
     gCamera->Move(time);
 
     if (gCursor)

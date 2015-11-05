@@ -9,9 +9,9 @@ class PanelMain : public lWindow
     OBJECT(PanelMain);
 
 public:
-    PanelMain(UContext *context = gContext);
+    PanelMain(Context *context = gContext);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
     virtual void Update(float dT);
     void AddTab(SharedPtr<Tab> tab);

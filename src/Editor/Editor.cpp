@@ -11,7 +11,7 @@
 #include "Game/Objects/Tank.h"
 
 
-Editor::Editor(UContext *context) : Object(context)
+Editor::Editor(Context *context) : Object(context)
 {
     currentPlane = Plane::ZERO;
     selectedPlane = Plane::ZERO;
@@ -23,10 +23,10 @@ void Editor::Run()
     LOGINFO("Begin create editor");
     Node* zoneNode = gScene->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
-    zone->SetBoundingBox(UBoundingBox(-50.0f, 50.0f));
+    zone->SetBoundingBox(BoundingBox(-50.0f, 50.0f));
 
     float dColor = 0.3f;
-    zone->SetAmbientColor(UColor(dColor, dColor, dColor));
+    zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
 
@@ -39,8 +39,8 @@ void Editor::Run()
     light->SetLightType(Urho3D::LIGHT_POINT);
     light->SetRange(1000.0f);
     light->SetCastShadows(true);
-    light->SetShadowBias(Urho3D::BiasParameters(0.00025f, 0.5f));
-    light->SetShadowCascade(UCascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
+    light->SetShadowBias(BiasParameters(0.00025f, 0.5f));
+    light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
 
     gCamera->SetPosition({(float)gTerrain->NumCols() / 2, 5.0f, -(float)gTerrain->NumRows() / 2 - 10.0f}, {(float)gTerrain->NumCols() / 2, 0.0f, -(float)gTerrain->NumRows() / 2});
@@ -92,13 +92,13 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
     float relX = (float)pos.x_ / gGraphics->GetWidth();
     float relY = (float)pos.y_ / gGraphics->GetHeight();
 
-    URay ray = gCamera->GetNode()->GetComponent<UCamera>()->GetScreenRay(relX, relY);
+    Ray ray = gCamera->GetNode()->GetComponent<Urho3D::Camera>()->GetScreenRay(relX, relY);
 
     if (gGuiEditor->modeSelect == GuiEditor::ModeSelect_Plane)
     {
         if (!selectedPlane.IsZero())
         {
-            UColor color = UColor::BLUE;
+            Color color = Color::BLUE;
             gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v1, selectedPlane.v2, color, false);
             gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
         }
@@ -113,7 +113,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             {
                 if (!selectedPlane.IsEquals(currentPlane))
                 {
-                    UColor color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? UColor::CYAN : UColor::BLUE;
+                    Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE;
                     gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
                     gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
                 }
@@ -134,7 +134,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
             if (!currentEdge.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
             {
-                UColor color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? UColor::CYAN : UColor::BLUE;
+                Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE;
 
                 float dX = fabs(currentEdge.start.x_ - currentEdge.end.x_);
                 float dZ = fabs(currentEdge.start.z_ - currentEdge.end.z_);

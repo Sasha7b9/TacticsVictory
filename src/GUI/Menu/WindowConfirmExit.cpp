@@ -9,7 +9,7 @@
 
 
 
-WindowConfirmExit::WindowConfirmExit(UContext *) :
+WindowConfirmExit::WindowConfirmExit(Context *) :
     lWindow()
 {
     SET_VERTICAL_LAYOUT_0_6(this);
@@ -28,7 +28,7 @@ WindowConfirmExit::WindowConfirmExit(UContext *) :
     AddChild(layer);
 }
 
-void WindowConfirmExit::RegisterObject(UContext *context)
+void WindowConfirmExit::RegisterObject(Context *context)
 {
     context->RegisterFactory<WindowConfirmExit>("UI");
 
@@ -37,7 +37,7 @@ void WindowConfirmExit::RegisterObject(UContext *context)
 
 void WindowConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    UButton *button = (UButton*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    Urho3D::Button *button = (Urho3D::Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
 
     if (button == buttonOk)
     {

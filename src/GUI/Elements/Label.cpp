@@ -4,17 +4,17 @@
 #include "Label.h"
 
 
-Label::Label(UContext *context) :
-    UText(context)
+Label::Label(Context *context) :
+    Urho3D::Text(context)
 {
     SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, HANDLER(Label, HandleChangeLanguage));
 }
 
-void Label::RegisterObject(UContext *context)
+void Label::RegisterObject(Context *context)
 {
     context->RegisterFactory<Label>("UI");
 
-    COPY_BASE_ATTRIBUTES(UText);
+    COPY_BASE_ATTRIBUTES(Urho3D::Text);
 }
 
 SharedPtr<Label> Label::Create(char *text_, int sizeFont, int width /* = -1 */, int height /* = -1 */, Urho3D::HorizontalAlignment ha, Urho3D::VerticalAlignment va)
@@ -50,10 +50,10 @@ void Label::SetText(char *text_)
 {
     text = text_;
 
-    UText::SetText(gLocalization->Get(text));
+    Urho3D::Text::SetText(gLocalization->Get(text));
 }
 
 void Label::HandleChangeLanguage(StringHash, VariantMap&)
 {
-    UText::SetText((char*)gLocalization->Get(text).CString());
+    Urho3D::Text::SetText((char*)gLocalization->Get(text).CString());
 }

@@ -4,7 +4,7 @@
 #include "SliderInt.h"
 
 
-lSliderInt::lSliderInt(UContext *context) :
+lSliderInt::lSliderInt(Context *context) :
     Slider(context)
 {
 
@@ -77,7 +77,7 @@ void lSliderInt::Decrease()
     SetValueInt(GetValueInt() - step);
 }
 
-void lSliderInt::RegisterObject(UContext* context)
+void lSliderInt::RegisterObject(Context* context)
 {
     context->RegisterFactory<lSliderInt>("UI");
 

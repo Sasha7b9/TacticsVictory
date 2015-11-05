@@ -4,12 +4,11 @@
 #include "Cursor.h"
 
 
-class CursorShapes : public UObject
+class CursorShapes : public Object
 {
     OBJECT(CursorShapes);
 public:
-    CursorShapes() : Object(gContext)
-    {};
+    CursorShapes();
     SharedPtr<Image> GetShape(TypeCursor type, int numFrame);
 
 private:
@@ -43,7 +42,7 @@ public:
 private:
     CursorShapes& operator=(const CursorShapes&)
     {};
-    UHashMap<StructShape, SharedPtr<Image> > map;
+    UHashMap<StructShape, SharedPtr<Image>> map;
 
     int dimensionTriangleSmall = 50;
     int dimensionTriangleBig = 100;

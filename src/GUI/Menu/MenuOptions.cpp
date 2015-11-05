@@ -11,7 +11,7 @@
 #include "GUI/Elements/DropDownListWithTextAndButton.h"
 
 
-MenuOptions::MenuOptions(UContext *context) :
+MenuOptions::MenuOptions(Context *context) :
     lWindow(context)
 {
     SET_VERTICAL_LAYOUT_0_6(this);
@@ -84,7 +84,7 @@ MenuOptions::MenuOptions(UContext *context) :
     label->SetPosition(x, y);
 }
 
-void MenuOptions::RegisterObject(UContext *context)
+void MenuOptions::RegisterObject(Context *context)
 {
     context->RegisterFactory<MenuOptions>("UI");
 
@@ -158,7 +158,7 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 
 void MenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    UButton *button = (UButton*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    Urho3D::Button *button = (Urho3D::Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
     eventData = GetEventDataMap();
     eventData[MenuEvent::P_TYPE] = mapButtonsActions[button];
     SendEvent(E_MENU, eventData);

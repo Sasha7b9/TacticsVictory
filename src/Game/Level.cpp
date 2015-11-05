@@ -9,7 +9,7 @@
 Vector<Vector<float> > Level::map;
 
 
-Level::Level(UContext *context) : Object(context)
+Level::Level(Context *context) : Object(context)
 {
 
 }

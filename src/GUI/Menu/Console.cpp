@@ -5,7 +5,7 @@
 #include "GUI/Menu/ConsoleParser.h"
 
 
-Console::Console(UContext *context) :
+Console::Console(Context *context) :
     lWindow(context)
 {
     SetVisible(false);
@@ -28,7 +28,7 @@ Console::Console(UContext *context) :
     scrollBar->SetRange(0.0f);
     AddChild(scrollBar);
 
-    text = gUIRoot->CreateChild<UText>();
+    text = gUIRoot->CreateChild<Urho3D::Text>();
     text->SetStyle("WindowMenu");
     text->SetFixedSize(GetWidth() - 10, GetHeight() - 15);
     text->SetPosition(0, 0);

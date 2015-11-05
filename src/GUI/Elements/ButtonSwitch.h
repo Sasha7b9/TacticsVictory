@@ -9,10 +9,10 @@ class ButtonSwitch : public ButtonMain
     OBJECT(ButtonSwitch);
 
 public:
-    ButtonSwitch(UContext *context = gContext);
+    ButtonSwitch(Context *context = gContext);
     ButtonSwitch(UIElement *uielement, char *text, int width = -1, int height = -1);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
     void AddState(char *item);
     void SetState(uint state);

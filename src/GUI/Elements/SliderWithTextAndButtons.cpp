@@ -7,7 +7,7 @@
 #include "GUI/Elements/Hint.h"
 
 
-SliderWithTextAndButtons::SliderWithTextAndButtons(UContext *context) :
+SliderWithTextAndButtons::SliderWithTextAndButtons(Context *context) :
     UIElement(context)
 {
 
@@ -37,7 +37,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     SubscribeToEvent(slider, Urho3D::E_HOVERBEGIN, HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
     SubscribeToEvent(slider, Urho3D::E_HOVEREND, HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
 
-    buttonLeft = new UButton(gContext);
+    buttonLeft = new Urho3D::Button(gContext);
     buttonLeft->SetRepeat(0.25f, 20.0f);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
@@ -45,7 +45,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     SubscribeToEvent(buttonLeft, Urho3D::E_HOVERBEGIN, HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
     SubscribeToEvent(buttonLeft, Urho3D::E_HOVEREND, HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
 
-    buttonRight = new UButton(gContext);
+    buttonRight = new Urho3D::Button(gContext);
     buttonRight->SetRepeat(0.25f, 20.0f);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
@@ -53,7 +53,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     SubscribeToEvent(buttonRight, Urho3D::E_HOVERBEGIN, HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
     SubscribeToEvent(buttonRight, Urho3D::E_HOVEREND, HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
 
-    textValue = new UText(gContext);
+    textValue = new Urho3D::Text(gContext);
     textValue->SetFixedWidth(35);
     textValue->SetFont(gFont, 15);
     textValue->SetText(String(slider->GetValue()));
@@ -71,7 +71,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     SubscribeToEvent(Urho3D::E_UIMOUSECLICK, HANDLER(SliderWithTextAndButtons, HandleMouseClick));
 }
 
-void SliderWithTextAndButtons::RegisterObject(UContext* context)
+void SliderWithTextAndButtons::RegisterObject(Context* context)
 {
     context->RegisterFactory<SliderWithTextAndButtons>("UI");
 
@@ -106,7 +106,7 @@ void SliderWithTextAndButtons::HandleSliderIntChanged(StringHash, VariantMap& ev
 
 void SliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventData)
 {
-    UButton *button = (UButton*)eventData[Urho3D::Pressed::P_ELEMENT].GetPtr();
+    Urho3D::Button *button = (Urho3D::Button*)eventData[Urho3D::Pressed::P_ELEMENT].GetPtr();
 
     if(button == buttonLeft)
     {

@@ -7,8 +7,8 @@
 #include "GUI/Elements/Hint.h"
 
 
-ButtonMain::ButtonMain(UContext *context) :
-    UButton(context)
+ButtonMain::ButtonMain(Context *context) :
+    Urho3D::Button(context)
 {
     SetStyle("MainMenuButton");
 
@@ -17,7 +17,7 @@ ButtonMain::ButtonMain(UContext *context) :
 }
 
 ButtonMain::ButtonMain(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
-    UButton(gContext)
+    Urho3D::Button(gContext)
 {
     //SetStyleAuto(gUIRoot->GetDefaultStyle());
     SetStyle("MainMenuButton");
@@ -50,11 +50,11 @@ ButtonMain::ButtonMain(UIElement *uielement, char *text, int width /* = -1 */, i
     SubscribeToEvent(this, Urho3D::E_HOVEREND, HANDLER(ButtonMain, HandleHoverEnd));
 }
 
-void ButtonMain::RegisterObject(UContext *context)
+void ButtonMain::RegisterObject(Context *context)
 {
     context->RegisterFactory<ButtonMain>("UI");
 
-    COPY_BASE_ATTRIBUTES(UButton);
+    COPY_BASE_ATTRIBUTES(Urho3D::Button);
 }
 
 void ButtonMain::SetText(char *text)
@@ -79,7 +79,7 @@ void ButtonMain::HandleHoverEnd(StringHash, VariantMap&)
 
 void ButtonMain::OnClickBegin(const UIntVector2& position, const UIntVector2& screenPosition, int button, int buttons, int qualifiers, UCursor* cursor)
 {
-    UButton::OnClickBegin(position, screenPosition, button, buttons, qualifiers, cursor);
+    Urho3D::Button::OnClickBegin(position, screenPosition, button, buttons, qualifiers, cursor);
 
     if(buttons == Urho3D::MOUSEB_RIGHT)
     {

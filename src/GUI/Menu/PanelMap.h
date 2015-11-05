@@ -9,9 +9,9 @@ class PanelMap : public lWindow
     OBJECT(PanelMap);
 
 public:
-    PanelMap(UContext *context = gContext);
+    PanelMap(Context *context = gContext);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
     virtual void Update(float timeStep);
 

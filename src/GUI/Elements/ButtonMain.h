@@ -5,14 +5,14 @@
 #include "Hint.h"
 
 
-class ButtonMain : public UButton
+class ButtonMain : public Urho3D::Button
 {
     OBJECT(ButtonMain);
 public:
-    ButtonMain(UContext *context = gContext);
+    ButtonMain(Context *context = gContext);
     ButtonMain(UIElement *uielement, char *text, int widht = -1, int height = -1);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
     void SetText(char *text);
     void SetHint(char *text);

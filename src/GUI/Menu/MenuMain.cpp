@@ -10,7 +10,7 @@
 #include "GUI/Menu/WindowConfirmExit.h"
 
 
-MenuMain::MenuMain(UContext *) :
+MenuMain::MenuMain(Context *) :
     lWindow()
 {
     SetLayout(Urho3D::LM_VERTICAL, 6, UIntRect(6, 6, 6, 6));
@@ -41,7 +41,7 @@ MenuMain::MenuMain(UContext *) :
     mapButtonsActions[buttonExit] = MenuEvent_ExitInOS;
 }
 
-void MenuMain::RegisterObject(UContext* context)
+void MenuMain::RegisterObject(Context* context)
 {
     context->RegisterFactory<MenuMain>("UI");
 
@@ -50,7 +50,7 @@ void MenuMain::RegisterObject(UContext* context)
 
 void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    UButton *button = (UButton*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    Urho3D::Button *button = (Urho3D::Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
 
     if (button == buttonExit)
     {

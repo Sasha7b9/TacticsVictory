@@ -27,7 +27,7 @@ public:
     void DisableArrows() { arrowEnabled = false; };
     void EnableArrows() { arrowEnabled = true; };
     SharedPtr<Node> GetNode();
-    URay GetCursorRay();
+    Ray GetCursorRay();
 
 private:
     SharedPtr<Node> cameraNode;

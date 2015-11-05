@@ -7,7 +7,7 @@
 #include "GUI/Logic/LineTranslator2D.h"
 
 
-PanelMain::PanelMain(UContext *context) :
+PanelMain::PanelMain(Context *context) :
     lWindow(context)
 {
     SetName("PanelMain");
@@ -22,7 +22,7 @@ PanelMain::PanelMain(UContext *context) :
     translator = new LineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
 }
 
-void PanelMain::RegisterObject(UContext *context)
+void PanelMain::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelMain>("UI");
 

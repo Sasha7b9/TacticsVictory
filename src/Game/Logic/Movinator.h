@@ -1,12 +1,12 @@
 #pragma once
 
 
-class Movinator : public ULogicComponent
+class Movinator : public LogicComponent
 {
     OBJECT(Movinator);
     
 public:
-    Movinator(UContext *context);
+    Movinator(Context *context);
 
     void SetMoveSpeed(float speed);
     void SetCenter(const Vector3 &vec);

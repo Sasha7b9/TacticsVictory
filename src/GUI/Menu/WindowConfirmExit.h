@@ -9,9 +9,9 @@ class WindowConfirmExit : public lWindow
     OBJECT(WindowConfirmExit);
 
 public:
-    WindowConfirmExit(UContext *context);
+    WindowConfirmExit(Context *context);
 
-    static void RegisterObject(UContext *context = gContext);
+    static void RegisterObject(Context *context = gContext);
 
 private:
     WindowConfirmExit& operator=(const WindowConfirmExit&)

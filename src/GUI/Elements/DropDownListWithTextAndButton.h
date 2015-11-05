@@ -6,11 +6,11 @@ class DropDownListWithTextAndButton : public UIElement
     OBJECT(DropDownListWithTextAndButton);
 
 public:
-    DropDownListWithTextAndButton(UContext *context = gContext);
+    DropDownListWithTextAndButton(Context *context = gContext);
 
     DropDownListWithTextAndButton(char *text, int widthText, int widthDDList);
 
-    static void RegisterObject(UContext* context = gContext);
+    static void RegisterObject(Context* context = gContext);
 
     void AddItem(char *text);
     void SetSelection(uint index);
@@ -27,6 +27,6 @@ private:
     void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
 
     SharedPtr<UDropDownList> ddList;
-    SharedPtr<UButton> buttonLeft;
-    SharedPtr<UButton> buttonRight;
+    SharedPtr<Urho3D::Button> buttonLeft;
+    SharedPtr<Urho3D::Button> buttonRight;
 };

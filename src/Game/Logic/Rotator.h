@@ -1,12 +1,12 @@
 #pragma once
 
 
-class Rotator : public ULogicComponent
+class Rotator : public LogicComponent
 {
     OBJECT(Rotator);
     
 public:
-    Rotator(UContext* context);
+    Rotator(Context* context);
     
     void SetRotationSpeed(const Vector3& speed);
     virtual void Update(float timeStep);

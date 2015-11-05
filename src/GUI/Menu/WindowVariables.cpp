@@ -6,7 +6,7 @@
 #include "GUI/Elements/GovernorFloat.h"
 
 
-WindowVariables::WindowVariables(UContext *context) :
+WindowVariables::WindowVariables(Context *context) :
     lWindow(context)
 {
     SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));

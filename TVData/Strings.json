@@ -68,7 +68,7 @@
     "Camera pitch":         { "en":"Camera pitch",      "ru":"Camera pitch" },
     "Camera position Y":    { "en":"Camera position Y", "ru":"Camera position Y" },
     "Camera yaw":           { "en":"Camera yaw",        "ru":"Camera yaw" },
-    "Max occluder triangles":   { "en":"Max occluder triangles",    "ru":"Max occluder triangles" },
+    
     "x1":                   { "en":"x1",                "ru":"x1" },
     "x2":                   { "en":"x2",                "ru":"x2" },
     "x4":                   { "en":"x4",                "ru":"x4" },
@@ -87,6 +87,8 @@
     "8192":                 { "en":"8192",              "ru":"8192" },
     "16384":                { "en":"16384",             "ru":"16384" },
     "Create":               { "en":"Create",            "ru":"Создать" },
+    "Max occluder triangles":   
+                            { "en":"Max occluder triangles",    "ru":"Max occluder triangles" },
 
     "loadMapFromFile":      { "en":"Load map from file",                                "ru":"Загрузить карту из файла" },
     "saveMapToFile":        { "en":"Save map to file",                                  "ru":"Сохранить карту в файл" },

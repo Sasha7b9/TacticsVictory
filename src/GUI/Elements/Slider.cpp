@@ -4,13 +4,13 @@
 #include "Slider.h"
 
 
-vSlider::vSlider(UContext *context) :
+vSlider::vSlider(Context *context) :
     Slider(context)
 {
 
 }
 
-void vSlider::RegisterObject(UContext *context)
+void vSlider::RegisterObject(Context *context)
 {
     context->RegisterFactory<vSlider>("UI");
 
@@ -19,7 +19,7 @@ void vSlider::RegisterObject(UContext *context)
 
 SharedPtr<vSlider> vSlider::Create(Window *window, char *text_)
 {
-    SharedPtr<UText> text(new UText(gContext));
+    SharedPtr<Urho3D::Text> text(new Urho3D::Text(gContext));
     text->SetText(gLocalization->Get(text_));
     text->SetStyle("MainMenuButton");
     window->AddChild(text);

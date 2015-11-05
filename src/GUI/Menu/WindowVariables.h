@@ -9,7 +9,7 @@ class WindowVariables : public lWindow
     OBJECT(WindowVariables);
 
 public:
-    WindowVariables(UContext *context);
+    WindowVariables(Context *context);
 
     void SetVar(float *var, char *title);
     void AddFunctionFloat(char *title, pFuncFV funcRead, pFuncVF funcWrite);

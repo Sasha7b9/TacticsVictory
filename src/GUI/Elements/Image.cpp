@@ -12,7 +12,7 @@ Image::Image(int width, int height) : Resource(gContext)
     image->SetSize(width, height, 4);
 }
 
-void Image::SetPoint(int x, int y, const UColor& color)
+void Image::SetPoint(int x, int y, const Color& color)
 {
     if(x < image->GetWidth() && y < image->GetHeight())
     {
@@ -20,7 +20,7 @@ void Image::SetPoint(int x, int y, const UColor& color)
     }
 }
 
-void Image::DrawLine(int x0, int y0, int x1, int y1, const UColor &color)
+void Image::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
 {
     if((x1 - x0) == 0 && (y1 - y0) == 0)
     {
@@ -74,7 +74,7 @@ void Image::DrawLine(int x0, int y0, int x1, int y1, const UColor &color)
     }
 }
 
-void Image::DrawRectangle(int x, int y, int width, int height, const UColor &color)
+void Image::DrawRectangle(int x, int y, int width, int height, const Color &color)
 {
     DrawLine(x, y, x + width, y, color);
     DrawLine(x + width, y, x + width, y + height, color);
@@ -82,7 +82,7 @@ void Image::DrawRectangle(int x, int y, int width, int height, const UColor &col
     DrawLine(x, y, x, y + height, color);
 }
 
-void Image::FillRectangle(int x0, int y0, int width, int height, const UColor &color)
+void Image::FillRectangle(int x0, int y0, int width, int height, const Color &color)
 {
     for(int x = x0; x < x0 + width; x++)
     {
@@ -90,7 +90,7 @@ void Image::FillRectangle(int x0, int y0, int width, int height, const UColor &c
     }
 }
 
-void Image::Clear(const UColor &color)
+void Image::Clear(const Color &color)
 {
     image->Clear(color);
 }
@@ -100,7 +100,7 @@ SharedPtr<UImage> Image::GetUImage()
     return image;
 }
 
-void Image::FillRegion(int x, int y, const UColor &color)
+void Image::FillRegion(int x, int y, const Color &color)
 {
     replacedColor = image->GetPixel(x, y);
 
@@ -109,7 +109,7 @@ void Image::FillRegion(int x, int y, const UColor &color)
     Replace4Points(x, y, color);
 }
 
-void Image::Replace4Points(int x, int y, const UColor &color)
+void Image::Replace4Points(int x, int y, const Color &color)
 {
     if(y > 0)                       // upper pixel
     {
@@ -145,7 +145,7 @@ void Image::Replace4Points(int x, int y, const UColor &color)
     }
 }
 
-void Image::FillRegion(int x, int y, const UColor &color, const UColor &colorBound)
+void Image::FillRegion(int x, int y, const Color &color, const Color &colorBound)
 {
     boundingColor = colorBound;
 
@@ -178,7 +178,7 @@ void Image::CopyImage(int x0, int y0, Image &inImage)
         {
             int curX = x - x0;
             int curY = y - y0;
-            UColor color = inImage.GetUImage()->GetPixel(curX, curY);
+            Color color = inImage.GetUImage()->GetPixel(curX, curY);
 
             if (color.a_ > 0.5f)
             {
@@ -190,7 +190,7 @@ void Image::CopyImage(int x0, int y0, Image &inImage)
 
 
 #define FILL(a, b)                              \
-    UColor col = image->GetPixel(a, b);          \
+    Color col = image->GetPixel(a, b);          \
     if(col != boundingColor && col != color)    \
     {                                           \
         image->SetPixel(a, b, color);           \
@@ -198,7 +198,7 @@ void Image::CopyImage(int x0, int y0, Image &inImage)
     }
 
 
-void Image::Replace4PointsBound(int x, int y, const UColor &color)
+void Image::Replace4PointsBound(int x, int y, const Color &color)
 {
     if(y > 0)
     {
@@ -228,7 +228,7 @@ int Image::GetHeight() const
     return image->GetHeight();
 }
 
-void Image::DrawPolyline(const UColor &color, int numPoints, int *xy)
+void Image::DrawPolyline(const Color &color, int numPoints, int *xy)
 {
     int numLines = numPoints - 1;
 
@@ -238,11 +238,11 @@ void Image::DrawPolyline(const UColor &color, int numPoints, int *xy)
     }
 }
 
-void Image::DrawCircle(float x, float y, float radius, const UColor &color, float step)
+void Image::DrawCircle(float x, float y, float radius, const Color &color, float step)
 {
     for (float angle = 0.0f; angle < 360.0f; angle += step)
     {
-        SetPoint((int)(x + UCos(angle) * radius + 0.5f), (int)(y + Sin(angle) * radius + 0.5f), color);
+        SetPoint((int)(x + Cos(angle) * radius + 0.5f), (int)(y + Sin(angle) * radius + 0.5f), color);
     }
 }
 

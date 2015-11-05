@@ -3,12 +3,13 @@
 
 #include "Tank.h"
 #include "Core/Math.h"
+#include "Game/Objects/Terrain.h"
 
 
 UHashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
 
 
-Tank::Tank(UContext *context) : LogicComponent(context)
+Tank::Tank(Context *context) : LogicComponent(context)
 {
     if (parameters.Empty())
     {
@@ -17,7 +18,7 @@ Tank::Tank(UContext *context) : LogicComponent(context)
     }
 }
 
-void Tank::RegisterObject(UContext* context)
+void Tank::RegisterObject(Context* context)
 {
     context->RegisterFactory<Tank>();
 }
@@ -51,7 +52,7 @@ void Tank::Normalize()
     node_->SetPosition({0.0f, 0.0f, 0.0f});
     node_->SetScale(1.0f);
 
-    UBoundingBox box = modelObject->GetModel()->GetBoundingBox();
+    BoundingBox box = modelObject->GetModel()->GetBoundingBox();
 
     Vector3 delta = box.max_ - box.min_;
 
@@ -77,4 +78,59 @@ void Tank::SetPosition(const Vector3& pos)
 Vector3 Tank::GetPosition()
 {
     return node_->GetPosition() - deltaPos;
+}
+
+void Tank::Update(float dT)
+{
+    if(inMovingState)
+    {
+        bool movinatorRun = false;
+        node_->SetPosition(translator.Update(dT, &movinatorRun));
+
+        if(!movinatorRun)
+        {
+            if(path.Size())
+            {
+                inMovingState = true;
+                uint row = path[0].row;
+                uint col = path[0].col;
+
+                translator.Set(node_->GetPosition(), Vector3(col + 0.5f, gTerrain->GetHeight(row, col), -(float)path[0].row - 0.5f), speed);
+                path.Erase(0, 1);
+            }
+            else
+            {
+                inMovingState = false;
+            }
+        }
+    }
+}
+
+void Tank::SetSelected(bool selected_)
+{
+    if(selected != selected_)
+    {
+        LOGINFOF("selected %d", (int)selected_);
+    }
+    selected = selected_;
+}
+
+bool Tank::IsSelected()
+{
+    return selected;
+}
+
+void Tank::SetPath(PODVector<Coord> path)
+{
+    this->path = path;
+
+    if(path.Size())
+    {
+        inMovingState = true;
+        uint row = path[0].row;
+        uint col = path[0].col;
+
+        translator.Set(node_->GetPosition(), Vector3(col + 0.5f, gTerrain->GetHeight(row, col), -(float)path[0].row - 0.5f), speed);
+        path.Erase(0, 1);
+    }
 }
