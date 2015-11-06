@@ -57,27 +57,7 @@ private:
   
     typedef Vector<Coord> Wave;
 
-    struct Cell
-    {
-        Cell() : numWave(-1) {};
-        int numWave = -1;
-    };
-
-    enum Dir
-    {
-        LEFT
-    };
-
-    struct KeySet
-    {
-        KeySet(int i_ = 0, Dir dir_ = LEFT) : i(i_), dir(dir_) {};
-        int i;
-        Dir dir;
-    };
-
-    HashSet<KeySet> passValues;
-
-    Vector<Vector<Cell>> cells;
+    Vector<Vector<int>> cells;
     float heightStart = 0.0f;
 
     uint numRows = 0;

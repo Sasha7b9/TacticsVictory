@@ -70,7 +70,7 @@ void WaveAlgorithm::FindPath()
     {
         for (auto &cell : row)
         {
-            cell.numWave = -1;
+            cell = -1;
         }
     }
 
@@ -140,7 +140,7 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
             uint newRow = (uint)iRow;
             uint newCol = (uint)iCol;
 
-            if (newRow < numRows && newCol < numCols && cells[newRow][newCol].numWave == -1 && gTerrain->GetHeight(newRow, newCol) == heightStart)
+            if (newRow < numRows && newCol < numCols && cells[newRow][newCol] == -1 && gTerrain->GetHeight(newRow, newCol) == heightStart)
             {
                 if (i == 4 && (gTerrain->GetHeight(row, col - 1) != heightStart || gTerrain->GetHeight(row - 1, col) != heightStart))
                 {
@@ -170,7 +170,7 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
 void WaveAlgorithm::SetCell(Wave &wave, uint row, uint col, int numWave)
 {
     wave.Push(Coord(row, col));
-    cells[row][col].numWave = numWave;
+    cells[row][col] = numWave;
 }
 
 void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path)
@@ -178,7 +178,7 @@ void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path)
     Coord coord = path[0];
     uint row = coord.row;
     uint col = coord.col;
-    int numWave = cells[row][col].numWave;
+    int numWave = cells[row][col];
 
     for (int i = 0; i < 8; i++)
     {
@@ -188,7 +188,7 @@ void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path)
         uint newRow = (uint)iRow;
         uint newCol = (uint)iCol;
 
-        if (newRow < gTerrain->NumRows() && newCol < gTerrain->NumCols() && cells[newRow][newCol].numWave == numWave - 1)
+        if (newRow < gTerrain->NumRows() && newCol < gTerrain->NumCols() && cells[newRow][newCol] == numWave - 1)
         {
             path.Insert(0, Coord(newRow, newCol));
             return;
