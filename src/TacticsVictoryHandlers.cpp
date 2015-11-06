@@ -19,6 +19,7 @@ void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
 {
     if(drawDebug)
     {
+        gPhysicsWorld->DrawDebugGeometry(true);
         gDebugRenderer->AddLine(Vector3::ZERO, {100.0f, 0.0f, 0.0f}, Color::RED);
         gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 100.0f, 0.0f}, Color::GREEN);
         gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 100.0f}, Color::BLUE);

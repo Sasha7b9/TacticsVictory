@@ -10,6 +10,8 @@ class Tank : public GameObject
 {
     OBJECT(Tank);
 
+    friend class Translator;
+
 public:
     enum Type
     {
@@ -68,4 +70,10 @@ private:
     };
 
     static HashMap<Key, TankStruct> parameters;
+
+    WaveAlgorithm pathFinder;
+
+    bool inProcessFindPath = false;
+
+    float radiusDetect = 20.0f;
 };

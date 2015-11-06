@@ -41,17 +41,18 @@ void Translator::SetPath(PODVector<Coord> &path, float speed)
     {
         this->speed = Vector3::ZERO;
         currentPos = path[0].ToVector3();
+        tank->SetPosition(currentPos);
     }
 }
 
 Vector3 Translator::Update(float dT)
 {
-    if(type == None)
+    if(state == Stop)
     {
         return currentPos;
     }
 
-    if(type == Rotate)
+    if(state == Rotate)
     {
         float delta = speedRotate * dT;
         absAngle -= fabs(delta);
@@ -67,11 +68,11 @@ Vector3 Translator::Update(float dT)
         if(absAngle <= 0.0f)
         {
             currentAngle = endAngle;
-            type = Move;
+            state = Move;
         }
         tank->SetRotation(currentAngle);
     }
-    else if(type == Move)
+    else if(state == Move)
     {
         currentPos += dT * speed;
         distance -= dT * absSpeed;
@@ -87,7 +88,7 @@ Vector3 Translator::Update(float dT)
             }
             else
             {
-                type = None;
+                state = Stop;
             }
         }
     }
@@ -117,7 +118,7 @@ void Translator::SetStep(Coord &start, Coord &end)
     }
     else
     {
-        type = Move;
+        state = Move;
     }
 }
 
@@ -156,5 +157,10 @@ void Translator::StartRotation(float angleNeed)
         }
     }
 
-    type = Rotate;
+    state = Rotate;
+}
+
+bool Translator::IsMoving()
+{
+    return state != Stop;
 }

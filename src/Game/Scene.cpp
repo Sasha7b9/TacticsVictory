@@ -40,6 +40,8 @@ void Scene::RegisterObject(Context *context)
 
 void Scene::Create()
 {
+    gPhysicsWorld->SetGravity(Vector3::ZERO);
+
     // Create a Zone component into a child scene node. The Zone controls ambient lighting and fog settings. Like the Octree,
     // it also defines its volume with a bounding box, but can be rotated (so it does not need to be aligned to the world X, Y
     // and Z axes.) Drawable objects "pick up" the zone they belong to and use it when rendering; several zones can exist
@@ -60,23 +62,19 @@ void Scene::Create()
 
     for (int i = 0; i < 100; i++)
     {
-        int col = Math::RandomInt(0, (int)gLevel->GetWidth() - 1);
-        int row = Math::RandomInt(0, (int)gLevel->GetHeight() - 1);
-
-        for (auto tank : tanks)
+        uint row = 0;
+        uint col = 0;
+        do
         {
-            Vector3 pos = tank->GetPosition();
-            if ((int)pos.x_ == col && -(int)pos.z_ == row)
-            {
-                i--;
-                continue;
-            }
-        }
+            col = (uint)Math::RandomInt(0, (int)gLevel->GetWidth() - 1);
+            row = (uint)Math::RandomInt(0, (int)gLevel->GetHeight() - 1);
+        } while(gTerrain->GetHeight(row, col) != 0.0f);
+        
 
         SharedPtr<Node> nodeTank(gScene->CreateChild(NODE_TANK));
         SharedPtr<Tank> tank(nodeTank->CreateComponent<Tank>());
         tank->Init(Tank::Small);
-        tank->SetCoord({(uint)row, (uint)col});
+        tank->SetCoord({row, col});
         tank->SetAutoReloaded(1);
     }
 

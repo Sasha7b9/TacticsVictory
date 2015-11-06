@@ -15,20 +15,22 @@ public:
 
     Vector3 Update(float dT);
 
+    bool IsMoving();
+
 private:
 
-    enum Type
+    enum State
     {
         Move,
         Rotate,
-        None
+        Stop
     };
 
     Vector3 end;
     Vector3 currentPos;
     Vector3 speed;
 
-    Type type = None;
+    State state = Stop;
 
     PODVector<Coord> path;
 

@@ -25,7 +25,6 @@ private:
     Scene& operator=(const Scene&)
     {};
 
-    Vector<SharedPtr<Tank>> tanks;
     PathIndicator pathIndicator;
 
     void RegisterObjects();

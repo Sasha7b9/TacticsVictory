@@ -5,6 +5,7 @@
 #include "Core/Math.h"
 #include "Game/Objects/Terrain.h"
 #include "GlobalFunctions.h"
+#include "Game/Logic/TargetDetected.h"
 
 
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
@@ -16,7 +17,10 @@ Tank::Tank(Context *context) : GameObject(context)
     {
         parameters[Small] = TankStruct(Small, "Models/Tank.json");
         parameters[T_34_76] = TankStruct(T_34_76, "Models/T-34-76-2.json");
+        gContext->RegisterFactory<TargetDetected>();
     }
+
+    pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
 }
 
 void Tank::RegisterObject(Context* context)
@@ -30,6 +34,21 @@ void Tank::Init(Type type_)
     type = type_;
     LoadFromFile();
     Normalize();
+
+    RigidBody *body = node_->GetComponent<RigidBody>();
+    if(body)
+    {
+        node_->RemoveComponent(body);
+        node_->RemoveComponent(node_->GetComponent<CollisionShape>());
+        node_->RemoveComponent(node_->GetComponent<TargetDetected>());
+    }
+
+    body = node_->CreateComponent<RigidBody>();
+    body->SetMass(1.0f);
+    body->SetTrigger(true);
+    CollisionShape *shape = node_->CreateComponent<CollisionShape>();
+    shape->SetSphere(radiusDetect / node_->GetScale().x_);
+    node_->CreateComponent<TargetDetected>();
 }
 
 void Tank::LoadFromFile()
@@ -107,6 +126,37 @@ void Tank::SetCoord(const Coord& coord)
 void Tank::Update(float dT)
 {
     GameObject::Update(dT);
+
+    if(!translator.IsMoving())
+    {
+        if(inProcessFindPath)
+        {
+            if(pathFinder.PathIsFound())
+            {
+                PODVector<Coord> path = pathFinder.GetPath();
+                SetPath(path);
+                inProcessFindPath = false;
+            }
+        }
+        else
+        {
+            float height = -1.0f;
+            uint row = 0;
+            uint col = 0;
+            do
+            {
+                row = (uint)Math::RandomInt(0, (int)gTerrain->NumRows() - 1);
+                col = (uint)Math::RandomInt(0, (int)gTerrain->NumCols() - 1);
+                height = gTerrain->GetHeight(row, col);
+            } while(height != 0.0f);
+
+            Vector3 position = GetPosition();
+            Coord start((uint)-position.z_, (uint)position.x_);
+            pathFinder.StartFind(start, {row, col});
+            inProcessFindPath = true;
+        }
+        return;
+    }
 
     SetPosition(translator.Update(dT));
 

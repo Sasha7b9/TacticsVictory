@@ -340,6 +340,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Level.cpp" />
     <ClCompile Include="src\Game\Logic\Movinator.cpp" />
     <ClCompile Include="src\Game\Logic\Rotator.cpp" />
+    <ClCompile Include="src\Game\Logic\TargetDetected.cpp" />
     <ClCompile Include="src\Game\Logic\Translator.cpp" />
     <ClCompile Include="src\Game\Objects\GameObject.cpp" />
     <ClCompile Include="src\Game\Objects\Tank.cpp" />
@@ -400,6 +401,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Level.h" />
     <ClInclude Include="src\Game\Logic\Movinator.h" />
     <ClInclude Include="src\Game\Logic\Rotator.h" />
+    <ClInclude Include="src\Game\Logic\TargetDetected.h" />
     <ClInclude Include="src\Game\Logic\Translator.h" />
     <ClInclude Include="src\Game\Objects\GameObject.h" />
     <ClInclude Include="src\Game\Objects\Tank.h" />

@@ -213,6 +213,9 @@
     <ClCompile Include="src\Game\Objects\GameObject.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Logic\TargetDetected.cpp">
+      <Filter>Game\Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -385,6 +388,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\Objects\GameObject.h">
       <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Logic\TargetDetected.h">
+      <Filter>Game\Logic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
