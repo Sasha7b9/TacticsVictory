@@ -60,8 +60,8 @@ Vector<Vector<float> > Level::Load(char *fileName)
 {
     map.Clear();
 
-    SharedPtr<UFile> fileRead;
-    fileRead = new UFile(gContext);
+    SharedPtr<File> fileRead;
+    fileRead = new File(gContext);
     if(fileRead->Open(fileName, Urho3D::FILE_READ))
     {
         String str = fileRead->ReadString();
@@ -111,7 +111,7 @@ Vector<Vector<float> > Level::Load(char *fileName)
 
 bool Level::Save(String fileName)
 {
-    SharedPtr<UFile> fileWrite(new UFile(gContext));
+    SharedPtr<File> fileWrite(new File(gContext));
 
     if (fileWrite->Open(fileName, Urho3D::FILE_WRITE))
     {

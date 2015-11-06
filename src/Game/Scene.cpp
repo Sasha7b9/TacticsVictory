@@ -77,6 +77,7 @@ void Scene::Create()
         SharedPtr<Tank> tank(nodeTank->CreateComponent<Tank>());
         tank->Init(Tank::Small);
         tank->SetPosition({float(x), (float)gTerrain->GetHeight((uint)y, (uint)x), (float)-y});
+        tank->SetAutoReloaded(1);
     }
 
     SharedPtr<Node> lightNode;
@@ -95,7 +96,10 @@ void Scene::Create()
     light->SetEnabled(true);
     gRenderer->SetShadowMapSize(2048);
 
-    gCamera->SetPosition({0.0f, 25.0f, 0.0f}, {level[0].Size() / 2.0f, 0.0f, -(level.Size() / 2.0f)});
+    uint sizeX = level[0].Size();
+    uint sizeZ = level.Size();
+
+    gCamera->SetPosition({sizeX / 2.0f, 25.0f, - (float)sizeZ / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
 }
 
 void Scene::Update()

@@ -13,11 +13,11 @@ Urho3D::Scene   *gScene = nullptr;
 UConsole        *gEngineConsole = nullptr;
 UDebugHud       *gDebugHud = nullptr;
 UGraphics       *gGraphics = nullptr;
-UFileSystem     *gFileSystem = nullptr;
+FileSystem      *gFileSystem = nullptr;
 PhysicsWorld    *gPhysicsWorld = nullptr;
-UFont           *gFont = nullptr;
+Font            *gFont = nullptr;
 Time            *gTime = nullptr;
-UFileSelector   *gFileSelector = nullptr;
+FileSelector    *gFileSelector = nullptr;
 ULog            *gLog = nullptr;
 
 Camera         *gCamera = nullptr;

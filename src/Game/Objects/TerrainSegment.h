@@ -160,12 +160,12 @@ public:
 
 private:
 
-    UHashMap<MapPlaneKey, MapPlaneValue> mapTopLeft;
-    UHashMap<MapPlaneKey, MapPlaneValue> mapTopRight;
-    UHashMap<MapPlaneKey, MapPlaneValue> mapBtmRight;
-    UHashMap<MapPlaneKey, MapPlaneValue> mapBtmLeft;
+    HashMap<MapPlaneKey, MapPlaneValue> mapTopLeft;
+    HashMap<MapPlaneKey, MapPlaneValue> mapTopRight;
+    HashMap<MapPlaneKey, MapPlaneValue> mapBtmRight;
+    HashMap<MapPlaneKey, MapPlaneValue> mapBtmLeft;
 
-    UHashMap<MapCornerKey, MapCornerValue> mapCornerTopLeft;
+    HashMap<MapCornerKey, MapCornerValue> mapCornerTopLeft;
 
     TerrainSegment& operator=(const TerrainSegment&) {};
 };

@@ -99,16 +99,8 @@
 
 #define UEngine             Urho3D::Engine
 
-#define UFile               Urho3D::File
-#define UFileSelector       Urho3D::FileSelector
-#define UFileSystem         Urho3D::FileSystem
-#define UFont               Urho3D::Font
-
 #define UGeometry           Urho3D::Geometry
 #define UGraphics           Urho3D::Graphics
-
-#define UHashMap            Urho3D::HashMap
-#define UHashSet            Urho3D::HashSet
 
 #define UImage              Urho3D::Image
 #define UIndexBuffer        Urho3D::IndexBuffer
@@ -135,11 +127,18 @@ using Urho3D::CustomGeometry;
 using Urho3D::DebugRenderer;
 using Urho3D::Drawable;
 
+using Urho3D::File;
+using Urho3D::FileSelector;
+using Urho3D::FileSystem;
+using Urho3D::Font;
+
 using Urho3D::JSONFile;
 using Urho3D::JSONValue;
 using Urho3D::JSONValueType;
 using Urho3D::JSONNumberType;
 
+using Urho3D::HashMap;
+using Urho3D::HashSet;
 using Urho3D::HiresTimer;
 
 using Urho3D::Localization;

@@ -28,6 +28,6 @@ protected:
     lWindow& operator=(const lWindow&)
     {};
 
-    UHashMap<Urho3D::Button*, uint> mapButtonsActions;
+    HashMap<Urho3D::Button*, uint> mapButtonsActions;
     SharedPtr<LineTranslator2D> translator;
 };

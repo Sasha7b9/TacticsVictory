@@ -26,7 +26,7 @@ private:
     void HandleOnSlider(StringHash evenType, VariantMap& eventData);
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
 
-    UHashMap<Slider*, uint> mapSlidersActions;
+    HashMap<Slider*, uint> mapSlidersActions;
 
     SharedPtr<SliderWithTextAndButtons> sliderBrightness;
     SharedPtr<SliderWithTextAndButtons> sliderMaxOccluderTriangles;

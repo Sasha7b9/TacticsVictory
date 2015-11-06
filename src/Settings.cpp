@@ -34,7 +34,7 @@ bool Settings::Load()
 
     mapFloatChild[FloatKey(TV_PANEL_SPEED)] = SET::PANEL::SPEED;
 
-    UFile inFile(gContext);
+    File inFile(gContext);
     if(inFile.Open(nameFile, Urho3D::FILE_READ))
     {
         file = new XMLFile(gContext);
@@ -122,7 +122,7 @@ void Settings::SetInt(char *name, int value)
 
 void Settings::Save()
 {
-    UFile outFile(gContext);
+    File outFile(gContext);
     outFile.Open(nameFile, Urho3D::FILE_WRITE);
     file->Save(outFile);
 }

@@ -55,8 +55,8 @@ public:
     };
 
 private:
-    UHashMap<IntKey, int> mapIntChild;
-    UHashMap<FloatKey, float> mapFloatChild;
+    HashMap<IntKey, int> mapIntChild;
+    HashMap<FloatKey, float> mapFloatChild;
 };
 
 

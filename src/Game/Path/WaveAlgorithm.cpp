@@ -5,13 +5,9 @@
 #include "Game/Objects/Terrain.h"
 
 
-static int dRow[] = {0, -1, 0, 1, -1, -1, 1, 1};
-static int dCol[] = {-1, 0, 1, 0, -1, 1, 1, -1};
-
-
 WaveAlgorithm::WaveAlgorithm() : Thread()
 {
-
+    //passValues.Insert(KeySet(5, )
 }
 
 WaveAlgorithm::~WaveAlgorithm()
@@ -119,11 +115,8 @@ bool WaveAlgorithm::Contain(Wave &wave, Coord &coord)
     return false;
 }
 
-void WaveAlgorithm::SetCell(Wave &wave, uint row, uint col, int numWave)
-{
-    wave.Push(Coord(row, col));
-    cells[row][col].numWave = numWave;
-}
+static int dRow[] = {0, -1, 0, 1, -1, -1, 1, 1};
+static int dCol[] = {-1, 0, 1, 0, -1, 1, 1, -1};
 
 void WaveAlgorithm::NextWave(Vector<Wave> &waves)
 {
@@ -135,20 +128,49 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
     {
         for (int i = 0; i < 8; i++)
         {
-            int iRow = (int)coord.row + dRow[i];
-            int iCol = (int)coord.col + dCol[i];
+            uint row = coord.row;
+            uint col = coord.col;
+
+            int dR = dRow[i];
+            int dC = dCol[i];
+
+            int iRow = (int)row + dR;
+            int iCol = (int)col + dC;
 
             uint newRow = (uint)iRow;
             uint newCol = (uint)iCol;
 
             if (newRow < numRows && newCol < numCols && cells[newRow][newCol].numWave == -1 && gTerrain->GetHeight(newRow, newCol) == heightStart)
             {
+                if (i == 4 && (gTerrain->GetHeight(row, col - 1) != heightStart || gTerrain->GetHeight(row - 1, col) != heightStart))
+                {
+                    continue;
+                }
+                else if (i == 5 && (gTerrain->GetHeight(row - 1, col) != heightStart || gTerrain->GetHeight(row, col + 1) != heightStart))
+                {
+                    continue;
+                }
+                else if (i == 6 && (gTerrain->GetHeight(row, col + 1) != heightStart || gTerrain->GetHeight(row + 1, col) != heightStart))
+                {
+                    continue;
+                }
+                else if (i == 7 && (gTerrain->GetHeight(row, col - 1) != heightStart || gTerrain->GetHeight(row + 1, col) != heightStart))
+                {
+                    continue;
+                }
+
                 SetCell(wave, newRow, newCol, numWave);
             }
         }
     }
 
     waves.Push(wave);
+}
+
+void WaveAlgorithm::SetCell(Wave &wave, uint row, uint col, int numWave)
+{
+    wave.Push(Coord(row, col));
+    cells[row][col].numWave = numWave;
 }
 
 void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path)

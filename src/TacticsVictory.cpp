@@ -31,11 +31,11 @@ TacticsVictory::TacticsVictory(Context* context) :
 void TacticsVictory::Setup()
 {
     gSet = new Settings();
-    gFileSystem = GetSubsystem<UFileSystem>();
+    gFileSystem = GetSubsystem<FileSystem>();
     gSet->Load();
 
     engineParameters_["WindowTitle"] = GetTypeName();
-    engineParameters_["LogName"] = GetSubsystem<UFileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
+    engineParameters_["LogName"] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_["FullScreen"] = false;
     engineParameters_["Headless"] = false;
     engineParameters_["TextureQuality"] = 32;
@@ -51,7 +51,7 @@ void TacticsVictory::Stop()
     SAFE_DELETE(gTerrain);
     SAFE_DELETE(gLevel);
     SAFE_DELETE(gGUI);
-    UFile file(gContext, "ui.xml", Urho3D::FILE_WRITE);
+    File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
     LOGINFO("Now save ui");
     gUIRoot->SaveXML(file);
     gSet->Save();
@@ -115,7 +115,7 @@ void TacticsVictory::Start()
     CreateComponents();
 
     gCache->AddResourceDir(gFileSystem->GetProgramDir() + "../TVData");
-    gFont = gCache->GetResource<UFont>(SET::MENU::FONT::NAME);
+    gFont = gCache->GetResource<Font>(SET::MENU::FONT::NAME);
 
     SetWindowTitleAndIcon();
     CreateConsoleAndDebugHud();
@@ -129,7 +129,7 @@ void TacticsVictory::Start()
 
     gGUI->Create();
 
-    gFileSelector = new UFileSelector(gContext);
+    gFileSelector = new FileSelector(gContext);
     gFileSelector->GetWindow()->SetModal(false);
     gFileSelector->GetWindow()->SetVisible(false);
 

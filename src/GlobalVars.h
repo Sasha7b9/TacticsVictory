@@ -17,11 +17,11 @@ extern Urho3D::Scene    *gScene;
 extern UConsole         *gEngineConsole;
 extern UDebugHud        *gDebugHud;
 extern UGraphics        *gGraphics;
-extern UFileSystem      *gFileSystem;
+extern FileSystem       *gFileSystem;
 extern PhysicsWorld     *gPhysicsWorld;
-extern UFont            *gFont;
+extern Font             *gFont;
 extern Time             *gTime;
-extern UFileSelector    *gFileSelector;
+extern FileSelector     *gFileSelector;
 extern ULog             *gLog;
 
 extern Camera           *gCamera;

@@ -12,7 +12,7 @@ void SetWindowInCenterScreen(Window *window)
 void OpenFileSelector(char *title, char *textOk, char *textCancel, Vector<String> &filters)
 {
     SAFE_DELETE(gFileSelector);
-    gFileSelector = new UFileSelector(gContext);
+    gFileSelector = new FileSelector(gContext);
     XMLFile *style = gCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
     gFileSelector->SetDefaultStyle(style);
 
@@ -26,4 +26,13 @@ void OpenFileSelector(char *title, char *textOk, char *textCancel, Vector<String
     gFileSelector->GetWindow()->SetVisible(true);
     gFileSelector->GetWindow()->BringToFront();
     gFileSelector->SetFilters(filters, 0);
+}
+
+unsigned GetLastModifiedTime(char* name)
+{
+    String fullName = gFileSystem->GetProgramDir();
+    fullName.Erase(fullName.Length() - 1);
+    fullName.Erase(fullName.FindLast('/'), 6);
+    fullName += String("/TVData/") + String(name);
+    return gFileSystem->GetLastModifiedTime(fullName);
 }

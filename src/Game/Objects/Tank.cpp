@@ -4,12 +4,13 @@
 #include "Tank.h"
 #include "Core/Math.h"
 #include "Game/Objects/Terrain.h"
+#include "GlobalFunctions.h"
 
 
-UHashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
+HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
 
 
-Tank::Tank(Context *context) : LogicComponent(context)
+Tank::Tank(Context *context) : GameObject(context)
 {
     if (parameters.Empty())
     {
@@ -35,6 +36,11 @@ void Tank::LoadFromFile()
     char *fileName = parameters[type].fileName;
     JSONFile *file = gCache->GetResource<JSONFile>(fileName);
 
+    if (timeForReload)
+    {
+        gCache->ReloadResource(file);
+    }
+
     JSONValue modelValue = file->GetRoot().Get("model");
 
     String fileModel = modelValue.Get("fileModel").GetString();
@@ -44,11 +50,15 @@ void Tank::LoadFromFile()
     modelObject->SetModel(gCache->GetResource<Model>(fileModel));
     modelObject->ApplyMaterialList(fileMaterials);
     modelObject->SetCastShadows(true);
+
+    speed = file->GetRoot().Get("speed").GetFloat();
+
+    timeLastModified = GetLastModifiedTime(parameters[type].fileName);
 }
 
 void Tank::Normalize()
 {
-    Vector3 pos = node_->GetPosition();
+    Vector3 pos = GetPosition();
     node_->SetPosition({0.0f, 0.0f, 0.0f});
     node_->SetScale(1.0f);
 
@@ -82,6 +92,8 @@ Vector3 Tank::GetPosition()
 
 void Tank::Update(float dT)
 {
+    GameObject::Update(dT);
+
     if(inMovingState)
     {
         bool movinatorRun = false;
@@ -104,15 +116,24 @@ void Tank::Update(float dT)
             }
         }
     }
+
+    if (timeForReload)
+    {
+        int time = (int)gTime->GetElapsedTime();
+        if (time - timeLastReload >= timeForReload)
+        {
+            if (GetLastModifiedTime(parameters[type].fileName) != timeLastModified)
+            {
+                Init(type);
+            }
+            timeLastReload = time;
+        }
+    }
 }
 
 void Tank::SetSelected(bool selected_)
 {
-    if(selected != selected_)
-    {
-        LOGINFOF("selected %d", (int)selected_);
-    }
-    selected = selected_;
+     selected = selected_;
 }
 
 bool Tank::IsSelected()

@@ -49,6 +49,20 @@ private:
         int numWave = -1;
     };
 
+    enum Dir
+    {
+        LEFT
+    };
+
+    struct KeySet
+    {
+        KeySet(int i_ = 0, Dir dir_ = LEFT) : i(i_), dir(dir_) {};
+        int i;
+        Dir dir;
+    };
+
+    HashSet<KeySet> passValues;
+
     Vector<Vector<Cell>> cells;
     float heightStart = 0.0f;
 

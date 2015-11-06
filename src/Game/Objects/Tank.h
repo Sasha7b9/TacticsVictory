@@ -3,9 +3,10 @@
 
 #include "Game/Path/WaveAlgorithm.h"
 #include "Game/Logic/Translator.h"
+#include "GameObject.h"
 
 
-class Tank : public LogicComponent
+class Tank : public GameObject
 {
     OBJECT(Tank);
 
@@ -37,7 +38,16 @@ private:
     void LoadFromFile();
     void Normalize();
 
+    Type type;
 
+    SharedPtr<StaticModel> modelObject;
+    Vector3 deltaPos;
+    bool selected = false;
+    PODVector<Coord> path;
+
+    bool inMovingState = false;
+    float speed = 0.0f;
+    Translator translator;
 
     struct TankStruct
     {
@@ -59,16 +69,5 @@ private:
         }
     };
 
-    Type type;
-
-    static UHashMap<Key, TankStruct> parameters;
-
-    SharedPtr<StaticModel> modelObject;
-    Vector3 deltaPos;
-    bool selected = false;
-    PODVector<Coord> path;
-
-    bool inMovingState = false;
-    float speed = 50.0f;
-    Translator translator;
+    static HashMap<Key, TankStruct> parameters;
 };
