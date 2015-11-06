@@ -15,7 +15,7 @@ public:
     void HandleFinishedText(StringHash eventType, VariantMap& eventData);
 
 private:
-    SharedPtr<ULineEdit> lineEdit;
+    SharedPtr<Urho3D::LineEdit> lineEdit;
     SharedPtr<Urho3D::Text> text;
     SharedPtr<ScrollBar> scrollBar;
 

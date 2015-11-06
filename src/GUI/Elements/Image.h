@@ -7,7 +7,7 @@ class Image : public Resource
 public:
     Image(int width, int height);
 
-    SharedPtr<UImage> GetUImage();
+    SharedPtr<Urho3D::Image> GetUImage();
 
     void Clear(const Color &color);
     void SetPoint(int x, int y, const Color& color);
@@ -21,18 +21,18 @@ public:
     int GetHeight() const;
     void DrawPolyline(const Color &color, int numPoints, int *xy);
     void DrawCircle(float x, float y, float radius, const Color &color, float step = 1.0f);
-    UIntVector2 GetHotSpot() const;
+    IntVector2 GetHotSpot() const;
     void SetHotSpot(int x, int y);
 
 private:
     Image& operator=(const Image&)
     {};
-    SharedPtr<UImage> image;
+    SharedPtr<Urho3D::Image> image;
 
     void Replace4Points(int x, int y, const Color &color);
     void Replace4PointsBound(int x, int y, const Color &color);
     
     Color replacedColor;
     Color boundingColor;
-    UIntVector2 hotSpot;
+    IntVector2 hotSpot;
 };

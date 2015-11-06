@@ -71,10 +71,10 @@ void TacticsVictory::CreateComponents()
     gUI = GetSubsystem<UI>();
     gCache = GetSubsystem<ResourceCache>();
 
-    gEngine = GetSubsystem<UEngine>();
-    gInput = GetSubsystem<UInput>();
+    gEngine = GetSubsystem<Engine>();
+    gInput = GetSubsystem<Input>();
     gRenderer = GetSubsystem<Renderer>();
-    gGraphics = GetSubsystem<UGraphics>();
+    gGraphics = GetSubsystem<Graphics>();
 
     gScene = new Urho3D::Scene(gContext);
     // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
@@ -106,7 +106,7 @@ void TacticsVictory::Start()
 
     gTime = GetSubsystem<Time>();
 
-    gLog = new ULog(gContext);
+    gLog = new Urho3D::Log(gContext);
     gLog->Open("log.txt");
     gLog->SetLevel(Urho3D::LOG_INFO);
 
@@ -154,7 +154,7 @@ void TacticsVictory::SubscribeToEvents()
 
 void TacticsVictory::SetWindowTitleAndIcon()
 {
-    UImage* icon = gCache->GetResource<UImage>("Textures/TacticsVictoryIcon.png");
+    Urho3D::Image* icon = gCache->GetResource<Urho3D::Image>("Textures/TacticsVictoryIcon.png");
     gGraphics->SetWindowIcon(icon);
     gGraphics->SetWindowTitle(L"Тактика победы");
 }

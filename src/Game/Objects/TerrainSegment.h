@@ -66,11 +66,11 @@ private:
     Vector3 shift;
 
     SharedPtr<VertexBuffer> vb;
-    SharedPtr<UIndexBuffer> ib;
-    SharedPtr<UGeometry> geometry;
+    SharedPtr<IndexBuffer> ib;
+    SharedPtr<Geometry> geometry;
     SharedPtr<Model> model;
-    Vector<SharedPtr<VertexBuffer> > vbVector;
-    Vector<SharedPtr<UIndexBuffer> > ibVector;
+    Vector<SharedPtr<VertexBuffer>> vbVector;
+    Vector<SharedPtr<IndexBuffer>> ibVector;
     PODVector<unsigned> morpRange;
     SharedPtr<Node> node;
     SharedPtr<StaticModel> object;

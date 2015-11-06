@@ -89,58 +89,47 @@
 #include <ctime>
 
 
-#define UCompnent           Urho3D::Component
-#define UConsole            Urho3D::Console
-#define UCursor             Urho3D::Cursor
-
-#define UDebugHud           Urho3D::DebugHud
-#define UDecalSet           Urho3D::DecalSet
-#define UDropDownList       Urho3D::DropDownList
-
-#define UEngine             Urho3D::Engine
-
-#define UGeometry           Urho3D::Geometry
-#define UGraphics           Urho3D::Graphics
-
-#define UImage              Urho3D::Image
-#define UIndexBuffer        Urho3D::IndexBuffer
-#define UInput              Urho3D::Input
-#define UIntRect            Urho3D::IntRect
-#define UIntVector2         Urho3D::IntVector2
-
-#define ULight              Urho3D::Light
-#define ULineEdit           Urho3D::LineEdit
-#define ULog                Urho3D::Log
-
-#define UPlane              Urho3D::Plane
-
 using Urho3D::BiasParameters;
 using Urho3D::BoundingBox;
 
 using Urho3D::CascadeParameters;
 using Urho3D::CollisionShape;
 using Urho3D::Color;
+using Urho3D::Component;
 using Urho3D::Context;
 using Urho3D::Cos;
 using Urho3D::CustomGeometry;
 
+using Urho3D::DecalSet;
+using Urho3D::DebugHud;
 using Urho3D::DebugRenderer;
 using Urho3D::Drawable;
+
+using Urho3D::Engine;
 
 using Urho3D::File;
 using Urho3D::FileSelector;
 using Urho3D::FileSystem;
 using Urho3D::Font;
 
+using Urho3D::Geometry;
+using Urho3D::Graphics;
+
 using Urho3D::JSONFile;
 using Urho3D::JSONValue;
 using Urho3D::JSONValueType;
 using Urho3D::JSONNumberType;
 
+using Urho3D::IndexBuffer;
+using Urho3D::Input;
+using Urho3D::IntRect;
+using Urho3D::IntVector2;
+
 using Urho3D::HashMap;
 using Urho3D::HashSet;
 using Urho3D::HiresTimer;
 
+using Urho3D::Light;
 using Urho3D::Localization;
 using Urho3D::LogicComponent;
 

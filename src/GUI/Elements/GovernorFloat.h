@@ -52,7 +52,7 @@ private:
     bool mouseIsDown = false;
     bool mouseOver = false;
     int delta = 0;
-    UIntVector2 posCursor;
+    IntVector2 posCursor;
     bool selected = false;
     CellType type;
 };

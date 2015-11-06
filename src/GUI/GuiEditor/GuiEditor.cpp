@@ -191,7 +191,7 @@ bool GuiEditor::CheckOnDeadZoneForCursorBottomScreen(int x)
     return IntersectionX(buttonInterface, x) || IntersectionX(buttonMenu, x);
 }
 
-bool GuiEditor::IsInside(UIntVector2 &position)
+bool GuiEditor::IsInside(IntVector2 &position)
 {
     return IsVisible() && 
         (

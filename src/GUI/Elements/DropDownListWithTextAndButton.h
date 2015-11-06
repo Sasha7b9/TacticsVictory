@@ -26,7 +26,7 @@ private:
     void HandleHoverBegin(StringHash eventType, VariantMap& eventData);
     void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
 
-    SharedPtr<UDropDownList> ddList;
+    SharedPtr<Urho3D::DropDownList> ddList;
     SharedPtr<Urho3D::Button> buttonLeft;
     SharedPtr<Urho3D::Button> buttonRight;
 };

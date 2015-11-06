@@ -21,7 +21,7 @@ void lSliderInt::SetRange(int min_, int max_, int step_)
     Slider::SetRange(max - delta);
 }
 
-void lSliderInt::OnDragMove(const UIntVector2& position, const UIntVector2& screenPosition, const UIntVector2& deltaPos, int buttons, int qualifiers, UCursor* cursor)
+void lSliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Urho3D::Cursor* cursor)
 {
     Slider::OnDragMove(position, screenPosition, deltaPos, buttons, qualifiers, cursor);
 
@@ -84,7 +84,7 @@ void lSliderInt::RegisterObject(Context* context)
     COPY_BASE_ATTRIBUTES(Slider);
 }
 
-SharedPtr<lSliderInt> lSliderInt::Create(UIElement *uielement, const UIntVector2 &size)
+SharedPtr<lSliderInt> lSliderInt::Create(UIElement *uielement, const IntVector2 &size)
 {
     SharedPtr<lSliderInt> slider(gUIRoot->CreateChild<lSliderInt>());
     slider->SetFixedSize(size);

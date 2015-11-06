@@ -7,7 +7,7 @@
 
 Image::Image(int width, int height) : Resource(gContext)
 {
-    image = new UImage(gContext);
+    image = new Urho3D::Image(gContext);
 
     image->SetSize(width, height, 4);
 }
@@ -95,7 +95,7 @@ void Image::Clear(const Color &color)
     image->Clear(color);
 }
 
-SharedPtr<UImage> Image::GetUImage()
+SharedPtr<Urho3D::Image> Image::GetUImage()
 {
     return image;
 }
@@ -246,7 +246,7 @@ void Image::DrawCircle(float x, float y, float radius, const Color &color, float
     }
 }
 
-UIntVector2 Image::GetHotSpot() const
+IntVector2 Image::GetHotSpot() const
 {
     return hotSpot;
 }

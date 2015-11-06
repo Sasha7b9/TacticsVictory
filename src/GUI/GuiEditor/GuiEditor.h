@@ -13,7 +13,7 @@ public:
     static void RegisterObject(Context *context = gContext);
 
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
-    bool IsInside(UIntVector2 &position);
+    bool IsInside(IntVector2 &position);
 
     enum ModeSelect
     {

@@ -46,7 +46,6 @@ private:
 
     void SetStep(Coord &start, Coord &end);
     void StartRotation(float angleNeed);
-    float CalculateSpeedRotate(float angleStart, float angleEnd);
 
     Translator& operator=(const Translator&)
     {};

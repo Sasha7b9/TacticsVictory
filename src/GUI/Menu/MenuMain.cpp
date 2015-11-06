@@ -13,7 +13,7 @@
 MenuMain::MenuMain(Context *) :
     lWindow()
 {
-    SetLayout(Urho3D::LM_VERTICAL, 6, UIntRect(6, 6, 6, 6));
+    SetLayout(Urho3D::LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
 
     SharedPtr<Label> text(Label::Create("Tactics Victory", 20, -1, -1));

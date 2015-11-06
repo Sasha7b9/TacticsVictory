@@ -16,7 +16,7 @@ Camera::Camera()
     cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
     cameraNode->SetPosition({-37.0f, 45.0f, 15.0f});
 
-    light = cameraNode->CreateComponent<ULight>();
+    light = cameraNode->CreateComponent<Light>();
     light->SetLightType(Urho3D::LIGHT_POINT);
     light->SetRange(100.0f);
     light->SetEnabled(false);
@@ -114,7 +114,7 @@ void Camera::Move(float time)
 
     if((dX || dY) && !gGUI->UnderCursor())
     {
-        UIntVector2 posCursor = gCursor->GetCursor()->GetPosition();
+        IntVector2 posCursor = gCursor->GetCursor()->GetPosition();
         posCursor.x_ -= dX;
         posCursor.y_ -= dY;
         if((dY || dX) && gInput->GetMouseButtonDown(Urho3D::MOUSEB_LEFT) && gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT))
@@ -283,6 +283,6 @@ SharedPtr<Node> Camera::GetNode()
 
 Ray Camera::GetCursorRay()
 {
-    UIntVector2 pos = gUI->GetCursorPosition();
+    IntVector2 pos = gUI->GetCursorPosition();
     return cameraNode->GetComponent<Urho3D::Camera>()->GetScreenRay((float)pos.x_ / gGraphics->GetWidth(), (float)pos.y_ / gGraphics->GetHeight());
 }

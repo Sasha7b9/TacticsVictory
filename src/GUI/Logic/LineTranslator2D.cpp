@@ -5,7 +5,7 @@
 #include "GUI/Logic/LineTranslator1D.h"
 
 
-LineTranslator2D::LineTranslator2D(const UIntVector2 &start, const UIntVector2 &finish, float speed, State startPosition) :
+LineTranslator2D::LineTranslator2D(const IntVector2 &start, const IntVector2 &finish, float speed, State startPosition) :
     Object(gContext)
 {
     translatorX = new LineTranslator1D(start.x_, finish.x_, speed, (LineTranslator1D::State)startPosition);
@@ -18,12 +18,12 @@ void LineTranslator2D::Toggle()
     translatorY->Toggle();
 }
 
-UIntVector2 LineTranslator2D::Update(float dT)
+IntVector2 LineTranslator2D::Update(float dT)
 {
     int x = translatorX->Update(dT);
     int y = translatorY->Update(dT);
 
-    return UIntVector2(x, y);
+    return IntVector2(x, y);
 }
 
 LineTranslator2D::State LineTranslator2D::GetState()

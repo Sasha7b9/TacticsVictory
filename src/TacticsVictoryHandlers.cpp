@@ -94,7 +94,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         if(key == '9')
         {
-            UImage screenshot(context_);
+            Urho3D::Image screenshot(context_);
             gGraphics->TakeScreenShot(screenshot);
             screenshot.SavePNG(gFileSystem->GetProgramDir() + "Data/Screenshot_" +
                                Time::GetTimeStamp().Replaced(':', '_').Replaced('.', '_').Replaced(' ', '_') + ".png");

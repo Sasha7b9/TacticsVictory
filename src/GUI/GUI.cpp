@@ -232,7 +232,7 @@ void GUI::AddToScreen()
 
 bool GUI::UnderCursor()
 {
-    UIntVector2 pos = gCursor->GetCursor()->GetPosition();
+    IntVector2 pos = gCursor->GetCursor()->GetPosition();
 
     return gGuiEditor->IsInside(pos) || gGuiGame->IsInside(pos) || (gFileSelector->GetWindow()->IsVisible());
 }

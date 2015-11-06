@@ -33,7 +33,7 @@ private:
     SharedPtr<Node> cameraNode;
     float yaw = 76.0f;
     float pitch = 28.0f;
-    SharedPtr<ULight> light;
+    SharedPtr<Light> light;
     bool enabled = false;
     Vector3 lookAt;
     bool arrowEnabled = true;

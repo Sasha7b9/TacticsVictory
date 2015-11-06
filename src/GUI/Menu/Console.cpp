@@ -13,7 +13,7 @@ Console::Console(Context *context) :
     SetSize(1500, 300);
     SetResizable(true);
 
-    lineEdit = gUIRoot->CreateChild<ULineEdit>();
+    lineEdit = gUIRoot->CreateChild<Urho3D::LineEdit>();
     lineEdit->SetStyle("LineEdit");
     lineEdit->SetSize(GetWidth(), 15);
     lineEdit->SetPosition(0, GetHeight() - 15);

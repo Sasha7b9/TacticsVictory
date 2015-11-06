@@ -66,7 +66,7 @@ struct SET
     {
         static const int WIDTH = 1600;
         static const int HEIGHT = 1000;
-        static const UIntVector2 SIZE;
+        static const IntVector2 SIZE;
     };
 
     struct PANEL
@@ -76,7 +76,7 @@ struct SET
         {
             static const int WIDTH = SET::WINDOW::WIDTH;
             static const int HEIGHT = 20;
-            static const UIntVector2 SIZE;
+            static const IntVector2 SIZE;
 
             struct BUTTON
             {
@@ -89,14 +89,14 @@ struct SET
         {
             static const int WIDTH = 200;
             static const int HEIGHT = WIDTH;
-            static const UIntVector2 SIZE;
+            static const IntVector2 SIZE;
         };
 
         struct MAIN
         {
             static const int HEIGHT = MAP::HEIGHT;
             static const int WIDTH = BOTTOM::WIDTH - MAP::WIDTH + 1;
-            static const UIntVector2 SIZE;
+            static const IntVector2 SIZE;
         };
     };
 
@@ -114,21 +114,21 @@ struct SET
         {
             static const int WIDTH = 200;
             static const int HEIGHT = 16;
-            static const UIntVector2 SIZE;
+            static const IntVector2 SIZE;
         };
 
         struct DDLIST
         {
             static const int WIDTH = 200;
             static const int HEIGHT = 18;
-            static const UIntVector2 SIZE;
+            static const IntVector2 SIZE;
         };
 
         struct TEXT
         {
             static const int WIDTH = 180;
             static const int HEIGHT = 10;
-            static const UIntVector2 SIZE;
+            static const IntVector2 SIZE;
         };
 
         struct GOVERNOR
@@ -137,7 +137,7 @@ struct SET
             {
                 static const int WIDTH = 10;
                 static const int HEIGHT = 13;
-                static const UIntVector2 SIZE;
+                static const IntVector2 SIZE;
             };
         };
 

@@ -71,7 +71,7 @@ bool GuiGame::CheckOnDeadZoneForCursorBottomScreen(int x)
     return IntersectionX(buttonMap, x) || IntersectionX(buttonMainPanel, x) || IntersectionX(buttonMenu, x);
 }
 
-bool GuiGame::IsInside(UIntVector2 &position)
+bool GuiGame::IsInside(IntVector2 &position)
 {
     return IsVisible() && (panelBottom->IsInside(position, true) || panelMain->IsInside(position, true) || panelMap->IsInside(position, true));
 }

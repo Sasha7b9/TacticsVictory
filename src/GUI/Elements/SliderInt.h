@@ -15,10 +15,10 @@ public:
     lSliderInt(Context *context = gContext);
 
     static void RegisterObject(Context* context = gContext);
-    static SharedPtr<lSliderInt> Create(UIElement *uielement, const UIntVector2 &size);
+    static SharedPtr<lSliderInt> Create(UIElement *uielement, const IntVector2 &size);
 
     void SetRange(int min, int max, int step = 1);
-    virtual void OnDragMove(const UIntVector2& position, const UIntVector2& screenPosition, const UIntVector2& deltaPos, int buttons, int qualifiers, UCursor* cursor);
+    virtual void OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Urho3D::Cursor* cursor);
     int GetValueInt();
     int GetValueMax();
     int GetValueMin();

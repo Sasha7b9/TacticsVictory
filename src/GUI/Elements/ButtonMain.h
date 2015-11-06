@@ -17,7 +17,7 @@ public:
     void SetText(char *text);
     void SetHint(char *text);
 
-    virtual void OnClickBegin(const UIntVector2& position, const UIntVector2& screenPosition, int button, int buttons, int qualifiers, UCursor* cursor);
+    virtual void OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Urho3D::Cursor* cursor);
 
 private:
     ButtonMain& operator=(const ButtonMain&)

@@ -11,7 +11,7 @@
 
 Cursor::Cursor() : Object(gContext)
 {
-    cursor = new UCursor(gContext);
+    cursor = new Urho3D::Cursor(gContext);
 
     Image image(50, 50);
 
@@ -34,7 +34,7 @@ void Cursor::Hide()
     hidden = true;
 }
 
-SharedPtr<UCursor> Cursor::GetCursor()
+SharedPtr<Urho3D::Cursor> Cursor::GetCursor()
 {
     return cursor;
 }

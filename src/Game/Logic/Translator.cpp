@@ -158,8 +158,3 @@ void Translator::StartRotation(float angleNeed)
 
     type = Rotate;
 }
-
-float Translator::CalculateSpeedRotate(float angleStart, float angleEnd)
-{
-    return 0.0f;
-}

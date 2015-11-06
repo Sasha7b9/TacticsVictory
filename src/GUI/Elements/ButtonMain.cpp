@@ -77,7 +77,7 @@ void ButtonMain::HandleHoverEnd(StringHash, VariantMap&)
     gCursor->SetNormal();
 }
 
-void ButtonMain::OnClickBegin(const UIntVector2& position, const UIntVector2& screenPosition, int button, int buttons, int qualifiers, UCursor* cursor)
+void ButtonMain::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Urho3D::Cursor* cursor)
 {
     Urho3D::Button::OnClickBegin(position, screenPosition, button, buttons, qualifiers, cursor);
 
