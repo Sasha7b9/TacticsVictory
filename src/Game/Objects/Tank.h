@@ -24,30 +24,28 @@ public:
     virtual void Update(float timeStep);
 
     void Init(Type type);
-    void SetPosition(const Vector3& pos);
     Vector3 GetPosition();
+    void SetCoord(const Coord& coord);
 
     void SetSelected(bool selected);
     bool IsSelected();
 
-    void SetPath(PODVector<Coord> path);
+    void SetPath(PODVector<Coord> &path);
+
+    // rotation = [0...359.999999f]
+    void SetRotation(float rotation);
+    float GetRotation();
 
 private:
     Tank& operator=(const Tank&) {};
 
     void LoadFromFile();
     void Normalize();
+    void SetPosition(const Vector3& pos);
 
     Type type;
 
     SharedPtr<StaticModel> modelObject;
-    Vector3 deltaPos;
-    bool selected = false;
-    PODVector<Coord> path;
-
-    bool inMovingState = false;
-    float speed = 0.0f;
-    Translator translator;
 
     struct TankStruct
     {

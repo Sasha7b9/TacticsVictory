@@ -60,13 +60,13 @@ void Scene::Create()
 
     for (int i = 0; i < 100; i++)
     {
-        int x = Math::RandomInt(0, (int)gLevel->GetWidth() - 1);
-        int y = Math::RandomInt(0, (int)gLevel->GetHeight() - 1);
+        int col = Math::RandomInt(0, (int)gLevel->GetWidth() - 1);
+        int row = Math::RandomInt(0, (int)gLevel->GetHeight() - 1);
 
         for (auto tank : tanks)
         {
             Vector3 pos = tank->GetPosition();
-            if ((int)pos.x_ == x && -(int)pos.z_ == y)
+            if ((int)pos.x_ == col && -(int)pos.z_ == row)
             {
                 i--;
                 continue;
@@ -76,7 +76,7 @@ void Scene::Create()
         SharedPtr<Node> nodeTank(gScene->CreateChild(NODE_TANK));
         SharedPtr<Tank> tank(nodeTank->CreateComponent<Tank>());
         tank->Init(Tank::Small);
-        tank->SetPosition({float(x), (float)gTerrain->GetHeight((uint)y, (uint)x), (float)-y});
+        tank->SetCoord({(uint)row, (uint)col});
         tank->SetAutoReloaded(1);
     }
 

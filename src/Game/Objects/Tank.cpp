@@ -26,6 +26,7 @@ void Tank::RegisterObject(Context* context)
 
 void Tank::Init(Type type_)
 {
+    translator.Init(this);
     type = type_;
     LoadFromFile();
     Normalize();
@@ -53,6 +54,12 @@ void Tank::LoadFromFile()
 
     speed = file->GetRoot().Get("speed").GetFloat();
 
+    deltaRotate = file->GetRoot().Get("deltaRotate").GetFloat(); 
+
+    Quaternion rotate(deltaRotate, Vector3::UP);
+    node_->SetRotation(Quaternion(0, Vector3::UP));
+    node_->Rotate(rotate);
+
     timeLastModified = GetLastModifiedTime(parameters[type].fileName);
 }
 
@@ -72,8 +79,8 @@ void Tank::Normalize()
     Vector3 scale = {k / divider, k / divider, k / divider};
 
     deltaPos.y_ = -box.min_.y_ / divider * k;
-    deltaPos.z_ = -(box.max_.z_ + box.min_.z_) / 2.0f / divider * k - 0.5f;
-    deltaPos.x_ = (box.max_.x_ + box.min_.x_) / 2.0f / divider * k + 0.5f;
+    deltaPos.z_ = -(box.max_.z_ + box.min_.z_) / 2.0f / divider * k;
+    deltaPos.x_ = (box.max_.x_ + box.min_.x_) / 2.0f / divider * k;
 
     node_->SetScale(scale);
 
@@ -90,32 +97,18 @@ Vector3 Tank::GetPosition()
     return node_->GetPosition() - deltaPos;
 }
 
+void Tank::SetCoord(const Coord& coord)
+{
+    PODVector<Coord> path;
+    path.Push(coord);
+    translator.SetPath(path);
+}
+
 void Tank::Update(float dT)
 {
     GameObject::Update(dT);
 
-    if(inMovingState)
-    {
-        bool movinatorRun = false;
-        node_->SetPosition(translator.Update(dT, &movinatorRun));
-
-        if(!movinatorRun)
-        {
-            if(path.Size())
-            {
-                inMovingState = true;
-                uint row = path[0].row;
-                uint col = path[0].col;
-
-                translator.Set(node_->GetPosition(), Vector3(col + 0.5f, gTerrain->GetHeight(row, col), -(float)path[0].row - 0.5f), speed);
-                path.Erase(0, 1);
-            }
-            else
-            {
-                inMovingState = false;
-            }
-        }
-    }
+    SetPosition(translator.Update(dT));
 
     if (timeForReload)
     {
@@ -141,17 +134,19 @@ bool Tank::IsSelected()
     return selected;
 }
 
-void Tank::SetPath(PODVector<Coord> path)
+void Tank::SetPath(PODVector<Coord> &path)
 {
-    this->path = path;
+    translator.SetPath(path, speed);
+}
 
-    if(path.Size())
-    {
-        inMovingState = true;
-        uint row = path[0].row;
-        uint col = path[0].col;
+void Tank::SetRotation(float rotation)
+{
+    Quaternion rotate(deltaRotate + rotation, Vector3::UP);
+    node_->SetRotation(rotate);
+}
 
-        translator.Set(node_->GetPosition(), Vector3(col + 0.5f, gTerrain->GetHeight(row, col), -(float)path[0].row - 0.5f), speed);
-        path.Erase(0, 1);
-    }
+float Tank::GetRotation()
+{
+    float ret = node_->GetRotation().YawAngle() - deltaRotate;
+    return ret > 0 ? ret : ret + 360.0f;
 }

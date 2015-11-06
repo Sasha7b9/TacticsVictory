@@ -70,7 +70,7 @@ void PathIndicator::Stop()
     pathFinder.Stop();
 }
 
-PODVector<Coord> PathIndicator::GetPath()
+PODVector<Coord> &PathIndicator::GetPath()
 {
     return path;
 }

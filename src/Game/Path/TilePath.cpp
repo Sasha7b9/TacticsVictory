@@ -70,18 +70,12 @@ void TilePath::Add(Vector3 &pos)
 {
     if(numTilesAll == numTilesEnabled)
     {
-        for (int i = 0; i < 50; i++)
-        {
-            SharedPtr<TilePath> tile(new TilePath());
-            tile->SetVisible(false);
-            tiles.Push(tile);
-        }
-
-        numTilesAll += 50;
-
-        tiles[numTilesEnabled]->SetVisible(true);
-        tiles[numTilesEnabled]->SetPosition(pos);
+        SharedPtr<TilePath> tile(new TilePath());
+        tile->SetVisible(true);
+        tile->SetPosition(pos);
+        tiles.Push(tile);
         numTilesEnabled++;
+        numTilesAll++;
     }
     else if(numTilesEnabled < numTilesAll)
     {

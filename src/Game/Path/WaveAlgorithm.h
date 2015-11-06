@@ -1,16 +1,21 @@
 #pragma once
 
 
+#include "Game/Objects/Terrain.h"
+
+
 #pragma warning(push)
 #pragma warning(disable:4520)
 struct Coord
 {
-    explicit Coord(uint row_ = 0U, uint col_ = 0U) : row(row_), col(col_)
+    Coord(uint row_ = 0U, uint col_ = 0U) : row(row_), col(col_)
     {
     }
 
     uint row = 0;
     uint col = 0;
+    Vector3 vect;
+
     bool operator ==(const Coord& rhs) const
     {
         return row == rhs.row && col == rhs.col;
@@ -20,6 +25,15 @@ struct Coord
         row = rhs.row;
         col = rhs.col;
         return *this;
+    }
+
+    Vector3& ToVector3()
+    {
+        vect.x_ = (float)col + 0.5f;
+        vect.y_ = gTerrain->GetHeight(row, col);
+        vect.z_ = -(float)row - 0.5f;
+
+        return vect;
     }
 };
 #pragma warning(pop)

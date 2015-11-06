@@ -15,7 +15,7 @@ public:
     void SetStartPosition(Coord &start);
     void Stop();
 
-    PODVector<Coord> GetPath();
+    PODVector<Coord> &GetPath();
 
 private:
     WaveAlgorithm pathFinder;
