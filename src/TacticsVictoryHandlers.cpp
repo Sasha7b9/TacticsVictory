@@ -136,6 +136,6 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
 
     if (scene)
     {
-        scene->Update();
+        scene->Update(time);
     }
 }

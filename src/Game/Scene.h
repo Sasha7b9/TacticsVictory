@@ -15,7 +15,7 @@ public:
 
     static void RegisterObject(Context *context = gContext);
 
-    void Update();
+    void Update(float timeStep);
     void Create();
 
     void SetSelected(Tank *node, bool selected);
@@ -28,6 +28,7 @@ private:
     PathIndicator pathIndicator;
 
     void RegisterObjects();
+    void AnimateScene(float timeStep);
 
     void HandleMouseDown(StringHash, VariantMap&);
 };

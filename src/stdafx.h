@@ -21,6 +21,7 @@
 #include <Urho3D/Engine/Engine.h>
 #include <Urho3D/Engine/Console.h>
 
+#include <Urho3D/Graphics/BillboardSet.h>
 #include <Urho3D/Graphics/Camera.h>
 #include <Urho3D/Graphics/CustomGeometry.h>
 #include <Urho3D/Graphics/DebugRenderer.h>
@@ -91,6 +92,8 @@
 
 
 using Urho3D::BiasParameters;
+using Urho3D::Billboard;
+using Urho3D::BillboardSet;
 using Urho3D::BoundingBox;
 
 using Urho3D::CascadeParameters;

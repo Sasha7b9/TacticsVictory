@@ -130,6 +130,8 @@ void Missile::UpdateEscortTarget(float dT)
         firstUpdateEscort = false;
     }
 
+    speed += Vector3::ONE * dT * 1.01f;
+
     // Calculate necessary angle to target
     Vector3 dirToTarget = target->GetPosition() + Vector3(0.0f, 0.25f, 0.0f) - position;
     dirToTarget.Normalize();
