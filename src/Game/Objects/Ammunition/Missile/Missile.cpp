@@ -191,7 +191,7 @@ void Missile::CreateSmoke()
     BillboardSet *billboardObject = smokeNode->CreateComponent<BillboardSet>();
     billboardObject->SetNumBillboards(NUM_BILLBOARDS);
     billboardObject->SetMaterial(gCache->GetResource<Material>("Materials/LitSmoke.xml"));
-    billboardObject->SetSorted(true);
+    billboardObject->SetSorted(false);
 
     for(uint j = 0; j < NUM_BILLBOARDS; ++j)
     {

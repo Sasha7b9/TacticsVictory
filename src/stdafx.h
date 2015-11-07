@@ -32,6 +32,8 @@
 #include <Urho3D/Graphics/IndexBuffer.h>
 #include <Urho3D/Graphics/Model.h>
 #include <Urho3D/Graphics/Octree.h>
+#include <Urho3D/Graphics/ParticleEffect.h>
+#include <Urho3D/Graphics/ParticleEmitter.h>
 #include <Urho3D/Graphics/Texture2D.h>
 #include <Urho3D/Graphics/Texture.h>
 #include <Urho3D/Graphics/Renderer.h>
@@ -147,6 +149,8 @@ using Urho3D::Object;
 using Urho3D::Octree;
 
 using Urho3D::Pair;
+using Urho3D::ParticleEffect;
+using Urho3D::ParticleEmitter;
 using Urho3D::PhysicsWorld;
 using Urho3D::PODVector;
 

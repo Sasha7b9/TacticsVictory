@@ -53,6 +53,8 @@ void Tank::Init(Type type_)
     body->SetTrigger(true);
     CollisionShape *shape = node_->CreateComponent<CollisionShape>();
     shape->SetSphere(radiusDetect / node_->GetScale().x_);
+
+    CreateParticleEmitter();
 }
 
 void Tank::LoadFromFile()
@@ -232,4 +234,21 @@ void Tank::HandleCollision(StringHash, VariantMap& eventData)
         SharedPtr<Missile> missile(Missile::Create(translator.speed, translator.currentPos, node->GetComponent<Tank>()));
         timeElapsedAfterShoot = 1e-6f;
     }
+}
+
+void Tank::CreateParticleEmitter()
+{
+    Node *emitterNode = node_->CreateChild("Emitter");
+    emitterNode->SetPosition(Vector3(1.0f, 1.0f, 1.0f));
+
+    ParticleEmitter *emitter = emitterNode->CreateComponent<ParticleEmitter>();
+    emitter->SetEffect(gCache->GetResource<ParticleEffect>("Particle/SnowExplosion.xml"));
+    //emitter->SetEmitting(true);
+    //emitter->SetNumParticles(1000);
+    //emitter->ApplyEffect();
+    emitter->Commit();
+
+    ParticleEffect *effect = emitter->GetEffect();
+
+    bool res = emitter->IsEmitting();
 }

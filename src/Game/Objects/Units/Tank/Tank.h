@@ -83,4 +83,6 @@ private:
     float timeElapsedAfterShoot = 11.0f;
 
     void HandleCollision(StringHash, VariantMap&);
+
+    void CreateParticleEmitter();
 };
