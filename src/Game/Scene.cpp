@@ -9,6 +9,7 @@
 #include "Game/Objects/Terrain.h"
 #include "GUI/Elements/Cursor.h"
 #include "Game/Path/TilePath.h"
+#include "Game/Objects/Missile.h"
 
 
 Scene::Scene(Context *context) :
@@ -31,6 +32,7 @@ Scene::~Scene()
 void Scene::RegisterObjects()
 {
     Tank::RegisterObject();
+    Missile::RegisterObject();
 }
 
 void Scene::RegisterObject(Context *context)
@@ -70,10 +72,7 @@ void Scene::Create()
             row = (uint)Math::RandomInt(0, (int)gLevel->GetHeight() - 1);
         } while(gTerrain->GetHeight(row, col) != 0.0f);
         
-
-        SharedPtr<Node> nodeTank(gScene->CreateChild(NODE_TANK));
-        SharedPtr<Tank> tank(nodeTank->CreateComponent<Tank>());
-        tank->Init(Tank::Small);
+        SharedPtr<Tank> tank = Tank::Create(Tank::Small);
         tank->SetCoord({row, col});
         tank->SetAutoReloaded(1);
     }

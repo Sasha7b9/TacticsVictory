@@ -6,6 +6,8 @@
 
 class Translator
 {
+    friend class Tank;
+
 public:
     Translator();
 

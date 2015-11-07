@@ -25,7 +25,8 @@ public:
 
     virtual void Update(float timeStep);
 
-    void Init(Type type);
+    static SharedPtr<Tank> Create(Type type);
+
     Vector3 GetPosition();
     void SetCoord(const Coord& coord);
 
@@ -44,6 +45,7 @@ private:
     void LoadFromFile();
     void Normalize();
     void SetPosition(const Vector3& pos);
+    void Init(Type type);
 
     Type type;
 
@@ -76,4 +78,6 @@ private:
     bool inProcessFindPath = false;
 
     float radiusDetect = 20.0f;
+
+    void HandleCollision(StringHash, VariantMap&);
 };

@@ -4,6 +4,6 @@
         "fileMaterials": "Models/Tank.txt"
     },
 
-    "speed": 1,
+    "speed": 10,
     "deltaRotate" : 180
 }

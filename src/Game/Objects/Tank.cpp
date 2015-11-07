@@ -5,7 +5,7 @@
 #include "Core/Math.h"
 #include "Game/Objects/Terrain.h"
 #include "GlobalFunctions.h"
-#include "Game/Logic/TargetDetected.h"
+#include "Game/Objects/Missile.h"
 
 
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
@@ -17,7 +17,6 @@ Tank::Tank(Context *context) : GameObject(context)
     {
         parameters[Small] = TankStruct(Small, "Models/Tank.json");
         parameters[T_34_76] = TankStruct(T_34_76, "Models/T-34-76-2.json");
-        gContext->RegisterFactory<TargetDetected>();
     }
 
     pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
@@ -40,7 +39,10 @@ void Tank::Init(Type type_)
     {
         node_->RemoveComponent(body);
         node_->RemoveComponent(node_->GetComponent<CollisionShape>());
-        node_->RemoveComponent(node_->GetComponent<TargetDetected>());
+    }
+    else
+    {
+        SubscribeToEvent(node_, Urho3D::E_NODECOLLISIONSTART, HANDLER(Tank, HandleCollision));
     }
 
     body = node_->CreateComponent<RigidBody>();
@@ -48,7 +50,6 @@ void Tank::Init(Type type_)
     body->SetTrigger(true);
     CollisionShape *shape = node_->CreateComponent<CollisionShape>();
     shape->SetSphere(radiusDetect / node_->GetScale().x_);
-    node_->CreateComponent<TargetDetected>();
 }
 
 void Tank::LoadFromFile()
@@ -199,4 +200,22 @@ float Tank::GetRotation()
 {
     float ret = node_->GetRotation().YawAngle() - deltaRotate;
     return ret > 0 ? ret : ret + 360.0f;
+}
+
+SharedPtr<Tank> Tank::Create(Type type)
+{
+    SharedPtr<Node> node(gScene->CreateChild(NODE_TANK));
+    SharedPtr<Tank> tank(node->CreateComponent<Tank>());
+    tank->Init(type);
+    return tank;
+}
+
+void Tank::HandleCollision(StringHash, VariantMap& eventData)
+{
+    Node *node = (Node*)eventData[Urho3D::NodeCollisionStart::P_OTHERNODE].GetPtr();
+
+    if(node->GetName() == NODE_TANK)
+    {
+        SharedPtr<Missile> missile(Missile::Create(translator.speed, translator.currentPos, node->GetComponent<Tank>()));
+    }
 }
