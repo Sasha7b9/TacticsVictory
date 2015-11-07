@@ -48,4 +48,6 @@ private:
     void Normalize();
     void UpdateBegin(float dT);
     void UpdateEscortTarget(float dT);
+    void CreateSmoke();
+    void AnimateSmoke(float timeStep);
 };

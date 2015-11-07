@@ -28,7 +28,6 @@ private:
     PathIndicator pathIndicator;
 
     void RegisterObjects();
-    void AnimateScene(float timeStep);
 
     void HandleMouseDown(StringHash, VariantMap&);
 };

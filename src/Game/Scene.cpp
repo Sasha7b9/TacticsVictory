@@ -62,7 +62,7 @@ void Scene::Create()
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
     gTerrain = new Terrain(level);
 
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 50; i++)
     {
         uint row = 0;
         uint col = 0;
@@ -97,31 +97,6 @@ void Scene::Create()
     uint sizeZ = level.Size();
 
     gCamera->SetPosition({sizeX / 2.0f, 25.0f, - (float)sizeZ / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
-
-    const unsigned NUM_BILLBOARDNODES = 25;
-    const unsigned NUM_BILLBOARDS = 10;
-
-    for(uint i = 0; i < NUM_BILLBOARDNODES; i++)
-    {
-        Node *smokeNode = gScene->CreateChild("Smoke");
-        smokeNode->SetPosition(Vector3(Random(200.0f) - 100.0f, Random(20.0f) + 10.0f, Random(200.0f) - 100.0f));
-
-        BillboardSet *billboardObject = smokeNode->CreateComponent<BillboardSet>();
-        billboardObject->SetNumBillboards(NUM_BILLBOARDS);
-        billboardObject->SetMaterial(gCache->GetResource<Material>("Materials/LitSmoke.xml"));
-        billboardObject->SetSorted(true);
-
-        for(uint j = 0; j < NUM_BILLBOARDS; ++j)
-        {
-            Billboard *bb = billboardObject->GetBillboard(j);
-            bb->position_ = Vector3(Random(12.0f) - 6.0f, Random(8.0f) - 4.0f, Random(12.0f) - 6.0f);
-            bb->size_ = Vector2(Random(2.0f) + 3.0f, Random(2.0f) + 3.0f);
-            bb->rotation_ = Random() * 360.0f;
-            bb->enabled_ = true;
-        }
-        
-        billboardObject->Commit();
-    }
 }
 
 void Scene::Update(float timeStep)
@@ -147,7 +122,6 @@ void Scene::Update(float timeStep)
     }
 
     pathIndicator.Update();
-    AnimateScene(timeStep);
 }
 
 void Scene::HandleMouseDown(StringHash, VariantMap& eventData)
@@ -233,27 +207,4 @@ Tank* Scene::GetSelected()
     }
     
     return nullptr;
-}
-
-void Scene::AnimateScene(float timeStep)
-{
-    PODVector<Node*> lightNodes;
-    PODVector<Node*> billboardNodes;
-
-    gScene->GetChildrenWithComponent<Light>(lightNodes);
-    gScene->GetChildrenWithComponent<BillboardSet>(billboardNodes);
-
-    const float BILLBOARD_ROTATION_SPEED = 50.0f;
-
-    for(uint i = 0; i < billboardNodes.Size(); i++)
-    {
-        BillboardSet *billboardObject = billboardNodes[i]->GetComponent<BillboardSet>();
-
-        for(uint j = 0; j < billboardObject->GetNumBillboards(); j++)
-        {
-            Billboard *bb = billboardObject->GetBillboard(j);
-            bb->rotation_ += BILLBOARD_ROTATION_SPEED * timeStep;
-        }
-        billboardObject->Commit();
-    }
 }

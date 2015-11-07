@@ -48,6 +48,7 @@ void Missile::Update(float timeStep)
             time = 0;
         }
         */
+        AnimateSmoke(timeStep);
     }
 }
 
@@ -55,6 +56,7 @@ void Missile::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *t
 {
     LoadFromFile();
     Normalize();
+    CreateSmoke();
 
     this->target = target;
     this->position = position;
@@ -130,8 +132,6 @@ void Missile::UpdateEscortTarget(float dT)
         firstUpdateEscort = false;
     }
 
-    speed += Vector3::ONE * dT * 1.01f;
-
     // Calculate necessary angle to target
     Vector3 dirToTarget = target->GetPosition() + Vector3(0.0f, 0.25f, 0.0f) - position;
     dirToTarget.Normalize();
@@ -178,5 +178,50 @@ void Missile::UpdateEscortTarget(float dT)
     if(time > rangeTime || distance > rangeDistance || (position - target->GetPosition()).Length() < 0.3f)
     {
         gScene->NodeRemoved(node_);
+    }
+}
+
+void Missile::CreateSmoke()
+{
+    const uint NUM_BILLBOARDS = 50;
+
+    Node *smokeNode = node_->CreateChild("Smoke");
+    smokeNode->SetScale(1.0f);
+
+    BillboardSet *billboardObject = smokeNode->CreateComponent<BillboardSet>();
+    billboardObject->SetNumBillboards(NUM_BILLBOARDS);
+    billboardObject->SetMaterial(gCache->GetResource<Material>("Materials/LitSmoke.xml"));
+    billboardObject->SetSorted(true);
+
+    for(uint j = 0; j < NUM_BILLBOARDS; ++j)
+    {
+        Billboard *bb = billboardObject->GetBillboard(j);
+        bb->position_ = Vector3(Random(10.0f) - 5.0f, Random(10.0f) - 5.0f, Random(10.0f) - 5.0f);
+        bb->size_ = Vector2(Random(2.0f) + 3.0f, Random(2.0f) + 3.0f);
+        bb->rotation_ = Random() * 360.0f;
+        bb->enabled_ = true;
+    }
+
+    billboardObject->Commit();
+}
+
+void Missile::AnimateSmoke(float timeStep)
+{
+    PODVector<Node*> billboardNodes;
+
+    node_->GetChildrenWithComponent<BillboardSet>(billboardNodes);
+
+    const float BILLBOARD_ROTATION_SPEED = 50.0f;
+
+    for(uint i = 0; i < billboardNodes.Size(); i++)
+    {
+        BillboardSet *billboardObject = billboardNodes[i]->GetComponent<BillboardSet>();
+
+        for(uint j = 0; j < billboardObject->GetNumBillboards(); j++)
+        {
+            Billboard *bb = billboardObject->GetBillboard(j);
+            bb->rotation_ += BILLBOARD_ROTATION_SPEED * timeStep;
+        }
+        billboardObject->Commit();
     }
 }
