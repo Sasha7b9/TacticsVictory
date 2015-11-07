@@ -347,6 +347,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Objects\TerrainSegment.cpp" />
     <ClCompile Include="src\Game\Objects\Units\Tank\Tank.cpp" />
     <ClCompile Include="src\Game\Objects\Units\Tank\Translator.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapon\MissileGun\MissileGun.cpp" />
     <ClCompile Include="src\Game\Path\PathIndicator.cpp" />
     <ClCompile Include="src\Game\Path\TilePath.cpp" />
     <ClCompile Include="src\Game\Path\WaveAlgorithm.cpp" />
@@ -409,6 +410,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Objects\TerrainSegment.h" />
     <ClInclude Include="src\Game\Objects\Units\Tank\Tank.h" />
     <ClInclude Include="src\Game\Objects\Units\Tank\Translator.h" />
+    <ClInclude Include="src\Game\Objects\Weapon\MissileGun\MissileGun.h" />
     <ClInclude Include="src\Game\Path\PathIndicator.h" />
     <ClInclude Include="src\Game\Path\TilePath.h" />
     <ClInclude Include="src\Game\Path\WaveAlgorithm.h" />

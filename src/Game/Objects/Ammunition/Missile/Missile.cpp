@@ -58,9 +58,12 @@ void Missile::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *t
 
     this->target = target;
     this->position = position;
-    speed = speedShooter;
-    absSpeed = speedShooter.Length() * 1.01f;
-    speed.y_ = absSpeed;
+    speed.x_ = speedShooter.x_;
+    speed.y_ = 1.0f;
+    speed.z_ = speedShooter.z_;
+    absSpeed = speedShooter.Length() * 1.5f;
+
+    rotate = Quaternion(Vector3::UP, Vector3::UP);
 }
 
 SharedPtr<Missile> Missile::Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
@@ -91,7 +94,7 @@ void Missile::Normalize()
 
     float divider = Math::Max(delta.x_, delta.y_, delta.z_);
 
-    float k = 0.25f;
+    float k = 0.4f;
     Vector3 scale = {k / divider, k / divider, k / divider};
 
     deltaPos.y_ = -box.min_.y_ / divider * k;
@@ -106,6 +109,8 @@ void Missile::UpdateBegin(float dT)
     position += speed * dT;
     node_->SetPosition(position);
 
+    node_->SetRotation(rotate);
+
     time += dT;
     distance += absSpeed * dT;
 
@@ -117,48 +122,59 @@ void Missile::UpdateBegin(float dT)
 
 void Missile::UpdateEscortTarget(float dT)
 {
-    time += dT;
-
-    const float deltaAiming = 0.1f;             // From this time need aim to target
-    static float timeElapsedAiming = 0.0f;      // Time elapsed form last aiming
-
-    if(timeElapsedAiming == 0.0f)
+    if(firstUpdateEscort)
     {
-        AimToTarget();
+        speed.x_ = 0.0f;
+        speed.z_ = 0.0f;
+        speed.y_ = absSpeed;
+        firstUpdateEscort = false;
+    }
+
+    // Calculate necessary angle to target
+    Vector3 dirToTarget = target->GetPosition() + Vector3(0.0f, 0.25f, 0.0f) - position;
+    dirToTarget.Normalize();
+
+    Vector3 dir = speed;
+    dir.Normalize();
+
+    float angleNeed = dir.Angle(dirToTarget);
+
+    if(angleNeed < 0.0f)
+    {
+        angleNeed = angleNeed;
+    }
+
+    if(angleNeed > 180.0f)
+    {
+        angleNeed = angleNeed;
+    }
+
+    float angleCan = rotateSpeed * dT;
+
+    Vector3 axisRotate = dir.CrossProduct(dirToTarget);
+
+    if(angleCan >= angleNeed)
+    {
+        rotate = Quaternion(Vector3::UP, dirToTarget);
+
+        Quaternion qutRotate(angleNeed, axisRotate);
+        speed = qutRotate * speed;
+    }
+    else
+    {
+        Quaternion qutRotate(angleCan, axisRotate);
+        speed = qutRotate * speed;
+
+        rotate = Quaternion(Vector3::UP, speed);
     }
 
     position += speed * dT;
     node_->SetPosition(position);
 
-    time += dT;
-    distance += absSpeed * dT;
-
-    timeElapsedAiming += dT;
-
-    if(timeElapsedAiming > deltaAiming)
-    {
-        timeElapsedAiming = 0.0f;
-    }
+    node_->SetRotation(rotate);
 
     if(time > rangeTime || distance > rangeDistance || (position - target->GetPosition()).Length() < 0.3f)
     {
         gScene->NodeRemoved(node_);
     }
-}
-
-void Missile::AimToTarget()
-{
-    Vector3 posTarget = target->GetPosition() + Vector3(0.0f, 0.25f, 0.0f);
-
-    speed = posTarget - position;
-    speed.Normalize();
-    speed *= absSpeed;
-
-    Quaternion rotate(Vector3::DOWN, position - posTarget);
-
-    float yaw = rotate.YawAngle();
-    float pitch = rotate.PitchAngle();
-    float roll = rotate.RollAngle();
-
-    node_->SetRotation(rotate);
 }

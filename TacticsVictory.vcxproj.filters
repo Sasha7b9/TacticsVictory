@@ -61,6 +61,9 @@
     <Filter Include="Game\Objects\Units\Tank">
       <UniqueIdentifier>{263b193a-40aa-44b1-a2e4-52679ac1790c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Objects\Weapon\MissileGun">
+      <UniqueIdentifier>{fcd0f500-62d1-4d44-b54c-e1cbb28b4313}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Camera.cpp">
@@ -233,6 +236,9 @@
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Ammunition\Missile\MissileMovinator.cpp">
       <Filter>Game\Objects\Ammunition</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Weapon\MissileGun\MissileGun.cpp">
+      <Filter>Game\Objects\Weapon\MissileGun</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -412,6 +418,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Ammunition\Missile\MissileMovinator.h">
       <Filter>Game\Objects\Ammunition</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Weapon\MissileGun\MissileGun.h">
+      <Filter>Game\Objects\Weapon\MissileGun</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

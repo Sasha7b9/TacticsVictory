@@ -79,8 +79,8 @@ private:
 
     float radiusDetect = 20.0f;
 
-    float timeRechargeWeapon = 3.0f;  // In sec
-    float timeElapsedAfterShoot = 1e-8f;
+    float timeRechargeWeapon = 10.0f;  // In sec
+    float timeElapsedAfterShoot = 11.0f;
 
     void HandleCollision(StringHash, VariantMap&);
 };

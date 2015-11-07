@@ -45,7 +45,7 @@ void Tank::Init(Type type_)
     }
     else
     {
-        SubscribeToEvent(node_, Urho3D::E_NODECOLLISION, HANDLER(Tank, HandleCollision));
+        SubscribeToEvent(node_, Urho3D::E_NODECOLLISIONSTART, HANDLER(Tank, HandleCollision));
     }
 
     body = node_->CreateComponent<RigidBody>();
