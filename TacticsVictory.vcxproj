@@ -342,7 +342,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Logic\Rotator.cpp" />
     <ClCompile Include="src\Game\Logic\Translator.cpp" />
     <ClCompile Include="src\Game\Objects\GameObject.cpp" />
-    <ClCompile Include="src\Game\Objects\Missile.cpp" />
+    <ClCompile Include="src\Game\Objects\Missile\Missile.cpp" />
+    <ClCompile Include="src\Game\Objects\Missile\MissileMovinator.cpp" />
     <ClCompile Include="src\Game\Objects\Tank.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain.cpp" />
     <ClCompile Include="src\Game\Objects\TerrainSegment.cpp" />
@@ -403,7 +404,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Logic\Rotator.h" />
     <ClInclude Include="src\Game\Logic\Translator.h" />
     <ClInclude Include="src\Game\Objects\GameObject.h" />
-    <ClInclude Include="src\Game\Objects\Missile.h" />
+    <ClInclude Include="src\Game\Objects\Missile\Missile.h" />
+    <ClInclude Include="src\Game\Objects\Missile\MissileMovinator.h" />
     <ClInclude Include="src\Game\Objects\Tank.h" />
     <ClInclude Include="src\Game\Objects\Terrain.h" />
     <ClInclude Include="src\Game\Objects\TerrainSegment.h" />

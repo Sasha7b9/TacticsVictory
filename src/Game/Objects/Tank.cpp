@@ -5,7 +5,7 @@
 #include "Core/Math.h"
 #include "Game/Objects/Terrain.h"
 #include "GlobalFunctions.h"
-#include "Game/Objects/Missile.h"
+#include "Game/Objects/Missile/Missile.h"
 
 
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;

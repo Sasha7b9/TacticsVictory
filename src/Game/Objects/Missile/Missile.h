@@ -19,13 +19,20 @@ private:
     {};
 
     float rangeVisible = 50.0f;
-    float rangeFlying = 150.0f;
-    float speed = 10.0f;
+    float rangeDistance = 150.0f;
+    float absSpeed = 0.0f;
+    float rangeTime = 10.0f;
+
+    float time = 0.0f;
+    float distance = 0.0f;
+
+    Vector3 position;
+    Vector3 speed;
 
     SharedPtr<StaticModel> model;
 
     void LoadFromFile();
     void Normalize();
 
-    void Init();
+    void Init(const Vector3 &speedShooter, const Vector3 &position);
 };

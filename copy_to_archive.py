@@ -16,11 +16,11 @@ date = datetime.datetime.now()
 
 name = 'Archiv\\TacticsVictory\\TacticsVictory' + date.strftime("_%Y_%m_%d_%H_%M_%S") + '.zip .'
 
-strings =   "7z.exe a " + 'c:\\' + name, \
-            "7z.exe a " + 'f:\\' + name, \
-            "7z.exe a " + 'h:\\' + name, \
-            "7z.exe a " + 'i:\\' + name, \
-            "7z.exe a " + 'g:\\' + name, \
+strings =   "7z.exe a " + 'c:\\' + name + " -x!.git\\", \
+            "7z.exe a " + 'f:\\' + name + " -x!.git\\", \
+            "7z.exe a " + 'h:\\' + name + " -x!.git\\", \
+            "7z.exe a " + 'i:\\' + name + " -x!.git\\", \
+            "7z.exe a " + 'g:\\' + name + " -x!.git\\", \
             "pause"
 
 RunCommands(strings)

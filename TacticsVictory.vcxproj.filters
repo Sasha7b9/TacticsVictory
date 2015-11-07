@@ -46,6 +46,9 @@
     <Filter Include="Game\Path">
       <UniqueIdentifier>{d95f9b66-18c2-4dec-88bd-11fee010c993}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Objects\Missile">
+      <UniqueIdentifier>{db35bae6-d6d8-4c8c-b3f8-2c533f9c241b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Camera.cpp">
@@ -213,8 +216,11 @@
     <ClCompile Include="src\Game\Objects\GameObject.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Missile.cpp">
-      <Filter>Game\Objects</Filter>
+    <ClCompile Include="src\Game\Objects\Missile\Missile.cpp">
+      <Filter>Game\Objects\Missile</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Missile\MissileMovinator.cpp">
+      <Filter>Game\Objects\Missile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -389,8 +395,11 @@
     <ClInclude Include="src\Game\Objects\GameObject.h">
       <Filter>Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Missile.h">
-      <Filter>Game\Objects</Filter>
+    <ClInclude Include="src\Game\Objects\Missile\Missile.h">
+      <Filter>Game\Objects\Missile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Missile\MissileMovinator.h">
+      <Filter>Game\Objects\Missile</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

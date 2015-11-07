@@ -18,20 +18,37 @@ void Missile::RegisterObject(Context *context)
 
 void Missile::Update(float timeStep)
 {
+    if(node_)
+    {
+        position += speed * timeStep;
+        node_->SetPosition(position);
 
+        time += timeStep;
+        distance += absSpeed * timeStep;
+
+        if(time > rangeTime || distance > rangeDistance)
+        {
+            gScene->NodeRemoved(node_);
+        }
+    }
 }
 
-void Missile::Init()
+void Missile::Init(const Vector3 &speedShooter, const Vector3 &position)
 {
     LoadFromFile();
     Normalize();
+
+    this->position = position;
+    speed = speedShooter;
+    absSpeed = speedShooter.Length() * 1.5f;
+    speed.y_ = absSpeed;
 }
 
 SharedPtr<Missile> Missile::Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
 {
     SharedPtr<Node> node(gScene->CreateChild("Missile"));
     SharedPtr<Missile> missile(node->CreateComponent<Missile>());
-    missile->Init();
+    missile->Init(speedShooter, position);
     missile->node_->SetPosition(position + Vector3(0.0f, 3.0f, 0.0f));
     return missile;
 }
