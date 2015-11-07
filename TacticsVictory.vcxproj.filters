@@ -46,8 +46,20 @@
     <Filter Include="Game\Path">
       <UniqueIdentifier>{d95f9b66-18c2-4dec-88bd-11fee010c993}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Missile">
-      <UniqueIdentifier>{db35bae6-d6d8-4c8c-b3f8-2c533f9c241b}</UniqueIdentifier>
+    <Filter Include="Game\Objects\Weapon">
+      <UniqueIdentifier>{a0fa9639-ca9d-4189-9139-5a6018bebd9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Units">
+      <UniqueIdentifier>{ded62c8b-f8d0-4423-9aa6-cdc2ea58c406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Ammunition">
+      <UniqueIdentifier>{4eb487f6-90c3-4b55-b6d3-fc85a86499a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Buildings">
+      <UniqueIdentifier>{c2c10123-8550-48df-93ab-3d39c62fc0da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Units\Tank">
+      <UniqueIdentifier>{263b193a-40aa-44b1-a2e4-52679ac1790c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -180,9 +192,6 @@
     <ClCompile Include="src\Game\Objects\TerrainSegment.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Tank.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="src\Graphics\Objects\Line.cpp">
       <Filter>Graphics\Objects</Filter>
     </ClCompile>
@@ -210,17 +219,20 @@
     <ClCompile Include="src\Game\Path\PathIndicator.cpp">
       <Filter>Game\Path</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Logic\Translator.cpp">
-      <Filter>Game\Logic</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Objects\GameObject.cpp">
       <Filter>Game\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Missile\Missile.cpp">
-      <Filter>Game\Objects\Missile</Filter>
+    <ClCompile Include="src\Game\Objects\Units\Tank\Tank.cpp">
+      <Filter>Game\Objects\Units\Tank</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Missile\MissileMovinator.cpp">
-      <Filter>Game\Objects\Missile</Filter>
+    <ClCompile Include="src\Game\Objects\Units\Tank\Translator.cpp">
+      <Filter>Game\Objects\Units\Tank</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Ammunition\Missile\Missile.cpp">
+      <Filter>Game\Objects\Ammunition</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Ammunition\Missile\MissileMovinator.cpp">
+      <Filter>Game\Objects\Ammunition</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -359,9 +371,6 @@
     <ClInclude Include="src\Game\Objects\TerrainSegment.h">
       <Filter>Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Tank.h">
-      <Filter>Game\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="src\Graphics\Objects\Line.h">
       <Filter>Graphics\Objects</Filter>
     </ClInclude>
@@ -389,17 +398,20 @@
     <ClInclude Include="src\Game\Path\PathIndicator.h">
       <Filter>Game\Path</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Logic\Translator.h">
-      <Filter>Game\Logic</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Objects\GameObject.h">
       <Filter>Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Missile\Missile.h">
-      <Filter>Game\Objects\Missile</Filter>
+    <ClInclude Include="src\Game\Objects\Units\Tank\Tank.h">
+      <Filter>Game\Objects\Units\Tank</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Missile\MissileMovinator.h">
-      <Filter>Game\Objects\Missile</Filter>
+    <ClInclude Include="src\Game\Objects\Units\Tank\Translator.h">
+      <Filter>Game\Objects\Units\Tank</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Ammunition\Missile\Missile.h">
+      <Filter>Game\Objects\Ammunition</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Ammunition\Missile\MissileMovinator.h">
+      <Filter>Game\Objects\Ammunition</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

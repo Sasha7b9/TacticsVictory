@@ -9,7 +9,7 @@
 #include "Game/Objects/Terrain.h"
 #include "GUI/Elements/Cursor.h"
 #include "Game/Path/TilePath.h"
-#include "Game/Objects/Missile/Missile.h"
+#include "Game/Objects/Ammunition/Missile/Missile.h"
 
 
 Scene::Scene(Context *context) :

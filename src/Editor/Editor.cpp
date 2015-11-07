@@ -8,7 +8,7 @@
 #include "GUI/Elements/Hint.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
-#include "Game/Objects/Tank.h"
+#include "Game/Objects/Units/Tank/Tank.h"
 
 
 Editor::Editor(Context *context) : Object(context)

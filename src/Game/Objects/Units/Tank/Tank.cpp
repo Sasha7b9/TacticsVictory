@@ -5,7 +5,7 @@
 #include "Core/Math.h"
 #include "Game/Objects/Terrain.h"
 #include "GlobalFunctions.h"
-#include "Game/Objects/Missile/Missile.h"
+#include "Game/Objects/Ammunition/Missile/Missile.h"
 
 
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
@@ -34,6 +34,9 @@ void Tank::Init(Type type_)
     LoadFromFile();
     Normalize();
 
+    // WARN
+    // Wrong control. It is necessary to create the trigger and a body which will influence it
+    // http://www.gamedev.ru/community/urho3d/forum/?id=204570&page=4
     RigidBody *body = node_->GetComponent<RigidBody>();
     if(body)
     {
@@ -42,7 +45,7 @@ void Tank::Init(Type type_)
     }
     else
     {
-        SubscribeToEvent(node_, Urho3D::E_NODECOLLISIONSTART, HANDLER(Tank, HandleCollision));
+        SubscribeToEvent(node_, Urho3D::E_NODECOLLISION, HANDLER(Tank, HandleCollision));
     }
 
     body = node_->CreateComponent<RigidBody>();
@@ -128,6 +131,11 @@ void Tank::Update(float dT)
 {
     GameObject::Update(dT);
 
+    if(timeElapsedAfterShoot != 0.0f)
+    {
+        timeElapsedAfterShoot += dT;
+    }
+
     if(!translator.IsMoving())
     {
         if(inProcessFindPath)
@@ -212,10 +220,16 @@ SharedPtr<Tank> Tank::Create(Type type)
 
 void Tank::HandleCollision(StringHash, VariantMap& eventData)
 {
+    if(timeElapsedAfterShoot < timeRechargeWeapon)
+    {
+        return;
+    }
+
     Node *node = (Node*)eventData[Urho3D::NodeCollisionStart::P_OTHERNODE].GetPtr();
 
     if(node->GetName() == NODE_TANK)
     {
         SharedPtr<Missile> missile(Missile::Create(translator.speed, translator.currentPos, node->GetComponent<Tank>()));
+        timeElapsedAfterShoot = 1e-6f;
     }
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "Game/Logic/Translator.h"
+#include "Game/Objects/Units/Tank/Translator.h"
 
 
 class GameObject : public LogicComponent

@@ -2,8 +2,8 @@
 
 
 #include "Game/Path/WaveAlgorithm.h"
-#include "Game/Logic/Translator.h"
-#include "GameObject.h"
+#include "Game/Objects/Units/Tank/Translator.h"
+#include "Game/Objects/GameObject.h"
 
 
 class Tank : public GameObject
@@ -78,6 +78,9 @@ private:
     bool inProcessFindPath = false;
 
     float radiusDetect = 20.0f;
+
+    float timeRechargeWeapon = 3.0f;  // In sec
+    float timeElapsedAfterShoot = 1e-8f;
 
     void HandleCollision(StringHash, VariantMap&);
 };
