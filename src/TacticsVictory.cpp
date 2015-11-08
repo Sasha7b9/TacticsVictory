@@ -81,6 +81,7 @@ void TacticsVictory::CreateComponents()
     gScene->CreateComponent<Octree>();
 
     gPhysicsWorld = gScene->CreateComponent<PhysicsWorld>();
+    gPhysicsWorld->SetGravity(Vector3::ZERO);
 
     gUIRoot = gUI->GetRoot();
 

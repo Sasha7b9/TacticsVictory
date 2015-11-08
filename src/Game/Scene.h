@@ -30,4 +30,6 @@ private:
     void RegisterObjects();
 
     void HandleMouseDown(StringHash, VariantMap&);
+
+    PODVector<Tank*> tanks;
 };

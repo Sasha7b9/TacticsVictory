@@ -9,7 +9,7 @@
 #include "Game/Objects/Terrain.h"
 #include "GUI/Elements/Cursor.h"
 #include "Game/Path/TilePath.h"
-#include "Game/Objects/Ammunition/Missile/Missile.h"
+#include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
 
 
 Scene::Scene(Context *context) :
@@ -32,7 +32,7 @@ Scene::~Scene()
 void Scene::RegisterObjects()
 {
     Tank::RegisterObject();
-    Missile::RegisterObject();
+    Rocket::RegisterObject();
 }
 
 void Scene::RegisterObject(Context *context)
@@ -42,7 +42,7 @@ void Scene::RegisterObject(Context *context)
 
 void Scene::Create()
 {
-    gPhysicsWorld->SetGravity(Vector3::ZERO);
+    gPhysicsWorld->SetFps(5);
 
     // Create a Zone component into a child scene node. The Zone controls ambient lighting and fog settings. Like the Octree,
     // it also defines its volume with a bounding box, but can be rotated (so it does not need to be aligned to the world X, Y
@@ -73,9 +73,18 @@ void Scene::Create()
         } while(gTerrain->GetHeight(row, col) != 0.0f);
         
         SharedPtr<Tank> tank = Tank::Create(Tank::Small);
+        tanks.Push(tank);
         tank->SetCoord({row, col});
         tank->SetAutoReloaded(1);
     }
+
+    SharedPtr<Tank> tank = Tank::Create(Tank::Small);
+    tank->SetCoord(Coord(0, 0));
+    tanks.Push(tank);
+
+    tank = Tank::Create(Tank::Small);
+    tank->SetCoord(Coord(0, 20));
+    tanks.Push(tank);
 
     SharedPtr<Node> lightNode;
     lightNode = gScene->CreateChild("LigthNode");
@@ -99,7 +108,7 @@ void Scene::Create()
     gCamera->SetPosition({sizeX / 2.0f, 25.0f, - (float)sizeZ / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
 }
 
-void Scene::Update(float timeStep)
+void Scene::Update(float /*timeStep*/)
 {
     Vector3 hitPos;
     Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
@@ -122,6 +131,24 @@ void Scene::Update(float timeStep)
     }
 
     pathIndicator.Update();
+
+    for(auto tank : tanks)
+    {
+        for(auto target : tanks)
+        {
+            if(tank != target)
+            {
+                float distance = (tank->GetPosition() - target->GetPosition()).Length();
+                if(distance < 50.0f)
+                {
+                    if(tank->TargetInPointView(target))
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }
 
 void Scene::HandleMouseDown(StringHash, VariantMap& eventData)

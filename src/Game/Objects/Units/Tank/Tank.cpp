@@ -5,8 +5,8 @@
 #include "Core/Math.h"
 #include "Game/Objects/Terrain.h"
 #include "GlobalFunctions.h"
-#include "Game/Objects/Ammunition/Missile/Missile.h"
-#include "GAme/Objects/Ammunition/AmmunitionEvents.h"
+#include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
+#include "GAme/Objects/Weapon/AmmoEvents.h"
 
 
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
@@ -35,8 +35,10 @@ void Tank::Init(Type type_)
     type = type_;
     LoadFromFile();
     Normalize();
-    ConfigurePhysics();
+    //ConfigurePhysics();
     CreateParticleEmitter();
+
+    timeElapsedAfterShoot = Random(timeRechargeWeapon);
 }
 
 void Tank::LoadFromFile()
@@ -202,22 +204,6 @@ SharedPtr<Tank> Tank::Create(Type type)
     return tank;
 }
 
-void Tank::HandleCollision(StringHash, VariantMap& eventData)
-{
-    if(timeElapsedAfterShoot < timeRechargeWeapon)
-    {
-        return;
-    }
-
-    Node *node = (Node*)eventData[Urho3D::NodeCollisionStart::P_OTHERNODE].GetPtr();
-
-    if(node->GetName() == NODE_TANK)
-    {
-        SharedPtr<Missile> missile(Missile::Create(translator.speed, translator.currentPos, node->GetComponent<Tank>()));
-        timeElapsedAfterShoot = 1e-6f;
-    }
-}
-
 void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
 {
     Tank *tank = (Tank*)eventData[AmmunitionEvent::P_OBJECT].GetPtr();
@@ -253,11 +239,61 @@ void Tank::CreateParticleEmitter()
     }
 }
 
+void Tank::HandleCollision(StringHash, VariantMap& eventData)
+{
+    if(timeElapsedAfterShoot >= timeRechargeWeapon)
+    {
+        Node *node = (Node*)eventData[Urho3D::NodeCollisionStart::P_OTHERNODE].GetPtr();
+
+        String name = node->GetName();
+
+        if(node->GetName() == NODE_TRIGGER)
+        {
+            if(node->GetParent() != node_)
+            {
+                Tank *tank = node->GetParent()->GetComponent<Tank>();
+                SharedPtr<Rocket> missile(Rocket::Create(translator.speed, translator.currentPos, tank));
+                timeElapsedAfterShoot = 1e-6f;
+            }
+        };
+    }
+}
+
+bool Tank::TargetInPointView(Tank* tank)
+{
+    if(timeElapsedAfterShoot >= timeRechargeWeapon)
+    {
+        SharedPtr<Rocket> missile(Rocket::Create(translator.speed, translator.currentPos, tank));
+        timeElapsedAfterShoot = 1e-6f;
+        return true;
+    }
+    return false;
+}
+
 void Tank::ConfigurePhysics()
 {
+    // This body will react on triggers
+    RigidBody *body = node_->CreateComponent<RigidBody>();
+    body->SetMass(1.0f);
+    body->SetTrigger(true);
+    CollisionShape *shape = node_->CreateComponent<CollisionShape>();
+    shape->SetSphere((Vector3::ONE / node_->GetScale()).Length());
+
+    // It is the trigger
+    Node *trigger = node_->CreateChild("Trigger");
+    RigidBody *bodyTrigger = trigger->CreateComponent<RigidBody>();
+    bodyTrigger->SetTrigger(true);
+    shape = trigger->CreateComponent<CollisionShape>();
+    shape->SetSphere((Vector3::ONE / node_->GetScale()).Length() * radiusDetect / 2);
+
+    SubscribeToEvent(node_, Urho3D::E_NODECOLLISION, HANDLER(Tank, HandleCollision));  
+
+    return;
     // WARN
     // Wrong control. It is necessary to create the trigger and a body which will influence it
     // http://www.gamedev.ru/community/urho3d/forum/?id=204570&page=4
+
+    /*
     RigidBody *body = node_->GetComponent<RigidBody>();
     if(body)
     {
@@ -274,4 +310,5 @@ void Tank::ConfigurePhysics()
     body->SetTrigger(true);
     CollisionShape *shape = node_->CreateComponent<CollisionShape>();
     shape->SetSphere(radiusDetect / node_->GetScale().x_);
+    */
 }

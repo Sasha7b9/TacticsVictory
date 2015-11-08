@@ -39,6 +39,8 @@ public:
     void SetRotation(float rotation);
     float GetRotation();
 
+    bool TargetInPointView(Tank* tank);
+
 private:
     Tank& operator=(const Tank&) {};
 
@@ -77,7 +79,7 @@ private:
 
     bool inProcessFindPath = false;
 
-    float radiusDetect = 20.0f;
+    float radiusDetect = 50.0f;
 
     float timeRechargeWeapon = 10.0f;  // In sec
     float timeElapsedAfterShoot = 11.0f;
@@ -87,4 +89,7 @@ private:
 
     void CreateParticleEmitter();
     void ConfigurePhysics();
+
+    //Node        *trigger = nullptr;
+    //RigidBody   *body = nullptr;
 };

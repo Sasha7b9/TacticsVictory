@@ -17,4 +17,5 @@ typedef unsigned char uchar;
 #define NODE_TERRAIN    "Terrain"
 #define NODE_TANK       "Tank"
 #define NODE_TILE_PATH  "TilePath"
+#define NODE_TRIGGER    "Trigger"
 

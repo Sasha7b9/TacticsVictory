@@ -1,60 +1,42 @@
 #include <stdafx.h>
 
 
-#include "Missile.h"
+#include "Rocket.h"
 #include "Core/Math.h"
 #include "Game/Objects/Units/Tank/Tank.h"
-#include "Game/Objects/Ammunition/AmmunitionEvents.h"
+#include "Game/Objects/Weapon/AmmoEvents.h"
 #include "Core/Camera.h"
 
 
-Missile::Missile(Context *context)
+Rocket::Rocket(Context *context)
     : GameObject(context)
 {
 
 }
 
-void Missile::RegisterObject(Context *context)
+void Rocket::RegisterObject(Context *context)
 {
-    context->RegisterFactory<Missile>();
+    context->RegisterFactory<Rocket>();
 }
 
-void Missile::Update(float timeStep)
+void Rocket::Update(float timeStep)
 {
-    /*
-    HiresTimer timer;
-
-    static int prevElapsedTime = 0;
-
-    static long long time;
-    */
-
-    typedef void(Missile::* FuncUpdate)(float);
+    typedef void(Rocket::* FuncUpdate)(float);
     static FuncUpdate funcs[] =
     {
-        &Missile::UpdateBegin,
-        &Missile::UpdateEscortTarget
+        &Rocket::UpdateBegin,
+        &Rocket::UpdateEscortTarget
     };
 
     if(node_)
     {
         FuncUpdate func = funcs[state];
         (this->*func)(timeStep);
-        /*
-        time += timer.GetUSec(false);
-
-        if((int)gTime->GetElapsedTime() != prevElapsedTime)
-        {
-            prevElapsedTime = (int)gTime->GetElapsedTime();
-            LOGINFOF("update missiles %f", (float)time / 1e6f);
-            time = 0;
-        }
-        */
         AnimateSmoke(timeStep);
     }
 }
 
-void Missile::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
+void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
 {
     LoadFromFile();
     Normalize();
@@ -66,28 +48,26 @@ void Missile::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *t
     absSpeed = speedShooter.Length() * 1.5f;
 
     rotate = Quaternion(Vector3::UP, Vector3::UP);
-
-    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(Missile, HandlePostRenderUpdate));
 }
 
-SharedPtr<Missile> Missile::Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
+SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
 {
-    SharedPtr<Node> node(gScene->CreateChild("Missile"));
-    SharedPtr<Missile> missile(node->CreateComponent<Missile>());
+    SharedPtr<Node> node(gScene->CreateChild("Rocket"));
+    SharedPtr<Rocket> missile(node->CreateComponent<Rocket>());
     missile->Init(speedShooter, position, target);
     missile->node_->SetPosition(position + Vector3(0.0f, 3.0f, 0.0f));
     return missile;
 }
 
-void Missile::LoadFromFile()
+void Rocket::LoadFromFile()
 {
     model = node_->CreateComponent<StaticModel>();
-    model->SetModel(gCache->GetResource<Model>("Models/Missile.mdl"));
-    model->ApplyMaterialList("Models/Missile.txt");
+    model->SetModel(gCache->GetResource<Model>("Models/Rocket.mdl"));
+    model->ApplyMaterialList("Models/Rocket.txt");
     //model->SetCastShadows(true);
 }
 
-void Missile::Normalize()
+void Rocket::Normalize()
 {
     node_->SetPosition({0.0f, 0.0f, 0.0f});
     node_->SetScale(1.0f);
@@ -108,7 +88,7 @@ void Missile::Normalize()
     node_->SetScale(scale);
 }
 
-void Missile::UpdateBegin(float dT)
+void Rocket::UpdateBegin(float dT)
 {
     position += speed * dT;
     node_->SetPosition(position);
@@ -124,7 +104,7 @@ void Missile::UpdateBegin(float dT)
     }
 }
 
-void Missile::UpdateEscortTarget(float dT)
+void Rocket::UpdateEscortTarget(float dT)
 {
     if(firstUpdateEscort)
     {
@@ -216,7 +196,7 @@ void Missile::UpdateEscortTarget(float dT)
     }
 }
 
-void Missile::CreateSmoke()
+void Rocket::CreateSmoke()
 {
     const uint NUM_BILLBOARDS = 50;
 
@@ -259,7 +239,7 @@ void Missile::CreateSmoke()
     }
 }
 
-void Missile::AnimateSmoke(float timeStep)
+void Rocket::AnimateSmoke(float timeStep)
 {
     PODVector<Node*> billboardNodes;
 
@@ -277,16 +257,5 @@ void Missile::AnimateSmoke(float timeStep)
             bb->rotation_ += BILLBOARD_ROTATION_SPEED * timeStep;
         }
         billboardObject->Commit();
-    }
-}
-
-void Missile::HandlePostRenderUpdate(StringHash, VariantMap&)
-{
-    return;
-
-    SoundSource3D *soundSource = node_->GetComponent<SoundSource3D>();
-    if(soundSource)
-    {
-        soundSource->DrawDebugGeometry(gDebugRenderer, true);
     }
 }

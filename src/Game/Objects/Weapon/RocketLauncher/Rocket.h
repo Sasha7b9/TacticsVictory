@@ -4,18 +4,18 @@
 #include "Game/Objects/GameObject.h"
 
 
-class Missile : public GameObject
+class Rocket : public GameObject
 {
-    OBJECT(Missile);
+    OBJECT(Rocket);
 
 public:
-    Missile(Context *context = gContext);
+    Rocket(Context *context = gContext);
     static void RegisterObject(Context *context = gContext);
     virtual void Update(float timeStep);
-    static SharedPtr<Missile> Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target);
+    static SharedPtr<Rocket> Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target);
 
 private:
-    Missile& operator=(const Missile&)
+    Rocket& operator=(const Rocket&)
     {};
 
     Tank *target = nullptr;
@@ -40,7 +40,7 @@ private:
     Vector3 speed;
     Quaternion rotate;
     float absSpeed = 0.0f;
-    float rotateSpeed = 20.0f;
+    float rotateSpeed = 90.0f;
     bool firstUpdateEscort = true;
 
     void Init(const Vector3 &speedShooter, const Vector3 &position, Tank* target);
@@ -50,6 +50,4 @@ private:
     void UpdateEscortTarget(float dT);
     void CreateSmoke();
     void AnimateSmoke(float timeStep);
-
-    void HandlePostRenderUpdate(StringHash, VariantMap&);
 };

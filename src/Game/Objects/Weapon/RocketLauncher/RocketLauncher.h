@@ -1,7 +1,7 @@
 #pragma once
 
 
-class MissileGun
+class RocketLauncher
 {
 public:
 private:

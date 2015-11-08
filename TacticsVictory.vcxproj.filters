@@ -52,16 +52,13 @@
     <Filter Include="Game\Objects\Units">
       <UniqueIdentifier>{ded62c8b-f8d0-4423-9aa6-cdc2ea58c406}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Ammunition">
-      <UniqueIdentifier>{4eb487f6-90c3-4b55-b6d3-fc85a86499a4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Objects\Buildings">
       <UniqueIdentifier>{c2c10123-8550-48df-93ab-3d39c62fc0da}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\Objects\Units\Tank">
       <UniqueIdentifier>{263b193a-40aa-44b1-a2e4-52679ac1790c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Weapon\MissileGun">
+    <Filter Include="Game\Objects\Weapon\RocketLauncer">
       <UniqueIdentifier>{fcd0f500-62d1-4d44-b54c-e1cbb28b4313}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -231,14 +228,11 @@
     <ClCompile Include="src\Game\Objects\Units\Tank\Translator.cpp">
       <Filter>Game\Objects\Units\Tank</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Ammunition\Missile\Missile.cpp">
-      <Filter>Game\Objects\Ammunition</Filter>
+    <ClCompile Include="src\Game\Objects\Weapon\RocketLauncher\RocketLauncher.cpp">
+      <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Ammunition\Missile\MissileMovinator.cpp">
-      <Filter>Game\Objects\Ammunition</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Weapon\MissileGun\MissileGun.cpp">
-      <Filter>Game\Objects\Weapon\MissileGun</Filter>
+    <ClCompile Include="src\Game\Objects\Weapon\RocketLauncher\Rocket.cpp">
+      <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -413,17 +407,14 @@
     <ClInclude Include="src\Game\Objects\Units\Tank\Translator.h">
       <Filter>Game\Objects\Units\Tank</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Ammunition\Missile\Missile.h">
-      <Filter>Game\Objects\Ammunition</Filter>
+    <ClInclude Include="src\Game\Objects\Weapon\RocketLauncher\RocketLauncher.h">
+      <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Ammunition\Missile\MissileMovinator.h">
-      <Filter>Game\Objects\Ammunition</Filter>
+    <ClInclude Include="src\Game\Objects\Weapon\AmmoEvents.h">
+      <Filter>Game\Objects\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Weapon\MissileGun\MissileGun.h">
-      <Filter>Game\Objects\Weapon\MissileGun</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Ammunition\AmmunitionEvents.h">
-      <Filter>Game\Objects\Ammunition</Filter>
+    <ClInclude Include="src\Game\Objects\Weapon\RocketLauncher\Rocket.h">
+      <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
