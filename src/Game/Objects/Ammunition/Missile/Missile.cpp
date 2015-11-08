@@ -4,6 +4,7 @@
 #include "Missile.h"
 #include "Core/Math.h"
 #include "Game/Objects/Units/Tank/Tank.h"
+#include "Game/Objects/Ammunition/AmmunitionEvents.h"
 
 
 Missile::Missile(Context *context)
@@ -60,9 +61,7 @@ void Missile::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *t
 
     this->target = target;
     this->position = position;
-    speed.x_ = speedShooter.x_;
-    speed.y_ = 1.0f;
-    speed.z_ = speedShooter.z_;
+    speed = Vector3(0.0f, 1.0f, 0.0f);
     absSpeed = speedShooter.Length() * 1.5f;
 
     rotate = Quaternion(Vector3::UP, Vector3::UP);
@@ -175,8 +174,17 @@ void Missile::UpdateEscortTarget(float dT)
 
     node_->SetRotation(rotate);
 
-    if(time > rangeTime || distance > rangeDistance || (position - target->GetPosition()).Length() < 0.3f)
+    if(time > rangeTime || distance > rangeDistance)
     {
+        gScene->NodeRemoved(node_);
+    }
+
+    if((position - target->GetPosition()).Length() < 0.3f)
+    {
+        VariantMap eventData = GetEventDataMap();
+        eventData[AmmunitionEvent::P_TYPE] = Hit_Missile;
+        eventData[AmmunitionEvent::P_OBJECT] = target;
+        SendEvent(E_HIT, eventData);
         gScene->NodeRemoved(node_);
     }
 }
@@ -203,6 +211,25 @@ void Missile::CreateSmoke()
     }
 
     billboardObject->Commit();
+
+    Node *forEmitter = node_->CreateChild("Emitter");
+    Node *forForEmitter = forEmitter->CreateChild("Emitter");
+
+    ParticleEmitter *emitter = forForEmitter->CreateComponent<ParticleEmitter>();
+
+    XMLFile xmlParticle = XMLFile(gContext);
+    SharedPtr<File> file(gCache->GetFile("Particle/SnowExplosion.xml"));
+    if(file)
+    {
+        bool res = xmlParticle.Load(*file);
+        SharedPtr<ParticleEffect> pe(new ParticleEffect(gContext));
+        XMLElement root = xmlParticle.GetRoot("particleemitter");
+        res = pe->Load(root);
+
+        emitter->SetEffect(pe);
+        emitter->SetEmitting(true);
+        emitter->Commit();
+    }
 }
 
 void Missile::AnimateSmoke(float timeStep)

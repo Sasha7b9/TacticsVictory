@@ -2,7 +2,7 @@
     <material name="Materials/Particle.xml" />
     <updateinvisible enable="true" />
     <numparticles value="10" />
-    <activetime value="0.1" />
+    <activetime value="0.5" />
     <inactivetime value="0" />
     <emissionrate value="50" />
     <sorted enable="true" />

@@ -403,6 +403,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Level.h" />
     <ClInclude Include="src\Game\Logic\Movinator.h" />
     <ClInclude Include="src\Game\Logic\Rotator.h" />
+    <ClInclude Include="src\Game\Objects\Ammunition\AmmunitionEvents.h" />
     <ClInclude Include="src\Game\Objects\Ammunition\Missile\Missile.h" />
     <ClInclude Include="src\Game\Objects\Ammunition\Missile\MissileMovinator.h" />
     <ClInclude Include="src\Game\Objects\GameObject.h" />

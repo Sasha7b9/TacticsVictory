@@ -422,5 +422,8 @@
     <ClInclude Include="src\Game\Objects\Weapon\MissileGun\MissileGun.h">
       <Filter>Game\Objects\Weapon\MissileGun</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Objects\Ammunition\AmmunitionEvents.h">
+      <Filter>Game\Objects\Ammunition</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

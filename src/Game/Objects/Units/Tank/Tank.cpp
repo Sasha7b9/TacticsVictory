@@ -6,6 +6,7 @@
 #include "Game/Objects/Terrain.h"
 #include "GlobalFunctions.h"
 #include "Game/Objects/Ammunition/Missile/Missile.h"
+#include "GAme/Objects/Ammunition/AmmunitionEvents.h"
 
 
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
@@ -20,6 +21,7 @@ Tank::Tank(Context *context) : GameObject(context)
     }
 
     pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
+    SubscribeToEvent(E_HIT, HANDLER(Tank, HandleAmmoHit));
 }
 
 void Tank::RegisterObject(Context* context)
@@ -236,19 +238,37 @@ void Tank::HandleCollision(StringHash, VariantMap& eventData)
     }
 }
 
+void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
+{
+    Tank *tank = (Tank*)eventData[AmmunitionEvent::P_OBJECT].GetPtr();
+
+    if(tank != this)
+    {
+        return;
+    }
+
+    PODVector<Node*> emitterNodes;
+    node_->GetChildrenWithComponent<ParticleEmitter>(emitterNodes);
+
+    emitterNodes[0]->GetComponent<ParticleEmitter>()->SetEmitting(true);
+}
+
 void Tank::CreateParticleEmitter()
 {
-    Node *emitterNode = node_->CreateChild("Emitter");
-    emitterNode->SetPosition(Vector3(1.0f, 1.0f, 1.0f));
+    Node *forEmitter = node_->CreateChild("Emitter");
+    forEmitter->SetWorldScale((Vector3::ONE / node_->GetScale() / 5.0f));
 
-    ParticleEmitter *emitter = emitterNode->CreateComponent<ParticleEmitter>();
-    emitter->SetEffect(gCache->GetResource<ParticleEffect>("Particle/SnowExplosion.xml"));
-    //emitter->SetEmitting(true);
-    //emitter->SetNumParticles(1000);
-    //emitter->ApplyEffect();
-    emitter->Commit();
+    ParticleEmitter *emitter = forEmitter->CreateComponent<ParticleEmitter>();
 
-    ParticleEffect *effect = emitter->GetEffect();
-
-    bool res = emitter->IsEmitting();
+    XMLFile xmlParticle = XMLFile(gContext);
+    SharedPtr<File> file(gCache->GetFile("Particle/SnowExplosion.xml"));
+    if(file)
+    {
+        bool res = xmlParticle.Load(*file);
+        SharedPtr<ParticleEffect> pe(new ParticleEffect(gContext));
+        XMLElement root = xmlParticle.GetRoot("particleemitter");
+        res = pe->Load(root);
+        emitter->SetEffect(pe);
+        emitter->SetEmitting(false);
+    }
 }

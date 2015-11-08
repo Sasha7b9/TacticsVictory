@@ -62,7 +62,7 @@ void Scene::Create()
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
     gTerrain = new Terrain(level);
 
-    for (int i = 0; i < 50; i++)
+    for (int i = 0; i < 200; i++)
     {
         uint row = 0;
         uint col = 0;
