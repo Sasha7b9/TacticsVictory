@@ -91,6 +91,8 @@ void TacticsVictory::CreateComponents()
 
     gLevel = new Level();
 
+    gAudio = GetSubsystem<Audio>();
+
     Scene::RegisterObject();
 }
 

@@ -18,10 +18,14 @@ Camera::Camera()
 
     light = cameraNode->CreateComponent<Light>();
     light->SetLightType(Urho3D::LIGHT_POINT);
-    light->SetRange(100.0f);
-    light->SetEnabled(false);
+    light->SetRange(25.0f);
+    light->SetEnabled(true);
 
     SetupViewport();
+
+    Node *listenerNode = cameraNode->CreateChild("Listener");
+    SoundListener *listener = listenerNode->CreateComponent<SoundListener>();
+    gAudio->SetListener(listener);
 }
 
 Vector3 Camera::GetPosition()

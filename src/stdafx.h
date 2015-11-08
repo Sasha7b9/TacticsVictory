@@ -13,6 +13,12 @@
 #pragma warning(disable:4266)
 
 
+#include <Urho3D/Audio/Audio.h>
+#include <Urho3D/Audio/Sound.h>
+#include <Urho3D/Audio/SoundListener.h>
+#include <Urho3D/Audio/SoundSource.h>
+#include <Urho3D/Audio/SoundSource3D.h>
+
 #include <Urho3D/Core/Mutex.h>
 #include <Urho3D/Core/Thread.h>
 
@@ -93,6 +99,8 @@
 #include <ctime>
 
 
+using Urho3D::Audio;
+
 using Urho3D::BiasParameters;
 using Urho3D::Billboard;
 using Urho3D::BillboardSet;
@@ -169,6 +177,10 @@ using Urho3D::ScrollBar;
 using Urho3D::SharedPtr;
 using Urho3D::Slider;
 using Urho3D::Sin;
+using Urho3D::Sound;
+using Urho3D::SoundListener;
+using Urho3D::SoundSource;
+using Urho3D::SoundSource3D;
 using Urho3D::StaticModel;
 using Urho3D::String;
 using Urho3D::StringHash;

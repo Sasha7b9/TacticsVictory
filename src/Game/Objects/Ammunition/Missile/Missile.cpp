@@ -5,6 +5,7 @@
 #include "Core/Math.h"
 #include "Game/Objects/Units/Tank/Tank.h"
 #include "Game/Objects/Ammunition/AmmunitionEvents.h"
+#include "Core/Camera.h"
 
 
 Missile::Missile(Context *context)
@@ -65,6 +66,8 @@ void Missile::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *t
     absSpeed = speedShooter.Length() * 1.5f;
 
     rotate = Quaternion(Vector3::UP, Vector3::UP);
+
+    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(Missile, HandlePostRenderUpdate));
 }
 
 SharedPtr<Missile> Missile::Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
@@ -181,10 +184,34 @@ void Missile::UpdateEscortTarget(float dT)
 
     if((position - target->GetPosition()).Length() < 0.3f)
     {
+        
+        Sound *sound = gCache->GetResource<Sound>("Sounds/ExplosionMissile.wav");
+
+        Node *nodeSource = node_->CreateChild("Source");
+        SoundSource3D *soundSource = nodeSource->CreateComponent<SoundSource3D>();
+        soundSource->SetDistanceAttenuation(1.0f, 150.0f, 1.0f);
+        soundSource->SetSoundType(Urho3D::SOUND_EFFECT);
+        soundSource->Play(sound);
+        soundSource->SetAutoRemove(true);
+
+
+        /*
+        Vector3 posSource = nodeSource->GetWorldPosition();
+        Vector3 posListener = gCamera->GetNode()->GetChild("Listener")->GetWorldPosition();
+        Vector3 posCamera = gCamera->GetNode()->GetWorldPosition();
+
+        float distanceListener = (posSource - posListener).Length();
+        float distanceCamera = (posSource - posCamera).Length();
+
+        LOGINFOF("posSource %s, posListener %s, posCamera %s, dist listener %f, dist camera %f", posSource.ToString().CString(), posListener.ToString().CString(), posCamera.ToString().CString(), distanceListener, distanceCamera);
+        */
+
         VariantMap eventData = GetEventDataMap();
         eventData[AmmunitionEvent::P_TYPE] = Hit_Missile;
         eventData[AmmunitionEvent::P_OBJECT] = target;
         SendEvent(E_HIT, eventData);
+        
+
         gScene->NodeRemoved(node_);
     }
 }
@@ -250,5 +277,16 @@ void Missile::AnimateSmoke(float timeStep)
             bb->rotation_ += BILLBOARD_ROTATION_SPEED * timeStep;
         }
         billboardObject->Commit();
+    }
+}
+
+void Missile::HandlePostRenderUpdate(StringHash, VariantMap&)
+{
+    return;
+
+    SoundSource3D *soundSource = node_->GetComponent<SoundSource3D>();
+    if(soundSource)
+    {
+        soundSource->DrawDebugGeometry(gDebugRenderer, true);
     }
 }

@@ -1,5 +1,7 @@
 #include <stdafx.h>
 
+
+Audio           *gAudio = nullptr;
 Localization    *gLocalization = nullptr;
 UI              *gUI = nullptr;
 UIElement       *gUIRoot = nullptr;

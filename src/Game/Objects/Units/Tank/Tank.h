@@ -79,11 +79,12 @@ private:
 
     float radiusDetect = 20.0f;
 
-    float timeRechargeWeapon = 1.0f;  // In sec
+    float timeRechargeWeapon = 10.0f;  // In sec
     float timeElapsedAfterShoot = 11.0f;
 
     void HandleCollision(StringHash, VariantMap&);
     void HandleAmmoHit(StringHash, VariantMap&);
 
     void CreateParticleEmitter();
+    void ConfigurePhysics();
 };

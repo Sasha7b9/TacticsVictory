@@ -4,6 +4,7 @@
 class lWindow;
 
 
+extern Audio            *gAudio;
 extern Localization     *gLocalization;
 extern UI               *gUI;
 extern UIElement        *gUIRoot;

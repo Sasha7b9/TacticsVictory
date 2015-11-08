@@ -35,27 +35,7 @@ void Tank::Init(Type type_)
     type = type_;
     LoadFromFile();
     Normalize();
-
-    // WARN
-    // Wrong control. It is necessary to create the trigger and a body which will influence it
-    // http://www.gamedev.ru/community/urho3d/forum/?id=204570&page=4
-    RigidBody *body = node_->GetComponent<RigidBody>();
-    if(body)
-    {
-        node_->RemoveComponent(body);
-        node_->RemoveComponent(node_->GetComponent<CollisionShape>());
-    }
-    else
-    {
-        SubscribeToEvent(node_, Urho3D::E_NODECOLLISIONSTART, HANDLER(Tank, HandleCollision));
-    }
-
-    body = node_->CreateComponent<RigidBody>();
-    body->SetMass(1.0f);
-    body->SetTrigger(true);
-    CollisionShape *shape = node_->CreateComponent<CollisionShape>();
-    shape->SetSphere(radiusDetect / node_->GetScale().x_);
-
+    ConfigurePhysics();
     CreateParticleEmitter();
 }
 
@@ -271,4 +251,27 @@ void Tank::CreateParticleEmitter()
         emitter->SetEffect(pe);
         emitter->SetEmitting(false);
     }
+}
+
+void Tank::ConfigurePhysics()
+{
+    // WARN
+    // Wrong control. It is necessary to create the trigger and a body which will influence it
+    // http://www.gamedev.ru/community/urho3d/forum/?id=204570&page=4
+    RigidBody *body = node_->GetComponent<RigidBody>();
+    if(body)
+    {
+        node_->RemoveComponent(body);
+        node_->RemoveComponent(node_->GetComponent<CollisionShape>());
+    }
+    else
+    {
+        SubscribeToEvent(node_, Urho3D::E_NODECOLLISION, HANDLER(Tank, HandleCollision));
+    }
+
+    body = node_->CreateComponent<RigidBody>();
+    body->SetMass(1.0f);
+    body->SetTrigger(true);
+    CollisionShape *shape = node_->CreateComponent<CollisionShape>();
+    shape->SetSphere(radiusDetect / node_->GetScale().x_);
 }
