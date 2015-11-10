@@ -14,7 +14,7 @@ typedef unsigned char uchar;
 #define SAFE_DELETE(x) if(x) delete x; x = nullptr;
 #define SAFE_DELETE_ARRAY(x) if(x) delete[]x; x = nullptr;
 
-#define NODE_TERRAIN    "Terrain"
+#define NODE_TERRAIN    "lTerrain"
 #define NODE_TANK       "Tank"
 #define NODE_TILE_PATH  "TilePath"
 #define NODE_TRIGGER    "Trigger"

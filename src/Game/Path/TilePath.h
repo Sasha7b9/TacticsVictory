@@ -3,7 +3,7 @@
 
 class TilePath : public Object
 {
-    OBJECT(TilePath);
+    URHO3D_OBJECT(TilePath, Object);
 public:
     TilePath();
     ~TilePath();

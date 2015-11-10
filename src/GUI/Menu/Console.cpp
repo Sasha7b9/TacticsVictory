@@ -5,7 +5,7 @@
 #include "GUI/Menu/ConsoleParser.h"
 
 
-Console::Console(Context *context) :
+lConsole::lConsole(Context *context) :
     lWindow(context)
 {
     SetVisible(false);
@@ -34,10 +34,10 @@ Console::Console(Context *context) :
     text->SetPosition(0, 0);
     AddChild(text);
 
-    SubscribeToEvent(lineEdit, Urho3D::E_TEXTFINISHED, HANDLER(Console, HandleFinishedText));
+    SubscribeToEvent(lineEdit, Urho3D::E_TEXTFINISHED, URHO3D_HANDLER(lConsole, HandleFinishedText));
 }
 
-void Console::Toggle()
+void lConsole::Toggle()
 {
    SetVisible(!IsVisible());
    if(IsVisible())
@@ -46,7 +46,7 @@ void Console::Toggle()
    }
 }
 
-void Console::HandleFinishedText(StringHash, VariantMap&)
+void lConsole::HandleFinishedText(StringHash, VariantMap&)
 {
     String command = lineEdit->GetText();
     if(command.Empty())

@@ -24,16 +24,17 @@ extern Font             *gFont;
 extern Time             *gTime;
 extern FileSelector     *gFileSelector;
 extern Urho3D::Log      *gLog;
+extern Profiler         *gProfiler;
 
 extern Camera           *gCamera;
-extern Cursor           *gCursor;
+extern lCursor           *gCursor;
 extern Editor           *gEditor;
 extern Settings         *gSet;
 extern Level            *gLevel;
-extern Terrain          *gTerrain;
+extern lTerrain          *gTerrain;
 
 extern GUI                  *gGUI;
-extern Console              *gConsole;
+extern lConsole              *gConsole;
 extern WindowVariables      *gWindowVars;
 extern MenuMain             *gMenuMain;
 extern GuiGame              *gGuiGame;
@@ -43,3 +44,4 @@ extern WindowConfirmExit    *gWindowConfirmExit;
 extern Hint                 *gHint;
 extern int                  *gCounterHint;
 extern Vector<lWindow*>     gOpenedWindow;
+extern PODVector<Tank*>     gTanks;

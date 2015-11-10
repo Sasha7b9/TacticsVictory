@@ -8,7 +8,7 @@
 
 class Tank : public GameObject
 {
-    OBJECT(Tank);
+    URHO3D_OBJECT(Tank, GameObject);
 
     friend class Translator;
 

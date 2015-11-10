@@ -46,15 +46,15 @@ ButtonMain::ButtonMain(UIElement *uielement, char *text, int width /* = -1 */, i
         SetFixedSize(width, height);
     }
 
-    SubscribeToEvent(this, Urho3D::E_HOVERBEGIN, HANDLER(ButtonMain, HandleHoverBegin));
-    SubscribeToEvent(this, Urho3D::E_HOVEREND, HANDLER(ButtonMain, HandleHoverEnd));
+    SubscribeToEvent(this, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(ButtonMain, HandleHoverBegin));
+    SubscribeToEvent(this, Urho3D::E_HOVEREND, URHO3D_HANDLER(ButtonMain, HandleHoverEnd));
 }
 
 void ButtonMain::RegisterObject(Context *context)
 {
     context->RegisterFactory<ButtonMain>("UI");
 
-    COPY_BASE_ATTRIBUTES(Urho3D::Button);
+    URHO3D_COPY_BASE_ATTRIBUTES(Urho3D::Button);
 }
 
 void ButtonMain::SetText(char *text)

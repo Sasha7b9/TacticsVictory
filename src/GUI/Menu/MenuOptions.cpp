@@ -22,7 +22,7 @@ MenuOptions::MenuOptions(Context *context) :
 
 #define CREATE_SWTAB(name, text, min, max, step, startIndex)                                  \
     name = new SliderWithTextAndButtons(this, text, min, max, step);                         \
-    SubscribeToEvent(name, E_SLIDERINTCHANGED, HANDLER(MenuOptions, HandleOnSlider));  \
+    SubscribeToEvent(name, E_SLIDERINTCHANGED, URHO3D_HANDLER(MenuOptions, HandleOnSlider));  \
     name->SetValue(startIndex);
 
     CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, 1, gSet->GetInt(TV_BRIGHTNESS));
@@ -36,7 +36,7 @@ MenuOptions::MenuOptions(Context *context) :
 
 #define CREATE_DDLWTAB(name, text, num, itms, startIndex)   \
     name = DropDownListWithTextAndButton::Create(this, text, width0, width1, num, itms);  \
-    SubscribeToEvent(name, Urho3D::E_ITEMSELECTED, HANDLER(MenuOptions, HandleItemSelected));     \
+    SubscribeToEvent(name, Urho3D::E_ITEMSELECTED, URHO3D_HANDLER(MenuOptions, HandleItemSelected));     \
     name->SetSelection(startIndex);
 
     char *items1[] = {"Low", "Medium", "High"};
@@ -68,7 +68,7 @@ MenuOptions::MenuOptions(Context *context) :
     layout->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_TOP);
 
     buttonClose = new ButtonMain(0, "Close", 100);
-    SubscribeToEvent(buttonClose, Urho3D::E_RELEASED, HANDLER(MenuOptions, HandleButtonRelease));
+    SubscribeToEvent(buttonClose, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuOptions, HandleButtonRelease));
     layout->AddChild(buttonClose);
     AddChild(layout);
     layout->SetMinHeight(buttonClose->GetHeight());
@@ -88,7 +88,7 @@ void MenuOptions::RegisterObject(Context *context)
 {
     context->RegisterFactory<MenuOptions>("UI");
 
-    COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
 }
 
 void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)

@@ -4,12 +4,12 @@
 #include "GUI/Elements/Window.h"
 
 
-class Console : public lWindow
+class lConsole : public lWindow
 {
-    OBJECT(Console);
+    URHO3D_OBJECT(lConsole, lWindow);
 
 public:
-    Console(Context *context);
+    lConsole(Context *context);
 
     void Toggle();
     void HandleFinishedText(StringHash eventType, VariantMap& eventData);

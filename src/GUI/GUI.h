@@ -9,7 +9,7 @@ class lWindow;
 
 class GUI : public Object
 {
-    OBJECT(GUI);
+    URHO3D_OBJECT(GUI, Object);
 
 public:
     GUI();

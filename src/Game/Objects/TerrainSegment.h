@@ -3,7 +3,7 @@
 
 class TerrainSegment : public Object
 {
-    OBJECT(TerrainSegment)
+    URHO3D_OBJECT(TerrainSegment, Object);
 
 public:
     // NOTE row == 0 and col == 0 arrent added to terrain. From them information for creation of the left and top sides undertakes

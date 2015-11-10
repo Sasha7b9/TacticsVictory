@@ -7,7 +7,7 @@
 #include "Game/Objects/TerrainSegment.h"
 
 
-Terrain::Terrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
+lTerrain::lTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
 {
     uint mapSizeX = map[0].Size();
     uint mapSizeZ = map.Size();
@@ -40,44 +40,44 @@ Terrain::Terrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)
     }
 }
 
-Vector3 Terrain::CalculateShift(uint xSegment, uint zSegment)
+Vector3 lTerrain::CalculateShift(uint xSegment, uint zSegment)
 {
     return Vector3((float)(xSegment * SIZE_SEGMENT) - 1.0f, 0.0f, -(float)(zSegment * SIZE_SEGMENT) + 1.0f);
 }
 
-Terrain::~Terrain()
+lTerrain::~lTerrain()
 {
     Clear();
 }
 
-uint Terrain::NumRows()
+uint lTerrain::NumRows()
 {
     return map.Size();
 }
 
-uint Terrain::NumCols()
+uint lTerrain::NumCols()
 {
     return map[0].Size();
 }
 
-void Terrain::SetHeight(uint row, uint col, float height)
+void lTerrain::SetHeight(uint row, uint col, float height)
 {
     map[row][col] = height;
 
     heightChanged[row / SIZE_SEGMENT][col / SIZE_SEGMENT] = true;
 }
 
-float Terrain::GetHeight(uint row, uint col)
+float lTerrain::GetHeight(uint row, uint col)
 {
     return map[row][col];
 }
 
-float Terrain::GetHeight(int row, int col)
+float lTerrain::GetHeight(int row, int col)
 {
     return map[(uint)row][(uint)col];
 }
 
-Plane Terrain::GetPlane(uint row, uint col)
+Plane lTerrain::GetPlane(uint row, uint col)
 {
     uint rowSegment = row / SIZE_SEGMENT;
     uint colSegment = col / SIZE_SEGMENT;
@@ -89,7 +89,7 @@ Plane Terrain::GetPlane(uint row, uint col)
     return plane;
 }
 
-void Terrain::Update()
+void lTerrain::Update()
 {
     for (uint x = 0; x < numSegmentsInX; x++)
     {
@@ -108,7 +108,7 @@ void Terrain::Update()
 }
 
 // NOTE Size of the returned array size + 2
-Vector<Vector<float> > Terrain::ExtractSubMap(uint startX, uint startZ, uint size)
+Vector<Vector<float> > lTerrain::ExtractSubMap(uint startX, uint startZ, uint size)
 {
     Vector<Vector<float> > subMap;
     subMap.Resize((uint)size + 2);
@@ -175,7 +175,7 @@ Vector<Vector<float> > Terrain::ExtractSubMap(uint startX, uint startZ, uint siz
     return subMap;
 }
 
-Plane Terrain::GetIntersectionPlane(Ray &ray)
+Plane lTerrain::GetIntersectionPlane(Ray &ray)
 {
     Plane plane = Plane::ZERO;
     Vector<float> distances;
@@ -214,7 +214,7 @@ Plane Terrain::GetIntersectionPlane(Ray &ray)
     return plane;
 }
 
-Line Terrain::GetIntersectionEdge(Ray &ray)
+Line lTerrain::GetIntersectionEdge(Ray &ray)
 {
     Plane plane = GetIntersectionPlane(ray);
 
@@ -226,7 +226,7 @@ Line Terrain::GetIntersectionEdge(Ray &ray)
     return plane.NearEdge(ray);
 }
 
-void Terrain::Clear()
+void lTerrain::Clear()
 {
     map.Resize(0);
 
@@ -242,12 +242,12 @@ void Terrain::Clear()
 }
 
 
-bool Terrain::Empty()
+bool lTerrain::Empty()
 {
     return segments.Empty();
 }
 
-void Terrain::SetVisible(bool visible)
+void lTerrain::SetVisible(bool visible)
 {
     for (auto row : segments)
     {

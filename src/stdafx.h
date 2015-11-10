@@ -20,6 +20,7 @@
 #include <Urho3D/Audio/SoundSource3D.h>
 
 #include <Urho3D/Core/Mutex.h>
+#include <Urho3D/Core/Profiler.h>
 #include <Urho3D/Core/Thread.h>
 
 #include <Urho3D/Engine/Application.h>
@@ -68,6 +69,9 @@
 #include <Urho3D/UI/CheckBox.h>
 #include <Urho3D/UI/UIEvents.h>
 
+#include <Urho3D/Urho2D/StaticSprite2D.h>
+#include <Urho3D/Urho2D/Sprite2D.h>
+
 #include <Urho3D/IO/File.h>
 #include <Urho3D/IO/FileSystem.h>
 #include <Urho3D/IO/Log.h>
@@ -99,19 +103,23 @@
 #include <ctime>
 
 
+using Urho3D::Application;
 using Urho3D::Audio;
 
 using Urho3D::BiasParameters;
 using Urho3D::Billboard;
 using Urho3D::BillboardSet;
 using Urho3D::BoundingBox;
+using Urho3D::Button;
 
 using Urho3D::CascadeParameters;
+using Urho3D::CheckBox;
 using Urho3D::CollisionShape;
 using Urho3D::Color;
 using Urho3D::Component;
 using Urho3D::Context;
 using Urho3D::Cos;
+using Urho3D::Cursor;
 using Urho3D::CustomGeometry;
 
 using Urho3D::DecalSet;
@@ -135,6 +143,7 @@ using Urho3D::JSONValueType;
 using Urho3D::JSONNumberType;
 
 using Urho3D::IndexBuffer;
+using Urho3D::Image;
 using Urho3D::Input;
 using Urho3D::IntRect;
 using Urho3D::IntVector2;
@@ -161,6 +170,7 @@ using Urho3D::ParticleEffect;
 using Urho3D::ParticleEmitter;
 using Urho3D::PhysicsWorld;
 using Urho3D::PODVector;
+using Urho3D::Profiler;
 
 using Urho3D::Quaternion;
 
@@ -181,11 +191,14 @@ using Urho3D::Sound;
 using Urho3D::SoundListener;
 using Urho3D::SoundSource;
 using Urho3D::SoundSource3D;
+using Urho3D::Sprite2D;
 using Urho3D::StaticModel;
+using Urho3D::StaticSprite2D;
 using Urho3D::String;
 using Urho3D::StringHash;
 
 using Urho3D::Technique;
+using Urho3D::Text;
 using Urho3D::Texture;
 using Urho3D::Texture2D;
 using Urho3D::Time;
@@ -222,8 +235,8 @@ class ButtonSwitch;
 class ButtonToggled;
 
 class Camera;
-class Console;
-class Cursor;
+class lConsole;
+class lCursor;
 class CursorShapes;
 
 class DropDownListWithTextAndButton;
@@ -235,7 +248,7 @@ class GUI;
 
 class Hint;
 
-class Image;
+class lImage;
 
 class Label;
 class Level;
@@ -255,13 +268,13 @@ class Plane;
 class Path;
 class PathIndicator;
 
-class Scene;
+class lScene;
 class Settings;
 class SliderWithTextAndButtons;
 
 class Tab;
 class Tank;
-class Terrain;
+class lTerrain;
 class TerrainSegment;
 class TilePath;
 class Triangle;

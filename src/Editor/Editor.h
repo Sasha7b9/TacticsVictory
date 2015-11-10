@@ -8,7 +8,7 @@
 
 class Editor : public Object
 {
-    OBJECT(Editor);
+    URHO3D_OBJECT(Editor, Object);
 public:
     Editor(Context *context);
     void Run();

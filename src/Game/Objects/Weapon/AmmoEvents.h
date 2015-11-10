@@ -7,8 +7,8 @@ enum
 };
 
 
-EVENT(E_HIT, AmmunitionEvent)
+URHO3D_EVENT(E_HIT, AmmunitionEvent)
 {
-    PARAM(P_TYPE, AmmunitionEventType);
-    PARAM(P_OBJECT, GameObject);
+    URHO3D_PARAM(P_TYPE, AmmunitionEventType);
+    URHO3D_PARAM(P_OBJECT, GameObject);
 }

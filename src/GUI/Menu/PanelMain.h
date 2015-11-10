@@ -6,7 +6,7 @@
 
 class PanelMain : public lWindow
 {
-    OBJECT(PanelMain);
+    URHO3D_OBJECT(PanelMain, lWindow);
 
 public:
     PanelMain(Context *context = gContext);

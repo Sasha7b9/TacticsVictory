@@ -1,16 +1,16 @@
 #pragma once
 
 
-class vSlider : public Slider
+class lSlider : public Slider
 {
-    OBJECT(vSlider);
+    URHO3D_OBJECT(lSlider, Slider);
 public:
-    vSlider(Context *context = gContext);
+    lSlider(Context *context = gContext);
 
     static void RegisterObject(Context *context = gContext);
-    static SharedPtr<vSlider> Create(Window *window, char *text);
+    static SharedPtr<lSlider> Create(Window *window, char *text);
 
 private:
-    vSlider& operator=(const vSlider&)
+    lSlider& operator=(const lSlider&)
     {};
 };

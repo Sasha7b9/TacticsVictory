@@ -26,7 +26,7 @@ void PanelMain::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelMain>("UI");
 
-    COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
 }
 
 void PanelMain::Update(float dT)
@@ -58,7 +58,7 @@ void PanelMain::AddTab(SharedPtr<Tab> tab)
 
     tabs.Push(tab);
 
-    SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(PanelMain, HandleToggedTitle));
+    SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, URHO3D_HANDLER(PanelMain, HandleToggedTitle));
 
     tab->SetPosition(0, y0 + tab->buttonTitle->GetHeight() - 1);
     tab->SetFixedSize(GetWidth(), GetHeight() - y0 - tab->buttonTitle->GetHeight() + 1);
@@ -77,7 +77,7 @@ void PanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
             {
                 UnsubscribeFromEvent(tab->buttonTitle, Urho3D::E_TOGGLED);
                 tab->buttonTitle->SetChecked(false);
-                SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, HANDLER(PanelMain, HandleToggedTitle));
+                SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, URHO3D_HANDLER(PanelMain, HandleToggedTitle));
             }
             else
             {

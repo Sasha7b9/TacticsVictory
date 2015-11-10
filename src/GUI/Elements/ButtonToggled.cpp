@@ -46,7 +46,7 @@ void ButtonToggled::RegisterObject(Context *context)
 {
     context->RegisterFactory<ButtonToggled>("UI");
 
-    COPY_BASE_ATTRIBUTES(Urho3D::CheckBox);
+    URHO3D_COPY_BASE_ATTRIBUTES(CheckBox);
 }
 
 void ButtonToggled::SetText(char *text)

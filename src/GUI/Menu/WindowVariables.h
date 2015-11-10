@@ -6,7 +6,7 @@
 
 class WindowVariables : public lWindow
 {
-    OBJECT(WindowVariables);
+    URHO3D_OBJECT(WindowVariables, lWindow);
 
 public:
     WindowVariables(Context *context);

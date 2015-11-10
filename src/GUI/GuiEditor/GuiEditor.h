@@ -5,7 +5,7 @@ class lWindow;
 
 class GuiEditor : public UIElement
 {
-    OBJECT(GuiEditor)
+    URHO3D_OBJECT(GuiEditor, UIElement);
 
 public:
     GuiEditor(Context* context = gContext);

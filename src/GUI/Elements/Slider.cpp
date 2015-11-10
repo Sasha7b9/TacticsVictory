@@ -4,27 +4,27 @@
 #include "Slider.h"
 
 
-vSlider::vSlider(Context *context) :
+lSlider::lSlider(Context *context) :
     Slider(context)
 {
 
 }
 
-void vSlider::RegisterObject(Context *context)
+void lSlider::RegisterObject(Context *context)
 {
-    context->RegisterFactory<vSlider>("UI");
+    context->RegisterFactory<lSlider>("UI");
 
-    COPY_BASE_ATTRIBUTES(Slider);
+    URHO3D_COPY_BASE_ATTRIBUTES(Slider);
 }
 
-SharedPtr<vSlider> vSlider::Create(Window *window, char *text_)
+SharedPtr<lSlider> lSlider::Create(Window *window, char *text_)
 {
     SharedPtr<Urho3D::Text> text(new Urho3D::Text(gContext));
     text->SetText(gLocalization->Get(text_));
     text->SetStyle("MainMenuButton");
     window->AddChild(text);
 
-    SharedPtr<vSlider> slider(gUIRoot->CreateChild<vSlider>());
+    SharedPtr<lSlider> slider(gUIRoot->CreateChild<lSlider>());
     slider->SetMinHeight(15);
     window->AddChild(slider);
     slider->SetRange(1.0f);

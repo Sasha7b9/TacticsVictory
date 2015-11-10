@@ -12,19 +12,19 @@ enum CellType
 };
 
 
-EVENT(E_GOVERNORCELLCHANGED, GovernorCellChanged)
+URHO3D_EVENT(E_GOVERNORCELLCHANGED, GovernorCellChanged)
 {
-    PARAM(P_ELEMENT, Element);
-    PARAM(P_SYMBOL, Symbol);
+    URHO3D_PARAM(P_ELEMENT, Element);
+    URHO3D_PARAM(P_SYMBOL, Symbol);
 }
 
 
-class vGovernorCell : public lWindow
+class lGovernorCell : public lWindow
 {
-    OBJECT(vGovernorCell);
+    URHO3D_OBJECT(lGovernorCell, lWindow);
 
 public:
-    vGovernorCell(Context *context = gContext);
+    lGovernorCell(Context *context = gContext);
 
     static void RegisterObject(Context *context = gContext);
 
@@ -41,7 +41,7 @@ public:
     void HandleMouseMove(StringHash eventType, VariantMap& eventData);
 
 private:
-    vGovernorCell& operator=(const vGovernorCell&)
+    lGovernorCell& operator=(const lGovernorCell&)
     {};
 
     void ChangeValue(int delta);
@@ -60,7 +60,7 @@ private:
 
 class GovernorFloat : public lWindow
 {
-    OBJECT(GovernorFloat);
+    URHO3D_OBJECT(GovernorFloat, lWindow);
 
 public:
     GovernorFloat(Context *context = gContext);
@@ -85,7 +85,7 @@ private:
     void WriteOrder(int order);
     float GetValue();
 
-    Vector<SharedPtr<vGovernorCell> > cells;
+    Vector<SharedPtr<lGovernorCell> > cells;
     SharedPtr<Urho3D::Button> buttonDown;
     SharedPtr<Label> label;
     int numCells = 11;

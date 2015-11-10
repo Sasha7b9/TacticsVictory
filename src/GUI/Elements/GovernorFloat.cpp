@@ -7,7 +7,7 @@
 #include "GUI/Elements/Label.h"
 
 
-vGovernorCell::vGovernorCell(Context *) :
+lGovernorCell::lGovernorCell(Context *) :
     lWindow()
 {
     SetMovable(false);
@@ -25,26 +25,26 @@ vGovernorCell::vGovernorCell(Context *) :
     label->SetPosition(1, -1);
     AddChild(label);
 
-    SubscribeToEvent(Urho3D::E_UIMOUSECLICK, HANDLER(vGovernorCell, HandleMouseDown));
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONUP, HANDLER(vGovernorCell, HandleMouseUp));
-    SubscribeToEvent(Urho3D::E_MOUSEMOVE, HANDLER(vGovernorCell, HandleMouseMove));
-    SubscribeToEvent(this, Urho3D::E_HOVERBEGIN, HANDLER(vGovernorCell, HandleHoverBegin));
-    SubscribeToEvent(this, Urho3D::E_HOVEREND, HANDLER(vGovernorCell, HandleHoverEnd));
+    SubscribeToEvent(Urho3D::E_UIMOUSECLICK, URHO3D_HANDLER(lGovernorCell, HandleMouseDown));
+    SubscribeToEvent(Urho3D::E_MOUSEBUTTONUP, URHO3D_HANDLER(lGovernorCell, HandleMouseUp));
+    SubscribeToEvent(Urho3D::E_MOUSEMOVE, URHO3D_HANDLER(lGovernorCell, HandleMouseMove));
+    SubscribeToEvent(this, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(lGovernorCell, HandleHoverBegin));
+    SubscribeToEvent(this, Urho3D::E_HOVEREND, URHO3D_HANDLER(lGovernorCell, HandleHoverEnd));
 }
 
-void vGovernorCell::SetSelected()
+void lGovernorCell::SetSelected()
 {
     selected = true;
     SetSymbol(symbol);
 }
 
-void vGovernorCell::SetNormal()
+void lGovernorCell::SetNormal()
 {
     selected = false;
     SetSymbol(symbol);
 }
 
-void vGovernorCell::SetSymbol(char symbol_)
+void lGovernorCell::SetSymbol(char symbol_)
 {
     symbol = symbol_;
     label->SetText(String(symbol));
@@ -52,7 +52,7 @@ void vGovernorCell::SetSymbol(char symbol_)
     label->SetColor(selected ? Color::YELLOW : Color::WHITE);
 }
 
-void vGovernorCell::SetSymbolWithEvent(char symbol_)
+void lGovernorCell::SetSymbolWithEvent(char symbol_)
 {
     symbol = symbol_;
     label->SetText(String(symbol));
@@ -65,12 +65,12 @@ void vGovernorCell::SetSymbolWithEvent(char symbol_)
     SendEvent(E_GOVERNORCELLCHANGED, eventData);
 }
 
-char vGovernorCell::GetSymbol()
+char lGovernorCell::GetSymbol()
 {
     return symbol;
 }
 
-void vGovernorCell::HandleMouseDown(StringHash, VariantMap&)
+void lGovernorCell::HandleMouseDown(StringHash, VariantMap&)
 {
     if(type == CellType_Static)
     {
@@ -86,7 +86,7 @@ void vGovernorCell::HandleMouseDown(StringHash, VariantMap&)
     }
 }
 
-void vGovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
+void lGovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
 {
     if(type == CellType_Static)
     {
@@ -109,7 +109,7 @@ void vGovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
     }
 }
 
-void vGovernorCell::ChangeValue(int delta)
+void lGovernorCell::ChangeValue(int delta)
 {
     if(type == CellType_Sign)
     {
@@ -142,7 +142,7 @@ void vGovernorCell::ChangeValue(int delta)
     }
 }
 
-void vGovernorCell::HandleMouseUp(StringHash, VariantMap&)
+void lGovernorCell::HandleMouseUp(StringHash, VariantMap&)
 {
     if(type == CellType_Static)
     {
@@ -153,13 +153,13 @@ void vGovernorCell::HandleMouseUp(StringHash, VariantMap&)
     SetNormal();
 }
 
-void vGovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
+void lGovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
 {
     if(type == CellType_Static)
     {
         return;
     }
-    vGovernorCell *cell = (vGovernorCell*)eventData[Urho3D::HoverBegin::P_ELEMENT].GetPtr();
+    lGovernorCell *cell = (lGovernorCell*)eventData[Urho3D::HoverBegin::P_ELEMENT].GetPtr();
     if(cell == this)
     {
         mouseOver = true;
@@ -167,7 +167,7 @@ void vGovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
     }
 }
 
-void vGovernorCell::HandleHoverEnd(StringHash, VariantMap&)
+void lGovernorCell::HandleHoverEnd(StringHash, VariantMap&)
 {
     if(type == CellType_Static)
     {
@@ -178,11 +178,11 @@ void vGovernorCell::HandleHoverEnd(StringHash, VariantMap&)
     gCursor->SetNormal();
 }
 
-void vGovernorCell::RegisterObject(Context *context)
+void lGovernorCell::RegisterObject(Context *context)
 {
-    context->RegisterFactory<vGovernorCell>("UI");
+    context->RegisterFactory<lGovernorCell>("UI");
 
-    COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
 }
 
 GovernorFloat::GovernorFloat(Context *context) :
@@ -199,7 +199,7 @@ GovernorFloat::GovernorFloat(Context *context) :
 
     for(int i = 0; i < numCells; i++)
     {
-        SharedPtr<vGovernorCell> cell(new vGovernorCell(context));
+        SharedPtr<lGovernorCell> cell(new lGovernorCell(context));
         cell->SetPosition(i * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + widthLabel + (i > 1 ? SET::MENU::GOVERNOR::CELL::WIDTH : 0), 0);
         cell->SetSymbol((char)(0x30 + i));
         AddChild(cell);
@@ -215,10 +215,10 @@ GovernorFloat::GovernorFloat(Context *context) :
             cell->SetType(CellType_Digit);
             cell->SetSymbol('0');
         }
-        SubscribeToEvent(E_GOVERNORCELLCHANGED, HANDLER(GovernorFloat, HandleGovernorCellChanged));
+        SubscribeToEvent(E_GOVERNORCELLCHANGED, URHO3D_HANDLER(GovernorFloat, HandleGovernorCellChanged));
     }
 
-    SharedPtr<vGovernorCell> cell(new vGovernorCell(context));
+    SharedPtr<lGovernorCell> cell(new lGovernorCell(context));
     cell->SetType(CellType_Static);
     cell->SetPosition(2 * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + widthLabel, 0);
     cell->SetSymbol('.');
@@ -231,15 +231,15 @@ GovernorFloat::GovernorFloat(Context *context) :
     AddChild(buttonDown);
     buttonDown->SetPosition((numCells + 1) * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + 4 + widthLabel, 0);
 
-    SubscribeToEvent(buttonDown, Urho3D::E_HOVERBEGIN, HANDLER(GovernorFloat, HandleHoverButtonBegin));
-    SubscribeToEvent(buttonDown, Urho3D::E_HOVEREND, HANDLER(GovernorFloat, HandleHoverButtonEnd));
+    SubscribeToEvent(buttonDown, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonBegin));
+    SubscribeToEvent(buttonDown, Urho3D::E_HOVEREND, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonEnd));
 }
 
 void GovernorFloat::RegisterObject(Context *context)
 {
     context->RegisterFactory<GovernorFloat>("UI");
 
-    COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
 }
 
 void GovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF funcWrite_)

@@ -6,7 +6,7 @@
 
 class Hint : public lWindow
 {
-    OBJECT(Hint);
+    URHO3D_OBJECT(Hint, lWindow);
 
 public:
     Hint(char *text);

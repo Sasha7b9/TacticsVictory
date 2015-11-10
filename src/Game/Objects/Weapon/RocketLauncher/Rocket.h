@@ -6,7 +6,7 @@
 
 class Rocket : public GameObject
 {
-    OBJECT(Rocket);
+    URHO3D_OBJECT(Rocket, GameObject);
 
 public:
     Rocket(Context *context = gContext);
@@ -40,7 +40,7 @@ private:
     Vector3 speed;
     Quaternion rotate;
     float absSpeed = 0.0f;
-    float rotateSpeed = 90.0f;
+    float rotateSpeed = 45.0f;
     bool firstUpdateEscort = true;
 
     void Init(const Vector3 &speedShooter, const Vector3 &position, Tank* target);

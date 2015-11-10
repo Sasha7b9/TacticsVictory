@@ -9,43 +9,47 @@
 #include "Game/Objects/Terrain.h"
 
 
-Cursor::Cursor() : Object(gContext)
+lCursor::lCursor() : Object(gContext)
 {
-    cursor = new Urho3D::Cursor(gContext);
+    cursor = new Cursor(gContext);
 
-    Image image(50, 50);
+    int size = 100;
+
+    lImage image(size, size);
 
     image.Clear({0.0f, 0.0f, 1.0f, 1.0f});
 
-    cursor->DefineShape("Normal", image.GetUImage(), {0, 0, 50, 50}, {0, 0});
+    cursor->DefineShape("Normal", image.GetUImage(), {0, 0, size, size}, {0, 0});
     gUI->SetCursor(cursor);
     cursor->SetPosition(gGraphics->GetWidth() / 2, gGraphics->GetHeight() / 2);
 
     shapes = new CursorShapes();
+
+    nodeSprite = gScene->CreateChild("Cursor sprite");
+    staticSprite = nodeSprite->CreateComponent<StaticSprite2D>();
+    staticSprite->SetColor(Color(Random(1.0f), Random(1.0f), Random(1.0f), 1.0f));
+    staticSprite->SetBlendMode(Urho3D::BLEND_ALPHA);
+    nodeSprite->SetEnabled(true);
 }
 
-void Cursor::Show()
+void lCursor::Show()
 {
     hidden = false;
 }
 
-void Cursor::Hide()
+void lCursor::Hide()
 {
     hidden = true;
 }
 
-SharedPtr<Urho3D::Cursor> Cursor::GetCursor()
+SharedPtr<Cursor> lCursor::GetCursor()
 {
     return cursor;
 }
 
-void Cursor::Update(float dT)
+void lCursor::Update(float dT)
 {
-    static Timer timerFull;
-
-    Timer timerUpdate;
-    static uint timeUpdate = 0;
-
+    gProfiler->BeginBlock("Update Cursor");
     const float speed = 500.0f;
     static float angle0 = 0.0f;
 
@@ -58,7 +62,7 @@ void Cursor::Update(float dT)
 
     if(hidden)
     {
-        SharedPtr<Image> image(new Image(1, 1));
+        SharedPtr<lImage> image(new lImage(1, 1));
         cursor->DefineShape("Normal", image->GetUImage(), {0, 0, image->GetUImage()->GetWidth(), image->GetUImage()->GetHeight()}, {0, 0});
     }
     else
@@ -138,36 +142,36 @@ void Cursor::Update(float dT)
             prevFrame = numFrame;
             prevType = type;
 
-            SharedPtr<Image> image = shapes->GetShape(type, numFrame);
+            SharedPtr<lImage> image = shapes->GetShape(type, numFrame);
+            gProfiler->BeginBlock("set shape");
+
             cursor->DefineShape("Normal", image->GetUImage(), {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
-        }
-        else
-        {
-            //LOGINFO("Prev type");
+            /*
+            SharedPtr<Texture2D> texture(new Texture2D(gContext));
+            texture->SetSize(image->GetWidth(), image->GetHeight(), D3DFMT_X8R8G8B8);
+            texture->SetData(image->GetUImage());
+            SharedPtr<Sprite2D> sprite(new Sprite2D(gContext));
+            sprite->SetTexture(texture);
+            staticSprite->SetSprite(sprite);
+            nodeSprite->SetPosition({100.0f, 100.0f, -100.0f});
+            */
+            gProfiler->EndBlock();
         }
     }
-
-    timeUpdate += timerUpdate.GetMSec(false);
-
-    if (timerFull.GetMSec(false) >= 1000)
-    {
-        //LOGINFOF("cursor update %d ms for 1s, %d%%", timeUpdate, (int)((float)timeUpdate / timerFull.GetMSec(false) * 100.0f));
-        timerFull.Reset();
-        timeUpdate = 0;
-    }
+    gProfiler->EndBlock();
 }
 
-void Cursor::SetNormal()
+void lCursor::SetNormal()
 {
     selected = false;
 }
 
-void Cursor::SetSelected()
+void lCursor::SetSelected()
 {
     selected = true;
 }
 
-Drawable* Cursor::GetRaycastNode(Vector3 *hitPos_)
+Drawable* lCursor::GetRaycastNode(Vector3 *hitPos_)
 {
     if(gUI->GetElementAt(gUI->GetCursorPosition(), true))
     {

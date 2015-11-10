@@ -6,7 +6,7 @@
 
 class lWindow : public Window
 {
-    OBJECT(lWindow)
+    URHO3D_OBJECT(lWindow, Window);
 
 public:
     lWindow(Context *context = gContext);

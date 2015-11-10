@@ -5,9 +5,9 @@
 #include "Hint.h"
 
 
-class ButtonMain : public Urho3D::Button
+class ButtonMain : public Button
 {
-    OBJECT(ButtonMain);
+    URHO3D_OBJECT(ButtonMain, Button);
 public:
     ButtonMain(Context *context = gContext);
     ButtonMain(UIElement *uielement, char *text, int widht = -1, int height = -1);

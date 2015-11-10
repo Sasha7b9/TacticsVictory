@@ -27,5 +27,5 @@ void Movinator::Update(float time)
     float radius = 25.0f;
     float x = center.x_ + (sin(angle) * radius);
     float z = center.z_ + (cos(angle) * radius);
-    node_->SetPosition({x, y, z});
+    node_->SetPosition({100.0f, 25.0f, -100.0f});
 }

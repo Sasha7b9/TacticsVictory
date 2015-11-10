@@ -12,7 +12,7 @@
 #include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
 
 
-Scene::Scene(Context *context) :
+lScene::lScene(Context *context) :
     Object(context)
 {
     RegisterObjects();
@@ -21,26 +21,26 @@ Scene::Scene(Context *context) :
 
     pathIndicator.Init();
 
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(Scene, HandleMouseDown));
+    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, URHO3D_HANDLER(lScene, HandleMouseDown));
 }
 
-Scene::~Scene()
+lScene::~lScene()
 {
     pathIndicator.Stop();
 }
 
-void Scene::RegisterObjects()
+void lScene::RegisterObjects()
 {
     Tank::RegisterObject();
     Rocket::RegisterObject();
 }
 
-void Scene::RegisterObject(Context *context)
+void lScene::RegisterObject(Context *context)
 {
-    context->RegisterFactory<Scene>();
+    context->RegisterFactory<lScene>();
 }
 
-void Scene::Create()
+void lScene::Create()
 {
     gPhysicsWorld->SetFps(5);
 
@@ -60,7 +60,7 @@ void Scene::Create()
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
-    gTerrain = new Terrain(level);
+    gTerrain = new lTerrain(level);
 
     for (int i = 0; i < 100; i++)
     {
@@ -73,18 +73,18 @@ void Scene::Create()
         } while(gTerrain->GetHeight(row, col) != 0.0f);
         
         SharedPtr<Tank> tank = Tank::Create(Tank::Small);
-        tanks.Push(tank);
+        gTanks.Push(tank);
         tank->SetCoord({row, col});
         tank->SetAutoReloaded(1);
     }
 
     SharedPtr<Tank> tank = Tank::Create(Tank::Small);
     tank->SetCoord(Coord(0, 0));
-    tanks.Push(tank);
+    gTanks.Push(tank);
 
     tank = Tank::Create(Tank::Small);
     tank->SetCoord(Coord(0, 20));
-    tanks.Push(tank);
+    gTanks.Push(tank);
 
     SharedPtr<Node> lightNode;
     lightNode = gScene->CreateChild("LigthNode");
@@ -108,7 +108,7 @@ void Scene::Create()
     gCamera->SetPosition({sizeX / 2.0f, 25.0f, - (float)sizeZ / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
 }
 
-void Scene::Update(float /*timeStep*/)
+void lScene::Update(float /*timeStep*/)
 {
     Vector3 hitPos;
     Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
@@ -131,27 +131,9 @@ void Scene::Update(float /*timeStep*/)
     }
 
     pathIndicator.Update();
-
-    for(auto tank : tanks)
-    {
-        for(auto target : tanks)
-        {
-            if(tank != target)
-            {
-                float distance = (tank->GetPosition() - target->GetPosition()).Length();
-                if(distance < 50.0f)
-                {
-                    if(tank->TargetInPointView(target))
-                    {
-                        break;
-                    }
-                }
-            }
-        }
-    }
 }
 
-void Scene::HandleMouseDown(StringHash, VariantMap& eventData)
+void lScene::HandleMouseDown(StringHash, VariantMap& eventData)
 {
     int buttons = (int)eventData[Urho3D::MouseButtonDown::P_BUTTONS].GetInt();
 
@@ -203,7 +185,7 @@ void Scene::HandleMouseDown(StringHash, VariantMap& eventData)
     }
 }
 
-void Scene::SetSelected(Tank *tank, bool selected)
+void lScene::SetSelected(Tank *tank, bool selected)
 {
     if(selected)
     {
@@ -220,7 +202,7 @@ void Scene::SetSelected(Tank *tank, bool selected)
     tank->SetSelected(selected);
 }
 
-Tank* Scene::GetSelected()
+Tank* lScene::GetSelected()
 {
     const Vector<SharedPtr<Node>> &nodes = gScene->GetChildren();
 

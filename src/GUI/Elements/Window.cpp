@@ -21,7 +21,7 @@ void lWindow::RegisterObject(Context *context)
 {
     context->RegisterFactory<lWindow>("UI");
 
-    COPY_BASE_ATTRIBUTES(Window);
+    URHO3D_COPY_BASE_ATTRIBUTES(Window);
 }
 
 bool lWindow::IsChildOfParent()

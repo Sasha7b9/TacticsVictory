@@ -1,15 +1,15 @@
 #pragma once
 
 
-EVENT(E_MAP_CHANGED, MapChanged)
+URHO3D_EVENT(E_MAP_CHANGED, MapChanged)
 {
 
 }
 
 
-class Level : public Urho3D::Object
+class Level : public Object
 {
-    OBJECT(Level);
+    URHO3D_OBJECT(Level, Object);
 
 public:
     Level(Context *context = gContext);

@@ -5,16 +5,16 @@
 
 
 Label::Label(Context *context) :
-    Urho3D::Text(context)
+    Text(context)
 {
-    SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, HANDLER(Label, HandleChangeLanguage));
+    SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, URHO3D_HANDLER(Label, HandleChangeLanguage));
 }
 
 void Label::RegisterObject(Context *context)
 {
     context->RegisterFactory<Label>("UI");
 
-    COPY_BASE_ATTRIBUTES(Urho3D::Text);
+    URHO3D_COPY_BASE_ATTRIBUTES(Text);
 }
 
 SharedPtr<Label> Label::Create(char *text_, int sizeFont, int width /* = -1 */, int height /* = -1 */, Urho3D::HorizontalAlignment ha, Urho3D::VerticalAlignment va)

@@ -3,7 +3,7 @@
 
 class DropDownListWithTextAndButton : public UIElement
 {
-    OBJECT(DropDownListWithTextAndButton);
+    URHO3D_OBJECT(DropDownListWithTextAndButton, UIElement);
 
 public:
     DropDownListWithTextAndButton(Context *context = gContext);

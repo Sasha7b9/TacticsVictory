@@ -6,7 +6,7 @@
 
 class PanelMap : public lWindow
 {
-    OBJECT(PanelMap);
+    URHO3D_OBJECT(PanelMap, lWindow);
 
 public:
     PanelMap(Context *context = gContext);
@@ -20,7 +20,7 @@ private:
     {};
 
     Vector<Vector<float> > map;
-    SharedPtr<Image> imageMap;
+    SharedPtr<lImage> imageMap;
     int x0 = 0;
     int y0 = 0;
     float scale = 0.0f;

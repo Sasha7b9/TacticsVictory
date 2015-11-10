@@ -3,7 +3,7 @@
 
 class GuiGame : public UIElement
 {
-    OBJECT(GuiGame)
+    URHO3D_OBJECT(GuiGame, UIElement);
 
 public:
     GuiGame(Context* context);

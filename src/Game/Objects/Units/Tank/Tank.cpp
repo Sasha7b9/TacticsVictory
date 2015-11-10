@@ -21,7 +21,7 @@ Tank::Tank(Context *context) : GameObject(context)
     }
 
     pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
-    SubscribeToEvent(E_HIT, HANDLER(Tank, HandleAmmoHit));
+    SubscribeToEvent(E_HIT, URHO3D_HANDLER(Tank, HandleAmmoHit));
 }
 
 void Tank::RegisterObject(Context* context)
@@ -115,6 +115,7 @@ void Tank::SetCoord(const Coord& coord)
 
 void Tank::Update(float dT)
 {
+    gProfiler->BeginBlock("Tank::Update");
     GameObject::Update(dT);
 
     if(timeElapsedAfterShoot != 0.0f)
@@ -167,6 +168,23 @@ void Tank::Update(float dT)
             timeLastReload = time;
         }
     }
+
+    for(auto target : gTanks)
+    {
+        if(target != this)
+        {
+            float distance = (GetPosition() - target->GetPosition()).Length();
+            if(distance < radiusDetect)
+            {
+                if(TargetInPointView(target))
+                {
+                    break;
+                }
+            }
+        }
+    }
+
+    gProfiler->EndBlock();
 }
 
 void Tank::SetSelected(bool selected_)
@@ -286,7 +304,7 @@ void Tank::ConfigurePhysics()
     shape = trigger->CreateComponent<CollisionShape>();
     shape->SetSphere((Vector3::ONE / node_->GetScale()).Length() * radiusDetect / 2);
 
-    SubscribeToEvent(node_, Urho3D::E_NODECOLLISION, HANDLER(Tank, HandleCollision));  
+    SubscribeToEvent(node_, Urho3D::E_NODECOLLISION, URHO3D_HANDLER(Tank, HandleCollision));  
 
     return;
     // WARN
@@ -302,7 +320,7 @@ void Tank::ConfigurePhysics()
     }
     else
     {
-        SubscribeToEvent(node_, Urho3D::E_NODECOLLISION, HANDLER(Tank, HandleCollision));
+        SubscribeToEvent(node_, Urho3D::E_NODECOLLISION, URHO3D_HANDLER(Tank, HandleCollision));
     }
 
     body = node_->CreateComponent<RigidBody>();

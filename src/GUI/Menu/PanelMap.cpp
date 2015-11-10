@@ -23,9 +23,9 @@ PanelMap::PanelMap(Context *context) :
 
     translator = new LineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
 
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(PanelMap, HandleMouseDown));
-    SubscribeToEvent(Urho3D::E_MOUSEMOVE, HANDLER(PanelMap, HandleMouseMove));
-    SubscribeToEvent(E_MAP_CHANGED, HANDLER(PanelMap, HandleMapChanged));
+    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, URHO3D_HANDLER(PanelMap, HandleMouseDown));
+    SubscribeToEvent(Urho3D::E_MOUSEMOVE, URHO3D_HANDLER(PanelMap, HandleMouseMove));
+    SubscribeToEvent(E_MAP_CHANGED, URHO3D_HANDLER(PanelMap, HandleMapChanged));
 }
 
 
@@ -33,7 +33,7 @@ void PanelMap::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelMap>("UI");
 
-    COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
 }
 
 void PanelMap::Update(float dT)
@@ -56,7 +56,7 @@ void PanelMap::Update(float dT)
 
         uint sizeMap = sizeX > sizeY ? sizeX : sizeY;
 
-        imageMap = new Image((int)sizeMap, (int)sizeMap);
+        imageMap = new lImage((int)sizeMap, (int)sizeMap);
 
         imageMap->Clear(Color::BLACK);
 
@@ -109,7 +109,7 @@ void PanelMap::Update(float dT)
         {1.0f, 0.0f}
     };
 
-    SharedPtr<Image> image(new Image(imageMap->GetWidth(), imageMap->GetHeight()));
+    SharedPtr<lImage> image(new lImage(imageMap->GetWidth(), imageMap->GetHeight()));
 
     uchar *data = imageMap->GetUImage()->GetData();
 

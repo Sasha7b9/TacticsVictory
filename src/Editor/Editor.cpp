@@ -20,7 +20,7 @@ Editor::Editor(Context *context) : Object(context)
 
 void Editor::Run()
 {
-    LOGINFO("Begin create editor");
+    URHO3D_LOGINFO("Begin create editor");
     Node* zoneNode = gScene->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
     zone->SetBoundingBox(BoundingBox(-50.0f, 50.0f));
@@ -30,7 +30,7 @@ void Editor::Run()
 
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
 
-    gTerrain = new Terrain(level);
+    gTerrain = new lTerrain(level);
 
     lightNode = gScene->CreateChild("LightNode");
 
@@ -46,9 +46,9 @@ void Editor::Run()
     gCamera->SetPosition({(float)gTerrain->NumCols() / 2, 5.0f, -(float)gTerrain->NumRows() / 2 - 10.0f}, {(float)gTerrain->NumCols() / 2, 0.0f, -(float)gTerrain->NumRows() / 2});
     lightNode->SetPosition({(float)gTerrain->NumCols() / 2, 50.0f, -(float)gTerrain->NumRows() / 2});
 
-    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(Editor, HandlePostRenderUpdate));
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, HANDLER(Editor, HandleMouseDown));
-    SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(Editor, HandleKeyDown));
+    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, URHO3D_HANDLER(Editor, HandlePostRenderUpdate));
+    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, URHO3D_HANDLER(Editor, HandleMouseDown));
+    SubscribeToEvent(Urho3D::E_KEYDOWN, URHO3D_HANDLER(Editor, HandleKeyDown));
     
     /*
     for(uint row = 0; row < 10; row++)
@@ -61,7 +61,7 @@ void Editor::Run()
         }
     }
     */
-    LOGINFO("End create editor");
+    URHO3D_LOGINFO("End create editor");
 
     /*
     Node* modelNode = gScene->CreateChild("Tank");
@@ -107,7 +107,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
         {
             Timer timer;
             currentPlane = gTerrain->GetIntersectionPlane(ray);
-            LOGINFOF("time find plane %d ms", timer.GetMSec(false));
+            URHO3D_LOGINFOF("time find plane %d ms", timer.GetMSec(false));
 
             if (!currentPlane.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
             {

@@ -3,7 +3,7 @@
 
 class Movinator : public LogicComponent
 {
-    OBJECT(Movinator);
+    URHO3D_OBJECT(Movinator, LogicComponent);
     
 public:
     Movinator(Context *context);

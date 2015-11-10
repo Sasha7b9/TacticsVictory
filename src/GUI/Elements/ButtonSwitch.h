@@ -6,7 +6,7 @@
 
 class ButtonSwitch : public ButtonMain
 {
-    OBJECT(ButtonSwitch);
+    URHO3D_OBJECT(ButtonSwitch, ButtonMain);
 
 public:
     ButtonSwitch(Context *context = gContext);

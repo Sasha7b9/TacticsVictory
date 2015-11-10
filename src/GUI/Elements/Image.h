@@ -1,13 +1,13 @@
 #pragma once
 
 
-class Image : public Resource
+class lImage : public Resource
 {
-    OBJECT(Image);
+    URHO3D_OBJECT(lImage, Resource);
 public:
-    Image(int width, int height);
+    lImage(int width, int height);
 
-    SharedPtr<Urho3D::Image> GetUImage();
+    SharedPtr<Image> GetUImage();
 
     void Clear(const Color &color);
     void SetPoint(int x, int y, const Color& color);
@@ -16,7 +16,7 @@ public:
     void FillRectangle(int x, int y, int width, int height, const Color &color);
     void FillRegion(int x, int y, const Color &color);
     void FillRegion(int x, int y, const Color &color, const Color &colorBound);
-    void CopyImage(int x, int y, Image &image);      // Those points which have transparency more than 0.5 are copied
+    void CopyImage(int x, int y, lImage &image);      // Those points which have transparency more than 0.5 are copied
     int GetWidth() const;
     int GetHeight() const;
     void DrawPolyline(const Color &color, int numPoints, int *xy);
@@ -25,9 +25,9 @@ public:
     void SetHotSpot(int x, int y);
 
 private:
-    Image& operator=(const Image&)
+    lImage& operator=(const lImage&)
     {};
-    SharedPtr<Urho3D::Image> image;
+    SharedPtr<Image> image;
 
     void Replace4Points(int x, int y, const Color &color);
     void Replace4PointsBound(int x, int y, const Color &color);

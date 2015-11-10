@@ -6,7 +6,7 @@
 
 class WindowConfirmExit : public lWindow
 {
-    OBJECT(WindowConfirmExit);
+    URHO3D_OBJECT(WindowConfirmExit, lWindow);
 
 public:
     WindowConfirmExit(Context *context);

@@ -6,7 +6,7 @@
 
 class MenuMain : public lWindow
 {
-    OBJECT(MenuMain);
+    URHO3D_OBJECT(MenuMain, lWindow);
 
 public:
     MenuMain(Context *context = gContext);

@@ -29,22 +29,22 @@ GuiGame::GuiGame(Context* context) :
     int x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
     int y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
     buttonMap = panelBottom->AddButton("Map", x, y, width, height);
-    SubscribeToEvent(buttonMap, Urho3D::E_RELEASED, HANDLER(GuiGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMap, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
 
     x = (int)(gSet->GetInt(TV_PANEL_MAP_WIDTH) * 1.5f) - width / 2;
     buttonMainPanel = panelBottom->AddButton("Panel", x, y, width, height);
-    SubscribeToEvent(buttonMainPanel, Urho3D::E_RELEASED, HANDLER(GuiGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMainPanel, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
 
     x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
     buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
-    SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, HANDLER(GuiGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
 }
 
 void GuiGame::RegisterObject(Context* context)
 {
     context->RegisterFactory<GuiGame>("UI");
 
-    COPY_BASE_ATTRIBUTES(UIElement);
+    URHO3D_COPY_BASE_ATTRIBUTES(UIElement);
 }
 
 void GuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)

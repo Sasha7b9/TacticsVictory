@@ -1,13 +1,13 @@
 #pragma once
 
 
-class Terrain : public Object
+class lTerrain : public Object
 {
-    OBJECT(Terrain);
+    URHO3D_OBJECT(lTerrain, Object);
 
 public:
-    Terrain(Vector<Vector<float> > &map);
-    ~Terrain();
+    lTerrain(Vector<Vector<float> > &map);
+    ~lTerrain();
 
     Plane GetIntersectionPlane(Ray &ray);
     Plane GetPlane(uint row, uint col);
@@ -29,7 +29,7 @@ public:
     static const uint SIZE_SEGMENT = 50;
 
 private:
-    Terrain& operator=(const Terrain&)
+    lTerrain& operator=(const lTerrain&)
     {};
 
     Vector<Vector<float>> map;

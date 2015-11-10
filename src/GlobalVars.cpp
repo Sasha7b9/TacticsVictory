@@ -21,15 +21,16 @@ Font            *gFont = nullptr;
 Time            *gTime = nullptr;
 FileSelector    *gFileSelector = nullptr;
 Urho3D::Log     *gLog = nullptr;
+Profiler        *gProfiler = nullptr;
 
 Camera         *gCamera = nullptr;
-Cursor         *gCursor = nullptr;
+lCursor        *gCursor = nullptr;
 GuiGame        *gGuiGame = nullptr;
 GuiEditor      *gGuiEditor = nullptr;
 Editor         *gEditor = nullptr;
 Settings       *gSet = nullptr;
 GUI            *gGUI = nullptr;
-Console        *gConsole = nullptr;
+lConsole       *gConsole = nullptr;
 MenuMain       *gMenuMain = nullptr;
 MenuOptions    *gMenuOptions = nullptr;
 
@@ -38,5 +39,6 @@ WindowVariables    *gWindowVars = nullptr;
 Hint               *gHint = nullptr;
 int                 *gCounterHint = 0;
 Level              *gLevel = nullptr;
-Terrain            *gTerrain = nullptr;
+lTerrain            *gTerrain = nullptr;
 Vector<lWindow*>    gOpenedWindow;
+PODVector<Tank*>    gTanks;

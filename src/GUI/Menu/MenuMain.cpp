@@ -27,11 +27,11 @@ MenuMain::MenuMain(Context *) :
     buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
     buttonExit = new ButtonMain(this, "Exit");
 
-    SubscribeToEvent(buttonOptions, Urho3D::E_RELEASED, HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonEditor, Urho3D::E_RELEASED, HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonNewGame, Urho3D::E_RELEASED, HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, Urho3D::E_RELEASED, HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonLanguage, Urho3D::E_RELEASED, HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonOptions, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonEditor, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonNewGame, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonLanguage, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
 
     text->SetWidth(GetWidth());
 
@@ -45,7 +45,7 @@ void MenuMain::RegisterObject(Context* context)
 {
     context->RegisterFactory<MenuMain>("UI");
 
-    COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
 }
 
 void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)

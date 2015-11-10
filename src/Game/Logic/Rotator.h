@@ -3,7 +3,7 @@
 
 class Rotator : public LogicComponent
 {
-    OBJECT(Rotator);
+    URHO3D_OBJECT(Rotator, LogicComponent);
     
 public:
     Rotator(Context* context);

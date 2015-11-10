@@ -5,14 +5,14 @@
 #include "Core/Math.h"
 
 
-Image::Image(int width, int height) : Resource(gContext)
+lImage::lImage(int width, int height) : Resource(gContext)
 {
-    image = new Urho3D::Image(gContext);
+    image = new Image(gContext);
 
     image->SetSize(width, height, 4);
 }
 
-void Image::SetPoint(int x, int y, const Color& color)
+void lImage::SetPoint(int x, int y, const Color& color)
 {
     if(x < image->GetWidth() && y < image->GetHeight())
     {
@@ -20,7 +20,7 @@ void Image::SetPoint(int x, int y, const Color& color)
     }
 }
 
-void Image::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
+void lImage::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
 {
     if((x1 - x0) == 0 && (y1 - y0) == 0)
     {
@@ -74,7 +74,7 @@ void Image::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
     }
 }
 
-void Image::DrawRectangle(int x, int y, int width, int height, const Color &color)
+void lImage::DrawRectangle(int x, int y, int width, int height, const Color &color)
 {
     DrawLine(x, y, x + width, y, color);
     DrawLine(x + width, y, x + width, y + height, color);
@@ -82,7 +82,7 @@ void Image::DrawRectangle(int x, int y, int width, int height, const Color &colo
     DrawLine(x, y, x, y + height, color);
 }
 
-void Image::FillRectangle(int x0, int y0, int width, int height, const Color &color)
+void lImage::FillRectangle(int x0, int y0, int width, int height, const Color &color)
 {
     for(int x = x0; x < x0 + width; x++)
     {
@@ -90,17 +90,17 @@ void Image::FillRectangle(int x0, int y0, int width, int height, const Color &co
     }
 }
 
-void Image::Clear(const Color &color)
+void lImage::Clear(const Color &color)
 {
     image->Clear(color);
 }
 
-SharedPtr<Urho3D::Image> Image::GetUImage()
+SharedPtr<Image> lImage::GetUImage()
 {
     return image;
 }
 
-void Image::FillRegion(int x, int y, const Color &color)
+void lImage::FillRegion(int x, int y, const Color &color)
 {
     replacedColor = image->GetPixel(x, y);
 
@@ -109,7 +109,7 @@ void Image::FillRegion(int x, int y, const Color &color)
     Replace4Points(x, y, color);
 }
 
-void Image::Replace4Points(int x, int y, const Color &color)
+void lImage::Replace4Points(int x, int y, const Color &color)
 {
     if(y > 0)                       // upper pixel
     {
@@ -145,7 +145,7 @@ void Image::Replace4Points(int x, int y, const Color &color)
     }
 }
 
-void Image::FillRegion(int x, int y, const Color &color, const Color &colorBound)
+void lImage::FillRegion(int x, int y, const Color &color, const Color &colorBound)
 {
     boundingColor = colorBound;
 
@@ -156,7 +156,7 @@ void Image::FillRegion(int x, int y, const Color &color, const Color &colorBound
     }
 }
 
-void Image::CopyImage(int x0, int y0, Image &inImage)
+void lImage::CopyImage(int x0, int y0, lImage &inImage)
 {
     int xMin = x0;
     int xMax = xMin + inImage.GetWidth();
@@ -198,7 +198,7 @@ void Image::CopyImage(int x0, int y0, Image &inImage)
     }
 
 
-void Image::Replace4PointsBound(int x, int y, const Color &color)
+void lImage::Replace4PointsBound(int x, int y, const Color &color)
 {
     if(y > 0)
     {
@@ -218,17 +218,17 @@ void Image::Replace4PointsBound(int x, int y, const Color &color)
     }
 }
 
-int Image::GetWidth() const
+int lImage::GetWidth() const
 {
     return image->GetWidth();
 }
 
-int Image::GetHeight() const
+int lImage::GetHeight() const
 {
     return image->GetHeight();
 }
 
-void Image::DrawPolyline(const Color &color, int numPoints, int *xy)
+void lImage::DrawPolyline(const Color &color, int numPoints, int *xy)
 {
     int numLines = numPoints - 1;
 
@@ -238,7 +238,7 @@ void Image::DrawPolyline(const Color &color, int numPoints, int *xy)
     }
 }
 
-void Image::DrawCircle(float x, float y, float radius, const Color &color, float step)
+void lImage::DrawCircle(float x, float y, float radius, const Color &color, float step)
 {
     for (float angle = 0.0f; angle < 360.0f; angle += step)
     {
@@ -246,12 +246,12 @@ void Image::DrawCircle(float x, float y, float radius, const Color &color, float
     }
 }
 
-IntVector2 Image::GetHotSpot() const
+IntVector2 lImage::GetHotSpot() const
 {
     return hotSpot;
 }
 
-void Image::SetHotSpot(int x, int y)
+void lImage::SetHotSpot(int x, int y)
 {
     hotSpot.x_ = x;
     hotSpot.y_ = y;

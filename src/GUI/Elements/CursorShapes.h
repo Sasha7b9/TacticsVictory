@@ -6,10 +6,10 @@
 
 class CursorShapes : public Object
 {
-    OBJECT(CursorShapes);
+    URHO3D_OBJECT(CursorShapes, Object);
 public:
     CursorShapes();
-    SharedPtr<Image> GetShape(TypeCursor type, int numFrame);
+    SharedPtr<lImage> GetShape(TypeCursor type, int numFrame);
 
 private:
 
@@ -25,7 +25,7 @@ private:
     void CreateDownRight(int numFrame);
     void CreateBusy(int numFrame);
 
-    void FillGradient(Image *image, TypeCursor type, int numFrame);
+    void FillGradient(lImage *image, TypeCursor type, int numFrame);
 
 public:
     struct StructShape
@@ -42,7 +42,7 @@ public:
 private:
     CursorShapes& operator=(const CursorShapes&)
     {};
-    HashMap<StructShape, SharedPtr<Image>> map;
+    HashMap<StructShape, SharedPtr<lImage>> map;
 
     int dimensionTriangleSmall = 50;
     int dimensionTriangleBig = 100;

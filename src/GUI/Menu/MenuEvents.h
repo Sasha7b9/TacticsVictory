@@ -10,7 +10,7 @@ enum
 };
 
 
-EVENT(E_MENU, MenuEvent)
+URHO3D_EVENT(E_MENU, MenuEvent)
 {
-    PARAM(P_TYPE, MenuEventType);
+    URHO3D_PARAM(P_TYPE, MenuEventType);
 }

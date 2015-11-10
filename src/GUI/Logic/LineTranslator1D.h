@@ -3,7 +3,7 @@
 
 class LineTranslator1D : public Object
 {
-    OBJECT(LineTranslator1D);
+    URHO3D_OBJECT(LineTranslator1D, Object);
 
 public:
 

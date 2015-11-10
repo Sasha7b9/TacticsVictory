@@ -14,7 +14,7 @@ Hint::Hint(char *text_) : lWindow(), text(text_)
 
     SetMovable(false);
 
-    SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, HANDLER(Hint, HandleChangeLanguage));
+    SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, URHO3D_HANDLER(Hint, HandleChangeLanguage));
 }
 
 void Hint::HandleChangeLanguage(StringHash, VariantMap&)

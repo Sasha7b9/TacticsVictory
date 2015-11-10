@@ -6,7 +6,7 @@
 
 class SliderWithTextAndButtons : public UIElement
 {
-    OBJECT(SliderWithTextAndButtons);
+    URHO3D_OBJECT(SliderWithTextAndButtons, UIElement);
 
 public:
     SliderWithTextAndButtons(Context *context = gContext);
@@ -25,7 +25,7 @@ public:
 private:
     SliderWithTextAndButtons& operator=(const SliderWithTextAndButtons&) {};
 
-    SharedPtr<lSliderInt> slider;
+    SharedPtr<SliderInt> slider;
     SharedPtr<Urho3D::Text> textValue;
     SharedPtr<Urho3D::Button> buttonLeft;
     SharedPtr<Urho3D::Button> buttonRight;

@@ -32,26 +32,26 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     {
         sizeSlider.x_ = widthRoller;
     }
-    slider = lSliderInt::Create(window, sizeSlider);
-    SubscribeToEvent(slider, E_SLIDERINTCHANGED, HANDLER(SliderWithTextAndButtons, HandleSliderIntChanged));
-    SubscribeToEvent(slider, Urho3D::E_HOVERBEGIN, HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
-    SubscribeToEvent(slider, Urho3D::E_HOVEREND, HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
+    slider = SliderInt::Create(window, sizeSlider);
+    SubscribeToEvent(slider, E_SLIDERINTCHANGED, URHO3D_HANDLER(SliderWithTextAndButtons, HandleSliderIntChanged));
+    SubscribeToEvent(slider, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
+    SubscribeToEvent(slider, Urho3D::E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
 
     buttonLeft = new Urho3D::Button(gContext);
     buttonLeft->SetRepeat(0.25f, 20.0f);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
-    SubscribeToEvent(buttonLeft, Urho3D::E_PRESSED, HANDLER(SliderWithTextAndButtons, HandleButtonDown));
-    SubscribeToEvent(buttonLeft, Urho3D::E_HOVERBEGIN, HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
-    SubscribeToEvent(buttonLeft, Urho3D::E_HOVEREND, HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
+    SubscribeToEvent(buttonLeft, Urho3D::E_PRESSED, URHO3D_HANDLER(SliderWithTextAndButtons, HandleButtonDown));
+    SubscribeToEvent(buttonLeft, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
+    SubscribeToEvent(buttonLeft, Urho3D::E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
 
     buttonRight = new Urho3D::Button(gContext);
     buttonRight->SetRepeat(0.25f, 20.0f);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
-    SubscribeToEvent(buttonRight, Urho3D::E_PRESSED, HANDLER(SliderWithTextAndButtons, HandleButtonDown));
-    SubscribeToEvent(buttonRight, Urho3D::E_HOVERBEGIN, HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
-    SubscribeToEvent(buttonRight, Urho3D::E_HOVEREND, HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
+    SubscribeToEvent(buttonRight, Urho3D::E_PRESSED, URHO3D_HANDLER(SliderWithTextAndButtons, HandleButtonDown));
+    SubscribeToEvent(buttonRight, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
+    SubscribeToEvent(buttonRight, Urho3D::E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
 
     textValue = new Urho3D::Text(gContext);
     textValue->SetFixedWidth(35);
@@ -68,14 +68,14 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
         uielement->AddChild(this);
     }
 
-    SubscribeToEvent(Urho3D::E_UIMOUSECLICK, HANDLER(SliderWithTextAndButtons, HandleMouseClick));
+    SubscribeToEvent(Urho3D::E_UIMOUSECLICK, URHO3D_HANDLER(SliderWithTextAndButtons, HandleMouseClick));
 }
 
 void SliderWithTextAndButtons::RegisterObject(Context* context)
 {
     context->RegisterFactory<SliderWithTextAndButtons>("UI");
 
-    COPY_BASE_ATTRIBUTES(UIElement);
+    URHO3D_COPY_BASE_ATTRIBUTES(UIElement);
 }
 
 void SliderWithTextAndButtons::SetHint(char *text)

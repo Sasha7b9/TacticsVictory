@@ -17,7 +17,7 @@
 
 #pragma warning(push)
 #pragma warning(disable:4100)
-DEFINE_APPLICATION_MAIN(TacticsVictory)
+URHO3D_DEFINE_APPLICATION_MAIN(TacticsVictory)
 #pragma warning(pop)
 
 
@@ -52,7 +52,7 @@ void TacticsVictory::Stop()
     SAFE_DELETE(gLevel);
     SAFE_DELETE(gGUI);
     File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
-    LOGINFO("Now save ui");
+    URHO3D_LOGINFO("Now save ui");
     gUIRoot->SaveXML(file);
     gSet->Save();
     SAFE_DELETE(gSet);
@@ -67,6 +67,7 @@ void TacticsVictory::Stop()
 
 void TacticsVictory::CreateComponents()
 {
+    gProfiler = GetSubsystem<Profiler>();
     gLocalization = GetSubsystem<Localization>();
     gUI = GetSubsystem<UI>();
     gCache = GetSubsystem<ResourceCache>();
@@ -94,7 +95,7 @@ void TacticsVictory::CreateComponents()
 
     gAudio = GetSubsystem<Audio>();
 
-    Scene::RegisterObject();
+    lScene::RegisterObject();
 }
 
 void TacticsVictory::RegistrationFactories()
@@ -149,10 +150,10 @@ void TacticsVictory::InitLocalizationSystem()
 
 void TacticsVictory::SubscribeToEvents()
 {
-    SubscribeToEvent(Urho3D::E_UPDATE, HANDLER(TacticsVictory, HandleUpdate));
-    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, HANDLER(TacticsVictory, HandlePostRenderUpdate));
-    SubscribeToEvent(Urho3D::E_KEYDOWN, HANDLER(TacticsVictory, HandleKeyDown));
-    SubscribeToEvent(E_MENU, HANDLER(TacticsVictory, HandleMenuEvent));
+    SubscribeToEvent(Urho3D::E_UPDATE, URHO3D_HANDLER(TacticsVictory, HandleUpdate));
+    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
+    SubscribeToEvent(Urho3D::E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
+    SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
 }
 
 void TacticsVictory::SetWindowTitleAndIcon()
@@ -176,7 +177,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 
 void TacticsVictory::CreateNewGame()
 {
-    scene = new Scene();
+    scene = new lScene();
     gCamera->SetEnabled(true);
     gGUI->RemoveFromScreen();
     gGuiGame->SetVisible(true);

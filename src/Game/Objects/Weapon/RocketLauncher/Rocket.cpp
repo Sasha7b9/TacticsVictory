@@ -21,6 +21,7 @@ void Rocket::RegisterObject(Context *context)
 
 void Rocket::Update(float timeStep)
 {
+    gProfiler->BeginBlock("Rocke::Update");
     typedef void(Rocket::* FuncUpdate)(float);
     static FuncUpdate funcs[] =
     {
@@ -34,6 +35,7 @@ void Rocket::Update(float timeStep)
         (this->*func)(timeStep);
         AnimateSmoke(timeStep);
     }
+    gProfiler->EndBlock();
 }
 
 void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
@@ -45,7 +47,7 @@ void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *ta
     this->target = target;
     this->position = position;
     speed = Vector3(0.0f, 1.0f, 0.0f);
-    absSpeed = speedShooter.Length() * 1.5f;
+    absSpeed = speedShooter.Length() * 1.0f;
 
     rotate = Quaternion(Vector3::UP, Vector3::UP);
 }

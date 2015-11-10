@@ -1,9 +1,9 @@
 #pragma once
 
 
-class ButtonToggled : public Urho3D::CheckBox
+class ButtonToggled : public CheckBox
 {
-    OBJECT(ButtonToggled)
+    URHO3D_OBJECT(ButtonToggled, CheckBox);
 
 public:
     ButtonToggled(Context *context = gContext);

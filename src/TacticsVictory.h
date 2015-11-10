@@ -1,9 +1,9 @@
 #pragma once
 
 
-class TacticsVictory : public Urho3D::Application
+class TacticsVictory : public Application
 {
-    OBJECT(TacticsVictory);
+    URHO3D_OBJECT(TacticsVictory, Application);
 
 public:
     TacticsVictory(Context* context);
@@ -30,7 +30,7 @@ private:
     void HandleKeyDown(StringHash, VariantMap&);
 
     bool drawDebug = false;
-    Scene *scene = nullptr;
+    lScene *scene = nullptr;
 
     TacticsVictory& operator=(const TacticsVictory&)
     {};

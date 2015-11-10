@@ -6,7 +6,7 @@
 
 class Tab : public lWindow
 {
-    OBJECT(Tab);
+    URHO3D_OBJECT(Tab, lWindow);
 
 public:
     Tab(Context *context = gContext);

@@ -16,7 +16,7 @@ void Tab::RegisterObject(Context *context)
 {
     context->RegisterFactory<Tab>("UI");
 
-    COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
 }
 
 SharedPtr<Tab> Tab::Create(char *title)

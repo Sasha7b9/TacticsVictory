@@ -38,23 +38,23 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
     ddList->SetResizePopup(true);
     window->AddChild(ddList);
 
-    SubscribeToEvent(ddList, Urho3D::E_ITEMSELECTED, HANDLER(DropDownListWithTextAndButton, HandleItemSelected));
-    SubscribeToEvent(ddList, Urho3D::E_HOVERBEGIN, HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
-    SubscribeToEvent(ddList, Urho3D::E_HOVEREND, HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
+    SubscribeToEvent(ddList, Urho3D::E_ITEMSELECTED, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleItemSelected));
+    SubscribeToEvent(ddList, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
+    SubscribeToEvent(ddList, Urho3D::E_HOVEREND, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
 
     buttonLeft = new Urho3D::Button(gContext);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
-    SubscribeToEvent(buttonLeft, Urho3D::E_PRESSED, HANDLER(DropDownListWithTextAndButton, HandleButtonDown));
-    SubscribeToEvent(buttonLeft, Urho3D::E_HOVERBEGIN, HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
-    SubscribeToEvent(buttonLeft, Urho3D::E_HOVEREND, HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
+    SubscribeToEvent(buttonLeft, Urho3D::E_PRESSED, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleButtonDown));
+    SubscribeToEvent(buttonLeft, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
+    SubscribeToEvent(buttonLeft, Urho3D::E_HOVEREND, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
 
     buttonRight = new Urho3D::Button(gContext);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
-    SubscribeToEvent(buttonRight, Urho3D::E_PRESSED, HANDLER(DropDownListWithTextAndButton, HandleButtonDown));
-    SubscribeToEvent(buttonRight, Urho3D::E_HOVERBEGIN, HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
-    SubscribeToEvent(buttonRight, Urho3D::E_HOVEREND, HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
+    SubscribeToEvent(buttonRight, Urho3D::E_PRESSED, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleButtonDown));
+    SubscribeToEvent(buttonRight, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
+    SubscribeToEvent(buttonRight, Urho3D::E_HOVEREND, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
 
     SetMinSize(window->GetWidth(), window->GetHeight());
 }
@@ -72,7 +72,7 @@ void DropDownListWithTextAndButton::RegisterObject(Context* context)
 {
     context->RegisterFactory<DropDownListWithTextAndButton>("UI");
 
-    COPY_BASE_ATTRIBUTES(UIElement);
+    URHO3D_COPY_BASE_ATTRIBUTES(UIElement);
 }
 
 void DropDownListWithTextAndButton::AddItem(char *text)

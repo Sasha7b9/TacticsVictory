@@ -1,9 +1,10 @@
 #pragma once
 
 
-class Label : public Urho3D::Text
+class Label : public Text
 {
-    OBJECT(Label);
+    URHO3D_OBJECT(Label, Text);
+
 public:
     Label(Context *context = gContext);
 

@@ -49,9 +49,9 @@ static void RegstrationObjects()
     WindowConfirmExit::RegisterObject();
     Tab::RegisterObject();
     Label::RegisterObject();
-    vSlider::RegisterObject();
-    lSliderInt::RegisterObject();
-    vGovernorCell::RegisterObject();
+    lSlider::RegisterObject();
+    SliderInt::RegisterObject();
+    lGovernorCell::RegisterObject();
     GovernorFloat::RegisterObject();
     PanelBottom::RegisterObject();
     PanelMap::RegisterObject();
@@ -118,9 +118,9 @@ void GUI::Create()
     gMenuMain = new MenuMain(gContext);
     SetWindowInCenterScreen(gMenuMain);
     gUIRoot->AddChild(gMenuMain);
-    SubscribeToEvent(gMenuMain, E_MENU, HANDLER(GUI, HandleMenuEvent));
+    SubscribeToEvent(gMenuMain, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));
 
-    gConsole = new Console(gContext);
+    gConsole = new lConsole(gContext);
     gUIRoot->AddChild(gConsole);
 
     gWindowVars = new WindowVariables(gContext);
@@ -139,7 +139,7 @@ void GUI::Create()
     gMenuOptions = new MenuOptions(gContext);
     SetWindowInCenterScreen(gMenuOptions);
     gUIRoot->AddChild(gMenuOptions);
-    SubscribeToEvent(gMenuOptions, E_MENU, HANDLER(GUI, HandleMenuEvent));
+    SubscribeToEvent(gMenuOptions, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));
     gMenuOptions->SetVisible(false);
 
     gGuiGame = new GuiGame(gContext);
@@ -155,9 +155,9 @@ void GUI::Create()
     gUIRoot->AddChild(gWindowConfirmExit);
     SetWindowInCenterScreen(gWindowConfirmExit);
     gWindowConfirmExit->SetVisible(false);
-    SubscribeToEvent(gWindowConfirmExit, E_MENU, HANDLER(GUI, HandleMenuEvent));
+    SubscribeToEvent(gWindowConfirmExit, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));
 
-    gCursor = new Cursor();
+    gCursor = new lCursor();
 
     gLocalization->SetLanguage(gSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
 }

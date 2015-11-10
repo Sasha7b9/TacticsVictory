@@ -6,7 +6,7 @@
 
 class PanelBottom : public lWindow
 {
-    OBJECT(PanelBottom);
+    URHO3D_OBJECT(PanelBottom, lWindow);
 
 public:
     PanelBottom(Context *context = gContext);

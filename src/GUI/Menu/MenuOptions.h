@@ -12,7 +12,7 @@ enum
 
 class MenuOptions : public lWindow
 {
-    OBJECT(MenuOptions)
+    URHO3D_OBJECT(MenuOptions, lWindow);
 
 public:
     MenuOptions(Context *context = gContext);
