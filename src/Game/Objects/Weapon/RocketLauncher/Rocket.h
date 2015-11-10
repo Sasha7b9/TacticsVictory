@@ -4,7 +4,7 @@
 #include "Game/Objects/GameObject.h"
 
 
-class Rocket : public GameObject
+class Rocket : public GameObject, public Thread
 {
     URHO3D_OBJECT(Rocket, GameObject);
 
@@ -13,6 +13,8 @@ public:
     static void RegisterObject(Context *context = gContext);
     virtual void Update(float timeStep);
     static SharedPtr<Rocket> Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target);
+
+    virtual void ThreadFunction();
 
 private:
     Rocket& operator=(const Rocket&)
@@ -46,8 +48,11 @@ private:
     void Init(const Vector3 &speedShooter, const Vector3 &position, Tank* target);
     void LoadFromFile();
     void Normalize();
-    void UpdateBegin(float dT);
-    void UpdateEscortTarget(float dT);
+    void UpdateBegin();
+    void UpdateEscortTarget();
     void CreateSmoke();
     void AnimateSmoke(float timeStep);
+
+    float dT;
+    bool calculate = false;
 };

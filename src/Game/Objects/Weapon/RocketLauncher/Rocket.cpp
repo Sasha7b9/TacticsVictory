@@ -8,8 +8,12 @@
 #include "Core/Camera.h"
 
 
+static PODVector<Rocket*> rockets;
+
+
 Rocket::Rocket(Context *context)
-    : GameObject(context)
+    : GameObject(context),
+    Thread()
 {
 
 }
@@ -21,21 +25,48 @@ void Rocket::RegisterObject(Context *context)
 
 void Rocket::Update(float timeStep)
 {
-    gProfiler->BeginBlock("Rocke::Update");
-    typedef void(Rocket::* FuncUpdate)(float);
-    static FuncUpdate funcs[] =
+    if(node_)
     {
-        &Rocket::UpdateBegin,
-        &Rocket::UpdateEscortTarget
-    };
+        node_->SetPosition(this->position);
+        node_->SetRotation(rotate);
+
+        if(time > rangeTime || distance > rangeDistance)
+        {
+            gScene->NodeRemoved(node_);
+        }
+
+        if((position - target->GetPosition()).Length() < 0.3f)
+        {
+
+            Sound *sound = gCache->GetResource<Sound>("Sounds/ExplosionMissile.wav");
+
+            Node *nodeSource = node_->CreateChild("Source");
+            SoundSource3D *soundSource = nodeSource->CreateComponent<SoundSource3D>();
+            soundSource->SetDistanceAttenuation(1.0f, 150.0f, 1.0f);
+            soundSource->SetSoundType(Urho3D::SOUND_EFFECT);
+            soundSource->Play(sound);
+            soundSource->SetAutoRemove(true);
+
+            VariantMap eventData = GetEventDataMap();
+            eventData[AmmunitionEvent::P_TYPE] = Hit_Missile;
+            eventData[AmmunitionEvent::P_OBJECT] = target;
+            SendEvent(E_HIT, eventData);
+
+
+            gScene->NodeRemoved(node_);
+        }
+
+        dT = timeStep;
+
+        gProfiler->BeginBlock("Thread::Run");
+        calculate = true;
+        gProfiler->EndBlock();
+    }
 
     if(node_)
     {
-        FuncUpdate func = funcs[state];
-        (this->*func)(timeStep);
         AnimateSmoke(timeStep);
     }
-    gProfiler->EndBlock();
 }
 
 void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
@@ -43,11 +74,13 @@ void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *ta
     LoadFromFile();
     Normalize();
     CreateSmoke();
+    Run();
+    SetPriority(THREAD_PRIORITY_IDLE);
 
     this->target = target;
     this->position = position;
     speed = Vector3(0.0f, 1.0f, 0.0f);
-    absSpeed = speedShooter.Length() * 1.0f;
+    absSpeed = speedShooter.Length() * 10.0f;
 
     rotate = Quaternion(Vector3::UP, Vector3::UP);
 }
@@ -90,12 +123,12 @@ void Rocket::Normalize()
     node_->SetScale(scale);
 }
 
-void Rocket::UpdateBegin(float dT)
+void Rocket::UpdateBegin()
 {
+    static Mutex mutex;
+    mutex.Acquire();
     position += speed * dT;
-    node_->SetPosition(position);
-
-    node_->SetRotation(rotate);
+    mutex.Release();
 
     time += dT;
     distance += absSpeed * dT;
@@ -106,7 +139,7 @@ void Rocket::UpdateBegin(float dT)
     }
 }
 
-void Rocket::UpdateEscortTarget(float dT)
+void Rocket::UpdateEscortTarget()
 {
     if(firstUpdateEscort)
     {
@@ -124,16 +157,6 @@ void Rocket::UpdateEscortTarget(float dT)
     dir.Normalize();
 
     float angleNeed = dir.Angle(dirToTarget);
-
-    if(angleNeed < 0.0f)
-    {
-        angleNeed = angleNeed;
-    }
-
-    if(angleNeed > 180.0f)
-    {
-        angleNeed = angleNeed;
-    }
 
     float angleCan = rotateSpeed * dT;
 
@@ -155,47 +178,6 @@ void Rocket::UpdateEscortTarget(float dT)
     }
 
     position += speed * dT;
-    node_->SetPosition(position);
-
-    node_->SetRotation(rotate);
-
-    if(time > rangeTime || distance > rangeDistance)
-    {
-        gScene->NodeRemoved(node_);
-    }
-
-    if((position - target->GetPosition()).Length() < 0.3f)
-    {
-        
-        Sound *sound = gCache->GetResource<Sound>("Sounds/ExplosionMissile.wav");
-
-        Node *nodeSource = node_->CreateChild("Source");
-        SoundSource3D *soundSource = nodeSource->CreateComponent<SoundSource3D>();
-        soundSource->SetDistanceAttenuation(1.0f, 150.0f, 1.0f);
-        soundSource->SetSoundType(Urho3D::SOUND_EFFECT);
-        soundSource->Play(sound);
-        soundSource->SetAutoRemove(true);
-
-
-        /*
-        Vector3 posSource = nodeSource->GetWorldPosition();
-        Vector3 posListener = gCamera->GetNode()->GetChild("Listener")->GetWorldPosition();
-        Vector3 posCamera = gCamera->GetNode()->GetWorldPosition();
-
-        float distanceListener = (posSource - posListener).Length();
-        float distanceCamera = (posSource - posCamera).Length();
-
-        LOGINFOF("posSource %s, posListener %s, posCamera %s, dist listener %f, dist camera %f", posSource.ToString().CString(), posListener.ToString().CString(), posCamera.ToString().CString(), distanceListener, distanceCamera);
-        */
-
-        VariantMap eventData = GetEventDataMap();
-        eventData[AmmunitionEvent::P_TYPE] = Hit_Missile;
-        eventData[AmmunitionEvent::P_OBJECT] = target;
-        SendEvent(E_HIT, eventData);
-        
-
-        gScene->NodeRemoved(node_);
-    }
 }
 
 void Rocket::CreateSmoke()
@@ -259,5 +241,27 @@ void Rocket::AnimateSmoke(float timeStep)
             bb->rotation_ += BILLBOARD_ROTATION_SPEED * timeStep;
         }
         billboardObject->Commit();
+    }
+}
+
+void Rocket::ThreadFunction()
+{
+    typedef void(Rocket::* FuncUpdate)();
+    static FuncUpdate funcs[] =
+    {
+        &Rocket::UpdateBegin,
+        &Rocket::UpdateEscortTarget
+    };
+
+
+    while(true)
+    {
+        if(node_ && calculate)
+        {
+            FuncUpdate func = funcs[state];
+            (this->*func)();
+
+            calculate = false;
+        }
     }
 }
