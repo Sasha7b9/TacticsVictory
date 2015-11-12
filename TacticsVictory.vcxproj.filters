@@ -234,6 +234,12 @@
     <ClCompile Include="src\Game\Objects\Weapon\RocketLauncher\Rocket.cpp">
       <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Sounds.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Particles.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -415,6 +421,12 @@
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Weapon\RocketLauncher\Rocket.h">
       <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Sounds.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Particles.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

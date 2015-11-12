@@ -76,6 +76,8 @@
 #include <Urho3D/IO/FileSystem.h>
 #include <Urho3D/IO/Log.h>
 
+#include <Urho3D/Math/Sphere.h>
+
 #include <Urho3D/Physics/CollisionShape.h>
 #include <Urho3D/Physics/PhysicsWorld.h>
 #include <Urho3D/Physics/RigidBody.h>
@@ -164,6 +166,7 @@ using Urho3D::Node;
 
 using Urho3D::Object;
 using Urho3D::Octree;
+using Urho3D::OctreeQueryResult;
 
 using Urho3D::Pair;
 using Urho3D::ParticleEffect;
@@ -187,6 +190,8 @@ using Urho3D::ScrollBar;
 using Urho3D::SharedPtr;
 using Urho3D::Slider;
 using Urho3D::Sin;
+using Urho3D::Sphere;
+using Urho3D::SphereOctreeQuery;
 using Urho3D::Sound;
 using Urho3D::SoundListener;
 using Urho3D::SoundSource;

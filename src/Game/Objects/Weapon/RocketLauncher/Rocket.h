@@ -4,17 +4,20 @@
 #include "Game/Objects/GameObject.h"
 
 
-class Rocket : public GameObject, public Thread
+class Rocket : public GameObject
 {
     URHO3D_OBJECT(Rocket, GameObject);
+
+    friend class ThreadRocket;
 
 public:
     Rocket(Context *context = gContext);
     static void RegisterObject(Context *context = gContext);
-    virtual void Update(float timeStep);
+    virtual void Update(float) {};
+    void UpdateOn();
     static SharedPtr<Rocket> Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target);
-
-    virtual void ThreadFunction();
+    void SetParameters(float timeStep);
+    static void UpdateAll(float timeStep);
 
 private:
     Rocket& operator=(const Rocket&)
@@ -42,7 +45,7 @@ private:
     Vector3 speed;
     Quaternion rotate;
     float absSpeed = 0.0f;
-    float rotateSpeed = 45.0f;
+    float rotateSpeed = 30.0f;
     bool firstUpdateEscort = true;
 
     void Init(const Vector3 &speedShooter, const Vector3 &position, Tank* target);
@@ -51,8 +54,21 @@ private:
     void UpdateBegin();
     void UpdateEscortTarget();
     void CreateSmoke();
-    void AnimateSmoke(float timeStep);
+    void AnimateSmoke();
+    void CalculateAnimate();
+    bool VerifyOnIntersectionTerrain();
+    void HandlePostRenderUpdate(StringHash, VariantMap&);
+    //Vector3 GetPosition();
+    //void SetPosition(Vector3 &pos);
+    //Mutex mutexPosition;
 
     float dT;
-    bool calculate = false;
+    bool needCalculate = false;
+
+    BillboardSet *billboardObject = nullptr;
+    PODVector<Billboard*> billboards;
+    PODVector<float> rotBillboard;
+
+    SharedPtr<ParticleEffect> pe;
+    Vector3 scale;
 };

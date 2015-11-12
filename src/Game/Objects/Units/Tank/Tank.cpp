@@ -7,6 +7,7 @@
 #include "GlobalFunctions.h"
 #include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
 #include "GAme/Objects/Weapon/AmmoEvents.h"
+#include "Game/Particles.h"
 
 
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
@@ -36,7 +37,6 @@ void Tank::Init(Type type_)
     LoadFromFile();
     Normalize();
     //ConfigurePhysics();
-    CreateParticleEmitter();
 
     timeElapsedAfterShoot = Random(timeRechargeWeapon);
 }
@@ -169,20 +169,28 @@ void Tank::Update(float dT)
         }
     }
 
-    for(auto target : gTanks)
+    gProfiler->BeginBlock("Tank::See All");
+
+    if (timeElapsedAfterShoot > timeRechargeWeapon)
     {
-        if(target != this)
+        for (auto target : gTanks)
         {
-            float distance = (GetPosition() - target->GetPosition()).Length();
-            if(distance < radiusDetect)
+            if (target != this)
             {
-                if(TargetInPointView(target))
+                gProfiler->BeginBlock("Calc Distance");
+                float distance = (GetPosition() - target->GetPosition()).Length();
+                gProfiler->EndBlock();
+                if (distance < radiusDetect)
                 {
-                    break;
+                    if (TargetInPointView(target))
+                    {
+                        break;
+                    }
                 }
             }
         }
     }
+    gProfiler->EndBlock();
 
     gProfiler->EndBlock();
 }
@@ -231,12 +239,10 @@ void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
         return;
     }
 
-    PODVector<Node*> emitterNodes;
-    node_->GetChildrenWithComponent<ParticleEmitter>(emitterNodes);
-
-    emitterNodes[0]->GetComponent<ParticleEmitter>()->SetEmitting(true);
+    Particles::Emitting(Particle_Explosion, node_->GetPosition());
 }
 
+/*
 void Tank::CreateParticleEmitter()
 {
     Node *forEmitter = node_->CreateChild("Emitter");
@@ -248,14 +254,15 @@ void Tank::CreateParticleEmitter()
     SharedPtr<File> file(gCache->GetFile("Particle/SnowExplosion.xml"));
     if(file)
     {
-        bool res = xmlParticle.Load(*file);
+        xmlParticle.Load(*file);
         SharedPtr<ParticleEffect> pe(new ParticleEffect(gContext));
         XMLElement root = xmlParticle.GetRoot("particleemitter");
-        res = pe->Load(root);
+        pe->Load(root);
         emitter->SetEffect(pe);
         emitter->SetEmitting(false);
     }
 }
+*/
 
 void Tank::HandleCollision(StringHash, VariantMap& eventData)
 {
@@ -281,7 +288,9 @@ bool Tank::TargetInPointView(Tank* tank)
 {
     if(timeElapsedAfterShoot >= timeRechargeWeapon)
     {
+        gProfiler->BeginBlock("Rocket::Create");
         SharedPtr<Rocket> missile(Rocket::Create(translator.speed, translator.currentPos, tank));
+        gProfiler->EndBlock();
         timeElapsedAfterShoot = 1e-6f;
         return true;
     }

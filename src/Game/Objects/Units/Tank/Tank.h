@@ -87,9 +87,6 @@ private:
     void HandleCollision(StringHash, VariantMap&);
     void HandleAmmoHit(StringHash, VariantMap&);
 
-    void CreateParticleEmitter();
+    //void CreateParticleEmitter();
     void ConfigurePhysics();
-
-    //Node        *trigger = nullptr;
-    //RigidBody   *body = nullptr;
 };

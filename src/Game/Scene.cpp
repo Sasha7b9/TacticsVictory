@@ -10,6 +10,8 @@
 #include "GUI/Elements/Cursor.h"
 #include "Game/Path/TilePath.h"
 #include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
+#include "Game/Sounds.h"
+#include "Game/Particles.h"
 
 
 lScene::lScene(Context *context) :
@@ -42,6 +44,10 @@ void lScene::RegisterObject(Context *context)
 
 void lScene::Create()
 {
+    Sounds::Init();
+
+    Particles::Init();
+
     gPhysicsWorld->SetFps(5);
 
     // Create a Zone component into a child scene node. The Zone controls ambient lighting and fog settings. Like the Octree,
@@ -108,7 +114,7 @@ void lScene::Create()
     gCamera->SetPosition({sizeX / 2.0f, 25.0f, - (float)sizeZ / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
 }
 
-void lScene::Update(float /*timeStep*/)
+void lScene::Update(float timeStep)
 {
     Vector3 hitPos;
     Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
@@ -131,6 +137,8 @@ void lScene::Update(float /*timeStep*/)
     }
 
     pathIndicator.Update();
+
+    Rocket::UpdateAll(timeStep);
 }
 
 void lScene::HandleMouseDown(StringHash, VariantMap& eventData)
