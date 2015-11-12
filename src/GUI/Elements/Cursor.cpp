@@ -49,7 +49,6 @@ SharedPtr<Cursor> lCursor::GetCursor()
 
 void lCursor::Update(float dT)
 {
-    gProfiler->BeginBlock("Update Cursor");
     const float speed = 500.0f;
     static float angle0 = 0.0f;
 
@@ -143,7 +142,6 @@ void lCursor::Update(float dT)
             prevType = type;
 
             SharedPtr<lImage> image = shapes->GetShape(type, numFrame);
-            gProfiler->BeginBlock("set shape");
 
             cursor->DefineShape("Normal", image->GetUImage(), {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
             /*
@@ -155,10 +153,8 @@ void lCursor::Update(float dT)
             staticSprite->SetSprite(sprite);
             nodeSprite->SetPosition({100.0f, 100.0f, -100.0f});
             */
-            gProfiler->EndBlock();
         }
     }
-    gProfiler->EndBlock();
 }
 
 void lCursor::SetNormal()

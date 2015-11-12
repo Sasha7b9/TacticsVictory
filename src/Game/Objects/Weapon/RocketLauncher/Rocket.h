@@ -29,8 +29,7 @@ private:
     enum State
     {
         Begin,              // The missile is in this state from the start-up moment before achievement of heightBeginExcortTarget
-        EscortTarget,
-        InStorage           // Not visible in scene
+        EscortTarget
     } state = Begin;
 
     const float rangeVisible = 50.0f;
@@ -72,4 +71,6 @@ private:
 
     SharedPtr<ParticleEffect> pe;
     Vector3 scale;
+
+    static Mutex mutexVectorRockets;
 };

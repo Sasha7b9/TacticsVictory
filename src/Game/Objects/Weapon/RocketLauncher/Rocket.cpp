@@ -11,6 +11,7 @@
 
 
 static PODVector<Rocket*> rockets;
+Mutex Rocket::mutexVectorRockets;
 
 
 Rocket::Rocket(Context *context)
@@ -29,19 +30,11 @@ void Rocket::RegisterObject(Context *context)
 
 void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
 {
-    gProfiler->BeginBlock("Rocket::Init");
-
     if (!model)
     {
-        gProfiler->BeginBlock("Rocket::LoadFromFile");
         LoadFromFile();
-        gProfiler->EndBlock();
-        gProfiler->BeginBlock("Rocket:Normalize");
         Normalize();
-        gProfiler->EndBlock();
-        gProfiler->BeginBlock("Rockte::CreateSmoke");
         CreateSmoke();
-        gProfiler->EndBlock();
     }
 
     this->target = target;
@@ -51,20 +44,22 @@ void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *ta
     state = Begin;
 
     rotate = Quaternion(Vector3::UP, Vector3::UP);
-
-    gProfiler->EndBlock();
 }
 
 SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
 {
     SharedPtr<Rocket> rocket;
 
-    for (Rocket *rock : rockets)
+    Rocket::mutexVectorRockets.Acquire();
+
+    uint size = rockets.Size();
+    for(uint i = 0; i < size; i++)
     {
-        if (!rock->node_->IsEnabled())
+        Rocket *rock = rockets[i];
+        if(!rock->node_->IsEnabled())
         {
             rocket = rock;
-            //rocket->node_->SetEnabled(true);
+            rocket->Init(speedShooter, position, target);
             gScene->AddChild(rocket->node_);
             break;
         }
@@ -81,11 +76,13 @@ SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &pos
         {
             rocket = node->CreateComponent<Rocket>();
         }
+        rocket->Init(speedShooter, position, target);
+
         rockets.Push(rocket);
-        URHO3D_LOGINFOF("in vector %d rockets", rockets.Size());
     }
 
-    rocket->Init(speedShooter, position, target);
+    Rocket::mutexVectorRockets.Release();
+
     return rocket;
 }
 
@@ -207,15 +204,11 @@ void Rocket::CreateSmoke()
 
     billboardObject->Commit();
 
-    
-
-    gProfiler->BeginBlock("Rocket::LoadEffect");
-
     Node* forEmitter = node_->CreateChild("Emitter");
 
     if (rockets.Size())
     {
-        forEmitter->CloneComponent(rockets[0]->node_->GetComponent<ParticleEmitter>());
+        forEmitter->CloneComponent(rockets[0]->node_->GetChild("Emitter")->GetComponent<ParticleEmitter>());
     }
     else
     {
@@ -241,8 +234,6 @@ void Rocket::CreateSmoke()
         emitter->SetEmitting(true);
         emitter->Commit();
     }
-
-    gProfiler->EndBlock();
 }
 
 void Rocket::CalculateAnimate()
@@ -274,7 +265,7 @@ void Rocket::UpdateOn()
         &Rocket::UpdateEscortTarget
     };
 
-    if(node_)
+    if(node_ && node_->IsEnabled())
     {
         FuncUpdate func = funcs[state];
         (this->*func)();
@@ -282,7 +273,6 @@ void Rocket::UpdateOn()
         CalculateAnimate();
     }
 }
-
 
 class ThreadRocket : public Thread
 {
@@ -309,7 +299,8 @@ void ThreadRocket::ThreadFunction()
     for (uint i = start; i <= end; i++)
     {
         Rocket *rocket = rockets[i];
-        if (rocket->state != Rocket::InStorage && rocket->needCalculate)
+
+        if (rocket->needCalculate)
         {
             rocket->UpdateOn();
             rocket->needCalculate = false;
@@ -321,7 +312,9 @@ void ThreadRocket::ThreadFunction()
 
 void Rocket::SetParameters(float timeStep)
 {
-    if(node_ && state != InStorage)
+    Rocket::mutexVectorRockets.Acquire();
+
+    if(node_ && node_->IsEnabled())
     {
         dT = timeStep;
 
@@ -334,18 +327,25 @@ void Rocket::SetParameters(float timeStep)
         {
             Sounds::Play(Sound_Explosion, position);
             //Particles::Emitting(Particle_Explosion, position);
-            state = InStorage;
-            gScene->RemoveChild(node_);
+            node_->SetEnabled(false);
             return;
         }
         else if(time > rangeTime || distance > rangeDistance)
         {
-            state = InStorage;
             gScene->RemoveChild(node_);
+            node_->SetEnabled(false);
             return;
         }
         else if ((position - target->GetPosition()).Length() < 0.3f)
         {
+            for(uint i = 0; i < rockets.Size(); i++)
+            {
+                if(node_ == rockets[i]->node_)
+                {
+                    i = i;
+                }
+            }
+
             Sounds::Play(Sound_Explosion, position);
 
             VariantMap eventData = GetEventDataMap();
@@ -353,75 +353,66 @@ void Rocket::SetParameters(float timeStep)
             eventData[AmmoEvent::P_OBJECT] = target;
             SendEvent(E_HIT, eventData);
 
-            state = InStorage;
-            gScene->RemoveChild(node_);
+            node_->SetEnabled(false);
             return;
         }
 
         needCalculate = true;
     }
+
+    Rocket::mutexVectorRockets.Release();
 }
 
 void Rocket::UpdateAll(float timeStep)
 {
-    gProfiler->BeginBlock("Rocket::UpdateAll");
-
     static ThreadRocket thread1;
     static ThreadRocket thread2;
     static ThreadRocket thread3;
     static ThreadRocket thread4;
 
-    while(thread1.inProcess)
-    {
-    };
+    while(thread1.inProcess) {};
     thread1.Stop();
-    while(thread2.inProcess)
-    {
-    };
+
+    while(thread2.inProcess) {};
     thread2.Stop();
-    while(thread3.inProcess)
-    {
-    };
+
+    while(thread3.inProcess) {};
     thread3.Stop();
-    while(thread4.inProcess)
-    {
-    };
+
+    while(thread4.inProcess) {};
     thread4.Stop();
 
-    for (Rocket *rocket : rockets)
-    {
-        rocket->SetParameters(timeStep);
-    }
-
+    mutexVectorRockets.Acquire();
     uint size = rockets.Size();
+
+    for(uint i = 0; i < size; i++)
+    {
+        rockets[i]->SetParameters(timeStep);
+    }
+    mutexVectorRockets.Release();
+
     uint rocketsOnThread = (size + 1) / 4;
 
     if (size > 0)
     {
-        URHO3D_LOGINFOF("%d, %d", 0, rocketsOnThread);
         thread1.SetParameters(0, rocketsOnThread);
         thread1.Run();
         if (size > 1)
         {
-            URHO3D_LOGINFOF("%d, %d", rocketsOnThread + 1, 2 * rocketsOnThread);
             thread2.SetParameters(rocketsOnThread + 1, 2 * rocketsOnThread);
             thread2.Run();
             if (size > 2)
             {
-                URHO3D_LOGINFOF("%d, %d", 2 * rocketsOnThread + 1, 3 * rocketsOnThread);
                 thread3.SetParameters(2 * rocketsOnThread + 1, 3 * rocketsOnThread);
                 thread3.Run();
                 if (size > 3)
                 {
-                    URHO3D_LOGINFOF("%d, %d", 3 * rocketsOnThread + 1, rockets.Size() - 1);
-                    thread4.SetParameters(3 * rocketsOnThread + 1, rockets.Size() - 1);
+                    thread4.SetParameters(3 * rocketsOnThread + 1, size - 1);
                     thread4.Run();
                 }
             }
         }
     }
-
-    gProfiler->EndBlock();
 }
 
 /*

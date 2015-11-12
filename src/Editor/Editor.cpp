@@ -107,7 +107,6 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
         {
             Timer timer;
             currentPlane = gTerrain->GetIntersectionPlane(ray);
-            URHO3D_LOGINFOF("time find plane %d ms", timer.GetMSec(false));
 
             if (!currentPlane.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
             {

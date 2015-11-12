@@ -115,7 +115,6 @@ void Tank::SetCoord(const Coord& coord)
 
 void Tank::Update(float dT)
 {
-    gProfiler->BeginBlock("Tank::Update");
     GameObject::Update(dT);
 
     if(timeElapsedAfterShoot != 0.0f)
@@ -169,17 +168,13 @@ void Tank::Update(float dT)
         }
     }
 
-    gProfiler->BeginBlock("Tank::See All");
-
     if (timeElapsedAfterShoot > timeRechargeWeapon)
     {
         for (auto target : gTanks)
         {
             if (target != this)
             {
-                gProfiler->BeginBlock("Calc Distance");
                 float distance = (GetPosition() - target->GetPosition()).Length();
-                gProfiler->EndBlock();
                 if (distance < radiusDetect)
                 {
                     if (TargetInPointView(target))
@@ -190,9 +185,6 @@ void Tank::Update(float dT)
             }
         }
     }
-    gProfiler->EndBlock();
-
-    gProfiler->EndBlock();
 }
 
 void Tank::SetSelected(bool selected_)
@@ -288,9 +280,7 @@ bool Tank::TargetInPointView(Tank* tank)
 {
     if(timeElapsedAfterShoot >= timeRechargeWeapon)
     {
-        gProfiler->BeginBlock("Rocket::Create");
         SharedPtr<Rocket> missile(Rocket::Create(translator.speed, translator.currentPos, tank));
-        gProfiler->EndBlock();
         timeElapsedAfterShoot = 1e-6f;
         return true;
     }

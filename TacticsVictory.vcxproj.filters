@@ -267,14 +267,14 @@
     <ClCompile Include="src\Game\Objects\Units\Airplane\Airplane.cpp">
       <Filter>Game\Objects\Units\Airplane</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Units\Airplane\Builder.cpp">
+    <ClCompile Include="src\Game\Objects\Units\Builder\Builder.cpp">
       <Filter>Game\Objects\Units\Builder</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Units\Airplane\MilitaryPlant.cpp">
-      <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Units\Airplane\CivilPlant.cpp">
+    <ClCompile Include="src\Game\Objects\Buildings\CivilPlant\CivilPlant.cpp">
       <Filter>Game\Objects\Buildings\CivilPlant</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Buildings\MilitaryPlant\MilitaryPlant.cpp">
+      <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -473,14 +473,14 @@
     <ClInclude Include="src\Game\Objects\Units\Airplane\Airplane.h">
       <Filter>Game\Objects\Units\Airplane</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Units\Airplane\Builder.h">
+    <ClInclude Include="src\Game\Objects\Units\Builder\Builder.h">
       <Filter>Game\Objects\Units\Builder</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Units\Airplane\MilitaryPlant.h">
-      <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Units\Airplane\CivilPlant.h">
+    <ClInclude Include="src\Game\Objects\Buildings\CivilPlant\CivilPlant.h">
       <Filter>Game\Objects\Buildings\CivilPlant</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Buildings\MilitaryPlant\MilitaryPlant.h">
+      <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
