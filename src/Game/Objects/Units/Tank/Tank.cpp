@@ -232,7 +232,7 @@ SharedPtr<Tank> Tank::Create(Type type)
 
 void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
 {
-    Tank *tank = (Tank*)eventData[AmmunitionEvent::P_OBJECT].GetPtr();
+    Tank *tank = (Tank*)eventData[AmmoEvent::P_OBJECT].GetPtr();
 
     if(tank != this)
     {

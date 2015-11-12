@@ -54,6 +54,7 @@ void Particles::Emitting(TypeParticles type, const Vector3 position)
         emitter = (ParticleEmitter*)node->CloneComponent(emitters[0]);
         emitter->SetEffect(emitters[0]->GetEffect());
         emitters.Push(emitter);
+        URHO3D_LOGINFOF("%d explosions", particles.Size());
     }
 
     emitter->GetNode()->SetPosition(position);

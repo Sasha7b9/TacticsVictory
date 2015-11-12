@@ -38,6 +38,7 @@ void Sounds::Play(SoundType type, const Vector3 &position)
         Node *nodeSource = gScene->CreateChild("Sound");
         source = (SoundSource3D*)nodeSource->CloneComponent(sources[0]);
         sources.Push(source);
+        URHO3D_LOGINFOF("%d sounds", sources.Size());
     }
 
     source->GetNode()->SetPosition(position);

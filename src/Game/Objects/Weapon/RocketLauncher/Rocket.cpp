@@ -46,7 +46,7 @@ void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *ta
 
     this->target = target;
     this->position = position;
-    absSpeed = speedShooter.Length() * 15.0f;
+    absSpeed = speedShooter.Length() * 1.5f;
     speed = Vector3(0.0f, absSpeed, 0.0f);
     state = Begin;
 
@@ -64,7 +64,8 @@ SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &pos
         if (!rock->node_->IsEnabled())
         {
             rocket = rock;
-            rocket->node_->SetEnabled(true);
+            //rocket->node_->SetEnabled(true);
+            gScene->AddChild(rocket->node_);
             break;
         }
     }
@@ -288,6 +289,7 @@ class ThreadRocket : public Thread
 public:
     virtual void ThreadFunction();
     void SetParameters(uint startIndex, uint endIndex);
+    bool inProcess = false;
 private:
     uint start = 0;
     uint end = 0;
@@ -302,23 +304,25 @@ void ThreadRocket::SetParameters(uint startIndex, uint endIndex)
 
 void ThreadRocket::ThreadFunction()
 {
+    inProcess = true;
+
     for (uint i = start; i <= end; i++)
     {
         Rocket *rocket = rockets[i];
-        if (rocket->node_->IsEnabled()&& rocket->needCalculate)
+        if (rocket->state != Rocket::InStorage && rocket->needCalculate)
         {
             rocket->UpdateOn();
             rocket->needCalculate = false;
         }
     }
+
+    inProcess = false;
 }
 
 void Rocket::SetParameters(float timeStep)
 {
-    if (node_ && node_->IsEnabled())
+    if(node_ && state != InStorage)
     {
-        needCalculate = true;
-
         dT = timeStep;
 
         node_->SetPosition(position);
@@ -329,24 +333,32 @@ void Rocket::SetParameters(float timeStep)
         if (state != Begin && VerifyOnIntersectionTerrain())
         {
             Sounds::Play(Sound_Explosion, position);
-            Particles::Emitting(Particle_Explosion, position);
-            node_->SetEnabled(false);
+            //Particles::Emitting(Particle_Explosion, position);
+            state = InStorage;
+            gScene->RemoveChild(node_);
+            return;
         }
-        else if (time > rangeTime || distance > rangeDistance)
+        else if(time > rangeTime || distance > rangeDistance)
         {
-            node_->SetEnabled(false);
+            state = InStorage;
+            gScene->RemoveChild(node_);
+            return;
         }
         else if ((position - target->GetPosition()).Length() < 0.3f)
         {
             Sounds::Play(Sound_Explosion, position);
 
             VariantMap eventData = GetEventDataMap();
-            eventData[AmmunitionEvent::P_TYPE] = Hit_Missile;
-            eventData[AmmunitionEvent::P_OBJECT] = target;
+            eventData[AmmoEvent::P_TYPE] = Hit_Missile;
+            eventData[AmmoEvent::P_OBJECT] = target;
             SendEvent(E_HIT, eventData);
 
-            node_->SetEnabled(false);
+            state = InStorage;
+            gScene->RemoveChild(node_);
+            return;
         }
+
+        needCalculate = true;
     }
 }
 
@@ -359,9 +371,21 @@ void Rocket::UpdateAll(float timeStep)
     static ThreadRocket thread3;
     static ThreadRocket thread4;
 
+    while(thread1.inProcess)
+    {
+    };
     thread1.Stop();
+    while(thread2.inProcess)
+    {
+    };
     thread2.Stop();
+    while(thread3.inProcess)
+    {
+    };
     thread3.Stop();
+    while(thread4.inProcess)
+    {
+    };
     thread4.Stop();
 
     for (Rocket *rocket : rockets)
@@ -374,18 +398,22 @@ void Rocket::UpdateAll(float timeStep)
 
     if (size > 0)
     {
+        URHO3D_LOGINFOF("%d, %d", 0, rocketsOnThread);
         thread1.SetParameters(0, rocketsOnThread);
         thread1.Run();
         if (size > 1)
         {
+            URHO3D_LOGINFOF("%d, %d", rocketsOnThread + 1, 2 * rocketsOnThread);
             thread2.SetParameters(rocketsOnThread + 1, 2 * rocketsOnThread);
             thread2.Run();
             if (size > 2)
             {
+                URHO3D_LOGINFOF("%d, %d", 2 * rocketsOnThread + 1, 3 * rocketsOnThread);
                 thread3.SetParameters(2 * rocketsOnThread + 1, 3 * rocketsOnThread);
                 thread3.Run();
                 if (size > 3)
                 {
+                    URHO3D_LOGINFOF("%d, %d", 3 * rocketsOnThread + 1, rockets.Size() - 1);
                     thread4.SetParameters(3 * rocketsOnThread + 1, rockets.Size() - 1);
                     thread4.Run();
                 }
@@ -443,7 +471,7 @@ void Rocket::HandlePostRenderUpdate(StringHash, VariantMap&)
     {
         if (rockets[i]->node_->IsEnabled())
         {
-            Rocket *rocket = rockets[i];
+//            Rocket *rocket = rockets[i];
             //gDebugRenderer->AddSphere(Sphere(rockets[i]->node_->GetPosition(), 0.3f), Color::BLUE);
 
         }

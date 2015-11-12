@@ -100,7 +100,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_THREADING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_THREADING;URHO3D_D3D11;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DisableSpecificWarnings>4514;4820;4710;4640;4625</DisableSpecificWarnings>
       <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
@@ -132,7 +132,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalOptions>/STACK:20000000000 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;c:\Urho3D14\build\lib\Urho3D_d.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d11.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;c:\Urho3D14\build\lib\Urho3D_d.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -343,8 +343,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Objects\GameObject.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain.cpp" />
     <ClCompile Include="src\Game\Objects\TerrainSegment.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\Airplane\Airplane.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\Airplane\Builder.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\Airplane\CivilPlant.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\Airplane\MilitaryPlant.cpp" />
     <ClCompile Include="src\Game\Objects\Units\Tank\Tank.cpp" />
     <ClCompile Include="src\Game\Objects\Units\Tank\Translator.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapon\MachineGun\MachineGun.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapon\Mortar\Mortar.cpp" />
     <ClCompile Include="src\Game\Objects\Weapon\RocketLauncher\Rocket.cpp" />
     <ClCompile Include="src\Game\Objects\Weapon\RocketLauncher\RocketLauncher.cpp" />
     <ClCompile Include="src\Game\Particles.cpp" />
@@ -407,9 +413,15 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Objects\GameObject.h" />
     <ClInclude Include="src\Game\Objects\Terrain.h" />
     <ClInclude Include="src\Game\Objects\TerrainSegment.h" />
+    <ClInclude Include="src\Game\Objects\Units\Airplane\Airplane.h" />
+    <ClInclude Include="src\Game\Objects\Units\Airplane\Builder.h" />
+    <ClInclude Include="src\Game\Objects\Units\Airplane\CivilPlant.h" />
+    <ClInclude Include="src\Game\Objects\Units\Airplane\MilitaryPlant.h" />
     <ClInclude Include="src\Game\Objects\Units\Tank\Tank.h" />
     <ClInclude Include="src\Game\Objects\Units\Tank\Translator.h" />
     <ClInclude Include="src\Game\Objects\Weapon\AmmoEvents.h" />
+    <ClInclude Include="src\Game\Objects\Weapon\MachineGun\MachineGun.h" />
+    <ClInclude Include="src\Game\Objects\Weapon\Mortar\Mortar.h" />
     <ClInclude Include="src\Game\Objects\Weapon\RocketLauncher\Rocket.h" />
     <ClInclude Include="src\Game\Objects\Weapon\RocketLauncher\RocketLauncher.h" />
     <ClInclude Include="src\Game\Particles.h" />

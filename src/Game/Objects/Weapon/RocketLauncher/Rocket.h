@@ -29,7 +29,8 @@ private:
     enum State
     {
         Begin,              // The missile is in this state from the start-up moment before achievement of heightBeginExcortTarget
-        EscortTarget
+        EscortTarget,
+        InStorage           // Not visible in scene
     } state = Begin;
 
     const float rangeVisible = 50.0f;
@@ -45,7 +46,7 @@ private:
     Vector3 speed;
     Quaternion rotate;
     float absSpeed = 0.0f;
-    float rotateSpeed = 30.0f;
+    float rotateSpeed = 90.0f;
     bool firstUpdateEscort = true;
 
     void Init(const Vector3 &speedShooter, const Vector3 &position, Tank* target);

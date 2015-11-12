@@ -61,6 +61,24 @@
     <Filter Include="Game\Objects\Weapon\RocketLauncer">
       <UniqueIdentifier>{fcd0f500-62d1-4d44-b54c-e1cbb28b4313}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Objects\Units\Builder">
+      <UniqueIdentifier>{f0546ca5-0f4e-43ee-9f82-42abeb40bbb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Units\Airplane">
+      <UniqueIdentifier>{050a9365-35fc-4f67-9478-7b5fd09d5d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Weapon\Mortar">
+      <UniqueIdentifier>{0db4d0fa-ac1c-4bf5-8d90-5e7954e95fd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Weapon\MachineGun">
+      <UniqueIdentifier>{5d47e502-47a0-47fc-a2ca-be4cdcbe1703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Buildings\CivilPlant">
+      <UniqueIdentifier>{23c69b81-14f1-40a5-875c-7be58099174b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Buildings\MilitaryPlant">
+      <UniqueIdentifier>{0575cc6f-780d-4cd3-9f70-337a5ef4ee08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Camera.cpp">
@@ -239,6 +257,24 @@
     </ClCompile>
     <ClCompile Include="src\Game\Particles.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Weapon\MachineGun\MachineGun.cpp">
+      <Filter>Game\Objects\Weapon\MachineGun</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Weapon\Mortar\Mortar.cpp">
+      <Filter>Game\Objects\Weapon\Mortar</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Units\Airplane\Airplane.cpp">
+      <Filter>Game\Objects\Units\Airplane</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Units\Airplane\Builder.cpp">
+      <Filter>Game\Objects\Units\Builder</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Units\Airplane\MilitaryPlant.cpp">
+      <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Units\Airplane\CivilPlant.cpp">
+      <Filter>Game\Objects\Buildings\CivilPlant</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -427,6 +463,24 @@
     </ClInclude>
     <ClInclude Include="src\Game\Particles.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Weapon\MachineGun\MachineGun.h">
+      <Filter>Game\Objects\Weapon\MachineGun</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Weapon\Mortar\Mortar.h">
+      <Filter>Game\Objects\Weapon\Mortar</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Units\Airplane\Airplane.h">
+      <Filter>Game\Objects\Units\Airplane</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Units\Airplane\Builder.h">
+      <Filter>Game\Objects\Units\Builder</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Units\Airplane\MilitaryPlant.h">
+      <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Units\Airplane\CivilPlant.h">
+      <Filter>Game\Objects\Buildings\CivilPlant</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
