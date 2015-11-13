@@ -25,6 +25,7 @@ TerrainSegment::TerrainSegment(Vector<Vector<float>> &eMap, const Vector3 &shift
     model = new Model(gContext);
     node = gScene->CreateChild(NODE_TERRAIN);
     object = node->CreateComponent<StaticModel>();
+    object->SetViewMask(VIEW_MASK_FOR_MISSILE);
 
     Rebuild(eMap);
 }

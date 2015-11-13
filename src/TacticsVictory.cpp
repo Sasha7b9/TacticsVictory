@@ -13,6 +13,7 @@
 #include "TacticsVictory.h"
 #include "Game/Level.h"
 #include "GlobalFunctions.h"
+#include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
 
 
 #pragma warning(push)
@@ -46,6 +47,7 @@ void TacticsVictory::Setup()
 void TacticsVictory::Stop()
 {
     TilePath::RemoveAll();
+    Rocket::DeleteAll();
     SAFE_DELETE(scene);
     SAFE_DELETE(gFileSelector);
     SAFE_DELETE(gTerrain);
@@ -154,6 +156,7 @@ void TacticsVictory::SubscribeToEvents()
     SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
     SubscribeToEvent(Urho3D::E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
     SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
+    SubscribeToEvent(Urho3D::E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
 }
 
 void TacticsVictory::SetWindowTitleAndIcon()

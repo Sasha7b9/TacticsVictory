@@ -2,6 +2,7 @@
 
 
 #include "Game/Objects/GameObject.h"
+#include "Core/Mutex.h"
 
 
 class Rocket : public GameObject
@@ -12,19 +13,19 @@ class Rocket : public GameObject
 
 public:
     Rocket(Context *context = gContext);
+    ~Rocket();
+
     static void RegisterObject(Context *context = gContext);
-    virtual void Update(float) {};
+
     void UpdateOn();
     static SharedPtr<Rocket> Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target);
     void SetParameters(float timeStep);
     static void UpdateAll(float timeStep);
+    static void DeleteAll();
 
 private:
     Rocket& operator=(const Rocket&)
     {};
-
-    Tank *target = nullptr;
-    SharedPtr<StaticModel> model;
 
     enum State
     {
@@ -32,21 +33,35 @@ private:
         EscortTarget
     } state = Begin;
 
-    const float rangeVisible = 50.0f;
-    const float rangeDistance = 250.0f;
-    const float rangeTime = 60.0f;
-    const float heightBeginExcortTarget = 5.0f;
+    Tank *target = nullptr;
+    SharedPtr<StaticModel> model;
 
-    float time = 0.0f;
-    float distance = 0.0f;
+    const float rangeVisible = 50.0f;
+    const float rangeTime = 60.0f;
+    const float heightBeginExcortTarget = 2.0f;
+    const float rotateSpeed = 90.0f;
+    const float startSpeedKoeff = 1.5f;
 
     // Current state
     Vector3 position;
     Vector3 speed;
     Quaternion rotate;
+    float time = 0.0f;
     float absSpeed = 0.0f;
-    float rotateSpeed = 90.0f;
-    bool firstUpdateEscort = true;
+    Tank *attackedUnit = nullptr;
+    bool collisionWithTerrain = false;
+
+    float dT = 0.0f;
+
+    BillboardSet *billboardObjectSmoke = nullptr;
+    PODVector<Billboard*> billboardsSmoke;
+    PODVector<float> rotBillboardSmoke;
+    SharedPtr<ParticleEffect> pe;
+    Vector3 scale;
+    Node *smokeNode = nullptr;
+
+    Mutex mutex;
+    bool isCalculated = false;
 
     void Init(const Vector3 &speedShooter, const Vector3 &position, Tank* target);
     void LoadFromFile();
@@ -56,21 +71,7 @@ private:
     void CreateSmoke();
     void AnimateSmoke();
     void CalculateAnimate();
-    bool VerifyOnIntersectionTerrain();
+    void VerifyOnIntersectionTerrain();
+
     void HandlePostRenderUpdate(StringHash, VariantMap&);
-    //Vector3 GetPosition();
-    //void SetPosition(Vector3 &pos);
-    //Mutex mutexPosition;
-
-    float dT;
-    bool needCalculate = false;
-
-    BillboardSet *billboardObject = nullptr;
-    PODVector<Billboard*> billboards;
-    PODVector<float> rotBillboard;
-
-    SharedPtr<ParticleEffect> pe;
-    Vector3 scale;
-
-    static Mutex mutexVectorRockets;
 };

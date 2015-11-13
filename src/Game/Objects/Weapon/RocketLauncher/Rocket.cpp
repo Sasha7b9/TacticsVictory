@@ -10,8 +10,36 @@
 #include "Game/Particles.h"
 
 
+class ThreadRocket : public Thread
+{
+public:
+    ThreadRocket() : Thread()
+    {
+        //Run();
+    };
+    virtual void ThreadFunction();
+    void SetParameters(uint startIndex, uint endIndex);
+    bool InProcess()
+    {
+        return inProcess;
+    }
+    void Execute()
+    {
+        execute = true;
+    }
+    
+private:
+    uint start = 0;
+    uint end = 0;
+    bool inProcess = false;
+    bool execute = false;
+};
+
+
 static PODVector<Rocket*> rockets;
-Mutex Rocket::mutexVectorRockets;
+
+
+static ThreadRocket threads[8];
 
 
 Rocket::Rocket(Context *context)
@@ -23,6 +51,10 @@ Rocket::Rocket(Context *context)
     }
 }
 
+Rocket::~Rocket()
+{
+}
+
 void Rocket::RegisterObject(Context *context)
 {
     context->RegisterFactory<Rocket>();
@@ -30,6 +62,11 @@ void Rocket::RegisterObject(Context *context)
 
 void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
 {
+    state = Begin;
+    time = 0.0f;
+    attackedUnit = nullptr;
+    collisionWithTerrain = false;
+
     if (!model)
     {
         LoadFromFile();
@@ -39,9 +76,8 @@ void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *ta
 
     this->target = target;
     this->position = position;
-    absSpeed = speedShooter.Length() * 1.5f;
+    absSpeed = speedShooter.Length() * startSpeedKoeff;
     speed = Vector3(0.0f, absSpeed, 0.0f);
-    state = Begin;
 
     rotate = Quaternion(Vector3::UP, Vector3::UP);
 }
@@ -50,17 +86,17 @@ SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &pos
 {
     SharedPtr<Rocket> rocket;
 
-    Rocket::mutexVectorRockets.Acquire();
-
     uint size = rockets.Size();
     for(uint i = 0; i < size; i++)
     {
-        Rocket *rock = rockets[i];
+        Rocket* rock = rockets[i];
         if(!rock->node_->IsEnabled())
         {
             rocket = rock;
             rocket->Init(speedShooter, position, target);
             gScene->AddChild(rocket->node_);
+            rocket->smokeNode->SetEnabled(true);
+            rocket->node_->SetEnabled(true);
             break;
         }
     }
@@ -77,11 +113,8 @@ SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &pos
             rocket = node->CreateComponent<Rocket>();
         }
         rocket->Init(speedShooter, position, target);
-
         rockets.Push(rocket);
     }
-
-    Rocket::mutexVectorRockets.Release();
 
     return rocket;
 }
@@ -98,6 +131,7 @@ void Rocket::LoadFromFile()
         model->SetModel(gCache->GetResource<Model>("Models/Rocket.mdl"));
         model->ApplyMaterialList("Models/Rocket.txt");
     }
+    model->SetViewMask(VIEW_MASK_FOR_EFFECTS);
 }
 
 void Rocket::Normalize()
@@ -123,30 +157,22 @@ void Rocket::Normalize()
 
 void Rocket::UpdateBegin()
 {
-//    mutexPosition.Acquire();
-
     position += speed * dT;
 
     time += dT;
-    distance += absSpeed * dT;
 
     if(position.y_ > heightBeginExcortTarget)
     {
         state = EscortTarget;
+
+        speed.x_ = 0.0f;
+        speed.z_ = 0.0f;
+        speed.y_ = absSpeed;
     }
-//    mutexPosition.Release();
 }
 
 void Rocket::UpdateEscortTarget()
 {
-    if(firstUpdateEscort)
-    {
-        speed.x_ = 0.0f;
-        speed.z_ = 0.0f;
-        speed.y_ = absSpeed;
-        firstUpdateEscort = false;
-    }
-
     // Calculate necessary angle to target
     Vector3 dirToTarget = target->GetPosition() + Vector3(0.0f, 0.25f, 0.0f) - position;
     dirToTarget.Normalize();
@@ -157,6 +183,8 @@ void Rocket::UpdateEscortTarget()
     float angleNeed = dir.Angle(dirToTarget);
 
     float angleCan = rotateSpeed * dT;
+
+    time += dT;
 
     Vector3 axisRotate = dir.CrossProduct(dirToTarget);
 
@@ -182,27 +210,28 @@ void Rocket::CreateSmoke()
 {
     const uint NUM_BILLBOARDS = 50;
 
-    Node *smokeNode = node_->CreateChild("Smoke");
+    smokeNode = node_->CreateChild("Smoke");
     smokeNode->SetScale(1.0f);
 
-    billboardObject = smokeNode->CreateComponent<BillboardSet>();
-    billboardObject->SetNumBillboards(NUM_BILLBOARDS);
-    billboardObject->SetMaterial(gCache->GetResource<Material>("Materials/LitSmoke.xml"));
-    billboardObject->SetSorted(false);
+    billboardObjectSmoke = smokeNode->CreateComponent<BillboardSet>();
+    billboardObjectSmoke->SetViewMask(VIEW_MASK_FOR_EFFECTS);
+    billboardObjectSmoke->SetNumBillboards(NUM_BILLBOARDS);
+    billboardObjectSmoke->SetMaterial(gCache->GetResource<Material>("Materials/LitSmoke.xml"));
+    billboardObjectSmoke->SetSorted(false);
 
     for(uint j = 0; j < NUM_BILLBOARDS; ++j)
     {
-        Billboard *bb = billboardObject->GetBillboard(j);
+        Billboard *bb = billboardObjectSmoke->GetBillboard(j);
         bb->position_ = Vector3(Random(10.0f) - 5.0f, Random(10.0f) - 5.0f, Random(10.0f) - 5.0f);
         bb->size_ = Vector2(Random(2.0f) + 3.0f, Random(2.0f) + 3.0f);
         bb->rotation_ = Random() * 360.0f;
         bb->enabled_ = true;
 
-        billboards.Push(bb);
-        rotBillboard.Push(bb->rotation_);
+        billboardsSmoke.Push(bb);
+        rotBillboardSmoke.Push(bb->rotation_);
     }
 
-    billboardObject->Commit();
+    billboardObjectSmoke->Commit();
 
     Node* forEmitter = node_->CreateChild("Emitter");
 
@@ -214,12 +243,14 @@ void Rocket::CreateSmoke()
     {
         ParticleEmitter *emitter = forEmitter->CreateComponent<ParticleEmitter>();
 
+        /*
         if (rockets.Size())
         {
             pe = rockets[0]->pe;
         }
         else
         {
+        */
             XMLFile xmlParticle = XMLFile(gContext);
             SharedPtr<File> file(gCache->GetFile("Particle/SnowExplosion.xml"));
             if (file)
@@ -229,7 +260,8 @@ void Rocket::CreateSmoke()
                 XMLElement root = xmlParticle.GetRoot("particleemitter");
                 res = pe->Load(root);
             }
-        }
+        //}
+        
         emitter->SetEffect(pe);
         emitter->SetEmitting(true);
         emitter->Commit();
@@ -240,7 +272,7 @@ void Rocket::CalculateAnimate()
 {
     const float BILLBOARD_ROTATION_SPEED = 50.0f;
 
-    for (float &rotation : rotBillboard)
+    for (float &rotation : rotBillboardSmoke)
     {
         rotation += BILLBOARD_ROTATION_SPEED * dT;
     }
@@ -248,43 +280,38 @@ void Rocket::CalculateAnimate()
 
 void Rocket::AnimateSmoke()
 {
-    uint size = billboards.Size();
+    uint size = billboardsSmoke.Size();
     for (uint i = 0; i < size; i++)
     {
-        billboards[i]->rotation_ = rotBillboard[i];
+        billboardsSmoke[i]->rotation_ = rotBillboardSmoke[i];
     }
-    billboardObject->Commit();
+    billboardObjectSmoke->Commit();
 }
 
 void Rocket::UpdateOn()
 {
-    typedef void(Rocket::* FuncUpdate)();
-    static FuncUpdate funcs[] =
+    if(!isCalculated)
     {
-        &Rocket::UpdateBegin,
-        &Rocket::UpdateEscortTarget
-    };
+        typedef void(Rocket::* FuncUpdate)();
+        static FuncUpdate funcs[] =
+        {
+            &Rocket::UpdateBegin,
+            &Rocket::UpdateEscortTarget
+        };
 
-    if(node_ && node_->IsEnabled())
-    {
+        if(state != Begin)
+        {
+            VerifyOnIntersectionTerrain();
+        }
+
         FuncUpdate func = funcs[state];
         (this->*func)();
 
         CalculateAnimate();
+        
+        isCalculated = true;
     }
 }
-
-class ThreadRocket : public Thread
-{
-public:
-    virtual void ThreadFunction();
-    void SetParameters(uint startIndex, uint endIndex);
-    bool inProcess = false;
-private:
-    uint start = 0;
-    uint end = 0;
-};
-
 
 void ThreadRocket::SetParameters(uint startIndex, uint endIndex)
 {
@@ -294,166 +321,122 @@ void ThreadRocket::SetParameters(uint startIndex, uint endIndex)
 
 void ThreadRocket::ThreadFunction()
 {
-    inProcess = true;
-
-    for (uint i = start; i <= end; i++)
+    /*
+    while(true)
     {
-        Rocket *rocket = rockets[i];
-
-        if (rocket->needCalculate)
+        while(!execute)
         {
-            rocket->UpdateOn();
-            rocket->needCalculate = false;
-        }
-    }
+            Sleep(1);
+        };
 
-    inProcess = false;
+        execute = false;
+        */
+        inProcess = true;
+
+        for(uint i = start; i <= end; i++)
+        {
+            Rocket *rocket = rockets[i];
+
+            if(rocket->mutex.TryAcquire())
+            {
+                if(rocket->node_->IsEnabled())
+                {
+                    rocket->UpdateOn();
+                }
+                rocket->mutex.Release();
+            }
+        }
+
+        inProcess = false;
+    //}
 }
 
 void Rocket::SetParameters(float timeStep)
 {
-    Rocket::mutexVectorRockets.Acquire();
+    dT = timeStep;
+    
+    node_->SetPosition(position);
+    node_->SetRotation(rotate);
+    
+    AnimateSmoke();
 
-    if(node_ && node_->IsEnabled())
+    if (collisionWithTerrain || (time > rangeTime))
     {
-        dT = timeStep;
-
-        node_->SetPosition(position);
-        node_->SetRotation(rotate);
-
-        AnimateSmoke();
-
-        if (state != Begin && VerifyOnIntersectionTerrain())
-        {
-            Sounds::Play(Sound_Explosion, position);
-            //Particles::Emitting(Particle_Explosion, position);
-            node_->SetEnabled(false);
-            return;
-        }
-        else if(time > rangeTime || distance > rangeDistance)
-        {
-            gScene->RemoveChild(node_);
-            node_->SetEnabled(false);
-            return;
-        }
-        else if ((position - target->GetPosition()).Length() < 0.3f)
-        {
-            for(uint i = 0; i < rockets.Size(); i++)
-            {
-                if(node_ == rockets[i]->node_)
-                {
-                    i = i;
-                }
-            }
-
-            Sounds::Play(Sound_Explosion, position);
-
-            VariantMap eventData = GetEventDataMap();
-            eventData[AmmoEvent::P_TYPE] = Hit_Missile;
-            eventData[AmmoEvent::P_OBJECT] = target;
-            SendEvent(E_HIT, eventData);
-
-            node_->SetEnabled(false);
-            return;
-        }
-
-        needCalculate = true;
+        Sounds::Play(Sound_Explosion, position);
+        Particles::Emitting(Particle_Explosion, position);
+        smokeNode->SetEnabled(false);
+        node_->SetEnabled(false);
     }
-
-    Rocket::mutexVectorRockets.Release();
+    else if (attackedUnit)
+    {
+        Sounds::Play(Sound_Explosion, position);
+    
+        VariantMap eventData = GetEventDataMap();
+        eventData[AmmoEvent::P_TYPE] = Hit_Missile;
+        eventData[AmmoEvent::P_OBJECT] = attackedUnit;
+        SendEvent(E_HIT, eventData);
+        smokeNode->SetEnabled(false);
+        node_->SetEnabled(false);
+    }
 }
 
 void Rocket::UpdateAll(float timeStep)
 {
-    static ThreadRocket thread1;
-    static ThreadRocket thread2;
-    static ThreadRocket thread3;
-    static ThreadRocket thread4;
+    static uint numCPU = 1; // Urho3D::GetNumLogicalCPUs();
 
-    while(thread1.inProcess) {};
-    thread1.Stop();
+    for(uint i = 0; i < numCPU; i++)
+    {
+        while(threads[i].InProcess()) {};
+    }
 
-    while(thread2.inProcess) {};
-    thread2.Stop();
-
-    while(thread3.inProcess) {};
-    thread3.Stop();
-
-    while(thread4.inProcess) {};
-    thread4.Stop();
-
-    mutexVectorRockets.Acquire();
     uint size = rockets.Size();
 
     for(uint i = 0; i < size; i++)
     {
-        rockets[i]->SetParameters(timeStep);
-    }
-    mutexVectorRockets.Release();
-
-    uint rocketsOnThread = (size + 1) / 4;
-
-    if (size > 0)
-    {
-        thread1.SetParameters(0, rocketsOnThread);
-        thread1.Run();
-        if (size > 1)
+        rockets[i]->isCalculated = false;
+        if (rockets[i]->node_->IsEnabled())
         {
-            thread2.SetParameters(rocketsOnThread + 1, 2 * rocketsOnThread);
-            thread2.Run();
-            if (size > 2)
-            {
-                thread3.SetParameters(2 * rocketsOnThread + 1, 3 * rocketsOnThread);
-                thread3.Run();
-                if (size > 3)
-                {
-                    thread4.SetParameters(3 * rocketsOnThread + 1, size - 1);
-                    thread4.Run();
-                }
-            }
+            rockets[i]->SetParameters(timeStep);
+        }
+    }
+
+    if(size > 0)
+    {
+        for(uint i = 0; i < numCPU; i++)
+        {
+            threads[i].SetParameters(0, size - 1);
+            threads[i].ThreadFunction();
+            //threads[i].Execute();
         }
     }
 }
 
-/*
-Vector3 Rocket::GetPosition()
-{
-    mutexPosition.Acquire();
-    Vector3 ret = position;
-    mutexPosition.Release();
-    return ret;
-}
-
-void Rocket::SetPosition(Vector3 &pos)
-{
-    mutexPosition.Acquire();
-    position = pos;
-    mutexPosition.Release();
-}
-*/
-
-bool Rocket::VerifyOnIntersectionTerrain()
+void Rocket::VerifyOnIntersectionTerrain()
 {
     Vector3 direction = speed;
     direction.Normalize();
     Ray ray(position, direction);
     PODVector<RayQueryResult> results;
-    RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, 0.5f, Urho3D::DRAWABLE_GEOMETRY);
+    RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, 0.5f, Urho3D::DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
     gScene->GetComponent<Octree>()->Raycast(query);
 
-    uint size = results.Size();
-    if (size)
+    if (results.Size())
     {
         for (auto result : results)
         {
             String name = result.drawable_->GetNode()->GetName();
-            if (name == NODE_TERRAIN)
+            if (name == NODE_TANK)
             {
-                return true;
+                attackedUnit = (Tank*)result.drawable_->GetNode()->GetVar("PointerTank").GetPtr();
+                return;
+            }
+            else if (name == NODE_TERRAIN)
+            {
+                collisionWithTerrain = true;
+                return;
             }
         }
     }
-    return false;
 }
 
 void Rocket::HandlePostRenderUpdate(StringHash, VariantMap&)
@@ -466,5 +449,17 @@ void Rocket::HandlePostRenderUpdate(StringHash, VariantMap&)
             //gDebugRenderer->AddSphere(Sphere(rockets[i]->node_->GetPosition(), 0.3f), Color::BLUE);
 
         }
+    }
+}
+
+void Rocket::DeleteAll()
+{
+    static uint numCPU = Urho3D::GetNumLogicalCPUs();
+
+    for(uint i = 0; i < numCPU; i++)
+    {
+        if(threads[i].InProcess())
+        {
+        };
     }
 }

@@ -13,6 +13,7 @@
 #include "Core/Camera.h"
 #include "TacticsVictory.h"
 #include "Game/Scene.h"
+#include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
@@ -138,4 +139,12 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
     {
         scene->Update(time);
     }
+}
+
+
+void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& eventData)
+{
+    float time = eventData[Urho3D::Update::P_TIMESTEP].GetFloat();
+
+    Rocket::UpdateAll(time);
 }

@@ -137,8 +137,6 @@ void lScene::Update(float timeStep)
     }
 
     pathIndicator.Update();
-
-    Rocket::UpdateAll(timeStep);
 }
 
 void lScene::HandleMouseDown(StringHash, VariantMap& eventData)

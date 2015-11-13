@@ -17,6 +17,7 @@ void Particles::Init()
     Node *node = gScene->CreateChild("Emitter");
     node->SetScale(5.0f);
     ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
+    emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
     XMLFile xmlParticle = XMLFile(gContext);
     SharedPtr<File> file(gCache->GetFile("Particle/SnowExplosion.xml"));
     if (file)

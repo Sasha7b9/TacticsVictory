@@ -276,6 +276,9 @@
     <ClCompile Include="src\Game\Objects\Buildings\MilitaryPlant\MilitaryPlant.cpp">
       <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\Mutex.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -481,6 +484,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Buildings\MilitaryPlant\MilitaryPlant.h">
       <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Mutex.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -336,6 +336,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Core\Camera.cpp" />
     <ClCompile Include="src\Core\Log.cpp" />
     <ClCompile Include="src\Core\Math.cpp" />
+    <ClCompile Include="src\Core\Mutex.cpp" />
     <ClCompile Include="src\Editor\Editor.cpp" />
     <ClCompile Include="src\Game\Level.cpp" />
     <ClCompile Include="src\Game\Logic\Movinator.cpp" />
@@ -405,6 +406,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Core\Camera.h" />
     <ClInclude Include="src\Core\Log.h" />
     <ClInclude Include="src\Core\Math.h" />
+    <ClInclude Include="src\Core\Mutex.h" />
     <ClInclude Include="src\defines.h" />
     <ClInclude Include="src\Editor\Editor.h" />
     <ClInclude Include="src\Game\Level.h" />

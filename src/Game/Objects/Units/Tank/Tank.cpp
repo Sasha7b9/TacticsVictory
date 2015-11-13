@@ -32,6 +32,8 @@ void Tank::RegisterObject(Context* context)
 
 void Tank::Init(Type type_)
 {
+    node_->SetVar("PointerTank", this);
+
     translator.Init(this);
     type = type_;
     LoadFromFile();
@@ -57,6 +59,7 @@ void Tank::LoadFromFile()
     String fileMaterials = modelValue.Get("fileMaterials").GetString();
 
     modelObject = node_->CreateComponent<StaticModel>();
+    modelObject->SetViewMask(VIEW_MASK_FOR_MISSILE);
     modelObject->SetModel(gCache->GetResource<Model>(fileModel));
     modelObject->ApplyMaterialList(fileMaterials);
     modelObject->SetCastShadows(true);

@@ -19,7 +19,6 @@
 #include <Urho3D/Audio/SoundSource.h>
 #include <Urho3D/Audio/SoundSource3D.h>
 
-#include <Urho3D/Core/Mutex.h>
 #include <Urho3D/Core/Profiler.h>
 #include <Urho3D/Core/Thread.h>
 
@@ -39,6 +38,7 @@
 #include <Urho3D/Graphics/IndexBuffer.h>
 #include <Urho3D/Graphics/Model.h>
 #include <Urho3D/Graphics/Octree.h>
+#include <Urho3D/Graphics/OctreeQuery.h>
 #include <Urho3D/Graphics/ParticleEffect.h>
 #include <Urho3D/Graphics/ParticleEmitter.h>
 #include <Urho3D/Graphics/Texture2D.h>
@@ -112,6 +112,7 @@ using Urho3D::BiasParameters;
 using Urho3D::Billboard;
 using Urho3D::BillboardSet;
 using Urho3D::BoundingBox;
+using Urho3D::BoxOctreeQuery;
 using Urho3D::Button;
 
 using Urho3D::CascadeParameters;
@@ -160,12 +161,12 @@ using Urho3D::LogicComponent;
 
 using Urho3D::Material;
 using Urho3D::Model;
-using Urho3D::Mutex;
 
 using Urho3D::Node;
 
 using Urho3D::Object;
 using Urho3D::Octree;
+using Urho3D::OctreeQuery;
 using Urho3D::OctreeQueryResult;
 
 using Urho3D::Pair;

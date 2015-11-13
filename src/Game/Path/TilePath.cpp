@@ -19,10 +19,10 @@ TilePath::TilePath() : Object(gContext)
     {
         const float vertexes[4 * (3 + 2)] =
         {
-            0.0f + d, 0.0f, 0.0f + d, 0.0f, 0.0f,
-            1.0f - d, 0.0f, 0.0f + d, 1.0f, 0.0f,
-            1.0f - d, 0.0f, -1.0f + d, 1.0f, 1.0f,
-            0.0f + d, 0.0f, -1.0f + d, 0.0f, 1.0f
+            0.0f + d, 0.0f, 0.0f + d, 0.0f, 1.0f,
+            1.0f - d, 0.0f, 0.0f + d, 1.0f, 1.0f,
+            1.0f - d, 0.0f, -1.0f + d, 1.0f, 0.0f,
+            0.0f + d, 0.0f, -1.0f + d, 0.0f, 0.0f
         };
 
         const uint16 indexes[6] =
@@ -34,6 +34,7 @@ TilePath::TilePath() : Object(gContext)
         SharedPtr<CustomGeometry> geometry(node->CreateComponent<CustomGeometry>());
 
         geometry->BeginGeometry(0, Urho3D::TRIANGLE_LIST);
+        geometry->SetViewMask(VIEW_MASK_FOR_EFFECTS);
 
         for (int i = 0; i < 6; i++)
         {
