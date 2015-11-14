@@ -1,0 +1,31 @@
+ ***** Units *****
+
+ - Overland / Civil / Military
+    Tank - Military
+    Robot - Military
+    Builder - Civil
+
+ - Fly      / Civil / Military
+    Supplier Ammunition
+    Helicopter  / Rocket Launcher
+    Fighter
+    Bomber
+
+ - Floating / Civil / Military
+
+ ***** Buildings *****
+    Military Plant
+    Civil Plant
+    Power Plant
+    Warehouse of Ammunition
+    Shaft
+    Processing Plant
+
+ ***** Weapons *****
+    Laser
+    Rocket Launcher
+    Mortar
+    Machine Gun
+    Gun
+
+ ***** Ammunition *****

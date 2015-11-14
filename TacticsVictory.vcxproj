@@ -473,6 +473,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\TacticsVictory.h" />
     <ClInclude Include="src\TacticsVictoryHandlers.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\doc\Objects.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />

@@ -492,4 +492,9 @@
       <Filter>Game\Objects</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\doc\Objects.txt">
+      <Filter>_doc_</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
