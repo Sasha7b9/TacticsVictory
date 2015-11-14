@@ -45,3 +45,4 @@ extern Hint                 *gHint;
 extern int                  *gCounterHint;
 extern Vector<lWindow*>     gOpenedWindow;
 extern PODVector<Tank*>     gTanks;
+extern WindowTarget         *gWindowTarget;

@@ -6,7 +6,7 @@
 #include "Game/Objects/Terrain.h"
 #include "GlobalFunctions.h"
 #include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
-#include "GAme/Objects/Weapon/AmmoEvents.h"
+#include "GAme/Objects/GameObjectEvents.h"
 #include "Game/Particles.h"
 
 
@@ -19,14 +19,26 @@ Tank::Tank(Context *context) : GameObject(context)
     {
         parameters[Small] = TankStruct(Small, "Models/Tank.json");
         parameters[T_34_76] = TankStruct(T_34_76, "Models/T-34-76-2.json");
-
-        Node* nodeCameraTarget = gScene->CreateChild("CameraTarget");
-        cameraTarget = nodeCameraTarget->CreateComponent<Urho3D::Camera>();
-        cameraTarget->SetFarClip(radiusDetect);
     }
 
+    Node* nodeCameraTarget = gScene->CreateChild("CameraTarget");
+    cameraTarget = nodeCameraTarget->CreateComponent<Camera>();
+    cameraTarget->SetNearClip(1.0f);
+    cameraTarget->SetFarClip(radiusDetect);
+
+    renderTexture = new Texture2D(gContext);
+    renderTexture->SetSize(SIZE_WINDOW_TARGET, SIZE_WINDOW_TARGET, D3DFMT_X8R8G8B8, Urho3D::TEXTURE_RENDERTARGET);
+    renderTexture->SetFilterMode(Urho3D::FILTER_DEFAULT);
+
+    renderSurface = renderTexture->GetRenderSurface();
+    SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraTarget));
+    renderSurface->SetViewport(0, viewport);
+    renderSurface->SetUpdateMode(Urho3D::SURFACE_UPDATEALWAYS);
+
     pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
+
     SubscribeToEvent(E_HIT, URHO3D_HANDLER(Tank, HandleAmmoHit));
+    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, URHO3D_HANDLER(Tank, HandlePostRenderUpdate));
 }
 
 void Tank::RegisterObject(Context* context)
@@ -182,6 +194,7 @@ void Tank::Update(float dT)
             if (target != this)
             {
                 float distance = (GetPosition() - target->GetPosition()).Length();
+
                 if (distance < radiusDetect)
                 {
                     if (TargetInPointView(target))
@@ -295,3 +308,16 @@ void Tank::ConfigurePhysics()
     // Wrong control. It is necessary to create the trigger and a body which will influence it
     // http://www.gamedev.ru/community/urho3d/forum/?id=204570&page=4
 }
+
+void Tank::HandlePostRenderUpdate(StringHash, VariantMap&)
+{
+    if(selected)
+    {
+        cameraTarget->GetNode()->SetPosition(GetPosition() + Vector3(0.0f, 1.0f, 0.0f));
+
+        VariantMap eventData = GetEventDataMap();
+        eventData[GameObjectEvent::P_TEXTURE] = renderTexture;
+        SendEvent(E_SETTEXTURE, eventData);
+    }
+}
+

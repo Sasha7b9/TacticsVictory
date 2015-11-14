@@ -42,6 +42,7 @@
 #include <Urho3D/Graphics/OctreeQuery.h>
 #include <Urho3D/Graphics/ParticleEffect.h>
 #include <Urho3D/Graphics/ParticleEmitter.h>
+#include <Urho3D/Graphics/RenderSurface.h>
 #include <Urho3D/Graphics/Texture2D.h>
 #include <Urho3D/Graphics/Texture.h>
 #include <Urho3D/Graphics/Renderer.h>
@@ -186,6 +187,7 @@ using Urho3D::Ray;
 using Urho3D::RayQueryResult;
 using Urho3D::RayOctreeQuery;
 using Urho3D::Renderer;
+using Urho3D::RenderSurface;
 using Urho3D::Resource;
 using Urho3D::ResourceCache;
 using Urho3D::RigidBody;
@@ -290,6 +292,7 @@ class Triangle;
 
 class WindowConfirmExit;
 class WindowPause;
+class WindowTarget;
 class WindowVariables;
 
 

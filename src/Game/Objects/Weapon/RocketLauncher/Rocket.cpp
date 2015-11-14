@@ -4,7 +4,7 @@
 #include "Rocket.h"
 #include "Core/Math.h"
 #include "Game/Objects/Units/Tank/Tank.h"
-#include "Game/Objects/Weapon/AmmoEvents.h"
+#include "Game/Objects/GameObjectEvents.h"
 #include "Core/Camera.h"
 #include "Game/Sounds.h"
 #include "Game/Particles.h"

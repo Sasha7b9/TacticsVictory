@@ -276,6 +276,9 @@
     <ClCompile Include="src\Game\Objects\Buildings\MilitaryPlant\MilitaryPlant.cpp">
       <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\GuiGame\WindowTarget.cpp">
+      <Filter>GUI\GuiGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -452,9 +455,6 @@
     <ClInclude Include="src\Game\Objects\Weapon\RocketLauncher\RocketLauncher.h">
       <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Weapon\AmmoEvents.h">
-      <Filter>Game\Objects\Weapon</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Objects\Weapon\RocketLauncher\Rocket.h">
       <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
     </ClInclude>
@@ -481,6 +481,12 @@
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Buildings\MilitaryPlant\MilitaryPlant.h">
       <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GuiGame\WindowTarget.h">
+      <Filter>GUI\GuiGame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\GameObjectEvents.h">
+      <Filter>Game\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

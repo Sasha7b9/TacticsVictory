@@ -34,11 +34,12 @@ lConsole       *gConsole = nullptr;
 MenuMain       *gMenuMain = nullptr;
 MenuOptions    *gMenuOptions = nullptr;
 
-WindowConfirmExit    *gWindowConfirmExit = nullptr;
-WindowVariables    *gWindowVars = nullptr;
-Hint               *gHint = nullptr;
+WindowConfirmExit   *gWindowConfirmExit = nullptr;
+WindowVariables     *gWindowVars = nullptr;
+Hint                *gHint = nullptr;
 int                 *gCounterHint = 0;
-Level              *gLevel = nullptr;
+Level               *gLevel = nullptr;
 lTerrain            *gTerrain = nullptr;
 Vector<lWindow*>    gOpenedWindow;
 PODVector<Tank*>    gTanks;
+WindowTarget        *gWindowTarget = nullptr;

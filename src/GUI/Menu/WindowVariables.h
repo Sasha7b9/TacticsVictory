@@ -9,7 +9,7 @@ class WindowVariables : public lWindow
     URHO3D_OBJECT(WindowVariables, lWindow);
 
 public:
-    WindowVariables(Context *context);
+    WindowVariables(Context *context = gContext);
 
     void SetVar(float *var, char *title);
     void AddFunctionFloat(char *title, pFuncFV funcRead, pFuncVF funcWrite);

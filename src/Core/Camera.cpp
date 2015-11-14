@@ -276,7 +276,7 @@ void lCamera::SetEnabled(bool _enabled)
 
 void lCamera::SetupViewport()
 {
-    SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<Urho3D::Camera>()));
+    SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<Camera>()));
     gRenderer->SetViewport(0, viewport);
 }
 

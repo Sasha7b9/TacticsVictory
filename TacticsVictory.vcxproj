@@ -382,6 +382,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\GUI.cpp" />
     <ClCompile Include="src\GUI\GuiEditor\GuiEditor.cpp" />
     <ClCompile Include="src\GUI\GuiGame\GuiGame.cpp" />
+    <ClCompile Include="src\GUI\GuiGame\WindowTarget.cpp" />
     <ClCompile Include="src\GUI\Logic\LineTranslator1D.cpp" />
     <ClCompile Include="src\GUI\Logic\LineTranslator2D.cpp" />
     <ClCompile Include="src\GUI\Menu\Console.cpp" />
@@ -413,13 +414,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Objects\Buildings\CivilPlant\CivilPlant.h" />
     <ClInclude Include="src\Game\Objects\Buildings\MilitaryPlant\MilitaryPlant.h" />
     <ClInclude Include="src\Game\Objects\GameObject.h" />
+    <ClInclude Include="src\Game\Objects\GameObjectEvents.h" />
     <ClInclude Include="src\Game\Objects\Terrain.h" />
     <ClInclude Include="src\Game\Objects\TerrainSegment.h" />
     <ClInclude Include="src\Game\Objects\Units\Airplane\Airplane.h" />
     <ClInclude Include="src\Game\Objects\Units\Builder\Builder.h" />
     <ClInclude Include="src\Game\Objects\Units\Tank\Tank.h" />
     <ClInclude Include="src\Game\Objects\Units\Tank\Translator.h" />
-    <ClInclude Include="src\Game\Objects\Weapon\AmmoEvents.h" />
     <ClInclude Include="src\Game\Objects\Weapon\MachineGun\MachineGun.h" />
     <ClInclude Include="src\Game\Objects\Weapon\Mortar\Mortar.h" />
     <ClInclude Include="src\Game\Objects\Weapon\RocketLauncher\Rocket.h" />
@@ -453,6 +454,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\GUI.h" />
     <ClInclude Include="src\GUI\GuiEditor\GuiEditor.h" />
     <ClInclude Include="src\GUI\GuiGame\GuiGame.h" />
+    <ClInclude Include="src\GUI\GuiGame\WindowTarget.h" />
     <ClInclude Include="src\GUI\Logic\LineTranslator1D.h" />
     <ClInclude Include="src\GUI\Logic\LineTranslator2D.h" />
     <ClInclude Include="src\GUI\Menu\Console.h" />

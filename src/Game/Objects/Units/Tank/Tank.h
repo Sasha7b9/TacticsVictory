@@ -89,5 +89,9 @@ private:
 
     void ConfigurePhysics();
 
-    Urho3D::Camera* cameraTarget = nullptr;     // Camera for determination of visibility of the target.
+    Camera* cameraTarget = nullptr;     // Camera for determination of visibility of the target.
+    SharedPtr<Texture2D> renderTexture;
+    SharedPtr<RenderSurface> renderSurface;
+
+    void HandlePostRenderUpdate(StringHash, VariantMap&);
 };
