@@ -44,5 +44,7 @@ void WindowTarget::HandleSetTexture(StringHash, VariantMap& eventData)
 
     SetPosition(0, 0);
 
+    
+
     SAFE_DELETE(buffer);
 }

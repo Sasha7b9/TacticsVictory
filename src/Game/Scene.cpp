@@ -90,7 +90,15 @@ void lScene::Create()
     gTanks.Push(tank);
 
     tank = Tank::Create(Tank::Small);
-    tank->SetCoord(Coord(0, 20));
+    tank->SetCoord(Coord(0, 40));
+    gTanks.Push(tank);
+
+    tank = Tank::Create(Tank::Small);
+    tank->SetCoord(Coord(40, 0));
+    gTanks.Push(tank);
+
+    tank = Tank::Create(Tank::Small);
+    tank->SetCoord(Coord(40, 40));
     gTanks.Push(tank);
 
     SharedPtr<Node> lightNode;
@@ -114,8 +122,8 @@ void lScene::Create()
 
     gCamera->SetPosition({sizeX / 2.0f, 25.0f, - (float)sizeZ / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
 
-    SharedPtr<WindowTarget> windowTarget(new WindowTarget());
-    gUIRoot->AddChild(windowTarget);
+    //SharedPtr<WindowTarget> windowTarget(new WindowTarget());
+    //gUIRoot->AddChild(windowTarget);
 }
 
 void lScene::Update(float /*timeStep*/)

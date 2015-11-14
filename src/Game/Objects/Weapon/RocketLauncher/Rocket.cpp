@@ -77,7 +77,11 @@ void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *ta
     this->target = target;
     this->position = position;
     absSpeed = speedShooter.Length() * startSpeedKoeff;
-    speed = Vector3(0.0f, absSpeed, 0.0f);
+    if(absSpeed < fabs(0.1f))
+    {
+        absSpeed = startSpeedKoeff;
+    }
+    speed = Vector3(speedShooter.x_, absSpeed, speedShooter.z_);
 
     rotate = Quaternion(Vector3::UP, Vector3::UP);
 }
@@ -382,6 +386,7 @@ void Rocket::SetParameters(float timeStep)
 
 void Rocket::UpdateAll(float timeStep)
 {
+    gProfiler->BeginBlock("Rocket::UpdateAll");
     static uint numCPU = 1; // Urho3D::GetNumLogicalCPUs();
 
     for(uint i = 0; i < numCPU; i++)
@@ -409,6 +414,7 @@ void Rocket::UpdateAll(float timeStep)
             //threads[i].Execute();
         }
     }
+    gProfiler->EndBlock();
 }
 
 void Rocket::VerifyOnIntersectionTerrain()

@@ -33,12 +33,14 @@ Tank::Tank(Context *context) : GameObject(context)
     renderSurface = renderTexture->GetRenderSurface();
     SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraTarget));
     renderSurface->SetViewport(0, viewport);
-    renderSurface->SetUpdateMode(Urho3D::SURFACE_UPDATEALWAYS);
+    //renderSurface->SetUpdateMode(Urho3D::SURFACE_UPDATEALWAYS);
+
+    gCache->AddManualResource(renderTexture);
 
     pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
 
     SubscribeToEvent(E_HIT, URHO3D_HANDLER(Tank, HandleAmmoHit));
-    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, URHO3D_HANDLER(Tank, HandlePostRenderUpdate));
+    SubscribeToEvent(Urho3D::E_RENDERUPDATE, URHO3D_HANDLER(Tank, HandlePostRenderUpdate));
 }
 
 void Tank::RegisterObject(Context* context)
@@ -134,6 +136,7 @@ void Tank::SetCoord(const Coord& coord)
 
 void Tank::Update(float dT)
 {
+    gProfiler->BeginBlock("Tank::Update");
     GameObject::Update(dT);
 
     if(timeElapsedAfterShoot != 0.0f)
@@ -169,10 +172,11 @@ void Tank::Update(float dT)
             pathFinder.StartFind(start, {row, col});
             inProcessFindPath = true;
         }
-        return;
     }
-
-    SetPosition(translator.Update(dT));
+    else
+    {
+        SetPosition(translator.Update(dT));
+    }
 
     if (timeForReload)
     {
@@ -205,6 +209,7 @@ void Tank::Update(float dT)
             }
         }
     }
+    gProfiler->EndBlock();
 }
 
 void Tank::SetSelected(bool selected_)
@@ -278,11 +283,43 @@ bool Tank::TargetInPointView(Tank* tank)
 {
     if(timeElapsedAfterShoot >= timeRechargeWeapon)
     {
-        SharedPtr<Rocket> missile(Rocket::Create(translator.speed, translator.currentPos, tank));
-        timeElapsedAfterShoot = 1e-6f;
-        return true;
+        Vector3 position = node_->GetComponent<StaticModel>()->GetWorldBoundingBox().Center();
+        Vector3 posTarget = tank->node_->GetComponent<StaticModel>()->GetWorldBoundingBox().Center();
+
+        Vector3 direction = posTarget - position;
+        direction.Normalize();
+
+        Ray ray(position, direction);
+
+        PODVector<RayQueryResult> results;
+        RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, radiusDetect * 2.0f, Urho3D::DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
+        gScene->GetComponent<Octree>()->Raycast(query);
+        
+        while(results.Size() && results[0].drawable_->GetNode() == node_)
+        {
+            results.Erase(0, 1);
+        }
+
+        if(results.Size() && results[0].drawable_->GetNode() == tank->node_)
+        {
+            SharedPtr<Rocket> missile(Rocket::Create(translator.speed, translator.currentPos, tank));
+            timeElapsedAfterShoot = 1e-6f;
+            return true;
+        }
     }
     return false;
+}
+
+void Tank::HandlePostRenderUpdate(StringHash, VariantMap&)
+{
+    if(selected)
+    {
+        cameraTarget->GetNode()->SetPosition(GetPosition() + Vector3(0.0f, 1.0f, 0.0f));
+
+        VariantMap eventData = GetEventDataMap();
+        eventData[GameObjectEvent::P_TEXTURE] = renderTexture;
+        SendEvent(E_SETTEXTURE, eventData);
+    }
 }
 
 void Tank::ConfigurePhysics()
@@ -301,7 +338,7 @@ void Tank::ConfigurePhysics()
     shape = trigger->CreateComponent<CollisionShape>();
     shape->SetSphere((Vector3::ONE / node_->GetScale()).Length() * radiusDetect / 2);
 
-    SubscribeToEvent(node_, Urho3D::E_NODECOLLISION, URHO3D_HANDLER(Tank, HandleCollision));  
+    //SubscribeToEvent(node_, Urho3D::E_NODECOLLISION, URHO3D_HANDLER(Tank, HandleCollision));  
 
     return;
     // WARN
@@ -309,15 +346,5 @@ void Tank::ConfigurePhysics()
     // http://www.gamedev.ru/community/urho3d/forum/?id=204570&page=4
 }
 
-void Tank::HandlePostRenderUpdate(StringHash, VariantMap&)
-{
-    if(selected)
-    {
-        cameraTarget->GetNode()->SetPosition(GetPosition() + Vector3(0.0f, 1.0f, 0.0f));
 
-        VariantMap eventData = GetEventDataMap();
-        eventData[GameObjectEvent::P_TEXTURE] = renderTexture;
-        SendEvent(E_SETTEXTURE, eventData);
-    }
-}
 

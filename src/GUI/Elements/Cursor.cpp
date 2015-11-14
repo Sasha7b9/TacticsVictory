@@ -176,7 +176,7 @@ Drawable* lCursor::GetRaycastNode(Vector3 *hitPos_)
 
     Ray ray = gCamera->GetCursorRay();
     PODVector<RayQueryResult> results;
-    RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, Urho3D::M_INFINITY, Urho3D::DRAWABLE_GEOMETRY);
+    RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, Urho3D::M_INFINITY, Urho3D::DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
     gScene->GetComponent<Octree>()->Raycast(query);
 
     if(results.Size())
