@@ -19,6 +19,7 @@
 #include <Urho3D/Audio/SoundSource.h>
 #include <Urho3D/Audio/SoundSource3D.h>
 
+#include <Urho3D/Core/Mutex.h>
 #include <Urho3D/Core/Profiler.h>
 #include <Urho3D/Core/Thread.h>
 
@@ -162,6 +163,7 @@ using Urho3D::LogicComponent;
 
 using Urho3D::Material;
 using Urho3D::Model;
+using Urho3D::Mutex;
 
 using Urho3D::Node;
 
