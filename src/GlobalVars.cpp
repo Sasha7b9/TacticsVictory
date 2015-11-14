@@ -23,7 +23,7 @@ FileSelector    *gFileSelector = nullptr;
 Urho3D::Log     *gLog = nullptr;
 Profiler        *gProfiler = nullptr;
 
-Camera         *gCamera = nullptr;
+lCamera        *gCamera = nullptr;
 lCursor        *gCursor = nullptr;
 GuiGame        *gGuiGame = nullptr;
 GuiEditor      *gGuiEditor = nullptr;

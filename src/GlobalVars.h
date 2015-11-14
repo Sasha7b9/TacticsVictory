@@ -26,15 +26,15 @@ extern FileSelector     *gFileSelector;
 extern Urho3D::Log      *gLog;
 extern Profiler         *gProfiler;
 
-extern Camera           *gCamera;
-extern lCursor           *gCursor;
+extern lCamera          *gCamera;
+extern lCursor          *gCursor;
 extern Editor           *gEditor;
 extern Settings         *gSet;
 extern Level            *gLevel;
-extern lTerrain          *gTerrain;
+extern lTerrain         *gTerrain;
 
 extern GUI                  *gGUI;
-extern lConsole              *gConsole;
+extern lConsole             *gConsole;
 extern WindowVariables      *gWindowVars;
 extern MenuMain             *gMenuMain;
 extern GuiGame              *gGuiGame;

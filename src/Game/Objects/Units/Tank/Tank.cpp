@@ -19,6 +19,10 @@ Tank::Tank(Context *context) : GameObject(context)
     {
         parameters[Small] = TankStruct(Small, "Models/Tank.json");
         parameters[T_34_76] = TankStruct(T_34_76, "Models/T-34-76-2.json");
+
+        Node* nodeCameraTarget = gScene->CreateChild("CameraTarget");
+        cameraTarget = nodeCameraTarget->CreateComponent<Urho3D::Camera>();
+        cameraTarget->SetFarClip(radiusDetect);
     }
 
     pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
@@ -237,28 +241,6 @@ void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
     Particles::Emitting(Particle_Explosion, node_->GetPosition());
 }
 
-/*
-void Tank::CreateParticleEmitter()
-{
-    Node *forEmitter = node_->CreateChild("Emitter");
-    forEmitter->SetWorldScale((Vector3::ONE / node_->GetScale() / 5.0f));
-
-    ParticleEmitter *emitter = forEmitter->CreateComponent<ParticleEmitter>();
-
-    XMLFile xmlParticle = XMLFile(gContext);
-    SharedPtr<File> file(gCache->GetFile("Particle/SnowExplosion.xml"));
-    if(file)
-    {
-        xmlParticle.Load(*file);
-        SharedPtr<ParticleEffect> pe(new ParticleEffect(gContext));
-        XMLElement root = xmlParticle.GetRoot("particleemitter");
-        pe->Load(root);
-        emitter->SetEffect(pe);
-        emitter->SetEmitting(false);
-    }
-}
-*/
-
 void Tank::HandleCollision(StringHash, VariantMap& eventData)
 {
     if(timeElapsedAfterShoot >= timeRechargeWeapon)
@@ -312,23 +294,4 @@ void Tank::ConfigurePhysics()
     // WARN
     // Wrong control. It is necessary to create the trigger and a body which will influence it
     // http://www.gamedev.ru/community/urho3d/forum/?id=204570&page=4
-
-    /*
-    RigidBody *body = node_->GetComponent<RigidBody>();
-    if(body)
-    {
-        node_->RemoveComponent(body);
-        node_->RemoveComponent(node_->GetComponent<CollisionShape>());
-    }
-    else
-    {
-        SubscribeToEvent(node_, Urho3D::E_NODECOLLISION, URHO3D_HANDLER(Tank, HandleCollision));
-    }
-
-    body = node_->CreateComponent<RigidBody>();
-    body->SetMass(1.0f);
-    body->SetTrigger(true);
-    CollisionShape *shape = node_->CreateComponent<CollisionShape>();
-    shape->SetSphere(radiusDetect / node_->GetScale().x_);
-    */
 }

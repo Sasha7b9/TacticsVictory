@@ -87,6 +87,7 @@ private:
     void HandleCollision(StringHash, VariantMap&);
     void HandleAmmoHit(StringHash, VariantMap&);
 
-    //void CreateParticleEmitter();
     void ConfigurePhysics();
+
+    Urho3D::Camera* cameraTarget = nullptr;     // Camera for determination of visibility of the target.
 };

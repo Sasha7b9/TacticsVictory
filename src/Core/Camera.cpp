@@ -6,7 +6,7 @@
 #include "GUI/GUI.h"
 
 
-Camera::Camera()
+lCamera::lCamera()
 {
     cameraNode = gScene->CreateChild("Camera");
 
@@ -28,30 +28,30 @@ Camera::Camera()
     gAudio->SetListener(listener);
 }
 
-Vector3 Camera::GetPosition()
+Vector3 lCamera::GetPosition()
 {
     return cameraNode->GetPosition();
 }
 
-void Camera::SetPosition(const Vector3 &position)
+void lCamera::SetPosition(const Vector3 &position)
 {
     cameraNode->SetPosition(position);
 }
 
-void Camera::SetPosition(const Vector3& position, const Vector3& lookAt_)
+void lCamera::SetPosition(const Vector3& position, const Vector3& lookAt_)
 {
     cameraNode->SetPosition(position);
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
-void Camera::LookAt(const Vector3 &lookAt_)
+void lCamera::LookAt(const Vector3 &lookAt_)
 {
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
-void Camera::ParallelTranslateLookAt(const Vector3 &lookAt_)
+void lCamera::ParallelTranslateLookAt(const Vector3 &lookAt_)
 {
     Vector3 delta = lookAt_ - lookAt;
     lookAt = lookAt_;
@@ -59,7 +59,7 @@ void Camera::ParallelTranslateLookAt(const Vector3 &lookAt_)
     cameraNode->LookAt(lookAt);
 }
 
-void Camera::Move(float time)
+void lCamera::Move(float time)
 {
     if(!enabled)
     {
@@ -163,7 +163,7 @@ void Camera::Move(float time)
     }
 }
 
-void Camera::SetPitch(float newPitch)
+void lCamera::SetPitch(float newPitch)
 {
     Quaternion rotation = cameraNode->GetRotation();
     float yaw = rotation.YawAngle();
@@ -175,7 +175,7 @@ void Camera::SetPitch(float newPitch)
     cameraNode->RotateAround(lookAt, rotateNeed, Urho3D::TS_WORLD);
 }
 
-void Camera::MoveOn(Direction direction, float distance)
+void lCamera::MoveOn(Direction direction, float distance)
 {
     if(!enabled)
     {
@@ -269,23 +269,23 @@ void Camera::MoveOn(Direction direction, float distance)
     }
 }
 
-void Camera::SetEnabled(bool _enabled)
+void lCamera::SetEnabled(bool _enabled)
 {
     enabled = _enabled;
 }
 
-void Camera::SetupViewport()
+void lCamera::SetupViewport()
 {
     SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<Urho3D::Camera>()));
     gRenderer->SetViewport(0, viewport);
 }
 
-SharedPtr<Node> Camera::GetNode()
+SharedPtr<Node> lCamera::GetNode()
 {
     return cameraNode;
 }
 
-Ray Camera::GetCursorRay()
+Ray lCamera::GetCursorRay()
 {
     IntVector2 pos = gUI->GetCursorPosition();
     return cameraNode->GetComponent<Urho3D::Camera>()->GetScreenRay((float)pos.x_ / gGraphics->GetWidth(), (float)pos.y_ / gGraphics->GetHeight());

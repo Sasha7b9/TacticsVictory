@@ -115,6 +115,7 @@ using Urho3D::BoundingBox;
 using Urho3D::BoxOctreeQuery;
 using Urho3D::Button;
 
+using Urho3D::Camera;
 using Urho3D::CascadeParameters;
 using Urho3D::CheckBox;
 using Urho3D::CollisionShape;
@@ -240,7 +241,7 @@ class ButtonMain;
 class ButtonSwitch;
 class ButtonToggled;
 
-class Camera;
+class lCamera;
 class lConsole;
 class lCursor;
 class CursorShapes;

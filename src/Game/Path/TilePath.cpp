@@ -36,11 +36,12 @@ TilePath::TilePath() : Object(gContext)
         geometry->BeginGeometry(0, Urho3D::TRIANGLE_LIST);
         geometry->SetViewMask(VIEW_MASK_FOR_EFFECTS);
 
-        for (int i = 0; i < 6; i++)
+        for(int i = 0; i < 6; i++)
         {
             const float *p = vertexes + indexes[i] * 5;
             geometry->DefineVertex(Vector3(*p++, *p++, *p++));
             geometry->DefineTexCoord(Vector2(*p++, *p));
+            geometry->DefineNormal({0.0f, 1.0f, 0.0f});
         }
 
         geometry->SetMaterial(gCache->GetResource<Material>("Materials/Decals/PathDecal.xml"));

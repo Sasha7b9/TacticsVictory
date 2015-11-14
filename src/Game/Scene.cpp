@@ -114,7 +114,7 @@ void lScene::Create()
     gCamera->SetPosition({sizeX / 2.0f, 25.0f, - (float)sizeZ / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
 }
 
-void lScene::Update(float timeStep)
+void lScene::Update(float /*timeStep*/)
 {
     Vector3 hitPos;
     Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
