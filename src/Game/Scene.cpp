@@ -9,7 +9,7 @@
 #include "Game/Objects/Terrain.h"
 #include "GUI/Elements/Cursor.h"
 #include "Game/Path/TilePath.h"
-#include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
+#include "Game/Objects/Ammo/Rocket/Rocket.h"
 #include "Game/Sounds.h"
 #include "Game/Particles.h"
 #include "GUI/GuiGame/WindowTarget.h"

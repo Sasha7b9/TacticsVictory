@@ -3,13 +3,13 @@
 
 #include "Game/Path/WaveAlgorithm.h"
 #include "Game/Objects/Units/Tank/Translator.h"
-#include "Game/Objects/GameObject.h"
-#include "Game/Objects/Weapon/RocketLauncher/RocketLauncher.h"
+#include "Game/Objects/Units/UnitObject.h"
+#include "Game/Objects/Weapons/RocketLauncher/RocketLauncher.h"
 
 
-class Tank : public GameObject
+class Tank : public UnitObject
 {
-    URHO3D_OBJECT(Tank, GameObject);
+    URHO3D_OBJECT(Tank, UnitObject);
 
     friend class Translator;
 

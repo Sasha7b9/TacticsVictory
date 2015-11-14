@@ -1,12 +1,12 @@
 #pragma once
 
 
-#include "Game/Objects/GameObject.h"
+#include "Game/Objects/Ammo/AmmoObject.h"
 
 
-class Rocket : public GameObject
+class Rocket : public AmmoObject
 {
-    URHO3D_OBJECT(Rocket, GameObject);
+    URHO3D_OBJECT(Rocket, AmmoObject);
 
     friend class ThreadRocket;
 

@@ -46,20 +46,11 @@
     <Filter Include="Game\Path">
       <UniqueIdentifier>{d95f9b66-18c2-4dec-88bd-11fee010c993}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Weapon">
-      <UniqueIdentifier>{a0fa9639-ca9d-4189-9139-5a6018bebd9e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Objects\Units">
       <UniqueIdentifier>{ded62c8b-f8d0-4423-9aa6-cdc2ea58c406}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Buildings">
-      <UniqueIdentifier>{c2c10123-8550-48df-93ab-3d39c62fc0da}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Objects\Units\Tank">
       <UniqueIdentifier>{263b193a-40aa-44b1-a2e4-52679ac1790c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Objects\Weapon\RocketLauncer">
-      <UniqueIdentifier>{fcd0f500-62d1-4d44-b54c-e1cbb28b4313}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\Objects\Units\Builder">
       <UniqueIdentifier>{f0546ca5-0f4e-43ee-9f82-42abeb40bbb6}</UniqueIdentifier>
@@ -67,20 +58,77 @@
     <Filter Include="Game\Objects\Units\Airplane">
       <UniqueIdentifier>{050a9365-35fc-4f67-9478-7b5fd09d5d36}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Weapon\Mortar">
-      <UniqueIdentifier>{0db4d0fa-ac1c-4bf5-8d90-5e7954e95fd0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Objects\Weapon\MachineGun">
-      <UniqueIdentifier>{5d47e502-47a0-47fc-a2ca-be4cdcbe1703}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Objects\Buildings\CivilPlant">
-      <UniqueIdentifier>{23c69b81-14f1-40a5-875c-7be58099174b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Objects\Buildings\MilitaryPlant">
-      <UniqueIdentifier>{0575cc6f-780d-4cd3-9f70-337a5ef4ee08}</UniqueIdentifier>
-    </Filter>
     <Filter Include="_doc_">
       <UniqueIdentifier>{0365f6f8-9c0b-4915-a98c-0ad66a6adfd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Units\Bomber">
+      <UniqueIdentifier>{8e7902a8-d75f-45c3-8ffe-708e98bb81ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Units\Helicopter">
+      <UniqueIdentifier>{1b3823ad-f651-43f2-b62c-cc2d70f6bfac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Units\Robot">
+      <UniqueIdentifier>{506a198e-41b1-474d-92b3-716d6e391940}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Units\SupplierAmmo">
+      <UniqueIdentifier>{5b0c70fb-9b3a-4737-8328-8baa318d8cd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Ammo">
+      <UniqueIdentifier>{2965d754-a5fe-4125-88d6-44632b2bd867}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Ammo\AirBomb">
+      <UniqueIdentifier>{38e6f7d3-d55b-405f-813f-8a2f9850f208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Ammo\RollingBomb">
+      <UniqueIdentifier>{cf2498c0-8710-4d2a-90e5-455dc5386753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Ammo\Rocket">
+      <UniqueIdentifier>{2041500f-22dc-4b7c-8217-5fda172d1b01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Ammo\Grenade">
+      <UniqueIdentifier>{e553ef4a-4c7e-4624-893a-f528f576d4f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Ammo\Mine">
+      <UniqueIdentifier>{02606e62-e21b-43bb-aec6-20031e25d314}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Building">
+      <UniqueIdentifier>{c2c10123-8550-48df-93ab-3d39c62fc0da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Building\CivilPlant">
+      <UniqueIdentifier>{23c69b81-14f1-40a5-875c-7be58099174b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Building\MilitaryPlant">
+      <UniqueIdentifier>{0575cc6f-780d-4cd3-9f70-337a5ef4ee08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Building\PowerPlant">
+      <UniqueIdentifier>{1b6460ce-3c41-4118-a335-609b37c5ef06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Building\ProcessingPlant">
+      <UniqueIdentifier>{f34b812f-f138-493a-8fdb-b8b106b15705}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Building\Shaft">
+      <UniqueIdentifier>{726e963d-d42e-44a7-8cc9-50700c323e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Building\WarehouseAmmo">
+      <UniqueIdentifier>{edc8f9ce-d0a2-408a-8f63-445da85625aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Weapons">
+      <UniqueIdentifier>{a0fa9639-ca9d-4189-9139-5a6018bebd9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Weapons\RocketLauncer">
+      <UniqueIdentifier>{fcd0f500-62d1-4d44-b54c-e1cbb28b4313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Weapons\GrenadeLauncher">
+      <UniqueIdentifier>{0db4d0fa-ac1c-4bf5-8d90-5e7954e95fd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Weapons\MachineGun">
+      <UniqueIdentifier>{5d47e502-47a0-47fc-a2ca-be4cdcbe1703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Weapons\Laser">
+      <UniqueIdentifier>{82f645d0-859b-4d04-8185-0b86d6905227}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Objects\Weapons\Gun">
+      <UniqueIdentifier>{6cfa45cd-4121-4e23-8a03-7eaaf96cf412}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -249,23 +297,11 @@
     <ClCompile Include="src\Game\Objects\Units\Tank\Translator.cpp">
       <Filter>Game\Objects\Units\Tank</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Weapon\RocketLauncher\RocketLauncher.cpp">
-      <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Weapon\RocketLauncher\Rocket.cpp">
-      <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Sounds.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Particles.cpp">
       <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Weapon\MachineGun\MachineGun.cpp">
-      <Filter>Game\Objects\Weapon\MachineGun</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Weapon\Mortar\Mortar.cpp">
-      <Filter>Game\Objects\Weapon\Mortar</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Units\Airplane\Airplane.cpp">
       <Filter>Game\Objects\Units\Airplane</Filter>
@@ -274,13 +310,70 @@
       <Filter>Game\Objects\Units\Builder</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Buildings\CivilPlant\CivilPlant.cpp">
-      <Filter>Game\Objects\Buildings\CivilPlant</Filter>
+      <Filter>Game\Objects\Building\CivilPlant</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Buildings\MilitaryPlant\MilitaryPlant.cpp">
-      <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
+      <Filter>Game\Objects\Building\MilitaryPlant</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\GuiGame\WindowTarget.cpp">
       <Filter>GUI\GuiGame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Ammo\Rocket\Rocket.cpp">
+      <Filter>Game\Objects\Ammo\Rocket</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Buildings\BuildingObject.cpp">
+      <Filter>Game\Objects\Building</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Weapons\MachineGun\MachineGun.cpp">
+      <Filter>Game\Objects\Weapons\MachineGun</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Weapons\GrenadeLauncher\GrenadeLauncher.cpp">
+      <Filter>Game\Objects\Weapons\GrenadeLauncher</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Weapons\RocketLauncher\RocketLauncher.cpp">
+      <Filter>Game\Objects\Weapons\RocketLauncer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Buildings\WarehouseAmmo\WarehouseAmmo.cpp">
+      <Filter>Game\Objects\Building\WarehouseAmmo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Buildings\Shaft\Shaft.cpp">
+      <Filter>Game\Objects\Building\Shaft</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Buildings\ProcessingPlant\ProcessingPlant.cpp">
+      <Filter>Game\Objects\Building\ProcessingPlant</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Buildings\PowerPlant\PowerPlant.cpp">
+      <Filter>Game\Objects\Building\PowerPlant</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Ammo\AmmoObject.cpp">
+      <Filter>Game\Objects\Ammo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Ammo\AirBomb\AirBomb.cpp">
+      <Filter>Game\Objects\Ammo\AirBomb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Ammo\Grenade\Grenade.cpp">
+      <Filter>Game\Objects\Ammo\Grenade</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Ammo\Mine\Mine.cpp">
+      <Filter>Game\Objects\Ammo\Mine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Ammo\RollingBomb\RollingBomb.cpp">
+      <Filter>Game\Objects\Ammo\RollingBomb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Units\UnitObject.cpp">
+      <Filter>Game\Objects\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Units\Bomber\Bomber.cpp">
+      <Filter>Game\Objects\Units\Bomber</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Units\Helicopter\Helicopter.cpp">
+      <Filter>Game\Objects\Units\Helicopter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Units\SupplierAmmo\SupplierAmmo.cpp">
+      <Filter>Game\Objects\Units\SupplierAmmo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Units\Robot\Robot.cpp">
+      <Filter>Game\Objects\Units\Robot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -455,23 +548,11 @@
     <ClInclude Include="src\Game\Objects\Units\Tank\Translator.h">
       <Filter>Game\Objects\Units\Tank</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Weapon\RocketLauncher\RocketLauncher.h">
-      <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Weapon\RocketLauncher\Rocket.h">
-      <Filter>Game\Objects\Weapon\RocketLauncer</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Sounds.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Particles.h">
       <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Weapon\MachineGun\MachineGun.h">
-      <Filter>Game\Objects\Weapon\MachineGun</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Weapon\Mortar\Mortar.h">
-      <Filter>Game\Objects\Weapon\Mortar</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Units\Airplane\Airplane.h">
       <Filter>Game\Objects\Units\Airplane</Filter>
@@ -480,16 +561,73 @@
       <Filter>Game\Objects\Units\Builder</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Buildings\CivilPlant\CivilPlant.h">
-      <Filter>Game\Objects\Buildings\CivilPlant</Filter>
+      <Filter>Game\Objects\Building\CivilPlant</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Buildings\MilitaryPlant\MilitaryPlant.h">
-      <Filter>Game\Objects\Buildings\MilitaryPlant</Filter>
+      <Filter>Game\Objects\Building\MilitaryPlant</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\GuiGame\WindowTarget.h">
       <Filter>GUI\GuiGame</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\GameObjectEvents.h">
       <Filter>Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Ammo\Rocket\Rocket.h">
+      <Filter>Game\Objects\Ammo\Rocket</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Buildings\BuildingObject.h">
+      <Filter>Game\Objects\Building</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Weapons\MachineGun\MachineGun.h">
+      <Filter>Game\Objects\Weapons\MachineGun</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Weapons\GrenadeLauncher\GrenadeLauncher.h">
+      <Filter>Game\Objects\Weapons\GrenadeLauncher</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Weapons\RocketLauncher\RocketLauncher.h">
+      <Filter>Game\Objects\Weapons\RocketLauncer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Buildings\WarehouseAmmo\WarehouseAmmo.h">
+      <Filter>Game\Objects\Building\WarehouseAmmo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Buildings\Shaft\Shaft.h">
+      <Filter>Game\Objects\Building\Shaft</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Buildings\ProcessingPlant\ProcessinPlant.h">
+      <Filter>Game\Objects\Building\ProcessingPlant</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Buildings\PowerPlant\PowerPlant.h">
+      <Filter>Game\Objects\Building\PowerPlant</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Ammo\AmmoObject.h">
+      <Filter>Game\Objects\Ammo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Ammo\AirBomb\AirBomb.h">
+      <Filter>Game\Objects\Ammo\AirBomb</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Ammo\Grenade\Grenade.h">
+      <Filter>Game\Objects\Ammo\Grenade</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Ammo\Mine\Mine.h">
+      <Filter>Game\Objects\Ammo\Mine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Ammo\RollingBomb\RollingBomb.h">
+      <Filter>Game\Objects\Ammo\RollingBomb</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Units\UnitObject.h">
+      <Filter>Game\Objects\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Units\Bomber\Bomber.h">
+      <Filter>Game\Objects\Units\Bomber</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Units\Helicopter\Helicopter.h">
+      <Filter>Game\Objects\Units\Helicopter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Units\SupplierAmmo\SupplierAmmo.h">
+      <Filter>Game\Objects\Units\SupplierAmmo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Units\Robot\Robot.h">
+      <Filter>Game\Objects\Units\Robot</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

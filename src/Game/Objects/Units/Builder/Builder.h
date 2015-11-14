@@ -1,12 +1,14 @@
 #pragma once
 
 
-#include "Game/Objects/GameObject.h"
+#include "Game/Objects/Units/UnitObject.h"
 
 
-class Builder : public GameObject
+class Builder : public UnitObject
 {
 public:
+    Builder(Context *context = gContext);
+
 private:
     Builder& operator=(const Builder&)
     {};

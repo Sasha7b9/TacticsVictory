@@ -5,7 +5,7 @@
 #include "Core/Math.h"
 #include "Game/Objects/Terrain.h"
 #include "GlobalFunctions.h"
-#include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
+#include "Game/Objects/Ammo/Rocket/Rocket.h"
 #include "GAme/Objects/GameObjectEvents.h"
 #include "Game/Particles.h"
 
@@ -13,7 +13,8 @@
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
 
 
-Tank::Tank(Context *context) : GameObject(context)
+Tank::Tank(Context *context) : 
+    UnitObject(context)
 {
     if (parameters.Empty())
     {

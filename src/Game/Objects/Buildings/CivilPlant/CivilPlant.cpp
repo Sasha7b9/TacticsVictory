@@ -2,3 +2,10 @@
 
 
 #include "CivilPlant.h"
+
+
+CivilPlant::CivilPlant(Context *context)
+    : BuildingObject(context)
+{
+
+}

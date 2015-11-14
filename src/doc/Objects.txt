@@ -8,7 +8,7 @@
  - Fly      / Civil / Military
     Supplier Ammunition
     Helicopter  / Rocket Launcher
-    Fighter
+    Airplane
     Bomber
 
  - Floating / Civil / Military

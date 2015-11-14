@@ -1,12 +1,14 @@
 #pragma once
 
 
-#include "Game/Objects/GameObject.h"
+#include "Game/Objects/Buildings/BuildingObject.h"
 
 
-class CivilPlant : public GameObject
+class CivilPlant : public BuildingObject
 {
 public:
+    CivilPlant(Context *context = gContext);
+
 private:
     CivilPlant& operator=(const CivilPlant&)
     {};

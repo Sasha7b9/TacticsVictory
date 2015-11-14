@@ -4,7 +4,7 @@
 #include "RocketLauncher.h"
 #include "Game/Objects/Units/Tank/Tank.h"
 #include "Game/Objects/GameObjectEvents.h"
-#include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
+#include "Game/Objects/Ammo/Rocket/Rocket.h"
 
 
 RocketLauncher::RocketLauncher(Context *context, Tank *tank) :

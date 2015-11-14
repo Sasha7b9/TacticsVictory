@@ -1,12 +1,14 @@
 #pragma once
 
 
-#include "Game/Objects/GameObject.h"
+#include "Game/Objects/Units/UnitObject.h"
 
 
-class Airplane : public GameObject
+class Airplane : public UnitObject
 {
 public:
+    Airplane(Context *context = gContext);
+
 private:
     Airplane& operator=(const Airplane&)
     {};

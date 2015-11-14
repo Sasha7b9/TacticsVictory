@@ -43,7 +43,7 @@ static ThreadRocket threads[8];
 
 
 Rocket::Rocket(Context *context)
-    : GameObject(context)
+    : AmmoObject(context)
 {
     if (rockets.Size() == 0)
     {

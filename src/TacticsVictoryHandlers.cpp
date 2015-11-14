@@ -13,7 +13,7 @@
 #include "Core/Camera.h"
 #include "TacticsVictory.h"
 #include "Game/Scene.h"
-#include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
+#include "Game/Objects/Ammo/Rocket/Rocket.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)

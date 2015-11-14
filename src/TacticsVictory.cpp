@@ -13,7 +13,7 @@
 #include "TacticsVictory.h"
 #include "Game/Level.h"
 #include "GlobalFunctions.h"
-#include "Game/Objects/Weapon/RocketLauncher/Rocket.h"
+#include "Game/Objects/Ammo/Rocket/Rocket.h"
 
 
 #pragma warning(push)
