@@ -79,6 +79,9 @@
     <Filter Include="Game\Objects\Buildings\MilitaryPlant">
       <UniqueIdentifier>{0575cc6f-780d-4cd3-9f70-337a5ef4ee08}</UniqueIdentifier>
     </Filter>
+    <Filter Include="_doc_">
+      <UniqueIdentifier>{0365f6f8-9c0b-4915-a98c-0ad66a6adfd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Camera.cpp">

@@ -18,6 +18,7 @@ WindowTarget::WindowTarget(Context *context) :
 
 void WindowTarget::HandleSetTexture(StringHash, VariantMap& eventData)
 {
+    /*
     Texture2D *texture = (Texture2D*)eventData[GameObjectEvent::P_TEXTURE].GetPtr();
 
     uint *buffer = new uint[SIZE_WINDOW_TARGET * SIZE_WINDOW_TARGET];
@@ -47,4 +48,5 @@ void WindowTarget::HandleSetTexture(StringHash, VariantMap& eventData)
     
 
     SAFE_DELETE(buffer);
+    */
 }

@@ -4,6 +4,7 @@
 #include "Game/Path/WaveAlgorithm.h"
 #include "Game/Objects/Units/Tank/Translator.h"
 #include "Game/Objects/GameObject.h"
+#include "Game/Objects/Weapon/RocketLauncher/RocketLauncher.h"
 
 
 class Tank : public GameObject
@@ -39,7 +40,15 @@ public:
     void SetRotation(float rotation);
     float GetRotation();
 
-    bool TargetInPointView(Tank* tank);
+    Node *GetNode()
+    {
+        return node_;
+    }
+
+    Vector3 GetSpeed()
+    {
+        return translator.speed;
+    }
 
 private:
     Tank& operator=(const Tank&) {};
@@ -79,19 +88,7 @@ private:
 
     bool inProcessFindPath = false;
 
-    float radiusDetect = 50.0f;
-
-    float timeRechargeWeapon = 10.0f;  // In sec
-    float timeElapsedAfterShoot = 11.0f;
-
-    void HandleCollision(StringHash, VariantMap&);
     void HandleAmmoHit(StringHash, VariantMap&);
 
-    void ConfigurePhysics();
-
-    Camera* cameraTarget = nullptr;     // Camera for determination of visibility of the target.
-    SharedPtr<Texture2D> renderTexture;
-    SharedPtr<RenderSurface> renderSurface;
-
-    void HandlePostRenderUpdate(StringHash, VariantMap&);
+    SharedPtr<RocketLauncher> rocketLauncher;
 };
