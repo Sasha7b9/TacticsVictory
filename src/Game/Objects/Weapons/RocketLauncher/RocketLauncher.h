@@ -1,9 +1,12 @@
 #pragma once
 
 
-class RocketLauncher : public Object
+#include "Game/Objects/Weapons/WeaponObject.h"
+
+
+class RocketLauncher : public WeaponObject
 {
-    URHO3D_OBJECT(RocketLauncher, Object);
+    URHO3D_OBJECT(RocketLauncher, WeaponObject);
 public:
     RocketLauncher(Context *context = gContext, Tank *tank = nullptr);
 

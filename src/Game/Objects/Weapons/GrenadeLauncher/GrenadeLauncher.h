@@ -1,12 +1,14 @@
 #pragma once
 
 
-#include "Game/Objects/GameObject.h"
+#include "Game/Objects/Weapons/WeaponObject.h"
 
 
-class GrenadeLauncher : public GameObject
+class GrenadeLauncher : public WeaponObject
 {
 public:
+    GrenadeLauncher(Context *context = gContext);
+
 private:
     GrenadeLauncher& operator=(const GrenadeLauncher&)
     {};

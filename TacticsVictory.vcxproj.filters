@@ -375,6 +375,15 @@
     <ClCompile Include="src\Game\Objects\Units\Robot\Robot.cpp">
       <Filter>Game\Objects\Units\Robot</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Objects\Weapons\WeaponObject.cpp">
+      <Filter>Game\Objects\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Weapons\Gun\Gun.cpp">
+      <Filter>Game\Objects\Weapons\Gun</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Weapons\Laser\Laser.cpp">
+      <Filter>Game\Objects\Weapons\Laser</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -628,6 +637,15 @@
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Units\Robot\Robot.h">
       <Filter>Game\Objects\Units\Robot</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Weapons\WeaponObject.h">
+      <Filter>Game\Objects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Weapons\Gun\Gun.h">
+      <Filter>Game\Objects\Weapons\Gun</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Weapons\Laser\Laser.h">
+      <Filter>Game\Objects\Weapons\Laser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

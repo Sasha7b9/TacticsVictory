@@ -8,7 +8,8 @@ def RunCommands(commands):
 
 # Start Here
 strings =   "del Debug\\*.* /q", \
-            "del Debug\\TacticsVictory.tlog\\*.* /s /q"
+            "del Debug\\TacticsVictory.tlog\\*.* /s /q", \
+            "del *.sdf /s /q"
 
 RunCommands(strings)
 

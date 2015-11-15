@@ -8,7 +8,7 @@
 
 
 RocketLauncher::RocketLauncher(Context *context, Tank *tank) :
-    Object(context)
+    WeaponObject(context)
 {
     this->tank = tank;
 

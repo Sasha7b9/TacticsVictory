@@ -366,8 +366,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Objects\Units\Tank\Translator.cpp" />
     <ClCompile Include="src\Game\Objects\Units\UnitObject.cpp" />
     <ClCompile Include="src\Game\Objects\Weapons\GrenadeLauncher\GrenadeLauncher.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapons\Gun\Gun.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapons\Laser\Laser.cpp" />
     <ClCompile Include="src\Game\Objects\Weapons\MachineGun\MachineGun.cpp" />
     <ClCompile Include="src\Game\Objects\Weapons\RocketLauncher\RocketLauncher.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapons\WeaponObject.cpp" />
     <ClCompile Include="src\Game\Particles.cpp" />
     <ClCompile Include="src\Game\Path\PathIndicator.cpp" />
     <ClCompile Include="src\Game\Path\TilePath.cpp" />
@@ -453,8 +456,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Objects\Units\Tank\Translator.h" />
     <ClInclude Include="src\Game\Objects\Units\UnitObject.h" />
     <ClInclude Include="src\Game\Objects\Weapons\GrenadeLauncher\GrenadeLauncher.h" />
+    <ClInclude Include="src\Game\Objects\Weapons\Gun\Gun.h" />
+    <ClInclude Include="src\Game\Objects\Weapons\Laser\Laser.h" />
     <ClInclude Include="src\Game\Objects\Weapons\MachineGun\MachineGun.h" />
     <ClInclude Include="src\Game\Objects\Weapons\RocketLauncher\RocketLauncher.h" />
+    <ClInclude Include="src\Game\Objects\Weapons\WeaponObject.h" />
     <ClInclude Include="src\Game\Particles.h" />
     <ClInclude Include="src\Game\Path\PathIndicator.h" />
     <ClInclude Include="src\Game\Path\TilePath.h" />

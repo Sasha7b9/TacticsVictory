@@ -15,7 +15,7 @@ void Sounds::Init()
     sounds[StringHash(Sound_Explosion)] = gCache->GetResource<Sound>("Sounds/ExplosionMissile.wav");
     Node *nodeSource = gScene->CreateChild("Sound");
     SoundSource3D* soundSource = nodeSource->CreateComponent<SoundSource3D>();
-    soundSource->SetDistanceAttenuation(1.0f, 50.0f, 1.0f);
+    soundSource->SetDistanceAttenuation(1.0f, 50.0f, 0.01f);
     soundSource->SetSoundType(Urho3D::SOUND_EFFECT);
     sources.Push(soundSource);
 }

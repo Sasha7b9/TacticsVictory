@@ -2,3 +2,10 @@
 
 
 #include "MachineGun.h"
+
+
+MachineGun::MachineGun(Context *context) :
+    WeaponObject(context)
+{
+
+}
