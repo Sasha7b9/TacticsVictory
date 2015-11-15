@@ -16,6 +16,7 @@ ButtonToggled::ButtonToggled(Context *context) :
 ButtonToggled::ButtonToggled(UIElement * uielement, char * text, int width, int height) :
     Urho3D::CheckBox(gContext)
 {
+    SetStyleAuto(gUIRoot->GetDefaultStyle());
     label = Label::Create(text, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 

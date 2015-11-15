@@ -19,7 +19,7 @@ ButtonMain::ButtonMain(Context *context) :
 ButtonMain::ButtonMain(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
     Urho3D::Button(gContext)
 {
-    //SetStyleAuto(gUIRoot->GetDefaultStyle());
+    SetStyleAuto(gUIRoot->GetDefaultStyle());
     SetStyle("MainMenuButton");
     label = Label::Create(text, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);

@@ -24,19 +24,54 @@ GuiEditor::GuiEditor(Context* context) :
 {
     SetFixedSize(gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT));
 
+    CreatePanels();
+
+    CreateTabs();
+
+    CreateWindows();
+
+    SubscribeToEvent(Urho3D::E_KEYDOWN, URHO3D_HANDLER(GuiEditor, HandleKeyDown));
+}
+
+void GuiEditor::CreatePanels()
+{
     panelMap = new PanelMap(gContext);
     AddChild(panelMap);
 
     panelMain = new PanelMain(gContext);
     AddChild(panelMain);
 
-    int width = 100;
-    int height = 19;
-    int dY = 27;
-    int y = 10;
-    int x = 10;
+    // Panel bottom
+    panelBottom = new PanelBottom(gContext);
+    panelBottom->SetPosition(0, gSet->GetInt(TV_SCREEN_HEIGHT) - gSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
 
-    // Tab "File"
+    width = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_WIDTH);
+    height = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_HEIGHT);
+
+    x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
+    y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
+
+    buttonInterface = panelBottom->AddButton("Interface", x, y, width, height);
+    SubscribeToEvent(buttonInterface, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
+
+    x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
+    buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
+    SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
+
+    AddChild(panelBottom);
+    panelBottom->BringToFront();
+}
+
+void GuiEditor::CreateTabs()
+{
+    CreateTabFile();
+    CreateTabEdit();
+    CreateTabLandscape();
+    CreateTabObjects();
+}
+
+void GuiEditor::CreateTabFile()
+{
     SharedPtr<Tab> tabFile(Tab::Create("File"));
     panelMain->AddTab(tabFile);
 
@@ -47,8 +82,10 @@ GuiEditor::GuiEditor(Context* context) :
     SharedPtr<ButtonMain> btnFileSave = tabFile->AddButton("Save", 10, y += dY, width, height);
     btnFileSave->SetHint("saveMapToFile");
     SubscribeToEvent(btnFileSave, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleFileSave));
+}
 
-    // Tab "Edit"
+void GuiEditor::CreateTabEdit()
+{
     SharedPtr<Tab> tabEdit(Tab::Create("Edit"));
     panelMain->AddTab(tabEdit);
 
@@ -61,8 +98,10 @@ GuiEditor::GuiEditor(Context* context) :
     SharedPtr<ButtonMain>  btnEditRedo = tabEdit->AddButton("Redo", x, y += dY, width, height);
     btnEditRedo->SetHint("hintEditRedo");
     SubscribeToEvent(btnEditRedo, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleEditRedo));
+}
 
-    // Tab "Landscape"
+void GuiEditor::CreateTabLandscape()
+{
     SharedPtr<Tab> tabLandscape(Tab::Create("Landscape"));
     panelMain->AddTab(tabLandscape);
 
@@ -86,11 +125,13 @@ GuiEditor::GuiEditor(Context* context) :
     sliderSizeBrushY->SetValue(1);
     sliderSizeBrushY->SetHint("hintSliderSizeBrushY");
 
-    char *items[] = { "Plane", "Edge" };
+    char *items[] = {"Plane", "Edge"};
     SharedPtr<DropDownListWithTextAndButton> ddListModeSelect = tabLandscape->AddDDList("Mode select", 100, 80, 2, items, 10, y += dY);
     SubscribeToEvent(ddListModeSelect, Urho3D::E_ITEMSELECTED, URHO3D_HANDLER(GuiEditor, HandleLandscapeModeSelectChanged));
+}
 
-    // Tab "Objects"
+void GuiEditor::CreateTabObjects()
+{
     SharedPtr<Tab> tabObjects(Tab::Create("Objects"));
     panelMain->AddTab(tabObjects);
 
@@ -99,30 +140,6 @@ GuiEditor::GuiEditor(Context* context) :
     SharedPtr<ButtonMain> btnObjectsAdd = tabObjects->AddButton("Add", x, y, width, height);
     btnObjectsAdd->SetHint("hintObjectsAdd");
     SubscribeToEvent(btnObjectsAdd, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleObjectsAdd));
-
-    // Panel bottom
-    panelBottom = new PanelBottom(gContext);
-    panelBottom->SetPosition(0, gSet->GetInt(TV_SCREEN_HEIGHT) - gSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
-
-    width = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_WIDTH);
-    height = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_HEIGHT);
-
-    x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
-    y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
-
-    buttonInterface = panelBottom->AddButton("Interface", x, y, width, height);
-    SubscribeToEvent(buttonInterface, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
-    
-    x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
-    buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
-    SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
-
-    AddChild(panelBottom);
-    panelBottom->BringToFront();
-
-    CreateWindows();
-
-    SubscribeToEvent(Urho3D::E_KEYDOWN, URHO3D_HANDLER(GuiEditor, HandleKeyDown));
 }
 
 void GuiEditor::RegisterObject(Context *context)

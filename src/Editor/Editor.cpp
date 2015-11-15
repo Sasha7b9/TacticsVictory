@@ -20,7 +20,6 @@ Editor::Editor(Context *context) : Object(context)
 
 void Editor::Run()
 {
-    URHO3D_LOGINFO("Begin create editor");
     Node* zoneNode = gScene->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
     zone->SetBoundingBox(BoundingBox(-50.0f, 50.0f));
@@ -61,7 +60,6 @@ void Editor::Run()
         }
     }
     */
-    URHO3D_LOGINFO("End create editor");
 
     /*
     Node* modelNode = gScene->CreateChild("Tank");

@@ -3,6 +3,7 @@
 
 #include "GuiGame.h"
 #include "GUI/Elements/ButtonMain.h"
+#include "GUI/Elements/Tab.h"
 #include "GUI/Menu/PanelMap.h"
 #include "GUI/Menu/PanelMain.h"
 #include "GUI/Menu/PanelBottom.h"
@@ -13,31 +14,11 @@ GuiGame::GuiGame(Context* context) :
 {
     SetFixedSize(gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT));
 
-    panelMap = new PanelMap(context);
-    AddChild(panelMap);
+    CreatePanels();
 
-    panelMain = new PanelMain(context);
-    AddChild(panelMain);
+    CreateTabs();
 
-    panelBottom = new PanelBottom(context);
-    AddChild(panelBottom);
-    panelBottom->SetPosition(0, gGraphics->GetHeight() - panelBottom->GetHeight());
-
-    int width = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_WIDTH);
-    int height = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_HEIGHT);
-
-    int x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
-    int y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
-    buttonMap = panelBottom->AddButton("Map", x, y, width, height);
-    SubscribeToEvent(buttonMap, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
-
-    x = (int)(gSet->GetInt(TV_PANEL_MAP_WIDTH) * 1.5f) - width / 2;
-    buttonMainPanel = panelBottom->AddButton("Panel", x, y, width, height);
-    SubscribeToEvent(buttonMainPanel, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
-
-    x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
-    buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
-    SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
+    SubscribeToEvent(Urho3D::E_KEYDOWN, URHO3D_HANDLER(GuiGame, HandleKeyDown));
 }
 
 void GuiGame::RegisterObject(Context* context)
@@ -51,13 +32,9 @@ void GuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
     ButtonMain *button = (ButtonMain*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
 
-    if(button == buttonMap)
+    if(button == buttonInterface)
     {
-        panelMap->Toggle();
-    }
-    else if(button == buttonMainPanel)
-    {
-        panelMain->Toggle();
+        ToggleInterfacePanels();
     }
 }
 
@@ -68,10 +45,118 @@ bool GuiGame::IntersectionX(ButtonMain *button, int x)
 
 bool GuiGame::CheckOnDeadZoneForCursorBottomScreen(int x)
 {
-    return IntersectionX(buttonMap, x) || IntersectionX(buttonMainPanel, x) || IntersectionX(buttonMenu, x);
+    return IntersectionX(buttonInterface, x) || IntersectionX(buttonMenu, x);
 }
 
 bool GuiGame::IsInside(IntVector2 &position)
 {
-    return IsVisible() && (panelBottom->IsInside(position, true) || panelMain->IsInside(position, true) || panelMap->IsInside(position, true));
+    return IsVisible() &&
+        (
+        panelBottom->IsInside(position, true) ||
+        panelMain->IsInside(position, true) ||
+        panelMap->IsInside(position, true)
+        ) &&
+        position.x_ > 0 &&
+        position.x_ < gSet->GetInt(TV_SCREEN_WIDTH) - 1 &&
+        position.y_ < gSet->GetInt(TV_SCREEN_HEIGHT) - 1;
+}
+
+void GuiGame::ToggleInterfacePanels()
+{
+    LineTranslator2D::State stateMap = panelMap->GetTranslator()->GetState();
+    LineTranslator2D::State stateMain = panelMain->GetTranslator()->GetState();
+
+    if(stateMap == LineTranslator2D::State_PointStart && stateMain == LineTranslator2D::State_PointStart)
+    {
+        panelMain->Toggle();
+    }
+    else if(stateMap == LineTranslator2D::State_PointStart && stateMain == LineTranslator2D::State_PointFinish)
+    {
+        panelMap->Toggle();
+    }
+    else if(stateMap == LineTranslator2D::State_PointFinish && stateMain == LineTranslator2D::State_PointFinish)
+    {
+        panelMap->Toggle();
+        panelMain->Toggle();
+    }
+}
+
+void GuiGame::HandleKeyDown(StringHash, VariantMap& eventData)
+{
+    if(!IsVisible())
+    {
+        return;
+    }
+
+    int key = eventData[Urho3D::KeyDown::P_KEY].GetInt();
+
+    if(key == Urho3D::KEY_I)
+    {
+        ToggleInterfacePanels();
+    }
+}
+
+void GuiGame::CreatePanels()
+{
+    panelMap = new PanelMap(gContext);
+    AddChild(panelMap);
+
+    panelMain = new PanelMain(gContext);
+    AddChild(panelMain);
+
+    panelBottom = new PanelBottom(gContext);
+    AddChild(panelBottom);
+
+    panelBottom->SetPosition(0, gGraphics->GetHeight() - panelBottom->GetHeight());
+
+    int width = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_WIDTH);
+    int height = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_HEIGHT);
+
+    int x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
+    int y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
+    buttonInterface = panelBottom->AddButton("Interface", x, y, width, height);
+    SubscribeToEvent(buttonInterface, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
+
+    x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
+    buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
+    SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
+}
+
+void GuiGame::CreateTabs()
+{
+    CreateTabInfo();
+    CreateTabUnits();
+    CreateTabPlatoons();
+    CreateTabBuildings();
+    CreateTabDebug();
+}
+
+void GuiGame::CreateTabInfo()
+{
+    SharedPtr<Tab> tabInfo(Tab::Create("Info"));
+    panelMain->AddTab(tabInfo);
+}
+
+void GuiGame::CreateTabUnits()
+{
+    SharedPtr<Tab> tabUnits(Tab::Create("Units"));
+    panelMain->AddTab(tabUnits);
+}
+
+void GuiGame::CreateTabPlatoons()
+{
+    SharedPtr<Tab> tabPlatoons(Tab::Create("Platoons"));
+    panelMain->AddTab(tabPlatoons);
+}
+
+void GuiGame::CreateTabBuildings()
+{
+    SharedPtr<Tab> tabBuildings(Tab::Create("Buildings"));
+    panelMain->AddTab(tabBuildings);
+}
+
+void GuiGame::CreateTabDebug()
+{
+    SharedPtr<Tab> tabDebug(Tab::Create("Debug"));
+    panelMain->AddTab(tabDebug);
 }

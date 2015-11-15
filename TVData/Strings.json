@@ -1,4 +1,14 @@
 {
+    "Buildings":            { "en":"Buildings",         "ru":"Здания" },
+
+    "Debug":                { "en":"Debug",             "ru":"Отладка" },
+
+    "Info":                 { "en":"Info",              "ru":"Информация" },
+
+    "Platoons":             { "en":"Platoons",          "ru":"Взводы" },
+
+    "Units":                { "en":"Units",             "ru":"Подразделения" },
+
     "Quit":                 { "en":"Quit",              "ru":"Выйти" },
     "Press this button":    { "en":"Press this button", "ru":"Нажмите эту кнопку" },
     "Title":                { "en":"Title",             "ru":"Заголовок" },

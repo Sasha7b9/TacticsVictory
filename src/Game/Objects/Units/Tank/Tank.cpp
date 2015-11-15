@@ -130,6 +130,7 @@ void Tank::Update(float dT)
 
     if(!translator.IsMoving())
     {
+        /*
         if(inProcessFindPath)
         {
             if(pathFinder.PathIsFound())
@@ -156,6 +157,7 @@ void Tank::Update(float dT)
             pathFinder.StartFind(start, {row, col});
             inProcessFindPath = true;
         }
+        */
     }
     else
     {
