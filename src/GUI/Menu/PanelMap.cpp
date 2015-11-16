@@ -162,8 +162,7 @@ void PanelMap::Update(float dT)
 
     SharedPtr<Texture2D> texture(new Texture2D(gContext));
     texture->SetSize(GetWidth(), GetHeight(), D3DFMT_X8R8G8B8);
-    //texture->SetData(image);
-    texture->SetData(0, 0, 0, image->GetWidth(), image->GetHeight(), image->GetData());
+    texture->SetData((SharedPtr<Image>)image);
 
     SetTexture(texture);
     SetFullImageRect();
