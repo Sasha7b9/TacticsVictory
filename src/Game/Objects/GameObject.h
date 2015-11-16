@@ -8,6 +8,12 @@
 class GameObject : public LogicComponent
 {
 public:
+
+    enum Type
+    {
+        Unit
+    };
+
     GameObject(Context *context = gContext);
 
     void SetAutoReloaded(int time) { timeForReload = time; };
@@ -15,6 +21,12 @@ public:
     virtual void Update(float timeStep);
 
     void EnableContextMenu();
+    char *GetName();
+
+    Type GetGameObjectType();
+
+    virtual void SetSelected(bool selected);
+    bool IsSelected();
 
 protected:
     int timeForReload = 0;
@@ -26,7 +38,8 @@ protected:
     float deltaRotate = 0.0f;
     float speed = 0.0f;
     Translator translator;
-
+    char* name;
+    Type type;
     SharedPtr<ContextMenuUnit> contextMenu;
 
     void HandleOnMouseDown(StringHash, VariantMap&);

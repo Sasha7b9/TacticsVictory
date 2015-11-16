@@ -13,7 +13,8 @@ typedef unsigned short  ushort;
 typedef unsigned char   uchar;
 
 
-#define SIZE_WINDOW_TARGET 200
+#define WIDTH_WINDOW_TARGET 500
+#define HEIGHT_WINDOW_TARGET 300
 
 #define SAFE_DELETE(x) if(x) delete x; x = nullptr;
 #define SAFE_DELETE_ARRAY(x) if(x) delete[]x; x = nullptr;

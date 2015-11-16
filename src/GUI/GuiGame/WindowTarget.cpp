@@ -11,7 +11,7 @@ WindowTarget::WindowTarget(Context *context) :
     SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowNoBorder");
 
-    SetFixedSize(SIZE_WINDOW_TARGET * 4, SIZE_WINDOW_TARGET * 4);
+    SetFixedSize(WIDTH_WINDOW_TARGET, HEIGHT_WINDOW_TARGET);
 
     SubscribeToEvent(E_SETTEXTURE, URHO3D_HANDLER(WindowTarget, HandleSetTexture));
 }

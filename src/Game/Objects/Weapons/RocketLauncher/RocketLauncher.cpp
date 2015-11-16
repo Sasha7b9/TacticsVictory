@@ -11,27 +11,6 @@ RocketLauncher::RocketLauncher(Context *context, Tank *tank) :
     WeaponObject(context)
 {
     this->tank = tank;
-
-    return;
-
-    /*
-    Node* nodeCameraTarget = gScene->CreateChild("CameraTarget");
-    cameraTarget = nodeCameraTarget->CreateComponent<Camera>();
-    cameraTarget->SetNearClip(0.5f);
-    cameraTarget->SetFarClip(radiusDetect);
-
-    renderTexture = new Texture2D(gContext);
-    renderTexture->SetSize(SIZE_WINDOW_TARGET, SIZE_WINDOW_TARGET, Graphics::GetRGBFormat(), Urho3D::TEXTURE_RENDERTARGET);
-    renderTexture->SetFilterMode(Urho3D::FILTER_DEFAULT);
-
-    renderSurface = renderTexture->GetRenderSurface();
-    SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraTarget));
-    renderSurface->SetViewport(0, viewport);
-    
-    renderSurface->SetUpdateMode(Urho3D::SURFACE_UPDATEALWAYS);
-
-    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, URHO3D_HANDLER(RocketLauncher, HandlePostRenderUpdate));
-    */
 }
 
 void RocketLauncher::Init()
@@ -95,17 +74,4 @@ bool RocketLauncher::TargetInPointView(Tank* target)
         }
     }
     return false;
-}
-
-void RocketLauncher::HandlePostRenderUpdate(StringHash, VariantMap&)
-{
-    if(tank->IsSelected())
-    {
-        cameraTarget->GetNode()->SetPosition(tank->GetPosition() + Vector3(0.0f, 0.2f, 0.0f));
-        cameraTarget->GetNode()->SetRotation(tank->GetNode()->GetRotation());
-
-        VariantMap eventData = GetEventDataMap();
-        eventData[GameObjectEvent::P_TEXTURE] = renderTexture;
-        SendEvent(E_SETTEXTURE, eventData);
-    }
 }

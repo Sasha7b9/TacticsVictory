@@ -21,6 +21,10 @@ void GameObject::EnableContextMenu()
     if(contextMenu == nullptr)
     {
         contextMenu = new ContextMenuUnit();
+        if(type == Unit)
+        {
+            contextMenu->Create(this);
+        }
     }
     contextMenu->SetPosition(gCursor->GetCursor()->GetPosition());
     gUIRoot->AddChild(contextMenu);
@@ -36,3 +40,24 @@ void GameObject::HandleOnMouseDown(StringHash, VariantMap&)
         gUIRoot->RemoveChild(contextMenu);
     }
 }
+
+char *GameObject::GetName()
+{
+    return name;
+}
+
+GameObject::Type GameObject::GetGameObjectType()
+{
+    return type;
+}
+
+void GameObject::SetSelected(bool selected_)
+{
+    selected = selected_;
+}
+
+bool GameObject::IsSelected()
+{
+    return selected;
+}
+

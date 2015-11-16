@@ -18,6 +18,9 @@ HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
 Tank::Tank(Context *context) : 
     UnitObject(context)
 {
+    name = "Tank";
+    type = GameObject::Unit;
+
     if (parameters.Empty())
     {
         parameters[Small] = TankStruct(Small, "Models/Tank.json");
@@ -38,12 +41,12 @@ void Tank::RegisterObject(Context* context)
     context->RegisterFactory<Tank>();
 }
 
-void Tank::Init(Type type_)
+void Tank::Init(TypeTank type_)
 {
     node_->SetVar("PointerTank", this);
 
     translator.Init(this);
-    type = type_;
+    typeTank = type_;
     LoadFromFile();
     Normalize();
 
@@ -52,7 +55,7 @@ void Tank::Init(Type type_)
 
 void Tank::LoadFromFile()
 {
-    char *fileName = parameters[type].fileName;
+    char *fileName = parameters[typeTank].fileName;
     JSONFile *file = gCache->GetResource<JSONFile>(fileName);
 
     if (timeForReload)
@@ -79,7 +82,7 @@ void Tank::LoadFromFile()
     node_->SetRotation(Quaternion(0, Vector3::UP));
     node_->Rotate(rotate);
 
-    timeLastModified = GetLastModifiedTime(parameters[type].fileName);
+    timeLastModified = GetLastModifiedTime(parameters[typeTank].fileName);
 }
 
 void Tank::Normalize()
@@ -169,25 +172,15 @@ void Tank::Update(float dT)
         int time = (int)gTime->GetElapsedTime();
         if (time - timeLastReload >= timeForReload)
         {
-            if (GetLastModifiedTime(parameters[type].fileName) != timeLastModified)
+            if (GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified)
             {
-                Init(type);
+                Init(typeTank);
             }
             timeLastReload = time;
         }
     }
 
     gProfiler->EndBlock();
-}
-
-void Tank::SetSelected(bool selected_)
-{
-     selected = selected_;
-}
-
-bool Tank::IsSelected()
-{
-    return selected;
 }
 
 void Tank::SetPath(PODVector<Coord> &path)
@@ -207,11 +200,11 @@ float Tank::GetRotation()
     return ret > 0 ? ret : ret + 360.0f;
 }
 
-SharedPtr<Tank> Tank::Create(Type type)
+SharedPtr<Tank> Tank::Create(TypeTank typeTank)
 {
     SharedPtr<Node> node(gScene->CreateChild(NODE_TANK));
     SharedPtr<Tank> tank(node->CreateComponent<Tank>());
-    tank->Init(type);
+    tank->Init(typeTank);
     return tank;
 }
 

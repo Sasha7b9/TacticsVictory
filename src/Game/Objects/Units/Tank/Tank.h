@@ -14,7 +14,7 @@ class Tank : public UnitObject
     friend class Translator;
 
 public:
-    enum Type
+    enum TypeTank
     {
         Small,
         T_34_76
@@ -26,13 +26,10 @@ public:
 
     virtual void Update(float timeStep);
 
-    static SharedPtr<Tank> Create(Type type);
+    static SharedPtr<Tank> Create(TypeTank type);
 
     Vector3 GetPosition();
     void SetCoord(const Coord& coord);
-
-    void SetSelected(bool selected);
-    bool IsSelected();
 
     void SetPath(PODVector<Coord> &path);
 
@@ -56,23 +53,23 @@ private:
     void LoadFromFile();
     void Normalize();
     void SetPosition(const Vector3& pos);
-    void Init(Type type);
+    void Init(TypeTank typeTank);
 
-    Type type;
+    TypeTank typeTank;
 
     SharedPtr<StaticModel> modelObject;
 
     struct TankStruct
     {
-        TankStruct(Type type_ = Small, char* fileName_ = 0) : type(type_), fileName(fileName_) {};
-        Type type;
+        TankStruct(TypeTank type_ = Small, char* fileName_ = 0) : type(type_), fileName(fileName_) {};
+        TypeTank type;
         char *fileName;
     };
 
     struct Key
     {
-        Key(Type type_ = Small) : type(type_) {};
-        Type type;
+        Key(TypeTank type_ = Small) : type(type_) {};
+        TypeTank type;
 
         unsigned ToHash() const { return (uint)type; };
 

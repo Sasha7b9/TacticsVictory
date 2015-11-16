@@ -122,12 +122,9 @@ void lScene::Create()
 
     gCamera->SetPosition({sizeX / 2.0f, 25.0f, - (float)sizeZ / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
 
-    return;
-
-    /*
-    SharedPtr<WindowTarget> windowTarget(new WindowTarget());
-    gUIRoot->AddChild(windowTarget);
-    */
+    gWindowTarget = new WindowTarget();
+    gUIRoot->AddChild(gWindowTarget);
+    gWindowTarget->SetVisible(false);
 }
 
 void lScene::Update(float /*timeStep*/)

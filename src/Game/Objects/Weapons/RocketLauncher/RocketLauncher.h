@@ -23,11 +23,5 @@ private:
     float timeRecharge = 10.0f;
     float timeElapsedAfterShoot = 0.0f;
 
-    Camera *cameraTarget = nullptr;         // Camera for determination of visibility of the target.
-    SharedPtr<Texture2D> renderTexture;
-    SharedPtr<RenderSurface> renderSurface;
-
     bool TargetInPointView(Tank* tank);
-
-    void HandlePostRenderUpdate(StringHash, VariantMap&);
 };

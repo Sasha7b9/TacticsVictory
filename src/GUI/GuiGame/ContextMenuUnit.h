@@ -4,6 +4,9 @@
 #include "GUI/Elements/Window.h"
 
 
+class GameObject;
+
+
 class ContextMenuUnit : public lWindow
 {
     URHO3D_OBJECT(ContextMenuUnit, lWindow);
@@ -11,6 +14,13 @@ class ContextMenuUnit : public lWindow
 public:
     ContextMenuUnit(Context *context = gContext);
 
-private:
+    void Create(GameObject *object);
 
+private:
+    SharedPtr<Label> title;
+    GameObject *object = nullptr;
+
+    void CreateForUnit();
+
+    void HandleToggledFiedView(StringHash, VariantMap&);
 };
