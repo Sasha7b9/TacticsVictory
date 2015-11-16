@@ -19,6 +19,7 @@ public:
     void UpdateOn();
     static SharedPtr<Rocket> Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target);
     void SetParameters(float timeStep);
+    static void StopAllThreads();
     static void UpdateAll(float timeStep);
     static void DeleteAll();
 

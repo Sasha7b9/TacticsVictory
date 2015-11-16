@@ -20,6 +20,7 @@ lCursor::lCursor() : Object(gContext)
     image.Clear({0.0f, 0.0f, 1.0f, 1.0f});
 
     cursor->DefineShape("Normal", image.GetUImage(), {0, 0, size, size}, {0, 0});
+    cursor->SetName("Cursor");
     gUI->SetCursor(cursor);
     cursor->SetPosition(gGraphics->GetWidth() / 2, gGraphics->GetHeight() / 2);
 

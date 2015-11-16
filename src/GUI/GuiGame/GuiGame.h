@@ -1,17 +1,16 @@
 #pragma once
 
 
-class GuiGame : public UIElement
+class GuiGame : public Object
 {
-    URHO3D_OBJECT(GuiGame, UIElement);
-
+    URHO3D_OBJECT(GuiGame, Object);
 public:
-    GuiGame(Context* context = gContext);
-
-    static void RegisterObject(Context* context);
+    GuiGame(Context *context = gContext);
 
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
     bool IsInside(IntVector2 &position);
+    bool IsVisible();
+    void SetVisible(bool visible);
 
 private:
     GuiGame& operator=(const GuiGame&)

@@ -20,10 +20,8 @@
 
 
 GuiEditor::GuiEditor(Context* context) :
-    UIElement(context)
+    Object(context)
 {
-    SetFixedSize(gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT));
-
     CreatePanels();
 
     CreateTabs();
@@ -36,10 +34,10 @@ GuiEditor::GuiEditor(Context* context) :
 void GuiEditor::CreatePanels()
 {
     panelMap = new PanelMap(gContext);
-    AddChild(panelMap);
+    gUIRoot->AddChild(panelMap);
 
     panelMain = new PanelMain(gContext);
-    AddChild(panelMain);
+    gUIRoot->AddChild(panelMain);
 
     // Panel bottom
     panelBottom = new PanelBottom(gContext);
@@ -58,7 +56,7 @@ void GuiEditor::CreatePanels()
     buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
     SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
-    AddChild(panelBottom);
+    gUIRoot->AddChild(panelBottom);
     panelBottom->BringToFront();
 }
 
@@ -140,13 +138,6 @@ void GuiEditor::CreateTabObjects()
     SharedPtr<ButtonMain> btnObjectsAdd = tabObjects->AddButton("Add", x, y, width, height);
     btnObjectsAdd->SetHint("hintObjectsAdd");
     SubscribeToEvent(btnObjectsAdd, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleObjectsAdd));
-}
-
-void GuiEditor::RegisterObject(Context *context)
-{
-    context->RegisterFactory<GuiEditor>("UI");
-
-    URHO3D_COPY_BASE_ATTRIBUTES(UIElement);
 }
 
 void GuiEditor::ToggleInterfacePanels()
@@ -252,7 +243,7 @@ void GuiEditor::CreateWindows()
 
     windowMenu->SetFixedWidth(buttonMenu->GetWidth());
     windowMenu->SetFixedSize(windowMenu->GetSize());
-    AddChild(windowMenu);
+    gUIRoot->AddChild(windowMenu);
     windowMenu->SetVisible(false);
 
     // window confirm exit
@@ -273,7 +264,7 @@ void GuiEditor::CreateWindows()
 
     windowConfirmExit->AddChild(layer);
 
-    AddChild(windowConfirmExit);
+    gUIRoot->AddChild(windowConfirmExit);
     windowConfirmExit->SetVisible(false);
     SetWindowInCenterScreen(windowConfirmExit);
 
@@ -451,4 +442,16 @@ void GuiEditor::HandleEditRedo(StringHash, VariantMap&)
 void GuiEditor::HandleObjectsAdd(StringHash, VariantMap&)
 {
 
+}
+
+bool GuiEditor::IsVisible()
+{
+    return panelMap->IsVisible();
+}
+
+void GuiEditor::SetVisible(bool visible)
+{
+    panelMap->SetVisible(visible);
+    panelBottom->SetVisible(visible);
+    panelMain->SetVisible(visible);
 }

@@ -7,6 +7,7 @@
 #include "GUI/Elements/ButtonToggled.h"
 #include "GUI/Elements/SliderWithTextAndButtons.h"
 #include "GUI/Elements/DropDownListWithTextAndButton.h"
+#include "GUI/Elements/Cursor.h"
 
 
 lWindow::lWindow(Context *context) :
@@ -42,9 +43,9 @@ SharedPtr<LineTranslator2D> lWindow::GetTranslator()
     return translator;
 }
 
-bool lWindow::IsInside(IntVector2 position, bool isScreen)
+bool lWindow::UnderCursor()
 {
-    return Window::IsInside(position, isScreen) && IsVisible() && parent_;
+    return Window::IsInside(gCursor->GetCursor()->GetPosition(), true);
 }
 
 SharedPtr<ButtonMain> lWindow::AddButton(char *text, int x, int y, int width, int height)

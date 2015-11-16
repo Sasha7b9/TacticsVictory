@@ -14,6 +14,7 @@ RocketLauncher::RocketLauncher(Context *context, Tank *tank) :
 
     return;
 
+    /*
     Node* nodeCameraTarget = gScene->CreateChild("CameraTarget");
     cameraTarget = nodeCameraTarget->CreateComponent<Camera>();
     cameraTarget->SetNearClip(0.5f);
@@ -30,6 +31,7 @@ RocketLauncher::RocketLauncher(Context *context, Tank *tank) :
     renderSurface->SetUpdateMode(Urho3D::SURFACE_UPDATEALWAYS);
 
     SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, URHO3D_HANDLER(RocketLauncher, HandlePostRenderUpdate));
+    */
 }
 
 void RocketLauncher::Init()

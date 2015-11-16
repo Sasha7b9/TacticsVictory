@@ -238,7 +238,7 @@ void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
 
 void PanelMap::HandleMouseMove(StringHash eventType, VariantMap &eventData)
 {
-    if (parent_->IsVisible() && IsInside(gCursor->GetCursor()->GetPosition(), true) && (int)eventData[Urho3D::MouseMove::P_BUTTONS].GetInt() == Urho3D::MOUSEB_RIGHT)
+    if (IsInside(gCursor->GetCursor()->GetPosition(), true) && (int)eventData[Urho3D::MouseMove::P_BUTTONS].GetInt() == Urho3D::MOUSEB_RIGHT)
     {
         eventData = GetEventDataMap();
         eventData[Urho3D::MouseButtonDown::P_BUTTONS] = Urho3D::MOUSEB_RIGHT;

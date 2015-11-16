@@ -36,6 +36,8 @@ GUI::GUI() : Object(gContext)
 GUI::~GUI()
 {
     SAFE_DELETE(gCursor);
+    SAFE_DELETE(gGuiGame);
+    SAFE_DELETE(gGuiEditor);
 }
 
 static void RegstrationObjects()
@@ -56,7 +58,6 @@ static void RegstrationObjects()
     PanelBottom::RegisterObject();
     PanelMap::RegisterObject();
     PanelMain::RegisterObject();
-    GuiEditor::RegisterObject();
     SliderWithTextAndButtons::RegisterObject();
     DropDownListWithTextAndButton::RegisterObject();
 }
@@ -144,12 +145,9 @@ void GUI::Create()
 
     gGuiGame = new GuiGame(gContext);
     gGuiGame->SetVisible(false);
-    gUIRoot->AddChild(gGuiGame);
 
     gGuiEditor = new GuiEditor(gContext);
-    gGuiEditor->SetName("GuiEditor");
     gGuiEditor->SetVisible(false);
-    gUIRoot->AddChild(gGuiEditor);
 
     gWindowConfirmExit = new WindowConfirmExit(gContext);
     gUIRoot->AddChild(gWindowConfirmExit);
@@ -232,9 +230,18 @@ void GUI::AddToScreen()
 
 bool GUI::UnderCursor()
 {
-    IntVector2 pos = gCursor->GetCursor()->GetPosition();
+    PODVector<UIElement*> elements;
+    gUIRoot->GetChildren(elements);
 
-    return gGuiEditor->IsInside(pos) || gGuiGame->IsInside(pos) || (gFileSelector->GetWindow()->IsVisible());
+    for(auto elem : elements)
+    {
+        if(elem->GetName() != "Cursor" && elem->IsVisible() && elem->IsInside(gCursor->GetCursor()->GetPosition(), true))
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 void GUI::SetVisibleWindow(lWindow *window, bool visible)

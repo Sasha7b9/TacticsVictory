@@ -334,8 +334,9 @@ void ThreadRocket::ThreadFunction()
         };
 
         execute = false;
-        */
+
         inProcess = true;
+        */
 
         for(uint i = start; i <= end; i++)
         {
@@ -350,9 +351,11 @@ void ThreadRocket::ThreadFunction()
                 rocket->mutex.Release();
             }
         }
+        /*
 
         inProcess = false;
-    //}
+    }
+    */
 }
 
 void Rocket::SetParameters(float timeStep)
@@ -384,15 +387,23 @@ void Rocket::SetParameters(float timeStep)
     }
 }
 
-void Rocket::UpdateAll(float timeStep)
+void Rocket::StopAllThreads()
 {
-    gProfiler->BeginBlock("Rocket::UpdateAll");
     static uint numCPU = 1; // Urho3D::GetNumLogicalCPUs();
 
     for(uint i = 0; i < numCPU; i++)
     {
-        while(threads[i].InProcess()) {};
+        while(threads[i].InProcess())
+        {
+        };
     }
+}
+
+void Rocket::UpdateAll(float timeStep)
+{
+    gProfiler->BeginBlock("Rocket::UpdateAll");
+
+    static uint numCPU = 1; // Urho3D::GetNumLogicalCPUs();
 
     uint size = rockets.Size();
 
@@ -414,6 +425,9 @@ void Rocket::UpdateAll(float timeStep)
             //threads[i].Execute();
         }
     }
+
+    //StopAllThreads();
+
     gProfiler->EndBlock();
 }
 

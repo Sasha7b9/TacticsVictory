@@ -15,8 +15,8 @@ public:
 
     bool IsChildOfParent();
     void Toggle();
-    bool IsInside(IntVector2 position, bool isScreen);
     SharedPtr<LineTranslator2D> GetTranslator();
+    bool UnderCursor();
 
     SharedPtr<ButtonMain> AddButton(char *text, int x = -1, int y = -1, int width = -1, int height = -1);
     SharedPtr<ButtonToggled> AddButtonToggled(char *text, int x, int y, int width, int height);

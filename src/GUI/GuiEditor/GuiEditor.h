@@ -3,17 +3,17 @@
 
 class lWindow;
 
-class GuiEditor : public UIElement
+class GuiEditor : public Object
 {
-    URHO3D_OBJECT(GuiEditor, UIElement);
+    URHO3D_OBJECT(GuiEditor, Object);
 
 public:
     GuiEditor(Context* context = gContext);
 
-    static void RegisterObject(Context *context = gContext);
-
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
     bool IsInside(IntVector2 &position);
+    bool IsVisible();
+    void SetVisible(bool visible);
 
     enum ModeSelect
     {

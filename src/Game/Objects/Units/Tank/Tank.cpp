@@ -6,8 +6,10 @@
 #include "Game/Objects/Terrain.h"
 #include "GlobalFunctions.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
-#include "GAme/Objects/GameObjectEvents.h"
+#include "Game/Objects/GameObjectEvents.h"
 #include "Game/Particles.h"
+#include "GUI/Elements/Cursor.h"
+#include "GUI/GuiGame/ContextMenuUnit.h"
 
 
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
@@ -130,7 +132,6 @@ void Tank::Update(float dT)
 
     if(!translator.IsMoving())
     {
-        /*
         if(inProcessFindPath)
         {
             if(pathFinder.PathIsFound())
@@ -157,7 +158,6 @@ void Tank::Update(float dT)
             pathFinder.StartFind(start, {row, col});
             inProcessFindPath = true;
         }
-        */
     }
     else
     {

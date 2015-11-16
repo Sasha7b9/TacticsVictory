@@ -69,7 +69,7 @@ void lScene::Create()
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
     gTerrain = new lTerrain(level);
 
-    for (int i = 0; i < 50; i++)
+    for (int i = 0; i < 25; i++)
     {
         uint row = 0;
         uint col = 0;
@@ -124,8 +124,10 @@ void lScene::Create()
 
     return;
 
+    /*
     SharedPtr<WindowTarget> windowTarget(new WindowTarget());
     gUIRoot->AddChild(windowTarget);
+    */
 }
 
 void lScene::Update(float /*timeStep*/)
@@ -157,19 +159,22 @@ void lScene::HandleMouseDown(StringHash, VariantMap& eventData)
 {
     int buttons = (int)eventData[Urho3D::MouseButtonDown::P_BUTTONS].GetInt();
 
-    if(buttons != Urho3D::MOUSEB_LEFT)
+    if(buttons == Urho3D::MOUSEB_LEFT)
     {
-        if (buttons == Urho3D::MOUSEB_RIGHT)
-        {
-            pathIndicator.Enable(false);
-        }
-        return;
+        ProcessMouseLeft();
     }
+    else if(buttons == Urho3D::MOUSEB_RIGHT)
+    {
+        ProcessMouseRight();
+    }
+}
 
+void lScene::ProcessMouseLeft()
+{
     Vector3 hitCoord;
     Drawable *object = gCursor->GetRaycastNode(&hitCoord);
 
-    if (!object)
+    if(!object)
     {
         return;
     }
@@ -177,7 +182,7 @@ void lScene::HandleMouseDown(StringHash, VariantMap& eventData)
     Node *node = object->GetNode();
     String name = node->GetName();
 
-    if (name == NODE_TANK)
+    if(name == NODE_TANK)
     {
         Tank *tank = node->GetComponent<Tank>();
         SetSelected(tank, !tank->IsSelected());
@@ -192,16 +197,28 @@ void lScene::HandleMouseDown(StringHash, VariantMap& eventData)
             pathIndicator.Enable(true);
         }
     }
-    else if (name == NODE_TERRAIN)
+    else if(name == NODE_TERRAIN)
     {
         pathIndicator.Enable(false);
         Tank *tank = GetSelected();
-
+        
         if(tank)
         {
             SetSelected(tank, false);
             tank->SetPath(pathIndicator.GetPath());
         }
+    }
+}
+
+void lScene::ProcessMouseRight()
+{
+    pathIndicator.Enable(false);
+
+    Drawable *object = gCursor->GetRaycastNode();
+
+    if(object && object->GetNode()->GetName() == NODE_TANK)
+    {
+        object->GetNode()->GetComponent<Tank>()->EnableContextMenu();
     }
 }
 

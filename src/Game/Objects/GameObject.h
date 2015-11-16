@@ -2,6 +2,7 @@
 
 
 #include "Game/Objects/Units/Tank/Translator.h"
+#include "GUI/GuiGame/ContextMenuUnit.h"
 
 
 class GameObject : public LogicComponent
@@ -13,6 +14,8 @@ public:
 
     virtual void Update(float timeStep);
 
+    void EnableContextMenu();
+
 protected:
     int timeForReload = 0;
     int timeLastReload = 0;
@@ -23,6 +26,10 @@ protected:
     float deltaRotate = 0.0f;
     float speed = 0.0f;
     Translator translator;
+
+    SharedPtr<ContextMenuUnit> contextMenu;
+
+    void HandleOnMouseDown(StringHash, VariantMap&);
 
 private:
     GameObject& operator=(const GameObject&) {};

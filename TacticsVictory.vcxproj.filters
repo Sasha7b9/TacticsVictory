@@ -384,6 +384,9 @@
     <ClCompile Include="src\Game\Objects\Weapons\Laser\Laser.cpp">
       <Filter>Game\Objects\Weapons\Laser</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\GuiGame\ContextMenuUnit.cpp">
+      <Filter>GUI\GuiGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -646,6 +649,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Weapons\Laser\Laser.h">
       <Filter>Game\Objects\Weapons\Laser</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GuiGame\ContextMenuUnit.h">
+      <Filter>GUI\GuiGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

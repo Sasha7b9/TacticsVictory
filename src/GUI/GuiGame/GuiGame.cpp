@@ -9,23 +9,14 @@
 #include "GUI/Menu/PanelBottom.h"
 
 
-GuiGame::GuiGame(Context* context) :
-    UIElement(context)
+GuiGame::GuiGame(Context *context) :
+    Object(context)
 {
-    SetFixedSize(gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_SCREEN_HEIGHT));
-
     CreatePanels();
 
     CreateTabs();
 
     SubscribeToEvent(Urho3D::E_KEYDOWN, URHO3D_HANDLER(GuiGame, HandleKeyDown));
-}
-
-void GuiGame::RegisterObject(Context* context)
-{
-    context->RegisterFactory<GuiGame>("UI");
-
-    URHO3D_COPY_BASE_ATTRIBUTES(UIElement);
 }
 
 void GuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
@@ -36,6 +27,18 @@ void GuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
     {
         ToggleInterfacePanels();
     }
+}
+
+bool GuiGame::IsVisible()
+{
+    return panelMap->IsVisible();
+}
+
+void GuiGame::SetVisible(bool visible)
+{
+    panelMap->SetVisible(visible);
+    panelBottom->SetVisible(visible);
+    panelMain->SetVisible(visible);
 }
 
 bool GuiGame::IntersectionX(ButtonMain *button, int x)
@@ -99,13 +102,13 @@ void GuiGame::HandleKeyDown(StringHash, VariantMap& eventData)
 void GuiGame::CreatePanels()
 {
     panelMap = new PanelMap(gContext);
-    AddChild(panelMap);
+    gUIRoot->AddChild(panelMap);
 
     panelMain = new PanelMain(gContext);
-    AddChild(panelMain);
+    gUIRoot->AddChild(panelMain);
 
     panelBottom = new PanelBottom(gContext);
-    AddChild(panelBottom);
+    gUIRoot->AddChild(panelBottom);
 
     panelBottom->SetPosition(0, gGraphics->GetHeight() - panelBottom->GetHeight());
 
