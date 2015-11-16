@@ -15,11 +15,12 @@ lCursor::lCursor() : Object(gContext)
 
     int size = 100;
 
-    lImage image(size, size);
+    SharedPtr<lImage> image(new lImage());
+    image->SetSize(size, size);
 
-    image.Clear({0.0f, 0.0f, 1.0f, 1.0f});
+    image->Clear({0.0f, 0.0f, 1.0f, 1.0f});
 
-    cursor->DefineShape("Normal", image.GetUImage(), {0, 0, size, size}, {0, 0});
+    cursor->DefineShape("Normal", image, {0, 0, size, size}, {0, 0});
     cursor->SetName("Cursor");
     gUI->SetCursor(cursor);
     cursor->SetPosition(gGraphics->GetWidth() / 2, gGraphics->GetHeight() / 2);
@@ -62,8 +63,9 @@ void lCursor::Update(float dT)
 
     if(hidden)
     {
-        SharedPtr<lImage> image(new lImage(1, 1));
-        cursor->DefineShape("Normal", image->GetUImage(), {0, 0, image->GetUImage()->GetWidth(), image->GetUImage()->GetHeight()}, {0, 0});
+        SharedPtr<lImage> image(new lImage());
+        image->SetSize(1, 1);
+        cursor->DefineShape("Normal", image, {0, 0, image->GetWidth(), image->GetHeight()}, {0, 0});
     }
     else
     {
@@ -144,7 +146,7 @@ void lCursor::Update(float dT)
 
             SharedPtr<lImage> image = shapes->GetShape(type, numFrame);
 
-            cursor->DefineShape("Normal", image->GetUImage(), {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
+            cursor->DefineShape("Normal", image, {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
             /*
             SharedPtr<Texture2D> texture(new Texture2D(gContext));
             texture->SetSize(image->GetWidth(), image->GetHeight(), D3DFMT_X8R8G8B8);

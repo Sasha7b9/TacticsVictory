@@ -10,6 +10,7 @@
 #include "Game/Logic/Movinator.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/GuiEditor/GuiEditor.h"
+#include "GUI/Elements/Image.h"
 #include "TacticsVictory.h"
 #include "Game/Level.h"
 #include "GlobalFunctions.h"
@@ -104,6 +105,7 @@ void TacticsVictory::RegistrationFactories()
 {
     gContext->RegisterFactory<Rotator>();
     gContext->RegisterFactory<Movinator>();
+    gContext->RegisterFactory<lImage>();
 }
 
 void TacticsVictory::Start()

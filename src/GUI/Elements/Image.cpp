@@ -5,18 +5,32 @@
 #include "Core/Math.h"
 
 
-lImage::lImage(int width, int height) : Resource(gContext)
+lImage::lImage(Context *context) :
+    Image(context)
 {
-    image = new Image(gContext);
 
-    image->SetSize(width, height, 4);
+}
+
+lImage::~lImage()
+{
+
+}
+
+void lImage::SetSize(int width, int height)
+{
+    Image::SetSize(width, height, 4);
+}
+
+void lImage::RegisterObject(Context* context)
+{
+    context->RegisterFactory<lImage>();
 }
 
 void lImage::SetPoint(int x, int y, const Color& color)
 {
-    if(x < image->GetWidth() && y < image->GetHeight())
+    if(x < GetWidth() && y < GetHeight())
     {
-        image->SetPixel((int)x, (int)y, color);
+        SetPixel((int)x, (int)y, color);
     }
 }
 
@@ -90,21 +104,11 @@ void lImage::FillRectangle(int x0, int y0, int width, int height, const Color &c
     }
 }
 
-void lImage::Clear(const Color &color)
-{
-    image->Clear(color);
-}
-
-SharedPtr<Image> lImage::GetUImage()
-{
-    return image;
-}
-
 void lImage::FillRegion(int x, int y, const Color &color)
 {
-    replacedColor = image->GetPixel(x, y);
+    replacedColor = GetPixel(x, y);
 
-    image->SetPixel(x, y, color);
+    SetPixel(x, y, color);
 
     Replace4Points(x, y, color);
 }
@@ -113,33 +117,33 @@ void lImage::Replace4Points(int x, int y, const Color &color)
 {
     if(y > 0)                       // upper pixel
     {
-        if(image->GetPixel(x, y - 1) == replacedColor)
+        if(GetPixel(x, y - 1) == replacedColor)
         {
-            image->SetPixel(x, y - 1, color);
+            SetPixel(x, y - 1, color);
             Replace4Points(x, y - 1, color);
         }
     }
-    if(x < image->GetWidth() - 1)   // rught pixel
+    if(x < GetWidth() - 1)   // rught pixel
     {
-        if(image->GetPixel(x + 1, y) == replacedColor)
+        if(GetPixel(x + 1, y) == replacedColor)
         {
-            image->SetPixel(x + 1, y, color);
+            SetPixel(x + 1, y, color);
             Replace4Points(x + 1, y, color);
         }
     }
-    if(y < image->GetHeight() - 1)
+    if(y < GetHeight() - 1)
     {
-        if(image->GetPixel(x, y + 1) == replacedColor)
+        if(GetPixel(x, y + 1) == replacedColor)
         {
-            image->SetPixel(x, y + 1, color);
+            SetPixel(x, y + 1, color);
             Replace4Points(x, y + 1, color);
         }
     }
     if(x > 0)
     {
-        if(image->GetPixel(x - 1, y) == replacedColor)
+        if(GetPixel(x - 1, y) == replacedColor)
         {
-            image->SetPixel(x - 1, y, color);
+            SetPixel(x - 1, y, color);
             Replace4Points(x - 1, y, color);
         }
     }
@@ -149,9 +153,9 @@ void lImage::FillRegion(int x, int y, const Color &color, const Color &colorBoun
 {
     boundingColor = colorBound;
 
-    if(image->GetPixel(x, y) != colorBound)
+    if(GetPixel(x, y) != colorBound)
     {
-        image->SetPixel(x, y, color);
+        SetPixel(x, y, color);
         Replace4PointsBound(x, y, color);
     }
 }
@@ -178,7 +182,7 @@ void lImage::CopyImage(int x0, int y0, lImage &inImage)
         {
             int curX = x - x0;
             int curY = y - y0;
-            Color color = inImage.GetUImage()->GetPixel(curX, curY);
+            Color color = inImage.GetPixel(curX, curY);
 
             if (color.a_ > 0.5f)
             {
@@ -190,10 +194,10 @@ void lImage::CopyImage(int x0, int y0, lImage &inImage)
 
 
 #define FILL(a, b)                              \
-    Color col = image->GetPixel(a, b);          \
+    Color col = GetPixel(a, b);                 \
     if(col != boundingColor && col != color)    \
     {                                           \
-        image->SetPixel(a, b, color);           \
+        SetPixel(a, b, color);                  \
         Replace4PointsBound(a, b, color);       \
     }
 
@@ -204,11 +208,11 @@ void lImage::Replace4PointsBound(int x, int y, const Color &color)
     {
         FILL(x, y - 1);
     }
-    if(x < image->GetWidth() - 1)
+    if(x < GetWidth() - 1)
     {
         FILL(x + 1, y);
     }
-    if(y < image->GetHeight() - 1)
+    if(y < GetHeight() - 1)
     {
         FILL(x, y + 1);
     }
@@ -216,16 +220,6 @@ void lImage::Replace4PointsBound(int x, int y, const Color &color)
     {
         FILL(x - 1, y);
     }
-}
-
-int lImage::GetWidth() const
-{
-    return image->GetWidth();
-}
-
-int lImage::GetHeight() const
-{
-    return image->GetHeight();
 }
 
 void lImage::DrawPolyline(const Color &color, int numPoints, int *xy)

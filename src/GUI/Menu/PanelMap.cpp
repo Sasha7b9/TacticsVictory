@@ -56,7 +56,8 @@ void PanelMap::Update(float dT)
 
         uint sizeMap = sizeX > sizeY ? sizeX : sizeY;
 
-        imageMap = new lImage((int)sizeMap, (int)sizeMap);
+        imageMap = new lImage();
+        imageMap->SetSize((int)sizeMap, (int)sizeMap);
 
         imageMap->Clear(Color::BLACK);
 
@@ -96,7 +97,7 @@ void PanelMap::Update(float dT)
             prevX = posX;
         }
 
-        imageMap->GetUImage()->Resize(GetWidth(), GetHeight());
+        imageMap->Resize(GetWidth(), GetHeight());
 
         imageMap->DrawRectangle(0, 0, GetWidth() - 1, GetHeight() - 1, Color::WHITE);
     }
@@ -109,11 +110,12 @@ void PanelMap::Update(float dT)
         {1.0f, 0.0f}
     };
 
-    SharedPtr<lImage> image(new lImage(imageMap->GetWidth(), imageMap->GetHeight()));
+    SharedPtr<lImage> image(new lImage());
+    image->SetSize(imageMap->GetWidth(), imageMap->GetHeight());
 
-    uchar *data = imageMap->GetUImage()->GetData();
+    uchar *data = imageMap->GetData();
 
-    image->GetUImage()->SetData(data);
+    image->SetData(data);
 
     uint sizeX = SizeXMap();
     uint sizeY = SizeYMap();
@@ -160,7 +162,8 @@ void PanelMap::Update(float dT)
 
     SharedPtr<Texture2D> texture(new Texture2D(gContext));
     texture->SetSize(GetWidth(), GetHeight(), D3DFMT_X8R8G8B8);
-    texture->SetData(image->GetUImage());
+    //texture->SetData(image);
+    texture->SetData(0, 0, 0, image->GetWidth(), image->GetHeight(), image->GetData());
 
     SetTexture(texture);
     SetFullImageRect();
