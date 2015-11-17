@@ -28,7 +28,6 @@ public:
 
     static SharedPtr<Tank> Create(TypeTank type);
 
-    Vector3 GetPosition();
     void SetCoord(const Coord& coord);
 
     void SetPath(PODVector<Coord> &path);
@@ -36,11 +35,6 @@ public:
     // rotation = [0...359.999999f]
     void SetRotation(float rotation);
     float GetRotation();
-
-    Node *GetNode()
-    {
-        return node_;
-    }
 
     Vector3 GetSpeed()
     {
@@ -51,13 +45,9 @@ private:
     Tank& operator=(const Tank&) {};
 
     void LoadFromFile();
-    void Normalize();
-    void SetPosition(const Vector3& pos);
     void Init(TypeTank typeTank);
 
     TypeTank typeTank;
-
-    SharedPtr<StaticModel> modelObject;
 
     struct TankStruct
     {

@@ -21,12 +21,20 @@ public:
     virtual void Update(float timeStep);
 
     void EnableContextMenu();
+
     char *GetName();
 
     Type GetGameObjectType();
 
     virtual void SetSelected(bool selected);
+
     bool IsSelected();
+
+    Vector3 GetPosition();
+
+    Node *GetNode();
+
+    void SetCoord(const Coord& coord);
 
 protected:
     int timeForReload = 0;
@@ -41,6 +49,11 @@ protected:
     char* name;
     Type type;
     SharedPtr<ContextMenuUnit> contextMenu;
+    SharedPtr<StaticModel> modelObject;
+
+    void SetPosition(const Vector3& pos);
+
+    void Normalize(float k = 1.0f);
 
     void HandleOnMouseDown(StringHash, VariantMap&);
 

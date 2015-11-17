@@ -10,6 +10,7 @@
 #include "GUI/Elements/Cursor.h"
 #include "Game/Path/TilePath.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
+#include "Game/Objects/Buildings/MilitaryPlant/MilitaryPlant.h"
 #include "Game/Sounds.h"
 #include "Game/Particles.h"
 #include "GUI/GuiGame/WindowTarget.h"
@@ -36,6 +37,7 @@ void lScene::RegisterObjects()
 {
     Tank::RegisterObject();
     Rocket::RegisterObject();
+    MilitaryPlant::RegisterObject();
 }
 
 void lScene::RegisterObject(Context *context)
@@ -125,6 +127,9 @@ void lScene::Create()
     gWindowTarget = new WindowTarget();
     gUIRoot->AddChild(gWindowTarget);
     gWindowTarget->SetVisible(false);
+
+    SharedPtr<MilitaryPlant> militaryPlant = MilitaryPlant::Create();
+    militaryPlant->SetCoord(Coord(1, 1));
 }
 
 void lScene::Update(float /*timeStep*/)

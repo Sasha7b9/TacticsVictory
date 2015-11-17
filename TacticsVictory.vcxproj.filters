@@ -387,6 +387,9 @@
     <ClCompile Include="src\GUI\GuiGame\ContextMenuUnit.cpp">
       <Filter>GUI\GuiGame</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\Structures.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -652,6 +655,9 @@
     </ClInclude>
     <ClInclude Include="src\GUI\GuiGame\ContextMenuUnit.h">
       <Filter>GUI\GuiGame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Structures.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
