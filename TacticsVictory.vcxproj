@@ -355,7 +355,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Objects\Buildings\Shaft\Shaft.cpp" />
     <ClCompile Include="src\Game\Objects\Buildings\WarehouseAmmo\WarehouseAmmo.cpp" />
     <ClCompile Include="src\Game\Objects\GameObject.cpp" />
-    <ClCompile Include="src\Game\Objects\Terrain\Landscape.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\Landscape.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\TerraCube.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\Terrain.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\TerrainSegment.cpp" />
     <ClCompile Include="src\Game\Objects\Units\Airplane\Airplane.cpp" />
@@ -448,7 +449,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Objects\Buildings\WarehouseAmmo\WarehouseAmmo.h" />
     <ClInclude Include="src\Game\Objects\GameObject.h" />
     <ClInclude Include="src\Game\Objects\GameObjectEvents.h" />
-    <ClInclude Include="src\Game\Objects\Terrain\Landscape.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\Landscape.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\TerraCube.h" />
     <ClInclude Include="src\Game\Objects\Terrain\Terrain.h" />
     <ClInclude Include="src\Game\Objects\Terrain\TerrainSegment.h" />
     <ClInclude Include="src\Game\Objects\Units\Airplane\Airplane.h" />

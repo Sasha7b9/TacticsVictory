@@ -133,6 +133,9 @@
     <Filter Include="Game\Objects\Terrain">
       <UniqueIdentifier>{04ebc781-8977-47bb-a013-0ecf566abc69}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Objects\Terrain\Landscape">
+      <UniqueIdentifier>{561882e8-ea6e-4472-b8ab-b4aa40f6a76f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Camera.cpp">
@@ -387,14 +390,17 @@
     <ClCompile Include="src\Core\Structures.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\Landscape.cpp">
-      <Filter>Game\Objects\Terrain</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Objects\Terrain\Terrain.cpp">
       <Filter>Game\Objects\Terrain</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Terrain\TerrainSegment.cpp">
       <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\Landscape.cpp">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\TerraCube.cpp">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -659,14 +665,17 @@
     <ClInclude Include="src\Core\Structures.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\Landscape.h">
-      <Filter>Game\Objects\Terrain</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Objects\Terrain\Terrain.h">
       <Filter>Game\Objects\Terrain</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Terrain\TerrainSegment.h">
       <Filter>Game\Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\Landscape.h">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\TerraCube.h">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
