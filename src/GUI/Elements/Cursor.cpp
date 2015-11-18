@@ -6,7 +6,7 @@
 #include "GUI/GUI.h"
 #include "GUI/Elements/CursorShapes.h"
 #include "GUI/Elements/Image.h"
-#include "Game/Objects/Terrain.h"
+#include "Game/Objects/Terrain/Terrain.h"
 
 
 lCursor::lCursor() : Object(gContext)

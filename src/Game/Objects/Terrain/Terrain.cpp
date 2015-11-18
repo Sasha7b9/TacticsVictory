@@ -4,7 +4,7 @@
 #include "Terrain.h"
 #include "Graphics/Objects/Plane.h"
 #include "Graphics/Objects/Line.h"
-#include "Game/Objects/TerrainSegment.h"
+#include "Game/Objects/Terrain/TerrainSegment.h"
 
 
 lTerrain::lTerrain(Vector<Vector<float> > &map_) : Object(gContext), map(map_)

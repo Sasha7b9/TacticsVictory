@@ -130,6 +130,9 @@
     <Filter Include="Game\Objects\Weapons\Gun">
       <UniqueIdentifier>{6cfa45cd-4121-4e23-8a03-7eaaf96cf412}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Objects\Terrain">
+      <UniqueIdentifier>{04ebc781-8977-47bb-a013-0ecf566abc69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Camera.cpp">
@@ -234,9 +237,6 @@
     <ClCompile Include="src\GUI\Menu\PanelMap.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain.cpp">
-      <Filter>Game\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\Elements\ButtonToggled.cpp">
       <Filter>GUI\Elements</Filter>
     </ClCompile>
@@ -257,9 +257,6 @@
     </ClCompile>
     <ClCompile Include="src\GUI\Menu\WindowConfirmExit.cpp">
       <Filter>GUI\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\TerrainSegment.cpp">
-      <Filter>Game\Objects</Filter>
     </ClCompile>
     <ClCompile Include="src\Graphics\Objects\Line.cpp">
       <Filter>Graphics\Objects</Filter>
@@ -390,6 +387,15 @@
     <ClCompile Include="src\Core\Structures.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape.cpp">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\Terrain.cpp">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\TerrainSegment.cpp">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -497,9 +503,6 @@
     <ClInclude Include="src\GUI\Menu\PanelMap.h">
       <Filter>GUI\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain.h">
-      <Filter>Game\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="src\GUI\Elements\ButtonToggled.h">
       <Filter>GUI\Elements</Filter>
     </ClInclude>
@@ -523,9 +526,6 @@
     </ClInclude>
     <ClInclude Include="src\GUI\Menu\WindowConfirmExit.h">
       <Filter>GUI\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\TerrainSegment.h">
-      <Filter>Game\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Graphics\Objects\Line.h">
       <Filter>Graphics\Objects</Filter>
@@ -658,6 +658,15 @@
     </ClInclude>
     <ClInclude Include="src\Core\Structures.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape.h">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\Terrain.h">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\TerrainSegment.h">
+      <Filter>Game\Objects\Terrain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "Game/Objects/Terrain.h"
+#include "Game/Objects/Terrain/Terrain.h"
 #include "Core/Structures.h"
 
 

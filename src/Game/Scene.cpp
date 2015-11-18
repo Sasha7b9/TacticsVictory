@@ -6,7 +6,7 @@
 #include "Core/Math.h"
 #include "Game/Logic/Movinator.h"
 #include "Game/Level.h"
-#include "Game/Objects/Terrain.h"
+#include "Game/Objects/Terrain/Terrain.h"
 #include "GUI/Elements/Cursor.h"
 #include "Game/Path/TilePath.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"

@@ -3,7 +3,7 @@
 
 #include "Tank.h"
 #include "Core/Math.h"
-#include "Game/Objects/Terrain.h"
+#include "Game/Objects/Terrain/Terrain.h"
 #include "GlobalFunctions.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 #include "Game/Objects/GameObjectEvents.h"

@@ -2,7 +2,7 @@
 
 
 #include "Graphics/Objects/Plane.h"
-#include "Game/Objects/Terrain.h"
+#include "Game/Objects/Terrain/Terrain.h"
 #include "Graphics/Objects/Line.h"
 
 
