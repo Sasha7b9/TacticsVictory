@@ -399,7 +399,19 @@
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\Landscape.cpp">
       <Filter>Game\Objects\Terrain\Landscape</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\Landscape\TerraCube.cpp">
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\CubeLandscape.cpp">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\PlaneCube.cpp">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\SideCube.cpp">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\CornerCube.cpp">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\EdgeCube.cpp">
       <Filter>Game\Objects\Terrain\Landscape</Filter>
     </ClCompile>
   </ItemGroup>
@@ -674,7 +686,19 @@
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\Landscape.h">
       <Filter>Game\Objects\Terrain\Landscape</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\Landscape\TerraCube.h">
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\CubeLandscape.h">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\SideCube.h">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\PlaneCube.h">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\CornerCube.h">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\EdgeCube.h">
       <Filter>Game\Objects\Terrain\Landscape</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #pragma once
 
 
-class TerraCube
+class PlaneCube
 {
 public:
 private:
