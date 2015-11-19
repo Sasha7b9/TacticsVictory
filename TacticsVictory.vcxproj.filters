@@ -414,6 +414,9 @@
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\EdgeCube.cpp">
       <Filter>Game\Objects\Terrain\Landscape</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\LayerLandscape.cpp">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -699,6 +702,9 @@
       <Filter>Game\Objects\Terrain\Landscape</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\EdgeCube.h">
+      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\LayerLandscape.h">
       <Filter>Game\Objects\Terrain\Landscape</Filter>
     </ClInclude>
   </ItemGroup>

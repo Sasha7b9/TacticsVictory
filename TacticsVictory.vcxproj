@@ -359,6 +359,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\EdgeCube.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\Landscape.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\CubeLandscape.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\LayerLandscape.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\PlaneCube.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\SideCube.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\Terrain.cpp" />
@@ -457,6 +458,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\EdgeCube.h" />
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\Landscape.h" />
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\CubeLandscape.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\LayerLandscape.h" />
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\PlaneCube.h" />
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\SideCube.h" />
     <ClInclude Include="src\Game\Objects\Terrain\Terrain.h" />

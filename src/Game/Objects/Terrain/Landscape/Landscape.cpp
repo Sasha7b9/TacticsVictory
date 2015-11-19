@@ -4,7 +4,8 @@
 #include "Landscape.h"
 
 
-Landscape::Landscape()
+Landscape::Landscape(Context *context) :
+    Object(context)
 {
 
 }
