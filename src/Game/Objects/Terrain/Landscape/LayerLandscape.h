@@ -11,8 +11,16 @@ class LayerLandscape : public Object
 public:
     LayerLandscape(Context *context = gContext);
 
-    Vector<CubeLandscape> cubes;
+    void AddCube(SharedPtr<CubeLandscape> &cube);
+
+    void Create();
+
+    void Build();
+
+    Vector<SharedPtr<CubeLandscape>> cubes;
 private:
     LayerLandscape& operator=(const LayerLandscape&)
     {};
+
+    void PushPoint(PODVector<float> &vertexes, PointPlane &point);
 };
