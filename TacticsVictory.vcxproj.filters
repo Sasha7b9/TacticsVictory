@@ -118,22 +118,22 @@
     <Filter Include="Game\Objects\Terrain\Landscape">
       <UniqueIdentifier>{561882e8-ea6e-4472-b8ab-b4aa40f6a76f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Units\Weapons">
+    <Filter Include="Game\Objects\Weapons">
       <UniqueIdentifier>{a0fa9639-ca9d-4189-9139-5a6018bebd9e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Units\Weapons\RocketLauncer">
+    <Filter Include="Game\Objects\Weapons\RocketLauncer">
       <UniqueIdentifier>{fcd0f500-62d1-4d44-b54c-e1cbb28b4313}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Units\Weapons\GrenadeLauncher">
+    <Filter Include="Game\Objects\Weapons\GrenadeLauncher">
       <UniqueIdentifier>{0db4d0fa-ac1c-4bf5-8d90-5e7954e95fd0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Units\Weapons\MachineGun">
+    <Filter Include="Game\Objects\Weapons\MachineGun">
       <UniqueIdentifier>{5d47e502-47a0-47fc-a2ca-be4cdcbe1703}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Units\Weapons\Laser">
+    <Filter Include="Game\Objects\Weapons\Laser">
       <UniqueIdentifier>{82f645d0-859b-4d04-8185-0b86d6905227}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Units\Weapons\Gun">
+    <Filter Include="Game\Objects\Weapons\Gun">
       <UniqueIdentifier>{6cfa45cd-4121-4e23-8a03-7eaaf96cf412}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -325,13 +325,13 @@
       <Filter>Game\Objects\Building</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Weapons\MachineGun\MachineGun.cpp">
-      <Filter>Game\Objects\Units\Weapons\MachineGun</Filter>
+      <Filter>Game\Objects\Weapons\MachineGun</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Weapons\GrenadeLauncher\GrenadeLauncher.cpp">
-      <Filter>Game\Objects\Units\Weapons\GrenadeLauncher</Filter>
+      <Filter>Game\Objects\Weapons\GrenadeLauncher</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Weapons\RocketLauncher\RocketLauncher.cpp">
-      <Filter>Game\Objects\Units\Weapons\RocketLauncer</Filter>
+      <Filter>Game\Objects\Weapons\RocketLauncer</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Buildings\WarehouseAmmo\WarehouseAmmo.cpp">
       <Filter>Game\Objects\Building\WarehouseAmmo</Filter>
@@ -376,13 +376,13 @@
       <Filter>Game\Objects\Units\Robot</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Weapons\WeaponObject.cpp">
-      <Filter>Game\Objects\Units\Weapons</Filter>
+      <Filter>Game\Objects\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Weapons\Gun\Gun.cpp">
-      <Filter>Game\Objects\Units\Weapons\Gun</Filter>
+      <Filter>Game\Objects\Weapons\Gun</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Weapons\Laser\Laser.cpp">
-      <Filter>Game\Objects\Units\Weapons\Laser</Filter>
+      <Filter>Game\Objects\Weapons\Laser</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\GuiGame\ContextMenuUnit.cpp">
       <Filter>GUI\GuiGame</Filter>
@@ -615,13 +615,13 @@
       <Filter>Game\Objects\Building</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Weapons\MachineGun\MachineGun.h">
-      <Filter>Game\Objects\Units\Weapons\MachineGun</Filter>
+      <Filter>Game\Objects\Weapons\MachineGun</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Weapons\GrenadeLauncher\GrenadeLauncher.h">
-      <Filter>Game\Objects\Units\Weapons\GrenadeLauncher</Filter>
+      <Filter>Game\Objects\Weapons\GrenadeLauncher</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Weapons\RocketLauncher\RocketLauncher.h">
-      <Filter>Game\Objects\Units\Weapons\RocketLauncer</Filter>
+      <Filter>Game\Objects\Weapons\RocketLauncer</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Buildings\WarehouseAmmo\WarehouseAmmo.h">
       <Filter>Game\Objects\Building\WarehouseAmmo</Filter>
@@ -666,13 +666,13 @@
       <Filter>Game\Objects\Units\Robot</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Weapons\WeaponObject.h">
-      <Filter>Game\Objects\Units\Weapons</Filter>
+      <Filter>Game\Objects\Weapons</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Weapons\Gun\Gun.h">
-      <Filter>Game\Objects\Units\Weapons\Gun</Filter>
+      <Filter>Game\Objects\Weapons\Gun</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Weapons\Laser\Laser.h">
-      <Filter>Game\Objects\Units\Weapons\Laser</Filter>
+      <Filter>Game\Objects\Weapons\Laser</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\GuiGame\ContextMenuUnit.h">
       <Filter>GUI\GuiGame</Filter>
