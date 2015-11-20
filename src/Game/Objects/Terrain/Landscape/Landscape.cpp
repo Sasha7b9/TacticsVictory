@@ -17,36 +17,55 @@ Landscape::~Landscape()
 
 void Landscape::CreateFromVector(Vector<Vector<float>> &level)
 {
-    uint numRows = level.Size();
-    uint numCols = level[0].Size();
+    URHO3D_LOGINFOF("1 %f", gTime->GetElapsedTime());
+    //uint numRows = level.Size();
+    //uint numCols = level[0].Size();
+    uint numRows = 5;
+    uint numCols = 5;
 
     float min = 1e10f;
     float max = -1e10f;
-    
-    for(auto &row : level)
+
+    for (uint row = 0; row < numRows; row++)
     {
-        for(float helght : row)
+        for (uint col = 0; col < numCols; col++)
         {
-            if(helght < min)
+            float height = level[row][col];
+            if(height < min)
             {
-                min = helght;
+                min = height;
             }
-            if(helght > max)
+            if(height > max)
             {
-                max = helght;
+                max = height;
             }
         }
     }
 
     if(max > 0.0f)
     {
-        underGround.Resize((uint)(max)+1);
+        ground.Resize((uint)(max));
+
+        for (uint i = 0; i < underGround.Size(); i++)
+        {
+            ground[i] = new LayerLandscape();
+        }
     }
+
+    
 
     if(min <= 0.0f)
     {
-        ground.Resize((uint)fabs(min) + 1);
+        underGround.Resize((uint)fabs(min) + 1);
+
+        for (uint i = 0; i < ground.Size(); i++)
+        {
+            underGround[i] = new LayerLandscape();
+        }
     }
+
+    uint sizeGround = ground.Size();
+    uint sizeUnderGround = underGround.Size();
 
     for(uint row = 0; row < numRows; row++)
     {
@@ -57,20 +76,29 @@ void Landscape::CreateFromVector(Vector<Vector<float>> &level)
         }
     }
 
+    URHO3D_LOGINFOF("2 %f", gTime->GetElapsedTime());
+
     CreateLayers();
 
+    URHO3D_LOGINFOF("3 %f", gTime->GetElapsedTime());
+
     Build();
+
+    URHO3D_LOGINFOF("4 %f", gTime->GetElapsedTime());
 }
 
 void Landscape::AddCube(SharedPtr<CubeLandscape> &cube)
 {
     if(cube->underGround)
     {
+        uint size = underGround.Size();
         underGround[cube->layer]->AddCube(cube);
     }
     else
     {
-        ground[cube->layer]->AddCube(cube);
+        uint layer = cube->layer;
+        uint size = ground.Size();
+        ground[layer]->AddCube(cube);
     }
 }
 

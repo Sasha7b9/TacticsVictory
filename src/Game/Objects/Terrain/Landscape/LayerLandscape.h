@@ -18,9 +18,12 @@ public:
     void Build();
 
     Vector<SharedPtr<CubeLandscape>> cubes;
+
 private:
     LayerLandscape& operator=(const LayerLandscape&)
     {};
 
-    void PushPoint(PODVector<float> &vertexes, PointPlane &point);
+    SharedPtr<Geometry> geometry;
+    SharedPtr<Model> model;
+    SharedPtr<StaticModel> object;
 };

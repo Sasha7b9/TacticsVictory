@@ -16,6 +16,8 @@ public:
 
     void Create();
 
+    void BuildVertexes();
+
     SharedPtr<SideCube>     sides[4];
     SharedPtr<CornerCube>   corners[4];
     SharedPtr<EdgeCube>     edges[2];
@@ -24,6 +26,10 @@ public:
     uint col = 0;
     uint layer = 0;
     bool underGround = false;
+
+    SharedPtr<VertexBuffer> vb;
+    SharedPtr<IndexBuffer> ib;
+    SharedPtr<Geometry> geometry;
     
 private:
 
@@ -39,7 +45,7 @@ private:
     
     #define E_TOP       0
     #define E_DOWN      1
-    
+
     CubeLandscape& operator=(const CubeLandscape&)
     {};
 
@@ -48,6 +54,8 @@ private:
     void CreateEdges();
     void CreateEdgeTop();
     void CreateEdgeDown();
+
+    void PushPoint(PODVector<float> &vertexes, PointPlane &point);
 };
 
 /*                     Corner_0              Corner_1

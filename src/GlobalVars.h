@@ -32,6 +32,7 @@ extern Editor           *gEditor;
 extern Settings         *gSet;
 extern Level            *gLevel;
 extern lTerrain         *gTerrain;
+extern Landscape        *gLandscape;
 
 extern GUI                  *gGUI;
 extern lConsole             *gConsole;

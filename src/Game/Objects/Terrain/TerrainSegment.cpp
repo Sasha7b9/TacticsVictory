@@ -98,12 +98,8 @@ void TerrainSegment::Rebuild(Vector<Vector<float>> &map_)
     model->SetVertexBuffers(vbVector, morpRange, morpRange);
     model->SetIndexBuffers(ibVector);
 
-    //model->SetBoundingBox(UBoundingBox(Vector3(-1000.0f, -1000.0f, -1000.0f), Vector3(1000.0f, 1000.0f, 1000.0f)));
 
     CalculateBoundingBox();
-    //boundingBox.min_.x_ = -boundingBox.max_.x_;
-    //boundingBox.min_.y_ = -boundingBox.max_.y_;
-    //boundingBox.max_.z_ = -boundingBox.min_.z_;
     model->SetBoundingBox(boundingBox);
 
     if(!object->GetModel())

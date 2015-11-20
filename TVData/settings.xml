@@ -7,7 +7,7 @@
 	<brightness>50</brightness>
 	<volume>19</volume>
 	<max_occluder_triangles>5000</max_occluder_triangles>
-	<language>0</language>
+	<language>1</language>
 	<texture>
 		<quality>2</quality>
 		<anisotropy>5</anisotropy>

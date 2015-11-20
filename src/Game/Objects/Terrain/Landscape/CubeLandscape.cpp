@@ -18,9 +18,13 @@ CubeLandscape::CubeLandscape(uint row, uint col, float height) :
     this->row = row;
     this->col = col;
 
-    layer = (uint)fabs(height);
+    underGround = height <= 0.0f;
 
-    underGround = (height <= 0.0f) ? true : false;
+    layer = (uint)fabs(height);
+    if (!underGround)
+    {
+        layer--;
+    }
 }
 
 void CubeLandscape::Init()
@@ -82,4 +86,78 @@ void CubeLandscape::CreateEdgeTop()
 void CubeLandscape::CreateEdgeDown()
 {
 
+}
+
+void CubeLandscape::BuildVertexes()
+{
+    PODVector<float> vertexes;
+    PODVector<uint> indexes;
+
+    uint index = vertexes.Size() / 8;
+
+    if (edges[E_TOP])
+    {
+        PlaneCube &plane = edges[E_TOP]->plane;
+
+        PushPoint(vertexes, plane.point[0]);
+        PushPoint(vertexes, plane.point[1]);
+        PushPoint(vertexes, plane.point[2]);
+        PushPoint(vertexes, plane.point[3]);
+
+        indexes.Push(index + 0U);
+        indexes.Push(index + 1U);
+        indexes.Push(index + 2U);
+        indexes.Push(index + 0U);
+        indexes.Push(index + 2U);
+        indexes.Push(index + 3U);
+    }
+
+    vb = new VertexBuffer(gContext);
+    ib = new IndexBuffer(gContext);
+    geometry = new Geometry(gContext);
+
+    uint numVert = vertexes.Size();
+    uint numInd = indexes.Size();
+
+    float *bufVert = new float[numVert];
+    uint *bufInd = new uint[numInd];
+
+    for (uint i = 0; i < numVert; i++)
+    {
+        bufVert[i] = vertexes[i];
+    }
+
+    for (uint i = 0; i < numInd; i++)
+    {
+        bufInd[i] = indexes[i];
+    }
+
+    vb->SetShadowed(true);
+    vb->SetSize(vertexes.Size() / 8, Urho3D::MASK_POSITION | Urho3D::MASK_NONE | Urho3D::MASK_TEXCOORD1);
+    vb->SetData(bufVert);
+
+    ib->SetShadowed(true);
+    ib->SetSize(numInd, true);
+    ib->SetData(bufInd);
+
+    geometry->SetVertexBuffer(0, vb);
+    geometry->SetIndexBuffer(ib);
+    geometry->SetDrawRange(Urho3D::TRIANGLE_LIST, 0, ib->GetIndexCount());
+
+    SAFE_DELETE(bufVert);
+    SAFE_DELETE(bufInd);
+}
+
+void CubeLandscape::PushPoint(PODVector<float> &vertexes, PointPlane &point)
+{
+    vertexes.Push(point.coord.x_);
+    vertexes.Push(point.coord.y_);
+    vertexes.Push(point.coord.z_);
+
+    vertexes.Push(point.normal.x_);
+    vertexes.Push(point.normal.y_);
+    vertexes.Push(point.normal.z_);
+
+    vertexes.Push(point.texCoord.x_);
+    vertexes.Push(point.texCoord.y_);
 }

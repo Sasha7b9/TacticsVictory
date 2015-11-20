@@ -17,7 +17,7 @@ void LayerLandscape::AddCube(SharedPtr<CubeLandscape> &cube)
 
 void LayerLandscape::Create()
 {
-    for(auto &cube : cubes)
+    for(auto cube : cubes)
     {
         cube->Create();
     }
@@ -25,39 +25,39 @@ void LayerLandscape::Create()
 
 void LayerLandscape::Build()
 {
-    PODVector<float> vertexes;
-    PODVector<uint> indexes;
-
-    uint index = vertexes.Size() / 8;
-
-    for(auto & cube : cubes)
+    for(auto cube : cubes)
     {
-        PlaneCube &plane = cube->edges[E_TOP]->plane;
-
-        PushPoint(vertexes, plane.point[0]);
-        PushPoint(vertexes, plane.point[1]);
-        PushPoint(vertexes, plane.point[2]);
-        PushPoint(vertexes, plane.point[3]);
-
-        indexes.Push(index + 0U);
-        indexes.Push(index + 1U);
-        indexes.Push(index + 2U);
-        indexes.Push(index + 0U);
-        indexes.Push(index + 2U);
-        indexes.Push(index + 3U);
+        cube->BuildVertexes();
     }
-}
 
-void LayerLandscape::PushPoint(PODVector<float> &vertexes, PointPlane &point)
-{
-    vertexes.Push(point.coord.x_);
-    vertexes.Push(point.coord.y_);
-    vertexes.Push(point.coord.z_);
+    model = new Model(gContext);
+    Node *node = gScene->CreateChild(NODE_TERRAIN);
+    object = node->CreateComponent<StaticModel>();
+    object->SetViewMask(VIEW_MASK_FOR_MISSILE);
 
-    vertexes.Push(point.normal.x_);
-    vertexes.Push(point.normal.y_);
-    vertexes.Push(point.normal.z_);
+    Vector<SharedPtr<VertexBuffer>> vbVector;
+    Vector<SharedPtr<IndexBuffer>> ibVector;
 
-    vertexes.Push(point.texCoord.x_);
-    vertexes.Push(point.texCoord.y_);
+    model->SetNumGeometries(cubes.Size());
+    model->SetNumGeometryLodLevels(0, 1);
+
+    for (uint i = 0; i < cubes.Size(); i++)
+    {
+        model->SetGeometry(i, 0, cubes[i]->geometry);
+        vbVector.Push(cubes[i]->vb);
+        ibVector.Push(cubes[i]->ib);
+    }
+
+    PODVector<uint> morphRange;
+
+    model->SetVertexBuffers(vbVector, morphRange, morphRange);
+    model->SetIndexBuffers(ibVector);
+
+    model->SetBoundingBox(BoundingBox(-500.0f, 500.0f));
+
+    object->SetModel(model);
+    object->SetMaterial(gCache->GetResource<Material>("Materials/TVTerrain.xml"));
+    object->SetCastShadows(true);
+
+    node->SetPosition({-250.0f, 0.0f, 0.0f});
 }

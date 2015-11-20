@@ -262,6 +262,7 @@ class Hint;
 class lImage;
 
 class Label;
+class Landscape;
 class Level;
 class Line;
 class LineTranslator1D;
