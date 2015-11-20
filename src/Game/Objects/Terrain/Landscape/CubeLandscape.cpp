@@ -90,9 +90,6 @@ void CubeLandscape::CreateEdgeDown()
 
 void CubeLandscape::BuildVertexes()
 {
-    PODVector<float> vertexes;
-    PODVector<uint> indexes;
-
     uint index = vertexes.Size() / 8;
 
     if (edges[E_TOP])
@@ -111,41 +108,6 @@ void CubeLandscape::BuildVertexes()
         indexes.Push(index + 2U);
         indexes.Push(index + 3U);
     }
-
-    vb = new VertexBuffer(gContext);
-    ib = new IndexBuffer(gContext);
-    geometry = new Geometry(gContext);
-
-    uint numVert = vertexes.Size();
-    uint numInd = indexes.Size();
-
-    float *bufVert = new float[numVert];
-    uint *bufInd = new uint[numInd];
-
-    for (uint i = 0; i < numVert; i++)
-    {
-        bufVert[i] = vertexes[i];
-    }
-
-    for (uint i = 0; i < numInd; i++)
-    {
-        bufInd[i] = indexes[i];
-    }
-
-    vb->SetShadowed(true);
-    vb->SetSize(vertexes.Size() / 8, Urho3D::MASK_POSITION | Urho3D::MASK_NONE | Urho3D::MASK_TEXCOORD1);
-    vb->SetData(bufVert);
-
-    ib->SetShadowed(true);
-    ib->SetSize(numInd, true);
-    ib->SetData(bufInd);
-
-    geometry->SetVertexBuffer(0, vb);
-    geometry->SetIndexBuffer(ib);
-    geometry->SetDrawRange(Urho3D::TRIANGLE_LIST, 0, ib->GetIndexCount());
-
-    SAFE_DELETE(bufVert);
-    SAFE_DELETE(bufInd);
 }
 
 void CubeLandscape::PushPoint(PODVector<float> &vertexes, PointPlane &point)

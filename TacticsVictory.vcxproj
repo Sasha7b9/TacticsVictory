@@ -100,7 +100,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_THREADING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_THREADING;URHO3D_D3D11;URHO3D_ANGELSCRIPT;URHO3D_LUAJIT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DisableSpecificWarnings>4514;4820;4710;4640;4625</DisableSpecificWarnings>
       <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
@@ -132,7 +132,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalOptions>/STACK:20000000000 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;c:\Urho3D14\build\lib\Urho3D_d.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d11.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;c:\Urho3D14\build\lib\Urho3D_d.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -358,6 +358,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\CornerCube.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\EdgeCube.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\Landscape.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\Landscape\SegmentLandscape.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\CubeLandscape.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\LayerLandscape.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\Landscape\PlaneCube.cpp" />
@@ -457,6 +458,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\CornerCube.h" />
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\EdgeCube.h" />
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\Landscape.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\Landscape\SegmentLandscape.h" />
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\CubeLandscape.h" />
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\LayerLandscape.h" />
     <ClInclude Include="src\Game\Objects\Terrain\Landscape\PlaneCube.h" />

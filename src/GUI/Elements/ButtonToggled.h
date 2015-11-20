@@ -1,6 +1,9 @@
 #pragma once
 
 
+class Label;
+
+
 class ButtonToggled : public CheckBox
 {
     URHO3D_OBJECT(ButtonToggled, CheckBox);

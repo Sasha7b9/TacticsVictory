@@ -2,6 +2,12 @@
 
 
 class lWindow;
+class ButtonMain;
+class PanelBottom;
+class PanelMap;
+class PanelMain;
+class SliderWithTextAndButtons;
+
 
 class GuiEditor : public Object
 {
@@ -66,7 +72,7 @@ private:
     void HandleEditUndo(StringHash, VariantMap&);
     void HandleEditRedo(StringHash, VariantMap&);
 
-    // Tab "Landscape"
+    // Tab "SegmentLandscape"
     void HandleLandscapeCreateNewMap(StringHash, VariantMap&);
     void HandleLandscapeClearTerrain(StringHash, VariantMap&);
     void HandleLandscapeModeSelectChanged(StringHash, VariantMap&);

@@ -1,6 +1,10 @@
 #pragma once
 
 
+#include "Graphics/Objects/Triangle.h"
+#include "Graphics/Objects/Plane.h"
+
+
 class TerrainSegment : public Object
 {
     URHO3D_OBJECT(TerrainSegment, Object);

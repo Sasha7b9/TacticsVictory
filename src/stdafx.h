@@ -241,62 +241,6 @@ using Urho3D::Corner;
 
 #include "defines.h"
 
-class ButtonMain;
-class ButtonSwitch;
-class ButtonToggled;
-
-class lCamera;
-class lConsole;
-class lCursor;
-class CursorShapes;
-
-class DropDownListWithTextAndButton;
-
-class Editor;
-
-class GovernorFloat;
-class GUI;
-
-class Hint;
-
-class lImage;
-
-class Label;
-class Landscape;
-class Level;
-class Line;
-class LineTranslator1D;
-class LineTranslator2D;
-
-class GuiEditor;
-class GuiGame;
-class MenuMain;
-class MenuOptions;
-
-class PanelBottom;
-class PanelMain;
-class PanelMap;
-class Plane;
-class Path;
-class PathIndicator;
-
-class lScene;
-class Settings;
-class SliderWithTextAndButtons;
-
-class Tab;
-class Tank;
-class lTerrain;
-class TerrainSegment;
-class TilePath;
-class Triangle;
-
-class WindowConfirmExit;
-class WindowPause;
-class WindowTarget;
-class WindowVariables;
-
-
 #include "SettingsTypes.h"
 #include "GlobalVars.h"
 #include "Settings.h"

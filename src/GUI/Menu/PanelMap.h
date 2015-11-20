@@ -4,6 +4,9 @@
 #include "GUI/Elements/Window.h"
 
 
+class lImage;
+
+
 class PanelMap : public lWindow
 {
     URHO3D_OBJECT(PanelMap, lWindow);

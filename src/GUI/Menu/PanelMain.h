@@ -4,6 +4,9 @@
 #include "GUI/Elements/Window.h"
 
 
+class Tab;
+
+
 class PanelMain : public lWindow
 {
     URHO3D_OBJECT(PanelMain, lWindow);

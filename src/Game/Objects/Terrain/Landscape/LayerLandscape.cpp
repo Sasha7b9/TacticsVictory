@@ -30,6 +30,53 @@ void LayerLandscape::Build()
         cube->BuildVertexes();
     }
 
+    SharedPtr<VertexBuffer> vb(new VertexBuffer(gContext));
+    SharedPtr<IndexBuffer> ib(new IndexBuffer(gContext));
+    SharedPtr<Geometry> geometry(new Geometry(gContext));
+
+    PODVector<float> vertexes;
+    PODVector<uint> indexes;
+
+    for (uint i = 0; i < cubes.Size(); i++)
+    {
+        vertexes.Push(cubes[i]->vertexes);
+
+        uint startIndex = vertexes.Size() / 8;
+
+        for (uint j = 0; j < cubes[i]->indexes.Size(); j++)
+        {
+            indexes.Push(cubes[i]->indexes[j] + startIndex);
+        }
+    }
+
+    uint numVert = vertexes.Size();
+    uint numInd = indexes.Size();
+
+    float *bufVert = new float[numVert];
+    uint *bufInd = new uint[numInd];
+
+    for (uint i = 0; i < numVert; i++)
+    {
+        bufVert[i] = vertexes[i];
+    }
+
+    for (uint i = 0; i < numInd; i++)
+    {
+        bufInd[i] = indexes[i];
+    }
+
+    vb->SetShadowed(true);
+    vb->SetSize(vertexes.Size() / 8, Urho3D::MASK_POSITION | Urho3D::MASK_NORMAL | Urho3D::MASK_TEXCOORD1);
+    vb->SetData(bufVert);
+
+    ib->SetShadowed(true);
+    ib->SetSize(numInd, true);
+    ib->SetData(bufInd);
+
+    geometry->SetVertexBuffer(0, vb);
+    geometry->SetIndexBuffer(ib);
+    geometry->SetDrawRange(Urho3D::TRIANGLE_LIST, 0, ib->GetIndexCount());
+
     model = new Model(gContext);
     Node *node = gScene->CreateChild(NODE_TERRAIN);
     object = node->CreateComponent<StaticModel>();
@@ -38,17 +85,14 @@ void LayerLandscape::Build()
     Vector<SharedPtr<VertexBuffer>> vbVector;
     Vector<SharedPtr<IndexBuffer>> ibVector;
 
-    model->SetNumGeometries(cubes.Size());
+    model->SetNumGeometries(1);
     model->SetNumGeometryLodLevels(0, 1);
-
-    for (uint i = 0; i < cubes.Size(); i++)
-    {
-        model->SetGeometry(i, 0, cubes[i]->geometry);
-        vbVector.Push(cubes[i]->vb);
-        ibVector.Push(cubes[i]->ib);
-    }
+    model->SetGeometry(0, 0, geometry);
 
     PODVector<uint> morphRange;
+
+    vbVector.Push(vb);
+    ibVector.Push(ib);
 
     model->SetVertexBuffers(vbVector, morphRange, morphRange);
     model->SetIndexBuffers(ibVector);
@@ -59,5 +103,8 @@ void LayerLandscape::Build()
     object->SetMaterial(gCache->GetResource<Material>("Materials/TVTerrain.xml"));
     object->SetCastShadows(true);
 
-    node->SetPosition({-250.0f, 0.0f, 0.0f});
+    node->SetPosition({0.0f, 1.0f, 0.0f});
+
+    SAFE_DELETE(bufVert);
+    SAFE_DELETE(bufInd);
 }

@@ -42,6 +42,8 @@ private:
     const float rotateSpeed = 90.0f;
     const float startSpeedKoeff = 1.5f;
 
+    float timePrevRaycast = 0.0f;
+
     // Current state
     Vector3 position;
     Vector3 speed;

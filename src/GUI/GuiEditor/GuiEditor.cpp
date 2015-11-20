@@ -100,7 +100,7 @@ void GuiEditor::CreateTabEdit()
 
 void GuiEditor::CreateTabLandscape()
 {
-    SharedPtr<Tab> tabLandscape(Tab::Create("Landscape"));
+    SharedPtr<Tab> tabLandscape(Tab::Create("SegmentLandscape"));
     panelMain->AddTab(tabLandscape);
 
     btnNewMap = tabLandscape->AddButton("New map", 10, y = 10, width, height);

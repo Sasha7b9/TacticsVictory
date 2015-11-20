@@ -7,7 +7,7 @@
 #include "Game/Logic/Movinator.h"
 #include "Game/Level.h"
 #include "Game/Objects/Terrain/Terrain.h"
-#include "Game/Objects/Terrain/Landscape/Landscape.h"
+#include "Game/Objects/Terrain/Landscape/SegmentLandscape.h"
 #include "GUI/Elements/Cursor.h"
 #include "Game/Path/TilePath.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
@@ -31,6 +31,7 @@ lScene::lScene(Context *context) :
 
 lScene::~lScene()
 {
+    SAFE_DELETE(gLandscape);
     pathIndicator.Stop();
 }
 
@@ -72,11 +73,10 @@ void lScene::Create()
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
     gTerrain = new lTerrain(level);
 
-    gLandscape = new Landscape();
-    gLandscape->CreateFromVector(level);
+    //gLandscape = new SegmentLandscape();
+    //gLandscape->CreateFromVector(level);
 
-    /*
-    for (int i = 0; i < 25; i++)
+    for (int i = 0; i < 125; i++)
     {
         uint row = 0;
         uint col = 0;
@@ -107,7 +107,6 @@ void lScene::Create()
     tank = Tank::Create(Tank::Small);
     tank->SetCoord(Coord(40, 40));
     gTanks.Push(tank);
-    */
 
     SharedPtr<Node> lightNode;
     lightNode = gScene->CreateChild("LigthNode");
@@ -140,7 +139,6 @@ void lScene::Create()
 
 void lScene::Update(float /*timeStep*/)
 {
-    URHO3D_LOGINFOF("lScene::Update %f", gTime->GetElapsedTime());
     Vector3 hitPos;
     Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
 

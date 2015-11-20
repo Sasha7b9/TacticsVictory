@@ -47,8 +47,10 @@ void RocketLauncher::Update(float deltaStep)
 
 bool RocketLauncher::TargetInPointView(Tank* target)
 {
-    if(timeElapsedAfterShoot >= timeRecharge)
+    if(timeElapsedAfterShoot >= timeRecharge && (gTime->GetElapsedTime() - timePrevRaycast) > 0.5f)
     {
+        timePrevRaycast = gTime->GetElapsedTime();
+
         Vector3 position = tank->GetNode()->GetComponent<StaticModel>()->GetWorldBoundingBox().Center();
         Vector3 posTarget = target->GetNode()->GetComponent<StaticModel>()->GetWorldBoundingBox().Center();
 

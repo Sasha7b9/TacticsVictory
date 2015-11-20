@@ -18,6 +18,9 @@ enum TypeCursor
 };
 
 
+class CursorShapes;
+
+
 class lCursor : public Object
 {
     URHO3D_OBJECT(lCursor, Object)

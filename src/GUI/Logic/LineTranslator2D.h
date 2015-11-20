@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "LineTranslator1D.h"
+
+
 class LineTranslator2D : public Object
 {
     URHO3D_OBJECT(LineTranslator2D, Object);

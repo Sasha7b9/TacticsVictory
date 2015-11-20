@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "Graphics/Objects/Line.h"
+
+
 class Plane
 {
 public:

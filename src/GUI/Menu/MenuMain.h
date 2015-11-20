@@ -4,6 +4,9 @@
 #include "GUI/Elements/Window.h"
 
 
+class ButtonSwitch;
+
+
 class MenuMain : public lWindow
 {
     URHO3D_OBJECT(MenuMain, lWindow);

@@ -4,6 +4,13 @@
 #include "GUI/Logic/LineTranslator2D.h"
 
 
+class ButtonToggled;
+class ButtonMain;
+class SliderWithTextAndButtons;
+class DropDownListWithTextAndButton;
+class Label;
+
+
 class lWindow : public Window
 {
     URHO3D_OBJECT(lWindow, Window);

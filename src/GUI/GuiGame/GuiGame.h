@@ -1,6 +1,12 @@
 #pragma once
 
 
+class PanelBottom;
+class PanelMap;
+class PanelMain;
+class ButtonMain;
+
+
 class GuiGame : public Object
 {
     URHO3D_OBJECT(GuiGame, Object);

@@ -24,4 +24,6 @@ private:
     float timeElapsedAfterShoot = 0.0f;
 
     bool TargetInPointView(Tank* tank);
+
+    float timePrevRaycast = 0.0f;
 };

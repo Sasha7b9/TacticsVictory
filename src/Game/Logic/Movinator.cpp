@@ -22,10 +22,11 @@ void Movinator::SetCenter(const Vector3 &vec)
 
 void Movinator::Update(float time)
 {
-//    float y = center.y_;
+    float y = center.y_;
     angle += speed * time;
-//    float radius = 25.0f;
-    //float x = center.x_ + (sin(angle) * radius);
-    //float z = center.z_ + (cos(angle) * radius);
-    node_->SetPosition({100.0f, 25.0f, -100.0f});
+    float radius = 25.0f;
+    float x = center.x_ + (sin(angle) * radius);
+    float z = center.z_ + (cos(angle) * radius);
+    //node_->SetPosition({100.0f, 25.0f, -100.0f});
+    node_->SetPosition(Vector3(x, y, z));
 }

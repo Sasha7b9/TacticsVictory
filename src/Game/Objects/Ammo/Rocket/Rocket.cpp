@@ -303,8 +303,9 @@ void Rocket::UpdateOn()
             &Rocket::UpdateEscortTarget
         };
 
-        if(state != Begin)
+        if(state != Begin && (gTime->GetElapsedTime() - timePrevRaycast) > 0.2f)
         {
+            timePrevRaycast = gTime->GetElapsedTime();
             VerifyOnIntersectionTerrain();
         }
 

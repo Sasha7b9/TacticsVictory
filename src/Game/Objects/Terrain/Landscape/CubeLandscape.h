@@ -27,9 +27,8 @@ public:
     uint layer = 0;
     bool underGround = false;
 
-    SharedPtr<VertexBuffer> vb;
-    SharedPtr<IndexBuffer> ib;
-    SharedPtr<Geometry> geometry;
+    PODVector<float> vertexes;
+    PODVector<uint> indexes;
     
 private:
 

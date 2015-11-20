@@ -1,6 +1,9 @@
 #pragma once
 
 
+class lScene;
+
+
 class TacticsVictory : public Application
 {
     URHO3D_OBJECT(TacticsVictory, Application);

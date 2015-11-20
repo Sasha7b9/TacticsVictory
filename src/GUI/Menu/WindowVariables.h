@@ -4,6 +4,9 @@
 #include "GUI/Elements/Window.h"
 
 
+class GovernorFloat;
+
+
 class WindowVariables : public lWindow
 {
     URHO3D_OBJECT(WindowVariables, lWindow);

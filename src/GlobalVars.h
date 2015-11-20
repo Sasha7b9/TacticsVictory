@@ -1,7 +1,26 @@
 #pragma once
 
 
+class lCamera;
+class lConsole;
+class lCursor;
+class Editor;
+class GUI;
+class GuiEditor;
+class GuiGame;
+class Hint;
+class Level;
+class MenuMain;
+class MenuOptions;
+class SegmentLandscape;
+class Settings;
+class Tank;
+class lTerrain;
 class lWindow;
+class WindowConfirmExit;
+class WindowTarget;
+class WindowVariables;
+
 
 
 extern Audio            *gAudio;
@@ -32,7 +51,7 @@ extern Editor           *gEditor;
 extern Settings         *gSet;
 extern Level            *gLevel;
 extern lTerrain         *gTerrain;
-extern Landscape        *gLandscape;
+extern SegmentLandscape *gLandscape;
 
 extern GUI                  *gGUI;
 extern lConsole             *gConsole;
