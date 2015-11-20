@@ -12,10 +12,22 @@ public:
     SegmentLandscape(Context *context = gContext);
     ~SegmentLandscape();
 
+    enum
+    {
+        LEFT,
+        TOP,
+        RIGHT,
+        BOTTOM
+    };
 
-    void CreateFromVector(Vector<Vector<float>> &level);
+    void CreateFromVector(Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols);
 
-    void SaveToFile(char *nameFile);
+    void Build();
+
+    static const uint WIDTH = 50;
+    static const uint HEIGHT = 50;
+
+    SegmentLandscape* neighbours[4];
 
 private:
     SegmentLandscape& operator=(const SegmentLandscape&)
@@ -26,5 +38,4 @@ private:
 
     void AddCube(SharedPtr<CubeLandscape> &cube);
     void CreateLayers();
-    void Build();
 };

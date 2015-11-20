@@ -25,6 +25,7 @@ void LayerLandscape::Create()
 
 void LayerLandscape::Build()
 {
+    URHO3D_LOGINFOF("%s, %f", __FUNCTION__, gTime->GetElapsedTime());
     for(auto cube : cubes)
     {
         cube->BuildVertexes();
@@ -97,13 +98,13 @@ void LayerLandscape::Build()
     model->SetVertexBuffers(vbVector, morphRange, morphRange);
     model->SetIndexBuffers(ibVector);
 
-    model->SetBoundingBox(BoundingBox(-500.0f, 500.0f));
+    model->SetBoundingBox(BoundingBox(-5.0f, 5.0f));
 
     object->SetModel(model);
     object->SetMaterial(gCache->GetResource<Material>("Materials/TVTerrain.xml"));
     object->SetCastShadows(true);
 
-    node->SetPosition({0.0f, 1.0f, 0.0f});
+    node->SetPosition({0.0f, 10.0f, 0.0f});
 
     SAFE_DELETE(bufVert);
     SAFE_DELETE(bufInd);

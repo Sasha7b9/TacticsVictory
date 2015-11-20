@@ -9,6 +9,7 @@ class GUI;
 class GuiEditor;
 class GuiGame;
 class Hint;
+class Landscape;
 class Level;
 class MenuMain;
 class MenuOptions;
@@ -51,7 +52,7 @@ extern Editor           *gEditor;
 extern Settings         *gSet;
 extern Level            *gLevel;
 extern lTerrain         *gTerrain;
-extern SegmentLandscape *gLandscape;
+extern Landscape        *gLandscape;
 
 extern GUI                  *gGUI;
 extern lConsole             *gConsole;

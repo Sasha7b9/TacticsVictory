@@ -11,6 +11,10 @@ class Landscape : public Object
 public:
     Landscape(Context *context = gContext);
 
+    void CreateFromVector(Vector<Vector<float>> &level);
+
+    void SaveToFile(char *nameFie);
+
 private:
     Landscape& operator=(const Landscape&)
     {};

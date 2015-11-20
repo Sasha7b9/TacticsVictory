@@ -40,7 +40,7 @@ Hint                *gHint = nullptr;
 int                 *gCounterHint = 0;
 Level               *gLevel = nullptr;
 lTerrain            *gTerrain = nullptr;
-SegmentLandscape           *gLandscape = nullptr;
+Landscape           *gLandscape = nullptr;
 Vector<lWindow*>    gOpenedWindow;
 PODVector<Tank*>    gTanks;
 WindowTarget        *gWindowTarget = nullptr;

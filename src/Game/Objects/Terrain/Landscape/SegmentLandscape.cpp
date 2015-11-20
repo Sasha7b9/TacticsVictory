@@ -7,7 +7,7 @@
 SegmentLandscape::SegmentLandscape(Context *context) :
     Object(context)
 {
-
+    neighbours[LEFT] = neighbours[TOP] = neighbours[RIGHT] = neighbours[BOTTOM] = nullptr;
 }
 
 SegmentLandscape::~SegmentLandscape()
@@ -15,19 +15,14 @@ SegmentLandscape::~SegmentLandscape()
 
 }
 
-void SegmentLandscape::CreateFromVector(Vector<Vector<float>> &level)
+void SegmentLandscape::CreateFromVector(Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols)
 {
-    //uint numRows = level.Size();
-    //uint numCols = level[0].Size();
-    uint numRows = 50;
-    uint numCols = 50;
-
     float min = 1e10f;
     float max = -1e10f;
 
-    for (uint row = 0; row < numRows; row++)
+    for (uint row = row0; row < row0 + numRows; row++)
     {
-        for (uint col = 0; col < numCols; col++)
+        for (uint col = col0; col < col0 + numCols; col++)
         {
             float height = level[row][col];
             if(height < min)
@@ -51,7 +46,6 @@ void SegmentLandscape::CreateFromVector(Vector<Vector<float>> &level)
         }
     }
 
-    
 
     if(min <= 0.0f)
     {
@@ -63,9 +57,9 @@ void SegmentLandscape::CreateFromVector(Vector<Vector<float>> &level)
         }
     }
 
-    for(uint row = 0; row < numRows; row++)
+    for(uint row = row0; row < row0 + numRows; row++)
     {
-        for(uint col = 0; col < numCols; col++)
+        for(uint col = col0; col < col0 + numCols; col++)
         {
             SharedPtr<CubeLandscape> cube(new CubeLandscape(row, col, level[row][col]));
             AddCube(cube);
@@ -73,8 +67,6 @@ void SegmentLandscape::CreateFromVector(Vector<Vector<float>> &level)
     }
 
     CreateLayers();
-
-    Build();
 }
 
 void SegmentLandscape::AddCube(SharedPtr<CubeLandscape> &cube)
@@ -103,6 +95,7 @@ void SegmentLandscape::CreateLayers()
 
 void SegmentLandscape::Build()
 {
+    URHO3D_LOGINFOF("%s %f", __FUNCTION__, gTime->GetElapsedTime());
     for(auto &layer : ground)
     {
         layer->Build();
@@ -111,9 +104,4 @@ void SegmentLandscape::Build()
     {
         layer->Build();
     }
-}
-
-void SegmentLandscape::SaveToFile(char * /*nameFile*/)
-{
-
 }
