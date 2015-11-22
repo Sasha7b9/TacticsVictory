@@ -1,16 +1,16 @@
 #include <stdafx.h>
 
 
-#include "CubeLandscape.h"
+#include "CubeTerrain.h"
 
 
-CubeLandscape::CubeLandscape(Context *context) :
+CubeTerrain::CubeTerrain(Context *context) :
     Object(context)
 {
     Init();
 }
 
-CubeLandscape::CubeLandscape(uint row, uint col, float height) :
+CubeTerrain::CubeTerrain(uint row, uint col, float height) :
     Object(gContext)
 {
     Init();
@@ -27,7 +27,7 @@ CubeLandscape::CubeLandscape(uint row, uint col, float height) :
     }
 }
 
-void CubeLandscape::Init()
+void CubeTerrain::Init()
 {
     for(auto &side : sides)
     {
@@ -43,18 +43,18 @@ void CubeLandscape::Init()
     }
 }
 
-void CubeLandscape::Create()
+void CubeTerrain::Create()
 {
     CreateEdges();
 }
 
-void CubeLandscape::CreateEdges()
+void CubeTerrain::CreateEdges()
 {
     CreateEdgeTop();
     CreateEdgeDown();
 }
 
-void CubeLandscape::CreateEdgeTop()
+void CubeTerrain::CreateEdgeTop()
 {
     SharedPtr<EdgeCube> edge(new EdgeCube());
 
@@ -83,12 +83,12 @@ void CubeLandscape::CreateEdgeTop()
     point3.texCoord = Vector2::RIGHT;
 }
 
-void CubeLandscape::CreateEdgeDown()
+void CubeTerrain::CreateEdgeDown()
 {
 
 }
 
-void CubeLandscape::BuildVertexes()
+void CubeTerrain::BuildVertexes()
 {
     uint index = vertexes.Size() / 8;
 
@@ -110,7 +110,7 @@ void CubeLandscape::BuildVertexes()
     }
 }
 
-void CubeLandscape::PushPoint(PODVector<float> &vertexes, PointPlane &point)
+void CubeTerrain::PushPoint(PODVector<float> &vertexes, PointPlane &point)
 {
     vertexes.Push(point.coord.x_);
     vertexes.Push(point.coord.y_);

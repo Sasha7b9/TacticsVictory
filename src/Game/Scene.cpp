@@ -7,7 +7,7 @@
 #include "Game/Logic/Movinator.h"
 #include "Game/Level.h"
 #include "Game/Objects/Terrain/Terrain.h"
-#include "Game/Objects/Terrain/Landscape/Landscape.h"
+#include "Game/Objects/Terrain/Terrain.h"
 #include "GUI/Elements/Cursor.h"
 #include "Game/Path/TilePath.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
@@ -31,7 +31,7 @@ lScene::lScene(Context *context) :
 
 lScene::~lScene()
 {
-    SAFE_DELETE(gLandscape);
+    SAFE_DELETE(gTerrain);
     pathIndicator.Stop();
 }
 
@@ -73,8 +73,8 @@ void lScene::Create()
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
     gTerrain = new lTerrain(level);
 
-    gLandscape = new Landscape();
-    gLandscape->CreateFromVector(level);
+    gTerrain = new Terrain();
+    gTerrain->CreateFromVector(level);
 
     for (int i = 0; i < 125; i++)
     {

@@ -59,23 +59,23 @@ private:
     void CreateTabs();
     void CreateTabFile();
     void CreateTabEdit();
-    void CreateTabLandscape();
+    void CreateTabTerrain();
     void CreateTabObjects();
 
     // Tab "File"
     void HandleFileLoad(StringHash, VariantMap&);
     void HandleFileSave(StringHash, VariantMap&);
-    void HandleFileSelectorLoadLandscape(StringHash, VariantMap&);
-    void HandleFileSelectorSaveLandscape(StringHash, VariantMap&);
+    void HandleFileSelectorLoadTerrain(StringHash, VariantMap&);
+    void HandleFileSelectorSaveTerrain(StringHash, VariantMap&);
 
     // Tab "Edit"
     void HandleEditUndo(StringHash, VariantMap&);
     void HandleEditRedo(StringHash, VariantMap&);
 
-    // Tab "SegmentLandscape"
-    void HandleLandscapeCreateNewMap(StringHash, VariantMap&);
-    void HandleLandscapeClearTerrain(StringHash, VariantMap&);
-    void HandleLandscapeModeSelectChanged(StringHash, VariantMap&);
+    // Tab "SegmentTerrain"
+    void HandleTerrainCreateNewMap(StringHash, VariantMap&);
+    void HandleTerrainClearTerrain(StringHash, VariantMap&);
+    void HandleTerrainModeSelectChanged(StringHash, VariantMap&);
 
     // Tab "Objects"
     void HandleObjectsAdd(StringHash, VariantMap&);

@@ -5,14 +5,14 @@
 #include "Graphics/Objects/Plane.h"
 
 
-class TerrainSegment : public Object
+class lTerrainSegment : public Object
 {
-    URHO3D_OBJECT(TerrainSegment, Object);
+    URHO3D_OBJECT(lTerrainSegment, Object);
 
 public:
     // NOTE row == 0 and col == 0 arrent added to terrain. From them information for creation of the left and top sides undertakes
-    TerrainSegment(Vector<Vector<float>> &map, const Vector3 &shift = Vector3::ZERO);
-    ~TerrainSegment();
+    lTerrainSegment(Vector<Vector<float>> &map, const Vector3 &shift = Vector3::ZERO);
+    ~lTerrainSegment();
 
     // If function return isClosingTriangleOut == true, return distance for inactive triangle
     float GetIntersectionPlane(Ray &ray, Plane &plane, bool &isClosingTriangleOut);
@@ -90,7 +90,7 @@ public:
 
         unsigned ToHash () const { return (uint)((d0 + 1) << 4) + ((d1 + 1) << 2) + (d2 + 1); }
 
-        bool operator ==(const TerrainSegment::MapPlaneKey& keyRight) const
+        bool operator ==(const lTerrainSegment::MapPlaneKey& keyRight) const
         {
             return d0 == keyRight.d0 && d1 == keyRight.d1 && d2 == keyRight.d2;
         }
@@ -121,7 +121,7 @@ public:
             return (uint)((dLeft + 1) + ((dTopLeft + 1) << 2) + ((dTopLeft + 1) << 4) + ((dDiagLeft + 1) << 6) + ((dDiagTop + 1) << 8));
         }
 
-        bool operator==(const TerrainSegment::MapCornerKey& keyRight) const
+        bool operator==(const lTerrainSegment::MapCornerKey& keyRight) const
         {
             return dLeft == keyRight.dLeft && dTop == keyRight.dTop && dTopLeft == keyRight.dTopLeft && dDiagLeft == keyRight.dDiagLeft && dDiagTop == keyRight.dDiagTop;
         }
@@ -171,5 +171,5 @@ private:
 
     HashMap<MapCornerKey, MapCornerValue> mapCornerTopLeft;
 
-    TerrainSegment& operator=(const TerrainSegment&) {};
+    lTerrainSegment& operator=(const lTerrainSegment&) {};
 };

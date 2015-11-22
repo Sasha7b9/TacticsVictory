@@ -1,21 +1,21 @@
 #include <stdafx.h>
 
 
-#include "LayerLandscape.h"
+#include "LayerTerrain.h"
 
 
-LayerLandscape::LayerLandscape(Context *context) :
+LayerTerrain::LayerTerrain(Context *context) :
     Object(context)
 {
 
 }
 
-void LayerLandscape::AddCube(SharedPtr<CubeLandscape> &cube)
+void LayerTerrain::AddCube(SharedPtr<CubeTerrain> &cube)
 {
     cubes.Push(cube);
 }
 
-void LayerLandscape::Create()
+void LayerTerrain::Create()
 {
     for(auto cube : cubes)
     {
@@ -23,7 +23,7 @@ void LayerLandscape::Create()
     }
 }
 
-void LayerLandscape::Build()
+void LayerTerrain::Build()
 {
     URHO3D_LOGINFOF("%s, %f", __FUNCTION__, gTime->GetElapsedTime());
     for(auto cube : cubes)

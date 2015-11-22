@@ -1,7 +1,7 @@
 #include <stdafx.h>
 
 
-#include "TerrainSegment.h"
+#include "lTerrainSegment.h"
 #include "Core/Math.h"
 #include "Graphics/Objects/Plane.h"
 #include "Graphics/Objects/Triangle.h"
@@ -13,7 +13,7 @@ using Urho3D::C_BOTTOMRIGHT;
 using Urho3D::C_BOTTOMLEFT;
 
 
-TerrainSegment::TerrainSegment(Vector<Vector<float>> &eMap, const Vector3 &shift_) :
+lTerrainSegment::lTerrainSegment(Vector<Vector<float>> &eMap, const Vector3 &shift_) :
     Object(gContext),
     shift(shift_)
 {
@@ -30,12 +30,12 @@ TerrainSegment::TerrainSegment(Vector<Vector<float>> &eMap, const Vector3 &shift
     Rebuild(eMap);
 }
 
-void TerrainSegment::Clear()
+void lTerrainSegment::Clear()
 {
     gScene->RemoveChild(node);
 }
 
-void TerrainSegment::Rebuild(Vector<Vector<float>> &map_)
+void lTerrainSegment::Rebuild(Vector<Vector<float>> &map_)
 {
     SAFE_DELETE_ARRAY(bufVert);
     SAFE_DELETE_ARRAY(bufInd);
@@ -116,33 +116,33 @@ void TerrainSegment::Rebuild(Vector<Vector<float>> &map_)
     //shape->SetBox({-100.0f, -1.0f, -100.0f}, {100.0f, 1.0f, 100.0f});
 }
 
-TerrainSegment::~TerrainSegment()
+lTerrainSegment::~lTerrainSegment()
 {
     SAFE_DELETE_ARRAY(bufVert);
     SAFE_DELETE_ARRAY(bufInd);
 }
 
-void TerrainSegment::PushNormal(const Vector3 &normal)
+void lTerrainSegment::PushNormal(const Vector3 &normal)
 {
     vertexes.Push(normal.x_);
     vertexes.Push(normal.y_);
     vertexes.Push(normal.z_);
 }
 
-void TerrainSegment::PushCoord(const Vector3 &coord)
+void lTerrainSegment::PushCoord(const Vector3 &coord)
 {
     vertexes.Push(coord.x_ + shift.x_);
     vertexes.Push(coord.y_ + shift.y_);
     vertexes.Push(coord.z_ + shift.z_);
 }
 
-void TerrainSegment::PushTexCoord(float x, float y)
+void lTerrainSegment::PushTexCoord(float x, float y)
 {
     vertexes.Push(x);
     vertexes.Push(y);
 }
 
-void TerrainSegment::AddPlane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3, float dTex)
+void lTerrainSegment::AddPlane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3, float dTex)
 {
     uint startIndex = vertexes.Size() / 8;
 
@@ -187,7 +187,7 @@ void TerrainSegment::AddPlane(const Vector3 &p0, const Vector3 &p1, const Vector
     }
 }
 
-void TerrainSegment::AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, float dTex)
+void lTerrainSegment::AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, float dTex)
 {
     if(p0 == p1 || p1 == p2 || p2 == p0)
     {
@@ -217,7 +217,7 @@ void TerrainSegment::AddTriangle(const Vector3 &p0, const Vector3 &p1, const Vec
     bufIndClosingTriangles.Push(startIndex + 1U);
 }
 
-void TerrainSegment::Add2Plane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3)
+void lTerrainSegment::Add2Plane(const Vector3 &p0, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3)
 {
     float delta = fabs(p0.y_ - p2.y_);
 
@@ -225,7 +225,7 @@ void TerrainSegment::Add2Plane(const Vector3 &p0, const Vector3 &p1, const Vecto
     //AddPlane(p0, p3, p2, p1, delta == 0.0f ? 1.0f : -delta);
 }
 
-void TerrainSegment::AddPlaneWithSubplanes(uint row, uint col)
+void lTerrainSegment::AddPlaneWithSubplanes(uint row, uint col)
 {
     Add2Plane(CoordCorner(row, col, C_TOPLEFT), CoordCorner(row, col, C_TOPRIGHT), CoordCorner(row, col, C_BOTTOMRIGHT), CoordCorner(row, col, C_BOTTOMLEFT));
 
@@ -243,7 +243,7 @@ void TerrainSegment::AddPlaneWithSubplanes(uint row, uint col)
     }
 }
 
-Plane TerrainSegment::GetPlane(uint row, uint col)
+Plane lTerrainSegment::GetPlane(uint row, uint col)
 {
     Plane plane;
 
@@ -256,12 +256,12 @@ Plane TerrainSegment::GetPlane(uint row, uint col)
     return plane;
 }
 
-float TerrainSegment::HeightCell(uint row, uint col)
+float lTerrainSegment::HeightCell(uint row, uint col)
 {
     return (float)map[row][col];
 }
 
-void TerrainSegment::AddSidePlane(uint row, uint col, Direction dir)
+void lTerrainSegment::AddSidePlane(uint row, uint col, Direction dir)
 {
     if(dir == DIR_UP)
     {
@@ -279,12 +279,12 @@ void TerrainSegment::AddSidePlane(uint row, uint col, Direction dir)
     }
 }
 
-void TerrainSegment::AddUpPlane(uint row, uint col)
+void lTerrainSegment::AddUpPlane(uint row, uint col)
 {
     Add2Plane(CoordCorner(row - 1, col, C_BOTTOMLEFT), CoordCorner(row - 1, col, C_BOTTOMRIGHT), CoordCorner(row, col, C_TOPRIGHT), CoordCorner(row, col, C_TOPLEFT));
 }
 
-void TerrainSegment::AddLeftPlane(uint row, uint col)
+void lTerrainSegment::AddLeftPlane(uint row, uint col)
 {
     Add2Plane(CoordCorner(row, col - 1, C_BOTTOMRIGHT), CoordCorner(row, col - 1, C_TOPRIGHT), CoordCorner(row, col, C_TOPLEFT), CoordCorner(row, col, C_BOTTOMLEFT));
 }
@@ -303,7 +303,7 @@ void TerrainSegment::AddLeftPlane(uint row, uint col)
 #define PUSH_CORNERS2(dLeft, dTopLeft, dTop, dDiagLeft, dDiagTop, dRow00, dCol00, cor00, dRow01, dCol01, cor01, dRow10, dCol10, cor10, dRow11, dCol11, cor11, dRow12, dCol12, cor12) \
     mapCornerTopLeft[MapCornerKey(dLeft, dTopLeft, dTop, dDiagLeft, dDiagTop)] = MapCornerValue(dRow00, dCol00, cor00, dRow01, dCol01, cor01, dRow10, dCol10, cor10, dRow11, dCol11, cor11, dRow12, dCol12, cor12);
 
-void TerrainSegment::PrepareHashMaps()
+void lTerrainSegment::PrepareHashMaps()
 {
     const float delta = 0.1f;
     bool jumper = false;
@@ -512,7 +512,7 @@ void TerrainSegment::PrepareHashMaps()
 #define H_LEFT_EQUALS   HEIGHT_LEFT == height
 
 
-Vector3 TerrainSegment::CoordCorner(uint row, uint col, Corner corner)
+Vector3 lTerrainSegment::CoordCorner(uint row, uint col, Corner corner)
 {
     float height = HeightCell(row, col);
 
@@ -596,7 +596,7 @@ Vector3 TerrainSegment::CoordCorner(uint row, uint col, Corner corner)
     AddTriangle(CORN(dX0, dY0, dir0), CORN(dX1, dY1, dir1), CORN(dX2, dY2, dir2), 1.0f);
 
 
-void TerrainSegment::AddTopLeftCornerPlanes(uint row, uint col)
+void lTerrainSegment::AddTopLeftCornerPlanes(uint row, uint col)
 {
     float height = HeightCell(row, col);
 
@@ -623,7 +623,7 @@ void TerrainSegment::AddTopLeftCornerPlanes(uint row, uint col)
     }
 }
 
-float TerrainSegment::GetIntersectionPlane(Ray &ray, Plane &plane, bool &isClosingTriangleOut)
+float lTerrainSegment::GetIntersectionPlane(Ray &ray, Plane &plane, bool &isClosingTriangleOut)
 {
     float distPlane = GetIntersectionPlane(ray, plane);
     Triangle triangle;
@@ -650,7 +650,7 @@ float TerrainSegment::GetIntersectionPlane(Ray &ray, Plane &plane, bool &isClosi
     return distance;
 }
 
-float TerrainSegment::GetIntersectionPlane(Ray &ray, Plane &plane)
+float lTerrainSegment::GetIntersectionPlane(Ray &ray, Plane &plane)
 {
     float distance = Urho3D::M_INFINITY;
 
@@ -706,7 +706,7 @@ float TerrainSegment::GetIntersectionPlane(Ray &ray, Plane &plane)
     return distance;
 }
 
-float TerrainSegment::GetIntersectionClosingTriangle(Ray &ray, Triangle &triangle)
+float lTerrainSegment::GetIntersectionClosingTriangle(Ray &ray, Triangle &triangle)
 {
     float distance = Urho3D::M_INFINITY;
 
@@ -754,7 +754,7 @@ float TerrainSegment::GetIntersectionClosingTriangle(Ray &ray, Triangle &triangl
     return distance;
 }
 
-void TerrainSegment::CalculateBoundingBox()
+void lTerrainSegment::CalculateBoundingBox()
 {
     boundingBox.Clear();
 
@@ -770,7 +770,7 @@ void TerrainSegment::CalculateBoundingBox()
     }
 }
 
-void TerrainSegment::SetVisible(bool visible)
+void lTerrainSegment::SetVisible(bool visible)
 {
     visible ? gScene->NodeAdded(node) : gScene->NodeRemoved(node);
 }

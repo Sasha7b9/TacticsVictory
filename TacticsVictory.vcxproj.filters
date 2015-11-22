@@ -115,9 +115,6 @@
     <Filter Include="Game\Objects\Terrain">
       <UniqueIdentifier>{04ebc781-8977-47bb-a013-0ecf566abc69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Terrain\Landscape">
-      <UniqueIdentifier>{561882e8-ea6e-4472-b8ab-b4aa40f6a76f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Objects\Weapons">
       <UniqueIdentifier>{a0fa9639-ca9d-4189-9139-5a6018bebd9e}</UniqueIdentifier>
     </Filter>
@@ -390,35 +387,35 @@
     <ClCompile Include="src\Core\Structures.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\CornerCube.cpp">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\EdgeCube.cpp">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\PlaneCube.cpp">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\SideCube.cpp">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\_Terrain_.cpp">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\_TerrainSegment_.cpp">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\CubeTerrain.cpp">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
     <ClCompile Include="src\Game\Objects\Terrain\Terrain.cpp">
       <Filter>Game\Objects\Terrain</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\TerrainSegment.cpp">
+    <ClCompile Include="src\Game\Objects\Terrain\LayerTerrain.cpp">
       <Filter>Game\Objects\Terrain</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\Landscape\CubeLandscape.cpp">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\Landscape\PlaneCube.cpp">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\Landscape\SideCube.cpp">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\Landscape\CornerCube.cpp">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\Landscape\EdgeCube.cpp">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\Landscape\LayerLandscape.cpp">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\Landscape\SegmentLandscape.cpp">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\Landscape\Landscape.cpp">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    <ClCompile Include="src\Game\Objects\Terrain\SegmentTerrain.cpp">
+      <Filter>Game\Objects\Terrain</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -683,35 +680,35 @@
     <ClInclude Include="src\Core\Structures.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\CornerCube.h">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\EdgeCube.h">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\PlaneCube.h">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\SideCube.h">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\_Terrain_.h">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\_TerrainSegment_.h">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\CubeTerrain.h">
+      <Filter>Game\Objects\Terrain</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game\Objects\Terrain\Terrain.h">
       <Filter>Game\Objects\Terrain</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\TerrainSegment.h">
+    <ClInclude Include="src\Game\Objects\Terrain\LayerTerrain.h">
       <Filter>Game\Objects\Terrain</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\Landscape\CubeLandscape.h">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\Landscape\SideCube.h">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\Landscape\PlaneCube.h">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\Landscape\CornerCube.h">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\Landscape\EdgeCube.h">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\Landscape\LayerLandscape.h">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\Landscape\SegmentLandscape.h">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\Landscape\Landscape.h">
-      <Filter>Game\Objects\Terrain\Landscape</Filter>
+    <ClInclude Include="src\Game\Objects\Terrain\SegmentTerrain.h">
+      <Filter>Game\Objects\Terrain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

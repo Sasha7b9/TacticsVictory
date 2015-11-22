@@ -6,13 +6,13 @@
 #include "EdgeCube.h"
 
 
-class CubeLandscape : public Object
+class CubeTerrain : public Object
 {
-    URHO3D_OBJECT(CubeLandscape, Object);
+    URHO3D_OBJECT(CubeTerrain, Object);
 
 public:
-    CubeLandscape(Context *context = gContext);
-    CubeLandscape(uint row, uint col, float height);  // Create cube with one
+    CubeTerrain(Context *context = gContext);
+    CubeTerrain(uint row, uint col, float height);  // Create cube with one
 
     void Create();
 
@@ -45,7 +45,7 @@ private:
     #define E_TOP       0
     #define E_DOWN      1
 
-    CubeLandscape& operator=(const CubeLandscape&)
+    CubeTerrain& operator=(const CubeTerrain&)
     {};
 
     void Init();

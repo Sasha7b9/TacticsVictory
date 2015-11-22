@@ -1,21 +1,21 @@
 #include <stdafx.h>
 
 
-#include "SegmentLandscape.h"
+#include "SegmentTerrain.h"
 
 
-SegmentLandscape::SegmentLandscape(Context *context) :
+SegmentTerrain::SegmentTerrain(Context *context) :
     Object(context)
 {
     neighbours[LEFT] = neighbours[TOP] = neighbours[RIGHT] = neighbours[BOTTOM] = nullptr;
 }
 
-SegmentLandscape::~SegmentLandscape()
+SegmentTerrain::~SegmentTerrain()
 {
 
 }
 
-void SegmentLandscape::CreateFromVector(Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols)
+void SegmentTerrain::CreateFromVector(Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols)
 {
     float min = 1e10f;
     float max = -1e10f;
@@ -42,7 +42,7 @@ void SegmentLandscape::CreateFromVector(Vector<Vector<float>> &level, uint row0,
 
         for (uint i = 0; i < ground.Size(); i++)
         {
-            ground[i] = new LayerLandscape();
+            ground[i] = new LayerTerrain();
         }
     }
 
@@ -53,7 +53,7 @@ void SegmentLandscape::CreateFromVector(Vector<Vector<float>> &level, uint row0,
 
         for (uint i = 0; i < underGround.Size(); i++)
         {
-            underGround[i] = new LayerLandscape();
+            underGround[i] = new LayerTerrain();
         }
     }
 
@@ -61,7 +61,7 @@ void SegmentLandscape::CreateFromVector(Vector<Vector<float>> &level, uint row0,
     {
         for(uint col = col0; col < col0 + numCols; col++)
         {
-            SharedPtr<CubeLandscape> cube(new CubeLandscape(row, col, level[row][col]));
+            SharedPtr<CubeTerrain> cube(new CubeTerrain(row, col, level[row][col]));
             AddCube(cube);
         }
     }
@@ -69,7 +69,7 @@ void SegmentLandscape::CreateFromVector(Vector<Vector<float>> &level, uint row0,
     CreateLayers();
 }
 
-void SegmentLandscape::AddCube(SharedPtr<CubeLandscape> &cube)
+void SegmentTerrain::AddCube(SharedPtr<CubeTerrain> &cube)
 {
     if(cube->underGround)
     {
@@ -81,7 +81,7 @@ void SegmentLandscape::AddCube(SharedPtr<CubeLandscape> &cube)
     }
 }
 
-void SegmentLandscape::CreateLayers()
+void SegmentTerrain::CreateLayers()
 {
     for(auto & layer : ground)
     {
@@ -93,7 +93,7 @@ void SegmentLandscape::CreateLayers()
     }
 }
 
-void SegmentLandscape::Build()
+void SegmentTerrain::Build()
 {
     URHO3D_LOGINFOF("%s %f", __FUNCTION__, gTime->GetElapsedTime());
     for(auto &layer : ground)

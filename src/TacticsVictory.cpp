@@ -15,7 +15,7 @@
 #include "Game/Level.h"
 #include "GlobalFunctions.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
-#include "Game/Objects/Terrain/Landscape/SegmentLandscape.h"
+#include "Game/Objects/Terrain/SegmentTerrain.h"
 
 
 #pragma warning(push)
