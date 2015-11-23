@@ -12,9 +12,7 @@ Terrain::Terrain(Context *context) :
 
 void Terrain::CreateFromVector(Vector<Vector<float>> &level)
 {
-    URHO3D_LOGINFOF("1 %f", gTime->GetElapsedTime());
-
-    this->level = level;
+   this->level = level;
 
     uint height = SegmentTerrain::HEIGHT;
     uint width = SegmentTerrain::WIDTH;
@@ -45,8 +43,6 @@ void Terrain::CreateFromVector(Vector<Vector<float>> &level)
         }
     }
 
-    URHO3D_LOGINFOF("2 %f", gTime->GetElapsedTime());
-
     for(uint z = 0; z < segmentsInZ; z++)
     {
         for(uint x = 0; x < segmentsInX; x++)
@@ -71,7 +67,6 @@ void Terrain::CreateFromVector(Vector<Vector<float>> &level)
         }
     }
 
-    URHO3D_LOGINFOF("3 %f", gTime->GetElapsedTime());
     for(auto row : segments)
     {
         for(SegmentTerrain* segment : row)
@@ -79,7 +74,6 @@ void Terrain::CreateFromVector(Vector<Vector<float>> &level)
             segment->Build();
         }
     }
-    URHO3D_LOGINFOF("4 %f", gTime->GetElapsedTime());
 }
 
 void Terrain::SaveToFile(char * /*nameFile*/)

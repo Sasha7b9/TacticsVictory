@@ -90,6 +90,10 @@ void CubeTerrain::CreateEdgeDown()
 
 void CubeTerrain::BuildVertexes()
 {
+    static long long timeFull = 0;
+    static HiresTimer timer;
+    timer.Reset();
+
     uint index = vertexes.Size() / 8;
 
     if (edges[E_TOP])
@@ -108,6 +112,9 @@ void CubeTerrain::BuildVertexes()
         indexes.Push(index + 2U);
         indexes.Push(index + 3U);
     }
+
+    timeFull += timer.GetUSec(false);
+    URHO3D_LOGINFOF("time build vertexes %f", timeFull / 1e6f);
 }
 
 void CubeTerrain::PushPoint(PODVector<float> &vertexes, PointPlane &point)

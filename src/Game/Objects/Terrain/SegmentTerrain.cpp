@@ -95,7 +95,6 @@ void SegmentTerrain::CreateLayers()
 
 void SegmentTerrain::Build()
 {
-    URHO3D_LOGINFOF("%s %f", __FUNCTION__, gTime->GetElapsedTime());
     for(auto &layer : ground)
     {
         layer->Build();

@@ -25,11 +25,21 @@ void LayerTerrain::Create()
 
 void LayerTerrain::Build()
 {
-    URHO3D_LOGINFOF("%s, %f", __FUNCTION__, gTime->GetElapsedTime());
+    static float time1 = 0.0f;
+    static float timeExit = 0.0f;
+    static int counter = 0;
+    counter++;
+
+    float time = gTime->GetElapsedTime();
+
     for(auto cube : cubes)
     {
         cube->BuildVertexes();
     }
+
+    time1 += (gTime->GetElapsedTime() - time);
+    URHO3D_LOGINFOF("1: %d %f", counter, time1);
+    time = gTime->GetElapsedTime();
 
     SharedPtr<VertexBuffer> vb(new VertexBuffer(gContext));
     SharedPtr<IndexBuffer> ib(new IndexBuffer(gContext));
@@ -104,8 +114,9 @@ void LayerTerrain::Build()
     object->SetMaterial(gCache->GetResource<Material>("Materials/TVTerrain.xml"));
     object->SetCastShadows(true);
 
-    node->SetPosition({0.0f, 10.0f, 0.0f});
-
     SAFE_DELETE(bufVert);
     SAFE_DELETE(bufInd);
+
+    timeExit += (gTime->GetElapsedTime() - time);
+    URHO3D_LOGINFOF("Exit: %d %f", counter, timeExit);
 }
