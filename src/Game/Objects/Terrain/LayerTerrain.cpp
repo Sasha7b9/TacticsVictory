@@ -28,6 +28,7 @@ void LayerTerrain::Build()
     static float time1 = 0.0f;
     static float timeExit = 0.0f;
     static int counter = 0;
+    static int numCubes = 0;
     counter++;
 
     float time = gTime->GetElapsedTime();
@@ -35,10 +36,11 @@ void LayerTerrain::Build()
     for(auto cube : cubes)
     {
         cube->BuildVertexes();
+        numCubes++;
     }
 
     time1 += (gTime->GetElapsedTime() - time);
-    URHO3D_LOGINFOF("1: %d %f", counter, time1);
+    URHO3D_LOGINFOF("1: %d %f %d cubes", counter, time1, numCubes);
     time = gTime->GetElapsedTime();
 
     SharedPtr<VertexBuffer> vb(new VertexBuffer(gContext));

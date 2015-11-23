@@ -28,6 +28,7 @@ public:
     bool underGround = false;
 
     PODVector<float> vertexes;
+    uint vertInAVector = 0;
     PODVector<uint> indexes;
     
 private:
@@ -54,7 +55,7 @@ private:
     void CreateEdgeTop();
     void CreateEdgeDown();
 
-    void PushPoint(PODVector<float> &vertexes, PointPlane &point);
+    void PushPoint(PointPlane &point);
 };
 
 /*                     Corner_0              Corner_1

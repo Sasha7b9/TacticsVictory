@@ -90,35 +90,80 @@ void CubeTerrain::CreateEdgeDown()
 
 void CubeTerrain::BuildVertexes()
 {
+    /*
     static long long timeFull = 0;
     static HiresTimer timer;
     timer.Reset();
+    */
 
     uint index = vertexes.Size() / 8;
 
     if (edges[E_TOP])
     {
+        vertexes.Resize(32);
+        indexes.Resize(6);
+
         PlaneCube &plane = edges[E_TOP]->plane;
 
-        PushPoint(vertexes, plane.point[0]);
-        PushPoint(vertexes, plane.point[1]);
-        PushPoint(vertexes, plane.point[2]);
-        PushPoint(vertexes, plane.point[3]);
+        PushPoint(plane.point[0]);
+        PushPoint(plane.point[1]);
+        PushPoint(plane.point[2]);
+        PushPoint(plane.point[3]);
 
+        indexes[0] = 0U;
+        indexes[1] = 1U;
+        indexes[2] = 2U;
+        indexes[3] = 0U;
+        indexes[4] = 2U;
+        indexes[5] = 3U;
+
+        /*
         indexes.Push(index + 0U);
         indexes.Push(index + 1U);
         indexes.Push(index + 2U);
         indexes.Push(index + 0U);
         indexes.Push(index + 2U);
         indexes.Push(index + 3U);
+        */
     }
 
+    /*
     timeFull += timer.GetUSec(false);
     URHO3D_LOGINFOF("time build vertexes %f", timeFull / 1e6f);
+    */
 }
 
-void CubeTerrain::PushPoint(PODVector<float> &vertexes, PointPlane &point)
+void CubeTerrain::PushPoint(PointPlane &point)
 {
+    uint index = vertInAVector;
+
+    vertexes[index + 0] = point.coord.x_;
+    vertexes[index + 1] = point.coord.y_;
+    vertexes[index + 2] = point.coord.z_;
+
+    vertexes[index + 3] = point.normal.x_;
+    vertexes[index + 4] = point.normal.y_;
+    vertexes[index + 5] = point.normal.z_;
+
+    vertexes[index + 6] = point.texCoord.x_;
+    vertexes[index + 7] = point.texCoord.y_;
+
+    /*
+    vertexes[index++] = *value++;
+    vertexes[index++] = *value++;
+    vertexes[index++] = *value++;
+
+    vertexes[index++] = *value++;
+    vertexes[index++] = *value++;
+    vertexes[index++] = *value++;
+
+    vertexes[index++] = *value++;
+    vertexes[index++] = *value++;
+    */
+
+    vertInAVector += 8;
+
+    /*
     vertexes.Push(point.coord.x_);
     vertexes.Push(point.coord.y_);
     vertexes.Push(point.coord.z_);
@@ -129,4 +174,5 @@ void CubeTerrain::PushPoint(PODVector<float> &vertexes, PointPlane &point)
 
     vertexes.Push(point.texCoord.x_);
     vertexes.Push(point.texCoord.y_);
+    */
 }
