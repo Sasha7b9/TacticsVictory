@@ -29,7 +29,8 @@ void Editor::Run()
 
     Vector<Vector<float>> level = gLevel->Load("TVData/Game/Levels/level.map");
 
-    gTerrain = new lTerrain(level);
+    gTerrain = new Terrain();
+    gTerrain->CreateFromVector(level);
 
     lightNode = gScene->CreateChild("LightNode");
 

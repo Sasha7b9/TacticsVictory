@@ -51,12 +51,12 @@ static int PushToVector(const char *data, Vector<float> *vec)
     return retValue;
 }
 
-Vector<Vector<float> > Level::Get()
+Vector<Vector<float>> Level::Get()
 {
     return map;
 }
 
-Vector<Vector<float> > Level::Load(char *fileName)
+Vector<Vector<float>> Level::Load(char *fileName)
 {
     map.Clear();
 
@@ -96,14 +96,14 @@ Vector<Vector<float> > Level::Load(char *fileName)
 
     uint numRows = map.Size();
 
-    map.Resize((numRows / lTerrain::SIZE_SEGMENT) * lTerrain::SIZE_SEGMENT);
+    map.Resize((numRows / SegmentTerrain::HEIGHT) * SegmentTerrain::HEIGHT);
 
 
     uint numCols = map[0].Size();
 
     for (uint i = 0; i < map.Size(); i++)
     {
-        map[i].Resize((numCols / lTerrain::SIZE_SEGMENT) * lTerrain::SIZE_SEGMENT);
+        map[i].Resize((numCols / SegmentTerrain::WIDTH) * SegmentTerrain::WIDTH);
     }
 
     return map;

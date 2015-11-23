@@ -14,6 +14,8 @@ void Terrain::CreateFromVector(Vector<Vector<float>> &level)
 {
     URHO3D_LOGINFOF("1 %f", gTime->GetElapsedTime());
 
+    this->level = level;
+
     uint height = SegmentTerrain::HEIGHT;
     uint width = SegmentTerrain::WIDTH;
 
@@ -87,5 +89,50 @@ void Terrain::SaveToFile(char * /*nameFile*/)
 
 float Terrain::GetHeight(uint row, uint col)
 {
+    return level[row][col];
+}
 
+void Terrain::SetHeight(uint row, uint col, float height)
+{
+    level[row][col] = height;
+}
+
+void Terrain::Update()
+{
+
+}
+
+uint Terrain::NumRows()
+{
+    return level.Size();
+}
+
+uint Terrain::NumCols()
+{
+    return level[0].Size();
+}
+
+bool Terrain::Empty()
+{
+    return level.Empty();
+}
+
+Plane Terrain::GetIntersectionPlane(Ray& /*ray*/)
+{
+    return Plane::ZERO;
+}
+
+Line Terrain::GetIntersectionEdge(Ray &/*ray*/)
+{
+    return Line::ZERO;
+}
+
+Plane Terrain::GetPlane(uint /*row*/, uint /*col*/)
+{
+    return Plane::ZERO;
+}
+
+Vector<Vector<float>> Terrain::GetMap()
+{
+    return level;
 }
