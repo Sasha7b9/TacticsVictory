@@ -92,14 +92,16 @@ void CubeTerrain::BuildVertexes(PODVector<float> &vertexes, PODVector<uint> &ind
 {
     uint index = vertexes.Size() / 8;
 
+    this->vertexes = &vertexes;
+
     if (edges[E_TOP])
     {
         PlaneCube &plane = edges[E_TOP]->plane;
 
-        PushPoint(vertexes, plane.point[0]);
-        PushPoint(vertexes, plane.point[1]);
-        PushPoint(vertexes, plane.point[2]);
-        PushPoint(vertexes, plane.point[3]);
+        PushPoint(plane.point[0]);
+        PushPoint(plane.point[1]);
+        PushPoint(plane.point[2]);
+        PushPoint(plane.point[3]);
 
         indexes.Push(index + 0);
         indexes.Push(index + 1);
@@ -110,16 +112,16 @@ void CubeTerrain::BuildVertexes(PODVector<float> &vertexes, PODVector<uint> &ind
     }
 }
 
-void CubeTerrain::PushPoint(PODVector<float> &vertexes, PointPlane &point)
+void CubeTerrain::PushPoint(PointPlane &point)
 {
-    vertexes.Push(point.coord.x_);
-    vertexes.Push(point.coord.y_);
-    vertexes.Push(point.coord.z_);
+    vertexes->Push(point.coord.x_);
+    vertexes->Push(point.coord.y_);
+    vertexes->Push(point.coord.z_);
 
-    vertexes.Push(point.normal.x_);
-    vertexes.Push(point.normal.y_);
-    vertexes.Push(point.normal.z_);
+    vertexes->Push(point.normal.x_);
+    vertexes->Push(point.normal.y_);
+    vertexes->Push(point.normal.z_);
 
-    vertexes.Push(point.texCoord.x_);
-    vertexes.Push(point.texCoord.y_);
+    vertexes->Push(point.texCoord.x_);
+    vertexes->Push(point.texCoord.y_);
 }

@@ -26,7 +26,7 @@ public:
     uint col = 0;
     uint layer = 0;
     bool underGround = false;
-    
+
 private:
 
     #define S_LEFT      0
@@ -42,6 +42,9 @@ private:
     #define E_TOP       0
     #define E_DOWN      1
 
+
+    PODVector<float> *vertexes = nullptr;
+
     CubeTerrain& operator=(const CubeTerrain&)
     {};
 
@@ -51,7 +54,7 @@ private:
     void CreateEdgeTop();
     void CreateEdgeDown();
 
-    void PushPoint(PODVector<float> &vertexes, PointPlane &point);
+    void PushPoint(PointPlane &point);
 };
 
 /*                     Corner_0              Corner_1

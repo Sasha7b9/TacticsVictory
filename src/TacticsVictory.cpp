@@ -144,8 +144,6 @@ void TacticsVictory::Start()
     SubscribeToEvents();
 
     CreateNewGame();
-
-    URHO3D_LOGINFOF("time create %f sec", gTime->GetElapsedTime());
 }
 
 void TacticsVictory::InitLocalizationSystem()
