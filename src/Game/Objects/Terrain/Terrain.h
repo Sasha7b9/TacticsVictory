@@ -6,12 +6,26 @@
 #include "Graphics/Objects/Line.h"
 
 
+enum DIR
+{
+    DIR_LEFT,
+    DIR_TOPLEFT,
+    DIR_TOP,
+    DIR_TOPRIGHT,
+    DIR_RIGHT,
+    DIR_DOWNRIGHT,
+    DIR_DOWN,
+    DIR_DOWNLEFT
+};
+
+
 class Terrain : public Object
 {
     URHO3D_OBJECT(Terrain, Object);
 
 public:
     Terrain(Context *context = gContext);
+    ~Terrain();
 
     void CreateFromVector(Vector<Vector<float>> &level);
 
@@ -37,6 +51,10 @@ public:
 
     Vector<Vector<float>> GetMap();
 
+    PODVector<CubeTerrain*>* GetColumnCubes(CubeTerrain *cube, DIR dir);
+
+    static Vector<Vector<PODVector<CubeTerrain*>>> columnsCubes;
+
 private:
     Terrain& operator=(const Terrain&)
     {};
@@ -44,4 +62,6 @@ private:
     Vector<Vector<float>> level;
 
     Vector<Vector<SharedPtr<SegmentTerrain>>> segments;
+
+    SegmentTerrain *GetSegmentForCoord(uint row, uint col);
 };

@@ -2,6 +2,7 @@
 
 
 #include "SegmentTerrain.h"
+#include "Terrain.h"
 
 
 SegmentTerrain::SegmentTerrain(Context *context) :
@@ -12,7 +13,7 @@ SegmentTerrain::SegmentTerrain(Context *context) :
 
 SegmentTerrain::~SegmentTerrain()
 {
-
+    URHO3D_LOGINFO("~SegmentTerrain");
 }
 
 void SegmentTerrain::CreateFromVector(Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols)
@@ -79,6 +80,7 @@ void SegmentTerrain::AddCube(SharedPtr<CubeTerrain> &cube)
     {
         ground[cube->layer]->AddCube(cube);
     }
+    Terrain::columnsCubes[cube->row][cube->col].Push(cube);
 }
 
 void SegmentTerrain::CreateLayers()
@@ -102,5 +104,28 @@ void SegmentTerrain::Build()
     for(auto &layer : underGround)
     {
         layer->Build();
+    }
+}
+
+void SegmentTerrain::GetColumnCubes(uint row, uint col, PODVector<CubeTerrain*> &column)
+{
+    for(int i = (int)ground.Size() - 1; i >= 0; i--)
+    {
+        LayerTerrain *layer = ground[(uint)i];
+        CubeTerrain* cube = layer->GetCube(row, col);
+        if(cube)
+        {
+            column.Push(cube);
+        }
+    }
+
+    for(int i = 0; i < (int)underGround.Size(); i++)
+    {
+        LayerTerrain *layer = underGround[(uint)i];
+        CubeTerrain *cube = layer->GetCube(row, col);
+        if(cube)
+        {
+            column.Push(cube);
+        }
     }
 }

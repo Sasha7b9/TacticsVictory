@@ -11,6 +11,11 @@ LayerTerrain::LayerTerrain(Context *context) :
 
 }
 
+LayerTerrain::~LayerTerrain()
+{
+    URHO3D_LOGINFO("~LayerTerrain");
+}
+
 void LayerTerrain::AddCube(SharedPtr<CubeTerrain> &cube)
 {
     cubes.Push(cube);
@@ -94,4 +99,17 @@ void LayerTerrain::Build()
 
     SAFE_DELETE(bufVert);
     SAFE_DELETE(bufInd);
+}
+
+CubeTerrain* LayerTerrain::GetCube(uint row, uint col)
+{
+    for(auto cube : cubes)
+    {
+        if(cube->row == row && cube->col == col)
+        {
+            return cube;
+        }
+    }
+
+    return nullptr;
 }

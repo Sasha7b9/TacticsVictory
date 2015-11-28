@@ -10,12 +10,15 @@ class LayerTerrain : public Object
 
 public:
     LayerTerrain(Context *context = gContext);
+    ~LayerTerrain();
 
     void AddCube(SharedPtr<CubeTerrain> &cube);
 
     void Create();
 
     void Build();
+
+    CubeTerrain* GetCube(uint row, uint col);
 
     Vector<SharedPtr<CubeTerrain>> cubes;
 

@@ -50,19 +50,23 @@ void TacticsVictory::Stop()
 {
     TilePath::RemoveAll();
     Rocket::DeleteAll();
+    SAFE_DELETE(gScene);
     SAFE_DELETE(scene);
     SAFE_DELETE(gFileSelector);
-    SAFE_DELETE(gTerrain);
     SAFE_DELETE(gLevel);
     SAFE_DELETE(gGUI);
     File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
     URHO3D_LOGINFO("Now save ui");
     gUIRoot->SaveXML(file);
+    URHO3D_LOGINFO("gSet->Save");
     gSet->Save();
     SAFE_DELETE(gSet);
+    URHO3D_LOGINFO("dump");
     engine_->DumpResources(true);
+    URHO3D_LOGINFO("Now destroy gEditor");
     SAFE_DELETE(gEditor);
-    SAFE_DELETE(gScene);
+    URHO3D_LOGINFO("gScene");
+    URHO3D_LOGINFO("gCamera");
     SAFE_DELETE(gCamera);
     gLog->Close();
     SAFE_DELETE(gLog);

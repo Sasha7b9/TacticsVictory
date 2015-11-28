@@ -6,6 +6,9 @@
 #include "EdgeCube.h"
 
 
+class Terrain;
+
+
 class CubeTerrain : public Object
 {
     URHO3D_OBJECT(CubeTerrain, Object);
@@ -18,14 +21,16 @@ public:
 
     void BuildVertexes(PODVector<float> &vertexes, PODVector<uint> &indexes);
 
-    SharedPtr<SideCube>     sides[4];
-    SharedPtr<CornerCube>   corners[4];
-    SharedPtr<EdgeCube>     edges[2];
+    SideCube    sides[4];
+    CornerCube  corners[4];
+    EdgeCube    edges[2];
 
     uint row = 0;
     uint col = 0;
     uint layer = 0;
     bool underGround = false;
+
+    static Terrain *terrain;
 
 private:
 
@@ -48,11 +53,15 @@ private:
     CubeTerrain& operator=(const CubeTerrain&)
     {};
 
-    void Init();
-
     void CreateEdges();
     void CreateEdgeTop();
     void CreateEdgeDown();
+
+    void CreateSides();
+    void CreateSideLeft();
+    void CreateSideTop();
+    void CreateSideRight();
+    void CreateSideDown();
 
     void PushPoint(PointPlane &point);
 };

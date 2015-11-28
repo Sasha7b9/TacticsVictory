@@ -24,6 +24,8 @@ public:
 
     void Build();
 
+    void GetColumnCubes(uint row, uint col, PODVector<CubeTerrain*> &column);
+
     static const uint WIDTH = 50;
     static const uint HEIGHT = 50;
 

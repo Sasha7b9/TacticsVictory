@@ -4,15 +4,35 @@
 #include "Terrain.h"
 
 
+Vector<Vector<PODVector<CubeTerrain*>>> Terrain::columnsCubes;
+
+
 Terrain::Terrain(Context *context) :
     Object(context)
 {
+}
 
+Terrain::~Terrain()
+{
+    for(auto &row : columnsCubes)
+    {
+        for(auto &col : row)
+        {
+            for(auto &cube : col)
+            {
+                cube = nullptr;
+            }
+        }
+    }
 }
 
 void Terrain::CreateFromVector(Vector<Vector<float>> &level)
 {
-   this->level = level;
+    float time = gTime->GetElapsedTime();
+
+    this->level = level;
+
+    CubeTerrain::terrain = this;
 
     uint height = SegmentTerrain::HEIGHT;
     uint width = SegmentTerrain::WIDTH;
@@ -22,6 +42,13 @@ void Terrain::CreateFromVector(Vector<Vector<float>> &level)
 
     uint allRows = level.Size();
     uint allCols = level[0].Size();
+
+    columnsCubes.Resize(allRows);
+
+    for(auto &row : columnsCubes)
+    {
+        row.Resize(allCols);
+    }
 
     segments.Resize(segmentsInZ);
 
@@ -74,6 +101,8 @@ void Terrain::CreateFromVector(Vector<Vector<float>> &level)
             segment->Build();
         }
     }
+
+    URHO3D_LOGINFOF("time create terrain %f sec", gTime->GetElapsedTime() - time);
 }
 
 void Terrain::SaveToFile(char * /*nameFile*/)
@@ -129,4 +158,25 @@ Plane Terrain::GetPlane(uint /*row*/, uint /*col*/)
 Vector<Vector<float>> Terrain::GetMap()
 {
     return level;
+}
+
+PODVector<CubeTerrain*>* Terrain::GetColumnCubes(CubeTerrain *cube, DIR dir)
+{
+    const int dRow[8] = { 0, -1, -1, -1, 0, 1, 1,  1};
+    const int dCol[8] = {-1, -1,  0,  1, 1, 1, 0, -1};
+
+    uint row = (uint)((int)cube->row + dRow[dir]);
+    uint col = (uint)((int)cube->col + dCol[dir]);
+
+    if(row > NumRows() - 1 || col > NumCols() - 1)
+    {
+        return nullptr;
+    }
+
+    return &columnsCubes[row][col];
+}
+
+SegmentTerrain* Terrain::GetSegmentForCoord(uint row, uint col)
+{
+    return segments[row / SegmentTerrain::HEIGHT][col / SegmentTerrain::WIDTH];
 }
