@@ -2,6 +2,7 @@
 
 
 #include "LayerTerrain.h"
+#include "Core/Math.h"
 
 
 LayerTerrain::LayerTerrain(Context *context) :
@@ -85,7 +86,7 @@ void LayerTerrain::Build()
     model->SetVertexBuffers(vbVector, morphRange, morphRange);
     model->SetIndexBuffers(ibVector);
 
-    model->SetBoundingBox(BoundingBox(-5.0f, 5.0f));
+    model->SetBoundingBox(Math::CalculateBoundingBox(bufVert, numVert / 8));
 
     object->SetModel(model);
     object->SetMaterial(gCache->GetResource<Material>("Materials/TVTerrain.xml"));
