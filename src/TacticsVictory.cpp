@@ -64,7 +64,6 @@ void TacticsVictory::Stop()
     SAFE_DELETE(gEditor);
     SAFE_DELETE(gScene);
     SAFE_DELETE(gCamera);
-
     gLog->Close();
     SAFE_DELETE(gLog);
 }
@@ -145,6 +144,8 @@ void TacticsVictory::Start()
     SubscribeToEvents();
 
     CreateNewGame();
+
+    URHO3D_LOGINFOF("time create %f sec", gTime->GetElapsedTime());
 }
 
 void TacticsVictory::InitLocalizationSystem()

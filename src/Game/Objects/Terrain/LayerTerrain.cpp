@@ -25,42 +25,17 @@ void LayerTerrain::Create()
 
 void LayerTerrain::Build()
 {
-    static float time1 = 0.0f;
-    static float timeExit = 0.0f;
-    static int counter = 0;
-    static int numCubes = 0;
-    counter++;
-
-    float time = gTime->GetElapsedTime();
+    PODVector<float> vertexes;
+    PODVector<uint> indexes;
 
     for(auto cube : cubes)
     {
-        cube->BuildVertexes();
-        numCubes++;
+        cube->BuildVertexes(vertexes, indexes);
     }
-
-    time1 += (gTime->GetElapsedTime() - time);
-    URHO3D_LOGINFOF("1: %d %f %d cubes", counter, time1, numCubes);
-    time = gTime->GetElapsedTime();
 
     SharedPtr<VertexBuffer> vb(new VertexBuffer(gContext));
     SharedPtr<IndexBuffer> ib(new IndexBuffer(gContext));
     SharedPtr<Geometry> geometry(new Geometry(gContext));
-
-    PODVector<float> vertexes;
-    PODVector<uint> indexes;
-
-    for (uint i = 0; i < cubes.Size(); i++)
-    {
-        vertexes.Push(cubes[i]->vertexes);
-
-        uint startIndex = vertexes.Size() / 8;
-
-        for (uint j = 0; j < cubes[i]->indexes.Size(); j++)
-        {
-            indexes.Push(cubes[i]->indexes[j] + startIndex);
-        }
-    }
 
     uint numVert = vertexes.Size();
     uint numInd = indexes.Size();
@@ -118,7 +93,4 @@ void LayerTerrain::Build()
 
     SAFE_DELETE(bufVert);
     SAFE_DELETE(bufInd);
-
-    timeExit += (gTime->GetElapsedTime() - time);
-    URHO3D_LOGINFOF("Exit: %d %f", counter, timeExit);
 }

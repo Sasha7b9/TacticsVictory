@@ -103,8 +103,8 @@
     "loadMapFromFile":      { "en":"Load map from file",                                "ru":"Загрузить карту из файла" },
     "saveMapToFile":        { "en":"Save map to file",                                  "ru":"Сохранить карту в файл" },
     "createNewMap":         { "en":"Create new map",                                    "ru":"Создать новую карту" },
-    "clearLandscape":       { "en":"Clear landscape",                                   "ru":"Очистить ландашафт" },
-    "Landscape":            { "en":"Landscape",                                         "ru":"Ландшафт" },
+    "clearTerrain":         { "en":"Clear terrain",                                     "ru":"Очистить ландашафт" },
+    "Terrain":              { "en":"Terrain",                                           "ru":"Ландшафт" },
     "PAUSE":                { "en":"PAUSE",                                             "ru":"ПАУЗА" },
     "Exit in main menu?":   { "en":"Exit in main menu?",                                "ru":"Выйти в главное меню?" },
 

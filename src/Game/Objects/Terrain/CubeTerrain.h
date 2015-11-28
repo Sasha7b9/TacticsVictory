@@ -16,7 +16,7 @@ public:
 
     void Create();
 
-    void BuildVertexes();
+    void BuildVertexes(PODVector<float> &vertexes, PODVector<uint> &indexes);
 
     SharedPtr<SideCube>     sides[4];
     SharedPtr<CornerCube>   corners[4];
@@ -26,10 +26,6 @@ public:
     uint col = 0;
     uint layer = 0;
     bool underGround = false;
-
-    PODVector<float> vertexes;
-    uint vertInAVector = 0;
-    PODVector<uint> indexes;
     
 private:
 
@@ -55,7 +51,7 @@ private:
     void CreateEdgeTop();
     void CreateEdgeDown();
 
-    void PushPoint(PointPlane &point);
+    void PushPoint(PODVector<float> &vertexes, PointPlane &point);
 };
 
 /*                     Corner_0              Corner_1
