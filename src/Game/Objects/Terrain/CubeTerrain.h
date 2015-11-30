@@ -14,6 +14,30 @@ class CubeTerrain : public Object
     URHO3D_OBJECT(CubeTerrain, Object);
 
 public:
+
+    enum SIDE
+    {
+        S_LEFT = 0,
+        S_TOP = 1,
+        S_RIGHT = 2,
+        S_DOWN = 3
+    };
+
+    enum CORNER
+    {
+        C_TOPLEFT = 0,
+        C_TOPRIGHT = 1,
+        C_DOWNRIGHT = 2,
+        C_DOWNLEFT = 3
+    };
+
+    enum EDGE
+    {
+        E_TOP = 0,
+        E_DOWN = 1
+    };
+
+public:
     CubeTerrain(Context *context = gContext);
     CubeTerrain(uint row, uint col, float height);  // Create cube with one
 
@@ -21,9 +45,11 @@ public:
 
     void BuildVertexes(PODVector<float> &vertexes, PODVector<uint> &indexes);
 
-    SideCube    sides[4];
-    CornerCube  corners[4];
-    EdgeCube    edges[2];
+    Vector3& GetEdgeCoord(EDGE edge, CORNER corner);
+
+    SharedPtr<SideCube>     sides[4];
+    SharedPtr<CornerCube>   corners[4];
+    SharedPtr<EdgeCube>     edges[2];
 
     uint row = 0;
     uint col = 0;
@@ -34,21 +60,8 @@ public:
 
 private:
 
-    #define S_LEFT      0
-    #define S_TOP       1
-    #define S_RIGHT     2
-    #define S_DOWN      3
-    
-    #define C_TOPLEFT   0
-    #define C_TOPRIGHT  1
-    #define C_DOWNRIGHT 2
-    #define C_DOWNLEFT  3
-    
-    #define E_TOP       0
-    #define E_DOWN      1
-
-
     PODVector<float> *vertexes = nullptr;
+    PODVector<uint>  *indexes = nullptr;
 
     CubeTerrain& operator=(const CubeTerrain&)
     {};
@@ -64,6 +77,8 @@ private:
     void CreateSideDown();
 
     void PushPoint(PointPlane &point);
+
+    void BuildPlaneVerexes(PlaneCube &plane);
 };
 
 /*                     Corner_0              Corner_1

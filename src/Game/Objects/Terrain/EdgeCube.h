@@ -13,8 +13,6 @@ public:
 
     PlaneCube plane;
 
-    bool exist = false;
-
 private:
     EdgeCube& operator=(const EdgeCube&)
     {};
