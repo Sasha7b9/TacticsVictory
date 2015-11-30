@@ -48,6 +48,9 @@ void TacticsVictory::Setup()
 
 void TacticsVictory::Stop()
 {
+    float time = gTime->GetElapsedTime();
+    engine_->DumpResources(true);
+    engine_->DumpProfiler();
     TilePath::RemoveAll();
     Rocket::DeleteAll();
     SAFE_DELETE(gScene);
@@ -62,12 +65,12 @@ void TacticsVictory::Stop()
     gSet->Save();
     SAFE_DELETE(gSet);
     URHO3D_LOGINFO("dump");
-    engine_->DumpResources(true);
     URHO3D_LOGINFO("Now destroy gEditor");
     SAFE_DELETE(gEditor);
     URHO3D_LOGINFO("gScene");
     URHO3D_LOGINFO("gCamera");
-    SAFE_DELETE(gCamera);
+    SAFE_DELETE(gCamera);    
+    URHO3D_LOGINFOF("time Stop() %f sec", gTime->GetElapsedTime() - time);
     gLog->Close();
     SAFE_DELETE(gLog);
 }
@@ -114,6 +117,8 @@ void TacticsVictory::RegistrationFactories()
 
 void TacticsVictory::Start()
 {
+    gProfiler = GetSubsystem<Profiler>();
+    PROFILER_FUNC_ENTER
     Application::Start();
 
     gTime = GetSubsystem<Time>();
@@ -148,6 +153,8 @@ void TacticsVictory::Start()
     SubscribeToEvents();
 
     CreateNewGame();
+
+    PROFILER_FUNC_LEAVE
 }
 
 void TacticsVictory::InitLocalizationSystem()

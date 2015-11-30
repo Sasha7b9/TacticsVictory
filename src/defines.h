@@ -25,5 +25,8 @@ typedef unsigned char   uchar;
 #define NODE_TILE_PATH      "TilePath"
 #define NODE_TRIGGER        "Trigger"
 
-#define VIEW_MASK_FOR_MISSILE 1
-#define VIEW_MASK_FOR_EFFECTS 2
+#define VIEW_MASK_FOR_MISSILE   1
+#define VIEW_MASK_FOR_EFFECTS   2
+
+#define PROFILER_FUNC_ENTER     gProfiler->BeginBlock(__FUNCTION__);
+#define PROFILER_FUNC_LEAVE     gProfiler->EndBlock();
