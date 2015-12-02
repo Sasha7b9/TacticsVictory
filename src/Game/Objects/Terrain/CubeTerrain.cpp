@@ -48,6 +48,19 @@ void CubeTerrain::CreateSides()
     CreateSideDown();
 }
 
+#define GET_FOUR_POINTS_FOR_PLANE(pl)        \
+    PointPlane &point0 = pl->plane.point[0]; \
+    PointPlane &point1 = pl->plane.point[1]; \
+    PointPlane &point2 = pl->plane.point[2]; \
+    PointPlane &point3 = pl->plane.point[3];
+
+#define CALCULATE_NORMALS                                                                       \
+    point0.normal = (point1.coord - point0.coord).CrossProduct(point3.coord - point0.coord);    \
+    point1.normal = (point2.coord - point1.coord).CrossProduct(point0.coord - point1.coord);    \
+    point2.normal = (point3.coord - point2.coord).CrossProduct(point1.coord - point2.coord);    \
+    point3.normal = (point0.coord - point3.coord).CrossProduct(point2.coord - point3.coord);
+
+
 void CubeTerrain::CreateEdgeTop()
 {
     float height = underGround ? -(float)layer : (float)layer + 1.0f;
@@ -55,25 +68,21 @@ void CubeTerrain::CreateEdgeTop()
     SharedPtr<EdgeCube> edge(new EdgeCube());
     edges[E_TOP] = edge;
 
-    PointPlane &point0 = edge->plane.point[0];
+    GET_FOUR_POINTS_FOR_PLANE(edge);
+
     point0.coord = Vector3((float)col, height, -(float)row);
-    point0.normal = Vector3::UP;
     point0.texCoord = Vector2::ZERO;
 
-    PointPlane &point1 = edge->plane.point[1];
     point1.coord = Vector3((float)col + 1.0f, height, -(float)row);
-    point1.normal = Vector3::UP;
     point1.texCoord = Vector2::UP;
 
-    PointPlane &point2 = edge->plane.point[2];
     point2.coord = Vector3((float)col + 1.0f, height, -(float)row - 1.0f);
-    point2.normal = Vector3::UP;
     point2.texCoord = Vector2::ONE;
 
-    PointPlane &point3 = edge->plane.point[3];
     point3.coord = Vector3((float)col, height, -(float)row - 1.0f);
-    point3.normal = Vector3::UP;
     point3.texCoord = Vector2::RIGHT;
+
+    CALCULATE_NORMALS
 }
 
 void CubeTerrain::CreateEdgeDown()
@@ -104,10 +113,7 @@ void CubeTerrain::CreateSideLeft()
             SharedPtr<SideCube> side(new SideCube());
             sides[S_LEFT] = side;
 
-            PointPlane &point0 = side->plane.point[0];
-            PointPlane &point1 = side->plane.point[1];
-            PointPlane &point2 = side->plane.point[2];
-            PointPlane &point3 = side->plane.point[3];
+            GET_FOUR_POINTS_FOR_PLANE(side);
 
             float height = underGround ? -(float)layer : (float)layer + 1.0f;
 
@@ -123,10 +129,7 @@ void CubeTerrain::CreateSideLeft()
             point3.coord = Vector3((float)col, heightLeftTopRight, -(float)row - 1.0f);
             point3.texCoord = Vector2::RIGHT;
 
-            point0.normal = (point1.coord - point0.coord).CrossProduct(point3.coord - point0.coord);
-            point1.normal = (point2.coord - point1.coord).CrossProduct(point0.coord - point1.coord);
-            point2.normal = (point3.coord - point2.coord).CrossProduct(point1.coord - point2.coord);
-            point3.normal = (point0.coord - point3.coord).CrossProduct(point2.coord - point3.coord);
+            CALCULATE_NORMALS
 
             break;
         }
@@ -135,12 +138,91 @@ void CubeTerrain::CreateSideLeft()
 
 void CubeTerrain::CreateSideTop()
 {
+    // Get the column of cubes, that are top of our. column[0] - mini height
+    PODVector<CubeTerrain*> *column = static_cast<Terrain*>(terrain)->GetColumnCubes(this, DIR_TOP);
 
+    if(!column)
+    {
+        return;
+    }
+
+    for(int i = (int)column->Size() - 1; i >= 0; i--)
+    {
+        CubeTerrain *cube = (*column)[(uint)i];
+
+        Vector3& coord = cube->GetEdgeCoord(E_TOP, C_DOWNLEFT);
+
+        float heightTopDownLeft = coord.y_;
+
+        if(heightTopDownLeft < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
+        {
+            SharedPtr<SideCube> side(new SideCube());
+            sides[S_TOP] = side;
+
+            GET_FOUR_POINTS_FOR_PLANE(side);
+
+            float height = underGround ? -(float)layer : (float)layer + 1.0f;
+
+            point0.coord = Vector3((float)col, heightTopDownLeft, -(float)row);
+            point0.texCoord = Vector2::ZERO;
+
+            point1.coord = Vector3((float)col + 1.0f, heightTopDownLeft, -(float)row);
+            point1.texCoord = Vector2::UP;
+
+            point2.coord = Vector3((float)col + 1.0f, height, -(float)row);
+            point2.texCoord = Vector2::ONE;
+
+            point3.coord = Vector3((float)col, height, -(float)row);
+            point3.texCoord = Vector2::RIGHT;
+
+            CALCULATE_NORMALS
+
+            break;
+        }
+    }
 }
 
 void CubeTerrain::CreateSideRight()
 {
+    PODVector<CubeTerrain*> *column = static_cast<Terrain*>(terrain)->GetColumnCubes(this, DIR_RIGHT);
 
+    if(!column)
+    {
+        return;
+    }
+
+    for(int i = (int)column->Size() - 1; i >= 0; i--)
+    {
+        CubeTerrain *cube = (*column)[(uint)i];
+        
+        Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);
+
+        float heightRightRightLeft = coord.y_;
+
+        if(heightRightRightLeft < GetEdgeCoord(E_TOP, C_TOPRIGHT).y_)
+        {
+            SharedPtr<SideCube> side(new SideCube());
+            sides[S_RIGHT] = side;
+
+            GET_FOUR_POINTS_FOR_PLANE(side);
+
+            float height = underGround ? -(float)layer : (float)layer + 1.0f;
+
+            point0.coord = Vector3((float)col + 1.0f, height, -(float)row);
+            point0.texCoord = Vector2::ZERO;
+
+            point1.coord = Vector3((float)col + 1.0f, heightRightRightLeft, -(float)row);
+            point1.texCoord = Vector2::UP;
+
+            point2.coord = Vector3((float)col + 1.0f, heightRightRightLeft, -(float)row - 1.0f);
+            point2.texCoord = Vector2::ONE;
+
+            point3.coord = Vector3((float)col + 1.0f, height, -(float)row - 1.0f);
+            point3.texCoord = Vector2::RIGHT;
+
+            CALCULATE_NORMALS
+        }
+    }
 }
 
 void CubeTerrain::CreateSideDown()
@@ -175,9 +257,29 @@ void CubeTerrain::BuildVertexes(PODVector<float> &vertexes, PODVector<uint> &ind
         BuildPlaneVerexes(edges[E_TOP]->plane);
     }
 
+    if(edges[E_DOWN])
+    {
+        BuildPlaneVerexes(edges[E_DOWN]->plane);
+    }
+
     if(sides[S_LEFT])
     {
         BuildPlaneVerexes(sides[S_LEFT]->plane);
+    }
+
+    if(sides[S_TOP])
+    {
+        BuildPlaneVerexes(sides[S_TOP]->plane);
+    }
+
+    if(sides[S_RIGHT])
+    {
+        BuildPlaneVerexes(sides[S_RIGHT]->plane);
+    }
+
+    if(sides[S_DOWN])
+    {
+        BuildPlaneVerexes(sides[S_DOWN]->plane);
     }
 }
 
