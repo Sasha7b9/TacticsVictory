@@ -148,7 +148,7 @@ void CubeTerrain::CreateSideDown()
 
 }
 
-void CubeTerrain::BuildPlaneVerexes(PlaneCube &plane)
+void CubeTerrain::BuildPlaneVerexes(PlaneCube &plane) 
 {
     PushPoint(plane.point[0]);
     PushPoint(plane.point[1]);
