@@ -227,7 +227,47 @@ void CubeTerrain::CreateSideRight()
 
 void CubeTerrain::CreateSideDown()
 {
+    PODVector<CubeTerrain*> *column = static_cast<Terrain*>(terrain)->GetColumnCubes(this, DIR_DOWN);
 
+    if(!column)
+    {
+        return;
+    }
+
+    for(int i = (int)column->Size() - 1; i >= 0; i--)
+    {
+        CubeTerrain *cube = (*column)[(uint)i];
+
+        Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPLEFT);
+
+        float heightDownTopLeft = coord.y_;
+
+        if(heightDownTopLeft < GetEdgeCoord(E_TOP, C_DOWNLEFT).y_)
+        {
+            SharedPtr<SideCube> side(new SideCube());
+            sides[S_DOWN] = side;
+
+            GET_FOUR_POINTS_FOR_PLANE(side);
+
+            float height = underGround ? -(float)layer : (float)layer + 1.0f;
+
+            float z = -(float)(row + 1);
+
+            point0.coord = Vector3((float)col, heightDownTopLeft, z);
+            point0.texCoord = Vector2::ZERO;
+
+            point1.coord = Vector3((float)col, height, z);
+            point1.texCoord = Vector2::UP;
+
+            point2.coord = Vector3((float)col + 1.0f, height, z);
+            point2.texCoord = Vector2::ONE;
+
+            point3.coord = Vector3((float)col + 1.0f, heightDownTopLeft, z);
+            point3.texCoord = Vector2::RIGHT;
+
+            CALCULATE_NORMALS
+        }
+    }
 }
 
 void CubeTerrain::BuildPlaneVerexes(PlaneCube &plane) 
