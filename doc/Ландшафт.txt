@@ -1,0 +1,50 @@
+class Voxel
+{
+
+public:
+    enum Type
+    {
+        VoxelXY_0 = (1 << 0),   // √рань, параллельна€ плоскости X0Y, ближн€€ к ней, если смотреть из положительного октета
+        VoxelXY_1 = (1 << 1),   // --//--                             дальн€€ от неЄ --//--
+        VoxelYZ_0 = (1 << 2),   // --//--                        Y0Z, ближн€€ к ней  --//--
+        VoxelYZ_1 = (1 << 3),   // --//--                             дальн€€ от неЄ --//--
+        VoxelXZ_0 = (1 << 4),   // --//--                        X0Z, ближн€€ к ней  --//--
+        VoxelXZ_1 = (1 << 5)    // --//--                             дальн€€ от неЄ --//--
+    };
+
+    Voxel(Type type, Point3Di _coord)
+    {
+        coord = _coord;
+        if(type == VoxelXY)
+        {
+            
+        }
+    }
+
+private:
+
+    List<Point3Df*> vertices;
+    Point3Di coord;
+};
+
+class Landscape
+{
+
+public:
+
+    void Create(int sizeX, int sizeY, int sizeZ)
+    {
+        for(int y = 0; y < sizeY ; y++)
+        {
+            for(int x = 0; x < sizeX; x++)
+            {
+                
+            }
+        }
+    }
+
+private:
+
+    List<Voxel*> voxels;
+};
+
