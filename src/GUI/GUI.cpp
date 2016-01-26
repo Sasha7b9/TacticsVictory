@@ -53,7 +53,7 @@ static void RegstrationObjects()
     Label::RegisterObject();
     lSlider::RegisterObject();
     SliderInt::RegisterObject();
-    lGovernorCell::RegisterObject();
+    GovernorCell::RegisterObject();
     GovernorFloat::RegisterObject();
     PanelBottom::RegisterObject();
     PanelMap::RegisterObject();

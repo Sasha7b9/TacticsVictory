@@ -19,12 +19,12 @@ URHO3D_EVENT(E_GOVERNORCELLCHANGED, GovernorCellChanged)
 }
 
 
-class lGovernorCell : public lWindow
+class GovernorCell : public lWindow
 {
-    URHO3D_OBJECT(lGovernorCell, lWindow);
+    URHO3D_OBJECT(GovernorCell, lWindow);
 
 public:
-    lGovernorCell(Context *context = gContext);
+    GovernorCell(Context *context = gContext);
 
     static void RegisterObject(Context *context = gContext);
 
@@ -41,7 +41,7 @@ public:
     void HandleMouseMove(StringHash eventType, VariantMap& eventData);
 
 private:
-    lGovernorCell& operator=(const lGovernorCell&)
+    GovernorCell& operator=(const GovernorCell&)
     {};
 
     void ChangeValue(int delta);
@@ -85,7 +85,7 @@ private:
     void WriteOrder(int order);
     float GetValue();
 
-    Vector<SharedPtr<lGovernorCell> > cells;
+    Vector<SharedPtr<GovernorCell> > cells;
     SharedPtr<Urho3D::Button> buttonDown;
     SharedPtr<Label> label;
     int numCells = 11;
