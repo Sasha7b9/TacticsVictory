@@ -36,6 +36,7 @@
 #include <Urho3D/Graphics/Drawable.h>
 #include <Urho3D/Graphics/Geometry.h>
 #include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/Graphics/GraphicsDefs.h>
 #include <Urho3D/Graphics/IndexBuffer.h>
 #include <Urho3D/Graphics/Model.h>
 #include <Urho3D/Graphics/Octree.h>

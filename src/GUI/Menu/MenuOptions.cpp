@@ -128,7 +128,7 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     }
     else if(ddList == ddlShadowQuality)
     {
-        gRenderer->SetShadowQuality(index);
+        gRenderer->SetShadowQuality((Urho3D::ShadowQuality)index);
     }
     else if(ddList == ddlDynamicInstancing)
     {

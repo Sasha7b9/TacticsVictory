@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<settings>
+	<screen>
+		<width>1600</width>
+		<height>1000</height>
+	</screen>
+	<brightness>50</brightness>
+	<volume>19</volume>
+	<max_occluder_triangles>5000</max_occluder_triangles>
+	<language>1</language>
+	<texture>
+		<quality>2</quality>
+		<anisotropy>5</anisotropy>
+	</texture>
+	<material>
+		<quality>0</quality>
+	</material>
+	<shadow>
+		<draw>1</draw>
+		<map_size>8</map_size>
+	</shadow>
+	<lighting>
+		<specular>1</specular>
+	</lighting>
+	<panel>
+		<speed>1000</speed>
+	</panel>
+	<panel_bottom>
+		<height>20</height>
+		<button_width>80</button_width>
+		<button_height>15</button_height>
+		<y>3</y>
+	</panel_bottom>
+	<panel_map>
+		<width>200</width>
+	</panel_map>
+</settings>

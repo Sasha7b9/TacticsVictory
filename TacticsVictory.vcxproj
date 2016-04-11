@@ -64,19 +64,19 @@
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Urho3D14\build\bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Urho3D\build\bin\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">01_HelloWorld.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">01_HelloWorld</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Urho3D14\build\bin\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Urho3D\build\bin\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">01_HelloWorld.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">01_HelloWorld</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Urho3D14\build\bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Urho3D\build\bin\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">01_HelloWorld.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">01_HelloWorld</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
@@ -88,7 +88,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -100,17 +100,17 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_THREADING;URHO3D_D3D11;URHO3D_ANGELSCRIPT;URHO3D_LUAJIT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_THREADING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DisableSpecificWarnings>4514;4820;4710;4640;4625</DisableSpecificWarnings>
       <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -121,7 +121,7 @@
       <Message>
       </Message>
       <Command>setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D14/build/bin
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D/build/bin
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -132,7 +132,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalOptions>/STACK:20000000000 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d11.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;c:\Urho3D14\build\lib\Urho3D_d.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d11.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;c:\Urho3D\build\lib\Urho3D_d.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -143,13 +143,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <PreBuildEvent>
-      <Command>copy c:\Urho3D14\build\bin\Urho3D_d.dll debug\
-copy c:\Urho3D14\build\bin\d3dcompiler_47.dll debug\</Command>
+      <Command>copy c:\Urho3D\build\bin\Urho3D_d.dll debug\
+copy c:\Urho3D\build\bin\d3dcompiler_47.dll debug\</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -167,10 +167,10 @@ copy c:\Urho3D14\build\bin\d3dcompiler_47.dll debug\</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SECURE_SCL=0;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -181,7 +181,7 @@ copy c:\Urho3D14\build\bin\d3dcompiler_47.dll debug\</Command>
       <Message>
       </Message>
       <Command>setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D14/build/bin
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D/build/bin
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -196,9 +196,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ImportLibrary>C:/Urho3D14/build/Source/Samples/01_HelloWorld/Release/01_HelloWorld.lib</ImportLibrary>
+      <ImportLibrary>C:/Urho3D/build/Source/Samples/01_HelloWorld/Release/01_HelloWorld.lib</ImportLibrary>
       <OptimizeReferences>true</OptimizeReferences>
-      <ProgramDataBaseFile>C:/Urho3D14/build/bin/01_HelloWorld.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Urho3D/build/bin/01_HelloWorld.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
@@ -209,7 +209,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -226,10 +226,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -240,7 +240,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message>
       </Message>
       <Command>setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D14/build/bin
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D/build/bin
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -254,8 +254,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\..\lib\Urho3D.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;ws2_32.lib;winmm.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ImportLibrary>C:/Urho3D14/build/Source/Samples/01_HelloWorld/MinSizeRel/01_HelloWorld.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Urho3D14/build/bin/MinSizeRel/01_HelloWorld.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Urho3D/build/Source/Samples/01_HelloWorld/MinSizeRel/01_HelloWorld.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Urho3D/build/bin/MinSizeRel/01_HelloWorld.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
@@ -266,7 +266,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -284,10 +284,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SECURE_SCL=0;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Urho3D14\build\include;C:\Urho3D14\build\include\Urho3D\ThirdParty;C:\Urho3D14\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D14\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D14\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -298,7 +298,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message>
       </Message>
       <Command>setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D14/build/bin
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D/build/bin
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -313,9 +313,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>C:/Urho3D14/build/Source/Samples/01_HelloWorld/RelWithDebInfo/01_HelloWorld.lib</ImportLibrary>
+      <ImportLibrary>C:/Urho3D/build/Source/Samples/01_HelloWorld/RelWithDebInfo/01_HelloWorld.lib</ImportLibrary>
       <OptimizeReferences>true</OptimizeReferences>
-      <ProgramDataBaseFile>C:/Urho3D14/build/bin/01_HelloWorld.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Urho3D/build/bin/01_HelloWorld.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
@@ -325,10 +325,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="C:/Urho3D14/build/Source/Urho3D/Urho3D.vcxproj">
+    <ProjectReference Include="C:/Urho3D/build/Source/Urho3D/Urho3D.vcxproj">
       <Project>C0286ED6-8382-4715-9262-7CD430D11813</Project>
     </ProjectReference>
-    <ProjectReference Include="C:/Urho3D14/build/ZERO_CHECK.vcxproj">
+    <ProjectReference Include="C:/Urho3D/build/ZERO_CHECK.vcxproj">
       <Project>6243EBAD-EC04-47C0-8412-39CDA66078C7</Project>
     </ProjectReference>
   </ItemGroup>

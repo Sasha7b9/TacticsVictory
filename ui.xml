@@ -1,0 +1,2329 @@
+<?xml version="1.0"?>
+<element>
+	<attribute name="Size" value="1600 1000" />
+	<element type="PanelMain" style="Window">
+		<attribute name="Name" value="PanelMain" />
+		<attribute name="Position" value="199 781" />
+		<attribute name="Size" value="1401 200" />
+		<attribute name="Min Size" value="1401 200" />
+		<attribute name="Max Size" value="1401 200" />
+		<attribute name="Priority" value="-3" />
+		<attribute name="Is Visible" value="false" />
+		<element type="ButtonToggled">
+			<attribute name="Position" value="10 4" />
+			<attribute name="Size" value="125 17" />
+			<attribute name="Min Size" value="125 17" />
+			<attribute name="Max Size" value="125 17" />
+			<attribute name="Is Checked" value="true" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Файл" />
+			</element>
+		</element>
+		<element type="Tab" style="Window">
+			<attribute name="Position" value="0 20" />
+			<attribute name="Size" value="1401 180" />
+			<attribute name="Min Size" value="1401 180" />
+			<attribute name="Max Size" value="1401 180" />
+			<element type="ButtonMain" style="MainMenuButton">
+				<attribute name="Position" value="10 3" />
+				<attribute name="Size" value="80 15" />
+				<attribute name="Min Size" value="80 15" />
+				<attribute name="Max Size" value="80 15" />
+				<element type="Label">
+					<attribute name="Horiz Alignment" value="Center" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="16" />
+					<attribute name="Text" value="Загрузить" />
+				</element>
+			</element>
+			<element type="ButtonMain" style="MainMenuButton">
+				<attribute name="Position" value="10 30" />
+				<attribute name="Size" value="80 15" />
+				<attribute name="Min Size" value="80 15" />
+				<attribute name="Max Size" value="80 15" />
+				<element type="Label">
+					<attribute name="Horiz Alignment" value="Center" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="16" />
+					<attribute name="Text" value="Сохранить" />
+				</element>
+			</element>
+		</element>
+		<element type="ButtonToggled">
+			<attribute name="Position" value="135 4" />
+			<attribute name="Size" value="125 17" />
+			<attribute name="Min Size" value="125 17" />
+			<attribute name="Max Size" value="125 17" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Редактировать" />
+			</element>
+		</element>
+		<element type="ButtonToggled">
+			<attribute name="Position" value="260 4" />
+			<attribute name="Size" value="125 17" />
+			<attribute name="Min Size" value="125 17" />
+			<attribute name="Max Size" value="125 17" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Ландшафт" />
+			</element>
+		</element>
+		<element type="ButtonToggled">
+			<attribute name="Position" value="385 4" />
+			<attribute name="Size" value="125 17" />
+			<attribute name="Min Size" value="125 17" />
+			<attribute name="Max Size" value="125 17" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Объекты" />
+			</element>
+		</element>
+	</element>
+	<element type="PanelMap" style="Window">
+		<attribute name="Name" value="PanelMap" />
+		<attribute name="Position" value="0 781" />
+		<attribute name="Size" value="200 200" />
+		<attribute name="Min Size" value="200 200" />
+		<attribute name="Max Size" value="200 200" />
+		<attribute name="Priority" value="-3" />
+		<attribute name="Is Visible" value="false" />
+		<attribute name="Texture" value="Texture2D;" />
+		<attribute name="Image Rect" value="0 0 200 200" />
+	</element>
+	<element type="PanelBottom" style="Window">
+		<attribute name="Name" value="PanelBottom" />
+		<attribute name="Position" value="0 980" />
+		<attribute name="Size" value="1600 20" />
+		<attribute name="Min Size" value="1600 20" />
+		<attribute name="Max Size" value="1600 20" />
+		<attribute name="Priority" value="-3" />
+		<element type="ButtonMain" style="MainMenuButton">
+			<attribute name="Position" value="60 3" />
+			<attribute name="Size" value="80 15" />
+			<attribute name="Min Size" value="80 15" />
+			<attribute name="Max Size" value="80 15" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Интерфейс" />
+			</element>
+		</element>
+		<element type="ButtonMain" style="MainMenuButton">
+			<attribute name="Position" value="1440 3" />
+			<attribute name="Size" value="80 15" />
+			<attribute name="Min Size" value="80 15" />
+			<attribute name="Max Size" value="80 15" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Меню" />
+			</element>
+		</element>
+	</element>
+	<element type="PanelMain" style="Window">
+		<attribute name="Name" value="PanelMain" />
+		<attribute name="Position" value="199 781" />
+		<attribute name="Size" value="1401 200" />
+		<attribute name="Min Size" value="1401 200" />
+		<attribute name="Max Size" value="1401 200" />
+		<attribute name="Priority" value="-3" />
+		<element type="ButtonToggled">
+			<attribute name="Position" value="10 4" />
+			<attribute name="Size" value="125 17" />
+			<attribute name="Min Size" value="125 17" />
+			<attribute name="Max Size" value="125 17" />
+			<attribute name="Is Checked" value="true" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Информация" />
+			</element>
+		</element>
+		<element type="Tab" style="Window">
+			<attribute name="Position" value="0 20" />
+			<attribute name="Size" value="1401 180" />
+			<attribute name="Min Size" value="1401 180" />
+			<attribute name="Max Size" value="1401 180" />
+		</element>
+		<element type="ButtonToggled">
+			<attribute name="Position" value="135 4" />
+			<attribute name="Size" value="125 17" />
+			<attribute name="Min Size" value="125 17" />
+			<attribute name="Max Size" value="125 17" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Подразделения" />
+			</element>
+		</element>
+		<element type="ButtonToggled">
+			<attribute name="Position" value="260 4" />
+			<attribute name="Size" value="125 17" />
+			<attribute name="Min Size" value="125 17" />
+			<attribute name="Max Size" value="125 17" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Взводы" />
+			</element>
+		</element>
+		<element type="ButtonToggled">
+			<attribute name="Position" value="385 4" />
+			<attribute name="Size" value="125 17" />
+			<attribute name="Min Size" value="125 17" />
+			<attribute name="Max Size" value="125 17" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Здания" />
+			</element>
+		</element>
+		<element type="ButtonToggled">
+			<attribute name="Position" value="510 4" />
+			<attribute name="Size" value="125 17" />
+			<attribute name="Min Size" value="125 17" />
+			<attribute name="Max Size" value="125 17" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Отладка" />
+			</element>
+		</element>
+	</element>
+	<element type="PanelMap" style="Window">
+		<attribute name="Name" value="PanelMap" />
+		<attribute name="Position" value="0 781" />
+		<attribute name="Size" value="200 200" />
+		<attribute name="Min Size" value="200 200" />
+		<attribute name="Max Size" value="200 200" />
+		<attribute name="Priority" value="-3" />
+		<attribute name="Texture" value="Texture2D;" />
+		<attribute name="Image Rect" value="0 0 200 200" />
+	</element>
+	<element type="MenuOptions" style="Window">
+		<attribute name="Name" value="Options menu" />
+		<attribute name="Position" value="562 345" />
+		<attribute name="Size" value="477 311" />
+		<attribute name="Priority" value="-3" />
+		<attribute name="Is Visible" value="false" />
+		<attribute name="Layout Mode" value="Vertical" />
+		<attribute name="Layout Border" value="6 6 6 6" />
+		<attribute name="Is Movable" value="true" />
+		<element type="Label">
+			<attribute name="Horiz Alignment" value="Center" />
+			<attribute name="Font" value="Font;Fonts/tech.fnt" />
+			<attribute name="Font Size" value="20" />
+			<attribute name="Text" value="Опции" />
+		</element>
+		<element type="SliderWithTextAndButtons">
+			<attribute name="Min Size" value="465 22" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="465 22" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Яркость" />
+				</element>
+				<element type="SliderInt" style="Slider">
+					<attribute name="Min Size" value="200 16" />
+					<attribute name="Max Size" value="200 16" />
+					<attribute name="Range" value="100" />
+					<attribute name="Value" value="50" />
+					<element type="BorderImage" internal="true" style="none" />
+				</element>
+				<element type="Button" style="SliderButtonLeft">
+					<attribute name="Repeat Delay" value="0.25" />
+					<attribute name="Repeat Rate" value="20" />
+				</element>
+				<element type="Button" style="SliderButtonRight">
+					<attribute name="Repeat Delay" value="0.25" />
+					<attribute name="Repeat Rate" value="20" />
+				</element>
+				<element type="Text">
+					<attribute name="Min Size" value="35 16" />
+					<attribute name="Max Size" value="35 16" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="50" />
+				</element>
+			</element>
+		</element>
+		<element type="SliderWithTextAndButtons">
+			<attribute name="Min Size" value="465 22" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="465 22" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Громкость" />
+				</element>
+				<element type="SliderInt" style="Slider">
+					<attribute name="Min Size" value="200 16" />
+					<attribute name="Max Size" value="200 16" />
+					<attribute name="Range" value="100" />
+					<attribute name="Value" value="19" />
+					<element type="BorderImage" internal="true" style="none" />
+				</element>
+				<element type="Button" style="SliderButtonLeft">
+					<attribute name="Repeat Delay" value="0.25" />
+					<attribute name="Repeat Rate" value="20" />
+				</element>
+				<element type="Button" style="SliderButtonRight">
+					<attribute name="Repeat Delay" value="0.25" />
+					<attribute name="Repeat Rate" value="20" />
+				</element>
+				<element type="Text">
+					<attribute name="Min Size" value="35 16" />
+					<attribute name="Max Size" value="35 16" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="19" />
+				</element>
+			</element>
+		</element>
+		<element type="SliderWithTextAndButtons">
+			<attribute name="Min Size" value="465 22" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="465 22" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Max occluder triangles" />
+				</element>
+				<element type="SliderInt" style="Slider">
+					<attribute name="Min Size" value="200 16" />
+					<attribute name="Max Size" value="200 16" />
+					<attribute name="Range" value="5000" />
+					<attribute name="Value" value="5000" />
+					<element type="BorderImage" internal="true" style="none" />
+				</element>
+				<element type="Button" style="SliderButtonLeft">
+					<attribute name="Repeat Delay" value="0.25" />
+					<attribute name="Repeat Rate" value="20" />
+				</element>
+				<element type="Button" style="SliderButtonRight">
+					<attribute name="Repeat Delay" value="0.25" />
+					<attribute name="Repeat Rate" value="20" />
+				</element>
+				<element type="Text">
+					<attribute name="Min Size" value="35 16" />
+					<attribute name="Max Size" value="35 16" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="5000" />
+				</element>
+			</element>
+		</element>
+		<element type="DropDownListWithTextAndButton">
+			<attribute name="Min Size" value="427 24" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="427 24" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label" style="Window">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Качество текстур" />
+				</element>
+				<element type="DropDownList">
+					<attribute name="Min Size" value="200 18" />
+					<attribute name="Max Size" value="200 18" />
+					<attribute name="Selection" value="2" />
+					<attribute name="Resize Popup" value="true" />
+					<element internal="true" style="none">
+						<element type="Text" internal="true" style="none" />
+					</element>
+					<element popup="true" type="Window" internal="true" style="none">
+						<element type="ListView" internal="true" style="none">
+							<attribute name="View Position" value="0 48" />
+							<element type="BorderImage" internal="true" style="none">
+								<attribute name="Image Rect" value="0 0 256 128" />
+								<element internal="true" style="none">
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Низкое" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Среднее" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Is Selected" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Высокое" />
+									</element>
+								</element>
+							</element>
+						</element>
+					</element>
+				</element>
+				<element type="Button" style="SliderButtonLeft" />
+				<element type="Button" style="SliderButtonRight" />
+			</element>
+		</element>
+		<element type="DropDownListWithTextAndButton">
+			<attribute name="Min Size" value="427 24" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="427 24" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label" style="Window">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Фильтрация текстур" />
+				</element>
+				<element type="DropDownList">
+					<attribute name="Min Size" value="200 18" />
+					<attribute name="Max Size" value="200 18" />
+					<attribute name="Selection" value="5" />
+					<attribute name="Resize Popup" value="true" />
+					<element internal="true" style="none">
+						<element type="Text" internal="true" style="none" />
+					</element>
+					<element popup="true" type="Window" internal="true" style="none">
+						<element type="ListView" internal="true" style="none">
+							<attribute name="View Position" value="0 96" />
+							<element type="BorderImage" internal="true" style="none">
+								<attribute name="Image Rect" value="0 0 256 128" />
+								<element internal="true" style="none">
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="x1" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="x2" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="x4" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="x8" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="x16" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Is Selected" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="x32" />
+									</element>
+								</element>
+							</element>
+						</element>
+					</element>
+				</element>
+				<element type="Button" style="SliderButtonLeft" />
+				<element type="Button" style="SliderButtonRight" />
+			</element>
+		</element>
+		<element type="DropDownListWithTextAndButton">
+			<attribute name="Min Size" value="427 24" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="427 24" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label" style="Window">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Качество материалов" />
+				</element>
+				<element type="DropDownList">
+					<attribute name="Min Size" value="200 18" />
+					<attribute name="Max Size" value="200 18" />
+					<attribute name="Resize Popup" value="true" />
+					<element internal="true" style="none">
+						<element type="Text" internal="true" style="none" />
+					</element>
+					<element popup="true" type="Window" internal="true" style="none">
+						<element type="ListView" internal="true" style="none">
+							<element type="BorderImage" internal="true" style="none">
+								<attribute name="Image Rect" value="0 0 256 128" />
+								<element internal="true" style="none">
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Is Selected" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Низкое" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Среднее" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Высокое" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Максимальное" />
+									</element>
+								</element>
+							</element>
+						</element>
+					</element>
+				</element>
+				<element type="Button" style="SliderButtonLeft" />
+				<element type="Button" style="SliderButtonRight" />
+			</element>
+		</element>
+		<element type="DropDownListWithTextAndButton">
+			<attribute name="Min Size" value="427 24" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="427 24" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label" style="Window">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Тени" />
+				</element>
+				<element type="DropDownList">
+					<attribute name="Min Size" value="200 18" />
+					<attribute name="Max Size" value="200 18" />
+					<attribute name="Selection" value="1" />
+					<attribute name="Resize Popup" value="true" />
+					<element internal="true" style="none">
+						<element type="Text" internal="true" style="none" />
+					</element>
+					<element popup="true" type="Window" internal="true" style="none">
+						<element type="ListView" internal="true" style="none">
+							<attribute name="View Position" value="0 32" />
+							<element type="BorderImage" internal="true" style="none">
+								<attribute name="Image Rect" value="0 0 256 128" />
+								<element internal="true" style="none">
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Откл" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Is Selected" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Вкл" />
+									</element>
+								</element>
+							</element>
+						</element>
+					</element>
+				</element>
+				<element type="Button" style="SliderButtonLeft" />
+				<element type="Button" style="SliderButtonRight" />
+			</element>
+		</element>
+		<element type="DropDownListWithTextAndButton">
+			<attribute name="Min Size" value="427 24" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="427 24" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label" style="Window">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Отражения света" />
+				</element>
+				<element type="DropDownList">
+					<attribute name="Min Size" value="200 18" />
+					<attribute name="Max Size" value="200 18" />
+					<attribute name="Selection" value="1" />
+					<attribute name="Resize Popup" value="true" />
+					<element internal="true" style="none">
+						<element type="Text" internal="true" style="none" />
+					</element>
+					<element popup="true" type="Window" internal="true" style="none">
+						<element type="ListView" internal="true" style="none">
+							<attribute name="View Position" value="0 32" />
+							<element type="BorderImage" internal="true" style="none">
+								<attribute name="Image Rect" value="0 0 256 128" />
+								<element internal="true" style="none">
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Откл" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Is Selected" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Вкл" />
+									</element>
+								</element>
+							</element>
+						</element>
+					</element>
+				</element>
+				<element type="Button" style="SliderButtonLeft" />
+				<element type="Button" style="SliderButtonRight" />
+			</element>
+		</element>
+		<element type="DropDownListWithTextAndButton">
+			<attribute name="Min Size" value="427 24" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="427 24" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label" style="Window">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Dynamic instancing" />
+				</element>
+				<element type="DropDownList">
+					<attribute name="Min Size" value="200 18" />
+					<attribute name="Max Size" value="200 18" />
+					<attribute name="Selection" value="1" />
+					<attribute name="Resize Popup" value="true" />
+					<element internal="true" style="none">
+						<element type="Text" internal="true" style="none" />
+					</element>
+					<element popup="true" type="Window" internal="true" style="none">
+						<element type="ListView" internal="true" style="none">
+							<attribute name="View Position" value="0 32" />
+							<element type="BorderImage" internal="true" style="none">
+								<attribute name="Image Rect" value="0 0 256 128" />
+								<element internal="true" style="none">
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Откл" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Is Selected" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="Вкл" />
+									</element>
+								</element>
+							</element>
+						</element>
+					</element>
+				</element>
+				<element type="Button" style="SliderButtonLeft" />
+				<element type="Button" style="SliderButtonRight" />
+			</element>
+		</element>
+		<element type="DropDownListWithTextAndButton">
+			<attribute name="Min Size" value="427 24" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="427 24" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label" style="Window">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Shadow map size" />
+				</element>
+				<element type="DropDownList">
+					<attribute name="Min Size" value="200 18" />
+					<attribute name="Max Size" value="200 18" />
+					<attribute name="Selection" value="8" />
+					<attribute name="Resize Popup" value="true" />
+					<element internal="true" style="none">
+						<element type="Text" internal="true" style="none" />
+					</element>
+					<element popup="true" type="Window" internal="true" style="none">
+						<element type="ListView" internal="true" style="none">
+							<attribute name="View Position" value="0 144" />
+							<element type="BorderImage" internal="true" style="none">
+								<attribute name="Image Rect" value="0 0 256 128" />
+								<element internal="true" style="none">
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="64" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="128" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="256" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="512" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="1024" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="2048" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="4096" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="8192" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Is Selected" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="16384" />
+									</element>
+								</element>
+							</element>
+						</element>
+					</element>
+				</element>
+				<element type="Button" style="SliderButtonLeft" />
+				<element type="Button" style="SliderButtonRight" />
+			</element>
+		</element>
+		<element type="DropDownListWithTextAndButton">
+			<attribute name="Min Size" value="427 24" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="427 24" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label" style="Window">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Качество теней" />
+				</element>
+				<element type="DropDownList">
+					<attribute name="Min Size" value="200 18" />
+					<attribute name="Max Size" value="200 18" />
+					<attribute name="Selection" value="2" />
+					<attribute name="Resize Popup" value="true" />
+					<element internal="true" style="none">
+						<element type="Text" internal="true" style="none" />
+					</element>
+					<element popup="true" type="Window" internal="true" style="none">
+						<element type="ListView" internal="true" style="none">
+							<attribute name="View Position" value="0 48" />
+							<element type="BorderImage" internal="true" style="none">
+								<attribute name="Image Rect" value="0 0 256 128" />
+								<element internal="true" style="none">
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="низкое 16бит" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="низкое 24бит" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Is Selected" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="высокое 16бит" />
+									</element>
+									<element type="Label">
+										<attribute name="Horiz Alignment" value="Center" />
+										<attribute name="Is Enabled" value="true" />
+										<attribute name="Font" value="Font;Fonts/tech.fnt" />
+										<attribute name="Font Size" value="16" />
+										<attribute name="Text" value="высокое 24бит" />
+									</element>
+								</element>
+							</element>
+						</element>
+					</element>
+				</element>
+				<element type="Button" style="SliderButtonLeft" />
+				<element type="Button" style="SliderButtonRight" />
+			</element>
+		</element>
+		<element>
+			<attribute name="Min Size" value="0 25" />
+			<attribute name="Horiz Alignment" value="Center" />
+			<element type="ButtonMain" style="MainMenuButton">
+				<attribute name="Position" value="188 0" />
+				<attribute name="Size" value="100 25" />
+				<attribute name="Min Size" value="100 25" />
+				<attribute name="Max Size" value="100 2147483647" />
+				<element type="Label">
+					<attribute name="Horiz Alignment" value="Center" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="16" />
+					<attribute name="Text" value="Закрыть" />
+				</element>
+			</element>
+		</element>
+	</element>
+	<element type="WindowVariables" style="WindowNoBorder">
+		<element type="Label">
+			<attribute name="Min Size" value="200 16" />
+			<attribute name="Max Size" value="200 16" />
+			<attribute name="Horiz Alignment" value="Center" />
+			<attribute name="Font" value="Font;Fonts/tech.fnt" />
+			<attribute name="Font Size" value="8" />
+			<attribute name="Text" value="Переменные" />
+		</element>
+		<element type="GovernorFloat" style="WindowNoBorder">
+			<attribute name="Min Size" value="293 13" />
+			<attribute name="Max Size" value="293 13" />
+			<element type="Label">
+				<attribute name="Size" value="168 16" />
+				<attribute name="Min Size" value="168 16" />
+				<attribute name="Max Size" value="168 16" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="8" />
+				<attribute name="Text" value="Camera pos Y" />
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="168 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="+" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="177 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="7" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="196 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="4" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="205 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="2" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="214 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="1" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="223 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="232 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="1" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="241 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="+" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="250 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="259 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="268 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="186 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="." />
+				</element>
+			</element>
+			<element type="Button" style="DropDownButtonDown">
+				<attribute name="Position" value="280 0" />
+			</element>
+		</element>
+		<element type="GovernorFloat" style="WindowNoBorder">
+			<attribute name="Min Size" value="293 13" />
+			<attribute name="Max Size" value="293 13" />
+			<element type="Label">
+				<attribute name="Size" value="168 16" />
+				<attribute name="Min Size" value="168 16" />
+				<attribute name="Max Size" value="168 16" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="8" />
+				<attribute name="Text" value="Camera pos X" />
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="168 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="+" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="177 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="1" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="196 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="5" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="205 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="5" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="214 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="7" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="223 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="5" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="232 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="4" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="241 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="+" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="250 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="259 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="268 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="2" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="186 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="." />
+				</element>
+			</element>
+			<element type="Button" style="DropDownButtonDown">
+				<attribute name="Position" value="280 0" />
+			</element>
+		</element>
+		<element type="GovernorFloat" style="WindowNoBorder">
+			<attribute name="Min Size" value="293 13" />
+			<attribute name="Max Size" value="293 13" />
+			<element type="Label">
+				<attribute name="Size" value="168 16" />
+				<attribute name="Min Size" value="168 16" />
+				<attribute name="Max Size" value="168 16" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="8" />
+				<attribute name="Text" value="Camera pos Z" />
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="168 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="-" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="177 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="6" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="196 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="5" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="205 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="3" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="214 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="1" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="223 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="8" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="232 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="7" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="241 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="+" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="250 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="259 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="268 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="1" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="186 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="." />
+				</element>
+			</element>
+			<element type="Button" style="DropDownButtonDown">
+				<attribute name="Position" value="280 0" />
+			</element>
+		</element>
+		<element type="GovernorFloat" style="WindowNoBorder">
+			<attribute name="Min Size" value="293 13" />
+			<attribute name="Max Size" value="293 13" />
+			<element type="Label">
+				<attribute name="Size" value="168 16" />
+				<attribute name="Min Size" value="168 16" />
+				<attribute name="Max Size" value="168 16" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="8" />
+				<attribute name="Text" value="Camera pitch" />
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="168 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="+" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="177 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="1" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="196 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="5" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="205 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="9" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="214 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="9" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="223 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="8" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="232 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="3" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="241 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="+" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="250 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="259 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="268 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="1" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="186 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="." />
+				</element>
+			</element>
+			<element type="Button" style="DropDownButtonDown">
+				<attribute name="Position" value="280 0" />
+			</element>
+		</element>
+		<element type="GovernorFloat" style="WindowNoBorder">
+			<attribute name="Min Size" value="293 13" />
+			<attribute name="Max Size" value="293 13" />
+			<element type="Label">
+				<attribute name="Size" value="168 16" />
+				<attribute name="Min Size" value="168 16" />
+				<attribute name="Max Size" value="168 16" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="8" />
+				<attribute name="Text" value="Camera yaw" />
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="168 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="+" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="177 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="1" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="196 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="3" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="205 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="9" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="214 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="9" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="223 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="9" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="232 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="9" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="241 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="+" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="250 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="259 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="0 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="0" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="268 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="1" />
+				</element>
+			</element>
+			<element type="GovernorCell" style="WindowGovernorCell">
+				<attribute name="Position" value="186 0" />
+				<attribute name="Size" value="10 13" />
+				<attribute name="Min Size" value="10 13" />
+				<attribute name="Max Size" value="10 13" />
+				<element type="Text" style="WindowNoBorder">
+					<attribute name="Position" value="1 -1" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="8" />
+					<attribute name="Text" value="." />
+				</element>
+			</element>
+			<element type="Button" style="DropDownButtonDown">
+				<attribute name="Position" value="280 0" />
+			</element>
+		</element>
+	</element>
+	<element type="lConsole" style="Window">
+		<element type="LineEdit">
+			<attribute name="Position" value="0 285" />
+			<attribute name="Size" value="1500 15" />
+			<element type="Text" internal="true" style="none">
+				<attribute name="Top Left Color" value="0.9 1 0.9 1" />
+				<attribute name="Top Right Color" value="0.9 1 0.9 1" />
+				<attribute name="Bottom Left Color" value="0.9 1 0.9 1" />
+				<attribute name="Bottom Right Color" value="0.9 1 0.9 1" />
+			</element>
+			<element type="BorderImage" internal="true" style="none" />
+		</element>
+		<element type="ScrollBar">
+			<attribute name="Position" value="1490 0" />
+			<attribute name="Size" value="16 285" />
+			<attribute name="Max Size" value="10 285" />
+			<attribute name="Orientation" value="Vertical" />
+			<attribute name="Range" value="0" />
+			<element type="Button" internal="true" style="none" />
+			<element type="Slider" internal="true" style="none">
+				<attribute name="Position" value="0 16" />
+				<attribute name="Size" value="16 253" />
+				<element type="BorderImage" internal="true" style="none" />
+			</element>
+			<element type="Button" internal="true" style="none">
+				<attribute name="Position" value="0 269" />
+			</element>
+		</element>
+		<element type="Text" style="WindowMenu">
+			<attribute name="Size" value="1490 285" />
+			<attribute name="Min Size" value="1490 285" />
+			<attribute name="Max Size" value="1490 285" />
+		</element>
+	</element>
+	<element type="PanelBottom" style="Window">
+		<attribute name="Name" value="PanelBottom" />
+		<attribute name="Position" value="0 980" />
+		<attribute name="Size" value="1600 20" />
+		<attribute name="Min Size" value="1600 20" />
+		<attribute name="Max Size" value="1600 20" />
+		<attribute name="Priority" value="-2" />
+		<attribute name="Is Visible" value="false" />
+		<element type="ButtonMain" style="MainMenuButton">
+			<attribute name="Position" value="60 3" />
+			<attribute name="Size" value="80 15" />
+			<attribute name="Min Size" value="80 15" />
+			<attribute name="Max Size" value="80 15" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Интерфейс" />
+			</element>
+		</element>
+		<element type="ButtonMain" style="MainMenuButton">
+			<attribute name="Position" value="1440 3" />
+			<attribute name="Size" value="80 15" />
+			<attribute name="Min Size" value="80 15" />
+			<attribute name="Max Size" value="80 15" />
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Меню" />
+			</element>
+		</element>
+	</element>
+	<element type="lWindow" style="Window">
+		<attribute name="Position" value="562 452" />
+		<attribute name="Size" value="477 97" />
+		<attribute name="Min Size" value="477 97" />
+		<attribute name="Max Size" value="477 97" />
+		<attribute name="Priority" value="-2" />
+		<attribute name="Is Visible" value="false" />
+		<attribute name="Layout Mode" value="Vertical" />
+		<attribute name="Layout Border" value="6 6 6 6" />
+		<attribute name="Is Movable" value="true" />
+		<element type="Label">
+			<attribute name="Horiz Alignment" value="Center" />
+			<attribute name="Font" value="Font;Fonts/tech.fnt" />
+			<attribute name="Font Size" value="20" />
+			<attribute name="Text" value="Создать новую карту" />
+		</element>
+		<element type="SliderWithTextAndButtons">
+			<attribute name="Min Size" value="465 22" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="465 22" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Размер X" />
+				</element>
+				<element type="SliderInt" style="Slider">
+					<attribute name="Min Size" value="200 16" />
+					<attribute name="Max Size" value="200 16" />
+					<attribute name="Range" value="4" />
+					<attribute name="Value" value="2" />
+					<element type="BorderImage" internal="true" style="none" />
+				</element>
+				<element type="Button" style="SliderButtonLeft">
+					<attribute name="Repeat Delay" value="0.25" />
+					<attribute name="Repeat Rate" value="20" />
+				</element>
+				<element type="Button" style="SliderButtonRight">
+					<attribute name="Repeat Delay" value="0.25" />
+					<attribute name="Repeat Rate" value="20" />
+				</element>
+				<element type="Text">
+					<attribute name="Min Size" value="35 16" />
+					<attribute name="Max Size" value="35 16" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="150" />
+				</element>
+			</element>
+		</element>
+		<element type="SliderWithTextAndButtons">
+			<attribute name="Min Size" value="465 22" />
+			<element type="Window" style="WindowNoBorder">
+				<attribute name="Size" value="465 22" />
+				<attribute name="Layout Mode" value="Horizontal" />
+				<attribute name="Layout Spacing" value="3" />
+				<attribute name="Layout Border" value="3 3 3 3" />
+				<element type="Label">
+					<attribute name="Min Size" value="180 16" />
+					<attribute name="Max Size" value="180 16" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="Размер Y" />
+				</element>
+				<element type="SliderInt" style="Slider">
+					<attribute name="Min Size" value="200 16" />
+					<attribute name="Max Size" value="200 16" />
+					<attribute name="Range" value="4" />
+					<attribute name="Value" value="2" />
+					<element type="BorderImage" internal="true" style="none" />
+				</element>
+				<element type="Button" style="SliderButtonLeft">
+					<attribute name="Repeat Delay" value="0.25" />
+					<attribute name="Repeat Rate" value="20" />
+				</element>
+				<element type="Button" style="SliderButtonRight">
+					<attribute name="Repeat Delay" value="0.25" />
+					<attribute name="Repeat Rate" value="20" />
+				</element>
+				<element type="Text">
+					<attribute name="Min Size" value="35 16" />
+					<attribute name="Max Size" value="35 16" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="15" />
+					<attribute name="Text" value="150" />
+				</element>
+			</element>
+		</element>
+		<element type="ButtonMain" style="MainMenuButton">
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Создать" />
+			</element>
+		</element>
+	</element>
+	<element type="lWindow" style="Window">
+		<attribute name="Size" value="80 50" />
+		<attribute name="Min Size" value="80 50" />
+		<attribute name="Max Size" value="80 50" />
+		<attribute name="Priority" value="-2" />
+		<attribute name="Is Visible" value="false" />
+		<attribute name="Layout Mode" value="Vertical" />
+		<attribute name="Is Movable" value="true" />
+		<element type="ButtonMain" style="MainMenuButton">
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Опции" />
+			</element>
+		</element>
+		<element type="ButtonMain" style="MainMenuButton">
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Выход" />
+			</element>
+		</element>
+	</element>
+	<element type="lWindow" style="Window">
+		<attribute name="Position" value="722 468" />
+		<attribute name="Size" value="180 65" />
+		<attribute name="Priority" value="-2" />
+		<attribute name="Is Visible" value="false" />
+		<attribute name="Layout Mode" value="Vertical" />
+		<attribute name="Layout Border" value="6 6 6 6" />
+		<attribute name="Is Movable" value="true" />
+		<element type="Label">
+			<attribute name="Horiz Alignment" value="Center" />
+			<attribute name="Font" value="Font;Fonts/tech.fnt" />
+			<attribute name="Font Size" value="20" />
+			<attribute name="Text" value="Выйти в главное меню?" />
+		</element>
+		<element>
+			<attribute name="Layout Mode" value="Horizontal" />
+			<attribute name="Layout Spacing" value="6" />
+			<attribute name="Layout Border" value="6 6 6 6" />
+			<element type="ButtonMain" style="MainMenuButton">
+				<element type="Label">
+					<attribute name="Horiz Alignment" value="Center" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="16" />
+					<attribute name="Text" value="Да" />
+				</element>
+			</element>
+			<element type="ButtonMain" style="MainMenuButton">
+				<element type="Label">
+					<attribute name="Horiz Alignment" value="Center" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="16" />
+					<attribute name="Text" value="Нет" />
+				</element>
+			</element>
+		</element>
+	</element>
+	<element type="WindowTarget" style="WindowNoBorder" />
+	<element type="MenuMain" style="Window">
+		<attribute name="Name" value="Main menu" />
+		<attribute name="Position" value="738 409" />
+		<attribute name="Size" value="132 183" />
+		<attribute name="Priority" value="-1" />
+		<attribute name="Is Visible" value="false" />
+		<attribute name="Layout Mode" value="Vertical" />
+		<attribute name="Layout Spacing" value="6" />
+		<attribute name="Layout Border" value="6 6 6 6" />
+		<attribute name="Is Movable" value="true" />
+		<element type="Label">
+			<attribute name="Horiz Alignment" value="Center" />
+			<attribute name="Font" value="Font;Fonts/tech.fnt" />
+			<attribute name="Font Size" value="20" />
+			<attribute name="Text" value="Тактика Победы" />
+		</element>
+		<element type="ButtonMain" style="MainMenuButton">
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Новая игра" />
+			</element>
+		</element>
+		<element type="ButtonMain" style="MainMenuButton">
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Редактор" />
+			</element>
+		</element>
+		<element type="ButtonMain" style="MainMenuButton">
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Опции" />
+			</element>
+		</element>
+		<element type="ButtonSwitch" style="MainMenuButton">
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Language : RU" />
+			</element>
+		</element>
+		<element type="ButtonMain" style="MainMenuButton">
+			<element type="Label">
+				<attribute name="Horiz Alignment" value="Center" />
+				<attribute name="Vert Alignment" value="Center" />
+				<attribute name="Font" value="Font;Fonts/tech.fnt" />
+				<attribute name="Font Size" value="16" />
+				<attribute name="Text" value="Выход" />
+			</element>
+		</element>
+	</element>
+	<element type="WindowConfirmExit" style="Window">
+		<attribute name="Position" value="735 468" />
+		<attribute name="Size" value="130 65" />
+		<attribute name="Layout Mode" value="Vertical" />
+		<attribute name="Layout Border" value="6 6 6 6" />
+		<attribute name="Is Movable" value="true" />
+		<element type="Label">
+			<attribute name="Horiz Alignment" value="Center" />
+			<attribute name="Font" value="Font;Fonts/tech.fnt" />
+			<attribute name="Font Size" value="20" />
+			<attribute name="Text" value="Выход в ОС?" />
+		</element>
+		<element>
+			<attribute name="Layout Mode" value="Horizontal" />
+			<attribute name="Layout Spacing" value="6" />
+			<attribute name="Layout Border" value="6 6 6 6" />
+			<element type="ButtonMain" style="MainMenuButton">
+				<element type="Label">
+					<attribute name="Horiz Alignment" value="Center" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="16" />
+					<attribute name="Text" value="Да" />
+				</element>
+			</element>
+			<element type="ButtonMain" style="MainMenuButton">
+				<element type="Label">
+					<attribute name="Horiz Alignment" value="Center" />
+					<attribute name="Vert Alignment" value="Center" />
+					<attribute name="Font" value="Font;Fonts/tech.fnt" />
+					<attribute name="Font Size" value="16" />
+					<attribute name="Text" value="Нет" />
+				</element>
+			</element>
+		</element>
+	</element>
+	<element type="Cursor">
+		<attribute name="Name" value="Cursor" />
+		<attribute name="Position" value="778 514" />
+		<attribute name="Size" value="100 100" />
+		<attribute name="Priority" value="0" />
+		<attribute name="Image Rect" value="0 0 100 100" />
+		<attribute name="Shapes">
+			<variant type="String" value="Normal" />
+			<variant type="ResourceRef" value="Texture2D;" />
+			<variant type="IntRect" value="0 0 100 100" />
+			<variant type="IntVector2" value="0 0" />
+		</attribute>
+	</element>
+	<element type="Text" style="DebugHudText">
+		<attribute name="Horiz Alignment" value="Right" />
+		<attribute name="Priority" value="100" />
+		<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Is Visible" value="false" />
+	</element>
+	<element type="Text" style="DebugHudText">
+		<attribute name="Horiz Alignment" value="Right" />
+		<attribute name="Priority" value="100" />
+		<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Is Visible" value="false" />
+	</element>
+	<element type="Text" style="DebugHudText">
+		<attribute name="Vert Alignment" value="Bottom" />
+		<attribute name="Priority" value="100" />
+		<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Is Visible" value="false" />
+	</element>
+	<element type="Text" style="DebugHudText">
+		<attribute name="Priority" value="100" />
+		<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+		<attribute name="Is Visible" value="false" />
+	</element>
+	<element type="BorderImage" style="ConsoleBackground">
+		<attribute name="Size" value="1600 205" />
+		<attribute name="Min Size" value="1600 0" />
+		<attribute name="Max Size" value="1600 2147483647" />
+		<attribute name="Priority" value="200" />
+		<attribute name="Opacity" value="0.8" />
+		<attribute name="Top Left Color" value="0.15 0.15 0.15 0.8" />
+		<attribute name="Top Right Color" value="0.15 0.15 0.15 0.8" />
+		<attribute name="Bottom Left Color" value="0.15 0.15 0.15 0.8" />
+		<attribute name="Bottom Right Color" value="0.15 0.15 0.15 0.8" />
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Is Visible" value="false" />
+		<attribute name="Bring To Back" value="false" />
+		<attribute name="Clip Children" value="true" />
+		<attribute name="Layout Mode" value="Vertical" />
+		<element type="ListView">
+			<attribute name="Min Size" value="1592 180" />
+			<attribute name="Max Size" value="1592 180" />
+			<attribute name="Highlight Mode" value="Always" />
+			<attribute name="Multiselect" value="true" />
+			<element type="ScrollBar" internal="true" style="none">
+				<attribute name="Size" value="1592 16" />
+				<element type="Button" internal="true" style="none" />
+				<element type="Slider" internal="true" style="none">
+					<attribute name="Position" value="16 0" />
+					<attribute name="Size" value="1560 16" />
+					<element type="BorderImage" internal="true" style="none" />
+				</element>
+				<element type="Button" internal="true" style="none">
+					<attribute name="Position" value="1576 0" />
+				</element>
+			</element>
+			<element type="ScrollBar" internal="true" style="none">
+				<attribute name="Size" value="16 180" />
+				<element type="Button" internal="true" style="none" />
+				<element type="Slider" internal="true" style="none">
+					<attribute name="Position" value="0 16" />
+					<attribute name="Size" value="16 148" />
+					<element type="BorderImage" internal="true" style="none" />
+				</element>
+				<element type="Button" internal="true" style="none">
+					<attribute name="Position" value="0 164" />
+				</element>
+			</element>
+			<element type="BorderImage" internal="true" style="none">
+				<element internal="true" style="none">
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font Size in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font Size in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font Size in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Forcing top alignment because parent element has vertical layout" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font Size in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font Size in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Forcing top alignment because parent element has vertical layout" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font Size in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:27 2016] WARNING: Unknown attribute Font Size in XML data" />
+					</element>
+					<element type="Text" style="ConsoleText">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Is Enabled" value="true" />
+						<attribute name="Text" value="[Mon Apr 11 20:08:28 2016] INFO: time create terrain 1.13800001144409 sec" />
+					</element>
+				</element>
+			</element>
+		</element>
+		<element>
+			<attribute name="Layout Mode" value="Horizontal" />
+			<attribute name="Layout Spacing" value="1" />
+			<element type="DropDownList">
+				<attribute name="Selection" value="-1" />
+				<element internal="true" style="none">
+					<element type="Text" internal="true" style="none">
+						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+					</element>
+				</element>
+				<element popup="true" type="Window" internal="true" style="none">
+					<element type="ListView" internal="true" style="none">
+						<element type="BorderImage" internal="true" style="none">
+							<element internal="true" style="none" />
+						</element>
+					</element>
+				</element>
+			</element>
+			<element type="LineEdit" style="ConsoleLineEdit">
+				<attribute name="Focus Mode" value="Focusable" />
+				<element type="Text" internal="true" style="none">
+					<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
+					<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
+					<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
+					<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
+				</element>
+				<element type="BorderImage" internal="true" style="none">
+					<attribute name="Size" value="4 11" />
+				</element>
+			</element>
+		</element>
+	</element>
+	<element type="Button" style="CloseButton">
+		<attribute name="Priority" value="201" />
+		<attribute name="Is Visible" value="false" />
+		<attribute name="Bring To Back" value="false" />
+	</element>
+</element>
