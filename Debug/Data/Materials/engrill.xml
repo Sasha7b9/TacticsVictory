@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<material>
-	<technique name="Techniques/DiffAlpha.xml" />
-	<texture unit="diffuse" name="Textures/GRILLCO2.TGA" />
-	<parameter name="MatDiffColor" value="0.545098 0.192157 0.517647 2.32831e-010" />
-	<parameter name="MatSpecColor" value="0.898039 0.898039 0.898039 25" />
-	<parameter name="MatEmissiveColor" value="0 0 0 1" />
-</material>

@@ -125,7 +125,7 @@ void TacticsVictory::Start()
 
     gLog = new Urho3D::Log(gContext);
     gLog->Open("log.txt");
-    gLog->SetLevel(Urho3D::LOG_INFO);
+    gLog->SetLevel(Urho3D::LOG_DEBUG);
 
     RegistrationFactories();
 
