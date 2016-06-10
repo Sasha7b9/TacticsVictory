@@ -956,7 +956,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="8" />
+					<attribute name="Text" value="6" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -968,7 +968,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="9" />
+					<attribute name="Text" value="3" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -980,7 +980,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="3" />
+					<attribute name="Text" value="7" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -992,7 +992,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="1" />
+					<attribute name="Text" value="6" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1004,7 +1004,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="9" />
+					<attribute name="Text" value="6" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1016,7 +1016,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="8" />
+					<attribute name="Text" value="6" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1116,7 +1116,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="2" />
+					<attribute name="Text" value="1" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1128,7 +1128,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="3" />
+					<attribute name="Text" value="2" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1137,10 +1137,10 @@
 				<attribute name="Min Size" value="10 13" />
 				<attribute name="Max Size" value="10 13" />
 				<element type="Text" style="WindowNoBorder">
-					<attribute name="Position" value="0 -1" />
+					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="0" />
+					<attribute name="Text" value="9" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1152,7 +1152,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="5" />
+					<attribute name="Text" value="3" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1161,10 +1161,10 @@
 				<attribute name="Min Size" value="10 13" />
 				<attribute name="Max Size" value="10 13" />
 				<element type="Text" style="WindowNoBorder">
-					<attribute name="Position" value="1 -1" />
+					<attribute name="Position" value="0 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="5" />
+					<attribute name="Text" value="0" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1176,7 +1176,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="2" />
+					<attribute name="Text" value="4" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1276,7 +1276,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="9" />
+					<attribute name="Text" value="1" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1288,7 +1288,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="9" />
+					<attribute name="Text" value="2" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1300,7 +1300,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="9" />
+					<attribute name="Text" value="8" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1309,10 +1309,10 @@
 				<attribute name="Min Size" value="10 13" />
 				<attribute name="Max Size" value="10 13" />
 				<element type="Text" style="WindowNoBorder">
-					<attribute name="Position" value="0 -1" />
+					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="0" />
+					<attribute name="Text" value="4" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1321,10 +1321,10 @@
 				<attribute name="Min Size" value="10 13" />
 				<attribute name="Max Size" value="10 13" />
 				<element type="Text" style="WindowNoBorder">
-					<attribute name="Position" value="0 -1" />
+					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="0" />
+					<attribute name="Text" value="6" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1336,7 +1336,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="1" />
+					<attribute name="Text" value="7" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1384,7 +1384,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="1" />
+					<attribute name="Text" value="2" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1436,7 +1436,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="2" />
+					<attribute name="Text" value="1" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1445,10 +1445,10 @@
 				<attribute name="Min Size" value="10 13" />
 				<attribute name="Max Size" value="10 13" />
 				<element type="Text" style="WindowNoBorder">
-					<attribute name="Position" value="0 -1" />
+					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="0" />
+					<attribute name="Text" value="3" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1460,7 +1460,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="9" />
+					<attribute name="Text" value="6" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1484,7 +1484,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="8" />
+					<attribute name="Text" value="9" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1493,10 +1493,10 @@
 				<attribute name="Min Size" value="10 13" />
 				<attribute name="Max Size" value="10 13" />
 				<element type="Text" style="WindowNoBorder">
-					<attribute name="Position" value="1 -1" />
+					<attribute name="Position" value="0 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="3" />
+					<attribute name="Text" value="0" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1596,7 +1596,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="6" />
+					<attribute name="Text" value="3" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1608,7 +1608,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="8" />
+					<attribute name="Text" value="3" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1620,7 +1620,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="9" />
+					<attribute name="Text" value="5" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1632,7 +1632,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="9" />
+					<attribute name="Text" value="4" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1644,7 +1644,7 @@
 					<attribute name="Position" value="1 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="8" />
+					<attribute name="Text" value="6" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1653,10 +1653,10 @@
 				<attribute name="Min Size" value="10 13" />
 				<attribute name="Max Size" value="10 13" />
 				<element type="Text" style="WindowNoBorder">
-					<attribute name="Position" value="1 -1" />
+					<attribute name="Position" value="0 -1" />
 					<attribute name="Font" value="Font;Fonts/tech.fnt" />
 					<attribute name="Font Size" value="8" />
-					<attribute name="Text" value="3" />
+					<attribute name="Text" value="0" />
 				</element>
 			</element>
 			<element type="GovernorCell" style="WindowGovernorCell">
@@ -1758,10 +1758,9 @@
 			</element>
 		</element>
 		<element type="Text" style="WindowMenu">
-			<attribute name="Size" value="1490 48" />
-			<attribute name="Min Size" value="1490 48" />
-			<attribute name="Max Size" value="1490 48" />
-			<attribute name="Text" value="dsfsdfs&#10;asdf&#10;sdafasdfasdf&#10;" />
+			<attribute name="Size" value="1490 285" />
+			<attribute name="Min Size" value="1490 285" />
+			<attribute name="Max Size" value="1490 285" />
 		</element>
 	</element>
 	<element type="PanelBottom" style="Window">
@@ -2069,7 +2068,7 @@
 	</element>
 	<element type="Cursor">
 		<attribute name="Name" value="Cursor" />
-		<attribute name="Position" value="788 515" />
+		<attribute name="Position" value="782 506" />
 		<attribute name="Size" value="100 100" />
 		<attribute name="Priority" value="0" />
 		<attribute name="Image Rect" value="0 0 100 100" />
@@ -2106,7 +2105,6 @@
 		<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 		<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 		<attribute name="Is Visible" value="false" />
-		<attribute name="Text" value="Block                            Cnt     Avg      Max     Frame     Total&#10;&#10;RunFrame                          30   33.742   34.059   33.742  1012.260&#10; BeginFrame                       30    0.051    0.128    0.051     1.538&#10;  FinishBackgroundResources       30    0.001    0.002    0.001     0.030&#10;  UpdateNetwork                   30    0.001    0.002    0.001     0.031&#10;  UpdateInput                     30    0.019    0.099    0.019     0.597&#10; Update                           30   20.727   25.931   20.727   621.836&#10;  UpdateScene                     30    3.406    7.359    3.406   102.192&#10;   Tank::Update                 3870    0.014    0.884    1.885    56.552&#10;    Raycast                       65    0.421    0.820    0.913    27.398&#10;   UpdatePhysics                  30    0.129    0.775    0.129     3.879&#10;    StepSimulation                 5    0.024    0.026    0.004     0.124&#10;    SendCollisionEvents            5    0.004    0.005    0.000     0.023&#10;   UpdateSmoothing                30    0.004    0.009    0.004     0.120&#10;  SetTextureData                 210    0.028    0.196    0.200     6.025&#10;  CalculateImageMipLevel         180    0.016    0.096    0.101     3.041&#10;  Raycast                         30    0.953    1.240    0.953    28.606&#10;  UpdateUI                        30    3.658    3.850    3.658   109.755&#10;   SetTextureData                480    0.097    0.678    1.567    47.028&#10;   CalculateImageMipLevel        420    0.052    0.338    0.738    22.157&#10;  Rocket::UpdateAll               30    2.771    4.983    2.771    83.153&#10;   Raycast                       934    0.031    0.291    0.978    29.342&#10;  PostUpdateNetwork               30    0.011    0.014    0.011     0.336&#10;  UpdateAudio                     30    0.022    0.049    0.022     0.672&#10;  GetUIBatches                    30    1.642    5.368    1.642    49.264&#10;  UpdateViews                     30    7.328    7.691    7.328   219.853&#10;   UpdateDrawables                30    0.165    0.197    0.165     4.960&#10;   ReinsertToOctree               30    4.348    4.624    4.348   130.447&#10;   UpdateRenderer2D               30    0.090    0.126    0.090     2.721&#10;    CheckDrawableVisibility       30    0.074    0.108    0.074     2.220&#10;   GetDrawables                   30    0.253    0.316    0.253     7.611&#10;   ProcessLights                  30    1.441    1.663    1.441    43.231&#10;   GetLightBatches                30    0.682    0.914    0.682    20.481&#10;   GetBaseBatches                 30    0.041    0.060    0.041     1.236&#10; Render                           30   12.907   15.913   12.907   387.230&#10;  RenderViews                     30    1.689    2.037    1.689    50.671&#10;   SortAndUpdateGeometry          30    0.405    0.828    0.405    12.172&#10;   PrepareInstancingBuffer        30    0.066    0.114    0.066     2.008&#10;   ExecuteRenderPath              30    1.141    1.461    1.141    34.236&#10;    ClearRenderTarget             30    0.008    0.015    0.008     0.266&#10;    RenderLights                  30    0.709    0.946    0.709    21.288&#10;     RenderShadowMap              30    0.400    0.511    0.400    12.029&#10;    RenderScenePass               30    0.408    0.603    0.408    12.268&#10;  RenderUI                        30    0.797    2.866    0.797    23.919&#10;  Present                         30   10.384   13.657   10.384   311.536&#10; ApplyFrameLimit                  30    0.000    0.000    0.000     0.000&#10; EndFrame                         30    0.032    0.063    0.032     0.988&#10;" />
 	</element>
 	<element type="Text" style="DebugHudText">
 		<attribute name="Vert Alignment" value="Bottom" />
@@ -2116,7 +2114,6 @@
 		<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 		<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 		<attribute name="Is Visible" value="false" />
-		<attribute name="Text" value="Tex:High Mat:Low Spec:On Shadows:On Size:2048 Quality:16bit PCF Occlusion:On Instancing:On API:D3D9" />
 	</element>
 	<element type="Text" style="DebugHudText">
 		<attribute name="Priority" value="100" />
@@ -2125,7 +2122,6 @@
 		<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 		<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 		<attribute name="Is Visible" value="false" />
-		<attribute name="Text" value="Triangles 213296&#10;Batches 130&#10;Views 1&#10;Lights 2&#10;Shadowmaps 1&#10;Occluders 0" />
 	</element>
 	<element type="BorderImage" style="ConsoleBackground">
 		<attribute name="Size" value="1600 205" />
@@ -2189,7 +2185,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:14 2016] DEBUG: Compiled pixel shader LitSolid(PCF_SHADOW PERPIXEL POINTLIGHT SHADOW SPECULAR)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:12 2016] DEBUG: Loaded cached pixel shader Basic(ALPHAMASK DIFFMAP VERTEXCOLOR)" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2197,7 +2193,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:17 2016] DEBUG: Compiled vertex shader LitSolid(INSTANCED NOUV PERPIXEL POINTLIGHT)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:12 2016] DEBUG: Loaded cached pixel shader Basic(ALPHAMAP VERTEXCOLOR)" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2205,7 +2201,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:20 2016] DEBUG: Compiled vertex shader LitSolid(BILLBOARD NOUV PERPIXEL POINTLIGHT SHADOW)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:12 2016] DEBUG: Loading resource Models/Rocket.mdl" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2213,7 +2209,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:20 2016] DEBUG: Compiled pixel shader LitSolid(AMBIENT PCF_SHADOW PERPIXEL POINTLIGHT SHADOW)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:12 2016] DEBUG: Loading resource Materials/DefaultMaterial.xml" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2221,7 +2217,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:20 2016] DEBUG: Compiled vertex shader LitSolid(BILLBOARD NOUV PERPIXEL POINTLIGHT)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:12 2016] DEBUG: Loading resource Materials/LitSmoke.xml" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2229,7 +2225,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:20 2016] DEBUG: Compiled pixel shader LitSolid(AMBIENT PERPIXEL POINTLIGHT)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:12 2016] DEBUG: Loading resource Techniques/DiffLitParticleAlpha.xml" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2237,7 +2233,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:20 2016] DEBUG: Compiled pixel shader LitSolid(PCF_SHADOW PERPIXEL POINTLIGHT SHADOW)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:12 2016] DEBUG: Loading resource Textures/Smoke.dds" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2245,7 +2241,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:27 2016] DEBUG: Loading resource Materials/Decals/PathDecal.xml" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:12 2016] DEBUG: Loaded cached vertex shader LitSolid(INSTANCED NOUV PERPIXEL POINTLIGHT SHADOW)" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2253,7 +2249,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:27 2016] DEBUG: Loading resource Techniques/Decals/PathDecal.xml" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:13 2016] DEBUG: Loading resource Shaders/HLSL/LitParticle.hlsl" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2261,7 +2257,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:27 2016] DEBUG: Loading resource Textures/Decals/PathDecal.png" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:13 2016] DEBUG: Loaded cached vertex shader LitSolid(NOUV PERPIXEL POINTLIGHT)" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2269,7 +2265,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:27 2016] DEBUG: Compiled vertex shader LitSolid()" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:13 2016] DEBUG: Loaded cached pixel shader LitSolid(AMBIENT PERPIXEL POINTLIGHT SPECULAR)" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2277,7 +2273,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:27 2016] DEBUG: Compiled pixel shader LitSolid(DIFFMAP)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:13 2016] DEBUG: Loaded cached pixel shader LitSolid(PCF_SHADOW PERPIXEL POINTLIGHT SHADOW SPECULAR)" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2285,7 +2281,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:27 2016] DEBUG: Compiled pixel shader LitSolid(DIFFMAP PERPIXEL POINTLIGHT)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:13 2016] DEBUG: Loaded cached vertex shader LitParticle(BILLBOARD)" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2293,7 +2289,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:50 2016] DEBUG: Compiled vertex shader Basic(VERTEXCOLOR)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:13 2016] DEBUG: Loaded cached pixel shader LitParticle(DIFFMAP)" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2301,7 +2297,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:50 2016] DEBUG: Compiled pixel shader Basic(VERTEXCOLOR)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:13 2016] DEBUG: Loaded cached vertex shader LitParticle(BILLBOARD PERPIXEL POINTLIGHT)" />
 					</element>
 					<element type="Text" style="ConsoleText">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2309,7 +2305,7 @@
 						<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
 						<attribute name="Is Enabled" value="true" />
-						<attribute name="Text" value="[Fri Jun 10 11:33:50 2016] DEBUG: Loaded cached pixel shader Basic(DIFFMAP VERTEXCOLOR)" />
+						<attribute name="Text" value="[Fri Jun 10 11:36:13 2016] DEBUG: Loaded cached pixel shader LitParticle(DIFFMAP PERPIXEL POINTLIGHT)" />
 					</element>
 				</element>
 			</element>
@@ -2318,9 +2314,7 @@
 			<attribute name="Layout Mode" value="Horizontal" />
 			<attribute name="Layout Spacing" value="1" />
 			<element type="DropDownList">
-				<attribute name="Max Size" value="64 2147483647" />
-				<attribute name="Is Enabled" value="false" />
-				<attribute name="Focus Mode" value="NotFocusable" />
+				<attribute name="Selection" value="-1" />
 				<element internal="true" style="none">
 					<element type="Text" internal="true" style="none">
 						<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
@@ -2332,17 +2326,7 @@
 				<element popup="true" type="Window" internal="true" style="none">
 					<element type="ListView" internal="true" style="none">
 						<element type="BorderImage" internal="true" style="none">
-							<element internal="true" style="none">
-								<element type="Text" style="ConsoleText">
-									<attribute name="Top Left Color" value="0.85 0.85 0.85 1" />
-									<attribute name="Top Right Color" value="0.85 0.85 0.85 1" />
-									<attribute name="Bottom Left Color" value="0.85 0.85 0.85 1" />
-									<attribute name="Bottom Right Color" value="0.85 0.85 0.85 1" />
-									<attribute name="Is Enabled" value="true" />
-									<attribute name="Is Selected" value="true" />
-									<attribute name="Text" value="FileSystem" />
-								</element>
-							</element>
+							<element internal="true" style="none" />
 						</element>
 					</element>
 				</element>
