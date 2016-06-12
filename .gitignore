@@ -4,7 +4,7 @@
 *.log
 *.obj
 *.dll
-*.pch
+*.ipch
 *.exe
 *.sdf
 *.cache
