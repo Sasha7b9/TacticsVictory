@@ -38,7 +38,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         gConsole->Toggle(); 
     }
-    else if(key == Urho3D::KEY_ESC)
+    else if(key == Urho3D::KEY_ESCAPE)
     {
         if (gEngineConsole->IsVisible())            // Engine console is opened
         {

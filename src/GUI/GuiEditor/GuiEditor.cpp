@@ -306,7 +306,7 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
 
     if (gFileSelector->GetWindow()->IsVisible())
     {
-        if (key == Urho3D::KEY_ESC)
+        if (key == Urho3D::KEY_ESCAPE)
         {
             UnsubscribeFromEvent(gFileSelector, Urho3D::E_FILESELECTED);
             gFileSelector->GetWindow()->SetVisible(false);
@@ -315,7 +315,7 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
         return;
     }
 
-    if (key == Urho3D::KEY_ESC)
+    if (key == Urho3D::KEY_ESCAPE)
     {
         if(!gOpenedWindow.Empty())
         {

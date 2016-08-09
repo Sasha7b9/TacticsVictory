@@ -58,9 +58,9 @@ void TacticsVictory::Stop()
     SAFE_DELETE(gFileSelector);
     SAFE_DELETE(gLevel);
     SAFE_DELETE(gGUI);
-    File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
-    URHO3D_LOGINFO("Now save ui");
-    gUIRoot->SaveXML(file);
+    //File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
+    //URHO3D_LOGINFO("Now save ui");
+    //gUIRoot->SaveXML(file);
     URHO3D_LOGINFO("gSet->Save");
     gSet->Save();
     SAFE_DELETE(gSet);
