@@ -4,13 +4,13 @@
 		<width>1600</width>
 		<height>1000</height>
 	</screen>
-	<brightness>50</brightness>
+	<brightness>42</brightness>
 	<volume>19</volume>
 	<max_occluder_triangles>5000</max_occluder_triangles>
-	<language>1</language>
+	<language>0</language>
 	<texture>
 		<quality>2</quality>
-		<anisotropy>5</anisotropy>
+		<anisotropy>0</anisotropy>
 	</texture>
 	<material>
 		<quality>0</quality>

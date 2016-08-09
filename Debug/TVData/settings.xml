@@ -5,22 +5,22 @@
 		<height>1000</height>
 	</screen>
 	<brightness>50</brightness>
-	<volume>19</volume>
+	<volume>44</volume>
 	<max_occluder_triangles>5000</max_occluder_triangles>
-	<language>1</language>
+	<language>0</language>
 	<texture>
 		<quality>2</quality>
-		<anisotropy>5</anisotropy>
+		<anisotropy>1</anisotropy>
 	</texture>
 	<material>
 		<quality>0</quality>
 	</material>
 	<shadow>
 		<draw>1</draw>
-		<map_size>8</map_size>
+		<map_size>5</map_size>
 	</shadow>
 	<lighting>
-		<specular>1</specular>
+		<specular>0</specular>
 	</lighting>
 	<panel>
 		<speed>1000</speed>
