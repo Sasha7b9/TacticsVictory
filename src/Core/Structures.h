@@ -4,8 +4,6 @@
 #include "Game/Objects/Terrain/Terrain.h"
 
 
-#pragma warning(push)
-#pragma warning(disable:4520)
 struct Coord
 {
     Coord(uint row_ = 0U, uint col_ = 0U) : row(row_), col(col_)
@@ -36,4 +34,3 @@ struct Coord
         return retValue;
     }
 };
-#pragma warning(pop)

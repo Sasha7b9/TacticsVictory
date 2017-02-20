@@ -9,6 +9,7 @@ Vector<Vector<ParticleEmitter*>> Particles::particles;
 
 void Particles::Init()
 {
+    return;
     for (uint i = 0; i < NumParticles; i++)
     {
         particles.Push(Vector<ParticleEmitter*>());
@@ -18,6 +19,7 @@ void Particles::Init()
     node->SetScale(5.0f);
     ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
     emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
+    /*
     XMLFile xmlParticle = XMLFile(gContext);
     SharedPtr<File> file(gCache->GetFile("Particle/SnowExplosion.xml"));
     if (file)
@@ -31,10 +33,12 @@ void Particles::Init()
         Vector<ParticleEmitter*> &emitters = particles.At(Particle_Explosion);
         emitters.Push(emitter);
     }
+    */
 }
 
 void Particles::Emitting(TypeParticles type, const Vector3 position)
 {
+    return;
     ParticleEmitter* emitter = nullptr;
     
     Vector<ParticleEmitter*> &emitters = particles.At(type);

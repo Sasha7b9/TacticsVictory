@@ -255,14 +255,13 @@ void Rocket::CreateSmoke()
         else
         {
         */
-            XMLFile xmlParticle = XMLFile(gContext);
-            SharedPtr<File> file(gCache->GetFile("Particle/SnowExplosion.xml"));
+            XMLFile *file = gCache->GetResource<XMLFile>("Particle/SnowExplosion.xml");
+
             if (file)
             {
-                bool res = xmlParticle.Load(*file);
                 pe = new ParticleEffect(gContext);
-                XMLElement root = xmlParticle.GetRoot("particleemitter");
-                res = pe->Load(root);
+                XMLElement root = file->GetRoot().GetChild("particleemitter");
+                pe->Load(root);
             }
         //}
         
