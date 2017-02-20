@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>TacticsVictory</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\out\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Debug\</IntDir>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Urho3D\build\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">01_HelloWorld.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">01_HelloWorld</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Urho3D\build\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">01_HelloWorld.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">01_HelloWorld</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Urho3D\build\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">01_HelloWorld.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">01_HelloWorld</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>src\;$(IncludePath)</IncludePath>
+    <TargetName>TacticsVictory</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Urho3D-dbg\build\include;C:\Urho3D-dbg\build\include\Urho3D\ThirdParty;C:\Urho3D-dbg\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D-dbg\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D-dbg\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_THREADING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DisableSpecificWarnings>4514;4820;4710;4640;4625;4458;5026;4456</DisableSpecificWarnings>
+      <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D/build/bin
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalOptions>/STACK:20000000000 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d11.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;c:\Urho3D-dbg\build\lib\Urho3D_d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SECURE_SCL=0;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SECURE_SCL=0;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D/build/bin
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\..\lib\Urho3D.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;ws2_32.lib;winmm.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ImportLibrary>C:/Urho3D/build/Source/Samples/01_HelloWorld/Release/01_HelloWorld.lib</ImportLibrary>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDataBaseFile>C:/Urho3D/build/bin/01_HelloWorld.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D/build/bin
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\..\lib\Urho3D.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;ws2_32.lib;winmm.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ImportLibrary>C:/Urho3D/build/Source/Samples/01_HelloWorld/MinSizeRel/01_HelloWorld.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Urho3D/build/bin/MinSizeRel/01_HelloWorld.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SECURE_SCL=0;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SECURE_SCL=0;URHO3D_SSE;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;URHO3D_DATABASE;URHO3D_DATABASE_SQLITE;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Urho3D\build\include;C:\Urho3D\build\include\Urho3D\ThirdParty;C:\Urho3D\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D/build/bin
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\..\lib\Urho3D.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;ws2_32.lib;winmm.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>C:/Urho3D/build/Source/Samples/01_HelloWorld/RelWithDebInfo/01_HelloWorld.lib</ImportLibrary>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDataBaseFile>C:/Urho3D/build/bin/01_HelloWorld.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:/Urho3D/build/Source/Urho3D/Urho3D.vcxproj">
+      <Project>C0286ED6-8382-4715-9262-7CD430D11813</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Urho3D/build/ZERO_CHECK.vcxproj">
+      <Project>6243EBAD-EC04-47C0-8412-39CDA66078C7</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Core\Camera.cpp" />
+    <ClCompile Include="src\Core\Log.cpp" />
+    <ClCompile Include="src\Core\Math.cpp" />
+    <ClCompile Include="src\Core\Structures.cpp" />
+    <ClCompile Include="src\Editor\Editor.cpp" />
+    <ClCompile Include="src\Game\Level.cpp" />
+    <ClCompile Include="src\Game\Logic\Movinator.cpp" />
+    <ClCompile Include="src\Game\Logic\Rotator.cpp" />
+    <ClCompile Include="src\Game\Objects\Ammo\AirBomb\AirBomb.cpp" />
+    <ClCompile Include="src\Game\Objects\Ammo\AmmoObject.cpp" />
+    <ClCompile Include="src\Game\Objects\Ammo\Grenade\Grenade.cpp" />
+    <ClCompile Include="src\Game\Objects\Ammo\Mine\Mine.cpp" />
+    <ClCompile Include="src\Game\Objects\Ammo\Rocket\Rocket.cpp" />
+    <ClCompile Include="src\Game\Objects\Ammo\RollingBomb\RollingBomb.cpp" />
+    <ClCompile Include="src\Game\Objects\Buildings\BuildingObject.cpp" />
+    <ClCompile Include="src\Game\Objects\Buildings\CivilPlant\CivilPlant.cpp" />
+    <ClCompile Include="src\Game\Objects\Buildings\MilitaryPlant\MilitaryPlant.cpp" />
+    <ClCompile Include="src\Game\Objects\Buildings\PowerPlant\PowerPlant.cpp" />
+    <ClCompile Include="src\Game\Objects\Buildings\ProcessingPlant\ProcessingPlant.cpp" />
+    <ClCompile Include="src\Game\Objects\Buildings\Shaft\Shaft.cpp" />
+    <ClCompile Include="src\Game\Objects\Buildings\WarehouseAmmo\WarehouseAmmo.cpp" />
+    <ClCompile Include="src\Game\Objects\GameObject.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\CornerCube.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\CubeTerrain.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\EdgeCube.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\Terrain.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\LayerTerrain.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\PlaneCube.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\SegmentTerrain.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\SideCube.cpp" />
+    <ClCompile Include="src\Game\Objects\Terrain\_Terrain_.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Terrain\_TerrainSegment_.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Game\Objects\Units\Airplane\Airplane.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\Bomber\Bomber.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\Builder\Builder.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\Helicopter\Helicopter.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\Robot\Robot.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\SupplierAmmo\SupplierAmmo.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\Tank\Tank.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\Tank\Translator.cpp" />
+    <ClCompile Include="src\Game\Objects\Units\UnitObject.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapons\GrenadeLauncher\GrenadeLauncher.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapons\Gun\Gun.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapons\Laser\Laser.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapons\MachineGun\MachineGun.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapons\RocketLauncher\RocketLauncher.cpp" />
+    <ClCompile Include="src\Game\Objects\Weapons\WeaponObject.cpp" />
+    <ClCompile Include="src\Game\Particles.cpp" />
+    <ClCompile Include="src\Game\Path\PathIndicator.cpp" />
+    <ClCompile Include="src\Game\Path\TilePath.cpp" />
+    <ClCompile Include="src\Game\Path\WaveAlgorithm.cpp" />
+    <ClCompile Include="src\Game\Scene.cpp" />
+    <ClCompile Include="src\Game\Sounds.cpp" />
+    <ClCompile Include="src\GlobalFunctions.cpp" />
+    <ClCompile Include="src\GlobalVars.cpp" />
+    <ClCompile Include="src\Graphics\Objects\Line.cpp" />
+    <ClCompile Include="src\Graphics\Objects\Plane.cpp" />
+    <ClCompile Include="src\Graphics\Objects\Triangle.cpp" />
+    <ClCompile Include="src\GUI\Elements\ButtonMain.cpp" />
+    <ClCompile Include="src\GUI\Elements\ButtonToggled.cpp" />
+    <ClCompile Include="src\GUI\Elements\Cursor.cpp" />
+    <ClCompile Include="src\GUI\Elements\CursorShapes.cpp" />
+    <ClCompile Include="src\GUI\Elements\DropDownListWithTextAndButton.cpp" />
+    <ClCompile Include="src\GUI\Elements\GovernorFloat.cpp" />
+    <ClCompile Include="src\GUI\Elements\Hint.cpp" />
+    <ClCompile Include="src\GUI\Elements\Image.cpp" />
+    <ClCompile Include="src\GUI\Elements\Label.cpp" />
+    <ClCompile Include="src\GUI\Elements\Slider.cpp" />
+    <ClCompile Include="src\GUI\Elements\SliderInt.cpp" />
+    <ClCompile Include="src\GUI\Elements\SliderWithTextAndButtons.cpp" />
+    <ClCompile Include="src\GUI\Elements\ButtonSwitch.cpp" />
+    <ClCompile Include="src\GUI\Elements\Tab.cpp" />
+    <ClCompile Include="src\GUI\Elements\Window.cpp" />
+    <ClCompile Include="src\GUI\GUI.cpp" />
+    <ClCompile Include="src\GUI\GuiEditor\GuiEditor.cpp" />
+    <ClCompile Include="src\GUI\GuiGame\ContextMenuUnit.cpp" />
+    <ClCompile Include="src\GUI\GuiGame\GuiGame.cpp" />
+    <ClCompile Include="src\GUI\GuiGame\WindowTarget.cpp" />
+    <ClCompile Include="src\GUI\Logic\LineTranslator1D.cpp" />
+    <ClCompile Include="src\GUI\Logic\LineTranslator2D.cpp" />
+    <ClCompile Include="src\GUI\Menu\Console.cpp" />
+    <ClCompile Include="src\GUI\Menu\ConsoleParser.cpp" />
+    <ClCompile Include="src\GUI\Menu\WindowConfirmExit.cpp" />
+    <ClCompile Include="src\GUI\Menu\MenuMain.cpp" />
+    <ClCompile Include="src\GUI\Menu\MenuOptions.cpp" />
+    <ClCompile Include="src\GUI\Menu\PanelBottom.cpp" />
+    <ClCompile Include="src\GUI\Menu\PanelMain.cpp" />
+    <ClCompile Include="src\GUI\Menu\PanelMap.cpp" />
+    <ClCompile Include="src\GUI\Menu\WindowVariables.cpp" />
+    <ClCompile Include="src\Settings.cpp" />
+    <ClCompile Include="src\SettingsTypes.cpp" />
+    <ClCompile Include="src\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\TacticsVictory.cpp" />
+    <ClCompile Include="src\TacticsVictoryHandlers.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Core\Camera.h" />
+    <ClInclude Include="src\Core\Log.h" />
+    <ClInclude Include="src\Core\Math.h" />
+    <ClInclude Include="src\Core\Structures.h" />
+    <ClInclude Include="src\defines.h" />
+    <ClInclude Include="src\Editor\Editor.h" />
+    <ClInclude Include="src\Game\Level.h" />
+    <ClInclude Include="src\Game\Logic\Movinator.h" />
+    <ClInclude Include="src\Game\Logic\Rotator.h" />
+    <ClInclude Include="src\Game\Objects\Ammo\AirBomb\AirBomb.h" />
+    <ClInclude Include="src\Game\Objects\Ammo\AmmoObject.h" />
+    <ClInclude Include="src\Game\Objects\Ammo\Grenade\Grenade.h" />
+    <ClInclude Include="src\Game\Objects\Ammo\Mine\Mine.h" />
+    <ClInclude Include="src\Game\Objects\Ammo\Rocket\Rocket.h" />
+    <ClInclude Include="src\Game\Objects\Ammo\RollingBomb\RollingBomb.h" />
+    <ClInclude Include="src\Game\Objects\Buildings\BuildingObject.h" />
+    <ClInclude Include="src\Game\Objects\Buildings\CivilPlant\CivilPlant.h" />
+    <ClInclude Include="src\Game\Objects\Buildings\MilitaryPlant\MilitaryPlant.h" />
+    <ClInclude Include="src\Game\Objects\Buildings\PowerPlant\PowerPlant.h" />
+    <ClInclude Include="src\Game\Objects\Buildings\ProcessingPlant\ProcessinPlant.h" />
+    <ClInclude Include="src\Game\Objects\Buildings\Shaft\Shaft.h" />
+    <ClInclude Include="src\Game\Objects\Buildings\WarehouseAmmo\WarehouseAmmo.h" />
+    <ClInclude Include="src\Game\Objects\GameObject.h" />
+    <ClInclude Include="src\Game\Objects\GameObjectEvents.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\CornerCube.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\CubeTerrain.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\EdgeCube.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\Terrain.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\LayerTerrain.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\PlaneCube.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\SegmentTerrain.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\SideCube.h" />
+    <ClInclude Include="src\Game\Objects\Terrain\_Terrain_.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Terrain\_TerrainSegment_.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Game\Objects\Units\Airplane\Airplane.h" />
+    <ClInclude Include="src\Game\Objects\Units\Bomber\Bomber.h" />
+    <ClInclude Include="src\Game\Objects\Units\Builder\Builder.h" />
+    <ClInclude Include="src\Game\Objects\Units\Helicopter\Helicopter.h" />
+    <ClInclude Include="src\Game\Objects\Units\Robot\Robot.h" />
+    <ClInclude Include="src\Game\Objects\Units\SupplierAmmo\SupplierAmmo.h" />
+    <ClInclude Include="src\Game\Objects\Units\Tank\Tank.h" />
+    <ClInclude Include="src\Game\Objects\Units\Tank\Translator.h" />
+    <ClInclude Include="src\Game\Objects\Units\UnitObject.h" />
+    <ClInclude Include="src\Game\Objects\Weapons\GrenadeLauncher\GrenadeLauncher.h" />
+    <ClInclude Include="src\Game\Objects\Weapons\Gun\Gun.h" />
+    <ClInclude Include="src\Game\Objects\Weapons\Laser\Laser.h" />
+    <ClInclude Include="src\Game\Objects\Weapons\MachineGun\MachineGun.h" />
+    <ClInclude Include="src\Game\Objects\Weapons\RocketLauncher\RocketLauncher.h" />
+    <ClInclude Include="src\Game\Objects\Weapons\WeaponObject.h" />
+    <ClInclude Include="src\Game\Particles.h" />
+    <ClInclude Include="src\Game\Path\PathIndicator.h" />
+    <ClInclude Include="src\Game\Path\TilePath.h" />
+    <ClInclude Include="src\Game\Path\WaveAlgorithm.h" />
+    <ClInclude Include="src\Game\Scene.h" />
+    <ClInclude Include="src\Game\Sounds.h" />
+    <ClInclude Include="src\GlobalFunctions.h" />
+    <ClInclude Include="src\GlobalVars.h" />
+    <ClInclude Include="src\Graphics\Objects\Line.h" />
+    <ClInclude Include="src\Graphics\Objects\Plane.h" />
+    <ClInclude Include="src\Graphics\Objects\Triangle.h" />
+    <ClInclude Include="src\GUI\Elements\ButtonMain.h" />
+    <ClInclude Include="src\GUI\Elements\ButtonToggled.h" />
+    <ClInclude Include="src\GUI\Elements\Cursor.h" />
+    <ClInclude Include="src\GUI\Elements\CursorShapes.h" />
+    <ClInclude Include="src\GUI\Elements\DropDownListWithTextAndButton.h" />
+    <ClInclude Include="src\GUI\Elements\GovernorFloat.h" />
+    <ClInclude Include="src\GUI\Elements\Hint.h" />
+    <ClInclude Include="src\GUI\Elements\Image.h" />
+    <ClInclude Include="src\GUI\Elements\Label.h" />
+    <ClInclude Include="src\GUI\Elements\Slider.h" />
+    <ClInclude Include="src\GUI\Elements\SliderInt.h" />
+    <ClInclude Include="src\GUI\Elements\SliderWithTextAndButtons.h" />
+    <ClInclude Include="src\GUI\Elements\ButtonSwitch.h" />
+    <ClInclude Include="src\GUI\Elements\Tab.h" />
+    <ClInclude Include="src\GUI\Elements\Window.h" />
+    <ClInclude Include="src\GUI\GUI.h" />
+    <ClInclude Include="src\GUI\GuiEditor\GuiEditor.h" />
+    <ClInclude Include="src\GUI\GuiGame\ContextMenuUnit.h" />
+    <ClInclude Include="src\GUI\GuiGame\GuiGame.h" />
+    <ClInclude Include="src\GUI\GuiGame\WindowTarget.h" />
+    <ClInclude Include="src\GUI\Logic\LineTranslator1D.h" />
+    <ClInclude Include="src\GUI\Logic\LineTranslator2D.h" />
+    <ClInclude Include="src\GUI\Menu\Console.h" />
+    <ClInclude Include="src\GUI\Menu\ConsoleParser.h" />
+    <ClInclude Include="src\GUI\Menu\WindowConfirmExit.h" />
+    <ClInclude Include="src\GUI\Menu\MenuEvents.h" />
+    <ClInclude Include="src\GUI\Menu\MenuMain.h" />
+    <ClInclude Include="src\GUI\Menu\MenuOptions.h" />
+    <ClInclude Include="src\GUI\Menu\PanelBottom.h" />
+    <ClInclude Include="src\GUI\Menu\PanelMain.h" />
+    <ClInclude Include="src\GUI\Menu\PanelMap.h" />
+    <ClInclude Include="src\GUI\Menu\WindowVariables.h" />
+    <ClInclude Include="src\Settings.h" />
+    <ClInclude Include="src\SettingsTypes.h" />
+    <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\TacticsVictory.h" />
+    <ClInclude Include="src\TacticsVictoryHandlers.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\doc\Objects.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>
