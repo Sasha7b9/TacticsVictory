@@ -56,11 +56,25 @@ String GetNameFile(char *name)
             {
                 break;
             }
+            fullName = "";
         }
     }
-    else
-    {
 
+    if(fullName.Empty())
+    {
+        fullName = RESOURCES_DIR + String(name);
+        if(!gFileSystem->FileExists(fullName))
+        {
+            fullName = "../out/" + fullName;
+            if(!gFileSystem->FileExists(fullName))
+            {
+                fullName = "../" + fullName;
+                if(!gFileSystem->FileExists(fullName))
+                {
+                    fullName = "";
+                }
+            }
+        }
     }
 
     return fullName;
