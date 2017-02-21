@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "Game/Objects/Ammo/AmmoObject.h"
 
 

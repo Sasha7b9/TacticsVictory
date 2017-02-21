@@ -1,21 +1,22 @@
 #include <stdafx.h>
-
-
 #include "SegmentTerrain.h"
 #include "Terrain.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 SegmentTerrain::SegmentTerrain(Context *context) :
     Object(context)
 {
     neighbours[LEFT] = neighbours[TOP] = neighbours[RIGHT] = neighbours[BOTTOM] = nullptr;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SegmentTerrain::~SegmentTerrain()
 {
     URHO3D_LOGINFO("~SegmentTerrain");
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SegmentTerrain::CreateFromVector(Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols)
 {
     float min = 1e10f;
@@ -70,6 +71,7 @@ void SegmentTerrain::CreateFromVector(Vector<Vector<float>> &level, uint row0, u
     CreateLayers();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SegmentTerrain::AddCube(SharedPtr<CubeTerrain> &cube)
 {
     if(cube->underGround)
@@ -83,6 +85,7 @@ void SegmentTerrain::AddCube(SharedPtr<CubeTerrain> &cube)
     TerrainRTS::columnsCubes[cube->row][cube->col].Push(cube);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SegmentTerrain::CreateLayers()
 {
     for(auto & layer : ground)
@@ -95,6 +98,7 @@ void SegmentTerrain::CreateLayers()
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SegmentTerrain::Build()
 {
     for(auto &layer : ground)
@@ -107,6 +111,7 @@ void SegmentTerrain::Build()
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SegmentTerrain::GetColumnCubes(uint row, uint col, PODVector<CubeTerrain*> &column)
 {
     for(int i = (int)ground.Size() - 1; i >= 0; i--)

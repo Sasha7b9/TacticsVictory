@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "SegmentTerrain.h"
 #include "Graphics/Objects/Plane.h"
 #include "Graphics/Objects/Line.h"

@@ -59,7 +59,7 @@
     "Clear":                { "en":"Clear",             "ru":"Очистить" },
     "Brush X":              { "en":"Brush X",           "ru":"Кисть X" },
     "Brush Y":              { "en":"Brush Y",           "ru":"Кисть Y" },
-    "Plane":                { "en":"Plane",             "ru":"Плоскость" },
+    "PlaneRTS":             { "en":"Plane",             "ru":"Плоскость" },
     "Edge":                 { "en":"Edge",              "ru":"Ребро" },
     "Mode select":          { "en":"Mode select",       "ru":"Режим выбора" },
     "Undo":                 { "en":"Undo",              "ru":"Отменить" },

@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "SideCube.h"
 #include "CornerCube.h"
 #include "EdgeCube.h"
