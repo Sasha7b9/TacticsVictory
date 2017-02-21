@@ -69,23 +69,23 @@ void PanelMap::Update(float dT)
         int prevY = 0;
         int posX = 0;
 
-        uint x0 = 0, y0 = 0;
+        uint X0 = 0, Y0 = 0;
 
         if(sizeX < sizeMap)
         {
-            x0 = (sizeMap - sizeX) / 2;
+            X0 = (sizeMap - sizeX) / 2;
         }
         if(sizeY < sizeMap)
         {
-            y0 = (sizeMap - sizeY) / 2;
+            Y0 = (sizeMap - sizeY) / 2;
         }
 
         for(uint x = 0; x < sizeX; x++)
         {
             for(uint y = 0; y < sizeY; y++)
             {
-                posX = (int)(x0 + x);
-                int posY = (int)(y0 + y);
+                posX = (int)(X0 + x);
+                int posY = (int)(Y0 + y);
                 float color = GetMapHeight(x, y) * scaleColor;
                 Color col = {stand + color, stand + color, stand + color};
 

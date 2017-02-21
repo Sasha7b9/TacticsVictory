@@ -15,10 +15,10 @@ WaveAlgorithm::~WaveAlgorithm()
     Stop();
 }
 
-void WaveAlgorithm::SetSize(uint numRows, uint numCols)
+void WaveAlgorithm::SetSize(uint rows, uint cols)
 {
-    this->numRows = numRows;
-    this->numCols = numCols;
+    numRows = rows;
+    numCols = cols;
 
     cells.Resize(numRows);
     for (auto &row : cells)
@@ -173,9 +173,9 @@ void WaveAlgorithm::SetCell(Wave &wave, uint row, uint col, int numWave)
     cells[row][col] = numWave;
 }
 
-void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path)
+void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path_)
 {
-    Coord coord = path[0];
+    Coord coord = path_[0];
     uint row = coord.row;
     uint col = coord.col;
     int numWave = cells[row][col];
@@ -190,7 +190,7 @@ void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path)
 
         if (newRow < gTerrain->NumRows() && newCol < gTerrain->NumCols() && cells[newRow][newCol] == numWave - 1)
         {
-            path.Insert(0, Coord(newRow, newCol));
+            path_.Insert(0, Coord(newRow, newCol));
             return;
         }
     }

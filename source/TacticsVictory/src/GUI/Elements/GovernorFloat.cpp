@@ -109,7 +109,7 @@ void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
     }
 }
 
-void GovernorCell::ChangeValue(int delta)
+void GovernorCell::ChangeValue(int d)
 {
     if(type == CellType_Sign)
     {
@@ -117,7 +117,7 @@ void GovernorCell::ChangeValue(int delta)
     }
     else if(type == CellType_Digit)
     {
-        if(delta > 0)
+        if(d > 0)
         {
             if(symbol == '9')
             {

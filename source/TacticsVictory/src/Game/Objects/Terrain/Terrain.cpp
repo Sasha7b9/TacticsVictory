@@ -26,11 +26,11 @@ TerrainRTS::~TerrainRTS()
     }
 }
 
-void TerrainRTS::CreateFromVector(Vector<Vector<float>> &level)
+void TerrainRTS::CreateFromVector(Vector<Vector<float>> &lev)
 {
     float time = gTime->GetElapsedTime();
 
-    this->level = level;
+    level = lev;
 
     CubeTerrain::terrain = this;
 

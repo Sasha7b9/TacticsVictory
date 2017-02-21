@@ -41,11 +41,11 @@ void UnitObject::HandlePostRenderUpdate(StringHash, VariantMap&)
     SendEvent(E_SETTEXTURE, eventData);
 }
 
-void UnitObject::SetSelected(bool selected)
+void UnitObject::SetSelected(bool sel)
 {
-    GameObject::SetSelected(selected);
+    GameObject::SetSelected(sel);
 
-    if(selected && viewTargetView)
+    if(sel && viewTargetView)
     {
         renderSurface->SetUpdateMode(SURFACE_UPDATEALWAYS);
         SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(UnitObject, HandlePostRenderUpdate));

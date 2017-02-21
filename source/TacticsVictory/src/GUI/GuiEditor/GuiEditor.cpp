@@ -189,14 +189,14 @@ void GuiEditor::HandleButtonRelease(StringHash, VariantMap &eventData)
     }
 }
 
-bool GuiEditor::IntersectionX(ButtonRTS *button, int x)
+bool GuiEditor::IntersectionX(ButtonRTS *button, int x_)
 {
-    return x >= button->GetPosition().x_ && x <= button->GetPosition().x_ + button->GetWidth();
+    return x_ >= button->GetPosition().x_ && x_ <= button->GetPosition().x_ + button->GetWidth();
 }
 
-bool GuiEditor::CheckOnDeadZoneForCursorBottomScreen(int x)
+bool GuiEditor::CheckOnDeadZoneForCursorBottomScreen(int x_)
 {
-    return IntersectionX(buttonInterface, x) || IntersectionX(buttonMenu, x);
+    return IntersectionX(buttonInterface, x_) || IntersectionX(buttonMenu, x_);
 }
 
 bool GuiEditor::IsInside(IntVector2 &position)

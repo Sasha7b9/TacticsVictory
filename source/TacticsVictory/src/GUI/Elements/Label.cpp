@@ -46,9 +46,9 @@ SharedPtr<Label> Label::Create(char *text_, int sizeFont, int width /* = -1 */, 
     return text;
 }
 
-void Label::SetText(char *text_)
+void Label::SetText(char *t)
 {
-    text = text_;
+    text = t;
 
     Text::SetText(gLocalization->Get(text));
 }

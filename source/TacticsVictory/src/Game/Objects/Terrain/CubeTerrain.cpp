@@ -287,10 +287,10 @@ void CubeTerrain::BuildPlaneVerexes(PlaneCube &plane)
     indexes->Push(index + 3);
 }
 
-void CubeTerrain::BuildVertexes(PODVector<float> &vertexes, PODVector<uint> &indexes)
+void CubeTerrain::BuildVertexes(PODVector<float> &v, PODVector<uint> &i)
 {
-    this->vertexes = &vertexes;
-    this->indexes = &indexes;
+    vertexes = &v;
+    indexes = &i;
 
     if (edges[E_TOP])
     {

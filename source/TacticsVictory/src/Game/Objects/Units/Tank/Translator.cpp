@@ -20,17 +20,17 @@ Translator::Translator()
     angles["0,-1"] = 270.0f;
 }
 
-void Translator::Init(Tank* tank)
+void Translator::Init(Tank* tank_)
 {
-    this->tank = tank;
+    tank = tank_;
 }
 
 
-void Translator::SetPath(PODVector<Coord> &path, float speed)
+void Translator::SetPath(PODVector<Coord> &path_, float speed_)
 {
-    this->path = path;
+    path = path_;
 
-    absSpeed = speed;
+    absSpeed = speed_;
 
     if(this->path.Size() > 1)
     {
@@ -96,9 +96,9 @@ Vector3 Translator::Update(float dT)
     return currentPos;
 }
 
-void Translator::SetStep(Coord &start, Coord &end)
+void Translator::SetStep(Coord &start, Coord &end_)
 {
-    this->end = end.ToVector3();
+    end = end_.ToVector3();
 
     currentPos = start.ToVector3();
 
@@ -106,7 +106,7 @@ void Translator::SetStep(Coord &start, Coord &end)
 
     speed = (this->end - currentPos) / distance * absSpeed;
 
-    String hash = String((int)end.row - (int)start.row) + String(",") + String((int)end.col - (int)start.col);
+    String hash = String((int)end_.row - (int)start.row) + String(",") + String((int)end_.col - (int)start.col);
 
 
     float angleNeed = angles[hash].GetFloat();
@@ -124,13 +124,13 @@ void Translator::SetStep(Coord &start, Coord &end)
 
 void Translator::StartRotation(float angleNeed)
 {
-    float currentAngle = tank->GetRotation();
+    float curAngle = tank->GetRotation();
 
     endAngle = angleNeed;
 
-    if(angleNeed > currentAngle)
+    if(angleNeed > curAngle)
     {
-        float delta = angleNeed - currentAngle;
+        float delta = angleNeed - curAngle;
         if(delta < 180.0f)
         {
             speedRotate = fabs(speedRotate);
@@ -144,7 +144,7 @@ void Translator::StartRotation(float angleNeed)
     }
     else
     {
-        float delta = currentAngle - angleNeed;
+        float delta = curAngle - angleNeed;
         if(delta > 180.0f)
         {
             speedRotate = fabs(speedRotate);

@@ -60,7 +60,7 @@ void Rocket::RegisterObject(Context *context)
     context->RegisterFactory<Rocket>();
 }
 
-void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
+void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position_, Tank *target_)
 {
     state = Begin;
     time = 0.0f;
@@ -74,8 +74,8 @@ void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position, Tank *ta
         CreateSmoke();
     }
 
-    this->target = target;
-    this->position = position;
+    target = target_;
+    position = position_;
     absSpeed = speedShooter.Length() * startSpeedKoeff;
     if(absSpeed < fabs(0.1f))
     {
@@ -444,13 +444,13 @@ void Rocket::VerifyOnIntersectionTerrain()
     {
         for (auto result : results)
         {
-            String name = result.drawable_->GetNode()->GetName();
-            if (name == NODE_TANK)
+            String node = result.drawable_->GetNode()->GetName();
+            if (node == NODE_TANK)
             {
                 attackedUnit = (Tank*)result.drawable_->GetNode()->GetVar("PointerTank").GetPtr();
                 return;
             }
-            else if (name == NODE_TERRAIN)
+            else if (node == NODE_TERRAIN)
             {
                 collisionWithTerrain = true;
                 return;

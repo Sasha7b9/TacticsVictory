@@ -41,7 +41,7 @@ void LayerTerrain::Build()
 
     SharedPtr<VertexBuffer> vb(new VertexBuffer(gContext));
     SharedPtr<IndexBuffer> ib(new IndexBuffer(gContext));
-    SharedPtr<Geometry> geometry(new Geometry(gContext));
+    SharedPtr<Geometry> geom(new Geometry(gContext));
 
     uint numVert = vertexes.Size();
     uint numInd = indexes.Size();
@@ -67,9 +67,9 @@ void LayerTerrain::Build()
     ib->SetSize(numInd, true);
     ib->SetData(bufInd);
 
-    geometry->SetVertexBuffer(0, vb);
-    geometry->SetIndexBuffer(ib);
-    geometry->SetDrawRange(TRIANGLE_LIST, 0, ib->GetIndexCount());
+    geom->SetVertexBuffer(0, vb);
+    geom->SetIndexBuffer(ib);
+    geom->SetDrawRange(TRIANGLE_LIST, 0, ib->GetIndexCount());
 
     model = new Model(gContext);
     Node *node = gScene->CreateChild(NODE_TERRAIN);
@@ -81,7 +81,7 @@ void LayerTerrain::Build()
 
     model->SetNumGeometries(1);
     model->SetNumGeometryLodLevels(0, 1);
-    model->SetGeometry(0, 0, geometry);
+    model->SetGeometry(0, 0, geom);
 
     PODVector<uint> morphRange;
 

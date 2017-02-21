@@ -166,12 +166,10 @@ void CameraRTS::Move(float time)
 void CameraRTS::SetPitch(float newPitch)
 {
     Quaternion rotation = cameraNode->GetRotation();
-    float yaw = rotation.YawAngle();
-    float pitch = rotation.PitchAngle();
+    float yawAngle = rotation.YawAngle();
+    float angleNeed = newPitch - rotation.PitchAngle();
 
-    float angleNeed = newPitch - pitch;
-
-    Quaternion rotateNeed(-angleNeed, {Sin(yaw + 270.0f), 0.0f, Cos(yaw + 270.0f)});
+    Quaternion rotateNeed(-angleNeed, {Sin(yawAngle + 270.0f), 0.0f, Cos(yawAngle + 270.0f)});
     cameraNode->RotateAround(lookAt, rotateNeed, TS_WORLD);
 }
 
@@ -184,31 +182,31 @@ void CameraRTS::MoveOn(Direction direction, float distance)
 
     Quaternion rotation = cameraNode->GetRotation();
 
-    float yaw = rotation.YawAngle();
-    float pitch = rotation.PitchAngle();
+    float yawAngle = rotation.YawAngle();
+    float pitchAngle = rotation.PitchAngle();
 
     if (direction == Direction_RotatePITCH)
     {
-        if (pitch > 88.0f && distance > 0.0f)
+        if (pitchAngle > 88.0f && distance > 0.0f)
         {
 
         }
-        else if (pitch < 1.0f && distance < 0.0f)
+        else if (pitchAngle < 1.0f && distance < 0.0f)
         {
 
         }
-        else if (pitch + distance < 0.0f)
+        else if (pitchAngle + distance < 0.0f)
         {
             SetPitch(0.0f);
         }
-        else if (pitch + distance > 89.0f)
+        else if (pitchAngle + distance > 89.0f)
         {
             SetPitch(89.0f);
         }
         else
         {
             const float delta = 270.0f;
-            Quaternion rotate(-distance, {Sin(yaw + delta), 0.0f, Cos(yaw + delta)});
+            Quaternion rotate(-distance, {Sin(yawAngle + delta), 0.0f, Cos(yawAngle + delta)});
             cameraNode->RotateAround(lookAt, rotate, TS_WORLD);
         }
     }
@@ -222,11 +220,11 @@ void CameraRTS::MoveOn(Direction direction, float distance)
 
     if(direction == Direction_Left || direction == Direction_Right)
     {
-        yaw += 90.0f;
+        yawAngle += 90.0f;
     }
 
-    float sinYaw = Sin(yaw);
-    float cosYaw = Cos(yaw);
+    float sinYaw = Sin(yawAngle);
+    float cosYaw = Cos(yawAngle);
 
     float dX = distance * sinYaw;
     float dZ = distance * cosYaw;
