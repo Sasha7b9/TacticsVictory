@@ -3,7 +3,7 @@
 
 #include "MenuMain.h"
 #include "GUI/GUI.h"
-#include "GUI/Elements/ButtonMain.h"
+#include "GUI/Elements/Button.h"
 #include "GUI/Elements/ButtonSwitch.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
@@ -20,13 +20,13 @@ MenuMain::MenuMain(Context *) :
     SharedPtr<Label> text(Label::Create("Tactics Victory", 20, -1, -1));
     AddChild(text);
     
-    buttonNewGame  = new ButtonMain(this, "New game");
-    buttonEditor = new ButtonMain(this, "Editor");
-    buttonOptions = new ButtonMain(this, "Options");
+    buttonNewGame  = new ButtonRTS(this, "New game");
+    buttonEditor = new ButtonRTS(this, "Editor");
+    buttonOptions = new ButtonRTS(this, "Options");
     buttonLanguage = new ButtonSwitch(this, "Language : EN");
     buttonLanguage->AddState("Language : RU");
     buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
-    buttonExit = new ButtonMain(this, "Exit");
+    buttonExit = new ButtonRTS(this, "Exit");
 
     buttons.Push(buttonNewGame);
     buttons.Push(buttonEditor);

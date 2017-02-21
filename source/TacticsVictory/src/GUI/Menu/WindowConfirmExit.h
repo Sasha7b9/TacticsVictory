@@ -21,6 +21,6 @@ private:
     void OnPressButtonOk();
     void OnPressButtonCancel();
 
-    SharedPtr<ButtonMain> buttonOk;
-    SharedPtr<ButtonMain> buttonCancel;
+    SharedPtr<ButtonRTS> buttonOk;
+    SharedPtr<ButtonRTS> buttonCancel;
 };

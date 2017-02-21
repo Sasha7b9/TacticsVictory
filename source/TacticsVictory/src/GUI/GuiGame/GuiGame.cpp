@@ -2,7 +2,7 @@
 
 
 #include "GuiGame.h"
-#include "GUI/Elements/ButtonMain.h"
+#include "GUI/Elements/Button.h"
 #include "GUI/Elements/Tab.h"
 #include "GUI/Menu/PanelMap.h"
 #include "GUI/Menu/PanelMain.h"
@@ -21,7 +21,7 @@ GuiGame::GuiGame(Context *context) :
 
 void GuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
-    ButtonMain *button = (ButtonMain*)eventData[Released::P_ELEMENT].GetPtr();
+    ButtonRTS *button = (ButtonRTS*)eventData[Released::P_ELEMENT].GetPtr();
 
     if(button == buttonInterface)
     {
@@ -41,7 +41,7 @@ void GuiGame::SetVisible(bool visible)
     panelMain->SetVisible(visible);
 }
 
-bool GuiGame::IntersectionX(ButtonMain *button, int x)
+bool GuiGame::IntersectionX(ButtonRTS *button, int x)
 {
     return x >= button->GetPosition().x_ && x <= button->GetPosition().x_ + button->GetWidth();
 }

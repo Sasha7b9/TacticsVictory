@@ -5,13 +5,13 @@
 
 
 ButtonSwitch::ButtonSwitch(Context *context) :
-    ButtonMain(context)
+    ButtonRTS(context)
 {
 
 }
 
 ButtonSwitch::ButtonSwitch(UIElement *uielement, char *text, int width, int height) :
-    ButtonMain(uielement, text, width, height)
+    ButtonRTS(uielement, text, width, height)
 {
     items.Push(text);
 
@@ -22,7 +22,7 @@ void ButtonSwitch::RegisterObject(Context *context)
 {
     context->RegisterFactory<ButtonSwitch>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(ButtonMain);
+    URHO3D_COPY_BASE_ATTRIBUTES(ButtonRTS);
 }
 
 void ButtonSwitch::AddState(char *item)

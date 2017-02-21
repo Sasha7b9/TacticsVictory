@@ -1,12 +1,12 @@
 #pragma once
 
 
-#include "ButtonMain.h"
+#include "Button.h"
 
 
-class ButtonSwitch : public ButtonMain
+class ButtonSwitch : public ButtonRTS
 {
-    URHO3D_OBJECT(ButtonSwitch, ButtonMain);
+    URHO3D_OBJECT(ButtonSwitch, ButtonRTS);
 
 public:
     ButtonSwitch(Context *context = gContext);

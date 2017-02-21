@@ -4,7 +4,7 @@
 class PanelBottom;
 class PanelMap;
 class PanelMain;
-class ButtonMain;
+class ButtonRTS;
 
 
 class GuiGame : public Object
@@ -22,14 +22,14 @@ private:
     GuiGame& operator=(const GuiGame&)
     {};
 
-    SharedPtr<ButtonMain> buttonInterface;
-    SharedPtr<ButtonMain> buttonMenu;
+    SharedPtr<ButtonRTS> buttonInterface;
+    SharedPtr<ButtonRTS> buttonMenu;
 
     SharedPtr<PanelBottom> panelBottom;
     SharedPtr<PanelMap>    panelMap;
     SharedPtr<PanelMain>   panelMain;
 
-    bool IntersectionX(ButtonMain *button, int x);
+    bool IntersectionX(ButtonRTS *button, int x);
     void ToggleInterfacePanels();
 
     void CreatePanels();

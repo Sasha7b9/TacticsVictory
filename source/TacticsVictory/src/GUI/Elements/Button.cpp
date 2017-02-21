@@ -1,13 +1,13 @@
 #include <stdafx.h>
 
 
-#include "ButtonMain.h"
+#include "Button.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/Elements/Hint.h"
 
 
-ButtonMain::ButtonMain(Context *context) :
+ButtonRTS::ButtonRTS(Context *context) :
     Button(context)
 {
     SetStyle("MainMenuButton");
@@ -16,7 +16,7 @@ ButtonMain::ButtonMain(Context *context) :
     AddChild(label);
 }
 
-ButtonMain::ButtonMain(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
+ButtonRTS::ButtonRTS(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
     Button(gContext)
 {
     SetStyleAuto(gUIRoot->GetDefaultStyle());
@@ -46,38 +46,38 @@ ButtonMain::ButtonMain(UIElement *uielement, char *text, int width /* = -1 */, i
         SetFixedSize(width, height);
     }
 
-    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(ButtonMain, HandleHoverBegin));
-    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(ButtonMain, HandleHoverEnd));
+    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(ButtonRTS, HandleHoverBegin));
+    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(ButtonRTS, HandleHoverEnd));
 }
 
-void ButtonMain::RegisterObject(Context *context)
+void ButtonRTS::RegisterObject(Context *context)
 {
-    context->RegisterFactory<ButtonMain>("UI");
+    context->RegisterFactory<ButtonRTS>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(Button);
 }
 
-void ButtonMain::SetText(char *text)
+void ButtonRTS::SetText(char *text)
 {
     label->SetText(text);
 }
 
-void ButtonMain::SetHint(char *text)
+void ButtonRTS::SetHint(char *text)
 {
     hint = new Hint(text);
 }
 
-void ButtonMain::HandleHoverBegin(StringHash, VariantMap&)
+void ButtonRTS::HandleHoverBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
-void ButtonMain::HandleHoverEnd(StringHash, VariantMap&)
+void ButtonRTS::HandleHoverEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
 }
 
-void ButtonMain::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Cursor* cursor)
+void ButtonRTS::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Cursor* cursor)
 {
     Button::OnClickBegin(position, screenPosition, button, buttons, qualifiers, cursor);
 

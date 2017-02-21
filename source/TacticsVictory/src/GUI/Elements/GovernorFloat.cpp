@@ -2,7 +2,7 @@
 
 
 #include "GovernorFloat.h"
-#include "GUI/Elements/ButtonMain.h"
+#include "GUI/Elements/Button.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
 

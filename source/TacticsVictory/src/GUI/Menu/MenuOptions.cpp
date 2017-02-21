@@ -4,7 +4,7 @@
 #include "MenuOptions.h"
 #include "GUI/GUI.h"
 #include "GUI/Elements/SliderInt.h"
-#include "GUI/Elements/ButtonMain.h"
+#include "GUI/Elements/Button.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/Elements/SliderWithTextAndButtons.h"
@@ -67,7 +67,7 @@ MenuOptions::MenuOptions(Context *context) :
     SharedPtr<UIElement> layout(CreateChild<UIElement>());
     layout->SetAlignment(HA_CENTER, VA_TOP);
 
-    buttonClose = new ButtonMain(0, "Close", 100);
+    buttonClose = new ButtonRTS(0, "Close", 100);
     SubscribeToEvent(buttonClose, E_RELEASED, URHO3D_HANDLER(MenuOptions, HandleButtonRelease));
     layout->AddChild(buttonClose);
     AddChild(layout);

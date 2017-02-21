@@ -2,7 +2,7 @@
 
 
 class WindowRTS;
-class ButtonMain;
+class ButtonRTS;
 class PanelBottom;
 class PanelMap;
 class PanelMain;
@@ -30,10 +30,10 @@ public:
 private:
     GuiEditor& operator=(const GuiEditor&) {};
 
-    SharedPtr<ButtonMain> buttonInterface;
-    SharedPtr<ButtonMain> buttonMenu;
+    SharedPtr<ButtonRTS> buttonInterface;
+    SharedPtr<ButtonRTS> buttonMenu;
 
-    SharedPtr<ButtonMain> btnNewMap;
+    SharedPtr<ButtonRTS> btnNewMap;
 
     SharedPtr<PanelBottom> panelBottom;
     SharedPtr<PanelMap>    panelMap;
@@ -51,7 +51,7 @@ private:
     int y = 10;
     int x = 10;
 
-    bool IntersectionX(ButtonMain *button, int x);
+    bool IntersectionX(ButtonRTS *button, int x);
     void CreateWindows();
     void ToggleInterfacePanels();
 

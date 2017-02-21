@@ -2,7 +2,7 @@
 
 
 #include "WindowConfirmExit.h"
-#include "GUI/Elements/ButtonMain.h"
+#include "GUI/Elements/Button.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/GUI.h"
 #include "GUI/Menu/MenuMain.h"
@@ -19,8 +19,8 @@ WindowConfirmExit::WindowConfirmExit(Context *) :
     SharedPtr<UIElement> layer(CreateChild<UIElement>());
     SET_HORIZONTAL_LAYOUT_6_6(layer);
     
-    buttonOk = new ButtonMain(layer, "Ok");
-    buttonCancel = new ButtonMain(layer, "Cancel");
+    buttonOk = new ButtonRTS(layer, "Ok");
+    buttonCancel = new ButtonRTS(layer, "Cancel");
 
     SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(WindowConfirmExit, HandleButtonRelease));
     SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(WindowConfirmExit, HandleButtonRelease));

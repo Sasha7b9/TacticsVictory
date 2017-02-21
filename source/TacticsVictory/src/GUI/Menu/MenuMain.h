@@ -29,11 +29,12 @@ private:
     void SetFocusedPrev();                              // Установить фокус на предыдущую кнопку
     int NumFocusedButton();                             // Возвращает номер сфокусированной кнопки. Если фокус не установлен, возвращает 0
 
-    PODVector<ButtonMain*> buttons;
+    PODVector<ButtonRTS*> buttons;
 
-    SharedPtr<ButtonMain> buttonNewGame;
-    SharedPtr<ButtonMain> buttonEditor;
-    SharedPtr<ButtonMain> buttonExit;
-    SharedPtr<ButtonMain> buttonOptions;
+    SharedPtr<ButtonRTS> buttonNewGame;
+    SharedPtr<ButtonRTS> buttonEditor;
+    SharedPtr<ButtonRTS> buttonExit;
+    SharedPtr<ButtonRTS> buttonOptions;
     SharedPtr<ButtonSwitch> buttonLanguage;
+    SharedPtr<ButtonRTS> buttonCancel;
 };

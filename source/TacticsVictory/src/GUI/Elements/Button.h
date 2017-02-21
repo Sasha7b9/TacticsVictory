@@ -5,12 +5,12 @@
 #include "Hint.h"
 
 
-class ButtonMain : public Button
+class ButtonRTS : public Button
 {
-    URHO3D_OBJECT(ButtonMain, Button);
+    URHO3D_OBJECT(ButtonRTS, Button);
 public:
-    ButtonMain(Context *context = gContext);
-    ButtonMain(UIElement *uielement, char *text, int widht = -1, int height = -1);
+    ButtonRTS(Context *context = gContext);
+    ButtonRTS(UIElement *uielement, char *text, int widht = -1, int height = -1);
 
     static void RegisterObject(Context *context = gContext);
 
@@ -20,7 +20,7 @@ public:
     virtual void OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Cursor* cursor);
 
 private:
-    ButtonMain& operator=(const ButtonMain&)
+    ButtonRTS& operator=(const ButtonRTS&)
     {};
 
     SharedPtr<Label> label;

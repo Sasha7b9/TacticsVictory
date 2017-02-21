@@ -3,7 +3,7 @@
 
 #include "GUI.h"
 #include "GUI/Elements/Tab.h"
-#include "GUI/Elements/ButtonMain.h"
+#include "GUI/Elements/Button.h"
 #include "GUI/Elements/ButtonSwitch.h"
 #include "GUI/Elements/ButtonToggled.h"
 #include "GUI/Elements/Cursor.h"
@@ -42,7 +42,7 @@ GUI::~GUI()
 
 static void RegstrationObjects()
 {
-    ButtonMain::RegisterObject();
+    ButtonRTS::RegisterObject();
     ButtonSwitch::RegisterObject();
     ButtonToggled::RegisterObject();
     WindowRTS::RegisterObject();

@@ -2,7 +2,7 @@
 
 
 #include "Window.h"
-#include "GUI/Elements/ButtonMain.h"
+#include "GUI/Elements/Button.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/Elements/ButtonToggled.h"
 #include "GUI/Elements/SliderWithTextAndButtons.h"
@@ -48,9 +48,9 @@ bool WindowRTS::UnderCursor()
     return Window::IsInside(gCursor->GetCursor()->GetPosition(), true);
 }
 
-SharedPtr<ButtonMain> WindowRTS::AddButton(char *text, int x, int y, int width, int height)
+SharedPtr<ButtonRTS> WindowRTS::AddButton(char *text, int x, int y, int width, int height)
 {
-    SharedPtr<ButtonMain> retButton(new ButtonMain(this, text, width, height));
+    SharedPtr<ButtonRTS> retButton(new ButtonRTS(this, text, width, height));
     if (x != -1 && y != -1)
     {
         retButton->SetPosition(x, y);
