@@ -21,11 +21,11 @@ enum TypeCursor
 class CursorShapes;
 
 
-class lCursor : public Object
+class CursorRTS : public Object
 {
-    URHO3D_OBJECT(lCursor, Object)
+    URHO3D_OBJECT(CursorRTS, Object)
 public:
-    lCursor();
+    CursorRTS();
 
     SharedPtr<Cursor> GetCursor();
 
@@ -45,7 +45,7 @@ private:
     SharedPtr<Sprite2D> sprite;
     SharedPtr<StaticSprite2D> staticSprite;
 
-    lCursor& operator=(const lCursor&)
+    CursorRTS& operator=(const CursorRTS&)
     {};
 
     bool selected = false;

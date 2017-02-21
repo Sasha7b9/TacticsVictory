@@ -45,7 +45,7 @@ static void RegstrationObjects()
     ButtonMain::RegisterObject();
     ButtonSwitch::RegisterObject();
     ButtonToggled::RegisterObject();
-    lWindow::RegisterObject();
+    WindowRTS::RegisterObject();
     MenuMain::RegisterObject();
     MenuOptions::RegisterObject();
     WindowConfirmExit::RegisterObject();
@@ -121,7 +121,7 @@ void GUI::Create()
     gUIRoot->AddChild(gMenuMain);
     SubscribeToEvent(gMenuMain, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));
 
-    gConsole = new lConsole(gContext);
+    gConsole = new ConsoleRTS(gContext);
     gUIRoot->AddChild(gConsole);
 
     gWindowVars = new WindowVariables(gContext);
@@ -155,7 +155,7 @@ void GUI::Create()
     gWindowConfirmExit->SetVisible(false);
     SubscribeToEvent(gWindowConfirmExit, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));
 
-    gCursor = new lCursor();
+    gCursor = new CursorRTS();
 
     gLocalization->SetLanguage(gSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
 }
@@ -186,7 +186,7 @@ void GUI::SetVisibleMenu(bool visible)
     gMenuOptions->SetVisible(visible);
 }
 
-void GUI::SetVisibleMenu(lWindow *menuWindow, bool visible)
+void GUI::SetVisibleMenu(WindowRTS *menuWindow, bool visible)
 {
     menuWindow->SetVisible(visible);
     if(visible)
@@ -244,14 +244,14 @@ bool GUI::UnderCursor()
     return false;
 }
 
-void GUI::SetVisibleWindow(lWindow *window, bool visible)
+void GUI::SetVisibleWindow(WindowRTS *window, bool visible)
 {
     window->SetVisible(visible);
     if(visible)
     {
         while(!gOpenedWindow.Empty())
         {
-            lWindow *window = gOpenedWindow.Back();
+            WindowRTS *window = gOpenedWindow.Back();
             window->SetVisible(false);
             gOpenedWindow.Remove(window);
         }
@@ -267,7 +267,7 @@ void GUI::SetUnvisibleAllWindows()
 {
     while(!gOpenedWindow.Empty())
     {
-        lWindow *window = gOpenedWindow.Back();
+        WindowRTS *window = gOpenedWindow.Back();
         window->SetVisible(false);
         gOpenedWindow.Remove(window);
     }

@@ -4,9 +4,9 @@
 #include "GUI/Elements/Window.h"
 
 
-class PanelBottom : public lWindow
+class PanelBottom : public WindowRTS
 {
-    URHO3D_OBJECT(PanelBottom, lWindow);
+    URHO3D_OBJECT(PanelBottom, WindowRTS);
 
 public:
     PanelBottom(Context *context = gContext);

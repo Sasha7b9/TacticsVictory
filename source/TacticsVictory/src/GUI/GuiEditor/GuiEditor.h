@@ -1,7 +1,7 @@
 #pragma once
 
 
-class lWindow;
+class WindowRTS;
 class ButtonMain;
 class PanelBottom;
 class PanelMap;
@@ -39,9 +39,9 @@ private:
     SharedPtr<PanelMap>    panelMap;
     SharedPtr<PanelMain>   panelMain;
 
-    SharedPtr<lWindow>      windowNewMap;
-    SharedPtr<lWindow>      windowMenu;
-    SharedPtr<lWindow>      windowConfirmExit;
+    SharedPtr<WindowRTS>      windowNewMap;
+    SharedPtr<WindowRTS>      windowMenu;
+    SharedPtr<WindowRTS>      windowConfirmExit;
     SharedPtr<SliderWithTextAndButtons> sliderSizeNewMapX;
     SharedPtr<SliderWithTextAndButtons> sliderSizeNewMapY;
 

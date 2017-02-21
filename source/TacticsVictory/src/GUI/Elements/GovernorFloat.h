@@ -19,9 +19,9 @@ URHO3D_EVENT(E_GOVERNORCELLCHANGED, GovernorCellChanged)
 }
 
 
-class GovernorCell : public lWindow
+class GovernorCell : public WindowRTS
 {
-    URHO3D_OBJECT(GovernorCell, lWindow);
+    URHO3D_OBJECT(GovernorCell, WindowRTS);
 
 public:
     GovernorCell(Context *context = gContext);
@@ -58,9 +58,9 @@ private:
 };
 
 
-class GovernorFloat : public lWindow
+class GovernorFloat : public WindowRTS
 {
-    URHO3D_OBJECT(GovernorFloat, lWindow);
+    URHO3D_OBJECT(GovernorFloat, WindowRTS);
 
 public:
     GovernorFloat(Context *context = gContext);

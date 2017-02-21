@@ -10,7 +10,7 @@
 #include "GUI/Elements/Cursor.h"
 
 
-lWindow::lWindow(Context *context) :
+WindowRTS::WindowRTS(Context *context) :
     Window(context)
 {
     SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
@@ -18,19 +18,19 @@ lWindow::lWindow(Context *context) :
     SetMovable(true);
 }
 
-void lWindow::RegisterObject(Context *context)
+void WindowRTS::RegisterObject(Context *context)
 {
-    context->RegisterFactory<lWindow>("UI");
+    context->RegisterFactory<WindowRTS>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(Window);
 }
 
-bool lWindow::IsChildOfParent()
+bool WindowRTS::IsChildOfParent()
 {
     return gUIRoot->FindChild(this) != M_MAX_UNSIGNED;
 }
 
-void lWindow::Toggle()
+void WindowRTS::Toggle()
 {
     if(translator)
     {
@@ -38,17 +38,17 @@ void lWindow::Toggle()
     }
 }
 
-SharedPtr<LineTranslator2D> lWindow::GetTranslator()
+SharedPtr<LineTranslator2D> WindowRTS::GetTranslator()
 {
     return translator;
 }
 
-bool lWindow::UnderCursor()
+bool WindowRTS::UnderCursor()
 {
     return Window::IsInside(gCursor->GetCursor()->GetPosition(), true);
 }
 
-SharedPtr<ButtonMain> lWindow::AddButton(char *text, int x, int y, int width, int height)
+SharedPtr<ButtonMain> WindowRTS::AddButton(char *text, int x, int y, int width, int height)
 {
     SharedPtr<ButtonMain> retButton(new ButtonMain(this, text, width, height));
     if (x != -1 && y != -1)
@@ -59,7 +59,7 @@ SharedPtr<ButtonMain> lWindow::AddButton(char *text, int x, int y, int width, in
     return retButton;
 }
 
-SharedPtr<ButtonToggled> lWindow::AddButtonToggled(char *text, int x, int y, int width, int height)
+SharedPtr<ButtonToggled> WindowRTS::AddButtonToggled(char *text, int x, int y, int width, int height)
 {
     SharedPtr<ButtonToggled> retButton(new ButtonToggled(this, text, width, height));
     retButton->SetPosition(x, y);
@@ -67,7 +67,7 @@ SharedPtr<ButtonToggled> lWindow::AddButtonToggled(char *text, int x, int y, int
     return retButton;
 }
 
-SharedPtr<SliderWithTextAndButtons> lWindow::AddSlider(char *text, int min, int max, int step, int x, int y, int widthText, int widthRoller)
+SharedPtr<SliderWithTextAndButtons> WindowRTS::AddSlider(char *text, int min, int max, int step, int x, int y, int widthText, int widthRoller)
 {
     SharedPtr<SliderWithTextAndButtons> slider(new SliderWithTextAndButtons(this, text, min, max, step, widthText, widthRoller));
     AddChild(slider);
@@ -78,7 +78,7 @@ SharedPtr<SliderWithTextAndButtons> lWindow::AddSlider(char *text, int min, int 
     return slider;
 }
 
-SharedPtr<DropDownListWithTextAndButton> lWindow::AddDDList(char *text, int widthText, int widthDDList, int numItems, char *items[], int x, int y)
+SharedPtr<DropDownListWithTextAndButton> WindowRTS::AddDDList(char *text, int widthText, int widthDDList, int numItems, char *items[], int x, int y)
 {
     SharedPtr<DropDownListWithTextAndButton> ddList(DropDownListWithTextAndButton::Create(this, text, widthText, widthDDList, numItems, items));
     if (x != -1 && y != -1)
@@ -88,7 +88,7 @@ SharedPtr<DropDownListWithTextAndButton> lWindow::AddDDList(char *text, int widt
     return ddList;
 }
 
-SharedPtr<Label> lWindow::AddLabel(char *text)
+SharedPtr<Label> WindowRTS::AddLabel(char *text)
 {
     SharedPtr<Label> label(Label::Create(text));
     AddChild(label);

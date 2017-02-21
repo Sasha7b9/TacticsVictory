@@ -1,7 +1,7 @@
 #pragma once
 
 
-class lScene;
+class SceneRTS;
 
 
 class TacticsVictory : public Application
@@ -34,7 +34,7 @@ private:
     void HandleKeyDown(StringHash, VariantMap&);
 
     bool drawDebug = false;
-    lScene *scene = nullptr;
+    SceneRTS *scene = nullptr;
 
     TacticsVictory& operator=(const TacticsVictory&)
     {};

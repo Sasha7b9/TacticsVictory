@@ -11,7 +11,7 @@
 
 
 MenuMain::MenuMain(Context *) :
-    lWindow()
+    WindowRTS()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
@@ -45,7 +45,7 @@ void MenuMain::RegisterObject(Context* context)
 {
     context->RegisterFactory<MenuMain>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
 void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)

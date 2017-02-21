@@ -7,9 +7,9 @@
 class lImage;
 
 
-class PanelMap : public lWindow
+class PanelMap : public WindowRTS
 {
-    URHO3D_OBJECT(PanelMap, lWindow);
+    URHO3D_OBJECT(PanelMap, WindowRTS);
 
 public:
     PanelMap(Context *context = gContext);

@@ -4,7 +4,7 @@
 #include "GUI/Menu/MenuEvents.h"
 
 
-class lWindow;
+class WindowRTS;
 
 
 class GUI : public Object
@@ -19,13 +19,13 @@ public:
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
     bool MenuIsVisible();
     void SetVisibleMenu(bool visible);
-    void SetVisibleMenu(lWindow *menuWindow, bool visible);
+    void SetVisibleMenu(WindowRTS *menuWindow, bool visible);
     // Return true, if cursor over the menu
     bool UnderCursor();
 
     void RemoveFromScreen();
     void AddToScreen();
-    void SetVisibleWindow(lWindow *window, bool visible);
+    void SetVisibleWindow(WindowRTS *window, bool visible);
     void SetUnvisibleAllWindows();
 
 private:

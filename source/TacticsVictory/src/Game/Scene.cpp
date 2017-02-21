@@ -17,7 +17,7 @@
 #include "GUI/GuiGame/WindowTarget.h"
 
 
-lScene::lScene(Context *context) :
+SceneRTS::SceneRTS(Context *context) :
     Object(context)
 {
     RegisterObjects();
@@ -26,28 +26,28 @@ lScene::lScene(Context *context) :
 
     pathIndicator.Init();
 
-    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(lScene, HandleMouseDown));
+    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(SceneRTS, HandleMouseDown));
 }
 
-lScene::~lScene()
+SceneRTS::~SceneRTS()
 {
     SAFE_DELETE(gTerrain);
     pathIndicator.Stop();
 }
 
-void lScene::RegisterObjects()
+void SceneRTS::RegisterObjects()
 {
     Tank::RegisterObject();
     Rocket::RegisterObject();
     MilitaryPlant::RegisterObject();
 }
 
-void lScene::RegisterObject(Context *context)
+void SceneRTS::RegisterObject(Context *context)
 {
-    context->RegisterFactory<lScene>();
+    context->RegisterFactory<SceneRTS>();
 }
 
-void lScene::Create()
+void SceneRTS::Create()
 {
     Sounds::Init();
 
@@ -135,7 +135,7 @@ void lScene::Create()
     militaryPlant->SetCoord(Coord(1, 1));
 }
 
-void lScene::Update(float /*timeStep*/)
+void SceneRTS::Update(float /*timeStep*/)
 {
     Vector3 hitPos;
     Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
@@ -160,7 +160,7 @@ void lScene::Update(float /*timeStep*/)
     pathIndicator.Update();
 }
 
-void lScene::HandleMouseDown(StringHash, VariantMap& eventData)
+void SceneRTS::HandleMouseDown(StringHash, VariantMap& eventData)
 {
     int buttons = (int)eventData[MouseButtonDown::P_BUTTONS].GetInt();
 
@@ -174,7 +174,7 @@ void lScene::HandleMouseDown(StringHash, VariantMap& eventData)
     }
 }
 
-void lScene::ProcessMouseLeft()
+void SceneRTS::ProcessMouseLeft()
 {
     Vector3 hitCoord;
     Drawable *object = gCursor->GetRaycastNode(&hitCoord);
@@ -215,7 +215,7 @@ void lScene::ProcessMouseLeft()
     }
 }
 
-void lScene::ProcessMouseRight()
+void SceneRTS::ProcessMouseRight()
 {
     pathIndicator.Enable(false);
 
@@ -227,7 +227,7 @@ void lScene::ProcessMouseRight()
     }
 }
 
-void lScene::SetSelected(Tank *tank, bool selected)
+void SceneRTS::SetSelected(Tank *tank, bool selected)
 {
     if(selected)
     {
@@ -244,7 +244,7 @@ void lScene::SetSelected(Tank *tank, bool selected)
     tank->SetSelected(selected);
 }
 
-Tank* lScene::GetSelected()
+Tank* SceneRTS::GetSelected()
 {
     const Vector<SharedPtr<Node>> &nodes = gScene->GetChildren();
 

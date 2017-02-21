@@ -7,9 +7,9 @@
 class Tab;
 
 
-class PanelMain : public lWindow
+class PanelMain : public WindowRTS
 {
-    URHO3D_OBJECT(PanelMain, lWindow);
+    URHO3D_OBJECT(PanelMain, WindowRTS);
 
 public:
     PanelMain(Context *context = gContext);

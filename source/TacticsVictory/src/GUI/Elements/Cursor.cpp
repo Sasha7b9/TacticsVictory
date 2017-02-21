@@ -9,7 +9,7 @@
 #include "Game/Objects/Terrain/Terrain.h"
 
 
-lCursor::lCursor() : Object(gContext)
+CursorRTS::CursorRTS() : Object(gContext)
 {
     cursor = new Cursor(gContext);
 
@@ -34,22 +34,22 @@ lCursor::lCursor() : Object(gContext)
     nodeSprite->SetEnabled(true);
 }
 
-void lCursor::Show()
+void CursorRTS::Show()
 {
     hidden = false;
 }
 
-void lCursor::Hide()
+void CursorRTS::Hide()
 {
     hidden = true;
 }
 
-SharedPtr<Cursor> lCursor::GetCursor()
+SharedPtr<Cursor> CursorRTS::GetCursor()
 {
     return cursor;
 }
 
-void lCursor::Update(float dT)
+void CursorRTS::Update(float dT)
 {
     const float speed = 500.0f;
     static float angle0 = 0.0f;
@@ -160,17 +160,17 @@ void lCursor::Update(float dT)
     }
 }
 
-void lCursor::SetNormal()
+void CursorRTS::SetNormal()
 {
     selected = false;
 }
 
-void lCursor::SetSelected()
+void CursorRTS::SetSelected()
 {
     selected = true;
 }
 
-Drawable* lCursor::GetRaycastNode(Vector3 *hitPos_)
+Drawable* CursorRTS::GetRaycastNode(Vector3 *hitPos_)
 {
     if(gUI->GetElementAt(gUI->GetCursorPosition(), true))
     {

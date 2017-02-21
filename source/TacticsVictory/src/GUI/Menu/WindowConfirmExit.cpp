@@ -10,7 +10,7 @@
 
 
 WindowConfirmExit::WindowConfirmExit(Context *) :
-    lWindow()
+    WindowRTS()
 {
     SET_VERTICAL_LAYOUT_0_6(this);
     SharedPtr<Label> label(Label::Create("Exit in OS?"));
@@ -32,7 +32,7 @@ void WindowConfirmExit::RegisterObject(Context *context)
 {
     context->RegisterFactory<WindowConfirmExit>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
 void WindowConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)

@@ -7,9 +7,9 @@
 class GovernorFloat;
 
 
-class WindowVariables : public lWindow
+class WindowVariables : public WindowRTS
 {
-    URHO3D_OBJECT(WindowVariables, lWindow);
+    URHO3D_OBJECT(WindowVariables, WindowRTS);
 
 public:
     WindowVariables(Context *context = gContext);

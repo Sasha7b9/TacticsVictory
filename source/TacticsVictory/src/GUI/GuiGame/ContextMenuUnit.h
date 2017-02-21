@@ -7,9 +7,9 @@
 class GameObject;
 
 
-class ContextMenuUnit : public lWindow
+class ContextMenuUnit : public WindowRTS
 {
-    URHO3D_OBJECT(ContextMenuUnit, lWindow);
+    URHO3D_OBJECT(ContextMenuUnit, WindowRTS);
 
 public:
     ContextMenuUnit(Context *context = gContext);

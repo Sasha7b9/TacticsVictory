@@ -4,9 +4,9 @@
 #include "GUI/Elements/Window.h"
 
 
-class WindowTarget : public lWindow
+class WindowTarget : public WindowRTS
 {
-    URHO3D_OBJECT(WindowTarget, lWindow);
+    URHO3D_OBJECT(WindowTarget, WindowRTS);
 
 public:
     WindowTarget(Context *context = gContext);

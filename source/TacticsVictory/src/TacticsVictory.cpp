@@ -105,7 +105,7 @@ void TacticsVictory::CreateComponents()
 
     gAudio = GetSubsystem<Audio>();
 
-    lScene::RegisterObject();
+    SceneRTS::RegisterObject();
 }
 
 void TacticsVictory::RegistrationFactories()
@@ -193,7 +193,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 
 void TacticsVictory::CreateNewGame()
 {
-    scene = new lScene();
+    scene = new SceneRTS();
     gCamera->SetEnabled(true);
     gGUI->RemoveFromScreen();
     gGuiGame->SetVisible(true);

@@ -5,7 +5,7 @@
 
 
 PanelBottom::PanelBottom(Context *context) :
-    lWindow(context)
+    WindowRTS(context)
 {
     SetName("PanelBottom");
     SetFixedSize(gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
@@ -16,5 +16,5 @@ void PanelBottom::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelBottom>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }

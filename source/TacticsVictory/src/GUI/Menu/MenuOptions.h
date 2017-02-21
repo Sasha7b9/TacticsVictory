@@ -10,9 +10,9 @@ enum
 };
 
 
-class MenuOptions : public lWindow
+class MenuOptions : public WindowRTS
 {
-    URHO3D_OBJECT(MenuOptions, lWindow);
+    URHO3D_OBJECT(MenuOptions, WindowRTS);
 
 public:
     MenuOptions(Context *context = gContext);

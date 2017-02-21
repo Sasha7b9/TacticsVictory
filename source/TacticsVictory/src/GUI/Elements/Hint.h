@@ -4,9 +4,9 @@
 #include "GUI/Elements/Window.h"
 
 
-class Hint : public lWindow
+class Hint : public WindowRTS
 {
-    URHO3D_OBJECT(Hint, lWindow);
+    URHO3D_OBJECT(Hint, WindowRTS);
 
 public:
     Hint(char *text);

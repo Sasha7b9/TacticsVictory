@@ -5,7 +5,7 @@
 #include "GUI/Elements/Label.h"
 
 
-Hint::Hint(char *text_) : lWindow(), text(text_)
+Hint::Hint(char *text_) : WindowRTS(), text(text_)
 {
     label = Label::Create(text, 20);
     AddChild(label);

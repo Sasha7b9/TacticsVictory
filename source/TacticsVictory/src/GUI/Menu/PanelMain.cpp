@@ -8,7 +8,7 @@
 
 
 PanelMain::PanelMain(Context *context) :
-    lWindow(context)
+    WindowRTS(context)
 {
     SetName("PanelMain");
 
@@ -26,7 +26,7 @@ void PanelMain::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelMain>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
 void PanelMain::Update(float dT)

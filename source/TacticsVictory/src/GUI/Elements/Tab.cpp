@@ -6,7 +6,7 @@
 
 
 Tab::Tab(Context *) : 
-    lWindow()
+    WindowRTS()
 {
     buttonTitle = new ButtonToggled(gContext);
     SetMovable(false);
@@ -16,7 +16,7 @@ void Tab::RegisterObject(Context *context)
 {
     context->RegisterFactory<Tab>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(lWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
 SharedPtr<Tab> Tab::Create(char *title)

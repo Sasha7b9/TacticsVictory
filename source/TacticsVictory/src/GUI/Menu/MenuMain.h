@@ -7,9 +7,9 @@
 class ButtonSwitch;
 
 
-class MenuMain : public lWindow
+class MenuMain : public WindowRTS
 {
-    URHO3D_OBJECT(MenuMain, lWindow);
+    URHO3D_OBJECT(MenuMain, WindowRTS);
 
 public:
     MenuMain(Context *context = gContext);

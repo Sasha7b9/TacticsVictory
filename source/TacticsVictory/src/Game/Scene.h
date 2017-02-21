@@ -5,13 +5,13 @@
 #include "Game/Path/PathIndicator.h"
 
 
-class lScene : public Object
+class SceneRTS : public Object
 {
-    URHO3D_OBJECT(lScene, Object);
+    URHO3D_OBJECT(SceneRTS, Object);
 
 public:
-    lScene(Context *context = gContext);
-    ~lScene();
+    SceneRTS(Context *context = gContext);
+    ~SceneRTS();
 
     static void RegisterObject(Context *context = gContext);
 
@@ -22,7 +22,7 @@ public:
     Tank* GetSelected();
 
 private:
-    lScene& operator=(const lScene&)
+    SceneRTS& operator=(const SceneRTS&)
     {};
 
     PathIndicator pathIndicator;

@@ -9,7 +9,7 @@
 
 
 ContextMenuUnit::ContextMenuUnit(Context *context) :
-    lWindow(context)
+    WindowRTS(context)
 {
     SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowBorder");

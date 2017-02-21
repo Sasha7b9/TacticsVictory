@@ -216,7 +216,7 @@ bool GuiEditor::IsInside(IntVector2 &position)
 void GuiEditor::CreateWindows()
 {
     // window new map
-    windowNewMap = new lWindow();
+    windowNewMap = new WindowRTS();
     SET_VERTICAL_LAYOUT_0_6(windowNewMap);
 
     windowNewMap->AddLabel("CreateNewMap");
@@ -233,7 +233,7 @@ void GuiEditor::CreateWindows()
     windowNewMap->SetVisible(false);
 
     // window menu
-    windowMenu = new lWindow();
+    windowMenu = new WindowRTS();
     SET_VERTICAL_LAYOUT_0_0(windowMenu);
 
     SharedPtr<ButtonMain> buttonOptions = windowMenu->AddButton("Options");
@@ -247,7 +247,7 @@ void GuiEditor::CreateWindows()
     windowMenu->SetVisible(false);
 
     // window confirm exit
-    windowConfirmExit = new lWindow();
+    windowConfirmExit = new WindowRTS();
     SET_VERTICAL_LAYOUT_0_6(windowConfirmExit);
 
     SharedPtr<Label> label(Label::Create("Exit in main menu?"));
@@ -319,7 +319,7 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         if(!gOpenedWindow.Empty())
         {
-            lWindow *window = gOpenedWindow.Back();
+            WindowRTS *window = gOpenedWindow.Back();
             window->SetVisible(false);
             gOpenedWindow.Remove(window);
         }

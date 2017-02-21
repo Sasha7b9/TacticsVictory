@@ -4,9 +4,9 @@
 #include "GUI/Elements/Window.h"
 
 
-class WindowConfirmExit : public lWindow
+class WindowConfirmExit : public WindowRTS
 {
-    URHO3D_OBJECT(WindowConfirmExit, lWindow);
+    URHO3D_OBJECT(WindowConfirmExit, WindowRTS);
 
 public:
     WindowConfirmExit(Context *context);

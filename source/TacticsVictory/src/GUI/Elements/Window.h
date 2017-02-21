@@ -11,12 +11,12 @@ class DropDownListWithTextAndButton;
 class Label;
 
 
-class lWindow : public Window
+class WindowRTS : public Window
 {
-    URHO3D_OBJECT(lWindow, Window);
+    URHO3D_OBJECT(WindowRTS, Window);
 
 public:
-    lWindow(Context *context = gContext);
+    WindowRTS(Context *context = gContext);
 
     static void RegisterObject(Context *context = gContext);
 
@@ -32,7 +32,7 @@ public:
     SharedPtr<Label> AddLabel(char *text);
 
 protected:
-    lWindow& operator=(const lWindow&)
+    WindowRTS& operator=(const WindowRTS&)
     {};
 
     HashMap<Button*, uint> mapButtonsActions;
