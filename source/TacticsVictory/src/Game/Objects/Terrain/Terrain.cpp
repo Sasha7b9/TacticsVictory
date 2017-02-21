@@ -4,15 +4,15 @@
 #include "Terrain.h"
 
 
-Vector<Vector<PODVector<CubeTerrain*>>> Terrain::columnsCubes;
+Vector<Vector<PODVector<CubeTerrain*>>> TerrainRTS::columnsCubes;
 
 
-Terrain::Terrain(Context *context) :
+TerrainRTS::TerrainRTS(Context *context) :
     Object(context)
 {
 }
 
-Terrain::~Terrain()
+TerrainRTS::~TerrainRTS()
 {
     for(auto &row : columnsCubes)
     {
@@ -26,7 +26,7 @@ Terrain::~Terrain()
     }
 }
 
-void Terrain::CreateFromVector(Vector<Vector<float>> &level)
+void TerrainRTS::CreateFromVector(Vector<Vector<float>> &level)
 {
     float time = gTime->GetElapsedTime();
 
@@ -105,62 +105,62 @@ void Terrain::CreateFromVector(Vector<Vector<float>> &level)
     URHO3D_LOGINFOF("time create terrain %f sec", gTime->GetElapsedTime() - time);
 }
 
-void Terrain::SaveToFile(char * /*nameFile*/)
+void TerrainRTS::SaveToFile(char * /*nameFile*/)
 {
 
 }
 
-float Terrain::GetHeight(uint row, uint col)
+float TerrainRTS::GetHeight(uint row, uint col)
 {
     return level[row][col];
 }
 
-void Terrain::SetHeight(uint row, uint col, float height)
+void TerrainRTS::SetHeight(uint row, uint col, float height)
 {
     level[row][col] = height;
 }
 
-void Terrain::Update()
+void TerrainRTS::Update()
 {
 
 }
 
-uint Terrain::NumRows()
+uint TerrainRTS::NumRows()
 {
     return level.Size();
 }
 
-uint Terrain::NumCols()
+uint TerrainRTS::NumCols()
 {
     return level[0].Size();
 }
 
-bool Terrain::Empty()
+bool TerrainRTS::Empty()
 {
     return level.Empty();
 }
 
-Plane Terrain::GetIntersectionPlane(Ray& /*ray*/)
+Plane TerrainRTS::GetIntersectionPlane(Ray& /*ray*/)
 {
     return Plane::ZERO;
 }
 
-Line Terrain::GetIntersectionEdge(Ray &/*ray*/)
+Line TerrainRTS::GetIntersectionEdge(Ray &/*ray*/)
 {
     return Line::ZERO;
 }
 
-Plane Terrain::GetPlane(uint /*row*/, uint /*col*/)
+Plane TerrainRTS::GetPlane(uint /*row*/, uint /*col*/)
 {
     return Plane::ZERO;
 }
 
-Vector<Vector<float>> Terrain::GetMap()
+Vector<Vector<float>> TerrainRTS::GetMap()
 {
     return level;
 }
 
-PODVector<CubeTerrain*>* Terrain::GetColumnCubes(CubeTerrain *cube, DIR dir)
+PODVector<CubeTerrain*>* TerrainRTS::GetColumnCubes(CubeTerrain *cube, DIR dir)
 {
     const int dRow[8] = { 0, -1, -1, -1, 0, 1, 1,  1};
     const int dCol[8] = {-1, -1,  0,  1, 1, 1, 0, -1};
@@ -176,7 +176,7 @@ PODVector<CubeTerrain*>* Terrain::GetColumnCubes(CubeTerrain *cube, DIR dir)
     return &columnsCubes[row][col];
 }
 
-SegmentTerrain* Terrain::GetSegmentForCoord(uint row, uint col)
+SegmentTerrain* TerrainRTS::GetSegmentForCoord(uint row, uint col)
 {
     return segments[row / SegmentTerrain::HEIGHT][col / SegmentTerrain::WIDTH];
 }

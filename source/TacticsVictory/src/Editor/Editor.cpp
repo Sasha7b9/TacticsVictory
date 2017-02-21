@@ -29,7 +29,7 @@ void Editor::Run()
 
     Vector<Vector<float>> level = gLevel->Load("Game/Levels/level.map");
 
-    gTerrain = new Terrain();
+    gTerrain = new TerrainRTS();
     gTerrain->CreateFromVector(level);
 
     lightNode = gScene->CreateChild("LightNode");

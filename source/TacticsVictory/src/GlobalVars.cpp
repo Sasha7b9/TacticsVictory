@@ -23,7 +23,7 @@ FileSelector    *gFileSelector = nullptr;
 Urho3D::Log     *gLog = nullptr;
 Profiler        *gProfiler = nullptr;
 
-lCamera        *gCamera = nullptr;
+CameraRTS        *gCamera = nullptr;
 lCursor        *gCursor = nullptr;
 GuiGame        *gGuiGame = nullptr;
 GuiEditor      *gGuiEditor = nullptr;
@@ -39,7 +39,7 @@ WindowVariables     *gWindowVars = nullptr;
 Hint                *gHint = nullptr;
 int                 *gCounterHint = 0;
 Level               *gLevel = nullptr;
-Terrain             *gTerrain = nullptr;
+TerrainRTS         *gTerrain = nullptr;
 Vector<lWindow*>    gOpenedWindow;
 PODVector<Tank*>    gTanks;
 WindowTarget        *gWindowTarget = nullptr;

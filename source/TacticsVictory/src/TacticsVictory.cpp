@@ -142,7 +142,7 @@ void TacticsVictory::Start()
     
     InitLocalizationSystem();
 
-    gCamera = new lCamera();
+    gCamera = new CameraRTS();
 
     gGUI->Create();
 

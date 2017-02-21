@@ -1,7 +1,7 @@
 #pragma once
 
 
-class lCamera;
+class CameraRTS;
 class lConsole;
 class lCursor;
 class Editor;
@@ -9,14 +9,13 @@ class GUI;
 class GuiEditor;
 class GuiGame;
 class Hint;
-class Terrain;
 class Level;
 class MenuMain;
 class MenuOptions;
 class SegmentTerrain;
 class Settings;
 class Tank;
-class lTerrain;
+class TerrainRTS;
 class lWindow;
 class WindowConfirmExit;
 class WindowTarget;
@@ -46,12 +45,12 @@ extern FileSelector     *gFileSelector;
 extern Urho3D::Log      *gLog;
 extern Profiler         *gProfiler;
 
-extern lCamera          *gCamera;
+extern CameraRTS        *gCamera;
 extern lCursor          *gCursor;
 extern Editor           *gEditor;
 extern Settings         *gSet;
 extern Level            *gLevel;
-extern Terrain          *gTerrain;
+extern TerrainRTS       *gTerrain;
 
 extern GUI                  *gGUI;
 extern lConsole             *gConsole;

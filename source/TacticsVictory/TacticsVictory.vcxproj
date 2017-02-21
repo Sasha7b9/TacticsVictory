@@ -30,7 +30,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -101,7 +101,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_THREADING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DisableSpecificWarnings>4514;4820;4710;4640;4625;4458;5026;4456</DisableSpecificWarnings>
@@ -122,15 +122,8 @@
     <PostBuildEvent>
       <Message>
       </Message>
-      <Command>setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy_if_different "C:/Program Files (x86)/Windows Kits/8.1/Redist/D3D/x64/d3dcompiler_47.dll" C:/Urho3D/build/bin
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <Link>
       <AdditionalOptions>/STACK:20000000000 %(AdditionalOptions)</AdditionalOptions>
@@ -365,12 +358,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Game\Objects\Terrain\PlaneCube.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\SegmentTerrain.cpp" />
     <ClCompile Include="src\Game\Objects\Terrain\SideCube.cpp" />
-    <ClCompile Include="src\Game\Objects\Terrain\_Terrain_.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\_TerrainSegment_.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="src\Game\Objects\Units\Airplane\Airplane.cpp" />
     <ClCompile Include="src\Game\Objects\Units\Bomber\Bomber.cpp" />
     <ClCompile Include="src\Game\Objects\Units\Builder\Builder.cpp" />
@@ -469,12 +456,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Game\Objects\Terrain\PlaneCube.h" />
     <ClInclude Include="src\Game\Objects\Terrain\SegmentTerrain.h" />
     <ClInclude Include="src\Game\Objects\Terrain\SideCube.h" />
-    <ClInclude Include="src\Game\Objects\Terrain\_Terrain_.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\_TerrainSegment_.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="src\Game\Objects\Units\Airplane\Airplane.h" />
     <ClInclude Include="src\Game\Objects\Units\Bomber\Bomber.h" />
     <ClInclude Include="src\Game\Objects\Units\Builder\Builder.h" />

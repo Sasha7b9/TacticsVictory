@@ -71,7 +71,7 @@ void lScene::Create()
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
     Vector<Vector<float>> level = gLevel->Load("Game/Levels/level.map");
-    gTerrain = new Terrain();
+    gTerrain = new TerrainRTS();
     gTerrain->CreateFromVector(level);
 
     for (int i = 0; i < 125; i++)

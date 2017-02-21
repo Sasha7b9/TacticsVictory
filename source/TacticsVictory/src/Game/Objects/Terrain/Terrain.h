@@ -19,13 +19,13 @@ enum DIR
 };
 
 
-class Terrain : public Object
+class TerrainRTS : public Object
 {
-    URHO3D_OBJECT(Terrain, Object);
+    URHO3D_OBJECT(TerrainRTS, Object);
 
 public:
-    Terrain(Context *context = gContext);
-    ~Terrain();
+    TerrainRTS(Context *context = gContext);
+    ~TerrainRTS();
 
     void CreateFromVector(Vector<Vector<float>> &level);
 
@@ -56,7 +56,7 @@ public:
     static Vector<Vector<PODVector<CubeTerrain*>>> columnsCubes;
 
 private:
-    Terrain& operator=(const Terrain&)
+    TerrainRTS& operator=(const TerrainRTS&)
     {};
 
     Vector<Vector<float>> level;

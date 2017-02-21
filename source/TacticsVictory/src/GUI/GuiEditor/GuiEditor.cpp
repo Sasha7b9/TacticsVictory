@@ -275,7 +275,7 @@ void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
 {
     Vector<Vector<float>> map = gLevel->CreateRandom((uint)sliderSizeNewMapY->GetValue(), (uint)sliderSizeNewMapX->GetValue());
     SAFE_DELETE(gTerrain);
-    gTerrain = new Terrain();
+    gTerrain = new TerrainRTS();
     gTerrain->CreateFromVector(map);
     windowNewMap->SetVisible(false);
 
@@ -366,7 +366,7 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
     {
         Vector<Vector<float>> map = gLevel->Load((char*)((String)eventData[Urho3D::FileSelected::P_FILENAME].GetString()).CString());
         SAFE_DELETE(gTerrain);
-        gTerrain = new Terrain();
+        gTerrain = new TerrainRTS();
         gTerrain->CreateFromVector(map);
         gCamera->SetPosition({gLevel->GetWidth() / 2.0f, 20.0f, -(float)gLevel->GetHeight()}, {gLevel->GetWidth() / 2.0f, 0.0f, -(gLevel->GetHeight() / 2.0f)});
     }

@@ -56,7 +56,7 @@ public:
     uint layer = 0;
     bool underGround = false;
 
-    static Terrain *terrain;
+    static TerrainRTS *terrain;
 
 private:
 
