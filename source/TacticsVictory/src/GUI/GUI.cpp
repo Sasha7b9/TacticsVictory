@@ -251,7 +251,7 @@ void GUI::SetVisibleWindow(WindowRTS *window, bool visible)
     {
         while(!gOpenedWindow.Empty())
         {
-            WindowRTS *window = gOpenedWindow.Back();
+            window = gOpenedWindow.Back();
             window->SetVisible(false);
             gOpenedWindow.Remove(window);
         }

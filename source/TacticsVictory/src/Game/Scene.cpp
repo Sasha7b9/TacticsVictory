@@ -227,7 +227,7 @@ void SceneRTS::ProcessMouseRight()
     }
 }
 
-void SceneRTS::SetSelected(Tank *tank, bool selected)
+void SceneRTS::SetSelected(Tank *tank_, bool selected)
 {
     if(selected)
     {
@@ -241,7 +241,7 @@ void SceneRTS::SetSelected(Tank *tank, bool selected)
             }
         }
     }
-    tank->SetSelected(selected);
+    tank_->SetSelected(selected);
 }
 
 Tank* SceneRTS::GetSelected()

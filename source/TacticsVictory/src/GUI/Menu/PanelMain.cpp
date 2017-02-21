@@ -71,7 +71,7 @@ void PanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
 
     if(state)
     {
-        for(auto tab : tabs)
+        for(Tab *tab : tabs)
         {
             if(tab->buttonTitle->IsChecked() && button != tab->buttonTitle)
             {
@@ -82,12 +82,12 @@ void PanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
             else
             {
                 RemoveChild(currentTab);
-                for (auto tab : tabs)
+                for (Tab *pTab : tabs)
                 {
-                    if (tab->buttonTitle == button)
+                    if (pTab->buttonTitle == button)
                     {
-                        AddChild(tab);
-                        currentTab = tab;
+                        AddChild(pTab);
+                        currentTab = pTab;
                     }
                 }
             }

@@ -9,7 +9,6 @@ Vector<Vector<ParticleEmitter*>> Particles::particles;
 
 void Particles::Init()
 {
-    return;
     for (uint i = 0; i < NumParticles; i++)
     {
         particles.Push(Vector<ParticleEmitter*>());
@@ -36,9 +35,9 @@ void Particles::Init()
     */
 }
 
-void Particles::Emitting(TypeParticles type, const Vector3 position)
+void Particles::Emitting(TypeParticles /*type*/, const Vector3 /*position*/)
 {
-    return;
+    /*
     ParticleEmitter* emitter = nullptr;
     
     Vector<ParticleEmitter*> &emitters = particles.At(type);
@@ -63,4 +62,5 @@ void Particles::Emitting(TypeParticles type, const Vector3 position)
 
     emitter->GetNode()->SetPosition(position);
     emitter->SetEmitting(true);
+    */
 }

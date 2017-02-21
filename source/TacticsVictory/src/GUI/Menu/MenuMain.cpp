@@ -128,8 +128,8 @@ void MenuMain::SetDisabled()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuMain::SetFocusedNext()
 {
-    int numButton = (NumFocusedButton() + 1) % buttons.Size();
-    buttons[numButton]->SetFocus(true);
+    int numButton = (NumFocusedButton() + 1) % (int)buttons.Size();
+    buttons[(uint)numButton]->SetFocus(true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -138,19 +138,19 @@ void MenuMain::SetFocusedPrev()
     int numButton = NumFocusedButton() - 1;
     if (numButton < 0)
     {
-        numButton = buttons.Size() - 1;
+        numButton = (int)buttons.Size() - 1;
     }
-    buttons[numButton]->SetFocus(true);
+    buttons[(uint)numButton]->SetFocus(true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int MenuMain::NumFocusedButton()
 {
-    for (int i = 0; i < buttons.Size(); i++)
+    for (uint i = 0; i < buttons.Size(); i++)
     {
         if(buttons[i]->HasFocus())
         {
-            return i;
+            return (int)i;
         }
     }
     return -1;

@@ -189,7 +189,7 @@ Vector<Vector<float> > Level::CreateRandom(uint numRows, uint numCols)
 
     for (uint row = 1; row < numRows; row++)
     {
-        Vector<float> str;
+        str.Clear();
 
         int min = Math::LimitBelow((int)map[row - 1][0] - maxDelta, minHeight);
         int max = Math::LimitAbove((int)map[row - 1][0] + maxDelta, maxHeight);
@@ -198,8 +198,8 @@ Vector<Vector<float> > Level::CreateRandom(uint numRows, uint numCols)
 
         for (uint col = 1; col < numCols; col++)
         {
-            int min = Math::LimitBelow((int)str[col - 1] - maxDelta, minHeight);
-            int max = Math::LimitAbove((int)str[col - 1] + maxDelta, maxHeight);
+            min = Math::LimitBelow((int)str[col - 1] - maxDelta, minHeight);
+            max = Math::LimitAbove((int)str[col - 1] + maxDelta, maxHeight);
 
             int value = Math::RandomInt(min, max);
 
