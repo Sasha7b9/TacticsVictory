@@ -18,6 +18,8 @@ private:
     {};
 
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
+    void OnPressButtonOk();
+    void OnPressButtonCancel();
 
     SharedPtr<ButtonMain> buttonOk;
     SharedPtr<ButtonMain> buttonCancel;

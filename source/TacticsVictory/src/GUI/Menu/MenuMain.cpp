@@ -10,6 +10,7 @@
 #include "GUI/Menu/WindowConfirmExit.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 MenuMain::MenuMain(Context *) :
     WindowRTS()
 {
@@ -27,6 +28,12 @@ MenuMain::MenuMain(Context *) :
     buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
     buttonExit = new ButtonMain(this, "Exit");
 
+    buttons.Push(buttonNewGame);
+    buttons.Push(buttonEditor);
+    buttons.Push(buttonOptions);
+    buttons.Push(buttonLanguage);
+    buttons.Push(buttonExit);
+
     SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonNewGame, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
@@ -41,6 +48,7 @@ MenuMain::MenuMain(Context *) :
     mapButtonsActions[buttonExit] = MenuEvent_ExitInOS;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuMain::RegisterObject(Context* context)
 {
     context->RegisterFactory<MenuMain>("UI");
@@ -48,6 +56,7 @@ void MenuMain::RegisterObject(Context* context)
     URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();
@@ -56,7 +65,7 @@ void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
     {
         gEngine->Exit();
 
-        gMenuMain->SetVisible(false);
+        gMenuMain->SetDisabled();
         gGUI->SetVisibleMenu(gWindowConfirmExit, true);
     
     }
@@ -76,4 +85,66 @@ void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
             buttonExit->SetText("Exit from game");
         }
     }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MenuMain::HandleKeyDown(StringHash, VariantMap& eventData)
+{
+    using namespace KeyDown;
+
+    int key = eventData[P_KEY].GetInt();
+
+    if (key == KEY_UP)
+    {
+        SetFocusedPrev();
+    }
+    else if (key == KEY_DOWN)
+    {
+        SetFocusedNext();
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MenuMain::SetEnabled()
+{
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(MenuMain, HandleKeyDown));
+    SetVisible(true);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MenuMain::SetDisabled()
+{
+    UnsubscribeFromEvent(E_KEYDOWN);
+    SetVisible(false);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MenuMain::SetFocusedNext()
+{
+    int numButton = (NumFocusedButton() + 1) % buttons.Size();
+    buttons[numButton]->SetFocus(true);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MenuMain::SetFocusedPrev()
+{
+    int numButton = NumFocusedButton() - 1;
+    if (numButton < 0)
+    {
+        numButton = buttons.Size() - 1;
+    }
+    buttons[numButton]->SetFocus(true);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int MenuMain::NumFocusedButton()
+{
+    for (int i = 0; i < buttons.Size(); i++)
+    {
+        if(buttons[i]->HasFocus())
+        {
+            return i;
+        }
+    }
+    return -1;
 }

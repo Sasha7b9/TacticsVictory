@@ -7,6 +7,9 @@
 class Tab;
 
 
+/*
+    Основная игровая панель с вкладками
+*/
 class PanelMain : public WindowRTS
 {
     URHO3D_OBJECT(PanelMain, WindowRTS);

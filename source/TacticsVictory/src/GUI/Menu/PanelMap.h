@@ -7,6 +7,9 @@
 class ImageRTS;
 
 
+/*
+    Эта панель расположена в правом нижнем углу - миникарта
+*/
 class PanelMap : public WindowRTS
 {
     URHO3D_OBJECT(PanelMap, WindowRTS);

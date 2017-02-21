@@ -4,6 +4,9 @@
 #include "GUI/Elements/Window.h"
 
 
+/*
+    Нижняя панель - на ней расположены кнопки
+*/
 class PanelBottom : public WindowRTS
 {
     URHO3D_OBJECT(PanelBottom, WindowRTS);

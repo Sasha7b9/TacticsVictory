@@ -74,12 +74,12 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
             }
             else if (gMenuMain->IsVisible())
             {
-                gMenuMain->SetVisible(false);
+                gMenuMain->SetDisabled();
                 gWindowConfirmExit->SetVisible(true);
             }
             else if (gWindowConfirmExit->IsVisible())
             {
-                gMenuMain->SetVisible(true);
+                gMenuMain->SetEnabled();
                 gWindowConfirmExit->SetVisible(false);
             }
         }

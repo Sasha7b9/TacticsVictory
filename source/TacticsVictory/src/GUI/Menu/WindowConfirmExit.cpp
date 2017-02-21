@@ -43,15 +43,25 @@ void WindowConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
 
     if (button == buttonOk)
     {
-        eventData = GetEventDataMap();
-        eventData[MenuEvent::P_TYPE] = MenuEvent_ExitInOS;
-        SendEvent(E_MENU, eventData);
+        OnPressButtonOk();
     }
     else if (button == buttonCancel)
     {
-        gWindowConfirmExit->SetVisible(false);
-        gMenuMain->SetVisible(true);
+        OnPressButtonCancel();
     }
+}
 
-    
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void WindowConfirmExit::OnPressButtonOk()
+{
+    VariantMap eventData = GetEventDataMap();
+    eventData[MenuEvent::P_TYPE] = MenuEvent_ExitInOS;
+    SendEvent(E_MENU, eventData);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void WindowConfirmExit::OnPressButtonCancel()
+{
+    gWindowConfirmExit->SetVisible(false);
+    gMenuMain->SetVisible(true);
 }

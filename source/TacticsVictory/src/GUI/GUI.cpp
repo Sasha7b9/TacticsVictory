@@ -182,7 +182,7 @@ bool GUI::MenuIsVisible()
 
 void GUI::SetVisibleMenu(bool visible)
 {
-    gMenuMain->SetVisible(visible);
+    visible ? gMenuMain->SetEnabled() : gMenuMain->SetDisabled();
     gMenuOptions->SetVisible(visible);
 }
 
@@ -218,13 +218,13 @@ void GUI::RemoveFromScreen()
     shownMenuMain = gMenuMain->IsVisible();
     shownMenuOptions = gMenuOptions->IsVisible();
 
-    gMenuMain->SetVisible(false);
+    gMenuMain->SetDisabled();
     gMenuOptions->SetVisible(false);
 }
 
 void GUI::AddToScreen()
 {
-    gMenuMain->SetVisible(shownMenuMain);
+    shownMenuMain ? gMenuMain->SetEnabled() : gMenuMain->SetDisabled();
     gMenuOptions->SetVisible(shownMenuOptions);
 }
 
