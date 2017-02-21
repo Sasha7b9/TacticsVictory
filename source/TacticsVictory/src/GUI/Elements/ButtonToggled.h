@@ -1,7 +1,7 @@
 #pragma once
 
 
-class Label;
+#include "GUI/Elements/Label.h"
 
 
 class ButtonToggled : public CheckBox
@@ -17,9 +17,9 @@ public:
     void SetText(char *text);
 
 private:
-    ButtonToggled& operator=(const ButtonToggled&) {};
-
     SharedPtr<Label> label;
 
     void HandleMouseUp(StringHash eventType, VariantMap &eventData);
+
+    CONSTRUCTORS(ButtonToggled, CheckBox);
 };

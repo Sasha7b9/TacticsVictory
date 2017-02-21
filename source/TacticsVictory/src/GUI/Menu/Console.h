@@ -18,4 +18,6 @@ private:
     SharedPtr<LineEdit> lineEdit;
     SharedPtr<Text> text;
     SharedPtr<ScrollBar> scrollBar;
+
+    CONSTRUCTORS(ConsoleRTS, WindowRTS);
 };

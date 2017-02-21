@@ -31,3 +31,5 @@ typedef unsigned char   uchar;
 
 #define PROFILER_FUNC_ENTER     gProfiler->BeginBlock(__FUNCTION__);
 #define PROFILER_FUNC_LEAVE     gProfiler->EndBlock();
+
+#define CONSTRUCTORS(name, parent)        name(name const&) : parent(nullptr) {}; name operator=(name const&) {};

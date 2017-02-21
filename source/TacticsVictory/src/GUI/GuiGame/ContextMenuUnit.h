@@ -2,6 +2,7 @@
 
 
 #include "GUI/Elements/Window.h"
+#include "GUI/Elements/Label.h"
 
 
 class GameObject;
@@ -23,4 +24,6 @@ private:
     void CreateForUnit();
 
     void HandleToggledFiedView(StringHash, VariantMap&);
+
+    CONSTRUCTORS(ContextMenuUnit, WindowRTS);
 };

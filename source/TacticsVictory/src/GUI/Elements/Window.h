@@ -2,13 +2,13 @@
 
 
 #include "GUI/Logic/LineTranslator2D.h"
+#include "GUI/Elements/Label.h"
+#include "GUI/Elements/ButtonToggled.h"
 
 
-class ButtonToggled;
 class ButtonRTS;
 class SliderWithTextAndButtons;
 class DropDownListWithTextAndButton;
-class Label;
 
 
 class WindowRTS : public Window
@@ -32,9 +32,8 @@ public:
     SharedPtr<Label> AddLabel(char *text);
 
 protected:
-    WindowRTS& operator=(const WindowRTS&)
-    {};
-
     HashMap<Button*, uint> mapButtonsActions;
     SharedPtr<LineTranslator2D> translator;
+
+    CONSTRUCTORS(WindowRTS, Window);
 };

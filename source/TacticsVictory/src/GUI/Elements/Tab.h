@@ -16,4 +16,6 @@ public:
     static SharedPtr<Tab> Create(char *title);
 
     SharedPtr<ButtonToggled> buttonTitle;
+
+    CONSTRUCTORS(Tab, WindowRTS);
 };

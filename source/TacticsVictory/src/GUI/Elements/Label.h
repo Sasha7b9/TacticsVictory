@@ -13,9 +13,8 @@ public:
     void SetText(char *text);
     
 private:
-    Label& operator=(const Label&)
-    {};
-
     void HandleChangeLanguage(StringHash, VariantMap&);
     char *text = 0;
+
+    CONSTRUCTORS(Label, Text);
 };

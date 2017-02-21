@@ -16,4 +16,6 @@ private:
     SharedPtr<Label> label;
 
     void HandleChangeLanguage(StringHash, VariantMap&);
+
+    CONSTRUCTORS(Hint, WindowRTS);
 };
