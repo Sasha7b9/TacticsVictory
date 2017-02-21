@@ -4,7 +4,7 @@
 #include "Cursor.h"
 
 
-class lImage;
+class ImageRTS;
 
 
 class CursorShapes : public Object
@@ -12,7 +12,7 @@ class CursorShapes : public Object
     URHO3D_OBJECT(CursorShapes, Object);
 public:
     CursorShapes();
-    SharedPtr<lImage> GetShape(TypeCursor type, int numFrame);
+    SharedPtr<ImageRTS> GetShape(TypeCursor type, int numFrame);
 
 private:
 
@@ -28,7 +28,7 @@ private:
     void CreateDownRight(int numFrame);
     void CreateBusy(int numFrame);
 
-    void FillGradient(lImage *image, TypeCursor type, int numFrame);
+    void FillGradient(ImageRTS *image, TypeCursor type, int numFrame);
 
 public:
     struct StructShape
@@ -45,7 +45,7 @@ public:
 private:
     CursorShapes& operator=(const CursorShapes&)
     {};
-    HashMap<StructShape, SharedPtr<lImage>> map;
+    HashMap<StructShape, SharedPtr<ImageRTS>> map;
 
     int dimensionTriangleSmall = 50;
     int dimensionTriangleBig = 100;

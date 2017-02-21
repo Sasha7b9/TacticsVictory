@@ -8,7 +8,7 @@
 #include "GUI/Menu/MenuMain.h"
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 WindowConfirmExit::WindowConfirmExit(Context *) :
     WindowRTS()
 {
@@ -28,6 +28,7 @@ WindowConfirmExit::WindowConfirmExit(Context *) :
     AddChild(layer);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowConfirmExit::RegisterObject(Context *context)
 {
     context->RegisterFactory<WindowConfirmExit>("UI");
@@ -35,6 +36,7 @@ void WindowConfirmExit::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();

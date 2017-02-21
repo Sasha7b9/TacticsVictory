@@ -56,7 +56,7 @@ void PanelMap::Update(float dT)
 
         uint sizeMap = sizeX > sizeY ? sizeX : sizeY;
 
-        imageMap = new lImage();
+        imageMap = new ImageRTS();
         imageMap->SetSize((int)sizeMap, (int)sizeMap);
 
         imageMap->Clear(Color::BLACK);
@@ -110,7 +110,7 @@ void PanelMap::Update(float dT)
         {1.0f, 0.0f}
     };
 
-    SharedPtr<lImage> image(new lImage());
+    SharedPtr<ImageRTS> image(new ImageRTS());
     image->SetSize(imageMap->GetWidth(), imageMap->GetHeight());
 
     uchar *data = imageMap->GetData();

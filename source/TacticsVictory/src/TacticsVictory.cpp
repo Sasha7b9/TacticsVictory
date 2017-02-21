@@ -112,7 +112,7 @@ void TacticsVictory::RegistrationFactories()
 {
     gContext->RegisterFactory<Rotator>();
     gContext->RegisterFactory<Movinator>();
-    gContext->RegisterFactory<lImage>();
+    gContext->RegisterFactory<ImageRTS>();
 }
 
 void TacticsVictory::Start()

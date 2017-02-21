@@ -15,7 +15,7 @@ CursorRTS::CursorRTS() : Object(gContext)
 
     int size = 100;
 
-    SharedPtr<lImage> image(new lImage());
+    SharedPtr<ImageRTS> image(new ImageRTS());
     image->SetSize(size, size);
 
     image->Clear({0.0f, 0.0f, 1.0f, 1.0f});
@@ -63,7 +63,7 @@ void CursorRTS::Update(float dT)
 
     if(hidden)
     {
-        SharedPtr<lImage> image(new lImage());
+        SharedPtr<ImageRTS> image(new ImageRTS());
         image->SetSize(1, 1);
         cursor->DefineShape("Normal", image, {0, 0, image->GetWidth(), image->GetHeight()}, {0, 0});
     }
@@ -144,7 +144,7 @@ void CursorRTS::Update(float dT)
             prevFrame = numFrame;
             prevType = type;
 
-            SharedPtr<lImage> image = shapes->GetShape(type, numFrame);
+            SharedPtr<ImageRTS> image = shapes->GetShape(type, numFrame);
 
             cursor->DefineShape("Normal", image, {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
             /*

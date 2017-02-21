@@ -4,7 +4,7 @@
 #include "GUI/Elements/Window.h"
 
 
-class lImage;
+class ImageRTS;
 
 
 class PanelMap : public WindowRTS
@@ -23,7 +23,7 @@ private:
     {};
 
     Vector<Vector<float> > map;
-    SharedPtr<lImage> imageMap;
+    SharedPtr<ImageRTS> imageMap;
     int x0 = 0;
     int y0 = 0;
     float scale = 0.0f;
