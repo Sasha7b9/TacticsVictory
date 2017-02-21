@@ -18,7 +18,7 @@ public:
     static SharedPtr<SliderInt> Create(UIElement *uielement, const IntVector2 &size);
 
     void SetRange(int min, int max, int step = 1);
-    virtual void OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Urho3D::Cursor* cursor);
+    virtual void OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Cursor* cursor);
     int GetValueInt();
     int GetValueMax();
     int GetValueMin();

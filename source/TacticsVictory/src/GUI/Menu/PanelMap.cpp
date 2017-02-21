@@ -23,8 +23,8 @@ PanelMap::PanelMap(Context *context) :
 
     translator = new LineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
 
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, URHO3D_HANDLER(PanelMap, HandleMouseDown));
-    SubscribeToEvent(Urho3D::E_MOUSEMOVE, URHO3D_HANDLER(PanelMap, HandleMouseMove));
+    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(PanelMap, HandleMouseDown));
+    SubscribeToEvent(E_MOUSEMOVE, URHO3D_HANDLER(PanelMap, HandleMouseMove));
     SubscribeToEvent(E_MAP_CHANGED, URHO3D_HANDLER(PanelMap, HandleMapChanged));
 }
 
@@ -170,11 +170,11 @@ void PanelMap::Update(float dT)
 
 bool PanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPointOut)
 {
-    Urho3D::Camera *camera = gCamera->GetNode()->GetComponent<Urho3D::Camera>();
-    Urho3D::Plane planeX0Z({0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f});
+    Camera *camera = gCamera->GetNode()->GetComponent<Camera>();
+    Plane planeX0Z({0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f});
     Ray ray = camera->GetScreenRay(screenPoint.x_, screenPoint.y_);
     float distanceHit = ray.HitDistance(planeX0Z);
-    if(distanceHit == Urho3D::M_INFINITY)
+    if(distanceHit == M_INFINITY)
     {
         return false;
     }
@@ -224,9 +224,9 @@ void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
 {
     if (parent_->IsVisible() && IsInside(gCursor->GetCursor()->GetPosition(), true))
     {
-        int buttons = (int)eventData[Urho3D::MouseButtonDown::P_BUTTONS].GetInt();
+        int buttons = (int)eventData[MouseButtonDown::P_BUTTONS].GetInt();
 
-        if (buttons == Urho3D::MOUSEB_RIGHT)
+        if (buttons == MOUSEB_RIGHT)
         {
             IntVector2 coordMap = gCursor->GetCursor()->GetPosition() - GetPosition();
 
@@ -240,10 +240,10 @@ void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
 
 void PanelMap::HandleMouseMove(StringHash eventType, VariantMap &eventData)
 {
-    if (IsInside(gCursor->GetCursor()->GetPosition(), true) && (int)eventData[Urho3D::MouseMove::P_BUTTONS].GetInt() == Urho3D::MOUSEB_RIGHT)
+    if (IsInside(gCursor->GetCursor()->GetPosition(), true) && (int)eventData[MouseMove::P_BUTTONS].GetInt() == MOUSEB_RIGHT)
     {
         eventData = GetEventDataMap();
-        eventData[Urho3D::MouseButtonDown::P_BUTTONS] = Urho3D::MOUSEB_RIGHT;
+        eventData[MouseButtonDown::P_BUTTONS] = MOUSEB_RIGHT;
         HandleMouseDown(eventType, eventData);
     }
 }

@@ -47,7 +47,7 @@ Rocket::Rocket(Context *context)
 {
     if (rockets.Size() == 0)
     {
-//        SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, URHO3D_HANDLER(Rocket, HandlePostRenderUpdate));
+//        SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Rocket, HandlePostRenderUpdate));
     }
 }
 
@@ -389,7 +389,7 @@ void Rocket::SetParameters(float timeStep)
 
 void Rocket::StopAllThreads()
 {
-    static uint numCPU = 1; // Urho3D::GetNumLogicalCPUs();
+    static uint numCPU = 1; // GetNumLogicalCPUs();
 
     for(uint i = 0; i < numCPU; i++)
     {
@@ -403,7 +403,7 @@ void Rocket::UpdateAll(float timeStep)
 {
     gProfiler->BeginBlock("Rocket::UpdateAll");
 
-    static uint numCPU = 1; // Urho3D::GetNumLogicalCPUs();
+    static uint numCPU = 1; // GetNumLogicalCPUs();
 
     uint size = rockets.Size();
 
@@ -437,7 +437,7 @@ void Rocket::VerifyOnIntersectionTerrain()
     direction.Normalize();
     Ray ray(position, direction);
     PODVector<RayQueryResult> results;
-    RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, 0.5f, Urho3D::DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
+    RayOctreeQuery query(results, ray, RAY_TRIANGLE, 0.5f, DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
     gScene->GetComponent<Octree>()->Raycast(query);
 
     if (results.Size())
@@ -474,7 +474,7 @@ void Rocket::HandlePostRenderUpdate(StringHash, VariantMap&)
 
 void Rocket::DeleteAll()
 {
-    static uint numCPU = Urho3D::GetNumLogicalCPUs();
+    static uint numCPU = GetNumLogicalCPUs();
 
     for(uint i = 0; i < numCPU; i++)
     {

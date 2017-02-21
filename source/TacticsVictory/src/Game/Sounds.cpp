@@ -16,7 +16,7 @@ void Sounds::Init()
     Node *nodeSource = gScene->CreateChild("Sound");
     SoundSource3D* soundSource = nodeSource->CreateComponent<SoundSource3D>();
     soundSource->SetDistanceAttenuation(1.0f, 50.0f, 0.01f);
-    soundSource->SetSoundType(Urho3D::SOUND_EFFECT);
+    soundSource->SetSoundType(SOUND_EFFECT);
     sources.Push(soundSource);
 }
 

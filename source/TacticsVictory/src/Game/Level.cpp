@@ -61,7 +61,7 @@ Vector<Vector<float>> Level::Load(char *fileName)
 
     SharedPtr<File> fileRead;
     fileRead = new File(gContext);
-    if(fileRead->Open(GetNameFile(fileName), Urho3D::FILE_READ))
+    if(fileRead->Open(GetNameFile(fileName), FILE_READ))
     {
         String str = fileRead->ReadString();
         const char *data = str.CString();
@@ -116,7 +116,7 @@ bool Level::Save(String fileName)
 {
     SharedPtr<File> fileWrite(new File(gContext));
 
-    if (fileWrite->Open(fileName, Urho3D::FILE_WRITE))
+    if (fileWrite->Open(fileName, FILE_WRITE))
     {
         for (uint row = 0; row < map.Size(); row++)
         {
@@ -173,7 +173,7 @@ Vector<Vector<float> > Level::CreateRandom(uint numRows, uint numCols)
 
     srand((uint)time(NULL));
 
-    Urho3D::SetRandomSeed((uint)rand());
+    SetRandomSeed((uint)rand());
 
     str.Push((float)Math::RandomInt(minHeight, maxHeight));
 

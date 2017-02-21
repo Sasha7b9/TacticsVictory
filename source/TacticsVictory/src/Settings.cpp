@@ -34,7 +34,7 @@ bool Settings::Load()
     mapFloatChild[FloatKey(TV_PANEL_SPEED)] = SET::PANEL::SPEED;
 
     File inFile(gContext);
-    if(inFile.Open(GetNameFile("settings.xml"), Urho3D::FILE_READ))
+    if(inFile.Open(GetNameFile("settings.xml"), FILE_READ))
     {
         file = new XMLFile(gContext);
         bool begined = file->BeginLoad(inFile);
@@ -122,7 +122,7 @@ void Settings::SetInt(char *name, int value)
 void Settings::Save()
 {
     File outFile(gContext);
-    outFile.Open(nameFile, Urho3D::FILE_WRITE);
+    outFile.Open(nameFile, FILE_WRITE);
     file->Save(outFile);
 }
 
@@ -139,7 +139,7 @@ bool Settings::GetIntFromChild(char *category, char *name, int *value)
         return false;
     }
 
-    *value = Urho3D::ToInt(child.GetChild(name).GetValue());
+    *value = ToInt(child.GetChild(name).GetValue());
     return true;
 }
 
@@ -154,7 +154,7 @@ bool Settings::GetFloatFromChild(char *category, char *name, float *value)
     {
         return false;
     }
-    *value = Urho3D::ToFloat(child.GetChild(name).GetValue());
+    *value = ToFloat(child.GetChild(name).GetValue());
     return true;
 }
 
@@ -164,7 +164,7 @@ bool Settings::GetIntFromChild(char *name, int *value)
     {
         return false;
     }
-    *value = Urho3D::ToInt(root.GetChild(name).GetValue());
+    *value = ToInt(root.GetChild(name).GetValue());
     return true;
 }
 

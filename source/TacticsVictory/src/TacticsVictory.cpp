@@ -59,7 +59,7 @@ void TacticsVictory::Stop()
     SAFE_DELETE(gFileSelector);
     SAFE_DELETE(gLevel);
     SAFE_DELETE(gGUI);
-    //File file(gContext, "ui.xml", Urho3D::FILE_WRITE);
+    //File file(gContext, "ui.xml", FILE_WRITE);
     //URHO3D_LOGINFO("Now save ui");
     //gUIRoot->SaveXML(file);
     URHO3D_LOGINFO("gSet->Save");
@@ -87,7 +87,7 @@ void TacticsVictory::CreateComponents()
     gRenderer = GetSubsystem<Renderer>();
     gGraphics = GetSubsystem<Graphics>();
 
-    gScene = new Urho3D::Scene(gContext);
+    gScene = new Scene(gContext);
     // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
     gScene->CreateComponent<Octree>();
 
@@ -123,9 +123,9 @@ void TacticsVictory::Start()
 
     gTime = GetSubsystem<Time>();
 
-    gLog = new Urho3D::Log(gContext);
+    gLog = new Log(gContext);
     gLog->Open("log.txt");
-    gLog->SetLevel(Urho3D::LOG_DEBUG);
+    gLog->SetLevel(LOG_DEBUG);
 
     RegistrationFactories();
 
@@ -165,16 +165,16 @@ void TacticsVictory::InitLocalizationSystem()
 
 void TacticsVictory::SubscribeToEvents()
 {
-    SubscribeToEvent(Urho3D::E_UPDATE, URHO3D_HANDLER(TacticsVictory, HandleUpdate));
-    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
-    SubscribeToEvent(Urho3D::E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
+    SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(TacticsVictory, HandleUpdate));
+    SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
     SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
-    SubscribeToEvent(Urho3D::E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
+    SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
 }
 
 void TacticsVictory::SetWindowTitleAndIcon()
 {
-    Urho3D::Image* icon = gCache->GetResource<Urho3D::Image>("Textures/TacticsVictoryIcon.png");
+    Image* icon = gCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     gGraphics->SetWindowIcon(icon);
     gGraphics->SetWindowTitle(L"Тактика победы");
 }

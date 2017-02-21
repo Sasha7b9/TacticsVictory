@@ -19,7 +19,7 @@ void lSlider::RegisterObject(Context *context)
 
 SharedPtr<lSlider> lSlider::Create(Window *window, char *text_)
 {
-    SharedPtr<Urho3D::Text> text(new Urho3D::Text(gContext));
+    SharedPtr<Text> text(new Text(gContext));
     text->SetText(gLocalization->Get(text_));
     text->SetStyle("MainMenuButton");
     window->AddChild(text);

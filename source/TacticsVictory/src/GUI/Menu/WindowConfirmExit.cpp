@@ -22,8 +22,8 @@ WindowConfirmExit::WindowConfirmExit(Context *) :
     buttonOk = new ButtonMain(layer, "Ok");
     buttonCancel = new ButtonMain(layer, "Cancel");
 
-    SubscribeToEvent(buttonOk, Urho3D::E_RELEASED, URHO3D_HANDLER(WindowConfirmExit, HandleButtonRelease));
-    SubscribeToEvent(buttonCancel, Urho3D::E_RELEASED, URHO3D_HANDLER(WindowConfirmExit, HandleButtonRelease));
+    SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(WindowConfirmExit, HandleButtonRelease));
+    SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(WindowConfirmExit, HandleButtonRelease));
 
     AddChild(layer);
 }
@@ -37,7 +37,7 @@ void WindowConfirmExit::RegisterObject(Context *context)
 
 void WindowConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    Urho3D::Button *button = (Urho3D::Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();
 
     if (button == buttonOk)
     {

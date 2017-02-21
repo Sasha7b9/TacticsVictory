@@ -26,9 +26,9 @@ private:
     SliderWithTextAndButtons& operator=(const SliderWithTextAndButtons&) {};
 
     SharedPtr<SliderInt> slider;
-    SharedPtr<Urho3D::Text> textValue;
-    SharedPtr<Urho3D::Button> buttonLeft;
-    SharedPtr<Urho3D::Button> buttonRight;
+    SharedPtr<Text> textValue;
+    SharedPtr<Button> buttonLeft;
+    SharedPtr<Button> buttonRight;
     SharedPtr<Hint> hint;
 
     void HandleSliderIntChanged(StringHash, VariantMap&);

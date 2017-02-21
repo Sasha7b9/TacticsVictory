@@ -60,7 +60,7 @@ bool RocketLauncher::TargetInPointView(Tank* target)
         Ray ray(position, direction);
 
         PODVector<RayQueryResult> results;
-        RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, radiusDetect * 2.0f, Urho3D::DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
+        RayOctreeQuery query(results, ray, RAY_TRIANGLE, radiusDetect * 2.0f, DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
         gScene->GetComponent<Octree>()->Raycast(query);
 
         while(results.Size() && results[0].drawable_->GetNode() == tank->GetNode())

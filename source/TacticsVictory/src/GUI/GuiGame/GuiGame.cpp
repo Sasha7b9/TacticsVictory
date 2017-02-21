@@ -16,12 +16,12 @@ GuiGame::GuiGame(Context *context) :
 
     CreateTabs();
 
-    SubscribeToEvent(Urho3D::E_KEYDOWN, URHO3D_HANDLER(GuiGame, HandleKeyDown));
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(GuiGame, HandleKeyDown));
 }
 
 void GuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
-    ButtonMain *button = (ButtonMain*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    ButtonMain *button = (ButtonMain*)eventData[Released::P_ELEMENT].GetPtr();
 
     if(button == buttonInterface)
     {
@@ -91,9 +91,9 @@ void GuiGame::HandleKeyDown(StringHash, VariantMap& eventData)
         return;
     }
 
-    int key = eventData[Urho3D::KeyDown::P_KEY].GetInt();
+    int key = eventData[KeyDown::P_KEY].GetInt();
 
-    if(key == Urho3D::KEY_I)
+    if(key == KEY_I)
     {
         ToggleInterfacePanels();
     }
@@ -118,11 +118,11 @@ void GuiGame::CreatePanels()
     int x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
     int y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
     buttonInterface = panelBottom->AddButton("Interface", x, y, width, height);
-    SubscribeToEvent(buttonInterface, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
+    SubscribeToEvent(buttonInterface, E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
 
     x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
     buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
-    SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
+    SubscribeToEvent(buttonMenu, E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
 }
 
 void GuiGame::CreateTabs()

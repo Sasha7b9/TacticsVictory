@@ -58,7 +58,7 @@ void PanelMain::AddTab(SharedPtr<Tab> tab)
 
     tabs.Push(tab);
 
-    SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, URHO3D_HANDLER(PanelMain, HandleToggedTitle));
+    SubscribeToEvent(tab->buttonTitle, E_TOGGLED, URHO3D_HANDLER(PanelMain, HandleToggedTitle));
 
     tab->SetPosition(0, y0 + tab->buttonTitle->GetHeight() - 1);
     tab->SetFixedSize(GetWidth(), GetHeight() - y0 - tab->buttonTitle->GetHeight() + 1);
@@ -66,8 +66,8 @@ void PanelMain::AddTab(SharedPtr<Tab> tab)
 
 void PanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
 {
-    ButtonToggled *button = (ButtonToggled*)eventData[Urho3D::Toggled::P_ELEMENT].GetPtr();
-    bool state = (bool)eventData[Urho3D::Toggled::P_STATE].GetBool();
+    ButtonToggled *button = (ButtonToggled*)eventData[Toggled::P_ELEMENT].GetPtr();
+    bool state = (bool)eventData[Toggled::P_STATE].GetBool();
 
     if(state)
     {
@@ -75,9 +75,9 @@ void PanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
         {
             if(tab->buttonTitle->IsChecked() && button != tab->buttonTitle)
             {
-                UnsubscribeFromEvent(tab->buttonTitle, Urho3D::E_TOGGLED);
+                UnsubscribeFromEvent(tab->buttonTitle, E_TOGGLED);
                 tab->buttonTitle->SetChecked(false);
-                SubscribeToEvent(tab->buttonTitle, Urho3D::E_TOGGLED, URHO3D_HANDLER(PanelMain, HandleToggedTitle));
+                SubscribeToEvent(tab->buttonTitle, E_TOGGLED, URHO3D_HANDLER(PanelMain, HandleToggedTitle));
             }
             else
             {

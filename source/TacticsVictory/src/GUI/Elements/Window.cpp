@@ -27,7 +27,7 @@ void lWindow::RegisterObject(Context *context)
 
 bool lWindow::IsChildOfParent()
 {
-    return gUIRoot->FindChild(this) != Urho3D::M_MAX_UNSIGNED;
+    return gUIRoot->FindChild(this) != M_MAX_UNSIGNED;
 }
 
 void lWindow::Toggle()

@@ -7,7 +7,7 @@
 Movinator::Movinator(Context *context) :
     LogicComponent(context)
 {
-    SetUpdateEventMask(Urho3D::USE_UPDATE);
+    SetUpdateEventMask(USE_UPDATE);
 }
 
 void Movinator::SetMoveSpeed(float speedMoving)

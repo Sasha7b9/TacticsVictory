@@ -43,11 +43,11 @@ public:
 
     bool Empty();
 
-    Plane GetIntersectionPlane(Ray &ray);
+    PlaneRTS GetIntersectionPlane(Ray &ray);
 
     Line GetIntersectionEdge(Ray &ray);
 
-    Plane GetPlane(uint row, uint col);
+    PlaneRTS GetPlane(uint row, uint col);
 
     Vector<Vector<float>> GetMap();
 

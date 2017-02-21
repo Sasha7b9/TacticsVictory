@@ -15,8 +15,8 @@ public:
     void ClearScene();
 
 private:
-    Plane currentPlane;
-    Plane selectedPlane;
+    PlaneRTS currentPlane;
+    PlaneRTS selectedPlane;
 
     Line currentEdge;
     Line selectedEdge;

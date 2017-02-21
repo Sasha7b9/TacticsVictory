@@ -60,7 +60,7 @@ void LayerTerrain::Build()
     }
 
     vb->SetShadowed(true);
-    vb->SetSize(vertexes.Size() / 8, Urho3D::MASK_POSITION | Urho3D::MASK_NORMAL | Urho3D::MASK_TEXCOORD1);
+    vb->SetSize(vertexes.Size() / 8, MASK_POSITION | MASK_NORMAL | MASK_TEXCOORD1);
     vb->SetData(bufVert);
 
     ib->SetShadowed(true);
@@ -69,7 +69,7 @@ void LayerTerrain::Build()
 
     geometry->SetVertexBuffer(0, vb);
     geometry->SetIndexBuffer(ib);
-    geometry->SetDrawRange(Urho3D::TRIANGLE_LIST, 0, ib->GetIndexCount());
+    geometry->SetDrawRange(TRIANGLE_LIST, 0, ib->GetIndexCount());
 
     model = new Model(gContext);
     Node *node = gScene->CreateChild(NODE_TERRAIN);

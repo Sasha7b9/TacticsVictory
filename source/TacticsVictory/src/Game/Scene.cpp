@@ -26,7 +26,7 @@ lScene::lScene(Context *context) :
 
     pathIndicator.Init();
 
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, URHO3D_HANDLER(lScene, HandleMouseDown));
+    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(lScene, HandleMouseDown));
 }
 
 lScene::~lScene()
@@ -114,7 +114,7 @@ void lScene::Create()
 
     Light *light = lightNode->CreateComponent<Light>();
     lightNode->SetScale(0.01f);
-    light->SetLightType(Urho3D::LIGHT_POINT);
+    light->SetLightType(LIGHT_POINT);
     light->SetRange(1000.0f);
     light->SetCastShadows(true);
     light->SetShadowBias(BiasParameters(0.00025f, 0.5f));
@@ -162,13 +162,13 @@ void lScene::Update(float /*timeStep*/)
 
 void lScene::HandleMouseDown(StringHash, VariantMap& eventData)
 {
-    int buttons = (int)eventData[Urho3D::MouseButtonDown::P_BUTTONS].GetInt();
+    int buttons = (int)eventData[MouseButtonDown::P_BUTTONS].GetInt();
 
-    if(buttons == Urho3D::MOUSEB_LEFT)
+    if(buttons == MOUSEB_LEFT)
     {
         ProcessMouseLeft();
     }
-    else if(buttons == Urho3D::MOUSEB_RIGHT)
+    else if(buttons == MOUSEB_RIGHT)
     {
         ProcessMouseRight();
     }

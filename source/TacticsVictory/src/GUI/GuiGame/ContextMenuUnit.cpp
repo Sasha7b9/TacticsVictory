@@ -14,9 +14,9 @@ ContextMenuUnit::ContextMenuUnit(Context *context) :
     SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowBorder");
 
-    SetLayout(Urho3D::LM_VERTICAL, 3, IntRect(3, 3, 3, 3));
+    SetLayout(LM_VERTICAL, 3, IntRect(3, 3, 3, 3));
     title = Label::Create("", 8);
-    title->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_TOP);
+    title->SetAlignment(HA_CENTER, VA_TOP);
     AddChild(title);
 }
 
@@ -34,13 +34,13 @@ void ContextMenuUnit::Create(GameObject *object_)
 void ContextMenuUnit::CreateForUnit()
 {
     SharedPtr<ButtonToggled> button(new ButtonToggled(nullptr, "Field View", 100));
-    SubscribeToEvent(button, Urho3D::E_TOGGLED, URHO3D_HANDLER(ContextMenuUnit, HandleToggledFiedView));
+    SubscribeToEvent(button, E_TOGGLED, URHO3D_HANDLER(ContextMenuUnit, HandleToggledFiedView));
     AddChild(button);
 }
 
 void ContextMenuUnit::HandleToggledFiedView(StringHash, VariantMap& eventData)
 {
-    bool state = (bool)eventData[Urho3D::Toggled::P_STATE].GetBool();
+    bool state = (bool)eventData[Toggled::P_STATE].GetBool();
 
     gWindowTarget->SetVisible(state);
 

@@ -30,15 +30,15 @@ void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
 
 void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
 {
-    int key = eventData[Urho3D::KeyDown::P_KEY].GetInt();
+    int key = eventData[KeyDown::P_KEY].GetInt();
 
     gUIRoot->RemoveChild(gHint);
 
-    if(key == Urho3D::KEY_F1)
+    if(key == KEY_F1)
     {
         gConsole->Toggle(); 
     }
-    else if(key == Urho3D::KEY_ESCAPE)
+    else if(key == KEY_ESCAPE)
     {
         if (gEngineConsole->IsVisible())            // Engine console is opened
         {
@@ -84,11 +84,11 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
             }
         }
     }
-    else if(key == Urho3D::KEY_F11)
+    else if(key == KEY_F11)
     {
         gEngineConsole->Toggle();
     }
-    else if(key == Urho3D::KEY_F10)
+    else if(key == KEY_F10)
     {
         gDebugHud->ToggleAll();
     }
@@ -96,12 +96,12 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         if(key == '9')
         {
-            Urho3D::Image screenshot(context_);
+            Image screenshot(context_);
             gGraphics->TakeScreenShot(screenshot);
             screenshot.SavePNG(gFileSystem->GetProgramDir() + "Data/Screenshot_" +
                                Time::GetTimeStamp().Replaced(':', '_').Replaced('.', '_').Replaced(' ', '_') + ".png");
         }
-        if(key == Urho3D::KEY_SPACE)
+        if(key == KEY_SPACE)
         {
             drawDebug = !drawDebug;
         }
@@ -124,7 +124,7 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
 
 void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
 {
-    float time = eventData[Urho3D::Update::P_TIMESTEP].GetFloat();
+    float time = eventData[Update::P_TIMESTEP].GetFloat();
 
     //LOGINFOF("time frame %f, time from begin %f, fps %f", time, gTime->GetElapsedTime(), gTime->GetFrameNumber() / gTime->GetElapsedTime());
 
@@ -144,7 +144,7 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
 
 void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& eventData)
 {
-    float time = eventData[Urho3D::Update::P_TIMESTEP].GetFloat();
+    float time = eventData[Update::P_TIMESTEP].GetFloat();
 
     Rocket::UpdateAll(time);
 }

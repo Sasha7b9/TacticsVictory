@@ -6,10 +6,10 @@
 #include "Graphics/Objects/Line.h"
 
 
-Plane Plane::ZERO = Plane(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);
+PlaneRTS PlaneRTS::ZERO = PlaneRTS(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);
 
 
-Plane::Plane(const Vector3 &v0_ /* = Vector3::ZERO */, const Vector3 &v1_ /* = Vector3::ZERO */, const Vector3 &v2_ /* = Vector3::ZERO */, const Vector3 &v3_ /* = Vector3::ZERO */)
+PlaneRTS::PlaneRTS(const Vector3 &v0_ /* = Vector3::ZERO */, const Vector3 &v1_ /* = Vector3::ZERO */, const Vector3 &v2_ /* = Vector3::ZERO */, const Vector3 &v3_ /* = Vector3::ZERO */)
 {
     v0 = v0_;
     v1 = v1_;
@@ -17,17 +17,17 @@ Plane::Plane(const Vector3 &v0_ /* = Vector3::ZERO */, const Vector3 &v1_ /* = V
     v3 = v3_;
 }
 
-bool Plane::IsEquals(const Plane &plane)
+bool PlaneRTS::IsEquals(const PlaneRTS &plane)
 {
     return v0 == plane.v0 && v1 == plane.v1 && v2 == plane.v2 && v3 == plane.v3;
 }
 
-bool Plane::IsZero()
+bool PlaneRTS::IsZero()
 {
     return v0 == Vector3::ZERO && v1 == Vector3::ZERO && v2 == Vector3::ZERO && v3 == Vector3::ZERO;
 }
 
-void Plane::CalculateRowCol()
+void PlaneRTS::CalculateRowCol()
 {
     float xMin = Math::Min(v0.x_, v1.x_, v2.x_, v3.x_);
     float xMax = Math::Max(v0.x_, v1.x_, v2.x_, v3.x_);
@@ -38,12 +38,12 @@ void Plane::CalculateRowCol()
     row = (uint)((zMin + zMax) / 2.0f);
 }
 
-void Plane::SetY(float y)
+void PlaneRTS::SetY(float y)
 {
     v0.y_ = v1.y_ = v2.y_ = v3.y_ = y;
 }
 
-Line Plane::NearEdge(Ray &ray)
+Line PlaneRTS::NearEdge(Ray &ray)
 {
     Line lines[] =
     {

@@ -16,20 +16,20 @@ GovernorCell::GovernorCell(Context *) :
     //ApplyAttributes();
     SetFixedSize(SET::MENU::GOVERNOR::CELL::SIZE);
 
-    label = new Urho3D::Text(gContext);
+    label = new Text(gContext);
     label->SetFont(gFont, 8);
-    label->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_CENTER);
+    label->SetAlignment(HA_CENTER, VA_CENTER);
 
     label->SetStyle("WindowNoBorder");
-    label->SetAlignment(Urho3D::HA_LEFT, Urho3D::VA_TOP);
+    label->SetAlignment(HA_LEFT, VA_TOP);
     label->SetPosition(1, -1);
     AddChild(label);
 
-    SubscribeToEvent(Urho3D::E_UIMOUSECLICK, URHO3D_HANDLER(GovernorCell, HandleMouseDown));
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONUP, URHO3D_HANDLER(GovernorCell, HandleMouseUp));
-    SubscribeToEvent(Urho3D::E_MOUSEMOVE, URHO3D_HANDLER(GovernorCell, HandleMouseMove));
-    SubscribeToEvent(this, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(GovernorCell, HandleHoverBegin));
-    SubscribeToEvent(this, Urho3D::E_HOVEREND, URHO3D_HANDLER(GovernorCell, HandleHoverEnd));
+    SubscribeToEvent(E_UIMOUSECLICK, URHO3D_HANDLER(GovernorCell, HandleMouseDown));
+    SubscribeToEvent(E_MOUSEBUTTONUP, URHO3D_HANDLER(GovernorCell, HandleMouseUp));
+    SubscribeToEvent(E_MOUSEMOVE, URHO3D_HANDLER(GovernorCell, HandleMouseMove));
+    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(GovernorCell, HandleHoverBegin));
+    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(GovernorCell, HandleHoverEnd));
 }
 
 void GovernorCell::SetSelected()
@@ -100,7 +100,7 @@ void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
 
     gCursor->GetCursor()->SetPosition(posCursor);
 
-    delta -= (int)eventData[Urho3D::MouseMove::P_DY].GetInt();
+    delta -= (int)eventData[MouseMove::P_DY].GetInt();
 
     if(delta > 20 || delta < -20)
     {
@@ -159,7 +159,7 @@ void GovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
     {
         return;
     }
-    GovernorCell *cell = (GovernorCell*)eventData[Urho3D::HoverBegin::P_ELEMENT].GetPtr();
+    GovernorCell *cell = (GovernorCell*)eventData[HoverBegin::P_ELEMENT].GetPtr();
     if(cell == this)
     {
         mouseOver = true;
@@ -194,7 +194,7 @@ GovernorFloat::GovernorFloat(Context *context) :
     int widthLabel = 168;
 
     label = Label::Create("Camera position Y", 8, widthLabel, 13);
-    label->SetAlignment(Urho3D::HA_LEFT, Urho3D::VA_CENTER);
+    label->SetAlignment(HA_LEFT, VA_CENTER);
     AddChild(label);
 
     for(int i = 0; i < numCells; i++)
@@ -226,13 +226,13 @@ GovernorFloat::GovernorFloat(Context *context) :
 
     SetFixedSize((SET::MENU::GOVERNOR::CELL::WIDTH - 1) * (numCells + 1) + 17 + widthLabel, SET::MENU::GOVERNOR::CELL::HEIGHT);
 
-    buttonDown = new Urho3D::Button(gContext);
+    buttonDown = new Button(gContext);
     buttonDown->SetStyle("DropDownButtonDown");
     AddChild(buttonDown);
     buttonDown->SetPosition((numCells + 1) * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + 4 + widthLabel, 0);
 
-    SubscribeToEvent(buttonDown, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonBegin));
-    SubscribeToEvent(buttonDown, Urho3D::E_HOVEREND, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonEnd));
+    SubscribeToEvent(buttonDown, E_HOVERBEGIN, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonBegin));
+    SubscribeToEvent(buttonDown, E_HOVEREND, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonEnd));
 }
 
 void GovernorFloat::RegisterObject(Context *context)

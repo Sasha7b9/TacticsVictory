@@ -47,7 +47,7 @@ private:
     void ChangeValue(int delta);
     void SetSymbolWithEvent(char symbol);
 
-    SharedPtr<Urho3D::Text> label;
+    SharedPtr<Text> label;
     char symbol = 0;
     bool mouseIsDown = false;
     bool mouseOver = false;
@@ -86,7 +86,7 @@ private:
     float GetValue();
 
     Vector<SharedPtr<GovernorCell> > cells;
-    SharedPtr<Urho3D::Button> buttonDown;
+    SharedPtr<Button> buttonDown;
     SharedPtr<Label> label;
     int numCells = 11;
     pFuncFV funcRead = nullptr;

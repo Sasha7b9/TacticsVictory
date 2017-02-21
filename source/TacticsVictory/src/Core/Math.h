@@ -51,7 +51,7 @@ public:
 
     static int RandomInt(int min, int max)
     {
-        int rnd = Urho3D::Rand();
+        int rnd = Rand();
 
         int delta = max - min + 1;
 

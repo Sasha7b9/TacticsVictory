@@ -29,14 +29,14 @@ void GameObject::EnableContextMenu()
     }
     contextMenu->SetPosition(gCursor->GetCursor()->GetPosition());
     gUIRoot->AddChild(contextMenu);
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GameObject, HandleOnMouseDown));
+    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GameObject, HandleOnMouseDown));
 }
 
 void GameObject::HandleOnMouseDown(StringHash, VariantMap&)
 {
     if(!contextMenu->UnderCursor())
     {
-        UnsubscribeFromEvent(Urho3D::E_MOUSEBUTTONDOWN);
+        UnsubscribeFromEvent(E_MOUSEBUTTONDOWN);
 
         gUIRoot->RemoveChild(contextMenu);
     }

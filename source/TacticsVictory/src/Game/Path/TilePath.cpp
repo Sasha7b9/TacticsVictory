@@ -33,7 +33,7 @@ TilePath::TilePath() : Object(gContext)
 
         SharedPtr<CustomGeometry> geometry(node->CreateComponent<CustomGeometry>());
 
-        geometry->BeginGeometry(0, Urho3D::TRIANGLE_LIST);
+        geometry->BeginGeometry(0, TRIANGLE_LIST);
         geometry->SetViewMask(VIEW_MASK_FOR_EFFECTS);
 
         for(int i = 0; i < 6; i++)

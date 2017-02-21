@@ -28,7 +28,7 @@ GuiEditor::GuiEditor(Context* context) :
 
     CreateWindows();
 
-    SubscribeToEvent(Urho3D::E_KEYDOWN, URHO3D_HANDLER(GuiEditor, HandleKeyDown));
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(GuiEditor, HandleKeyDown));
 }
 
 void GuiEditor::CreatePanels()
@@ -50,11 +50,11 @@ void GuiEditor::CreatePanels()
     y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
 
     buttonInterface = panelBottom->AddButton("Interface", x, y, width, height);
-    SubscribeToEvent(buttonInterface, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
+    SubscribeToEvent(buttonInterface, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
     x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
     buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
-    SubscribeToEvent(buttonMenu, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
+    SubscribeToEvent(buttonMenu, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
     gUIRoot->AddChild(panelBottom);
     panelBottom->BringToFront();
@@ -75,11 +75,11 @@ void GuiEditor::CreateTabFile()
 
     SharedPtr<ButtonMain> btnFileOpen = tabFile->AddButton("Load", 10, y, width, height);
     btnFileOpen->SetHint("loadMapFromFile");
-    SubscribeToEvent(btnFileOpen, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleFileLoad));
+    SubscribeToEvent(btnFileOpen, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleFileLoad));
 
     SharedPtr<ButtonMain> btnFileSave = tabFile->AddButton("Save", 10, y += dY, width, height);
     btnFileSave->SetHint("saveMapToFile");
-    SubscribeToEvent(btnFileSave, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleFileSave));
+    SubscribeToEvent(btnFileSave, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleFileSave));
 }
 
 void GuiEditor::CreateTabEdit()
@@ -91,11 +91,11 @@ void GuiEditor::CreateTabEdit()
 
     SharedPtr<ButtonMain> btnEditUndo = tabEdit->AddButton("Undo", x, y, width, height);
     btnEditUndo->SetHint("hintEditUndo");
-    SubscribeToEvent(btnEditUndo, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleEditUndo));
+    SubscribeToEvent(btnEditUndo, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleEditUndo));
 
     SharedPtr<ButtonMain>  btnEditRedo = tabEdit->AddButton("Redo", x, y += dY, width, height);
     btnEditRedo->SetHint("hintEditRedo");
-    SubscribeToEvent(btnEditRedo, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleEditRedo));
+    SubscribeToEvent(btnEditRedo, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleEditRedo));
 }
 
 void GuiEditor::CreateTabTerrain()
@@ -105,11 +105,11 @@ void GuiEditor::CreateTabTerrain()
 
     btnNewMap = tabTerrain->AddButton("New map", 10, y = 10, width, height);
     btnNewMap->SetHint("createNewMap");
-    SubscribeToEvent(btnNewMap, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
+    SubscribeToEvent(btnNewMap, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
     SharedPtr<ButtonMain> btnClearTerrain = tabTerrain->AddButton("Clear", 10, y += dY, width, height);
     btnClearTerrain->SetHint("clearTerrain");
-    SubscribeToEvent(btnClearTerrain, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleTerrainClearTerrain));
+    SubscribeToEvent(btnClearTerrain, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleTerrainClearTerrain));
 
     SharedPtr<SliderWithTextAndButtons> sliderHeightDefault = tabTerrain->AddSlider("", -100, 100, 1, btnClearTerrain->GetPosition().x_ + btnClearTerrain->GetWidth() + 5, y - 2, 0, 20);
     sliderHeightDefault->SetValue(0);
@@ -123,9 +123,9 @@ void GuiEditor::CreateTabTerrain()
     sliderSizeBrushY->SetValue(1);
     sliderSizeBrushY->SetHint("hintSliderSizeBrushY");
 
-    char *items[] = {"Plane", "Edge"};
+    char *items[] = {"PlaneRTS", "Edge"};
     SharedPtr<DropDownListWithTextAndButton> ddListModeSelect = tabTerrain->AddDDList("Mode select", 100, 80, 2, items, 10, y += dY);
-    SubscribeToEvent(ddListModeSelect, Urho3D::E_ITEMSELECTED, URHO3D_HANDLER(GuiEditor, HandleTerrainModeSelectChanged));
+    SubscribeToEvent(ddListModeSelect, E_ITEMSELECTED, URHO3D_HANDLER(GuiEditor, HandleTerrainModeSelectChanged));
 }
 
 void GuiEditor::CreateTabObjects()
@@ -137,7 +137,7 @@ void GuiEditor::CreateTabObjects()
 
     SharedPtr<ButtonMain> btnObjectsAdd = tabObjects->AddButton("Add", x, y, width, height);
     btnObjectsAdd->SetHint("hintObjectsAdd");
-    SubscribeToEvent(btnObjectsAdd, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleObjectsAdd));
+    SubscribeToEvent(btnObjectsAdd, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleObjectsAdd));
 }
 
 void GuiEditor::ToggleInterfacePanels()
@@ -162,7 +162,7 @@ void GuiEditor::ToggleInterfacePanels()
 
 void GuiEditor::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
-    ButtonMain *button = (ButtonMain*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    ButtonMain *button = (ButtonMain*)eventData[Released::P_ELEMENT].GetPtr();
 
     if (button == buttonInterface)
     {
@@ -225,7 +225,7 @@ void GuiEditor::CreateWindows()
     sliderSizeNewMapY = windowNewMap->AddSlider("Dimension Y", 50, 250, 50);
     sliderSizeNewMapY->SetValue(150);
     SharedPtr<ButtonMain> buttonCreateMap = windowNewMap->AddButton("Create");
-    SubscribeToEvent(buttonCreateMap, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleTerrainCreateNewMap));
+    SubscribeToEvent(buttonCreateMap, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleTerrainCreateNewMap));
 
     windowNewMap->SetFixedSize(windowNewMap->GetSize());
     SetWindowInCenterScreen(windowNewMap);
@@ -237,9 +237,9 @@ void GuiEditor::CreateWindows()
     SET_VERTICAL_LAYOUT_0_0(windowMenu);
 
     SharedPtr<ButtonMain> buttonOptions = windowMenu->AddButton("Options");
-    SubscribeToEvent(buttonOptions, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleOptions));
+    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleOptions));
     SharedPtr<ButtonMain> buttonExit = windowMenu->AddButton("Exit");
-    SubscribeToEvent(buttonExit, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleExit));
+    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleExit));
 
     windowMenu->SetFixedWidth(buttonMenu->GetWidth());
     windowMenu->SetFixedSize(windowMenu->GetSize());
@@ -257,10 +257,10 @@ void GuiEditor::CreateWindows()
     SET_HORIZONTAL_LAYOUT_6_6(layer);
 
     SharedPtr<ButtonMain> buttonOk(new ButtonMain(layer, "Ok"));
-    SubscribeToEvent(buttonOk, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleExitOk));
+    SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleExitOk));
 
     SharedPtr<ButtonMain> buttonCancel(new ButtonMain(layer, "Cancel"));
-    SubscribeToEvent(buttonCancel, Urho3D::E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleExitCancel));
+    SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleExitCancel));
 
     windowConfirmExit->AddChild(layer);
 
@@ -268,7 +268,7 @@ void GuiEditor::CreateWindows()
     windowConfirmExit->SetVisible(false);
     SetWindowInCenterScreen(windowConfirmExit);
 
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GuiEditor, HandleMouseDown));
+    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GuiEditor, HandleMouseDown));
 }
 
 void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
@@ -302,20 +302,20 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
         return;
     }
 
-    int key = eventData[Urho3D::KeyDown::P_KEY].GetInt();
+    int key = eventData[KeyDown::P_KEY].GetInt();
 
     if (gFileSelector->GetWindow()->IsVisible())
     {
-        if (key == Urho3D::KEY_ESCAPE)
+        if (key == KEY_ESCAPE)
         {
-            UnsubscribeFromEvent(gFileSelector, Urho3D::E_FILESELECTED);
+            UnsubscribeFromEvent(gFileSelector, E_FILESELECTED);
             gFileSelector->GetWindow()->SetVisible(false);
             gCamera->SetEnabled(true);
         }
         return;
     }
 
-    if (key == Urho3D::KEY_ESCAPE)
+    if (key == KEY_ESCAPE)
     {
         if(!gOpenedWindow.Empty())
         {
@@ -324,7 +324,7 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
             gOpenedWindow.Remove(window);
         }
     }
-    else if (key == Urho3D::KEY_I)
+    else if (key == KEY_I)
     {
         ToggleInterfacePanels();
     }
@@ -340,7 +340,7 @@ void GuiEditor::HandleFileLoad(StringHash, VariantMap&)
 
     OpenFileSelector("Load landscape", "Load", "Cancel", filters);
 
-    SubscribeToEvent(gFileSelector, Urho3D::E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorLoadTerrain));
+    SubscribeToEvent(gFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorLoadTerrain));
 }
 
 void GuiEditor::HandleFileSave(StringHash, VariantMap&)
@@ -353,18 +353,18 @@ void GuiEditor::HandleFileSave(StringHash, VariantMap&)
 
     OpenFileSelector("Save landscape", "Save", "Cancel", filters);
 
-    SubscribeToEvent(gFileSelector, Urho3D::E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorSaveTerrain));
+    SubscribeToEvent(gFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorSaveTerrain));
 }
 
 void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
 {
-    UnsubscribeFromEvent(gFileSelector, Urho3D::E_FILESELECTED);
+    UnsubscribeFromEvent(gFileSelector, E_FILESELECTED);
 
-    bool ok = (bool)eventData[Urho3D::FileSelected::P_OK].GetBool();
+    bool ok = (bool)eventData[FileSelected::P_OK].GetBool();
 
     if(ok)
     {
-        Vector<Vector<float>> map = gLevel->Load((char*)((String)eventData[Urho3D::FileSelected::P_FILENAME].GetString()).CString());
+        Vector<Vector<float>> map = gLevel->Load((char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
         SAFE_DELETE(gTerrain);
         gTerrain = new TerrainRTS();
         gTerrain->CreateFromVector(map);
@@ -378,13 +378,13 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
 
 void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData)
 {
-    UnsubscribeFromEvent(gFileSelector, Urho3D::E_FILESELECTED);
+    UnsubscribeFromEvent(gFileSelector, E_FILESELECTED);
 
-    bool ok = (bool)eventData[Urho3D::FileSelected::P_OK].GetBool();
+    bool ok = (bool)eventData[FileSelected::P_OK].GetBool();
 
     if (ok)
     {
-        String fileName = (String)eventData[Urho3D::FileSelected::P_FILENAME].GetString();
+        String fileName = (String)eventData[FileSelected::P_FILENAME].GetString();
         fileName = ReplaceExtension(fileName, ".map");
         gLevel->SetMap(gTerrain->GetMap());
         gLevel->Save(fileName);
@@ -426,7 +426,7 @@ void GuiEditor::HandleMouseDown(StringHash, VariantMap&)
 
 void GuiEditor::HandleTerrainModeSelectChanged(StringHash, VariantMap& eventData)
 {
-    int index = eventData[Urho3D::ItemSelected::P_SELECTION].GetInt();
+    int index = eventData[ItemSelected::P_SELECTION].GetInt();
 
     modeSelect = (ModeSelect)index;
 }

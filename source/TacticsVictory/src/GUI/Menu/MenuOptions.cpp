@@ -36,7 +36,7 @@ MenuOptions::MenuOptions(Context *context) :
 
 #define CREATE_DDLWTAB(name, text, num, itms, startIndex)   \
     name = DropDownListWithTextAndButton::Create(this, text, width0, width1, num, itms);  \
-    SubscribeToEvent(name, Urho3D::E_ITEMSELECTED, URHO3D_HANDLER(MenuOptions, HandleItemSelected));     \
+    SubscribeToEvent(name, E_ITEMSELECTED, URHO3D_HANDLER(MenuOptions, HandleItemSelected));     \
     name->SetSelection(startIndex);
 
     char *items1[] = {"Low", "Medium", "High"};
@@ -65,10 +65,10 @@ MenuOptions::MenuOptions(Context *context) :
     CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, (uint)gRenderer->GetShadowQuality());
 
     SharedPtr<UIElement> layout(CreateChild<UIElement>());
-    layout->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_TOP);
+    layout->SetAlignment(HA_CENTER, VA_TOP);
 
     buttonClose = new ButtonMain(0, "Close", 100);
-    SubscribeToEvent(buttonClose, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuOptions, HandleButtonRelease));
+    SubscribeToEvent(buttonClose, E_RELEASED, URHO3D_HANDLER(MenuOptions, HandleButtonRelease));
     layout->AddChild(buttonClose);
     AddChild(layout);
     layout->SetMinHeight(buttonClose->GetHeight());
@@ -93,8 +93,8 @@ void MenuOptions::RegisterObject(Context *context)
 
 void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 {
-    DropDownListWithTextAndButton *ddList = (DropDownListWithTextAndButton*)eventData[Urho3D::ItemSelected::P_ELEMENT].GetPtr();
-    int index = eventData[Urho3D::ItemSelected::P_SELECTION].GetInt();
+    DropDownListWithTextAndButton *ddList = (DropDownListWithTextAndButton*)eventData[ItemSelected::P_ELEMENT].GetPtr();
+    int index = eventData[ItemSelected::P_SELECTION].GetInt();
 
     if(ddList == ddlTextureQuality)
     {
@@ -128,7 +128,7 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     }
     else if(ddList == ddlShadowQuality)
     {
-        gRenderer->SetShadowQuality((Urho3D::ShadowQuality)index);
+        gRenderer->SetShadowQuality((ShadowQuality)index);
     }
     else if(ddList == ddlDynamicInstancing)
     {
@@ -158,7 +158,7 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 
 void MenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    Urho3D::Button *button = (Urho3D::Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();
     eventData = GetEventDataMap();
     eventData[MenuEvent::P_TYPE] = mapButtonsActions[button];
     SendEvent(E_MENU, eventData);

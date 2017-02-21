@@ -27,7 +27,7 @@ class lCursor : public Object
 public:
     lCursor();
 
-    SharedPtr<Urho3D::Cursor> GetCursor();
+    SharedPtr<Cursor> GetCursor();
 
     void Update(float dT);
 
@@ -39,7 +39,7 @@ public:
     Drawable* GetRaycastNode(Vector3 *hitPos = 0);
 
 private:
-    SharedPtr<Urho3D::Cursor> cursor;
+    SharedPtr<Cursor> cursor;
     SharedPtr<CursorShapes> shapes;
     SharedPtr<Node> nodeSprite;
     SharedPtr<Sprite2D> sprite;

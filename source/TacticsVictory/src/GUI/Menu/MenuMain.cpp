@@ -13,7 +13,7 @@
 MenuMain::MenuMain(Context *) :
     lWindow()
 {
-    SetLayout(Urho3D::LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
+    SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
 
     SharedPtr<Label> text(Label::Create("Tactics Victory", 20, -1, -1));
@@ -27,11 +27,11 @@ MenuMain::MenuMain(Context *) :
     buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
     buttonExit = new ButtonMain(this, "Exit");
 
-    SubscribeToEvent(buttonOptions, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonEditor, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonNewGame, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonLanguage, Urho3D::E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonNewGame, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
 
     text->SetWidth(GetWidth());
 
@@ -50,7 +50,7 @@ void MenuMain::RegisterObject(Context* context)
 
 void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    Urho3D::Button *button = (Urho3D::Button*)eventData[Urho3D::Released::P_ELEMENT].GetPtr();
+    Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();
 
     if (button == buttonExit)
     {

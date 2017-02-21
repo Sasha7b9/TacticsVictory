@@ -18,8 +18,8 @@ UnitObject::UnitObject(Context *context) :
     cameraTarget->SetFarClip(100.0f);
 
     renderTexture = new Texture2D(gContext);
-    renderTexture->SetSize(WIDTH_WINDOW_TARGET, HEIGHT_WINDOW_TARGET, Graphics::GetRGBFormat(), Urho3D::TEXTURE_RENDERTARGET);
-    renderTexture->SetFilterMode(Urho3D::FILTER_DEFAULT);
+    renderTexture->SetSize(WIDTH_WINDOW_TARGET, HEIGHT_WINDOW_TARGET, Graphics::GetRGBFormat(), TEXTURE_RENDERTARGET);
+    renderTexture->SetFilterMode(FILTER_DEFAULT);
 
     renderSurface = renderTexture->GetRenderSurface();
     SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraTarget));
@@ -47,12 +47,12 @@ void UnitObject::SetSelected(bool selected)
 
     if(selected && viewTargetView)
     {
-        renderSurface->SetUpdateMode(Urho3D::SURFACE_UPDATEALWAYS);
-        SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, URHO3D_HANDLER(UnitObject, HandlePostRenderUpdate));
+        renderSurface->SetUpdateMode(SURFACE_UPDATEALWAYS);
+        SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(UnitObject, HandlePostRenderUpdate));
     }
     else
     {
-        renderSurface->SetUpdateMode(Urho3D::SURFACE_MANUALUPDATE);
-        UnsubscribeFromEvent(Urho3D::E_POSTRENDERUPDATE);
+        renderSurface->SetUpdateMode(SURFACE_MANUALUPDATE);
+        UnsubscribeFromEvent(E_POSTRENDERUPDATE);
     }
 }

@@ -8,7 +8,7 @@
 
 
 ButtonMain::ButtonMain(Context *context) :
-    Urho3D::Button(context)
+    Button(context)
 {
     SetStyle("MainMenuButton");
 
@@ -17,7 +17,7 @@ ButtonMain::ButtonMain(Context *context) :
 }
 
 ButtonMain::ButtonMain(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
-    Urho3D::Button(gContext)
+    Button(gContext)
 {
     SetStyleAuto(gUIRoot->GetDefaultStyle());
     SetStyle("MainMenuButton");
@@ -46,15 +46,15 @@ ButtonMain::ButtonMain(UIElement *uielement, char *text, int width /* = -1 */, i
         SetFixedSize(width, height);
     }
 
-    SubscribeToEvent(this, Urho3D::E_HOVERBEGIN, URHO3D_HANDLER(ButtonMain, HandleHoverBegin));
-    SubscribeToEvent(this, Urho3D::E_HOVEREND, URHO3D_HANDLER(ButtonMain, HandleHoverEnd));
+    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(ButtonMain, HandleHoverBegin));
+    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(ButtonMain, HandleHoverEnd));
 }
 
 void ButtonMain::RegisterObject(Context *context)
 {
     context->RegisterFactory<ButtonMain>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(Urho3D::Button);
+    URHO3D_COPY_BASE_ATTRIBUTES(Button);
 }
 
 void ButtonMain::SetText(char *text)
@@ -77,11 +77,11 @@ void ButtonMain::HandleHoverEnd(StringHash, VariantMap&)
     gCursor->SetNormal();
 }
 
-void ButtonMain::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Urho3D::Cursor* cursor)
+void ButtonMain::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Cursor* cursor)
 {
-    Urho3D::Button::OnClickBegin(position, screenPosition, button, buttons, qualifiers, cursor);
+    Button::OnClickBegin(position, screenPosition, button, buttons, qualifiers, cursor);
 
-    if(buttons == Urho3D::MOUSEB_RIGHT)
+    if(buttons == MOUSEB_RIGHT)
     {
         if(hint)
         {

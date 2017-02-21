@@ -4,12 +4,12 @@
 #include "Graphics/Objects/Line.h"
 
 
-class Plane
+class PlaneRTS
 {
 public:
-    Plane(const Vector3 &v0 = Vector3::ZERO, const Vector3 &v1 = Vector3::ZERO, const Vector3 &v2 = Vector3::ZERO, const Vector3 &v3 = Vector3::ZERO);
+    PlaneRTS(const Vector3 &v0 = Vector3::ZERO, const Vector3 &v1 = Vector3::ZERO, const Vector3 &v2 = Vector3::ZERO, const Vector3 &v3 = Vector3::ZERO);
 
-    bool IsEquals(const Plane &plane);
+    bool IsEquals(const PlaneRTS &plane);
     bool IsZero();
     void CalculateRowCol();
     void SetY(float y);
@@ -23,5 +23,5 @@ public:
     uint row = 0;
     uint col = 0;
 
-    static Plane ZERO;
+    static PlaneRTS ZERO;
 };

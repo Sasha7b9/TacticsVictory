@@ -9,7 +9,7 @@ Rotator::Rotator(Context* context) :
     rotationSpeed(Vector3::ZERO)
 {
     // Only the scene update event is needed: unsubscribe from the rest for optimization
-    SetUpdateEventMask(Urho3D::USE_UPDATE);
+    SetUpdateEventMask(USE_UPDATE);
 }
 
 void Rotator::SetRotationSpeed(const Vector3& speed)

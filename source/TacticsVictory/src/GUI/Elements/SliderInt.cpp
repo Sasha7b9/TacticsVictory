@@ -21,7 +21,7 @@ void SliderInt::SetRange(int min_, int max_, int step_)
     Slider::SetRange(max - delta);
 }
 
-void SliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Urho3D::Cursor* cursor)
+void SliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Cursor* cursor)
 {
     Slider::OnDragMove(position, screenPosition, deltaPos, buttons, qualifiers, cursor);
 

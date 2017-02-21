@@ -7,7 +7,7 @@
 Label::Label(Context *context) :
     Text(context)
 {
-    SubscribeToEvent(Urho3D::E_CHANGELANGUAGE, URHO3D_HANDLER(Label, HandleChangeLanguage));
+    SubscribeToEvent(E_CHANGELANGUAGE, URHO3D_HANDLER(Label, HandleChangeLanguage));
 }
 
 void Label::RegisterObject(Context *context)
@@ -22,7 +22,7 @@ SharedPtr<Label> Label::Create(char *text_, int sizeFont, int width /* = -1 */, 
     SharedPtr<Label> text(new Label(gContext));
     text->text = text_;
     text->SetFont(gFont, sizeFont);
-    text->SetAlignment(Urho3D::HA_CENTER, Urho3D::VA_CENTER);
+    text->SetAlignment(HA_CENTER, VA_CENTER);
 
     if(width == -1 && height == -1)
     {
@@ -50,10 +50,10 @@ void Label::SetText(char *text_)
 {
     text = text_;
 
-    Urho3D::Text::SetText(gLocalization->Get(text));
+    Text::SetText(gLocalization->Get(text));
 }
 
 void Label::HandleChangeLanguage(StringHash, VariantMap&)
 {
-    Urho3D::Text::SetText((char*)gLocalization->Get(text).CString());
+    Text::SetText((char*)gLocalization->Get(text).CString());
 }

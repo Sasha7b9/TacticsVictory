@@ -140,9 +140,9 @@ bool TerrainRTS::Empty()
     return level.Empty();
 }
 
-Plane TerrainRTS::GetIntersectionPlane(Ray& /*ray*/)
+PlaneRTS TerrainRTS::GetIntersectionPlane(Ray& /*ray*/)
 {
-    return Plane::ZERO;
+    return PlaneRTS::ZERO;
 }
 
 Line TerrainRTS::GetIntersectionEdge(Ray &/*ray*/)
@@ -150,9 +150,9 @@ Line TerrainRTS::GetIntersectionEdge(Ray &/*ray*/)
     return Line::ZERO;
 }
 
-Plane TerrainRTS::GetPlane(uint /*row*/, uint /*col*/)
+PlaneRTS TerrainRTS::GetPlane(uint /*row*/, uint /*col*/)
 {
-    return Plane::ZERO;
+    return PlaneRTS::ZERO;
 }
 
 Vector<Vector<float>> TerrainRTS::GetMap()

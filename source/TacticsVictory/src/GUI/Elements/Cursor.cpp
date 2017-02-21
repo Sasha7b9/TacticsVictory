@@ -30,7 +30,7 @@ lCursor::lCursor() : Object(gContext)
     nodeSprite = gScene->CreateChild("Cursor sprite");
     staticSprite = nodeSprite->CreateComponent<StaticSprite2D>();
     staticSprite->SetColor(Color(Random(1.0f), Random(1.0f), Random(1.0f), 1.0f));
-    staticSprite->SetBlendMode(Urho3D::BLEND_ALPHA);
+    staticSprite->SetBlendMode(BLEND_ALPHA);
     nodeSprite->SetEnabled(true);
 }
 
@@ -110,7 +110,7 @@ void lCursor::Update(float dT)
             {
                 type = TypeCursor_Down;
             }
-            else if (gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT | Urho3D::MOUSEB_MIDDLE))
+            else if (gInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
             {
                 static float thisNumFrame = 0.0f;
                 int dX = gInput->GetMouseMoveX();
@@ -179,7 +179,7 @@ Drawable* lCursor::GetRaycastNode(Vector3 *hitPos_)
 
     Ray ray = gCamera->GetCursorRay();
     PODVector<RayQueryResult> results;
-    RayOctreeQuery query(results, ray, Urho3D::RAY_TRIANGLE, Urho3D::M_INFINITY, Urho3D::DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
+    RayOctreeQuery query(results, ray, RAY_TRIANGLE, M_INFINITY, DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
     gScene->GetComponent<Octree>()->Raycast(query);
 
     if(results.Size())

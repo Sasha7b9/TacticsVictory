@@ -10,14 +10,14 @@ CameraRTS::CameraRTS()
 {
     cameraNode = gScene->CreateChild("Camera");
 
-    Urho3D::Camera *camera = cameraNode->CreateComponent<Urho3D::Camera>();
+    Camera *camera = cameraNode->CreateComponent<Camera>();
     camera->SetFarClip(1000.0f);
     camera->SetNearClip(1.0f);
     cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
     cameraNode->SetPosition({-37.0f, 45.0f, 15.0f});
 
     light = cameraNode->CreateComponent<Light>();
-    light->SetLightType(Urho3D::LIGHT_POINT);
+    light->SetLightType(LIGHT_POINT);
     light->SetRange(25.0f);
     light->SetEnabled(true);
 
@@ -72,43 +72,43 @@ void CameraRTS::Move(float time)
 
     TypeCursor cursor = gCursor->GetType();
 
-    if(cursor == TypeCursor_Up || cursor == TypeCursor_TopLeft || cursor == TypeCursor_TopRight || (gInput->GetKeyDown(Urho3D::KEY_UP) && arrowEnabled))
+    if(cursor == TypeCursor_Up || cursor == TypeCursor_TopLeft || cursor == TypeCursor_TopRight || (gInput->GetKeyDown(KEY_UP) && arrowEnabled))
     {
         MoveOn(Direction_Forward, distance);
     }
-    if(cursor == TypeCursor_Down || cursor == TypeCursor_DownLeft || cursor == TypeCursor_DownRight || (gInput->GetKeyDown(Urho3D::KEY_DOWN) && arrowEnabled))
+    if(cursor == TypeCursor_Down || cursor == TypeCursor_DownLeft || cursor == TypeCursor_DownRight || (gInput->GetKeyDown(KEY_DOWN) && arrowEnabled))
     {
         MoveOn(Direction_Back, distance);
     }
-    if(cursor == TypeCursor_Left || cursor == TypeCursor_TopLeft || cursor == TypeCursor_DownLeft || (gInput->GetKeyDown(Urho3D::KEY_LEFT) && arrowEnabled))
+    if(cursor == TypeCursor_Left || cursor == TypeCursor_TopLeft || cursor == TypeCursor_DownLeft || (gInput->GetKeyDown(KEY_LEFT) && arrowEnabled))
     {
         MoveOn(Direction_Left, distance);
     }
-    if(cursor == TypeCursor_Right || cursor == TypeCursor_TopRight || cursor == TypeCursor_DownRight || (gInput->GetKeyDown(Urho3D::KEY_RIGHT) && arrowEnabled))
+    if(cursor == TypeCursor_Right || cursor == TypeCursor_TopRight || cursor == TypeCursor_DownRight || (gInput->GetKeyDown(KEY_RIGHT) && arrowEnabled))
     {
         MoveOn(Direction_Right, distance);
     }
-    if(gInput->GetKeyDown(Urho3D::KEY_HOME))
+    if(gInput->GetKeyDown(KEY_HOME))
     {
         MoveOn(Direction_Closer, distance);
     }
-    if(gInput->GetKeyDown(Urho3D::KEY_PAGEUP))
+    if(gInput->GetKeyDown(KEY_PAGEUP))
     {
         MoveOn(Direction_Further, distance);
     }
-    if(gInput->GetKeyDown(Urho3D::KEY_END))
+    if(gInput->GetKeyDown(KEY_END))
     {
         MoveOn(Direction_RotateYAW, -distance);
     }
-    if(gInput->GetKeyDown(Urho3D::KEY_PAGEDOWN))
+    if(gInput->GetKeyDown(KEY_PAGEDOWN))
     {
         MoveOn(Direction_RotateYAW, distance);
     }
-    if(gInput->GetKeyDown(Urho3D::KEY_INSERT))
+    if(gInput->GetKeyDown(KEY_INSERT))
     {
         MoveOn(Direction_RotatePITCH, distance);
     }
-    if(gInput->GetKeyDown(Urho3D::KEY_DELETE))
+    if(gInput->GetKeyDown(KEY_DELETE))
     {
         MoveOn(Direction_RotatePITCH, -distance);
     }
@@ -121,18 +121,18 @@ void CameraRTS::Move(float time)
         IntVector2 posCursor = gCursor->GetCursor()->GetPosition();
         posCursor.x_ -= dX;
         posCursor.y_ -= dY;
-        if((dY || dX) && gInput->GetMouseButtonDown(Urho3D::MOUSEB_LEFT) && gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT))
+        if((dY || dX) && gInput->GetMouseButtonDown(MOUSEB_LEFT) && gInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
             MoveOn(dY < 0 ? Direction_Closer : Direction_Further, fabs(dY / 10.0f));
             gCursor->GetCursor()->SetPosition(posCursor);
         }
-        else if((dX || dY) && gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT))
+        else if((dX || dY) && gInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
             MoveOn(Direction_RotateYAW, dX / 10.0f);
             MoveOn(Direction_RotatePITCH, dY / 10.0f);
             gCursor->GetCursor()->SetPosition(posCursor);
         }
-        else if((dX || dY) && gInput->GetMouseButtonDown(Urho3D::MOUSEB_MIDDLE))
+        else if((dX || dY) && gInput->GetMouseButtonDown(MOUSEB_MIDDLE))
         {
             float k = 20.0f;
             if(dX > 0)
@@ -172,7 +172,7 @@ void CameraRTS::SetPitch(float newPitch)
     float angleNeed = newPitch - pitch;
 
     Quaternion rotateNeed(-angleNeed, {Sin(yaw + 270.0f), 0.0f, Cos(yaw + 270.0f)});
-    cameraNode->RotateAround(lookAt, rotateNeed, Urho3D::TS_WORLD);
+    cameraNode->RotateAround(lookAt, rotateNeed, TS_WORLD);
 }
 
 void CameraRTS::MoveOn(Direction direction, float distance)
@@ -209,14 +209,14 @@ void CameraRTS::MoveOn(Direction direction, float distance)
         {
             const float delta = 270.0f;
             Quaternion rotate(-distance, {Sin(yaw + delta), 0.0f, Cos(yaw + delta)});
-            cameraNode->RotateAround(lookAt, rotate, Urho3D::TS_WORLD);
+            cameraNode->RotateAround(lookAt, rotate, TS_WORLD);
         }
     }
 
     if (direction == Direction_RotateYAW)
     {
         Quaternion rotate(distance, Vector3::UP);
-        cameraNode->RotateAround(lookAt, rotate, Urho3D::TS_PARENT);
+        cameraNode->RotateAround(lookAt, rotate, TS_PARENT);
         LookAt(lookAt);
     }
 
@@ -235,22 +235,22 @@ void CameraRTS::MoveOn(Direction direction, float distance)
 
     if(direction == Direction_Forward)
     {
-        cameraNode->Translate(delta, Urho3D::TS_WORLD);
+        cameraNode->Translate(delta, TS_WORLD);
         LookAt(lookAt + delta);
     }
     if(direction == Direction_Back)
     {
-        cameraNode->Translate(-delta, Urho3D::TS_WORLD);
+        cameraNode->Translate(-delta, TS_WORLD);
         LookAt(lookAt - delta);
     }
     if(direction == Direction_Left)
     {
-        cameraNode->Translate(-delta, Urho3D::TS_WORLD);
+        cameraNode->Translate(-delta, TS_WORLD);
         LookAt(lookAt - delta);
     }
     if(direction == Direction_Right)
     {
-        cameraNode->Translate(delta, Urho3D::TS_WORLD);
+        cameraNode->Translate(delta, TS_WORLD);
         LookAt(lookAt + delta);
     }
     if(direction == Direction_Closer)
@@ -288,5 +288,5 @@ SharedPtr<Node> CameraRTS::GetNode()
 Ray CameraRTS::GetCursorRay()
 {
     IntVector2 pos = gUI->GetCursorPosition();
-    return cameraNode->GetComponent<Urho3D::Camera>()->GetScreenRay((float)pos.x_ / gGraphics->GetWidth(), (float)pos.y_ / gGraphics->GetHeight());
+    return cameraNode->GetComponent<Camera>()->GetScreenRay((float)pos.x_ / gGraphics->GetWidth(), (float)pos.y_ / gGraphics->GetHeight());
 }

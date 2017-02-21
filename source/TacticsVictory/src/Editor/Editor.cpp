@@ -13,8 +13,8 @@
 
 Editor::Editor(Context *context) : Object(context)
 {
-    currentPlane = Plane::ZERO;
-    selectedPlane = Plane::ZERO;
+    currentPlane = PlaneRTS::ZERO;
+    selectedPlane = PlaneRTS::ZERO;
 }
 
 
@@ -34,9 +34,9 @@ void Editor::Run()
 
     lightNode = gScene->CreateChild("LightNode");
 
-    SharedPtr<Light> light(lightNode->CreateComponent<Urho3D::Light>());
+    SharedPtr<Light> light(lightNode->CreateComponent<Light>());
     lightNode->SetScale(0.01f);
-    light->SetLightType(Urho3D::LIGHT_POINT);
+    light->SetLightType(LIGHT_POINT);
     light->SetRange(1000.0f);
     light->SetCastShadows(true);
     light->SetShadowBias(BiasParameters(0.00025f, 0.5f));
@@ -46,9 +46,9 @@ void Editor::Run()
     gCamera->SetPosition({(float)gTerrain->NumCols() / 2, 5.0f, -(float)gTerrain->NumRows() / 2 - 10.0f}, {(float)gTerrain->NumCols() / 2, 0.0f, -(float)gTerrain->NumRows() / 2});
     lightNode->SetPosition({(float)gTerrain->NumCols() / 2, 50.0f, -(float)gTerrain->NumRows() / 2});
 
-    SubscribeToEvent(Urho3D::E_POSTRENDERUPDATE, URHO3D_HANDLER(Editor, HandlePostRenderUpdate));
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, URHO3D_HANDLER(Editor, HandleMouseDown));
-    SubscribeToEvent(Urho3D::E_KEYDOWN, URHO3D_HANDLER(Editor, HandleKeyDown));
+    SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Editor, HandlePostRenderUpdate));
+    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(Editor, HandleMouseDown));
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(Editor, HandleKeyDown));
     
     /*
     for(uint row = 0; row < 10; row++)
@@ -91,7 +91,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
     float relX = (float)pos.x_ / gGraphics->GetWidth();
     float relY = (float)pos.y_ / gGraphics->GetHeight();
 
-    Ray ray = gCamera->GetNode()->GetComponent<Urho3D::Camera>()->GetScreenRay(relX, relY);
+    Ray ray = gCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
 
     if (gGuiEditor->modeSelect == GuiEditor::ModeSelect_Plane)
     {
@@ -102,7 +102,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
         }
 
-        if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT | Urho3D::MOUSEB_MIDDLE))
+        if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             Timer timer;
             currentPlane = gTerrain->GetIntersectionPlane(ray);
@@ -126,7 +126,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
     if (gGuiEditor->modeSelect == GuiEditor::ModeSelect_Edge)
     {
-        if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT | Urho3D::MOUSEB_MIDDLE))
+        if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             currentEdge = gTerrain->GetIntersectionEdge(ray);
 
@@ -166,7 +166,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
     }
 
     /*
-    float deltaStep = (float)eventData[Urho3D::PostRenderUpdate::P_TIMESTEP].GetFloat();
+    float deltaStep = (float)eventData[PostRenderUpdate::P_TIMESTEP].GetFloat();
 
     static float currentHeight = 0.0f;
 
@@ -192,16 +192,16 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
 
     if (gGuiEditor->modeSelect == GuiEditor::ModeSelect_Plane)
     {
-        if (gInput->GetMouseButtonDown(Urho3D::MOUSEB_LEFT) && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_MIDDLE) && !gInput->GetMouseButtonDown(Urho3D::MOUSEB_RIGHT))
+        if (gInput->GetMouseButtonDown(MOUSEB_LEFT) && !gInput->GetMouseButtonDown(MOUSEB_MIDDLE) && !gInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
-            if (!selectedPlane.IsEquals(Plane::ZERO) && selectedPlane.IsEquals(currentPlane))
+            if (!selectedPlane.IsEquals(PlaneRTS::ZERO) && selectedPlane.IsEquals(currentPlane))
             {
-                selectedPlane = Plane::ZERO;
+                selectedPlane = PlaneRTS::ZERO;
                 gCamera->EnableArrows();
             }
             else
             {
-                selectedPlane = Plane::ZERO;
+                selectedPlane = PlaneRTS::ZERO;
                 gCamera->EnableArrows();
 
                 if (!currentPlane.IsZero())
@@ -217,47 +217,47 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
 
 void Editor::HandleKeyDown(StringHash, VariantMap& eventData)
 {
-    int key = eventData[Urho3D::KeyDown::P_KEY].GetInt();
+    int key = eventData[KeyDown::P_KEY].GetInt();
 
     if(!selectedPlane.IsZero())
     {
         uint row = selectedPlane.row;
         uint col = selectedPlane.col;
         float height = gTerrain->GetHeight(row, col);
-        if(key == Urho3D::KEY_KP_MINUS)
+        if(key == KEY_KP_MINUS)
         {
             gTerrain->SetHeight(row, col, height - 1.0f);
             gTerrain->Update();
         }
-        else if(key == Urho3D::KEY_KP_PLUS)
+        else if(key == KEY_KP_PLUS)
         {
             gTerrain->SetHeight(row, col, height + 1.0f);
             gTerrain->Update();
         }
         selectedPlane = gTerrain->GetPlane(row, col);
 
-        if (key == Urho3D::KEY_LEFT)
+        if (key == KEY_LEFT)
         {
             if (col > 0)
             {
                 selectedPlane = gTerrain->GetPlane(row, col - 1);
             }
         }
-        else if (key == Urho3D::KEY_RIGHT)
+        else if (key == KEY_RIGHT)
         {
             if (col < gLevel->GetWidth() - 1)
             {
                 selectedPlane = gTerrain->GetPlane(row, col + 1);
             }
         }
-        else if (key == Urho3D::KEY_UP)
+        else if (key == KEY_UP)
         {
             if (row > 0)
             {
                 selectedPlane = gTerrain->GetPlane(row - 1, col);
             }
         }
-        else if (key == Urho3D::KEY_DOWN)
+        else if (key == KEY_DOWN)
         {
             if (row < gLevel->GetHeight() - 1)
             {
