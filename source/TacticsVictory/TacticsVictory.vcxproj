@@ -30,7 +30,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -101,7 +101,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_THREADING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DisableSpecificWarnings>4514;4820;4710;4640;4625;4458;5026;4456</DisableSpecificWarnings>
@@ -384,7 +384,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\Graphics\Objects\Line.cpp" />
     <ClCompile Include="src\Graphics\Objects\Plane.cpp" />
     <ClCompile Include="src\Graphics\Objects\Triangle.cpp" />
-    <ClCompile Include="src\GUI\Elements\ButtonMain.cpp" />
+    <ClCompile Include="src\GUI\Elements\Button.cpp" />
     <ClCompile Include="src\GUI\Elements\ButtonToggled.cpp" />
     <ClCompile Include="src\GUI\Elements\Cursor.cpp" />
     <ClCompile Include="src\GUI\Elements\CursorShapes.cpp" />
@@ -482,7 +482,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\Graphics\Objects\Line.h" />
     <ClInclude Include="src\Graphics\Objects\Plane.h" />
     <ClInclude Include="src\Graphics\Objects\Triangle.h" />
-    <ClInclude Include="src\GUI\Elements\ButtonMain.h" />
+    <ClInclude Include="src\GUI\Elements\Button.h" />
     <ClInclude Include="src\GUI\Elements\ButtonToggled.h" />
     <ClInclude Include="src\GUI\Elements\Cursor.h" />
     <ClInclude Include="src\GUI\Elements\CursorShapes.h" />

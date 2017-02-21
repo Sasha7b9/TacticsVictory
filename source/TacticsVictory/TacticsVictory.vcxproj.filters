@@ -276,9 +276,6 @@
     <ClCompile Include="src\Game\Path\TilePath.cpp">
       <Filter>Game\Path</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Elements\ButtonMain.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Path\WaveAlgorithm.cpp">
       <Filter>Game\Path</Filter>
     </ClCompile>
@@ -399,12 +396,6 @@
     <ClCompile Include="src\Game\Objects\Terrain\SideCube.cpp">
       <Filter>Game\Objects\Terrain</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\_Terrain_.cpp">
-      <Filter>Game\Objects\Terrain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Objects\Terrain\_TerrainSegment_.cpp">
-      <Filter>Game\Objects\Terrain</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Objects\Terrain\CubeTerrain.cpp">
       <Filter>Game\Objects\Terrain</Filter>
     </ClCompile>
@@ -416,6 +407,9 @@
     </ClCompile>
     <ClCompile Include="src\Game\Objects\Terrain\SegmentTerrain.cpp">
       <Filter>Game\Objects\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Elements\Button.cpp">
+      <Filter>GUI\Elements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -566,9 +560,6 @@
     <ClInclude Include="src\Game\Path\TilePath.h">
       <Filter>Game\Path</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\Elements\ButtonMain.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Path\WaveAlgorithm.h">
       <Filter>Game\Path</Filter>
     </ClInclude>
@@ -692,12 +683,6 @@
     <ClInclude Include="src\Game\Objects\Terrain\SideCube.h">
       <Filter>Game\Objects\Terrain</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\_Terrain_.h">
-      <Filter>Game\Objects\Terrain</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Objects\Terrain\_TerrainSegment_.h">
-      <Filter>Game\Objects\Terrain</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Objects\Terrain\CubeTerrain.h">
       <Filter>Game\Objects\Terrain</Filter>
     </ClInclude>
@@ -709,6 +694,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\Objects\Terrain\SegmentTerrain.h">
       <Filter>Game\Objects\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Elements\Button.h">
+      <Filter>GUI\Elements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
