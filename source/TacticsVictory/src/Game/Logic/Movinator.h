@@ -13,8 +13,9 @@ public:
     virtual void Update(float time);
 
 private:
-    Movinator& operator=(const Movinator&) {};
     float speed = 0.0f;
     float angle = 0.0f;
     Vector3 center;
+
+    CONSTRUCTORS(Movinator, LogicComponent);
 };

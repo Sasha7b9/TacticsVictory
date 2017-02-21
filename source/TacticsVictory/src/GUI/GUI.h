@@ -29,10 +29,10 @@ public:
     void SetUnvisibleAllWindows();
 
 private:
-    GUI& operator=(const GUI&)
-    {};
     void HandleMenuEvent(StringHash eventType, VariantMap& eventData);
 
     bool shownMenuMain = false;
     bool shownMenuOptions = false;
+
+    CONSTRUCTORS(GUI, Object);
 };

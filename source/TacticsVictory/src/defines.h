@@ -13,6 +13,23 @@ typedef unsigned short  ushort;
 typedef unsigned char   uchar;
 
 
+enum TypeCursor
+{
+    TypeCursor_Normal,
+    TypeCursor_Selected,
+    TypeCursor_Left,
+    TypeCursor_Up,
+    TypeCursor_Right,
+    TypeCursor_Down,
+    TypeCursor_TopLeft,
+    TypeCursor_TopRight,
+    TypeCursor_DownLeft,
+    TypeCursor_DownRight,
+    TypeCursor_Busy,
+    TypeCursor_Size
+};
+
+
 #define WIDTH_WINDOW_TARGET 500
 #define HEIGHT_WINDOW_TARGET 300
 

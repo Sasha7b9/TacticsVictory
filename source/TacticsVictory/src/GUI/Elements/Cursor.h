@@ -1,23 +1,6 @@
 #pragma once
 
 
-enum TypeCursor
-{
-    TypeCursor_Normal,
-    TypeCursor_Selected,
-    TypeCursor_Left,
-    TypeCursor_Up,
-    TypeCursor_Right,
-    TypeCursor_Down,
-    TypeCursor_TopLeft,
-    TypeCursor_TopRight,
-    TypeCursor_DownLeft,
-    TypeCursor_DownRight,
-    TypeCursor_Busy,
-    TypeCursor_Size
-};
-
-
 class CursorShapes;
 
 
@@ -45,10 +28,9 @@ private:
     SharedPtr<Sprite2D> sprite;
     SharedPtr<StaticSprite2D> staticSprite;
 
-    CursorRTS& operator=(const CursorRTS&)
-    {};
-
     bool selected = false;
     bool hidden = false;
     TypeCursor type = TypeCursor_Normal;
+
+//    CONSTRUCTORS(CursorRTS, Object);
 };

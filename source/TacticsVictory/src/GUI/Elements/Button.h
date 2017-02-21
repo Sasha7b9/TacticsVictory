@@ -20,12 +20,11 @@ public:
     virtual void OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Cursor* cursor);
 
 private:
-    ButtonRTS& operator=(const ButtonRTS&)
-    {};
-
     SharedPtr<Label> label;
     SharedPtr<Hint> hint;
 
     void HandleHoverBegin(StringHash, VariantMap&);
     void HandleHoverEnd(StringHash, VariantMap&);
+
+    CONSTRUCTORS(ButtonRTS, Button);
 };

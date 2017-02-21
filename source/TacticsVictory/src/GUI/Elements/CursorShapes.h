@@ -2,9 +2,7 @@
 
 
 #include "Cursor.h"
-
-
-class ImageRTS;
+#include "GUI/Elements/Image.h"
 
 
 class CursorShapes : public Object
@@ -43,12 +41,12 @@ public:
     };
 
 private:
-    CursorShapes& operator=(const CursorShapes&)
-    {};
     HashMap<StructShape, SharedPtr<ImageRTS>> map;
 
     int dimensionTriangleSmall = 50;
     int dimensionTriangleBig = 100;
 
     void CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int *y2);
+
+    CONSTRUCTORS(CursorShapes, Object);
 };

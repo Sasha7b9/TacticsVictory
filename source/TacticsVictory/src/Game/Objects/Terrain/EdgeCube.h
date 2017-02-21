@@ -14,6 +14,6 @@ public:
     PlaneCube plane;
 
 private:
-    EdgeCube& operator=(const EdgeCube&)
-    {};
+
+    CONSTRUCTORS(EdgeCube, Object);
 };

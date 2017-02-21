@@ -56,12 +56,10 @@ public:
     static Vector<Vector<PODVector<CubeTerrain*>>> columnsCubes;
 
 private:
-    TerrainRTS& operator=(const TerrainRTS&)
-    {};
-
     Vector<Vector<float>> level;
-
     Vector<Vector<SharedPtr<SegmentTerrain>>> segments;
 
     SegmentTerrain *GetSegmentForCoord(uint row, uint col);
+
+    CONSTRUCTORS(TerrainRTS, Object);
 };

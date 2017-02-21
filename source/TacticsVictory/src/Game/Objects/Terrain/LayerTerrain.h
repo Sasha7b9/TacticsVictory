@@ -23,10 +23,9 @@ public:
     Vector<SharedPtr<CubeTerrain>> cubes;
 
 private:
-    LayerTerrain& operator=(const LayerTerrain&)
-    {};
-
     SharedPtr<Geometry> geometry;
     SharedPtr<Model> model;
     SharedPtr<StaticModel> object;
+
+    CONSTRUCTORS(LayerTerrain, Object);
 };

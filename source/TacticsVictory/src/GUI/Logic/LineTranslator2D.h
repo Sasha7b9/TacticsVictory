@@ -25,9 +25,8 @@ public:
     State GetState();
 
 private:
-    LineTranslator2D& operator=(const LineTranslator2D&)
-    {};
-
     SharedPtr<LineTranslator1D> translatorX;
     SharedPtr<LineTranslator1D> translatorY;
+
+    CONSTRUCTORS(LineTranslator2D, Object);
 };

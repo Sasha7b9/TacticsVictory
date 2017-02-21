@@ -19,10 +19,10 @@ public:
     uint GetState();
 
 private:
-    ButtonSwitch& operator=(const ButtonSwitch&) {};
-
     PODVector<char*> items;
     uint state = 0;
 
     void HandleButtonRelease(StringHash, VariantMap&);
+
+    CONSTRUCTORS(ButtonSwitch, ButtonRTS);
 };

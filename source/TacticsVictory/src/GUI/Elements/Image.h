@@ -24,13 +24,12 @@ public:
     void SetHotSpot(int x, int y);
 
 private:
-    ImageRTS& operator=(const ImageRTS&)
-    {};
-
     void Replace4Points(int x, int y, const Color &color);
     void Replace4PointsBound(int x, int y, const Color &color);
     
     Color replacedColor;
     Color boundingColor;
     IntVector2 hotSpot;
+
+    CONSTRUCTORS(ImageRTS, Image);
 };

@@ -27,6 +27,5 @@ private:
     void HandleMouseDown(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
 
-    Editor& operator=(const Editor&)
-    {};
+    CONSTRUCTORS(Editor, Object);
 };

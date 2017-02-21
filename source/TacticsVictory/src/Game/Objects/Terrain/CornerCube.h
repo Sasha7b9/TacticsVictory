@@ -9,6 +9,6 @@ public:
     CornerCube(Context *context = gContext);
 
 private:
-    CornerCube& operator=(const CornerCube&)
-    {};
+
+    CONSTRUCTORS(CornerCube, Object);
 };

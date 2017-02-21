@@ -20,6 +20,6 @@ public:
     PointPlane point[4];
 
 private:
-    PlaneCube& operator=(const PlaneCube&)
-    {};
+
+    CONSTRUCTORS(PlaneCube, Object);
 };

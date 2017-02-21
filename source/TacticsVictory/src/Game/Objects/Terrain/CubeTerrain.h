@@ -63,9 +63,6 @@ private:
     PODVector<float> *vertexes = nullptr;
     PODVector<uint>  *indexes = nullptr;
 
-    CubeTerrain& operator=(const CubeTerrain&)
-    {};
-
     void CreateEdges();
     void CreateEdgeTop();
     void CreateEdgeDown();
@@ -79,6 +76,8 @@ private:
     void PushPoint(PointPlane &point);
 
     void BuildPlaneVerexes(PlaneCube &plane);
+
+    CONSTRUCTORS(CubeTerrain, Object);
 };
 
 /*                     Corner_0              Corner_1

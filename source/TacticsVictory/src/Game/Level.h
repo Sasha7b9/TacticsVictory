@@ -25,9 +25,7 @@ public:
     void SetMap(Vector<Vector<float>> map);
 
 private:
-    Level& operator=(const Level&)
-    {
-    };
-
     static Vector<Vector<float>> map;
+
+    CONSTRUCTORS(Level, Object);
 };

@@ -32,12 +32,11 @@ public:
     SegmentTerrain* neighbours[4];
 
 private:
-    SegmentTerrain& operator=(const SegmentTerrain&)
-    {};
-
     Vector<SharedPtr<LayerTerrain>> ground;          // Height (0, 1, 2, 3, ...)
     Vector<SharedPtr<LayerTerrain>> underGround;     // Height [0, -1, -2, ...)
 
     void AddCube(SharedPtr<CubeTerrain> &cube);
     void CreateLayers();
+
+    CONSTRUCTORS(SegmentTerrain, Object);
 };
