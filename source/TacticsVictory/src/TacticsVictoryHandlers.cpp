@@ -52,15 +52,11 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
         {
             if (gGUI->MenuIsVisible())
             {
-                gScene->SetTimeScale(1.0f);
-                gGUI->RemoveFromScreen();
-                gCamera->SetEnabled(true);
+                gMenuMain->Close();
             }
             else
             {
-                gScene->SetTimeScale(0.0f);
-                gGUI->AddToScreen();
-                gCamera->SetEnabled(false);
+                gMenuMain->Open();
             }
         }
         else if (gGuiEditor->IsVisible())           // We are in editor

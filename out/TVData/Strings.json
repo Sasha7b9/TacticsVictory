@@ -50,7 +50,7 @@
     "Edit":                 { "en":"Edit",              "ru":"Редактировать" },
     "Exit in OS?":          { "en":"Exit in OS?",       "ru":"Выход в ОС?" },
     "Ok":                   { "en":"Ok",                "ru":"Да" },
-    "Cancel":               { "en":"Cancel",            "ru":"Нет" },
+    "Cancel":               { "en":"Cancel",            "ru":"Отмена" },
     "Load":                 { "en":"Load",              "ru":"Загрузить" },
     "Save":                 { "en":"Save",              "ru":"Сохранить" },
     "New map":              { "en":"New map",           "ru":"Новая карта" },

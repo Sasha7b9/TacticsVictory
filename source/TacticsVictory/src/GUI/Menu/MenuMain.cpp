@@ -8,6 +8,7 @@
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/Menu/WindowConfirmExit.h"
+#include "Core/Camera.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,18 +28,21 @@ MenuMain::MenuMain(Context *) :
     buttonLanguage->AddState("Language : RU");
     buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
     buttonExit = new ButtonRTS(this, "Exit");
+    buttonCancel = new ButtonRTS(this, "Cancel");
 
     buttons.Push(buttonNewGame);
     buttons.Push(buttonEditor);
     buttons.Push(buttonOptions);
     buttons.Push(buttonLanguage);
     buttons.Push(buttonExit);
+    buttons.Push(buttonCancel);
 
     SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonNewGame, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
 
     text->SetWidth(GetWidth());
 
@@ -74,16 +78,19 @@ void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
         gLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
         gSet->SetInt(TV_LANGUAGE, (int)buttonLanguage->GetState());
     }
-    else
+    else if (button == buttonOptions)
     {
         eventData = GetEventDataMap();
         eventData[MenuEvent::P_TYPE] = mapButtonsActions[button];
         SendEvent(E_MENU, eventData);
-
-        if (button == buttonNewGame)
-        {
-            buttonExit->SetText("Exit from game");
-        }
+    }
+    else if (button == buttonNewGame)
+    {
+        buttonExit->SetText("Exit from game");
+    }
+    else if (button == buttonCancel)
+    {
+        gMenuMain->Close();
     }
 }
 
@@ -147,4 +154,20 @@ int MenuMain::NumFocusedButton()
         }
     }
     return -1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MenuMain::Open()
+{
+    gScene->SetTimeScale(0.0f);
+    gGUI->AddToScreen();
+    gCamera->SetEnabled(false);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MenuMain::Close()
+{
+    gScene->SetTimeScale(1.0f);
+    gGUI->RemoveFromScreen();
+    gCamera->SetEnabled(true);
 }

@@ -17,6 +17,8 @@ public:
     static void RegisterObject(Context *context = gContext);
     void SetEnabled();
     void SetDisabled();
+    void Open();
+    void Close();
 
 private:
     MenuMain& operator=(const MenuMain&)
