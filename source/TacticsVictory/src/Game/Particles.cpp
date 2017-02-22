@@ -18,26 +18,21 @@ void Particles::Init()
     node->SetScale(5.0f);
     ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
     emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
-    /*
-    XMLFile xmlParticle = XMLFile(gContext);
-    SharedPtr<File> file(gCache->GetFile("Particle/SnowExplosion.xml"));
+    XMLFile *file = gCache->GetResource<XMLFile>("Particle/SnowExplosion.xml");
     if (file)
     {
-        xmlParticle.Load(*file);
+        XMLElement root = file->GetRoot("particleemitter");
         SharedPtr<ParticleEffect> pe(new ParticleEffect(gContext));
-        XMLElement root = xmlParticle.GetRoot("particleemitter");
         pe->Load(root);
         emitter->SetEffect(pe);
         emitter->SetEmitting(false);
         Vector<ParticleEmitter*> &emitters = particles.At(Particle_Explosion);
         emitters.Push(emitter);
     }
-    */
 }
 
-void Particles::Emitting(TypeParticles /*type*/, const Vector3 /*position*/)
+void Particles::Emitting(TypeParticles type, const Vector3 position)
 {
-    /*
     ParticleEmitter* emitter = nullptr;
     
     Vector<ParticleEmitter*> &emitters = particles.At(type);
@@ -62,5 +57,4 @@ void Particles::Emitting(TypeParticles /*type*/, const Vector3 /*position*/)
 
     emitter->GetNode()->SetPosition(position);
     emitter->SetEmitting(true);
-    */
 }

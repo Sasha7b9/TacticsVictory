@@ -11,6 +11,6 @@
     <particlesize value="0.25 0.25" />
     <timetolive value="0.5" />
     <constantforce value="0 -2 0" />
-    <colorfade color="0.35 0.35 0.5 1" time="0.0" />
-    <colorfade color="0 0 0 1" time="0.5" />
+    <colorfade color="1 0.35 0.5 1" time="0.0" />
+    <colorfade color="1 0 0 1" time="0.5" />
 </particleemitter>

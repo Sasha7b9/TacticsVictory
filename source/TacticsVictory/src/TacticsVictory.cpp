@@ -51,7 +51,7 @@ void TacticsVictory::Stop()
 {
     float time = gTime->GetElapsedTime();
     engine_->DumpResources(true);
-    engine_->DumpProfiler();
+    //engine_->DumpProfiler();
     TilePath::RemoveAll();
     Rocket::DeleteAll();
     SAFE_DELETE(gScene);
@@ -144,7 +144,9 @@ void TacticsVictory::Start()
 
     gCamera = new CameraRTS();
 
+    gLog->SetLevel(LOG_ERROR);
     gGUI->Create();
+    gLog->SetLevel(LOG_INFO);
 
     gFileSelector = new FileSelector(gContext);
     gFileSelector->GetWindow()->SetModal(false);
@@ -154,7 +156,7 @@ void TacticsVictory::Start()
 
     CreateNewGame();
 
-    PROFILER_FUNC_LEAVE
+    PROFILER_FUNC_LEAVE;
 }
 
 void TacticsVictory::InitLocalizationSystem()

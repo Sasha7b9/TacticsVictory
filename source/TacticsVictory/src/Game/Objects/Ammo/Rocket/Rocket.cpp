@@ -228,7 +228,7 @@ void Rocket::CreateSmoke()
     billboardObjectSmoke = smokeNode->CreateComponent<BillboardSet>();
     billboardObjectSmoke->SetViewMask(VIEW_MASK_FOR_EFFECTS);
     billboardObjectSmoke->SetNumBillboards(NUM_BILLBOARDS);
-    billboardObjectSmoke->SetMaterial(gCache->GetResource<Material>("Materials/LitSmoke.xml"));
+    billboardObjectSmoke->SetMaterial(gCache->GetResource<Material>("Materials/RocketSmoke.xml"));
     billboardObjectSmoke->SetSorted(false);
 
     for(uint j = 0; j < NUM_BILLBOARDS; ++j)
@@ -247,42 +247,34 @@ void Rocket::CreateSmoke()
 
     Node* forEmitter = node_->CreateChild("Emitter");
 
+    /*
     if (rockets.Size())
     {
         forEmitter->CloneComponent(rockets[0]->node_->GetChild("Emitter")->GetComponent<ParticleEmitter>());
     }
     else
     {
+    */
         ParticleEmitter *emitter = forEmitter->CreateComponent<ParticleEmitter>();
+        XMLFile *file = gCache->GetResource<XMLFile>("Particle/SnowExplosion.xml");
 
-        /*
-        if (rockets.Size())
+        if (file)
         {
-            pe = rockets[0]->pe;
+            pe = new ParticleEffect(gContext);
+            XMLElement root = file->GetRoot("particleemitter");
+            pe->Load(root);
         }
-        else
-        {
-        */
-            XMLFile *file = gCache->GetResource<XMLFile>("Particle/SnowExplosion.xml");
-
-            if (file)
-            {
-                pe = new ParticleEffect(gContext);
-                XMLElement root = file->GetRoot().GetChild("particleemitter");
-                pe->Load(root);
-            }
-        //}
         
         emitter->SetEffect(pe);
         emitter->SetEmitting(true);
         emitter->Commit();
-    }
+    //}
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Rocket::CalculateAnimate()
 {
-    const float BILLBOARD_ROTATION_SPEED = 50.0f;
+    const float BILLBOARD_ROTATION_SPEED = 500.0f;
 
     for (float &rotation : rotBillboardSmoke)
     {
@@ -294,10 +286,26 @@ void Rocket::CalculateAnimate()
 void Rocket::AnimateSmoke()
 {
     uint size = billboardsSmoke.Size();
-    for (uint i = 0; i < size; i++)
+    for(uint i = 0; i < size; i++)
     {
         billboardsSmoke[i]->rotation_ = rotBillboardSmoke[i];
     }
+
+    /*
+    Vector3 scale = billboardObjectSmoke->GetNode()->GetScale();
+
+    float min = 0.8f;
+    float max = 2.0f;
+
+    do
+    {
+        scale *= Random(0.9f, 1.1f);
+    } while((scale.x_ < min || scale.x_ > max) &&
+        (scale.y_ < min || scale.y_ > max) &&
+            (scale.z_ , min || scale.z_ > max));
+    billboardObjectSmoke->GetNode()->SetScale(scale);
+    */
+
     billboardObjectSmoke->Commit();
 }
 
