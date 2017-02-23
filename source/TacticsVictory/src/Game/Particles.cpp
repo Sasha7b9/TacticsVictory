@@ -13,13 +13,13 @@ void Particles::Init()
         particles.Push(Vector<ParticleEmitter*>());
     }
 
-    Node *node = gScene->CreateChild("Emitter");
-    node->SetScale(5.0f);
-    ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
-    emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
-    XMLFile *file = gCache->GetResource<XMLFile>("Particle/RocketExplosion.xml");
+    XMLFile *file = gCache->GetResource<XMLFile>("Particle/SnowExplosionFade.xml");
     if (file)
     {
+        Node *node = gScene->CreateChild("Emitter");
+        node->SetScale(5.0f);
+        ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
+        emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
         XMLElement root = file->GetRoot("particleemitter");
         SharedPtr<ParticleEffect> pe(new ParticleEffect(gContext));
         bool res = pe->Load(root);
