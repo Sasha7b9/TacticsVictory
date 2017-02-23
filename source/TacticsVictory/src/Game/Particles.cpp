@@ -1,12 +1,11 @@
 #include <stdafx.h>
-
-
 #include "Particles.h"
 
 
 Vector<Vector<ParticleEmitter*>> Particles::particles;
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Particles::Init()
 {
     for (uint i = 0; i < NumParticles; i++)
@@ -18,12 +17,12 @@ void Particles::Init()
     node->SetScale(5.0f);
     ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
     emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
-    XMLFile *file = gCache->GetResource<XMLFile>("Particle/SnowExplosion.xml");
+    XMLFile *file = gCache->GetResource<XMLFile>("Particle/RocketExplosion.xml");
     if (file)
     {
         XMLElement root = file->GetRoot("particleemitter");
         SharedPtr<ParticleEffect> pe(new ParticleEffect(gContext));
-        pe->Load(root);
+        bool res = pe->Load(root);
         emitter->SetEffect(pe);
         emitter->SetEmitting(false);
         Vector<ParticleEmitter*> &emitters = particles.At(Particle_Explosion);
@@ -31,6 +30,7 @@ void Particles::Init()
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Particles::Emitting(TypeParticles type, const Vector3 position)
 {
     ParticleEmitter* emitter = nullptr;

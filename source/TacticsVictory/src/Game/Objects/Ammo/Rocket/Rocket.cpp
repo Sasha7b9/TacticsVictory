@@ -244,31 +244,6 @@ void Rocket::CreateSmoke()
     }
 
     billboardObjectSmoke->Commit();
-
-    Node* forEmitter = node_->CreateChild("Emitter");
-
-    /*
-    if (rockets.Size())
-    {
-        forEmitter->CloneComponent(rockets[0]->node_->GetChild("Emitter")->GetComponent<ParticleEmitter>());
-    }
-    else
-    {
-    */
-        ParticleEmitter *emitter = forEmitter->CreateComponent<ParticleEmitter>();
-        XMLFile *file = gCache->GetResource<XMLFile>("Particle/SnowExplosion.xml");
-
-        if (file)
-        {
-            pe = new ParticleEffect(gContext);
-            XMLElement root = file->GetRoot("particleemitter");
-            pe->Load(root);
-        }
-        
-        emitter->SetEffect(pe);
-        emitter->SetEmitting(true);
-        emitter->Commit();
-    //}
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

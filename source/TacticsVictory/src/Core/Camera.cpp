@@ -1,11 +1,21 @@
 #include <stdafx.h>
-
-
 #include "Camera.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/GUI.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define CURSOR_UP           (cursor == TypeCursor_Up)
+#define CURSOR_DOWN         (cursor == TypeCursor_Down)
+#define CURSOR_LEFT         (cursor == TypeCursor_Left)
+#define CURSOR_RIGHT        (cursor == TypeCursor_Right)
+#define CURSOR_TOP_LEFT     (cursor == TypeCursor_TopLeft)
+#define CURSOR_TOP_RIGHT    (cursor == TypeCursor_TopRight)
+#define CURSOR_DOWN_LEFT    (cursor == TypeCursor_DownLeft)
+#define CURSOR_DOWN_RIGhT   (cursor == TypeCursor_DownRight)
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 CameraRTS::CameraRTS()
 {
     cameraNode = gScene->CreateChild("Camera");
@@ -72,19 +82,19 @@ void CameraRTS::Move(float time)
 
     TypeCursor cursor = gCursor->GetType();
 
-    if(cursor == TypeCursor_Up || cursor == TypeCursor_TopLeft || cursor == TypeCursor_TopRight || (gInput->GetKeyDown(KEY_UP) && arrowEnabled))
+    if(CURSOR_UP || CURSOR_TOP_LEFT || CURSOR_TOP_RIGHT || ((PRESS_KEY_UP || PRESS_KEY_W) && arrowEnabled))
     {
         MoveOn(Direction_Forward, distance);
     }
-    if(cursor == TypeCursor_Down || cursor == TypeCursor_DownLeft || cursor == TypeCursor_DownRight || (gInput->GetKeyDown(KEY_DOWN) && arrowEnabled))
+    if(CURSOR_DOWN || CURSOR_DOWN_LEFT || CURSOR_DOWN_RIGhT || ((PRESS_KEY_DOWN || PRESS_KEY_S) && arrowEnabled))
     {
         MoveOn(Direction_Back, distance);
     }
-    if(cursor == TypeCursor_Left || cursor == TypeCursor_TopLeft || cursor == TypeCursor_DownLeft || (gInput->GetKeyDown(KEY_LEFT) && arrowEnabled))
+    if(CURSOR_LEFT || CURSOR_TOP_LEFT || CURSOR_DOWN_LEFT || ((PRESS_KEY_LEFT || PRESS_KEY_A) && arrowEnabled))
     {
         MoveOn(Direction_Left, distance);
     }
-    if(cursor == TypeCursor_Right || cursor == TypeCursor_TopRight || cursor == TypeCursor_DownRight || (gInput->GetKeyDown(KEY_RIGHT) && arrowEnabled))
+    if(CURSOR_RIGHT || CURSOR_TOP_RIGHT || CURSOR_DOWN_RIGhT || ((PRESS_KEY_RIGHT || PRESS_KEY_D) && arrowEnabled))
     {
         MoveOn(Direction_Right, distance);
     }
