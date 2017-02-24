@@ -321,6 +321,10 @@ void ThreadRocket::SetParameters(uint startIndex, uint endIndex)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ThreadRocket::ThreadFunction()
 {
+    if(IN_PAUSE)
+    {
+        return;
+    }
     /*
     while(true)
     {

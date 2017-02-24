@@ -63,3 +63,5 @@ enum TypeCursor
 #define PRESS_D         (gInput->GetKeyDown(KEY_D))
 #define PRESS_Q         (gInput->GetKeyDown(KEY_Q))
 #define PRESS_E         (gInput->GetKeyDown(KEY_E))
+
+#define IN_PAUSE        (gScene->GetTimeScale() == M_EPSILON)
