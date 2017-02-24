@@ -1,23 +1,24 @@
 #include <stdafx.h>
-
-
 #include "RocketLauncher.h"
 #include "Game/Objects/Units/Tank/Tank.h"
 #include "Game/Objects/GameObjectEvents.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 RocketLauncher::RocketLauncher(Context *context, Tank *tank) :
     WeaponObject(context)
 {
     this->tank = tank;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void RocketLauncher::Init()
 {
     timeElapsedAfterShoot = Random(timeRecharge);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void RocketLauncher::Update(float deltaStep)
 {
     if(timeElapsedAfterShoot != 0.0f)
@@ -45,6 +46,7 @@ void RocketLauncher::Update(float deltaStep)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool RocketLauncher::TargetInPointView(Tank* target)
 {
     if(timeElapsedAfterShoot >= timeRecharge && (gTime->GetElapsedTime() - timePrevRaycast) > 0.5f)

@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "Game/Objects/Weapons/WeaponObject.h"
 
 
@@ -20,7 +18,7 @@ private:
     Tank *tank = nullptr;
 
     float radiusDetect = 50.0f;
-    float timeRecharge = 10.0f;
+    float timeRecharge = 50.0f;
     float timeElapsedAfterShoot = 0.0f;
 
     bool TargetInPointView(Tank* tank);
