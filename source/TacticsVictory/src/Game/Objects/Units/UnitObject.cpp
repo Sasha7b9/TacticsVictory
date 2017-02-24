@@ -13,6 +13,7 @@ UnitObject::UnitObject(Context *context) :
 {
     Node* nodeCameraTarget = gScene->CreateChild("CameraTarget");
     nodeCameraTarget->Pitch(180.0f);
+    nodeCameraTarget->Yaw(180.0f);
     cameraTarget = nodeCameraTarget->CreateComponent<Camera>();
     cameraTarget->SetNearClip(0.5f);
     cameraTarget->SetFarClip(100.0f);
@@ -36,7 +37,7 @@ void UnitObject::SetViewTargetView(bool view)
 void UnitObject::HandlePostRenderUpdate(StringHash, VariantMap&)
 {
     cameraTarget->GetNode()->SetPosition(GetNode()->GetPosition() + Vector3(0.0f, 0.2f, 0.0f));
-    cameraTarget->GetNode()->SetRotation(GetNode()->GetRotation());
+    cameraTarget->GetNode()->SetRotation(GetNode()->GetRotation() * Quaternion(180.0f, Vector3::UP));
 
     VariantMap eventData = GetEventDataMap();
     eventData[GameObjectEvent::P_TEXTURE] = renderTexture;
