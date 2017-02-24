@@ -367,21 +367,8 @@ void Rocket::SetParameters(float timeStep)
     if (collisionWithTerrain || (time > rangeTime))
     {
         Sounds::Play(Sound_Explosion, position);
-        //Particles::Emitting(Particle_Explosion, position);
 
-        XMLFile *file = gCache->GetResource<XMLFile>("Particle/SnowExplosionFade.xml");
-        if(file)
-        {
-            Node *node = gScene->CreateChild("Emitter");
-            node->SetScale(5.0f);
-            ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
-            emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
-            XMLElement root = file->GetRoot("particleemitter");
-            SharedPtr<ParticleEffect> effect(new ParticleEffect(gContext));
-            bool res = effect->Load(root);
-            emitter->SetEffect(effect);
-            emitter->SetEmitting(true);
-        }
+        Particles::EmittingStatic(Explosion_Terrain, node_->GetPosition());
 
         smokeNode->SetEnabled(false);
         node_->SetEnabled(false);

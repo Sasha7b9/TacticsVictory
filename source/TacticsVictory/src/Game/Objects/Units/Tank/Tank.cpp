@@ -183,21 +183,7 @@ void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
         return;
     }
 
-    //Particles::Emitting(Particle_Explosion, node_->GetPosition());
+    Particles::EmittingDinamic(Explosion_Tank, node_);
 
-    Node *node = GetNode()->CreateChild("Emitter");
-    node->SetScale(50.0f);
-    ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
-    emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
-    emitter->SetEffect(gCache->GetResource<ParticleEffect>("Particle/Fire.xml"));
-    emitter->SetEmitting(true);
-
-    /*
-    node = GetNode()->CreateChild();
-    node->SetScale(5.0f);
-    emitter = node->CreateComponent<ParticleEmitter>();
-    emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
-    emitter->SetEffect(gCache->GetResource<ParticleEffect>("Particle/Fire.xml"));
-    emitter->SetEmitting(true);
-    */
+    Particles::EmittingDinamic(Fire_Tank, node_);
 }
