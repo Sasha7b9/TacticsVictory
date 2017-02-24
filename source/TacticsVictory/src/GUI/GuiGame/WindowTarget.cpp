@@ -1,10 +1,9 @@
 #include <stdafx.h>
-
-
 #include "WindowTarget.h"
 #include "Game/Objects/GameObjectEvents.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 WindowTarget::WindowTarget(Context *context) :
     WindowRTS(context)
 {
@@ -16,6 +15,7 @@ WindowTarget::WindowTarget(Context *context) :
     SubscribeToEvent(E_SETTEXTURE, URHO3D_HANDLER(WindowTarget, HandleSetTexture));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowTarget::HandleSetTexture(StringHash, VariantMap& eventData)
 {
     Texture2D *texture = (Texture2D*)eventData[GameObjectEvent::P_TEXTURE].GetPtr();

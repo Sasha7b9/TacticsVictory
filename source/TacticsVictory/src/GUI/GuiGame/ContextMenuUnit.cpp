@@ -1,6 +1,4 @@
 #include <stdafx.h>
-
-
 #include "ContextMenuUnit.h"
 #include "GUI/Elements/Label.h"
 #include "Game/Objects/Units/UnitObject.h"
@@ -8,6 +6,7 @@
 #include "GUI/GuiGame/WindowTarget.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ContextMenuUnit::ContextMenuUnit(Context *context) :
     WindowRTS(context)
 {
@@ -20,6 +19,7 @@ ContextMenuUnit::ContextMenuUnit(Context *context) :
     AddChild(title);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ContextMenuUnit::Create(GameObject *object_)
 {
     object = object_;
@@ -31,6 +31,7 @@ void ContextMenuUnit::Create(GameObject *object_)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ContextMenuUnit::CreateForUnit()
 {
     SharedPtr<ButtonToggled> button(new ButtonToggled(nullptr, "Field View", 100));
@@ -38,6 +39,7 @@ void ContextMenuUnit::CreateForUnit()
     AddChild(button);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ContextMenuUnit::HandleToggledFiedView(StringHash, VariantMap& eventData)
 {
     bool state = (bool)eventData[Toggled::P_STATE].GetBool();

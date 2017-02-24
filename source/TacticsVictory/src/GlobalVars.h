@@ -65,4 +65,4 @@ extern Hint                 *gHint;
 extern int                  *gCounterHint;
 extern Vector<WindowRTS*>    gOpenedWindow;
 extern PODVector<Tank*>      gTanks;
-extern WindowTarget         *gWindowTarget;
+extern WindowTarget         *gWindowTarget;             // В этом окне можно посмотреть, что видит юнит
