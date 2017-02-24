@@ -1,12 +1,11 @@
 #include <stdafx.h>
-
-
 #include "Translator.h"
 #include "Core/Math.h"
 #include "Game/Objects/Terrain/Terrain.h"
 #include "Game/Objects/Units/Tank/Tank.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Translator::Translator()
 {
     // First number - delta row, second number - delta col
@@ -20,12 +19,13 @@ Translator::Translator()
     angles["0,-1"] = 270.0f;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Translator::Init(Tank* tank_)
 {
     tank = tank_;
 }
 
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Translator::SetPath(PODVector<Coord> &path_, float speed_)
 {
     path = path_;
@@ -45,6 +45,7 @@ void Translator::SetPath(PODVector<Coord> &path_, float speed_)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 Vector3 Translator::Update(float dT)
 {
     if(state == Stop)
@@ -96,6 +97,7 @@ Vector3 Translator::Update(float dT)
     return currentPos;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Translator::SetStep(Coord &start, Coord &end_)
 {
     end = end_.ToVector3();
@@ -122,6 +124,7 @@ void Translator::SetStep(Coord &start, Coord &end_)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Translator::StartRotation(float angleNeed)
 {
     float curAngle = tank->GetRotation();
@@ -160,6 +163,7 @@ void Translator::StartRotation(float angleNeed)
     state = Rotate;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Translator::IsMoving()
 {
     return state != Stop;

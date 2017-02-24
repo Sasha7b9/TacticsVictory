@@ -1,6 +1,4 @@
 #include <stdafx.h>
-
-
 #include "Tank.h"
 #include "Core/Math.h"
 #include "Game/Objects/Terrain/Terrain.h"
@@ -12,9 +10,11 @@
 #include "GUI/GuiGame/ContextMenuUnit.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Tank::Tank(Context *context) : 
     UnitObject(context)
 {
@@ -36,11 +36,13 @@ Tank::Tank(Context *context) :
     rocketLauncher = new RocketLauncher(gContext, this);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::RegisterObject(Context* context)
 {
     context->RegisterFactory<Tank>();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::Init(TypeTank type_)
 {
     node_->SetVar("PointerTank", this);
@@ -53,6 +55,7 @@ void Tank::Init(TypeTank type_)
     rocketLauncher->Init();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::LoadFromFile()
 {
     char *fileName = parameters[typeTank].fileName;
@@ -85,6 +88,7 @@ void Tank::LoadFromFile()
     timeLastModified = GetLastModifiedTime(parameters[typeTank].fileName);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::SetCoord(const Coord& coord)
 {
     PODVector<Coord> path;
@@ -92,6 +96,7 @@ void Tank::SetCoord(const Coord& coord)
     translator.SetPath(path);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::Update(float dT)
 {
     gProfiler->BeginBlock("Tank::Update");
@@ -149,23 +154,27 @@ void Tank::Update(float dT)
     gProfiler->EndBlock();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::SetPath(PODVector<Coord> &path)
 {
     translator.SetPath(path, speed);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::SetRotation(float rotation)
 {
     Quaternion rotate(deltaRotate + rotation, Vector3::UP);
     node_->SetRotation(rotate);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 float Tank::GetRotation()
 {
     float ret = node_->GetRotation().YawAngle() - deltaRotate;
     return ret > 0 ? ret : ret + 360.0f;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<Tank> Tank::Create(TypeTank typeTank)
 {
     SharedPtr<Node> node(gScene->CreateChild(NODE_TANK));
@@ -174,6 +183,7 @@ SharedPtr<Tank> Tank::Create(TypeTank typeTank)
     return tank;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
 {
     Tank *tank = (Tank*)eventData[AmmoEvent::P_OBJECT].GetPtr();

@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "Game/Path/WaveAlgorithm.h"
 #include "Game/Objects/Units/Tank/Translator.h"
 #include "Game/Objects/Units/UnitObject.h"
