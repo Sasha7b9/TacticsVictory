@@ -51,11 +51,15 @@ enum TypeCursor
 
 #define CONSTRUCTORS(name, parent)        name(name const&) : parent(nullptr) {}; name operator=(name const&) {};
 
-#define PRESS_KEY_UP    (gInput->GetKeyDown(KEY_UP))
-#define PRESS_KEY_DOWN  (gInput->GetKeyDown(KEY_DOWN))
-#define PRESS_KEY_LEFT  (gInput->GetKeyDown(KEY_LEFT))
-#define PRESS_KEY_RIGHT (gInput->GetKeyDown(KEY_RIGHT))
-#define PRESS_KEY_W     (gInput->GetKeyDown(KEY_W))
-#define PRESS_KEY_S     (gInput->GetKeyDown(KEY_S))
-#define PRESS_KEY_A     (gInput->GetKeyDown(KEY_A))
-#define PRESS_KEY_D     (gInput->GetKeyDown(KEY_D))
+#define PRESS_UP        (gInput->GetKeyDown(KEY_UP))
+#define PRESS_DOWN      (gInput->GetKeyDown(KEY_DOWN))
+#define PRESS_LEFT      (gInput->GetKeyDown(KEY_LEFT))
+#define PRESS_RIGHT     (gInput->GetKeyDown(KEY_RIGHT))
+#define PRESS_HOME      (gInput->GetKeyDown(KEY_HOME))
+#define PRESS_PAGEUP    (gInput->GetKeyDown(KEY_PAGEUP))
+#define PRESS_W         (gInput->GetKeyDown(KEY_W))
+#define PRESS_S         (gInput->GetKeyDown(KEY_S))
+#define PRESS_A         (gInput->GetKeyDown(KEY_A))
+#define PRESS_D         (gInput->GetKeyDown(KEY_D))
+#define PRESS_Q         (gInput->GetKeyDown(KEY_Q))
+#define PRESS_E         (gInput->GetKeyDown(KEY_E))

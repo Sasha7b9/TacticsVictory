@@ -82,27 +82,27 @@ void CameraRTS::Move(float time)
 
     TypeCursor cursor = gCursor->GetType();
 
-    if(CURSOR_UP || CURSOR_TOP_LEFT || CURSOR_TOP_RIGHT || ((PRESS_KEY_UP || PRESS_KEY_W) && arrowEnabled))
+    if(CURSOR_UP || CURSOR_TOP_LEFT || CURSOR_TOP_RIGHT || ((PRESS_UP || PRESS_W) && arrowEnabled))
     {
         MoveOn(Direction_Forward, distance);
     }
-    if(CURSOR_DOWN || CURSOR_DOWN_LEFT || CURSOR_DOWN_RIGhT || ((PRESS_KEY_DOWN || PRESS_KEY_S) && arrowEnabled))
+    if(CURSOR_DOWN || CURSOR_DOWN_LEFT || CURSOR_DOWN_RIGhT || ((PRESS_DOWN || PRESS_S) && arrowEnabled))
     {
         MoveOn(Direction_Back, distance);
     }
-    if(CURSOR_LEFT || CURSOR_TOP_LEFT || CURSOR_DOWN_LEFT || ((PRESS_KEY_LEFT || PRESS_KEY_A) && arrowEnabled))
+    if(CURSOR_LEFT || CURSOR_TOP_LEFT || CURSOR_DOWN_LEFT || ((PRESS_LEFT || PRESS_A) && arrowEnabled))
     {
         MoveOn(Direction_Left, distance);
     }
-    if(CURSOR_RIGHT || CURSOR_TOP_RIGHT || CURSOR_DOWN_RIGhT || ((PRESS_KEY_RIGHT || PRESS_KEY_D) && arrowEnabled))
+    if(CURSOR_RIGHT || CURSOR_TOP_RIGHT || CURSOR_DOWN_RIGhT || ((PRESS_RIGHT || PRESS_D) && arrowEnabled))
     {
         MoveOn(Direction_Right, distance);
     }
-    if(gInput->GetKeyDown(KEY_HOME))
+    if(PRESS_HOME || PRESS_Q)
     {
         MoveOn(Direction_Closer, distance);
     }
-    if(gInput->GetKeyDown(KEY_PAGEUP))
+    if(PRESS_PAGEUP || PRESS_E)
     {
         MoveOn(Direction_Further, distance);
     }
