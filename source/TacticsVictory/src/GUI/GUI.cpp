@@ -1,6 +1,4 @@
 #include <stdafx.h>
-
-
 #include "GUI.h"
 #include "GUI/Elements/Tab.h"
 #include "GUI/Elements/Button.h"
@@ -28,11 +26,13 @@
 #include "GlobalFunctions.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 GUI::GUI() : Object(gContext)
 {
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 GUI::~GUI()
 {
     SAFE_DELETE(gCursor);
@@ -40,6 +40,7 @@ GUI::~GUI()
     SAFE_DELETE(gGuiEditor);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void RegstrationObjects()
 {
     ButtonRTS::RegisterObject();
@@ -62,11 +63,13 @@ static void RegstrationObjects()
     DropDownListWithTextAndButton::RegisterObject();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static float GetPosCameraY()
 {
     return gCamera->GetPosition().y_;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void SetPosCameraY(float y)
 {
     Vector3 position = gCamera->GetPosition();
@@ -75,11 +78,13 @@ static void SetPosCameraY(float y)
     gCamera->SetPosition(position);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static float GetPosCameraX()
 {
     return gCamera->GetPosition().x_;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void SetPosCameraX(float x)
 {
     Vector3 position = gCamera->GetPosition();
@@ -88,11 +93,13 @@ static void SetPosCameraX(float x)
     gCamera->SetPosition(position);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static float GetPosCameraZ()
 {
     return gCamera->GetPosition().z_;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void SetPosCameraZ(float z)
 {
     Vector3 position = gCamera->GetPosition();
@@ -100,18 +107,21 @@ static void SetPosCameraZ(float z)
     gCamera->SetPosition(position);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static float GetCameraPitch()
 {
     Quaternion angle = gCamera->GetNode()->GetRotation();
     return angle.PitchAngle();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static float GetCameraYaw()
 {
     Quaternion angle = gCamera->GetNode()->GetRotation();
     return angle.YawAngle();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GUI::Create()
 {
     RegstrationObjects();
@@ -160,6 +170,7 @@ void GUI::Create()
     gLocalization->SetLanguage(gSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
 {
     if (gGuiGame->IsVisible())

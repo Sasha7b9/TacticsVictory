@@ -1,12 +1,12 @@
 #pragma once
-
-
 #include "GUI/Menu/MenuEvents.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class WindowRTS;
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class GUI : public Object
 {
     URHO3D_OBJECT(GUI, Object);
@@ -20,19 +20,15 @@ public:
     bool MenuIsVisible();
     void SetVisibleMenu(bool visible);
     void SetVisibleMenu(WindowRTS *menuWindow, bool visible);
-    // Return true, if cursor over the menu
-    bool UnderCursor();
-
+    bool UnderCursor();                                             // Возвращает true, если меню под курсором
     void RemoveFromScreen();
     void AddToScreen();
     void SetVisibleWindow(WindowRTS *window, bool visible);
     void SetUnvisibleAllWindows();
 
 private:
-    void HandleMenuEvent(StringHash eventType, VariantMap& eventData);
-
     bool shownMenuMain = false;
     bool shownMenuOptions = false;
 
-    CONSTRUCTORS(GUI, Object);
+    void HandleMenuEvent(StringHash eventType, VariantMap& eventData);
 };

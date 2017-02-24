@@ -16,11 +16,11 @@
 		<quality>0</quality>
 	</material>
 	<shadow>
-		<draw>0</draw>
-		<map_size>5</map_size>
+		<draw>1</draw>
+		<map_size>8</map_size>
 	</shadow>
 	<lighting>
-		<specular>0</specular>
+		<specular>1</specular>
 	</lighting>
 	<panel>
 		<speed>1000</speed>

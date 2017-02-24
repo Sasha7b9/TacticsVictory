@@ -1,19 +1,18 @@
 #pragma once
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class CursorShapes;
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class CursorRTS : public Object
 {
     URHO3D_OBJECT(CursorRTS, Object)
 public:
     CursorRTS();
-
     SharedPtr<Cursor> GetCursor();
-
     void Update(float dT);
-
     void SetNormal();
     void SetSelected();
     void Hide();
@@ -27,10 +26,7 @@ private:
     SharedPtr<Node> nodeSprite;
     SharedPtr<Sprite2D> sprite;
     SharedPtr<StaticSprite2D> staticSprite;
-
     bool selected = false;
     bool hidden = false;
     TypeCursor type = TypeCursor_Normal;
-
-//    CONSTRUCTORS(CursorRTS, Object);
 };

@@ -1,13 +1,13 @@
 #include <stdafx.h>
-
-
 #include "UnitObject.h"
 #include "Game/Objects/GameObjectEvents.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool UnitObject::viewTargetView = false;
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 UnitObject::UnitObject(Context *context) :
     GameObject(context)
 {
@@ -26,11 +26,13 @@ UnitObject::UnitObject(Context *context) :
     renderSurface->SetViewport(0, viewport);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void UnitObject::SetViewTargetView(bool view)
 {
     viewTargetView = view;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void UnitObject::HandlePostRenderUpdate(StringHash, VariantMap&)
 {
     cameraTarget->GetNode()->SetPosition(GetNode()->GetPosition() + Vector3(0.0f, 0.2f, 0.0f));
@@ -41,6 +43,7 @@ void UnitObject::HandlePostRenderUpdate(StringHash, VariantMap&)
     SendEvent(E_SETTEXTURE, eventData);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void UnitObject::SetSelected(bool sel)
 {
     GameObject::SetSelected(sel);

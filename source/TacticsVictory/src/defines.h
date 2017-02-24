@@ -49,8 +49,6 @@ enum TypeCursor
 #define PROFILER_FUNC_ENTER     gProfiler->BeginBlock(__FUNCTION__);
 #define PROFILER_FUNC_LEAVE     gProfiler->EndBlock();
 
-#define CONSTRUCTORS(name, parent)        name(name const&) : parent(nullptr) {}; name operator=(name const&) {};
-
 #define PRESS_UP        (gInput->GetKeyDown(KEY_UP))
 #define PRESS_DOWN      (gInput->GetKeyDown(KEY_DOWN))
 #define PRESS_LEFT      (gInput->GetKeyDown(KEY_LEFT))
