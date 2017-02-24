@@ -156,6 +156,10 @@ void TacticsVictory::Start()
 
     CreateNewGame();
 
+    gContext->RegisterSubsystem(new Script(gContext));
+    gScript = GetSubsystem<Script>();
+    gScript->Execute("Print(\"Hello World!\");");
+
     PROFILER_FUNC_LEAVE;
 }
 

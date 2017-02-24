@@ -22,6 +22,7 @@ Time            *gTime = nullptr;
 FileSelector    *gFileSelector = nullptr;
 Log             *gLog = nullptr;
 Profiler        *gProfiler = nullptr;
+Script          *gScript = nullptr;
 
 CameraRTS       *gCamera = nullptr;
 CursorRTS       *gCursor = nullptr;

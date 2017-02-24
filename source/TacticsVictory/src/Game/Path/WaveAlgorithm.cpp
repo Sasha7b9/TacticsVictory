@@ -1,20 +1,25 @@
 #include <stdafx.h>
-
-
 #include "WaveAlgorithm.h"
 #include "Game/Objects/Terrain/Terrain.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define TERRAIN_HEIGHT_EQUAL(x,y) (gTerrain->GetHeight(x, y) == heightStart)
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 WaveAlgorithm::WaveAlgorithm() : Thread()
 {
     //passValues.Insert(KeySet(5, )
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 WaveAlgorithm::~WaveAlgorithm()
 {
     Stop();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WaveAlgorithm::SetSize(uint rows, uint cols)
 {
     numRows = rows;
@@ -27,6 +32,7 @@ void WaveAlgorithm::SetSize(uint rows, uint cols)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WaveAlgorithm::StartFind(Coord start_, Coord end_)
 {
     start = start_;
@@ -34,17 +40,20 @@ void WaveAlgorithm::StartFind(Coord start_, Coord end_)
     Run();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool WaveAlgorithm::PathIsFound()
 {
     return pathIsFound;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 PODVector<Coord> WaveAlgorithm::GetPath()
 {
     Stop();
     return path;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WaveAlgorithm::ThreadFunction()
 {
     pathIsFound = false;
@@ -53,6 +62,7 @@ void WaveAlgorithm::ThreadFunction()
     pathIsFound = true;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WaveAlgorithm::FindPath()
 {
     if (gTerrain->GetHeight(start.row, start.col) != gTerrain->GetHeight(end.row, end.col))
@@ -102,6 +112,7 @@ void WaveAlgorithm::FindPath()
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool WaveAlgorithm::Contain(Wave &wave, Coord &coord)
 {
     for (auto &crd : wave)
@@ -115,9 +126,11 @@ bool WaveAlgorithm::Contain(Wave &wave, Coord &coord)
     return false;
 }
 
+
 static int dRow[] = {0, -1, 0, 1, -1, -1, 1, 1};
 static int dCol[] = {-1, 0, 1, 0, -1, 1, 1, -1};
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WaveAlgorithm::NextWave(Vector<Wave> &waves)
 {
     int numWave = (int)waves.Size();
@@ -142,19 +155,19 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
 
             if (newRow < numRows && newCol < numCols && cells[newRow][newCol] == -1 && gTerrain->GetHeight(newRow, newCol) == heightStart)
             {
-                if (i == 4 && (gTerrain->GetHeight(row, col - 1) != heightStart || gTerrain->GetHeight(row - 1, col) != heightStart))
+                if (i == 4 && (!TERRAIN_HEIGHT_EQUAL(row, col - 1) || !TERRAIN_HEIGHT_EQUAL(row - 1, col)))
                 {
                     continue;
                 }
-                else if (i == 5 && (gTerrain->GetHeight(row - 1, col) != heightStart || gTerrain->GetHeight(row, col + 1) != heightStart))
+                else if (i == 5 && (!TERRAIN_HEIGHT_EQUAL(row - 1, col) || !TERRAIN_HEIGHT_EQUAL(row, col)))
                 {
                     continue;
                 }
-                else if (i == 6 && (gTerrain->GetHeight(row, col + 1) != heightStart || gTerrain->GetHeight(row + 1, col) != heightStart))
+                else if (i == 6 && (!TERRAIN_HEIGHT_EQUAL(row, col + 1) || !TERRAIN_HEIGHT_EQUAL(row + 1, col)))
                 {
                     continue;
                 }
-                else if (i == 7 && (gTerrain->GetHeight(row, col - 1) != heightStart || gTerrain->GetHeight(row + 1, col) != heightStart))
+                else if (i == 7 && (!TERRAIN_HEIGHT_EQUAL(row, col - 1) || !TERRAIN_HEIGHT_EQUAL(row + 1, col)))
                 {
                     continue;
                 }
@@ -167,12 +180,14 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
     waves.Push(wave);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WaveAlgorithm::SetCell(Wave &wave, uint row, uint col, int numWave)
 {
     wave.Push(Coord(row, col));
     cells[row][col] = numWave;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path_)
 {
     Coord coord = path_[0];
