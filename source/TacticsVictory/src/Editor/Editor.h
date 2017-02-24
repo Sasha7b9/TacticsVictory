@@ -1,11 +1,10 @@
 #pragma once
-
-
 #include "Graphics/Objects/Plane.h"
 #include "Game/Objects/Terrain/Terrain.h"
 #include "Graphics/Objects/Line.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Editor : public Object
 {
     URHO3D_OBJECT(Editor, Object);
@@ -17,15 +16,11 @@ public:
 private:
     PlaneRTS currentPlane;
     PlaneRTS selectedPlane;
-
     Line currentEdge;
     Line selectedEdge;
-
     SharedPtr<Node> lightNode;
 
     void HandlePostRenderUpdate(StringHash, VariantMap&);
     void HandleMouseDown(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
-
-    CONSTRUCTORS(Editor, Object);
 };

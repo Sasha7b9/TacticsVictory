@@ -11,10 +11,8 @@ public:
     Hint(char *text);
 
 private:
-    char *text;
+    char *text = nullptr;
     SharedPtr<Label> label;
 
     void HandleChangeLanguage(StringHash, VariantMap&);
-
-    CONSTRUCTORS(Hint, WindowRTS);
 };

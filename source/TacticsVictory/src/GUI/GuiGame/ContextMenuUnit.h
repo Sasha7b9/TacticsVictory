@@ -22,6 +22,4 @@ private:
 
     void CreateForUnit();
     void HandleToggledFiedView(StringHash, VariantMap&);
-
-    CONSTRUCTORS(ContextMenuUnit, WindowRTS);
 };

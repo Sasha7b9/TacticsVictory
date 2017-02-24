@@ -1,6 +1,7 @@
 #pragma once
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class LineTranslator1D : public Object
 {
     URHO3D_OBJECT(LineTranslator1D, Object);
@@ -16,13 +17,9 @@ public:
     };
 
     LineTranslator1D(int start, int finish, float speed, State startPosition);
-
     int Update(float dT);
     void Toggle();
-    State GetState()
-    {
-        return state;
-    }
+    State GetState() { return state; }
 
 private:
     float position = 0.0f;
@@ -31,6 +28,4 @@ private:
     float speed = 0.0f;
     State state = State_PointStart;
     float currentSpeed = 0.0f;
-
-    CONSTRUCTORS(LineTranslator1D, Object);
 };

@@ -1,10 +1,9 @@
 #pragma once
-
-
 #include "Cursor.h"
 #include "GUI/Elements/Image.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class CursorShapes : public Object
 {
     URHO3D_OBJECT(CursorShapes, Object);
@@ -13,7 +12,6 @@ public:
     SharedPtr<ImageRTS> GetShape(TypeCursor type, int numFrame);
 
 private:
-
     void CreateNormal(int numFrame);
     void CreateSelected(int numFrame);
     void CreateLeft(int numFrame);
@@ -25,7 +23,6 @@ private:
     void CreateDownLeft(int numFrame);
     void CreateDownRight(int numFrame);
     void CreateBusy(int numFrame);
-
     void FillGradient(ImageRTS *image, TypeCursor type, int numFrame);
 
 public:
@@ -42,11 +39,8 @@ public:
 
 private:
     HashMap<StructShape, SharedPtr<ImageRTS>> map;
-
     int dimensionTriangleSmall = 50;
     int dimensionTriangleBig = 100;
 
     void CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int *y2);
-
-    CONSTRUCTORS(CursorShapes, Object);
 };

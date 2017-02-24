@@ -1,15 +1,14 @@
 #pragma once
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class ImageRTS : public Image
 {
     URHO3D_OBJECT(ImageRTS, Image);
 public:
     ImageRTS(Context *context = gContext);
     ~ImageRTS();
-
     static void RegisterObject(Context *context = gContext);
-
     void SetSize(int width, int height);
     void SetPoint(int x, int y, const Color& color);
     void DrawLine(int x0, int y0, int x1, int y1, const Color &color);
@@ -24,12 +23,11 @@ public:
     void SetHotSpot(int x, int y);
 
 private:
-    void Replace4Points(int x, int y, const Color &color);
-    void Replace4PointsBound(int x, int y, const Color &color);
-    
+
     Color replacedColor;
     Color boundingColor;
     IntVector2 hotSpot;
 
-    CONSTRUCTORS(ImageRTS, Image);
+    void Replace4Points(int x, int y, const Color &color);
+    void Replace4PointsBound(int x, int y, const Color &color);
 };

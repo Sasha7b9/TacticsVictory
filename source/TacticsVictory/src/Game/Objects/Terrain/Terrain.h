@@ -4,6 +4,7 @@
 #include "Graphics/Objects/Line.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 enum DIR
 {
     DIR_LEFT,
@@ -17,6 +18,7 @@ enum DIR
 };
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class TerrainRTS : public Object
 {
     URHO3D_OBJECT(TerrainRTS, Object);
@@ -24,31 +26,18 @@ class TerrainRTS : public Object
 public:
     TerrainRTS(Context *context = gContext);
     ~TerrainRTS();
-
     void CreateFromVector(Vector<Vector<float>> &level);
-
     void SaveToFile(char *nameFie);
-
     float GetHeight(uint row, uint col);
-
     void SetHeight(uint row, uint col, float height);
-
     void Update();
-
     uint NumRows();
-
     uint NumCols();
-
     bool Empty();
-
     PlaneRTS GetIntersectionPlane(Ray &ray);
-
     Line GetIntersectionEdge(Ray &ray);
-
     PlaneRTS GetPlane(uint row, uint col);
-
     Vector<Vector<float>> GetMap();
-
     PODVector<CubeTerrain*>* GetColumnCubes(CubeTerrain *cube, DIR dir);
 
     static Vector<Vector<PODVector<CubeTerrain*>>> columnsCubes;
@@ -58,6 +47,4 @@ private:
     Vector<Vector<SharedPtr<SegmentTerrain>>> segments;
 
     SegmentTerrain *GetSegmentForCoord(uint row, uint col);
-
-    CONSTRUCTORS(TerrainRTS, Object);
 };
