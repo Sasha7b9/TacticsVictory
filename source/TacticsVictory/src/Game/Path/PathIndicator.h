@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "Game/Path/WaveAlgorithm.h"
 
 

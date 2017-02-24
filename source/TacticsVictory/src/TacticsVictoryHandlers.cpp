@@ -1,6 +1,4 @@
 #include <stdafx.h>
-
-
 #include "GUI/GUI.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Menu/Console.h"
@@ -16,6 +14,7 @@
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
 {
     if(drawDebug)
@@ -28,6 +27,7 @@ void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
 {
     int key = eventData[KeyDown::P_KEY].GetInt();
@@ -104,6 +104,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     int typeEvent = eventData[MenuEvent::P_TYPE].GetInt();
@@ -118,6 +119,7 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
 {
     float time = eventData[Update::P_TIMESTEP].GetFloat();
@@ -146,7 +148,7 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
     }
 }
 
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& eventData)
 {
     float time = eventData[Update::P_TIMESTEP].GetFloat();

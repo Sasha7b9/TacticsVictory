@@ -1,22 +1,23 @@
 #include <stdafx.h>
-
-
 #include "PathIndicator.h"
 #include "GUI/Elements/Cursor.h"
 #include "Game/Objects/Terrain/Terrain.h"
 #include "Game/Path/TilePath.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 PathIndicator::PathIndicator()
 {
     
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PathIndicator::Init()
 {
     pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PathIndicator::Enable(bool enable)
 {
     enabled = enable;
@@ -30,6 +31,7 @@ void PathIndicator::Enable(bool enable)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PathIndicator::SetStartPosition(Coord &start_)
 {
     start = start_;
@@ -37,6 +39,7 @@ void PathIndicator::SetStartPosition(Coord &start_)
     TilePath::DisableAll();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PathIndicator::Update()
 {
     if (!enabled)
@@ -65,11 +68,13 @@ void PathIndicator::Update()
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PathIndicator::Stop()
 {
     pathFinder.Stop();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 PODVector<Coord> &PathIndicator::GetPath()
 {
     return path;

@@ -1,16 +1,20 @@
 #include <stdafx.h>
 #include "GlobalFunctions.h"
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool operator==(const Settings::IntKey & keyleft, const Settings::IntKey& keyright)
 {
     return keyleft.str == keyright.str;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool operator==(const Settings::FloatKey & keyLeft, const Settings::FloatKey& keyRight)
 {
     return keyLeft.str == keyRight.str;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Settings::Load()
 {
     nameFile = GetNameFile("settings.xml");
@@ -58,6 +62,7 @@ bool Settings::Load()
     return false;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 int Settings::GetInt(char *elem, char *name)
 {
     int retValue = mapIntChild[IntKey(elem, name)];
@@ -68,6 +73,7 @@ int Settings::GetInt(char *elem, char *name)
     return retValue;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 int Settings::GetInt(char *name)
 {
     int retValue = mapIntChild[IntKey(name)];
@@ -78,6 +84,7 @@ int Settings::GetInt(char *name)
     return retValue;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 float Settings::GetFloat(char *elem, char *name)
 {
     float retValue = mapFloatChild[FloatKey(elem, name)];
@@ -88,6 +95,7 @@ float Settings::GetFloat(char *elem, char *name)
     return retValue;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 #define COMMON_BLOCK                                    \
     XMLElement child = root.GetChild(category);         \
     if (child == 0)                                     \
@@ -101,16 +109,19 @@ float Settings::GetFloat(char *elem, char *name)
     }                                                   \
     childName.SetValue(String(value));
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Settings::SetInt(char *category, char *name, int value)
 {
     COMMON_BLOCK;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Settings::SetFloat(char *category, char *name, float value)
 {
     COMMON_BLOCK;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Settings::SetInt(char *name, int value)
 {
     XMLElement child = root.GetChild(name);
@@ -122,6 +133,7 @@ void Settings::SetInt(char *name, int value)
     child.SetValue(String(value));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Settings::Save()
 {
     File outFile(gContext);
@@ -129,6 +141,7 @@ void Settings::Save()
     file->Save(outFile);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Settings::GetIntFromChild(char *category, char *name, int *value)
 {
     if (!root.HasChild(category))
@@ -146,6 +159,7 @@ bool Settings::GetIntFromChild(char *category, char *name, int *value)
     return true;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Settings::GetFloatFromChild(char *category, char *name, float *value)
 {
     if (!root.HasChild(category))
@@ -161,6 +175,7 @@ bool Settings::GetFloatFromChild(char *category, char *name, float *value)
     return true;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Settings::GetIntFromChild(char *name, int *value)
 {
     if (!root.HasChild(name))

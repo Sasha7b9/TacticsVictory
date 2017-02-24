@@ -1,6 +1,4 @@
 #include <stdafx.h>
-
-
 #include "Scene.h"
 #include "Core/Camera.h"
 #include "Core/Math.h"
@@ -17,6 +15,7 @@
 #include "GUI/GuiGame/WindowTarget.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 SceneRTS::SceneRTS(Context *context) :
     Object(context)
 {
@@ -29,12 +28,14 @@ SceneRTS::SceneRTS(Context *context) :
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(SceneRTS, HandleMouseDown));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SceneRTS::~SceneRTS()
 {
     SAFE_DELETE(gTerrain);
     pathIndicator.Stop();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SceneRTS::RegisterObjects()
 {
     Tank::RegisterObject();
@@ -42,11 +43,13 @@ void SceneRTS::RegisterObjects()
     MilitaryPlant::RegisterObject();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SceneRTS::RegisterObject(Context *context)
 {
     context->RegisterFactory<SceneRTS>();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SceneRTS::Create()
 {
     Sounds::Init();
@@ -135,6 +138,7 @@ void SceneRTS::Create()
     militaryPlant->SetCoord(Coord(1, 1));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SceneRTS::Update(float /*timeStep*/)
 {
     Vector3 hitPos;
@@ -160,6 +164,7 @@ void SceneRTS::Update(float /*timeStep*/)
     pathIndicator.Update();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SceneRTS::HandleMouseDown(StringHash, VariantMap& eventData)
 {
     int buttons = (int)eventData[MouseButtonDown::P_BUTTONS].GetInt();
@@ -174,6 +179,7 @@ void SceneRTS::HandleMouseDown(StringHash, VariantMap& eventData)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SceneRTS::ProcessMouseLeft()
 {
     Vector3 hitCoord;
@@ -204,7 +210,7 @@ void SceneRTS::ProcessMouseLeft()
     }
     else if(name == NODE_TERRAIN)
     {
-        pathIndicator.Enable(false);
+        pathIndicator.Enable(true);
         Tank *tank = GetSelected();
         
         if(tank)
@@ -215,6 +221,7 @@ void SceneRTS::ProcessMouseLeft()
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SceneRTS::ProcessMouseRight()
 {
     pathIndicator.Enable(false);
@@ -227,6 +234,7 @@ void SceneRTS::ProcessMouseRight()
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SceneRTS::SetSelected(Tank *tank_, bool selected)
 {
     if(selected)
@@ -244,6 +252,7 @@ void SceneRTS::SetSelected(Tank *tank_, bool selected)
     tank_->SetSelected(selected);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 Tank* SceneRTS::GetSelected()
 {
     const Vector<SharedPtr<Node>> &nodes = gScene->GetChildren();

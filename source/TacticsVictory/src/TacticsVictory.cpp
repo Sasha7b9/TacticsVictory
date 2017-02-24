@@ -1,6 +1,4 @@
 #include <stdafx.h>
-
-
 #include "GUI/GUI.h"
 #include "Core/Camera.h"
 #include "Editor/Editor.h"
@@ -24,13 +22,14 @@ URHO3D_DEFINE_APPLICATION_MAIN(TacticsVictory)
 #pragma warning(pop)
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TacticsVictory::TacticsVictory(Context* context) :
     Application(context)
 {
     gContext = context;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::Setup()
 {
     gSet = new Settings();
@@ -47,6 +46,7 @@ void TacticsVictory::Setup()
     engineParameters_["WindowHeight"] = gSet->GetInt(TV_SCREEN_HEIGHT);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::Stop()
 {
     float time = gTime->GetElapsedTime();
@@ -76,6 +76,7 @@ void TacticsVictory::Stop()
     SAFE_DELETE(gLog);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateComponents()
 {
     gProfiler = GetSubsystem<Profiler>();
@@ -108,6 +109,7 @@ void TacticsVictory::CreateComponents()
     SceneRTS::RegisterObject();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::RegistrationFactories()
 {
     gContext->RegisterFactory<Rotator>();
@@ -115,6 +117,7 @@ void TacticsVictory::RegistrationFactories()
     gContext->RegisterFactory<ImageRTS>();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::Start()
 {
     gProfiler = GetSubsystem<Profiler>();
@@ -163,12 +166,14 @@ void TacticsVictory::Start()
     PROFILER_FUNC_LEAVE;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::InitLocalizationSystem()
 {
     gLocalization->LoadJSONFile("Strings.json");
     gLocalization->SetLanguage("ru");
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::SubscribeToEvents()
 {
     SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(TacticsVictory, HandleUpdate));
@@ -178,6 +183,7 @@ void TacticsVictory::SubscribeToEvents()
     SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::SetWindowTitleAndIcon()
 {
     Image* icon = gCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
@@ -185,6 +191,7 @@ void TacticsVictory::SetWindowTitleAndIcon()
     gGraphics->SetWindowTitle(L"Тактика победы");
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateConsoleAndDebugHud()
 {
     XMLFile* xmlFile = gCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
@@ -197,6 +204,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
     gDebugHud->SetDefaultStyle(xmlFile);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateNewGame()
 {
     scene = new SceneRTS();
@@ -205,6 +213,7 @@ void TacticsVictory::CreateNewGame()
     gGuiGame->SetVisible(true);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateEditorSession()
 {
     if(!gEditor)
