@@ -13,6 +13,8 @@ bool operator==(const Settings::FloatKey & keyLeft, const Settings::FloatKey& ke
 
 bool Settings::Load()
 {
+    nameFile = GetNameFile("settings.xml");
+
     mapIntChild[IntKey(TV_SCREEN_WIDTH)] = SET::WINDOW::WIDTH;
     mapIntChild[IntKey(TV_SCREEN_HEIGHT)] = SET::WINDOW::HEIGHT;
     mapIntChild[IntKey(TV_LANGUAGE)] = 1;
@@ -34,7 +36,8 @@ bool Settings::Load()
     mapFloatChild[FloatKey(TV_PANEL_SPEED)] = SET::PANEL::SPEED;
 
     File inFile(gContext);
-    if(inFile.Open(GetNameFile("settings.xml"), FILE_READ))
+
+    if(inFile.Open(nameFile, FILE_READ))
     {
         file = new XMLFile(gContext);
         bool begined = file->BeginLoad(inFile);

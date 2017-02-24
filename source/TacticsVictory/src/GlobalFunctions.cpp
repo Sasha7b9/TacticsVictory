@@ -41,7 +41,7 @@ unsigned GetLastModifiedTime(char* name)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-String GetNameFile(char *name)
+String GetNameFile(const char *name)
 {
     String fullName;
 

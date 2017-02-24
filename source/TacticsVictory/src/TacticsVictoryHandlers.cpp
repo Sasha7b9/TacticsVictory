@@ -136,12 +136,13 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
         scene->Update(time);
     }
 
-    PODVector<Component*> components;
-
     if (gScene)
     {
+        /*
+        PODVector<Component*> components;
         gScene->GetComponents(components, ParticleEmitter::GetTypeStatic(), true);
         URHO3D_LOGINFOF("%d components", components.Size());
+        */
     }
 }
 

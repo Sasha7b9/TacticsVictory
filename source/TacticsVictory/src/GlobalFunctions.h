@@ -6,4 +6,4 @@ void OpenFileSelector(char *title, char *textOk, char *textCancel, Vector<String
 /// Return the file's last modified time. File path relative from TVData/
 unsigned GetLastModifiedTime(char* name);
 
-String GetNameFile(char *name);
+String GetNameFile(const char *name);
