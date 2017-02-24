@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "Game/Objects/Units/Tank/Tank.h"
 #include "Game/Path/PathIndicator.h"
 

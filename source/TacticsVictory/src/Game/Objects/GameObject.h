@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "Game/Objects/Units/Tank/Translator.h"
 #include "GUI/GuiGame/ContextMenuUnit.h"
 
