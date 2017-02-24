@@ -185,14 +185,19 @@ void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
 
     //Particles::Emitting(Particle_Explosion, node_->GetPosition());
 
-    XMLFile *file = gCache->GetResource<XMLFile>("Particle/Fire.xml");
     Node *node = GetNode()->CreateChild("Emitter");
-    node->SetScale(5.0f);
+    node->SetScale(50.0f);
     ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
     emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
-    XMLElement root = file->GetRoot("particleemitter");
-    SharedPtr<ParticleEffect> effect(new ParticleEffect(gContext));
-    bool res = effect->Load(root);
-    emitter->SetEffect(effect);
+    emitter->SetEffect(gCache->GetResource<ParticleEffect>("Particle/Fire.xml"));
     emitter->SetEmitting(true);
+
+    /*
+    node = GetNode()->CreateChild();
+    node->SetScale(5.0f);
+    emitter = node->CreateComponent<ParticleEmitter>();
+    emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
+    emitter->SetEffect(gCache->GetResource<ParticleEffect>("Particle/Fire.xml"));
+    emitter->SetEmitting(true);
+    */
 }
