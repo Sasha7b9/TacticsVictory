@@ -111,7 +111,7 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
 
     if (typeEvent == MenuEvent_NewGame)
     {
-        CreateNewGame();
+        //CreateNewGame();
     }
     else if (typeEvent == MenuEvent_OpenEditor)
     {

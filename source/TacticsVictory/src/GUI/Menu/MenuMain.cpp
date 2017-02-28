@@ -66,7 +66,6 @@ void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
     if (button == buttonExit)
     {
         gEngine->Exit();
-
         gMenuMain->SetDisabled();
         gGUI->SetVisibleMenu(gWindowConfirmExit, true);
     

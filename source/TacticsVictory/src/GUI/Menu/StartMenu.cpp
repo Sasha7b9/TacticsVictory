@@ -25,7 +25,22 @@ StartMenu::StartMenu(Context *context) : WindowRTS(context)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void StartMenu::HandleButtonRelease(StringHash, VariantMap&)
+void StartMenu::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
+    using namespace Released;
 
+    Button *button = (Button*)eventData[P_ELEMENT].GetPtr();
+
+    if(button == buttonStartServer)
+    {
+        //
+    }
+    else if(button == buttonStartClient)
+    {
+
+    }
+    else if(button == buttonStartEditor)
+    {
+
+    }
 }
