@@ -22,8 +22,6 @@ void SegmentTerrain::CreateFromVector(Vector<Vector<float>> &level, uint row0, u
     float min = 1e10f;
     float max = -1e10f;
 
-    level[row0][col0] = 2.0f;
-
     for (uint row = row0; row < row0 + numRows; row++)
     {
         for (uint col = col0; col < col0 + numCols; col++)
