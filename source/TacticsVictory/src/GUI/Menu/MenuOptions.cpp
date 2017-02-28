@@ -1,6 +1,4 @@
 #include <stdafx.h>
-
-
 #include "MenuOptions.h"
 #include "GUI/GUI.h"
 #include "GUI/Elements/SliderInt.h"
@@ -11,6 +9,7 @@
 #include "GUI/Elements/DropDownListWithTextAndButton.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 MenuOptions::MenuOptions(Context *context) :
     WindowRTS(context)
 {
@@ -84,6 +83,7 @@ MenuOptions::MenuOptions(Context *context) :
     label->SetPosition(x, y);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuOptions::RegisterObject(Context *context)
 {
     context->RegisterFactory<MenuOptions>("UI");
@@ -91,6 +91,7 @@ void MenuOptions::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 {
     DropDownListWithTextAndButton *ddList = (DropDownListWithTextAndButton*)eventData[ItemSelected::P_ELEMENT].GetPtr();
@@ -136,6 +137,7 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 {
     SliderWithTextAndButtons *slider = (SliderWithTextAndButtons*)eventData[SliderIntChanged::P_ELEMENT].GetPtr();
@@ -156,6 +158,7 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();

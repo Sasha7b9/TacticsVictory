@@ -1,6 +1,4 @@
 #include <stdafx.h>
-
-
 #include "MenuMain.h"
 #include "GUI/GUI.h"
 #include "GUI/Elements/Button.h"

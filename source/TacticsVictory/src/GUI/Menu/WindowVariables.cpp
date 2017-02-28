@@ -1,11 +1,10 @@
 #include <stdafx.h>
-
-
 #include "WindowVariables.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/Elements/GovernorFloat.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 WindowVariables::WindowVariables(Context *context) :
     WindowRTS(context)
 {
@@ -21,12 +20,14 @@ WindowVariables::WindowVariables(Context *context) :
     SetFixedSize(GetWidth(), GetHeight());
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowVariables::SetVar(float *var_, char *title_)
 {
     var = var_;
     title = title_;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowVariables::AddFunctionFloat(char *title_, pFuncFV funcRead, pFuncVF funcWrite)
 {
     SharedPtr<GovernorFloat> governor_(new GovernorFloat(gContext));

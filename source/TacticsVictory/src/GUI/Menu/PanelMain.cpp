@@ -1,12 +1,11 @@
 #include <stdafx.h>
-
-
 #include "PanelMain.h"
 #include "GUI/Elements/Tab.h"
 #include "GUI/Elements/ButtonToggled.h"
 #include "GUI/Logic/LineTranslator2D.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 PanelMain::PanelMain(Context *context) :
     WindowRTS(context)
 {
@@ -22,6 +21,7 @@ PanelMain::PanelMain(Context *context) :
     translator = new LineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PanelMain::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelMain>("UI");
@@ -29,11 +29,13 @@ void PanelMain::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PanelMain::Update(float dT)
 {
     SetPosition(translator->Update(dT));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PanelMain::AddTab(SharedPtr<Tab> tab)
 {
     static const int x0 = 10;
@@ -64,6 +66,7 @@ void PanelMain::AddTab(SharedPtr<Tab> tab)
     tab->SetFixedSize(GetWidth(), GetHeight() - y0 - tab->buttonTitle->GetHeight() + 1);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
 {
     ButtonToggled *button = (ButtonToggled*)eventData[Toggled::P_ELEMENT].GetPtr();

@@ -1,10 +1,9 @@
 #include <stdafx.h>
-
-
 #include "Console.h"
 #include "GUI/Menu/ConsoleParser.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ConsoleRTS::ConsoleRTS(Context *context) :
     WindowRTS(context)
 {
@@ -37,6 +36,7 @@ ConsoleRTS::ConsoleRTS(Context *context) :
     SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(ConsoleRTS, HandleFinishedText));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ConsoleRTS::Toggle()
 {
    SetVisible(!IsVisible());
@@ -46,6 +46,7 @@ void ConsoleRTS::Toggle()
    }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ConsoleRTS::HandleFinishedText(StringHash, VariantMap&)
 {
     String command = lineEdit->GetText();

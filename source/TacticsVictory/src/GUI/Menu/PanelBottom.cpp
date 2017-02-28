@@ -1,9 +1,8 @@
 #include <stdafx.h>
-
-
 #include "PanelBottom.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 PanelBottom::PanelBottom(Context *context) :
     WindowRTS(context)
 {
@@ -12,6 +11,7 @@ PanelBottom::PanelBottom(Context *context) :
     SetMovable(false);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PanelBottom::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelBottom>("UI");

@@ -1,6 +1,4 @@
 #include <stdafx.h>
-
-
 #include "WindowConfirmExit.h"
 #include "GUI/Elements/Button.h"
 #include "GUI/Elements/Label.h"
