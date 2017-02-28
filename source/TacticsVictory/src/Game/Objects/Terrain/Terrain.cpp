@@ -39,8 +39,8 @@ void TerrainRTS::CreateFromVector(Vector<Vector<float>> &lev)
     uint height = SegmentTerrain::HEIGHT;
     uint width = SegmentTerrain::WIDTH;
 
-    uint segmentsInZ = level.Size() / height + ((level.Size() % height) == 0 ? 0 : 1);
-    uint segmentsInX = level[0].Size() / width + ((level.Size() % width) == 0 ? 0 : 1);
+    uint segmentsInZ = level.Size() / height + ((level.Size() % height) == 0 ? 0 : 1);      // Сколько сегментов по иксу
+    uint segmentsInX = level[0].Size() / width + ((level.Size() % width) == 0 ? 0 : 1);     // Сколько сегментов по зет
 
     uint allRows = level.Size();
     uint allCols = level[0].Size();
@@ -56,14 +56,15 @@ void TerrainRTS::CreateFromVector(Vector<Vector<float>> &lev)
 
     for(uint row0 = 0; row0 < allRows; row0 += height)
     {
-        segments[row0 / height].Resize(segmentsInX);
+        uint i = row0 / height;
+
+        segments[i].Resize(segmentsInX);
 
         for(uint col0 = 0; col0 < allCols; col0 += width)
         {
             uint numRows = (row0 + height > allRows) ? (allRows - row0) : height;
             uint numCols = (col0 + width > allCols) ? (allCols - col0) : width;
 
-            uint i = row0 / height;
             uint j = col0 / width;
 
             segments[i][j] = new SegmentTerrain();

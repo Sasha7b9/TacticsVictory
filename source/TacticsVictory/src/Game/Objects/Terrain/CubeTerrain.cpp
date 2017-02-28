@@ -20,7 +20,7 @@ CubeTerrain::CubeTerrain(uint row, uint col, float height) :
     this->row = row;
     this->col = col;
 
-    underGround = height <= 0.0f;
+    underGround = (height <= 0.0f);
 
     layer = (uint)fabs(height);
     if (!underGround)
@@ -284,12 +284,12 @@ void CubeTerrain::CreateSideDown()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void CubeTerrain::BuildPlaneVerexes(PlaneCube &plane) 
 {
+    uint index = vertexes->Size() / 8;
+
     PushPoint(plane.point[0]);
     PushPoint(plane.point[1]);
     PushPoint(plane.point[2]);
     PushPoint(plane.point[3]);
-
-    uint index = vertexes->Size() / 8;
 
     indexes->Push(index + 0);
     indexes->Push(index + 1);

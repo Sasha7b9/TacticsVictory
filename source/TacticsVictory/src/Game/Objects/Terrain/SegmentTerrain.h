@@ -25,7 +25,7 @@ public:
 
     static const uint WIDTH = 50;
     static const uint HEIGHT = 50;
-    SegmentTerrain* neighbours[4];
+    SegmentTerrain* neighbours[4];      // Соседи соотвественно с четырёх сторон
 
 private:
     Vector<SharedPtr<LayerTerrain>> ground;          // Height (0, 1, 2, 3, ...)

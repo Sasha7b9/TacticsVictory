@@ -37,7 +37,7 @@ void LayerTerrain::Build()
     PODVector<float> vertexes;
     PODVector<uint> indexes;
 
-    for(auto cube : cubes)
+    for(CubeTerrain *cube : cubes)
     {
         cube->BuildVertexes(vertexes, indexes);
     }

@@ -66,7 +66,7 @@ void SceneRTS::Create()
     Zone* zone = zoneNode->CreateComponent<Zone>();
     // Set same volume as the Octree, set a close bluish fog and some ambient light
     zone->SetBoundingBox(BoundingBox(-1000.0f, 1000.0f));
-    zone->SetFogColor(Color::BLUE);
+    zone->SetFogColor(Color::GRAY);
     zone->SetFogHeightScale(10000.0f);
     zone->SetFogStart(0.0f);
     zone->SetFogEnd(1000.0f);
@@ -135,7 +135,7 @@ void SceneRTS::Create()
     gWindowTarget->SetVisible(false);
 
     SharedPtr<MilitaryPlant> militaryPlant = MilitaryPlant::Create();
-    militaryPlant->SetCoord(Coord(1, 1));
+    militaryPlant->SetCoord(Coord(0, 0));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
