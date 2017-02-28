@@ -107,6 +107,9 @@
     "Terrain":              { "en":"Terrain",                                           "ru":"Ландшафт" },
     "PAUSE":                { "en":"PAUSE",                                             "ru":"ПАУЗА" },
     "Exit in main menu?":   { "en":"Exit in main menu?",                                "ru":"Выйти в главное меню?" },
+    "Start server":         { "en":"Start server",                                      "ru":"Запустить сервер" },
+    "Start client":         { "en":"Start client",                                      "ru":"Запустить клиент" },
+    "Start editor":         { "en":"Start editor",                                      "ru":"Запустить редактор" },
 
     "hintSliderDefaultHeight":  
                             { "en":"This value will fill a landscape after cleaning",   "ru":"Этим значением будет заполнен ландшафт после очистки" },

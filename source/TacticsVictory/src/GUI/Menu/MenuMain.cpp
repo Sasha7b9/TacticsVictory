@@ -93,68 +93,6 @@ void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuMain::HandleKeyDown(StringHash, VariantMap& eventData)
-{
-    using namespace KeyDown;
-
-    int key = eventData[P_KEY].GetInt();
-
-    if (key == KEY_UP)
-    {
-        SetFocusedPrev();
-    }
-    else if (key == KEY_DOWN)
-    {
-        SetFocusedNext();
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuMain::SetEnabled()
-{
-    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(MenuMain, HandleKeyDown));
-    SetVisible(true);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuMain::SetDisabled()
-{
-    UnsubscribeFromEvent(E_KEYDOWN);
-    SetVisible(false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuMain::SetFocusedNext()
-{
-    int numButton = (NumFocusedButton() + 1) % (int)buttons.Size();
-    buttons[(uint)numButton]->SetFocus(true);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuMain::SetFocusedPrev()
-{
-    int numButton = NumFocusedButton() - 1;
-    if (numButton < 0)
-    {
-        numButton = (int)buttons.Size() - 1;
-    }
-    buttons[(uint)numButton]->SetFocus(true);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int MenuMain::NumFocusedButton()
-{
-    for (uint i = 0; i < buttons.Size(); i++)
-    {
-        if(buttons[i]->HasFocus())
-        {
-            return (int)i;
-        }
-    }
-    return -1;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuMain::Open()
 {
     gScene->SetTimeScale(0.0f);

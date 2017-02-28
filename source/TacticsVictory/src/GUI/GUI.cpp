@@ -13,6 +13,7 @@
 #include "GUI/Elements/SliderWithTextAndButtons.h"
 #include "Core/Camera.h"
 #include "GUI/Menu/MenuMain.h"
+#include "GUI/Menu/StartMenu.h"
 #include "GUI/Menu/MenuOptions.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/PanelBottom.h"
@@ -126,7 +127,11 @@ void GUI::Create()
 {
     RegstrationObjects();
 
-    gMenuMain = new MenuMain(gContext);
+    gStartMenu = new StartMenu();
+    SetWindowInCenterScreen(gStartMenu);
+    gUIRoot->AddChild(gStartMenu);
+
+    gMenuMain = new MenuMain();
     SetWindowInCenterScreen(gMenuMain);
     gUIRoot->AddChild(gMenuMain);
     SubscribeToEvent(gMenuMain, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));

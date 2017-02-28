@@ -230,9 +230,9 @@ void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
 {
     if (parent_->IsVisible() && IsInside(gCursor->GetCursor()->GetPosition(), true))
     {
-        int buttons = (int)eventData[MouseButtonDown::P_BUTTONS].GetInt();
+        int buttns = (int)eventData[MouseButtonDown::P_BUTTONS].GetInt();
 
-        if (buttons == MOUSEB_RIGHT)
+        if (buttns == MOUSEB_RIGHT)
         {
             IntVector2 coordMap = gCursor->GetCursor()->GetPosition() - GetPosition();
 

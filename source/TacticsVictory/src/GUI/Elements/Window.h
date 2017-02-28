@@ -20,6 +20,8 @@ public:
     static void RegisterObject(Context *context = gContext);
     bool IsChildOfParent();
     void Toggle();
+    void SetEnabled();
+    void SetDisabled();
     SharedPtr<LineTranslator2D> GetTranslator();
     bool UnderCursor();
     SharedPtr<ButtonRTS> AddButton(char *text, int x = -1, int y = -1, int width = -1, int height = -1);
@@ -31,4 +33,10 @@ public:
 protected:
     HashMap<Button*, uint> mapButtonsActions;
     SharedPtr<LineTranslator2D> translator;
+    PODVector<ButtonRTS*> buttons;
+
+    void SetFocusedNext();                              // Установить фокус на следующую кнопку
+    void SetFocusedPrev();                              // Установить фокус на предыдущую кнопку
+    int NumFocusedButton();                             // Возвращает номер сфокусированной кнопки. Если фокус не установлен, возвращает 0
+    void HandleKeyDown(StringHash, VariantMap&);        // Обработчик нажатий клавиш при открытом меню
 };

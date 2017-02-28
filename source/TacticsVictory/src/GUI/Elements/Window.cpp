@@ -1,6 +1,4 @@
 #include <stdafx.h>
-
-
 #include "Window.h"
 #include "GUI/Elements/Button.h"
 #include "GUI/Elements/Label.h"
@@ -10,6 +8,7 @@
 #include "GUI/Elements/Cursor.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 WindowRTS::WindowRTS(Context *context) :
     Window(context)
 {
@@ -18,6 +17,7 @@ WindowRTS::WindowRTS(Context *context) :
     SetMovable(true);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowRTS::RegisterObject(Context *context)
 {
     context->RegisterFactory<WindowRTS>("UI");
@@ -25,11 +25,13 @@ void WindowRTS::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(Window);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool WindowRTS::IsChildOfParent()
 {
     return gUIRoot->FindChild(this) != M_MAX_UNSIGNED;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowRTS::Toggle()
 {
     if(translator)
@@ -38,16 +40,19 @@ void WindowRTS::Toggle()
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<LineTranslator2D> WindowRTS::GetTranslator()
 {
     return translator;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool WindowRTS::UnderCursor()
 {
     return Window::IsInside(gCursor->GetCursor()->GetPosition(), true);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<ButtonRTS> WindowRTS::AddButton(char *text, int x, int y, int width, int height)
 {
     SharedPtr<ButtonRTS> retButton(new ButtonRTS(this, text, width, height));
@@ -59,6 +64,7 @@ SharedPtr<ButtonRTS> WindowRTS::AddButton(char *text, int x, int y, int width, i
     return retButton;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<ButtonToggled> WindowRTS::AddButtonToggled(char *text, int x, int y, int width, int height)
 {
     SharedPtr<ButtonToggled> retButton(new ButtonToggled(this, text, width, height));
@@ -67,6 +73,7 @@ SharedPtr<ButtonToggled> WindowRTS::AddButtonToggled(char *text, int x, int y, i
     return retButton;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<SliderWithTextAndButtons> WindowRTS::AddSlider(char *text, int min, int max, int step, int x, int y, int widthText, int widthRoller)
 {
     SharedPtr<SliderWithTextAndButtons> slider(new SliderWithTextAndButtons(this, text, min, max, step, widthText, widthRoller));
@@ -78,6 +85,7 @@ SharedPtr<SliderWithTextAndButtons> WindowRTS::AddSlider(char *text, int min, in
     return slider;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<DropDownListWithTextAndButton> WindowRTS::AddDDList(char *text, int widthText, int widthDDList, int numItems, char *items[], int x, int y)
 {
     SharedPtr<DropDownListWithTextAndButton> ddList(DropDownListWithTextAndButton::Create(this, text, widthText, widthDDList, numItems, items));
@@ -88,9 +96,72 @@ SharedPtr<DropDownListWithTextAndButton> WindowRTS::AddDDList(char *text, int wi
     return ddList;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<Label> WindowRTS::AddLabel(char *text)
 {
     SharedPtr<Label> label(Label::Create(text));
     AddChild(label);
     return label;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void WindowRTS::HandleKeyDown(StringHash, VariantMap& eventData)
+{
+    using namespace KeyDown;
+
+    int key = eventData[P_KEY].GetInt();
+
+    if(key == KEY_UP)
+    {
+        SetFocusedPrev();
+    }
+    else if(key == KEY_DOWN)
+    {
+        SetFocusedNext();
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void WindowRTS::SetFocusedNext()
+{
+    int numButton = (NumFocusedButton() + 1) % (int)buttons.Size();
+    buttons[(uint)numButton]->SetFocus(true);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void WindowRTS::SetFocusedPrev()
+{
+    int numButton = NumFocusedButton() - 1;
+    if(numButton < 0)
+    {
+        numButton = (int)buttons.Size() - 1;
+    }
+    buttons[(uint)numButton]->SetFocus(true);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int WindowRTS::NumFocusedButton()
+{
+    for(uint i = 0; i < buttons.Size(); i++)
+    {
+        if(buttons[i]->HasFocus())
+        {
+            return (int)i;
+        }
+    }
+    return -1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void WindowRTS::SetEnabled()
+{
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(WindowRTS, HandleKeyDown));
+    SetVisible(true);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void WindowRTS::SetDisabled()
+{
+    UnsubscribeFromEvent(E_KEYDOWN);
+    SetVisible(false);
 }
