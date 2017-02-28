@@ -66,6 +66,7 @@ private:
     void CreateSideTop();
     void CreateSideRight();
     void CreateSideDown();
+    SharedPtr<SideCube> CreateSide(SIDE side, float anotherHeight);
     void PushPoint(PointPlane &point);
     void BuildPlaneVerexes(PlaneCube &plane);
 };

@@ -23,13 +23,14 @@ public:
     void Build();
     void GetColumnCubes(uint row, uint col, PODVector<CubeTerrain*> &column);
 
-    static const uint WIDTH = 50;
-    static const uint HEIGHT = 50;
+    static const uint WIDTH = 10;
+    static const uint HEIGHT = 10;
     SegmentTerrain* neighbours[4];      // Соседи соотвественно с четырёх сторон
 
 private:
     Vector<SharedPtr<LayerTerrain>> ground;          // Height (0, 1, 2, 3, ...)
     Vector<SharedPtr<LayerTerrain>> underGround;     // Height [0, -1, -2, ...)
+
 
     void AddCube(SharedPtr<CubeTerrain> &cube);
     void CreateLayers();

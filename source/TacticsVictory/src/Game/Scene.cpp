@@ -77,6 +77,7 @@ void SceneRTS::Create()
     gTerrain = new TerrainRTS();
     gTerrain->CreateFromVector(level);
 
+    /*
     for (int i = 0; i < 125; i++)
     {
         uint row = 0;
@@ -108,6 +109,7 @@ void SceneRTS::Create()
     tank = Tank::Create(Tank::Small);
     tank->SetCoord(Coord(40, 40));
     gTanks.Push(tank);
+    */
 
     SharedPtr<Node> lightNode;
     lightNode = gScene->CreateChild("LigthNode");
@@ -120,7 +122,7 @@ void SceneRTS::Create()
     light->SetLightType(LIGHT_POINT);
     light->SetRange(1000.0f);
     light->SetCastShadows(true);
-    light->SetShadowBias(BiasParameters(0.00025f, 0.5f));
+    light->SetShadowBias(BiasParameters(0.00011f, 2.0f));
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
     gRenderer->SetShadowMapSize(2048);
