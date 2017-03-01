@@ -35,8 +35,8 @@ protected:
     SharedPtr<LineTranslator2D> translator;
     PODVector<ButtonRTS*> buttons;
 
-    void SetFocusedNext();                              // Установить фокус на следующую кнопку
-    void SetFocusedPrev();                              // Установить фокус на предыдущую кнопку
-    int NumFocusedButton();                             // Возвращает номер сфокусированной кнопки. Если фокус не установлен, возвращает 0
-    virtual void HandleKeyDown(StringHash, VariantMap&);        // Обработчик нажатий клавиш при открытом меню
+    void SetFocusedNext();                                  // Установить фокус на следующую кнопку
+    void SetFocusedPrev();                                  // Установить фокус на предыдущую кнопку
+    int NumFocusedButton();                                 // Возвращает номер сфокусированной кнопки. Если фокус не установлен, возвращает 0
+    virtual void HandleKeyDown(StringHash, VariantMap&);    // Обработчик нажатий клавиш при открытом меню
 };

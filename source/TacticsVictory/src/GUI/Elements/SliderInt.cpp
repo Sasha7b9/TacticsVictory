@@ -1,15 +1,15 @@
 #include <stdafx.h>
-
-
 #include "SliderInt.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 SliderInt::SliderInt(Context *context) :
     Slider(context)
 {
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SliderInt::SetRange(int min_, int max_, int step_)
 {
     step = step_;
@@ -21,6 +21,7 @@ void SliderInt::SetRange(int min_, int max_, int step_)
     Slider::SetRange(max - delta);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenPosition, const IntVector2& deltaPos, int buttons, int qualifiers, Cursor* cursor)
 {
     Slider::OnDragMove(position, screenPosition, deltaPos, buttons, qualifiers, cursor);
@@ -37,21 +38,25 @@ void SliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenP
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 int SliderInt::GetValueInt()
 {
     return value * step;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 int SliderInt::GetValueMax()
 {
     return max * step;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 int SliderInt::GetValueMin()
 {
     return min * step;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SliderInt::SetValueInt(int newValue)
 {
     newValue = newValue / step;
@@ -67,16 +72,19 @@ void SliderInt::SetValueInt(int newValue)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SliderInt::Increase()
 {
     SetValueInt(GetValueInt() + step);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SliderInt::Decrease()
 {
     SetValueInt(GetValueInt() - step);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SliderInt::RegisterObject(Context* context)
 {
     context->RegisterFactory<SliderInt>("UI");
@@ -84,6 +92,7 @@ void SliderInt::RegisterObject(Context* context)
     URHO3D_COPY_BASE_ATTRIBUTES(Slider);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<SliderInt> SliderInt::Create(UIElement *uielement, const IntVector2 &size)
 {
     SharedPtr<SliderInt> slider(gUIRoot->CreateChild<SliderInt>());

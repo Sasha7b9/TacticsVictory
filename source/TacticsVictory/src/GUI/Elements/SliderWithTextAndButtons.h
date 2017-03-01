@@ -1,9 +1,8 @@
 #pragma once
-
-
 #include "GUI/Elements/SliderInt.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class SliderWithTextAndButtons : public UIElement
 {
     URHO3D_OBJECT(SliderWithTextAndButtons, UIElement);
@@ -23,8 +22,6 @@ public:
     void SetHint(char *text);
 
 private:
-    SliderWithTextAndButtons& operator=(const SliderWithTextAndButtons&) {};
-
     SharedPtr<SliderInt> slider;
     SharedPtr<Text> textValue;
     SharedPtr<Button> buttonLeft;

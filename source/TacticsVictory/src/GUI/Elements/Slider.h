@@ -1,9 +1,11 @@
 #pragma once
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class lSlider : public Slider
 {
     URHO3D_OBJECT(lSlider, Slider);
+
 public:
     lSlider(Context *context = gContext);
 
@@ -11,6 +13,4 @@ public:
     static SharedPtr<lSlider> Create(Window *window, char *text);
 
 private:
-    lSlider& operator=(const lSlider&)
-    {};
 };

@@ -1,12 +1,11 @@
 #include <stdafx.h>
-
-
 #include "Button.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
 #include "GUI/Elements/Hint.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ButtonRTS::ButtonRTS(Context *context) :
     Button(context)
 {
@@ -16,6 +15,7 @@ ButtonRTS::ButtonRTS(Context *context) :
     AddChild(label);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 ButtonRTS::ButtonRTS(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
     Button(gContext)
 {
@@ -50,6 +50,7 @@ ButtonRTS::ButtonRTS(UIElement *uielement, char *text, int width /* = -1 */, int
     SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(ButtonRTS, HandleHoverEnd));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ButtonRTS::RegisterObject(Context *context)
 {
     context->RegisterFactory<ButtonRTS>("UI");
@@ -57,26 +58,31 @@ void ButtonRTS::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(Button);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ButtonRTS::SetText(char *text)
 {
     label->SetText(text);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ButtonRTS::SetHint(char *text)
 {
     hint = new Hint(text);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ButtonRTS::HandleHoverBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ButtonRTS::HandleHoverEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ButtonRTS::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Cursor* cursor)
 {
     Button::OnClickBegin(position, screenPosition, button, buttons, qualifiers, cursor);

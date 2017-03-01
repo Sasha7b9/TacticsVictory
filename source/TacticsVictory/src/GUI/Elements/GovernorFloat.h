@@ -1,9 +1,8 @@
 #pragma once
-
-
 #include "GUI/Elements/Window.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 enum CellType
 {
     CellType_Static,
@@ -12,6 +11,7 @@ enum CellType
 };
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 URHO3D_EVENT(E_GOVERNORCELLCHANGED, GovernorCellChanged)
 {
     URHO3D_PARAM(P_ELEMENT, Element);
@@ -19,6 +19,7 @@ URHO3D_EVENT(E_GOVERNORCELLCHANGED, GovernorCellChanged)
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class GovernorCell : public WindowRTS
 {
     URHO3D_OBJECT(GovernorCell, WindowRTS);
@@ -58,6 +59,7 @@ private:
 };
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class GovernorFloat : public WindowRTS
 {
     URHO3D_OBJECT(GovernorFloat, WindowRTS);

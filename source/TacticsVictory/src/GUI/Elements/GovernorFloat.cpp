@@ -1,12 +1,11 @@
 #include <stdafx.h>
-
-
 #include "GovernorFloat.h"
 #include "GUI/Elements/Button.h"
 #include "GUI/Elements/Cursor.h"
 #include "GUI/Elements/Label.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 GovernorCell::GovernorCell(Context *) :
     WindowRTS()
 {
@@ -32,18 +31,21 @@ GovernorCell::GovernorCell(Context *) :
     SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(GovernorCell, HandleHoverEnd));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorCell::SetSelected()
 {
     selected = true;
     SetSymbol(symbol);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorCell::SetNormal()
 {
     selected = false;
     SetSymbol(symbol);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorCell::SetSymbol(char symbol_)
 {
     symbol = symbol_;
@@ -52,6 +54,7 @@ void GovernorCell::SetSymbol(char symbol_)
     label->SetColor(selected ? Color::YELLOW : Color::WHITE);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorCell::SetSymbolWithEvent(char symbol_)
 {
     symbol = symbol_;
@@ -65,11 +68,13 @@ void GovernorCell::SetSymbolWithEvent(char symbol_)
     SendEvent(E_GOVERNORCELLCHANGED, eventData);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 char GovernorCell::GetSymbol()
 {
     return symbol;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorCell::HandleMouseDown(StringHash, VariantMap&)
 {
     if(type == CellType_Static)
@@ -86,6 +91,7 @@ void GovernorCell::HandleMouseDown(StringHash, VariantMap&)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
 {
     if(type == CellType_Static)
@@ -109,6 +115,7 @@ void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorCell::ChangeValue(int d)
 {
     if(type == CellType_Sign)
@@ -142,6 +149,7 @@ void GovernorCell::ChangeValue(int d)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorCell::HandleMouseUp(StringHash, VariantMap&)
 {
     if(type == CellType_Static)
@@ -153,6 +161,7 @@ void GovernorCell::HandleMouseUp(StringHash, VariantMap&)
     SetNormal();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
 {
     if(type == CellType_Static)
@@ -167,6 +176,7 @@ void GovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorCell::HandleHoverEnd(StringHash, VariantMap&)
 {
     if(type == CellType_Static)
@@ -178,6 +188,7 @@ void GovernorCell::HandleHoverEnd(StringHash, VariantMap&)
     gCursor->SetNormal();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorCell::RegisterObject(Context *context)
 {
     context->RegisterFactory<GovernorCell>("UI");
@@ -185,6 +196,7 @@ void GovernorCell::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 GovernorFloat::GovernorFloat(Context *context) :
     WindowRTS()
 {
@@ -235,6 +247,7 @@ GovernorFloat::GovernorFloat(Context *context) :
     SubscribeToEvent(buttonDown, E_HOVEREND, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonEnd));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorFloat::RegisterObject(Context *context)
 {
     context->RegisterFactory<GovernorFloat>("UI");
@@ -242,6 +255,7 @@ void GovernorFloat::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF funcWrite_)
 {
     funcRead = funcRead_;
@@ -253,6 +267,7 @@ void GovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF fu
     WriteValue(value);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorFloat::Update(float timeStep)
 {
     UIElement::Update(timeStep);
@@ -270,6 +285,7 @@ void GovernorFloat::Update(float timeStep)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorFloat::WriteValue(float value)
 {
     int order = 0;
@@ -280,6 +296,7 @@ void GovernorFloat::WriteValue(float value)
     WriteOrder(order);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static char NextDigit(int *mantiss)
 {
     char retValue = (char)((*mantiss - (*mantiss / 10) * 10) | 0x30);
@@ -287,6 +304,7 @@ static char NextDigit(int *mantiss)
     return retValue;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorFloat::WriteMantiss(int mantiss)
 {
     cells[0]->SetSymbol(mantiss >= 0 ? '+' : '-');
@@ -302,6 +320,7 @@ void GovernorFloat::WriteMantiss(int mantiss)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorFloat::WriteOrder(int order)
 {
     cells[7]->SetSymbol(order >= 0 ? '+' : '-');
@@ -317,6 +336,7 @@ void GovernorFloat::WriteOrder(int order)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorFloat::GetOrderAndMantiss(float value, int *order, int *mantiss)
 {
     static const int SIZE_BUFFER = 30;
@@ -363,6 +383,7 @@ void GovernorFloat::GetOrderAndMantiss(float value, int *order, int *mantiss)
     *mantiss *= sign;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 float GovernorFloat::GetValue()
 {
     int pow = 1;
@@ -401,16 +422,19 @@ float GovernorFloat::GetValue()
     return value;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorFloat::HandleGovernorCellChanged(StringHash, VariantMap&)
 {
     valueChanged = true;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorFloat::HandleHoverButtonBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorFloat::HandleHoverButtonEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();

@@ -1,10 +1,9 @@
 #include <stdafx.h>
-
-
 #include "ButtonToggled.h"
 #include "GUI/Elements/Label.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ButtonToggled::ButtonToggled(Context *context) :
     CheckBox(context)
 {
@@ -13,6 +12,7 @@ ButtonToggled::ButtonToggled(Context *context) :
     AddChild(label);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 ButtonToggled::ButtonToggled(UIElement * uielement, char * text, int width, int height) :
     CheckBox(gContext)
 {
@@ -43,6 +43,7 @@ ButtonToggled::ButtonToggled(UIElement * uielement, char * text, int width, int 
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ButtonToggled::RegisterObject(Context *context)
 {
     context->RegisterFactory<ButtonToggled>("UI");
@@ -50,6 +51,7 @@ void ButtonToggled::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(CheckBox);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ButtonToggled::SetText(char *text)
 {
     label->SetText(text);
