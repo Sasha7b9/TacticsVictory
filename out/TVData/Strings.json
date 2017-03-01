@@ -99,8 +99,10 @@
     "Create":               { "en":"Create",            "ru":"Создать" },
     "Max occluder triangles":   
                             { "en":"Max occluder triangles",    "ru":"Max occluder triangles" },
-    "Alexandr Shevchenko":  { "en":"Alexandr Shevchenko",       "ru":"Александр Шевченко" },
-
+    "e-mail : Sasha7b9@tut.by":
+                            { "en":"e-mail : Sasha7b9@tut.by",  "ru":"e-mail : Sasha7b9@tut.by" },
+                            
+    "Alexandr Shevchenko":  { "en":"Alexandr Shevchenko",   "ru":"Александр Шевченко" },
     "loadMapFromFile":      { "en":"Load map from file",    "ru":"Загрузить карту из файла" },
     "saveMapToFile":        { "en":"Save map to file",      "ru":"Сохранить карту в файл" },
     "createNewMap":         { "en":"Create new map",        "ru":"Создать новую карту" },

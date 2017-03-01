@@ -159,21 +159,10 @@ int WindowRTS::NumFocusedButton()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowRTS::SetEnabled()
 {
-    SetFocus(true);
-    SetSelected(true);
-    UpdateLayout();
-    ApplyAttributes();
     if (buttons.Size())
     {
         buttons[0]->SetFocus(true);
-        buttons[0]->SetSelected(true);
-        buttons[0]->UpdateLayout();
-        buttons[0]->ApplyAttributes();
     }
-    SetFocus(true);
-    SetSelected(true);
-    UpdateLayout();
-    ApplyAttributes();
 
     SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(WindowRTS, HandleKeyDown));
     SetVisible(true);

@@ -13,7 +13,6 @@ WindowAboutMe::WindowAboutMe(Context *context) : WindowRTS(context)
     const int heightButton = 20;
 
     SetSize(width, height);
-    //SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
 
     AddLabel("Alexandr Shevchenko", false, 20, 20, 200, 40);
     AddLabel("e-mail : Sasha7b9@tut.by", false, 20, 50, 200, 40);
