@@ -4,9 +4,9 @@
 #include "GuiGame.h"
 #include "GUI/Elements/Button.h"
 #include "GUI/Elements/Tab.h"
-#include "GUI/Menu/PanelMap.h"
-#include "GUI/Menu/PanelMain.h"
-#include "GUI/Menu/PanelBottom.h"
+#include "GUI/GuiGame/PanelMap.h"
+#include "GUI/GuiGame/PanelMain.h"
+#include "GUI/GuiGame/PanelBottom.h"
 
 
 GuiGame::GuiGame(Context *context) :

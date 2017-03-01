@@ -7,7 +7,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 WindowAboutMe::WindowAboutMe(Context *context) : WindowRTS(context)
 {
-    const int width = 240;
+    const int width = 216;
     const int height = 130;
     const int widthButton = 100;
     const int heightButton = 20;
@@ -15,7 +15,7 @@ WindowAboutMe::WindowAboutMe(Context *context) : WindowRTS(context)
     SetSize(width, height);
 
     AddLabel("Alexandr Shevchenko", false, 20, 20, 200, 40);
-    AddLabel("e-mail : Sasha7b9@tut.by", false, 20, 50, 200, 40);
+    AddLabel("e-mail Sasha7b9@tut.by", false, 20, 50, 200, 40);
 
     int x = width / 2 - widthButton / 2;
     int y = height - 2 * heightButton;

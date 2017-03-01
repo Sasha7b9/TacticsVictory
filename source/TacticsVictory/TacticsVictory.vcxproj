@@ -395,6 +395,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\GuiEditor\GuiEditor.cpp" />
     <ClCompile Include="src\GUI\GuiGame\ContextMenuUnit.cpp" />
     <ClCompile Include="src\GUI\GuiGame\GuiGame.cpp" />
+    <ClCompile Include="src\GUI\GuiGame\PanelBottom.cpp" />
+    <ClCompile Include="src\GUI\GuiGame\PanelMain.cpp" />
+    <ClCompile Include="src\GUI\GuiGame\PanelMap.cpp" />
     <ClCompile Include="src\GUI\GuiGame\WindowTarget.cpp" />
     <ClCompile Include="src\GUI\Logic\LineTranslator1D.cpp" />
     <ClCompile Include="src\GUI\Logic\LineTranslator2D.cpp" />
@@ -405,9 +408,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\Menu\WindowConfirmExit.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuMain.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuOptions.cpp" />
-    <ClCompile Include="src\GUI\Menu\PanelBottom.cpp" />
-    <ClCompile Include="src\GUI\Menu\PanelMain.cpp" />
-    <ClCompile Include="src\GUI\Menu\PanelMap.cpp" />
     <ClCompile Include="src\GUI\Menu\WindowVariables.cpp" />
     <ClCompile Include="src\Settings.cpp" />
     <ClCompile Include="src\SettingsTypes.cpp" />
@@ -495,6 +495,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\GuiEditor\GuiEditor.h" />
     <ClInclude Include="src\GUI\GuiGame\ContextMenuUnit.h" />
     <ClInclude Include="src\GUI\GuiGame\GuiGame.h" />
+    <ClInclude Include="src\GUI\GuiGame\PanelBottom.h" />
+    <ClInclude Include="src\GUI\GuiGame\PanelMain.h" />
+    <ClInclude Include="src\GUI\GuiGame\PanelMap.h" />
     <ClInclude Include="src\GUI\GuiGame\WindowTarget.h" />
     <ClInclude Include="src\GUI\Logic\LineTranslator1D.h" />
     <ClInclude Include="src\GUI\Logic\LineTranslator2D.h" />
@@ -506,9 +509,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\Menu\MenuEvents.h" />
     <ClInclude Include="src\GUI\Menu\MenuMain.h" />
     <ClInclude Include="src\GUI\Menu\MenuOptions.h" />
-    <ClInclude Include="src\GUI\Menu\PanelBottom.h" />
-    <ClInclude Include="src\GUI\Menu\PanelMain.h" />
-    <ClInclude Include="src\GUI\Menu\PanelMap.h" />
     <ClInclude Include="src\GUI\Menu\WindowVariables.h" />
     <ClInclude Include="src\Settings.h" />
     <ClInclude Include="src\SettingsTypes.h" />

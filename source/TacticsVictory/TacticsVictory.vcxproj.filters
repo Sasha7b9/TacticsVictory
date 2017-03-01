@@ -228,15 +228,6 @@
     <ClCompile Include="src\TacticsVictoryHandlers.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Menu\PanelBottom.cpp">
-      <Filter>GUI\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Menu\PanelMain.cpp">
-      <Filter>GUI\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Menu\PanelMap.cpp">
-      <Filter>GUI\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\Elements\ButtonToggled.cpp">
       <Filter>GUI\Elements</Filter>
     </ClCompile>
@@ -417,6 +408,15 @@
     <ClCompile Include="src\GUI\Menu\WindowAboutMe.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\GuiGame\PanelBottom.cpp">
+      <Filter>GUI\GuiGame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\GuiGame\PanelMain.cpp">
+      <Filter>GUI\GuiGame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\GuiGame\PanelMap.cpp">
+      <Filter>GUI\GuiGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -514,15 +514,6 @@
     </ClInclude>
     <ClInclude Include="src\TacticsVictoryHandlers.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Menu\PanelBottom.h">
-      <Filter>GUI\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Menu\PanelMain.h">
-      <Filter>GUI\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Menu\PanelMap.h">
-      <Filter>GUI\Menu</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\Elements\ButtonToggled.h">
       <Filter>GUI\Elements</Filter>
@@ -709,6 +700,15 @@
     </ClInclude>
     <ClInclude Include="src\GUI\Menu\WindowAboutMe.h">
       <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GuiGame\PanelBottom.h">
+      <Filter>GUI\GuiGame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GuiGame\PanelMain.h">
+      <Filter>GUI\GuiGame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\GuiGame\PanelMap.h">
+      <Filter>GUI\GuiGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
