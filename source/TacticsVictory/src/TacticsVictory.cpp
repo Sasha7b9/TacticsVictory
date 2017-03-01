@@ -157,7 +157,7 @@ void TacticsVictory::Start()
 
     SubscribeToEvents();
 
-    CreateNewGame();
+    //CreateNewGame();
 
     gContext->RegisterSubsystem(new Script(gContext));
     gScript = GetSubsystem<Script>();

@@ -135,6 +135,7 @@ void GUI::Create()
     SetWindowInCenterScreen(gMenuMain);
     gUIRoot->AddChild(gMenuMain);
     SubscribeToEvent(gMenuMain, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));
+    gMenuMain->SetVisible(false);
 
     gConsole = new ConsoleRTS(gContext);
     gUIRoot->AddChild(gConsole);

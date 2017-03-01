@@ -8,20 +8,42 @@ StartMenu::StartMenu(Context *context) : WindowRTS(context)
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Start menu");
 
-    SharedPtr<Label> text(Label::Create("Tactics Victory", 20, 200, -1));
+    SharedPtr<Label> text(Label::Create("Tactics Victory", 20, 120, -1));
     AddChild(text);
 
-    buttonStartServer = new ButtonRTS(this, "Start server");
-    buttonStartClient = new ButtonRTS(this, "Start client");
-    buttonStartEditor = new ButtonRTS(this, "Start editor");
+    buttonLanguage = new ButtonSwitch(this, "Language : EN");
+    buttonLanguage->AddState("Language : RU");
+    buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
+    buttonServer = new ButtonRTS(this, "Server");
+    buttonClient = new ButtonRTS(this, "Client");
+    buttonEditor = new ButtonRTS(this, "Editor");
+    buttonOptions = new ButtonRTS(this, "Options");
+    buttonHelp = new ButtonRTS(this, "Help");
+    buttonAboutGame = new ButtonRTS(this, "About game");
+    buttonAboutMe = new ButtonRTS(this, "About me");
+    buttonExit = new ButtonRTS(this, "Exit");
 
-    buttons.Push(buttonStartServer);
-    buttons.Push(buttonStartClient);
-    buttons.Push(buttonStartEditor);
+    buttons.Push(buttonLanguage);
+    buttons.Push(buttonServer);
+    buttons.Push(buttonClient);
+    buttons.Push(buttonEditor);
+    buttons.Push(buttonOptions);
+    buttons.Push(buttonHelp);
+    buttons.Push(buttonAboutGame);
+    buttons.Push(buttonAboutMe);
+    buttons.Push(buttonExit);
 
-    SubscribeToEvent(buttonStartServer, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
-    SubscribeToEvent(buttonStartClient, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
-    SubscribeToEvent(buttonStartEditor, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
+    SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
+    SubscribeToEvent(buttonServer, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
+    SubscribeToEvent(buttonClient, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
+    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
+    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
+    SubscribeToEvent(buttonHelp, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
+    SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
+    SubscribeToEvent(buttonAboutMe, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
+
+    SetMovable(false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -31,15 +53,39 @@ void StartMenu::HandleButtonRelease(StringHash, VariantMap& eventData)
 
     Button *button = (Button*)eventData[P_ELEMENT].GetPtr();
 
-    if(button == buttonStartServer)
-    {
-        //
-    }
-    else if(button == buttonStartClient)
+    if (button == buttonLanguage)
     {
 
     }
-    else if(button == buttonStartEditor)
+    if(button == buttonServer)
+    {
+        //
+    }
+    else if(button == buttonClient)
+    {
+
+    }
+    else if(button == buttonEditor)
+    {
+
+    }
+    else if (button == buttonOptions)
+    {
+
+    }
+    else if (button == buttonHelp)
+    {
+
+    }
+    else if (button == buttonAboutGame)
+    {
+
+    }
+    else if (button == buttonAboutMe)
+    {
+
+    }
+    else if (button == buttonExit)
     {
 
     }
