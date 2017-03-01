@@ -28,7 +28,7 @@ public:
     SharedPtr<ButtonToggled> AddButtonToggled(char *text, int x, int y, int width, int height);
     SharedPtr<SliderWithTextAndButtons> AddSlider(char *text, int min, int max, int step, int x = -1, int y = -1, int widthText = -1, int widthRoller = -1);
     SharedPtr<DropDownListWithTextAndButton> AddDDList(char *text, int widthText, int widthDDList, int numItems, char *items[], int x = -1, int y = -1);
-    SharedPtr<Label> AddLabel(char *text);
+    SharedPtr<Label> AddLabel(char *text, bool center = true, int x = -1, int y = -1, int width = -1, int height = -1);
 
 protected:
     HashMap<Button*, uint> mapButtonsActions;
@@ -38,5 +38,5 @@ protected:
     void SetFocusedNext();                              // Установить фокус на следующую кнопку
     void SetFocusedPrev();                              // Установить фокус на предыдущую кнопку
     int NumFocusedButton();                             // Возвращает номер сфокусированной кнопки. Если фокус не установлен, возвращает 0
-    void HandleKeyDown(StringHash, VariantMap&);        // Обработчик нажатий клавиш при открытом меню
+    virtual void HandleKeyDown(StringHash, VariantMap&);        // Обработчик нажатий клавиш при открытом меню
 };

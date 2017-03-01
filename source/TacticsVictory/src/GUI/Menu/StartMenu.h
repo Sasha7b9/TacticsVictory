@@ -5,12 +5,18 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class WindowAboutMe;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class StartMenu : public WindowRTS
 {
     URHO3D_OBJECT(StartMenu, WindowRTS);
 
 public:
     StartMenu(Context *context = gContext);
+
+    bool Enabled();
 
 private:
     void HandleButtonRelease(StringHash, VariantMap&);
@@ -24,4 +30,6 @@ private:
     SharedPtr<ButtonRTS> buttonAboutGame;
     SharedPtr<ButtonRTS> buttonAboutMe;
     SharedPtr<ButtonSwitch> buttonLanguage;
+
+    WindowAboutMe *windowAboutMe = nullptr;
 };

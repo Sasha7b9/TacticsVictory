@@ -12,7 +12,7 @@ WindowVariables::WindowVariables(Context *context) :
     SetStyle("WindowNoBorder");
 
     SetLayout(LM_VERTICAL, 3, IntRect(3, 3, 3, 3));
-    label = Label::Create("Variables", 8, 200, 20);
+    label = Label::Create("Variables", true, 8, 200, 20);
     label->SetPosition(0, 0);
     label->SetAlignment(HA_CENTER, VA_TOP);
     AddChild(label);

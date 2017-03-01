@@ -16,7 +16,7 @@ MenuOptions::MenuOptions(Context *context) :
     SET_VERTICAL_LAYOUT_0_6(this);
     SetName("Options menu");
 
-    SharedPtr<Label> label(Label::Create("Options", 20));
+    SharedPtr<Label> label(Label::Create("Options", true, 20));
     AddChild(label);
 
 #define CREATE_SWTAB(name, text, min, max, step, startIndex)                                  \

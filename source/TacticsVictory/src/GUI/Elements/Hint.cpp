@@ -6,7 +6,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Hint::Hint(char *text_) : WindowRTS(), text(text_)
 {
-    label = Label::Create(text, 20);
+    label = Label::Create(text, true, 20);
     AddChild(label);
 
     SetSize(label->GetWidth() + 10, label->GetHeight() + 10);

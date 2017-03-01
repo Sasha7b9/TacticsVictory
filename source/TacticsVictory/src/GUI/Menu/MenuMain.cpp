@@ -16,7 +16,7 @@ MenuMain::MenuMain(Context *) :
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
 
-    SharedPtr<Label> text(Label::Create("Tactics Victory", 20, -1, -1));
+    SharedPtr<Label> text(Label::Create("Tactics Victory", true, 20, -1, -1));
     AddChild(text);
     
     buttonNewGame  = new ButtonRTS(this, "New game");

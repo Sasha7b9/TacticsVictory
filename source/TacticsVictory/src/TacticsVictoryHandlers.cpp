@@ -1,6 +1,7 @@
 #include <stdafx.h>
 #include "GUI/GUI.h"
 #include "GUI/Elements/Cursor.h"
+#include "GUI/Menu/StartMenu.h"
 #include "GUI/Menu/Console.h"
 #include "GUI/Menu/MenuOptions.h"
 #include "GUI/Menu/MenuMain.h"
@@ -88,7 +89,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         gDebugHud->ToggleAll();
     }
-    else if(!gUI->GetFocusElement())
+    else if(!gUI->GetFocusElement() && !gStartMenu->Enabled())
     {
         if(key == '9')
         {

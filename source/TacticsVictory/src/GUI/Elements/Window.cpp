@@ -65,6 +65,18 @@ SharedPtr<ButtonRTS> WindowRTS::AddButton(char *text, int x, int y, int width, i
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+SharedPtr<Label> WindowRTS::AddLabel(char *text, bool center, int x, int y, int width, int height)
+{
+    SharedPtr<Label> label(Label::Create(text, center, 20, width, height));
+    if (x != -1 && y != -1)
+    {
+        label->SetPosition(x, y);
+    }
+    AddChild(label);
+    return label;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<ButtonToggled> WindowRTS::AddButtonToggled(char *text, int x, int y, int width, int height)
 {
     SharedPtr<ButtonToggled> retButton(new ButtonToggled(this, text, width, height));
@@ -94,14 +106,6 @@ SharedPtr<DropDownListWithTextAndButton> WindowRTS::AddDDList(char *text, int wi
         ddList->SetPosition(x, y);
     }
     return ddList;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-SharedPtr<Label> WindowRTS::AddLabel(char *text)
-{
-    SharedPtr<Label> label(Label::Create(text));
-    AddChild(label);
-    return label;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -155,6 +159,22 @@ int WindowRTS::NumFocusedButton()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowRTS::SetEnabled()
 {
+    SetFocus(true);
+    SetSelected(true);
+    UpdateLayout();
+    ApplyAttributes();
+    if (buttons.Size())
+    {
+        buttons[0]->SetFocus(true);
+        buttons[0]->SetSelected(true);
+        buttons[0]->UpdateLayout();
+        buttons[0]->ApplyAttributes();
+    }
+    SetFocus(true);
+    SetSelected(true);
+    UpdateLayout();
+    ApplyAttributes();
+
     SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(WindowRTS, HandleKeyDown));
     SetVisible(true);
 }

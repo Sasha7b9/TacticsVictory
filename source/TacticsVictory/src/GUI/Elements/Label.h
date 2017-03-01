@@ -9,7 +9,7 @@ class Label : public Text
 public:
     Label(Context *context = gContext);
     static void RegisterObject(Context *context = gContext);
-    static SharedPtr<Label> Create(char *text, int sizeFont = 20, int width = -1, int height = -1);
+    static SharedPtr<Label> Create(char *text, bool center = true, int sizeFont = 20, int width = -1, int height = -1);
     void SetText(char *text);
     
 private:

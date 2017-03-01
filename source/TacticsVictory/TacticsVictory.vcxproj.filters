@@ -414,6 +414,9 @@
     <ClCompile Include="src\GUI\Menu\StartMenu.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\Menu\WindowAboutMe.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -702,6 +705,9 @@
       <Filter>GUI\Elements</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\Menu\StartMenu.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\WindowAboutMe.h">
       <Filter>GUI\Menu</Filter>
     </ClInclude>
   </ItemGroup>

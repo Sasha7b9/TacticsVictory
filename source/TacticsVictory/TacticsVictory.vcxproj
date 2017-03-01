@@ -401,6 +401,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\Menu\Console.cpp" />
     <ClCompile Include="src\GUI\Menu\ConsoleParser.cpp" />
     <ClCompile Include="src\GUI\Menu\StartMenu.cpp" />
+    <ClCompile Include="src\GUI\Menu\WindowAboutMe.cpp" />
     <ClCompile Include="src\GUI\Menu\WindowConfirmExit.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuMain.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuOptions.cpp" />
@@ -500,6 +501,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\Menu\Console.h" />
     <ClInclude Include="src\GUI\Menu\ConsoleParser.h" />
     <ClInclude Include="src\GUI\Menu\StartMenu.h" />
+    <ClInclude Include="src\GUI\Menu\WindowAboutMe.h" />
     <ClInclude Include="src\GUI\Menu\WindowConfirmExit.h" />
     <ClInclude Include="src\GUI\Menu\MenuEvents.h" />
     <ClInclude Include="src\GUI\Menu\MenuMain.h" />

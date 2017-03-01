@@ -14,7 +14,7 @@ ContextMenuUnit::ContextMenuUnit(Context *context) :
     SetStyle("WindowBorder");
 
     SetLayout(LM_VERTICAL, 3, IntRect(3, 3, 3, 3));
-    title = Label::Create("", 8);
+    title = Label::Create("", true, 8);
     title->SetAlignment(HA_CENTER, VA_TOP);
     AddChild(title);
 }

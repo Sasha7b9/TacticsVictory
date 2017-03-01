@@ -1,5 +1,7 @@
 #include <stdafx.h>
 #include "StartMenu.h"
+#include "WindowAboutMe.h"
+#include "GlobalFunctions.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -8,7 +10,7 @@ StartMenu::StartMenu(Context *context) : WindowRTS(context)
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Start menu");
 
-    SharedPtr<Label> text(Label::Create("Tactics Victory", 20, 120, -1));
+    SharedPtr<Label> text(Label::Create("Tactics Victory", true, 20, 120, -1));
     AddChild(text);
 
     buttonLanguage = new ButtonSwitch(this, "Language : EN");
@@ -45,6 +47,13 @@ StartMenu::StartMenu(Context *context) : WindowRTS(context)
 
     SetMovable(false);
     SetEnabled();
+
+    WindowAboutMe::RegisterObject();
+
+    windowAboutMe = new WindowAboutMe();
+    gUIRoot->AddChild(windowAboutMe);
+    SetWindowInCenterScreen(windowAboutMe);
+    windowAboutMe->SetDisabled();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -85,10 +94,17 @@ void StartMenu::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     else if (button == buttonAboutMe)
     {
-
+        SetDisabled();
+        windowAboutMe->SetEnabled();
     }
     else if (button == buttonExit)
     {
         gEngine->Exit();
     }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool StartMenu::Enabled()
+{
+    return IsVisible() || windowAboutMe->IsVisible();
 }

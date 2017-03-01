@@ -193,7 +193,7 @@ GovernorFloat::GovernorFloat(Context *context) :
 
     int widthLabel = 168;
 
-    label = Label::Create("Camera position Y", 8, widthLabel, 13);
+    label = Label::Create("Camera position Y", true, 8, widthLabel, 13);
     label->SetAlignment(HA_LEFT, VA_CENTER);
     AddChild(label);
 

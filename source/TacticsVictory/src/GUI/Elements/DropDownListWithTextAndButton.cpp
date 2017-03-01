@@ -23,7 +23,7 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
 
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
 
-    SharedPtr<Label> text(Label::Create(text_, 15, widthText));
+    SharedPtr<Label> text(Label::Create(text_, true, 15, widthText));
     text->SetStyle("Window");
     text->SetFixedHeight(SET::MENU::TEXT::HEIGHT);
     window->AddChild(text);
@@ -77,7 +77,7 @@ void DropDownListWithTextAndButton::RegisterObject(Context* context)
 
 void DropDownListWithTextAndButton::AddItem(char *text)
 {
-    ddList->AddItem(Label::Create(text, 16));
+    ddList->AddItem(Label::Create(text, true, 16));
 }
 
 void DropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& eventData_)

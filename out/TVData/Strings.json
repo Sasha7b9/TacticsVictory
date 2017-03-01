@@ -49,7 +49,7 @@
     "File":                 { "en":"File",              "ru":"Файл" },
     "Edit":                 { "en":"Edit",              "ru":"Редактировать" },
     "Exit in OS?":          { "en":"Exit in OS?",       "ru":"Выход в ОС?" },
-    "Ok":                   { "en":"Ok",                "ru":"Да" },
+    "Ok":                   { "en":"Ok",                "ru":"Хорошо" },
     "Cancel":               { "en":"Cancel",            "ru":"Отмена" },
     "Load":                 { "en":"Load",              "ru":"Загрузить" },
     "Save":                 { "en":"Save",              "ru":"Сохранить" },
@@ -99,6 +99,7 @@
     "Create":               { "en":"Create",            "ru":"Создать" },
     "Max occluder triangles":   
                             { "en":"Max occluder triangles",    "ru":"Max occluder triangles" },
+    "Alexandr Shevchenko":  { "en":"Alexandr Shevchenko",       "ru":"Александр Шевченко" },
 
     "loadMapFromFile":      { "en":"Load map from file",    "ru":"Загрузить карту из файла" },
     "saveMapToFile":        { "en":"Save map to file",      "ru":"Сохранить карту в файл" },

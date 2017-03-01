@@ -24,7 +24,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
  
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
 
-    SharedPtr<Label> text(Label::Create(text_, 15, widthText == -1 ? SET::MENU::TEXT::WIDTH : widthText, -1));
+    SharedPtr<Label> text(Label::Create(text_, true, 15, widthText == -1 ? SET::MENU::TEXT::WIDTH : widthText, -1));
     window->AddChild(text);
     
     IntVector2 sizeSlider = SET::MENU::SLIDER::SIZE;

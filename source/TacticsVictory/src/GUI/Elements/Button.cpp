@@ -12,7 +12,7 @@ ButtonRTS::ButtonRTS(Context *context) :
 {
     SetStyle("MainMenuButton");
 
-    label = Label::Create("", SET::MENU::FONT::SIZE::ITEM);
+    label = Label::Create("", true, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 }
 
@@ -21,7 +21,7 @@ ButtonRTS::ButtonRTS(UIElement *uielement, char *text, int width /* = -1 */, int
 {
     SetStyleAuto(gUIRoot->GetDefaultStyle());
     SetStyle("MainMenuButton");
-    label = Label::Create(text, SET::MENU::FONT::SIZE::ITEM);
+    label = Label::Create(text, true, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 
     if (uielement)
