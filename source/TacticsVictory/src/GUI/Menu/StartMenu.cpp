@@ -44,6 +44,7 @@ StartMenu::StartMenu(Context *context) : WindowRTS(context)
     SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
 
     SetMovable(false);
+    SetEnabled();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -55,7 +56,8 @@ void StartMenu::HandleButtonRelease(StringHash, VariantMap& eventData)
 
     if (button == buttonLanguage)
     {
-
+        gLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
+        gSet->SetInt(TV_LANGUAGE, (int)buttonLanguage->GetState());
     }
     if(button == buttonServer)
     {
@@ -87,6 +89,6 @@ void StartMenu::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     else if (button == buttonExit)
     {
-
+        gEngine->Exit();
     }
 }
