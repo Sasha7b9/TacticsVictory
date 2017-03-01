@@ -249,7 +249,7 @@ bool GUI::UnderCursor()
     PODVector<UIElement*> elements;
     gUIRoot->GetChildren(elements);
 
-    for(auto elem : elements)
+    for(UIElement *elem : elements)
     {
         if(elem->GetName() != "Cursor" && elem->IsVisible() && elem->IsInside(gCursor->GetCursor()->GetPosition(), true))
         {
