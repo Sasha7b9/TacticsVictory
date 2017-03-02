@@ -15,8 +15,7 @@ HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Tank::Tank(Context *context) : 
-    UnitObject(context)
+Tank::Tank(Context *context) : UnitObject(context)
 {
     name = "Tank";
     type = GameObject::Unit;

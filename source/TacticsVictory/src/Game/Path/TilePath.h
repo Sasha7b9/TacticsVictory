@@ -1,6 +1,7 @@
 #pragma once
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class TilePath : public Object
 {
     URHO3D_OBJECT(TilePath, Object);
@@ -15,10 +16,7 @@ public:
     static void RemoveAll();
 
 private:
-    TilePath& operator=(const TilePath&)
-    {};
     SharedPtr<Node> node;
-
     static uint numTilesAll;
     static uint numTilesEnabled;
     static Vector<SharedPtr<TilePath>> tiles;

@@ -2,6 +2,7 @@
 #include "Game/Path/WaveAlgorithm.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Translator
 {
     friend class Tank;
@@ -48,7 +49,4 @@ private:
 
     void SetStep(Coord &start, Coord &end);
     void StartRotation(float angleNeed);
-
-    Translator& operator=(const Translator&)
-    {};
 };

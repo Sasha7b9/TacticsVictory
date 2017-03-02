@@ -6,8 +6,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-RocketLauncher::RocketLauncher(Context *context, Tank *tank) :
-    WeaponObject(context)
+RocketLauncher::RocketLauncher(Context *context, Tank *tank) : WeaponObject(context)
 {
     this->tank = tank;
 }

@@ -3,6 +3,7 @@
 #include "Game/Path/PathIndicator.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class SceneRTS : public Object
 {
     URHO3D_OBJECT(SceneRTS, Object);
@@ -20,13 +21,9 @@ public:
     Tank* GetSelected();
 
 private:
-    SceneRTS& operator=(const SceneRTS&)
-    {};
-
     PathIndicator pathIndicator;
 
     void RegisterObjects();
-
     void HandleMouseDown(StringHash, VariantMap&);
     void ProcessMouseLeft();
     void ProcessMouseRight();

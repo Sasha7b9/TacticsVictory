@@ -4,8 +4,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-SegmentTerrain::SegmentTerrain(Context *context) :
-    Object(context)
+SegmentTerrain::SegmentTerrain(Context *context) : Object(context)
 {
     neighbours[LEFT] = neighbours[TOP] = neighbours[RIGHT] = neighbours[BOTTOM] = nullptr;
 }

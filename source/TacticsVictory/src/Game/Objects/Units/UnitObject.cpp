@@ -8,8 +8,7 @@ bool UnitObject::viewTargetView = false;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-UnitObject::UnitObject(Context *context) :
-    GameObject(context)
+UnitObject::UnitObject(Context *context) : GameObject(context)
 {
     Node* nodeCameraTarget = gScene->CreateChild("CameraTarget");
     nodeCameraTarget->Pitch(180.0f);

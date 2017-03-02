@@ -1,11 +1,9 @@
 #include <stdafx.h>
-
-
 #include "GrenadeLauncher.h"
 
 
-GrenadeLauncher::GrenadeLauncher(Context *context) :
-    WeaponObject(context)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+GrenadeLauncher::GrenadeLauncher(Context *context) : WeaponObject(context)
 {
 
 }

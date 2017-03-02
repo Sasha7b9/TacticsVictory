@@ -2,6 +2,7 @@
 #include "Game/Objects/Weapons/WeaponObject.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class RocketLauncher : public WeaponObject
 {
     URHO3D_OBJECT(RocketLauncher, WeaponObject);
@@ -12,9 +13,6 @@ public:
     void Update(float deltaStep);
 
 private:
-    RocketLauncher& operator=(const RocketLauncher&)
-    {};
-
     Tank *tank = nullptr;
 
     float radiusDetect = 50.0f;

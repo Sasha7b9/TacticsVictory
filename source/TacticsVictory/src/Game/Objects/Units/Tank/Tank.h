@@ -5,6 +5,7 @@
 #include "Game/Objects/Weapons/RocketLauncher/RocketLauncher.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Tank : public UnitObject
 {
     URHO3D_OBJECT(Tank, UnitObject);
@@ -40,8 +41,6 @@ public:
     }
 
 private:
-    Tank& operator=(const Tank&) {};
-
     void LoadFromFile();
     void Init(TypeTank typeTank);
 

@@ -1,15 +1,12 @@
 #include <stdafx.h>
-
-
 #include "Sounds.h"
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 VariantMap Sounds::sounds;
-
-
 PODVector<SoundSource3D*> sources;
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Sounds::Init()
 {
     sounds[StringHash(Sound_Explosion)] = gCache->GetResource<Sound>("Sounds/ExplosionMissile.wav");
@@ -20,7 +17,7 @@ void Sounds::Init()
     sources.Push(soundSource);
 }
 
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sounds::Play(SoundType type, const Vector3 &position)
 {
     SoundSource3D *source = nullptr;

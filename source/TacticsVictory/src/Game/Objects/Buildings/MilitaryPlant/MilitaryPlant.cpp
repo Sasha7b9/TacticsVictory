@@ -1,20 +1,21 @@
 #include <stdafx.h>
-
-
 #include "MilitaryPlant.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 MilitaryPlant::MilitaryPlant(Context *context) :
     BuildingObject(context)
 {
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MilitaryPlant::RegisterObject(Context *context)
 {
     context->RegisterFactory<MilitaryPlant>();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<MilitaryPlant> MilitaryPlant::Create()
 {
     SharedPtr<Node> node(gScene->CreateChild());
@@ -23,12 +24,14 @@ SharedPtr<MilitaryPlant> MilitaryPlant::Create()
     return plant;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MilitaryPlant::Init()
 {
     LoadFromFile();
     Normalize(2.0f);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MilitaryPlant::LoadFromFile()
 {
     char *fileName = "Models\\Buildings\\MilitaryPlant\\MilitaryPlant.mdl";
