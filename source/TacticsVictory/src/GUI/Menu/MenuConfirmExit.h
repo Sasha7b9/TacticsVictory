@@ -3,12 +3,12 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class WindowConfirmExit : public WindowRTS
+class MenuConfirmExit : public WindowRTS
 {
-    URHO3D_OBJECT(WindowConfirmExit, WindowRTS);
+    URHO3D_OBJECT(MenuConfirmExit, WindowRTS);
 
 public:
-    WindowConfirmExit(Context *context);
+    MenuConfirmExit(Context *context);
 
     static void RegisterObject(Context *context = gContext);
 

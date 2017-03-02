@@ -50,7 +50,7 @@ static void RegstrationObjects()
     WindowRTS::RegisterObject();
     MenuMain::RegisterObject();
     MenuOptions::RegisterObject();
-    WindowConfirmExit::RegisterObject();
+    MenuConfirmExit::RegisterObject();
     Tab::RegisterObject();
     Label::RegisterObject();
     lSlider::RegisterObject();
@@ -127,9 +127,9 @@ void GUI::Create()
 {
     RegstrationObjects();
 
-    gStartMenu = new StartMenu();
-    SetWindowInCenterScreen(gStartMenu);
-    gUIRoot->AddChild(gStartMenu);
+    gMenuStart = new MenuStart();
+    SetWindowInCenterScreen(gMenuStart);
+    gUIRoot->AddChild(gMenuStart);
 
     gMenuMain = new MenuMain();
     SetWindowInCenterScreen(gMenuMain);
@@ -165,11 +165,11 @@ void GUI::Create()
     gGuiEditor = new GuiEditor(gContext);
     gGuiEditor->SetVisible(false);
 
-    gWindowConfirmExit = new WindowConfirmExit(gContext);
-    gUIRoot->AddChild(gWindowConfirmExit);
-    SetWindowInCenterScreen(gWindowConfirmExit);
-    gWindowConfirmExit->SetVisible(false);
-    SubscribeToEvent(gWindowConfirmExit, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));
+    gMenuConfirmExit = new MenuConfirmExit(gContext);
+    gUIRoot->AddChild(gMenuConfirmExit);
+    SetWindowInCenterScreen(gMenuConfirmExit);
+    gMenuConfirmExit->SetVisible(false);
+    SubscribeToEvent(gMenuConfirmExit, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));
 
     gCursor = new CursorRTS();
 
@@ -194,7 +194,7 @@ bool GUI::MenuIsVisible()
 {
     return gMenuMain->IsVisible() ||
         gMenuOptions->IsVisible() ||
-        gWindowConfirmExit->IsVisible();
+        gMenuConfirmExit->IsVisible();
 }
 
 void GUI::SetVisibleMenu(bool visible)

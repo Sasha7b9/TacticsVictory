@@ -5,16 +5,16 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class WindowAboutMe;
+class MenuAboutMe;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class StartMenu : public WindowRTS
+class MenuStart : public WindowRTS
 {
-    URHO3D_OBJECT(StartMenu, WindowRTS);
+    URHO3D_OBJECT(MenuStart, WindowRTS);
 
 public:
-    StartMenu(Context *context = gContext);
+    MenuStart(Context *context = gContext);
 
     bool Enabled();
 
@@ -31,5 +31,5 @@ private:
     SharedPtr<ButtonRTS> buttonAboutMe;
     SharedPtr<ButtonSwitch> buttonLanguage;
 
-    WindowAboutMe *windowAboutMe = nullptr;
+    MenuAboutMe *windowAboutMe = nullptr;
 };

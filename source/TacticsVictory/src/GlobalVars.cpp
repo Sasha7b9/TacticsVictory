@@ -33,10 +33,10 @@ Settings        *gSet = nullptr;
 GUI             *gGUI = nullptr;
 ConsoleRTS      *gConsole = nullptr;
 MenuMain        *gMenuMain = nullptr;
-StartMenu       *gStartMenu = nullptr;
+MenuStart       *gMenuStart = nullptr;
 MenuOptions     *gMenuOptions = nullptr;
 
-WindowConfirmExit   *gWindowConfirmExit = nullptr;
+MenuConfirmExit   *gMenuConfirmExit = nullptr;
 WindowVariables     *gWindowVars = nullptr;
 Hint                *gHint = nullptr;
 int                 *gCounterHint = 0;

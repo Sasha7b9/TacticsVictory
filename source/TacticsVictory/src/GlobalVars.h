@@ -11,14 +11,14 @@ class GuiGame;
 class Hint;
 class Level;
 class MenuMain;
-class StartMenu;
+class MenuStart;
 class MenuOptions;
 class SegmentTerrain;
 class Settings;
 class Tank;
 class TerrainRTS;
 class WindowRTS;
-class WindowConfirmExit;
+class MenuConfirmExit;
 class WindowTarget;
 class WindowVariables;
 class TacticsVictory;
@@ -53,25 +53,22 @@ extern Editor           *gEditor;
 extern Settings         *gSet;
 extern Level            *gLevel;
 extern TerrainRTS       *gTerrain;
+extern TacticsVictory   *gTacticsVictory;
+extern PODVector<Tank*>  gTanks;
 
 // GUI
 extern GuiGame              *gGuiGame;
 extern GuiEditor            *gGuiEditor;
-
-
-// Меню
 extern GUI                  *gGUI;
 extern ConsoleRTS           *gConsole;
 extern WindowVariables      *gWindowVars;
-extern MenuMain             *gMenuMain;
-extern StartMenu            *gStartMenu;
-extern MenuOptions          *gMenuOptions;
-
-
-extern WindowConfirmExit    *gWindowConfirmExit;
 extern Hint                 *gHint;
 extern int                  *gCounterHint;
 extern Vector<WindowRTS*>    gOpenedWindow;
-extern PODVector<Tank*>      gTanks;
 extern WindowTarget         *gWindowTarget;             // В этом окне можно посмотреть, что видит юнит
-extern TacticsVictory       *gTacticsVictory;
+
+// Меню
+extern MenuMain             *gMenuMain;
+extern MenuStart            *gMenuStart;
+extern MenuOptions          *gMenuOptions;
+extern MenuConfirmExit      *gMenuConfirmExit;

@@ -5,7 +5,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-WindowAboutMe::WindowAboutMe(Context *context) : WindowRTS(context)
+MenuAboutMe::MenuAboutMe(Context *context) : WindowRTS(context)
 {
     const int width = 216;
     const int height = 130;
@@ -24,21 +24,21 @@ WindowAboutMe::WindowAboutMe(Context *context) : WindowRTS(context)
 
     buttons.Push(buttonOk);
 
-    SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(WindowAboutMe, HandleButtonRelease));
-    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(WindowAboutMe, HandleKeyDown));
+    SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(MenuAboutMe, HandleButtonRelease));
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(MenuAboutMe, HandleKeyDown));
 
     SetMovable(false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowAboutMe::HandleButtonRelease(StringHash, VariantMap&)
+void MenuAboutMe::HandleButtonRelease(StringHash, VariantMap&)
 {
     SetDisabled();
-    gStartMenu->SetEnabled();
+    gMenuStart->SetEnabled();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowAboutMe::HandleKeyDown(StringHash hash, VariantMap& eventData)
+void MenuAboutMe::HandleKeyDown(StringHash hash, VariantMap& eventData)
 {
     using namespace KeyDown;
 
@@ -47,7 +47,7 @@ void WindowAboutMe::HandleKeyDown(StringHash hash, VariantMap& eventData)
     if (key == KEY_ESCAPE)
     {
         SetDisabled();
-        gStartMenu->SetEnabled();
+        gMenuStart->SetEnabled();
     }
     else
     {

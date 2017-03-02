@@ -6,7 +6,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-StartMenu::StartMenu(Context *context) : WindowRTS(context)
+MenuStart::MenuStart(Context *context) : WindowRTS(context)
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Start menu");
@@ -36,29 +36,29 @@ StartMenu::StartMenu(Context *context) : WindowRTS(context)
     buttons.Push(buttonAboutMe);
     buttons.Push(buttonExit);
 
-    SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
-    SubscribeToEvent(buttonServer, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
-    SubscribeToEvent(buttonClient, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
-    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
-    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
-    SubscribeToEvent(buttonHelp, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
-    SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
-    SubscribeToEvent(buttonAboutMe, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(StartMenu, HandleButtonRelease));
+    SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonServer, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonClient, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonHelp, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonAboutMe, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
 
     SetMovable(false);
     SetEnabled();
 
-    WindowAboutMe::RegisterObject();
+    MenuAboutMe::RegisterObject();
 
-    windowAboutMe = new WindowAboutMe();
+    windowAboutMe = new MenuAboutMe();
     gUIRoot->AddChild(windowAboutMe);
     SetWindowInCenterScreen(windowAboutMe);
     windowAboutMe->SetDisabled();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void StartMenu::HandleButtonRelease(StringHash, VariantMap& eventData)
+void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     using namespace Released;
 
@@ -106,7 +106,7 @@ void StartMenu::HandleButtonRelease(StringHash, VariantMap& eventData)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool StartMenu::Enabled()
+bool MenuStart::Enabled()
 {
     return IsVisible() || windowAboutMe->IsVisible();
 }

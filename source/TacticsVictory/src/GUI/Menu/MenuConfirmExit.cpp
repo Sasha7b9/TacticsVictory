@@ -7,7 +7,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-WindowConfirmExit::WindowConfirmExit(Context *) :
+MenuConfirmExit::MenuConfirmExit(Context *) :
     WindowRTS()
 {
     SET_VERTICAL_LAYOUT_0_6(this);
@@ -20,22 +20,22 @@ WindowConfirmExit::WindowConfirmExit(Context *) :
     buttonOk = new ButtonRTS(layer, "Ok");
     buttonCancel = new ButtonRTS(layer, "Cancel");
 
-    SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(WindowConfirmExit, HandleButtonRelease));
-    SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(WindowConfirmExit, HandleButtonRelease));
+    SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(MenuConfirmExit, HandleButtonRelease));
+    SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(MenuConfirmExit, HandleButtonRelease));
 
     AddChild(layer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowConfirmExit::RegisterObject(Context *context)
+void MenuConfirmExit::RegisterObject(Context *context)
 {
-    context->RegisterFactory<WindowConfirmExit>("UI");
+    context->RegisterFactory<MenuConfirmExit>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
+void MenuConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();
 
@@ -50,7 +50,7 @@ void WindowConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowConfirmExit::OnPressButtonOk()
+void MenuConfirmExit::OnPressButtonOk()
 {
     VariantMap eventData = GetEventDataMap();
     eventData[MenuEvent::P_TYPE] = MenuEvent_ExitInOS;
@@ -58,8 +58,8 @@ void WindowConfirmExit::OnPressButtonOk()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowConfirmExit::OnPressButtonCancel()
+void MenuConfirmExit::OnPressButtonCancel()
 {
-    gWindowConfirmExit->SetVisible(false);
+    gMenuConfirmExit->SetVisible(false);
     gMenuMain->SetVisible(true);
 }

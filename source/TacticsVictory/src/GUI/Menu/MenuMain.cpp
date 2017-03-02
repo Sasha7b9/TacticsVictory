@@ -67,7 +67,7 @@ void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
     {
         gEngine->Exit();
         gMenuMain->SetDisabled();
-        gGUI->SetVisibleMenu(gWindowConfirmExit, true);
+        gGUI->SetVisibleMenu(gMenuConfirmExit, true);
     
     }
     else if (button == buttonLanguage)

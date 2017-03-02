@@ -72,12 +72,12 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
             else if (gMenuMain->IsVisible())
             {
                 gMenuMain->SetDisabled();
-                gWindowConfirmExit->SetVisible(true);
+                gMenuConfirmExit->SetVisible(true);
             }
-            else if (gWindowConfirmExit->IsVisible())
+            else if (gMenuConfirmExit->IsVisible())
             {
                 gMenuMain->SetEnabled();
-                gWindowConfirmExit->SetVisible(false);
+                gMenuConfirmExit->SetVisible(false);
             }
         }
     }
@@ -89,7 +89,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         gDebugHud->ToggleAll();
     }
-    else if(!gUI->GetFocusElement() && !gStartMenu->Enabled())
+    else if(!gUI->GetFocusElement() && !gMenuStart->Enabled())
     {
         if(key == '9')
         {

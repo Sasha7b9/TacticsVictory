@@ -3,12 +3,12 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class WindowAboutMe : public WindowRTS
+class MenuAboutMe : public WindowRTS
 {
-    URHO3D_OBJECT(WindowAboutMe, WindowRTS);
+    URHO3D_OBJECT(MenuAboutMe, WindowRTS);
 
 public:
-    WindowAboutMe(Context *context = gContext);
+    MenuAboutMe(Context *context = gContext);
 
 private:
     void HandleButtonRelease(StringHash, VariantMap&);
