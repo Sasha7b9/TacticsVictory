@@ -6,7 +6,7 @@
 #include "Game/Level.h"
 #include "Game/Objects/Terrain/Terrain.h"
 #include "Game/Objects/Terrain/Terrain.h"
-#include "GUI/Controls/Cursor.h"
+#include "GUI/Cursor.h"
 #include "Game/Path/TilePath.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 #include "Game/Objects/Buildings/MilitaryPlant/MilitaryPlant.h"

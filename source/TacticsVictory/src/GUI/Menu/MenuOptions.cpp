@@ -1,12 +1,12 @@
 #include <stdafx.h>
 #include "MenuOptions.h"
 #include "GUI/GUI.h"
-#include "GUI/Elements/SliderInt.h"
-#include "GUI/Elements/Button.h"
-#include "GUI/Elements/Cursor.h"
-#include "GUI/Elements/Label.h"
-#include "GUI/Elements/SliderWithTextAndButtons.h"
-#include "GUI/Elements/DropDownListWithTextAndButton.h"
+#include "GUI/Controls/SliderInt.h"
+#include "GUI/Controls/Button.h"
+#include "GUI/Cursor.h"
+#include "GUI/Controls/Label.h"
+#include "GUI/Controls/SliderWithTextAndButtons.h"
+#include "GUI/Controls/DropDownListWithTextAndButton.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -2,7 +2,7 @@
 #include "Editor.h"
 #include "Core/Camera.h"
 #include "Game/Level.h"
-#include "GUI/Controls/Cursor.h"
+#include "GUI/Cursor.h"
 #include "GUI/Controls/Hint.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"

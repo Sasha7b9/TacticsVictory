@@ -1,6 +1,6 @@
 #include <stdafx.h>
 #include "Camera.h"
-#include "GUI/Controls/Cursor.h"
+#include "GUI/Cursor.h"
 #include "GUI/GUI.h"
 
 

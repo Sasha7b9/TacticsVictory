@@ -6,7 +6,7 @@
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 #include "Game/Objects/GameObjectEvents.h"
 #include "Game/Particles.h"
-#include "GUI/Controls/Cursor.h"
+#include "GUI/Cursor.h"
 #include "GUI/GuiGame/ContextMenuUnit.h"
 
 

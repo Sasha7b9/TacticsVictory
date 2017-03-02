@@ -1,6 +1,6 @@
 #include <stdafx.h>
 #include "SliderWithTextAndButtons.h"
-#include "Cursor.h"
+#include "GUI/Cursor.h"
 #include "Label.h"
 #include "Hint.h"
 

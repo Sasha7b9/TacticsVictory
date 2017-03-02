@@ -1,6 +1,6 @@
 #include <stdafx.h>
 #include "Button.h"
-#include "Cursor.h"
+#include "GUI/Cursor.h"
 #include "Label.h"
 #include "Hint.h"
 

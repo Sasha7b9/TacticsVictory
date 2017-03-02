@@ -1,7 +1,7 @@
 #include <stdafx.h>
-#include "WindowAboutMe.h"
-#include "GUI/Elements/Button.h"
-#include "GUI/Menu/StartMenu.h"
+#include "MenuAboutMe.h"
+#include "GUI/Controls/Button.h"
+#include "GUI/Menu/MenuStart.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

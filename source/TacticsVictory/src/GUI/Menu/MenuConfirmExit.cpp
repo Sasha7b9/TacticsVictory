@@ -1,7 +1,7 @@
 #include <stdafx.h>
-#include "WindowConfirmExit.h"
-#include "GUI/Elements/Button.h"
-#include "GUI/Elements/Label.h"
+#include "MenuConfirmExit.h"
+#include "GUI/Controls/Button.h"
+#include "GUI/Controls/Label.h"
 #include "GUI/GUI.h"
 #include "GUI/Menu/MenuMain.h"
 

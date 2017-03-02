@@ -8,7 +8,7 @@
 #include "Game/Logic/Movinator.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/GuiEditor/GuiEditor.h"
-#include "GUI/Elements/Image.h"
+#include "Graphics/2D/Image.h"
 #include "TacticsVictory.h"
 #include "Game/Level.h"
 #include "GlobalFunctions.h"

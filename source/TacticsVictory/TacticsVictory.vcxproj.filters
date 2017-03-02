@@ -55,9 +55,6 @@
     <Filter Include="Game\Objects\Units\Airplane">
       <UniqueIdentifier>{050a9365-35fc-4f67-9478-7b5fd09d5d36}</UniqueIdentifier>
     </Filter>
-    <Filter Include="_doc_">
-      <UniqueIdentifier>{0365f6f8-9c0b-4915-a98c-0ad66a6adfd6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Objects\Units\Bomber">
       <UniqueIdentifier>{8e7902a8-d75f-45c3-8ffe-708e98bb81ce}</UniqueIdentifier>
     </Filter>
@@ -130,14 +127,17 @@
     <Filter Include="Game\Objects\Weapons\Gun">
       <UniqueIdentifier>{6cfa45cd-4121-4e23-8a03-7eaaf96cf412}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Menu">
-      <UniqueIdentifier>{19c89b31-bc0c-4174-a1d6-c247d6930b92}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Graphics\2D">
       <UniqueIdentifier>{2ede7136-5653-4b03-a036-236546750cc5}</UniqueIdentifier>
     </Filter>
     <Filter Include="GUI\Controls">
       <UniqueIdentifier>{c357de07-7c09-40cf-8a31-311276eeb0a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Windows">
+      <UniqueIdentifier>{ff4fce4a-0bfa-4b8e-8385-5ec3e807df01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Panels">
+      <UniqueIdentifier>{8dc0528d-9989-4ded-8fdf-9624206487d0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -168,19 +168,10 @@
     <ClCompile Include="src\GUI\Logic\LineTranslator2D.cpp">
       <Filter>GUI\Logic</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Menu\Console.cpp">
-      <Filter>GUI\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Menu\ConsoleParser.cpp">
-      <Filter>GUI\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\Menu\MenuMain.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\Menu\MenuOptions.cpp">
-      <Filter>GUI\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Menu\WindowVariables.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\GUI.cpp">
@@ -212,9 +203,6 @@
     </ClCompile>
     <ClCompile Include="src\GlobalFunctions.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Menu\WindowConfirmExit.cpp">
-      <Filter>GUI\Menu</Filter>
     </ClCompile>
     <ClCompile Include="src\Graphics\Objects\Line.cpp">
       <Filter>Graphics\Objects</Filter>
@@ -363,21 +351,6 @@
     <ClCompile Include="src\Game\Objects\Terrain\SegmentTerrain.cpp">
       <Filter>Game\Objects\Terrain</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Menu\StartMenu.cpp">
-      <Filter>GUI\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Menu\WindowAboutMe.cpp">
-      <Filter>GUI\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\GuiGame\PanelBottom.cpp">
-      <Filter>GUI\GuiGame</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\GuiGame\PanelMain.cpp">
-      <Filter>GUI\GuiGame</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\GuiGame\PanelMap.cpp">
-      <Filter>GUI\GuiGame</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\Controls\Button.cpp">
       <Filter>GUI\Controls</Filter>
     </ClCompile>
@@ -396,14 +369,56 @@
     <ClCompile Include="src\GUI\Controls\ButtonToggled.cpp">
       <Filter>GUI\Controls</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Controls\Cursor.cpp">
-      <Filter>GUI\Controls</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Controls\CursorShapes.cpp">
-      <Filter>GUI\Controls</Filter>
-    </ClCompile>
     <ClCompile Include="src\Graphics\2D\Image.cpp">
       <Filter>Graphics\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\DropDownListWithTextAndButton.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\GovernorFloat.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\Slider.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\SliderInt.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\SliderWithTextAndButtons.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\Tab.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Cursor.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Panels\PanelBottom.cpp">
+      <Filter>GUI\Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Panels\PanelMain.cpp">
+      <Filter>GUI\Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Panels\PanelMap.cpp">
+      <Filter>GUI\Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Windows\Console.cpp">
+      <Filter>GUI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Windows\ConsoleParser.cpp">
+      <Filter>GUI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Windows\WindowVariables.cpp">
+      <Filter>GUI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\MenuAboutMe.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\MenuConfirmExit.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Menu\MenuStart.cpp">
+      <Filter>GUI\Menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -434,19 +449,10 @@
     <ClInclude Include="src\GUI\Logic\LineTranslator2D.h">
       <Filter>GUI\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\Menu\Console.h">
-      <Filter>GUI\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Menu\ConsoleParser.h">
-      <Filter>GUI\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="src\GUI\Menu\MenuMain.h">
       <Filter>GUI\Menu</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\Menu\MenuOptions.h">
-      <Filter>GUI\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Menu\WindowVariables.h">
       <Filter>GUI\Menu</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\GUI.h">
@@ -481,9 +487,6 @@
     </ClInclude>
     <ClInclude Include="src\GlobalFunctions.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Menu\WindowConfirmExit.h">
-      <Filter>GUI\Menu</Filter>
     </ClInclude>
     <ClInclude Include="src\Graphics\Objects\Line.h">
       <Filter>Graphics\Objects</Filter>
@@ -635,21 +638,6 @@
     <ClInclude Include="src\Game\Objects\Terrain\SegmentTerrain.h">
       <Filter>Game\Objects\Terrain</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\Menu\StartMenu.h">
-      <Filter>GUI\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Menu\WindowAboutMe.h">
-      <Filter>GUI\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\GuiGame\PanelBottom.h">
-      <Filter>GUI\GuiGame</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\GuiGame\PanelMain.h">
-      <Filter>GUI\GuiGame</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\GuiGame\PanelMap.h">
-      <Filter>GUI\GuiGame</Filter>
-    </ClInclude>
     <ClInclude Include="src\GUI\Controls\Button.h">
       <Filter>GUI\Controls</Filter>
     </ClInclude>
@@ -668,19 +656,56 @@
     <ClInclude Include="src\GUI\Controls\ButtonToggled.h">
       <Filter>GUI\Controls</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\Controls\Cursor.h">
-      <Filter>GUI\Controls</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Controls\CursorShapes.h">
-      <Filter>GUI\Controls</Filter>
-    </ClInclude>
     <ClInclude Include="src\Graphics\2D\Image.h">
       <Filter>Graphics\2D</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="src\doc\Objects.txt">
-      <Filter>_doc_</Filter>
-    </Text>
+    <ClInclude Include="src\GUI\Controls\DropDownListWithTextAndButton.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\GovernorFloat.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\Slider.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\SliderInt.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\SliderWithTextAndButtons.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\Tab.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Cursor.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Panels\PanelBottom.h">
+      <Filter>GUI\Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Panels\PanelMain.h">
+      <Filter>GUI\Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Panels\PanelMap.h">
+      <Filter>GUI\Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Windows\Console.h">
+      <Filter>GUI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Windows\ConsoleParser.h">
+      <Filter>GUI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Windows\WindowVariables.h">
+      <Filter>GUI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\MenuAboutMe.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\MenuConfirmExit.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\MenuStart.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

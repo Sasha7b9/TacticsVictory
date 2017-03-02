@@ -1,6 +1,6 @@
 #include <stdafx.h>
-#include "StartMenu.h"
-#include "WindowAboutMe.h"
+#include "MenuStart.h"
+#include "MenuAboutMe.h"
 #include "GlobalFunctions.h"
 #include "TacticsVictory.h"
 

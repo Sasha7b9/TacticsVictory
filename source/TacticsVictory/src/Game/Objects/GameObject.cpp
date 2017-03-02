@@ -1,6 +1,6 @@
 #include <stdafx.h>
 #include "GameObject.h"
-#include "GUI/Controls/Cursor.h"
+#include "GUI/Cursor.h"
 #include "Core/Math.h"
 
 

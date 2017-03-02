@@ -1,6 +1,6 @@
 #include <stdafx.h>
-#include "GUI/Elements/DropDownListWithTextAndButton.h"
-#include "GUI/Controls/Cursor.h"
+#include "GUI/Controls/DropDownListWithTextAndButton.h"
+#include "GUI/Cursor.h"
 #include "GUI/Controls/Label.h"
 
 

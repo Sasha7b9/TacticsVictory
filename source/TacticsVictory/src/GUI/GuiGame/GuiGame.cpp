@@ -2,9 +2,9 @@
 #include "GuiGame.h"
 #include "GUI/Controls/Button.h"
 #include "GUI/Controls/Tab.h"
-#include "GUI/GuiGame/PanelMap.h"
-#include "GUI/GuiGame/PanelMain.h"
-#include "GUI/GuiGame/PanelBottom.h"
+#include "GUI/Panels/PanelMap.h"
+#include "GUI/Panels/PanelMain.h"
+#include "GUI/Panels/PanelBottom.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

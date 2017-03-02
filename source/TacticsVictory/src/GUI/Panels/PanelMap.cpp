@@ -3,7 +3,7 @@
 #include "Core/Camera.h"
 #include "Game/Level.h"
 #include "Graphics/2D/Image.h"
-#include "GUI/Controls/Cursor.h"
+#include "GUI/Cursor.h"
 #include "GUI/Logic/LineTranslator2D.h"
 
 

@@ -1,6 +1,9 @@
 #include <stdafx.h>
-#include "CursorShapes.h"
+#include "Cursor.h"
+#include "Core/Camera.h"
+#include "GUI/GUI.h"
 #include "Graphics/2D/Image.h"
+#include "Game/Objects/Terrain/Terrain.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -15,12 +18,211 @@ bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::St
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+CursorRTS::CursorRTS() : Object(gContext)
+{
+    cursor = new Cursor(gContext);
+
+    int size = 100;
+
+    SharedPtr<ImageRTS> image(new ImageRTS());
+    image->SetSize(size, size);
+
+    image->Clear({0.0f, 0.0f, 1.0f, 1.0f});
+
+    cursor->DefineShape("Normal", image, {0, 0, size, size}, {0, 0});
+    cursor->SetName("Cursor");
+    gUI->SetCursor(cursor);
+    cursor->SetPosition(gGraphics->GetWidth() / 2, gGraphics->GetHeight() / 2);
+
+    shapes = new CursorShapes();
+
+    nodeSprite = gScene->CreateChild("Cursor sprite");
+    staticSprite = nodeSprite->CreateComponent<StaticSprite2D>();
+    staticSprite->SetColor(Color(Random(1.0f), Random(1.0f), Random(1.0f), 1.0f));
+    staticSprite->SetBlendMode(BLEND_ALPHA);
+    nodeSprite->SetEnabled(true);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void CursorRTS::Show()
+{
+    hidden = false;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void CursorRTS::Hide()
+{
+    hidden = true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+SharedPtr<Cursor> CursorRTS::GetCursor()
+{
+    return cursor;
+}
+
+void CursorRTS::Update(float dT)
+{
+    const float speed = 500.0f;
+    static float angle0 = 0.0f;
+
+    angle0 += speed * dT;
+
+    if(angle0 > 360.0f)
+    {
+        angle0 -= 360.0f;
+    }
+
+    if(hidden)
+    {
+        SharedPtr<ImageRTS> image(new ImageRTS());
+        image->SetSize(1, 1);
+        cursor->DefineShape("Normal", image, {0, 0, image->GetWidth(), image->GetHeight()}, {0, 0});
+    }
+    else
+    {
+        static const int delta = 2;
+        int posX = cursor->GetPosition().x_;
+        int posY = cursor->GetPosition().y_;
+        int width = gGraphics->GetWidth();
+        int height = gGraphics->GetHeight();
+        int numFrame = (int)angle0 / 10;
+
+        if(!gGUI->MenuIsVisible() && !gGUI->UnderCursor())
+        {
+            if(posX < delta && posY < delta)
+            {
+                type = TypeCursor_TopLeft;
+            }
+            else if(posX > width - delta && posY < delta)
+            {
+                type = TypeCursor_TopRight;
+            }
+            else if(posX > width - delta && posY > height - delta)
+            {
+                type = TypeCursor_DownRight;
+            }
+            else if(posX < delta && posY > height - delta)
+            {
+                type = TypeCursor_DownLeft;
+            }
+            else if(posX < delta)
+            {
+                type = TypeCursor_Left;
+            }
+            else if(posX > width - delta)
+            {
+                type = TypeCursor_Right;
+            }
+            else if(posY < delta)
+            {
+                type = TypeCursor_Up;
+            }
+            else if(posY > height - delta && !gGUI->GheckOnDeadZoneForCursorBottomScreen(posX))
+            {
+                type = TypeCursor_Down;
+            }
+            else if (gInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+            {
+                static float thisNumFrame = 0.0f;
+                int dX = gInput->GetMouseMoveX();
+                int dY = gInput->GetMouseMoveY();
+                thisNumFrame += (float)sqrt(dY * dY + dX * dX) / 10.0f;
+                if(thisNumFrame < 0.0f)
+                {
+                    thisNumFrame = 36.0f;
+                }
+                else if(thisNumFrame > 36.0f)
+                {
+                    thisNumFrame = 0.0f;
+                }
+                numFrame = (int)thisNumFrame;
+                type = TypeCursor_Busy;
+            }
+            else
+            {
+                type = selected ? TypeCursor_Selected : TypeCursor_Normal;
+            }
+        }
+        else
+        {
+            type = selected ? TypeCursor_Selected : TypeCursor_Normal;
+        }
+        static TypeCursor prevType = TypeCursor_Size;
+        static int prevFrame = -1;
+
+        if (prevType != type || prevFrame != numFrame)
+        {
+            prevFrame = numFrame;
+            prevType = type;
+
+            SharedPtr<ImageRTS> image = shapes->GetShape(type, numFrame);
+
+            cursor->DefineShape("Normal", image, {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
+            /*
+            SharedPtr<Texture2D> texture(new Texture2D(gContext));
+            texture->SetSize(image->GetWidth(), image->GetHeight(), D3DFMT_X8R8G8B8);
+            texture->SetData(image->GetUImage());
+            SharedPtr<Sprite2D> sprite(new Sprite2D(gContext));
+            sprite->SetTexture(texture);
+            staticSprite->SetSprite(sprite);
+            nodeSprite->SetPosition({100.0f, 100.0f, -100.0f});
+            */
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void CursorRTS::SetNormal()
+{
+    selected = false;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void CursorRTS::SetSelected()
+{
+    selected = true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+Drawable* CursorRTS::GetRaycastNode(Vector3 *hitPos_)
+{
+    if(gUI->GetElementAt(gUI->GetCursorPosition(), true))
+    {
+        return nullptr;
+    }
+
+    Ray ray = gCamera->GetCursorRay();
+    PODVector<RayQueryResult> results;
+    RayOctreeQuery query(results, ray, RAY_TRIANGLE, M_INFINITY, DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
+    gScene->GetComponent<Octree>()->Raycast(query);
+
+    if(results.Size())
+    {
+        RayQueryResult& result = results[0];
+        String name = result.drawable_->GetNode()->GetName();
+        if (result.drawable_->GetNode()->GetName() == NODE_TILE_PATH && results.Size() > 1)
+        {
+            result = results[1];
+        }
+        Vector3 hitPos = result.position_;
+        if(hitPos_)
+        {
+            *hitPos_ = hitPos;
+        }
+        return result.drawable_;
+    }
+
+    return nullptr;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 CursorShapes::CursorShapes() : Object(gContext)
 {
     /*
     for (int iType = 0; iType < TypeCursor_Size; iType++)
     {
-        SharedPtr<Image> shape = GetShape((TypeCursor)iType, 0);
+    SharedPtr<Image> shape = GetShape((TypeCursor)iType, 0);
     }
     */
 }
@@ -46,7 +248,7 @@ SharedPtr<ImageRTS> CursorShapes::GetShape(TypeCursor type, int numFrame)
 
     StructShape key = {type, numFrame};
 
-    if(!map.Contains(key))
+    if (!map.Contains(key))
     {
         pToFunc func = funcs[type];
         (this->*func)(numFrame);
@@ -214,7 +416,7 @@ void CursorShapes::CreateTopLeft(int numFrame)
 {
     SharedPtr<ImageRTS> image(new ImageRTS());
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
-    
+
     int size = (int)(dimensionTriangleSmall * 1.41f);
 
     FillGradient(image, TypeCursor_TopLeft, numFrame);
@@ -233,7 +435,7 @@ void CursorShapes::CreateTopRight(int numFrame)
     int size = (int)(dimensionTriangleSmall * 1.41f);
     SharedPtr<ImageRTS> image(new ImageRTS());
     image->SetSize(size + 1, size + 1);
-    
+
     FillGradient(image, TypeCursor_TopRight, numFrame);
 
     DRAW_LINE(border, 4, 0, 0, size, 0, size, size, 0, 0);
@@ -250,7 +452,7 @@ void CursorShapes::CreateDownLeft(int numFrame)
     int size = (int)(dimensionTriangleSmall * 1.41f);
     SharedPtr<ImageRTS> image(new ImageRTS());
     image->SetSize(size + 1, size + 1);
-    
+
     FillGradient(image, TypeCursor_DownLeft, numFrame);
 
     DRAW_LINE(border, 4, 0, 0, size, size, 0, size, 0, 0);
@@ -338,46 +540,46 @@ void CursorShapes::FillGradient(ImageRTS *image, TypeCursor type, int numFrame)
     int width = image->GetWidth();
     int height = image->GetHeight();
 
-    if(type == TypeCursor_Left || type == TypeCursor_Right)
+    if (type == TypeCursor_Left || type == TypeCursor_Right)
     {
         CALCULATE_COLORS(TypeCursor_Left)
 
-        for(int i = 0; i < width; i++)
-        {
-            DRAW_LINE(image, i, 0, i, height);
-        }
+            for (int i = 0; i < width; i++)
+            {
+                DRAW_LINE(image, i, 0, i, height);
+            }
     }
-    else if(type == TypeCursor_Up || type == TypeCursor_Down)
+    else if (type == TypeCursor_Up || type == TypeCursor_Down)
     {
         CALCULATE_COLORS(TypeCursor_Up)
 
-        for(int i = 0; i < height; i++)
-        {
-            DRAW_LINE(image, 0, i, width, i);
-        }
+            for (int i = 0; i < height; i++)
+            {
+                DRAW_LINE(image, 0, i, width, i);
+            }
     }
-    else if(type == TypeCursor_TopLeft || type == TypeCursor_DownRight)
+    else if (type == TypeCursor_TopLeft || type == TypeCursor_DownRight)
     {
         CALCULATE_COLORS(TypeCursor_TopLeft)
 
-        for(int x = 1; x < width; x++)
-        {
-            DRAW_LINE(image, x, 0, 0, x);
-        }
-        for(int x = 0; x < width; x++)
+            for (int x = 1; x < width; x++)
+            {
+                DRAW_LINE(image, x, 0, 0, x);
+            }
+        for (int x = 0; x < width; x++)
         {
             DRAW_LINE(image, x, height, width, x);
         }
     }
-    else if(type == TypeCursor_TopRight || type == TypeCursor_DownLeft)
+    else if (type == TypeCursor_TopRight || type == TypeCursor_DownLeft)
     {
         CALCULATE_COLORS(TypeCursor_DownLeft);
 
-        for(int y = height; y > 0; y--)
+        for (int y = height; y > 0; y--)
         {
             DRAW_LINE(image, 0, y, height - y, height);
         }
-        for(int x = 0; x < width; x++)
+        for (int x = 0; x < width; x++)
         {
             DRAW_LINE(image, x, 0, width, height - x);
         }
@@ -402,7 +604,7 @@ void CursorShapes::FillGradient(ImageRTS *image, TypeCursor type, int numFrame)
             DRAW_LINE(image, width, y, 0, height - y);
         }
     }
-    else if(type == TypeCursor_Normal || type == TypeCursor_Selected)
+    else if (type == TypeCursor_Normal || type == TypeCursor_Selected)
     {
         if (type == TypeCursor_Selected && numFrame >= 360) // if numFrame > 360 - draw circle
         {

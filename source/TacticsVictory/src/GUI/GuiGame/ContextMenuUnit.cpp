@@ -1,8 +1,8 @@
 #include <stdafx.h>
 #include "ContextMenuUnit.h"
-#include "GUI/Elements/Label.h"
+#include "GUI/Controls/Label.h"
 #include "Game/Objects/Units/UnitObject.h"
-#include "GUI/Elements/ButtonToggled.h"
+#include "GUI/Controls/ButtonToggled.h"
 #include "GUI/GuiGame/WindowTarget.h"
 
 

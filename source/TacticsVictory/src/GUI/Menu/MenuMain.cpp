@@ -1,11 +1,11 @@
 #include <stdafx.h>
 #include "MenuMain.h"
 #include "GUI/GUI.h"
-#include "GUI/Elements/Button.h"
-#include "GUI/Elements/ButtonSwitch.h"
-#include "GUI/Elements/Cursor.h"
-#include "GUI/Elements/Label.h"
-#include "GUI/Menu/WindowConfirmExit.h"
+#include "GUI/Controls/Button.h"
+#include "GUI/Controls/ButtonSwitch.h"
+#include "GUI/Cursor.h"
+#include "GUI/Controls/Label.h"
+#include "GUI/Menu/MenuConfirmExit.h"
 #include "Core/Camera.h"
 
 
