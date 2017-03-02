@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 
 class CameraRTS;
@@ -22,39 +22,40 @@ class MenuConfirmExit;
 class WindowTarget;
 class WindowVariables;
 class TacticsVictory;
+class MenuRTS;
 
 
-extern Audio            *gAudio;
-extern Localization     *gLocalization;
-extern UI               *gUI;
-extern UIElement        *gUIRoot;
-extern ResourceCache    *gCache;
-extern Engine           *gEngine;
-extern Input            *gInput;
-extern Renderer         *gRenderer;
-extern DebugRenderer    *gDebugRenderer;
-extern Context          *gContext;
-extern Scene            *gScene;
-extern Console          *gEngineConsole;
-extern DebugHud         *gDebugHud;
-extern Graphics         *gGraphics;
-extern FileSystem       *gFileSystem;
-extern PhysicsWorld     *gPhysicsWorld;
-extern Font             *gFont;
-extern Time             *gTime;
-extern FileSelector     *gFileSelector;
-extern Log              *gLog;
-extern Profiler         *gProfiler;
-extern Script           *gScript;
+extern Audio                *gAudio;
+extern Localization         *gLocalization;
+extern UI                   *gUI;
+extern UIElement            *gUIRoot;
+extern ResourceCache        *gCache;
+extern Engine               *gEngine;
+extern Input                *gInput;
+extern Renderer             *gRenderer;
+extern DebugRenderer        *gDebugRenderer;
+extern Context              *gContext;
+extern Scene                *gScene;
+extern Console              *gEngineConsole;
+extern DebugHud             *gDebugHud;
+extern Graphics             *gGraphics;
+extern FileSystem           *gFileSystem;
+extern PhysicsWorld         *gPhysicsWorld;
+extern Font                 *gFont;
+extern Time                 *gTime;
+extern FileSelector         *gFileSelector;
+extern Log                  *gLog;
+extern Profiler             *gProfiler;
+extern Script               *gScript;
 
-extern CameraRTS        *gCamera;
-extern CursorRTS        *gCursor;
-extern Editor           *gEditor;
-extern Settings         *gSet;
-extern Level            *gLevel;
-extern TerrainRTS       *gTerrain;
-extern TacticsVictory   *gTacticsVictory;
-extern PODVector<Tank*>  gTanks;
+extern CameraRTS            *gCamera;
+extern CursorRTS            *gCursor;
+extern Editor               *gEditor;
+extern Settings             *gSet;
+extern Level                *gLevel;
+extern TerrainRTS           *gTerrain;
+extern TacticsVictory       *gTacticsVictory;
+extern PODVector<Tank*>      gTanks;
 
 // GUI
 extern GuiGame              *gGuiGame;
@@ -65,9 +66,10 @@ extern WindowVariables      *gWindowVars;
 extern Hint                 *gHint;
 extern int                  *gCounterHint;
 extern Vector<WindowRTS*>    gOpenedWindow;
-extern WindowTarget         *gWindowTarget;             // В этом окне можно посмотреть, что видит юнит
+extern WindowTarget         *gWindowTarget;             // Р’ СЌС‚РѕРј РѕРєРЅРµ РјРѕР¶РЅРѕ РїРѕСЃРјРѕС‚СЂРµС‚СЊ, С‡С‚Рѕ РІРёРґРёС‚ СЋРЅРёС‚
 
-// Меню
+// РњРµРЅСЋ
+extern MenuRTS              *gMenu;
 extern MenuMain             *gMenuMain;
 extern MenuStart            *gMenuStart;
 extern MenuOptions          *gMenuOptions;

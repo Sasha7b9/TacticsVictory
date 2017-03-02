@@ -1,19 +1,21 @@
-#include <stdafx.h>
-#include "GUI/GUI.h"
+ï»¿#include <stdafx.h>
 #include "Core/Camera.h"
 #include "Editor/Editor.h"
-#include "Game/Scene.h"
-#include "Game/Path/TilePath.h"
-#include "Game/Logic/Rotator.h"
-#include "Game/Logic/Movinator.h"
+#include "GUI/GUI.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/GuiEditor/GuiEditor.h"
-#include "Graphics/2D/Image.h"
-#include "TacticsVictory.h"
-#include "Game/Level.h"
+#include "GUI/Menu/MenuRTS.h"
 #include "GlobalFunctions.h"
+#include "Game/Level.h"
+#include "Game/Scene.h"
+#include "Game/Logic/Rotator.h"
+#include "Game/Logic/Movinator.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 #include "Game/Objects/Terrain/SegmentTerrain.h"
+#include "Game/Path/TilePath.h"
+#include "Graphics/2D/Image.h"
+#include "TacticsVictory.h"
+
 
 
 #pragma warning(push)
@@ -78,47 +80,6 @@ void TacticsVictory::Stop()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::CreateComponents()
-{
-    gProfiler = GetSubsystem<Profiler>();
-    gLocalization = GetSubsystem<Localization>();
-    gUI = GetSubsystem<UI>();
-
-    gEngine = GetSubsystem<Engine>();
-    gInput = GetSubsystem<Input>();
-    gRenderer = GetSubsystem<Renderer>();
-    gGraphics = GetSubsystem<Graphics>();
-
-    gScene = new Scene(gContext);
-    // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
-    gScene->CreateComponent<Octree>();
-
-    gPhysicsWorld = gScene->CreateComponent<PhysicsWorld>();
-    gPhysicsWorld->SetGravity(Vector3::ZERO);
-
-    gUIRoot = gUI->GetRoot();
-
-    gScene->CreateComponent<DebugRenderer>();
-    gDebugRenderer = gScene->GetComponent<DebugRenderer>();
-
-    gGUI = new GUI();
-
-    gLevel = new Level();
-
-    gAudio = GetSubsystem<Audio>();
-
-    SceneRTS::RegisterObject();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::RegistrationFactories()
-{
-    gContext->RegisterFactory<Rotator>();
-    gContext->RegisterFactory<Movinator>();
-    gContext->RegisterFactory<ImageRTS>();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::Start()
 {
     gProfiler = GetSubsystem<Profiler>();
@@ -133,23 +94,32 @@ void TacticsVictory::Start()
 
     RegistrationFactories();
 
-    CreateComponents();
-
     gCache->AddResourceDir(gFileSystem->GetProgramDir() + RESOURCES_DIR);
     gFont = gCache->GetResource<Font>(SET::MENU::FONT::NAME);
+
+    gProfiler = GetSubsystem<Profiler>();
+    gLocalization = GetSubsystem<Localization>();
+    gLocalization->LoadJSONFile("Strings.json");
+    gLocalization->SetLanguage("ru");
+    gUI = GetSubsystem<UI>();
+    gEngine = GetSubsystem<Engine>();
+    gInput = GetSubsystem<Input>();
+    gRenderer = GetSubsystem<Renderer>();
+    gGraphics = GetSubsystem<Graphics>();
+
+    XMLFile *style = gCache->GetResource<XMLFile>("UI/MainStyle.xml");
+    gUIRoot = gUI->GetRoot();
+    gUIRoot->SetDefaultStyle(style);
 
     SetWindowTitleAndIcon();
     CreateConsoleAndDebugHud();
 
-    XMLFile *style = gCache->GetResource<XMLFile>("UI/MainStyle.xml");
-    gUIRoot->SetDefaultStyle(style);
-    
-    InitLocalizationSystem();
+    CreateComponents();
 
     gCamera = new CameraRTS();
 
     gLog->SetLevel(LOG_ERROR);
-    gGUI->Create();
+    //gGUI->Create();
     gLog->SetLevel(LOG_INFO);
 
     gFileSelector = new FileSelector(gContext);
@@ -168,10 +138,37 @@ void TacticsVictory::Start()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::InitLocalizationSystem()
+void TacticsVictory::CreateComponents()
 {
-    gLocalization->LoadJSONFile("Strings.json");
-    gLocalization->SetLanguage("ru");
+    gScene = new Scene(gContext);
+    // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
+    gScene->CreateComponent<Octree>();
+
+    gPhysicsWorld = gScene->CreateComponent<PhysicsWorld>();
+    gPhysicsWorld->SetGravity(Vector3::ZERO);
+
+    gScene->CreateComponent<DebugRenderer>();
+    gDebugRenderer = gScene->GetComponent<DebugRenderer>();
+
+    //gGUI = new GUI();
+
+    GUI::RegistrationObjects();
+
+    gMenu = new MenuRTS();
+
+    gLevel = new Level();
+
+    gAudio = GetSubsystem<Audio>();
+
+    SceneRTS::RegisterObject();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::RegistrationFactories()
+{
+    gContext->RegisterFactory<Rotator>();
+    gContext->RegisterFactory<Movinator>();
+    gContext->RegisterFactory<ImageRTS>();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -189,7 +186,7 @@ void TacticsVictory::SetWindowTitleAndIcon()
 {
     Image* icon = gCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     gGraphics->SetWindowIcon(icon);
-    gGraphics->SetWindowTitle(L"Òàêòèêà ïîáåäû");
+    gGraphics->SetWindowTitle(L"Ð¢Ð°ÐºÑ‚Ð¸ÐºÐ° Ð¿Ð¾Ð±ÐµÐ´Ñ‹");
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

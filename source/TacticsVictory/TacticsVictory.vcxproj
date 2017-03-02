@@ -122,8 +122,7 @@
     <PostBuildEvent>
       <Message>
       </Message>
-      <Command>
-      </Command>
+      <Command>del ..\..\out\*.ilk</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalOptions>/STACK:20000000000 %(AdditionalOptions)</AdditionalOptions>
@@ -397,6 +396,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\GuiGame\WindowTarget.cpp" />
     <ClCompile Include="src\GUI\Logic\LineTranslator1D.cpp" />
     <ClCompile Include="src\GUI\Logic\LineTranslator2D.cpp" />
+    <ClCompile Include="src\GUI\Menu\MenuRTS.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuAboutMe.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuConfirmExit.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuMain.cpp" />
@@ -496,6 +496,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\GuiGame\WindowTarget.h" />
     <ClInclude Include="src\GUI\Logic\LineTranslator1D.h" />
     <ClInclude Include="src\GUI\Logic\LineTranslator2D.h" />
+    <ClInclude Include="src\GUI\Menu\MenuRTS.h" />
     <ClInclude Include="src\GUI\Menu\MenuAboutMe.h" />
     <ClInclude Include="src\GUI\Menu\MenuConfirmExit.h" />
     <ClInclude Include="src\GUI\Menu\MenuEvents.h" />

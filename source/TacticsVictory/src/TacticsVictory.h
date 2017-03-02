@@ -24,7 +24,6 @@ private:
 
     void CreateComponents();
     void RegistrationFactories();
-    void InitLocalizationSystem();
     void SetWindowTitleAndIcon();
     void CreateConsoleAndDebugHud();
     void CreateEditorSession();

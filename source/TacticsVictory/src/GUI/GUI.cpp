@@ -42,7 +42,7 @@ GUI::~GUI()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void RegstrationObjects()
+void GUI::RegistrationObjects()
 {
     ButtonRTS::RegisterObject();
     ButtonSwitch::RegisterObject();
@@ -125,8 +125,6 @@ static float GetCameraYaw()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void GUI::Create()
 {
-    RegstrationObjects();
-
     gMenuStart = new MenuStart();
     SetWindowInCenterScreen(gMenuStart);
     gUIRoot->AddChild(gMenuStart);

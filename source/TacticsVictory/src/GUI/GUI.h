@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "GUI/Menu/MenuEvents.h"
 
 
@@ -15,12 +15,14 @@ public:
     GUI();
     ~GUI();
 
+    static void RegistrationObjects();
+
     void Create();
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
     bool MenuIsVisible();
     void SetVisibleMenu(bool visible);
     void SetVisibleMenu(WindowRTS *menuWindow, bool visible);
-    bool UnderCursor();                                             // Возвращает true, если меню под курсором
+    bool UnderCursor();                                             // Р’РѕР·РІСЂР°С‰Р°РµС‚ true, РµСЃР»Рё РјРµРЅСЋ РїРѕРґ РєСѓСЂСЃРѕСЂРѕРј
     void RemoveFromScreen();
     void AddToScreen();
     void SetVisibleWindow(WindowRTS *window, bool visible);
