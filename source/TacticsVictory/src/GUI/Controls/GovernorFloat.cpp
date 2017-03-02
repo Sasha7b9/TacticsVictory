@@ -1,8 +1,8 @@
 #include <stdafx.h>
 #include "GovernorFloat.h"
-#include "GUI/Elements/Button.h"
-#include "GUI/Elements/Cursor.h"
-#include "GUI/Elements/Label.h"
+#include "GUI/Controls/Button.h"
+#include "GUI/Controls/Cursor.h"
+#include "GUI/Controls/Label.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

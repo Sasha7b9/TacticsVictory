@@ -45,3 +45,4 @@ TerrainRTS          *gTerrain = nullptr;
 Vector<WindowRTS*>   gOpenedWindow;
 PODVector<Tank*>     gTanks;
 WindowTarget        *gWindowTarget = nullptr;
+TacticsVictory      *gTacticsVictory = nullptr;

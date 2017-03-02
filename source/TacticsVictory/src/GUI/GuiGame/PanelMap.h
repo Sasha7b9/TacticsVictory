@@ -1,5 +1,5 @@
 #pragma once
-#include "GUI/Elements/Window.h"
+#include "GUI/Controls/Window.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,9 +22,6 @@ public:
     virtual void Update(float timeStep);
 
 private:
-    PanelMap& operator=(const PanelMap&)
-    {};
-
     Vector<Vector<float> > map;
     SharedPtr<ImageRTS> imageMap;
     int x0 = 0;

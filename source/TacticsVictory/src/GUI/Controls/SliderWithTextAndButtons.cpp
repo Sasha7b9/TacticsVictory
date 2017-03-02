@@ -1,8 +1,8 @@
 #include <stdafx.h>
 #include "SliderWithTextAndButtons.h"
-#include "GUI/Elements/Cursor.h"
-#include "GUI/Elements/Label.h"
-#include "GUI/Elements/Hint.h"
+#include "Cursor.h"
+#include "Label.h"
+#include "Hint.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

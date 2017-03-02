@@ -1,5 +1,5 @@
 #pragma once
-#include "GUI/Elements/Window.h"
+#include "GUI/Controls/Window.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,12 +42,6 @@ public:
     void HandleMouseMove(StringHash eventType, VariantMap& eventData);
 
 private:
-    GovernorCell& operator=(const GovernorCell&)
-    {};
-
-    void ChangeValue(int delta);
-    void SetSymbolWithEvent(char symbol);
-
     SharedPtr<Text> label;
     char symbol = 0;
     bool mouseIsDown = false;
@@ -56,6 +50,9 @@ private:
     IntVector2 posCursor;
     bool selected = false;
     CellType type;
+
+    void ChangeValue(int delta);
+    void SetSymbolWithEvent(char symbol);
 };
 
 
@@ -78,15 +75,6 @@ public:
     void HandleHoverButtonEnd(StringHash eventType, VariantMap& eventData);
 
 private:
-    GovernorFloat& operator=(const GovernorFloat&)
-    {};
-
-    void WriteValue(float value);
-    void GetOrderAndMantiss(float value, int *order, int *maintiss);
-    void WriteMantiss(int mantiss);
-    void WriteOrder(int order);
-    float GetValue();
-
     Vector<SharedPtr<GovernorCell> > cells;
     SharedPtr<Button> buttonDown;
     SharedPtr<Label> label;
@@ -95,4 +83,10 @@ private:
     pFuncVF funcWrite = nullptr;
     char *title = nullptr;
     float valueChanged = false;
+
+    void WriteValue(float value);
+    void GetOrderAndMantiss(float value, int *order, int *maintiss);
+    void WriteMantiss(int mantiss);
+    void WriteOrder(int order);
+    float GetValue();
 };

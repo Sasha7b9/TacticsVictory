@@ -32,6 +32,7 @@ TacticsVictory::TacticsVictory(Context* context) :
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::Setup()
 {
+    gTacticsVictory = this;
     gSet = new Settings();
     gCache = GetSubsystem<ResourceCache>();
     gFileSystem = GetSubsystem<FileSystem>();

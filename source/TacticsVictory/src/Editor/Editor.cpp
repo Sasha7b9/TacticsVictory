@@ -1,16 +1,15 @@
 #include <stdafx.h>
-
-
 #include "Editor.h"
 #include "Core/Camera.h"
 #include "Game/Level.h"
-#include "GUI/Elements/Cursor.h"
-#include "GUI/Elements/Hint.h"
+#include "GUI/Controls/Cursor.h"
+#include "GUI/Controls/Hint.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "Game/Objects/Units/Tank/Tank.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Editor::Editor(Context *context) : Object(context)
 {
     currentPlane = PlaneRTS::ZERO;
@@ -18,6 +17,7 @@ Editor::Editor(Context *context) : Object(context)
 }
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Editor::Run()
 {
     Node* zoneNode = gScene->CreateChild("Zone");
@@ -73,12 +73,14 @@ void Editor::Run()
     */
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Editor::ClearScene()
 {
     SAFE_DELETE(gTerrain);
     gScene->RemoveChild(lightNode);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 {
     if (!gTerrain || gTerrain->Empty())
@@ -176,6 +178,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
     */
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Editor::HandleMouseDown(StringHash, VariantMap&)
 {
     if (gHint && gCounterHint != 0)
@@ -215,6 +218,7 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Editor::HandleKeyDown(StringHash, VariantMap& eventData)
 {
     int key = eventData[KeyDown::P_KEY].GetInt();

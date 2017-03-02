@@ -1,7 +1,7 @@
 #include <stdafx.h>
 #include "GUI/Elements/DropDownListWithTextAndButton.h"
-#include "GUI/Elements/Cursor.h"
-#include "GUI/Elements/Label.h"
+#include "GUI/Controls/Cursor.h"
+#include "GUI/Controls/Label.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

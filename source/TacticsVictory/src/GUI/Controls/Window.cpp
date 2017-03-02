@@ -1,11 +1,11 @@
 #include <stdafx.h>
 #include "Window.h"
-#include "GUI/Elements/Button.h"
-#include "GUI/Elements/Label.h"
-#include "GUI/Elements/ButtonToggled.h"
-#include "GUI/Elements/SliderWithTextAndButtons.h"
-#include "GUI/Elements/DropDownListWithTextAndButton.h"
-#include "GUI/Elements/Cursor.h"
+#include "Button.h"
+#include "Label.h"
+#include "ButtonToggled.h"
+#include "SliderWithTextAndButtons.h"
+#include "DropDownListWithTextAndButton.h"
+#include "Cursor.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

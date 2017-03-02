@@ -2,6 +2,7 @@
 #include "StartMenu.h"
 #include "WindowAboutMe.h"
 #include "GlobalFunctions.h"
+#include "TacticsVictory.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,7 +71,8 @@ void StartMenu::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     if(button == buttonServer)
     {
-        //
+        SetDisabled();
+        gTacticsVictory->CreateNewGame();
     }
     else if(button == buttonClient)
     {

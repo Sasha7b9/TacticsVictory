@@ -1,6 +1,6 @@
 #include <stdafx.h>
 #include "PathIndicator.h"
-#include "GUI/Elements/Cursor.h"
+#include "GUI/Controls/Cursor.h"
 #include "Game/Objects/Terrain/Terrain.h"
 #include "Game/Path/TilePath.h"
 

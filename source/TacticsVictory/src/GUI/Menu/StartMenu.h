@@ -1,7 +1,7 @@
 #pragma once
-#include "GUI/Elements/Window.h"
-#include "GUI/Elements/Button.h"
-#include "GUI/Elements/ButtonSwitch.h"
+#include "GUI/Controls/Window.h"
+#include "GUI/Controls/Button.h"
+#include "GUI/Controls/ButtonSwitch.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

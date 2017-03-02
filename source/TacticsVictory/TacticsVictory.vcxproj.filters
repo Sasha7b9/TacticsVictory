@@ -22,9 +22,6 @@
     <Filter Include="Game\Objects">
       <UniqueIdentifier>{4b3d6648-6863-4bd9-921e-0d5a51257e09}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GUI\Elements">
-      <UniqueIdentifier>{9fa16773-12d3-4bbe-9eee-3304675445b3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GUI\Logic">
       <UniqueIdentifier>{613f17d7-b447-44ed-a03d-d85e3c4dd4c4}</UniqueIdentifier>
     </Filter>
@@ -133,6 +130,15 @@
     <Filter Include="Game\Objects\Weapons\Gun">
       <UniqueIdentifier>{6cfa45cd-4121-4e23-8a03-7eaaf96cf412}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menu">
+      <UniqueIdentifier>{19c89b31-bc0c-4174-a1d6-c247d6930b92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\2D">
+      <UniqueIdentifier>{2ede7136-5653-4b03-a036-236546750cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Controls">
+      <UniqueIdentifier>{c357de07-7c09-40cf-8a31-311276eeb0a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Camera.cpp">
@@ -155,36 +161,6 @@
     </ClCompile>
     <ClCompile Include="src\Game\Level.cpp">
       <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\Cursor.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\CursorShapes.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\DropDownListWithTextAndButton.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\GovernorFloat.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\Image.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\Label.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\Slider.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\SliderInt.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\SliderWithTextAndButtons.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\Window.cpp">
-      <Filter>GUI\Elements</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\Logic\LineTranslator1D.cpp">
       <Filter>GUI\Logic</Filter>
@@ -228,20 +204,11 @@
     <ClCompile Include="src\TacticsVictoryHandlers.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Elements\ButtonToggled.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\Tab.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\GuiEditor\GuiEditor.cpp">
       <Filter>GUI\GuiEditor</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\GuiGame\GuiGame.cpp">
       <Filter>GUI\GuiGame</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\Hint.cpp">
-      <Filter>GUI\Elements</Filter>
     </ClCompile>
     <ClCompile Include="src\GlobalFunctions.cpp">
       <Filter>src</Filter>
@@ -257,9 +224,6 @@
     </ClCompile>
     <ClCompile Include="src\Graphics\Objects\Triangle.cpp">
       <Filter>Graphics\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\Elements\ButtonSwitch.cpp">
-      <Filter>GUI\Elements</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Scene.cpp">
       <Filter>Game</Filter>
@@ -399,9 +363,6 @@
     <ClCompile Include="src\Game\Objects\Terrain\SegmentTerrain.cpp">
       <Filter>Game\Objects\Terrain</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Elements\Button.cpp">
-      <Filter>GUI\Elements</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\Menu\StartMenu.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
@@ -416,6 +377,33 @@
     </ClCompile>
     <ClCompile Include="src\GUI\GuiGame\PanelMap.cpp">
       <Filter>GUI\GuiGame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\Button.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\ButtonSwitch.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\Label.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\Window.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\Hint.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\ButtonToggled.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\Cursor.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\CursorShapes.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\2D\Image.cpp">
+      <Filter>Graphics\2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -439,36 +427,6 @@
     </ClInclude>
     <ClInclude Include="src\Game\Level.h">
       <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\Cursor.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\CursorShapes.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\DropDownListWithTextAndButton.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\GovernorFloat.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\Image.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\Label.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\Slider.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\SliderInt.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\SliderWithTextAndButtons.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\Window.h">
-      <Filter>GUI\Elements</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\Logic\LineTranslator1D.h">
       <Filter>GUI\Logic</Filter>
@@ -512,15 +470,6 @@
     <ClInclude Include="src\TacticsVictory.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\TacticsVictoryHandlers.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\ButtonToggled.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\Tab.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
     <ClInclude Include="src\GUI\Menu\MenuEvents.h">
       <Filter>GUI\Menu</Filter>
     </ClInclude>
@@ -529,9 +478,6 @@
     </ClInclude>
     <ClInclude Include="src\GUI\GuiGame\GuiGame.h">
       <Filter>GUI\GuiGame</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\Hint.h">
-      <Filter>GUI\Elements</Filter>
     </ClInclude>
     <ClInclude Include="src\GlobalFunctions.h">
       <Filter>src</Filter>
@@ -547,9 +493,6 @@
     </ClInclude>
     <ClInclude Include="src\Graphics\Objects\Triangle.h">
       <Filter>Graphics\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Elements\ButtonSwitch.h">
-      <Filter>GUI\Elements</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Scene.h">
       <Filter>Game</Filter>
@@ -692,9 +635,6 @@
     <ClInclude Include="src\Game\Objects\Terrain\SegmentTerrain.h">
       <Filter>Game\Objects\Terrain</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\Elements\Button.h">
-      <Filter>GUI\Elements</Filter>
-    </ClInclude>
     <ClInclude Include="src\GUI\Menu\StartMenu.h">
       <Filter>GUI\Menu</Filter>
     </ClInclude>
@@ -709,6 +649,33 @@
     </ClInclude>
     <ClInclude Include="src\GUI\GuiGame\PanelMap.h">
       <Filter>GUI\GuiGame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\Button.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\ButtonSwitch.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\Label.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\Window.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\Hint.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\ButtonToggled.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\Cursor.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\CursorShapes.h">
+      <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\2D\Image.h">
+      <Filter>Graphics\2D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

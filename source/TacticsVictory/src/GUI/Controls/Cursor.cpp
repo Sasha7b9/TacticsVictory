@@ -2,8 +2,8 @@
 #include "Cursor.h"
 #include "Core/Camera.h"
 #include "GUI/GUI.h"
-#include "GUI/Elements/CursorShapes.h"
-#include "GUI/Elements/Image.h"
+#include "CursorShapes.h"
+#include "Graphics/2D/Image.h"
 #include "Game/Objects/Terrain/Terrain.h"
 
 

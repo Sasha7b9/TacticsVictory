@@ -1,5 +1,5 @@
 #pragma once
-#include "GUI/Elements/Window.h"
+#include "GUI/Controls/Window.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -13,13 +13,10 @@ public:
     static void RegisterObject(Context *context = gContext);
 
 private:
-    WindowConfirmExit& operator=(const WindowConfirmExit&)
-    {};
+    SharedPtr<ButtonRTS> buttonOk;
+    SharedPtr<ButtonRTS> buttonCancel;
 
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
     void OnPressButtonOk();
     void OnPressButtonCancel();
-
-    SharedPtr<ButtonRTS> buttonOk;
-    SharedPtr<ButtonRTS> buttonCancel;
 };

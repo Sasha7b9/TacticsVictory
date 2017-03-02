@@ -21,7 +21,7 @@ class WindowRTS;
 class WindowConfirmExit;
 class WindowTarget;
 class WindowVariables;
-
+class TacticsVictory;
 
 
 extern Audio            *gAudio;
@@ -54,17 +54,24 @@ extern Settings         *gSet;
 extern Level            *gLevel;
 extern TerrainRTS       *gTerrain;
 
+// GUI
+extern GuiGame              *gGuiGame;
+extern GuiEditor            *gGuiEditor;
+
+
+// Меню
 extern GUI                  *gGUI;
 extern ConsoleRTS           *gConsole;
 extern WindowVariables      *gWindowVars;
 extern MenuMain             *gMenuMain;
 extern StartMenu            *gStartMenu;
-extern GuiGame              *gGuiGame;
-extern GuiEditor            *gGuiEditor;
 extern MenuOptions          *gMenuOptions;
+
+
 extern WindowConfirmExit    *gWindowConfirmExit;
 extern Hint                 *gHint;
 extern int                  *gCounterHint;
 extern Vector<WindowRTS*>    gOpenedWindow;
 extern PODVector<Tank*>      gTanks;
 extern WindowTarget         *gWindowTarget;             // В этом окне можно посмотреть, что видит юнит
+extern TacticsVictory       *gTacticsVictory;

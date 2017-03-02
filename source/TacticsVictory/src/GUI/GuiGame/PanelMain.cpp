@@ -1,7 +1,7 @@
 #include <stdafx.h>
 #include "PanelMain.h"
-#include "GUI/Elements/Tab.h"
-#include "GUI/Elements/ButtonToggled.h"
+#include "GUI/Controls/Tab.h"
+#include "GUI/Controls/ButtonToggled.h"
 #include "GUI/Logic/LineTranslator2D.h"
 
 

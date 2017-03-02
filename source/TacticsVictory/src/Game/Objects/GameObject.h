@@ -39,10 +39,10 @@ protected:
     Type type = None;
     SharedPtr<ContextMenuUnit> contextMenu;
     SharedPtr<StaticModel> modelObject;
+
     void SetPosition(const Vector3& pos);
     void Normalize(float k = 1.0f);
     void HandleOnMouseDown(StringHash, VariantMap&);
 
 private:
-    GameObject& operator=(const GameObject&) {};
 };

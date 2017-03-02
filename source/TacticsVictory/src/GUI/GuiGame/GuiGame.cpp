@@ -1,14 +1,13 @@
 #include <stdafx.h>
-
-
 #include "GuiGame.h"
-#include "GUI/Elements/Button.h"
-#include "GUI/Elements/Tab.h"
+#include "GUI/Controls/Button.h"
+#include "GUI/Controls/Tab.h"
 #include "GUI/GuiGame/PanelMap.h"
 #include "GUI/GuiGame/PanelMain.h"
 #include "GUI/GuiGame/PanelBottom.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 GuiGame::GuiGame(Context *context) :
     Object(context)
 {
@@ -19,6 +18,7 @@ GuiGame::GuiGame(Context *context) :
     SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(GuiGame, HandleKeyDown));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
     ButtonRTS *button = (ButtonRTS*)eventData[Released::P_ELEMENT].GetPtr();
@@ -29,11 +29,13 @@ void GuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool GuiGame::IsVisible()
 {
     return panelMap->IsVisible();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::SetVisible(bool visible)
 {
     panelMap->SetVisible(visible);
@@ -41,16 +43,19 @@ void GuiGame::SetVisible(bool visible)
     panelMain->SetVisible(visible);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool GuiGame::IntersectionX(ButtonRTS *button, int x)
 {
     return x >= button->GetPosition().x_ && x <= button->GetPosition().x_ + button->GetWidth();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool GuiGame::CheckOnDeadZoneForCursorBottomScreen(int x)
 {
     return IntersectionX(buttonInterface, x) || IntersectionX(buttonMenu, x);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool GuiGame::IsInside(IntVector2 &position)
 {
     return IsVisible() &&
@@ -64,6 +69,7 @@ bool GuiGame::IsInside(IntVector2 &position)
         position.y_ < gSet->GetInt(TV_SCREEN_HEIGHT) - 1;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::ToggleInterfacePanels()
 {
     LineTranslator2D::State stateMap = panelMap->GetTranslator()->GetState();
@@ -84,6 +90,7 @@ void GuiGame::ToggleInterfacePanels()
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::HandleKeyDown(StringHash, VariantMap& eventData)
 {
     if(!IsVisible())
@@ -99,6 +106,7 @@ void GuiGame::HandleKeyDown(StringHash, VariantMap& eventData)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::CreatePanels()
 {
     panelMap = new PanelMap(gContext);
@@ -125,6 +133,7 @@ void GuiGame::CreatePanels()
     SubscribeToEvent(buttonMenu, E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::CreateTabs()
 {
     CreateTabInfo();
@@ -134,30 +143,35 @@ void GuiGame::CreateTabs()
     CreateTabDebug();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::CreateTabInfo()
 {
     SharedPtr<Tab> tabInfo(Tab::Create("Info"));
     panelMain->AddTab(tabInfo);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::CreateTabUnits()
 {
     SharedPtr<Tab> tabUnits(Tab::Create("Units"));
     panelMain->AddTab(tabUnits);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::CreateTabPlatoons()
 {
     SharedPtr<Tab> tabPlatoons(Tab::Create("Platoons"));
     panelMain->AddTab(tabPlatoons);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::CreateTabBuildings()
 {
     SharedPtr<Tab> tabBuildings(Tab::Create("Buildings"));
     panelMain->AddTab(tabBuildings);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::CreateTabDebug()
 {
     SharedPtr<Tab> tabDebug(Tab::Create("Debug"));

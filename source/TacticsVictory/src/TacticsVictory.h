@@ -1,9 +1,11 @@
 #pragma once
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class SceneRTS;
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class TacticsVictory : public Application
 {
     URHO3D_OBJECT(TacticsVictory, Application);
@@ -14,28 +16,23 @@ public:
     virtual void Setup();
     virtual void Start();
     virtual void Stop();
+    void CreateNewGame();
 
 private:
-    void InitWindow();
+    bool drawDebug = false;
+    SceneRTS *scene = nullptr;
+
     void CreateComponents();
     void RegistrationFactories();
     void InitLocalizationSystem();
     void SetWindowTitleAndIcon();
     void CreateConsoleAndDebugHud();
-    void CreateNewGame();
     void CreateEditorSession();
-    void SaveSettings();
-
     void SubscribeToEvents();
+
     void HandleUpdate(StringHash, VariantMap&);
     void HandlePostUpdate(StringHash, VariantMap&);
     void HandleMenuEvent(StringHash, VariantMap&);
     void HandlePostRenderUpdate(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
-
-    bool drawDebug = false;
-    SceneRTS *scene = nullptr;
-
-    TacticsVictory& operator=(const TacticsVictory&)
-    {};
 };
