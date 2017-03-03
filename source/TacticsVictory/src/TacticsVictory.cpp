@@ -1,23 +1,21 @@
 ﻿#include <stdafx.h>
 #include "Core/Camera.h"
 #include "Editor/Editor.h"
-#include "GUI/GUI.h"
-#include "GUI/GuiGame/GuiGame.h"
-#include "GUI/GuiEditor/GuiEditor.h"
-#include "GUI/Menu/MenuRTS.h"
-#include "GlobalFunctions.h"
 #include "Game/Level.h"
 #include "Game/Scene.h"
-#include "Game/Logic/Rotator.h"
 #include "Game/Logic/Movinator.h"
+#include "Game/Logic/Rotator.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
-#include "Game/Objects/Terrain/SegmentTerrain.h"
-#include "Game/Path/TilePath.h"
-#include "Graphics/2D/Image.h"
+#include "GUI/GUI.h"
+#include "GUI/Cursor.h"
+#include "GUI/GuiEditor/GuiEditor.h"
+#include "GUI/GuiGame/GuiGame.h"
+#include "GUI/Menu/MenuRTS.h"
 #include "TacticsVictory.h"
+#include "Game/Path/TilePath.h"
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma warning(push)
 #pragma warning(disable:4100)
 URHO3D_DEFINE_APPLICATION_MAIN(TacticsVictory)

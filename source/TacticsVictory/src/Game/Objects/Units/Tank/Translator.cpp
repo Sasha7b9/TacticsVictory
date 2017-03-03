@@ -1,7 +1,6 @@
 #include <stdafx.h>
 #include "Translator.h"
 #include "Core/Math.h"
-#include "Game/Objects/Terrain/Terrain.h"
 #include "Game/Objects/Units/Tank/Tank.h"
 
 

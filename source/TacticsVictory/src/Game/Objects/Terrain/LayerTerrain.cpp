@@ -1,4 +1,5 @@
 #include <stdafx.h>
+#include "CubeTerrain.h"
 #include "LayerTerrain.h"
 #include "Core/Math.h"
 

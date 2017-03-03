@@ -115,7 +115,6 @@ using namespace Urho3D;
 #pragma warning(pop)
 
 #include "defines.h"
-
 #include "SettingsTypes.h"
 #include "GlobalVars.h"
 #include "Settings.h"

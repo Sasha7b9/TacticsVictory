@@ -13,6 +13,7 @@
 #include "GUI/Panels/PanelBottom.h"
 #include "Editor/Editor.h"
 #include "Game/Level.h"
+#include "Game/Objects/Terrain/Terrain.h"
 #include "Core/Camera.h"
 #include "GlobalFunctions.h"
 
