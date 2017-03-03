@@ -9,7 +9,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MenuStart::MenuStart(Context *context, WindowMenu *prev) : WindowMenu(context, prev)
+MenuStart::MenuStart(Context *context) : WindowMenu(context)
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Start menu");
@@ -59,8 +59,11 @@ MenuStart::~MenuStart()
 void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     using namespace Released;
+    using namespace MenuEvent;
 
     Button *button = (Button*)eventData[P_ELEMENT].GetPtr();
+
+    eventData = GetEventDataMap();
 
     if (button == buttonLanguage)
     {
@@ -82,7 +85,9 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     else if (button == buttonOptions)
     {
-
+        eventData[P_TYPE] = MenuEvent_OpenOptions;
+        eventData[P_SOURCE] = this;
+        SendEvent(E_MENU, eventData);
     }
     else if (button == buttonHelp)
     {
@@ -94,7 +99,9 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     else if (button == buttonAboutMe)
     {
-        gMenu->Open(gMenu->menuAbout);
+        eventData[P_TYPE] = MenuEvent_OpenAboutMe;
+        eventData[P_SOURCE] = this;
+        SendEvent(E_MENU, eventData);
     }
     else if (button == buttonExit)
     {

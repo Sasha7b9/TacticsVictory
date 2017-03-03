@@ -5,7 +5,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-WindowMenu::WindowMenu(Context *context, WindowMenu *prev) : WindowRTS(context), prevMenu(prev)
+WindowMenu::WindowMenu(Context *context) : WindowRTS(context)
 {
 
 }
@@ -23,8 +23,9 @@ void WindowMenu::SendEventClose()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowMenu::Open()
+void WindowMenu::Open(WindowMenu *prev)
 {
+    prevMenu = prev;
     gUIRoot->AddChild(this);
 }
 

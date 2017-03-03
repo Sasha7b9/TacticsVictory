@@ -47,5 +47,4 @@ WindowTarget        *gWindowTarget = nullptr;
 // Меню
 MenuRTS             *gMenu = nullptr;
 MenuGame            *gMenuMain = nullptr;
-MenuOptions         *gMenuOptions = nullptr;
 MenuConfirmExit     *gMenuConfirmExit = nullptr;

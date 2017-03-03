@@ -208,7 +208,6 @@ void TacticsVictory::CreateNewGame()
 {
     scene = new SceneRTS();
     gCamera->SetEnabled(true);
-    gGUI->RemoveFromScreen();
     gGuiGame->SetVisible(true);
 }
 
@@ -219,7 +218,6 @@ void TacticsVictory::CreateEditorSession()
     {
         gEditor = new Editor(gContext);
     }
-    gGUI->RemoveFromScreen();
     gGuiEditor->SetVisible(true);
     gCamera->SetEnabled(true);
     gEditor->Run();

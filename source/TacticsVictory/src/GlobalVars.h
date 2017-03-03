@@ -71,5 +71,4 @@ extern WindowTarget         *gWindowTarget;             // В этом окне 
 // Меню
 extern MenuRTS              *gMenu;
 extern MenuGame             *gMenuMain;
-extern MenuOptions          *gMenuOptions;
 extern MenuConfirmExit      *gMenuConfirmExit;

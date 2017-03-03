@@ -9,8 +9,6 @@ class MenuAboutMe;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class MenuRTS : public Object
 {
-    friend class MenuStart;
-
     URHO3D_OBJECT(MenuRTS, Object)
 
 public:
@@ -21,13 +19,13 @@ public:
     bool ProcessingKey(int key);
 
 private:
-    PODVector<WindowMenu*>  lifoMenus;      // Очередь открытых меню
-    PODVector<WindowMenu*>  allMenus;       // Здесь список всех меню
+    PODVector<WindowMenu*>  allMenus;                           // Здесь список всех меню
     SharedPtr<MenuStart>    menuStart;
     SharedPtr<MenuAboutMe>  menuAbout;
+    SharedPtr<MenuOptions>  menuOptions;
 
     WindowMenu* ActiveMenu();
-    void Open(WindowMenu* menu);
+    void Open(WindowMenu* menu, WindowMenu *prev = nullptr);    // Открыть меню menu, при этом его хранителем указать prev
     void CloseAll();
     void HandleMenuEvent(StringHash, VariantMap&);
 };

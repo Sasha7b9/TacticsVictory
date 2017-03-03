@@ -169,23 +169,6 @@ bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void GUI::RemoveFromScreen()
-{
-    shownMenuMain = gMenuMain->IsVisible();
-    shownMenuOptions = gMenuOptions->IsVisible();
-
-    gMenuMain->SetDisabled();
-    gMenuOptions->SetVisible(false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void GUI::AddToScreen()
-{
-    shownMenuMain ? gMenuMain->SetEnabled() : gMenuMain->SetDisabled();
-    gMenuOptions->SetVisible(shownMenuOptions);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool GUI::UnderCursor()
 {
     PODVector<UIElement*> elements;

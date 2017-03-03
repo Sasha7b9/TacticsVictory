@@ -75,7 +75,7 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
 
     buttonClose->SetPosition(GetWidth() / 2 - buttonClose->GetWidth() / 2, buttonClose->GetPosition().y_);
 
-    mapButtonsActions[buttonClose] = MenuEvent_MenuOptionsClose;
+    buttons.Push(buttonClose);
     
     int x = GetWidth() - label->GetWidth() / 2;
     int y = label->GetPosition().y_;
@@ -160,8 +160,5 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();
-    eventData = GetEventDataMap();
-    eventData[MenuEvent::P_TYPE] = mapButtonsActions[button];
-    SendEvent(E_MENU, eventData);
+    SendEventClose();
 }

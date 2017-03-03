@@ -14,7 +14,7 @@ class MenuStart : public WindowMenu
     URHO3D_OBJECT(MenuStart, WindowMenu);
 
 public:
-    MenuStart(Context *context = gContext, WindowMenu *prev = nullptr);
+    MenuStart(Context *context = gContext);
     ~MenuStart();
 
 private:

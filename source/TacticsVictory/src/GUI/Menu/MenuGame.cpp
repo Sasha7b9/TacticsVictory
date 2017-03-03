@@ -45,7 +45,7 @@ MenuGame::MenuGame(Context *) : WindowMenu()
     text->SetWidth(GetWidth());
 
     mapButtonsActions[buttonNewGame] = MenuEvent_NewGame;
-    mapButtonsActions[buttonOptions] = MenuEvent_MenuOptionsOpen;
+    mapButtonsActions[buttonOptions] = MenuEvent_OpenOptions;
     mapButtonsActions[buttonEditor] = MenuEvent_OpenEditor;
     mapButtonsActions[buttonExit] = MenuEvent_ExitInOS;
 }
@@ -95,7 +95,6 @@ void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
 void MenuGame::Open()
 {
     gScene->SetTimeScale(0.0f);
-    gGUI->AddToScreen();
     gCamera->SetEnabled(false);
 }
 
@@ -103,6 +102,5 @@ void MenuGame::Open()
 void MenuGame::Close()
 {
     gScene->SetTimeScale(1.0f);
-    gGUI->RemoveFromScreen();
     gCamera->SetEnabled(true);
 }

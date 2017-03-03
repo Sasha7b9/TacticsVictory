@@ -423,7 +423,6 @@ void GuiEditor::HandleExit(StringHash, VariantMap&)
 void GuiEditor::HandleExitOk(StringHash, VariantMap&)
 {
     gGuiEditor->SetVisible(false);
-    gGUI->AddToScreen();
     gCamera->SetEnabled(false);
     gEditor->ClearScene();
     gGUI->SetVisibleWindow(windowConfirmExit, false);
@@ -438,7 +437,7 @@ void GuiEditor::HandleExitCancel(StringHash, VariantMap&)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiEditor::HandleOptions(StringHash, VariantMap&)
 {
-    gGUI->SetVisibleWindow(gMenuOptions, true);
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

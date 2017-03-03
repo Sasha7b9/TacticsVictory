@@ -20,12 +20,6 @@ public:
     void Create();
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
     bool UnderCursor();                                             // Возвращает true, если меню под курсором
-    void RemoveFromScreen();
-    void AddToScreen();
     void SetVisibleWindow(WindowRTS *window, bool visible);
     void SetUnvisibleAllWindows();
-
-private:
-    bool shownMenuMain = false;
-    bool shownMenuOptions = false;
 };

@@ -6,7 +6,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MenuAboutMe::MenuAboutMe(Context *context, WindowMenu *prev) : WindowMenu(context, prev)
+MenuAboutMe::MenuAboutMe(Context *context) : WindowMenu(context)
 {
     const int width = 216;
     const int height = 130;

@@ -10,8 +10,8 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define CREATE_MENU(name, type, prev, moving)                           \
-    name = new type(gContext, prev);                                    \
+#define CREATE_MENU(name, type, moving)                                 \
+    name = new type();                                                  \
     allMenus.Push(name);                                                \
     SetWindowInCenterScreen(name);                                      \
     name->SetMovable(moving);                                           \
@@ -21,8 +21,9 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 MenuRTS::MenuRTS(Context *context) : Object(context)
 {   
-    CREATE_MENU(menuStart, MenuStart, nullptr, false);
-    CREATE_MENU(menuAbout, MenuAboutMe, menuStart, false);
+    CREATE_MENU(menuStart, MenuStart, false);
+    CREATE_MENU(menuAbout, MenuAboutMe, false);
+    CREATE_MENU(menuOptions, MenuOptions, false);
 
     Open(menuStart);
 
@@ -49,25 +50,25 @@ void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
     using namespace MenuEvent;
 
     uint action = eventData[P_TYPE].GetUInt();
+    WindowMenu *source = (WindowMenu*)eventData[P_SOURCE].GetPtr();
+    WindowMenu *destination = (WindowMenu*)eventData[P_DESTINATION].GetPtr();
 
     if (action == MenuEvent_ExitInOS)
     {
         gEngine->Exit();
     }
-    else if (action == MenuEvent_MenuOptionsOpen)
+    else if (action == MenuEvent_OpenOptions)
     {
-        SetVisible(gMenuOptions, !gMenuOptions->IsVisible());
+        Open(menuOptions, source);
     }
-    else if (action == MenuEvent_MenuOptionsClose)
+    else if(action == MenuEvent_OpenAboutMe)
     {
-        gUIRoot->RemoveChild(gMenuOptions);
+        Open(menuAbout, source);
     }
     else if (action == MenuEvent_Close)
     {
-        WindowMenu *closed = (WindowMenu*)eventData[P_SOURCE].GetPtr();
-        WindowMenu *opened = (WindowMenu*)eventData[P_DESTINATION].GetPtr();
-        closed->Close();
-        opened->Open();
+        CALL_IF_EXIST(source, Close);
+        CALL_IF_EXIST(destination, Open);
     }
 }
 
@@ -82,11 +83,10 @@ void MenuRTS::SetVisible(WindowRTS *menuWindow, bool visible)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuRTS::Open(WindowMenu* menu)
+void MenuRTS::Open(WindowMenu* menu, WindowMenu *prev)
 {
     CloseAll();
-    lifoMenus.Push(menu);
-    menu->Open();
+    menu->Open(prev);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
