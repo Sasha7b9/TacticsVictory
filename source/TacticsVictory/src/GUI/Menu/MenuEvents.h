@@ -8,8 +8,8 @@ enum
     MenuEvent_NewGame,
     MenuEvent_OpenEditor,
     MenuEvent_ExitInOS,
-    MenuEvent_Return,           // Это событие генерует окно, когда закрывается для перехода предудущий уровень
-    MenuEvent_Open              // Нужно открыть определённое меню. Какое, указывает Dedtination
+    MenuEvent_Close             // Это событие генерует окно, когда закрывается. Параметры : P_SOURCE - указатель на себя, P_DESTINATION - указатель 
+                                // на предыдущее окно, или nullptr
 };
 
 

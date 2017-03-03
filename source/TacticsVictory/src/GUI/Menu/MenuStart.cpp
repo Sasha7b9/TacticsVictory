@@ -9,7 +9,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MenuStart::MenuStart(Context *context) : WindowMenu(context)
+MenuStart::MenuStart(Context *context, WindowMenu *prev) : WindowMenu(context, prev)
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Start menu");

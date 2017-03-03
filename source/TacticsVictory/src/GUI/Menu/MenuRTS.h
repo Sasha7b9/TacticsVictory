@@ -12,12 +12,13 @@ class MenuRTS : public Object
     friend class MenuStart;
 
     URHO3D_OBJECT(MenuRTS, Object)
+
 public:
     MenuRTS(Context *context = gContext);
     ~MenuRTS();
     bool IsActive();
-    void SetVisible(bool visible);
     void SetVisible(WindowRTS *menuWindow, bool visible);
+    bool ProcessingKey(int key);
 
 private:
     PODVector<WindowMenu*>  lifoMenus;      // Очередь открытых меню
@@ -25,7 +26,8 @@ private:
     SharedPtr<MenuStart>    menuStart;
     SharedPtr<MenuAboutMe>  menuAbout;
 
-    void Open(WindowMenu* windowMenu);
+    WindowMenu* ActiveMenu();
+    void Open(WindowMenu* menu);
     void CloseAll();
     void HandleMenuEvent(StringHash, VariantMap&);
 };

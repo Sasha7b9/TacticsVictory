@@ -6,7 +6,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MenuAboutMe::MenuAboutMe(Context *context) : WindowMenu(context)
+MenuAboutMe::MenuAboutMe(Context *context, WindowMenu *prev) : WindowMenu(context, prev)
 {
     const int width = 216;
     const int height = 130;
@@ -26,7 +26,6 @@ MenuAboutMe::MenuAboutMe(Context *context) : WindowMenu(context)
     buttons.Push(buttonOk);
 
     SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(MenuAboutMe, HandleButtonRelease));
-    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(MenuAboutMe, HandleKeyDown));
 
     SetMovable(false);
 }
@@ -34,24 +33,5 @@ MenuAboutMe::MenuAboutMe(Context *context) : WindowMenu(context)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuAboutMe::HandleButtonRelease(StringHash, VariantMap&)
 {
-    SendEventReturn();
-    SetDisabled();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuAboutMe::HandleKeyDown(StringHash hash, VariantMap& eventData)
-{
-    using namespace KeyDown;
-
-    int key = eventData[P_KEY].GetInt();
-
-    if (key == KEY_ESCAPE)
-    {
-        SendEventReturn();
-        SetDisabled();
-    }
-    else
-    {
-        WindowMenu::HandleKeyDown(hash, eventData);
-    }
+    SendEventClose();
 }

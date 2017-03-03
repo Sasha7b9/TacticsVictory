@@ -1,4 +1,4 @@
-#include <stdafx.h>
+﻿#include <stdafx.h>
 #include "Core/Camera.h"
 #include "Game/Scene.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
@@ -38,63 +38,38 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
 
     if(key == KEY_F1)
     {
-        gConsole->Toggle(); 
-    }
-    else if(key == KEY_ESCAPE)
-    {
-        gEngine->Exit();
-
+        gConsole->Toggle();
         return;
-
-        if (gEngineConsole->IsVisible())            // Engine console is opened
-        {
-            gEngineConsole->SetVisible(false);
-        }
-        else if (gConsole && gConsole->IsVisible())             // Console is opened
-        {
-            gConsole->Toggle();
-        }
-        else if (gGuiGame->IsVisible())             // We are in game
-        {
-            if (gMenu->IsActive())
-            {
-                gMenuMain->Close();
-            }
-            else
-            {
-                gMenuMain->Open();
-            }
-        }
-        else if (gGuiEditor->IsVisible())           // We are in editor
-        {
-        }
-        else if (gMenu->IsActive())             // We are int main screen
-        {
-            if (gMenuOptions->IsVisible())
-            {
-                gMenu->SetVisible(gMenuOptions, false);
-            }
-            else if (gMenuMain->IsVisible())
-            {
-                gMenuMain->SetDisabled();
-                gMenuConfirmExit->SetVisible(true);
-            }
-            else if (gMenuConfirmExit->IsVisible())
-            {
-                gMenuMain->SetEnabled();
-                gMenuConfirmExit->SetVisible(false);
-            }
-        }
-    }
-    else if(key == KEY_F11)
-    {
-        gEngineConsole->Toggle();
     }
     else if(key == KEY_F10)
     {
         gDebugHud->ToggleAll();
+        return;
     }
-    else if(!gUI->GetFocusElement())
+    else if(key == KEY_F11)
+    {
+        gEngineConsole->Toggle();
+        return;
+    }
+    
+    if(key == KEY_ESCAPE)
+    {
+        if(gEngineConsole && gEngineConsole->IsVisible())
+        {
+            gEngineConsole->SetVisible(false);
+        }
+        else if(gConsole && gConsole->IsVisible())
+        {
+            gConsole->Toggle();
+        }
+    }
+    
+    if(gMenu->ProcessingKey(key))                       // Если меню обработало нажатие
+    {
+        return;                                         // следовательно, оно активно, поэтому после обработки выходим
+    }
+    
+    if(!gUI->GetFocusElement())
     {
         if(key == '9')
         {

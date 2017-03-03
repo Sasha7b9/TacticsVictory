@@ -168,6 +168,7 @@ bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
     return false;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GUI::RemoveFromScreen()
 {
     shownMenuMain = gMenuMain->IsVisible();
@@ -177,12 +178,14 @@ void GUI::RemoveFromScreen()
     gMenuOptions->SetVisible(false);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GUI::AddToScreen()
 {
     shownMenuMain ? gMenuMain->SetEnabled() : gMenuMain->SetDisabled();
     gMenuOptions->SetVisible(shownMenuOptions);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool GUI::UnderCursor()
 {
     PODVector<UIElement*> elements;
@@ -199,6 +202,7 @@ bool GUI::UnderCursor()
     return false;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GUI::SetVisibleWindow(WindowRTS *window, bool visible)
 {
     window->SetVisible(visible);
@@ -218,6 +222,7 @@ void GUI::SetVisibleWindow(WindowRTS *window, bool visible)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GUI::SetUnvisibleAllWindows()
 {
     while(!gOpenedWindow.Empty())

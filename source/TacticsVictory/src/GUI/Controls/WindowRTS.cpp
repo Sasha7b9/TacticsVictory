@@ -117,6 +117,5 @@ void WindowRTS::SetEnabled()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowRTS::SetDisabled()
 {
-    UnsubscribeFromEvent(E_KEYDOWN);
     SetVisible(false);
 }

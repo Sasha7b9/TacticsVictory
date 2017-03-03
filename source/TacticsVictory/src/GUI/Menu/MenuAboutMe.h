@@ -8,11 +8,10 @@ class MenuAboutMe : public WindowMenu
     URHO3D_OBJECT(MenuAboutMe, WindowMenu);
 
 public:
-    MenuAboutMe(Context *context = gContext);
+    MenuAboutMe(Context *context = gContext, WindowMenu *prev = nullptr);
 
 private:
     SharedPtr<ButtonRTS> buttonOk;
 
     void HandleButtonRelease(StringHash, VariantMap&);
-    virtual void HandleKeyDown(StringHash, VariantMap&);
 };

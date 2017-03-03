@@ -10,8 +10,8 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define CREATE_MENU(name, type, moving)                                 \
-    name = new type();                                                  \
+#define CREATE_MENU(name, type, prev, moving)                           \
+    name = new type(gContext, prev);                                    \
     allMenus.Push(name);                                                \
     SetWindowInCenterScreen(name);                                      \
     name->SetMovable(moving);                                           \
@@ -21,8 +21,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 MenuRTS::MenuRTS(Context *context) : Object(context)
 {   
-    CREATE_MENU(menuStart, MenuStart, false);
-//    CREATE_MENU(menuAbout, MenuAboutMe, false);
+    CREATE_MENU(menuStart, MenuStart, nullptr, false);
+    CREATE_MENU(menuAbout, MenuAboutMe, menuStart, false);
 
     Open(menuStart);
 
@@ -46,7 +46,9 @@ MenuRTS::~MenuRTS()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
-    uint action = eventData[MenuEvent::P_TYPE].GetUInt();
+    using namespace MenuEvent;
+
+    uint action = eventData[P_TYPE].GetUInt();
 
     if (action == MenuEvent_ExitInOS)
     {
@@ -60,17 +62,13 @@ void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
     {
         gUIRoot->RemoveChild(gMenuOptions);
     }
-    else if (action == MenuEvent_Return)
+    else if (action == MenuEvent_Close)
     {
-
+        WindowMenu *closed = (WindowMenu*)eventData[P_SOURCE].GetPtr();
+        WindowMenu *opened = (WindowMenu*)eventData[P_DESTINATION].GetPtr();
+        closed->Close();
+        opened->Open();
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuRTS::SetVisible(bool visible)
-{
-    visible ? gMenuMain->SetEnabled() : gMenuMain->SetDisabled();
-    gMenuOptions->SetVisible(visible);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -84,11 +82,11 @@ void MenuRTS::SetVisible(WindowRTS *menuWindow, bool visible)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuRTS::Open(WindowMenu* windowMenu)
+void MenuRTS::Open(WindowMenu* menu)
 {
     CloseAll();
-    lifoMenus.Push(windowMenu);
-    windowMenu->Open();
+    lifoMenus.Push(menu);
+    menu->Open();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -103,12 +101,39 @@ void MenuRTS::CloseAll()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool MenuRTS::IsActive()
 {
-    for (WindowMenu *window : allMenus)
+    return ActiveMenu() != nullptr;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool MenuRTS::ProcessingKey(int key)
+{
+    WindowMenu *active = ActiveMenu();
+
+    if(active)
     {
-        if (window->GetParent())
+        if(key == KEY_ESCAPE && active == menuStart)    // Если находимся в стартовом менюю и нажата кнопка ESCAPE - ничего делать не будем
         {
-            return true;
+
+        }
+        else
+        {
+            active->ProcessingKey(key);
         }
     }
-    return false;
+
+    return active != nullptr;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+WindowMenu* MenuRTS::ActiveMenu()
+{
+    for(WindowMenu *window : allMenus)
+    {
+        if(window->GetParent())
+        {
+            return window;
+        }
+    }
+
+    return nullptr;
 }

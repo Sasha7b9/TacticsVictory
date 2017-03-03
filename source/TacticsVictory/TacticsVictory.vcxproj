@@ -122,7 +122,7 @@
     <PostBuildEvent>
       <Message>
       </Message>
-      <Command>del ..\..\out\*.ilk</Command>
+      <Command>rem del ..\..\out\*.ilk</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalOptions>/STACK:20000000000 %(AdditionalOptions)</AdditionalOptions>

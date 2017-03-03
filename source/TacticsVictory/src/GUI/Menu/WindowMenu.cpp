@@ -5,16 +5,20 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-WindowMenu::WindowMenu(Context *context) : WindowRTS(context)
+WindowMenu::WindowMenu(Context *context, WindowMenu *prev) : WindowRTS(context), prevMenu(prev)
 {
 
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowMenu::SendEventReturn()
+void WindowMenu::SendEventClose()
 {
+    using namespace MenuEvent;
+
     VariantMap eventData = GetEventDataMap();
-    eventData[MenuEvent::P_TYPE] = MenuEvent_Return;
+    eventData[P_TYPE] = MenuEvent_Close;
+    eventData[P_SOURCE] = this;
+    eventData[P_DESTINATION] = prevMenu;
     SendEvent(E_MENU, eventData);
 }
 
@@ -22,25 +26,21 @@ void WindowMenu::SendEventReturn()
 void WindowMenu::Open()
 {
     gUIRoot->AddChild(this);
-    this->SetFocus(true);
-    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(WindowMenu, HandleKeyDown));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowMenu::Close()
 {
     gUIRoot->RemoveChild(this);
-    SendEventReturn();
-    UnsubscribeFromEvent(E_KEYDOWN);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowMenu::HandleKeyDown(StringHash, VariantMap& eventData)
+void WindowMenu::ProcessingKey(int key)
 {
-    using namespace KeyDown;
-
-    int key = eventData[P_KEY].GetInt();
-
+    if(key == KEY_ESCAPE)
+    {
+        SendEventClose();
+    }
     if (key == KEY_UP || key == KEY_LEFT)
     {
         SetFocusedPrev();
