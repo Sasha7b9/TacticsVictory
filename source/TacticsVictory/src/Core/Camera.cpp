@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "GUI/GUI.h"
 #include "GUI/Cursor.h"
+#include "GUI/Windows/Console.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +77,7 @@ void CameraRTS::ParallelTranslateLookAt(const Vector3 &lookAt_)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void CameraRTS::Move(float time)
 {
-    if(!enabled)
+    if(!enabled || gConsole->IsActive())
     {
         return;
     }

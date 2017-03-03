@@ -1,4 +1,4 @@
-#include <stdafx.h>
+﻿#include <stdafx.h>
 #include "Console.h"
 #include "GUI/Windows/ConsoleParser.h"
 
@@ -44,6 +44,12 @@ void ConsoleRTS::Toggle()
    {
        gUI->SetFocusElement(lineEdit);
    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleRTS::IsActive()
+{
+    return lineEdit->HasFocus();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

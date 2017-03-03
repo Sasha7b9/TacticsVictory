@@ -1,5 +1,11 @@
 #include <stdafx.h>
 #include "GuiEditor.h"
+#include "Core/Camera.h"
+#include "Editor/Editor.h"
+#include "Game/Level.h"
+#include "Game/Objects/Terrain/Terrain.h"
+#include "GlobalFunctions.h"
+#include "GUI/GUI.h"
 #include "GUI/Controls/Tab.h"
 #include "GUI/Controls/Button.h"
 #include "GUI/Controls/Label.h"
@@ -9,13 +15,8 @@
 #include "GUI/Panels/PanelMap.h"
 #include "GUI/Panels/PanelMain.h"
 #include "GUI/Menu/MenuOptions.h"
-#include "GUI/GUI.h"
+#include "GUI/Windows/Console.h"
 #include "GUI/Panels/PanelBottom.h"
-#include "Editor/Editor.h"
-#include "Game/Level.h"
-#include "Game/Objects/Terrain/Terrain.h"
-#include "Core/Camera.h"
-#include "GlobalFunctions.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -311,7 +312,7 @@ void GuiEditor::HandleTerrainClearTerrain(StringHash, VariantMap&)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
 {
-    if (!IsVisible())
+    if (!IsVisible() || gConsole->IsActive())
     {
         return;
     }

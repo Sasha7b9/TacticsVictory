@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "GUI/Controls/WindowRTS.h"
 
 
@@ -10,10 +10,12 @@ class ConsoleRTS : public WindowRTS
 public:
     ConsoleRTS(Context *context);
     void Toggle();
-    void HandleFinishedText(StringHash eventType, VariantMap& eventData);
+    bool IsActive();                            // Возвращает true, если активна строка ввода
 
 private:
     SharedPtr<LineEdit> lineEdit;
     SharedPtr<Text> text;
     SharedPtr<ScrollBar> scrollBar;
+
+    void HandleFinishedText(StringHash, VariantMap&);
 };

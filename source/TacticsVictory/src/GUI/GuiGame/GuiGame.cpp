@@ -5,6 +5,7 @@
 #include "GUI/Panels/PanelMap.h"
 #include "GUI/Panels/PanelMain.h"
 #include "GUI/Panels/PanelBottom.h"
+#include "GUI/Windows/Console.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -93,7 +94,7 @@ void GuiGame::ToggleInterfacePanels()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void GuiGame::HandleKeyDown(StringHash, VariantMap& eventData)
 {
-    if(!IsVisible())
+    if(!IsVisible() || gConsole->IsActive())
     {
         return;
     }
