@@ -1,23 +1,33 @@
 ﻿#include <stdafx.h>
 #include "GlobalFunctions.h"
 #include "MenuRTS.h"
-#include "MenuMain.h"
+#include "MenuGame.h"
 #include "MenuEvents.h"
 #include "MenuOptions.h"
 #include "MenuStart.h"
 #include "MenuConfirmExit.h"
+#include "MenuAboutMe.h"
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define CREATE_MENU(name, type, moving)                                 \
+    name = new type();                                                  \
+    allMenus.Push(name);                                                \
+    SetWindowInCenterScreen(name);                                      \
+    name->SetMovable(moving);                                           \
+    SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuRTS, HandleMenuEvent));
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 MenuRTS::MenuRTS(Context *context) : Object(context)
-{
-    menuStart = new MenuStart();
-    SetWindowInCenterScreen(menuStart);
-    menuStart->SetMovable(false);
-    gUIRoot->AddChild(menuStart);
+{   
+    CREATE_MENU(menuStart, MenuStart, false);
+//    CREATE_MENU(menuAbout, MenuAboutMe, false);
+
+    Open(menuStart);
 
     /*
-    gMenuMain = new MenuMain();
+    gMenuMain = new MenuGame();
     SetWindowInCenterScreen(gMenuMain);
 
     gMenuOptions = new MenuOptions();
@@ -31,10 +41,6 @@ MenuRTS::MenuRTS(Context *context) : Object(context)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 MenuRTS::~MenuRTS()
 {
-    //SAFE_DELETE(gMenuConfirmExit);
-    //SAFE_DELETE(gMenuOptions);
-    //SAFE_DELETE(gMenuMain);
-    //SAFE_DELETE(gMenuStart);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -53,6 +59,10 @@ void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
     else if (action == MenuEvent_MenuOptionsClose)
     {
         gUIRoot->RemoveChild(gMenuOptions);
+    }
+    else if (action == MenuEvent_Return)
+    {
+
     }
 }
 
@@ -74,7 +84,31 @@ void MenuRTS::SetVisible(WindowRTS *menuWindow, bool visible)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool MenuRTS::IsVisible()
+void MenuRTS::Open(WindowMenu* windowMenu)
 {
-    return true;
+    CloseAll();
+    lifoMenus.Push(windowMenu);
+    windowMenu->Open();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MenuRTS::CloseAll()
+{
+    for (WindowMenu *window : allMenus)
+    {
+        gUIRoot->RemoveChild(window);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool MenuRTS::IsActive()
+{
+    for (WindowMenu *window : allMenus)
+    {
+        if (window->GetParent())
+        {
+            return true;
+        }
+    }
+    return false;
 }

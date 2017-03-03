@@ -7,7 +7,7 @@
 #include "GUI/Menu/MenuRTS.h"
 #include "GUI/Menu/MenuStart.h"
 #include "GUI/Menu/MenuOptions.h"
-#include "GUI/Menu/MenuMain.h"
+#include "GUI/Menu/MenuGame.h"
 #include "GUI/Menu/MenuConfirmExit.h"
 #include "GUI/Windows/Console.h"
 #include "GUI/GuiEditor/GuiEditor.h"
@@ -56,7 +56,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
         }
         else if (gGuiGame->IsVisible())             // We are in game
         {
-            if (gMenu->IsVisible())
+            if (gMenu->IsActive())
             {
                 gMenuMain->Close();
             }
@@ -68,7 +68,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
         else if (gGuiEditor->IsVisible())           // We are in editor
         {
         }
-        else if (gMenu->IsVisible())             // We are int main screen
+        else if (gMenu->IsActive())             // We are int main screen
         {
             if (gMenuOptions->IsVisible())
             {

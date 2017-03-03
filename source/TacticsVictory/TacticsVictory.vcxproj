@@ -387,7 +387,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\Controls\SliderInt.cpp" />
     <ClCompile Include="src\GUI\Controls\SliderWithTextAndButtons.cpp" />
     <ClCompile Include="src\GUI\Controls\Tab.cpp" />
-    <ClCompile Include="src\GUI\Controls\Window.cpp" />
+    <ClCompile Include="src\GUI\Controls\WindowRTS.cpp" />
     <ClCompile Include="src\GUI\Cursor.cpp" />
     <ClCompile Include="src\GUI\GUI.cpp" />
     <ClCompile Include="src\GUI\GuiEditor\GuiEditor.cpp" />
@@ -399,7 +399,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\Menu\MenuRTS.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuAboutMe.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuConfirmExit.cpp" />
-    <ClCompile Include="src\GUI\Menu\MenuMain.cpp" />
+    <ClCompile Include="src\GUI\Menu\MenuGame.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuOptions.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuStart.cpp" />
     <ClCompile Include="src\GUI\Menu\WindowMenu.cpp" />
@@ -488,7 +488,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\Controls\SliderInt.h" />
     <ClInclude Include="src\GUI\Controls\SliderWithTextAndButtons.h" />
     <ClInclude Include="src\GUI\Controls\Tab.h" />
-    <ClInclude Include="src\GUI\Controls\Window.h" />
+    <ClInclude Include="src\GUI\Controls\WindowRTS.h" />
     <ClInclude Include="src\GUI\Cursor.h" />
     <ClInclude Include="src\GUI\GUI.h" />
     <ClInclude Include="src\GUI\GuiEditor\GuiEditor.h" />
@@ -501,7 +501,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\Menu\MenuAboutMe.h" />
     <ClInclude Include="src\GUI\Menu\MenuConfirmExit.h" />
     <ClInclude Include="src\GUI\Menu\MenuEvents.h" />
-    <ClInclude Include="src\GUI\Menu\MenuMain.h" />
+    <ClInclude Include="src\GUI\Menu\MenuGame.h" />
     <ClInclude Include="src\GUI\Menu\MenuOptions.h" />
     <ClInclude Include="src\GUI\Menu\MenuStart.h" />
     <ClInclude Include="src\GUI\Menu\WindowMenu.h" />

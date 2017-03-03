@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "GUI/Logic/LineTranslator2D.h"
 #include "Label.h"
 #include "ButtonToggled.h"
@@ -33,10 +33,4 @@ public:
 protected:
     HashMap<Button*, uint> mapButtonsActions;
     SharedPtr<LineTranslator2D> translator;
-    PODVector<ButtonRTS*> buttons;
-
-    void SetFocusedNext();                                  // Установить фокус на следующую кнопку
-    void SetFocusedPrev();                                  // Установить фокус на предыдущую кнопку
-    int NumFocusedButton();                                 // Возвращает номер сфокусированной кнопки. Если фокус не установлен, возвращает 0
-    virtual void HandleKeyDown(StringHash, VariantMap&);    // Обработчик нажатий клавиш при открытом меню
 };

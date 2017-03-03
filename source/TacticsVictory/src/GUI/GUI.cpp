@@ -13,7 +13,7 @@
 #include "GUI/Controls/SliderWithTextAndButtons.h"
 #include "Core/Camera.h"
 #include "GUI/Menu/MenuStart.h"
-#include "GUI/Menu/MenuMain.h"
+#include "GUI/Menu/MenuGame.h"
 #include "GUI/Menu/MenuOptions.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Panels/PanelBottom.h"
@@ -24,6 +24,7 @@
 #include "GUI/Menu/MenuConfirmExit.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/MenuEvents.h"
+#include "GUI/Menu/MenuAboutMe.h"
 #include "GlobalFunctions.h"
 
 
@@ -48,9 +49,10 @@ void GUI::RegistrationObjects()
     ButtonSwitch::RegisterObject();
     ButtonToggled::RegisterObject();
     WindowRTS::RegisterObject();
-    MenuMain::RegisterObject();
+    MenuGame::RegisterObject();
     MenuOptions::RegisterObject();
     MenuConfirmExit::RegisterObject();
+    MenuAboutMe::RegisterObject();
     Tab::RegisterObject();
     Label::RegisterObject();
     lSlider::RegisterObject();

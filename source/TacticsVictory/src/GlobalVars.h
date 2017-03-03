@@ -10,7 +10,7 @@ class GuiEditor;
 class GuiGame;
 class Hint;
 class Level;
-class MenuMain;
+class MenuGame;
 class MenuStart;
 class MenuOptions;
 class SegmentTerrain;
@@ -70,6 +70,6 @@ extern WindowTarget         *gWindowTarget;             // В этом окне 
 
 // Меню
 extern MenuRTS              *gMenu;
-extern MenuMain             *gMenuMain;
+extern MenuGame             *gMenuMain;
 extern MenuOptions          *gMenuOptions;
 extern MenuConfirmExit      *gMenuConfirmExit;

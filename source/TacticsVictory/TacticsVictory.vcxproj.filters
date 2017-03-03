@@ -168,9 +168,6 @@
     <ClCompile Include="src\GUI\Logic\LineTranslator2D.cpp">
       <Filter>GUI\Logic</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Menu\MenuMain.cpp">
-      <Filter>GUI\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\Menu\MenuOptions.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
@@ -360,9 +357,6 @@
     <ClCompile Include="src\GUI\Controls\Label.cpp">
       <Filter>GUI\Controls</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Controls\Window.cpp">
-      <Filter>GUI\Controls</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\Controls\Hint.cpp">
       <Filter>GUI\Controls</Filter>
     </ClCompile>
@@ -426,6 +420,12 @@
     <ClCompile Include="src\GUI\Menu\WindowMenu.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\Menu\MenuGame.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\Controls\WindowRTS.cpp">
+      <Filter>GUI\Controls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -454,9 +454,6 @@
     </ClInclude>
     <ClInclude Include="src\GUI\Logic\LineTranslator2D.h">
       <Filter>GUI\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Menu\MenuMain.h">
-      <Filter>GUI\Menu</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\Menu\MenuOptions.h">
       <Filter>GUI\Menu</Filter>
@@ -653,9 +650,6 @@
     <ClInclude Include="src\GUI\Controls\Label.h">
       <Filter>GUI\Controls</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\Controls\Window.h">
-      <Filter>GUI\Controls</Filter>
-    </ClInclude>
     <ClInclude Include="src\GUI\Controls\Hint.h">
       <Filter>GUI\Controls</Filter>
     </ClInclude>
@@ -718,6 +712,12 @@
     </ClInclude>
     <ClInclude Include="src\GUI\Menu\WindowMenu.h">
       <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\MenuGame.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Controls\WindowRTS.h">
+      <Filter>GUI\Controls</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

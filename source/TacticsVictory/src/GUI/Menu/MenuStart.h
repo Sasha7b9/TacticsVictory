@@ -16,7 +16,6 @@ class MenuStart : public WindowMenu
 public:
     MenuStart(Context *context = gContext);
     ~MenuStart();
-    bool Enabled();
 
 private:
     void HandleButtonRelease(StringHash, VariantMap&);
@@ -30,6 +29,4 @@ private:
     SharedPtr<ButtonRTS> buttonAboutGame;
     SharedPtr<ButtonRTS> buttonAboutMe;
     SharedPtr<ButtonSwitch> buttonLanguage;
-
-    MenuAboutMe *windowAboutMe = nullptr;
 };

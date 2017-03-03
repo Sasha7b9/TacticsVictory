@@ -89,7 +89,7 @@ void CursorRTS::Update(float dT)
         int height = gGraphics->GetHeight();
         int numFrame = (int)angle0 / 10;
 
-        if(!gMenu->IsVisible() && !gGUI->UnderCursor())
+        if(!gMenu->IsActive() && !gGUI->UnderCursor())
         {
             if(posX < delta && posY < delta)
             {

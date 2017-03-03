@@ -1,5 +1,5 @@
-#include <stdafx.h>
-#include "Window.h"
+﻿#include <stdafx.h>
+#include "WindowRTS.h"
 #include "Button.h"
 #include "Label.h"
 #include "ButtonToggled.h"
@@ -109,62 +109,8 @@ SharedPtr<DropDownListWithTextAndButton> WindowRTS::AddDDList(char *text, int wi
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowRTS::HandleKeyDown(StringHash, VariantMap& eventData)
-{
-    using namespace KeyDown;
-
-    int key = eventData[P_KEY].GetInt();
-
-    if(key == KEY_UP)
-    {
-        SetFocusedPrev();
-    }
-    else if(key == KEY_DOWN)
-    {
-        SetFocusedNext();
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowRTS::SetFocusedNext()
-{
-    int numButton = (NumFocusedButton() + 1) % (int)buttons.Size();
-    buttons[(uint)numButton]->SetFocus(true);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void WindowRTS::SetFocusedPrev()
-{
-    int numButton = NumFocusedButton() - 1;
-    if(numButton < 0)
-    {
-        numButton = (int)buttons.Size() - 1;
-    }
-    buttons[(uint)numButton]->SetFocus(true);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int WindowRTS::NumFocusedButton()
-{
-    for(uint i = 0; i < buttons.Size(); i++)
-    {
-        if(buttons[i]->HasFocus())
-        {
-            return (int)i;
-        }
-    }
-    return -1;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowRTS::SetEnabled()
 {
-    if (buttons.Size())
-    {
-        buttons[0]->SetFocus(true);
-    }
-
-    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(WindowRTS, HandleKeyDown));
     SetVisible(true);
 }
 

@@ -7,12 +7,12 @@ class ButtonSwitch;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class MenuMain : public WindowMenu
+class MenuGame : public WindowMenu
 {
-    URHO3D_OBJECT(MenuMain, WindowMenu);
+    URHO3D_OBJECT(MenuGame, WindowMenu);
 
 public:
-    MenuMain(Context *context = gContext);
+    MenuGame(Context *context = gContext);
 
     static void RegisterObject(Context *context = gContext);
     void Open();

@@ -1,8 +1,11 @@
 #include <stdafx.h>
 #include "MenuStart.h"
 #include "MenuAboutMe.h"
+#include "MenuEvents.h"
+#include "MenuRTS.h"
 #include "GlobalFunctions.h"
 #include "TacticsVictory.h"
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,16 +48,6 @@ MenuStart::MenuStart(Context *context) : WindowMenu(context)
     SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonAboutMe, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-
-    SetMovable(false);
-    SetEnabled();
-
-    MenuAboutMe::RegisterObject();
-
-    windowAboutMe = new MenuAboutMe();
-    gUIRoot->AddChild(windowAboutMe);
-    SetWindowInCenterScreen(windowAboutMe);
-    windowAboutMe->SetDisabled();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -101,8 +94,7 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     else if (button == buttonAboutMe)
     {
-        SetDisabled();
-        windowAboutMe->SetEnabled();
+        gMenu->Open(gMenu->menuAbout);
     }
     else if (button == buttonExit)
     {
@@ -110,8 +102,3 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-bool MenuStart::Enabled()
-{
-    return IsVisible() || windowAboutMe->IsVisible();
-}

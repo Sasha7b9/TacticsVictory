@@ -1,4 +1,5 @@
 #include <stdafx.h>
+#include "MenuGame.h"
 #include "Core/Camera.h"
 #include "GUI/GUI.h"
 #include "GUI/Controls/Button.h"
@@ -7,11 +8,10 @@
 #include "GUI/Controls/Label.h"
 #include "GUI/Menu/MenuConfirmExit.h"
 #include "MenuRTS.h"
-#include "MenuMain.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MenuMain::MenuMain(Context *) : WindowMenu()
+MenuGame::MenuGame(Context *) : WindowMenu()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
@@ -35,12 +35,12 @@ MenuMain::MenuMain(Context *) : WindowMenu()
     buttons.Push(buttonExit);
     buttons.Push(buttonCancel);
 
-    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonNewGame, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
-    SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonNewGame, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
 
     text->SetWidth(GetWidth());
 
@@ -51,15 +51,15 @@ MenuMain::MenuMain(Context *) : WindowMenu()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuMain::RegisterObject(Context* context)
+void MenuGame::RegisterObject(Context* context)
 {
-    context->RegisterFactory<MenuMain>("UI");
+    context->RegisterFactory<MenuGame>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(WindowMenu);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
+void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();
 
@@ -92,7 +92,7 @@ void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuMain::Open()
+void MenuGame::Open()
 {
     gScene->SetTimeScale(0.0f);
     gGUI->AddToScreen();
@@ -100,7 +100,7 @@ void MenuMain::Open()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuMain::Close()
+void MenuGame::Close()
 {
     gScene->SetTimeScale(1.0f);
     gGUI->RemoveFromScreen();

@@ -52,6 +52,6 @@ void MenuAboutMe::HandleKeyDown(StringHash hash, VariantMap& eventData)
     }
     else
     {
-        WindowRTS::HandleKeyDown(hash, eventData);
+        WindowMenu::HandleKeyDown(hash, eventData);
     }
 }

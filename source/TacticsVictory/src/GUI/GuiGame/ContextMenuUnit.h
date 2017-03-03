@@ -1,5 +1,5 @@
 #pragma once
-#include "GUI/Controls/Window.h"
+#include "GUI/Controls/WindowRTS.h"
 #include "GUI/Controls/Label.h"
 
 
