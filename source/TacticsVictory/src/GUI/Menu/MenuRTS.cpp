@@ -53,7 +53,11 @@ void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
     WindowMenu *source = (WindowMenu*)eventData[P_SOURCE].GetPtr();
     WindowMenu *destination = (WindowMenu*)eventData[P_DESTINATION].GetPtr();
 
-    if (action == MenuEvent_ExitInOS)
+    if(action == MenuEvent_NewGame)
+    {
+        Hide();
+    }
+    else if (action == MenuEvent_ExitInOS)
     {
         gEngine->Exit();
     }
@@ -73,16 +77,6 @@ void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuRTS::SetVisible(WindowRTS *menuWindow, bool visible)
-{
-    menuWindow->SetVisible(visible);
-    if (visible)
-    {
-        menuWindow->BringToFront();
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuRTS::Open(WindowMenu* menu, WindowMenu *prev)
 {
     CloseAll();
@@ -96,6 +90,12 @@ void MenuRTS::CloseAll()
     {
         gUIRoot->RemoveChild(window);
     }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MenuRTS::Hide()
+{
+    CloseAll();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

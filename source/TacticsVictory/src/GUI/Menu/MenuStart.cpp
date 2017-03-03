@@ -72,8 +72,9 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     if(button == buttonServer)
     {
-        SetDisabled();
-        gTacticsVictory->CreateNewGame();
+        eventData[P_TYPE] = MenuEvent_NewGame;
+        eventData[P_SOURCE] = this;
+        SendEvent(E_MENU, eventData);
     }
     else if(button == buttonClient)
     {

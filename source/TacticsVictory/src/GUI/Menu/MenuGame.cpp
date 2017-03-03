@@ -67,7 +67,6 @@ void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
     {
         gEngine->Exit();
         gMenuMain->SetDisabled();
-        gMenu->SetVisible(gMenuConfirmExit, true);
     
     }
     else if (button == buttonLanguage)

@@ -14,8 +14,8 @@ class MenuRTS : public Object
 public:
     MenuRTS(Context *context = gContext);
     ~MenuRTS();
+    void Hide();
     bool IsActive();
-    void SetVisible(WindowRTS *menuWindow, bool visible);
     bool ProcessingKey(int key);
 
 private:
