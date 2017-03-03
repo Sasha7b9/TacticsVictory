@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Graphics/2D/Image.h"
 
 

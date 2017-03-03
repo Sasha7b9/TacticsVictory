@@ -1,4 +1,4 @@
-#include <stdafx.h>
+﻿#include <stdafx.h>
 #include "Cursor.h"
 #include "Core/Camera.h"
 #include "Game/Objects/Terrain/Terrain.h"
