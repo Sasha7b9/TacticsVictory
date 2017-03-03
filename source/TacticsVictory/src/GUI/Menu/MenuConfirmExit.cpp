@@ -7,8 +7,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MenuConfirmExit::MenuConfirmExit(Context *) :
-    WindowRTS()
+MenuConfirmExit::MenuConfirmExit(Context *context) : WindowMenu(context)
 {
     SET_VERTICAL_LAYOUT_0_6(this);
     SharedPtr<Label> label(Label::Create("Exit in OS?"));

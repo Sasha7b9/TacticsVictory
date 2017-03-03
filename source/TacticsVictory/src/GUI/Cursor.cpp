@@ -1,9 +1,10 @@
 #include <stdafx.h>
 #include "Cursor.h"
 #include "Core/Camera.h"
-#include "GUI/GUI.h"
-#include "Graphics/2D/Image.h"
 #include "Game/Objects/Terrain/Terrain.h"
+#include "Graphics/2D/Image.h"
+#include "GUI/GUI.h"
+#include "GUI/Menu/MenuRTS.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -88,7 +89,7 @@ void CursorRTS::Update(float dT)
         int height = gGraphics->GetHeight();
         int numFrame = (int)angle0 / 10;
 
-        if(!gGUI->MenuIsVisible() && !gGUI->UnderCursor())
+        if(!gMenu->IsVisible() && !gGUI->UnderCursor())
         {
             if(posX < delta && posY < delta)
             {

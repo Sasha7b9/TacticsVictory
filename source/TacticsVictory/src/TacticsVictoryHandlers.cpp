@@ -1,18 +1,19 @@
 #include <stdafx.h>
+#include "Core/Camera.h"
+#include "Game/Scene.h"
+#include "Game/Objects/Ammo/Rocket/Rocket.h"
 #include "GUI/GUI.h"
 #include "GUI/Cursor.h"
+#include "GUI/Menu/MenuRTS.h"
 #include "GUI/Menu/MenuStart.h"
-#include "GUI/Windows/Console.h"
 #include "GUI/Menu/MenuOptions.h"
 #include "GUI/Menu/MenuMain.h"
 #include "GUI/Menu/MenuConfirmExit.h"
+#include "GUI/Windows/Console.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUi/Controls/Hint.h"
 #include "GUI/GuiGame/GuiGame.h"
-#include "Core/Camera.h"
 #include "TacticsVictory.h"
-#include "Game/Scene.h"
-#include "Game/Objects/Ammo/Rocket/Rocket.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,17 +42,21 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     }
     else if(key == KEY_ESCAPE)
     {
+        gEngine->Exit();
+
+        return;
+
         if (gEngineConsole->IsVisible())            // Engine console is opened
         {
             gEngineConsole->SetVisible(false);
         }
-        else if (gConsole->IsVisible())             // Console is opened
+        else if (gConsole && gConsole->IsVisible())             // Console is opened
         {
             gConsole->Toggle();
         }
         else if (gGuiGame->IsVisible())             // We are in game
         {
-            if (gGUI->MenuIsVisible())
+            if (gMenu->IsVisible())
             {
                 gMenuMain->Close();
             }
@@ -63,11 +68,11 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
         else if (gGuiEditor->IsVisible())           // We are in editor
         {
         }
-        else if (gGUI->MenuIsVisible())             // We are int main screen
+        else if (gMenu->IsVisible())             // We are int main screen
         {
             if (gMenuOptions->IsVisible())
             {
-                gGUI->SetVisibleMenu(gMenuOptions, false);
+                gMenu->SetVisible(gMenuOptions, false);
             }
             else if (gMenuMain->IsVisible())
             {
@@ -89,7 +94,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         gDebugHud->ToggleAll();
     }
-    else if(!gUI->GetFocusElement() && !gMenuStart->Enabled())
+    else if(!gUI->GetFocusElement())
     {
         if(key == '9')
         {

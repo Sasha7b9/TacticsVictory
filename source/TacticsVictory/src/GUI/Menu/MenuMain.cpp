@@ -1,17 +1,17 @@
 #include <stdafx.h>
-#include "MenuMain.h"
+#include "Core/Camera.h"
 #include "GUI/GUI.h"
 #include "GUI/Controls/Button.h"
 #include "GUI/Controls/ButtonSwitch.h"
 #include "GUI/Cursor.h"
 #include "GUI/Controls/Label.h"
 #include "GUI/Menu/MenuConfirmExit.h"
-#include "Core/Camera.h"
+#include "MenuRTS.h"
+#include "MenuMain.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MenuMain::MenuMain(Context *) :
-    WindowRTS()
+MenuMain::MenuMain(Context *) : WindowMenu()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
@@ -55,7 +55,7 @@ void MenuMain::RegisterObject(Context* context)
 {
     context->RegisterFactory<MenuMain>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowMenu);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
     {
         gEngine->Exit();
         gMenuMain->SetDisabled();
-        gGUI->SetVisibleMenu(gMenuConfirmExit, true);
+        gMenu->SetVisible(gMenuConfirmExit, true);
     
     }
     else if (button == buttonLanguage)

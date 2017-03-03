@@ -6,7 +6,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MenuStart::MenuStart(Context *context) : WindowRTS(context)
+MenuStart::MenuStart(Context *context) : WindowMenu(context)
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Start menu");
@@ -55,6 +55,11 @@ MenuStart::MenuStart(Context *context) : WindowRTS(context)
     gUIRoot->AddChild(windowAboutMe);
     SetWindowInCenterScreen(windowAboutMe);
     windowAboutMe->SetDisabled();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+MenuStart::~MenuStart()
+{
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

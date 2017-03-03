@@ -10,8 +10,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MenuOptions::MenuOptions(Context *context) :
-    WindowRTS(context)
+MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
 {
     SET_VERTICAL_LAYOUT_0_6(this);
     SetName("Options menu");
@@ -88,7 +87,7 @@ void MenuOptions::RegisterObject(Context *context)
 {
     context->RegisterFactory<MenuOptions>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowMenu);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

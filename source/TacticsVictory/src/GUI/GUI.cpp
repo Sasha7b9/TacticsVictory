@@ -12,8 +12,8 @@
 #include "GUI/Controls/GovernorFloat.h"
 #include "GUI/Controls/SliderWithTextAndButtons.h"
 #include "Core/Camera.h"
-#include "GUI/Menu/MenuMain.h"
 #include "GUI/Menu/MenuStart.h"
+#include "GUI/Menu/MenuMain.h"
 #include "GUI/Menu/MenuOptions.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Panels/PanelBottom.h"
@@ -125,16 +125,6 @@ static float GetCameraYaw()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void GUI::Create()
 {
-    gMenuStart = new MenuStart();
-    SetWindowInCenterScreen(gMenuStart);
-    gUIRoot->AddChild(gMenuStart);
-
-    gMenuMain = new MenuMain();
-    SetWindowInCenterScreen(gMenuMain);
-    gUIRoot->AddChild(gMenuMain);
-    SubscribeToEvent(gMenuMain, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));
-    gMenuMain->SetVisible(false);
-
     gConsole = new ConsoleRTS(gContext);
     gUIRoot->AddChild(gConsole);
 
@@ -151,23 +141,11 @@ void GUI::Create()
 
     gLocalization->SetLanguage("en");
 
-    gMenuOptions = new MenuOptions(gContext);
-    SetWindowInCenterScreen(gMenuOptions);
-    gUIRoot->AddChild(gMenuOptions);
-    SubscribeToEvent(gMenuOptions, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));
-    gMenuOptions->SetVisible(false);
-
     gGuiGame = new GuiGame(gContext);
     gGuiGame->SetVisible(false);
 
     gGuiEditor = new GuiEditor(gContext);
     gGuiEditor->SetVisible(false);
-
-    gMenuConfirmExit = new MenuConfirmExit(gContext);
-    gUIRoot->AddChild(gMenuConfirmExit);
-    SetWindowInCenterScreen(gMenuConfirmExit);
-    gMenuConfirmExit->SetVisible(false);
-    SubscribeToEvent(gMenuConfirmExit, E_MENU, URHO3D_HANDLER(GUI, HandleMenuEvent));
 
     gCursor = new CursorRTS();
 
@@ -186,46 +164,6 @@ bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
         return gGuiEditor->CheckOnDeadZoneForCursorBottomScreen(x);
     }
     return false;
-}
-
-bool GUI::MenuIsVisible()
-{
-    return gMenuMain->IsVisible() ||
-        gMenuOptions->IsVisible() ||
-        gMenuConfirmExit->IsVisible();
-}
-
-void GUI::SetVisibleMenu(bool visible)
-{
-    visible ? gMenuMain->SetEnabled() : gMenuMain->SetDisabled();
-    gMenuOptions->SetVisible(visible);
-}
-
-void GUI::SetVisibleMenu(WindowRTS *menuWindow, bool visible)
-{
-    menuWindow->SetVisible(visible);
-    if(visible)
-    {
-        menuWindow->BringToFront();
-    }
-}
-
-void GUI::HandleMenuEvent(StringHash, VariantMap& eventData)
-{
-    uint action = eventData[MenuEvent::P_TYPE].GetUInt();
-
-    if(action == MenuEvent_ExitInOS)
-    {
-        gEngine->Exit();
-    }
-    else if(action == MenuEvent_MenuOptionsOpen)
-    {
-        SetVisibleMenu(gMenuOptions, !gMenuOptions->IsVisible());
-    }
-    else if(action == MenuEvent_MenuOptionsClose)
-    {
-        gUIRoot->RemoveChild(gMenuOptions);
-    }
 }
 
 void GUI::RemoveFromScreen()

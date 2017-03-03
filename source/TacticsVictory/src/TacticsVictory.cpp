@@ -61,6 +61,7 @@ void TacticsVictory::Stop()
     SAFE_DELETE(scene);
     SAFE_DELETE(gFileSelector);
     SAFE_DELETE(gLevel);
+    SAFE_DELETE(gMenu);
     SAFE_DELETE(gGUI);
     //File file(gContext, "ui.xml", FILE_WRITE);
     //URHO3D_LOGINFO("Now save ui");
@@ -119,7 +120,7 @@ void TacticsVictory::Start()
     gCamera = new CameraRTS();
 
     gLog->SetLevel(LOG_ERROR);
-    //gGUI->Create();
+    gGUI->Create();
     gLog->SetLevel(LOG_INFO);
 
     gFileSelector = new FileSelector(gContext);
@@ -150,11 +151,13 @@ void TacticsVictory::CreateComponents()
     gScene->CreateComponent<DebugRenderer>();
     gDebugRenderer = gScene->GetComponent<DebugRenderer>();
 
-    //gGUI = new GUI();
+    gGUI = new GUI();
 
     GUI::RegistrationObjects();
 
+    gLog->SetLevel(LOG_ERROR);
     gMenu = new MenuRTS();
+    gLog->SetLevel(LOG_ERROR);
 
     gLevel = new Level();
 

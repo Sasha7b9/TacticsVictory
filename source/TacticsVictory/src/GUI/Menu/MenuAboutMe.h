@@ -1,18 +1,18 @@
 #pragma once
-#include "GUI/Controls/Window.h"
+#include "GUI/Menu/WindowMenu.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class MenuAboutMe : public WindowRTS
+class MenuAboutMe : public WindowMenu
 {
-    URHO3D_OBJECT(MenuAboutMe, WindowRTS);
+    URHO3D_OBJECT(MenuAboutMe, WindowMenu);
 
 public:
     MenuAboutMe(Context *context = gContext);
 
 private:
+    SharedPtr<ButtonRTS> buttonOk;
+
     void HandleButtonRelease(StringHash, VariantMap&);
     virtual void HandleKeyDown(StringHash, VariantMap&);
-
-    SharedPtr<ButtonRTS> buttonOk;
 };

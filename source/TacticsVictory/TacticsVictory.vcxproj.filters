@@ -423,6 +423,9 @@
     <ClCompile Include="src\GUI\Menu\MenuRTS.cpp">
       <Filter>GUI\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\Menu\WindowMenu.cpp">
+      <Filter>GUI\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -711,6 +714,9 @@
       <Filter>GUI\Menu</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\Menu\MenuRTS.h">
+      <Filter>GUI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\Menu\WindowMenu.h">
       <Filter>GUI\Menu</Filter>
     </ClInclude>
   </ItemGroup>

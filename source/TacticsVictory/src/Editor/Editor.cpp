@@ -1,12 +1,13 @@
 #include <stdafx.h>
-#include "Editor.h"
 #include "Core/Camera.h"
+#include "Editor.h"
 #include "Game/Level.h"
+#include "Game/Objects/Units/Tank/Tank.h"
 #include "GUI/Cursor.h"
 #include "GUI/Controls/Hint.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
-#include "Game/Objects/Units/Tank/Tank.h"
+#include "GUI/Menu/MenuRTS.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,7 +105,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
         }
 
-        if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+        if (!gMenu->IsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             Timer timer;
             currentPlane = gTerrain->GetIntersectionPlane(ray);
@@ -128,7 +129,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
     if (gGuiEditor->modeSelect == GuiEditor::ModeSelect_Edge)
     {
-        if (!gGUI->MenuIsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+        if (!gMenu->IsVisible() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             currentEdge = gTerrain->GetIntersectionEdge(ray);
 

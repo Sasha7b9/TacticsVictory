@@ -1,14 +1,14 @@
 #pragma once
-#include "GUI/Controls/Window.h"
+#include "GUI/Menu/WindowMenu.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class MenuConfirmExit : public WindowRTS
+class MenuConfirmExit : public WindowMenu
 {
-    URHO3D_OBJECT(MenuConfirmExit, WindowRTS);
+    URHO3D_OBJECT(MenuConfirmExit, WindowMenu);
 
 public:
-    MenuConfirmExit(Context *context);
+    MenuConfirmExit(Context *context = gContext);
 
     static void RegisterObject(Context *context = gContext);
 

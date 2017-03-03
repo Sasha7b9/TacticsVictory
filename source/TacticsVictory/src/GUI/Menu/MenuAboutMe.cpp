@@ -1,11 +1,12 @@
 #include <stdafx.h>
+#include "MenuEvents.h"
 #include "MenuAboutMe.h"
 #include "GUI/Controls/Button.h"
 #include "GUI/Menu/MenuStart.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MenuAboutMe::MenuAboutMe(Context *context) : WindowRTS(context)
+MenuAboutMe::MenuAboutMe(Context *context) : WindowMenu(context)
 {
     const int width = 216;
     const int height = 130;
@@ -33,8 +34,8 @@ MenuAboutMe::MenuAboutMe(Context *context) : WindowRTS(context)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuAboutMe::HandleButtonRelease(StringHash, VariantMap&)
 {
+    SendEventReturn();
     SetDisabled();
-    gMenuStart->SetEnabled();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -46,8 +47,8 @@ void MenuAboutMe::HandleKeyDown(StringHash hash, VariantMap& eventData)
 
     if (key == KEY_ESCAPE)
     {
+        SendEventReturn();
         SetDisabled();
-        gMenuStart->SetEnabled();
     }
     else
     {

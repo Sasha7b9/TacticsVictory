@@ -19,9 +19,6 @@ public:
 
     void Create();
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
-    bool MenuIsVisible();
-    void SetVisibleMenu(bool visible);
-    void SetVisibleMenu(WindowRTS *menuWindow, bool visible);
     bool UnderCursor();                                             // Возвращает true, если меню под курсором
     void RemoveFromScreen();
     void AddToScreen();
@@ -31,6 +28,4 @@ public:
 private:
     bool shownMenuMain = false;
     bool shownMenuOptions = false;
-
-    void HandleMenuEvent(StringHash eventType, VariantMap& eventData);
 };

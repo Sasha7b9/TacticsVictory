@@ -4,10 +4,11 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 enum
 {
-    MenuEvent_MenuOptionsOpen = 0,
-    MenuEvent_NewGame = 1,
-    MenuEvent_OpenEditor = 3,
-    MenuEvent_ExitInOS = 4
+    MenuEvent_MenuOptionsOpen,
+    MenuEvent_NewGame,
+    MenuEvent_OpenEditor,
+    MenuEvent_ExitInOS,
+    MenuEvent_Return            // Это событие генерует окно, когда закрывается для перехода предудущий уровень
 };
 
 

@@ -402,6 +402,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\Menu\MenuMain.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuOptions.cpp" />
     <ClCompile Include="src\GUI\Menu\MenuStart.cpp" />
+    <ClCompile Include="src\GUI\Menu\WindowMenu.cpp" />
     <ClCompile Include="src\GUI\Panels\PanelBottom.cpp" />
     <ClCompile Include="src\GUI\Panels\PanelMain.cpp" />
     <ClCompile Include="src\GUI\Panels\PanelMap.cpp" />
@@ -503,6 +504,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\Menu\MenuMain.h" />
     <ClInclude Include="src\GUI\Menu\MenuOptions.h" />
     <ClInclude Include="src\GUI\Menu\MenuStart.h" />
+    <ClInclude Include="src\GUI\Menu\WindowMenu.h" />
     <ClInclude Include="src\GUI\Panels\PanelBottom.h" />
     <ClInclude Include="src\GUI\Panels\PanelMain.h" />
     <ClInclude Include="src\GUI\Panels\PanelMap.h" />

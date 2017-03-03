@@ -1,5 +1,5 @@
 #pragma once
-#include "GUI/Controls/Window.h"
+#include "GUI/Menu/WindowMenu.h"
 #include "GUI/Controls/Button.h"
 #include "GUI/Controls/ButtonSwitch.h"
 
@@ -9,13 +9,13 @@ class MenuAboutMe;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class MenuStart : public WindowRTS
+class MenuStart : public WindowMenu
 {
-    URHO3D_OBJECT(MenuStart, WindowRTS);
+    URHO3D_OBJECT(MenuStart, WindowMenu);
 
 public:
     MenuStart(Context *context = gContext);
-
+    ~MenuStart();
     bool Enabled();
 
 private:

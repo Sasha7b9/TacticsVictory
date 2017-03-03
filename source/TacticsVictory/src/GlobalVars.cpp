@@ -47,6 +47,5 @@ WindowTarget        *gWindowTarget = nullptr;
 // Меню
 MenuRTS             *gMenu = nullptr;
 MenuMain            *gMenuMain = nullptr;
-MenuStart           *gMenuStart = nullptr;
 MenuOptions         *gMenuOptions = nullptr;
 MenuConfirmExit     *gMenuConfirmExit = nullptr;
