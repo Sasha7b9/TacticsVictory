@@ -1,5 +1,6 @@
 ﻿#include <stdafx.h>
 #include "Console.h"
+#include "GlobalFunctions.h"
 #include "GUI/Windows/WindowVariables.h"
 
 
@@ -227,7 +228,17 @@ void ConsoleRTS::HandleFinishedText(StringHash, VariantMap&)
     }
     history.AddString(command);
 
-    Write("> " + command);
+    String message;
+
+#ifdef _WINDOWS
+
+    SYSTEMTIME st;
+    GetLocalTime(&st);
+    message = IntToString(st.wHour, 2) + ":" + IntToString(st.wMinute, 2) + ":" + IntToString(st.wSecond, 2) + ":" + IntToString(st.wMilliseconds, 3);
+
+#endif
+
+    Write(message + " > " + command);
 
     if(!ConsoleParser::Execute(command))
     {

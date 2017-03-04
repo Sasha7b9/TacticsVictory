@@ -76,3 +76,14 @@ String GetNameFile(const char *name)
 
     return fullName;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+String IntToString(int value, uint length)
+{
+    String str(value);
+    while(str.Length() < length)
+    {
+        str.Insert(0, '0');
+    }
+    return str;
+}
