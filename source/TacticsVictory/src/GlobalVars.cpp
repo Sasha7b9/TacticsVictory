@@ -20,7 +20,6 @@ PhysicsWorld        *gPhysicsWorld = nullptr;
 Font                *gFont = nullptr;
 Time                *gTime = nullptr;
 FileSelector        *gFileSelector = nullptr;
-Log                 *gLog = nullptr;
 Profiler            *gProfiler = nullptr;
 Script              *gScript = nullptr;
 
@@ -32,6 +31,7 @@ Level               *gLevel = nullptr;
 TerrainRTS          *gTerrain = nullptr;
 TacticsVictory      *gTacticsVictory = nullptr;
 PODVector<Tank*>    gTanks;
+LogRTS              *gLog = nullptr;
 
 // GUI
 GuiGame             *gGuiGame = nullptr;

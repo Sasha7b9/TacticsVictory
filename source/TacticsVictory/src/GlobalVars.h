@@ -23,6 +23,7 @@ class WindowTarget;
 class WindowVariables;
 class TacticsVictory;
 class MenuRTS;
+class LogRTS;
 
 
 extern Audio                *gAudio;
@@ -44,7 +45,6 @@ extern PhysicsWorld         *gPhysicsWorld;
 extern Font                 *gFont;
 extern Time                 *gTime;
 extern FileSelector         *gFileSelector;
-extern Log                  *gLog;
 extern Profiler             *gProfiler;
 extern Script               *gScript;
 
@@ -56,6 +56,7 @@ extern Level                *gLevel;
 extern TerrainRTS           *gTerrain;
 extern TacticsVictory       *gTacticsVictory;
 extern PODVector<Tank*>      gTanks;
+extern LogRTS               *gLog;
 
 // GUI
 extern GuiGame              *gGuiGame;

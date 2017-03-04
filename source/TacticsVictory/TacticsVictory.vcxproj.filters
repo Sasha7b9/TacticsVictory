@@ -423,6 +423,9 @@
     <ClCompile Include="src\GUI\Controls\WindowRTS.cpp">
       <Filter>GUI\Controls</Filter>
     </ClCompile>
+    <ClCompile Include="src\LogRTS.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -712,6 +715,9 @@
     </ClInclude>
     <ClInclude Include="src\GUI\Controls\WindowRTS.h">
       <Filter>GUI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LogRTS.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

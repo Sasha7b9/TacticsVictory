@@ -1,6 +1,7 @@
 ﻿#include <stdafx.h>
 #include "Core/Camera.h"
 #include "Game/Scene.h"
+#include "LogRTS.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 #include "GUI/GUI.h"
 #include "GUI/Cursor.h"

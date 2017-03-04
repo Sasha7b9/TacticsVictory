@@ -1,18 +1,19 @@
 ﻿#include <stdafx.h>
 #include "Core/Camera.h"
+#include "LogRTS.h"
 #include "Editor/Editor.h"
 #include "Game/Level.h"
 #include "Game/Scene.h"
 #include "Game/Logic/Movinator.h"
 #include "Game/Logic/Rotator.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
+#include "Game/Path/TilePath.h"
 #include "GUI/GUI.h"
 #include "GUI/Cursor.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/MenuRTS.h"
 #include "TacticsVictory.h"
-#include "Game/Path/TilePath.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,7 +51,6 @@ void TacticsVictory::Setup()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::Stop()
 {
-    float time = gTime->GetElapsedTime();
     engine_->DumpResources(true);
     //engine_->DumpProfiler();
     TilePath::RemoveAll();
@@ -64,16 +64,10 @@ void TacticsVictory::Stop()
     //File file(gContext, "ui.xml", FILE_WRITE);
     //URHO3D_LOGINFO("Now save ui");
     //gUIRoot->SaveXML(file);
-    URHO3D_LOGINFO("gSet->Save");
     gSet->Save();
     SAFE_DELETE(gSet);
-    URHO3D_LOGINFO("dump");
-    URHO3D_LOGINFO("Now destroy gEditor");
     SAFE_DELETE(gEditor);
-    URHO3D_LOGINFO("gScene");
-    URHO3D_LOGINFO("gCamera");
     SAFE_DELETE(gCamera);    
-    URHO3D_LOGINFOF("time Stop() %f sec", gTime->GetElapsedTime() - time);
     gLog->Close();
     SAFE_DELETE(gLog);
 }
@@ -87,7 +81,7 @@ void TacticsVictory::Start()
 
     gTime = GetSubsystem<Time>();
 
-    gLog = new Log(gContext);
+    gLog = new LogRTS();
     gLog->Open("log.txt");
     gLog->SetLevel(LOG_DEBUG);
 

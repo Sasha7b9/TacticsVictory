@@ -408,6 +408,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\Panels\PanelMap.cpp" />
     <ClCompile Include="src\GUI\Windows\Console.cpp" />
     <ClCompile Include="src\GUI\Windows\WindowVariables.cpp" />
+    <ClCompile Include="src\LogRTS.cpp" />
     <ClCompile Include="src\Settings.cpp" />
     <ClCompile Include="src\SettingsTypes.cpp" />
     <ClCompile Include="src\stdafx.cpp">
@@ -509,6 +510,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\Panels\PanelMap.h" />
     <ClInclude Include="src\GUI\Windows\Console.h" />
     <ClInclude Include="src\GUI\Windows\WindowVariables.h" />
+    <ClInclude Include="src\LogRTS.h" />
     <ClInclude Include="src\Settings.h" />
     <ClInclude Include="src\SettingsTypes.h" />
     <ClInclude Include="src\stdafx.h" />

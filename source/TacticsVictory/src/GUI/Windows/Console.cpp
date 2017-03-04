@@ -120,12 +120,12 @@ void ConsoleParser::Init()
 {
     ParserStruct structs[100] =
     {
-        {"?",    FuncHelp, L"Вывод справки"},
+        {"?",     FuncHelp,  L"Вывод справки"},
         {"clear", FuncClear, L"Очистить консоль"},
         {"close", FuncClose, L"Закрыть консоль"},
-        {"exit", FuncExit, L"Выход"},
-        {"vars", FuncVars, L"Управление окном переменных",
-                            {"[open|close]", L"open - показать", L"close - скрыть"}
+        {"exit",  FuncExit,  L"Выход"},
+        {"vars",  FuncVars,  L"Управление окном переменных",
+                             {"[open|close]", L"open - показать", L"close - скрыть"}
         },
     };
 
@@ -230,15 +230,7 @@ void ConsoleRTS::HandleFinishedText(StringHash, VariantMap&)
 
     String message;
 
-#ifdef _WINDOWS
-
-    SYSTEMTIME st;
-    GetLocalTime(&st);
-    message = IntToString(st.wHour, 2) + ":" + IntToString(st.wMinute, 2) + ":" + IntToString(st.wSecond, 2) + ":" + IntToString(st.wMilliseconds, 3);
-
-#endif
-
-    Write(message + " > " + command);
+    Write(message + "> " + command);
 
     if(!ConsoleParser::Execute(command))
     {
@@ -268,7 +260,37 @@ void ConsoleRTS::HandleUnhandledKey(StringHash, VariantMap& eventData)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ConsoleRTS::Write(const String &message)
 {
-    text->SetText(text->GetText() + message + "\n");
+    if(message[0] == '>')
+    {
+        text->SetText(text->GetText() + "\n");
+    }
+
+    String str;
+
+#ifdef _WINDOWS
+
+    SYSTEMTIME st;
+    GetLocalTime(&st);
+    str = IntToString(st.wHour, 2) + ":" + IntToString(st.wMinute, 2) + ":" + IntToString(st.wSecond, 2) + ":" + IntToString(st.wMilliseconds, 3) + " ";
+
+#endif
+
+    if(message[0] != '>')
+    {
+        str.Append("< ");
+    }
+
+    str += message + "\n";
+
+    text->SetText(text->GetText() + str);
+
+    // Теперь ограничим количество строк
+#define MAX_STRING 100
+    while(text->GetNumRows() > MAX_STRING)
+    {
+        uint pos = text->GetText().Find("\n");
+        text->SetText(text->GetText().Substring(pos + 2));
+    }
 
     int height = GetHeight();
     int heightText = text->GetHeight() + 15;
