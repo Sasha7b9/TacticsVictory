@@ -229,40 +229,40 @@ void Editor::HandleKeyDown(StringHash, VariantMap& eventData)
         uint row = selectedPlane.row;
         uint col = selectedPlane.col;
         float height = gTerrain->GetHeight(row, col);
-        if(key == KEY_KP_MINUS)
+        if(KEY_IS_KP_MINUS)
         {
             gTerrain->SetHeight(row, col, height - 1.0f);
             gTerrain->Update();
         }
-        else if(key == KEY_KP_PLUS)
+        else if(KEY_IS_KP_PLUS)
         {
             gTerrain->SetHeight(row, col, height + 1.0f);
             gTerrain->Update();
         }
         selectedPlane = gTerrain->GetPlane(row, col);
 
-        if (key == KEY_LEFT)
+        if (KEY_IS_LEFT)
         {
             if (col > 0)
             {
                 selectedPlane = gTerrain->GetPlane(row, col - 1);
             }
         }
-        else if (key == KEY_RIGHT)
+        else if (KEY_IS_RIGHT)
         {
             if (col < gLevel->GetWidth() - 1)
             {
                 selectedPlane = gTerrain->GetPlane(row, col + 1);
             }
         }
-        else if (key == KEY_UP)
+        else if (KEY_IS_UP)
         {
             if (row > 0)
             {
                 selectedPlane = gTerrain->GetPlane(row - 1, col);
             }
         }
-        else if (key == KEY_DOWN)
+        else if (KEY_IS_DOWN)
         {
             if (row < gLevel->GetHeight() - 1)
             {

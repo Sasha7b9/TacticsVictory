@@ -36,23 +36,23 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
 
     gUIRoot->RemoveChild(gHint);
 
-    if(key == KEY_F1)
+    if(KEY_IS_F1)
     {
         gConsole->Toggle();
         return;
     }
-    else if(key == KEY_F10)
+    else if(KEY_IS_F10)
     {
         gDebugHud->ToggleAll();
         return;
     }
-    else if(key == KEY_F11)
+    else if(KEY_IS_F11)
     {
         gEngineConsole->Toggle();
         return;
     }
     
-    if(key == KEY_ESCAPE)
+    if(KEY_IS_ESC)
     {
         if(gEngineConsole && gEngineConsole->IsVisible())
         {
@@ -74,14 +74,14 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     
     if(!gUI->GetFocusElement())
     {
-        if(key == '9')
+        if(KEY_IS_9)
         {
             Image screenshot(context_);
             gGraphics->TakeScreenShot(screenshot);
             screenshot.SavePNG(gFileSystem->GetProgramDir() + "Data/Screenshot_" +
                                Time::GetTimeStamp().Replaced(':', '_').Replaced('.', '_').Replaced(' ', '_') + ".png");
         }
-        if(key == KEY_SPACE)
+        if(KEY_IS_SPACE)
         {
             drawDebug = !drawDebug;
         }

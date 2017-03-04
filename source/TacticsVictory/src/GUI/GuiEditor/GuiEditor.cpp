@@ -321,7 +321,7 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
 
     if (gFileSelector->GetWindow()->IsVisible())
     {
-        if (key == KEY_ESCAPE)
+        if (KEY_IS_ESC)
         {
             UnsubscribeFromEvent(gFileSelector, E_FILESELECTED);
             gFileSelector->GetWindow()->SetVisible(false);
@@ -330,7 +330,7 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
         return;
     }
 
-    if (key == KEY_ESCAPE)
+    if (KEY_IS_ESC)
     {
         if(!gOpenedWindow.Empty())
         {
@@ -339,7 +339,7 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
             gOpenedWindow.Remove(window);
         }
     }
-    else if (key == KEY_I)
+    else if (KEY_IS_I)
     {
         ToggleInterfacePanels();
     }

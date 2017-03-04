@@ -101,7 +101,7 @@ void GuiGame::HandleKeyDown(StringHash, VariantMap& eventData)
 
     int key = eventData[KeyDown::P_KEY].GetInt();
 
-    if(key == KEY_I)
+    if(KEY_IS_I)
     {
         ToggleInterfacePanels();
     }

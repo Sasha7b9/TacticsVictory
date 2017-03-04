@@ -31,7 +31,7 @@ static bool FuncHelp(Vector<String> &)
             String message;
             message += key.first_;
 
-            for(int i = 0; i < len - key.first_.Length() + 1; i++)
+            for(uint i = 0; i < len - key.first_.Length() + 1; i++)
             {
                 message += " ";
             }
@@ -244,11 +244,11 @@ void ConsoleRTS::HandleUnhandledKey(StringHash, VariantMap& eventData)
     using namespace UnhandledKey;
     int key = eventData[P_KEY].GetInt();
 
-    if(key == KEY_UP)
+    if(KEY_IS_UP)
     {
         lineEdit->SetText(history.GetPrev());
     }
-    else if(key == KEY_DOWN)
+    else if(KEY_IS_DOWN)
     {
         lineEdit->SetText(history.GetNext());
     }

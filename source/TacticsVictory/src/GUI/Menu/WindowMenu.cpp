@@ -38,15 +38,15 @@ void WindowMenu::Close()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void WindowMenu::ProcessingKey(int key)
 {
-    if(key == KEY_ESCAPE)
+    if(KEY_IS_ESC)
     {
         SendEventClose();
     }
-    if (key == KEY_UP || key == KEY_LEFT)
+    if (KEY_IS_UP || KEY_IS_LEFT)
     {
         SetFocusedPrev();
     }
-    else if (key == KEY_DOWN || key == KEY_RIGHT)
+    else if (KEY_IS_DOWN || KEY_IS_RIGHT)
     {
         SetFocusedNext();
     }

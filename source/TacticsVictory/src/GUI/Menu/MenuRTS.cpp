@@ -111,7 +111,7 @@ bool MenuRTS::ProcessingKey(int key)
 
     if(active)
     {
-        if(key == KEY_ESCAPE && active == menuStart)    // Если находимся в стартовом менюю и нажата кнопка ESCAPE - ничего делать не будем
+        if(KEY_IS_ESC && active == menuStart)    // Если находимся в стартовом менюю и нажата кнопка ESCAPE - ничего делать не будем
         {
 
         }
