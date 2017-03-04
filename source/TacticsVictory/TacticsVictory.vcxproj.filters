@@ -399,9 +399,6 @@
     <ClCompile Include="src\GUI\Windows\Console.cpp">
       <Filter>GUI\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Windows\ConsoleParser.cpp">
-      <Filter>GUI\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\Windows\WindowVariables.cpp">
       <Filter>GUI\Windows</Filter>
     </ClCompile>
@@ -690,9 +687,6 @@
       <Filter>GUI\Panels</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\Windows\Console.h">
-      <Filter>GUI\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GUI\Windows\ConsoleParser.h">
       <Filter>GUI\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\Windows\WindowVariables.h">

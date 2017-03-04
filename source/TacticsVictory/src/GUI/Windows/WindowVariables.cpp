@@ -1,4 +1,4 @@
-#include <stdafx.h>
+﻿#include <stdafx.h>
 #include "WindowVariables.h"
 #include "GUI/Controls/Label.h"
 #include "GUI/Controls/GovernorFloat.h"

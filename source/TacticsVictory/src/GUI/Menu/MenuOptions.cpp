@@ -158,7 +158,7 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MenuOptions::HandleButtonRelease(StringHash, VariantMap& eventData)
+void MenuOptions::HandleButtonRelease(StringHash, VariantMap&)
 {
     SendEventClose();
 }
