@@ -13,9 +13,8 @@ public:
     static SharedPtr<MilitaryPlant> Create();
 
 private:
-    MilitaryPlant& operator=(const MilitaryPlant&)
-    {};
-
     void Init();
     void LoadFromFile();
+
+    DEFAULT_MEMBERS(MilitaryPlant);
 };

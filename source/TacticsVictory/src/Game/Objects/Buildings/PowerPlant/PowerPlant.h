@@ -9,6 +9,5 @@ public:
     PowerPlant(Context *context = gContext);
 
 private:
-    PowerPlant& operator=(const PowerPlant&)
-    {};
+    DEFAULT_MEMBERS(PowerPlant);
 };

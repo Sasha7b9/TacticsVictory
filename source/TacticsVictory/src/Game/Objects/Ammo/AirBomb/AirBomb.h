@@ -9,6 +9,5 @@ public:
     AirBomb(Context *context = gContext);
 
 private:
-    AirBomb& operator=(const AirBomb&)
-    {};
+    DEFAULT_MEMBERS(AirBomb);
 };

@@ -9,6 +9,5 @@ public:
     RollingBomb(Context *context = gContext);
 
 private:
-    RollingBomb& operator=(const RollingBomb&)
-    {};
+    DEFAULT_MEMBERS(RollingBomb);
 };

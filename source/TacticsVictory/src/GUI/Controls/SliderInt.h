@@ -29,12 +29,11 @@ public:
     void Decrease();
 
 private:
-    SliderInt& operator=(const SliderInt&)
-    {};
-
     int min = 0;
     int max = 100;
     int value = 0;
     int step = 1;
     float delta = 0.0f;     // –азница между минимальным значением и нулЄм(минимальным значением родительского Slider)
+
+    DEFAULT_MEMBERS(SliderInt);
 };

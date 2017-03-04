@@ -12,7 +12,7 @@ typedef unsigned int    uint;
 typedef unsigned short  ushort;
 typedef unsigned char   uchar;
 
-#define DEFAULT_MEMBERS(name) name& operator=(const name&) {}
+#define DEFAULT_MEMBERS(name) name& operator=(const name&) {}; name(const name&)
 
 enum TypeCursor
 {

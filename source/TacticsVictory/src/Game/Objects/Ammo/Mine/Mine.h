@@ -9,6 +9,5 @@ public:
     Mine(Context *context = gContext);
 
 private:
-    Mine& operator=(const Mine&)
-    {};
+    DEFAULT_MEMBERS(Mine);
 };

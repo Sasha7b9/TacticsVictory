@@ -15,6 +15,7 @@ public:
     const Vector3& GetRotationSpeed() const { return rotationSpeed; }
     
 private:
-    Rotator& operator=(const Rotator&) {};
     Vector3 rotationSpeed;
+
+    DEFAULT_MEMBERS(Rotator);
 };

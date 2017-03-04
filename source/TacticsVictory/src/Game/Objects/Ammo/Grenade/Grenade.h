@@ -9,6 +9,5 @@ public:
     Grenade(Context *context = gContext);
 
 private:
-    Grenade& operator=(const Grenade&)
-    {};
+    DEFAULT_MEMBERS(Grenade);
 };

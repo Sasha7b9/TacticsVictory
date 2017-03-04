@@ -9,6 +9,5 @@ public:
     AmmoObject(Context *context = gContext);
 
 private:
-    AmmoObject& operator=(const AmmoObject&)
-    {};
+    DEFAULT_MEMBERS(AmmoObject);
 };

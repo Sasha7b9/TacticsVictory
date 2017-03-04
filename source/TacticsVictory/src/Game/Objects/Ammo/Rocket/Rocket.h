@@ -23,9 +23,6 @@ public:
     static void DeleteAll();
 
 private:
-    Rocket& operator=(const Rocket&)
-    {};
-
     enum State
     {
         Begin,              // The missile is in this state from the start-up moment before achievement of heightBeginExcortTarget
@@ -73,6 +70,7 @@ private:
     void AnimateSmoke();
     void CalculateAnimate();
     void VerifyOnIntersectionTerrain();
-
     void HandlePostRenderUpdate(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(Rocket);
 };

@@ -9,6 +9,5 @@ public:
     CivilPlant(Context *context = gContext);
 
 private:
-    CivilPlant& operator=(const CivilPlant&)
-    {};
+    DEFAULT_MEMBERS(CivilPlant);
 };
