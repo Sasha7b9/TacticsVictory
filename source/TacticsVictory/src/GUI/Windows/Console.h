@@ -5,7 +5,17 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class ConsoleParser
 {
+    class ParserStruct
+    {
+    public:
+        ParserStruct(pFuncVvS func_ = nullptr) : func(func_) {};
+        pFuncVvS func;
+    };
+
 public:
+    static HashMap<String, ParserStruct> commands;
+
+    static void Init();
     static void Execute(const String &string);
 };
 

@@ -4,37 +4,56 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void ConsoleParser::Execute(const String &string)
-{
-    Vector<String> words = string.Split(' ');
+HashMap<String, ConsoleParser::ParserStruct> ConsoleParser::commands;
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static void FuncExit(Vector<String> &)
+{
+    gEngine->Exit();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void FuncVars(Vector<String> &words)
+{
     uint size = words.Size();
 
     String word0 = size > 0 ? words[0] : "";
     String word1 = size > 1 ? words[1] : "";
 
-    if(word0 == "exit")
+    if(size == 1)
     {
-        gEngine->Exit();
+        gWindowVars->SetVisible(!gWindowVars->IsVisible());
     }
-    else if(word0 == "vars")
+    else if(size == 2)
     {
-        if(size == 1)
+        if(word1 == "open")
         {
-            gWindowVars->SetVisible(!gWindowVars->IsVisible());
+            gWindowVars->SetVisible(true);
         }
-        else if(size == 2)
+        else if(word1 == "close")
         {
-            if(word1 == "open")
-            {
-                gWindowVars->SetVisible(true);
-            }
-            else if(word1 == "close")
-            {
-                gWindowVars->SetVisible(false);
-            }
+            gWindowVars->SetVisible(false);
         }
     }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void ConsoleParser::Init()
+{
+    ConsoleParser::commands.Insert({"exit", {FuncExit}});
+    ConsoleParser::commands.Insert({"vars", {FuncVars}});
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void ConsoleParser::Execute(const String &string)
+{
+    Vector<String> words = string.Split(' ');
+
+    pFuncVvS func = commands[words[0]].func;
+
+    func(words);
 }
 
 
@@ -42,6 +61,8 @@ void ConsoleParser::Execute(const String &string)
 ConsoleRTS::ConsoleRTS(Context *context) :
     WindowRTS(context)
 {
+    ConsoleParser::Init();
+
     SetVisible(false);
 
     SetSize(1500, 300);

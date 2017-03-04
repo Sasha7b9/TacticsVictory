@@ -1,9 +1,11 @@
 #pragma once 
 
 
+typedef void(*pfuncVV)();
 typedef float(*pFuncFV)();
 typedef void(*pFuncVF)(float);
 typedef void(*pFuncVI)(int);
+typedef void(*pFuncVvS)(Vector<String>&);
 
 typedef unsigned char   uint8;
 typedef long int        int64;
