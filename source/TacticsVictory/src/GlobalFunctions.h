@@ -1,7 +1,7 @@
 #pragma once
 
 
-#define CALL_IF_EXIST(object, function) if(object) (object)->function()
+#define CALL_MEMBER_IF_EXIST(object, function) if(object) (object)->function()
 
 
 void SetWindowInCenterScreen(Window *window);

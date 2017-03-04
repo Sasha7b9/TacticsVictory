@@ -8,13 +8,14 @@ HashMap<String, ConsoleParser::ParserStruct> ConsoleParser::commands;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void FuncExit(Vector<String> &)
+static bool FuncExit(Vector<String> &)
 {
     gEngine->Exit();
+    return true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void FuncVars(Vector<String> &words)
+static bool FuncVars(Vector<String> &words)
 {
     uint size = words.Size();
 
@@ -35,7 +36,13 @@ static void FuncVars(Vector<String> &words)
         {
             gWindowVars->SetVisible(false);
         }
+        else
+        {
+            return false;
+        }
     }
+
+    return true;
 }
 
 
@@ -47,13 +54,18 @@ void ConsoleParser::Init()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ConsoleParser::Execute(const String &string)
+bool ConsoleParser::Execute(const String &string)
 {
     Vector<String> words = string.Split(' ');
 
-    pFuncVvS func = commands[words[0]].func;
+    pFuncBvS func = commands[words[0]].func;
 
-    func(words);
+    if(func)
+    {
+        return func(words);
+    }
+
+    return false;
 }
 
 
@@ -116,7 +128,10 @@ void ConsoleRTS::HandleFinishedText(StringHash, VariantMap&)
     {
         return;
     }
-    ConsoleParser::Execute(command);
     text->SetText(text->GetText() + command + "\n");
+    if(!ConsoleParser::Execute(command))
+    {
+        text->SetText(text->GetText() + L"Неизвестная команда" + "\n");
+    }
     lineEdit->SetText("");
 }

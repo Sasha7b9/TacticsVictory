@@ -71,8 +71,8 @@ void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
     }
     else if (action == MenuEvent_Close)
     {
-        CALL_IF_EXIST(source, Close);
-        CALL_IF_EXIST(destination, Open);
+        CALL_MEMBER_IF_EXIST(source, Close);
+        CALL_MEMBER_IF_EXIST(destination, Open);
     }
 }
 
