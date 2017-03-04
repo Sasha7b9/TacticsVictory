@@ -6,12 +6,12 @@
 class ConsoleParser
 {
 public:
-    class ParserStruct
+    struct ParserStruct
     {
-    public:
-        ParserStruct(pFuncBvS func_ = nullptr) : func(func_) {};
-        String help;
+        String command;
         pFuncBvS func;
+        String help;
+        String fullHelp[10];     // Здесь хранится подробная информация о команде.
     };
 
     static HashMap<String, ParserStruct> commands;
@@ -21,7 +21,7 @@ public:
 };
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class History
 {
 public:
@@ -44,6 +44,7 @@ public:
     void Toggle();
     bool IsActive();                            // Возвращает true, если активна строка ввода
     void Write(const String &message);
+    void Clear();
 
 private:
     SharedPtr<LineEdit> lineEdit;
