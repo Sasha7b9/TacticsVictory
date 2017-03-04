@@ -9,4 +9,5 @@ public:
     Bomber(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(Bomber);
 };

@@ -9,4 +9,5 @@ public:
     Robot(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(Robot);
 };

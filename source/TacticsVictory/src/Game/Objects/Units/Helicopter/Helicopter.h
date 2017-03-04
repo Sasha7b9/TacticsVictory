@@ -9,4 +9,5 @@ public:
     Helicopter(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(Helicopter);
 };

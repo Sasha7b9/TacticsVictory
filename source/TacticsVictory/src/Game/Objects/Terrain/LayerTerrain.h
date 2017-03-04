@@ -24,4 +24,6 @@ private:
     SharedPtr<Geometry> geometry;
     SharedPtr<Model> model;
     SharedPtr<StaticModel> object;
+
+    DEFAULT_MEMBERS(LayerTerrain);
 };

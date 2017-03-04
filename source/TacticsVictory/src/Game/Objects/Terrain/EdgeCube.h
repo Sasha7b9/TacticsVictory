@@ -12,4 +12,5 @@ public:
     PlaneCube plane;
 
 private:
+    DEFAULT_MEMBERS(EdgeCube);
 };

@@ -9,4 +9,5 @@ public:
     ProcessingPlant(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(ProcessingPlant);
 };

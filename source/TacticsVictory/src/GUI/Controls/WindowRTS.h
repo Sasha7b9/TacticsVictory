@@ -33,4 +33,6 @@ public:
 protected:
     HashMap<Button*, uint> mapButtonsActions;
     SharedPtr<LineTranslator2D> translator;
+
+    DEFAULT_MEMBERS(WindowRTS);
 };

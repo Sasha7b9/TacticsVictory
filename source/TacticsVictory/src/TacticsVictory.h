@@ -34,4 +34,6 @@ private:
     void HandleMenuEvent(StringHash, VariantMap&);
     void HandlePostRenderUpdate(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(TacticsVictory);
 };

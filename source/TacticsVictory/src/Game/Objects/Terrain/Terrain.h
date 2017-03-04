@@ -46,4 +46,6 @@ private:
     Vector<Vector<SharedPtr<SegmentTerrain>>> segments;
 
     SegmentTerrain *GetSegmentForCoord(uint row, uint col);
+
+    DEFAULT_MEMBERS(TerrainRTS);
 };

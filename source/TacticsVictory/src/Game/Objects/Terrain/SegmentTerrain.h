@@ -38,4 +38,6 @@ private:
 
     void AddCube(SharedPtr<CubeTerrain> &cube);
     void CreateLayers();
+
+    DEFAULT_MEMBERS(SegmentTerrain);
 };

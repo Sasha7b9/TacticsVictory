@@ -9,4 +9,5 @@ public:
     GrenadeLauncher(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(GrenadeLauncher);
 };

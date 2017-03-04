@@ -9,4 +9,5 @@ public:
     WarehouseAmmo(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(WarehouseAmmo);
 };

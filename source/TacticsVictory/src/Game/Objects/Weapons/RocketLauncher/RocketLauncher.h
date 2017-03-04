@@ -14,12 +14,12 @@ public:
 
 private:
     Tank *tank = nullptr;
-
     float radiusDetect = 50.0f;
     float timeRecharge = 50.0f;
     float timeElapsedAfterShoot = 0.0f;
+    float timePrevRaycast = 0.0f;
 
     bool TargetInPointView(Tank* tank);
 
-    float timePrevRaycast = 0.0f;
+    DEFAULT_MEMBERS(RocketLauncher);
 };

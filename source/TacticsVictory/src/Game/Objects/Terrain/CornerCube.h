@@ -10,4 +10,5 @@ public:
     CornerCube(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(CornerCube);
 };

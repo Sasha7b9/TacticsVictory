@@ -45,4 +45,6 @@ protected:
     void HandleOnMouseDown(StringHash, VariantMap&);
 
 private:
+
+    DEFAULT_MEMBERS(GameObject);
 };

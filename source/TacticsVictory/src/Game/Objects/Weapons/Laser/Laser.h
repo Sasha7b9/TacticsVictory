@@ -9,4 +9,5 @@ public:
     Laser(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(Laser);
 };

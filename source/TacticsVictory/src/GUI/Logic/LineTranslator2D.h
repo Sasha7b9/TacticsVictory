@@ -25,4 +25,6 @@ public:
 private:
     SharedPtr<LineTranslator1D> translatorX;
     SharedPtr<LineTranslator1D> translatorY;
+
+    DEFAULT_MEMBERS(LineTranslator2D);
 };

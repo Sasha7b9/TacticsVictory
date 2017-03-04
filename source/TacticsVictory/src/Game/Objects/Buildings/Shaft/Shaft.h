@@ -9,4 +9,5 @@ public:
     Shaft(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(Shaft);
 };

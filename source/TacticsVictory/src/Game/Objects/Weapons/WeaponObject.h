@@ -9,4 +9,5 @@ public:
     WeaponObject(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(WeaponObject);
 };

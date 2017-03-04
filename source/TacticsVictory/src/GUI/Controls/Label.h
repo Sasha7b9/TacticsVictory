@@ -16,4 +16,6 @@ private:
     char *text = 0;
 
     void HandleChangeLanguage(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(Label);
 };

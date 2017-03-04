@@ -13,4 +13,5 @@ public:
     static SharedPtr<lSlider> Create(Window *window, char *text);
 
 private:
+    DEFAULT_MEMBERS(lSlider);
 };

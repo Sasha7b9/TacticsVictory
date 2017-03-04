@@ -17,4 +17,6 @@ private:
     SharedPtr<Label> label;
 
     void HandleMouseUp(StringHash eventType, VariantMap &eventData);
+
+    DEFAULT_MEMBERS(ButtonToggled);
 };

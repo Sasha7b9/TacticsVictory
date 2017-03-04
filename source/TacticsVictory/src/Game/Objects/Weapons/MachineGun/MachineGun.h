@@ -9,4 +9,5 @@ public:
     MachineGun(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(MachineGun);
 };

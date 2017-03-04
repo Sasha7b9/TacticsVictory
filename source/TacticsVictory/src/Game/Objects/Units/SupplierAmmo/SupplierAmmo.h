@@ -9,4 +9,5 @@ public:
     SupplierAmmo(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(SupplierAmmo);
 };

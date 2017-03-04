@@ -28,4 +28,6 @@ private:
     void Open(WindowMenu* menu, WindowMenu *prev = nullptr);    // Открыть меню menu, при этом его хранителем указать prev
     void CloseAll();
     void HandleMenuEvent(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(MenuRTS);
 };

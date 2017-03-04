@@ -75,4 +75,6 @@ private:
     void HandleAmmoHit(StringHash, VariantMap&);
 
     SharedPtr<RocketLauncher> rocketLauncher;
+
+    DEFAULT_MEMBERS(Tank);
 };

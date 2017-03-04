@@ -9,4 +9,5 @@ public:
     Airplane(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(Airplane);
 };

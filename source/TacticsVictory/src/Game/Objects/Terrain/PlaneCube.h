@@ -21,4 +21,5 @@ public:
     PointPlane point[4];
 
 private:
+    DEFAULT_MEMBERS(PlaneCube);
 };

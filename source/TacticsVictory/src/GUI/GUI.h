@@ -22,4 +22,6 @@ public:
     bool UnderCursor();                                             // Возвращает true, если меню под курсором
     void SetVisibleWindow(WindowRTS *window, bool visible);
     void SetUnvisibleAllWindows();
+
+    DEFAULT_MEMBERS(GUI);
 };

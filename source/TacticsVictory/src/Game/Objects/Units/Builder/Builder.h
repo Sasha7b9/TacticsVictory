@@ -9,4 +9,5 @@ public:
     Builder(Context *context = gContext);
 
 private:
+    DEFAULT_MEMBERS(Builder);
 };
