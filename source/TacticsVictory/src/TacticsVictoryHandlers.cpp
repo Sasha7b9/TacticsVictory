@@ -64,9 +64,12 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
         }
     }
     
-    if(gMenu->ProcessingKey(key))                       // Если меню обработало нажатие
+    if(!gConsole->IsActive())
     {
-        return;                                         // следовательно, оно активно, поэтому после обработки выходим
+        if(gMenu->ProcessingKey(key))                       // Если меню обработало нажатие
+        {
+            return;                                         // следовательно, оно активно, поэтому после обработки выходим
+        }
     }
     
     if(!gUI->GetFocusElement())
