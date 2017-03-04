@@ -7,6 +7,10 @@
 #include "TacticsVictory.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define VAR_MENU_EVENT "VAR_MENU_EVENT"
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 MenuStart::MenuStart(Context *context) : WindowMenu(context)
@@ -20,13 +24,24 @@ MenuStart::MenuStart(Context *context) : WindowMenu(context)
     buttonLanguage = new ButtonSwitch(this, "Language : EN");
     buttonLanguage->AddState("Language : RU");
     buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
+
     buttonServer = new ButtonRTS(this, "Server");
+    buttonServer->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_NewGame));
+
     buttonClient = new ButtonRTS(this, "Client");
+
     buttonEditor = new ButtonRTS(this, "Editor");
+
     buttonOptions = new ButtonRTS(this, "Options");
+    buttonOptions->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_OpenOptions));
+
     buttonHelp = new ButtonRTS(this, "Help");
+
     buttonAboutGame = new ButtonRTS(this, "About game");
+
     buttonAboutMe = new ButtonRTS(this, "About me");
+    buttonAboutMe->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_OpenAboutMe));
+
     buttonExit = new ButtonRTS(this, "Exit");
 
     buttons.Push(buttonLanguage);
@@ -63,46 +78,18 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
 
     Button *button = (Button*)eventData[P_ELEMENT].GetPtr();
 
-    eventData = GetEventDataMap();
-
-    if (button == buttonLanguage)
+    const Variant &value = button->GetVar(VAR_MENU_EVENT);
+    if(!value.IsEmpty())
+    {
+        eventData = GetEventDataMap();
+        eventData[P_SOURCE] = this;
+        eventData[P_TYPE] = value.GetUInt();
+        SendEvent(E_MENU, eventData);
+    }
+    else if (button == buttonLanguage)
     {
         gLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
         gSet->SetInt(TV_LANGUAGE, (int)buttonLanguage->GetState());
-    }
-    if(button == buttonServer)
-    {
-        eventData[P_TYPE] = MenuEvent_NewGame;
-        eventData[P_SOURCE] = this;
-        SendEvent(E_MENU, eventData);
-    }
-    else if(button == buttonClient)
-    {
-
-    }
-    else if(button == buttonEditor)
-    {
-
-    }
-    else if (button == buttonOptions)
-    {
-        eventData[P_TYPE] = MenuEvent_OpenOptions;
-        eventData[P_SOURCE] = this;
-        SendEvent(E_MENU, eventData);
-    }
-    else if (button == buttonHelp)
-    {
-
-    }
-    else if (button == buttonAboutGame)
-    {
-
-    }
-    else if (button == buttonAboutMe)
-    {
-        eventData[P_TYPE] = MenuEvent_OpenAboutMe;
-        eventData[P_SOURCE] = this;
-        SendEvent(E_MENU, eventData);
     }
     else if (button == buttonExit)
     {
