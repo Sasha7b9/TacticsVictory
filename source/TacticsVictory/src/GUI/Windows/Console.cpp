@@ -139,6 +139,26 @@ static bool FuncStart(Vector<String> &words)
     return false;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static bool FuncStop(Vector<String> &words)
+{
+    if (words.Size() > 1)
+    {
+        return false;
+    }
+
+    if (gNetwork->IsServerRunning())
+    {
+        gNetwork->StopServer();
+    }
+    else
+    {
+        gNetwork->Disconnect();
+    }
+
+    return true;
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ConsoleParser::Init()
@@ -153,6 +173,7 @@ void ConsoleParser::Init()
                              {"server|client [port|address:port]",
                              L"server - создать сервер на порту port. По умолчанию 1000",
                              L"client - приконнектиться с серверу с адресом address:port. По умолчанию 127.0.0.1:1000"}},
+        {"stop", FuncStop,   L"остановить сервер/отключиться от сервера"},
         {"vars",  FuncVars,  L"Управление окном переменных",
                              {"[open|close]", L"open - показать", L"close - скрыть"}
         },
