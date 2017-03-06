@@ -307,6 +307,7 @@ void ConsoleRTS::Write(const String &message)
 void ConsoleRTS::Clear()
 {
     text->SetText("");
+    text->SetPosition(2, 0);
 }
 
 
