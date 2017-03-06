@@ -56,4 +56,6 @@ private:
 
     void HandleFinishedText(StringHash, VariantMap&);
     void HandleUnhandledKey(StringHash, VariantMap&);
+    void HandleClick(StringHash, VariantMap&);
+    void HandleResize(StringHash, VariantMap&);
 };

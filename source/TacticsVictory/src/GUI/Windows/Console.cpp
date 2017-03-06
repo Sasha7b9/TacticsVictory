@@ -125,14 +125,28 @@ static bool FuncStart(Vector<String> &words)
     }
     if (words[1] == "server")
     {
-        gTacticsVictory->StartServer();
-        gMenu->Hide();
+        if (gNetwork->IsServerRunning())
+        {
+            gConsole->Write("Server already running");
+        }
+        else
+        {
+            gTacticsVictory->StartServer();
+            gMenu->Hide();
+        }
         return true;
     }
     else if (words[1] == "client")
     {
-        gTacticsVictory->StartClient();
-        gMenu->Hide();
+        if (gNetwork->IsServerRunning())
+        {
+            gConsole->Write("The application is in server mode");
+        }
+        else
+        {
+            gTacticsVictory->StartClient();
+            gMenu->Hide();
+        }
         return true;
     }
 
@@ -247,16 +261,15 @@ ConsoleRTS::ConsoleRTS(Context *context) :
     SetVisible(false);
     SetResizable(true);
 
-    SetSize(1500, 300);
+    SetSize(gGraphics->GetWidth(), 300);
     SetResizable(true);
 
     lineEdit = gUIRoot->CreateChild<LineEdit>();
     lineEdit->SetStyle("LineEdit");
-    lineEdit->SetSize(GetWidth()- 2, 15);
-    lineEdit->SetPosition(2, GetHeight() - 15);
 
     AddChild(lineEdit);
 
+    /*
     scrollBar = gUIRoot->CreateChild<ScrollBar>();
     scrollBar->SetFixedSize(10, GetHeight() - 15);
     scrollBar->SetPosition(GetWidth() - 10, 0);
@@ -264,16 +277,21 @@ ConsoleRTS::ConsoleRTS(Context *context) :
     scrollBar->SetOrientation(O_VERTICAL);
     scrollBar->SetRange(0.0f);
     AddChild(scrollBar);
+    */
 
     text = gUIRoot->CreateChild<Text>();
     text->SetStyle("WindowMenu");
-    text->SetFixedSize(GetWidth() - 10, GetHeight() - 15);
     text->SetWordwrap(true);
-    text->SetPosition(2, 0);
     AddChild(text);
 
     SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(ConsoleRTS, HandleFinishedText));
     SubscribeToEvent(lineEdit, E_UNHANDLEDKEY, URHO3D_HANDLER(ConsoleRTS, HandleUnhandledKey));
+    SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(ConsoleRTS, HandleClick));
+    SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(ConsoleRTS, HandleClick));
+    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(ConsoleRTS, HandleResize));
+
+    VariantMap map;
+    HandleResize("", map);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -332,6 +350,40 @@ void ConsoleRTS::HandleUnhandledKey(StringHash, VariantMap& eventData)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+void ConsoleRTS::HandleClick(StringHash, VariantMap& eventData)
+{
+    lineEdit->SetFocus(true);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void ConsoleRTS::HandleResize(StringHash, VariantMap&)
+{
+    lineEdit->SetSize(GetWidth() - 20, 15);
+    lineEdit->SetPosition(2, GetHeight() - 15);
+
+    text->SetFixedSize(GetWidth(), GetHeight() - 20);
+    text->SetPosition(2, 0);
+
+    // Теперь ограничим количество строк
+#define MAX_STRING 100
+    while (text->GetNumRows() > MAX_STRING)
+    {
+        uint pos = text->GetText().Find("\n");
+        text->SetText(text->GetText().Substring(pos + 2));
+    }
+
+    int height = GetHeight();
+    int heightText = text->GetHeight() + 15;
+
+    if (heightText > height)
+    {
+        IntVector2 pos = text->GetPosition();
+        pos.y_ = -(heightText - height);
+        text->SetPosition(pos);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ConsoleRTS::Write(const String &message)
 {
     if(message[0] == '>')
@@ -358,23 +410,8 @@ void ConsoleRTS::Write(const String &message)
 
     text->SetText(text->GetText() + str);
 
-    // Теперь ограничим количество строк
-#define MAX_STRING 100
-    while(text->GetNumRows() > MAX_STRING)
-    {
-        uint pos = text->GetText().Find("\n");
-        text->SetText(text->GetText().Substring(pos + 2));
-    }
-
-    int height = GetHeight();
-    int heightText = text->GetHeight() + 15;
-
-    if(heightText > height)
-    {
-        IntVector2 pos = text->GetPosition();
-        pos.y_ = -(heightText - height);
-        text->SetPosition(pos);
-    }
+    VariantMap map;
+    HandleResize("", map);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
