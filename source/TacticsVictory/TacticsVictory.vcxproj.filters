@@ -139,6 +139,9 @@
     <Filter Include="GUI\Panels">
       <UniqueIdentifier>{8dc0528d-9989-4ded-8fdf-9624206487d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{f38a6f28-58a5-45e4-bc08-d5dba2af80d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Camera.cpp">
@@ -424,6 +427,9 @@
       <Filter>GUI\Controls</Filter>
     </ClCompile>
     <ClCompile Include="src\LogRTS.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TacticsVictoryNetworkHandlers.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -718,6 +724,9 @@
     </ClInclude>
     <ClInclude Include="src\LogRTS.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Network\Messages.h">
+      <Filter>Network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

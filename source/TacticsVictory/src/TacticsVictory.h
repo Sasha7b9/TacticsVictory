@@ -19,9 +19,10 @@ public:
     void StartServer();
     void StartClient();
 
+    SceneRTS *scene = nullptr;
+
 private:
     bool drawDebug = false;
-    SceneRTS *scene = nullptr;
 
     void CreateComponents();
     void RegistrationFactories();
@@ -41,6 +42,7 @@ private:
     void HandleConnecFailed(StringHash, VariantMap&);
     void HandleClientConnected(StringHash, VariantMap&);    // Это на сервере, когда к нему подключается новый клиент
     void HandleClientDisconnected(StringHash, VariantMap&); // На сервере, когда отключается клиент
+    void HandleNetworkMessage(StringHash, VariantMap&);
 
     DEFAULT_MEMBERS(TacticsVictory);
 };

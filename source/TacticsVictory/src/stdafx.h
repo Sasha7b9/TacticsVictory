@@ -79,6 +79,7 @@
 #include <Urho3D/IO/File.h>
 #include <Urho3D/IO/FileSystem.h>
 #include <Urho3D/IO/Log.h>
+#include <Urho3D/IO/MemoryBuffer.h>
 
 #include <Urho3D/Math/Sphere.h>
 

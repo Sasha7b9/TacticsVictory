@@ -13,6 +13,8 @@
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/MenuRTS.h"
+#include "GUI/Windows/Console.h"
+#include "Network/Messages.h"
 #include "TacticsVictory.h"
 
 
@@ -182,6 +184,8 @@ void TacticsVictory::SubscribeToEvents()
     SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(TacticsVictory, HandleConnecFailed));
     SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleClientConnected));
     SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleClientDisconnected));
+
+    SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(TacticsVictory, HandleNetworkMessage));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -209,6 +213,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 void TacticsVictory::StartServer()
 {
     scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
+    scene->Create();
     gCamera->SetEnabled(true);
     gGuiGame->SetVisible(true);
     gNetwork->StartServer(1000);
@@ -218,44 +223,8 @@ void TacticsVictory::StartServer()
 void TacticsVictory::StartClient()
 {
     gNetwork->Connect(SERVER_ADDRESS, SERVER_PORT, nullptr);
+    gConsole->Write(L"Соединяюсь с удалённым сервером...");
 }
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::HandleServerConnected(StringHash, VariantMap&)
-{
-    Connection *connection = gNetwork->GetServerConnection();
-
-    LOG_INFOF("Connect to %s:%d", connection->GetAddress().CString(), connection->GetPort());
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::HandleServerDisconnected(StringHash, VariantMap&)
-{
-    LOG_INFOF("Connection close");
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::HandleConnecFailed(StringHash, VariantMap&)
-{
-    LOG_INFOF("Failed connection");
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::HandleClientConnected(StringHash, VariantMap& eventData)
-{
-    Connection *connection = (Connection*)eventData[ClientConnected::P_CONNECTION].GetPtr();
-
-    LOG_INFOF("%s:%d connected", connection->GetAddress().CString(), connection->GetPort());
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
-{
-    Connection *connection = (Connection*)eventData[ClientConnected::P_CONNECTION].GetPtr();
-
-    LOG_INFOF("%s:%d disconnected", connection->GetAddress().CString(), connection->GetPort());
-}
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateEditorSession()

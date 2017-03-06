@@ -19,12 +19,6 @@
 SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)
 {
     RegisterObjects();
-
-    Create();
-
-    pathIndicator.Init();
-
-    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(SceneRTS, HandleMouseDown));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -72,7 +66,11 @@ void SceneRTS::Create()
     float dColor = 0.1f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    Vector<Vector<float>> level = gLevel->Load("Game/Levels/level.map");
+    if(level.Empty())
+    {
+        level = gLevel->Load("Game/Levels/level.map");
+    }
+
     gTerrain = new TerrainRTS();
     gTerrain->CreateFromVector(level);
 
@@ -137,6 +135,10 @@ void SceneRTS::Create()
 
     SharedPtr<MilitaryPlant> militaryPlant = MilitaryPlant::Create();
     militaryPlant->SetCoord(Coord(0, 0));
+
+    pathIndicator.Init();
+
+    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(SceneRTS, HandleMouseDown));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

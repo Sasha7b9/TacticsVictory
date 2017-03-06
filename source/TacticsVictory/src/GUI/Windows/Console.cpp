@@ -350,7 +350,7 @@ void ConsoleRTS::HandleUnhandledKey(StringHash, VariantMap& eventData)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ConsoleRTS::HandleClick(StringHash, VariantMap& eventData)
+void ConsoleRTS::HandleClick(StringHash, VariantMap&)
 {
     lineEdit->SetFocus(true);
 }

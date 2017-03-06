@@ -416,6 +416,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ClCompile Include="src\TacticsVictory.cpp" />
     <ClCompile Include="src\TacticsVictoryHandlers.cpp" />
+    <ClCompile Include="src\TacticsVictoryNetworkHandlers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h" />
@@ -511,6 +512,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\Windows\Console.h" />
     <ClInclude Include="src\GUI\Windows\WindowVariables.h" />
     <ClInclude Include="src\LogRTS.h" />
+    <ClInclude Include="src\Network\Messages.h" />
     <ClInclude Include="src\Settings.h" />
     <ClInclude Include="src\SettingsTypes.h" />
     <ClInclude Include="src\stdafx.h" />

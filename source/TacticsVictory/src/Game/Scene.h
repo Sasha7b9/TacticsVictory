@@ -23,10 +23,11 @@ public:
 
     void Update(float timeStep);
     void Create();
-    Mode GetMode();
 
     void SetSelected(Tank *node, bool selected);
     Tank* GetSelected();
+
+    Vector<Vector<float>> level;
 
 private:
     PathIndicator pathIndicator;
