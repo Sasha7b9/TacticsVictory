@@ -25,6 +25,8 @@ public:
 class History
 {
 public:
+    History();
+    ~History();
     void AddString(String &string);
     String GetPrev();
     String GetNext();

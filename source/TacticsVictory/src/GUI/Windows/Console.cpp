@@ -195,6 +195,7 @@ ConsoleRTS::ConsoleRTS(Context *context) :
     text = gUIRoot->CreateChild<Text>();
     text->SetStyle("WindowMenu");
     text->SetFixedSize(GetWidth() - 10, GetHeight() - 15);
+    text->SetWordwrap(true);
     text->SetPosition(2, 0);
     AddChild(text);
 
@@ -312,6 +313,43 @@ void ConsoleRTS::Clear()
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+History::History()
+{
+    SharedPtr<File> fileRead;
+    fileRead = new File(gContext);
+    if (fileRead->Open(GetNameFile("history.txt"), FILE_READ))
+    {
+        while (!fileRead->IsEof())
+        {
+            strings.Push(fileRead->ReadString());
+        }
+        fileRead->Close();
+    }
+    position = (int)strings.Size();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+History::~History()
+{
+    SharedPtr<File> file;
+    file = new File(gContext);
+    String name = GetNameFile("history.txt");
+    if (file->Open(name, FILE_READ))
+    {
+        file->Close();
+        file->Open(name, FILE_WRITE);
+        while (strings.Size() > 100)
+        {
+            strings.Erase(0);
+        }
+        for (uint i = 0; i < strings.Size(); i++)
+        {
+            file->WriteString(strings[i]);
+        }
+        file->Close();
+    }
+}
+
 void History::AddString(String &string)
 {
     if(strings.Contains(string))
