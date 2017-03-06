@@ -9,8 +9,12 @@ class LogRTS : public Log
 public:
     LogRTS(Context *context = gContext);
     static void Write(int level, const String &message, char *file, char *func, int numLine);
+    static void EnableExtendedInfo();
+    static void DisableExtendedInfo();
 
 private:
+    static bool enabledExtendedInfo;
+
     DEFAULT_MEMBERS(LogRTS);
 };
 

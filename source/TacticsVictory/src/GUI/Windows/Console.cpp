@@ -140,13 +140,8 @@ static bool FuncStart(Vector<String> &words)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncStop(Vector<String> &words)
+static bool FuncStop(Vector<String> &)
 {
-    if (words.Size() > 1)
-    {
-        return false;
-    }
-
     if (gNetwork->IsServerRunning())
     {
         gNetwork->StopServer();
@@ -159,23 +154,51 @@ static bool FuncStop(Vector<String> &words)
     return true;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static bool FuncConnections(Vector<String> &)
+{
+    Vector<SharedPtr<Connection>> connections = gNetwork->GetClientConnections();
+
+    if (connections.Size())
+    {
+        for (Connection *connection : connections)
+        {
+            gConsole->Write(ToString("%s:%d", connection->GetAddress().CString(), connection->GetPort()));
+        }
+    }
+    else
+    {
+        if (gNetwork->IsServerRunning())
+        {
+            gConsole->Write("Not connections available");
+        }
+        else
+        {
+            gConsole->Write("Server not running");
+        }
+    }
+
+    return true;
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ConsoleParser::Init()
 {
     ParserStruct structs[100] =
     {
-        {"?",     FuncHelp,  L"Вывод справки"},
-        {"clear", FuncClear, L"Очистить консоль"},
-        {"close", FuncClose, L"Закрыть консоль"},
-        {"exit",  FuncExit,  L"Выход"},
-        {"start", FuncStart, L"Запуск игры в режиме сервера или клиента",
-                             {"server|client [port|address:port]",
-                             L"server - создать сервер на порту port. По умолчанию 1000",
-                             L"client - приконнектиться с серверу с адресом address:port. По умолчанию 127.0.0.1:1000"}},
-        {"stop", FuncStop,   L"остановить сервер/отключиться от сервера"},
-        {"vars",  FuncVars,  L"Управление окном переменных",
-                             {"[open|close]", L"open - показать", L"close - скрыть"}
+        {"?",           FuncHelp,           L"Вывод справки"},
+        {"clear",       FuncClear,          L"Очистить консоль"},
+        {"close",       FuncClose,          L"Закрыть консоль"},
+        {"connections", FuncConnections,    L"Вывести информацию о соединениях"},
+        {"exit",        FuncExit,           L"Выход"},
+        {"start",       FuncStart,          L"Запуск игры в режиме сервера или клиента",
+                                            {"server|client [port|address:port]",
+                                            L"server - создать сервер на порту port. По умолчанию 1000",
+                                            L"client - приконнектиться с серверу с адресом address:port. По умолчанию 127.0.0.1:1000"}},
+        {"stop",        FuncStop,           L"остановить сервер/отключиться от сервера"},
+        {"vars",        FuncVars,           L"Управление окном переменных",
+                                            {"[open|close]", L"open - показать", L"close - скрыть"}
         },
     };
 

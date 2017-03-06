@@ -4,6 +4,10 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool LogRTS::enabledExtendedInfo = false;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 LogRTS::LogRTS(Context *context) : Log(context)
 {
 
@@ -13,16 +17,31 @@ LogRTS::LogRTS(Context *context) : Log(context)
 void LogRTS::Write(int level, const String &message, char *file, char *func, int numLine)
 {
     String str = message;
-    while (str.Length() < 80)
+    if (enabledExtendedInfo)
     {
-        str += "..........";
-    }
-    while (str.Length() < 90)
-    {
-        str += ".";
-    }
+        while (str.Length() < 80)
+        {
+            str += "..........";
+        }
+        while (str.Length() < 90)
+        {
+            str += ".";
+        }
 
-    str += String(file) + String(":") + String(func) + String(":") + String(numLine);
+        str += String(file) + String(":") + String(func) + String(":") + String(numLine);
+    }
     Log::Write(level, str);
     gConsole->Write(str);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void LogRTS::EnableExtendedInfo()
+{
+    enabledExtendedInfo = true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void LogRTS::DisableExtendedInfo()
+{
+    enabledExtendedInfo = false;
 }
