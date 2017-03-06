@@ -1,4 +1,5 @@
 ﻿#include <stdafx.h>
+#include "TacticsVictory.h"
 #include "Core/Camera.h"
 #include "Game/Scene.h"
 #include "LogRTS.h"
@@ -14,7 +15,7 @@
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUi/Controls/Hint.h"
 #include "GUI/GuiGame/GuiGame.h"
-#include "TacticsVictory.h"
+#include "Network/Messages.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -143,4 +144,12 @@ void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& eventData)
     float time = eventData[Update::P_TIMESTEP].GetFloat();
 
     Rocket::UpdateAll(time);
+
+    if(gNetwork && gNetwork->GetServerConnection())
+    {
+        VectorBuffer msg;
+        msg.WriteVector3(gCamera->GetNode()->GetPosition());
+        msg.WriteQuaternion(gCamera->GetNode()->GetRotation());
+        gNetwork->GetServerConnection()->SendMessage(MSG_CAMERA_INFO, true, true, msg);
+    }
 }

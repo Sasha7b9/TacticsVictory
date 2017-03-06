@@ -100,4 +100,9 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
         gCamera->SetEnabled(true);
         gGuiGame->SetVisible(true);
     }
+    else if(msgID == MSG_CAMERA_INFO)
+    {
+        gCamera->SetPosition(buffer.ReadVector3());
+        gCamera->GetNode()->SetRotation(buffer.ReadQuaternion());
+    }
 }
