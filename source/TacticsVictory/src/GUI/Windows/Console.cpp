@@ -1,7 +1,9 @@
 ﻿#include <stdafx.h>
 #include "Console.h"
 #include "GlobalFunctions.h"
+#include "TacticsVictory.h"
 #include "GUI/Windows/WindowVariables.h"
+#include "GUI/Menu/MenuRTS.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,8 +117,25 @@ static bool FuncClose(Vector<String> &)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncStart(Vector<String> &)
+static bool FuncStart(Vector<String> &words)
 {
+    if (words.Size() < 2)
+    {
+        return false;
+    }
+    if (words[1] == "server")
+    {
+        gTacticsVictory->CreateNewGame();
+        gMenu->Hide();
+        return true;
+    }
+    else if (words[1] == "client")
+    {
+        gTacticsVictory->CreateNewGame();
+        gMenu->Hide();
+        return true;
+    }
+
     return false;
 }
 
