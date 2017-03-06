@@ -125,13 +125,13 @@ static bool FuncStart(Vector<String> &words)
     }
     if (words[1] == "server")
     {
-        gTacticsVictory->CreateNewGame();
+        gTacticsVictory->StartServer();
         gMenu->Hide();
         return true;
     }
     else if (words[1] == "client")
     {
-        gTacticsVictory->CreateNewGame();
+        gTacticsVictory->StartClient();
         gMenu->Hide();
         return true;
     }

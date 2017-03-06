@@ -32,6 +32,9 @@ enum TypeCursor
     TypeCursor_Size
 };
 
+#define SERVER_ADDRESS  "127.0.0.1"
+#define SERVER_PORT     1000
+
 
 #define WIDTH_WINDOW_TARGET 500
 #define HEIGHT_WINDOW_TARGET 300

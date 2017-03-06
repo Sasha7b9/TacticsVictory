@@ -53,7 +53,7 @@ void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
     WindowMenu *source = (WindowMenu*)eventData[P_SOURCE].GetPtr();
     WindowMenu *destination = (WindowMenu*)eventData[P_DESTINATION].GetPtr();
 
-    if(action == MenuEvent_NewGame)
+    if(action == MenuEvent_StartServer || action == MenuEvent_StartClient)
     {
         Hide();
     }

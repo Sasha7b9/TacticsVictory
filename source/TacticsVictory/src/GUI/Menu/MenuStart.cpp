@@ -26,9 +26,10 @@ MenuStart::MenuStart(Context *context) : WindowMenu(context)
     buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
 
     buttonServer = new ButtonRTS(this, "Server");
-    buttonServer->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_NewGame));
+    buttonServer->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_StartServer));
 
     buttonClient = new ButtonRTS(this, "Client");
+    buttonClient->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_StartClient));
 
     buttonEditor = new ButtonRTS(this, "Editor");
 

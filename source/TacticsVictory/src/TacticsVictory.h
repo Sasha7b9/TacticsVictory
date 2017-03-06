@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -16,7 +16,8 @@ public:
     virtual void Setup();
     virtual void Start();
     virtual void Stop();
-    void CreateNewGame();
+    void StartServer();
+    void StartClient();
 
 private:
     bool drawDebug = false;
@@ -34,6 +35,12 @@ private:
     void HandleMenuEvent(StringHash, VariantMap&);
     void HandlePostRenderUpdate(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
+
+    void HandleServerConnected(StringHash, VariantMap&);    // Случается у клиента, когда он подключается к серверу
+    void HandleServerDisconnected(StringHash, VariantMap&); // Случается у клиента, когда он отключается от сервера
+    void HandleConnecFailed(StringHash, VariantMap&);
+    void HandleClientConnected(StringHash, VariantMap&);    // Это на сервере, когда к нему подключается новый клиент
+    void HandleClientDisconnected(StringHash, VariantMap&); // На сервере, когда отключается клиент
 
     DEFAULT_MEMBERS(TacticsVictory);
 };

@@ -47,6 +47,7 @@ extern Time                 *gTime;
 extern FileSelector         *gFileSelector;
 extern Profiler             *gProfiler;
 extern Script               *gScript;
+extern Network              *gNetwork;
 
 extern CameraRTS            *gCamera;
 extern CursorRTS            *gCursor;

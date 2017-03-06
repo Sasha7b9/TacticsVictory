@@ -9,19 +9,28 @@ class SceneRTS : public Object
     URHO3D_OBJECT(SceneRTS, Object);
 
 public:
-    SceneRTS(Context *context = gContext);
+
+    enum Mode
+    {
+        Mode_Server,
+        Mode_Client
+    };
+
+    SceneRTS(Context *context = gContext, Mode mode = Mode_Server);
     ~SceneRTS();
 
     static void RegisterObject(Context *context = gContext);
 
     void Update(float timeStep);
     void Create();
+    Mode GetMode();
 
     void SetSelected(Tank *node, bool selected);
     Tank* GetSelected();
 
 private:
     PathIndicator pathIndicator;
+    Mode mode;
 
     void RegisterObjects();
     void HandleMouseDown(StringHash, VariantMap&);

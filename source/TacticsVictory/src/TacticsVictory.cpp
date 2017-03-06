@@ -133,6 +133,8 @@ void TacticsVictory::Start()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateComponents()
 {
+    gNetwork = GetSubsystem<Network>();
+
     gScene = new Scene(gContext);
     // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
     gScene->CreateComponent<Octree>();
@@ -174,6 +176,12 @@ void TacticsVictory::SubscribeToEvents()
     SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
     SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
     SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
+
+    SubscribeToEvent(E_SERVERCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleServerConnected));
+    SubscribeToEvent(E_SERVERDISCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleServerDisconnected));
+    SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(TacticsVictory, HandleConnecFailed));
+    SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleClientConnected));
+    SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleClientDisconnected));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -198,12 +206,56 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::CreateNewGame()
+void TacticsVictory::StartServer()
 {
-    scene = new SceneRTS();
+    scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
     gCamera->SetEnabled(true);
     gGuiGame->SetVisible(true);
+    gNetwork->StartServer(1000);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::StartClient()
+{
+    gNetwork->Connect(SERVER_ADDRESS, SERVER_PORT, nullptr);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::HandleServerConnected(StringHash, VariantMap&)
+{
+    Connection *connection = gNetwork->GetServerConnection();
+
+    LOG_INFOF("Connect to %s:%d", connection->GetAddress().CString(), connection->GetPort());
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::HandleServerDisconnected(StringHash, VariantMap&)
+{
+    LOG_INFOF("Connection close");
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::HandleConnecFailed(StringHash, VariantMap&)
+{
+    LOG_INFOF("Failed connection");
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::HandleClientConnected(StringHash, VariantMap& eventData)
+{
+    Connection *connection = (Connection*)eventData[ClientConnected::P_CONNECTION].GetPtr();
+
+    LOG_INFOF("%s:%d connected", connection->GetAddress().CString(), connection->GetPort());
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
+{
+    Connection *connection = (Connection*)eventData[ClientConnected::P_CONNECTION].GetPtr();
+
+    LOG_INFOF("%s:%d disconnected", connection->GetAddress().CString(), connection->GetPort());
+}
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateEditorSession()

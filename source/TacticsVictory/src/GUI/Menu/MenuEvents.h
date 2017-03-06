@@ -6,7 +6,8 @@ enum
 {
     MenuEvent_OpenOptions,      // Нужно открыть меню "Опции" . P_SOURCE - меню, которое его открывает
     MenuEvent_OpenAboutMe,
-    MenuEvent_NewGame,
+    MenuEvent_StartServer,
+    MenuEvent_StartClient,
     MenuEvent_OpenEditor,
     MenuEvent_Close,            // Это событие генерует окно, когда закрывается. Параметры : P_SOURCE - указатель на себя, P_DESTINATION - указатель 
                                 // на предыдущее окно, или nullptr

@@ -94,9 +94,13 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     int typeEvent = eventData[MenuEvent::P_TYPE].GetInt();
 
-    if (typeEvent == MenuEvent_NewGame)
+    if (typeEvent == MenuEvent_StartServer)
     {
-        CreateNewGame();
+        StartServer();
+    }
+    else if (typeEvent == MenuEvent_StartClient)
+    {
+        StartClient();
     }
     else if (typeEvent == MenuEvent_OpenEditor)
     {
