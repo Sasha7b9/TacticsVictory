@@ -18,7 +18,7 @@ void TacticsVictory::HandleServerConnected(StringHash, VariantMap&)
 
     // Теперь запросим вектор, по которому будем строить карту.
 
-    connection->SendMessage(MSG_REQUEST_LEVEL, true, true, VectorBuffer());
+    connection->SendMessage(MSG_REQUEST_LANDSCAPE, true, true, VectorBuffer());
 
     SetWindowTitleAndIcon();
 }
@@ -69,7 +69,7 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
 
     VectorBufferRTS msg;
 
-    if(msgID == MSG_REQUEST_LEVEL)
+    if(msgID == MSG_REQUEST_LANDSCAPE)
     {
         uint numRows = gTacticsVictory->scene->level.Size();
         uint numCols = gTacticsVictory->scene->level[0].Size();
@@ -85,9 +85,9 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
             }
         }
 
-        connection->SendMessage(MSG_SEND_LEVEL, true, true, msg);
+        connection->SendMessage(MSG_SEND_LANDSCAPE, true, true, msg);
     }
-    else if(msgID == MSG_SEND_LEVEL)
+    else if(msgID == MSG_SEND_LANDSCAPE)
     {
         scene = new SceneRTS(gContext, SceneRTS::Mode_Client);
 
@@ -148,8 +148,6 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
     }
     else if (msgID == MSG_SEND_SCREENSHOT)
     {
-        uint numTanks = buffer.ReadUInt();
-
         PODVector<Tank*> tanks;
         
         gScene->GetComponents<Tank>(tanks, true);
@@ -158,7 +156,6 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
         {
             if (!buffer.IsEof())
             {
-                uint id = buffer.ReadUInt();
                 Vector3 position = buffer.ReadVector3();
                 Quaternion rotation = buffer.ReadQuaternion();
                 tanks[i]->GetNode()->SetPosition(position);
