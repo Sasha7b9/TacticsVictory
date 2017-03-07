@@ -28,6 +28,7 @@ public:
     // rotation = [0...359.999999f]
     void SetRotation(float rotation);
     float GetRotation();
+    uint GetID() { return id; };
 
     Vector3 GetSpeed()
     {
@@ -37,8 +38,10 @@ public:
     Node* GetNode();
 
 private:
+    uint id = 0;
+
     void LoadFromFile();
-    void Init(TypeTank typeTank);
+    void Init(TypeTank typeTank, uint _id_);
 
     TypeTank typeTank;
 

@@ -1,8 +1,9 @@
-#include <stdafx.h>
+﻿#include <stdafx.h>
 #include "GovernorFloat.h"
 #include "GUI/Controls/Button.h"
 #include "GUI/Cursor.h"
 #include "GUI/Controls/Label.h"
+#include "GUI/Windows/Console.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -351,8 +352,21 @@ void GovernorFloat::GetOrderAndMantiss(float value, int *order, int *mantiss)
             break;
         }
     }
+
     int sign = buffer[first] == '-' ? -1 : 1;
-    *order = sign * (((buffer[first + 1] ^ 0x30) * 10 * 10) + ((buffer[first + 2] ^ 0x30) * 10) + (buffer[first + 3] ^ 0x30));
+
+    int startOrder = first + 1;                 // Индекс первого символа порядка
+    int lastOrder = startOrder;
+    while(buffer[lastOrder + 1])
+    {
+        lastOrder++;                            // Находим индекс последнего символа порядка
+    }
+
+    int units = buffer[lastOrder--] ^ 0x30;                                     // Количество единиц
+    int tens = (lastOrder < startOrder) ? 0 : (buffer[lastOrder--] ^ 0x30);     // Количество десятков
+    int hundrend = (lastOrder < startOrder) ? 0 : (buffer[lastOrder] ^ 0x30);   // Количество сотен
+
+    *order = sign *(units + tens * 10 + hundrend * 100);
 
     sign = buffer[0] == '-' ? -1 : 1;
     first = sign < 0 ? 1 : 0;

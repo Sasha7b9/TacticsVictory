@@ -251,6 +251,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::StartServer()
 {
+    type = Type_Server;
     gMenu->Hide();
     scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
     scene->Create();
@@ -258,12 +259,13 @@ void TacticsVictory::StartServer()
     gGuiGame->SetVisible(true);
     gNetwork->StartServer(1000);
     SetWindowTitleAndIcon();
-    gGraphics->SetWindowPosition(1700, 100);
+    gGraphics->SetWindowPosition(2000, 100);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::StartClient()
 {
+    type = Type_Client;
     gMenu->Hide();
     gNetwork->Connect(SERVER_ADDRESS, SERVER_PORT, nullptr);
     gConsole->Write(L"Соединяюсь с удалённым сервером...");

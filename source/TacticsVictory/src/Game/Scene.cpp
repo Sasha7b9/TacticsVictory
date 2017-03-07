@@ -14,6 +14,8 @@
 #include "Game/Sounds.h"
 #include "Game/Particles.h"
 #include "GUI/GuiGame/WindowTarget.h"
+#include "Network/Messages.h"
+#include "Network/VectorBufferRTS.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -168,6 +170,21 @@ void SceneRTS::Update(float /*timeStep*/)
     }
 
     pathIndicator.Update();
+
+    if (gNetwork->IsServerRunning())
+    {
+        VectorBufferRTS msg;
+
+        uint numTanks = gTanks.Size();
+        msg.WriteUInt(numTanks);
+
+        for (Tank *tank : gTanks)
+        {
+            msg.WriteTank(tank);
+        }
+
+        gNetwork->BroadcastMessage(MSG_SEND_SCREENSHOT, true, true, msg);
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

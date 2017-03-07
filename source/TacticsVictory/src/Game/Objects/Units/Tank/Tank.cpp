@@ -41,8 +41,9 @@ void Tank::RegisterObject(Context* context)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Tank::Init(TypeTank type_)
+void Tank::Init(TypeTank type_, uint _id_)
 {
+    id = _id_;
     node_->SetVar("PointerTank", this);
 
     translator.Init(this);
@@ -143,7 +144,7 @@ void Tank::Update(float dT)
         {
             if (GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified)
             {
-                Init(typeTank);
+                Init(typeTank, GetID());
             }
             timeLastReload = time;
         }
@@ -173,11 +174,11 @@ float Tank::GetRotation()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint id)
+SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
 {
-    SharedPtr<Node> node(gScene->CreateChild(NODE_TANK, LOCAL, id));
-    SharedPtr<Tank> tank(node->CreateComponent<Tank>());
-    tank->Init(typeTank);
+    SharedPtr<Node> node(gScene->CreateChild(NODE_TANK, LOCAL, _id_));
+    SharedPtr<Tank> tank(node->CreateComponent<Tank>(LOCAL, _id_));
+    tank->Init(typeTank, _id_);
     return tank;
 }
 

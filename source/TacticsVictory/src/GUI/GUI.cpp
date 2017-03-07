@@ -125,6 +125,54 @@ static float GetCameraYaw()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+static float GetSpeedNetIN()
+{
+    if(gNetwork->GetServerConnection())
+    {
+        Connection *connection = gNetwork->GetServerConnection();
+        return connection->GetBytesInPerSec() / 1e3f;
+    }
+    else
+    {
+        Vector<SharedPtr<Connection>> connections = gNetwork->GetClientConnections();
+        if(connections.Size())
+        {
+            float speed = 0.0f;
+            for(Connection *connection : connections)
+            {
+                speed += connection->GetBytesInPerSec();
+            }
+            return speed / 1e3f;
+        }
+    }
+    return 0.0f;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static float GetSpeedNetOUT()
+{
+    if(gNetwork->GetServerConnection())
+    {
+        Connection *connection = gNetwork->GetServerConnection();
+        return connection->GetBytesOutPerSec() / 1e3f;
+    }
+    else
+    {
+        Vector<SharedPtr<Connection>> connections = gNetwork->GetClientConnections();
+        if(connections.Size())
+        {
+            float speed = 0.0f;
+            for(Connection *connection : connections)
+            {
+                speed += connection->GetBytesOutPerSec();
+            }
+            return speed / 1e3f;
+        }
+    }
+    return 0.0f;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GUI::Create()
 {
     gConsole = new ConsoleRTS(gContext);
@@ -140,6 +188,8 @@ void GUI::Create()
     gWindowVars->AddFunctionFloat("Camera pos Z", GetPosCameraZ, SetPosCameraZ);
     gWindowVars->AddFunctionFloat("Camera pitch", GetCameraPitch, nullptr);
     gWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
+    gWindowVars->AddFunctionFloat("Net speed in, kB/s", GetSpeedNetIN, nullptr);
+    gWindowVars->AddFunctionFloat("Net speec out, kB/s", GetSpeedNetOUT, nullptr);
 
     gLocalization->SetLanguage("en");
 
