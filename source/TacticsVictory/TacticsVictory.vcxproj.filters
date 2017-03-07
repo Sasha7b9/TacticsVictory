@@ -432,6 +432,9 @@
     <ClCompile Include="src\TacticsVictoryNetworkHandlers.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Network\VectorBufferRTS.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -726,6 +729,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Network\Messages.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Network\VectorBufferRTS.h">
       <Filter>Network</Filter>
     </ClInclude>
   </ItemGroup>

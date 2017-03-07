@@ -2,6 +2,7 @@
 #include "TacticsVictory.h"
 #include "LogRTS.h"
 #include "Network/Messages.h"
+#include "Network/VectorBufferRTS.h"
 #include "Core/Camera.h"
 #include "Game/Scene.h"
 #include "GUI/GuiGame/GuiGame.h"
@@ -52,6 +53,8 @@ void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
     Connection *connection = (Connection*)eventData[ClientConnected::P_CONNECTION].GetPtr();
 
     LOG_INFOF("%s:%d disconnected", connection->GetAddress().CString(), connection->GetPort());
+
+    gEngine->Exit();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -64,7 +67,7 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
     const PODVector<uint8>& data = eventData[P_DATA].GetBuffer();
     MemoryBuffer buffer(data);
 
-    VectorBuffer msg;
+    VectorBufferRTS msg;
 
     if(msgID == MSG_REQUEST_LEVEL)
     {
@@ -105,10 +108,42 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
         scene->Create();
         gCamera->SetEnabled(true);
         gGuiGame->SetVisible(true);
+
+        connection->SendMessage(MSG_REQUEST_TANKS, true, true, VectorBuffer());
     }
     else if(msgID == MSG_CAMERA_INFO)
     {
         gCamera->SetPosition(buffer.ReadVector3());
         gCamera->GetNode()->SetRotation(buffer.ReadQuaternion());
     }
+    else if (msgID == MSG_REQUEST_TANKS)
+    {
+        uint time = gTime->GetSystemTime();
+        msg.WriteUInt(gTanks.Size());
+
+        for (Tank *tank : gTanks)
+        {
+            msg.WriteTank(tank);
+        }
+        connection->SendMessage(MSG_SEND_TANKS, true, true, msg);
+
+        gConsole->Write(String(gTime->GetSystemTime() - time));
+    }
+    else if (msgID == MSG_SEND_TANKS)
+    {
+        uint numTanks = buffer.ReadUInt();
+
+        for (uint i = 0; i < numTanks; i++)
+        {
+            uint id = buffer.ReadUInt();
+            Vector3 position = buffer.ReadVector3();
+            Quaternion rotation = buffer.ReadQuaternion();
+
+            SharedPtr<Tank> tank = Tank::Create(Tank::Small, id);
+            gTanks.Push(tank);
+            tank->GetNode()->SetPosition(position);
+            tank->GetNode()->SetRotation(rotation);
+        }
+    }
 }
+

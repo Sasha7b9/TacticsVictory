@@ -173,9 +173,9 @@ float Tank::GetRotation()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-SharedPtr<Tank> Tank::Create(TypeTank typeTank)
+SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint id)
 {
-    SharedPtr<Node> node(gScene->CreateChild(NODE_TANK));
+    SharedPtr<Node> node(gScene->CreateChild(NODE_TANK, LOCAL, id));
     SharedPtr<Tank> tank(node->CreateComponent<Tank>());
     tank->Init(typeTank);
     return tank;
@@ -194,4 +194,10 @@ void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
     Particles::EmittingDinamic(Explosion_Tank, node_);
 
     Particles::EmittingDinamic(Fire_Tank, node_);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+Node* Tank::GetNode()
+{
+    return node_;
 }

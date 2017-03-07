@@ -25,6 +25,7 @@ public:
     virtual void Stop();
     void StartServer();
     void StartClient();
+    TypeApplication GetTypeApplication();
 
     SceneRTS *scene = nullptr;
 

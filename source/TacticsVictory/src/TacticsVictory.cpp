@@ -258,6 +258,7 @@ void TacticsVictory::StartServer()
     gGuiGame->SetVisible(true);
     gNetwork->StartServer(1000);
     SetWindowTitleAndIcon();
+    gGraphics->SetWindowPosition(1700, 100);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -278,4 +279,10 @@ void TacticsVictory::CreateEditorSession()
     gGuiEditor->SetVisible(true);
     gCamera->SetEnabled(true);
     gEditor->Run();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+TypeApplication TacticsVictory::GetTypeApplication()
+{
+    return type;
 }

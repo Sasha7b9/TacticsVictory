@@ -1,5 +1,6 @@
 #include <stdafx.h>
 #include "Scene.h"
+#include "TacticsVictory.h"
 #include "Core/Camera.h"
 #include "Core/Math.h"
 #include "Game/Logic/Movinator.h"
@@ -74,39 +75,41 @@ void SceneRTS::Create()
     gTerrain = new TerrainRTS();
     gTerrain->CreateFromVector(level);
 
-    /*
-    for (int i = 0; i < 125; i++)
+    if (gTacticsVictory->GetTypeApplication() == Type_Server)
     {
-        uint row = 0;
-        uint col = 0;
-        do
+
+        for (int i = 0; i < 125; i++)
         {
-            col = (uint)Math::RandomInt(0, (int)gLevel->GetWidth() - 1);
-            row = (uint)Math::RandomInt(0, (int)gLevel->GetHeight() - 1);
-        } while(gTerrain->GetHeight(row, col) != 0.0f);
-        
+            uint row = 0;
+            uint col = 0;
+            do
+            {
+                col = (uint)Math::RandomInt(0, (int)gLevel->GetWidth() - 1);
+                row = (uint)Math::RandomInt(0, (int)gLevel->GetHeight() - 1);
+            } while (gTerrain->GetHeight(row, col) != 0.0f);
+
+            SharedPtr<Tank> tank = Tank::Create(Tank::Small);
+            gTanks.Push(tank);
+            tank->SetCoord({row, col});
+            tank->SetAutoReloaded(1);
+        }
+
         SharedPtr<Tank> tank = Tank::Create(Tank::Small);
+        tank->SetCoord(Coord(0, 0));
         gTanks.Push(tank);
-        tank->SetCoord({row, col});
-        tank->SetAutoReloaded(1);
+
+        tank = Tank::Create(Tank::Small);
+        tank->SetCoord(Coord(0, 40));
+        gTanks.Push(tank);
+
+        tank = Tank::Create(Tank::Small);
+        tank->SetCoord(Coord(40, 0));
+        gTanks.Push(tank);
+
+        tank = Tank::Create(Tank::Small);
+        tank->SetCoord(Coord(40, 40));
+        gTanks.Push(tank);
     }
-
-    SharedPtr<Tank> tank = Tank::Create(Tank::Small);
-    tank->SetCoord(Coord(0, 0));
-    gTanks.Push(tank);
-
-    tank = Tank::Create(Tank::Small);
-    tank->SetCoord(Coord(0, 40));
-    gTanks.Push(tank);
-
-    tank = Tank::Create(Tank::Small);
-    tank->SetCoord(Coord(40, 0));
-    gTanks.Push(tank);
-
-    tank = Tank::Create(Tank::Small);
-    tank->SetCoord(Coord(40, 40));
-    gTanks.Push(tank);
-    */
 
     SharedPtr<Node> lightNode;
     lightNode = gScene->CreateChild("LigthNode");
