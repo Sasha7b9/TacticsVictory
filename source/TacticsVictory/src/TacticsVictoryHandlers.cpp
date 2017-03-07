@@ -148,8 +148,22 @@ void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& eventData)
     if(gNetwork && gNetwork->GetServerConnection())
     {
         VectorBuffer msg;
-        msg.WriteVector3(gCamera->GetNode()->GetPosition());
-        msg.WriteQuaternion(gCamera->GetNode()->GetRotation());
-        gNetwork->GetServerConnection()->SendMessage(MSG_CAMERA_INFO, true, true, msg);
+
+        static Vector3 prevPosition = Vector3::ZERO;
+        Vector3 position = gCamera->GetNode()->GetPosition();
+
+        static Quaternion prevRotation = Quaternion::IDENTITY;
+        Quaternion rotation = gCamera->GetNode()->GetRotation();
+
+        if(position != prevPosition || rotation != prevRotation)
+        {
+            msg.WriteVector3(position);
+            msg.WriteQuaternion(rotation);
+
+            prevPosition = position;
+            prevRotation = rotation;
+
+            gNetwork->GetServerConnection()->SendMessage(MSG_CAMERA_INFO, true, true, msg);
+        }
     }
 }

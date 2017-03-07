@@ -183,7 +183,7 @@ void SceneRTS::Update(float /*timeStep*/)
             msg.WriteTank(tank);
         }
 
-        gNetwork->BroadcastMessage(MSG_SEND_SCREENSHOT, true, true, msg);
+        gNetwork->BroadcastMessage(MSG_SEND_SCREENSHOT, false, false, msg);
     }
 }
 
