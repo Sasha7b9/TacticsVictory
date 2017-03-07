@@ -14,7 +14,8 @@
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/MenuRTS.h"
 #include "GUI/Windows/Console.h"
-#include "Network/Messages.h"
+#include "Network/NetworkMessages.h"
+#include "Network/NetworkFunctions.h"
 #include "TacticsVictory.h"
 
 
@@ -35,6 +36,8 @@ TacticsVictory::TacticsVictory(Context* context) :
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::Setup()
 {
+    FillNetworkFunctions();
+
     gTacticsVictory = this;
     gSet = new Settings();
     gCache = GetSubsystem<ResourceCache>();
@@ -287,4 +290,17 @@ void TacticsVictory::CreateEditorSession()
 TypeApplication TacticsVictory::GetTypeApplication()
 {
     return type;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::FillNetworkFunctions()
+{
+#define ADD_NETWORK_FUNCTION(name) networkFunctions[name] = FUNC_##name
+
+    ADD_NETWORK_FUNCTION(MSG_REQUEST_LANDSCAPE);
+    ADD_NETWORK_FUNCTION(MSG_CAMERA_INFO);
+    ADD_NETWORK_FUNCTION(MSG_REQUEST_TANKS);
+    ADD_NETWORK_FUNCTION(MSG_SEND_LANDSCAPE);
+    ADD_NETWORK_FUNCTION(MSG_SEND_TANKS);
+    ADD_NETWORK_FUNCTION(MSG_SEND_SCREENSHOT);
 }

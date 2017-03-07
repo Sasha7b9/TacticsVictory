@@ -3,6 +3,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class SceneRTS;
+class VectorBufferRTS;
 
 enum TypeApplication
 {
@@ -32,6 +33,8 @@ public:
 private:
     bool drawDebug = false;
     TypeApplication type = Type_None;
+    typedef void(*networkFunc)(Connection*, MemoryBuffer&, VectorBufferRTS&);
+    HashMap<int, networkFunc> networkFunctions;                  // Здесь функции-обработчики сетевых сообщений
 
     void ParseArguments(Vector<String> &arguments);
     void CreateComponents();
@@ -40,6 +43,7 @@ private:
     void CreateConsoleAndDebugHud();
     void CreateEditorSession();
     void SubscribeToEvents();
+    void FillNetworkFunctions();
 
     void HandleUpdate(StringHash, VariantMap&);
     void HandlePostUpdate(StringHash, VariantMap&);

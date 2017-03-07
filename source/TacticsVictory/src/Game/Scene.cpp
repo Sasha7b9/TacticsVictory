@@ -14,7 +14,7 @@
 #include "Game/Sounds.h"
 #include "Game/Particles.h"
 #include "GUI/GuiGame/WindowTarget.h"
-#include "Network/Messages.h"
+#include "Network/NetworkMessages.h"
 #include "Network/VectorBufferRTS.h"
 
 

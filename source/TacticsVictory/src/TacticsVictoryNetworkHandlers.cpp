@@ -1,7 +1,8 @@
 ﻿#include <stdafx.h>
 #include "TacticsVictory.h"
 #include "LogRTS.h"
-#include "Network/Messages.h"
+#include "Network/NetworkMessages.h"
+#include "Network/NetworkFunctions.h"
 #include "Network/VectorBufferRTS.h"
 #include "Core/Camera.h"
 #include "Game/Scene.h"
@@ -69,98 +70,9 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
 
     VectorBufferRTS msg;
 
-    if(msgID == MSG_REQUEST_LANDSCAPE)
+    if(networkFunctions[msgID])
     {
-        uint numRows = gTacticsVictory->scene->level.Size();
-        uint numCols = gTacticsVictory->scene->level[0].Size();
-
-        msg.WriteUInt(numRows);
-        msg.WriteUInt(numCols);
-
-        for(uint row = 0; row < numRows; row++)
-        {
-            for(uint col = 0; col < numCols; col++)
-            {
-                msg.WriteFloat(gTacticsVictory->scene->level[row][col]);
-            }
-        }
-
-        connection->SendMessage(MSG_SEND_LANDSCAPE, true, true, msg);
-    }
-    else if(msgID == MSG_SEND_LANDSCAPE)
-    {
-        scene = new SceneRTS(gContext, SceneRTS::Mode_Client);
-
-        uint numRows = buffer.ReadUInt();
-        uint numCols = buffer.ReadUInt();
-
-        gTacticsVictory->scene->level.Resize(numRows);
-        for(uint row = 0; row < numRows; row++)
-        {
-            gTacticsVictory->scene->level[row].Resize(numCols);
-            for(uint col = 0; col < numCols; col++)
-            {
-                gTacticsVictory->scene->level[row][col] = buffer.ReadFloat();
-            }
-        }
-
-        scene = new SceneRTS(gContext, SceneRTS::Mode_Client);
-        scene->Create();
-        gCamera->SetEnabled(true);
-        gGuiGame->SetVisible(true);
-
-        connection->SendMessage(MSG_REQUEST_TANKS, true, true, VectorBuffer());
-    }
-    else if(msgID == MSG_CAMERA_INFO)
-    {
-        gCamera->SetPosition(buffer.ReadVector3());
-        gCamera->GetNode()->SetRotation(buffer.ReadQuaternion());
-    }
-    else if (msgID == MSG_REQUEST_TANKS)
-    {
-        uint time = gTime->GetSystemTime();
-        msg.WriteUInt(Tank::GetAll().Size());
-
-        for (Tank *tank : Tank::GetAll())
-        {
-            msg.WriteTank(tank);
-        }
-        connection->SendMessage(MSG_SEND_TANKS, true, true, msg);
-
-        gConsole->Write(String(gTime->GetSystemTime() - time));
-    }
-    else if (msgID == MSG_SEND_TANKS)
-    {
-        uint numTanks = buffer.ReadUInt();
-
-        for (uint i = 0; i < numTanks; i++)
-        {
-            uint id = buffer.ReadUInt();
-            Vector3 position = buffer.ReadVector3();
-            Quaternion rotation = buffer.ReadQuaternion();
-
-            SharedPtr<Tank> tank = Tank::Create(Tank::Small, id);
-            tank->GetNode()->SetPosition(position);
-            tank->GetNode()->SetRotation(rotation);
-            tank->SetEnabled(false);
-        }
-    }
-    else if (msgID == MSG_SEND_SCREENSHOT)
-    {
-        volatile uint numTanks = buffer.ReadUInt();
-
-        for(uint i = 0; i < numTanks; i++)
-        {
-            uint id = buffer.ReadUInt();
-            Vector3 position = buffer.ReadVector3();
-            Quaternion rotation = buffer.ReadQuaternion();
-            Tank *tank = Tank::GetByID(id);
-            if(tank)
-            {
-                tank->GetNode()->SetPosition(position);
-                tank->GetNode()->SetRotation(rotation);
-            }
-        }
+        networkFunctions[msgID](connection, buffer, msg);
     }
 }
 

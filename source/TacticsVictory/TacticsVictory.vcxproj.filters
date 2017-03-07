@@ -435,6 +435,9 @@
     <ClCompile Include="src\Network\VectorBufferRTS.cpp">
       <Filter>Network</Filter>
     </ClCompile>
+    <ClCompile Include="src\Network\NetworkFunctions.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">
@@ -728,10 +731,13 @@
     <ClInclude Include="src\LogRTS.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Network\Messages.h">
+    <ClInclude Include="src\Network\VectorBufferRTS.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="src\Network\VectorBufferRTS.h">
+    <ClInclude Include="src\Network\NetworkFunctions.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Network\NetworkMessages.h">
       <Filter>Network</Filter>
     </ClInclude>
   </ItemGroup>
