@@ -132,7 +132,6 @@ static bool FuncStart(Vector<String> &words)
         else
         {
             gTacticsVictory->StartServer();
-            gMenu->Hide();
         }
         return true;
     }
@@ -145,7 +144,6 @@ static bool FuncStart(Vector<String> &words)
         else
         {
             gTacticsVictory->StartClient();
-            gMenu->Hide();
         }
         return true;
     }

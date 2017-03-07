@@ -1,4 +1,4 @@
-#include <stdafx.h>
+п»ї#include <stdafx.h>
 #include "TacticsVictory.h"
 #include "LogRTS.h"
 #include "Network/Messages.h"
@@ -15,21 +15,27 @@ void TacticsVictory::HandleServerConnected(StringHash, VariantMap&)
 
     LOG_INFOF("Connect established to %s:%d", connection->GetAddress().CString(), connection->GetPort());
 
-    // Теперь запросим вектор, по которому будем строить карту.
+    // РўРµРїРµСЂСЊ Р·Р°РїСЂРѕСЃРёРј РІРµРєС‚РѕСЂ, РїРѕ РєРѕС‚РѕСЂРѕРјСѓ Р±СѓРґРµРј СЃС‚СЂРѕРёС‚СЊ РєР°СЂС‚Сѓ.
 
     connection->SendMessage(MSG_REQUEST_LEVEL, true, true, VectorBuffer());
+
+    SetWindowTitleAndIcon();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::HandleServerDisconnected(StringHash, VariantMap&)
 {
     LOG_INFOF("Connection close");
+
+    SetWindowTitleAndIcon();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::HandleConnecFailed(StringHash, VariantMap&)
 {
     LOG_INFOF("Failed connection");
+
+    SetWindowTitleAndIcon();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

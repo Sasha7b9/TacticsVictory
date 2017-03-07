@@ -4,6 +4,13 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class SceneRTS;
 
+enum TypeApplication
+{
+    Type_None,          // Это если запускаем без параметров
+    Type_Server,        // Это для запуска в режиме сервера
+    Type_Client         // Это для запуска в режиме клиента
+};
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class TacticsVictory : public Application
@@ -23,7 +30,9 @@ public:
 
 private:
     bool drawDebug = false;
+    TypeApplication type = Type_None;
 
+    void ParseArguments(Vector<String> &arguments);
     void CreateComponents();
     void RegistrationFactories();
     void SetWindowTitleAndIcon();

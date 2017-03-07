@@ -129,7 +129,35 @@ void TacticsVictory::Start()
     gScript = GetSubsystem<Script>();
     gScript->Execute("Print(\"Hello World!\");");
 
+    Vector<String> arguments = GetArguments();
+    ParseArguments(arguments);
+
+    if (type == Type_Server)
+    {
+        StartServer();
+    }
+    else if (type == Type_Client)
+    {
+        StartClient();
+    }
+
     PROFILER_FUNC_LEAVE;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::ParseArguments(Vector<String> &arguments)
+{
+    if (arguments.Size() > 0)
+    {
+        if (arguments[0] == "-server")
+        {
+            type = Type_Server;
+        }
+        else if (arguments[0] == "-client")
+        {
+            type = Type_Client;
+        }
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -193,7 +221,18 @@ void TacticsVictory::SetWindowTitleAndIcon()
 {
     Image* icon = gCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     gGraphics->SetWindowIcon(icon);
-    gGraphics->SetWindowTitle(L"Тактика победы");
+    if (type == Type_Server)
+    {
+        gGraphics->SetWindowTitle(L"Тактика победы Сервер");
+    }
+    else if (type == Type_Client)
+    {
+        gGraphics->SetWindowTitle(L"Taктика победы Клиент");
+    }
+    else
+    {
+        gGraphics->SetWindowTitle(L"Тактика победы");
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -212,16 +251,19 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::StartServer()
 {
+    gMenu->Hide();
     scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
     scene->Create();
     gCamera->SetEnabled(true);
     gGuiGame->SetVisible(true);
     gNetwork->StartServer(1000);
+    SetWindowTitleAndIcon();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::StartClient()
 {
+    gMenu->Hide();
     gNetwork->Connect(SERVER_ADDRESS, SERVER_PORT, nullptr);
     gConsole->Write(L"Соединяюсь с удалённым сервером...");
 }
