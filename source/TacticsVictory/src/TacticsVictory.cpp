@@ -122,6 +122,7 @@ void TacticsVictory::Start()
 
     gCamera = new CameraRTS();
 
+#ifdef CLIENT
     gLog->SetLevel(LOG_ERROR);
     gGUI->Create();
     gLog->SetLevel(LOG_INFO);
@@ -129,6 +130,7 @@ void TacticsVictory::Start()
     gFileSelector = new FileSelector(gContext);
     gFileSelector->GetWindow()->SetModal(false);
     gFileSelector->GetWindow()->SetVisible(false);
+#endif
 
     SubscribeToEvents();
 
@@ -189,12 +191,16 @@ void TacticsVictory::CreateComponents()
     GUI::RegistrationObjects();
 
     gLog->SetLevel(LOG_ERROR);
+#ifdef CLIENT
     gMenu = new MenuRTS();
+#endif
     gLog->SetLevel(LOG_ERROR);
 
     gLevel = new Level();
 
+#ifdef CLIENT
     gAudio = GetSubsystem<Audio>();
+#endif
 
     SceneRTS::RegisterObject();
 }
@@ -249,6 +255,7 @@ void TacticsVictory::SetWindowTitleAndIcon()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateConsoleAndDebugHud()
 {
+#ifdef CLIENT
     XMLFile* xmlFile = gCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
 
     gEngineConsole = engine_->CreateConsole();
@@ -257,6 +264,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 
     gDebugHud = engine_->CreateDebugHud();
     gDebugHud->SetDefaultStyle(xmlFile);
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

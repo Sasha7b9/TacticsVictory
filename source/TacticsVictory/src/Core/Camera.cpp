@@ -32,11 +32,13 @@ CameraRTS::CameraRTS()
     light->SetRange(25.0f);
     light->SetEnabled(true);
 
+#ifdef CLIENT
     SetupViewport();
 
     Node *listenerNode = cameraNode->CreateChild("Listener");
     SoundListener *listener = listenerNode->CreateComponent<SoundListener>();
     gAudio->SetListener(listener);
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
