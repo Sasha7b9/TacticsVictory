@@ -5,6 +5,7 @@
 #include "VectorBufferRTS.h"
 #include "Core/Camera.h"
 #include "Game/Scene.h"
+#include "Game/Level.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Windows/Console.h"
 
@@ -32,21 +33,22 @@ void FUNC_MSG_REQUEST_LANDSCAPE(Connection *connection, MemoryBuffer &, VectorBu
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FUNC_MSG_SEND_LANDSCAPE(Connection *connection, MemoryBuffer &in, VectorBufferRTS &)
 {
-    gTacticsVictory->scene = new SceneRTS(gContext, SceneRTS::Mode_Client);
-
     uint numRows = in.ReadUInt();
     uint numCols = in.ReadUInt();
 
-    gTacticsVictory->scene->level.Resize(numRows);
+    Vector<Vector<float>> level;
+
+    level.Resize(numRows);
     for(uint row = 0; row < numRows; row++)
     {
-        gTacticsVictory->scene->level[row].Resize(numCols);
+        level[row].Resize(numCols);
         for(uint col = 0; col < numCols; col++)
         {
-            gTacticsVictory->scene->level[row][col] = in.ReadFloat();
+            level[row][col] = in.ReadFloat();
         }
     }
 
+    gLevel->Set(level);
     gTacticsVictory->scene = new SceneRTS(gContext, SceneRTS::Mode_Client);
     gTacticsVictory->scene->Create();
     gCamera->SetEnabled(true);

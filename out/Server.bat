@@ -1,1 +1,1 @@
-TacticsVictory.exe -server
+TVserver.exe -server

@@ -25,7 +25,7 @@ CameraRTS::CameraRTS()
     camera->SetFarClip(1000.0f);
     camera->SetNearClip(1.0f);
     cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
-    cameraNode->SetPosition({-37.0f, 45.0f, 15.0f});
+    cameraNode->SetPosition({120.0f, 50.0f, -160.0f});
 
     light = cameraNode->CreateComponent<Light>();
     light->SetLightType(LIGHT_POINT);

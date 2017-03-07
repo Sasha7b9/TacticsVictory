@@ -32,8 +32,8 @@ public:
 
 private:
     SharedPtr<Node> cameraNode;
-    float yaw = 76.0f;
-    float pitch = 28.0f;
+    float yaw = 10.0f;
+    float pitch = 27.0f;
     SharedPtr<Light> light;
     bool enabled = false;
     Vector3 lookAt;

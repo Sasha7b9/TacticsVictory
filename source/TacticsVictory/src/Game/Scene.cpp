@@ -69,9 +69,13 @@ void SceneRTS::Create()
     float dColor = 0.1f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    if(level.Empty())
+    if(gTacticsVictory->GetTypeApplication() == Type_Server)
     {
         level = gLevel->Load("Game/Levels/level.map");
+    }
+    else
+    {
+        level = gLevel->Get();
     }
 
     gTerrain = new TerrainRTS();

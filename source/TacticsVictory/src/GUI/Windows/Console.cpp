@@ -67,6 +67,7 @@ static void ShowFullInfo(Vector<String> &strings)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool FuncExit(Vector<String> &)
 {
+    gNetwork->Disconnect();
     gEngine->Exit();
     return true;
 }
@@ -131,7 +132,9 @@ static bool FuncStart(Vector<String> &words)
         }
         else
         {
-            gTacticsVictory->StartServer();
+            static Vector<String> arguments;
+            arguments.Push(String("-server"));
+            gFileSystem->SystemRunAsync(GetFileName("TVserver.exe"), arguments);
         }
         return true;
     }
