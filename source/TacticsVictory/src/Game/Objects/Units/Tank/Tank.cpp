@@ -35,6 +35,12 @@ Tank::Tank(Context *context) : UnitObject(context)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+Tank::~Tank()
+{
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::RegisterObject(Context* context)
 {
     context->RegisterFactory<Tank>();
@@ -43,13 +49,14 @@ void Tank::RegisterObject(Context* context)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::Init(TypeTank type_, uint _id_)
 {
-    id = _id_;
     node_->SetVar("PointerTank", this);
 
     translator.Init(this);
     typeTank = type_;
     LoadFromFile();
     Normalize();
+
+    id = (_id_ == 0) ? id : _id_;
 
     rocketLauncher->Init();
 }
@@ -144,7 +151,7 @@ void Tank::Update(float dT)
         {
             if (GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified)
             {
-                Init(typeTank, GetID());
+                Init(typeTank, id);
             }
             timeLastReload = time;
         }
@@ -176,8 +183,8 @@ float Tank::GetRotation()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
 {
-    SharedPtr<Node> node(gScene->CreateChild(NODE_TANK, LOCAL, _id_));
-    SharedPtr<Tank> tank(node->CreateComponent<Tank>(LOCAL, _id_));
+    SharedPtr<Node> node(gScene->CreateChild(NODE_TANK, LOCAL));
+    SharedPtr<Tank> tank(node->CreateComponent<Tank>(LOCAL));
     tank->Init(typeTank, _id_);
     return tank;
 }

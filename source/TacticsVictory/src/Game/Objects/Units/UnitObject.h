@@ -7,6 +7,7 @@ class UnitObject : public GameObject
 {
 public:
     UnitObject(Context *context = gContext);
+    virtual ~UnitObject();
     static void SetViewTargetView(bool view);
     virtual void SetSelected(bool selected);
 

@@ -8,7 +8,7 @@ void VectorBufferRTS::WriteTank(Tank *tank)
 {
     Node *node = tank->GetNode();
 
-    WriteUInt(node->GetID());
+    WriteUInt(tank->GetID());
     WriteVector3(node->GetPosition());
     WriteQuaternion(node->GetRotation());
 }

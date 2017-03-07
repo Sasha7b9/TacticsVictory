@@ -80,7 +80,7 @@ void SceneRTS::Create()
     if (gTacticsVictory->GetTypeApplication() == Type_Server)
     {
 
-        for (int i = 0; i < 125; i++)
+        for (int i = 0; i < 100; i++)
         {
             uint row = 0;
             uint col = 0;
@@ -95,22 +95,6 @@ void SceneRTS::Create()
             tank->SetCoord({row, col});
             tank->SetAutoReloaded(1);
         }
-
-        SharedPtr<Tank> tank = Tank::Create(Tank::Small);
-        tank->SetCoord(Coord(0, 0));
-        gTanks.Push(tank);
-
-        tank = Tank::Create(Tank::Small);
-        tank->SetCoord(Coord(0, 40));
-        gTanks.Push(tank);
-
-        tank = Tank::Create(Tank::Small);
-        tank->SetCoord(Coord(40, 0));
-        gTanks.Push(tank);
-
-        tank = Tank::Create(Tank::Small);
-        tank->SetCoord(Coord(40, 40));
-        gTanks.Push(tank);
     }
 
     SharedPtr<Node> lightNode;

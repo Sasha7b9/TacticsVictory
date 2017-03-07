@@ -15,6 +15,7 @@ public:
     };
 
     GameObject(Context *context = gContext);
+    virtual ~GameObject();
     void SetAutoReloaded(int time) { timeForReload = time; };
     virtual void Update(float timeStep);
     void EnableContextMenu();
@@ -25,8 +26,10 @@ public:
     Vector3 GetPosition();
     Node *GetNode();
     void SetCoord(const Coord& coord);
+    uint GetID();
 
 protected:
+    uint id = 0;
     int timeForReload = 0;
     int timeLastReload = 0;
     unsigned timeLastModified = 0;

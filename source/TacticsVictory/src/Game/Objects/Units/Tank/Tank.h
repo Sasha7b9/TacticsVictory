@@ -20,26 +20,19 @@ public:
     };
 
     Tank(Context *context = gContext);
+    virtual ~Tank();
     static void RegisterObject(Context* context = gContext);
     virtual void Update(float timeStep);
-    static SharedPtr<Tank> Create(TypeTank type, uint id = 0);
+    static SharedPtr<Tank> Create(TypeTank type, uint _id_ = 0);
     void SetCoord(const Coord& coord);
     void SetPath(PODVector<Coord> &path);
     // rotation = [0...359.999999f]
     void SetRotation(float rotation);
     float GetRotation();
-    uint GetID() { return id; };
-
-    Vector3 GetSpeed()
-    {
-        return translator.speed;
-    }
-
+    Vector3 GetSpeed() { return translator.speed; }
     Node* GetNode();
 
 private:
-    uint id = 0;
-
     void LoadFromFile();
     void Init(TypeTank typeTank, uint _id_);
 

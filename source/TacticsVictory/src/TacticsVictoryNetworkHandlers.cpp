@@ -148,20 +148,36 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
     }
     else if (msgID == MSG_SEND_SCREENSHOT)
     {
-        PODVector<Tank*> tanks;
-        
-        gScene->GetComponents<Tank>(tanks, true);
+        volatile uint numTanks = buffer.ReadUInt();
 
+        for(uint i = 0; i < numTanks; i++)
+        {
+            uint id = buffer.ReadUInt();
+
+            for(Tank* tank : gTanks)
+            {
+                if(tank->GetID() == id)
+                {
+                    tank->GetNode()->SetPosition(buffer.ReadVector3());
+                    tank->GetNode()->SetRotation(buffer.ReadQuaternion());
+                    break;
+                }
+            }
+        }
+
+        /*
         for (uint i = 0; i < tanks.Size(); i++)
         {
             if (!buffer.IsEof())
             {
+                volatile uint id = buffer.ReadUInt();
                 Vector3 position = buffer.ReadVector3();
                 Quaternion rotation = buffer.ReadQuaternion();
                 tanks[i]->GetNode()->SetPosition(position);
                 tanks[i]->GetNode()->SetRotation(rotation);
             }
         }
+        */
     }
 }
 
