@@ -110,7 +110,9 @@ void SceneRTS::Create()
     light->SetShadowBias(BiasParameters(0.00011f, 2.0f));
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
+#ifdef CLIENT
     gRenderer->SetShadowMapSize(2048);
+#endif
 
     uint sizeX = level[0].Size();
     uint sizeZ = level.Size();
@@ -132,6 +134,7 @@ void SceneRTS::Create()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void SceneRTS::Update(float /*timeStep*/)
 {
+#ifdef CLIENT
     Vector3 hitPos;
     Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
 
@@ -153,6 +156,7 @@ void SceneRTS::Update(float /*timeStep*/)
     }
 
     pathIndicator.Update();
+#endif
 
     if (gNetwork->IsServerRunning())
     {

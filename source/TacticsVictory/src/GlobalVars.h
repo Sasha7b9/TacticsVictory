@@ -33,7 +33,9 @@ extern UIElement            *gUIRoot;
 extern ResourceCache        *gCache;
 extern Engine               *gEngine;
 extern Input                *gInput;
+#ifdef CLIENT
 extern Renderer             *gRenderer;
+#endif
 extern DebugRenderer        *gDebugRenderer;
 extern Context              *gContext;
 extern Scene                *gScene;

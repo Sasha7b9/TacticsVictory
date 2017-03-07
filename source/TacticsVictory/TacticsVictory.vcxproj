@@ -215,7 +215,8 @@
       </Command>
     </PreBuildEvent>
     <CustomBuildStep>
-      <Command>-server</Command>
+      <Command>
+      </Command>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

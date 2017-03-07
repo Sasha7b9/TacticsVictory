@@ -8,7 +8,9 @@ UIElement           *gUIRoot = nullptr;
 ResourceCache       *gCache = nullptr;
 Engine              *gEngine = nullptr;
 Input               *gInput = nullptr;
+#ifdef CLIENT
 Renderer            *gRenderer = nullptr;
+#endif
 DebugRenderer       *gDebugRenderer = nullptr;
 Context             *gContext = nullptr;
 Scene               *gScene = nullptr;

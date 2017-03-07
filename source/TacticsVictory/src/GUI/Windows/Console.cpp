@@ -384,6 +384,7 @@ void ConsoleRTS::HandleResize(StringHash, VariantMap&)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ConsoleRTS::Write(const String &message)
 {
+#ifdef CLIENT
     if(message[0] == '>')
     {
         text->SetText(text->GetText() + "\n");
@@ -410,6 +411,7 @@ void ConsoleRTS::Write(const String &message)
 
     VariantMap map;
     HandleResize("", map);
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

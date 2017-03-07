@@ -79,6 +79,7 @@ void CameraRTS::ParallelTranslateLookAt(const Vector3 &lookAt_)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void CameraRTS::Move(float time)
 {
+#ifdef CLIENT
     if(!enabled || gConsole->IsActive())
     {
         return;
@@ -179,6 +180,7 @@ void CameraRTS::Move(float time)
     {
         MoveOn(wheel < 0 ? Direction_Closer : Direction_Further, fabs(wheel * 10.0f));
     }
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -297,7 +299,9 @@ void CameraRTS::SetEnabled(bool _enabled)
 void CameraRTS::SetupViewport()
 {
     SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<Camera>()));
+#ifdef CLIENT
     gRenderer->SetViewport(0, viewport);
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

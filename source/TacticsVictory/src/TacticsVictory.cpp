@@ -108,7 +108,9 @@ void TacticsVictory::Start()
     gUI = GetSubsystem<UI>();
     gEngine = GetSubsystem<Engine>();
     gInput = GetSubsystem<Input>();
+#ifdef CLIENT
     gRenderer = GetSubsystem<Renderer>();
+#endif
     gGraphics = GetSubsystem<Graphics>();
 
     XMLFile *style = gCache->GetResource<XMLFile>("UI/MainStyle.xml");
@@ -275,10 +277,13 @@ void TacticsVictory::StartServer()
     scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
     scene->Create();
     gCamera->SetEnabled(true);
-    gGuiGame->SetVisible(true);
     gNetwork->StartServer(1000);
+
+#ifdef CLIENT
+    gGuiGame->SetVisible(true);
     SetWindowTitleAndIcon();
     gGraphics->SetWindowPosition(2000, 100);
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
