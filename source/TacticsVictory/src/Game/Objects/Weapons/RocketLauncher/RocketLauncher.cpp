@@ -27,7 +27,7 @@ void RocketLauncher::Update(float deltaStep)
 
     if(timeElapsedAfterShoot > timeRecharge)
     {
-        for(auto target : gTanks)
+        for(Tank* target : Tank::GetAll())
         {
             if(target != tank)
             {

@@ -91,7 +91,6 @@ void SceneRTS::Create()
             } while (gTerrain->GetHeight(row, col) != 0.0f);
 
             SharedPtr<Tank> tank = Tank::Create(Tank::Small);
-            gTanks.Push(tank);
             tank->SetCoord({row, col});
             tank->SetAutoReloaded(1);
         }
@@ -158,11 +157,9 @@ void SceneRTS::Update(float /*timeStep*/)
     if (gNetwork->IsServerRunning())
     {
         VectorBufferRTS msg;
+        msg.WriteUInt(Tank::GetAll().Size());
 
-        uint numTanks = gTanks.Size();
-        msg.WriteUInt(numTanks);
-
-        for (Tank *tank : gTanks)
+        for (Tank *tank : Tank::GetAll())
         {
             msg.WriteTank(tank);
         }

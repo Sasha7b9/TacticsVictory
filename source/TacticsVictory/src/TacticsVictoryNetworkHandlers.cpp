@@ -119,9 +119,9 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
     else if (msgID == MSG_REQUEST_TANKS)
     {
         uint time = gTime->GetSystemTime();
-        msg.WriteUInt(gTanks.Size());
+        msg.WriteUInt(Tank::GetAll().Size());
 
-        for (Tank *tank : gTanks)
+        for (Tank *tank : Tank::GetAll())
         {
             msg.WriteTank(tank);
         }
@@ -140,7 +140,6 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
             Quaternion rotation = buffer.ReadQuaternion();
 
             SharedPtr<Tank> tank = Tank::Create(Tank::Small, id);
-            gTanks.Push(tank);
             tank->GetNode()->SetPosition(position);
             tank->GetNode()->SetRotation(rotation);
             tank->SetEnabled(false);
@@ -153,31 +152,15 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
         for(uint i = 0; i < numTanks; i++)
         {
             uint id = buffer.ReadUInt();
-
-            for(Tank* tank : gTanks)
+            Vector3 position = buffer.ReadVector3();
+            Quaternion rotation = buffer.ReadQuaternion();
+            Tank *tank = Tank::GetByID(id);
+            if(tank)
             {
-                if(tank->GetID() == id)
-                {
-                    tank->GetNode()->SetPosition(buffer.ReadVector3());
-                    tank->GetNode()->SetRotation(buffer.ReadQuaternion());
-                    break;
-                }
+                tank->GetNode()->SetPosition(position);
+                tank->GetNode()->SetRotation(rotation);
             }
         }
-
-        /*
-        for (uint i = 0; i < tanks.Size(); i++)
-        {
-            if (!buffer.IsEof())
-            {
-                volatile uint id = buffer.ReadUInt();
-                Vector3 position = buffer.ReadVector3();
-                Quaternion rotation = buffer.ReadQuaternion();
-                tanks[i]->GetNode()->SetPosition(position);
-                tanks[i]->GetNode()->SetRotation(rotation);
-            }
-        }
-        */
     }
 }
 

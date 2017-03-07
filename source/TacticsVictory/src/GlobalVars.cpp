@@ -31,7 +31,6 @@ Settings            *gSet = nullptr;
 Level               *gLevel = nullptr;
 TerrainRTS          *gTerrain = nullptr;
 TacticsVictory      *gTacticsVictory = nullptr;
-PODVector<Tank*>    gTanks;
 LogRTS              *gLog = nullptr;
 
 // GUI

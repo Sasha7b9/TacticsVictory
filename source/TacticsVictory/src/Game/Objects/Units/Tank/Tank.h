@@ -31,12 +31,17 @@ public:
     float GetRotation();
     Vector3 GetSpeed() { return translator.speed; }
     Node* GetNode();
+    static PODVector<Tank*>& GetAll();
+    static Tank* GetByID(uint id);
 
 private:
+    WaveAlgorithm pathFinder;
+    bool inProcessFindPath = false;
+    TypeTank typeTank;
+    static PODVector<Tank*> allTanks;
+
     void LoadFromFile();
     void Init(TypeTank typeTank, uint _id_);
-
-    TypeTank typeTank;
 
     struct TankStruct
     {
@@ -57,16 +62,10 @@ private:
             return type == rhs.type;
         }
     };
-
     static HashMap<Key, TankStruct> parameters;
-
-    WaveAlgorithm pathFinder;
-
-    bool inProcessFindPath = false;
+    SharedPtr<RocketLauncher> rocketLauncher;
 
     void HandleAmmoHit(StringHash, VariantMap&);
-
-    SharedPtr<RocketLauncher> rocketLauncher;
 
     DEFAULT_MEMBERS(Tank);
 };

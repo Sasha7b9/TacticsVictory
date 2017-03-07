@@ -11,6 +11,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
+PODVector<Tank*> Tank::allTanks;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,8 +25,6 @@ Tank::Tank(Context *context) : UnitObject(context)
         parameters[Small] = TankStruct(Small, "Models/Tank.json");
         parameters[T_34_76] = TankStruct(T_34_76, "Models/T-34-76-2.json");
     }
-
-
 
     pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
 
@@ -186,6 +185,7 @@ SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
     SharedPtr<Node> node(gScene->CreateChild(NODE_TANK, LOCAL));
     SharedPtr<Tank> tank(node->CreateComponent<Tank>(LOCAL));
     tank->Init(typeTank, _id_);
+    allTanks.Push(tank);
     return tank;
 }
 
@@ -208,4 +208,23 @@ void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
 Node* Tank::GetNode()
 {
     return node_;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+PODVector<Tank*>& Tank::GetAll()
+{
+    return allTanks;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+Tank* Tank::GetByID(uint id)
+{
+    for(Tank *tank : allTanks)
+    {
+        if(tank->GetID() == id)
+        {
+            return tank;
+        }
+    }
+    return nullptr;
 }

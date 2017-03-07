@@ -56,7 +56,6 @@ extern Settings             *gSet;
 extern Level                *gLevel;
 extern TerrainRTS           *gTerrain;
 extern TacticsVictory       *gTacticsVictory;
-extern PODVector<Tank*>      gTanks;
 extern LogRTS               *gLog;
 
 // GUI
