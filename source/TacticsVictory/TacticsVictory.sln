@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TacticsVictory", "TacticsVictory.vcxproj", "{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}"
-	ProjectSection(ProjectDependencies) = postProject
-		{23250E20-DBDC-3888-98B0-5DA5D66F272A} = {23250E20-DBDC-3888-98B0-5DA5D66F272A}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Urho3D", "..\..\..\..\Urho3D-dbg\build\Source\Urho3D\Urho3D.vcxproj", "{23250E20-DBDC-3888-98B0-5DA5D66F272A}"
 EndProject
