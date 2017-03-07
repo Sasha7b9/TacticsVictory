@@ -47,10 +47,16 @@ void TacticsVictory::Setup()
     engineParameters_["WindowTitle"] = GetTypeName();
     engineParameters_["LogName"] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_["FullScreen"] = false;
-    engineParameters_["Headless"] = false;
+    
     engineParameters_["TextureQuality"] = 32;
     engineParameters_["WindowWidth"] = gSet->GetInt(TV_SCREEN_WIDTH);
     engineParameters_["WindowHeight"] = gSet->GetInt(TV_SCREEN_HEIGHT);
+
+#ifdef CLIENT
+    engineParameters_["Headless"] = false;
+#else
+    engineParameters_["Headless"] = true;
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -222,6 +228,7 @@ void TacticsVictory::SubscribeToEvents()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::SetWindowTitleAndIcon()
 {
+#ifdef CLIENT
     Image* icon = gCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     gGraphics->SetWindowIcon(icon);
     if (type == Type_Server)
@@ -236,6 +243,7 @@ void TacticsVictory::SetWindowTitleAndIcon()
     {
         gGraphics->SetWindowTitle(L"Тактика победы");
     }
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
