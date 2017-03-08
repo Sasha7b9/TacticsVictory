@@ -20,4 +20,5 @@ URHO3D_EVENT(E_MENU, MenuEvent)
     URHO3D_PARAM(P_TYPE,        EventType);     // Тип события
     URHO3D_PARAM(P_SOURCE,      Source);        // Указатель на источник
     URHO3D_PARAM(P_DESTINATION, Destination);   // Указетель на целевой объект
+    URHO3D_PARAM(P_PORT,        ServerPort);    // Номер порта, к которому нужно коннектиться при MenuEvent_StartServer
 }

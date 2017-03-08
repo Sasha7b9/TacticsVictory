@@ -97,7 +97,8 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
 
     if (typeEvent == MenuEvent_StartServer)
     {
-        StartServer();
+        uint port = eventData[MenuEvent::P_PORT].GetUInt();
+        StartServer((uint16)port);
     }
     else if (typeEvent == MenuEvent_StartClient)
     {

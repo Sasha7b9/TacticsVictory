@@ -77,9 +77,9 @@ void CameraRTS::ParallelTranslateLookAt(const Vector3 &lookAt_)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+#ifdef CLIENT
 void CameraRTS::Move(float time)
 {
-#ifdef CLIENT
     if(!enabled || gConsole->IsActive())
     {
         return;
@@ -180,8 +180,11 @@ void CameraRTS::Move(float time)
     {
         MoveOn(wheel < 0 ? Direction_Closer : Direction_Further, fabs(wheel * 10.0f));
     }
-#endif
 }
+#else
+void CameraRTS::Move(float) {}
+#endif
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void CameraRTS::SetPitch(float newPitch)

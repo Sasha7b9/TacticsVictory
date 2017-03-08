@@ -95,9 +95,9 @@ void MenuOptions::RegisterObject(Context *context)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+#ifdef CLIENT
 void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 {
-#ifdef CLIENT
     DropDownListWithTextAndButton *ddList = (DropDownListWithTextAndButton*)eventData[ItemSelected::P_ELEMENT].GetPtr();
     int index = eventData[ItemSelected::P_SELECTION].GetInt();
 
@@ -139,13 +139,16 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     {
         gRenderer->SetDynamicInstancing(index == 1);
     }
-#endif
 }
+#else
+void MenuOptions::HandleItemSelected(StringHash, VariantMap&) {}
+#endif
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+#ifdef CLIENT
 void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 {
-#ifdef CLIENT
     SliderWithTextAndButtons *slider = (SliderWithTextAndButtons*)eventData[SliderIntChanged::P_ELEMENT].GetPtr();
     int value = eventData[SliderIntChanged::P_VALUE].GetInt();
 
@@ -162,8 +165,11 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
     {
         gSet->SetInt(TV_VOLUME, value);
     }
-#endif
 }
+#else
+void MenuOptions::HandleOnSlider(StringHash, VariantMap&) {}
+#endif
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuOptions::HandleButtonRelease(StringHash, VariantMap&)

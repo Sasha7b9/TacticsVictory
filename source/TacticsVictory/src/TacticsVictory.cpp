@@ -1,5 +1,6 @@
 ﻿#include <stdafx.h>
 #include "Core/Camera.h"
+#include "GlobalFunctions.h"
 #include "LogRTS.h"
 #include "Editor/Editor.h"
 #include "Game/Level.h"
@@ -92,9 +93,7 @@ void TacticsVictory::Start()
 
     gTime = GetSubsystem<Time>();
 
-    gLog = new LogRTS();
-    gLog->Open("log.txt");
-    gLog->SetLevel(LOG_DEBUG);
+    OpenLog();
 
     RegistrationFactories();
 
@@ -124,32 +123,27 @@ void TacticsVictory::Start()
 
     gCamera = new CameraRTS();
 
-#ifdef CLIENT
     gLog->SetLevel(LOG_ERROR);
+#ifdef CLIENT
     gGUI->Create();
-    gLog->SetLevel(LOG_INFO);
 
     gFileSelector = new FileSelector(gContext);
     gFileSelector->GetWindow()->SetModal(false);
     gFileSelector->GetWindow()->SetVisible(false);
 #endif
+    gLog->SetLevel(LOG_INFO);
 
     SubscribeToEvents();
-
-    //CreateNewGame();
 
     gContext->RegisterSubsystem(new Script(gContext));
     gScript = GetSubsystem<Script>();
     gScript->Execute("Print(\"Hello World!\");");
 
     Vector<String> arguments = GetArguments();
+
     ParseArguments(arguments);
 
-    if (type == Type_Server)
-    {
-        StartServer();
-    }
-    else if (type == Type_Client)
+    if (type == Type_Client)
     {
         StartClient();
     }
@@ -160,17 +154,20 @@ void TacticsVictory::Start()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::ParseArguments(Vector<String> &arguments)
 {
-    if (arguments.Size() > 0)
+    String address;
+    uint16 port = 0;
+    GetAddressPort(arguments, address, port);
+
+#ifdef SERVER
+    if(port == 0)
     {
-        if (arguments[0] == "-server")
-        {
-            type = Type_Server;
-        }
-        else if (arguments[0] == "-client")
-        {
-            type = Type_Client;
-        }
+        gEngine->Exit();
     }
+
+    StartServer(port);
+#else
+    
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -270,20 +267,14 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::StartServer()
+void TacticsVictory::StartServer(uint16 port)
 {
     type = Type_Server;
     gMenu->Hide();
     scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
     scene->Create();
     gCamera->SetEnabled(true);
-    gNetwork->StartServer(1000);
-
-#ifdef CLIENT
-    gGuiGame->SetVisible(true);
-    SetWindowTitleAndIcon();
-    gGraphics->SetWindowPosition(2000, 100);
-#endif
+    gNetwork->StartServer(port);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -324,4 +315,16 @@ void TacticsVictory::FillNetworkFunctions()
     ADD_NETWORK_FUNCTION(MSG_SEND_LANDSCAPE);
     ADD_NETWORK_FUNCTION(MSG_SEND_TANKS);
     ADD_NETWORK_FUNCTION(MSG_SEND_SCREENSHOT);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::OpenLog()
+{
+    gLog = new LogRTS();
+#ifdef SERVER
+    gLog->Open("server.log");
+#else
+    gLog->Open("client.log");
+#endif
+    gLog->SetLevel(LOG_DEBUG);
 }

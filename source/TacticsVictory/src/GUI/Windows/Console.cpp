@@ -120,11 +120,15 @@ static bool FuncClose(Vector<String> &)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool FuncStart(Vector<String> &words)
 {
-    if (words.Size() < 2)
+    String address = SERVER_ADDRESS;
+    uint16 port = SERVER_PORT;
+
+    if(words.Size() < 2 || !GetAddressPort(words, address, port))
     {
         return false;
     }
-    if (words[1] == "server")
+
+    if (words.Contains("-server"))
     {
         if (gNetwork->IsServerRunning())
         {
@@ -133,12 +137,12 @@ static bool FuncStart(Vector<String> &words)
         else
         {
             static Vector<String> arguments;
-            arguments.Push(String("-server"));
+            arguments.Push(ToString("-port:%d", port));
             gFileSystem->SystemRunAsync(GetFileName("TVserver.exe"), arguments);
         }
         return true;
     }
-    else if (words[1] == "client")
+    else if (words.Contains("-client"))
     {
         if (gNetwork->IsServerRunning())
         {
@@ -208,7 +212,7 @@ void ConsoleParser::Init()
         {"connections", FuncConnections,    L"Вывести информацию о соединениях"},
         {"exit",        FuncExit,           L"Выход"},
         {"start",       FuncStart,          L"Запуск игры в режиме сервера или клиента",
-                                            {"server|client [port|address:port]",
+                                            {"[-server] [-client] [-address:xx.xx.xx.xx] [-port:xx]",
                                             L"server - создать сервер на порту port. По умолчанию 1000",
                                             L"client - приконнектиться с серверу с адресом address:port. По умолчанию 127.0.0.1:1000"}},
         {"stop",        FuncStop,           L"остановить сервер/отключиться от сервера"},
@@ -385,9 +389,9 @@ void ConsoleRTS::HandleResize(StringHash, VariantMap&)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+#ifdef CLIENT
 void ConsoleRTS::Write(const String &message)
 {
-#ifdef CLIENT
     if(message[0] == '>')
     {
         text->SetText(text->GetText() + "\n");
@@ -414,8 +418,11 @@ void ConsoleRTS::Write(const String &message)
 
     VariantMap map;
     HandleResize("", map);
-#endif
 }
+#else
+void ConsoleRTS::Write(const String &) {}
+#endif
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ConsoleRTS::Clear()

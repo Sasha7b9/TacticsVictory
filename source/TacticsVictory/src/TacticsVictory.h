@@ -24,7 +24,7 @@ public:
     virtual void Setup();
     virtual void Start();
     virtual void Stop();
-    void StartServer();
+    void StartServer(uint16 port);
     void StartClient();
     TypeApplication GetTypeApplication();
 
@@ -36,6 +36,7 @@ private:
     typedef void(*networkFunc)(Connection*, MemoryBuffer&, VectorBufferRTS&);
     HashMap<int, networkFunc> networkFunctions;                  // Здесь функции-обработчики сетевых сообщений
 
+    void OpenLog();
     void ParseArguments(Vector<String> &arguments);
     void CreateComponents();
     void RegistrationFactories();

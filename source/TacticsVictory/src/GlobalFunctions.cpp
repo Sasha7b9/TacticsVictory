@@ -1,4 +1,4 @@
-#include <stdafx.h>
+﻿#include <stdafx.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -86,4 +86,35 @@ String IntToString(int value, uint length)
         str.Insert(0, '0');
     }
     return str;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
+{
+    for(String word : words)
+    {
+        if(word[0] == '-')
+        {
+            word.Erase(0, 1);
+        }
+
+        if(word.Substring(0, 7) == "address")
+        {
+            if(word[7] != ':')
+            {
+                return false;
+            }
+            address = word.Substring(8);
+        }
+        else if(word.Substring(0, 4) == "port")
+        {
+            if(word[4] != ':')
+            {
+                return false;
+            }
+            port = (uint16)ToUInt(word.Substring(5));
+        }
+    }
+
+    return true;
 }
