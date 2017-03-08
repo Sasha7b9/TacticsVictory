@@ -24,7 +24,6 @@ Time                *gTime = nullptr;
 FileSelector        *gFileSelector = nullptr;
 Profiler            *gProfiler = nullptr;
 Script              *gScript = nullptr;
-Network             *gNetwork = nullptr;
 
 CameraRTS           *gCamera = nullptr;
 CursorRTS           *gCursor = nullptr;
@@ -34,6 +33,8 @@ Level               *gLevel = nullptr;
 TerrainRTS          *gTerrain = nullptr;
 TacticsVictory      *gTacticsVictory = nullptr;
 LogRTS              *gLog = nullptr;
+Server              *gServer = nullptr;
+Client              *gClient = nullptr;
 
 // GUI
 GuiGame             *gGuiGame = nullptr;

@@ -1,7 +1,7 @@
 #pragma once 
 
 
-typedef void(*pfuncVV)();
+typedef void(*pFuncVV)();
 typedef float(*pFuncFV)();
 typedef void(*pFuncVF)(float);
 typedef void(*pFuncVI)(int);

@@ -15,6 +15,8 @@
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUi/Controls/Hint.h"
 #include "GUI/GuiGame/GuiGame.h"
+#include "Network/Client.h"
+#include "Network/VectorBufferRTS.h"
 #include "Network/NetworkMessages.h"
 
 
@@ -146,9 +148,9 @@ void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& eventData)
 
     Rocket::UpdateAll(time);
 
-    if(gNetwork && gNetwork->GetServerConnection())
+    if(gClient->GetServerConnection())
     {
-        VectorBuffer msg;
+        VectorBufferRTS msg;
 
         static Vector3 prevPosition = Vector3::ZERO;
         Vector3 position = gCamera->GetNode()->GetPosition();
@@ -164,7 +166,7 @@ void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& eventData)
             prevPosition = position;
             prevRotation = rotation;
 
-            gNetwork->GetServerConnection()->SendMessage(MSG_CAMERA_INFO, true, true, msg);
+            gClient->Send(MSG_CAMERA_INFO, msg);
         }
     }
 }

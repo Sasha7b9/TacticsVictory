@@ -1,8 +1,11 @@
 ﻿#include <stdafx.h>
 #include "TacticsVictory.h"
 #include "LogRTS.h"
+#include "Network/Client.h"
+#include "Network/Server.h"
 #include "Network/NetworkMessages.h"
-#include "Network/NetworkFunctions.h"
+#include "Network/ClientFunctions.h"
+#include "Network/ServerFunctions.h"
 #include "Network/VectorBufferRTS.h"
 #include "Core/Camera.h"
 #include "Game/Scene.h"
@@ -13,7 +16,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void TacticsVictory::HandleServerConnected(StringHash, VariantMap&)
 {
-    Connection *connection = gNetwork->GetServerConnection();
+    Connection *connection = gClient->GetServerConnection();
 
     LOG_INFOF("Connect established to %s:%d", connection->GetAddress().CString(), connection->GetPort());
 

@@ -1,5 +1,7 @@
 #include <stdafx.h>
 #include "GUI.h"
+#include "GlobalFunctions.h"
+#include "Core/Camera.h"
 #include "GUI/Controls/Tab.h"
 #include "GUI/Controls/Button.h"
 #include "GUI/Controls/ButtonSwitch.h"
@@ -11,7 +13,6 @@
 #include "GUI/Controls/SliderInt.h"
 #include "GUI/Controls/GovernorFloat.h"
 #include "GUI/Controls/SliderWithTextAndButtons.h"
-#include "Core/Camera.h"
 #include "GUI/Menu/MenuStart.h"
 #include "GUI/Menu/MenuGame.h"
 #include "GUI/Menu/MenuOptions.h"
@@ -25,7 +26,8 @@
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/MenuAboutMe.h"
-#include "GlobalFunctions.h"
+#include "Network/Client.h"
+#include "Network/Server.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -127,14 +129,14 @@ static float GetCameraYaw()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static float GetSpeedNetIN()
 {
-    if(gNetwork->GetServerConnection())
+    if(gClient->GetServerConnection())
     {
-        Connection *connection = gNetwork->GetServerConnection();
+        Connection *connection = gClient->GetServerConnection();
         return connection->GetBytesInPerSec() / 1e3f;
     }
     else
     {
-        Vector<SharedPtr<Connection>> connections = gNetwork->GetClientConnections();
+        Vector<SharedPtr<Connection>> connections = gServer->GetConnections();
         if(connections.Size())
         {
             float speed = 0.0f;
@@ -151,14 +153,14 @@ static float GetSpeedNetIN()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static float GetSpeedNetOUT()
 {
-    if(gNetwork->GetServerConnection())
+    if(gClient->GetServerConnection())
     {
-        Connection *connection = gNetwork->GetServerConnection();
+        Connection *connection = gClient->GetServerConnection();
         return connection->GetBytesOutPerSec() / 1e3f;
     }
     else
     {
-        Vector<SharedPtr<Connection>> connections = gNetwork->GetClientConnections();
+        Vector<SharedPtr<Connection>> connections = gServer->GetConnections();
         if(connections.Size())
         {
             float speed = 0.0f;

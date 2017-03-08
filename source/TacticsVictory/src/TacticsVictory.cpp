@@ -15,8 +15,11 @@
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/MenuRTS.h"
 #include "GUI/Windows/Console.h"
+#include "Network/Client.h"
+#include "Network/Server.h"
 #include "Network/NetworkMessages.h"
-#include "Network/NetworkFunctions.h"
+#include "Network/ClientFunctions.h"
+#include "Network/ServerFunctions.h"
 #include "TacticsVictory.h"
 
 
@@ -77,6 +80,8 @@ void TacticsVictory::Stop()
     //URHO3D_LOGINFO("Now save ui");
     //gUIRoot->SaveXML(file);
     gSet->Save();
+    SAFE_DELETE(gClient);
+    SAFE_DELETE(gServer);
     SAFE_DELETE(gSet);
     SAFE_DELETE(gEditor);
     SAFE_DELETE(gCamera);    
@@ -141,6 +146,9 @@ void TacticsVictory::Start()
 
     Vector<String> arguments = GetArguments();
 
+    gClient = new Client();
+    gServer = new Server();
+
     ParseArguments(arguments);
 
     if (type == Type_Client)
@@ -173,8 +181,6 @@ void TacticsVictory::ParseArguments(Vector<String> &arguments)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateComponents()
 {
-    gNetwork = GetSubsystem<Network>();
-
     gScene = new Scene(gContext);
     // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
     gScene->CreateComponent<Octree>();
@@ -267,14 +273,14 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::StartServer(uint16 port)
+bool TacticsVictory::StartServer(uint16 port)
 {
     type = Type_Server;
     gMenu->Hide();
     scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
     scene->Create();
     gCamera->SetEnabled(true);
-    gNetwork->StartServer(port);
+    return gServer->Start(port);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -282,7 +288,7 @@ void TacticsVictory::StartClient()
 {
     type = Type_Client;
     gMenu->Hide();
-    gNetwork->Connect(SERVER_ADDRESS, SERVER_PORT, nullptr);
+    gClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, nullptr);
     gConsole->Write(L"Соединяюсь с удалённым сервером...");
 }
 
@@ -315,6 +321,7 @@ void TacticsVictory::FillNetworkFunctions()
     ADD_NETWORK_FUNCTION(MSG_SEND_LANDSCAPE);
     ADD_NETWORK_FUNCTION(MSG_SEND_TANKS);
     ADD_NETWORK_FUNCTION(MSG_SEND_SCREENSHOT);
+    ADD_NETWORK_FUNCTION(MSG_DELETE_SERVER);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

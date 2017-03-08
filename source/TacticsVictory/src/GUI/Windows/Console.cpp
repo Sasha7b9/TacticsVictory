@@ -4,6 +4,8 @@
 #include "TacticsVictory.h"
 #include "GUI/Windows/WindowVariables.h"
 #include "GUI/Menu/MenuRTS.h"
+#include "Network/Client.h"
+#include "Network/Server.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,7 +69,8 @@ static void ShowFullInfo(Vector<String> &strings)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool FuncExit(Vector<String> &)
 {
-    gNetwork->Disconnect();
+    gClient->Disconnect();
+    gServer->Disconnect();
     gEngine->Exit();
     return true;
 }
@@ -130,7 +133,7 @@ static bool FuncStart(Vector<String> &words)
 
     if (words.Contains("-server"))
     {
-        if (gNetwork->IsServerRunning())
+        if (gServer->IsRunning())
         {
             gConsole->Write("Server already running");
         }
@@ -144,7 +147,7 @@ static bool FuncStart(Vector<String> &words)
     }
     else if (words.Contains("-client"))
     {
-        if (gNetwork->IsServerRunning())
+        if (gServer->IsRunning())
         {
             gConsole->Write("The application is in server mode");
         }
@@ -159,45 +162,104 @@ static bool FuncStart(Vector<String> &words)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncStop(Vector<String> &)
+static bool FuncServer(Vector<String> &words)
 {
-    if (gNetwork->IsServerRunning())
+    /*
+    -start -port:42 Запускает сервер на порту 42
+    -stop           Останавливает сервер. Эту команду можно выполнить только из того экземпляра, из которого выполнена команда "start".
+                    Иначе будет сообщение об ошибке "запрещённая команда"
+    -connections    Вывести информацию об имеющихся подключениях. Доступна только из запускающего экземпляра.
+    */
+
+    if(words.Size() < 2)
     {
-        gNetwork->StopServer();
+        return false;
     }
-    else
+
+    static bool serverStarting = false;         // При запуске сервера это значение устанавливается в truе, потому что остановить сервер может только
+                                                // тот экземпляр, который его запустил
+
+    if(words[1] == "-start")
     {
-        gNetwork->Disconnect();
-    }
-
-    return true;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncConnections(Vector<String> &)
-{
-    Vector<SharedPtr<Connection>> connections = gNetwork->GetClientConnections();
-
-    if (connections.Size())
-    {
-        for (Connection *connection : connections)
+        if(gClient->IsConnected())
         {
-            gConsole->Write(ToString("%s:%d", connection->GetAddress().CString(), connection->GetPort()));
-        }
-    }
-    else
-    {
-        if (gNetwork->IsServerRunning())
-        {
-            gConsole->Write("Not connections available");
+            gConsole->Write(ToString("Client already running and connected to server on port %d", gClient->GetPort()));
         }
         else
         {
-            gConsole->Write("Server not running");
+            String address = SERVER_ADDRESS;
+            uint16 port = SERVER_PORT;
+
+            if(!GetAddressPort(words, address, port))
+            {
+                return false;
+            }
+
+            if(gServer->Start(port))
+            {
+                gConsole->Write(ToString("Server start on port %d", port));
+                serverStarting = true;
+            }
+            else
+            {
+                gConsole->Write(ToString("Can not starting server on port %d", port));
+            }
         }
+        return true;
+    }
+    else if(words[1] == "-stop")
+    {
+        if(!serverStarting)
+        {
+            gConsole->Write("Forbidden");
+        }
+        return true;
+    }
+    else if(words[1] == "-connections")
+    {
+        return true;
+    }
+    return false;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static bool FuncClient(Vector<String> &words)
+{
+    /*
+    -start -address:xx.xx.xx.xx -port:xx
+    -stop
+    */
+
+    if(words.Size() < 2)
+    {
+        return false;
     }
 
-    return true;
+    if(words[1] == "-start")
+    {
+        String address = SERVER_ADDRESS;
+        uint16 port = SERVER_PORT;
+        if(!GetAddressPort(words, address, port))
+        {
+            return false;
+        }
+
+        if(gClient->IsConnected())
+        {
+            gConsole->Write("Commnad forbidden. The client already running");
+        }
+        else
+        {
+            gTacticsVictory->StartClient();
+        }
+        return true;
+    }
+    else if(words[1] == "-stop")
+    {
+        return false;
+    }
+
+    return false;
 }
 
 
@@ -209,13 +271,14 @@ void ConsoleParser::Init()
         {"?",           FuncHelp,           L"Вывод справки"},
         {"clear",       FuncClear,          L"Очистить консоль"},
         {"close",       FuncClose,          L"Закрыть консоль"},
-        {"connections", FuncConnections,    L"Вывести информацию о соединениях"},
         {"exit",        FuncExit,           L"Выход"},
         {"start",       FuncStart,          L"Запуск игры в режиме сервера или клиента",
                                             {"[-server] [-client] [-address:xx.xx.xx.xx] [-port:xx]",
                                             L"server - создать сервер на порту port. По умолчанию 1000",
                                             L"client - приконнектиться с серверу с адресом address:port. По умолчанию 127.0.0.1:1000"}},
-        {"stop",        FuncStop,           L"остановить сервер/отключиться от сервера"},
+        {"client",      FuncClient,         L"Запуск клиента",
+                                            {L"[-start|-stop] [-address:xx.xx.xx.xx -port:xx]"}},
+        {"server",      FuncServer,         L""},
         {"vars",        FuncVars,           L"Управление окном переменных",
                                             {"[open|close]", L"open - показать", L"close - скрыть"}
         },

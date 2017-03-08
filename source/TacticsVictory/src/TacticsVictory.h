@@ -24,7 +24,7 @@ public:
     virtual void Setup();
     virtual void Start();
     virtual void Stop();
-    void StartServer(uint16 port);
+    bool StartServer(uint16 port);
     void StartClient();
     TypeApplication GetTypeApplication();
 

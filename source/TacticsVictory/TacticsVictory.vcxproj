@@ -487,7 +487,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\Windows\Console.cpp" />
     <ClCompile Include="src\GUI\Windows\WindowVariables.cpp" />
     <ClCompile Include="src\LogRTS.cpp" />
-    <ClCompile Include="src\Network\NetworkFunctions.cpp" />
+    <ClCompile Include="src\Network\Client.cpp" />
+    <ClCompile Include="src\Network\Server.cpp" />
+    <ClCompile Include="src\Network\ServerFunctions.cpp" />
+    <ClCompile Include="src\Network\ClientFunctions.cpp" />
     <ClCompile Include="src\Network\VectorBufferRTS.cpp" />
     <ClCompile Include="src\Settings.cpp" />
     <ClCompile Include="src\SettingsTypes.cpp" />
@@ -593,8 +596,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="src\GUI\Windows\Console.h" />
     <ClInclude Include="src\GUI\Windows\WindowVariables.h" />
     <ClInclude Include="src\LogRTS.h" />
+    <ClInclude Include="src\Network\Client.h" />
+    <ClInclude Include="src\Network\Server.h" />
+    <ClInclude Include="src\Network\ServerFunctions.h" />
     <ClInclude Include="src\Network\NetworkMessages.h" />
-    <ClInclude Include="src\Network\NetworkFunctions.h" />
+    <ClInclude Include="src\Network\ClientFunctions.h" />
     <ClInclude Include="src\Network\VectorBufferRTS.h" />
     <ClInclude Include="src\Settings.h" />
     <ClInclude Include="src\SettingsTypes.h" />

@@ -435,7 +435,16 @@
     <ClCompile Include="src\Network\VectorBufferRTS.cpp">
       <Filter>Network</Filter>
     </ClCompile>
-    <ClCompile Include="src\Network\NetworkFunctions.cpp">
+    <ClCompile Include="src\Network\ClientFunctions.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Network\ServerFunctions.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Network\Client.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Network\Server.cpp">
       <Filter>Network</Filter>
     </ClCompile>
   </ItemGroup>
@@ -734,10 +743,19 @@
     <ClInclude Include="src\Network\VectorBufferRTS.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="src\Network\NetworkFunctions.h">
+    <ClInclude Include="src\Network\NetworkMessages.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="src\Network\NetworkMessages.h">
+    <ClInclude Include="src\Network\ClientFunctions.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Network\ServerFunctions.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Network\Client.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Network\Server.h">
       <Filter>Network</Filter>
     </ClInclude>
   </ItemGroup>

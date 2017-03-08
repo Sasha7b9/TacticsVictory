@@ -263,9 +263,6 @@ void GovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF fu
     funcWrite = funcWrite_;
     title = title_;
     label->SetText(title);
-
-    float value = funcRead();
-    WriteValue(value);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -281,8 +278,7 @@ void GovernorFloat::Update(float timeStep)
     }
     else if(funcRead)
     {
-        float value = funcRead();
-        WriteValue(value);
+        WriteValue(funcRead());
     }
 }
 

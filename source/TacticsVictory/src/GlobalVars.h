@@ -24,6 +24,8 @@ class WindowVariables;
 class TacticsVictory;
 class MenuRTS;
 class LogRTS;
+class Server;
+class Client;
 
 
 extern Audio                *gAudio;
@@ -49,7 +51,6 @@ extern Time                 *gTime;
 extern FileSelector         *gFileSelector;
 extern Profiler             *gProfiler;
 extern Script               *gScript;
-extern Network              *gNetwork;
 
 extern CameraRTS            *gCamera;
 extern CursorRTS            *gCursor;
@@ -59,6 +60,9 @@ extern Level                *gLevel;
 extern TerrainRTS           *gTerrain;
 extern TacticsVictory       *gTacticsVictory;
 extern LogRTS               *gLog;
+extern Server               *gServer;
+extern Client               *gClient;
+
 
 // GUI
 extern GuiGame              *gGuiGame;
