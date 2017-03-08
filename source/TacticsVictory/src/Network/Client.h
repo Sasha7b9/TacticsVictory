@@ -13,7 +13,7 @@ class Client : public Object
 public:
     Client(Context *context = gContext);
     virtual ~Client();
-    void StartConnecting(String address, uint16 port, pFuncVV *funcOnConnect);
+    void StartConnecting(String address, uint16 port, pFuncVV funcOnConnect);
     bool IsConnected();
     Connection *GetServerConnection();
     void Send(int msgID, const VectorBufferRTS &msg);
@@ -22,7 +22,11 @@ public:
 
 private:
     Network *network = nullptr;
-    pFuncVV *funcOnConnect = nullptr;
+    pFuncVV funcOnConnect = nullptr;
+    Connection *connection = nullptr;
+
+    void HandleServerConnected(StringHash, VariantMap&);
+    void HandleServerDisconnected(StringHash, VariantMap&);
 
     DEFAULT_MEMBERS(Client);
 };

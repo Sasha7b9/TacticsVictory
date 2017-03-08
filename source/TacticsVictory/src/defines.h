@@ -4,8 +4,7 @@
 typedef void(*pFuncVV)();
 typedef float(*pFuncFV)();
 typedef void(*pFuncVF)(float);
-typedef void(*pFuncVI)(int);
-typedef bool(*pFuncBvS)(Vector<String>&);
+
 
 typedef unsigned char   uint8;
 typedef long int        int64;
@@ -14,7 +13,9 @@ typedef unsigned int    uint;
 typedef unsigned short  ushort;
 typedef unsigned char   uchar;
 
+
 #define DEFAULT_MEMBERS(name) name& operator=(const name&) {}; name(const name&)
+
 
 enum TypeCursor
 {

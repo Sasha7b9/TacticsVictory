@@ -14,28 +14,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void TacticsVictory::HandleServerConnected(StringHash, VariantMap&)
-{
-    Connection *connection = gClient->GetServerConnection();
-
-    LOG_INFOF("Connect established to %s:%d", connection->GetAddress().CString(), connection->GetPort());
-
-    // Теперь запросим вектор, по которому будем строить карту.
-
-    connection->SendMessage(MSG_REQUEST_LANDSCAPE, true, true, VectorBuffer());
-
-    SetWindowTitleAndIcon();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::HandleServerDisconnected(StringHash, VariantMap&)
-{
-    LOG_INFOF("Connection close");
-
-    SetWindowTitleAndIcon();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::HandleConnecFailed(StringHash, VariantMap&)
 {
     LOG_INFOF("Failed connection");

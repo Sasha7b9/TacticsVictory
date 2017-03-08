@@ -18,7 +18,6 @@ public:
     virtual void Start();
     virtual void Stop();
     bool StartServer(uint16 port);
-    void StartClient();
 
     SceneRTS *scene = nullptr;
 
@@ -43,8 +42,6 @@ private:
     void HandlePostRenderUpdate(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
 
-    void HandleServerConnected(StringHash, VariantMap&);    // Случается у клиента, когда он подключается к серверу
-    void HandleServerDisconnected(StringHash, VariantMap&); // Случается у клиента, когда он отключается от сервера
     void HandleConnecFailed(StringHash, VariantMap&);
     void HandleClientConnected(StringHash, VariantMap&);    // Это на сервере, когда к нему подключается новый клиент
     void HandleClientDisconnected(StringHash, VariantMap&); // На сервере, когда отключается клиент

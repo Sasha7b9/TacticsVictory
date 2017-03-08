@@ -104,7 +104,7 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
     }
     else if (typeEvent == MenuEvent_StartClient)
     {
-        StartClient();
+        //StartClient();
     }
     else if (typeEvent == MenuEvent_OpenEditor)
     {

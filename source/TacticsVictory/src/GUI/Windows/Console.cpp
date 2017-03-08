@@ -6,6 +6,8 @@
 #include "GUI/Menu/MenuRTS.h"
 #include "Network/Client.h"
 #include "Network/Server.h"
+#include "Network/NetworkMessages.h"
+#include "Network/VectorBufferRTS.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -15,6 +17,11 @@ HashMap<String, ConsoleParser::ParserStruct> ConsoleParser::commands;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ConsoleParser::ConsoleParser(Context *context) : Object(context)
+{
+
+}
+
 bool ConsoleParser::FuncHelp(Vector<String> &)
 {
     gConsole->Write(String(TAB) + L"Справка по командам");
@@ -145,18 +152,6 @@ bool ConsoleParser::FuncStart(Vector<String> &words)
         }
         return true;
     }
-    else if (words.Contains("-client"))
-    {
-        if (gServer->IsRunning())
-        {
-            gConsole->Write("The application is in server mode");
-        }
-        else
-        {
-            gTacticsVictory->StartClient();
-        }
-        return true;
-    }
 
     return false;
 }
@@ -164,40 +159,36 @@ bool ConsoleParser::FuncStart(Vector<String> &words)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool ConsoleParser::FuncServer(Vector<String> &words)
 {
-    /*
-    -start -port:42 Запускает сервер на порту 42
-    -stop           Останавливает сервер. Эту команду можно выполнить только из того экземпляра, из которого выполнена команда "start".
-                    Иначе будет сообщение об ошибке "запрещённая команда"
-    -connections    Вывести информацию об имеющихся подключениях. Доступна только из запускающего экземпляра.
-    */
-
     if(words.Size() < 2)
     {
         return false;
     }
 
-    static bool serverStarting = false;         // При запуске сервера это значение устанавливается в truе, потому что остановить сервер может только
-                                                // тот экземпляр, который его запустил
-
     if(words[1] == "-start")
     {
-        String address = SERVER_ADDRESS;
-        uint16 port = SERVER_PORT;
+        String address = "";
+        uint16 port = 0;
 
-        if(!GetAddressPort(words, address, port))
+        if(!GetAddressPort(words, address, port) || port == 0)
         {
-            return false;
+            return false; 
         }
 
         static Vector<String> arguments;
         arguments.Push(ToString("-port:%d", port));
         gFileSystem->SystemRunAsync(GetFileName("TVserver.exe"), arguments);
+        serverRunning = true;
+        SubscribeToEvent(E_ASYNCLOADFINISHED, URHO3D_HANDLER(ConsoleParser, HandleAsyncExecFinished));
         
         return true;
     }
     else if(words[1] == "-stop")
     {
-        if(!serverStarting)
+        if(serverRunning)
+        {
+            gClient->Send(MSG_DELETE_SERVER, VectorBufferRTS());
+        }
+        else
         {
             gConsole->Write("Forbidden");
         }
@@ -211,13 +202,34 @@ bool ConsoleParser::FuncServer(Vector<String> &words)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data)
+{
+    using namespace AsyncExecFinished;
+
+    int exitCode = data[P_EXITCODE].GetInt();
+
+    if(exitCode)
+    {
+        gConsole->Write(L"Сервер завершил работу с кодом ошибки");
+    }
+    else
+    {
+        gConsole->Write(L"Сервер завершил работу");
+    }
+
+    UnsubscribeFromEvent(E_ASYNCLOADFINISHED);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void OnServerConnected()
+{
+    gClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
+    gConsole->Write(L"Запрашиваю ландшафт");
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool ConsoleParser::FuncClient(Vector<String> &words)
 {
-    /*
-    -start -address:xx.xx.xx.xx -port:xx
-    -stop
-    */
-
     if(words.Size() < 2)
     {
         return false;
@@ -238,7 +250,9 @@ bool ConsoleParser::FuncClient(Vector<String> &words)
         }
         else
         {
-            gTacticsVictory->StartClient();
+            gMenu->Hide();
+            gClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, OnServerConnected);
+            gConsole->Write(L"Соединяюсь с удалённым сервером...");
         }
         return true;
     }
@@ -266,7 +280,11 @@ void ConsoleParser::Init()
                                             L"client - приконнектиться с серверу с адресом address:port. По умолчанию 127.0.0.1:1000"}},
         {"client",      &FuncClient,        L"Запуск клиента",
                                             {L"[-start|-stop] [-address:xx.xx.xx.xx -port:xx]"}},
-        {"server",      &FuncServer,        L""},
+        {"server",      &FuncServer,        L"Запуск сервера",
+                                            {L"[-start|-stop|-connections] [-port:xx]",
+                                            L"-start -port:42 : создать сервер на порт 42",
+                                            L"-stop           : остановить сервер. При этом приложение-сервер выгружается из памяти",
+                                            L"-connections    : вывести информацию об имеющихся подключениях сервера"}},
         {"vars",        &FuncVars,          L"Управление окном переменных",
                                             {"[open|close]", L"open - показать", L"close - скрыть"}
         },
@@ -282,7 +300,7 @@ void ConsoleParser::Init()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::Execute(const String &string)
+void ConsoleParser::Execute(const String &string)
 {
     Vector<String> words = string.ToLower().Split(' ');
 
@@ -290,21 +308,25 @@ bool ConsoleParser::Execute(const String &string)
 
     if(commands.Contains(words[0]))
     {
-        if(numWords > 1 && words[1] == "?")
+        if(numWords > 1 && (words[1] == "?" || words[1] == "-?"))
         {
             ShowFullInfo(words);
-            return true;
+            return;
         }
 
         pFuncMember func = commands[words[0]].func;
 
         if(func)
         {
-            return (this->*func)(words);
+            if(!(this->*func)(words))
+            {
+                gConsole->Write(ToString("Invalid command syntax. For more information, type \"%s -?\"", words[0].CString()));
+            }
+            return;
         }
     }
 
-    return false;
+    gConsole->Write(L"Неизвестная команда");
 }
 
 
@@ -380,11 +402,7 @@ void ConsoleRTS::HandleFinishedText(StringHash, VariantMap&)
 
     Write(message + "> " + command);
 
-    if(!parser.Execute(command))
-    {
-        Write(L"Неизвестная команда. Для получения справки наберите \"?\"");
-
-    }
+    parser.Execute(command);
 
     lineEdit->SetText("");
 }
@@ -480,18 +498,6 @@ void ConsoleRTS::Clear()
 {
     text->SetText("");
     text->SetPosition(2, 0);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void ConsoleRTS::HandleAsyncExecFinished(StringHash, VariantMap& /*data*/)
-{
-    using namespace AsyncExecFinished;
-
-//    int exitCode = data[P_EXITCODE].GetInt();
-
-
-
-    UnsubscribeFromEvent(E_ASYNCLOADFINISHED);
 }
 
 

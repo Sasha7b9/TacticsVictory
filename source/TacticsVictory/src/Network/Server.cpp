@@ -18,6 +18,11 @@ Server::~Server()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Server::Start(uint16 port)
 {
+    if(network->IsServerRunning())
+    {
+        URHO3D_LOGINFO("Server already running");
+    }
+
     return network->StartServer(port);
 }
 

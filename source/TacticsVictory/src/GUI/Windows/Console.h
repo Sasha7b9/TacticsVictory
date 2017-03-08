@@ -3,23 +3,31 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class ConsoleParser
+class ConsoleParser : public Object
 {
+    URHO3D_OBJECT(ConsoleParser, Object);
+
     typedef bool (ConsoleParser::*pFuncMember)(Vector<String>&);
 
 public:
+    ConsoleParser(Context *context = gContext);
+
     struct ParserStruct
     {
         String command;
         pFuncMember func;
         String help;
-        String fullHelp[10];     // Здесь хранится подробная информация о команде.
+        String fullHelp[10];        // Здесь хранится подробная информация о команде.
     };
 
     static HashMap<String, ParserStruct> commands;
 
     static void Init();
-    bool Execute(const String &string);
+    void Execute(const String &string);
+
+private:
+    bool serverRunning = false;     // При запуске сервера это значение устанавливается в truе, потому что остановить сервер может только тот 
+                                    // экземпляр, который его запустил
 
     bool FuncHelp(Vector<String> &);
     bool FuncClear(Vector<String> &);
@@ -29,6 +37,10 @@ public:
     bool FuncClient(Vector<String> &);
     bool FuncServer(Vector<String> &);
     bool FuncVars(Vector<String> &);
+
+    void HandleAsyncExecFinished(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(ConsoleParser);
 };
 
 
@@ -70,5 +82,6 @@ private:
     void HandleUnhandledKey(StringHash, VariantMap&);
     void HandleClick(StringHash, VariantMap&);
     void HandleResize(StringHash, VariantMap&);
-    void HandleAsyncExecFinished(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(ConsoleRTS);
 };

@@ -222,8 +222,6 @@ void TacticsVictory::SubscribeToEvents()
     SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
     SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
 
-    SubscribeToEvent(E_SERVERCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleServerConnected));
-    SubscribeToEvent(E_SERVERDISCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleServerDisconnected));
     SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(TacticsVictory, HandleConnecFailed));
     SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleClientConnected));
     SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleClientDisconnected));
@@ -259,6 +257,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool TacticsVictory::StartServer(uint16 port)
 {
+    URHO3D_LOGINFO("Now start server");
     if(gServer->Start(port))
     {
         gMenu->Hide();
@@ -267,16 +266,11 @@ bool TacticsVictory::StartServer(uint16 port)
         gCamera->SetEnabled(true);
         return true;
     }
+    URHO3D_LOGINFO("Can not start server");
+    ErrorExit();
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::StartClient()
-{
-    gMenu->Hide();
-    gClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, nullptr);
-    gConsole->Write(L"Соединяюсь с удалённым сервером...");
-}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateEditorSession()
@@ -309,7 +303,11 @@ void TacticsVictory::OpenLog()
 {
     gLog = new LogRTS();
 #ifdef SERVER
-    gLog->Open("server.log");
+    char buffer[50];
+    srand(time(0));
+    rand();
+    sprintf_s(buffer, 50, "server%d.log", rand());
+    gLog->Open(buffer);
 #else
     gLog->Open("client.log");
 #endif

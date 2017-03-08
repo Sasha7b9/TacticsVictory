@@ -129,7 +129,7 @@ static float GetCameraYaw()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static float GetSpeedNetIN()
 {
-    if(gClient->GetServerConnection())
+    if(gClient->IsConnected())
     {
         Connection *connection = gClient->GetServerConnection();
         return connection->GetBytesInPerSec() / 1e3f;
