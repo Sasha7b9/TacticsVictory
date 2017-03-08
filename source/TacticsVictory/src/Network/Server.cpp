@@ -1,5 +1,6 @@
 ﻿#include <stdafx.h>
 #include "Server.h"
+#include "LogRTS.h"
 #include "VectorBufferRTS.h"
 
 
@@ -18,10 +19,21 @@ Server::~Server()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Server::Start(uint16 port)
 {
-    if(network->IsServerRunning())
+    gLog->EnableExtendedInfo();
+
+    LOG_INFOF("now connectiong");
+
+    network->Connect("localhost", port, nullptr);
+
+    LOG_INFOF("now connectiong 2");
+
+    float time = gTime->GetElapsedTime();
+
+    while(!network->GetServerConnection()->IsConnected() && (gTime->GetElapsedTime() - time) < 0.01f)
     {
-        URHO3D_LOGINFO("Server already running");
     }
+
+    LOG_INFOF("Is connection ? %x", network->GetServerConnection());
 
     return network->StartServer(port);
 }
