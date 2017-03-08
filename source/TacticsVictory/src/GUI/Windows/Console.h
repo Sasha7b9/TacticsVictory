@@ -5,11 +5,13 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class ConsoleParser
 {
+    typedef bool (ConsoleParser::*pFuncMember)(Vector<String>&);
+
 public:
     struct ParserStruct
     {
         String command;
-        pFuncBvS func;
+        pFuncMember func;
         String help;
         String fullHelp[10];     // Здесь хранится подробная информация о команде.
     };
@@ -17,7 +19,16 @@ public:
     static HashMap<String, ParserStruct> commands;
 
     static void Init();
-    static bool Execute(const String &string);
+    bool Execute(const String &string);
+
+    bool FuncHelp(Vector<String> &);
+    bool FuncClear(Vector<String> &);
+    bool FuncClose(Vector<String> &);
+    bool FuncExit(Vector<String> &);
+    bool FuncStart(Vector<String> &);
+    bool FuncClient(Vector<String> &);
+    bool FuncServer(Vector<String> &);
+    bool FuncVars(Vector<String> &);
 };
 
 
@@ -53,9 +64,11 @@ private:
     SharedPtr<Text> text;
     SharedPtr<ScrollBar> scrollBar;
     History history;
+    ConsoleParser parser;
 
     void HandleFinishedText(StringHash, VariantMap&);
     void HandleUnhandledKey(StringHash, VariantMap&);
     void HandleClick(StringHash, VariantMap&);
     void HandleResize(StringHash, VariantMap&);
+    void HandleAsyncExecFinished(StringHash, VariantMap&);
 };

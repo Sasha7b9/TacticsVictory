@@ -15,7 +15,7 @@ HashMap<String, ConsoleParser::ParserStruct> ConsoleParser::commands;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool FuncHelp(Vector<String> &)
+bool ConsoleParser::FuncHelp(Vector<String> &)
 {
     gConsole->Write(String(TAB) + L"Справка по командам");
 
@@ -67,7 +67,7 @@ static void ShowFullInfo(Vector<String> &strings)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncExit(Vector<String> &)
+bool ConsoleParser::FuncExit(Vector<String> &)
 {
     gClient->Disconnect();
     gServer->Disconnect();
@@ -76,7 +76,7 @@ static bool FuncExit(Vector<String> &)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncVars(Vector<String> &words)
+bool ConsoleParser::FuncVars(Vector<String> &words)
 {
     uint size = words.Size();
 
@@ -107,21 +107,21 @@ static bool FuncVars(Vector<String> &words)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncClear(Vector<String> &)
+bool ConsoleParser::FuncClear(Vector<String> &)
 {
     gConsole->Clear();
     return true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncClose(Vector<String> &)
+bool ConsoleParser::FuncClose(Vector<String> &)
 {
     gConsole->Toggle();
     return true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncStart(Vector<String> &words)
+bool ConsoleParser::FuncStart(Vector<String> &words)
 {
     String address = SERVER_ADDRESS;
     uint16 port = SERVER_PORT;
@@ -162,7 +162,7 @@ static bool FuncStart(Vector<String> &words)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncServer(Vector<String> &words)
+bool ConsoleParser::FuncServer(Vector<String> &words)
 {
     /*
     -start -port:42 Запускает сервер на порту 42
@@ -181,30 +181,18 @@ static bool FuncServer(Vector<String> &words)
 
     if(words[1] == "-start")
     {
-        if(gClient->IsConnected())
-        {
-            gConsole->Write(ToString("Client already running and connected to server on port %d", gClient->GetPort()));
-        }
-        else
-        {
-            String address = SERVER_ADDRESS;
-            uint16 port = SERVER_PORT;
+        String address = SERVER_ADDRESS;
+        uint16 port = SERVER_PORT;
 
-            if(!GetAddressPort(words, address, port))
-            {
-                return false;
-            }
-
-            if(gServer->Start(port))
-            {
-                gConsole->Write(ToString("Server start on port %d", port));
-                serverStarting = true;
-            }
-            else
-            {
-                gConsole->Write(ToString("Can not starting server on port %d", port));
-            }
+        if(!GetAddressPort(words, address, port))
+        {
+            return false;
         }
+
+        static Vector<String> arguments;
+        arguments.Push(ToString("-port:%d", port));
+        gFileSystem->SystemRunAsync(GetFileName("TVserver.exe"), arguments);
+        
         return true;
     }
     else if(words[1] == "-stop")
@@ -223,7 +211,7 @@ static bool FuncServer(Vector<String> &words)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncClient(Vector<String> &words)
+bool ConsoleParser::FuncClient(Vector<String> &words)
 {
     /*
     -start -address:xx.xx.xx.xx -port:xx
@@ -268,18 +256,18 @@ void ConsoleParser::Init()
 {
     ParserStruct structs[100] =
     {
-        {"?",           FuncHelp,           L"Вывод справки"},
-        {"clear",       FuncClear,          L"Очистить консоль"},
-        {"close",       FuncClose,          L"Закрыть консоль"},
-        {"exit",        FuncExit,           L"Выход"},
-        {"start",       FuncStart,          L"Запуск игры в режиме сервера или клиента",
+        {"?",           &FuncHelp,          L"Вывод справки"},
+        {"clear",       &FuncClear,         L"Очистить консоль"},
+        {"close",       &FuncClose,         L"Закрыть консоль"},
+        {"exit",        &FuncExit,          L"Выход"},
+        {"start",       &FuncStart,         L"Запуск игры в режиме сервера или клиента",
                                             {"[-server] [-client] [-address:xx.xx.xx.xx] [-port:xx]",
                                             L"server - создать сервер на порту port. По умолчанию 1000",
                                             L"client - приконнектиться с серверу с адресом address:port. По умолчанию 127.0.0.1:1000"}},
-        {"client",      FuncClient,         L"Запуск клиента",
+        {"client",      &FuncClient,        L"Запуск клиента",
                                             {L"[-start|-stop] [-address:xx.xx.xx.xx -port:xx]"}},
-        {"server",      FuncServer,         L""},
-        {"vars",        FuncVars,           L"Управление окном переменных",
+        {"server",      &FuncServer,        L""},
+        {"vars",        &FuncVars,          L"Управление окном переменных",
                                             {"[open|close]", L"open - показать", L"close - скрыть"}
         },
     };
@@ -308,11 +296,11 @@ bool ConsoleParser::Execute(const String &string)
             return true;
         }
 
-        pFuncBvS func = commands[words[0]].func;
+        pFuncMember func = commands[words[0]].func;
 
         if(func)
         {
-            return func(words);
+            return (this->*func)(words);
         }
     }
 
@@ -392,7 +380,7 @@ void ConsoleRTS::HandleFinishedText(StringHash, VariantMap&)
 
     Write(message + "> " + command);
 
-    if(!ConsoleParser::Execute(command))
+    if(!parser.Execute(command))
     {
         Write(L"Неизвестная команда. Для получения справки наберите \"?\"");
 
@@ -492,6 +480,18 @@ void ConsoleRTS::Clear()
 {
     text->SetText("");
     text->SetPosition(2, 0);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void ConsoleRTS::HandleAsyncExecFinished(StringHash, VariantMap& /*data*/)
+{
+    using namespace AsyncExecFinished;
+
+//    int exitCode = data[P_EXITCODE].GetInt();
+
+
+
+    UnsubscribeFromEvent(E_ASYNCLOADFINISHED);
 }
 
 

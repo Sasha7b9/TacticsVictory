@@ -151,11 +151,6 @@ void TacticsVictory::Start()
 
     ParseArguments(arguments);
 
-    if (type == Type_Client)
-    {
-        StartClient();
-    }
-
     PROFILER_FUNC_LEAVE;
 }
 
@@ -242,18 +237,7 @@ void TacticsVictory::SetWindowTitleAndIcon()
 #ifdef CLIENT
     Image* icon = gCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     gGraphics->SetWindowIcon(icon);
-    if (type == Type_Server)
-    {
-        gGraphics->SetWindowTitle(L"Тактика победы Сервер");
-    }
-    else if (type == Type_Client)
-    {
-        gGraphics->SetWindowTitle(L"Taктика победы Клиент");
-    }
-    else
-    {
-        gGraphics->SetWindowTitle(L"Тактика победы");
-    }
+    gGraphics->SetWindowTitle(L"Тактика победы");
 #endif
 }
 
@@ -275,18 +259,20 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool TacticsVictory::StartServer(uint16 port)
 {
-    type = Type_Server;
-    gMenu->Hide();
-    scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
-    scene->Create();
-    gCamera->SetEnabled(true);
-    return gServer->Start(port);
+    if(gServer->Start(port))
+    {
+        gMenu->Hide();
+        scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
+        scene->Create();
+        gCamera->SetEnabled(true);
+        return true;
+    }
+    return false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::StartClient()
 {
-    type = Type_Client;
     gMenu->Hide();
     gClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, nullptr);
     gConsole->Write(L"Соединяюсь с удалённым сервером...");
@@ -302,12 +288,6 @@ void TacticsVictory::CreateEditorSession()
     gGuiEditor->SetVisible(true);
     gCamera->SetEnabled(true);
     gEditor->Run();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-TypeApplication TacticsVictory::GetTypeApplication()
-{
-    return type;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

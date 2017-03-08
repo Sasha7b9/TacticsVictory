@@ -5,13 +5,6 @@
 class SceneRTS;
 class VectorBufferRTS;
 
-enum TypeApplication
-{
-    Type_None,          // Это если запускаем без параметров
-    Type_Server,        // Это для запуска в режиме сервера
-    Type_Client         // Это для запуска в режиме клиента
-};
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class TacticsVictory : public Application
@@ -26,13 +19,11 @@ public:
     virtual void Stop();
     bool StartServer(uint16 port);
     void StartClient();
-    TypeApplication GetTypeApplication();
 
     SceneRTS *scene = nullptr;
 
 private:
     bool drawDebug = false;
-    TypeApplication type = Type_None;
     typedef void(*networkFunc)(Connection*, MemoryBuffer&, VectorBufferRTS&);
     HashMap<int, networkFunc> networkFunctions;                  // Здесь функции-обработчики сетевых сообщений
 

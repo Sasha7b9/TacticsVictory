@@ -76,6 +76,7 @@
 #include <Urho3D/Urho2D/StaticSprite2D.h>
 #include <Urho3D/Urho2D/Sprite2D.h>
 
+#include <Urho3D/IO/IOEvents.h>
 #include <Urho3D/IO/File.h>
 #include <Urho3D/IO/FileSystem.h>
 #include <Urho3D/IO/Log.h>
