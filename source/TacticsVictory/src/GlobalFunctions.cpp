@@ -118,3 +118,37 @@ bool GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
 
     return true;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool BeginFrom(String &str, char *begin)
+{
+    return str.Substring(0, (uint)strlen(begin)) == String(begin);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ReadIntFromString(String &str, int *value)
+{
+    Vector<String> words = str.Split(':');
+
+    if(words.Size() == 2)
+    {
+        *value = ToInt(words[1]);       // TODO Здесь ноль и true возвращается в том случае, когда преобразование выполнено с ошибкой
+        return true;
+    }
+
+    return false;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ReadFloatFromString(String &str, float *value)
+{
+    Vector<String> words = str.Split(':');
+
+    if(words.Size() == 2)
+    {
+        *value = ToFloat(words[1]);     // Здесь 0.0f возвращается в том случае, если преобразование выполнено с ошибкой
+        return true;
+    }
+
+    return false;
+}

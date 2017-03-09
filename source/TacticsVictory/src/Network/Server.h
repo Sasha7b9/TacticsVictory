@@ -18,6 +18,8 @@ public:
     Vector<SharedPtr<Connection>> GetConnections();
     void SendToAll(int msgID, const VectorBufferRTS &msg);
     void Disconnect();
+    void SetSimulatedLatency(int timeMS);
+    void SetSimulatedPacketLoss(float probability);
 
 private:
     Network *network = nullptr;

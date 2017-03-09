@@ -3,6 +3,7 @@
 #include "NetworkMessages.h"
 #include "TacticsVictory.h"
 #include "VectorBufferRTS.h"
+#include "Server.h"
 #include "Core/Camera.h"
 #include "Game/Scene.h"
 #include "GUI/Windows/Console.h"
@@ -55,3 +56,16 @@ void FUNC_MSG_DELETE_SERVER(Connection *, MemoryBuffer &, VectorBufferRTS &)
 {
     gEngine->Exit();
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FUNC_MSG_SET_NETWORK_LOSS(Connection *, MemoryBuffer &in, VectorBufferRTS &)
+{
+    gServer->SetSimulatedPacketLoss(in.ReadFloat());
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FUNC_MSG_SET_NETWORK_LATENCY(Connection *, MemoryBuffer &in, VectorBufferRTS &)
+{
+    gServer->SetSimulatedLatency(in.ReadInt());
+}
+

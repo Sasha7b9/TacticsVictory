@@ -194,6 +194,22 @@ bool ConsoleParser::FuncServer(Vector<String> &words)
         }
         return true;
     }
+    else if(BeginFrom(words[1], "-latency:"))
+    {
+        int latency = 0;
+        ReadIntFromString(words[1], &latency);
+        gClient->Send(MSG_SET_NETWORK_LATENCY, VectorBufferRTS(latency));
+        gConsole->Write(ToString("latency %d", latency));
+        return true;
+    }
+    else if(BeginFrom(words[1], "-packetloss:"))
+    {
+        float loss = 0.0f;
+        ReadFloatFromString(words[1], &loss);
+        gClient->Send(MSG_SET_NETWORK_LOSS, VectorBufferRTS(loss));
+        gConsole->Write(ToString("loss %f", loss));
+        return true;
+    }
     else if(words[1] == "-connections")
     {
         return true;
@@ -283,6 +299,8 @@ void ConsoleParser::Init()
         {"server",      &FuncServer,        L"Запуск сервера",
                                             {L"[-start|-stop|-connections] [-port:xx]",
                                             L"-start -port:42 : создать сервер на порт 42",
+                                            L"-latency:100    : установить задержку сети 100мс",
+                                            L"-packetloss:0.1 : установить потери пакетов 10%",
                                             L"-stop           : остановить сервер. При этом приложение-сервер выгружается из памяти",
                                             L"-connections    : вывести информацию об имеющихся подключениях сервера"}},
         {"vars",        &FuncVars,          L"Управление окном переменных",
@@ -378,6 +396,7 @@ void ConsoleRTS::Toggle()
    SetVisible(!IsVisible());
    if(IsVisible())
    {
+       this->BringToFront();
        gUI->SetFocusElement(lineEdit);
    }
 }

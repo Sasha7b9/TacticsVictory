@@ -19,6 +19,7 @@ Server::~Server()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Server::Start(uint16 port)
 {
+    /*
     gLog->EnableExtendedInfo();
 
     LOG_INFOF("now connectiong");
@@ -34,6 +35,7 @@ bool Server::Start(uint16 port)
     }
 
     LOG_INFOF("Is connection ? %x", network->GetServerConnection());
+    */
 
     return network->StartServer(port);
 }
@@ -60,4 +62,16 @@ void Server::SendToAll(int msgID, const VectorBufferRTS &msg)
 void Server::Disconnect()
 {
     network->Disconnect();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Server::SetSimulatedLatency(int timeMS)
+{
+    network->SetSimulatedLatency(timeMS);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Server::SetSimulatedPacketLoss(float probability)
+{
+    network->SetSimulatedPacketLoss(probability);
 }

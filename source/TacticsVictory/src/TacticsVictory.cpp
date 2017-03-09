@@ -296,6 +296,8 @@ void TacticsVictory::FillNetworkFunctions()
     ADD_NETWORK_FUNCTION(MSG_SEND_TANKS);
     ADD_NETWORK_FUNCTION(MSG_SEND_SCREENSHOT);
     ADD_NETWORK_FUNCTION(MSG_DELETE_SERVER);
+    ADD_NETWORK_FUNCTION(MSG_SET_NETWORK_LOSS);
+    ADD_NETWORK_FUNCTION(MSG_SET_NETWORK_LATENCY);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -304,7 +306,7 @@ void TacticsVictory::OpenLog()
     gLog = new LogRTS();
 #ifdef SERVER
     char buffer[50];
-    srand(time(0));
+    srand((uint)time(0));
     rand();
     sprintf_s(buffer, 50, "server%d.log", rand());
     gLog->Open(buffer);

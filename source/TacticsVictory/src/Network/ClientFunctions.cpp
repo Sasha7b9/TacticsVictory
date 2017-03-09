@@ -22,7 +22,14 @@ void FUNC_MSG_SEND_LANDSCAPE(Connection *connection, MemoryBuffer &in, VectorBuf
         level[row].Resize(numCols);
         for(uint col = 0; col < numCols; col++)
         {
-            level[row][col] = in.ReadFloat();
+            if(in.IsEof())
+            {
+                level[row][col] = 0.0f;
+            }
+            else
+            {
+                level[row][col] = in.ReadFloat();
+            }
         }
     }
 

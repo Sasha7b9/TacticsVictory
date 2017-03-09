@@ -27,6 +27,9 @@ void TacticsVictory::HandleClientConnected(StringHash, VariantMap& eventData)
     Connection *connection = (Connection*)eventData[ClientConnected::P_CONNECTION].GetPtr();
 
     LOG_INFOF("%s:%d connected", connection->GetAddress().CString(), connection->GetPort());
+
+    //GetSubsystem<Network>()->SetSimulatedLatency(0);
+    //GetSubsystem<Network>()->SetSimulatedPacketLoss(0.1f);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
