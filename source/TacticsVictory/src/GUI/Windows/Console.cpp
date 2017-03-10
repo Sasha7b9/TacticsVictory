@@ -11,8 +11,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-HashMap<String, ConsoleParser::ParserStructStart> ConsoleParser::commands;
-
 #define TAB "    "
 
 
@@ -20,6 +18,122 @@ HashMap<String, ConsoleParser::ParserStructStart> ConsoleParser::commands;
 ConsoleParser::ConsoleParser(Context *context) : Object(context)
 {
 
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void ConsoleParser::Execute(const String &string)
+{
+    const ParserStruct structs[100] =
+    {
+        {"clear",   None,   &ConsoleParser::FuncClear,  L"очистить консоль"},
+        {"client",  None,   &ConsoleParser::FuncClient, L"функции работы с клиентом"},
+        {"close",   None,   &ConsoleParser::FuncClose,  L"закрыть консоль"},
+        {"exit",    None,   &ConsoleParser::FuncExit,   L"выход"},
+        {"server",  None,   &ConsoleParser::FuncServer, L"функции работы с сервером"},
+        {"vars",    None,   &ConsoleParser::FuncVars,   L"окно переменных"}
+    };
+
+    Vector<String> words = string.ToLower().Split(' ');
+
+    if(!ShowBriefHelp(structs, words))
+    {
+        if(!ShowFullHelp(structs, words))
+        {
+            if(!ExecuteCommand(structs, words))
+            {
+                gConsole->Write(L"Неизвестная команда. Для просмотра списка доступных команд наберите \"?\"");
+            }
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::ShowBriefHelp(const ParserStruct *structs, const Vector<String> &words)
+{
+    if(words[0] == "?")
+    {
+        const ParserStruct *str = structs;
+
+        uint length = 0;
+        while(str->command)
+        {
+            if(strlen(str->command) > length)
+            {
+                length = (uint)strlen(str->command);
+            }
+            str++;
+        }
+
+        str = structs;
+
+        while(str->command)
+        {
+            String message = str->command;
+
+            while(message.Length() < length + 3)
+            {
+                message.Append(' ');
+            }
+
+            gConsole->Write(message + str->help);
+            str++;
+        }
+
+        return true;
+    }
+    return false;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::ShowFullHelp(const ParserStruct *structs, Vector<String> &words)
+{
+    const ParserStruct *str = structs;
+
+    if(words.Size() > 1 && words[1] == "?")
+    {
+        while(str->command)
+        {
+            if(BeginFrom(words[0], str->command))
+            {
+                gConsole->Write(String(str->command) + "  " + str->help);
+
+                (this->*str->func)(words, true);
+
+                return true;
+            }
+            str++;
+        }
+    }
+
+    return false;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::ExecuteCommand(const ParserStruct *structs, Vector<String> &words)
+{
+    const ParserStruct *str = structs;
+
+    while(str->command)
+    {
+        if(BeginFrom(words[0], str->command))
+        {
+            pFuncMember func = str->func;
+
+            String forMSG = words[0];
+
+            words.Erase(0, 1);
+            if(!(this->*func)(words, false))
+            {
+                gConsole->Write(ToString("Invalid command syntax. For more information, type \"%s -?\"", forMSG.CString()));
+            }
+
+            return true;
+        }
+
+        str++;
+    }
+
+    return false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -51,152 +165,45 @@ bool ConsoleParser::ExtractFloat(String &str, float *value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::BeginFrom(String &str, char *begin)
+bool ConsoleParser::BeginFrom(const String &str, const char *begin)
 {
     return str.Substring(str[0] == '-' ? 1U : 0U, (uint)strlen(begin)) == String(begin);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncHelp(Vector<String> &)
+bool ConsoleParser::FuncExit(Vector<String> &, bool showInfo)
 {
-    /*
-    gConsole->Write(String(TAB) + L"Справка по командам");
-
-    // Находим максимальную длину слова
-    uint len = 0;
-    for(HashMap<String, ConsoleParser::ParserStruct>::KeyValue key : ConsoleParser::commands)
+    if(!showInfo)
     {
-        if(key.first_.Length() > len)
-        {
-            len = key.first_.Length();
-        }
+        gClient->Disconnect();
+        gServer->Disconnect();
+        gEngine->Exit();
     }
-
-    for(HashMap<String, ConsoleParser::ParserStruct>::KeyValue key : ConsoleParser::commands)
-    {
-        if(key.first_ != "?")
-        {
-            String message;
-            message += key.first_;
-
-            for(uint i = 0; i < len - key.first_.Length() + 1; i++)
-            {
-                message += " ";
-            }
-
-            gConsole->Write(message + key.second_.help);
-        }
-    }
-
-    gConsole->Write(String(TAB) + L"Для получения подробной информации наберите \"vars ?\"");
-    */
-
-    return false;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void ShowFullInfo(Vector<String> &)
-{
-    /*
-    ConsoleParser::ParserStruct parserStruct = ConsoleParser::commands[strings[0]];
-
-    gConsole->Write(strings[0] + " " + parserStruct.fullHelp[0]);
-    gConsole->Write(TAB + parserStruct.help);
-    
-    String* help = &parserStruct.fullHelp[1];
-    while(!help->Empty())
-    {
-        gConsole->Write(TAB + *help);
-        help++;
-    }
-    */
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncExit(Vector<String> &)
-{
-    gClient->Disconnect();
-    gServer->Disconnect();
-    gEngine->Exit();
     return true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncVars(Vector<String> &words)
+bool ConsoleParser::FuncClear(Vector<String> &, bool showInfo)
 {
-    uint size = words.Size();
-
-    String word0 = size > 0 ? words[0] : "";
-    String word1 = size > 1 ? words[1] : "";
-
-    if(size == 1)
+    if(!showInfo)
     {
-        gWindowVars->SetVisible(!gWindowVars->IsVisible());
+        gConsole->Clear();
     }
-    else if(size == 2)
-    {
-        if(word1 == "open")
-        {
-            gWindowVars->SetVisible(true);
-        }
-        else if(word1 == "close")
-        {
-            gWindowVars->SetVisible(false);
-        }
-        else
-        {
-            return false;
-        }
-    }
-
     return true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncClear(Vector<String> &)
+bool ConsoleParser::FuncClose(Vector<String> &, bool showInfo)
 {
-    gConsole->Clear();
+    if(!showInfo)
+    {
+        gConsole->Toggle();
+    }
     return true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncClose(Vector<String> &)
-{
-    gConsole->Toggle();
-    return true;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncStart(Vector<String> &words)
-{
-    String address = SERVER_ADDRESS;
-    uint16 port = SERVER_PORT;
-
-    if(words.Size() < 2 || !GetAddressPort(words, address, port))
-    {
-        return false;
-    }
-
-    if(words.Contains("-server"))
-    {
-        if(gServer->IsRunning())
-        {
-            gConsole->Write("Server already running");
-        }
-        else
-        {
-            static Vector<String> arguments;
-            arguments.Push(ToString("-port:%d", port));
-            gFileSystem->SystemRunAsync(GetFileName("TVserver.exe"), arguments);
-        }
-        return true;
-    }
-
-    return false;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncServerStart(Vector<String> &words)
+bool ConsoleParser::FuncServerStart(Vector<String> &words, bool)
 {
     int port = 0;
 
@@ -215,7 +222,7 @@ bool ConsoleParser::FuncServerStart(Vector<String> &words)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncServerStop(Vector<String> &)
+bool ConsoleParser::FuncServerStop(Vector<String> &,bool)
 {
     if(serverRunning)
     {
@@ -229,7 +236,7 @@ bool ConsoleParser::FuncServerStop(Vector<String> &)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncServerLatency(Vector<String> &words)
+bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool)
 {
     int latency = 0;
     
@@ -243,7 +250,7 @@ bool ConsoleParser::FuncServerLatency(Vector<String> &words)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words)
+bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool)
 {
     float loss = 0.0f;
 
@@ -257,9 +264,9 @@ bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncServer(Vector<String> &words)
+bool ConsoleParser::FuncServer(Vector<String> &words, bool showInfo)
 {
-    ParserStruct structs[100] =
+    const ParserStruct structs[100] =
     {
         {"start",       Int,    &ConsoleParser::FuncServerStart,        L"cоздать сервер на порт XX"},
         {"stop",        None,   &ConsoleParser::FuncServerStop,         L"остановить сервер"},
@@ -267,23 +274,97 @@ bool ConsoleParser::FuncServer(Vector<String> &words)
         {"packetloss",  Float,  &ConsoleParser::FuncServerPacketLoss,   L"эмулировать потерю X.X пакетров"}
     };
 
-    return Run(structs, words);
+    return Run(structs, words, showInfo);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words)
+bool ConsoleParser::FuncVarsOpen(Vector<String> &, bool)
+{
+    gWindowVars->SetVisible(true);
+    return true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::FuncVarsClose(Vector<String> &, bool)
+{
+    gWindowVars->SetVisible(false);
+    return true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::FuncVars(Vector<String> &words, bool showInfo)
+{
+    const ParserStruct structs[100] =
+    {
+        {"open",    None,   &ConsoleParser::FuncVarsOpen,   L"открыть окно переменных"},
+        {"close",   None,   &ConsoleParser::FuncVarsClose,  L"закрыть окно переменных"}
+    };
+
+    if(words.Size() || showInfo)
+    {
+        return Run(structs, words, showInfo);
+    }
+    else
+    {
+        gWindowVars->SetVisible(!gWindowVars->IsVisible());
+        return true;
+    }
+
+    return true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool showInfo)
 {
     const ParserStruct *str = structs;
 
-    while(str->command)
+    if(showInfo)
     {
-        if(BeginFrom(words[0], str->command))
+        uint length = 0;
+        while(str->command)
         {
-            return (this->*str->func)(words);
+            if((uint)strlen(str->command) > length)
+            {
+                length = (uint)strlen(str->command);
+            }
+            str++;
         }
-        str++;
-    }
 
+        str = structs;
+
+        while(str->command)
+        {
+            String message = " -" + String(str->command);
+            if(str->typeParameter == Int)
+            {
+                message += ":XX";
+            }
+            else if(str->typeParameter == Float)
+            {
+                message += ":X.X";
+            }
+            while(message.Length() < length + 8)
+            {
+                message.Append(' ');
+            }
+            gConsole->Write(message + str->help);
+            str++;
+        }
+    }
+    else
+    {
+        if(words.Size())
+        {
+            while(str->command)
+            {
+                if(BeginFrom(words[0], str->command))
+                {
+                    return (this->*str->func)(words, false);
+                }
+                str++;
+            }
+        }
+    }
     return false;
 }
 
@@ -314,7 +395,7 @@ void OnServerConnected()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncClientStart(Vector<String> &words)
+bool ConsoleParser::FuncClientStart(Vector<String> &words, bool)
 {
     String address = SERVER_ADDRESS;
     uint16 port = SERVER_PORT;
@@ -338,13 +419,13 @@ bool ConsoleParser::FuncClientStart(Vector<String> &words)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncClientStop(Vector<String> &)
+bool ConsoleParser::FuncClientStop(Vector<String> &, bool)
 {
     return false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncClient(Vector<String> &words)
+bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
     {
@@ -352,72 +433,7 @@ bool ConsoleParser::FuncClient(Vector<String> &words)
         {"stop",    None,   &ConsoleParser::FuncClientStop,     L"останов клиента"}
     };
 
-    return Run(structs, words);
-}
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void ConsoleParser::Init()
-{
-    /*
-    ParserStruct structs[100] =
-    {
-    {"?",           &FuncHelp,          L"Вывод справки"},
-    {"clear",       &FuncClear,         L"Очистить консоль"},
-    {"close",       &FuncClose,         L"Закрыть консоль"},
-    {"vars",        &FuncVars,          L"Управление окном переменных",
-    {"[open|close]", L"open - показать", L"close - скрыть"}
-    },
-    };
-    */
-
-    const ParserStructStart structs[100] =
-    {
-        {"server", &ConsoleParser::FuncServer},
-        {"client", &ConsoleParser::FuncClient},
-        {"exit",   &ConsoleParser::FuncExit}
-    };
-
-    const ParserStructStart *parserStruct = structs;
-
-    while(parserStruct->func)
-    {
-        ConsoleParser::commands.Insert({parserStruct->command, *parserStruct});
-        parserStruct++;
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void ConsoleParser::Execute(const String &string)
-{
-
-
-    Vector<String> words = string.ToLower().Split(' ');
-
-    uint numWords = words.Size();
-
-    if(commands.Contains(words[0]))
-    {
-        if(numWords > 1 && (words[1] == "?" || words[1] == "-?"))
-        {
-            ShowFullInfo(words);
-            return;
-        }
-
-        pFuncMember func = commands[words[0]].func;
-
-        if(func)
-        {
-            words.Erase(0, 1);
-            if(!(this->*func)(words))
-            {
-                gConsole->Write(ToString("Invalid command syntax. For more information, type \"%s -?\"", words[0].CString()));
-            }
-            return;
-        }
-    }
-
-    gConsole->Write(L"Неизвестная команда. Для просмотра списка доступных команд наберите \"?\"");
+    return Run(structs, words, showInfo);
 }
 
 
@@ -425,8 +441,6 @@ void ConsoleParser::Execute(const String &string)
 ConsoleRTS::ConsoleRTS(Context *context) :
     WindowRTS(context)
 {
-    ConsoleParser::Init();
-
     SetVisible(false);
     SetResizable(true);
 

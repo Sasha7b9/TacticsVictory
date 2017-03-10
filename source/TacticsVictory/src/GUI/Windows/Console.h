@@ -7,7 +7,7 @@ class ConsoleParser : public Object
 {
     URHO3D_OBJECT(ConsoleParser, Object);
 
-    typedef bool (ConsoleParser::*pFuncMember)(Vector<String>&);
+    typedef bool (ConsoleParser::*pFuncMember)(Vector<String>&, bool);  // Если второй параметр == true, то выводим информацию о команде, иначе - выполняем
 
 public:
     ConsoleParser(Context *context = gContext);
@@ -27,38 +27,36 @@ public:
         String help;
     };
 
-    struct ParserStructStart
-    {
-        String command;
-        pFuncMember func;
-    };
-
-    static HashMap<String, ParserStructStart> commands;
-
-    static void Init();
     void Execute(const String &string);
 
 private:
     bool serverRunning = false;     // При запуске сервера это значение устанавливается в truе, потому что остановить сервер может только тот 
                                     // экземпляр, который его запустил
 
-    bool FuncHelp(Vector<String> &);
-    bool FuncClear(Vector<String> &);
-    bool FuncClose(Vector<String> &);
-    bool FuncExit(Vector<String> &);
-    bool FuncStart(Vector<String> &);
-    bool FuncClient(Vector<String> &);
-    bool FuncClientStart(Vector<String> &);
-    bool FuncClientStop(Vector<String> &);
-    bool FuncServer(Vector<String> &);
-    bool FuncServerStart(Vector<String> &);
-    bool FuncServerStop(Vector<String> &);
-    bool FuncServerLatency(Vector<String> &);
-    bool FuncServerPacketLoss(Vector<String> &);
-    bool FuncVars(Vector<String> &);
+    bool FuncClient(Vector<String> &, bool);
+    bool FuncClientStart(Vector<String> &, bool);
+    bool FuncClientStop(Vector<String> &, bool);
 
-    bool Run(const ParserStruct *str, Vector<String> &words);
-    bool BeginFrom(String &str, char *begin);
+    bool FuncServer(Vector<String> &, bool);
+    bool FuncServerStart(Vector<String> &, bool);
+    bool FuncServerStop(Vector<String> &, bool);
+    bool FuncServerLatency(Vector<String> &, bool);
+    bool FuncServerPacketLoss(Vector<String> &, bool);
+
+    bool FuncVars(Vector<String> &, bool);
+    bool FuncVarsOpen(Vector<String> &, bool);
+    bool FuncVarsClose(Vector<String> &, bool);
+
+    bool FuncClear(Vector<String> &, bool);
+    bool FuncClose(Vector<String> &, bool);
+    bool FuncExit(Vector<String> &, bool);
+
+
+    bool ShowBriefHelp(const ParserStruct *structs, const Vector<String> &words);
+    bool ShowFullHelp(const ParserStruct *structs, Vector<String> &words);
+    bool ExecuteCommand(const ParserStruct *structs, Vector<String> &words);
+    bool Run(const ParserStruct *str, Vector<String> &words, bool showInfo);
+    bool BeginFrom(const String &str, const char *begin);
     bool ExtractInt(String &str, int *value);           // Считывает целое значение после первого символа ':'
     bool ExtractFloat(String &str, float *value);       // Считывает значение типа float после первого символа ':'
 
