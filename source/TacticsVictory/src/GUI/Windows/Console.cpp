@@ -22,6 +22,41 @@ ConsoleParser::ConsoleParser(Context *context) : Object(context)
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::ExtractInt(String &str, int *value)
+{
+    Vector<String> words = str.Split(':');
+
+    if(words.Size() == 2)
+    {
+        *value = ToInt(words[1]);       // TODO Здесь ноль и true возвращается в том случае, когда преобразование выполнено с ошибкой
+        return true;
+    }
+
+    return false;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::ExtractFloat(String &str, float *value)
+{
+    Vector<String> words = str.Split(':');
+
+    if(words.Size() == 2)
+    {
+        *value = ToFloat(words[1]);     // Здесь 0.0f возвращается в том случае, если преобразование выполнено с ошибкой
+        return true;
+    }
+
+    return false;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::BeginFrom(String &str, char *begin)
+{
+    return str.Substring(0, (uint)strlen(begin)) == String(begin);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool ConsoleParser::FuncHelp(Vector<String> &)
 {
     gConsole->Write(String(TAB) + L"Справка по командам");
@@ -157,8 +192,19 @@ bool ConsoleParser::FuncStart(Vector<String> &words)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::FuncServerStart(Vector<String> &words)
+{
+    return false;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool ConsoleParser::FuncServer(Vector<String> &words)
 {
+    const ParserStruct structs[100] =
+    {
+        {"start"}
+    };
+
     if(words.Size() < 2)
     {
         return false;
@@ -197,7 +243,7 @@ bool ConsoleParser::FuncServer(Vector<String> &words)
     else if(BeginFrom(words[1], "-latency:"))
     {
         int latency = 0;
-        ReadIntFromString(words[1], &latency);
+        ExtractInt(words[1], &latency);
         gClient->Send(MSG_SET_NETWORK_LATENCY, VectorBufferRTS(latency));
         gConsole->Write(ToString("latency %d", latency));
         return true;
@@ -205,7 +251,7 @@ bool ConsoleParser::FuncServer(Vector<String> &words)
     else if(BeginFrom(words[1], "-packetloss:"))
     {
         float loss = 0.0f;
-        ReadFloatFromString(words[1], &loss);
+        ExtractFloat(words[1], &loss);
         gClient->Send(MSG_SET_NETWORK_LOSS, VectorBufferRTS(loss));
         gConsole->Write(ToString("loss %f", loss));
         return true;

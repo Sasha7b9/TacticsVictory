@@ -12,12 +12,20 @@ class ConsoleParser : public Object
 public:
     ConsoleParser(Context *context = gContext);
 
+    enum Parameter
+    {
+        None,
+        Int,
+        Float
+    };
+
     struct ParserStruct
     {
         String command;
         pFuncMember func;
         String help;
         String fullHelp[10];        // Здесь хранится подробная информация о команде.
+        Parameter typeParameter;
     };
 
     static HashMap<String, ParserStruct> commands;
@@ -36,7 +44,12 @@ private:
     bool FuncStart(Vector<String> &);
     bool FuncClient(Vector<String> &);
     bool FuncServer(Vector<String> &);
+    bool FuncServerStart(Vector<String> &);
     bool FuncVars(Vector<String> &);
+
+    bool BeginFrom(String &str, char *begin);
+    bool ExtractInt(String &str, int *value);           // Считывает целое значение после первого символа ':'
+    bool ExtractFloat(String &str, float *value);       // Считывает значение типа float после первого символа ':'
 
     void HandleAsyncExecFinished(StringHash, VariantMap&);
 
