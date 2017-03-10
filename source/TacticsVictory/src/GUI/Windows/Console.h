@@ -21,14 +21,19 @@ public:
 
     struct ParserStruct
     {
-        String command;
+        char* command;
+        Parameter typeParameter;
         pFuncMember func;
         String help;
-        String fullHelp[10];        // Здесь хранится подробная информация о команде.
-        Parameter typeParameter;
     };
 
-    static HashMap<String, ParserStruct> commands;
+    struct ParserStructStart
+    {
+        String command;
+        pFuncMember func;
+    };
+
+    static HashMap<String, ParserStructStart> commands;
 
     static void Init();
     void Execute(const String &string);
@@ -43,10 +48,16 @@ private:
     bool FuncExit(Vector<String> &);
     bool FuncStart(Vector<String> &);
     bool FuncClient(Vector<String> &);
+    bool FuncClientStart(Vector<String> &);
+    bool FuncClientStop(Vector<String> &);
     bool FuncServer(Vector<String> &);
     bool FuncServerStart(Vector<String> &);
+    bool FuncServerStop(Vector<String> &);
+    bool FuncServerLatency(Vector<String> &);
+    bool FuncServerPacketLoss(Vector<String> &);
     bool FuncVars(Vector<String> &);
 
+    bool Run(const ParserStruct *str, Vector<String> &words);
     bool BeginFrom(String &str, char *begin);
     bool ExtractInt(String &str, int *value);           // Считывает целое значение после первого символа ':'
     bool ExtractFloat(String &str, float *value);       // Считывает значение типа float после первого символа ':'
