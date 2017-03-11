@@ -18,8 +18,8 @@ public:
     void AddFunctionFloat(char *title, pFuncFV funcRead, pFuncVF funcWrite);
 
 private:
-    float *var = nullptr;
-    char *title = nullptr;
+    float *var = nullptr; //-V122
+    char *title = nullptr; //-V122
 
     SharedPtr<Label> label;
     SharedPtr<GovernorFloat> governor;

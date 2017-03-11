@@ -10,6 +10,9 @@
 *.cache
 *.opensdf
 *.suo
+*.cmd*
+*.i
+*.i-*
 out/TVData/history.txt
 log.txt
 Debug/TacticsVictory.tlog

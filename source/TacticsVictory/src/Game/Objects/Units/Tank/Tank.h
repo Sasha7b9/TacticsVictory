@@ -47,7 +47,7 @@ private:
     {
         TankStruct(TypeTank type_ = Small, char* fileName_ = 0) : type(type_), fileName(fileName_) {};
         TypeTank type;
-        char *fileName;
+        char *fileName; //-V122
     };
 
     struct Key

@@ -1,6 +1,9 @@
 #pragma once
 
 
+//+V2005 NO_SIMPLE_CAST
+
+
 #pragma warning(push)
 
 #pragma warning(disable:4365)

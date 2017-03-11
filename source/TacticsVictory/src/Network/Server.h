@@ -22,7 +22,7 @@ public:
     void SetSimulatedPacketLoss(float probability);
 
 private:
-    Network *network = nullptr;
+    Network *network = nullptr; //-V122
 
     DEFAULT_MEMBERS(Server);
 };

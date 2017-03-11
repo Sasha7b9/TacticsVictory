@@ -19,7 +19,7 @@ public:
     virtual void Stop();
     bool StartServer(uint16 port);
 
-    SceneRTS *scene = nullptr;
+    SceneRTS *scene = nullptr; //-V122
 
 private:
     bool drawDebug = false;

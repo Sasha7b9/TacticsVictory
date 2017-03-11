@@ -52,7 +52,7 @@ static int PushToVector(const char *data, Vector<float> *vec)
     }
 
     int value = atoi(buffer);
-    vec->Push((float)value);
+    vec->Push(static_cast<float>(value));
 
     return retValue;
 }
@@ -96,7 +96,7 @@ Vector<Vector<float>> Level::Load(const char *fileName)
             }
             if(IsCorrectSymbol(*data))
             {
-                data += (uint64)PushToVector(data, &curString);
+                data += static_cast<uint64>(PushToVector(data, &curString));
             }
         }
         fileRead->Close();
@@ -185,16 +185,16 @@ Vector<Vector<float> > Level::CreateRandom(uint numRows, uint numCols)
 
     srand((uint)time(NULL)); //-V202
 
-    SetRandomSeed((uint)rand());
+    SetRandomSeed(static_cast<uint>(rand()));
 
-    str.Push((float)Math::RandomInt(minHeight, maxHeight));
+    str.Push(static_cast<float>(Math::RandomInt(minHeight, maxHeight)));
 
     for (uint col = 1; col < numCols; col++)
     {
-        int min = Math::LimitBelow((int)str[col - 1] - maxDelta, minHeight);
-        int max = Math::LimitAbove((int)str[col - 1] + maxDelta, maxHeight);
+        int min = Math::LimitBelow(static_cast<int>(str[col - 1]) - maxDelta, minHeight);
+        int max = Math::LimitAbove(static_cast<int>(str[col - 1]) + maxDelta, maxHeight);
 
-        str.Push((float)Math::RandomInt(min, max));
+        str.Push(static_cast<float>(Math::RandomInt(min, max)));
     }
 
     map.Push(str);
@@ -203,15 +203,15 @@ Vector<Vector<float> > Level::CreateRandom(uint numRows, uint numCols)
     {
         str.Clear();
 
-        int min = Math::LimitBelow((int)map[row - 1][0] - maxDelta, minHeight);
-        int max = Math::LimitAbove((int)map[row - 1][0] + maxDelta, maxHeight);
+        int min = Math::LimitBelow(static_cast<int>(map[row - 1][0] - maxDelta), minHeight);
+        int max = Math::LimitAbove(static_cast<int>(map[row - 1][0] + maxDelta), maxHeight);
 
-        str.Push((float)Math::RandomInt(min, max));
+        str.Push(static_cast<float>(Math::RandomInt(min, max)));
 
         for (uint col = 1; col < numCols; col++)
         {
-            min = Math::LimitBelow((int)str[col - 1] - maxDelta, minHeight);
-            max = Math::LimitAbove((int)str[col - 1] + maxDelta, maxHeight);
+            min = Math::LimitBelow(static_cast<int>(str[col - 1]) - maxDelta, minHeight);
+            max = Math::LimitAbove(static_cast<int>(str[col - 1]) + maxDelta, maxHeight);
 
             int value = Math::RandomInt(min, max);
 
@@ -220,7 +220,7 @@ Vector<Vector<float> > Level::CreateRandom(uint numRows, uint numCols)
                 value = Math::RandomInt(min, max);
             }
 
-            str.Push((float)value);
+            str.Push(static_cast<float>(value));
         }
 
         map.Push(str);

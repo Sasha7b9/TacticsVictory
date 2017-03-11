@@ -15,7 +15,7 @@ public:
 
 protected:
     PODVector<ButtonRTS*> buttons;
-    WindowMenu *prevMenu = nullptr;                         // Если при закрытии этого меню нужно отрывать предыдущее, то указатель на него хранится здесь.
+    WindowMenu *prevMenu = nullptr;                         // Если при закрытии этого меню нужно отрывать предыдущее, то указатель на него хранится здесь. //-V122
 
     void SendEventClose();                                  // Посылается окном при его закрытии
     void SetFocusedNext();                                  // Установить фокус на следующую кнопку

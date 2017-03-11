@@ -29,7 +29,7 @@ private:
         EscortTarget
     } state = Begin;
 
-    Tank *target = nullptr;
+    Tank *target = nullptr; //-V122
     SharedPtr<StaticModel> model;
 
     const float rangeVisible = 50.0f;
@@ -46,17 +46,17 @@ private:
     Quaternion rotate;
     float time = 0.0f;
     float absSpeed = 0.0f;
-    Tank *attackedUnit = nullptr;
+    Tank *attackedUnit = nullptr; //-V122
     bool collisionWithTerrain = false;
 
     float dT = 0.0f;
 
-    BillboardSet *billboardObjectSmoke = nullptr;
+    BillboardSet *billboardObjectSmoke = nullptr; //-V122
     PODVector<Billboard*> billboardsSmoke;
     PODVector<float> rotBillboardSmoke;
     SharedPtr<ParticleEffect> pe;
     Vector3 scale;
-    Node *smokeNode = nullptr;
+    Node *smokeNode = nullptr; //-V122
 
     Mutex mutex;
     bool isCalculated = false;

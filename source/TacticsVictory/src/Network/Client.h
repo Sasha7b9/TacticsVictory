@@ -21,9 +21,9 @@ public:
     uint16 GetPort();
 
 private:
-    Network *network = nullptr;
-    pFuncVV funcOnConnect = nullptr;
-    Connection *connection = nullptr;
+    Network *network = nullptr; //-V122
+    pFuncVV funcOnConnect = nullptr; //-V122
+    Connection *connection = nullptr; //-V122
 
     void HandleServerConnected(StringHash, VariantMap&);
     void HandleServerDisconnected(StringHash, VariantMap&);

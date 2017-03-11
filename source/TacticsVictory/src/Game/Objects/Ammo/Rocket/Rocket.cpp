@@ -304,7 +304,7 @@ void Rocket::UpdateOn()
             VerifyOnIntersectionTerrain();
         }
 
-        FuncUpdate func = funcs[state];
+        FuncUpdate func = funcs[static_cast<int>(state)];
         (this->*func)();
 
         CalculateAnimate();
