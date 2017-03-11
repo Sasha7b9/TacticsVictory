@@ -9,6 +9,7 @@ class RocketLauncher : public WeaponObject
 public:
     RocketLauncher(Context *context = gContext, Tank *tank = nullptr);
 
+    static void RegisterInAS();
     void Init();
     void Update(float deltaStep);
 

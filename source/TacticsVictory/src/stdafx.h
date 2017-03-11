@@ -2,14 +2,7 @@
 
 #pragma warning(push)
 
-#pragma warning(disable:4365)
-#pragma warning(disable:4820)
-#pragma warning(disable:4625)
-#pragma warning(disable:4626)
-#pragma warning(disable:4640)
-#pragma warning(disable:4668)
-#pragma warning(disable:4100)
-#pragma warning(disable:4266 4464 5026 5027)
+#pragma warning(disable:4100 4191 4266 4365 4371 4464 4625 4626 4640 4668 4820 5026 5027)
 
 #include <Urho3D/AngelScript/Script.h>
 #include <Urho3D/AngelScript/ScriptFile.h>
@@ -109,6 +102,8 @@
 #include <Urho3D/Core/ProcessUtils.h>
 
 #include <Urho3D/DebugNew.h>
+
+#include <Urho3d/ThirdParty/AngelScript/angelscript.h>
 
 using namespace Urho3D;
 

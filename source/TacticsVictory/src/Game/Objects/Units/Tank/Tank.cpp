@@ -60,6 +60,14 @@ void Tank::Init(TypeTank type_, uint _id_)
     id = (_id_ == 0) ? id : _id_;
 
     rocketLauncher->Init();
+
+    ScriptInstance *instance = node_->CreateComponent<ScriptInstance>();
+    instance->CreateObject(gCache->GetResource<ScriptFile>("Models/Units/Tank/Tank.as"), "TankUpdater");
+    VariantVector params;
+    params.Push(Vector3(10.0f, 20.0f, 30.0f));
+    params.Push(Variant(rocketLauncher));
+    instance->Execute("void SetRotationSpeed(const Vector3&in speed, RocketLauncher@ launch)", params);
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -110,7 +118,7 @@ void Tank::Update(float dT)
     gProfiler->BeginBlock("Tank::Update");
     GameObject::Update(dT);
 
-    rocketLauncher->Update(dT);
+    //rocketLauncher->Update(dT);
 
     if(!translator.IsMoving())
     {
@@ -187,11 +195,7 @@ SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
 {
     SharedPtr<Node> node(gScene->CreateChild(NODE_TANK, LOCAL));
     SharedPtr<Tank> tank(node->CreateComponent<Tank>(LOCAL));
-    ScriptInstance *instance = node->CreateComponent<ScriptInstance>();
-    instance->CreateObject(gCache->GetResource<ScriptFile>("Models/Units/Tank/Tank.as"), "TankUpdater");
-    VariantVector params;
-    params.Push(Vector3(10.0f, 20.0f, 30.0f));
-    instance->Execute("void SetRotationSpeed(const Vector3&in)", params);
+
     tank->Init(typeTank, _id_);
     allTanks.Push(tank);
     return tank;

@@ -5,6 +5,7 @@
 #include "Game/Objects/Units/Tank/Tank.h"
 #include "Game/Objects/GameObjectEvents.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
+#include "GUI/Windows/Console.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -17,6 +18,19 @@ RocketLauncher::RocketLauncher(Context *context, Tank *tank) : WeaponObject(cont
 void RocketLauncher::Init()
 {
     timeElapsedAfterShoot = Random(timeRecharge);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void RocketLauncher::RegisterInAS()
+{
+    asIScriptEngine *engine = gScript->GetScriptEngine();
+    engine->RegisterObjectType("RocketLauncher", 0, asOBJ_REF);
+#pragma warning(push)
+#pragma warning(disable:4191)
+    engine->RegisterObjectMethod("RocketLauncher", "void Update(float)", asMETHOD(RocketLauncher, Update), asCALL_THISCALL);
+    engine->RegisterObjectBehaviour("RocketLauncher", asBEHAVE_ADDREF, "void AddRef()", asMETHOD(RocketLauncher, AddRef), asCALL_THISCALL);
+    engine->RegisterObjectBehaviour("RocketLauncher", asBEHAVE_RELEASE, "void ReleaseRef()", asMETHOD(RocketLauncher, ReleaseRef), asCALL_THISCALL);
+#pragma warning(pop)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
