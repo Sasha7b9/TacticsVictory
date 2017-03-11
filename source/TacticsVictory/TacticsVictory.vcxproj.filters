@@ -447,6 +447,9 @@
     <ClCompile Include="src\Network\Server.cpp">
       <Filter>Network</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\Windows\ConsoleParserFunctions.cpp">
+      <Filter>GUI\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Camera.h">

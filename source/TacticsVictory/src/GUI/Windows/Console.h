@@ -51,7 +51,6 @@ private:
     bool FuncClose(Vector<String> &, bool);
     bool FuncExit(Vector<String> &, bool);
 
-
     bool ShowBriefHelp(const ParserStruct *structs, const Vector<String> &words);
     bool ShowFullHelp(const ParserStruct *structs, Vector<String> &words);
     bool ExecuteCommand(const ParserStruct *structs, Vector<String> &words);

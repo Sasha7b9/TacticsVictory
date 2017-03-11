@@ -485,6 +485,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="src\GUI\Panels\PanelMain.cpp" />
     <ClCompile Include="src\GUI\Panels\PanelMap.cpp" />
     <ClCompile Include="src\GUI\Windows\Console.cpp" />
+    <ClCompile Include="src\GUI\Windows\ConsoleParserFunctions.cpp" />
     <ClCompile Include="src\GUI\Windows\WindowVariables.cpp" />
     <ClCompile Include="src\LogRTS.cpp" />
     <ClCompile Include="src\Network\Client.cpp" />
