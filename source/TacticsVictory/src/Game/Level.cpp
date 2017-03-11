@@ -64,13 +64,7 @@ Vector<Vector<float>> Level::Get()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Level::Set(Vector<Vector<float>> &map_)
-{
-    map = map_;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-Vector<Vector<float>> Level::Load(char *fileName)
+Vector<Vector<float>> Level::Load(const char *fileName)
 {
     map.Clear();
 
@@ -102,7 +96,7 @@ Vector<Vector<float>> Level::Load(char *fileName)
             }
             if(IsCorrectSymbol(*data))
             {
-                data += (size_t)PushToVector(data, &curString);
+                data += (uint64)PushToVector(data, &curString);
             }
         }
         fileRead->Close();

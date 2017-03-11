@@ -13,7 +13,7 @@ public:
     void SetText(char *text);
     
 private:
-    char *text = 0;
+    char *text = 0; //-V122
 
     void HandleChangeLanguage(StringHash, VariantMap&);
 

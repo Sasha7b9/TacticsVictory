@@ -38,7 +38,7 @@ protected:
     float deltaRotate = 0.0f;
     float speed = 0.0f;
     Translator translator;
-    char* name = nullptr;
+    char* name = nullptr; //-V122
     Type type = None;
     SharedPtr<ContextMenuUnit> contextMenu;
     SharedPtr<StaticModel> modelObject;

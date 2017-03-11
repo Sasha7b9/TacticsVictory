@@ -55,8 +55,8 @@ public:
 
 private:
 
-    PODVector<float> *vertexes = nullptr;
-    PODVector<uint>  *indexes = nullptr;
+    PODVector<float> *vertexes = nullptr; //-V122
+    PODVector<uint>  *indexes = nullptr; //-V122
 
     void CreateEdges();
     void CreateEdgeTop();

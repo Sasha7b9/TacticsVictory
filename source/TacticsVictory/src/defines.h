@@ -7,7 +7,8 @@ typedef void(*pFuncVF)(float);
 
 
 typedef unsigned char   uint8;
-typedef long int        int64;
+typedef long long int   int64;
+typedef unsigned long long uint64;
 typedef short unsigned  uint16;
 typedef unsigned int    uint;
 typedef unsigned short  ushort;

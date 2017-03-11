@@ -13,7 +13,7 @@ public:
     void Update(float deltaStep);
 
 private:
-    Tank *tank = nullptr;
+    Tank *tank = nullptr; //-V122
     float radiusDetect = 50.0f;
     float timeRecharge = 50.0f;
     float timeElapsedAfterShoot = 0.0f;

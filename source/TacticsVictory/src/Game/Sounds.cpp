@@ -40,5 +40,5 @@ void Sounds::Play(SoundType type, const Vector3 &position)
     }
 
     source->GetNode()->SetPosition(position);
-    source->Play((Sound*)sounds[StringHash(type)].GetPtr());
+    source->Play((Sound*)sounds[StringHash((uint)type)].GetPtr());
 }

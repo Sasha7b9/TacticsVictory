@@ -52,7 +52,7 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
 
     int msgID = eventData[P_MESSAGEID].GetInt();
     Connection *connection = (Connection*)eventData[P_CONNECTION].GetPtr();
-    const PODVector<uint8>& data = eventData[P_DATA].GetBuffer();
+    const PODVector<uint8>& data = eventData[P_DATA].GetBuffer(); //-V2002
     MemoryBuffer buffer(data);
 
     VectorBufferRTS msg;

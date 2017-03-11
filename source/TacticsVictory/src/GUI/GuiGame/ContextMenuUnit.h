@@ -18,7 +18,7 @@ public:
 
 private:
     SharedPtr<Label> title;
-    GameObject *object = nullptr;
+    GameObject *object = nullptr; //-V122
 
     void CreateForUnit();
     void HandleToggledFiedView(StringHash, VariantMap&);

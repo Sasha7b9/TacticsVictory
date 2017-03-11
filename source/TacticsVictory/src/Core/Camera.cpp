@@ -80,7 +80,7 @@ void CameraRTS::ParallelTranslateLookAt(const Vector3 &lookAt_)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 #ifdef CLIENT
-void CameraRTS::Move(float time)
+void CameraRTS::Move(float time) //-V2008
 {
     if(!enabled || gConsole->IsActive())
     {

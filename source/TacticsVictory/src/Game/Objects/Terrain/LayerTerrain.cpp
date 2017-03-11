@@ -50,17 +50,17 @@ void LayerTerrain::Build()
     uint numVert = vertexes.Size();
     uint numInd = indexes.Size();
 
-    float *bufVert = new float[(size_t)numVert];
-    uint *bufInd = new uint[(size_t)numInd];
+    float *bufVert = new float[(uint64)numVert];
+    uint *bufInd = new uint[(uint64)numInd];
 
     for (uint i = 0; i < numVert; i++)
     {
-        bufVert[(size_t)i] = vertexes[i];
+        bufVert[(uint64)i] = vertexes[i];
     }
 
     for (uint i = 0; i < numInd; i++)
     {
-        bufInd[(size_t)i] = indexes[i];
+        bufInd[(uint64)i] = indexes[i];
     }
 
     vb->SetShadowed(true);

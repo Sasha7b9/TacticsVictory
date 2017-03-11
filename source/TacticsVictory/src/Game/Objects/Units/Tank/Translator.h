@@ -45,7 +45,7 @@ private:
 
     VariantMap angles;
 
-    Tank *tank = nullptr;
+    Tank *tank = nullptr; //-V122
 
     void SetStep(Coord &start, Coord &end);
     void StartRotation(float angleNeed);

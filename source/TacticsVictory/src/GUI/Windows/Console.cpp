@@ -169,7 +169,7 @@ bool ConsoleParser::ExtractFloat(String &str, float *value)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool ConsoleParser::BeginFrom(const String &str, const char *begin)
 {
-    return str.Substring(str[0] == '-' ? 1U : 0U, (uint)strlen(begin)) == String(begin);
+    return str.Substring(str[0] == '-' ? 1U : 0U, (uint)strlen(begin)) == String(begin); //-V202
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -325,9 +325,9 @@ bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool
         uint length = 0;
         while(str->command)
         {
-            if((uint)strlen(str->command) > length)
+            if((uint)strlen(str->command) > length) //-V202
             {
-                length = (uint)strlen(str->command);
+                length = (uint)strlen(str->command); //-V202
             }
             str++;
         }

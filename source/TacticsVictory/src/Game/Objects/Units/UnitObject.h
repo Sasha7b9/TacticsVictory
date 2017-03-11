@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "Game/Objects/GameObject.h"
 
 
@@ -15,7 +15,7 @@ protected:
     static bool viewTargetView;
 
 private:
-    Camera *cameraTarget = nullptr;                         // Камера для вида юнита от первого лица
+    Camera *cameraTarget = nullptr;                         // РљР°РјРµСЂР° РґР»СЏ РІРёРґР° СЋРЅРёС‚Р° РѕС‚ РїРµСЂРІРѕРіРѕ Р»РёС†Р° //-V122
     SharedPtr<Texture2D> renderTexture;
     SharedPtr<RenderSurface> renderSurface;
 

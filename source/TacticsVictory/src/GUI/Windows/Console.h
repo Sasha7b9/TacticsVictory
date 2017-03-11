@@ -21,9 +21,9 @@ public:
 
     struct ParserStruct
     {
-        char* command;
+        char* command; //-V122
         Parameter typeParameter;
-        pFuncMember func;
+        pFuncMember func; //-V122
         String help;
     };
 
