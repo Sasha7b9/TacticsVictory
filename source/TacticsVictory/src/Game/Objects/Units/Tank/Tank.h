@@ -22,6 +22,7 @@ public:
     Tank(Context *context = gContext);
     virtual ~Tank();
     static void RegisterObject(Context* context = gContext);
+    static void RegisterInAS();
     virtual void Update(float timeStep);
     static SharedPtr<Tank> Create(TypeTank type, uint _id_ = 0);
     void SetCoord(const Coord& coord);

@@ -146,6 +146,7 @@ void TacticsVictory::Start()
     gScript = GetSubsystem<Script>();
     RocketLauncher::RegisterInAS();
     Translator::RegisterInAS();
+    Tank::RegisterInAS();
     gScript->Execute("Print(\"Hello World!\");");
 
     Vector<String> arguments = GetArguments();

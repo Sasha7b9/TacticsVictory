@@ -48,6 +48,19 @@ void Tank::RegisterObject(Context* context)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+void Tank::RegisterInAS()
+{
+    asIScriptEngine *engine = gScript->GetScriptEngine();
+    engine->RegisterObjectType("Tank", 0, asOBJ_REF);
+#pragma warning(push)
+#pragma warning(disable:4191)
+    engine->RegisterObjectBehaviour("Tank", asBEHAVE_ADDREF, "void AddRef()", asMETHOD(Tank, AddRef), asCALL_THISCALL);
+    engine->RegisterObjectBehaviour("Tank", asBEHAVE_RELEASE, "void ReleaseRef()", asMETHOD(Tank, ReleaseRef), asCALL_THISCALL);
+    engine->RegisterObjectProperty("Tank", "bool inProcessFindPath", offsetof(Tank, inProcessFindPath));
+#pragma warning(pop)
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::Init(TypeTank type_, uint _id_)
 {
     node_->SetVar("PointerTank", this);
@@ -67,7 +80,8 @@ void Tank::Init(TypeTank type_, uint _id_)
     params.Push(Vector3(10.0f, 20.0f, 30.0f));
     params.Push(Variant(rocketLauncher));
     params.Push(Variant(translator));
-    instance->Execute("void SetRotationSpeed(const Vector3&in speed, RocketLauncher@ launch, Translator@ trans)", params);
+    params.Push(Variant(this));
+    instance->Execute("void SetRotationSpeed(const Vector3&in speed, RocketLauncher@ launch, Translator@ trans, Tank@ tan)", params);
 
 }
 
