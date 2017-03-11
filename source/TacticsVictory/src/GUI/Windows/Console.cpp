@@ -169,7 +169,7 @@ bool ConsoleParser::ExtractFloat(const String &str, float *value)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool ConsoleParser::BeginFrom(const String &str, const char *begin)
 {
-    return str.Substring(str[0] == '-' ? 1U : 0U, (uint)strlen(begin)) == String(begin); //-V202
+    return str.Substring(str[0] == '-' ? 1U : 0U, static_cast<uint>(strlen(begin))) == String(begin); //-V202
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -179,12 +179,12 @@ bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool
 
     if(showInfo)
     {
-        uint length = 0;
+        uint64 length = 0;
         while(str->command)
         {
-            if((uint)strlen(str->command) > length) //-V202
+            if(strlen(str->command) > length)
             {
-                length = (uint)strlen(str->command); //-V202
+                length = static_cast<uint64>(strlen(str->command));
             }
             str++;
         }
@@ -225,25 +225,6 @@ bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool
         }
     }
     return false;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V2009
-{
-    using namespace AsyncExecFinished;
-
-    int exitCode = data[P_EXITCODE].GetInt();
-
-    if(exitCode)
-    {
-        gConsole->Write(L"Сервер завершил работу с кодом ошибки");
-    }
-    else
-    {
-        gConsole->Write(L"Сервер завершил работу");
-    }
-
-    UnsubscribeFromEvent(E_ASYNCLOADFINISHED);
 }
 
 
@@ -430,7 +411,7 @@ History::History()
         }
         fileRead->Close();
     }
-    position = (int)strings.Size();
+    position = static_cast<int>(strings.Size());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -463,7 +444,7 @@ void History::AddString(const String &string)
         strings.Remove(string);
     }
     strings.Push(string);
-    position = (int)strings.Size();
+    position = static_cast<int>(strings.Size());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -480,7 +461,7 @@ String History::GetPrev()
         position = 0;
     }
 
-    return strings[(uint)position];
+    return strings[static_cast<uint>(position)];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -492,10 +473,10 @@ String History::GetNext()
     }
 
     position++;
-    if(position > (int)strings.Size() - 1)
+    if(static_cast<uint>(position) > strings.Size() - 1)
     {
-        position = (int)strings.Size() - 1;
+        position = static_cast<int>(strings.Size()) - 1;
     }
 
-    return strings[(uint)position];
+    return strings[static_cast<uint>(position)];
 }
