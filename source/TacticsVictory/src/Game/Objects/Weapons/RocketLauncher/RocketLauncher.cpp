@@ -20,7 +20,7 @@ void RocketLauncher::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void RocketLauncher::Update(float deltaStep)
 {
-    if(timeElapsedAfterShoot != 0.0f)
+    if(fabs(timeElapsedAfterShoot) > M_EPSILON)
     {
         timeElapsedAfterShoot += deltaStep;
     }

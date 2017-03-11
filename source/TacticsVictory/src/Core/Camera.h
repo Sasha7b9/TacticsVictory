@@ -32,11 +32,11 @@ public:
 
 private:
     SharedPtr<Node> cameraNode;
+    SharedPtr<Light> light;
+    Vector3 lookAt;
     float yaw = 10.0f;
     float pitch = 27.0f;
-    SharedPtr<Light> light;
     bool enabled = false;
-    Vector3 lookAt;
     bool arrowEnabled = true;
 
     void SetupViewport();

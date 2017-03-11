@@ -42,7 +42,10 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
 
     if(KEY_IS_F1)
     {
-        gConsole->Toggle();
+        if(gConsole)
+        {
+            gConsole->Toggle();
+        }
         return;
     }
     else if(KEY_IS_F10)
@@ -52,7 +55,10 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
     }
     else if(KEY_IS_F11)
     {
-        gEngineConsole->Toggle();
+        if(gEngineConsole)
+        {
+            gEngineConsole->Toggle();
+        }
         return;
     }
     

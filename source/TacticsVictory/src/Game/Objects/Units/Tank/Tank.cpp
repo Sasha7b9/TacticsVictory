@@ -63,7 +63,7 @@ void Tank::Init(TypeTank type_, uint _id_)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::LoadFromFile()
 {
-    char *fileName = parameters[typeTank].fileName;
+    char *fileName = parameters[typeTank].fileName; //-V108
     JSONFile *file = gCache->GetResource<JSONFile>(fileName);
 
     if (timeForReload)
@@ -71,7 +71,8 @@ void Tank::LoadFromFile()
         gCache->ReloadResource(file);
     }
 
-    JSONValue modelValue = file->GetRoot().Get("model");
+    JSONValue &root = file->GetRoot();
+    JSONValue modelValue = root.Get("model");
 
     String fileModel = modelValue.Get("fileModel").GetString();
     String fileMaterials = modelValue.Get("fileMaterials").GetString();
@@ -82,15 +83,15 @@ void Tank::LoadFromFile()
     modelObject->ApplyMaterialList(fileMaterials);
     modelObject->SetCastShadows(true);
 
-    speed = file->GetRoot().Get("speed").GetFloat();
+    speed = root.Get("speed").GetFloat();
 
-    deltaRotate = file->GetRoot().Get("deltaRotate").GetFloat(); 
+    deltaRotate = root.Get("deltaRotate").GetFloat(); 
 
     Quaternion rotate(deltaRotate, Vector3::UP);
     node_->SetRotation(Quaternion(0, Vector3::UP));
     node_->Rotate(rotate);
 
-    timeLastModified = GetLastModifiedTime(parameters[typeTank].fileName);
+    timeLastModified = GetLastModifiedTime(parameters[typeTank].fileName); //-V108
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -130,7 +131,7 @@ void Tank::Update(float dT)
                 row = (uint)Math::RandomInt(0, (int)gTerrain->NumRows() - 1);
                 col = (uint)Math::RandomInt(0, (int)gTerrain->NumCols() - 1);
                 height = gTerrain->GetHeight(row, col);
-            } while(height != 0.0f);
+            } while(fabs(height) > M_EPSILON);
 
             Vector3 position = GetPosition();
             Coord start((uint)-position.z_, (uint)position.x_);
@@ -148,7 +149,7 @@ void Tank::Update(float dT)
         int time = (int)gTime->GetElapsedTime();
         if (time - timeLastReload >= timeForReload)
         {
-            if (GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified)
+            if (GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified) //-V108
             {
                 Init(typeTank, id);
             }

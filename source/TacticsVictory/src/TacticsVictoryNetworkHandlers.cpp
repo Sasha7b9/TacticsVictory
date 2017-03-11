@@ -26,10 +26,9 @@ void TacticsVictory::HandleClientConnected(StringHash, VariantMap& eventData)
 {
     Connection *connection = (Connection*)eventData[ClientConnected::P_CONNECTION].GetPtr();
 
-    LOG_INFOF("%s:%d connected", connection->GetAddress().CString(), connection->GetPort());
-
-    //GetSubsystem<Network>()->SetSimulatedLatency(0);
-    //GetSubsystem<Network>()->SetSimulatedPacketLoss(0.1f);
+    std::stringstream s;
+    s << connection->GetAddress().CString() << ":" << connection->GetPort() << " connected";
+    LOG_INFOF(s.str().c_str());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -37,7 +36,9 @@ void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
 {
     Connection *connection = (Connection*)eventData[ClientConnected::P_CONNECTION].GetPtr();
 
-    LOG_INFOF("%s:%d disconnected", connection->GetAddress().CString(), connection->GetPort());
+    std::stringstream s;
+    s << connection->GetAddress().CString() << ":" << connection->GetPort() << " disconnected";
+    LOG_INFOF(s.str().c_str());
 
     gEngine->Exit();
 }
@@ -54,9 +55,9 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
 
     VectorBufferRTS msg;
 
-    if(networkFunctions[msgID])
+    if(networkFunctions[msgID]) //-V108
     {
-        networkFunctions[msgID](connection, buffer, msg);
+        networkFunctions[msgID](connection, buffer, msg); //-V108
     }
 }
 

@@ -54,12 +54,12 @@ bool ConsoleParser::ShowBriefHelp(const ParserStruct *structs, const Vector<Stri
     {
         const ParserStruct *str = structs;
 
-        uint length = 0;
+        size_t length = 0;
         while(str->command)
         {
             if(strlen(str->command) > length)
             {
-                length = (uint)strlen(str->command);
+                length = strlen(str->command);
             }
             str++;
         }
@@ -124,7 +124,7 @@ bool ConsoleParser::ExecuteCommand(const ParserStruct *structs, Vector<String> &
             words.Erase(0, 1);
             if(!(this->*func)(words, false))
             {
-                gConsole->Write(ToString("Invalid command syntax. For more information, type \"%s -?\"", forMSG.CString()));
+                gConsole->Write(ToString("Invalid command syntax. For more information, type \"%s -?\"", forMSG.CString())); //-V111
             }
 
             return true;

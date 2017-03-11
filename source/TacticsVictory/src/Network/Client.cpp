@@ -20,7 +20,7 @@ Client::~Client()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Client::StartConnecting(String address, uint16 port, pFuncVV _funcOnConnect)
+void Client::StartConnecting(const String &address, uint16 port, pFuncVV _funcOnConnect)
 {
     funcOnConnect = _funcOnConnect;
     network->Connect(address, port, nullptr);

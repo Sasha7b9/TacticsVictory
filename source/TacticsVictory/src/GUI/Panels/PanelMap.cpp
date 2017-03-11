@@ -176,7 +176,7 @@ bool PanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPoint
     Plane planeX0Z({0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f});
     Ray ray = camera->GetScreenRay(screenPoint.x_, screenPoint.y_);
     float distanceHit = ray.HitDistance(planeX0Z);
-    if(distanceHit == M_INFINITY)
+    if(fabs(distanceHit - M_INFINITY) > M_EPSILON)
     {
         return false;
     }

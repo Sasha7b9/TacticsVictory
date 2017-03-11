@@ -14,4 +14,6 @@ private:
     SharedPtr<ButtonRTS> buttonOk;
 
     void HandleButtonRelease(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(MenuAboutMe);
 };

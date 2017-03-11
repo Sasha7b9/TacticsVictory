@@ -57,7 +57,7 @@ Line PlaneRTS::NearEdge(Ray &ray)
 
     float distance = 1e3f;
 
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++) //-V112
     {
         Ray rayEdge(lines[i].start, lines[i].end - lines[i].start);
         Vector3 closestPoint = ray.ClosestPoint(rayEdge);

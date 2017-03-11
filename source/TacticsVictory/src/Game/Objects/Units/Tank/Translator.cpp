@@ -113,7 +113,7 @@ void Translator::SetStep(Coord &start, Coord &end_)
     float angleNeed = angles[hash].GetFloat();
     float angle = tank->GetRotation();
 
-    if(angleNeed != angle)
+    if(fabs(angleNeed - angle) > M_EPSILON)
     {
         StartRotation(angleNeed);
     }

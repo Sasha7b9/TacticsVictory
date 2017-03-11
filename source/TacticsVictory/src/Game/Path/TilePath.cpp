@@ -39,8 +39,13 @@ TilePath::TilePath() : Object(gContext)
         for(int i = 0; i < 6; i++)
         {
             const float *p = vertexes + indexes[i] * 5;
-            geometry->DefineVertex(Vector3(*p++, *p++, *p++));
-            geometry->DefineTexCoord(Vector2(*p++, *p));
+            const float *p0 = p;
+            const float *p1 = p + 1;
+            const float *p2 = p + 2;
+            geometry->DefineVertex(Vector3(*p2, *p1, *p0));
+            p0 = p + 3;
+            p1 = p + 4;
+            geometry->DefineTexCoord(Vector2(*p0, *p1));
             geometry->DefineNormal({0.0f, 1.0f, 0.0f});
         }
 

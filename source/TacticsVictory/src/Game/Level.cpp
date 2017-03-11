@@ -100,7 +100,7 @@ Vector<Vector<float>> Level::Load(char *fileName)
             }
             if(IsCorrectSymbol(*data))
             {
-                data += PushToVector(data, &curString);
+                data += (size_t)PushToVector(data, &curString);
             }
         }
         fileRead->Close();
@@ -126,7 +126,7 @@ Vector<Vector<float>> Level::Load(char *fileName)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Level::Save(String fileName)
+bool Level::Save(const String &fileName)
 {
     SharedPtr<File> fileWrite(new File(gContext));
 
@@ -257,7 +257,7 @@ uint Level::GetHeight()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Level::SetMap(Vector<Vector<float>> map_)
+void Level::SetMap(const Vector<Vector<float>> &map_)
 {
     map = map_;
 }

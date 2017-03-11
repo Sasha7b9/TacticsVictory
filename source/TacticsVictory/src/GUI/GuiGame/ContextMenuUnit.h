@@ -22,4 +22,6 @@ private:
 
     void CreateForUnit();
     void HandleToggledFiedView(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(ContextMenuUnit);
 };

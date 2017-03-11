@@ -14,7 +14,7 @@ typedef unsigned short  ushort;
 typedef unsigned char   uchar;
 
 
-#define DEFAULT_MEMBERS(name) name& operator=(const name&) {}; name(const name&)
+#define DEFAULT_MEMBERS(name) name& operator=(const name&) = delete; name(const name&) = delete
 
 
 enum TypeCursor
@@ -83,4 +83,4 @@ enum TypeCursor
 #define KEY_IS_9        (key == KEY_9)
 #define KEY_IS_I        (key == KEY_I)
 
-#define IN_PAUSE        (gScene->GetTimeScale() == M_EPSILON)
+#define IN_PAUSE        (gScene->GetTimeScale() <= M_EPSILON)

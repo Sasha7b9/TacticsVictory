@@ -52,7 +52,7 @@ void TacticsVictory::Setup()
     engineParameters_["LogName"] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_["FullScreen"] = false;
     
-    engineParameters_["TextureQuality"] = 32;
+    engineParameters_["TextureQuality"] = 32; //-V112
     engineParameters_["WindowWidth"] = gSet->GetInt(TV_SCREEN_WIDTH);
     engineParameters_["WindowHeight"] = gSet->GetInt(TV_SCREEN_HEIGHT);
 
@@ -70,23 +70,23 @@ void TacticsVictory::Stop()
     //engine_->DumpProfiler();
     TilePath::RemoveAll();
     Rocket::DeleteAll();
-    SAFE_DELETE(gScene);
-    SAFE_DELETE(scene);
-    SAFE_DELETE(gFileSelector);
-    SAFE_DELETE(gLevel);
-    SAFE_DELETE(gMenu);
-    SAFE_DELETE(gGUI);
+    SAFE_DELETE(gScene); //-V809
+    SAFE_DELETE(scene); //-V809
+    SAFE_DELETE(gFileSelector); //-V809
+    SAFE_DELETE(gLevel); //-V809
+    SAFE_DELETE(gMenu); //-V809
+    SAFE_DELETE(gGUI); //-V809
     //File file(gContext, "ui.xml", FILE_WRITE);
     //URHO3D_LOGINFO("Now save ui");
     //gUIRoot->SaveXML(file);
     gSet->Save();
-    SAFE_DELETE(gClient);
-    SAFE_DELETE(gServer);
-    SAFE_DELETE(gSet);
-    SAFE_DELETE(gEditor);
-    SAFE_DELETE(gCamera);    
+    SAFE_DELETE(gClient); //-V809
+    SAFE_DELETE(gServer); //-V809
+    SAFE_DELETE(gSet); //-V809
+    SAFE_DELETE(gEditor); //-V809
+    SAFE_DELETE(gCamera);     //-V809
     gLog->Close();
-    SAFE_DELETE(gLog);
+    SAFE_DELETE(gLog); //-V809
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

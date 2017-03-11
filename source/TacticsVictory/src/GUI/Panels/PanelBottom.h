@@ -16,6 +16,5 @@ public:
     static void RegisterObject(Context *context = gContext);
 
 private:
-    PanelBottom& operator=(const PanelBottom&)
-    {};
+    DEFAULT_MEMBERS(PanelBottom);
 };

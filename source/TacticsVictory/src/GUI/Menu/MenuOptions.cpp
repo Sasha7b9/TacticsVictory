@@ -44,7 +44,7 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
     CREATE_DDLWTAB(ddlTextureAnisotropy, "Texture anisotropy", 6, items2, (uint)gSet->GetInt(TV_TEXTURE_ANISOTROPY));
 
     char *items3[] = {"Low", "Medium", "High", "Max"};
-    CREATE_DDLWTAB(ddlMaterialQuality, "Material quality", 4, items3, (uint)gSet->GetInt(TV_MATERIAL_QUALITY));
+    CREATE_DDLWTAB(ddlMaterialQuality, "Material quality", 4, items3, (uint)gSet->GetInt(TV_MATERIAL_QUALITY)); //-V112
 
     char *items4[] = {"Off", "On"};
     CREATE_DDLWTAB(ddlShadowsEnabled, "Shadows", 2, items4, (uint)gSet->GetInt(TV_SHADOW_DRAW));
@@ -63,7 +63,7 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
 
 #ifdef CLIENT
     char *items7[] = {"low 16bit", "low 24bit", "high 16bit", "high 24bit"};
-    CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, (uint)gRenderer->GetShadowQuality());
+    CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, (uint)gRenderer->GetShadowQuality()); //-V112
 #endif
 
     SharedPtr<UIElement> layout(CreateChild<UIElement>());

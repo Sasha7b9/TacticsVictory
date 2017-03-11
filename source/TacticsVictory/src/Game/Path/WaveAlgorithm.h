@@ -38,4 +38,6 @@ private:
     void SetCell(Wave &wave, uint row, uint col, int numWave);
     void AddPrevWave(PODVector<Coord> &path);
     void FindPath();
+
+    DEFAULT_MEMBERS(WaveAlgorithm);
 };

@@ -77,7 +77,7 @@ void Editor::Run()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Editor::ClearScene()
 {
-    SAFE_DELETE(gTerrain);
+    SAFE_DELETE(gTerrain); //-V809
     gScene->RemoveChild(lightNode);
 }
 
@@ -114,7 +114,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             {
                 if (!selectedPlane.IsEquals(currentPlane))
                 {
-                    Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE;
+                    Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
                     gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
                     gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
                 }
@@ -135,7 +135,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
             if (!currentEdge.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
             {
-                Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE;
+                Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
 
                 float dX = fabs(currentEdge.start.x_ - currentEdge.end.x_);
                 float dZ = fabs(currentEdge.start.z_ - currentEdge.end.z_);

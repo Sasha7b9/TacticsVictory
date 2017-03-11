@@ -4,7 +4,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define TERRAIN_HEIGHT_EQUAL(x,y) (gTerrain->GetHeight(x, y) == heightStart)
+#define TERRAIN_HEIGHT_EQUAL(x,y) (fabs(gTerrain->GetHeight(x, y) - heightStart) < M_EPSILON)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,7 +65,7 @@ void WaveAlgorithm::ThreadFunction()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void WaveAlgorithm::FindPath()
 {
-    if (gTerrain->GetHeight(start.row, start.col) != gTerrain->GetHeight(end.row, end.col))
+    if (fabs(gTerrain->GetHeight(start.row, start.col) - gTerrain->GetHeight(end.row, end.col)) > M_EPSILON)
     {
         return;
     }
@@ -153,7 +153,7 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
             uint newRow = (uint)iRow;
             uint newCol = (uint)iCol;
 
-            if (newRow < numRows && newCol < numCols && cells[newRow][newCol] == -1 && gTerrain->GetHeight(newRow, newCol) == heightStart)
+            if (newRow < numRows && newCol < numCols && cells[newRow][newCol] == -1 && fabs(gTerrain->GetHeight(newRow, newCol) - heightStart) < M_EPSILON)
             {
                 if (i == 4 && (!TERRAIN_HEIGHT_EQUAL(row, col - 1) || !TERRAIN_HEIGHT_EQUAL(row - 1, col)))
                 {

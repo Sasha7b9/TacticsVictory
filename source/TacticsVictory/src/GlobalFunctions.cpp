@@ -10,20 +10,21 @@ void SetWindowInCenterScreen(Window *window)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OpenFileSelector(char *title, char *textOk, char *textCancel, Vector<String> &filters)
 {
-    SAFE_DELETE(gFileSelector);
+    SAFE_DELETE(gFileSelector); //-V809
     gFileSelector = new FileSelector(gContext);
     XMLFile *style = gCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
     gFileSelector->SetDefaultStyle(style);
 
-    gFileSelector->GetWindow()->SetResizable(false);
-    SetWindowInCenterScreen(gFileSelector->GetWindow());
-    gFileSelector->GetWindow()->SetVisible(false);
-    gFileSelector->GetWindow()->SetModal(false);
+    Window *window = gFileSelector->GetWindow();
+    window->SetResizable(false);
+    SetWindowInCenterScreen(window);
+    window->SetVisible(false);
+    window->SetModal(false);
 
     gFileSelector->SetTitle(title);
     gFileSelector->SetButtonTexts(textOk, textCancel);
-    gFileSelector->GetWindow()->SetVisible(true);
-    gFileSelector->GetWindow()->BringToFront();
+    window->SetVisible(true);
+    window->BringToFront();
     gFileSelector->SetFilters(filters, 0);
 }
 
@@ -106,7 +107,7 @@ bool GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
             }
             address = word.Substring(8);
         }
-        else if(word.Substring(0, 4) == "port")
+        else if(word.Substring(0, 4) == "port") //-V112
         {
             if(word[4] != ':')
             {

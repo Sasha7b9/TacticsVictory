@@ -29,7 +29,7 @@ SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 SceneRTS::~SceneRTS()
 {
-    SAFE_DELETE(gTerrain);
+    SAFE_DELETE(gTerrain); //-V809
     pathIndicator.Stop();
 }
 
@@ -94,7 +94,7 @@ void SceneRTS::Create()
             {
                 col = (uint)Math::RandomInt(0, (int)gLevel->GetWidth() - 1);
                 row = (uint)Math::RandomInt(0, (int)gLevel->GetHeight() - 1);
-            } while (gTerrain->GetHeight(row, col) != 0.0f);
+            } while (fabs(gTerrain->GetHeight(row, col)) > M_EPSILON);
 
             SharedPtr<Tank> tank = Tank::Create(Tank::Small);
             tank->SetCoord({row, col});

@@ -13,4 +13,6 @@ public:
 
 public:
     void HandleSetTexture(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(WindowTarget);
 };

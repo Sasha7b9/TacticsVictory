@@ -25,7 +25,7 @@ void Particles::Init()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Particles::EmittingStatic(TypeParticles type, const Vector3 position)
+void Particles::EmittingStatic(TypeParticles type, const Vector3 &position)
 {
     if (type == Explosion_Terrain)
     {

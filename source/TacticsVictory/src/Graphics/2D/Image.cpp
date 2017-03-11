@@ -19,7 +19,7 @@ ImageRTS::~ImageRTS()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ImageRTS::SetSize(int width, int height)
 {
-    Image::SetSize(width, height, 4);
+    Image::SetSize(width, height, 4); //-V112
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -239,7 +239,7 @@ void ImageRTS::DrawPolyline(const Color &color, int numPoints, int *xy)
 
     for(int i = 0; i < numLines; i++)
     {
-        DrawLine(xy[i * 2], xy[i * 2 + 1], xy[i * 2 + 2], xy[i * 2 + 3], color);
+        DrawLine(xy[(size_t)(i * 2)], xy[(size_t)(i * 2 + 1)], xy[(size_t)(i * 2 + 2)], xy[(size_t)(i * 2 + 3)], color);
     }
 }
 

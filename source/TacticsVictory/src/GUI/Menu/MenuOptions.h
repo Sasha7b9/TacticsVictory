@@ -20,8 +20,6 @@ public:
     static void RegisterObject(Context *context = gContext);
 
 private:
-    MenuOptions& operator=(const MenuOptions&) {};
-
     void HandleItemSelected(StringHash eventType, VariantMap& eventData);
     void HandleOnSlider(StringHash evenType, VariantMap& eventData);
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
@@ -43,4 +41,6 @@ private:
     PODVector<int> shadowMapSizes;
     SharedPtr<ButtonRTS> buttonClose;
     IntVector2 dragBeginPosition;
+
+    DEFAULT_MEMBERS(MenuOptions);
 };

@@ -23,12 +23,10 @@ public:
     void AddTab(SharedPtr<Tab> tab);
 
 private:
-    PanelMain& operator=(const PanelMain&)
-    {};
-
     Vector<SharedPtr<Tab>> tabs;
-
     SharedPtr<Tab> currentTab;
 
     void HandleToggedTitle(StringHash eventType, VariantMap &eventData);
+
+    DEFAULT_MEMBERS(PanelMain);
 };

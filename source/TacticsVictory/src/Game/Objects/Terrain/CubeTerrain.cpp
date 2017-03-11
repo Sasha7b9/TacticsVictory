@@ -55,11 +55,12 @@ void CubeTerrain::CreateSides()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-#define GET_FOUR_POINTS_FOR_PLANE(pl)        \
-    PointPlane &point0 = pl->plane.point[0]; \
-    PointPlane &point1 = pl->plane.point[1]; \
-    PointPlane &point2 = pl->plane.point[2]; \
-    PointPlane &point3 = pl->plane.point[3];
+#define GET_FOUR_POINTS_FOR_PLANE(pl)       \
+    PlaneCube &plane = pl->plane;           \
+    PointPlane &point0 = plane.point[0];    \
+    PointPlane &point1 = plane.point[1];    \
+    PointPlane &point2 = plane.point[2];    \
+    PointPlane &point3 = plane.point[3];
 
 #define CALCULATE_NORMALS                                                                       \
     point0.normal = (point1.coord - point0.coord).CrossProduct(point3.coord - point0.coord);    \
@@ -265,7 +266,7 @@ void CubeTerrain::BuildPlaneVerexes(PlaneCube &plane)
     PushPoint(plane.point[2]);
     PushPoint(plane.point[3]);
 
-    indexes->Push(index + 0);
+    indexes->Push(index + 0); //-V525
     indexes->Push(index + 1);
     indexes->Push(index + 2);
     indexes->Push(index + 0);
@@ -332,5 +333,5 @@ Vector3& CubeTerrain::GetEdgeCoord(EDGE edge, CORNER corner)
     {
         CreateEdgeTop();
     }
-    return edges[edge]->plane.point[corner].coord;
+    return edges[edge]->plane.point[(size_t)corner].coord;
 }

@@ -48,17 +48,17 @@ void LayerTerrain::Build()
     uint numVert = vertexes.Size();
     uint numInd = indexes.Size();
 
-    float *bufVert = new float[numVert];
-    uint *bufInd = new uint[numInd];
+    float *bufVert = new float[(size_t)numVert];
+    uint *bufInd = new uint[(size_t)numInd];
 
     for (uint i = 0; i < numVert; i++)
     {
-        bufVert[i] = vertexes[i];
+        bufVert[(size_t)i] = vertexes[i];
     }
 
     for (uint i = 0; i < numInd; i++)
     {
-        bufInd[i] = indexes[i];
+        bufInd[(size_t)i] = indexes[i];
     }
 
     vb->SetShadowed(true);
@@ -66,7 +66,7 @@ void LayerTerrain::Build()
     vb->SetData(bufVert);
 
     ib->SetShadowed(true);
-    ib->SetSize(numInd, true);
+    ib->SetSize((uint)numInd, true);
     ib->SetData(bufInd);
 
     geom->SetVertexBuffer(0, vb);
@@ -93,14 +93,14 @@ void LayerTerrain::Build()
     model->SetVertexBuffers(vbVector, morphRange, morphRange);
     model->SetIndexBuffers(ibVector);
 
-    model->SetBoundingBox(Math::CalculateBoundingBox(bufVert, numVert / 8));
+    model->SetBoundingBox(Math::CalculateBoundingBox(bufVert, (uint)numVert / 8));
 
     object->SetModel(model);
     object->SetMaterial(gCache->GetResource<Material>("Materials/TVTerrain.xml"));
     object->SetCastShadows(true);
 
-    SAFE_DELETE(bufVert);
-    SAFE_DELETE(bufInd);
+    SAFE_DELETE_ARRAY(bufVert); //-V809
+    SAFE_DELETE_ARRAY(bufInd); //-V809
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

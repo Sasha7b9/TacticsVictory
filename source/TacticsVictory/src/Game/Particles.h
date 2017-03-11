@@ -16,7 +16,7 @@ class Particles
 {
 public:
     static void Init();
-    static void EmittingStatic(TypeParticles type, const Vector3 position);
+    static void EmittingStatic(TypeParticles type, const Vector3 &position);
     static void EmittingDinamic(TypeParticles type, Node *node);
 
 private:

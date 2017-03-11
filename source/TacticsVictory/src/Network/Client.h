@@ -13,7 +13,7 @@ class Client : public Object
 public:
     Client(Context *context = gContext);
     virtual ~Client();
-    void StartConnecting(String address, uint16 port, pFuncVV funcOnConnect);
+    void StartConnecting(const String &address, uint16 port, pFuncVV funcOnConnect);
     bool IsConnected();
     Connection *GetServerConnection();
     void Send(int msgID, const VectorBufferRTS &msg);

@@ -27,4 +27,6 @@ private:
     SharedPtr<ButtonRTS> buttonOptions;
     SharedPtr<ButtonSwitch> buttonLanguage;
     SharedPtr<ButtonRTS> buttonCancel;
+
+    DEFAULT_MEMBERS(MenuGame);
 };
