@@ -1,3 +1,5 @@
+// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <stdafx.h>
 #include "PanelMain.h"
 #include "GUI/Controls/Tab.h"
@@ -48,22 +50,23 @@ void PanelMain::AddTab(SharedPtr<Tab> tab)
         x += tabs[i]->buttonTitle->GetWidth();
     }
 
-    AddChild(tab->buttonTitle);
-    tab->buttonTitle->SetPosition(x, y0);
+    ButtonToggled *btnTitle = tab->buttonTitle;
+    AddChild(btnTitle);
+    btnTitle->SetPosition(x, y0);
 
     if(tabs.Empty())
     {
-        tab->buttonTitle->SetChecked(true);
+        btnTitle->SetChecked(true);
         currentTab = tab;
         AddChild(tab);
     }
 
     tabs.Push(tab);
 
-    SubscribeToEvent(tab->buttonTitle, E_TOGGLED, URHO3D_HANDLER(PanelMain, HandleToggedTitle));
+    SubscribeToEvent(btnTitle, E_TOGGLED, URHO3D_HANDLER(PanelMain, HandleToggedTitle));
 
-    tab->SetPosition(0, y0 + tab->buttonTitle->GetHeight() - 1);
-    tab->SetFixedSize(GetWidth(), GetHeight() - y0 - tab->buttonTitle->GetHeight() + 1);
+    tab->SetPosition(0, y0 + btnTitle->GetHeight() - 1);
+    tab->SetFixedSize(GetWidth(), GetHeight() - y0 - btnTitle->GetHeight() + 1);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

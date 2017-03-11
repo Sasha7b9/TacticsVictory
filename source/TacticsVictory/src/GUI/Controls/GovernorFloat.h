@@ -84,7 +84,7 @@ private:
     pFuncFV funcRead = nullptr;
     pFuncVF funcWrite = nullptr;
     char *title = nullptr;
-    float valueChanged = false;
+    bool valueChanged = false;
 
     void WriteValue(float value);
     void GetOrderAndMantiss(float value, int *order, int *maintiss);

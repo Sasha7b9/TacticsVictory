@@ -1,14 +1,16 @@
+// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <stdafx.h>
-
-
 #include "Plane.h"
 #include "Core/Math.h"
 #include "Graphics/Objects/Line.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 PlaneRTS PlaneRTS::ZERO = PlaneRTS(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 PlaneRTS::PlaneRTS(const Vector3 &v0_ /* = Vector3::ZERO */, const Vector3 &v1_ /* = Vector3::ZERO */, const Vector3 &v2_ /* = Vector3::ZERO */, const Vector3 &v3_ /* = Vector3::ZERO */)
 {
     v0 = v0_;
@@ -17,16 +19,19 @@ PlaneRTS::PlaneRTS(const Vector3 &v0_ /* = Vector3::ZERO */, const Vector3 &v1_ 
     v3 = v3_;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool PlaneRTS::IsEquals(const PlaneRTS &plane)
 {
     return v0 == plane.v0 && v1 == plane.v1 && v2 == plane.v2 && v3 == plane.v3;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool PlaneRTS::IsZero()
 {
     return v0 == Vector3::ZERO && v1 == Vector3::ZERO && v2 == Vector3::ZERO && v3 == Vector3::ZERO;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PlaneRTS::CalculateRowCol()
 {
     float xMin = Math::Min(v0.x_, v1.x_, v2.x_, v3.x_);
@@ -38,11 +43,13 @@ void PlaneRTS::CalculateRowCol()
     row = (uint)((zMin + zMax) / 2.0f);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void PlaneRTS::SetY(float y)
 {
     v0.y_ = v1.y_ = v2.y_ = v3.y_ = y;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 Line PlaneRTS::NearEdge(Ray &ray)
 {
     Line lines[] =

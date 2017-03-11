@@ -1,10 +1,11 @@
+// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <stdafx.h>
-
-
 #include "LineTranslator1D.h"
 #include "Core/Math.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 LineTranslator1D::LineTranslator1D(int start_, int finish_, float speed_, State startPosition) :
     Object(gContext),
     start((float)start_), finish((float)finish_), speed(fabs(speed_))
@@ -14,6 +15,7 @@ LineTranslator1D::LineTranslator1D(int start_, int finish_, float speed_, State 
     position = startPosition == State_PointStart ? start : finish;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void LineTranslator1D::Toggle()
 {
     if(state == State_MoveToFinish || state == State_MoveToStart)
@@ -36,6 +38,7 @@ void LineTranslator1D::Toggle()
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 int LineTranslator1D::Update(float dT)
 {
     if(state == State_PointStart)
