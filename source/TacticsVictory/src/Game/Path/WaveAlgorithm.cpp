@@ -10,7 +10,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-WaveAlgorithm::WaveAlgorithm() : Thread()
+WaveAlgorithm::WaveAlgorithm() : Thread(), RefCounted()
 {
     //passValues.Insert(KeySet(5, )
 }
@@ -19,6 +19,19 @@ WaveAlgorithm::WaveAlgorithm() : Thread()
 WaveAlgorithm::~WaveAlgorithm()
 {
     Stop();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void WaveAlgorithm::RegisterInAS()
+{
+    asIScriptEngine *engine = gScript->GetScriptEngine();
+    engine->RegisterObjectType("WaveAlgorithm", 0, asOBJ_REF);
+#pragma warning(push)
+#pragma warning(disable:4191)
+    engine->RegisterObjectMethod("WaveAlgorithm", "bool PathIsFound()", asMETHOD(WaveAlgorithm, PathIsFound), asCALL_THISCALL);
+    engine->RegisterObjectBehaviour("WaveAlgorithm", asBEHAVE_ADDREF, "void AddRef()", asMETHOD(WaveAlgorithm, AddRef), asCALL_THISCALL);
+    engine->RegisterObjectBehaviour("WaveAlgorithm", asBEHAVE_RELEASE, "void ReleaseRef()", asMETHOD(WaveAlgorithm, ReleaseRef), asCALL_THISCALL);
+#pragma warning(pop)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -36,7 +36,7 @@ public:
     static Tank* GetByID(uint id);
 
 private:
-    WaveAlgorithm pathFinder;
+    SharedPtr<WaveAlgorithm> pathFinder;
     bool inProcessFindPath = false;
     TypeTank typeTank;
     static PODVector<Tank*> allTanks;

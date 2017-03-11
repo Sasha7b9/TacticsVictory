@@ -3,18 +3,19 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class WaveAlgorithm : public Thread
+class WaveAlgorithm : public Thread, public RefCounted
 {
 public:
     
     WaveAlgorithm();
     ~WaveAlgorithm();
-    void SetSize(uint numRows, uint numCols);
 
+    static void RegisterInAS();
+
+    void SetSize(uint numRows, uint numCols);
     void StartFind(Coord start, Coord end);
     bool PathIsFound();
     PODVector<Coord> GetPath();
-
     virtual void ThreadFunction();
 
 private:

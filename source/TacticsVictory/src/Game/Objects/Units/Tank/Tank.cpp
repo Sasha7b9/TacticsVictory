@@ -28,7 +28,8 @@ Tank::Tank(Context *context) : UnitObject(context)
         parameters[T_34_76] = TankStruct(T_34_76, "Models/T-34-76-2.json");
     }
 
-    pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
+    pathFinder = new WaveAlgorithm();
+    pathFinder->SetSize(gTerrain->NumRows(), gTerrain->NumCols());
 
     SubscribeToEvent(E_HIT, URHO3D_HANDLER(Tank, HandleAmmoHit));
 
@@ -77,11 +78,11 @@ void Tank::Init(TypeTank type_, uint _id_)
     ScriptInstance *instance = node_->CreateComponent<ScriptInstance>();
     instance->CreateObject(gCache->GetResource<ScriptFile>("Models/Units/Tank/Tank.as"), "TankUpdater");
     VariantVector params;
-    params.Push(Vector3(10.0f, 20.0f, 30.0f));
     params.Push(Variant(rocketLauncher));
     params.Push(Variant(translator));
     params.Push(Variant(this));
-    instance->Execute("void SetRotationSpeed(const Vector3&in speed, RocketLauncher@ launch, Translator@ trans, Tank@ tan)", params);
+    params.Push(Variant(pathFinder));
+    instance->Execute("void SetRotationSpeed(RocketLauncher@ launch, Translator@ trans, Tank@ tan, WaveAlgorithm@ wave)", params);
 
 }
 
@@ -139,9 +140,9 @@ void Tank::Update(float dT)
     {
         if(inProcessFindPath)
         {
-            if(pathFinder.PathIsFound())
+            if(pathFinder->PathIsFound())
             {
-                PODVector<Coord> path = pathFinder.GetPath();
+                PODVector<Coord> path = pathFinder->GetPath();
                 SetPath(path);
                 inProcessFindPath = false;
             }
@@ -160,7 +161,7 @@ void Tank::Update(float dT)
 
             Vector3 position = GetPosition();
             Coord start((uint)-position.z_, (uint)position.x_);
-            pathFinder.StartFind(start, {row, col});
+            pathFinder->StartFind(start, {row, col});
             inProcessFindPath = true;
         }
     }
