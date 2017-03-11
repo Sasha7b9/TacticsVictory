@@ -12,7 +12,7 @@ bool UnitObject::viewTargetView = false;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 UnitObject::UnitObject(Context *context) : GameObject(context)
 {
-    Node* nodeCameraTarget = gScene->CreateChild("CameraTarget");
+    Node* nodeCameraTarget = gScene->CreateChild(NODE_CAMERA_TARGET);
     nodeCameraTarget->Pitch(180.0f);
     nodeCameraTarget->Yaw(180.0f);
     cameraTarget = nodeCameraTarget->CreateComponent<Camera>();
@@ -26,6 +26,8 @@ UnitObject::UnitObject(Context *context) : GameObject(context)
     renderSurface = renderTexture->GetRenderSurface();
     SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraTarget));
     renderSurface->SetViewport(0, viewport);
+
+    nodeCameraTarget->SetVar("renderSurface", Variant(renderSurface));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

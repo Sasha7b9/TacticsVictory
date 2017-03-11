@@ -12,6 +12,8 @@
 #pragma warning(disable:4266 4464 5026 5027)
 
 #include <Urho3D/AngelScript/Script.h>
+#include <Urho3D/AngelScript/ScriptFile.h>
+#include <Urho3D/AngelScript/ScriptInstance.h>
 
 #include <Urho3D/Audio/Audio.h>
 #include <Urho3D/Audio/Sound.h>

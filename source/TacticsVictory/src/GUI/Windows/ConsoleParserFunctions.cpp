@@ -219,3 +219,74 @@ bool ConsoleParser::FuncExit(Vector<String> &, bool showInfo)
     }
     return true;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::FuncUnit(Vector<String> &words, bool showInfo)
+{
+    const ParserStruct structs[100] =
+    {
+        {"camera",  None,   &ConsoleParser::FuncUnitCamera,     L"функции управления видом от первого лица"}
+    };
+
+    return Run(structs, words, showInfo);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ConsoleParser::FuncUnitCamera(Vector<String> &words, bool)
+{
+    words.Erase(0, 1);
+
+    if(words.Size() == 2)
+    {
+        if(BeginFrom(words[0], "fov"))
+        {
+            if(BeginFrom(words[1], "set"))
+            {
+                float fov = 0.0f;
+                ExtractFloat(words[1], &fov);
+
+                PODVector<Node*> childrens;
+                gScene->GetChildren(childrens);
+                for(Node *node : childrens)
+                {
+                    if(node->GetName() == NODE_CAMERA_TARGET)
+                    {
+                        node->GetComponent<Camera>()->SetFov(fov);
+                    }
+                }
+
+                return true;
+            }
+            else if(BeginFrom(words[1], "get"))
+            {
+                PODVector<Node*> childrens;
+                gScene->GetChildren(childrens);
+                for(Node *node : childrens)
+                {
+                    if(node->GetName() == NODE_CAMERA_TARGET)
+                    {
+                        gConsole->Write(ToString("%f", node->GetComponent<Camera>()->GetFov()));
+                        break;
+                    }
+                }
+                return true;
+            }
+            
+        }
+        else if(BeginFrom(words[0], "position"))
+        {
+            if(BeginFrom(words[1], "set"))
+            {
+                gConsole->Write("position set");
+                return true;
+            }
+            else if(BeginFrom(words[1], "get"))
+            {
+                gConsole->Write("position get");
+                return true;
+            }
+        }
+    }
+
+    return false;
+}

@@ -187,6 +187,11 @@ SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
 {
     SharedPtr<Node> node(gScene->CreateChild(NODE_TANK, LOCAL));
     SharedPtr<Tank> tank(node->CreateComponent<Tank>(LOCAL));
+    ScriptInstance *instance = node->CreateComponent<ScriptInstance>();
+    instance->CreateObject(gCache->GetResource<ScriptFile>("Models/Units/Tank/Tank.as"), "TankUpdater");
+    VariantVector params;
+    params.Push(Vector3(10.0f, 20.0f, 30.0f));
+    instance->Execute("void SetRotationSpeed(const Vector3&in)", params);
     tank->Init(typeTank, _id_);
     allTanks.Push(tank);
     return tank;

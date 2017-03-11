@@ -1,4 +1,4 @@
-#pragma once 
+﻿#pragma once 
 
 
 typedef void(*pFuncVV)();
@@ -85,3 +85,8 @@ enum TypeCursor
 #define KEY_IS_I        (key == KEY_I)
 
 #define IN_PAUSE        (gScene->GetTimeScale() <= M_EPSILON)
+
+
+// Имена узлов
+
+#define NODE_CAMERA_TARGET "CameraTarget"

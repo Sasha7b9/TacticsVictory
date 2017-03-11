@@ -762,4 +762,9 @@
       <Filter>Network</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\out\TVData\Models\Units\Tank\Tank.as">
+      <Filter>Game\Objects\Units\Tank</Filter>
+    </None>
+  </ItemGroup>
 </Project>

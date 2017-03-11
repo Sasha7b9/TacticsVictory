@@ -47,6 +47,9 @@ private:
     bool FuncVarsOpen(Vector<String> &, bool);
     bool FuncVarsClose(Vector<String> &, bool);
 
+    bool FuncUnit(Vector<String> &, bool);
+    bool FuncUnitCamera(Vector<String> &, bool);
+
     bool FuncClear(Vector<String> &, bool);
     bool FuncClose(Vector<String> &, bool);
     bool FuncExit(Vector<String> &, bool);

@@ -32,7 +32,8 @@ void ConsoleParser::Execute(const String &string)
         {"close",   None,   &ConsoleParser::FuncClose,  L"закрыть консоль"},
         {"exit",    None,   &ConsoleParser::FuncExit,   L"выход"},
         {"server",  None,   &ConsoleParser::FuncServer, L"функции работы с сервером"},
-        {"vars",    None,   &ConsoleParser::FuncVars,   L"окно переменных"}
+        {"vars",    None,   &ConsoleParser::FuncVars,   L"окно переменных"},
+        {"unit",    None,   &ConsoleParser::FuncUnit,   L"функции упрвления юнитами"}
     };
 
     Vector<String> words = string.ToLower().Split(' ');
