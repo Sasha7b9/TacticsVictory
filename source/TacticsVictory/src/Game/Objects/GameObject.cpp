@@ -15,6 +15,8 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
 {
     deltaPos = Vector3::ZERO;
     id = ++creatorID;
+
+    translator = new Translator();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

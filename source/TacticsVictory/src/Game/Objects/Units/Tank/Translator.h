@@ -3,19 +3,19 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class Translator
+class Translator : public Object
 {
+    URHO3D_OBJECT(Translator, Object)
+
     friend class Tank;
 
 public:
-    Translator();
+    Translator(Context *context = gContext);
 
+    static void RegisterInAS();
     void Init(Tank* tank);
-
     void SetPath(const PODVector<Coord> &path, float speed = 0.0f);
-
     Vector3 Update(float dT);
-
     bool IsMoving();
 
 private:
@@ -49,4 +49,6 @@ private:
 
     void SetStep(const Coord &start, const Coord &end);
     void StartRotation(float angleNeed);
+
+    DEFAULT_MEMBERS(Translator);
 };

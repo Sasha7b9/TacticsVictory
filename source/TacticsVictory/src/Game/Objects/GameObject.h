@@ -37,7 +37,7 @@ protected:
     bool selected = false;
     float deltaRotate = 0.0f;
     float speed = 0.0f;
-    Translator translator;
+    SharedPtr<Translator> translator;
     char* name = nullptr; //-V122
     Type type = None;
     SharedPtr<ContextMenuUnit> contextMenu;

@@ -7,7 +7,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Translator::Translator()
+Translator::Translator(Context *context) : Object(context)
 {
     // First number - delta row, second number - delta col
     angles["-1,-1"] = 315.0f;
@@ -18,6 +18,19 @@ Translator::Translator()
     angles["1,0"] = 180.0f;
     angles["1,-1"] = 225.0f;
     angles["0,-1"] = 270.0f;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Translator::RegisterInAS()
+{
+    asIScriptEngine *engine = gScript->GetScriptEngine();
+    engine->RegisterObjectType("Translator", 0, asOBJ_REF);
+#pragma warning(push)
+#pragma warning(disable:4191)
+    engine->RegisterObjectMethod("Translator", "bool IsMoving()", asMETHOD(Translator, IsMoving), asCALL_THISCALL);
+    engine->RegisterObjectBehaviour("Translator", asBEHAVE_ADDREF, "void AddRef()", asMETHOD(Translator, AddRef), asCALL_THISCALL);
+    engine->RegisterObjectBehaviour("Translator", asBEHAVE_RELEASE, "void ReleaseRef()", asMETHOD(Translator, ReleaseRef), asCALL_THISCALL);
+#pragma warning(pop)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

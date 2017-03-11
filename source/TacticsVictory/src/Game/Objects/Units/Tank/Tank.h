@@ -29,7 +29,7 @@ public:
     // rotation = [0...359.999999f]
     void SetRotation(float rotation);
     float GetRotation();
-    Vector3 GetSpeed() { return translator.speed; }
+    Vector3 GetSpeed() { return translator->speed; }
     Node* GetNode();
     static PODVector<Tank*>& GetAll();
     static Tank* GetByID(uint id);

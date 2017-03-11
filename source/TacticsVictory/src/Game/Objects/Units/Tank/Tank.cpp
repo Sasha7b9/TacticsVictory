@@ -52,7 +52,7 @@ void Tank::Init(TypeTank type_, uint _id_)
 {
     node_->SetVar("PointerTank", this);
 
-    translator.Init(this);
+    translator->Init(this);
     typeTank = type_;
     LoadFromFile();
     Normalize();
@@ -66,7 +66,8 @@ void Tank::Init(TypeTank type_, uint _id_)
     VariantVector params;
     params.Push(Vector3(10.0f, 20.0f, 30.0f));
     params.Push(Variant(rocketLauncher));
-    instance->Execute("void SetRotationSpeed(const Vector3&in speed, RocketLauncher@ launch)", params);
+    params.Push(Variant(translator));
+    instance->Execute("void SetRotationSpeed(const Vector3&in speed, RocketLauncher@ launch, Translator@ trans)", params);
 
 }
 
@@ -109,7 +110,7 @@ void Tank::SetCoord(const Coord& coord)
 {
     PODVector<Coord> path;
     path.Push(coord);
-    translator.SetPath(path);
+    translator->SetPath(path);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -120,7 +121,7 @@ void Tank::Update(float dT)
 
     //rocketLauncher->Update(dT);
 
-    if(!translator.IsMoving())
+    if(!translator->IsMoving())
     {
         if(inProcessFindPath)
         {
@@ -151,7 +152,7 @@ void Tank::Update(float dT)
     }
     else
     {
-        SetPosition(translator.Update(dT));
+        SetPosition(translator->Update(dT));
     }
 
     if (timeForReload)
@@ -173,7 +174,7 @@ void Tank::Update(float dT)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::SetPath(const PODVector<Coord> &path)
 {
-    translator.SetPath(path, speed);
+    translator->SetPath(path, speed);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
