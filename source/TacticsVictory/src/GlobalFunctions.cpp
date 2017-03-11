@@ -10,7 +10,7 @@ void SetWindowInCenterScreen(Window *window)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OpenFileSelector(char *title, char *textOk, char *textCancel, Vector<String> &filters)
+void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
 {
     SAFE_DELETE(gFileSelector); //-V809
     gFileSelector = new FileSelector(gContext);

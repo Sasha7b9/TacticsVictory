@@ -79,7 +79,7 @@ void TilePath::SetVisible(bool visible)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TilePath::Add(Vector3 &pos)
+void TilePath::Add(const Vector3 &pos)
 {
     if(numTilesAll == numTilesEnabled)
     {

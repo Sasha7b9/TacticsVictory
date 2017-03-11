@@ -57,8 +57,8 @@ private:
     bool ExecuteCommand(const ParserStruct *structs, Vector<String> &words);
     bool Run(const ParserStruct *str, Vector<String> &words, bool showInfo);
     bool BeginFrom(const String &str, const char *begin);
-    bool ExtractInt(String &str, int *value);           // Считывает целое значение после первого символа ':'
-    bool ExtractFloat(String &str, float *value);       // Считывает значение типа float после первого символа ':'
+    bool ExtractInt(const String &str, int *value);           // Считывает целое значение после первого символа ':'
+    bool ExtractFloat(const String &str, float *value);       // Считывает значение типа float после первого символа ':'
 
     void HandleAsyncExecFinished(StringHash, VariantMap&);
 
@@ -72,7 +72,7 @@ class History
 public:
     History();
     ~History();
-    void AddString(String &string);
+    void AddString(const String &string);
     String GetPrev();
     String GetNext();
 private:

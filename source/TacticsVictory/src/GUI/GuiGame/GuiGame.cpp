@@ -47,7 +47,7 @@ void GuiGame::SetVisible(bool visible)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool GuiGame::IntersectionX(ButtonRTS *button, int x)
+bool GuiGame::IntersectionX(const ButtonRTS *button, int x)
 {
     return x >= button->GetPosition().x_ && x <= button->GetPosition().x_ + button->GetWidth();
 }
@@ -59,7 +59,7 @@ bool GuiGame::CheckOnDeadZoneForCursorBottomScreen(int x)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool GuiGame::IsInside(IntVector2 &position)
+bool GuiGame::IsInside(const IntVector2 &position)
 {
     return IsVisible() &&
         (
@@ -94,7 +94,7 @@ void GuiGame::ToggleInterfacePanels()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void GuiGame::HandleKeyDown(StringHash, VariantMap& eventData)
+void GuiGame::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 {
     if(!IsVisible() || gConsole->IsActive())
     {

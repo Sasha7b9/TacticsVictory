@@ -18,7 +18,7 @@ LayerTerrain::~LayerTerrain()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void LayerTerrain::AddCube(SharedPtr<CubeTerrain> &cube)
+void LayerTerrain::AddCube(const SharedPtr<CubeTerrain> &cube)
 {
     cubes.Push(cube);
 }

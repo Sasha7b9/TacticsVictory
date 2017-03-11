@@ -30,7 +30,7 @@ TerrainRTS::~TerrainRTS()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TerrainRTS::CreateFromVector(Vector<Vector<float>> &lev)
+void TerrainRTS::CreateFromVector(const Vector<Vector<float>> &lev)
 {
     float time = gTime->GetElapsedTime();
 
@@ -177,7 +177,7 @@ Vector<Vector<float>> TerrainRTS::GetMap()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-PODVector<CubeTerrain*>* TerrainRTS::GetColumnCubes(CubeTerrain *cube, DIR dir)
+PODVector<CubeTerrain*>* TerrainRTS::GetColumnCubes(const CubeTerrain *cube, DIR dir)
 {
     const int dRow[8] = { 0, -1, -1, -1, 0, 1, 1,  1};
     const int dCol[8] = {-1, -1,  0,  1, 1, 1, 0, -1};

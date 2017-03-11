@@ -12,7 +12,7 @@ public:
 
     void Init(Tank* tank);
 
-    void SetPath(PODVector<Coord> &path, float speed = 0.0f);
+    void SetPath(const PODVector<Coord> &path, float speed = 0.0f);
 
     Vector3 Update(float dT);
 
@@ -47,6 +47,6 @@ private:
 
     Tank *tank = nullptr; //-V122
 
-    void SetStep(Coord &start, Coord &end);
+    void SetStep(const Coord &start, const Coord &end);
     void StartRotation(float angleNeed);
 };

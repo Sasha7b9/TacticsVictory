@@ -108,5 +108,5 @@ public:
         return max;
     }
 
-    static BoundingBox CalculateBoundingBox(float *buffer, uint numVertexes);   // format MASK_POSITION | MASK_NORMAL | MASK_TEXCOORD1
+    static BoundingBox CalculateBoundingBox(const float *buffer, uint numVertexes);   // format MASK_POSITION | MASK_NORMAL | MASK_TEXCOORD1
 };

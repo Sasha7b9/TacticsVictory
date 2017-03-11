@@ -181,7 +181,7 @@ void SceneRTS::Update(float /*timeStep*/)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SceneRTS::HandleMouseDown(StringHash, VariantMap& eventData)
+void SceneRTS::HandleMouseDown(StringHash, VariantMap& eventData) //-V2009
 {
     int buttons = (int)eventData[MouseButtonDown::P_BUTTONS].GetInt();
 

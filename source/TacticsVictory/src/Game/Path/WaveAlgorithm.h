@@ -33,7 +33,7 @@ private:
 
     bool pathIsFound = true;
 
-    bool Contain(Wave &wave, Coord &coord);
+    bool Contain(const Wave &wave, const Coord &coord);
     void NextWave(Vector<Wave> &waves);
     void SetCell(Wave &wave, uint row, uint col, int numWave);
     void AddPrevWave(PODVector<Coord> &path);

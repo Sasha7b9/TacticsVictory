@@ -42,7 +42,7 @@ void ContextMenuUnit::CreateForUnit()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ContextMenuUnit::HandleToggledFiedView(StringHash, VariantMap& eventData)
+void ContextMenuUnit::HandleToggledFiedView(StringHash, VariantMap& eventData) //-V2009
 {
     bool state = (bool)eventData[Toggled::P_STATE].GetBool();
 

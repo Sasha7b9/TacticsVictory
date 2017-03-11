@@ -16,8 +16,8 @@ public:
     void FillRectangle(int x, int y, int width, int height, const Color &color);
     void FillRegion(int x, int y, const Color &color);
     void FillRegion(int x, int y, const Color &color, const Color &colorBound);
-    void CopyImage(int x, int y, ImageRTS &image);      // Those points which have transparency more than 0.5 are copied
-    void DrawPolyline(const Color &color, int numPoints, int *xy);
+    void CopyImage(int x, int y, const ImageRTS &image);      // Those points which have transparency more than 0.5 are copied
+    void DrawPolyline(const Color &color, int numPoints, const int *xy);
     void DrawCircle(float x, float y, float radius, const Color &color, float step = 1.0f);
     IntVector2 GetHotSpot() const;
     void SetHotSpot(int x, int y);

@@ -99,7 +99,7 @@ void SliderWithTextAndButtons::SetValue(int value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SliderWithTextAndButtons::HandleSliderIntChanged(StringHash, VariantMap& eventData_)
+void SliderWithTextAndButtons::HandleSliderIntChanged(StringHash, VariantMap& eventData_) //-V2009
 {
     int value = slider->GetValueInt();
     textValue->SetText(String(value));

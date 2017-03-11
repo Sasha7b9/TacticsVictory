@@ -259,7 +259,7 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void CubeTerrain::BuildPlaneVerexes(PlaneCube &plane) 
+void CubeTerrain::BuildPlaneVerexes(const PlaneCube &plane) 
 {
     uint index = vertexes->Size() / 8;
 
@@ -314,7 +314,7 @@ void CubeTerrain::BuildVertexes(PODVector<float> &v, PODVector<uint> &i)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void CubeTerrain::PushPoint(PointPlane &point)
+void CubeTerrain::PushPoint(const PointPlane &point)
 {
     vertexes->Push(point.coord.x_);
     vertexes->Push(point.coord.y_);
@@ -335,5 +335,5 @@ Vector3& CubeTerrain::GetEdgeCoord(EDGE edge, CORNER corner)
     {
         CreateEdgeTop();
     }
-    return edges[edge]->plane.point[(size_t)corner].coord;
+    return edges[edge]->plane.point[(uint64)corner].coord;
 }

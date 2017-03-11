@@ -27,7 +27,7 @@ void Translator::Init(Tank* tank_)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Translator::SetPath(PODVector<Coord> &path_, float speed_)
+void Translator::SetPath(const PODVector<Coord> &path_, float speed_)
 {
     path = path_;
 
@@ -99,7 +99,7 @@ Vector3 Translator::Update(float dT)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Translator::SetStep(Coord &start, Coord &end_)
+void Translator::SetStep(const Coord &start, const Coord &end_)
 {
     end = end_.ToVector3();
 

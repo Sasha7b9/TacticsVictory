@@ -50,7 +50,7 @@ void PlaneRTS::SetY(float y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Line PlaneRTS::NearEdge(Ray &ray)
+Line PlaneRTS::NearEdge(const Ray &ray)
 {
     Line lines[] =
     {

@@ -23,7 +23,7 @@ public:
 
     SegmentTerrain(Context *context = gContext);
     ~SegmentTerrain();
-    void CreateFromVector(Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols);
+    void CreateFromVector(const Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols);
     void Build();
     void GetColumnCubes(uint row, uint col, PODVector<CubeTerrain*> &column);
 
@@ -36,7 +36,7 @@ private:
     Vector<SharedPtr<LayerTerrain>> underGround;     // Height [0, -1, -2, ...)
 
 
-    void AddCube(SharedPtr<CubeTerrain> &cube);
+    void AddCube(const SharedPtr<CubeTerrain> &cube);
     void CreateLayers();
 
     DEFAULT_MEMBERS(SegmentTerrain);

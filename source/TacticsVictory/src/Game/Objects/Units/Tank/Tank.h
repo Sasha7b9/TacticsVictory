@@ -25,7 +25,7 @@ public:
     virtual void Update(float timeStep);
     static SharedPtr<Tank> Create(TypeTank type, uint _id_ = 0);
     void SetCoord(const Coord& coord);
-    void SetPath(PODVector<Coord> &path);
+    void SetPath(const PODVector<Coord> &path);
     // rotation = [0...359.999999f]
     void SetRotation(float rotation);
     float GetRotation();

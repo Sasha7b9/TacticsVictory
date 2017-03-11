@@ -16,7 +16,7 @@ public:
     GuiGame(Context *context = gContext);
 
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
-    bool IsInside(IntVector2 &position);
+    bool IsInside(const IntVector2 &position);
     bool IsVisible();
     void SetVisible(bool visible);
 
@@ -28,7 +28,7 @@ private:
     SharedPtr<PanelMap>    panelMap;
     SharedPtr<PanelMain>   panelMain;
 
-    bool IntersectionX(ButtonRTS *button, int x);
+    bool IntersectionX(const ButtonRTS *button, int x);
     void ToggleInterfacePanels();
 
     void CreatePanels();

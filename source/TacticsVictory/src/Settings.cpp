@@ -112,19 +112,19 @@ float Settings::GetFloat(char *elem, char *name)
     childName.SetValue(String(value));
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Settings::SetInt(char *category, char *name, int value)
+void Settings::SetInt(const char *category, const char *name, int value)
 {
     COMMON_BLOCK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Settings::SetFloat(char *category, char *name, float value)
+void Settings::SetFloat(const char *category, const char *name, float value)
 {
     COMMON_BLOCK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Settings::SetInt(char *name, int value)
+void Settings::SetInt(const char *name, int value)
 {
     XMLElement child = root.GetChild(name);
     if (child == 0)
@@ -144,7 +144,7 @@ void Settings::Save()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Settings::GetIntFromChild(char *category, char *name, int *value)
+bool Settings::GetIntFromChild(const char *category, const char *name, int *value)
 {
     if (!root.HasChild(category))
     {
@@ -162,7 +162,7 @@ bool Settings::GetIntFromChild(char *category, char *name, int *value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Settings::GetFloatFromChild(char *category, char *name, float *value)
+bool Settings::GetFloatFromChild(const char *category, const char *name, float *value)
 {
     if (!root.HasChild(category))
     {
@@ -178,7 +178,7 @@ bool Settings::GetFloatFromChild(char *category, char *name, float *value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Settings::GetIntFromChild(char *name, int *value)
+bool Settings::GetIntFromChild(const char *name, int *value)
 {
     if (!root.HasChild(name))
     {

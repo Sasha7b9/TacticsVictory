@@ -172,7 +172,7 @@ void ImageRTS::FillRegion(int x, int y, const Color &color, const Color &colorBo
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ImageRTS::CopyImage(int x0, int y0, ImageRTS &inImage)
+void ImageRTS::CopyImage(int x0, int y0, const ImageRTS &inImage)
 {
     int xMin = x0;
     int xMax = xMin + inImage.GetWidth();
@@ -235,13 +235,13 @@ void ImageRTS::Replace4PointsBound(int x, int y, const Color &color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ImageRTS::DrawPolyline(const Color &color, int numPoints, int *xy)
+void ImageRTS::DrawPolyline(const Color &color, int numPoints, const int *xy)
 {
     int numLines = numPoints - 1;
 
     for(int i = 0; i < numLines; i++)
     {
-        DrawLine(xy[(size_t)(i * 2)], xy[(size_t)(i * 2 + 1)], xy[(size_t)(i * 2 + 2)], xy[(size_t)(i * 2 + 3)], color);
+        DrawLine(xy[(uint64)(i * 2)], xy[(uint64)(i * 2 + 1)], xy[(uint64)(i * 2 + 2)], xy[(uint64)(i * 2 + 3)], color);
     }
 }
 

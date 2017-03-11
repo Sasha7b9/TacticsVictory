@@ -163,7 +163,7 @@ void Tank::Update(float dT)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Tank::SetPath(PODVector<Coord> &path)
+void Tank::SetPath(const PODVector<Coord> &path)
 {
     translator.SetPath(path, speed);
 }

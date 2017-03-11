@@ -115,7 +115,7 @@ void WaveAlgorithm::FindPath()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool WaveAlgorithm::Contain(Wave &wave, Coord &coord)
+bool WaveAlgorithm::Contain(const Wave &wave, const Coord &coord)
 {
     for (auto &crd : wave)
     {

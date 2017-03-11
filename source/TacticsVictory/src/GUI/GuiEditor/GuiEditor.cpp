@@ -200,7 +200,7 @@ void GuiEditor::HandleButtonRelease(StringHash, VariantMap &eventData)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool GuiEditor::IntersectionX(ButtonRTS *button, int x_)
+bool GuiEditor::IntersectionX(const ButtonRTS *button, int x_)
 {
     return x_ >= button->GetPosition().x_ && x_ <= button->GetPosition().x_ + button->GetWidth();
 }
@@ -212,7 +212,7 @@ bool GuiEditor::CheckOnDeadZoneForCursorBottomScreen(int x_)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool GuiEditor::IsInside(IntVector2 &position)
+bool GuiEditor::IsInside(const IntVector2 &position)
 {
     return IsVisible() && 
         (
@@ -312,7 +312,7 @@ void GuiEditor::HandleTerrainClearTerrain(StringHash, VariantMap&)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
+void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 {
     if (!IsVisible() || gConsole->IsActive())
     {
@@ -397,7 +397,7 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData)
+void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData) //-V2009
 {
     UnsubscribeFromEvent(gFileSelector, E_FILESELECTED);
 
@@ -450,7 +450,7 @@ void GuiEditor::HandleMouseDown(StringHash, VariantMap&)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void GuiEditor::HandleTerrainModeSelectChanged(StringHash, VariantMap& eventData)
+void GuiEditor::HandleTerrainModeSelectChanged(StringHash, VariantMap& eventData) //-V2009
 {
     int index = eventData[ItemSelected::P_SELECTION].GetInt();
 

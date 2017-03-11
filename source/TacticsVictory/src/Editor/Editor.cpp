@@ -222,7 +222,7 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Editor::HandleKeyDown(StringHash, VariantMap& eventData)
+void Editor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 {
     int key = eventData[KeyDown::P_KEY].GetInt();
 

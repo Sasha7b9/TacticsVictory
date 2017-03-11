@@ -19,7 +19,7 @@ public:
     GuiEditor(Context* context = gContext);
 
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
-    bool IsInside(IntVector2 &position);
+    bool IsInside(const IntVector2 &position);
     bool IsVisible();
     void SetVisible(bool visible);
 
@@ -51,7 +51,7 @@ private:
     int y = 10;
     int x = 10;
 
-    bool IntersectionX(ButtonRTS *button, int x);
+    bool IntersectionX(const ButtonRTS *button, int x);
     void CreateWindows();
     void ToggleInterfacePanels();
 

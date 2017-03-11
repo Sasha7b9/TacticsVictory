@@ -33,7 +33,7 @@ void PathIndicator::Enable(bool enable)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PathIndicator::SetStartPosition(Coord &start_)
+void PathIndicator::SetStartPosition(const Coord &start_)
 {
     start = start_;
     pathFinder.StartFind(start, start);

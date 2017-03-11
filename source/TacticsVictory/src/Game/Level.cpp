@@ -183,7 +183,7 @@ Vector<Vector<float> > Level::CreateRandom(uint numRows, uint numCols)
 
     Vector<float> str;
 
-    srand((uint)time(NULL));
+    srand((uint)time(NULL)); //-V202
 
     SetRandomSeed((uint)rand());
 

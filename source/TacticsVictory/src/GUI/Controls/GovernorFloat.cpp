@@ -95,7 +95,7 @@ void GovernorCell::HandleMouseDown(StringHash, VariantMap&)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
+void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData) //-V2009
 {
     if(type == CellType_Static)
     {

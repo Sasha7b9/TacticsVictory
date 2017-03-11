@@ -25,7 +25,7 @@ class TerrainRTS : public Object
 public:
     TerrainRTS(Context *context = gContext);
     ~TerrainRTS();
-    void CreateFromVector(Vector<Vector<float>> &level);
+    void CreateFromVector(const Vector<Vector<float>> &level);
     void SaveToFile(char *nameFie);
     float GetHeight(uint row, uint col);
     void SetHeight(uint row, uint col, float height);
@@ -37,7 +37,7 @@ public:
     Line GetIntersectionEdge(Ray &ray);
     PlaneRTS GetPlane(uint row, uint col);
     Vector<Vector<float>> GetMap();
-    PODVector<CubeTerrain*>* GetColumnCubes(CubeTerrain *cube, DIR dir);
+    PODVector<CubeTerrain*>* GetColumnCubes(const CubeTerrain *cube, DIR dir);
 
     static Vector<Vector<PODVector<CubeTerrain*>>> columnsCubes;
 

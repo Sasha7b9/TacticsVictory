@@ -86,7 +86,7 @@ void DropDownListWithTextAndButton::AddItem(char *text)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& eventData_)
+void DropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& eventData_) //-V2009
 {
     VariantMap &eventData = GetEventDataMap();
     eventData[ItemSelected::P_ELEMENT] = this;
@@ -123,7 +123,7 @@ void DropDownListWithTextAndButton::HandleButtonDown(StringHash, VariantMap& eve
 SharedPtr<DropDownListWithTextAndButton> DropDownListWithTextAndButton::Create(Window *window, char *text, int widthText, int widthDDList, int numItems, char *items[])
 {
     SharedPtr<DropDownListWithTextAndButton> ddl(new DropDownListWithTextAndButton(text, widthText, widthDDList));
-    for(size_t i = 0; i < (size_t)numItems; i++)
+    for(uint64 i = 0; i < (uint64)numItems; i++)
     {
         ddl->AddItem(items[i]);
     }

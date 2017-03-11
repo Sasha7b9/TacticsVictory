@@ -11,7 +11,7 @@ public:
     void Init();
     void Update();
     void Enable(bool enable);
-    void SetStartPosition(Coord &start);
+    void SetStartPosition(const Coord &start);
     void Stop();
 
     PODVector<Coord> &GetPath();

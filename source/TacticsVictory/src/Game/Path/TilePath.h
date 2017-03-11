@@ -11,7 +11,7 @@ public:
     void SetPosition(const Vector3 &pos);
     void SetVisible(bool visible);
 
-    static void Add(Vector3 &pos);
+    static void Add(const Vector3 &pos);
     static void DisableAll();
     static void RemoveAll();
 

@@ -19,7 +19,7 @@ SegmentTerrain::~SegmentTerrain()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SegmentTerrain::CreateFromVector(Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols)
+void SegmentTerrain::CreateFromVector(const Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols)
 {
     float min = 1e10f;
     float max = -1e10f;
@@ -74,7 +74,7 @@ void SegmentTerrain::CreateFromVector(Vector<Vector<float>> &level, uint row0, u
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SegmentTerrain::AddCube(SharedPtr<CubeTerrain> &cube)
+void SegmentTerrain::AddCube(const SharedPtr<CubeTerrain> &cube)
 {
     if(cube->underGround)
     {

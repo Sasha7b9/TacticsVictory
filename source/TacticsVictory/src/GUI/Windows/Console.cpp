@@ -139,7 +139,7 @@ bool ConsoleParser::ExecuteCommand(const ParserStruct *structs, Vector<String> &
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::ExtractInt(String &str, int *value)
+bool ConsoleParser::ExtractInt(const String &str, int *value)
 {
     Vector<String> words = str.Split(':');
 
@@ -153,7 +153,7 @@ bool ConsoleParser::ExtractInt(String &str, int *value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::ExtractFloat(String &str, float *value)
+bool ConsoleParser::ExtractFloat(const String &str, float *value)
 {
     Vector<String> words = str.Split(':');
 
@@ -205,7 +205,7 @@ bool ConsoleParser::FuncClose(Vector<String> &, bool showInfo)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncServerStart(Vector<String> &words, bool)
+bool ConsoleParser::FuncServerStart(Vector<String> &words, bool) //-V2009
 {
     int port = 0;
 
@@ -238,7 +238,7 @@ bool ConsoleParser::FuncServerStop(Vector<String> &,bool)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool)
+bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
 {
     int latency = 0;
     
@@ -252,7 +252,7 @@ bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool)
+bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool) //-V2009
 {
     float loss = 0.0f;
 
@@ -371,7 +371,7 @@ bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data)
+void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V2009
 {
     using namespace AsyncExecFinished;
 
@@ -397,7 +397,7 @@ void OnServerConnected()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ConsoleParser::FuncClientStart(Vector<String> &words, bool)
+bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
 {
     String address = SERVER_ADDRESS;
     uint16 port = SERVER_PORT;
@@ -516,7 +516,7 @@ void ConsoleRTS::HandleFinishedText(StringHash, VariantMap&)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ConsoleRTS::HandleUnhandledKey(StringHash, VariantMap& eventData)
+void ConsoleRTS::HandleUnhandledKey(StringHash, VariantMap& eventData) //-V2009
 {
     using namespace UnhandledKey;
     int key = eventData[P_KEY].GetInt();
@@ -647,7 +647,8 @@ History::~History()
     }
 }
 
-void History::AddString(String &string)
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void History::AddString(const String &string)
 {
     if(strings.Contains(string))
     {

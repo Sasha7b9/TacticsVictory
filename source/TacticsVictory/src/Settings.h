@@ -8,16 +8,16 @@ public:
     int GetInt(char *elem, char *name);
     int GetInt(char *name);
     float GetFloat(char *elem, char *name);
-    void SetInt(char *elem, char *name, int value);
-    void SetInt(char *name, int value);
-    void SetFloat(char *elem, char *name, float value);
+    void SetInt(const char *elem, const char *name, int value);
+    void SetInt(const char *name, int value);
+    void SetFloat(const char *elem, const char *name, float value);
 
     void Save();
 
 private:
-    bool GetIntFromChild(char *child, char *name, int *value);
-    bool GetFloatFromChild(char *child, char *name, float *value);
-    bool GetIntFromChild(char *name, int *value);
+    bool GetIntFromChild(const char *child, const char *name, int *value);
+    bool GetFloatFromChild(const char *child, const char *name, float *value);
+    bool GetIntFromChild(const char *name, int *value);
 
     String nameFile;
     SharedPtr<XMLFile> file;
