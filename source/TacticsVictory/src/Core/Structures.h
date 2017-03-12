@@ -3,6 +3,13 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static Coord CoordFactory()
+{
+    return Coord();
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 struct Coord
 {
     Coord(const Coord &coord) : row(coord.row), col(coord.col) { }
@@ -32,5 +39,12 @@ struct Coord
         retValue.z_ = -static_cast<float>(row) - 0.5f;
 
         return retValue;
+    }
+
+    static void RegisterInAS()
+    {
+        asIScriptEngine *engine = gScript->GetScriptEngine();
+        engine->RegisterObjectType("Coord", sizeof(Coord), asOBJ_VALUE);
+        engine->Register
     }
 };
