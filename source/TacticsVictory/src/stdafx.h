@@ -4,6 +4,8 @@
 
 #pragma warning(disable:4100 4191 4266 4365 4371 4464 4625 4626 4640 4668 4820 5026 5027)
 
+#include <Urho3D/AngelScript/Addons.h>
+#include <Urho3D/AngelScript/APITemplates.h>
 #include <Urho3D/AngelScript/Script.h>
 #include <Urho3D/AngelScript/ScriptFile.h>
 #include <Urho3D/AngelScript/ScriptInstance.h>

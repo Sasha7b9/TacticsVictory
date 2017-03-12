@@ -15,6 +15,12 @@ public:
     void StartFind(Coord start, Coord end);
     bool PathIsFound();
     PODVector<Coord> GetPath();
+    PODVector<uint>& GetPathUINT()
+    {
+        static PODVector<uint> vect;
+
+        return vect;
+    }
     virtual void ThreadFunction();
 
 private:
@@ -36,3 +42,8 @@ private:
 
     DEFAULT_MEMBERS(WaveAlgorithm);
 };
+
+static CScriptArray* WaveAlgorithmGetUINT(WaveAlgorithm *wave)
+{
+    return VectorToArray<uint>(wave->GetPathUINT(), "Array<uint>");
+}
