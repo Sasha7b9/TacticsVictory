@@ -28,9 +28,6 @@ Tank::Tank(Context *context) : UnitObject(context)
         parameters[T_34_76] = TankStruct(T_34_76, "Models/T-34-76-2.json");
     }
 
-    pathFinder = new WaveAlgorithm();
-    pathFinder->SetSize(gTerrain->NumRows(), gTerrain->NumCols());
-
     SubscribeToEvent(E_HIT, URHO3D_HANDLER(Tank, HandleAmmoHit));
 
     rocketLauncher = new RocketLauncher(gContext, this);
@@ -58,6 +55,7 @@ void Tank::RegisterInAS()
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_ADDREF, "void AddRef()", asMETHOD(Tank, AddRef), asCALL_THISCALL);
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_RELEASE, "void ReleaseRef()", asMETHOD(Tank, ReleaseRef), asCALL_THISCALL);
     engine->RegisterObjectProperty("Tank", "bool inProcessFindPath", offsetof(Tank, inProcessFindPath));
+    engine->RegisterObjectMethod("Tank", "bool PathIsFound()", asMETHOD(Tank, PathIsFound), asCALL_THISCALL);
 #pragma warning(pop)
 }
 
@@ -65,6 +63,9 @@ void Tank::RegisterInAS()
 void Tank::Init(TypeTank type_, uint _id_)
 {
     node_->SetVar("PointerTank", this);
+
+    pathFinder = new WaveAlgorithm();
+    pathFinder->SetSize(gTerrain->NumRows(), gTerrain->NumCols());
 
     translator->Init(this);
     typeTank = type_;
@@ -81,9 +82,13 @@ void Tank::Init(TypeTank type_, uint _id_)
     params.Push(Variant(rocketLauncher));
     params.Push(Variant(translator));
     params.Push(Variant(this));
-    params.Push(Variant(pathFinder));
-    instance->Execute("void SetRotationSpeed(RocketLauncher@ launch, Translator@ trans, Tank@ tan, WaveAlgorithm@ wave)", params);
+    instance->Execute("void SetRotationSpeed(RocketLauncher@ launch, Translator@ trans, Tank@ tan)", params);
 
+    /*
+    params.Clear();
+    params.Push(Variant(pathFinder));
+    instance->Execute("void SetWaveAlgorithm(WaveAlgorithm@ wave)", params);
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -126,6 +131,12 @@ void Tank::SetCoord(const Coord& coord)
     PODVector<Coord> path;
     path.Push(coord);
     translator->SetPath(path);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Tank::PathIsFound()
+{
+    return pathFinder->PathIsFound();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

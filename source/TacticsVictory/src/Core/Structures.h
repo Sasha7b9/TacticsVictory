@@ -5,13 +5,9 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 struct Coord
 {
-    Coord(const Coord &coord) : row(coord.row), col(coord.col)
-    {
+    Coord(const Coord &coord) : row(coord.row), col(coord.col) { }
 
-    }
-
-    Coord(uint row_ = 0U, uint col_ = 0U) : row(row_), col(col_)
-    {}
+    Coord(uint row_ = 0U, uint col_ = 0U) : row(row_), col(col_) { }
 
     uint row = 0;
     uint col = 0;
@@ -31,9 +27,9 @@ struct Coord
     {
         Vector3 retValue;
 
-        retValue.x_ = (float)col + 0.5f;
+        retValue.x_ = static_cast<float>(col) + 0.5f;
         retValue.y_ = gTerrain->GetHeight(row, col);
-        retValue.z_ = -(float)row - 0.5f;
+        retValue.z_ = -static_cast<float>(row) - 0.5f;
 
         return retValue;
     }

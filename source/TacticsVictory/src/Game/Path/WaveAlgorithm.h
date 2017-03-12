@@ -6,9 +6,8 @@
 class WaveAlgorithm : public Thread, public RefCounted
 {
 public:
-    
     WaveAlgorithm();
-    ~WaveAlgorithm();
+    virtual ~WaveAlgorithm();
 
     static void RegisterInAS();
 
@@ -19,19 +18,14 @@ public:
     virtual void ThreadFunction();
 
 private:
-  
     typedef Vector<Coord> Wave;
-
     Vector<Vector<int>> cells;
     float heightStart = 0.0f;
-
     uint numRows = 0;
     uint numCols = 0;
-
     PODVector<Coord> path;
     Coord start;
     Coord end;
-
     bool pathIsFound = true;
 
     bool Contain(const Wave &wave, const Coord &coord);

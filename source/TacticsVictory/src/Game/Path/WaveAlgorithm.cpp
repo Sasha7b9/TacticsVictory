@@ -10,7 +10,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-WaveAlgorithm::WaveAlgorithm() : Thread(), RefCounted()
+WaveAlgorithm::WaveAlgorithm() : Thread()
 {
     //passValues.Insert(KeySet(5, )
 }
@@ -148,8 +148,8 @@ static int dCol[] = {-1, 0, 1, 0, -1, 1, 1, -1};
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void WaveAlgorithm::NextWave(Vector<Wave> &waves)
 {
-    int numWave = (int)waves.Size();
-    Wave &prevWave = waves[(uint)numWave - 1];
+    int numWave = static_cast<int>(waves.Size());
+    Wave &prevWave = waves[static_cast<uint>(numWave - 1)];
     Wave wave;
 
     for (auto coord : prevWave)
@@ -162,11 +162,11 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
             int dR = dRow[i];
             int dC = dCol[i];
 
-            int iRow = (int)row + dR;
-            int iCol = (int)col + dC;
+            int iRow = static_cast<int>(row) + dR;
+            int iCol = static_cast<int>(col) + dC;
 
-            uint newRow = (uint)iRow;
-            uint newCol = (uint)iCol;
+            uint newRow = static_cast<uint>(iRow);
+            uint newCol = static_cast<uint>(iCol);
 
             if (newRow < numRows && newCol < numCols && cells[newRow][newCol] == -1 && fabs(gTerrain->GetHeight(newRow, newCol) - heightStart) < M_EPSILON)
             {
@@ -212,11 +212,11 @@ void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path_)
 
     for (int i = 0; i < 8; i++)
     {
-        int iRow = (int)row + dRow[i];
-        int iCol = (int)col + dCol[i];
+        int iRow = static_cast<int>(row) + dRow[i];
+        int iCol = static_cast<int>(col) + dCol[i];
 
-        uint newRow = (uint)iRow;
-        uint newCol = (uint)iCol;
+        uint newRow = static_cast<uint>(iRow);
+        uint newCol = static_cast<uint>(iCol);
 
         if (newRow < gTerrain->NumRows() && newCol < gTerrain->NumCols() && cells[newRow][newCol] == numWave - 1)
         {

@@ -1,1 +1,1 @@
-TVserver.exe -server
+TVserver.exe -port:1000

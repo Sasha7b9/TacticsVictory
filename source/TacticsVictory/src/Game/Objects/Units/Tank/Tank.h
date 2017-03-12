@@ -35,6 +35,9 @@ public:
     static PODVector<Tank*>& GetAll();
     static Tank* GetByID(uint id);
 
+    // Äëÿ AS
+    bool PathIsFound();
+
 private:
     SharedPtr<WaveAlgorithm> pathFinder;
     bool inProcessFindPath = false;
