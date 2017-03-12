@@ -3,18 +3,12 @@
 	RocketLauncher@ launcher;
 	Translator@ translator;
 	Tank@ tank;
-	WaveAlgorithm@ pathFinder;
     
     void SetRotationSpeed(RocketLauncher@ launch, Translator@ trans, Tank@ tan)
     {
 		launcher = launch;
 		translator = trans;
 		tank = tan;
-	}
-	
-	void SetWaveAlgorithm(WaveAlgorithm@ wave)
-	{
-		pathFinder = wave;
 	}
     
     void Update(float timeStep)
@@ -24,7 +18,7 @@
 		{
 			if(tank.inProcessFindPath)
 			{
-				if(tank.PathIsFound())
+				if(tank.pathFinder.PathIsFound())
 				{
 				}
 			}

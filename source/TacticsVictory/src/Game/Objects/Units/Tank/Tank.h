@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Game/Path/WaveAlgorithm.h"
 #include "Game/Objects/Units/Tank/Translator.h"
 #include "Game/Objects/Units/UnitObject.h"
@@ -35,9 +35,6 @@ public:
     static PODVector<Tank*>& GetAll();
     static Tank* GetByID(uint id);
 
-    // Äëÿ AS
-    bool PathIsFound();
-
 private:
     SharedPtr<WaveAlgorithm> pathFinder;
     bool inProcessFindPath = false;
@@ -59,7 +56,7 @@ private:
         Key(TypeTank type_ = Small) : type(type_) {};
         TypeTank type;
 
-        unsigned ToHash() const { return (uint)type; };
+        unsigned ToHash() const { return static_cast<uint>(type); };
 
         bool operator==(const Key& rhs) const
         {

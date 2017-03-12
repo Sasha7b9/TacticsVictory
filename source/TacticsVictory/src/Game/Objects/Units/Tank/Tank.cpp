@@ -1,4 +1,4 @@
-// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
+﻿// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <stdafx.h>
 #include "Tank.h"
@@ -54,8 +54,8 @@ void Tank::RegisterInAS()
 #pragma warning(disable:4191)
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_ADDREF, "void AddRef()", asMETHOD(Tank, AddRef), asCALL_THISCALL);
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_RELEASE, "void ReleaseRef()", asMETHOD(Tank, ReleaseRef), asCALL_THISCALL);
-    engine->RegisterObjectProperty("Tank", "bool inProcessFindPath", offsetof(Tank, inProcessFindPath));
-    engine->RegisterObjectMethod("Tank", "bool PathIsFound()", asMETHOD(Tank, PathIsFound), asCALL_THISCALL);
+    engine->RegisterObjectProperty("Tank", "bool inProcessFindPath", offsetof(Tank, inProcessFindPath)); //-V107
+    engine->RegisterObjectProperty("Tank", "WaveAlgorithm@ pathFinder", offsetof(Tank, pathFinder)); //-V107
 #pragma warning(pop)
 }
 
@@ -94,7 +94,7 @@ void Tank::Init(TypeTank type_, uint _id_)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::LoadFromFile()
 {
-    char *fileName = parameters[typeTank].fileName; //-V108
+    char *fileName = parameters[typeTank].fileName; //-V108 //-V2006
     JSONFile *file = gCache->GetResource<JSONFile>(fileName);
 
     if (timeForReload)
@@ -122,7 +122,7 @@ void Tank::LoadFromFile()
     node_->SetRotation(Quaternion(0, Vector3::UP));
     node_->Rotate(rotate);
 
-    timeLastModified = GetLastModifiedTime(parameters[typeTank].fileName); //-V108
+    timeLastModified = GetLastModifiedTime(parameters[typeTank].fileName); //-V108 //-V2006
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -131,12 +131,6 @@ void Tank::SetCoord(const Coord& coord)
     PODVector<Coord> path;
     path.Push(coord);
     translator->SetPath(path);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Tank::PathIsFound()
-{
-    return pathFinder->PathIsFound();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -165,13 +159,13 @@ void Tank::Update(float dT)
             uint col = 0;
             do
             {
-                row = (uint)Math::RandomInt(0, (int)gTerrain->NumRows() - 1);
-                col = (uint)Math::RandomInt(0, (int)gTerrain->NumCols() - 1);
+                row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(gTerrain->NumRows()) - 1));
+                col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(gTerrain->NumCols()) - 1));
                 height = gTerrain->GetHeight(row, col);
             } while(fabs(height) > M_EPSILON);
 
             Vector3 position = GetPosition();
-            Coord start((uint)-position.z_, (uint)position.x_);
+            Coord start(static_cast<uint>(-position.z_), static_cast<uint>(position.x_));
             pathFinder->StartFind(start, {row, col});
             inProcessFindPath = true;
         }

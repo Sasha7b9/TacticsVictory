@@ -32,7 +32,7 @@ public:
 
         unsigned ToHash() const
         {
-            return (uint)type + (numFrame << 4);
+            return static_cast<uint>(type) + (numFrame << 4);
         }
     };
 

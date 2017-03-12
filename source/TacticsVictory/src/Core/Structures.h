@@ -3,10 +3,12 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
 static Coord CoordFactory()
 {
     return Coord();
 }
+*/
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -41,10 +43,5 @@ struct Coord
         return retValue;
     }
 
-    static void RegisterInAS()
-    {
-        asIScriptEngine *engine = gScript->GetScriptEngine();
-        engine->RegisterObjectType("Coord", sizeof(Coord), asOBJ_VALUE);
-        engine->Register
-    }
+    static void RegisterInAS();
 };

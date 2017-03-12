@@ -2,3 +2,11 @@
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <stdafx.h>
 #include "Structures.h"
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Coord::RegisterInAS()
+{
+    asIScriptEngine *engine = gScript->GetScriptEngine();
+    engine->RegisterObjectType("Coord", sizeof(Coord), asOBJ_VALUE | asOBJ_POD);
+}
