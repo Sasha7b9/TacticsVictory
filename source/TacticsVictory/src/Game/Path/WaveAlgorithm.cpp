@@ -10,7 +10,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-WaveAlgorithm::WaveAlgorithm() : Thread()
+WaveAlgorithm::WaveAlgorithm(Context *context) : Thread(), Object(context)
 {
     //passValues.Insert(KeySet(5, )
 }
@@ -26,12 +26,12 @@ void WaveAlgorithm::RegisterInAS()
 {
     asIScriptEngine *engine = gScript->GetScriptEngine();
     engine->RegisterObjectType("WaveAlgorithm", 0, asOBJ_REF);
+    RegisterObject<WaveAlgorithm>(engine, "WaveAlgorithm");
 #pragma warning(push)
 #pragma warning(disable:4191)
     engine->RegisterObjectMethod("WaveAlgorithm", "bool PathIsFound()", asMETHOD(WaveAlgorithm, PathIsFound), asCALL_THISCALL);
-    engine->RegisterObjectMethod("WaveAlgorithm", "Array<uint>@ GetPathUINT()", asFUNCTION(WaveAlgorithmGetUINT), asCALL_CDECL_OBJLAST);
-    engine->RegisterObjectBehaviour("WaveAlgorithm", asBEHAVE_ADDREF, "void AddRef()", asMETHOD(WaveAlgorithm, AddRef), asCALL_THISCALL);
-    engine->RegisterObjectBehaviour("WaveAlgorithm", asBEHAVE_RELEASE, "void ReleaseRef()", asMETHOD(WaveAlgorithm, ReleaseRef), asCALL_THISCALL);
+    engine->RegisterObjectMethod("WaveAlgorithm", "Array<uint>@ GetPathUINT()", asMETHOD(WaveAlgorithm, GetPathUINT), asCALL_THISCALL);
+    engine->RegisterObjectMethod("WaveAlgorithm", "Array<String>@ GetPathString()", asMETHOD(WaveAlgorithm, GetPathString), asCALL_THISCALL);
 #pragma warning(pop)
 }
 

@@ -3,10 +3,12 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class WaveAlgorithm : public Thread, public RefCounted
+class WaveAlgorithm : public Thread, public Object
 {
+    URHO3D_OBJECT(WaveAlgorithm, Object);
+
 public:
-    WaveAlgorithm();
+    WaveAlgorithm(Context *context = gContext);
     virtual ~WaveAlgorithm();
 
     static void RegisterInAS();
@@ -18,8 +20,18 @@ public:
     const PODVector<uint>& GetPathUINT()
     {
         static PODVector<uint> vect;
-        vect.Resize(10);
+        vect.Clear();
+        for(uint i = 0; i < 10; i++)
+        {
+            vect.Push(i);
+        }
 
+        return vect;
+    }
+    const PODVector<String>& GetPathString()
+    {
+        static PODVector<String> vect;
+        vect.Resize(10);
         return vect;
     }
     virtual void ThreadFunction();
@@ -51,6 +63,11 @@ private:
 static CScriptArray* WaveAlgorithmGetUINT(WaveAlgorithm *wave)
 {
     return VectorToArray<uint>(wave->GetPathUINT(), "Array<uint>");
+}
+
+static CScriptArray* WaveAlgorithmGetString(WaveAlgorithm *wave)
+{
+    return VectorToArray<String>(wave->GetPathString(), "Array<String>");
 }
 
 #pragma warning(pop)
