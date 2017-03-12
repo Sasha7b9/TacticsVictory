@@ -20,6 +20,12 @@
 			{
 				if(tank.pathFinder.PathIsFound())
 				{
+					Array<uint>@ pArr = tank.pathFinder.GetPathUINT();
+					Array<uint> arr;
+					for(uint i = 0; i < pArr.length; i++)
+					{
+						arr.Push(pArr[i]);
+					}
 				}
 			}
 		}

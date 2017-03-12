@@ -15,9 +15,10 @@ public:
     void StartFind(Coord start, Coord end);
     bool PathIsFound();
     PODVector<Coord> GetPath();
-    PODVector<uint>& GetPathUINT()
+    const PODVector<uint>& GetPathUINT()
     {
         static PODVector<uint> vect;
+        vect.Resize(10);
 
         return vect;
     }
@@ -43,7 +44,13 @@ private:
     DEFAULT_MEMBERS(WaveAlgorithm);
 };
 
+
+#pragma warning(push)
+#pragma warning(disable:4505)
+
 static CScriptArray* WaveAlgorithmGetUINT(WaveAlgorithm *wave)
 {
     return VectorToArray<uint>(wave->GetPathUINT(), "Array<uint>");
 }
+
+#pragma warning(pop)
