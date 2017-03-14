@@ -17,23 +17,6 @@ public:
     void StartFind(Coord start, Coord end);
     bool PathIsFound();
     PODVector<Coord> GetPath();
-    const PODVector<uint>& GetPathUINT()
-    {
-        static PODVector<uint> vect;
-        vect.Clear();
-        for(uint i = 0; i < 10; i++)
-        {
-            vect.Push(i);
-        }
-
-        return vect;
-    }
-    const PODVector<String>& GetPathString()
-    {
-        static PODVector<String> vect;
-        vect.Resize(10);
-        return vect;
-    }
     virtual void ThreadFunction();
 
 private:
@@ -54,6 +37,31 @@ private:
     void FindPath();
 
     DEFAULT_MEMBERS(WaveAlgorithm);
+
+
+public:
+    PODVector<uint>& GetPathUINT()
+    {
+        static PODVector<uint> vect;
+        vect.Clear();
+        for (uint i = 0; i < 10; i++)
+        {
+            vect.Push(i);
+        }
+
+        return vect;
+    }
+    const PODVector<String>& GetPathString()
+    {
+        static PODVector<String> vect;
+        vect.Resize(10);
+        return vect;
+    }
+
+    uint GetUINT()
+    {
+        return 5;
+    }
 };
 
 

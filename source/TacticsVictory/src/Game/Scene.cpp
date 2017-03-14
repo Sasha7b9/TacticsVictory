@@ -94,8 +94,8 @@ void SceneRTS::Create()
             uint col = 0;
             do
             {
-                col = (uint)Math::RandomInt(0, (int)gLevel->GetWidth() - 1);
-                row = (uint)Math::RandomInt(0, (int)gLevel->GetHeight() - 1);
+                col = static_cast<uint>(Math::RandomInt(0, (int)gLevel->GetWidth() - 1));
+                row = static_cast<uint>(Math::RandomInt(0, (int)gLevel->GetHeight() - 1));
             } while (fabs(gTerrain->GetHeight(row, col)) > M_EPSILON);
 
             SharedPtr<Tank> tank = Tank::Create(Tank::Small);

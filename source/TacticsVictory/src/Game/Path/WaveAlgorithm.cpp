@@ -30,8 +30,9 @@ void WaveAlgorithm::RegisterInAS()
 #pragma warning(push)
 #pragma warning(disable:4191)
     engine->RegisterObjectMethod("WaveAlgorithm", "bool PathIsFound()", asMETHOD(WaveAlgorithm, PathIsFound), asCALL_THISCALL);
-    engine->RegisterObjectMethod("WaveAlgorithm", "Array<uint>@ GetPathUINT()", asMETHOD(WaveAlgorithm, GetPathUINT), asCALL_THISCALL);
+    engine->RegisterObjectMethod("WaveAlgorithm", "Array<uint>@ GetPathUINT()", asMETHOD(WaveAlgorithm, GetPathUINT), asCALL_THISCALL_OBJFIRST);
     engine->RegisterObjectMethod("WaveAlgorithm", "Array<String>@ GetPathString()", asMETHOD(WaveAlgorithm, GetPathString), asCALL_THISCALL);
+    engine->RegisterObjectMethod("WaveAlgorithm", "uint GetUINT()", asMETHOD(WaveAlgorithm, GetUINT), asCALL_THISCALL);
 #pragma warning(pop)
 }
 

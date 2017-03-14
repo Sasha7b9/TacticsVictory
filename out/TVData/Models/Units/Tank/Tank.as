@@ -10,6 +10,26 @@
 		launcher = launch;
 		translator = trans;
 		tank = tan;
+        //OpenConsoleWindow();
+        uint value = tank.pathFinder.GetUINT();
+        if(value == 5)
+        {
+            log.Write("value is Ok!");
+        }
+        else
+        {
+            log.Write("value is ERROR!!!!!!");
+        }
+        
+        Array<uint>@ arr = tank.pathFinder.GetPathUINT();
+        if(arr[0] == 0)
+        {
+            log.Write("array is Ok");
+        }
+        else
+        {
+            log.Write("array is ERROR!");
+        }
 //        log.Open("script.log");
 	}
     
@@ -21,12 +41,19 @@
 			{
 				if(tank.pathFinder.PathIsFound())
 				{
-                    log.Write("                                                     4");
+                    
+                /*
                     Array<uint> pArrU = tank.pathFinder.GetPathUINT();
-                    for(uint i = 0; i < pArrU.length; i++)
+                    if(pArrU.length == 0)
                     {
-                        log.Write("cicle");
+                        log.Write("error pointer");
                     }
+                    else
+                    {
+                        log.Write("nice work!");
+                    }
+                    */
+                   
                     /*
                     Array<uint> arrU;
 					for(uint i = 0; i < pArrU.length; i++)
