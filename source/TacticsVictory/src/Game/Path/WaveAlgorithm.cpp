@@ -22,6 +22,18 @@ WaveAlgorithm::~WaveAlgorithm()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+static CScriptArray* GetTestStringsToArray()
+{
+    static Vector<String> args;
+    args.Clear();
+    args.Push("Test");
+    args.Push("array");
+    args.Push("Angelscript");
+
+    return VectorToArray<String>(args, "Array<String>");
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void WaveAlgorithm::RegisterInAS()
 {
     asIScriptEngine *engine = gScript->GetScriptEngine();
@@ -30,9 +42,11 @@ void WaveAlgorithm::RegisterInAS()
 #pragma warning(push)
 #pragma warning(disable:4191)
     engine->RegisterObjectMethod("WaveAlgorithm", "bool PathIsFound()", asMETHOD(WaveAlgorithm, PathIsFound), asCALL_THISCALL);
-    engine->RegisterObjectMethod("WaveAlgorithm", "Array<uint>@ GetPathUINT()", asMETHOD(WaveAlgorithm, GetPathUINT), asCALL_THISCALL_OBJFIRST);
-    engine->RegisterObjectMethod("WaveAlgorithm", "Array<String>@ GetPathString()", asMETHOD(WaveAlgorithm, GetPathString), asCALL_THISCALL);
+    //engine->RegisterObjectMethod("WaveAlgorithm", "Array<uint> GetPathUINT()", asMETHOD(WaveAlgorithm, GetPathUINT), asCALL_THISCALL);
+    //engine->RegisterObjectMethod("WaveAlgorithm", "Array<String>@ GetPathString()", asMETHOD(WaveAlgorithm, GetPathString), asCALL_THISCALL);
     engine->RegisterObjectMethod("WaveAlgorithm", "uint GetUINT()", asMETHOD(WaveAlgorithm, GetUINT), asCALL_THISCALL);
+
+    engine->RegisterGlobalFunction("Array<String>@ GetTestStrings()", asFUNCTION(GetTestStringsToArray), asCALL_CDECL);
 #pragma warning(pop)
 }
 

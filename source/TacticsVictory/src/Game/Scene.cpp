@@ -88,7 +88,7 @@ void SceneRTS::Create()
     if (IN_SERVER_MODE)
     {
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 5; i++)
         {
             uint row = 0;
             uint col = 0;

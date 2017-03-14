@@ -92,6 +92,18 @@ void TacticsVictory::Stop()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+void MessageCallback(const asSMessageInfo *msg, void *)
+{
+    const char *type = "AS ERROR ";
+    if(msg->type == asMSGTYPE_WARNING)
+        type = "AS WARN ";
+    else if(msg->type == asMSGTYPE_INFORMATION)
+        type = "AS INFO ";
+
+    LOG_INFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::Start()
 {
     gProfiler = GetSubsystem<Profiler>();
@@ -144,6 +156,9 @@ void TacticsVictory::Start()
 
     gContext->RegisterSubsystem(new Script(gContext));
     gScript = GetSubsystem<Script>();
+
+    gScript->GetScriptEngine()->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
+
     RocketLauncher::RegisterInAS();
     Translator::RegisterInAS();
     WaveAlgorithm::RegisterInAS();

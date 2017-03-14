@@ -10,33 +10,38 @@
 		launcher = launch;
 		translator = trans;
 		tank = tan;
-        //OpenConsoleWindow();
-        uint value = tank.pathFinder.GetUINT();
-        if(value == 5)
+//        log.Open("script.log");
+        Array<String> args = GetArguments();
+        log.Write("args");
+        //log.Print(args.length);
+        for(uint i = 0; i < args.length; i++)
         {
-            log.Write("value is Ok!");
-        }
-        else
-        {
-            log.Write("value is ERROR!!!!!!");
+            log.Write(args[i]);
         }
         
-        Array<uint>@ arr = tank.pathFinder.GetPathUINT();
-        if(arr[0] == 0)
+        Array<String> strs = GetTestStrings();
+        for(uint i = 0; i < strs.length; i++)
         {
-            log.Write("array is Ok");
+            log.Write(strs[i]);
         }
-        else
-        {
-            log.Write("array is ERROR!");
-        }
-//        log.Open("script.log");
 	}
     
     void Update(float timeStep)
     {
 		if(!translator.IsMoving())
 		{
+            /*
+            Array<uint> arr = tank.pathFinder.GetPathUINT();
+            if(arr.length == 0)
+            {
+                log.Write("array is Ok");
+            }
+            else
+            {
+                log.Write("array is ERROR!");
+            }
+            */
+            
 			if(tank.inProcessFindPath)
 			{
 				if(tank.pathFinder.PathIsFound())

@@ -13,6 +13,7 @@
 *.cmd*
 *.i
 *.i-*
+*.exp
 out/TVData/history.txt
 log.txt
 Debug/TacticsVictory.tlog

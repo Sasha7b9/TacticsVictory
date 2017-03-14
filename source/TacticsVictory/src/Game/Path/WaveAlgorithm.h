@@ -40,7 +40,7 @@ private:
 
 
 public:
-    PODVector<uint>& GetPathUINT()
+    CScriptArray* GetPathUINT()
     {
         static PODVector<uint> vect;
         vect.Clear();
@@ -49,7 +49,7 @@ public:
             vect.Push(i);
         }
 
-        return vect;
+        return VectorToArray<uint>(vect, "Array<uint>");
     }
     const PODVector<String>& GetPathString()
     {
@@ -68,10 +68,12 @@ public:
 #pragma warning(push)
 #pragma warning(disable:4505)
 
+/*
 static CScriptArray* WaveAlgorithmGetUINT(WaveAlgorithm *wave)
 {
     return VectorToArray<uint>(wave->GetPathUINT(), "Array<uint>");
 }
+*/
 
 static CScriptArray* WaveAlgorithmGetString(WaveAlgorithm *wave)
 {
