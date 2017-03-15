@@ -182,8 +182,6 @@ void GUI::Create()
     gConsole = new ConsoleRTS(gContext);
     gUIRoot->AddChild(gConsole);
 
-    gConsole->Write(String(GetFractal()));
-
     gWindowVars = new WindowVariables(gContext);
     gUIRoot->AddChild(gWindowVars);
     gWindowVars->SetVisible(false);

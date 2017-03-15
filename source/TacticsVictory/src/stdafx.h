@@ -109,8 +109,6 @@
 
 using namespace Urho3D;
 
-#include <AdditionalDependences.h>
-
 #include <cfloat>
 #include <ctime>
 #include <sstream>

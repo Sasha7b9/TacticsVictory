@@ -18,7 +18,7 @@ public:
         Small,
         T_34_76
     };
-
+    
     Tank(Context *context = gContext);
     virtual ~Tank();
     static void RegisterObject(Context* context = gContext);
