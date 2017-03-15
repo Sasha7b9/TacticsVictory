@@ -84,7 +84,7 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     using namespace Released;
     using namespace MenuEvent;
 
-    Button *button = (Button*)eventData[P_ELEMENT].GetPtr();
+    Button *button = dynamic_cast<Button*>(eventData[P_ELEMENT].GetPtr());
 
     const Variant &value = button->GetVar(VAR_MENU_EVENT);
     if(!value.IsEmpty())
@@ -101,7 +101,7 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     else if (button == buttonLanguage)
     {
         gLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
-        gSet->SetInt(TV_LANGUAGE, (int)buttonLanguage->GetState());
+        gSet->SetInt(TV_LANGUAGE, static_cast<int>(buttonLanguage->GetState()));
     }
     else if (button == buttonExit)
     {

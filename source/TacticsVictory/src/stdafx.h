@@ -23,6 +23,7 @@
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Engine/DebugHud.h>
 #include <Urho3D/Engine/Engine.h>
+#include <Urho3D/Engine/EngineDefs.h>
 #include <Urho3D/Engine/Console.h>
 
 #include <Urho3D/Graphics/BillboardSet.h>

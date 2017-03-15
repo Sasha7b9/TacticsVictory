@@ -34,13 +34,13 @@ CameraRTS::CameraRTS()
     light->SetRange(25.0f);
     light->SetEnabled(true);
 
-#ifdef CLIENT
-    SetupViewport();
-
-    Node *listenerNode = cameraNode->CreateChild("Listener");
-    SoundListener *listener = listenerNode->CreateComponent<SoundListener>();
-    gAudio->SetListener(listener);
-#endif
+    if (MODE_CLIENT)
+    {
+        SetupViewport();
+        Node *listenerNode = cameraNode->CreateChild("Listener");
+        SoundListener *listener = listenerNode->CreateComponent<SoundListener>();
+        gAudio->SetListener(listener);
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -79,9 +79,13 @@ void CameraRTS::ParallelTranslateLookAt(const Vector3 &lookAt_)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-#ifdef CLIENT
 void CameraRTS::Move(float time) //-V2008
 {
+    if (!MODE_CLIENT)
+    {
+        return;
+    }
+
     if(!enabled || gConsole->IsActive())
     {
         return;
@@ -183,10 +187,6 @@ void CameraRTS::Move(float time) //-V2008
         MoveOn(wheel < 0 ? Direction_Closer : Direction_Further, fabs(wheel * 10.0f));
     }
 }
-#else
-void CameraRTS::Move(float) {}
-#endif
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void CameraRTS::SetPitch(float newPitch)
@@ -304,9 +304,10 @@ void CameraRTS::SetEnabled(bool _enabled)
 void CameraRTS::SetupViewport()
 {
     SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<Camera>()));
-#ifdef CLIENT
-    gRenderer->SetViewport(0, viewport);
-#endif
+    if (MODE_CLIENT)
+    {
+        gRenderer->SetViewport(0, viewport);
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

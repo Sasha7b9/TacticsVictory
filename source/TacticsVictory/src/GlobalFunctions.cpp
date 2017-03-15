@@ -115,8 +115,14 @@ bool GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
             {
                 return false;
             }
-            port = (uint16)ToUInt(word.Substring(5));
+            port = static_cast<uint16>(ToUInt(word.Substring(5)));
         }
+    }
+
+    if (port == 0)
+    {
+        address = String::EMPTY;
+        return false;
     }
 
     return true;

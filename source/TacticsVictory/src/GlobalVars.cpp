@@ -10,9 +10,7 @@ UIElement           *gUIRoot = nullptr;
 ResourceCache       *gCache = nullptr;
 Engine              *gEngine = nullptr;
 Input               *gInput = nullptr;
-#ifdef CLIENT
 Renderer            *gRenderer = nullptr;
-#endif
 DebugRenderer       *gDebugRenderer = nullptr;
 Context             *gContext = nullptr;
 Scene               *gScene = nullptr;
@@ -54,4 +52,4 @@ MenuRTS             *gMenu = nullptr;
 MenuGame            *gMenuMain = nullptr;
 MenuConfirmExit     *gMenuConfirmExit = nullptr;
 
-Mode gMode = Mode_Start;
+ModeApp             gMode = ModeApp_Start;

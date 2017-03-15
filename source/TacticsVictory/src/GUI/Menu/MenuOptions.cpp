@@ -53,9 +53,10 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
 
     CREATE_DDLWTAB(ddlSpecularLighting, "Specular lighting", 2, items4, (uint)gSet->GetInt(TV_SPECULAR_LIGHTING));
 
-#ifdef CLIENT
-    CREATE_DDLWTAB(ddlDynamicInstancing, "Dynamic instancing", 2, items4, gRenderer->GetDynamicInstancing() ? 1U : 0U);
-#endif
+    if (MODE_CLIENT)
+    {
+        CREATE_DDLWTAB(ddlDynamicInstancing, "Dynamic instancing", 2, items4, gRenderer->GetDynamicInstancing() ? 1U : 0U);
+    }
 
     int itemSizes[9] = {64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
     shadowMapSizes.Push(PODVector<int>(itemSizes, sizeof(itemSizes) / sizeof(int)));
@@ -63,10 +64,11 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
     char *items6[] = {"64", "128", "256", "512", "1024", "2048", "4096", "8192", "16384"};
     CREATE_DDLWTAB(ddlShadowMapSize, "Shadow map size", 9, items6, (uint)gSet->GetInt(TV_SHADOW_MAP_SIZE));
 
-#ifdef CLIENT
-    char *items7[] = {"low 16bit", "low 24bit", "high 16bit", "high 24bit"};
-    CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, (uint)gRenderer->GetShadowQuality()); //-V112
-#endif
+    if (MODE_CLIENT)
+    {
+        char *items7[] = {"low 16bit", "low 24bit", "high 16bit", "high 24bit"};
+        CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, static_cast<uint>(gRenderer->GetShadowQuality())); //-V112
+    }
 
     SharedPtr<UIElement> layout(CreateChild<UIElement>());
     layout->SetAlignment(HA_CENTER, VA_TOP);
@@ -97,10 +99,9 @@ void MenuOptions::RegisterObject(Context *context)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-#ifdef CLIENT
 void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 {
-    DropDownListWithTextAndButton *ddList = (DropDownListWithTextAndButton*)eventData[ItemSelected::P_ELEMENT].GetPtr();
+    DropDownListWithTextAndButton *ddList = dynamic_cast<DropDownListWithTextAndButton*>(eventData[ItemSelected::P_ELEMENT].GetPtr());
     int index = eventData[ItemSelected::P_SELECTION].GetInt();
 
     if(ddList == ddlTextureQuality)
@@ -142,16 +143,11 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
         gRenderer->SetDynamicInstancing(index == 1);
     }
 }
-#else
-void MenuOptions::HandleItemSelected(StringHash, VariantMap&) {}
-#endif
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-#ifdef CLIENT
 void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 {
-    SliderWithTextAndButtons *slider = (SliderWithTextAndButtons*)eventData[SliderIntChanged::P_ELEMENT].GetPtr();
+    SliderWithTextAndButtons *slider = dynamic_cast<SliderWithTextAndButtons*>(eventData[SliderIntChanged::P_ELEMENT].GetPtr());
     int value = eventData[SliderIntChanged::P_VALUE].GetInt();
 
     if(slider == sliderMaxOccluderTriangles)
@@ -168,10 +164,6 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
         gSet->SetInt(TV_VOLUME, value);
     }
 }
-#else
-void MenuOptions::HandleOnSlider(StringHash, VariantMap&) {}
-#endif
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuOptions::HandleButtonRelease(StringHash, VariantMap&)

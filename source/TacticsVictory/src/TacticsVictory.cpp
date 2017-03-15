@@ -42,7 +42,7 @@ TacticsVictory::TacticsVictory(Context* context) :
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::Setup()
 {
-    FillNetworkFunctions();
+    ParseArguments(GetArguments());
 
     gTacticsVictory = this;
     gSet = new Settings();
@@ -50,19 +50,13 @@ void TacticsVictory::Setup()
     gFileSystem = GetSubsystem<FileSystem>();
     gSet->Load();
 
-    engineParameters_["WindowTitle"] = GetTypeName();
-    engineParameters_["LogName"] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
-    engineParameters_["FullScreen"] = false;
-    
-    engineParameters_["TextureQuality"] = 32; //-V112
-    engineParameters_["WindowWidth"] = gSet->GetInt(TV_SCREEN_WIDTH);
-    engineParameters_["WindowHeight"] = gSet->GetInt(TV_SCREEN_HEIGHT);
-
-#ifdef CLIENT
-    engineParameters_["Headless"] = false;
-#else
-    engineParameters_["Headless"] = true;
-#endif
+    engineParameters_[EP_WINDOW_TITLE] = GetTypeName();
+    engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
+    engineParameters_[EP_FULL_SCREEN] = false;
+    engineParameters_[EP_TEXTURE_QUALITY] = 32; //-V112
+    engineParameters_[EP_WINDOW_WIDTH] = gSet->GetInt(TV_SCREEN_WIDTH);
+    engineParameters_[EP_WINDOW_HEIGHT] = gSet->GetInt(TV_SCREEN_HEIGHT);
+    engineParameters_[EP_HEADLESS] = MODE_SERVER;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -109,129 +103,128 @@ void TacticsVictory::Start()
     gProfiler = GetSubsystem<Profiler>();
     PROFILER_FUNC_ENTER
     Application::Start();
-
+    FillNetworkFunctions();
     gTime = GetSubsystem<Time>();
-
     OpenLog();
-
-    RegistrationFactories();
-
+    RegistrationComponets();
     gCache->AddResourceDir(gFileSystem->GetProgramDir() + RESOURCES_DIR);
     gFont = gCache->GetResource<Font>(SET::MENU::FONT::NAME);
-
     gProfiler = GetSubsystem<Profiler>();
     gLocalization = GetSubsystem<Localization>();
     gLocalization->LoadJSONFile("Strings.json");
     gLocalization->SetLanguage("ru");
-    gUI = GetSubsystem<UI>();
     gEngine = GetSubsystem<Engine>();
-    gInput = GetSubsystem<Input>();
-#ifdef CLIENT
-    gRenderer = GetSubsystem<Renderer>();
-#endif
     gGraphics = GetSubsystem<Graphics>();
+
+    if (!MODE_SERVER)
+    {
+        gUI = GetSubsystem<UI>();
+        gInput = GetSubsystem<Input>();
+        gRenderer = GetSubsystem<Renderer>();
+        SetWindowTitleAndIcon();
+        CreateConsoleAndDebugHud();
+        gDebugRenderer = gScene->GetComponent<DebugRenderer>();
+    }
+    
 
     XMLFile *style = gCache->GetResource<XMLFile>("UI/MainStyle.xml");
     gUIRoot = gUI->GetRoot();
     gUIRoot->SetDefaultStyle(style);
+    gScene = new Scene(gContext);
+    // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
+    gScene->CreateComponent<Octree>();
+    gPhysicsWorld = gScene->CreateComponent<PhysicsWorld>();
+    gPhysicsWorld->SetGravity(Vector3::ZERO);
+    gScene->CreateComponent<DebugRenderer>();
+    gGUI = new GUI();
+    GUI::RegistrationObjects();
+    gLog->SetLevel(LOG_ERROR);
 
-    SetWindowTitleAndIcon();
-    CreateConsoleAndDebugHud();
-
-    CreateComponents();
-
-    gCamera = new CameraRTS();
+    if (MODE_CLIENT)
+    {
+        gAudio = GetSubsystem<Audio>();
+        gMenu = new MenuRTS();
+        gGUI->Create();
+        gFileSelector = new FileSelector(gContext);
+        gFileSelector->GetWindow()->SetModal(false);
+        gFileSelector->GetWindow()->SetVisible(false);
+    }
 
     gLog->SetLevel(LOG_ERROR);
-#ifdef CLIENT
-    gGUI->Create();
-
-    gFileSelector = new FileSelector(gContext);
-    gFileSelector->GetWindow()->SetModal(false);
-    gFileSelector->GetWindow()->SetVisible(false);
-#endif
+    gLevel = new Level();
+    SceneRTS::RegisterObject();
+    gLog->SetLevel(LOG_ERROR);
     gLog->SetLevel(LOG_INFO);
-
-    SubscribeToEvents();
-
     gContext->RegisterSubsystem(new Script(gContext));
     gScript = GetSubsystem<Script>();
-
     gScript->GetScriptEngine()->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
-
-    RocketLauncher::RegisterInAS();
-    Translator::RegisterInAS();
-    WaveAlgorithm::RegisterInAS();
-    Tank::RegisterInAS();
-    gScript->Execute("Print(\"Hello World!\");");
-
-    Vector<String> arguments = GetArguments();
-
     gClient = new Client();
     gServer = new Server();
 
-    ParseArguments(arguments);
+    if (MODE_CLIENT)
+    {
+        StartClient(address, port);
+    }
+    else if (MODE_SERVER)
+    {
+        StartServer(port);
+    }
+
+    SubscribeToEvents();
 
     PROFILER_FUNC_LEAVE;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::ParseArguments(Vector<String> &arguments)
+bool TacticsVictory::StartServer(uint16 port_)
 {
-    String address;
-    uint16 port = 0;
-    GetAddressPort(arguments, address, port);
-
-#ifdef SERVER
-    if(port == 0)
+    URHO3D_LOGINFO("Now start server");
+    if (gServer->Start(port_))
     {
-        gEngine->Exit();
+        gMenu->Hide();
+        scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
+        scene->Create();
+        gCamera->SetEnabled(true);
+        return true;
     }
-
-    StartServer(port);
-#else
-    
-#endif
+    URHO3D_LOGINFO("Can not start server");
+    ErrorExit();
+    return false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::CreateComponents()
+void TacticsVictory::StartClient(String &address_, uint16 port_)
 {
-    gScene = new Scene(gContext);
-    // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
-    gScene->CreateComponent<Octree>();
-
-    gPhysicsWorld = gScene->CreateComponent<PhysicsWorld>();
-    gPhysicsWorld->SetGravity(Vector3::ZERO);
-
-    gScene->CreateComponent<DebugRenderer>();
-    gDebugRenderer = gScene->GetComponent<DebugRenderer>();
-
-    gGUI = new GUI();
-
-    GUI::RegistrationObjects();
-
-    gLog->SetLevel(LOG_ERROR);
-#ifdef CLIENT
-    gMenu = new MenuRTS();
-#endif
-    gLog->SetLevel(LOG_ERROR);
-
-    gLevel = new Level();
-
-#ifdef CLIENT
-    gAudio = GetSubsystem<Audio>();
-#endif
-
-    SceneRTS::RegisterObject();
+    SAFE_DELETE(gCamera);
+    gCamera = new CameraRTS();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::RegistrationFactories()
+void TacticsVictory::ParseArguments(const Vector<String> &arguments)
+{
+    /*
+        1. нет аргументов - просто запуск
+        2. аргументы -port:XX - запуск сервера на порту XX
+        3. аргументы -address:XX.XX.XX.XX -port:XX - запуск оболочки и коннект к серверу на XX.XX.XX.XX:XX
+    */
+
+    if (GetAddressPort(arguments, address, port))
+    {
+        gMode = address.Empty() ? ModeApp_Server : ModeApp_Client;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::RegistrationComponets()
 {
     gContext->RegisterFactory<Rotator>();
     gContext->RegisterFactory<Movinator>();
     gContext->RegisterFactory<ImageRTS>();
+
+    RocketLauncher::RegisterInAS();
+    Translator::RegisterInAS();
+    WaveAlgorithm::RegisterInAS();
+    Tank::RegisterInAS();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -253,45 +246,29 @@ void TacticsVictory::SubscribeToEvents()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::SetWindowTitleAndIcon()
 {
-#ifdef CLIENT
-    Image* icon = gCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
-    gGraphics->SetWindowIcon(icon);
-    gGraphics->SetWindowTitle(L"Тактика победы");
-#endif
+    if (MODE_CLIENT)
+    {
+        Image* icon = gCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
+        gGraphics->SetWindowIcon(icon);
+        gGraphics->SetWindowTitle(L"Тактика победы");
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateConsoleAndDebugHud()
 {
-#ifdef CLIENT
-    XMLFile* xmlFile = gCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
-
-    gEngineConsole = engine_->CreateConsole();
-    gEngineConsole->SetDefaultStyle(xmlFile);
-    gEngineConsole->GetBackground()->SetOpacity(0.8f);
-
-    gDebugHud = engine_->CreateDebugHud();
-    gDebugHud->SetDefaultStyle(xmlFile);
-#endif
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-bool TacticsVictory::StartServer(uint16 port)
-{
-    URHO3D_LOGINFO("Now start server");
-    if(gServer->Start(port))
+    if (MODE_CLIENT)
     {
-        gMenu->Hide();
-        scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
-        scene->Create();
-        gCamera->SetEnabled(true);
-        return true;
-    }
-    URHO3D_LOGINFO("Can not start server");
-    ErrorExit();
-    return false;
-}
+        XMLFile* xmlFile = gCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
 
+        gEngineConsole = engine_->CreateConsole();
+        gEngineConsole->SetDefaultStyle(xmlFile);
+        gEngineConsole->GetBackground()->SetOpacity(0.8f);
+
+        gDebugHud = engine_->CreateDebugHud();
+        gDebugHud->SetDefaultStyle(xmlFile);
+    }
+}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::CreateEditorSession()
@@ -325,14 +302,20 @@ void TacticsVictory::FillNetworkFunctions()
 void TacticsVictory::OpenLog()
 {
     gLog = new LogRTS();
-#ifdef SERVER
-    char buffer[50];
-    srand((uint)time(0));
-    rand();
-    sprintf_s(buffer, 50, "server%d.log", rand());
-    gLog->Open(buffer);
-#else
-    gLog->Open("client.log");
-#endif
+
+    if (MODE_SERVER)
+    {
+        char buffer[50];
+        srand(static_cast<uint>(time(static_cast<time_t*>(0))));
+        rand();
+        sprintf_s(buffer, 50, "server%d.log", rand());
+        gLog->Open(buffer);
+    }
+
+    if (MODE_CLIENT)
+    {
+        gLog->Open("client.log");
+    }
+
     gLog->SetLevel(LOG_DEBUG);
 }

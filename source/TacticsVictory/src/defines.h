@@ -88,14 +88,14 @@ enum TypeCursor
 
 typedef enum
 {
-    Mode_Start,
-    Mode_Server,
-    Mode_Client
-} Mode;
+    ModeApp_Start,
+    ModeApp_Server,
+    ModeApp_Client
+} ModeApp;
 
-#define MODE_CLIENT (gMode == Mode_Client)
-#define MODE_SERVER (gMode == Mode_Server)
-#define MODE_START  (gMode == Mode_Start)
+#define MODE_CLIENT (gMode == ModeApp_Client)
+#define MODE_SERVER (gMode == ModeApp_Server)
+#define MODE_START  (gMode == ModeApp_Start)
 
 // Имена узлов
 

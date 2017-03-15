@@ -26,7 +26,7 @@ void TacticsVictory::HandleConnecFailed(StringHash, VariantMap&)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::HandleClientConnected(StringHash, VariantMap& eventData)
 {
-    Connection *connection = (Connection*)eventData[ClientConnected::P_CONNECTION].GetPtr();
+    Connection *connection = dynamic_cast<Connection*>(eventData[ClientConnected::P_CONNECTION].GetPtr());
 
     std::stringstream s;
     s << connection->GetAddress().CString() << ":" << connection->GetPort() << " connected";
@@ -36,7 +36,7 @@ void TacticsVictory::HandleClientConnected(StringHash, VariantMap& eventData)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
 {
-    Connection *connection = (Connection*)eventData[ClientConnected::P_CONNECTION].GetPtr();
+    Connection *connection = dynamic_cast<Connection*>(eventData[ClientConnected::P_CONNECTION].GetPtr());
 
     std::stringstream s;
     s << connection->GetAddress().CString() << ":" << connection->GetPort() << " disconnected";
@@ -51,7 +51,7 @@ void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
     using namespace NetworkMessage;
 
     int msgID = eventData[P_MESSAGEID].GetInt();
-    Connection *connection = (Connection*)eventData[P_CONNECTION].GetPtr();
+    Connection *connection = dynamic_cast<Connection*>(eventData[P_CONNECTION].GetPtr());
     const PODVector<uint8>& data = eventData[P_DATA].GetBuffer(); //-V2002
     MemoryBuffer buffer(data);
 

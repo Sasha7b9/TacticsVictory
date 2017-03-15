@@ -18,6 +18,7 @@ public:
     virtual void Start();
     virtual void Stop();
     bool StartServer(uint16 port);
+    void StartClient(String &address, uint16 port);
 
     SceneRTS *scene = nullptr; //-V122
 
@@ -25,11 +26,12 @@ private:
     bool drawDebug = false;
     typedef void(*networkFunc)(Connection*, MemoryBuffer&, VectorBufferRTS&);
     HashMap<int, networkFunc> networkFunctions;                  // Здесь функции-обработчики сетевых сообщений
+    String address = String::EMPTY;
+    uint16 port = 0;
 
     void OpenLog();
-    void ParseArguments(Vector<String> &arguments);
-    void CreateComponents();
-    void RegistrationFactories();
+    void ParseArguments(const Vector<String> &arguments);
+    void RegistrationComponets();
     void SetWindowTitleAndIcon();
     void CreateConsoleAndDebugHud();
     void CreateEditorSession();

@@ -11,7 +11,7 @@
               </xs:sequence>
             </xs:complexType>
           </xs:element>
-          <xs:element name="TacticsVictory">
+          <xs:element name="tacticsvictory">
             <xs:complexType>
               <xs:sequence>
                 <xs:element name="FileName" type="xs:string" default="" />
@@ -26,7 +26,7 @@
         </xs:choice>
       </xs:complexType>
       <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-        <xs:selector xpath=".//TacticsVictory" />
+        <xs:selector xpath=".//tacticsvictory" />
         <xs:field xpath="FileName" />
         <xs:field xpath="ErrorCode" />
         <xs:field xpath="Message" />
@@ -39,76 +39,108 @@
   <SuppressVersion>
     <CurrentVersion>2</CurrentVersion>
   </SuppressVersion>
-  <TacticsVictory>
+  <tacticsvictory>
     <FileName>editor.cpp</FileName>
     <ErrorCode>V2003</ErrorCode>
     <Message>Explicit conversion from 'float' type to signed integer type.</Message>
     <CodePrev>123</CodePrev>
     <CodeCurrent>2268408138</CodeCurrent>
     <CodeNext>3939641048</CodeNext>
-  </TacticsVictory>
-  <TacticsVictory>
+  </tacticsvictory>
+  <tacticsvictory>
     <FileName>editor.cpp</FileName>
     <ErrorCode>V2003</ErrorCode>
     <Message>Explicit conversion from 'float' type to signed integer type.</Message>
     <CodePrev>123</CodePrev>
     <CodeCurrent>2268408138</CodeCurrent>
     <CodeNext>0</CodeNext>
-  </TacticsVictory>
-  <TacticsVictory>
+  </tacticsvictory>
+  <tacticsvictory>
     <FileName>tank.cpp</FileName>
     <ErrorCode>V2004</ErrorCode>
     <Message>Explicit conversion from 'float' type to unsigned integer type: static_cast&lt; uint &gt; (- position.z_)</Message>
     <CodePrev>4181826791</CodePrev>
     <CodeCurrent>747495</CodeCurrent>
     <CodeNext>3451415118</CodeNext>
-  </TacticsVictory>
-  <TacticsVictory>
+  </tacticsvictory>
+  <tacticsvictory>
     <FileName>tank.cpp</FileName>
     <ErrorCode>V2004</ErrorCode>
     <Message>Explicit conversion from 'float' type to unsigned integer type: static_cast&lt; uint &gt; (position.x_)</Message>
     <CodePrev>4181826791</CodePrev>
     <CodeCurrent>747495</CodeCurrent>
     <CodeNext>3451415118</CodeNext>
-  </TacticsVictory>
-  <TacticsVictory>
+  </tacticsvictory>
+  <tacticsvictory>
     <FileName>tank.cpp</FileName>
     <ErrorCode>V2006</ErrorCode>
     <Message>Implicit type conversion from enum type to integer type.</Message>
     <CodePrev>123</CodePrev>
     <CodeCurrent>1212111886</CodeCurrent>
     <CodeNext>123</CodeNext>
-  </TacticsVictory>
-  <TacticsVictory>
+  </tacticsvictory>
+  <tacticsvictory>
     <FileName>tank.cpp</FileName>
     <ErrorCode>V2003</ErrorCode>
     <Message>Explicit conversion from 'float' type to signed integer type.</Message>
     <CodePrev>123</CodePrev>
     <CodeCurrent>2507838293</CodeCurrent>
     <CodeNext>4293943713</CodeNext>
-  </TacticsVictory>
-  <TacticsVictory>
+  </tacticsvictory>
+  <tacticsvictory>
     <FileName>tacticsvictory.cpp</FileName>
     <ErrorCode>V111</ErrorCode>
     <Message>Call of function 'ToString' with variable number of arguments. Second argument has memsize type.</Message>
     <CodePrev>0</CodePrev>
     <CodeCurrent>1640685311</CodeCurrent>
     <CodeNext>125</CodeNext>
-  </TacticsVictory>
-  <TacticsVictory>
+  </tacticsvictory>
+  <tacticsvictory>
     <FileName>tacticsvictory.cpp</FileName>
     <ErrorCode>V111</ErrorCode>
     <Message>Call of function 'ToString' with variable number of arguments. Fifth argument has memsize type.</Message>
     <CodePrev>0</CodePrev>
     <CodeCurrent>1640685311</CodeCurrent>
     <CodeNext>125</CodeNext>
-  </TacticsVictory>
-  <TacticsVictory>
+  </tacticsvictory>
+  <tacticsvictory>
     <FileName>tacticsvictory.cpp</FileName>
     <ErrorCode>V111</ErrorCode>
     <Message>Call of function 'ToString' with variable number of arguments. Sixth argument has memsize type.</Message>
     <CodePrev>0</CodePrev>
     <CodeCurrent>1640685311</CodeCurrent>
     <CodeNext>125</CodeNext>
-  </TacticsVictory>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>tacticsvictory.cpp</FileName>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to _-bit integer type.</Message>
+    <CodePrev>1139801</CodePrev>
+    <CodeCurrent>2988645626</CodeCurrent>
+    <CodeNext>5545</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>tacticsvictory.cpp</FileName>
+    <ErrorCode>V809</ErrorCode>
+    <Message>Verifying that a pointer value is not NULL is not required. The 'if (gCamera)' check can be removed.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>113779533</CodeCurrent>
+    <CodeNext>365223697</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>menuoptions.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1844267742</CodeCurrent>
+    <CodeNext>2340908681</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>menuoptions.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>441138298</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
 </NewDataSet>

@@ -94,8 +94,8 @@ void SceneRTS::Create()
             uint col = 0;
             do
             {
-                col = static_cast<uint>(Math::RandomInt(0, (int)gLevel->GetWidth() - 1));
-                row = static_cast<uint>(Math::RandomInt(0, (int)gLevel->GetHeight() - 1));
+                col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(gLevel->GetWidth()) - 1));
+                row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(gLevel->GetHeight()) - 1));
             } while (fabs(gTerrain->GetHeight(row, col)) > M_EPSILON);
 
             SharedPtr<Tank> tank = Tank::Create(Tank::Small);
@@ -118,14 +118,16 @@ void SceneRTS::Create()
     light->SetShadowBias(BiasParameters(0.00011f, 2.0f));
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
-#ifdef CLIENT
-    gRenderer->SetShadowMapSize(2048);
-#endif
+
+    if (MODE_CLIENT)
+    {
+        gRenderer->SetShadowMapSize(2048);
+    }
 
     uint sizeX = level[0].Size();
     uint sizeZ = level.Size();
 
-    gCamera->SetPosition({sizeX / 2.0f, 25.0f, - (float)sizeZ / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
+    gCamera->SetPosition({sizeX / 2.0f, 25.0f, - static_cast<float>(sizeZ) / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
 
     gWindowTarget = new WindowTarget();
     gUIRoot->AddChild(gWindowTarget);
@@ -142,29 +144,30 @@ void SceneRTS::Create()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void SceneRTS::Update(float /*timeStep*/)
 {
-#ifdef CLIENT
-    Vector3 hitPos;
-    Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
-
-    if (drawable)
+    if (MODE_CLIENT)
     {
-        String name = drawable->GetNode()->GetName();
-        if(name == NODE_TERRAIN)
+        Vector3 hitPos;
+        Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
+
+        if (drawable)
+        {
+            String name = drawable->GetNode()->GetName();
+            if (name == NODE_TERRAIN)
+            {
+                gCursor->SetNormal();
+            }
+            else if (name == NODE_TANK)
+            {
+                gCursor->SetSelected();
+            }
+        }
+        else
         {
             gCursor->SetNormal();
         }
-        else if (name == NODE_TANK)
-        {
-            gCursor->SetSelected();
-        }
-    }
-    else
-    {
-        gCursor->SetNormal();
-    }
 
-    pathIndicator.Update();
-#endif
+        pathIndicator.Update();
+    }
 
     if (gServer->IsRunning())
     {
@@ -183,7 +186,7 @@ void SceneRTS::Update(float /*timeStep*/)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void SceneRTS::HandleMouseDown(StringHash, VariantMap& eventData) //-V2009
 {
-    int buttons = (int)eventData[MouseButtonDown::P_BUTTONS].GetInt();
+    int buttons = static_cast<int>(eventData[MouseButtonDown::P_BUTTONS].GetInt());
 
     if(buttons == MOUSEB_LEFT)
     {
@@ -215,7 +218,7 @@ void SceneRTS::ProcessMouseLeft()
         SetSelected(tank, !tank->IsSelected());
 
         Vector3 position = node->GetPosition();
-        Coord coord((uint)-position.z_, (uint)(position.x_));
+        Coord coord(static_cast<uint>(-position.z_), static_cast<uint>(position.x_)); //-V2004
 
         pathIndicator.SetStartPosition(coord);
         pathIndicator.Enable(false);

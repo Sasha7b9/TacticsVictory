@@ -52,8 +52,8 @@ void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
     using namespace MenuEvent;
 
     uint action = eventData[P_TYPE].GetUInt();
-    WindowMenu *source = (WindowMenu*)eventData[P_SOURCE].GetPtr();
-    WindowMenu *destination = (WindowMenu*)eventData[P_DESTINATION].GetPtr();
+    WindowMenu *source = dynamic_cast<WindowMenu*>(eventData[P_SOURCE].GetPtr());
+    WindowMenu *destination = dynamic_cast<WindowMenu*>(eventData[P_DESTINATION].GetPtr());
 
     if(action == MenuEvent_StartServer || action == MenuEvent_StartClient)
     {
@@ -88,12 +88,10 @@ void MenuRTS::Open(WindowMenu* menu, WindowMenu *prev)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void MenuRTS::CloseAll()
 {
-#ifdef CLIENT
     for (WindowMenu *window : allMenus)
     {
         gUIRoot->RemoveChild(window);
     }
-#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
