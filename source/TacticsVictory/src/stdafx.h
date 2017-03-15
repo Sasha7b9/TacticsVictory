@@ -109,10 +109,11 @@
 
 using namespace Urho3D;
 
+#include <AdditionalDependences.h>
+
 #include <cfloat>
 #include <ctime>
 #include <sstream>
-
 #include <d3d9types.h>
 
 #pragma warning(pop)

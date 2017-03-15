@@ -11,8 +11,7 @@
 *.opensdf
 *.suo
 *.cmd*
-*.i
-*.i-*
+*.i*
 *.exp
 *.lib
 out/TVData/history.txt

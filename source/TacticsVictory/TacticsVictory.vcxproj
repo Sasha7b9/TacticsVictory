@@ -100,14 +100,14 @@
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugClient|x64'">
-    <IncludePath>src\;$(IncludePath)</IncludePath>
+    <IncludePath>src\;C:\My\TacticsVictory\source\AdditionalDependences;$(IncludePath)</IncludePath>
     <TargetName>TacticsVictory</TargetName>
-    <LibraryPath>c:\Urho3D-dbg\build\Source\ThirdParty\AngelScript\Debug\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>c:\Urho3D-dbg\build\Source\ThirdParty\AngelScript\Debug\;C:\My\TacticsVictory\source\AdditionalDependences\x64\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugServer|x64'">
-    <IncludePath>src\;$(IncludePath)</IncludePath>
+    <IncludePath>src\;C:\My\TacticsVictory\source\AdditionalDependences;$(IncludePath)</IncludePath>
     <TargetName>TVserver</TargetName>
-    <LibraryPath>c:\Urho3D-dbg\build\Source\ThirdParty\AngelScript\Debug\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>c:\Urho3D-dbg\build\Source\ThirdParty\AngelScript\Debug\;C:\My\TacticsVictory\source\AdditionalDependences\x64\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugClient|x64'">
     <ClCompile>
@@ -148,7 +148,7 @@
     </PostBuildEvent>
     <Link>
       <AdditionalOptions>/STACK:20000000000 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;c:\Urho3D-dbg\build\lib\Urho3D_d.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;AdditionalDependences.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -202,7 +202,7 @@
     </PostBuildEvent>
     <Link>
       <AdditionalOptions>/STACK:20000000000 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;c:\Urho3D-dbg\build\lib\Urho3D_d.lib;AngelScript.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;c:\Urho3D-dbg\build\lib\Urho3D_d.lib;AngelScript.lib;AdditionalDependences.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
