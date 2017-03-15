@@ -115,7 +115,7 @@ SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &pos
         SharedPtr<Node> node(gScene->CreateChild("Rocket"));
         if (rockets.Size())
         {
-            rocket = (Rocket*)node->CloneComponent(rockets[0]->node_->GetComponent<Rocket>());
+            rocket = dynamic_cast<Rocket*>(node->CloneComponent(rockets[0]->node_->GetComponent<Rocket>()));
         }
         else
         {
@@ -133,7 +133,7 @@ void Rocket::LoadFromFile()
 {
     if (rockets.Size())
     {
-        model = (StaticModel*)node_->CloneComponent(rockets[0]->node_->GetComponent<StaticModel>());
+        model = dynamic_cast<StaticModel*>(node_->CloneComponent(rockets[0]->node_->GetComponent<StaticModel>()));
     }
     if (!model)
     {
@@ -455,7 +455,7 @@ void Rocket::VerifyOnIntersectionTerrain()
             String node = result.drawable_->GetNode()->GetName();
             if (node == NODE_TANK)
             {
-                attackedUnit = (Tank*)result.drawable_->GetNode()->GetVar("PointerTank").GetPtr();
+                attackedUnit = dynamic_cast<Tank*>(result.drawable_->GetNode()->GetVar("PointerTank").GetPtr());
                 return;
             }
             else if (node == NODE_TERRAIN)

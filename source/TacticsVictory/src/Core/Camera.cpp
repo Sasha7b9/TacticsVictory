@@ -319,5 +319,5 @@ SharedPtr<Node> CameraRTS::GetNode()
 Ray CameraRTS::GetCursorRay()
 {
     IntVector2 pos = gUI->GetCursorPosition();
-    return cameraNode->GetComponent<Camera>()->GetScreenRay((float)pos.x_ / gGraphics->GetWidth(), (float)pos.y_ / gGraphics->GetHeight());
+    return cameraNode->GetComponent<Camera>()->GetScreenRay(static_cast<float>(pos.x_) / gGraphics->GetWidth(), static_cast<float>(pos.y_) / gGraphics->GetHeight());
 }

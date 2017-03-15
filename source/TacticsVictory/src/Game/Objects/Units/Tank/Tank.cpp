@@ -177,7 +177,7 @@ void Tank::Update(float dT)
 
     if (timeForReload)
     {
-        int time = (int)gTime->GetElapsedTime();
+        int time = static_cast<int>(gTime->GetElapsedTime());
         if (time - timeLastReload >= timeForReload)
         {
             if (GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified) //-V108
@@ -225,7 +225,7 @@ SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
 {
-    Tank *tank = (Tank*)eventData[AmmoEvent::P_OBJECT].GetPtr();
+    Tank *tank = dynamic_cast<Tank*>(eventData[AmmoEvent::P_OBJECT].GetPtr());
 
     if(tank != this)
     {

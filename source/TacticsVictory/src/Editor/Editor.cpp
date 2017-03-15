@@ -46,8 +46,8 @@ void Editor::Run()
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
 
-    gCamera->SetPosition({(float)gTerrain->NumCols() / 2, 5.0f, -(float)gTerrain->NumRows() / 2 - 10.0f}, {(float)gTerrain->NumCols() / 2, 0.0f, -(float)gTerrain->NumRows() / 2});
-    lightNode->SetPosition({(float)gTerrain->NumCols() / 2, 50.0f, -(float)gTerrain->NumRows() / 2});
+    gCamera->SetPosition({gTerrain->NumCols() / 2.0f, 5.0f, - gTerrain->NumRows() / 2.0f - 10.0f}, {gTerrain->NumCols() / 2.0f, 0.0f, - gTerrain->NumRows() / 2.0f});
+    lightNode->SetPosition({gTerrain->NumCols() / 2.0f, 50.0f, - gTerrain->NumRows() / 2.0f});
 
     SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Editor, HandlePostRenderUpdate));
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(Editor, HandleMouseDown));
@@ -93,8 +93,8 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
     IntVector2 pos = gCursor->GetCursor()->GetPosition();
 
-    float relX = (float)pos.x_ / gGraphics->GetWidth();
-    float relY = (float)pos.y_ / gGraphics->GetHeight();
+    float relX = static_cast<float>(pos.x_) / gGraphics->GetWidth();
+    float relY = static_cast<float>(pos.y_) / gGraphics->GetHeight();
 
     Ray ray = gCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
 
@@ -116,7 +116,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             {
                 if (!selectedPlane.IsEquals(currentPlane))
                 {
-                    Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
+                    Color color = static_cast<int>(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
                     gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
                     gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
                 }
@@ -137,7 +137,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
             if (!currentEdge.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
             {
-                Color color = (int)(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
+                Color color = static_cast<int>(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
 
                 float dX = fabs(currentEdge.start.x_ - currentEdge.end.x_);
                 float dZ = fabs(currentEdge.start.z_ - currentEdge.end.z_);

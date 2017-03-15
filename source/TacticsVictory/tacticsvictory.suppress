@@ -1,0 +1,114 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="SuppressVersion">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CurrentVersion" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="TacticsVictory">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FileName" type="xs:string" default="" />
+                <xs:element name="ErrorCode" type="xs:string" default="" />
+                <xs:element name="Message" type="xs:string" default="" />
+                <xs:element name="CodePrev" type="xs:unsignedInt" default="0" />
+                <xs:element name="CodeCurrent" type="xs:unsignedInt" default="0" />
+                <xs:element name="CodeNext" type="xs:unsignedInt" default="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//TacticsVictory" />
+        <xs:field xpath="FileName" />
+        <xs:field xpath="ErrorCode" />
+        <xs:field xpath="Message" />
+        <xs:field xpath="CodePrev" />
+        <xs:field xpath="CodeCurrent" />
+        <xs:field xpath="CodeNext" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <SuppressVersion>
+    <CurrentVersion>2</CurrentVersion>
+  </SuppressVersion>
+  <TacticsVictory>
+    <FileName>editor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2268408138</CodeCurrent>
+    <CodeNext>3939641048</CodeNext>
+  </TacticsVictory>
+  <TacticsVictory>
+    <FileName>editor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2268408138</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </TacticsVictory>
+  <TacticsVictory>
+    <FileName>tank.cpp</FileName>
+    <ErrorCode>V2004</ErrorCode>
+    <Message>Explicit conversion from 'float' type to unsigned integer type: static_cast&lt; uint &gt; (- position.z_)</Message>
+    <CodePrev>4181826791</CodePrev>
+    <CodeCurrent>747495</CodeCurrent>
+    <CodeNext>3451415118</CodeNext>
+  </TacticsVictory>
+  <TacticsVictory>
+    <FileName>tank.cpp</FileName>
+    <ErrorCode>V2004</ErrorCode>
+    <Message>Explicit conversion from 'float' type to unsigned integer type: static_cast&lt; uint &gt; (position.x_)</Message>
+    <CodePrev>4181826791</CodePrev>
+    <CodeCurrent>747495</CodeCurrent>
+    <CodeNext>3451415118</CodeNext>
+  </TacticsVictory>
+  <TacticsVictory>
+    <FileName>tank.cpp</FileName>
+    <ErrorCode>V2006</ErrorCode>
+    <Message>Implicit type conversion from enum type to integer type.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1212111886</CodeCurrent>
+    <CodeNext>123</CodeNext>
+  </TacticsVictory>
+  <TacticsVictory>
+    <FileName>tank.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2507838293</CodeCurrent>
+    <CodeNext>4293943713</CodeNext>
+  </TacticsVictory>
+  <TacticsVictory>
+    <FileName>tacticsvictory.cpp</FileName>
+    <ErrorCode>V111</ErrorCode>
+    <Message>Call of function 'ToString' with variable number of arguments. Second argument has memsize type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1640685311</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </TacticsVictory>
+  <TacticsVictory>
+    <FileName>tacticsvictory.cpp</FileName>
+    <ErrorCode>V111</ErrorCode>
+    <Message>Call of function 'ToString' with variable number of arguments. Fifth argument has memsize type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1640685311</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </TacticsVictory>
+  <TacticsVictory>
+    <FileName>tacticsvictory.cpp</FileName>
+    <ErrorCode>V111</ErrorCode>
+    <Message>Call of function 'ToString' with variable number of arguments. Sixth argument has memsize type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1640685311</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </TacticsVictory>
+</NewDataSet>
