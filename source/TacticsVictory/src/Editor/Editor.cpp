@@ -46,8 +46,8 @@ void Editor::Run()
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
 
-    gCamera->SetPosition({gTerrain->NumCols() / 2.0f, 5.0f, - gTerrain->NumRows() / 2.0f - 10.0f}, {gTerrain->NumCols() / 2.0f, 0.0f, - gTerrain->NumRows() / 2.0f});
-    lightNode->SetPosition({gTerrain->NumCols() / 2.0f, 50.0f, - gTerrain->NumRows() / 2.0f});
+    gCamera->SetPosition({gTerrain->NumCols() / 2.0f, 5.0f, - static_cast<float>(gTerrain->NumRows()) / 2.0f - 10.0f}, {gTerrain->NumCols() / 2.0f, 0.0f, - static_cast<float>(gTerrain->NumRows()) / 2.0f});
+    lightNode->SetPosition({gTerrain->NumCols() / 2.0f, 50.0f, - static_cast<float>(gTerrain->NumRows()) / 2.0f});
 
     SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Editor, HandlePostRenderUpdate));
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(Editor, HandleMouseDown));

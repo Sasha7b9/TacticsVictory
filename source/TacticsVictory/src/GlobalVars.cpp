@@ -53,3 +53,5 @@ WindowTarget        *gWindowTarget = nullptr;
 MenuRTS             *gMenu = nullptr;
 MenuGame            *gMenuMain = nullptr;
 MenuConfirmExit     *gMenuConfirmExit = nullptr;
+
+Mode gMode = Mode_Start;

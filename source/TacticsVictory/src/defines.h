@@ -86,6 +86,16 @@ enum TypeCursor
 
 #define IN_PAUSE        (gScene->GetTimeScale() <= M_EPSILON)
 
+typedef enum
+{
+    Mode_Start,
+    Mode_Server,
+    Mode_Client
+} Mode;
+
+#define MODE_CLIENT (gMode == Mode_Client)
+#define MODE_SERVER (gMode == Mode_Server)
+#define MODE_START  (gMode == Mode_Start)
 
 // Имена узлов
 
