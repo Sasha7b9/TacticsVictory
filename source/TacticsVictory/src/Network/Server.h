@@ -22,10 +22,7 @@ public:
     void SetSimulatedPacketLoss(float probability);
 
 private:
-    Network *network = nullptr; //-V122
+    Network *network = nullptr;
 
     DEFAULT_MEMBERS(Server);
 };
-
-
-#define IN_SERVER_MODE (gServer->IsRunning())

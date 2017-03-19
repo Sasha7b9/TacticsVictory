@@ -54,8 +54,13 @@ enum TypeCursor
 #define VIEW_MASK_FOR_MISSILE   1
 #define VIEW_MASK_FOR_EFFECTS   2
 
+#ifdef _DEBUG
 #define PROFILER_FUNC_ENTER     gProfiler->BeginBlock(__FUNCTION__);
 #define PROFILER_FUNC_LEAVE     gProfiler->EndBlock();
+#else
+#define PROFILER_FUNC_ENTER
+#define PROFILER_FUNC_LEAVE
+#endif
 
 #define PRESS_UP        (gInput->GetKeyDown(KEY_UP))
 #define PRESS_DOWN      (gInput->GetKeyDown(KEY_DOWN))

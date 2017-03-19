@@ -72,8 +72,8 @@ void PanelMain::AddTab(SharedPtr<Tab> tab)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
 {
-    ButtonToggled *button = (ButtonToggled*)eventData[Toggled::P_ELEMENT].GetPtr();
-    bool state = (bool)eventData[Toggled::P_STATE].GetBool();
+    ButtonToggled *button = dynamic_cast<ButtonToggled*>(eventData[Toggled::P_ELEMENT].GetPtr());
+    bool state = eventData[Toggled::P_STATE].GetBool();
 
     if(state)
     {

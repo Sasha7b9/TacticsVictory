@@ -17,8 +17,10 @@ public:
     virtual void Setup();
     virtual void Start();
     virtual void Stop();
-    bool StartServer(uint16 port);
-    void StartClient(String &address, uint16 port);
+    void StartServer(uint16 port = 0);
+    void StopServer();
+    void StartClient(const String &address = String::EMPTY, uint16 port = 0);
+    void StopClient();
 
     SceneRTS *scene = nullptr; //-V122
 
@@ -37,6 +39,8 @@ private:
     void CreateEditorSession();
     void SubscribeToEvents();
     void FillNetworkFunctions();
+    void SetLocalization();
+    void CreateScriptSystem();
 
     void HandleUpdate(StringHash, VariantMap&);
     void HandlePostUpdate(StringHash, VariantMap&);

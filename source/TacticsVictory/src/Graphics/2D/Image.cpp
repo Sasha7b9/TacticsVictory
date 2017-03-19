@@ -35,7 +35,7 @@ void ImageRTS::SetPoint(int x, int y, const Color& color)
 {
     if(x < GetWidth() && y < GetHeight())
     {
-        SetPixel((int)x, (int)y, color);
+        SetPixel(static_cast<int>(x), static_cast<int>(y), color);
     }
 }
 
@@ -49,8 +49,8 @@ void ImageRTS::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
 
     int x = x0;
     int y = y0;
-    int dx = (int)fabs((float)(x1 - x0));
-    int dy = (int)fabs((float)(y1 - y0));
+    int dx = static_cast<int>(fabsf(static_cast<float>(x1 - x0)));
+    int dy = static_cast<int>(fabsf(static_cast<float>(y1 - y0)));
     int s1 = Math::Sign(x1 - x0);
     int s2 = Math::Sign(y1 - y0);
     int temp;

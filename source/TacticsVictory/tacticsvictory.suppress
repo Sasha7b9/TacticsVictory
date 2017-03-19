@@ -143,4 +143,548 @@
     <CodeCurrent>441138298</CodeCurrent>
     <CodeNext>125</CodeNext>
   </tacticsvictory>
+  <tacticsvictory>
+    <FileName>level.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (str[col - _])</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2651239368</CodeCurrent>
+    <CodeNext>2666968568</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>level.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (str[col - _])</Message>
+    <CodePrev>2651239368</CodePrev>
+    <CodeCurrent>2666968568</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>level.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2037323184</CodeCurrent>
+    <CodeNext>2100236848</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>level.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>2037323184</CodePrev>
+    <CodeCurrent>2100236848</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>level.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (str[col - _])</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2651254984</CodeCurrent>
+    <CodeNext>2666985208</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>level.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (str[col - _])</Message>
+    <CodePrev>2651254984</CodePrev>
+    <CodeCurrent>2666985208</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cubeterrain.cpp</FileName>
+    <ErrorCode>V2004</ErrorCode>
+    <Message>Explicit conversion from 'float' type to unsigned integer type: static_cast&lt; uint &gt; (fabs(height))</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3669564661</CodeCurrent>
+    <CodeNext>2658177</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cubeterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1569231736</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cubeterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>3921725784</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>terrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3135137696</CodeCurrent>
+    <CodeNext>3134962012</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>terrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>3135137696</CodePrev>
+    <CodeCurrent>3134962012</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>layerterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3323794422</CodeCurrent>
+    <CodeNext>1622317747</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>layerterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>3323794422</CodePrev>
+    <CodeCurrent>1622317747</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>layerterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3645645054</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>layerterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3366346985</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cubeterrain.cpp</FileName>
+    <ErrorCode>V2006</ErrorCode>
+    <Message>Implicit type conversion from enum type to integer type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>552398919</CodeCurrent>
+    <CodeNext>3659244207</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cubeterrain.cpp</FileName>
+    <ErrorCode>V2006</ErrorCode>
+    <Message>Implicit type conversion from enum type to integer type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>553447791</CodeCurrent>
+    <CodeNext>3066489085</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cubeterrain.cpp</FileName>
+    <ErrorCode>V2006</ErrorCode>
+    <Message>Implicit type conversion from enum type to integer type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>550302231</CodeCurrent>
+    <CodeNext>1812844948</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cubeterrain.cpp</FileName>
+    <ErrorCode>V2006</ErrorCode>
+    <Message>Implicit type conversion from enum type to integer type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>551351103</CodeCurrent>
+    <CodeNext>2989966542</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cubeterrain.cpp</FileName>
+    <ErrorCode>V2006</ErrorCode>
+    <Message>Implicit type conversion from enum type to integer type.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>3921725784</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>terrain.cpp</FileName>
+    <ErrorCode>V2006</ErrorCode>
+    <Message>Implicit type conversion from enum type to integer type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3135137696</CodeCurrent>
+    <CodeNext>3134962012</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>terrain.cpp</FileName>
+    <ErrorCode>V2006</ErrorCode>
+    <Message>Implicit type conversion from enum type to integer type.</Message>
+    <CodePrev>3135137696</CodePrev>
+    <CodeCurrent>3134962012</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>client.h</FileName>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <CodePrev>11496</CodePrev>
+    <CodeCurrent>903465103</CodeCurrent>
+    <CodeNext>1815032459</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>client.h</FileName>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <CodePrev>903465103</CodePrev>
+    <CodeCurrent>1815032459</CodeCurrent>
+    <CodeNext>3658176131</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>client.h</FileName>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <CodePrev>1815032459</CodePrev>
+    <CodeCurrent>3658176131</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>server.h</FileName>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <CodePrev>11496</CodePrev>
+    <CodeCurrent>903465103</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2006</ErrorCode>
+    <Message>Implicit type conversion from enum type to integer type.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>639422405</CodeCurrent>
+    <CodeNext>30334149</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>tacticsvictory.cpp</FileName>
+    <ErrorCode>V111</ErrorCode>
+    <Message>Call of function 'ToString' with variable number of arguments. Second argument has memsize type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1642897151</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>tacticsvictory.cpp</FileName>
+    <ErrorCode>V111</ErrorCode>
+    <Message>Call of function 'ToString' with variable number of arguments. Fifth argument has memsize type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1642897151</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>tacticsvictory.cpp</FileName>
+    <ErrorCode>V111</ErrorCode>
+    <Message>Call of function 'ToString' with variable number of arguments. Sixth argument has memsize type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1642897151</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>tacticsvictory.cpp</FileName>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to _-bit integer type.</Message>
+    <CodePrev>1139801</CodePrev>
+    <CodeCurrent>2988645626</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (angle_)</Message>
+    <CodePrev>718876035</CodePrev>
+    <CodeCurrent>1839337619</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (thisNumFrame)</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>1829986790</CodeCurrent>
+    <CodeNext>92302701</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3462001742</CodeCurrent>
+    <CodeNext>3472487502</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>3462001742</CodePrev>
+    <CodeCurrent>3472487502</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3462066254</CodeCurrent>
+    <CodeNext>3472552014</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>3462066254</CodePrev>
+    <CodeCurrent>3472552014</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(dimensionTriangleSmall * _._f)</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3866696083</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(dimensionTriangleSmall * _._f)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3866696083</CodeCurrent>
+    <CodeNext>3251641322</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(dimensionTriangleSmall * _._f)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3866696083</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(x)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1910837304</CodeCurrent>
+    <CodeNext>295360531</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(y)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1910837304</CodeCurrent>
+    <CodeNext>295360531</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1948138152</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1948138152</CodeCurrent>
+    <CodeNext>3251641322</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1948138152</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (x)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3557237169</CodeCurrent>
+    <CodeNext>295360531</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>cursor.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (y)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3557237169</CodeCurrent>
+    <CodeNext>295360531</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>pathindicator.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>3085906152</CodePrev>
+    <CodeCurrent>32466442</CodeCurrent>
+    <CodeNext>29382365</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>image.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int) fabs((float)(x_ - x_))</Message>
+    <CodePrev>9799</CodePrev>
+    <CodeCurrent>3859439881</CodeCurrent>
+    <CodeNext>3993657753</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>image.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int) fabs((float)(y_ - y_))</Message>
+    <CodePrev>3859439881</CodePrev>
+    <CodeCurrent>3993657753</CodeCurrent>
+    <CodeNext>655389081</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>image.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(x + Cos(angle) * radius + _._f)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>272183613</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>image.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(y + Sin(angle) * radius + _._f)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>272183613</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>sliderint.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(value_ + delta + _._f)</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2903421526</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>linetranslator1d.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int) start</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>5724019</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>linetranslator1d.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int) finish</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>11446447</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>linetranslator1d.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (position)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>517027375</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>linetranslator1d.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (position)</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>517027375</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>pathindicator.cpp</FileName>
+    <ErrorCode>V2004</ErrorCode>
+    <Message>Explicit conversion from 'float' type to unsigned integer type: static_cast&lt; uint &gt; (fabsf(- hitPos.z_))</Message>
+    <CodePrev>1455229571</CodePrev>
+    <CodeCurrent>3050166662</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>pathindicator.cpp</FileName>
+    <ErrorCode>V2004</ErrorCode>
+    <Message>Explicit conversion from 'float' type to unsigned integer type: static_cast&lt; uint &gt; (hitPos.x_)</Message>
+    <CodePrev>1455229571</CodePrev>
+    <CodeCurrent>3050166662</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>image.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>9799</CodePrev>
+    <CodeCurrent>354832217</CodeCurrent>
+    <CodeNext>355880569</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>image.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>354832217</CodePrev>
+    <CodeCurrent>355880569</CodeCurrent>
+    <CodeNext>655389081</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>image.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3278107495</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>image.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>272183613</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>sliderint.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (value_ + delta + _._f)</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2723924244</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>pathindicator.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>3658145147</CodePrev>
+    <CodeCurrent>32466442</CodeCurrent>
+    <CodeNext>29382365</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>pathindicator.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>3658145147</CodePrev>
+    <CodeCurrent>32466442</CodeCurrent>
+    <CodeNext>29382365</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>linetranslator1d.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (start)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3285853299</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>linetranslator1d.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: static_cast&lt;int&gt; (finish)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2276738132</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
 </NewDataSet>

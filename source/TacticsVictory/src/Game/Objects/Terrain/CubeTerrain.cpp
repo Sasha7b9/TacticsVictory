@@ -1,4 +1,4 @@
-// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
+Ôªø// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <stdafx.h>
 #include "CubeTerrain.h"
@@ -26,7 +26,7 @@ CubeTerrain::CubeTerrain(uint row, uint col, float height) :
 
     underGround = (height <= 0.0f);
 
-    layer = (uint)fabs(height);
+    layer = static_cast<uint>(fabs(height));
     if (!underGround)
     {
         layer--;
@@ -74,23 +74,23 @@ void CubeTerrain::CreateSides()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void CubeTerrain::CreateEdgeTop()
 {
-    float height = underGround ? -(float)layer : (float)layer + 1.0f;
+    float height = underGround ? - static_cast<float>(layer) : static_cast<float>(layer) + 1.0f;
 
     SharedPtr<EdgeCube> edge(new EdgeCube());
     edges[E_TOP] = edge;
 
     GET_FOUR_POINTS_FOR_PLANE(edge);
 
-    point0.coord = Vector3((float)col, height, -(float)row);
+    point0.coord = Vector3(static_cast<float>(col), height, -static_cast<float>(row));
     point0.texCoord = Vector2::ZERO;
 
-    point1.coord = Vector3((float)col + 1.0f, height, -(float)row);
+    point1.coord = Vector3(static_cast<float>(col) + 1.0f, height, -static_cast<float>(row));
     point1.texCoord = Vector2::UP;
 
-    point2.coord = Vector3((float)col + 1.0f, height, -(float)row - 1.0f);
+    point2.coord = Vector3(static_cast<float>(col) + 1.0f, height, -static_cast<float>(row) - 1.0f);
     point2.texCoord = Vector2::ONE;
 
-    point3.coord = Vector3((float)col, height, -(float)row - 1.0f);
+    point3.coord = Vector3(static_cast<float>(col), height, -static_cast<float>(row) - 1.0f);
     point3.texCoord = Vector2::RIGHT;
 
     CALCULATE_NORMALS
@@ -110,13 +110,13 @@ void CubeTerrain::CreateSideLeft()
 
     float height = 0.0f;
 
-    if(column)                                                          // ≈ÒÎË ÒÎÂ‚‡ ÓÚ Ì‡¯ÂÈ ÍÎÂÚÍË ÂÒÚ¸ ‰Û„ËÂ
+    if(column)                                                          // –ï—Å–ª–∏ —Å–ª–µ–≤–∞ –æ—Ç –Ω–∞—à–µ–π –∫–ª–µ—Ç–∫–∏ –µ—Å—Ç—å –¥—Ä—É–≥–∏–µ
     {
-        for(int i = (int)column->Size() - 1; i >= 0; i--)
+        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
         {
             CubeTerrain *cube = (*column)[(uint)i];
 
-            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);     // œÓÎÛ˜‡ÂÏ ÍÓÓ‰ËÌ‡ÚÛ ‚ÂıÌÂ„Ó Ô‡‚Ó„Ó Û„Î‡ ÒÛ·‡, ÍÓÚÓ˚È Ì‡ıÓ‰ËÚÒˇ ÒÎÂ‚‡
+            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);     // –ü–æ–ª—É—á–∞–µ–º –∫–æ–æ—Ä–¥–∏–Ω–∞—Ç—É –≤–µ—Ä—Ö–Ω–µ–≥–æ –ø—Ä–∞–≤–æ–≥–æ —É–≥–ª–∞ —Å—É–±–∞, –∫–æ—Ç–æ—Ä—ã–π –Ω–∞—Ö–æ–¥–∏—Ç—Å—è —Å–ª–µ–≤–∞
 
             if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
             {
@@ -139,7 +139,7 @@ void CubeTerrain::CreateSideTop()
 
     if(column)
     {
-        for(int i = (int)column->Size() - 1; i >= 0; i--)
+        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
         {
             CubeTerrain *cube = (*column)[(uint)i];
 
@@ -165,7 +165,7 @@ void CubeTerrain::CreateSideRight()
 
     if(column)
     {
-        for(int i = (int)column->Size() - 1; i >= 0; i--)
+        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
         {
             CubeTerrain *cube = (*column)[(uint)i];
 
@@ -191,7 +191,7 @@ void CubeTerrain::CreateSideDown()
 
     if(column)
     {
-        for(int i = (int)column->Size() - 1; i >= 0; i--)
+        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
         {
             CubeTerrain *cube = (*column)[(uint)i];
 
@@ -211,7 +211,7 @@ void CubeTerrain::CreateSideDown()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
 {
-    const float height = underGround ? -(float)layer : (float)layer + 1.0f;
+    const float height = underGround ? -static_cast<float>(layer) : static_cast<float>(layer) + 1.0f;
 
     const float dX[4][4] =
     {
@@ -241,16 +241,16 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
 
     GET_FOUR_POINTS_FOR_PLANE(retValue);
 
-    point0.coord = Vector3((float)col + dX[side][0], dY[side][0], -(float)row + dZ[side][0]);
+    point0.coord = Vector3(static_cast<float>(col) + dX[side][0], dY[side][0], -static_cast<float>(row) + dZ[side][0]);
     point0.texCoord = Vector2::ZERO;
 
-    point1.coord = Vector3((float)col + dX[side][1], dY[side][1], -(float)row + dZ[side][1]);
+    point1.coord = Vector3(static_cast<float>(col) + dX[side][1], dY[side][1], -static_cast<float>(row) + dZ[side][1]);
     point1.texCoord = Vector2::UP;
 
-    point2.coord = Vector3((float)col + dX[side][2], dY[side][2], -(float)row + dZ[side][2]);
+    point2.coord = Vector3(static_cast<float>(col) + dX[side][2], dY[side][2], -static_cast<float>(row) + dZ[side][2]);
     point2.texCoord = Vector2::ONE;
 
-    point3.coord = Vector3((float)col + dX[side][3], dY[side][3], -(float)row + dZ[side][3]);
+    point3.coord = Vector3(static_cast<float>(col) + dX[side][3], dY[side][3], -static_cast<float>(row) + dZ[side][3]);
     point3.texCoord = Vector2::RIGHT;
 
     CALCULATE_NORMALS;

@@ -73,7 +73,7 @@ void SceneRTS::Create()
     float dColor = 0.1f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    if(IN_SERVER_MODE)
+    if(MODE_SERVER)
     {
         level = gLevel->Load("Game/Levels/level.map");
     }
@@ -85,7 +85,7 @@ void SceneRTS::Create()
     gTerrain = new TerrainRTS();
     gTerrain->CreateFromVector(level);
 
-    if (IN_SERVER_MODE)
+    if (MODE_SERVER)
     {
 
         for (int i = 0; i < 5; i++)

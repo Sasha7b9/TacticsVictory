@@ -43,18 +43,18 @@ int LineTranslator1D::Update(float dT)
 {
     if(state == State_PointStart)
     {
-        return (int)start;
+        return static_cast<int>(start);
     }
     if(state == State_PointFinish)
     {
-        return (int)finish;
+        return static_cast<int>(finish);
     }
 
     position += speed * dT;
 
     if(Math::PointsAreLocatedOneAfterAnother(start, position, finish))
     {
-        return (int)position;
+        return static_cast<int>(position);
     }
 
     if(state == State_MoveToFinish)
@@ -68,5 +68,5 @@ int LineTranslator1D::Update(float dT)
         state = State_PointStart;
     }
 
-    return (int)position;
+    return static_cast<int>(position);
 }

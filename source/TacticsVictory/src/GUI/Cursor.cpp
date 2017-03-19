@@ -89,7 +89,7 @@ void CursorRTS::Update(float dT)
         int posY = cursor->GetPosition().y_;
         int width = gGraphics->GetWidth();
         int height = gGraphics->GetHeight();
-        int numFrame = (int)angle0 / 10;
+        int numFrame = static_cast<int>(angle0) / 10;
 
         if(!gMenu->IsActive() && !gGUI->UnderCursor())
         {
@@ -130,7 +130,7 @@ void CursorRTS::Update(float dT)
                 static float thisNumFrame = 0.0f;
                 int dX = gInput->GetMouseMoveX();
                 int dY = gInput->GetMouseMoveY();
-                thisNumFrame += (float)sqrt(dY * dY + dX * dX) / 10.0f;
+                thisNumFrame += static_cast<float>(sqrt(dY * dY + dX * dX)) / 10.0f;
                 if(thisNumFrame < 0.0f)
                 {
                     thisNumFrame = 36.0f;
@@ -139,7 +139,7 @@ void CursorRTS::Update(float dT)
                 {
                     thisNumFrame = 0.0f;
                 }
-                numFrame = (int)thisNumFrame;
+                numFrame = static_cast<int>(thisNumFrame);
                 type = TypeCursor_Busy;
             }
             else
@@ -270,11 +270,11 @@ void CursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int 
 
     float radius = size / 6.0f;
 
-    *x1 = (int)(size / 2.0f + Cos(angle0) * radius);
-    *y1 = (int)(size / 2.0f + Sin(angle0) * radius);
+    *x1 = static_cast<int>(size / 2.0f + Cos(angle0) * radius);
+    *y1 = static_cast<int>(size / 2.0f + Sin(angle0) * radius);
 
-    *x2 = (int)(size / 2.0f + Cos(angle1) * radius);
-    *y2 = (int)(size / 2.0f + Sin(angle1) * radius);
+    *x2 = static_cast<int>(size / 2.0f + Cos(angle1) * radius);
+    *y2 = static_cast<int>(size / 2.0f + Sin(angle1) * radius);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -420,7 +420,7 @@ void CursorShapes::CreateTopLeft(int numFrame)
     SharedPtr<ImageRTS> image(new ImageRTS());
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
 
-    int size = (int)(dimensionTriangleSmall * 1.41f);
+    int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
 
     FillGradient(image, TypeCursor_TopLeft, numFrame);
 
@@ -435,7 +435,7 @@ void CursorShapes::CreateTopLeft(int numFrame)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void CursorShapes::CreateTopRight(int numFrame)
 {
-    int size = (int)(dimensionTriangleSmall * 1.41f);
+    int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
     SharedPtr<ImageRTS> image(new ImageRTS());
     image->SetSize(size + 1, size + 1);
 
@@ -452,7 +452,7 @@ void CursorShapes::CreateTopRight(int numFrame)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void CursorShapes::CreateDownLeft(int numFrame)
 {
-    int size = (int)(dimensionTriangleSmall * 1.41f);
+    int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
     SharedPtr<ImageRTS> image(new ImageRTS());
     image->SetSize(size + 1, size + 1);
 
@@ -469,7 +469,7 @@ void CursorShapes::CreateDownLeft(int numFrame)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void CursorShapes::CreateDownRight(int numFrame)
 {
-    int size = (int)(dimensionTriangleSmall * 1.41f);
+    int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
 
     SharedPtr<ImageRTS> image(new ImageRTS());
     image->SetSize(size + 1, size + 1);
@@ -643,8 +643,8 @@ void CursorShapes::FillGradient(ImageRTS *image, TypeCursor type, int numFrame) 
 
             CalcXYforNormal(numFrame, &x1, &y1, &x2, &y2);
 
-            float dX = (float)fabs((double)(x2 - x1));
-            float dY = (float)fabs((double)(y2 - y1));
+            float dX = static_cast<float>(fabs(static_cast<double>(x2 - x1)));
+            float dY = static_cast<float>(fabs(static_cast<double>(y2 - y1)));
 
             float numSteps = (dY > dX) ? dY : dX;
             numSteps *= 200.0f;
@@ -657,9 +657,9 @@ void CursorShapes::FillGradient(ImageRTS *image, TypeCursor type, int numFrame) 
 
             int step = 0;
 
-            for (float x = (float)x1, y = (float)y1; step < numSteps; step++, x += stepX, y += stepY)
+            for (float x = static_cast<float>(x1), y = static_cast<float>(y1); step < numSteps; step++, x += stepX, y += stepY)
             {
-                image->DrawLine(0, 0, (int)(x), (int)(y), {colorComponent, colorComponent, colorComponent, 1.0f});
+                image->DrawLine(0, 0, static_cast<int>(x), static_cast<int>(y), {colorComponent, colorComponent, colorComponent, 1.0f});
                 colorComponent += dColor;
             }
         }

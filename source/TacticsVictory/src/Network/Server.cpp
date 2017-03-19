@@ -21,24 +21,6 @@ Server::~Server()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Server::Start(uint16 port)
 {
-    /*
-    gLog->EnableExtendedInfo();
-
-    LOG_INFOF("now connectiong");
-
-    network->Connect("localhost", port, nullptr);
-
-    LOG_INFOF("now connectiong 2");
-
-    float time = gTime->GetElapsedTime();
-
-    while(!network->GetServerConnection()->IsConnected() && (gTime->GetElapsedTime() - time) < 0.01f)
-    {
-    }
-
-    LOG_INFOF("Is connection ? %x", network->GetServerConnection());
-    */
-
     return network->StartServer(port);
 }
 

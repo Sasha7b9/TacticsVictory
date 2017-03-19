@@ -18,7 +18,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void TacticsVictory::HandleConnecFailed(StringHash, VariantMap&)
 {
-    LOG_INFOF("Failed connection");
+    LOGINFOF("Failed connection");
 
     SetWindowTitleAndIcon();
 }
@@ -30,7 +30,7 @@ void TacticsVictory::HandleClientConnected(StringHash, VariantMap& eventData)
 
     std::stringstream s;
     s << connection->GetAddress().CString() << ":" << connection->GetPort() << " connected";
-    LOG_INFOF(s.str().c_str());
+    LOGINFOF(s.str().c_str());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
 
     std::stringstream s;
     s << connection->GetAddress().CString() << ":" << connection->GetPort() << " disconnected";
-    LOG_INFOF(s.str().c_str());
+    LOGINFOF(s.str().c_str());
 
     gEngine->Exit();
 }

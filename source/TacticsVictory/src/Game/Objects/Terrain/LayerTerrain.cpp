@@ -68,7 +68,7 @@ void LayerTerrain::Build()
     vb->SetData(bufVert);
 
     ib->SetShadowed(true);
-    ib->SetSize((uint)numInd, true);
+    ib->SetSize(numInd, true);
     ib->SetData(bufInd);
 
     geom->SetVertexBuffer(0, vb);
@@ -95,7 +95,7 @@ void LayerTerrain::Build()
     model->SetVertexBuffers(vbVector, morphRange, morphRange);
     model->SetIndexBuffers(ibVector);
 
-    model->SetBoundingBox(Math::CalculateBoundingBox(bufVert, (uint)numVert / 8));
+    model->SetBoundingBox(Math::CalculateBoundingBox(bufVert, numVert / 8));
 
     object->SetModel(model);
     object->SetMaterial(gCache->GetResource<Material>("Materials/TVTerrain.xml"));

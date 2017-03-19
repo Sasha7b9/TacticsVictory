@@ -94,7 +94,7 @@ void MessageCallback(const asSMessageInfo *msg, void *)
     else if(msg->type == asMSGTYPE_INFORMATION)
         type = "AS INFO ";
 
-    LOG_INFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message);
+    LOGINFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -104,44 +104,30 @@ void TacticsVictory::Start()
     PROFILER_FUNC_ENTER
     Application::Start();
     FillNetworkFunctions();
-    gTime = GetSubsystem<Time>();
     OpenLog();
-    RegistrationComponets();
+    SetLocalization();
+    gTime = GetSubsystem<Time>();
     gCache->AddResourceDir(gFileSystem->GetProgramDir() + RESOURCES_DIR);
     gFont = gCache->GetResource<Font>(SET::MENU::FONT::NAME);
     gProfiler = GetSubsystem<Profiler>();
-    gLocalization = GetSubsystem<Localization>();
-    gLocalization->LoadJSONFile("Strings.json");
-    gLocalization->SetLanguage("ru");
     gEngine = GetSubsystem<Engine>();
     gGraphics = GetSubsystem<Graphics>();
 
-    if (!MODE_SERVER)
+    if (MODE_SERVER)
     {
+        CreateScriptSystem();
+    }
+    else
+    {
+        SetWindowTitleAndIcon();
+        CreateConsoleAndDebugHud();
         gUI = GetSubsystem<UI>();
         gInput = GetSubsystem<Input>();
         gRenderer = GetSubsystem<Renderer>();
-        SetWindowTitleAndIcon();
-        CreateConsoleAndDebugHud();
         gDebugRenderer = gScene->GetComponent<DebugRenderer>();
-    }
-    
-
-    XMLFile *style = gCache->GetResource<XMLFile>("UI/MainStyle.xml");
-    gUIRoot = gUI->GetRoot();
-    gUIRoot->SetDefaultStyle(style);
-    gScene = new Scene(gContext);
-    // Create the Octree component to the scene so that drawable objects can be rendered. Use default volume (-1000, -1000, -1000) to (1000, 1000, 1000)
-    gScene->CreateComponent<Octree>();
-    gPhysicsWorld = gScene->CreateComponent<PhysicsWorld>();
-    gPhysicsWorld->SetGravity(Vector3::ZERO);
-    gScene->CreateComponent<DebugRenderer>();
-    gGUI = new GUI();
-    GUI::RegistrationObjects();
-    gLog->SetLevel(LOG_ERROR);
-
-    if (MODE_CLIENT)
-    {
+        gUIRoot = gUI->GetRoot();
+        gUIRoot->SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+        gGUI = new GUI();
         gAudio = GetSubsystem<Audio>();
         gMenu = new MenuRTS();
         gGUI->Create();
@@ -149,15 +135,17 @@ void TacticsVictory::Start()
         gFileSelector->GetWindow()->SetModal(false);
         gFileSelector->GetWindow()->SetVisible(false);
     }
+    
+    RegistrationComponets();
 
-    gLog->SetLevel(LOG_ERROR);
+    gScene = new Scene(gContext);
+    gScene->CreateComponent<Octree>();
+    gPhysicsWorld = gScene->CreateComponent<PhysicsWorld>();
+    gPhysicsWorld->SetGravity(Vector3::ZERO);
+    gScene->CreateComponent<DebugRenderer>();
+    gCamera = new CameraRTS();
+
     gLevel = new Level();
-    SceneRTS::RegisterObject();
-    gLog->SetLevel(LOG_ERROR);
-    gLog->SetLevel(LOG_INFO);
-    gContext->RegisterSubsystem(new Script(gContext));
-    gScript = GetSubsystem<Script>();
-    gScript->GetScriptEngine()->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
     gClient = new Client();
     gServer = new Server();
 
@@ -176,27 +164,58 @@ void TacticsVictory::Start()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool TacticsVictory::StartServer(uint16 port_)
+void TacticsVictory::SetLocalization()
 {
-    URHO3D_LOGINFO("Now start server");
-    if (gServer->Start(port_))
-    {
-        gMenu->Hide();
-        scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
-        scene->Create();
-        gCamera->SetEnabled(true);
-        return true;
-    }
-    URHO3D_LOGINFO("Can not start server");
-    ErrorExit();
-    return false;
+    gLocalization = GetSubsystem<Localization>();
+    gLocalization->LoadJSONFile("Strings.json");
+    gLocalization->SetLanguage("ru");
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::StartClient(String &address_, uint16 port_)
+void TacticsVictory::CreateScriptSystem()
 {
-    SAFE_DELETE(gCamera);
-    gCamera = new CameraRTS();
+    gContext->RegisterSubsystem(new Script(gContext));
+    gScript = GetSubsystem<Script>();
+    gScript->GetScriptEngine()->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::StartServer(uint16 port_)
+{
+    if (port_)
+    {
+        port = port_;
+    }
+
+    if (port)
+    {
+        gServer->Start(port);
+        scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
+        scene->Create();
+    }
+    else
+    {
+        LOGERROR("Can not start server on null port");
+    }
+    
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::StopServer()
+{
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::StartClient(const String &address_, uint16 port_)
+{
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TacticsVictory::StopClient()
+{
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -221,25 +240,40 @@ void TacticsVictory::RegistrationComponets()
     gContext->RegisterFactory<Movinator>();
     gContext->RegisterFactory<ImageRTS>();
 
-    RocketLauncher::RegisterInAS();
-    Translator::RegisterInAS();
-    WaveAlgorithm::RegisterInAS();
-    Tank::RegisterInAS();
+    SceneRTS::RegisterObject();
+
+    if(MODE_SERVER)
+    {
+        RocketLauncher::RegisterInAS();
+        Translator::RegisterInAS();
+        WaveAlgorithm::RegisterInAS();
+        Tank::RegisterInAS();
+    } else
+    {
+        GUI::RegistrationObjects();
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void TacticsVictory::SubscribeToEvents()
 {
+    if (MODE_SERVER)
+    {
+
+    }
+    else
+    {
+        SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
+        SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
+        SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
+    }
+    
     SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(TacticsVictory, HandleUpdate));
-    SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
-    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
-    SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
     SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
 
     SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(TacticsVictory, HandleConnecFailed));
     SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleClientConnected));
     SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleClientDisconnected));
-
     SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(TacticsVictory, HandleNetworkMessage));
 }
 
@@ -302,20 +336,22 @@ void TacticsVictory::FillNetworkFunctions()
 void TacticsVictory::OpenLog()
 {
     gLog = new LogRTS();
+    char buffer[50];
+    srand(static_cast<uint>(time(static_cast<time_t*>(0))));
 
     if (MODE_SERVER)
     {
-        char buffer[50];
-        srand(static_cast<uint>(time(static_cast<time_t*>(0))));
-        rand();
         sprintf_s(buffer, 50, "server%d.log", rand());
-        gLog->Open(buffer);
     }
-
-    if (MODE_CLIENT)
+    else if (MODE_CLIENT)
     {
-        gLog->Open("client.log");
+        sprintf_s(buffer, 50, "client%d.log", rand());
+    }
+    else
+    {
+        sprintf_s(buffer, 50, "log%d.log", rand());
     }
 
+    gLog->Open(buffer);
     gLog->SetLevel(LOG_DEBUG);
 }

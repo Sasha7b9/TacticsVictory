@@ -9,36 +9,21 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Urho3D", "..\..\..\..\Urho3
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
 		DebugClient|x64 = DebugClient|x64
 		DebugServer|x64 = DebugServer|x64
-		MinSizeRel|x64 = MinSizeRel|x64
 		Release|x64 = Release|x64
-		RelWithDebInfo|x64 = RelWithDebInfo|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.Debug|x64.ActiveCfg = DebugServer|x64
-		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.Debug|x64.Build.0 = DebugServer|x64
 		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.DebugClient|x64.ActiveCfg = DebugClient|x64
 		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.DebugClient|x64.Build.0 = DebugClient|x64
 		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.DebugServer|x64.ActiveCfg = DebugServer|x64
 		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.DebugServer|x64.Build.0 = DebugServer|x64
-		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
-		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
 		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.Release|x64.ActiveCfg = Release|x64
 		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.Release|x64.Build.0 = Release|x64
-		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
-		{CF005F07-A6EE-42AE-ADD6-D9B6A45B6460}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
-		{23250E20-DBDC-3888-98B0-5DA5D66F272A}.Debug|x64.ActiveCfg = Debug|x64
-		{23250E20-DBDC-3888-98B0-5DA5D66F272A}.Debug|x64.Build.0 = Debug|x64
 		{23250E20-DBDC-3888-98B0-5DA5D66F272A}.DebugClient|x64.ActiveCfg = Debug|x64
 		{23250E20-DBDC-3888-98B0-5DA5D66F272A}.DebugServer|x64.ActiveCfg = Debug|x64
-		{23250E20-DBDC-3888-98B0-5DA5D66F272A}.MinSizeRel|x64.ActiveCfg = Release|x64
-		{23250E20-DBDC-3888-98B0-5DA5D66F272A}.MinSizeRel|x64.Build.0 = Release|x64
 		{23250E20-DBDC-3888-98B0-5DA5D66F272A}.Release|x64.ActiveCfg = Release|x64
 		{23250E20-DBDC-3888-98B0-5DA5D66F272A}.Release|x64.Build.0 = Release|x64
-		{23250E20-DBDC-3888-98B0-5DA5D66F272A}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
-		{23250E20-DBDC-3888-98B0-5DA5D66F272A}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -18,7 +18,7 @@ void SliderInt::SetRange(int min_, int max_, int step_)
     min = min_ / step;
     max = max_ / step;
 
-    delta = (float)min;
+    delta = static_cast<float>(min);
 
     Slider::SetRange(max - delta);
 }
@@ -28,7 +28,7 @@ void SliderInt::OnDragMove(const IntVector2& position, const IntVector2& screenP
 {
     Slider::OnDragMove(position, screenPosition, deltaPos, buttons, qualifiers, cursor);
 
-    int newValue = (int)(value_ + delta + 0.5f);
+    int newValue = static_cast<int>(value_ + delta + 0.5f);
 
     if(newValue != value)
     {
@@ -66,7 +66,7 @@ void SliderInt::SetValueInt(int newValue)
     if(newValue >= min && newValue <= max)
     {
         value = newValue;
-        Slider::SetValue((float)newValue - delta);
+        Slider::SetValue(static_cast<float>(newValue) - delta);
         VariantMap& eventData = GetEventDataMap();
         eventData[SliderIntChanged::P_ELEMENT] = this;
         eventData[SliderIntChanged::P_VALUE] = value * step;
