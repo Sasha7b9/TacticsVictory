@@ -15,13 +15,14 @@ public:
     GUI();
     ~GUI();
 
-    static void RegistrationObjects();
-
-    void Create();
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
     bool UnderCursor();                                             // Возвращает true, если меню под курсором
     void SetVisibleWindow(WindowRTS *window, bool visible);
     void SetUnvisibleAllWindows();
+
+private:
+    void Create();
+    void RegistrationObjects();
 
     DEFAULT_MEMBERS(GUI);
 };

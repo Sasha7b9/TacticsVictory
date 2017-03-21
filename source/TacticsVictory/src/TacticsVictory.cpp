@@ -112,6 +112,12 @@ void TacticsVictory::Start()
     gProfiler = GetSubsystem<Profiler>();
     gEngine = GetSubsystem<Engine>();
     gGraphics = GetSubsystem<Graphics>();
+    gScene = new Scene(gContext);
+    gScene->CreateComponent<Octree>();
+    gPhysicsWorld = gScene->CreateComponent<PhysicsWorld>();
+    gPhysicsWorld->SetGravity(Vector3::ZERO);
+    gScene->CreateComponent<DebugRenderer>();
+    gCamera = new CameraRTS();
 
     if (MODE_SERVER)
     {
@@ -128,22 +134,14 @@ void TacticsVictory::Start()
         gUIRoot = gUI->GetRoot();
         gUIRoot->SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
         gGUI = new GUI();
-        gAudio = GetSubsystem<Audio>();
         gMenu = new MenuRTS();
-        gGUI->Create();
         gFileSelector = new FileSelector(gContext);
         gFileSelector->GetWindow()->SetModal(false);
         gFileSelector->GetWindow()->SetVisible(false);
+        gAudio = GetSubsystem<Audio>();
     }
     
     RegistrationComponets();
-
-    gScene = new Scene(gContext);
-    gScene->CreateComponent<Octree>();
-    gPhysicsWorld = gScene->CreateComponent<PhysicsWorld>();
-    gPhysicsWorld->SetGravity(Vector3::ZERO);
-    gScene->CreateComponent<DebugRenderer>();
-    gCamera = new CameraRTS();
 
     gLevel = new Level();
     gClient = new Client();
@@ -248,9 +246,6 @@ void TacticsVictory::RegistrationComponets()
         Translator::RegisterInAS();
         WaveAlgorithm::RegisterInAS();
         Tank::RegisterInAS();
-    } else
-    {
-        GUI::RegistrationObjects();
     }
 }
 

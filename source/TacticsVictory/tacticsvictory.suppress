@@ -687,4 +687,580 @@
     <CodeCurrent>2276738132</CodeCurrent>
     <CodeNext>125</CodeNext>
   </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>1711</CodePrev>
+    <CodeCurrent>2635726730</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>487782918</CodeCurrent>
+    <CodeNext>1727</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(x_ + point_.x_ * scale)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1909241613</CodeCurrent>
+    <CodeNext>981135</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(y_ - point_.y_ * scale)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1909241613</CodeCurrent>
+    <CodeNext>981135</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(x_ + point_.x_ * scale)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1909241089</CodeCurrent>
+    <CodeNext>981133</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(y_ - point_.y_ * scale)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1909241089</CodeCurrent>
+    <CodeNext>981133</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(x_ + point_.x_ * scale)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1909240581</CodeCurrent>
+    <CodeNext>1909240073</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(y_ - point_.y_ * scale)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1909240581</CodeCurrent>
+    <CodeNext>1909240073</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(x_ + point_.x_ * scale)</Message>
+    <CodePrev>1909240581</CodePrev>
+    <CodeCurrent>1909240073</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2003</ErrorCode>
+    <Message>Explicit conversion from 'float' type to signed integer type: (int)(y_ - point_.y_ * scale)</Message>
+    <CodePrev>1909240581</CodePrev>
+    <CodeCurrent>1909240073</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>segmentterrain.cpp</FileName>
+    <ErrorCode>V2004</ErrorCode>
+    <Message>Explicit conversion from 'float' type to unsigned integer type: (uint)(max)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1003123260</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>segmentterrain.cpp</FileName>
+    <ErrorCode>V2004</ErrorCode>
+    <Message>Explicit conversion from 'float' type to unsigned integer type: (uint) fabs(min)</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>4070057499</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>plane.cpp</FileName>
+    <ErrorCode>V2004</ErrorCode>
+    <Message>Explicit conversion from 'float' type to unsigned integer type: (uint)((xMax + xMin) / _._f)</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2175869845</CodeCurrent>
+    <CodeNext>4256429460</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>plane.cpp</FileName>
+    <ErrorCode>V2004</ErrorCode>
+    <Message>Explicit conversion from 'float' type to unsigned integer type: (uint)((zMin + zMax) / _._f)</Message>
+    <CodePrev>2175869845</CodePrev>
+    <CodeCurrent>4256429460</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>segmentterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1003123260</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>segmentterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>4070057499</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>segmentterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3975505481</CodeCurrent>
+    <CodeNext>123</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>segmentterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>397600134</CodeCurrent>
+    <CodeNext>2198689786</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>segmentterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1820173644</CodeCurrent>
+    <CodeNext>123</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>segmentterrain.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>4154446159</CodeCurrent>
+    <CodeNext>2198689786</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>translator.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>766182406</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>particles.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2343531298</CodeCurrent>
+    <CodeNext>3338842958</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>tilepath.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3785080965</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>sounds.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>2561648199</CodePrev>
+    <CodeCurrent>2421518279</CodeCurrent>
+    <CodeNext>87504165</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>sounds.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>1784443980</CodePrev>
+    <CodeCurrent>3942098794</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>plane.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2175869845</CodeCurrent>
+    <CodeNext>4256429460</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>plane.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>2175869845</CodePrev>
+    <CodeCurrent>4256429460</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>dropdownlistwithtextandbutton.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1274471331</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>dropdownlistwithtextandbutton.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>3154899319</CodePrev>
+    <CodeCurrent>2926778716</CodeCurrent>
+    <CodeNext>123</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>governorfloat.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3712445263</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>governorfloat.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>1300435987</CodeCurrent>
+    <CodeNext>725387</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>governorfloat.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>2339507444</CodePrev>
+    <CodeCurrent>4134056919</CodeCurrent>
+    <CodeNext>1685129</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>governorfloat.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>276952581</CodeCurrent>
+    <CodeNext>49575</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>governorfloat.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>3118361439</CodePrev>
+    <CodeCurrent>2215353113</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>label.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>766799931</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>sliderwithtextandbuttons.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1274471331</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>sliderwithtextandbuttons.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2330991296</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>sliderwithtextandbuttons.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1048818426</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>sliderwithtextandbuttons.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>1166094770</CodeCurrent>
+    <CodeNext>1166092722</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>sliderwithtextandbuttons.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>1166094770</CodePrev>
+    <CodeCurrent>1166092722</CodeCurrent>
+    <CodeNext>2354352358</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>guieditor.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1615396356</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>guieditor.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2056375137</CodeCurrent>
+    <CodeNext>227563209</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>guieditor.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>217945058</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>guieditor.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>97450837</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>guieditor.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1017142209</CodeCurrent>
+    <CodeNext>227563209</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>guieditor.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>3159755870</CodePrev>
+    <CodeCurrent>217945058</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>guieditor.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>643091117</CodeCurrent>
+    <CodeNext>2334295703</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>guieditor.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2172393723</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>guigame.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1615396356</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>contextmenuunit.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2380510626</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>windowtarget.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>4261865359</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>linetranslator2d.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>672939499</CodeCurrent>
+    <CodeNext>744308203</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>linetranslator2d.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>672939499</CodePrev>
+    <CodeCurrent>744308203</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>linetranslator2d.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>905755507</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>menuconfirmexit.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2487317740</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>menugame.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2487317740</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>menugame.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>1309764100</CodePrev>
+    <CodeCurrent>3734819344</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>windowmenu.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>39573132</CodeCurrent>
+    <CodeNext>13920397</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>windowmenu.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>39573132</CodePrev>
+    <CodeCurrent>13920397</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>windowmenu.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>107832996</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>windowmenu.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>13920397</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>windowmenu.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>357677</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>328847505</CodePrev>
+    <CodeCurrent>3057243384</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>5491281</CodeCurrent>
+    <CodeNext>38529653</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>5491281</CodePrev>
+    <CodeCurrent>38529653</CodeCurrent>
+    <CodeNext>4048718231</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1267270755</CodeCurrent>
+    <CodeNext>3452528453</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>1267270755</CodePrev>
+    <CodeCurrent>3452528453</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>1711</CodePrev>
+    <CodeCurrent>2635726730</CodeCurrent>
+    <CodeNext>125</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>487782918</CodeCurrent>
+    <CodeNext>1727</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>3371625356</CodePrev>
+    <CodeCurrent>1993814437</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3666338504</CodeCurrent>
+    <CodeNext>0</CodeNext>
+  </tacticsvictory>
+  <tacticsvictory>
+    <FileName>panelmap.cpp</FileName>
+    <ErrorCode>V2005</ErrorCode>
+    <Message>C-style explicit type casting is utilized. Consider using: static_cast/const_cast/reinterpret_cast.</Message>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3022936124</CodeCurrent>
+    <CodeNext>123</CodeNext>
+  </tacticsvictory>
 </NewDataSet>
