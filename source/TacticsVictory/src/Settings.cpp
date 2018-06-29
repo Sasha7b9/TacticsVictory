@@ -50,7 +50,7 @@ bool Settings::Load()
         if(begined)
         {
             root = file->GetRoot();
-            if(root != XMLElement::EMPTY)
+            if(!root.IsNull())
             {
                 return true;
             }
@@ -100,12 +100,12 @@ float Settings::GetFloat(char *elem, char *name)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 #define COMMON_BLOCK                                    \
     XMLElement child = root.GetChild(category);         \
-    if (child == 0)                                     \
+    if (child.IsNull())                                 \
     {                                                   \
         child = root.CreateChild(category);             \
     }                                                   \
     XMLElement childName = child.GetChild(name);        \
-    if (childName == 0)                                 \
+    if (child.IsNull())                                 \
     {                                                   \
         childName = child.CreateChild(name);            \
     }                                                   \
@@ -127,7 +127,7 @@ void Settings::SetFloat(const char *category, const char *name, float value)
 void Settings::SetInt(const char *name, int value)
 {
     XMLElement child = root.GetChild(name);
-    if (child == 0)
+    if (child.IsNull())
     {
         child = root.CreateChild(name);
     }

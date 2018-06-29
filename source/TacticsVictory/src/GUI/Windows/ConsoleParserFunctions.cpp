@@ -16,8 +16,8 @@ bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
     {
-        {"start",   None,   &ConsoleParser::FuncClientStart,    L"запуск клиента. Формат команды - client -start -address:XX.XX.XX.XX -port:XX"},
-        {"stop",    None,   &ConsoleParser::FuncClientStop,     L"останов клиента"}
+        {"start",   None,   &ConsoleParser::FuncClientStart,    "запуск клиента. Формат команды - client -start -address:XX.XX.XX.XX -port:XX"},
+        {"stop",    None,   &ConsoleParser::FuncClientStop,     "останов клиента"}
     };
 
     return Run(structs, words, showInfo);
@@ -27,7 +27,7 @@ bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 static void OnServerConnected()
 {
     gClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
-    gConsole->Write(L"Запрашиваю ландшафт");
+    gConsole->Write("Запрашиваю ландшафт");
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
     {
         gMenu->Hide();
         gClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, OnServerConnected);
-        gConsole->Write(L"Соединяюсь с удалённым сервером...");
+        gConsole->Write("Соединяюсь с удалённым сервером...");
     }
 
     return true;
@@ -65,10 +65,10 @@ bool ConsoleParser::FuncServer(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
     {
-        {"start",       Int,    &ConsoleParser::FuncServerStart,        L"cоздать сервер на порт XX"},
-        {"stop",        None,   &ConsoleParser::FuncServerStop,         L"остановить сервер"},
-        {"latency",     Int,    &ConsoleParser::FuncServerLatency,      L"эмулировать задержку сети длительностью XX миллисекунд"},
-        {"packetloss",  Float,  &ConsoleParser::FuncServerPacketLoss,   L"эмулировать потерю X.X пакетров"}
+        {"start",       Int,    &ConsoleParser::FuncServerStart,        "cоздать сервер на порт XX"},
+        {"stop",        None,   &ConsoleParser::FuncServerStop,         "остановить сервер"},
+        {"latency",     Int,    &ConsoleParser::FuncServerLatency,      "эмулировать задержку сети длительностью XX миллисекунд"},
+        {"packetloss",  Float,  &ConsoleParser::FuncServerPacketLoss,   "эмулировать потерю X.X пакетров"}
     };
 
     return Run(structs, words, showInfo);
@@ -103,11 +103,11 @@ void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V20
 
     if(exitCode)
     {
-        gConsole->Write(L"Сервер завершил работу с кодом ошибки");
+        gConsole->Write("Сервер завершил работу с кодом ошибки");
     }
     else
     {
-        gConsole->Write(L"Сервер завершил работу");
+        gConsole->Write("Сервер завершил работу");
     }
 
     UnsubscribeFromEvent(E_ASYNCLOADFINISHED);
@@ -160,8 +160,8 @@ bool ConsoleParser::FuncVars(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
     {
-        {"open",    None,   &ConsoleParser::FuncVarsOpen,   L"открыть окно переменных"},
-        {"close",   None,   &ConsoleParser::FuncVarsClose,  L"закрыть окно переменных"}
+        {"open",    None,   &ConsoleParser::FuncVarsOpen,   "открыть окно переменных"},
+        {"close",   None,   &ConsoleParser::FuncVarsClose,  "закрыть окно переменных"}
     };
 
     if(words.Size() || showInfo)
@@ -228,7 +228,7 @@ bool ConsoleParser::FuncUnit(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
     {
-        {"camera",  None,   &ConsoleParser::FuncUnitCamera,     L"функции управления видом от первого лица"}
+        {"camera",  None,   &ConsoleParser::FuncUnitCamera,     "функции управления видом от первого лица"}
     };
 
     return Run(structs, words, showInfo);

@@ -27,13 +27,13 @@ void ConsoleParser::Execute(const String &string)
 {
     const ParserStruct structs[100] =
     {
-        {"clear",   None,   &ConsoleParser::FuncClear,  L"очистить консоль"},
-        {"client",  None,   &ConsoleParser::FuncClient, L"функции работы с клиентом"},
-        {"close",   None,   &ConsoleParser::FuncClose,  L"закрыть консоль"},
-        {"exit",    None,   &ConsoleParser::FuncExit,   L"выход"},
-        {"server",  None,   &ConsoleParser::FuncServer, L"функции работы с сервером"},
-        {"vars",    None,   &ConsoleParser::FuncVars,   L"окно переменных"},
-        {"unit",    None,   &ConsoleParser::FuncUnit,   L"функции упрвления юнитами"}
+        {"clear",   None,   &ConsoleParser::FuncClear,  "очистить консоль"},
+        {"client",  None,   &ConsoleParser::FuncClient, "функции работы с клиентом"},
+        {"close",   None,   &ConsoleParser::FuncClose,  "закрыть консоль"},
+        {"exit",    None,   &ConsoleParser::FuncExit,   "выход"},
+        {"server",  None,   &ConsoleParser::FuncServer, "функции работы с сервером"},
+        {"vars",    None,   &ConsoleParser::FuncVars,   "окно переменных"},
+        {"unit",    None,   &ConsoleParser::FuncUnit,   "функции упрвления юнитами"}
     };
 
     Vector<String> words = string.ToLower().Split(' ');
@@ -44,7 +44,7 @@ void ConsoleParser::Execute(const String &string)
         {
             if(!ExecuteCommand(structs, words))
             {
-                gConsole->Write(L"Неизвестная команда. Для просмотра списка доступных команд наберите \"?\"");
+                gConsole->Write("Неизвестная команда. Для просмотра списка доступных команд наберите \"?\"");
             }
         }
     }

@@ -1,6 +1,7 @@
 *.ilk
 *.pdb
 *.*log
+*.db
 *.log
 *.obj
 *.dll

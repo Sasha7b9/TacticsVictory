@@ -105,9 +105,9 @@ void TacticsVictory::Start()
     Application::Start();
     FillNetworkFunctions();
     OpenLog();
+    gCache->AddResourceDir(gFileSystem->GetProgramDir() + RESOURCES_DIR);
     SetLocalization();
     gTime = GetSubsystem<Time>();
-    gCache->AddResourceDir(gFileSystem->GetProgramDir() + RESOURCES_DIR);
     gFont = gCache->GetResource<Font>(SET::MENU::FONT::NAME);
     gProfiler = GetSubsystem<Profiler>();
     gEngine = GetSubsystem<Engine>();
@@ -205,7 +205,7 @@ void TacticsVictory::StopServer()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TacticsVictory::StartClient(const String &address_, uint16 port_)
+void TacticsVictory::StartClient(const String &, uint16)
 {
 
 }
@@ -279,7 +279,7 @@ void TacticsVictory::SetWindowTitleAndIcon()
     {
         Image* icon = gCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
         gGraphics->SetWindowIcon(icon);
-        gGraphics->SetWindowTitle(L"Тактика победы");
+        gGraphics->SetWindowTitle("Тактика победы");
     }
 }
 
