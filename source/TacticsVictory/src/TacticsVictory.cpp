@@ -48,7 +48,10 @@ void TacticsVictory::Setup()
     gSet = new Settings();
     gCache = GetSubsystem<ResourceCache>();
     gFileSystem = GetSubsystem<FileSystem>();
+    OpenLog();
+//    LOGINFO("Загружаю настройки");
     gSet->Load();
+    //LOGINFO("Загрузка настроек закончена");
 
     engineParameters_[EP_WINDOW_TITLE] = GetTypeName();
     engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
@@ -104,7 +107,6 @@ void TacticsVictory::Start()
     PROFILER_FUNC_ENTER
     Application::Start();
     FillNetworkFunctions();
-    OpenLog();
     gCache->AddResourceDir(gFileSystem->GetProgramDir() + RESOURCES_DIR);
     SetLocalization();
     gTime = GetSubsystem<Time>();
@@ -134,6 +136,7 @@ void TacticsVictory::Start()
         gUIRoot = gUI->GetRoot();
         gUIRoot->SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
         gGUI = new GUI();
+        LOGINFO("Загружаю настройки");
         gMenu = new MenuRTS();
         gFileSelector = new FileSelector(gContext);
         gFileSelector->GetWindow()->SetModal(false);
