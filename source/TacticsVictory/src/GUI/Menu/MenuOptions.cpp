@@ -106,7 +106,7 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 
     if(ddList == ddlTextureQuality)
     {
-        gRenderer->SetTextureQuality(index);
+        gRenderer->SetTextureQuality((MaterialQuality)index);
         gSet->SetInt(TV_TEXTURE_QUALITY, index);
     }
     else if(ddList == ddlTextureAnisotropy)
@@ -116,7 +116,7 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     }
     else if(ddList == ddlMaterialQuality)
     {
-        gRenderer->SetMaterialQuality(index);
+        gRenderer->SetMaterialQuality((MaterialQuality)index);
         gSet->SetInt(TV_MATERIAL_QUALITY, index);
     }
     else if(ddList == ddlShadowsEnabled)
