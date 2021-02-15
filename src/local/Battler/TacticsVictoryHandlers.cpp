@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "Game/Scene.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
-#include "Network/VectorBufferRTS.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)

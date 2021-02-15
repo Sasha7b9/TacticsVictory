@@ -2,6 +2,9 @@
 #pragma once
 
 
+class Tank;
+
+
 class VectorBufferRTS : public VectorBuffer
 {
 public:

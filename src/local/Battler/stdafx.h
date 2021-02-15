@@ -144,6 +144,7 @@ using namespace Urho3D;
 #include "Network/NetworkMessages.h"
 #include "Network/Server.h"
 #include "Network/ServerFunctions.h"
+#include "Network/VectorBufferRTS.h"
 
 #include "glob_engine.h"
 #include "glob_game.h"
