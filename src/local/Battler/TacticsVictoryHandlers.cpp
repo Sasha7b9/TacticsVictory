@@ -1,7 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Scene/_Scene.h"
-#include "Scene/Objects/Ammo/Rocket/Rocket.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)

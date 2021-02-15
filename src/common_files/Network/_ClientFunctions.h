@@ -2,9 +2,7 @@
 #pragma once
 
 
-
 class VectorBufferRTS;
-
 
 
 void FUNC_MSG_SEND_LANDSCAPE(Connection *, MemoryBuffer &, VectorBufferRTS &);

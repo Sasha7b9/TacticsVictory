@@ -2,9 +2,7 @@
 #pragma once
 
 
-
 class VectorBufferRTS;
-
 
 
 class Client : public Object
