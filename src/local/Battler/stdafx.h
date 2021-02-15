@@ -143,6 +143,7 @@ using namespace Urho3D;
 #include "GUI/GUI.h"
 #include "GUi/Controls/_Hint.h"
 #include "GUI/GuiEditor/GuiEditor.h"
+#include "GUI/GuiGame/ContextMenuUnit.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/GuiGame/WindowTarget.h"
 #include "GUI/Menu/MenuRTS.h"

@@ -1,7 +1,8 @@
 #pragma once
-#include "Scene/Objects/Units/Tank/_Translator.h"
-#include "GUI/GuiGame/ContextMenuUnit.h"
 
+
+class ContextMenuUnit;
+class Translator;
 
 
 class GameObject : public LogicComponent
