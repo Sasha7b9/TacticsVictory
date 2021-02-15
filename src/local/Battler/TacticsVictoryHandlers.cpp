@@ -2,19 +2,7 @@
 #include "stdafx.h"
 #include "Game/Scene.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
-
-#include "GUI/Menu/MenuRTS.h"
-#include "GUI/Menu/MenuStart.h"
-#include "GUI/Menu/MenuOptions.h"
-#include "GUI/Menu/MenuGame.h"
-#include "GUI/Menu/MenuConfirmExit.h"
-#include "GUI/Windows/Console.h"
-#include "GUI/GuiEditor/GuiEditor.h"
-#include "GUi/Controls/Hint.h"
-#include "GUI/GuiGame/GuiGame.h"
-#include "Network/Client.h"
 #include "Network/VectorBufferRTS.h"
-#include "Network/NetworkMessages.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
