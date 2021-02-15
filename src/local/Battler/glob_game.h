@@ -26,31 +26,27 @@ class LogRTS;
 class Server;
 class Client;
 
-extern CameraRTS *TheCamera;
-extern CursorRTS *TheCursor;
-extern Editor *TheEditor;
-extern Settings *TheSet;
-extern Level *TheLevel;
-extern TerrainRTS *TheTerrain;
-extern TacticsVictory *TheTacticsVictory;
-extern LogRTS *TheLog;
-extern Server *TheServer;
-extern Client *TheClient;
-
-// GUI
-extern GuiGame *TheGuiGame;
-extern GuiEditor *TheGuiEditor;
-extern GUI *TheGUI;
-extern ConsoleRTS *TheConsole;
-extern WindowVariables *TheWindowVars;
-extern Hint *TheHint;
-extern int *TheCounterHint;
-extern Vector<WindowRTS *>   TheOpenedWindow;
-extern WindowTarget *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
-
-// Меню
-extern MenuRTS *TheMenu;
-extern MenuGame *TheMenuMain;
+extern CameraRTS       *TheCamera;
+extern Client          *TheClient;
+extern ConsoleRTS      *TheConsole;
+extern CursorRTS       *TheCursor;
+extern Editor          *TheEditor;
+extern GUI             *TheGUI;
+extern GuiEditor       *TheGuiEditor;
+extern GuiGame         *TheGuiGame;
+extern Hint            *TheHint;
+extern Level           *TheLevel;
+extern LogRTS          *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
+extern MenuGame        *TheMenuMain;
+extern MenuRTS         *TheMenu;
+extern Server          *TheServer;
+extern Settings        *TheSet;
+extern TacticsVictory  *TheTacticsVictory;
+extern TerrainRTS      *TheTerrain;
+extern WindowTarget    *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
+extern WindowVariables *TheWindowVars;
 
-extern ModeApp              TheMode;
+extern int *TheCounterHint;
+extern Vector<WindowRTS *> TheOpenedWindow;
+extern ModeApp             TheMode;

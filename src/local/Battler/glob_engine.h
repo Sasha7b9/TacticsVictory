@@ -23,6 +23,3 @@ extern Script        *TheScript;
 extern Time          *TheTime;
 extern UI            *TheUI;
 extern UIElement     *TheUIRoot;
-
-
-
