@@ -137,6 +137,7 @@ using namespace Urho3D;
 #include "GUI/GUI.h"
 #include "GUi/Controls/Hint.h"
 #include "GUI/GuiEditor/GuiEditor.h"
+#include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/MenuRTS.h"
 #include "GUI/Windows/Console.h"
 #include "Network/Client.h"
