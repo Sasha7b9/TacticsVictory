@@ -2,8 +2,8 @@
 #include "stdafx.h"
 #include "Rocket.h"
 #include "Core/Math.h"
-#include "Game/Objects/Units/Tank/Tank.h"
-#include "Game/Objects/GameObjectEvents.h"
+#include "Scene/Objects/Units/Tank/_Tank.h"
+#include "Scene/Objects/_GameObjectEvents.h"
 #include "Game/Sounds.h"
 #include "Game/Particles.h"
 

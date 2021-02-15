@@ -1,10 +1,10 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Tank.h"
+#include "Scene/Objects/Units/Tank/_Tank.h"
 #include "Core/Math.h"
 #include "GlobalFunctions.h"
-#include "Game/Objects/Ammo/Rocket/Rocket.h"
-#include "Game/Objects/GameObjectEvents.h"
+#include "Scene/Objects/Ammo/Rocket/Rocket.h"
+#include "Scene/Objects/_GameObjectEvents.h"
 #include "Game/Particles.h"
 #include "GUI/Cursor.h"
 #include "GUI/GuiGame/ContextMenuUnit.h"

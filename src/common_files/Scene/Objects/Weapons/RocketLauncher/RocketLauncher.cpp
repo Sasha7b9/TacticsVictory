@@ -2,9 +2,9 @@
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include "stdafx.h"
 #include "RocketLauncher.h"
-#include "Game/Objects/Units/Tank/Tank.h"
-#include "Game/Objects/GameObjectEvents.h"
-#include "Game/Objects/Ammo/Rocket/Rocket.h"
+#include "Scene/Objects/Units/Tank/_Tank.h"
+#include "Scene/Objects/_GameObjectEvents.h"
+#include "Scene/Objects/Ammo/Rocket/Rocket.h"
 #include "GUI/Windows/Console.h"
 
 
