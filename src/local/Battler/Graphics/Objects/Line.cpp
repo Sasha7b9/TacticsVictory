@@ -1,7 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Line.h"
-
 
 
 Line Line::ZERO = Line();

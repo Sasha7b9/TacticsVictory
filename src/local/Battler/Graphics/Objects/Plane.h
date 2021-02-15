@@ -3,7 +3,6 @@
 #include "Line.h"
 
 
-
 class PlaneRTS
 {
 public:

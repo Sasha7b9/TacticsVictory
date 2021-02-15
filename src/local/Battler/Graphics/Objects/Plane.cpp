@@ -1,13 +1,8 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Plane.h"
-#include "Core/_Math.h"
-#include "Graphics/Objects/Line.h"
-
 
 
 PlaneRTS PlaneRTS::ZERO = PlaneRTS(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);
-
 
 
 PlaneRTS::PlaneRTS(const Vector3 &v0_ /* = Vector3::ZERO */, const Vector3 &v1_ /* = Vector3::ZERO */, const Vector3 &v2_ /* = Vector3::ZERO */, const Vector3 &v3_ /* = Vector3::ZERO */)

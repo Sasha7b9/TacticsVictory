@@ -1,8 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Image.h"
-#include "Core/_Math.h"
-
 
 
 ImageRTS::ImageRTS(Context *context) :

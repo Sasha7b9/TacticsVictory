@@ -2,7 +2,6 @@
 #pragma once
 
 
-
 class ImageRTS : public Image
 {
     URHO3D_OBJECT(ImageRTS, Image);

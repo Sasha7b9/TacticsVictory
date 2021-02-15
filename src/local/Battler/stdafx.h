@@ -138,6 +138,7 @@ using namespace Urho3D;
 #include "Game/Path/TilePath.h"
 
 #include "Graphics/2D/Image.h"
+#include "Graphics/Objects/Triangle.h"
 
 #include "GUI/Cursor.h"
 #include "GUI/GUI.h"
