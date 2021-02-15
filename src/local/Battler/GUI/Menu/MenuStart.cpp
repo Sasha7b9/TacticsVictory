@@ -75,7 +75,7 @@ MenuStart::~MenuStart()
 
 void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    if(!gMenu->IsActive())
+    if(!TheMenu->IsActive())
     {
         return;
     }

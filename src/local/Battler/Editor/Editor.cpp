@@ -106,7 +106,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             TheDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
         }
 
-        if (!gMenu->IsActive() && !TheGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+        if (!TheMenu->IsActive() && !TheGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             Timer timer;
             currentPlane = TheTerrain->GetIntersectionPlane(ray);
@@ -130,7 +130,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
     if (TheGuiEditor->modeSelect == GuiEditor::ModeSelect_Edge)
     {
-        if (!gMenu->IsActive() && !TheGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+        if (!TheMenu->IsActive() && !TheGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             currentEdge = TheTerrain->GetIntersectionEdge(ray);
 

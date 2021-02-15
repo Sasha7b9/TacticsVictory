@@ -66,7 +66,7 @@ void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
     if (button == buttonExit)
     {
         TheEngine->Exit();
-        gMenuMain->SetDisabled();
+        TheMenuMain->SetDisabled();
     
     }
     else if (button == buttonLanguage)
@@ -86,7 +86,7 @@ void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     else if (button == buttonCancel)
     {
-        gMenuMain->Close();
+        TheMenuMain->Close();
     }
 }
 

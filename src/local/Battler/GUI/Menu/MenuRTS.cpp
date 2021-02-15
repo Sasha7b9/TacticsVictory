@@ -29,14 +29,14 @@ MenuRTS::MenuRTS(Context *context) : Object(context)
     Open(menuStart);
 
     /*
-    gMenuMain = new MenuGame();
-    SetWindowInCenterScreen(gMenuMain);
+    TheMenuMain = new MenuGame();
+    SetWindowInCenterScreen(TheMenuMain);
 
     gMenuOptions = new MenuOptions();
     SetWindowInCenterScreen(gMenuOptions);
 
-    gMenuConfirmExit = new MenuConfirmExit();
-    SetWindowInCenterScreen(gMenuConfirmExit);
+    TheMenuConfirmExit = new MenuConfirmExit();
+    SetWindowInCenterScreen(TheMenuConfirmExit);
     */
 }
 

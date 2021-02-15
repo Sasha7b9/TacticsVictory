@@ -75,8 +75,8 @@ extern Vector<WindowRTS*>   TheOpenedWindow;
 extern WindowTarget         *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 
 // Меню
-extern MenuRTS              *gMenu;
-extern MenuGame             *gMenuMain;
-extern MenuConfirmExit      *gMenuConfirmExit;
+extern MenuRTS              *TheMenu;
+extern MenuGame             *TheMenuMain;
+extern MenuConfirmExit      *TheMenuConfirmExit;
 
-extern ModeApp gMode;
+extern ModeApp              TheMode;

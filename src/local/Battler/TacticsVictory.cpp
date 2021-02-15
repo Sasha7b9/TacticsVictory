@@ -79,7 +79,7 @@ void TacticsVictory::Stop()
     SAFE_DELETE(scene); //-V809
     SAFE_DELETE(TheFileSelector); //-V809
     SAFE_DELETE(TheLevel); //-V809
-    SAFE_DELETE(gMenu); //-V809
+    SAFE_DELETE(TheMenu); //-V809
     SAFE_DELETE(TheGUI); //-V809
     //File file(TheContext, "ui.xml", FILE_WRITE);
     //URHO3D_LOGINFO("Now save ui");
@@ -143,7 +143,7 @@ void TacticsVictory::Start()
         TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
         TheGUI = new GUI();
         LOGINFO("Загружаю настройки");
-        gMenu = new MenuRTS();
+        TheMenu = new MenuRTS();
         TheFileSelector = new FileSelector(TheContext);
         TheFileSelector->GetWindow()->SetModal(false);
         TheFileSelector->GetWindow()->SetVisible(false);
@@ -236,7 +236,7 @@ void TacticsVictory::ParseArguments(const Vector<String> &arguments)
 
     if (GetAddressPort(arguments, address, port))
     {
-        gMode = address.Empty() ? ModeApp_Server : ModeApp_Client;
+        TheMode = address.Empty() ? ModeApp_Server : ModeApp_Client;
     }
 }
 

@@ -99,9 +99,9 @@ typedef enum
     ModeApp_Client
 } ModeApp;
 
-#define MODE_CLIENT (gMode == ModeApp_Client)
-#define MODE_SERVER (gMode == ModeApp_Server)
-#define MODE_START  (gMode == ModeApp_Start)
+#define MODE_CLIENT (TheMode == ModeApp_Client)
+#define MODE_SERVER (TheMode == ModeApp_Server)
+#define MODE_START  (TheMode == ModeApp_Start)
 
 // Имена узлов
 

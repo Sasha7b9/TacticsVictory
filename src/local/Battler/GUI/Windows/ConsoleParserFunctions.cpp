@@ -45,7 +45,7 @@ bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
     }
     else
     {
-        gMenu->Hide();
+        TheMenu->Hide();
         TheClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, OnServerConnected);
         TheConsole->Write("Соединяюсь с удалённым сервером...");
     }

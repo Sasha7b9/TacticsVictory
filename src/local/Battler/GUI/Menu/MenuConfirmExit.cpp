@@ -60,6 +60,6 @@ void MenuConfirmExit::OnPressButtonOk()
 
 void MenuConfirmExit::OnPressButtonCancel()
 {
-    gMenuConfirmExit->SetVisible(false);
-    gMenuMain->SetVisible(true);
+    TheMenuConfirmExit->SetVisible(false);
+    TheMenuMain->SetVisible(true);
 }

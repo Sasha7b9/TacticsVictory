@@ -47,8 +47,8 @@ Vector<WindowRTS*>   TheOpenedWindow;
 WindowTarget        *TheWindowTarget = nullptr;
 
 // Меню
-MenuRTS             *gMenu = nullptr;
-MenuGame            *gMenuMain = nullptr;
-MenuConfirmExit     *gMenuConfirmExit = nullptr;
+MenuRTS             *TheMenu = nullptr;
+MenuGame            *TheMenuMain = nullptr;
+MenuConfirmExit     *TheMenuConfirmExit = nullptr;
 
-ModeApp             gMode = ModeApp_Start;
+ModeApp             TheMode = ModeApp_Start;
