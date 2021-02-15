@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#pragma once
 #include "GUI/Logic/LineTranslator2D.h"
 #include "Label.h"
 #include "ButtonToggled.h"

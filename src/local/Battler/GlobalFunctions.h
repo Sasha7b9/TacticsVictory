@@ -1,9 +1,8 @@
-﻿#pragma once
-
+﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#pragma once
 
 
 #define CALL_MEMBER_IF_EXIST(object, function) if(object) (object)->function()
-
 
 
 void SetWindowInCenterScreen(Window *window);

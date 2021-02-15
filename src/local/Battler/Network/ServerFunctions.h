@@ -1,9 +1,8 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
 
-
 class VectorBufferRTS;
-
 
 
 void FUNC_MSG_REQUEST_LANDSCAPE(Connection *, MemoryBuffer &, VectorBufferRTS &);

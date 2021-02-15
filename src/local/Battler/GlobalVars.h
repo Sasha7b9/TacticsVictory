@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#pragma once
 
 
 class CameraRTS;
