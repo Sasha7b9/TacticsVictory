@@ -161,6 +161,7 @@ using namespace Urho3D;
 #include "Scene/Objects/Ammo/_AmmoObject.h"
 #include "Scene/Objects/Ammo/Rocket/Rocket.h"
 #include "Scene/Objects/Buildings/MilitaryPlant/MilitaryPlant.h"
+#include "Scene/Objects/Terrain/SegmentTerrain.h"
 #include "Scene/Objects/Units/Tank/_Tank.h"
 
 #include "glob_engine.h"

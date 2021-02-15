@@ -1,15 +1,8 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Scene/_Level.h"
-#include "Scene/Objects/Terrain/Terrain.h"
-#include "Core/_Math.h"
-#include "GlobalFunctions.h"
-#include "Scene/Objects/Terrain/SegmentTerrain.h"
-
 
 
 Vector<Vector<float> > Level::map;
-
 
 
 Level::Level(Context *context) : Object(context)
