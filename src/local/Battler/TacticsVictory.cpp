@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Scene/Scene.h"
+#include "Scene/_Scene.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 
 

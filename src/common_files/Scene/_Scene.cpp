@@ -1,10 +1,10 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Scene.h"
+#include "Scene/_Scene.h"
 #include "TacticsVictory.h"
 #include "Core/Math.h"
 #include "Game/Logic/Movinator.h"
-#include "Scene/Level.h"
+#include "Scene/_Level.h"
 #include "Game/Objects/Terrain/Terrain.h"
 #include "Game/Objects/Terrain/Terrain.h"
 #include "GUI/Cursor.h"

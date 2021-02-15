@@ -145,7 +145,7 @@ using namespace Urho3D;
 #include "Network/_Server.h"
 #include "Network/_ServerFunctions.h"
 #include "Network/_VectorBufferRTS.h"
-#include "Scene/Level.h"
+#include "Scene/_Level.h"
 
 #include "glob_engine.h"
 #include "glob_game.h"
