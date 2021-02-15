@@ -90,7 +90,7 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
     label->SetPosition(x, y);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuOptions::RegisterObject(Context *context)
 {
     context->RegisterFactory<MenuOptions>("UI");
@@ -98,7 +98,7 @@ void MenuOptions::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(WindowMenu);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 {
     DropDownListWithTextAndButton *ddList = dynamic_cast<DropDownListWithTextAndButton*>(eventData[ItemSelected::P_ELEMENT].GetPtr());
@@ -144,7 +144,7 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 {
     SliderWithTextAndButtons *slider = dynamic_cast<SliderWithTextAndButtons*>(eventData[SliderIntChanged::P_ELEMENT].GetPtr());
@@ -165,7 +165,7 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuOptions::HandleButtonRelease(StringHash, VariantMap&)
 {
     SendEventClose();

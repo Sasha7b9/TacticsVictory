@@ -27,7 +27,7 @@ MenuConfirmExit::MenuConfirmExit(Context *context) : WindowMenu(context)
     AddChild(layer);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuConfirmExit::RegisterObject(Context *context)
 {
     context->RegisterFactory<MenuConfirmExit>("UI");
@@ -35,7 +35,7 @@ void MenuConfirmExit::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();
@@ -50,7 +50,7 @@ void MenuConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuConfirmExit::OnPressButtonOk()
 {
     VariantMap eventData = GetEventDataMap();
@@ -58,7 +58,7 @@ void MenuConfirmExit::OnPressButtonOk()
     SendEvent(E_MENU, eventData);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuConfirmExit::OnPressButtonCancel()
 {
     gMenuConfirmExit->SetVisible(false);

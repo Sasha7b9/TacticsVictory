@@ -39,7 +39,7 @@ TacticsVictory::TacticsVictory(Context* context) :
     gContext = context;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::Setup()
 {
     ParseArguments(GetArguments());
@@ -69,7 +69,7 @@ void TacticsVictory::Setup()
 #endif
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::Stop()
 {
     engine_->DumpResources(true);
@@ -95,7 +95,7 @@ void TacticsVictory::Stop()
     SAFE_DELETE(gLog); //-V809
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MessageCallback(const asSMessageInfo *msg, void *)
 {
     const char *type = "AS ERROR ";
@@ -107,7 +107,7 @@ void MessageCallback(const asSMessageInfo *msg, void *)
     LOGINFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::Start()
 {
     gProfiler = GetSubsystem<Profiler>();
@@ -171,7 +171,7 @@ void TacticsVictory::Start()
     PROFILER_FUNC_LEAVE;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::SetLocalization()
 {
     gLocalization = GetSubsystem<Localization>();
@@ -179,7 +179,7 @@ void TacticsVictory::SetLocalization()
     gLocalization->SetLanguage("ru");
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::CreateScriptSystem()
 {
     gContext->RegisterSubsystem(new Script(gContext));
@@ -187,7 +187,7 @@ void TacticsVictory::CreateScriptSystem()
     gScript->GetScriptEngine()->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::StartServer(uint16 port_)
 {
     if (port_)
@@ -208,25 +208,25 @@ void TacticsVictory::StartServer(uint16 port_)
     
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::StopServer()
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::StartClient(const String &, uint16)
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::StopClient()
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::ParseArguments(const Vector<String> &arguments)
 {
     /*
@@ -241,7 +241,7 @@ void TacticsVictory::ParseArguments(const Vector<String> &arguments)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::RegistrationComponets()
 {
     gContext->RegisterFactory<Rotator>();
@@ -259,7 +259,7 @@ void TacticsVictory::RegistrationComponets()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::SubscribeToEvents()
 {
     if (MODE_SERVER)
@@ -282,7 +282,7 @@ void TacticsVictory::SubscribeToEvents()
     SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(TacticsVictory, HandleNetworkMessage));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::SetWindowTitleAndIcon()
 {
     if (MODE_CLIENT)
@@ -293,7 +293,7 @@ void TacticsVictory::SetWindowTitleAndIcon()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::CreateConsoleAndDebugHud()
 {
     if (MODE_CLIENT)
@@ -309,7 +309,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::CreateEditorSession()
 {
     if(!gEditor)
@@ -321,7 +321,7 @@ void TacticsVictory::CreateEditorSession()
     gEditor->Run();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::FillNetworkFunctions()
 {
 #define ADD_NETWORK_FUNCTION(name) networkFunctions[name] = FUNC_##name
@@ -337,7 +337,7 @@ void TacticsVictory::FillNetworkFunctions()
     ADD_NETWORK_FUNCTION(MSG_SET_NETWORK_LATENCY);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::OpenLog()
 {
     gLog = new LogRTS();

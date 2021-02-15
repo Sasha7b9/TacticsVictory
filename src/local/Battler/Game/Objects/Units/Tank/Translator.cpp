@@ -20,7 +20,7 @@ Translator::Translator(Context *context) : Object(context)
     angles["0,-1"] = 270.0f;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Translator::RegisterInAS()
 {
     asIScriptEngine *engine = gScript->GetScriptEngine();
@@ -33,13 +33,13 @@ void Translator::RegisterInAS()
 #pragma warning(pop)
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Translator::Init(Tank* tank_)
 {
     tank = tank_;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Translator::SetPath(const PODVector<Coord> &path_, float speed_)
 {
     path = path_;
@@ -59,7 +59,7 @@ void Translator::SetPath(const PODVector<Coord> &path_, float speed_)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vector3 Translator::Update(float dT)
 {
     if(state == Stop)
@@ -111,7 +111,7 @@ Vector3 Translator::Update(float dT)
     return currentPos;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Translator::SetStep(const Coord &start, const Coord &end_)
 {
     end = end_.ToVector3();
@@ -138,7 +138,7 @@ void Translator::SetStep(const Coord &start, const Coord &end_)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Translator::StartRotation(float angleNeed)
 {
     float curAngle = tank->GetRotation();
@@ -177,7 +177,7 @@ void Translator::StartRotation(float angleNeed)
     state = Rotate;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool Translator::IsMoving()
 {
     return state != Stop;

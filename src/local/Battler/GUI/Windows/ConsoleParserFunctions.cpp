@@ -23,14 +23,14 @@ bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
     return Run(structs, words, showInfo);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static void OnServerConnected()
 {
     gClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
     gConsole->Write("Запрашиваю ландшафт");
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
 {
     String address = SERVER_ADDRESS;
@@ -54,13 +54,13 @@ bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
     return true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncClientStop(Vector<String> &, bool)
 {
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncServer(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
@@ -74,7 +74,7 @@ bool ConsoleParser::FuncServer(Vector<String> &words, bool showInfo)
     return Run(structs, words, showInfo);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncServerStart(Vector<String> &words, bool) //-V2009
 {
     int port = 0;
@@ -94,7 +94,7 @@ bool ConsoleParser::FuncServerStart(Vector<String> &words, bool) //-V2009
     return true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V2009
 {
     using namespace AsyncExecFinished;
@@ -113,7 +113,7 @@ void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V20
     UnsubscribeFromEvent(E_ASYNCLOADFINISHED);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncServerStop(Vector<String> &, bool)
 {
     if(serverRunning)
@@ -127,7 +127,7 @@ bool ConsoleParser::FuncServerStop(Vector<String> &, bool)
     return true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
 {
     int latency = 0;
@@ -141,7 +141,7 @@ bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool) //-V2009
 {
     float loss = 0.0f;
@@ -155,7 +155,7 @@ bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool) //-V2009
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncVars(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
@@ -177,21 +177,21 @@ bool ConsoleParser::FuncVars(Vector<String> &words, bool showInfo)
     return true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncVarsOpen(Vector<String> &, bool)
 {
     gWindowVars->SetVisible(true);
     return true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncVarsClose(Vector<String> &, bool)
 {
     gWindowVars->SetVisible(false);
     return true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncClear(Vector<String> &, bool showInfo)
 {
     if(!showInfo)
@@ -201,7 +201,7 @@ bool ConsoleParser::FuncClear(Vector<String> &, bool showInfo)
     return true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncClose(Vector<String> &, bool showInfo)
 {
     if(!showInfo)
@@ -211,7 +211,7 @@ bool ConsoleParser::FuncClose(Vector<String> &, bool showInfo)
     return true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncExit(Vector<String> &, bool showInfo)
 {
     if(!showInfo)
@@ -223,7 +223,7 @@ bool ConsoleParser::FuncExit(Vector<String> &, bool showInfo)
     return true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncUnit(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
@@ -234,7 +234,7 @@ bool ConsoleParser::FuncUnit(Vector<String> &words, bool showInfo)
     return Run(structs, words, showInfo);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::FuncUnitCamera(Vector<String> &words, bool)
 {
     words.Erase(0, 1);

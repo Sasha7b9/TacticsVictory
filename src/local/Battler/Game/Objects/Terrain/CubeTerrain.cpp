@@ -17,7 +17,7 @@ CubeTerrain::CubeTerrain(Context *context) : Object(context)
 {
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 CubeTerrain::CubeTerrain(uint row, uint col, float height) :
     Object(gContext)
 {
@@ -33,21 +33,21 @@ CubeTerrain::CubeTerrain(uint row, uint col, float height) :
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::Create()
 {
     CreateEdges();
     CreateSides();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::CreateEdges()
 {
     CreateEdgeTop();
     CreateEdgeDown();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::CreateSides()
 {
     CreateSideLeft();
@@ -56,7 +56,7 @@ void CubeTerrain::CreateSides()
     CreateSideDown();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 #define GET_FOUR_POINTS_FOR_PLANE(pl)       \
     PlaneCube &plane = pl->plane;           \
     PointPlane &point0 = plane.point[0];    \
@@ -71,7 +71,7 @@ void CubeTerrain::CreateSides()
     point3.normal = (point0.coord - point3.coord).CrossProduct(point2.coord - point3.coord);
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::CreateEdgeTop()
 {
     float height = underGround ? - static_cast<float>(layer) : static_cast<float>(layer) + 1.0f;
@@ -96,13 +96,13 @@ void CubeTerrain::CreateEdgeTop()
     CALCULATE_NORMALS
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::CreateEdgeDown()
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::CreateSideLeft()
 {
     // Get the column of cubes, that are left of our. column[0] - min height
@@ -129,7 +129,7 @@ void CubeTerrain::CreateSideLeft()
     sides[S_LEFT] = CreateSide(S_LEFT, height);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::CreateSideTop()
 {
     // Get the column of cubes, that are top of our. column[0] - mini height
@@ -156,7 +156,7 @@ void CubeTerrain::CreateSideTop()
     sides[S_TOP] = CreateSide(S_TOP, height);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::CreateSideRight()
 {
     PODVector<CubeTerrain*> *column = static_cast<TerrainRTS*>(terrain)->GetColumnCubes(this, DIR_RIGHT);
@@ -182,7 +182,7 @@ void CubeTerrain::CreateSideRight()
     sides[S_RIGHT] = CreateSide(S_RIGHT, height);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::CreateSideDown()
 {
     PODVector<CubeTerrain*> *column = static_cast<TerrainRTS*>(terrain)->GetColumnCubes(this, DIR_DOWN);
@@ -208,7 +208,7 @@ void CubeTerrain::CreateSideDown()
     sides[S_DOWN] = CreateSide(S_DOWN, height);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
 {
     const float height = underGround ? -static_cast<float>(layer) : static_cast<float>(layer) + 1.0f;
@@ -258,7 +258,7 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
     return retValue;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::BuildPlaneVerexes(const PlaneCube &plane) 
 {
     uint index = vertexes->Size() / 8;
@@ -276,7 +276,7 @@ void CubeTerrain::BuildPlaneVerexes(const PlaneCube &plane)
     indexes->Push(index + 3);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::BuildVertexes(PODVector<float> &v, PODVector<uint> &i)
 {
     vertexes = &v;
@@ -313,7 +313,7 @@ void CubeTerrain::BuildVertexes(PODVector<float> &v, PODVector<uint> &i)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CubeTerrain::PushPoint(const PointPlane &point)
 {
     vertexes->Push(point.coord.x_);
@@ -328,7 +328,7 @@ void CubeTerrain::PushPoint(const PointPlane &point)
     vertexes->Push(point.texCoord.y_);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vector3& CubeTerrain::GetEdgeCoord(EDGE edge, CORNER corner)
 {
     if(edge == E_TOP && edges[E_TOP] == 0)

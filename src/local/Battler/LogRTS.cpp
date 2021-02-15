@@ -15,7 +15,7 @@ LogRTS::LogRTS(Context *context) : Log(context)
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void LogRTS::Write(int level, const String &message, char *file, char *func, int numLine)
 {
     String str = message;
@@ -36,13 +36,13 @@ void LogRTS::Write(int level, const String &message, char *file, char *func, int
     gConsole->Write(str);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void LogRTS::EnableExtendedInfo()
 {
     enabledExtendedInfo = true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void LogRTS::DisableExtendedInfo()
 {
     enabledExtendedInfo = false;

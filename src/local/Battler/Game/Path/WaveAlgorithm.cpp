@@ -15,13 +15,13 @@ WaveAlgorithm::WaveAlgorithm(Context *context) : Thread(), Object(context)
     //passValues.Insert(KeySet(5, )
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 WaveAlgorithm::~WaveAlgorithm()
 {
     Stop();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static CScriptArray* GetTestStringsToArray()
 {
     static Vector<String> args;
@@ -33,7 +33,7 @@ static CScriptArray* GetTestStringsToArray()
     return VectorToArray<String>(args, "Array<String>");
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WaveAlgorithm::RegisterInAS()
 {
     asIScriptEngine *engine = gScript->GetScriptEngine();
@@ -50,7 +50,7 @@ void WaveAlgorithm::RegisterInAS()
 #pragma warning(pop)
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WaveAlgorithm::SetSize(uint rows, uint cols)
 {
     numRows = rows;
@@ -63,7 +63,7 @@ void WaveAlgorithm::SetSize(uint rows, uint cols)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WaveAlgorithm::StartFind(Coord start_, Coord end_)
 {
     start = start_;
@@ -71,20 +71,20 @@ void WaveAlgorithm::StartFind(Coord start_, Coord end_)
     Run();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool WaveAlgorithm::PathIsFound()
 {
     return pathIsFound;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 PODVector<Coord> WaveAlgorithm::GetPath()
 {
     Stop();
     return path;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WaveAlgorithm::ThreadFunction()
 {
     pathIsFound = false;
@@ -93,7 +93,7 @@ void WaveAlgorithm::ThreadFunction()
     pathIsFound = true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WaveAlgorithm::FindPath()
 {
     if (fabs(gTerrain->GetHeight(start.row, start.col) - gTerrain->GetHeight(end.row, end.col)) > M_EPSILON)
@@ -143,7 +143,7 @@ void WaveAlgorithm::FindPath()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool WaveAlgorithm::Contain(const Wave &wave, const Coord &coord)
 {
     for (auto &crd : wave)
@@ -161,7 +161,7 @@ bool WaveAlgorithm::Contain(const Wave &wave, const Coord &coord)
 static int dRow[] = {0, -1, 0, 1, -1, -1, 1, 1};
 static int dCol[] = {-1, 0, 1, 0, -1, 1, 1, -1};
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WaveAlgorithm::NextWave(Vector<Wave> &waves)
 {
     int numWave = static_cast<int>(waves.Size());
@@ -211,14 +211,14 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
     waves.Push(wave);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WaveAlgorithm::SetCell(Wave &wave, uint row, uint col, int numWave)
 {
     wave.Push(Coord(row, col));
     cells[row][col] = numWave;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path_)
 {
     Coord coord = path_[0];

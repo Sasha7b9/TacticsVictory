@@ -11,7 +11,7 @@ lSlider::lSlider(Context *context) :
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void lSlider::RegisterObject(Context *context)
 {
     context->RegisterFactory<lSlider>("UI");
@@ -19,7 +19,7 @@ void lSlider::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(Slider);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SharedPtr<lSlider> lSlider::Create(Window *window, char *text_)
 {
     SharedPtr<Text> text(new Text(gContext));

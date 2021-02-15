@@ -33,7 +33,7 @@ GuiEditor::GuiEditor(Context* context) : Object(context)
     SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(GuiEditor, HandleKeyDown));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::CreatePanels()
 {
     panelMap = new PanelMap(gContext);
@@ -63,7 +63,7 @@ void GuiEditor::CreatePanels()
     panelBottom->BringToFront();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::CreateTabs()
 {
     CreateTabFile();
@@ -72,7 +72,7 @@ void GuiEditor::CreateTabs()
     CreateTabObjects();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::CreateTabFile()
 {
     SharedPtr<Tab> tabFile(Tab::Create("File"));
@@ -87,7 +87,7 @@ void GuiEditor::CreateTabFile()
     SubscribeToEvent(btnFileSave, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleFileSave));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::CreateTabEdit()
 {
     SharedPtr<Tab> tabEdit(Tab::Create("Edit"));
@@ -104,7 +104,7 @@ void GuiEditor::CreateTabEdit()
     SubscribeToEvent(btnEditRedo, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleEditRedo));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::CreateTabTerrain()
 {
     SharedPtr<Tab> tabTerrain(Tab::Create("Terrain"));
@@ -135,7 +135,7 @@ void GuiEditor::CreateTabTerrain()
     SubscribeToEvent(ddListModeSelect, E_ITEMSELECTED, URHO3D_HANDLER(GuiEditor, HandleTerrainModeSelectChanged));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::CreateTabObjects()
 {
     SharedPtr<Tab> tabObjects(Tab::Create("Objects"));
@@ -148,7 +148,7 @@ void GuiEditor::CreateTabObjects()
     SubscribeToEvent(btnObjectsAdd, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleObjectsAdd));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::ToggleInterfacePanels()
 {
     LineTranslator2D::State stateMap = panelMap->GetTranslator()->GetState();
@@ -169,7 +169,7 @@ void GuiEditor::ToggleInterfacePanels()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
     ButtonRTS *button = (ButtonRTS*)eventData[Released::P_ELEMENT].GetPtr();
@@ -199,19 +199,19 @@ void GuiEditor::HandleButtonRelease(StringHash, VariantMap &eventData)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool GuiEditor::IntersectionX(const ButtonRTS *button, int x_)
 {
     return x_ >= button->GetPosition().x_ && x_ <= button->GetPosition().x_ + button->GetWidth();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool GuiEditor::CheckOnDeadZoneForCursorBottomScreen(int x_)
 {
     return IntersectionX(buttonInterface, x_) || IntersectionX(buttonMenu, x_);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool GuiEditor::IsInside(const IntVector2 &position)
 {
     return IsVisible() && 
@@ -226,7 +226,7 @@ bool GuiEditor::IsInside(const IntVector2 &position)
         position.y_ < gSet->GetInt(TV_SCREEN_HEIGHT) - 1;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::CreateWindows()
 {
     // window new map
@@ -285,7 +285,7 @@ void GuiEditor::CreateWindows()
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GuiEditor, HandleMouseDown));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
 {
     Vector<Vector<float>> map = gLevel->CreateRandom((uint)sliderSizeNewMapY->GetValue(), (uint)sliderSizeNewMapX->GetValue());
@@ -297,7 +297,7 @@ void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
     gCamera->SetPosition({gLevel->GetWidth() / 2.0f, 20.0f, -(float)gLevel->GetHeight()}, {gLevel->GetWidth() / 2.0f, 0.0f, -(gLevel->GetHeight() / 2.0f)});
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleTerrainClearTerrain(StringHash, VariantMap&)
 {
     for (uint row = 0; row < gTerrain->NumRows(); row++)
@@ -311,7 +311,7 @@ void GuiEditor::HandleTerrainClearTerrain(StringHash, VariantMap&)
     gTerrain->Update();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 {
     if (!IsVisible() || gConsole->IsActive())
@@ -347,7 +347,7 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleFileLoad(StringHash, VariantMap&)
 {
     gCamera->SetEnabled(false);
@@ -361,7 +361,7 @@ void GuiEditor::HandleFileLoad(StringHash, VariantMap&)
     SubscribeToEvent(gFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorLoadTerrain));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleFileSave(StringHash, VariantMap&)
 {
     gCamera->SetEnabled(false);
@@ -375,7 +375,7 @@ void GuiEditor::HandleFileSave(StringHash, VariantMap&)
     SubscribeToEvent(gFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorSaveTerrain));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
 {
     UnsubscribeFromEvent(gFileSelector, E_FILESELECTED);
@@ -396,7 +396,7 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
     gCamera->SetEnabled(true);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData) //-V2009
 {
     UnsubscribeFromEvent(gFileSelector, E_FILESELECTED);
@@ -416,13 +416,13 @@ void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData)
     gCamera->SetEnabled(true);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleExit(StringHash, VariantMap&)
 {
     gGUI->SetVisibleWindow(windowConfirmExit, true);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleExitOk(StringHash, VariantMap&)
 {
     gGuiEditor->SetVisible(false);
@@ -431,25 +431,25 @@ void GuiEditor::HandleExitOk(StringHash, VariantMap&)
     gGUI->SetVisibleWindow(windowConfirmExit, false);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleExitCancel(StringHash, VariantMap&)
 {
     gGUI->SetVisibleWindow(windowConfirmExit, false);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleOptions(StringHash, VariantMap&)
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleMouseDown(StringHash, VariantMap&)
 {
     
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleTerrainModeSelectChanged(StringHash, VariantMap& eventData) //-V2009
 {
     int index = eventData[ItemSelected::P_SELECTION].GetInt();
@@ -457,31 +457,31 @@ void GuiEditor::HandleTerrainModeSelectChanged(StringHash, VariantMap& eventData
     modeSelect = (ModeSelect)index;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleEditUndo(StringHash, VariantMap&)
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleEditRedo(StringHash, VariantMap&)
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::HandleObjectsAdd(StringHash, VariantMap&)
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool GuiEditor::IsVisible()
 {
     return panelMap->IsVisible();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GuiEditor::SetVisible(bool visible)
 {
     panelMap->SetVisible(visible);

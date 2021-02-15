@@ -14,7 +14,7 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(Context *context) :
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int widthText, int widthDDList) :
     UIElement(gContext)
 {
@@ -61,7 +61,7 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
     SetMinSize(window->GetWidth(), window->GetHeight());
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void DropDownListWithTextAndButton::SetSelection(uint index)
 {
     ddList->SetSelection(index);
@@ -71,7 +71,7 @@ void DropDownListWithTextAndButton::SetSelection(uint index)
     SendEvent(E_ITEMSELECTED, eventData);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void DropDownListWithTextAndButton::RegisterObject(Context* context)
 {
     context->RegisterFactory<DropDownListWithTextAndButton>("UI");
@@ -79,13 +79,13 @@ void DropDownListWithTextAndButton::RegisterObject(Context* context)
     URHO3D_COPY_BASE_ATTRIBUTES(UIElement);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void DropDownListWithTextAndButton::AddItem(char *text)
 {
     ddList->AddItem(Label::Create(text, true, 16));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void DropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& eventData_) //-V2009
 {
     VariantMap &eventData = GetEventDataMap();
@@ -94,7 +94,7 @@ void DropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& e
     SendEvent(E_ITEMSELECTED, eventData);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void DropDownListWithTextAndButton::HandleButtonDown(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Pressed::P_ELEMENT].GetPtr();
@@ -119,7 +119,7 @@ void DropDownListWithTextAndButton::HandleButtonDown(StringHash, VariantMap& eve
     SendEvent(E_ITEMSELECTED, eventData);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SharedPtr<DropDownListWithTextAndButton> DropDownListWithTextAndButton::Create(Window *window, char *text, int widthText, int widthDDList, int numItems, char *items[])
 {
     SharedPtr<DropDownListWithTextAndButton> ddl(new DropDownListWithTextAndButton(text, widthText, widthDDList));
@@ -132,13 +132,13 @@ SharedPtr<DropDownListWithTextAndButton> DropDownListWithTextAndButton::Create(W
     return ddl;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void DropDownListWithTextAndButton::HandleHoverBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void DropDownListWithTextAndButton::HandleHoverEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();

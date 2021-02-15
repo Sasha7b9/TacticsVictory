@@ -51,7 +51,7 @@ MenuGame::MenuGame(Context *) : WindowMenu()
     mapButtonsActions[buttonExit] = MenuEvent_ExitInOS;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuGame::RegisterObject(Context* context)
 {
     context->RegisterFactory<MenuGame>("UI");
@@ -59,7 +59,7 @@ void MenuGame::RegisterObject(Context* context)
     URHO3D_COPY_BASE_ATTRIBUTES(WindowMenu);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();
@@ -91,14 +91,14 @@ void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuGame::Open()
 {
     gScene->SetTimeScale(0.0f);
     gCamera->SetEnabled(false);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuGame::Close()
 {
     gScene->SetTimeScale(1.0f);

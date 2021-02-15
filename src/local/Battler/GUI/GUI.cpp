@@ -39,7 +39,7 @@ GUI::GUI() : Object(gContext)
     Create();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 GUI::~GUI()
 {
     SAFE_DELETE(gCursor); //-V809
@@ -47,7 +47,7 @@ GUI::~GUI()
     SAFE_DELETE(gGuiEditor); //-V809
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GUI::RegistrationObjects()
 {
     ButtonRTS::RegisterObject();
@@ -71,13 +71,13 @@ void GUI::RegistrationObjects()
     DropDownListWithTextAndButton::RegisterObject();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static float GetPosCameraY()
 {
     return gCamera->GetPosition().y_;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static void SetPosCameraY(float y)
 {
     Vector3 position = gCamera->GetPosition();
@@ -86,13 +86,13 @@ static void SetPosCameraY(float y)
     gCamera->SetPosition(position);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static float GetPosCameraX()
 {
     return gCamera->GetPosition().x_;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static void SetPosCameraX(float x)
 {
     Vector3 position = gCamera->GetPosition();
@@ -101,13 +101,13 @@ static void SetPosCameraX(float x)
     gCamera->SetPosition(position);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static float GetPosCameraZ()
 {
     return gCamera->GetPosition().z_;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static void SetPosCameraZ(float z)
 {
     Vector3 position = gCamera->GetPosition();
@@ -115,21 +115,21 @@ static void SetPosCameraZ(float z)
     gCamera->SetPosition(position);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static float GetCameraPitch()
 {
     Quaternion angle = gCamera->GetNode()->GetRotation();
     return angle.PitchAngle();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static float GetCameraYaw()
 {
     Quaternion angle = gCamera->GetNode()->GetRotation();
     return angle.YawAngle();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static float GetSpeedNetIN()
 {
     if(gClient->IsConnected())
@@ -153,7 +153,7 @@ static float GetSpeedNetIN()
     return 0.0f;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static float GetSpeedNetOUT()
 {
     if(gClient->GetServerConnection())
@@ -177,7 +177,7 @@ static float GetSpeedNetOUT()
     return 0.0f;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GUI::Create()
 {
     gConsole = new ConsoleRTS(gContext);
@@ -209,7 +209,7 @@ void GUI::Create()
     gLocalization->SetLanguage(gSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
 {
     if (gGuiGame->IsVisible())
@@ -223,7 +223,7 @@ bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool GUI::UnderCursor()
 {
     PODVector<UIElement*> elements;
@@ -240,7 +240,7 @@ bool GUI::UnderCursor()
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GUI::SetVisibleWindow(WindowRTS *window, bool visible)
 {
     window->SetVisible(visible);
@@ -260,7 +260,7 @@ void GUI::SetVisibleWindow(WindowRTS *window, bool visible)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void GUI::SetUnvisibleAllWindows()
 {
     while(!gOpenedWindow.Empty())

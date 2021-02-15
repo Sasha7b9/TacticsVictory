@@ -31,14 +31,14 @@ void FUNC_MSG_REQUEST_LANDSCAPE(Connection *connection, MemoryBuffer &, VectorBu
     connection->SendMessage(MSG_SEND_LANDSCAPE, true, true, out);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void FUNC_MSG_CAMERA_INFO(Connection *, MemoryBuffer &in, VectorBufferRTS &)
 {
     gCamera->SetPosition(in.ReadVector3());
     gCamera->GetNode()->SetRotation(in.ReadQuaternion());
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void FUNC_MSG_REQUEST_TANKS(Connection *connection, MemoryBuffer &, VectorBufferRTS &out)
 {
     uint time = gTime->GetSystemTime();
@@ -53,19 +53,19 @@ void FUNC_MSG_REQUEST_TANKS(Connection *connection, MemoryBuffer &, VectorBuffer
     gConsole->Write(String(gTime->GetSystemTime() - time));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void FUNC_MSG_DELETE_SERVER(Connection *, MemoryBuffer &, VectorBufferRTS &)
 {
     gEngine->Exit();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void FUNC_MSG_SET_NETWORK_LOSS(Connection *, MemoryBuffer &in, VectorBufferRTS &)
 {
     gServer->SetSimulatedPacketLoss(in.ReadFloat());
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void FUNC_MSG_SET_NETWORK_LATENCY(Connection *, MemoryBuffer &in, VectorBufferRTS &)
 {
     gServer->SetSimulatedLatency(in.ReadInt());

@@ -29,7 +29,7 @@ PanelMap::PanelMap(Context *context) :
     SubscribeToEvent(E_MAP_CHANGED, URHO3D_HANDLER(PanelMap, HandleMapChanged));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void PanelMap::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelMap>("UI");
@@ -37,7 +37,7 @@ void PanelMap::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void PanelMap::Update(float dT)
 {
     SetPosition(translator->Update(dT));
@@ -171,7 +171,7 @@ void PanelMap::Update(float dT)
     SetFullImageRect();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool PanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPointOut)
 {
     Camera *camera = gCamera->GetNode()->GetComponent<Camera>();
@@ -188,13 +188,13 @@ bool PanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPoint
     return true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 float PanelMap::GetMapHeight(uint x, uint y)
 {
     return map[y][x];
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 float PanelMap::GetMaxHeight()
 {
     uint sizeX = SizeXMap();
@@ -216,19 +216,19 @@ float PanelMap::GetMaxHeight()
     return height;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 uint PanelMap::SizeXMap()
 {
     return map.Empty() ? 0 : map[0].Size();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 uint PanelMap::SizeYMap()
 {
     return map.Empty() ? 0 : map.Size();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData) //-V2009
 {
     if (parent_->IsVisible() && IsInside(gCursor->GetCursor()->GetPosition(), true))
@@ -247,7 +247,7 @@ void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData) //-V2009
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void PanelMap::HandleMouseMove(StringHash eventType, VariantMap &eventData)
 {
     if (IsInside(gCursor->GetCursor()->GetPosition(), true) && (int)eventData[MouseMove::P_BUTTONS].GetInt() == MOUSEB_RIGHT)
@@ -258,7 +258,7 @@ void PanelMap::HandleMouseMove(StringHash eventType, VariantMap &eventData)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void PanelMap::HandleMapChanged(StringHash, VariantMap&)
 {
     redrawMap = true;

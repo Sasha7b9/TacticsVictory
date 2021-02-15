@@ -13,13 +13,13 @@ Rotator::Rotator(Context* context) :
     SetUpdateEventMask(USE_UPDATE);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rotator::SetRotationSpeed(const Vector3& speed)
 {
     rotationSpeed = speed;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rotator::Update(float timeStep)
 {
     // Components have their scene node as a member variable for convenient access. Rotate the scene node now: construct a

@@ -26,7 +26,7 @@ void Particles::Init()
     emitters.Push(node);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Particles::EmittingStatic(TypeParticles type, const Vector3 &position)
 {
     if (type == Explosion_Terrain)
@@ -71,7 +71,7 @@ void Particles::EmittingStatic(TypeParticles type, const Vector3 &position)
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Particles::EmittingDinamic(TypeParticles type, Node *node_)
 {
     String name = String((uint)type);
@@ -102,7 +102,7 @@ void Particles::EmittingDinamic(TypeParticles type, Node *node_)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 int Particles::NumEmitters(Node *node, const String &type)
 {
     PODVector<Component*> components;

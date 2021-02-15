@@ -28,14 +28,14 @@ SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)
     RegisterObjects();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SceneRTS::~SceneRTS()
 {
     SAFE_DELETE(gTerrain); //-V809
     pathIndicator.Stop();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SceneRTS::RegisterObjects()
 {
     Tank::RegisterObject();
@@ -43,13 +43,13 @@ void SceneRTS::RegisterObjects()
     MilitaryPlant::RegisterObject();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SceneRTS::RegisterObject(Context *context)
 {
     context->RegisterFactory<SceneRTS>();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SceneRTS::Create()
 {
     Sounds::Init();
@@ -141,7 +141,7 @@ void SceneRTS::Create()
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(SceneRTS, HandleMouseDown));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SceneRTS::Update(float /*timeStep*/)
 {
     if (MODE_CLIENT)
@@ -183,7 +183,7 @@ void SceneRTS::Update(float /*timeStep*/)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SceneRTS::HandleMouseDown(StringHash, VariantMap& eventData) //-V2009
 {
     int buttons = static_cast<int>(eventData[MouseButtonDown::P_BUTTONS].GetInt());
@@ -198,7 +198,7 @@ void SceneRTS::HandleMouseDown(StringHash, VariantMap& eventData) //-V2009
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SceneRTS::ProcessMouseLeft()
 {
     Vector3 hitCoord;
@@ -240,7 +240,7 @@ void SceneRTS::ProcessMouseLeft()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SceneRTS::ProcessMouseRight()
 {
     pathIndicator.Enable(false);
@@ -253,7 +253,7 @@ void SceneRTS::ProcessMouseRight()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SceneRTS::SetSelected(Tank *tank_, bool selected)
 {
     if(selected)
@@ -271,7 +271,7 @@ void SceneRTS::SetSelected(Tank *tank_, bool selected)
     tank_->SetSelected(selected);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Tank* SceneRTS::GetSelected()
 {
     const Vector<SharedPtr<Node>> &nodes = gScene->GetChildren();

@@ -32,7 +32,7 @@ MenuAboutMe::MenuAboutMe(Context *context) : WindowMenu(context)
     SetMovable(false);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuAboutMe::HandleButtonRelease(StringHash, VariantMap&)
 {
     SendEventClose();

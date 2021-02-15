@@ -14,13 +14,13 @@ RocketLauncher::RocketLauncher(Context *context, Tank *tank) : WeaponObject(cont
     this->tank = tank;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void RocketLauncher::Init()
 {
     timeElapsedAfterShoot = Random(timeRecharge);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void RocketLauncher::RegisterInAS()
 {
     asIScriptEngine *engine = gScript->GetScriptEngine();
@@ -33,7 +33,7 @@ void RocketLauncher::RegisterInAS()
 #pragma warning(pop)
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void RocketLauncher::Update(float deltaStep)
 {
     if(fabs(timeElapsedAfterShoot) > M_EPSILON)
@@ -61,7 +61,7 @@ void RocketLauncher::Update(float deltaStep)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool RocketLauncher::TargetInPointView(Tank* target)
 {
     if(timeElapsedAfterShoot >= timeRecharge && (gTime->GetElapsedTime() - timePrevRaycast) > 0.5f)

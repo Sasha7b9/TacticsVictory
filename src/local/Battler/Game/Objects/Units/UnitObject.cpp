@@ -30,19 +30,19 @@ UnitObject::UnitObject(Context *context) : GameObject(context)
     nodeCameraTarget->SetVar("renderSurface", Variant(renderSurface));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 UnitObject::~UnitObject()
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void UnitObject::SetViewTargetView(bool view)
 {
     viewTargetView = view;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void UnitObject::HandlePostRenderUpdate(StringHash, VariantMap&)
 {
     cameraTarget->GetNode()->SetPosition(GetNode()->GetPosition() + Vector3(0.0f, 0.2f, 0.0f));
@@ -53,7 +53,7 @@ void UnitObject::HandlePostRenderUpdate(StringHash, VariantMap&)
     SendEvent(E_SETTEXTURE, eventData);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void UnitObject::SetSelected(bool sel)
 {
     GameObject::SetSelected(sel);

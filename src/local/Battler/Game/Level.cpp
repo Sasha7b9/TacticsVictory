@@ -18,7 +18,7 @@ Level::Level(Context *context) : Object(context)
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static bool IsCorrectSymbol(char symbol)
 {
     if(symbol == '+')
@@ -36,7 +36,7 @@ static bool IsCorrectSymbol(char symbol)
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 static int PushToVector(const char *data, Vector<float> *vec)
 {
     char buffer[20] = {0};
@@ -57,13 +57,13 @@ static int PushToVector(const char *data, Vector<float> *vec)
     return retValue;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vector<Vector<float>> Level::Get()
 {
     return map;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vector<Vector<float>> Level::Load(const char *fileName)
 {
     map.Clear();
@@ -121,7 +121,7 @@ Vector<Vector<float>> Level::Load(const char *fileName)
     return map;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool Level::Save(const String &fileName)
 {
     SharedPtr<File> fileWrite(new File(gContext));
@@ -150,7 +150,7 @@ bool Level::Save(const String &fileName)
     return true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vector<Vector<float> > Level::Create(int sizeZ, int sizeX)
 {
     map.Clear();
@@ -171,7 +171,7 @@ Vector<Vector<float> > Level::Create(int sizeZ, int sizeX)
     return map;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vector<Vector<float> > Level::CreateRandom(uint numRows, uint numCols)
 {
     map.Clear();
@@ -232,7 +232,7 @@ Vector<Vector<float> > Level::CreateRandom(uint numRows, uint numCols)
     return map;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Level::Clear()
 {
     map.Clear();
@@ -240,19 +240,19 @@ void Level::Clear()
     SendEvent(E_MAP_CHANGED, eventData);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 uint Level::GetWidth()
 {
     return map.Empty() ? 0 : map[0].Size();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 uint Level::GetHeight()
 {
     return map.Empty() ? 0 : map.Size();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Level::SetMap(const Vector<Vector<float>> &map_)
 {
     map = map_;

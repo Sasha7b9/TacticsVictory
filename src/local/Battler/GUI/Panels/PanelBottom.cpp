@@ -13,7 +13,7 @@ PanelBottom::PanelBottom(Context *context) :
     SetMovable(false);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void PanelBottom::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelBottom>("UI");

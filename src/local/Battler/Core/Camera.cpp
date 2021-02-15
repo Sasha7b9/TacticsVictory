@@ -43,19 +43,19 @@ CameraRTS::CameraRTS()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vector3 CameraRTS::GetPosition()
 {
     return cameraNode->GetPosition();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CameraRTS::SetPosition(const Vector3 &position)
 {
     cameraNode->SetPosition(position);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CameraRTS::SetPosition(const Vector3& position, const Vector3& lookAt_)
 {
     cameraNode->SetPosition(position);
@@ -69,7 +69,7 @@ void CameraRTS::LookAt(const Vector3 &lookAt_)
     cameraNode->LookAt(lookAt);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CameraRTS::ParallelTranslateLookAt(const Vector3 &lookAt_)
 {
     Vector3 delta = lookAt_ - lookAt;
@@ -78,7 +78,7 @@ void CameraRTS::ParallelTranslateLookAt(const Vector3 &lookAt_)
     cameraNode->LookAt(lookAt);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CameraRTS::Move(float time) //-V2008
 {
     if (!MODE_CLIENT)
@@ -188,7 +188,7 @@ void CameraRTS::Move(float time) //-V2008
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CameraRTS::SetPitch(float newPitch)
 {
     Quaternion rotation = cameraNode->GetRotation();
@@ -199,7 +199,7 @@ void CameraRTS::SetPitch(float newPitch)
     cameraNode->RotateAround(lookAt, rotateNeed, TS_WORLD);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CameraRTS::MoveOn(Direction direction, float distance)
 {
     if(!enabled)
@@ -294,13 +294,13 @@ void CameraRTS::MoveOn(Direction direction, float distance)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CameraRTS::SetEnabled(bool _enabled)
 {
     enabled = _enabled;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CameraRTS::SetupViewport()
 {
     SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<Camera>()));
@@ -310,13 +310,13 @@ void CameraRTS::SetupViewport()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SharedPtr<Node> CameraRTS::GetNode()
 {
     return cameraNode;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Ray CameraRTS::GetCursorRay()
 {
     IntVector2 pos = gUI->GetCursorPosition();

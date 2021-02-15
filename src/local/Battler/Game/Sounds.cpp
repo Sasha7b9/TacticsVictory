@@ -19,7 +19,7 @@ void Sounds::Init()
     sources.Push(soundSource);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Sounds::Play(SoundType type, const Vector3 &position)
 {
     SoundSource3D *source = nullptr;

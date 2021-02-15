@@ -14,7 +14,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(Context *context) :
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *text_, int min, int max, int step, int widthText, int widthRoller) :
     UIElement(gContext)
 {
@@ -72,7 +72,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     SubscribeToEvent(E_UIMOUSECLICK, URHO3D_HANDLER(SliderWithTextAndButtons, HandleMouseClick));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SliderWithTextAndButtons::RegisterObject(Context* context)
 {
     context->RegisterFactory<SliderWithTextAndButtons>("UI");
@@ -80,25 +80,25 @@ void SliderWithTextAndButtons::RegisterObject(Context* context)
     URHO3D_COPY_BASE_ATTRIBUTES(UIElement);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SliderWithTextAndButtons::SetHint(char *text)
 {
     hint = new Hint(text);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SliderWithTextAndButtons::SetRange(int min, int max, int step)
 {
     slider->SetRange(min, max, step);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SliderWithTextAndButtons::SetValue(int value)
 {
     slider->SetValueInt(value);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SliderWithTextAndButtons::HandleSliderIntChanged(StringHash, VariantMap& eventData_) //-V2009
 {
     int value = slider->GetValueInt();
@@ -110,7 +110,7 @@ void SliderWithTextAndButtons::HandleSliderIntChanged(StringHash, VariantMap& ev
     SendEvent(E_SLIDERINTCHANGED, eventData);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Pressed::P_ELEMENT].GetPtr();
@@ -125,37 +125,37 @@ void SliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventDat
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SliderWithTextAndButtons::HandleHoverBegin(StringHash, VariantMap&)
 {
     gCursor->SetSelected();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SliderWithTextAndButtons::HandleHoverEnd(StringHash, VariantMap&)
 {
     gCursor->SetNormal();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 int SliderWithTextAndButtons::GetValue()
 {
     return slider->GetValueInt();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 int SliderWithTextAndButtons::GetValueMin()
 {
     return slider->GetValueMin();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 int SliderWithTextAndButtons::GetValueMax()
 {
     return slider->GetValueMax();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void SliderWithTextAndButtons::HandleMouseClick(StringHash, VariantMap& eventData)
 {
     UIElement *pointer = (UIElement*)eventData[UIMouseClick::P_ELEMENT].GetPtr();

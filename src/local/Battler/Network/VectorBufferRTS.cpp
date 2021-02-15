@@ -11,19 +11,19 @@ VectorBufferRTS::VectorBufferRTS() : VectorBuffer()
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 VectorBufferRTS::VectorBufferRTS(int value) : VectorBuffer()
 {
     WriteInt(value);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 VectorBufferRTS::VectorBufferRTS(float value) : VectorBuffer()
 {
     WriteFloat(value);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void VectorBufferRTS::WriteTank(Tank *tank)
 {
     Node *node = tank->GetNode();
@@ -33,7 +33,7 @@ void VectorBufferRTS::WriteTank(Tank *tank)
     WriteQuaternion(node->GetRotation());
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void VectorBufferRTS::ReadTank(uint *id, Vector3 *position, Quaternion *rotation)
 {
     *id = ReadUInt();

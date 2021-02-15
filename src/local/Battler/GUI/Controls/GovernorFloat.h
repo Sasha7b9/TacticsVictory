@@ -11,7 +11,7 @@ enum CellType
 };
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 URHO3D_EVENT(E_GOVERNORCELLCHANGED, GovernorCellChanged)
 {
     URHO3D_PARAM(P_ELEMENT, Element);

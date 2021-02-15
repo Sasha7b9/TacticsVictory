@@ -12,25 +12,25 @@ ImageRTS::ImageRTS(Context *context) :
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 ImageRTS::~ImageRTS()
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::SetSize(int width, int height)
 {
     Image::SetSize(width, height, 4); //-V112
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::RegisterObject(Context* context)
 {
     context->RegisterFactory<ImageRTS>();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::SetPoint(int x, int y, const Color& color)
 {
     if(x < GetWidth() && y < GetHeight())
@@ -39,7 +39,7 @@ void ImageRTS::SetPoint(int x, int y, const Color& color)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
 {
     if((x1 - x0) == 0 && (y1 - y0) == 0)
@@ -94,7 +94,7 @@ void ImageRTS::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::DrawRectangle(int x, int y, int width, int height, const Color &color)
 {
     DrawLine(x, y, x + width, y, color);
@@ -103,7 +103,7 @@ void ImageRTS::DrawRectangle(int x, int y, int width, int height, const Color &c
     DrawLine(x, y, x, y + height, color);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::FillRectangle(int x0, int y0, int width, int height, const Color &color)
 {
     for(int x = x0; x < x0 + width; x++)
@@ -112,7 +112,7 @@ void ImageRTS::FillRectangle(int x0, int y0, int width, int height, const Color 
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::FillRegion(int x, int y, const Color &color)
 {
     replacedColor = GetPixel(x, y);
@@ -122,7 +122,7 @@ void ImageRTS::FillRegion(int x, int y, const Color &color)
     Replace4Points(x, y, color);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::Replace4Points(int x, int y, const Color &color)
 {
     if(y > 0)                       // upper pixel
@@ -159,7 +159,7 @@ void ImageRTS::Replace4Points(int x, int y, const Color &color)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::FillRegion(int x, int y, const Color &color, const Color &colorBound)
 {
     boundingColor = colorBound;
@@ -171,7 +171,7 @@ void ImageRTS::FillRegion(int x, int y, const Color &color, const Color &colorBo
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::CopyImage(int x0, int y0, const ImageRTS &inImage)
 {
     int xMin = x0;
@@ -204,7 +204,7 @@ void ImageRTS::CopyImage(int x0, int y0, const ImageRTS &inImage)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 #define FILL(a, b)                              \
     Color col = GetPixel(a, b);                 \
     if(col != boundingColor && col != color)    \
@@ -213,7 +213,7 @@ void ImageRTS::CopyImage(int x0, int y0, const ImageRTS &inImage)
         Replace4PointsBound(a, b, color);       \
     }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::Replace4PointsBound(int x, int y, const Color &color)
 {
     if(y > 0)
@@ -234,7 +234,7 @@ void ImageRTS::Replace4PointsBound(int x, int y, const Color &color)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::DrawPolyline(const Color &color, int numPoints, const int *xy)
 {
     int numLines = numPoints - 1;
@@ -245,7 +245,7 @@ void ImageRTS::DrawPolyline(const Color &color, int numPoints, const int *xy)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::DrawCircle(float x, float y, float radius, const Color &color, float step)
 {
     for (float angle = 0.0f; angle < 360.0f; angle += step)
@@ -254,13 +254,13 @@ void ImageRTS::DrawCircle(float x, float y, float radius, const Color &color, fl
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 IntVector2 ImageRTS::GetHotSpot() const
 {
     return hotSpot;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ImageRTS::SetHotSpot(int x, int y)
 {
     hotSpot.x_ = x;

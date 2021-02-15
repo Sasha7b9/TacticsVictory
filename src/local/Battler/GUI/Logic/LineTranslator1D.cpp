@@ -15,7 +15,7 @@ LineTranslator1D::LineTranslator1D(int start_, int finish_, float speed_, State 
     position = startPosition == State_PointStart ? start : finish;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void LineTranslator1D::Toggle()
 {
     if(state == State_MoveToFinish || state == State_MoveToStart)
@@ -38,7 +38,7 @@ void LineTranslator1D::Toggle()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 int LineTranslator1D::Update(float dT)
 {
     if(state == State_PointStart)

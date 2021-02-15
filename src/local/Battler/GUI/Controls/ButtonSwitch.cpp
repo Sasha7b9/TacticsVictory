@@ -11,7 +11,7 @@ ButtonSwitch::ButtonSwitch(Context *context) :
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 ButtonSwitch::ButtonSwitch(UIElement *uielement, char *text, int width, int height) :
     ButtonRTS(uielement, text, width, height)
 {
@@ -20,7 +20,7 @@ ButtonSwitch::ButtonSwitch(UIElement *uielement, char *text, int width, int heig
     SubscribeToEvent(this, E_RELEASED, URHO3D_HANDLER(ButtonSwitch, HandleButtonRelease));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ButtonSwitch::RegisterObject(Context *context)
 {
     context->RegisterFactory<ButtonSwitch>("UI");
@@ -28,13 +28,13 @@ void ButtonSwitch::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(ButtonRTS);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ButtonSwitch::AddState(char *item)
 {
     items.Push(item);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ButtonSwitch::HandleButtonRelease(StringHash, VariantMap&)
 {
     state++;
@@ -46,13 +46,13 @@ void ButtonSwitch::HandleButtonRelease(StringHash, VariantMap&)
     SetText(items[state]);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 uint ButtonSwitch::GetState()
 {
     return state;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ButtonSwitch::SetState(uint state_)
 {
     state = state_;

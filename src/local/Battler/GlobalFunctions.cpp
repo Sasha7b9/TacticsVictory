@@ -9,7 +9,7 @@ void SetWindowInCenterScreen(Window *window)
     window->SetPosition(gGraphics->GetWidth() / 2 - window->GetWidth() / 2, gGraphics->GetHeight() / 2 - window->GetHeight() / 2);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
 {
     SAFE_DELETE(gFileSelector); //-V809
@@ -30,7 +30,7 @@ void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<
     gFileSelector->SetFilters(filters, 0);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 unsigned GetLastModifiedTime(char* name)
 {
     String fullName = gFileSystem->GetProgramDir();
@@ -40,7 +40,7 @@ unsigned GetLastModifiedTime(char* name)
     return gFileSystem->GetLastModifiedTime(fullName);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 String GetNameFile(const char *name)
 {
     String fullName;
@@ -80,7 +80,7 @@ String GetNameFile(const char *name)
     return fullName;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 String IntToString(int value, uint length)
 {
     String str(value);
@@ -91,7 +91,7 @@ String IntToString(int value, uint length)
     return str;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
 {
     for(String word : words)

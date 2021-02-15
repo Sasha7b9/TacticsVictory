@@ -68,12 +68,12 @@ MenuStart::MenuStart(Context *context) : WindowMenu(context)
     SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 MenuStart::~MenuStart()
 {
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     if(!gMenu->IsActive())

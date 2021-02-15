@@ -44,7 +44,7 @@ void FUNC_MSG_SEND_LANDSCAPE(Connection *connection, MemoryBuffer &in, VectorBuf
     connection->SendMessage(MSG_REQUEST_TANKS, true, true, VectorBuffer());
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void FUNC_MSG_SEND_TANKS(Connection *, MemoryBuffer &in, VectorBufferRTS &)
 {
     uint numTanks = in.ReadUInt();
@@ -62,7 +62,7 @@ void FUNC_MSG_SEND_TANKS(Connection *, MemoryBuffer &in, VectorBufferRTS &)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void FUNC_MSG_SEND_SCREENSHOT(Connection *, MemoryBuffer &in, VectorBufferRTS &)
 {
     volatile uint numTanks = in.ReadUInt();

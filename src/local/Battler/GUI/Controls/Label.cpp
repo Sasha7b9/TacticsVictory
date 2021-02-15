@@ -11,7 +11,7 @@ Label::Label(Context *context) :
     SubscribeToEvent(E_CHANGELANGUAGE, URHO3D_HANDLER(Label, HandleChangeLanguage));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Label::RegisterObject(Context *context)
 {
     context->RegisterFactory<Label>("UI");
@@ -19,7 +19,7 @@ void Label::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(Text);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SharedPtr<Label> Label::Create(char *text_, bool center, int sizeFont, int width, int height)
 {
     SharedPtr<Label> text(new Label(gContext));
@@ -52,7 +52,7 @@ SharedPtr<Label> Label::Create(char *text_, bool center, int sizeFont, int width
     return text;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Label::SetText(char *t)
 {
     text = t;
@@ -60,7 +60,7 @@ void Label::SetText(char *t)
     Text::SetText(gLocalization->Get(text));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Label::HandleChangeLanguage(StringHash, VariantMap&)
 {
     Text::SetText((char*)gLocalization->Get(text).CString());

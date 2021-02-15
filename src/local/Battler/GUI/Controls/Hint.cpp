@@ -18,7 +18,7 @@ Hint::Hint(char *text_) : WindowRTS(), text(text_)
     SubscribeToEvent(E_CHANGELANGUAGE, URHO3D_HANDLER(Hint, HandleChangeLanguage));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Hint::HandleChangeLanguage(StringHash, VariantMap&)
 {
     label->SetText(text);

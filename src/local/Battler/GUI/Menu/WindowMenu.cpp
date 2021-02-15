@@ -12,7 +12,7 @@ WindowMenu::WindowMenu(Context *context) : WindowRTS(context)
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WindowMenu::SendEventClose()
 {
     using namespace MenuEvent;
@@ -24,20 +24,20 @@ void WindowMenu::SendEventClose()
     SendEvent(E_MENU, eventData);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WindowMenu::Open(WindowMenu *prev)
 {
     prevMenu = prev;
     gUIRoot->AddChild(this);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WindowMenu::Close()
 {
     gUIRoot->RemoveChild(this);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WindowMenu::ProcessingKey(int key)
 {
     if(KEY_IS_ESC)
@@ -54,14 +54,14 @@ void WindowMenu::ProcessingKey(int key)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WindowMenu::SetFocusedNext()
 {
     int numButton = (NumFocusedButton() + 1) % (int)buttons.Size();
     buttons[(uint)numButton]->SetFocus(true);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void WindowMenu::SetFocusedPrev()
 {
     int numButton = NumFocusedButton() - 1;
@@ -72,7 +72,7 @@ void WindowMenu::SetFocusedPrev()
     buttons[(uint)numButton]->SetFocus(true);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 int WindowMenu::NumFocusedButton()
 {
     for (uint i = 0; i < buttons.Size(); i++)

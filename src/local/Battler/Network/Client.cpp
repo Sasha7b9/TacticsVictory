@@ -15,32 +15,32 @@ Client::Client(Context *context) : Object(context)
     SubscribeToEvent(E_SERVERDISCONNECTED, URHO3D_HANDLER(Client, HandleServerDisconnected));
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Client::~Client()
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Client::StartConnecting(const String &address, uint16 port, pFuncVV _funcOnConnect)
 {
     funcOnConnect = _funcOnConnect;
     network->Connect(address, port, nullptr);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool Client::IsConnected()
 {
     return connection != nullptr;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Connection *Client::GetServerConnection()
 {
     return connection;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Client::Send(int msgID, const VectorBufferRTS &msg)
 {
     if(connection)
@@ -49,13 +49,13 @@ void Client::Send(int msgID, const VectorBufferRTS &msg)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Client::Disconnect()
 {
     network->Disconnect();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 uint16 Client::GetPort()
 {
     if(connection)
@@ -65,7 +65,7 @@ uint16 Client::GetPort()
     return 0;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Client::HandleServerConnected(StringHash, VariantMap&)
 {
     connection = network->GetServerConnection();
@@ -78,7 +78,7 @@ void Client::HandleServerConnected(StringHash, VariantMap&)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Client::HandleServerDisconnected(StringHash, VariantMap&)
 {
     connection = nullptr;

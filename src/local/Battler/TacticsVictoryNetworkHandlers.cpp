@@ -23,7 +23,7 @@ void TacticsVictory::HandleConnecFailed(StringHash, VariantMap&)
     SetWindowTitleAndIcon();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::HandleClientConnected(StringHash, VariantMap& eventData)
 {
     Connection *connection = dynamic_cast<Connection*>(eventData[ClientConnected::P_CONNECTION].GetPtr());
@@ -33,7 +33,7 @@ void TacticsVictory::HandleClientConnected(StringHash, VariantMap& eventData)
     LOGINFOF(s.str().c_str());
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
 {
     Connection *connection = dynamic_cast<Connection*>(eventData[ClientConnected::P_CONNECTION].GetPtr());
@@ -45,7 +45,7 @@ void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
     gEngine->Exit();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
 {
     using namespace NetworkMessage;

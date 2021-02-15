@@ -52,18 +52,18 @@ Rocket::Rocket(Context *context)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Rocket::~Rocket()
 {
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::RegisterObject(Context *context)
 {
     context->RegisterFactory<Rocket>();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position_, Tank *target_)
 {
     state = Begin;
@@ -90,7 +90,7 @@ void Rocket::Init(const Vector3 &speedShooter, const Vector3 &position_, Tank *t
     rotate = Quaternion(Vector3::UP, Vector3::UP);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target)
 {
     SharedPtr<Rocket> rocket;
@@ -128,7 +128,7 @@ SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &pos
     return rocket;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::LoadFromFile()
 {
     if (rockets.Size())
@@ -144,7 +144,7 @@ void Rocket::LoadFromFile()
     model->SetViewMask(VIEW_MASK_FOR_EFFECTS);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::Normalize()
 {
     node_->SetPosition({0.0f, 0.0f, 0.0f});
@@ -166,7 +166,7 @@ void Rocket::Normalize()
     node_->SetScale(scale);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::UpdateBegin()
 {
     position += speed * dT;
@@ -183,7 +183,7 @@ void Rocket::UpdateBegin()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::UpdateEscortTarget()
 {
     // Calculate necessary angle to target
@@ -219,7 +219,7 @@ void Rocket::UpdateEscortTarget()
     position += speed * dT;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::CreateSmoke()
 {
     const uint NUM_BILLBOARDS = 50;
@@ -248,7 +248,7 @@ void Rocket::CreateSmoke()
     billboardObjectSmoke->Commit();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::CalculateAnimate()
 {
     const float BILLBOARD_ROTATION_SPEED = 500.0f;
@@ -259,7 +259,7 @@ void Rocket::CalculateAnimate()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::AnimateSmoke()
 {
     uint size = billboardsSmoke.Size();
@@ -286,7 +286,7 @@ void Rocket::AnimateSmoke()
     billboardObjectSmoke->Commit();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::UpdateOn()
 {
     if(!isCalculated)
@@ -313,14 +313,14 @@ void Rocket::UpdateOn()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ThreadRocket::SetParameters(uint startIndex, uint endIndex)
 {
     start = startIndex;
     end = endIndex;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ThreadRocket::ThreadFunction()
 {
     if(IN_PAUSE)
@@ -360,7 +360,7 @@ void ThreadRocket::ThreadFunction()
     */
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::SetParameters(float timeStep)
 {
     dT = timeStep;
@@ -392,7 +392,7 @@ void Rocket::SetParameters(float timeStep)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::StopAllThreads()
 {
     static uint numCPU = 1; // GetNumLogicalCPUs();
@@ -405,7 +405,7 @@ void Rocket::StopAllThreads()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::UpdateAll(float timeStep)
 {
     gProfiler->BeginBlock("Rocket::UpdateAll");
@@ -438,7 +438,7 @@ void Rocket::UpdateAll(float timeStep)
     gProfiler->EndBlock();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::VerifyOnIntersectionTerrain()
 {
     Vector3 direction = speed;
@@ -467,7 +467,7 @@ void Rocket::VerifyOnIntersectionTerrain()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::HandlePostRenderUpdate(StringHash, VariantMap&)
 {
     for (uint i = 0; i < rockets.Size(); i++)
@@ -481,7 +481,7 @@ void Rocket::HandlePostRenderUpdate(StringHash, VariantMap&)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Rocket::DeleteAll()
 {
     static uint numCPU = GetNumLogicalCPUs();

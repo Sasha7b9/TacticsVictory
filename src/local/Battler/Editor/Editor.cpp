@@ -20,7 +20,7 @@ Editor::Editor(Context *context) : Object(context)
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Editor::Run()
 {
     Node* zoneNode = gScene->CreateChild("Zone");
@@ -76,14 +76,14 @@ void Editor::Run()
     */
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Editor::ClearScene()
 {
     SAFE_DELETE(gTerrain); //-V809
     gScene->RemoveChild(lightNode);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 {
     if (!gTerrain || gTerrain->Empty())
@@ -181,7 +181,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
     */
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Editor::HandleMouseDown(StringHash, VariantMap&)
 {
     if (gHint && gCounterHint != 0)
@@ -221,7 +221,7 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Editor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 {
     int key = eventData[KeyDown::P_KEY].GetInt();

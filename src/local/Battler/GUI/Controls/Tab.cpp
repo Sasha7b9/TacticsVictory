@@ -13,7 +13,7 @@ Tab::Tab(Context *) :
     SetMovable(false);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Tab::RegisterObject(Context *context)
 {
     context->RegisterFactory<Tab>("UI");
@@ -21,7 +21,7 @@ void Tab::RegisterObject(Context *context)
     URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SharedPtr<Tab> Tab::Create(char *title)
 {
     SharedPtr<Tab> tab(new Tab(gContext));

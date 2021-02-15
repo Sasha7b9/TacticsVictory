@@ -22,7 +22,7 @@ ConsoleParser::ConsoleParser(Context *context) : Object(context)
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ConsoleParser::Execute(const String &string)
 {
     const ParserStruct structs[100] =
@@ -50,7 +50,7 @@ void ConsoleParser::Execute(const String &string)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::ShowBriefHelp(const ParserStruct *structs, const Vector<String> &words)
 {
     if(words[0] == "?")
@@ -87,7 +87,7 @@ bool ConsoleParser::ShowBriefHelp(const ParserStruct *structs, const Vector<Stri
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::ShowFullHelp(const ParserStruct *structs, Vector<String> &words)
 {
     const ParserStruct *str = structs;
@@ -111,7 +111,7 @@ bool ConsoleParser::ShowFullHelp(const ParserStruct *structs, Vector<String> &wo
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::ExecuteCommand(const ParserStruct *structs, Vector<String> &words)
 {
     const ParserStruct *str = structs;
@@ -139,7 +139,7 @@ bool ConsoleParser::ExecuteCommand(const ParserStruct *structs, Vector<String> &
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::ExtractInt(const String &str, int *value)
 {
     Vector<String> words = str.Split(':');
@@ -153,7 +153,7 @@ bool ConsoleParser::ExtractInt(const String &str, int *value)
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::ExtractFloat(const String &str, float *value)
 {
     Vector<String> words = str.Split(':');
@@ -167,13 +167,13 @@ bool ConsoleParser::ExtractFloat(const String &str, float *value)
     return false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::BeginFrom(const String &str, const char *begin)
 {
     return str.Substring(str[0] == '-' ? 1U : 0U, static_cast<uint>(strlen(begin))) == String(begin); //-V202
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool showInfo)
 {
     const ParserStruct *str = structs;
@@ -269,7 +269,7 @@ ConsoleRTS::ConsoleRTS(Context *context) :
     HandleResize("", map);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ConsoleRTS::Toggle()
 {
    SetVisible(!IsVisible());
@@ -280,13 +280,13 @@ void ConsoleRTS::Toggle()
    }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool ConsoleRTS::IsActive()
 {
     return lineEdit->HasFocus();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ConsoleRTS::HandleFinishedText(StringHash, VariantMap&)
 {
     String command = lineEdit->GetText();
@@ -305,7 +305,7 @@ void ConsoleRTS::HandleFinishedText(StringHash, VariantMap&)
     lineEdit->SetText("");
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ConsoleRTS::HandleUnhandledKey(StringHash, VariantMap& eventData) //-V2009
 {
     using namespace UnhandledKey;
@@ -321,13 +321,13 @@ void ConsoleRTS::HandleUnhandledKey(StringHash, VariantMap& eventData) //-V2009
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ConsoleRTS::HandleClick(StringHash, VariantMap&)
 {
     lineEdit->SetFocus(true);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ConsoleRTS::HandleResize(StringHash, VariantMap&)
 {
     lineEdit->SetSize(GetWidth() - 20, 15);
@@ -355,7 +355,7 @@ void ConsoleRTS::HandleResize(StringHash, VariantMap&)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ConsoleRTS::Write(const String &message)
 {
     if(message[0] == '>')
@@ -386,7 +386,7 @@ void ConsoleRTS::Write(const String &message)
     HandleResize("", map);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ConsoleRTS::Clear()
 {
     text->SetText("");
@@ -410,7 +410,7 @@ History::History()
     position = static_cast<int>(strings.Size());
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 History::~History()
 {
     SharedPtr<File> file;
@@ -432,7 +432,7 @@ History::~History()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void History::AddString(const String &string)
 {
     if(strings.Contains(string))
@@ -443,7 +443,7 @@ void History::AddString(const String &string)
     position = static_cast<int>(strings.Size());
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 String History::GetPrev()
 {
     if(strings.Size() == 0)
@@ -460,7 +460,7 @@ String History::GetPrev()
     return strings[static_cast<uint>(position)];
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 String History::GetNext()
 {
     if(strings.Size() == 0)

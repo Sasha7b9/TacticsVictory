@@ -11,7 +11,7 @@ int Math::CircularIncrease(int value, int min, int max)
     return (value > max) ? min : value;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 BoundingBox Math::CalculateBoundingBox(const float *buffer, uint numVertexes)
 {
     BoundingBox box(1e6f, -1e6f);

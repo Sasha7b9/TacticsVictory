@@ -15,7 +15,7 @@ bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::St
     return keyLeft.numFrame == keyRight.numFrame && keyLeft.type == keyRight.type;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 #define border       Color::CYAN
 #define transparent {0.0f, 0.0f, 0.0f, 0.0f}
 
@@ -46,19 +46,19 @@ CursorRTS::CursorRTS() : Object(gContext)
     nodeSprite->SetEnabled(true);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorRTS::Show()
 {
     hidden = false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorRTS::Hide()
 {
     hidden = true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SharedPtr<Cursor> CursorRTS::GetCursor()
 {
     return cursor;
@@ -175,19 +175,19 @@ void CursorRTS::Update(float dT)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorRTS::SetNormal()
 {
     selected = false;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorRTS::SetSelected()
 {
     selected = true;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Drawable* CursorRTS::GetRaycastNode(Vector3 *hitPos_)
 {
     if(gUI->GetElementAt(gUI->GetCursorPosition(), true))
@@ -219,7 +219,7 @@ Drawable* CursorRTS::GetRaycastNode(Vector3 *hitPos_)
     return nullptr;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 CursorShapes::CursorShapes() : Object(gContext)
 {
     /*
@@ -230,7 +230,7 @@ CursorShapes::CursorShapes() : Object(gContext)
     */
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SharedPtr<ImageRTS> CursorShapes::GetShape(TypeCursor type, int numFrame)
 {
     typedef void(CursorShapes::*pToFunc)(int);
@@ -260,7 +260,7 @@ SharedPtr<ImageRTS> CursorShapes::GetShape(TypeCursor type, int numFrame)
     return map[key];
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int *y2)
 {
     float size = 100.0f;
@@ -277,12 +277,12 @@ void CursorShapes::CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int 
     *y2 = static_cast<int>(size / 2.0f + Sin(angle1) * radius);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 #define DRAW_LINE(color, num, val0, val1, val2, val3, val4, val5, val6, val7)   \
     int buffer[] = {val0, val1, val2, val3, val4, val5, val6, val7};            \
     image->DrawPolyline(color, num, buffer);
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CreateNormal(int numFrame)
 {
     numFrame *= 10;
@@ -306,7 +306,7 @@ void CursorShapes::CreateNormal(int numFrame)
     map[key] = image;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CreateSelected(int numFrame)
 {
     numFrame *= 10;
@@ -332,7 +332,7 @@ void CursorShapes::CreateSelected(int numFrame)
     map[key] = image;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CreateLeft(int numFrame)
 {
     SharedPtr<ImageRTS> image(new ImageRTS());
@@ -353,7 +353,7 @@ void CursorShapes::CreateLeft(int numFrame)
     map[key] = image;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CreateRight(int numFrame)
 {
     SharedPtr<ImageRTS> image(new ImageRTS());
@@ -374,7 +374,7 @@ void CursorShapes::CreateRight(int numFrame)
     map[key] = image;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CreateUp(int numFrame)
 {
     SharedPtr<ImageRTS> image(new ImageRTS());
@@ -395,7 +395,7 @@ void CursorShapes::CreateUp(int numFrame)
     map[key] = image;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CreateDown(int numFrame)
 {
     SharedPtr<ImageRTS> image(new ImageRTS());
@@ -414,7 +414,7 @@ void CursorShapes::CreateDown(int numFrame)
     map[key] = image;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CreateTopLeft(int numFrame)
 {
     SharedPtr<ImageRTS> image(new ImageRTS());
@@ -432,7 +432,7 @@ void CursorShapes::CreateTopLeft(int numFrame)
     map[key] = image;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CreateTopRight(int numFrame)
 {
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
@@ -449,7 +449,7 @@ void CursorShapes::CreateTopRight(int numFrame)
     map[key] = image;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CreateDownLeft(int numFrame)
 {
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
@@ -466,7 +466,7 @@ void CursorShapes::CreateDownLeft(int numFrame)
     map[key] = image;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CreateDownRight(int numFrame)
 {
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
@@ -484,7 +484,7 @@ void CursorShapes::CreateDownRight(int numFrame)
     map[key] = image;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::CreateBusy(int numFrame)
 {
     int size = 72;
@@ -503,7 +503,7 @@ void CursorShapes::CreateBusy(int numFrame)
     map[key] = image;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 #define CORRECTION_COLOR            \
     colorComponent += dColor;       \
     if(colorComponent > 1.0f)       \
@@ -517,7 +517,7 @@ void CursorShapes::CreateBusy(int numFrame)
             colorComponent = 0.0f;  \
     }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 #define CALCULATE_COLORS(T)                                 \
     if(type == T)                                           \
     {                                                       \
@@ -531,13 +531,13 @@ void CursorShapes::CreateBusy(int numFrame)
         dColor = -dColor;                                   \
     }                   
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 #undef DRAW_LINE
 #define DRAW_LINE(img, x0_, y0_, x1_, y1_)                                                               \
     img->DrawLine(x0_, y0_, x1_, y1_, {colorComponent, colorComponent, colorComponent, 1.0f});    \
     CORRECTION_COLOR
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void CursorShapes::FillGradient(ImageRTS *image, TypeCursor type, int numFrame) //-V2008
 {
     int width = image->GetWidth();

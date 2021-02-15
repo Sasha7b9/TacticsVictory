@@ -21,7 +21,7 @@ ContextMenuUnit::ContextMenuUnit(Context *context) :
     AddChild(title);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ContextMenuUnit::Create(GameObject *object_)
 {
     object = object_;
@@ -33,7 +33,7 @@ void ContextMenuUnit::Create(GameObject *object_)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ContextMenuUnit::CreateForUnit()
 {
     SharedPtr<ButtonToggled> button(new ButtonToggled(nullptr, "Field View", 100));
@@ -41,7 +41,7 @@ void ContextMenuUnit::CreateForUnit()
     AddChild(button);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void ContextMenuUnit::HandleToggledFiedView(StringHash, VariantMap& eventData) //-V2009
 {
     bool state = (bool)eventData[Toggled::P_STATE].GetBool();

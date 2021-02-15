@@ -35,7 +35,7 @@ void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 {
     int key = eventData[KeyDown::P_KEY].GetInt();
@@ -100,7 +100,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData) //-V2009
 {
     int typeEvent = eventData[MenuEvent::P_TYPE].GetInt();
@@ -120,7 +120,7 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData) //-V2009
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
 {
     float time = eventData[Update::P_TIMESTEP].GetFloat();
@@ -149,7 +149,7 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& eventData) //-V2009
 {
     float time = eventData[Update::P_TIMESTEP].GetFloat();

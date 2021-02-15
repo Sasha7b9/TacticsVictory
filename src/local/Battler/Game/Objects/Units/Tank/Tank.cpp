@@ -33,19 +33,19 @@ Tank::Tank(Context *context) : UnitObject(context)
     rocketLauncher = new RocketLauncher(gContext, this);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Tank::~Tank()
 {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Tank::RegisterObject(Context* context)
 {
     context->RegisterFactory<Tank>();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Tank::RegisterInAS()
 {
     asIScriptEngine *engine = gScript->GetScriptEngine();
@@ -59,7 +59,7 @@ void Tank::RegisterInAS()
 #pragma warning(pop)
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Tank::Init(TypeTank type_, uint _id_)
 {
     node_->SetVar("PointerTank", this);
@@ -91,7 +91,7 @@ void Tank::Init(TypeTank type_, uint _id_)
     */
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Tank::LoadFromFile()
 {
     char *fileName = parameters[typeTank].fileName; //-V108 //-V2006
@@ -125,7 +125,7 @@ void Tank::LoadFromFile()
     timeLastModified = GetLastModifiedTime(parameters[typeTank].fileName); //-V108 //-V2006
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Tank::SetCoord(const Coord& coord)
 {
     PODVector<Coord> path;
@@ -133,7 +133,7 @@ void Tank::SetCoord(const Coord& coord)
     translator->SetPath(path);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Tank::Update(float dT)
 {
     gProfiler->BeginBlock("Tank::Update");
@@ -191,27 +191,27 @@ void Tank::Update(float dT)
     gProfiler->EndBlock();
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Tank::SetPath(const PODVector<Coord> &path)
 {
     translator->SetPath(path, speed);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Tank::SetRotation(float rotation)
 {
     Quaternion rotate(deltaRotate + rotation, Vector3::UP);
     node_->SetRotation(rotate);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 float Tank::GetRotation()
 {
     float ret = node_->GetRotation().YawAngle() - deltaRotate;
     return ret > 0 ? ret : ret + 360.0f;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
 {
     SharedPtr<Node> node(gScene->CreateChild(NODE_TANK, LOCAL));
@@ -222,7 +222,7 @@ SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
     return tank;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
 {
     Tank *tank = dynamic_cast<Tank*>(eventData[AmmoEvent::P_OBJECT].GetPtr());
@@ -237,19 +237,19 @@ void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
     Particles::EmittingDinamic(Fire_Tank, node_);
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Node* Tank::GetNode()
 {
     return node_;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 PODVector<Tank*>& Tank::GetAll()
 {
     return allTanks;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Tank* Tank::GetByID(uint id)
 {
     for(Tank *tank : allTanks)
