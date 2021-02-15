@@ -2,7 +2,6 @@
 #pragma once
 
 
-
 class Movinator : public LogicComponent
 {
     URHO3D_OBJECT(Movinator, LogicComponent);

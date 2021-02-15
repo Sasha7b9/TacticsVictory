@@ -3,7 +3,6 @@
 #include "Game/Path/WaveAlgorithm.h"
 
 
-
 class PathIndicator
 {
 public:

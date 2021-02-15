@@ -2,7 +2,6 @@
 #pragma once
 
 
-
 class Rotator : public LogicComponent
 {
     URHO3D_OBJECT(Rotator, LogicComponent);

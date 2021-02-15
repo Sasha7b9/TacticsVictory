@@ -1,13 +1,10 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "TilePath.h"
-
 
 
 Vector<SharedPtr<TilePath>> TilePath::tiles;
 uint TilePath::numTilesAll = 0;
 uint TilePath::numTilesEnabled = 0;
-
 
 
 TilePath::TilePath() : Object(TheContext)
