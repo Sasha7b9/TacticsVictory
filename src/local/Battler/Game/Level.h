@@ -1,6 +1,6 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
-
+#include "glob_engine.h"
 
 
 URHO3D_EVENT(E_MAP_CHANGED, MapChanged)
