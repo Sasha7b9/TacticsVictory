@@ -82,7 +82,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
         }
     }
     
-    if(!gUI->GetFocusElement())
+    if(!TheUI->GetFocusElement())
     {
         if(KEY_IS_9)
         {

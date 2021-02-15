@@ -33,7 +33,7 @@ CursorRTS::CursorRTS() : Object(gContext)
 
     cursor->DefineShape("Normal", image, {0, 0, size, size}, {0, 0});
     cursor->SetName("Cursor");
-    gUI->SetCursor(cursor);
+    TheUI->SetCursor(cursor);
     cursor->SetPosition(gGraphics->GetWidth() / 2, gGraphics->GetHeight() / 2);
 
     shapes = new CursorShapes();
@@ -189,7 +189,7 @@ void CursorRTS::SetSelected()
 
 Drawable* CursorRTS::GetRaycastNode(Vector3 *hitPos_)
 {
-    if(gUI->GetElementAt(gUI->GetCursorPosition(), true))
+    if(TheUI->GetElementAt(TheUI->GetCursorPosition(), true))
     {
         return nullptr;
     }

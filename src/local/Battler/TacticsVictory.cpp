@@ -135,11 +135,11 @@ void TacticsVictory::Start()
     {
         SetWindowTitleAndIcon();
         CreateConsoleAndDebugHud();
-        gUI = GetSubsystem<UI>();
+        TheUI = GetSubsystem<UI>();
         gInput = GetSubsystem<Input>();
         gRenderer = GetSubsystem<Renderer>();
         gDebugRenderer = gScene->GetComponent<DebugRenderer>();
-        gUIRoot = gUI->GetRoot();
+        gUIRoot = TheUI->GetRoot();
         gUIRoot->SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
         gGUI = new GUI();
         LOGINFO("Загружаю настройки");
@@ -147,7 +147,7 @@ void TacticsVictory::Start()
         gFileSelector = new FileSelector(gContext);
         gFileSelector->GetWindow()->SetModal(false);
         gFileSelector->GetWindow()->SetVisible(false);
-        gAudio = GetSubsystem<Audio>();
+        TheAudio = GetSubsystem<Audio>();
     }
     
     RegistrationComponets();
@@ -173,9 +173,9 @@ void TacticsVictory::Start()
 
 void TacticsVictory::SetLocalization()
 {
-    gLocalization = GetSubsystem<Localization>();
-    gLocalization->LoadJSONFile("Strings.json");
-    gLocalization->SetLanguage("ru");
+    TheLocalization = GetSubsystem<Localization>();
+    TheLocalization->LoadJSONFile("Strings.json");
+    TheLocalization->SetLanguage("ru");
 }
 
 

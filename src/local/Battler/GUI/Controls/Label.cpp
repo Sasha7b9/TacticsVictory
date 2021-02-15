@@ -56,11 +56,11 @@ void Label::SetText(char *t)
 {
     text = t;
 
-    Text::SetText(gLocalization->Get(text));
+    Text::SetText(TheLocalization->Get(text));
 }
 
 
 void Label::HandleChangeLanguage(StringHash, VariantMap&)
 {
-    Text::SetText((char*)gLocalization->Get(text).CString());
+    Text::SetText((char*)TheLocalization->Get(text).CString());
 }

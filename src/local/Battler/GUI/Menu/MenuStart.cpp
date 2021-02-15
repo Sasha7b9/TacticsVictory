@@ -99,7 +99,7 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     else if (button == buttonLanguage)
     {
-        gLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
+        TheLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
         gSet->SetInt(TV_LANGUAGE, static_cast<int>(buttonLanguage->GetState()));
     }
     else if (button == buttonExit)

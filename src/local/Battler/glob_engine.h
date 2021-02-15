@@ -29,9 +29,9 @@ class Server;
 class Client;
 
 
-extern Audio                *gAudio;
-extern Localization         *gLocalization;
-extern UI                   *gUI;
+extern Audio                *TheAudio;
+extern Localization         *TheLocalization;
+extern UI                   *TheUI;
 extern UIElement            *gUIRoot;
 extern ResourceCache        *gCache;
 extern Engine               *gEngine;

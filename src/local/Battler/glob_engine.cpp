@@ -2,9 +2,9 @@
 #include <stdafx.h>
 
 
-Audio               *gAudio = nullptr;
-Localization        *gLocalization = nullptr;
-UI                  *gUI = nullptr;
+Audio               *TheAudio = nullptr;
+Localization        *TheLocalization = nullptr;
+UI                  *TheUI = nullptr;
 UIElement           *gUIRoot = nullptr;
 ResourceCache       *gCache = nullptr;
 Engine              *gEngine = nullptr;

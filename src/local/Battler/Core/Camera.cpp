@@ -38,7 +38,7 @@ CameraRTS::CameraRTS()
         SetupViewport();
         Node *listenerNode = cameraNode->CreateChild("Listener");
         SoundListener *listener = listenerNode->CreateComponent<SoundListener>();
-        gAudio->SetListener(listener);
+        TheAudio->SetListener(listener);
     }
 }
 
@@ -318,6 +318,6 @@ SharedPtr<Node> CameraRTS::GetNode()
 
 Ray CameraRTS::GetCursorRay()
 {
-    IntVector2 pos = gUI->GetCursorPosition();
+    IntVector2 pos = TheUI->GetCursorPosition();
     return cameraNode->GetComponent<Camera>()->GetScreenRay(static_cast<float>(pos.x_) / gGraphics->GetWidth(), static_cast<float>(pos.y_) / gGraphics->GetHeight());
 }

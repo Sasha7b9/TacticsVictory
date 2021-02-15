@@ -195,7 +195,7 @@ void GUI::Create()
     gWindowVars->AddFunctionFloat("Net speed in, kB/s", GetSpeedNetIN, nullptr);
     gWindowVars->AddFunctionFloat("Net speec out, kB/s", GetSpeedNetOUT, nullptr);
 
-    gLocalization->SetLanguage("en");
+    TheLocalization->SetLanguage("en");
 
     gGuiGame = new GuiGame(gContext);
     gGuiGame->SetVisible(false);
@@ -205,7 +205,7 @@ void GUI::Create()
 
     gCursor = new CursorRTS();
 
-    gLocalization->SetLanguage(gSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
+    TheLocalization->SetLanguage(gSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
 }
 
 

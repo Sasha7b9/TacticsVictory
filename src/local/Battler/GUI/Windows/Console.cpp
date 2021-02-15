@@ -275,7 +275,7 @@ void ConsoleRTS::Toggle()
    if(IsVisible())
    {
        this->BringToFront();
-       gUI->SetFocusElement(lineEdit);
+       TheUI->SetFocusElement(lineEdit);
    }
 }
 
