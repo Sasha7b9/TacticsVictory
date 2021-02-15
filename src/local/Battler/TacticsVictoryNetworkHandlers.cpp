@@ -1,17 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "TacticsVictory.h"
-#include "LogRTS.h"
-#include "Network/Client.h"
-#include "Network/Server.h"
-#include "Network/NetworkMessages.h"
-#include "Network/ClientFunctions.h"
-#include "Network/ServerFunctions.h"
-#include "Network/VectorBufferRTS.h"
-#include "Core/Camera.h"
-#include "Game/Scene.h"
-#include "GUI/GuiGame/GuiGame.h"
-#include "GUI/Windows/Console.h"
 
 
 void TacticsVictory::HandleConnecFailed(StringHash, VariantMap&)
