@@ -1,6 +1,7 @@
 *.pdb
 *.ilk
 *.exe
+archive.zip
 
 
 generated/*
