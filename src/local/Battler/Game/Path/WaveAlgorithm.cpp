@@ -1,12 +1,8 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "WaveAlgorithm.h"
-#include "Scene/Objects/Terrain/Terrain.h"
-
 
 
 #define TERRAIN_HEIGHT_EQUAL(x,y) (fabs(TheTerrain->GetHeight(x, y) - heightStart) < M_EPSILON)
-
 
 
 WaveAlgorithm::WaveAlgorithm(Context *context) : Thread(), Object(context)

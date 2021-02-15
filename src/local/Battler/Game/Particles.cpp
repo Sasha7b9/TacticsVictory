@@ -1,11 +1,8 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Particles.h"
-
 
 
 Vector<Vector<Node*>> Particles::nodesParticles;
-
 
 
 void Particles::Init()

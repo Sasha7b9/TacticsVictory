@@ -2,7 +2,6 @@
 #pragma once
 
 
-
 enum TypeParticles
 {
     Explosion_Tank,
@@ -10,7 +9,6 @@ enum TypeParticles
     Fire_Tank,
     NumParticles
 };
-
 
 
 class Particles

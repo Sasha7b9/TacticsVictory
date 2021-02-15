@@ -2,7 +2,6 @@
 #pragma once
 
 
-
 class TilePath : public Object
 {
     URHO3D_OBJECT(TilePath, Object);

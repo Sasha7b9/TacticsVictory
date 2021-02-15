@@ -3,7 +3,6 @@
 #include "Core/_Structures.h"
 
 
-
 class WaveAlgorithm : public Thread, public Object
 {
     URHO3D_OBJECT(WaveAlgorithm, Object);
