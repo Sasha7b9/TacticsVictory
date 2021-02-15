@@ -60,6 +60,13 @@ void TacticsVictory::Setup()
     engineParameters_[EP_WINDOW_WIDTH] = gSet->GetInt(TV_SCREEN_WIDTH);
     engineParameters_[EP_WINDOW_HEIGHT] = gSet->GetInt(TV_SCREEN_HEIGHT);
     engineParameters_[EP_HEADLESS] = MODE_SERVER;
+
+    if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
+#ifdef DEBUG
+        engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/debug";
+#else
+        engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/release";
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
