@@ -136,6 +136,7 @@ using namespace Urho3D;
 #include "GUI/Menu/MenuRTS.h"
 #include "Editor/Editor.h"
 #include "GUI/Windows/Console.h"
+#include "Network/Client.h"
 
 #include "glob_engine.h"
 #include "glob_game.h"
