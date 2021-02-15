@@ -4,7 +4,7 @@ set _CURRENT_DIR_=%CD%
 
 cd ../..
 
-set PROJECT_DIR=%CD%
+set PROJECT_TANKIST_DIR=%CD%
 
 cd %_CURRENT_DIR_%
 
