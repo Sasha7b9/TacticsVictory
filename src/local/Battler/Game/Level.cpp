@@ -46,7 +46,7 @@ static int PushToVector(const char *data, Vector<float> *vec)
     while(IsCorrectSymbol(*data))
     {
         char add[2] = {*data, 0};
-        strcat(buffer, add);
+        strcat_s(buffer, add);
         retValue++;
         data++;
     }
