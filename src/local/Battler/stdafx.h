@@ -137,7 +137,10 @@ using namespace Urho3D;
 #include "GUI/Menu/MenuRTS.h"
 #include "GUI/Windows/Console.h"
 #include "Network/Client.h"
+#include "Network/ClientFunctions.h"
+#include "Network/NetworkMessages.h"
 #include "Network/Server.h"
+#include "Network/ServerFunctions.h"
 
 #include "glob_engine.h"
 #include "glob_game.h"
