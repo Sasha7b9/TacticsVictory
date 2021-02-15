@@ -128,6 +128,8 @@ using namespace Urho3D;
 #include "Core/Camera.h"
 #include "Game/Level.h"
 #include "Game/Logic/Movinator.h"
+#include "Game/Logic/Rotator.h"
+#include "Game/Path/TilePath.h"
 #include "Graphics/2D/Image.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
