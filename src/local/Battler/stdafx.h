@@ -126,6 +126,7 @@ using namespace Urho3D;
 #include "SettingsTypes.h"
 
 #include "Core/Camera.h"
+#include "Editor/Editor.h"
 #include "Game/Level.h"
 #include "Game/Logic/Movinator.h"
 #include "Game/Logic/Rotator.h"
@@ -134,7 +135,6 @@ using namespace Urho3D;
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/MenuRTS.h"
-#include "Editor/Editor.h"
 #include "GUI/Windows/Console.h"
 #include "Network/Client.h"
 
