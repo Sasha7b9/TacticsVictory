@@ -26,8 +26,8 @@
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/MenuAboutMe.h"
-#include "Network/Client.h"
-#include "Network/Server.h"
+//#include "Network/Client.h"
+//#include "Network/Server.h"
 
 
 

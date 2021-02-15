@@ -14,10 +14,10 @@
 #include "Game/Sounds.h"
 #include "Game/Particles.h"
 #include "GUI/GuiGame/WindowTarget.h"
-#include "Network/Client.h"
-#include "Network/Server.h"
-#include "Network/NetworkMessages.h"
-#include "Network/VectorBufferRTS.h"
+//#include "Network/Client.h"
+//#include "Network/Server.h"
+//#include "Network/NetworkMessages.h"
+//#include "Network/VectorBufferRTS.h"
 
 
 
