@@ -3,7 +3,6 @@
 #include "Game/Path/PathIndicator.h"
 
 
-
 class SceneRTS : public Object
 {
     URHO3D_OBJECT(SceneRTS, Object);

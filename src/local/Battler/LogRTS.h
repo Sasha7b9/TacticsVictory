@@ -1,6 +1,8 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "glob_engine.h"
+
+
+extern Context *TheContext;
 
 
 class LogRTS : public Log
