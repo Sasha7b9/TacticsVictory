@@ -126,12 +126,15 @@ using namespace Urho3D;
 #include "SettingsTypes.h"
 #include "TacticsVictory.h"
 
-#include "Scene/Cameras/Camera.h"
 #include "Editor/Editor.h"
+
+#include "Game/Particles.h"
 #include "Game/Logic/Movinator.h"
 #include "Game/Logic/Rotator.h"
 #include "Game/Path/TilePath.h"
+
 #include "Graphics/2D/Image.h"
+
 #include "GUI/Cursor.h"
 #include "GUI/GUI.h"
 #include "GUi/Controls/_Hint.h"
@@ -140,13 +143,16 @@ using namespace Urho3D;
 #include "GUI/GuiGame/WindowTarget.h"
 #include "GUI/Menu/MenuRTS.h"
 #include "GUI/Windows/Console.h"
+
 #include "Network/_Client.h"
 #include "Network/_ClientFunctions.h"
 #include "Network/_NetworkMessages.h"
 #include "Network/_Server.h"
 #include "Network/_ServerFunctions.h"
 #include "Network/_VectorBufferRTS.h"
+
 #include "Scene/_Level.h"
+#include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/Ammo/_AmmoObject.h"
 
 #include "glob_engine.h"
