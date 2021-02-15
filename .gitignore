@@ -5,3 +5,5 @@
 
 source/TacticsVictory/Debug/*
 source/TacticsVictory/.vs/*
+out/debug/*.dll
+out/release/*
