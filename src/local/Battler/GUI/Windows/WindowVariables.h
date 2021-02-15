@@ -3,9 +3,7 @@
 #include "GUI/Controls/_WindowRTS.h"
 
 
-
 class GovernorFloat;
-
 
 
 class WindowVariables : public WindowRTS
