@@ -110,7 +110,7 @@ int Particles::NumEmitters(Node *node, const String &type)
     int num = 0;
     for (uint i = 0; i < components.Size(); i++)
     {
-        if (components[0]->GetNode()->GetName() == type)
+        if (components[0]->GetNode()->GetName() == type) //-V767
         {
             num++;
         }

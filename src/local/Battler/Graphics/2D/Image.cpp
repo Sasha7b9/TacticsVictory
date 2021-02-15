@@ -247,7 +247,7 @@ void ImageRTS::DrawPolyline(const Color &color, int numPoints, const int *xy)
 
 void ImageRTS::DrawCircle(float x, float y, float radius, const Color &color, float step)
 {
-    for (float angle = 0.0f; angle < 360.0f; angle += step)
+    for (float angle = 0.0f; angle < 360.0f; angle += step) //-V1034
     {
         SetPoint((int)(x + Cos(angle) * radius + 0.5f), (int)(y + Sin(angle) * radius + 0.5f), color);
     }

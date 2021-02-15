@@ -350,7 +350,7 @@ void GovernorFloat::GetOrderAndMantiss(float value, int *order, int *mantiss)
         }
     }
 
-    int sign = buffer[first] == '-' ? -1 : 1;
+    int sign = buffer[first] == '-' ? -1 : 1; //-V557
 
     int startOrder = first + 1;                 // Индекс первого символа порядка
     int lastOrder = startOrder;

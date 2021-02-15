@@ -103,7 +103,7 @@ void MessageCallback(const asSMessageInfo *msg, void *)
     else if(msg->type == asMSGTYPE_INFORMATION)
         type = "AS INFO ";
 
-    LOGINFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message);
+    LOGINFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); //-V111
 }
 
 
@@ -341,7 +341,7 @@ void TacticsVictory::OpenLog()
 {
     gLog = new LogRTS();
     char buffer[50];
-    srand(static_cast<uint>(time(static_cast<time_t*>(0))));
+    srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
 
     if (MODE_SERVER)
     {
