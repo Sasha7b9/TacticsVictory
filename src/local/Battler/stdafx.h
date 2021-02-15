@@ -121,14 +121,16 @@ using namespace Urho3D;
 #pragma warning(pop)
 
 #include "defines.h"
-#include "Game/Level.h"
 #include "GlobalFunctions.h"
 #include "LogRTS.h"
 #include "SettingsTypes.h"
+
 #include "Core/Camera.h"
+#include "Game/Level.h"
 #include "GUI/GUI.h"
 #include "Editor/Editor.h"
 #include "GUI/Windows/Console.h"
+
 #include "glob_engine.h"
 #include "glob_game.h"
 #include "Settings.h"
