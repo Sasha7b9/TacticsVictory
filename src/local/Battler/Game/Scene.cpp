@@ -61,7 +61,7 @@ void SceneRTS::Create()
     // it also defines its volume with a bounding box, but can be rotated (so it does not need to be aligned to the world X, Y
     // and Z axes.) Drawable objects "pick up" the zone they belong to and use it when rendering; several zones can exist
 
-    Node* zoneNode = gScene->CreateChild("Zone");
+    Node* zoneNode = TheScene->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
     // Set same volume as the Octree, set a close bluish fog and some ambient light
     zone->SetBoundingBox(BoundingBox(-1000.0f, 1000.0f));
@@ -104,7 +104,7 @@ void SceneRTS::Create()
     }
 
     SharedPtr<Node> lightNode;
-    lightNode = gScene->CreateChild("LigthNode");
+    lightNode = TheScene->CreateChild("LigthNode");
     Movinator *movinator = lightNode->CreateComponent<Movinator>();
     movinator->SetCenter({level[0].Size() / 2.0f, 25.0f, -(level.Size() / 2.0f)});
     movinator->SetMoveSpeed(0.5f);
@@ -120,7 +120,7 @@ void SceneRTS::Create()
 
     if (MODE_CLIENT)
     {
-        gRenderer->SetShadowMapSize(2048);
+        TheRenderer->SetShadowMapSize(2048);
     }
 
     uint sizeX = level[0].Size();
@@ -257,7 +257,7 @@ void SceneRTS::SetSelected(Tank *tank_, bool selected)
 {
     if(selected)
     {
-        const Vector<SharedPtr<Node>> &nodes = gScene->GetChildren();
+        const Vector<SharedPtr<Node>> &nodes = TheScene->GetChildren();
         for(SharedPtr<Node> node : nodes)
         {
             Tank *tank = node->GetComponent<Tank>();
@@ -273,7 +273,7 @@ void SceneRTS::SetSelected(Tank *tank_, bool selected)
 
 Tank* SceneRTS::GetSelected()
 {
-    const Vector<SharedPtr<Node>> &nodes = gScene->GetChildren();
+    const Vector<SharedPtr<Node>> &nodes = TheScene->GetChildren();
 
     for(SharedPtr<Node> node : nodes)
     {

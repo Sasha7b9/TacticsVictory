@@ -32,7 +32,7 @@
 
 
 
-GUI::GUI() : Object(gContext)
+GUI::GUI() : Object(TheContext)
 {
     RegistrationObjects();
     Create();
@@ -179,10 +179,10 @@ static float GetSpeedNetOUT()
 
 void GUI::Create()
 {
-    gConsole = new ConsoleRTS(gContext);
+    gConsole = new ConsoleRTS(TheContext);
     TheUIRoot->AddChild(gConsole);
 
-    gWindowVars = new WindowVariables(gContext);
+    gWindowVars = new WindowVariables(TheContext);
     TheUIRoot->AddChild(gWindowVars);
     gWindowVars->SetVisible(false);
     gWindowVars->SetPosition(1000, 500);
@@ -197,10 +197,10 @@ void GUI::Create()
 
     TheLocalization->SetLanguage("en");
 
-    gGuiGame = new GuiGame(gContext);
+    gGuiGame = new GuiGame(TheContext);
     gGuiGame->SetVisible(false);
 
-    gGuiEditor = new GuiEditor(gContext);
+    gGuiEditor = new GuiEditor(TheContext);
     gGuiEditor->SetVisible(false);
 
     gCursor = new CursorRTS();

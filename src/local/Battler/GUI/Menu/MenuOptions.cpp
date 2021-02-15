@@ -54,7 +54,7 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
 
     if (MODE_CLIENT)
     {
-        CREATE_DDLWTAB(ddlDynamicInstancing, "Dynamic instancing", 2, items4, gRenderer->GetDynamicInstancing() ? 1U : 0U);
+        CREATE_DDLWTAB(ddlDynamicInstancing, "Dynamic instancing", 2, items4, TheRenderer->GetDynamicInstancing() ? 1U : 0U);
     }
 
     int itemSizes[9] = {64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
@@ -66,7 +66,7 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
     if (MODE_CLIENT)
     {
         char *items7[] = {"low 16bit", "low 24bit", "high 16bit", "high 24bit"};
-        CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, static_cast<uint>(gRenderer->GetShadowQuality())); //-V112
+        CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, static_cast<uint>(TheRenderer->GetShadowQuality())); //-V112
     }
 
     SharedPtr<UIElement> layout(CreateChild<UIElement>());
@@ -105,41 +105,41 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 
     if(ddList == ddlTextureQuality)
     {
-        gRenderer->SetTextureQuality((MaterialQuality)index);
+        TheRenderer->SetTextureQuality((MaterialQuality)index);
         gSet->SetInt(TV_TEXTURE_QUALITY, index);
     }
     else if(ddList == ddlTextureAnisotropy)
     {
-        gRenderer->SetTextureAnisotropy(index + 1);
+        TheRenderer->SetTextureAnisotropy(index + 1);
         gSet->SetInt(TV_TEXTURE_ANISOTROPY, index);
     }
     else if(ddList == ddlMaterialQuality)
     {
-        gRenderer->SetMaterialQuality((MaterialQuality)index);
+        TheRenderer->SetMaterialQuality((MaterialQuality)index);
         gSet->SetInt(TV_MATERIAL_QUALITY, index);
     }
     else if(ddList == ddlShadowsEnabled)
     {
-        gRenderer->SetDrawShadows(index == 1);
+        TheRenderer->SetDrawShadows(index == 1);
         gSet->SetInt(TV_SHADOW_DRAW, index);
     }
     else if(ddList == ddlSpecularLighting)
     {
-        gRenderer->SetSpecularLighting(index == 1);
+        TheRenderer->SetSpecularLighting(index == 1);
         gSet->SetInt(TV_SPECULAR_LIGHTING, index);
     }
     else if(ddList == ddlShadowMapSize)
     {
-        gRenderer->SetShadowMapSize(shadowMapSizes[(uint)index]);
+        TheRenderer->SetShadowMapSize(shadowMapSizes[(uint)index]);
         gSet->SetInt(TV_SHADOW_MAP_SIZE, index);
     }
     else if(ddList == ddlShadowQuality)
     {
-        gRenderer->SetShadowQuality((ShadowQuality)index);
+        TheRenderer->SetShadowQuality((ShadowQuality)index);
     }
     else if(ddList == ddlDynamicInstancing)
     {
-        gRenderer->SetDynamicInstancing(index == 1);
+        TheRenderer->SetDynamicInstancing(index == 1);
     }
 }
 
@@ -151,7 +151,7 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 
     if(slider == sliderMaxOccluderTriangles)
     {
-        gRenderer->SetMaxOccluderTriangles(value);
+        TheRenderer->SetMaxOccluderTriangles(value);
         gSet->SetInt(TV_MAX_OCCLUDER_TRIANGLES, value);
     }
     else if (slider == sliderBrightness)

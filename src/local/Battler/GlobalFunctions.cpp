@@ -11,7 +11,7 @@ void SetWindowInCenterScreen(Window *window)
 void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
 {
     SAFE_DELETE(gFileSelector); //-V809
-    gFileSelector = new FileSelector(gContext);
+    gFileSelector = new FileSelector(TheContext);
     XMLFile *style = TheCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
     gFileSelector->SetDefaultStyle(style);
 

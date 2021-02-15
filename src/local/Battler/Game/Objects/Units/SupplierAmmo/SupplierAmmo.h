@@ -6,7 +6,7 @@
 class SupplierAmmo : public UnitObject
 {
 public:
-    SupplierAmmo(Context *context = gContext);
+    SupplierAmmo(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(SupplierAmmo);

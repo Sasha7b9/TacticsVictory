@@ -16,9 +16,9 @@ class PanelMain : public WindowRTS
     URHO3D_OBJECT(PanelMain, WindowRTS);
 
 public:
-    PanelMain(Context *context = gContext);
+    PanelMain(Context *context = TheContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
 
     virtual void Update(float dT);
     void AddTab(SharedPtr<Tab> tab);

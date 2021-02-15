@@ -8,7 +8,7 @@
 Tab::Tab(Context *) : 
     WindowRTS()
 {
-    buttonTitle = new ButtonToggled(gContext);
+    buttonTitle = new ButtonToggled(TheContext);
     SetMovable(false);
 }
 
@@ -23,7 +23,7 @@ void Tab::RegisterObject(Context *context)
 
 SharedPtr<Tab> Tab::Create(char *title)
 {
-    SharedPtr<Tab> tab(new Tab(gContext));
+    SharedPtr<Tab> tab(new Tab(TheContext));
     tab->buttonTitle = new ButtonToggled(nullptr, title, 125, 17);
     return tab;
 }

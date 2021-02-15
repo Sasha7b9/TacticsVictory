@@ -12,7 +12,7 @@ class Server : public Object
     URHO3D_OBJECT(Server, Object);
 
 public:
-    Server(Context *context = gContext);
+    Server(Context *context = TheContext);
     virtual ~Server();
     bool Start(uint16 port);
     bool IsRunning();

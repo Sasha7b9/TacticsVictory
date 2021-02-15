@@ -9,9 +9,9 @@ class MenuConfirmExit : public WindowMenu
     URHO3D_OBJECT(MenuConfirmExit, WindowMenu);
 
 public:
-    MenuConfirmExit(Context *context = gContext);
+    MenuConfirmExit(Context *context = TheContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
 
 private:
     SharedPtr<ButtonRTS> buttonOk;

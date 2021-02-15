@@ -7,7 +7,7 @@
 class WarehouseAmmo : public BuildingObject
 {
 public:
-    WarehouseAmmo(Context *context = gContext);
+    WarehouseAmmo(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(WarehouseAmmo);

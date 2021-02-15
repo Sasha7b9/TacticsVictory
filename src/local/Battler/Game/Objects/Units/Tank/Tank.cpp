@@ -29,7 +29,7 @@ Tank::Tank(Context *context) : UnitObject(context)
 
     SubscribeToEvent(E_HIT, URHO3D_HANDLER(Tank, HandleAmmoHit));
 
-    rocketLauncher = new RocketLauncher(gContext, this);
+    rocketLauncher = new RocketLauncher(TheContext, this);
 }
 
 
@@ -213,7 +213,7 @@ float Tank::GetRotation()
 
 SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
 {
-    SharedPtr<Node> node(gScene->CreateChild(NODE_TANK, LOCAL));
+    SharedPtr<Node> node(TheScene->CreateChild(NODE_TANK, LOCAL));
     SharedPtr<Tank> tank(node->CreateComponent<Tank>(LOCAL));
 
     tank->Init(typeTank, _id_);

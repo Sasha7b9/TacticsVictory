@@ -90,7 +90,7 @@ enum TypeCursor
 #define KEY_IS_9        (key == KEY_9)
 #define KEY_IS_I        (key == KEY_I)
 
-#define IN_PAUSE        (gScene->GetTimeScale() <= M_EPSILON)
+#define IN_PAUSE        (TheScene->GetTimeScale() <= M_EPSILON)
 
 typedef enum
 {

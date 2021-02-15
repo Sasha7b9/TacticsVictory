@@ -39,11 +39,11 @@ bool Settings::Load()
 
     mapFloatChild[FloatKey(TV_PANEL_SPEED)] = SET::PANEL::SPEED;
 
-    File inFile(gContext);
+    File inFile(TheContext);
 
     if(inFile.Open(nameFile, FILE_READ))
     {
-        file = new XMLFile(gContext);
+        file = new XMLFile(TheContext);
         bool begined = file->BeginLoad(inFile);
         if(begined)
         {
@@ -56,7 +56,7 @@ bool Settings::Load()
     }
     if (file == nullptr)
     {
-        file = new XMLFile(gContext);
+        file = new XMLFile(TheContext);
     }
     root = file->CreateRoot("settings");
     return false;
@@ -136,7 +136,7 @@ void Settings::SetInt(const char *name, int value)
 
 void Settings::Save()
 {
-    File outFile(gContext);
+    File outFile(TheContext);
     outFile.Open(nameFile, FILE_WRITE);
     file->Save(outFile);
 }

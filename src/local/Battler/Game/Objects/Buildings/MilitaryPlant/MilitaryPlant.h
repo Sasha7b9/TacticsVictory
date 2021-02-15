@@ -7,9 +7,9 @@
 class MilitaryPlant : public BuildingObject
 {
 public:
-    MilitaryPlant(Context *context = gContext);
+    MilitaryPlant(Context *context = TheContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
 
     static SharedPtr<MilitaryPlant> Create();
 

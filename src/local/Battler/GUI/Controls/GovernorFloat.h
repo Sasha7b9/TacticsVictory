@@ -26,9 +26,9 @@ class GovernorCell : public WindowRTS
     URHO3D_OBJECT(GovernorCell, WindowRTS);
 
 public:
-    GovernorCell(Context *context = gContext);
+    GovernorCell(Context *context = TheContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
 
     void SetSymbol(char symbol);
     char GetSymbol();
@@ -65,9 +65,9 @@ class GovernorFloat : public WindowRTS
     URHO3D_OBJECT(GovernorFloat, WindowRTS);
 
 public:
-    GovernorFloat(Context *context = gContext);
+    GovernorFloat(Context *context = TheContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
 
     virtual void Update(float timeStep);
 

@@ -6,7 +6,7 @@
 class Laser : public WeaponObject
 {
 public:
-    Laser(Context *context = gContext);
+    Laser(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(Laser);

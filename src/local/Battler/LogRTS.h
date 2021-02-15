@@ -7,7 +7,7 @@ class LogRTS : public Log
     URHO3D_OBJECT(LogRTS, Log);
 
 public:
-    LogRTS(Context *context = gContext);
+    LogRTS(Context *context = TheContext);
     static void Write(int level, const String &message, char *file, char *func, int numLine);
     static void EnableExtendedInfo();
     static void DisableExtendedInfo();

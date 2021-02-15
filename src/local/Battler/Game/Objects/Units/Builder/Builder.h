@@ -6,7 +6,7 @@
 class Builder : public UnitObject
 {
 public:
-    Builder(Context *context = gContext);
+    Builder(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(Builder);

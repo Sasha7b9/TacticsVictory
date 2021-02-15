@@ -20,9 +20,9 @@ public:
         T_34_76
     };
     
-    Tank(Context *context = gContext);
+    Tank(Context *context = TheContext);
     virtual ~Tank();
-    static void RegisterObject(Context* context = gContext);
+    static void RegisterObject(Context* context = TheContext);
     static void RegisterInAS();
     virtual void Update(float timeStep);
     static SharedPtr<Tank> Create(TypeTank type, uint _id_ = 0);

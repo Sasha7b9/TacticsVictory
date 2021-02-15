@@ -22,7 +22,7 @@ Editor::Editor(Context *context) : Object(context)
 
 void Editor::Run()
 {
-    Node* zoneNode = gScene->CreateChild("Zone");
+    Node* zoneNode = TheScene->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
     zone->SetBoundingBox(BoundingBox(-50.0f, 50.0f));
 
@@ -34,7 +34,7 @@ void Editor::Run()
     gTerrain = new TerrainRTS();
     gTerrain->CreateFromVector(level);
 
-    lightNode = gScene->CreateChild("LightNode");
+    lightNode = TheScene->CreateChild("LightNode");
 
     SharedPtr<Light> light(lightNode->CreateComponent<Light>());
     lightNode->SetScale(0.01f);
@@ -65,7 +65,7 @@ void Editor::Run()
     */
 
     /*
-    Node* modelNode = gScene->CreateChild("Tank");
+    Node* modelNode = TheScene->CreateChild("Tank");
     modelNode->SetPosition({4.5f, 0.5f, -5.0f});
     modelNode->SetScale(0.15f);
     StaticModel *modelObject = modelNode->CreateComponent<StaticModel>();
@@ -79,7 +79,7 @@ void Editor::Run()
 void Editor::ClearScene()
 {
     SAFE_DELETE(gTerrain); //-V809
-    gScene->RemoveChild(lightNode);
+    TheScene->RemoveChild(lightNode);
 }
 
 
@@ -102,8 +102,8 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
         if (!selectedPlane.IsZero())
         {
             Color color = Color::BLUE;
-            gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v1, selectedPlane.v2, color, false);
-            gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
+            TheDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v1, selectedPlane.v2, color, false);
+            TheDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
         }
 
         if (!gMenu->IsActive() && !gGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
@@ -116,8 +116,8 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
                 if (!selectedPlane.IsEquals(currentPlane))
                 {
                     Color color = static_cast<int>(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
-                    gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
-                    gDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
+                    TheDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
+                    TheDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
                 }
                 gCursor->SetSelected();
             }
@@ -141,7 +141,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
                 float dX = fabs(currentEdge.start.x_ - currentEdge.end.x_);
                 float dZ = fabs(currentEdge.start.z_ - currentEdge.end.z_);
 
-                gDebugRenderer->AddLine(currentEdge.start, currentEdge.end, color, false);
+                TheDebugRenderer->AddLine(currentEdge.start, currentEdge.end, color, false);
 
                 float d = 0.005f;
                 int numLines = 20;
@@ -150,14 +150,14 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
                 {
                     for (int i = 0; i < numLines; i++)
                     {
-                        gDebugRenderer->AddLine(currentEdge.start + Vector3(d * i - d * numLines / 2, 0.0f, 0.0f), currentEdge.end + Vector3(d * i - d * numLines / 2, 0.0f, 0.0f), color, false);
+                        TheDebugRenderer->AddLine(currentEdge.start + Vector3(d * i - d * numLines / 2, 0.0f, 0.0f), currentEdge.end + Vector3(d * i - d * numLines / 2, 0.0f, 0.0f), color, false);
                     }
                 }
                 else
                 {
                     for (int i = 0; i < numLines; i++)
                     {
-                        gDebugRenderer->AddLine(currentEdge.start + Vector3(0.0f, 0.0f, d * i - d * numLines / 2), currentEdge.end + Vector3(0.0f, 0.0f, d * i - d * numLines / 2), color, false);
+                        TheDebugRenderer->AddLine(currentEdge.start + Vector3(0.0f, 0.0f, d * i - d * numLines / 2), currentEdge.end + Vector3(0.0f, 0.0f, d * i - d * numLines / 2), color, false);
                     }
                 }
             }

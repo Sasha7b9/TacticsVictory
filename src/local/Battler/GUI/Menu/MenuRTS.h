@@ -13,7 +13,7 @@ class MenuRTS : public Object
     URHO3D_OBJECT(MenuRTS, Object)
 
 public:
-    MenuRTS(Context *context = gContext);
+    MenuRTS(Context *context = TheContext);
     ~MenuRTS();
     void Hide();
     bool IsActive();

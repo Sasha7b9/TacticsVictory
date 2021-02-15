@@ -10,11 +10,11 @@ uint TilePath::numTilesEnabled = 0;
 
 
 
-TilePath::TilePath() : Object(gContext)
+TilePath::TilePath() : Object(TheContext)
 {
     float d = 0.0f;
 
-    node = gScene->CreateChild(NODE_TILE_PATH);
+    node = TheScene->CreateChild(NODE_TILE_PATH);
 
     if (tiles.Size() == 0)
     {
@@ -74,7 +74,7 @@ void TilePath::SetPosition(const Vector3 &pos)
 
 void TilePath::SetVisible(bool visible)
 {
-    visible ? gScene->NodeAdded(node) : gScene->NodeRemoved(node);
+    visible ? TheScene->NodeAdded(node) : TheScene->NodeRemoved(node);
 }
 
 

@@ -6,7 +6,7 @@
 class Bomber : public UnitObject
 {
 public:
-    Bomber(Context *context = gContext);
+    Bomber(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(Bomber);

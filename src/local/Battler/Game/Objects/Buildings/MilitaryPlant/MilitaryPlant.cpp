@@ -19,7 +19,7 @@ void MilitaryPlant::RegisterObject(Context *context)
 
 SharedPtr<MilitaryPlant> MilitaryPlant::Create()
 {
-    SharedPtr<Node> node(gScene->CreateChild());
+    SharedPtr<Node> node(TheScene->CreateChild());
     SharedPtr<MilitaryPlant> plant(node->CreateComponent<MilitaryPlant>());
     plant->Init();
     return plant;

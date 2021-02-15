@@ -6,7 +6,7 @@
 class Robot : public UnitObject
 {
 public:
-    Robot(Context *context = gContext);
+    Robot(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(Robot);

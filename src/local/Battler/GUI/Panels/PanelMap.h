@@ -16,9 +16,9 @@ class PanelMap : public WindowRTS
     URHO3D_OBJECT(PanelMap, WindowRTS);
 
 public:
-    PanelMap(Context *context = gContext);
+    PanelMap(Context *context = TheContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
 
     virtual void Update(float timeStep);
 

@@ -248,7 +248,7 @@ bool ConsoleParser::FuncUnitCamera(Vector<String> &words, bool)
                 ExtractFloat(words[1], &fov);
 
                 PODVector<Node*> childrens;
-                gScene->GetChildren(childrens);
+                TheScene->GetChildren(childrens);
                 for(Node *node : childrens)
                 {
                     if(node->GetName() == NODE_CAMERA_TARGET)
@@ -262,7 +262,7 @@ bool ConsoleParser::FuncUnitCamera(Vector<String> &words, bool)
             else if(BeginFrom(words[1], "get"))
             {
                 PODVector<Node*> childrens;
-                gScene->GetChildren(childrens);
+                TheScene->GetChildren(childrens);
                 for(Node *node : childrens)
                 {
                     if(node->GetName() == NODE_CAMERA_TARGET)

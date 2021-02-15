@@ -6,7 +6,7 @@
 class Airplane : public UnitObject
 {
 public:
-    Airplane(Context *context = gContext);
+    Airplane(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(Airplane);

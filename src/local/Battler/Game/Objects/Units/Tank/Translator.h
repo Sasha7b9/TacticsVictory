@@ -11,7 +11,7 @@ class Translator : public Object
     friend class Tank;
 
 public:
-    Translator(Context *context = gContext);
+    Translator(Context *context = TheContext);
 
     static void RegisterInAS();
     void Init(Tank* tank);

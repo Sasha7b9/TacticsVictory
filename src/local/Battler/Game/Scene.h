@@ -17,10 +17,10 @@ public:
         Mode_Client
     };
 
-    SceneRTS(Context *context = gContext, Mode mode = Mode_Server);
+    SceneRTS(Context *context = TheContext, Mode mode = Mode_Server);
     ~SceneRTS();
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
 
     void Update(float timeStep);
     void Create();

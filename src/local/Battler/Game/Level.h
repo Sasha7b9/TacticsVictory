@@ -15,7 +15,7 @@ class Level : public Object
     URHO3D_OBJECT(Level, Object);
 
 public:
-    Level(Context *context = gContext);
+    Level(Context *context = TheContext);
     Vector<Vector<float>> Load(const char *fileName);             // Load from file simple level (from height map)
     bool Save(const String &fileName);
     Vector<Vector<float>> Create(int sizeZ, int sizeX);     // Create a new simpe level height == 0.0f; 

@@ -18,7 +18,7 @@ CubeTerrain::CubeTerrain(Context *context) : Object(context)
 
 
 CubeTerrain::CubeTerrain(uint row, uint col, float height) :
-    Object(gContext)
+    Object(TheContext)
 {
     this->row = row;
     this->col = col;

@@ -26,10 +26,10 @@ void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
     if(drawDebug)
     {
         gPhysicsWorld->DrawDebugGeometry(true);
-        gDebugRenderer->AddLine(Vector3::ZERO, {100.0f, 0.0f, 0.0f}, Color::RED);
-        gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 100.0f, 0.0f}, Color::GREEN);
-        gDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 100.0f}, Color::BLUE);
-        //gRenderer->DrawDebugGeometry(false);
+        TheDebugRenderer->AddLine(Vector3::ZERO, {100.0f, 0.0f, 0.0f}, Color::RED);
+        TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 100.0f, 0.0f}, Color::GREEN);
+        TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 100.0f}, Color::BLUE);
+        //TheRenderer->DrawDebugGeometry(false);
     }
 }
 
@@ -55,18 +55,18 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
     }
     else if(KEY_IS_F11)
     {
-        if(gEngineConsole)
+        if(TheEngineConsole)
         {
-            gEngineConsole->Toggle();
+            TheEngineConsole->Toggle();
         }
         return;
     }
     
     if(KEY_IS_ESC)
     {
-        if(gEngineConsole && gEngineConsole->IsVisible())
+        if(TheEngineConsole && TheEngineConsole->IsVisible())
         {
-            gEngineConsole->SetVisible(false);
+            TheEngineConsole->SetVisible(false);
         }
         else if(gConsole && gConsole->IsVisible())
         {
@@ -137,11 +137,11 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
         scene->Update(time);
     }
 
-    if (gScene)
+    if (TheScene)
     {
         /*
         PODVector<Component*> components;
-        gScene->GetComponents(components, ParticleEmitter::GetTypeStatic(), true);
+        TheScene->GetComponents(components, ParticleEmitter::GetTypeStatic(), true);
         URHO3D_LOGINFOF("%d components", components.Size());
         */
     }

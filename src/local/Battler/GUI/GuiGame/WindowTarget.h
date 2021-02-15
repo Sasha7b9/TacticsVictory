@@ -9,7 +9,7 @@ class WindowTarget : public WindowRTS
     URHO3D_OBJECT(WindowTarget, WindowRTS);
 
 public:
-    WindowTarget(Context *context = gContext);
+    WindowTarget(Context *context = TheContext);
     void AddTank(Tank *tank);
 
 public:

@@ -11,19 +11,19 @@ bool UnitObject::viewTargetView = false;
 
 UnitObject::UnitObject(Context *context) : GameObject(context)
 {
-    Node* nodeCameraTarget = gScene->CreateChild(NODE_CAMERA_TARGET);
+    Node* nodeCameraTarget = TheScene->CreateChild(NODE_CAMERA_TARGET);
     nodeCameraTarget->Pitch(180.0f);
     nodeCameraTarget->Yaw(180.0f);
     cameraTarget = nodeCameraTarget->CreateComponent<Camera>();
     cameraTarget->SetNearClip(0.5f);
     cameraTarget->SetFarClip(100.0f);
 
-    renderTexture = new Texture2D(gContext);
+    renderTexture = new Texture2D(TheContext);
     renderTexture->SetSize(WIDTH_WINDOW_TARGET, HEIGHT_WINDOW_TARGET, Graphics::GetRGBFormat(), TEXTURE_RENDERTARGET);
     renderTexture->SetFilterMode(FILTER_DEFAULT);
 
     renderSurface = renderTexture->GetRenderSurface();
-    SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraTarget));
+    SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene, cameraTarget));
     renderSurface->SetViewport(0, viewport);
 
     nodeCameraTarget->SetVar("renderSurface", Variant(renderSurface));

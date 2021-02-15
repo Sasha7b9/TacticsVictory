@@ -24,7 +24,7 @@ class TerrainRTS : public Object
     URHO3D_OBJECT(TerrainRTS, Object);
 
 public:
-    TerrainRTS(Context *context = gContext);
+    TerrainRTS(Context *context = TheContext);
     ~TerrainRTS();
     void CreateFromVector(const Vector<Vector<float>> &level);
     void SaveToFile(char *nameFie);

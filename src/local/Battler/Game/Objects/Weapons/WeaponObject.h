@@ -6,7 +6,7 @@
 class WeaponObject : public GameObject
 {
 public:
-    WeaponObject(Context *context = gContext);
+    WeaponObject(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(WeaponObject);

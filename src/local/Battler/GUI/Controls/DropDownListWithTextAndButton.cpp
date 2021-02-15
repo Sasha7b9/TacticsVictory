@@ -15,9 +15,9 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(Context *context) :
 
 
 DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int widthText, int widthDDList) :
-    UIElement(gContext)
+    UIElement(TheContext)
 {
-    SharedPtr<Window> window(new Window(gContext));
+    SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
     AddChild(window);
@@ -43,14 +43,14 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
     SubscribeToEvent(ddList, E_HOVERBEGIN, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
     SubscribeToEvent(ddList, E_HOVEREND, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
 
-    buttonLeft = new Button(gContext);
+    buttonLeft = new Button(TheContext);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
     SubscribeToEvent(buttonLeft, E_PRESSED, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleButtonDown));
     SubscribeToEvent(buttonLeft, E_HOVERBEGIN, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
     SubscribeToEvent(buttonLeft, E_HOVEREND, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
 
-    buttonRight = new Button(gContext);
+    buttonRight = new Button(TheContext);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
     SubscribeToEvent(buttonRight, E_PRESSED, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleButtonDown));

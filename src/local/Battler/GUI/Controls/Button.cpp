@@ -18,7 +18,7 @@ ButtonRTS::ButtonRTS(Context *context) :
 
 
 ButtonRTS::ButtonRTS(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
-    Button(gContext)
+    Button(TheContext)
 {
     SetStyleAuto(TheUIRoot->GetDefaultStyle());
     SetStyle("MainMenuButton");

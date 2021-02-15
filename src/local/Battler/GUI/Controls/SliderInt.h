@@ -15,9 +15,9 @@ class SliderInt : public Slider
 {
     URHO3D_OBJECT(SliderInt, Slider);
 public:
-    SliderInt(Context *context = gContext);
+    SliderInt(Context *context = TheContext);
 
-    static void RegisterObject(Context* context = gContext);
+    static void RegisterObject(Context* context = TheContext);
     static SharedPtr<SliderInt> Create(UIElement *uielement, const IntVector2 &size);
 
     void SetRange(int min, int max, int step = 1);

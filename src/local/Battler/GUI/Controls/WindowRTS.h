@@ -17,8 +17,8 @@ class WindowRTS : public Window
     URHO3D_OBJECT(WindowRTS, Window);
 
 public:
-    WindowRTS(Context *context = gContext);
-    static void RegisterObject(Context *context = gContext);
+    WindowRTS(Context *context = TheContext);
+    static void RegisterObject(Context *context = TheContext);
     bool IsChildOfParent();
     void Toggle();
     void SetEnabled();

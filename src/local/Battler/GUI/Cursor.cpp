@@ -20,9 +20,9 @@ bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::St
 
 
 
-CursorRTS::CursorRTS() : Object(gContext)
+CursorRTS::CursorRTS() : Object(TheContext)
 {
-    cursor = new Cursor(gContext);
+    cursor = new Cursor(TheContext);
 
     int size = 100;
 
@@ -38,7 +38,7 @@ CursorRTS::CursorRTS() : Object(gContext)
 
     shapes = new CursorShapes();
 
-    nodeSprite = gScene->CreateChild("Cursor sprite");
+    nodeSprite = TheScene->CreateChild("Cursor sprite");
     staticSprite = nodeSprite->CreateComponent<StaticSprite2D>();
     staticSprite->SetColor(Color(Random(1.0f), Random(1.0f), Random(1.0f), 1.0f));
     staticSprite->SetBlendMode(BLEND_ALPHA);
@@ -162,10 +162,10 @@ void CursorRTS::Update(float dT)
 
             cursor->DefineShape("Normal", image, {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
             /*
-            SharedPtr<Texture2D> texture(new Texture2D(gContext));
+            SharedPtr<Texture2D> texture(new Texture2D(TheContext));
             texture->SetSize(image->GetWidth(), image->GetHeight(), D3DFMT_X8R8G8B8);
             texture->SetData(image->GetUImage());
-            SharedPtr<Sprite2D> sprite(new Sprite2D(gContext));
+            SharedPtr<Sprite2D> sprite(new Sprite2D(TheContext));
             sprite->SetTexture(texture);
             staticSprite->SetSprite(sprite);
             nodeSprite->SetPosition({100.0f, 100.0f, -100.0f});
@@ -197,7 +197,7 @@ Drawable* CursorRTS::GetRaycastNode(Vector3 *hitPos_)
     Ray ray = gCamera->GetCursorRay();
     PODVector<RayQueryResult> results;
     RayOctreeQuery query(results, ray, RAY_TRIANGLE, M_INFINITY, DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
-    gScene->GetComponent<Octree>()->Raycast(query);
+    TheScene->GetComponent<Octree>()->Raycast(query);
 
     if(results.Size())
     {
@@ -219,7 +219,7 @@ Drawable* CursorRTS::GetRaycastNode(Vector3 *hitPos_)
 }
 
 
-CursorShapes::CursorShapes() : Object(gContext)
+CursorShapes::CursorShapes() : Object(TheContext)
 {
     /*
     for (int iType = 0; iType < TypeCursor_Size; iType++)

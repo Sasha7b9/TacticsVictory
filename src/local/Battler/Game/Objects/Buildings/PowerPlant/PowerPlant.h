@@ -7,7 +7,7 @@
 class PowerPlant : public BuildingObject
 {
 public:
-    PowerPlant(Context *context = gContext);
+    PowerPlant(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(PowerPlant);

@@ -17,7 +17,7 @@ GovernorCell::GovernorCell(Context *) :
     //ApplyAttributes();
     SetFixedSize(SET::MENU::GOVERNOR::CELL::SIZE);
 
-    label = new Text(gContext);
+    label = new Text(TheContext);
     label->SetFont(gFont, 8);
     label->SetAlignment(HA_CENTER, VA_CENTER);
 
@@ -240,7 +240,7 @@ GovernorFloat::GovernorFloat(Context *context) :
 
     SetFixedSize((SET::MENU::GOVERNOR::CELL::WIDTH - 1) * (numCells + 1) + 17 + widthLabel, SET::MENU::GOVERNOR::CELL::HEIGHT);
 
-    buttonDown = new Button(gContext);
+    buttonDown = new Button(TheContext);
     buttonDown->SetStyle("DropDownButtonDown");
     AddChild(buttonDown);
     buttonDown->SetPosition((numCells + 1) * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + 4 + widthLabel, 0); //-V112

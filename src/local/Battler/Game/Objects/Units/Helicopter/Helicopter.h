@@ -6,7 +6,7 @@
 class Helicopter : public UnitObject
 {
 public:
-    Helicopter(Context *context = gContext);
+    Helicopter(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(Helicopter);

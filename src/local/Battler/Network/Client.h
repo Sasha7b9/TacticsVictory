@@ -12,7 +12,7 @@ class Client : public Object
     URHO3D_OBJECT(Client, Object);
 
 public:
-    Client(Context *context = gContext);
+    Client(Context *context = TheContext);
     virtual ~Client();
     void StartConnecting(const String &address, uint16 port, pFuncVV funcOnConnect);
     bool IsConnected();

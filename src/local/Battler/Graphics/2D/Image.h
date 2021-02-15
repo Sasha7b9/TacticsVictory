@@ -7,9 +7,9 @@ class ImageRTS : public Image
 {
     URHO3D_OBJECT(ImageRTS, Image);
 public:
-    ImageRTS(Context *context = gContext);
+    ImageRTS(Context *context = TheContext);
     ~ImageRTS();
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
     void SetSize(int width, int height);
     void SetPoint(int x, int y, const Color& color);
     void DrawLine(int x0, int y0, int x1, int y1, const Color &color);

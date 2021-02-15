@@ -11,7 +11,7 @@ class ConsoleParser : public Object
     typedef bool (ConsoleParser::*pFuncMember)(Vector<String>&, bool);  // Если второй параметр == true, то выводим информацию о команде, иначе - выполняем
 
 public:
-    ConsoleParser(Context *context = gContext);
+    ConsoleParser(Context *context = TheContext);
 
     enum Parameter
     {

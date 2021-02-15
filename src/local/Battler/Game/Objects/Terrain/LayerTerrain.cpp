@@ -42,9 +42,9 @@ void LayerTerrain::Build()
         cube->BuildVertexes(vertexes, indexes);
     }
 
-    SharedPtr<VertexBuffer> vb(new VertexBuffer(gContext));
-    SharedPtr<IndexBuffer> ib(new IndexBuffer(gContext));
-    SharedPtr<Geometry> geom(new Geometry(gContext));
+    SharedPtr<VertexBuffer> vb(new VertexBuffer(TheContext));
+    SharedPtr<IndexBuffer> ib(new IndexBuffer(TheContext));
+    SharedPtr<Geometry> geom(new Geometry(TheContext));
 
     uint numVert = vertexes.Size();
     uint numInd = indexes.Size();
@@ -74,8 +74,8 @@ void LayerTerrain::Build()
     geom->SetIndexBuffer(ib);
     geom->SetDrawRange(TRIANGLE_LIST, 0, ib->GetIndexCount());
 
-    model = new Model(gContext);
-    Node *node = gScene->CreateChild(NODE_TERRAIN);
+    model = new Model(TheContext);
+    Node *node = TheScene->CreateChild(NODE_TERRAIN);
     object = node->CreateComponent<StaticModel>();
     object->SetViewMask(VIEW_MASK_FOR_MISSILE);
 

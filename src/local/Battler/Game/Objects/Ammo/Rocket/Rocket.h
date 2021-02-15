@@ -11,10 +11,10 @@ class Rocket : public AmmoObject
     friend class ThreadRocket;
 
 public:
-    Rocket(Context *context = gContext);
+    Rocket(Context *context = TheContext);
     ~Rocket();
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
 
     void UpdateOn();
     static SharedPtr<Rocket> Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target);

@@ -12,9 +12,9 @@ class PanelBottom : public WindowRTS
     URHO3D_OBJECT(PanelBottom, WindowRTS);
 
 public:
-    PanelBottom(Context *context = gContext);
+    PanelBottom(Context *context = TheContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(PanelBottom);

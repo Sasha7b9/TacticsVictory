@@ -397,7 +397,7 @@ void ConsoleRTS::Clear()
 History::History()
 {
     SharedPtr<File> fileRead;
-    fileRead = new File(gContext);
+    fileRead = new File(TheContext);
     if (fileRead->Open(GetNameFile("history.txt"), FILE_READ))
     {
         while (!fileRead->IsEof())
@@ -413,7 +413,7 @@ History::History()
 History::~History()
 {
     SharedPtr<File> file;
-    file = new File(gContext);
+    file = new File(TheContext);
     String name = GetNameFile("history.txt");
     if (file->Open(name, FILE_READ))
     {

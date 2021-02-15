@@ -7,7 +7,7 @@ class RocketLauncher : public WeaponObject
 {
     URHO3D_OBJECT(RocketLauncher, WeaponObject);
 public:
-    RocketLauncher(Context *context = gContext, Tank *tank = nullptr);
+    RocketLauncher(Context *context = TheContext, Tank *tank = nullptr);
 
     static void RegisterInAS();
     void Init();

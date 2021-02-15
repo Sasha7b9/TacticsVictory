@@ -6,7 +6,7 @@
 
 
 LineTranslator2D::LineTranslator2D(const IntVector2 &start, const IntVector2 &finish, float speed, State startPosition) :
-    Object(gContext)
+    Object(TheContext)
 {
     translatorX = new LineTranslator1D(start.x_, finish.x_, speed, (LineTranslator1D::State)startPosition);
     translatorY = new LineTranslator1D(start.y_, finish.y_, speed, (LineTranslator1D::State)startPosition);

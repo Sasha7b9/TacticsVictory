@@ -9,9 +9,9 @@ class ButtonToggled : public CheckBox
     URHO3D_OBJECT(ButtonToggled, CheckBox);
 
 public:
-    ButtonToggled(Context *context = gContext);
+    ButtonToggled(Context *context = TheContext);
     ButtonToggled(UIElement *uielement, char *text, int width = -1, int height = -1);
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
     void SetText(char *text);
 
 private:

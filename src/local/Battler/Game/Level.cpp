@@ -68,7 +68,7 @@ Vector<Vector<float>> Level::Load(const char *fileName)
     map.Clear();
 
     SharedPtr<File> fileRead;
-    fileRead = new File(gContext);
+    fileRead = new File(TheContext);
     if(fileRead->Open(GetNameFile(fileName), FILE_READ))
     {
         String str = fileRead->ReadString();
@@ -123,7 +123,7 @@ Vector<Vector<float>> Level::Load(const char *fileName)
 
 bool Level::Save(const String &fileName)
 {
-    SharedPtr<File> fileWrite(new File(gContext));
+    SharedPtr<File> fileWrite(new File(TheContext));
 
     if (fileWrite->Open(fileName, FILE_WRITE))
     {

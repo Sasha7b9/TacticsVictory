@@ -6,7 +6,7 @@
 class BuildingObject : public GameObject
 {
 public:
-    BuildingObject(Context *context = gContext);
+    BuildingObject(Context *context = TheContext);
 
 private:
     DEFAULT_MEMBERS(BuildingObject);

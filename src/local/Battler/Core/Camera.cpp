@@ -20,7 +20,7 @@
 
 CameraRTS::CameraRTS()
 {
-    cameraNode = gScene->CreateChild("Camera");
+    cameraNode = TheScene->CreateChild("Camera");
 
     Camera *camera = cameraNode->CreateComponent<Camera>();
     camera->SetFarClip(1000.0f);
@@ -302,10 +302,10 @@ void CameraRTS::SetEnabled(bool _enabled)
 
 void CameraRTS::SetupViewport()
 {
-    SharedPtr<Viewport> viewport(new Viewport(gContext, gScene, cameraNode->GetComponent<Camera>()));
+    SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene, cameraNode->GetComponent<Camera>()));
     if (MODE_CLIENT)
     {
-        gRenderer->SetViewport(0, viewport);
+        TheRenderer->SetViewport(0, viewport);
     }
 }
 

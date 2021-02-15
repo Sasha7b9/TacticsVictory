@@ -102,7 +102,7 @@ SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &pos
         {
             rocket = rock;
             rocket->Init(speedShooter, position, target);
-            gScene->AddChild(rocket->node_);
+            TheScene->AddChild(rocket->node_);
             rocket->smokeNode->SetEnabled(true);
             rocket->node_->SetEnabled(true);
             break;
@@ -111,7 +111,7 @@ SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &pos
 
     if (rocket == nullptr)
     {
-        SharedPtr<Node> node(gScene->CreateChild("Rocket"));
+        SharedPtr<Node> node(TheScene->CreateChild("Rocket"));
         if (rockets.Size())
         {
             rocket = dynamic_cast<Rocket*>(node->CloneComponent(rockets[0]->node_->GetComponent<Rocket>()));
@@ -445,7 +445,7 @@ void Rocket::VerifyOnIntersectionTerrain()
     Ray ray(position, direction);
     PODVector<RayQueryResult> results;
     RayOctreeQuery query(results, ray, RAY_TRIANGLE, 0.5f, DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
-    gScene->GetComponent<Octree>()->Raycast(query);
+    TheScene->GetComponent<Octree>()->Raycast(query);
 
     if (results.Size())
     {
@@ -474,7 +474,7 @@ void Rocket::HandlePostRenderUpdate(StringHash, VariantMap&)
         if (rockets[i]->node_->IsEnabled())
         {
 //            Rocket *rocket = rockets[i];
-            //gDebugRenderer->AddSphere(Sphere(rockets[i]->node_->GetPosition(), 0.3f), Color::BLUE);
+            //TheDebugRenderer->AddSphere(Sphere(rockets[i]->node_->GetPosition(), 0.3f), Color::BLUE);
 
         }
     }

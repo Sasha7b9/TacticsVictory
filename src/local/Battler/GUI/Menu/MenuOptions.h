@@ -16,9 +16,9 @@ class MenuOptions : public WindowMenu
     URHO3D_OBJECT(MenuOptions, WindowMenu);
 
 public:
-    MenuOptions(Context *context = gContext);
+    MenuOptions(Context *context = TheContext);
 
-    static void RegisterObject(Context *context = gContext);
+    static void RegisterObject(Context *context = TheContext);
 
 private:
     void HandleItemSelected(StringHash eventType, VariantMap& eventData);

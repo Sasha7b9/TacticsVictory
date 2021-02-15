@@ -35,7 +35,7 @@ URHO3D_DEFINE_APPLICATION_MAIN(TacticsVictory)
 TacticsVictory::TacticsVictory(Context* context) :
     Application(context)
 {
-    gContext = context;
+    TheContext = context;
 }
 
 
@@ -75,13 +75,13 @@ void TacticsVictory::Stop()
     //engine_->DumpProfiler();
     TilePath::RemoveAll();
     Rocket::DeleteAll();
-    SAFE_DELETE(gScene); //-V809
+    SAFE_DELETE(TheScene); //-V809
     SAFE_DELETE(scene); //-V809
     SAFE_DELETE(gFileSelector); //-V809
     SAFE_DELETE(gLevel); //-V809
     SAFE_DELETE(gMenu); //-V809
     SAFE_DELETE(gGUI); //-V809
-    //File file(gContext, "ui.xml", FILE_WRITE);
+    //File file(TheContext, "ui.xml", FILE_WRITE);
     //URHO3D_LOGINFO("Now save ui");
     //TheUIRoot->SaveXML(file);
     gSet->Save();
@@ -120,11 +120,11 @@ void TacticsVictory::Start()
     gProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
     gGraphics = GetSubsystem<Graphics>();
-    gScene = new Scene(gContext);
-    gScene->CreateComponent<Octree>();
-    gPhysicsWorld = gScene->CreateComponent<PhysicsWorld>();
+    TheScene = new Scene(TheContext);
+    TheScene->CreateComponent<Octree>();
+    gPhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
     gPhysicsWorld->SetGravity(Vector3::ZERO);
-    gScene->CreateComponent<DebugRenderer>();
+    TheScene->CreateComponent<DebugRenderer>();
     gCamera = new CameraRTS();
 
     if (MODE_SERVER)
@@ -137,14 +137,14 @@ void TacticsVictory::Start()
         CreateConsoleAndDebugHud();
         TheUI = GetSubsystem<UI>();
         TheInput = GetSubsystem<Input>();
-        gRenderer = GetSubsystem<Renderer>();
-        gDebugRenderer = gScene->GetComponent<DebugRenderer>();
+        TheRenderer = GetSubsystem<Renderer>();
+        TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
         TheUIRoot = TheUI->GetRoot();
         TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
         gGUI = new GUI();
         LOGINFO("Загружаю настройки");
         gMenu = new MenuRTS();
-        gFileSelector = new FileSelector(gContext);
+        gFileSelector = new FileSelector(TheContext);
         gFileSelector->GetWindow()->SetModal(false);
         gFileSelector->GetWindow()->SetVisible(false);
         TheAudio = GetSubsystem<Audio>();
@@ -181,7 +181,7 @@ void TacticsVictory::SetLocalization()
 
 void TacticsVictory::CreateScriptSystem()
 {
-    gContext->RegisterSubsystem(new Script(gContext));
+    TheContext->RegisterSubsystem(new Script(TheContext));
     gScript = GetSubsystem<Script>();
     gScript->GetScriptEngine()->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
 }
@@ -197,7 +197,7 @@ void TacticsVictory::StartServer(uint16 port_)
     if (port)
     {
         gServer->Start(port);
-        scene = new SceneRTS(gContext, SceneRTS::Mode_Server);
+        scene = new SceneRTS(TheContext, SceneRTS::Mode_Server);
         scene->Create();
     }
     else
@@ -243,9 +243,9 @@ void TacticsVictory::ParseArguments(const Vector<String> &arguments)
 
 void TacticsVictory::RegistrationComponets()
 {
-    gContext->RegisterFactory<Rotator>();
-    gContext->RegisterFactory<Movinator>();
-    gContext->RegisterFactory<ImageRTS>();
+    TheContext->RegisterFactory<Rotator>();
+    TheContext->RegisterFactory<Movinator>();
+    TheContext->RegisterFactory<ImageRTS>();
 
     SceneRTS::RegisterObject();
 
@@ -299,9 +299,9 @@ void TacticsVictory::CreateConsoleAndDebugHud()
     {
         XMLFile* xmlFile = TheCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
 
-        gEngineConsole = engine_->CreateConsole();
-        gEngineConsole->SetDefaultStyle(xmlFile);
-        gEngineConsole->GetBackground()->SetOpacity(0.8f);
+        TheEngineConsole = engine_->CreateConsole();
+        TheEngineConsole->SetDefaultStyle(xmlFile);
+        TheEngineConsole->GetBackground()->SetOpacity(0.8f);
 
         gDebugHud = engine_->CreateDebugHud();
         gDebugHud->SetDefaultStyle(xmlFile);
@@ -313,7 +313,7 @@ void TacticsVictory::CreateEditorSession()
 {
     if(!gEditor)
     {
-        gEditor = new Editor(gContext);
+        gEditor = new Editor(TheContext);
     }
     gGuiEditor->SetVisible(true);
     gCamera->SetEnabled(true);

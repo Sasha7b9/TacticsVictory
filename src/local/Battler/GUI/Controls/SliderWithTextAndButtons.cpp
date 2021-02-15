@@ -15,9 +15,9 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(Context *context) :
 
 
 SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *text_, int min, int max, int step, int widthText, int widthRoller) :
-    UIElement(gContext)
+    UIElement(TheContext)
 {
-    SharedPtr<Window> window(new Window(gContext));
+    SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
     AddChild(window);
@@ -37,7 +37,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     SubscribeToEvent(slider, E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
     SubscribeToEvent(slider, E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
 
-    buttonLeft = new Button(gContext);
+    buttonLeft = new Button(TheContext);
     buttonLeft->SetRepeat(0.25f, 20.0f);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
@@ -45,7 +45,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     SubscribeToEvent(buttonLeft, E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
     SubscribeToEvent(buttonLeft, E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
 
-    buttonRight = new Button(gContext);
+    buttonRight = new Button(TheContext);
     buttonRight->SetRepeat(0.25f, 20.0f);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
@@ -53,7 +53,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     SubscribeToEvent(buttonRight, E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
     SubscribeToEvent(buttonRight, E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
 
-    textValue = new Text(gContext);
+    textValue = new Text(TheContext);
     textValue->SetFixedWidth(35);
     textValue->SetFont(gFont, 15);
     textValue->SetText(String(slider->GetValue()));

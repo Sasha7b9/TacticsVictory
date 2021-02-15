@@ -14,7 +14,7 @@ public:
         Unit
     };
 
-    GameObject(Context *context = gContext);
+    GameObject(Context *context = TheContext);
     virtual ~GameObject();
     void SetAutoReloaded(int time) { timeForReload = time; };
     virtual void Update(float timeStep);

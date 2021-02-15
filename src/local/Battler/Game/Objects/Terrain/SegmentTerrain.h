@@ -22,7 +22,7 @@ public:
         BOTTOM
     };
 
-    SegmentTerrain(Context *context = gContext);
+    SegmentTerrain(Context *context = TheContext);
     ~SegmentTerrain();
     void CreateFromVector(const Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols);
     void Build();

@@ -8,11 +8,11 @@ class DropDownListWithTextAndButton : public UIElement
     URHO3D_OBJECT(DropDownListWithTextAndButton, UIElement);
 
 public:
-    DropDownListWithTextAndButton(Context *context = gContext);
+    DropDownListWithTextAndButton(Context *context = TheContext);
 
     DropDownListWithTextAndButton(char *text, int widthText, int widthDDList);
 
-    static void RegisterObject(Context* context = gContext);
+    static void RegisterObject(Context* context = TheContext);
 
     void AddItem(char *text);
     void SetSelection(uint index);

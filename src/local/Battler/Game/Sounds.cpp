@@ -11,7 +11,7 @@ PODVector<SoundSource3D*> sources;
 void Sounds::Init()
 {
     sounds[StringHash(Sound_Explosion)] = TheCache->GetResource<Sound>("Sounds/ExplosionMissile.wav");
-    Node *nodeSource = gScene->CreateChild("Sound");
+    Node *nodeSource = TheScene->CreateChild("Sound");
     SoundSource3D* soundSource = nodeSource->CreateComponent<SoundSource3D>();
     soundSource->SetDistanceAttenuation(1.0f, 5.0f, 0.01f);
     soundSource->SetSoundType(SOUND_EFFECT);
@@ -33,7 +33,7 @@ void Sounds::Play(SoundType type, const Vector3 &position)
     
     if (!source)
     {
-        Node *nodeSource = gScene->CreateChild("Sound");
+        Node *nodeSource = TheScene->CreateChild("Sound");
         source = (SoundSource3D*)nodeSource->CloneComponent(sources[0]);
         sources.Push(source);
     }
