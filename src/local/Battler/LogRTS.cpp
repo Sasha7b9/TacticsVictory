@@ -30,7 +30,7 @@ void LogRTS::Write(int level, const String &message, char *file, char *func, int
         str += String(file) + String(":") + String(func) + String(":") + String(numLine);
     }
     Log::Write(level, str);
-    gConsole->Write(str);
+    TheConsole->Write(str);
 }
 
 

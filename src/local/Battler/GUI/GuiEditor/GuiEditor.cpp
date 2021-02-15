@@ -182,7 +182,7 @@ void GuiEditor::HandleButtonRelease(StringHash, VariantMap &eventData)
         windowNewMap->SetVisible(!windowNewMap->IsVisible());
         if(windowNewMap->IsVisible())
         {
-            gOpenedWindow.Push(windowNewMap);
+            TheOpenedWindow.Push(windowNewMap);
             windowNewMap->BringToFront();
         }
     }
@@ -191,7 +191,7 @@ void GuiEditor::HandleButtonRelease(StringHash, VariantMap &eventData)
         windowMenu->SetVisible(!windowMenu->IsVisible());
         if(windowMenu->IsVisible())
         {
-            gOpenedWindow.Push(windowMenu);
+            TheOpenedWindow.Push(windowMenu);
             windowMenu->SetPosition(buttonMenu->GetPosition().x_, panelBottom->GetPosition().y_ - windowMenu->GetHeight());
             windowMenu->BringToFront();
         }
@@ -313,7 +313,7 @@ void GuiEditor::HandleTerrainClearTerrain(StringHash, VariantMap&)
 
 void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 {
-    if (!IsVisible() || gConsole->IsActive())
+    if (!IsVisible() || TheConsole->IsActive())
     {
         return;
     }
@@ -333,11 +333,11 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 
     if (KEY_IS_ESC)
     {
-        if(!gOpenedWindow.Empty())
+        if(!TheOpenedWindow.Empty())
         {
-            WindowRTS *window = gOpenedWindow.Back();
+            WindowRTS *window = TheOpenedWindow.Back();
             window->SetVisible(false);
-            gOpenedWindow.Remove(window);
+            TheOpenedWindow.Remove(window);
         }
     }
     else if (KEY_IS_I)
@@ -418,22 +418,22 @@ void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData)
 
 void GuiEditor::HandleExit(StringHash, VariantMap&)
 {
-    gGUI->SetVisibleWindow(windowConfirmExit, true);
+    TheGUI->SetVisibleWindow(windowConfirmExit, true);
 }
 
 
 void GuiEditor::HandleExitOk(StringHash, VariantMap&)
 {
-    gGuiEditor->SetVisible(false);
+    TheGuiEditor->SetVisible(false);
     TheCamera->SetEnabled(false);
     TheEditor->ClearScene();
-    gGUI->SetVisibleWindow(windowConfirmExit, false);
+    TheGUI->SetVisibleWindow(windowConfirmExit, false);
 }
 
 
 void GuiEditor::HandleExitCancel(StringHash, VariantMap&)
 {
-    gGUI->SetVisibleWindow(windowConfirmExit, false);
+    TheGUI->SetVisibleWindow(windowConfirmExit, false);
 }
 
 

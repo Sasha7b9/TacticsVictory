@@ -97,7 +97,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
     Ray ray = TheCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
 
-    if (gGuiEditor->modeSelect == GuiEditor::ModeSelect_Plane)
+    if (TheGuiEditor->modeSelect == GuiEditor::ModeSelect_Plane)
     {
         if (!selectedPlane.IsZero())
         {
@@ -106,7 +106,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             TheDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
         }
 
-        if (!gMenu->IsActive() && !gGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+        if (!gMenu->IsActive() && !TheGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             Timer timer;
             currentPlane = TheTerrain->GetIntersectionPlane(ray);
@@ -128,9 +128,9 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
         }
     }
 
-    if (gGuiEditor->modeSelect == GuiEditor::ModeSelect_Edge)
+    if (TheGuiEditor->modeSelect == GuiEditor::ModeSelect_Edge)
     {
-        if (!gMenu->IsActive() && !gGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+        if (!gMenu->IsActive() && !TheGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             currentEdge = TheTerrain->GetIntersectionEdge(ray);
 
@@ -183,19 +183,19 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
 void Editor::HandleMouseDown(StringHash, VariantMap&)
 {
-    if (gHint && gCounterHint != 0)
+    if (TheHint && TheCounterHint != 0)
     {
-        TheUIRoot->RemoveChild(gHint);
-        gHint = nullptr;
+        TheUIRoot->RemoveChild(TheHint);
+        TheHint = nullptr;
     }
-    gCounterHint++;
+    TheCounterHint++;
 
-    if (gGUI->UnderCursor())
+    if (TheGUI->UnderCursor())
     {
         return;
     }
 
-    if (gGuiEditor->modeSelect == GuiEditor::ModeSelect_Plane)
+    if (TheGuiEditor->modeSelect == GuiEditor::ModeSelect_Plane)
     {
         if (TheInput->GetMouseButtonDown(MOUSEB_LEFT) && !TheInput->GetMouseButtonDown(MOUSEB_MIDDLE) && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {

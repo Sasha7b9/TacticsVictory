@@ -42,8 +42,8 @@ GUI::GUI() : Object(TheContext)
 GUI::~GUI()
 {
     SAFE_DELETE(TheCursor); //-V809
-    SAFE_DELETE(gGuiGame); //-V809
-    SAFE_DELETE(gGuiEditor); //-V809
+    SAFE_DELETE(TheGuiGame); //-V809
+    SAFE_DELETE(TheGuiEditor); //-V809
 }
 
 
@@ -179,29 +179,29 @@ static float GetSpeedNetOUT()
 
 void GUI::Create()
 {
-    gConsole = new ConsoleRTS(TheContext);
-    TheUIRoot->AddChild(gConsole);
+    TheConsole = new ConsoleRTS(TheContext);
+    TheUIRoot->AddChild(TheConsole);
 
-    gWindowVars = new WindowVariables(TheContext);
-    TheUIRoot->AddChild(gWindowVars);
-    gWindowVars->SetVisible(false);
-    gWindowVars->SetPosition(1000, 500);
+    TheWindowVars = new WindowVariables(TheContext);
+    TheUIRoot->AddChild(TheWindowVars);
+    TheWindowVars->SetVisible(false);
+    TheWindowVars->SetPosition(1000, 500);
 
-    gWindowVars->AddFunctionFloat("Camera pos Y", GetPosCameraY, SetPosCameraY);
-    gWindowVars->AddFunctionFloat("Camera pos X", GetPosCameraX, SetPosCameraX);
-    gWindowVars->AddFunctionFloat("Camera pos Z", GetPosCameraZ, SetPosCameraZ);
-    gWindowVars->AddFunctionFloat("Camera pitch", GetCameraPitch, nullptr);
-    gWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
-    gWindowVars->AddFunctionFloat("Net speed in, kB/s", GetSpeedNetIN, nullptr);
-    gWindowVars->AddFunctionFloat("Net speec out, kB/s", GetSpeedNetOUT, nullptr);
+    TheWindowVars->AddFunctionFloat("Camera pos Y", GetPosCameraY, SetPosCameraY);
+    TheWindowVars->AddFunctionFloat("Camera pos X", GetPosCameraX, SetPosCameraX);
+    TheWindowVars->AddFunctionFloat("Camera pos Z", GetPosCameraZ, SetPosCameraZ);
+    TheWindowVars->AddFunctionFloat("Camera pitch", GetCameraPitch, nullptr);
+    TheWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
+    TheWindowVars->AddFunctionFloat("Net speed in, kB/s", GetSpeedNetIN, nullptr);
+    TheWindowVars->AddFunctionFloat("Net speec out, kB/s", GetSpeedNetOUT, nullptr);
 
     TheLocalization->SetLanguage("en");
 
-    gGuiGame = new GuiGame(TheContext);
-    gGuiGame->SetVisible(false);
+    TheGuiGame = new GuiGame(TheContext);
+    TheGuiGame->SetVisible(false);
 
-    gGuiEditor = new GuiEditor(TheContext);
-    gGuiEditor->SetVisible(false);
+    TheGuiEditor = new GuiEditor(TheContext);
+    TheGuiEditor->SetVisible(false);
 
     TheCursor = new CursorRTS();
 
@@ -211,13 +211,13 @@ void GUI::Create()
 
 bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
 {
-    if (gGuiGame->IsVisible())
+    if (TheGuiGame->IsVisible())
     {
-        return gGuiGame->CheckOnDeadZoneForCursorBottomScreen(x);
+        return TheGuiGame->CheckOnDeadZoneForCursorBottomScreen(x);
     }
-    else if (gGuiEditor->IsVisible())
+    else if (TheGuiEditor->IsVisible())
     {
-        return gGuiEditor->CheckOnDeadZoneForCursorBottomScreen(x);
+        return TheGuiEditor->CheckOnDeadZoneForCursorBottomScreen(x);
     }
     return false;
 }
@@ -245,27 +245,27 @@ void GUI::SetVisibleWindow(WindowRTS *window, bool visible)
     window->SetVisible(visible);
     if(visible)
     {
-        while(!gOpenedWindow.Empty())
+        while(!TheOpenedWindow.Empty())
         {
-            window = gOpenedWindow.Back();
+            window = TheOpenedWindow.Back();
             window->SetVisible(false);
-            gOpenedWindow.Remove(window);
+            TheOpenedWindow.Remove(window);
         }
-        gOpenedWindow.Push(window);
+        TheOpenedWindow.Push(window);
     }
     else
     {
-        gOpenedWindow.Remove(window);
+        TheOpenedWindow.Remove(window);
     }
 }
 
 
 void GUI::SetUnvisibleAllWindows()
 {
-    while(!gOpenedWindow.Empty())
+    while(!TheOpenedWindow.Empty())
     {
-        WindowRTS *window = gOpenedWindow.Back();
+        WindowRTS *window = TheOpenedWindow.Back();
         window->SetVisible(false);
-        gOpenedWindow.Remove(window);
+        TheOpenedWindow.Remove(window);
     }
 }

@@ -95,7 +95,7 @@ void GuiGame::ToggleInterfacePanels()
 
 void GuiGame::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 {
-    if(!IsVisible() || gConsole->IsActive())
+    if(!IsVisible() || TheConsole->IsActive())
     {
         return;
     }

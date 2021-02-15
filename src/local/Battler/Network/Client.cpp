@@ -69,7 +69,7 @@ void Client::HandleServerConnected(StringHash, VariantMap&)
 {
     connection = network->GetServerConnection();
 
-    gConsole->Write(String(L"Установлено соединение с ") + connection->GetAddress() + ToString(":%d", connection->GetPort()));
+    TheConsole->Write(String(L"Установлено соединение с ") + connection->GetAddress() + ToString(":%d", connection->GetPort()));
 
     if(funcOnConnect)
     {

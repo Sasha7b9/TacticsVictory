@@ -38,7 +38,7 @@ void FUNC_MSG_SEND_LANDSCAPE(Connection *connection, MemoryBuffer &in, VectorBuf
     TheTacticsVictory->scene = new SceneRTS(TheContext, SceneRTS::Mode_Client);
     TheTacticsVictory->scene->Create();
     TheCamera->SetEnabled(true);
-    gGuiGame->SetVisible(true);
+    TheGuiGame->SetVisible(true);
 
     connection->SendMessage(MSG_REQUEST_TANKS, true, true, VectorBuffer());
 }

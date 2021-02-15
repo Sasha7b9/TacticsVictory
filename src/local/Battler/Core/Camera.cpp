@@ -85,7 +85,7 @@ void CameraRTS::Move(float time) //-V2008
         return;
     }
 
-    if(!enabled || gConsole->IsActive())
+    if(!enabled || TheConsole->IsActive())
     {
         return;
     }
@@ -140,7 +140,7 @@ void CameraRTS::Move(float time) //-V2008
     int dX = TheInput->GetMouseMoveX();
     int dY = TheInput->GetMouseMoveY();
 
-    if((dX || dY) && !gGUI->UnderCursor())
+    if((dX || dY) && !TheGUI->UnderCursor())
     {
         IntVector2 posCursor = TheCursor->GetCursor()->GetPosition();
         posCursor.x_ -= dX;

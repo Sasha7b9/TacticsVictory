@@ -171,17 +171,17 @@ void SliderWithTextAndButtons::HandleMouseClick(StringHash, VariantMap& eventDat
         {
             if (hint)
             {
-                if (gHint)
+                if (TheHint)
                 {
-                    TheUIRoot->RemoveChild(gHint);
+                    TheUIRoot->RemoveChild(TheHint);
                 }
                 int x = (int)eventData[UIMouseClick::P_X].GetInt();
                 int y = (int)eventData[UIMouseClick::P_Y].GetInt();
                 hint->SetPosition(x, y - hint->GetHeight());
                 TheUIRoot->AddChild(hint);
                 hint->BringToFront();
-                gHint = hint;
-                gCounterHint = 0;
+                TheHint = hint;
+                TheCounterHint = 0;
             }
         }
     }

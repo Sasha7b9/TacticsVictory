@@ -38,13 +38,13 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 {
     int key = eventData[KeyDown::P_KEY].GetInt();
 
-    TheUIRoot->RemoveChild(gHint);
+    TheUIRoot->RemoveChild(TheHint);
 
     if(KEY_IS_F1)
     {
-        if(gConsole)
+        if(TheConsole)
         {
-            gConsole->Toggle();
+            TheConsole->Toggle();
         }
         return;
     }
@@ -68,13 +68,13 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
         {
             TheEngineConsole->SetVisible(false);
         }
-        else if(gConsole && gConsole->IsVisible())
+        else if(TheConsole && TheConsole->IsVisible())
         {
-            gConsole->Toggle();
+            TheConsole->Toggle();
         }
     }
     
-    if(!gConsole->IsActive())
+    if(!TheConsole->IsActive())
     {
         if(gMenu->ProcessingKey(key))                       // Если меню обработало нажатие
         {

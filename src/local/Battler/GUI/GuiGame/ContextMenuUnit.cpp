@@ -45,7 +45,7 @@ void ContextMenuUnit::HandleToggledFiedView(StringHash, VariantMap& eventData) /
 {
     bool state = (bool)eventData[Toggled::P_STATE].GetBool();
 
-    gWindowTarget->SetVisible(state);
+    TheWindowTarget->SetVisible(state);
 
     UnitObject::SetViewTargetView(state);
 }

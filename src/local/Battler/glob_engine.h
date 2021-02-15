@@ -64,15 +64,15 @@ extern Client               *TheClient;
 
 
 // GUI
-extern GuiGame              *gGuiGame;
-extern GuiEditor            *gGuiEditor;
-extern GUI                  *gGUI;
-extern ConsoleRTS           *gConsole;
-extern WindowVariables      *gWindowVars;
-extern Hint                 *gHint;
-extern int                  *gCounterHint;
-extern Vector<WindowRTS*>    gOpenedWindow;
-extern WindowTarget         *gWindowTarget;             // В этом окне можно посмотреть, что видит юнит
+extern GuiGame              *TheGuiGame;
+extern GuiEditor            *TheGuiEditor;
+extern GUI                  *TheGUI;
+extern ConsoleRTS           *TheConsole;
+extern WindowVariables      *TheWindowVars;
+extern Hint                 *TheHint;
+extern int                  *TheCounterHint;
+extern Vector<WindowRTS*>   TheOpenedWindow;
+extern WindowTarget         *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 
 // Меню
 extern MenuRTS              *gMenu;

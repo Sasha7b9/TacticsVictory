@@ -26,7 +26,7 @@ bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 static void OnServerConnected()
 {
     TheClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
-    gConsole->Write("Запрашиваю ландшафт");
+    TheConsole->Write("Запрашиваю ландшафт");
 }
 
 
@@ -41,13 +41,13 @@ bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
 
     if(TheClient->IsConnected())
     {
-        gConsole->Write("Command forbidden. The client already running");
+        TheConsole->Write("Command forbidden. The client already running");
     }
     else
     {
         gMenu->Hide();
         TheClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, OnServerConnected);
-        gConsole->Write("Соединяюсь с удалённым сервером...");
+        TheConsole->Write("Соединяюсь с удалённым сервером...");
     }
 
     return true;
@@ -102,11 +102,11 @@ void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V20
 
     if(exitCode)
     {
-        gConsole->Write("Сервер завершил работу с кодом ошибки");
+        TheConsole->Write("Сервер завершил работу с кодом ошибки");
     }
     else
     {
-        gConsole->Write("Сервер завершил работу");
+        TheConsole->Write("Сервер завершил работу");
     }
 
     UnsubscribeFromEvent(E_ASYNCLOADFINISHED);
@@ -121,7 +121,7 @@ bool ConsoleParser::FuncServerStop(Vector<String> &, bool)
     }
     else
     {
-        gConsole->Write("Forbidden");
+        TheConsole->Write("Forbidden");
     }
     return true;
 }
@@ -169,7 +169,7 @@ bool ConsoleParser::FuncVars(Vector<String> &words, bool showInfo)
     }
     else
     {
-        gWindowVars->SetVisible(!gWindowVars->IsVisible());
+        TheWindowVars->SetVisible(!TheWindowVars->IsVisible());
         return true;
     }
 
@@ -179,14 +179,14 @@ bool ConsoleParser::FuncVars(Vector<String> &words, bool showInfo)
 
 bool ConsoleParser::FuncVarsOpen(Vector<String> &, bool)
 {
-    gWindowVars->SetVisible(true);
+    TheWindowVars->SetVisible(true);
     return true;
 }
 
 
 bool ConsoleParser::FuncVarsClose(Vector<String> &, bool)
 {
-    gWindowVars->SetVisible(false);
+    TheWindowVars->SetVisible(false);
     return true;
 }
 
@@ -195,7 +195,7 @@ bool ConsoleParser::FuncClear(Vector<String> &, bool showInfo)
 {
     if(!showInfo)
     {
-        gConsole->Clear();
+        TheConsole->Clear();
     }
     return true;
 }
@@ -205,7 +205,7 @@ bool ConsoleParser::FuncClose(Vector<String> &, bool showInfo)
 {
     if(!showInfo)
     {
-        gConsole->Toggle();
+        TheConsole->Toggle();
     }
     return true;
 }
@@ -267,7 +267,7 @@ bool ConsoleParser::FuncUnitCamera(Vector<String> &words, bool)
                 {
                     if(node->GetName() == NODE_CAMERA_TARGET)
                     {
-                        gConsole->Write(ToString("%f", node->GetComponent<Camera>()->GetFov()));
+                        TheConsole->Write(ToString("%f", node->GetComponent<Camera>()->GetFov()));
                         break;
                     }
                 }
@@ -279,12 +279,12 @@ bool ConsoleParser::FuncUnitCamera(Vector<String> &words, bool)
         {
             if(BeginFrom(words[1], "set"))
             {
-                gConsole->Write("position set");
+                TheConsole->Write("position set");
                 return true;
             }
             else if(BeginFrom(words[1], "get"))
             {
-                gConsole->Write("position get");
+                TheConsole->Write("position get");
                 return true;
             }
         }

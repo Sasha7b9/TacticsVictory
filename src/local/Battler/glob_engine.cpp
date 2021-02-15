@@ -36,15 +36,15 @@ Server              *TheServer = nullptr;
 Client              *TheClient = nullptr;
 
 // GUI
-GuiGame             *gGuiGame = nullptr;
-GuiEditor           *gGuiEditor = nullptr;
-GUI                 *gGUI = nullptr;
-ConsoleRTS          *gConsole = nullptr;
-WindowVariables     *gWindowVars = nullptr;
-Hint                *gHint = nullptr;
-int                 *gCounterHint = 0;
-Vector<WindowRTS*>   gOpenedWindow;
-WindowTarget        *gWindowTarget = nullptr;
+GuiGame             *TheGuiGame = nullptr;
+GuiEditor           *TheGuiEditor = nullptr;
+GUI                 *TheGUI = nullptr;
+ConsoleRTS          *TheConsole = nullptr;
+WindowVariables     *TheWindowVars = nullptr;
+Hint                *TheHint = nullptr;
+int                 *TheCounterHint = 0;
+Vector<WindowRTS*>   TheOpenedWindow;
+WindowTarget        *TheWindowTarget = nullptr;
 
 // Меню
 MenuRTS             *gMenu = nullptr;

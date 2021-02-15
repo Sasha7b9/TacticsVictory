@@ -90,7 +90,7 @@ void CursorRTS::Update(float dT)
         int height = TheGraphics->GetHeight();
         int numFrame = static_cast<int>(angle0) / 10;
 
-        if(!gMenu->IsActive() && !gGUI->UnderCursor())
+        if(!gMenu->IsActive() && !TheGUI->UnderCursor())
         {
             if(posX < delta && posY < delta)
             {
@@ -120,7 +120,7 @@ void CursorRTS::Update(float dT)
             {
                 type = TypeCursor_Up;
             }
-            else if(posY > height - delta && !gGUI->GheckOnDeadZoneForCursorBottomScreen(posX))
+            else if(posY > height - delta && !TheGUI->GheckOnDeadZoneForCursorBottomScreen(posX))
             {
                 type = TypeCursor_Down;
             }

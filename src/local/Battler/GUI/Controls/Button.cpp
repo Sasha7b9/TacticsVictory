@@ -93,15 +93,15 @@ void ButtonRTS::OnClickBegin(const IntVector2& position, const IntVector2& scree
     {
         if(hint)
         {
-            if(gHint)
+            if(TheHint)
             {
-                TheUIRoot->RemoveChild(gHint);
+                TheUIRoot->RemoveChild(TheHint);
             }
             hint->SetPosition(screenPosition.x_, screenPosition.y_ - hint->GetHeight());
             TheUIRoot->AddChild(hint);
             hint->BringToFront();
-            gHint = hint;
-            gCounterHint = 0;
+            TheHint = hint;
+            TheCounterHint = 0;
         }
     }
 }

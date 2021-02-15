@@ -43,7 +43,7 @@ void ConsoleParser::Execute(const String &string)
         {
             if(!ExecuteCommand(structs, words))
             {
-                gConsole->Write("Неизвестная команда. Для просмотра списка доступных команд наберите \"?\"");
+                TheConsole->Write("Неизвестная команда. Для просмотра списка доступных команд наберите \"?\"");
             }
         }
     }
@@ -77,7 +77,7 @@ bool ConsoleParser::ShowBriefHelp(const ParserStruct *structs, const Vector<Stri
                 message.Append(' ');
             }
 
-            gConsole->Write(message + str->help);
+            TheConsole->Write(message + str->help);
             str++;
         }
 
@@ -97,7 +97,7 @@ bool ConsoleParser::ShowFullHelp(const ParserStruct *structs, Vector<String> &wo
         {
             if(BeginFrom(words[0], str->command))
             {
-                gConsole->Write(String(str->command) + "  " + str->help);
+                TheConsole->Write(String(str->command) + "  " + str->help);
 
                 (this->*str->func)(words, true);
 
@@ -126,7 +126,7 @@ bool ConsoleParser::ExecuteCommand(const ParserStruct *structs, Vector<String> &
             words.Erase(0, 1);
             if(!(this->*func)(words, false))
             {
-                gConsole->Write(ToString("Invalid command syntax. For more information, type \"%s -?\"", forMSG.CString())); //-V111
+                TheConsole->Write(ToString("Invalid command syntax. For more information, type \"%s -?\"", forMSG.CString())); //-V111
             }
 
             return true;
@@ -206,7 +206,7 @@ bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool
             {
                 message.Append(' ');
             }
-            gConsole->Write(message + str->help);
+            TheConsole->Write(message + str->help);
             str++;
         }
     }

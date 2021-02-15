@@ -80,7 +80,7 @@ void TacticsVictory::Stop()
     SAFE_DELETE(TheFileSelector); //-V809
     SAFE_DELETE(TheLevel); //-V809
     SAFE_DELETE(gMenu); //-V809
-    SAFE_DELETE(gGUI); //-V809
+    SAFE_DELETE(TheGUI); //-V809
     //File file(TheContext, "ui.xml", FILE_WRITE);
     //URHO3D_LOGINFO("Now save ui");
     //TheUIRoot->SaveXML(file);
@@ -141,7 +141,7 @@ void TacticsVictory::Start()
         TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
         TheUIRoot = TheUI->GetRoot();
         TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-        gGUI = new GUI();
+        TheGUI = new GUI();
         LOGINFO("Загружаю настройки");
         gMenu = new MenuRTS();
         TheFileSelector = new FileSelector(TheContext);
@@ -315,7 +315,7 @@ void TacticsVictory::CreateEditorSession()
     {
         TheEditor = new Editor(TheContext);
     }
-    gGuiEditor->SetVisible(true);
+    TheGuiEditor->SetVisible(true);
     TheCamera->SetEnabled(true);
     TheEditor->Run();
 }

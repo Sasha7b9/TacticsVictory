@@ -49,7 +49,7 @@ void FUNC_MSG_REQUEST_TANKS(Connection *connection, MemoryBuffer &, VectorBuffer
     }
     connection->SendMessage(MSG_SEND_TANKS, true, true, out);
 
-    gConsole->Write(String(TheTime->GetSystemTime() - time));
+    TheConsole->Write(String(TheTime->GetSystemTime() - time));
 }
 
 
