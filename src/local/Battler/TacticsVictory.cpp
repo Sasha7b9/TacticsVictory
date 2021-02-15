@@ -1,12 +1,11 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-//#include "Game/Level.h"
 #include "Game/Scene.h"
 #include "Game/Logic/Movinator.h"
 #include "Game/Logic/Rotator.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 #include "Game/Path/TilePath.h"
-#include "GUI/GUI.h"
+//#include "GUI/GUI.h"
 #include "GUI/Cursor.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/GuiGame/GuiGame.h"

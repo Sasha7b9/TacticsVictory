@@ -126,6 +126,7 @@ using namespace Urho3D;
 #include "LogRTS.h"
 #include "SettingsTypes.h"
 #include "Core/Camera.h"
+#include "GUI/GUI.h"
 #include "Editor/Editor.h"
 #include "GUI/Windows/Console.h"
 #include "glob_engine.h"
