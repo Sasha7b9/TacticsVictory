@@ -1,5 +1,5 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
-#include <stdafx.h>
+#include "stdafx.h"
 #include "GovernorFloat.h"
 #include "GUI/Controls/Button.h"
 #include "GUI/Cursor.h"

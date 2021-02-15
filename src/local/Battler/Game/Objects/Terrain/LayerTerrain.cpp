@@ -1,5 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
-#include <stdafx.h>
+#include "stdafx.h"
 #include "CubeTerrain.h"
 #include "LayerTerrain.h"
 #include "Core/Math.h"

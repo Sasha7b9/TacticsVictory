@@ -1,5 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#include <stdafx.h>
+#include "stdafx.h"
 #include "PanelMain.h"
 #include "GUI/Controls/Tab.h"
 #include "GUI/Controls/ButtonToggled.h"

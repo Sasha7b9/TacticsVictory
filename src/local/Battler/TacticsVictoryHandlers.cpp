@@ -1,5 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#include <stdafx.h>
+#include "stdafx.h"
 #include "TacticsVictory.h"
 #include "Core/Camera.h"
 #include "Game/Scene.h"

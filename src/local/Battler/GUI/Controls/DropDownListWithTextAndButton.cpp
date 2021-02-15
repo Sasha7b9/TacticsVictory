@@ -1,5 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
-#include <stdafx.h>
+#include "stdafx.h"
 #include "GUI/Controls/DropDownListWithTextAndButton.h"
 #include "GUI/Cursor.h"
 #include "GUI/Controls/Label.h"

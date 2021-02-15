@@ -1,5 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
-#include <stdafx.h>
+#include "stdafx.h"
 #include "Rocket.h"
 #include "Core/Math.h"
 #include "Game/Objects/Units/Tank/Tank.h"
