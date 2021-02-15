@@ -1,5 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "glob_engine.h"
 
 
 class LogRTS : public Log
