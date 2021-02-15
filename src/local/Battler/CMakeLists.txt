@@ -139,3 +139,7 @@ else()
     target_link_libraries(${PROJECT_NAME} Urho3D)
 endif()
 
+include(../../RuntimeLibrary.cmake)
+include(../../SetWorkingDirectory.cmake)
+include(../../Install.cmake)
+include(../../CopyToDirEXE.cmake)

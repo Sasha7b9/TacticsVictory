@@ -1,8 +1,9 @@
 *.pdb
 *.ilk
 *.exe
-archive.zip
+*.log
 
+archive.zip
 
 generated/*
 out/debug/*.dll

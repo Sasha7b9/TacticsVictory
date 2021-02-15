@@ -2,7 +2,7 @@
 
 set _CURRENT_DIR_=%CD%
 
-cd ../..
+cd ..
 
 set PROJECT_DIR=%CD%
 
