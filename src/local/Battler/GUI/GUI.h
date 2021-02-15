@@ -1,11 +1,8 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "GUI/Menu/MenuEvents.h"
-
 
 
 class WindowRTS;
-
 
 
 class GUI : public Object

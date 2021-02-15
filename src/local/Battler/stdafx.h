@@ -158,6 +158,7 @@ using namespace Urho3D;
 #include "GUI/GuiGame/WindowTarget.h"
 #include "GUI/Menu/MenuAboutMe.h"
 #include "GUI/Menu/MenuConfirmExit.h"
+#include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/MenuGame.h"
 #include "GUI/Menu/MenuOptions.h"
 #include "GUI/Menu/MenuRTS.h"
