@@ -148,6 +148,7 @@ using namespace Urho3D;
 #include "GUI/Controls/_DropDownListWithTextAndButton.h"
 #include "GUI/Controls/_GovernorFloat.h"
 #include "GUI/Controls/_Hint.h"
+#include "GUI/Controls/_Label.h"
 #include "GUI/Controls/_Slider.h"
 #include "GUI/Controls/_SliderInt.h"
 #include "GUI/Controls/_SliderWithTextAndButtons.h"
