@@ -2,7 +2,6 @@
 #pragma once
 
 
-class CameraRTS;
 class ConsoleRTS;
 class CursorRTS;
 class Editor;
