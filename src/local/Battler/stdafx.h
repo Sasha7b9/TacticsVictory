@@ -156,6 +156,7 @@ using namespace Urho3D;
 #include "Network/_VectorBufferRTS.h"
 
 #include "Scene/_Level.h"
+#include "Scene/_Scene.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/Ammo/_AmmoObject.h"
 #include "Scene/Objects/Ammo/Rocket/Rocket.h"
