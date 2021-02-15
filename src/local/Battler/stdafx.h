@@ -126,6 +126,10 @@ using namespace Urho3D;
 #include "SettingsTypes.h"
 #include "TacticsVictory.h"
 
+#include "Audio/Sounds.h"
+
+#include "Core/_Math.h"
+
 #include "Editor/Editor.h"
 
 #include "Game/Particles.h"
@@ -154,6 +158,8 @@ using namespace Urho3D;
 #include "Scene/_Level.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/Ammo/_AmmoObject.h"
+#include "Scene/Objects/Ammo/Rocket/Rocket.h"
+#include "Scene/Objects/Buildings/MilitaryPlant/MilitaryPlant.h"
 
 #include "glob_engine.h"
 #include "glob_game.h"

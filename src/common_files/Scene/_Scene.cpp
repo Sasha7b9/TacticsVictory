@@ -1,10 +1,10 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Scene/_Scene.h"
-#include "Core/_Math.h"
-#include "Scene/Objects/Ammo/Rocket/Rocket.h"
-#include "Scene/Objects/Buildings/MilitaryPlant/MilitaryPlant.h"
-#include "Audio/Sounds.h"
+//#include "Core/_Math.h"
+//#include "Scene/Objects/Ammo/Rocket/Rocket.h"
+//#include "Scene/Objects/Buildings/MilitaryPlant/MilitaryPlant.h"
+//#include "Audio/Sounds.h"
 //#include "Game/Particles.h"
 //#include "GUI/GuiGame/WindowTarget.h"
 
