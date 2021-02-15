@@ -4,15 +4,6 @@
 
 
 
-/*
-static Coord CoordFactory()
-{
-    return Coord();
-}
-*/
-
-
-
 struct Coord
 {
     Coord(const Coord &coord) : row(coord.row), col(coord.col) { }

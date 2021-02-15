@@ -4,6 +4,8 @@
 #include "CubeTerrain.h"
 
 
+class SegmentTerrain;
+
 
 enum DIR
 {

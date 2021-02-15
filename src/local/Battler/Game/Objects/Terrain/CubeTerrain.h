@@ -7,7 +7,7 @@ class CornerCube;
 class EdgeCube;
 class PointPlane;
 class PlaneCube;
-
+class TerrainRTS;
 
 
 class CubeTerrain : public Object
