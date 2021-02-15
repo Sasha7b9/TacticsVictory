@@ -19,7 +19,7 @@ set(OUT_DIR $ENV{PROJECT_DIR}\\out\\${SUB_DIR})
 link_directories(../../Urho3D/generated/${SUB_DIR}/lib)
 
 if(WIN32)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -W0 /std:c++17")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall /std:c++17")
 else()
     add_definitions(-m64 -msse -msse2 -std=c++17 -pthread -ffast-math -fno-strict-aliasing -fmax-errors=1 -Wall)
 endif()

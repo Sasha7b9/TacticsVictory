@@ -12,6 +12,21 @@ if(WIN32)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
 
     set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
+
+    add_compile_options(/wd4244)
+    add_compile_options(/wd4263)
+    add_compile_options(/wd4264)
+    add_compile_options(/wd4365)
+    add_compile_options(/wd4514)
+    add_compile_options(/wd4582)
+    add_compile_options(/wd4583)
+    add_compile_options(/wd4623)
+    add_compile_options(/wd4820)    # 'xxx': 'n' bytes padding added after base class 'yyy'
+    add_compile_options(/wd4996)
+    add_compile_options(/wd5039)
+    add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
+                                    # specified
+    add_compile_options(/wd5219)
 else()
     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -lGL -lGLX -lX11 -lGLdispatch")
     SET(LDFLAGS "${LDFLAGS} -ldl")
