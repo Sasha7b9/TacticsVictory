@@ -1,13 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "ClientFunctions.h"
-#include "NetworkMessages.h"
-#include "TacticsVictory.h"
 #include "Core/Camera.h"
 #include "Game/Level.h"
 #include "Game/Scene.h"
 #include "GUI/GuiGame/GuiGame.h"
-
 
 
 void FUNC_MSG_SEND_LANDSCAPE(Connection *connection, MemoryBuffer &in, VectorBufferRTS &)
