@@ -2,10 +2,10 @@
 #pragma once
 
 
-
 class WindowMenu;
 class MenuAboutMe;
-
+class MenuOptions;
+class MenuStart;
 
 
 class MenuRTS : public Object
