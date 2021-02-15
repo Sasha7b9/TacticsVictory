@@ -24,7 +24,7 @@ SharedPtr<Label> Label::Create(char *text_, bool center, int sizeFont, int width
 {
     SharedPtr<Label> text(new Label(gContext));
     text->text = text_;
-    text->SetFont(gFont, sizeFont);
+    text->SetFont(gFont, (float)sizeFont);
     if (center)
     {
         text->SetAlignment(HA_CENTER, VA_CENTER);

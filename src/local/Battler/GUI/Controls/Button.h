@@ -13,7 +13,8 @@ public:
     static void RegisterObject(Context *context = gContext);
     void SetText(char *text);
     void SetHint(char *text);
-    virtual void OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Cursor* cursor);
+    virtual void OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, MouseButton button,
+        MouseButtonFlags buttons, QualifierFlags qualifiers, Cursor* cursor) override;
 
 private:
     SharedPtr<Label> label;

@@ -1,8 +1,6 @@
 #pragma once
 
-#pragma warning(push)
-
-#pragma warning(disable:4100 4191 4266 4365 4371 4464 4625 4626 4640 4668 4820 5026 5027)
+#pragma warning(push, 0)
 
 #include <Urho3D/AngelScript/Addons.h>
 #include <Urho3D/AngelScript/APITemplates.h>

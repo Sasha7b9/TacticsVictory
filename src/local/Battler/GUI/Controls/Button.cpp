@@ -85,7 +85,8 @@ void ButtonRTS::HandleHoverEnd(StringHash, VariantMap&)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ButtonRTS::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, int button, int buttons, int qualifiers, Cursor* cursor)
+void ButtonRTS::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, MouseButton button,
+    MouseButtonFlags buttons, QualifierFlags qualifiers, Cursor* cursor)
 {
     Button::OnClickBegin(position, screenPosition, (MouseButton)button, (MouseButtonFlags)buttons, (QualifierFlags)qualifiers, cursor);
 
