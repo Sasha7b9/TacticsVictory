@@ -180,10 +180,10 @@ static float GetSpeedNetOUT()
 void GUI::Create()
 {
     gConsole = new ConsoleRTS(gContext);
-    gUIRoot->AddChild(gConsole);
+    TheUIRoot->AddChild(gConsole);
 
     gWindowVars = new WindowVariables(gContext);
-    gUIRoot->AddChild(gWindowVars);
+    TheUIRoot->AddChild(gWindowVars);
     gWindowVars->SetVisible(false);
     gWindowVars->SetPosition(1000, 500);
 
@@ -226,7 +226,7 @@ bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
 bool GUI::UnderCursor()
 {
     PODVector<UIElement*> elements;
-    gUIRoot->GetChildren(elements);
+    TheUIRoot->GetChildren(elements);
 
     for(UIElement *elem : elements)
     {

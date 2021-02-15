@@ -38,7 +38,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 {
     int key = eventData[KeyDown::P_KEY].GetInt();
 
-    gUIRoot->RemoveChild(gHint);
+    TheUIRoot->RemoveChild(gHint);
 
     if(KEY_IS_F1)
     {

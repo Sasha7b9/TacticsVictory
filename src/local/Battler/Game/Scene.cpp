@@ -129,7 +129,7 @@ void SceneRTS::Create()
     gCamera->SetPosition({sizeX / 2.0f, 25.0f, - static_cast<float>(sizeZ) / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
 
     gWindowTarget = new WindowTarget();
-    gUIRoot->AddChild(gWindowTarget);
+    TheUIRoot->AddChild(gWindowTarget);
     gWindowTarget->SetVisible(false);
 
     SharedPtr<MilitaryPlant> militaryPlant = MilitaryPlant::Create();

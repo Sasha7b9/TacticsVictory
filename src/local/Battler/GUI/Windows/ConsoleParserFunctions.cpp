@@ -217,7 +217,7 @@ bool ConsoleParser::FuncExit(Vector<String> &, bool showInfo)
     {
         gClient->Disconnect();
         gServer->Disconnect();
-        gEngine->Exit();
+        TheEngine->Exit();
     }
     return true;
 }

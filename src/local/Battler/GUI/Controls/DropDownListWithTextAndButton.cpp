@@ -18,7 +18,7 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
     UIElement(gContext)
 {
     SharedPtr<Window> window(new Window(gContext));
-    window->SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
     AddChild(window);
 
@@ -31,7 +31,7 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
 
     ddList = CreateChild<DropDownList>();
 
-    XMLFile *style = gCache->GetResource<XMLFile>("UI/MainStyle.xml");
+    XMLFile *style = TheCache->GetResource<XMLFile>("UI/MainStyle.xml");
     ddList->SetDefaultStyle(style);
 
     ddList->SetStyleAuto();

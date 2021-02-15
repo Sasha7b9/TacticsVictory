@@ -98,7 +98,7 @@ void SliderInt::RegisterObject(Context* context)
 
 SharedPtr<SliderInt> SliderInt::Create(UIElement *uielement, const IntVector2 &size)
 {
-    SharedPtr<SliderInt> slider(gUIRoot->CreateChild<SliderInt>());
+    SharedPtr<SliderInt> slider(TheUIRoot->CreateChild<SliderInt>());
     slider->SetFixedSize(size);
     slider->SetStyle("Slider");
 

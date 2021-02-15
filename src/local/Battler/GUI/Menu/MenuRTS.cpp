@@ -60,7 +60,7 @@ void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
     }
     else if (action == MenuEvent_ExitInOS)
     {
-        gEngine->Exit();
+        TheEngine->Exit();
     }
     else if (action == MenuEvent_OpenOptions)
     {
@@ -89,7 +89,7 @@ void MenuRTS::CloseAll()
 {
     for (WindowMenu *window : allMenus)
     {
-        gUIRoot->RemoveChild(window);
+        TheUIRoot->RemoveChild(window);
     }
 }
 

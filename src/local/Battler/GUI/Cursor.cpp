@@ -124,11 +124,11 @@ void CursorRTS::Update(float dT)
             {
                 type = TypeCursor_Down;
             }
-            else if (gInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+            else if (TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
             {
                 static float thisNumFrame = 0.0f;
-                int dX = gInput->GetMouseMoveX();
-                int dY = gInput->GetMouseMoveY();
+                int dX = TheInput->GetMouseMoveX();
+                int dY = TheInput->GetMouseMoveY();
                 thisNumFrame += static_cast<float>(sqrt(dY * dY + dX * dX)) / 10.0f;
                 if(thisNumFrame < 0.0f)
                 {

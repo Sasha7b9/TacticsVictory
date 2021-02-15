@@ -97,7 +97,7 @@ void LayerTerrain::Build()
     model->SetBoundingBox(Math::CalculateBoundingBox(bufVert, numVert / 8));
 
     object->SetModel(model);
-    object->SetMaterial(gCache->GetResource<Material>("Materials/TVTerrain.xml"));
+    object->SetMaterial(TheCache->GetResource<Material>("Materials/TVTerrain.xml"));
     object->SetCastShadows(true);
 
     SAFE_DELETE_ARRAY(bufVert); //-V809

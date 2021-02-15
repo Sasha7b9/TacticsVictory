@@ -19,7 +19,7 @@ void Particles::Init()
     Node *node = gScene->CreateChild("Emitter");
     ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
     emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
-    emitter->SetEffect(gCache->GetResource<ParticleEffect>("Models/Units/Tank/FireTank.xml"));
+    emitter->SetEffect(TheCache->GetResource<ParticleEffect>("Models/Units/Tank/FireTank.xml"));
     emitter->SetEmitting(false);
     Vector<Node*> &emitters = nodesParticles.At(Explosion_Tank);
     emitters.Push(node);
@@ -35,7 +35,7 @@ void Particles::EmittingStatic(TypeParticles type, const Vector3 &position)
         node->SetPosition(position);
         ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
         emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
-        emitter->SetEffect(gCache->GetResource<ParticleEffect>("Particle/Disco.xml"));
+        emitter->SetEffect(TheCache->GetResource<ParticleEffect>("Particle/Disco.xml"));
         emitter->SetAutoRemoveMode(REMOVE_COMPONENT);
         emitter->SetEmitting(true);
     }
@@ -84,7 +84,7 @@ void Particles::EmittingDinamic(TypeParticles type, Node *node_)
         node->SetScale(50.0f);
         ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
         emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
-        emitter->SetEffect(gCache->GetResource<ParticleEffect>("Models/Units/Tank/FireTank.xml"));
+        emitter->SetEffect(TheCache->GetResource<ParticleEffect>("Models/Units/Tank/FireTank.xml"));
         emitter->SetAutoRemoveMode(REMOVE_COMPONENT);
         emitter->SetEmitting(true);
     }
@@ -95,7 +95,7 @@ void Particles::EmittingDinamic(TypeParticles type, Node *node_)
         node->SetPosition({0.0f, 15.5f, 0.0f});
         ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
         emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
-        emitter->SetEffect(gCache->GetResource<ParticleEffect>("Particle/Disco.xml"));
+        emitter->SetEffect(TheCache->GetResource<ParticleEffect>("Particle/Disco.xml"));
         emitter->SetAutoRemoveMode(REMOVE_COMPONENT);
         emitter->SetEmitting(true);
     }

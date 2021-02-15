@@ -26,7 +26,7 @@ SharedPtr<lSlider> lSlider::Create(Window *window, char *text_)
     text->SetStyle("MainMenuButton");
     window->AddChild(text);
 
-    SharedPtr<lSlider> slider(gUIRoot->CreateChild<lSlider>());
+    SharedPtr<lSlider> slider(TheUIRoot->CreateChild<lSlider>());
     slider->SetMinHeight(15);
     window->AddChild(slider);
     slider->SetRange(1.0f);

@@ -10,7 +10,7 @@ PODVector<SoundSource3D*> sources;
 
 void Sounds::Init()
 {
-    sounds[StringHash(Sound_Explosion)] = gCache->GetResource<Sound>("Sounds/ExplosionMissile.wav");
+    sounds[StringHash(Sound_Explosion)] = TheCache->GetResource<Sound>("Sounds/ExplosionMissile.wav");
     Node *nodeSource = gScene->CreateChild("Sound");
     SoundSource3D* soundSource = nodeSource->CreateComponent<SoundSource3D>();
     soundSource->SetDistanceAttenuation(1.0f, 5.0f, 0.01f);

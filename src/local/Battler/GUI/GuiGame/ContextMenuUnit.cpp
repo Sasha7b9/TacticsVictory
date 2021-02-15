@@ -11,7 +11,7 @@
 ContextMenuUnit::ContextMenuUnit(Context *context) :
     WindowRTS(context)
 {
-    SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowBorder");
 
     SetLayout(LM_VERTICAL, 3, IntRect(3, 3, 3, 3));

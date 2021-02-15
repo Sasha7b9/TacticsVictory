@@ -76,7 +76,7 @@ void Tank::Init(TypeTank type_, uint _id_)
     rocketLauncher->Init();
 
     ScriptInstance *instance = node_->CreateComponent<ScriptInstance>();
-    instance->CreateObject(gCache->GetResource<ScriptFile>("Models/Units/Tank/Tank.as"), "TankUpdater");
+    instance->CreateObject(TheCache->GetResource<ScriptFile>("Models/Units/Tank/Tank.as"), "TankUpdater");
     VariantVector params;
     params.Push(Variant(rocketLauncher));
     params.Push(Variant(translator));
@@ -94,11 +94,11 @@ void Tank::Init(TypeTank type_, uint _id_)
 void Tank::LoadFromFile()
 {
     char *fileName = parameters[typeTank].fileName; //-V108 //-V2006
-    JSONFile *file = gCache->GetResource<JSONFile>(fileName);
+    JSONFile *file = TheCache->GetResource<JSONFile>(fileName);
 
     if (timeForReload)
     {
-        gCache->ReloadResource(file);
+        TheCache->ReloadResource(file);
     }
 
     JSONValue &root = file->GetRoot();
@@ -109,7 +109,7 @@ void Tank::LoadFromFile()
 
     modelObject = node_->CreateComponent<StaticModel>();
     modelObject->SetViewMask(VIEW_MASK_FOR_MISSILE);
-    modelObject->SetModel(gCache->GetResource<Model>(fileModel));
+    modelObject->SetModel(TheCache->GetResource<Model>(fileModel));
     modelObject->ApplyMaterialList(fileMaterials);
     modelObject->SetCastShadows(true);
 

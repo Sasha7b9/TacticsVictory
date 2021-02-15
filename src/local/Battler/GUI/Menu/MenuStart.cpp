@@ -104,7 +104,7 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     else if (button == buttonExit)
     {
-        gEngine->Exit();
+        TheEngine->Exit();
     }
 }
 

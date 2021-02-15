@@ -120,43 +120,43 @@ void CameraRTS::Move(float time) //-V2008
     {
         MoveOn(Direction_Further, distance);
     }
-    if(gInput->GetKeyDown(KEY_END))
+    if(TheInput->GetKeyDown(KEY_END))
     {
         MoveOn(Direction_RotateYAW, -distance);
     }
-    if(gInput->GetKeyDown(KEY_PAGEDOWN))
+    if(TheInput->GetKeyDown(KEY_PAGEDOWN))
     {
         MoveOn(Direction_RotateYAW, distance);
     }
-    if(gInput->GetKeyDown(KEY_INSERT))
+    if(TheInput->GetKeyDown(KEY_INSERT))
     {
         MoveOn(Direction_RotatePITCH, distance);
     }
-    if(gInput->GetKeyDown(KEY_DELETE))
+    if(TheInput->GetKeyDown(KEY_DELETE))
     {
         MoveOn(Direction_RotatePITCH, -distance);
     }
 
-    int dX = gInput->GetMouseMoveX();
-    int dY = gInput->GetMouseMoveY();
+    int dX = TheInput->GetMouseMoveX();
+    int dY = TheInput->GetMouseMoveY();
 
     if((dX || dY) && !gGUI->UnderCursor())
     {
         IntVector2 posCursor = gCursor->GetCursor()->GetPosition();
         posCursor.x_ -= dX;
         posCursor.y_ -= dY;
-        if((dY || dX) && gInput->GetMouseButtonDown(MOUSEB_LEFT) && gInput->GetMouseButtonDown(MOUSEB_RIGHT))
+        if((dY || dX) && TheInput->GetMouseButtonDown(MOUSEB_LEFT) && TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
             MoveOn(dY < 0 ? Direction_Closer : Direction_Further, fabs(dY / 10.0f));
             gCursor->GetCursor()->SetPosition(posCursor);
         }
-        else if((dX || dY) && gInput->GetMouseButtonDown(MOUSEB_RIGHT))
+        else if((dX || dY) && TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
             MoveOn(Direction_RotateYAW, dX / 10.0f);
             MoveOn(Direction_RotatePITCH, dY / 10.0f);
             gCursor->GetCursor()->SetPosition(posCursor);
         }
-        else if((dX || dY) && gInput->GetMouseButtonDown(MOUSEB_MIDDLE))
+        else if((dX || dY) && TheInput->GetMouseButtonDown(MOUSEB_MIDDLE))
         {
             float k = 20.0f;
             if(dX > 0)
@@ -179,7 +179,7 @@ void CameraRTS::Move(float time) //-V2008
         }
     }
 
-    int wheel = gInput->GetMouseMoveWheel();
+    int wheel = TheInput->GetMouseMoveWheel();
 
     if(wheel)
     {

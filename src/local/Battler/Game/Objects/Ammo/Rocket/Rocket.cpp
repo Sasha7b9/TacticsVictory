@@ -137,7 +137,7 @@ void Rocket::LoadFromFile()
     if (!model)
     {
         model = node_->CreateComponent<StaticModel>();
-        model->SetModel(gCache->GetResource<Model>("Models/Rocket.mdl"));
+        model->SetModel(TheCache->GetResource<Model>("Models/Rocket.mdl"));
         model->ApplyMaterialList("Models/Rocket.txt");
     }
     model->SetViewMask(VIEW_MASK_FOR_EFFECTS);
@@ -229,7 +229,7 @@ void Rocket::CreateSmoke()
     billboardObjectSmoke = smokeNode->CreateComponent<BillboardSet>();
     billboardObjectSmoke->SetViewMask(VIEW_MASK_FOR_EFFECTS);
     billboardObjectSmoke->SetNumBillboards(NUM_BILLBOARDS);
-    billboardObjectSmoke->SetMaterial(gCache->GetResource<Material>("Materials/RocketSmoke.xml"));
+    billboardObjectSmoke->SetMaterial(TheCache->GetResource<Material>("Materials/RocketSmoke.xml"));
     billboardObjectSmoke->SetSorted(false);
 
     for(uint j = 0; j < NUM_BILLBOARDS; ++j)

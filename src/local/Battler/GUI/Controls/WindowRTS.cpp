@@ -13,7 +13,7 @@
 WindowRTS::WindowRTS(Context *context) :
     Window(context)
 {
-    SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("Window");
     SetMovable(true);
 }
@@ -29,7 +29,7 @@ void WindowRTS::RegisterObject(Context *context)
 
 bool WindowRTS::IsChildOfParent()
 {
-    return gUIRoot->FindChild(this) != M_MAX_UNSIGNED;
+    return TheUIRoot->FindChild(this) != M_MAX_UNSIGNED;
 }
 
 

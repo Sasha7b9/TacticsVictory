@@ -17,7 +17,7 @@ ButtonToggled::ButtonToggled(Context *context) :
 ButtonToggled::ButtonToggled(UIElement * uielement, char * text, int width, int height) :
     CheckBox(gContext)
 {
-    SetStyleAuto(gUIRoot->GetDefaultStyle());
+    SetStyleAuto(TheUIRoot->GetDefaultStyle());
     label = Label::Create(text, true, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
 

@@ -69,8 +69,8 @@ void Editor::Run()
     modelNode->SetPosition({4.5f, 0.5f, -5.0f});
     modelNode->SetScale(0.15f);
     StaticModel *modelObject = modelNode->CreateComponent<StaticModel>();
-    modelObject->SetModel(gCache->GetResource<Model>("Models/T-34-76-2.mdl"));
-    //modelObject->SetMaterial(gCache->GetResource<Material>("Materials/T-34-76-2_05.xml"));
+    modelObject->SetModel(TheCache->GetResource<Model>("Models/T-34-76-2.mdl"));
+    //modelObject->SetMaterial(TheCache->GetResource<Material>("Materials/T-34-76-2_05.xml"));
     modelObject->SetCastShadows(true);
     */
 }
@@ -106,7 +106,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             gDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
         }
 
-        if (!gMenu->IsActive() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+        if (!gMenu->IsActive() && !gGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             Timer timer;
             currentPlane = gTerrain->GetIntersectionPlane(ray);
@@ -130,7 +130,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
     if (gGuiEditor->modeSelect == GuiEditor::ModeSelect_Edge)
     {
-        if (!gMenu->IsActive() && !gGUI->UnderCursor() && !gInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+        if (!gMenu->IsActive() && !gGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             currentEdge = gTerrain->GetIntersectionEdge(ray);
 
@@ -185,7 +185,7 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
 {
     if (gHint && gCounterHint != 0)
     {
-        gUIRoot->RemoveChild(gHint);
+        TheUIRoot->RemoveChild(gHint);
         gHint = nullptr;
     }
     gCounterHint++;
@@ -197,7 +197,7 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
 
     if (gGuiEditor->modeSelect == GuiEditor::ModeSelect_Plane)
     {
-        if (gInput->GetMouseButtonDown(MOUSEB_LEFT) && !gInput->GetMouseButtonDown(MOUSEB_MIDDLE) && !gInput->GetMouseButtonDown(MOUSEB_RIGHT))
+        if (TheInput->GetMouseButtonDown(MOUSEB_LEFT) && !TheInput->GetMouseButtonDown(MOUSEB_MIDDLE) && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
             if (!selectedPlane.IsEquals(PlaneRTS::ZERO) && selectedPlane.IsEquals(currentPlane))
             {

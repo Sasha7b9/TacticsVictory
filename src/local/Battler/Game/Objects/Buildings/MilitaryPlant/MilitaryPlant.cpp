@@ -40,7 +40,7 @@ void MilitaryPlant::LoadFromFile()
 
     modelObject = node_->CreateComponent<StaticModel>();
     modelObject->SetViewMask(VIEW_MASK_FOR_MISSILE);
-    modelObject->SetModel(gCache->GetResource<Model>(fileName));
+    modelObject->SetModel(TheCache->GetResource<Model>(fileName));
     modelObject->ApplyMaterialList(materialsName);
     modelObject->SetCastShadows(true);
 }

@@ -36,10 +36,10 @@ GuiEditor::GuiEditor(Context* context) : Object(context)
 void GuiEditor::CreatePanels()
 {
     panelMap = new PanelMap(gContext);
-    gUIRoot->AddChild(panelMap);
+    TheUIRoot->AddChild(panelMap);
 
     panelMain = new PanelMain(gContext);
-    gUIRoot->AddChild(panelMain);
+    TheUIRoot->AddChild(panelMain);
 
     // Panel bottom
     panelBottom = new PanelBottom(gContext);
@@ -58,7 +58,7 @@ void GuiEditor::CreatePanels()
     buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
     SubscribeToEvent(buttonMenu, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
-    gUIRoot->AddChild(panelBottom);
+    TheUIRoot->AddChild(panelBottom);
     panelBottom->BringToFront();
 }
 
@@ -242,7 +242,7 @@ void GuiEditor::CreateWindows()
 
     windowNewMap->SetFixedSize(windowNewMap->GetSize());
     SetWindowInCenterScreen(windowNewMap);
-    gUIRoot->AddChild(windowNewMap);
+    TheUIRoot->AddChild(windowNewMap);
     windowNewMap->SetVisible(false);
 
     // window menu
@@ -256,7 +256,7 @@ void GuiEditor::CreateWindows()
 
     windowMenu->SetFixedWidth(buttonMenu->GetWidth());
     windowMenu->SetFixedSize(windowMenu->GetSize());
-    gUIRoot->AddChild(windowMenu);
+    TheUIRoot->AddChild(windowMenu);
     windowMenu->SetVisible(false);
 
     // window confirm exit
@@ -277,7 +277,7 @@ void GuiEditor::CreateWindows()
 
     windowConfirmExit->AddChild(layer);
 
-    gUIRoot->AddChild(windowConfirmExit);
+    TheUIRoot->AddChild(windowConfirmExit);
     windowConfirmExit->SetVisible(false);
     SetWindowInCenterScreen(windowConfirmExit);
 

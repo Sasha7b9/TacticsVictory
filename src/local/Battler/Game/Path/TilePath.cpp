@@ -50,7 +50,7 @@ TilePath::TilePath() : Object(gContext)
             geometry->DefineNormal({0.0f, 1.0f, 0.0f});
         }
 
-        geometry->SetMaterial(gCache->GetResource<Material>("Materials/Decals/PathDecal.xml"));
+        geometry->SetMaterial(TheCache->GetResource<Material>("Materials/Decals/PathDecal.xml"));
 
         geometry->Commit();
     }

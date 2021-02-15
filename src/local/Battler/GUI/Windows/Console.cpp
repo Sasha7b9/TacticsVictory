@@ -238,13 +238,13 @@ ConsoleRTS::ConsoleRTS(Context *context) :
     SetSize(gGraphics->GetWidth(), 300);
     SetResizable(true);
 
-    lineEdit = gUIRoot->CreateChild<LineEdit>();
+    lineEdit = TheUIRoot->CreateChild<LineEdit>();
     lineEdit->SetStyle("LineEdit");
 
     AddChild(lineEdit);
 
     /*
-    scrollBar = gUIRoot->CreateChild<ScrollBar>();
+    scrollBar = TheUIRoot->CreateChild<ScrollBar>();
     scrollBar->SetFixedSize(10, GetHeight() - 15);
     scrollBar->SetPosition(GetWidth() - 10, 0);
     scrollBar->SetStyleAuto();
@@ -253,7 +253,7 @@ ConsoleRTS::ConsoleRTS(Context *context) :
     AddChild(scrollBar);
     */
 
-    text = gUIRoot->CreateChild<Text>();
+    text = TheUIRoot->CreateChild<Text>();
     text->SetStyle("WindowMenu");
     text->SetWordwrap(true);
     AddChild(text);

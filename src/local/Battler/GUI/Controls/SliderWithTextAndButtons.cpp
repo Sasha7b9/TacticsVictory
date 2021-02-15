@@ -18,7 +18,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     UIElement(gContext)
 {
     SharedPtr<Window> window(new Window(gContext));
-    window->SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
     AddChild(window);
  
@@ -173,12 +173,12 @@ void SliderWithTextAndButtons::HandleMouseClick(StringHash, VariantMap& eventDat
             {
                 if (gHint)
                 {
-                    gUIRoot->RemoveChild(gHint);
+                    TheUIRoot->RemoveChild(gHint);
                 }
                 int x = (int)eventData[UIMouseClick::P_X].GetInt();
                 int y = (int)eventData[UIMouseClick::P_Y].GetInt();
                 hint->SetPosition(x, y - hint->GetHeight());
-                gUIRoot->AddChild(hint);
+                TheUIRoot->AddChild(hint);
                 hint->BringToFront();
                 gHint = hint;
                 gCounterHint = 0;

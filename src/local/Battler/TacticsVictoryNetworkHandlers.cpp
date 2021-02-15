@@ -40,7 +40,7 @@ void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
     s << connection->GetAddress().CString() << ":" << connection->GetPort() << " disconnected";
     LOGINFOF(s.str().c_str());
 
-    gEngine->Exit();
+    TheEngine->Exit();
 }
 
 

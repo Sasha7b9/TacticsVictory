@@ -65,7 +65,7 @@ void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
 
     if (button == buttonExit)
     {
-        gEngine->Exit();
+        TheEngine->Exit();
         gMenuMain->SetDisabled();
     
     }

@@ -12,7 +12,7 @@ void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<
 {
     SAFE_DELETE(gFileSelector); //-V809
     gFileSelector = new FileSelector(gContext);
-    XMLFile *style = gCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
+    XMLFile *style = TheCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
     gFileSelector->SetDefaultStyle(style);
 
     Window *window = gFileSelector->GetWindow();
@@ -43,9 +43,9 @@ String GetNameFile(const char *name)
 {
     String fullName;
 
-    if(gCache)
+    if(TheCache)
     {
-        Vector<String> dirs = gCache->GetResourceDirs();
+        Vector<String> dirs = TheCache->GetResourceDirs();
 
         for(String &dir : dirs)
         {

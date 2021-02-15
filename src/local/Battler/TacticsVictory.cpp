@@ -45,7 +45,7 @@ void TacticsVictory::Setup()
 
     gTacticsVictory = this;
     gSet = new Settings();
-    gCache = GetSubsystem<ResourceCache>();
+    TheCache = GetSubsystem<ResourceCache>();
     gFileSystem = GetSubsystem<FileSystem>();
     OpenLog();
 //    LOGINFO("Загружаю настройки");
@@ -83,7 +83,7 @@ void TacticsVictory::Stop()
     SAFE_DELETE(gGUI); //-V809
     //File file(gContext, "ui.xml", FILE_WRITE);
     //URHO3D_LOGINFO("Now save ui");
-    //gUIRoot->SaveXML(file);
+    //TheUIRoot->SaveXML(file);
     gSet->Save();
     SAFE_DELETE(gClient); //-V809
     SAFE_DELETE(gServer); //-V809
@@ -113,12 +113,12 @@ void TacticsVictory::Start()
     PROFILER_FUNC_ENTER
     Application::Start();
     FillNetworkFunctions();
-    gCache->AddResourceDir(gFileSystem->GetProgramDir() + RESOURCES_DIR);
+    TheCache->AddResourceDir(gFileSystem->GetProgramDir() + RESOURCES_DIR);
     SetLocalization();
     gTime = GetSubsystem<Time>();
-    gFont = gCache->GetResource<Font>(SET::MENU::FONT::NAME);
+    gFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
     gProfiler = GetSubsystem<Profiler>();
-    gEngine = GetSubsystem<Engine>();
+    TheEngine = GetSubsystem<Engine>();
     gGraphics = GetSubsystem<Graphics>();
     gScene = new Scene(gContext);
     gScene->CreateComponent<Octree>();
@@ -136,11 +136,11 @@ void TacticsVictory::Start()
         SetWindowTitleAndIcon();
         CreateConsoleAndDebugHud();
         TheUI = GetSubsystem<UI>();
-        gInput = GetSubsystem<Input>();
+        TheInput = GetSubsystem<Input>();
         gRenderer = GetSubsystem<Renderer>();
         gDebugRenderer = gScene->GetComponent<DebugRenderer>();
-        gUIRoot = TheUI->GetRoot();
-        gUIRoot->SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+        TheUIRoot = TheUI->GetRoot();
+        TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
         gGUI = new GUI();
         LOGINFO("Загружаю настройки");
         gMenu = new MenuRTS();
@@ -286,7 +286,7 @@ void TacticsVictory::SetWindowTitleAndIcon()
 {
     if (MODE_CLIENT)
     {
-        Image* icon = gCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
+        Image* icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
         gGraphics->SetWindowIcon(icon);
         gGraphics->SetWindowTitle("Тактика победы");
     }
@@ -297,7 +297,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 {
     if (MODE_CLIENT)
     {
-        XMLFile* xmlFile = gCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
+        XMLFile* xmlFile = TheCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
 
         gEngineConsole = engine_->CreateConsole();
         gEngineConsole->SetDefaultStyle(xmlFile);

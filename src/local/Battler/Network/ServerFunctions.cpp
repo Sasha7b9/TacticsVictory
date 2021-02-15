@@ -55,7 +55,7 @@ void FUNC_MSG_REQUEST_TANKS(Connection *connection, MemoryBuffer &, VectorBuffer
 
 void FUNC_MSG_DELETE_SERVER(Connection *, MemoryBuffer &, VectorBufferRTS &)
 {
-    gEngine->Exit();
+    TheEngine->Exit();
 }
 
 

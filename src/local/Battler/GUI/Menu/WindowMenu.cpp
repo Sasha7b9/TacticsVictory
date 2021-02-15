@@ -27,13 +27,13 @@ void WindowMenu::SendEventClose()
 void WindowMenu::Open(WindowMenu *prev)
 {
     prevMenu = prev;
-    gUIRoot->AddChild(this);
+    TheUIRoot->AddChild(this);
 }
 
 
 void WindowMenu::Close()
 {
-    gUIRoot->RemoveChild(this);
+    TheUIRoot->RemoveChild(this);
 }
 
 

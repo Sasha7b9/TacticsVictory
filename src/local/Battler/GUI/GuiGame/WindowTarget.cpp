@@ -8,7 +8,7 @@
 WindowTarget::WindowTarget(Context *context) :
     WindowRTS(context)
 {
-    SetDefaultStyle(gCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowNoBorder");
 
     SetFixedSize(WIDTH_WINDOW_TARGET, HEIGHT_WINDOW_TARGET);

@@ -20,7 +20,7 @@ ButtonRTS::ButtonRTS(Context *context) :
 ButtonRTS::ButtonRTS(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
     Button(gContext)
 {
-    SetStyleAuto(gUIRoot->GetDefaultStyle());
+    SetStyleAuto(TheUIRoot->GetDefaultStyle());
     SetStyle("MainMenuButton");
     label = Label::Create(text, true, SET::MENU::FONT::SIZE::ITEM);
     AddChild(label);
@@ -95,10 +95,10 @@ void ButtonRTS::OnClickBegin(const IntVector2& position, const IntVector2& scree
         {
             if(gHint)
             {
-                gUIRoot->RemoveChild(gHint);
+                TheUIRoot->RemoveChild(gHint);
             }
             hint->SetPosition(screenPosition.x_, screenPosition.y_ - hint->GetHeight());
-            gUIRoot->AddChild(hint);
+            TheUIRoot->AddChild(hint);
             hint->BringToFront();
             gHint = hint;
             gCounterHint = 0;
