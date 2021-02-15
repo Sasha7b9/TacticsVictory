@@ -133,13 +133,14 @@ add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} $
                 ${GAME_PATH} ${GRAPHICS_2D} ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME}
                 ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS} ${GUI_WINDOWS} ${NETWORK})
 
+include(../../RuntimeLibrary.cmake)
+
 if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
     target_link_libraries(${PROJECT_NAME} Urho3D_d)
 else()
     target_link_libraries(${PROJECT_NAME} Urho3D)
 endif()
 
-include(../../RuntimeLibrary.cmake)
 include(../../SetWorkingDirectory.cmake)
 include(../../Install.cmake)
 include(../../CopyToDirEXE.cmake)
