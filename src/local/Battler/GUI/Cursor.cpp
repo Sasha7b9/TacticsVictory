@@ -1,7 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Cursor.h"
-#include "Game/Objects/Terrain/Terrain.h"
+#include "Scene/Objects/Terrain/Terrain.h"
 #include "Graphics/2D/Image.h"
 #include "GUI/GUI.h"
 #include "GUI/Menu/MenuRTS.h"

@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Editor.h"
 #include "Scene/_Level.h"
-#include "Game/Objects/Units/Tank/Tank.h"
+#include "Scene/Objects/Units/Tank/_Tank.h"
 #include "GUI/Cursor.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"

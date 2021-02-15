@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/_VectorBufferRTS.h"
-#include "Game/Objects/Units/Tank/Tank.h"
+#include "Scene/Objects/Units/Tank/_Tank.h"
 
 
 

@@ -1,7 +1,7 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "WaveAlgorithm.h"
-#include "Game/Objects/Terrain/Terrain.h"
+#include "Scene/Objects/Terrain/Terrain.h"
 
 
 

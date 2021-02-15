@@ -1,5 +1,5 @@
 #pragma once
-#include "Game/Objects/Weapons/WeaponObject.h"
+#include "Scene/Objects/Weapons/WeaponObject.h"
 
 
 

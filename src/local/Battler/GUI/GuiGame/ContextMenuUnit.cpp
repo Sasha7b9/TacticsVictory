@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "ContextMenuUnit.h"
 #include "GUI/Controls/_Label.h"
-#include "Game/Objects/Units/UnitObject.h"
+#include "Scene/Objects/Units/UnitObject.h"
 #include "GUI/Controls/_ButtonToggled.h"
 #include "GUI/GuiGame/WindowTarget.h"
 

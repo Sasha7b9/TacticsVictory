@@ -1,10 +1,10 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Scene/_Level.h"
-#include "Game/Objects/Terrain/Terrain.h"
+#include "Scene/Objects/Terrain/Terrain.h"
 #include "Core/Math.h"
 #include "GlobalFunctions.h"
-#include "Game/Objects/Terrain/SegmentTerrain.h"
+#include "Scene/Objects/Terrain/SegmentTerrain.h"
 
 
 
