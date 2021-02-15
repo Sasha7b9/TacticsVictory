@@ -56,8 +56,8 @@ enum TypeCursor
 #define VIEW_MASK_FOR_EFFECTS   2
 
 #ifdef _DEBUG
-#define PROFILER_FUNC_ENTER     gProfiler->BeginBlock(__FUNCTION__);
-#define PROFILER_FUNC_LEAVE     gProfiler->EndBlock();
+#define PROFILER_FUNC_ENTER     TheProfiler->BeginBlock(__FUNCTION__);
+#define PROFILER_FUNC_LEAVE     TheProfiler->EndBlock();
 #else
 #define PROFILER_FUNC_ENTER
 #define PROFILER_FUNC_LEAVE

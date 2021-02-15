@@ -34,7 +34,7 @@ CursorRTS::CursorRTS() : Object(TheContext)
     cursor->DefineShape("Normal", image, {0, 0, size, size}, {0, 0});
     cursor->SetName("Cursor");
     TheUI->SetCursor(cursor);
-    cursor->SetPosition(gGraphics->GetWidth() / 2, gGraphics->GetHeight() / 2);
+    cursor->SetPosition(TheGraphics->GetWidth() / 2, TheGraphics->GetHeight() / 2);
 
     shapes = new CursorShapes();
 
@@ -86,8 +86,8 @@ void CursorRTS::Update(float dT)
         static const int delta = 2;
         int posX = cursor->GetPosition().x_;
         int posY = cursor->GetPosition().y_;
-        int width = gGraphics->GetWidth();
-        int height = gGraphics->GetHeight();
+        int width = TheGraphics->GetWidth();
+        int height = TheGraphics->GetHeight();
         int numFrame = static_cast<int>(angle0) / 10;
 
         if(!gMenu->IsActive() && !gGUI->UnderCursor())

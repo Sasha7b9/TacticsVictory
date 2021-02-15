@@ -18,7 +18,7 @@ GovernorCell::GovernorCell(Context *) :
     SetFixedSize(SET::MENU::GOVERNOR::CELL::SIZE);
 
     label = new Text(TheContext);
-    label->SetFont(gFont, 8);
+    label->SetFont(TheFont, 8);
     label->SetAlignment(HA_CENTER, VA_CENTER);
 
     label->SetStyle("WindowNoBorder");

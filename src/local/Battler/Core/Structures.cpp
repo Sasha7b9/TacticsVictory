@@ -6,6 +6,6 @@
 
 void Coord::RegisterInAS()
 {
-    asIScriptEngine *engine = gScript->GetScriptEngine();
+    asIScriptEngine *engine = TheScript->GetScriptEngine();
     engine->RegisterObjectType("Coord", sizeof(Coord), asOBJ_VALUE | asOBJ_POD);
 }

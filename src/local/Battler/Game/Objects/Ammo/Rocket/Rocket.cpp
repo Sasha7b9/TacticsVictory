@@ -297,9 +297,9 @@ void Rocket::UpdateOn()
             &Rocket::UpdateEscortTarget
         };
 
-        if(state != Begin && (gTime->GetElapsedTime() - timePrevRaycast) > 0.2f)
+        if(state != Begin && (TheTime->GetElapsedTime() - timePrevRaycast) > 0.2f)
         {
-            timePrevRaycast = gTime->GetElapsedTime();
+            timePrevRaycast = TheTime->GetElapsedTime();
             VerifyOnIntersectionTerrain();
         }
 
@@ -407,7 +407,7 @@ void Rocket::StopAllThreads()
 
 void Rocket::UpdateAll(float timeStep)
 {
-    gProfiler->BeginBlock("Rocket::UpdateAll");
+    TheProfiler->BeginBlock("Rocket::UpdateAll");
 
     static uint numCPU = 1; // GetNumLogicalCPUs();
 
@@ -434,7 +434,7 @@ void Rocket::UpdateAll(float timeStep)
 
     //StopAllThreads();
 
-    gProfiler->EndBlock();
+    TheProfiler->EndBlock();
 }
 
 

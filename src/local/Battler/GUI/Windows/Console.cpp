@@ -235,7 +235,7 @@ ConsoleRTS::ConsoleRTS(Context *context) :
     SetVisible(false);
     SetResizable(true);
 
-    SetSize(gGraphics->GetWidth(), 300);
+    SetSize(TheGraphics->GetWidth(), 300);
     SetResizable(true);
 
     lineEdit = TheUIRoot->CreateChild<LineEdit>();

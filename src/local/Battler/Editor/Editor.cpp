@@ -92,8 +92,8 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
     IntVector2 pos = gCursor->GetCursor()->GetPosition();
 
-    float relX = static_cast<float>(pos.x_) / gGraphics->GetWidth();
-    float relY = static_cast<float>(pos.y_) / gGraphics->GetHeight();
+    float relX = static_cast<float>(pos.x_) / TheGraphics->GetWidth();
+    float relY = static_cast<float>(pos.y_) / TheGraphics->GetHeight();
 
     Ray ray = gCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
 
@@ -115,7 +115,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             {
                 if (!selectedPlane.IsEquals(currentPlane))
                 {
-                    Color color = static_cast<int>(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
+                    Color color = static_cast<int>(TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
                     TheDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
                     TheDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
                 }
@@ -136,7 +136,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
             if (!currentEdge.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
             {
-                Color color = static_cast<int>(gTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
+                Color color = static_cast<int>(TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
 
                 float dX = fabs(currentEdge.start.x_ - currentEdge.end.x_);
                 float dZ = fabs(currentEdge.start.z_ - currentEdge.end.z_);

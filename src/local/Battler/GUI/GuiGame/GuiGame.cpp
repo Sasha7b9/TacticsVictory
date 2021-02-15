@@ -120,7 +120,7 @@ void GuiGame::CreatePanels()
     panelBottom = new PanelBottom(TheContext);
     TheUIRoot->AddChild(panelBottom);
 
-    panelBottom->SetPosition(0, gGraphics->GetHeight() - panelBottom->GetHeight());
+    panelBottom->SetPosition(0, TheGraphics->GetHeight() - panelBottom->GetHeight());
 
     int width = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_WIDTH);
     int height = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_HEIGHT);

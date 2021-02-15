@@ -18,7 +18,7 @@ PanelMap::PanelMap(Context *context) :
 
     SetMovable(false);
 
-    IntVector2 posStart = {0, gGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAP::HEIGHT + 1};
+    IntVector2 posStart = {0, TheGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAP::HEIGHT + 1};
     IntVector2 posFinish = {-SET::PANEL::MAP::WIDTH, posStart.y_};
 
     translator = new LineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);

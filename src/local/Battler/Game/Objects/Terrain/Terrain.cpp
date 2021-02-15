@@ -31,7 +31,7 @@ TerrainRTS::~TerrainRTS()
 
 void TerrainRTS::CreateFromVector(const Vector<Vector<float>> &lev)
 {
-    float time = gTime->GetElapsedTime();
+    float time = TheTime->GetElapsedTime();
 
     level = lev;
 
@@ -106,7 +106,7 @@ void TerrainRTS::CreateFromVector(const Vector<Vector<float>> &lev)
         }
     }
 
-    URHO3D_LOGINFOF("time create terrain %f sec", gTime->GetElapsedTime() - time);
+    URHO3D_LOGINFOF("time create terrain %f sec", TheTime->GetElapsedTime() - time);
 }
 
 

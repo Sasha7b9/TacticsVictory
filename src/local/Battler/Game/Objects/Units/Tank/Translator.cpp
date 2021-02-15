@@ -22,7 +22,7 @@ Translator::Translator(Context *context) : Object(context)
 
 void Translator::RegisterInAS()
 {
-    asIScriptEngine *engine = gScript->GetScriptEngine();
+    asIScriptEngine *engine = TheScript->GetScriptEngine();
     engine->RegisterObjectType("Translator", 0, asOBJ_REF);
 #pragma warning(push)
 #pragma warning(disable:4191)

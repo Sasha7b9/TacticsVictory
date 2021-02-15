@@ -55,7 +55,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
 
     textValue = new Text(TheContext);
     textValue->SetFixedWidth(35);
-    textValue->SetFont(gFont, 15);
+    textValue->SetFont(TheFont, 15);
     textValue->SetText(String(slider->GetValue()));
     window->AddChild(textValue);
 

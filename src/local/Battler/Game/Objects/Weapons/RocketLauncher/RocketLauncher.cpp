@@ -23,7 +23,7 @@ void RocketLauncher::Init()
 
 void RocketLauncher::RegisterInAS()
 {
-    asIScriptEngine *engine = gScript->GetScriptEngine();
+    asIScriptEngine *engine = TheScript->GetScriptEngine();
     engine->RegisterObjectType("RocketLauncher", 0, asOBJ_REF);
 #pragma warning(push)
 #pragma warning(disable:4191)
@@ -64,9 +64,9 @@ void RocketLauncher::Update(float deltaStep)
 
 bool RocketLauncher::TargetInPointView(Tank* target)
 {
-    if(timeElapsedAfterShoot >= timeRecharge && (gTime->GetElapsedTime() - timePrevRaycast) > 0.5f)
+    if(timeElapsedAfterShoot >= timeRecharge && (TheTime->GetElapsedTime() - timePrevRaycast) > 0.5f)
     {
-        timePrevRaycast = gTime->GetElapsedTime();
+        timePrevRaycast = TheTime->GetElapsedTime();
 
         Vector3 position = tank->GetNode()->GetComponent<StaticModel>()->GetWorldBoundingBox().Center();
         Vector3 posTarget = target->GetNode()->GetComponent<StaticModel>()->GetWorldBoundingBox().Center();

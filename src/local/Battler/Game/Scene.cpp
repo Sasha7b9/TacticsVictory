@@ -55,7 +55,7 @@ void SceneRTS::Create()
 
     Particles::Init();
 
-    gPhysicsWorld->SetFps(5);
+    ThePhysicsWorld->SetFps(5);
 
     // Create a Zone component into a child scene node. The Zone controls ambient lighting and fog settings. Like the Octree,
     // it also defines its volume with a bounding box, but can be rotated (so it does not need to be aligned to the world X, Y

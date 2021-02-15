@@ -47,7 +47,7 @@ void Tank::RegisterObject(Context* context)
 
 void Tank::RegisterInAS()
 {
-    asIScriptEngine *engine = gScript->GetScriptEngine();
+    asIScriptEngine *engine = TheScript->GetScriptEngine();
     engine->RegisterObjectType("Tank", 0, asOBJ_REF);
 #pragma warning(push)
 #pragma warning(disable:4191)
@@ -135,7 +135,7 @@ void Tank::SetCoord(const Coord& coord)
 
 void Tank::Update(float dT)
 {
-    gProfiler->BeginBlock("Tank::Update");
+    TheProfiler->BeginBlock("Tank::Update");
     GameObject::Update(dT);
 
     //rocketLauncher->Update(dT);
@@ -176,7 +176,7 @@ void Tank::Update(float dT)
 
     if (timeForReload)
     {
-        int time = static_cast<int>(gTime->GetElapsedTime());
+        int time = static_cast<int>(TheTime->GetElapsedTime());
         if (time - timeLastReload >= timeForReload)
         {
             if (GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified) //-V108
@@ -187,7 +187,7 @@ void Tank::Update(float dT)
         }
     }
 
-    gProfiler->EndBlock();
+    TheProfiler->EndBlock();
 }
 
 

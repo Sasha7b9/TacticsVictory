@@ -40,7 +40,7 @@ void FUNC_MSG_CAMERA_INFO(Connection *, MemoryBuffer &in, VectorBufferRTS &)
 
 void FUNC_MSG_REQUEST_TANKS(Connection *connection, MemoryBuffer &, VectorBufferRTS &out)
 {
-    uint time = gTime->GetSystemTime();
+    uint time = TheTime->GetSystemTime();
     out.WriteUInt(Tank::GetAll().Size());
 
     for(Tank *tank : Tank::GetAll())
@@ -49,7 +49,7 @@ void FUNC_MSG_REQUEST_TANKS(Connection *connection, MemoryBuffer &, VectorBuffer
     }
     connection->SendMessage(MSG_SEND_TANKS, true, true, out);
 
-    gConsole->Write(String(gTime->GetSystemTime() - time));
+    gConsole->Write(String(TheTime->GetSystemTime() - time));
 }
 
 

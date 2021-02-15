@@ -320,12 +320,12 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 
     int key = eventData[KeyDown::P_KEY].GetInt();
 
-    if (gFileSelector->GetWindow()->IsVisible())
+    if (TheFileSelector->GetWindow()->IsVisible())
     {
         if (KEY_IS_ESC)
         {
-            UnsubscribeFromEvent(gFileSelector, E_FILESELECTED);
-            gFileSelector->GetWindow()->SetVisible(false);
+            UnsubscribeFromEvent(TheFileSelector, E_FILESELECTED);
+            TheFileSelector->GetWindow()->SetVisible(false);
             gCamera->SetEnabled(true);
         }
         return;
@@ -357,7 +357,7 @@ void GuiEditor::HandleFileLoad(StringHash, VariantMap&)
 
     OpenFileSelector("Load landscape", "Load", "Cancel", filters);
 
-    SubscribeToEvent(gFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorLoadTerrain));
+    SubscribeToEvent(TheFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorLoadTerrain));
 }
 
 
@@ -371,13 +371,13 @@ void GuiEditor::HandleFileSave(StringHash, VariantMap&)
 
     OpenFileSelector("Save landscape", "Save", "Cancel", filters);
 
-    SubscribeToEvent(gFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorSaveTerrain));
+    SubscribeToEvent(TheFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorSaveTerrain));
 }
 
 
 void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
 {
-    UnsubscribeFromEvent(gFileSelector, E_FILESELECTED);
+    UnsubscribeFromEvent(TheFileSelector, E_FILESELECTED);
 
     bool ok = (bool)eventData[FileSelected::P_OK].GetBool();
 
@@ -390,7 +390,7 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
         gCamera->SetPosition({gLevel->GetWidth() / 2.0f, 20.0f, -(float)gLevel->GetHeight()}, {gLevel->GetWidth() / 2.0f, 0.0f, -(gLevel->GetHeight() / 2.0f)});
     }
     
-    gFileSelector->GetWindow()->SetVisible(false);
+    TheFileSelector->GetWindow()->SetVisible(false);
 
     gCamera->SetEnabled(true);
 }
@@ -398,7 +398,7 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
 
 void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData) //-V2009
 {
-    UnsubscribeFromEvent(gFileSelector, E_FILESELECTED);
+    UnsubscribeFromEvent(TheFileSelector, E_FILESELECTED);
 
     bool ok = (bool)eventData[FileSelected::P_OK].GetBool();
 
@@ -410,7 +410,7 @@ void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData)
         gLevel->Save(fileName);
     }
 
-    gFileSelector->GetWindow()->SetVisible(false);
+    TheFileSelector->GetWindow()->SetVisible(false);
 
     gCamera->SetEnabled(true);
 }

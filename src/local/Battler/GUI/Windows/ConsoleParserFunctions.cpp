@@ -87,7 +87,7 @@ bool ConsoleParser::FuncServerStart(Vector<String> &words, bool) //-V2009
     arguments.Push(ToString("-server:%d", port));
     // Подключаем обработчик кода, возвращаемого сервером при завершении работы
     SubscribeToEvent(E_ASYNCLOADFINISHED, URHO3D_HANDLER(ConsoleParser, HandleAsyncExecFinished));
-    gFileSystem->SystemRunAsync(GetFileName("TVserver.exe"), arguments);
+    TheFileSystem->SystemRunAsync(GetFileName("TVserver.exe"), arguments);
     serverRunning = true;
 
     return true;

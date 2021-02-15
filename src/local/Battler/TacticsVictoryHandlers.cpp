@@ -25,7 +25,7 @@ void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
 {
     if(drawDebug)
     {
-        gPhysicsWorld->DrawDebugGeometry(true);
+        ThePhysicsWorld->DrawDebugGeometry(true);
         TheDebugRenderer->AddLine(Vector3::ZERO, {100.0f, 0.0f, 0.0f}, Color::RED);
         TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 100.0f, 0.0f}, Color::GREEN);
         TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 100.0f}, Color::BLUE);
@@ -50,7 +50,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
     }
     else if(KEY_IS_F10)
     {
-        gDebugHud->ToggleAll();
+        TheDebugHud->ToggleAll();
         return;
     }
     else if(KEY_IS_F11)
@@ -87,8 +87,8 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
         if(KEY_IS_9)
         {
             Image screenshot(context_);
-            gGraphics->TakeScreenShot(screenshot);
-            screenshot.SavePNG(gFileSystem->GetProgramDir() + "Data/Screenshot_" +
+            TheGraphics->TakeScreenShot(screenshot);
+            screenshot.SavePNG(TheFileSystem->GetProgramDir() + "Data/Screenshot_" +
                                Time::GetTimeStamp().Replaced(':', '_').Replaced('.', '_').Replaced(' ', '_') + ".png");
         }
         if(KEY_IS_SPACE)
@@ -123,7 +123,7 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
 {
     float time = eventData[Update::P_TIMESTEP].GetFloat();
 
-    //LOGINFOF("time frame %f, time from begin %f, fps %f", time, gTime->GetElapsedTime(), gTime->GetFrameNumber() / gTime->GetElapsedTime());
+    //LOGINFOF("time frame %f, time from begin %f, fps %f", time, TheTime->GetElapsedTime(), TheTime->GetFrameNumber() / TheTime->GetElapsedTime());
 
     gCamera->Move(time);
 

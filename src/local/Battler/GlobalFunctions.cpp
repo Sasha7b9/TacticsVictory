@@ -4,38 +4,38 @@
 
 void SetWindowInCenterScreen(Window *window)
 {
-    window->SetPosition(gGraphics->GetWidth() / 2 - window->GetWidth() / 2, gGraphics->GetHeight() / 2 - window->GetHeight() / 2);
+    window->SetPosition(TheGraphics->GetWidth() / 2 - window->GetWidth() / 2, TheGraphics->GetHeight() / 2 - window->GetHeight() / 2);
 }
 
 
 void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
 {
-    SAFE_DELETE(gFileSelector); //-V809
-    gFileSelector = new FileSelector(TheContext);
+    SAFE_DELETE(TheFileSelector); //-V809
+    TheFileSelector = new FileSelector(TheContext);
     XMLFile *style = TheCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
-    gFileSelector->SetDefaultStyle(style);
+    TheFileSelector->SetDefaultStyle(style);
 
-    Window *window = gFileSelector->GetWindow();
+    Window *window = TheFileSelector->GetWindow();
     window->SetResizable(false);
     SetWindowInCenterScreen(window);
     window->SetVisible(false);
     window->SetModal(false);
 
-    gFileSelector->SetTitle(title);
-    gFileSelector->SetButtonTexts(textOk, textCancel);
+    TheFileSelector->SetTitle(title);
+    TheFileSelector->SetButtonTexts(textOk, textCancel);
     window->SetVisible(true);
     window->BringToFront();
-    gFileSelector->SetFilters(filters, 0);
+    TheFileSelector->SetFilters(filters, 0);
 }
 
 
 unsigned GetLastModifiedTime(char* name)
 {
-    String fullName = gFileSystem->GetProgramDir();
+    String fullName = TheFileSystem->GetProgramDir();
     fullName.Erase(fullName.Length() - 1);
     fullName.Erase(fullName.FindLast('/'), 6);
     fullName += String("/TVData/") + String(name);
-    return gFileSystem->GetLastModifiedTime(fullName);
+    return TheFileSystem->GetLastModifiedTime(fullName);
 }
 
 
@@ -50,7 +50,7 @@ String GetNameFile(const char *name)
         for(String &dir : dirs)
         {
             fullName = dir + name;
-            if(gFileSystem->FileExists(fullName))
+            if(TheFileSystem->FileExists(fullName))
             {
                 break;
             }
@@ -61,13 +61,13 @@ String GetNameFile(const char *name)
     if(fullName.Empty())
     {
         fullName = RESOURCES_DIR + String(name);
-        if(!gFileSystem->FileExists(fullName))
+        if(!TheFileSystem->FileExists(fullName))
         {
             fullName = "../out/" + fullName;
-            if(!gFileSystem->FileExists(fullName))
+            if(!TheFileSystem->FileExists(fullName))
             {
                 fullName = "../" + fullName;
-                if(!gFileSystem->FileExists(fullName))
+                if(!TheFileSystem->FileExists(fullName))
                 {
                     fullName = "";
                 }

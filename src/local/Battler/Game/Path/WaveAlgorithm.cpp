@@ -35,7 +35,7 @@ static CScriptArray* GetTestStringsToArray()
 
 void WaveAlgorithm::RegisterInAS()
 {
-    asIScriptEngine *engine = gScript->GetScriptEngine();
+    asIScriptEngine *engine = TheScript->GetScriptEngine();
     engine->RegisterObjectType("WaveAlgorithm", 0, asOBJ_REF);
 //    RegisterObject<WaveAlgorithm>(engine, "WaveAlgorithm");
 #pragma warning(push)

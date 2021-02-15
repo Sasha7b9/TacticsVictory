@@ -46,7 +46,7 @@ void TacticsVictory::Setup()
     gTacticsVictory = this;
     gSet = new Settings();
     TheCache = GetSubsystem<ResourceCache>();
-    gFileSystem = GetSubsystem<FileSystem>();
+    TheFileSystem = GetSubsystem<FileSystem>();
     OpenLog();
 //    LOGINFO("Загружаю настройки");
     gSet->Load();
@@ -77,7 +77,7 @@ void TacticsVictory::Stop()
     Rocket::DeleteAll();
     SAFE_DELETE(TheScene); //-V809
     SAFE_DELETE(scene); //-V809
-    SAFE_DELETE(gFileSelector); //-V809
+    SAFE_DELETE(TheFileSelector); //-V809
     SAFE_DELETE(gLevel); //-V809
     SAFE_DELETE(gMenu); //-V809
     SAFE_DELETE(gGUI); //-V809
@@ -109,21 +109,21 @@ void MessageCallback(const asSMessageInfo *msg, void *)
 
 void TacticsVictory::Start()
 {
-    gProfiler = GetSubsystem<Profiler>();
+    TheProfiler = GetSubsystem<Profiler>();
     PROFILER_FUNC_ENTER
     Application::Start();
     FillNetworkFunctions();
-    TheCache->AddResourceDir(gFileSystem->GetProgramDir() + RESOURCES_DIR);
+    TheCache->AddResourceDir(TheFileSystem->GetProgramDir() + RESOURCES_DIR);
     SetLocalization();
-    gTime = GetSubsystem<Time>();
-    gFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
-    gProfiler = GetSubsystem<Profiler>();
+    TheTime = GetSubsystem<Time>();
+    TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
+    TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
-    gGraphics = GetSubsystem<Graphics>();
+    TheGraphics = GetSubsystem<Graphics>();
     TheScene = new Scene(TheContext);
     TheScene->CreateComponent<Octree>();
-    gPhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
-    gPhysicsWorld->SetGravity(Vector3::ZERO);
+    ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
+    ThePhysicsWorld->SetGravity(Vector3::ZERO);
     TheScene->CreateComponent<DebugRenderer>();
     gCamera = new CameraRTS();
 
@@ -144,9 +144,9 @@ void TacticsVictory::Start()
         gGUI = new GUI();
         LOGINFO("Загружаю настройки");
         gMenu = new MenuRTS();
-        gFileSelector = new FileSelector(TheContext);
-        gFileSelector->GetWindow()->SetModal(false);
-        gFileSelector->GetWindow()->SetVisible(false);
+        TheFileSelector = new FileSelector(TheContext);
+        TheFileSelector->GetWindow()->SetModal(false);
+        TheFileSelector->GetWindow()->SetVisible(false);
         TheAudio = GetSubsystem<Audio>();
     }
     
@@ -182,8 +182,8 @@ void TacticsVictory::SetLocalization()
 void TacticsVictory::CreateScriptSystem()
 {
     TheContext->RegisterSubsystem(new Script(TheContext));
-    gScript = GetSubsystem<Script>();
-    gScript->GetScriptEngine()->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
+    TheScript = GetSubsystem<Script>();
+    TheScript->GetScriptEngine()->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
 }
 
 
@@ -287,8 +287,8 @@ void TacticsVictory::SetWindowTitleAndIcon()
     if (MODE_CLIENT)
     {
         Image* icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
-        gGraphics->SetWindowIcon(icon);
-        gGraphics->SetWindowTitle("Тактика победы");
+        TheGraphics->SetWindowIcon(icon);
+        TheGraphics->SetWindowTitle("Тактика победы");
     }
 }
 
@@ -303,8 +303,8 @@ void TacticsVictory::CreateConsoleAndDebugHud()
         TheEngineConsole->SetDefaultStyle(xmlFile);
         TheEngineConsole->GetBackground()->SetOpacity(0.8f);
 
-        gDebugHud = engine_->CreateDebugHud();
-        gDebugHud->SetDefaultStyle(xmlFile);
+        TheDebugHud = engine_->CreateDebugHud();
+        TheDebugHud->SetDefaultStyle(xmlFile);
     }
 }
 
