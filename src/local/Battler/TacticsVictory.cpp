@@ -1,9 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Core/Camera.h"
-#include "GlobalFunctions.h"
-#include "LogRTS.h"
-#include "Editor/Editor.h"
 #include "Game/Level.h"
 #include "Game/Scene.h"
 #include "Game/Logic/Movinator.h"
