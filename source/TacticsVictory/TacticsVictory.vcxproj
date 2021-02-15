@@ -165,7 +165,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugServer|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Urho3D-dbg\build\include;C:\Urho3D-dbg\build\include\Urho3D\ThirdParty;C:\Urho3D-dbg\build\include\Urho3D\ThirdParty\Bullet;C:\Urho3D-dbg\build\include\Urho3D\ThirdParty\Lua;c:\Urho3D-dbg\Source\Samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\My\Urho3D\generated\debug\include;D:\My\Urho3D\generated\debug\include\Urho3D\ThirdParty;D:\My\Urho3D\generated\debug\include\Urho3D\ThirdParty\Bullet;D:\My\Urho3D\generated\debug\include\Urho3D\ThirdParty\Lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -176,7 +176,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <PreprocessorDefinitions>SERVER;WIN32;_WINDOWS;_DEBUG;URHO3D_MINIDUMPS;URHO3D_FILEWATCHER;URHO3D_PROFILING;URHO3D_LOGGING;URHO3D_THREADING;URHO3D_ANGELSCRIPT;URHO3D_LUA;TOLUA_RELEASE;URHO3D_NAVIGATION;URHO3D_NETWORK;URHO3D_PHYSICS;URHO3D_URHO2D;_CRT_SECURE_NO_WARNINGS;HAVE_STDINT_H;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DisableSpecificWarnings>4514;4710;4820</DisableSpecificWarnings>
@@ -202,7 +202,7 @@
     </PostBuildEvent>
     <Link>
       <AdditionalOptions>/STACK:20000000000 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;c:\Urho3D-dbg\build\lib\Urho3D_d.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;winmm.lib;imm32.lib;version.lib;ws2_32.lib;dbghelp.lib;d3d9.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;..\..\..\Urho3D\generated\debug\lib\Urho3D_d.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
