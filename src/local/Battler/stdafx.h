@@ -122,5 +122,5 @@ using namespace Urho3D;
 
 #include "defines.h"
 #include "SettingsTypes.h"
-#include "GlobalVars.h"
+#include "glob_engine.h"
 #include "Settings.h"
