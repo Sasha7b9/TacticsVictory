@@ -21,13 +21,13 @@ file(GLOB SRC    *.h *.cpp)
 file(GLOB CORE   Core/*.*)
 file(GLOB EDITOR Editor/*.*)
 
-source_group(src FILES ${SRC})
-source_group(Core FILES ${CORE})
+source_group(src    FILES ${SRC})
+source_group(Core   FILES ${CORE})
 source_group(Editor FILES ${EDITOR})
 
 add_executable(${PROJECT_NAME} ${SRC} ${CORE} ${EDITOR})
 
-if(${CMAKE_BUILD_TYPE} STREQUAL Debug})
+if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
     target_link_libraries(${PROJECT_NAME} Urho3D_d)
 else()
     target_link_libraries(${PROJECT_NAME} Urho3D)
