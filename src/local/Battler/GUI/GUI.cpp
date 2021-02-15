@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "GUI.h"
 #include "GlobalFunctions.h"
-#include "Core/Camera.h"
 #include "GUI/Controls/Tab.h"
 #include "GUI/Controls/Button.h"
 #include "GUI/Controls/ButtonSwitch.h"

@@ -1,6 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Core/Camera.h"
 #include "Editor.h"
 #include "Game/Level.h"
 #include "Game/Objects/Units/Tank/Tank.h"

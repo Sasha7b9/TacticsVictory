@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GuiEditor.h"
-#include "Core/Camera.h"
 #include "Editor/Editor.h"
 #include "Game/Level.h"
 #include "Game/Objects/Terrain/Terrain.h"

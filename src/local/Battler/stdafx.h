@@ -126,7 +126,7 @@ using namespace Urho3D;
 #include "SettingsTypes.h"
 #include "TacticsVictory.h"
 
-#include "Core/Camera.h"
+#include "Scene/Cameras/Camera.h"
 #include "Editor/Editor.h"
 #include "Game/Level.h"
 #include "Game/Logic/Movinator.h"

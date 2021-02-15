@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "Scene.h"
 #include "TacticsVictory.h"
-#include "Core/Camera.h"
 #include "Core/Math.h"
 #include "Game/Logic/Movinator.h"
 #include "Game/Level.h"
