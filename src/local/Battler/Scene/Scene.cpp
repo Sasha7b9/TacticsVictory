@@ -4,7 +4,7 @@
 #include "TacticsVictory.h"
 #include "Core/Math.h"
 #include "Game/Logic/Movinator.h"
-#include "Game/Level.h"
+#include "Scene/Level.h"
 #include "Game/Objects/Terrain/Terrain.h"
 #include "Game/Objects/Terrain/Terrain.h"
 #include "GUI/Cursor.h"
@@ -14,11 +14,6 @@
 #include "Game/Sounds.h"
 #include "Game/Particles.h"
 #include "GUI/GuiGame/WindowTarget.h"
-//#include "Network/Client.h"
-//#include "Network/Server.h"
-//#include "Network/NetworkMessages.h"
-//#include "Network/VectorBufferRTS.h"
-
 
 
 SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)

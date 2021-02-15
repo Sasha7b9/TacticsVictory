@@ -1,7 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Editor.h"
-#include "Game/Level.h"
+#include "Scene/Level.h"
 #include "Game/Objects/Units/Tank/Tank.h"
 #include "GUI/Cursor.h"
 #include "GUI/GUI.h"

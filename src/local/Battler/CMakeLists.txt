@@ -70,6 +70,7 @@ file(GLOB GUI_LOGIC                                                 GUI/Logic/*.
 file(GLOB GUI_MENU                                                  GUI/Menu/*.*)
 file(GLOB GUI_PANELS                                                GUI/Panels/*.*)
 file(GLOB GUI_WINDOWS                                               GUI/Windows/*.*)
+file(GLOB SCENE                                                     Scene/*.*)
 file(GLOB SCENE_CAMERAS                                             Scene/Cameras/*.*)
 file(GLOB NETWORK                                ../../common_files/Network/*.*)
 
@@ -118,6 +119,7 @@ source_group(GUI\\Logic                               FILES ${GUI_LOGIC})
 source_group(GUI\\Menu                                FILES ${GUI_MENU})
 source_group(GUI\\Panels                              FILES ${GUI_PANELS})
 source_group(GUI\\Windows                             FILES ${GUI_WINDOWS})
+source_group(Scene                                    FILES ${SCENE})
 source_group(Scene\\Cameras                           FILES ${SCENE_CAMERAS})
 source_group(Network                                  FILES ${NETWORK})
 
@@ -133,7 +135,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} $
                 ${GAME_OBJECTS_WEAPONS} ${GAME_OBJECTS_WEAPONS_GRENADERLAUNCHER} ${GAME_OBJECTS_WEAPONS_GUN}
                 ${GAME_OBJECTS_WEAPONS_LASER} ${GAME_OBJECTS_WEAPONS_MACHINEGUN} ${GAME_OBJECTS_WEAPONS_ROCKETLAUNCHER}
                 ${GAME_PATH} ${GRAPHICS_2D} ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME}
-                ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS} ${GUI_WINDOWS} ${SCENE_CAMERAS} ${NETWORK})
+                ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS} ${GUI_WINDOWS} ${SCENE} ${SCENE_CAMERAS} ${NETWORK})
 
 include(../../RuntimeLibrary.cmake)
 

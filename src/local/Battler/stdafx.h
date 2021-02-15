@@ -128,7 +128,6 @@ using namespace Urho3D;
 
 #include "Scene/Cameras/Camera.h"
 #include "Editor/Editor.h"
-#include "Game/Level.h"
 #include "Game/Logic/Movinator.h"
 #include "Game/Logic/Rotator.h"
 #include "Game/Path/TilePath.h"
@@ -146,6 +145,7 @@ using namespace Urho3D;
 #include "Network/_Server.h"
 #include "Network/_ServerFunctions.h"
 #include "Network/_VectorBufferRTS.h"
+#include "Scene/Level.h"
 
 #include "glob_engine.h"
 #include "glob_game.h"

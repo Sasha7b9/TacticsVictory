@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "PanelMap.h"
-#include "Game/Level.h"
+#include "Scene/Level.h"
 #include "Graphics/2D/Image.h"
 #include "GUI/Cursor.h"
 #include "GUI/Logic/LineTranslator2D.h"
