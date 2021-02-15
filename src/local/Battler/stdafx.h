@@ -133,6 +133,7 @@ using namespace Urho3D;
 #include "Game/Logic/Rotator.h"
 #include "Game/Path/TilePath.h"
 #include "Graphics/2D/Image.h"
+#include "GUI/Cursor.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/MenuRTS.h"

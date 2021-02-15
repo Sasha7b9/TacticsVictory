@@ -1,12 +1,8 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "TacticsVictory.h"
-#include "Core/Camera.h"
 #include "Game/Scene.h"
-#include "LogRTS.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
-#include "GUI/GUI.h"
-#include "GUI/Cursor.h"
+
 #include "GUI/Menu/MenuRTS.h"
 #include "GUI/Menu/MenuStart.h"
 #include "GUI/Menu/MenuOptions.h"
