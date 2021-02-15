@@ -9,7 +9,7 @@
 #include "GUI/Menu/MenuRTS.h"
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::StructShape& keyRight)
 {
     return keyLeft.numFrame == keyRight.numFrame && keyLeft.type == keyRight.type;
@@ -20,7 +20,7 @@ bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::St
 #define transparent {0.0f, 0.0f, 0.0f, 0.0f}
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 CursorRTS::CursorRTS() : Object(gContext)
 {
     cursor = new Cursor(gContext);

@@ -11,7 +11,7 @@
 #include "MenuAboutMe.h"
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #define CREATE_MENU(name, type, moving)                                 \
     name = new type();                                                  \
     allMenus.Push(name);                                                \
@@ -20,7 +20,7 @@
     SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuRTS, HandleMenuEvent));
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 MenuRTS::MenuRTS(Context *context) : Object(context)
 {   
     CREATE_MENU(menuStart, MenuStart, false);

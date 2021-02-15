@@ -5,7 +5,7 @@
 #include "Core/Math.h"
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 LineTranslator1D::LineTranslator1D(int start_, int finish_, float speed_, State startPosition) :
     Object(gContext),
     start((float)start_), finish((float)finish_), speed(fabs(speed_))
