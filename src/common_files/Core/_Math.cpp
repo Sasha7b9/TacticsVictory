@@ -1,6 +1,6 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Math.h"
+#include "Core/_Math.h"
 
 
 

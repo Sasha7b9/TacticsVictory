@@ -1,7 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Image.h"
-#include "Core/Math.h"
+#include "Core/_Math.h"
 
 
 

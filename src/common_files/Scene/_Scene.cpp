@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Scene/_Scene.h"
 #include "TacticsVictory.h"
-#include "Core/Math.h"
+#include "Core/_Math.h"
 #include "Game/Logic/Movinator.h"
 #include "Scene/_Level.h"
 #include "Scene/Objects/Terrain/Terrain.h"
@@ -11,7 +11,7 @@
 #include "Game/Path/TilePath.h"
 #include "Scene/Objects/Ammo/Rocket/Rocket.h"
 #include "Scene/Objects/Buildings/MilitaryPlant/MilitaryPlant.h"
-#include "Game/Sounds.h"
+#include "Audio/Sounds.h"
 #include "Game/Particles.h"
 #include "GUI/GuiGame/WindowTarget.h"
 

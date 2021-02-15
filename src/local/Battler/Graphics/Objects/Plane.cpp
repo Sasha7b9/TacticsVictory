@@ -1,7 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Plane.h"
-#include "Core/Math.h"
+#include "Core/_Math.h"
 #include "Graphics/Objects/Line.h"
 
 

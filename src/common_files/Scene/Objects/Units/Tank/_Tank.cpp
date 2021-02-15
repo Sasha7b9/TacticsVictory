@@ -1,7 +1,7 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Scene/Objects/Units/Tank/_Tank.h"
-#include "Core/Math.h"
+#include "Core/_Math.h"
 #include "GlobalFunctions.h"
 #include "Scene/Objects/Ammo/Rocket/Rocket.h"
 #include "Scene/Objects/_GameObjectEvents.h"
