@@ -38,7 +38,7 @@ void WaveAlgorithm::RegisterInAS()
 {
     asIScriptEngine *engine = gScript->GetScriptEngine();
     engine->RegisterObjectType("WaveAlgorithm", 0, asOBJ_REF);
-    RegisterObject<WaveAlgorithm>(engine, "WaveAlgorithm");
+//    RegisterObject<WaveAlgorithm>(engine, "WaveAlgorithm");
 #pragma warning(push)
 #pragma warning(disable:4191)
     engine->RegisterObjectMethod("WaveAlgorithm", "bool PathIsFound()", asMETHOD(WaveAlgorithm, PathIsFound), asCALL_THISCALL);

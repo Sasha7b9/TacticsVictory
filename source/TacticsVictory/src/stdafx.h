@@ -81,6 +81,10 @@
 
 #include <Urho3D/Math/Sphere.h>
 
+#ifdef SendMessage
+#undef SendMessage
+#endif
+
 #include <Urho3D/Network/Network.h>
 #include <Urho3D/Network/NetworkEvents.h>
 
