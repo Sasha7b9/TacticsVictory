@@ -2,13 +2,11 @@
 #pragma once
 
 
-
 URHO3D_EVENT(E_SLIDERINTCHANGED, SliderIntChanged)
 {
     URHO3D_PARAM(P_ELEMENT, Element);
     URHO3D_PARAM(P_VALUE, Value);
 }
-
 
 
 class SliderInt : public Slider

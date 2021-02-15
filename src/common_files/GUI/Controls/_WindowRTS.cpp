@@ -1,13 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Controls/_WindowRTS.h"
-#include "GUI/Controls/_Button.h"
-#include "GUI/Controls/_Label.h"
-#include "GUI/Controls/_ButtonToggled.h"
-#include "GUI/Controls/_SliderWithTextAndButtons.h"
-#include "GUI/Controls/_DropDownListWithTextAndButton.h"
-#include "GUI/Cursor.h"
-
 
 
 WindowRTS::WindowRTS(Context *context) :

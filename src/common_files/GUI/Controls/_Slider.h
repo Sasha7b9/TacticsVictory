@@ -2,7 +2,6 @@
 #pragma once
 
 
-
 class lSlider : public Slider
 {
     URHO3D_OBJECT(lSlider, Slider);

@@ -1,10 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Controls/_SliderWithTextAndButtons.h"
-#include "GUI/Cursor.h"
-#include "GUI/Controls/_Label.h"
-#include "GUI/Controls/_Hint.h"
-
 
 
 SliderWithTextAndButtons::SliderWithTextAndButtons(Context *context) :

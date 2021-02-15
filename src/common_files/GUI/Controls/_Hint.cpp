@@ -1,8 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "GUI/Controls/_Hint.h"
-#include "GUI/Controls/_Label.h"
-
 
 
 Hint::Hint(char *text_) : WindowRTS(), text(text_)

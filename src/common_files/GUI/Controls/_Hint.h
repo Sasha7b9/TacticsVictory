@@ -3,7 +3,6 @@
 #include "GUI/Controls/_WindowRTS.h"
 
 
-
 class Hint : public WindowRTS
 {
     URHO3D_OBJECT(Hint, WindowRTS);

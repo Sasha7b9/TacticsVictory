@@ -2,7 +2,6 @@
 #pragma once
 
 
-
 class Label : public Text
 {
     URHO3D_OBJECT(Label, Text);

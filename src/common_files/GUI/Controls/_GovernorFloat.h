@@ -3,7 +3,6 @@
 #include "GUI/Controls/_WindowRTS.h"
 
 
-
 enum CellType
 {
     CellType_Static,
@@ -12,13 +11,11 @@ enum CellType
 };
 
 
-
 URHO3D_EVENT(E_GOVERNORCELLCHANGED, GovernorCellChanged)
 {
     URHO3D_PARAM(P_ELEMENT, Element);
     URHO3D_PARAM(P_SYMBOL, Symbol);
 }
-
 
 
 class GovernorCell : public WindowRTS

@@ -153,6 +153,7 @@ using namespace Urho3D;
 #include "GUI/Controls/_SliderInt.h"
 #include "GUI/Controls/_SliderWithTextAndButtons.h"
 #include "GUI/Controls/_Tab.h"
+#include "GUI/Logic/LineTranslator2D.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/GuiGame/ContextMenuUnit.h"
 #include "GUI/GuiGame/GuiGame.h"

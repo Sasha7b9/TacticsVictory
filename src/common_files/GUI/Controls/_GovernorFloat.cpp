@@ -1,11 +1,5 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "GUI/Controls/_GovernorFloat.h"
-#include "GUI/Controls/_Button.h"
-#include "GUI/Cursor.h"
-#include "GUI/Controls/_Label.h"
-#include "GUI/Windows/Console.h"
-
 
 
 GovernorCell::GovernorCell(Context *) :

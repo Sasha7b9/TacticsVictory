@@ -1,12 +1,12 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "GUI/Logic/LineTranslator2D.h"
 
 
-class Label;
 class ButtonRTS;
 class ButtonToggled;
 class DropDownListWithTextAndButton;
+class Label;
+class LineTranslator2D;
 class SliderWithTextAndButtons;
 
 
