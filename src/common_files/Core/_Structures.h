@@ -3,6 +3,9 @@
 #include "Scene/Objects/Terrain/Terrain.h"
 
 
+extern TerrainRTS *TheTerrain;
+
+
 
 struct Coord
 {
