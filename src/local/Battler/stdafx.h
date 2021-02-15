@@ -124,6 +124,7 @@ using namespace Urho3D;
 #include "GlobalFunctions.h"
 #include "LogRTS.h"
 #include "SettingsTypes.h"
+#include "TacticsVictory.h"
 
 #include "Core/Camera.h"
 #include "Editor/Editor.h"

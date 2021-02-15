@@ -3,18 +3,11 @@
 #include "Game/Scene.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 
-//#include "Network/NetworkMessages.h"
-//#include "Network/ClientFunctions.h"
-//#include "Network/ServerFunctions.h"
-#include "TacticsVictory.h"
-
-
 
 #pragma warning(push)
 #pragma warning(disable:4100)
 URHO3D_DEFINE_APPLICATION_MAIN(TacticsVictory)
 #pragma warning(pop)
-
 
 
 TacticsVictory::TacticsVictory(Context* context) :
