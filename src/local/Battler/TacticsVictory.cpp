@@ -5,7 +5,7 @@
 #include "Game/Logic/Rotator.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 #include "Game/Path/TilePath.h"
-#include "GUI/GuiEditor/GuiEditor.h"
+//#include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/MenuRTS.h"
 #include "GUI/Windows/Console.h"

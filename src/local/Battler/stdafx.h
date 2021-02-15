@@ -129,6 +129,7 @@ using namespace Urho3D;
 #include "Game/Level.h"
 #include "Graphics/2D/Image.h"
 #include "GUI/GUI.h"
+#include "GUI/GuiEditor/GuiEditor.h"
 #include "Editor/Editor.h"
 #include "GUI/Windows/Console.h"
 
