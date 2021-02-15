@@ -1,26 +1,7 @@
-*.ilk
 *.pdb
-*.*log
-*.db
-*.log
-*.obj
-*.dll
-*.*pch
+*.ilk
 *.exe
-*.sdf
-*.cache
-*.opensdf
-*.suo
-*.cmd*
-*.i*
-*.exp
-*.lib
-*.~*
 
 
-out/TVData/history.txt
-log.txt
-Debug/TacticsVictory.tlog
-Debug/CoreData/Shaders/HLSL
-source/TacticsVictory/.vs/*
 source/TacticsVictory/Debug/*
+source/TacticsVictory/.vs/*
