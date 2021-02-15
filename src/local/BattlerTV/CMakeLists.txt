@@ -1,4 +1,4 @@
-project (Battler)
+project (BattlerTV)
 
 include_directories(.
                     ../../common_files

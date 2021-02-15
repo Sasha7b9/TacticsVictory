@@ -40,5 +40,5 @@ endfunction()
 
 
 if(WIN32)
-    add_subdirectory_with_folder("local" local/Battler)
+    add_subdirectory_with_folder("local" local/BattlerTV)
 endif()
