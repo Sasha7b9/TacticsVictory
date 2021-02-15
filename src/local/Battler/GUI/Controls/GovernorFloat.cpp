@@ -87,8 +87,8 @@ void GovernorCell::HandleMouseDown(StringHash, VariantMap&)
     {
         delta = 0;
         mouseIsDown = true;
-        gCursor->Hide();
-        posCursor = gCursor->GetCursor()->GetPosition();
+        TheCursor->Hide();
+        posCursor = TheCursor->GetCursor()->GetPosition();
         SetSelected();
     }
 }
@@ -106,7 +106,7 @@ void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData) //-V2009
         return;
     }
 
-    gCursor->GetCursor()->SetPosition(posCursor);
+    TheCursor->GetCursor()->SetPosition(posCursor);
 
     delta -= (int)eventData[MouseMove::P_DY].GetInt();
 
@@ -158,7 +158,7 @@ void GovernorCell::HandleMouseUp(StringHash, VariantMap&)
     {
         return;
     }
-    gCursor->Show();
+    TheCursor->Show();
     mouseIsDown = false;
     SetNormal();
 }
@@ -174,7 +174,7 @@ void GovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
     if(cell == this)
     {
         mouseOver = true;
-        gCursor->SetSelected();
+        TheCursor->SetSelected();
     }
 }
 
@@ -187,7 +187,7 @@ void GovernorCell::HandleHoverEnd(StringHash, VariantMap&)
     }
     mouseOver = false;
     mouseIsDown = false;
-    gCursor->SetNormal();
+    TheCursor->SetNormal();
 }
 
 
@@ -442,11 +442,11 @@ void GovernorFloat::HandleGovernorCellChanged(StringHash, VariantMap&)
 
 void GovernorFloat::HandleHoverButtonBegin(StringHash, VariantMap&)
 {
-    gCursor->SetSelected();
+    TheCursor->SetSelected();
 }
 
 
 void GovernorFloat::HandleHoverButtonEnd(StringHash, VariantMap&)
 {
-    gCursor->SetNormal();
+    TheCursor->SetNormal();
 }

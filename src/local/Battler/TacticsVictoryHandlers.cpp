@@ -125,11 +125,11 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
 
     //LOGINFOF("time frame %f, time from begin %f, fps %f", time, TheTime->GetElapsedTime(), TheTime->GetFrameNumber() / TheTime->GetElapsedTime());
 
-    gCamera->Move(time);
+    TheCamera->Move(time);
 
-    if (gCursor)
+    if (TheCursor)
     {
-        gCursor->Update(time);
+        TheCursor->Update(time);
     }
 
     if (scene)
@@ -154,15 +154,15 @@ void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& eventData) //-V200
 
     Rocket::UpdateAll(time);
 
-    if(gClient->GetServerConnection())
+    if(TheClient->GetServerConnection())
     {
         VectorBufferRTS msg;
 
         static Vector3 prevPosition = Vector3::ZERO;
-        Vector3 position = gCamera->GetNode()->GetPosition();
+        Vector3 position = TheCamera->GetNode()->GetPosition();
 
         static Quaternion prevRotation = Quaternion::IDENTITY;
-        Quaternion rotation = gCamera->GetNode()->GetRotation();
+        Quaternion rotation = TheCamera->GetNode()->GetRotation();
 
         if(position != prevPosition || rotation != prevRotation)
         {
@@ -172,7 +172,7 @@ void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& eventData) //-V200
             prevPosition = position;
             prevRotation = rotation;
 
-            gClient->Send(MSG_CAMERA_INFO, msg);
+            TheClient->Send(MSG_CAMERA_INFO, msg);
         }
     }
 }

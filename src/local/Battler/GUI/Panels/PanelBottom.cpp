@@ -8,7 +8,7 @@ PanelBottom::PanelBottom(Context *context) :
     WindowRTS(context)
 {
     SetName("PanelBottom");
-    SetFixedSize(gSet->GetInt(TV_SCREEN_WIDTH), gSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
+    SetFixedSize(TheSet->GetInt(TV_SCREEN_WIDTH), TheSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
     SetMovable(false);
 }
 

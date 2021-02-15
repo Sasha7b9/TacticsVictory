@@ -14,7 +14,7 @@ PathIndicator::PathIndicator()
 
 void PathIndicator::Init()
 {
-    pathFinder.SetSize(gTerrain->NumRows(), gTerrain->NumCols());
+    pathFinder.SetSize(TheTerrain->NumRows(), TheTerrain->NumCols());
 }
 
 
@@ -58,12 +58,12 @@ void PathIndicator::Update()
             {
                 pos.x_ = static_cast<float>(path[i].col);
                 pos.z_ = -static_cast<float>(path[i].row);
-                pos.y_ = (float)(int)gTerrain->GetHeight(path[i].row, path[i].col);
+                pos.y_ = (float)(int)TheTerrain->GetHeight(path[i].row, path[i].col);
                 TilePath::Add(pos);
             }
         }
         Vector3 hitPos;
-        Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
+        Drawable *drawable = TheCursor->GetRaycastNode(&hitPos);
         pathFinder.StartFind(start, drawable ? Coord(static_cast<uint>(fabsf(-hitPos.z_)), static_cast<uint>(hitPos.x_)) : start);
     }
 }

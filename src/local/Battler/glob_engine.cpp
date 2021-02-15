@@ -24,16 +24,16 @@ FileSelector        *TheFileSelector = nullptr;
 Profiler            *TheProfiler = nullptr;
 Script              *TheScript = nullptr;
 
-CameraRTS           *gCamera = nullptr;
-CursorRTS           *gCursor = nullptr;
-Editor              *gEditor = nullptr;
-Settings            *gSet = nullptr;
-Level               *gLevel = nullptr;
-TerrainRTS          *gTerrain = nullptr;
-TacticsVictory      *gTacticsVictory = nullptr;
-LogRTS              *gLog = nullptr;
-Server              *gServer = nullptr;
-Client              *gClient = nullptr;
+CameraRTS           *TheCamera = nullptr;
+CursorRTS           *TheCursor = nullptr;
+Editor              *TheEditor = nullptr;
+Settings            *TheSet = nullptr;
+Level               *TheLevel = nullptr;
+TerrainRTS          *TheTerrain = nullptr;
+TacticsVictory      *TheTacticsVictory = nullptr;
+LogRTS              *TheLog = nullptr;
+Server              *TheServer = nullptr;
+Client              *TheClient = nullptr;
 
 // GUI
 GuiGame             *gGuiGame = nullptr;

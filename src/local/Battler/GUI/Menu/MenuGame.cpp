@@ -25,7 +25,7 @@ MenuGame::MenuGame(Context *) : WindowMenu()
     buttonOptions = new ButtonRTS(this, "Options");
     buttonLanguage = new ButtonSwitch(this, "Language : EN");
     buttonLanguage->AddState("Language : RU");
-    buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
+    buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
     buttonExit = new ButtonRTS(this, "Exit");
     buttonCancel = new ButtonRTS(this, "Cancel");
 
@@ -72,7 +72,7 @@ void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
     else if (button == buttonLanguage)
     {
         TheLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
-        gSet->SetInt(TV_LANGUAGE, (int)buttonLanguage->GetState());
+        TheSet->SetInt(TV_LANGUAGE, (int)buttonLanguage->GetState());
     }
     else if (button == buttonOptions)
     {
@@ -94,12 +94,12 @@ void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
 void MenuGame::Open()
 {
     TheScene->SetTimeScale(0.0f);
-    gCamera->SetEnabled(false);
+    TheCamera->SetEnabled(false);
 }
 
 
 void MenuGame::Close()
 {
     TheScene->SetTimeScale(1.0f);
-    gCamera->SetEnabled(true);
+    TheCamera->SetEnabled(true);
 }

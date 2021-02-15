@@ -13,8 +13,8 @@
 
 void FUNC_MSG_REQUEST_LANDSCAPE(Connection *connection, MemoryBuffer &, VectorBufferRTS &out)
 {
-    uint numRows = gTacticsVictory->scene->level.Size();
-    uint numCols = gTacticsVictory->scene->level[0].Size();
+    uint numRows = TheTacticsVictory->scene->level.Size();
+    uint numCols = TheTacticsVictory->scene->level[0].Size();
 
     out.WriteUInt(numRows);
     out.WriteUInt(numCols);
@@ -23,7 +23,7 @@ void FUNC_MSG_REQUEST_LANDSCAPE(Connection *connection, MemoryBuffer &, VectorBu
     {
         for(uint col = 0; col < numCols; col++)
         {
-            out.WriteFloat(gTacticsVictory->scene->level[row][col]);
+            out.WriteFloat(TheTacticsVictory->scene->level[row][col]);
         }
     }
 
@@ -33,8 +33,8 @@ void FUNC_MSG_REQUEST_LANDSCAPE(Connection *connection, MemoryBuffer &, VectorBu
 
 void FUNC_MSG_CAMERA_INFO(Connection *, MemoryBuffer &in, VectorBufferRTS &)
 {
-    gCamera->SetPosition(in.ReadVector3());
-    gCamera->GetNode()->SetRotation(in.ReadQuaternion());
+    TheCamera->SetPosition(in.ReadVector3());
+    TheCamera->GetNode()->SetRotation(in.ReadQuaternion());
 }
 
 
@@ -61,12 +61,12 @@ void FUNC_MSG_DELETE_SERVER(Connection *, MemoryBuffer &, VectorBufferRTS &)
 
 void FUNC_MSG_SET_NETWORK_LOSS(Connection *, MemoryBuffer &in, VectorBufferRTS &)
 {
-    gServer->SetSimulatedPacketLoss(in.ReadFloat());
+    TheServer->SetSimulatedPacketLoss(in.ReadFloat());
 }
 
 
 void FUNC_MSG_SET_NETWORK_LATENCY(Connection *, MemoryBuffer &in, VectorBufferRTS &)
 {
-    gServer->SetSimulatedLatency(in.ReadInt());
+    TheServer->SetSimulatedLatency(in.ReadInt());
 }
 

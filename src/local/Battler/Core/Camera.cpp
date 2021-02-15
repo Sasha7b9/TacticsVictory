@@ -94,7 +94,7 @@ void CameraRTS::Move(float time) //-V2008
 
     float distance = MOVE_SPEED * time;
 
-    TypeCursor cursor = gCursor->GetType();
+    TypeCursor cursor = TheCursor->GetType();
 
     if(CURSOR_UP || CURSOR_TOP_LEFT || CURSOR_TOP_RIGHT || ((PRESS_UP || PRESS_W) && arrowEnabled))
     {
@@ -142,19 +142,19 @@ void CameraRTS::Move(float time) //-V2008
 
     if((dX || dY) && !gGUI->UnderCursor())
     {
-        IntVector2 posCursor = gCursor->GetCursor()->GetPosition();
+        IntVector2 posCursor = TheCursor->GetCursor()->GetPosition();
         posCursor.x_ -= dX;
         posCursor.y_ -= dY;
         if((dY || dX) && TheInput->GetMouseButtonDown(MOUSEB_LEFT) && TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
             MoveOn(dY < 0 ? Direction_Closer : Direction_Further, fabs(dY / 10.0f));
-            gCursor->GetCursor()->SetPosition(posCursor);
+            TheCursor->GetCursor()->SetPosition(posCursor);
         }
         else if((dX || dY) && TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
             MoveOn(Direction_RotateYAW, dX / 10.0f);
             MoveOn(Direction_RotatePITCH, dY / 10.0f);
-            gCursor->GetCursor()->SetPosition(posCursor);
+            TheCursor->GetCursor()->SetPosition(posCursor);
         }
         else if((dX || dY) && TheInput->GetMouseButtonDown(MOUSEB_MIDDLE))
         {
@@ -175,7 +175,7 @@ void CameraRTS::Move(float time) //-V2008
             {
                 MoveOn(Direction_Back, -dY / k);
             }
-            gCursor->GetCursor()->SetPosition(posCursor);
+            TheCursor->GetCursor()->SetPosition(posCursor);
         }
     }
 

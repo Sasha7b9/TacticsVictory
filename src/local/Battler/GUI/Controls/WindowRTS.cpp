@@ -50,7 +50,7 @@ SharedPtr<LineTranslator2D> WindowRTS::GetTranslator()
 
 bool WindowRTS::UnderCursor()
 {
-    return Window::IsInside(gCursor->GetCursor()->GetPosition(), true);
+    return Window::IsInside(TheCursor->GetCursor()->GetPosition(), true);
 }
 
 

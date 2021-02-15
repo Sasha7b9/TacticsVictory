@@ -42,7 +42,7 @@ void GameObject::EnableContextMenu()
             contextMenu->Create(this);
         }
     }
-    contextMenu->SetPosition(gCursor->GetCursor()->GetPosition());
+    contextMenu->SetPosition(TheCursor->GetCursor()->GetPosition());
     TheUIRoot->AddChild(contextMenu);
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GameObject, HandleOnMouseDown));
 }

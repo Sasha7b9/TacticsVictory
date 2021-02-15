@@ -24,11 +24,11 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
     SubscribeToEvent(name, E_SLIDERINTCHANGED, URHO3D_HANDLER(MenuOptions, HandleOnSlider));  \
     name->SetValue(startIndex);
 
-    CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, 1, gSet->GetInt(TV_BRIGHTNESS));
+    CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, 1, TheSet->GetInt(TV_BRIGHTNESS));
 
-    CREATE_SWTAB(sliderVolume, "Volume", 0, 100, 1, gSet->GetInt(TV_VOLUME));
+    CREATE_SWTAB(sliderVolume, "Volume", 0, 100, 1, TheSet->GetInt(TV_VOLUME));
 
-    CREATE_SWTAB(sliderMaxOccluderTriangles, "Max occluder triangles", 0, 5000, 1, gSet->GetInt(TV_MAX_OCCLUDER_TRIANGLES));
+    CREATE_SWTAB(sliderMaxOccluderTriangles, "Max occluder triangles", 0, 5000, 1, TheSet->GetInt(TV_MAX_OCCLUDER_TRIANGLES));
 
     int width0 = SET::MENU::TEXT::WIDTH;
     int width1 = SET::MENU::DDLIST::WIDTH;
@@ -39,18 +39,18 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
     name->SetSelection(startIndex);
 
     char *items1[] = {"Low", "Medium", "High"};
-    CREATE_DDLWTAB(ddlTextureQuality, "Texture quality", 3, items1, (uint)gSet->GetInt(TV_TEXTURE_QUALITY));
+    CREATE_DDLWTAB(ddlTextureQuality, "Texture quality", 3, items1, (uint)TheSet->GetInt(TV_TEXTURE_QUALITY));
 
     char *items2[] = {"x1", "x2", "x4", "x8", "x16", "x32"};
-    CREATE_DDLWTAB(ddlTextureAnisotropy, "Texture anisotropy", 6, items2, (uint)gSet->GetInt(TV_TEXTURE_ANISOTROPY));
+    CREATE_DDLWTAB(ddlTextureAnisotropy, "Texture anisotropy", 6, items2, (uint)TheSet->GetInt(TV_TEXTURE_ANISOTROPY));
 
     char *items3[] = {"Low", "Medium", "High", "Max"};
-    CREATE_DDLWTAB(ddlMaterialQuality, "Material quality", 4, items3, (uint)gSet->GetInt(TV_MATERIAL_QUALITY)); //-V112
+    CREATE_DDLWTAB(ddlMaterialQuality, "Material quality", 4, items3, (uint)TheSet->GetInt(TV_MATERIAL_QUALITY)); //-V112
 
     char *items4[] = {"Off", "On"};
-    CREATE_DDLWTAB(ddlShadowsEnabled, "Shadows", 2, items4, (uint)gSet->GetInt(TV_SHADOW_DRAW));
+    CREATE_DDLWTAB(ddlShadowsEnabled, "Shadows", 2, items4, (uint)TheSet->GetInt(TV_SHADOW_DRAW));
 
-    CREATE_DDLWTAB(ddlSpecularLighting, "Specular lighting", 2, items4, (uint)gSet->GetInt(TV_SPECULAR_LIGHTING));
+    CREATE_DDLWTAB(ddlSpecularLighting, "Specular lighting", 2, items4, (uint)TheSet->GetInt(TV_SPECULAR_LIGHTING));
 
     if (MODE_CLIENT)
     {
@@ -61,7 +61,7 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
     shadowMapSizes.Push(PODVector<int>(itemSizes, sizeof(itemSizes) / sizeof(int)));
     
     char *items6[] = {"64", "128", "256", "512", "1024", "2048", "4096", "8192", "16384"};
-    CREATE_DDLWTAB(ddlShadowMapSize, "Shadow map size", 9, items6, (uint)gSet->GetInt(TV_SHADOW_MAP_SIZE));
+    CREATE_DDLWTAB(ddlShadowMapSize, "Shadow map size", 9, items6, (uint)TheSet->GetInt(TV_SHADOW_MAP_SIZE));
 
     if (MODE_CLIENT)
     {
@@ -106,32 +106,32 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     if(ddList == ddlTextureQuality)
     {
         TheRenderer->SetTextureQuality((MaterialQuality)index);
-        gSet->SetInt(TV_TEXTURE_QUALITY, index);
+        TheSet->SetInt(TV_TEXTURE_QUALITY, index);
     }
     else if(ddList == ddlTextureAnisotropy)
     {
         TheRenderer->SetTextureAnisotropy(index + 1);
-        gSet->SetInt(TV_TEXTURE_ANISOTROPY, index);
+        TheSet->SetInt(TV_TEXTURE_ANISOTROPY, index);
     }
     else if(ddList == ddlMaterialQuality)
     {
         TheRenderer->SetMaterialQuality((MaterialQuality)index);
-        gSet->SetInt(TV_MATERIAL_QUALITY, index);
+        TheSet->SetInt(TV_MATERIAL_QUALITY, index);
     }
     else if(ddList == ddlShadowsEnabled)
     {
         TheRenderer->SetDrawShadows(index == 1);
-        gSet->SetInt(TV_SHADOW_DRAW, index);
+        TheSet->SetInt(TV_SHADOW_DRAW, index);
     }
     else if(ddList == ddlSpecularLighting)
     {
         TheRenderer->SetSpecularLighting(index == 1);
-        gSet->SetInt(TV_SPECULAR_LIGHTING, index);
+        TheSet->SetInt(TV_SPECULAR_LIGHTING, index);
     }
     else if(ddList == ddlShadowMapSize)
     {
         TheRenderer->SetShadowMapSize(shadowMapSizes[(uint)index]);
-        gSet->SetInt(TV_SHADOW_MAP_SIZE, index);
+        TheSet->SetInt(TV_SHADOW_MAP_SIZE, index);
     }
     else if(ddList == ddlShadowQuality)
     {
@@ -152,15 +152,15 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
     if(slider == sliderMaxOccluderTriangles)
     {
         TheRenderer->SetMaxOccluderTriangles(value);
-        gSet->SetInt(TV_MAX_OCCLUDER_TRIANGLES, value);
+        TheSet->SetInt(TV_MAX_OCCLUDER_TRIANGLES, value);
     }
     else if (slider == sliderBrightness)
     {
-        gSet->SetInt(TV_BRIGHTNESS, value);
+        TheSet->SetInt(TV_BRIGHTNESS, value);
     }
     else if (slider == sliderVolume)
     {
-        gSet->SetInt(TV_VOLUME, value);
+        TheSet->SetInt(TV_VOLUME, value);
     }
 }
 

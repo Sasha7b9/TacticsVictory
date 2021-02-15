@@ -21,7 +21,7 @@ PanelMap::PanelMap(Context *context) :
     IntVector2 posStart = {0, TheGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAP::HEIGHT + 1};
     IntVector2 posFinish = {-SET::PANEL::MAP::WIDTH, posStart.y_};
 
-    translator = new LineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
+    translator = new LineTranslator2D(posStart, posFinish, TheSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
 
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(PanelMap, HandleMouseDown));
     SubscribeToEvent(E_MOUSEMOVE, URHO3D_HANDLER(PanelMap, HandleMouseMove));
@@ -48,7 +48,7 @@ void PanelMap::Update(float dT)
     
     if(redrawMap)
     {
-        map = gLevel->Get();
+        map = TheLevel->Get();
 
         redrawMap = false;
 
@@ -173,7 +173,7 @@ void PanelMap::Update(float dT)
 
 bool PanelMap::FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPointOut)
 {
-    Camera *camera = gCamera->GetNode()->GetComponent<Camera>();
+    Camera *camera = TheCamera->GetNode()->GetComponent<Camera>();
     Plane planeX0Z({0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f});
     Ray ray = camera->GetScreenRay(screenPoint.x_, screenPoint.y_);
     float distanceHit = ray.HitDistance(planeX0Z);
@@ -230,18 +230,18 @@ uint PanelMap::SizeYMap()
 
 void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData) //-V2009
 {
-    if (parent_->IsVisible() && IsInside(gCursor->GetCursor()->GetPosition(), true))
+    if (parent_->IsVisible() && IsInside(TheCursor->GetCursor()->GetPosition(), true))
     {
         int buttns = (int)eventData[MouseButtonDown::P_BUTTONS].GetInt();
 
         if (buttns == MOUSEB_RIGHT)
         {
-            IntVector2 coordMap = gCursor->GetCursor()->GetPosition() - GetPosition();
+            IntVector2 coordMap = TheCursor->GetCursor()->GetPosition() - GetPosition();
 
             float xSpace = (coordMap.x_ - x0) / scale;
             float zSpace = -(coordMap.y_ - y0) / scale;
 
-            gCamera->ParallelTranslateLookAt({xSpace, 0.0f, zSpace});
+            TheCamera->ParallelTranslateLookAt({xSpace, 0.0f, zSpace});
         }
     }
 }
@@ -249,7 +249,7 @@ void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData) //-V2009
 
 void PanelMap::HandleMouseMove(StringHash eventType, VariantMap &eventData)
 {
-    if (IsInside(gCursor->GetCursor()->GetPosition(), true) && (int)eventData[MouseMove::P_BUTTONS].GetInt() == MOUSEB_RIGHT)
+    if (IsInside(TheCursor->GetCursor()->GetPosition(), true) && (int)eventData[MouseMove::P_BUTTONS].GetInt() == MOUSEB_RIGHT)
     {
         eventData = GetEventDataMap();
         eventData[MouseButtonDown::P_BUTTONS] = MOUSEB_RIGHT;

@@ -127,13 +127,13 @@ void SliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventDat
 
 void SliderWithTextAndButtons::HandleHoverBegin(StringHash, VariantMap&)
 {
-    gCursor->SetSelected();
+    TheCursor->SetSelected();
 }
 
 
 void SliderWithTextAndButtons::HandleHoverEnd(StringHash, VariantMap&)
 {
-    gCursor->SetNormal();
+    TheCursor->SetNormal();
 }
 
 

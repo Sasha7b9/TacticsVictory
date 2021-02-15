@@ -25,7 +25,7 @@ bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 
 static void OnServerConnected()
 {
-    gClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
+    TheClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
     gConsole->Write("Запрашиваю ландшафт");
 }
 
@@ -39,14 +39,14 @@ bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
         return false;
     }
 
-    if(gClient->IsConnected())
+    if(TheClient->IsConnected())
     {
         gConsole->Write("Command forbidden. The client already running");
     }
     else
     {
         gMenu->Hide();
-        gClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, OnServerConnected);
+        TheClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, OnServerConnected);
         gConsole->Write("Соединяюсь с удалённым сервером...");
     }
 
@@ -117,7 +117,7 @@ bool ConsoleParser::FuncServerStop(Vector<String> &, bool)
 {
     if(serverRunning)
     {
-        gClient->Send(MSG_DELETE_SERVER, VectorBufferRTS());
+        TheClient->Send(MSG_DELETE_SERVER, VectorBufferRTS());
     }
     else
     {
@@ -133,7 +133,7 @@ bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
 
     if(ExtractInt(words[0], &latency))
     {
-        gClient->Send(MSG_SET_NETWORK_LATENCY, VectorBufferRTS(latency));
+        TheClient->Send(MSG_SET_NETWORK_LATENCY, VectorBufferRTS(latency));
         return true;
     }
 
@@ -147,7 +147,7 @@ bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool) //-V2009
 
     if(ExtractFloat(words[0], &loss))
     {
-        gClient->Send(MSG_SET_NETWORK_LOSS, VectorBufferRTS(loss));
+        TheClient->Send(MSG_SET_NETWORK_LOSS, VectorBufferRTS(loss));
         return true;
     }
 
@@ -215,8 +215,8 @@ bool ConsoleParser::FuncExit(Vector<String> &, bool showInfo)
 {
     if(!showInfo)
     {
-        gClient->Disconnect();
-        gServer->Disconnect();
+        TheClient->Disconnect();
+        TheServer->Disconnect();
         TheEngine->Exit();
     }
     return true;

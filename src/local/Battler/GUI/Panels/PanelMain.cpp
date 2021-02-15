@@ -19,7 +19,7 @@ PanelMain::PanelMain(Context *context) :
     IntVector2 posStart = {SET::PANEL::MAP::WIDTH - 1, TheGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAIN::HEIGHT + 1};
     IntVector2 posFinish = {SET::PANEL::MAP::WIDTH - 1, TheGraphics->GetHeight()};
 
-    translator = new LineTranslator2D(posStart, posFinish, gSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
+    translator = new LineTranslator2D(posStart, posFinish, TheSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
 }
 
 

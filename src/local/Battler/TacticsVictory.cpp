@@ -43,21 +43,21 @@ void TacticsVictory::Setup()
 {
     ParseArguments(GetArguments());
 
-    gTacticsVictory = this;
-    gSet = new Settings();
+    TheTacticsVictory = this;
+    TheSet = new Settings();
     TheCache = GetSubsystem<ResourceCache>();
     TheFileSystem = GetSubsystem<FileSystem>();
     OpenLog();
 //    LOGINFO("Загружаю настройки");
-    gSet->Load();
+    TheSet->Load();
     //LOGINFO("Загрузка настроек закончена");
 
     engineParameters_[EP_WINDOW_TITLE] = GetTypeName();
     engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_[EP_FULL_SCREEN] = false;
     engineParameters_[EP_TEXTURE_QUALITY] = 32; //-V112
-    engineParameters_[EP_WINDOW_WIDTH] = gSet->GetInt(TV_SCREEN_WIDTH);
-    engineParameters_[EP_WINDOW_HEIGHT] = gSet->GetInt(TV_SCREEN_HEIGHT);
+    engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
+    engineParameters_[EP_WINDOW_HEIGHT] = TheSet->GetInt(TV_SCREEN_HEIGHT);
     engineParameters_[EP_HEADLESS] = MODE_SERVER;
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
@@ -78,20 +78,20 @@ void TacticsVictory::Stop()
     SAFE_DELETE(TheScene); //-V809
     SAFE_DELETE(scene); //-V809
     SAFE_DELETE(TheFileSelector); //-V809
-    SAFE_DELETE(gLevel); //-V809
+    SAFE_DELETE(TheLevel); //-V809
     SAFE_DELETE(gMenu); //-V809
     SAFE_DELETE(gGUI); //-V809
     //File file(TheContext, "ui.xml", FILE_WRITE);
     //URHO3D_LOGINFO("Now save ui");
     //TheUIRoot->SaveXML(file);
-    gSet->Save();
-    SAFE_DELETE(gClient); //-V809
-    SAFE_DELETE(gServer); //-V809
-    SAFE_DELETE(gSet); //-V809
-    SAFE_DELETE(gEditor); //-V809
-    SAFE_DELETE(gCamera);     //-V809
-    gLog->Close();
-    SAFE_DELETE(gLog); //-V809
+    TheSet->Save();
+    SAFE_DELETE(TheClient); //-V809
+    SAFE_DELETE(TheServer); //-V809
+    SAFE_DELETE(TheSet); //-V809
+    SAFE_DELETE(TheEditor); //-V809
+    SAFE_DELETE(TheCamera);     //-V809
+    TheLog->Close();
+    SAFE_DELETE(TheLog); //-V809
 }
 
 
@@ -125,7 +125,7 @@ void TacticsVictory::Start()
     ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
     TheScene->CreateComponent<DebugRenderer>();
-    gCamera = new CameraRTS();
+    TheCamera = new CameraRTS();
 
     if (MODE_SERVER)
     {
@@ -152,9 +152,9 @@ void TacticsVictory::Start()
     
     RegistrationComponets();
 
-    gLevel = new Level();
-    gClient = new Client();
-    gServer = new Server();
+    TheLevel = new Level();
+    TheClient = new Client();
+    TheServer = new Server();
 
     if (MODE_CLIENT)
     {
@@ -196,7 +196,7 @@ void TacticsVictory::StartServer(uint16 port_)
 
     if (port)
     {
-        gServer->Start(port);
+        TheServer->Start(port);
         scene = new SceneRTS(TheContext, SceneRTS::Mode_Server);
         scene->Create();
     }
@@ -311,13 +311,13 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 
 void TacticsVictory::CreateEditorSession()
 {
-    if(!gEditor)
+    if(!TheEditor)
     {
-        gEditor = new Editor(TheContext);
+        TheEditor = new Editor(TheContext);
     }
     gGuiEditor->SetVisible(true);
-    gCamera->SetEnabled(true);
-    gEditor->Run();
+    TheCamera->SetEnabled(true);
+    TheEditor->Run();
 }
 
 
@@ -339,7 +339,7 @@ void TacticsVictory::FillNetworkFunctions()
 
 void TacticsVictory::OpenLog()
 {
-    gLog = new LogRTS();
+    TheLog = new LogRTS();
     char buffer[50];
     srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
 
@@ -356,6 +356,6 @@ void TacticsVictory::OpenLog()
         sprintf_s(buffer, 50, "log%d.log", rand());
     }
 
-    gLog->Open(buffer);
-    gLog->SetLevel(LOG_DEBUG);
+    TheLog->Open(buffer);
+    TheLog->SetLevel(LOG_DEBUG);
 }

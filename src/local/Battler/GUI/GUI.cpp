@@ -41,7 +41,7 @@ GUI::GUI() : Object(TheContext)
 
 GUI::~GUI()
 {
-    SAFE_DELETE(gCursor); //-V809
+    SAFE_DELETE(TheCursor); //-V809
     SAFE_DELETE(gGuiGame); //-V809
     SAFE_DELETE(gGuiEditor); //-V809
 }
@@ -73,72 +73,72 @@ void GUI::RegistrationObjects()
 
 static float GetPosCameraY()
 {
-    return gCamera->GetPosition().y_;
+    return TheCamera->GetPosition().y_;
 }
 
 
 static void SetPosCameraY(float y)
 {
-    Vector3 position = gCamera->GetPosition();
+    Vector3 position = TheCamera->GetPosition();
 
     position.y_ = y;
-    gCamera->SetPosition(position);
+    TheCamera->SetPosition(position);
 }
 
 
 static float GetPosCameraX()
 {
-    return gCamera->GetPosition().x_;
+    return TheCamera->GetPosition().x_;
 }
 
 
 static void SetPosCameraX(float x)
 {
-    Vector3 position = gCamera->GetPosition();
+    Vector3 position = TheCamera->GetPosition();
 
     position.x_ = x;
-    gCamera->SetPosition(position);
+    TheCamera->SetPosition(position);
 }
 
 
 static float GetPosCameraZ()
 {
-    return gCamera->GetPosition().z_;
+    return TheCamera->GetPosition().z_;
 }
 
 
 static void SetPosCameraZ(float z)
 {
-    Vector3 position = gCamera->GetPosition();
+    Vector3 position = TheCamera->GetPosition();
     position.z_ = z;
-    gCamera->SetPosition(position);
+    TheCamera->SetPosition(position);
 }
 
 
 static float GetCameraPitch()
 {
-    Quaternion angle = gCamera->GetNode()->GetRotation();
+    Quaternion angle = TheCamera->GetNode()->GetRotation();
     return angle.PitchAngle();
 }
 
 
 static float GetCameraYaw()
 {
-    Quaternion angle = gCamera->GetNode()->GetRotation();
+    Quaternion angle = TheCamera->GetNode()->GetRotation();
     return angle.YawAngle();
 }
 
 
 static float GetSpeedNetIN()
 {
-    if(gClient->IsConnected())
+    if(TheClient->IsConnected())
     {
-        Connection *connection = gClient->GetServerConnection();
+        Connection *connection = TheClient->GetServerConnection();
         return connection->GetBytesInPerSec() / 1e3f;
     }
     else
     {
-        Vector<SharedPtr<Connection>> connections = gServer->GetConnections();
+        Vector<SharedPtr<Connection>> connections = TheServer->GetConnections();
         if(connections.Size())
         {
             float speed = 0.0f;
@@ -155,14 +155,14 @@ static float GetSpeedNetIN()
 
 static float GetSpeedNetOUT()
 {
-    if(gClient->GetServerConnection())
+    if(TheClient->GetServerConnection())
     {
-        Connection *connection = gClient->GetServerConnection();
+        Connection *connection = TheClient->GetServerConnection();
         return connection->GetBytesOutPerSec() / 1e3f;
     }
     else
     {
-        Vector<SharedPtr<Connection>> connections = gServer->GetConnections();
+        Vector<SharedPtr<Connection>> connections = TheServer->GetConnections();
         if(connections.Size())
         {
             float speed = 0.0f;
@@ -203,9 +203,9 @@ void GUI::Create()
     gGuiEditor = new GuiEditor(TheContext);
     gGuiEditor->SetVisible(false);
 
-    gCursor = new CursorRTS();
+    TheCursor = new CursorRTS();
 
-    TheLocalization->SetLanguage(gSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
+    TheLocalization->SetLanguage(TheSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
 }
 
 
@@ -230,7 +230,7 @@ bool GUI::UnderCursor()
 
     for(UIElement *elem : elements)
     {
-        if(elem->GetName() != "Cursor" && elem->IsVisible() && elem->IsInside(gCursor->GetCursor()->GetPosition(), true))
+        if(elem->GetName() != "Cursor" && elem->IsVisible() && elem->IsInside(TheCursor->GetCursor()->GetPosition(), true))
         {
             return true;
         }

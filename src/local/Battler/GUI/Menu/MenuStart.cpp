@@ -24,7 +24,7 @@ MenuStart::MenuStart(Context *context) : WindowMenu(context)
 
     buttonLanguage = new ButtonSwitch(this, "Language : EN");
     buttonLanguage->AddState("Language : RU");
-    buttonLanguage->SetState((uint)gSet->GetInt(TV_LANGUAGE));
+    buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
 
     buttonServer = new ButtonRTS(this, "Server");
     buttonServer->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_StartServer));
@@ -100,7 +100,7 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     else if (button == buttonLanguage)
     {
         TheLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
-        gSet->SetInt(TV_LANGUAGE, static_cast<int>(buttonLanguage->GetState()));
+        TheSet->SetInt(TV_LANGUAGE, static_cast<int>(buttonLanguage->GetState()));
     }
     else if (button == buttonExit)
     {

@@ -194,7 +194,7 @@ Drawable* CursorRTS::GetRaycastNode(Vector3 *hitPos_)
         return nullptr;
     }
 
-    Ray ray = gCamera->GetCursorRay();
+    Ray ray = TheCamera->GetCursorRay();
     PODVector<RayQueryResult> results;
     RayOctreeQuery query(results, ray, RAY_TRIANGLE, M_INFINITY, DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
     TheScene->GetComponent<Octree>()->Raycast(query);

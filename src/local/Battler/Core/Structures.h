@@ -38,7 +38,7 @@ struct Coord
         Vector3 retValue;
 
         retValue.x_ = static_cast<float>(col) + 0.5f;
-        retValue.y_ = gTerrain->GetHeight(row, col);
+        retValue.y_ = TheTerrain->GetHeight(row, col);
         retValue.z_ = -static_cast<float>(row) - 0.5f;
 
         return retValue;

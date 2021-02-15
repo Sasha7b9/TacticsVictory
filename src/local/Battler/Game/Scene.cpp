@@ -30,7 +30,7 @@ SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)
 
 SceneRTS::~SceneRTS()
 {
-    SAFE_DELETE(gTerrain); //-V809
+    SAFE_DELETE(TheTerrain); //-V809
     pathIndicator.Stop();
 }
 
@@ -74,15 +74,15 @@ void SceneRTS::Create()
 
     if(MODE_SERVER)
     {
-        level = gLevel->Load("Game/Levels/level.map");
+        level = TheLevel->Load("Game/Levels/level.map");
     }
     else
     {
-        level = gLevel->Get();
+        level = TheLevel->Get();
     }
 
-    gTerrain = new TerrainRTS();
-    gTerrain->CreateFromVector(level);
+    TheTerrain = new TerrainRTS();
+    TheTerrain->CreateFromVector(level);
 
     if (MODE_SERVER)
     {
@@ -93,9 +93,9 @@ void SceneRTS::Create()
             uint col = 0;
             do
             {
-                col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(gLevel->GetWidth()) - 1));
-                row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(gLevel->GetHeight()) - 1));
-            } while (fabs(gTerrain->GetHeight(row, col)) > M_EPSILON);
+                col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheLevel->GetWidth()) - 1));
+                row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheLevel->GetHeight()) - 1));
+            } while (fabs(TheTerrain->GetHeight(row, col)) > M_EPSILON);
 
             SharedPtr<Tank> tank = Tank::Create(Tank::Small);
             tank->SetCoord({row, col});
@@ -126,7 +126,7 @@ void SceneRTS::Create()
     uint sizeX = level[0].Size();
     uint sizeZ = level.Size();
 
-    gCamera->SetPosition({sizeX / 2.0f, 25.0f, - static_cast<float>(sizeZ) / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
+    TheCamera->SetPosition({sizeX / 2.0f, 25.0f, - static_cast<float>(sizeZ) / 2.0f - 10.0f}, {sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f)});
 
     gWindowTarget = new WindowTarget();
     TheUIRoot->AddChild(gWindowTarget);
@@ -146,29 +146,29 @@ void SceneRTS::Update(float /*timeStep*/)
     if (MODE_CLIENT)
     {
         Vector3 hitPos;
-        Drawable *drawable = gCursor->GetRaycastNode(&hitPos);
+        Drawable *drawable = TheCursor->GetRaycastNode(&hitPos);
 
         if (drawable)
         {
             String name = drawable->GetNode()->GetName();
             if (name == NODE_TERRAIN)
             {
-                gCursor->SetNormal();
+                TheCursor->SetNormal();
             }
             else if (name == NODE_TANK)
             {
-                gCursor->SetSelected();
+                TheCursor->SetSelected();
             }
         }
         else
         {
-            gCursor->SetNormal();
+            TheCursor->SetNormal();
         }
 
         pathIndicator.Update();
     }
 
-    if (gServer->IsRunning())
+    if (TheServer->IsRunning())
     {
         VectorBufferRTS msg;
         msg.WriteUInt(Tank::GetAll().Size());
@@ -178,7 +178,7 @@ void SceneRTS::Update(float /*timeStep*/)
             msg.WriteTank(tank);
         }
 
-        gServer->SendToAll(MSG_SEND_SCREENSHOT, msg);
+        TheServer->SendToAll(MSG_SEND_SCREENSHOT, msg);
     }
 }
 
@@ -201,7 +201,7 @@ void SceneRTS::HandleMouseDown(StringHash, VariantMap& eventData) //-V2009
 void SceneRTS::ProcessMouseLeft()
 {
     Vector3 hitCoord;
-    Drawable *object = gCursor->GetRaycastNode(&hitCoord);
+    Drawable *object = TheCursor->GetRaycastNode(&hitCoord);
 
     if(!object)
     {
@@ -244,7 +244,7 @@ void SceneRTS::ProcessMouseRight()
 {
     pathIndicator.Enable(false);
 
-    Drawable *object = gCursor->GetRaycastNode();
+    Drawable *object = TheCursor->GetRaycastNode();
 
     if(object && object->GetNode()->GetName() == NODE_TANK)
     {

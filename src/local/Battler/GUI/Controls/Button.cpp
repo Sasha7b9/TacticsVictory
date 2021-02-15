@@ -74,13 +74,13 @@ void ButtonRTS::SetHint(char *text)
 
 void ButtonRTS::HandleHoverBegin(StringHash, VariantMap&)
 {
-    gCursor->SetSelected();
+    TheCursor->SetSelected();
 }
 
 
 void ButtonRTS::HandleHoverEnd(StringHash, VariantMap&)
 {
-    gCursor->SetNormal();
+    TheCursor->SetNormal();
 }
 
 

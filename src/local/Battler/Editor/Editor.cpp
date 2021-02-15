@@ -29,10 +29,10 @@ void Editor::Run()
     float dColor = 0.3f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    Vector<Vector<float>> level = gLevel->Load("Game/Levels/level.map");
+    Vector<Vector<float>> level = TheLevel->Load("Game/Levels/level.map");
 
-    gTerrain = new TerrainRTS();
-    gTerrain->CreateFromVector(level);
+    TheTerrain = new TerrainRTS();
+    TheTerrain->CreateFromVector(level);
 
     lightNode = TheScene->CreateChild("LightNode");
 
@@ -45,8 +45,8 @@ void Editor::Run()
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
 
-    gCamera->SetPosition({gTerrain->NumCols() / 2.0f, 5.0f, - static_cast<float>(gTerrain->NumRows()) / 2.0f - 10.0f}, {gTerrain->NumCols() / 2.0f, 0.0f, - static_cast<float>(gTerrain->NumRows()) / 2.0f});
-    lightNode->SetPosition({gTerrain->NumCols() / 2.0f, 50.0f, - static_cast<float>(gTerrain->NumRows()) / 2.0f});
+    TheCamera->SetPosition({TheTerrain->NumCols() / 2.0f, 5.0f, - static_cast<float>(TheTerrain->NumRows()) / 2.0f - 10.0f}, {TheTerrain->NumCols() / 2.0f, 0.0f, - static_cast<float>(TheTerrain->NumRows()) / 2.0f});
+    lightNode->SetPosition({TheTerrain->NumCols() / 2.0f, 50.0f, - static_cast<float>(TheTerrain->NumRows()) / 2.0f});
 
     SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Editor, HandlePostRenderUpdate));
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(Editor, HandleMouseDown));
@@ -59,7 +59,7 @@ void Editor::Run()
         {
             SharedPtr<Tank> tank(new Tank());
             tank->Init(Tank::Small);
-            tank->SetPosition(Vector3(float(col), gTerrain->GetHeight(row, col), -float(row)));
+            tank->SetPosition(Vector3(float(col), TheTerrain->GetHeight(row, col), -float(row)));
         }
     }
     */
@@ -78,24 +78,24 @@ void Editor::Run()
 
 void Editor::ClearScene()
 {
-    SAFE_DELETE(gTerrain); //-V809
+    SAFE_DELETE(TheTerrain); //-V809
     TheScene->RemoveChild(lightNode);
 }
 
 
 void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 {
-    if (!gTerrain || gTerrain->Empty())
+    if (!TheTerrain || TheTerrain->Empty())
     {
         return;
     }
 
-    IntVector2 pos = gCursor->GetCursor()->GetPosition();
+    IntVector2 pos = TheCursor->GetCursor()->GetPosition();
 
     float relX = static_cast<float>(pos.x_) / TheGraphics->GetWidth();
     float relY = static_cast<float>(pos.y_) / TheGraphics->GetHeight();
 
-    Ray ray = gCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
+    Ray ray = TheCamera->GetNode()->GetComponent<Camera>()->GetScreenRay(relX, relY);
 
     if (gGuiEditor->modeSelect == GuiEditor::ModeSelect_Plane)
     {
@@ -109,9 +109,9 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
         if (!gMenu->IsActive() && !gGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             Timer timer;
-            currentPlane = gTerrain->GetIntersectionPlane(ray);
+            currentPlane = TheTerrain->GetIntersectionPlane(ray);
 
-            if (!currentPlane.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
+            if (!currentPlane.IsZero() && (TheCursor->GetType() == TypeCursor_Normal || TheCursor->GetType() == TypeCursor_Selected))
             {
                 if (!selectedPlane.IsEquals(currentPlane))
                 {
@@ -119,11 +119,11 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
                     TheDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
                     TheDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
                 }
-                gCursor->SetSelected();
+                TheCursor->SetSelected();
             }
             else
             {
-                gCursor->SetNormal();
+                TheCursor->SetNormal();
             }
         }
     }
@@ -132,9 +132,9 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
     {
         if (!gMenu->IsActive() && !gGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
-            currentEdge = gTerrain->GetIntersectionEdge(ray);
+            currentEdge = TheTerrain->GetIntersectionEdge(ray);
 
-            if (!currentEdge.IsZero() && (gCursor->GetType() == TypeCursor_Normal || gCursor->GetType() == TypeCursor_Selected))
+            if (!currentEdge.IsZero() && (TheCursor->GetType() == TypeCursor_Normal || TheCursor->GetType() == TypeCursor_Selected))
             {
                 Color color = static_cast<int>(TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
 
@@ -161,11 +161,11 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
                     }
                 }
             }
-            gCursor->SetSelected();
+            TheCursor->SetSelected();
         }
         else
         {
-            gCursor->SetNormal();
+            TheCursor->SetNormal();
         }
     }
 
@@ -176,7 +176,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
     currentHeight += deltaStep * 10.0f;
 
-    gTerrain->SetHeight(5, 5, currentHeight);
+    TheTerrain->SetHeight(5, 5, currentHeight);
     */
 }
 
@@ -202,18 +202,18 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
             if (!selectedPlane.IsEquals(PlaneRTS::ZERO) && selectedPlane.IsEquals(currentPlane))
             {
                 selectedPlane = PlaneRTS::ZERO;
-                gCamera->EnableArrows();
+                TheCamera->EnableArrows();
             }
             else
             {
                 selectedPlane = PlaneRTS::ZERO;
-                gCamera->EnableArrows();
+                TheCamera->EnableArrows();
 
                 if (!currentPlane.IsZero())
                 {
                     selectedPlane = currentPlane;
                     selectedPlane.CalculateRowCol();
-                    gCamera->DisableArrows();
+                    TheCamera->DisableArrows();
                 }
             }
         }
@@ -229,45 +229,45 @@ void Editor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
     {
         uint row = selectedPlane.row;
         uint col = selectedPlane.col;
-        float height = gTerrain->GetHeight(row, col);
+        float height = TheTerrain->GetHeight(row, col);
         if(KEY_IS_KP_MINUS)
         {
-            gTerrain->SetHeight(row, col, height - 1.0f);
-            gTerrain->Update();
+            TheTerrain->SetHeight(row, col, height - 1.0f);
+            TheTerrain->Update();
         }
         else if(KEY_IS_KP_PLUS)
         {
-            gTerrain->SetHeight(row, col, height + 1.0f);
-            gTerrain->Update();
+            TheTerrain->SetHeight(row, col, height + 1.0f);
+            TheTerrain->Update();
         }
-        selectedPlane = gTerrain->GetPlane(row, col);
+        selectedPlane = TheTerrain->GetPlane(row, col);
 
         if (KEY_IS_LEFT)
         {
             if (col > 0)
             {
-                selectedPlane = gTerrain->GetPlane(row, col - 1);
+                selectedPlane = TheTerrain->GetPlane(row, col - 1);
             }
         }
         else if (KEY_IS_RIGHT)
         {
-            if (col < gLevel->GetWidth() - 1)
+            if (col < TheLevel->GetWidth() - 1)
             {
-                selectedPlane = gTerrain->GetPlane(row, col + 1);
+                selectedPlane = TheTerrain->GetPlane(row, col + 1);
             }
         }
         else if (KEY_IS_UP)
         {
             if (row > 0)
             {
-                selectedPlane = gTerrain->GetPlane(row - 1, col);
+                selectedPlane = TheTerrain->GetPlane(row - 1, col);
             }
         }
         else if (KEY_IS_DOWN)
         {
-            if (row < gLevel->GetHeight() - 1)
+            if (row < TheLevel->GetHeight() - 1)
             {
-                selectedPlane = gTerrain->GetPlane(row + 1, col);
+                selectedPlane = TheTerrain->GetPlane(row + 1, col);
             }
         }
     }

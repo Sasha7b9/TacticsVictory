@@ -64,7 +64,7 @@ void Tank::Init(TypeTank type_, uint _id_)
     node_->SetVar("PointerTank", this);
 
     pathFinder = new WaveAlgorithm();
-    pathFinder->SetSize(gTerrain->NumRows(), gTerrain->NumCols());
+    pathFinder->SetSize(TheTerrain->NumRows(), TheTerrain->NumCols());
 
     translator->Init(this);
     typeTank = type_;
@@ -158,9 +158,9 @@ void Tank::Update(float dT)
             uint col = 0;
             do
             {
-                row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(gTerrain->NumRows()) - 1));
-                col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(gTerrain->NumCols()) - 1));
-                height = gTerrain->GetHeight(row, col);
+                row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheTerrain->NumRows()) - 1));
+                col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheTerrain->NumCols()) - 1));
+                height = TheTerrain->GetHeight(row, col);
             } while(fabs(height) > M_EPSILON);
 
             Vector3 position = GetPosition();

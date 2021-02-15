@@ -43,18 +43,18 @@ void GuiEditor::CreatePanels()
 
     // Panel bottom
     panelBottom = new PanelBottom(TheContext);
-    panelBottom->SetPosition(0, gSet->GetInt(TV_SCREEN_HEIGHT) - gSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
+    panelBottom->SetPosition(0, TheSet->GetInt(TV_SCREEN_HEIGHT) - TheSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
 
-    width = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_WIDTH);
-    height = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_HEIGHT);
+    width = TheSet->GetInt(TV_PANEL_BOTTOM_BUTTON_WIDTH);
+    height = TheSet->GetInt(TV_PANEL_BOTTOM_BUTTON_HEIGHT);
 
-    x = gSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
-    y = gSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
+    x = TheSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
+    y = TheSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
 
     buttonInterface = panelBottom->AddButton("Interface", x, y, width, height);
     SubscribeToEvent(buttonInterface, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
-    x = gSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
+    x = TheSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
     buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
     SubscribeToEvent(buttonMenu, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
@@ -221,8 +221,8 @@ bool GuiEditor::IsInside(const IntVector2 &position)
             windowNewMap->IsInside(position, true)
         ) && 
         position.x_ > 0 && 
-        position.x_ < gSet->GetInt(TV_SCREEN_WIDTH) - 1 &&
-        position.y_ < gSet->GetInt(TV_SCREEN_HEIGHT) - 1;
+        position.x_ < TheSet->GetInt(TV_SCREEN_WIDTH) - 1 &&
+        position.y_ < TheSet->GetInt(TV_SCREEN_HEIGHT) - 1;
 }
 
 
@@ -287,27 +287,27 @@ void GuiEditor::CreateWindows()
 
 void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
 {
-    Vector<Vector<float>> map = gLevel->CreateRandom((uint)sliderSizeNewMapY->GetValue(), (uint)sliderSizeNewMapX->GetValue());
-    SAFE_DELETE(gTerrain); //-V809
-    gTerrain = new TerrainRTS();
-    gTerrain->CreateFromVector(map);
+    Vector<Vector<float>> map = TheLevel->CreateRandom((uint)sliderSizeNewMapY->GetValue(), (uint)sliderSizeNewMapX->GetValue());
+    SAFE_DELETE(TheTerrain); //-V809
+    TheTerrain = new TerrainRTS();
+    TheTerrain->CreateFromVector(map);
     windowNewMap->SetVisible(false);
 
-    gCamera->SetPosition({gLevel->GetWidth() / 2.0f, 20.0f, -(float)gLevel->GetHeight()}, {gLevel->GetWidth() / 2.0f, 0.0f, -(gLevel->GetHeight() / 2.0f)});
+    TheCamera->SetPosition({TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()}, {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeight() / 2.0f)});
 }
 
 
 void GuiEditor::HandleTerrainClearTerrain(StringHash, VariantMap&)
 {
-    for (uint row = 0; row < gTerrain->NumRows(); row++)
+    for (uint row = 0; row < TheTerrain->NumRows(); row++)
     {
-        for (uint col = 0; col < gTerrain->NumCols(); col++)
+        for (uint col = 0; col < TheTerrain->NumCols(); col++)
         {
-            gTerrain->SetHeight(row, col, 0.0f);
+            TheTerrain->SetHeight(row, col, 0.0f);
         }
     }
 
-    gTerrain->Update();
+    TheTerrain->Update();
 }
 
 
@@ -326,7 +326,7 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
         {
             UnsubscribeFromEvent(TheFileSelector, E_FILESELECTED);
             TheFileSelector->GetWindow()->SetVisible(false);
-            gCamera->SetEnabled(true);
+            TheCamera->SetEnabled(true);
         }
         return;
     }
@@ -349,7 +349,7 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 
 void GuiEditor::HandleFileLoad(StringHash, VariantMap&)
 {
-    gCamera->SetEnabled(false);
+    TheCamera->SetEnabled(false);
 
     Vector<String> filters;
 
@@ -363,7 +363,7 @@ void GuiEditor::HandleFileLoad(StringHash, VariantMap&)
 
 void GuiEditor::HandleFileSave(StringHash, VariantMap&)
 {
-    gCamera->SetEnabled(false);
+    TheCamera->SetEnabled(false);
 
     Vector<String> filters;
 
@@ -383,16 +383,16 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
 
     if(ok)
     {
-        Vector<Vector<float>> map = gLevel->Load((char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
-        SAFE_DELETE(gTerrain); //-V809
-        gTerrain = new TerrainRTS();
-        gTerrain->CreateFromVector(map);
-        gCamera->SetPosition({gLevel->GetWidth() / 2.0f, 20.0f, -(float)gLevel->GetHeight()}, {gLevel->GetWidth() / 2.0f, 0.0f, -(gLevel->GetHeight() / 2.0f)});
+        Vector<Vector<float>> map = TheLevel->Load((char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
+        SAFE_DELETE(TheTerrain); //-V809
+        TheTerrain = new TerrainRTS();
+        TheTerrain->CreateFromVector(map);
+        TheCamera->SetPosition({TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()}, {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeight() / 2.0f)});
     }
     
     TheFileSelector->GetWindow()->SetVisible(false);
 
-    gCamera->SetEnabled(true);
+    TheCamera->SetEnabled(true);
 }
 
 
@@ -406,13 +406,13 @@ void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData)
     {
         String fileName = (String)eventData[FileSelected::P_FILENAME].GetString();
         fileName = ReplaceExtension(fileName, ".map");
-        gLevel->SetMap(gTerrain->GetMap());
-        gLevel->Save(fileName);
+        TheLevel->SetMap(TheTerrain->GetMap());
+        TheLevel->Save(fileName);
     }
 
     TheFileSelector->GetWindow()->SetVisible(false);
 
-    gCamera->SetEnabled(true);
+    TheCamera->SetEnabled(true);
 }
 
 
@@ -425,8 +425,8 @@ void GuiEditor::HandleExit(StringHash, VariantMap&)
 void GuiEditor::HandleExitOk(StringHash, VariantMap&)
 {
     gGuiEditor->SetVisible(false);
-    gCamera->SetEnabled(false);
-    gEditor->ClearScene();
+    TheCamera->SetEnabled(false);
+    TheEditor->ClearScene();
     gGUI->SetVisibleWindow(windowConfirmExit, false);
 }
 

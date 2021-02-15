@@ -51,16 +51,16 @@ extern FileSelector         *TheFileSelector;
 extern Profiler             *TheProfiler;
 extern Script               *TheScript;
 
-extern CameraRTS            *gCamera;
-extern CursorRTS            *gCursor;
-extern Editor               *gEditor;
-extern Settings             *gSet;
-extern Level                *gLevel;
-extern TerrainRTS           *gTerrain;
-extern TacticsVictory       *gTacticsVictory;
-extern LogRTS               *gLog;
-extern Server               *gServer;
-extern Client               *gClient;
+extern CameraRTS            *TheCamera;
+extern CursorRTS            *TheCursor;
+extern Editor               *TheEditor;
+extern Settings             *TheSet;
+extern Level                *TheLevel;
+extern TerrainRTS           *TheTerrain;
+extern TacticsVictory       *TheTacticsVictory;
+extern LogRTS               *TheLog;
+extern Server               *TheServer;
+extern Client               *TheClient;
 
 
 // GUI

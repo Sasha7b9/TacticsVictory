@@ -134,11 +134,11 @@ SharedPtr<DropDownListWithTextAndButton> DropDownListWithTextAndButton::Create(W
 
 void DropDownListWithTextAndButton::HandleHoverBegin(StringHash, VariantMap&)
 {
-    gCursor->SetSelected();
+    TheCursor->SetSelected();
 }
 
 
 void DropDownListWithTextAndButton::HandleHoverEnd(StringHash, VariantMap&)
 {
-    gCursor->SetNormal();
+    TheCursor->SetNormal();
 }
