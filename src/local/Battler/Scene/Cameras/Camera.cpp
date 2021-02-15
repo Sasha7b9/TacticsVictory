@@ -1,10 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Camera.h"
-#include "GUI/GUI.h"
-#include "GUI/Cursor.h"
-#include "GUI/Windows/Console.h"
-
 
 
 #define CURSOR_UP           (cursor == TypeCursor_Up)
@@ -15,7 +10,6 @@
 #define CURSOR_TOP_RIGHT    (cursor == TypeCursor_TopRight)
 #define CURSOR_DOWN_LEFT    (cursor == TypeCursor_DownLeft)
 #define CURSOR_DOWN_RIGhT   (cursor == TypeCursor_DownRight)
-
 
 
 CameraRTS::CameraRTS()

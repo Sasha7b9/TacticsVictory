@@ -1,14 +1,8 @@
-// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
-// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "_GameObject.h"
-#include "GUI/Cursor.h"
-#include "Core/_Math.h"
-
 
 
 static uint creatorID = 0;
-
 
 
 GameObject::GameObject(Context *context) : LogicComponent(context)
