@@ -1,7 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "ButtonToggled.h"
-#include "Label.h"
+#include "GUI/Controls/_ButtonToggled.h"
+#include "GUI/Controls/_Label.h"
 
 
 

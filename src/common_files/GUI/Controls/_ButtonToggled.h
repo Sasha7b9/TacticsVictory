@@ -1,7 +1,8 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
-#include "Label.h"
 
+
+class Label;
 
 
 class ButtonToggled : public CheckBox

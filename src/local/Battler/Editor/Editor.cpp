@@ -4,7 +4,6 @@
 #include "Game/Level.h"
 #include "Game/Objects/Units/Tank/Tank.h"
 #include "GUI/Cursor.h"
-#include "GUI/Controls/Hint.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/MenuRTS.h"

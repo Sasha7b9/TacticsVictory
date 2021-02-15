@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "MenuEvents.h"
 #include "WindowMenu.h"
-#include "GUI/Controls/Button.h"
+#include "GUI/Controls/_Button.h"
 
 
 

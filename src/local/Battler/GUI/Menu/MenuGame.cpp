@@ -2,10 +2,10 @@
 #include "stdafx.h"
 #include "MenuGame.h"
 #include "GUI/GUI.h"
-#include "GUI/Controls/Button.h"
-#include "GUI/Controls/ButtonSwitch.h"
+#include "GUI/Controls/_Button.h"
+#include "GUI/Controls/_ButtonSwitch.h"
 #include "GUI/Cursor.h"
-#include "GUI/Controls/Label.h"
+#include "GUI/Controls/_Label.h"
 #include "GUI/Menu/MenuConfirmExit.h"
 #include "MenuRTS.h"
 

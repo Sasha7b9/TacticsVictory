@@ -1,11 +1,11 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "WindowRTS.h"
-#include "Button.h"
-#include "Label.h"
-#include "ButtonToggled.h"
-#include "SliderWithTextAndButtons.h"
-#include "DropDownListWithTextAndButton.h"
+#include "GUI/Controls/_WindowRTS.h"
+#include "GUI/Controls/_Button.h"
+#include "GUI/Controls/_Label.h"
+#include "GUI/Controls/_ButtonToggled.h"
+#include "GUI/Controls/_SliderWithTextAndButtons.h"
+#include "GUI/Controls/_DropDownListWithTextAndButton.h"
 #include "GUI/Cursor.h"
 
 

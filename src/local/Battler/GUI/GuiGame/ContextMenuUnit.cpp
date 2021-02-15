@@ -1,9 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "ContextMenuUnit.h"
-#include "GUI/Controls/Label.h"
+#include "GUI/Controls/_Label.h"
 #include "Game/Objects/Units/UnitObject.h"
-#include "GUI/Controls/ButtonToggled.h"
+#include "GUI/Controls/_ButtonToggled.h"
 #include "GUI/GuiGame/WindowTarget.h"
 
 

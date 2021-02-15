@@ -1,8 +1,8 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "MenuConfirmExit.h"
-#include "GUI/Controls/Button.h"
-#include "GUI/Controls/Label.h"
+#include "GUI/Controls/_Button.h"
+#include "GUI/Controls/_Label.h"
 #include "GUI/GUI.h"
 #include "GUI/Menu/MenuGame.h"
 

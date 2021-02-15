@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Tab.h"
-#include "ButtonToggled.h"
+#include "GUI/Controls/_Tab.h"
+#include "GUI/Controls/_ButtonToggled.h"
 
 
 

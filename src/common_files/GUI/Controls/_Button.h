@@ -1,8 +1,9 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
-#include "Label.h"
-#include "Hint.h"
+#include "GUI/Controls/_Label.h"
 
+
+class Hint;
 
 
 class ButtonRTS : public Button

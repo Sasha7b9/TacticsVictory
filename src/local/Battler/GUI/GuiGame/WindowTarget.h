@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "GUI/Controls/WindowRTS.h"
+#include "GUI/Controls/_WindowRTS.h"
 
 
 

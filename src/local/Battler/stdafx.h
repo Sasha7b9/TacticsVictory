@@ -135,7 +135,7 @@ using namespace Urho3D;
 #include "Graphics/2D/Image.h"
 #include "GUI/Cursor.h"
 #include "GUI/GUI.h"
-#include "GUi/Controls/Hint.h"
+#include "GUi/Controls/_Hint.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/MenuRTS.h"
