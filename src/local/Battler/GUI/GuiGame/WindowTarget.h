@@ -3,6 +3,8 @@
 #include "GUI/Controls/_WindowRTS.h"
 
 
+class Tank;
+
 
 class WindowTarget : public WindowRTS
 {

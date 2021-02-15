@@ -6,7 +6,7 @@
 #include "Scene/Objects/Buildings/MilitaryPlant/MilitaryPlant.h"
 #include "Audio/Sounds.h"
 #include "Game/Particles.h"
-#include "GUI/GuiGame/WindowTarget.h"
+//#include "GUI/GuiGame/WindowTarget.h"
 
 
 SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)
