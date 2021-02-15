@@ -1,14 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "ServerFunctions.h"
-#include "NetworkMessages.h"
-#include "TacticsVictory.h"
-#include "VectorBufferRTS.h"
-#include "Server.h"
-#include "Core/Camera.h"
 #include "Game/Scene.h"
-#include "GUI/Windows/Console.h"
-
 
 
 void FUNC_MSG_REQUEST_LANDSCAPE(Connection *connection, MemoryBuffer &, VectorBufferRTS &out)

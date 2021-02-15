@@ -1,9 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Server.h"
-#include "LogRTS.h"
-#include "VectorBufferRTS.h"
-
 
 
 Server::Server(Context *context) : Object(context)
