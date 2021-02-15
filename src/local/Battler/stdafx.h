@@ -127,4 +127,6 @@ using namespace Urho3D;
 #include "Core/Camera.h"
 
 #include "glob_engine.h"
+#include "glob_game.h"
+
 #include "Settings.h"
