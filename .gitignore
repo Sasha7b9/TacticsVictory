@@ -16,7 +16,10 @@
 *.exp
 *.lib
 *.~*
+
+
 out/TVData/history.txt
 log.txt
 Debug/TacticsVictory.tlog
 Debug/CoreData/Shaders/HLSL
+source/TacticsVictory/.vs/*
