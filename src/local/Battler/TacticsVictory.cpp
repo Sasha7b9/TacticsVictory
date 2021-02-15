@@ -1,12 +1,10 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Game/Scene.h"
-#include "Game/Logic/Movinator.h"
+//#include "Game/Logic/Movinator.h"
 #include "Game/Logic/Rotator.h"
 #include "Game/Objects/Ammo/Rocket/Rocket.h"
 #include "Game/Path/TilePath.h"
-//#include "GUI/GuiEditor/GuiEditor.h"
-#include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/MenuRTS.h"
 #include "GUI/Windows/Console.h"
 #include "Network/Client.h"
