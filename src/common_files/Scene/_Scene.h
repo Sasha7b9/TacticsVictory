@@ -1,6 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
-#include "Scene/Objects/Units/Tank/_Tank.h"
 #include "Game/Path/PathIndicator.h"
 
 
