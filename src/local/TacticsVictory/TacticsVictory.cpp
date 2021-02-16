@@ -82,7 +82,9 @@ void TacticsVictory::Start()
     ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
     TheScene->CreateComponent<DebugRenderer>();
-
+    TheRenderer = GetSubsystem<Renderer>();
+    TheAudio = GetSubsystem<Audio>();
+    TheCamera = new CameraRTS();
     scene = new SceneRTS();
 
     CreateScriptSystem();
@@ -95,9 +97,6 @@ void TacticsVictory::Start()
     CreateConsoleAndDebugHud();
     TheUI = GetSubsystem<UI>();
     TheInput = GetSubsystem<Input>();
-    TheAudio = GetSubsystem<Audio>();
-    TheRenderer = GetSubsystem<Renderer>();
-    TheCamera = new CameraRTS();
     TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
     TheUIRoot = TheUI->GetRoot();
     TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
