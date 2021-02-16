@@ -2,16 +2,16 @@
 #include "stdafx.h"
 
 
-bool LogRTS::enabledExtendedInfo = false;
+bool LogTV::enabledExtendedInfo = false;
 
 
-LogRTS::LogRTS(Context *context) : Log(context)
+LogTV::LogTV(Context *context) : Log(context)
 {
 
 }
 
 
-void LogRTS::Write(int level, const String &message, char *file, char *func, int numLine)
+void LogTV::Write(int level, const String &message, char *file, char *func, int numLine)
 {
     String str = message;
     if (enabledExtendedInfo)
@@ -37,13 +37,13 @@ void LogRTS::Write(int level, const String &message, char *file, char *func, int
 }
 
 
-void LogRTS::EnableExtendedInfo()
+void LogTV::EnableExtendedInfo()
 {
     enabledExtendedInfo = true;
 }
 
 
-void LogRTS::DisableExtendedInfo()
+void LogTV::DisableExtendedInfo()
 {
     enabledExtendedInfo = false;
 }

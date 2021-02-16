@@ -140,7 +140,7 @@ void Battle::SubscribeToEvents()
 
 void Battle::OpenLog()
 {
-    TheLog = new LogRTS();
+    TheLog = new LogTV();
     char buffer[50];
     srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
 

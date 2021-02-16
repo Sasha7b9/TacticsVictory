@@ -4,7 +4,7 @@
 
 extern Battle          *TheBattle;
 extern Level           *TheLevel;
-extern LogRTS          *TheLog;
+extern LogTV          *TheLog;
 extern SceneTV         *TheScene;
 extern Settings        *TheSet;
 extern TerrainTV       *TheTerrain;

@@ -31,7 +31,7 @@ Settings            *TheSet = nullptr;
 Level               *TheLevel = nullptr;
 TerrainTV          *TheTerrain = nullptr;
 Battler             *TheTacticsVictory = nullptr;
-LogRTS              *TheLog = nullptr;
+LogTV              *TheLog = nullptr;
 Server              *TheServer = nullptr;
 Client              *TheClient = nullptr;
 

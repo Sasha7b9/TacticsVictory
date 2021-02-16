@@ -22,7 +22,7 @@ class WindowTarget;
 class WindowVariables;
 class Battler;
 class MenuRTS;
-class LogRTS;
+class LogTV;
 class Server;
 class Client;
 
@@ -36,7 +36,7 @@ extern GuiEditor       *TheGuiEditor;
 extern GuiGame         *TheGuiGame;
 extern Hint            *TheHint;
 extern Level           *TheLevel;
-extern LogRTS          *TheLog;
+extern LogTV          *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
 extern MenuRTS         *TheMenu;
