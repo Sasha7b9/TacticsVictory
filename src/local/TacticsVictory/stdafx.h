@@ -167,8 +167,8 @@ using namespace Urho3D;
 #include "GUI/Windows/ConsoleTV.h"
 #include "GUI/Windows/WindowVariables.h"
 
-#include "Scene/_Level.h"
-#include "Scene/_SceneTV.h"
+#include "Scene/_TLevel.h"
+#include "Scene/_TScene.h"
 #include "Scene/Cameras/CameraTV.h"
 #include "Scene/Objects/_GameObjectEvents.h"
 #include "Scene/Objects/_ObjectState.h"

@@ -134,8 +134,8 @@ using namespace Urho3D;
 #include "Network/Game/_GameMessages.h"
 #include "Network/Game/_TConnection.h"
 
-#include "Scene/_Level.h"
-#include "Scene/_SceneTV.h"
+#include "Scene/_TLevel.h"
+#include "Scene/_TScene.h"
 #include "Scene/Objects/_GameObjectEvents.h"
 #include "Scene/Objects/_ObjectState.h"
 #include "Scene/Objects/Ammo/_AmmoObject.h"
