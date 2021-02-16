@@ -100,8 +100,8 @@ void LayerTerrain::Build()
     object->SetMaterial(TheCache->GetResource<Material>("Materials/TVTerrain.xml"));
     object->SetCastShadows(true);
 
-    SAFE_DELETE_ARRAY(bufVert); //-V809
-    SAFE_DELETE_ARRAY(bufInd); //-V809
+    SAFE_DELETE_ARRAY(bufVert);
+    SAFE_DELETE_ARRAY(bufInd);
 }
 
 

@@ -40,9 +40,9 @@ GUI::GUI() : Object(TheContext)
 
 GUI::~GUI()
 {
-    SAFE_DELETE(TheCursor); //-V809
-    SAFE_DELETE(TheGuiGame); //-V809
-    SAFE_DELETE(TheGuiEditor); //-V809
+    SAFE_DELETE(TheCursor);
+    SAFE_DELETE(TheGuiGame);
+    SAFE_DELETE(TheGuiEditor);
 }
 
 

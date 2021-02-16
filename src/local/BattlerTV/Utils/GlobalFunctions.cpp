@@ -10,7 +10,7 @@ void GF::SetWindowInCenterScreen(Window *window)
 
 void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
 {
-    SAFE_DELETE(TheFileSelector); //-V809
+    SAFE_DELETE(TheFileSelector);
     TheFileSelector = new FileSelector(TheContext);
     XMLFile *style = TheCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
     TheFileSelector->SetDefaultStyle(style);

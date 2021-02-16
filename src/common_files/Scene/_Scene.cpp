@@ -10,7 +10,7 @@ SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)
 
 SceneRTS::~SceneRTS()
 {
-    SAFE_DELETE(TheTerrain); //-V809
+    SAFE_DELETE(TheTerrain);
     pathIndicator.Stop();
 }
 

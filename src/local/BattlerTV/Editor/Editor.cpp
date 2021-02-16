@@ -76,7 +76,7 @@ void Editor::Run()
 
 void Editor::ClearScene()
 {
-    SAFE_DELETE(TheTerrain); //-V809
+    SAFE_DELETE(TheTerrain);
     TheScene->RemoveChild(lightNode);
 }
 
