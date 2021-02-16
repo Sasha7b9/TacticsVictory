@@ -3,7 +3,6 @@
 
 
 class SceneTV;
-class VectorBufferRTS;
 
 
 class Battler : public Application
@@ -25,8 +24,6 @@ public:
 
 private:
     bool drawDebug = false;
-    typedef void(*networkFunc)(Connection*, MemoryBuffer&, VectorBufferRTS&);
-    HashMap<int, networkFunc> networkFunctions;                  // Здесь функции-обработчики сетевых сообщений
     String address = String::EMPTY;
     uint16 port = 0;
 

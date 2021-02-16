@@ -3,7 +3,6 @@
 
 
 class SceneTV;
-class VectorBufferRTS;
 
 
 class Battle : public Application
