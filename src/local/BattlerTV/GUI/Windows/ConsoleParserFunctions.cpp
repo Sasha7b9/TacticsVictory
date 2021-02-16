@@ -10,7 +10,6 @@
 #include "GUI/Windows/WindowVariables.h"
 
 
-
 bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
@@ -23,32 +22,32 @@ bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 }
 
 
-//static void OnServerConnected()
-//{
-//    TheClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
-//    TheConsole->Write("Запрашиваю ландшафт");
-//}
+static void OnServerConnected()
+{
+    TheClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
+    TheConsole->Write("Запрашиваю ландшафт");
+}
 
 
 bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
 {
     String address = SERVER_ADDRESS;
     uint16 port = SERVER_PORT;
-    if(!GF::GetAddressPort(words, address, port))
+    if(!GetAddressPort(words, address, port))
     {
         return false;
     }
 
-//    if(TheClient->IsConnected())
-//    {
-//        TheConsole->Write("Command forbidden. The client already running");
-//    }
-//    else
-//    {
-//        TheMenu->Hide();
-//        TheClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, OnServerConnected);
-//        TheConsole->Write("Соединяюсь с удалённым сервером...");
-//    }
+    if(TheClient->IsConnected())
+    {
+        TheConsole->Write("Command forbidden. The client already running");
+    }
+    else
+    {
+        TheMenu->Hide();
+        TheClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, OnServerConnected);
+        TheConsole->Write("Соединяюсь с удалённым сервером...");
+    }
 
     return true;
 }
@@ -115,30 +114,27 @@ void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V20
 
 bool ConsoleParser::FuncServerStop(Vector<String> &, bool)
 {
-//    if(serverRunning)
-//    {
-//        TheClient->Send(MSG_DELETE_SERVER, VectorBufferRTS());
-//    }
-//    else
-//    {
-//        TheConsole->Write("Forbidden");
-//    }
-
+    if(serverRunning)
+    {
+        TheClient->Send(MSG_DELETE_SERVER, VectorBufferRTS());
+    }
+    else
+    {
+        TheConsole->Write("Forbidden");
+    }
     return true;
 }
 
 
 bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
 {
-    UNUSED(words);
+    int latency = 0;
 
-//    int latency = 0;
-//
-//    if(ExtractInt(words[0], &latency))
-//    {
-//        TheClient->Send(MSG_SET_NETWORK_LATENCY, VectorBufferRTS(latency));
-//        return true;
-//    }
+    if(ExtractInt(words[0], &latency))
+    {
+        TheClient->Send(MSG_SET_NETWORK_LATENCY, VectorBufferRTS(latency));
+        return true;
+    }
 
     return false;
 }
@@ -146,15 +142,13 @@ bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
 
 bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool) //-V2009
 {
-    UNUSED(words);
+    float loss = 0.0f;
 
-//    float loss = 0.0f;
-//
-//    if(ExtractFloat(words[0], &loss))
-//    {
-//        TheClient->Send(MSG_SET_NETWORK_LOSS, VectorBufferRTS(loss));
-//        return true;
-//    }
+    if(ExtractFloat(words[0], &loss))
+    {
+        TheClient->Send(MSG_SET_NETWORK_LOSS, VectorBufferRTS(loss));
+        return true;
+    }
 
     return false;
 }
@@ -218,15 +212,12 @@ bool ConsoleParser::FuncClose(Vector<String> &, bool showInfo)
 
 bool ConsoleParser::FuncExit(Vector<String> &, bool showInfo)
 {
-    UNUSED(showInfo);
-
-//    if(!showInfo)
-//    {
-//        TheClient->Disconnect();
-//        TheServer->Disconnect();
-//        TheEngine->Exit();
-//    }
-
+    if(!showInfo)
+    {
+        TheClient->Disconnect();
+        TheServer->Disconnect();
+        TheEngine->Exit();
+    }
     return true;
 }
 

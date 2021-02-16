@@ -121,7 +121,7 @@ using namespace Urho3D;
 #pragma warning(pop)
 
 #include "defines.h"
-#include "Battler.h"
+#include "TacticsVictory.h"
 
 #include "Audio/Sounds.h"
 
@@ -166,6 +166,13 @@ using namespace Urho3D;
 #include "GUI/Panels/PanelMap.h"
 #include "GUI/Windows/Console.h"
 #include "GUI/Windows/WindowVariables.h"
+
+#include "Network/_Client.h"
+#include "Network/_ClientFunctions.h"
+#include "Network/_NetworkMessages.h"
+#include "Network/_Server.h"
+#include "Network/_ServerFunctions.h"
+#include "Network/_VectorBufferRTS.h"
 
 #include "Scene/_Level.h"
 #include "Scene/_Scene.h"

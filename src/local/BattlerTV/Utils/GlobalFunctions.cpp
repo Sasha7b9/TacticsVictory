@@ -2,15 +2,15 @@
 #include "stdafx.h"
 
 
-void GF::SetWindowInCenterScreen(Window *window)
+void SetWindowInCenterScreen(Window *window)
 {
     window->SetPosition(TheGraphics->GetWidth() / 2 - window->GetWidth() / 2, TheGraphics->GetHeight() / 2 - window->GetHeight() / 2);
 }
 
 
-void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
+void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
 {
-    SAFE_DELETE(TheFileSelector);
+    SAFE_DELETE(TheFileSelector); //-V809
     TheFileSelector = new FileSelector(TheContext);
     XMLFile *style = TheCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
     TheFileSelector->SetDefaultStyle(style);
@@ -29,7 +29,7 @@ void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vec
 }
 
 
-unsigned GF::GetLastModifiedTime(char* name)
+unsigned GetLastModifiedTime(char* name)
 {
     String fullName = TheFileSystem->GetProgramDir();
     fullName.Erase(fullName.Length() - 1);
@@ -39,7 +39,7 @@ unsigned GF::GetLastModifiedTime(char* name)
 }
 
 
-String GF::GetNameFile(const char *name)
+String GetNameFile(const char *name)
 {
     String fullName;
 
@@ -79,7 +79,7 @@ String GF::GetNameFile(const char *name)
 }
 
 
-String GF::IntToString(int value, uint length)
+String IntToString(int value, uint length)
 {
     String str(value);
     while(str.Length() < length)
@@ -90,7 +90,7 @@ String GF::IntToString(int value, uint length)
 }
 
 
-bool GF::GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
+bool GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
 {
     for(String word : words)
     {

@@ -5,7 +5,7 @@
 #include "MenuEvents.h"
 #include "MenuRTS.h"
 //#include "GlobalFunctions.h"
-//#include "TacticsVictory.h"
+#include "TacticsVictory.h"
 
 
 #define VAR_MENU_EVENT "VAR_MENU_EVENT"

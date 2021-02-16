@@ -8,4 +8,7 @@ class AmmoObject : public GameObject
 {
 public:
     AmmoObject(Context *context = TheContext);
+
+private:
+    DEFAULT_MEMBERS(AmmoObject);
 };

@@ -50,4 +50,6 @@ private:
 
     void SetStep(const Coord &start, const Coord &end);
     void StartRotation(float angleNeed);
+
+    DEFAULT_MEMBERS(Translator);
 };

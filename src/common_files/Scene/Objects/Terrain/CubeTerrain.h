@@ -70,6 +70,8 @@ private:
     SharedPtr<SideCube> CreateSide(SIDE side, float anotherHeight);
     void PushPoint(const PointPlane &point);
     void BuildPlaneVerexes(const PlaneCube &plane);
+
+    DEFAULT_MEMBERS(CubeTerrain);
 };
 
 /*                     Corner_0              Corner_1

@@ -240,7 +240,7 @@ void GuiEditor::CreateWindows()
     SubscribeToEvent(buttonCreateMap, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleTerrainCreateNewMap));
 
     windowNewMap->SetFixedSize(windowNewMap->GetSize());
-    GF::SetWindowInCenterScreen(windowNewMap);
+    SetWindowInCenterScreen(windowNewMap);
     TheUIRoot->AddChild(windowNewMap);
     windowNewMap->SetVisible(false);
 
@@ -278,7 +278,7 @@ void GuiEditor::CreateWindows()
 
     TheUIRoot->AddChild(windowConfirmExit);
     windowConfirmExit->SetVisible(false);
-    GF::SetWindowInCenterScreen(windowConfirmExit);
+    SetWindowInCenterScreen(windowConfirmExit);
 
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GuiEditor, HandleMouseDown));
 }
@@ -287,7 +287,7 @@ void GuiEditor::CreateWindows()
 void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
 {
     Vector<Vector<float>> map = TheLevel->CreateRandom((uint)sliderSizeNewMapY->GetValue(), (uint)sliderSizeNewMapX->GetValue());
-    SAFE_DELETE(TheTerrain);
+    SAFE_DELETE(TheTerrain); //-V809
     TheTerrain = new TerrainRTS();
     TheTerrain->CreateFromVector(map);
     windowNewMap->SetVisible(false);
@@ -354,7 +354,7 @@ void GuiEditor::HandleFileLoad(StringHash, VariantMap&)
 
     filters.Push("*.map");
 
-    GF::OpenFileSelector("Load landscape", "Load", "Cancel", filters);
+    OpenFileSelector("Load landscape", "Load", "Cancel", filters);
 
     SubscribeToEvent(TheFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorLoadTerrain));
 }
@@ -368,7 +368,7 @@ void GuiEditor::HandleFileSave(StringHash, VariantMap&)
 
     filters.Push("*.map");
 
-    GF::OpenFileSelector("Save landscape", "Save", "Cancel", filters);
+    OpenFileSelector("Save landscape", "Save", "Cancel", filters);
 
     SubscribeToEvent(TheFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorSaveTerrain));
 }
@@ -383,7 +383,7 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
     if(ok)
     {
         Vector<Vector<float>> map = TheLevel->Load((char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
-        SAFE_DELETE(TheTerrain);
+        SAFE_DELETE(TheTerrain); //-V809
         TheTerrain = new TerrainRTS();
         TheTerrain->CreateFromVector(map);
         TheCamera->SetPosition({TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()}, {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeight() / 2.0f)});

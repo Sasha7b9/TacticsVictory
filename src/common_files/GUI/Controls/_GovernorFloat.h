@@ -51,6 +51,8 @@ private:
 
     void ChangeValue(int delta);
     void SetSymbolWithEvent(char symbol);
+
+    DEFAULT_MEMBERS(GovernorCell);
 };
 
 
@@ -87,4 +89,6 @@ private:
     void WriteMantiss(int mantiss);
     void WriteOrder(int order);
     float GetValue();
+
+    DEFAULT_MEMBERS(GovernorFloat);
 };

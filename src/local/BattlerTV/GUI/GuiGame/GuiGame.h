@@ -42,4 +42,6 @@ private:
 
     void HandleButtonRelease(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(GuiGame);
 };

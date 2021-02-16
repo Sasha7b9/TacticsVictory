@@ -21,4 +21,6 @@ private:
     float timePrevRaycast = 0.0f;
 
     bool TargetInPointView(Tank* tank);
+
+    DEFAULT_MEMBERS(RocketLauncher);
 };

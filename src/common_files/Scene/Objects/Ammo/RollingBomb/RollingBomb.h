@@ -8,4 +8,7 @@ class RollingBomb : public AmmoObject
 {
 public:
     RollingBomb(Context *context = TheContext);
+
+private:
+    DEFAULT_MEMBERS(RollingBomb);
 };

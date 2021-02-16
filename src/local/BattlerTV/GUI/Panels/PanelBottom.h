@@ -15,4 +15,7 @@ public:
     PanelBottom(Context *context = TheContext);
 
     static void RegisterObject(Context *context = TheContext);
+
+private:
+    DEFAULT_MEMBERS(PanelBottom);
 };

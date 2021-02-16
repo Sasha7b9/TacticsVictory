@@ -14,13 +14,9 @@ if(WIN32)
     set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 
     add_compile_options(/wd4514)    # 'xxx': unreferenced inline function has been removed
-    add_compile_options(/wd4625)
-    add_compile_options(/wd4626)
     add_compile_options(/wd4710)    # 'function' : function not inlined
     add_compile_options(/wd4711)    # function 'function' selected for inline expansion
     add_compile_options(/wd4820)    # 'xxx': 'n' bytes padding added after base class 'yyy'
-    add_compile_options(/wd5026)
-    add_compile_options(/wd5027)
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified
     add_compile_options(/wd5219)    # implicit conversion from 'type-1' to 'type-2', possible loss of data
@@ -46,7 +42,8 @@ file(GLOB GUI_LOGIC                                                  GUI/Logic/*
 file(GLOB GUI_MENU                                                   GUI/Menu/*.*)
 file(GLOB GUI_PANELS                                                 GUI/Panels/*.*)
 file(GLOB GUI_WINDOWS                                                GUI/Windows/*.*)
-#file(GLOB NETWORK                                 ../../common_files/Network/*.*)
+file(GLOB NETWORK                                 ../../common_files/Network/*.*
+                                                                     Network/*.*)
 file(GLOB SCENE                                   ../../common_files/Scene/*.*)
 file(GLOB SCENE_CAMERAS                                              Scene/Cameras/*.*)
 file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/*.*)
@@ -97,7 +94,7 @@ source_group(GUI\\Logic                                FILES ${GUI_LOGIC})
 source_group(GUI\\Menu                                 FILES ${GUI_MENU})
 source_group(GUI\\Panels                               FILES ${GUI_PANELS})
 source_group(GUI\\Windows                              FILES ${GUI_WINDOWS})
-#source_group(Network                                   FILES ${NETWORK})
+source_group(Network                                   FILES ${NETWORK})
 source_group(Scene                                     FILES ${SCENE})
 source_group(Scene\\Cameras                            FILES ${SCENE_CAMERAS})
 source_group(Scene\\Objects                            FILES ${SCENE_OBJECTS})
@@ -131,22 +128,18 @@ source_group(Scene\\Objects\\Weapons\\MachineGun       FILES ${SCENE_OBJECTS_WEA
 source_group(Scene\\Objects\\Weapons\\RocketLauncher   FILES ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER})
 source_group(Utils                                     FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC}
-#               ${NETWORK}
-                ${GAME_PATH} ${GRAPHICS_2D} ${GRAPHICS_OBJECTS}
-                ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
-                ${GUI_WINDOWS} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
-                ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_AIRBOMB} ${SCENE_OBJECTS_AMMO_GRENADE}
-                ${SCENE_OBJECTS_AMMO_MINE} ${SCENE_OBJECTS_AMMO_ROCKET} ${SCENE_OBJECTS_AMMO_ROLLINGBOMB}
-                ${SCENE_OBJECTS_BUILDINGS} ${SCENE_OBJECTS_BUILDINGS_CIVILPLANT}
-                ${SCENE_OBJECTS_BUILDINGS_MILITARYPLANT} ${SCENE_OBJECTS_BUILDINGS_POWERPLANT}
-                ${SCENE_OBJECTS_BUILDINGS_PROCESSINGPLANT} ${SCENE_OBJECTS_BUILDINGS_SHAFT}
-                ${SCENE_OBJECTS_BUILDINGS_WAREHOUSEAMMO} ${SCENE_OBJECTS_TERRAIN} ${SCENE_OBJECTS_UNITS}
-                ${SCENE_OBJECTS_UNITS_AIRPLANE} ${SCENE_OBJECTS_UNITS_BOMBER} ${SCENE_OBJECTS_UNITS_BUILDER}
-                ${SCENE_OBJECTS_UNITS_HELICOPTER} ${SCENE_OBJECTS_UNITS_ROBOT} ${SCENE_OBJECTS_UNITS_SUPPLIERAMMO}
-                ${SCENE_OBJECTS_UNITS_TANK} ${SCENE_OBJECTS_WEAPONS} ${SCENE_OBJECTS_WEAPONS_GRENADERLAUNCHER}
-                ${SCENE_OBJECTS_WEAPONS_GUN} ${SCENE_OBJECTS_WEAPONS_LASER} ${SCENE_OBJECTS_WEAPONS_MACHINEGUN}
-                ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER} ${UTILS})
+add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
+    ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
+    ${GUI_WINDOWS} ${NETWORK} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_AMMO}
+    ${SCENE_OBJECTS_AMMO_AIRBOMB} ${SCENE_OBJECTS_AMMO_GRENADE} ${SCENE_OBJECTS_AMMO_MINE} ${SCENE_OBJECTS_AMMO_ROCKET}
+    ${SCENE_OBJECTS_AMMO_ROLLINGBOMB} ${SCENE_OBJECTS_BUILDINGS} ${SCENE_OBJECTS_BUILDINGS_CIVILPLANT}
+    ${SCENE_OBJECTS_BUILDINGS_MILITARYPLANT} ${SCENE_OBJECTS_BUILDINGS_POWERPLANT}
+    ${SCENE_OBJECTS_BUILDINGS_PROCESSINGPLANT} ${SCENE_OBJECTS_BUILDINGS_SHAFT} ${SCENE_OBJECTS_BUILDINGS_WAREHOUSEAMMO}
+    ${SCENE_OBJECTS_TERRAIN} ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_AIRPLANE} ${SCENE_OBJECTS_UNITS_BOMBER}
+    ${SCENE_OBJECTS_UNITS_BUILDER} ${SCENE_OBJECTS_UNITS_HELICOPTER} ${SCENE_OBJECTS_UNITS_ROBOT}
+    ${SCENE_OBJECTS_UNITS_SUPPLIERAMMO} ${SCENE_OBJECTS_UNITS_TANK} ${SCENE_OBJECTS_WEAPONS}
+    ${SCENE_OBJECTS_WEAPONS_GRENADERLAUNCHER} ${SCENE_OBJECTS_WEAPONS_GUN} ${SCENE_OBJECTS_WEAPONS_LASER}
+    ${SCENE_OBJECTS_WEAPONS_MACHINEGUN} ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)
 

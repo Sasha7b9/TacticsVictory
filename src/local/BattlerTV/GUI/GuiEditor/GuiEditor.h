@@ -88,4 +88,6 @@ private:
     void HandleExitOk(StringHash, VariantMap&);
     void HandleExitCancel(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(GuiEditor);
 };

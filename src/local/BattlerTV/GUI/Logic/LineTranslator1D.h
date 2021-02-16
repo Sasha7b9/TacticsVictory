@@ -29,4 +29,6 @@ private:
     float speed = 0.0f;
     State state = State_PointStart;
     float currentSpeed = 0.0f;
+
+    DEFAULT_MEMBERS(LineTranslator1D);
 };

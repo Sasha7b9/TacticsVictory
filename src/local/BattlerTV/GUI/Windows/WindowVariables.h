@@ -22,4 +22,6 @@ private:
 
     SharedPtr<Label> label;
     SharedPtr<GovernorFloat> governor;
+
+    DEFAULT_MEMBERS(WindowVariables);
 };

@@ -93,7 +93,7 @@ void Tank::Init(TypeTank type_, uint _id_)
 
 void Tank::LoadFromFile()
 {
-    char *fileName = parameters[typeTank].fileName;
+    char *fileName = parameters[typeTank].fileName; //-V108 //-V2006
     JSONFile *file = TheCache->GetResource<JSONFile>(fileName);
 
     if (timeForReload)
@@ -121,7 +121,7 @@ void Tank::LoadFromFile()
     node_->SetRotation(Quaternion(0, Vector3::UP));
     node_->Rotate(rotate);
 
-    timeLastModified = GF::GetLastModifiedTime(parameters[typeTank].fileName);
+    timeLastModified = GetLastModifiedTime(parameters[typeTank].fileName); //-V108 //-V2006
 }
 
 
@@ -179,7 +179,7 @@ void Tank::Update(float dT)
         int time = static_cast<int>(TheTime->GetElapsedTime());
         if (time - timeLastReload >= timeForReload)
         {
-            if (GF::GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified)
+            if (GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified) //-V108
             {
                 Init(typeTank, id);
             }

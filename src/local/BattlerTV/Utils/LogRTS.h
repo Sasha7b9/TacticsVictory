@@ -17,6 +17,8 @@ public:
 
 private:
     static bool enabledExtendedInfo;
+
+    DEFAULT_MEMBERS(LogRTS);
 };
 
 

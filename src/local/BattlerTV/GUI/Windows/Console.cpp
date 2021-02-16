@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Console.h"
 //#include "GlobalFunctions.h"
-//#include "TacticsVictory.h"
+#include "TacticsVictory.h"
 #include "GUI/Windows/WindowVariables.h"
 #include "GUI/Menu/MenuRTS.h"
 //#include "Network/Client.h"
@@ -368,8 +368,7 @@ void ConsoleRTS::Write(const String &message)
 
     SYSTEMTIME st;
     GetLocalTime(&st);
-    str = GF::IntToString(st.wHour, 2) + ":" + GF::IntToString(st.wMinute, 2) + ":" + GF::IntToString(st.wSecond, 2) +
-        ":" + GF::IntToString(st.wMilliseconds, 3) + " ";
+    str = IntToString(st.wHour, 2) + ":" + IntToString(st.wMinute, 2) + ":" + IntToString(st.wSecond, 2) + ":" + IntToString(st.wMilliseconds, 3) + " ";
 
 #endif
 
@@ -399,7 +398,7 @@ History::History()
 {
     SharedPtr<File> fileRead;
     fileRead = new File(TheContext);
-    if (fileRead->Open(GF::GetNameFile("history.txt"), FILE_READ))
+    if (fileRead->Open(GetNameFile("history.txt"), FILE_READ))
     {
         while (!fileRead->IsEof())
         {
@@ -415,7 +414,7 @@ History::~History()
 {
     SharedPtr<File> file;
     file = new File(TheContext);
-    String name = GF::GetNameFile("history.txt");
+    String name = GetNameFile("history.txt");
     if (file->Open(name, FILE_READ))
     {
         file->Close();

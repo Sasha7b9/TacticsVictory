@@ -14,7 +14,7 @@
 #define CREATE_MENU(name, type, moving)                                 \
     name = new type();                                                  \
     allMenus.Push(name);                                                \
-    GF::SetWindowInCenterScreen(name);                                  \
+    SetWindowInCenterScreen(name);                                      \
     name->SetMovable(moving);                                           \
     SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuRTS, HandleMenuEvent));
 

@@ -8,4 +8,7 @@ class ProcessingPlant : public BuildingObject
 {
 public:
     ProcessingPlant(Context *context = TheContext);
+
+private:
+    DEFAULT_MEMBERS(ProcessingPlant);
 };

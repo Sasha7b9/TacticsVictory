@@ -34,4 +34,6 @@ private:
     int value = 0;
     int step = 1;
     float delta = 0.0f;     // –азница между минимальным значением и нулЄм(минимальным значением родительского Slider)
+
+    DEFAULT_MEMBERS(SliderInt);
 };

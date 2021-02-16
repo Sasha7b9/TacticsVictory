@@ -28,4 +28,6 @@ private:
     SharedPtr<Tab> currentTab;
 
     void HandleToggedTitle(StringHash eventType, VariantMap &eventData);
+
+    DEFAULT_MEMBERS(PanelMain);
 };

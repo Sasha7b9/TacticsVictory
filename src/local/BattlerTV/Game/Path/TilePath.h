@@ -20,4 +20,6 @@ private:
     static uint numTilesAll;
     static uint numTilesEnabled;
     static Vector<SharedPtr<TilePath>> tiles;
+
+    DEFAULT_MEMBERS(TilePath);
 };

@@ -47,4 +47,8 @@ protected:
     void SetPosition(const Vector3& pos);
     void Normalize(float k = 1.0f);
     void HandleOnMouseDown(StringHash, VariantMap&);
+
+private:
+
+    DEFAULT_MEMBERS(GameObject);
 };

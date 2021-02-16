@@ -16,4 +16,6 @@ public:
     
 private:
     Vector3 rotationSpeed;
+
+    DEFAULT_MEMBERS(Rotator);
 };

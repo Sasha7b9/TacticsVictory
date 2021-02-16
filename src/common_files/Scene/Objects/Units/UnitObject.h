@@ -21,4 +21,6 @@ private:
     SharedPtr<RenderSurface> renderSurface;
 
     void HandlePostRenderUpdate(StringHash, VariantMap&);
+
+    DEFAULT_MEMBERS(UnitObject);
 };

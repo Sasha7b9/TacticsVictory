@@ -16,6 +16,9 @@ typedef unsigned short  ushort;
 typedef unsigned char   uchar;
 
 
+#define DEFAULT_MEMBERS(name) name& operator=(const name&) = delete; name(const name&) = delete
+
+
 enum TypeCursor
 {
     TypeCursor_Normal,
@@ -103,5 +106,3 @@ typedef enum
 // Имена узлов
 
 #define NODE_CAMERA_TARGET "CameraTarget"
-
-#define UNUSED(x) (void)(x)

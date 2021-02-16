@@ -20,4 +20,6 @@ private:
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
     void OnPressButtonOk();
     void OnPressButtonCancel();
+
+    DEFAULT_MEMBERS(MenuConfirmExit);
 };

@@ -41,6 +41,8 @@ private:
     int dimensionTriangleBig = 100;
 
     void CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int *y2);
+
+    DEFAULT_MEMBERS(CursorShapes);
 };
 
 
@@ -68,4 +70,6 @@ private:
     bool selected = false;
     bool hidden = false;
     TypeCursor type = TypeCursor_Normal;
+
+    DEFAULT_MEMBERS(CursorRTS);
 };
