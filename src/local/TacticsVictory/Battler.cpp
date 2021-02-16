@@ -61,8 +61,6 @@ void Battler::Stop()
     //URHO3D_LOGINFO("Now save ui");
     //TheUIRoot->SaveXML(file);
     TheSet->Save();
-    SAFE_DELETE(TheClient); //-V809
-    SAFE_DELETE(TheServer); //-V809
     SAFE_DELETE(TheSet); //-V809
     SAFE_DELETE(TheEditor); //-V809
     SAFE_DELETE(TheCamera);     //-V809
@@ -129,8 +127,6 @@ void Battler::Start()
     RegistrationComponets();
 
     TheLevel = new Level();
-    TheClient = new Client();
-    TheServer = new Server();
 
     if (MODE_CLIENT)
     {
@@ -172,7 +168,6 @@ void Battler::StartServer(uint16 port_)
 
     if (port)
     {
-        TheServer->Start(port);
         scene = new SceneRTS(TheContext, SceneRTS::Mode_Server);
         scene->Create();
     }

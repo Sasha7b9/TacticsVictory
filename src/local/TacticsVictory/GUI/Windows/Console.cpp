@@ -18,7 +18,6 @@ void ConsoleParser::Execute(const String &string)
         {"clear",   None,   &ConsoleParser::FuncClear,  "очистить консоль"},
         {"close",   None,   &ConsoleParser::FuncClose,  "закрыть консоль"},
         {"exit",    None,   &ConsoleParser::FuncExit,   "выход"},
-        {"server",  None,   &ConsoleParser::FuncServer, "функции работы с сервером"},
         {"vars",    None,   &ConsoleParser::FuncVars,   "окно переменных"},
         {"unit",    None,   &ConsoleParser::FuncUnit,   "функции упрвления юнитами"}
     };

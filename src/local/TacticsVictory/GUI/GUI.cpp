@@ -99,30 +99,6 @@ static float GetCameraYaw()
 }
 
 
-static float GetSpeedNetOUT()
-{
-    if(TheClient->GetServerConnection())
-    {
-        Connection *connection = TheClient->GetServerConnection();
-        return connection->GetBytesOutPerSec() / 1e3f;
-    }
-    else
-    {
-        Vector<SharedPtr<Connection>> connections = TheServer->GetConnections();
-        if(connections.Size())
-        {
-            float speed = 0.0f;
-            for(Connection *connection : connections)
-            {
-                speed += connection->GetBytesOutPerSec();
-            }
-            return speed / 1e3f;
-        }
-    }
-    return 0.0f;
-}
-
-
 void GUI::Create()
 {
     TheConsole = new ConsoleRTS(TheContext);
@@ -138,8 +114,6 @@ void GUI::Create()
     TheWindowVars->AddFunctionFloat("Camera pos Z", GetPosCameraZ, SetPosCameraZ);
     TheWindowVars->AddFunctionFloat("Camera pitch", GetCameraPitch, nullptr);
     TheWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
-    TheWindowVars->AddFunctionFloat("Net speed in, kB/s", GetSpeedNetIN, nullptr);
-    TheWindowVars->AddFunctionFloat("Net speec out, kB/s", GetSpeedNetOUT, nullptr);
 
     TheLocalization->SetLanguage("en");
 

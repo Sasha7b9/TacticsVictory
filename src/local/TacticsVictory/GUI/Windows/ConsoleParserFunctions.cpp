@@ -2,46 +2,6 @@
 #include "stdafx.h"
 
 
-bool ConsoleParser::FuncClientStop(Vector<String> &, bool)
-{
-    return false;
-}
-
-
-bool ConsoleParser::FuncServer(Vector<String> &words, bool showInfo)
-{
-    const ParserStruct structs[100] =
-    {
-        {"start",       Int,    &ConsoleParser::FuncServerStart,        "cоздать сервер на порт XX"},
-        {"stop",        None,   &ConsoleParser::FuncServerStop,         "остановить сервер"},
-        {"latency",     Int,    &ConsoleParser::FuncServerLatency,      "эмулировать задержку сети длительностью XX миллисекунд"},
-        {"packetloss",  Float,  &ConsoleParser::FuncServerPacketLoss,   "эмулировать потерю X.X пакетров"}
-    };
-
-    return Run(structs, words, showInfo);
-}
-
-
-bool ConsoleParser::FuncServerStart(Vector<String> &words, bool) //-V2009
-{
-    int port = 0;
-
-    if(!ExtractInt(words[0], &port))
-    {
-        return false;
-    }
-
-    static Vector<String> arguments;
-    arguments.Push(ToString("-server:%d", port));
-    // Подключаем обработчик кода, возвращаемого сервером при завершении работы
-    SubscribeToEvent(E_ASYNCLOADFINISHED, URHO3D_HANDLER(ConsoleParser, HandleAsyncExecFinished));
-    TheFileSystem->SystemRunAsync(GetFileName("TVserver.exe"), arguments);
-    serverRunning = true;
-
-    return true;
-}
-
-
 void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V2009
 {
     using namespace AsyncExecFinished;
@@ -58,48 +18,6 @@ void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V20
     }
 
     UnsubscribeFromEvent(E_ASYNCLOADFINISHED);
-}
-
-
-bool ConsoleParser::FuncServerStop(Vector<String> &, bool)
-{
-    if(serverRunning)
-    {
-        TheClient->Send(MSG_DELETE_SERVER, VectorBufferRTS());
-    }
-    else
-    {
-        TheConsole->Write("Forbidden");
-    }
-    return true;
-}
-
-
-bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
-{
-    int latency = 0;
-
-    if(ExtractInt(words[0], &latency))
-    {
-        TheClient->Send(MSG_SET_NETWORK_LATENCY, VectorBufferRTS(latency));
-        return true;
-    }
-
-    return false;
-}
-
-
-bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool) //-V2009
-{
-    float loss = 0.0f;
-
-    if(ExtractFloat(words[0], &loss))
-    {
-        TheClient->Send(MSG_SET_NETWORK_LOSS, VectorBufferRTS(loss));
-        return true;
-    }
-
-    return false;
 }
 
 
@@ -163,8 +81,6 @@ bool ConsoleParser::FuncExit(Vector<String> &, bool showInfo)
 {
     if(!showInfo)
     {
-        TheClient->Disconnect();
-        TheServer->Disconnect();
         TheEngine->Exit();
     }
     return true;
