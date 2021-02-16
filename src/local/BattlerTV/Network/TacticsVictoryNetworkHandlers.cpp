@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 
-void TacticsVictory::HandleConnecFailed(StringHash, VariantMap&)
+void Battler::HandleConnecFailed(StringHash, VariantMap&)
 {
     LOGINFOF("Failed connection");
 
@@ -10,7 +10,7 @@ void TacticsVictory::HandleConnecFailed(StringHash, VariantMap&)
 }
 
 
-void TacticsVictory::HandleClientConnected(StringHash, VariantMap& eventData)
+void Battler::HandleClientConnected(StringHash, VariantMap& eventData)
 {
     Connection *connection = dynamic_cast<Connection*>(eventData[ClientConnected::P_CONNECTION].GetPtr());
 
@@ -20,7 +20,7 @@ void TacticsVictory::HandleClientConnected(StringHash, VariantMap& eventData)
 }
 
 
-void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
+void Battler::HandleClientDisconnected(StringHash, VariantMap& eventData)
 {
     Connection *connection = dynamic_cast<Connection*>(eventData[ClientConnected::P_CONNECTION].GetPtr());
 
@@ -32,7 +32,7 @@ void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
 }
 
 
-void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
+void Battler::HandleNetworkMessage(StringHash, VariantMap& eventData)
 {
     using namespace NetworkMessage;
 

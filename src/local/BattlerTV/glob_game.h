@@ -20,7 +20,7 @@ class WindowRTS;
 class MenuConfirmExit;
 class WindowTarget;
 class WindowVariables;
-class TacticsVictory;
+class Battler;
 class MenuRTS;
 class LogRTS;
 class Server;
@@ -42,7 +42,7 @@ extern MenuGame        *TheMenuMain;
 extern MenuRTS         *TheMenu;
 extern Server          *TheServer;
 extern Settings        *TheSet;
-extern TacticsVictory  *TheTacticsVictory;
+extern Battler         *TheTacticsVictory;
 extern TerrainRTS      *TheTerrain;
 extern WindowTarget    *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 extern WindowVariables *TheWindowVars;

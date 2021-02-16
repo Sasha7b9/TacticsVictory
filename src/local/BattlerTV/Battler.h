@@ -6,12 +6,12 @@ class SceneRTS;
 class VectorBufferRTS;
 
 
-class TacticsVictory : public Application
+class Battler : public Application
 {
-    URHO3D_OBJECT(TacticsVictory, Application);
+    URHO3D_OBJECT(Battler, Application);
 
 public:
-    TacticsVictory(Context* context);
+    Battler(Context* context);
 
     virtual void Setup();
     virtual void Start();
@@ -52,5 +52,5 @@ private:
     void HandleClientDisconnected(StringHash, VariantMap&); // На сервере, когда отключается клиент
     void HandleNetworkMessage(StringHash, VariantMap&);
 
-    DEFAULT_MEMBERS(TacticsVictory);
+    DEFAULT_MEMBERS(Battler);
 };

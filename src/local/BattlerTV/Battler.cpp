@@ -4,18 +4,18 @@
 
 #pragma warning(push)
 #pragma warning(disable:4100)
-URHO3D_DEFINE_APPLICATION_MAIN(TacticsVictory)
+URHO3D_DEFINE_APPLICATION_MAIN(Battler)
 #pragma warning(pop)
 
 
-TacticsVictory::TacticsVictory(Context* context) :
+Battler::Battler(Context* context) :
     Application(context)
 {
     TheContext = context;
 }
 
 
-void TacticsVictory::Setup()
+void Battler::Setup()
 {
     ParseArguments(GetArguments());
 
@@ -45,7 +45,7 @@ void TacticsVictory::Setup()
 }
 
 
-void TacticsVictory::Stop()
+void Battler::Stop()
 {
     engine_->DumpResources(true);
     //engine_->DumpProfiler();
@@ -83,7 +83,7 @@ void MessageCallback(const asSMessageInfo *msg, void *)
 }
 
 
-void TacticsVictory::Start()
+void Battler::Start()
 {
     TheProfiler = GetSubsystem<Profiler>();
     PROFILER_FUNC_ENTER
@@ -147,7 +147,7 @@ void TacticsVictory::Start()
 }
 
 
-void TacticsVictory::SetLocalization()
+void Battler::SetLocalization()
 {
     TheLocalization = GetSubsystem<Localization>();
     TheLocalization->LoadJSONFile("TVData/Strings.json");
@@ -155,7 +155,7 @@ void TacticsVictory::SetLocalization()
 }
 
 
-void TacticsVictory::CreateScriptSystem()
+void Battler::CreateScriptSystem()
 {
     TheContext->RegisterSubsystem(new Script(TheContext));
     TheScript = GetSubsystem<Script>();
@@ -163,7 +163,7 @@ void TacticsVictory::CreateScriptSystem()
 }
 
 
-void TacticsVictory::StartServer(uint16 port_)
+void Battler::StartServer(uint16 port_)
 {
     if (port_)
     {
@@ -184,25 +184,25 @@ void TacticsVictory::StartServer(uint16 port_)
 }
 
 
-void TacticsVictory::StopServer()
+void Battler::StopServer()
 {
 
 }
 
 
-void TacticsVictory::StartClient(const String &, uint16)
+void Battler::StartClient(const String &, uint16)
 {
 
 }
 
 
-void TacticsVictory::StopClient()
+void Battler::StopClient()
 {
 
 }
 
 
-void TacticsVictory::ParseArguments(const Vector<String> &arguments)
+void Battler::ParseArguments(const Vector<String> &arguments)
 {
     /*
         1. нет аргументов - просто запуск
@@ -217,7 +217,7 @@ void TacticsVictory::ParseArguments(const Vector<String> &arguments)
 }
 
 
-void TacticsVictory::RegistrationComponets()
+void Battler::RegistrationComponets()
 {
     TheContext->RegisterFactory<Rotator>();
     TheContext->RegisterFactory<Movinator>();
@@ -235,7 +235,7 @@ void TacticsVictory::RegistrationComponets()
 }
 
 
-void TacticsVictory::SubscribeToEvents()
+void Battler::SubscribeToEvents()
 {
     if (MODE_SERVER)
     {
@@ -243,22 +243,22 @@ void TacticsVictory::SubscribeToEvents()
     }
     else
     {
-        SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
-        SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
-        SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
+        SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(Battler, HandleKeyDown));
+        SubscribeToEvent(E_MENU, URHO3D_HANDLER(Battler, HandleMenuEvent));
+        SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Battler, HandlePostRenderUpdate));
     }
     
-    SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(TacticsVictory, HandleUpdate));
-    SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
+    SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(Battler, HandleUpdate));
+    SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(Battler, HandlePostUpdate));
 
-    SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(TacticsVictory, HandleConnecFailed));
-    SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleClientConnected));
-    SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(TacticsVictory, HandleClientDisconnected));
-    SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(TacticsVictory, HandleNetworkMessage));
+    SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(Battler, HandleConnecFailed));
+    SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(Battler, HandleClientConnected));
+    SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(Battler, HandleClientDisconnected));
+    SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(Battler, HandleNetworkMessage));
 }
 
 
-void TacticsVictory::SetWindowTitleAndIcon()
+void Battler::SetWindowTitleAndIcon()
 {
     if (MODE_CLIENT)
     {
@@ -269,7 +269,7 @@ void TacticsVictory::SetWindowTitleAndIcon()
 }
 
 
-void TacticsVictory::CreateConsoleAndDebugHud()
+void Battler::CreateConsoleAndDebugHud()
 {
     if (MODE_CLIENT)
     {
@@ -285,7 +285,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 }
 
 
-void TacticsVictory::CreateEditorSession()
+void Battler::CreateEditorSession()
 {
     if(!TheEditor)
     {
@@ -297,7 +297,7 @@ void TacticsVictory::CreateEditorSession()
 }
 
 
-void TacticsVictory::FillNetworkFunctions()
+void Battler::FillNetworkFunctions()
 {
 #define ADD_NETWORK_FUNCTION(name) networkFunctions[name] = FUNC_##name
 
@@ -313,7 +313,7 @@ void TacticsVictory::FillNetworkFunctions()
 }
 
 
-void TacticsVictory::OpenLog()
+void Battler::OpenLog()
 {
     TheLog = new LogRTS();
     char buffer[50];
