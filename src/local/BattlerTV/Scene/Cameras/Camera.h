@@ -36,7 +36,7 @@ private:
     Vector3 lookAt;
     float yaw = 10.0f;
     float pitch = 27.0f;
-    bool enabled = false;
+    bool enabled = true;
     bool arrowEnabled = true;
 
     void SetupViewport();
