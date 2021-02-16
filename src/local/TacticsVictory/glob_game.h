@@ -37,6 +37,7 @@ extern LogRTS          *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
 extern MenuRTS         *TheMenu;
+extern SceneRTS        *TheScene;
 extern Settings        *TheSet;
 extern TacticsVictory *TheTacticsVictory;
 extern TerrainRTS      *TheTerrain;

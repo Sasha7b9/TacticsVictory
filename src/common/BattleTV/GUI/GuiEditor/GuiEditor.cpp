@@ -407,7 +407,6 @@ void GuiEditor::HandleExitOk(StringHash, VariantMap&)
 {
     TheGuiEditor->SetVisible(false);
     TheCamera->SetEnabled(false);
-    TheEditor->ClearScene();
     TheGUI->SetVisibleWindow(windowConfirmExit, false);
 }
 

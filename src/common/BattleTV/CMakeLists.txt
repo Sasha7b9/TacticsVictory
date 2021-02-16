@@ -32,7 +32,6 @@ endif()
 file(GLOB SRC                                                        *.h *.cpp)
 file(GLOB AUDIO                                                      Audio/*.*)
 file(GLOB CORE                                    ../../common_files/Core/*.*)
-file(GLOB EDITOR                                                     Editor/*.*)
 file(GLOB GAME                                                       Game/*.*)
 file(GLOB GAME_LOGIC                                                 Game/Logic/*.*)
 file(GLOB GAME_PATH                                                  Game/Path/*.*)
@@ -48,7 +47,7 @@ file(GLOB GUI_PANELS                                                 GUI/Panels/
 file(GLOB GUI_WINDOWS                                                GUI/Windows/*.*)
 file(GLOB NETWORK                                                    Network/*.*
                                                   ../../common_files/Network/Game/*.*)
-file(GLOB SCENE                                                      Scene/*.*)
+file(GLOB SCENE                                   ../../common_files/Scene/*.*)
 file(GLOB SCENE_CAMERAS                                              Scene/Cameras/*.*)
 file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objects/Ammo/*.*)
@@ -84,7 +83,6 @@ file(GLOB UTILS                                                      Utils/*.*)
 source_group(src                                       FILES ${SRC})
 source_group(Audio                                     FILES ${AUDIO})
 source_group(Core                                      FILES ${CORE})
-source_group(Editor                                    FILES ${EDITOR})
 source_group(Game                                      FILES ${GAME})
 source_group(Game\\Logic                               FILES ${GAME_LOGIC})
 source_group(Game\\Path                                FILES ${GAME_PATH})
@@ -132,7 +130,7 @@ source_group(Scene\\Objects\\Weapons\\MachineGun       FILES ${SCENE_OBJECTS_WEA
 source_group(Scene\\Objects\\Weapons\\RocketLauncher   FILES ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER})
 source_group(Utils                                     FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
+add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
     ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
     ${GUI_WINDOWS} ${NETWORK} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_AMMO}
     ${SCENE_OBJECTS_AMMO_AIRBOMB} ${SCENE_OBJECTS_AMMO_GRENADE} ${SCENE_OBJECTS_AMMO_MINE} ${SCENE_OBJECTS_AMMO_ROCKET}

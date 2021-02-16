@@ -53,11 +53,11 @@ void TacticsVictory::Start()
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
     TheGraphics = GetSubsystem<Graphics>();
-    TheScene = new Scene(TheContext);
-    TheScene->CreateComponent<Octree>();
-    ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
+    TheScene = new SceneRTS(TheContext);
+    TheScene->scene->CreateComponent<Octree>();
+    ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
-    TheScene->CreateComponent<DebugRenderer>();
+    TheScene->scene->CreateComponent<DebugRenderer>();
     TheRenderer = GetSubsystem<Renderer>();
     TheAudio = GetSubsystem<Audio>();
     TheCamera = new CameraRTS();
@@ -73,7 +73,7 @@ void TacticsVictory::Start()
     CreateConsoleAndDebugHud();
     TheUI = GetSubsystem<UI>();
     TheInput = GetSubsystem<Input>();
-    TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
+    TheDebugRenderer = TheScene->scene->GetComponent<DebugRenderer>();
     TheUIRoot = TheUI->GetRoot();
     TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     TheGUI = new GUI();

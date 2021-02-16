@@ -30,7 +30,7 @@ CursorRTS::CursorRTS() : Object(TheContext)
 
     shapes = new CursorShapes();
 
-    nodeSprite = TheScene->CreateChild("Cursor sprite");
+    nodeSprite = TheScene->scene->CreateChild("Cursor sprite");
     staticSprite = nodeSprite->CreateComponent<StaticSprite2D>();
     staticSprite->SetColor(Color(Random(1.0f), Random(1.0f), Random(1.0f), 1.0f));
     staticSprite->SetBlendMode(BLEND_ALPHA);
@@ -189,7 +189,7 @@ Drawable* CursorRTS::GetRaycastNode(Vector3 *hitPos_)
     Ray ray = TheCamera->GetCursorRay();
     PODVector<RayQueryResult> results;
     RayOctreeQuery query(results, ray, RAY_TRIANGLE, M_INFINITY, DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
-    TheScene->GetComponent<Octree>()->Raycast(query);
+    TheScene->scene->GetComponent<Octree>()->Raycast(query);
 
     if(results.Size())
     {

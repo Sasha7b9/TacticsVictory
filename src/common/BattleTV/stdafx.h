@@ -128,8 +128,6 @@ using namespace Urho3D;
 
 #include "Core/_Math.h"
 
-#include "Editor/Editor.h"
-
 #include "Game/Particles.h"
 #include "Game/Logic/Movinator.h"
 #include "Game/Logic/Rotator.h"
@@ -173,8 +171,8 @@ using namespace Urho3D;
 #include "Network/Game/_GameMessages.h"
 #include "Network/Game/_TConnection.h"
 
-#include "Scene/Level.h"
-#include "Scene/Scene.h"
+#include "Scene/_Level.h"
+#include "Scene/_Scene.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/_GameObjectEvents.h"
 #include "Scene/Objects/_ObjectState.h"

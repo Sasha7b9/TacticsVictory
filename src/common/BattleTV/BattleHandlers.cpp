@@ -90,10 +90,6 @@ void Battle::HandleMenuEvent(StringHash, VariantMap& eventData) //-V2009
     else if (typeEvent == MenuEvent_StartClient)
     {
     }
-    else if (typeEvent == MenuEvent_OpenEditor)
-    {
-        CreateEditorSession();
-    }
 }
 
 

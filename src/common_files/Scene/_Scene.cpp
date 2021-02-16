@@ -52,35 +52,24 @@ void SceneRTS::Create()
     float dColor = 0.1f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    if(MODE_SERVER)
-    {
-        level = TheLevel->Load("Game/Levels/level.map");
-    }
-    else
-    {
-        level = TheLevel->Get();
-    }
+    level = TheLevel->Load("Game/Levels/level.map");
 
     TheTerrain = new TerrainRTS();
     TheTerrain->CreateFromVector(level);
 
-    if (MODE_SERVER)
+    for (int i = 0; i < 5; i++)
     {
-
-        for (int i = 0; i < 5; i++)
+        uint row = 0;
+        uint col = 0;
+        do
         {
-            uint row = 0;
-            uint col = 0;
-            do
-            {
-                col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheLevel->GetWidth()) - 1));
-                row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheLevel->GetHeight()) - 1));
-            } while (fabs(TheTerrain->GetHeight(row, col)) > M_EPSILON);
+            col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheLevel->GetWidth()) - 1));
+            row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheLevel->GetHeight()) - 1));
+        } while (fabs(TheTerrain->GetHeight(row, col)) > M_EPSILON);
 
-            SharedPtr<Tank> tank = Tank::Create(Tank::Small);
-            tank->SetCoord({row, col});
-            tank->SetAutoReloaded(1);
-        }
+        SharedPtr<Tank> tank = Tank::Create(Tank::Small);
+        tank->SetCoord({ row, col });
+        tank->SetAutoReloaded(1);
     }
 
     SharedPtr<Node> lightNode;
@@ -98,10 +87,9 @@ void SceneRTS::Create()
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
 
-    if (MODE_CLIENT)
-    {
-        TheRenderer->SetShadowMapSize(2048);
-    }
+#ifdef CLIENT
+    TheRenderer->SetShadowMapSize(2048);
+#endif
 
     uint sizeX = level[0].Size();
     uint sizeZ = level.Size();
@@ -123,30 +111,31 @@ void SceneRTS::Create()
 
 void SceneRTS::Update(float /*timeStep*/)
 {
-    if (MODE_CLIENT)
-    {
-        Vector3 hitPos;
-        Drawable *drawable = TheCursor->GetRaycastNode(&hitPos);
+#ifdef CLIENT
 
-        if (drawable)
-        {
-            String name = drawable->GetNode()->GetName();
-            if (name == NODE_TERRAIN)
-            {
-                TheCursor->SetNormal();
-            }
-            else if (name == NODE_TANK)
-            {
-                TheCursor->SetSelected();
-            }
-        }
-        else
+    Vector3 hitPos;
+    Drawable *drawable = TheCursor->GetRaycastNode(&hitPos);
+
+    if (drawable)
+    {
+        String name = drawable->GetNode()->GetName();
+        if (name == NODE_TERRAIN)
         {
             TheCursor->SetNormal();
         }
-
-        pathIndicator.Update();
+        else if (name == NODE_TANK)
+        {
+            TheCursor->SetSelected();
+        }
     }
+    else
+    {
+        TheCursor->SetNormal();
+    }
+
+    pathIndicator.Update();
+
+#endif
 
 /*
     if (TheServer->IsRunning())

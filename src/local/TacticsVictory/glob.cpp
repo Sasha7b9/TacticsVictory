@@ -12,7 +12,6 @@ Input               *TheInput = nullptr;
 Renderer            *TheRenderer = nullptr;
 DebugRenderer       *TheDebugRenderer = nullptr;
 Context             *TheContext = nullptr;
-Scene               *TheScene = nullptr;
 Console             *TheEngineConsole = nullptr;
 DebugHud            *TheDebugHud = nullptr;
 Graphics            *TheGraphics = nullptr;
@@ -43,6 +42,7 @@ Hint                *TheHint = nullptr;
 int                 *TheCounterHint = 0;
 Vector<WindowRTS*>   TheOpenedWindow;
 WindowTarget        *TheWindowTarget = nullptr;
+SceneRTS            *TheScene = nullptr;
 
 // Меню
 MenuRTS             *TheMenu = nullptr;

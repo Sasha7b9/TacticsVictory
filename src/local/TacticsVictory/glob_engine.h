@@ -18,7 +18,6 @@ extern PhysicsWorld  *ThePhysicsWorld;
 extern Profiler      *TheProfiler;
 extern Renderer      *TheRenderer;
 extern ResourceCache *TheCache;
-extern Scene         *TheScene;
 extern Script        *TheScript;
 extern Time          *TheTime;
 extern UI            *TheUI;

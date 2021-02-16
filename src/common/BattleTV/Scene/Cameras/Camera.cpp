@@ -14,7 +14,7 @@
 
 CameraRTS::CameraRTS()
 {
-    cameraNode = TheScene->CreateChild("Camera");
+    cameraNode = TheScene->scene->CreateChild("Camera");
 
     Camera *camera = cameraNode->CreateComponent<Camera>();
     camera->SetFarClip(1000.0f);
@@ -290,7 +290,7 @@ void CameraRTS::SetupViewport()
 {
     Camera *camera = cameraNode->GetComponent<Camera>();
 
-    SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene, camera));
+    SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene->scene, camera));
 
     TheRenderer->SetViewport(0, viewport);
 }

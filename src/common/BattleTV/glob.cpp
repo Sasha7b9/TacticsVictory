@@ -12,7 +12,6 @@ Input               *TheInput = nullptr;
 Renderer            *TheRenderer = nullptr;
 DebugRenderer       *TheDebugRenderer = nullptr;
 Context             *TheContext = nullptr;
-Scene               *TheScene = nullptr;
 Console             *TheEngineConsole = nullptr;
 DebugHud            *TheDebugHud = nullptr;
 Graphics            *TheGraphics = nullptr;
@@ -27,7 +26,6 @@ Script              *TheScript = nullptr;
 
 CameraRTS           *TheCamera = nullptr;
 CursorRTS           *TheCursor = nullptr;
-Editor              *TheEditor = nullptr;
 Settings            *TheSet = nullptr;
 Level               *TheLevel = nullptr;
 TerrainRTS          *TheTerrain = nullptr;
@@ -49,6 +47,6 @@ WindowTarget        *TheWindowTarget = nullptr;
 MenuRTS             *TheMenu = nullptr;
 MenuGame            *TheMenuMain = nullptr;
 MenuConfirmExit     *TheMenuConfirmExit = nullptr;
-
+SceneRTS            *TheScene = nullptr;
 
 Vector<Connection *> connections;
