@@ -2,46 +2,23 @@
 #include "stdafx.h"
 
 
-Audio               *TheAudio = nullptr;
-Localization        *TheLocalization = nullptr;
-UI                  *TheUI = nullptr;
-UIElement           *TheUIRoot = nullptr;
-ResourceCache       *TheCache = nullptr;
-Engine              *TheEngine = nullptr;
-Input               *TheInput = nullptr;
-Renderer            *TheRenderer = nullptr;
-DebugRenderer       *TheDebugRenderer = nullptr;
-Context             *TheContext = nullptr;
-Console             *TheEngineConsole = nullptr;
-DebugHud            *TheDebugHud = nullptr;
-Graphics            *TheGraphics = nullptr;
-FileSystem          *TheFileSystem = nullptr;
-Network             *TheNetwork = nullptr;
-PhysicsWorld        *ThePhysicsWorld = nullptr;
-Font                *TheFont = nullptr;
-Time                *TheTime = nullptr;
-FileSelector        *TheFileSelector = nullptr;
-Profiler            *TheProfiler = nullptr;
-Script              *TheScript = nullptr;
+Context           *TheContext = nullptr;
+Engine            *TheEngine = nullptr;
+FileSystem        *TheFileSystem = nullptr;
+Font              *TheFont = nullptr;
+Localization      *TheLocalization = nullptr;
+Network           *TheNetwork = nullptr;
+PhysicsWorld      *ThePhysicsWorld = nullptr;
+Profiler          *TheProfiler = nullptr;
+ResourceCache     *TheCache = nullptr;
+Script            *TheScript = nullptr;
+Time              *TheTime = nullptr;
 
-CursorRTS           *TheCursor = nullptr;
-Settings            *TheSet = nullptr;
-Level               *TheLevel = nullptr;
-TerrainRTS          *TheTerrain = nullptr;
-Battle              *TheBattle = nullptr;
-LogRTS              *TheLog = nullptr;
 
-// GUI
-GuiGame             *TheGuiGame = nullptr;
-GuiEditor           *TheGuiEditor = nullptr;
-GUI                 *TheGUI = nullptr;
-ConsoleRTS          *TheConsole = nullptr;
-Hint                *TheHint = nullptr;
-
-// Меню
-MenuRTS             *TheMenu = nullptr;
-MenuGame            *TheMenuMain = nullptr;
-MenuConfirmExit     *TheMenuConfirmExit = nullptr;
-SceneRTS            *TheScene = nullptr;
-
+Battle             *TheBattle = nullptr;
+Level              *TheLevel = nullptr;
+LogRTS             *TheLog = nullptr;
+SceneRTS           *TheScene = nullptr;
+Settings           *TheSet = nullptr;
+TerrainRTS         *TheTerrain = nullptr;
 Vector<Connection *> connections;
