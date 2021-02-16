@@ -7,6 +7,6 @@ extern Level           *TheLevel;
 extern LogRTS          *TheLog;
 extern SceneTV         *TheScene;
 extern Settings        *TheSet;
-extern TerrainTV      *TheTerrain;
+extern TerrainTV       *TheTerrain;
 
 extern Vector<Connection *> connections;
