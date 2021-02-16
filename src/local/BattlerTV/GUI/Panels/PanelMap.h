@@ -3,7 +3,7 @@
 #include "GUI/Controls/_WindowTV.h"
 
 
-class ImageRTS;
+class ImageTV;
 
 
 /*
@@ -22,7 +22,7 @@ public:
 
 private:
     Vector<Vector<float> > map;
-    SharedPtr<ImageRTS> imageMap;
+    SharedPtr<ImageTV> imageMap;
     int x0 = 0;
     int y0 = 0;
     float scale = 0.0f;

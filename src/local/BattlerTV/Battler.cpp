@@ -216,7 +216,7 @@ void Battler::RegistrationComponets()
 {
     TheContext->RegisterFactory<Rotator>();
     TheContext->RegisterFactory<Movinator>();
-    TheContext->RegisterFactory<ImageRTS>();
+    TheContext->RegisterFactory<ImageTV>();
 
     SceneTV::RegisterObject();
 

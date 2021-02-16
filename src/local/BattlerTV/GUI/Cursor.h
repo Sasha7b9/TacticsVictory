@@ -7,7 +7,7 @@ class CursorShapes : public Object
     URHO3D_OBJECT(CursorShapes, Object);
 public:
     CursorShapes();
-    SharedPtr<ImageRTS> GetShape(TypeCursor type, int numFrame);
+    SharedPtr<ImageTV> GetShape(TypeCursor type, int numFrame);
 
 private:
     void CreateNormal(int numFrame);
@@ -21,7 +21,7 @@ private:
     void CreateDownLeft(int numFrame);
     void CreateDownRight(int numFrame);
     void CreateBusy(int numFrame);
-    void FillGradient(ImageRTS *image, TypeCursor type, int numFrame);
+    void FillGradient(ImageTV *image, TypeCursor type, int numFrame);
 
 public:
     struct StructShape
@@ -36,7 +36,7 @@ public:
     };
 
 private:
-    HashMap<StructShape, SharedPtr<ImageRTS>> map;
+    HashMap<StructShape, SharedPtr<ImageTV>> map;
     int dimensionTriangleSmall = 50;
     int dimensionTriangleBig = 100;
 
