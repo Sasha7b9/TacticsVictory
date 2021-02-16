@@ -91,7 +91,7 @@ source_group(Scene\\Objects\\Weapons\\Gun              FILES ${SCENE_OBJECTS_WEA
 source_group(Scene\\Objects\\Weapons\\Laser            FILES ${SCENE_OBJECTS_WEAPONS_LASER})
 source_group(Scene\\Objects\\Weapons\\MachineGun       FILES ${SCENE_OBJECTS_WEAPONS_MACHINEGUN})
 source_group(Scene\\Objects\\Weapons\\RocketLauncher   FILES ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER})
-source_group(Scene\\Primitives                         FILES ${SCEEN_PRIMITIVES})
+source_group(Scene\\Primitives                         FILES ${SCENE_PRIMITIVES})
 source_group(Utils                                     FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC}
