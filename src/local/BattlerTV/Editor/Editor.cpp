@@ -4,8 +4,8 @@
 
 Editor::Editor(Context *context) : Object(context)
 {
-    currentPlane = PlaneRTS::ZERO;
-    selectedPlane = PlaneRTS::ZERO;
+    currentPlane = PlaneTV::ZERO;
+    selectedPlane = PlaneTV::ZERO;
 }
 
 
@@ -188,14 +188,14 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
     {
         if (TheInput->GetMouseButtonDown(MOUSEB_LEFT) && !TheInput->GetMouseButtonDown(MOUSEB_MIDDLE) && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
-            if (!selectedPlane.IsEquals(PlaneRTS::ZERO) && selectedPlane.IsEquals(currentPlane))
+            if (!selectedPlane.IsEquals(PlaneTV::ZERO) && selectedPlane.IsEquals(currentPlane))
             {
-                selectedPlane = PlaneRTS::ZERO;
+                selectedPlane = PlaneTV::ZERO;
                 TheCamera->EnableArrows();
             }
             else
             {
-                selectedPlane = PlaneRTS::ZERO;
+                selectedPlane = PlaneTV::ZERO;
                 TheCamera->EnableArrows();
 
                 if (!currentPlane.IsZero())

@@ -148,9 +148,9 @@ bool TerrainTV::Empty()
 }
 
 
-PlaneRTS TerrainTV::GetIntersectionPlane(Ray& /*ray*/)
+PlaneTV TerrainTV::GetIntersectionPlane(Ray& /*ray*/)
 {
-    return PlaneRTS::ZERO;
+    return PlaneTV::ZERO;
 }
 
 
@@ -160,9 +160,9 @@ Line TerrainTV::GetIntersectionEdge(Ray &/*ray*/)
 }
 
 
-PlaneRTS TerrainTV::GetPlane(uint /*row*/, uint /*col*/)
+PlaneTV TerrainTV::GetPlane(uint /*row*/, uint /*col*/)
 {
-    return PlaneRTS::ZERO;
+    return PlaneTV::ZERO;
 }
 
 

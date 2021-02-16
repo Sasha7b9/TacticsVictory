@@ -12,8 +12,8 @@ public:
     void ClearScene();
 
 private:
-    PlaneRTS currentPlane;
-    PlaneRTS selectedPlane;
+    PlaneTV currentPlane;
+    PlaneTV selectedPlane;
     Line currentEdge;
     Line selectedEdge;
     SharedPtr<Node> lightNode;

@@ -2,10 +2,10 @@
 #include "stdafx.h"
 
 
-PlaneRTS PlaneRTS::ZERO = PlaneRTS(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);
+PlaneTV PlaneTV::ZERO = PlaneTV(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);
 
 
-PlaneRTS::PlaneRTS(const Vector3 &v0_ /* = Vector3::ZERO */, const Vector3 &v1_ /* = Vector3::ZERO */, const Vector3 &v2_ /* = Vector3::ZERO */, const Vector3 &v3_ /* = Vector3::ZERO */)
+PlaneTV::PlaneTV(const Vector3 &v0_ /* = Vector3::ZERO */, const Vector3 &v1_ /* = Vector3::ZERO */, const Vector3 &v2_ /* = Vector3::ZERO */, const Vector3 &v3_ /* = Vector3::ZERO */)
 {
     v0 = v0_;
     v1 = v1_;
@@ -14,19 +14,19 @@ PlaneRTS::PlaneRTS(const Vector3 &v0_ /* = Vector3::ZERO */, const Vector3 &v1_ 
 }
 
 
-bool PlaneRTS::IsEquals(const PlaneRTS &plane)
+bool PlaneTV::IsEquals(const PlaneTV &plane)
 {
     return v0 == plane.v0 && v1 == plane.v1 && v2 == plane.v2 && v3 == plane.v3;
 }
 
 
-bool PlaneRTS::IsZero()
+bool PlaneTV::IsZero()
 {
     return v0 == Vector3::ZERO && v1 == Vector3::ZERO && v2 == Vector3::ZERO && v3 == Vector3::ZERO;
 }
 
 
-void PlaneRTS::CalculateRowCol()
+void PlaneTV::CalculateRowCol()
 {
     float xMin = Math::Min(v0.x_, v1.x_, v2.x_, v3.x_);
     float xMax = Math::Max(v0.x_, v1.x_, v2.x_, v3.x_);
@@ -38,13 +38,13 @@ void PlaneRTS::CalculateRowCol()
 }
 
 
-void PlaneRTS::SetY(float y)
+void PlaneTV::SetY(float y)
 {
     v0.y_ = v1.y_ = v2.y_ = v3.y_ = y;
 }
 
 
-Line PlaneRTS::NearEdge(const Ray &ray)
+Line PlaneTV::NearEdge(const Ray &ray)
 {
     Line lines[] =
     {

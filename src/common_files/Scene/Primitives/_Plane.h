@@ -3,12 +3,12 @@
 #include "Scene/Primitives/_Line.h"
 
 
-class PlaneRTS
+class PlaneTV
 {
 public:
-    PlaneRTS(const Vector3 &v0 = Vector3::ZERO, const Vector3 &v1 = Vector3::ZERO, const Vector3 &v2 = Vector3::ZERO, const Vector3 &v3 = Vector3::ZERO);
+    PlaneTV(const Vector3 &v0 = Vector3::ZERO, const Vector3 &v1 = Vector3::ZERO, const Vector3 &v2 = Vector3::ZERO, const Vector3 &v3 = Vector3::ZERO);
 
-    bool IsEquals(const PlaneRTS &plane);
+    bool IsEquals(const PlaneTV &plane);
     bool IsZero();
     void CalculateRowCol();
     void SetY(float y);
@@ -22,5 +22,5 @@ public:
     uint row = 0;
     uint col = 0;
 
-    static PlaneRTS ZERO;
+    static PlaneTV ZERO;
 };
