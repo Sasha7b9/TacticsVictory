@@ -1,6 +1,7 @@
 project (TacticsVictory)
 
 include_directories(.
+                    ../BattlerTV
                     ../../common_files
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
@@ -30,7 +31,7 @@ else()
 endif()
 
 file(GLOB SRC                                                        *.h *.cpp)
-file(GLOB AUDIO                                                      Audio/*.*)
+file(GLOB AUDIO                                         ../BattlerTV/Audio/*.*)
 file(GLOB CORE                                    ../../common_files/Core/*.*)
 file(GLOB EDITOR                                                     Editor/*.*)
 file(GLOB GAME                                                       Game/*.*)
