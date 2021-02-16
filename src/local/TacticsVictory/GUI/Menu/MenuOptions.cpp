@@ -43,10 +43,7 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
 
     CREATE_DDLWTAB(ddlSpecularLighting, "Specular lighting", 2, items4, (uint)TheSet->GetInt(TV_SPECULAR_LIGHTING));
 
-    if (MODE_CLIENT)
-    {
-        CREATE_DDLWTAB(ddlDynamicInstancing, "Dynamic instancing", 2, items4, TheRenderer->GetDynamicInstancing() ? 1U : 0U);
-    }
+    CREATE_DDLWTAB(ddlDynamicInstancing, "Dynamic instancing", 2, items4, TheRenderer->GetDynamicInstancing() ? 1U : 0U);
 
     int itemSizes[9] = {64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
     shadowMapSizes.Push(PODVector<int>(itemSizes, sizeof(itemSizes) / sizeof(int)));
@@ -54,11 +51,8 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
     char *items6[] = {"64", "128", "256", "512", "1024", "2048", "4096", "8192", "16384"};
     CREATE_DDLWTAB(ddlShadowMapSize, "Shadow map size", 9, items6, (uint)TheSet->GetInt(TV_SHADOW_MAP_SIZE));
 
-    if (MODE_CLIENT)
-    {
-        char *items7[] = {"low 16bit", "low 24bit", "high 16bit", "high 24bit"};
-        CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, static_cast<uint>(TheRenderer->GetShadowQuality())); //-V112
-    }
+    char *items7[] = {"low 16bit", "low 24bit", "high 16bit", "high 24bit"};
+    CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, static_cast<uint>(TheRenderer->GetShadowQuality())); //-V112
 
     SharedPtr<UIElement> layout(CreateChild<UIElement>());
     layout->SetAlignment(HA_CENTER, VA_TOP);

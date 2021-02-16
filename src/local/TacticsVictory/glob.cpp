@@ -48,5 +48,3 @@ WindowTarget        *TheWindowTarget = nullptr;
 MenuRTS             *TheMenu = nullptr;
 MenuGame            *TheMenuMain = nullptr;
 MenuConfirmExit     *TheMenuConfirmExit = nullptr;
-
-ModeApp             TheMode = ModeApp_Start;

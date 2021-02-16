@@ -27,13 +27,10 @@ CameraRTS::CameraRTS()
     light->SetRange(25.0f);
     light->SetEnabled(true);
 
-    if (MODE_CLIENT)
-    {
-        SetupViewport();
-        Node *listenerNode = cameraNode->CreateChild("Listener");
-        SoundListener *listener = listenerNode->CreateComponent<SoundListener>();
-        TheAudio->SetListener(listener);
-    }
+    SetupViewport();
+    Node *listenerNode = cameraNode->CreateChild("Listener");
+    SoundListener *listener = listenerNode->CreateComponent<SoundListener>();
+    TheAudio->SetListener(listener);
 }
 
 
@@ -74,11 +71,6 @@ void CameraRTS::ParallelTranslateLookAt(const Vector3 &lookAt_)
 
 void CameraRTS::Move(float time) //-V2008
 {
-    if (!MODE_CLIENT)
-    {
-        return;
-    }
-
     if(!enabled || TheConsole->IsActive())
     {
         return;
@@ -300,10 +292,7 @@ void CameraRTS::SetupViewport()
 
     SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene, camera));
 
-    if (MODE_CLIENT)
-    {
-        TheRenderer->SetViewport(0, viewport);
-    }
+    TheRenderer->SetViewport(0, viewport);
 }
 
 

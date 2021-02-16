@@ -32,7 +32,7 @@ void TacticsVictory::Setup()
     engineParameters_[EP_TEXTURE_QUALITY] = 32; //-V112
     engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
     engineParameters_[EP_WINDOW_HEIGHT] = TheSet->GetInt(TV_SCREEN_HEIGHT);
-    engineParameters_[EP_HEADLESS] = MODE_SERVER;
+    engineParameters_[EP_HEADLESS] = false;
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
 #ifdef DEBUG
@@ -97,29 +97,24 @@ void TacticsVictory::Start()
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
     TheScene->CreateComponent<DebugRenderer>();
 
-    if (MODE_SERVER)
-    {
-        CreateScriptSystem();
-    }
-    else
-    {
-        SetWindowTitleAndIcon();
-        CreateConsoleAndDebugHud();
-        TheUI = GetSubsystem<UI>();
-        TheInput = GetSubsystem<Input>();
-        TheAudio = GetSubsystem<Audio>();
-        TheRenderer = GetSubsystem<Renderer>();
-        TheCamera = new CameraRTS();
-        TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
-        TheUIRoot = TheUI->GetRoot();
-        TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-        TheGUI = new GUI();
-        LOGINFO("Загружаю настройки");
-        TheMenu = new MenuRTS();
-        TheFileSelector = new FileSelector(TheContext);
-        TheFileSelector->GetWindow()->SetModal(false);
-        TheFileSelector->GetWindow()->SetVisible(false);
-    }
+    CreateScriptSystem();
+
+    SetWindowTitleAndIcon();
+    CreateConsoleAndDebugHud();
+    TheUI = GetSubsystem<UI>();
+    TheInput = GetSubsystem<Input>();
+    TheAudio = GetSubsystem<Audio>();
+    TheRenderer = GetSubsystem<Renderer>();
+    TheCamera = new CameraRTS();
+    TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
+    TheUIRoot = TheUI->GetRoot();
+    TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    TheGUI = new GUI();
+    LOGINFO("Загружаю настройки");
+    TheMenu = new MenuRTS();
+    TheFileSelector = new FileSelector(TheContext);
+    TheFileSelector->GetWindow()->SetModal(false);
+    TheFileSelector->GetWindow()->SetVisible(false);
     
     RegistrationComponets();
 
@@ -155,29 +150,19 @@ void TacticsVictory::RegistrationComponets()
 
     SceneRTS::RegisterObject();
 
-    if(MODE_SERVER)
-    {
-        RocketLauncher::RegisterInAS();
-        Translator::RegisterInAS();
-        WaveAlgorithm::RegisterInAS();
-        Tank::RegisterInAS();
-    }
+    RocketLauncher::RegisterInAS();
+    Translator::RegisterInAS();
+    WaveAlgorithm::RegisterInAS();
+    Tank::RegisterInAS();
 }
 
 
 void TacticsVictory::SubscribeToEvents()
 {
-    if (MODE_SERVER)
-    {
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
+    SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
+    SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
 
-    }
-    else
-    {
-        SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
-        SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
-        SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
-    }
-    
     SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(TacticsVictory, HandleUpdate));
     SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
 }
@@ -185,28 +170,22 @@ void TacticsVictory::SubscribeToEvents()
 
 void TacticsVictory::SetWindowTitleAndIcon()
 {
-    if (MODE_CLIENT)
-    {
-        Image* icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
-        TheGraphics->SetWindowIcon(icon);
-        TheGraphics->SetWindowTitle("Тактика победы");
-    }
+    Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
+    TheGraphics->SetWindowIcon(icon);
+    TheGraphics->SetWindowTitle("Тактика победы");
 }
 
 
 void TacticsVictory::CreateConsoleAndDebugHud()
 {
-    if (MODE_CLIENT)
-    {
-        XMLFile* xmlFile = TheCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
+    XMLFile *xmlFile = TheCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
 
-        TheEngineConsole = engine_->CreateConsole();
-        TheEngineConsole->SetDefaultStyle(xmlFile);
-        TheEngineConsole->GetBackground()->SetOpacity(0.8f);
+    TheEngineConsole = engine_->CreateConsole();
+    TheEngineConsole->SetDefaultStyle(xmlFile);
+    TheEngineConsole->GetBackground()->SetOpacity(0.8f);
 
-        TheDebugHud = engine_->CreateDebugHud();
-        TheDebugHud->SetDefaultStyle(xmlFile);
-    }
+    TheDebugHud = engine_->CreateDebugHud();
+    TheDebugHud->SetDefaultStyle(xmlFile);
 }
 
 
@@ -228,18 +207,7 @@ void TacticsVictory::OpenLog()
     char buffer[50];
     srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
 
-    if (MODE_SERVER)
-    {
-        sprintf_s(buffer, 50, "server.log");
-    }
-    else if (MODE_CLIENT)
-    {
-        sprintf_s(buffer, 50, "client.log");
-    }
-    else
-    {
-        sprintf_s(buffer, 50, "log.log");
-    }
+    sprintf_s(buffer, 50, "TV.log");
 
     TheLog->Open(buffer);
     TheLog->SetLevel(LOG_DEBUG);

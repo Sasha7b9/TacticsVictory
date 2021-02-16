@@ -45,4 +45,3 @@ extern WindowVariables *TheWindowVars;
 
 extern int *TheCounterHint;
 extern Vector<WindowRTS *> TheOpenedWindow;
-extern ModeApp             TheMode;
