@@ -17,7 +17,7 @@ TacticsVictory::TacticsVictory(Context* context) :
 
 void TacticsVictory::Setup()
 {
-    ParseArguments(GetArguments());
+//    ParseArguments(GetArguments());
 
     TheTacticsVictory = this;
     TheSet = new Settings();
@@ -34,7 +34,7 @@ void TacticsVictory::Setup()
     engineParameters_[EP_TEXTURE_QUALITY] = 32; //-V112
     engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
     engineParameters_[EP_WINDOW_HEIGHT] = TheSet->GetInt(TV_SCREEN_HEIGHT);
-    engineParameters_[EP_HEADLESS] = MODE_SERVER;
+    engineParameters_[EP_HEADLESS] = false;
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
 #ifdef DEBUG
@@ -103,28 +103,23 @@ void TacticsVictory::Start()
     TheScene->CreateComponent<DebugRenderer>();
     TheCamera = new CameraRTS();
 
-    if (MODE_SERVER)
-    {
-        CreateScriptSystem();
-    }
-    else
-    {
-        SetWindowTitleAndIcon();
-        CreateConsoleAndDebugHud();
-        TheUI = GetSubsystem<UI>();
-        TheInput = GetSubsystem<Input>();
-        TheRenderer = GetSubsystem<Renderer>();
-        TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
-        TheUIRoot = TheUI->GetRoot();
-        TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-        TheGUI = new GUI();
-        LOGINFO("Загружаю настройки");
-        TheMenu = new MenuRTS();
-        TheFileSelector = new FileSelector(TheContext);
-        TheFileSelector->GetWindow()->SetModal(false);
-        TheFileSelector->GetWindow()->SetVisible(false);
-        TheAudio = GetSubsystem<Audio>();
-    }
+    CreateScriptSystem();
+
+    SetWindowTitleAndIcon();
+    CreateConsoleAndDebugHud();
+    TheUI = GetSubsystem<UI>();
+    TheInput = GetSubsystem<Input>();
+    TheRenderer = GetSubsystem<Renderer>();
+    TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
+    TheUIRoot = TheUI->GetRoot();
+    TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    TheGUI = new GUI();
+    LOGINFO("Загружаю настройки");
+    TheMenu = new MenuRTS();
+    TheFileSelector = new FileSelector(TheContext);
+    TheFileSelector->GetWindow()->SetModal(false);
+    TheFileSelector->GetWindow()->SetVisible(false);
+    TheAudio = GetSubsystem<Audio>();
     
     RegistrationComponets();
 
@@ -132,14 +127,14 @@ void TacticsVictory::Start()
 //    TheClient = new Client();
 //    TheServer = new Server();
 
-    if (MODE_CLIENT)
-    {
-        StartClient(address, port);
-    }
-    else if (MODE_SERVER)
-    {
-        StartServer(port);
-    }
+//    if (MODE_CLIENT)
+//    {
+//        StartClient(address, port);
+//    }
+//    else if (MODE_SERVER)
+//    {
+//        StartServer(port);
+//    }
 
     SubscribeToEvents();
 
@@ -163,10 +158,10 @@ void TacticsVictory::CreateScriptSystem()
 }
 
 
-void TacticsVictory::StartServer(uint16 port_)
-{
-    UNUSED(port_);
-
+//void TacticsVictory::StartServer(uint16 port_)
+//{
+//    UNUSED(port_);
+//
 //    if (port_)
 //    {
 //        port = port_;
@@ -182,40 +177,40 @@ void TacticsVictory::StartServer(uint16 port_)
 //    {
 //        LOGERROR("Can not start server on null port");
 //    }
-}
+//}
 
 
-void TacticsVictory::StopServer()
-{
-
-}
-
-
-void TacticsVictory::StartClient(const String &, uint16)
-{
-
-}
+//void TacticsVictory::StopServer()
+//{
+//
+//}
 
 
-void TacticsVictory::StopClient()
-{
+//void TacticsVictory::StartClient(const String &, uint16)
+//{
+//
+//}
 
-}
+
+//void TacticsVictory::StopClient()
+//{
+//
+//}
 
 
-void TacticsVictory::ParseArguments(const Vector<String> &arguments)
-{
-    /*
-        1. нет аргументов - просто запуск
-        2. аргументы -port:XX - запуск сервера на порту XX
-        3. аргументы -address:XX.XX.XX.XX -port:XX - запуск оболочки и коннект к серверу на XX.XX.XX.XX:XX
-    */
-
-    if (GF::GetAddressPort(arguments, address, port))
-    {
-        TheMode = address.Empty() ? ModeApp_Server : ModeApp_Client;
-    }
-}
+//void TacticsVictory::ParseArguments(const Vector<String> &arguments)
+//{
+//    /*
+//        1. нет аргументов - просто запуск
+//        2. аргументы -port:XX - запуск сервера на порту XX
+//        3. аргументы -address:XX.XX.XX.XX -port:XX - запуск оболочки и коннект к серверу на XX.XX.XX.XX:XX
+//    */
+//
+//    if (GF::GetAddressPort(arguments, address, port))
+//    {
+//        TheMode = address.Empty() ? ModeApp_Server : ModeApp_Client;
+//    }
+//}
 
 
 void TacticsVictory::RegistrationComponets()
@@ -226,28 +221,18 @@ void TacticsVictory::RegistrationComponets()
 
     SceneRTS::RegisterObject();
 
-    if(MODE_SERVER)
-    {
-        RocketLauncher::RegisterInAS();
-        Translator::RegisterInAS();
-        WaveAlgorithm::RegisterInAS();
-        Tank::RegisterInAS();
-    }
+    RocketLauncher::RegisterInAS();
+    Translator::RegisterInAS();
+    WaveAlgorithm::RegisterInAS();
+    Tank::RegisterInAS();
 }
 
 
 void TacticsVictory::SubscribeToEvents()
 {
-    if (MODE_SERVER)
-    {
-
-    }
-    else
-    {
-        SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
-        SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
-        SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
-    }
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
+    SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
+    SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
     
     SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(TacticsVictory, HandleUpdate));
     SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
@@ -261,28 +246,22 @@ void TacticsVictory::SubscribeToEvents()
 
 void TacticsVictory::SetWindowTitleAndIcon()
 {
-    if (MODE_CLIENT)
-    {
-        Image* icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
-        TheGraphics->SetWindowIcon(icon);
-        TheGraphics->SetWindowTitle("Тактика победы");
-    }
+    Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
+    TheGraphics->SetWindowIcon(icon);
+    TheGraphics->SetWindowTitle("Тактика победы");
 }
 
 
 void TacticsVictory::CreateConsoleAndDebugHud()
 {
-    if (MODE_CLIENT)
-    {
-        XMLFile* xmlFile = TheCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
-
-        TheEngineConsole = engine_->CreateConsole();
-        TheEngineConsole->SetDefaultStyle(xmlFile);
-        TheEngineConsole->GetBackground()->SetOpacity(0.8f);
-
-        TheDebugHud = engine_->CreateDebugHud();
-        TheDebugHud->SetDefaultStyle(xmlFile);
-    }
+    XMLFile* xmlFile = TheCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
+    
+    TheEngineConsole = engine_->CreateConsole();
+    TheEngineConsole->SetDefaultStyle(xmlFile);
+    TheEngineConsole->GetBackground()->SetOpacity(0.8f);
+    
+    TheDebugHud = engine_->CreateDebugHud();
+    TheDebugHud->SetDefaultStyle(xmlFile);
 }
 
 
@@ -320,18 +299,7 @@ void TacticsVictory::OpenLog()
     char buffer[50];
     srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
 
-    if (MODE_SERVER)
-    {
-        sprintf_s(buffer, 50, "server%d.log", rand());
-    }
-    else if (MODE_CLIENT)
-    {
-        sprintf_s(buffer, 50, "client%d.log", rand());
-    }
-    else
-    {
-        sprintf_s(buffer, 50, "log%d.log", rand());
-    }
+    sprintf_s(buffer, 50, "log%d.log", rand());
 
     TheLog->Open(buffer);
     TheLog->SetLevel(LOG_DEBUG);

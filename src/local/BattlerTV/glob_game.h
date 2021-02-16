@@ -27,7 +27,7 @@ class Server;
 class Client;
 
 extern CameraRTS       *TheCamera;
-extern Client          *TheClient;
+//extern Client          *TheClient;
 extern ConsoleRTS      *TheConsole;
 extern CursorRTS       *TheCursor;
 extern Editor          *TheEditor;
@@ -40,7 +40,7 @@ extern LogRTS          *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
 extern MenuRTS         *TheMenu;
-extern Server          *TheServer;
+//extern Server          *TheServer;
 extern Settings        *TheSet;
 extern TacticsVictory  *TheTacticsVictory;
 extern TerrainRTS      *TheTerrain;
@@ -49,4 +49,4 @@ extern WindowVariables *TheWindowVars;
 
 extern int *TheCounterHint;
 extern Vector<WindowRTS *> TheOpenedWindow;
-extern ModeApp             TheMode;
+//extern ModeApp             TheMode;

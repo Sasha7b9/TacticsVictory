@@ -16,10 +16,10 @@ public:
     virtual void Setup();
     virtual void Start();
     virtual void Stop();
-    void StartServer(uint16 port = 0);
-    void StopServer();
-    void StartClient(const String &address = String::EMPTY, uint16 port = 0);
-    void StopClient();
+//    void StartServer(uint16 port = 0);
+//    void StopServer();
+//    void StartClient(const String &address = String::EMPTY, uint16 port = 0);
+//    void StopClient();
 
     SceneRTS *scene = nullptr; //-V122
 
@@ -31,7 +31,7 @@ private:
     uint16 port = 0;
 
     void OpenLog();
-    void ParseArguments(const Vector<String> &arguments);
+//    void ParseArguments(const Vector<String> &arguments);
     void RegistrationComponets();
     void SetWindowTitleAndIcon();
     void CreateConsoleAndDebugHud();
