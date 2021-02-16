@@ -110,7 +110,7 @@ void GuiEditor::CreateTabTerrain()
     sliderSizeBrushY->SetValue(1);
     sliderSizeBrushY->SetHint("hintSliderSizeBrushY");
 
-    char *items[] = {"PlaneTV", "Edge"};
+    char *items[] = {"TPlane", "Edge"};
     SharedPtr<DropDownListWithTextAndButton> ddListModeSelect = tabTerrain->AddDDList("Mode select", 100, 80, 2, items, 10, y += dY);
     SubscribeToEvent(ddListModeSelect, E_ITEMSELECTED, URHO3D_HANDLER(GuiEditor, HandleTerrainModeSelectChanged));
 }

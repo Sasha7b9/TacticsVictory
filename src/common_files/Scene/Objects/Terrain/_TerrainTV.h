@@ -1,7 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
 #include "Scene/Objects/Terrain/_CubeTerrain.h"
-#include "Scene/Primitives/_PlaneTV.h"
+#include "Scene/Primitives/_TPlane.h"
 
 
 class SegmentTerrain;
@@ -36,9 +36,9 @@ public:
     uint NumRows();
     uint NumCols();
     bool Empty();
-    PlaneTV GetIntersectionPlane(Ray &ray);
+    TPlane GetIntersectionPlane(Ray &ray);
     Line GetIntersectionEdge(Ray &ray);
-    PlaneTV GetPlane(uint row, uint col);
+    TPlane GetPlane(uint row, uint col);
     Vector<Vector<float>> GetMap();
     PODVector<CubeTerrain*>* GetColumnCubes(const CubeTerrain *cube, DIR dir);
 

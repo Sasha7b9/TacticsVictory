@@ -186,7 +186,7 @@ using namespace Urho3D;
 #include "Scene/Objects/Terrain/_SideCube.h"
 #include "Scene/Objects/Units/_UnitObject.h"
 #include "Scene/Objects/Weapons/_WeaponObject.h"
-#include "Scene/Primitives/_Triangle.h"
+#include "Scene/Primitives/_TTriangle.h"
 
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_LogTV.h"

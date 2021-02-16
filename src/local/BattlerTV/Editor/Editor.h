@@ -1,6 +1,6 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
-#include "Scene/Primitives/_PlaneTV.h"
+#include "Scene/Primitives/_TPlane.h"
 
 
 class Editor : public Object
@@ -12,8 +12,8 @@ public:
     void ClearScene();
 
 private:
-    PlaneTV currentPlane;
-    PlaneTV selectedPlane;
+    TPlane currentPlane;
+    TPlane selectedPlane;
     Line currentEdge;
     Line selectedEdge;
     SharedPtr<Node> lightNode;
