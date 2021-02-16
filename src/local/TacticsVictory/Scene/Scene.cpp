@@ -12,6 +12,7 @@ SceneRTS::~SceneRTS()
 {
     SAFE_DELETE(TheTerrain); //-V809
     pathIndicator.Stop();
+    delete TheWindowTarget;
 }
 
 
