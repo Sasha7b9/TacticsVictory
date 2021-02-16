@@ -72,7 +72,7 @@ void SceneTV::Create()
 
     level = TheLevel->Load("Game/Levels/level.map");
 
-    TheTerrain = new TerrainRTS();
+    TheTerrain = new TerrainTV();
     TheTerrain->CreateFromVector(level);
 
     for (int i = 0; i < 5; i++)

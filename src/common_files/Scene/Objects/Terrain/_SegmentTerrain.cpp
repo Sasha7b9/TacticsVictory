@@ -78,7 +78,7 @@ void SegmentTerrain::AddCube(const SharedPtr<CubeTerrain> &cube)
     {
         ground[cube->layer]->AddCube(cube);
     }
-    TerrainRTS::columnsCubes[cube->row][cube->col].Push(cube);
+    TerrainTV::columnsCubes[cube->row][cube->col].Push(cube);
 }
 
 

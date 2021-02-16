@@ -28,7 +28,7 @@ CursorRTS           *TheCursor = nullptr;
 Editor              *TheEditor = nullptr;
 Settings            *TheSet = nullptr;
 Level               *TheLevel = nullptr;
-TerrainRTS          *TheTerrain = nullptr;
+TerrainTV          *TheTerrain = nullptr;
 TacticsVictory      *TheTacticsVictory = nullptr;
 LogRTS              *TheLog = nullptr;
 

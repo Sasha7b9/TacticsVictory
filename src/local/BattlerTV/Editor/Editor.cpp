@@ -20,7 +20,7 @@ void Editor::Run()
 
     Vector<Vector<float>> level = TheLevel->Load("Game/Levels/level.map");
 
-    TheTerrain = new TerrainRTS();
+    TheTerrain = new TerrainTV();
     TheTerrain->CreateFromVector(level);
 
     lightNode = TheScene->scene->CreateChild("LightNode");

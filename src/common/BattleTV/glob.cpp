@@ -20,5 +20,5 @@ Level              *TheLevel = nullptr;
 LogRTS             *TheLog = nullptr;
 SceneTV           *TheScene = nullptr;
 Settings           *TheSet = nullptr;
-TerrainRTS         *TheTerrain = nullptr;
+TerrainTV         *TheTerrain = nullptr;
 Vector<Connection *> connections;

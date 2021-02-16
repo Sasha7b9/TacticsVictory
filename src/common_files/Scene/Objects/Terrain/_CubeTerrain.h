@@ -7,7 +7,7 @@ class CornerCube;
 class EdgeCube;
 class PointPlane;
 class PlaneCube;
-class TerrainRTS;
+class TerrainTV;
 
 
 extern Context *TheContext;
@@ -55,7 +55,7 @@ public:
     uint col = 0;
     uint layer = 0;
     bool underGround = false;
-    static TerrainRTS *terrain;
+    static TerrainTV *terrain;
 
 private:
 
