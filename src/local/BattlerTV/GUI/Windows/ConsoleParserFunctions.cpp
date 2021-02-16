@@ -99,15 +99,6 @@ void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V20
 
 bool ConsoleParser::FuncServerStop(Vector<String> &, bool)
 {
-//    if(serverRunning)
-//    {
-//        TheClient->scene->Send(MSG_DELETE_SERVER, VectorBufferRTS());
-//    }
-//    else
-//    {
-//        TheConsole->Write("Forbidden");
-//    }
-
     return true;
 }
 
@@ -115,14 +106,6 @@ bool ConsoleParser::FuncServerStop(Vector<String> &, bool)
 bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
 {
     UNUSED(words);
-    
-//    int latency = 0;
-//
-//    if(ExtractInt(words[0], &latency))
-//    {
-//        TheClient->Send(MSG_SET_NETWORK_LATENCY, VectorBufferRTS(latency));
-//        return true;
-//    }
 
     return false;
 }
@@ -132,14 +115,6 @@ bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool) //-V2009
 {
 
     UNUSED(words);
-
-//    float loss = 0.0f;
-//
-//    if(ExtractFloat(words[0], &loss))
-//    {
-//        TheClient->Send(MSG_SET_NETWORK_LOSS, VectorBufferRTS(loss));
-//        return true;
-//    }
 
     return false;
 }
