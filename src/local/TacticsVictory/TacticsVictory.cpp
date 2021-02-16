@@ -84,9 +84,12 @@ void TacticsVictory::Start()
     TheScene->CreateComponent<DebugRenderer>();
 
     scene = new SceneRTS();
-    scene->Create();
 
     CreateScriptSystem();
+
+    RegistrationComponets();
+
+    scene->Create();
 
     SetWindowTitleAndIcon();
     CreateConsoleAndDebugHud();
@@ -105,8 +108,6 @@ void TacticsVictory::Start()
     TheFileSelector->GetWindow()->SetModal(false);
     TheFileSelector->GetWindow()->SetVisible(false);
     
-    RegistrationComponets();
-
     TheLevel = new Level();
 
     SubscribeToEvents();
