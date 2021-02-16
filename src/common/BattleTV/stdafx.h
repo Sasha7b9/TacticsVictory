@@ -126,13 +126,8 @@ using namespace Urho3D;
 
 #include "Core/_Math.h"
 
-#include "Game/Particles.h"
 #include "Game/Logic/Movinator.h"
 #include "Game/Logic/Rotator.h"
-#include "Game/Path/TilePath.h"
-
-#include "Graphics/2D/Image.h"
-#include "Graphics/Objects/Triangle.h"
 
 #include "Network/SServer.h"
 #include "Network/Game/_GameMessages.h"
@@ -140,7 +135,6 @@ using namespace Urho3D;
 
 #include "Scene/_Level.h"
 #include "Scene/_Scene.h"
-#include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/_GameObjectEvents.h"
 #include "Scene/Objects/_ObjectState.h"
 #include "Scene/Objects/Ammo/_AmmoObject.h"

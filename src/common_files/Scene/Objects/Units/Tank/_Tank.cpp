@@ -43,8 +43,12 @@ void Tank::RegisterInAS()
 #pragma warning(disable:4191)
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_ADDREF, "void AddRef()", asMETHOD(Tank, AddRef), asCALL_THISCALL);
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_RELEASE, "void ReleaseRef()", asMETHOD(Tank, ReleaseRef), asCALL_THISCALL);
-    engine->RegisterObjectProperty("Tank", "bool inProcessFindPath", offsetof(Tank, inProcessFindPath)); //-V107
-    engine->RegisterObjectProperty("Tank", "WaveAlgorithm@ pathFinder", offsetof(Tank, pathFinder)); //-V107
+    engine->RegisterObjectProperty("Tank", "bool inProcessFindPath", offsetof(Tank, inProcessFindPath));
+
+#ifdef CLIENT
+    engine->RegisterObjectProperty("Tank", "WaveAlgorithm@ pathFinder", offsetof(Tank, pathFinder));
+#endif
+
 #pragma warning(pop)
 }
 
@@ -53,8 +57,10 @@ void Tank::Init(TypeTank type_, uint _id_)
 {
     node_->SetVar("PointerTank", this);
 
+#ifdef CLIENT
     pathFinder = new WaveAlgorithm();
     pathFinder->SetSize(TheTerrain->NumRows(), TheTerrain->NumCols());
+#endif
 
     translator->Init(this);
     typeTank = type_;
@@ -139,6 +145,7 @@ void Tank::Update(float dT)
 
     if(!translator->IsMoving())
     {
+#ifdef CLIENT
         if(inProcessFindPath)
         {
             if(pathFinder->PathIsFound())
@@ -150,6 +157,7 @@ void Tank::Update(float dT)
         }
         else
         {
+#endif
             float height = -1.0f;
             uint row = 0;
             uint col = 0;
@@ -162,9 +170,11 @@ void Tank::Update(float dT)
 
             Vector3 position = GetPosition();
             Coord start(static_cast<uint>(-position.z_), static_cast<uint>(position.x_));
+#ifdef CLIENT
             pathFinder->StartFind(start, {row, col});
             inProcessFindPath = true;
         }
+#endif
     }
     else
     {
@@ -228,9 +238,13 @@ void Tank::HandleAmmoHit(StringHash, VariantMap& eventData)
         return;
     }
 
+#ifdef CLIENT
+
     Particles::EmittingDinamic(Explosion_Tank, node_);
 
     Particles::EmittingDinamic(Fire_Tank, node_);
+
+#endif
 }
 
 

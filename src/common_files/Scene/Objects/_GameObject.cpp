@@ -26,17 +26,6 @@ void GameObject::Update(float)
 }
 
 
-void GameObject::HandleOnMouseDown(StringHash, VariantMap&)
-{
-    if(!contextMenu->UnderCursor())
-    {
-        UnsubscribeFromEvent(E_MOUSEBUTTONDOWN);
-
-        TheUIRoot->RemoveChild(contextMenu);
-    }
-}
-
-
 char *GameObject::GetName()
 {
     return name;
@@ -130,6 +119,17 @@ void GameObject::EnableContextMenu()
     contextMenu->SetPosition(TheCursor->GetCursor()->GetPosition());
     TheUIRoot->AddChild(contextMenu);
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GameObject, HandleOnMouseDown));
+}
+
+
+void GameObject::HandleOnMouseDown(StringHash, VariantMap &)
+{
+    if (!contextMenu->UnderCursor())
+    {
+        UnsubscribeFromEvent(E_MOUSEBUTTONDOWN);
+
+        TheUIRoot->RemoveChild(contextMenu);
+    }
 }
 
 #endif

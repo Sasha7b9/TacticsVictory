@@ -4,7 +4,12 @@
 #include "Scene/Objects/Units/UnitObject.h"
 
 class RocketLauncher;
+
+#ifdef CLIENT
+
 class WaveAlgorithm;
+
+#endif
 
 class Tank : public UnitObject
 {
@@ -37,7 +42,6 @@ public:
     void DrawMessage();
 
 private:
-    SharedPtr<WaveAlgorithm> pathFinder;
     bool inProcessFindPath = false;
     TypeTank typeTank;
     static PODVector<Tank*> allTanks;
@@ -68,4 +72,10 @@ private:
     SharedPtr<RocketLauncher> rocketLauncher;
 
     void HandleAmmoHit(StringHash, VariantMap&);
+
+#ifdef CLIENT
+
+    SharedPtr<WaveAlgorithm> pathFinder;
+
+#endif
 };

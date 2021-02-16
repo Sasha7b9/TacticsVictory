@@ -2,7 +2,12 @@
 #pragma once
 
 
+#ifdef CLIENT
+
 class ContextMenuUnit;
+
+#endif
+
 class Translator;
 
 
@@ -41,17 +46,20 @@ protected:
     SharedPtr<Translator> translator;
     char* name = nullptr; //-V122
     Type type = None;
-    SharedPtr<ContextMenuUnit> contextMenu;
     SharedPtr<StaticModel> modelObject;
 
     void SetPosition(const Vector3& pos);
     void Normalize(float k = 1.0f);
-    void HandleOnMouseDown(StringHash, VariantMap&);
 
 #ifdef CLIENT
 
 public:
     void EnableContextMenu();
+
+protected:
+    void HandleOnMouseDown(StringHash, VariantMap &);
+
+    SharedPtr<ContextMenuUnit> contextMenu;
 
 #endif
 };

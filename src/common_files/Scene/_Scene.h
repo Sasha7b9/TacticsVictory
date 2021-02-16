@@ -36,7 +36,12 @@ private:
     Mode mode;
 
     void RegisterObjects();
-    void HandleMouseDown(StringHash, VariantMap&);
+
+#ifdef CLIENT
+
+    void HandleMouseDown(StringHash, VariantMap &);
     void ProcessMouseLeft();
     void ProcessMouseRight();
+
+#endif
 };

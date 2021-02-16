@@ -52,15 +52,11 @@ void Battle::Start()
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
-    TheGraphics = GetSubsystem<Graphics>();
     TheScene = new SceneRTS(TheContext);
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
     TheScene->scene->CreateComponent<DebugRenderer>();
-    TheRenderer = GetSubsystem<Renderer>();
-    TheAudio = GetSubsystem<Audio>();
-    TheCamera = new CameraRTS();
     scene = new SceneRTS();
 
     CreateScriptSystem();
@@ -69,19 +65,7 @@ void Battle::Start()
 
     scene->Create();
 
-    SetWindowTitleAndIcon();
-    CreateConsoleAndDebugHud();
-    TheUI = GetSubsystem<UI>();
-    TheInput = GetSubsystem<Input>();
-    TheDebugRenderer = TheScene->scene->GetComponent<DebugRenderer>();
-    TheUIRoot = TheUI->GetRoot();
-    TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-    TheGUI = new GUI();
     LOGINFO("Загружаю настройки");
-    TheMenu = new MenuRTS();
-    TheFileSelector = new FileSelector(TheContext);
-    TheFileSelector->GetWindow()->SetModal(false);
-    TheFileSelector->GetWindow()->SetVisible(false);
     
     TheLevel = new Level();
 
@@ -95,17 +79,12 @@ void Battle::Stop()
 {
     engine_->DumpResources(true);
     //engine_->DumpProfiler();
-    TilePath::RemoveAll();
     Rocket::DeleteAll();
     SAFE_DELETE(TheScene); //-V809
     SAFE_DELETE(scene); //-V809
-    SAFE_DELETE(TheFileSelector); //-V809
     SAFE_DELETE(TheLevel); //-V809
-    SAFE_DELETE(TheMenu); //-V809
-    SAFE_DELETE(TheGUI); //-V809
     TheSet->Save();
     SAFE_DELETE(TheSet); //-V809
-    SAFE_DELETE(TheCamera);     //-V809
     TheLog->Close();
     SAFE_DELETE(TheLog); //-V809
 }
@@ -143,46 +122,19 @@ void Battle::RegistrationComponets()
 {
     TheContext->RegisterFactory<Rotator>();
     TheContext->RegisterFactory<Movinator>();
-    TheContext->RegisterFactory<ImageRTS>();
 
     SceneRTS::RegisterObject();
 
     RocketLauncher::RegisterInAS();
     Translator::RegisterInAS();
-    WaveAlgorithm::RegisterInAS();
     Tank::RegisterInAS();
 }
 
 
 void Battle::SubscribeToEvents()
 {
-    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(Battle, HandleKeyDown));
-    SubscribeToEvent(E_MENU, URHO3D_HANDLER(Battle, HandleMenuEvent));
-    SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Battle, HandlePostRenderUpdate));
-
     SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(Battle, HandleUpdate));
     SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(Battle, HandlePostUpdate));
-}
-
-
-void Battle::SetWindowTitleAndIcon()
-{
-    Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
-    TheGraphics->SetWindowIcon(icon);
-    TheGraphics->SetWindowTitle("Тактика победы");
-}
-
-
-void Battle::CreateConsoleAndDebugHud()
-{
-    XMLFile *xmlFile = TheCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
-
-    TheEngineConsole = engine_->CreateConsole();
-    TheEngineConsole->SetDefaultStyle(xmlFile);
-    TheEngineConsole->GetBackground()->SetOpacity(0.8f);
-
-    TheDebugHud = engine_->CreateDebugHud();
-    TheDebugHud->SetDefaultStyle(xmlFile);
 }
 
 
