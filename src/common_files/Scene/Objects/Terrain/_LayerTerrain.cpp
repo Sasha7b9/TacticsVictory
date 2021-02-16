@@ -1,9 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "CubeTerrain.h"
-#include "LayerTerrain.h"
-#include "Core/_Math.h"
-
 
 
 LayerTerrain::LayerTerrain(Context *context) : Object(context)

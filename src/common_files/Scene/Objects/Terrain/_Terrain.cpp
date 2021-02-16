@@ -1,12 +1,8 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Terrain.h"
-#include "SegmentTerrain.h"
-
 
 
 Vector<Vector<PODVector<CubeTerrain*>>> TerrainRTS::columnsCubes;
-
 
 
 TerrainRTS::TerrainRTS(Context *context) : Object(context)

@@ -1,15 +1,8 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "CubeTerrain.h"
-#include "Terrain.h"
-#include "SideCube.h"
-#include "CornerCube.h"
-#include "EdgeCube.h"
-
 
 
 TerrainRTS* CubeTerrain::terrain = nullptr;
-
 
 
 CubeTerrain::CubeTerrain(Context *context) : Object(context)

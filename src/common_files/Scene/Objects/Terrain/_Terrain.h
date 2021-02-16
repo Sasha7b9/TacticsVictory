@@ -1,6 +1,6 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
-#include "CubeTerrain.h"
+#include "Scene/Objects/Terrain/_CubeTerrain.h"
 #include "Scene/Primitives/_Plane.h"
 
 
