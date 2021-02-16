@@ -148,18 +148,18 @@ void SceneRTS::Update(float /*timeStep*/)
         pathIndicator.Update();
     }
 
-    if (TheServer->IsRunning())
-    {
-        VectorBufferRTS msg;
-        msg.WriteUInt(Tank::GetAll().Size());
-
-        for (Tank *tank : Tank::GetAll())
-        {
-            msg.WriteTank(tank);
-        }
-
-        TheServer->SendToAll(MSG_SEND_SCREENSHOT, msg);
-    }
+//    if (TheServer->IsRunning())
+//    {
+//        VectorBufferRTS msg;
+//        msg.WriteUInt(Tank::GetAll().Size());
+//
+//        for (Tank *tank : Tank::GetAll())
+//        {
+//            msg.WriteTank(tank);
+//        }
+//
+//        TheServer->SendToAll(MSG_SEND_SCREENSHOT, msg);
+//    }
 }
 
 

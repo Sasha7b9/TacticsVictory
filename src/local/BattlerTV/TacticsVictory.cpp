@@ -51,23 +51,23 @@ void TacticsVictory::Stop()
     //engine_->DumpProfiler();
     TilePath::RemoveAll();
     Rocket::DeleteAll();
-    SAFE_DELETE(TheScene); //-V809
-    SAFE_DELETE(scene); //-V809
-    SAFE_DELETE(TheFileSelector); //-V809
-    SAFE_DELETE(TheLevel); //-V809
-    SAFE_DELETE(TheMenu); //-V809
-    SAFE_DELETE(TheGUI); //-V809
+    SAFE_DELETE(TheScene);
+    SAFE_DELETE(scene);
+    SAFE_DELETE(TheFileSelector);
+    SAFE_DELETE(TheLevel);
+    SAFE_DELETE(TheMenu);
+    SAFE_DELETE(TheGUI);
     //File file(TheContext, "ui.xml", FILE_WRITE);
     //URHO3D_LOGINFO("Now save ui");
     //TheUIRoot->SaveXML(file);
     TheSet->Save();
-    SAFE_DELETE(TheClient); //-V809
-    SAFE_DELETE(TheServer); //-V809
-    SAFE_DELETE(TheSet); //-V809
-    SAFE_DELETE(TheEditor); //-V809
-    SAFE_DELETE(TheCamera);     //-V809
+//    SAFE_DELETE(TheClient);
+//    SAFE_DELETE(TheServer);
+    SAFE_DELETE(TheSet);
+    SAFE_DELETE(TheEditor);
+    SAFE_DELETE(TheCamera);
     TheLog->Close();
-    SAFE_DELETE(TheLog); //-V809
+    SAFE_DELETE(TheLog);
 }
 
 
@@ -129,8 +129,8 @@ void TacticsVictory::Start()
     RegistrationComponets();
 
     TheLevel = new Level();
-    TheClient = new Client();
-    TheServer = new Server();
+//    TheClient = new Client();
+//    TheServer = new Server();
 
     if (MODE_CLIENT)
     {
@@ -165,22 +165,23 @@ void TacticsVictory::CreateScriptSystem()
 
 void TacticsVictory::StartServer(uint16 port_)
 {
-    if (port_)
-    {
-        port = port_;
-    }
+    UNUSED(port_);
 
-    if (port)
-    {
-        TheServer->Start(port);
-        scene = new SceneRTS(TheContext, SceneRTS::Mode_Server);
-        scene->Create();
-    }
-    else
-    {
-        LOGERROR("Can not start server on null port");
-    }
-    
+//    if (port_)
+//    {
+//        port = port_;
+//    }
+//
+//    if (port)
+//    {
+//        TheServer->Start(port);
+//        scene = new SceneRTS(TheContext, SceneRTS::Mode_Server);
+//        scene->Create();
+//    }
+//    else
+//    {
+//        LOGERROR("Can not start server on null port");
+//    }
 }
 
 
@@ -299,17 +300,17 @@ void TacticsVictory::CreateEditorSession()
 
 void TacticsVictory::FillNetworkFunctions()
 {
-#define ADD_NETWORK_FUNCTION(name) networkFunctions[name] = FUNC_##name
-
-    ADD_NETWORK_FUNCTION(MSG_REQUEST_LANDSCAPE);
-    ADD_NETWORK_FUNCTION(MSG_CAMERA_INFO);
-    ADD_NETWORK_FUNCTION(MSG_REQUEST_TANKS);
-    ADD_NETWORK_FUNCTION(MSG_SEND_LANDSCAPE);
-    ADD_NETWORK_FUNCTION(MSG_SEND_TANKS);
-    ADD_NETWORK_FUNCTION(MSG_SEND_SCREENSHOT);
-    ADD_NETWORK_FUNCTION(MSG_DELETE_SERVER);
-    ADD_NETWORK_FUNCTION(MSG_SET_NETWORK_LOSS);
-    ADD_NETWORK_FUNCTION(MSG_SET_NETWORK_LATENCY);
+//#define ADD_NETWORK_FUNCTION(name) networkFunctions[name] = FUNC_##name
+//
+//    ADD_NETWORK_FUNCTION(MSG_REQUEST_LANDSCAPE);
+//    ADD_NETWORK_FUNCTION(MSG_CAMERA_INFO);
+//    ADD_NETWORK_FUNCTION(MSG_REQUEST_TANKS);
+//    ADD_NETWORK_FUNCTION(MSG_SEND_LANDSCAPE);
+//    ADD_NETWORK_FUNCTION(MSG_SEND_TANKS);
+//    ADD_NETWORK_FUNCTION(MSG_SEND_SCREENSHOT);
+//    ADD_NETWORK_FUNCTION(MSG_DELETE_SERVER);
+//    ADD_NETWORK_FUNCTION(MSG_SET_NETWORK_LOSS);
+//    ADD_NETWORK_FUNCTION(MSG_SET_NETWORK_LATENCY);
 }
 
 

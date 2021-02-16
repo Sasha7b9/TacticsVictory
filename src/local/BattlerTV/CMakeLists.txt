@@ -31,6 +31,20 @@ file(GLOB CORE                                    ../../common_files/Core/*.*)
 file(GLOB EDITOR                                                     Editor/*.*)
 file(GLOB GAME                                                       Game/*.*)
 file(GLOB GAME_LOGIC                                                 Game/Logic/*.*)
+file(GLOB GAME_PATH                                                  Game/Path/*.*)
+file(GLOB GRAPHICS_2D                                                Graphics/2D/*.*)
+file(GLOB GRAPHICS_OBJECTS                                           Graphics/Objects/*.*)
+file(GLOB GUI                                                        GUI/*.*)
+file(GLOB GUI_CONTROLS                            ../../common_files/GUI/Controls/*.*)
+file(GLOB GUI_GUIEDITOR                                              GUI/GuiEditor/*.*)
+file(GLOB GUI_GAME                                                   GUI/GuiGame/*.*)
+file(GLOB GUI_LOGIC                                                  GUI/Logic/*.*)
+file(GLOB GUI_MENU                                                   GUI/Menu/*.*)
+file(GLOB GUI_PANELS                                                 GUI/Panels/*.*)
+file(GLOB GUI_WINDOWS                                                GUI/Windows/*.*)
+#file(GLOB NETWORK                                 ../../common_files/Network/*.*)
+file(GLOB SCENE                                   ../../common_files/Scene/*.*)
+file(GLOB SCENE_CAMERAS                                              Scene/Cameras/*.*)
 file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objects/Ammo/*.*)
 file(GLOB SCENE_OBJECTS_AMMO_AIRBOMB              ../../common_files/Scene/Objects/Ammo/AirBomb/*.*)
@@ -60,20 +74,6 @@ file(GLOB SCENE_OBJECTS_WEAPONS_GUN               ../../common_files/Scene/Objec
 file(GLOB SCENE_OBJECTS_WEAPONS_LASER             ../../common_files/Scene/Objects/Weapons/Laser/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS_MACHINEGUN        ../../common_files/Scene/Objects/Weapons/MacheneGun/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER    ../../common_files/Scene/Objects/Weapons/RocketLauncher/*.*)
-file(GLOB GAME_PATH                                                  Game/Path/*.*)
-file(GLOB GRAPHICS_2D                                                Graphics/2D/*.*)
-file(GLOB GRAPHICS_OBJECTS                                           Graphics/Objects/*.*)
-file(GLOB GUI                                                        GUI/*.*)
-file(GLOB GUI_CONTROLS                            ../../common_files/GUI/Controls/*.*)
-file(GLOB GUI_GUIEDITOR                                              GUI/GuiEditor/*.*)
-file(GLOB GUI_GAME                                                   GUI/GuiGame/*.*)
-file(GLOB GUI_LOGIC                                                  GUI/Logic/*.*)
-file(GLOB GUI_MENU                                                   GUI/Menu/*.*)
-file(GLOB GUI_PANELS                                                 GUI/Panels/*.*)
-file(GLOB GUI_WINDOWS                                                GUI/Windows/*.*)
-file(GLOB SCENE                                   ../../common_files/Scene/*.*)
-file(GLOB SCENE_CAMERAS                                              Scene/Cameras/*.*)
-file(GLOB NETWORK                                 ../../common_files/Network/*.*)
 
 source_group(src                                       FILES ${SRC})
 source_group(Audio                                     FILES ${AUDIO})
@@ -81,6 +81,20 @@ source_group(Core                                      FILES ${CORE})
 source_group(Editor                                    FILES ${EDITOR})
 source_group(Game                                      FILES ${GAME})
 source_group(Game\\Logic                               FILES ${GAME_LOGIC})
+source_group(Game\\Path                                FILES ${GAME_PATH})
+source_group(Graphics\\2D                              FILES ${GRAPHICS_2D})
+source_group(Graphics\\Objects                         FILES ${GRAPHICS_OBJECTS})
+source_group(GUI                                       FILES ${GUI})
+source_group(GUI\\Controls                             FILES ${GUI_CONTROLS})
+source_group(GUI\\GuiEditor                            FILES ${GUI_GUIEDITOR})
+source_group(GUI\\Game                                 FILES ${GUI_GAME})
+source_group(GUI\\Logic                                FILES ${GUI_LOGIC})
+source_group(GUI\\Menu                                 FILES ${GUI_MENU})
+source_group(GUI\\Panels                               FILES ${GUI_PANELS})
+source_group(GUI\\Windows                              FILES ${GUI_WINDOWS})
+#source_group(Network                                   FILES ${NETWORK})
+source_group(Scene                                     FILES ${SCENE})
+source_group(Scene\\Cameras                            FILES ${SCENE_CAMERAS})
 source_group(Scene\\Objects                            FILES ${SCENE_OBJECTS})
 source_group(Scene\\Objects\\Ammo                      FILES ${SCENE_OBJECTS_AMMO})
 source_group(Scene\\Objects\\Ammo\\AirBomb             FILES ${SCENE_OBJECTS_AMMO_AIRBOMB})
@@ -110,22 +124,12 @@ source_group(Scene\\Objects\\Weapons\\Gun              FILES ${SCENE_OBJECTS_WEA
 source_group(Scene\\Objects\\Weapons\\Laser            FILES ${SCENE_OBJECTS_WEAPONS_LASER})
 source_group(Scene\\Objects\\Weapons\\MachineGun       FILES ${SCENE_OBJECTS_WEAPONS_MACHINEGUN})
 source_group(Scene\\Objects\\Weapons\\RocketLauncher   FILES ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER})
-source_group(Game\\Path                                FILES ${GAME_PATH})
-source_group(Graphics\\2D                              FILES ${GRAPHICS_2D})
-source_group(Graphics\\Objects                         FILES ${GRAPHICS_OBJECTS})
-source_group(GUI                                       FILES ${GUI})
-source_group(GUI\\Controls                             FILES ${GUI_CONTROLS})
-source_group(GUI\\GuiEditor                            FILES ${GUI_GUIEDITOR})
-source_group(GUI\\Game                                 FILES ${GUI_GAME})
-source_group(GUI\\Logic                                FILES ${GUI_LOGIC})
-source_group(GUI\\Menu                                 FILES ${GUI_MENU})
-source_group(GUI\\Panels                               FILES ${GUI_PANELS})
-source_group(GUI\\Windows                              FILES ${GUI_WINDOWS})
-source_group(Scene                                     FILES ${SCENE})
-source_group(Scene\\Cameras                            FILES ${SCENE_CAMERAS})
-source_group(Network                                   FILES ${NETWORK})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${SCENE_OBJECTS}
+add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC}
+#               ${NETWORK}
+                ${GAME_PATH} ${GRAPHICS_2D} ${GRAPHICS_OBJECTS}
+                ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
+                ${GUI_WINDOWS} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
                 ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_AIRBOMB} ${SCENE_OBJECTS_AMMO_GRENADE}
                 ${SCENE_OBJECTS_AMMO_MINE} ${SCENE_OBJECTS_AMMO_ROCKET} ${SCENE_OBJECTS_AMMO_ROLLINGBOMB}
                 ${SCENE_OBJECTS_BUILDINGS} ${SCENE_OBJECTS_BUILDINGS_CIVILPLANT}
@@ -136,9 +140,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME
                 ${SCENE_OBJECTS_UNITS_HELICOPTER} ${SCENE_OBJECTS_UNITS_ROBOT} ${SCENE_OBJECTS_UNITS_SUPPLIERAMMO}
                 ${SCENE_OBJECTS_UNITS_TANK} ${SCENE_OBJECTS_WEAPONS} ${SCENE_OBJECTS_WEAPONS_GRENADERLAUNCHER}
                 ${SCENE_OBJECTS_WEAPONS_GUN} ${SCENE_OBJECTS_WEAPONS_LASER} ${SCENE_OBJECTS_WEAPONS_MACHINEGUN}
-                ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER} ${GAME_PATH} ${GRAPHICS_2D} ${GRAPHICS_OBJECTS}
-                ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
-                ${GUI_WINDOWS} ${SCENE} ${SCENE_CAMERAS} ${NETWORK})
+                ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER})
 
 include(../../RuntimeLibrary.cmake)
 

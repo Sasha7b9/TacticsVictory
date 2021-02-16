@@ -130,48 +130,50 @@ static float GetCameraYaw()
 
 static float GetSpeedNetIN()
 {
-    if(TheClient->IsConnected())
-    {
-        Connection *connection = TheClient->GetServerConnection();
-        return connection->GetBytesInPerSec() / 1e3f;
-    }
-    else
-    {
-        Vector<SharedPtr<Connection>> connections = TheServer->GetConnections();
-        if(connections.Size())
-        {
-            float speed = 0.0f;
-            for(Connection *connection : connections)
-            {
-                speed += connection->GetBytesInPerSec();
-            }
-            return speed / 1e3f;
-        }
-    }
+//    if(TheClient->IsConnected())
+//    {
+//        Connection *connection = TheClient->GetServerConnection();
+//        return connection->GetBytesInPerSec() / 1e3f;
+//    }
+//    else
+//    {
+//        Vector<SharedPtr<Connection>> connections = TheServer->GetConnections();
+//        if(connections.Size())
+//        {
+//            float speed = 0.0f;
+//            for(Connection *connection : connections)
+//            {
+//                speed += connection->GetBytesInPerSec();
+//            }
+//            return speed / 1e3f;
+//        }
+//    }
+
     return 0.0f;
 }
 
 
 static float GetSpeedNetOUT()
 {
-    if(TheClient->GetServerConnection())
-    {
-        Connection *connection = TheClient->GetServerConnection();
-        return connection->GetBytesOutPerSec() / 1e3f;
-    }
-    else
-    {
-        Vector<SharedPtr<Connection>> connections = TheServer->GetConnections();
-        if(connections.Size())
-        {
-            float speed = 0.0f;
-            for(Connection *connection : connections)
-            {
-                speed += connection->GetBytesOutPerSec();
-            }
-            return speed / 1e3f;
-        }
-    }
+//    if(TheClient->GetServerConnection())
+//    {
+//        Connection *connection = TheClient->GetServerConnection();
+//        return connection->GetBytesOutPerSec() / 1e3f;
+//    }
+//    else
+//    {
+//        Vector<SharedPtr<Connection>> connections = TheServer->GetConnections();
+//        if(connections.Size())
+//        {
+//            float speed = 0.0f;
+//            for(Connection *connection : connections)
+//            {
+//                speed += connection->GetBytesOutPerSec();
+//            }
+//            return speed / 1e3f;
+//        }
+//    }
+
     return 0.0f;
 }
 

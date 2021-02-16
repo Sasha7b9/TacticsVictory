@@ -34,18 +34,20 @@ void TacticsVictory::HandleClientDisconnected(StringHash, VariantMap& eventData)
 
 void TacticsVictory::HandleNetworkMessage(StringHash, VariantMap& eventData)
 {
-    using namespace NetworkMessage;
+    UNUSED(eventData);
 
-    int msgID = eventData[P_MESSAGEID].GetInt();
-    Connection *connection = dynamic_cast<Connection*>(eventData[P_CONNECTION].GetPtr());
-    const PODVector<uint8>& data = eventData[P_DATA].GetBuffer(); //-V2002
-    MemoryBuffer buffer(data);
-
-    VectorBufferRTS msg;
-
-    if(networkFunctions[msgID]) //-V108
-    {
-        networkFunctions[msgID](connection, buffer, msg); //-V108
-    }
+//    using namespace NetworkMessage;
+//
+//    int msgID = eventData[P_MESSAGEID].GetInt();
+//    Connection *connection = dynamic_cast<Connection*>(eventData[P_CONNECTION].GetPtr());
+//    const PODVector<uint8>& data = eventData[P_DATA].GetBuffer(); //-V2002
+//    MemoryBuffer buffer(data);
+//
+//    VectorBufferRTS msg;
+//
+//    if(networkFunctions[msgID]) //-V108
+//    {
+//        networkFunctions[msgID](connection, buffer, msg); //-V108
+//    }
 }
 
