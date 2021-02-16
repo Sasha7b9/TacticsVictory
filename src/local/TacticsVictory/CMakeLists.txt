@@ -56,7 +56,7 @@ file(GLOB SCENE_OBJECTS_TERRAIN                   ../../common_files/Scene/Objec
 file(GLOB SCENE_OBJECTS_UNITS                     ../../common_files/Scene/Objects/Units/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS                   ../../common_files/Scene/Objects/Weapons/*.*)
 file(GLOB SCENE_PRIMITIVES                        ../../common_files/Scene/Primitives/*.*)
-file(GLOB UTILS                                                      Utils/*.*)
+file(GLOB UTILS                                         ../BattlerTV/Utils/*.*)
 
 source_group(src                                       FILES ${SRC})
 source_group(Audio                                     FILES ${AUDIO})

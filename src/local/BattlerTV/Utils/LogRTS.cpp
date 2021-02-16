@@ -29,10 +29,11 @@ void LogRTS::Write(int level, const String &message, char *file, char *func, int
     }
     Log::Write(level, str);
 
-    if (!MODE_SERVER)
-    {
-        TheConsole->Write(str);
-    }
+#ifdef CLIENT
+
+    TheConsole->Write(str);
+
+#endif
 }
 
 
