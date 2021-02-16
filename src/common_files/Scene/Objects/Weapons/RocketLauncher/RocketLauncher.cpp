@@ -1,10 +1,5 @@
-// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
-// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "RocketLauncher.h"
-#include "Scene/Objects/Units/Tank/_Tank.h"
-#include "Scene/Objects/_GameObjectEvents.h"
-#include "Scene/Objects/Ammo/Rocket/Rocket.h"
 
 
 RocketLauncher::RocketLauncher(Context *context, Tank *tank) : WeaponObject(context)

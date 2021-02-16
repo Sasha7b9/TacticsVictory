@@ -1,12 +1,10 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Rocket.h"
-#include "Core/_Math.h"
-#include "Scene/Objects/Units/Tank/_Tank.h"
-#include "Scene/Objects/_GameObjectEvents.h"
-#include "Audio/Sounds.h"
-#include "Game/Particles.h"
-
+//#include "Core/_Math.h"
+//#include "Scene/Objects/Units/Tank/_Tank.h"
+//#include "Scene/Objects/_GameObjectEvents.h"
+//#include "Audio/Sounds.h"
+//#include "Game/Particles.h"
 
 
 class ThreadRocket : public Thread
