@@ -72,6 +72,4 @@ private:
     void CalculateAnimate();
     void VerifyOnIntersectionTerrain();
     void HandlePostRenderUpdate(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(Rocket);
 };

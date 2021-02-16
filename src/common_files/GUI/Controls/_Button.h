@@ -24,6 +24,4 @@ private:
 
     void HandleHoverBegin(StringHash, VariantMap&);
     void HandleHoverEnd(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(ButtonRTS);
 };

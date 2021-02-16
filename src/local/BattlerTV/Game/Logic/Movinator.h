@@ -16,6 +16,4 @@ private:
     float speed = 0.0f;
     float angle = 0.0f;
     Vector3 center = Vector3::ZERO;
-
-    DEFAULT_MEMBERS(Movinator);
 };

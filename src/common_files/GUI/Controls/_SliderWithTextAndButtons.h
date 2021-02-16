@@ -32,6 +32,4 @@ private:
     void HandleHoverBegin(StringHash, VariantMap&);
     void HandleHoverEnd(StringHash, VariantMap&);
     void HandleMouseClick(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(SliderWithTextAndButtons);
 };

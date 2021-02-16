@@ -8,7 +8,4 @@ class AirBomb : public AmmoObject
 {
 public:
     AirBomb(Context *context = TheContext);
-
-private:
-    DEFAULT_MEMBERS(AirBomb);
 };

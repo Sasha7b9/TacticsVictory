@@ -16,6 +16,4 @@ public:
 private:
     void Init();
     void LoadFromFile();
-
-    DEFAULT_MEMBERS(MilitaryPlant);
 };

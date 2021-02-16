@@ -8,7 +8,4 @@ class Shaft : public BuildingObject
 {
 public:
     Shaft(Context *context = TheContext);
-
-private:
-    DEFAULT_MEMBERS(Shaft);
 };

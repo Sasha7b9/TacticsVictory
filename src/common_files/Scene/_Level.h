@@ -26,6 +26,4 @@ public:
 
 private:
     static Vector<Vector<float>> map;
-
-    DEFAULT_MEMBERS(Level);
 };

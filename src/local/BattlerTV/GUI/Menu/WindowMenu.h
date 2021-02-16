@@ -22,7 +22,5 @@ protected:
     void SetFocusedNext();                                  // Установить фокус на следующую кнопку
     void SetFocusedPrev();                                  // Установить фокус на предыдущую кнопку
     int NumFocusedButton();                                 // Возвращает номер сфокусированной кнопки. Если фокус не установлен, возвращает 0
-
-    DEFAULT_MEMBERS(WindowMenu);
 };
 

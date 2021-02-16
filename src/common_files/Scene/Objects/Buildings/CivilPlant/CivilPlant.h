@@ -8,7 +8,4 @@ class CivilPlant : public BuildingObject
 {
 public:
     CivilPlant(Context *context = TheContext);
-
-private:
-    DEFAULT_MEMBERS(CivilPlant);
 };

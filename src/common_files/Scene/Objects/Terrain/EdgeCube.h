@@ -11,7 +11,4 @@ class EdgeCube : public Object
 public:
     EdgeCube(Context *context = TheContext);
     PlaneCube plane;
-
-private:
-    DEFAULT_MEMBERS(EdgeCube);
 };

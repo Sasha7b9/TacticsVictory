@@ -51,6 +51,4 @@ private:
 //    void HandleClientConnected(StringHash, VariantMap&);    // Это на сервере, когда к нему подключается новый клиент
 //    void HandleClientDisconnected(StringHash, VariantMap&); // На сервере, когда отключается клиент
 //    void HandleNetworkMessage(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(TacticsVictory);
 };

@@ -9,7 +9,4 @@ class CornerCube : public Object
 
 public:
     CornerCube(Context *context = TheContext);
-
-private:
-    DEFAULT_MEMBERS(CornerCube);
 };

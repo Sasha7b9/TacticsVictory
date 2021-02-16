@@ -21,6 +21,4 @@ private:
     bool enabled = false;
     Coord start;
     PODVector<Coord> path;
-
-    DEFAULT_MEMBERS(PathIndicator);
 };

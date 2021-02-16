@@ -36,9 +36,6 @@ private:
     void AddPrevWave(PODVector<Coord> &path);
     void FindPath();
 
-    DEFAULT_MEMBERS(WaveAlgorithm);
-
-
 public:
     CScriptArray* GetPathUINT()
     {

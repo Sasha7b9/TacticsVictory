@@ -19,6 +19,4 @@ private:
     uint state = 0;
 
     void HandleButtonRelease(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(ButtonSwitch);
 };

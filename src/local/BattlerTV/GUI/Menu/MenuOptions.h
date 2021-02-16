@@ -42,6 +42,4 @@ private:
     PODVector<int> shadowMapSizes;
     SharedPtr<ButtonRTS> buttonClose;
     IntVector2 dragBeginPosition;
-
-    DEFAULT_MEMBERS(MenuOptions);
 };

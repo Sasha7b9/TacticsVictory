@@ -8,7 +8,4 @@ class Mine : public AmmoObject
 {
 public:
     Mine(Context *context = TheContext);
-
-private:
-    DEFAULT_MEMBERS(Mine);
 };

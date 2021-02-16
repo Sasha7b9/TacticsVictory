@@ -16,9 +16,6 @@ typedef unsigned short  ushort;
 typedef unsigned char   uchar;
 
 
-#define DEFAULT_MEMBERS(name) name& operator=(const name&) = delete; name(const name&) = delete
-
-
 enum TypeCursor
 {
     TypeCursor_Normal,

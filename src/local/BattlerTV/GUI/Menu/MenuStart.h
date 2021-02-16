@@ -30,6 +30,4 @@ private:
     SharedPtr<ButtonRTS> buttonAboutGame;
     SharedPtr<ButtonRTS> buttonAboutMe;
     SharedPtr<ButtonSwitch> buttonLanguage;
-
-    DEFAULT_MEMBERS(MenuStart);
 };

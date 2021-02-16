@@ -11,7 +11,4 @@ class SideCube : public Object
 public:
     SideCube(Context *context = TheContext);
     PlaneCube plane;
-
-private:
-    DEFAULT_MEMBERS(SideCube);
 };
