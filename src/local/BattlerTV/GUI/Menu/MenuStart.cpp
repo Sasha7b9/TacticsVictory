@@ -4,7 +4,7 @@
 #include "MenuAboutMe.h"
 #include "MenuEvents.h"
 #include "MenuRTS.h"
-#include "GlobalFunctions.h"
+//#include "GlobalFunctions.h"
 //#include "TacticsVictory.h"
 
 

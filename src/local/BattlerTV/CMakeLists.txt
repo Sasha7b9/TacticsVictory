@@ -78,6 +78,7 @@ file(GLOB SCENE_OBJECTS_WEAPONS_GUN               ../../common_files/Scene/Objec
 file(GLOB SCENE_OBJECTS_WEAPONS_LASER             ../../common_files/Scene/Objects/Weapons/Laser/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS_MACHINEGUN        ../../common_files/Scene/Objects/Weapons/MacheneGun/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER    ../../common_files/Scene/Objects/Weapons/RocketLauncher/*.*)
+file(GLOB UTILS                                                      Utils/*.*)
 
 source_group(src                                       FILES ${SRC})
 source_group(Audio                                     FILES ${AUDIO})
@@ -128,6 +129,7 @@ source_group(Scene\\Objects\\Weapons\\Gun              FILES ${SCENE_OBJECTS_WEA
 source_group(Scene\\Objects\\Weapons\\Laser            FILES ${SCENE_OBJECTS_WEAPONS_LASER})
 source_group(Scene\\Objects\\Weapons\\MachineGun       FILES ${SCENE_OBJECTS_WEAPONS_MACHINEGUN})
 source_group(Scene\\Objects\\Weapons\\RocketLauncher   FILES ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER})
+source_group(Utils                                     FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC}
 #               ${NETWORK}
@@ -144,7 +146,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME
                 ${SCENE_OBJECTS_UNITS_HELICOPTER} ${SCENE_OBJECTS_UNITS_ROBOT} ${SCENE_OBJECTS_UNITS_SUPPLIERAMMO}
                 ${SCENE_OBJECTS_UNITS_TANK} ${SCENE_OBJECTS_WEAPONS} ${SCENE_OBJECTS_WEAPONS_GRENADERLAUNCHER}
                 ${SCENE_OBJECTS_WEAPONS_GUN} ${SCENE_OBJECTS_WEAPONS_LASER} ${SCENE_OBJECTS_WEAPONS_MACHINEGUN}
-                ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER})
+                ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)
 

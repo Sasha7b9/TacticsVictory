@@ -1,7 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Console.h"
-#include "GlobalFunctions.h"
+//#include "GlobalFunctions.h"
 //#include "Network/Client.h"
 //#include "Network/Server.h"
 //#include "Network/NetworkMessages.h"

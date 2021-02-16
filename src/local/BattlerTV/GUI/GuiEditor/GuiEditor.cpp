@@ -4,7 +4,7 @@
 #include "Editor/Editor.h"
 #include "Scene/_Level.h"
 #include "Scene/Objects/Terrain/Terrain.h"
-#include "GlobalFunctions.h"
+//#include "GlobalFunctions.h"
 #include "GUI/GUI.h"
 #include "GUI/Controls/_Tab.h"
 #include "GUI/Controls/_Button.h"
