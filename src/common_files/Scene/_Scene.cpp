@@ -4,12 +4,17 @@
 
 SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)
 {
+    scene = new Scene(context);
+
     RegisterObjects();
 }
 
 
 SceneRTS::~SceneRTS()
 {
+    delete scene;
+    SAFE_DELETE(TheWindowTarget);
+
     SAFE_DELETE(TheTerrain); //-V809
 
 #ifdef CLIENT
