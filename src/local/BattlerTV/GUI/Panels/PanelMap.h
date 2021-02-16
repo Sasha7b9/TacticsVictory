@@ -3,9 +3,7 @@
 #include "GUI/Controls/_WindowRTS.h"
 
 
-
 class ImageRTS;
-
 
 
 /*
@@ -39,6 +37,4 @@ private:
     uint SizeXMap();
     uint SizeYMap();
     bool FindIntersectionX0Z(const Vector2 &screenPoint, Vector2 &hitPoint);
-
-    DEFAULT_MEMBERS(PanelMap);
 };

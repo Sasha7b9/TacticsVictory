@@ -1,6 +1,6 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Scene/Objects/Weapons/WeaponObject.h"
-
 
 
 class RocketLauncher : public WeaponObject
@@ -21,6 +21,4 @@ private:
     float timePrevRaycast = 0.0f;
 
     bool TargetInPointView(Tank* tank);
-
-    DEFAULT_MEMBERS(RocketLauncher);
 };

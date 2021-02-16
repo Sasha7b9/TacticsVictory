@@ -3,12 +3,8 @@
 #include "Scene/Objects/Ammo/_AmmoObject.h"
 
 
-
 class AirBomb : public AmmoObject
 {
 public:
     AirBomb(Context *context = TheContext);
-
-private:
-    DEFAULT_MEMBERS(AirBomb);
 };

@@ -3,7 +3,6 @@
 #include "GUI/Controls/_WindowRTS.h"
 
 
-
 /*
     Нижняя панель - на ней расположены кнопки
 */
@@ -15,7 +14,4 @@ public:
     PanelBottom(Context *context = TheContext);
 
     static void RegisterObject(Context *context = TheContext);
-
-private:
-    DEFAULT_MEMBERS(PanelBottom);
 };

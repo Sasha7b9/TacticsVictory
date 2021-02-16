@@ -3,7 +3,6 @@
 #include "GUI/Menu/WindowMenu.h"
 
 
-
 class MenuAboutMe : public WindowMenu
 {
     URHO3D_OBJECT(MenuAboutMe, WindowMenu);
@@ -15,6 +14,4 @@ private:
     SharedPtr<ButtonRTS> buttonOk;
 
     void HandleButtonRelease(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(MenuAboutMe);
 };

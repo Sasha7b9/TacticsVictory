@@ -27,6 +27,4 @@ private:
     void HandleButtonDown(StringHash eventType, VariantMap& eventData);
     void HandleHoverBegin(StringHash eventType, VariantMap& eventData);
     void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
-
-    DEFAULT_MEMBERS(DropDownListWithTextAndButton);
 };

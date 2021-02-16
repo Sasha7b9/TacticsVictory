@@ -3,7 +3,6 @@
 #include "Game/Path/WaveAlgorithm.h"
 
 
-
 class Translator : public Object
 {
     URHO3D_OBJECT(Translator, Object)
@@ -50,6 +49,4 @@ private:
 
     void SetStep(const Coord &start, const Coord &end);
     void StartRotation(float angleNeed);
-
-    DEFAULT_MEMBERS(Translator);
 };

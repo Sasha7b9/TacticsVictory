@@ -22,6 +22,4 @@ public:
 
 private:
     Network *network = nullptr;
-
-    DEFAULT_MEMBERS(Server);
 };

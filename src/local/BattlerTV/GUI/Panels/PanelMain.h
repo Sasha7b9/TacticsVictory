@@ -3,9 +3,7 @@
 #include "GUI/Controls/_WindowRTS.h"
 
 
-
 class Tab;
-
 
 
 /*
@@ -28,6 +26,4 @@ private:
     SharedPtr<Tab> currentTab;
 
     void HandleToggedTitle(StringHash eventType, VariantMap &eventData);
-
-    DEFAULT_MEMBERS(PanelMain);
 };

@@ -3,7 +3,6 @@
 #include "PlaneCube.h"
 
 
-
 class SideCube : public Object
 {
     URHO3D_OBJECT(SideCube, Object);
@@ -11,7 +10,4 @@ class SideCube : public Object
 public:
     SideCube(Context *context = TheContext);
     PlaneCube plane;
-
-private:
-    DEFAULT_MEMBERS(SideCube);
 };

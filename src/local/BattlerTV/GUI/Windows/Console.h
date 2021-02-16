@@ -1,7 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-//#include "GUI/Controls/_WindowRTS.h"
-
 
 
 class ConsoleParser : public Object
@@ -64,8 +62,6 @@ private:
     bool ExtractFloat(const String &str, float *value);       // Считывает значение типа float после первого символа ':'
 
     void HandleAsyncExecFinished(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(ConsoleParser);
 };
 
 
@@ -107,6 +103,4 @@ private:
     void HandleUnhandledKey(StringHash, VariantMap&);
     void HandleClick(StringHash, VariantMap&);
     void HandleResize(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(ConsoleRTS);
 };

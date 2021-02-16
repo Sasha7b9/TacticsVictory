@@ -1,11 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
 
-
-
 class CubeTerrain;
-
-
 
 class LayerTerrain : public Object
 {
@@ -25,6 +21,4 @@ private:
     SharedPtr<Geometry> geometry;
     SharedPtr<Model> model;
     SharedPtr<StaticModel> object;
-
-    DEFAULT_MEMBERS(LayerTerrain);
 };

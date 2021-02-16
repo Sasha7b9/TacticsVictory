@@ -15,6 +15,4 @@ private:
     SharedPtr<Label> label;
 
     void HandleChangeLanguage(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(Hint);
 };

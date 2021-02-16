@@ -13,10 +13,14 @@ if(WIN32)
 
     set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 
+    add_compile_options(/wd4625)
+    add_compile_options(/wd4626)
     add_compile_options(/wd4514)    # 'xxx': unreferenced inline function has been removed
     add_compile_options(/wd4710)    # 'function' : function not inlined
     add_compile_options(/wd4711)    # function 'function' selected for inline expansion
     add_compile_options(/wd4820)    # 'xxx': 'n' bytes padding added after base class 'yyy'
+    add_compile_options(/wd5026)
+    add_compile_options(/wd5027)
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified
     add_compile_options(/wd5219)    # implicit conversion from 'type-1' to 'type-2', possible loss of data

@@ -3,7 +3,6 @@
 #include "LineTranslator1D.h"
 
 
-
 class LineTranslator2D : public Object
 {
     URHO3D_OBJECT(LineTranslator2D, Object);
@@ -26,6 +25,4 @@ public:
 private:
     SharedPtr<LineTranslator1D> translatorX;
     SharedPtr<LineTranslator1D> translatorY;
-
-    DEFAULT_MEMBERS(LineTranslator2D);
 };

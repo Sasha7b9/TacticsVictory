@@ -21,6 +21,4 @@ public:
 private:
     void Create();
     void RegistrationObjects();
-
-    DEFAULT_MEMBERS(GUI);
 };

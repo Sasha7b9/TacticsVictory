@@ -33,6 +33,4 @@ private:
 
     void Replace4Points(int x, int y, const Color &color);
     void Replace4PointsBound(int x, int y, const Color &color);
-
-    DEFAULT_MEMBERS(ImageRTS);
 };

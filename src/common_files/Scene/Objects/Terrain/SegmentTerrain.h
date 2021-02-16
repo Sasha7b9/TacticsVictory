@@ -2,10 +2,8 @@
 #pragma once
 
 
-
 class CubeTerrain;
 class LayerTerrain;
-
 
 
 class SegmentTerrain : public Object
@@ -39,6 +37,4 @@ private:
 
     void AddCube(const SharedPtr<CubeTerrain> &cube);
     void CreateLayers();
-
-    DEFAULT_MEMBERS(SegmentTerrain);
 };

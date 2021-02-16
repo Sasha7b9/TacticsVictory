@@ -2,7 +2,6 @@
 #pragma once
 
 
-
 class PointPlane
 {
 public:
@@ -12,7 +11,6 @@ public:
 };
 
 
-
 class PlaneCube : public Object
 {
     URHO3D_OBJECT(PlaneCube, Object);
@@ -20,7 +18,4 @@ class PlaneCube : public Object
 public:
     PlaneCube(Context *context = TheContext);
     PointPlane point[4];
-
-private:
-    DEFAULT_MEMBERS(PlaneCube);
 };

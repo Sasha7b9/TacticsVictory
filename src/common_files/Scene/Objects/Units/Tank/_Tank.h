@@ -6,7 +6,6 @@
 #include "Scene/Objects/Weapons/RocketLauncher/RocketLauncher.h"
 
 
-
 class Tank : public UnitObject
 {
     URHO3D_OBJECT(Tank, UnitObject);
@@ -69,6 +68,4 @@ private:
     SharedPtr<RocketLauncher> rocketLauncher;
 
     void HandleAmmoHit(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(Tank);
 };

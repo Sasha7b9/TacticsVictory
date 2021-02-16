@@ -2,14 +2,12 @@
 #pragma once
 
 
-
 class WindowRTS;
 class ButtonRTS;
 class PanelBottom;
 class PanelMap;
 class PanelMain;
 class SliderWithTextAndButtons;
-
 
 
 class GuiEditor : public Object
@@ -88,6 +86,4 @@ private:
     void HandleExitOk(StringHash, VariantMap&);
     void HandleExitCancel(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(GuiEditor);
 };

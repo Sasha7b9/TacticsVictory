@@ -3,7 +3,6 @@
 #include "Scene/Objects/Ammo/_AmmoObject.h"
 
 
-
 class Rocket : public AmmoObject
 {
     URHO3D_OBJECT(Rocket, AmmoObject);
@@ -72,6 +71,4 @@ private:
     void CalculateAnimate();
     void VerifyOnIntersectionTerrain();
     void HandlePostRenderUpdate(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(Rocket);
 };

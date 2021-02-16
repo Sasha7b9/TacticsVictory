@@ -2,7 +2,6 @@
 #pragma once
 
 
-
 class LineTranslator1D : public Object
 {
     URHO3D_OBJECT(LineTranslator1D, Object);
@@ -29,6 +28,4 @@ private:
     float speed = 0.0f;
     State state = State_PointStart;
     float currentSpeed = 0.0f;
-
-    DEFAULT_MEMBERS(LineTranslator1D);
 };

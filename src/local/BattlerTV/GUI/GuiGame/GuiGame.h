@@ -2,12 +2,10 @@
 #pragma once
 
 
-
 class PanelBottom;
 class PanelMap;
 class PanelMain;
 class ButtonRTS;
-
 
 
 class GuiGame : public Object
@@ -42,6 +40,4 @@ private:
 
     void HandleButtonRelease(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(GuiGame);
 };

@@ -26,6 +26,4 @@ private:
 
     void HandleServerConnected(StringHash, VariantMap&);
     void HandleServerDisconnected(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(Client);
 };

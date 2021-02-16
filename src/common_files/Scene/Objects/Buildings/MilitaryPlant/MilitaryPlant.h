@@ -3,7 +3,6 @@
 #include "Scene/Objects/Buildings/_BuildingObject.h"
 
 
-
 class MilitaryPlant : public BuildingObject
 {
 public:
@@ -16,6 +15,4 @@ public:
 private:
     void Init();
     void LoadFromFile();
-
-    DEFAULT_MEMBERS(MilitaryPlant);
 };

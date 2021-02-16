@@ -36,6 +36,4 @@ private:
     void HandleMouseDown(StringHash, VariantMap&);
     void ProcessMouseLeft();
     void ProcessMouseRight();
-
-    DEFAULT_MEMBERS(SceneRTS);
 };

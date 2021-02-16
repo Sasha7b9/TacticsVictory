@@ -3,7 +3,6 @@
 #include "Scene/Objects/_GameObject.h"
 
 
-
 class UnitObject : public GameObject
 {
 public:
@@ -21,6 +20,4 @@ private:
     SharedPtr<RenderSurface> renderSurface;
 
     void HandlePostRenderUpdate(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(UnitObject);
 };

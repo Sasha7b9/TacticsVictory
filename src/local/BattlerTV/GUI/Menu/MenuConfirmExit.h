@@ -3,7 +3,6 @@
 #include "GUI/Menu/WindowMenu.h"
 
 
-
 class MenuConfirmExit : public WindowMenu
 {
     URHO3D_OBJECT(MenuConfirmExit, WindowMenu);
@@ -20,6 +19,4 @@ private:
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
     void OnPressButtonOk();
     void OnPressButtonCancel();
-
-    DEFAULT_MEMBERS(MenuConfirmExit);
 };

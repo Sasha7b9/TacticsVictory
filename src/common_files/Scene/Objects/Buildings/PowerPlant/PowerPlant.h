@@ -3,12 +3,8 @@
 #include "Scene/Objects/Buildings/_BuildingObject.h"
 
 
-
 class PowerPlant : public BuildingObject
 {
 public:
     PowerPlant(Context *context = TheContext);
-
-private:
-    DEFAULT_MEMBERS(PowerPlant);
 };

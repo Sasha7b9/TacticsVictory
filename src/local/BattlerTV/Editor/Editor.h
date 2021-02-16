@@ -22,6 +22,4 @@ private:
     void HandlePostRenderUpdate(StringHash, VariantMap&);
     void HandleMouseDown(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
-
-    DEFAULT_MEMBERS(Editor);
 };
