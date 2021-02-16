@@ -37,7 +37,6 @@ file(GLOB GAME                                                       Game/*.*)
 file(GLOB GAME_LOGIC                                                 Game/Logic/*.*)
 file(GLOB GAME_PATH                                                  Game/Path/*.*)
 file(GLOB GRAPHICS_2D                                                Graphics/2D/*.*)
-file(GLOB GRAPHICS_OBJECTS                                           Graphics/Objects/*.*)
 file(GLOB GUI                                                        GUI/*.*)
 file(GLOB GUI_CONTROLS                            ../../common_files/GUI/Controls/*.*)
 file(GLOB GUI_GUIEDITOR                                              GUI/GuiEditor/*.*)
@@ -79,6 +78,7 @@ file(GLOB SCENE_OBJECTS_WEAPONS_GUN               ../../common_files/Scene/Objec
 file(GLOB SCENE_OBJECTS_WEAPONS_LASER             ../../common_files/Scene/Objects/Weapons/Laser/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS_MACHINEGUN        ../../common_files/Scene/Objects/Weapons/MacheneGun/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER    ../../common_files/Scene/Objects/Weapons/RocketLauncher/*.*)
+file(GLOB SCENE_PRIMITIVES                        ../../common_files/Scene/Primitives/*.*)
 file(GLOB UTILS                                                      Utils/*.*)
 
 source_group(src                                       FILES ${SRC})
@@ -89,7 +89,6 @@ source_group(Game                                      FILES ${GAME})
 source_group(Game\\Logic                               FILES ${GAME_LOGIC})
 source_group(Game\\Path                                FILES ${GAME_PATH})
 source_group(Graphics\\2D                              FILES ${GRAPHICS_2D})
-source_group(Graphics\\Objects                         FILES ${GRAPHICS_OBJECTS})
 source_group(GUI                                       FILES ${GUI})
 source_group(GUI\\Controls                             FILES ${GUI_CONTROLS})
 source_group(GUI\\GuiEditor                            FILES ${GUI_GUIEDITOR})
@@ -130,6 +129,7 @@ source_group(Scene\\Objects\\Weapons\\Gun              FILES ${SCENE_OBJECTS_WEA
 source_group(Scene\\Objects\\Weapons\\Laser            FILES ${SCENE_OBJECTS_WEAPONS_LASER})
 source_group(Scene\\Objects\\Weapons\\MachineGun       FILES ${SCENE_OBJECTS_WEAPONS_MACHINEGUN})
 source_group(Scene\\Objects\\Weapons\\RocketLauncher   FILES ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER})
+source_group(Scene\\Primitives                         FILES ${SCENE_PRIMITIVES})
 source_group(Utils                                     FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
@@ -143,7 +143,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME
     ${SCENE_OBJECTS_UNITS_BUILDER} ${SCENE_OBJECTS_UNITS_HELICOPTER} ${SCENE_OBJECTS_UNITS_ROBOT}
     ${SCENE_OBJECTS_UNITS_SUPPLIERAMMO} ${SCENE_OBJECTS_UNITS_TANK} ${SCENE_OBJECTS_WEAPONS}
     ${SCENE_OBJECTS_WEAPONS_GRENADERLAUNCHER} ${SCENE_OBJECTS_WEAPONS_GUN} ${SCENE_OBJECTS_WEAPONS_LASER}
-    ${SCENE_OBJECTS_WEAPONS_MACHINEGUN} ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER} ${UTILS})
+    ${SCENE_OBJECTS_WEAPONS_MACHINEGUN} ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER} ${SCENE_PRIMITIVES} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)
 

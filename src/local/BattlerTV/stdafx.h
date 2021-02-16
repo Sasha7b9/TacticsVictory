@@ -136,7 +136,6 @@ using namespace Urho3D;
 #include "Game/Path/TilePath.h"
 
 #include "Graphics/2D/Image.h"
-#include "Graphics/Objects/Triangle.h"
 
 #include "GUI/Cursor.h"
 #include "GUI/GUI.h"
@@ -183,6 +182,7 @@ using namespace Urho3D;
 #include "Scene/Objects/Terrain/SegmentTerrain.h"
 #include "Scene/Objects/Units/Tank/_Tank.h"
 #include "Scene/Objects/Weapons/RocketLauncher/RocketLauncher.h"
+#include "Scene/Primitives/_Triangle.h"
 
 #include "Utils/GlobalFunctions.h"
 #include "Utils/LogRTS.h"

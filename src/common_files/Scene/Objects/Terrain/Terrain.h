@@ -1,7 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
-#include "Graphics/Objects/Plane.h"
 #include "CubeTerrain.h"
+#include "Scene/Primitives/_Plane.h"
 
 
 class SegmentTerrain;

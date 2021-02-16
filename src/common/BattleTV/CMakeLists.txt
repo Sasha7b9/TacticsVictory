@@ -32,7 +32,6 @@ endif()
 file(GLOB SRC                                                        *.h *.cpp)
 file(GLOB CORE                                    ../../common_files/Core/*.*)
 file(GLOB GAME_LOGIC                                                 Game/Logic/*.*)
-file(GLOB GRAPHICS_OBJECTS                                           Graphics/Objects/*.*)
 file(GLOB NETWORK                                                    Network/*.*
                                                   ../../common_files/Network/Game/*.*)
 file(GLOB SCENE                                   ../../common_files/Scene/*.*)
@@ -65,12 +64,12 @@ file(GLOB SCENE_OBJECTS_WEAPONS_GUN               ../../common_files/Scene/Objec
 file(GLOB SCENE_OBJECTS_WEAPONS_LASER             ../../common_files/Scene/Objects/Weapons/Laser/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS_MACHINEGUN        ../../common_files/Scene/Objects/Weapons/MacheneGun/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER    ../../common_files/Scene/Objects/Weapons/RocketLauncher/*.*)
+file(GLOB SCENE_PRIMITIVES                        ../../common_files/Scene/Primitives/*.*)
 file(GLOB UTILS                                                      Utils/*.*)
 
 source_group(src                                       FILES ${SRC})
 source_group(Core                                      FILES ${CORE})
 source_group(Game\\Logic                               FILES ${GAME_LOGIC})
-source_group(Graphics\\Objects                         FILES ${GRAPHICS_OBJECTS})
 source_group(Network                                   FILES ${NETWORK})
 source_group(Scene                                     FILES ${SCENE})
 source_group(Scene\\Objects                            FILES ${SCENE_OBJECTS})
@@ -102,9 +101,10 @@ source_group(Scene\\Objects\\Weapons\\Gun              FILES ${SCENE_OBJECTS_WEA
 source_group(Scene\\Objects\\Weapons\\Laser            FILES ${SCENE_OBJECTS_WEAPONS_LASER})
 source_group(Scene\\Objects\\Weapons\\MachineGun       FILES ${SCENE_OBJECTS_WEAPONS_MACHINEGUN})
 source_group(Scene\\Objects\\Weapons\\RocketLauncher   FILES ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER})
+source_group(Scene\\Primitives                         FILES ${SCEEN_PRIMITIVES})
 source_group(Utils                                     FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GRAPHICS_OBJECTS}
+add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC}
     ${NETWORK} ${SCENE} ${SCENE_OBJECTS} ${SCENE_OBJECTS_AMMO}
     ${SCENE_OBJECTS_AMMO_AIRBOMB} ${SCENE_OBJECTS_AMMO_GRENADE} ${SCENE_OBJECTS_AMMO_MINE} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_AMMO_ROLLINGBOMB} ${SCENE_OBJECTS_BUILDINGS} ${SCENE_OBJECTS_BUILDINGS_CIVILPLANT}
@@ -114,7 +114,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GRAPHICS_OBJECTS}
     ${SCENE_OBJECTS_UNITS_BUILDER} ${SCENE_OBJECTS_UNITS_HELICOPTER} ${SCENE_OBJECTS_UNITS_ROBOT}
     ${SCENE_OBJECTS_UNITS_SUPPLIERAMMO} ${SCENE_OBJECTS_UNITS_TANK} ${SCENE_OBJECTS_WEAPONS}
     ${SCENE_OBJECTS_WEAPONS_GRENADERLAUNCHER} ${SCENE_OBJECTS_WEAPONS_GUN} ${SCENE_OBJECTS_WEAPONS_LASER}
-    ${SCENE_OBJECTS_WEAPONS_MACHINEGUN} ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER} ${UTILS})
+    ${SCENE_OBJECTS_WEAPONS_MACHINEGUN} ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER} ${SCENE_PRIMITIVES} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)
 

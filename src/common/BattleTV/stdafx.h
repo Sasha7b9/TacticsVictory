@@ -130,8 +130,6 @@ using namespace Urho3D;
 #include "Game/Logic/Movinator.h"
 #include "Game/Logic/Rotator.h"
 
-#include "Graphics/Objects/Triangle.h"
-
 #include "Network/SServer.h"
 #include "Network/Game/_GameMessages.h"
 #include "Network/Game/_TConnection.h"
@@ -146,6 +144,7 @@ using namespace Urho3D;
 #include "Scene/Objects/Terrain/SegmentTerrain.h"
 #include "Scene/Objects/Units/Tank/_Tank.h"
 #include "Scene/Objects/Weapons/RocketLauncher/RocketLauncher.h"
+#include "Scene/Primitives/_Triangle.h"
 
 #include "Utils/GlobalFunctions.h"
 #include "Utils/LogRTS.h"
