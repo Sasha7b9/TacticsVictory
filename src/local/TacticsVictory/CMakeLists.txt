@@ -46,8 +46,6 @@ file(GLOB GUI_LOGIC                                                  GUI/Logic/*
 file(GLOB GUI_MENU                                                   GUI/Menu/*.*)
 file(GLOB GUI_PANELS                                                 GUI/Panels/*.*)
 file(GLOB GUI_WINDOWS                                                GUI/Windows/*.*)
-file(GLOB NETWORK                                 ../../common_files/Network/*.*
-                                                                     Network/*.*)
 file(GLOB SCENE                                   ../../common_files/Scene/*.*)
 file(GLOB SCENE_CAMERAS                                              Scene/Cameras/*.*)
 file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/*.*)
@@ -98,7 +96,6 @@ source_group(GUI\\Logic                                FILES ${GUI_LOGIC})
 source_group(GUI\\Menu                                 FILES ${GUI_MENU})
 source_group(GUI\\Panels                               FILES ${GUI_PANELS})
 source_group(GUI\\Windows                              FILES ${GUI_WINDOWS})
-source_group(Network                                   FILES ${NETWORK})
 source_group(Scene                                     FILES ${SCENE})
 source_group(Scene\\Cameras                            FILES ${SCENE_CAMERAS})
 source_group(Scene\\Objects                            FILES ${SCENE_OBJECTS})
@@ -134,7 +131,7 @@ source_group(Utils                                     FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
     ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
-    ${GUI_WINDOWS} ${NETWORK} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_AMMO}
+    ${GUI_WINDOWS} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_AMMO}
     ${SCENE_OBJECTS_AMMO_AIRBOMB} ${SCENE_OBJECTS_AMMO_GRENADE} ${SCENE_OBJECTS_AMMO_MINE} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_AMMO_ROLLINGBOMB} ${SCENE_OBJECTS_BUILDINGS} ${SCENE_OBJECTS_BUILDINGS_CIVILPLANT}
     ${SCENE_OBJECTS_BUILDINGS_MILITARYPLANT} ${SCENE_OBJECTS_BUILDINGS_POWERPLANT}

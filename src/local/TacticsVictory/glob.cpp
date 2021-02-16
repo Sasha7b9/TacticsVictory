@@ -32,8 +32,6 @@ Level               *TheLevel = nullptr;
 TerrainRTS          *TheTerrain = nullptr;
 Battler             *TheTacticsVictory = nullptr;
 LogRTS              *TheLog = nullptr;
-Server              *TheServer = nullptr;
-Client              *TheClient = nullptr;
 
 // GUI
 GuiGame             *TheGuiGame = nullptr;

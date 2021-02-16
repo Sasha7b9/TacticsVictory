@@ -2,49 +2,6 @@
 #include "stdafx.h"
 
 
-bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
-{
-    const ParserStruct structs[100] =
-    {
-        {"start",   None,   &ConsoleParser::FuncClientStart,    "запуск клиента. Формат команды - client -start -address:XX.XX.XX.XX -port:XX"},
-        {"stop",    None,   &ConsoleParser::FuncClientStop,     "останов клиента"}
-    };
-
-    return Run(structs, words, showInfo);
-}
-
-
-static void OnServerConnected()
-{
-    TheClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
-    TheConsole->Write("Запрашиваю ландшафт");
-}
-
-
-bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
-{
-    String address = SERVER_ADDRESS;
-    uint16 port = SERVER_PORT;
-    if(!GF::GetAddressPort(words, address, port))
-    {
-        return false;
-    }
-
-    if(TheClient->IsConnected())
-    {
-        TheConsole->Write("Command forbidden. The client already running");
-    }
-    else
-    {
-        TheMenu->Hide();
-        TheClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, OnServerConnected);
-        TheConsole->Write("Соединяюсь с удалённым сервером...");
-    }
-
-    return true;
-}
-
-
 bool ConsoleParser::FuncClientStop(Vector<String> &, bool)
 {
     return false;

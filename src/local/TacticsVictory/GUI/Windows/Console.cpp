@@ -16,7 +16,6 @@ void ConsoleParser::Execute(const String &string)
     const ParserStruct structs[100] =
     {
         {"clear",   None,   &ConsoleParser::FuncClear,  "очистить консоль"},
-        {"client",  None,   &ConsoleParser::FuncClient, "функции работы с клиентом"},
         {"close",   None,   &ConsoleParser::FuncClose,  "закрыть консоль"},
         {"exit",    None,   &ConsoleParser::FuncExit,   "выход"},
         {"server",  None,   &ConsoleParser::FuncServer, "функции работы с сервером"},

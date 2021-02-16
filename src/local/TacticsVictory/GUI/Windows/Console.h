@@ -32,15 +32,7 @@ private:
     bool serverRunning = false;     // При запуске сервера это значение устанавливается в truе, потому что остановить сервер может только тот 
                                     // экземпляр, который его запустил
 
-    bool FuncClient(Vector<String> &, bool);
-    bool FuncClientStart(Vector<String> &, bool);
     bool FuncClientStop(Vector<String> &, bool);
-
-    bool FuncServer(Vector<String> &, bool);
-    bool FuncServerStart(Vector<String> &, bool);
-    bool FuncServerStop(Vector<String> &, bool);
-    bool FuncServerLatency(Vector<String> &, bool);
-    bool FuncServerPacketLoss(Vector<String> &, bool);
 
     bool FuncVars(Vector<String> &, bool);
     bool FuncVarsOpen(Vector<String> &, bool);
