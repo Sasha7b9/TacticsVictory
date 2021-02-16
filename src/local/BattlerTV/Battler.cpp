@@ -321,15 +321,15 @@ void Battler::OpenLog()
 
     if (MODE_SERVER)
     {
-        sprintf_s(buffer, 50, "server%d.log", rand());
+        sprintf_s(buffer, 50, "server.log");
     }
     else if (MODE_CLIENT)
     {
-        sprintf_s(buffer, 50, "client%d.log", rand());
+        sprintf_s(buffer, 50, "client.log");
     }
     else
     {
-        sprintf_s(buffer, 50, "log%d.log", rand());
+        sprintf_s(buffer, 50, "log.log");
     }
 
     TheLog->Open(buffer);

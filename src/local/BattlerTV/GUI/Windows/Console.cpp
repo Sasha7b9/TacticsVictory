@@ -371,7 +371,9 @@ void ConsoleRTS::Write(const String &message)
 
     str += message + "\n";
 
-    text->SetText(text->GetText() + str);
+    URHO3D_LOGERROR(message);
+
+    //text->SetText(text->GetText() + str);
 
     VariantMap map;
     HandleResize("", map);
