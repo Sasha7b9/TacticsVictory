@@ -124,8 +124,8 @@ using namespace Urho3D;
 #include "defines.h"
 #include "Battle.h"
 
-#include "Core/_Math.h"
-#include "Core/_Structures.h"
+#include "Core/_TMath.h"
+#include "Core/_TStructures.h"
 
 #include "Game/Logic/Movinator.h"
 #include "Game/Logic/Rotator.h"

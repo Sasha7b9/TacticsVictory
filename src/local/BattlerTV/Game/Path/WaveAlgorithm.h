@@ -1,6 +1,6 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
-#include "Core/_Structures.h"
+#include "Core/_TStructures.h"
 
 
 class WaveAlgorithm : public Thread, public Object

@@ -125,7 +125,7 @@ using namespace Urho3D;
 
 #include "Audio/Sounds.h"
 
-#include "Core/_Math.h"
+#include "Core/_TMath.h"
 
 #include "Editor/Editor.h"
 
