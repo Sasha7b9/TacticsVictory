@@ -1,7 +1,7 @@
 // 2021/02/15 16:12:30 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #pragma once
 
-class ConsoleRTS;
+class ConsoleTV;
 class CursorRTS;
 class Editor;
 class GUI;
@@ -25,7 +25,7 @@ class MenuRTS;
 class LogTV;
 
 extern CameraTV       *TheCamera;
-extern ConsoleRTS      *TheConsole;
+extern ConsoleTV      *TheConsole;
 extern CursorRTS       *TheCursor;
 extern Editor          *TheEditor;
 extern GUI             *TheGUI;

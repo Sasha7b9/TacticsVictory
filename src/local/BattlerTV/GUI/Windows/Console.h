@@ -81,12 +81,12 @@ private:
 
 
 
-class ConsoleRTS : public WindowTV
+class ConsoleTV : public WindowTV
 {
-    URHO3D_OBJECT(ConsoleRTS, WindowTV);
+    URHO3D_OBJECT(ConsoleTV, WindowTV);
 
 public:
-    ConsoleRTS(Context *context);
+    ConsoleTV(Context *context);
     void Toggle();
     bool IsActive();                            // Возвращает true, если активна строка ввода
     void Write(const String &message);

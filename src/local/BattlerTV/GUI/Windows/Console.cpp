@@ -218,7 +218,7 @@ bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool
 
 
 
-ConsoleRTS::ConsoleRTS(Context *context) :
+ConsoleTV::ConsoleTV(Context *context) :
     WindowTV(context)
 {
     SetVisible(false);
@@ -247,18 +247,18 @@ ConsoleRTS::ConsoleRTS(Context *context) :
     text->SetWordwrap(true);
     AddChild(text);
 
-    SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(ConsoleRTS, HandleFinishedText));
-    SubscribeToEvent(lineEdit, E_UNHANDLEDKEY, URHO3D_HANDLER(ConsoleRTS, HandleUnhandledKey));
-    SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(ConsoleRTS, HandleClick));
-    SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(ConsoleRTS, HandleClick));
-    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(ConsoleRTS, HandleResize));
+    SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(ConsoleTV, HandleFinishedText));
+    SubscribeToEvent(lineEdit, E_UNHANDLEDKEY, URHO3D_HANDLER(ConsoleTV, HandleUnhandledKey));
+    SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(ConsoleTV, HandleClick));
+    SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(ConsoleTV, HandleClick));
+    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(ConsoleTV, HandleResize));
 
     VariantMap map;
     HandleResize("", map);
 }
 
 
-void ConsoleRTS::Toggle()
+void ConsoleTV::Toggle()
 {
    SetVisible(!IsVisible());
    if(IsVisible())
@@ -269,13 +269,13 @@ void ConsoleRTS::Toggle()
 }
 
 
-bool ConsoleRTS::IsActive()
+bool ConsoleTV::IsActive()
 {
     return lineEdit->HasFocus();
 }
 
 
-void ConsoleRTS::HandleFinishedText(StringHash, VariantMap&)
+void ConsoleTV::HandleFinishedText(StringHash, VariantMap&)
 {
     String command = lineEdit->GetText();
     if(command.Empty())
@@ -294,7 +294,7 @@ void ConsoleRTS::HandleFinishedText(StringHash, VariantMap&)
 }
 
 
-void ConsoleRTS::HandleUnhandledKey(StringHash, VariantMap& eventData) //-V2009
+void ConsoleTV::HandleUnhandledKey(StringHash, VariantMap& eventData) //-V2009
 {
     using namespace UnhandledKey;
     int key = eventData[P_KEY].GetInt();
@@ -310,13 +310,13 @@ void ConsoleRTS::HandleUnhandledKey(StringHash, VariantMap& eventData) //-V2009
 }
 
 
-void ConsoleRTS::HandleClick(StringHash, VariantMap&)
+void ConsoleTV::HandleClick(StringHash, VariantMap&)
 {
     lineEdit->SetFocus(true);
 }
 
 
-void ConsoleRTS::HandleResize(StringHash, VariantMap&)
+void ConsoleTV::HandleResize(StringHash, VariantMap&)
 {
     lineEdit->SetSize(GetWidth() - 20, 15);
     lineEdit->SetPosition(2, GetHeight() - 15);
@@ -344,7 +344,7 @@ void ConsoleRTS::HandleResize(StringHash, VariantMap&)
 }
 
 
-void ConsoleRTS::Write(const String &message)
+void ConsoleTV::Write(const String &message)
 {
     if(message[0] == '>')
     {
@@ -378,7 +378,7 @@ void ConsoleRTS::Write(const String &message)
 }
 
 
-void ConsoleRTS::Clear()
+void ConsoleTV::Clear()
 {
     text->SetText("");
     text->SetPosition(2, 0);

@@ -151,7 +151,7 @@ static float GetSpeedNetOUT()
 
 void GUI::Create()
 {
-    TheConsole = new ConsoleRTS(TheContext);
+    TheConsole = new ConsoleTV(TheContext);
     TheUIRoot->AddChild(TheConsole);
 
     TheWindowVars = new WindowVariables(TheContext);
