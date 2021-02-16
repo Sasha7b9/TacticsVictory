@@ -31,6 +31,4 @@ extern Settings        *TheSet;
 extern Battle          *TheBattle;
 extern TerrainRTS      *TheTerrain;
 
-extern Vector<WindowRTS *> TheOpenedWindow;
-
 extern Vector<Connection *> connections;

@@ -37,7 +37,6 @@ GuiEditor           *TheGuiEditor = nullptr;
 GUI                 *TheGUI = nullptr;
 ConsoleRTS          *TheConsole = nullptr;
 Hint                *TheHint = nullptr;
-Vector<WindowRTS*>   TheOpenedWindow;
 
 // Меню
 MenuRTS             *TheMenu = nullptr;
