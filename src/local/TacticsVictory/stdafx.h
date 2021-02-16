@@ -164,7 +164,7 @@ using namespace Urho3D;
 #include "GUI/Panels/PanelBottom.h"
 #include "GUI/Panels/PanelMain.h"
 #include "GUI/Panels/PanelMap.h"
-#include "GUI/Windows/Console.h"
+#include "GUI/Windows/ConsoleTV.h"
 #include "GUI/Windows/WindowVariables.h"
 
 #include "Scene/_Level.h"
