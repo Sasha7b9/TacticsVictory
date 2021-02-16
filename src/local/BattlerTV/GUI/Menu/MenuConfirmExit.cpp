@@ -11,8 +11,8 @@ MenuConfirmExit::MenuConfirmExit(Context *context) : WindowMenu(context)
     SharedPtr<UIElement> layer(CreateChild<UIElement>());
     SET_HORIZONTAL_LAYOUT_6_6(layer);
     
-    buttonOk = new ButtonRTS(layer, "Ok");
-    buttonCancel = new ButtonRTS(layer, "Cancel");
+    buttonOk = new ButtonTV(layer, "Ok");
+    buttonCancel = new ButtonTV(layer, "Cancel");
 
     SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(MenuConfirmExit, HandleButtonRelease));
     SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(MenuConfirmExit, HandleButtonRelease));

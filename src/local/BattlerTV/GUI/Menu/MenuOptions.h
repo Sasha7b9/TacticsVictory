@@ -38,6 +38,6 @@ private:
     SharedPtr<DropDownListWithTextAndButton> ddlShadowQuality;
     SharedPtr<DropDownListWithTextAndButton> ddlDynamicInstancing;
     PODVector<int> shadowMapSizes;
-    SharedPtr<ButtonRTS> buttonClose;
+    SharedPtr<ButtonTV> buttonClose;
     IntVector2 dragBeginPosition;
 };

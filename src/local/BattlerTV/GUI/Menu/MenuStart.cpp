@@ -17,25 +17,25 @@ MenuStart::MenuStart(Context *context) : WindowMenu(context)
     buttonLanguage->AddState("Language : RU");
     buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
 
-    buttonServer = new ButtonRTS(this, "Server");
+    buttonServer = new ButtonTV(this, "Server");
     buttonServer->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_StartServer));
 
-    buttonClient = new ButtonRTS(this, "Client");
+    buttonClient = new ButtonTV(this, "Client");
     buttonClient->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_StartClient));
 
-    buttonEditor = new ButtonRTS(this, "Editor");
+    buttonEditor = new ButtonTV(this, "Editor");
 
-    buttonOptions = new ButtonRTS(this, "Options");
+    buttonOptions = new ButtonTV(this, "Options");
     buttonOptions->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_OpenOptions));
 
-    buttonHelp = new ButtonRTS(this, "Help");
+    buttonHelp = new ButtonTV(this, "Help");
 
-    buttonAboutGame = new ButtonRTS(this, "About game");
+    buttonAboutGame = new ButtonTV(this, "About game");
 
-    buttonAboutMe = new ButtonRTS(this, "About me");
+    buttonAboutMe = new ButtonTV(this, "About me");
     buttonAboutMe->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_OpenAboutMe));
 
-    buttonExit = new ButtonRTS(this, "Exit");
+    buttonExit = new ButtonTV(this, "Exit");
 
     buttons.Push(buttonLanguage);
     buttons.Push(buttonServer);

@@ -46,9 +46,9 @@ bool WindowRTS::UnderCursor()
 }
 
 
-SharedPtr<ButtonRTS> WindowRTS::AddButton(char *text, int x, int y, int width, int height)
+SharedPtr<ButtonTV> WindowRTS::AddButton(char *text, int x, int y, int width, int height)
 {
-    SharedPtr<ButtonRTS> retButton(new ButtonRTS(this, text, width, height));
+    SharedPtr<ButtonTV> retButton(new ButtonTV(this, text, width, height));
     if (x != -1 && y != -1)
     {
         retButton->SetPosition(x, y);

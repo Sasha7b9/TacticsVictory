@@ -2,9 +2,9 @@
 #pragma once
 
 
-class ButtonSwitch : public ButtonRTS
+class ButtonSwitch : public ButtonTV
 {
-    URHO3D_OBJECT(ButtonSwitch, ButtonRTS);
+    URHO3D_OBJECT(ButtonSwitch, ButtonTV);
 
 public:
     ButtonSwitch(Context *context = TheContext);

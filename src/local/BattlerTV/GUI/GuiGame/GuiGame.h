@@ -5,7 +5,7 @@
 class PanelBottom;
 class PanelMap;
 class PanelMain;
-class ButtonRTS;
+class ButtonTV;
 
 
 class GuiGame : public Object
@@ -20,14 +20,14 @@ public:
     void SetVisible(bool visible);
 
 private:
-    SharedPtr<ButtonRTS> buttonInterface;
-    SharedPtr<ButtonRTS> buttonMenu;
+    SharedPtr<ButtonTV> buttonInterface;
+    SharedPtr<ButtonTV> buttonMenu;
 
     SharedPtr<PanelBottom> panelBottom;
     SharedPtr<PanelMap>    panelMap;
     SharedPtr<PanelMain>   panelMain;
 
-    bool IntersectionX(const ButtonRTS *button, int x);
+    bool IntersectionX(const ButtonTV *button, int x);
     void ToggleInterfacePanels();
 
     void CreatePanels();

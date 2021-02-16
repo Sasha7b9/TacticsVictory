@@ -19,7 +19,7 @@ GUI::~GUI()
 
 void GUI::RegistrationObjects()
 {
-    ButtonRTS::RegisterObject();
+    ButtonTV::RegisterObject();
     ButtonSwitch::RegisterObject();
     ButtonToggled::RegisterObject();
     WindowRTS::RegisterObject();

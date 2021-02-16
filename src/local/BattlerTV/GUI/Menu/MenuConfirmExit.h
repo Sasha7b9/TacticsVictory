@@ -13,8 +13,8 @@ public:
     static void RegisterObject(Context *context = TheContext);
 
 private:
-    SharedPtr<ButtonRTS> buttonOk;
-    SharedPtr<ButtonRTS> buttonCancel;
+    SharedPtr<ButtonTV> buttonOk;
+    SharedPtr<ButtonTV> buttonCancel;
 
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
     void OnPressButtonOk();

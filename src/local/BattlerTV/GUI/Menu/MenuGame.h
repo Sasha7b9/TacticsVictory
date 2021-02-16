@@ -20,10 +20,10 @@ public:
 private:
     void HandleButtonRelease(StringHash, VariantMap&);  
 
-    SharedPtr<ButtonRTS> buttonNewGame;
-    SharedPtr<ButtonRTS> buttonEditor;
-    SharedPtr<ButtonRTS> buttonExit;
-    SharedPtr<ButtonRTS> buttonOptions;
+    SharedPtr<ButtonTV> buttonNewGame;
+    SharedPtr<ButtonTV> buttonEditor;
+    SharedPtr<ButtonTV> buttonExit;
+    SharedPtr<ButtonTV> buttonOptions;
     SharedPtr<ButtonSwitch> buttonLanguage;
-    SharedPtr<ButtonRTS> buttonCancel;
+    SharedPtr<ButtonTV> buttonCancel;
 };

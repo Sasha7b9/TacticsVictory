@@ -10,14 +10,14 @@ MenuGame::MenuGame(Context *) : WindowMenu()
     SharedPtr<Label> text(Label::Create("Tactics Victory", true, 20, -1, -1));
     AddChild(text);
     
-    buttonNewGame  = new ButtonRTS(this, "New game");
-    buttonEditor = new ButtonRTS(this, "Editor");
-    buttonOptions = new ButtonRTS(this, "Options");
+    buttonNewGame  = new ButtonTV(this, "New game");
+    buttonEditor = new ButtonTV(this, "Editor");
+    buttonOptions = new ButtonTV(this, "Options");
     buttonLanguage = new ButtonSwitch(this, "Language : EN");
     buttonLanguage->AddState("Language : RU");
     buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
-    buttonExit = new ButtonRTS(this, "Exit");
-    buttonCancel = new ButtonRTS(this, "Cancel");
+    buttonExit = new ButtonTV(this, "Exit");
+    buttonCancel = new ButtonTV(this, "Cancel");
 
     buttons.Push(buttonNewGame);
     buttons.Push(buttonEditor);

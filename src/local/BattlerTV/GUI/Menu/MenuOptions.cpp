@@ -57,7 +57,7 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
     SharedPtr<UIElement> layout(CreateChild<UIElement>());
     layout->SetAlignment(HA_CENTER, VA_TOP);
 
-    buttonClose = new ButtonRTS(0, "Close", 100);
+    buttonClose = new ButtonTV(0, "Close", 100);
     SubscribeToEvent(buttonClose, E_RELEASED, URHO3D_HANDLER(MenuOptions, HandleButtonRelease));
     layout->AddChild(buttonClose);
     AddChild(layout);

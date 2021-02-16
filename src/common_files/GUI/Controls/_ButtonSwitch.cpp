@@ -3,14 +3,14 @@
 
 
 ButtonSwitch::ButtonSwitch(Context *context) :
-    ButtonRTS(context)
+    ButtonTV(context)
 {
 
 }
 
 
 ButtonSwitch::ButtonSwitch(UIElement *uielement, char *text, int width, int height) :
-    ButtonRTS(uielement, text, width, height)
+    ButtonTV(uielement, text, width, height)
 {
     items.Push(text);
 
@@ -22,7 +22,7 @@ void ButtonSwitch::RegisterObject(Context *context)
 {
     context->RegisterFactory<ButtonSwitch>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(ButtonRTS);
+    URHO3D_COPY_BASE_ATTRIBUTES(ButtonTV);
 }
 
 
