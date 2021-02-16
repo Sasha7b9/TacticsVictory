@@ -83,7 +83,8 @@ void TacticsVictory::Start()
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
     TheScene->CreateComponent<DebugRenderer>();
 
-
+    scene = new SceneRTS();
+    scene->Create();
 
     CreateScriptSystem();
 

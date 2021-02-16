@@ -9,13 +9,7 @@ class SceneRTS : public Object
 
 public:
 
-    enum Mode
-    {
-        Mode_Server,
-        Mode_Client
-    };
-
-    SceneRTS(Context *context = TheContext, Mode mode = Mode_Server);
+    SceneRTS(Context *context = TheContext);
     ~SceneRTS();
 
     static void RegisterObject(Context *context = TheContext);
@@ -30,7 +24,6 @@ public:
 
 private:
     PathIndicator pathIndicator;
-    Mode mode;
 
     void RegisterObjects();
     void HandleMouseDown(StringHash, VariantMap&);

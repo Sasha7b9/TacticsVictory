@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 
-SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)
+SceneRTS::SceneRTS(Context *context) : Object(context)
 {
     RegisterObjects();
 }
