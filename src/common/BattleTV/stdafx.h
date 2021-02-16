@@ -150,7 +150,7 @@ using namespace Urho3D;
 #include "Scene/Primitives/_Triangle.h"
 
 #include "Utils/GlobalFunctions.h"
-#include "Utils/_LogRTS.h"
+#include "Utils/_LogTV.h"
 #include "Utils/Settings.h"
 #include "Utils/SettingsTypes.h"
 
