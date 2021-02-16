@@ -101,7 +101,6 @@ void Battler::Start()
     ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
     TheScene->CreateComponent<DebugRenderer>();
-    TheCamera = new CameraRTS();
 
     if (MODE_SERVER)
     {
@@ -113,7 +112,9 @@ void Battler::Start()
         CreateConsoleAndDebugHud();
         TheUI = GetSubsystem<UI>();
         TheInput = GetSubsystem<Input>();
+        TheAudio = GetSubsystem<Audio>();
         TheRenderer = GetSubsystem<Renderer>();
+        TheCamera = new CameraRTS();
         TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
         TheUIRoot = TheUI->GetRoot();
         TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
@@ -123,7 +124,6 @@ void Battler::Start()
         TheFileSelector = new FileSelector(TheContext);
         TheFileSelector->GetWindow()->SetModal(false);
         TheFileSelector->GetWindow()->SetVisible(false);
-        TheAudio = GetSubsystem<Audio>();
     }
     
     RegistrationComponets();
@@ -210,7 +210,7 @@ void Battler::ParseArguments(const Vector<String> &arguments)
         3. аргументы -address:XX.XX.XX.XX -port:XX - запуск оболочки и коннект к серверу на XX.XX.XX.XX:XX
     */
 
-    if (GetAddressPort(arguments, address, port))
+    if (GF::GetAddressPort(arguments, address, port))
     {
         TheMode = address.Empty() ? ModeApp_Server : ModeApp_Client;
     }

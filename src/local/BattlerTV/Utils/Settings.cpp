@@ -16,7 +16,7 @@ bool operator==(const Settings::FloatKey & keyLeft, const Settings::FloatKey& ke
 
 bool Settings::Load()
 {
-    nameFile = GetNameFile("settings.xml");
+    nameFile = GF::GetNameFile("settings.xml");
 
     mapIntChild[IntKey(TV_SCREEN_WIDTH)] = SET::WINDOW::WIDTH;
     mapIntChild[IntKey(TV_SCREEN_HEIGHT)] = SET::WINDOW::HEIGHT;

@@ -105,3 +105,5 @@ typedef enum
 #define NODE_CAMERA_TARGET "CameraTarget"
 
 #define UNUSED(x) (void)(x)
+
+#define CALL_MEMBER_IF_EXIST(object, function) if(object) (object)->function()

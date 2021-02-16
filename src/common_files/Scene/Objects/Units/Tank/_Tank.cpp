@@ -128,7 +128,7 @@ void Tank::LoadFromFile()
     node_->SetRotation(Quaternion(0, Vector3::UP));
     node_->Rotate(rotate);
 
-    timeLastModified = GetLastModifiedTime(parameters[typeTank].fileName); //-V108 //-V2006
+    timeLastModified = GF::GetLastModifiedTime(parameters[typeTank].fileName); //-V108 //-V2006
 }
 
 
@@ -186,7 +186,7 @@ void Tank::Update(float dT)
         int time = static_cast<int>(TheTime->GetElapsedTime());
         if (time - timeLastReload >= timeForReload)
         {
-            if (GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified) //-V108
+            if (GF::GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified) //-V108
             {
                 Init(typeTank, id);
             }

@@ -296,7 +296,10 @@ void CameraRTS::SetEnabled(bool _enabled)
 
 void CameraRTS::SetupViewport()
 {
-    SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene, cameraNode->GetComponent<Camera>()));
+    Camera *camera = cameraNode->GetComponent<Camera>();
+
+    SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene, camera));
+
     if (MODE_CLIENT)
     {
         TheRenderer->SetViewport(0, viewport);

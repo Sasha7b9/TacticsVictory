@@ -33,7 +33,7 @@ bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
 {
     String address = SERVER_ADDRESS;
     uint16 port = SERVER_PORT;
-    if(!GetAddressPort(words, address, port))
+    if(!GF::GetAddressPort(words, address, port))
     {
         return false;
     }
