@@ -1,19 +1,11 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Console.h"
-//#include "GlobalFunctions.h"
-#include "TacticsVictory.h"
 #include "GUI/Windows/WindowVariables.h"
 #include "GUI/Menu/MenuRTS.h"
-//#include "Network/Client.h"
-//#include "Network/Server.h"
-//#include "Network/NetworkMessages.h"
-//#include "Network/VectorBufferRTS.h"
-
 
 
 #define TAB "    "
-
 
 
 ConsoleParser::ConsoleParser(Context *context) : Object(context)

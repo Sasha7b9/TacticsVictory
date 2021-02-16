@@ -121,7 +121,7 @@ using namespace Urho3D;
 #pragma warning(pop)
 
 #include "defines.h"
-#include "TacticsVictory.h"
+#include "Battler.h"
 
 #include "Audio/Sounds.h"
 

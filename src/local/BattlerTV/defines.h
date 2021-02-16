@@ -106,3 +106,5 @@ typedef enum
 // Имена узлов
 
 #define NODE_CAMERA_TARGET "CameraTarget"
+
+#define UNUSED(x) (void)(x)
