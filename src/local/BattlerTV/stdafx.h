@@ -174,7 +174,7 @@ using namespace Urho3D;
 
 #include "Scene/_Level.h"
 #include "Scene/_SceneTV.h"
-#include "Scene/Cameras/Camera.h"
+#include "Scene/Cameras/CameraTV.h"
 #include "Scene/Objects/_GameObjectEvents.h"
 #include "Scene/Objects/_ObjectState.h"
 #include "Scene/Objects/Ammo/_AmmoObject.h"
