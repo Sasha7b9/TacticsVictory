@@ -48,7 +48,8 @@ file(GLOB GUI_PANELS                                                 GUI/Panels/
 file(GLOB GUI_WINDOWS                                                GUI/Windows/*.*)
 file(GLOB SCENE                                                      Scene/*.*)
 file(GLOB SCENE_CAMERAS                                              Scene/Cameras/*.*)
-file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/*.*)
+file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/_GameObject.*
+                                                  ../../common_files/Scene/Objects/_GameObjectEvents.*)
 file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objects/Ammo/*.*)
 file(GLOB SCENE_OBJECTS_AMMO_AIRBOMB              ../../common_files/Scene/Objects/Ammo/AirBomb/*.*)
 file(GLOB SCENE_OBJECTS_AMMO_GRENADE              ../../common_files/Scene/Objects/Ammo/Grenade/*.*)
