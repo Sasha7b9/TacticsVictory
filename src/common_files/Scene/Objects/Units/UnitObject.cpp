@@ -7,7 +7,7 @@ bool UnitObject::viewTargetView = false;
 
 UnitObject::UnitObject(Context *context) : GameObject(context)
 {
-    Node* nodeCameraTarget = TheScene->CreateChild(NODE_CAMERA_TARGET);
+    Node* nodeCameraTarget = TheScene->scene->CreateChild(NODE_CAMERA_TARGET);
     nodeCameraTarget->Pitch(180.0f);
     nodeCameraTarget->Yaw(180.0f);
     cameraTarget = nodeCameraTarget->CreateComponent<Camera>();
@@ -19,7 +19,7 @@ UnitObject::UnitObject(Context *context) : GameObject(context)
     renderTexture->SetFilterMode(FILTER_DEFAULT);
 
     renderSurface = renderTexture->GetRenderSurface();
-    SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene, cameraTarget));
+    SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene->scene, cameraTarget));
     renderSurface->SetViewport(0, viewport);
 
     nodeCameraTarget->SetVar("renderSurface", Variant(renderSurface));

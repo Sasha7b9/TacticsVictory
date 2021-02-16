@@ -75,7 +75,7 @@ void LayerTerrain::Build()
     geom->SetDrawRange(TRIANGLE_LIST, 0, ib->GetIndexCount());
 
     model = new Model(TheContext);
-    Node *node = TheScene->CreateChild(NODE_TERRAIN);
+    Node *node = TheScene->scene->CreateChild(NODE_TERRAIN);
     object = node->CreateComponent<StaticModel>();
     object->SetViewMask(VIEW_MASK_FOR_MISSILE);
 

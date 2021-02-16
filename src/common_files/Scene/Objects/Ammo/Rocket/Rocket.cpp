@@ -101,7 +101,7 @@ SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &pos
         {
             rocket = rock;
             rocket->Init(speedShooter, position, target);
-            TheScene->AddChild(rocket->node_);
+            TheScene->scene->AddChild(rocket->node_);
             rocket->smokeNode->SetEnabled(true);
             rocket->node_->SetEnabled(true);
             break;
@@ -110,7 +110,7 @@ SharedPtr<Rocket> Rocket::Create(const Vector3 &speedShooter, const Vector3 &pos
 
     if (rocket == nullptr)
     {
-        SharedPtr<Node> node(TheScene->CreateChild("Rocket"));
+        SharedPtr<Node> node(TheScene->scene->CreateChild("Rocket"));
         if (rockets.Size())
         {
             rocket = dynamic_cast<Rocket*>(node->CloneComponent(rockets[0]->node_->GetComponent<Rocket>()));
@@ -321,10 +321,10 @@ void ThreadRocket::SetParameters(uint startIndex, uint endIndex)
 
 void ThreadRocket::ThreadFunction()
 {
-    if(IN_PAUSE)
-    {
-        return;
-    }
+//    if(IN_PAUSE)
+//    {
+//        return;
+//    }
     /*
     while(true)
     {
@@ -444,7 +444,7 @@ void Rocket::VerifyOnIntersectionTerrain()
     Ray ray(position, direction);
     PODVector<RayQueryResult> results;
     RayOctreeQuery query(results, ray, RAY_TRIANGLE, 0.5f, DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
-    TheScene->GetComponent<Octree>()->Raycast(query);
+    TheScene->scene->GetComponent<Octree>()->Raycast(query);
 
     if (results.Size())
     {

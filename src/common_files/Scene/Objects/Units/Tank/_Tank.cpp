@@ -210,7 +210,7 @@ float Tank::GetRotation()
 
 SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
 {
-    SharedPtr<Node> node(TheScene->CreateChild(NODE_TANK, LOCAL));
+    SharedPtr<Node> node(TheScene->scene->CreateChild(NODE_TANK, LOCAL));
     SharedPtr<Tank> tank(node->CreateComponent<Tank>(LOCAL));
 
     tank->Init(typeTank, _id_);

@@ -245,11 +245,6 @@ void Battler::SubscribeToEvents()
     
     SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(Battler, HandleUpdate));
     SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(Battler, HandlePostUpdate));
-
-    SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(Battler, HandleConnecFailed));
-    SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(Battler, HandleClientConnected));
-    SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(Battler, HandleClientDisconnected));
-    SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(Battler, HandleNetworkMessage));
 }
 
 
