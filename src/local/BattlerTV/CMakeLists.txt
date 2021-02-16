@@ -54,13 +54,6 @@ file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objec
 file(GLOB SCENE_OBJECTS_BUILDINGS                 ../../common_files/Scene/Objects/Buildings/*.*)
 file(GLOB SCENE_OBJECTS_TERRAIN                   ../../common_files/Scene/Objects/Terrain/*.*)
 file(GLOB SCENE_OBJECTS_UNITS                     ../../common_files/Scene/Objects/Units/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_AIRPLANE            ../../common_files/Scene/Objects/Units/Airplane/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_BOMBER              ../../common_files/Scene/Objects/Units/Bomber/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_BUILDER             ../../common_files/Scene/Objects/Units/Builder/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_HELICOPTER          ../../common_files/Scene/Objects/Units/Helicopter/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_ROBOT               ../../common_files/Scene/Objects/Units/Robot/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_SUPPLIERAMMO        ../../common_files/Scene/Objects/Units/SupplierAmmo/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_TANK                ../../common_files/Scene/Objects/Units/Tank/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS                   ../../common_files/Scene/Objects/Weapons/*.*)
 file(GLOB SCENE_PRIMITIVES                        ../../common_files/Scene/Primitives/*.*)
 file(GLOB UTILS                                                      Utils/*.*)
@@ -89,13 +82,6 @@ source_group(Scene\\Objects\\Ammo                      FILES ${SCENE_OBJECTS_AMM
 source_group(Scene\\Objects\\Buildings                 FILES ${SCENE_OBJECTS_BUILDINGS})
 source_group(Scene\\Objects\\Terrain                   FILES ${SCENE_OBJECTS_TERRAIN})
 source_group(Scene\\Objects\\Units                     FILES ${SCENE_OBJECTS_UNITS})
-source_group(Scene\\Objects\\Units\\Airplane           FILES ${SCENE_OBJECTS_UNITS_AIRPLANE})
-source_group(Scene\\Objects\\Units\\Bomber             FILES ${SCENE_OBJECTS_UNITS_BOMBER})
-source_group(Scene\\Objects\\Units\\Builder            FILES ${SCENE_OBJECTS_UNITS_BUILDER})
-source_group(Scene\\Objects\\Units\\Helicopter         FILES ${SCENE_OBJECTS_UNITS_HELICOPTER})
-source_group(Scene\\Objects\\Units\\Robot              FILES ${SCENE_OBJECTS_UNITS_ROBOT})
-source_group(Scene\\Objects\\Units\\SupplierAmmo       FILES ${SCENE_OBJECTS_UNITS_SUPPLIERAMMO})
-source_group(Scene\\Objects\\Units\\Tank               FILES ${SCENE_OBJECTS_UNITS_TANK})
 source_group(Scene\\Objects\\Weapons                   FILES ${SCENE_OBJECTS_WEAPONS})
 source_group(Scene\\Primitives                         FILES ${SCENE_PRIMITIVES})
 source_group(Utils                                     FILES ${UTILS})
@@ -103,10 +89,7 @@ source_group(Utils                                     FILES ${UTILS})
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
     ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
     ${GUI_WINDOWS} ${NETWORK} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_AMMO}
-    ${SCENE_OBJECTS_BUILDINGS}
-    ${SCENE_OBJECTS_TERRAIN} ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_AIRPLANE} ${SCENE_OBJECTS_UNITS_BOMBER}
-    ${SCENE_OBJECTS_UNITS_BUILDER} ${SCENE_OBJECTS_UNITS_HELICOPTER} ${SCENE_OBJECTS_UNITS_ROBOT}
-    ${SCENE_OBJECTS_UNITS_SUPPLIERAMMO} ${SCENE_OBJECTS_UNITS_TANK} ${SCENE_OBJECTS_WEAPONS}
+    ${SCENE_OBJECTS_BUILDINGS} ${SCENE_OBJECTS_TERRAIN} ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_WEAPONS}
     ${SCENE_PRIMITIVES} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)

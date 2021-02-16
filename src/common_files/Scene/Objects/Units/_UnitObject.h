@@ -21,3 +21,12 @@ private:
 
     void HandlePostRenderUpdate(StringHash, VariantMap&);
 };
+
+
+#include "Scene/Objects/Units/_Airplane.h"
+#include "Scene/Objects/Units/_Bomber.h"
+#include "Scene/Objects/Units/_Builder.h"
+#include "Scene/Objects/Units/_Helicopter.h"
+#include "Scene/Objects/Units/_Robot.h"
+#include "Scene/Objects/Units/_SupplierAmmo.h"
+#include "Scene/Objects/Units/_Tank.h"
