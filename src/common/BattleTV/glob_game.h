@@ -30,9 +30,7 @@ extern SceneRTS        *TheScene;
 extern Settings        *TheSet;
 extern Battle          *TheBattle;
 extern TerrainRTS      *TheTerrain;
-extern WindowVariables *TheWindowVars;
 
-extern int *TheCounterHint;
 extern Vector<WindowRTS *> TheOpenedWindow;
 
 extern Vector<Connection *> connections;
