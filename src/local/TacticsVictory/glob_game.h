@@ -37,7 +37,7 @@ extern LogTV          *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
 extern MenuTV         *TheMenu;
-extern SceneTV        *TheScene;
+extern TScene        *TheScene;
 extern Settings        *TheSet;
 extern TacticsVictory *TheTacticsVictory;
 extern TerrainTV      *TheTerrain;

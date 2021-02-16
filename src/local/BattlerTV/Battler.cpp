@@ -91,7 +91,7 @@ void Battler::Start()
     TheEngine = GetSubsystem<Engine>();
     TheGraphics = GetSubsystem<Graphics>();
 
-    TheScene = new SceneTV(TheContext);
+    TheScene = new TScene(TheContext);
 
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
@@ -155,7 +155,7 @@ void Battler::StartServer(uint16 port_)
 //    if (port)
 //    {
 //        TheServer->Start(port);
-//        scene = new SceneTV(TheContext, SceneTV::Mode_Server);
+//        scene = new TScene(TheContext, TScene::Mode_Server);
 //        scene->Create();
 //    }
 //    else
@@ -195,7 +195,7 @@ void Battler::RegistrationComponets()
     TheContext->RegisterFactory<Movinator>();
     TheContext->RegisterFactory<ImageTV>();
 
-    SceneTV::RegisterObject();
+    TScene::RegisterObject();
 
     RocketLauncher::RegisterInAS();
     Translator::RegisterInAS();

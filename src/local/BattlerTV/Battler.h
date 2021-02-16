@@ -2,7 +2,7 @@
 #pragma once
 
 
-class SceneTV;
+class TScene;
 
 
 class Battler : public Application
@@ -20,7 +20,7 @@ public:
     void StartClient(const String &address = String::EMPTY, uint16 port = 0);
     void StopClient();
 
-    SceneTV *scene = nullptr; //-V122
+    TScene *scene = nullptr; //-V122
 
 private:
     bool drawDebug = false;

@@ -7,9 +7,9 @@
 
 class Tank;
 
-class SceneTV : public Object
+class TScene : public Object
 {
-    URHO3D_OBJECT(SceneTV, Object);
+    URHO3D_OBJECT(TScene, Object);
 
 public:
 
@@ -19,8 +19,8 @@ public:
         Mode_Client
     };
 
-    SceneTV(Context *context = TheContext, Mode mode = Mode_Server);
-    ~SceneTV();
+    TScene(Context *context = TheContext, Mode mode = Mode_Server);
+    ~TScene();
 
     static void RegisterObject(Context *context = TheContext);
 
