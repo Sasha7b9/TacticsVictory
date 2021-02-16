@@ -7,10 +7,10 @@
     allMenus.Push(name);                                                \
     GF::SetWindowInCenterScreen(name);                                  \
     name->SetMovable(moving);                                           \
-    SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuRTS, HandleMenuEvent));
+    SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuTV, HandleMenuEvent));
 
 
-MenuRTS::MenuRTS(Context *context) : Object(context)
+MenuTV::MenuTV(Context *context) : Object(context)
 {   
     CREATE_MENU(menuStart, MenuStart, false);
     CREATE_MENU(menuAbout, MenuAboutMe, false);
@@ -31,12 +31,12 @@ MenuRTS::MenuRTS(Context *context) : Object(context)
 }
 
 
-MenuRTS::~MenuRTS()
+MenuTV::~MenuTV()
 {
 }
 
 
-void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
+void MenuTV::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     using namespace MenuEvent;
 
@@ -68,14 +68,14 @@ void MenuRTS::HandleMenuEvent(StringHash, VariantMap& eventData)
 }
 
 
-void MenuRTS::Open(WindowMenu* menu, WindowMenu *prev)
+void MenuTV::Open(WindowMenu* menu, WindowMenu *prev)
 {
     CloseAll();
     menu->Open(prev);
 }
 
 
-void MenuRTS::CloseAll()
+void MenuTV::CloseAll()
 {
     for (WindowMenu *window : allMenus)
     {
@@ -84,19 +84,19 @@ void MenuRTS::CloseAll()
 }
 
 
-void MenuRTS::Hide()
+void MenuTV::Hide()
 {
     CloseAll();
 }
 
 
-bool MenuRTS::IsActive()
+bool MenuTV::IsActive()
 {
     return ActiveMenu() != nullptr;
 }
 
 
-bool MenuRTS::ProcessingKey(int key)
+bool MenuTV::ProcessingKey(int key)
 {
     WindowMenu *active = ActiveMenu();
 
@@ -116,7 +116,7 @@ bool MenuRTS::ProcessingKey(int key)
 }
 
 
-WindowMenu* MenuRTS::ActiveMenu()
+WindowMenu* MenuTV::ActiveMenu()
 {
     for(WindowMenu *window : allMenus)
     {

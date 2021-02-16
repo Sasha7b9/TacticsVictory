@@ -159,7 +159,7 @@ using namespace Urho3D;
 #include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/MenuGame.h"
 #include "GUI/Menu/MenuOptions.h"
-#include "GUI/Menu/MenuRTS.h"
+#include "GUI/Menu/MenuTV.h"
 #include "GUI/Menu/MenuStart.h"
 #include "GUI/Panels/PanelBottom.h"
 #include "GUI/Panels/PanelMain.h"

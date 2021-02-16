@@ -158,22 +158,7 @@ void SceneTV::Update(float /*timeStep*/)
     pathIndicator.Update();
 
 #endif
-
-/*
-    if (TheServer->IsRunning())
-    {
-        VectorBufferRTS msg;
-        msg.WriteUInt(Tank::GetAll().Size());
-
-        for (Tank *tank : Tank::GetAll())
-        {
-            msg.WriteTank(tank);
-        }
-
-        TheServer->SendToAll(MSG_SEND_SCREENSHOT, msg);
-    }
-*/
-    }
+}
 
 
 void SceneTV::SetSelected(Tank *tank_, bool selected)

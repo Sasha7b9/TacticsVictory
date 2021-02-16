@@ -45,6 +45,6 @@ WindowTarget        *TheWindowTarget = nullptr;
 SceneTV            *TheScene = nullptr;
 
 // Меню
-MenuRTS             *TheMenu = nullptr;
+MenuTV             *TheMenu = nullptr;
 MenuGame            *TheMenuMain = nullptr;
 MenuConfirmExit     *TheMenuConfirmExit = nullptr;

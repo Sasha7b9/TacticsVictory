@@ -78,7 +78,7 @@ void TacticsVictory::Start()
     TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     TheGUI = new GUI();
     LOGINFO("Загружаю настройки");
-    TheMenu = new MenuRTS();
+    TheMenu = new MenuTV();
     TheFileSelector = new FileSelector(TheContext);
     TheFileSelector->GetWindow()->SetModal(false);
     TheFileSelector->GetWindow()->SetVisible(false);

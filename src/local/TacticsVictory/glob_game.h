@@ -21,7 +21,7 @@ class MenuConfirmExit;
 class WindowTarget;
 class WindowVariables;
 class Battler;
-class MenuRTS;
+class MenuTV;
 class LogTV;
 
 extern CameraTV       *TheCamera;
@@ -36,7 +36,7 @@ extern Level           *TheLevel;
 extern LogTV          *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
-extern MenuRTS         *TheMenu;
+extern MenuTV         *TheMenu;
 extern SceneTV        *TheScene;
 extern Settings        *TheSet;
 extern TacticsVictory *TheTacticsVictory;
