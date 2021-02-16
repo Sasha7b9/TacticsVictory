@@ -38,7 +38,7 @@ void TacticsVictory::Setup()
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
 #ifdef DEBUG
-        engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/debug";
+        engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/debug;../../../../../../out/debug/TVData";
 #else
         engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/release";
 #endif
@@ -89,7 +89,7 @@ void TacticsVictory::Start()
     PROFILER_FUNC_ENTER
     Application::Start();
     FillNetworkFunctions();
-    TheCache->AddResourceDir(TheFileSystem->GetProgramDir() + RESOURCES_DIR);
+    TheCache->AddResourceDir("TVData");
     SetLocalization();
     TheTime = GetSubsystem<Time>();
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
@@ -150,7 +150,7 @@ void TacticsVictory::Start()
 void TacticsVictory::SetLocalization()
 {
     TheLocalization = GetSubsystem<Localization>();
-    TheLocalization->LoadJSONFile("Strings.json");
+    TheLocalization->LoadJSONFile("TVData/Strings.json");
     TheLocalization->SetLanguage("ru");
 }
 
