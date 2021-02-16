@@ -42,7 +42,7 @@ Hint                *TheHint = nullptr;
 int                 *TheCounterHint = 0;
 Vector<WindowRTS*>   TheOpenedWindow;
 WindowTarget        *TheWindowTarget = nullptr;
-SceneRTS            *TheScene = nullptr;
+SceneTV            *TheScene = nullptr;
 
 // Меню
 MenuRTS             *TheMenu = nullptr;

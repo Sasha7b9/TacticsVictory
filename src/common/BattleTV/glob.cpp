@@ -18,7 +18,7 @@ Time              *TheTime = nullptr;
 Battle             *TheBattle = nullptr;
 Level              *TheLevel = nullptr;
 LogRTS             *TheLog = nullptr;
-SceneRTS           *TheScene = nullptr;
+SceneTV           *TheScene = nullptr;
 Settings           *TheSet = nullptr;
 TerrainRTS         *TheTerrain = nullptr;
 Vector<Connection *> connections;

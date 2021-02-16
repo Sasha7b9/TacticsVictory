@@ -2,10 +2,10 @@
 #pragma once
 
 
-extern Battle *TheBattle;
+extern Battle          *TheBattle;
 extern Level           *TheLevel;
 extern LogRTS          *TheLog;
-extern SceneRTS        *TheScene;
+extern SceneTV        *TheScene;
 extern Settings        *TheSet;
 extern TerrainRTS      *TheTerrain;
 

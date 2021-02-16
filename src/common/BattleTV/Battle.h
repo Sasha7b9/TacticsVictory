@@ -2,7 +2,7 @@
 #pragma once
 
 
-class SceneRTS;
+class SceneTV;
 class VectorBufferRTS;
 
 
@@ -17,7 +17,7 @@ public:
     virtual void Start();
     virtual void Stop();
 
-    SceneRTS *scene = nullptr; //-V122
+    SceneTV *scene = nullptr; //-V122
 
 private:
     bool drawDebug = false;

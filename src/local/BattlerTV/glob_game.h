@@ -40,7 +40,7 @@ extern LogRTS          *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
 extern MenuRTS         *TheMenu;
-extern SceneRTS        *TheScene;
+extern SceneTV        *TheScene;
 extern Server          *TheServer;
 extern Settings        *TheSet;
 extern Battler         *TheTacticsVictory;

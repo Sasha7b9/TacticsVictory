@@ -2,7 +2,7 @@
 #pragma once
 
 
-class SceneRTS;
+class SceneTV;
 class VectorBufferRTS;
 
 
@@ -21,7 +21,7 @@ public:
     void StartClient(const String &address = String::EMPTY, uint16 port = 0);
     void StopClient();
 
-    SceneRTS *scene = nullptr; //-V122
+    SceneTV *scene = nullptr; //-V122
 
 private:
     bool drawDebug = false;

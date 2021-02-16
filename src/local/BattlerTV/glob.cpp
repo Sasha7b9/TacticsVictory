@@ -45,7 +45,7 @@ int                 *TheCounterHint = 0;
 Vector<WindowRTS*>   TheOpenedWindow;
 WindowTarget        *TheWindowTarget = nullptr;
 MenuRTS             *TheMenu = nullptr;
-SceneRTS            *TheScene = nullptr;
+SceneTV            *TheScene = nullptr;
 MenuGame            *TheMenuMain = nullptr;
 MenuConfirmExit     *TheMenuConfirmExit = nullptr;
 

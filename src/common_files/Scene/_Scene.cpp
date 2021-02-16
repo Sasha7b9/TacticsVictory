@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 
-SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)
+SceneTV::SceneTV(Context *context, Mode _mode) : Object(context), mode(_mode)
 {
     scene = new Scene(context);
 
@@ -10,7 +10,7 @@ SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)
 }
 
 
-SceneRTS::~SceneRTS()
+SceneTV::~SceneTV()
 {
     delete scene;
 
@@ -30,7 +30,7 @@ SceneRTS::~SceneRTS()
 }
 
 
-void SceneRTS::RegisterObjects()
+void SceneTV::RegisterObjects()
 {
     Tank::RegisterObject();
     Rocket::RegisterObject();
@@ -38,13 +38,13 @@ void SceneRTS::RegisterObjects()
 }
 
 
-void SceneRTS::RegisterObject(Context *context)
+void SceneTV::RegisterObject(Context *context)
 {
-    context->RegisterFactory<SceneRTS>();
+    context->RegisterFactory<SceneTV>();
 }
 
 
-void SceneRTS::Create()
+void SceneTV::Create()
 {
 
 #ifdef CLIENT
@@ -125,13 +125,13 @@ void SceneRTS::Create()
 
     pathIndicator.Init();
 
-    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(SceneRTS, HandleMouseDown));
+    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(SceneTV, HandleMouseDown));
 
 #endif
 }
 
 
-void SceneRTS::Update(float /*timeStep*/)
+void SceneTV::Update(float /*timeStep*/)
 {
 #ifdef CLIENT
 
@@ -176,7 +176,7 @@ void SceneRTS::Update(float /*timeStep*/)
     }
 
 
-void SceneRTS::SetSelected(Tank *tank_, bool selected)
+void SceneTV::SetSelected(Tank *tank_, bool selected)
 {
     if(selected)
     {
@@ -194,7 +194,7 @@ void SceneRTS::SetSelected(Tank *tank_, bool selected)
 }
 
 
-Tank* SceneRTS::GetSelected()
+Tank* SceneTV::GetSelected()
 {
     const Vector<SharedPtr<Node>> &nodes = TheScene->scene->GetChildren();
 
@@ -213,7 +213,7 @@ Tank* SceneRTS::GetSelected()
 
 #ifdef CLIENT
 
-void SceneRTS::HandleMouseDown(StringHash, VariantMap &eventData) //-V2009
+void SceneTV::HandleMouseDown(StringHash, VariantMap &eventData) //-V2009
 {
     int buttons = static_cast<int>(eventData[MouseButtonDown::P_BUTTONS].GetInt());
 
@@ -228,7 +228,7 @@ void SceneRTS::HandleMouseDown(StringHash, VariantMap &eventData) //-V2009
 }
 
 
-void SceneRTS::ProcessMouseLeft()
+void SceneTV::ProcessMouseLeft()
 {
     Vector3 hitCoord;
     Drawable *object = TheCursor->GetRaycastNode(&hitCoord);
@@ -270,7 +270,7 @@ void SceneRTS::ProcessMouseLeft()
 }
 
 
-void SceneRTS::ProcessMouseRight()
+void SceneTV::ProcessMouseRight()
 {
     pathIndicator.Enable(false);
 

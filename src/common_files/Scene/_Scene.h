@@ -7,9 +7,9 @@
 
 class Tank;
 
-class SceneRTS : public Object
+class SceneTV : public Object
 {
-    URHO3D_OBJECT(SceneRTS, Object);
+    URHO3D_OBJECT(SceneTV, Object);
 
 public:
 
@@ -19,8 +19,8 @@ public:
         Mode_Client
     };
 
-    SceneRTS(Context *context = TheContext, Mode mode = Mode_Server);
-    ~SceneRTS();
+    SceneTV(Context *context = TheContext, Mode mode = Mode_Server);
+    ~SceneTV();
 
     static void RegisterObject(Context *context = TheContext);
 

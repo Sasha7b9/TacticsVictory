@@ -53,7 +53,7 @@ void TacticsVictory::Start()
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
     TheGraphics = GetSubsystem<Graphics>();
-    TheScene = new SceneRTS(TheContext);
+    TheScene = new SceneTV(TheContext);
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
@@ -61,7 +61,7 @@ void TacticsVictory::Start()
     TheRenderer = GetSubsystem<Renderer>();
     TheAudio = GetSubsystem<Audio>();
     TheCamera = new CameraRTS();
-    scene = new SceneRTS();
+    scene = new SceneTV();
 
     CreateScriptSystem();
 
@@ -146,7 +146,7 @@ void TacticsVictory::RegistrationComponets()
     TheContext->RegisterFactory<Movinator>();
     TheContext->RegisterFactory<ImageRTS>();
 
-    SceneRTS::RegisterObject();
+    SceneTV::RegisterObject();
 
     RocketLauncher::RegisterInAS();
     Translator::RegisterInAS();
