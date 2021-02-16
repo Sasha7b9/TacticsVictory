@@ -158,13 +158,13 @@ void ImageRTS::Replace4Points(int x, int y, const Color &color)
 
 void ImageRTS::FillRegion(int x, int y, const Color &color, const Color &colorBound)
 {
-    boundingColor = colorBound;
-
-    if(GetPixel(x, y) != colorBound)
-    {
-        SetPixel(x, y, color);
-        Replace4PointsBound(x, y, color);
-    }
+//    boundingColor = colorBound;
+//
+//    if(GetPixel(x, y) != colorBound)
+//    {
+//        SetPixel(x, y, color);
+//        Replace4PointsBound(x, y, color);
+//    }
 }
 
 
