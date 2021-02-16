@@ -4,6 +4,7 @@
 
 Audio               *TheAudio = nullptr;
 Localization        *TheLocalization = nullptr;
+Network             *TheNetwork = nullptr;
 UI                  *TheUI = nullptr;
 UIElement           *TheUIRoot = nullptr;
 ResourceCache       *TheCache = nullptr;
@@ -12,7 +13,6 @@ Input               *TheInput = nullptr;
 Renderer            *TheRenderer = nullptr;
 DebugRenderer       *TheDebugRenderer = nullptr;
 Context             *TheContext = nullptr;
-Scene               *TheScene = nullptr;
 Console             *TheEngineConsole = nullptr;
 DebugHud            *TheDebugHud = nullptr;
 Graphics            *TheGraphics = nullptr;
@@ -35,7 +35,6 @@ LogRTS              *TheLog = nullptr;
 Server              *TheServer = nullptr;
 Client              *TheClient = nullptr;
 
-// GUI
 GuiGame             *TheGuiGame = nullptr;
 GuiEditor           *TheGuiEditor = nullptr;
 GUI                 *TheGUI = nullptr;
@@ -45,9 +44,8 @@ Hint                *TheHint = nullptr;
 int                 *TheCounterHint = 0;
 Vector<WindowRTS*>   TheOpenedWindow;
 WindowTarget        *TheWindowTarget = nullptr;
-
-// Меню
 MenuRTS             *TheMenu = nullptr;
+SceneRTS            *TheScene = nullptr;
 MenuGame            *TheMenuMain = nullptr;
 MenuConfirmExit     *TheMenuConfirmExit = nullptr;
 

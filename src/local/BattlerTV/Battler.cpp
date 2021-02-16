@@ -51,23 +51,18 @@ void Battler::Stop()
     //engine_->DumpProfiler();
     TilePath::RemoveAll();
     Rocket::DeleteAll();
-    SAFE_DELETE(TheScene); //-V809
-    SAFE_DELETE(scene); //-V809
-    SAFE_DELETE(TheFileSelector); //-V809
-    SAFE_DELETE(TheLevel); //-V809
-    SAFE_DELETE(TheMenu); //-V809
-    SAFE_DELETE(TheGUI); //-V809
-    //File file(TheContext, "ui.xml", FILE_WRITE);
-    //URHO3D_LOGINFO("Now save ui");
-    //TheUIRoot->SaveXML(file);
+    SAFE_DELETE(TheScene);
+    SAFE_DELETE(scene);
+    SAFE_DELETE(TheFileSelector);
+    SAFE_DELETE(TheLevel);
+    SAFE_DELETE(TheMenu);
+    SAFE_DELETE(TheGUI);
     TheSet->Save();
-    SAFE_DELETE(TheClient); //-V809
-    SAFE_DELETE(TheServer); //-V809
-    SAFE_DELETE(TheSet); //-V809
-    SAFE_DELETE(TheEditor); //-V809
-    SAFE_DELETE(TheCamera);     //-V809
+    SAFE_DELETE(TheSet);
+    SAFE_DELETE(TheEditor);
+    SAFE_DELETE(TheCamera);
     TheLog->Close();
-    SAFE_DELETE(TheLog); //-V809
+    SAFE_DELETE(TheLog);
 }
 
 
@@ -96,11 +91,13 @@ void Battler::Start()
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
     TheGraphics = GetSubsystem<Graphics>();
-    TheScene = new Scene(TheContext);
-    TheScene->CreateComponent<Octree>();
-    ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
+
+    TheScene = new SceneRTS(TheContext);
+
+    TheScene->scene->CreateComponent<Octree>();
+    ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
-    TheScene->CreateComponent<DebugRenderer>();
+    TheScene->scene->CreateComponent<DebugRenderer>();
 
     if (MODE_SERVER)
     {
@@ -115,7 +112,7 @@ void Battler::Start()
         TheAudio = GetSubsystem<Audio>();
         TheRenderer = GetSubsystem<Renderer>();
         TheCamera = new CameraRTS();
-        TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
+        TheDebugRenderer = TheScene->scene->GetComponent<DebugRenderer>();
         TheUIRoot = TheUI->GetRoot();
         TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
         TheGUI = new GUI();
@@ -129,8 +126,6 @@ void Battler::Start()
     RegistrationComponets();
 
     TheLevel = new Level();
-    TheClient = new Client();
-    TheServer = new Server();
 
     if (MODE_CLIENT)
     {
@@ -165,22 +160,21 @@ void Battler::CreateScriptSystem()
 
 void Battler::StartServer(uint16 port_)
 {
-    if (port_)
-    {
-        port = port_;
-    }
-
-    if (port)
-    {
-        TheServer->Start(port);
-        scene = new SceneRTS(TheContext, SceneRTS::Mode_Server);
-        scene->Create();
-    }
-    else
-    {
-        LOGERROR("Can not start server on null port");
-    }
-    
+//    if (port_)
+//    {
+//        port = port_;
+//    }
+//
+//    if (port)
+//    {
+//        TheServer->Start(port);
+//        scene = new SceneRTS(TheContext, SceneRTS::Mode_Server);
+//        scene->Create();
+//    }
+//    else
+//    {
+//        LOGERROR("Can not start server on null port");
+//    }
 }
 
 

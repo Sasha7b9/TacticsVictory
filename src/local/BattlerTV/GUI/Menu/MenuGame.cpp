@@ -83,13 +83,13 @@ void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
 
 void MenuGame::Open()
 {
-    TheScene->SetTimeScale(0.0f);
+    TheScene->scene->SetTimeScale(0.0f);
     TheCamera->SetEnabled(false);
 }
 
 
 void MenuGame::Close()
 {
-    TheScene->SetTimeScale(1.0f);
+    TheScene->scene->SetTimeScale(1.0f);
     TheCamera->SetEnabled(true);
 }

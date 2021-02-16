@@ -16,7 +16,7 @@ bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 
 static void OnServerConnected()
 {
-    TheClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
+//    TheClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
     TheConsole->Write("Запрашиваю ландшафт");
 }
 
@@ -30,16 +30,16 @@ bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
         return false;
     }
 
-    if(TheClient->IsConnected())
-    {
-        TheConsole->Write("Command forbidden. The client already running");
-    }
-    else
-    {
-        TheMenu->Hide();
-        TheClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, OnServerConnected);
-        TheConsole->Write("Соединяюсь с удалённым сервером...");
-    }
+//    if(TheClient->IsConnected())
+//    {
+//        TheConsole->Write("Command forbidden. The client already running");
+//    }
+//    else
+//    {
+//        TheMenu->Hide();
+//        TheClient->StartConnecting(SERVER_ADDRESS, SERVER_PORT, OnServerConnected);
+//        TheConsole->Write("Соединяюсь с удалённым сервером...");
+//    }
 
     return true;
 }
@@ -106,27 +106,30 @@ void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V20
 
 bool ConsoleParser::FuncServerStop(Vector<String> &, bool)
 {
-    if(serverRunning)
-    {
-        TheClient->Send(MSG_DELETE_SERVER, VectorBufferRTS());
-    }
-    else
-    {
-        TheConsole->Write("Forbidden");
-    }
+//    if(serverRunning)
+//    {
+//        TheClient->scene->Send(MSG_DELETE_SERVER, VectorBufferRTS());
+//    }
+//    else
+//    {
+//        TheConsole->Write("Forbidden");
+//    }
+
     return true;
 }
 
 
 bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
 {
-    int latency = 0;
-
-    if(ExtractInt(words[0], &latency))
-    {
-        TheClient->Send(MSG_SET_NETWORK_LATENCY, VectorBufferRTS(latency));
-        return true;
-    }
+    UNUSED(words);
+    
+//    int latency = 0;
+//
+//    if(ExtractInt(words[0], &latency))
+//    {
+//        TheClient->Send(MSG_SET_NETWORK_LATENCY, VectorBufferRTS(latency));
+//        return true;
+//    }
 
     return false;
 }
@@ -134,13 +137,16 @@ bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
 
 bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool) //-V2009
 {
-    float loss = 0.0f;
 
-    if(ExtractFloat(words[0], &loss))
-    {
-        TheClient->Send(MSG_SET_NETWORK_LOSS, VectorBufferRTS(loss));
-        return true;
-    }
+    UNUSED(words);
+
+//    float loss = 0.0f;
+//
+//    if(ExtractFloat(words[0], &loss))
+//    {
+//        TheClient->Send(MSG_SET_NETWORK_LOSS, VectorBufferRTS(loss));
+//        return true;
+//    }
 
     return false;
 }
@@ -206,8 +212,8 @@ bool ConsoleParser::FuncExit(Vector<String> &, bool showInfo)
 {
     if(!showInfo)
     {
-        TheClient->Disconnect();
-        TheServer->Disconnect();
+//        TheClient->Disconnect();
+//        TheServer->Disconnect();
         TheEngine->Exit();
     }
     return true;
@@ -239,7 +245,7 @@ bool ConsoleParser::FuncUnitCamera(Vector<String> &words, bool)
                 ExtractFloat(words[1], &fov);
 
                 PODVector<Node*> childrens;
-                TheScene->GetChildren(childrens);
+                TheScene->scene->GetChildren(childrens);
                 for(Node *node : childrens)
                 {
                     if(node->GetName() == NODE_CAMERA_TARGET)

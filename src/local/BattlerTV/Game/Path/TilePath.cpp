@@ -11,7 +11,7 @@ TilePath::TilePath() : Object(TheContext)
 {
     float d = 0.0f;
 
-    node = TheScene->CreateChild(NODE_TILE_PATH);
+    node = TheScene->scene->CreateChild(NODE_TILE_PATH);
 
     if (tiles.Size() == 0)
     {
@@ -71,7 +71,7 @@ void TilePath::SetPosition(const Vector3 &pos)
 
 void TilePath::SetVisible(bool visible)
 {
-    visible ? TheScene->NodeAdded(node) : TheScene->NodeRemoved(node);
+    visible ? TheScene->scene->NodeAdded(node) : TheScene->scene->NodeRemoved(node);
 }
 
 

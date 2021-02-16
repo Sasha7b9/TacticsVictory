@@ -46,7 +46,7 @@ file(GLOB GUI_LOGIC                                                  GUI/Logic/*
 file(GLOB GUI_MENU                                                   GUI/Menu/*.*)
 file(GLOB GUI_PANELS                                                 GUI/Panels/*.*)
 file(GLOB GUI_WINDOWS                                                GUI/Windows/*.*)
-file(GLOB NETWORK                                 ../../common_files/Network/*.*
+file(GLOB NETWORK                                 ../../common_files/Network/Game/*.*
                                                                      Network/*.*)
 file(GLOB SCENE                                   ../../common_files/Scene/*.*)
 file(GLOB SCENE_CAMERAS                                              Scene/Cameras/*.*)

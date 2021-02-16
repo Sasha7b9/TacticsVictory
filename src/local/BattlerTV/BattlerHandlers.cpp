@@ -135,25 +135,25 @@ void Battler::HandlePostUpdate(StringHash, VariantMap& eventData) //-V2009
 
     Rocket::UpdateAll(time);
 
-    if(TheClient->GetServerConnection())
-    {
-        VectorBufferRTS msg;
-
-        static Vector3 prevPosition = Vector3::ZERO;
-        Vector3 position = TheCamera->GetNode()->GetPosition();
-
-        static Quaternion prevRotation = Quaternion::IDENTITY;
-        Quaternion rotation = TheCamera->GetNode()->GetRotation();
-
-        if(position != prevPosition || rotation != prevRotation)
-        {
-            msg.WriteVector3(position);
-            msg.WriteQuaternion(rotation);
-
-            prevPosition = position;
-            prevRotation = rotation;
-
-            TheClient->Send(MSG_CAMERA_INFO, msg);
-        }
-    }
+//    if(TheClient->GetServerConnection())
+//    {
+//        VectorBufferRTS msg;
+//
+//        static Vector3 prevPosition = Vector3::ZERO;
+//        Vector3 position = TheCamera->GetNode()->GetPosition();
+//
+//        static Quaternion prevRotation = Quaternion::IDENTITY;
+//        Quaternion rotation = TheCamera->GetNode()->GetRotation();
+//
+//        if(position != prevPosition || rotation != prevRotation)
+//        {
+//            msg.WriteVector3(position);
+//            msg.WriteQuaternion(rotation);
+//
+//            prevPosition = position;
+//            prevRotation = rotation;
+//
+//            TheClient->Send(MSG_CAMERA_INFO, msg);
+//        }
+//    }
 }
