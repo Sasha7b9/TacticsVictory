@@ -2,12 +2,10 @@
 #pragma once
 
 
-
 enum SoundType
 {
     Sound_Explosion
 };
-
 
 
 class Sounds
