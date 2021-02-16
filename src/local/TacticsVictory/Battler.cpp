@@ -17,8 +17,6 @@ Battler::Battler(Context* context) :
 
 void Battler::Setup()
 {
-    ParseArguments(GetArguments());
-
     TheTacticsVictory = this;
     TheSet = new Settings();
     TheCache = GetSubsystem<ResourceCache>();
@@ -86,7 +84,6 @@ void Battler::Start()
     TheProfiler = GetSubsystem<Profiler>();
     PROFILER_FUNC_ENTER
     Application::Start();
-    FillNetworkFunctions();
     TheCache->AddResourceDir("TVData");
     SetLocalization();
     TheTime = GetSubsystem<Time>();
@@ -128,15 +125,6 @@ void Battler::Start()
 
     TheLevel = new Level();
 
-    if (MODE_CLIENT)
-    {
-        StartClient(address, port);
-    }
-    else if (MODE_SERVER)
-    {
-        StartServer(port);
-    }
-
     SubscribeToEvents();
 
     PROFILER_FUNC_LEAVE;
@@ -156,59 +144,6 @@ void Battler::CreateScriptSystem()
     TheContext->RegisterSubsystem(new Script(TheContext));
     TheScript = GetSubsystem<Script>();
     TheScript->GetScriptEngine()->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
-}
-
-
-void Battler::StartServer(uint16 port_)
-{
-    if (port_)
-    {
-        port = port_;
-    }
-
-    if (port)
-    {
-        scene = new SceneRTS(TheContext, SceneRTS::Mode_Server);
-        scene->Create();
-    }
-    else
-    {
-        LOGERROR("Can not start server on null port");
-    }
-    
-}
-
-
-void Battler::StopServer()
-{
-
-}
-
-
-void Battler::StartClient(const String &, uint16)
-{
-
-}
-
-
-void Battler::StopClient()
-{
-
-}
-
-
-void Battler::ParseArguments(const Vector<String> &arguments)
-{
-    /*
-        1. нет аргументов - просто запуск
-        2. аргументы -port:XX - запуск сервера на порту XX
-        3. аргументы -address:XX.XX.XX.XX -port:XX - запуск оболочки и коннект к серверу на XX.XX.XX.XX:XX
-    */
-
-    if (GF::GetAddressPort(arguments, address, port))
-    {
-        TheMode = address.Empty() ? ModeApp_Server : ModeApp_Client;
-    }
 }
 
 
@@ -284,22 +219,6 @@ void Battler::CreateEditorSession()
     TheGuiEditor->SetVisible(true);
     TheCamera->SetEnabled(true);
     TheEditor->Run();
-}
-
-
-void Battler::FillNetworkFunctions()
-{
-#define ADD_NETWORK_FUNCTION(name) networkFunctions[name] = FUNC_##name
-
-    ADD_NETWORK_FUNCTION(MSG_REQUEST_LANDSCAPE);
-    ADD_NETWORK_FUNCTION(MSG_CAMERA_INFO);
-    ADD_NETWORK_FUNCTION(MSG_REQUEST_TANKS);
-    ADD_NETWORK_FUNCTION(MSG_SEND_LANDSCAPE);
-    ADD_NETWORK_FUNCTION(MSG_SEND_TANKS);
-    ADD_NETWORK_FUNCTION(MSG_SEND_SCREENSHOT);
-    ADD_NETWORK_FUNCTION(MSG_DELETE_SERVER);
-    ADD_NETWORK_FUNCTION(MSG_SET_NETWORK_LOSS);
-    ADD_NETWORK_FUNCTION(MSG_SET_NETWORK_LATENCY);
 }
 
 

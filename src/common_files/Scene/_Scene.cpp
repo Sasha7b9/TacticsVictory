@@ -148,6 +148,7 @@ void SceneRTS::Update(float /*timeStep*/)
         pathIndicator.Update();
     }
 
+/*
     if (TheServer->IsRunning())
     {
         VectorBufferRTS msg;
@@ -160,7 +161,8 @@ void SceneRTS::Update(float /*timeStep*/)
 
         TheServer->SendToAll(MSG_SEND_SCREENSHOT, msg);
     }
-}
+*/
+    }
 
 
 void SceneRTS::HandleMouseDown(StringHash, VariantMap& eventData) //-V2009
