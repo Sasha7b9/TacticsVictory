@@ -51,12 +51,6 @@ file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objec
                                                   ../../common_files/Scene/Objects/_GameObjectEvents.*)
 file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objects/Ammo/*.*)
 file(GLOB SCENE_OBJECTS_BUILDINGS                 ../../common_files/Scene/Objects/Buildings/*.*)
-file(GLOB SCENE_OBJECTS_BUILDINGS_CIVILPLANT      ../../common_files/Scene/Objects/Buildings/CivilPlant/*.*)
-file(GLOB SCENE_OBJECTS_BUILDINGS_MILITARYPLANT   ../../common_files/Scene/Objects/Buildings/MilitaryPlant/*.*)
-file(GLOB SCENE_OBJECTS_BUILDINGS_POWERPLANT      ../../common_files/Scene/Objects/Buildings/PowerPlant/*.*)
-file(GLOB SCENE_OBJECTS_BUILDINGS_PROCESSINGPLANT ../../common_files/Scene/Objects/Buildings/ProcessingPlant/*.*)
-file(GLOB SCENE_OBJECTS_BUILDINGS_SHAFT           ../../common_files/Scene/Objects/Buildings/Shaft/*.*)
-file(GLOB SCENE_OBJECTS_BUILDINGS_WAREHOUSEAMMO   ../../common_files/Scene/Objects/Buildings/WarehouseAmmo/*.*)
 file(GLOB SCENE_OBJECTS_TERRAIN                   ../../common_files/Scene/Objects/Terrain/*.*)
 file(GLOB SCENE_OBJECTS_UNITS                     ../../common_files/Scene/Objects/Units/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_AIRPLANE            ../../common_files/Scene/Objects/Units/Airplane/*.*)
@@ -96,12 +90,6 @@ source_group(Scene\\Cameras                            FILES ${SCENE_CAMERAS})
 source_group(Scene\\Objects                            FILES ${SCENE_OBJECTS})
 source_group(Scene\\Objects\\Ammo                      FILES ${SCENE_OBJECTS_AMMO})
 source_group(Scene\\Objects\\Buildings                 FILES ${SCENE_OBJECTS_BUILDINGS})
-source_group(Scene\\Objects\\Buildings\\CivilPlant     FILES ${SCENE_OBJECTS_BUILDINGS_CIVILPLANT})
-source_group(Scene\\Objects\\Buildings\\MilitaryPlant  FILES ${SCENE_OBJECTS_BUILDINGS_MILITARYPLANT})
-source_group(Scene\\Objects\\Buildings\\PowerPlant     FILES ${SCENE_OBJECTS_BUILDINGS_POWERPLANT})
-source_group(Scene\\Objects\\Buildings\\ProcessingPlan FILES ${SCENE_OBJECTS_BUILDINGS_PROCESSINGPLANT})
-source_group(Scene\\Objects\\Buildings\\Shaft          FILES ${SCENE_OBJECTS_BUILDINGS_SHAFT})
-source_group(Scene\\Objects\\Buildings\\WarehouseAmmo  FILES ${SCENE_OBJECTS_BUILDINGS_WAREHOUSEAMMO})
 source_group(Scene\\Objects\\Terrain                   FILES ${SCENE_OBJECTS_TERRAIN})
 source_group(Scene\\Objects\\Units                     FILES ${SCENE_OBJECTS_UNITS})
 source_group(Scene\\Objects\\Units\\Airplane           FILES ${SCENE_OBJECTS_UNITS_AIRPLANE})
@@ -123,9 +111,7 @@ source_group(Utils                                     FILES ${UTILS})
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
     ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
     ${GUI_WINDOWS} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_AMMO}
-    ${SCENE_OBJECTS_BUILDINGS} ${SCENE_OBJECTS_BUILDINGS_CIVILPLANT}
-    ${SCENE_OBJECTS_BUILDINGS_MILITARYPLANT} ${SCENE_OBJECTS_BUILDINGS_POWERPLANT}
-    ${SCENE_OBJECTS_BUILDINGS_PROCESSINGPLANT} ${SCENE_OBJECTS_BUILDINGS_SHAFT} ${SCENE_OBJECTS_BUILDINGS_WAREHOUSEAMMO}
+    ${SCENE_OBJECTS_BUILDINGS}
     ${SCENE_OBJECTS_TERRAIN} ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_AIRPLANE} ${SCENE_OBJECTS_UNITS_BOMBER}
     ${SCENE_OBJECTS_UNITS_BUILDER} ${SCENE_OBJECTS_UNITS_HELICOPTER} ${SCENE_OBJECTS_UNITS_ROBOT}
     ${SCENE_OBJECTS_UNITS_SUPPLIERAMMO} ${SCENE_OBJECTS_UNITS_TANK} ${SCENE_OBJECTS_WEAPONS}
