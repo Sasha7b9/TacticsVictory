@@ -121,9 +121,6 @@ using namespace Urho3D;
 #pragma warning(pop)
 
 #include "defines.h"
-#include "Utils/GlobalFunctions.h"
-#include "Utils/LogRTS.h"
-#include "Utils/SettingsTypes.h"
 #include "Battler.h"
 
 #include "Audio/Sounds.h"
@@ -179,6 +176,11 @@ using namespace Urho3D;
 #include "Scene/Objects/Terrain/SegmentTerrain.h"
 #include "Scene/Objects/Units/Tank/_Tank.h"
 
+#include "Utils/GlobalFunctions.h"
+#include "Utils/LogRTS.h"
+#include "Utils/Settings.h"
+#include "Utils/SettingsTypes.h"
+
+
 #include "glob_engine.h"
 #include "glob_game.h"
-#include "Utils/Settings.h"
