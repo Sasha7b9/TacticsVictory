@@ -3,7 +3,7 @@
 
 
 PanelMap::PanelMap(Context *context) :
-    WindowRTS(context)
+    WindowTV(context)
 {
     SetName("PanelMap");
 
@@ -26,7 +26,7 @@ void PanelMap::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelMap>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowTV);
 }
 
 

@@ -10,12 +10,12 @@ class LineTranslator2D;
 class SliderWithTextAndButtons;
 
 
-class WindowRTS : public Window
+class WindowTV : public Window
 {
-    URHO3D_OBJECT(WindowRTS, Window);
+    URHO3D_OBJECT(WindowTV, Window);
 
 public:
-    WindowRTS(Context *context = TheContext);
+    WindowTV(Context *context = TheContext);
     static void RegisterObject(Context *context = TheContext);
     bool IsChildOfParent();
     void Toggle();

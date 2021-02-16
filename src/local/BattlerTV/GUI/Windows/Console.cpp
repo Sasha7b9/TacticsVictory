@@ -219,7 +219,7 @@ bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool
 
 
 ConsoleRTS::ConsoleRTS(Context *context) :
-    WindowRTS(context)
+    WindowTV(context)
 {
     SetVisible(false);
     SetResizable(true);

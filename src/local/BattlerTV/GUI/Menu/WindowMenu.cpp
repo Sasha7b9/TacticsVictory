@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 
-WindowMenu::WindowMenu(Context *context) : WindowRTS(context)
+WindowMenu::WindowMenu(Context *context) : WindowTV(context)
 {
 
 }

@@ -6,9 +6,9 @@
 /*
     Нижняя панель - на ней расположены кнопки
 */
-class PanelBottom : public WindowRTS
+class PanelBottom : public WindowTV
 {
-    URHO3D_OBJECT(PanelBottom, WindowRTS);
+    URHO3D_OBJECT(PanelBottom, WindowTV);
 
 public:
     PanelBottom(Context *context = TheContext);

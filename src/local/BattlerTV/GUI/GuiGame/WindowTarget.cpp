@@ -3,7 +3,7 @@
 
 
 WindowTarget::WindowTarget(Context *context) :
-    WindowRTS(context)
+    WindowTV(context)
 {
     SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowNoBorder");

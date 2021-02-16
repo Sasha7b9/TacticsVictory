@@ -81,9 +81,9 @@ private:
 
 
 
-class ConsoleRTS : public WindowRTS
+class ConsoleRTS : public WindowTV
 {
-    URHO3D_OBJECT(ConsoleRTS, WindowRTS);
+    URHO3D_OBJECT(ConsoleRTS, WindowTV);
 
 public:
     ConsoleRTS(Context *context);

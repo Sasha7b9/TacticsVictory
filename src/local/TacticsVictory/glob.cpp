@@ -40,7 +40,7 @@ ConsoleRTS          *TheConsole = nullptr;
 WindowVariables     *TheWindowVars = nullptr;
 Hint                *TheHint = nullptr;
 int                 *TheCounterHint = 0;
-Vector<WindowRTS*>   TheOpenedWindow;
+Vector<WindowTV*>   TheOpenedWindow;
 WindowTarget        *TheWindowTarget = nullptr;
 SceneTV            *TheScene = nullptr;
 

@@ -6,9 +6,9 @@
 class Tank;
 
 
-class WindowTarget : public WindowRTS
+class WindowTarget : public WindowTV
 {
-    URHO3D_OBJECT(WindowTarget, WindowRTS);
+    URHO3D_OBJECT(WindowTarget, WindowTV);
 
 public:
     WindowTarget(Context *context = TheContext);

@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 
-WindowRTS::WindowRTS(Context *context) :
+WindowTV::WindowTV(Context *context) :
     Window(context)
 {
     SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
@@ -11,21 +11,21 @@ WindowRTS::WindowRTS(Context *context) :
 }
 
 
-void WindowRTS::RegisterObject(Context *context)
+void WindowTV::RegisterObject(Context *context)
 {
-    context->RegisterFactory<WindowRTS>("UI");
+    context->RegisterFactory<WindowTV>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(Window);
 }
 
 
-bool WindowRTS::IsChildOfParent()
+bool WindowTV::IsChildOfParent()
 {
     return TheUIRoot->FindChild(this) != M_MAX_UNSIGNED;
 }
 
 
-void WindowRTS::Toggle()
+void WindowTV::Toggle()
 {
     if(translator)
     {
@@ -34,19 +34,19 @@ void WindowRTS::Toggle()
 }
 
 
-SharedPtr<LineTranslator2D> WindowRTS::GetTranslator()
+SharedPtr<LineTranslator2D> WindowTV::GetTranslator()
 {
     return translator;
 }
 
 
-bool WindowRTS::UnderCursor()
+bool WindowTV::UnderCursor()
 {
     return Window::IsInside(TheCursor->GetCursor()->GetPosition(), true);
 }
 
 
-SharedPtr<ButtonTV> WindowRTS::AddButton(char *text, int x, int y, int width, int height)
+SharedPtr<ButtonTV> WindowTV::AddButton(char *text, int x, int y, int width, int height)
 {
     SharedPtr<ButtonTV> retButton(new ButtonTV(this, text, width, height));
     if (x != -1 && y != -1)
@@ -58,7 +58,7 @@ SharedPtr<ButtonTV> WindowRTS::AddButton(char *text, int x, int y, int width, in
 }
 
 
-SharedPtr<Label> WindowRTS::AddLabel(char *text, bool center, int x, int y, int width, int height)
+SharedPtr<Label> WindowTV::AddLabel(char *text, bool center, int x, int y, int width, int height)
 {
     SharedPtr<Label> label(Label::Create(text, center, 20, width, height));
     if (x != -1 && y != -1)
@@ -70,7 +70,7 @@ SharedPtr<Label> WindowRTS::AddLabel(char *text, bool center, int x, int y, int 
 }
 
 
-SharedPtr<ButtonToggled> WindowRTS::AddButtonToggled(char *text, int x, int y, int width, int height)
+SharedPtr<ButtonToggled> WindowTV::AddButtonToggled(char *text, int x, int y, int width, int height)
 {
     SharedPtr<ButtonToggled> retButton(new ButtonToggled(this, text, width, height));
     retButton->SetPosition(x, y);
@@ -79,7 +79,7 @@ SharedPtr<ButtonToggled> WindowRTS::AddButtonToggled(char *text, int x, int y, i
 }
 
 
-SharedPtr<SliderWithTextAndButtons> WindowRTS::AddSlider(char *text, int min, int max, int step, int x, int y, int widthText, int widthRoller)
+SharedPtr<SliderWithTextAndButtons> WindowTV::AddSlider(char *text, int min, int max, int step, int x, int y, int widthText, int widthRoller)
 {
     SharedPtr<SliderWithTextAndButtons> slider(new SliderWithTextAndButtons(this, text, min, max, step, widthText, widthRoller));
     AddChild(slider);
@@ -91,7 +91,7 @@ SharedPtr<SliderWithTextAndButtons> WindowRTS::AddSlider(char *text, int min, in
 }
 
 
-SharedPtr<DropDownListWithTextAndButton> WindowRTS::AddDDList(char *text, int widthText, int widthDDList, int numItems, char *items[], int x, int y)
+SharedPtr<DropDownListWithTextAndButton> WindowTV::AddDDList(char *text, int widthText, int widthDDList, int numItems, char *items[], int x, int y)
 {
     SharedPtr<DropDownListWithTextAndButton> ddList(DropDownListWithTextAndButton::Create(this, text, widthText, widthDDList, numItems, items));
     if (x != -1 && y != -1)
@@ -102,13 +102,13 @@ SharedPtr<DropDownListWithTextAndButton> WindowRTS::AddDDList(char *text, int wi
 }
 
 
-void WindowRTS::SetEnabled()
+void WindowTV::SetEnabled()
 {
     SetVisible(true);
 }
 
 
-void WindowRTS::SetDisabled()
+void WindowTV::SetDisabled()
 {
     SetVisible(false);
 }

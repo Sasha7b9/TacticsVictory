@@ -9,9 +9,9 @@ class ImageRTS;
 /*
     Эта панель расположена в правом нижнем углу - миникарта
 */
-class PanelMap : public WindowRTS
+class PanelMap : public WindowTV
 {
-    URHO3D_OBJECT(PanelMap, WindowRTS);
+    URHO3D_OBJECT(PanelMap, WindowTV);
 
 public:
     PanelMap(Context *context = TheContext);

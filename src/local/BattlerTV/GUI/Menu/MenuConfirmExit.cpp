@@ -25,7 +25,7 @@ void MenuConfirmExit::RegisterObject(Context *context)
 {
     context->RegisterFactory<MenuConfirmExit>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowTV);
 }
 
 

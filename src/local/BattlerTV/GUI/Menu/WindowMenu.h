@@ -3,9 +3,9 @@
 #include "GUI/Controls/_WindowRTS.h"
 
 
-class WindowMenu : public WindowRTS
+class WindowMenu : public WindowTV
 {
-    URHO3D_OBJECT(WindowMenu, WindowRTS)
+    URHO3D_OBJECT(WindowMenu, WindowTV)
 
 public:
     WindowMenu(Context *context = TheContext);

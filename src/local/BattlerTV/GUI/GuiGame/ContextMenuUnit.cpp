@@ -3,7 +3,7 @@
 
 
 ContextMenuUnit::ContextMenuUnit(Context *context) :
-    WindowRTS(context)
+    WindowTV(context)
 {
     SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowBorder");

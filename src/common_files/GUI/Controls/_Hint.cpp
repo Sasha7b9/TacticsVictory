@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 
-Hint::Hint(char *text_) : WindowRTS(), text(text_)
+Hint::Hint(char *text_) : WindowTV(), text(text_)
 {
     label = Label::Create(text, true, 20);
     AddChild(label);

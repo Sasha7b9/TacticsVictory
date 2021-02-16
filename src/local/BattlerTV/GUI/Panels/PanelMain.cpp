@@ -3,7 +3,7 @@
 
 
 PanelMain::PanelMain(Context *context) :
-    WindowRTS(context)
+    WindowTV(context)
 {
     SetName("PanelMain");
 
@@ -22,7 +22,7 @@ void PanelMain::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelMain>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(WindowRTS);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowTV);
 }
 
 

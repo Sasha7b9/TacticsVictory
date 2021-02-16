@@ -3,9 +3,9 @@
 #include "GUI/Controls/_WindowRTS.h"
 
 
-class Hint : public WindowRTS
+class Hint : public WindowTV
 {
-    URHO3D_OBJECT(Hint, WindowRTS);
+    URHO3D_OBJECT(Hint, WindowTV);
 
 public:
     Hint(char *text);

@@ -3,9 +3,9 @@
 #include "GUI/Controls/_WindowRTS.h"
 
 
-class Tab : public WindowRTS
+class Tab : public WindowTV
 {
-    URHO3D_OBJECT(Tab, WindowRTS);
+    URHO3D_OBJECT(Tab, WindowTV);
 
 public:
     Tab(Context *context = TheContext);
