@@ -150,7 +150,7 @@ void TacticsVictory::Start()
 void TacticsVictory::SetLocalization()
 {
     TheLocalization = GetSubsystem<Localization>();
-    TheLocalization->LoadJSONFile("TVData/Strings.json");
+    TheLocalization->LoadJSONFile("Strings.json");
     TheLocalization->SetLanguage("ru");
 }
 
