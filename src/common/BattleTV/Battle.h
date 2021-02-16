@@ -24,15 +24,10 @@ private:
 
     void OpenLog();
     void RegistrationComponets();
-    void SetWindowTitleAndIcon();
-    void CreateConsoleAndDebugHud();
     void SubscribeToEvents();
     void SetLocalization();
     void CreateScriptSystem();
 
     void HandleUpdate(StringHash, VariantMap&);
     void HandlePostUpdate(StringHash, VariantMap&);
-    void HandleMenuEvent(StringHash, VariantMap&);
-    void HandlePostRenderUpdate(StringHash, VariantMap&);
-    void HandleKeyDown(StringHash, VariantMap&);
 };

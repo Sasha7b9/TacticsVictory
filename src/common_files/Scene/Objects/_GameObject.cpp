@@ -26,22 +26,6 @@ void GameObject::Update(float)
 }
 
 
-void GameObject::EnableContextMenu()
-{
-    if(contextMenu == nullptr)
-    {
-        contextMenu = new ContextMenuUnit();
-        if(type == Unit)
-        {
-            contextMenu->Create(this);
-        }
-    }
-    contextMenu->SetPosition(TheCursor->GetCursor()->GetPosition());
-    TheUIRoot->AddChild(contextMenu);
-    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GameObject, HandleOnMouseDown));
-}
-
-
 void GameObject::HandleOnMouseDown(StringHash, VariantMap&)
 {
     if(!contextMenu->UnderCursor())
@@ -129,3 +113,23 @@ void GameObject::SetCoord(const Coord& coord)
 {
     SetPosition(coord.ToVector3());
 }
+
+
+#ifdef CLIENT
+
+void GameObject::EnableContextMenu()
+{
+    if (contextMenu == nullptr)
+    {
+        contextMenu = new ContextMenuUnit();
+        if (type == Unit)
+        {
+            contextMenu->Create(this);
+        }
+    }
+    contextMenu->SetPosition(TheCursor->GetCursor()->GetPosition());
+    TheUIRoot->AddChild(contextMenu);
+    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GameObject, HandleOnMouseDown));
+}
+
+#endif

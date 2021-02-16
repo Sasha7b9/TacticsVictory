@@ -24,7 +24,6 @@ FileSelector        *TheFileSelector = nullptr;
 Profiler            *TheProfiler = nullptr;
 Script              *TheScript = nullptr;
 
-CameraRTS           *TheCamera = nullptr;
 CursorRTS           *TheCursor = nullptr;
 Settings            *TheSet = nullptr;
 Level               *TheLevel = nullptr;

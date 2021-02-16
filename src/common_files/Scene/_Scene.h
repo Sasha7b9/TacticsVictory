@@ -2,6 +2,7 @@
 #pragma once
 #include "Game/Path/PathIndicator.h"
 
+class Tank;
 
 class SceneRTS : public Object
 {

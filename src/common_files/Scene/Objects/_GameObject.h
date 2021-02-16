@@ -20,7 +20,6 @@ public:
     virtual ~GameObject();
     void SetAutoReloaded(int time) { timeForReload = time; };
     virtual void Update(float timeStep);
-    void EnableContextMenu();
     char *GetName();
     Type GetGameObjectType();
     virtual void SetSelected(bool selected);
@@ -48,4 +47,11 @@ protected:
     void SetPosition(const Vector3& pos);
     void Normalize(float k = 1.0f);
     void HandleOnMouseDown(StringHash, VariantMap&);
+
+#ifdef CLIENT
+
+public:
+    void EnableContextMenu();
+
+#endif
 };

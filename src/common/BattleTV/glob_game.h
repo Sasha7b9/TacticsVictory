@@ -24,18 +24,8 @@ class Battler;
 class MenuRTS;
 class LogRTS;
 
-extern CameraRTS       *TheCamera;
-extern ConsoleRTS      *TheConsole;
-extern CursorRTS       *TheCursor;
-extern GUI             *TheGUI;
-extern GuiEditor       *TheGuiEditor;
-extern GuiGame         *TheGuiGame;
-extern Hint            *TheHint;
 extern Level           *TheLevel;
 extern LogRTS          *TheLog;
-extern MenuConfirmExit *TheMenuConfirmExit;
-extern MenuGame        *TheMenuMain;
-extern MenuRTS         *TheMenu;
 extern SceneRTS        *TheScene;
 extern Settings        *TheSet;
 extern Battle          *TheBattle;

@@ -31,8 +31,6 @@ void SceneRTS::RegisterObject(Context *context)
 
 void SceneRTS::Create()
 {
-    Sounds::Init();
-
     Particles::Init();
 
     ThePhysicsWorld->SetFps(5);
@@ -88,8 +86,10 @@ void SceneRTS::Create()
     light->SetEnabled(true);
 
 #ifdef CLIENT
+
+    Sounds::Init();
+
     TheRenderer->SetShadowMapSize(2048);
-#endif
 
     uint sizeX = level[0].Size();
     uint sizeZ = level.Size();
@@ -106,6 +106,8 @@ void SceneRTS::Create()
     pathIndicator.Init();
 
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(SceneRTS, HandleMouseDown));
+
+#endif
 }
 
 
