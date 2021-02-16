@@ -138,7 +138,7 @@ using namespace Urho3D;
 
 #include "GUI/Cursor.h"
 #include "GUI/GUI.h"
-#include "GUI/Controls/_Button.h"
+#include "GUI/Controls/_ButtonTV.h"
 #include "GUI/Controls/_ButtonSwitch.h"
 #include "GUI/Controls/_ButtonToggled.h"
 #include "GUI/Controls/_DropDownListWithTextAndButton.h"
