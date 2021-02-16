@@ -3,12 +3,10 @@
 #include "GUI/Menu/WindowMenu.h"
 
 
-
 enum
 {
     MenuEvent_MenuOptionsClose
 };
-
 
 
 class MenuOptions : public WindowMenu

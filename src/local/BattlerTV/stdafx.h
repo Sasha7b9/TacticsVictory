@@ -161,6 +161,7 @@ using namespace Urho3D;
 #include "GUI/Menu/MenuGame.h"
 #include "GUI/Menu/MenuOptions.h"
 #include "GUI/Menu/MenuRTS.h"
+#include "GUI/Menu/MenuStart.h"
 #include "GUI/Panels/PanelBottom.h"
 #include "GUI/Panels/PanelMain.h"
 #include "GUI/Panels/PanelMap.h"
@@ -177,6 +178,7 @@ using namespace Urho3D;
 #include "Scene/_Level.h"
 #include "Scene/_Scene.h"
 #include "Scene/Cameras/Camera.h"
+#include "Scene/Objects/_GameObjectEvents.h"
 #include "Scene/Objects/Ammo/_AmmoObject.h"
 #include "Scene/Objects/Ammo/Rocket/Rocket.h"
 #include "Scene/Objects/Buildings/MilitaryPlant/MilitaryPlant.h"
@@ -187,7 +189,6 @@ using namespace Urho3D;
 #include "Utils/LogRTS.h"
 #include "Utils/Settings.h"
 #include "Utils/SettingsTypes.h"
-
 
 #include "glob_engine.h"
 #include "glob_game.h"

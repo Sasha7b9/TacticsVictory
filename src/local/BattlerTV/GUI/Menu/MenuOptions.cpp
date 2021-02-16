@@ -1,14 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "MenuOptions.h"
-#include "GUI/GUI.h"
-#include "GUI/Controls/_SliderInt.h"
-#include "GUI/Controls/_Button.h"
-#include "GUI/Cursor.h"
-#include "GUI/Controls/_Label.h"
-#include "GUI/Controls/_SliderWithTextAndButtons.h"
-#include "GUI/Controls/_DropDownListWithTextAndButton.h"
-
 
 
 MenuOptions::MenuOptions(Context *context) : WindowMenu(context)

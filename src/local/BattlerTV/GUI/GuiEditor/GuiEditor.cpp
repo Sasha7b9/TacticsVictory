@@ -1,23 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GuiEditor.h"
-#include "Editor/Editor.h"
-#include "Scene/_Level.h"
-#include "Scene/Objects/Terrain/Terrain.h"
-//#include "GlobalFunctions.h"
-#include "GUI/GUI.h"
-#include "GUI/Controls/_Tab.h"
-#include "GUI/Controls/_Button.h"
-#include "GUI/Controls/_Label.h"
-#include "GUI/Controls/_ButtonToggled.h"
-#include "GUI/Controls/_SliderWithTextAndButtons.h"
-#include "GUI/Controls/_DropDownListWithTextAndButton.h"
-#include "GUI/Panels/PanelMap.h"
-#include "GUI/Panels/PanelMain.h"
-#include "GUI/Menu/MenuOptions.h"
-#include "GUI/Windows/Console.h"
-#include "GUI/Panels/PanelBottom.h"
-
 
 
 GuiEditor::GuiEditor(Context* context) : Object(context)

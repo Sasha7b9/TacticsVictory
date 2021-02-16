@@ -1,14 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-//#include "GlobalFunctions.h"
-#include "MenuRTS.h"
-#include "MenuGame.h"
-#include "MenuEvents.h"
-#include "MenuOptions.h"
-#include "MenuStart.h"
-#include "MenuConfirmExit.h"
-#include "MenuAboutMe.h"
-
 
 
 #define CREATE_MENU(name, type, moving)                                 \
@@ -17,7 +8,6 @@
     GF::SetWindowInCenterScreen(name);                                  \
     name->SetMovable(moving);                                           \
     SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuRTS, HandleMenuEvent));
-
 
 
 MenuRTS::MenuRTS(Context *context) : Object(context)

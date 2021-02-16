@@ -2,7 +2,6 @@
 #pragma once
 
 
-
 enum
 {
     MenuEvent_OpenOptions,      // Нужно открыть меню "Опции" . P_SOURCE - меню, которое его открывает

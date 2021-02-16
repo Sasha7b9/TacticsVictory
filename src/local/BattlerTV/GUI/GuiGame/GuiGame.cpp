@@ -1,13 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GuiGame.h"
-#include "GUI/Controls/_Button.h"
-#include "GUI/Controls/_Tab.h"
-#include "GUI/Panels/PanelMap.h"
-#include "GUI/Panels/PanelMain.h"
-#include "GUI/Panels/PanelBottom.h"
-#include "GUI/Windows/Console.h"
-
 
 
 GuiGame::GuiGame(Context *context) :

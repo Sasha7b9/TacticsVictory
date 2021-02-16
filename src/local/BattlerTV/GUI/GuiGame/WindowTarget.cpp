@@ -1,8 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "WindowTarget.h"
-#include "Scene/Objects/_GameObjectEvents.h"
-
 
 
 WindowTarget::WindowTarget(Context *context) :

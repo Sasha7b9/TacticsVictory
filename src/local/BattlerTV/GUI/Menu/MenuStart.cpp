@@ -1,9 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "MenuStart.h"
-#include "MenuAboutMe.h"
-#include "MenuEvents.h"
-#include "MenuRTS.h"
 
 
 #define VAR_MENU_EVENT "VAR_MENU_EVENT"

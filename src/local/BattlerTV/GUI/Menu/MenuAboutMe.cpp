@@ -1,10 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "MenuEvents.h"
-#include "MenuAboutMe.h"
-#include "GUI/Controls/_Button.h"
-#include "GUI/Menu/MenuStart.h"
-
 
 
 MenuAboutMe::MenuAboutMe(Context *context) : WindowMenu(context)
