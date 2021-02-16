@@ -86,6 +86,7 @@
 
 #include <Urho3D/Network/Network.h>
 #include <Urho3D/Network/NetworkEvents.h>
+#include <Urho3D/Network/Protocol.h>
 
 #include <Urho3D/Physics/CollisionShape.h>
 #include <Urho3D/Physics/PhysicsWorld.h>
@@ -168,10 +169,15 @@ using namespace Urho3D;
 #include "GUI/Windows/Console.h"
 #include "GUI/Windows/WindowVariables.h"
 
+#include "Network/SServer.h"
+#include "Network/Game/_GameMessages.h"
+#include "Network/Game/_TConnection.h"
+
 #include "Scene/Level.h"
 #include "Scene/Scene.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/_GameObjectEvents.h"
+#include "Scene/Objects/_ObjectState.h"
 #include "Scene/Objects/Ammo/_AmmoObject.h"
 #include "Scene/Objects/Ammo/Rocket/Rocket.h"
 #include "Scene/Objects/Buildings/MilitaryPlant/MilitaryPlant.h"

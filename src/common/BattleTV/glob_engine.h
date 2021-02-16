@@ -14,6 +14,7 @@ extern Font          *TheFont;
 extern Graphics      *TheGraphics;
 extern Input         *TheInput;
 extern Localization  *TheLocalization;
+extern Network       *TheNetwork;       // Сетевая система
 extern PhysicsWorld  *ThePhysicsWorld;
 extern Profiler      *TheProfiler;
 extern Renderer      *TheRenderer;

@@ -17,6 +17,7 @@ Console             *TheEngineConsole = nullptr;
 DebugHud            *TheDebugHud = nullptr;
 Graphics            *TheGraphics = nullptr;
 FileSystem          *TheFileSystem = nullptr;
+Network             *TheNetwork = nullptr;
 PhysicsWorld        *ThePhysicsWorld = nullptr;
 Font                *TheFont = nullptr;
 Time                *TheTime = nullptr;
@@ -30,7 +31,7 @@ Editor              *TheEditor = nullptr;
 Settings            *TheSet = nullptr;
 Level               *TheLevel = nullptr;
 TerrainRTS          *TheTerrain = nullptr;
-Battle              *TheTacticsVictory = nullptr;
+Battle              *TheBattle = nullptr;
 LogRTS              *TheLog = nullptr;
 
 // GUI
@@ -48,3 +49,6 @@ WindowTarget        *TheWindowTarget = nullptr;
 MenuRTS             *TheMenu = nullptr;
 MenuGame            *TheMenuMain = nullptr;
 MenuConfirmExit     *TheMenuConfirmExit = nullptr;
+
+
+Vector<Connection *> connections;

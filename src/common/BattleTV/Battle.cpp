@@ -17,7 +17,7 @@ Battle::Battle(Context* context) :
 
 void Battle::Setup()
 {
-    TheTacticsVictory = this;
+    TheBattle = this;
     TheSet = new Settings();
     TheCache = GetSubsystem<ResourceCache>();
     TheFileSystem = GetSubsystem<FileSystem>();
