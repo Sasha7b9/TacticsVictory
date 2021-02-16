@@ -24,7 +24,7 @@ class Battler;
 class MenuRTS;
 class LogTV;
 
-extern CameraRTS       *TheCamera;
+extern CameraTV       *TheCamera;
 extern ConsoleRTS      *TheConsole;
 extern CursorRTS       *TheCursor;
 extern Editor          *TheEditor;

@@ -2,7 +2,7 @@
 #pragma once
 
 
-class CameraRTS
+class CameraTV
 {
 public:
     enum Direction
@@ -16,7 +16,7 @@ public:
         Direction_RotateYAW,
         Direction_RotatePITCH
     };
-    CameraRTS();
+    CameraTV();
 
     void Move(float time);
     void ParallelTranslateLookAt(const Vector3 &lookAt);

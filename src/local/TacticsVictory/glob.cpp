@@ -23,7 +23,7 @@ FileSelector        *TheFileSelector = nullptr;
 Profiler            *TheProfiler = nullptr;
 Script              *TheScript = nullptr;
 
-CameraRTS           *TheCamera = nullptr;
+CameraTV           *TheCamera = nullptr;
 CursorRTS           *TheCursor = nullptr;
 Editor              *TheEditor = nullptr;
 Settings            *TheSet = nullptr;

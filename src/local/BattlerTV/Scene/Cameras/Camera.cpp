@@ -12,7 +12,7 @@
 #define CURSOR_DOWN_RIGhT   (cursor == TypeCursor_DownRight)
 
 
-CameraRTS::CameraRTS()
+CameraTV::CameraTV()
 {
     cameraNode = TheScene->scene->CreateChild("Camera");
 
@@ -38,33 +38,33 @@ CameraRTS::CameraRTS()
 }
 
 
-Vector3 CameraRTS::GetPosition()
+Vector3 CameraTV::GetPosition()
 {
     return cameraNode->GetPosition();
 }
 
 
-void CameraRTS::SetPosition(const Vector3 &position)
+void CameraTV::SetPosition(const Vector3 &position)
 {
     cameraNode->SetPosition(position);
 }
 
 
-void CameraRTS::SetPosition(const Vector3& position, const Vector3& lookAt_)
+void CameraTV::SetPosition(const Vector3& position, const Vector3& lookAt_)
 {
     cameraNode->SetPosition(position);
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
-void CameraRTS::LookAt(const Vector3 &lookAt_)
+void CameraTV::LookAt(const Vector3 &lookAt_)
 {
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
 
-void CameraRTS::ParallelTranslateLookAt(const Vector3 &lookAt_)
+void CameraTV::ParallelTranslateLookAt(const Vector3 &lookAt_)
 {
     Vector3 delta = lookAt_ - lookAt;
     lookAt = lookAt_;
@@ -73,7 +73,7 @@ void CameraRTS::ParallelTranslateLookAt(const Vector3 &lookAt_)
 }
 
 
-void CameraRTS::Move(float time) //-V2008
+void CameraTV::Move(float time) //-V2008
 {
     if(!enabled || TheConsole->IsActive())
     {
@@ -178,7 +178,7 @@ void CameraRTS::Move(float time) //-V2008
 }
 
 
-void CameraRTS::SetPitch(float newPitch)
+void CameraTV::SetPitch(float newPitch)
 {
     Quaternion rotation = cameraNode->GetRotation();
     float yawAngle = rotation.YawAngle();
@@ -189,7 +189,7 @@ void CameraRTS::SetPitch(float newPitch)
 }
 
 
-void CameraRTS::MoveOn(Direction direction, float distance)
+void CameraTV::MoveOn(Direction direction, float distance)
 {
     if(!enabled)
     {
@@ -284,13 +284,13 @@ void CameraRTS::MoveOn(Direction direction, float distance)
 }
 
 
-void CameraRTS::SetEnabled(bool _enabled)
+void CameraTV::SetEnabled(bool _enabled)
 {
     enabled = _enabled;
 }
 
 
-void CameraRTS::SetupViewport()
+void CameraTV::SetupViewport()
 {
     Camera *camera = cameraNode->GetComponent<Camera>();
 
@@ -300,13 +300,13 @@ void CameraRTS::SetupViewport()
 }
 
 
-SharedPtr<Node> CameraRTS::GetNode()
+SharedPtr<Node> CameraTV::GetNode()
 {
     return cameraNode;
 }
 
 
-Ray CameraRTS::GetCursorRay()
+Ray CameraTV::GetCursorRay()
 {
     IntVector2 pos = TheUI->GetCursorPosition();
     return cameraNode->GetComponent<Camera>()->GetScreenRay(static_cast<float>(pos.x_) / TheGraphics->GetWidth(), static_cast<float>(pos.y_) / TheGraphics->GetHeight());

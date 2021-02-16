@@ -26,7 +26,7 @@ class LogTV;
 class Server;
 class Client;
 
-extern CameraRTS       *TheCamera;
+extern CameraTV       *TheCamera;
 extern Client          *TheClient;
 extern ConsoleRTS      *TheConsole;
 extern CursorRTS       *TheCursor;
