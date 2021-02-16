@@ -1,8 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "WindowVariables.h"
-#include "GUI/Controls/_Label.h"
-#include "GUI/Controls/_GovernorFloat.h"
 
 
 WindowVariables::WindowVariables(Context *context) :

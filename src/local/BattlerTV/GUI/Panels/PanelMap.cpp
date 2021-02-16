@@ -1,11 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "PanelMap.h"
-#include "Scene/_Level.h"
-#include "Graphics/2D/Image.h"
-#include "GUI/Cursor.h"
-#include "GUI/Logic/LineTranslator2D.h"
-
 
 
 PanelMap::PanelMap(Context *context) :

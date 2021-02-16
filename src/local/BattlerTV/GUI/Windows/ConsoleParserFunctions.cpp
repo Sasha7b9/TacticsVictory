@@ -1,13 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Console.h"
-//#include "GlobalFunctions.h"
-//#include "Network/Client.h"
-//#include "Network/Server.h"
-//#include "Network/NetworkMessages.h"
-//#include "Network/VectorBufferRTS.h"
-#include "GUI/Menu/MenuRTS.h"
-#include "GUI/Windows/WindowVariables.h"
 
 
 bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)

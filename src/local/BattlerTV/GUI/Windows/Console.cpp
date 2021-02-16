@@ -1,8 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Console.h"
-#include "GUI/Windows/WindowVariables.h"
-#include "GUI/Menu/MenuRTS.h"
 
 
 #define TAB "    "

@@ -1,9 +1,5 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "MenuEvents.h"
-#include "WindowMenu.h"
-#include "GUI/Controls/_Button.h"
-
 
 
 WindowMenu::WindowMenu(Context *context) : WindowRTS(context)

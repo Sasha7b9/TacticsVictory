@@ -1,10 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "PanelMain.h"
-#include "GUI/Controls/_Tab.h"
-#include "GUI/Controls/_ButtonToggled.h"
-#include "GUI/Logic/LineTranslator2D.h"
-
 
 
 PanelMain::PanelMain(Context *context) :
