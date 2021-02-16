@@ -124,7 +124,7 @@ using namespace Urho3D;
 #include "GlobalFunctions.h"
 #include "LogRTS.h"
 #include "SettingsTypes.h"
-#include "TacticsVictory.h"
+#include "Battler.h"
 
 #include "Audio/Sounds.h"
 
