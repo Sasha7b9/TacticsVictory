@@ -6,25 +6,10 @@ void Battle::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
 {
     float time = eventData[Update::P_TIMESTEP].GetFloat();
 
-#ifdef CLIENT
-
-    TheCamera->Move(time);
-
-    if (TheCursor)
-    {
-        TheCursor->Update(time);
-    }
-
-#endif
-
-#ifdef SERVER
-
     if (scene)
     {
         scene->Update(time);
     }
-
-#endif
 }
 
 
