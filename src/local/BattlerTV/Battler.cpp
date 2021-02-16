@@ -211,7 +211,7 @@ void TacticsVictory::ParseArguments(const Vector<String> &arguments)
         3. аргументы -address:XX.XX.XX.XX -port:XX - запуск оболочки и коннект к серверу на XX.XX.XX.XX:XX
     */
 
-    if (GetAddressPort(arguments, address, port))
+    if (GF::GetAddressPort(arguments, address, port))
     {
         TheMode = address.Empty() ? ModeApp_Server : ModeApp_Client;
     }

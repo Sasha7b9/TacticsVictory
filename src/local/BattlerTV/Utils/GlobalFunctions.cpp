@@ -2,13 +2,13 @@
 #include "stdafx.h"
 
 
-void SetWindowInCenterScreen(Window *window)
+void GF::SetWindowInCenterScreen(Window *window)
 {
     window->SetPosition(TheGraphics->GetWidth() / 2 - window->GetWidth() / 2, TheGraphics->GetHeight() / 2 - window->GetHeight() / 2);
 }
 
 
-void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
+void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
 {
     SAFE_DELETE(TheFileSelector); //-V809
     TheFileSelector = new FileSelector(TheContext);
@@ -29,7 +29,7 @@ void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<
 }
 
 
-unsigned GetLastModifiedTime(char* name)
+unsigned GF::GetLastModifiedTime(char* name)
 {
     String fullName = TheFileSystem->GetProgramDir();
     fullName.Erase(fullName.Length() - 1);
@@ -39,7 +39,7 @@ unsigned GetLastModifiedTime(char* name)
 }
 
 
-String GetNameFile(const char *name)
+String GF::GetNameFile(const char *name)
 {
     String fullName;
 
@@ -79,7 +79,7 @@ String GetNameFile(const char *name)
 }
 
 
-String IntToString(int value, uint length)
+String GF::IntToString(int value, uint length)
 {
     String str(value);
     while(str.Length() < length)
@@ -90,7 +90,7 @@ String IntToString(int value, uint length)
 }
 
 
-bool GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
+bool GF::GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
 {
     for(String word : words)
     {

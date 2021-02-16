@@ -62,7 +62,7 @@ Vector<Vector<float>> Level::Load(const char *fileName)
 
     SharedPtr<File> fileRead;
     fileRead = new File(TheContext);
-    if(fileRead->Open(GetNameFile(fileName), FILE_READ))
+    if(fileRead->Open(GF::GetNameFile(fileName), FILE_READ))
     {
         String str = fileRead->ReadString();
         const char *data = str.CString();
