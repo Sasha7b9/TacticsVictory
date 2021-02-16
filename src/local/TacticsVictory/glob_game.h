@@ -38,7 +38,7 @@ extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
 extern MenuRTS         *TheMenu;
 extern Settings        *TheSet;
-extern Battler         *TheTacticsVictory;
+extern TacticsVictory *TheTacticsVictory;
 extern TerrainRTS      *TheTerrain;
 extern WindowTarget    *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 extern WindowVariables *TheWindowVars;

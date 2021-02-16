@@ -4,18 +4,18 @@
 
 #pragma warning(push)
 #pragma warning(disable:4100)
-URHO3D_DEFINE_APPLICATION_MAIN(Battler)
+URHO3D_DEFINE_APPLICATION_MAIN(TacticsVictory)
 #pragma warning(pop)
 
 
-Battler::Battler(Context* context) :
+TacticsVictory::TacticsVictory(Context* context) :
     Application(context)
 {
     TheContext = context;
 }
 
 
-void Battler::Setup()
+void TacticsVictory::Setup()
 {
     TheTacticsVictory = this;
     TheSet = new Settings();
@@ -43,7 +43,7 @@ void Battler::Setup()
 }
 
 
-void Battler::Stop()
+void TacticsVictory::Stop()
 {
     engine_->DumpResources(true);
     //engine_->DumpProfiler();
@@ -79,7 +79,7 @@ void MessageCallback(const asSMessageInfo *msg, void *)
 }
 
 
-void Battler::Start()
+void TacticsVictory::Start()
 {
     TheProfiler = GetSubsystem<Profiler>();
     PROFILER_FUNC_ENTER
@@ -131,7 +131,7 @@ void Battler::Start()
 }
 
 
-void Battler::SetLocalization()
+void TacticsVictory::SetLocalization()
 {
     TheLocalization = GetSubsystem<Localization>();
     TheLocalization->LoadJSONFile("TVData/Strings.json");
@@ -139,7 +139,7 @@ void Battler::SetLocalization()
 }
 
 
-void Battler::CreateScriptSystem()
+void TacticsVictory::CreateScriptSystem()
 {
     TheContext->RegisterSubsystem(new Script(TheContext));
     TheScript = GetSubsystem<Script>();
@@ -147,7 +147,7 @@ void Battler::CreateScriptSystem()
 }
 
 
-void Battler::RegistrationComponets()
+void TacticsVictory::RegistrationComponets()
 {
     TheContext->RegisterFactory<Rotator>();
     TheContext->RegisterFactory<Movinator>();
@@ -165,7 +165,7 @@ void Battler::RegistrationComponets()
 }
 
 
-void Battler::SubscribeToEvents()
+void TacticsVictory::SubscribeToEvents()
 {
     if (MODE_SERVER)
     {
@@ -173,17 +173,17 @@ void Battler::SubscribeToEvents()
     }
     else
     {
-        SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(Battler, HandleKeyDown));
-        SubscribeToEvent(E_MENU, URHO3D_HANDLER(Battler, HandleMenuEvent));
-        SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Battler, HandlePostRenderUpdate));
+        SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
+        SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
+        SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
     }
     
-    SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(Battler, HandleUpdate));
-    SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(Battler, HandlePostUpdate));
+    SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(TacticsVictory, HandleUpdate));
+    SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
 }
 
 
-void Battler::SetWindowTitleAndIcon()
+void TacticsVictory::SetWindowTitleAndIcon()
 {
     if (MODE_CLIENT)
     {
@@ -194,7 +194,7 @@ void Battler::SetWindowTitleAndIcon()
 }
 
 
-void Battler::CreateConsoleAndDebugHud()
+void TacticsVictory::CreateConsoleAndDebugHud()
 {
     if (MODE_CLIENT)
     {
@@ -210,7 +210,7 @@ void Battler::CreateConsoleAndDebugHud()
 }
 
 
-void Battler::CreateEditorSession()
+void TacticsVictory::CreateEditorSession()
 {
     if(!TheEditor)
     {
@@ -222,7 +222,7 @@ void Battler::CreateEditorSession()
 }
 
 
-void Battler::OpenLog()
+void TacticsVictory::OpenLog()
 {
     TheLog = new LogRTS();
     char buffer[50];
