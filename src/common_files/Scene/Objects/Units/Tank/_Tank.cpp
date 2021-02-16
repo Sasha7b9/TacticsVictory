@@ -75,20 +75,20 @@ void Tank::Init(TypeTank type_, uint _id_)
 
     rocketLauncher->Init();
 
-    ScriptInstance *instance = node_->CreateComponent<ScriptInstance>();
-
-    LOGINFO("Загружаю Tank.as");
-
-    ScriptFile *script = TheCache->GetResource<ScriptFile>("Models/Units/Tank/Tank.as");
-
-    LOGINFO("Tank.as загружен");
-
-    instance->CreateObject(script, "TankUpdater");
-    VariantVector params;
-    params.Push(Variant(rocketLauncher));
-    params.Push(Variant(translator));
-    params.Push(Variant(this));
-    instance->Execute("void SetRotationSpeed(RocketLauncher@ launch, Translator@ trans, Tank@ tan)", params);
+//    ScriptInstance *instance = node_->CreateComponent<ScriptInstance>();
+//
+//    LOGINFO("Загружаю Tank.as");
+//
+//    ScriptFile *script = TheCache->GetResource<ScriptFile>("Models/Units/Tank/Tank.as");
+//
+//    LOGINFO("Tank.as загружен");
+//
+//    instance->CreateObject(script, "TankUpdater");
+//    VariantVector params;
+//    params.Push(Variant(rocketLauncher));
+//    params.Push(Variant(translator));
+//    params.Push(Variant(this));
+//    instance->Execute("void SetRotationSpeed(RocketLauncher@ launch, Translator@ trans, Tank@ tan)", params);
 
     /*
     params.Clear();
