@@ -50,4 +50,3 @@ extern WindowVariables *TheWindowVars;
 
 extern int *TheCounterHint;
 extern Vector<WindowTV *> TheOpenedWindow;
-extern ModeApp             TheMode;

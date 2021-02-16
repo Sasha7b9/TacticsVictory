@@ -34,7 +34,7 @@ void Battler::Setup()
     engineParameters_[EP_TEXTURE_QUALITY] = 32; //-V112
     engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
     engineParameters_[EP_WINDOW_HEIGHT] = TheSet->GetInt(TV_SCREEN_HEIGHT);
-    engineParameters_[EP_HEADLESS] = MODE_SERVER;
+    engineParameters_[EP_HEADLESS] = false;
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
 #ifdef DEBUG
@@ -98,42 +98,28 @@ void Battler::Start()
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
     TheScene->scene->CreateComponent<DebugRenderer>();
 
-    if (MODE_SERVER)
-    {
-        CreateScriptSystem();
-    }
-    else
-    {
-        SetWindowTitleAndIcon();
-        CreateConsoleAndDebugHud();
-        TheUI = GetSubsystem<UI>();
-        TheInput = GetSubsystem<Input>();
-        TheAudio = GetSubsystem<Audio>();
-        TheRenderer = GetSubsystem<Renderer>();
-        TheCamera = new CameraTV();
-        TheDebugRenderer = TheScene->scene->GetComponent<DebugRenderer>();
-        TheUIRoot = TheUI->GetRoot();
-        TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-        TheGUI = new GUI();
-        LOGINFO("Загружаю настройки");
-        TheMenu = new MenuTV();
-        TheFileSelector = new FileSelector(TheContext);
-        TheFileSelector->GetWindow()->SetModal(false);
-        TheFileSelector->GetWindow()->SetVisible(false);
-    }
-    
+    CreateScriptSystem();
+
+    SetWindowTitleAndIcon();
+    CreateConsoleAndDebugHud();
+    TheUI = GetSubsystem<UI>();
+    TheInput = GetSubsystem<Input>();
+    TheAudio = GetSubsystem<Audio>();
+    TheRenderer = GetSubsystem<Renderer>();
+    TheCamera = new CameraTV();
+    TheDebugRenderer = TheScene->scene->GetComponent<DebugRenderer>();
+    TheUIRoot = TheUI->GetRoot();
+    TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    TheGUI = new GUI();
+    LOGINFO("Загружаю настройки");
+    TheMenu = new MenuTV();
+    TheFileSelector = new FileSelector(TheContext);
+    TheFileSelector->GetWindow()->SetModal(false);
+    TheFileSelector->GetWindow()->SetVisible(false);
+
     RegistrationComponets();
 
     TheLevel = new Level();
-
-    if (MODE_CLIENT)
-    {
-        StartClient(address, port);
-    }
-    else if (MODE_SERVER)
-    {
-        StartServer(port);
-    }
 
     SubscribeToEvents();
 
@@ -199,16 +185,7 @@ void Battler::StopClient()
 
 void Battler::ParseArguments(const Vector<String> &arguments)
 {
-    /*
-        1. нет аргументов - просто запуск
-        2. аргументы -port:XX - запуск сервера на порту XX
-        3. аргументы -address:XX.XX.XX.XX -port:XX - запуск оболочки и коннект к серверу на XX.XX.XX.XX:XX
-    */
-
-    if (GF::GetAddressPort(arguments, address, port))
-    {
-        TheMode = address.Empty() ? ModeApp_Server : ModeApp_Client;
-    }
+    UNUSED(arguments);
 }
 
 
@@ -220,29 +197,19 @@ void Battler::RegistrationComponets()
 
     SceneTV::RegisterObject();
 
-    if(MODE_SERVER)
-    {
-        RocketLauncher::RegisterInAS();
-        Translator::RegisterInAS();
-        WaveAlgorithm::RegisterInAS();
-        Tank::RegisterInAS();
-    }
+    RocketLauncher::RegisterInAS();
+    Translator::RegisterInAS();
+    WaveAlgorithm::RegisterInAS();
+    Tank::RegisterInAS();
 }
 
 
 void Battler::SubscribeToEvents()
 {
-    if (MODE_SERVER)
-    {
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(Battler, HandleKeyDown));
+    SubscribeToEvent(E_MENU, URHO3D_HANDLER(Battler, HandleMenuEvent));
+    SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Battler, HandlePostRenderUpdate));
 
-    }
-    else
-    {
-        SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(Battler, HandleKeyDown));
-        SubscribeToEvent(E_MENU, URHO3D_HANDLER(Battler, HandleMenuEvent));
-        SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Battler, HandlePostRenderUpdate));
-    }
-    
     SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(Battler, HandleUpdate));
     SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(Battler, HandlePostUpdate));
 }
@@ -250,28 +217,22 @@ void Battler::SubscribeToEvents()
 
 void Battler::SetWindowTitleAndIcon()
 {
-    if (MODE_CLIENT)
-    {
-        Image* icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
-        TheGraphics->SetWindowIcon(icon);
-        TheGraphics->SetWindowTitle("Тактика победы");
-    }
+    Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
+    TheGraphics->SetWindowIcon(icon);
+    TheGraphics->SetWindowTitle("Тактика победы");
 }
 
 
 void Battler::CreateConsoleAndDebugHud()
 {
-    if (MODE_CLIENT)
-    {
-        XMLFile* xmlFile = TheCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
+    XMLFile *xmlFile = TheCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
 
-        TheEngineConsole = engine_->CreateConsole();
-        TheEngineConsole->SetDefaultStyle(xmlFile);
-        TheEngineConsole->GetBackground()->SetOpacity(0.8f);
+    TheEngineConsole = engine_->CreateConsole();
+    TheEngineConsole->SetDefaultStyle(xmlFile);
+    TheEngineConsole->GetBackground()->SetOpacity(0.8f);
 
-        TheDebugHud = engine_->CreateDebugHud();
-        TheDebugHud->SetDefaultStyle(xmlFile);
-    }
+    TheDebugHud = engine_->CreateDebugHud();
+    TheDebugHud->SetDefaultStyle(xmlFile);
 }
 
 
@@ -293,18 +254,7 @@ void Battler::OpenLog()
     char buffer[50];
     srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
 
-    if (MODE_SERVER)
-    {
-        sprintf_s(buffer, 50, "server.log");
-    }
-    else if (MODE_CLIENT)
-    {
-        sprintf_s(buffer, 50, "client.log");
-    }
-    else
-    {
-        sprintf_s(buffer, 50, "log.log");
-    }
+    sprintf_s(buffer, 50, "Battler.log");
 
     TheLog->Open(buffer);
     TheLog->SetLevel(LOG_DEBUG);

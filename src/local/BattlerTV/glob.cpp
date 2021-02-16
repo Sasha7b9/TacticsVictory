@@ -48,5 +48,3 @@ MenuTV             *TheMenu = nullptr;
 SceneTV            *TheScene = nullptr;
 MenuGame            *TheMenuMain = nullptr;
 MenuConfirmExit     *TheMenuConfirmExit = nullptr;
-
-ModeApp             TheMode = ModeApp_Start;
