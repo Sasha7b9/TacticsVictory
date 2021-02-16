@@ -3,7 +3,6 @@
 #include "Graphics/Objects/Plane.h"
 
 
-
 class Editor : public Object
 {
     URHO3D_OBJECT(Editor, Object);

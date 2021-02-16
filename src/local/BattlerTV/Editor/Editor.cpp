@@ -1,13 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Editor.h"
-#include "Scene/_Level.h"
-#include "Scene/Objects/Units/Tank/_Tank.h"
-#include "GUI/Cursor.h"
-#include "GUI/GUI.h"
-#include "GUI/GuiEditor/GuiEditor.h"
-#include "GUI/Menu/MenuRTS.h"
-
 
 
 Editor::Editor(Context *context) : Object(context)
@@ -15,7 +7,6 @@ Editor::Editor(Context *context) : Object(context)
     currentPlane = PlaneRTS::ZERO;
     selectedPlane = PlaneRTS::ZERO;
 }
-
 
 
 void Editor::Run()

@@ -6,7 +6,6 @@
 extern TerrainRTS *TheTerrain;
 
 
-
 struct Coord
 {
     Coord(const Coord &coord) : row(coord.row), col(coord.col) { }
