@@ -22,9 +22,7 @@ void TacticsVictory::Setup()
     TheCache = GetSubsystem<ResourceCache>();
     TheFileSystem = GetSubsystem<FileSystem>();
     OpenLog();
-//    LOGINFO("Загружаю настройки");
     TheSet->Load();
-    //LOGINFO("Загрузка настроек закончена");
 
     engineParameters_[EP_WINDOW_TITLE] = GetTypeName();
     engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
@@ -67,18 +65,6 @@ void TacticsVictory::Stop()
 }
 
 
-void MessageCallback(const asSMessageInfo *msg, void *)
-{
-    const char *type = "AS ERROR ";
-    if(msg->type == asMSGTYPE_WARNING)
-        type = "AS WARN ";
-    else if(msg->type == asMSGTYPE_INFORMATION)
-        type = "AS INFO ";
-
-    LOGINFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); //-V111
-}
-
-
 void TacticsVictory::Start()
 {
     TheProfiler = GetSubsystem<Profiler>();
@@ -96,6 +82,8 @@ void TacticsVictory::Start()
     ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
     TheScene->CreateComponent<DebugRenderer>();
+
+
 
     CreateScriptSystem();
 
@@ -131,6 +119,18 @@ void TacticsVictory::SetLocalization()
     TheLocalization = GetSubsystem<Localization>();
     TheLocalization->LoadJSONFile("TVData/Strings.json");
     TheLocalization->SetLanguage("ru");
+}
+
+
+static void MessageCallback(const asSMessageInfo *msg, void *)
+{
+    const char *type = "AS ERROR ";
+    if (msg->type == asMSGTYPE_WARNING)
+        type = "AS WARN ";
+    else if (msg->type == asMSGTYPE_INFORMATION)
+        type = "AS INFO ";
+
+    LOGINFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); //-V111
 }
 
 
