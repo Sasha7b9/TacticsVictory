@@ -6,12 +6,12 @@ class SceneRTS;
 class VectorBufferRTS;
 
 
-class TacticsVictory : public Application
+class Battle : public Application
 {
-    URHO3D_OBJECT(TacticsVictory, Application);
+    URHO3D_OBJECT(Battle, Application);
 
 public:
-    TacticsVictory(Context* context);
+    Battle(Context* context);
 
     virtual void Setup();
     virtual void Start();

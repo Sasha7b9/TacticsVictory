@@ -4,18 +4,18 @@
 
 #pragma warning(push)
 #pragma warning(disable:4100)
-URHO3D_DEFINE_APPLICATION_MAIN(TacticsVictory)
+URHO3D_DEFINE_APPLICATION_MAIN(Battle)
 #pragma warning(pop)
 
 
-TacticsVictory::TacticsVictory(Context* context) :
+Battle::Battle(Context* context) :
     Application(context)
 {
     TheContext = context;
 }
 
 
-void TacticsVictory::Setup()
+void Battle::Setup()
 {
     TheTacticsVictory = this;
     TheSet = new Settings();
@@ -41,7 +41,7 @@ void TacticsVictory::Setup()
 }
 
 
-void TacticsVictory::Start()
+void Battle::Start()
 {
     TheProfiler = GetSubsystem<Profiler>();
     PROFILER_FUNC_ENTER
@@ -91,7 +91,7 @@ void TacticsVictory::Start()
 }
 
 
-void TacticsVictory::Stop()
+void Battle::Stop()
 {
     engine_->DumpResources(true);
     //engine_->DumpProfiler();
@@ -112,7 +112,7 @@ void TacticsVictory::Stop()
 }
 
 
-void TacticsVictory::SetLocalization()
+void Battle::SetLocalization()
 {
     TheLocalization = GetSubsystem<Localization>();
     TheLocalization->LoadJSONFile("TVData/Strings.json");
@@ -132,7 +132,7 @@ static void MessageCallback(const asSMessageInfo *msg, void *)
 }
 
 
-void TacticsVictory::CreateScriptSystem()
+void Battle::CreateScriptSystem()
 {
     TheContext->RegisterSubsystem(new Script(TheContext));
     TheScript = GetSubsystem<Script>();
@@ -140,7 +140,7 @@ void TacticsVictory::CreateScriptSystem()
 }
 
 
-void TacticsVictory::RegistrationComponets()
+void Battle::RegistrationComponets()
 {
     TheContext->RegisterFactory<Rotator>();
     TheContext->RegisterFactory<Movinator>();
@@ -155,18 +155,18 @@ void TacticsVictory::RegistrationComponets()
 }
 
 
-void TacticsVictory::SubscribeToEvents()
+void Battle::SubscribeToEvents()
 {
-    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(TacticsVictory, HandleKeyDown));
-    SubscribeToEvent(E_MENU, URHO3D_HANDLER(TacticsVictory, HandleMenuEvent));
-    SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostRenderUpdate));
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(Battle, HandleKeyDown));
+    SubscribeToEvent(E_MENU, URHO3D_HANDLER(Battle, HandleMenuEvent));
+    SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Battle, HandlePostRenderUpdate));
 
-    SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(TacticsVictory, HandleUpdate));
-    SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(TacticsVictory, HandlePostUpdate));
+    SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(Battle, HandleUpdate));
+    SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(Battle, HandlePostUpdate));
 }
 
 
-void TacticsVictory::SetWindowTitleAndIcon()
+void Battle::SetWindowTitleAndIcon()
 {
     Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     TheGraphics->SetWindowIcon(icon);
@@ -174,7 +174,7 @@ void TacticsVictory::SetWindowTitleAndIcon()
 }
 
 
-void TacticsVictory::CreateConsoleAndDebugHud()
+void Battle::CreateConsoleAndDebugHud()
 {
     XMLFile *xmlFile = TheCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
 
@@ -187,7 +187,7 @@ void TacticsVictory::CreateConsoleAndDebugHud()
 }
 
 
-void TacticsVictory::CreateEditorSession()
+void Battle::CreateEditorSession()
 {
     if(!TheEditor)
     {
@@ -199,7 +199,7 @@ void TacticsVictory::CreateEditorSession()
 }
 
 
-void TacticsVictory::OpenLog()
+void Battle::OpenLog()
 {
     TheLog = new LogRTS();
     char buffer[50];

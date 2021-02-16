@@ -30,7 +30,7 @@ Editor              *TheEditor = nullptr;
 Settings            *TheSet = nullptr;
 Level               *TheLevel = nullptr;
 TerrainRTS          *TheTerrain = nullptr;
-TacticsVictory      *TheTacticsVictory = nullptr;
+Battle              *TheTacticsVictory = nullptr;
 LogRTS              *TheLog = nullptr;
 
 // GUI
