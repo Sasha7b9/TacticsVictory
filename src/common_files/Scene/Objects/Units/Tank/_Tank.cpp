@@ -1,19 +1,9 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Scene/Objects/Units/Tank/_Tank.h"
-#include "Core/_Math.h"
-//#include "GlobalFunctions.h"
-#include "Scene/Objects/Ammo/Rocket/Rocket.h"
-#include "Scene/Objects/_GameObjectEvents.h"
-#include "Game/Particles.h"
-#include "GUI/Cursor.h"
-#include "GUI/GuiGame/ContextMenuUnit.h"
-
 
 
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
 PODVector<Tank*> Tank::allTanks;
-
 
 
 Tank::Tank(Context *context) : UnitObject(context)

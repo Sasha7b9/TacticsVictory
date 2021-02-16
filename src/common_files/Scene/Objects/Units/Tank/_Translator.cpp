@@ -1,9 +1,5 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Scene/Objects/Units/Tank/_Translator.h"
-#include "Core/_Math.h"
-#include "Scene/Objects/Units/Tank/_Tank.h"
-
 
 
 Translator::Translator(Context *context) : Object(context)

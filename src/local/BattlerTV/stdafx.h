@@ -184,6 +184,7 @@ using namespace Urho3D;
 #include "Scene/Objects/Buildings/MilitaryPlant/MilitaryPlant.h"
 #include "Scene/Objects/Terrain/SegmentTerrain.h"
 #include "Scene/Objects/Units/Tank/_Tank.h"
+#include "Scene/Objects/Weapons/RocketLauncher/RocketLauncher.h"
 
 #include "Utils/GlobalFunctions.h"
 #include "Utils/LogRTS.h"

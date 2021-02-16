@@ -1,12 +1,8 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "UnitObject.h"
-#include "Scene/Objects/_GameObjectEvents.h"
-
 
 
 bool UnitObject::viewTargetView = false;
-
 
 
 UnitObject::UnitObject(Context *context) : GameObject(context)
