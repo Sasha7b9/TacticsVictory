@@ -40,7 +40,6 @@ WindowVariables     *TheWindowVars = nullptr;
 Hint                *TheHint = nullptr;
 int                 *TheCounterHint = 0;
 Vector<WindowRTS*>   TheOpenedWindow;
-WindowTarget        *TheWindowTarget = nullptr;
 
 // Меню
 MenuRTS             *TheMenu = nullptr;

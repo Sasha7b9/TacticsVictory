@@ -30,7 +30,6 @@ extern SceneRTS        *TheScene;
 extern Settings        *TheSet;
 extern Battle          *TheBattle;
 extern TerrainRTS      *TheTerrain;
-extern WindowTarget    *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 extern WindowVariables *TheWindowVars;
 
 extern int *TheCounterHint;

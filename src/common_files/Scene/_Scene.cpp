@@ -13,7 +13,12 @@ SceneRTS::SceneRTS(Context *context, Mode _mode) : Object(context), mode(_mode)
 SceneRTS::~SceneRTS()
 {
     delete scene;
+
+#ifdef CLIENT
+
     SAFE_DELETE(TheWindowTarget);
+
+#endif
 
     SAFE_DELETE(TheTerrain); //-V809
 
