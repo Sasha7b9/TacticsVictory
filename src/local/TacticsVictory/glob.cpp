@@ -24,7 +24,7 @@ Profiler            *TheProfiler = nullptr;
 Script              *TheScript = nullptr;
 
 CameraTV           *TheCamera = nullptr;
-CursorRTS           *TheCursor = nullptr;
+CursorTV           *TheCursor = nullptr;
 Editor              *TheEditor = nullptr;
 Settings            *TheSet = nullptr;
 Level               *TheLevel = nullptr;

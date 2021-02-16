@@ -45,11 +45,11 @@ private:
 
 
 
-class CursorRTS : public Object
+class CursorTV : public Object
 {
-    URHO3D_OBJECT(CursorRTS, Object)
+    URHO3D_OBJECT(CursorTV, Object)
 public:
-    CursorRTS();
+    CursorTV();
     SharedPtr<Cursor> GetCursor();
     void Update(float dT);
     void SetNormal();

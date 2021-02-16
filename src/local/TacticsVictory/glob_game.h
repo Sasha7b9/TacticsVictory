@@ -2,7 +2,7 @@
 #pragma once
 
 class ConsoleTV;
-class CursorRTS;
+class CursorTV;
 class Editor;
 class GUI;
 class GuiEditor;
@@ -26,7 +26,7 @@ class LogTV;
 
 extern CameraTV       *TheCamera;
 extern ConsoleTV      *TheConsole;
-extern CursorRTS       *TheCursor;
+extern CursorTV       *TheCursor;
 extern Editor          *TheEditor;
 extern GUI             *TheGUI;
 extern GuiEditor       *TheGuiEditor;
