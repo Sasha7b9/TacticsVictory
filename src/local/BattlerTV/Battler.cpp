@@ -83,7 +83,6 @@ void Battler::Start()
     TheProfiler = GetSubsystem<Profiler>();
     PROFILER_FUNC_ENTER
     Application::Start();
-    FillNetworkFunctions();
     TheCache->AddResourceDir("TVData");
     SetLocalization();
     TheTime = GetSubsystem<Time>();
@@ -160,6 +159,8 @@ void Battler::CreateScriptSystem()
 
 void Battler::StartServer(uint16 port_)
 {
+    UNUSED(port_);
+
 //    if (port_)
 //    {
 //        port = port_;
@@ -288,22 +289,6 @@ void Battler::CreateEditorSession()
     TheGuiEditor->SetVisible(true);
     TheCamera->SetEnabled(true);
     TheEditor->Run();
-}
-
-
-void Battler::FillNetworkFunctions()
-{
-#define ADD_NETWORK_FUNCTION(name) networkFunctions[name] = FUNC_##name
-
-    ADD_NETWORK_FUNCTION(MSG_REQUEST_LANDSCAPE);
-    ADD_NETWORK_FUNCTION(MSG_CAMERA_INFO);
-    ADD_NETWORK_FUNCTION(MSG_REQUEST_TANKS);
-    ADD_NETWORK_FUNCTION(MSG_SEND_LANDSCAPE);
-    ADD_NETWORK_FUNCTION(MSG_SEND_TANKS);
-    ADD_NETWORK_FUNCTION(MSG_SEND_SCREENSHOT);
-    ADD_NETWORK_FUNCTION(MSG_DELETE_SERVER);
-    ADD_NETWORK_FUNCTION(MSG_SET_NETWORK_LOSS);
-    ADD_NETWORK_FUNCTION(MSG_SET_NETWORK_LATENCY);
 }
 
 

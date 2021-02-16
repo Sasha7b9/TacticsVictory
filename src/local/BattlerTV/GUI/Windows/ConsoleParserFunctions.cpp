@@ -14,13 +14,6 @@ bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 }
 
 
-static void OnServerConnected()
-{
-//    TheClient->Send(MSG_REQUEST_LANDSCAPE, VectorBufferRTS());
-    TheConsole->Write("Запрашиваю ландшафт");
-}
-
-
 bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
 {
     String address = SERVER_ADDRESS;
@@ -259,7 +252,7 @@ bool ConsoleParser::FuncUnitCamera(Vector<String> &words, bool)
             else if(BeginFrom(words[1], "get"))
             {
                 PODVector<Node*> childrens;
-                TheScene->GetChildren(childrens);
+                TheScene->scene->GetChildren(childrens);
                 for(Node *node : childrens)
                 {
                     if(node->GetName() == NODE_CAMERA_TARGET)

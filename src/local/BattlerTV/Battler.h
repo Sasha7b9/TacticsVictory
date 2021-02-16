@@ -37,7 +37,6 @@ private:
     void CreateConsoleAndDebugHud();
     void CreateEditorSession();
     void SubscribeToEvents();
-    void FillNetworkFunctions();
     void SetLocalization();
     void CreateScriptSystem();
 
