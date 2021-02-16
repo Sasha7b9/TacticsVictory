@@ -45,7 +45,7 @@ file(GLOB GUI_LOGIC                                                  GUI/Logic/*
 file(GLOB GUI_MENU                                                   GUI/Menu/*.*)
 file(GLOB GUI_PANELS                                                 GUI/Panels/*.*)
 file(GLOB GUI_WINDOWS                                                GUI/Windows/*.*)
-file(GLOB SCENE                                                      Scene/*.*)
+file(GLOB SCENE                                   ../../common_files/Scene/*.*)
 file(GLOB SCENE_CAMERAS                                              Scene/Cameras/*.*)
 file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/_GameObject.*
                                                   ../../common_files/Scene/Objects/_GameObjectEvents.*)
