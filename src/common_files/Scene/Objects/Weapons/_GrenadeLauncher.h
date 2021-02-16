@@ -1,13 +1,11 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Game/Objects/Weapons/WeaponObject.h"
+#include "Scene/Objects/Weapons/_WeaponObject.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class GrenadeLauncher : public WeaponObject
 {
 public:
-    GrenadeLauncher(Context *context = gContext);
-
-private:
-    DEFAULT_MEMBERS(GrenadeLauncher);
+    GrenadeLauncher(Context *context = TheContext);
 };

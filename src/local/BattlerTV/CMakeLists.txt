@@ -62,11 +62,6 @@ file(GLOB SCENE_OBJECTS_UNITS_ROBOT               ../../common_files/Scene/Objec
 file(GLOB SCENE_OBJECTS_UNITS_SUPPLIERAMMO        ../../common_files/Scene/Objects/Units/SupplierAmmo/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_TANK                ../../common_files/Scene/Objects/Units/Tank/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS                   ../../common_files/Scene/Objects/Weapons/*.*)
-file(GLOB SCENE_OBJECTS_WEAPONS_GRENADERLAUNCHER  ../../common_files/Scene/Objects/Weapons/GrenaderLauncher/*.*)
-file(GLOB SCENE_OBJECTS_WEAPONS_GUN               ../../common_files/Scene/Objects/Weapons/Gun/*.*)
-file(GLOB SCENE_OBJECTS_WEAPONS_LASER             ../../common_files/Scene/Objects/Weapons/Laser/*.*)
-file(GLOB SCENE_OBJECTS_WEAPONS_MACHINEGUN        ../../common_files/Scene/Objects/Weapons/MacheneGun/*.*)
-file(GLOB SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER    ../../common_files/Scene/Objects/Weapons/RocketLauncher/*.*)
 file(GLOB SCENE_PRIMITIVES                        ../../common_files/Scene/Primitives/*.*)
 file(GLOB UTILS                                                      Utils/*.*)
 
@@ -102,11 +97,6 @@ source_group(Scene\\Objects\\Units\\Robot              FILES ${SCENE_OBJECTS_UNI
 source_group(Scene\\Objects\\Units\\SupplierAmmo       FILES ${SCENE_OBJECTS_UNITS_SUPPLIERAMMO})
 source_group(Scene\\Objects\\Units\\Tank               FILES ${SCENE_OBJECTS_UNITS_TANK})
 source_group(Scene\\Objects\\Weapons                   FILES ${SCENE_OBJECTS_WEAPONS})
-source_group(Scene\\Objects\\Weapons\\GrenadeLauncher  FILES ${SCENE_OBJECTS_WEAPONS_GRENADERLAUNCHER})
-source_group(Scene\\Objects\\Weapons\\Gun              FILES ${SCENE_OBJECTS_WEAPONS_GUN})
-source_group(Scene\\Objects\\Weapons\\Laser            FILES ${SCENE_OBJECTS_WEAPONS_LASER})
-source_group(Scene\\Objects\\Weapons\\MachineGun       FILES ${SCENE_OBJECTS_WEAPONS_MACHINEGUN})
-source_group(Scene\\Objects\\Weapons\\RocketLauncher   FILES ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER})
 source_group(Scene\\Primitives                         FILES ${SCENE_PRIMITIVES})
 source_group(Utils                                     FILES ${UTILS})
 
@@ -117,8 +107,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME
     ${SCENE_OBJECTS_TERRAIN} ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_AIRPLANE} ${SCENE_OBJECTS_UNITS_BOMBER}
     ${SCENE_OBJECTS_UNITS_BUILDER} ${SCENE_OBJECTS_UNITS_HELICOPTER} ${SCENE_OBJECTS_UNITS_ROBOT}
     ${SCENE_OBJECTS_UNITS_SUPPLIERAMMO} ${SCENE_OBJECTS_UNITS_TANK} ${SCENE_OBJECTS_WEAPONS}
-    ${SCENE_OBJECTS_WEAPONS_GRENADERLAUNCHER} ${SCENE_OBJECTS_WEAPONS_GUN} ${SCENE_OBJECTS_WEAPONS_LASER}
-    ${SCENE_OBJECTS_WEAPONS_MACHINEGUN} ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER} ${SCENE_PRIMITIVES} ${UTILS})
+    ${SCENE_PRIMITIVES} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)
 
