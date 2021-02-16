@@ -9,6 +9,7 @@ class ContextMenuUnit;
 #endif
 
 class Translator;
+struct Coord;
 
 
 class GameObject : public LogicComponent

@@ -370,16 +370,19 @@ void Rocket::SetParameters(float timeStep)
 
     if (collisionWithTerrain || (time > rangeTime))
     {
+#ifdef CLIENT
         Sounds::Play(Sound_Explosion, position);
-
         Particles::EmittingStatic(Explosion_Terrain, node_->GetPosition());
+#endif
 
         smokeNode->SetEnabled(false);
         node_->SetEnabled(false);
     }
     else if (attackedUnit)
     {
+#ifdef CLIENT
         Sounds::Play(Sound_Explosion, position);
+#endif
     
         VariantMap eventData = GetEventDataMap();
         eventData[AmmoEvent::P_TYPE] = Hit_Missile;

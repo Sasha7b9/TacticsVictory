@@ -32,6 +32,7 @@ endif()
 file(GLOB SRC                                                        *.h *.cpp)
 file(GLOB CORE                                    ../../common_files/Core/*.*)
 file(GLOB GAME_LOGIC                                                 Game/Logic/*.*)
+file(GLOB GRAPHICS_OBJECTS                                           Graphics/Objects/*.*)
 file(GLOB NETWORK                                                    Network/*.*
                                                   ../../common_files/Network/Game/*.*)
 file(GLOB SCENE                                   ../../common_files/Scene/*.*)
@@ -69,6 +70,7 @@ file(GLOB UTILS                                                      Utils/*.*)
 source_group(src                                       FILES ${SRC})
 source_group(Core                                      FILES ${CORE})
 source_group(Game\\Logic                               FILES ${GAME_LOGIC})
+source_group(Graphics\\Objects                         FILES ${GRAPHICS_OBJECTS})
 source_group(Network                                   FILES ${NETWORK})
 source_group(Scene                                     FILES ${SCENE})
 source_group(Scene\\Objects                            FILES ${SCENE_OBJECTS})
@@ -102,7 +104,7 @@ source_group(Scene\\Objects\\Weapons\\MachineGun       FILES ${SCENE_OBJECTS_WEA
 source_group(Scene\\Objects\\Weapons\\RocketLauncher   FILES ${SCENE_OBJECTS_WEAPONS_ROCKETLAUNCHER})
 source_group(Utils                                     FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC}
+add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GRAPHICS_OBJECTS}
     ${NETWORK} ${SCENE} ${SCENE_OBJECTS} ${SCENE_OBJECTS_AMMO}
     ${SCENE_OBJECTS_AMMO_AIRBOMB} ${SCENE_OBJECTS_AMMO_GRENADE} ${SCENE_OBJECTS_AMMO_MINE} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_AMMO_ROLLINGBOMB} ${SCENE_OBJECTS_BUILDINGS} ${SCENE_OBJECTS_BUILDINGS_CIVILPLANT}

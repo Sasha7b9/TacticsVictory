@@ -10,6 +10,9 @@ class PlaneCube;
 class TerrainRTS;
 
 
+extern Context *TheContext;
+
+
 class CubeTerrain : public Object
 {
     URHO3D_OBJECT(CubeTerrain, Object);

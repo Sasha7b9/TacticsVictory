@@ -125,9 +125,12 @@ using namespace Urho3D;
 #include "Battle.h"
 
 #include "Core/_Math.h"
+#include "Core/_Structures.h"
 
 #include "Game/Logic/Movinator.h"
 #include "Game/Logic/Rotator.h"
+
+#include "Graphics/Objects/Triangle.h"
 
 #include "Network/SServer.h"
 #include "Network/Game/_GameMessages.h"

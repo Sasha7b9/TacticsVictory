@@ -32,7 +32,7 @@ public:
     Scene *scene = nullptr;
 
 private:
-    PathIndicator pathIndicator;
+
     Mode mode;
 
     void RegisterObjects();
@@ -42,6 +42,9 @@ private:
     void HandleMouseDown(StringHash, VariantMap &);
     void ProcessMouseLeft();
     void ProcessMouseRight();
+
+private:
+    PathIndicator pathIndicator;
 
 #endif
 };
