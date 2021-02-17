@@ -24,7 +24,6 @@ public:
     virtual ~Tank();
 
     virtual void Update(float timeStep);
-    static SharedPtr<Tank> Create(TypeTank type, uint _id_ = 0);
     void SetCoord(const Coord& coord);
     void SetPath(const PODVector<Coord> &path);
     // rotation = [0...359.999999f]
@@ -42,11 +41,12 @@ protected:
     static void RegisterInAS();
     virtual void Init(TypeTank typeTank, uint _id_);
     bool inProcessFindPath = false;
+    static SharedPtr<Tank> Create(TypeTank type, uint _id_ = 0);
+    static PODVector<Tank *> allTanks;
 
 private:
 
     TypeTank typeTank;
-    static PODVector<Tank*> allTanks;
 
     void LoadFromFile();
 

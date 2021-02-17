@@ -22,6 +22,8 @@ public:
 
     virtual void Update(float dT) override;
 
+    static SharedPtr<CTank> Create(TypeTank type, uint _id_ = 0);
+
 private:
     SharedPtr<WaveAlgorithm> pathFinder;
 
