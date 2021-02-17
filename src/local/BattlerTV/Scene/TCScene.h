@@ -12,5 +12,14 @@ public:
     CScene(Context *context = TheContext) : TScene(context) {};
     virtual ~CScene();
 
+    virtual void Create() override;
+
+    virtual void Update(float timeStep) override;
+
 private:
+    PathIndicator pathIndicator;
+
+    void HandleMouseDown(StringHash, VariantMap &);
+    void ProcessMouseLeft();
+    void ProcessMouseRight();
 };

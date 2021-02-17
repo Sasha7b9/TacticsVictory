@@ -18,8 +18,8 @@ public:
 
     static void RegisterObject(Context *context = TheContext);
 
-    void Update(float timeStep);
-    void Create();
+    virtual void Update(float timeStep);
+    virtual void Create();
 
     void SetSelected(Tank *node, bool selected);
     Tank* GetSelected();
@@ -31,15 +31,4 @@ public:
 private:
 
     void RegisterObjects();
-
-#ifdef CLIENT
-
-    void HandleMouseDown(StringHash, VariantMap &);
-    void ProcessMouseLeft();
-    void ProcessMouseRight();
-
-protected:
-    PathIndicator pathIndicator;
-
-#endif
 };
