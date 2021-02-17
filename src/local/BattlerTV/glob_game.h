@@ -35,7 +35,7 @@ extern GuiEditor       *TheGuiEditor;
 extern GuiGame         *TheGuiGame;
 extern Hint            *TheHint;
 extern Level           *TheLevel;
-extern TLog            *TheLog;
+extern CLog            *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
 extern MenuTV          *TheMenu;

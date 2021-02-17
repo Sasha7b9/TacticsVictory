@@ -11,16 +11,16 @@ class TLog : public Log
 
 public:
     TLog(Context *context = TheContext);
-    static void Write(int level, const String &message, char *file, char *func, int numLine);
-    static void EnableExtendedInfo();
-    static void DisableExtendedInfo();
+    virtual void Write(int level, const String &message, char *file, char *func, int numLine);
+    void EnableExtendedInfo();
+    void DisableExtendedInfo();
 
-private:
+protected:
     static bool enabledExtendedInfo;
 };
 
 
-#define LOGINFO(message)        TLog::Write(LOG_INFO, message, __FILE__, __FUNCTION__, __LINE__)
-#define LOGINFOF(format, ...)   TLog::Write(LOG_INFO, ToString(format, ##__VA_ARGS__), __FILE__, __FUNCTION__, __LINE__)
+#define LOGINFO(message)        TheLog->Write(LOG_INFO, message, __FILE__, __FUNCTION__, __LINE__)
+#define LOGINFOF(format, ...)   TheLog->Write(LOG_INFO, ToString(format, ##__VA_ARGS__), __FILE__, __FUNCTION__, __LINE__)
 #define LOGERROR(message)       TLog::Write(LOG_ERROR, message, __FILE__, __FUNCTION__, __LINE__)
 #define LOGERRORF(format, ...)  TLog::Write(LOG_ERROR, ToString(format, ##__VA_ARGS__), __FILE__, __FUNCTION__, __LINE__)

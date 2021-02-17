@@ -22,7 +22,7 @@ class WindowTarget;
 class WindowVariables;
 class Battler;
 class MenuTV;
-class LogTV;
+class CLog;
 
 extern TCamera         *TheCamera;
 extern ConsoleTV       *TheConsole;
@@ -33,7 +33,7 @@ extern GuiEditor       *TheGuiEditor;
 extern GuiGame         *TheGuiGame;
 extern Hint            *TheHint;
 extern Level           *TheLevel;
-extern TLog            *TheLog;
+extern CLog            *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
 extern MenuTV          *TheMenu;

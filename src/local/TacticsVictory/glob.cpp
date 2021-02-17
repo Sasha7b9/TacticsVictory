@@ -30,7 +30,7 @@ Settings            *TheSet = nullptr;
 Level               *TheLevel = nullptr;
 TerrainTV           *TheTerrain = nullptr;
 TacticsVictory      *TheTacticsVictory = nullptr;
-TLog                *TheLog = nullptr;
+CLog                *TheLog = nullptr;
 
 // GUI
 GuiGame             *TheGuiGame = nullptr;

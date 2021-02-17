@@ -199,7 +199,7 @@ void TacticsVictory::CreateEditorSession()
 
 void TacticsVictory::OpenLog()
 {
-    TheLog = new TLog();
+    TheLog = new CLog();
     char buffer[50];
     srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
 
