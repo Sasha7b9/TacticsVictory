@@ -13,6 +13,10 @@ public:
 
     static void RegisterObject(Context *context = TheContext);
 
+    static void RegisterInAS();
+
+    static SharedPtr<STank> Create(Tank::TypeTank type, uint _id_ = 0);
+
     virtual void Existor() override {}
 };
 

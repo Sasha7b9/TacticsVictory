@@ -25,12 +25,6 @@ void TScene::RegisterObjects()
 }
 
 
-void TScene::RegisterObject(Context *context)
-{
-    context->RegisterFactory<TScene>();
-}
-
-
 void TScene::Create()
 {
     ThePhysicsWorld->SetFps(5);
@@ -65,7 +59,9 @@ void TScene::Create()
             row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheLevel->GetHeight()) - 1));
         } while (fabs(TheTerrain->GetHeight(row, col)) > M_EPSILON);
 
-        SharedPtr<CTank> tank = CTank::Create(CTank::Small);
+        //SharedPtr<CTank> tank = CTank::Create(CTank::Small);
+
+        SharedPtr<Tank> tank = CreateTank();
         tank->SetCoord({ row, col });
         tank->SetAutoReloaded(1);
     }

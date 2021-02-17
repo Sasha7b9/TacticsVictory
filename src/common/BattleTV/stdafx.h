@@ -136,6 +136,7 @@ using namespace Urho3D;
 
 #include "Scene/_TLevel.h"
 #include "Scene/_TScene.h"
+#include "Scene/TSScene.h"
 #include "Scene/Objects/_TGameObjectEvents.h"
 #include "Scene/Objects/_TObjectState.h"
 #include "Scene/Objects/Ammo/_TAmmoObject.h"

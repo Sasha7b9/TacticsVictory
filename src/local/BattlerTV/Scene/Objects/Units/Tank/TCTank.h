@@ -16,13 +16,13 @@ public:
 
     static void RegisterObject(Context *context = TheContext);
 
-    virtual void Existor() override {}
-
     static void RegisterInAS();
 
     virtual void Update(float dT) override;
 
     static SharedPtr<CTank> Create(TypeTank type, uint _id_ = 0);
+
+    virtual void Existor() override {}
 
 private:
     SharedPtr<WaveAlgorithm> pathFinder;
