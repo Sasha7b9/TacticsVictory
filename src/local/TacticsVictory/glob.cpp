@@ -23,28 +23,28 @@ FileSelector        *TheFileSelector = nullptr;
 Profiler            *TheProfiler = nullptr;
 Script              *TheScript = nullptr;
 
-CameraTV           *TheCamera = nullptr;
-CursorTV           *TheCursor = nullptr;
+CameraTV            *TheCamera = nullptr;
+CursorTV            *TheCursor = nullptr;
 Editor              *TheEditor = nullptr;
 Settings            *TheSet = nullptr;
 Level               *TheLevel = nullptr;
-TerrainTV          *TheTerrain = nullptr;
+TerrainTV           *TheTerrain = nullptr;
 TacticsVictory      *TheTacticsVictory = nullptr;
-LogTV              *TheLog = nullptr;
+LogTV               *TheLog = nullptr;
 
 // GUI
 GuiGame             *TheGuiGame = nullptr;
 GuiEditor           *TheGuiEditor = nullptr;
 GUI                 *TheGUI = nullptr;
-ConsoleTV          *TheConsole = nullptr;
+ConsoleTV           *TheConsole = nullptr;
 WindowVariables     *TheWindowVars = nullptr;
 Hint                *TheHint = nullptr;
 int                 *TheCounterHint = 0;
 Vector<WindowTV*>   TheOpenedWindow;
 WindowTarget        *TheWindowTarget = nullptr;
-TScene            *TheScene = nullptr;
+CScene              *TheScene = nullptr;
 
 // Меню
-MenuTV             *TheMenu = nullptr;
+MenuTV              *TheMenu = nullptr;
 MenuGame            *TheMenuMain = nullptr;
 MenuConfirmExit     *TheMenuConfirmExit = nullptr;

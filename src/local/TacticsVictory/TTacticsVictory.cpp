@@ -53,7 +53,7 @@ void TacticsVictory::Start()
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
     TheGraphics = GetSubsystem<Graphics>();
-    TheScene = new TScene();
+    TheScene = new CScene();
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);

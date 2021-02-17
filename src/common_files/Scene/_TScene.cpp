@@ -14,19 +14,7 @@ TScene::~TScene()
 {
     delete scene;
 
-#ifdef CLIENT
-
-    SAFE_DELETE(TheWindowTarget);
-
-#endif
-
-    SAFE_DELETE(TheTerrain); //-V809
-
-#ifdef CLIENT
-
-    pathIndicator.Stop();
-
-#endif
+    SAFE_DELETE(TheTerrain);
 }
 
 

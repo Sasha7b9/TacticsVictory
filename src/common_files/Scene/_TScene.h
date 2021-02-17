@@ -14,7 +14,7 @@ class TScene : public Object
 public:
 
     TScene(Context *context = TheContext);
-    ~TScene();
+    virtual ~TScene();
 
     static void RegisterObject(Context *context = TheContext);
 
@@ -38,7 +38,7 @@ private:
     void ProcessMouseLeft();
     void ProcessMouseRight();
 
-private:
+protected:
     PathIndicator pathIndicator;
 
 #endif
