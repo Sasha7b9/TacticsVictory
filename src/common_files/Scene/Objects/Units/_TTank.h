@@ -1,6 +1,6 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
-#include "Scene/Objects/Units/_TTranslator.h"
+#include "Scene/Objects/Units/Logic/_TTranslator.h"
 #include "Scene/Objects/Units/_TUnitObject.h"
 
 class RocketLauncher;

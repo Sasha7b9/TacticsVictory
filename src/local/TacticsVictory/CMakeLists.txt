@@ -54,6 +54,7 @@ file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objec
 file(GLOB SCENE_OBJECTS_BUILDINGS                 ../../common_files/Scene/Objects/Buildings/*.*)
 file(GLOB SCENE_OBJECTS_TERRAIN                   ../../common_files/Scene/Objects/Terrain/*.*)
 file(GLOB SCENE_OBJECTS_UNITS                     ../../common_files/Scene/Objects/Units/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_LOGIC               ../../common_files/Scene/Objects/Units/Logic/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS                   ../../common_files/Scene/Objects/Weapons/*.*)
 file(GLOB SCENE_PRIMITIVES                        ../../common_files/Scene/Primitives/*.*)
 file(GLOB UTILS                                         ../BattlerTV/Utils/*.*
@@ -82,6 +83,7 @@ source_group(Scene\\Objects\\Ammo                      FILES ${SCENE_OBJECTS_AMM
 source_group(Scene\\Objects\\Buildings                 FILES ${SCENE_OBJECTS_BUILDINGS})
 source_group(Scene\\Objects\\Terrain                   FILES ${SCENE_OBJECTS_TERRAIN})
 source_group(Scene\\Objects\\Units                     FILES ${SCENE_OBJECTS_UNITS})
+source_group(Scene\\Objects\\Units\\Logic              FILES ${SCENE_OBJECTS_UNITS_LOGIC})
 source_group(Scene\\Objects\\Weapons                   FILES ${SCENE_OBJECTS_WEAPONS})
 source_group(Scene\\Primitives                         FILES ${SCENE_PRIMITIVES})
 source_group(Utils                                     FILES ${UTILS})
@@ -89,7 +91,8 @@ source_group(Utils                                     FILES ${UTILS})
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
     ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
     ${GUI_WINDOWS} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_BUILDINGS}
-    ${SCENE_OBJECTS_TERRAIN} ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${UTILS})
+    ${SCENE_OBJECTS_TERRAIN} ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_LOGIC} ${SCENE_OBJECTS_WEAPONS}
+    ${SCENE_PRIMITIVES} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)
 
