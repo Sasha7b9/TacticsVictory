@@ -122,15 +122,15 @@ using namespace Urho3D;
 #pragma warning(pop)
 
 #include "defines.h"
-#include "Battle.h"
+#include "TBattle.h"
 
 #include "Core/_TMath.h"
 #include "Core/_TStructures.h"
 
-#include "Game/Logic/Movinator.h"
-#include "Game/Logic/Rotator.h"
+#include "Game/Logic/TMovinator.h"
+#include "Game/Logic/TRotator.h"
 
-#include "Network/SServer.h"
+#include "Network/TSServer.h"
 #include "Network/Game/_GameMessages.h"
 #include "Network/Game/_TConnection.h"
 
@@ -149,10 +149,10 @@ using namespace Urho3D;
 #include "Scene/Objects/Weapons/_WeaponObject.h"
 #include "Scene/Primitives/_TTriangle.h"
 
-#include "Utils/GlobalFunctions.h"
+#include "Utils/TGlobalFunctions.h"
 #include "Utils/_LogTV.h"
-#include "Utils/Settings.h"
-#include "Utils/SettingsTypes.h"
+#include "Utils/TSettings.h"
+#include "Utils/TSettingsTypes.h"
 
 #include "glob_engine.h"
 #include "glob_game.h"
