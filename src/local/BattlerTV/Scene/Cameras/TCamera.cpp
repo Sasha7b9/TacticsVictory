@@ -27,14 +27,10 @@ TCamera::TCamera()
     light->SetRange(25.0f);
     light->SetEnabled(true);
 
-#ifdef CLIENT
-
     SetupViewport();
     Node *listenerNode = cameraNode->CreateChild("Listener");
     SoundListener *listener = listenerNode->CreateComponent<SoundListener>();
     TheAudio->SetListener(listener);
-
-#endif
 }
 
 
