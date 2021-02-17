@@ -17,7 +17,7 @@ public:
 
     void UpdateOn();
     static SharedPtr<Rocket> Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target);
-    void SetParameters(float timeStep);
+    virtual void SetParameters(float timeStep);
     static void StopAllThreads();
     static void UpdateAll(float timeStep);
     static void DeleteAll();
@@ -33,7 +33,6 @@ private:
     SharedPtr<StaticModel> model;
 
     const float rangeVisible = 50.0f;
-    const float rangeTime = 60.0f;
     const float heightBeginExcortTarget = 2.0f;
     const float rotateSpeed = 90.0f;
     const float startSpeedKoeff = 1.5f;
@@ -41,13 +40,9 @@ private:
     float timePrevRaycast = 0.0f;
 
     // Current state
-    Vector3 position;
     Vector3 speed;
     Quaternion rotate;
-    float time = 0.0f;
     float absSpeed = 0.0f;
-    Tank *attackedUnit = nullptr; //-V122
-    bool collisionWithTerrain = false;
 
     float dT = 0.0f;
 
@@ -71,4 +66,11 @@ private:
     void CalculateAnimate();
     void VerifyOnIntersectionTerrain();
     void HandlePostRenderUpdate(StringHash, VariantMap&);
+
+protected:
+    bool collisionWithTerrain = false;
+    float time = 0.0f;
+    const float rangeTime = 60.0f;
+    Tank *attackedUnit = nullptr;
+    Vector3 position;
 };
