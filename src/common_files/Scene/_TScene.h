@@ -13,13 +13,7 @@ class TScene : public Object
 
 public:
 
-    enum Mode
-    {
-        Mode_Server,
-        Mode_Client
-    };
-
-    TScene(Context *context = TheContext, Mode mode = Mode_Server);
+    TScene(Context *context = TheContext);
     ~TScene();
 
     static void RegisterObject(Context *context = TheContext);
@@ -35,8 +29,6 @@ public:
     Scene *scene = nullptr;
 
 private:
-
-    Mode mode;
 
     void RegisterObjects();
 

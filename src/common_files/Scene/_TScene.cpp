@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 
-TScene::TScene(Context *context, Mode _mode) : Object(context), mode(_mode)
+TScene::TScene(Context *context) : Object(context)
 {
     scene = new Scene(context);
 
