@@ -31,7 +31,7 @@ endif()
 
 file(GLOB SRC                                                        *.h *.cpp)
 file(GLOB CORE                                    ../../common_files/Core/*.*)
-file(GLOB GAME_LOGIC                                                 Game/Logic/*.*)
+file(GLOB GAME_LOGIC                              ../../common_files/Game/Logic/*.*)
 file(GLOB NETWORK                                                    Network/*.*
                                                   ../../common_files/Network/Game/*.*)
 file(GLOB SCENE                                   ../../common_files/Scene/*.*)

@@ -130,8 +130,8 @@ using namespace Urho3D;
 #include "Editor/Editor.h"
 
 #include "Game/Particles.h"
-#include "Game/Logic/Movinator.h"
-#include "Game/Logic/Rotator.h"
+#include "Game/Logic/TMovinator.h"
+#include "Game/Logic/TRotator.h"
 #include "Game/Path/TilePath.h"
 
 #include "Graphics/2D/ImageTV.h"
