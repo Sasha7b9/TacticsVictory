@@ -133,6 +133,7 @@ using namespace Urho3D;
 #include "Game/TParticles.h"
 #include "Game/Logic/_TMovinator.h"
 #include "Game/Logic/_TRotator.h"
+#include "Game/Path/TPathIndicator.h"
 #include "Game/Path/TTilePath.h"
 
 #include "Graphics/2D/TImage.h"

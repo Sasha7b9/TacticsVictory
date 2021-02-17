@@ -1,11 +1,9 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
 
-#ifdef CLIENT
-#include "Game/Path/TPathIndicator.h"
-#endif
 
 class Tank;
+
 
 class TScene : public Object
 {
