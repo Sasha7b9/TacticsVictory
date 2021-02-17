@@ -1,5 +1,5 @@
 #pragma once
-#include "Scene/Objects/Ammo/_TRocket.h"
+#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
 
 
 class CRocket : public Rocket

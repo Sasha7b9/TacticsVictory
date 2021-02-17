@@ -51,6 +51,8 @@ file(GLOB SCENE                                   ../../common_files/Scene/*.*)
 file(GLOB SCENE_CAMERAS                                              Scene/Cameras/*.*)
 file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objects/Ammo/*.*)
+file(GLOB SCENE_OBJECTS_AMMO_ROCKET                                  Scene/Objects/Ammo/Rocket/*.*
+                                                  ../../common_files/Scene/Objects/Ammo/Rocket/*.*)
 file(GLOB SCENE_OBJECTS_BUILDINGS                 ../../common_files/Scene/Objects/Buildings/*.*)
 file(GLOB SCENE_OBJECTS_TERRAIN                   ../../common_files/Scene/Objects/Terrain/*.*)
 file(GLOB SCENE_OBJECTS_UNITS                     ../../common_files/Scene/Objects/Units/*.*)
@@ -81,6 +83,7 @@ source_group(Scene                                     FILES ${SCENE})
 source_group(Scene\\Cameras                            FILES ${SCENE_CAMERAS})
 source_group(Scene\\Objects                            FILES ${SCENE_OBJECTS})
 source_group(Scene\\Objects\\Ammo                      FILES ${SCENE_OBJECTS_AMMO})
+source_group(Scene\\Objects\\Ammo\\Rocket              FILES ${SCENE_OBJECTS_AMMO_ROCKET})
 source_group(Scene\\Objects\\Buildings                 FILES ${SCENE_OBJECTS_BUILDINGS})
 source_group(Scene\\Objects\\Terrain                   FILES ${SCENE_OBJECTS_TERRAIN})
 source_group(Scene\\Objects\\Units                     FILES ${SCENE_OBJECTS_UNITS})
@@ -91,7 +94,8 @@ source_group(Utils                                     FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
     ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
-    ${GUI_WINDOWS} ${NETWORK} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_AMMO}
+    ${GUI_WINDOWS} ${NETWORK} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
+    ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_BUILDINGS} ${SCENE_OBJECTS_TERRAIN} ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_LOGIC}
     ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${UTILS})
 

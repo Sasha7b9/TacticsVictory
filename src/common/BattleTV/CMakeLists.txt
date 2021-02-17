@@ -37,6 +37,7 @@ file(GLOB NETWORK                                                    Network/*.*
 file(GLOB SCENE                                   ../../common_files/Scene/*.*)
 file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objects/Ammo/*.*)
+file(GLOB SCENE_OBJECTS_AMMO_ROCKET               ../../common_files/Scene/Objects/Ammo/Rocket/*.*)
 file(GLOB SCENE_OBJECTS_BUILDINGS                 ../../common_files/Scene/Objects/Buildings/*.*)
 file(GLOB SCENE_OBJECTS_TERRAIN                   ../../common_files/Scene/Objects/Terrain/*.*)
 file(GLOB SCENE_OBJECTS_UNITS                     ../../common_files/Scene/Objects/Units/*.*)
@@ -53,6 +54,7 @@ source_group(Network                                   FILES ${NETWORK})
 source_group(Scene                                     FILES ${SCENE})
 source_group(Scene\\Objects                            FILES ${SCENE_OBJECTS})
 source_group(Scene\\Objects\\Ammo                      FILES ${SCENE_OBJECTS_AMMO})
+source_group(Scene\\Objects\\Ammo\\Rocket              FILES ${SCENE_OBJECTS_AMMO_ROCKET})
 source_group(Scene\\Objects\\Buildings                 FILES ${SCENE_OBJECTS_BUILDINGS})
 source_group(Scene\\Objects\\Terrain                   FILES ${SCENE_OBJECTS_TERRAIN})
 source_group(Scene\\Objects\\Units                     FILES ${SCENE_OBJECTS_UNITS})
@@ -61,7 +63,8 @@ source_group(Scene\\Objects\\Weapons                   FILES ${SCENE_OBJECTS_WEA
 source_group(Scene\\Primitives                         FILES ${SCENE_PRIMITIVES})
 source_group(Utils                                     FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${NETWORK} ${SCENE} ${SCENE_OBJECTS} ${SCENE_OBJECTS_AMMO}
+add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${NETWORK} ${SCENE} ${SCENE_OBJECTS}
+    ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_BUILDINGS} ${SCENE_OBJECTS_TERRAIN} ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_LOGIC}
     ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${UTILS})
 
