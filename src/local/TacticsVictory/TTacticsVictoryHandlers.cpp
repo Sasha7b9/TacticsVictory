@@ -110,9 +110,9 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
         TheCursor->Update(time);
     }
 
-    if (scene)
+    if (TheScene)
     {
-        scene->Update(time);
+        TheScene->Update(time);
     }
 
     if (TheScene)

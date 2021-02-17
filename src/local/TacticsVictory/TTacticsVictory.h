@@ -16,8 +16,6 @@ public:
     virtual void Start();
     virtual void Stop();
 
-    TScene *scene = nullptr; //-V122
-
 private:
     bool drawDebug = false;
 

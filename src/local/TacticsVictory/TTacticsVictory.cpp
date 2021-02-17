@@ -53,7 +53,7 @@ void TacticsVictory::Start()
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
     TheGraphics = GetSubsystem<Graphics>();
-    TheScene = new TScene(TheContext);
+    TheScene = new TScene();
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
@@ -61,13 +61,12 @@ void TacticsVictory::Start()
     TheRenderer = GetSubsystem<Renderer>();
     TheAudio = GetSubsystem<Audio>();
     TheCamera = new CameraTV();
-    scene = new TScene();
 
     CreateScriptSystem();
 
     RegistrationComponets();
 
-    scene->Create();
+    TheScene->Create();
 
     SetWindowTitleAndIcon();
     CreateConsoleAndDebugHud();
@@ -98,7 +97,6 @@ void TacticsVictory::Stop()
     TilePath::RemoveAll();
     Rocket::DeleteAll();
     SAFE_DELETE(TheScene); //-V809
-    SAFE_DELETE(scene); //-V809
     SAFE_DELETE(TheFileSelector); //-V809
     SAFE_DELETE(TheLevel); //-V809
     SAFE_DELETE(TheMenu); //-V809
