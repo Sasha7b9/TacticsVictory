@@ -12,6 +12,8 @@ Battle::Battle(Context* context) :
     Application(context)
 {
     TheContext = context;
+
+    STank::RegisterObject();
 }
 
 

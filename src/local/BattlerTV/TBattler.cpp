@@ -12,6 +12,8 @@ Battler::Battler(Context* context) :
     Application(context)
 {
     TheContext = context;
+
+    CTank::RegisterObject();
 }
 
 

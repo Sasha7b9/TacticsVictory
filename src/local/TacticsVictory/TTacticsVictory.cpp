@@ -12,6 +12,8 @@ TacticsVictory::TacticsVictory(Context* context) :
     Application(context)
 {
     TheContext = context;
+
+    CTank::RegisterObject();
 }
 
 
