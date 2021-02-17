@@ -21,8 +21,7 @@ goto EXIT
 :SHOW_HINT
 echo.
 echo Using edit.bat:
-echo                 edit [ debug ^| release ]
+echo                 edit [debug^|release]
 echo.
-
 
 :EXIT

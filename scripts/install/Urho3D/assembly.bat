@@ -1,11 +1,18 @@
-@echo off
+@echo on
 
 if "%1" equ "" goto HINT
 if "%2" equ "" goto HINT
 if "%3" neq "" goto HINT
 
+set isMake=0
+set isBuild=0
+set isDebug=0
+set isRelease=0
+
 set current_dir=%CD%
+
 cd ../../../..
+
 if not exist Urho3D git clone https://github.com/Sasha7b9/Urho3D.git& set isMake=1& cd Urho3D& goto START_WITH_MAKE
 
 cd Urho3D
@@ -13,12 +20,9 @@ cd Urho3D
 git pull
 
 set isMake=0
-set isBuild=0
-set isDebug=0
-set isRelease=0
+set isBuild=1
+goto LABEL1
 
-:START
-if %1==make  set isMake=1  & goto LABEL1
 :START_WITH_MAKE
 if %1==build set isBuild=1 & goto LABEL1
 if %1==full  set isMake=1 & set isBuild=1 & goto LABEL1

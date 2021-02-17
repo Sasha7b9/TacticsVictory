@@ -1,4 +1,3 @@
-@echo off
 rem Всё должно собираться static runtime
 
 set start_dir=%CD%
