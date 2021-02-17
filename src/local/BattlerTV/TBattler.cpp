@@ -202,7 +202,7 @@ void Battler::RegistrationComponets()
     RocketLauncher::RegisterInAS();
     Translator::RegisterInAS();
     WaveAlgorithm::RegisterInAS();
-    Tank::RegisterInAS();
+    CTank::RegisterInAS();
 }
 
 
