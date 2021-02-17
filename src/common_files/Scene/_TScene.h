@@ -2,7 +2,7 @@
 #pragma once
 
 #ifdef CLIENT
-#include "Game/Path/PathIndicator.h"
+#include "Game/Path/TPathIndicator.h"
 #endif
 
 class Tank;

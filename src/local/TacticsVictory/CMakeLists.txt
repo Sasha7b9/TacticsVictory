@@ -48,8 +48,8 @@ file(GLOB GUI_PANELS                                    ../BattlerTV/GUI/Panels/
 file(GLOB GUI_WINDOWS                                   ../BattlerTV/GUI/Windows/*.*)
 file(GLOB SCENE                                   ../../common_files/Scene/*.*)
 file(GLOB SCENE_CAMERAS                                 ../BattlerTV/Scene/Cameras/*.*)
-file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/_GameObject.*
-                                                  ../../common_files/Scene/Objects/_GameObjectEvents.*)
+file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/_TGameObject.*
+                                                  ../../common_files/Scene/Objects/_TGameObjectEvents.*)
 file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objects/Ammo/*.*)
 file(GLOB SCENE_OBJECTS_BUILDINGS                 ../../common_files/Scene/Objects/Buildings/*.*)
 file(GLOB SCENE_OBJECTS_TERRAIN                   ../../common_files/Scene/Objects/Terrain/*.*)

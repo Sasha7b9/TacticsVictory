@@ -1,6 +1,6 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
-#include "Scene/Objects/Terrain/_TerrainTV.h"
+#include "Scene/Objects/Terrain/_TTerrain.h"
 
 
 extern TerrainTV *TheTerrain;

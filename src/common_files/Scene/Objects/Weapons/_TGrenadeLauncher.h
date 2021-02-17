@@ -1,0 +1,11 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#pragma once
+#include "Scene/Objects/Weapons/_TWeaponObject.h"
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class GrenadeLauncher : public WeaponObject
+{
+public:
+    GrenadeLauncher(Context *context = TheContext);
+};
