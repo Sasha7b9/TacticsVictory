@@ -6,7 +6,7 @@ if "%3" neq "" goto HINT
 
 set current_dir=%CD%
 cd ../../../..
-if not exist Urho3D git clone https://github.com/urho3d/Urho3D.git& set isMake=1& cd Urho3D& goto START_WITH_MAKE
+if not exist Urho3D git clone https://github.com/Sasha7b9/Urho3D.git& set isMake=1& cd Urho3D& goto START_WITH_MAKE
 
 cd Urho3D
 
