@@ -24,7 +24,7 @@ class Battler;
 class MenuTV;
 class LogTV;
 
-extern CameraTV       *TheCamera;
+extern TCamera       *TheCamera;
 extern ConsoleTV      *TheConsole;
 extern CursorTV       *TheCursor;
 extern Editor          *TheEditor;

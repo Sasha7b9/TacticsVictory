@@ -60,7 +60,7 @@ void TacticsVictory::Start()
     TheScene->scene->CreateComponent<DebugRenderer>();
     TheRenderer = GetSubsystem<Renderer>();
     TheAudio = GetSubsystem<Audio>();
-    TheCamera = new CameraTV();
+    TheCamera = new TCamera();
 
     CreateScriptSystem();
 

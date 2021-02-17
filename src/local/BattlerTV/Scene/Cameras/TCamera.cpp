@@ -12,7 +12,7 @@
 #define CURSOR_DOWN_RIGhT   (cursor == TypeCursor_DownRight)
 
 
-CameraTV::CameraTV()
+TCamera::TCamera()
 {
     cameraNode = TheScene->scene->CreateChild("Camera");
 
@@ -38,33 +38,33 @@ CameraTV::CameraTV()
 }
 
 
-Vector3 CameraTV::GetPosition()
+Vector3 TCamera::GetPosition()
 {
     return cameraNode->GetPosition();
 }
 
 
-void CameraTV::SetPosition(const Vector3 &position)
+void TCamera::SetPosition(const Vector3 &position)
 {
     cameraNode->SetPosition(position);
 }
 
 
-void CameraTV::SetPosition(const Vector3& position, const Vector3& lookAt_)
+void TCamera::SetPosition(const Vector3& position, const Vector3& lookAt_)
 {
     cameraNode->SetPosition(position);
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
-void CameraTV::LookAt(const Vector3 &lookAt_)
+void TCamera::LookAt(const Vector3 &lookAt_)
 {
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
 
-void CameraTV::ParallelTranslateLookAt(const Vector3 &lookAt_)
+void TCamera::ParallelTranslateLookAt(const Vector3 &lookAt_)
 {
     Vector3 delta = lookAt_ - lookAt;
     lookAt = lookAt_;
@@ -73,7 +73,7 @@ void CameraTV::ParallelTranslateLookAt(const Vector3 &lookAt_)
 }
 
 
-void CameraTV::Move(float time) //-V2008
+void TCamera::Move(float time) //-V2008
 {
     if(!enabled || TheConsole->IsActive())
     {
@@ -178,7 +178,7 @@ void CameraTV::Move(float time) //-V2008
 }
 
 
-void CameraTV::SetPitch(float newPitch)
+void TCamera::SetPitch(float newPitch)
 {
     Quaternion rotation = cameraNode->GetRotation();
     float yawAngle = rotation.YawAngle();
@@ -189,7 +189,7 @@ void CameraTV::SetPitch(float newPitch)
 }
 
 
-void CameraTV::MoveOn(Direction direction, float distance)
+void TCamera::MoveOn(Direction direction, float distance)
 {
     if(!enabled)
     {
@@ -284,13 +284,13 @@ void CameraTV::MoveOn(Direction direction, float distance)
 }
 
 
-void CameraTV::SetEnabled(bool _enabled)
+void TCamera::SetEnabled(bool _enabled)
 {
     enabled = _enabled;
 }
 
 
-void CameraTV::SetupViewport()
+void TCamera::SetupViewport()
 {
     Camera *camera = cameraNode->GetComponent<Camera>();
 
@@ -300,13 +300,13 @@ void CameraTV::SetupViewport()
 }
 
 
-SharedPtr<Node> CameraTV::GetNode()
+SharedPtr<Node> TCamera::GetNode()
 {
     return cameraNode;
 }
 
 
-Ray CameraTV::GetCursorRay()
+Ray TCamera::GetCursorRay()
 {
     IntVector2 pos = TheUI->GetCursorPosition();
     return cameraNode->GetComponent<Camera>()->GetScreenRay(static_cast<float>(pos.x_) / TheGraphics->GetWidth(), static_cast<float>(pos.y_) / TheGraphics->GetHeight());

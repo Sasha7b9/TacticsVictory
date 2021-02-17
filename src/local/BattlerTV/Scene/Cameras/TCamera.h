@@ -2,7 +2,7 @@
 #pragma once
 
 
-class CameraTV
+class TCamera
 {
 public:
     enum Direction
@@ -16,7 +16,7 @@ public:
         Direction_RotateYAW,
         Direction_RotatePITCH
     };
-    CameraTV();
+    TCamera();
 
     void Move(float time);
     void ParallelTranslateLookAt(const Vector3 &lookAt);
