@@ -146,7 +146,7 @@ void TacticsVictory::RegistrationComponets()
     TheContext->RegisterFactory<Movinator>();
     TheContext->RegisterFactory<ImageTV>();
 
-    TScene::RegisterObject();
+    CScene::RegisterObject();
 
     RocketLauncher::RegisterInAS();
     Translator::RegisterInAS();

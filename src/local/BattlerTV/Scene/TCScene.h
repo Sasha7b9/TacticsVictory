@@ -17,6 +17,12 @@ public:
 
     virtual void Update(float timeStep) override;
 
+    virtual void Existor() override {};
+
+    virtual SharedPtr<Tank> CreateTank();
+
+    static void RegisterObject(Context *context = TheContext);
+
 private:
     PathIndicator pathIndicator;
 
