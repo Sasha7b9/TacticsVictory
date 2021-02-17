@@ -20,7 +20,8 @@ TScene::~TScene()
 
 void TScene::RegisterObjects()
 {
-    Tank::RegisterObject();
+    STank::RegisterObject();
+    CTank::RegisterObject();
     Rocket::RegisterObject();
     MilitaryPlant::RegisterObject();
 }

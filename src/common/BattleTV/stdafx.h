@@ -146,6 +146,7 @@ using namespace Urho3D;
 #include "Scene/Objects/Terrain/_TSegmentTerrain.h"
 #include "Scene/Objects/Terrain/_TSideCube.h"
 #include "Scene/Objects/Units/_TUnitObject.h"
+#include "Scene/Objects/Units/Tank/TSTank.h"
 #include "Scene/Objects/Weapons/_TWeaponObject.h"
 #include "Scene/Primitives/_TTriangle.h"
 

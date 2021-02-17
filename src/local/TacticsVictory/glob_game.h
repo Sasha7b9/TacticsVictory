@@ -14,7 +14,6 @@ class MenuStart;
 class MenuOptions;
 class SegmentTerrain;
 class Settings;
-class Tank;
 class TerrainTV;
 class WindowTV;
 class MenuConfirmExit;

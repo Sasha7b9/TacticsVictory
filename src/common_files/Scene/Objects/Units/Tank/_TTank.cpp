@@ -29,12 +29,6 @@ Tank::~Tank()
 }
 
 
-void Tank::RegisterObject(Context* context)
-{
-    context->RegisterFactory<Tank>();
-}
-
-
 void Tank::RegisterInAS()
 {
     asIScriptEngine *engine = TheScript->GetScriptEngine();

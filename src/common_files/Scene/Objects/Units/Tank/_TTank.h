@@ -26,7 +26,7 @@ public:
     
     Tank(Context *context = TheContext);
     virtual ~Tank();
-    static void RegisterObject(Context* context = TheContext);
+    
     static void RegisterInAS();
     virtual void Update(float timeStep);
     static SharedPtr<Tank> Create(TypeTank type, uint _id_ = 0);
@@ -40,6 +40,8 @@ public:
     static PODVector<Tank*>& GetAll();
     static Tank* GetByID(uint id);
     void DrawMessage();
+
+    virtual void Existor() = 0;     // Эта функция нужна для того, чтобы было нельзя создать объект этого типа
 
 private:
     bool inProcessFindPath = false;
