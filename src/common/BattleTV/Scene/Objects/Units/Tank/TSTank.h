@@ -15,7 +15,7 @@ public:
 
     static void RegisterInAS();
 
-    static SharedPtr<STank> Create(Tank::TypeTank type, uint _id_ = 0);
+    static SharedPtr<STank> Create(Tank::Type::E type, uint _id_ = 0);
 
     virtual void Existor() override {}
 };

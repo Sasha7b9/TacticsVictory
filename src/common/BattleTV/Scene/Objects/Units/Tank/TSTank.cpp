@@ -8,7 +8,7 @@ void STank::RegisterObject(Context *context)
 }
 
 
-SharedPtr<STank> STank::Create(Tank::TypeTank type, uint _id_)
+SharedPtr<STank> STank::Create(Tank::Type::E type, uint _id_)
 {
     SharedPtr<Node> node(TheScene->scene->CreateChild(NODE_TANK, LOCAL));
     SharedPtr<STank> tank(node->CreateComponent<STank>(LOCAL));

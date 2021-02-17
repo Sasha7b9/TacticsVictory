@@ -23,7 +23,7 @@ void CTank::RegisterInAS()
 }
 
 
-void CTank::Init(TypeTank _typeTank, uint _id_)
+void CTank::Init(Type::E _typeTank, uint _id_)
 {
     pathFinder = new WaveAlgorithm();
     pathFinder->SetSize(TheTerrain->NumRows(), TheTerrain->NumCols());
@@ -32,7 +32,7 @@ void CTank::Init(TypeTank _typeTank, uint _id_)
 }
 
 
-SharedPtr<CTank> CTank::Create(TypeTank typeTank, uint _id_)
+SharedPtr<CTank> CTank::Create(Type::E typeTank, uint _id_)
 {
     SharedPtr<Node> node(TheScene->scene->CreateChild(NODE_TANK, LOCAL));
     SharedPtr<CTank> tank(node->CreateComponent<CTank>(LOCAL));

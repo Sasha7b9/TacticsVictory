@@ -14,11 +14,11 @@ class Tank : public UnitObject
     friend class Translator;
 
 public:
-    enum TypeTank
-    {
+
+    struct Type { enum E {
         Small,
         T_34_76
-    };
+    }; };
     
     Tank(Context *context = TheContext);
     virtual ~Tank();
@@ -39,28 +39,28 @@ public:
 
 protected:
     static void RegisterInAS();
-    virtual void Init(TypeTank typeTank, uint _id_);
+    virtual void Init(Type::E typeTank, uint _id_);
     bool inProcessFindPath = false;
-    static SharedPtr<Tank> Create(TypeTank type, uint _id_ = 0);
+    static SharedPtr<Tank> Create(Type::E type, uint _id_ = 0);
     static PODVector<Tank *> allTanks;
 
 private:
 
-    TypeTank typeTank;
+    Type::E typeTank;
 
     void LoadFromFile();
 
     struct TankStruct
     {
-        TankStruct(TypeTank type_ = Small, char* fileName_ = 0) : type(type_), fileName(fileName_) {};
-        TypeTank type;
+        TankStruct(Type::E type_ = Type::Small, char* fileName_ = 0) : type(type_), fileName(fileName_) {};
+        Type::E type;
         char *fileName; //-V122
     };
 
     struct Key
     {
-        Key(TypeTank type_ = Small) : type(type_) {};
-        TypeTank type;
+        Key(Type::E type_ = Type::Small) : type(type_) {};
+        Type::E type;
 
         unsigned ToHash() const { return static_cast<uint>(type); };
 

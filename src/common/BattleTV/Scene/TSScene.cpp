@@ -4,7 +4,7 @@
 
 SharedPtr<Tank> SScene::CreateTank()
 {
-    return STank::Create(Tank::Small);
+    return STank::Create(Tank::Type::Small);
 }
 
 

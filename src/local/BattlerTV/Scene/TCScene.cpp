@@ -137,7 +137,7 @@ void CScene::ProcessMouseRight()
 
 SharedPtr<Tank> CScene::CreateTank()
 {
-    return CTank::Create(Tank::Small);
+    return CTank::Create(Tank::Type::Small);
 }
 
 

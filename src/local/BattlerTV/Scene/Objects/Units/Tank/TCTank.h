@@ -20,12 +20,12 @@ public:
 
     virtual void Update(float dT) override;
 
-    static SharedPtr<CTank> Create(TypeTank type, uint _id_ = 0);
+    static SharedPtr<CTank> Create(Tank::Type::E type, uint _id_ = 0);
 
     virtual void Existor() override {}
 
 private:
     SharedPtr<WaveAlgorithm> pathFinder;
 
-    virtual void Init(TypeTank typeTank, uint _id_) override;
+    virtual void Init(Tank::Type::E typeTank, uint _id_) override;
 };

@@ -13,8 +13,8 @@ Tank::Tank(Context *context) : UnitObject(context)
 
     if (parameters.Empty())
     {
-        parameters[Small] = TankStruct(Small, "Models/Tank.json");
-        parameters[T_34_76] = TankStruct(T_34_76, "Models/T-34-76-2.json");
+        parameters[Tank::Type::Small] = TankStruct(Tank::Type::Small, "Models/Tank.json");
+        parameters[Tank::Type::T_34_76] = TankStruct(Tank::Type::T_34_76, "Models/T-34-76-2.json");
     }
 
     SubscribeToEvent(E_HIT, URHO3D_HANDLER(Tank, HandleAmmoHit));
@@ -42,7 +42,7 @@ void Tank::RegisterInAS()
 }
 
 
-void Tank::Init(TypeTank type_, uint _id_)
+void Tank::Init(Type::E type_, uint _id_)
 {
     node_->SetVar("PointerTank", this);
 
@@ -160,7 +160,7 @@ float Tank::GetRotation()
 }
 
 
-SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
+SharedPtr<Tank> Tank::Create(Type::E typeTank, uint _id_)
 {
     SharedPtr<Node> node(TheScene->scene->CreateChild(NODE_TANK, LOCAL));
     SharedPtr<Tank> tank(node->CreateComponent<Tank>(LOCAL));
