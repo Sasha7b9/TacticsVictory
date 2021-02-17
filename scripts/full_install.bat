@@ -1,3 +1,5 @@
+@echo off
+
 rem Всё должно собираться static runtime
 
 set start_dir=%CD%
@@ -16,5 +18,3 @@ rem *** Build TacticsVictory ***
 cd Windows
 call assembly.bat full all
 cd %start_dir%
-
-call copy_dll.bat

@@ -1,4 +1,4 @@
-@echo on
+@echo off
 
 if "%1" equ "" goto HINT
 if "%2" equ "" goto HINT

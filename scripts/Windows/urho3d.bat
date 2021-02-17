@@ -20,10 +20,7 @@ goto EXIT
 set current_dir=%CD%
 cd ../install/Urho3D
 assembly.bat build all
-cd %current_dir%
-cd ..
-copy_dll.bat
-cd %current_dir%
+cd ../../Windows
 goto EXIT
 
 
