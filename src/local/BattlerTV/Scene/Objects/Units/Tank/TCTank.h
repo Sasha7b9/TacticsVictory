@@ -3,6 +3,9 @@
 #include "Scene/Objects/Units/Tank/_TTank.h"
 
 
+class WaveAlgorithm;
+
+
 class CTank : public Tank
 {
     URHO3D_OBJECT(CTank, Tank);
@@ -14,4 +17,13 @@ public:
     static void RegisterObject(Context *context = TheContext);
 
     virtual void Existor() override {}
+
+    static void RegisterInAS();
+
+    virtual void Update(float dT) override;
+
+private:
+    SharedPtr<WaveAlgorithm> pathFinder;
+
+    virtual void Init(TypeTank typeTank, uint _id_) override;
 };

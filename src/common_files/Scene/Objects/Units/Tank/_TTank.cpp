@@ -38,11 +38,6 @@ void Tank::RegisterInAS()
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_ADDREF, "void AddRef()", asMETHOD(Tank, AddRef), asCALL_THISCALL);
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_RELEASE, "void ReleaseRef()", asMETHOD(Tank, ReleaseRef), asCALL_THISCALL);
     engine->RegisterObjectProperty("Tank", "bool inProcessFindPath", offsetof(Tank, inProcessFindPath));
-
-#ifdef CLIENT
-    engine->RegisterObjectProperty("Tank", "WaveAlgorithm@ pathFinder", offsetof(Tank, pathFinder));
-#endif
-
 #pragma warning(pop)
 }
 
@@ -50,11 +45,6 @@ void Tank::RegisterInAS()
 void Tank::Init(TypeTank type_, uint _id_)
 {
     node_->SetVar("PointerTank", this);
-
-#ifdef CLIENT
-    pathFinder = new WaveAlgorithm();
-    pathFinder->SetSize(TheTerrain->NumRows(), TheTerrain->NumCols());
-#endif
 
     translator->Init(this);
     typeTank = type_;
@@ -64,27 +54,6 @@ void Tank::Init(TypeTank type_, uint _id_)
     id = (_id_ == 0) ? id : _id_;
 
     rocketLauncher->Init();
-
-//    ScriptInstance *instance = node_->CreateComponent<ScriptInstance>();
-//
-//    LOGINFO("Загружаю Tank.as");
-//
-//    ScriptFile *script = TheCache->GetResource<ScriptFile>("Models/Units/Tank/Tank.as");
-//
-//    LOGINFO("Tank.as загружен");
-//
-//    instance->CreateObject(script, "TankUpdater");
-//    VariantVector params;
-//    params.Push(Variant(rocketLauncher));
-//    params.Push(Variant(translator));
-//    params.Push(Variant(this));
-//    instance->Execute("void SetRotationSpeed(RocketLauncher@ launch, Translator@ trans, Tank@ tan)", params);
-
-    /*
-    params.Clear();
-    params.Push(Variant(pathFinder));
-    instance->Execute("void SetWaveAlgorithm(WaveAlgorithm@ wave)", params);
-    */
 }
 
 
@@ -139,36 +108,15 @@ void Tank::Update(float dT)
 
     if(!translator->IsMoving())
     {
-#ifdef CLIENT
-        if(inProcessFindPath)
+        float height = -1.0f;
+        uint row = 0;
+        uint col = 0;
+        do
         {
-            if(pathFinder->PathIsFound())
-            {
-                PODVector<Coord> path = pathFinder->GetPath();
-                SetPath(path);
-                inProcessFindPath = false;
-            }
-        }
-        else
-        {
-#endif
-            float height = -1.0f;
-            uint row = 0;
-            uint col = 0;
-            do
-            {
-                row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheTerrain->NumRows()) - 1));
-                col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheTerrain->NumCols()) - 1));
-                height = TheTerrain->GetHeight(row, col);
-            } while(fabs(height) > M_EPSILON);
-
-            Vector3 position = GetPosition();
-            Coord start(static_cast<uint>(-position.z_), static_cast<uint>(position.x_));
-#ifdef CLIENT
-            pathFinder->StartFind(start, {row, col});
-            inProcessFindPath = true;
-        }
-#endif
+            row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheTerrain->NumRows()) - 1));
+            col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheTerrain->NumCols()) - 1));
+            height = TheTerrain->GetHeight(row, col);
+        } while (fabs(height) > M_EPSILON);
     }
     else
     {

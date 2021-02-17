@@ -3,13 +3,9 @@
 #include "Scene/Objects/Units/Logic/_TTranslator.h"
 #include "Scene/Objects/Units/_TUnitObject.h"
 
+
 class RocketLauncher;
 
-#ifdef CLIENT
-
-class WaveAlgorithm;
-
-#endif
 
 class Tank : public UnitObject
 {
@@ -26,8 +22,7 @@ public:
     
     Tank(Context *context = TheContext);
     virtual ~Tank();
-    
-    static void RegisterInAS();
+
     virtual void Update(float timeStep);
     static SharedPtr<Tank> Create(TypeTank type, uint _id_ = 0);
     void SetCoord(const Coord& coord);
@@ -43,13 +38,17 @@ public:
 
     virtual void Existor() = 0;     // Эта функция нужна для того, чтобы было нельзя создать объект этого типа
 
-private:
+protected:
+    static void RegisterInAS();
+    virtual void Init(TypeTank typeTank, uint _id_);
     bool inProcessFindPath = false;
+
+private:
+
     TypeTank typeTank;
     static PODVector<Tank*> allTanks;
 
     void LoadFromFile();
-    void Init(TypeTank typeTank, uint _id_);
 
     struct TankStruct
     {
@@ -74,10 +73,4 @@ private:
     SharedPtr<RocketLauncher> rocketLauncher;
 
     void HandleAmmoHit(StringHash, VariantMap&);
-
-#ifdef CLIENT
-
-    SharedPtr<WaveAlgorithm> pathFinder;
-
-#endif
 };
