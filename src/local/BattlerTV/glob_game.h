@@ -22,29 +22,28 @@ class WindowTarget;
 class WindowVariables;
 class Battler;
 class MenuTV;
-class LogTV;
 class Server;
 class Client;
 
 extern TCamera         *TheCamera;
 extern Client          *TheClient;
-extern ConsoleTV      *TheConsole;
-extern CursorTV       *TheCursor;
+extern ConsoleTV       *TheConsole;
+extern CursorTV        *TheCursor;
 extern Editor          *TheEditor;
 extern GUI             *TheGUI;
 extern GuiEditor       *TheGuiEditor;
 extern GuiGame         *TheGuiGame;
 extern Hint            *TheHint;
 extern Level           *TheLevel;
-extern LogTV          *TheLog;
+extern TLog            *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
-extern MenuTV         *TheMenu;
-extern TScene        *TheScene;
+extern MenuTV          *TheMenu;
+extern TScene          *TheScene;
 extern Server          *TheServer;
 extern Settings        *TheSet;
 extern Battler         *TheTacticsVictory;
-extern TerrainTV      *TheTerrain;
+extern TerrainTV       *TheTerrain;
 extern WindowTarget    *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 extern WindowVariables *TheWindowVars;
 

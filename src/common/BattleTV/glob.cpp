@@ -17,7 +17,7 @@ Time              *TheTime = nullptr;
 
 Battle             *TheBattle = nullptr;
 Level              *TheLevel = nullptr;
-LogTV             *TheLog = nullptr;
+TLog             *TheLog = nullptr;
 TScene           *TheScene = nullptr;
 Settings           *TheSet = nullptr;
 TerrainTV         *TheTerrain = nullptr;
