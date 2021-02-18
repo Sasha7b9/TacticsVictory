@@ -3,6 +3,7 @@
 #ifdef CLIENT
 #include "Scene/TCScene.h"
 #endif
+#include "Scene/Objects/Buildings/_TMilitaryPlant.h"
 
 
 MilitaryPlant::MilitaryPlant(Context *context) :

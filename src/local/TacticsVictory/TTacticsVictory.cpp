@@ -14,6 +14,7 @@
 #include "Scene/TCScene.h"
 #include "Scene/Cameras/TCamera.h"
 #include "Scene/Objects/Ammo/Rocket/_TRocket.h"
+#include "Scene/Objects/Buildings/_TMilitaryPlant.h"
 
 
 #pragma warning(push)

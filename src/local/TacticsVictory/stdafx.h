@@ -125,6 +125,8 @@ using namespace Urho3D;
 #include "glob_engine.h"
 #include "glob_game.h"
 
+#include "Core/_TStructures.h"
+
 #include "GUI/Controls/_THint.h"
 #include "GUI/Controls/_TLabel.h"
 #include "GUI/Logic/TLineTranslator2D.h"
@@ -135,7 +137,6 @@ using namespace Urho3D;
 
 
 
-#include "Scene/Objects/Buildings/_TBuildingObject.h"
 #include "Scene/Objects/Terrain/_TCornerCube.h"
 #include "Scene/Objects/Terrain/_TEdgeCube.h"
 #include "Scene/Objects/Terrain/_TLayerTerrain.h"
