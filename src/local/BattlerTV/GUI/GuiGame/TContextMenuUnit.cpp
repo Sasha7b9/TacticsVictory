@@ -24,7 +24,7 @@ void ContextMenuUnit::Create(GameObject *object_)
     object = object_;
     title->SetText(object->GetName());
 
-    if(object->GetGameObjectType() == GameObject::Unit)
+    if(object->GetGameObjectType() == GameObject::Type::Unit)
     {
         CreateForUnit();
     }

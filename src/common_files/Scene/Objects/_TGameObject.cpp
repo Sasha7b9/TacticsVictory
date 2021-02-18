@@ -39,7 +39,7 @@ char *GameObject::GetName()
 }
 
 
-GameObject::Type GameObject::GetGameObjectType()
+GameObject::Type::E GameObject::GetGameObjectType()
 {
     return type;
 }
@@ -118,7 +118,7 @@ void GameObject::EnableContextMenu()
     if (contextMenu == nullptr)
     {
         contextMenu = new ContextMenuUnit();
-        if (type == Unit)
+        if (type == Type::Unit)
         {
             contextMenu->Create(this);
         }

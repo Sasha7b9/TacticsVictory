@@ -16,11 +16,10 @@ class GameObject : public LogicComponent
 {
 public:
 
-    enum Type
-    {
+    struct Type { enum E {
         None,
         Unit
-    };
+    }; };
 
     GameObject(Context *context = TheContext);
     virtual ~GameObject();
@@ -28,7 +27,7 @@ public:
     void SetAutoReloaded(int time) { timeForReload = time; };
     virtual void Update(float timeStep);
     char *GetName();
-    Type GetGameObjectType();
+    Type::E GetGameObjectType();
     virtual void SetSelected(bool selected);
     bool IsSelected();
     Vector3 GetPosition();
@@ -47,7 +46,7 @@ protected:
     float speed = 0.0f;
     SharedPtr<Translator> translator;
     char* name = nullptr;
-    Type type = None;
+    Type::E type = Type::None;
     SharedPtr<StaticModel> modelObject;
 
     void SetPosition(const Vector3& pos);

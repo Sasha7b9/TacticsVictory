@@ -18,7 +18,7 @@ PODVector<Tank*> Tank::allTanks;
 Tank::Tank(Context *context) : UnitObject(context)
 {
     name = "Tank";
-    type = GameObject::Unit;
+    type = GameObject::Type::Unit;
 
     if (parameters.Empty())
     {
