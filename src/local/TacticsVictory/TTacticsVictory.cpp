@@ -144,14 +144,16 @@ void TacticsVictory::RegistrationComponets()
     TheContext->RegisterFactory<Movinator>();
     TheContext->RegisterFactory<ImageTV>();
 
-    TScene::RegisterObject();
-
     RocketLauncher::RegisterInAS();
-    Translator::RegisterInAS();
+    Rocket::RegisterObject();
+
+    Translator::RegisterObject();
     WaveAlgorithm::RegisterInAS();
     Tank::RegisterObject();
-    Rocket::RegisterObject();
+
     MilitaryPlant::RegisterObject();
+
+    TScene::RegisterObject();
 }
 
 

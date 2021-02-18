@@ -177,3 +177,9 @@ bool Translator::IsMoving()
 {
     return state != Stop;
 }
+
+
+void Translator::RegisterObject()
+{
+    RegisterInAS();
+}

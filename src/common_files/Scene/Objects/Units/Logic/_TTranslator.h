@@ -11,13 +11,16 @@ class Translator : public Object
 public:
     Translator(Context *context = TheContext);
 
-    static void RegisterInAS();
+    static void RegisterObject();
+
     void Init(Tank* tank);
     void SetPath(const PODVector<Coord> &path, float speed = 0.0f);
     Vector3 Update(float dT);
     bool IsMoving();
 
 private:
+
+    static void RegisterInAS();
 
     enum State
     {
