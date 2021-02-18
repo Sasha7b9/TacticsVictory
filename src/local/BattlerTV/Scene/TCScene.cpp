@@ -1,6 +1,7 @@
 // 2021/02/17 13:13:02 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Audio/TSounds.h"
+#include "Game/TParticles.h"
 
 
 CScene::CScene(Context *context) : TScene(context)
