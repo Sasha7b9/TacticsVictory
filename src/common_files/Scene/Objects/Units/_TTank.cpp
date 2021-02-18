@@ -186,11 +186,11 @@ void Tank::LoadFromFile()
     String fileModel = modelValue.Get("fileModel").GetString();
     String fileMaterials = modelValue.Get("fileMaterials").GetString();
 
-    modelObject = node_->CreateComponent<StaticModel>();
-    modelObject->SetViewMask(VIEW_MASK_FOR_MISSILE);
-    modelObject->SetModel(TheCache->GetResource<Model>(fileModel));
-    modelObject->ApplyMaterialList(fileMaterials);
-    modelObject->SetCastShadows(true);
+    graphics->modelObject = node_->CreateComponent<StaticModel>();
+    graphics->modelObject->SetViewMask(VIEW_MASK_FOR_MISSILE);
+    graphics->modelObject->SetModel(TheCache->GetResource<Model>(fileModel));
+    graphics->modelObject->ApplyMaterialList(fileMaterials);
+    graphics->modelObject->SetCastShadows(true);
 
     physics->speed = root.Get("speed").GetFloat();
 

@@ -19,6 +19,8 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
     selector = new SelectorComponentGameObject();
 
     physics = new PhysicsComponentGameObject();
+
+    graphics = new GraphicsComponentGameObject();
 }
 
 
@@ -27,6 +29,7 @@ GameObject::~GameObject()
     delete reloader;
     delete selector;
     delete physics;
+    delete graphics;
 }
 
 
@@ -60,7 +63,7 @@ void GameObject::Normalize(float k)
     node_->SetPosition({0.0f, 0.0f, 0.0f});
     node_->SetScale(1.0f);
 
-    BoundingBox box = modelObject->GetModel()->GetBoundingBox();
+    BoundingBox box = graphics->modelObject->GetModel()->GetBoundingBox();
 
     Vector3 delta = box.max_ - box.min_;
 

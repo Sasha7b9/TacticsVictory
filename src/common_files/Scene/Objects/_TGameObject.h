@@ -68,6 +68,12 @@ struct PhysicsComponentGameObject
 };
 
 
+struct GraphicsComponentGameObject
+{
+    SharedPtr<StaticModel> modelObject;
+};
+
+
 class GameObject : public LogicComponent
 {
 friend struct PhysicsComponentGameObject;
@@ -94,6 +100,8 @@ public:
 
     ReloaderComponentGameObject *reloader = nullptr;
 
+    GraphicsComponentGameObject *graphics = nullptr;
+
 protected:
 
     uint id = 0;
@@ -101,8 +109,6 @@ protected:
     char* name = nullptr;
 
     Type::E type = Type::None;
-
-    SharedPtr<StaticModel> modelObject;
 
     void Normalize(float k = 1.0f);
 

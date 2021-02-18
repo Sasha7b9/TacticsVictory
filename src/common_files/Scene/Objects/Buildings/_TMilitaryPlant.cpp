@@ -42,9 +42,9 @@ void MilitaryPlant::LoadFromFile()
     char *fileName = "Models\\Buildings\\MilitaryPlant\\MilitaryPlant.mdl";
     char *materialsName = "Models\\Buildings\\MilitaryPlant\\MilitaryPlant.txt";
 
-    modelObject = node_->CreateComponent<StaticModel>();
-    modelObject->SetViewMask(VIEW_MASK_FOR_MISSILE);
-    modelObject->SetModel(TheCache->GetResource<Model>(fileName));
-    modelObject->ApplyMaterialList(materialsName);
-    modelObject->SetCastShadows(true);
+    graphics->modelObject = node_->CreateComponent<StaticModel>();
+    graphics->modelObject->SetViewMask(VIEW_MASK_FOR_MISSILE);
+    graphics->modelObject->SetModel(TheCache->GetResource<Model>(fileName));
+    graphics->modelObject->ApplyMaterialList(materialsName);
+    graphics->modelObject->SetCastShadows(true);
 }
