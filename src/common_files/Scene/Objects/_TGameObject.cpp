@@ -87,12 +87,6 @@ void GameObject::Normalize(float k)
 }
 
 
-Node* GameObject::GetNode()
-{
-    return node_;
-}
-
-
 void GameObject::SetCoord(const Coord& coord)
 {
     SetPosition(coord.ToVector3());

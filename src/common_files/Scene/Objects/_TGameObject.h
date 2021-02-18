@@ -47,8 +47,6 @@ public:
 
     bool IsSelected();
 
-    Node *GetNode();
-
     Vector3 GetPosition();
 
 protected:
