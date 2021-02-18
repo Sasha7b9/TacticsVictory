@@ -4,6 +4,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/TGUI.h"
 #include "GUI/Controls/_THint.h"
+#include "GUI/GuiEditor/TGuiEditor.h"
 
 
 Editor::Editor(Context *context) : Object(context)

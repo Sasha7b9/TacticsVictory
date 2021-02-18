@@ -10,6 +10,7 @@
 #include "GUI/Controls/_TSliderInt.h"
 #include "GUI/Controls/_TSliderWithTextAndButtons.h"
 #include "GUI/Controls/_TTab.h"
+#include "GUI/GuiEditor/TGuiEditor.h"
 
 
 GUI::GUI() : Object(TheContext)

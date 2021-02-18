@@ -127,13 +127,13 @@ using namespace Urho3D;
 
 #include "GUI/Controls/_THint.h"
 #include "GUI/Controls/_TLabel.h"
-
-
-
-
-
 #include "GUI/Logic/TLineTranslator2D.h"
-#include "GUI/GuiEditor/TGuiEditor.h"
+
+
+
+
+
+
 #include "GUI/GuiGame/TContextMenuUnit.h"
 #include "GUI/GuiGame/TGuiGame.h"
 #include "GUI/GuiGame/TWindowTarget.h"

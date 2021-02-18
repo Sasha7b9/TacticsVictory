@@ -6,6 +6,7 @@
 #include "GUI/Controls/_TDropDownListWithTextAndButton.h"
 #include "GUI/Controls/_TSliderWithTextAndButtons.h"
 #include "GUI/Controls/_TTab.h"
+#include "GUI/GuiEditor/TGuiEditor.h"
 
 
 GuiEditor::GuiEditor(Context* context) : Object(context)

@@ -7,6 +7,7 @@
 #include "Game/Path/TTilePath.h"
 #include "Graphics/2D/TImage.h"
 #include "GUI/TGUI.h"
+#include "GUI/GuiEditor/TGuiEditor.h"
 
 
 #pragma warning(push)
