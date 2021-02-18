@@ -125,7 +125,6 @@ using namespace Urho3D;
 #include "glob_engine.h"
 #include "glob_game.h"
 
-#include "Game/Logic/_TRotator.h"
 #include "Game/Path/TPathIndicator.h"
 #include "Game/Path/TTilePath.h"
 

@@ -3,6 +3,7 @@
 #include "TTacticsVictory.h"
 #include "Editor/TEditor.h"
 #include "Game/Logic/_TMovinator.h"
+#include "Game/Logic/_TRotator.h"
 
 
 #pragma warning(push)
