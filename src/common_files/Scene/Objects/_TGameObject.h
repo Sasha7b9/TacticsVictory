@@ -24,6 +24,7 @@ public:
 
     GameObject(Context *context = TheContext);
     virtual ~GameObject();
+
     void SetAutoReloaded(int time) { timeForReload = time; };
     virtual void Update(float timeStep);
     char *GetName();
@@ -45,7 +46,7 @@ protected:
     float deltaRotate = 0.0f;
     float speed = 0.0f;
     SharedPtr<Translator> translator;
-    char* name = nullptr; //-V122
+    char* name = nullptr;
     Type type = None;
     SharedPtr<StaticModel> modelObject;
 

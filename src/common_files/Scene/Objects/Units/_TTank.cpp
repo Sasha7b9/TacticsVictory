@@ -138,7 +138,7 @@ void Tank::Update(float dT)
     TheProfiler->BeginBlock("Tank::Update");
     GameObject::Update(dT);
 
-    //rocketLauncher->Update(dT);
+    rocketLauncher->Update(dT);
 
     if(!translator->IsMoving())
     {
