@@ -4,6 +4,7 @@
 #include "GUI/TGUI.h"
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Controls/_TButtonToggled.h"
+#include "GUI/Controls/_TDropDownListWithTextAndButton.h"
 
 
 GUI::GUI() : Object(TheContext)

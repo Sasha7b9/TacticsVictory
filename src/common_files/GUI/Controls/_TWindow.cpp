@@ -3,6 +3,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Controls/_TButtonToggled.h"
+#include "GUI/Controls/_TDropDownListWithTextAndButton.h"
 
 
 TWindow::TWindow(Context *context) :
