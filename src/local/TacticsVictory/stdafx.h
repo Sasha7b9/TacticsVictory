@@ -134,7 +134,6 @@ using namespace Urho3D;
 
 
 
-#include "GUI/GuiGame/TWindowTarget.h"
 #include "GUI/Menu/TMenuAboutMe.h"
 #include "GUI/Menu/TMenuConfirmExit.h"
 #include "GUI/Menu/TMenuEvents.h"

@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "GUI/Controls/_TButtonToggled.h"
 #include "GUI/GuiGame/TContextMenuUnit.h"
+#include "GUI/GuiGame/TWindowTarget.h"
 
 
 ContextMenuUnit::ContextMenuUnit(Context *context) :

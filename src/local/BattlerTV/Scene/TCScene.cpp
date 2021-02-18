@@ -3,6 +3,7 @@
 #include "Audio/TSounds.h"
 #include "Game/TParticles.h"
 #include "GUI/TCursor.h"
+#include "GUI/GuiGame/TWindowTarget.h"
 
 
 CScene::CScene(Context *context) : TScene(context)
