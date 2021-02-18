@@ -36,12 +36,26 @@ struct SelectorComponentGameObject
 
     bool selected = false;
 
-    GameObject *keeper;
+    GameObject *keeper = nullptr;
+};
+
+
+struct PhysicsComponentGameObject
+{
+    virtual ~PhysicsComponentGameObject() {}
+
+    virtual void Init(GameObject *object) { keeper = object; };
+
+    Vector3 GetPosition();
+
+    GameObject *keeper = nullptr;
 };
 
 
 class GameObject : public LogicComponent
 {
+friend struct PhysicsComponentGameObject;
+
 public:
 
     struct Type { enum E {
@@ -58,9 +72,9 @@ public:
 
     Type::E GetGameObjectType();
 
-    Vector3 GetPosition();
-
     SelectorComponentGameObject *selector = nullptr;
+
+    PhysicsComponentGameObject *physics = nullptr;
 
 protected:
 

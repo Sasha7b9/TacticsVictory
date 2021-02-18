@@ -186,7 +186,7 @@ void Rocket::UpdateBegin()
 void Rocket::UpdateEscortTarget()
 {
     // Calculate necessary angle to target
-    Vector3 dirToTarget = target->GetPosition() + Vector3(0.0f, 0.25f, 0.0f) - position;
+    Vector3 dirToTarget = target->physics->GetPosition() + Vector3(0.0f, 0.25f, 0.0f) - position;
     dirToTarget.Normalize();
 
     Vector3 dir = speed;

@@ -46,7 +46,7 @@ void RocketLauncher::Update(float deltaStep)
         {
             if(target != tank)
             {
-                float distance = (tank->GetPosition() - target->GetPosition()).Length();
+                float distance = (tank->physics->GetPosition() - target->physics->GetPosition()).Length();
 
                 if(distance < radiusDetect)
                 {
@@ -86,7 +86,7 @@ bool RocketLauncher::TargetInPointView(Tank* target)
 
         if(results.Size() && results[0].drawable_->GetNode() == target->GetNode())
         {
-            SharedPtr<Rocket> rocket(Rocket::Create(tank->GetSpeed(), tank->GetPosition(), target));
+            SharedPtr<Rocket> rocket(Rocket::Create(tank->GetSpeed(), tank->physics->GetPosition(), target));
             timeElapsedAfterShoot = 1e-6f;
             return true;
         }

@@ -17,6 +17,8 @@ PODVector<Tank*> Tank::allTanks;
 
 Tank::Tank(Context *context) : UnitObject(context)
 {
+    physics->Init(this);
+
     name = "Tank";
     type = GameObject::Type::Unit;
 
@@ -130,7 +132,7 @@ void Tank::Update(float dT)
                 height = TheTerrain->GetHeight(row, col);
             } while(fabs(height) > M_EPSILON);
 
-            Vector3 position = GetPosition();
+            Vector3 position = physics->GetPosition();
             Coord start(static_cast<uint>(-position.z_), static_cast<uint>(position.x_));
 #ifdef CLIENT
             pathFinder->StartFind(start, {row, col});

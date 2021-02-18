@@ -20,6 +20,8 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
     translator = new Translator();
 
     selector = new SelectorComponentGameObject();
+
+    physics = new PhysicsComponentGameObject();
 }
 
 
@@ -27,6 +29,7 @@ GameObject::~GameObject()
 {
     delete reloader;
     delete selector;
+    delete physics;
 }
 
 
@@ -42,9 +45,9 @@ GameObject::Type::E GameObject::GetGameObjectType()
 }
 
 
-Vector3 GameObject::GetPosition()
+Vector3 PhysicsComponentGameObject::GetPosition()
 {
-    return node_->GetPosition() - deltaPos;
+    return keeper->node_->GetPosition() - keeper->deltaPos;
 }
 
 
@@ -56,7 +59,7 @@ void GameObject::SetPosition(const Vector3& pos)
 
 void GameObject::Normalize(float k)
 {
-    Vector3 pos = GetPosition();
+    Vector3 pos = physics->GetPosition();
     node_->SetPosition({0.0f, 0.0f, 0.0f});
     node_->SetScale(1.0f);
 

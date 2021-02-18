@@ -10,7 +10,7 @@
 MilitaryPlant::MilitaryPlant(Context *context) :
     BuildingObject(context)
 {
-
+    physics->Init(this);
 }
 
 
