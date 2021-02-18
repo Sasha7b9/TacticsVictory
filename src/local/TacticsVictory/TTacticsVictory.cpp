@@ -42,6 +42,7 @@ void TacticsVictory::GetSubsystems()
     TheAudio = GetSubsystem<Audio>();
     TheUI = GetSubsystem<UI>();
     TheInput = GetSubsystem<Input>();
+    TheLocalization = GetSubsystem<Localization>();
 }
 
 
@@ -130,7 +131,6 @@ void TacticsVictory::Stop()
 
 void TacticsVictory::SetLocalization()
 {
-    TheLocalization = GetSubsystem<Localization>();
     TheLocalization->LoadJSONFile("TVData/Strings.json");
     TheLocalization->SetLanguage("ru");
 }
