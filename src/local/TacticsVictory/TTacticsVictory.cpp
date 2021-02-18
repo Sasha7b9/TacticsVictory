@@ -34,7 +34,7 @@ void TacticsVictory::Setup()
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
 #ifdef DEBUG
-        engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/debug;../../../../../../out/debug/TVData";
+        engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/debug";
 #else
         engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/release";
 #endif
