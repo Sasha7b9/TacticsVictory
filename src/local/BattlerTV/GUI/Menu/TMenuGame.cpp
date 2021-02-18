@@ -3,6 +3,7 @@
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Menu/TMenuEvents.h"
 #include "GUI/Menu/TMenuGame.h"
+#include "Scene/TCScene.h"
 
 
 MenuGame::MenuGame(Context *) : WindowMenu()

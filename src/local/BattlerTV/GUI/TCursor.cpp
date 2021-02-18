@@ -4,6 +4,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/TGUI.h"
 #include "GUI/Menu/TMenu.h"
+#include "Scene/TCScene.h"
 
 
 bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::StructShape& keyRight)

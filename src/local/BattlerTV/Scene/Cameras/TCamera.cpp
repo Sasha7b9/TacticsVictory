@@ -3,6 +3,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/TGUI.h"
 #include "GUI/Windows/TConsole.h"
+#include "Scene/TCScene.h"
 
 
 #define CURSOR_UP           (cursor == TypeCursor_Up)

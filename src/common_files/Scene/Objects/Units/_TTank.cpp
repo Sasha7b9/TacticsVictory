@@ -3,6 +3,7 @@
 #include "Core/_TMath.h"
 #ifdef CLIENT
 #include "Game/TParticles.h"
+#include "Scene/TCScene.h"
 #endif
 
 

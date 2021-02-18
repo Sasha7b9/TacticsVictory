@@ -6,6 +6,8 @@
 #include "GUI/Controls/_THint.h"
 #include "GUI/GuiEditor/TGuiEditor.h"
 #include "GUI/Menu/TMenu.h"
+#include "Scene/_TLevel.h"
+#include "Scene/TCScene.h"
 
 
 Editor::Editor(Context *context) : Object(context)

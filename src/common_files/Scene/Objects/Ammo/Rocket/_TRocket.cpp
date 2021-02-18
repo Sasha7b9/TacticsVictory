@@ -1,6 +1,9 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Core/_TMath.h"
+#ifdef CLIENT
+#include "Scene/TCScene.h"
+#endif
 
 
 class ThreadRocket : public Thread

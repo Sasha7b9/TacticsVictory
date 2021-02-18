@@ -1,5 +1,8 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
+#ifdef CLIENT
+#include "Game/Path/TWaveAlgorithm.h"
+#endif
 #include "Scene/Objects/Units/Logic/_TTranslator.h"
 #include "Scene/Objects/Units/_TUnitObject.h"
 

@@ -2,7 +2,11 @@
 #include "stdafx.h"
 #include "Core/_TMath.h"
 #include "Game/Logic/_TMovinator.h"
-
+#include "Scene/_TLevel.h"
+#include "Scene/_TScene.h"
+#ifdef CLIENT
+#include "Scene/TCScene.h"
+#endif
 
 TScene::TScene(Context *context) : Object(context)
 {

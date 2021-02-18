@@ -3,6 +3,7 @@
 #include "Graphics/2D/TImage.h"
 #include "GUI/TCursor.h"
 #include "GUI/Panels/TPanelMap.h"
+#include "Scene/_TLevel.h"
 
 
 PanelMap::PanelMap(Context *context) :

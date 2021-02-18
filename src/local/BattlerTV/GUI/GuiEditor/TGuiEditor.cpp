@@ -11,6 +11,7 @@
 #include "GUI/Panels/TPanelMain.h"
 #include "GUI/Panels/TPanelMap.h"
 #include "GUI/Windows/TConsole.h"
+#include "Scene/_TLevel.h"
 
 
 GuiEditor::GuiEditor(Context* context) : Object(context)

@@ -10,6 +10,8 @@
 #include "GUI/GuiEditor/TGuiEditor.h"
 #include "GUI/Menu/TMenuEvents.h"
 #include "GUI/Menu/TMenu.h"
+#include "Scene/_TLevel.h"
+#include "Scene/TCScene.h"
 
 
 #pragma warning(push)

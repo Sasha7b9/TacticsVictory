@@ -1,5 +1,8 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
+#ifdef CLIENT
+#include "Scene/TCScene.h"
+#endif
 
 
 bool UnitObject::viewTargetView = false;

@@ -1,6 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Game/TParticles.h"
+#include "Scene/TCScene.h"
 
 
 Vector<Vector<Node*>> Particles::nodesParticles;

@@ -4,6 +4,7 @@
 #include "Game/TParticles.h"
 #include "GUI/TCursor.h"
 #include "GUI/GuiGame/TWindowTarget.h"
+#include "Scene/TCScene.h"
 
 
 CScene::CScene(Context *context) : TScene(context)
