@@ -1,6 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "GUI/TCursor.h"
+#include "GUI/TGUI.h"
 
 
 #define CURSOR_UP           (cursor == TypeCursor_Up)

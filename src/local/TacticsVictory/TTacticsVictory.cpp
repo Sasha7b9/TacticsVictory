@@ -6,6 +6,7 @@
 #include "Game/Logic/_TRotator.h"
 #include "Game/Path/TTilePath.h"
 #include "Graphics/2D/TImage.h"
+#include "GUI/TGUI.h"
 
 
 #pragma warning(push)

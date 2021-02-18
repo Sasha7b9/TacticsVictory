@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Editor/TEditor.h"
 #include "GUI/TCursor.h"
+#include "GUI/TGUI.h"
 
 
 Editor::Editor(Context *context) : Object(context)
