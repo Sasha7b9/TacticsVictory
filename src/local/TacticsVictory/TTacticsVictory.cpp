@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "TTacticsVictory.h"
 #include "Editor/TEditor.h"
+#include "Game/Logic/_TMovinator.h"
 
 
 #pragma warning(push)
