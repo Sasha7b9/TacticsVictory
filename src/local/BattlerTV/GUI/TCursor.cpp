@@ -92,35 +92,35 @@ void TCursor::Update(float dT)
         {
             if(posX < delta && posY < delta)
             {
-                type = TypeCursor_TopLeft;
+                type = TypeCursor::TopLeft;
             }
             else if(posX > width - delta && posY < delta)
             {
-                type = TypeCursor_TopRight;
+                type = TypeCursor::TopRight;
             }
             else if(posX > width - delta && posY > height - delta)
             {
-                type = TypeCursor_DownRight;
+                type = TypeCursor::DownRight;
             }
             else if(posX < delta && posY > height - delta)
             {
-                type = TypeCursor_DownLeft;
+                type = TypeCursor::DownLeft;
             }
             else if(posX < delta)
             {
-                type = TypeCursor_Left;
+                type = TypeCursor::Left;
             }
             else if(posX > width - delta)
             {
-                type = TypeCursor_Right;
+                type = TypeCursor::Right;
             }
             else if(posY < delta)
             {
-                type = TypeCursor_Up;
+                type = TypeCursor::Up;
             }
             else if(posY > height - delta && !TheGUI->GheckOnDeadZoneForCursorBottomScreen(posX))
             {
-                type = TypeCursor_Down;
+                type = TypeCursor::Down;
             }
             else if (TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
             {
@@ -137,18 +137,18 @@ void TCursor::Update(float dT)
                     thisNumFrame = 0.0f;
                 }
                 numFrame = static_cast<int>(thisNumFrame);
-                type = TypeCursor_Busy;
+                type = TypeCursor::Busy;
             }
             else
             {
-                type = selected ? TypeCursor_Selected : TypeCursor_Normal;
+                type = selected ? TypeCursor::Selected : TypeCursor::Normal;
             }
         }
         else
         {
-            type = selected ? TypeCursor_Selected : TypeCursor_Normal;
+            type = selected ? TypeCursor::Selected : TypeCursor::Normal;
         }
-        static TypeCursor prevType = TypeCursor_Size;
+        static TypeCursor::E prevType = TypeCursor::Size;
         static int prevFrame = -1;
 
         if (prevType != type || prevFrame != numFrame)
@@ -205,10 +205,10 @@ Drawable* TCursor::GetRaycastNode(Vector3 *hitPos_)
         {
             result = results[1];
         }
-        Vector3 hitPos = result.position_;
+
         if(hitPos_)
         {
-            *hitPos_ = hitPos;
+            *hitPos_ = result.position_;
         }
         return result.drawable_;
     }
@@ -220,7 +220,7 @@ Drawable* TCursor::GetRaycastNode(Vector3 *hitPos_)
 CursorShapes::CursorShapes() : Object(TheContext)
 {
     /*
-    for (int iType = 0; iType < TypeCursor_Size; iType++)
+    for (int iType = 0; iType < TypeCursor::Size; iType++)
     {
     SharedPtr<Image> shape = GetShape((TypeCursor)iType, 0);
     }
@@ -228,10 +228,10 @@ CursorShapes::CursorShapes() : Object(TheContext)
 }
 
 
-SharedPtr<TImage> CursorShapes::GetShape(TypeCursor type, int numFrame)
+SharedPtr<TImage> CursorShapes::GetShape(TypeCursor::E type, int numFrame)
 {
     typedef void(CursorShapes::*pToFunc)(int);
-    const pToFunc funcs[TypeCursor_Size] =
+    const pToFunc funcs[TypeCursor::Size] =
     {
         &CursorShapes::CreateNormal,
         &CursorShapes::CreateSelected,
@@ -294,11 +294,11 @@ void CursorShapes::CreateNormal(int numFrame)
 
     CalcXYforNormal(numFrame, &x1, &y1, &x2, &y2);
 
-    FillGradient(image, TypeCursor_Normal, numFrame);
+    FillGradient(image, TypeCursor::Normal, numFrame);
 
     DRAW_LINE(border, 4, 0, 0, x1, y1, x2, y2, 0, 0); //-V112
 
-    StructShape key = {TypeCursor_Normal, numFrame / 10};
+    StructShape key = {TypeCursor::Normal, numFrame / 10};
 
     map[key] = image;
 }
@@ -318,13 +318,13 @@ void CursorShapes::CreateSelected(int numFrame)
 
     CalcXYforNormal(numFrame, &x1, &y1, &x2, &y2);
 
-    FillGradient(image, TypeCursor_Selected, numFrame);
+    FillGradient(image, TypeCursor::Selected, numFrame);
 
     DRAW_LINE(border, 4, 0, 0, x1, y1, x2, y2, 0, 0); //-V112
 
-    FillGradient(image, TypeCursor_Selected, numFrame + 360);   // Draw circle
+    FillGradient(image, TypeCursor::Selected, numFrame + 360);   // Draw circle
 
-    StructShape key = {TypeCursor_Selected, numFrame / 10};
+    StructShape key = {TypeCursor::Selected, numFrame / 10};
 
     map[key] = image;
 }
@@ -338,7 +338,7 @@ void CursorShapes::CreateLeft(int numFrame)
     int width = dimensionTriangleSmall;
     int height = dimensionTriangleBig;
 
-    FillGradient(image, TypeCursor_Left, numFrame);
+    FillGradient(image, TypeCursor::Left, numFrame);
 
     DRAW_LINE(border, 4, 0, height / 2, width, 0, width, height, 0, height / 2); //-V112
 
@@ -346,7 +346,7 @@ void CursorShapes::CreateLeft(int numFrame)
     image->FillRegion(1, height - 1, transparent, border);
     image->FillRegion(height - 1, 1, transparent, border);
     image->SetHotSpot(0, height / 2);
-    StructShape key = {TypeCursor_Left, numFrame};
+    StructShape key = {TypeCursor::Left, numFrame};
     map[key] = image;
 }
 
@@ -359,7 +359,7 @@ void CursorShapes::CreateRight(int numFrame)
     int width = dimensionTriangleSmall;
     int height = dimensionTriangleBig;
 
-    FillGradient(image, TypeCursor_Right, numFrame);
+    FillGradient(image, TypeCursor::Right, numFrame);
 
     DRAW_LINE(border, 4, 0, 0, width, height / 2, 0, height, 0, 0); //-V112
 
@@ -367,7 +367,7 @@ void CursorShapes::CreateRight(int numFrame)
     image->FillRegion(width - 1, 1, transparent, border);
     image->FillRegion(width - 1, height - 1, transparent, border);
     image->SetHotSpot(width, height / 2);
-    StructShape key = {TypeCursor_Right, numFrame};
+    StructShape key = {TypeCursor::Right, numFrame};
     map[key] = image;
 }
 
@@ -380,7 +380,7 @@ void CursorShapes::CreateUp(int numFrame)
     int width = dimensionTriangleBig;
     int height = dimensionTriangleSmall;
 
-    FillGradient(image, TypeCursor_Up, numFrame);
+    FillGradient(image, TypeCursor::Up, numFrame);
 
     DRAW_LINE(border, 4, width / 2, 0, width, height, 0, height, width / 2, 0); //-V112
 
@@ -388,7 +388,7 @@ void CursorShapes::CreateUp(int numFrame)
     image->FillRegion(width - 1, 1, transparent, border);
     image->FillRegion(1, height + 3, transparent, border);
     image->SetHotSpot(width / 2, 0);
-    StructShape key = {TypeCursor_Up, numFrame};
+    StructShape key = {TypeCursor::Up, numFrame};
     map[key] = image;
 }
 
@@ -401,13 +401,13 @@ void CursorShapes::CreateDown(int numFrame)
     int width = dimensionTriangleBig;
     int height = dimensionTriangleSmall;
 
-    FillGradient(image, TypeCursor_Down, numFrame);
+    FillGradient(image, TypeCursor::Down, numFrame);
 
     DRAW_LINE(border, 4, 0, 0, width, 0, width / 2, height, 0, 0); //-V112
 
     image->FillRegion(width / 2, height + 1, transparent, border);
     image->SetHotSpot(width / 2, height);
-    StructShape key = {TypeCursor_Down, numFrame};
+    StructShape key = {TypeCursor::Down, numFrame};
     map[key] = image;
 }
 
@@ -419,13 +419,13 @@ void CursorShapes::CreateTopLeft(int numFrame)
 
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
 
-    FillGradient(image, TypeCursor_TopLeft, numFrame);
+    FillGradient(image, TypeCursor::TopLeft, numFrame);
 
     DRAW_LINE(border, 4, 0, 0, size, 0, 0, size, 0, 0); //-V112
 
     image->FillRegion(size, size, transparent, border);
     image->SetHotSpot(0, 0);
-    StructShape key = {TypeCursor_TopLeft, numFrame};
+    StructShape key = {TypeCursor::TopLeft, numFrame};
     map[key] = image;
 }
 
@@ -436,13 +436,13 @@ void CursorShapes::CreateTopRight(int numFrame)
     SharedPtr<TImage> image(new TImage());
     image->SetSize(size + 1, size + 1);
 
-    FillGradient(image, TypeCursor_TopRight, numFrame);
+    FillGradient(image, TypeCursor::TopRight, numFrame);
 
     DRAW_LINE(border, 4, 0, 0, size, 0, size, size, 0, 0); //-V112
 
     image->FillRegion(0, size, transparent, border);
     image->SetHotSpot(size, 0);
-    StructShape key = {TypeCursor_TopRight, numFrame};
+    StructShape key = {TypeCursor::TopRight, numFrame};
     map[key] = image;
 }
 
@@ -453,13 +453,13 @@ void CursorShapes::CreateDownLeft(int numFrame)
     SharedPtr<TImage> image(new TImage());
     image->SetSize(size + 1, size + 1);
 
-    FillGradient(image, TypeCursor_DownLeft, numFrame);
+    FillGradient(image, TypeCursor::DownLeft, numFrame);
 
     DRAW_LINE(border, 4, 0, 0, size, size, 0, size, 0, 0); //-V112
 
     image->FillRegion(size, 0, transparent, border);
     image->SetHotSpot(0, size);
-    StructShape key = {TypeCursor_DownLeft, numFrame};
+    StructShape key = {TypeCursor::DownLeft, numFrame};
     map[key] = image;
 }
 
@@ -471,13 +471,13 @@ void CursorShapes::CreateDownRight(int numFrame)
     SharedPtr<TImage> image(new TImage());
     image->SetSize(size + 1, size + 1);
 
-    FillGradient(image, TypeCursor_DownRight, numFrame);
+    FillGradient(image, TypeCursor::DownRight, numFrame);
 
     DRAW_LINE(border, 4, size, 0, size, size, 0, size, size, 0); //-V112
 
     image->FillRegion(0, 0, transparent, border);
     image->SetHotSpot(size, size);
-    StructShape key = {TypeCursor_DownRight, numFrame};
+    StructShape key = {TypeCursor::DownRight, numFrame};
     map[key] = image;
 }
 
@@ -488,7 +488,7 @@ void CursorShapes::CreateBusy(int numFrame)
     SharedPtr<TImage> image(new TImage());
     image->SetSize(size, size);
 
-    FillGradient(image, TypeCursor_Busy, numFrame);
+    FillGradient(image, TypeCursor::Busy, numFrame);
 
     image->DrawCircle(size / 2.0f, size / 2.0f, size / 2.1f, border);
     image->FillRegion(0, 0, transparent, border);
@@ -496,7 +496,7 @@ void CursorShapes::CreateBusy(int numFrame)
     image->FillRegion(0, size - 1, transparent, border);
     image->FillRegion(size - 1, size - 1, transparent, border);
     image->SetHotSpot(image->GetWidth() / 2, image->GetHeight() / 2);
-    StructShape key = {TypeCursor_Busy, numFrame};
+    StructShape key = {TypeCursor::Busy, numFrame};
     map[key] = image;
 }
 
@@ -535,32 +535,32 @@ void CursorShapes::CreateBusy(int numFrame)
     CORRECTION_COLOR
 
 
-void CursorShapes::FillGradient(TImage *image, TypeCursor type, int numFrame) //-V2008
+void CursorShapes::FillGradient(TImage *image, TypeCursor::E type, int numFrame)
 {
     int width = image->GetWidth();
     int height = image->GetHeight();
 
-    if (type == TypeCursor_Left || type == TypeCursor_Right)
+    if (type == TypeCursor::Left || type == TypeCursor::Right)
     {
-        CALCULATE_COLORS(TypeCursor_Left)
+        CALCULATE_COLORS(TypeCursor::Left)
 
             for (int i = 0; i < width; i++)
             {
                 DRAW_LINE(image, i, 0, i, height);
             }
     }
-    else if (type == TypeCursor_Up || type == TypeCursor_Down)
+    else if (type == TypeCursor::Up || type == TypeCursor::Down)
     {
-        CALCULATE_COLORS(TypeCursor_Up)
+        CALCULATE_COLORS(TypeCursor::Up)
 
             for (int i = 0; i < height; i++)
             {
                 DRAW_LINE(image, 0, i, width, i);
             }
     }
-    else if (type == TypeCursor_TopLeft || type == TypeCursor_DownRight)
+    else if (type == TypeCursor::TopLeft || type == TypeCursor::DownRight)
     {
-        CALCULATE_COLORS(TypeCursor_TopLeft)
+        CALCULATE_COLORS(TypeCursor::TopLeft)
 
             for (int x = 1; x < width; x++)
             {
@@ -571,9 +571,9 @@ void CursorShapes::FillGradient(TImage *image, TypeCursor type, int numFrame) //
             DRAW_LINE(image, x, height, width, x);
         }
     }
-    else if (type == TypeCursor_TopRight || type == TypeCursor_DownLeft)
+    else if (type == TypeCursor::TopRight || type == TypeCursor::DownLeft)
     {
-        CALCULATE_COLORS(TypeCursor_DownLeft);
+        CALCULATE_COLORS(TypeCursor::DownLeft);
 
         for (int y = height; y > 0; y--)
         {
@@ -584,7 +584,7 @@ void CursorShapes::FillGradient(TImage *image, TypeCursor type, int numFrame) //
             DRAW_LINE(image, x, 0, width, height - x);
         }
     }
-    else if (type == TypeCursor_Busy)
+    else if (type == TypeCursor::Busy)
     {
         float k = 2.0f;
         float dColor = 1.0f / 36.0f / k;
@@ -604,9 +604,9 @@ void CursorShapes::FillGradient(TImage *image, TypeCursor type, int numFrame) //
             DRAW_LINE(image, width, y, 0, height - y);
         }
     }
-    else if (type == TypeCursor_Normal || type == TypeCursor_Selected)
+    else if (type == TypeCursor::Normal || type == TypeCursor::Selected)
     {
-        if (type == TypeCursor_Selected && numFrame >= 360) // if numFrame > 360 - draw circle
+        if (type == TypeCursor::Selected && numFrame >= 360) // if numFrame > 360 - draw circle
         {
             numFrame -= 360;
             SharedPtr<TImage> imageCircle(new TImage());

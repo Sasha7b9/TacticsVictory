@@ -16,21 +16,20 @@ typedef unsigned short  ushort;
 typedef unsigned char   uchar;
 
 
-enum TypeCursor
-{
-    TypeCursor_Normal,
-    TypeCursor_Selected,
-    TypeCursor_Left,
-    TypeCursor_Up,
-    TypeCursor_Right,
-    TypeCursor_Down,
-    TypeCursor_TopLeft,
-    TypeCursor_TopRight,
-    TypeCursor_DownLeft,
-    TypeCursor_DownRight,
-    TypeCursor_Busy,
-    TypeCursor_Size
-};
+struct TypeCursor { enum E {
+    Normal,
+    Selected,
+    Left,
+    Up,
+    Right,
+    Down,
+    TopLeft,
+    TopRight,
+    DownLeft,
+    DownRight,
+    Busy,
+    Size
+}; };
 
 #define SERVER_ADDRESS  "127.0.0.1"
 #define SERVER_PORT     1000

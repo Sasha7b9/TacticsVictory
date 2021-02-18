@@ -7,14 +7,14 @@
 #include "Scene/Cameras/TCamera.h"
 
 
-#define CURSOR_UP           (cursor == TypeCursor_Up)
-#define CURSOR_DOWN         (cursor == TypeCursor_Down)
-#define CURSOR_LEFT         (cursor == TypeCursor_Left)
-#define CURSOR_RIGHT        (cursor == TypeCursor_Right)
-#define CURSOR_TOP_LEFT     (cursor == TypeCursor_TopLeft)
-#define CURSOR_TOP_RIGHT    (cursor == TypeCursor_TopRight)
-#define CURSOR_DOWN_LEFT    (cursor == TypeCursor_DownLeft)
-#define CURSOR_DOWN_RIGhT   (cursor == TypeCursor_DownRight)
+#define CURSOR_UP           (cursor == TypeCursor::Up)
+#define CURSOR_DOWN         (cursor == TypeCursor::Down)
+#define CURSOR_LEFT         (cursor == TypeCursor::Left)
+#define CURSOR_RIGHT        (cursor == TypeCursor::Right)
+#define CURSOR_TOP_LEFT     (cursor == TypeCursor::TopLeft)
+#define CURSOR_TOP_RIGHT    (cursor == TypeCursor::TopRight)
+#define CURSOR_DOWN_LEFT    (cursor == TypeCursor::DownLeft)
+#define CURSOR_DOWN_RIGhT   (cursor == TypeCursor::DownRight)
 
 
 TCamera::TCamera(Scene *scene)
@@ -88,7 +88,7 @@ void TCamera::ParallelTranslateLookAt(const Vector3 &lookAt_)
 }
 
 
-void TCamera::Move(float time) //-V2008
+void TCamera::Move(float time)
 {
     if(!enabled || TheConsole->IsActive())
     {
@@ -99,7 +99,7 @@ void TCamera::Move(float time) //-V2008
 
     float distance = MOVE_SPEED * time;
 
-    TypeCursor cursor = TheCursor->GetType();
+    TypeCursor::E cursor = TheCursor->GetType();
 
     if(CURSOR_UP || CURSOR_TOP_LEFT || CURSOR_TOP_RIGHT || ((PRESS_UP || PRESS_W) && arrowEnabled))
     {

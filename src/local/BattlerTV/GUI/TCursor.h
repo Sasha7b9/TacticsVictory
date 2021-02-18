@@ -10,7 +10,7 @@ class CursorShapes : public Object
     URHO3D_OBJECT(CursorShapes, Object);
 public:
     CursorShapes();
-    SharedPtr<TImage> GetShape(TypeCursor type, int numFrame);
+    SharedPtr<TImage> GetShape(TypeCursor::E type, int numFrame);
 
 private:
     void CreateNormal(int numFrame);
@@ -24,12 +24,12 @@ private:
     void CreateDownLeft(int numFrame);
     void CreateDownRight(int numFrame);
     void CreateBusy(int numFrame);
-    void FillGradient(TImage *image, TypeCursor type, int numFrame);
+    void FillGradient(TImage *image, TypeCursor::E type, int numFrame);
 
 public:
     struct StructShape
     {
-        TypeCursor type;
+        TypeCursor::E type;
         int numFrame;
 
         unsigned ToHash() const
@@ -51,7 +51,9 @@ private:
 class TCursor : public Object
 {
     URHO3D_OBJECT(TCursor, Object)
+
 public:
+
     TCursor();
     SharedPtr<Cursor> GetCursor();
     void Update(float dT);
@@ -59,7 +61,7 @@ public:
     void SetSelected();
     void Hide();
     void Show();
-    TypeCursor GetType()    { return type; };
+    TypeCursor::E GetType()    { return type; };
     Drawable* GetRaycastNode(Vector3 *hitPos = 0);
 
 private:
@@ -70,5 +72,5 @@ private:
     SharedPtr<StaticSprite2D> staticSprite;
     bool selected = false;
     bool hidden = false;
-    TypeCursor type = TypeCursor_Normal;
+    TypeCursor::E type = TypeCursor::Normal;
 };
