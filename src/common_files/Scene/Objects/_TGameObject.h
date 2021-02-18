@@ -54,6 +54,8 @@ struct PhysicsComponentGameObject
     GameObject *keeper = nullptr;
 
     Vector3 deltaPos = Vector3::ZERO;
+
+    float deltaRotate = 0.0f;
 };
 
 
@@ -87,7 +89,6 @@ protected:
 
     uint id = 0;
 
-    float deltaRotate = 0.0f;
     float speed = 0.0f;
     SharedPtr<Translator> translator;
     char* name = nullptr;

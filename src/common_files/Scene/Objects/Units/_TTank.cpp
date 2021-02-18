@@ -194,9 +194,9 @@ void Tank::LoadFromFile()
 
     speed = root.Get("speed").GetFloat();
 
-    deltaRotate = root.Get("deltaRotate").GetFloat();
+    physics->deltaRotate = root.Get("deltaRotate").GetFloat();
 
-    Quaternion rotate(deltaRotate, Vector3::UP);
+    Quaternion rotate(physics->deltaRotate, Vector3::UP);
     node_->SetRotation(Quaternion(0, Vector3::UP));
     node_->Rotate(rotate);
 
@@ -215,14 +215,14 @@ void Tank::SetPath(const PODVector<Coord> &path)
 
 void Tank::SetRotation(float rotation)
 {
-    Quaternion rotate(deltaRotate + rotation, Vector3::UP);
+    Quaternion rotate(physics->deltaRotate + rotation, Vector3::UP);
     node_->SetRotation(rotate);
 }
 
 
 float Tank::GetRotation()
 {
-    float ret = node_->GetRotation().YawAngle() - deltaRotate;
+    float ret = node_->GetRotation().YawAngle() - physics->deltaRotate;
     return ret > 0 ? ret : ret + 360.0f;
 }
 
