@@ -71,9 +71,9 @@ void TacticsVictory::TuneEngineParameters()
 
 void TacticsVictory::Start()
 {
-    GetSubsystems();
-
     PROFILER_FUNC_ENTER();
+
+    GetSubsystems();
 
     Application::Start();
 
@@ -84,7 +84,7 @@ void TacticsVictory::Start()
 
     CreateScene();
 
-    CreateCamera();
+    TheCamera = TCamera::Create(TheScene->scene);
 
     SetWindowTitleAndIcon();
 
@@ -129,18 +129,6 @@ void TacticsVictory::CreateScene()
     TheScene->Create();
 
     PROFILER_FUNC_LEAVE();
-}
-
-
-void TacticsVictory::CreateCamera()
-{
-    TheCamera = new TCamera(TheScene->scene);
-
-    uint sizeX = TheScene->level[0].Size();
-    uint sizeZ = TheScene->level.Size();
-
-    TheCamera->SetPosition( { sizeX / 2.0f, 25.0f, -static_cast<float>(sizeZ) / 2.0f - 10.0f },
-                            { sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f) });
 }
 
 

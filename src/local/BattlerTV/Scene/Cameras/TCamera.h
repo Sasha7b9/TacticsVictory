@@ -19,6 +19,8 @@ public:
 
     TCamera(Scene *scene);
 
+    static TCamera *Create(Scene *scene);
+
     void Move(float time);
     void ParallelTranslateLookAt(const Vector3 &lookAt);
     void SetEnabled(bool enabled);
