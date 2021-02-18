@@ -3,6 +3,7 @@
 #ifdef CLIENT
 #include "Game/Path/TWaveAlgorithm.h"
 #endif
+#include "GUI/GuiGame/TContextMenuUnit.h"
 #include "Scene/Objects/Units/Logic/_TTranslator.h"
 #include "Scene/Objects/Units/_TUnitObject.h"
 #include "Scene/Objects/Weapons/_TWeaponObject.h"
@@ -12,6 +13,21 @@ struct ReloaderComponentTank : public ReloaderComponentGameObject
 {
     virtual void Init(int time) { ReloaderComponentGameObject::Init(time); }
     virtual void Execute(GameObject &object) override;
+};
+
+
+struct GUIComponentTank : public GUIComponentGameObject
+{
+    GUIComponentTank(GameObject *object) : GUIComponentGameObject()
+    {
+        keeper = object;
+    }
+
+    virtual void EnableContextMenu() override;
+
+    void HandleOnMouseDown(StringHash, VariantMap &);
+
+    SharedPtr<ContextMenuUnit> contextMenu;
 };
 
 

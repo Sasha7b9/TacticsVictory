@@ -138,6 +138,6 @@ void CScene::ProcessMouseRight()
 
     if (object && object->GetNode()->GetName() == NODE_TANK)
     {
-        object->GetNode()->GetComponent<Tank>()->EnableContextMenu();
+        object->GetNode()->GetComponent<Tank>()->gui->EnableContextMenu();
     }
 }

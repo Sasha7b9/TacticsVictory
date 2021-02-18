@@ -1,6 +1,8 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Core/_TMath.h"
+#include "GUI/TCursor.h"
+#include "GUI/GuiGame/TContextMenuUnit.h"
 #ifdef CLIENT
 #include "Game/TParticles.h"
 #include "Scene/TCScene.h"
@@ -33,6 +35,8 @@ Tank::Tank(Context *context) : UnitObject(context)
     rocketLauncher = new RocketLauncher(TheContext, this);
 
     graphics->Init(this);
+
+    gui = new GUIComponentTank(this);
 }
 
 
@@ -287,4 +291,31 @@ Tank* Tank::GetByID(uint id)
         }
     }
     return nullptr;
+}
+
+
+void GUIComponentTank::EnableContextMenu()
+{
+    if (contextMenu == nullptr)
+    {
+        contextMenu = new ContextMenuUnit();
+        if (keeper->type == GameObject::Type::Unit)
+        {
+            contextMenu->Create((Tank*)keeper);
+        }
+    }
+    contextMenu->SetPosition(TheCursor->GetCursor()->GetPosition());
+    TheUIRoot->AddChild(contextMenu);
+//    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GameObject, HandleOnMouseDown));
+}
+
+
+void GUIComponentTank::HandleOnMouseDown(StringHash, VariantMap &)
+{
+    if (!contextMenu->UnderCursor())
+    {
+//        UnsubscribeFromEvent(E_MOUSEBUTTONDOWN);
+
+        TheUIRoot->RemoveChild(contextMenu);
+    }
 }

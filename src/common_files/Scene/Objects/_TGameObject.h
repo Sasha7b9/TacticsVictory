@@ -3,12 +3,6 @@
 #include "Scene/Objects/Units/Logic/_TTranslator.h"
 
 
-#ifdef CLIENT
-
-class ContextMenuUnit;
-
-#endif
-
 class GameObject;
 class Translator;
 struct Coord;
@@ -82,10 +76,21 @@ struct GraphicsComponentGameObject
 };
 
 
+struct GUIComponentGameObject
+{
+    virtual ~GUIComponentGameObject() {}
+
+    virtual void EnableContextMenu() = 0;
+
+    GameObject *keeper;
+};
+
+
 class GameObject : public LogicComponent
 {
 friend struct PhysicsComponentGameObject;
 friend struct GraphicsComponentGameObject;
+friend struct GUIComponentTank;
 
 public:
 
@@ -95,6 +100,7 @@ public:
     }; };
 
     GameObject(Context *context = TheContext);
+
     virtual ~GameObject();
 
     virtual void Update(float timeStep) = 0;
@@ -111,6 +117,8 @@ public:
 
     GraphicsComponentGameObject *graphics = nullptr;
 
+    GUIComponentGameObject *gui = nullptr;
+
 protected:
 
     uint id = 0;
@@ -118,18 +126,4 @@ protected:
     char* name = nullptr;
 
     Type::E type = Type::None;
-
-private:
-
-#ifdef CLIENT
-
-public:
-    void EnableContextMenu();
-
-protected:
-    void HandleOnMouseDown(StringHash, VariantMap &);
-
-    SharedPtr<ContextMenuUnit> contextMenu;
-
-#endif
 };

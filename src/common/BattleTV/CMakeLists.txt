@@ -24,6 +24,7 @@ if(WIN32)
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified
     add_compile_options(/wd5219)    # implicit conversion from 'type-1' to 'type-2', possible loss of data
+    add_compile_options(/wd26812)
 else()
     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -lGL -lGLX -lX11 -lGLdispatch")
     SET(LDFLAGS "${LDFLAGS} -ldl")

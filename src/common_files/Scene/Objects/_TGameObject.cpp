@@ -30,6 +30,7 @@ GameObject::~GameObject()
     delete selector;
     delete physics;
     delete graphics;
+    delete gui;
 }
 
 
@@ -85,34 +86,3 @@ void PhysicsComponentGameObject::SetCoord(const Coord& coord)
 {
     SetPosition(coord.ToVector3());
 }
-
-
-#ifdef CLIENT
-
-void GameObject::EnableContextMenu()
-{
-    if (contextMenu == nullptr)
-    {
-        contextMenu = new ContextMenuUnit();
-        if (type == Type::Unit)
-        {
-            contextMenu->Create(this);
-        }
-    }
-    contextMenu->SetPosition(TheCursor->GetCursor()->GetPosition());
-    TheUIRoot->AddChild(contextMenu);
-    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GameObject, HandleOnMouseDown));
-}
-
-
-void GameObject::HandleOnMouseDown(StringHash, VariantMap &)
-{
-    if (!contextMenu->UnderCursor())
-    {
-        UnsubscribeFromEvent(E_MOUSEBUTTONDOWN);
-
-        TheUIRoot->RemoveChild(contextMenu);
-    }
-}
-
-#endif
