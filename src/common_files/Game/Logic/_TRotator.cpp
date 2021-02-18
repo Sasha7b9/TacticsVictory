@@ -23,3 +23,9 @@ void Rotator::Update(float timeStep)
     // rotation quaternion from Euler angles, scale rotation speed with the scene update time step
     node_->Rotate(Quaternion(rotationSpeed.x_ * timeStep, rotationSpeed.y_ * timeStep, rotationSpeed.z_ * timeStep));
 }
+
+
+void Rotator::RegisterObject(Context *context)
+{
+    context->RegisterFactory<Rotator>();
+}
