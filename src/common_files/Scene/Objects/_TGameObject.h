@@ -105,8 +105,6 @@ public:
 
     virtual void Update(float timeStep) = 0;
 
-    GameObject::Type::E GetGameObjectType();
-
     SelectorComponentGameObject *selector = nullptr;
 
     PhysicsComponentGameObject *physics = nullptr;
@@ -119,15 +117,19 @@ public:
 
     struct CommonComponentGameObject
     {
+        GameObject::Type::E GetGameObjectType()
+        {
+            return type;
+        }
+
         char *GetName();
 
         uint id = 0;
 
         char *name = nullptr;
+
+        Type::E type = Type::None;
     };
 
     CommonComponentGameObject *common = nullptr;
-
-protected:
-    Type::E type = Type::None;
 };

@@ -1,9 +1,9 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Core/_TMath.h"
+#ifdef CLIENT
 #include "GUI/TCursor.h"
 #include "GUI/GuiGame/TContextMenuUnit.h"
-#ifdef CLIENT
 #include "Game/TParticles.h"
 #include "Scene/TCScene.h"
 #endif
@@ -22,7 +22,7 @@ Tank::Tank(Context *context) : UnitObject(context)
     physics->Init(this);
 
     common->name = "Tank";
-    type = GameObject::Type::Unit;
+    common->type = GameObject::Type::Unit;
 
     if (parameters.Empty())
     {
@@ -36,7 +36,9 @@ Tank::Tank(Context *context) : UnitObject(context)
 
     graphics->Init(this);
 
+#ifdef CLIENT
     gui = new GUIComponentTank(this);
+#endif
 }
 
 
@@ -294,12 +296,14 @@ Tank* Tank::GetByID(uint id)
 }
 
 
+#ifdef CLIENT
+
 void GUIComponentTank::EnableContextMenu()
 {
     if (contextMenu == nullptr)
     {
         contextMenu = new ContextMenuUnit();
-        if (keeper->type == GameObject::Type::Unit)
+        if (keeper->common->type == GameObject::Type::Unit)
         {
             contextMenu->Create((Tank*)keeper);
         }
@@ -319,3 +323,5 @@ void GUIComponentTank::HandleOnMouseDown(StringHash, VariantMap &)
         TheUIRoot->RemoveChild(contextMenu);
     }
 }
+
+#endif

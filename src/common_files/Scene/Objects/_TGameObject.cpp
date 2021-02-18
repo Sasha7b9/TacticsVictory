@@ -43,12 +43,6 @@ char *GameObject::CommonComponentGameObject::GetName()
 }
 
 
-GameObject::Type::E GameObject::GetGameObjectType()
-{
-    return type;
-}
-
-
 Vector3 PhysicsComponentGameObject::GetPosition()
 {
     return keeper->node_->GetPosition() - deltaPos;

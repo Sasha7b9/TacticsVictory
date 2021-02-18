@@ -2,8 +2,8 @@
 #pragma once
 #ifdef CLIENT
 #include "Game/Path/TWaveAlgorithm.h"
-#endif
 #include "GUI/GuiGame/TContextMenuUnit.h"
+#endif
 #include "Scene/Objects/Units/Logic/_TTranslator.h"
 #include "Scene/Objects/Units/_TUnitObject.h"
 #include "Scene/Objects/Weapons/_TWeaponObject.h"
@@ -16,6 +16,7 @@ struct ReloaderComponentTank : public ReloaderComponentGameObject
 };
 
 
+#ifdef CLIENT
 struct GUIComponentTank : public GUIComponentGameObject
 {
     GUIComponentTank(GameObject *object) : GUIComponentGameObject()
@@ -29,6 +30,7 @@ struct GUIComponentTank : public GUIComponentGameObject
 
     SharedPtr<ContextMenuUnit> contextMenu;
 };
+#endif
 
 
 class Tank : public UnitObject
