@@ -140,7 +140,7 @@ void TacticsVictory::CreateScriptSystem()
 
 void TacticsVictory::RegistrationComponets()
 {
-    TheContext->RegisterFactory<ImageTV>();
+    TheContext->RegisterFactory<TImage>();
 
     Movinator::RegisterObject();
     Rotator::RegisterObject();

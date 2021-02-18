@@ -2,32 +2,32 @@
 #include "stdafx.h"
 
 
-ImageTV::ImageTV(Context *context) :
+TImage::TImage(Context *context) :
     Image(context)
 {
 
 }
 
 
-ImageTV::~ImageTV()
+TImage::~TImage()
 {
 
 }
 
 
-void ImageTV::SetSize(int width, int height)
+void TImage::SetSize(int width, int height)
 {
     Image::SetSize(width, height, 4); //-V112
 }
 
 
-void ImageTV::RegisterObject(Context* context)
+void TImage::RegisterObject(Context* context)
 {
-    context->RegisterFactory<ImageTV>();
+    context->RegisterFactory<TImage>();
 }
 
 
-void ImageTV::SetPoint(int x, int y, const Color& color)
+void TImage::SetPoint(int x, int y, const Color& color)
 {
     if(x < GetWidth() && y < GetHeight())
     {
@@ -36,7 +36,7 @@ void ImageTV::SetPoint(int x, int y, const Color& color)
 }
 
 
-void ImageTV::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
+void TImage::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
 {
     if((x1 - x0) == 0 && (y1 - y0) == 0)
     {
@@ -91,7 +91,7 @@ void ImageTV::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
 }
 
 
-void ImageTV::DrawRectangle(int x, int y, int width, int height, const Color &color)
+void TImage::DrawRectangle(int x, int y, int width, int height, const Color &color)
 {
     DrawLine(x, y, x + width, y, color);
     DrawLine(x + width, y, x + width, y + height, color);
@@ -100,7 +100,7 @@ void ImageTV::DrawRectangle(int x, int y, int width, int height, const Color &co
 }
 
 
-void ImageTV::FillRectangle(int x0, int y0, int width, int height, const Color &color)
+void TImage::FillRectangle(int x0, int y0, int width, int height, const Color &color)
 {
     for(int x = x0; x < x0 + width; x++)
     {
@@ -109,7 +109,7 @@ void ImageTV::FillRectangle(int x0, int y0, int width, int height, const Color &
 }
 
 
-void ImageTV::FillRegion(int x, int y, const Color &color)
+void TImage::FillRegion(int x, int y, const Color &color)
 {
     replacedColor = GetPixel(x, y);
 
@@ -119,7 +119,7 @@ void ImageTV::FillRegion(int x, int y, const Color &color)
 }
 
 
-void ImageTV::Replace4Points(int x, int y, const Color &color)
+void TImage::Replace4Points(int x, int y, const Color &color)
 {
     if(y > 0)                       // upper pixel
     {
@@ -156,7 +156,7 @@ void ImageTV::Replace4Points(int x, int y, const Color &color)
 }
 
 
-void ImageTV::FillRegion(int x, int y, const Color &color, const Color &colorBound)
+void TImage::FillRegion(int x, int y, const Color &color, const Color &colorBound)
 {
     UNUSED(x);
     UNUSED(y);
@@ -173,7 +173,7 @@ void ImageTV::FillRegion(int x, int y, const Color &color, const Color &colorBou
 }
 
 
-void ImageTV::CopyImage(int x0, int y0, const ImageTV &inImage)
+void TImage::CopyImage(int x0, int y0, const TImage &inImage)
 {
     int xMin = x0;
     int xMax = xMin + inImage.GetWidth();
@@ -215,7 +215,7 @@ void ImageTV::CopyImage(int x0, int y0, const ImageTV &inImage)
     }
 
 
-void ImageTV::Replace4PointsBound(int x, int y, const Color &color)
+void TImage::Replace4PointsBound(int x, int y, const Color &color)
 {
     if(y > 0)
     {
@@ -236,7 +236,7 @@ void ImageTV::Replace4PointsBound(int x, int y, const Color &color)
 }
 
 
-void ImageTV::DrawPolyline(const Color &color, int numPoints, const int *xy)
+void TImage::DrawPolyline(const Color &color, int numPoints, const int *xy)
 {
     int numLines = numPoints - 1;
 
@@ -247,7 +247,7 @@ void ImageTV::DrawPolyline(const Color &color, int numPoints, const int *xy)
 }
 
 
-void ImageTV::DrawCircle(float x, float y, float radius, const Color &color, float step)
+void TImage::DrawCircle(float x, float y, float radius, const Color &color, float step)
 {
     for (float angle = 0.0f; angle < 360.0f; angle += step) //-V1034
     {
@@ -256,13 +256,13 @@ void ImageTV::DrawCircle(float x, float y, float radius, const Color &color, flo
 }
 
 
-IntVector2 ImageTV::GetHotSpot() const
+IntVector2 TImage::GetHotSpot() const
 {
     return hotSpot;
 }
 
 
-void ImageTV::SetHotSpot(int x, int y)
+void TImage::SetHotSpot(int x, int y)
 {
     hotSpot.x_ = x;
     hotSpot.y_ = y;

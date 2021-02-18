@@ -3,7 +3,7 @@
 #include "GUI/Controls/_TWindow.h"
 
 
-class ImageTV;
+class TImage;
 
 
 /*
@@ -22,7 +22,7 @@ public:
 
 private:
     Vector<Vector<float> > map;
-    SharedPtr<ImageTV> imageMap;
+    SharedPtr<TImage> imageMap;
     int x0 = 0;
     int y0 = 0;
     float scale = 0.0f;

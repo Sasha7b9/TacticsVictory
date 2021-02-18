@@ -5,12 +5,12 @@
 extern Context *TheContext;
 
 
-class ImageTV : public Image
+class TImage : public Image
 {
-    URHO3D_OBJECT(ImageTV, Image);
+    URHO3D_OBJECT(TImage, Image);
 public:
-    ImageTV(Context *context = TheContext);
-    ~ImageTV();
+    TImage(Context *context = TheContext);
+    ~TImage();
     static void RegisterObject(Context *context = TheContext);
     void SetSize(int width, int height);
     void SetPoint(int x, int y, const Color& color);
@@ -19,7 +19,7 @@ public:
     void FillRectangle(int x, int y, int width, int height, const Color &color);
     void FillRegion(int x, int y, const Color &color);
     void FillRegion(int x, int y, const Color &color, const Color &colorBound);
-    void CopyImage(int x, int y, const ImageTV &image);      // Those points which have transparency more than 0.5 are copied
+    void CopyImage(int x, int y, const TImage &image);      // Those points which have transparency more than 0.5 are copied
     void DrawPolyline(const Color &color, int numPoints, const int *xy);
     void DrawCircle(float x, float y, float radius, const Color &color, float step = 1.0f);
     IntVector2 GetHotSpot() const;

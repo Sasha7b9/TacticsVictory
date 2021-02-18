@@ -18,7 +18,7 @@ CursorTV::CursorTV() : Object(TheContext)
 
     int size = 100;
 
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(size, size);
 
     image->Clear({0.0f, 0.0f, 1.0f, 1.0f});
@@ -69,7 +69,7 @@ void CursorTV::Update(float dT)
 
     if(hidden)
     {
-        SharedPtr<ImageTV> image(new ImageTV());
+        SharedPtr<TImage> image(new TImage());
         image->SetSize(1, 1);
         cursor->DefineShape("Normal", image, {0, 0, image->GetWidth(), image->GetHeight()}, {0, 0});
     }
@@ -150,7 +150,7 @@ void CursorTV::Update(float dT)
             prevFrame = numFrame;
             prevType = type;
 
-            SharedPtr<ImageTV> image = shapes->GetShape(type, numFrame);
+            SharedPtr<TImage> image = shapes->GetShape(type, numFrame);
 
             cursor->DefineShape("Normal", image, {0, 0, image->GetWidth(), image->GetHeight()}, image->GetHotSpot());
             /*
@@ -222,7 +222,7 @@ CursorShapes::CursorShapes() : Object(TheContext)
 }
 
 
-SharedPtr<ImageTV> CursorShapes::GetShape(TypeCursor type, int numFrame)
+SharedPtr<TImage> CursorShapes::GetShape(TypeCursor type, int numFrame)
 {
     typedef void(CursorShapes::*pToFunc)(int);
     const pToFunc funcs[TypeCursor_Size] =
@@ -280,7 +280,7 @@ void CursorShapes::CreateNormal(int numFrame)
 
     int size = 100;
 
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(size, size);
     image->Clear(transparent);
 
@@ -304,7 +304,7 @@ void CursorShapes::CreateSelected(int numFrame)
 
     int size = 100;
 
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(size, size);
     image->Clear(transparent);
 
@@ -326,7 +326,7 @@ void CursorShapes::CreateSelected(int numFrame)
 
 void CursorShapes::CreateLeft(int numFrame)
 {
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
 
     int width = dimensionTriangleSmall;
@@ -347,7 +347,7 @@ void CursorShapes::CreateLeft(int numFrame)
 
 void CursorShapes::CreateRight(int numFrame)
 {
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
 
     int width = dimensionTriangleSmall;
@@ -368,7 +368,7 @@ void CursorShapes::CreateRight(int numFrame)
 
 void CursorShapes::CreateUp(int numFrame)
 {
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
 
     int width = dimensionTriangleBig;
@@ -389,7 +389,7 @@ void CursorShapes::CreateUp(int numFrame)
 
 void CursorShapes::CreateDown(int numFrame)
 {
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
 
     int width = dimensionTriangleBig;
@@ -408,7 +408,7 @@ void CursorShapes::CreateDown(int numFrame)
 
 void CursorShapes::CreateTopLeft(int numFrame)
 {
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
 
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
@@ -427,7 +427,7 @@ void CursorShapes::CreateTopLeft(int numFrame)
 void CursorShapes::CreateTopRight(int numFrame)
 {
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(size + 1, size + 1);
 
     FillGradient(image, TypeCursor_TopRight, numFrame);
@@ -444,7 +444,7 @@ void CursorShapes::CreateTopRight(int numFrame)
 void CursorShapes::CreateDownLeft(int numFrame)
 {
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(size + 1, size + 1);
 
     FillGradient(image, TypeCursor_DownLeft, numFrame);
@@ -462,7 +462,7 @@ void CursorShapes::CreateDownRight(int numFrame)
 {
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
 
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(size + 1, size + 1);
 
     FillGradient(image, TypeCursor_DownRight, numFrame);
@@ -479,7 +479,7 @@ void CursorShapes::CreateDownRight(int numFrame)
 void CursorShapes::CreateBusy(int numFrame)
 {
     int size = 72;
-    SharedPtr<ImageTV> image(new ImageTV());
+    SharedPtr<TImage> image(new TImage());
     image->SetSize(size, size);
 
     FillGradient(image, TypeCursor_Busy, numFrame);
@@ -529,7 +529,7 @@ void CursorShapes::CreateBusy(int numFrame)
     CORRECTION_COLOR
 
 
-void CursorShapes::FillGradient(ImageTV *image, TypeCursor type, int numFrame) //-V2008
+void CursorShapes::FillGradient(TImage *image, TypeCursor type, int numFrame) //-V2008
 {
     int width = image->GetWidth();
     int height = image->GetHeight();
@@ -603,7 +603,7 @@ void CursorShapes::FillGradient(ImageTV *image, TypeCursor type, int numFrame) /
         if (type == TypeCursor_Selected && numFrame >= 360) // if numFrame > 360 - draw circle
         {
             numFrame -= 360;
-            SharedPtr<ImageTV> imageCircle(new ImageTV());
+            SharedPtr<TImage> imageCircle(new TImage());
             imageCircle->SetSize(width, height);
 
             float k = 2.0f;
