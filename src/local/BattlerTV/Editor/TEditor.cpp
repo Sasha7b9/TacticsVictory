@@ -5,6 +5,7 @@
 #include "GUI/TGUI.h"
 #include "GUI/Controls/_THint.h"
 #include "GUI/GuiEditor/TGuiEditor.h"
+#include "GUI/Menu/TMenu.h"
 
 
 Editor::Editor(Context *context) : Object(context)

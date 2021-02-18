@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "GUI/Controls/_TButtonToggled.h"
 #include "GUI/Controls/_TTab.h"
+#include "GUI/Panels/TPanelMain.h"
 
 
 PanelMain::PanelMain(Context *context) :

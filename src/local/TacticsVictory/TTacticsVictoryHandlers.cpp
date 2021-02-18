@@ -4,6 +4,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/Controls/_THint.h"
 #include "GUI/Menu/TMenuEvents.h"
+#include "GUI/Menu/TMenu.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)

@@ -2,6 +2,9 @@
 #include "stdafx.h"
 #include "GUI/Menu/TMenuAboutMe.h"
 #include "GUI/Menu/TMenuEvents.h"
+#include "GUI/Menu/TMenuOptions.h"
+#include "GUI/Menu/TMenu.h"
+#include "GUI/Menu/TMenuStart.h"
 
 
 #define CREATE_MENU(name, type, moving)                                 \

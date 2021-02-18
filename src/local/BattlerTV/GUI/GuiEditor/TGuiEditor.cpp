@@ -7,6 +7,8 @@
 #include "GUI/Controls/_TSliderWithTextAndButtons.h"
 #include "GUI/Controls/_TTab.h"
 #include "GUI/GuiEditor/TGuiEditor.h"
+#include "GUI/Panels/TPanelBottom.h"
+#include "GUI/Panels/TPanelMain.h"
 
 
 GuiEditor::GuiEditor(Context* context) : Object(context)

@@ -3,6 +3,7 @@
 #include "Graphics/2D/TImage.h"
 #include "GUI/TCursor.h"
 #include "GUI/TGUI.h"
+#include "GUI/Menu/TMenu.h"
 
 
 bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::StructShape& keyRight)

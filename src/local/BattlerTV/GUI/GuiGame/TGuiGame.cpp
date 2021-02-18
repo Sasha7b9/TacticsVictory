@@ -3,6 +3,8 @@
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Controls/_TTab.h"
 #include "GUI/GuiGame/TGuiGame.h"
+#include "GUI/Panels/TPanelBottom.h"
+#include "GUI/Panels/TPanelMain.h"
 
 
 GuiGame::GuiGame(Context *context) :

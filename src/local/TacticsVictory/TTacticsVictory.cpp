@@ -9,6 +9,7 @@
 #include "GUI/TGUI.h"
 #include "GUI/GuiEditor/TGuiEditor.h"
 #include "GUI/Menu/TMenuEvents.h"
+#include "GUI/Menu/TMenu.h"
 
 
 #pragma warning(push)

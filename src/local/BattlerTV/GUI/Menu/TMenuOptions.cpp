@@ -4,6 +4,7 @@
 #include "GUI/Controls/_TDropDownListWithTextAndButton.h"
 #include "GUI/Controls/_TSliderInt.h"
 #include "GUI/Controls/_TSliderWithTextAndButtons.h"
+#include "GUI/Menu/TMenuOptions.h"
 
 
 MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
