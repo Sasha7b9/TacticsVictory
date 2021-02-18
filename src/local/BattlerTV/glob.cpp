@@ -44,7 +44,7 @@ Hint                *TheHint = nullptr;
 int                 *TheCounterHint = 0;
 Vector<WindowTV*>   TheOpenedWindow;
 WindowTarget        *TheWindowTarget = nullptr;
-MenuTV             *TheMenu = nullptr;
+TMenu             *TheMenu = nullptr;
 TScene            *TheScene = nullptr;
 MenuGame            *TheMenuMain = nullptr;
 MenuConfirmExit     *TheMenuConfirmExit = nullptr;

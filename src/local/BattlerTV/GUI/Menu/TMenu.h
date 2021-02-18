@@ -8,13 +8,13 @@ class MenuOptions;
 class MenuStart;
 
 
-class MenuTV : public Object
+class TMenu : public Object
 {
-    URHO3D_OBJECT(MenuTV, Object)
+    URHO3D_OBJECT(TMenu, Object)
 
 public:
-    MenuTV(Context *context = TheContext);
-    ~MenuTV();
+    TMenu(Context *context = TheContext);
+    ~TMenu();
     void Hide();
     bool IsActive();
     bool ProcessingKey(int key);

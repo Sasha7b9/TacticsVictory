@@ -45,6 +45,6 @@ WindowTarget        *TheWindowTarget = nullptr;
 CScene              *TheScene = nullptr;
 
 // Меню
-MenuTV              *TheMenu = nullptr;
+TMenu              *TheMenu = nullptr;
 MenuGame            *TheMenuMain = nullptr;
 MenuConfirmExit     *TheMenuConfirmExit = nullptr;

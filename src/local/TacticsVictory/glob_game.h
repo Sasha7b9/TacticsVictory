@@ -21,7 +21,7 @@ class MenuConfirmExit;
 class WindowTarget;
 class WindowVariables;
 class Battler;
-class MenuTV;
+class TMenu;
 class CLog;
 
 
@@ -43,7 +43,7 @@ extern Level           *TheLevel;
 extern CLog            *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
-extern MenuTV          *TheMenu;
+extern TMenu          *TheMenu;
 extern CScene          *TheScene;
 extern Settings        *TheSet;
 extern TacticsVictory  *TheTacticsVictory;

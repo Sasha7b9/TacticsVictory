@@ -112,7 +112,7 @@ void Battler::Start()
     TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     TheGUI = new GUI();
     LOGINFO("Загружаю настройки");
-    TheMenu = new MenuTV();
+    TheMenu = new TMenu();
     TheFileSelector = new FileSelector(TheContext);
     TheFileSelector->GetWindow()->SetModal(false);
     TheFileSelector->GetWindow()->SetVisible(false);

@@ -21,7 +21,7 @@ class MenuConfirmExit;
 class WindowTarget;
 class WindowVariables;
 class Battler;
-class MenuTV;
+class TMenu;
 class Server;
 class Client;
 
@@ -42,7 +42,7 @@ extern Level           *TheLevel;
 extern CLog            *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
-extern MenuTV          *TheMenu;
+extern TMenu          *TheMenu;
 extern TScene          *TheScene;
 extern Server          *TheServer;
 extern Settings        *TheSet;
