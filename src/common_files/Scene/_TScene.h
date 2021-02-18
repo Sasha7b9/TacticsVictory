@@ -25,8 +25,4 @@ public:
     Vector<Vector<float>> level;
 
     Scene *scene = nullptr;
-
-private:
-
-    void RegisterObjects();
 };

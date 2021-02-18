@@ -5,8 +5,6 @@
 TScene::TScene(Context *context) : Object(context)
 {
     scene = new Scene(context);
-
-    RegisterObjects();
 }
 
 
@@ -15,13 +13,6 @@ TScene::~TScene()
     delete scene;
 
     SAFE_DELETE(TheTerrain);
-}
-
-
-void TScene::RegisterObjects()
-{
-    Rocket::RegisterObject();
-    MilitaryPlant::RegisterObject();
 }
 
 
