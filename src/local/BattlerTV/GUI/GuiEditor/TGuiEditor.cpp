@@ -9,6 +9,8 @@
 #include "GUI/GuiEditor/TGuiEditor.h"
 #include "GUI/Panels/TPanelBottom.h"
 #include "GUI/Panels/TPanelMain.h"
+#include "GUI/Panels/TPanelMap.h"
+#include "GUI/Windows/TConsole.h"
 
 
 GuiEditor::GuiEditor(Context* context) : Object(context)

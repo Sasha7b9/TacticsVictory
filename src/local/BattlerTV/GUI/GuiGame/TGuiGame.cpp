@@ -5,6 +5,8 @@
 #include "GUI/GuiGame/TGuiGame.h"
 #include "GUI/Panels/TPanelBottom.h"
 #include "GUI/Panels/TPanelMain.h"
+#include "GUI/Panels/TPanelMap.h"
+#include "GUI/Windows/TConsole.h"
 
 
 GuiGame::GuiGame(Context *context) :

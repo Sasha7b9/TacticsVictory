@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "GUI/TCursor.h"
 #include "GUI/TGUI.h"
+#include "GUI/Windows/TConsole.h"
 
 
 #define CURSOR_UP           (cursor == TypeCursor_Up)

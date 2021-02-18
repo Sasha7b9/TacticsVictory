@@ -1,5 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "GUI/Windows/TConsole.h"
+#include "GUI/Windows/TWindowVariables.h"
 
 
 bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)

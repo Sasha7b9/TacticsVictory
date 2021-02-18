@@ -134,9 +134,6 @@ using namespace Urho3D;
 
 
 
-#include "GUI/Panels/TPanelMap.h"
-#include "GUI/Windows/TConsole.h"
-#include "GUI/Windows/TWindowVariables.h"
 
 #include "Scene/_TLevel.h"
 #include "Scene/TCScene.h"
