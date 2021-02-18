@@ -4,6 +4,7 @@
 #include "Editor/TEditor.h"
 #include "Game/Logic/_TMovinator.h"
 #include "Game/Logic/_TRotator.h"
+#include "Game/Path/TTilePath.h"
 
 
 #pragma warning(push)
