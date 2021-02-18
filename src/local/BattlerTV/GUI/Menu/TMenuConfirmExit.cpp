@@ -3,6 +3,7 @@
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Menu/TMenuConfirmExit.h"
 #include "GUI/Menu/TMenuEvents.h"
+#include "GUI/Menu/TMenuGame.h"
 
 
 MenuConfirmExit::MenuConfirmExit(Context *context) : WindowMenu(context)

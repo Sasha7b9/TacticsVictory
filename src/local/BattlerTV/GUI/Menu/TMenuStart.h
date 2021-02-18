@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "GUi/Controls/_TButtonSwitch.h"
 #include "GUI/Menu/TWindowMenu.h"
 
 

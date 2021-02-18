@@ -14,6 +14,7 @@
 #include "GUI/GuiGame/TGuiGame.h"
 #include "GUI/Menu/TMenuAboutMe.h"
 #include "GUI/Menu/TMenuConfirmExit.h"
+#include "GUI/Menu/TMenuGame.h"
 
 
 GUI::GUI() : Object(TheContext)
