@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "GUI/TCursor.h"
 #include "GUI/Controls/_TButtonSwitch.h"
+#include "GUI/Controls/_TButtonToggled.h"
 
 
 TWindow::TWindow(Context *context) :
