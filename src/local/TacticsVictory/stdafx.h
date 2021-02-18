@@ -132,7 +132,6 @@ using namespace Urho3D;
 
 
 
-#include "GUI/Controls/_TSlider.h"
 #include "GUI/Controls/_TSliderInt.h"
 #include "GUI/Controls/_TSliderWithTextAndButtons.h"
 #include "GUI/Controls/_TTab.h"
