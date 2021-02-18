@@ -125,7 +125,6 @@ using namespace Urho3D;
 #include "glob_engine.h"
 #include "glob_game.h"
 
-#include "GUI/Controls/_TButton.h"
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Controls/_TButtonToggled.h"
 #include "GUI/Controls/_TDropDownListWithTextAndButton.h"
