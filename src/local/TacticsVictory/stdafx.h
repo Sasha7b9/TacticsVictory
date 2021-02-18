@@ -121,6 +121,11 @@ using namespace Urho3D;
 #pragma warning(pop)
 
 #include "defines.h"
+
+#include "glob_engine.h"
+#include "glob_game.h"
+
+
 #include "TTacticsVictory.h"
 
 #include "Audio/TSounds.h"
@@ -190,6 +195,3 @@ using namespace Urho3D;
 #include "Utils/TCLog.h"
 #include "Utils/TSettings.h"
 #include "Utils/TSettingsTypes.h"
-
-#include "glob_engine.h"
-#include "glob_game.h"

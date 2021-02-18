@@ -24,6 +24,13 @@ class Battler;
 class MenuTV;
 class CLog;
 
+
+
+class TCamera;
+class CScene;
+class TacticsVictory;
+
+
 extern TCamera         *TheCamera;
 extern ConsoleTV       *TheConsole;
 extern CursorTV        *TheCursor;

@@ -25,6 +25,10 @@ class MenuTV;
 class Server;
 class Client;
 
+class TCamera;
+class CLog;
+class TScene;
+
 extern TCamera         *TheCamera;
 extern Client          *TheClient;
 extern ConsoleTV       *TheConsole;

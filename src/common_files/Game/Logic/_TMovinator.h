@@ -2,7 +2,7 @@
 #pragma once
 
 
-extern Context *TheContext;
+//extern Context *TheContext;
 
 
 class Movinator : public LogicComponent

@@ -2,9 +2,6 @@
 #pragma once
 
 
-extern Context *TheContext;
-
-
 class TImage : public Image
 {
     URHO3D_OBJECT(TImage, Image);
