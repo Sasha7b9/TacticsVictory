@@ -33,6 +33,15 @@ void TacticsVictory::GetSubsystems()
 {
     TheCache = GetSubsystem<ResourceCache>();
     TheFileSystem = GetSubsystem<FileSystem>();
+    TheProfiler = GetSubsystem<Profiler>();
+    TheTime = GetSubsystem<Time>();
+    TheProfiler = GetSubsystem<Profiler>();
+    TheEngine = GetSubsystem<Engine>();
+    TheGraphics = GetSubsystem<Graphics>();
+    TheRenderer = GetSubsystem<Renderer>();
+    TheAudio = GetSubsystem<Audio>();
+    TheUI = GetSubsystem<UI>();
+    TheInput = GetSubsystem<Input>();
 }
 
 
@@ -59,22 +68,17 @@ void TacticsVictory::TuneEngineParameters()
 
 void TacticsVictory::Start()
 {
-    TheProfiler = GetSubsystem<Profiler>();
+    GetSubsystems();
+
     PROFILER_FUNC_ENTER
     Application::Start();
     SetLocalization();
-    TheTime = GetSubsystem<Time>();
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
-    TheProfiler = GetSubsystem<Profiler>();
-    TheEngine = GetSubsystem<Engine>();
-    TheGraphics = GetSubsystem<Graphics>();
     TheScene = new CScene();
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
     TheScene->scene->CreateComponent<DebugRenderer>();
-    TheRenderer = GetSubsystem<Renderer>();
-    TheAudio = GetSubsystem<Audio>();
     TheCamera = new TCamera();
 
     CreateScriptSystem();
@@ -85,8 +89,7 @@ void TacticsVictory::Start()
 
     SetWindowTitleAndIcon();
     CreateConsoleAndDebugHud();
-    TheUI = GetSubsystem<UI>();
-    TheInput = GetSubsystem<Input>();
+
     TheDebugRenderer = TheScene->scene->GetComponent<DebugRenderer>();
     TheUIRoot = TheUI->GetRoot();
     TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
