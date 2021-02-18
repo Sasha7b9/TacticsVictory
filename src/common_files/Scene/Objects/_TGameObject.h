@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Scene/Objects/Units/Logic/_TTranslator.h"
 
 
 #ifdef CLIENT
@@ -43,6 +44,8 @@ struct SelectorComponentGameObject
 
 struct PhysicsComponentGameObject
 {
+    PhysicsComponentGameObject() { translator = new Translator(); }
+
     virtual ~PhysicsComponentGameObject() {}
 
     virtual void Init(GameObject *object) { keeper = object; };
@@ -60,6 +63,8 @@ struct PhysicsComponentGameObject
     void SetCoord(const Coord &coord);
 
     float speed = 0.0f;
+
+    SharedPtr<Translator> translator;
 };
 
 
@@ -92,8 +97,6 @@ public:
 protected:
 
     uint id = 0;
-
-    SharedPtr<Translator> translator;
 
     char* name = nullptr;
 

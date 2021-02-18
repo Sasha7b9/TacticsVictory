@@ -16,8 +16,6 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
 {
     id = ++creatorID;
 
-    translator = new Translator();
-
     selector = new SelectorComponentGameObject();
 
     physics = new PhysicsComponentGameObject();

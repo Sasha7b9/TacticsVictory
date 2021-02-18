@@ -69,7 +69,7 @@ void Tank::Init(Type::E type_, uint _id_)
     pathFinder->SetSize(TheTerrain->NumRows(), TheTerrain->NumCols());
 #endif
 
-    translator->Init(this);
+    physics->translator->Init(this);
     typeTank = type_;
     LoadFromFile();
     Normalize();
@@ -107,7 +107,7 @@ void Tank::Update(float dT)
 
     rocketLauncher->Update(dT);
 
-    if(!translator->IsMoving())
+    if(!physics->translator->IsMoving())
     {
 #ifdef CLIENT
         if(inProcessFindPath)
@@ -142,7 +142,7 @@ void Tank::Update(float dT)
     }
     else
     {
-        physics->SetPosition(translator->Update(dT));
+        physics->SetPosition(physics->translator->Update(dT));
     }
 
     reloader->Execute(*this);
@@ -209,7 +209,7 @@ void Tank::LoadFromFile()
 
 void Tank::SetPath(const PODVector<Coord> &path)
 {
-    translator->SetPath(path, physics->speed);
+    physics->translator->SetPath(path, physics->speed);
 }
 
 
