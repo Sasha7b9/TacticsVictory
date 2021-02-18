@@ -132,7 +132,6 @@ using namespace Urho3D;
 
 
 
-#include "GUI/Controls/_TTab.h"
 #include "GUI/Logic/TLineTranslator2D.h"
 #include "GUI/GuiEditor/TGuiEditor.h"
 #include "GUI/GuiGame/TContextMenuUnit.h"
