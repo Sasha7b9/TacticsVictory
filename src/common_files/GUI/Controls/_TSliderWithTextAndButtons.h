@@ -2,6 +2,9 @@
 #pragma once
 
 
+class Hint;
+
+
 class SliderWithTextAndButtons : public UIElement
 {
     URHO3D_OBJECT(SliderWithTextAndButtons, UIElement);

@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "TTacticsVictory.h"
 #include "GUI/TCursor.h"
+#include "GUI/Controls/_THint.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)

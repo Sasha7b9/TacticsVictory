@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "GUI/TCursor.h"
 #include "GUI/Controls/_TButtonSwitch.h"
+#include "GUI/Controls/_THint.h"
 
 
 ButtonTV::ButtonTV(Context *context) :
