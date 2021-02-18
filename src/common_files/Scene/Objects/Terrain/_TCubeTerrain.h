@@ -7,7 +7,7 @@ class CornerCube;
 class EdgeCube;
 class PointPlane;
 class PlaneCube;
-class TerrainTV;
+class TTerrain;
 
 
 class CubeTerrain : public Object
@@ -52,7 +52,7 @@ public:
     uint col = 0;
     uint layer = 0;
     bool underGround = false;
-    static TerrainTV *terrain;
+    static TTerrain *terrain;
 
 private:
 

@@ -21,13 +21,13 @@ enum DIR
 
 
 
-class TerrainTV : public Object
+class TTerrain : public Object
 {
-    URHO3D_OBJECT(TerrainTV, Object);
+    URHO3D_OBJECT(TTerrain, Object);
 
 public:
-    TerrainTV(Context *context = TheContext);
-    ~TerrainTV();
+    TTerrain(Context *context = TheContext);
+    ~TTerrain();
     void CreateFromVector(const Vector<Vector<float>> &level);
     void SaveToFile(char *nameFie);
     float GetHeight(uint row, uint col);

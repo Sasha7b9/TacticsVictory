@@ -6,13 +6,13 @@ class  Level;
 class TLog;
 class TScene;
 class  Settings;
-class  TerrainTV;
+class  TTerrain;
 
 extern Battle          *TheBattle;
 extern Level           *TheLevel;
 extern TLog            *TheLog;
 extern TScene          *TheScene;
 extern Settings        *TheSet;
-extern TerrainTV       *TheTerrain;
+extern TTerrain       *TheTerrain;
 
 extern Vector<Connection *> connections;

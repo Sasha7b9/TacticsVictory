@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 
-TerrainTV* CubeTerrain::terrain = nullptr;
+TTerrain* CubeTerrain::terrain = nullptr;
 
 
 CubeTerrain::CubeTerrain(Context *context) : Object(context)
@@ -98,7 +98,7 @@ void CubeTerrain::CreateEdgeDown()
 void CubeTerrain::CreateSideLeft()
 {
     // Get the column of cubes, that are left of our. column[0] - min height
-    PODVector<CubeTerrain*> *column = static_cast<TerrainTV*>(terrain)->GetColumnCubes(this, DIR_LEFT);
+    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR_LEFT);
 
     float height = 0.0f;
 
@@ -125,7 +125,7 @@ void CubeTerrain::CreateSideLeft()
 void CubeTerrain::CreateSideTop()
 {
     // Get the column of cubes, that are top of our. column[0] - mini height
-    PODVector<CubeTerrain*> *column = static_cast<TerrainTV*>(terrain)->GetColumnCubes(this, DIR_TOP);
+    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR_TOP);
 
     float height = 0.0f;
 
@@ -151,7 +151,7 @@ void CubeTerrain::CreateSideTop()
 
 void CubeTerrain::CreateSideRight()
 {
-    PODVector<CubeTerrain*> *column = static_cast<TerrainTV*>(terrain)->GetColumnCubes(this, DIR_RIGHT);
+    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR_RIGHT);
 
     float height = 0.0f;
 
@@ -177,7 +177,7 @@ void CubeTerrain::CreateSideRight()
 
 void CubeTerrain::CreateSideDown()
 {
-    PODVector<CubeTerrain*> *column = static_cast<TerrainTV*>(terrain)->GetColumnCubes(this, DIR_DOWN);
+    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR_DOWN);
 
     float height = 0.0f;
 

@@ -43,7 +43,7 @@ void TScene::Create()
 
     level = TheLevel->Load("Game/Levels/level.map");
 
-    TheTerrain = new TerrainTV();
+    TheTerrain = new TTerrain();
     TheTerrain->CreateFromVector(level);
 
     for (int i = 0; i < 5; i++)

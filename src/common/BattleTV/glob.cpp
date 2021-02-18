@@ -20,5 +20,5 @@ Level              *TheLevel = nullptr;
 TLog             *TheLog = nullptr;
 TScene           *TheScene = nullptr;
 Settings           *TheSet = nullptr;
-TerrainTV         *TheTerrain = nullptr;
+TTerrain         *TheTerrain = nullptr;
 Vector<Connection *> connections;

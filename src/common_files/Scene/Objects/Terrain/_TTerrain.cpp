@@ -2,15 +2,15 @@
 #include "stdafx.h"
 
 
-Vector<Vector<PODVector<CubeTerrain*>>> TerrainTV::columnsCubes;
+Vector<Vector<PODVector<CubeTerrain*>>> TTerrain::columnsCubes;
 
 
-TerrainTV::TerrainTV(Context *context) : Object(context)
+TTerrain::TTerrain(Context *context) : Object(context)
 {
 }
 
 
-TerrainTV::~TerrainTV()
+TTerrain::~TTerrain()
 {
     for(auto &row : columnsCubes)
     {
@@ -25,7 +25,7 @@ TerrainTV::~TerrainTV()
 }
 
 
-void TerrainTV::CreateFromVector(const Vector<Vector<float>> &lev)
+void TTerrain::CreateFromVector(const Vector<Vector<float>> &lev)
 {
     float time = TheTime->GetElapsedTime();
 
@@ -106,73 +106,73 @@ void TerrainTV::CreateFromVector(const Vector<Vector<float>> &lev)
 }
 
 
-void TerrainTV::SaveToFile(char * /*nameFile*/)
+void TTerrain::SaveToFile(char * /*nameFile*/)
 {
 
 }
 
 
-float TerrainTV::GetHeight(uint row, uint col)
+float TTerrain::GetHeight(uint row, uint col)
 {
     return level[row][col];
 }
 
 
-void TerrainTV::SetHeight(uint row, uint col, float height)
+void TTerrain::SetHeight(uint row, uint col, float height)
 {
     level[row][col] = height;
 }
 
 
-void TerrainTV::Update()
+void TTerrain::Update()
 {
 
 }
 
 
-uint TerrainTV::NumRows()
+uint TTerrain::NumRows()
 {
     return level.Size();
 }
 
 
-uint TerrainTV::NumCols()
+uint TTerrain::NumCols()
 {
     return level[0].Size();
 }
 
 
-bool TerrainTV::Empty()
+bool TTerrain::Empty()
 {
     return level.Empty();
 }
 
 
-TPlane TerrainTV::GetIntersectionPlane(Ray& /*ray*/)
+TPlane TTerrain::GetIntersectionPlane(Ray& /*ray*/)
 {
     return TPlane::ZERO;
 }
 
 
-Line TerrainTV::GetIntersectionEdge(Ray &/*ray*/)
+Line TTerrain::GetIntersectionEdge(Ray &/*ray*/)
 {
     return Line::ZERO;
 }
 
 
-TPlane TerrainTV::GetPlane(uint /*row*/, uint /*col*/)
+TPlane TTerrain::GetPlane(uint /*row*/, uint /*col*/)
 {
     return TPlane::ZERO;
 }
 
 
-Vector<Vector<float>> TerrainTV::GetMap()
+Vector<Vector<float>> TTerrain::GetMap()
 {
     return level;
 }
 
 
-PODVector<CubeTerrain*>* TerrainTV::GetColumnCubes(const CubeTerrain *cube, DIR dir)
+PODVector<CubeTerrain*>* TTerrain::GetColumnCubes(const CubeTerrain *cube, DIR dir)
 {
     const int dRow[8] = { 0, -1, -1, -1, 0, 1, 1,  1};
     const int dCol[8] = {-1, -1,  0,  1, 1, 1, 0, -1};
@@ -189,7 +189,7 @@ PODVector<CubeTerrain*>* TerrainTV::GetColumnCubes(const CubeTerrain *cube, DIR 
 }
 
 
-SegmentTerrain* TerrainTV::GetSegmentForCoord(uint row, uint col)
+SegmentTerrain* TTerrain::GetSegmentForCoord(uint row, uint col)
 {
     return segments[row / SegmentTerrain::HEIGHT][col / SegmentTerrain::WIDTH];
 }

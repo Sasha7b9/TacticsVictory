@@ -28,7 +28,7 @@ TCursor            *TheCursor = nullptr;
 Editor              *TheEditor = nullptr;
 Settings            *TheSet = nullptr;
 Level               *TheLevel = nullptr;
-TerrainTV           *TheTerrain = nullptr;
+TTerrain           *TheTerrain = nullptr;
 TacticsVictory      *TheTacticsVictory = nullptr;
 CLog                *TheLog = nullptr;
 

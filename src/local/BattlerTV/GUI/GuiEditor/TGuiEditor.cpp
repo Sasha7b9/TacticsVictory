@@ -270,7 +270,7 @@ void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
 {
     Vector<Vector<float>> map = TheLevel->CreateRandom((uint)sliderSizeNewMapY->GetValue(), (uint)sliderSizeNewMapX->GetValue());
     SAFE_DELETE(TheTerrain); //-V809
-    TheTerrain = new TerrainTV();
+    TheTerrain = new TTerrain();
     TheTerrain->CreateFromVector(map);
     windowNewMap->SetVisible(false);
 
@@ -366,7 +366,7 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
     {
         Vector<Vector<float>> map = TheLevel->Load((char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
         SAFE_DELETE(TheTerrain); //-V809
-        TheTerrain = new TerrainTV();
+        TheTerrain = new TTerrain();
         TheTerrain->CreateFromVector(map);
         TheCamera->SetPosition({TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()}, {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeight() / 2.0f)});
     }

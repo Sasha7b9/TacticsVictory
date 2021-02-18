@@ -3,7 +3,7 @@
 #include "Scene/Objects/Terrain/_TTerrain.h"
 
 
-extern TerrainTV *TheTerrain;
+extern TTerrain *TheTerrain;
 
 
 struct Coord

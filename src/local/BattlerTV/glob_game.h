@@ -15,7 +15,7 @@ class MenuOptions;
 class SegmentTerrain;
 class Settings;
 class Tank;
-class TerrainTV;
+class TTerrain;
 class TWindow;
 class MenuConfirmExit;
 class WindowTarget;
@@ -47,7 +47,7 @@ extern TScene          *TheScene;
 extern Server          *TheServer;
 extern Settings        *TheSet;
 extern Battler         *TheTacticsVictory;
-extern TerrainTV       *TheTerrain;
+extern TTerrain       *TheTerrain;
 extern WindowTarget    *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 extern WindowVariables *TheWindowVars;
 

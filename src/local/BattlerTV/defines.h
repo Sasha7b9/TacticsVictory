@@ -42,7 +42,7 @@ enum TypeCursor
 #define SAFE_DELETE(x) if(x) delete x; x = nullptr;
 #define SAFE_DELETE_ARRAY(x) if(x) delete[]x; x = nullptr;
 
-#define NODE_TERRAIN        "TerrainTV"
+#define NODE_TERRAIN        "TTerrain"
 #define NODE_TANK           "Tank"
 #define NODE_MILITARY_PLANT "Military Plant"
 #define NODE_TILE_PATH      "TilePath"
