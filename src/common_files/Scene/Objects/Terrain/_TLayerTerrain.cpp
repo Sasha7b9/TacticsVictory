@@ -4,6 +4,7 @@
 #ifdef CLIENT
 #include "Scene/TCScene.h"
 #endif
+#include "Scene/Objects/Terrain/_TLayerTerrain.h"
 
 
 LayerTerrain::LayerTerrain(Context *context) : Object(context)

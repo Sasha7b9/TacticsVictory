@@ -137,7 +137,6 @@ using namespace Urho3D;
 
 
 
-#include "Scene/Objects/Terrain/_TLayerTerrain.h"
 #include "Scene/Objects/Terrain/_TSegmentTerrain.h"
 #include "Scene/Objects/Terrain/_TSideCube.h"
 #include "Scene/Objects/Units/Logic/_TTranslator.h"
