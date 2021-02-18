@@ -54,7 +54,7 @@ void TScene::Create()
     TheTerrain = new TTerrain();
     TheTerrain->CreateFromVector(level);
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 100; i++)
     {
         uint row = 0;
         uint col = 0;
