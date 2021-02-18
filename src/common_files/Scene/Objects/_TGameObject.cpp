@@ -37,7 +37,7 @@ GameObject::~GameObject()
 }
 
 
-char *CommonComponentGameObject::GetName()
+char *GameObject::CommonComponentGameObject::GetName()
 {
     return name;
 }

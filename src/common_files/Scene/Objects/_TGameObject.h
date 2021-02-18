@@ -86,16 +86,6 @@ struct GUIComponentGameObject
 };
 
 
-struct CommonComponentGameObject
-{
-    char *GetName();
-
-    uint id = 0;
-
-    char *name = nullptr;
-};
-
-
 class GameObject : public LogicComponent
 {
 friend struct PhysicsComponentGameObject;
@@ -126,6 +116,15 @@ public:
     GraphicsComponentGameObject *graphics = nullptr;
 
     GUIComponentGameObject *gui = nullptr;
+
+    struct CommonComponentGameObject
+    {
+        char *GetName();
+
+        uint id = 0;
+
+        char *name = nullptr;
+    };
 
     CommonComponentGameObject *common = nullptr;
 
