@@ -2,49 +2,46 @@
 #include "stdafx.h"
 
 
-Audio               *TheAudio = nullptr;
-Localization        *TheLocalization = nullptr;
-UI                  *TheUI = nullptr;
-UIElement           *TheUIRoot = nullptr;
-ResourceCache       *TheCache = nullptr;
-Engine              *TheEngine = nullptr;
-Input               *TheInput = nullptr;
-Renderer            *TheRenderer = nullptr;
-DebugRenderer       *TheDebugRenderer = nullptr;
-Context             *TheContext = nullptr;
-Console             *TheEngineConsole = nullptr;
-DebugHud            *TheDebugHud = nullptr;
-Graphics            *TheGraphics = nullptr;
-FileSystem          *TheFileSystem = nullptr;
-PhysicsWorld        *ThePhysicsWorld = nullptr;
-Font                *TheFont = nullptr;
-Time                *TheTime = nullptr;
-FileSelector        *TheFileSelector = nullptr;
-Profiler            *TheProfiler = nullptr;
-Script              *TheScript = nullptr;
+Audio            *TheAudio = nullptr;
+Localization     *TheLocalization = nullptr;
+UI               *TheUI = nullptr;
+UIElement        *TheUIRoot = nullptr;
+ResourceCache    *TheCache = nullptr;
+Engine           *TheEngine = nullptr;
+Input            *TheInput = nullptr;
+Renderer         *TheRenderer = nullptr;
+DebugRenderer    *TheDebugRenderer = nullptr;
+Context          *TheContext = nullptr;
+Console          *TheEngineConsole = nullptr;
+DebugHud         *TheDebugHud = nullptr;
+Graphics         *TheGraphics = nullptr;
+FileSystem       *TheFileSystem = nullptr;
+PhysicsWorld     *ThePhysicsWorld = nullptr;
+Font             *TheFont = nullptr;
+Time             *TheTime = nullptr;
+FileSelector     *TheFileSelector = nullptr;
+Profiler         *TheProfiler = nullptr;
+Script           *TheScript = nullptr;
 
-TCamera             *TheCamera = nullptr;
-TCursor            *TheCursor = nullptr;
-Editor              *TheEditor = nullptr;
-Settings            *TheSet = nullptr;
-Level               *TheLevel = nullptr;
-TTerrain           *TheTerrain = nullptr;
-TacticsVictory      *TheTacticsVictory = nullptr;
-CLog                *TheLog = nullptr;
+TCamera          *TheCamera = nullptr;
+TConsole         *TheConsole = nullptr;
+TCursor          *TheCursor = nullptr;
+ Editor          *TheEditor = nullptr;
+ GUI             *TheGUI = nullptr;
+ GuiEditor       *TheGuiEditor = nullptr;
+ GuiGame         *TheGuiGame = nullptr;
+ Hint            *TheHint = nullptr;
+ Level           *TheLevel = nullptr;
+CLog             *TheLog = nullptr;
+ MenuConfirmExit *TheMenuConfirmExit = nullptr;
+ MenuGame        *TheMenuMain = nullptr;
+TMenu            *TheMenu = nullptr;
+CScene           *TheScene = nullptr;
+ Settings        *TheSet = nullptr;
+ TacticsVictory  *TheTacticsVictory = nullptr;
+TTerrain         *TheTerrain = nullptr;
+ WindowTarget    *TheWindowTarget = nullptr;
+ WindowVariables *TheWindowVars = nullptr;
 
-// GUI
-GuiGame             *TheGuiGame = nullptr;
-GuiEditor           *TheGuiEditor = nullptr;
-GUI                 *TheGUI = nullptr;
-TConsole           *TheConsole = nullptr;
-WindowVariables     *TheWindowVars = nullptr;
-Hint                *TheHint = nullptr;
-int                 *TheCounterHint = 0;
-Vector<TWindow*>   TheOpenedWindow;
-WindowTarget        *TheWindowTarget = nullptr;
-CScene              *TheScene = nullptr;
-
-// Меню
-TMenu              *TheMenu = nullptr;
-MenuGame            *TheMenuMain = nullptr;
-MenuConfirmExit     *TheMenuConfirmExit = nullptr;
+int               *TheCounterHint = nullptr;
+Vector<TWindow *> TheOpenedWindow;
