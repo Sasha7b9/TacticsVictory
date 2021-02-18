@@ -18,11 +18,11 @@ TacticsVictory::TacticsVictory(Context* context) :
 void TacticsVictory::Setup()
 {
     TheTacticsVictory = this;
-    TheSet = new Settings();
 
     GetSubsystems();
 
     OpenLog();
+    TheSet = new Settings();
     TheSet->Load();
 
     TuneEngineParameters();
