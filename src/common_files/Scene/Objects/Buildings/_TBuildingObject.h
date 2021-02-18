@@ -10,9 +10,4 @@ public:
 };
 
 
-#include "Scene/Objects/Buildings/_TCivilPlant.h"
 #include "Scene/Objects/Buildings/_TMilitaryPlant.h"
-#include "Scene/Objects/Buildings/_TPowerPlant.h"
-#include "Scene/Objects/Buildings/_TProcessinPlant.h"
-#include "Scene/Objects/Buildings/_TShaft.h"
-#include "Scene/Objects/Buildings/_TWarehouseAmmo.h"

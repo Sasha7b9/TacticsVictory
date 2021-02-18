@@ -34,9 +34,4 @@ private:
 
 
 #include "Scene/Objects/Units/_TAirplane.h"
-#include "Scene/Objects/Units/_TBomber.h"
-#include "Scene/Objects/Units/_TBuilder.h"
-#include "Scene/Objects/Units/_THelicopter.h"
-#include "Scene/Objects/Units/_TRobot.h"
-#include "Scene/Objects/Units/_TSupplierAmmo.h"
 #include "Scene/Objects/Units/_TTank.h"

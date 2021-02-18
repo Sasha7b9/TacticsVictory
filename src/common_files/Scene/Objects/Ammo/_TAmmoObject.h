@@ -15,7 +15,4 @@ public:
 
 #include "Scene/Objects/Ammo/_TAirBomb.h"
 #include "Scene/Objects/Ammo/_TGrenade.h"
-#include "Scene/Objects/Ammo/_TMine.h"
 #include "Scene/Objects/Ammo/Rocket/_TRocket.h"
-#include "Scene/Objects/Ammo/_TRollingBomb.h"
-

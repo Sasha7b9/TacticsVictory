@@ -11,7 +11,4 @@ public:
 
 
 #include "Scene/Objects/Weapons/_TGrenadeLauncher.h"
-#include "Scene/Objects/Weapons/_TGun.h"
-#include "Scene/Objects/Weapons/_TLaser.h"
-#include "Scene/Objects/Weapons/_TMachineGun.h"
 #include "Scene/Objects/Weapons/_TRocketLauncher.h"
