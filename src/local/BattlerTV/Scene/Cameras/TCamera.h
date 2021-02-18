@@ -17,7 +17,7 @@ public:
         RotatePITCH
     }; };
 
-    TCamera();
+    TCamera(Scene *scene);
 
     void Move(float time);
     void ParallelTranslateLookAt(const Vector3 &lookAt);

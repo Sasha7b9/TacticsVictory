@@ -12,9 +12,9 @@
 #define CURSOR_DOWN_RIGhT   (cursor == TypeCursor_DownRight)
 
 
-TCamera::TCamera()
+TCamera::TCamera(Scene *scene)
 {
-    cameraNode = TheScene->scene->CreateChild("Camera");
+    cameraNode = scene->CreateChild("Camera");
 
     Camera *camera = cameraNode->CreateComponent<Camera>();
     camera->SetFarClip(1000.0f);

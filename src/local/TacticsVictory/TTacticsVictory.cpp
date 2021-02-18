@@ -77,6 +77,13 @@ void TacticsVictory::Start()
 
     CreateScene();
 
+    TheCamera = new TCamera(TheScene->scene);
+
+    uint sizeX = TheScene->level[0].Size();
+    uint sizeZ = TheScene->level.Size();
+
+    TheCamera->SetPosition({ sizeX / 2.0f, 25.0f, -static_cast<float>(sizeZ) / 2.0f - 10.0f }, { sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f) });
+
     SetWindowTitleAndIcon();
 
     CreateConsoleAndDebugHud();
@@ -114,7 +121,6 @@ void TacticsVictory::CreateScene()
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
-    TheCamera = new TCamera();
 
     CreateScriptSystem();
 

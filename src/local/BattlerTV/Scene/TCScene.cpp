@@ -20,11 +20,6 @@ void CScene::Create()
 
     TheRenderer->SetShadowMapSize(2048);
 
-    uint sizeX = level[0].Size();
-    uint sizeZ = level.Size();
-
-    TheCamera->SetPosition({ sizeX / 2.0f, 25.0f, -static_cast<float>(sizeZ) / 2.0f - 10.0f }, { sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f) });
-
     TheWindowTarget = new WindowTarget();
     TheUIRoot->AddChild(TheWindowTarget);
     TheWindowTarget->SetVisible(false);
