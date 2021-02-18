@@ -42,6 +42,8 @@ void TacticsVictory::GetSubsystems()
     TheUI = GetSubsystem<UI>();
     TheInput = GetSubsystem<Input>();
     TheLocalization = GetSubsystem<Localization>();
+
+    CreateScriptSystem();
 }
 
 
@@ -76,7 +78,7 @@ void TacticsVictory::Start()
     SetLocalization();
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
 
-    CreateScriptSystem();
+    RegistrationComponets();
 
     CreateScene();
 
@@ -119,8 +121,6 @@ void TacticsVictory::CreateScene()
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);  
-
-    RegistrationComponets();
 
     TheScene->Create();
 }
@@ -169,9 +169,13 @@ static void MessageCallback(const asSMessageInfo *msg, void *)
 {
     const char *type = "AS ERROR ";
     if (msg->type == asMSGTYPE_WARNING)
+    {
         type = "AS WARN ";
+    }
     else if (msg->type == asMSGTYPE_INFORMATION)
+    {
         type = "AS INFO ";
+    }
 
     LOGINFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); //-V111
 }
