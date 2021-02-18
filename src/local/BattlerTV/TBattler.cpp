@@ -48,20 +48,21 @@ void Battler::Setup()
 void Battler::Stop()
 {
     engine_->DumpResources(true);
-    //engine_->DumpProfiler();
+    engine_->DumpProfiler();
+
     TilePath::RemoveAll();
     Rocket::DeleteAll();
-    SAFE_DELETE(TheScene);
-    SAFE_DELETE(scene);
-    SAFE_DELETE(TheFileSelector);
-    SAFE_DELETE(TheLevel);
-    SAFE_DELETE(TheMenu);
-    SAFE_DELETE(TheGUI);
-    SAFE_DELETE(TheSet);
-    SAFE_DELETE(TheEditor);
-    SAFE_DELETE(TheCamera);
-    TheLog->Close();
-    SAFE_DELETE(TheLog);
+
+    delete TheScene;
+    delete scene;
+    delete TheFileSelector;
+    delete TheLevel;
+    delete TheMenu;
+    delete TheGUI;
+    delete TheSet;
+    delete TheEditor;
+    delete TheCamera;
+    delete TheLog;
 }
 
 

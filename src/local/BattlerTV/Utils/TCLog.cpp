@@ -2,6 +2,12 @@
 #include "stdafx.h"
 
 
+CLog::~CLog()
+{
+    Close();
+}
+
+
 void CLog::Write(int level, const String &message, char *file, char *func, int numLine)
 {
     String str = message;

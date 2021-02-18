@@ -56,8 +56,8 @@ enum TypeCursor
 #define PROFILER_FUNC_ENTER()  TheProfiler->BeginBlock(__FUNCTION__);
 #define PROFILER_FUNC_LEAVE()  TheProfiler->EndBlock();
 #else
-#define PROFILER_FUNC_ENTER
-#define PROFILER_FUNC_LEAVE
+#define PROFILER_FUNC_ENTER()
+#define PROFILER_FUNC_LEAVE()
 #endif
 
 #define PRESS_UP        (TheInput->GetKeyDown(KEY_UP))

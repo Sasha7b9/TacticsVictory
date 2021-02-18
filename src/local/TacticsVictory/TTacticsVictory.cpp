@@ -136,8 +136,10 @@ void TacticsVictory::Stop()
 {
     engine_->DumpResources(true);
     engine_->DumpProfiler();
+
     TilePath::RemoveAll();
     Rocket::DeleteAll();
+
     delete TheScene;
     delete TheFileSelector;
     delete TheLevel;
@@ -146,7 +148,6 @@ void TacticsVictory::Stop()
     delete TheSet;
     delete TheEditor;
     delete TheCamera;
-    TheLog->Close();
     delete TheLog;
 }
 
