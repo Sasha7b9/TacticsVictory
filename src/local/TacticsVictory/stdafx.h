@@ -125,8 +125,6 @@ using namespace Urho3D;
 #include "glob_engine.h"
 #include "glob_game.h"
 
-#include "Editor/TEditor.h"
-
 #include "Game/TParticles.h"
 #include "Game/Logic/_TMovinator.h"
 #include "Game/Logic/_TRotator.h"
