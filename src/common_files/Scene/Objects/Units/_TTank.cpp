@@ -32,6 +32,8 @@ Tank::~Tank()
 void Tank::RegisterObject(Context* context)
 {
     context->RegisterFactory<Tank>();
+
+    RegisterInAS();
 }
 
 

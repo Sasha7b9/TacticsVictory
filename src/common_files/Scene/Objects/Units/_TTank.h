@@ -27,7 +27,6 @@ public:
     Tank(Context *context = TheContext);
     virtual ~Tank();
     static void RegisterObject(Context* context = TheContext);
-    static void RegisterInAS();
     virtual void Update(float timeStep);
     static SharedPtr<Tank> Create(TypeTank type, uint _id_ = 0);
     void SetCoord(const Coord& coord);
@@ -48,6 +47,7 @@ private:
 
     void LoadFromFile();
     void Init(TypeTank typeTank, uint _id_);
+    static void RegisterInAS();
 
     struct TankStruct
     {

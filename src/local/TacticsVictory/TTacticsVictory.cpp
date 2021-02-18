@@ -149,7 +149,7 @@ void TacticsVictory::RegistrationComponets()
     RocketLauncher::RegisterInAS();
     Translator::RegisterInAS();
     WaveAlgorithm::RegisterInAS();
-    Tank::RegisterInAS();
+    Tank::RegisterObject();
 }
 
 

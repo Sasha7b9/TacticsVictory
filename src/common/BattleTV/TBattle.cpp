@@ -127,7 +127,7 @@ void Battle::RegistrationComponets()
 
     RocketLauncher::RegisterInAS();
     Translator::RegisterInAS();
-    Tank::RegisterInAS();
+    Tank::RegisterObject();
 }
 
 
