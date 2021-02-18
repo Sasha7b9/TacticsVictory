@@ -191,9 +191,9 @@ void Battler::ParseArguments(const Vector<String> &arguments)
 
 void Battler::RegistrationComponets()
 {
-    TheContext->RegisterFactory<Movinator>();
     TheContext->RegisterFactory<ImageTV>();
 
+    Movinator::RegisterObject();
     Rotator::RegisterObject();
 
     RocketLauncher::RegisterObject();

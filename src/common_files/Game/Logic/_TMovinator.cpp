@@ -31,3 +31,9 @@ void Movinator::Update(float time)
     //node_->SetPosition({100.0f, 25.0f, -100.0f});
     node_->SetPosition(Vector3(x, y, z));
 }
+
+
+void Movinator::RegisterObject(Context *context)
+{
+    context->RegisterFactory<Movinator>();
+}

@@ -120,8 +120,7 @@ void Battle::CreateScriptSystem()
 
 void Battle::RegistrationComponets()
 {
-    TheContext->RegisterFactory<Movinator>();
-
+    Movinator::RegisterObject();
     Rotator::RegisterObject();
 
     RocketLauncher::RegisterObject();
