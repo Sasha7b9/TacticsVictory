@@ -1,7 +1,6 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 
-
 VariantMap Sounds::sounds;
 PODVector<SoundSource3D*> sources;
 
