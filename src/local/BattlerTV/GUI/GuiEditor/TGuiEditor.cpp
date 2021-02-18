@@ -13,6 +13,7 @@
 #include "GUI/Windows/TConsole.h"
 #include "Scene/_TLevel.h"
 #include "Scene/Cameras/TCamera.h"
+#include "Utils/TGlobalFunctions.h"
 
 
 GuiEditor::GuiEditor(Context* context) : Object(context)

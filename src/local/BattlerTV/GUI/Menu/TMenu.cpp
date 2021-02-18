@@ -5,6 +5,7 @@
 #include "GUI/Menu/TMenuOptions.h"
 #include "GUI/Menu/TMenu.h"
 #include "GUI/Menu/TMenuStart.h"
+#include "Utils/TGlobalFunctions.h"
 
 
 #define CREATE_MENU(name, type, moving)                                 \

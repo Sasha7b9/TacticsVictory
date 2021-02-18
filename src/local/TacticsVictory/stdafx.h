@@ -137,7 +137,6 @@ using namespace Urho3D;
 
 
 
-#include "Utils/TGlobalFunctions.h"
 #include "Utils/TCLog.h"
 #include "Utils/TSettings.h"
 #include "Utils/TSettingsTypes.h"

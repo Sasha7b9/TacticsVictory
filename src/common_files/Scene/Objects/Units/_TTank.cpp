@@ -7,6 +7,7 @@
 #endif
 #include "Scene/Objects/_TGameObjectEvents.h"
 #include "Scene/Objects/Units/_TTank.h"
+#include "Utils/TGlobalFunctions.h"
 
 
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;
