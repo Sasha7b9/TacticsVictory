@@ -5,10 +5,8 @@
 Line Line::ZERO = Line();
 
 
-Line::Line(const Vector3 &start_, const Vector3 &end_)
+Line::Line(const Vector3 &start_, const Vector3 &end_) : start(start_), end(end_)
 {
-    start = start_;
-    end = end_;
 }
 
 

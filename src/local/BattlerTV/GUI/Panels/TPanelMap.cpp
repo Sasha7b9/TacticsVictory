@@ -117,10 +117,12 @@ void PanelMap::Update(float dT)
     float scaleX = (GetWidth() - 2) / (float)sizeX;
     float scaleY = (GetHeight() - 2) / (float)sizeY;
 
-    scale = scaleX < scaleY ? scaleX : scaleY;
+    scale = scaleY;
 
     if(scaleX < scaleY)
     {
+        scale = scaleX;
+
         x0 = 0;
         y0 = (int)(GetHeight() / 2.0f - (scale * sizeY) / 2.0f);
     }
@@ -130,8 +132,9 @@ void PanelMap::Update(float dT)
         y0 = 0;
     }
 
-#define DRAW_LINE(p0, p1)   \
-    image->DrawLine((int)(x0 + p0.x_ * scale), (int)(y0 - p0.y_ * scale), (int)(x0 + p1.x_ * scale), (int)(y0 - p1.y_ * scale), Color::BLUE);
+#define DRAW_LINE(p0, p1)                                                   \
+    image->DrawLine((int)(x0 + p0.x_ * scale), (int)(y0 - p0.y_ * scale),   \
+                    (int)(x0 + p1.x_ * scale), (int)(y0 - p1.y_ * scale), Color::BLUE);
 
     Vector2 point0;
     if(FindIntersectionX0Z(points[0], point0))

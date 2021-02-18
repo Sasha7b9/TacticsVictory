@@ -5,12 +5,9 @@
 TPlane TPlane::ZERO = TPlane(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);
 
 
-TPlane::TPlane(const Vector3 &v0_ /* = Vector3::ZERO */, const Vector3 &v1_ /* = Vector3::ZERO */, const Vector3 &v2_ /* = Vector3::ZERO */, const Vector3 &v3_ /* = Vector3::ZERO */)
+TPlane::TPlane(const Vector3 &v0_, const Vector3 &v1_, const Vector3 &v2_, const Vector3 &v3_) :
+    v0(v0_), v1(v1_), v2(v2_), v3(v3_)
 {
-    v0 = v0_;
-    v1 = v1_;
-    v2 = v2_;
-    v3 = v3_;
 }
 
 

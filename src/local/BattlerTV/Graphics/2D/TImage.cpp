@@ -242,7 +242,7 @@ void TImage::DrawPolyline(const Color &color, int numPoints, const int *xy)
 
     for(int i = 0; i < numLines; i++)
     {
-        DrawLine(xy[(uint64)(i * 2)], xy[(uint64)(i * 2 + 1)], xy[(uint64)(i * 2 + 2)], xy[(uint64)(i * 2 + 3)], color);
+        DrawLine(xy[((uint64)i * 2)], xy[((uint64)i * 2 + 1)], xy[((uint64)i * 2 + 2)], xy[((uint64)i * 2 + 3)], color);
     }
 }
 

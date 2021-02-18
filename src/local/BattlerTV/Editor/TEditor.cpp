@@ -34,7 +34,9 @@ void Editor::Run()
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
 
-    TheCamera->SetPosition({TheTerrain->NumCols() / 2.0f, 5.0f, - static_cast<float>(TheTerrain->NumRows()) / 2.0f - 10.0f}, {TheTerrain->NumCols() / 2.0f, 0.0f, - static_cast<float>(TheTerrain->NumRows()) / 2.0f});
+    TheCamera->SetPosition(
+        {TheTerrain->NumCols() / 2.0f, 5.0f, - static_cast<float>(TheTerrain->NumRows()) / 2.0f - 10.0f},
+        {TheTerrain->NumCols() / 2.0f, 0.0f, - static_cast<float>(TheTerrain->NumRows()) / 2.0f});
     lightNode->SetPosition({TheTerrain->NumCols() / 2.0f, 50.0f, - static_cast<float>(TheTerrain->NumRows()) / 2.0f});
 
     SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Editor, HandlePostRenderUpdate));
@@ -95,16 +97,21 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             TheDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
         }
 
-        if (!TheMenu->IsActive() && !TheGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+        if (!TheMenu->IsActive() &&
+            !TheGUI->UnderCursor() &&
+            !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             Timer timer;
             currentPlane = TheTerrain->GetIntersectionPlane(ray);
 
-            if (!currentPlane.IsZero() && (TheCursor->GetType() == TypeCursor_Normal || TheCursor->GetType() == TypeCursor_Selected))
+            if (!currentPlane.IsZero() &&
+                (TheCursor->GetType() == TypeCursor_Normal || TheCursor->GetType() == TypeCursor_Selected))
             {
                 if (!selectedPlane.IsEquals(currentPlane))
                 {
-                    Color color = static_cast<int>(TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
+                    Color color = static_cast<int>
+                        (TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
+
                     TheDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
                     TheDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
                 }
@@ -119,13 +126,17 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
     if (TheGuiEditor->modeSelect == GuiEditor::ModeSelect_Edge)
     {
-        if (!TheMenu->IsActive() && !TheGUI->UnderCursor() && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
+        if (!TheMenu->IsActive() &&
+            !TheGUI->UnderCursor() &&
+            !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
             currentEdge = TheTerrain->GetIntersectionEdge(ray);
 
-            if (!currentEdge.IsZero() && (TheCursor->GetType() == TypeCursor_Normal || TheCursor->GetType() == TypeCursor_Selected))
+            if (!currentEdge.IsZero() &&
+                (TheCursor->GetType() == TypeCursor_Normal || TheCursor->GetType() == TypeCursor_Selected))
             {
-                Color color = static_cast<int>(TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
+                Color color = static_cast<int>
+                    (TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
 
                 float dX = fabs(currentEdge.start.x_ - currentEdge.end.x_);
                 float dZ = fabs(currentEdge.start.z_ - currentEdge.end.z_);
@@ -139,14 +150,16 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
                 {
                     for (int i = 0; i < numLines; i++)
                     {
-                        TheDebugRenderer->AddLine(currentEdge.start + Vector3(d * i - d * numLines / 2, 0.0f, 0.0f), currentEdge.end + Vector3(d * i - d * numLines / 2, 0.0f, 0.0f), color, false);
+                        TheDebugRenderer->AddLine(currentEdge.start + Vector3(d * i - d * numLines / 2, 0.0f, 0.0f),
+                            currentEdge.end + Vector3(d * i - d * numLines / 2, 0.0f, 0.0f), color, false);
                     }
                 }
                 else
                 {
                     for (int i = 0; i < numLines; i++)
                     {
-                        TheDebugRenderer->AddLine(currentEdge.start + Vector3(0.0f, 0.0f, d * i - d * numLines / 2), currentEdge.end + Vector3(0.0f, 0.0f, d * i - d * numLines / 2), color, false);
+                        TheDebugRenderer->AddLine(currentEdge.start + Vector3(0.0f, 0.0f, d * i - d * numLines / 2),
+                            currentEdge.end + Vector3(0.0f, 0.0f, d * i - d * numLines / 2), color, false);
                     }
                 }
             }
@@ -186,7 +199,9 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
 
     if (TheGuiEditor->modeSelect == GuiEditor::ModeSelect_Plane)
     {
-        if (TheInput->GetMouseButtonDown(MOUSEB_LEFT) && !TheInput->GetMouseButtonDown(MOUSEB_MIDDLE) && !TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
+        if (TheInput->GetMouseButtonDown(MOUSEB_LEFT) &&
+            !TheInput->GetMouseButtonDown(MOUSEB_MIDDLE) &&
+            !TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
             if (!selectedPlane.IsEquals(TPlane::ZERO) && selectedPlane.IsEquals(currentPlane))
             {

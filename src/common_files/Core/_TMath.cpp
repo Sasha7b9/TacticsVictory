@@ -15,7 +15,7 @@ BoundingBox Math::CalculateBoundingBox(const float *buffer, uint numVertexes)
 
     for(uint i = 0; i < numVertexes; i++)
     {
-        box.Merge(Vector3(buffer + static_cast<uint64>(i * 8)));
+        box.Merge(Vector3(buffer + static_cast<uint64>(i) * 8));
     }
 
     return box;

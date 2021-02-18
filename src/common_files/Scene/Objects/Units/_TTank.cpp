@@ -45,10 +45,10 @@ void Tank::RegisterInAS()
 #pragma warning(disable:4191)
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_ADDREF, "void AddRef()", asMETHOD(Tank, AddRef), asCALL_THISCALL);
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_RELEASE, "void ReleaseRef()", asMETHOD(Tank, ReleaseRef), asCALL_THISCALL);
-    engine->RegisterObjectProperty("Tank", "bool inProcessFindPath", offsetof(Tank, inProcessFindPath));
+    engine->RegisterObjectProperty("Tank", "bool inProcessFindPath", (int)offsetof(Tank, inProcessFindPath)); //-V202
 
 #ifdef CLIENT
-    engine->RegisterObjectProperty("Tank", "WaveAlgorithm@ pathFinder", offsetof(Tank, pathFinder));
+    engine->RegisterObjectProperty("Tank", "WaveAlgorithm@ pathFinder", (int)offsetof(Tank, pathFinder)); //-V107 //-V202
 #endif
 
 #pragma warning(pop)

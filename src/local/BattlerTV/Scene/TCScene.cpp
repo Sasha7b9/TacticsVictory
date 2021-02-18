@@ -4,7 +4,7 @@
 
 CScene::~CScene()
 {
-    SAFE_DELETE(TheWindowTarget);
+    delete TheWindowTarget;
 
     pathIndicator.Stop();
 }

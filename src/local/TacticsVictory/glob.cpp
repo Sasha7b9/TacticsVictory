@@ -43,5 +43,5 @@ TTerrain         *TheTerrain = nullptr;
  WindowTarget    *TheWindowTarget = nullptr;
  WindowVariables *TheWindowVars = nullptr;
 
-int               *TheCounterHint = nullptr;
+int               TheCounterHint = 0;
 Vector<TWindow *> TheOpenedWindow;

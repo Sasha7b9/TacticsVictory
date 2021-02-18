@@ -12,7 +12,7 @@ TScene::~TScene()
 {
     delete scene;
 
-    SAFE_DELETE(TheTerrain);
+    delete TheTerrain;
 }
 
 

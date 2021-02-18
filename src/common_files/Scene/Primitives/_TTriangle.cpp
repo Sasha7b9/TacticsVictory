@@ -5,11 +5,8 @@
 Triangle Triangle::ZERO = Triangle(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);
 
 
-Triangle::Triangle(const Vector3 &v0_, const Vector3 &v1_, const Vector3 &v2_)
+Triangle::Triangle(const Vector3 &v0_, const Vector3 &v1_, const Vector3 &v2_) : v0(v0_), v1(v1_), v2(v2_)
 {
-    v0 = v0_;
-    v1 = v1_;
-    v2 = v2_;
 }
 
 
