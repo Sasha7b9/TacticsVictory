@@ -11,6 +11,7 @@
 #include "GUI/Controls/_TSliderWithTextAndButtons.h"
 #include "GUI/Controls/_TTab.h"
 #include "GUI/GuiEditor/TGuiEditor.h"
+#include "GUI/GuiGame/TGuiGame.h"
 
 
 GUI::GUI() : Object(TheContext)
@@ -22,9 +23,9 @@ GUI::GUI() : Object(TheContext)
 
 GUI::~GUI()
 {
-    SAFE_DELETE(TheCursor); //-V809
-    SAFE_DELETE(TheGuiGame); //-V809
-    SAFE_DELETE(TheGuiEditor); //-V809
+    delete TheCursor; //-V809
+    delete TheGuiGame; //-V809
+    delete TheGuiEditor; //-V809
 }
 
 

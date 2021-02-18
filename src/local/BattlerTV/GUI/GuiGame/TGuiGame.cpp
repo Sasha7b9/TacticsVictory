@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Controls/_TTab.h"
+#include "GUI/GuiGame/TGuiGame.h"
 
 
 GuiGame::GuiGame(Context *context) :
