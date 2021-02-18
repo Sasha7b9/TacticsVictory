@@ -73,8 +73,10 @@ void TacticsVictory::Start()
 {
     GetSubsystems();
 
-    PROFILER_FUNC_ENTER
+    PROFILER_FUNC_ENTER();
+
     Application::Start();
+
     SetLocalization();
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
 
@@ -103,7 +105,7 @@ void TacticsVictory::Start()
 
     SubscribeToEvents();
 
-    PROFILER_FUNC_LEAVE;
+    PROFILER_FUNC_LEAVE();
 }
 
 
@@ -117,12 +119,16 @@ void TacticsVictory::CreateGUI()
 
 void TacticsVictory::CreateScene()
 {
+    PROFILER_FUNC_ENTER();
+
     TheScene = new CScene();
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);  
 
     TheScene->Create();
+
+    PROFILER_FUNC_LEAVE();
 }
 
 
@@ -141,7 +147,7 @@ void TacticsVictory::CreateCamera()
 void TacticsVictory::Stop()
 {
     engine_->DumpResources(true);
-    //engine_->DumpProfiler();
+    engine_->DumpProfiler();
     TilePath::RemoveAll();
     Rocket::DeleteAll();
     delete TheScene;
