@@ -31,6 +31,7 @@ private:
     void TuneEngineParameters();
     void CreateScene();
     void CreateGUI();
+    void CreateCamera();
 
     void HandleUpdate(StringHash, VariantMap&);
     void HandlePostUpdate(StringHash, VariantMap&);

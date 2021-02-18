@@ -48,7 +48,8 @@ void TacticsVictory::GetSubsystems()
 void TacticsVictory::TuneEngineParameters()
 {
     engineParameters_[EP_WINDOW_TITLE] = GetTypeName();
-    engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
+    engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->
+                                                        GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_[EP_FULL_SCREEN] = false;
     engineParameters_[EP_TEXTURE_QUALITY] = 32; //-V112
     engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
@@ -77,12 +78,7 @@ void TacticsVictory::Start()
 
     CreateScene();
 
-    TheCamera = new TCamera(TheScene->scene);
-
-    uint sizeX = TheScene->level[0].Size();
-    uint sizeZ = TheScene->level.Size();
-
-    TheCamera->SetPosition({ sizeX / 2.0f, 25.0f, -static_cast<float>(sizeZ) / 2.0f - 10.0f }, { sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f) });
+    CreateCamera();
 
     SetWindowTitleAndIcon();
 
@@ -127,6 +123,18 @@ void TacticsVictory::CreateScene()
     RegistrationComponets();
 
     TheScene->Create();
+}
+
+
+void TacticsVictory::CreateCamera()
+{
+    TheCamera = new TCamera(TheScene->scene);
+
+    uint sizeX = TheScene->level[0].Size();
+    uint sizeZ = TheScene->level.Size();
+
+    TheCamera->SetPosition( { sizeX / 2.0f, 25.0f, -static_cast<float>(sizeZ) / 2.0f - 10.0f },
+                            { sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f) });
 }
 
 
