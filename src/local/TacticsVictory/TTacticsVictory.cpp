@@ -33,7 +33,6 @@ void TacticsVictory::GetSubsystems()
 {
     TheCache = GetSubsystem<ResourceCache>();
     TheFileSystem = GetSubsystem<FileSystem>();
-    TheProfiler = GetSubsystem<Profiler>();
     TheTime = GetSubsystem<Time>();
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
@@ -115,17 +114,17 @@ void TacticsVictory::Stop()
     //engine_->DumpProfiler();
     TilePath::RemoveAll();
     Rocket::DeleteAll();
-    SAFE_DELETE(TheScene); //-V809
-    SAFE_DELETE(TheFileSelector); //-V809
-    SAFE_DELETE(TheLevel); //-V809
-    SAFE_DELETE(TheMenu); //-V809
-    SAFE_DELETE(TheGUI); //-V809
+    delete TheScene;
+    delete TheFileSelector;
+    delete TheLevel;
+    delete TheMenu;
+    delete TheGUI;
     TheSet->Save();
-    SAFE_DELETE(TheSet); //-V809
-    SAFE_DELETE(TheEditor); //-V809
-    SAFE_DELETE(TheCamera);     //-V809
+    delete TheSet;
+    delete TheEditor;
+    delete TheCamera;
     TheLog->Close();
-    SAFE_DELETE(TheLog); //-V809
+    delete TheLog;
 }
 
 
