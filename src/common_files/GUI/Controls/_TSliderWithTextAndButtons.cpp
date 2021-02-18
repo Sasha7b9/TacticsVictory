@@ -181,7 +181,6 @@ void SliderWithTextAndButtons::HandleMouseClick(StringHash, VariantMap& eventDat
                 TheUIRoot->AddChild(hint);
                 hint->BringToFront();
                 TheHint = hint;
-                TheCounterHint = 0;
             }
         }
     }

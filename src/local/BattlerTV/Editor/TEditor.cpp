@@ -194,13 +194,6 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
 void Editor::HandleMouseDown(StringHash, VariantMap&)
 {
-    if (TheHint && TheCounterHint != 0)
-    {
-        TheUIRoot->RemoveChild(TheHint);
-        TheHint = nullptr;
-    }
-    TheCounterHint++;
-
     if (TheGUI->UnderCursor())
     {
         return;

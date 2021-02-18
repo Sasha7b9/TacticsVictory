@@ -43,5 +43,4 @@ extern TTerrain         *TheTerrain;
 extern  WindowTarget    *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 extern  WindowVariables *TheWindowVars;
 
-extern int TheCounterHint;
 extern Vector<TWindow *> TheOpenedWindow;

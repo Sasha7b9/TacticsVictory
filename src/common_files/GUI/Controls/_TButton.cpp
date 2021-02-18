@@ -101,7 +101,6 @@ void TButton::OnClickBegin(const IntVector2& position, const IntVector2& screenP
             TheUIRoot->AddChild(hint);
             hint->BringToFront();
             TheHint = hint;
-            TheCounterHint = 0;
         }
     }
 }
