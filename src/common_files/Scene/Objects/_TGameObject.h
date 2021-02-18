@@ -52,8 +52,6 @@ public:
     GameObject(Context *context = TheContext);
     virtual ~GameObject();
 
-    void SetAutoReloaded(int time) { reloader->Init(time); };
-
     virtual void Update(float timeStep) = 0;
 
     char *GetName();
@@ -82,6 +80,8 @@ protected:
     void Normalize(float k = 1.0f);
 
     void SetCoord(const Coord &coord);
+
+    void SetAutoReloaded(int time) { reloader->Init(time); };
 
 private:
 
