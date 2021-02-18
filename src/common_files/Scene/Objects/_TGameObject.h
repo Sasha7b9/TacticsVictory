@@ -85,9 +85,9 @@ public:
 
     PhysicsComponentGameObject *physics = nullptr;
 
-protected:
-
     ReloaderComponentGameObject *reloader = nullptr;
+
+protected:
 
     uint id = 0;
 
@@ -98,8 +98,6 @@ protected:
     SharedPtr<StaticModel> modelObject;
 
     void Normalize(float k = 1.0f);
-
-    void SetAutoReloaded(int time) { reloader->Init(time); };
 
 private:
 
