@@ -14,7 +14,6 @@ static uint creatorID = 0;
 
 GameObject::GameObject(Context *context) : LogicComponent(context)
 {
-    deltaPos = Vector3::ZERO;
     id = ++creatorID;
 
     translator = new Translator();
@@ -47,13 +46,13 @@ GameObject::Type::E GameObject::GetGameObjectType()
 
 Vector3 PhysicsComponentGameObject::GetPosition()
 {
-    return keeper->node_->GetPosition() - keeper->deltaPos;
+    return keeper->node_->GetPosition() - deltaPos;
 }
 
 
 void GameObject::SetPosition(const Vector3& pos)
 {
-    node_->SetPosition(pos + deltaPos);
+    node_->SetPosition(pos + physics->deltaPos);
 }
 
 
@@ -71,9 +70,9 @@ void GameObject::Normalize(float k)
 
     Vector3 scale = {k / divider, k / divider, k / divider};
 
-    deltaPos.y_ = -box.min_.y_ / divider * k;
-    deltaPos.z_ = -(box.max_.z_ + box.min_.z_) / 2.0f / divider * k;
-    deltaPos.x_ = (box.max_.x_ + box.min_.x_) / 2.0f / divider * k;
+    physics->deltaPos.y_ = -box.min_.y_ / divider * k;
+    physics->deltaPos.z_ = -(box.max_.z_ + box.min_.z_) / 2.0f / divider * k;
+    physics->deltaPos.x_ = (box.max_.x_ + box.min_.x_) / 2.0f / divider * k;
 
     node_->SetScale(scale);
 

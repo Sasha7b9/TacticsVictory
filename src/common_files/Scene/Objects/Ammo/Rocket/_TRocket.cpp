@@ -158,9 +158,9 @@ void Rocket::Normalize()
     float k = 0.4f;
     scale = {k / divider, k / divider, k / divider};
 
-    deltaPos.y_ = -box.min_.y_ / divider * k;
-    deltaPos.z_ = -(box.max_.z_ + box.min_.z_) / 2.0f / divider * k;
-    deltaPos.x_ = (box.max_.x_ + box.min_.x_) / 2.0f / divider * k;
+    physics->deltaPos.y_ = -box.min_.y_ / divider * k;
+    physics->deltaPos.z_ = -(box.max_.z_ + box.min_.z_) / 2.0f / divider * k;
+    physics->deltaPos.x_ = (box.max_.x_ + box.min_.x_) / 2.0f / divider * k;
 
     node_->SetScale(scale);
 }

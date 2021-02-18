@@ -50,6 +50,8 @@ struct PhysicsComponentGameObject
     Vector3 GetPosition();
 
     GameObject *keeper = nullptr;
+
+    Vector3 deltaPos = Vector3::ZERO;
 };
 
 
@@ -82,7 +84,7 @@ protected:
     ReloaderComponentGameObject *reloader = nullptr;
 
     uint id = 0;
-    Vector3 deltaPos = Vector3::ZERO;
+
     float deltaRotate = 0.0f;
     float speed = 0.0f;
     SharedPtr<Translator> translator;
