@@ -73,7 +73,7 @@ char GovernorCell::GetSymbol()
 
 void GovernorCell::HandleMouseDown(StringHash, VariantMap&)
 {
-    if(type == CellType_Static)
+    if(type == Type::Static)
     {
         return;
     }
@@ -90,7 +90,7 @@ void GovernorCell::HandleMouseDown(StringHash, VariantMap&)
 
 void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData) //-V2009
 {
-    if(type == CellType_Static)
+    if(type == Type::Static)
     {
         return;
     }
@@ -114,11 +114,11 @@ void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData) //-V2009
 
 void GovernorCell::ChangeValue(int d)
 {
-    if(type == CellType_Sign)
+    if(type == Type::Sign)
     {
         SetSymbolWithEvent(symbol == '-' ? '+' : '-');
     }
-    else if(type == CellType_Digit)
+    else if(type == Type::Digit)
     {
         if(d > 0)
         {
@@ -148,7 +148,7 @@ void GovernorCell::ChangeValue(int d)
 
 void GovernorCell::HandleMouseUp(StringHash, VariantMap&)
 {
-    if(type == CellType_Static)
+    if(type == Type::Static)
     {
         return;
     }
@@ -160,7 +160,7 @@ void GovernorCell::HandleMouseUp(StringHash, VariantMap&)
 
 void GovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
 {
-    if(type == CellType_Static)
+    if(type == Type::Static)
     {
         return;
     }
@@ -175,7 +175,7 @@ void GovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
 
 void GovernorCell::HandleHoverEnd(StringHash, VariantMap&)
 {
-    if(type == CellType_Static)
+    if(type == Type::Static)
     {
         return;
     }
@@ -215,19 +215,19 @@ GovernorFloat::GovernorFloat(Context *context) :
 
         if(i == 0 || i == 7)
         {
-            cell->SetType(CellType_Sign);
+            cell->SetType(GovernorCell::Type::Sign);
             cell->SetSymbol('+');
         }
         else
         {
-            cell->SetType(CellType_Digit);
+            cell->SetType(GovernorCell::Type::Digit);
             cell->SetSymbol('0');
         }
         SubscribeToEvent(E_GOVERNORCELLCHANGED, URHO3D_HANDLER(GovernorFloat, HandleGovernorCellChanged));
     }
 
     SharedPtr<GovernorCell> cell(new GovernorCell(context));
-    cell->SetType(CellType_Static);
+    cell->SetType(GovernorCell::Type::Static);
     cell->SetPosition(2 * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + widthLabel, 0);
     cell->SetSymbol('.');
     AddChild(cell);

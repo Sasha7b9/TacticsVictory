@@ -3,14 +3,6 @@
 #include "GUI/Controls/_TWindow.h"
 
 
-enum CellType
-{
-    CellType_Static,
-    CellType_Digit,
-    CellType_Sign
-};
-
-
 URHO3D_EVENT(E_GOVERNORCELLCHANGED, GovernorCellChanged)
 {
     URHO3D_PARAM(P_ELEMENT, Element);
@@ -23,6 +15,13 @@ class GovernorCell : public TWindow
     URHO3D_OBJECT(GovernorCell, TWindow);
 
 public:
+
+    struct Type { enum E {
+        Static,
+        Digit,
+        Sign
+    }; };
+
     GovernorCell(Context *context = TheContext);
 
     static void RegisterObject(Context *context = TheContext);
@@ -31,7 +30,7 @@ public:
     char GetSymbol();
     void SetSelected();
     void SetNormal();
-    void SetType(CellType type_)    { type = type_; };
+    void SetType(Type::E type_)    { type = type_; };
 
     void HandleHoverBegin(StringHash eventType, VariantMap& eventData);
     void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
@@ -47,7 +46,7 @@ private:
     int delta = 0;
     IntVector2 posCursor;
     bool selected = false;
-    CellType type;
+    Type::E type;
 
     void ChangeValue(int delta);
     void SetSymbolWithEvent(char symbol);
