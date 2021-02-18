@@ -57,7 +57,6 @@ void Battler::Stop()
     SAFE_DELETE(TheLevel);
     SAFE_DELETE(TheMenu);
     SAFE_DELETE(TheGUI);
-    TheSet->Save();
     SAFE_DELETE(TheSet);
     SAFE_DELETE(TheEditor);
     SAFE_DELETE(TheCamera);

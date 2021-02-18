@@ -2,6 +2,12 @@
 #include "stdafx.h"
 
 
+Settings::~Settings()
+{
+    Save();
+}
+
+
 bool operator==(const Settings::IntKey & keyleft, const Settings::IntKey& keyright)
 {
     return keyleft.str == keyright.str;

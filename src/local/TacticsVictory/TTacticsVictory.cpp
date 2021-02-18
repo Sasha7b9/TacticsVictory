@@ -143,7 +143,6 @@ void TacticsVictory::Stop()
     delete TheLevel;
     delete TheMenu;
     delete TheGUI;
-    TheSet->Save();
     delete TheSet;
     delete TheEditor;
     delete TheCamera;
