@@ -31,7 +31,7 @@ struct TypeCursor
         DownLeft,
         DownRight,
         Busy,
-        Size
+        Count
     };
 };
 

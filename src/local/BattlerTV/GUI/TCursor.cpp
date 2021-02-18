@@ -148,7 +148,7 @@ void TCursor::Update(float dT)
         {
             type = selected ? TypeCursor::Selected : TypeCursor::Normal;
         }
-        static TypeCursor::E prevType = TypeCursor::Size;
+        static TypeCursor::E prevType = TypeCursor::Count;
         static int prevFrame = -1;
 
         if (prevType != type || prevFrame != numFrame)
@@ -231,7 +231,7 @@ CursorShapes::CursorShapes() : Object(TheContext)
 SharedPtr<TImage> CursorShapes::GetShape(TypeCursor::E type, int numFrame)
 {
     typedef void(CursorShapes::*pToFunc)(int);
-    const pToFunc funcs[TypeCursor::Size] =
+    const pToFunc funcs[TypeCursor::Count] =
     {
         &CursorShapes::CreateNormal,
         &CursorShapes::CreateSelected,
