@@ -27,7 +27,7 @@ void WindowVariables::SetVar(float *var_, char *title_)
 
 void WindowVariables::AddFunctionFloat(char *title_, pFuncFV funcRead, pFuncVF funcWrite)
 {
-    SharedPtr<GovernorFloat> governor_(new GovernorFloat(TheContext));
+    SharedPtr<GovernorFloat> governor_(new GovernorFloat());
     AddChild(governor_);
     governor_->SetFunctionFloat(title_, funcRead, funcWrite);
     SetFixedSize(governor_->GetWidth() + 6, GetHeight() + governor_->GetHeight() + 3);

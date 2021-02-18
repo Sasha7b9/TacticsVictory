@@ -193,7 +193,7 @@ void TacticsVictory::CreateEditorSession()
 {
     if(!TheEditor)
     {
-        TheEditor = new Editor(TheContext);
+        TheEditor = new Editor();
     }
     TheGuiEditor->SetVisible(true);
     TheCamera->SetEnabled(true);

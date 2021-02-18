@@ -91,7 +91,7 @@ void Battler::Start()
     TheEngine = GetSubsystem<Engine>();
     TheGraphics = GetSubsystem<Graphics>();
 
-    TheScene = new TScene(TheContext);
+    TheScene = new TScene();
 
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
@@ -241,7 +241,7 @@ void Battler::CreateEditorSession()
 {
     if(!TheEditor)
     {
-        TheEditor = new Editor(TheContext);
+        TheEditor = new Editor();
     }
     TheGuiEditor->SetVisible(true);
     TheCamera->SetEnabled(true);

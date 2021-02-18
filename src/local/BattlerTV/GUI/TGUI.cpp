@@ -151,10 +151,10 @@ static float GetSpeedNetOUT()
 
 void GUI::Create()
 {
-    TheConsole = new ConsoleTV(TheContext);
+    TheConsole = new ConsoleTV();
     TheUIRoot->AddChild(TheConsole);
 
-    TheWindowVars = new WindowVariables(TheContext);
+    TheWindowVars = new WindowVariables();
     TheUIRoot->AddChild(TheWindowVars);
     TheWindowVars->SetVisible(false);
     TheWindowVars->SetPosition(1000, 500);
@@ -169,10 +169,10 @@ void GUI::Create()
 
     TheLocalization->SetLanguage("en");
 
-    TheGuiGame = new GuiGame(TheContext);
+    TheGuiGame = new GuiGame();
     TheGuiGame->SetVisible(false);
 
-    TheGuiEditor = new GuiEditor(TheContext);
+    TheGuiEditor = new GuiEditor();
     TheGuiEditor->SetVisible(false);
 
     TheCursor = new CursorTV();

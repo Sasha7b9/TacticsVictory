@@ -52,7 +52,7 @@ void Battle::Start()
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
-    TheScene = new TScene(TheContext);
+    TheScene = new TScene();
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);

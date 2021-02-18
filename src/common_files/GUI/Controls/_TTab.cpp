@@ -5,7 +5,7 @@
 Tab::Tab(Context *) : 
     WindowTV()
 {
-    buttonTitle = new ButtonToggled(TheContext);
+    buttonTitle = new ButtonToggled();
     SetMovable(false);
 }
 
@@ -20,7 +20,7 @@ void Tab::RegisterObject(Context *context)
 
 SharedPtr<Tab> Tab::Create(char *title)
 {
-    SharedPtr<Tab> tab(new Tab(TheContext));
+    SharedPtr<Tab> tab(new Tab());
     tab->buttonTitle = new ButtonToggled(nullptr, title, 125, 17);
     return tab;
 }

@@ -86,7 +86,7 @@ class ConsoleTV : public WindowTV
     URHO3D_OBJECT(ConsoleTV, WindowTV);
 
 public:
-    ConsoleTV(Context *context);
+    ConsoleTV(Context *context = TheContext);
     void Toggle();
     bool IsActive();                            // Возвращает true, если активна строка ввода
     void Write(const String &message);
