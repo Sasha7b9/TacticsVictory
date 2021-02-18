@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Controls/_TButtonSwitch.h"
+#include "GUI/Menu/TMenuAboutMe.h"
 
 
 MenuAboutMe::MenuAboutMe(Context *context) : WindowMenu(context)

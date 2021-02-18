@@ -12,6 +12,7 @@
 #include "GUI/Controls/_TTab.h"
 #include "GUI/GuiEditor/TGuiEditor.h"
 #include "GUI/GuiGame/TGuiGame.h"
+#include "GUI/Menu/TMenuAboutMe.h"
 
 
 GUI::GUI() : Object(TheContext)
