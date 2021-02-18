@@ -3,9 +3,9 @@
 #include "GUI/Controls/_TWindow.h"
 
 
-class Tab : public WindowTV
+class Tab : public TWindow
 {
-    URHO3D_OBJECT(Tab, WindowTV);
+    URHO3D_OBJECT(Tab, TWindow);
 
 public:
     Tab(Context *context = TheContext);

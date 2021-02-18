@@ -16,7 +16,7 @@ class SegmentTerrain;
 class Settings;
 class Tank;
 class TerrainTV;
-class WindowTV;
+class TWindow;
 class MenuConfirmExit;
 class WindowTarget;
 class WindowVariables;
@@ -52,4 +52,4 @@ extern WindowTarget    *TheWindowTarget;             // В этом окне можно посмот
 extern WindowVariables *TheWindowVars;
 
 extern int *TheCounterHint;
-extern Vector<WindowTV *> TheOpenedWindow;
+extern Vector<TWindow *> TheOpenedWindow;

@@ -42,7 +42,7 @@ TConsole          *TheConsole = nullptr;
 WindowVariables     *TheWindowVars = nullptr;
 Hint                *TheHint = nullptr;
 int                 *TheCounterHint = 0;
-Vector<WindowTV*>   TheOpenedWindow;
+Vector<TWindow*>   TheOpenedWindow;
 WindowTarget        *TheWindowTarget = nullptr;
 TMenu             *TheMenu = nullptr;
 TScene            *TheScene = nullptr;

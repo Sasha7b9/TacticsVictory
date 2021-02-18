@@ -2,7 +2,7 @@
 #pragma once
 
 
-class WindowTV;
+class TWindow;
 
 
 class GUI : public Object
@@ -15,7 +15,7 @@ public:
 
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
     bool UnderCursor();                                             // Возвращает true, если меню под курсором
-    void SetVisibleWindow(WindowTV *window, bool visible);
+    void SetVisibleWindow(TWindow *window, bool visible);
     void SetUnvisibleAllWindows();
 
 private:

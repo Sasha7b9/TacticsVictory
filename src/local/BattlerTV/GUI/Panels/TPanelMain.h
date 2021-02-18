@@ -9,9 +9,9 @@ class Tab;
 /*
     Основная игровая панель с вкладками
 */
-class PanelMain : public WindowTV
+class PanelMain : public TWindow
 {
-    URHO3D_OBJECT(PanelMain, WindowTV);
+    URHO3D_OBJECT(PanelMain, TWindow);
 
 public:
     PanelMain(Context *context = TheContext);

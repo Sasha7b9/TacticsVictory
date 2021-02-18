@@ -9,9 +9,9 @@ class TImage;
 /*
     Эта панель расположена в правом нижнем углу - миникарта
 */
-class PanelMap : public WindowTV
+class PanelMap : public TWindow
 {
-    URHO3D_OBJECT(PanelMap, WindowTV);
+    URHO3D_OBJECT(PanelMap, TWindow);
 
 public:
     PanelMap(Context *context = TheContext);

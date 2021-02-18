@@ -81,9 +81,9 @@ private:
 
 
 
-class TConsole : public WindowTV
+class TConsole : public TWindow
 {
-    URHO3D_OBJECT(TConsole, WindowTV);
+    URHO3D_OBJECT(TConsole, TWindow);
 
 public:
     TConsole(Context *context = TheContext);
