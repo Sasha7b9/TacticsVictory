@@ -2,10 +2,9 @@
 #include "stdafx.h"
 #include "TBattle.h"
 #include "Scene/_TScene.h"
-#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
 
 
-void Battle::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
+void Battle::HandleUpdate(StringHash, VariantMap& eventData)
 {
     float time = eventData[Update::P_TIMESTEP].GetFloat();
 
@@ -16,9 +15,7 @@ void Battle::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
 }
 
 
-void Battle::HandlePostUpdate(StringHash, VariantMap& eventData) //-V2009
+void Battle::HandlePostUpdate(StringHash, VariantMap& eventData)
 {
-    float time = eventData[Update::P_TIMESTEP].GetFloat();
-
-    Rocket::UpdateAll(time);
+    UNUSED(eventData);
 }

@@ -84,7 +84,7 @@ void DropDownListWithTextAndButton::AddItem(char *text)
 }
 
 
-void DropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& eventData_) //-V2009
+void DropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& eventData_)
 {
     VariantMap &eventData = GetEventDataMap();
     eventData[ItemSelected::P_ELEMENT] = this;

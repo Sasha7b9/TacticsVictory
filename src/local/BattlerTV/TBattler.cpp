@@ -14,10 +14,6 @@
 #include "Scene/_TLevel.h"
 #include "Scene/_TScene.h"
 #include "Scene/Cameras/TCamera.h"
-#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
-#include "Scene/Objects/Units/_TTank.h"
-#include "Scene/Objects/Units/Logic/_TTranslator.h"
-#include "Scene/Objects/Weapons/_TRocketLauncher.h"
 #include "Utils/TCLog.h"
 #include "Utils/TSettings.h"
 
@@ -71,7 +67,6 @@ void Battler::Stop()
     engine_->DumpProfiler();
 
     TilePath::RemoveAll();
-    Rocket::DeleteAll();
 
     delete TheScene;
     delete scene;
@@ -215,11 +210,7 @@ void Battler::RegistrationComponets()
     Movinator::RegisterObject();
     Rotator::RegisterObject();
 
-    RocketLauncher::RegisterObject();
-
-    Translator::RegisterObject();
     WaveAlgorithm::RegisterObject();
-    Tank::RegisterObject();
 
     TScene::RegisterObject();
 }

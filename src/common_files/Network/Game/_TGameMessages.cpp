@@ -24,10 +24,6 @@ namespace Message
         {
             ((BuildScene *)this)->Handle(msg);
         }
-        else if (id == MSG_SEND_OBJECT_STATE)
-        {
-            ((SendObjectState *)this)->Handle(msg);
-        }
 
 #elif defined SERVER
 

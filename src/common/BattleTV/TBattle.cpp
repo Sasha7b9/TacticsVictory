@@ -5,10 +5,6 @@
 #include "Game/Logic/_TRotator.h"
 #include "Scene/_TLevel.h"
 #include "Scene/_TScene.h"
-#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
-#include "Scene/Objects/Units/_TTank.h"
-#include "Scene/Objects/Units/Logic/_TTranslator.h"
-#include "Scene/Objects/Weapons/_TRocketLauncher.h"
 #include "Utils/_TLog.h"
 #include "Utils/TSettings.h"
 
@@ -90,7 +86,6 @@ void Battle::Stop()
 {
     engine_->DumpResources(true);
     //engine_->DumpProfiler();
-    Rocket::DeleteAll();
     SAFE_DELETE(TheScene); //-V809
     SAFE_DELETE(scene); //-V809
     SAFE_DELETE(TheLevel); //-V809
@@ -133,11 +128,6 @@ void Battle::RegistrationComponets()
 {
     Movinator::RegisterObject();
     Rotator::RegisterObject();
-
-    RocketLauncher::RegisterObject();
-
-    Translator::RegisterObject();
-    Tank::RegisterObject();
 
     TScene::RegisterObject();
 }

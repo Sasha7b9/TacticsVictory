@@ -1,7 +1,6 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
 #include "Network/Game/_TGameMessagesID.h"
-#include "Scene/Objects/_TObjectState.h"
 
 class TConnection;
 
@@ -67,16 +66,6 @@ namespace Message
         {
             buffer.WriteInt(key);
             buffer.WriteBool(press);
-        }
-
-        void Handle(MemoryBuffer &msg);
-    };
-
-    struct SendObjectState : public Message
-    {
-        SendObjectState(const ObjectState &state) : Message(MSG_SEND_OBJECT_STATE)
-        {
-            state.Compress(buffer);
         }
 
         void Handle(MemoryBuffer &msg);

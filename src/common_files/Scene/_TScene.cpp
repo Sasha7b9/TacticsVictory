@@ -7,7 +7,6 @@
 #ifdef CLIENT
 #include "Scene/TCScene.h"
 #endif
-#include "Scene/Objects/Units/_TTank.h"
 
 
 TScene::TScene(Context *context) : Object(context)
@@ -54,19 +53,6 @@ void TScene::Create()
     TheTerrain = new TTerrain();
     TheTerrain->CreateFromVector(level);
 
-    for (int i = 0; i < 100; i++)
-    {
-        uint row = 0;
-        uint col = 0;
-        do
-        {
-            col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheLevel->GetWidth()) - 1));
-            row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheLevel->GetHeight()) - 1));
-        } while (fabs(TheTerrain->GetHeight(row, col)) > M_EPSILON);
-
-        SharedPtr<Tank> tank = Tank::Create(Tank::Type::Small, row, col);
-    }
-
     SharedPtr<Node> lightNode;
     lightNode = TheScene->scene->CreateChild("LigthNode");
     Movinator *movinator = lightNode->CreateComponent<Movinator>();
@@ -87,39 +73,4 @@ void TScene::Create()
 void TScene::Update(float timeStep)
 {
     UNUSED(timeStep);
-}
-
-
-void TScene::SetSelected(Tank *tank_, bool selected)
-{
-    if(selected)
-    {
-        const Vector<SharedPtr<Node>> &nodes = TheScene->scene->GetChildren();
-        for(SharedPtr<Node> node : nodes)
-        {
-            Tank *tank = node->GetComponent<Tank>();
-            if(tank)
-            {
-                tank->selector->SetSelected(false);
-            }
-        }
-    }
-    tank_->selector->SetSelected(selected);
-}
-
-
-Tank* TScene::GetSelected()
-{
-    const Vector<SharedPtr<Node>> &nodes = TheScene->scene->GetChildren();
-
-    for(SharedPtr<Node> node : nodes)
-    {
-        Tank *tank = node->GetComponent<Tank>();
-        if(tank && tank->selector->IsSelected())
-        {
-            return tank;
-        }
-    }
-    
-    return nullptr;
 }

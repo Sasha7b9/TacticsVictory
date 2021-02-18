@@ -19,9 +19,6 @@ public:
     virtual void Update(float timeStep);
     virtual void Create();
 
-    void SetSelected(Tank *node, bool selected);
-    Tank* GetSelected();
-
     Vector<Vector<float>> level;
 
     Scene *scene = nullptr;

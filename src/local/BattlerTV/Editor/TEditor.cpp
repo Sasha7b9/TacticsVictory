@@ -234,7 +234,7 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
 }
 
 
-void Editor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
+void Editor::HandleKeyDown(StringHash, VariantMap& eventData)
 {
     int key = eventData[KeyDown::P_KEY].GetInt();
 

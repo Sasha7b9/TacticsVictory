@@ -3,7 +3,6 @@
 #include "GUI/Controls/_TButtonToggled.h"
 #include "GUI/GuiGame/TContextMenuUnit.h"
 #include "GUI/GuiGame/TWindowTarget.h"
-#include "Scene/Objects/Units/_TUnitObject.h"
 
 
 ContextMenuUnit::ContextMenuUnit(Context *context) :
@@ -22,12 +21,6 @@ ContextMenuUnit::ContextMenuUnit(Context *context) :
 void ContextMenuUnit::Create(GameObject *object_)
 {
     object = object_;
-    title->SetText(object->common->GetName());
-
-    if(object->common->GetGameObjectType() == GameObject::Type::Unit)
-    {
-        CreateForUnit();
-    }
 }
 
 
@@ -39,11 +32,9 @@ void ContextMenuUnit::CreateForUnit()
 }
 
 
-void ContextMenuUnit::HandleToggledFiedView(StringHash, VariantMap& eventData) //-V2009
+void ContextMenuUnit::HandleToggledFiedView(StringHash, VariantMap& eventData)
 {
     bool state = (bool)eventData[Toggled::P_STATE].GetBool();
 
     TheWindowTarget->SetVisible(state);
-
-    UnitObject::SetViewTargetView(state);
 }

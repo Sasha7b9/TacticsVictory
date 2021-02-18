@@ -13,11 +13,6 @@
 #include "Scene/_TLevel.h"
 #include "Scene/TCScene.h"
 #include "Scene/Cameras/TCamera.h"
-#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
-#include "Scene/Objects/Buildings/_TMilitaryPlant.h"
-#include "Scene/Objects/Units/_TTank.h"
-#include "Scene/Objects/Units/Logic/_TTranslator.h"
-#include "Scene/Objects/Weapons/_TWeaponObject.h"
 #include "Utils/TCLog.h"
 #include "Utils/TSettings.h"
 #include "Utils/TSettingsTypes.h"
@@ -159,7 +154,6 @@ void TacticsVictory::Stop()
     engine_->DumpProfiler();
 
     TilePath::RemoveAll();
-    Rocket::DeleteAll();
 
     delete TheScene;
     delete TheFileSelector;
@@ -210,14 +204,7 @@ void TacticsVictory::RegistrationComponets()
     Movinator::RegisterObject();
     Rotator::RegisterObject();
 
-    RocketLauncher::RegisterObject();
-    Rocket::RegisterObject();
-
-    Translator::RegisterObject();
     WaveAlgorithm::RegisterObject();
-    Tank::RegisterObject();
-
-    MilitaryPlant::RegisterObject();
 
     TScene::RegisterObject();
 }

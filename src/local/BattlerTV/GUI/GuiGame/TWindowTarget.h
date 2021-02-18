@@ -13,7 +13,4 @@ class WindowTarget : public TWindow
 public:
     WindowTarget(Context *context = TheContext);
     void AddTank(Tank *tank);
-
-public:
-    void HandleSetTexture(StringHash, VariantMap&);
 };

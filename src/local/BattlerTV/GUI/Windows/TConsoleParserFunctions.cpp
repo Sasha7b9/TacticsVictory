@@ -18,7 +18,7 @@ bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 }
 
 
-bool ConsoleParser::FuncClientStart(Vector<String> &words, bool) //-V2009
+bool ConsoleParser::FuncClientStart(Vector<String> &words, bool)
 {
     String address = SERVER_ADDRESS;
     uint16 port = SERVER_PORT;
@@ -62,7 +62,7 @@ bool ConsoleParser::FuncServer(Vector<String> &words, bool showInfo)
 }
 
 
-bool ConsoleParser::FuncServerStart(Vector<String> &words, bool) //-V2009
+bool ConsoleParser::FuncServerStart(Vector<String> &words, bool)
 {
     int port = 0;
 
@@ -82,7 +82,7 @@ bool ConsoleParser::FuncServerStart(Vector<String> &words, bool) //-V2009
 }
 
 
-void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data) //-V2009
+void ConsoleParser::HandleAsyncExecFinished(StringHash, VariantMap& data)
 {
     using namespace AsyncExecFinished;
 
@@ -107,7 +107,7 @@ bool ConsoleParser::FuncServerStop(Vector<String> &, bool)
 }
 
 
-bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
+bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool)
 {
     UNUSED(words);
 
@@ -115,7 +115,7 @@ bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool) //-V2009
 }
 
 
-bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool) //-V2009
+bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool)
 {
 
     UNUSED(words);

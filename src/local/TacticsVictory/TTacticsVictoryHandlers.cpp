@@ -8,7 +8,6 @@
 #include "GUI/Windows/TConsole.h"
 #include "Scene/TCScene.h"
 #include "Scene/Cameras/TCamera.h"
-#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
@@ -24,7 +23,7 @@ void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
 }
 
 
-void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
+void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData)
 {
     int key = eventData[KeyDown::P_KEY].GetInt();
 
@@ -89,7 +88,7 @@ void TacticsVictory::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 }
 
 
-void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData) //-V2009
+void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     int typeEvent = eventData[MenuEvent::P_TYPE].GetInt();
 
@@ -106,7 +105,7 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData) //-V2009
 }
 
 
-void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
+void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
 {
     float time = eventData[Update::P_TIMESTEP].GetFloat();
 
@@ -135,9 +134,6 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
 }
 
 
-void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& eventData) //-V2009
+void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& /*eventData*/)
 {
-    float time = eventData[Update::P_TIMESTEP].GetFloat();
-
-    Rocket::UpdateAll(time);
 }

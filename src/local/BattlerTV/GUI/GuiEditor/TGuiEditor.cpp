@@ -308,7 +308,7 @@ void GuiEditor::HandleTerrainClearTerrain(StringHash, VariantMap&)
 }
 
 
-void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
+void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
 {
     if (!IsVisible() || TheConsole->IsActive())
     {
@@ -393,7 +393,7 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
 }
 
 
-void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData) //-V2009
+void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData)
 {
     UnsubscribeFromEvent(TheFileSelector, E_FILESELECTED);
 
@@ -446,7 +446,7 @@ void GuiEditor::HandleMouseDown(StringHash, VariantMap&)
 }
 
 
-void GuiEditor::HandleTerrainModeSelectChanged(StringHash, VariantMap& eventData) //-V2009
+void GuiEditor::HandleTerrainModeSelectChanged(StringHash, VariantMap& eventData)
 {
     int index = eventData[ItemSelected::P_SELECTION].GetInt();
 

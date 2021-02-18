@@ -230,7 +230,7 @@ uint PanelMap::SizeYMap()
 }
 
 
-void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData) //-V2009
+void PanelMap::HandleMouseDown(StringHash, VariantMap &eventData)
 {
     if (parent_->IsVisible() && IsInside(TheCursor->GetCursor()->GetPosition(), true))
     {

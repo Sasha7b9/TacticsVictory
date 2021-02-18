@@ -7,7 +7,6 @@
 #include "GUI/Menu/TMenuEvents.h"
 #include "Scene/_TScene.h"
 #include "Scene/Cameras/TCamera.h"
-#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
 
 
 void Battler::HandlePostRenderUpdate(StringHash, VariantMap&)
@@ -23,7 +22,7 @@ void Battler::HandlePostRenderUpdate(StringHash, VariantMap&)
 }
 
 
-void Battler::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
+void Battler::HandleKeyDown(StringHash, VariantMap& eventData)
 {
     int key = eventData[KeyDown::P_KEY].GetInt();
 
@@ -88,7 +87,7 @@ void Battler::HandleKeyDown(StringHash, VariantMap& eventData) //-V2009
 }
 
 
-void Battler::HandleMenuEvent(StringHash, VariantMap& eventData) //-V2009
+void Battler::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     int typeEvent = eventData[MenuEvent::P_TYPE].GetInt();
 
@@ -108,7 +107,7 @@ void Battler::HandleMenuEvent(StringHash, VariantMap& eventData) //-V2009
 }
 
 
-void Battler::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
+void Battler::HandleUpdate(StringHash, VariantMap& eventData)
 {
     float time = eventData[Update::P_TIMESTEP].GetFloat();
 
@@ -137,9 +136,6 @@ void Battler::HandleUpdate(StringHash, VariantMap& eventData) //-V2009
 }
 
 
-void Battler::HandlePostUpdate(StringHash, VariantMap& eventData) //-V2009
+void Battler::HandlePostUpdate(StringHash, VariantMap& /*eventData*/)
 {
-    float time = eventData[Update::P_TIMESTEP].GetFloat();
-
-    Rocket::UpdateAll(time);
 }

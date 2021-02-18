@@ -296,7 +296,7 @@ void TConsole::HandleFinishedText(StringHash, VariantMap&)
 }
 
 
-void TConsole::HandleUnhandledKey(StringHash, VariantMap& eventData) //-V2009
+void TConsole::HandleUnhandledKey(StringHash, VariantMap& eventData)
 {
     using namespace UnhandledKey;
     int key = eventData[P_KEY].GetInt();

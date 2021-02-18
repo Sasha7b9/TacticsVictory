@@ -5,8 +5,6 @@
 #include "GUI/TCursor.h"
 #include "GUI/GuiGame/TWindowTarget.h"
 #include "Scene/TCScene.h"
-#include "Scene/Objects/Buildings/_TMilitaryPlant.h"
-#include "Scene/Objects/Units/_TTank.h"
 
 
 CScene::CScene(Context *context) : TScene(context)
@@ -36,8 +34,6 @@ void CScene::Create()
     TheWindowTarget = new WindowTarget();
     TheUIRoot->AddChild(TheWindowTarget);
     TheWindowTarget->SetVisible(false);
-
-    SharedPtr<MilitaryPlant> militaryPlant = MilitaryPlant::Create(0, 0);
 
     pathIndicator.Init();
 
@@ -73,7 +69,7 @@ void CScene::Update(float timeStep)
 }
 
 
-void CScene::HandleMouseDown(StringHash, VariantMap &eventData) //-V2009
+void CScene::HandleMouseDown(StringHash, VariantMap &eventData)
 {
     int buttons = static_cast<int>(eventData[MouseButtonDown::P_BUTTONS].GetInt());
 
@@ -103,29 +99,15 @@ void CScene::ProcessMouseLeft()
 
     if (name == NODE_TANK)
     {
-        Tank *tank = node->GetComponent<Tank>();
-        SetSelected(tank, !tank->selector->IsSelected());
-
         Vector3 position = node->GetPosition();
         Coord coord(static_cast<uint>(-position.z_), static_cast<uint>(position.x_)); //-V2004
 
         pathIndicator.SetStartPosition(coord);
         pathIndicator.Enable(false);
-        if (tank->selector->IsSelected())
-        {
-            pathIndicator.Enable(true);
-        }
     }
     else if (name == NODE_TERRAIN)
     {
         pathIndicator.Enable(true);
-        Tank *tank = GetSelected();
-
-        if (tank)
-        {
-            SetSelected(tank, false);
-            tank->SetPath(pathIndicator.GetPath());
-        }
     }
 }
 
@@ -138,6 +120,5 @@ void CScene::ProcessMouseRight()
 
     if (object && object->GetNode()->GetName() == NODE_TANK)
     {
-        object->GetNode()->GetComponent<Tank>()->gui->EnableContextMenu();
     }
 }
