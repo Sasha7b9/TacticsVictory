@@ -11,6 +11,7 @@ MilitaryPlant::MilitaryPlant(Context *context) :
     BuildingObject(context)
 {
     physics->Init(this);
+    graphics->Init(this);
 }
 
 
@@ -33,7 +34,7 @@ SharedPtr<MilitaryPlant> MilitaryPlant::Create(uint row, uint col)
 void MilitaryPlant::Init()
 {
     LoadFromFile();
-    Normalize(2.0f);
+    graphics->Normalize(2.0f);
 }
 
 

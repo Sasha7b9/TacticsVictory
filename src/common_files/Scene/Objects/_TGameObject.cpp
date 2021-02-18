@@ -57,13 +57,13 @@ void PhysicsComponentGameObject::SetPosition(const Vector3& pos)
 }
 
 
-void GameObject::Normalize(float k)
+void GraphicsComponentGameObject::Normalize(float k)
 {
-    Vector3 pos = physics->GetPosition();
-    node_->SetPosition({0.0f, 0.0f, 0.0f});
-    node_->SetScale(1.0f);
+    Vector3 pos = keeper->physics->GetPosition();
+    keeper->node_->SetPosition({0.0f, 0.0f, 0.0f});
+    keeper->node_->SetScale(1.0f);
 
-    BoundingBox box = graphics->modelObject->GetModel()->GetBoundingBox();
+    BoundingBox box = keeper->graphics->modelObject->GetModel()->GetBoundingBox();
 
     Vector3 delta = box.max_ - box.min_;
 
@@ -71,13 +71,13 @@ void GameObject::Normalize(float k)
 
     Vector3 scale = {k / divider, k / divider, k / divider};
 
-    physics->deltaPos.y_ = -box.min_.y_ / divider * k;
-    physics->deltaPos.z_ = -(box.max_.z_ + box.min_.z_) / 2.0f / divider * k;
-    physics->deltaPos.x_ = (box.max_.x_ + box.min_.x_) / 2.0f / divider * k;
+    keeper->physics->deltaPos.y_ = -box.min_.y_ / divider * k;
+    keeper->physics->deltaPos.z_ = -(box.max_.z_ + box.min_.z_) / 2.0f / divider * k;
+    keeper->physics->deltaPos.x_ = (box.max_.x_ + box.min_.x_) / 2.0f / divider * k;
 
-    node_->SetScale(scale);
+    keeper->node_->SetScale(scale);
 
-    physics->SetPosition(pos);
+    keeper->physics->SetPosition(pos);
 }
 
 

@@ -31,6 +31,8 @@ Tank::Tank(Context *context) : UnitObject(context)
     SubscribeToEvent(E_HIT, URHO3D_HANDLER(Tank, HandleAmmoHit));
 
     rocketLauncher = new RocketLauncher(TheContext, this);
+
+    graphics->Init(this);
 }
 
 
@@ -72,7 +74,7 @@ void Tank::Init(Type::E type_, uint _id_)
     physics->translator->Init(this);
     typeTank = type_;
     LoadFromFile();
-    Normalize();
+    graphics->Normalize();
 
     id = (_id_ == 0) ? id : _id_;
 

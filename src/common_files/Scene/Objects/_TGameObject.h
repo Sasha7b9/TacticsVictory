@@ -70,13 +70,22 @@ struct PhysicsComponentGameObject
 
 struct GraphicsComponentGameObject
 {
+    virtual ~GraphicsComponentGameObject() {}
+
     SharedPtr<StaticModel> modelObject;
+
+    virtual void Init(GameObject *object) { keeper = object; }
+
+    void Normalize(float k = 1.0f);
+
+    GameObject *keeper = nullptr;
 };
 
 
 class GameObject : public LogicComponent
 {
 friend struct PhysicsComponentGameObject;
+friend struct GraphicsComponentGameObject;
 
 public:
 
@@ -109,8 +118,6 @@ protected:
     char* name = nullptr;
 
     Type::E type = Type::None;
-
-    void Normalize(float k = 1.0f);
 
 private:
 
