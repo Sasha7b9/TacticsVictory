@@ -30,7 +30,6 @@ public:
 
     virtual void Update(float timeStep);
 
-    void SetCoord(const Coord& coord);
     void SetPath(const PODVector<Coord> &path);
     // rotation = [0...359.999999f]
     void SetRotation(float rotation);

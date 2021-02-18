@@ -133,14 +133,6 @@ void Tank::LoadFromFile()
 }
 
 
-void Tank::SetCoord(const Coord& coord)
-{
-    PODVector<Coord> path;
-    path.Push(coord);
-    translator->SetPath(path);
-}
-
-
 void Tank::Update(float dT)
 {
     TheProfiler->BeginBlock("Tank::Update");
