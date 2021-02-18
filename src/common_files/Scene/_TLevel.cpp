@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Core/_TMath.h"
 #include "Scene/_TLevel.h"
+#include "Scene/Objects/Terrain/_TSegmentTerrain.h"
 
 
 Vector<Vector<float> > Level::map;

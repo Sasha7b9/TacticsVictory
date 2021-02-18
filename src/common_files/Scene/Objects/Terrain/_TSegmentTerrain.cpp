@@ -1,6 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Scene/Objects/Terrain/_TLayerTerrain.h"
+#include "Scene/Objects/Terrain/_TSegmentTerrain.h"
 
 
 SegmentTerrain::SegmentTerrain(Context *context) : Object(context)
