@@ -23,7 +23,7 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
 
 GameObject::~GameObject()
 {
-
+    delete reloader;
 }
 
 

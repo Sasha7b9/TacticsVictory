@@ -8,8 +8,17 @@
 #include "Scene/Objects/Weapons/_TWeaponObject.h"
 
 
+struct ReloaderComponentTank : public ReloaderComponentGameObject
+{
+    virtual void Init(int time) { ReloaderComponentGameObject::Init(time); }
+    virtual void Execute(GameObject &object) override;
+};
+
+
 class Tank : public UnitObject
 {
+friend struct ReloaderComponentTank;
+
     URHO3D_OBJECT(Tank, UnitObject);
 
     friend class Translator;

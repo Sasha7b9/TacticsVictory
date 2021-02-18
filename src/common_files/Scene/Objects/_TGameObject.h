@@ -8,8 +8,19 @@ class ContextMenuUnit;
 
 #endif
 
+class GameObject;
 class Translator;
 struct Coord;
+
+
+struct ReloaderComponentGameObject
+{
+    virtual ~ReloaderComponentGameObject() {}
+    virtual void Init(int time) { timeForReload = time; }
+    virtual void Execute(GameObject &object) = 0;
+    int timeForReload = 0;
+    int timeLastReload = 0;
+};
 
 
 class GameObject : public LogicComponent
@@ -24,7 +35,7 @@ public:
     GameObject(Context *context = TheContext);
     virtual ~GameObject();
 
-    void SetAutoReloaded(int time) { timeForReload = time; };
+    void SetAutoReloaded(int time) { reloader->Init(time); };
     virtual void Update(float timeStep);
     char *GetName();
     Type::E GetGameObjectType();
@@ -36,9 +47,10 @@ public:
     uint GetID();
 
 protected:
+
+    ReloaderComponentGameObject *reloader = nullptr;
+
     uint id = 0;
-    int timeForReload = 0;
-    int timeLastReload = 0;
     unsigned timeLastModified = 0;
     Vector3 deltaPos = Vector3::ZERO;
     bool selected = false;

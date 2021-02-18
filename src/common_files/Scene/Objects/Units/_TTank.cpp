@@ -99,40 +99,6 @@ void Tank::Init(Type::E type_, uint _id_)
 }
 
 
-void Tank::LoadFromFile()
-{
-    char *fileName = parameters[typeTank].fileName; //-V108 //-V2006
-    JSONFile *file = TheCache->GetResource<JSONFile>(fileName);
-
-    if (timeForReload)
-    {
-        TheCache->ReloadResource(file);
-    }
-
-    JSONValue &root = file->GetRoot();
-    JSONValue modelValue = root.Get("model");
-
-    String fileModel = modelValue.Get("fileModel").GetString();
-    String fileMaterials = modelValue.Get("fileMaterials").GetString();
-
-    modelObject = node_->CreateComponent<StaticModel>();
-    modelObject->SetViewMask(VIEW_MASK_FOR_MISSILE);
-    modelObject->SetModel(TheCache->GetResource<Model>(fileModel));
-    modelObject->ApplyMaterialList(fileMaterials);
-    modelObject->SetCastShadows(true);
-
-    speed = root.Get("speed").GetFloat();
-
-    deltaRotate = root.Get("deltaRotate").GetFloat(); 
-
-    Quaternion rotate(deltaRotate, Vector3::UP);
-    node_->SetRotation(Quaternion(0, Vector3::UP));
-    node_->Rotate(rotate);
-
-    timeLastModified = GF::GetLastModifiedTime(parameters[typeTank].fileName); //-V108 //-V2006
-}
-
-
 void Tank::Update(float dT)
 {
     TheProfiler->BeginBlock("Tank::Update");
@@ -178,20 +144,62 @@ void Tank::Update(float dT)
         SetPosition(translator->Update(dT));
     }
 
+    reloader->Execute(*this);
+
+    TheProfiler->EndBlock();
+}
+
+
+void ReloaderComponentTank::Execute(GameObject &object)
+{
+    Tank &tank = (Tank &)object;
+
     if (timeForReload)
     {
         int time = static_cast<int>(TheTime->GetElapsedTime());
         if (time - timeLastReload >= timeForReload)
         {
-            if (GF::GetLastModifiedTime(parameters[typeTank].fileName) != timeLastModified) //-V108
+            if (GF::GetLastModifiedTime(tank.parameters[tank.typeTank].fileName) != tank.timeLastModified)
             {
-                Init(typeTank, id);
+                tank.Init(tank.typeTank, tank.id);
             }
             timeLastReload = time;
         }
     }
+}
 
-    TheProfiler->EndBlock();
+
+void Tank::LoadFromFile()
+{
+    char *fileName = parameters[typeTank].fileName; //-V108 //-V2006
+    JSONFile *file = TheCache->GetResource<JSONFile>(fileName);
+
+    if (reloader && reloader->timeForReload)
+    {
+        TheCache->ReloadResource(file);
+    }
+
+    JSONValue &root = file->GetRoot();
+    JSONValue modelValue = root.Get("model");
+
+    String fileModel = modelValue.Get("fileModel").GetString();
+    String fileMaterials = modelValue.Get("fileMaterials").GetString();
+
+    modelObject = node_->CreateComponent<StaticModel>();
+    modelObject->SetViewMask(VIEW_MASK_FOR_MISSILE);
+    modelObject->SetModel(TheCache->GetResource<Model>(fileModel));
+    modelObject->ApplyMaterialList(fileMaterials);
+    modelObject->SetCastShadows(true);
+
+    speed = root.Get("speed").GetFloat();
+
+    deltaRotate = root.Get("deltaRotate").GetFloat();
+
+    Quaternion rotate(deltaRotate, Vector3::UP);
+    node_->SetRotation(Quaternion(0, Vector3::UP));
+    node_->Rotate(rotate);
+
+    timeLastModified = GF::GetLastModifiedTime(parameters[typeTank].fileName); //-V108 //-V2006
 }
 
 
@@ -222,6 +230,8 @@ SharedPtr<Tank> Tank::Create(Type::E typeTank, uint row, uint col, uint _id_)
 
     tank->Init(typeTank, _id_);
     allTanks.Push(tank);
+
+    tank->reloader = new ReloaderComponentTank();
 
     tank->SetCoord({ row, col });
     tank->SetAutoReloaded(1);
