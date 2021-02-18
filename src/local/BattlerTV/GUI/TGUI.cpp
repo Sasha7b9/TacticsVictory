@@ -13,6 +13,7 @@
 #include "GUI/GuiEditor/TGuiEditor.h"
 #include "GUI/GuiGame/TGuiGame.h"
 #include "GUI/Menu/TMenuAboutMe.h"
+#include "GUI/Menu/TMenuConfirmExit.h"
 
 
 GUI::GUI() : Object(TheContext)

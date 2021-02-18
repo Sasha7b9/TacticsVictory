@@ -1,6 +1,8 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Controls/_TButtonSwitch.h"
+#include "GUI/Menu/TMenuConfirmExit.h"
+#include "GUI/Menu/TMenuEvents.h"
 
 
 MenuConfirmExit::MenuConfirmExit(Context *context) : WindowMenu(context)

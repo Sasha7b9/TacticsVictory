@@ -3,6 +3,7 @@
 #include "TTacticsVictory.h"
 #include "GUI/TCursor.h"
 #include "GUI/Controls/_THint.h"
+#include "GUI/Menu/TMenuEvents.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
