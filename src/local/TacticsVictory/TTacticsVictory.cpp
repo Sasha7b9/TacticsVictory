@@ -122,7 +122,7 @@ void TacticsVictory::CreateScene()
     PROFILER_FUNC_ENTER();
 
     TheScene = new CScene();
-    TheScene->scene->CreateComponent<Octree>();
+
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);  
 

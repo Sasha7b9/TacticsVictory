@@ -10,7 +10,7 @@ class CScene : public TScene
 
 public:
 
-    CScene(Context *context = TheContext) : TScene(context) {};
+    CScene(Context *context = TheContext);
     virtual ~CScene();
 
     virtual void Create() override;

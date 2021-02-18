@@ -2,6 +2,12 @@
 #include "stdafx.h"
 
 
+CScene::CScene(Context *context) : TScene(context)
+{
+    scene->CreateComponent<Octree>();
+}
+
+
 CScene::~CScene()
 {
     delete TheWindowTarget;
