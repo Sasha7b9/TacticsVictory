@@ -36,14 +36,23 @@ public:
     virtual ~GameObject();
 
     void SetAutoReloaded(int time) { reloader->Init(time); };
-    virtual void Update(float timeStep);
+
+    virtual void Update(float timeStep) = 0;
+
     char *GetName();
+
     Type::E GetGameObjectType();
+
     virtual void SetSelected(bool selected);
+
     bool IsSelected();
+
     Vector3 GetPosition();
+
     Node *GetNode();
+
     void SetCoord(const Coord& coord);
+
     uint GetID();
 
 protected:

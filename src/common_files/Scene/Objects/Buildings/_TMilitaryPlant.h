@@ -10,6 +10,8 @@ public:
 
     static void RegisterObject(Context *context = TheContext);
 
+    virtual void Update(float timeStep) override { UNUSED(timeStep); }
+
     static SharedPtr<MilitaryPlant> Create();
 
 private:

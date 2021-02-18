@@ -5,7 +5,10 @@
 
 class AmmoObject : public GameObject
 {
+    URHO3D_OBJECT(AmmoObject, GameObject);
+
 public:
+
     AmmoObject(Context *context = TheContext);
 };
 

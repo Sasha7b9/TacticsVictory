@@ -102,7 +102,6 @@ void Tank::Init(Type::E type_, uint _id_)
 void Tank::Update(float dT)
 {
     TheProfiler->BeginBlock("Tank::Update");
-    GameObject::Update(dT);
 
     rocketLauncher->Update(dT);
 

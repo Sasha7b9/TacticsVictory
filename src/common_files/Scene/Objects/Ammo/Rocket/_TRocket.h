@@ -19,6 +19,9 @@ public:
     static void RegisterObject(Context *context = TheContext);
 
     void UpdateOn();
+
+    virtual void Update(float timeStep) override { UNUSED(timeStep); };
+
     static SharedPtr<Rocket> Create(const Vector3 &speedShooter, const Vector3 &position, Tank *target);
     virtual void SetParameters(float timeStep);
     static void StopAllThreads();

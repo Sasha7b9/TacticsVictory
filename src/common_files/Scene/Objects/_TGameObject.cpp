@@ -27,12 +27,6 @@ GameObject::~GameObject()
 }
 
 
-void GameObject::Update(float)
-{
-
-}
-
-
 char *GameObject::GetName()
 {
     return name;
