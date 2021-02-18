@@ -5,7 +5,7 @@
 extern Battle          *TheBattle;
 extern Level           *TheLevel;
 extern TLog            *TheLog;
-extern SScene          *TheScene;
+extern TScene          *TheScene;
 extern Settings        *TheSet;
 extern TerrainTV       *TheTerrain;
 

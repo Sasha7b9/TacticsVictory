@@ -34,8 +34,7 @@ file(GLOB CORE                                    ../../common_files/Core/*.*)
 file(GLOB GAME_LOGIC                              ../../common_files/Game/Logic/*.*)
 file(GLOB NETWORK                                                    Network/*.*
                                                   ../../common_files/Network/Game/*.*)
-file(GLOB SCENE                                   ../../common_files/Scene/*.*
-                                                                     Scene/*.*)
+file(GLOB SCENE                                   ../../common_files/Scene/*.*)
 file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objects/Ammo/*.*)
 file(GLOB SCENE_OBJECTS_AMMO_ROCKET               ../../common_files/Scene/Objects/Ammo/Rocket/*.*)

@@ -3,9 +3,13 @@
 #include "Scene/Objects/Units/Logic/_TTranslator.h"
 #include "Scene/Objects/Units/_TUnitObject.h"
 
-
 class RocketLauncher;
 
+#ifdef CLIENT
+
+class WaveAlgorithm;
+
+#endif
 
 class Tank : public UnitObject
 {
@@ -14,16 +18,18 @@ class Tank : public UnitObject
     friend class Translator;
 
 public:
-
-    struct Type { enum E {
+    enum TypeTank
+    {
         Small,
         T_34_76
-    }; };
+    };
     
     Tank(Context *context = TheContext);
     virtual ~Tank();
-
+    static void RegisterObject(Context* context = TheContext);
+    static void RegisterInAS();
     virtual void Update(float timeStep);
+    static SharedPtr<Tank> Create(TypeTank type, uint _id_ = 0);
     void SetCoord(const Coord& coord);
     void SetPath(const PODVector<Coord> &path);
     // rotation = [0...359.999999f]
@@ -35,32 +41,25 @@ public:
     static Tank* GetByID(uint id);
     void DrawMessage();
 
-    virtual void Existor() = 0;     // Эта функция нужна для того, чтобы было нельзя создать объект этого типа
-
-protected:
-    static void RegisterInAS();
-    virtual void Init(Type::E typeTank, uint _id_);
-    bool inProcessFindPath = false;
-    static SharedPtr<Tank> Create(Type::E type, uint _id_ = 0);
-    static PODVector<Tank *> allTanks;
-
 private:
-
-    Type::E typeTank;
+    bool inProcessFindPath = false;
+    TypeTank typeTank;
+    static PODVector<Tank*> allTanks;
 
     void LoadFromFile();
+    void Init(TypeTank typeTank, uint _id_);
 
     struct TankStruct
     {
-        TankStruct(Type::E type_ = Type::Small, char* fileName_ = 0) : type(type_), fileName(fileName_) {};
-        Type::E type;
+        TankStruct(TypeTank type_ = Small, char* fileName_ = 0) : type(type_), fileName(fileName_) {};
+        TypeTank type;
         char *fileName; //-V122
     };
 
     struct Key
     {
-        Key(Type::E type_ = Type::Small) : type(type_) {};
-        Type::E type;
+        Key(TypeTank type_ = Small) : type(type_) {};
+        TypeTank type;
 
         unsigned ToHash() const { return static_cast<uint>(type); };
 
@@ -73,4 +72,10 @@ private:
     SharedPtr<RocketLauncher> rocketLauncher;
 
     void HandleAmmoHit(StringHash, VariantMap&);
+
+#ifdef CLIENT
+
+    SharedPtr<WaveAlgorithm> pathFinder;
+
+#endif
 };

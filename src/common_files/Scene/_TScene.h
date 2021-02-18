@@ -14,6 +14,8 @@ public:
     TScene(Context *context = TheContext);
     virtual ~TScene();
 
+    static void RegisterObject(Context *context = TheContext);
+
     virtual void Update(float timeStep);
     virtual void Create();
 
@@ -23,12 +25,6 @@ public:
     Vector<Vector<float>> level;
 
     Scene *scene = nullptr;
-
-    virtual void Existor() = 0;     // Эта функция нужна для того, чтобы было нельзя создать объект этого типа
-
-protected:
-
-    virtual SharedPtr<Tank> CreateTank() = 0;
 
 private:
 

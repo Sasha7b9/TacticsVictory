@@ -136,7 +136,6 @@ using namespace Urho3D;
 
 #include "Scene/_TLevel.h"
 #include "Scene/_TScene.h"
-#include "Scene/TSScene.h"
 #include "Scene/Objects/_TGameObjectEvents.h"
 #include "Scene/Objects/_TObjectState.h"
 #include "Scene/Objects/Ammo/_TAmmoObject.h"
@@ -147,7 +146,6 @@ using namespace Urho3D;
 #include "Scene/Objects/Terrain/_TSegmentTerrain.h"
 #include "Scene/Objects/Terrain/_TSideCube.h"
 #include "Scene/Objects/Units/_TUnitObject.h"
-#include "Scene/Objects/Units/Tank/TSTank.h"
 #include "Scene/Objects/Weapons/_TWeaponObject.h"
 #include "Scene/Primitives/_TTriangle.h"
 

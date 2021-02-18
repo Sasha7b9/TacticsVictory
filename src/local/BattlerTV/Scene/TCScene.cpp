@@ -134,14 +134,3 @@ void CScene::ProcessMouseRight()
         object->GetNode()->GetComponent<Tank>()->EnableContextMenu();
     }
 }
-
-SharedPtr<Tank> CScene::CreateTank()
-{
-    return CTank::Create(Tank::Type::Small);
-}
-
-
-void CScene::RegisterObject(Context *context)
-{
-    context->RegisterFactory<CScene>();
-}

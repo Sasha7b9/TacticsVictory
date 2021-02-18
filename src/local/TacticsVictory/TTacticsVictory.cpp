@@ -12,8 +12,6 @@ TacticsVictory::TacticsVictory(Context* context) :
     Application(context)
 {
     TheContext = context;
-
-    CTank::RegisterObject();
 }
 
 
@@ -146,12 +144,12 @@ void TacticsVictory::RegistrationComponets()
     TheContext->RegisterFactory<Movinator>();
     TheContext->RegisterFactory<ImageTV>();
 
-    CScene::RegisterObject();
+    TScene::RegisterObject();
 
     RocketLauncher::RegisterInAS();
     Translator::RegisterInAS();
     WaveAlgorithm::RegisterInAS();
-    CTank::RegisterInAS();
+    Tank::RegisterInAS();
 }
 
 

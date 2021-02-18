@@ -39,7 +39,7 @@ extern CLog            *TheLog;
 extern MenuConfirmExit *TheMenuConfirmExit;
 extern MenuGame        *TheMenuMain;
 extern MenuTV          *TheMenu;
-extern CScene          *TheScene;
+extern TScene          *TheScene;
 extern Server          *TheServer;
 extern Settings        *TheSet;
 extern Battler         *TheTacticsVictory;

@@ -12,8 +12,6 @@ Battler::Battler(Context* context) :
     Application(context)
 {
     TheContext = context;
-
-    CTank::RegisterObject();
 }
 
 
@@ -93,7 +91,7 @@ void Battler::Start()
     TheEngine = GetSubsystem<Engine>();
     TheGraphics = GetSubsystem<Graphics>();
 
-    TheScene = new CScene();
+    TheScene = new TScene(TheContext);
 
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
@@ -197,12 +195,12 @@ void Battler::RegistrationComponets()
     TheContext->RegisterFactory<Movinator>();
     TheContext->RegisterFactory<ImageTV>();
 
-    CScene::RegisterObject();
+    TScene::RegisterObject();
 
     RocketLauncher::RegisterInAS();
     Translator::RegisterInAS();
     WaveAlgorithm::RegisterInAS();
-    CTank::RegisterInAS();
+    Tank::RegisterInAS();
 }
 
 

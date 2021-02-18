@@ -15,10 +15,10 @@ Script            *TheScript = nullptr;
 Time              *TheTime = nullptr;
 
 
-Battle            *TheBattle = nullptr;
-Level             *TheLevel = nullptr;
-TLog              *TheLog = nullptr;
-SScene            *TheScene = nullptr;
-Settings          *TheSet = nullptr;
+Battle             *TheBattle = nullptr;
+Level              *TheLevel = nullptr;
+TLog             *TheLog = nullptr;
+TScene           *TheScene = nullptr;
+Settings           *TheSet = nullptr;
 TerrainTV         *TheTerrain = nullptr;
 Vector<Connection *> connections;

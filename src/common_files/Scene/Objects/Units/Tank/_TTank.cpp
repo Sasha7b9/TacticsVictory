@@ -13,8 +13,8 @@ Tank::Tank(Context *context) : UnitObject(context)
 
     if (parameters.Empty())
     {
-        parameters[Tank::Type::Small] = TankStruct(Tank::Type::Small, "Models/Tank.json");
-        parameters[Tank::Type::T_34_76] = TankStruct(Tank::Type::T_34_76, "Models/T-34-76-2.json");
+        parameters[Small] = TankStruct(Small, "Models/Tank.json");
+        parameters[T_34_76] = TankStruct(T_34_76, "Models/T-34-76-2.json");
     }
 
     SubscribeToEvent(E_HIT, URHO3D_HANDLER(Tank, HandleAmmoHit));
@@ -29,6 +29,12 @@ Tank::~Tank()
 }
 
 
+void Tank::RegisterObject(Context* context)
+{
+    context->RegisterFactory<Tank>();
+}
+
+
 void Tank::RegisterInAS()
 {
     asIScriptEngine *engine = TheScript->GetScriptEngine();
@@ -38,13 +44,23 @@ void Tank::RegisterInAS()
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_ADDREF, "void AddRef()", asMETHOD(Tank, AddRef), asCALL_THISCALL);
     engine->RegisterObjectBehaviour("Tank", asBEHAVE_RELEASE, "void ReleaseRef()", asMETHOD(Tank, ReleaseRef), asCALL_THISCALL);
     engine->RegisterObjectProperty("Tank", "bool inProcessFindPath", offsetof(Tank, inProcessFindPath));
+
+#ifdef CLIENT
+    engine->RegisterObjectProperty("Tank", "WaveAlgorithm@ pathFinder", offsetof(Tank, pathFinder));
+#endif
+
 #pragma warning(pop)
 }
 
 
-void Tank::Init(Type::E type_, uint _id_)
+void Tank::Init(TypeTank type_, uint _id_)
 {
     node_->SetVar("PointerTank", this);
+
+#ifdef CLIENT
+    pathFinder = new WaveAlgorithm();
+    pathFinder->SetSize(TheTerrain->NumRows(), TheTerrain->NumCols());
+#endif
 
     translator->Init(this);
     typeTank = type_;
@@ -54,6 +70,27 @@ void Tank::Init(Type::E type_, uint _id_)
     id = (_id_ == 0) ? id : _id_;
 
     rocketLauncher->Init();
+
+//    ScriptInstance *instance = node_->CreateComponent<ScriptInstance>();
+//
+//    LOGINFO("Загружаю Tank.as");
+//
+//    ScriptFile *script = TheCache->GetResource<ScriptFile>("Models/Units/Tank/Tank.as");
+//
+//    LOGINFO("Tank.as загружен");
+//
+//    instance->CreateObject(script, "TankUpdater");
+//    VariantVector params;
+//    params.Push(Variant(rocketLauncher));
+//    params.Push(Variant(translator));
+//    params.Push(Variant(this));
+//    instance->Execute("void SetRotationSpeed(RocketLauncher@ launch, Translator@ trans, Tank@ tan)", params);
+
+    /*
+    params.Clear();
+    params.Push(Variant(pathFinder));
+    instance->Execute("void SetWaveAlgorithm(WaveAlgorithm@ wave)", params);
+    */
 }
 
 
@@ -108,15 +145,36 @@ void Tank::Update(float dT)
 
     if(!translator->IsMoving())
     {
-        float height = -1.0f;
-        uint row = 0;
-        uint col = 0;
-        do
+#ifdef CLIENT
+        if(inProcessFindPath)
         {
-            row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheTerrain->NumRows()) - 1));
-            col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheTerrain->NumCols()) - 1));
-            height = TheTerrain->GetHeight(row, col);
-        } while (fabs(height) > M_EPSILON);
+            if(pathFinder->PathIsFound())
+            {
+                PODVector<Coord> path = pathFinder->GetPath();
+                SetPath(path);
+                inProcessFindPath = false;
+            }
+        }
+        else
+        {
+#endif
+            float height = -1.0f;
+            uint row = 0;
+            uint col = 0;
+            do
+            {
+                row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheTerrain->NumRows()) - 1));
+                col = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheTerrain->NumCols()) - 1));
+                height = TheTerrain->GetHeight(row, col);
+            } while(fabs(height) > M_EPSILON);
+
+            Vector3 position = GetPosition();
+            Coord start(static_cast<uint>(-position.z_), static_cast<uint>(position.x_));
+#ifdef CLIENT
+            pathFinder->StartFind(start, {row, col});
+            inProcessFindPath = true;
+        }
+#endif
     }
     else
     {
@@ -160,7 +218,7 @@ float Tank::GetRotation()
 }
 
 
-SharedPtr<Tank> Tank::Create(Type::E typeTank, uint _id_)
+SharedPtr<Tank> Tank::Create(TypeTank typeTank, uint _id_)
 {
     SharedPtr<Node> node(TheScene->scene->CreateChild(NODE_TANK, LOCAL));
     SharedPtr<Tank> tank(node->CreateComponent<Tank>(LOCAL));
