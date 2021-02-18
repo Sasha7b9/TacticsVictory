@@ -47,13 +47,9 @@ public:
 
     bool IsSelected();
 
-    Vector3 GetPosition();
-
     Node *GetNode();
 
-    void SetCoord(const Coord& coord);
-
-    uint GetID();
+    Vector3 GetPosition();
 
 protected:
 
@@ -72,6 +68,10 @@ protected:
 
     void SetPosition(const Vector3& pos);
     void Normalize(float k = 1.0f);
+
+    void SetCoord(const Coord &coord);
+
+private:
 
 #ifdef CLIENT
 

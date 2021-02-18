@@ -51,12 +51,6 @@ bool GameObject::IsSelected()
 }
 
 
-uint GameObject::GetID()
-{
-    return id;
-}
-
-
 Vector3 GameObject::GetPosition()
 {
     return node_->GetPosition() - deltaPos;
