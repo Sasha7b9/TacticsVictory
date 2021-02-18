@@ -137,7 +137,6 @@ using namespace Urho3D;
 
 
 
-#include "Scene/Objects/Weapons/_TWeaponObject.h"
 #include "Scene/Primitives/_TTriangle.h"
 
 #include "Utils/TGlobalFunctions.h"

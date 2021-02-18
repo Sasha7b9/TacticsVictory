@@ -5,14 +5,8 @@
 #endif
 #include "Scene/Objects/Units/Logic/_TTranslator.h"
 #include "Scene/Objects/Units/_TUnitObject.h"
+#include "Scene/Objects/Weapons/_TWeaponObject.h"
 
-class RocketLauncher;
-
-#ifdef CLIENT
-
-class WaveAlgorithm;
-
-#endif
 
 class Tank : public UnitObject
 {

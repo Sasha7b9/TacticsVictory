@@ -5,6 +5,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/GuiGame/TContextMenuUnit.h"
 #endif
+#include "Scene/Objects/_TGameObject.h"
 #include "Scene/Objects/Units/Logic/_TTranslator.h"
 
 
