@@ -8,6 +8,7 @@
 #include "GUI/Menu/TMenu.h"
 #include "Scene/_TLevel.h"
 #include "Scene/TCScene.h"
+#include "Scene/Cameras/TCamera.h"
 
 
 Editor::Editor(Context *context) : Object(context)

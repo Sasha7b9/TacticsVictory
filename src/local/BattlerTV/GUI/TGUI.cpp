@@ -21,6 +21,7 @@
 #include "GUI/Panels/TPanelMap.h"
 #include "GUI/Windows/TConsole.h"
 #include "GUI/Windows/TWindowVariables.h"
+#include "Scene/Cameras/TCamera.h"
 
 
 GUI::GUI() : Object(TheContext)

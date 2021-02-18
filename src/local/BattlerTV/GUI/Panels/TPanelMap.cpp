@@ -4,6 +4,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/Panels/TPanelMap.h"
 #include "Scene/_TLevel.h"
+#include "Scene/Cameras/TCamera.h"
 
 
 PanelMap::PanelMap(Context *context) :

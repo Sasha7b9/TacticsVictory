@@ -7,6 +7,7 @@
 #include "GUI/Menu/TMenu.h"
 #include "GUI/Windows/TConsole.h"
 #include "Scene/TCScene.h"
+#include "Scene/Cameras/TCamera.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)

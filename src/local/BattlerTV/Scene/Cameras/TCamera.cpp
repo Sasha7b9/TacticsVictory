@@ -4,6 +4,7 @@
 #include "GUI/TGUI.h"
 #include "GUI/Windows/TConsole.h"
 #include "Scene/TCScene.h"
+#include "Scene/Cameras/TCamera.h"
 
 
 #define CURSOR_UP           (cursor == TypeCursor_Up)
