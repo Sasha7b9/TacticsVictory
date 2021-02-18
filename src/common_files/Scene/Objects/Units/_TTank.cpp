@@ -160,7 +160,7 @@ void ReloaderComponentTank::Execute(GameObject &object)
         int time = static_cast<int>(TheTime->GetElapsedTime());
         if (time - timeLastReload >= timeForReload)
         {
-            if (GF::GetLastModifiedTime(tank.parameters[tank.typeTank].fileName) != tank.timeLastModified)
+            if (GF::GetLastModifiedTime(tank.parameters[tank.typeTank].fileName) != timeLastModified)
             {
                 tank.Init(tank.typeTank, tank.id);
             }
@@ -200,7 +200,10 @@ void Tank::LoadFromFile()
     node_->SetRotation(Quaternion(0, Vector3::UP));
     node_->Rotate(rotate);
 
-    timeLastModified = GF::GetLastModifiedTime(parameters[typeTank].fileName); //-V108 //-V2006
+    if (reloader)
+    {
+        reloader->timeLastModified = GF::GetLastModifiedTime(parameters[typeTank].fileName); //-V108 //-V2006
+    }
 }
 
 

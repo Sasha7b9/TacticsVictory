@@ -20,6 +20,7 @@ struct ReloaderComponentGameObject
     virtual void Execute(GameObject &object) = 0;
     int timeForReload = 0;
     int timeLastReload = 0;
+    uint timeLastModified = 0;
 };
 
 struct SelectorComponentGameObject
@@ -81,7 +82,6 @@ protected:
     ReloaderComponentGameObject *reloader = nullptr;
 
     uint id = 0;
-    unsigned timeLastModified = 0;
     Vector3 deltaPos = Vector3::ZERO;
     float deltaRotate = 0.0f;
     float speed = 0.0f;
