@@ -76,6 +76,8 @@ void TacticsVictory::Start()
     SetLocalization();
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
 
+    CreateScriptSystem();
+
     CreateScene();
 
     CreateCamera();
@@ -116,9 +118,7 @@ void TacticsVictory::CreateScene()
     TheScene = new CScene();
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
-    ThePhysicsWorld->SetGravity(Vector3::ZERO);
-
-    CreateScriptSystem();
+    ThePhysicsWorld->SetGravity(Vector3::ZERO);  
 
     RegistrationComponets();
 
