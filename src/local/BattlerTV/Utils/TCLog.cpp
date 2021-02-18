@@ -1,6 +1,7 @@
 // 2021/02/17 13:43:23 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #include "stdafx.h"
 #include "GUI/Windows/TConsole.h"
+#include "Utils/TCLog.h"
 
 
 CLog::~CLog()
