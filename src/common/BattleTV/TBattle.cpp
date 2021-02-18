@@ -123,7 +123,7 @@ void Battle::RegistrationComponets()
     TheContext->RegisterFactory<Rotator>();
     TheContext->RegisterFactory<Movinator>();
 
-    RocketLauncher::RegisterInAS();
+    RocketLauncher::RegisterObject();
 
     Translator::RegisterObject();
     Tank::RegisterObject();

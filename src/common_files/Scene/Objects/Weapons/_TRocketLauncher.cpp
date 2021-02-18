@@ -87,3 +87,9 @@ bool RocketLauncher::TargetInPointView(Tank* target)
     }
     return false;
 }
+
+
+void RocketLauncher::RegisterObject()
+{
+    RegisterInAS();
+}

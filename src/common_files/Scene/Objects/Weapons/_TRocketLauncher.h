@@ -9,9 +9,10 @@ class RocketLauncher : public WeaponObject
 public:
     RocketLauncher(Context *context = TheContext, Tank *tank = nullptr);
 
-    static void RegisterInAS();
     void Init();
     void Update(float deltaStep);
+
+    static void RegisterObject();
 
 private:
     Tank *tank = nullptr; //-V122
@@ -21,4 +22,6 @@ private:
     float timePrevRaycast = 0.0f;
 
     bool TargetInPointView(Tank* tank);
+
+    static void RegisterInAS();
 };

@@ -195,7 +195,7 @@ void Battler::RegistrationComponets()
     TheContext->RegisterFactory<Movinator>();
     TheContext->RegisterFactory<ImageTV>();
 
-    RocketLauncher::RegisterInAS();
+    RocketLauncher::RegisterObject();
 
     Translator::RegisterObject();
     WaveAlgorithm::RegisterInAS();
