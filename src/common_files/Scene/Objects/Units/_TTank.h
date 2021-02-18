@@ -25,7 +25,8 @@ public:
     }; };
   
     Tank(Context *context = TheContext);
-    virtual ~Tank();
+    virtual ~Tank() {};
+
     static void RegisterObject(Context* context = TheContext);
     virtual void Update(float timeStep);
     static SharedPtr<Tank> Create(Type::E type, uint _id_ = 0);

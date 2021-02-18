@@ -23,12 +23,6 @@ Tank::Tank(Context *context) : UnitObject(context)
 }
 
 
-Tank::~Tank()
-{
-
-}
-
-
 void Tank::RegisterObject(Context* context)
 {
     context->RegisterFactory<Tank>();
