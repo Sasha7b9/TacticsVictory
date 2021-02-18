@@ -137,8 +137,6 @@ using namespace Urho3D;
 
 
 
-#include "Scene/Primitives/_TTriangle.h"
-
 #include "Utils/TGlobalFunctions.h"
 #include "Utils/TCLog.h"
 #include "Utils/TSettings.h"
