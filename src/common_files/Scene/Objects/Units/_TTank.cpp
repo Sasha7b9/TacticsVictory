@@ -192,7 +192,7 @@ void Tank::LoadFromFile()
     modelObject->ApplyMaterialList(fileMaterials);
     modelObject->SetCastShadows(true);
 
-    speed = root.Get("speed").GetFloat();
+    physics->speed = root.Get("speed").GetFloat();
 
     physics->deltaRotate = root.Get("deltaRotate").GetFloat();
 
@@ -209,7 +209,7 @@ void Tank::LoadFromFile()
 
 void Tank::SetPath(const PODVector<Coord> &path)
 {
-    translator->SetPath(path, speed);
+    translator->SetPath(path, physics->speed);
 }
 
 

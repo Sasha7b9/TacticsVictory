@@ -58,6 +58,8 @@ struct PhysicsComponentGameObject
     float deltaRotate = 0.0f;
 
     void SetCoord(const Coord &coord);
+
+    float speed = 0.0f;
 };
 
 
@@ -91,10 +93,12 @@ protected:
 
     uint id = 0;
 
-    float speed = 0.0f;
     SharedPtr<Translator> translator;
+
     char* name = nullptr;
+
     Type::E type = Type::None;
+
     SharedPtr<StaticModel> modelObject;
 
     void Normalize(float k = 1.0f);
