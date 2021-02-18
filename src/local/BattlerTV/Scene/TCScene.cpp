@@ -37,8 +37,7 @@ void CScene::Create()
     TheUIRoot->AddChild(TheWindowTarget);
     TheWindowTarget->SetVisible(false);
 
-    SharedPtr<MilitaryPlant> militaryPlant = MilitaryPlant::Create();
-    militaryPlant->SetCoord(Coord(0, 0));
+    SharedPtr<MilitaryPlant> militaryPlant = MilitaryPlant::Create(0, 0);
 
     pathIndicator.Init();
 

@@ -12,7 +12,7 @@ public:
 
     virtual void Update(float timeStep) override { UNUSED(timeStep); }
 
-    static SharedPtr<MilitaryPlant> Create();
+    static SharedPtr<MilitaryPlant> Create(uint row, uint col);
 
 private:
     void Init();

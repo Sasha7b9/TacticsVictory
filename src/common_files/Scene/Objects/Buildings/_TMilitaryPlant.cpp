@@ -20,11 +20,12 @@ void MilitaryPlant::RegisterObject(Context *context)
 }
 
 
-SharedPtr<MilitaryPlant> MilitaryPlant::Create()
+SharedPtr<MilitaryPlant> MilitaryPlant::Create(uint row, uint col)
 {
     SharedPtr<Node> node(TheScene->scene->CreateChild());
     SharedPtr<MilitaryPlant> plant(node->CreateComponent<MilitaryPlant>());
     plant->Init();
+    plant->SetCoord({ row, col });
     return plant;
 }
 
