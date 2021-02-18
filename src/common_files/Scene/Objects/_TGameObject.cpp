@@ -3,6 +3,7 @@
 #include "Core/_TMath.h"
 #ifdef CLIENT
 #include "GUI/TCursor.h"
+#include "GUI/GuiGame/TContextMenuUnit.h"
 #endif
 
 
