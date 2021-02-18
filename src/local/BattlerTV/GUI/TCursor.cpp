@@ -1,6 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Graphics/2D/TImage.h"
+#include "GUI/TCursor.h"
 
 
 bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::StructShape& keyRight)

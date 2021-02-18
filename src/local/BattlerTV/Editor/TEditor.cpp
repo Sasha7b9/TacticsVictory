@@ -1,6 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Editor/TEditor.h"
+#include "GUI/TCursor.h"
 
 
 Editor::Editor(Context *context) : Object(context)

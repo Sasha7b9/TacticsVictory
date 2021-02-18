@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Audio/TSounds.h"
 #include "Game/TParticles.h"
+#include "GUI/TCursor.h"
 
 
 CScene::CScene(Context *context) : TScene(context)

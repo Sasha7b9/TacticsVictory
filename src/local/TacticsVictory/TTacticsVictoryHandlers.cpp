@@ -1,6 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "TTacticsVictory.h"
+#include "GUI/TCursor.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
