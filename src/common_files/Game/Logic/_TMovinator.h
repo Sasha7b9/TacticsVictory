@@ -2,9 +2,6 @@
 #pragma once
 
 
-//extern Context *TheContext;
-
-
 class Movinator : public LogicComponent
 {
     URHO3D_OBJECT(Movinator, LogicComponent);

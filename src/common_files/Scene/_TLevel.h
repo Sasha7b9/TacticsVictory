@@ -1,7 +1,6 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #pragma once
 
-extern Context *TheContext;
 
 URHO3D_EVENT(E_MAP_CHANGED, MapChanged)
 {

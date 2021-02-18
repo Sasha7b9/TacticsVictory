@@ -2,9 +2,6 @@
 #pragma once
 
 
-extern Context *TheContext;
-
-
 class TLog : public Log
 {
     URHO3D_OBJECT(TLog, Log);

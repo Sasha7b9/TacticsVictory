@@ -122,6 +122,10 @@ using namespace Urho3D;
 #pragma warning(pop)
 
 #include "defines.h"
+
+#include "glob_engine.h"
+#include "glob_game.h"
+
 #include "TBattle.h"
 
 #include "Core/_TMath.h"
@@ -153,6 +157,3 @@ using namespace Urho3D;
 #include "Utils/_TLog.h"
 #include "Utils/TSettings.h"
 #include "Utils/TSettingsTypes.h"
-
-#include "glob_engine.h"
-#include "glob_game.h"

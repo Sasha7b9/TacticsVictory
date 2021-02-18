@@ -2,9 +2,6 @@
 #pragma once
 
 
-extern Context *TheContext;
-
-
 class Rotator : public LogicComponent
 {
     URHO3D_OBJECT(Rotator, LogicComponent);
