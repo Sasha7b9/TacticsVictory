@@ -2,6 +2,9 @@
 #pragma once
 
 
+class TImage;
+
+
 class CursorShapes : public Object
 {
     URHO3D_OBJECT(CursorShapes, Object);

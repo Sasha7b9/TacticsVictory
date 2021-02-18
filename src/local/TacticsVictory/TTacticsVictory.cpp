@@ -5,6 +5,7 @@
 #include "Game/Logic/_TMovinator.h"
 #include "Game/Logic/_TRotator.h"
 #include "Game/Path/TTilePath.h"
+#include "Graphics/2D/TImage.h"
 
 
 #pragma warning(push)

@@ -1,6 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Core/_TMath.h"
+#include "Graphics/2D/TImage.h"
 
 
 TImage::TImage(Context *context) :
