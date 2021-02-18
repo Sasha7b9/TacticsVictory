@@ -1,8 +1,8 @@
 // 2021/02/15 16:12:30 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #pragma once
 
-class ConsoleTV;
-class CursorTV;
+class TConsole;
+class TCursor;
 class Editor;
 class GUI;
 class GuiEditor;
@@ -32,8 +32,8 @@ class TacticsVictory;
 
 
 extern TCamera         *TheCamera;
-extern ConsoleTV       *TheConsole;
-extern CursorTV        *TheCursor;
+extern TConsole       *TheConsole;
+extern TCursor        *TheCursor;
 extern Editor          *TheEditor;
 extern GUI             *TheGUI;
 extern GuiEditor       *TheGuiEditor;

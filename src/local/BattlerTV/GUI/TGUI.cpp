@@ -151,7 +151,7 @@ static float GetSpeedNetOUT()
 
 void GUI::Create()
 {
-    TheConsole = new ConsoleTV();
+    TheConsole = new TConsole();
     TheUIRoot->AddChild(TheConsole);
 
     TheWindowVars = new WindowVariables();
@@ -175,7 +175,7 @@ void GUI::Create()
     TheGuiEditor = new GuiEditor();
     TheGuiEditor->SetVisible(false);
 
-    TheCursor = new CursorTV();
+    TheCursor = new TCursor();
 
     TheLocalization->SetLanguage(TheSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
 }

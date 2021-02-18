@@ -25,7 +25,7 @@ Profiler            *TheProfiler = nullptr;
 Script              *TheScript = nullptr;
 
 TCamera           *TheCamera = nullptr;
-CursorTV           *TheCursor = nullptr;
+TCursor           *TheCursor = nullptr;
 Editor              *TheEditor = nullptr;
 Settings            *TheSet = nullptr;
 Level               *TheLevel = nullptr;
@@ -38,7 +38,7 @@ Client              *TheClient = nullptr;
 GuiGame             *TheGuiGame = nullptr;
 GuiEditor           *TheGuiEditor = nullptr;
 GUI                 *TheGUI = nullptr;
-ConsoleTV          *TheConsole = nullptr;
+TConsole          *TheConsole = nullptr;
 WindowVariables     *TheWindowVars = nullptr;
 Hint                *TheHint = nullptr;
 int                 *TheCounterHint = 0;

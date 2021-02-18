@@ -81,12 +81,12 @@ private:
 
 
 
-class ConsoleTV : public WindowTV
+class TConsole : public WindowTV
 {
-    URHO3D_OBJECT(ConsoleTV, WindowTV);
+    URHO3D_OBJECT(TConsole, WindowTV);
 
 public:
-    ConsoleTV(Context *context = TheContext);
+    TConsole(Context *context = TheContext);
     void Toggle();
     bool IsActive();                            // Возвращает true, если активна строка ввода
     void Write(const String &message);

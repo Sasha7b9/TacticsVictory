@@ -218,7 +218,7 @@ bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool
 
 
 
-ConsoleTV::ConsoleTV(Context *context) :
+TConsole::TConsole(Context *context) :
     WindowTV(context)
 {
     SetVisible(false);
@@ -247,18 +247,18 @@ ConsoleTV::ConsoleTV(Context *context) :
     text->SetWordwrap(true);
     AddChild(text);
 
-    SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(ConsoleTV, HandleFinishedText));
-    SubscribeToEvent(lineEdit, E_UNHANDLEDKEY, URHO3D_HANDLER(ConsoleTV, HandleUnhandledKey));
-    SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(ConsoleTV, HandleClick));
-    SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(ConsoleTV, HandleClick));
-    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(ConsoleTV, HandleResize));
+    SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(TConsole, HandleFinishedText));
+    SubscribeToEvent(lineEdit, E_UNHANDLEDKEY, URHO3D_HANDLER(TConsole, HandleUnhandledKey));
+    SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(TConsole, HandleClick));
+    SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(TConsole, HandleClick));
+    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(TConsole, HandleResize));
 
     VariantMap map;
     HandleResize("", map);
 }
 
 
-void ConsoleTV::Toggle()
+void TConsole::Toggle()
 {
    SetVisible(!IsVisible());
    if(IsVisible())
@@ -269,13 +269,13 @@ void ConsoleTV::Toggle()
 }
 
 
-bool ConsoleTV::IsActive()
+bool TConsole::IsActive()
 {
     return lineEdit->HasFocus();
 }
 
 
-void ConsoleTV::HandleFinishedText(StringHash, VariantMap&)
+void TConsole::HandleFinishedText(StringHash, VariantMap&)
 {
     String command = lineEdit->GetText();
     if(command.Empty())
@@ -294,7 +294,7 @@ void ConsoleTV::HandleFinishedText(StringHash, VariantMap&)
 }
 
 
-void ConsoleTV::HandleUnhandledKey(StringHash, VariantMap& eventData) //-V2009
+void TConsole::HandleUnhandledKey(StringHash, VariantMap& eventData) //-V2009
 {
     using namespace UnhandledKey;
     int key = eventData[P_KEY].GetInt();
@@ -310,13 +310,13 @@ void ConsoleTV::HandleUnhandledKey(StringHash, VariantMap& eventData) //-V2009
 }
 
 
-void ConsoleTV::HandleClick(StringHash, VariantMap&)
+void TConsole::HandleClick(StringHash, VariantMap&)
 {
     lineEdit->SetFocus(true);
 }
 
 
-void ConsoleTV::HandleResize(StringHash, VariantMap&)
+void TConsole::HandleResize(StringHash, VariantMap&)
 {
     lineEdit->SetSize(GetWidth() - 20, 15);
     lineEdit->SetPosition(2, GetHeight() - 15);
@@ -344,7 +344,7 @@ void ConsoleTV::HandleResize(StringHash, VariantMap&)
 }
 
 
-void ConsoleTV::Write(const String &message)
+void TConsole::Write(const String &message)
 {
     if(message[0] == '>')
     {
@@ -378,7 +378,7 @@ void ConsoleTV::Write(const String &message)
 }
 
 
-void ConsoleTV::Clear()
+void TConsole::Clear()
 {
     text->SetText("");
     text->SetPosition(2, 0);

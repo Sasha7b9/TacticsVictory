@@ -12,7 +12,7 @@ bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::St
 #define transparent {0.0f, 0.0f, 0.0f, 0.0f}
 
 
-CursorTV::CursorTV() : Object(TheContext)
+TCursor::TCursor() : Object(TheContext)
 {
     cursor = new Cursor(TheContext);
 
@@ -38,24 +38,24 @@ CursorTV::CursorTV() : Object(TheContext)
 }
 
 
-void CursorTV::Show()
+void TCursor::Show()
 {
     hidden = false;
 }
 
 
-void CursorTV::Hide()
+void TCursor::Hide()
 {
     hidden = true;
 }
 
 
-SharedPtr<Cursor> CursorTV::GetCursor()
+SharedPtr<Cursor> TCursor::GetCursor()
 {
     return cursor;
 }
 
-void CursorTV::Update(float dT)
+void TCursor::Update(float dT)
 {
     const float speed = 500.0f;
     static float angle0 = 0.0f;
@@ -167,19 +167,19 @@ void CursorTV::Update(float dT)
 }
 
 
-void CursorTV::SetNormal()
+void TCursor::SetNormal()
 {
     selected = false;
 }
 
 
-void CursorTV::SetSelected()
+void TCursor::SetSelected()
 {
     selected = true;
 }
 
 
-Drawable* CursorTV::GetRaycastNode(Vector3 *hitPos_)
+Drawable* TCursor::GetRaycastNode(Vector3 *hitPos_)
 {
     if(TheUI->GetElementAt(TheUI->GetCursorPosition(), true))
     {
