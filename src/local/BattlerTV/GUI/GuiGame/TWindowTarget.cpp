@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/GuiGame/TWindowTarget.h"
+#include "Scene/Objects/_TGameObjectEvents.h"
 
 
 WindowTarget::WindowTarget(Context *context) :

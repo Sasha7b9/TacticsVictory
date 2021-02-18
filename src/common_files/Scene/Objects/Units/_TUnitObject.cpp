@@ -3,6 +3,7 @@
 #ifdef CLIENT
 #include "Scene/TCScene.h"
 #endif
+#include "Scene/Objects/_TGameObjectEvents.h"
 
 
 bool UnitObject::viewTargetView = false;

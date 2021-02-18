@@ -135,7 +135,6 @@ using namespace Urho3D;
 
 
 
-#include "Scene/Objects/_TGameObjectEvents.h"
 #include "Scene/Objects/_TObjectState.h"
 #include "Scene/Objects/Ammo/_TAmmoObject.h"
 #include "Scene/Objects/Ammo/Rocket/TCRocket.h"

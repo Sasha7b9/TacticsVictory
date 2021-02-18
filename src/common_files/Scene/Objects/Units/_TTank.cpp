@@ -5,6 +5,7 @@
 #include "Game/TParticles.h"
 #include "Scene/TCScene.h"
 #endif
+#include "Scene/Objects/_TGameObjectEvents.h"
 
 
 HashMap<Tank::Key, Tank::TankStruct> Tank::parameters;

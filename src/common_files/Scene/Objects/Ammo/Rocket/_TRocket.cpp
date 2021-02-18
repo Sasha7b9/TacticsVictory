@@ -4,6 +4,7 @@
 #ifdef CLIENT
 #include "Scene/TCScene.h"
 #endif
+#include "Scene/Objects/_TGameObjectEvents.h"
 
 
 class ThreadRocket : public Thread
