@@ -1,5 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Network/TCServer.h"
+#include "Network/Game/_TGameMessages.h"
 
 
 CServer::CServer(Context *context) : Object(context)

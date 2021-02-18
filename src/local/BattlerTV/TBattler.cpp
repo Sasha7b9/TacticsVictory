@@ -1,5 +1,25 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "TBattler.h"
+#include "Editor/TEditor.h"
+#include "Game/Logic/_TMovinator.h"
+#include "Game/Logic/_TRotator.h"
+#include "Game/Path/TTilePath.h"
+#include "Game/Path/TWaveAlgorithm.h"
+#include "Graphics/2D/TImage.h"
+#include "GUI/TGUI.h"
+#include "GUI/GuiEditor/TGuiEditor.h"
+#include "GUI/Menu/TMenu.h"
+#include "GUI/Menu/TMenuEvents.h"
+#include "Scene/_TLevel.h"
+#include "Scene/_TScene.h"
+#include "Scene/Cameras/TCamera.h"
+#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
+#include "Scene/Objects/Units/_TTank.h"
+#include "Scene/Objects/Units/Logic/_TTranslator.h"
+#include "Scene/Objects/Weapons/_TRocketLauncher.h"
+#include "Utils/TCLog.h"
+#include "Utils/TSettings.h"
 
 
 #pragma warning(push)

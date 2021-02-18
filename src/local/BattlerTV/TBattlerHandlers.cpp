@@ -1,5 +1,13 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "TBattler.h"
+#include "GUI/TCursor.h"
+#include "GUI/Windows/TConsole.h"
+#include "GUI/Menu/TMenu.h"
+#include "GUI/Menu/TMenuEvents.h"
+#include "Scene/_TScene.h"
+#include "Scene/Cameras/TCamera.h"
+#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
 
 
 void Battler::HandlePostRenderUpdate(StringHash, VariantMap&)

@@ -1,4 +1,7 @@
 #include "stdafx.h"
+#include "Audio/TSounds.h"
+#include "Game/TParticles.h"
+#include "Scene/Objects/Ammo/Rocket/TCRocket.h"
 
 
 void CRocket::SetParameters(float timeStep)
