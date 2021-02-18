@@ -84,43 +84,43 @@ void TCamera::Move(float time) //-V2008
 
     if(CURSOR_UP || CURSOR_TOP_LEFT || CURSOR_TOP_RIGHT || ((PRESS_UP || PRESS_W) && arrowEnabled))
     {
-        MoveOn(Direction_Forward, distance);
+        MoveOn(Direction::Forward, distance);
     }
     if(CURSOR_DOWN || CURSOR_DOWN_LEFT || CURSOR_DOWN_RIGhT || ((PRESS_DOWN || PRESS_S) && arrowEnabled))
     {
-        MoveOn(Direction_Back, distance);
+        MoveOn(Direction::Back, distance);
     }
     if(CURSOR_LEFT || CURSOR_TOP_LEFT || CURSOR_DOWN_LEFT || ((PRESS_LEFT || PRESS_A) && arrowEnabled))
     {
-        MoveOn(Direction_Left, distance);
+        MoveOn(Direction::Left, distance);
     }
     if(CURSOR_RIGHT || CURSOR_TOP_RIGHT || CURSOR_DOWN_RIGhT || ((PRESS_RIGHT || PRESS_D) && arrowEnabled))
     {
-        MoveOn(Direction_Right, distance);
+        MoveOn(Direction::Right, distance);
     }
     if(PRESS_HOME || PRESS_Q)
     {
-        MoveOn(Direction_Closer, distance);
+        MoveOn(Direction::Closer, distance);
     }
     if(PRESS_PAGEUP || PRESS_E)
     {
-        MoveOn(Direction_Further, distance);
+        MoveOn(Direction::Further, distance);
     }
     if(TheInput->GetKeyDown(KEY_END))
     {
-        MoveOn(Direction_RotateYAW, -distance);
+        MoveOn(Direction::RotateYAW, -distance);
     }
     if(TheInput->GetKeyDown(KEY_PAGEDOWN))
     {
-        MoveOn(Direction_RotateYAW, distance);
+        MoveOn(Direction::RotateYAW, distance);
     }
     if(TheInput->GetKeyDown(KEY_INSERT))
     {
-        MoveOn(Direction_RotatePITCH, distance);
+        MoveOn(Direction::RotatePITCH, distance);
     }
     if(TheInput->GetKeyDown(KEY_DELETE))
     {
-        MoveOn(Direction_RotatePITCH, -distance);
+        MoveOn(Direction::RotatePITCH, -distance);
     }
 
     int dX = TheInput->GetMouseMoveX();
@@ -133,13 +133,13 @@ void TCamera::Move(float time) //-V2008
         posCursor.y_ -= dY;
         if((dY || dX) && TheInput->GetMouseButtonDown(MOUSEB_LEFT) && TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
-            MoveOn(dY < 0 ? Direction_Closer : Direction_Further, fabs(dY / 10.0f));
+            MoveOn(dY < 0 ? Direction::Closer : Direction::Further, fabs(dY / 10.0f));
             TheCursor->GetCursor()->SetPosition(posCursor);
         }
         else if((dX || dY) && TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
-            MoveOn(Direction_RotateYAW, dX / 10.0f);
-            MoveOn(Direction_RotatePITCH, dY / 10.0f);
+            MoveOn(Direction::RotateYAW, dX / 10.0f);
+            MoveOn(Direction::RotatePITCH, dY / 10.0f);
             TheCursor->GetCursor()->SetPosition(posCursor);
         }
         else if((dX || dY) && TheInput->GetMouseButtonDown(MOUSEB_MIDDLE))
@@ -147,19 +147,19 @@ void TCamera::Move(float time) //-V2008
             float k = 20.0f;
             if(dX > 0)
             {
-                MoveOn(Direction_Left, dX / k);
+                MoveOn(Direction::Left, dX / k);
             }
             else if(dX < 0)
             {
-                MoveOn(Direction_Right, -dX / k);
+                MoveOn(Direction::Right, -dX / k);
             }
             if(dY > 0)
             {
-                MoveOn(Direction_Forward, dY / k);
+                MoveOn(Direction::Forward, dY / k);
             }
             else if(dY < 0)
             {
-                MoveOn(Direction_Back, -dY / k);
+                MoveOn(Direction::Back, -dY / k);
             }
             TheCursor->GetCursor()->SetPosition(posCursor);
         }
@@ -169,7 +169,7 @@ void TCamera::Move(float time) //-V2008
 
     if(wheel)
     {
-        MoveOn(wheel < 0 ? Direction_Closer : Direction_Further, fabs(wheel * 10.0f));
+        MoveOn(wheel < 0 ? Direction::Closer : Direction::Further, fabs(wheel * 10.0f));
     }
 }
 
@@ -185,7 +185,7 @@ void TCamera::SetPitch(float newPitch)
 }
 
 
-void TCamera::MoveOn(Direction direction, float distance)
+void TCamera::MoveOn(Direction::E direction, float distance)
 {
     if(!enabled)
     {
@@ -197,7 +197,7 @@ void TCamera::MoveOn(Direction direction, float distance)
     float yawAngle = rotation.YawAngle();
     float pitchAngle = rotation.PitchAngle();
 
-    if (direction == Direction_RotatePITCH)
+    if (direction == Direction::RotatePITCH)
     {
         if (pitchAngle > 88.0f && distance > 0.0f)
         {
@@ -223,14 +223,14 @@ void TCamera::MoveOn(Direction direction, float distance)
         }
     }
 
-    if (direction == Direction_RotateYAW)
+    if (direction == Direction::RotateYAW)
     {
         Quaternion rotate(distance, Vector3::UP);
         cameraNode->RotateAround(lookAt, rotate, TS_PARENT);
         LookAt(lookAt);
     }
 
-    if(direction == Direction_Left || direction == Direction_Right)
+    if(direction == Direction::Left || direction == Direction::Right)
     {
         yawAngle += 90.0f;
     }
@@ -243,27 +243,27 @@ void TCamera::MoveOn(Direction direction, float distance)
 
     Vector3 delta = {dX, 0.0f, dZ};
 
-    if(direction == Direction_Forward)
+    if(direction == Direction::Forward)
     {
         cameraNode->Translate(delta, TS_WORLD);
         LookAt(lookAt + delta);
     }
-    if(direction == Direction_Back)
+    if(direction == Direction::Back)
     {
         cameraNode->Translate(-delta, TS_WORLD);
         LookAt(lookAt - delta);
     }
-    if(direction == Direction_Left)
+    if(direction == Direction::Left)
     {
         cameraNode->Translate(-delta, TS_WORLD);
         LookAt(lookAt - delta);
     }
-    if(direction == Direction_Right)
+    if(direction == Direction::Right)
     {
         cameraNode->Translate(delta, TS_WORLD);
         LookAt(lookAt + delta);
     }
-    if(direction == Direction_Closer)
+    if(direction == Direction::Closer)
     {
         Vector3 dist = cameraNode->GetPosition() - lookAt;
         if (dist.Length() > 5.0f)
@@ -272,7 +272,7 @@ void TCamera::MoveOn(Direction direction, float distance)
             LookAt(lookAt);
         }
     }
-    if(direction == Direction_Further)
+    if(direction == Direction::Further)
     {
         cameraNode->Translate(Vector3::BACK * distance);
         LookAt(lookAt);

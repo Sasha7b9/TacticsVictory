@@ -5,17 +5,18 @@
 class TCamera
 {
 public:
-    enum Direction
-    {
-        Direction_Forward,
-        Direction_Back,
-        Direction_Left,
-        Direction_Right,
-        Direction_Closer,
-        Direction_Further,
-        Direction_RotateYAW,
-        Direction_RotatePITCH
-    };
+
+    struct Direction { enum E {
+        Forward,
+        Back,
+        Left,
+        Right,
+        Closer,
+        Further,
+        RotateYAW,
+        RotatePITCH
+    }; };
+
     TCamera();
 
     void Move(float time);
@@ -40,6 +41,6 @@ private:
     bool arrowEnabled = true;
 
     void SetupViewport();
-    void MoveOn(Direction direction, float distance);
+    void MoveOn(Direction::E direction, float distance);
     void SetPitch(float pitch);
 };

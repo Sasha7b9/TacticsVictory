@@ -74,11 +74,46 @@ void TacticsVictory::Start()
     Application::Start();
     SetLocalization();
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
+
+    CreateScene();
+
+    SetWindowTitleAndIcon();
+
+    CreateConsoleAndDebugHud();
+
+    TheScene->scene->CreateComponent<DebugRenderer>();
+    TheDebugRenderer = TheScene->scene->GetComponent<DebugRenderer>();
+
+    CreateGUI();
+
+    LOGINFO("Загружаю настройки");
+    TheMenu = new TMenu();
+    TheFileSelector = new FileSelector(TheContext);
+    TheFileSelector->GetWindow()->SetModal(false);
+    TheFileSelector->GetWindow()->SetVisible(false);
+
+    TheLevel = new Level();
+
+    SubscribeToEvents();
+
+    PROFILER_FUNC_LEAVE;
+}
+
+
+void TacticsVictory::CreateGUI()
+{
+    TheUIRoot = TheUI->GetRoot();
+    TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    TheGUI = new GUI();
+}
+
+
+void TacticsVictory::CreateScene()
+{
     TheScene = new CScene();
     TheScene->scene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
-    TheScene->scene->CreateComponent<DebugRenderer>();
     TheCamera = new TCamera();
 
     CreateScriptSystem();
@@ -86,25 +121,6 @@ void TacticsVictory::Start()
     RegistrationComponets();
 
     TheScene->Create();
-
-    SetWindowTitleAndIcon();
-    CreateConsoleAndDebugHud();
-
-    TheDebugRenderer = TheScene->scene->GetComponent<DebugRenderer>();
-    TheUIRoot = TheUI->GetRoot();
-    TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-    TheGUI = new GUI();
-    LOGINFO("Загружаю настройки");
-    TheMenu = new TMenu();
-    TheFileSelector = new FileSelector(TheContext);
-    TheFileSelector->GetWindow()->SetModal(false);
-    TheFileSelector->GetWindow()->SetVisible(false);
-    
-    TheLevel = new Level();
-
-    SubscribeToEvents();
-
-    PROFILER_FUNC_LEAVE;
 }
 
 
