@@ -22,6 +22,23 @@ struct ReloaderComponentGameObject
     int timeLastReload = 0;
 };
 
+struct SelectorComponentGameObject
+{
+    virtual ~SelectorComponentGameObject() { }
+
+    virtual void Init(GameObject *object) { keeper = object; }
+
+    virtual void Execute(GameObject &object) { UNUSED(object); }
+
+    virtual void SetSelected(bool _selected) { selected = _selected; }
+
+    bool IsSelected() { return selected; };
+
+    bool selected = false;
+
+    GameObject *keeper;
+};
+
 
 class GameObject : public LogicComponent
 {
@@ -43,11 +60,9 @@ public:
 
     Type::E GetGameObjectType();
 
-    virtual void SetSelected(bool selected);
-
-    bool IsSelected();
-
     Vector3 GetPosition();
+
+    SelectorComponentGameObject *selector = nullptr;
 
 protected:
 
@@ -56,7 +71,6 @@ protected:
     uint id = 0;
     unsigned timeLastModified = 0;
     Vector3 deltaPos = Vector3::ZERO;
-    bool selected = false;
     float deltaRotate = 0.0f;
     float speed = 0.0f;
     SharedPtr<Translator> translator;

@@ -18,12 +18,15 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
     id = ++creatorID;
 
     translator = new Translator();
+
+    selector = new SelectorComponentGameObject();
 }
 
 
 GameObject::~GameObject()
 {
     delete reloader;
+    delete selector;
 }
 
 
@@ -36,18 +39,6 @@ char *GameObject::GetName()
 GameObject::Type::E GameObject::GetGameObjectType()
 {
     return type;
-}
-
-
-void GameObject::SetSelected(bool selected_)
-{
-    selected = selected_;
-}
-
-
-bool GameObject::IsSelected()
-{
-    return selected;
 }
 
 

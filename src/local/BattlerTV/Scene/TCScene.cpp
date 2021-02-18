@@ -104,14 +104,14 @@ void CScene::ProcessMouseLeft()
     if (name == NODE_TANK)
     {
         Tank *tank = node->GetComponent<Tank>();
-        SetSelected(tank, !tank->IsSelected());
+        SetSelected(tank, !tank->selector->IsSelected());
 
         Vector3 position = node->GetPosition();
         Coord coord(static_cast<uint>(-position.z_), static_cast<uint>(position.x_)); //-V2004
 
         pathIndicator.SetStartPosition(coord);
         pathIndicator.Enable(false);
-        if (tank->IsSelected())
+        if (tank->selector->IsSelected())
         {
             pathIndicator.Enable(true);
         }

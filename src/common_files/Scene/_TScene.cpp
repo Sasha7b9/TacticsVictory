@@ -100,11 +100,11 @@ void TScene::SetSelected(Tank *tank_, bool selected)
             Tank *tank = node->GetComponent<Tank>();
             if(tank)
             {
-                tank->SetSelected(false);
+                tank->selector->SetSelected(false);
             }
         }
     }
-    tank_->SetSelected(selected);
+    tank_->selector->SetSelected(selected);
 }
 
 
@@ -115,7 +115,7 @@ Tank* TScene::GetSelected()
     for(SharedPtr<Node> node : nodes)
     {
         Tank *tank = node->GetComponent<Tank>();
-        if(tank && tank->IsSelected())
+        if(tank && tank->selector->IsSelected())
         {
             return tank;
         }

@@ -55,18 +55,20 @@ void UnitObject::HandlePostRenderUpdate(StringHash, VariantMap&)
 }
 
 
-void UnitObject::SetSelected(bool sel)
+void SelectorComponentUnitObject::SetSelected(bool sel)
 {
-    GameObject::SetSelected(sel);
+    SelectorComponentGameObject::SetSelected(sel);
 
-    if(sel && viewTargetView)
+    UnitObject *unit = (UnitObject *)keeper;
+
+    if(sel && unit->viewTargetView)
     {
-        renderSurface->SetUpdateMode(SURFACE_UPDATEALWAYS);
-        SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(UnitObject, HandlePostRenderUpdate));
+//        unit->renderSurface->SetUpdateMode(SURFACE_UPDATEALWAYS);
+//        unit->SubscribeToEvent(E_POSTRENDERUPDATE, &UnitObject::HandlePostRenderUpdate));
     }
     else
     {
-        renderSurface->SetUpdateMode(SURFACE_MANUALUPDATE);
-        UnsubscribeFromEvent(E_POSTRENDERUPDATE);
+//        renderSurface->SetUpdateMode(SURFACE_MANUALUPDATE);
+//        UnsubscribeFromEvent(E_POSTRENDERUPDATE);
     }
 }

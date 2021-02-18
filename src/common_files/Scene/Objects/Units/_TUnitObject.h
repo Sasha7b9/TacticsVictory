@@ -3,13 +3,23 @@
 #include "Scene/Objects/_TGameObject.h"
 
 
+struct SelectorComponentUnitObject : public SelectorComponentGameObject
+{
+    virtual void SetSelected(bool selected);
+};
+
+
 class UnitObject : public GameObject
 {
+friend struct SelectorComponentUnitObject;
+
+    URHO3D_OBJECT(UnitObject, GameObject);
+
 public:
+
     UnitObject(Context *context = TheContext);
     virtual ~UnitObject();
     static void SetViewTargetView(bool view);
-    virtual void SetSelected(bool selected);
 
 protected:
     static bool viewTargetView;
