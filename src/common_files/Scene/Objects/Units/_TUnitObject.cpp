@@ -3,6 +3,7 @@
 #ifdef CLIENT
 #include "Scene/TCScene.h"
 #endif
+#include "Scene/_TScene.h"
 #include "Scene/Objects/_TGameObjectEvents.h"
 #include "Scene/Objects/Units/_TUnitObject.h"
 

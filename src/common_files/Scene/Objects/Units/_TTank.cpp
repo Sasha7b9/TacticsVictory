@@ -5,6 +5,7 @@
 #include "Game/TParticles.h"
 #include "Scene/TCScene.h"
 #endif
+#include "Scene/_TScene.h"
 #include "Scene/Objects/_TGameObjectEvents.h"
 #include "Scene/Objects/Units/_TTank.h"
 #include "Utils/TGlobalFunctions.h"

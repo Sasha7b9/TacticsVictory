@@ -1,5 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Utils/TGlobalFunctions.h"
+#include "Utils/TSettings.h"
 
 
 bool operator==(const Settings::IntKey & keyleft, const Settings::IntKey& keyright)

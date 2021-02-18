@@ -1,5 +1,16 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "TBattle.h"
+#include "Game/Logic/_TMovinator.h"
+#include "Game/Logic/_TRotator.h"
+#include "Scene/_TLevel.h"
+#include "Scene/_TScene.h"
+#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
+#include "Scene/Objects/Units/_TTank.h"
+#include "Scene/Objects/Units/Logic/_TTranslator.h"
+#include "Scene/Objects/Weapons/_TRocketLauncher.h"
+#include "Utils/_TLog.h"
+#include "Utils/TSettings.h"
 
 
 #pragma warning(push)
@@ -34,7 +45,7 @@ void Battle::Setup()
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
 #ifdef DEBUG
-        engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/debug;../../../../../../out/debug/TVData";
+        engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/debug";
 #else
         engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/release";
 #endif

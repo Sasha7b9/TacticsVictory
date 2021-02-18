@@ -126,34 +126,6 @@ using namespace Urho3D;
 #include "glob_engine.h"
 #include "glob_game.h"
 
-#include "TBattle.h"
-
-#include "Core/_TMath.h"
 #include "Core/_TStructures.h"
-
-#include "Game/Logic/_TMovinator.h"
-#include "Game/Logic/_TRotator.h"
-
-#include "Network/TSServer.h"
-#include "Network/Game/_TGameMessages.h"
-#include "Network/Game/_TConnection.h"
-
-#include "Scene/_TLevel.h"
-#include "Scene/_TScene.h"
-#include "Scene/Objects/_TGameObjectEvents.h"
-#include "Scene/Objects/_TObjectState.h"
-#include "Scene/Objects/Ammo/_TAmmoObject.h"
-#include "Scene/Objects/Buildings/_TBuildingObject.h"
-#include "Scene/Objects/Terrain/_TCornerCube.h"
-#include "Scene/Objects/Terrain/_TEdgeCube.h"
-#include "Scene/Objects/Terrain/_TLayerTerrain.h"
-#include "Scene/Objects/Terrain/_TSegmentTerrain.h"
-#include "Scene/Objects/Terrain/_TSideCube.h"
-#include "Scene/Objects/Units/_TUnitObject.h"
-#include "Scene/Objects/Weapons/_TWeaponObject.h"
-#include "Scene/Primitives/_TTriangle.h"
-
-#include "Utils/TGlobalFunctions.h"
-#include "Utils/_TLog.h"
-#include "Utils/TSettings.h"
-#include "Utils/TSettingsTypes.h"
+#include "GUI/Controls/_THint.h"
+#include "GUI/Controls/_TLabel.h"
