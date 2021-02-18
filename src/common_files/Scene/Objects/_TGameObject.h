@@ -86,6 +86,16 @@ struct GUIComponentGameObject
 };
 
 
+struct CommonComponentGameObject
+{
+    char *GetName();
+
+    uint id = 0;
+
+    char *name = nullptr;
+};
+
+
 class GameObject : public LogicComponent
 {
 friend struct PhysicsComponentGameObject;
@@ -105,9 +115,7 @@ public:
 
     virtual void Update(float timeStep) = 0;
 
-    char *GetName();
-
-    Type::E GetGameObjectType();
+    GameObject::Type::E GetGameObjectType();
 
     SelectorComponentGameObject *selector = nullptr;
 
@@ -119,11 +127,8 @@ public:
 
     GUIComponentGameObject *gui = nullptr;
 
+    CommonComponentGameObject *common = nullptr;
+
 protected:
-
-    uint id = 0;
-
-    char* name = nullptr;
-
     Type::E type = Type::None;
 };

@@ -14,13 +14,15 @@ static uint creatorID = 0;
 
 GameObject::GameObject(Context *context) : LogicComponent(context)
 {
-    id = ++creatorID;
-
     selector = new SelectorComponentGameObject();
 
     physics = new PhysicsComponentGameObject();
 
     graphics = new GraphicsComponentGameObject();
+
+    common = new CommonComponentGameObject();
+
+    common->id = ++creatorID;
 }
 
 
@@ -31,10 +33,11 @@ GameObject::~GameObject()
     delete physics;
     delete graphics;
     delete gui;
+    delete common;
 }
 
 
-char *GameObject::GetName()
+char *CommonComponentGameObject::GetName()
 {
     return name;
 }

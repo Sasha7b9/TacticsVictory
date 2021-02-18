@@ -22,7 +22,7 @@ ContextMenuUnit::ContextMenuUnit(Context *context) :
 void ContextMenuUnit::Create(GameObject *object_)
 {
     object = object_;
-    title->SetText(object->GetName());
+    title->SetText(object->common->GetName());
 
     if(object->GetGameObjectType() == GameObject::Type::Unit)
     {

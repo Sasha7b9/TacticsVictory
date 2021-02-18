@@ -21,7 +21,7 @@ Tank::Tank(Context *context) : UnitObject(context)
 {
     physics->Init(this);
 
-    name = "Tank";
+    common->name = "Tank";
     type = GameObject::Type::Unit;
 
     if (parameters.Empty())
@@ -80,7 +80,7 @@ void Tank::Init(Type::E type_, uint _id_)
     LoadFromFile();
     graphics->Normalize();
 
-    id = (_id_ == 0) ? id : _id_;
+    common->id = (_id_ == 0) ? common->id : _id_;
 
     rocketLauncher->Init();
 
@@ -168,7 +168,7 @@ void ReloaderComponentTank::Execute(GameObject &object)
         {
             if (GF::GetLastModifiedTime(tank.parameters[tank.typeTank].fileName) != timeLastModified)
             {
-                tank.Init(tank.typeTank, tank.id);
+                tank.Init(tank.typeTank, tank.common->id);
             }
             timeLastReload = time;
         }
