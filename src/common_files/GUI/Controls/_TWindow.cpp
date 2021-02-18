@@ -4,6 +4,7 @@
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Controls/_TButtonToggled.h"
 #include "GUI/Controls/_TDropDownListWithTextAndButton.h"
+#include "GUI/Controls/_TSliderWithTextAndButtons.h"
 
 
 TWindow::TWindow(Context *context) :

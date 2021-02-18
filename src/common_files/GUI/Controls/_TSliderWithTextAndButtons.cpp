@@ -3,6 +3,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/Controls/_THint.h"
 #include "GUI/Controls/_TSliderInt.h"
+#include "GUI/Controls/_TSliderWithTextAndButtons.h"
 
 
 SliderWithTextAndButtons::SliderWithTextAndButtons(Context *context) :
