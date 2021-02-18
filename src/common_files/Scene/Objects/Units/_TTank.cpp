@@ -142,7 +142,7 @@ void Tank::Update(float dT)
     }
     else
     {
-        SetPosition(translator->Update(dT));
+        physics->SetPosition(translator->Update(dT));
     }
 
     reloader->Execute(*this);

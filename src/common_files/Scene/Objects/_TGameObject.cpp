@@ -50,9 +50,9 @@ Vector3 PhysicsComponentGameObject::GetPosition()
 }
 
 
-void GameObject::SetPosition(const Vector3& pos)
+void PhysicsComponentGameObject::SetPosition(const Vector3& pos)
 {
-    node_->SetPosition(pos + physics->deltaPos);
+    keeper->node_->SetPosition(pos + keeper->physics->deltaPos);
 }
 
 
@@ -76,13 +76,13 @@ void GameObject::Normalize(float k)
 
     node_->SetScale(scale);
 
-    SetPosition(pos);
+    physics->SetPosition(pos);
 }
 
 
 void GameObject::SetCoord(const Coord& coord)
 {
-    SetPosition(coord.ToVector3());
+    physics->SetPosition(coord.ToVector3());
 }
 
 

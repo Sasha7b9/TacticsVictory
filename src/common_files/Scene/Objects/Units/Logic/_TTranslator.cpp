@@ -52,7 +52,7 @@ void Translator::SetPath(const PODVector<Coord> &path_, float speed_)
     {
         this->speed = Vector3::ZERO;
         currentPos = path[0].ToVector3();
-        tank->SetPosition(currentPos);
+        tank->physics->SetPosition(currentPos);
     }
 }
 

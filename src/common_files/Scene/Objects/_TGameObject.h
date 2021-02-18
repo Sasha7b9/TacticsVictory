@@ -49,6 +49,8 @@ struct PhysicsComponentGameObject
 
     Vector3 GetPosition();
 
+    void SetPosition(const Vector3 &pos);
+
     GameObject *keeper = nullptr;
 
     Vector3 deltaPos = Vector3::ZERO;
@@ -92,7 +94,6 @@ protected:
     Type::E type = Type::None;
     SharedPtr<StaticModel> modelObject;
 
-    void SetPosition(const Vector3& pos);
     void Normalize(float k = 1.0f);
 
     void SetCoord(const Coord &coord);
