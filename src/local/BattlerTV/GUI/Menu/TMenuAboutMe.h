@@ -11,7 +11,7 @@ public:
     MenuAboutMe(Context *context = TheContext);
 
 private:
-    SharedPtr<ButtonTV> buttonOk;
+    SharedPtr<TButton> buttonOk;
 
     void HandleButtonRelease(StringHash, VariantMap&);
 };

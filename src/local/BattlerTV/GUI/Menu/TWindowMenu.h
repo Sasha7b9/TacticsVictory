@@ -14,7 +14,7 @@ public:
     void ProcessingKey(int key);
 
 protected:
-    PODVector<ButtonTV*> buttons;
+    PODVector<TButton*> buttons;
     WindowMenu *prevMenu = nullptr;                         // Если при закрытии этого меню нужно отрывать предыдущее, то указатель на него хранится здесь. //-V122
 
     void SendEventClose();                                  // Посылается окном при его закрытии

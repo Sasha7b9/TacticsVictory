@@ -42,7 +42,7 @@ GUI::~GUI()
 
 void GUI::RegistrationObjects()
 {
-    ButtonTV::RegisterObject();
+    TButton::RegisterObject();
     ButtonSwitch::RegisterObject();
     ButtonToggled::RegisterObject();
     TWindow::RegisterObject();

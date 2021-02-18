@@ -74,11 +74,11 @@ void GuiEditor::CreateTabFile()
     SharedPtr<Tab> tabFile(Tab::Create("File"));
     panelMain->AddTab(tabFile);
 
-    SharedPtr<ButtonTV> btnFileOpen = tabFile->AddButton("Load", 10, y, width, height);
+    SharedPtr<TButton> btnFileOpen = tabFile->AddButton("Load", 10, y, width, height);
     btnFileOpen->SetHint("loadMapFromFile");
     SubscribeToEvent(btnFileOpen, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleFileLoad));
 
-    SharedPtr<ButtonTV> btnFileSave = tabFile->AddButton("Save", 10, y += dY, width, height);
+    SharedPtr<TButton> btnFileSave = tabFile->AddButton("Save", 10, y += dY, width, height);
     btnFileSave->SetHint("saveMapToFile");
     SubscribeToEvent(btnFileSave, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleFileSave));
 }
@@ -91,11 +91,11 @@ void GuiEditor::CreateTabEdit()
 
     y = 10;
 
-    SharedPtr<ButtonTV> btnEditUndo = tabEdit->AddButton("Undo", x, y, width, height);
+    SharedPtr<TButton> btnEditUndo = tabEdit->AddButton("Undo", x, y, width, height);
     btnEditUndo->SetHint("hintEditUndo");
     SubscribeToEvent(btnEditUndo, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleEditUndo));
 
-    SharedPtr<ButtonTV>  btnEditRedo = tabEdit->AddButton("Redo", x, y += dY, width, height);
+    SharedPtr<TButton>  btnEditRedo = tabEdit->AddButton("Redo", x, y += dY, width, height);
     btnEditRedo->SetHint("hintEditRedo");
     SubscribeToEvent(btnEditRedo, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleEditRedo));
 }
@@ -110,7 +110,7 @@ void GuiEditor::CreateTabTerrain()
     btnNewMap->SetHint("createNewMap");
     SubscribeToEvent(btnNewMap, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
-    SharedPtr<ButtonTV> btnClearTerrain = tabTerrain->AddButton("Clear", 10, y += dY, width, height);
+    SharedPtr<TButton> btnClearTerrain = tabTerrain->AddButton("Clear", 10, y += dY, width, height);
     btnClearTerrain->SetHint("clearTerrain");
     SubscribeToEvent(btnClearTerrain, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleTerrainClearTerrain));
 
@@ -139,7 +139,7 @@ void GuiEditor::CreateTabObjects()
 
     y = 10;
 
-    SharedPtr<ButtonTV> btnObjectsAdd = tabObjects->AddButton("Add", x, y, width, height);
+    SharedPtr<TButton> btnObjectsAdd = tabObjects->AddButton("Add", x, y, width, height);
     btnObjectsAdd->SetHint("hintObjectsAdd");
     SubscribeToEvent(btnObjectsAdd, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleObjectsAdd));
 }
@@ -168,7 +168,7 @@ void GuiEditor::ToggleInterfacePanels()
 
 void GuiEditor::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
-    ButtonTV *button = (ButtonTV*)eventData[Released::P_ELEMENT].GetPtr();
+    TButton *button = (TButton*)eventData[Released::P_ELEMENT].GetPtr();
 
     if (button == buttonInterface)
     {
@@ -196,7 +196,7 @@ void GuiEditor::HandleButtonRelease(StringHash, VariantMap &eventData)
 }
 
 
-bool GuiEditor::IntersectionX(const ButtonTV *button, int x_)
+bool GuiEditor::IntersectionX(const TButton *button, int x_)
 {
     return x_ >= button->GetPosition().x_ && x_ <= button->GetPosition().x_ + button->GetWidth();
 }
@@ -234,7 +234,7 @@ void GuiEditor::CreateWindows()
     sliderSizeNewMapX->SetValue(150);
     sliderSizeNewMapY = windowNewMap->AddSlider("Dimension Y", 50, 250, 50);
     sliderSizeNewMapY->SetValue(150);
-    SharedPtr<ButtonTV> buttonCreateMap = windowNewMap->AddButton("Create");
+    SharedPtr<TButton> buttonCreateMap = windowNewMap->AddButton("Create");
     SubscribeToEvent(buttonCreateMap, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleTerrainCreateNewMap));
 
     windowNewMap->SetFixedSize(windowNewMap->GetSize());
@@ -246,9 +246,9 @@ void GuiEditor::CreateWindows()
     windowMenu = new TWindow();
     SET_VERTICAL_LAYOUT_0_0(windowMenu);
 
-    SharedPtr<ButtonTV> buttonOptions = windowMenu->AddButton("Options");
+    SharedPtr<TButton> buttonOptions = windowMenu->AddButton("Options");
     SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleOptions));
-    SharedPtr<ButtonTV> buttonExit = windowMenu->AddButton("Exit");
+    SharedPtr<TButton> buttonExit = windowMenu->AddButton("Exit");
     SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleExit));
 
     windowMenu->SetFixedWidth(buttonMenu->GetWidth());
@@ -266,10 +266,10 @@ void GuiEditor::CreateWindows()
     SharedPtr<UIElement> layer(windowConfirmExit->CreateChild<UIElement>());
     SET_HORIZONTAL_LAYOUT_6_6(layer);
 
-    SharedPtr<ButtonTV> buttonOk(new ButtonTV(layer, "Ok"));
+    SharedPtr<TButton> buttonOk(new TButton(layer, "Ok"));
     SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleExitOk));
 
-    SharedPtr<ButtonTV> buttonCancel(new ButtonTV(layer, "Cancel"));
+    SharedPtr<TButton> buttonCancel(new TButton(layer, "Cancel"));
     SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleExitCancel));
 
     windowConfirmExit->AddChild(layer);

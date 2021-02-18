@@ -7,7 +7,7 @@
 #include "Utils/TSettings.h"
 
 
-ButtonTV::ButtonTV(Context *context) :
+TButton::TButton(Context *context) :
     Button(context)
 {
     SetStyle("MainMenuButton");
@@ -17,7 +17,7 @@ ButtonTV::ButtonTV(Context *context) :
 }
 
 
-ButtonTV::ButtonTV(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
+TButton::TButton(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
     Button(TheContext)
 {
     SetStyleAuto(TheUIRoot->GetDefaultStyle());
@@ -47,44 +47,44 @@ ButtonTV::ButtonTV(UIElement *uielement, char *text, int width /* = -1 */, int h
         SetFixedSize(width, height);
     }
 
-    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(ButtonTV, HandleHoverBegin));
-    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(ButtonTV, HandleHoverEnd));
+    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(TButton, HandleHoverBegin));
+    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(TButton, HandleHoverEnd));
 }
 
 
-void ButtonTV::RegisterObject(Context *context)
+void TButton::RegisterObject(Context *context)
 {
-    context->RegisterFactory<ButtonTV>("UI");
+    context->RegisterFactory<TButton>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(Button);
 }
 
 
-void ButtonTV::SetText(char *text)
+void TButton::SetText(char *text)
 {
     label->SetText(text);
 }
 
 
-void ButtonTV::SetHint(char *text)
+void TButton::SetHint(char *text)
 {
     hint = new Hint(text);
 }
 
 
-void ButtonTV::HandleHoverBegin(StringHash, VariantMap&)
+void TButton::HandleHoverBegin(StringHash, VariantMap&)
 {
     TheCursor->SetSelected();
 }
 
 
-void ButtonTV::HandleHoverEnd(StringHash, VariantMap&)
+void TButton::HandleHoverEnd(StringHash, VariantMap&)
 {
     TheCursor->SetNormal();
 }
 
 
-void ButtonTV::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, MouseButton button,
+void TButton::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, MouseButton button,
     MouseButtonFlags buttons, QualifierFlags qualifiers, Cursor* cursor) //-V813
 {
     Button::OnClickBegin(position, screenPosition, (MouseButton)button, (MouseButtonFlags)buttons, (QualifierFlags)qualifiers, cursor);

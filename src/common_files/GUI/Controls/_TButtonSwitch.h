@@ -3,9 +3,9 @@
 #include "GUI/Controls/_TButton.h"
 
 
-class ButtonSwitch : public ButtonTV
+class ButtonSwitch : public TButton
 {
-    URHO3D_OBJECT(ButtonSwitch, ButtonTV);
+    URHO3D_OBJECT(ButtonSwitch, TButton);
 
 public:
     ButtonSwitch(Context *context = TheContext);

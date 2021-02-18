@@ -51,9 +51,9 @@ bool TWindow::UnderCursor()
 }
 
 
-SharedPtr<ButtonTV> TWindow::AddButton(char *text, int x, int y, int width, int height)
+SharedPtr<TButton> TWindow::AddButton(char *text, int x, int y, int width, int height)
 {
-    SharedPtr<ButtonTV> retButton(new ButtonTV(this, text, width, height));
+    SharedPtr<TButton> retButton(new TButton(this, text, width, height));
     if (x != -1 && y != -1)
     {
         retButton->SetPosition(x, y);
