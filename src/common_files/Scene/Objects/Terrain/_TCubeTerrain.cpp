@@ -1,6 +1,7 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Scene/Objects/Terrain/_TEdgeCube.h"
+#include "Scene/Objects/Terrain/_TSideCube.h"
 
 
 TTerrain* CubeTerrain::terrain = nullptr;
