@@ -38,7 +38,6 @@ public:
     Node* GetNode();
     static PODVector<Tank*>& GetAll();
     static Tank* GetByID(uint id);
-    void DrawMessage();
 
 private:
     bool inProcessFindPath = false;
