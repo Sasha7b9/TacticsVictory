@@ -25,7 +25,7 @@ SharedPtr<MilitaryPlant> MilitaryPlant::Create(uint row, uint col)
     SharedPtr<Node> node(TheScene->scene->CreateChild());
     SharedPtr<MilitaryPlant> plant(node->CreateComponent<MilitaryPlant>());
     plant->Init();
-    plant->SetCoord({ row, col });
+    plant->physics->SetCoord({ row, col });
     return plant;
 }
 

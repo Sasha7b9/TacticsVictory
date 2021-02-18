@@ -237,7 +237,7 @@ SharedPtr<Tank> Tank::Create(Type::E typeTank, uint row, uint col, uint _id_)
 
     tank->reloader = new ReloaderComponentTank();
 
-    tank->SetCoord({ row, col });
+    tank->physics->SetCoord({ row, col });
     tank->SetAutoReloaded(1);
 
     return tank;

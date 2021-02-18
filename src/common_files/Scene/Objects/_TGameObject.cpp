@@ -80,9 +80,9 @@ void GameObject::Normalize(float k)
 }
 
 
-void GameObject::SetCoord(const Coord& coord)
+void PhysicsComponentGameObject::SetCoord(const Coord& coord)
 {
-    physics->SetPosition(coord.ToVector3());
+    SetPosition(coord.ToVector3());
 }
 
 

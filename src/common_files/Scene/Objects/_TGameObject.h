@@ -56,6 +56,8 @@ struct PhysicsComponentGameObject
     Vector3 deltaPos = Vector3::ZERO;
 
     float deltaRotate = 0.0f;
+
+    void SetCoord(const Coord &coord);
 };
 
 
@@ -96,8 +98,6 @@ protected:
     SharedPtr<StaticModel> modelObject;
 
     void Normalize(float k = 1.0f);
-
-    void SetCoord(const Coord &coord);
 
     void SetAutoReloaded(int time) { reloader->Init(time); };
 
