@@ -4,6 +4,7 @@
 #include "GUI/Menu/TMenuConfirmExit.h"
 #include "GUI/Menu/TMenuEvents.h"
 #include "GUI/Menu/TMenuGame.h"
+#include "Utils/TSettingsTypes.h"
 
 
 MenuConfirmExit::MenuConfirmExit(Context *context) : WindowMenu(context)

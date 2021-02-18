@@ -15,6 +15,7 @@
 #include "Scene/Cameras/TCamera.h"
 #include "Utils/TGlobalFunctions.h"
 #include "Utils/TSettings.h"
+#include "Utils/TSettingsTypes.h"
 
 
 GuiEditor::GuiEditor(Context* context) : Object(context)
