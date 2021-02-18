@@ -19,11 +19,25 @@ void TacticsVictory::Setup()
 {
     TheTacticsVictory = this;
     TheSet = new Settings();
-    TheCache = GetSubsystem<ResourceCache>();
-    TheFileSystem = GetSubsystem<FileSystem>();
+
+    GetSubsystems();
+
     OpenLog();
     TheSet->Load();
 
+    TuneEngineParameters();
+}
+
+
+void TacticsVictory::GetSubsystems()
+{
+    TheCache = GetSubsystem<ResourceCache>();
+    TheFileSystem = GetSubsystem<FileSystem>();
+}
+
+
+void TacticsVictory::TuneEngineParameters()
+{
     engineParameters_[EP_WINDOW_TITLE] = GetTypeName();
     engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_[EP_FULL_SCREEN] = false;
@@ -38,6 +52,8 @@ void TacticsVictory::Setup()
 #else
         engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/release";
 #endif
+
+    TheCache->AddResourceDir("TVData");
 }
 
 
@@ -46,7 +62,6 @@ void TacticsVictory::Start()
     TheProfiler = GetSubsystem<Profiler>();
     PROFILER_FUNC_ENTER
     Application::Start();
-    TheCache->AddResourceDir("TVData");
     SetLocalization();
     TheTime = GetSubsystem<Time>();
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);

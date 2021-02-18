@@ -27,6 +27,8 @@ private:
     void SubscribeToEvents();
     void SetLocalization();
     void CreateScriptSystem();
+    void GetSubsystems();
+    void TuneEngineParameters();
 
     void HandleUpdate(StringHash, VariantMap&);
     void HandlePostUpdate(StringHash, VariantMap&);
