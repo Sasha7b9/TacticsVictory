@@ -3,6 +3,7 @@
 #ifdef CLIENT
 #include "Scene/TCScene.h"
 #endif
+#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
 
 
 RocketLauncher::RocketLauncher(Context *context, Tank *tank) : WeaponObject(context)

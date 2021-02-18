@@ -13,6 +13,7 @@
 #include "Scene/_TLevel.h"
 #include "Scene/TCScene.h"
 #include "Scene/Cameras/TCamera.h"
+#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
 
 
 #pragma warning(push)

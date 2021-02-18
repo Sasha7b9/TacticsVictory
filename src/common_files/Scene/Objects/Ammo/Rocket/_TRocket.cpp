@@ -5,6 +5,7 @@
 #include "Scene/TCScene.h"
 #endif
 #include "Scene/Objects/_TGameObjectEvents.h"
+#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
 
 
 class ThreadRocket : public Thread

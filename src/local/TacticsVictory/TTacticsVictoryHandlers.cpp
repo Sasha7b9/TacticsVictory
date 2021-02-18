@@ -8,6 +8,7 @@
 #include "GUI/Windows/TConsole.h"
 #include "Scene/TCScene.h"
 #include "Scene/Cameras/TCamera.h"
+#include "Scene/Objects/Ammo/Rocket/_TRocket.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
