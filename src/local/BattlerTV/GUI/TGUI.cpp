@@ -7,6 +7,7 @@
 #include "GUI/Controls/_TDropDownListWithTextAndButton.h"
 #include "GUI/Controls/_TGovernorFloat.h"
 #include "GUI/Controls/_TSlider.h"
+#include "GUI/Controls/_TSliderInt.h"
 
 
 GUI::GUI() : Object(TheContext)

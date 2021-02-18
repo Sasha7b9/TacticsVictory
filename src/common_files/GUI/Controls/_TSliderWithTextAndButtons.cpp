@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "GUI/TCursor.h"
 #include "GUI/Controls/_THint.h"
+#include "GUI/Controls/_TSliderInt.h"
 
 
 SliderWithTextAndButtons::SliderWithTextAndButtons(Context *context) :

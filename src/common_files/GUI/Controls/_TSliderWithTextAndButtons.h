@@ -3,6 +3,7 @@
 
 
 class Hint;
+class SliderInt;
 
 
 class SliderWithTextAndButtons : public UIElement

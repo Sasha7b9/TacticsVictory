@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Controls/_TDropDownListWithTextAndButton.h"
+#include "GUI/Controls/_TSliderInt.h"
 
 
 MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
