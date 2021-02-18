@@ -137,8 +137,6 @@ using namespace Urho3D;
 
 
 
-#include "Scene/Objects/Units/Logic/_TTranslator.h"
-#include "Scene/Objects/Units/_TUnitObject.h"
 #include "Scene/Objects/Weapons/_TWeaponObject.h"
 #include "Scene/Primitives/_TTriangle.h"
 

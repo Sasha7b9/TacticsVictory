@@ -3,6 +3,9 @@
 #include "Scene/Objects/Weapons/_TWeaponObject.h"
 
 
+class Tank;
+
+
 class RocketLauncher : public WeaponObject
 {
     URHO3D_OBJECT(RocketLauncher, WeaponObject);

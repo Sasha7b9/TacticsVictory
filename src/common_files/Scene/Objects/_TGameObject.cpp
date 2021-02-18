@@ -5,6 +5,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/GuiGame/TContextMenuUnit.h"
 #endif
+#include "Scene/Objects/Units/Logic/_TTranslator.h"
 
 
 static uint creatorID = 0;

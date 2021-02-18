@@ -1,5 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
+#include "Scene/Objects/Units/Logic/_TTranslator.h"
+#include "Scene/Objects/Units/_TTank.h"
 
 
 Translator::Translator(Context *context) : Object(context)

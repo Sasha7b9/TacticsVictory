@@ -7,6 +7,8 @@
 #ifdef CLIENT
 #include "Scene/TCScene.h"
 #endif
+#include "Scene/Objects/Units/_TTank.h"
+
 
 TScene::TScene(Context *context) : Object(context)
 {

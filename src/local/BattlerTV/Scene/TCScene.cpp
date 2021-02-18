@@ -6,6 +6,7 @@
 #include "GUI/GuiGame/TWindowTarget.h"
 #include "Scene/TCScene.h"
 #include "Scene/Objects/Buildings/_TMilitaryPlant.h"
+#include "Scene/Objects/Units/_TTank.h"
 
 
 CScene::CScene(Context *context) : TScene(context)

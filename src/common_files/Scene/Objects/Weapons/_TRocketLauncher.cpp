@@ -4,6 +4,7 @@
 #include "Scene/TCScene.h"
 #endif
 #include "Scene/Objects/Ammo/Rocket/_TRocket.h"
+#include "Scene/Objects/Units/_TTank.h"
 
 
 RocketLauncher::RocketLauncher(Context *context, Tank *tank) : WeaponObject(context)
