@@ -198,7 +198,7 @@ void Battler::RegistrationComponets()
     RocketLauncher::RegisterObject();
 
     Translator::RegisterObject();
-    WaveAlgorithm::RegisterInAS();
+    WaveAlgorithm::RegisterObject();
     Tank::RegisterObject();
 
     TScene::RegisterObject();

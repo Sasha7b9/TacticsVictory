@@ -11,13 +11,13 @@ public:
     WaveAlgorithm(Context *context = TheContext);
     virtual ~WaveAlgorithm();
 
-    static void RegisterInAS();
-
     void SetSize(uint numRows, uint numCols);
     void StartFind(Coord start, Coord end);
     bool PathIsFound();
     PODVector<Coord> GetPath();
     virtual void ThreadFunction();
+
+    static void RegisterObject();
 
 private:
     typedef Vector<Coord> Wave;
@@ -35,6 +35,8 @@ private:
     void SetCell(Wave &wave, uint row, uint col, int numWave);
     void AddPrevWave(PODVector<Coord> &path);
     void FindPath();
+
+    static void RegisterInAS();
 
 public:
     CScriptArray* GetPathUINT()

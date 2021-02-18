@@ -236,3 +236,9 @@ void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path_)
         }
     }
 }
+
+
+void WaveAlgorithm::RegisterObject()
+{
+    RegisterInAS();
+}

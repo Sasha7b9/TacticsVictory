@@ -148,7 +148,7 @@ void TacticsVictory::RegistrationComponets()
     Rocket::RegisterObject();
 
     Translator::RegisterObject();
-    WaveAlgorithm::RegisterInAS();
+    WaveAlgorithm::RegisterObject();
     Tank::RegisterObject();
 
     MilitaryPlant::RegisterObject();
