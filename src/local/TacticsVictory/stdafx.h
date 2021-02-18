@@ -125,7 +125,13 @@ using namespace Urho3D;
 #include "glob_engine.h"
 #include "glob_game.h"
 
+#include "GUI/Controls/_THint.h"
 #include "GUI/Controls/_TLabel.h"
+
+
+
+
+
 #include "GUI/Controls/_TSlider.h"
 #include "GUI/Controls/_TSliderInt.h"
 #include "GUI/Controls/_TSliderWithTextAndButtons.h"

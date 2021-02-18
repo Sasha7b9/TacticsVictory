@@ -3,6 +3,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Controls/_THint.h"
+#include "GUI/Controls/_TLabel.h"
 
 
 ButtonTV::ButtonTV(Context *context) :
