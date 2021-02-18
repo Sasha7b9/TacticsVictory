@@ -214,13 +214,17 @@ float Tank::GetRotation()
 }
 
 
-SharedPtr<Tank> Tank::Create(Type::E typeTank, uint _id_)
+SharedPtr<Tank> Tank::Create(Type::E typeTank, uint row, uint col, uint _id_)
 {
     SharedPtr<Node> node(TheScene->scene->CreateChild(NODE_TANK, LOCAL));
     SharedPtr<Tank> tank(node->CreateComponent<Tank>(LOCAL));
 
     tank->Init(typeTank, _id_);
     allTanks.Push(tank);
+
+    tank->SetCoord({ row, col });
+    tank->SetAutoReloaded(1);
+
     return tank;
 }
 

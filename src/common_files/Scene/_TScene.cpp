@@ -56,9 +56,7 @@ void TScene::Create()
             row = static_cast<uint>(Math::RandomInt(0, static_cast<int>(TheLevel->GetHeight()) - 1));
         } while (fabs(TheTerrain->GetHeight(row, col)) > M_EPSILON);
 
-        SharedPtr<Tank> tank = Tank::Create(Tank::Type::Small);
-        tank->SetCoord({ row, col });
-        tank->SetAutoReloaded(1);
+        SharedPtr<Tank> tank = Tank::Create(Tank::Type::Small, row, col);
     }
 
     SharedPtr<Node> lightNode;

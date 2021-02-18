@@ -28,8 +28,11 @@ public:
     virtual ~Tank() {};
 
     static void RegisterObject(Context* context = TheContext);
+
+    static SharedPtr<Tank> Create(Type::E type, uint row, uint col, uint _id_ = 0);
+
     virtual void Update(float timeStep);
-    static SharedPtr<Tank> Create(Type::E type, uint _id_ = 0);
+
     void SetCoord(const Coord& coord);
     void SetPath(const PODVector<Coord> &path);
     // rotation = [0...359.999999f]
