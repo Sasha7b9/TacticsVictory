@@ -4,6 +4,7 @@
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Controls/_THint.h"
 #include "GUI/Controls/_TLabel.h"
+#include "Utils/TSettings.h"
 
 
 ButtonTV::ButtonTV(Context *context) :

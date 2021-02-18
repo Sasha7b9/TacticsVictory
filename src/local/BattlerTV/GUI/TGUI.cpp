@@ -22,6 +22,7 @@
 #include "GUI/Windows/TConsole.h"
 #include "GUI/Windows/TWindowVariables.h"
 #include "Scene/Cameras/TCamera.h"
+#include "Utils/TSettings.h"
 
 
 GUI::GUI() : Object(TheContext)

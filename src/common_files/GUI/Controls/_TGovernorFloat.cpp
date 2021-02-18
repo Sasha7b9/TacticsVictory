@@ -3,6 +3,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/Controls/_TGovernorFloat.h"
 #include "GUI/Controls/_TLabel.h"
+#include "Utils/TSettings.h"
 
 
 GovernorCell::GovernorCell(Context *) :

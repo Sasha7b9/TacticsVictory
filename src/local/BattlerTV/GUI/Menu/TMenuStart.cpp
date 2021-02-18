@@ -4,6 +4,7 @@
 #include "GUI/Menu/TMenuEvents.h"
 #include "GUI/Menu/TMenu.h"
 #include "GUI/Menu/TMenuStart.h"
+#include "Utils/TSettings.h"
 
 
 #define VAR_MENU_EVENT "VAR_MENU_EVENT"

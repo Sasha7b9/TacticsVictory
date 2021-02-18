@@ -5,6 +5,7 @@
 #include "GUI/Panels/TPanelMap.h"
 #include "Scene/_TLevel.h"
 #include "Scene/Cameras/TCamera.h"
+#include "Utils/TSettings.h"
 
 
 PanelMap::PanelMap(Context *context) :
