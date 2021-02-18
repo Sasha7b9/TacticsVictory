@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Editor/TEditor.h"
 #include "GUI/TGUI.h"
+#include "GUI/Controls/_TButtonSwitch.h"
 
 
 GuiEditor::GuiEditor(Context* context) : Object(context)

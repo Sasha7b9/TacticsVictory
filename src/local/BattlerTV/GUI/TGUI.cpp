@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "GUI/TCursor.h"
 #include "GUI/TGUI.h"
+#include "GUI/Controls/_TButtonSwitch.h"
 
 
 GUI::GUI() : Object(TheContext)
