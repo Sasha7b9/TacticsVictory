@@ -51,11 +51,15 @@ file(GLOB GUI_WINDOWS                                   ../BattlerTV/GUI/Windows
 file(GLOB SCENE                                   ../../common_files/Scene/*.*
                                                         ../BattlerTV/Scene/*.*)
 file(GLOB SCENE_CAMERAS                                 ../BattlerTV/Scene/Cameras/*.*)
-file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/*.*)
-file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objects/Ammo/*.*)
+file(GLOB SCENE_OBJECTS                           ../../common_files/Scene/Objects/*.*
+                                                        ../BattlerTV/Scene/Objects/*.*)
+file(GLOB SCENE_OBJECTS_AMMO                      ../../common_files/Scene/Objects/Ammo/*.*
+                                                        ../BattlerTV/Scene/Objects/Ammo/*.*)
 file(GLOB SCENE_OBJECTS_TERRAIN                   ../../common_files/Scene/Objects/Terrain/*.*)
-file(GLOB SCENE_OBJECTS_UNITS                     ../../common_files/Scene/Objects/Units/*.*)
-file(GLOB SCENE_OBJECTS_WEAPONS                   ../../common_files/Scene/Objects/Weapons/*.*)
+file(GLOB SCENE_OBJECTS_UNITS                     ../../common_files/Scene/Objects/Units/*.*
+                                                        ../BattlerTV/Scene/Objects/Units/*.*)
+file(GLOB SCENE_OBJECTS_WEAPONS                   ../../common_files/Scene/Objects/Weapons/*.*
+                                                        ../BattlerTV/Scene/Objects/Weapons/*.*)
 file(GLOB SCENE_PRIMITIVES                        ../../common_files/Scene/Primitives/*.*)
 file(GLOB UTILS                                         ../BattlerTV/Utils/*.*
                                                   ../../common_files/Utils/*.*)

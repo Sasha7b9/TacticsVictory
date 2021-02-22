@@ -2,8 +2,10 @@
 #pragma once
 
 
-class GameObject
+class GameObject : public Object
 {
+    URHO3D_OBJECT(GameObject, Object);
+
 public:
 
     static Vector<GameObject *> storage;
