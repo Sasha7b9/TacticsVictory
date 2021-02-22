@@ -29,7 +29,6 @@ private:
     void CreateScriptSystem();
     void GetSubsystems();
     void TuneEngineParameters();
-    void CreateScene();
     void CreateGUI();
 
     void HandleUpdate(StringHash, VariantMap&);

@@ -10,6 +10,8 @@ class CTank : public Tank, public CUnitObject
 
 public:
 
+    static SharedPtr<CTank> Create(uint row, uint col);
+
 private:
 
     CTank();

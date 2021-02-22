@@ -98,7 +98,9 @@ void TacticsVictory::Start()
 
     RegistrationComponets();
 
-    CreateScene();
+    TheScene = new CScene();
+
+    TheScene->Create();
 
     TheCamera = TCamera::Create(TheScene->scene);
 
@@ -130,21 +132,6 @@ void TacticsVictory::CreateGUI()
     TheUIRoot = TheUI->GetRoot();
     TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     TheGUI = new GUI();
-}
-
-
-void TacticsVictory::CreateScene()
-{
-    PROFILER_FUNC_ENTER();
-
-    TheScene = new CScene();
-
-    ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
-    ThePhysicsWorld->SetGravity(Vector3::ZERO);  
-
-    TheScene->Create();
-
-    PROFILER_FUNC_LEAVE();
 }
 
 
