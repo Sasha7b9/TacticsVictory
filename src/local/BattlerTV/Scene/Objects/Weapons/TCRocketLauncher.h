@@ -1,0 +1,18 @@
+// 2021/02/22 21:19:41 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#pragma once
+#include "Scene/Objects/Weapons/_TRocketLauncher.h"
+#include "Scene/Objects/Weapons/TCWeaponObject.h"
+
+
+class CRocketLauncher : public RocketLauncher, public CWeaponObject
+{
+    URHO3D_OBJECT(CRocketLauncher, RocketLauncher);
+
+public:
+
+    static SharedPtr<CRocketLauncher> Create();
+
+private:
+
+    CRocketLauncher();
+};
