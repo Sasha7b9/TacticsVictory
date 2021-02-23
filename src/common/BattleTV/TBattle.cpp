@@ -99,7 +99,7 @@ void Battle::Stop()
 void Battle::SetLocalization()
 {
     TheLocalization = GetSubsystem<Localization>();
-    TheLocalization->LoadJSONFile("TVData/Strings.json");
+    TheLocalization->LoadJSONFile("Strings.json");
     TheLocalization->SetLanguage("ru");
 }
 

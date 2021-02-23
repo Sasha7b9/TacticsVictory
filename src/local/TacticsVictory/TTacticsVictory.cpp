@@ -163,7 +163,7 @@ void TacticsVictory::Stop()
 
 void TacticsVictory::SetLocalization()
 {
-    TheLocalization->LoadJSONFile("TVData/Strings.json");
+    TheLocalization->LoadJSONFile("Strings.json");
     TheLocalization->SetLanguage("ru");
 }
 

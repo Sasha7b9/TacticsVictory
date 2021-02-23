@@ -8,7 +8,7 @@ unsigned GF::GetLastModifiedTime(char* name)
     String fullName = TheFileSystem->GetProgramDir();
     fullName.Erase(fullName.Length() - 1);
     fullName.Erase(fullName.FindLast('/'), 6);
-    fullName += String("/TVData/") + String(name);
+    fullName += String("/") + String(RESOURCES_DIR) + "/" + String(name);
     return TheFileSystem->GetLastModifiedTime(fullName);
 }
 
