@@ -32,7 +32,8 @@ else()
     SET(LDFLAGS "${LDFLAGS} -ldl")
 endif()
 
-file(GLOB SRC                                                        *.h *.cpp)
+file(GLOB SRC                                     ../../common_files/*.*
+                                                  *.h *.cpp)
 file(GLOB AUDIO                                         ../BattlerTV/Audio/*.*)
 file(GLOB CORE                                    ../../common_files/Core/*.*)
 file(GLOB EDITOR                                        ../BattlerTV/Editor/*.*)

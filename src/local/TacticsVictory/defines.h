@@ -3,11 +3,6 @@
 #include "_defines.h"
 
 
-typedef void(*pFuncVV)();
-typedef float(*pFuncFV)();
-typedef void(*pFuncVF)(float);
-
-
 typedef unsigned char      uint8;
 typedef long long int      int64;
 typedef unsigned long long uint64;
