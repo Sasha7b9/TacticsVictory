@@ -3,7 +3,7 @@
 #include "Scene/Objects/Ammo/_TRocket.h"
 
 
-Rocket::Rocket() : Object(TheContext)
+Rocket::Rocket() : AmmoObject()
 {
 
 }

@@ -3,11 +3,11 @@
 #include "Scene/Objects/Units/_TUnitObject.h"
 
 
-class Tank : public Object
+class Tank : public UnitObject
 {
-    URHO3D_OBJECT(Tank, Object);
+    URHO3D_OBJECT(Tank, UnitObject);
 
-public:
+protected:
 
     Tank();
 

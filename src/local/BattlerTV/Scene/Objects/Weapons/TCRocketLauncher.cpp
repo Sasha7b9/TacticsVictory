@@ -3,7 +3,7 @@
 #include "Scene/Objects/Weapons/TCRocketLauncher.h"
 
 
-CRocketLauncher::CRocketLauncher() : RocketLauncher(), CWeaponObject()
+CRocketLauncher::CRocketLauncher() : RocketLauncher()
 {
 
 }

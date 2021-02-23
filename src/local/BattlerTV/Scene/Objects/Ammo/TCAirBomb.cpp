@@ -3,7 +3,7 @@
 #include "Scene/Objects/Ammo/TCAirBomb.h"
 
 
-CAirBomb::CAirBomb() : CAirBombObject()
+CAirBomb::CAirBomb() : AirBomb()
 {
 
 }

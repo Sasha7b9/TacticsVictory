@@ -3,7 +3,7 @@
 #include "Scene/Objects/Weapons/TCAirBombLauncher.h"
 
 
-CAirBombLauncher::CAirBombLauncher() : AirBombLauncher(), CWeaponObject()
+CAirBombLauncher::CAirBombLauncher() : AirBombLauncher()
 {
 
 }

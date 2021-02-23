@@ -3,9 +3,9 @@
 #include "Scene/Objects/Ammo/_TAmmoObject.h"
 
 
-class Grenade : public Object
+class Grenade : public AmmoObject
 {
-    URHO3D_OBJECT(Grenade, Object);
+    URHO3D_OBJECT(Grenade, AmmoObject);
 
 public:
 

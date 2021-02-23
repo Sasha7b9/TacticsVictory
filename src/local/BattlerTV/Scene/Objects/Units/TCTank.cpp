@@ -6,7 +6,7 @@
 Vector<CTank *> CTank::storage;
 
 
-CTank::CTank() : CTankObject()
+CTank::CTank() : Tank()
 {
 
 }
