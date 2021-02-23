@@ -98,7 +98,7 @@ void Battler::Start()
     TheProfiler = GetSubsystem<Profiler>();
     PROFILER_FUNC_ENTER
     Application::Start();
-    TheCache->AddResourceDir("TVData");
+    TheCache->AddResourceDir(RESOURCES_DIR);
     SetLocalization();
     TheTime = GetSubsystem<Time>();
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
@@ -145,7 +145,7 @@ void Battler::Start()
 void Battler::SetLocalization()
 {
     TheLocalization = GetSubsystem<Localization>();
-    TheLocalization->LoadJSONFile("TVData/Strings.json");
+    TheLocalization->LoadJSONFile("Strings.json");
     TheLocalization->SetLanguage("ru");
 }
 
