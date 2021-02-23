@@ -5,6 +5,26 @@
 class TImage;
 
 
+struct TypeCursor
+{
+    enum E
+    {
+        Normal,
+        Selected,
+        Left,
+        Up,
+        Right,
+        Down,
+        TopLeft,
+        TopRight,
+        DownLeft,
+        DownRight,
+        Busy,
+        Count
+    };
+};
+
+
 class CursorShapes : public Object
 {
     URHO3D_OBJECT(CursorShapes, Object);
