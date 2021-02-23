@@ -9,6 +9,8 @@ class UnitObject : public GameObject
 
 public:
 
+    static Vector<UnitObject *> storage;
+
 protected:
     UnitObject();
 };
