@@ -21,10 +21,7 @@ void CTank::RegisterObject()
 
 SharedPtr<CTank> CTank::Create(uint row, uint col)
 {
-    SharedPtr<Node> node(TheScene->scene->CreateChild("CTank", LOCAL));
-    SharedPtr<CTank> tank(node->CreateComponent<CTank>(LOCAL));
-
-
+    SharedPtr<CTank> tank(TheScene->scene->CreateChild("CTank", LOCAL)->CreateComponent<CTank>(LOCAL));
 
     tank->LoadFromJSON("Models/Tank.json");
 
