@@ -110,7 +110,7 @@ void TacticsVictory::Start()
             (uint)Random((float)TheScene->level[0].Size()));
     }
 
-    TheCamera = TCamera::Create(TheScene);
+    TheCamera = TCamera::Create();
 
     SetWindowTitleAndIcon();
 
@@ -157,7 +157,6 @@ void TacticsVictory::Stop()
     delete TheGUI;
     delete TheSet;
     delete TheEditor;
-    delete TheCamera;
     delete TheLog;
 }
 
@@ -195,16 +194,13 @@ void TacticsVictory::CreateScriptSystem()
 
 void TacticsVictory::RegistrationComponets()
 {
+    TCamera::RegisterObject();
     TCursor::RegisterObject();
-
     TImage::RegisterObject();
     Movinator::RegisterObject();
     Rotator::RegisterObject();
-
     WaveAlgorithm::RegisterObject();
-
     TScene::RegisterObject();
-
     CTank::RegisterObject();
 }
 

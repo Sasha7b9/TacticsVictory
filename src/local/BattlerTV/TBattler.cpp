@@ -121,7 +121,7 @@ void Battler::Start()
     TheInput = GetSubsystem<Input>();
     TheAudio = GetSubsystem<Audio>();
     TheRenderer = GetSubsystem<Renderer>();
-    TheCamera = new TCamera(TheScene);
+    TheCamera = TCamera::Create();
     TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
     TheUIRoot = TheUI->GetRoot();
     TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));

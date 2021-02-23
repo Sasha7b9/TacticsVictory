@@ -17,9 +17,9 @@
 #define CURSOR_DOWN_RIGhT   (cursor == TCursor::Type::DownRight)
 
 
-TCamera::TCamera(Scene *scene)
+TCamera::TCamera(Context *context) : LogicComponent(context)
 {
-    cameraNode = scene->CreateChild("Camera");
+    cameraNode = TheScene->CreateChild("Camera");
 
     Camera *camera = cameraNode->CreateComponent<Camera>();
     camera->SetFarClip(1000.0f);
@@ -39,9 +39,15 @@ TCamera::TCamera(Scene *scene)
 }
 
 
-TCamera *TCamera::Create(Scene *scene)
+void TCamera::RegisterObject()
 {
-    TCamera *camera = new TCamera(scene);
+    TheContext->RegisterFactory<TCamera>();
+}
+
+
+SharedPtr<TCamera> TCamera::Create()
+{
+    SharedPtr<TCamera> camera(TheScene->CreateChild("TCamera", LOCAL)->CreateComponent<TCamera>(LOCAL));
 
     uint sizeX = TheScene->level[0].Size();
     uint sizeZ = TheScene->level.Size();

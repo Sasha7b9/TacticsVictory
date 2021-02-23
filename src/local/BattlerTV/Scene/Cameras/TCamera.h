@@ -2,8 +2,10 @@
 #pragma once
 
 
-class TCamera
+class TCamera : public LogicComponent
 {
+    URHO3D_OBJECT(TCamera, LogicComponent);
+
 public:
 
     struct Direction { enum E {
@@ -17,9 +19,11 @@ public:
         RotatePITCH
     }; };
 
-    TCamera(Scene *scene);
+    TCamera(Context *context);
 
-    static TCamera *Create(Scene *scene);
+    static void RegisterObject();
+
+    static SharedPtr<TCamera> Create();
 
     void Move(float time);
     void ParallelTranslateLookAt(const Vector3 &lookAt);
