@@ -30,9 +30,9 @@ void GameObject::LoadFromJSON(const String &fileName)
 
     speed = root.Get("speed").GetFloat();
 
-    deltaRotate = root.Get("deltaRotate").GetFloat();
+    shiftRotate = root.Get("deltaRotate").GetFloat();
 
-    Quaternion rotate(deltaRotate, Vector3::UP);
+    Quaternion rotate(shiftRotate, Vector3::UP);
     node_->SetRotation(Quaternion(0, Vector3::UP));
     node_->Rotate(rotate);
 }

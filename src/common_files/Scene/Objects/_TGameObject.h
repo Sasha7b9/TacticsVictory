@@ -22,7 +22,6 @@ private:
 
     SharedPtr<StaticModel> staticModel;
 
-    float speed = 0.0f;
-
-    float deltaRotate = 0.0f;
+    float speed = 0.0f;                     // С такой скоростью объект перемещается
+    float shiftRotate = 0.0f;               // Поворот модели относительно направления ноды
 };
