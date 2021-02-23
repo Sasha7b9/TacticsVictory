@@ -83,7 +83,7 @@ void TacticsVictory::TuneEngineParameters()
         engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/release";
 #endif
 
-    TheCache->AddResourceDir("TVData");
+    TheCache->AddResourceDir(RESOURCES_DIR);
 }
 
 
