@@ -12,7 +12,7 @@ void Message::RequestForBuildScene::Handle(const TConnection &connection)
 }
 
 
-void Message::KeyEvent::Handle(MemoryBuffer &msg)
+void Message::KeyEvent::Handle(MemoryBuffer & /*msg*/)
 {
-    UNUSED(msg);
+
 }

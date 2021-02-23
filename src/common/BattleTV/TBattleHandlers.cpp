@@ -10,7 +10,7 @@ void Battle::HandleUpdate(StringHash, VariantMap& /*eventData*/)
 }
 
 
-void Battle::HandlePostUpdate(StringHash, VariantMap& eventData)
+void Battle::HandlePostUpdate(StringHash, VariantMap& /*eventData*/)
 {
-    UNUSED(eventData);
+
 }
