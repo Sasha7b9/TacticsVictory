@@ -2,21 +2,6 @@
 #pragma once
 #include "_defines.h"
 
-
-typedef void(*pFuncVV)();
-typedef float(*pFuncFV)();
-typedef void(*pFuncVF)(float);
-
-
-typedef unsigned char   uint8;
-typedef long long int   int64;
-typedef unsigned long long uint64;
-typedef short unsigned  uint16;
-typedef unsigned int    uint;
-typedef unsigned short  ushort;
-typedef unsigned char   uchar;
-
-
 struct TypeCursor { enum E {
     Normal,
     Selected,
@@ -32,22 +17,6 @@ struct TypeCursor { enum E {
     Size
 }; };
 
-#define SERVER_ADDRESS  "127.0.0.1"
-#define SERVER_PORT     1000
-
-
-#define WIDTH_WINDOW_TARGET 500
-#define HEIGHT_WINDOW_TARGET 300
-
-#define SAFE_DELETE(x) if(x) delete x; x = nullptr;
-#define SAFE_DELETE_ARRAY(x) if(x) delete[]x; x = nullptr;
-
-#define NODE_MILITARY_PLANT "Military Plant"
-#define NODE_TILE_PATH      "TilePath"
-#define NODE_TRIGGER        "Trigger"
-
-#define VIEW_MASK_FOR_MISSILE   1
-#define VIEW_MASK_FOR_EFFECTS   2
 
 #define PRESS_UP        (TheInput->GetKeyDown(KEY_UP))
 #define PRESS_DOWN      (TheInput->GetKeyDown(KEY_DOWN))

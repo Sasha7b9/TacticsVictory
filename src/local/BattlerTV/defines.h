@@ -28,11 +28,6 @@ typedef const char        *pchar;
 #define SAFE_DELETE(x) if(x) delete x; x = nullptr;
 #define SAFE_DELETE_ARRAY(x) if(x) delete[]x; x = nullptr;
 
-#define NODE_TERRAIN        "TTerrain"
-#define NODE_MILITARY_PLANT "Military Plant"
-#define NODE_TILE_PATH      "TilePath"
-#define NODE_TRIGGER        "Trigger"
-
 #define VIEW_MASK_FOR_MISSILE   1
 #define VIEW_MASK_FOR_EFFECTS   2
 

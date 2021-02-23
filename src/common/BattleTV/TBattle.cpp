@@ -86,13 +86,13 @@ void Battle::Stop()
 {
     engine_->DumpResources(true);
     //engine_->DumpProfiler();
-    SAFE_DELETE(TheScene); //-V809
-    SAFE_DELETE(scene); //-V809
-    SAFE_DELETE(TheLevel); //-V809
+    delete TheScene;
+    delete scene;
+    delete TheLevel;
     TheSet->Save();
-    SAFE_DELETE(TheSet); //-V809
+    delete TheSet;
     TheLog->Close();
-    SAFE_DELETE(TheLog); //-V809
+    delete TheLog;
 }
 
 
