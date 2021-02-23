@@ -31,7 +31,6 @@ private:
     void TuneEngineParameters();
     void CreateGUI();
 
-    void HandleUpdate(StringHash, VariantMap&);
     void HandleMenuEvent(StringHash, VariantMap&);
     void HandlePostRenderUpdate(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);

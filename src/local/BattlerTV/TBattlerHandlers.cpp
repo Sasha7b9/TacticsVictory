@@ -105,16 +105,3 @@ void Battler::HandleMenuEvent(StringHash, VariantMap& eventData)
         CreateEditorSession();
     }
 }
-
-
-void Battler::HandleUpdate(StringHash, VariantMap& eventData)
-{
-    float time = eventData[Update::P_TIMESTEP].GetFloat();
-
-    TheCamera->Move(time);
-}
-
-
-void Battler::HandlePostUpdate(StringHash, VariantMap& /*eventData*/)
-{
-}

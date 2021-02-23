@@ -103,9 +103,3 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
         CreateEditorSession();
     }
 }
-
-
-void TacticsVictory::HandleUpdate(StringHash, VariantMap&)
-{
-
-}

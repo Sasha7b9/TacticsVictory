@@ -221,9 +221,6 @@ void Battler::SubscribeToEvents()
     SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(Battler, HandleKeyDown));
     SubscribeToEvent(E_MENU, URHO3D_HANDLER(Battler, HandleMenuEvent));
     SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Battler, HandlePostRenderUpdate));
-
-    SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(Battler, HandleUpdate));
-    SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(Battler, HandlePostUpdate));
 }
 
 
