@@ -109,31 +109,10 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
 {
     float time = eventData[Update::P_TIMESTEP].GetFloat();
 
-    //LOGINFOF("time frame %f, time from begin %f, fps %f", time, TheTime->GetElapsedTime(), TheTime->GetFrameNumber() / TheTime->GetElapsedTime());
-
     TheCamera->Move(time);
-
-    if (TheCursor)
-    {
-        TheCursor->Update(time);
-    }
 
     if (TheScene)
     {
         TheScene->Update(time);
     }
-
-    if (TheScene)
-    {
-        /*
-        PODVector<Component*> components;
-        TheScene->GetComponents(components, ParticleEmitter::GetTypeStatic(), true);
-        URHO3D_LOGINFOF("%d components", components.Size());
-        */
-    }
-}
-
-
-void TacticsVictory::HandlePostUpdate(StringHash, VariantMap& /*eventData*/)
-{
 }

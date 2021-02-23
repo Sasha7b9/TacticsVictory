@@ -32,7 +32,6 @@ private:
     void CreateGUI();
 
     void HandleUpdate(StringHash, VariantMap&);
-    void HandlePostUpdate(StringHash, VariantMap&);
     void HandleMenuEvent(StringHash, VariantMap&);
     void HandlePostRenderUpdate(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
