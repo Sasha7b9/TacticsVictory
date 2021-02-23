@@ -23,7 +23,7 @@ SharedPtr<CTank> CTank::Create(uint row, uint col)
 {
     SharedPtr<CTank> tank(TheScene->CreateChild("CTank", LOCAL)->CreateComponent<CTank>(LOCAL));
 
-    tank->LoadFromJSON("Models/Tank.json");
+    tank->LoadFromJSON(JSON_MODEL_TANK);
 
     tank->Normalize();
 

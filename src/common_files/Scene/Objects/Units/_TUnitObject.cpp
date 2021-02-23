@@ -15,6 +15,6 @@ void UnitObject::OnNodeSet(Node *node)
 {
     if (node)
     {
-        node->SetVar("isUnit", true);
+        node->SetVar(NODE_IS_UNIT, true);
     }
 }
