@@ -4,8 +4,8 @@
 		<width>1600</width>
 		<height>1000</height>
 	</screen>
-	<brightness>50</brightness>
-	<volume>44</volume>
+	<brightness>37</brightness>
+	<volume>49</volume>
 	<max_occluder_triangles>5000</max_occluder_triangles>
 	<language>1</language>
 	<texture>
@@ -13,10 +13,10 @@
 		<anisotropy>1</anisotropy>
 	</texture>
 	<material>
-		<quality>0</quality>
+		<quality>3</quality>
 	</material>
 	<shadow>
-		<draw>0</draw>
+		<draw>1</draw>
 		<map_size>8</map_size>
 	</shadow>
 	<lighting>

@@ -18,7 +18,7 @@ bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::St
 #define transparent {0.0f, 0.0f, 0.0f, 0.0f}
 
 
-TCursor::TCursor() : Object(TheContext)
+TCursor::TCursor(Context *context) : LogicComponent(context)
 {
     cursor = new Cursor(TheContext);
 
