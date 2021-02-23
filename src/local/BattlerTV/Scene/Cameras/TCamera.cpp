@@ -94,7 +94,7 @@ void TCamera::ParallelTranslateLookAt(const Vector3 &lookAt_)
 }
 
 
-void TCamera::Move(float time)
+void TCamera::PostUpdate(float time)
 {
     if(!enabled || TheConsole->IsActive())
     {

@@ -25,7 +25,7 @@ public:
 
     static SharedPtr<TCamera> Create();
 
-    void Move(float time);
+    virtual void PostUpdate(float time) override;
     void ParallelTranslateLookAt(const Vector3 &lookAt);
     void SetEnabled(bool enabled);
     Vector3 GetPosition();

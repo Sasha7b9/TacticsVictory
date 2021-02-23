@@ -105,9 +105,7 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
 }
 
 
-void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
+void TacticsVictory::HandleUpdate(StringHash, VariantMap&)
 {
-    float time = eventData[Update::P_TIMESTEP].GetFloat();
 
-    TheCamera->Move(time);
 }
