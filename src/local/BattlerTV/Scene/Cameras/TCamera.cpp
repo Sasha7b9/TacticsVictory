@@ -7,14 +7,14 @@
 #include "Scene/Cameras/TCamera.h"
 
 
-#define CURSOR_UP           (cursor == TypeCursor::Up)
-#define CURSOR_DOWN         (cursor == TypeCursor::Down)
-#define CURSOR_LEFT         (cursor == TypeCursor::Left)
-#define CURSOR_RIGHT        (cursor == TypeCursor::Right)
-#define CURSOR_TOP_LEFT     (cursor == TypeCursor::TopLeft)
-#define CURSOR_TOP_RIGHT    (cursor == TypeCursor::TopRight)
-#define CURSOR_DOWN_LEFT    (cursor == TypeCursor::DownLeft)
-#define CURSOR_DOWN_RIGhT   (cursor == TypeCursor::DownRight)
+#define CURSOR_UP           (cursor == TCursor::Type::Up)
+#define CURSOR_DOWN         (cursor == TCursor::Type::Down)
+#define CURSOR_LEFT         (cursor == TCursor::Type::Left)
+#define CURSOR_RIGHT        (cursor == TCursor::Type::Right)
+#define CURSOR_TOP_LEFT     (cursor == TCursor::Type::TopLeft)
+#define CURSOR_TOP_RIGHT    (cursor == TCursor::Type::TopRight)
+#define CURSOR_DOWN_LEFT    (cursor == TCursor::Type::DownLeft)
+#define CURSOR_DOWN_RIGhT   (cursor == TCursor::Type::DownRight)
 
 
 TCamera::TCamera(Scene *scene)
@@ -99,7 +99,7 @@ void TCamera::Move(float time)
 
     float distance = MOVE_SPEED * time;
 
-    TypeCursor::E cursor = TheCursor->GetType();
+    TCursor::Type::E cursor = TheCursor->GetType();
 
     if(CURSOR_UP || CURSOR_TOP_LEFT || CURSOR_TOP_RIGHT || ((PRESS_UP || PRESS_W) && arrowEnabled))
     {
