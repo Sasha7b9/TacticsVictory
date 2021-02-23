@@ -3,20 +3,6 @@
 #include "_defines.h"
 
 
-typedef unsigned char      uint8;
-typedef long long int      int64;
-typedef unsigned long long uint64;
-typedef short unsigned     uint16;
-typedef unsigned int       uint;
-typedef unsigned short     ushort;
-typedef unsigned char      uchar;
-typedef const char        *pchar;
-
-
-#define SERVER_ADDRESS  "127.0.0.1"
-#define SERVER_PORT     1000
-
-
 #define WIDTH_WINDOW_TARGET 500
 #define HEIGHT_WINDOW_TARGET 300
 
