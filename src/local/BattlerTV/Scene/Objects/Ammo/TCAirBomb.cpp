@@ -3,7 +3,15 @@
 #include "Scene/Objects/Ammo/TCAirBomb.h"
 
 
-CAirBomb::CAirBomb() : AirBomb(), CAmmoObject()
+CAirBomb::CAirBomb() : CAirBombObject()
 {
 
+}
+
+
+SharedPtr<CAirBomb> CAirBomb::Create()
+{
+    SharedPtr<CAirBomb> bomb(new CAirBomb());
+
+    return bomb;
 }

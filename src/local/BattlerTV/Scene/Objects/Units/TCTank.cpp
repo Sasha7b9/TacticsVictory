@@ -3,6 +3,9 @@
 #include "Scene/Objects/Units/TCTank.h"
 
 
+Vector<CTank *> CTank::storage;
+
+
 CTank::CTank() : CTankObject()
 {
 
@@ -12,6 +15,8 @@ CTank::CTank() : CTankObject()
 SharedPtr<CTank> CTank::Create(uint /*row*/, uint /*col*/)
 {
     SharedPtr<CTank> tank(new CTank());
+
+    storage.Push(tank);
 
     return tank;
 }

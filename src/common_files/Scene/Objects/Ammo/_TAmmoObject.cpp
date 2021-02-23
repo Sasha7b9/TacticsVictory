@@ -3,10 +3,7 @@
 #include "Scene/Objects/Ammo/_TAmmoObject.h"
 
 
-Vector<AmmoObject *> AmmoObject::storage;
-
-
 AmmoObject::AmmoObject() : GameObject()
 {
-    storage.Push(this);
+
 }

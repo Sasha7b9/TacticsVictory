@@ -3,7 +3,10 @@
 #include "Scene/Objects/Units/TCUnitObject.h"
 
 
+Vector<CUnitObject *> CUnitObject::storage;
+
+
 CUnitObject::CUnitObject() : UnitObject()
 {
-
+    storage.Push(this);
 }

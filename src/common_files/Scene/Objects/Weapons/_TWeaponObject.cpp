@@ -3,10 +3,7 @@
 #include "Scene/Objects/Weapons/_TWeaponObject.h"
 
 
-Vector<WeaponObject *> WeaponObject::storage;
-
-
 WeaponObject::WeaponObject() : GameObject()
 {
-    storage.Push(this);
+
 }

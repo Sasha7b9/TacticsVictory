@@ -9,6 +9,10 @@ class CUnitObject : public UnitObject
 
 public:
 
+    static Vector<CUnitObject *> storage;
+
+protected:
+
     CUnitObject();
 };
 

@@ -9,8 +9,6 @@ class AmmoObject : public GameObject
 
 public:
 
-    static Vector<AmmoObject *> storage;
-
 protected:
 
     AmmoObject();

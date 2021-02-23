@@ -9,5 +9,6 @@ class UnitObject : public GameObject
 
 public:
 
+protected:
     UnitObject();
 };

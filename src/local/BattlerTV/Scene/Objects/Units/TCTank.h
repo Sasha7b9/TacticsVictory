@@ -22,5 +22,9 @@ public:
 
     static SharedPtr<CTank> Create(uint row, uint col);
 
+    static Vector<CTank *> storage;
+
+private:
+
     CTank();
 };

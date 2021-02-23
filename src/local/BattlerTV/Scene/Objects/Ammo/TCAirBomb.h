@@ -4,9 +4,19 @@
 #include "Scene/Objects/Ammo/TCAmmoObject.h"
 
 
-class CAirBomb : public AirBomb, public CAmmoObject
+class CAirBombObject : public CAmmoObject
 {
-    URHO3D_OBJECT(CAirBomb, AirBomb);
+    URHO3D_OBJECT(CAirBombObject, CAmmoObject);
+
+public:
+
+    CAirBombObject() : CAmmoObject() {}
+};
+
+
+class CAirBomb : public CAirBombObject
+{
+    URHO3D_OBJECT(CAirBomb, CAirBombObject);
 
 public:
 
