@@ -192,7 +192,7 @@ void TCamera::PostUpdate(float time)
 
     int wheel = TheInput->GetMouseMoveWheel();
 
-    if(wheel)
+    if(wheel != 0)
     {
         MoveOn(wheel < 0 ? Direction::Closer : Direction::Further, fabs(wheel * 10.0f));
     }

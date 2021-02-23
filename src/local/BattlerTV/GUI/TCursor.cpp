@@ -179,6 +179,22 @@ void TCursor::Update(float dT)
             */
         }
     }
+
+    Vector3 hitPosition;
+
+    Drawable *drawable = GetRaycastNode(&hitPosition);
+
+    if (drawable)
+    {
+        if (drawable->GetNode()->GetName() == NODE_TANK)
+        {
+            SetSelected();
+        }
+        else
+        {
+            SetNormal();
+        }
+    }
 }
 
 

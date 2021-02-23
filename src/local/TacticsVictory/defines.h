@@ -28,7 +28,7 @@ typedef const char        *pchar;
 #define SAFE_DELETE_ARRAY(x) if(x) delete[]x; x = nullptr;
 
 #define NODE_TERRAIN        "TTerrain"
-#define NODE_TANK           "Tank"
+#define NODE_TANK           "CTank"
 #define NODE_MILITARY_PLANT "Military Plant"
 #define NODE_TILE_PATH      "TilePath"
 #define NODE_TRIGGER        "Trigger"
