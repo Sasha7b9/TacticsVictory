@@ -18,17 +18,4 @@ public:
     virtual void FixedUpdate(float time) override;
 
     static Vector<CTank *> storage;
-
-
-private:
-
-    void LoadFromFile();
-
-    SharedPtr<StaticModel> modelObject;
-
-    SharedPtr<Node> node;
-
-    float speed = 0.0f;
-
-    float deltaRotate = 0.0f;
 };

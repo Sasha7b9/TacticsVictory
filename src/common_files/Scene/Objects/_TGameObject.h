@@ -14,5 +14,15 @@ public:
 
 protected:
 
+    void LoadFromJSON(const String &file);
+
     GameObject(Context *context);
+
+private:
+
+    SharedPtr<StaticModel> modelObject;
+
+    float speed = 0.0f;
+
+    float deltaRotate = 0.0f;
 };
