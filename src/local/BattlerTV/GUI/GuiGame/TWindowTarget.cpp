@@ -9,5 +9,5 @@ WindowTarget::WindowTarget(Context *context) :
     SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowNoBorder");
 
-    SetFixedSize(WIDTH_WINDOW_TARGET, HEIGHT_WINDOW_TARGET);
+    SetFixedSize(WIDTH, HEIGHT);
 }

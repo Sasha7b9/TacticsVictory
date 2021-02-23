@@ -3,9 +3,6 @@
 #include "_defines.h"
 
 
-#define WIDTH_WINDOW_TARGET 500
-#define HEIGHT_WINDOW_TARGET 300
-
 #define NODE_TERRAIN        "TTerrain"
 #define NODE_TANK           "CTank"
 #define NODE_MILITARY_PLANT "Military Plant"
