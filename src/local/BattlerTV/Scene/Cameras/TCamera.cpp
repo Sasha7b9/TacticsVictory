@@ -309,7 +309,7 @@ void TCamera::SetupViewport()
 {
     Camera *camera = cameraNode->GetComponent<Camera>();
 
-    SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene->scene, camera));
+    SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene, camera));
 
     TheRenderer->SetViewport(0, viewport);
 }

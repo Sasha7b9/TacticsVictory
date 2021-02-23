@@ -9,16 +9,14 @@
 #endif
 
 
-TScene::TScene(Context *context) : Object(context)
+TScene::TScene(Context *context) : Scene(context)
 {
-    scene = new Scene(context);
+
 }
 
 
 TScene::~TScene()
 {
-    delete scene;
-
     delete TheTerrain;
 }
 
@@ -37,7 +35,7 @@ void TScene::Create()
     // it also defines its volume with a bounding box, but can be rotated (so it does not need to be aligned to the world X, Y
     // and Z axes.) Drawable objects "pick up" the zone they belong to and use it when rendering; several zones can exist
 
-    Node* zoneNode = TheScene->scene->CreateChild("Zone");
+    Node* zoneNode = CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
     // Set same volume as the Octree, set a close bluish fog and some ambient light
     zone->SetBoundingBox(BoundingBox(-1000.0f, 1000.0f));
@@ -54,7 +52,7 @@ void TScene::Create()
     TheTerrain->CreateFromVector(level);
 
     SharedPtr<Node> lightNode;
-    lightNode = TheScene->scene->CreateChild("LigthNode");
+    lightNode = CreateChild("LigthNode");
     Movinator *movinator = lightNode->CreateComponent<Movinator>();
     movinator->SetCenter({level[0].Size() / 2.0f, 25.0f, -(level.Size() / 2.0f)});
     movinator->SetMoveSpeed(0.5f);

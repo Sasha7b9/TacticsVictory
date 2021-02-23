@@ -12,7 +12,7 @@ CAirBomb::CAirBomb(Context *context) : AirBomb(context)
 
 SharedPtr<CAirBomb> CAirBomb::Create()
 {
-    SharedPtr<Node> node(TheScene->scene->CreateChild("CAirBomb", LOCAL));
+    SharedPtr<Node> node(TheScene->CreateChild("CAirBomb", LOCAL));
     SharedPtr<CAirBomb> bomb(node->CreateComponent<CAirBomb>(LOCAL));
 
     return bomb;

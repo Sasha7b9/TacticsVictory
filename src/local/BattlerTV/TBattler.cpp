@@ -108,10 +108,10 @@ void Battler::Start()
 
     TheScene = new TScene();
 
-    TheScene->scene->CreateComponent<Octree>();
-    ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
+    TheScene->CreateComponent<Octree>();
+    ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
-    TheScene->scene->CreateComponent<DebugRenderer>();
+    TheScene->CreateComponent<DebugRenderer>();
 
     CreateScriptSystem();
 
@@ -121,8 +121,8 @@ void Battler::Start()
     TheInput = GetSubsystem<Input>();
     TheAudio = GetSubsystem<Audio>();
     TheRenderer = GetSubsystem<Renderer>();
-    TheCamera = new TCamera(TheScene->scene);
-    TheDebugRenderer = TheScene->scene->GetComponent<DebugRenderer>();
+    TheCamera = new TCamera(TheScene);
+    TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
     TheUIRoot = TheUI->GetRoot();
     TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     TheGUI = new GUI();

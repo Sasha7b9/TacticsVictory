@@ -5,9 +5,9 @@
 class Tank;
 
 
-class TScene : public Object
+class TScene : public Scene
 {
-    URHO3D_OBJECT(TScene, Object);
+    URHO3D_OBJECT(TScene, Scene);
 
 public:
 
@@ -19,6 +19,4 @@ public:
     virtual void Create();
 
     Vector<Vector<float>> level;
-
-    Scene *scene = nullptr;
 };

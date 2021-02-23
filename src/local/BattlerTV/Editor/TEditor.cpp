@@ -20,7 +20,7 @@ Editor::Editor(Context *context) : Object(context)
 
 void Editor::Run()
 {
-    Node* zoneNode = TheScene->scene->CreateChild("Zone");
+    Node* zoneNode = TheScene->CreateChild("Zone");
     Zone* zone = zoneNode->CreateComponent<Zone>();
     zone->SetBoundingBox(BoundingBox(-50.0f, 50.0f));
 
@@ -32,7 +32,7 @@ void Editor::Run()
     TheTerrain = new TTerrain();
     TheTerrain->CreateFromVector(level);
 
-    lightNode = TheScene->scene->CreateChild("LightNode");
+    lightNode = TheScene->CreateChild("LightNode");
 
     SharedPtr<Light> light(lightNode->CreateComponent<Light>());
     lightNode->SetScale(0.01f);
@@ -79,7 +79,7 @@ void Editor::Run()
 void Editor::ClearScene()
 {
     SAFE_DELETE(TheTerrain); //-V809
-    TheScene->scene->RemoveChild(lightNode);
+    TheScene->RemoveChild(lightNode);
 }
 
 

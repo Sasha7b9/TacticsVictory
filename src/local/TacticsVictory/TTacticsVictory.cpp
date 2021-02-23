@@ -110,14 +110,14 @@ void TacticsVictory::Start()
             (uint)Random((float)TheScene->level[0].Size()));
     }
 
-    TheCamera = TCamera::Create(TheScene->scene);
+    TheCamera = TCamera::Create(TheScene);
 
     SetWindowTitleAndIcon();
 
     CreateConsoleAndDebugHud();
 
-    TheScene->scene->CreateComponent<DebugRenderer>();
-    TheDebugRenderer = TheScene->scene->GetComponent<DebugRenderer>();
+    TheScene->CreateComponent<DebugRenderer>();
+    TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
 
     CreateGUI();
 

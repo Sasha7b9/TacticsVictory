@@ -15,7 +15,7 @@ void Particles::Init()
     }
 
     // Explosion_Tank
-    Node *node = TheScene->scene->CreateChild("Emitter");
+    Node *node = TheScene->CreateChild("Emitter");
     ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
     emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
     emitter->SetEffect(TheCache->GetResource<ParticleEffect>("Models/Units/Tank/FireTank.xml"));
@@ -29,7 +29,7 @@ void Particles::EmittingStatic(TypeParticles type, const Vector3 &position)
 {
     if (type == Explosion_Terrain)
     {
-        Node *node = TheScene->scene->CreateChild();
+        Node *node = TheScene->CreateChild();
         node->SetScale(1.0f);
         node->SetPosition(position);
         ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();

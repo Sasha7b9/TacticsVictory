@@ -9,9 +9,9 @@
 
 CScene::CScene(Context *context) : TScene(context)
 {
-    scene->CreateComponent<Octree>();
+    CreateComponent<Octree>();
 
-    ThePhysicsWorld = scene->CreateComponent<PhysicsWorld>();
+    ThePhysicsWorld = CreateComponent<PhysicsWorld>();
 
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
 }

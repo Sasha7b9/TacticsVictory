@@ -60,10 +60,10 @@ void Battle::Start()
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
     TheScene = new TScene();
-    TheScene->scene->CreateComponent<Octree>();
-    ThePhysicsWorld = TheScene->scene->CreateComponent<PhysicsWorld>();
+    TheScene->CreateComponent<Octree>();
+    ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
-    TheScene->scene->CreateComponent<DebugRenderer>();
+    TheScene->CreateComponent<DebugRenderer>();
     scene = new TScene();
 
     CreateScriptSystem();
