@@ -3,17 +3,6 @@
 #include "_defines.h"
 
 
-#define VIEW_MASK_FOR_MISSILE   1
-#define VIEW_MASK_FOR_EFFECTS   2
-
-#ifdef _DEBUG
-#define PROFILER_FUNC_ENTER()  TheProfiler->BeginBlock(__FUNCTION__);
-#define PROFILER_FUNC_LEAVE()  TheProfiler->EndBlock();
-#else
-#define PROFILER_FUNC_ENTER()
-#define PROFILER_FUNC_LEAVE()
-#endif
-
 #define PRESS_UP        (TheInput->GetKeyDown(KEY_UP))
 #define PRESS_DOWN      (TheInput->GetKeyDown(KEY_DOWN))
 #define PRESS_LEFT      (TheInput->GetKeyDown(KEY_LEFT))
@@ -46,7 +35,5 @@
 // Имена узлов
 
 #define NODE_CAMERA_TARGET "CameraTarget"
-
-#define UNUSED(x) (void)(x)
 
 #define CALL_MEMBER_IF_EXIST(object, function) if(object) (object)->function()

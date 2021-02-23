@@ -107,19 +107,14 @@ bool ConsoleParser::FuncServerStop(Vector<String> &, bool)
 }
 
 
-bool ConsoleParser::FuncServerLatency(Vector<String> &words, bool)
+bool ConsoleParser::FuncServerLatency(Vector<String> & /*words*/, bool)
 {
-    UNUSED(words);
-
     return false;
 }
 
 
-bool ConsoleParser::FuncServerPacketLoss(Vector<String> &words, bool)
+bool ConsoleParser::FuncServerPacketLoss(Vector<String> & /*words*/, bool)
 {
-
-    UNUSED(words);
-
     return false;
 }
 

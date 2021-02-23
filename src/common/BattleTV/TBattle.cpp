@@ -51,7 +51,7 @@ void Battle::Setup()
 void Battle::Start()
 {
     TheProfiler = GetSubsystem<Profiler>();
-    PROFILER_FUNC_ENTER
+    PROFILER_FUNC_ENTER();
     Application::Start();
     TheCache->AddResourceDir(RESOURCES_DIR);
     SetLocalization();
@@ -78,7 +78,7 @@ void Battle::Start()
 
     SubscribeToEvents();
 
-    PROFILER_FUNC_LEAVE;
+    PROFILER_FUNC_LEAVE();
 }
 
 

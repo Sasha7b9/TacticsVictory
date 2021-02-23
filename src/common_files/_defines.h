@@ -11,8 +11,19 @@
 
 #define RESOURCES_DIR       "TVData"
 
+#define VIEW_MASK_FOR_MISSILE   1
+#define VIEW_MASK_FOR_EFFECTS   2
+
 #define SERVER_ADDRESS      "127.0.0.1"
 #define SERVER_PORT         1000
+
+#ifdef _DEBUG
+#define PROFILER_FUNC_ENTER()  TheProfiler->BeginBlock(__FUNCTION__);
+#define PROFILER_FUNC_LEAVE()  TheProfiler->EndBlock();
+#else
+#define PROFILER_FUNC_ENTER()
+#define PROFILER_FUNC_LEAVE()
+#endif
 
 typedef unsigned char      uchar;
 typedef short unsigned     uint16;

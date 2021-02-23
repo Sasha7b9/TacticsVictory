@@ -160,11 +160,6 @@ void TImage::Replace4Points(int x, int y, const Color &color)
 
 void TImage::FillRegion(int x, int y, const Color &color, const Color &colorBound)
 {
-    UNUSED(x);
-    UNUSED(y);
-    UNUSED(color);
-    UNUSED(colorBound);
-
     boundingColor = colorBound;
 
     if(GetPixel(x, y) != colorBound)
