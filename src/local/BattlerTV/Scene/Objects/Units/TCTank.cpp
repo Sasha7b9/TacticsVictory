@@ -19,13 +19,15 @@ void CTank::RegisterObject()
 }
 
 
-SharedPtr<CTank> CTank::Create(uint /*row*/, uint /*col*/)
+SharedPtr<CTank> CTank::Create(uint row, uint col)
 {
     SharedPtr<Node> node(TheScene->scene->CreateChild("CTank", LOCAL));
     SharedPtr<CTank> tank(node->CreateComponent<CTank>(LOCAL));
     tank->node = node;
 
     tank->LoadFromFile();
+
+    node->SetPosition({ (float)row, 0, -(float)col });
 
     storage.Push(tank);
 
@@ -56,4 +58,10 @@ void CTank::LoadFromFile()
     Quaternion rotate(deltaRotate, Vector3::UP);
     node->SetRotation(Quaternion(0, Vector3::UP));
     node->Rotate(rotate);
+}
+
+
+void CTank::FixedUpdate(float /*time*/)
+{
+
 }

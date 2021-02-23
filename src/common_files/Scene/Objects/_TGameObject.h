@@ -2,11 +2,13 @@
 #pragma once
 
 
-class GameObject : public Component
+class GameObject : public LogicComponent
 {
-    URHO3D_OBJECT(GameObject, Component);
+    URHO3D_OBJECT(GameObject, LogicComponent);
 
 public:
+
+    virtual void FixedUpdate(float time) override = 0;
 
     static Vector<GameObject *> storage;
 

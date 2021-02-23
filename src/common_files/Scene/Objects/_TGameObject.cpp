@@ -6,7 +6,7 @@
 Vector<GameObject *> GameObject::storage;
 
 
-GameObject::GameObject(Context *context) : Component(context)
+GameObject::GameObject(Context *context) : LogicComponent(context)
 {
     storage.Push(this);
 }

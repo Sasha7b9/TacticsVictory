@@ -15,6 +15,8 @@ public:
 
     static SharedPtr<CTank> Create(uint row, uint col);
 
+    virtual void FixedUpdate(float time) override;
+
     static Vector<CTank *> storage;
 
 
