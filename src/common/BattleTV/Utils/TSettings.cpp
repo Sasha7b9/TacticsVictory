@@ -197,5 +197,5 @@ const IntVector2 SET::MENU::SLIDER::SIZE = {SET::MENU::SLIDER::WIDTH, SET::MENU:
 const IntVector2 SET::MENU::DDLIST::SIZE = {SET::MENU::DDLIST::WIDTH, SET::MENU::DDLIST::HEIGHT};
 const IntVector2 SET::MENU::TEXT::SIZE = {SET::MENU::TEXT::WIDTH, SET::MENU::TEXT::HEIGHT};
 const IntVector2 SET::MENU::GOVERNOR::CELL::SIZE = {SET::MENU::GOVERNOR::CELL::WIDTH, SET::MENU::GOVERNOR::CELL::HEIGHT};
-const char* SET::MENU::FONT::NAME = "TVData/Fonts/tech.fnt";
+const char* SET::MENU::FONT::NAME = "Fonts/tech.fnt";
 const char* SET::MENU::ELEM::WINDOW::STYLE = "WindowNoBorder";
