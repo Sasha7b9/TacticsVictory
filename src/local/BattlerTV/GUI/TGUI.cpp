@@ -34,9 +34,8 @@ GUI::GUI() : Object(TheContext)
 
 GUI::~GUI()
 {
-    delete TheCursor; //-V809
-    delete TheGuiGame; //-V809
-    delete TheGuiEditor; //-V809
+    delete TheGuiGame;
+    delete TheGuiEditor;
 }
 
 
@@ -198,7 +197,7 @@ void GUI::Create()
     TheGuiEditor = new GuiEditor();
     TheGuiEditor->SetVisible(false);
 
-    TheCursor = new TCursor();
+    TheCursor = TheUIRoot->CreateChild<TCursor>("TCursor");
 
     TheLocalization->SetLanguage(TheSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
 }

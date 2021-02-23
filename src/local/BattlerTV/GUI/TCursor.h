@@ -27,8 +27,8 @@ public:
         Count
     }; };
 
-    TCursor(Context *context = TheContext);
-    void RegisterObject(Context *context);
+    TCursor(Context *context);
+    static void RegisterObject(Context *context = TheContext);
     SharedPtr<Cursor> GetCursor();
     virtual void Update(float dT);
     void SetNormal();

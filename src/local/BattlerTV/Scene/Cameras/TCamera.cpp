@@ -95,11 +95,11 @@ void TCamera::Move(float time)
         return;
     }
 
+    TCursor::Type::E cursor = TheCursor->GetType();
+
     const float MOVE_SPEED = 30.0f;
 
     float distance = MOVE_SPEED * time;
-
-    TCursor::Type::E cursor = TheCursor->GetType();
 
     if(CURSOR_UP || CURSOR_TOP_LEFT || CURSOR_TOP_RIGHT || ((PRESS_UP || PRESS_W) && arrowEnabled))
     {
