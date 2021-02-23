@@ -7,3 +7,11 @@ Tank::Tank() : Object(TheContext)
 {
 
 }
+
+
+SharedPtr<Tank> Tank::Create()
+{
+    SharedPtr<Tank> tank(new Tank());
+
+    return tank;
+}

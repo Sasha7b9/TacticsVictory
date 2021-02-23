@@ -3,7 +3,15 @@
 #include "Scene/Objects/Units/TCTank.h"
 
 
-CTank::CTank() : Tank(), CUnitObject()
+CTank::CTank() : CTankObject()
 {
 
+}
+
+
+SharedPtr<CTank> CTank::Create(uint /*row*/, uint /*col*/)
+{
+    SharedPtr<CTank> tank(new CTank());
+
+    return tank;
 }

@@ -10,7 +10,5 @@ public:
 
     static Vector<GameObject *> storage;
 
-protected:
-
     GameObject();
 };

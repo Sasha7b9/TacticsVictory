@@ -4,15 +4,23 @@
 #include "Scene/Objects/Units/TCUnitObject.h"
 
 
-class CTank : public Tank, public CUnitObject
+class CTankObject : public CUnitObject
 {
-    URHO3D_OBJECT(CTank, Tank);
+    URHO3D_OBJECT(CTankObject, CUnitObject);
+
+public:
+
+    CTankObject() : CUnitObject() {}
+};
+
+
+class CTank : public CTankObject
+{
+    URHO3D_OBJECT(CTank, CTankObject);
 
 public:
 
     static SharedPtr<CTank> Create(uint row, uint col);
-
-private:
 
     CTank();
 };

@@ -9,7 +9,7 @@ class Tank : public Object
 
 public:
 
-protected:
-
     Tank();
+
+    static SharedPtr<Tank> Create();
 };

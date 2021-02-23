@@ -9,8 +9,6 @@ class CUnitObject : public UnitObject
 
 public:
 
-protected:
-
     CUnitObject();
 };
 
