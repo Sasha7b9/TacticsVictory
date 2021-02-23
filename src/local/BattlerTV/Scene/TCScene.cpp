@@ -73,7 +73,7 @@ void CScene::ProcessMouseLeft()
     Node *node = object->GetNode();
     String name = node->GetName();
 
-    if (name == NODE_TANK)
+    if (name == NAME_NODE_TANK)
     {
         Vector3 position = node->GetPosition();
         Coord coord(static_cast<uint>(-position.z_), static_cast<uint>(position.x_)); //-V2004
@@ -94,7 +94,7 @@ void CScene::ProcessMouseRight()
 
     Drawable *object = TheCursor->GetRaycastNode();
 
-    if (object && object->GetNode()->GetName() == NODE_TANK)
+    if (object && object->GetNode()->GetName() == NAME_NODE_TANK)
     {
     }
 }

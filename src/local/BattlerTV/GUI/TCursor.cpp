@@ -226,7 +226,7 @@ Drawable* TCursor::GetRaycastNode(Vector3 *hitPos_)
     {
         RayQueryResult& result = results[0];
         String name = result.drawable_->GetNode()->GetName();
-        if (result.drawable_->GetNode()->GetName() == NODE_TILE_PATH && results.Size() > 1)
+        if (result.drawable_->GetNode()->GetName() == NAME_NODE_TILE_PATH && results.Size() > 1)
         {
             result = results[1];
         }

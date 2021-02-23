@@ -13,7 +13,7 @@ TilePath::TilePath() : Object(TheContext)
 {
     float d = 0.0f;
 
-    node = TheScene->CreateChild(NODE_TILE_PATH);
+    node = TheScene->CreateChild(NAME_NODE_TILE_PATH);
 
     if (tiles.Size() == 0)
     {

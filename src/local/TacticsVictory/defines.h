@@ -3,9 +3,6 @@
 #include "_defines.h"
 
 
-#define NODE_TANK           "CTank"
-#define NODE_MILITARY_PLANT "Military Plant"
-#define NODE_TILE_PATH      "TilePath"
 #define NODE_TRIGGER        "Trigger"
 #define RESOURCES_DIR       "TVData/"
 
