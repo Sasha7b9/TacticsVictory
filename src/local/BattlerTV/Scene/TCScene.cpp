@@ -81,7 +81,7 @@ void CScene::ProcessMouseLeft()
         pathIndicator.SetStartPosition(coord);
         pathIndicator.Enable(false);
     }
-    else if (name == NODE_TERRAIN)
+    else if (name == NAME_NODE_TERRAIN)
     {
         pathIndicator.Enable(true);
     }
