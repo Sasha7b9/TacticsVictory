@@ -20,7 +20,7 @@ protected:
 
 private:
 
-    SharedPtr<StaticModel> modelObject;
+    SharedPtr<StaticModel> staticModel;
 
     float speed = 0.0f;
 

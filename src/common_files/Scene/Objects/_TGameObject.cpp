@@ -22,11 +22,11 @@ void GameObject::LoadFromJSON(const String &fileName)
     String fileModel = modelValue.Get("fileModel").GetString();
     String fileMaterials = modelValue.Get("fileMaterials").GetString();
 
-    modelObject = node_->CreateComponent<StaticModel>();
-    modelObject->SetViewMask(VIEW_MASK_FOR_MISSILE);
-    modelObject->SetModel(TheCache->GetResource<Model>(fileModel));
-    modelObject->ApplyMaterialList(fileMaterials);
-    modelObject->SetCastShadows(true);
+    staticModel = node_->CreateComponent<StaticModel>();
+    staticModel->SetViewMask(VIEW_MASK_FOR_MISSILE);
+    staticModel->SetModel(TheCache->GetResource<Model>(fileModel));
+    staticModel->ApplyMaterialList(fileMaterials);
+    staticModel->SetCastShadows(true);
 
     speed = root.Get("speed").GetFloat();
 
