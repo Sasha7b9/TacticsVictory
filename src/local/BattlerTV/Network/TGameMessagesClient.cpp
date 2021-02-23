@@ -15,9 +15,7 @@ void Message::Message::Send(bool reliable)
 }
 
 
-void Message::BuildScene::Handle(MemoryBuffer &msg)
+void Message::BuildScene::Handle(MemoryBuffer & /*msg*/)
 {
-    UNUSED(msg);
-
     TheScene->Create();
 }

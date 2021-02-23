@@ -96,7 +96,7 @@ void MessageCallback(const asSMessageInfo *msg, void *)
 void Battler::Start()
 {
     TheProfiler = GetSubsystem<Profiler>();
-    PROFILER_FUNC_ENTER
+    PROFILER_FUNC_ENTER();
     Application::Start();
     TheCache->AddResourceDir(RESOURCES_DIR);
     SetLocalization();
@@ -138,7 +138,7 @@ void Battler::Start()
 
     SubscribeToEvents();
 
-    PROFILER_FUNC_LEAVE;
+    PROFILER_FUNC_LEAVE();
 }
 
 
@@ -158,10 +158,8 @@ void Battler::CreateScriptSystem()
 }
 
 
-void Battler::StartServer(uint16 port_)
+void Battler::StartServer(uint16 /*port_*/)
 {
-    UNUSED(port_);
-
 //    if (port_)
 //    {
 //        port = port_;
@@ -198,9 +196,8 @@ void Battler::StopClient()
 }
 
 
-void Battler::ParseArguments(const Vector<String> &arguments)
+void Battler::ParseArguments(const Vector<String> & /*arguments*/)
 {
-    UNUSED(arguments);
 }
 
 

@@ -34,6 +34,4 @@
 
 // Имена узлов
 
-#define NODE_CAMERA_TARGET "CameraTarget"
-
-#define CALL_MEMBER_IF_EXIST(object, function) if(object) (object)->function()
+#define NAME_NODE_CAMERA_TARGET "CameraTarget"

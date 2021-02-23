@@ -215,7 +215,7 @@ bool ConsoleParser::FuncUnitCamera(Vector<String> &words, bool)
                 TheScene->GetChildren(childrens);
                 for(Node *node : childrens)
                 {
-                    if(node->GetName() == NODE_CAMERA_TARGET)
+                    if(node->GetName() == NAME_NODE_CAMERA_TARGET)
                     {
                         node->GetComponent<Camera>()->SetFov(fov);
                     }
@@ -229,7 +229,7 @@ bool ConsoleParser::FuncUnitCamera(Vector<String> &words, bool)
                 TheScene->GetChildren(childrens);
                 for(Node *node : childrens)
                 {
-                    if(node->GetName() == NODE_CAMERA_TARGET)
+                    if(node->GetName() == NAME_NODE_CAMERA_TARGET)
                     {
                         TheConsole->Write(ToString("%f", node->GetComponent<Camera>()->GetFov()));
                         break;

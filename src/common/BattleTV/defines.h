@@ -42,7 +42,6 @@ struct TypeCursor { enum E {
 #define SAFE_DELETE(x) if(x) delete x; x = nullptr;
 #define SAFE_DELETE_ARRAY(x) if(x) delete[]x; x = nullptr;
 
-#define NODE_TANK           "Tank"
 #define NODE_MILITARY_PLANT "Military Plant"
 #define NODE_TILE_PATH      "TilePath"
 #define NODE_TRIGGER        "Trigger"

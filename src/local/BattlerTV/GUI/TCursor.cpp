@@ -195,6 +195,10 @@ void TCursor::Update(float dT)
             SetNormal();
         }
     }
+    else
+    {
+        SetNormal();
+    }
 }
 
 
