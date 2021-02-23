@@ -23,11 +23,14 @@ SharedPtr<CTank> CTank::Create(uint row, uint col)
 {
     SharedPtr<Node> node(TheScene->scene->CreateChild("CTank", LOCAL));
     SharedPtr<CTank> tank(node->CreateComponent<CTank>(LOCAL));
-    tank->node_ = node;
+
+
 
     tank->LoadFromJSON("Models/Tank.json");
 
-    node->SetPosition({ (float)row, 0, -(float)col });
+    tank->Normalize();
+
+    tank->SetPosition({ (float)row, 0, -(float)col });
 
     storage.Push(tank);
 

@@ -12,9 +12,15 @@ public:
 
     static Vector<GameObject *> storage;
 
+    Vector3 GetPosition() const;
+
+    void SetPosition(const Vector3 &position);
+
 protected:
 
     void LoadFromJSON(const String &file);
+
+    void Normalize(float k = 1.0f);
 
     GameObject(Context *context);
 
@@ -24,4 +30,5 @@ private:
 
     float speed = 0.0f;                     // С такой скоростью объект перемещается
     float shiftRotate = 0.0f;               // Поворот модели относительно направления ноды
+    Vector3 shiftPosition = Vector3::ZERO;  // Если модель не выровнена относительно начала координат, здесь смещение
 };
