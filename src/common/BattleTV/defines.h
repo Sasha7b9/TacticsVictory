@@ -46,7 +46,6 @@ struct TypeCursor { enum E {
 #define NODE_MILITARY_PLANT "Military Plant"
 #define NODE_TILE_PATH      "TilePath"
 #define NODE_TRIGGER        "Trigger"
-#define RESOURCES_DIR       "TVData/"
 
 #define VIEW_MASK_FOR_MISSILE   1
 #define VIEW_MASK_FOR_EFFECTS   2

@@ -9,6 +9,8 @@
 #define NAME_NODE_TERRAIN   "Terrain"
 #define NAME_NODE_TILE_PATH "TilePath"
 
+#define RESOURCES_DIR       "TVData"
+
 #define SERVER_ADDRESS      "127.0.0.1"
 #define SERVER_PORT         1000
 

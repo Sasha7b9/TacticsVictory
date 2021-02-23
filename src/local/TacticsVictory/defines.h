@@ -3,9 +3,6 @@
 #include "_defines.h"
 
 
-#define NODE_TRIGGER        "Trigger"
-#define RESOURCES_DIR       "TVData/"
-
 #define VIEW_MASK_FOR_MISSILE   1
 #define VIEW_MASK_FOR_EFFECTS   2
 
