@@ -3,7 +3,7 @@
 #include "Scene/Objects/Ammo/_TAirBomb.h"
 
 
-AirBomb::AirBomb() : AmmoObject()
+AirBomb::AirBomb(Context *context) : AmmoObject(context)
 {
 
 }

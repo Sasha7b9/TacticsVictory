@@ -12,5 +12,6 @@ public:
     static Vector<UnitObject *> storage;
 
 protected:
-    UnitObject();
+
+    UnitObject(Context *context);
 };

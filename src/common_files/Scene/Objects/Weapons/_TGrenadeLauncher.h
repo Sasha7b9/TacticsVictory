@@ -11,5 +11,5 @@ public:
 
 protected:
 
-    GrenadeLauncher();
+    GrenadeLauncher(Context *context);
 };

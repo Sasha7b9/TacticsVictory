@@ -3,7 +3,7 @@
 #include "Scene/Objects/Ammo/TCGrenade.h"
 
 
-CGrenade::CGrenade() : Grenade()
+CGrenade::CGrenade(Context *context) : Grenade(context)
 {
 
 }

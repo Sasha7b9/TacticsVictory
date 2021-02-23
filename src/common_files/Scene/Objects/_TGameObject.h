@@ -2,13 +2,15 @@
 #pragma once
 
 
-class GameObject : public Object
+class GameObject : public Component
 {
-    URHO3D_OBJECT(GameObject, Object);
+    URHO3D_OBJECT(GameObject, Component);
 
 public:
 
     static Vector<GameObject *> storage;
 
-    GameObject();
+protected:
+
+    GameObject(Context *context);
 };

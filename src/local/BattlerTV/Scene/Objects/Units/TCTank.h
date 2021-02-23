@@ -9,11 +9,24 @@ class CTank : public Tank
 
 public:
 
+    CTank(Context *context);
+
+    static void RegisterObject();
+
     static SharedPtr<CTank> Create(uint row, uint col);
 
     static Vector<CTank *> storage;
 
+
 private:
 
-    CTank();
+    void LoadFromFile();
+
+    SharedPtr<StaticModel> modelObject;
+
+    SharedPtr<Node> node;
+
+    float speed = 0.0f;
+
+    float deltaRotate = 0.0f;
 };

@@ -3,7 +3,7 @@
 #include "Scene/Objects/Weapons/_TGrenadeLauncher.h"
 
 
-GrenadeLauncher::GrenadeLauncher() : WeaponObject()
+GrenadeLauncher::GrenadeLauncher(Context *context) : WeaponObject(context)
 {
 
 }

@@ -3,15 +3,7 @@
 #include "Scene/Objects/Units/_TTank.h"
 
 
-Tank::Tank() : UnitObject()
+Tank::Tank(Context *context) : UnitObject(context)
 {
 
-}
-
-
-SharedPtr<Tank> Tank::Create()
-{
-    SharedPtr<Tank> tank(new Tank());
-
-    return tank;
 }

@@ -197,6 +197,8 @@ void TacticsVictory::RegistrationComponets()
     WaveAlgorithm::RegisterObject();
 
     TScene::RegisterObject();
+
+    CTank::RegisterObject();
 }
 
 

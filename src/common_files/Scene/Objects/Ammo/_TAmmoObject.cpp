@@ -3,7 +3,7 @@
 #include "Scene/Objects/Ammo/_TAmmoObject.h"
 
 
-AmmoObject::AmmoObject() : GameObject()
+AmmoObject::AmmoObject(Context *context) : GameObject(context)
 {
 
 }

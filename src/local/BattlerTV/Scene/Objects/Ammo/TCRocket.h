@@ -13,5 +13,5 @@ public:
 
 private:
 
-    CRocket();
+    CRocket(Context *context);
 };

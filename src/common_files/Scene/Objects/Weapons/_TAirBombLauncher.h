@@ -11,5 +11,5 @@ public:
 
 protected:
 
-    AirBombLauncher();
+    AirBombLauncher(Context *context);
 };

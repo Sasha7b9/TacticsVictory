@@ -13,5 +13,5 @@ public:
 
 private:
 
-    CGrenade();
+    CGrenade(Context *context);
 };

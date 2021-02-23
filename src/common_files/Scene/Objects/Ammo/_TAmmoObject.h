@@ -11,5 +11,5 @@ public:
 
 protected:
 
-    AmmoObject();
+    AmmoObject(Context *context);
 };

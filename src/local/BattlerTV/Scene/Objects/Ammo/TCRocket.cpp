@@ -3,7 +3,7 @@
 #include "Scene/Objects/Ammo/TCRocket.h"
 
 
-CRocket::CRocket() : Rocket()
+CRocket::CRocket(Context *context) : Rocket(context)
 {
 
 }

@@ -13,5 +13,5 @@ public:
 
 private:
 
-    CAirBombLauncher();
+    CAirBombLauncher(Context *context);
 };

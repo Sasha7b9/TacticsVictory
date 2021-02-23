@@ -13,5 +13,5 @@ public:
 
 private:
 
-    CGrenadeLauncher();
+    CGrenadeLauncher(Context *context);
 };

@@ -9,7 +9,5 @@ class Tank : public UnitObject
 
 protected:
 
-    Tank();
-
-    static SharedPtr<Tank> Create();
+    Tank(Context *context);
 };

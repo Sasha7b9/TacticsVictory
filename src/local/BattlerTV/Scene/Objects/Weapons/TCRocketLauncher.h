@@ -13,5 +13,5 @@ public:
 
 private:
 
-    CRocketLauncher();
+    CRocketLauncher(Context *context);
 };

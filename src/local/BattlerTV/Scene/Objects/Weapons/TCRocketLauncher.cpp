@@ -3,7 +3,7 @@
 #include "Scene/Objects/Weapons/TCRocketLauncher.h"
 
 
-CRocketLauncher::CRocketLauncher() : RocketLauncher()
+CRocketLauncher::CRocketLauncher(Context *context) : RocketLauncher(context)
 {
 
 }

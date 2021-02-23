@@ -3,7 +3,7 @@
 #include "Scene/Objects/Weapons/_TWeaponObject.h"
 
 
-WeaponObject::WeaponObject() : GameObject()
+WeaponObject::WeaponObject(Context *context) : GameObject(context)
 {
 
 }
