@@ -92,31 +92,31 @@ void TCursor::Update(float dT)
         {
             if(posX < delta && posY < delta)
             {
-                type = TypeCursor::TopLeft;
+                type = Type::TopLeft;
             }
             else if(posX > width - delta && posY < delta)
             {
-                type = TypeCursor::TopRight;
+                type = Type::TopRight;
             }
             else if(posX > width - delta && posY > height - delta)
             {
-                type = TypeCursor::DownRight;
+                type = Type::DownRight;
             }
             else if(posX < delta && posY > height - delta)
             {
-                type = TypeCursor::DownLeft;
+                type = Type::DownLeft;
             }
             else if(posX < delta)
             {
-                type = TypeCursor::Left;
+                type = Type::Left;
             }
             else if(posX > width - delta)
             {
-                type = TypeCursor::Right;
+                type = Type::Right;
             }
             else if(posY < delta)
             {
-                type = TypeCursor::Up;
+                type = Type::Up;
             }
             else if(posY > height - delta && !TheGUI->GheckOnDeadZoneForCursorBottomScreen(posX))
             {

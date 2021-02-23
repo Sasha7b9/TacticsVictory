@@ -114,7 +114,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             currentPlane = TheTerrain->GetIntersectionPlane(ray);
 
             if (!currentPlane.IsZero() &&
-                (TheCursor->GetType() == TypeCursor::Normal || TheCursor->GetType() == TypeCursor::Selected))
+                (TheCursor->GetType() == TCursor::Type::Normal || TheCursor->GetType() == TypeCursor::Selected))
             {
                 if (!selectedPlane.IsEquals(currentPlane))
                 {

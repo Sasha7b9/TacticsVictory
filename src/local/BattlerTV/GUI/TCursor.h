@@ -3,12 +3,16 @@
 
 
 class TImage;
+class CursorShapes;
 
 
-struct TypeCursor
+class TCursor : public Object
 {
-    enum E
-    {
+    URHO3D_OBJECT(TCursor, Object)
+
+public:
+
+    struct Type { enum E {
         Normal,
         Selected,
         Left,
@@ -21,7 +25,27 @@ struct TypeCursor
         DownRight,
         Busy,
         Count
-    };
+    }; };
+
+    TCursor();
+    SharedPtr<Cursor> GetCursor();
+    void Update(float dT);
+    void SetNormal();
+    void SetSelected();
+    void Hide();
+    void Show();
+    Type::E GetType()    { return type; };
+    Drawable* GetRaycastNode(Vector3 *hitPos = 0);
+
+private:
+    SharedPtr<Cursor> cursor;
+    SharedPtr<CursorShapes> shapes;
+    SharedPtr<Node> nodeSprite;
+    SharedPtr<Sprite2D> sprite;
+    SharedPtr<StaticSprite2D> staticSprite;
+    bool selected = false;
+    bool hidden = false;
+    Type::E type = Type::Normal;
 };
 
 
@@ -30,7 +54,7 @@ class CursorShapes : public Object
     URHO3D_OBJECT(CursorShapes, Object);
 public:
     CursorShapes();
-    SharedPtr<TImage> GetShape(TypeCursor::E type, int numFrame);
+    SharedPtr<TImage> GetShape(TCursor::Type::E type, int numFrame);
 
 private:
     void CreateNormal(int numFrame);
@@ -44,12 +68,12 @@ private:
     void CreateDownLeft(int numFrame);
     void CreateDownRight(int numFrame);
     void CreateBusy(int numFrame);
-    void FillGradient(TImage *image, TypeCursor::E type, int numFrame);
+    void FillGradient(TImage *image, TCursor::Type::E type, int numFrame);
 
 public:
     struct StructShape
     {
-        TypeCursor::E type;
+        TCursor::Type::E type;
         int numFrame;
 
         unsigned ToHash() const
@@ -64,33 +88,4 @@ private:
     int dimensionTriangleBig = 100;
 
     void CalcXYforNormal(int numFrame, int *x1, int *y1, int *x2, int *y2);
-};
-
-
-
-class TCursor : public Object
-{
-    URHO3D_OBJECT(TCursor, Object)
-
-public:
-
-    TCursor();
-    SharedPtr<Cursor> GetCursor();
-    void Update(float dT);
-    void SetNormal();
-    void SetSelected();
-    void Hide();
-    void Show();
-    TypeCursor::E GetType()    { return type; };
-    Drawable* GetRaycastNode(Vector3 *hitPos = 0);
-
-private:
-    SharedPtr<Cursor> cursor;
-    SharedPtr<CursorShapes> shapes;
-    SharedPtr<Node> nodeSprite;
-    SharedPtr<Sprite2D> sprite;
-    SharedPtr<StaticSprite2D> staticSprite;
-    bool selected = false;
-    bool hidden = false;
-    TypeCursor::E type = TypeCursor::Normal;
 };
