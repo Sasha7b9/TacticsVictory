@@ -186,7 +186,7 @@ void TCursor::Update(float dT)
 
     if (drawable)
     {
-        if (drawable->GetNode()->GetName() == NODE_TANK)
+        if (drawable->GetNode()->GetVar("isUnit").GetBool())
         {
             SetSelected();
         }

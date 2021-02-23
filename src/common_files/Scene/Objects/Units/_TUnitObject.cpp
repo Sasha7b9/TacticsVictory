@@ -8,5 +8,13 @@ Vector<UnitObject *> UnitObject::storage;
 
 UnitObject::UnitObject(Context *context) : GameObject(context)
 {
+}
 
+
+void UnitObject::OnNodeSet(Node *node)
+{
+    if (node)
+    {
+        node->SetVar("isUnit", true);
+    }
 }

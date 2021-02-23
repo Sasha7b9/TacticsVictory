@@ -14,4 +14,6 @@ public:
 protected:
 
     UnitObject(Context *context);
+
+    virtual void OnNodeSet(Node *node) override;
 };
