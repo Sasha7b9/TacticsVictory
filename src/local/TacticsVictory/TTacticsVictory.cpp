@@ -103,7 +103,11 @@ void TacticsVictory::Start()
 
     TheScene->Create();
 
-    CTank::Create(TheScene->level.Size() / 2, TheScene->level[0].Size() / 2);
+    for (int i = 0; i < 1000; i++)
+    {
+        CTank::Create((uint)Random((float)TheScene->level.Size()),
+            (uint)Random((float)TheScene->level[0].Size()));
+    }
 
     TheCamera = TCamera::Create(TheScene->scene);
 
