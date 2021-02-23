@@ -15,8 +15,6 @@ public:
 
     virtual void Create() override;
 
-    virtual void Update(float timeStep) override;
-
 private:
     PathIndicator pathIndicator;
 

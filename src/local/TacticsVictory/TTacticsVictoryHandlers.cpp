@@ -110,9 +110,4 @@ void TacticsVictory::HandleUpdate(StringHash, VariantMap& eventData)
     float time = eventData[Update::P_TIMESTEP].GetFloat();
 
     TheCamera->Move(time);
-
-    if (TheScene)
-    {
-        TheScene->Update(time);
-    }
 }

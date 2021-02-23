@@ -16,7 +16,6 @@ public:
 
     static void RegisterObject(Context *context = TheContext);
 
-    virtual void Update(float timeStep);
     virtual void Create();
 
     Vector<Vector<float>> level;

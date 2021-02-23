@@ -4,14 +4,9 @@
 #include "Scene/_TScene.h"
 
 
-void Battle::HandleUpdate(StringHash, VariantMap& eventData)
+void Battle::HandleUpdate(StringHash, VariantMap& /*eventData*/)
 {
-    float time = eventData[Update::P_TIMESTEP].GetFloat();
-
-    if (scene)
-    {
-        scene->Update(time);
-    }
+//    float time = eventData[Update::P_TIMESTEP].GetFloat();
 }
 
 

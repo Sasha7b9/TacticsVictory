@@ -45,34 +45,6 @@ void CScene::Create()
 }
 
 
-void CScene::Update(float timeStep)
-{
-    TScene::Update(timeStep);
-
-    Vector3 hitPos;
-    Drawable *drawable = TheCursor->GetRaycastNode(&hitPos);
-
-    if (drawable)
-    {
-        String name = drawable->GetNode()->GetName();
-        if (name == NODE_TERRAIN)
-        {
-            TheCursor->SetNormal();
-        }
-        else if (name == NODE_TANK)
-        {
-            TheCursor->SetSelected();
-        }
-    }
-    else
-    {
-        TheCursor->SetNormal();
-    }
-
-    pathIndicator.Update();
-}
-
-
 void CScene::HandleMouseDown(StringHash, VariantMap &eventData)
 {
     int buttons = static_cast<int>(eventData[MouseButtonDown::P_BUTTONS].GetInt());

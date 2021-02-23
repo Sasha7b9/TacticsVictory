@@ -68,9 +68,3 @@ void TScene::Create()
     light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
     light->SetEnabled(true);
 }
-
-
-void TScene::Update(float timeStep)
-{
-    UNUSED(timeStep);
-}
