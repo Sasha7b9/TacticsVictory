@@ -7,13 +7,14 @@ typedef float(*pFuncFV)();
 typedef void(*pFuncVF)(float);
 
 
-typedef unsigned char   uint8;
-typedef long long int   int64;
+typedef unsigned char      uint8;
+typedef long long int      int64;
 typedef unsigned long long uint64;
-typedef short unsigned  uint16;
-typedef unsigned int    uint;
-typedef unsigned short  ushort;
-typedef unsigned char   uchar;
+typedef short unsigned     uint16;
+typedef unsigned int       uint;
+typedef unsigned short     ushort;
+typedef unsigned char      uchar;
+typedef const char        *pchar;
 
 
 #define SERVER_ADDRESS  "127.0.0.1"

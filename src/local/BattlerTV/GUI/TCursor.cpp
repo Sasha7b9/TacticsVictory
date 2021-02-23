@@ -18,7 +18,7 @@ bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::St
 #define transparent {0.0f, 0.0f, 0.0f, 0.0f}
 
 
-TCursor::TCursor(Context *context) : LogicComponent(context)
+TCursor::TCursor(Context *context) : Cursor(context)
 {
     cursor = new Cursor(TheContext);
 
@@ -41,6 +41,15 @@ TCursor::TCursor(Context *context) : LogicComponent(context)
     staticSprite->SetColor(Color(Random(1.0f), Random(1.0f), Random(1.0f), 1.0f));
     staticSprite->SetBlendMode(BLEND_ALPHA);
     nodeSprite->SetEnabled(true);
+}
+
+
+
+void TCursor::RegisterObject(Context *context)
+{
+    pchar UI_CATEGORY = "UI";
+
+    context->RegisterFactory<TCursor>(UI_CATEGORY);
 }
 
 

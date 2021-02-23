@@ -6,9 +6,9 @@ class TImage;
 class CursorShapes;
 
 
-class TCursor : public LogicComponent
+class TCursor : public Cursor
 {
-    URHO3D_OBJECT(TCursor, LogicComponent)
+    URHO3D_OBJECT(TCursor, Cursor)
 
 public:
 
@@ -28,6 +28,7 @@ public:
     }; };
 
     TCursor(Context *context = TheContext);
+    void RegisterObject(Context *context);
     SharedPtr<Cursor> GetCursor();
     virtual void Update(float dT);
     void SetNormal();
