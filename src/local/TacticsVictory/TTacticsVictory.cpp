@@ -13,6 +13,7 @@
 #include "Scene/_TLevel.h"
 #include "Scene/TCScene.h"
 #include "Scene/Cameras/TCamera.h"
+#include "Scene/Objects/Units/TCTank.h"
 #include "Utils/TCLog.h"
 #include "Utils/TSettings.h"
 #include "Utils/TSettingsTypes.h"
@@ -101,6 +102,8 @@ void TacticsVictory::Start()
     TheScene = new CScene();
 
     TheScene->Create();
+
+    CTank::Create(TheScene->level.Size() / 2, TheScene->level[0].Size() / 2);
 
     TheCamera = TCamera::Create(TheScene->scene);
 
