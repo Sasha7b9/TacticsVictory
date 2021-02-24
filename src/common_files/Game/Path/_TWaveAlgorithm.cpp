@@ -230,7 +230,7 @@ void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path_)
         uint newRow = static_cast<uint>(iRow);
         uint newCol = static_cast<uint>(iCol);
 
-        if (newRow < TheTerrain->NumRows() && newCol < TheTerrain->NumCols() && cells[newRow][newCol] == numWave - 1)
+        if (newRow < TheTerrain->HeightX() && newCol < TheTerrain->NumCols() && cells[newRow][newCol] == numWave - 1)
         {
             path_.Insert(0, Coord(newRow, newCol));
             return;

@@ -296,7 +296,7 @@ void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
 
 void GuiEditor::HandleTerrainClearTerrain(StringHash, VariantMap&)
 {
-    for (uint row = 0; row < TheTerrain->NumRows(); row++)
+    for (uint row = 0; row < TheTerrain->HeightX(); row++)
     {
         for (uint col = 0; col < TheTerrain->NumCols(); col++)
         {

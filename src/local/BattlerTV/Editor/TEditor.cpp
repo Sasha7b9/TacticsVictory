@@ -44,9 +44,9 @@ void Editor::Run()
     light->SetEnabled(true);
 
     TheCamera->SetPosition(
-        {TheTerrain->NumCols() / 2.0f, 5.0f, - static_cast<float>(TheTerrain->NumRows()) / 2.0f - 10.0f},
-        {TheTerrain->NumCols() / 2.0f, 0.0f, - static_cast<float>(TheTerrain->NumRows()) / 2.0f});
-    lightNode->SetPosition({TheTerrain->NumCols() / 2.0f, 50.0f, - static_cast<float>(TheTerrain->NumRows()) / 2.0f});
+        {TheTerrain->NumCols() / 2.0f, 5.0f, - static_cast<float>(TheTerrain->HeightX()) / 2.0f - 10.0f},
+        {TheTerrain->NumCols() / 2.0f, 0.0f, - static_cast<float>(TheTerrain->HeightX()) / 2.0f});
+    lightNode->SetPosition({TheTerrain->NumCols() / 2.0f, 50.0f, - static_cast<float>(TheTerrain->HeightX()) / 2.0f});
 
     SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Editor, HandlePostRenderUpdate));
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(Editor, HandleMouseDown));
