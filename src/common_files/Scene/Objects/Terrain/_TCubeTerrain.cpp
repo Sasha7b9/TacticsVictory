@@ -236,17 +236,17 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
 
     GET_FOUR_POINTS_FOR_PLANE(retValue);
 
-    point3.coord = Vector3(static_cast<float>(row) + dX[side][0], dY[side][0], static_cast<float>(col) + dZ[side][0]);
-    point3.texCoord = Vector2::ZERO;
+    point0.coord = Vector3(static_cast<float>(row) + dX[side][0], dY[side][0], static_cast<float>(col) + dZ[side][0]);
+    point0.texCoord = Vector2::ZERO;
 
-    point2.coord = Vector3(static_cast<float>(row) + dX[side][1], dY[side][1], static_cast<float>(col) + dZ[side][1]);
-    point2.texCoord = Vector2::UP;
+    point1.coord = Vector3(static_cast<float>(row) + dX[side][1], dY[side][1], static_cast<float>(col) + dZ[side][1]);
+    point1.texCoord = Vector2::UP;
 
-    point1.coord = Vector3(static_cast<float>(row) + dX[side][2], dY[side][2], static_cast<float>(col) + dZ[side][2]);
-    point1.texCoord = Vector2::ONE;
+    point2.coord = Vector3(static_cast<float>(row) + dX[side][2], dY[side][2], static_cast<float>(col) + dZ[side][2]);
+    point2.texCoord = Vector2::ONE;
 
-    point0.coord = Vector3(static_cast<float>(row) + dX[side][3], dY[side][3], static_cast<float>(col) + dZ[side][3]);
-    point0.texCoord = Vector2::RIGHT;
+    point3.coord = Vector3(static_cast<float>(row) + dX[side][3], dY[side][3], static_cast<float>(col) + dZ[side][3]);
+    point3.texCoord = Vector2::RIGHT;
 
     CALCULATE_NORMALS;
 
