@@ -78,6 +78,7 @@ void LayerTerrain::Build()
 
     model = new Model(TheContext);
     Node *node = TheScene->CreateChild(NAME_NODE_TERRAIN);
+    node->SetPosition({ -0.5f, 0.0f, -0.5f });
     object = node->CreateComponent<StaticModel>();
     object->SetViewMask(VIEW_MASK_FOR_MISSILE);
 

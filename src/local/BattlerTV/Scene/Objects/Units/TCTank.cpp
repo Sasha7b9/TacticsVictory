@@ -25,7 +25,7 @@ SharedPtr<CTank> CTank::Create(int z, int x)
 
     tank->LoadFromJSON(JSON_MODEL_TANK);
 
-    tank->Normalize(10.0f);
+    tank->Normalize();
 
     tank->SetPosition({ (float)x, 0, (float)z });
 
