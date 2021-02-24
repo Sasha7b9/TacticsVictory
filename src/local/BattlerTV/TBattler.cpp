@@ -5,7 +5,7 @@
 #include "Game/Logic/_TRotator.h"
 #include "Game/Logic/_TSunEngine.h"
 #include "Game/Path/TTilePath.h"
-#include "Game/Path/TWaveAlgorithm.h"
+#include "Game/Path/_TWaveAlgorithm.h"
 #include "Graphics/2D/TImage.h"
 #include "GUI/TGUI.h"
 #include "GUI/GuiEditor/TGuiEditor.h"
