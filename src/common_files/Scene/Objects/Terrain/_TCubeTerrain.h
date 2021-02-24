@@ -31,18 +31,17 @@ public:
         C_DOWNLEFT = 3
     };
 
-    enum EDGE
-    {
-        E_TOP = 0,
-        E_DOWN = 1
-    };
+    struct EDGE { enum E {
+        TOP = 0,
+        DOWN = 1
+    }; };
 
 public:
     CubeTerrain(Context *context = TheContext);
     CubeTerrain(uint row, uint col, float height);  // Create cube with one
     void Create();
     void BuildVertexes(PODVector<float> &vertexes, PODVector<uint> &indexes);
-    Vector3& GetEdgeCoord(EDGE edge, CORNER corner);
+    Vector3& GetEdgeCoord(EDGE::E edge, CORNER corner);
 
     SharedPtr<SideCube>     sides[4];
     SharedPtr<CornerCube>   corners[4];

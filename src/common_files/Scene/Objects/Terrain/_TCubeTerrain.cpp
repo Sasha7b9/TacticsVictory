@@ -70,7 +70,7 @@ void CubeTerrain::CreateEdgeTop()
     float height = underGround ? - static_cast<float>(layer) : static_cast<float>(layer) + 1.0f;
 
     SharedPtr<EdgeCube> edge(new EdgeCube());
-    edges[E_TOP] = edge;
+    edges[EDGE::TOP] = edge;
 
     GET_FOUR_POINTS_FOR_PLANE(edge);
 
@@ -110,9 +110,9 @@ void CubeTerrain::CreateSideLeft()
         {
             CubeTerrain *cube = (*column)[(uint)i];
 
-            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);     // Получаем координату верхнего правого угла суба, который находится слева
+            Vector3& coord = cube->GetEdgeCoord(EDGE::TOP, C_TOPRIGHT);     // Получаем координату верхнего правого угла суба, который находится слева
 
-            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
+            if(coord.y_ < GetEdgeCoord(EDGE::TOP, C_TOPLEFT).y_)
             {
                 height = coord.y_;
                 break;
@@ -139,9 +139,9 @@ void CubeTerrain::CreateSideTop()
         {
             CubeTerrain *cube = (*column)[(uint)i];
 
-            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_DOWNLEFT);
+            Vector3& coord = cube->GetEdgeCoord(EDGE::TOP, C_DOWNLEFT);
 
-            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
+            if(coord.y_ < GetEdgeCoord(EDGE::TOP, C_TOPLEFT).y_)
             {
                 height = coord.y_;
                 break;
@@ -165,9 +165,9 @@ void CubeTerrain::CreateSideRight()
         {
             CubeTerrain *cube = (*column)[(uint)i];
 
-            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);
+            Vector3& coord = cube->GetEdgeCoord(EDGE::TOP, C_TOPRIGHT);
 
-            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPRIGHT).y_)
+            if(coord.y_ < GetEdgeCoord(EDGE::TOP, C_TOPRIGHT).y_)
             {
                 height = coord.y_;
                 break;
@@ -191,9 +191,9 @@ void CubeTerrain::CreateSideDown()
         {
             CubeTerrain *cube = (*column)[(uint)i];
 
-            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPLEFT);
+            Vector3& coord = cube->GetEdgeCoord(EDGE::TOP, C_TOPLEFT);
 
-            if(coord.y_ < GetEdgeCoord(E_TOP, C_DOWNLEFT).y_)
+            if(coord.y_ < GetEdgeCoord(EDGE::TOP, C_DOWNLEFT).y_)
             {
                 height = coord.y_;
                 break;
@@ -241,6 +241,11 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE::E side, float anotherHeight)
 
     SharedPtr<SideCube> retValue(new SideCube());
 
+    if (side != SIDE::TOP)
+    {
+        return retValue;
+    }
+
     GET_FOUR_POINTS_FOR_PLANE(retValue);
 
     point0.coord = Vector3(static_cast<float>(row) + dX[side][0], dY[side][0], static_cast<float>(col) + dZ[side][0]);
@@ -284,14 +289,14 @@ void CubeTerrain::BuildVertexes(PODVector<float> &v, PODVector<uint> &i)
     vertexes = &v;
     indexes = &i;
 
-    if (edges[E_TOP])
+    if (edges[EDGE::TOP])
     {
-        BuildPlaneVerexes(edges[E_TOP]->plane);
+        BuildPlaneVerexes(edges[EDGE::TOP]->plane);
     }
 
-    if(edges[E_DOWN])
+    if(edges[EDGE::DOWN])
     {
-        BuildPlaneVerexes(edges[E_DOWN]->plane);
+        BuildPlaneVerexes(edges[EDGE::DOWN]->plane);
     }
 
     if(sides[SIDE::LEFT])
@@ -331,9 +336,9 @@ void CubeTerrain::PushPoint(const PointPlane &point)
 }
 
 
-Vector3& CubeTerrain::GetEdgeCoord(EDGE edge, CORNER corner)
+Vector3& CubeTerrain::GetEdgeCoord(EDGE::E edge, CORNER corner)
 {
-    if(edge == E_TOP && edges[E_TOP] == 0)
+    if(edge == EDGE::TOP && edges[EDGE::TOP] == 0)
     {
         CreateEdgeTop();
     }
