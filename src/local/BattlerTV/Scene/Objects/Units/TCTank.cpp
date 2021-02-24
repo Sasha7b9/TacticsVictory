@@ -25,9 +25,9 @@ SharedPtr<CTank> CTank::Create(uint row, uint col)
 
     tank->LoadFromJSON(JSON_MODEL_TANK);
 
-    tank->Normalize();
+    tank->Normalize(10.0f);
 
-    tank->SetPosition({ (float)row, 0, -(float)col });
+    tank->SetPosition({ (float)row, 0, (float)col });
 
     storage.Push(tank);
 
