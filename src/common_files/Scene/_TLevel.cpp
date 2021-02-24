@@ -104,7 +104,7 @@ Vector<Vector<float>> Level::Load(const char *fileName)
 
     uint numRows = map.Size();
 
-    map.Resize((numRows / SegmentTerrain::HEIGHT) * SegmentTerrain::HEIGHT);
+    map.Resize((numRows / SegmentTerrain::WIDTH_Z) * SegmentTerrain::WIDTH_Z);
 
 
     uint numCols = map[0].Size();
