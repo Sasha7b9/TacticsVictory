@@ -180,27 +180,27 @@ void CubeTerrain::CreateSideRight()
 
 void CubeTerrain::CreateSideDown()
 {
-//    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::DOWN);
-//
-//    float height = 0.0f;
-//
-//    if(column)
-//    {
-//        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
-//        {
-//            CubeTerrain *cube = (*column)[(uint)i];
-//
-//            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPLEFT);
-//
-//            if(coord.y_ < GetEdgeCoord(E_TOP, C_DOWNLEFT).y_)
-//            {
-//                height = coord.y_;
-//                break;
-//            }
-//        }
-//    }
-//
-//  sides[S_DOWN] = CreateSide(S_DOWN, height);
+    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::DOWN);
+
+    float height = 0.0f;
+
+    if(column)
+    {
+        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
+        {
+            CubeTerrain *cube = (*column)[(uint)i];
+
+            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPLEFT);
+
+            if(coord.y_ < GetEdgeCoord(E_TOP, C_DOWNLEFT).y_)
+            {
+                height = coord.y_;
+                break;
+            }
+        }
+    }
+
+  sides[S_DOWN] = CreateSide(S_DOWN, height);
 }
 
 
@@ -211,9 +211,12 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
     const float dX[4][4] =
     {
         {0.0f, 1.0f, 1.0f, 0.0f},
+
         {0.0f, 0.0f, 0.0f, 0.0f},
+
         {0.0f, 1.0f, 1.0f, 0.0f},
-        {0.0f, 0.0f, 0.0f, 0.0f}
+
+        {1.0f, 1.0f, 1.0f, 1.0f}
     };
 
     const float dY[4][4] =
@@ -221,15 +224,18 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
         {anotherHeight, height, height, anotherHeight},
         {anotherHeight, anotherHeight, height, height},
         {height, anotherHeight, anotherHeight, height},
-        {anotherHeight, height, height, anotherHeight}
+        {height, height, anotherHeight, anotherHeight}
     };
 
     const float dZ[4][4] =
     {
-        {0.0f, 0.0f, 1.0f,  1.0f},
-        {0.0f, 1.0f, 1.0f, 0.0f},
         {0.0f, 0.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f}
+
+        {0.0f, 1.0f, 1.0f, 0.0f},
+
+        {0.0f, 0.0f, 1.0f, 1.0f},
+
+        {0.0f, 1.0f, 1.0f, 0.0f}
     };
 
     SharedPtr<SideCube> retValue(new SideCube());
