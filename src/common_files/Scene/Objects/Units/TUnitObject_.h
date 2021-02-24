@@ -7,13 +7,13 @@ class UnitObject : public GameObject
 {
     URHO3D_OBJECT(UnitObject, GameObject);
 
-public:
-
-    static Vector<UnitObject *> storage;
-
 protected:
 
     UnitObject(Context *context);
 
     virtual void Start() override;
+
+private:
+
+    static Vector<UnitObject *> storage;
 };
