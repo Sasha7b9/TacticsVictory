@@ -28,13 +28,11 @@ void CTank::FixedUpdate(float /*time*/)
 
 void CTank::OnNodeSet(Node *node)
 {
-    Tank::OnNodeSet(node);
-
     if (node)
     {
-        node_ = node;
+        node_ = node->CreateChild(NAME_NODE_TANK);
 
-        node_->SetName(NAME_NODE_TANK);
+        Tank::OnNodeSet(node_);
 
         LoadFromJSON(JSON_MODEL_TANK);
 
@@ -45,5 +43,9 @@ void CTank::OnNodeSet(Node *node)
         tile->Init(node_);
 
         storage.Push(this);
+    }
+    else
+    {
+        Tank::OnNodeSet(node);
     }
 }
