@@ -34,11 +34,15 @@ void TTerrain::CreateFromVector(const Vector<Vector<float>> &lev)
 
     CubeTerrain::terrain = this;
 
-    uint widthZ = SegmentTerrain::WIDTH_Z;
     uint heightX = SegmentTerrain::HEIGHT_X;
+    uint widthZ = SegmentTerrain::WIDTH_Z;
 
-    uint segmentsInZ = level.Size() / widthZ + ((level.Size() % widthZ) == 0 ? 0 : 1);      // Сколько сегментов по иксу
-    uint segmentsInX = level[0].Size() / heightX + ((level.Size() % heightX) == 0 ? 0 : 1);     // Сколько сегментов по зет
+    uint segmentsInX = level.Size() / heightX + ((level.Size() % heightX) == 0 ? 0 : 1);    // Сколько сегментов по X
+                                                                                            // (в высоту)
+
+    uint segmentsInZ = level[0].Size() / widthZ + ((level.Size() % widthZ) == 0 ? 0 : 1);   // Сколько сегментов по Z
+                                                                                            // (в ширину)
+
 
     uint allRows = level.Size();
     uint allCols = level[0].Size();
