@@ -15,9 +15,9 @@ void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
     if(drawDebug)
     {
         ThePhysicsWorld->DrawDebugGeometry(true);
-        TheDebugRenderer->AddLine(Vector3::ZERO, {100.0f, 0.0f, 0.0f}, Color::RED);
-        TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 100.0f, 0.0f}, Color::GREEN);
-        TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 100.0f}, Color::BLUE);
+        TheDebugRenderer->AddLine(Vector3::ZERO, {1000.0f, 0.0f, 0.0f}, Color::RED);
+        TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 1000.0f, 0.0f}, Color::GREEN);
+        TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 1000.0f}, Color::BLUE);
         //TheRenderer->DrawDebugGeometry(false);
     }
 }
