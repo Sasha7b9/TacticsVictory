@@ -57,7 +57,7 @@ void TButton::HandleHoverBegin(StringHash, VariantMap &)
 {
     VariantMap &eventData = GetEventDataMap();
     eventData[HoverBeginElementGUI::P_ELEMENT] = this;
-    SendEvent(E_HOVERBEGINELEMENTGUI, eventData);
+    SendEvent(E_HOVER_BEGIN_ELEMENT_GUI, eventData);
 }
 
 
@@ -65,7 +65,7 @@ void TButton::HandleHoverEnd(StringHash, VariantMap &)
 {
     VariantMap &eventData = GetEventDataMap();
     eventData[HoverEndElementGUI::P_ELEMENT] = this;
-    SendEvent(E_HOVERENDELEMENTGUI, eventData);
+    SendEvent(E_HOVER_END_ELEMENT_GUI, eventData);
 }
 
 

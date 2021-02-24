@@ -43,8 +43,8 @@ TCursor::TCursor(Context *context) : Cursor(context)
     staticSprite->SetBlendMode(BLEND_ALPHA);
     nodeSprite->SetEnabled(true);
 
-    SubscribeToEvent(E_HOVERBEGINELEMENTGUI, URHO3D_HANDLER(TCursor, HandleHoverBeginElementGUI));
-    SubscribeToEvent(E_HOVERENDELEMENTGUI, URHO3D_HANDLER(TCursor, HandleHoverEndElementGUI));
+    SubscribeToEvent(E_HOVER_BEGIN_ELEMENT_GUI, URHO3D_HANDLER(TCursor, HandleHoverBeginElementGUI));
+    SubscribeToEvent(E_HOVER_END_ELEMENT_GUI, URHO3D_HANDLER(TCursor, HandleHoverEndElementGUI));
 }
 
 

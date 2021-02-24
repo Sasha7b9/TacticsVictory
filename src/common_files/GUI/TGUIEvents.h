@@ -3,13 +3,14 @@
 
 namespace Urho3D
 {
-    URHO3D_EVENT(E_HOVERBEGINELEMENTGUI, HoverBeginElementGUI)
+    // evetn means that cursor is over the element GUI and cursor must be selected
+    URHO3D_EVENT(E_HOVER_BEGIN_ELEMENT_GUI, HoverBeginElementGUI)
     {
         URHO3D_PARAM(P_ELEMENT, Element);
     }
 
-
-    URHO3D_EVENT(E_HOVERENDELEMENTGUI, HoverEndElementGUI)
+    // event means that cursor is not over the element and should be set to normal state
+    URHO3D_EVENT(E_HOVER_END_ELEMENT_GUI, HoverEndElementGUI)
     {
         URHO3D_PARAM(P_ELEMENT, Element);
     }

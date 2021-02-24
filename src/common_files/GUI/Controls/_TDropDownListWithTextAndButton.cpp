@@ -1,6 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "GUI/TCursor.h"
+#include "GUI/TGUIEvents.h"
 #include "GUI/Controls/_TDropDownListWithTextAndButton.h"
 #include "GUI/Controls/_TLabel.h"
 #include "Utils/TSettings.h"
@@ -133,11 +134,15 @@ SharedPtr<DropDownListWithTextAndButton> DropDownListWithTextAndButton::Create(W
 
 void DropDownListWithTextAndButton::HandleHoverBegin(StringHash, VariantMap&)
 {
-    TheCursor->SetSelected();
+    VariantMap &eventData = GetEventDataMap();
+    eventData[HoverBeginElementGUI::P_ELEMENT] = this;
+    SendEvent(E_HOVER_BEGIN_ELEMENT_GUI, eventData);
 }
 
 
 void DropDownListWithTextAndButton::HandleHoverEnd(StringHash, VariantMap&)
 {
-    TheCursor->SetNormal();
+    VariantMap &eventData = GetEventDataMap();
+    eventData[HoverEndElementGUI::P_ELEMENT] = this;
+    SendEvent(E_HOVER_END_ELEMENT_GUI, eventData);
 }
