@@ -12,7 +12,7 @@ class SegmentTerrain : public Object
 
 public:
 
-    static const uint WIDTH = 10;
+    static const uint HEIGHT_X = 10;
     static const uint WIDTH_Z = 10;
 
     enum

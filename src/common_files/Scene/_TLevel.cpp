@@ -111,7 +111,7 @@ Vector<Vector<float>> Level::Load(const char *fileName)
 
     for (uint i = 0; i < map.Size(); i++)
     {
-        map[i].Resize((numCols / SegmentTerrain::WIDTH) * SegmentTerrain::WIDTH);
+        map[i].Resize((numCols / SegmentTerrain::HEIGHT_X) * SegmentTerrain::HEIGHT_X);
     }
 
     return map;

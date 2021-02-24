@@ -35,7 +35,7 @@ void TTerrain::CreateFromVector(const Vector<Vector<float>> &lev)
     CubeTerrain::terrain = this;
 
     uint widthZ = SegmentTerrain::WIDTH_Z;
-    uint heightX = SegmentTerrain::WIDTH;
+    uint heightX = SegmentTerrain::HEIGHT_X;
 
     uint segmentsInZ = level.Size() / widthZ + ((level.Size() % widthZ) == 0 ? 0 : 1);      // Сколько сегментов по иксу
     uint segmentsInX = level[0].Size() / heightX + ((level.Size() % heightX) == 0 ? 0 : 1);     // Сколько сегментов по зет
@@ -192,5 +192,5 @@ PODVector<CubeTerrain*>* TTerrain::GetColumnCubes(const CubeTerrain *cube, DIR d
 
 SegmentTerrain* TTerrain::GetSegmentForCoord(uint row, uint col)
 {
-    return segments[row / SegmentTerrain::WIDTH_Z][col / SegmentTerrain::WIDTH];
+    return segments[row / SegmentTerrain::WIDTH_Z][col / SegmentTerrain::HEIGHT_X];
 }
