@@ -4,9 +4,9 @@
 #include "Scene/TCScene.h"
 
 
-Tile::Tile(Node *node, pchar name) : LogicComponent(TheContext)
+Tile::Tile(Context *context) : LogicComponent(context)
 {
-    node_ = node->CreateChild(name);
+    node_ = TheScene->CreateChild();
 
     float d = 0.0f;
 
@@ -48,11 +48,17 @@ Tile::Tile(Node *node, pchar name) : LogicComponent(TheContext)
 
     geometry->Commit();
 
-    TheScene->NodeAdded(node_);
+    geometry->SetEnabled(true);
 }
 
 
 Tile::~Tile()
 {
 
+}
+
+
+void Tile::RegisterObject()
+{
+    TheContext->RegisterFactory<Tile>();
 }

@@ -30,7 +30,11 @@ SharedPtr<CTank> CTank::Create(int z, int x)
 
     tank->SetPosition({ (float)x, 0, (float)z });
 
-    SharedPtr<Tile> tile(new Tile(TheScene, "select"));
+    SharedPtr<Tile> tile(tank->node_->CreateComponent<Tile>());
+
+    TheScene->NodeRemoved(tile->GetNode());
+
+    tile->GetNode()->SetParent(tank->node_);
 
     storage.Push(tank);
 

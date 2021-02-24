@@ -8,6 +8,8 @@ class Tile : public LogicComponent
 
 public:
 
-    Tile(Node *node, pchar name);
+    Tile(Context *context = TheContext);
     ~Tile();
+
+    static void RegisterObject();
 };

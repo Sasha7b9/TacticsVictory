@@ -6,6 +6,7 @@
 #include "Game/Logic/TSunEngine_.h"
 #include "Game/Path/TTilePath.h"
 #include "Graphics/2D/TImage.h"
+#include "Graphics/3D/TTile.h"
 #include "GUI/TCursor.h"
 #include "GUI/TGUI.h"
 #include "GUI/GuiEditor/TGuiEditor.h"
@@ -211,6 +212,7 @@ void TacticsVictory::RegistrationComponets()
     WaveAlgorithm::RegisterObject();
     TScene::RegisterObject();
     CTank::RegisterObject();
+    Tile::RegisterObject();
 }
 
 
