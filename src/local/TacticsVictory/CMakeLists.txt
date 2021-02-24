@@ -46,6 +46,7 @@ file(GLOB GAME_LOGIC                 ../../common_files/Game/Logic/*.*)
 file(GLOB GAME_PATH                  ../../common_files/Game/Path/*.*
                                            ../BattlerTV/Game/Path/*.*)
 file(GLOB GRAPHICS_2D                      ../BattlerTV/Graphics/2D/*.*)
+file(GLOB GRAPHICS_3D                      ../BattlerTV/Graphics/3D/*.*)
 file(GLOB GUI                              ../BattlerTV/GUI/*.*)
 file(GLOB GUI_CONTROLS               ../../common_files/GUI/Controls/*.*)
 file(GLOB GUI_GUIEDITOR                    ../BattlerTV/GUI/GuiEditor/*.*)
@@ -79,6 +80,7 @@ source_group(Game                    FILES ${GAME})
 source_group(Game\\Logic             FILES ${GAME_LOGIC})
 source_group(Game\\Path              FILES ${GAME_PATH})
 source_group(Graphics\\2D            FILES ${GRAPHICS_2D})
+source_group(Graphics\\3D            FILES ${GRAPHICS_3D})
 source_group(GUI                     FILES ${GUI})
 source_group(GUI\\Controls           FILES ${GUI_CONTROLS})
 source_group(GUI\\GuiEditor          FILES ${GUI_GUIEDITOR})
@@ -98,7 +100,8 @@ source_group(Scene\\Objects\\Weapons FILES ${SCENE_OBJECTS_WEAPONS})
 source_group(Scene\\Primitives       FILES ${SCENE_PRIMITIVES})
 source_group(Utils                   FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
+add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH}
+    ${GRAPHICS_2D} ${GRAPHICS_3D}
     ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
     ${GUI_WINDOWS} ${INPUT}
     ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}

@@ -1,5 +1,6 @@
 // 2021/02/22 15:40:32 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #include "stdafx.h"
+#include "Graphics/3D/TTile.h"
 #include "Scene/TCScene.h"
 #include "Scene/Objects/Units/TCTank.h"
 
@@ -30,6 +31,12 @@ SharedPtr<CTank> CTank::Create(int z, int x)
     tank->SetPosition({ (float)x, 0, (float)z });
 
     storage.Push(tank);
+
+    SharedPtr<Tile> tile(new Tile(TheScene, "select"));
+
+    CustomGeometry *geomtery = tile->GetNode()->GetComponent<CustomGeometry>();
+
+    TheScene->AddChild(tile->GetNode());
 
     return tank;
 }
