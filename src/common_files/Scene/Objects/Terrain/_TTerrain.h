@@ -28,8 +28,7 @@ public:
     TTerrain(Context *context = TheContext);
     ~TTerrain();
     void CreateFromVector(const Vector<Vector<float>> &level);
-    void SaveToFile(char *nameFie);
-    float GetHeight(uint row, uint col);
+    float GetHeight(uint colZ, uint rowX);
     void SetHeight(uint row, uint col, float height);
     uint HeightX();
     uint WidthZ();

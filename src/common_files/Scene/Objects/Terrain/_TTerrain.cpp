@@ -108,15 +108,9 @@ void TTerrain::CreateFromVector(const Vector<Vector<float>> &lev)
 }
 
 
-void TTerrain::SaveToFile(char * /*nameFile*/)
+float TTerrain::GetHeight(uint colZ, uint rowX)
 {
-
-}
-
-
-float TTerrain::GetHeight(uint row, uint col)
-{
-    return level[row][col];
+    return level[colZ][rowX];
 }
 
 
