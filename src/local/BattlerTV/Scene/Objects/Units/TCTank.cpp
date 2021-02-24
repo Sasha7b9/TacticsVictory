@@ -20,16 +20,6 @@ void CTank::RegisterObject()
 }
 
 
-SharedPtr<CTank> CTank::Create(int z, int x)
-{
-    SharedPtr<CTank> tank(TheScene->CreateChild(NAME_NODE_TANK)->CreateComponent<CTank>());
-
-    tank->SetPosition({ (float)x, 0, (float)z });
-
-    return tank;
-}
-
-
 void CTank::FixedUpdate(float /*time*/)
 {
 
@@ -38,11 +28,13 @@ void CTank::FixedUpdate(float /*time*/)
 
 void CTank::OnNodeSet(Node *node)
 {
+    Tank::OnNodeSet(node);
+
     if (node)
     {
-        node->SetName(NAME_NODE_TANK);
+        node_ = node;
 
-        Tank::OnNodeSet(node);
+        node_->SetName(NAME_NODE_TANK);
 
         LoadFromJSON(JSON_MODEL_TANK);
 

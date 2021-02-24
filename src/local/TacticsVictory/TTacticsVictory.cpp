@@ -115,9 +115,7 @@ void TacticsVictory::Start()
         uint colZ = (uint)Random((float)TheTerrain->WidthZ());
         uint rowX = (uint)Random((float)TheTerrain->HeightX());
 
-        TheTerrain->PutIn(CTank::Create(), colZ, rowX);
-
-//        TheTerrain->PutIn(TheScene->CreateComponent<CTank>(), colZ, rowX);
+        TheTerrain->PutIn(TheScene->CreateChild()->CreateComponent<CTank>(), colZ, rowX);
     }
 
     TheCamera = TCamera::Create();
