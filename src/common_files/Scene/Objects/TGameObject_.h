@@ -8,27 +8,27 @@ class GameObject : public LogicComponent
 
 public:
 
-    virtual void FixedUpdate(float time) override = 0;
-
-    static Vector<GameObject *> storage;
-
-    Vector3 GetPosition() const;
-
     void SetPosition(const Vector3 &position);
 
 protected:
+
+    GameObject(Context *context);
 
     void LoadFromJSON(const String &file);
 
     void Normalize(float k = 1.0f);
 
-    GameObject(Context *context);
-
 private:
-
-    SharedPtr<StaticModel> staticModel;
 
     float speed = 0.0f;                     // С такой скоростью объект перемещается
     float shiftRotate = 0.0f;               // Поворот модели относительно направления ноды
     Vector3 shiftPosition = Vector3::ZERO;  // Если модель не выровнена относительно начала координат, здесь смещение
+
+    SharedPtr<StaticModel> staticModel;
+
+    static Vector<GameObject *> storage;
+
+    virtual void FixedUpdate(float time) override = 0;
+
+    Vector3 GetPosition() const;
 };
