@@ -52,8 +52,8 @@ SharedPtr<TCamera> TCamera::Create()
     uint sizeX = TheScene->level[0].Size();
     uint sizeZ = TheScene->level.Size();
 
-    camera->SetPosition({ sizeX / 2.0f, 25.0f, -static_cast<float>(sizeZ) / 2.0f - 10.0f },
-                        { sizeX / 2.0f, 0.0f, -(sizeZ / 2.0f) });
+    camera->SetPosition({ sizeX / 2.0f, 25.0f, static_cast<float>(sizeZ) / 2.0f - 10.0f },
+                        { sizeX / 2.0f, 0.0f, (sizeZ / 2.0f) });
 
     return camera;
 }

@@ -98,34 +98,36 @@ void CubeTerrain::CreateEdgeDown()
 
 void CubeTerrain::CreateSideLeft()
 {
-    // Get the column of cubes, that are left of our. column[0] - min height
-    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::LEFT);
-
-    float height = 0.0f;
-
-    if(column)                                                          // Если слева от нашей клетки есть другие
-    {
-        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
-        {
-            CubeTerrain *cube = (*column)[(uint)i];
-
-            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);     // Получаем координату верхнего правого угла суба, который находится слева
-
-            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
-            {
-                height = coord.y_;
-                break;
-            }
-        }
-    }
-
-    sides[S_LEFT] = CreateSide(S_LEFT, height);
+//    // Получим столбик кубов, находящихс слева от нашего. column[0] имеет минимальную высоту
+//    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::LEFT);
+//
+//    float height = 0.0f;
+//
+//    if(column)                                                          // Если слева от нашей клетки есть другие
+//    {
+//        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
+//        {
+//            CubeTerrain *cube = (*column)[(uint)i];
+//
+//            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);     // Получаем координату верхнего правого угла суба, который находится слева
+//
+//            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
+//            {
+//                height = coord.y_;
+//                break;
+//            }
+//        }
+//    }
+//
+//    sides[S_LEFT] = CreateSide(S_LEFT, height);
 }
 
 
 void CubeTerrain::CreateSideTop()
 {
     // Get the column of cubes, that are top of our. column[0] - mini height
+
+    // Получем столбик кубов, находящихся вверху нашего. column[0] имеет минимальную высоту
     PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::TOP);
 
     float height = 0.0f;
@@ -152,53 +154,53 @@ void CubeTerrain::CreateSideTop()
 
 void CubeTerrain::CreateSideRight()
 {
-    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::RIGHT);
-
-    float height = 0.0f;
-
-    if(column)
-    {
-        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
-        {
-            CubeTerrain *cube = (*column)[(uint)i];
-
-            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);
-
-            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPRIGHT).y_)
-            {
-                height = coord.y_;
-                break;
-            }
-        }
-    }
-
-    sides[S_RIGHT] = CreateSide(S_RIGHT, height);
+//    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::RIGHT);
+//
+//    float height = 0.0f;
+//
+//    if(column)
+//    {
+//        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
+//        {
+//            CubeTerrain *cube = (*column)[(uint)i];
+//
+//            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);
+//
+//            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPRIGHT).y_)
+//            {
+//                height = coord.y_;
+//                break;
+//            }
+//        }
+//    }
+//
+//    sides[S_RIGHT] = CreateSide(S_RIGHT, height);
 }
 
 
 void CubeTerrain::CreateSideDown()
 {
-    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::DOWN);
-
-    float height = 0.0f;
-
-    if(column)
-    {
-        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
-        {
-            CubeTerrain *cube = (*column)[(uint)i];
-
-            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPLEFT);
-
-            if(coord.y_ < GetEdgeCoord(E_TOP, C_DOWNLEFT).y_)
-            {
-                height = coord.y_;
-                break;
-            }
-        }
-    }
-
-    sides[S_DOWN] = CreateSide(S_DOWN, height);
+//    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::DOWN);
+//
+//    float height = 0.0f;
+//
+//    if(column)
+//    {
+//        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
+//        {
+//            CubeTerrain *cube = (*column)[(uint)i];
+//
+//            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPLEFT);
+//
+//            if(coord.y_ < GetEdgeCoord(E_TOP, C_DOWNLEFT).y_)
+//            {
+//                height = coord.y_;
+//                break;
+//            }
+//        }
+//    }
+//
+//  sides[S_DOWN] = CreateSide(S_DOWN, height);
 }
 
 
@@ -208,10 +210,10 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
 
     const float dX[4][4] =
     {
+        {0.0f, 1.0f, 1.0f, 0.0f},
         {0.0f, 0.0f, 0.0f, 0.0f},
         {0.0f, 1.0f, 1.0f, 0.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {0.0f, 0.0f, 1.0f, 1.0f}
+        {0.0f, 0.0f, 0.0f, 0.0f}
     };
 
     const float dY[4][4] =
@@ -224,27 +226,27 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
 
     const float dZ[4][4] =
     {
-        {0.0f, 0.0f, -1.0, -1.0f},
-        {0.0f, 0.0f, 0.0f, 0.0f},
-        {0.0f, 0.0f, -1.0f, -1.0f},
-        {-1.0f, -1.0f, -1.0f, -1.0f}
+        {0.0f, 0.0f, 1.0f,  1.0f},
+        {0.0f, 1.0f, 1.0f, 0.0f},
+        {0.0f, 0.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f}
     };
 
     SharedPtr<SideCube> retValue(new SideCube());
 
     GET_FOUR_POINTS_FOR_PLANE(retValue);
 
-    point0.coord = Vector3(static_cast<float>(col) + dX[side][0], dY[side][0], -static_cast<float>(row) + dZ[side][0]);
-    point0.texCoord = Vector2::ZERO;
+    point3.coord = Vector3(static_cast<float>(row) + dX[side][0], dY[side][0], static_cast<float>(col) + dZ[side][0]);
+    point3.texCoord = Vector2::ZERO;
 
-    point1.coord = Vector3(static_cast<float>(col) + dX[side][1], dY[side][1], -static_cast<float>(row) + dZ[side][1]);
-    point1.texCoord = Vector2::UP;
+    point2.coord = Vector3(static_cast<float>(row) + dX[side][1], dY[side][1], static_cast<float>(col) + dZ[side][1]);
+    point2.texCoord = Vector2::UP;
 
-    point2.coord = Vector3(static_cast<float>(col) + dX[side][2], dY[side][2], -static_cast<float>(row) + dZ[side][2]);
-    point2.texCoord = Vector2::ONE;
+    point1.coord = Vector3(static_cast<float>(row) + dX[side][2], dY[side][2], static_cast<float>(col) + dZ[side][2]);
+    point1.texCoord = Vector2::ONE;
 
-    point3.coord = Vector3(static_cast<float>(col) + dX[side][3], dY[side][3], -static_cast<float>(row) + dZ[side][3]);
-    point3.texCoord = Vector2::RIGHT;
+    point0.coord = Vector3(static_cast<float>(row) + dX[side][3], dY[side][3], static_cast<float>(col) + dZ[side][3]);
+    point0.texCoord = Vector2::RIGHT;
 
     CALCULATE_NORMALS;
 
