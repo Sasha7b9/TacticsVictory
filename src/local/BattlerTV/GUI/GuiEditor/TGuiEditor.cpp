@@ -314,8 +314,6 @@ void GuiEditor::HandleTerrainClearTerrain(StringHash, VariantMap&)
             TheTerrain->SetHeight(row, col, 0.0f);
         }
     }
-
-    TheTerrain->Update();
 }
 
 

@@ -239,12 +239,10 @@ void Editor::HandleKeyDown(StringHash, VariantMap& eventData)
         if(KEY_IS_KP_MINUS)
         {
             TheTerrain->SetHeight(row, col, height - 1.0f);
-            TheTerrain->Update();
         }
         else if(KEY_IS_KP_PLUS)
         {
             TheTerrain->SetHeight(row, col, height + 1.0f);
-            TheTerrain->Update();
         }
         selectedPlane = TheTerrain->GetPlane(row, col);
 

@@ -126,12 +126,6 @@ void TTerrain::SetHeight(uint row, uint col, float height)
 }
 
 
-void TTerrain::Update()
-{
-
-}
-
-
 uint TTerrain::HeightX()
 {
     return level.Size();

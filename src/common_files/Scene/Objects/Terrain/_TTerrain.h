@@ -31,7 +31,6 @@ public:
     void SaveToFile(char *nameFie);
     float GetHeight(uint row, uint col);
     void SetHeight(uint row, uint col, float height);
-    void Update();
     uint HeightX();
     uint WidthZ();
     bool Empty();
