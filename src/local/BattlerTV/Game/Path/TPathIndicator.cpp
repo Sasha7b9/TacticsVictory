@@ -13,7 +13,7 @@ PathIndicator::PathIndicator()
 
 void PathIndicator::Init()
 {
-    pathFinder.SetSize(TheTerrain->HeightX(), TheTerrain->NumCols());
+    pathFinder.SetSize(TheTerrain->HeightX(), TheTerrain->WidthZ());
 }
 
 

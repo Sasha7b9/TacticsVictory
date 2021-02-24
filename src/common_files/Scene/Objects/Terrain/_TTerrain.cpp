@@ -138,7 +138,7 @@ uint TTerrain::HeightX()
 }
 
 
-uint TTerrain::NumCols()
+uint TTerrain::WidthZ()
 {
     return level[0].Size();
 }
@@ -182,7 +182,7 @@ PODVector<CubeTerrain*>* TTerrain::GetColumnCubes(const CubeTerrain *cube, DIR::
     uint row = (uint)((int)cube->row + dRow[dir]);
     uint col = (uint)((int)cube->col + dCol[dir]);
 
-    if(row > HeightX() - 1 || col > NumCols() - 1)
+    if(row > HeightX() - 1 || col > WidthZ() - 1)
     {
         return nullptr;
     }

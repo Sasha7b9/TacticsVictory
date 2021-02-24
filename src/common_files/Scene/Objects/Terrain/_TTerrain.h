@@ -33,7 +33,7 @@ public:
     void SetHeight(uint row, uint col, float height);
     void Update();
     uint HeightX();
-    uint NumCols();
+    uint WidthZ();
     bool Empty();
     TPlane GetIntersectionPlane(Ray &ray);
     Line GetIntersectionEdge(Ray &ray);

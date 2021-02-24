@@ -298,7 +298,7 @@ void GuiEditor::HandleTerrainClearTerrain(StringHash, VariantMap&)
 {
     for (uint row = 0; row < TheTerrain->HeightX(); row++)
     {
-        for (uint col = 0; col < TheTerrain->NumCols(); col++)
+        for (uint col = 0; col < TheTerrain->WidthZ(); col++)
         {
             TheTerrain->SetHeight(row, col, 0.0f);
         }
