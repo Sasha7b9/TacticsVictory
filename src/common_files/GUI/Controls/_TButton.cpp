@@ -55,13 +55,13 @@ TButton::TButton(UIElement *uielement, char *text, int width /* = -1 */, int hei
 
 void TButton::HandleHoverBegin(StringHash, VariantMap &)
 {
-    SendEvent(E_HOVER_BEGIN_ELEMENT_GUI, GetEventDataMap());
+    SendEvent(E_HOVER_BEGIN_ELEMENT_GUI);
 }
 
 
 void TButton::HandleHoverEnd(StringHash, VariantMap &)
 {
-    SendEvent(E_HOVER_END_ELEMENT_GUI, GetEventDataMap());
+    SendEvent(E_HOVER_END_ELEMENT_GUI);
 }
 
 

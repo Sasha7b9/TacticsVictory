@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/TCursor.h"
+#include "GUI/TGUIEvents.h"
 #include "GUI/Controls/_THint.h"
 #include "GUI/Controls/_TSliderInt.h"
 #include "GUI/Controls/_TSliderWithTextAndButtons.h"
@@ -127,13 +128,13 @@ void SliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventDat
 
 void SliderWithTextAndButtons::HandleHoverBegin(StringHash, VariantMap&)
 {
-    TheCursor->SetSelected();
+    SendEvent(E_HOVER_BEGIN_ELEMENT_GUI);
 }
 
 
 void SliderWithTextAndButtons::HandleHoverEnd(StringHash, VariantMap&)
 {
-    TheCursor->SetNormal();
+    SendEvent(E_HOVER_END_ELEMENT_GUI);
 }
 
 
