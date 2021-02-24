@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Graphics/2D/TImage.h"
 #include "GUI/TCursor.h"
+#include "GUI/TGUIEvents.h"
 #include "GUI/TGUI.h"
 #include "GUI/Menu/TMenu.h"
 #include "Scene/TCScene.h"
@@ -41,6 +42,9 @@ TCursor::TCursor(Context *context) : Cursor(context)
     staticSprite->SetColor(Color(Random(1.0f), Random(1.0f), Random(1.0f), 1.0f));
     staticSprite->SetBlendMode(BLEND_ALPHA);
     nodeSprite->SetEnabled(true);
+
+    SubscribeToEvent(E_HOVERBEGINELEMENTGUI, URHO3D_HANDLER(TCursor, HandleHoverBeginElementGUI));
+    SubscribeToEvent(E_HOVERENDELEMENTGUI, URHO3D_HANDLER(TCursor, HandleHoverEndElementGUI));
 }
 
 
@@ -180,25 +184,44 @@ void TCursor::Update(float dT)
         }
     }
 
-    Vector3 hitPosition;
-
-    Drawable *drawable = GetRaycastNode(&hitPosition);
-
-    if (drawable)
+    if (overElementGUI)
     {
-        if (drawable->GetNode()->GetVar(VAR_NODE_IS_UNIT).GetBool())
+        SetSelected();
+    }
+    else
+    {
+        Vector3 hitPosition;
+
+        Drawable *drawable = GetRaycastNode(&hitPosition);
+
+        if (drawable)
         {
-            SetSelected();
+            if (drawable->GetNode()->GetVar(VAR_NODE_IS_UNIT).GetBool())
+            {
+                SetSelected();
+            }
+            else
+            {
+                SetNormal();
+            }
         }
         else
         {
             SetNormal();
         }
     }
-    else
-    {
-        SetNormal();
-    }
+}
+
+
+void TCursor::HandleHoverBeginElementGUI(StringHash, VariantMap &)
+{
+    overElementGUI = true;
+}
+
+
+void TCursor::HandleHoverEndElementGUI(StringHash, VariantMap &)
+{
+    overElementGUI = false;
 }
 
 

@@ -1,6 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "GUI/TCursor.h"
+#include "GUI/TGUIEvents.h"
 #include "GUI/Controls/_TButtonSwitch.h"
 #include "GUI/Controls/_THint.h"
 #include "GUI/Controls/_TLabel.h"
@@ -52,6 +53,22 @@ TButton::TButton(UIElement *uielement, char *text, int width /* = -1 */, int hei
 }
 
 
+void TButton::HandleHoverBegin(StringHash, VariantMap &)
+{
+    VariantMap &eventData = GetEventDataMap();
+    eventData[HoverBeginElementGUI::P_ELEMENT] = this;
+    SendEvent(E_HOVERBEGINELEMENTGUI, eventData);
+}
+
+
+void TButton::HandleHoverEnd(StringHash, VariantMap &)
+{
+    VariantMap &eventData = GetEventDataMap();
+    eventData[HoverEndElementGUI::P_ELEMENT] = this;
+    SendEvent(E_HOVERENDELEMENTGUI, eventData);
+}
+
+
 void TButton::RegisterObject(Context *context)
 {
     context->RegisterFactory<TButton>("UI");
@@ -69,18 +86,6 @@ void TButton::SetText(char *text)
 void TButton::SetHint(char *text)
 {
     hint = new Hint(text);
-}
-
-
-void TButton::HandleHoverBegin(StringHash, VariantMap&)
-{
-    TheCursor->SetSelected();
-}
-
-
-void TButton::HandleHoverEnd(StringHash, VariantMap&)
-{
-    TheCursor->SetNormal();
 }
 
 

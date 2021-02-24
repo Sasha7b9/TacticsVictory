@@ -46,7 +46,7 @@ private:
     int delta = 0;
     IntVector2 posCursor;
     bool selected = false;
-    Type::E type;
+    Type::E type = Type::Static;
 
     void ChangeValue(int delta);
     void SetSymbolWithEvent(char symbol);
