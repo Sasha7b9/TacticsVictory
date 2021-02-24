@@ -1,7 +1,7 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "Core/_TMath.h"
-#include "Game/Logic/_TMovinator.h"
+#include "Game/Logic/_TSunEngine.h"
 #include "Scene/_TLevel.h"
 #include "Scene/_TScene.h"
 #ifdef CLIENT

@@ -1,6 +1,6 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
-#include "Game/Logic/_TMovinator.h"
+#include "Game/Logic/_TSunEngine.h"
 
 
 SunEngine::SunEngine(Context *context) :
