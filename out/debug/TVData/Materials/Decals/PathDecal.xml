@@ -1,6 +1,6 @@
 <material>
     <technique name="Techniques/Decals/PathDecal.xml" />
     <texture unit="diffuse" name="Textures/Decals/PathDecal.png" />
-    <parameter name="MatDiffColor" value="0.5 0.5 0.5 0.8" />
+    <parameter name="MatDiffColor" value="0 0 0 0.8"/>
     <depthbias constant="-0.00001" slopescaled="0" />
 </material>
