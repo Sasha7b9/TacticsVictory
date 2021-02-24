@@ -17,13 +17,13 @@ public:
 
     static void RegisterObject();
 
-    virtual void FixedUpdate(float time) override;
-
-    static Vector<CTank *> storage;
-
 private:
 
     virtual void OnNodeSet(Node *node) override;
 
     virtual void Start() override;
+
+    virtual void FixedUpdate(float time) override;
+
+    static Vector<CTank *> storage;
 };
