@@ -65,7 +65,6 @@ void CubeTerrain::CreateSides()
     point3.normal = (point0.coord - point3.coord).CrossProduct(point2.coord - point3.coord);
 
 
-
 void CubeTerrain::CreateEdgeTop()
 {
     float height = underGround ? - static_cast<float>(layer) : static_cast<float>(layer) + 1.0f;
@@ -75,17 +74,17 @@ void CubeTerrain::CreateEdgeTop()
 
     GET_FOUR_POINTS_FOR_PLANE(edge);
 
-    point0.coord = Vector3(static_cast<float>(col), height, -static_cast<float>(row));
-    point0.texCoord = Vector2::ZERO;
+    point3.coord = Vector3(static_cast<float>(row), height, static_cast<float>(col));
+    point3.texCoord = Vector2::ZERO;
 
-    point1.coord = Vector3(static_cast<float>(col) + 1.0f, height, -static_cast<float>(row));
-    point1.texCoord = Vector2::UP;
+    point2.coord = Vector3(static_cast<float>(row) + 1.0f, height, static_cast<float>(col));
+    point2.texCoord = Vector2::UP;
 
-    point2.coord = Vector3(static_cast<float>(col) + 1.0f, height, -static_cast<float>(row) - 1.0f);
-    point2.texCoord = Vector2::ONE;
+    point1.coord = Vector3(static_cast<float>(row) + 1.0f, height, static_cast<float>(col) + 1.0f);
+    point1.texCoord = Vector2::ONE;
 
-    point3.coord = Vector3(static_cast<float>(col), height, -static_cast<float>(row) - 1.0f);
-    point3.texCoord = Vector2::RIGHT;
+    point0.coord = Vector3(static_cast<float>(row), height, static_cast<float>(col) + 1.0f);
+    point0.texCoord = Vector2::RIGHT;
 
     CALCULATE_NORMALS
 }
