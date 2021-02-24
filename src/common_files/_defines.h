@@ -5,9 +5,10 @@
 
 #define VAR_NODE_IS_UNIT    "isUnit"
 
-#define NAME_NODE_TANK      "Tank"
-#define NAME_NODE_TERRAIN   "Terrain"
-#define NAME_NODE_TILE_PATH "TilePath"
+#define NAME_NODE_CAMERA_TARGET "CameraTarget"
+#define NAME_NODE_TANK          "Tank"
+#define NAME_NODE_TERRAIN       "Terrain"
+#define NAME_NODE_TILE_PATH     "TilePath"
 
 #define RESOURCES_DIR       "TVData"
 
@@ -18,6 +19,8 @@
 #define VIEW_MASK_FOR_EFFECTS   2
 
 #define CALL_MEMBER_IF_EXIST(object, function) if(object) (object)->function()
+
+#define GAME_IN_PAUSE        (TheScene->GetTimeScale() <= M_EPSILON)
 
 #ifdef _DEBUG
 #define PROFILER_FUNC_ENTER()  TheProfiler->BeginBlock(__FUNCTION__);

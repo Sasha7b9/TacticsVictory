@@ -28,10 +28,3 @@
 #define KEY_IS_KP_PLUS  (key == KEY_KP_PLUS)
 #define KEY_IS_9        (key == KEY_9)
 #define KEY_IS_I        (key == KEY_I)
-
-#define IN_PAUSE        (TheScene->GetTimeScale() <= M_EPSILON)
-
-
-// Имена узлов
-
-#define NAME_NODE_CAMERA_TARGET "CameraTarget"

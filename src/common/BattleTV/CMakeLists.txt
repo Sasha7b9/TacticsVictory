@@ -30,7 +30,8 @@ else()
     SET(LDFLAGS "${LDFLAGS} -ldl")
 endif()
 
-file(GLOB SRC                                                        *.h *.cpp)
+file(GLOB SRC                                     ../../common_files/*.*
+                                                                     *.h *.cpp)
 file(GLOB CORE                                    ../../common_files/Core/*.*)
 file(GLOB GAME_LOGIC                              ../../common_files/Game/Logic/*.*)
 file(GLOB NETWORK                                                    Network/*.*
