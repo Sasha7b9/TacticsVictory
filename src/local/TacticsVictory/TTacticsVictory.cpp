@@ -157,6 +157,7 @@ void TacticsVictory::Stop()
 
     TilePath::RemoveAll();
 
+    delete TheMouse;
     delete ThePathIndicator;
     delete TheScene;
     delete TheFileSelector;
