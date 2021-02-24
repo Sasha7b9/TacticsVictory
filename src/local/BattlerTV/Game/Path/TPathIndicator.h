@@ -10,7 +10,8 @@ public:
     ~PathIndicator();
 
     void Update();
-    void Enable(bool enable);
+    void Enable();
+    void Disable();
     void SetStartPosition(const Coord &start);
 
     PODVector<Coord> &GetPath();

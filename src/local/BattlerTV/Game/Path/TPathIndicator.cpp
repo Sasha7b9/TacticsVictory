@@ -16,17 +16,19 @@ PathIndicator::~PathIndicator()
 }
 
 
-void PathIndicator::Enable(bool enable)
+void PathIndicator::Enable()
 {
-    enabled = enable;
-    if (!enabled)
-    {
-        TilePath::DisableAll();
-    }
-    else
-    {
-        pathFinder.StartFind(start, start);
-    }
+    enabled = true;
+
+    pathFinder.StartFind(start, start);
+}
+
+
+void PathIndicator::Disable()
+{
+    enabled = false;
+
+    TilePath::DisableAll();
 }
 
 

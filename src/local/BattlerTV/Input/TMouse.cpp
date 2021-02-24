@@ -45,18 +45,18 @@ void Mouse::ProcessMouseLeft()
         Coord coord(static_cast<uint>(-position.z_), static_cast<uint>(position.x_)); //-V2004
 
         ThePathIndicator->SetStartPosition(coord);
-        ThePathIndicator->Enable(false);
+        ThePathIndicator->Disable();
     }
     else if (name == NAME_NODE_TERRAIN)
     {
-        ThePathIndicator->Enable(true);
+        ThePathIndicator->Enable();
     }
 }
 
 
 void Mouse::ProcessMouseRight()
 {
-    ThePathIndicator->Enable(false);
+    ThePathIndicator->Disable();
 
     Drawable *object = TheCursor->GetRaycastNode();
 
