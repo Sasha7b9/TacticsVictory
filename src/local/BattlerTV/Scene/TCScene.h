@@ -14,6 +14,4 @@ public:
     virtual ~CScene();
 
     virtual void Create() override;
-
-    PathIndicator pathIndicator;
 };

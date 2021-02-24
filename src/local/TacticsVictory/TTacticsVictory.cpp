@@ -107,6 +107,8 @@ void TacticsVictory::Start()
 
     TheScene->Create();
 
+    ThePathIndicator = new PathIndicator();
+
     for (int i = 0; i < 1000; i++)
     {
         uint colZ = (uint)Random((float)TheTerrain->WidthZ());
@@ -155,6 +157,7 @@ void TacticsVictory::Stop()
 
     TilePath::RemoveAll();
 
+    delete ThePathIndicator;
     delete TheScene;
     delete TheFileSelector;
     delete TheLevel;

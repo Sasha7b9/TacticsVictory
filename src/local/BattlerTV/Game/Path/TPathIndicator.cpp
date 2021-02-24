@@ -7,7 +7,12 @@
 
 PathIndicator::PathIndicator()
 {
-    
+    Init();
+}
+
+PathIndicator::~PathIndicator()
+{
+    Stop();
 }
 
 

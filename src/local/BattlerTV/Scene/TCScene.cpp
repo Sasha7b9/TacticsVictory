@@ -20,8 +20,6 @@ CScene::CScene(Context *context) : TScene(context)
 CScene::~CScene()
 {
     delete TheWindowTarget;
-
-    pathIndicator.Stop();
 }
 
 
@@ -38,6 +36,4 @@ void CScene::Create()
     TheWindowTarget = new WindowTarget();
     TheUIRoot->AddChild(TheWindowTarget);
     TheWindowTarget->SetVisible(false);
-
-    pathIndicator.Init();
 }

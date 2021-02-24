@@ -44,19 +44,19 @@ void Mouse::ProcessMouseLeft()
         Vector3 position = node->GetPosition();
         Coord coord(static_cast<uint>(-position.z_), static_cast<uint>(position.x_)); //-V2004
 
-        TheScene->pathIndicator.SetStartPosition(coord);
-        TheScene->pathIndicator.Enable(false);
+        ThePathIndicator->SetStartPosition(coord);
+        ThePathIndicator->Enable(false);
     }
     else if (name == NAME_NODE_TERRAIN)
     {
-        TheScene->pathIndicator.Enable(true);
+        ThePathIndicator->Enable(true);
     }
 }
 
 
 void Mouse::ProcessMouseRight()
 {
-    TheScene->pathIndicator.Enable(false);
+    ThePathIndicator->Enable(false);
 
     Drawable *object = TheCursor->GetRaycastNode();
 

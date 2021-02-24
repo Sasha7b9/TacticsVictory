@@ -37,6 +37,7 @@ CLog             *TheLog = nullptr;
  MenuGame        *TheMenuMain = nullptr;
 TMenu            *TheMenu = nullptr;
  Mouse           *TheMouse = nullptr;
+ PathIndicator   *ThePathIndicator = nullptr;
 CScene           *TheScene = nullptr;
  Settings        *TheSet = nullptr;
  TacticsVictory  *TheTacticsVictory = nullptr;

@@ -7,12 +7,11 @@ class PathIndicator
 {
 public:
     PathIndicator();
+    ~PathIndicator();
 
-    void Init();
     void Update();
     void Enable(bool enable);
     void SetStartPosition(const Coord &start);
-    void Stop();
 
     PODVector<Coord> &GetPath();
 
@@ -21,4 +20,7 @@ private:
     bool enabled = false;
     Coord start;
     PODVector<Coord> path;
+
+    void Init();
+    void Stop();
 };
