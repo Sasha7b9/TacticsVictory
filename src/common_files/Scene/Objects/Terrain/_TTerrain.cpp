@@ -34,10 +34,10 @@ void TTerrain::CreateFromVector(const Vector<Vector<float>> &lev)
 
     CubeTerrain::terrain = this;
 
-    uint height = SegmentTerrain::HEIGHT;
+    uint widthZ = SegmentTerrain::HEIGHT;
     uint width = SegmentTerrain::WIDTH;
 
-    uint segmentsInZ = level.Size() / height + ((level.Size() % height) == 0 ? 0 : 1);      // Сколько сегментов по иксу
+    uint segmentsInZ = level.Size() / widthZ + ((level.Size() % widthZ) == 0 ? 0 : 1);      // Сколько сегментов по иксу
     uint segmentsInX = level[0].Size() / width + ((level.Size() % width) == 0 ? 0 : 1);     // Сколько сегментов по зет
 
     uint allRows = level.Size();
@@ -52,15 +52,15 @@ void TTerrain::CreateFromVector(const Vector<Vector<float>> &lev)
 
     segments.Resize(segmentsInZ);
 
-    for(uint row0 = 0; row0 < allRows; row0 += height)
+    for(uint row0 = 0; row0 < allRows; row0 += widthZ)
     {
-        uint i = row0 / height;
+        uint i = row0 / widthZ;
 
         segments[i].Resize(segmentsInX);
 
         for(uint col0 = 0; col0 < allCols; col0 += width)
         {
-            uint numRows = (row0 + height > allRows) ? (allRows - row0) : height;
+            uint numRows = (row0 + widthZ > allRows) ? (allRows - row0) : widthZ;
             uint numCols = (col0 + width > allCols) ? (allCols - col0) : width;
 
             uint j = col0 / width;
