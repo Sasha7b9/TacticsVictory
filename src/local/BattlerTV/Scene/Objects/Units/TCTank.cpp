@@ -60,13 +60,14 @@ void CTank::HandleMouseClick(StringHash, VariantMap &eventData)
 
     if (eventData[P_NODE].GetPtr() == node_)
     {
-        if (tile->IsEnabled())
+        if (!eventData[P_CTRL_PRESSED].GetBool())
         {
-            tile->Disable();
+            for (CTank *tank : CTank::storage)
+            {
+                tank->tile->Disable();
+            }
         }
-        else
-        {
-            tile->Enable();
-        }
+
+        tile->IsEnabled() ? tile->Disable() : tile->Enable();
     }
 }

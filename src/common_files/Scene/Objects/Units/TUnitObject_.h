@@ -13,7 +13,5 @@ protected:
 
     virtual void Start() override;
 
-private:
-
     static Vector<UnitObject *> storage;
 };

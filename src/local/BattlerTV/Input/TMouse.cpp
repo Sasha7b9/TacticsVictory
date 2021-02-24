@@ -44,6 +44,7 @@ void Mouse::ProcessMouseLeft()
     {
         VariantMap &eventData = GetEventDataMap();
         eventData[UnitMouseClick::P_NODE] = node;
+        eventData[UnitMouseClick::P_CTRL_PRESSED] = TheInput->GetKeyDown(KEY_CTRL);
         node->SendEvent(EU_MOUSE_CLICK, eventData);
     }
     else if (name == NAME_NODE_TERRAIN)
