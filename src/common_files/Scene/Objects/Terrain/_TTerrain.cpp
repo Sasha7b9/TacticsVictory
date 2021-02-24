@@ -173,7 +173,7 @@ Vector<Vector<float>> TTerrain::GetMap()
 }
 
 
-PODVector<CubeTerrain*>* TTerrain::GetColumnCubes(const CubeTerrain *cube, DIR dir)
+PODVector<CubeTerrain*>* TTerrain::GetColumnCubes(const CubeTerrain *cube, DIR::E dir)
 {
     const int dRow[8] = { 0, -1, -1, -1, 0, 1, 1,  1};
     const int dCol[8] = {-1, -1,  0,  1, 1, 1, 0, -1};

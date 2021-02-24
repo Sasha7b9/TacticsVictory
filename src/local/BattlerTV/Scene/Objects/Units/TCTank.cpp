@@ -19,7 +19,7 @@ void CTank::RegisterObject()
 }
 
 
-SharedPtr<CTank> CTank::Create(uint z, uint x)
+SharedPtr<CTank> CTank::Create(int z, int x)
 {
     SharedPtr<CTank> tank(TheScene->CreateChild(NAME_NODE_TANK, LOCAL)->CreateComponent<CTank>(LOCAL));
 

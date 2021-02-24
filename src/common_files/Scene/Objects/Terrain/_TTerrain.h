@@ -7,17 +7,16 @@
 class SegmentTerrain;
 
 
-enum DIR
-{
-    DIR_LEFT,
-    DIR_TOPLEFT,
-    DIR_TOP,
-    DIR_TOPRIGHT,
-    DIR_RIGHT,
-    DIR_DOWNRIGHT,
-    DIR_DOWN,
-    DIR_DOWNLEFT
-};
+struct DIR { enum E {
+    LEFT,
+    TOPLEFT,
+    TOP,
+    TOPRIGHT,
+    RIGHT,
+    DOWNRIGHT,
+    DOWN,
+    DOWNLEFT
+}; };
 
 
 
@@ -40,7 +39,7 @@ public:
     Line GetIntersectionEdge(Ray &ray);
     TPlane GetPlane(uint row, uint col);
     Vector<Vector<float>> GetMap();
-    PODVector<CubeTerrain*>* GetColumnCubes(const CubeTerrain *cube, DIR dir);
+    PODVector<CubeTerrain*>* GetColumnCubes(const CubeTerrain *cube, DIR::E dir);
 
     static Vector<Vector<PODVector<CubeTerrain*>>> columnsCubes;
 
