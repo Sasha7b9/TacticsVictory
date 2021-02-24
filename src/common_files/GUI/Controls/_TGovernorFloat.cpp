@@ -1,6 +1,7 @@
 ﻿/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
 #include "GUI/TCursor.h"
+#include "GUI/TGUIEvents.h"
 #include "GUI/Controls/_TGovernorFloat.h"
 #include "GUI/Controls/_TLabel.h"
 #include "Utils/TSettings.h"
@@ -440,11 +441,11 @@ void GovernorFloat::HandleGovernorCellChanged(StringHash, VariantMap&)
 
 void GovernorFloat::HandleHoverButtonBegin(StringHash, VariantMap&)
 {
-    TheCursor->SetSelected();
+    SendEvent(E_HOVER_BEGIN_ELEMENT_GUI);
 }
 
 
 void GovernorFloat::HandleHoverButtonEnd(StringHash, VariantMap&)
 {
-    TheCursor->SetNormal();
+    SendEvent(E_HOVER_END_ELEMENT_GUI);
 }
