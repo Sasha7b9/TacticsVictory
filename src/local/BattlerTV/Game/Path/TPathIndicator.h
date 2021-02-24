@@ -20,7 +20,4 @@ private:
     bool enabled = false;
     Coord start;
     PODVector<Coord> path;
-
-    void Init();
-    void Stop();
 };

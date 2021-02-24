@@ -7,18 +7,12 @@
 
 PathIndicator::PathIndicator()
 {
-    Init();
+    pathFinder.SetSize(TheTerrain->HeightX(), TheTerrain->WidthZ());
 }
 
 PathIndicator::~PathIndicator()
 {
-    Stop();
-}
-
-
-void PathIndicator::Init()
-{
-    pathFinder.SetSize(TheTerrain->HeightX(), TheTerrain->WidthZ());
+    pathFinder.Stop();
 }
 
 
@@ -70,12 +64,6 @@ void PathIndicator::Update()
         Drawable *drawable = TheCursor->GetRaycastNode(&hitPos);
         pathFinder.StartFind(start, drawable ? Coord(static_cast<uint>(fabsf(-hitPos.z_)), static_cast<uint>(hitPos.x_)) : start);
     }
-}
-
-
-void PathIndicator::Stop()
-{
-    pathFinder.Stop();
 }
 
 
