@@ -9,9 +9,14 @@ class Tile : public LogicComponent
 public:
 
     Tile(Context *context = TheContext);
-    ~Tile();
-
-    void Init(Node *node);
 
     static void RegisterObject();
+
+private:
+
+    ~Tile();
+
+    virtual void OnNodeSet(Node *node) override;
+
+    virtual void Start() override;
 };

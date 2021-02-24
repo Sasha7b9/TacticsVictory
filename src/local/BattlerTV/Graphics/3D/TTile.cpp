@@ -16,10 +16,25 @@ Tile::~Tile()
 }
 
 
-void Tile::Init(Node *node)
+void Tile::RegisterObject()
 {
-    node_ = node->CreateChild();
+    TheContext->RegisterFactory<Tile>();
+}
 
+
+void Tile::OnNodeSet(Node *node)
+{
+    if (node)
+    {
+        node_ = node->CreateChild();
+    }
+
+    LogicComponent::OnNodeSet(node ? node_ : node);
+}
+
+
+void Tile::Start()
+{
     float d = 0.0f;
 
     node_->SetScale(100);
@@ -63,10 +78,4 @@ void Tile::Init(Node *node)
     geometry->Commit();
 
     geometry->SetEnabled(true);
-}
-
-
-void Tile::RegisterObject()
-{
-    TheContext->RegisterFactory<Tile>();
 }
