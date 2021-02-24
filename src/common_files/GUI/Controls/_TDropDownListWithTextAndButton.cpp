@@ -134,15 +134,11 @@ SharedPtr<DropDownListWithTextAndButton> DropDownListWithTextAndButton::Create(W
 
 void DropDownListWithTextAndButton::HandleHoverBegin(StringHash, VariantMap&)
 {
-    VariantMap &eventData = GetEventDataMap();
-    eventData[HoverBeginElementGUI::P_ELEMENT] = this;
-    SendEvent(E_HOVER_BEGIN_ELEMENT_GUI, eventData);
+    SendEvent(E_HOVER_BEGIN_ELEMENT_GUI, GetEventDataMap());
 }
 
 
 void DropDownListWithTextAndButton::HandleHoverEnd(StringHash, VariantMap&)
 {
-    VariantMap &eventData = GetEventDataMap();
-    eventData[HoverEndElementGUI::P_ELEMENT] = this;
-    SendEvent(E_HOVER_END_ELEMENT_GUI, eventData);
+    SendEvent(E_HOVER_END_ELEMENT_GUI, GetEventDataMap());
 }
