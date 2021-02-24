@@ -120,7 +120,7 @@ void CubeTerrain::CreateSideLeft()
         }
     }
 
-    sides[S_LEFT] = CreateSide(S_LEFT, height);
+    sides[SIDE::LEFT] = CreateSide(SIDE::LEFT, height);
 }
 
 
@@ -149,7 +149,7 @@ void CubeTerrain::CreateSideTop()
         }
     }
 
-    sides[S_TOP] = CreateSide(S_TOP, height);
+    sides[SIDE::TOP] = CreateSide(SIDE::TOP, height);
 }
 
 
@@ -175,7 +175,7 @@ void CubeTerrain::CreateSideRight()
         }
     }
 
-    sides[S_RIGHT] = CreateSide(S_RIGHT, height);
+    sides[SIDE::RIGHT] = CreateSide(SIDE::RIGHT, height);
 }
 
 
@@ -201,11 +201,11 @@ void CubeTerrain::CreateSideDown()
         }
     }
 
-    sides[S_DOWN] = CreateSide(S_DOWN, height);
+    sides[SIDE::DOWN] = CreateSide(SIDE::DOWN, height);
 }
 
 
-SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
+SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE::E side, float anotherHeight)
 {
     const float height = underGround ? -static_cast<float>(layer) : static_cast<float>(layer) + 1.0f;
 
@@ -294,24 +294,24 @@ void CubeTerrain::BuildVertexes(PODVector<float> &v, PODVector<uint> &i)
         BuildPlaneVerexes(edges[E_DOWN]->plane);
     }
 
-    if(sides[S_LEFT])
+    if(sides[SIDE::LEFT])
     {
-        BuildPlaneVerexes(sides[S_LEFT]->plane);
+        BuildPlaneVerexes(sides[SIDE::LEFT]->plane);
     }
 
-    if(sides[S_TOP])
+    if(sides[SIDE::TOP])
     {
-        BuildPlaneVerexes(sides[S_TOP]->plane);
+        BuildPlaneVerexes(sides[SIDE::TOP]->plane);
     }
 
-    if(sides[S_RIGHT])
+    if(sides[SIDE::RIGHT])
     {
-        BuildPlaneVerexes(sides[S_RIGHT]->plane);
+        BuildPlaneVerexes(sides[SIDE::RIGHT]->plane);
     }
 
-    if(sides[S_DOWN])
+    if(sides[SIDE::DOWN])
     {
-        BuildPlaneVerexes(sides[S_DOWN]->plane);
+        BuildPlaneVerexes(sides[SIDE::DOWN]->plane);
     }
 }
 

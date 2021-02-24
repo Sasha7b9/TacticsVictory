@@ -16,13 +16,12 @@ class CubeTerrain : public Object
 
 public:
 
-    enum SIDE
-    {
-        S_LEFT = 0,
-        S_TOP = 1,
-        S_RIGHT = 2,
-        S_DOWN = 3
-    };
+    struct SIDE { enum E {
+        LEFT = 0,
+        TOP = 1,
+        RIGHT = 2,
+        DOWN = 3
+    }; };
 
     enum CORNER
     {
@@ -67,7 +66,7 @@ private:
     void CreateSideTop();
     void CreateSideRight();
     void CreateSideDown();
-    SharedPtr<SideCube> CreateSide(SIDE side, float anotherHeight);
+    SharedPtr<SideCube> CreateSide(SIDE::E side, float anotherHeight);
     void PushPoint(const PointPlane &point);
     void BuildPlaneVerexes(const PlaneCube &plane);
 };
