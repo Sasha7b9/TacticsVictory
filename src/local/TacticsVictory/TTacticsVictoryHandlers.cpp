@@ -92,13 +92,13 @@ void TacticsVictory::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     int typeEvent = eventData[MenuEvent::P_TYPE].GetInt();
 
-    if (typeEvent == MenuEvent_StartServer)
+    if (typeEvent == ME_StartServer)
     {
     }
-    else if (typeEvent == MenuEvent_StartClient)
+    else if (typeEvent == ME_StartClient)
     {
     }
-    else if (typeEvent == MenuEvent_OpenEditor)
+    else if (typeEvent == ME_OpenEditor)
     {
         CreateEditorSession();
     }

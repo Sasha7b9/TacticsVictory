@@ -91,16 +91,16 @@ void Battler::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     int typeEvent = eventData[MenuEvent::P_TYPE].GetInt();
 
-    if (typeEvent == MenuEvent_StartServer)
+    if (typeEvent == ME_StartServer)
     {
         uint port_ = eventData[MenuEvent::P_PORT].GetUInt();
         StartServer(static_cast<uint16>(port_));
     }
-    else if (typeEvent == MenuEvent_StartClient)
+    else if (typeEvent == ME_StartClient)
     {
         //StartClient();
     }
-    else if (typeEvent == MenuEvent_OpenEditor)
+    else if (typeEvent == ME_OpenEditor)
     {
         CreateEditorSession();
     }

@@ -50,23 +50,23 @@ void TMenu::HandleMenuEvent(StringHash, VariantMap& eventData)
     WindowMenu *source = dynamic_cast<WindowMenu*>(eventData[P_SOURCE].GetPtr());
     WindowMenu *destination = dynamic_cast<WindowMenu*>(eventData[P_DESTINATION].GetPtr());
 
-    if(action == MenuEvent_StartServer || action == MenuEvent_StartClient)
+    if(action == ME_StartServer || action == ME_StartClient)
     {
         Hide();
     }
-    else if (action == MenuEvent_ExitInOS)
+    else if (action == ME_ExitInOS)
     {
         TheEngine->Exit();
     }
-    else if (action == MenuEvent_OpenOptions)
+    else if (action == ME_OpenOptions)
     {
         Open(menuOptions, source);
     }
-    else if(action == MenuEvent_OpenAboutMe)
+    else if(action == ME_OpenAboutMe)
     {
         Open(menuAbout, source);
     }
-    else if (action == MenuEvent_Close)
+    else if (action == ME_Close)
     {
         CALL_MEMBER_IF_EXIST(source, Close);
         CALL_MEMBER_IF_EXIST(destination, Open);

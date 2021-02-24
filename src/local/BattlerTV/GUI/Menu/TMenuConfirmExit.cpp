@@ -52,7 +52,7 @@ void MenuConfirmExit::HandleButtonRelease(StringHash, VariantMap& eventData)
 void MenuConfirmExit::OnPressButtonOk()
 {
     VariantMap eventData = GetEventDataMap();
-    eventData[MenuEvent::P_TYPE] = MenuEvent_ExitInOS;
+    eventData[MenuEvent::P_TYPE] = ME_ExitInOS;
     SendEvent(E_MENU, eventData);
 }
 

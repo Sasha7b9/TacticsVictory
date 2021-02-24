@@ -23,22 +23,22 @@ MenuStart::MenuStart(Context *context) : WindowMenu(context)
     buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
 
     buttonServer = new TButton(this, "Server");
-    buttonServer->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_StartServer));
+    buttonServer->SetVar(VAR_MENU_EVENT, Variant(ME_StartServer));
 
     buttonClient = new TButton(this, "Client");
-    buttonClient->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_StartClient));
+    buttonClient->SetVar(VAR_MENU_EVENT, Variant(ME_StartClient));
 
     buttonEditor = new TButton(this, "Editor");
 
     buttonOptions = new TButton(this, "Options");
-    buttonOptions->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_OpenOptions));
+    buttonOptions->SetVar(VAR_MENU_EVENT, Variant(ME_OpenOptions));
 
     buttonHelp = new TButton(this, "Help");
 
     buttonAboutGame = new TButton(this, "About game");
 
     buttonAboutMe = new TButton(this, "About me");
-    buttonAboutMe->SetVar(VAR_MENU_EVENT, Variant(MenuEvent_OpenAboutMe));
+    buttonAboutMe->SetVar(VAR_MENU_EVENT, Variant(ME_OpenAboutMe));
 
     buttonExit = new TButton(this, "Exit");
 
@@ -87,7 +87,7 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
         eventData = GetEventDataMap();
         eventData[P_SOURCE] = this;
         eventData[P_TYPE] = value.GetUInt();
-        if(value == MenuEvent_StartServer)
+        if(value == ME_StartServer)
         {
             eventData[P_PORT] = SERVER_PORT;
         }

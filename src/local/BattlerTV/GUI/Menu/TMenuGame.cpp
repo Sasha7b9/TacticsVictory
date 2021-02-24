@@ -42,9 +42,9 @@ MenuGame::MenuGame(Context *) : WindowMenu()
 
     text->SetWidth(GetWidth());
 
-    mapButtonsActions[buttonOptions] = MenuEvent_OpenOptions;
-    mapButtonsActions[buttonEditor] = MenuEvent_OpenEditor;
-    mapButtonsActions[buttonExit] = MenuEvent_ExitInOS;
+    mapButtonsActions[buttonOptions] = ME_OpenOptions;
+    mapButtonsActions[buttonEditor] = ME_OpenEditor;
+    mapButtonsActions[buttonExit] = ME_ExitInOS;
 }
 
 
