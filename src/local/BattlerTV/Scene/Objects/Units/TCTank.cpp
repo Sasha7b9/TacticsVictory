@@ -54,7 +54,19 @@ void CTank::OnNodeSet(Node *node)
 }
 
 
-void CTank::HandleMouseClick(StringHash, VariantMap &)
+void CTank::HandleMouseClick(StringHash, VariantMap &eventData)
 {
+    using namespace UnitMouseClick;
 
+    if (eventData[P_NODE].GetPtr() == node_)
+    {
+        if (tile->IsEnabled())
+        {
+            tile->Disable();
+        }
+        else
+        {
+            tile->Enable();
+        }
+    }
 }

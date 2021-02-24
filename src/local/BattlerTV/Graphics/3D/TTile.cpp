@@ -89,3 +89,9 @@ void Tile::Disable()
 {
     node_->SetEnabled(false);
 }
+
+
+bool Tile::IsEnabled() const
+{
+    return node_->IsEnabled();
+}

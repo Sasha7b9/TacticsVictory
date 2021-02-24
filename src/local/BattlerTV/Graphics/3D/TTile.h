@@ -18,6 +18,8 @@ public:
     // Отключить отображение
     void Disable();
 
+    bool IsEnabled() const;
+
 private:
 
     ~Tile();

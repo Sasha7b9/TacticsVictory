@@ -3,6 +3,7 @@
 #include "GUI/TCursor.h"
 #include "Input/TMouse.h"
 #include "Scene/TCScene.h"
+#include "Scene/Objects/Units/TUnitsEvents_.h"
 
 
 Mouse::Mouse() : Object(TheContext)
@@ -39,18 +40,26 @@ void Mouse::ProcessMouseLeft()
     Node *node = object->GetNode();
     String name = node->GetName();
 
-    if (name == NAME_NODE_TANK)
+    if (node->GetVar(VAR_NODE_IS_UNIT).GetBool())
     {
-        Vector3 position = node->GetPosition();
-        Coord coord(static_cast<uint>(-position.z_), static_cast<uint>(position.x_)); //-V2004
-
-        ThePathIndicator->SetStartPosition(coord);
-        ThePathIndicator->Disable();
+        VariantMap &eventData = GetEventDataMap();
+        eventData[UnitMouseClick::P_NODE] = node;
+        node->SendEvent(EU_MOUSE_CLICK, eventData);
     }
     else if (name == NAME_NODE_TERRAIN)
     {
         ThePathIndicator->Enable();
     }
+
+//    if (name == NAME_NODE_TANK)
+//    {
+//        Vector3 position = node->GetPosition();
+//        Coord coord(static_cast<uint>(-position.z_), static_cast<uint>(position.x_)); //-V2004
+//
+//        ThePathIndicator->SetStartPosition(coord);
+//        ThePathIndicator->Disable();
+//    }
+
 }
 
 
