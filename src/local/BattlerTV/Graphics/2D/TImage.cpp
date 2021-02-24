@@ -1,6 +1,6 @@
-/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Core/_TMath.h"
+#include "Core/TMath_.h"
 #include "Graphics/2D/TImage.h"
 
 

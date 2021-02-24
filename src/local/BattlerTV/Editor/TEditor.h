@@ -1,6 +1,6 @@
-/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Primitives/_TPlane.h"
+#include "Scene/Primitives/TPlane_.h"
 
 
 class Editor : public Object

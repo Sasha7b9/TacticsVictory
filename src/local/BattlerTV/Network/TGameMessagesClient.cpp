@@ -1,7 +1,7 @@
-/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Game/_TGameMessages.h"
-#include "Scene/_TScene.h"
+#include "Scene/TScene_.h"
 
 
 void Message::Message::Send(bool reliable)

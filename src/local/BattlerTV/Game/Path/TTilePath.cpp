@@ -1,4 +1,4 @@
-/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Game/Path/TTilePath.h"
 #include "Scene/TCScene.h"

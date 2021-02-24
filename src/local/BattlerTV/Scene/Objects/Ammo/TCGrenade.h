@@ -1,6 +1,6 @@
 // 2021/02/23 11:00:45 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Objects/Ammo/_TGrenade.h"
+#include "Scene/Objects/Ammo/TGrenade_.h"
 
 
 class CGrenade : public Grenade

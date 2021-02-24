@@ -1,4 +1,4 @@
-/* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Editor/TEditor.h"
 #include "GUI/TCursor.h"
@@ -6,7 +6,7 @@
 #include "GUI/Controls/_THint.h"
 #include "GUI/GuiEditor/TGuiEditor.h"
 #include "GUI/Menu/TMenu.h"
-#include "Scene/_TLevel.h"
+#include "Scene/TLevel_.h"
 #include "Scene/TCScene.h"
 #include "Scene/Cameras/TCamera.h"
 
