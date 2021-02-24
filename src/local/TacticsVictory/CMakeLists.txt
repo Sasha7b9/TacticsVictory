@@ -54,6 +54,7 @@ file(GLOB GUI_LOGIC                        ../BattlerTV/GUI/Logic/*.*)
 file(GLOB GUI_MENU                         ../BattlerTV/GUI/Menu/*.*)
 file(GLOB GUI_PANELS                       ../BattlerTV/GUI/Panels/*.*)
 file(GLOB GUI_WINDOWS                      ../BattlerTV/GUI/Windows/*.*)
+file(GLOB INPUT                            ../BattlerTV/Input/*.*)
 file(GLOB SCENE                      ../../common_files/Scene/*.*
                                            ../BattlerTV/Scene/*.*)
 file(GLOB SCENE_CAMERAS                    ../BattlerTV/Scene/Cameras/*.*)
@@ -86,6 +87,7 @@ source_group(GUI\\Logic              FILES ${GUI_LOGIC})
 source_group(GUI\\Menu               FILES ${GUI_MENU})
 source_group(GUI\\Panels             FILES ${GUI_PANELS})
 source_group(GUI\\Windows            FILES ${GUI_WINDOWS})
+source_group(Input                   FILES ${INPUT})
 source_group(Scene                   FILES ${SCENE})
 source_group(Scene\\Cameras          FILES ${SCENE_CAMERAS})
 source_group(Scene\\Objects          FILES ${SCENE_OBJECTS})
@@ -98,7 +100,8 @@ source_group(Utils                   FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
     ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
-    ${GUI_WINDOWS} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
+    ${GUI_WINDOWS} ${INPUT}
+    ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO}
     ${SCENE_OBJECTS_TERRAIN}
     ${SCENE_OBJECTS_UNITS}

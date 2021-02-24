@@ -11,6 +11,7 @@
 #include "GUI/GuiEditor/TGuiEditor.h"
 #include "GUI/Menu/TMenuEvents.h"
 #include "GUI/Menu/TMenu.h"
+#include "Input/TMouse.h"
 #include "Scene/TLevel_.h"
 #include "Scene/TCScene.h"
 #include "Scene/Cameras/TCamera.h"
@@ -99,6 +100,8 @@ void TacticsVictory::Start()
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
 
     RegistrationComponets();
+
+    TheMouse = new Mouse();
 
     TheScene = new CScene();
 

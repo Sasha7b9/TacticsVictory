@@ -15,10 +15,5 @@ public:
 
     virtual void Create() override;
 
-private:
     PathIndicator pathIndicator;
-
-    void HandleMouseDown(StringHash, VariantMap &);
-    void ProcessMouseLeft();
-    void ProcessMouseRight();
 };
