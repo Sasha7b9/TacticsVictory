@@ -112,6 +112,17 @@ void TacticsVictory::Start()
         TheTerrain->PutIn(CTank::Create(), colZ, rowX);
     }
 
+    for (uint i = 0; i < TheTerrain->WidthZ(); i++)
+    {
+        TheTerrain->PutIn(CTank::Create(), i, TheTerrain->HeightX() / 2);
+        TheTerrain->PutIn(CTank::Create(), i, TheTerrain->HeightX() / 2 + 1);
+        TheTerrain->PutIn(CTank::Create(), i, TheTerrain->HeightX() / 2 + 2);
+        TheTerrain->PutIn(CTank::Create(), i, TheTerrain->HeightX() / 2 + 3);
+        TheTerrain->PutIn(CTank::Create(), i, TheTerrain->HeightX() / 2 + 4);
+        TheTerrain->PutIn(CTank::Create(), i, TheTerrain->HeightX() / 2 + 5);
+
+    }
+
     TheCamera = TCamera::Create();
 
     SetWindowTitleAndIcon();
