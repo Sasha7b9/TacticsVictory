@@ -106,7 +106,8 @@ void TacticsVictory::Start()
 
     for (int i = 0; i < 10; i++)
     {
-        CTank::Create(i * 10, i * 10);
+        CTank::Create(i * 10, 0);
+        CTank::Create(0, i * 10);
     }
 
 //    CTank::Create(0, 0);

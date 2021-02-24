@@ -12,6 +12,9 @@ class SegmentTerrain : public Object
 
 public:
 
+    static const uint WIDTH = 10;
+    static const uint HEIGHT = 10;
+
     enum
     {
         LEFT,
@@ -26,8 +29,6 @@ public:
     void Build();
     void GetColumnCubes(uint row, uint col, PODVector<CubeTerrain*> &column);
 
-    static const uint WIDTH = 10;
-    static const uint HEIGHT = 10;
     SegmentTerrain* neighbours[4];      // Соседи соотвественно с четырёх сторон //-V122
 
 private:
