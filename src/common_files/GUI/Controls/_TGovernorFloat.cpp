@@ -173,20 +173,20 @@ void GovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
     if(cell == this)
     {
         mouseOver = true;
-        TheCursor->SetSelected();
+        SendEvent(E_HOVER_BEGIN_ELEMENT_GUI);
     }
 }
 
 
-void GovernorCell::HandleHoverEnd(StringHash, VariantMap&)
+void GovernorCell::HandleHoverEnd(StringHash, VariantMap &)
 {
-    if(type == Type::Static)
+    if (type == Type::Static)
     {
         return;
     }
     mouseOver = false;
     mouseIsDown = false;
-    TheCursor->SetNormal();
+    SendEvent(E_HOVER_END_ELEMENT_GUI);
 }
 
 
