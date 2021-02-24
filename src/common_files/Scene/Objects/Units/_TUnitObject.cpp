@@ -16,5 +16,6 @@ void UnitObject::OnNodeSet(Node *node)
     if (node)
     {
         node->SetVar(VAR_NODE_IS_UNIT, true);
+        node->SetVar(VAR_NODE_IS_FLYING, false);
     }
 }

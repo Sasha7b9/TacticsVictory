@@ -4,6 +4,7 @@
 #define JSON_MODEL_TANK     "Models/Tank.json"
 
 #define VAR_NODE_IS_UNIT    "isUnit"
+#define VAR_NODE_IS_FLYING  "isFlaying"
 
 #define NAME_NODE_CAMERA_TARGET "CameraTarget"
 #define NAME_NODE_TANK          "Tank"

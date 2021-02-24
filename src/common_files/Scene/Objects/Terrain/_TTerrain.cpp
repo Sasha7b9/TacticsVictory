@@ -1,5 +1,6 @@
 /* (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by */
 #include "stdafx.h"
+#include "Scene/Objects/_TGameObject.h"
 #include "Scene/Objects/Terrain/_TSegmentTerrain.h"
 
 
@@ -110,7 +111,7 @@ void TTerrain::CreateFromVector(const Vector<Vector<float>> &lev)
 
 float TTerrain::GetHeight(uint colZ, uint rowX)
 {
-    return level[colZ][rowX];
+    return level[rowX][colZ];
 }
 
 
@@ -182,4 +183,12 @@ PODVector<CubeTerrain*>* TTerrain::GetColumnCubes(const CubeTerrain *cube, DIR::
 SegmentTerrain* TTerrain::GetSegmentForCoord(uint row, uint col)
 {
     return segments[row / SegmentTerrain::WIDTH_Z][col / SegmentTerrain::HEIGHT_X];
+}
+
+
+void TTerrain::PutIn(GameObject *object, uint colZ, uint rowX)
+{
+    float height = GetHeight(colZ, rowX);
+
+    object->SetPosition({ (float)rowX, height, (float)colZ });
 }

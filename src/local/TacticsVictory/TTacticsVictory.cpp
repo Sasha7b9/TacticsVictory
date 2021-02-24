@@ -104,22 +104,13 @@ void TacticsVictory::Start()
 
     TheScene->Create();
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 1000; i++)
     {
-        CTank::Create(i * 10, 0);
-        CTank::Create(0, i * 10);
+        uint colZ = (uint)Random((float)TheTerrain->WidthZ());
+        uint rowX = (uint)Random((float)TheTerrain->HeightX());
+
+        TheTerrain->PutIn(CTank::Create(), colZ, rowX);
     }
-
-//    CTank::Create(0, 0);
-//    CTank::Create(0, TheScene->level.Size());
-//    CTank::Create(TheScene->level[0].Size(), 0);
-//    CTank::Create(TheScene->level[0].Size(), TheScene->level.Size());
-
-//    for (int i = 0; i < 1000; i++)
-//    {
-//        CTank::Create((uint)Random((float)TheScene->level.Size()),
-//            (uint)Random((float)TheScene->level[0].Size()));
-//    }
 
     TheCamera = TCamera::Create();
 
