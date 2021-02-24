@@ -19,7 +19,7 @@ void CTank::RegisterObject()
 }
 
 
-SharedPtr<CTank> CTank::Create(uint row, uint col)
+SharedPtr<CTank> CTank::Create(uint z, uint x)
 {
     SharedPtr<CTank> tank(TheScene->CreateChild(NAME_NODE_TANK, LOCAL)->CreateComponent<CTank>(LOCAL));
 
@@ -27,7 +27,7 @@ SharedPtr<CTank> CTank::Create(uint row, uint col)
 
     tank->Normalize(10.0f);
 
-    tank->SetPosition({ (float)row, 0, (float)col });
+    tank->SetPosition({ (float)x, 0, (float)z });
 
     storage.Push(tank);
 

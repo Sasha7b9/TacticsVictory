@@ -13,7 +13,7 @@ public:
 
     static void RegisterObject();
 
-    static SharedPtr<CTank> Create(uint row, uint col);
+    static SharedPtr<CTank> Create(uint z, uint x);
 
     virtual void FixedUpdate(float time) override;
 
