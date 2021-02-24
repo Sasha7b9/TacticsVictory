@@ -71,11 +71,21 @@ void Tile::Start()
         geometry->DefineNormal({ 0.0f, 1.0f, 0.0f });
     }
 
-    Material *material = TheCache->GetResource<Material>("Materials/Decals/Tile.xml");
-
-    geometry->SetMaterial(material);
+    geometry->SetMaterial(TheCache->GetResource<Material>("Materials/Decals/Tile.xml"));
 
     geometry->Commit();
 
-    geometry->SetEnabled(true);
+    Disable();
+}
+
+
+void Tile::Enable()
+{
+    node_->SetEnabled(true);
+}
+
+
+void Tile::Disable()
+{
+    node_->SetEnabled(false);
 }

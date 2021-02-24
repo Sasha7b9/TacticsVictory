@@ -26,4 +26,6 @@ private:
     virtual void FixedUpdate(float time) override;
 
     static Vector<CTank *> storage;
+
+    SharedPtr<Tile> tile;
 };

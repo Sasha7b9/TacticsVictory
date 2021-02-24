@@ -34,7 +34,7 @@ void CTank::Start()
 
     Normalize();
 
-    node_->CreateComponent<Tile>();
+    tile = node_->CreateComponent<Tile>();
 
     storage.Push(this);
 }

@@ -12,6 +12,12 @@ public:
 
     static void RegisterObject();
 
+    // Включить отображение
+    void Enable();
+
+    // Отключить отображение
+    void Disable();
+
 private:
 
     ~Tile();
