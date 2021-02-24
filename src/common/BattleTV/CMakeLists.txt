@@ -34,6 +34,7 @@ file(GLOB SRC                                     ../../common_files/*.*
                                                                      *.h *.cpp)
 file(GLOB CORE                                    ../../common_files/Core/*.*)
 file(GLOB GAME_LOGIC                              ../../common_files/Game/Logic/*.*)
+file(GLOB GAME_PATH                               ../../common_files/Game/Path/*.*)
 file(GLOB NETWORK                                                    Network/*.*
                                                   ../../common_files/Network/Game/*.*)
 file(GLOB SCENE                                   ../../common_files/Scene/*.*)
@@ -54,6 +55,7 @@ file(GLOB UTILS                                                      Utils/*.*
 source_group(src                                       FILES ${SRC})
 source_group(Core                                      FILES ${CORE})
 source_group(Game\\Logic                               FILES ${GAME_LOGIC})
+source_group(Game\\Path                                FILES ${GAME_PATH})
 source_group(Network                                   FILES ${NETWORK})
 source_group(Scene                                     FILES ${SCENE})
 source_group(Scene\\Objects                            FILES ${SCENE_OBJECTS})
@@ -68,7 +70,7 @@ source_group(Scene\\Objects\\Weapons                   FILES ${SCENE_OBJECTS_WEA
 source_group(Scene\\Primitives                         FILES ${SCENE_PRIMITIVES})
 source_group(Utils                                     FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${NETWORK} ${SCENE} ${SCENE_OBJECTS}
+add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GAME_PATH} ${NETWORK} ${SCENE} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_BUILDINGS} ${SCENE_OBJECTS_TERRAIN}
     ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_TANK}
