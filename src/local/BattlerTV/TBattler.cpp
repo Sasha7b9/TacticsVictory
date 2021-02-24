@@ -204,7 +204,7 @@ void Battler::ParseArguments(const Vector<String> & /*arguments*/)
 void Battler::RegistrationComponets()
 {
     TImage::RegisterObject();
-    Movinator::RegisterObject();
+    SunEngine::RegisterObject();
     Rotator::RegisterObject();
 
     WaveAlgorithm::RegisterObject();

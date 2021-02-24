@@ -2,12 +2,13 @@
 #pragma once
 
 
-class Movinator : public LogicComponent
+// ”правл€ет движением солнца
+class SunEngine : public LogicComponent
 {
-    URHO3D_OBJECT(Movinator, LogicComponent);
+    URHO3D_OBJECT(SunEngine, LogicComponent);
 
 public:
-    Movinator(Context *context = TheContext);
+    SunEngine(Context *context = TheContext);
     void SetMoveSpeed(float speed);
     void SetCenter(const Vector3 &vec);
     virtual void Update(float time);

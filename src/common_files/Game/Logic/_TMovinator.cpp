@@ -3,26 +3,26 @@
 #include "Game/Logic/_TMovinator.h"
 
 
-Movinator::Movinator(Context *context) :
+SunEngine::SunEngine(Context *context) :
     LogicComponent(context)
 {
     SetUpdateEventMask(USE_UPDATE);
 }
 
 
-void Movinator::SetMoveSpeed(float speedMoving)
+void SunEngine::SetMoveSpeed(float speedMoving)
 {
     speed = speedMoving;
 }
 
 
-void Movinator::SetCenter(const Vector3 &vec)
+void SunEngine::SetCenter(const Vector3 &vec)
 {
     center = vec;
 }
 
 
-void Movinator::Update(float time)
+void SunEngine::Update(float time)
 {
     float y = center.y_;
     angle += speed * time;
@@ -34,7 +34,7 @@ void Movinator::Update(float time)
 }
 
 
-void Movinator::RegisterObject(Context *context)
+void SunEngine::RegisterObject(Context *context)
 {
-    context->RegisterFactory<Movinator>();
+    context->RegisterFactory<SunEngine>();
 }

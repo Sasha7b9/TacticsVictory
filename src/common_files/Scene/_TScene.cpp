@@ -53,9 +53,9 @@ void TScene::Create()
 
     SharedPtr<Node> lightNode;
     lightNode = CreateChild("LigthNode");
-    Movinator *movinator = lightNode->CreateComponent<Movinator>();
-    movinator->SetCenter({level[0].Size() / 2.0f, 25.0f, -(level.Size() / 2.0f)});
-    movinator->SetMoveSpeed(0.5f);
+    SunEngine *sunEngine = lightNode->CreateComponent<SunEngine>();
+    sunEngine->SetCenter({level[0].Size() / 2.0f, 25.0f, -(level.Size() / 2.0f)});
+    sunEngine->SetMoveSpeed(0.5f);
 
     Light *light = lightNode->CreateComponent<Light>();
     lightNode->SetScale(0.01f);

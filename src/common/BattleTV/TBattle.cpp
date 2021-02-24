@@ -126,7 +126,7 @@ void Battle::CreateScriptSystem()
 
 void Battle::RegistrationComponets()
 {
-    Movinator::RegisterObject();
+    SunEngine::RegisterObject();
     Rotator::RegisterObject();
 
     TScene::RegisterObject();

@@ -208,7 +208,7 @@ void TacticsVictory::RegistrationComponets()
     TCamera::RegisterObject();
     TCursor::RegisterObject();
     TImage::RegisterObject();
-    Movinator::RegisterObject();
+    SunEngine::RegisterObject();
     Rotator::RegisterObject();
     WaveAlgorithm::RegisterObject();
     TScene::RegisterObject();
