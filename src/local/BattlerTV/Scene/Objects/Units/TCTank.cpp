@@ -26,26 +26,26 @@ void CTank::FixedUpdate(float /*time*/)
 }
 
 
+void CTank::Start()
+{
+    Tank::Start();
+
+    LoadFromJSON(JSON_MODEL_TANK);
+
+    Normalize();
+
+    node_->CreateComponent<Tile>()->Init(node_);
+
+    storage.Push(this);
+}
+
+
 void CTank::OnNodeSet(Node *node)
 {
     if (node)
     {
         node_ = node->CreateChild(NAME_NODE_TANK);
-
-        Tank::OnNodeSet(node_);
-
-        LoadFromJSON(JSON_MODEL_TANK);
-
-        Normalize();
-
-        SharedPtr<Tile> tile(node_->CreateComponent<Tile>());
-
-        tile->Init(node_);
-
-        storage.Push(this);
     }
-    else
-    {
-        Tank::OnNodeSet(node);
-    }
+
+    Tank::OnNodeSet(node ? node_ : node);
 }

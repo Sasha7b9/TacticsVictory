@@ -15,5 +15,5 @@ protected:
 
     UnitObject(Context *context);
 
-    virtual void OnNodeSet(Node *node) override;
+    virtual void Start() override;
 };

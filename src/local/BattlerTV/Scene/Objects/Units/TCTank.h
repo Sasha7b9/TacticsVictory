@@ -24,4 +24,6 @@ public:
 private:
 
     virtual void OnNodeSet(Node *node) override;
+
+    virtual void Start() override;
 };

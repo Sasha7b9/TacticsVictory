@@ -8,16 +8,12 @@ Vector<UnitObject *> UnitObject::storage;
 
 UnitObject::UnitObject(Context *context) : GameObject(context)
 {
+
 }
 
 
-void UnitObject::OnNodeSet(Node *node)
+void UnitObject::Start()
 {
-    GameObject::OnNodeSet(node);
-
-    if (node)
-    {
-        node->SetVar(VAR_NODE_IS_UNIT, true);
-        node->SetVar(VAR_NODE_IS_FLYING, false);
-    }
+    node_->SetVar(VAR_NODE_IS_UNIT, true);
+    node_->SetVar(VAR_NODE_IS_FLYING, false);
 }
