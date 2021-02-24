@@ -68,6 +68,7 @@ private:
     SharedPtr<SideCube> CreateSide(SIDE::E side, float anotherHeight);
     void PushPoint(const PointPlane &point);
     void BuildPlaneVerexes(const PlaneCube &plane);
+    float CalculateHeight() const;
 };
 
 /*                     Corner_0              Corner_1
