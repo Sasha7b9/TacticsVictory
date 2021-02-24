@@ -30,13 +30,9 @@ SharedPtr<CTank> CTank::Create(int z, int x)
 
     tank->SetPosition({ (float)x, 0, (float)z });
 
-    storage.Push(tank);
-
     SharedPtr<Tile> tile(new Tile(TheScene, "select"));
 
-    CustomGeometry *geomtery = tile->GetNode()->GetComponent<CustomGeometry>();
-
-    TheScene->AddChild(tile->GetNode());
+    storage.Push(tank);
 
     return tank;
 }
