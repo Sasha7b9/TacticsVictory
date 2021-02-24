@@ -114,20 +114,24 @@ void GuiEditor::CreateTabTerrain()
     btnClearTerrain->SetHint("clearTerrain");
     SubscribeToEvent(btnClearTerrain, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleTerrainClearTerrain));
 
-    SharedPtr<SliderWithTextAndButtons> sliderHeightDefault = tabTerrain->AddSlider("", -100, 100, 1, btnClearTerrain->GetPosition().x_ + btnClearTerrain->GetWidth() + 5, y - 2, 0, 20);
+    SharedPtr<SliderWithTextAndButtons> sliderHeightDefault = tabTerrain->AddSlider("", -100, 100, 1,
+        btnClearTerrain->GetPosition().x_ + btnClearTerrain->GetWidth() + 5, y - 2, 0, 20);
     sliderHeightDefault->SetValue(0);
     sliderHeightDefault->SetHint("hintSliderDefaultHeight");
 
-    SharedPtr<SliderWithTextAndButtons> sliderSizeBrushX = tabTerrain->AddSlider("Brush X", 1, 10, 1, 10, y += dY, 75, 50);
+    SharedPtr<SliderWithTextAndButtons> sliderSizeBrushX =
+        tabTerrain->AddSlider("Brush X", 1, 10, 1, 10, y += dY, 75, 50);
     sliderSizeBrushX->SetValue(1);
     sliderSizeBrushX->SetHint("hintSliderSizeBrushX");
 
-    SharedPtr<SliderWithTextAndButtons> sliderSizeBrushY = tabTerrain->AddSlider("Brush Y", 1, 10, 1, 10, y += dY, 75, 50);
+    SharedPtr<SliderWithTextAndButtons> sliderSizeBrushY =
+        tabTerrain->AddSlider("Brush Y", 1, 10, 1, 10, y += dY, 75, 50);
     sliderSizeBrushY->SetValue(1);
     sliderSizeBrushY->SetHint("hintSliderSizeBrushY");
 
     char *items[] = {"TPlane", "Edge"};
-    SharedPtr<DropDownListWithTextAndButton> ddListModeSelect = tabTerrain->AddDDList("Mode select", 100, 80, 2, items, 10, y += dY);
+    SharedPtr<DropDownListWithTextAndButton> ddListModeSelect =
+        tabTerrain->AddDDList("Mode select", 100, 80, 2, items, 10, y += dY);
     SubscribeToEvent(ddListModeSelect, E_ITEMSELECTED, URHO3D_HANDLER(GuiEditor, HandleTerrainModeSelectChanged));
 }
 
@@ -189,7 +193,9 @@ void GuiEditor::HandleButtonRelease(StringHash, VariantMap &eventData)
         if(windowMenu->IsVisible())
         {
             TheOpenedWindow.Push(windowMenu);
-            windowMenu->SetPosition(buttonMenu->GetPosition().x_, panelBottom->GetPosition().y_ - windowMenu->GetHeight());
+            windowMenu->SetPosition(
+                buttonMenu->GetPosition().x_,
+                panelBottom->GetPosition().y_ - windowMenu->GetHeight());
             windowMenu->BringToFront();
         }
     }
@@ -284,13 +290,18 @@ void GuiEditor::CreateWindows()
 
 void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
 {
-    Vector<Vector<float>> map = TheLevel->CreateRandom((uint)sliderSizeNewMapY->GetValue(), (uint)sliderSizeNewMapX->GetValue());
+    Vector<Vector<float>> map = TheLevel->CreateRandom(
+        (uint)sliderSizeNewMapY->GetValue(),
+        (uint)sliderSizeNewMapX->GetValue());
+
     delete TheTerrain;
     TheTerrain = new TTerrain();
     TheTerrain->CreateFromVector(map);
     windowNewMap->SetVisible(false);
 
-    TheCamera->SetPosition({TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()}, {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeight() / 2.0f)});
+    TheCamera->SetPosition(
+        {TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()},
+        {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeight() / 2.0f)});
 }
 
 
@@ -380,11 +391,15 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
 
     if(ok)
     {
-        Vector<Vector<float>> map = TheLevel->Load((char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
+        Vector<Vector<float>> map = TheLevel->Load(
+            (char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
+
         delete TheTerrain;
         TheTerrain = new TTerrain();
         TheTerrain->CreateFromVector(map);
-        TheCamera->SetPosition({TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()}, {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeight() / 2.0f)});
+        TheCamera->SetPosition(
+            {TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()},
+            {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeight() / 2.0f)});
     }
     
     TheFileSelector->GetWindow()->SetVisible(false);
