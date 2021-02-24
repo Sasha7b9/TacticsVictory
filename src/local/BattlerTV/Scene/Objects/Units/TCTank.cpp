@@ -22,19 +22,9 @@ void CTank::RegisterObject()
 
 SharedPtr<CTank> CTank::Create(int z, int x)
 {
-    SharedPtr<CTank> tank(TheScene->CreateChild(NAME_NODE_TANK, LOCAL)->CreateComponent<CTank>(LOCAL));
-
-    tank->LoadFromJSON(JSON_MODEL_TANK);
-
-    tank->Normalize();
+    SharedPtr<CTank> tank(TheScene->CreateChild(NAME_NODE_TANK)->CreateComponent<CTank>());
 
     tank->SetPosition({ (float)x, 0, (float)z });
-
-    SharedPtr<Tile> tile(tank->node_->CreateComponent<Tile>());
-
-    tile->Init(tank->node_);
-
-    storage.Push(tank);
 
     return tank;
 }
@@ -43,4 +33,25 @@ SharedPtr<CTank> CTank::Create(int z, int x)
 void CTank::FixedUpdate(float /*time*/)
 {
 
+}
+
+
+void CTank::OnNodeSet(Node *node)
+{
+    if (node)
+    {
+        node->SetName(NAME_NODE_TANK);
+
+        Tank::OnNodeSet(node);
+
+        LoadFromJSON(JSON_MODEL_TANK);
+
+        Normalize();
+
+        SharedPtr<Tile> tile(node_->CreateComponent<Tile>());
+
+        tile->Init(node_);
+
+        storage.Push(this);
+    }
 }

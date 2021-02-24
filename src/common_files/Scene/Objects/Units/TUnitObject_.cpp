@@ -13,6 +13,8 @@ UnitObject::UnitObject(Context *context) : GameObject(context)
 
 void UnitObject::OnNodeSet(Node *node)
 {
+    GameObject::OnNodeSet(node);
+
     if (node)
     {
         node->SetVar(VAR_NODE_IS_UNIT, true);

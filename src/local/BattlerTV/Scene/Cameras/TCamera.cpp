@@ -47,7 +47,7 @@ void TCamera::RegisterObject()
 
 SharedPtr<TCamera> TCamera::Create()
 {
-    SharedPtr<TCamera> camera(TheScene->CreateChild("TCamera", LOCAL)->CreateComponent<TCamera>(LOCAL));
+    SharedPtr<TCamera> camera(TheScene->CreateChild("TCamera")->CreateComponent<TCamera>());
 
     uint sizeX = TheScene->level[0].Size();
     uint sizeZ = TheScene->level.Size();
