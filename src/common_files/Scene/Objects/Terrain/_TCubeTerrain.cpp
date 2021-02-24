@@ -98,58 +98,58 @@ void CubeTerrain::CreateEdgeDown()
 
 void CubeTerrain::CreateSideLeft()
 {
-//    // Получим столбик кубов, находящихс слева от нашего. column[0] имеет минимальную высоту
-//
-//    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::LEFT);
-//
-//    float height = 0.0f;
-//
-//    if(column)                                                          // Если слева от нашей клетки есть другие
-//    {
-//        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
-//        {
-//            CubeTerrain *cube = (*column)[(uint)i];
-//
-//            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);     // Получаем координату верхнего правого угла суба, который находится слева
-//
-//            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
-//            {
-//                height = coord.y_;
-//                break;
-//            }
-//        }
-//    }
-//
-//    sides[S_LEFT] = CreateSide(S_LEFT, height);
+    // Получим столбик кубов, находящихс слева от нашего. column[0] имеет минимальную высоту
+
+    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::LEFT);
+
+    float height = 0.0f;
+
+    if(column)                                                          // Если слева от нашей клетки есть другие
+    {
+        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
+        {
+            CubeTerrain *cube = (*column)[(uint)i];
+
+            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);     // Получаем координату верхнего правого угла суба, который находится слева
+
+            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
+            {
+                height = coord.y_;
+                break;
+            }
+        }
+    }
+
+    sides[S_LEFT] = CreateSide(S_LEFT, height);
 }
 
 
 void CubeTerrain::CreateSideTop()
 {
-//    // Get the column of cubes, that are top of our. column[0] - mini height
-//
-//    // Получем столбик кубов, находящихся вверху нашего. column[0] имеет минимальную высоту
-//    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::TOP);
-//
-//    float height = 0.0f;
-//
-//    if(column)
-//    {
-//        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
-//        {
-//            CubeTerrain *cube = (*column)[(uint)i];
-//
-//            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_DOWNLEFT);
-//
-//            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
-//            {
-//                height = coord.y_;
-//                break;
-//            }
-//        }
-//    }
-//
-//    sides[S_TOP] = CreateSide(S_TOP, height);
+    // Get the column of cubes, that are top of our. column[0] - mini height
+
+    // Получем столбик кубов, находящихся вверху нашего. column[0] имеет минимальную высоту
+    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::TOP);
+
+    float height = 0.0f;
+
+    if(column)
+    {
+        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
+        {
+            CubeTerrain *cube = (*column)[(uint)i];
+
+            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_DOWNLEFT);
+
+            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
+            {
+                height = coord.y_;
+                break;
+            }
+        }
+    }
+
+    sides[S_TOP] = CreateSide(S_TOP, height);
 }
 
 
@@ -181,27 +181,27 @@ void CubeTerrain::CreateSideRight()
 
 void CubeTerrain::CreateSideDown()
 {
-//    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::DOWN);
-//
-//    float height = 0.0f;
-//
-//    if(column)
-//    {
-//        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
-//        {
-//            CubeTerrain *cube = (*column)[(uint)i];
-//
-//            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPLEFT);
-//
-//            if(coord.y_ < GetEdgeCoord(E_TOP, C_DOWNLEFT).y_)
-//            {
-//                height = coord.y_;
-//                break;
-//            }
-//        }
-//    }
-//
-//    sides[S_DOWN] = CreateSide(S_DOWN, height);
+    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::DOWN);
+
+    float height = 0.0f;
+
+    if(column)
+    {
+        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
+        {
+            CubeTerrain *cube = (*column)[(uint)i];
+
+            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPLEFT);
+
+            if(coord.y_ < GetEdgeCoord(E_TOP, C_DOWNLEFT).y_)
+            {
+                height = coord.y_;
+                break;
+            }
+        }
+    }
+
+    sides[S_DOWN] = CreateSide(S_DOWN, height);
 }
 
 
@@ -236,7 +236,7 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
 
         {1.0f, 1.0f, 1.0f, 1.0f},
 
-        {1.0f, 1.0f, 1.0f, 1.0f}
+        {0.0f, 1.0f, 1.0f, 0.0f}
     };
 
     SharedPtr<SideCube> retValue(new SideCube());
