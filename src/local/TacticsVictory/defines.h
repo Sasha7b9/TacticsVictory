@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once 
-#include "_defines.h"
+#include "defines_.h"
 
 #define PRESS_UP        (TheInput->GetKeyDown(KEY_UP))
 #define PRESS_DOWN      (TheInput->GetKeyDown(KEY_DOWN))

@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Controls/_TButtonSwitch.h"
-#include "GUI/Controls/_TTab.h"
+#include "GUI/Controls/TButtonSwitch_.h"
+#include "GUI/Controls/TTab_.h"
 #include "GUI/GuiGame/TGuiGame.h"
 #include "GUI/Panels/TPanelBottom.h"
 #include "GUI/Panels/TPanelMain.h"

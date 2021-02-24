@@ -1,10 +1,10 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/TCursor.h"
-#include "GUI/Controls/_TButtonSwitch.h"
-#include "GUI/Controls/_TButtonToggled.h"
-#include "GUI/Controls/_TDropDownListWithTextAndButton.h"
-#include "GUI/Controls/_TSliderWithTextAndButtons.h"
+#include "GUI/Controls/TButtonSwitch_.h"
+#include "GUI/Controls/TButtonToggled_.h"
+#include "GUI/Controls/TDropDownListWithTextAndButton_.h"
+#include "GUI/Controls/TSliderWithTextAndButtons_.h"
 
 
 TWindow::TWindow(Context *context) :

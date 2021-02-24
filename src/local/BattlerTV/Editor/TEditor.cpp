@@ -3,7 +3,7 @@
 #include "Editor/TEditor.h"
 #include "GUI/TCursor.h"
 #include "GUI/TGUI.h"
-#include "GUI/Controls/_THint.h"
+#include "GUI/Controls/THint_.h"
 #include "GUI/GuiEditor/TGuiEditor.h"
 #include "GUI/Menu/TMenu.h"
 #include "Scene/TLevel_.h"

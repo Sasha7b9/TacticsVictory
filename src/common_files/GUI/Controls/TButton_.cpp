@@ -2,9 +2,9 @@
 #include "stdafx.h"
 #include "GUI/TCursor.h"
 #include "GUI/TGUIEvents.h"
-#include "GUI/Controls/_TButtonSwitch.h"
-#include "GUI/Controls/_THint.h"
-#include "GUI/Controls/_TLabel.h"
+#include "GUI/Controls/TButtonSwitch_.h"
+#include "GUI/Controls/THint_.h"
+#include "GUI/Controls/TLabel_.h"
 #include "Utils/TSettings.h"
 
 

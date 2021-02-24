@@ -2,9 +2,9 @@
 #include "stdafx.h"
 #include "GUI/TCursor.h"
 #include "GUI/TGUIEvents.h"
-#include "GUI/Controls/_THint.h"
-#include "GUI/Controls/_TSliderInt.h"
-#include "GUI/Controls/_TSliderWithTextAndButtons.h"
+#include "GUI/Controls/THint_.h"
+#include "GUI/Controls/TSliderInt_.h"
+#include "GUI/Controls/TSliderWithTextAndButtons_.h"
 #include "Utils/TSettings.h"
 
 

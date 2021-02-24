@@ -2,8 +2,8 @@
 #include "stdafx.h"
 #include "GUI/TCursor.h"
 #include "GUI/TGUIEvents.h"
-#include "GUI/Controls/_TGovernorFloat.h"
-#include "GUI/Controls/_TLabel.h"
+#include "GUI/Controls/TGovernorFloat_.h"
+#include "GUI/Controls/TLabel_.h"
 #include "Utils/TSettings.h"
 
 

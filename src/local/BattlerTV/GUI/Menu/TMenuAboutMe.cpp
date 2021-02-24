@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Controls/_TButtonSwitch.h"
+#include "GUI/Controls/TButtonSwitch_.h"
 #include "GUI/Menu/TMenuAboutMe.h"
 
 

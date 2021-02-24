@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Game/Path/_TWaveAlgorithm.h"
+#include "Game/Path/TWaveAlgorithm_.h"
 
 
 class PathIndicator

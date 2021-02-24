@@ -1,9 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Controls/_TButtonSwitch.h"
-#include "GUI/Controls/_TDropDownListWithTextAndButton.h"
-#include "GUI/Controls/_TSliderInt.h"
-#include "GUI/Controls/_TSliderWithTextAndButtons.h"
+#include "GUI/Controls/TButtonSwitch_.h"
+#include "GUI/Controls/TDropDownListWithTextAndButton_.h"
+#include "GUI/Controls/TSliderInt_.h"
+#include "GUI/Controls/TSliderWithTextAndButtons_.h"
 #include "GUI/Menu/TMenuOptions.h"
 #include "Utils/TSettings.h"
 #include "Utils/TSettingsTypes.h"
