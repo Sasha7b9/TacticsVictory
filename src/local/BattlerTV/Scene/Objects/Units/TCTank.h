@@ -28,4 +28,6 @@ private:
     static Vector<CTank *> storage;
 
     SharedPtr<Tile> tile;
+
+    void HandleMouseClick(StringHash, VariantMap &);
 };

@@ -3,6 +3,7 @@
 #include "Graphics/3D/TTile.h"
 #include "Scene/TCScene.h"
 #include "Scene/Objects/Units/TCTank.h"
+#include "Scene/Objects/Units/TUnitsEvents_.h"
 
 
 Vector<CTank *> CTank::storage;
@@ -37,6 +38,8 @@ void CTank::Start()
     tile = node_->CreateComponent<Tile>();
 
     storage.Push(this);
+
+    SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(CTank, HandleMouseClick));
 }
 
 
@@ -48,4 +51,10 @@ void CTank::OnNodeSet(Node *node)
     }
 
     Tank::OnNodeSet(node ? node_ : node);
+}
+
+
+void CTank::HandleMouseClick(StringHash, VariantMap &)
+{
+
 }
