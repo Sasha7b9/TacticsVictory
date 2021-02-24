@@ -49,6 +49,8 @@ private:
     Type::E type = Type::Normal;
     bool overElementGUI = false;    // true means that the cursor is over the interfact element and must be selected
 
+    void SetSelectedOverUnit();
+
     void HandleHoverBeginElementGUI(StringHash, VariantMap &);
     void HandleHoverEndElementGUI(StringHash, VariantMap &);
 };

@@ -190,25 +190,31 @@ void TCursor::Update(float dT)
     }
     else
     {
-        Vector3 hitPosition;
+        SetSelectedOverUnit();
+    }
+}
 
-        Drawable *drawable = GetRaycastNode(&hitPosition);
 
-        if (drawable)
+void TCursor::SetSelectedOverUnit()
+{
+    Vector3 hitPosition;
+
+    Drawable *drawable = GetRaycastNode(&hitPosition);
+
+    if (drawable)
+    {
+        if (drawable->GetNode()->GetVar(VAR_NODE_IS_UNIT).GetBool())
         {
-            if (drawable->GetNode()->GetVar(VAR_NODE_IS_UNIT).GetBool())
-            {
-                SetSelected();
-            }
-            else
-            {
-                SetNormal();
-            }
+            SetSelected();
         }
         else
         {
             SetNormal();
         }
+    }
+    else
+    {
+        SetNormal();
     }
 }
 
