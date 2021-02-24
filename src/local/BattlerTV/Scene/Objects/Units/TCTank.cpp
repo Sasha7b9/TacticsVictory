@@ -32,9 +32,7 @@ SharedPtr<CTank> CTank::Create(int z, int x)
 
     SharedPtr<Tile> tile(tank->node_->CreateComponent<Tile>());
 
-    TheScene->NodeRemoved(tile->GetNode());
-
-    tile->GetNode()->SetParent(tank->node_);
+    tile->Init(tank->node_);
 
     storage.Push(tank);
 

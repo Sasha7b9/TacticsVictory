@@ -6,9 +6,23 @@
 
 Tile::Tile(Context *context) : LogicComponent(context)
 {
-    node_ = TheScene->CreateChild();
+
+}
+
+
+Tile::~Tile()
+{
+
+}
+
+
+void Tile::Init(Node *node)
+{
+    node_ = node->CreateChild();
 
     float d = 0.0f;
+
+    node_->SetScale(100);
 
     const float vertexes[4 * (3 + 2)] =
     {
@@ -49,12 +63,6 @@ Tile::Tile(Context *context) : LogicComponent(context)
     geometry->Commit();
 
     geometry->SetEnabled(true);
-}
-
-
-Tile::~Tile()
-{
-
 }
 
 
