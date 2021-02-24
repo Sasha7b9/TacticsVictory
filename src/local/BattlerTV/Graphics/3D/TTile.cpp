@@ -56,7 +56,7 @@ void Tile::Init(Node *node)
         geometry->DefineNormal({ 0.0f, 1.0f, 0.0f });
     }
 
-    Material *material = TheCache->GetResource<Material>("Materials/Decals/PathDecal.xml");
+    Material *material = TheCache->GetResource<Material>("Materials/Decals/Tile.xml");
 
     geometry->SetMaterial(material);
 
