@@ -98,29 +98,29 @@ void CubeTerrain::CreateEdgeDown()
 
 void CubeTerrain::CreateSideLeft()
 {
-    // Получим столбик кубов, находящихс слева от нашего. column[0] имеет минимальную высоту
-
-    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::LEFT);
-
-    float height = 0.0f;
-
-    if(column)                                                          // Если слева от нашей клетки есть другие
-    {
-        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
-        {
-            CubeTerrain *cube = (*column)[(uint)i];
-
-            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);     // Получаем координату верхнего правого угла суба, который находится слева
-
-            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
-            {
-                height = coord.y_;
-                break;
-            }
-        }
-    }
-
-    sides[S_LEFT] = CreateSide(S_LEFT, height);
+//    // Получим столбик кубов, находящихс слева от нашего. column[0] имеет минимальную высоту
+//
+//    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::LEFT);
+//
+//    float height = 0.0f;
+//
+//    if(column)                                                          // Если слева от нашей клетки есть другие
+//    {
+//        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
+//        {
+//            CubeTerrain *cube = (*column)[(uint)i];
+//
+//            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);     // Получаем координату верхнего правого угла суба, который находится слева
+//
+//            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPLEFT).y_)
+//            {
+//                height = coord.y_;
+//                break;
+//            }
+//        }
+//    }
+//
+//    sides[S_LEFT] = CreateSide(S_LEFT, height);
 }
 
 
@@ -155,27 +155,27 @@ void CubeTerrain::CreateSideTop()
 
 void CubeTerrain::CreateSideRight()
 {
-//    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::RIGHT);
-//
-//    float height = 0.0f;
-//
-//    if(column)
-//    {
-//        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
-//        {
-//            CubeTerrain *cube = (*column)[(uint)i];
-//
-//            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);
-//
-//            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPRIGHT).y_)
-//            {
-//                height = coord.y_;
-//                break;
-//            }
-//        }
-//    }
-//
-//    sides[S_RIGHT] = CreateSide(S_RIGHT, height);
+    PODVector<CubeTerrain*> *column = static_cast<TTerrain*>(terrain)->GetColumnCubes(this, DIR::RIGHT);
+
+    float height = 0.0f;
+
+    if(column)
+    {
+        for(int i = static_cast<int>(column->Size()) - 1; i >= 0; i--)
+        {
+            CubeTerrain *cube = (*column)[(uint)i];
+
+            Vector3& coord = cube->GetEdgeCoord(E_TOP, C_TOPRIGHT);
+
+            if(coord.y_ < GetEdgeCoord(E_TOP, C_TOPRIGHT).y_)
+            {
+                height = coord.y_;
+                break;
+            }
+        }
+    }
+
+    sides[S_RIGHT] = CreateSide(S_RIGHT, height);
 }
 
 
@@ -215,7 +215,7 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
 
         {0.0f, 0.0f, 0.0f, 0.0f},
 
-        {0.0f, 1.0f, 1.0f, 0.0f},
+        {1.0f, 1.0f, 0.0f, 0.0f},
 
         {1.0f, 1.0f, 1.0f, 1.0f}
     };
@@ -224,7 +224,7 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
     {
         {anotherHeight, height, height, anotherHeight},
         {anotherHeight, anotherHeight, height, height},
-        {height, anotherHeight, anotherHeight, height},
+        {anotherHeight, height, height, anotherHeight},
         {height, height, anotherHeight, anotherHeight}
     };
 
@@ -234,9 +234,9 @@ SharedPtr<SideCube> CubeTerrain::CreateSide(SIDE side, float anotherHeight)
 
         {0.0f, 1.0f, 1.0f, 0.0f},
 
-        {0.0f, 0.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f},
 
-        {0.0f, 1.0f, 1.0f, 0.0f}
+        {1.0f, 1.0f, 1.0f, 1.0f}
     };
 
     SharedPtr<SideCube> retValue(new SideCube());
