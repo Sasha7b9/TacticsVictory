@@ -16,7 +16,7 @@
 #include "Scene/Level_.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/TCamera.h"
-#include "Scene/Objects/Units/TankC.h"
+#include "Scene/Objects/Units/Tank_.h"
 #include "Utils/TCLog.h"
 #include "Utils/TSettings.h"
 #include "Utils/TSettingsTypes.h"
