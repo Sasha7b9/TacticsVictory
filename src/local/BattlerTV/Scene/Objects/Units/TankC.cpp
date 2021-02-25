@@ -1,8 +1,8 @@
 // 2021/02/22 15:40:32 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #include "stdafx.h"
 #include "Graphics/3D/TTile.h"
-#include "Scene/TCScene.h"
-#include "Scene/Objects/Units/TCTank.h"
+#include "Scene/SceneC.h"
+#include "Scene/Objects/Units/TankC.h"
 #include "Scene/Objects/Units/UnitsEvents_.h"
 
 

@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Core/TMath_.h"
 #ifdef CLIENT
-#include "Scene/TCScene.h"
+#include "Scene/SceneC.h"
 #endif
 #include "Scene/TScene_.h"
 #include "Scene/Terrain/TLayerTerrain_.h"

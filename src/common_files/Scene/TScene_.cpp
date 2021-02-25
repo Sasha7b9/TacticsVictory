@@ -5,7 +5,7 @@
 #include "Scene/TLevel_.h"
 #include "Scene/TScene_.h"
 #ifdef CLIENT
-#include "Scene/TCScene.h"
+#include "Scene/SceneC.h"
 #endif
 
 

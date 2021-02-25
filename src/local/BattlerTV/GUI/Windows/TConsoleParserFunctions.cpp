@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "GUI/Windows/TConsole.h"
 #include "GUI/Windows/TWindowVariables.h"
-#include "Scene/TCScene.h"
+#include "Scene/SceneC.h"
 #include "Utils/TGlobalFunctions.h"
 
 

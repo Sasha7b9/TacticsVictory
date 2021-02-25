@@ -7,7 +7,7 @@
 #include "GUI/GuiEditor/TGuiEditor.h"
 #include "GUI/Menu/TMenu.h"
 #include "Scene/TLevel_.h"
-#include "Scene/TCScene.h"
+#include "Scene/SceneC.h"
 #include "Scene/Cameras/TCamera.h"
 
 

@@ -1,6 +1,6 @@
 // 2021/02/23 11:35:25 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Objects/Ammo/TAmmoObject_.h"
+#include "Scene/Objects/Ammo/AmmoObject_.h"
 
 
 class AirBomb : public AmmoObject

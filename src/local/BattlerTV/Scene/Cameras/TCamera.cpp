@@ -3,7 +3,7 @@
 #include "GUI/TCursor.h"
 #include "GUI/TGUI.h"
 #include "GUI/Windows/TConsole.h"
-#include "Scene/TCScene.h"
+#include "Scene/SceneC.h"
 #include "Scene/Cameras/TCamera.h"
 
 

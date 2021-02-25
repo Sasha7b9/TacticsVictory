@@ -1,7 +1,7 @@
 // 2021/02/24 16:50:10 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Graphics/3D/TTile.h"
-#include "Scene/TCScene.h"
+#include "Scene/SceneC.h"
 
 
 Tile::Tile(Context *context) : LogicComponent(context)

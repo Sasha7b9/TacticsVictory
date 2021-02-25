@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "GUI/TCursor.h"
 #include "Input/TMouse.h"
-#include "Scene/TCScene.h"
+#include "Scene/SceneC.h"
 #include "Scene/Objects/Units/UnitsEvents_.h"
 
 

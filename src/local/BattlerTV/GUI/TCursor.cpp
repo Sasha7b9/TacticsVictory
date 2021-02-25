@@ -5,7 +5,7 @@
 #include "GUI/TGUIEvents.h"
 #include "GUI/TGUI.h"
 #include "GUI/Menu/TMenu.h"
-#include "Scene/TCScene.h"
+#include "Scene/SceneC.h"
 #include "Scene/Cameras/TCamera.h"
 
 

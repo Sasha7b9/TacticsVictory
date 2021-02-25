@@ -1,6 +1,6 @@
 // 2021/02/22 15:41:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #pragma once
-#include "Scene/Objects/TStatusBar.h"
+#include "Scene/Objects/StatusBar.h"
 #include "Scene/Objects/Units/Tank_.h"
 
 

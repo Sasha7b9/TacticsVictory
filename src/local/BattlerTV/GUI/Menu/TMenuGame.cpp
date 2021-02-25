@@ -3,7 +3,7 @@
 #include "GUI/Controls/TButtonSwitch_.h"
 #include "GUI/Menu/TMenuEvents.h"
 #include "GUI/Menu/TMenuGame.h"
-#include "Scene/TCScene.h"
+#include "Scene/SceneC.h"
 #include "Scene/Cameras/TCamera.h"
 #include "Utils/TSettings.h"
 #include "Utils/TSettingsTypes.h"
