@@ -12,6 +12,4 @@ public:
     SharedPtr<Tile> tile;
 
     void HandleMouseClick(StringHash, VariantMap &);
-
-    virtual void OnMouseClick(VariantMap &eventData) override;
 };

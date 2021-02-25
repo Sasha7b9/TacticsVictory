@@ -13,21 +13,6 @@ Tank::Tank(Context *context) : UnitObject(context)
 
 void TankSpecificPartC::HandleMouseClick(StringHash, VariantMap &eventData)
 {
-    OnMouseClick(eventData);
-}
-
-void TankSpecificPartC::Start(Tank *_tank)
-{
-    TankSpecificPart::Start(_tank);
-
-    tile = tank->node_->CreateComponent<Tile>();
-
-    SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(TankSpecificPartC, HandleMouseClick));
-}
-
-
-void TankSpecificPartC::OnMouseClick(VariantMap &eventData)
-{
     using namespace UnitMouseClick;
 
     if (eventData[P_NODE].GetPtr() == tank->node_)
@@ -44,4 +29,13 @@ void TankSpecificPartC::OnMouseClick(VariantMap &eventData)
 
         tile->IsEnabled() ? tile->Disable() : tile->Enable();
     }
+}
+
+void TankSpecificPartC::Start(Tank *_tank)
+{
+    TankSpecificPart::Start(_tank);
+
+    tile = tank->node_->CreateComponent<Tile>();
+
+    SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(TankSpecificPartC, HandleMouseClick));
 }

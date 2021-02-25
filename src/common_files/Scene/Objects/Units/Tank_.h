@@ -18,8 +18,6 @@ public:
     // Функция вызывается из функции Tank::Start() для выполнения специфичных действий
     virtual void Start(Tank *_tank) { tank = _tank; };
 
-    virtual void OnMouseClick(VariantMap &) { };
-
 protected:
 
     Tank *tank = nullptr;
