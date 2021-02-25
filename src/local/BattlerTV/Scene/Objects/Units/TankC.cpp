@@ -16,11 +16,11 @@ void Tank::HandleMouseClick(StringHash, VariantMap &eventData)
     specific->OnMouseClick(eventData);
 }
 
-void TankSpecificPartC::Start(Node *_node, Tank *_tank)
+void TankSpecificPartC::Start(Tank *_tank)
 {
-    TankSpecificPart::Start(_node, _tank);
+    TankSpecificPart::Start(_tank);
 
-    tile = node->CreateComponent<Tile>();
+    tile = tank->node_->CreateComponent<Tile>();
 }
 
 
@@ -28,7 +28,7 @@ void TankSpecificPartC::OnMouseClick(VariantMap &eventData)
 {
     using namespace UnitMouseClick;
 
-    if (eventData[P_NODE].GetPtr() == node)
+    if (eventData[P_NODE].GetPtr() == tank->node_)
     {
         if (!eventData[P_CTRL_PRESSED].GetBool())
         {

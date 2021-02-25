@@ -7,7 +7,7 @@ class TankSpecificPartC : public TankSpecificPart
 {
 public:
 
-    virtual void Start(Node *node, Tank *tank) override;
+    virtual void Start(Tank *tank) override;
 
     SharedPtr<Tile> tile;
 

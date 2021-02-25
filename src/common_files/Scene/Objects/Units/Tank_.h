@@ -15,13 +15,12 @@ public:
 
     TankSpecificPart() : Object(TheContext) {};
 
-    virtual void Start(Node *_node, Tank *_tank) { node = _node; tank = _tank; };
+    virtual void Start(Tank *_tank) { tank = _tank; };
 
     virtual void OnMouseClick(VariantMap &) { };
 
 protected:
 
-    Node *node = nullptr;
     Tank *tank = nullptr;
 };
 
