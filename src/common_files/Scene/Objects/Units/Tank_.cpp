@@ -27,7 +27,7 @@ void Tank::Start()
 
     Normalize();
 
-    specific->Start(node_);
+    specific->Start(node_, this);
 
     storage.Push(this);
 

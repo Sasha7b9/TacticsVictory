@@ -3,20 +3,30 @@
 #include "Scene/Objects/Units/UnitObject_.h"
 
 
+class Tank;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class TankSpecificPart : public Object
 {
     URHO3D_OBJECT(TankSpecificPart, Object);
 
 public:
 
-    TankSpecificPart();
+    TankSpecificPart() : Object(TheContext) {};
 
-    virtual void Start(Node *) {};
+    virtual void Start(Node *_node, Tank *_tank) { node = _node; tank = _tank; };
 
-    virtual void OnMouseClick(VariantMap &, Node *) { };
+    virtual void OnMouseClick(VariantMap &) { };
+
+protected:
+
+    Node *node = nullptr;
+    Tank *tank = nullptr;
 };
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Tank : public UnitObject
 {
 friend class TankSpecificPartC;
