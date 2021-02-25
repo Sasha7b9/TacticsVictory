@@ -1,10 +1,20 @@
 // 2021/02/22 15:41:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #pragma once
-#include "Scene/Objects/Units/TankSpecificPart_.h"
 #include "Scene/Objects/Units/UnitObject_.h"
 
 
-class StatusBar;
+class TankSpecificPart : public Object
+{
+    URHO3D_OBJECT(TankSpecificPart, Object);
+
+public:
+
+    TankSpecificPart();
+
+    virtual void Start(Node *) {};
+
+    virtual void OnMouseClick(VariantMap &, Node *) { };
+};
 
 
 class Tank : public UnitObject
