@@ -15,6 +15,7 @@ public:
 
     TankSpecificPart() : Object(TheContext) {};
 
+    // Функция вызывается из функции Tank::Start() для выполнения специфичных действий
     virtual void Start(Tank *_tank) { tank = _tank; };
 
     virtual void OnMouseClick(VariantMap &) { };
