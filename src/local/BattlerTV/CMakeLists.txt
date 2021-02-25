@@ -58,7 +58,8 @@ file(GLOB SCENE_OBJECTS_AMMO                ../../common_files/Scene/Objects/Amm
 file(GLOB SCENE_OBJECTS_AMMO_ROCKET                            Scene/Objects/Ammo/Rocket/*.*
                                             ../../common_files/Scene/Objects/Ammo/Rocket/*.*)
 file(GLOB SCENE_OBJECTS_BUILDINGS           ../../common_files/Scene/Objects/Buildings/*.*)
-file(GLOB SCENE_OBJECTS_UNITS               ../../common_files/Scene/Objects/Units/*.*)
+file(GLOB SCENE_OBJECTS_UNITS               ../../common_files/Scene/Objects/Units/*.*
+                                                               Scene/Objects/Units/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_LOGIC         ../../common_files/Scene/Objects/Units/Logic/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_TANK          ../../common_files/Scene/Objects/Units/Tank/*.*
                                                                Scene/Objects/Units/Tank/*.*)
