@@ -9,4 +9,8 @@ class TankSpecificPart : public Object
 public:
 
     TankSpecificPart();
+
+    virtual void Start(Node *) {};
+
+    virtual void OnMouseClick(VariantMap &, Node *) { };
 };

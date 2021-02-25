@@ -9,12 +9,6 @@
 Vector<Tank *> Tank::storage;
 
 
-Tank::Tank(Context *context) : UnitObject(context)
-{
-
-}
-
-
 void Tank::RegisterObject()
 {
     TheContext->RegisterFactory<Tank>();
@@ -35,7 +29,7 @@ void Tank::Start()
 
     Normalize();
 
-    tile = node_->CreateComponent<Tile>();
+    specific->Start(node_);
 
     storage.Push(this);
 
@@ -51,23 +45,4 @@ void Tank::OnNodeSet(Node *node)
     }
 
     UnitObject::OnNodeSet(node ? node_ : node);
-}
-
-
-void Tank::HandleMouseClick(StringHash, VariantMap &eventData)
-{
-    using namespace UnitMouseClick;
-
-    if (eventData[P_NODE].GetPtr() == node_)
-    {
-        if (!eventData[P_CTRL_PRESSED].GetBool())
-        {
-            for (Tank *tank : Tank::storage)
-            {
-                tank->tile->Disable();
-            }
-        }
-
-        tile->IsEnabled() ? tile->Disable() : tile->Enable();
-    }
 }

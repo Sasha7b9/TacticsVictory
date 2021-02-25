@@ -9,6 +9,8 @@ class StatusBar;
 
 class Tank : public UnitObject
 {
+friend class TankSpecificPartC;
+
     URHO3D_OBJECT(Tank, UnitObject);
 
 public:
@@ -26,8 +28,6 @@ private:
     virtual void FixedUpdate(float time) override;
 
     static Vector<Tank *> storage;
-
-    SharedPtr<Tile> tile;
 
     void HandleMouseClick(StringHash, VariantMap &);
 
