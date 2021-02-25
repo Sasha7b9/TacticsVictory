@@ -63,12 +63,12 @@ file(GLOB SCENE_OBJECTS              ../../common_files/Scene/Objects/*.*
                                            ../BattlerTV/Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO         ../../common_files/Scene/Objects/Ammo/*.*
                                            ../BattlerTV/Scene/Objects/Ammo/*.*)
-file(GLOB SCENE_OBJECTS_TERRAIN      ../../common_files/Scene/Objects/Terrain/*.*)
 file(GLOB SCENE_OBJECTS_UNITS        ../../common_files/Scene/Objects/Units/*.*
                                            ../BattlerTV/Scene/Objects/Units/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS      ../../common_files/Scene/Objects/Weapons/*.*
                                            ../BattlerTV/Scene/Objects/Weapons/*.*)
 file(GLOB SCENE_PRIMITIVES           ../../common_files/Scene/Primitives/*.*)
+file(GLOB SCENE_TERRAIN              ../../common_files/Scene/Terrain/*.*)
 file(GLOB UTILS                            ../BattlerTV/Utils/*.*
                                      ../../common_files/Utils/*.*)
 
@@ -94,10 +94,10 @@ source_group(Scene                   FILES ${SCENE})
 source_group(Scene\\Cameras          FILES ${SCENE_CAMERAS})
 source_group(Scene\\Objects          FILES ${SCENE_OBJECTS})
 source_group(Scene\\Objects\\Ammo    FILES ${SCENE_OBJECTS_AMMO})
-source_group(Scene\\Objects\\Terrain FILES ${SCENE_OBJECTS_TERRAIN})
 source_group(Scene\\Objects\\Units   FILES ${SCENE_OBJECTS_UNITS})
 source_group(Scene\\Objects\\Weapons FILES ${SCENE_OBJECTS_WEAPONS})
 source_group(Scene\\Primitives       FILES ${SCENE_PRIMITIVES})
+source_group(Scene\\Terrain          FILES ${SCENE_TERRAIN})
 source_group(Utils                   FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH}
@@ -106,7 +106,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME
     ${GUI_WINDOWS} ${INPUT}
     ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO}
-    ${SCENE_OBJECTS_TERRAIN}
+    ${SCENE_TERRAIN}
     ${SCENE_OBJECTS_UNITS}
     ${SCENE_OBJECTS_WEAPONS}
     ${SCENE_PRIMITIVES} ${UTILS})

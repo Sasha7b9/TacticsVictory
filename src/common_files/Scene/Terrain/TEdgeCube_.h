@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Objects/Terrain/TPlaneCube_.h"
+#include "Scene/Terrain/TPlaneCube_.h"
 
 
 class EdgeCube : public Object

@@ -5,7 +5,7 @@
 #include "Scene/TCScene.h"
 #endif
 #include "Scene/TScene_.h"
-#include "Scene/Objects/Terrain/TLayerTerrain_.h"
+#include "Scene/Terrain/TLayerTerrain_.h"
 
 
 LayerTerrain::LayerTerrain(Context *context) : Object(context)

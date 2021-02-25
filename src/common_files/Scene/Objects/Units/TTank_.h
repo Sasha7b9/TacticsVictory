@@ -10,4 +10,6 @@ class Tank : public UnitObject
 protected:
 
     Tank(Context *context);
+
+
 };
