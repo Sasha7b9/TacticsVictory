@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Scene/Objects/TGameObject_.h"
+#include "Scene/Objects/GameObject_.h"
 #include "Scene/Terrain/TSegmentTerrain_.h"
 
 

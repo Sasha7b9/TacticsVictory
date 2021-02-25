@@ -1,6 +1,6 @@
 // 2021/02/22 21:01:28 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Objects/TGameObject_.h"
+#include "Scene/Objects/GameObject_.h"
 
 
 class WeaponObject : public GameObject
