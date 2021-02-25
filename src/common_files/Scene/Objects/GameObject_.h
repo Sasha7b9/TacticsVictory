@@ -1,5 +1,6 @@
 // 2021/02/18 22:31:36 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Scene/Objects/GameObjectSpecificPart.h"
 
 
 class GameObject : public LogicComponent
@@ -31,4 +32,6 @@ private:
     virtual void FixedUpdate(float time) override = 0;
 
     Vector3 GetPosition() const;
+
+    SharedPtr<GameObjectSpecificPart> specific;
 };
