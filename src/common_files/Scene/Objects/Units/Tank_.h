@@ -52,7 +52,5 @@ private:
     // Хранилище всех созданных объектов типа "Tank"
     static Vector<Tank *> storage;
 
-    void HandleMouseClick(StringHash, VariantMap &);
-
     SharedPtr<TankSpecificPart> specific;
 };

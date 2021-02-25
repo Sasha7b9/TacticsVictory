@@ -7,9 +7,3 @@ Tank::Tank(Context *context) : UnitObject(context)
 {
 
 }
-
-
-void Tank::HandleMouseClick(StringHash, VariantMap &)
-{
-
-}

@@ -11,9 +11,9 @@ Tank::Tank(Context *context) : UnitObject(context)
 }
 
 
-void Tank::HandleMouseClick(StringHash, VariantMap &eventData)
+void TankSpecificPartC::HandleMouseClick(StringHash, VariantMap &eventData)
 {
-    specific->OnMouseClick(eventData);
+    OnMouseClick(eventData);
 }
 
 void TankSpecificPartC::Start(Tank *_tank)
@@ -21,6 +21,8 @@ void TankSpecificPartC::Start(Tank *_tank)
     TankSpecificPart::Start(_tank);
 
     tile = tank->node_->CreateComponent<Tile>();
+
+    SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(TankSpecificPartC, HandleMouseClick));
 }
 
 

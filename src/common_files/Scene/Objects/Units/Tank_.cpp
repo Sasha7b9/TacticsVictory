@@ -30,8 +30,6 @@ void Tank::Start()
     specific->Start(this);
 
     storage.Push(this);
-
-    SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(Tank, HandleMouseClick));
 }
 
 
