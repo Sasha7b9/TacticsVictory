@@ -115,7 +115,7 @@ void TacticsVictory::Start()
         uint colZ = (uint)Random((float)TheTerrain->WidthZ());
         uint rowX = (uint)Random((float)TheTerrain->HeightX());
 
-        TheTerrain->PutIn(TheScene->CreateComponent<CTank>(), colZ, rowX);
+        TheTerrain->PutIn(TheScene->CreateComponent<Tank>(), colZ, rowX);
     }
 
     TheCamera = TCamera::Create();
@@ -211,7 +211,7 @@ void TacticsVictory::RegistrationComponets()
     Rotator::RegisterObject();
     WaveAlgorithm::RegisterObject();
     TScene::RegisterObject();
-    CTank::RegisterObject();
+    Tank::RegisterObject();
     Tile::RegisterObject();
 }
 

@@ -1,19 +1,19 @@
 // 2021/02/22 15:41:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #pragma once
-#include "Scene/Objects/StatusBar.h"
+#include "Scene/Objects/Units/TankSpecificPart_.h"
 #include "Scene/Objects/Units/UnitObject_.h"
 
 
 class StatusBar;
 
 
-class CTank : public UnitObject
+class Tank : public UnitObject
 {
-    URHO3D_OBJECT(CTank, UnitObject);
+    URHO3D_OBJECT(Tank, UnitObject);
 
 public:
 
-    CTank(Context *context);
+    Tank(Context *context);
 
     static void RegisterObject();
 
@@ -25,9 +25,11 @@ private:
 
     virtual void FixedUpdate(float time) override;
 
-    static Vector<CTank *> storage;
+    static Vector<Tank *> storage;
 
     SharedPtr<Tile> tile;
 
     void HandleMouseClick(StringHash, VariantMap &);
+
+    SharedPtr<TankSpecificPart> specific;
 };

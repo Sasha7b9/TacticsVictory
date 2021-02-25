@@ -6,28 +6,28 @@
 #include "Scene/Objects/Units/UnitsEvents_.h"
 
 
-Vector<CTank *> CTank::storage;
+Vector<Tank *> Tank::storage;
 
 
-CTank::CTank(Context *context) : UnitObject(context)
+Tank::Tank(Context *context) : UnitObject(context)
 {
 
 }
 
 
-void CTank::RegisterObject()
+void Tank::RegisterObject()
 {
-    TheContext->RegisterFactory<CTank>();
+    TheContext->RegisterFactory<Tank>();
 }
 
 
-void CTank::FixedUpdate(float /*time*/)
+void Tank::FixedUpdate(float /*time*/)
 {
 
 }
 
 
-void CTank::Start()
+void Tank::Start()
 {
     UnitObject::Start();
 
@@ -39,11 +39,11 @@ void CTank::Start()
 
     storage.Push(this);
 
-    SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(CTank, HandleMouseClick));
+    SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(Tank, HandleMouseClick));
 }
 
 
-void CTank::OnNodeSet(Node *node)
+void Tank::OnNodeSet(Node *node)
 {
     if (node)
     {
@@ -54,7 +54,7 @@ void CTank::OnNodeSet(Node *node)
 }
 
 
-void CTank::HandleMouseClick(StringHash, VariantMap &eventData)
+void Tank::HandleMouseClick(StringHash, VariantMap &eventData)
 {
     using namespace UnitMouseClick;
 
@@ -62,7 +62,7 @@ void CTank::HandleMouseClick(StringHash, VariantMap &eventData)
     {
         if (!eventData[P_CTRL_PRESSED].GetBool())
         {
-            for (CTank *tank : CTank::storage)
+            for (Tank *tank : Tank::storage)
             {
                 tank->tile->Disable();
             }
