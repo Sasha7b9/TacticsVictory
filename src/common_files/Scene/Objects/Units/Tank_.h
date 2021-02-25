@@ -40,12 +40,15 @@ public:
 
 private:
 
+    // Во время создания компонента после помещения его на ноду вызывается эта функция
     virtual void OnNodeSet(Node *node) override;
 
+    // Эта функция вызывается из NodeSet
     virtual void Start() override;
 
     virtual void FixedUpdate(float time) override;
 
+    // Хранилище всех созданных объектов типа "Tank"
     static Vector<Tank *> storage;
 
     void HandleMouseClick(StringHash, VariantMap &);
