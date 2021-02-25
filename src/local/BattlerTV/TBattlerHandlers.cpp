@@ -5,7 +5,7 @@
 #include "GUI/Windows/TConsole.h"
 #include "GUI/Menu/TMenu.h"
 #include "GUI/Menu/TMenuEvents.h"
-#include "Scene/TScene_.h"
+#include "Scene/Scene_.h"
 #include "Scene/Cameras/TCamera.h"
 
 

@@ -1,7 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "TBattle.h"
-#include "Scene/TScene_.h"
+#include "Scene/Scene_.h"
 
 
 void Battle::HandleUpdate(StringHash, VariantMap& /*eventData*/)

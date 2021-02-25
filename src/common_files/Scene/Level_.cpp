@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Core/TMath_.h"
-#include "Scene/TLevel_.h"
+#include "Scene/Level_.h"
 #include "Scene/Terrain/TSegmentTerrain_.h"
 #include "Utils/TGlobalFunctions.h"
 

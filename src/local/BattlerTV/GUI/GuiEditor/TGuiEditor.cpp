@@ -11,7 +11,7 @@
 #include "GUI/Panels/TPanelMain.h"
 #include "GUI/Panels/TPanelMap.h"
 #include "GUI/Windows/TConsole.h"
-#include "Scene/TLevel_.h"
+#include "Scene/Level_.h"
 #include "Scene/Cameras/TCamera.h"
 #include "Utils/TGlobalFunctions.h"
 #include "Utils/TSettings.h"

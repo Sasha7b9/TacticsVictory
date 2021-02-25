@@ -2,8 +2,8 @@
 #include "stdafx.h"
 #include "Core/TMath_.h"
 #include "Game/Logic/TSunEngine_.h"
-#include "Scene/TLevel_.h"
-#include "Scene/TScene_.h"
+#include "Scene/Level_.h"
+#include "Scene/Scene_.h"
 #ifdef CLIENT
 #include "Scene/SceneC.h"
 #endif

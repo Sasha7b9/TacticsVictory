@@ -3,7 +3,7 @@
 #include "Graphics/2D/TImage.h"
 #include "GUI/TCursor.h"
 #include "GUI/Panels/TPanelMap.h"
-#include "Scene/TLevel_.h"
+#include "Scene/Level_.h"
 #include "Scene/Cameras/TCamera.h"
 #include "Utils/TSettings.h"
 

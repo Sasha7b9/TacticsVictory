@@ -3,8 +3,8 @@
 #include "TBattle.h"
 #include "Game/Logic/TRotator_.h"
 #include "Game/Logic/TSunEngine_.h"
-#include "Scene/TLevel_.h"
-#include "Scene/TScene_.h"
+#include "Scene/Level_.h"
+#include "Scene/Scene_.h"
 #include "Utils/_TLog.h"
 #include "Utils/TSettings.h"
 
