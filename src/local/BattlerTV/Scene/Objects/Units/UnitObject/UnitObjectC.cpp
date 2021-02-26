@@ -5,7 +5,7 @@
 #include "Scene/Objects/Units/UnitObject/UnitObjectC.h"
 
 
-void UnitObjectSpecific::Create(Node *node)
+void UnitObjectSpecific::CreateSpecific(Node *node)
 {
     node->CreateComponent<UnitObjectSpecificC>();
 }
@@ -24,6 +24,11 @@ void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
                 if (t->GetNode() != node_)
                 {
                     t->GetNode()->GetComponent<UnitObjectSpecificC>()->tile->Disable();
+                }
+                else
+                {
+                    int i = 0;
+                    i++;
                 }
             }
         }

@@ -10,18 +10,20 @@ public:
 
     UnitObjectSpecific(Context *context) : Component(context) {}
 
-    static void Create(Node *);
+    static void CreateSpecific(Node *);
 };
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class UnitObject : public GameObject
 {
+public:
+
+    static Vector<UnitObject *> storage;
+
 protected:
 
     UnitObject(Context *);
 
     virtual void Start() override;
-
-    static Vector<UnitObject *> storage;
 };

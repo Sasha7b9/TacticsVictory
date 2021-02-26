@@ -11,7 +11,7 @@ public:
     TankSpecific(Context *context) : Component(context) {};
 
     // Создаёт на заданной ноде специфичный для данной среды (сервер/клиент) объект
-    static void Create(Node *);
+    static void CreateSpecific(Node *);
 };
 
 

@@ -14,5 +14,5 @@ public:
 
     SharedPtr<TileSelected> tile;
 
-    void HandleMouseClick(StringHash, VariantMap &);
+    virtual void HandleMouseClick(StringHash, VariantMap &);
 };
