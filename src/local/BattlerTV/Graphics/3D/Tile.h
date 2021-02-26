@@ -24,6 +24,8 @@ protected:
 
     virtual ~Tile();
 
+    Vector3 shiftPosition{ 0.0f, 0.0f, 0.f };
+
 private:
 
     virtual void OnNodeSet(Node *node) override;

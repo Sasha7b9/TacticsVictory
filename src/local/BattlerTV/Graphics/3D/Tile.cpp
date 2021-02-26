@@ -37,7 +37,10 @@ void Tile::Start()
 {
     float d = 0.0f;
 
-    node_->SetScale(100);
+    const float scale = 75.0f;
+
+    node_->SetScale(scale);
+    node_->SetPosition(shiftPosition * scale);
 
     const float vertexes[4 * (3 + 2)] =
     {

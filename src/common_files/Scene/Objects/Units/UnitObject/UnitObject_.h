@@ -10,7 +10,7 @@ public:
 
     UnitObjectSpecific(Context *context) : Component(context) {}
 
-    static void CreateSpecific(Node *);
+//    static void CreateSpecific(Node *);
 };
 
 
