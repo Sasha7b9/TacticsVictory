@@ -9,5 +9,7 @@ class UnitObjectSpecificPartC : public UnitObjectSpecificPart
 
 public:
 
+    virtual void Start(UnitObject *object) override;
+
 protected:
 };

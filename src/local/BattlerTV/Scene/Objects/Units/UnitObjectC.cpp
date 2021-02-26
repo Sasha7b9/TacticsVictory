@@ -2,3 +2,8 @@
 #include "stdafx.h"
 #include "Scene/Objects/Units/UnitObjectC.h"
 
+
+void UnitObjectSpecificPartC::Start(UnitObject *_object)
+{
+    UnitObjectSpecificPart::Start(_object);
+}
