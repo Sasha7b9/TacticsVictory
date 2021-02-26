@@ -5,7 +5,7 @@
 #include "Scene/Objects/Units/UnitsEvents_.h"
 
 
-Tank::Tank(Context *context) : UnitObject(context)
+Tank::Tank(Context *context) : UnitObject()
 {
     specific = new TankSpecificPartC();
 }

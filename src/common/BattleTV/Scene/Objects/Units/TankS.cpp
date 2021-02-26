@@ -3,7 +3,7 @@
 #include "Scene/Objects/Units/Tank_.h"
 
 
-Tank::Tank(Context *context) : UnitObject(context)
+Tank::Tank(Context *context) : UnitObject()
 {
 
 }
