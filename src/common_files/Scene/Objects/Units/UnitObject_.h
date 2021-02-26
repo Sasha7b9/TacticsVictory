@@ -15,11 +15,7 @@ public:
 
     UnitObjectSpecificPart() : Object(TheContext) {}
 
-    virtual void Start(UnitObject *_object) { object = _object; };
-
-protected:
-
-    UnitObject *object = nullptr;
+    static void Create(Node *);
 };
 
 

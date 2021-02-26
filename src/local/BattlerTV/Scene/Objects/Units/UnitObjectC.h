@@ -7,9 +7,5 @@ class UnitObjectSpecificPartC : public UnitObjectSpecificPart
 {
     URHO3D_OBJECT(UnitObjectSpecificPartC, UnitObjectSpecificPart);
 
-public:
-
-    virtual void Start(UnitObject *object) override;
-
 protected:
 };
