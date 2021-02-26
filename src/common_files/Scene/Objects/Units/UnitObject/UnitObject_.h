@@ -6,8 +6,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class UnitObjectSpecificPart : public Component
 {
-    URHO3D_OBJECT(UnitObjectSpecificPart, Component);
-
 public:
 
     UnitObjectSpecificPart(Context *context) : Component(context) {}
@@ -19,8 +17,6 @@ public:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class UnitObject : public GameObject
 {
-    URHO3D_OBJECT(UnitObject, GameObject);
-
 protected:
 
     UnitObject(Context *);

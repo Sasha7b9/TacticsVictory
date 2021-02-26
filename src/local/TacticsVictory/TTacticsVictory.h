@@ -7,8 +7,6 @@ class TScene;
 
 class TacticsVictory : public Application
 {
-    URHO3D_OBJECT(TacticsVictory, Application);
-
 public:
     TacticsVictory(Context* context);
 

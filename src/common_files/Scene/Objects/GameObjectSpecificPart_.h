@@ -7,8 +7,6 @@
 
 class GameObjectSpecificPart : public Object
 {
-    URHO3D_OBJECT(GameObjectSpecificPart, Object);
-
 protected:
 
     GameObjectSpecificPart();
