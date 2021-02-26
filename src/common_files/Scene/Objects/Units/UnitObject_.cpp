@@ -14,5 +14,9 @@ UnitObject::UnitObject(Context *context) : GameObject(context)
 
 void UnitObject::Start()
 {
+    GameObject::Start();
+
     node_->SetVar(VAR_NODE_IS_UNIT, true);
+
+    UnitObjectSpecificPart::Create(node_);
 }
