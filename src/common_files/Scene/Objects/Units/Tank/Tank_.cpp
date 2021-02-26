@@ -14,9 +14,9 @@ Tank::Tank(Context *context) : UnitObject(context)
 }
 
 
-void Tank::FixedUpdate(float /*time*/)
+void Tank::FixedUpdate(float timeStep)
 {
-
+    engine->Update(timeStep);
 }
 
 
@@ -48,10 +48,4 @@ void Tank::OnNodeSet(Node *node)
     }
 
     UnitObject::OnNodeSet(node ? node_ : node);
-}
-
-
-void Tank::Update(float timeStep)
-{
-    engine->Update(timeStep);
 }

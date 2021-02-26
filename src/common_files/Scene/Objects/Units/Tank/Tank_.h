@@ -31,8 +31,6 @@ public:
     // Хранилище всех созданных объектов типа "Tank"
     static Vector<Tank *> storage;
 
-    virtual void Update(float timeStep) override;
-
 private:
 
     // Во время создания компонента после помещения его на ноду вызывается эта функция
