@@ -20,9 +20,11 @@ public:
 
     bool IsEnabled() const;
 
-private:
+protected:
 
-    ~Tile();
+    virtual ~Tile();
+
+private:
 
     virtual void OnNodeSet(Node *node) override;
 

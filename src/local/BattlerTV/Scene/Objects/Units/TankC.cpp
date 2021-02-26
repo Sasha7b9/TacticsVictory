@@ -38,7 +38,7 @@ void TankSpecificPartC::Start(Tank *_tank)
 {
     TankSpecificPart::Start(_tank);
 
-    tile = tank->node_->CreateComponent<Tile>();
+    tile = tank->node_->CreateComponent<TileSelected>();
 
     SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(TankSpecificPartC, HandleMouseClick));
 }
