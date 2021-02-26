@@ -9,7 +9,7 @@ public:
 
     TankSpecificPartC(Context *context) : TankSpecificPart(context) {}
 
-    virtual void Start(Tank *tank) override;
+    virtual void OnNodeSet(Node *node) override;
 
     SharedPtr<TileSelected> tile;
 

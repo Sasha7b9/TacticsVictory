@@ -7,20 +7,15 @@ class Tank;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class TankSpecificPart : public Object
+class TankSpecificPart : public Component
 {
-    URHO3D_OBJECT(TankSpecificPart, Object);
+    URHO3D_OBJECT(TankSpecificPart, Component);
 
 public:
 
-    TankSpecificPart(Context *) : Object(TheContext) {};
+    TankSpecificPart(Context *context) : Component(context) {};
 
-    // Функция вызывается из функции Tank::Start() для выполнения специфичных действий
-    virtual void Start(Tank *_tank) { tank = _tank; };
-
-protected:
-
-    Tank *tank = nullptr;
+    virtual void OnNodeSet(Node *node) override;
 };
 
 

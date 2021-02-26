@@ -13,11 +13,18 @@ public:
 
 protected:
 
+    struct Type { enum E {
+        Client,
+        Server
+    }; };
+
     GameObject(Context *context);
 
     void LoadFromJSON(const String &file);
 
     void Normalize(float k = 1.0f);
+
+    static const Type::E type;
 
 private:
 

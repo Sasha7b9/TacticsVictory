@@ -21,8 +21,6 @@ void Tank::Start()
 
     Normalize();
 
-    specific->Start(this);
-
     storage.Push(this);
 }
 
@@ -35,4 +33,10 @@ void Tank::OnNodeSet(Node *node)
     }
 
     UnitObject::OnNodeSet(node ? node_ : node);
+}
+
+
+void TankSpecificPart::OnNodeSet(Node *node)
+{
+    Component::OnNodeSet(node);
 }
