@@ -7,6 +7,12 @@
 Vector<Tank *> Tank::storage;
 
 
+Tank::Tank(Context *context) : UnitObject(context)
+{
+
+}
+
+
 void Tank::FixedUpdate(float /*time*/)
 {
 

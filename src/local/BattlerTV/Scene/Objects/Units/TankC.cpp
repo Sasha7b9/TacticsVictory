@@ -2,14 +2,7 @@
 #include "stdafx.h"
 #include "Scene/Objects/Units/Tank_.h"
 #include "Scene/Objects/Units/TankC.h"
-#include "Scene/Objects/Units/UnitsEvents_.h"
 #include "Scene/Objects/Units/UnitObjectC.h"
-
-
-Tank::Tank(Context *context) : UnitObject(context)
-{
-
-}
 
 
 void Tank::RegisterObject()
@@ -17,41 +10,6 @@ void Tank::RegisterObject()
     TheContext->RegisterFactory<Tank>();
     TheContext->RegisterFactory<TankSpecificPartC>();
     TheContext->RegisterFactory<UnitObjectSpecificPartC>();
-}
-
-
-void TankSpecificPartC::HandleMouseClick(StringHash, VariantMap &eventData)
-{
-    using namespace UnitMouseClick;
-
-    if (eventData[P_NODE].GetPtr() == node_)
-    {
-        if (!eventData[P_CTRL_PRESSED].GetBool())
-        {
-            for (Tank *t : Tank::storage)
-            {
-                if (t->node_ != node_)
-                {
-                    t->node_->GetComponent<TankSpecificPartC>()->tile->Disable();
-                }
-            }
-        }
-
-        tile->IsEnabled() ? tile->Disable() : tile->Enable();
-    }
-}
-
-
-void TankSpecificPartC::OnNodeSet(Node *node)
-{
-    if (node)
-    {
-        TankSpecificPart::OnNodeSet(node);
-
-        tile = node->CreateComponent<TileSelected>();
-
-        SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(TankSpecificPartC, HandleMouseClick));
-    }
 }
 
 

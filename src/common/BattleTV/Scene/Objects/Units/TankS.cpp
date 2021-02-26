@@ -5,12 +5,6 @@
 #include "Scene/Objects/Units/UnitObjectS.h"
 
 
-Tank::Tank(Context *context) : UnitObject(context)
-{
-
-}
-
-
 void TankSpecificPart::Create(Node *node)
 {
     node->CreateComponent<TankSpecificPartS>();

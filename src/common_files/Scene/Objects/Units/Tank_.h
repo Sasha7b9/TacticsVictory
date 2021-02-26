@@ -20,8 +20,6 @@ public:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Tank : public UnitObject
 {
-friend class TankSpecificPartC;
-
     URHO3D_OBJECT(Tank, UnitObject);
 
 public:
@@ -29,6 +27,9 @@ public:
     Tank(Context *);
 
     static void RegisterObject();
+
+    // Хранилище всех созданных объектов типа "Tank"
+    static Vector<Tank *> storage;
 
 private:
 
@@ -39,7 +40,4 @@ private:
     virtual void Start() override;
 
     virtual void FixedUpdate(float time) override;
-
-    // Хранилище всех созданных объектов типа "Tank"
-    static Vector<Tank *> storage;
 };
