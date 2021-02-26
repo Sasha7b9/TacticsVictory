@@ -36,9 +36,7 @@ void Tank::Start()
 
     TankSpecific::CreateSpecific(node_);
 
-    engine = node_->CreateComponent<EngineGround>();
-
-//    EngineGround::CreateEngine(node_);
+    engine = EngineGround::CreateEngine(node_);
 }
 
 

@@ -45,7 +45,7 @@ public:
 
     void OnNodeSet(Node *node) override;
 
-    static void CreateEngine(Node *node);
+    static EngineT *CreateEngine(Node *node);
     
 private:
 };
