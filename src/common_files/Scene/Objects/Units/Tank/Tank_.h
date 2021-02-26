@@ -4,11 +4,11 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class TankSpecificPart : public Component
+class TankSpecific : public Component
 {
 public:
 
-    TankSpecificPart(Context *context) : Component(context) {};
+    TankSpecific(Context *context) : Component(context) {};
 
     // Создаёт на заданной ноде специфичный для данной среды (сервер/клиент) объект
     static void Create(Node *);

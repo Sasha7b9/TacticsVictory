@@ -8,12 +8,12 @@
 void Tank::RegisterObject()
 {
     TheContext->RegisterFactory<Tank>();
-    TheContext->RegisterFactory<TankSpecificPartC>();
+    TheContext->RegisterFactory<TankSpecificC>();
     TheContext->RegisterFactory<UnitObjectSpecificC>();
 }
 
 
-void TankSpecificPart::Create(Node *node)
+void TankSpecific::Create(Node *node)
 {
-    node->CreateComponent<TankSpecificPartC>();
+    node->CreateComponent<TankSpecificC>();
 }

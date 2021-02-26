@@ -31,7 +31,7 @@ void Tank::Start()
 
     storage.Push(this);
 
-    TankSpecificPart::Create(node_);
+    TankSpecific::Create(node_);
 }
 
 

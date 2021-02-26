@@ -2,9 +2,9 @@
 #pragma once
 
 
-class TankSpecificPartS : public TankSpecificPart
+class TankSpecificS : public TankSpecific
 {
 public:
 
-    TankSpecificPartS(Context *context) : TankSpecificPart(context) {}
+    TankSpecificS(Context *context) : TankSpecific(context) {}
 };

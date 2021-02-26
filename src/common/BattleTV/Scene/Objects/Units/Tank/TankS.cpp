@@ -5,7 +5,7 @@
 #include "Scene/Objects/Units/UnitObject/UnitObjectS.h"
 
 
-void TankSpecificPart::Create(Node *node)
+void TankSpecific::Create(Node *node)
 {
-    node->CreateComponent<TankSpecificPartS>();
+    node->CreateComponent<TankSpecificS>();
 }
