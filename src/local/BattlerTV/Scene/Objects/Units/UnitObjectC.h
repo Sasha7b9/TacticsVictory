@@ -7,5 +7,7 @@ class UnitObjectSpecificPartC : public UnitObjectSpecificPart
 {
     URHO3D_OBJECT(UnitObjectSpecificPartC, UnitObjectSpecificPart);
 
-protected:
+public:
+
+    UnitObjectSpecificPartC(Context *context) : UnitObjectSpecificPart(context) {}
 };

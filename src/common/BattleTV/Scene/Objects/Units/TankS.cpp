@@ -5,7 +5,7 @@
 #include "Scene/Objects/Units/UnitObjectS.h"
 
 
-Tank::Tank(Context *) : UnitObject(new UnitObjectSpecificPartS())
+Tank::Tank(Context *context) : UnitObject(context)
 {
 
 }

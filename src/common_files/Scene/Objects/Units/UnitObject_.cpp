@@ -6,8 +6,7 @@
 Vector<UnitObject *> UnitObject::storage;
 
 
-UnitObject::UnitObject(UnitObjectSpecificPart *specific) : GameObject(TheContext),
-    specificUnity(specific)
+UnitObject::UnitObject(Context *context) : GameObject(context)
 {
 
 }

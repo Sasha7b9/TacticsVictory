@@ -4,13 +4,13 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class UnitObjectSpecificPart : public Object
+class UnitObjectSpecificPart : public Component
 {
-    URHO3D_OBJECT(UnitObjectSpecificPart, Object);
+    URHO3D_OBJECT(UnitObjectSpecificPart, Component);
 
 public:
 
-    UnitObjectSpecificPart() : Object(TheContext) {}
+    UnitObjectSpecificPart(Context *context) : Component(context) {}
 
     static void Create(Node *);
 };
@@ -23,11 +23,9 @@ class UnitObject : public GameObject
 
 protected:
 
-    UnitObject(UnitObjectSpecificPart *specific);
+    UnitObject(Context *);
 
     virtual void Start() override;
 
     static Vector<UnitObject *> storage;
-
-    SharedPtr<UnitObjectSpecificPart> specificUnity;
 };

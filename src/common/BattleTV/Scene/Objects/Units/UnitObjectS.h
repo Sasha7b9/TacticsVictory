@@ -9,6 +9,8 @@ class UnitObjectSpecificPartS : public UnitObjectSpecificPart
 
 public:
 
+    UnitObjectSpecificPartS(Context *context) : UnitObjectSpecificPart(context) {}
+
 protected:
 };
 
