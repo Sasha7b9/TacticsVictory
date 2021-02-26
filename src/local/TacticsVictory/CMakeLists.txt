@@ -66,7 +66,7 @@ file(GLOB SCENE_OBJECTS_AMMO                    ../../common_files/Scene/Objects
 file(GLOB SCENE_OBJECTS_UNITS                   ../../common_files/Scene/Objects/Units/*.*
                                                       ../BattlerTV/Scene/Objects/Units/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_ACCESSORIES       ../../common_files/Scene/Objects/Units/Accessories/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_AIRPLANE          ../../common_files/Scene/Objects/Units/Airplane/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_AIRPLANE          ../../common_files/Scene/Objects/Units/AirPlane/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_TANK              ../../common_files/Scene/Objects/Units/Tank/*.*
                                                       ../BattlerTV/Scene/Objects/Units/Tank/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_UNITOBJECT        ../../common_files/Scene/Objects/Units/UnitObject/*.*
@@ -101,7 +101,7 @@ source_group(Scene\\Cameras                     FILES ${SCENE_CAMERAS})
 source_group(Scene\\Objects                     FILES ${SCENE_OBJECTS})
 source_group(Scene\\Objects\\Ammo               FILES ${SCENE_OBJECTS_AMMO})
 source_group(Scene\\Objects\\Units              FILES ${SCENE_OBJECTS_UNITS})
-source_group(Scene\\Objects\\Units\\Ariplane    FILES ${SCENE_OBJECTS_UNITS_AIRPLANE})
+source_group(Scene\\Objects\\Units\\AirPlane    FILES ${SCENE_OBJECTS_UNITS_AIRPLANE})
 source_group(Scene\\Objects\\Units\\Accessories FILES ${SCENE_OBJECTS_UNITS_ACCESSORIES})
 source_group(Scene\\Objects\\Units\\Tank        FILES ${SCENE_OBJECTS_UNITS_TANK})
 source_group(Scene\\Objects\\Units\\UnitObject  FILES ${SCENE_OBJECTS_UNITS_UNITOBJECT})
