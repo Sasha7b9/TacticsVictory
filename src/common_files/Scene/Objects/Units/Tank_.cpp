@@ -17,6 +17,8 @@ void Tank::Start()
 {
     UnitObject::Start();
 
+    node_->SetVar(VAR_NODE_IS_FLYING, false);
+
     LoadFromJSON(JSON_MODEL_TANK);
 
     Normalize();
@@ -35,10 +37,4 @@ void Tank::OnNodeSet(Node *node)
     }
 
     UnitObject::OnNodeSet(node ? node_ : node);
-}
-
-
-void TankSpecificPart::OnNodeSet(Node *node)
-{
-    Component::OnNodeSet(node);
 }

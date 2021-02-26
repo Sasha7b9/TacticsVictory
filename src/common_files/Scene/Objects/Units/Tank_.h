@@ -15,8 +15,6 @@ public:
 
     TankSpecificPart(Context *context) : Component(context) {};
 
-    virtual void OnNodeSet(Node *node) override;
-
     // Создаёт на заданной ноде специфичный для данной среды (сервер/клиент) объект
     static void Create(Node *);
 };
