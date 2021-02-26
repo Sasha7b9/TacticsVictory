@@ -6,9 +6,9 @@
 #include "Scene/Objects/Units/UnitObjectC.h"
 
 
-Tank::Tank(Context *context) : UnitObject(new UnitObjectSpecificPartC())
+Tank::Tank(Context *) : UnitObject(new UnitObjectSpecificPartC())
 {
-    specific = new TankSpecificPartC(context);
+
 }
 
 
@@ -31,7 +31,7 @@ void TankSpecificPartC::HandleMouseClick(StringHash, VariantMap &eventData)
             {
                 if (t->node_ != node_)
                 {
-                    TankSpecificPartC *sp = (TankSpecificPartC *)(t->specific.Get());
+                    TankSpecificPartC *sp = node_->GetComponent<TankSpecificPartC>();
 
                     sp->tile->Disable();
                 }
@@ -53,4 +53,10 @@ void TankSpecificPartC::OnNodeSet(Node *node)
 
         SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(TankSpecificPartC, HandleMouseClick));
     }
+}
+
+
+void TankSpecificPart::Create(Node *node)
+{
+    node->CreateComponent<TankSpecificPartC>();
 }

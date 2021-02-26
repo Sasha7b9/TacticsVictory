@@ -40,5 +40,5 @@ private:
 
     Vector3 GetPosition() const;
 
-    SharedPtr<GameObjectSpecificPart> specific;
+    SharedPtr<GameObjectSpecificPart> specificObject;
 };

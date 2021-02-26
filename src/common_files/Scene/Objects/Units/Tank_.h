@@ -16,6 +16,9 @@ public:
     TankSpecificPart(Context *context) : Component(context) {};
 
     virtual void OnNodeSet(Node *node) override;
+
+    // Создаёт на заданной ноде специфичный для данной среды (сервер/клиент) объект
+    static void Create(Node *);
 };
 
 
@@ -44,6 +47,4 @@ private:
 
     // Хранилище всех созданных объектов типа "Tank"
     static Vector<Tank *> storage;
-
-    SharedPtr<TankSpecificPart> specific;
 };
