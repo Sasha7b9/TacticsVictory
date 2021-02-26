@@ -13,3 +13,18 @@ void EngineGround::Update(float /*timeStep*/)
 {
 
 }
+
+
+void EngineGround::OnNodeSet(Node *node)
+{
+    if (node)
+    {
+
+    }
+}
+
+
+void EngineGround::CreateEngine(Node *node)
+{
+    node->CreateComponent<EngineGround>();
+}

@@ -27,7 +27,7 @@ public:
     // Хранилище всех созданных объектов типа "Tank"
     static Vector<Tank *> storage;
 
-    virtual void Update(float timeStep) override;
+//    virtual void Update(float timeStep) override;
 
 private:
 

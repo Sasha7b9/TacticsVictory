@@ -35,8 +35,11 @@ public:
 
     EngineGround(Context *context) : EngineT(context) {}
 
-
     virtual void Update(float timeStep) override;
+
+    void OnNodeSet(Node *node) override;
+
+    static void CreateEngine(Node *node);
     
 private:
 };
