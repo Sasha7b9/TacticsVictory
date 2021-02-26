@@ -19,10 +19,12 @@ public:
 
     EngineT(Context *context) : Component(context) {}
 
-    virtual void Update(float timeStep, Command::E command = Command::None) { UNUSED(timeStep); UNUSED(command); };
+    virtual void Update(float timeStep) { UNUSED(timeStep); };
+
+    void GiveCommand(Command::E command);
 
     // Возвращет true, если мотор заглушен
-    bool IsStopped();
+    bool IsStopped() const;
 
 private:
 };
@@ -37,7 +39,7 @@ public:
 
     EngineAir(Context *context) : EngineT(context) {}
 
-    virtual void Update(float timeStep, Command::E command) override;
+    virtual void Update(float timeStep) override;
 
 private:
 };
@@ -52,7 +54,7 @@ public:
 
     EngineGround(Context *context) : EngineT(context) {}
 
-    virtual void Update(float timeStep, Command::E command) override;
+    virtual void Update(float timeStep) override;
 
     void OnNodeSet(Node *node) override;
 

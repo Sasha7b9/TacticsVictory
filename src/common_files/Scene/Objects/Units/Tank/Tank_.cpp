@@ -17,6 +17,11 @@ Tank::Tank(Context *context) : UnitObject(context)
 void Tank::FixedUpdate(float timeStep)
 {
     engine->Update(timeStep);
+
+    if (engine->IsStopped())
+    {
+        engine->GiveCommand(EngineT::Command::MoveToNorth);
+    }
 }
 
 

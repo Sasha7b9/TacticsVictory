@@ -3,13 +3,25 @@
 #include "Scene/Objects/Units/Accessories/Engine_.h"
 
 
-void EngineAir::Update(float /*timeStep*/, Command::E /*command*/)
+void EngineT::GiveCommand(Command::E /*command*/)
 {
 
 }
 
 
-void EngineGround::Update(float /*timeStep*/, Command::E /*command*/)
+bool EngineT::IsStopped() const
+{
+    return true;
+}
+
+
+void EngineAir::Update(float /*timeStep*/)
+{
+
+}
+
+
+void EngineGround::Update(float /*timeStep*/)
 {
 
 }
