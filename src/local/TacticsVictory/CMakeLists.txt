@@ -36,69 +36,75 @@ else()
     SET(LDFLAGS "${LDFLAGS} -ldl")
 endif()
 
-file(GLOB SRC                        ../../common_files/*.*
-                                                        *.h *.cpp)
-file(GLOB AUDIO                            ../BattlerTV/Audio/*.*)
-file(GLOB CORE                       ../../common_files/Core/*.*)
-file(GLOB EDITOR                           ../BattlerTV/Editor/*.*)
-file(GLOB GAME                             ../BattlerTV/Game/*.*)
-file(GLOB GAME_LOGIC                 ../../common_files/Game/Logic/*.*)
-file(GLOB GAME_PATH                  ../../common_files/Game/Path/*.*
-                                           ../BattlerTV/Game/Path/*.*)
-file(GLOB GRAPHICS_2D                      ../BattlerTV/Graphics/2D/*.*)
-file(GLOB GRAPHICS_3D                      ../BattlerTV/Graphics/3D/*.*)
-file(GLOB GUI                              ../BattlerTV/GUI/*.*)
-file(GLOB GUI_CONTROLS               ../../common_files/GUI/Controls/*.*)
-file(GLOB GUI_GUIEDITOR                    ../BattlerTV/GUI/GuiEditor/*.*)
-file(GLOB GUI_GAME                         ../BattlerTV/GUI/GuiGame/*.*)
-file(GLOB GUI_LOGIC                        ../BattlerTV/GUI/Logic/*.*)
-file(GLOB GUI_MENU                         ../BattlerTV/GUI/Menu/*.*)
-file(GLOB GUI_PANELS                       ../BattlerTV/GUI/Panels/*.*)
-file(GLOB GUI_WINDOWS                      ../BattlerTV/GUI/Windows/*.*)
-file(GLOB INPUT                            ../BattlerTV/Input/*.*)
-file(GLOB SCENE                      ../../common_files/Scene/*.*
-                                           ../BattlerTV/Scene/*.*)
-file(GLOB SCENE_CAMERAS                    ../BattlerTV/Scene/Cameras/*.*)
-file(GLOB SCENE_OBJECTS              ../../common_files/Scene/Objects/*.*
-                                           ../BattlerTV/Scene/Objects/*.*)
-file(GLOB SCENE_OBJECTS_AMMO         ../../common_files/Scene/Objects/Ammo/*.*
-                                           ../BattlerTV/Scene/Objects/Ammo/*.*)
-file(GLOB SCENE_OBJECTS_UNITS        ../../common_files/Scene/Objects/Units/*.*
-                                           ../BattlerTV/Scene/Objects/Units/*.*)
-file(GLOB SCENE_OBJECTS_WEAPONS      ../../common_files/Scene/Objects/Weapons/*.*
-                                           ../BattlerTV/Scene/Objects/Weapons/*.*)
-file(GLOB SCENE_PRIMITIVES           ../../common_files/Scene/Primitives/*.*)
-file(GLOB SCENE_TERRAIN              ../../common_files/Scene/Terrain/*.*)
-file(GLOB UTILS                            ../BattlerTV/Utils/*.*
-                                     ../../common_files/Utils/*.*)
+file(GLOB SRC                                  ../../common_files/*.*
+                                                                  *.h *.cpp)
+file(GLOB AUDIO                                      ../BattlerTV/Audio/*.*)
+file(GLOB CORE                                 ../../common_files/Core/*.*)
+file(GLOB EDITOR                                     ../BattlerTV/Editor/*.*)
+file(GLOB GAME                                       ../BattlerTV/Game/*.*)
+file(GLOB GAME_LOGIC                           ../../common_files/Game/Logic/*.*)
+file(GLOB GAME_PATH                            ../../common_files/Game/Path/*.*
+                                                     ../BattlerTV/Game/Path/*.*)
+file(GLOB GRAPHICS_2D                                ../BattlerTV/Graphics/2D/*.*)
+file(GLOB GRAPHICS_3D                                ../BattlerTV/Graphics/3D/*.*)
+file(GLOB GUI                                        ../BattlerTV/GUI/*.*)
+file(GLOB GUI_CONTROLS                         ../../common_files/GUI/Controls/*.*)
+file(GLOB GUI_GUIEDITOR                              ../BattlerTV/GUI/GuiEditor/*.*)
+file(GLOB GUI_GAME                                   ../BattlerTV/GUI/GuiGame/*.*)
+file(GLOB GUI_LOGIC                                  ../BattlerTV/GUI/Logic/*.*)
+file(GLOB GUI_MENU                                   ../BattlerTV/GUI/Menu/*.*)
+file(GLOB GUI_PANELS                                 ../BattlerTV/GUI/Panels/*.*)
+file(GLOB GUI_WINDOWS                                ../BattlerTV/GUI/Windows/*.*)
+file(GLOB INPUT                                      ../BattlerTV/Input/*.*)
+file(GLOB SCENE                                ../../common_files/Scene/*.*
+                                                     ../BattlerTV/Scene/*.*)
+file(GLOB SCENE_CAMERAS                              ../BattlerTV/Scene/Cameras/*.*)
+file(GLOB SCENE_OBJECTS                        ../../common_files/Scene/Objects/*.*
+                                                     ../BattlerTV/Scene/Objects/*.*)
+file(GLOB SCENE_OBJECTS_AMMO                   ../../common_files/Scene/Objects/Ammo/*.*
+                                                     ../BattlerTV/Scene/Objects/Ammo/*.*)
+file(GLOB SCENE_OBJECTS_UNITS                  ../../common_files/Scene/Objects/Units/*.*
+                                                     ../BattlerTV/Scene/Objects/Units/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_UNITOBJECT       ../../common_files/Scene/Objects/Units/UnitObject/*.*
+                                                     ../BattlerTV/Scene/Objects/Units/UnitObject/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_TANK             ../../common_files/Scene/Objects/Units/Tank/*.*
+                                                     ../BattlerTV/Scene/Objects/Units/Tank/*.*)
+file(GLOB SCENE_OBJECTS_WEAPONS                ../../common_files/Scene/Objects/Weapons/*.*
+                                                     ../BattlerTV/Scene/Objects/Weapons/*.*)
+file(GLOB SCENE_PRIMITIVES                     ../../common_files/Scene/Primitives/*.*)
+file(GLOB SCENE_TERRAIN                        ../../common_files/Scene/Terrain/*.*)
+file(GLOB UTILS                                      ../BattlerTV/Utils/*.*
+                                               ../../common_files/Utils/*.*)
 
-source_group(src                     FILES ${SRC})
-source_group(Audio                   FILES ${AUDIO})
-source_group(Core                    FILES ${CORE})
-source_group(Editor                  FILES ${EDITOR})
-source_group(Game                    FILES ${GAME})
-source_group(Game\\Logic             FILES ${GAME_LOGIC})
-source_group(Game\\Path              FILES ${GAME_PATH})
-source_group(Graphics\\2D            FILES ${GRAPHICS_2D})
-source_group(Graphics\\3D            FILES ${GRAPHICS_3D})
-source_group(GUI                     FILES ${GUI})
-source_group(GUI\\Controls           FILES ${GUI_CONTROLS})
-source_group(GUI\\GuiEditor          FILES ${GUI_GUIEDITOR})
-source_group(GUI\\Game               FILES ${GUI_GAME})
-source_group(GUI\\Logic              FILES ${GUI_LOGIC})
-source_group(GUI\\Menu               FILES ${GUI_MENU})
-source_group(GUI\\Panels             FILES ${GUI_PANELS})
-source_group(GUI\\Windows            FILES ${GUI_WINDOWS})
-source_group(Input                   FILES ${INPUT})
-source_group(Scene                   FILES ${SCENE})
-source_group(Scene\\Cameras          FILES ${SCENE_CAMERAS})
-source_group(Scene\\Objects          FILES ${SCENE_OBJECTS})
-source_group(Scene\\Objects\\Ammo    FILES ${SCENE_OBJECTS_AMMO})
-source_group(Scene\\Objects\\Units   FILES ${SCENE_OBJECTS_UNITS})
-source_group(Scene\\Objects\\Weapons FILES ${SCENE_OBJECTS_WEAPONS})
-source_group(Scene\\Primitives       FILES ${SCENE_PRIMITIVES})
-source_group(Scene\\Terrain          FILES ${SCENE_TERRAIN})
-source_group(Utils                   FILES ${UTILS})
+source_group(src                               FILES ${SRC})
+source_group(Audio                             FILES ${AUDIO})
+source_group(Core                              FILES ${CORE})
+source_group(Editor                            FILES ${EDITOR})
+source_group(Game                              FILES ${GAME})
+source_group(Game\\Logic                       FILES ${GAME_LOGIC})
+source_group(Game\\Path                        FILES ${GAME_PATH})
+source_group(Graphics\\2D                      FILES ${GRAPHICS_2D})
+source_group(Graphics\\3D                      FILES ${GRAPHICS_3D})
+source_group(GUI                               FILES ${GUI})
+source_group(GUI\\Controls                     FILES ${GUI_CONTROLS})
+source_group(GUI\\GuiEditor                    FILES ${GUI_GUIEDITOR})
+source_group(GUI\\Game                         FILES ${GUI_GAME})
+source_group(GUI\\Logic                        FILES ${GUI_LOGIC})
+source_group(GUI\\Menu                         FILES ${GUI_MENU})
+source_group(GUI\\Panels                       FILES ${GUI_PANELS})
+source_group(GUI\\Windows                      FILES ${GUI_WINDOWS})
+source_group(Input                             FILES ${INPUT})
+source_group(Scene                             FILES ${SCENE})
+source_group(Scene\\Cameras                    FILES ${SCENE_CAMERAS})
+source_group(Scene\\Objects                    FILES ${SCENE_OBJECTS})
+source_group(Scene\\Objects\\Ammo              FILES ${SCENE_OBJECTS_AMMO})
+source_group(Scene\\Objects\\Units             FILES ${SCENE_OBJECTS_UNITS})
+source_group(Scene\\Objects\\Units\\Tank       FILES ${SCENE_OBJECTS_UNITS_TANK})
+source_group(Scene\\Objects\\Units\\UnitObject FILES ${SCENE_OBJECTS_UNITS_UNITOBJECT})
+source_group(Scene\\Objects\\Weapons           FILES ${SCENE_OBJECTS_WEAPONS})
+source_group(Scene\\Primitives                 FILES ${SCENE_PRIMITIVES})
+source_group(Scene\\Terrain                    FILES ${SCENE_TERRAIN})
+source_group(Utils                             FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH}
     ${GRAPHICS_2D} ${GRAPHICS_3D}
@@ -107,7 +113,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME
     ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO}
     ${SCENE_TERRAIN}
-    ${SCENE_OBJECTS_UNITS}
+    ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_TANK} ${SCENE_OBJECTS_UNITS_UNITOBJECT}
     ${SCENE_OBJECTS_WEAPONS}
     ${SCENE_PRIMITIVES} ${UTILS})
 
