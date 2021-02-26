@@ -1,8 +1,8 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "TBattle.h"
-#include "Game/Logic/TRotator_.h"
-#include "Game/Logic/TSunEngine_.h"
+#include "Game/Logic/Rotator_.h"
+#include "Game/Logic/SunEngine_.h"
 #include "Scene/Level_.h"
 #include "Scene/Scene_.h"
 #include "Utils/_TLog.h"

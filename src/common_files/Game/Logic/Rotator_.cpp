@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Game/Logic/TRotator_.h"
+#include "Game/Logic/Rotator_.h"
 
 
 Rotator::Rotator(Context* context) :

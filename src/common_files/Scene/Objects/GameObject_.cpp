@@ -1,6 +1,6 @@
 // 2021/02/18 22:31:17 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Core/TMath_.h"
+#include "Core/Math_.h"
 #include "Scene/Objects/GameObject_.h"
 #include "Scene/Objects/Components/PhysicsComponent.h"
 

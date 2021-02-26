@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Core/TMath_.h"
+#include "Core/Math_.h"
 
 
 TPlane TPlane::ZERO = TPlane(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);

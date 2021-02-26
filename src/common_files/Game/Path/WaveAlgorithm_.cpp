@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Game/Path/TWaveAlgorithm_.h"
+#include "Game/Path/WaveAlgorithm_.h"
 
 
 #define TERRAIN_HEIGHT_EQUAL(x,y) (fabs(TheTerrain->GetHeight(x, y) - heightStart) < M_EPSILON)
