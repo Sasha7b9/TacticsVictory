@@ -13,7 +13,7 @@ class TankSpecificPart : public Object
 
 public:
 
-    TankSpecificPart() : Object(TheContext) {};
+    TankSpecificPart(Context *) : Object(TheContext) {};
 
     // Функция вызывается из функции Tank::Start() для выполнения специфичных действий
     virtual void Start(Tank *_tank) { tank = _tank; };
@@ -33,7 +33,7 @@ friend class TankSpecificPartC;
 
 public:
 
-    Tank(Context *context);
+    Tank(Context *);
 
     static void RegisterObject();
 

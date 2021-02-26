@@ -6,9 +6,16 @@
 #include "Scene/Objects/Units/UnitObjectC.h"
 
 
-Tank::Tank(Context *) : UnitObject(new UnitObjectSpecificPartC())
+Tank::Tank(Context *context) : UnitObject(new UnitObjectSpecificPartC())
 {
-    specific = new TankSpecificPartC();
+    specific = new TankSpecificPartC(context);
+}
+
+
+void Tank::RegisterObject()
+{
+    TheContext->RegisterFactory<Tank>();
+    TheContext->RegisterFactory<TankSpecificPartC>();
 }
 
 

@@ -7,12 +7,6 @@
 Vector<Tank *> Tank::storage;
 
 
-void Tank::RegisterObject()
-{
-    TheContext->RegisterFactory<Tank>();
-}
-
-
 void Tank::FixedUpdate(float /*time*/)
 {
 

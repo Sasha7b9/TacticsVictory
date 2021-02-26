@@ -7,6 +7,8 @@ class TankSpecificPartC : public TankSpecificPart
 {
 public:
 
+    TankSpecificPartC(Context *context) : TankSpecificPart(context) {}
+
     virtual void Start(Tank *tank) override;
 
     SharedPtr<TileSelected> tile;
