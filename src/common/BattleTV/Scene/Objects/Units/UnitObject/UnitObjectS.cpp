@@ -3,7 +3,7 @@
 #include "Scene/Objects/Units/UnitObject/UnitObjectS.h"
 
 
-void UnitObjectSpecificPart::Create(Node *node)
+void UnitObjectSpecific::Create(Node *node)
 {
-    node->CreateComponent<UnitObjectSpecificPartS>();
+    node->CreateComponent<UnitObjectSpecificS>();
 }

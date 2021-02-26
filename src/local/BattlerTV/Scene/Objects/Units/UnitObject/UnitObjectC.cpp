@@ -5,13 +5,13 @@
 #include "Scene/Objects/Units/UnitObject/UnitObjectC.h"
 
 
-void UnitObjectSpecificPart::Create(Node *node)
+void UnitObjectSpecific::Create(Node *node)
 {
-    node->CreateComponent<UnitObjectSpecificPartC>();
+    node->CreateComponent<UnitObjectSpecificC>();
 }
 
 
-void UnitObjectSpecificPartC::HandleMouseClick(StringHash, VariantMap &eventData)
+void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
 {
     using namespace UnitMouseClick;
 
@@ -23,7 +23,7 @@ void UnitObjectSpecificPartC::HandleMouseClick(StringHash, VariantMap &eventData
             {
                 if (t->GetNode() != node_)
                 {
-                    t->GetNode()->GetComponent<UnitObjectSpecificPartC>()->tile->Disable();
+                    t->GetNode()->GetComponent<UnitObjectSpecificC>()->tile->Disable();
                 }
             }
         }
@@ -33,14 +33,14 @@ void UnitObjectSpecificPartC::HandleMouseClick(StringHash, VariantMap &eventData
 }
 
 
-void UnitObjectSpecificPartC::OnNodeSet(Node *node)
+void UnitObjectSpecificC::OnNodeSet(Node *node)
 {
     if (node)
     {
-        UnitObjectSpecificPart::OnNodeSet(node);
+        UnitObjectSpecific::OnNodeSet(node);
 
         tile = node->CreateComponent<TileSelected>();
 
-        SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(UnitObjectSpecificPartC, HandleMouseClick));
+        SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(UnitObjectSpecificC, HandleMouseClick));
     }
 }

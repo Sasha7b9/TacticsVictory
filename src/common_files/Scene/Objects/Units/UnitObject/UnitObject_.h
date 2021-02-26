@@ -4,11 +4,11 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class UnitObjectSpecificPart : public Component
+class UnitObjectSpecific : public Component
 {
 public:
 
-    UnitObjectSpecificPart(Context *context) : Component(context) {}
+    UnitObjectSpecific(Context *context) : Component(context) {}
 
     static void Create(Node *);
 };

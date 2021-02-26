@@ -4,11 +4,11 @@
 #include "Scene/Objects/Units/UnitObject/UnitObject_.h"
 
 
-class UnitObjectSpecificPartC : public UnitObjectSpecificPart
+class UnitObjectSpecificC : public UnitObjectSpecific
 {
 public:
 
-    UnitObjectSpecificPartC(Context *context) : UnitObjectSpecificPart(context) {}
+    UnitObjectSpecificC(Context *context) : UnitObjectSpecific(context) {}
 
     virtual void OnNodeSet(Node *node) override;
 
