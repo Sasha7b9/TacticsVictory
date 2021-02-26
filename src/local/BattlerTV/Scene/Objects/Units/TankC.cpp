@@ -31,9 +31,7 @@ void TankSpecificPartC::HandleMouseClick(StringHash, VariantMap &eventData)
             {
                 if (t->node_ != node_)
                 {
-                    TankSpecificPartC *sp = node_->GetComponent<TankSpecificPartC>();
-
-                    sp->tile->Disable();
+                    t->node_->GetComponent<TankSpecificPartC>()->tile->Disable();
                 }
             }
         }

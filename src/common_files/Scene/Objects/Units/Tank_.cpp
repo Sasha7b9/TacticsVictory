@@ -22,6 +22,8 @@ void Tank::Start()
     Normalize();
 
     storage.Push(this);
+
+    TankSpecificPart::Create(node_);
 }
 
 
@@ -30,8 +32,6 @@ void Tank::OnNodeSet(Node *node)
     if (node)
     {
         node_ = node->CreateChild(NAME_NODE_TANK);
-
-        TankSpecificPart::Create(node_);
     }
 
     UnitObject::OnNodeSet(node ? node_ : node);
