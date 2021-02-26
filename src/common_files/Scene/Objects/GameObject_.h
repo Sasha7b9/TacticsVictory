@@ -10,6 +10,8 @@ public:
 
     void SetPosition(const Vector3 &position);
 
+    static void RegisterObjects();
+
 protected:
 
     struct Type { enum E {

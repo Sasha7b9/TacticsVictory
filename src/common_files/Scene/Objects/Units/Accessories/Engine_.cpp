@@ -11,7 +11,7 @@ void EngineT::GiveCommand(Command::E /*command*/)
 
 bool EngineT::IsStopped() const
 {
-    return true;
+    return physics->speedMove == Vector3::ZERO && physics->speedRotate == Vector3::ZERO;
 }
 
 
@@ -24,6 +24,17 @@ void EngineAir::Update(float /*timeStep*/)
 void EngineGround::Update(float /*timeStep*/)
 {
 
+}
+
+
+void EngineT::OnNodeSet(Node *node)
+{
+    if (node)
+    {
+        Component::OnNodeSet(node);
+
+        physics = node->GetComponent<PhysicsComponent>();
+    }
 }
 
 

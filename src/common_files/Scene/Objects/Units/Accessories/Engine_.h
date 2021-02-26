@@ -1,5 +1,6 @@
 // 2021/02/26 21:54:16 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Scene/Objects/Components/PhysicsComponent.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,10 +24,14 @@ public:
 
     void GiveCommand(Command::E command);
 
+    void OnNodeSet(Node *node) override;
+
     // Возвращет true, если мотор заглушен
     bool IsStopped() const;
 
 private:
+
+    SharedPtr<PhysicsComponent> physics;
 };
 
 

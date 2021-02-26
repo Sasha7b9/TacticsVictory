@@ -37,6 +37,8 @@ void Tank::Start()
 
     storage.Push(this);
 
+    node_->CreateComponent<PhysicsComponent>();
+
     UnitObjectSpecific::CreateSpecific(node_);
 
     TankSpecific::CreateSpecific(node_);

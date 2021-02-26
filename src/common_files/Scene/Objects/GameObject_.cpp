@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Core/TMath_.h"
 #include "Scene/Objects/GameObject_.h"
+#include "Scene/Objects/Components/PhysicsComponent.h"
 
 
 Vector<GameObject *> GameObject::storage;
@@ -10,6 +11,12 @@ Vector<GameObject *> GameObject::storage;
 GameObject::GameObject(Context *context) : LogicComponent(context)
 {
     storage.Push(this);
+}
+
+
+void GameObject::RegisterObjects()
+{
+    TheContext->RegisterFactory<PhysicsComponent>();
 }
 
 

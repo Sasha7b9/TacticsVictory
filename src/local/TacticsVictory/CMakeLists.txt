@@ -63,10 +63,12 @@ file(GLOB SCENE_OBJECTS                         ../../common_files/Scene/Objects
                                                       ../BattlerTV/Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                    ../../common_files/Scene/Objects/Ammo/*.*
                                                       ../BattlerTV/Scene/Objects/Ammo/*.*)
+file(GLOB SCENE_OBJECTS_COMPONENTS              ../../common_files/Scene/Objects/Components/*.*)
 file(GLOB SCENE_OBJECTS_UNITS                   ../../common_files/Scene/Objects/Units/*.*
                                                       ../BattlerTV/Scene/Objects/Units/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_ACCESSORIES       ../../common_files/Scene/Objects/Units/Accessories/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_AIRPLANE          ../../common_files/Scene/Objects/Units/AirPlane/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_LOGIC             ../../common_files/Scene/Objects/Units/Logic/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_TANK              ../../common_files/Scene/Objects/Units/Tank/*.*
                                                       ../BattlerTV/Scene/Objects/Units/Tank/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_UNITOBJECT        ../../common_files/Scene/Objects/Units/UnitObject/*.*
@@ -100,9 +102,11 @@ source_group(Scene                              FILES ${SCENE})
 source_group(Scene\\Cameras                     FILES ${SCENE_CAMERAS})
 source_group(Scene\\Objects                     FILES ${SCENE_OBJECTS})
 source_group(Scene\\Objects\\Ammo               FILES ${SCENE_OBJECTS_AMMO})
+source_group(Scene\\Objects\\Components         FILES ${SCENE_OBJECTS_COMPONENTS})
 source_group(Scene\\Objects\\Units              FILES ${SCENE_OBJECTS_UNITS})
 source_group(Scene\\Objects\\Units\\Accessories FILES ${SCENE_OBJECTS_UNITS_ACCESSORIES})
 source_group(Scene\\Objects\\Units\\AirPlane    FILES ${SCENE_OBJECTS_UNITS_AIRPLANE})
+source_group(Scene\\Objects\\Units\\Logic       FILES ${SCENE_OBJECTS_UNITS_LOGIC})
 source_group(Scene\\Objects\\Units\\Tank        FILES ${SCENE_OBJECTS_UNITS_TANK})
 source_group(Scene\\Objects\\Units\\UnitObject  FILES ${SCENE_OBJECTS_UNITS_UNITOBJECT})
 source_group(Scene\\Objects\\Weapons            FILES ${SCENE_OBJECTS_WEAPONS})
@@ -115,9 +119,10 @@ add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME
     ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
     ${GUI_WINDOWS} ${INPUT}
     ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
-    ${SCENE_OBJECTS_AMMO}
+    ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_COMPONENTS}
     ${SCENE_TERRAIN}
-    ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_AIRPLANE} ${SCENE_OBJECTS_UNITS_ACCESSORIES}
+    ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_AIRPLANE} ${SCENE_OBJECTS_UNITS_LOGIC}
+    ${SCENE_OBJECTS_UNITS_ACCESSORIES}
     ${SCENE_OBJECTS_UNITS_TANK}
     ${SCENE_OBJECTS_UNITS_UNITOBJECT}
     ${SCENE_OBJECTS_WEAPONS}
