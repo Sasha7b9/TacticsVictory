@@ -19,7 +19,7 @@ void EngineGround::OnNodeSet(Node *node)
 {
     if (node)
     {
-
+        EngineT::OnNodeSet(node);
     }
 }
 

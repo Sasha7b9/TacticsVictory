@@ -32,9 +32,15 @@ void Tank::Start()
 
     storage.Push(this);
 
+    UnitObjectSpecific::CreateSpecific(node_);
+
     TankSpecific::CreateSpecific(node_);
 
-    EngineGround::CreateEngine(node_);
+    engine = node_->CreateComponent<EngineGround>();
+
+    engine = engine;
+
+//    EngineGround::CreateEngine(node_);
 }
 
 
@@ -49,7 +55,7 @@ void Tank::OnNodeSet(Node *node)
 }
 
 
-//void Tank::Update(float timeStep)
-//{
+void Tank::Update(float timeStep)
+{
 //    engine->Update(timeStep);
-//}
+}

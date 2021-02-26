@@ -7,8 +7,14 @@
 
 void UnitObject::RegisterObjects()
 {
-    TheContext->RegisterFactory<UnitObjectSpecificC>();
     TheContext->RegisterFactory<EngineGround>();
+    TheContext->RegisterFactory<UnitObjectSpecificC>();
+}
+
+
+void UnitObjectSpecific::CreateSpecific(Node *node)
+{
+    node->CreateComponent<UnitObjectSpecificC>();
 }
 
 
