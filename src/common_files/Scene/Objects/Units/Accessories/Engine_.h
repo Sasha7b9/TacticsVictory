@@ -9,9 +9,20 @@ class EngineT : public Component
 
 public:
 
+    struct Command { enum E {
+        None,
+        MoveToNorth,
+        MoveToEast,
+        MoveToSouth,
+        MoveToWest
+    }; };
+
     EngineT(Context *context) : Component(context) {}
 
-    virtual void Update(float timeStep) { UNUSED(timeStep); };
+    virtual void Update(float timeStep, Command::E command = Command::None) { UNUSED(timeStep); UNUSED(command); };
+
+    // Возвращет true, если мотор заглушен
+    bool IsStopped();
 
 private:
 };
@@ -26,7 +37,7 @@ public:
 
     EngineAir(Context *context) : EngineT(context) {}
 
-    virtual void Update(float timeStep) override;
+    virtual void Update(float timeStep, Command::E command) override;
 
 private:
 };
@@ -41,7 +52,7 @@ public:
 
     EngineGround(Context *context) : EngineT(context) {}
 
-    virtual void Update(float timeStep) override;
+    virtual void Update(float timeStep, Command::E command) override;
 
     void OnNodeSet(Node *node) override;
 
