@@ -3,9 +3,10 @@
 #include "Scene/Objects/Units/Tank_.h"
 #include "Scene/Objects/Units/TankC.h"
 #include "Scene/Objects/Units/UnitsEvents_.h"
+#include "Scene/Objects/Units/UnitObjectC.h"
 
 
-Tank::Tank(Context *context) : UnitObject()
+Tank::Tank(Context *) : UnitObject(new UnitObjectSpecificPartC())
 {
     specific = new TankSpecificPartC();
 }

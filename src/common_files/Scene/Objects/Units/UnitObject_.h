@@ -30,7 +30,7 @@ class UnitObject : public GameObject
 
 protected:
 
-    UnitObject();
+    UnitObject(UnitObjectSpecificPart *specific);
 
     virtual void Start() override;
 
