@@ -4,6 +4,8 @@
 
 class TankSpecificC : public TankSpecific
 {
+    URHO3D_OBJECT(TankSpecificC, TankSpecific);
+
 public:
 
     TankSpecificC(Context *context) : TankSpecific(context) {}

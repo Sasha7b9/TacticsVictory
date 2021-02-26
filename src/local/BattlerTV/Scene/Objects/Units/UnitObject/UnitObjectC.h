@@ -6,6 +6,8 @@
 
 class UnitObjectSpecificC : public UnitObjectSpecific
 {
+    URHO3D_OBJECT(UnitObjectSpecificC, UnitObjectSpecific);
+
 public:
 
     UnitObjectSpecificC(Context *context) : UnitObjectSpecific(context) {}

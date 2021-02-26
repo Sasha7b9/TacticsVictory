@@ -38,8 +38,6 @@ void Tank::Start()
 
     engine = node_->CreateComponent<EngineGround>();
 
-    engine = engine;
-
 //    EngineGround::CreateEngine(node_);
 }
 
@@ -57,5 +55,5 @@ void Tank::OnNodeSet(Node *node)
 
 void Tank::Update(float timeStep)
 {
-//    engine->Update(timeStep);
+    engine->Update(timeStep);
 }

@@ -5,6 +5,8 @@
 
 class AirPlane : public UnitObject
 {
+    URHO3D_OBJECT(AirPlane, UnitObject);
+
 public:
 
 protected:

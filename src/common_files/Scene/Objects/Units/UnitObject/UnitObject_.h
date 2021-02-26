@@ -7,6 +7,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class UnitObjectSpecific : public Component
 {
+    URHO3D_OBJECT(UnitObjectSpecific, Component);
+
 public:
 
     UnitObjectSpecific(Context *context) : Component(context) {}
@@ -18,6 +20,8 @@ public:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class UnitObject : public GameObject
 {
+    URHO3D_OBJECT(UnitObject, GameObject);
+
 public:
 
     static Vector<UnitObject *> storage;

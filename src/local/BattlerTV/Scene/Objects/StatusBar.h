@@ -4,6 +4,8 @@
 
 class StatusBar : public LogicComponent
 {
+    URHO3D_OBJECT(StatusBar, LogicComponent);
+
 public:
 
     StatusBar();

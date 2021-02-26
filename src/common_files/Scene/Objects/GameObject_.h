@@ -4,6 +4,8 @@
 
 class GameObject : public LogicComponent
 {
+    URHO3D_OBJECT(GameObject, LogicComponent);
+
 public:
 
     void SetPosition(const Vector3 &position);
