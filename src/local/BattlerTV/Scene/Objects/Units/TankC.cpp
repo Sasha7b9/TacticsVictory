@@ -21,9 +21,12 @@ void TankSpecificPartC::HandleMouseClick(StringHash, VariantMap &eventData)
         {
             for (Tank *t : Tank::storage)
             {
-                TankSpecificPartC *sp = (TankSpecificPartC *)(t->specific.Get());
+                if (t != tank)
+                {
+                    TankSpecificPartC *sp = (TankSpecificPartC *)(t->specific.Get());
 
-                sp->tile->Disable();
+                    sp->tile->Disable();
+                }
             }
         }
 
