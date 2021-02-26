@@ -9,6 +9,8 @@ public:
 
     EngineT(Context *context) : Component(context) {}
 
+    virtual void Update(float timeStep) { UNUSED(timeStep); };
+
 private:
 };
 
@@ -20,6 +22,8 @@ public:
 
     EngineAir(Context *context) : EngineT(context) {}
 
+    virtual void Update(float timeStep) override;
+
 private:
 };
 
@@ -30,6 +34,9 @@ class EngineGround : public EngineT
 public:
 
     EngineGround(Context *context) : EngineT(context) {}
+
+
+    virtual void Update(float timeStep) override;
     
 private:
 };

@@ -212,6 +212,7 @@ void TacticsVictory::RegistrationComponets()
     WaveAlgorithm::RegisterObject();
     TScene::RegisterObject();
     Tank::RegisterObject();
+    UnitObject::RegisterObjects();
     TileSelected::RegisterObject();
 }
 

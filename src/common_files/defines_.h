@@ -39,3 +39,5 @@ typedef const char        *pchar;
 
 typedef float(*pFuncFV)();
 typedef void(*pFuncVF)(float);
+
+#define UNUSED(x) (void)x

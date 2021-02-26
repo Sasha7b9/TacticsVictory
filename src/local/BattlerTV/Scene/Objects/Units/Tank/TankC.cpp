@@ -9,7 +9,6 @@ void Tank::RegisterObject()
 {
     TheContext->RegisterFactory<Tank>();
     TheContext->RegisterFactory<TankSpecificC>();
-    TheContext->RegisterFactory<UnitObjectSpecificC>();
 }
 
 

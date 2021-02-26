@@ -1,6 +1,7 @@
 // 2021/02/22 15:40:32 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #include "stdafx.h"
 #include "Scene/Objects/Units/UnitsEvents_.h"
+#include "Scene/Objects/Units/Accessories/Engine_.h"
 #include "Scene/Objects/Units/Tank/Tank_.h"
 
 
@@ -31,9 +32,9 @@ void Tank::Start()
 
     storage.Push(this);
 
-//    UnitObjectSpecific::CreateSpecific(node_);
-
     TankSpecific::CreateSpecific(node_);
+
+    engine = node_->CreateComponent<EngineGround>();
 }
 
 
@@ -45,4 +46,10 @@ void Tank::OnNodeSet(Node *node)
     }
 
     UnitObject::OnNodeSet(node ? node_ : node);
+}
+
+
+void Tank::Update(float timeStep)
+{
+    engine->Update(timeStep);
 }

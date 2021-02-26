@@ -5,10 +5,11 @@
 #include "Scene/Objects/Units/UnitObject/UnitObjectC.h"
 
 
-//void UnitObjectSpecific::CreateSpecific(Node *node)
-//{
-//    node->CreateComponent<UnitObjectSpecificC>();
-//}
+void UnitObject::RegisterObjects()
+{
+    TheContext->RegisterFactory<UnitObjectSpecificC>();
+    TheContext->RegisterFactory<EngineGround>();
+}
 
 
 void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
