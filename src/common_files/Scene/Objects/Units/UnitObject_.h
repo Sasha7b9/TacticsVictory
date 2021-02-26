@@ -3,6 +3,27 @@
 #include "Scene/Objects/GameObject_.h"
 
 
+class UnitObject;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class UnitObjectSpecificPart : public Object
+{
+    URHO3D_OBJECT(UnitObjectSpecificPart, Object);
+
+public:
+
+    UnitObjectSpecificPart() : Object(TheContext) {}
+
+    virtual void Start(UnitObject *_object) { object = _object; };
+
+protected:
+
+    UnitObject *object = nullptr;
+};
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class UnitObject : public GameObject
 {
     URHO3D_OBJECT(UnitObject, GameObject);
@@ -14,4 +35,6 @@ protected:
     virtual void Start() override;
 
     static Vector<UnitObject *> storage;
+
+    SharedPtr<UnitObjectSpecificPart> specificUnity;
 };
