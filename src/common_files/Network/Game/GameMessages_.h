@@ -28,7 +28,7 @@ namespace Message
             buffer.WriteVector3(position);
         }
 
-        void Handle(MemoryBuffer &msg);
+        void Handle(MemoryBuffer & /*msg*/) {};
     };
 
 

@@ -15,7 +15,7 @@ void Message::Message::Send(bool reliable)
 }
 
 
-void Message::BuildScene::Handle(MemoryBuffer & /*msg*/)
-{
-    TheScene->Create();
-}
+//void Message::BuildScene::Handle(MemoryBuffer & /*msg*/)
+//{
+//    TheScene->Create();
+//}
