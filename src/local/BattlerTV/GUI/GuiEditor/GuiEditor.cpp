@@ -1,21 +1,21 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Editor/TEditor.h"
-#include "GUI/TGUI.h"
+#include "Editor/Editor.h"
+#include "GUI/GUI.h"
 #include "GUI/Controls/TButtonSwitch_.h"
 #include "GUI/Controls/TDropDownListWithTextAndButton_.h"
 #include "GUI/Controls/TSliderWithTextAndButtons_.h"
 #include "GUI/Controls/TTab_.h"
-#include "GUI/GuiEditor/TGuiEditor.h"
+#include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Panels/TPanelBottom.h"
 #include "GUI/Panels/TPanelMain.h"
 #include "GUI/Panels/TPanelMap.h"
 #include "GUI/Windows/TConsole.h"
 #include "Scene/Level_.h"
-#include "Scene/Cameras/TCamera.h"
-#include "Utils/TGlobalFunctions.h"
-#include "Utils/TSettings.h"
-#include "Utils/TSettingsTypes.h"
+#include "Scene/Cameras/Camera.h"
+#include "Utils/GlobalFunctions.h"
+#include "Utils/Settings.h"
+#include "Utils/SettingsTypes.h"
 
 
 GuiEditor::GuiEditor(Context* context) : Object(context)

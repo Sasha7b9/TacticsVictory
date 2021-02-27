@@ -1,11 +1,11 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/TCursor.h"
-#include "GUI/TGUIEvents.h"
+#include "GUI/Cursor.h"
+#include "GUI/GUIEvents.h"
 #include "GUI/Controls/TButtonSwitch_.h"
 #include "GUI/Controls/THint_.h"
 #include "GUI/Controls/TLabel_.h"
-#include "Utils/TSettings.h"
+#include "Utils/Settings.h"
 
 
 TButton::TButton(Context *context) :

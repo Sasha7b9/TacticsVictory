@@ -5,8 +5,8 @@
 #include "GUI/Controls/TSliderInt_.h"
 #include "GUI/Controls/TSliderWithTextAndButtons_.h"
 #include "GUI/Menu/TMenuOptions.h"
-#include "Utils/TSettings.h"
-#include "Utils/TSettingsTypes.h"
+#include "Utils/Settings.h"
+#include "Utils/SettingsTypes.h"
 
 
 MenuOptions::MenuOptions(Context *context) : WindowMenu(context)

@@ -1,12 +1,12 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Graphics/2D/TImage.h"
-#include "GUI/TCursor.h"
-#include "GUI/TGUIEvents.h"
-#include "GUI/TGUI.h"
+#include "Graphics/2D/Image.h"
+#include "GUI/Cursor.h"
+#include "GUI/GUIEvents.h"
+#include "GUI/GUI.h"
 #include "GUI/Menu/TMenu.h"
 #include "Scene/SceneC.h"
-#include "Scene/Cameras/TCamera.h"
+#include "Scene/Cameras/Camera.h"
 
 
 bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::StructShape& keyRight)

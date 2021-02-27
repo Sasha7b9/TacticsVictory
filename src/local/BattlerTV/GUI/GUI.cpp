@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/TCursor.h"
-#include "GUI/TGUI.h"
+#include "GUI/Cursor.h"
+#include "GUI/GUI.h"
 #include "GUI/Controls/TButtonSwitch_.h"
 #include "GUI/Controls/TButtonToggled_.h"
 #include "GUI/Controls/TDropDownListWithTextAndButton_.h"
@@ -10,7 +10,7 @@
 #include "GUI/Controls/TSliderInt_.h"
 #include "GUI/Controls/TSliderWithTextAndButtons_.h"
 #include "GUI/Controls/TTab_.h"
-#include "GUI/GuiEditor/TGuiEditor.h"
+#include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/GuiGame/TGuiGame.h"
 #include "GUI/Menu/TMenuAboutMe.h"
 #include "GUI/Menu/TMenuConfirmExit.h"
@@ -21,8 +21,8 @@
 #include "GUI/Panels/TPanelMap.h"
 #include "GUI/Windows/TConsole.h"
 #include "GUI/Windows/TWindowVariables.h"
-#include "Scene/Cameras/TCamera.h"
-#include "Utils/TSettings.h"
+#include "Scene/Cameras/Camera.h"
+#include "Utils/Settings.h"
 
 
 GUI::GUI() : Object(TheContext)

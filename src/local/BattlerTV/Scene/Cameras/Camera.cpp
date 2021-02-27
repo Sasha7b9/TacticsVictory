@@ -1,10 +1,10 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/TCursor.h"
-#include "GUI/TGUI.h"
+#include "GUI/Cursor.h"
+#include "GUI/GUI.h"
 #include "GUI/Windows/TConsole.h"
 #include "Scene/SceneC.h"
-#include "Scene/Cameras/TCamera.h"
+#include "Scene/Cameras/Camera.h"
 
 
 #define CURSOR_UP           (cursor == TCursor::Type::Up)

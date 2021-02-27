@@ -7,7 +7,7 @@
 #include "GUI/Panels/TPanelMain.h"
 #include "GUI/Panels/TPanelMap.h"
 #include "GUI/Windows/TConsole.h"
-#include "Utils/TSettings.h"
+#include "Utils/Settings.h"
 
 
 GuiGame::GuiGame(Context *context) :

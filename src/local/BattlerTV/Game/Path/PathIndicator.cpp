@@ -1,8 +1,8 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Game/Path/TPathIndicator.h"
-#include "Game/Path/TTilePath.h"
-#include "GUI/TCursor.h"
+#include "Game/Path/PathIndicator.h"
+#include "Game/Path/TilePath.h"
+#include "GUI/Cursor.h"
 
 
 PathIndicator::PathIndicator()

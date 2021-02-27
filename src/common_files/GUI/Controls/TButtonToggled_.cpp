@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "GUI/Controls/TButtonToggled_.h"
 #include "GUI/Controls/TLabel_.h"
-#include "Utils/TSettings.h"
+#include "Utils/Settings.h"
 
 
 ButtonToggled::ButtonToggled(Context *context) :

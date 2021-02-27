@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Utils/TGlobalFunctions.h"
+#include "Utils/GlobalFunctions.h"
 #include "Utils/TSettings.h"
 
 

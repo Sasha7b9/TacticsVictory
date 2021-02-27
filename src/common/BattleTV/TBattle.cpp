@@ -6,7 +6,7 @@
 #include "Scene/Level_.h"
 #include "Scene/Scene_.h"
 #include "Utils/_TLog.h"
-#include "Utils/TSettings.h"
+#include "Utils/Settings.h"
 
 
 #pragma warning(push)

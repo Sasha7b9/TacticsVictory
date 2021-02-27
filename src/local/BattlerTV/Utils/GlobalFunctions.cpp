@@ -1,6 +1,34 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Utils/TGlobalFunctions.h"
+#include "Utils/GlobalFunctions.h"
+
+
+void GF::SetWindowInCenterScreen(Window *window)
+{
+    window->SetPosition(TheGraphics->GetWidth() / 2 - window->GetWidth() / 2,
+        TheGraphics->GetHeight() / 2 - window->GetHeight() / 2);
+}
+
+
+void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
+{
+    delete TheFileSelector;
+    TheFileSelector = new FileSelector(TheContext);
+    XMLFile *style = TheCache->GetResource<XMLFile>("UI/DefaultStyle.xml");
+    TheFileSelector->SetDefaultStyle(style);
+
+    Window *window = TheFileSelector->GetWindow();
+    window->SetResizable(false);
+    SetWindowInCenterScreen(window);
+    window->SetVisible(false);
+    window->SetModal(false);
+
+    TheFileSelector->SetTitle(title);
+    TheFileSelector->SetButtonTexts(textOk, textCancel);
+    window->SetVisible(true);
+    window->BringToFront();
+    TheFileSelector->SetFilters(filters, 0);
+}
 
 
 unsigned GF::GetLastModifiedTime(char* name)
@@ -8,7 +36,7 @@ unsigned GF::GetLastModifiedTime(char* name)
     String fullName = TheFileSystem->GetProgramDir();
     fullName.Erase(fullName.Length() - 1);
     fullName.Erase(fullName.FindLast('/'), 6);
-    fullName += String("/") + String(RESOURCES_DIR) + "/" + String(name);
+    fullName += String("/") + RESOURCES_DIR + "/" + name;
     return TheFileSystem->GetLastModifiedTime(fullName);
 }
 

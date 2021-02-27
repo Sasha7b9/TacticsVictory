@@ -3,7 +3,7 @@
 #include "GUI/Controls/TButtonToggled_.h"
 #include "GUI/Controls/TTab_.h"
 #include "GUI/Panels/TPanelMain.h"
-#include "Utils/TSettings.h"
+#include "Utils/Settings.h"
 
 
 PanelMain::PanelMain(Context *context) :

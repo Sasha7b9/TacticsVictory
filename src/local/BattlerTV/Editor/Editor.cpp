@@ -1,14 +1,14 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Editor/TEditor.h"
-#include "GUI/TCursor.h"
-#include "GUI/TGUI.h"
+#include "Editor/Editor.h"
+#include "GUI/Cursor.h"
+#include "GUI/GUI.h"
 #include "GUI/Controls/THint_.h"
-#include "GUI/GuiEditor/TGuiEditor.h"
+#include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/TMenu.h"
 #include "Scene/Level_.h"
 #include "Scene/SceneC.h"
-#include "Scene/Cameras/TCamera.h"
+#include "Scene/Cameras/Camera.h"
 
 
 Editor::Editor(Context *context) : Object(context)

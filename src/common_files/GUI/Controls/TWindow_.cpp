@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/TCursor.h"
+#include "GUI/Cursor.h"
 #include "GUI/Controls/TButtonSwitch_.h"
 #include "GUI/Controls/TButtonToggled_.h"
 #include "GUI/Controls/TDropDownListWithTextAndButton_.h"

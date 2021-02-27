@@ -1,7 +1,7 @@
 // 2021/02/24 15:45:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/TCursor.h"
-#include "Input/TMouse.h"
+#include "GUI/Cursor.h"
+#include "Input/Mouse.h"
 #include "Scene/SceneC.h"
 #include "Scene/Objects/Units/UnitsEvents_.h"
 

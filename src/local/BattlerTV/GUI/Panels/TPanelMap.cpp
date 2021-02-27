@@ -1,11 +1,11 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Graphics/2D/TImage.h"
-#include "GUI/TCursor.h"
+#include "Graphics/2D/Image.h"
+#include "GUI/Cursor.h"
 #include "GUI/Panels/TPanelMap.h"
 #include "Scene/Level_.h"
-#include "Scene/Cameras/TCamera.h"
-#include "Utils/TSettings.h"
+#include "Scene/Cameras/Camera.h"
+#include "Utils/Settings.h"
 
 
 PanelMap::PanelMap(Context *context) :

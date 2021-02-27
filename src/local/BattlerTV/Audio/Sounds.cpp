@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Audio/TSounds.h"
+#include "Audio/Sounds.h"
 #include "Scene/SceneC.h"
 
 

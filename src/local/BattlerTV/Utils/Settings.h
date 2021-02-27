@@ -1,11 +1,12 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Utils/TSettingsTypes.h"
+#include "Utils/SettingsTypes.h"
 
 
 class Settings
 {
 public:
+    virtual ~Settings();
     bool Load();
     int GetInt(char *elem, char *name);
     int GetInt(char *name);
@@ -14,9 +15,8 @@ public:
     void SetInt(const char *name, int value);
     void SetFloat(const char *elem, const char *name, float value);
 
-    void Save();
-
 private:
+    void Save();
     bool GetIntFromChild(const char *child, const char *name, int *value);
     bool GetFloatFromChild(const char *child, const char *name, float *value);
     bool GetIntFromChild(const char *name, int *value);

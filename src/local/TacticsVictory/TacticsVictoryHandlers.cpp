@@ -1,13 +1,13 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "TTacticsVictory.h"
-#include "GUI/TCursor.h"
+#include "TacticsVictory.h"
+#include "GUI/Cursor.h"
 #include "GUI/Controls/THint_.h"
 #include "GUI/Menu/TMenuEvents.h"
 #include "GUI/Menu/TMenu.h"
 #include "GUI/Windows/TConsole.h"
 #include "Scene/SceneC.h"
-#include "Scene/Cameras/TCamera.h"
+#include "Scene/Cameras/Camera.h"
 
 
 void TacticsVictory::HandlePostRenderUpdate(StringHash, VariantMap&)
