@@ -2,10 +2,11 @@
 #include "stdafx.h"
 #include "Battler.h"
 #include "GUI/Cursor.h"
-#include "GUI/Windows/Console.h"
-#include "GUI/Menu/TMenu.h"
+#include "GUI/Controls/THint_.h"
 #include "GUI/Menu/TMenuEvents.h"
-#include "Scene/Scene_.h"
+#include "GUI/Menu/TMenu.h"
+#include "GUI/Windows/Console.h"
+#include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 
 
@@ -14,9 +15,9 @@ void Battler::HandlePostRenderUpdate(StringHash, VariantMap&)
     if(drawDebug)
     {
         ThePhysicsWorld->DrawDebugGeometry(true);
-        TheDebugRenderer->AddLine(Vector3::ZERO, {100.0f, 0.0f, 0.0f}, Color::RED);
-        TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 100.0f, 0.0f}, Color::GREEN);
-        TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 100.0f}, Color::BLUE);
+        TheDebugRenderer->AddLine(Vector3::ZERO, {1000.0f, 0.0f, 0.0f}, Color::RED);
+        TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 1000.0f, 0.0f}, Color::GREEN);
+        TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 1000.0f}, Color::BLUE);
         //TheRenderer->DrawDebugGeometry(false);
     }
 }
@@ -93,12 +94,9 @@ void Battler::HandleMenuEvent(StringHash, VariantMap& eventData)
 
     if (typeEvent == ME_StartServer)
     {
-        uint port_ = eventData[MenuEvent::P_PORT].GetUInt();
-        StartServer(static_cast<uint16>(port_));
     }
     else if (typeEvent == ME_StartClient)
     {
-        //StartClient();
     }
     else if (typeEvent == ME_OpenEditor)
     {

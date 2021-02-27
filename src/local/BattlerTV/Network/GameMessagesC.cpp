@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Game/GameMessages_.h"
-#include "Scene/Scene_.h"
+#include "Scene/SceneC.h"
 
 
 void Message::Message::Send(bool reliable)

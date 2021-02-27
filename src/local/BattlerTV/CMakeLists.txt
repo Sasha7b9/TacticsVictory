@@ -9,7 +9,7 @@ add_definitions(-DURHO3D_LOGGING -DCLIENT)
 
 if(WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS  /STACK:10000000")
 
     set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 
@@ -49,9 +49,11 @@ file(GLOB GUI_LOGIC                                                 GUI/Logic/*.
 file(GLOB GUI_MENU                                                  GUI/Menu/*.*)
 file(GLOB GUI_PANELS                                                GUI/Panels/*.*)
 file(GLOB GUI_WINDOWS                                               GUI/Windows/*.*)
+file(GLOB INPUT                                                     Input/*.*)
 file(GLOB NETWORK                                ../../common_files/Network/Game/*.*
                                                                     Network/*.*)
-file(GLOB SCENE                                  ../../common_files/Scene/*.*)
+file(GLOB SCENE                                  ../../common_files/Scene/*.*
+                                                                    Scene/*.*)
 file(GLOB SCENE_CAMERAS                                             Scene/Cameras/*.*)
 file(GLOB SCENE_OBJECTS                          ../../common_files/Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                     ../../common_files/Scene/Objects/Ammo/*.*)
@@ -90,6 +92,7 @@ source_group(GUI\\Logic                                 FILES ${GUI_LOGIC})
 source_group(GUI\\Menu                                  FILES ${GUI_MENU})
 source_group(GUI\\Panels                                FILES ${GUI_PANELS})
 source_group(GUI\\Windows                               FILES ${GUI_WINDOWS})
+source_group(Input                                      FILES ${INPUT})
 source_group(Network                                    FILES ${NETWORK})
 source_group(Scene                                      FILES ${SCENE})
 source_group(Scene\\Cameras                             FILES ${SCENE_CAMERAS})
@@ -111,7 +114,7 @@ source_group(Utils                                      FILES ${UTILS})
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
     ${GRAPHICS_3D}
     ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
-    ${GUI_WINDOWS} ${NETWORK} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
+    ${GUI_WINDOWS} ${INPUT} ${NETWORK} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_BUILDINGS}
     ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE}

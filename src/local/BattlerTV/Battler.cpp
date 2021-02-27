@@ -5,17 +5,21 @@
 #include "Game/Logic/Rotator_.h"
 #include "Game/Logic/SunEngine_.h"
 #include "Game/Path/TilePath.h"
-#include "Game/Path/WaveAlgorithm_.h"
 #include "Graphics/2D/Image.h"
+#include "Graphics/3D/TileSelected.h"
+#include "GUI/Cursor.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
-#include "GUI/Menu/TMenu.h"
 #include "GUI/Menu/TMenuEvents.h"
+#include "GUI/Menu/TMenu.h"
+#include "Input/Mouse.h"
 #include "Scene/Level_.h"
-#include "Scene/Scene_.h"
+#include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
+#include "Scene/Objects/Units/Tank/Tank_.h"
 #include "Utils/LogC.h"
 #include "Utils/Settings.h"
+#include "Utils/SettingsTypes.h"
 
 
 #pragma warning(push)
@@ -33,19 +37,41 @@ Battler::Battler(Context* context) :
 
 void Battler::Setup()
 {
-    ParseArguments(GetArguments());
+    TheBattler = this;
 
-    TheTacticsVictory = this;
+    GetSubsystems();
+
+    OpenLog();
     TheSet = new Settings();
+    TheSet->Load();
+
+    TuneEngineParameters();
+}
+
+
+void Battler::GetSubsystems()
+{
     TheCache = GetSubsystem<ResourceCache>();
     TheFileSystem = GetSubsystem<FileSystem>();
-    OpenLog();
-//    LOGINFO("Загружаю настройки");
-    TheSet->Load();
-    //LOGINFO("Загрузка настроек закончена");
+    TheTime = GetSubsystem<Time>();
+    TheProfiler = GetSubsystem<Profiler>();
+    TheEngine = GetSubsystem<Engine>();
+    TheGraphics = GetSubsystem<Graphics>();
+    TheRenderer = GetSubsystem<Renderer>();
+    TheAudio = GetSubsystem<Audio>();
+    TheUI = GetSubsystem<UI>();
+    TheInput = GetSubsystem<Input>();
+    TheLocalization = GetSubsystem<Localization>();
 
+    CreateScriptSystem();
+}
+
+
+void Battler::TuneEngineParameters()
+{
     engineParameters_[EP_WINDOW_TITLE] = GetTypeName();
-    engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
+    engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->
+                                                        GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_[EP_FULL_SCREEN] = false;
     engineParameters_[EP_TEXTURE_QUALITY] = 32; //-V112
     engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
@@ -58,6 +84,70 @@ void Battler::Setup()
 #else
         engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/release";
 #endif
+
+    TheCache->AddResourceDir(RESOURCES_DIR);
+}
+
+
+void Battler::Start()
+{
+    PROFILER_FUNC_ENTER();
+
+    GetSubsystems();
+
+    Application::Start();
+
+    SetLocalization();
+    TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
+
+    RegistrationComponets();
+
+    TheMouse = new Mouse();
+
+    TheScene = new CScene();
+
+    TheScene->Create();
+
+    ThePathIndicator = new PathIndicator();
+
+    for (int i = 0; i < 1000; i++)
+    {
+        uint colZ = (uint)Random((float)TheTerrain->WidthZ());
+        uint rowX = (uint)Random((float)TheTerrain->HeightX());
+
+        TheTerrain->PutIn(TheScene->CreateComponent<Tank>(), colZ, rowX);
+    }
+
+    TheCamera = TCamera::Create();
+
+    SetWindowTitleAndIcon();
+
+    CreateConsoleAndDebugHud();
+
+    TheScene->CreateComponent<DebugRenderer>();
+    TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
+
+    CreateGUI();
+
+    LOGINFO("Загружаю настройки");
+    TheMenu = new TMenu();
+    TheFileSelector = new FileSelector(TheContext);
+    TheFileSelector->GetWindow()->SetModal(false);
+    TheFileSelector->GetWindow()->SetVisible(false);
+
+    TheLevel = new Level();
+
+    SubscribeToEvents();
+
+    PROFILER_FUNC_LEAVE();
+}
+
+
+void Battler::CreateGUI()
+{
+    TheUIRoot = TheUI->GetRoot();
+    TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    TheGUI = new GUI();
 }
 
 
@@ -68,85 +158,39 @@ void Battler::Stop()
 
     TilePath::RemoveAll();
 
+    delete TheMouse;
+    delete ThePathIndicator;
     delete TheScene;
-    delete scene;
     delete TheFileSelector;
     delete TheLevel;
     delete TheMenu;
     delete TheGUI;
     delete TheSet;
     delete TheEditor;
-    delete TheCamera;
     delete TheLog;
-}
-
-
-void MessageCallback(const asSMessageInfo *msg, void *)
-{
-    const char *type = "AS ERROR ";
-    if(msg->type == asMSGTYPE_WARNING)
-        type = "AS WARN ";
-    else if(msg->type == asMSGTYPE_INFORMATION)
-        type = "AS INFO ";
-
-    LOGINFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); //-V111
-}
-
-
-void Battler::Start()
-{
-    TheProfiler = GetSubsystem<Profiler>();
-    PROFILER_FUNC_ENTER();
-    Application::Start();
-    TheCache->AddResourceDir(RESOURCES_DIR);
-    SetLocalization();
-    TheTime = GetSubsystem<Time>();
-    TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
-    TheProfiler = GetSubsystem<Profiler>();
-    TheEngine = GetSubsystem<Engine>();
-    TheGraphics = GetSubsystem<Graphics>();
-
-    TheScene = new TScene();
-
-    TheScene->CreateComponent<Octree>();
-    ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
-    ThePhysicsWorld->SetGravity(Vector3::ZERO);
-    TheScene->CreateComponent<DebugRenderer>();
-
-    CreateScriptSystem();
-
-    SetWindowTitleAndIcon();
-    CreateConsoleAndDebugHud();
-    TheUI = GetSubsystem<UI>();
-    TheInput = GetSubsystem<Input>();
-    TheAudio = GetSubsystem<Audio>();
-    TheRenderer = GetSubsystem<Renderer>();
-    TheCamera = TCamera::Create();
-    TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
-    TheUIRoot = TheUI->GetRoot();
-    TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-    TheGUI = new GUI();
-    LOGINFO("Загружаю настройки");
-    TheMenu = new TMenu();
-    TheFileSelector = new FileSelector(TheContext);
-    TheFileSelector->GetWindow()->SetModal(false);
-    TheFileSelector->GetWindow()->SetVisible(false);
-
-    RegistrationComponets();
-
-    TheLevel = new Level();
-
-    SubscribeToEvents();
-
-    PROFILER_FUNC_LEAVE();
 }
 
 
 void Battler::SetLocalization()
 {
-    TheLocalization = GetSubsystem<Localization>();
     TheLocalization->LoadJSONFile("Strings.json");
     TheLocalization->SetLanguage("ru");
+}
+
+
+static void MessageCallback(const asSMessageInfo *msg, void *)
+{
+    const char *type = "AS ERROR ";
+    if (msg->type == asMSGTYPE_WARNING)
+    {
+        type = "AS WARN ";
+    }
+    else if (msg->type == asMSGTYPE_INFORMATION)
+    {
+        type = "AS INFO ";
+    }
+
+    LOGINFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); //-V111
 }
 
 
@@ -158,58 +202,20 @@ void Battler::CreateScriptSystem()
 }
 
 
-void Battler::StartServer(uint16 /*port_*/)
-{
-//    if (port_)
-//    {
-//        port = port_;
-//    }
-//
-//    if (port)
-//    {
-//        TheServer->Start(port);
-//        scene = new TScene(TheContext, TScene::Mode_Server);
-//        scene->Create();
-//    }
-//    else
-//    {
-//        LOGERROR("Can not start server on null port");
-//    }
-}
-
-
-void Battler::StopServer()
-{
-
-}
-
-
-void Battler::StartClient(const String &, uint16)
-{
-
-}
-
-
-void Battler::StopClient()
-{
-
-}
-
-
-void Battler::ParseArguments(const Vector<String> & /*arguments*/)
-{
-}
-
-
 void Battler::RegistrationComponets()
 {
+    TCamera::RegisterObject();
+    TCursor::RegisterObject();
     TImage::RegisterObject();
     SunEngine::RegisterObject();
     Rotator::RegisterObject();
-
     WaveAlgorithm::RegisterObject();
-
     TScene::RegisterObject();
+    TileSelected::RegisterObject();
+
+    GameObject::RegisterObjects();
+    UnitObject::RegisterObjects();
+    Tank::RegisterObject();
 }
 
 
@@ -260,7 +266,7 @@ void Battler::OpenLog()
     char buffer[50];
     srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
 
-    sprintf_s(buffer, 50, "Battler.log");
+    sprintf_s(buffer, 50, "TV.log");
 
     TheLog->Open(buffer);
     TheLog->SetLevel(LOG_DEBUG);
