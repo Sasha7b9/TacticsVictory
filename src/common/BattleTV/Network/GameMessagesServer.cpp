@@ -10,9 +10,3 @@ void Message::RequestForBuildScene::Handle(const TConnection &connection)
 
     connection.SendMessage(true, BuildScene(position));
 }
-
-
-void Message::KeyEvent::Handle(MemoryBuffer & /*msg*/)
-{
-
-}

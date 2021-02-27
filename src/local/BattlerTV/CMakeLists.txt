@@ -71,7 +71,8 @@ file(GLOB SCENE_OBJECTS_UNITS_UNITOBJECT            ../../common_files/Scene/Obj
                                                           ../BattlerTV/Scene/Objects/Units/UnitObject/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Objects/Weapons/*.*)
 file(GLOB SCENE_PRIMITIVES                       ../../common_files/Scene/Primitives/*.*)
-file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*)
+file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*
+                                                                    Scene/Terrain/*.*)
 file(GLOB UTILS                                                     Utils/*.*
                                                  ../../common_files/Utils/*.*)
 

@@ -21,4 +21,6 @@ private:
     SharedPtr<Geometry> geometry;
     SharedPtr<Model> model;
     SharedPtr<StaticModel> object;
+
+    Node *CreateChild();
 };

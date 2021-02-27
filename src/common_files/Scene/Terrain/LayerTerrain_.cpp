@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Core/Math_.h"
-#include "Scene/SceneC.h"
+#include "Scene/Scene_.h"
 #include "Scene/Terrain/LayerTerrain_.h"
 
 
@@ -74,10 +74,6 @@ void LayerTerrain::Build()
     geom->SetDrawRange(TRIANGLE_LIST, 0, ib->GetIndexCount());
 
     model = new Model(TheContext);
-    Node *node = TheScene->CreateChild(NAME_NODE_TERRAIN);
-    node->SetPosition({ -0.5f, 0.0f, -0.5f });
-    object = node->CreateComponent<StaticModel>();
-    object->SetViewMask(VIEW_MASK_FOR_MISSILE);
 
     Vector<SharedPtr<VertexBuffer>> vbVector;
     Vector<SharedPtr<IndexBuffer>> ibVector;
@@ -95,6 +91,11 @@ void LayerTerrain::Build()
     model->SetIndexBuffers(ibVector);
 
     model->SetBoundingBox(Math::CalculateBoundingBox(bufVert, numVert / 8));
+
+    Node *node = CreateChild();
+    node->SetPosition({ -0.5f, 0.0f, -0.5f });
+    object = node->CreateComponent<StaticModel>();
+    object->SetViewMask(VIEW_MASK_FOR_MISSILE);
 
     object->SetModel(model);
     object->SetMaterial(TheCache->GetResource<Material>("Materials/TVTerrain.xml"));
