@@ -35,15 +35,19 @@ void WaveAlgorithm::RegisterInAS()
     asIScriptEngine *engine = TheScript->GetScriptEngine();
     engine->RegisterObjectType("WaveAlgorithm", 0, asOBJ_REF);
 //    RegisterObject<WaveAlgorithm>(engine, "WaveAlgorithm");
+#ifdef WIN32
 #pragma warning(push)
 #pragma warning(disable:4191)
+#endif
     engine->RegisterObjectMethod("WaveAlgorithm", "bool PathIsFound()", asMETHOD(WaveAlgorithm, PathIsFound), asCALL_THISCALL);
     //engine->RegisterObjectMethod("WaveAlgorithm", "Array<uint> GetPathUINT()", asMETHOD(WaveAlgorithm, GetPathUINT), asCALL_THISCALL);
     //engine->RegisterObjectMethod("WaveAlgorithm", "Array<String>@ GetPathString()", asMETHOD(WaveAlgorithm, GetPathString), asCALL_THISCALL);
     engine->RegisterObjectMethod("WaveAlgorithm", "uint GetUINT()", asMETHOD(WaveAlgorithm, GetUINT), asCALL_THISCALL);
 
     engine->RegisterGlobalFunction("Array<String>@ GetTestStrings()", asFUNCTION(GetTestStringsToArray), asCALL_CDECL);
+#ifdef WIN32
 #pragma warning(pop)
+#endif
 }
 
 
