@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "TBattler.h"
+#include "Battler.h"
 #include "GUI/Cursor.h"
 #include "GUI/Windows/TConsole.h"
 #include "GUI/Menu/TMenu.h"

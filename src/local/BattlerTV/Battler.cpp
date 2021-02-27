@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "TBattler.h"
+#include "Battler.h"
 #include "Editor/Editor.h"
 #include "Game/Logic/Rotator_.h"
 #include "Game/Logic/SunEngine_.h"
