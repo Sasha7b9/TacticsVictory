@@ -5,6 +5,10 @@
 
 EngineAlgorithm *EngineCalculator::Calculate(const PhysicsComponent *start, CommandEngine::E command)
 {
+    EngineAlgorithm *result = new EngineAlgorithm();
+
+
+
     return new EngineAlgorithm();
 }
 
