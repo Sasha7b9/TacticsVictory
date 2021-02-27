@@ -41,7 +41,7 @@ endfunction()
 
 if(WIN32)
     add_subdirectory_with_folder("local" local/BattlerTV)
-    add_subdirectory_with_folder("local" local/TacticsVictory)
+#    add_subdirectory_with_folder("local" local/TacticsVictory)
 endif()
 
 add_subdirectory_with_folder("common" common/BattleTV)
