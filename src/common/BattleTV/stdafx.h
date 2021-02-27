@@ -37,21 +37,6 @@
 #include <Urho3D/Math/MathDefs.h>
 #include <Urho3D/Math/Random.h>
 
-#include <Urho3D/UI/UI.h>
-#include <Urho3D/UI/Button.h>
-#include <Urho3D/UI/Cursor.h>
-#include <Urho3D/UI/DropDownList.h>
-#include <Urho3D/UI/FileSelector.h>
-#include <Urho3D/UI/LineEdit.h>
-#include <Urho3D/UI/ScrollBar.h>
-#include <Urho3D/UI/Sprite.h>
-#include <Urho3D/UI/Slider.h>
-#include <Urho3D/UI/Font.h>
-#include <Urho3D/UI/Text.h>
-#include <Urho3D/UI/Window.h>
-#include <Urho3D/UI/CheckBox.h>
-#include <Urho3D/UI/UIEvents.h>
-
 #include <Urho3D/IO/IOEvents.h>
 #include <Urho3D/IO/File.h>
 #include <Urho3D/IO/FileSystem.h>
@@ -107,5 +92,3 @@ using namespace Urho3D;
 #include "glob_game.h"
 
 #include "Core/Structures_.h"
-#include "GUI/Controls/Hint_.h"
-#include "GUI/Controls/Label_.h"

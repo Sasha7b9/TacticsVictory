@@ -5,7 +5,6 @@
 Context           *TheContext = nullptr;
 Engine            *TheEngine = nullptr;
 FileSystem        *TheFileSystem = nullptr;
-Font              *TheFont = nullptr;
 Localization      *TheLocalization = nullptr;
 Network           *TheNetwork = nullptr;
 PhysicsWorld      *ThePhysicsWorld = nullptr;
