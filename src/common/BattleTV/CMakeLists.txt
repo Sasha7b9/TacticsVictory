@@ -30,56 +30,56 @@ else()
     SET(LDFLAGS "${LDFLAGS} -ldl")
 endif()
 
-file(GLOB SRC                                   ../../common_files/*.*
-                                                                   *.h *.cpp)
-file(GLOB CORE                                  ../../common_files/Core/*.*)
-file(GLOB GAME_LOGIC                            ../../common_files/Game/Logic/*.*)
-file(GLOB GAME_PATH                             ../../common_files/Game/Path/*.*)
-file(GLOB NETWORK                                                  Network/*.*
-                                                ../../common_files/Network/Game/*.*)
-file(GLOB SCENE                                 ../../common_files/Scene/*.*)
-file(GLOB SCENE_OBJECTS                         ../../common_files/Scene/Objects/*.*)
-file(GLOB SCENE_OBJECTS_AMMO                    ../../common_files/Scene/Objects/Ammo/*.*)
-file(GLOB SCENE_OBJECTS_AMMO_ROCKET             ../../common_files/Scene/Objects/Ammo/Rocket/*.*)
-file(GLOB SCENE_OBJECTS_BUILDINGS               ../../common_files/Scene/Objects/Buildings/*.*)
-file(GLOB SCENE_OBJECTS_UNITS                   ../../common_files/Scene/Objects/Units/*.*
-                                                                   Scene/Objects/Units/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_ACCESSORIES       ../../common_files/Scene/Objects/Units/Accessories/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_LOGIC             ../../common_files/Scene/Objects/Units/Logic/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_TANK              ../../common_files/Scene/Objects/Units/Tank/*.*
-                                                                   Scene/Objects/Units/Tank/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_UNITOBJECT        ../../common_files/Scene/Objects/Units/UnitObject/*.*
-                                                                   Scene/Objects/Units/UnitObject/*.*)
-file(GLOB SCENE_OBJECTS_WEAPONS                 ../../common_files/Scene/Objects/Weapons/*.*)
-file(GLOB SCENE_PRIMITIVES                      ../../common_files/Scene/Primitives/*.*)
-file(GLOB SCENE_TERRAIN                         ../../common_files/Scene/Terrain/*.*)
-file(GLOB UTILS                                                    Utils/*.*
-                                                ../../common_files/Utils/*.*)
+file(GLOB SRC                                    ../../common_files/*.*
+                                                                    *.h *.cpp)
+file(GLOB CORE                                   ../../common_files/Core/*.*)
+file(GLOB GAME_LOGIC                             ../../common_files/Game/Logic/*.*)
+file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.*)
+file(GLOB NETWORK                                                   Network/*.*
+                                                 ../../common_files/Network/Game/*.*)
+file(GLOB SCENE                                  ../../common_files/Scene/*.*)
+file(GLOB SCENE_OBJECTS                          ../../common_files/Scene/Objects/*.*)
+file(GLOB SCENE_OBJECTS_AMMO                     ../../common_files/Scene/Objects/Ammo/*.*)
+file(GLOB SCENE_OBJECTS_AMMO_ROCKET              ../../common_files/Scene/Objects/Ammo/Rocket/*.*)
+file(GLOB SCENE_OBJECTS_BUILDINGS                ../../common_files/Scene/Objects/Buildings/*.*)
+file(GLOB SCENE_OBJECTS_UNITS                    ../../common_files/Scene/Objects/Units/*.*
+                                                                    Scene/Objects/Units/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE ../../common_files/Scene/Objects/Units/Accessories/Engine/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_LOGIC              ../../common_files/Scene/Objects/Units/Logic/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_TANK               ../../common_files/Scene/Objects/Units/Tank/*.*
+                                                                    Scene/Objects/Units/Tank/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_UNITOBJECT         ../../common_files/Scene/Objects/Units/UnitObject/*.*
+                                                                    Scene/Objects/Units/UnitObject/*.*)
+file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Objects/Weapons/*.*)
+file(GLOB SCENE_PRIMITIVES                       ../../common_files/Scene/Primitives/*.*)
+file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*)
+file(GLOB UTILS                                                     Utils/*.*
+                                                 ../../common_files/Utils/*.*)
 
-source_group(src                                FILES ${SRC})
-source_group(Core                               FILES ${CORE})
-source_group(Game\\Logic                        FILES ${GAME_LOGIC})
-source_group(Game\\Path                         FILES ${GAME_PATH})
-source_group(Network                            FILES ${NETWORK})
-source_group(Scene                              FILES ${SCENE})
-source_group(Scene\\Objects                     FILES ${SCENE_OBJECTS})
-source_group(Scene\\Objects\\Ammo               FILES ${SCENE_OBJECTS_AMMO})
-source_group(Scene\\Objects\\Ammo\\Rocket       FILES ${SCENE_OBJECTS_AMMO_ROCKET})
-source_group(Scene\\Objects\\Buildings          FILES ${SCENE_OBJECTS_BUILDINGS})
-source_group(Scene\\Objects\\Units              FILES ${SCENE_OBJECTS_UNITS})
-source_group(Scene\\Objects\\Units\\Accessories FILES ${SCENE_OBJECTS_UNITS_ACCESSORIES})
-source_group(Scene\\Objects\\Units\\Logic       FILES ${SCENE_OBJECTS_UNITS_LOGIC})
-source_group(Scene\\Objects\\Units\\Tank        FILES ${SCENE_OBJECTS_UNITS_TANK})
-source_group(Scene\\Objects\\Units\\UnitObject  FILES ${SCENE_OBJECTS_UNITS_UNITOBJECT})
-source_group(Scene\\Objects\\Weapons            FILES ${SCENE_OBJECTS_WEAPONS})
-source_group(Scene\\Primitives                  FILES ${SCENE_PRIMITIVES})
-source_group(Scene\\Terrain                     FILES ${SCENE_TERRAIN})
-source_group(Utils                              FILES ${UTILS})
+source_group(src                                        FILES ${SRC})
+source_group(Core                                       FILES ${CORE})
+source_group(Game\\Logic                                FILES ${GAME_LOGIC})
+source_group(Game\\Path                                 FILES ${GAME_PATH})
+source_group(Network                                    FILES ${NETWORK})
+source_group(Scene                                      FILES ${SCENE})
+source_group(Scene\\Objects                             FILES ${SCENE_OBJECTS})
+source_group(Scene\\Objects\\Ammo                       FILES ${SCENE_OBJECTS_AMMO})
+source_group(Scene\\Objects\\Ammo\\Rocket               FILES ${SCENE_OBJECTS_AMMO_ROCKET})
+source_group(Scene\\Objects\\Buildings                  FILES ${SCENE_OBJECTS_BUILDINGS})
+source_group(Scene\\Objects\\Units                      FILES ${SCENE_OBJECTS_UNITS})
+source_group(Scene\\Objects\\Units\\Accessories\\Engine FILES ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE})
+source_group(Scene\\Objects\\Units\\Logic               FILES ${SCENE_OBJECTS_UNITS_LOGIC})
+source_group(Scene\\Objects\\Units\\Tank                FILES ${SCENE_OBJECTS_UNITS_TANK})
+source_group(Scene\\Objects\\Units\\UnitObject          FILES ${SCENE_OBJECTS_UNITS_UNITOBJECT})
+source_group(Scene\\Objects\\Weapons                    FILES ${SCENE_OBJECTS_WEAPONS})
+source_group(Scene\\Primitives                          FILES ${SCENE_PRIMITIVES})
+source_group(Scene\\Terrain                             FILES ${SCENE_TERRAIN})
+source_group(Utils                                      FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GAME_PATH} ${NETWORK} ${SCENE} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_BUILDINGS}
-    ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_ACCESSORIES} ${SCENE_OBJECTS_UNITS_TANK}
+    ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE} ${SCENE_OBJECTS_UNITS_TANK}
     ${SCENE_OBJECTS_UNITS_UNITOBJECT}
     ${SCENE_OBJECTS_UNITS_LOGIC}
     ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS})
