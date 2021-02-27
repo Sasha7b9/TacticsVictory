@@ -124,8 +124,6 @@ add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME
     ${SCENE_OBJECTS_UNITS_LOGIC}
     ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS})
 
-set_target_properties(${PROJECT_NAME} PROPERTIES UNITY_BUILD ON)
-
 include(../../RuntimeLibrary.cmake)
 
 if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
