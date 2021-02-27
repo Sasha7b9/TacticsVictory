@@ -64,8 +64,6 @@
 
 #include <Urho3D/DebugNew.h>
 
-#include <Urho3d/ThirdParty/AngelScript/angelscript.h>
-
 using namespace Urho3D;
 
 #include <cfloat>
