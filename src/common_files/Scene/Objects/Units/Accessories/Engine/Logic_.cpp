@@ -7,3 +7,9 @@ EngineAlgorithm *EngineCalculator::Calculate(const PhysicsComponent *start, Comm
 {
     return new EngineAlgorithm();
 }
+
+
+void EngineExecutor::Execute(SharedPtr<EngineAlgorithm> _algorithm)
+{
+    algorithm = _algorithm;
+}

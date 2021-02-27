@@ -41,5 +41,8 @@ public:
 */
 class EngineExecutor
 {
+public:
+    void Execute(SharedPtr<EngineAlgorithm> algorithm);
 
+    SharedPtr<EngineAlgorithm> algorithm;
 };
