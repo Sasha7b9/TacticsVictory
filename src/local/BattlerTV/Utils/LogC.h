@@ -3,13 +3,13 @@
 #include "Utils/Log_.h"
 
 
-class CLog : public TLog
+class LogC : public LogT
 {
-    URHO3D_OBJECT(CLog, TLog);
+    URHO3D_OBJECT(LogC, LogT);
 
 public:
-    CLog(Context *context = TheContext) : TLog(context) {}
-    virtual ~CLog();
+    LogC(Context *context = TheContext) : LogT(context) {}
+    virtual ~LogC();
 
     virtual void Write(int level, const String &message, pchar file, pchar func, int numLine) override;
 };

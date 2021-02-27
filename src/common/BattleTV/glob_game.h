@@ -3,16 +3,16 @@
 
 class  Battle;
 class  Level;
-class TLog;
-class SceneT;
+class  LogT;
+class  SceneT;
 class  Settings;
 class  TTerrain;
 
-extern Battle          *TheBattle;
-extern Level           *TheLevel;
-extern TLog            *TheLog;
-extern SceneT          *TheScene;
-extern Settings        *TheSet;
-extern TTerrain       *TheTerrain;
+extern Battle     *TheBattle;
+extern Level      *TheLevel;
+extern LogT       *TheLog;
+extern SceneT     *TheScene;
+extern Settings   *TheSet;
+extern TTerrain   *TheTerrain;
 
 extern Vector<Connection *> connections;

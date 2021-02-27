@@ -4,13 +4,13 @@
 #include "Utils/LogC.h"
 
 
-CLog::~CLog()
+LogC::~LogC()
 {
     Close();
 }
 
 
-void CLog::Write(int level, const String &message, pchar file, pchar func, int numLine)
+void LogC::Write(int level, const String &message, pchar file, pchar func, int numLine)
 {
     String str = message;
     if (enabledExtendedInfo)

@@ -3,16 +3,16 @@
 #include "Utils/Log_.h"
 
 
-bool TLog::enabledExtendedInfo = false;
+bool LogT::enabledExtendedInfo = false;
 
 
-TLog::TLog(Context *context) : Log(context)
+LogT::LogT(Context *context) : Log(context)
 {
 
 }
 
 
-void TLog::Write(int level, const String &message, pchar file, pchar func, int numLine)
+void LogT::Write(int level, const String &message, pchar file, pchar func, int numLine)
 {
     String str = message;
     if (enabledExtendedInfo)
@@ -33,13 +33,13 @@ void TLog::Write(int level, const String &message, pchar file, pchar func, int n
 }
 
 
-void TLog::EnableExtendedInfo()
+void LogT::EnableExtendedInfo()
 {
     enabledExtendedInfo = true;
 }
 
 
-void TLog::DisableExtendedInfo()
+void LogT::DisableExtendedInfo()
 {
     enabledExtendedInfo = false;
 }

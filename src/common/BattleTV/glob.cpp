@@ -14,10 +14,10 @@ Script            *TheScript = nullptr;
 Time              *TheTime = nullptr;
 
 
-Battle             *TheBattle = nullptr;
-Level              *TheLevel = nullptr;
-TLog             *TheLog = nullptr;
-SceneT           *TheScene = nullptr;
-Settings           *TheSet = nullptr;
-TTerrain         *TheTerrain = nullptr;
+Battle            *TheBattle = nullptr;
+Level             *TheLevel = nullptr;
+LogT              *TheLog = nullptr;
+SceneT            *TheScene = nullptr;
+Settings          *TheSet = nullptr;
+TTerrain          *TheTerrain = nullptr;
 Vector<Connection *> connections;

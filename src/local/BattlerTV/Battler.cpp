@@ -264,7 +264,7 @@ void Battler::CreateEditorSession()
 
 void Battler::OpenLog()
 {
-    TheLog = new CLog();
+    TheLog = new LogC();
     char buffer[50];
     srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
 
