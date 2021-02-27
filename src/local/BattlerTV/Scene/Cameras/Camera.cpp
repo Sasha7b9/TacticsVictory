@@ -7,14 +7,14 @@
 #include "Scene/Cameras/Camera.h"
 
 
-#define CURSOR_UP           (cursor == TCursor::Type::Up)
-#define CURSOR_DOWN         (cursor == TCursor::Type::Down)
-#define CURSOR_LEFT         (cursor == TCursor::Type::Left)
-#define CURSOR_RIGHT        (cursor == TCursor::Type::Right)
-#define CURSOR_TOP_LEFT     (cursor == TCursor::Type::TopLeft)
-#define CURSOR_TOP_RIGHT    (cursor == TCursor::Type::TopRight)
-#define CURSOR_DOWN_LEFT    (cursor == TCursor::Type::DownLeft)
-#define CURSOR_DOWN_RIGhT   (cursor == TCursor::Type::DownRight)
+#define CURSOR_UP           (cursor == CursorT::Type::Up)
+#define CURSOR_DOWN         (cursor == CursorT::Type::Down)
+#define CURSOR_LEFT         (cursor == CursorT::Type::Left)
+#define CURSOR_RIGHT        (cursor == CursorT::Type::Right)
+#define CURSOR_TOP_LEFT     (cursor == CursorT::Type::TopLeft)
+#define CURSOR_TOP_RIGHT    (cursor == CursorT::Type::TopRight)
+#define CURSOR_DOWN_LEFT    (cursor == CursorT::Type::DownLeft)
+#define CURSOR_DOWN_RIGhT   (cursor == CursorT::Type::DownRight)
 
 
 CameraT::CameraT(Context *context) : LogicComponent(context)
@@ -101,7 +101,7 @@ void CameraT::PostUpdate(float time)
         return;
     }
 
-    TCursor::Type::E cursor = TheCursor->GetType();
+    CursorT::Type::E cursor = TheCursor->GetType();
 
     const float MOVE_SPEED = 30.0f;
 

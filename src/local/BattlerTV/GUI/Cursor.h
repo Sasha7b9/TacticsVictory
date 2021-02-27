@@ -6,9 +6,9 @@ class TImage;
 class CursorShapes;
 
 
-class TCursor : public Cursor
+class CursorT : public Cursor
 {
-    URHO3D_OBJECT(TCursor, Cursor)
+    URHO3D_OBJECT(CursorT, Cursor)
 
 public:
 
@@ -27,7 +27,7 @@ public:
         Count
     }; };
 
-    TCursor(Context *context);
+    CursorT(Context *context);
     static void RegisterObject(Context *context = TheContext);
     SharedPtr<Cursor> GetCursor();
     virtual void Update(float dT);
@@ -61,7 +61,7 @@ class CursorShapes : public Object
     URHO3D_OBJECT(CursorShapes, Object);
 public:
     CursorShapes();
-    SharedPtr<TImage> GetShape(TCursor::Type::E type, int numFrame);
+    SharedPtr<TImage> GetShape(CursorT::Type::E type, int numFrame);
 
 private:
     void CreateNormal(int numFrame);
@@ -75,12 +75,12 @@ private:
     void CreateDownLeft(int numFrame);
     void CreateDownRight(int numFrame);
     void CreateBusy(int numFrame);
-    void FillGradient(TImage *image, TCursor::Type::E type, int numFrame);
+    void FillGradient(TImage *image, CursorT::Type::E type, int numFrame);
 
 public:
     struct StructShape
     {
-        TCursor::Type::E type;
+        CursorT::Type::E type;
         int numFrame;
 
         unsigned ToHash() const

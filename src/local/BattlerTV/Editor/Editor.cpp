@@ -114,7 +114,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             currentPlane = TheTerrain->GetIntersectionPlane(ray);
 
             if (!currentPlane.IsZero() &&
-                (TheCursor->GetType() == TCursor::Type::Normal || TheCursor->GetType() == TCursor::Type::Selected))
+                (TheCursor->GetType() == CursorT::Type::Normal || TheCursor->GetType() == CursorT::Type::Selected))
             {
                 if (!selectedPlane.IsEquals(currentPlane))
                 {
@@ -142,7 +142,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             currentEdge = TheTerrain->GetIntersectionEdge(ray);
 
             if (!currentEdge.IsZero() &&
-                (TheCursor->GetType() == TCursor::Type::Normal || TheCursor->GetType() == TCursor::Type::Selected))
+                (TheCursor->GetType() == CursorT::Type::Normal || TheCursor->GetType() == CursorT::Type::Selected))
             {
                 Color color = static_cast<int>
                     (TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112

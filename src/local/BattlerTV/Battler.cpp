@@ -207,7 +207,7 @@ void Battler::CreateScriptSystem()
 void Battler::RegistrationComponets()
 {
     CameraT::RegisterObject();
-    TCursor::RegisterObject();
+    CursorT::RegisterObject();
     TImage::RegisterObject();
     SunEngine::RegisterObject();
     Rotator::RegisterObject();

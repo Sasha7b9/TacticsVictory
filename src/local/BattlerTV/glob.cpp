@@ -26,7 +26,7 @@ Script           *TheScript = nullptr;
 
 CameraT *TheCamera = nullptr;
 ConsoleT         *TheConsole = nullptr;
-TCursor          *TheCursor = nullptr;
+CursorT          *TheCursor = nullptr;
  Editor          *TheEditor = nullptr;
  GUI             *TheGUI = nullptr;
  GuiEditor       *TheGuiEditor = nullptr;

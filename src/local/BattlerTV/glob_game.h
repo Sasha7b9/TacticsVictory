@@ -2,8 +2,8 @@
 #pragma once
 
 class  CameraT;
-class ConsoleT;
-class TCursor;
+class  ConsoleT;
+class CursorT;
 class  Editor;
 class  GUI;
 class  GuiEditor;
@@ -26,7 +26,7 @@ class TWindow;
 
 extern CameraT *TheCamera;
 extern ConsoleT *TheConsole;
-extern TCursor *TheCursor;
+extern CursorT *TheCursor;
 extern  Editor *TheEditor;
 extern  GUI *TheGUI;
 extern  GuiEditor *TheGuiEditor;

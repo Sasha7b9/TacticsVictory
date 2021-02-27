@@ -197,7 +197,7 @@ void GUI::Create()
     TheGuiEditor = new GuiEditor();
     TheGuiEditor->SetVisible(false);
 
-    TheCursor = TheUIRoot->CreateChild<TCursor>("TCursor");
+    TheCursor = TheUIRoot->CreateChild<CursorT>("CursorT");
 
     TheLocalization->SetLanguage(TheSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
 }
