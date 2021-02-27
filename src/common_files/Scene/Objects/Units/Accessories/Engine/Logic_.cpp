@@ -3,13 +3,13 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-EngineAlgorithm *EngineCalculator::Calculate(const PhysicsComponent *start, CommandEngine::E command)
+EngineAlgorithm *EngineCalculator::Calculate(const PhysicsComponent * /*start*/, CommandEngine::E /*command*/)
 {
     EngineAlgorithm *result = new EngineAlgorithm();
 
 
 
-    return new EngineAlgorithm();
+    return result;
 }
 
 
