@@ -30,7 +30,7 @@ public:
     {
         IntKey()
         {};
-        IntKey(char *child, pchar elem = "val")
+        IntKey(pchar child, pchar elem = "val")
         {
             str = String(child) + String(elem);
         };
