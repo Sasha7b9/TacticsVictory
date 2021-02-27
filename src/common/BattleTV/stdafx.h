@@ -18,19 +18,9 @@
 #include <Urho3D/Engine/EngineDefs.h>
 
 #include <Urho3D/Graphics/Geometry.h>
-#include <Urho3D/Graphics/Graphics.h>
-#include <Urho3D/Graphics/GraphicsDefs.h>
 #include <Urho3D/Graphics/IndexBuffer.h>
 #include <Urho3D/Graphics/Model.h>
 #include <Urho3D/Graphics/Octree.h>
-#include <Urho3D/Graphics/OctreeQuery.h>
-#include <Urho3D/Graphics/ParticleEffect.h>
-#include <Urho3D/Graphics/ParticleEmitter.h>
-#include <Urho3D/Graphics/RenderSurface.h>
-#include <Urho3D/Graphics/Texture2D.h>
-#include <Urho3D/Graphics/Texture.h>
-#include <Urho3D/Graphics/Renderer.h>
-#include <Urho3D/Graphics/StaticModel.h>
 #include <Urho3D/Graphics/VertexBuffer.h>
 #include <Urho3D/Graphics/Zone.h>
 
@@ -63,7 +53,6 @@
 #include <Urho3D/Resource/XMLFile.h>
 #include <Urho3D/Resource/Localization.h>
 #include <Urho3D/Resource/JSONFile.h>
-
 
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Scene.h>
