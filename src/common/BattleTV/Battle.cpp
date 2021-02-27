@@ -156,7 +156,15 @@ void Battle::OpenLog()
     char buffer[50];
     srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
 
+#ifdef WIN32
+#pragma warning(push, 2)
+#endif
+
     sprintf(buffer, "TV.log");
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif
 
     TheLog->Open(buffer);
     TheLog->SetLevel(LOG_DEBUG);

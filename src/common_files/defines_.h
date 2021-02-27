@@ -1,20 +1,20 @@
 // 2021/02/23 22:42:59 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
-#define JSON_MODEL_TANK     "Models/Tank.json"
+#define JSON_MODEL_TANK         "Models/Tank.json"
 
-#define VAR_NODE_IS_UNIT    "isUnit"
-#define VAR_NODE_IS_FLYING  "isFlaying"
+#define VAR_NODE_IS_UNIT        "isUnit"
+#define VAR_NODE_IS_FLYING      "isFlaying"
 
 #define NAME_NODE_CAMERA_TARGET "CameraTarget"
 #define NAME_NODE_TANK          "Tank"
 #define NAME_NODE_TERRAIN       "Terrain"
 #define NAME_NODE_TILE_PATH     "TilePath"
 
-#define RESOURCES_DIR       "TVData"
+#define RESOURCES_DIR           "TVData"
 
-#define SERVER_ADDRESS      "127.0.0.1"
-#define SERVER_PORT         1000
+#define SERVER_ADDRESS          "127.0.0.1"
+#define SERVER_PORT             40000
 
 #define VIEW_MASK_FOR_MISSILE   1
 #define VIEW_MASK_FOR_EFFECTS   2

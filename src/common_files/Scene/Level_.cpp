@@ -4,6 +4,7 @@
 #include "Scene/Level_.h"
 #include "Scene/Terrain/SegmentTerrain_.h"
 #include "Utils/GlobalFunctions.h"
+#include "Utils/StringUtils.h"
 
 
 Vector<Vector<float> > Level::map;
@@ -42,7 +43,7 @@ static int PushToVector(const char *data, Vector<float> *vec)
     while(IsCorrectSymbol(*data))
     {
         char add[2] = {*data, 0};
-        strcat(buffer, add);
+        SU::Strcat(buffer, add);
         retValue++;
         data++;
     }
