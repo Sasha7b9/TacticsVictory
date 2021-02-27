@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Primitives/TLine_.h"
+#include "Scene/Primitives/Line_.h"
 
 
 class TPlane

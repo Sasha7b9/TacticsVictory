@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Core/Math_.h"
 #include "Scene/Level_.h"
-#include "Scene/Terrain/TSegmentTerrain_.h"
+#include "Scene/Terrain/SegmentTerrain_.h"
 #include "Utils/GlobalFunctions.h"
 
 

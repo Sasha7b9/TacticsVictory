@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Scene/Primitives/TTriangle_.h"
+#include "Scene/Primitives/Triangle_.h"
 
 
 Triangle Triangle::ZERO = Triangle(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);

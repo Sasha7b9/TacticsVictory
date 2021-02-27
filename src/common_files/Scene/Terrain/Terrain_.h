@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Primitives/TPlane_.h"
-#include "Scene/Terrain/TCubeTerrain_.h"
+#include "Scene/Primitives/Plane_.h"
+#include "Scene/Terrain/CubeTerrain_.h"
 
 
 class GameObject;
