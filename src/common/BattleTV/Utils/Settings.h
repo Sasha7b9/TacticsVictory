@@ -46,7 +46,7 @@ public:
         FloatKey()
         {
         };
-        FloatKey(char *child, char *elem)
+        FloatKey(pchar child, pchar elem)
         {
             str = String(child) + String(elem);
         }
