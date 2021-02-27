@@ -9,12 +9,6 @@
 #include <Urho3D/AngelScript/ScriptFile.h>
 #include <Urho3D/AngelScript/ScriptInstance.h>
 
-#include <Urho3D/Audio/Audio.h>
-#include <Urho3D/Audio/Sound.h>
-#include <Urho3D/Audio/SoundListener.h>
-#include <Urho3D/Audio/SoundSource.h>
-#include <Urho3D/Audio/SoundSource3D.h>
-
 #include <Urho3D/Core/Mutex.h>
 #include <Urho3D/Core/Profiler.h>
 #include <Urho3D/Core/Thread.h>

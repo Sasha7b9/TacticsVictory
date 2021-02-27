@@ -37,7 +37,7 @@ void Battle::Setup()
     engineParameters_[EP_TEXTURE_QUALITY] = 32; //-V112
     engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
     engineParameters_[EP_WINDOW_HEIGHT] = TheSet->GetInt(TV_SCREEN_HEIGHT);
-    engineParameters_[EP_HEADLESS] = false;
+    engineParameters_[EP_HEADLESS] = true;
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
 #ifdef DEBUG
