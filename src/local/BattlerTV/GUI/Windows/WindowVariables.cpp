@@ -5,7 +5,7 @@
 
 
 WindowVariables::WindowVariables(Context *context) :
-    TWindow(context)
+    WindowT(context)
 {
     SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowNoBorder");

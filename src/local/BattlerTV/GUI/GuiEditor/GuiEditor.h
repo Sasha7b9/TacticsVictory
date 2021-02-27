@@ -2,7 +2,7 @@
 #pragma once
 
 
-class TWindow;
+class WindowT;
 class TButton;
 class PanelBottom;
 class PanelMap;
@@ -38,9 +38,9 @@ private:
     SharedPtr<PanelMap>    panelMap;
     SharedPtr<PanelMain>   panelMain;
 
-    SharedPtr<TWindow>      windowNewMap;
-    SharedPtr<TWindow>      windowMenu;
-    SharedPtr<TWindow>      windowConfirmExit;
+    SharedPtr<WindowT>      windowNewMap;
+    SharedPtr<WindowT>      windowMenu;
+    SharedPtr<WindowT>      windowConfirmExit;
     SharedPtr<SliderWithTextAndButtons> sliderSizeNewMapX;
     SharedPtr<SliderWithTextAndButtons> sliderSizeNewMapY;
 

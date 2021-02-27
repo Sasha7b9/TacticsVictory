@@ -8,7 +8,7 @@
 
 
 GovernorCell::GovernorCell(Context *) :
-    TWindow()
+    WindowT()
 {
     SetMovable(false);
     SetStyleAuto();
@@ -194,12 +194,12 @@ void GovernorCell::RegisterObject(Context *context)
 {
     context->RegisterFactory<GovernorCell>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(TWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
 }
 
 
 GovernorFloat::GovernorFloat(Context *context) :
-    TWindow()
+    WindowT()
 {
     SetMovable(false);
     SetStyle("WindowNoBorder");
@@ -253,7 +253,7 @@ void GovernorFloat::RegisterObject(Context *context)
 {
     context->RegisterFactory<GovernorFloat>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(TWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
 }
 
 

@@ -3,9 +3,9 @@
 #include "GUI/Controls/Window_.h"
 
 
-class Hint : public TWindow
+class Hint : public WindowT
 {
-    URHO3D_OBJECT(Hint, TWindow);
+    URHO3D_OBJECT(Hint, WindowT);
 
 public:
     Hint(char *text);

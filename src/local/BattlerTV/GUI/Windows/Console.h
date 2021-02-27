@@ -81,9 +81,9 @@ private:
 
 
 
-class ConsoleT : public TWindow
+class ConsoleT : public WindowT
 {
-    URHO3D_OBJECT(ConsoleT, TWindow);
+    URHO3D_OBJECT(ConsoleT, WindowT);
 
 public:
     ConsoleT(Context *context = TheContext);

@@ -7,7 +7,7 @@
 
 
 PanelMain::PanelMain(Context *context) :
-    TWindow(context)
+    WindowT(context)
 {
     SetName("PanelMain");
 
@@ -26,7 +26,7 @@ void PanelMain::RegisterObject(Context *context)
 {
     context->RegisterFactory<PanelMain>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(TWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
 }
 
 

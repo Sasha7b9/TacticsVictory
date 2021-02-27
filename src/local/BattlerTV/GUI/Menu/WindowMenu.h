@@ -3,9 +3,9 @@
 #include "GUI/Controls/Window_.h"
 
 
-class WindowMenu : public TWindow
+class WindowMenu : public WindowT
 {
-    URHO3D_OBJECT(WindowMenu, TWindow)
+    URHO3D_OBJECT(WindowMenu, WindowT)
 
 public:
     WindowMenu(Context *context = TheContext);

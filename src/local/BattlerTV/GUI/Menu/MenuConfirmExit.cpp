@@ -30,7 +30,7 @@ void MenuConfirmExit::RegisterObject(Context *context)
 {
     context->RegisterFactory<MenuConfirmExit>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(TWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
 }
 
 

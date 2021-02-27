@@ -5,7 +5,7 @@
 
 
 Tab::Tab(Context *) : 
-    TWindow()
+    WindowT()
 {
     buttonTitle = new ButtonToggled();
     SetMovable(false);
@@ -16,7 +16,7 @@ void Tab::RegisterObject(Context *context)
 {
     context->RegisterFactory<Tab>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(TWindow);
+    URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
 }
 
 

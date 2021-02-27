@@ -44,7 +44,7 @@ void GUI::RegistrationObjects()
     TButton::RegisterObject();
     ButtonSwitch::RegisterObject();
     ButtonToggled::RegisterObject();
-    TWindow::RegisterObject();
+    WindowT::RegisterObject();
     MenuGame::RegisterObject();
     MenuOptions::RegisterObject();
     MenuConfirmExit::RegisterObject();
@@ -234,7 +234,7 @@ bool GUI::UnderCursor()
 }
 
 
-void GUI::SetVisibleWindow(TWindow *window, bool visible)
+void GUI::SetVisibleWindow(WindowT *window, bool visible)
 {
     window->SetVisible(visible);
     if(visible)
@@ -258,7 +258,7 @@ void GUI::SetUnvisibleAllWindows()
 {
     while(!TheOpenedWindow.Empty())
     {
-        TWindow *window = TheOpenedWindow.Back();
+        WindowT *window = TheOpenedWindow.Back();
         window->SetVisible(false);
         TheOpenedWindow.Remove(window);
     }

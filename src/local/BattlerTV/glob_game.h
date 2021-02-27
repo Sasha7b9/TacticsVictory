@@ -22,7 +22,7 @@ class  Battler;
 class  TerrainT;
 class  WindowTarget;
 class  WindowVariables;
-class TWindow;
+class WindowT;
 
 extern CameraT *TheCamera;
 extern ConsoleT *TheConsole;
@@ -46,4 +46,4 @@ extern TerrainT *TheTerrain;
 extern  WindowTarget *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 extern  WindowVariables *TheWindowVars;
 
-extern Vector<TWindow *> TheOpenedWindow;
+extern Vector<WindowT *> TheOpenedWindow;

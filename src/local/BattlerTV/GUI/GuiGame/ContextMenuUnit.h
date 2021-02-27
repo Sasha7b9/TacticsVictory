@@ -7,9 +7,9 @@ class GameObject;
 class Label;
 
 
-class ContextMenuUnit : public TWindow
+class ContextMenuUnit : public WindowT
 {
-    URHO3D_OBJECT(ContextMenuUnit, TWindow);
+    URHO3D_OBJECT(ContextMenuUnit, WindowT);
 
 public:
     ContextMenuUnit(Context *context = TheContext);

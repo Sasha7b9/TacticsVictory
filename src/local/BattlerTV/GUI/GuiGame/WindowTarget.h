@@ -6,9 +6,9 @@
 class Tank;
 
 
-class WindowTarget : public TWindow
+class WindowTarget : public WindowT
 {
-    URHO3D_OBJECT(WindowTarget, TWindow);
+    URHO3D_OBJECT(WindowTarget, WindowT);
 
 public:
 

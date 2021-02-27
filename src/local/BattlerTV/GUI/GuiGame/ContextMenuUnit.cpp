@@ -6,7 +6,7 @@
 
 
 ContextMenuUnit::ContextMenuUnit(Context *context) :
-    TWindow(context)
+    WindowT(context)
 {
     SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowBorder");
