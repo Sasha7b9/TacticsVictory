@@ -25,18 +25,35 @@ Battle::Battle(Context* context) :
 void Battle::Setup()
 {
     TheBattle = this;
-    TheSet = new Settings();
-    TheCache = GetSubsystem<ResourceCache>();
-    TheFileSystem = GetSubsystem<FileSystem>();
+
+    GetSubsystems();
+
     OpenLog();
+
+    TheSet = new Settings();
+
     TheSet->Load();
 
-    engineParameters_[EP_WINDOW_TITLE] = GetTypeName();
+    TuneEngineParameters();  
+}
+
+
+void Battle::GetSubsystems()
+{
+    TheCache = GetSubsystem<ResourceCache>();
+    TheFileSystem = GetSubsystem<FileSystem>();
+    TheTime = GetSubsystem<Time>();
+    TheProfiler = GetSubsystem<Profiler>();
+    TheEngine = GetSubsystem<Engine>();
+    TheLocalization = GetSubsystem<Localization>();
+
+    CreateScriptSystem();
+}
+
+
+void Battle::TuneEngineParameters()
+{
     engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
-    engineParameters_[EP_FULL_SCREEN] = false;
-    engineParameters_[EP_TEXTURE_QUALITY] = 32; //-V112
-    engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
-    engineParameters_[EP_WINDOW_HEIGHT] = TheSet->GetInt(TV_SCREEN_HEIGHT);
     engineParameters_[EP_HEADLESS] = true;
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
@@ -45,20 +62,22 @@ void Battle::Setup()
 #else
         engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/release";
 #endif
+
+    TheCache->AddResourceDir(RESOURCES_DIR);
 }
 
 
 void Battle::Start()
 {
-    TheProfiler = GetSubsystem<Profiler>();
     PROFILER_FUNC_ENTER();
+
     Application::Start();
-    TheCache->AddResourceDir(RESOURCES_DIR);
     SetLocalization();
-    TheTime = GetSubsystem<Time>();
-    TheProfiler = GetSubsystem<Profiler>();
-    TheEngine = GetSubsystem<Engine>();
+
+    RegistrationComponets();
+
     TheScene = new SceneT();
+
     TheScene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);

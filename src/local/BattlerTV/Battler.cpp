@@ -42,7 +42,9 @@ void Battler::Setup()
     GetSubsystems();
 
     OpenLog();
+
     TheSet = new Settings();
+
     TheSet->Load();
 
     TuneEngineParameters();
