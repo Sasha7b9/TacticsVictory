@@ -1,7 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
+#ifdef WIN32
 #pragma warning(push, 0)
+#endif
 
 #include <Urho3D/AngelScript/Addons.h>
 #include <Urho3D/AngelScript/APITemplates.h>
@@ -69,9 +71,10 @@ using namespace Urho3D;
 #include <cfloat>
 #include <ctime>
 #include <sstream>
-#include <d3d9types.h>
 
+#ifdef WIN32
 #pragma warning(pop)
+#endif
 
 #include "defines.h"
 
