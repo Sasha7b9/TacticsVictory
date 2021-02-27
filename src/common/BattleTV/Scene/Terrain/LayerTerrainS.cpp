@@ -21,9 +21,6 @@ void LayerTerrain::Build()
         cube->BuildVertexes(vertexes, indexes);
     }
 
-    SharedPtr<VertexBuffer> vb(new VertexBuffer(TheContext));
-    SharedPtr<IndexBuffer> ib(new IndexBuffer(TheContext));
-
     uint numVert = vertexes.Size();
     uint numInd = indexes.Size();
 
@@ -39,14 +36,6 @@ void LayerTerrain::Build()
     {
         bufInd[(uint64)i] = indexes[i];
     }
-
-    vb->SetShadowed(true);
-    vb->SetSize(vertexes.Size() / 8, MASK_POSITION | MASK_NORMAL | MASK_TEXCOORD1);
-    vb->SetData(bufVert);
-
-    ib->SetShadowed(true);
-    ib->SetSize(numInd, true);
-    ib->SetData(bufInd);
 
     model = new Model(TheContext);
 
