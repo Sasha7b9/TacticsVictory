@@ -92,8 +92,12 @@ add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GAME_PATH} ${NETW
 
 include(../../RuntimeLibrary.cmake)
 
-if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
-    target_link_libraries(${PROJECT_NAME} Urho3D_d)
+if(WIN32)
+    if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
+        target_link_libraries(${PROJECT_NAME} Urho3D_d)
+    else()
+        target_link_libraries(${PROJECT_NAME} Urho3D)
+    endif()
 else()
     target_link_libraries(${PROJECT_NAME} Urho3D)
 endif()
