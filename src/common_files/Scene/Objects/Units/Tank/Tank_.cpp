@@ -20,7 +20,9 @@ void Tank::FixedUpdate(float timeStep)
 
     if (engine->IsStopped())
     {
-        engine->GiveCommand(EngineT::Command::MoveToNorth);
+        int direct = Rand() % 4;
+
+        engine->GiveCommand((EngineT::Command::E)(direct + 1));
     }
 }
 
