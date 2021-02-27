@@ -41,8 +41,6 @@ void Battler::Setup()
 
     GetSubsystems();
 
-    OpenLog();
-
     TheSet = new Settings();
 
     TheSet->Load();
@@ -93,6 +91,8 @@ void Battler::TuneEngineParameters()
 
 void Battler::Start()
 {
+    OpenLog();
+
     PROFILER_FUNC_ENTER();
 
     GetSubsystems();

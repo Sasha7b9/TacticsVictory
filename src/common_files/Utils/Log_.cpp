@@ -36,6 +36,8 @@ void LogT::Write(int level, const String &message, pchar file, pchar func, int n
     }
 
     Log::Write(level, str);
+
+    ConsoleLog::Write(str.CString());
 }
 
 
@@ -55,18 +57,20 @@ void ConsoleLog::Create()
 {
 #ifdef WIN32
 
-    if (GetStdHandle(STD_OUTPUT_HANDLE) == nullptr)
+    FreeConsole();
+
+    if (GetStdHandle(STD_OUTPUT_HANDLE) != INVALID_HANDLE_VALUE)
     {
         /*
         *  Чтобы в консоли не выводились кракозяблы вместо русских букв, нужно устанавливать шрифт Lucida Console
         */
 
-        win::SetConsoleCP(1251);
+//        win::SetConsoleCP(1251);
 
-        if (!SetConsoleOutputCP(1251))
-        {
-            DISPLAY_LAST_ERROR();
-        }
+//        if (!SetConsoleOutputCP(1251))
+//        {
+//            DISPLAY_LAST_ERROR();
+//        }
 
         if (!AllocConsole())
         {
@@ -103,4 +107,30 @@ void ConsoleLog::Create()
     }
 
 #endif
+}
+
+
+void ConsoleLog::Write(pchar message)
+{
+#ifdef WIN32
+
+    if (handle)
+    {
+        if (!WriteConsoleA(handle, (void *)message, (DWORD)std::strlen(message), NULL, NULL)) //-V202
+        {
+            DISPLAY_LAST_ERROR();
+        }
+
+        if (!WriteConsoleA(handle, "\n", 1, NULL, NULL))
+        {
+            DISPLAY_LAST_ERROR();
+        }
+    }
+    else
+
+#endif
+
+    {
+        std::cout << message << "\n";
+    }
 }

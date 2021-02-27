@@ -116,6 +116,7 @@ using namespace Urho3D;
 
 #include <cfloat>
 #include <ctime>
+#include <iostream>
 #include <sstream>
 #include <d3d9types.h>
 
