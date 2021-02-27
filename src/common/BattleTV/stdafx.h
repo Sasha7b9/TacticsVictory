@@ -14,16 +14,9 @@
 #include <Urho3D/Core/Thread.h>
 
 #include <Urho3D/Engine/Application.h>
-#include <Urho3D/Engine/DebugHud.h>
 #include <Urho3D/Engine/Engine.h>
 #include <Urho3D/Engine/EngineDefs.h>
-#include <Urho3D/Engine/Console.h>
 
-#include <Urho3D/Graphics/BillboardSet.h>
-#include <Urho3D/Graphics/Camera.h>
-#include <Urho3D/Graphics/CustomGeometry.h>
-#include <Urho3D/Graphics/DebugRenderer.h>
-#include <Urho3D/Graphics/DecalSet.h>
 #include <Urho3D/Graphics/Drawable.h>
 #include <Urho3D/Graphics/Geometry.h>
 #include <Urho3D/Graphics/Graphics.h>
@@ -42,9 +35,6 @@
 #include <Urho3D/Graphics/VertexBuffer.h>
 #include <Urho3D/Graphics/Zone.h>
 
-#include <Urho3D/Input/Input.h>
-#include <Urho3D/Input/InputEvents.h>
-
 #include <Urho3D/Math/MathDefs.h>
 #include <Urho3D/Math/Random.h>
 
@@ -62,9 +52,6 @@
 #include <Urho3D/UI/Window.h>
 #include <Urho3D/UI/CheckBox.h>
 #include <Urho3D/UI/UIEvents.h>
-
-#include <Urho3D/Urho2D/StaticSprite2D.h>
-#include <Urho3D/Urho2D/Sprite2D.h>
 
 #include <Urho3D/IO/IOEvents.h>
 #include <Urho3D/IO/File.h>

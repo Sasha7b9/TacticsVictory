@@ -63,7 +63,6 @@ void Battle::Start()
     TheScene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
-    TheScene->CreateComponent<DebugRenderer>();
     scene = new SceneT();
 
     CreateScriptSystem();
