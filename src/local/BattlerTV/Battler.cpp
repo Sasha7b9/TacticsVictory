@@ -106,7 +106,7 @@ void Battler::Start()
 
     TheMouse = new Mouse();
 
-    TheScene = new CScene();
+    TheScene = new SceneC();
 
     TheScene->Create();
 

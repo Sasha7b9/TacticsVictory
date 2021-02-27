@@ -7,7 +7,7 @@
 #include "Scene/SceneC.h"
 
 
-CScene::CScene(Context *context) : SceneT(context)
+SceneC::SceneC(Context *context) : SceneT(context)
 {
     CreateComponent<Octree>();
 
@@ -17,13 +17,13 @@ CScene::CScene(Context *context) : SceneT(context)
 }
 
 
-CScene::~CScene()
+SceneC::~SceneC()
 {
     delete TheWindowTarget;
 }
 
 
-void CScene::Create()
+void SceneC::Create()
 {
     SceneT::Create();
 

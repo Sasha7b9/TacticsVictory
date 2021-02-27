@@ -4,14 +4,14 @@
 #include "Scene/Scene_.h"
 
 
-class CScene : public SceneT
+class SceneC : public SceneT
 {
-    URHO3D_OBJECT(CScene, SceneT);
+    URHO3D_OBJECT(SceneC, SceneT);
 
 public:
 
-    CScene(Context *context = TheContext);
-    virtual ~CScene();
+    SceneC(Context *context = TheContext);
+    virtual ~SceneC();
 
     virtual void Create() override;
 };

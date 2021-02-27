@@ -71,7 +71,10 @@ void Battle::Start()
 {
     PROFILER_FUNC_ENTER();
 
+    GetSubsystems();
+
     Application::Start();
+
     SetLocalization();
 
     RegistrationComponets();
