@@ -18,25 +18,18 @@ namespace Message
 
         }
 
-#ifdef CLIENT
-
         else if (id == MSG_BUILD_SCENE)
         {
             ((BuildScene *)this)->Handle(msg);
         }
 
-#elif defined SERVER
-
-        else if (id == MSG_REQUEST_FOR_BUILD_SCENE)
-        {
-            ((RequestForBuildScene *)this)->Handle(connection);
-        }
+//        else if (id == MSG_REQUEST_FOR_BUILD_SCENE)
+//        {
+//            ((RequestForBuildScene *)this)->Handle(connection);
+//        }
         else if (id == MSG_KEY_EVENT)
         {
             ((KeyEvent *)this)->Handle(msg);
         }
-
-#endif
     }
-
 }

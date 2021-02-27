@@ -3,10 +3,7 @@
 #include "Core/Math_.h"
 #include "Game/Logic/SunEngine_.h"
 #include "Scene/Level_.h"
-#include "Scene/Scene_.h"
-#ifdef CLIENT
 #include "Scene/SceneC.h"
-#endif
 
 
 SceneT::SceneT(Context *context) : Scene(context)

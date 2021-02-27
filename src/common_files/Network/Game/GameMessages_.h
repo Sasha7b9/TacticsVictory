@@ -66,6 +66,6 @@ namespace Message
             buffer.WriteBool(press);
         }
 
-        void Handle(MemoryBuffer &msg);
+        void Handle(MemoryBuffer & /*msg*/) {};
     };
 }
