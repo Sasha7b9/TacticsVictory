@@ -13,10 +13,10 @@
     allMenus.Push(name);                                                \
     GF::SetWindowInCenterScreen(name);                                  \
     name->SetMovable(moving);                                           \
-    SubscribeToEvent(E_MENU, URHO3D_HANDLER(TMenu, HandleMenuEvent));
+    SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuT, HandleMenuEvent));
 
 
-TMenu::TMenu(Context *context) : Object(context)
+MenuT::MenuT(Context *context) : Object(context)
 {   
     CREATE_MENU(menuStart, MenuStart, false);
     CREATE_MENU(menuAbout, MenuAboutMe, false);
@@ -37,12 +37,12 @@ TMenu::TMenu(Context *context) : Object(context)
 }
 
 
-TMenu::~TMenu()
+MenuT::~MenuT()
 {
 }
 
 
-void TMenu::HandleMenuEvent(StringHash, VariantMap& eventData)
+void MenuT::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     using namespace MenuEvent;
 
@@ -74,14 +74,14 @@ void TMenu::HandleMenuEvent(StringHash, VariantMap& eventData)
 }
 
 
-void TMenu::Open(WindowMenu* menu, WindowMenu *prev)
+void MenuT::Open(WindowMenu* menu, WindowMenu *prev)
 {
     CloseAll();
     menu->Open(prev);
 }
 
 
-void TMenu::CloseAll()
+void MenuT::CloseAll()
 {
     for (WindowMenu *window : allMenus)
     {
@@ -90,19 +90,19 @@ void TMenu::CloseAll()
 }
 
 
-void TMenu::Hide()
+void MenuT::Hide()
 {
     CloseAll();
 }
 
 
-bool TMenu::IsActive()
+bool MenuT::IsActive()
 {
     return ActiveMenu() != nullptr;
 }
 
 
-bool TMenu::ProcessingKey(int key)
+bool MenuT::ProcessingKey(int key)
 {
     WindowMenu *active = ActiveMenu();
 
@@ -122,7 +122,7 @@ bool TMenu::ProcessingKey(int key)
 }
 
 
-WindowMenu* TMenu::ActiveMenu()
+WindowMenu* MenuT::ActiveMenu()
 {
     for(WindowMenu *window : allMenus)
     {

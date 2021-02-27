@@ -3,7 +3,7 @@
 
 class  CameraT;
 class  ConsoleT;
-class CursorT;
+class  CursorT;
 class  Editor;
 class  GUI;
 class  GuiEditor;
@@ -13,7 +13,7 @@ class  Level;
 class  LogC;
 class  MenuConfirmExit;
 class  MenuGame;
-class TMenu;
+class  MenuT;
 class  Mouse;
 class  PathIndicator;
 class  SceneC;
@@ -36,7 +36,7 @@ extern  Level *TheLevel;
 extern  LogC *TheLog;
 extern  MenuConfirmExit *TheMenuConfirmExit;
 extern  MenuGame *TheMenuMain;
-extern TMenu *TheMenu;
+extern MenuT *TheMenu;
 extern  Mouse *TheMouse;
 extern  PathIndicator *ThePathIndicator;
 extern SceneC *TheScene;
