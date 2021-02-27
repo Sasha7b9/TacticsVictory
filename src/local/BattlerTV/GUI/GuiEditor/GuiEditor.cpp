@@ -10,7 +10,7 @@
 #include "GUI/Panels/TPanelBottom.h"
 #include "GUI/Panels/TPanelMain.h"
 #include "GUI/Panels/TPanelMap.h"
-#include "GUI/Windows/TConsole.h"
+#include "GUI/Windows/Console.h"
 #include "Scene/Level_.h"
 #include "Scene/Cameras/Camera.h"
 #include "Utils/GlobalFunctions.h"

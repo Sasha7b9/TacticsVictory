@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Battler.h"
 #include "GUI/Cursor.h"
-#include "GUI/Windows/TConsole.h"
+#include "GUI/Windows/Console.h"
 #include "GUI/Menu/TMenu.h"
 #include "GUI/Menu/TMenuEvents.h"
 #include "Scene/Scene_.h"

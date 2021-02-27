@@ -5,7 +5,7 @@
 #include "GUI/Controls/THint_.h"
 #include "GUI/Menu/TMenuEvents.h"
 #include "GUI/Menu/TMenu.h"
-#include "GUI/Windows/TConsole.h"
+#include "GUI/Windows/Console.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 

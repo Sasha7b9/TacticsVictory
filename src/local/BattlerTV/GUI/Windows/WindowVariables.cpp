@@ -1,7 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Controls/TGovernorFloat_.h"
-#include "GUI/Windows/TWindowVariables.h"
+#include "GUI/Windows/WindowVariables.h"
 
 
 WindowVariables::WindowVariables(Context *context) :
