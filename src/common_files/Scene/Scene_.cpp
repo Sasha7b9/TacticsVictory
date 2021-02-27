@@ -26,6 +26,12 @@ void SceneT::RegisterObject(Context *context)
 
 void SceneT::Create()
 {
+    CreateComponent<Octree>();
+
+    ThePhysicsWorld = CreateComponent<PhysicsWorld>();
+
+    ThePhysicsWorld->SetGravity(Vector3::ZERO);
+
     ThePhysicsWorld->SetFps(5);
 
     // Create a Zone component into a child scene node. The Zone controls ambient lighting and fog settings. Like the Octree,

@@ -9,11 +9,7 @@
 
 SceneC::SceneC(Context *context) : SceneT(context)
 {
-    CreateComponent<Octree>();
 
-    ThePhysicsWorld = CreateComponent<PhysicsWorld>();
-
-    ThePhysicsWorld->SetGravity(Vector3::ZERO);
 }
 
 

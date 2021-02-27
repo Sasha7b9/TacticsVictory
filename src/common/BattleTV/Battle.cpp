@@ -81,11 +81,9 @@ void Battle::Start()
 
     TheScene = new SceneT();
 
-    TheScene->Create();
-
-    LOGINFO("Загружаю настройки");
-    
     TheLevel = new Level();
+
+    TheScene->Create();
 
     SubscribeToEvents();
 
@@ -96,12 +94,11 @@ void Battle::Start()
 void Battle::Stop()
 {
     engine_->DumpResources(true);
-    //engine_->DumpProfiler();
+    engine_->DumpProfiler();
+
     delete TheScene;
     delete TheLevel;
-    TheSet->Save();
     delete TheSet;
-    TheLog->Close();
     delete TheLog;
 }
 
