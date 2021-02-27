@@ -7,4 +7,5 @@ archive.zip
 
 generated/*
 out/debug/*.dll
+out/debug/BattleTV
 out/release/*
