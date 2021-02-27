@@ -64,8 +64,10 @@ public:
 };
 
 
+#ifdef WIN32
 #pragma warning(push)
 #pragma warning(disable:4505)
+#endif
 
 /*
 static CScriptArray* WaveAlgorithmGetUINT(WaveAlgorithm *wave)
@@ -79,4 +81,6 @@ static CScriptArray* WaveAlgorithmGetString(WaveAlgorithm *wave)
     return VectorToArray<String>(wave->GetPathString(), "Array<String>");
 }
 
+#ifdef WIN32
 #pragma warning(pop)
+#endif
