@@ -22,7 +22,7 @@ void Tank::FixedUpdate(float timeStep)
     {
         int direct = Rand() % 4;
 
-        engine->GiveCommand((EngineT::Command::E)(direct + 1));
+        engine->GiveCommand((CommandEngine::E)(direct + 1));
     }
 }
 

@@ -1,34 +1,7 @@
 // 2021/02/26 21:54:16 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Scene/Objects/Components/PhysicsComponent.h"
-
-
-//----------------------------------------------------------------------------------------------------------------------
-// Алгоритм действий - результат деятельности EngineCalculator
-//
-class EngineAlgorithm
-{
-
-};
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//  Рассчитывет действия, необходимые произвести, чтобы выполнить команду
-//
-class EngineCalculator
-{
-
-};
-
-
-//----------------------------------------------------------------------------------------------------------------------
-/*
-*  Выполняет действия, ранее рассчитанные EngineCalculator
-*/
-class EngineExecutor
-{
-
-};
+#include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -38,19 +11,11 @@ class EngineT : public Component
 
 public:
 
-    struct Command { enum E {
-        None,
-        MoveToNorth,
-        MoveToEast,
-        MoveToSouth,
-        MoveToWest
-    }; };
-
     EngineT(Context *context) : Component(context) {}
 
     virtual void Update(float timeStep) { UNUSED(timeStep); };
 
-    void GiveCommand(Command::E command);
+    void GiveCommand(CommandEngine::E command);
 
     void OnNodeSet(Node *node) override;
 
@@ -61,7 +26,9 @@ private:
 
     SharedPtr<PhysicsComponent> physics;
 
-    EngineCalculator calculator;
+    EngineCalculator calculator;                // Занимается расчётом алгоритма движения
+
+    EngineExecutor executor;                    // Выполняет алгоритм движения
 };
 
 

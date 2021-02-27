@@ -1,11 +1,12 @@
 // 2021/02/26 21:54:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Scene/Objects/Units/Accessories/Engine/Engine_.h"
+#include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-void EngineT::GiveCommand(Command::E command)
+void EngineT::GiveCommand(CommandEngine::E command)
 {
-
+    SharedPtr<EngineAlgorithm> algorithm(calculator.Calculate(physics, command));
 }
 
 
