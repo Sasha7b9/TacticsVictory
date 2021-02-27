@@ -14,10 +14,8 @@ namespace Message
         int id;
         VectorBuffer buffer;
 
-#ifdef CLIENT
         void Send(bool reliable);   // Метод действителен только для клиента. Серверу нужно ещё знать, в какое сое-
                                     // нение засылать
-#endif
     };
 
 
