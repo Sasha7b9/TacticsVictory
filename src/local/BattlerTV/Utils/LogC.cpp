@@ -1,6 +1,7 @@
 // 2021/02/17 13:43:23 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #include "stdafx.h"
 #include "GUI/Windows/Console.h"
+#include "Utils/Log_.h"
 #include "Utils/LogC.h"
 
 
@@ -30,4 +31,6 @@ void LogC::Write(int level, const String &message, pchar file, pchar func, int n
     Log::Write(level, str);
 
     TheConsole->Write(str);
+
+    TheConsole::Write(str.CString());
 }
