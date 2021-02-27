@@ -4,7 +4,7 @@
 #include "GUI/Cursor.h"
 #include "GUI/GUIEvents.h"
 #include "GUI/GUI.h"
-#include "GUI/Menu/TMenu.h"
+#include "GUI/Menu/Menu.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 

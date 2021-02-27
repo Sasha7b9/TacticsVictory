@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Controls/TGovernorFloat_.h"
+#include "GUI/Controls/GovernorFloat_.h"
 #include "GUI/Windows/WindowVariables.h"
 
 

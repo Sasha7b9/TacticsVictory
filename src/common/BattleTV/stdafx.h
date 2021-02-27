@@ -127,5 +127,5 @@ using namespace Urho3D;
 #include "glob_game.h"
 
 #include "Core/Structures_.h"
-#include "GUI/Controls/THint_.h"
-#include "GUI/Controls/TLabel_.h"
+#include "GUI/Controls/Hint_.h"
+#include "GUI/Controls/Label_.h"

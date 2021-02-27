@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "GUI/Controls/TWindow_.h"
+#include "GUI/Controls/Window_.h"
 
 
 class GovernorFloat;
