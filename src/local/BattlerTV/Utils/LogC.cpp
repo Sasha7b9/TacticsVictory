@@ -10,7 +10,7 @@ CLog::~CLog()
 }
 
 
-void CLog::Write(int level, const String &message, char *file, char *func, int numLine)
+void CLog::Write(int level, const String &message, pchar file, pchar func, int numLine)
 {
     String str = message;
     if (enabledExtendedInfo)

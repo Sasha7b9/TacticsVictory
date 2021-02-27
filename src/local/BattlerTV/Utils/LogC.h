@@ -11,5 +11,5 @@ public:
     CLog(Context *context = TheContext) : TLog(context) {}
     virtual ~CLog();
 
-    virtual void Write(int level, const String &message, char *file, char *func, int numLine) override;
+    virtual void Write(int level, const String &message, pchar file, pchar func, int numLine) override;
 };

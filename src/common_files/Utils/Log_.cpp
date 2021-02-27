@@ -12,7 +12,7 @@ TLog::TLog(Context *context) : Log(context)
 }
 
 
-void TLog::Write(int level, const String &message, char *file, char *func, int numLine)
+void TLog::Write(int level, const String &message, pchar file, pchar func, int numLine)
 {
     String str = message;
     if (enabledExtendedInfo)

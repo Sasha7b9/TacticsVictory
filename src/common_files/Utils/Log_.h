@@ -8,7 +8,7 @@ class TLog : public Log
 
 public:
     TLog(Context *context = TheContext);
-    virtual void Write(int level, const String &message, char *file, char *func, int numLine);
+    virtual void Write(int level, const String &message, pchar file, pchar func, int numLine);
     void EnableExtendedInfo();
     void DisableExtendedInfo();
 
