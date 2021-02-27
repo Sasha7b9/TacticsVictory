@@ -80,7 +80,7 @@ void SegmentTerrain::AddCube(const SharedPtr<CubeTerrain> &cube)
     {
         ground[cube->layer]->AddCube(cube);
     }
-    TTerrain::columnsCubes[cube->row][cube->col].Push(cube);
+    TerrainT::columnsCubes[cube->row][cube->col].Push(cube);
 }
 
 

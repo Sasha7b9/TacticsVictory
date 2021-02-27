@@ -29,7 +29,7 @@ void Editor::Run()
 
     Vector<Vector<float>> level = TheLevel->Load("Game/Levels/level.map");
 
-    TheTerrain = new TTerrain();
+    TheTerrain = new TerrainT();
     TheTerrain->CreateFromVector(level);
 
     lightNode = TheScene->CreateChild("LightNode");

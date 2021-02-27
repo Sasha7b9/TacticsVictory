@@ -6,13 +6,13 @@ class  Level;
 class  LogT;
 class  SceneT;
 class  Settings;
-class  TTerrain;
+class  TerrainT;
 
 extern Battle     *TheBattle;
 extern Level      *TheLevel;
 extern LogT       *TheLog;
 extern SceneT     *TheScene;
 extern Settings   *TheSet;
-extern TTerrain   *TheTerrain;
+extern TerrainT   *TheTerrain;
 
 extern Vector<Connection *> connections;

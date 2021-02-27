@@ -42,7 +42,7 @@ MenuT            *TheMenu = nullptr;
 SceneC           *TheScene = nullptr;
  Settings        *TheSet = nullptr;
  Battler         *TheBattler = nullptr;
-TTerrain         *TheTerrain = nullptr;
+TerrainT         *TheTerrain = nullptr;
  WindowTarget    *TheWindowTarget = nullptr;
  WindowVariables *TheWindowVars = nullptr;
 

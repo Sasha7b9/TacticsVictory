@@ -19,7 +19,7 @@ class  PathIndicator;
 class  SceneC;
 class  Settings;
 class  Battler;
-class TTerrain;
+class  TerrainT;
 class  WindowTarget;
 class  WindowVariables;
 class TWindow;
@@ -42,7 +42,7 @@ extern  PathIndicator *ThePathIndicator;
 extern SceneC *TheScene;
 extern  Settings *TheSet;
 extern  Battler *TheBattler;
-extern TTerrain *TheTerrain;
+extern TerrainT *TheTerrain;
 extern  WindowTarget *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 extern  WindowVariables *TheWindowVars;
 

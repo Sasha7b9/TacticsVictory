@@ -51,7 +51,7 @@ void SceneT::Create()
 
     level = Level::Load("Game/Levels/level.map");
 
-    TheTerrain = new TTerrain();
+    TheTerrain = new TerrainT();
     TheTerrain->CreateFromVector(level);
 
     SharedPtr<Node> lightNode;

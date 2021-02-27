@@ -4,15 +4,15 @@
 #include "Scene/Terrain/SegmentTerrain_.h"
 
 
-Vector<Vector<PODVector<CubeTerrain*>>> TTerrain::columnsCubes;
+Vector<Vector<PODVector<CubeTerrain*>>> TerrainT::columnsCubes;
 
 
-TTerrain::TTerrain(Context *context) : Object(context)
+TerrainT::TerrainT(Context *context) : Object(context)
 {
 }
 
 
-TTerrain::~TTerrain()
+TerrainT::~TerrainT()
 {
     for(auto &row : columnsCubes)
     {
@@ -27,7 +27,7 @@ TTerrain::~TTerrain()
 }
 
 
-void TTerrain::CreateFromVector(const Vector<Vector<float>> &lev)
+void TerrainT::CreateFromVector(const Vector<Vector<float>> &lev)
 {
     float time = TheTime->GetElapsedTime();
 
@@ -109,61 +109,61 @@ void TTerrain::CreateFromVector(const Vector<Vector<float>> &lev)
 }
 
 
-float TTerrain::GetHeight(uint colZ, uint rowX)
+float TerrainT::GetHeight(uint colZ, uint rowX)
 {
     return level[rowX][colZ];
 }
 
 
-void TTerrain::SetHeight(uint row, uint col, float height)
+void TerrainT::SetHeight(uint row, uint col, float height)
 {
     level[row][col] = height;
 }
 
 
-uint TTerrain::HeightX()
+uint TerrainT::HeightX()
 {
     return level.Size();
 }
 
 
-uint TTerrain::WidthZ()
+uint TerrainT::WidthZ()
 {
     return level[0].Size();
 }
 
 
-bool TTerrain::Empty()
+bool TerrainT::Empty()
 {
     return level.Empty();
 }
 
 
-TPlane TTerrain::GetIntersectionPlane(Ray& /*ray*/)
+TPlane TerrainT::GetIntersectionPlane(Ray& /*ray*/)
 {
     return TPlane::ZERO;
 }
 
 
-Line TTerrain::GetIntersectionEdge(Ray &/*ray*/)
+Line TerrainT::GetIntersectionEdge(Ray &/*ray*/)
 {
     return Line::ZERO;
 }
 
 
-TPlane TTerrain::GetPlane(uint /*row*/, uint /*col*/)
+TPlane TerrainT::GetPlane(uint /*row*/, uint /*col*/)
 {
     return TPlane::ZERO;
 }
 
 
-Vector<Vector<float>> TTerrain::GetMap()
+Vector<Vector<float>> TerrainT::GetMap()
 {
     return level;
 }
 
 
-PODVector<CubeTerrain*>* TTerrain::GetColumnCubes(const CubeTerrain *cube, DIR::E dir)
+PODVector<CubeTerrain*>* TerrainT::GetColumnCubes(const CubeTerrain *cube, DIR::E dir)
 {
     const int dRow[8] = { 0, -1, -1, -1, 0, 1, 1,  1};
     const int dCol[8] = {-1, -1,  0,  1, 1, 1, 0, -1};
@@ -180,13 +180,13 @@ PODVector<CubeTerrain*>* TTerrain::GetColumnCubes(const CubeTerrain *cube, DIR::
 }
 
 
-SegmentTerrain* TTerrain::GetSegmentForCoord(uint row, uint col)
+SegmentTerrain* TerrainT::GetSegmentForCoord(uint row, uint col)
 {
     return segments[row / SegmentTerrain::WIDTH_Z][col / SegmentTerrain::HEIGHT_X];
 }
 
 
-void TTerrain::PutIn(GameObject *object, uint colZ, uint rowX)
+void TerrainT::PutIn(GameObject *object, uint colZ, uint rowX)
 {
     float height = GetHeight(colZ, rowX);
 

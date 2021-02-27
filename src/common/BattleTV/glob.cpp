@@ -19,5 +19,5 @@ Level             *TheLevel = nullptr;
 LogT              *TheLog = nullptr;
 SceneT            *TheScene = nullptr;
 Settings          *TheSet = nullptr;
-TTerrain          *TheTerrain = nullptr;
+TerrainT          *TheTerrain = nullptr;
 Vector<Connection *> connections;

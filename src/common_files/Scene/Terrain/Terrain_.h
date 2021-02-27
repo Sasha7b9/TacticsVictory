@@ -21,15 +21,15 @@ struct DIR { enum E {
 
 
 
-class TTerrain : public Object
+class TerrainT : public Object
 {
-    URHO3D_OBJECT(TTerrain, Object);
+    URHO3D_OBJECT(TerrainT, Object);
 
 public:
 
-    TTerrain(Context *context = TheContext);
+    TerrainT(Context *context = TheContext);
 
-    ~TTerrain();
+    ~TerrainT();
 
     void CreateFromVector(const Vector<Vector<float>> &level);
 

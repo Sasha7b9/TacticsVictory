@@ -295,7 +295,7 @@ void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
         (uint)sliderSizeNewMapX->GetValue());
 
     delete TheTerrain;
-    TheTerrain = new TTerrain();
+    TheTerrain = new TerrainT();
     TheTerrain->CreateFromVector(map);
     windowNewMap->SetVisible(false);
 
@@ -393,7 +393,7 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
             (char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
 
         delete TheTerrain;
-        TheTerrain = new TTerrain();
+        TheTerrain = new TerrainT();
         TheTerrain->CreateFromVector(map);
         TheCamera->SetPosition(
             {TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()},
