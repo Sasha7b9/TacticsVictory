@@ -16,8 +16,6 @@ public:
     virtual void Start();
     virtual void Stop();
 
-    SceneT *scene = nullptr; //-V122
-
 private:
     bool drawDebug = false;
 

@@ -81,16 +81,7 @@ void Battle::Start()
 
     TheScene = new SceneT();
 
-    TheScene->CreateComponent<Octree>();
-    ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
-    ThePhysicsWorld->SetGravity(Vector3::ZERO);
-    scene = new SceneT();
-
-    CreateScriptSystem();
-
-    RegistrationComponets();
-
-    scene->Create();
+    TheScene->Create();
 
     LOGINFO("Загружаю настройки");
     
@@ -107,7 +98,6 @@ void Battle::Stop()
     engine_->DumpResources(true);
     //engine_->DumpProfiler();
     delete TheScene;
-    delete scene;
     delete TheLevel;
     TheSet->Save();
     delete TheSet;

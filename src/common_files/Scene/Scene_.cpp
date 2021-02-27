@@ -43,7 +43,7 @@ void SceneT::Create()
     float dColor = 0.1f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    level = TheLevel->Load("Game/Levels/level.map");
+    level = Level::Load("Game/Levels/level.map");
 
     TheTerrain = new TTerrain();
     TheTerrain->CreateFromVector(level);

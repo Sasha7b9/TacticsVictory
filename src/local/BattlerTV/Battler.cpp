@@ -108,6 +108,8 @@ void Battler::Start()
 
     TheScene = new SceneC();
 
+    TheLevel = new Level();
+
     TheScene->Create();
 
     ThePathIndicator = new PathIndicator();
@@ -136,8 +138,6 @@ void Battler::Start()
     TheFileSelector = new FileSelector(TheContext);
     TheFileSelector->GetWindow()->SetModal(false);
     TheFileSelector->GetWindow()->SetVisible(false);
-
-    TheLevel = new Level();
 
     SubscribeToEvents();
 
