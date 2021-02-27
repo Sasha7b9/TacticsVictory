@@ -9,10 +9,13 @@
 #include "Utils/Settings.h"
 
 
-#pragma warning(push)
-#pragma warning(disable:4100)
+#ifdef WIN32
+#pragma warning(push, 0)
+#endif
 URHO3D_DEFINE_APPLICATION_MAIN(Battle)
+#ifdef WIN32
 #pragma warning(pop)
+#endif
 
 
 Battle::Battle(Context* context) :
