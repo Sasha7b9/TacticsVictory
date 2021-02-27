@@ -2,7 +2,7 @@
 #pragma once
 
 class  CameraT;
-class TConsole;
+class ConsoleT;
 class TCursor;
 class  Editor;
 class  GUI;
@@ -25,7 +25,7 @@ class  WindowVariables;
 class TWindow;
 
 extern CameraT *TheCamera;
-extern TConsole *TheConsole;
+extern ConsoleT *TheConsole;
 extern TCursor *TheCursor;
 extern  Editor *TheEditor;
 extern  GUI *TheGUI;

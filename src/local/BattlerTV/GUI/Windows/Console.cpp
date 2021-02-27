@@ -220,7 +220,7 @@ bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool
 
 
 
-TConsole::TConsole(Context *context) :
+ConsoleT::ConsoleT(Context *context) :
     TWindow(context)
 {
     SetVisible(false);
@@ -249,18 +249,18 @@ TConsole::TConsole(Context *context) :
     text->SetWordwrap(true);
     AddChild(text);
 
-    SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(TConsole, HandleFinishedText));
-    SubscribeToEvent(lineEdit, E_UNHANDLEDKEY, URHO3D_HANDLER(TConsole, HandleUnhandledKey));
-    SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(TConsole, HandleClick));
-    SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(TConsole, HandleClick));
-    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(TConsole, HandleResize));
+    SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(ConsoleT, HandleFinishedText));
+    SubscribeToEvent(lineEdit, E_UNHANDLEDKEY, URHO3D_HANDLER(ConsoleT, HandleUnhandledKey));
+    SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(ConsoleT, HandleClick));
+    SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(ConsoleT, HandleClick));
+    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(ConsoleT, HandleResize));
 
     VariantMap map;
     HandleResize("", map);
 }
 
 
-void TConsole::Toggle()
+void ConsoleT::Toggle()
 {
    SetVisible(!IsVisible());
    if(IsVisible())
@@ -271,13 +271,13 @@ void TConsole::Toggle()
 }
 
 
-bool TConsole::IsActive()
+bool ConsoleT::IsActive()
 {
     return lineEdit->HasFocus();
 }
 
 
-void TConsole::HandleFinishedText(StringHash, VariantMap&)
+void ConsoleT::HandleFinishedText(StringHash, VariantMap&)
 {
     String command = lineEdit->GetText();
     if(command.Empty())
@@ -296,7 +296,7 @@ void TConsole::HandleFinishedText(StringHash, VariantMap&)
 }
 
 
-void TConsole::HandleUnhandledKey(StringHash, VariantMap& eventData)
+void ConsoleT::HandleUnhandledKey(StringHash, VariantMap& eventData)
 {
     using namespace UnhandledKey;
     int key = eventData[P_KEY].GetInt();
@@ -312,13 +312,13 @@ void TConsole::HandleUnhandledKey(StringHash, VariantMap& eventData)
 }
 
 
-void TConsole::HandleClick(StringHash, VariantMap&)
+void ConsoleT::HandleClick(StringHash, VariantMap&)
 {
     lineEdit->SetFocus(true);
 }
 
 
-void TConsole::HandleResize(StringHash, VariantMap&)
+void ConsoleT::HandleResize(StringHash, VariantMap&)
 {
     lineEdit->SetSize(GetWidth() - 20, 15);
     lineEdit->SetPosition(2, GetHeight() - 15);
@@ -346,7 +346,7 @@ void TConsole::HandleResize(StringHash, VariantMap&)
 }
 
 
-void TConsole::Write(const String &message)
+void ConsoleT::Write(const String &message)
 {
     if(message[0] == '>')
     {
@@ -380,7 +380,7 @@ void TConsole::Write(const String &message)
 }
 
 
-void TConsole::Clear()
+void ConsoleT::Clear()
 {
     text->SetText("");
     text->SetPosition(2, 0);

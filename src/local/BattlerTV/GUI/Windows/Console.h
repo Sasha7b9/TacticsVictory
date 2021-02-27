@@ -81,12 +81,12 @@ private:
 
 
 
-class TConsole : public TWindow
+class ConsoleT : public TWindow
 {
-    URHO3D_OBJECT(TConsole, TWindow);
+    URHO3D_OBJECT(ConsoleT, TWindow);
 
 public:
-    TConsole(Context *context = TheContext);
+    ConsoleT(Context *context = TheContext);
     void Toggle();
     bool IsActive();                            // Возвращает true, если активна строка ввода
     void Write(const String &message);

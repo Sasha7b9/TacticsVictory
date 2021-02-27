@@ -25,7 +25,7 @@ Profiler         *TheProfiler = nullptr;
 Script           *TheScript = nullptr;
 
 CameraT *TheCamera = nullptr;
-TConsole         *TheConsole = nullptr;
+ConsoleT         *TheConsole = nullptr;
 TCursor          *TheCursor = nullptr;
  Editor          *TheEditor = nullptr;
  GUI             *TheGUI = nullptr;

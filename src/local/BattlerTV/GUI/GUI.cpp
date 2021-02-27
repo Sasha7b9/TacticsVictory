@@ -173,7 +173,7 @@ static float GetSpeedNetOUT()
 
 void GUI::Create()
 {
-    TheConsole = new TConsole();
+    TheConsole = new ConsoleT();
     TheUIRoot->AddChild(TheConsole);
 
     TheWindowVars = new WindowVariables();
