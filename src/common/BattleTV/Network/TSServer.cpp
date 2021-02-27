@@ -4,24 +4,24 @@
 #include "Network/Game/GameMessages_.h"
 
 
-SServer::SServer(Context *context) : Object(context)
+ServerS::ServerS(Context *context) : Object(context)
 {
-    SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(SServer, HandleMessage));
-    SubscribeToEvent(E_SERVERCONNECTED, URHO3D_HANDLER(SServer, HandleServerConnected));
-    SubscribeToEvent(E_SERVERDISCONNECTED, URHO3D_HANDLER(SServer, HandleServerDisconnected));
-    SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(SServer, HandleConnectFailed));
-    SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(SServer, HandleClientConnected));
-    SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(SServer, HandleCliendDisconnected));
+    SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(ServerS, HandleMessage));
+    SubscribeToEvent(E_SERVERCONNECTED, URHO3D_HANDLER(ServerS, HandleServerConnected));
+    SubscribeToEvent(E_SERVERDISCONNECTED, URHO3D_HANDLER(ServerS, HandleServerDisconnected));
+    SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(ServerS, HandleConnectFailed));
+    SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(ServerS, HandleClientConnected));
+    SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(ServerS, HandleCliendDisconnected));
 }
 
 
-bool SServer::Start(uint16 port)
+bool ServerS::Start(uint16 port)
 {
     return TheNetwork->StartServer(port);
 }
 
 
-void SServer::HandleMessage(StringHash, VariantMap &eventData)
+void ServerS::HandleMessage(StringHash, VariantMap &eventData)
 {
     int id = eventData[NetworkMessage::P_MESSAGEID].GetInt();
 
@@ -29,19 +29,19 @@ void SServer::HandleMessage(StringHash, VariantMap &eventData)
 }
 
 
-void SServer::HandleServerConnected(StringHash, VariantMap &)
+void ServerS::HandleServerConnected(StringHash, VariantMap &)
 {
 //    LOG_FUNC_ENTER();
 }
 
 
-void SServer::HandleServerDisconnected(StringHash, VariantMap &)
+void ServerS::HandleServerDisconnected(StringHash, VariantMap &)
 {
 //    LOG_FUNC_ENTER();
 }
 
 
-void SServer::HandleClientConnected(StringHash, VariantMap &eventData)
+void ServerS::HandleClientConnected(StringHash, VariantMap &eventData)
 {
 //    LOG_FUNC_ENTER();
 
@@ -53,7 +53,7 @@ void SServer::HandleClientConnected(StringHash, VariantMap &eventData)
 }
 
 
-void SServer::HandleCliendDisconnected(StringHash, VariantMap &)
+void ServerS::HandleCliendDisconnected(StringHash, VariantMap &)
 {
 //    LOG_FUNC_ENTER();
 
@@ -61,7 +61,7 @@ void SServer::HandleCliendDisconnected(StringHash, VariantMap &)
 }
 
 
-void SServer::HandleConnectFailed(StringHash, VariantMap &)
+void ServerS::HandleConnectFailed(StringHash, VariantMap &)
 {
 //    LOG_FUNC_ENTER();
 }

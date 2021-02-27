@@ -2,13 +2,13 @@
 #include "defines.h"
 
 
-class SServer : public Object
+class ServerS : public Object
 {
-    URHO3D_OBJECT(SServer, Object);
+    URHO3D_OBJECT(ServerS, Object);
 
 public:
 
-    SServer(Context *context);
+    ServerS(Context *context);
 
     bool Start(uint16 port);
 
