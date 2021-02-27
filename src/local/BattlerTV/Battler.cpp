@@ -122,7 +122,7 @@ void Battler::Start()
         TheTerrain->PutIn(TheScene->CreateComponent<Tank>(), colZ, rowX);
     }
 
-    TheCamera = TCamera::Create();
+    TheCamera = CameraT::Create();
 
     SetWindowTitleAndIcon();
 
@@ -206,7 +206,7 @@ void Battler::CreateScriptSystem()
 
 void Battler::RegistrationComponets()
 {
-    TCamera::RegisterObject();
+    CameraT::RegisterObject();
     TCursor::RegisterObject();
     TImage::RegisterObject();
     SunEngine::RegisterObject();

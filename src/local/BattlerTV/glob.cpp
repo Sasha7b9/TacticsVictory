@@ -24,7 +24,7 @@ FileSelector     *TheFileSelector = nullptr;
 Profiler         *TheProfiler = nullptr;
 Script           *TheScript = nullptr;
 
-TCamera          *TheCamera = nullptr;
+CameraT *TheCamera = nullptr;
 TConsole         *TheConsole = nullptr;
 TCursor          *TheCursor = nullptr;
  Editor          *TheEditor = nullptr;

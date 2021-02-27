@@ -2,9 +2,9 @@
 #pragma once
 
 
-class TCamera : public LogicComponent
+class CameraT : public LogicComponent
 {
-    URHO3D_OBJECT(TCamera, LogicComponent);
+    URHO3D_OBJECT(CameraT, LogicComponent);
 
 public:
 
@@ -19,11 +19,11 @@ public:
         RotatePITCH
     }; };
 
-    TCamera(Context *context);
+    CameraT(Context *context);
 
     static void RegisterObject();
 
-    static SharedPtr<TCamera> Create();
+    static SharedPtr<CameraT> Create();
 
     virtual void PostUpdate(float time) override;
     void ParallelTranslateLookAt(const Vector3 &lookAt);

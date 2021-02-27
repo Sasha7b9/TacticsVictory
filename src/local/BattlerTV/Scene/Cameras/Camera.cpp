@@ -17,7 +17,7 @@
 #define CURSOR_DOWN_RIGhT   (cursor == TCursor::Type::DownRight)
 
 
-TCamera::TCamera(Context *context) : LogicComponent(context)
+CameraT::CameraT(Context *context) : LogicComponent(context)
 {
     cameraNode = TheScene->CreateChild("Camera");
 
@@ -39,15 +39,15 @@ TCamera::TCamera(Context *context) : LogicComponent(context)
 }
 
 
-void TCamera::RegisterObject()
+void CameraT::RegisterObject()
 {
-    TheContext->RegisterFactory<TCamera>();
+    TheContext->RegisterFactory<CameraT>();
 }
 
 
-SharedPtr<TCamera> TCamera::Create()
+SharedPtr<CameraT> CameraT::Create()
 {
-    SharedPtr<TCamera> camera(TheScene->CreateChild("TCamera")->CreateComponent<TCamera>());
+    SharedPtr<CameraT> camera(TheScene->CreateChild("TCamera")->CreateComponent<CameraT>());
 
     uint sizeX = TheScene->level[0].Size();
     uint sizeZ = TheScene->level.Size();
@@ -59,33 +59,33 @@ SharedPtr<TCamera> TCamera::Create()
 }
 
 
-Vector3 TCamera::GetPosition()
+Vector3 CameraT::GetPosition()
 {
     return cameraNode->GetPosition();
 }
 
 
-void TCamera::SetPosition(const Vector3 &position)
+void CameraT::SetPosition(const Vector3 &position)
 {
     cameraNode->SetPosition(position);
 }
 
 
-void TCamera::SetPosition(const Vector3& position, const Vector3& lookAt_)
+void CameraT::SetPosition(const Vector3& position, const Vector3& lookAt_)
 {
     cameraNode->SetPosition(position);
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
-void TCamera::LookAt(const Vector3 &lookAt_)
+void CameraT::LookAt(const Vector3 &lookAt_)
 {
     lookAt = lookAt_;
     cameraNode->LookAt(lookAt);
 }
 
 
-void TCamera::ParallelTranslateLookAt(const Vector3 &lookAt_)
+void CameraT::ParallelTranslateLookAt(const Vector3 &lookAt_)
 {
     Vector3 delta = lookAt_ - lookAt;
     lookAt = lookAt_;
@@ -94,7 +94,7 @@ void TCamera::ParallelTranslateLookAt(const Vector3 &lookAt_)
 }
 
 
-void TCamera::PostUpdate(float time)
+void CameraT::PostUpdate(float time)
 {
     if(!enabled || TheConsole->IsActive())
     {
@@ -199,7 +199,7 @@ void TCamera::PostUpdate(float time)
 }
 
 
-void TCamera::SetPitch(float newPitch)
+void CameraT::SetPitch(float newPitch)
 {
     Quaternion rotation = cameraNode->GetRotation();
     float yawAngle = rotation.YawAngle();
@@ -210,7 +210,7 @@ void TCamera::SetPitch(float newPitch)
 }
 
 
-void TCamera::MoveOn(Direction::E direction, float distance)
+void CameraT::MoveOn(Direction::E direction, float distance)
 {
     if(!enabled)
     {
@@ -305,13 +305,13 @@ void TCamera::MoveOn(Direction::E direction, float distance)
 }
 
 
-void TCamera::SetEnabled(bool _enabled)
+void CameraT::SetEnabled(bool _enabled)
 {
     enabled = _enabled;
 }
 
 
-void TCamera::SetupViewport()
+void CameraT::SetupViewport()
 {
     Camera *camera = cameraNode->GetComponent<Camera>();
 
@@ -321,13 +321,13 @@ void TCamera::SetupViewport()
 }
 
 
-SharedPtr<Node> TCamera::GetNode()
+SharedPtr<Node> CameraT::GetNode()
 {
     return cameraNode;
 }
 
 
-Ray TCamera::GetCursorRay()
+Ray CameraT::GetCursorRay()
 {
     IntVector2 pos = TheUI->GetCursorPosition();
     return cameraNode->GetComponent<Camera>()->GetScreenRay(static_cast<float>(pos.x_) / TheGraphics->GetWidth(), static_cast<float>(pos.y_) / TheGraphics->GetHeight());

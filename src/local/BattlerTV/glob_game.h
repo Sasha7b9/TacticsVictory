@@ -1,7 +1,7 @@
 // 2021/02/15 16:12:30 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #pragma once
 
-class TCamera;
+class  CameraT;
 class TConsole;
 class TCursor;
 class  Editor;
@@ -24,7 +24,7 @@ class  WindowTarget;
 class  WindowVariables;
 class TWindow;
 
-extern TCamera *TheCamera;
+extern CameraT *TheCamera;
 extern TConsole *TheConsole;
 extern TCursor *TheCursor;
 extern  Editor *TheEditor;
