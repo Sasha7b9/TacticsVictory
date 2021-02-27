@@ -5,6 +5,7 @@
 extern Context       *TheContext;
 extern Engine        *TheEngine;
 extern FileSystem    *TheFileSystem;
+extern Font          *TheFont;
 extern Localization  *TheLocalization;
 extern Network       *TheNetwork;       // Сетевая система
 extern PhysicsWorld  *ThePhysicsWorld;

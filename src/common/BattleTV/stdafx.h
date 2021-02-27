@@ -17,8 +17,40 @@
 #include <Urho3D/Engine/Engine.h>
 #include <Urho3D/Engine/EngineDefs.h>
 
+#include <Urho3D/Graphics/Geometry.h>
+#include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/Graphics/GraphicsDefs.h>
+#include <Urho3D/Graphics/IndexBuffer.h>
+#include <Urho3D/Graphics/Model.h>
+#include <Urho3D/Graphics/Octree.h>
+#include <Urho3D/Graphics/OctreeQuery.h>
+#include <Urho3D/Graphics/ParticleEffect.h>
+#include <Urho3D/Graphics/ParticleEmitter.h>
+#include <Urho3D/Graphics/RenderSurface.h>
+#include <Urho3D/Graphics/Texture2D.h>
+#include <Urho3D/Graphics/Texture.h>
+#include <Urho3D/Graphics/Renderer.h>
+#include <Urho3D/Graphics/StaticModel.h>
+#include <Urho3D/Graphics/VertexBuffer.h>
+#include <Urho3D/Graphics/Zone.h>
+
 #include <Urho3D/Math/MathDefs.h>
 #include <Urho3D/Math/Random.h>
+
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/Button.h>
+#include <Urho3D/UI/Cursor.h>
+#include <Urho3D/UI/DropDownList.h>
+#include <Urho3D/UI/FileSelector.h>
+#include <Urho3D/UI/LineEdit.h>
+#include <Urho3D/UI/ScrollBar.h>
+#include <Urho3D/UI/Sprite.h>
+#include <Urho3D/UI/Slider.h>
+#include <Urho3D/UI/Font.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/Window.h>
+#include <Urho3D/UI/CheckBox.h>
+#include <Urho3D/UI/UIEvents.h>
 
 #include <Urho3D/IO/IOEvents.h>
 #include <Urho3D/IO/File.h>
@@ -26,7 +58,6 @@
 #include <Urho3D/IO/Log.h>
 #include <Urho3D/IO/MemoryBuffer.h>
 
-#include <Urho3D/Math/Ray.h>
 #include <Urho3D/Math/Sphere.h>
 
 #ifdef SendMessage
@@ -47,6 +78,7 @@
 #include <Urho3D/Resource/XMLFile.h>
 #include <Urho3D/Resource/Localization.h>
 #include <Urho3D/Resource/JSONFile.h>
+
 
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Scene.h>
@@ -75,3 +107,5 @@ using namespace Urho3D;
 #include "glob_game.h"
 
 #include "Core/Structures_.h"
+#include "GUI/Controls/Hint_.h"
+#include "GUI/Controls/Label_.h"

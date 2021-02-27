@@ -56,6 +56,7 @@ void Battle::Start()
     TheCache->AddResourceDir(RESOURCES_DIR);
     SetLocalization();
     TheTime = GetSubsystem<Time>();
+    TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
     TheScene = new SceneT();

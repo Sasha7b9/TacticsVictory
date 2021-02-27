@@ -21,6 +21,10 @@ void LayerTerrain::Build()
         cube->BuildVertexes(vertexes, indexes);
     }
 
+    SharedPtr<VertexBuffer> vb(new VertexBuffer(TheContext));
+    SharedPtr<IndexBuffer> ib(new IndexBuffer(TheContext));
+    SharedPtr<Geometry> geom(new Geometry(TheContext));
+
     uint numVert = vertexes.Size();
     uint numInd = indexes.Size();
 
@@ -37,6 +41,18 @@ void LayerTerrain::Build()
         bufInd[(uint64)i] = indexes[i];
     }
 
+    vb->SetShadowed(true);
+    vb->SetSize(vertexes.Size() / 8, MASK_POSITION | MASK_NORMAL | MASK_TEXCOORD1);
+    vb->SetData(bufVert);
+
+    ib->SetShadowed(true);
+    ib->SetSize(numInd, true);
+    ib->SetData(bufInd);
+
+    geom->SetVertexBuffer(0, vb);
+    geom->SetIndexBuffer(ib);
+    geom->SetDrawRange(TRIANGLE_LIST, 0, ib->GetIndexCount());
+
     model = new Model(TheContext);
 
     Vector<SharedPtr<VertexBuffer>> vbVector;
@@ -44,6 +60,7 @@ void LayerTerrain::Build()
 
     model->SetNumGeometries(1);
     model->SetNumGeometryLodLevels(0, 1);
+    model->SetGeometry(0, 0, geom);
 
     PODVector<uint> morphRange;
 
