@@ -4,14 +4,14 @@
 class  Battle;
 class  Level;
 class TLog;
-class TScene;
+class SceneT;
 class  Settings;
 class  TTerrain;
 
 extern Battle          *TheBattle;
 extern Level           *TheLevel;
 extern TLog            *TheLog;
-extern TScene          *TheScene;
+extern SceneT          *TheScene;
 extern Settings        *TheSet;
 extern TTerrain       *TheTerrain;
 

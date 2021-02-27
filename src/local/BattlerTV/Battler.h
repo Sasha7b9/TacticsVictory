@@ -2,7 +2,7 @@
 #pragma once
 
 
-class TScene;
+class SceneT;
 
 
 class Battler : public Application

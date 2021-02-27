@@ -9,25 +9,25 @@
 #endif
 
 
-TScene::TScene(Context *context) : Scene(context)
+SceneT::SceneT(Context *context) : Scene(context)
 {
 
 }
 
 
-TScene::~TScene()
+SceneT::~SceneT()
 {
     delete TheTerrain;
 }
 
 
-void TScene::RegisterObject(Context *context)
+void SceneT::RegisterObject(Context *context)
 {
-    context->RegisterFactory<TScene>();
+    context->RegisterFactory<SceneT>();
 }
 
 
-void TScene::Create()
+void SceneT::Create()
 {
     ThePhysicsWorld->SetFps(5);
 

@@ -7,7 +7,7 @@
 #include "Scene/SceneC.h"
 
 
-CScene::CScene(Context *context) : TScene(context)
+CScene::CScene(Context *context) : SceneT(context)
 {
     CreateComponent<Octree>();
 
@@ -25,7 +25,7 @@ CScene::~CScene()
 
 void CScene::Create()
 {
-    TScene::Create();
+    SceneT::Create();
 
     Particles::Init();
 

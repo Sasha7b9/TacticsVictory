@@ -210,7 +210,7 @@ void Battler::RegistrationComponets()
     SunEngine::RegisterObject();
     Rotator::RegisterObject();
     WaveAlgorithm::RegisterObject();
-    TScene::RegisterObject();
+    SceneT::RegisterObject();
     TileSelected::RegisterObject();
 
     GameObject::RegisterObjects();

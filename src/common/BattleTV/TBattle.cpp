@@ -59,12 +59,12 @@ void Battle::Start()
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
-    TheScene = new TScene();
+    TheScene = new SceneT();
     TheScene->CreateComponent<Octree>();
     ThePhysicsWorld = TheScene->CreateComponent<PhysicsWorld>();
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
     TheScene->CreateComponent<DebugRenderer>();
-    scene = new TScene();
+    scene = new SceneT();
 
     CreateScriptSystem();
 
@@ -129,7 +129,7 @@ void Battle::RegistrationComponets()
     SunEngine::RegisterObject();
     Rotator::RegisterObject();
 
-    TScene::RegisterObject();
+    SceneT::RegisterObject();
 }
 
 

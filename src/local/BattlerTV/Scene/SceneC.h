@@ -4,9 +4,9 @@
 #include "Scene/Scene_.h"
 
 
-class CScene : public TScene
+class CScene : public SceneT
 {
-    URHO3D_OBJECT(CScene, TScene);
+    URHO3D_OBJECT(CScene, SceneT);
 
 public:
 

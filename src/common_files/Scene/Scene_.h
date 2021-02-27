@@ -5,14 +5,14 @@
 class Tank;
 
 
-class TScene : public Scene
+class SceneT : public Scene
 {
-    URHO3D_OBJECT(TScene, Scene);
+    URHO3D_OBJECT(SceneT, Scene);
 
 public:
 
-    TScene(Context *context = TheContext);
-    virtual ~TScene();
+    SceneT(Context *context = TheContext);
+    virtual ~SceneT();
 
     static void RegisterObject(Context *context = TheContext);
 

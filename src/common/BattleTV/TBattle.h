@@ -2,7 +2,7 @@
 #pragma once
 
 
-class TScene;
+class SceneT;
 
 
 class Battle : public Application
@@ -16,7 +16,7 @@ public:
     virtual void Start();
     virtual void Stop();
 
-    TScene *scene = nullptr; //-V122
+    SceneT *scene = nullptr; //-V122
 
 private:
     bool drawDebug = false;
