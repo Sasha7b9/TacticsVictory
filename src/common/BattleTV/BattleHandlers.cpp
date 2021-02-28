@@ -7,6 +7,8 @@
 void Battle::HandleUpdate(StringHash, VariantMap& /*eventData*/)
 {
 //    float time = eventData[Update::P_TIMESTEP].GetFloat();
+
+    LOGINFO(__FUNCTION__);
 }
 
 

@@ -12,8 +12,6 @@
 
 void Battler::HandlePostRenderUpdate(StringHash, VariantMap&)
 {
-    LOGINFO(__FUNCTION__);
-
     if(drawDebug)
     {
         ThePhysicsWorld->DrawDebugGeometry(true);
