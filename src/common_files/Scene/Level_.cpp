@@ -236,7 +236,7 @@ void Level::Clear()
 }
 
 
-uint Level::GetWidth()
+uint Level::GetWidthZ()
 {
     return map.Empty() ? 0 : map[0].Size();
 }

@@ -50,7 +50,7 @@ SharedPtr<CameraT> CameraT::Create()
 {
     SharedPtr<CameraT> camera(TheScene->CreateChild("TCamera")->CreateComponent<CameraT>());
 
-    uint sizeZ = TheLevel->GetWidth();
+    uint sizeZ = TheLevel->GetWidthZ();
     uint sizeX = TheLevel->GetHeightX();
 
     camera->SetPosition({ sizeX / 2.0f, 25.0f, static_cast<float>(sizeZ) / 2.0f - 10.0f },
