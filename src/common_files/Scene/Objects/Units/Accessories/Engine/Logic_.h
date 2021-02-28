@@ -13,6 +13,30 @@ struct CommandEngine { enum E {
 
 
 //----------------------------------------------------------------------------------------------------------------------
+// Шаг алгоритма
+//
+class Step : public Object
+{
+    URHO3D_OBJECT(Step, Object);
+
+public:
+
+    Step(Context *context = TheContext) : Object(context) {}
+
+    struct Type { enum E {
+        None,
+        Move,                   // Движение из точки в точку
+        Rotate                  // Поворот от угла к углу
+    }; };
+
+    Vector3 start;
+    Vector3 end;
+
+    Type::E type = Type::None;
+};
+
+
+//----------------------------------------------------------------------------------------------------------------------
 // Алгоритм действий - результат деятельности EngineCalculator
 //
 class EngineAlgorithm : public Object
@@ -22,6 +46,10 @@ class EngineAlgorithm : public Object
 public:
 
     EngineAlgorithm(Context *context = TheContext) : Object(context) {}
+
+    Vector<SharedPtr<Step>> steps;      // Здесь хранятся шаги алгоритма - от первого к последнему. Когда заканчивается
+                                        // выполнение шага [0], он удаляется.
+    Vector3 current;                    // Текущая позиция для шага [0]
 };
 
 
