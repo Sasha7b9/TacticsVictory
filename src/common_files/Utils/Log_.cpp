@@ -118,7 +118,9 @@ void ConsoleLog::Create()
 
 void ConsoleLog::Destroy()
 {
+#ifdef WIN32
     FreeConsole();
+#endif
 }
 
 
