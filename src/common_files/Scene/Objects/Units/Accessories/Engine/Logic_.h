@@ -15,19 +15,17 @@ struct CommandEngine { enum E {
 //----------------------------------------------------------------------------------------------------------------------
 // Шаг алгоритма
 //
-class Step : public Object
+class Step
 {
-    URHO3D_OBJECT(Step, Object);
-
 public:
-
-    Step(Context *context = TheContext) : Object(context) {}
 
     struct Type { enum E {
         None,
         Move,                   // Движение из точки в точку
         Rotate                  // Поворот от угла к углу
     }; };
+
+    Step(Type::E t) : type(t) {}
 
     Vector3 start;
     Vector3 end;
