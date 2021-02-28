@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Network/Game/GameMessagesID_.h"
+#include "Network/Game/Messages/GameMessagesID_.h"
 
 class TConnection;
 

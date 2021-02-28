@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/ServerS.h"
-#include "Network/Game/GameMessages_.h"
+#include "Network/Game/Messages/GameMessages_.h"
 
 
 ServerS::ServerS(Context *context) : Object(context)

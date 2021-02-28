@@ -55,6 +55,8 @@ file(GLOB GUI_WINDOWS                                               GUI/Windows/
 file(GLOB INPUT                                                     Input/*.*)
 file(GLOB NETWORK                                ../../common_files/Network/Game/*.*
                                                                     Network/*.*)
+file(GLOB NETWORK_MESSAGES                       ../../common_files/Network/Game/Messages/*.*
+                                                                    Network/Messages/*.*)
 file(GLOB SCENE                                  ../../common_files/Scene/*.*
                                                                     Scene/*.*)
 file(GLOB SCENE_CAMERAS                                             Scene/Cameras/*.*)
@@ -98,6 +100,7 @@ source_group(GUI\\Panels                                FILES ${GUI_PANELS})
 source_group(GUI\\Windows                               FILES ${GUI_WINDOWS})
 source_group(Input                                      FILES ${INPUT})
 source_group(Network                                    FILES ${NETWORK})
+source_group(Network\\Messages                          FILES ${NETWORK_MESSAGES})
 source_group(Scene                                      FILES ${SCENE})
 source_group(Scene\\Cameras                             FILES ${SCENE_CAMERAS})
 source_group(Scene\\Objects                             FILES ${SCENE_OBJECTS})
@@ -118,7 +121,7 @@ source_group(Utils                                      FILES ${UTILS})
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
     ${GRAPHICS_3D}
     ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
-    ${GUI_WINDOWS} ${INPUT} ${NETWORK} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
+    ${GUI_WINDOWS} ${INPUT} ${NETWORK} ${NETWORK_MESSAGES} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_BUILDINGS}
     ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE}

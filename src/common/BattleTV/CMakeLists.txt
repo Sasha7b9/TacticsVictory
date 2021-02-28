@@ -42,6 +42,8 @@ file(GLOB GAME_LOGIC                             ../../common_files/Game/Logic/*
 file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.*)
 file(GLOB NETWORK                                                   Network/*.*
                                                  ../../common_files/Network/Game/*.*)
+file(GLOB NETWORK_MESSAGES                       ../../common_files/Network/Game/Messages/*.*
+                                                                    Network/Messages/*.*)
 file(GLOB SCENE                                  ../../common_files/Scene/*.*)
 file(GLOB SCENE_OBJECTS                          ../../common_files/Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                     ../../common_files/Scene/Objects/Ammo/*.*)
@@ -67,6 +69,7 @@ source_group(Core                                       FILES ${CORE})
 source_group(Game\\Logic                                FILES ${GAME_LOGIC})
 source_group(Game\\Path                                 FILES ${GAME_PATH})
 source_group(Network                                    FILES ${NETWORK})
+source_group(Network\\Messages                          FILES ${NETWORK_MESSAGES})
 source_group(Scene                                      FILES ${SCENE})
 source_group(Scene\\Objects                             FILES ${SCENE_OBJECTS})
 source_group(Scene\\Objects\\Ammo                       FILES ${SCENE_OBJECTS_AMMO})
@@ -82,7 +85,8 @@ source_group(Scene\\Primitives                          FILES ${SCENE_PRIMITIVES
 source_group(Scene\\Terrain                             FILES ${SCENE_TERRAIN})
 source_group(Utils                                      FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GAME_PATH} ${NETWORK} ${SCENE} ${SCENE_OBJECTS}
+add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GAME_PATH} ${NETWORK} ${NETWORK_MESSAGES}
+    ${SCENE} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_BUILDINGS}
     ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE} ${SCENE_OBJECTS_UNITS_TANK}
