@@ -66,10 +66,10 @@ namespace Message
 
     struct CreateComponent : public Message
     {
-        CreateComponent(const StringHash &hash, uint id, const Vector3 position) : Message(CLNT_CREATE_COMPONENT)
+        CreateComponent(const StringHash &hash, uint ID, const Vector3 &position) : Message(CLNT_CREATE_COMPONENT)
         {
             buffer.WriteStringHash(hash);
-            buffer.WriteUInt(id);
+            buffer.WriteUInt(ID);
             buffer.WriteVector3(position);
         }
 

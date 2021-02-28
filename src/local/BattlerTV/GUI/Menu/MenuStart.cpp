@@ -81,7 +81,7 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
 
     Button *button = dynamic_cast<Button*>(eventData[P_ELEMENT].GetPtr());
 
-    const Variant &value = button->GetVar(VAR_MENU_EVENT);
+    const Variant &value = button->GetVar(VAR_MENU_EVENT); //-V522
     if(!value.IsEmpty())
     {
         eventData = GetEventDataMap();

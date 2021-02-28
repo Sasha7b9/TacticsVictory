@@ -99,6 +99,6 @@ void PanelMain::HandleToggedTitle(StringHash, VariantMap &eventData)
     }
     else
     {
-        button->SetChecked(true);
+        button->SetChecked(true); //-V522
     }
 }

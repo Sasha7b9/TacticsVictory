@@ -104,12 +104,13 @@ void Level::Load(const char *fileName)
                 data += static_cast<uint64>(PushToVector(data, &curString));
             }
         }
-        fileRead->Close();
     }
     else
     {
         LOGERROR("Can not load file");
     }
+
+    fileRead->Close();
 
     uint numRows = map.Size();
 
