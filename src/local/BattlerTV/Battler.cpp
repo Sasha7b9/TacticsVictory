@@ -108,6 +108,16 @@ void Battler::Start()
 
     TheMouse = new Mouse();
 
+    SetWindowTitleAndIcon();
+
+    CreateConsoleAndDebugHud();
+
+    SubscribeToEvents();
+
+    TheServer = new ServerC();
+
+    TheServer->Connect("127.0.0.1", SERVER_PORT);
+
     TheScene = new SceneC();
 
     TheLevel = new Level();
@@ -126,10 +136,6 @@ void Battler::Start()
 
     TheCamera = CameraT::Create();
 
-    SetWindowTitleAndIcon();
-
-    CreateConsoleAndDebugHud();
-
     TheScene->CreateComponent<DebugRenderer>();
     TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
 
@@ -140,12 +146,6 @@ void Battler::Start()
     TheFileSelector = new FileSelector(TheContext);
     TheFileSelector->GetWindow()->SetModal(false);
     TheFileSelector->GetWindow()->SetVisible(false);
-
-    SubscribeToEvents();
-
-    TheServer = new ServerC();
-
-    TheServer->Connect("127.0.0.1", SERVER_PORT);
 
     PROFILER_FUNC_LEAVE();
 }
@@ -166,6 +166,7 @@ void Battler::Stop()
 
     TilePath::RemoveAll();
 
+    delete TheServer;
     delete TheMouse;
     delete ThePathIndicator;
     delete TheScene;
