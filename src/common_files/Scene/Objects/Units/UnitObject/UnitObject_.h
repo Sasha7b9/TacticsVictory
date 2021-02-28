@@ -33,6 +33,4 @@ protected:
     UnitObject(Context *);
 
     virtual void Start() override;
-
-    SharedPtr<EngineT> engine;          // Мотор
 };

@@ -10,6 +10,12 @@ EngineT::EngineT(Context *context) : Component(context)
 }
 
 
+void EngineT::RegisterObject()
+{
+    TheContext->RegisterFactory<EngineT>();
+}
+
+
 void EngineT::GiveCommand(CommandEngine::E command)
 {
     algorithm = calculator.Calculate(command);
@@ -22,13 +28,7 @@ bool EngineT::IsStopped() const
 }
 
 
-void EngineAir::Update(float /*timeStep*/)
-{
-
-}
-
-
-void EngineGround::Update(float timeStep)
+void EngineT::Update(float timeStep)
 {
     if (algorithm->IsFinished())
     {
@@ -48,25 +48,14 @@ void EngineGround::Update(float timeStep)
 
 void EngineT::OnNodeSet(Node *node)
 {
-    if (node)
-    {
-        Component::OnNodeSet(node);
-
-        physics = node->GetComponent<PhysicsComponent>();
-    }
+    Component::OnNodeSet(node);
 }
 
 
-void EngineGround::OnNodeSet(Node *node)
+void EngineT::OnNodeSet(Node *node)
 {
     if (node)
     {
         EngineT::OnNodeSet(node);
     }
-}
-
-
-EngineT *EngineGround::CreateEngine(Node *node)
-{
-    return node->CreateComponent<EngineGround>(LOCAL);
 }

@@ -13,58 +13,27 @@ public:
 
     EngineT(Context *context = TheContext);
 
-    virtual void Update(float timeStep) { UNUSED(timeStep); };
+    void RegisterObject();
+
+    virtual void OnNodeSet(Node *node) override;
+
+    virtual void Update(float timeStep);
 
     void GiveCommand(CommandEngine::E command);
-
-    void OnNodeSet(Node *node) override;
 
     // Возвращет true, если мотор заглушен
     bool IsStopped() const;
 
 protected:
 
-    SharedPtr<EngineAlgorithm> algorithm;
+    EngineCalculator calculator;    // Занимается расчётом алгоритма движения
+    EngineAlgorithm algorithm;      // Собственно алгоритм движения
+    EngineExecutor executor;        // Собственно выполнитель алгоритма движения
 
-    EngineExecutor executor;
-
-    SharedPtr<PhysicsComponent> physics;
-
-private:
-
-    EngineCalculator calculator;                // Занимается расчётом алгоритма движения
-};
-
-
-//----------------------------------------------------------------------------------------------------------------------
-class EngineAir : public EngineT
-{
-    URHO3D_OBJECT(EngineAir, EngineT);
-
-public:
-
-    EngineAir(Context *context) : EngineT(context) {}
-
-    virtual void Update(float timeStep) override;
-
-private:
-};
-
-
-//----------------------------------------------------------------------------------------------------------------------
-class EngineGround : public EngineT
-{
-    URHO3D_OBJECT(EngineGround, EngineT);
-
-public:
-
-    EngineGround(Context *context) : EngineT(context) {}
-
-    virtual void Update(float timeStep) override;
-
-    void OnNodeSet(Node *node) override;
-
-    static EngineT *CreateEngine(Node *node);
-    
-private:
+    Vector3 speedMove;              // Установившаяся скорость движения
+    float accelerationMove;         // Ускорение движения при трогании с места
+    Vector3 speedRotate;            // Скорость поворота
+    float accelerationRotate;       // Ускорение поворота
+    Vector3 currentSpeedMove;       // Текущая скорость движения
+    Vector3 currentSpeedRotate;     // Текущая скорость поворота
 };

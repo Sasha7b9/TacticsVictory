@@ -16,6 +16,8 @@ Tank::Tank(Context *context) : UnitObject(context)
 
 void Tank::FixedUpdate(float timeStep)
 {
+    EngineT *engine = GetComponent<EngineT>();
+
     engine->Update(timeStep);
 
     if (engine->IsStopped())
