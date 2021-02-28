@@ -70,14 +70,14 @@ file(GLOB SCENE_OBJECTS_UNITS_AIRPLANE           ../../common_files/Scene/Object
 file(GLOB SCENE_OBJECTS_UNITS_LOGIC              ../../common_files/Scene/Objects/Units/Logic/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_TANK               ../../common_files/Scene/Objects/Units/Tank/*.*
                                                                     Scene/Objects/Units/Tank/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_UNITOBJECT            ../../common_files/Scene/Objects/Units/UnitObject/*.*
-                                                          ../BattlerTV/Scene/Objects/Units/UnitObject/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_UNITOBJECT         ../../common_files/Scene/Objects/Units/UnitObject/*.*
+                                                                    Scene/Objects/Units/UnitObject/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Objects/Weapons/*.*)
 file(GLOB SCENE_PRIMITIVES                       ../../common_files/Scene/Primitives/*.*)
 file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*
                                                                     Scene/Terrain/*.*)
-file(GLOB UTILS                                                     Utils/*.*
-                                                 ../../common_files/Utils/*.*)
+file(GLOB UTILS                                  ../../common_files/Utils/*.*
+                                                                    Utils/*.*)
 
 source_group(src                                        FILES ${SRC})
 source_group(Audio                                      FILES ${AUDIO})

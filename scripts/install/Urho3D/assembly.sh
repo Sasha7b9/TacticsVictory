@@ -82,7 +82,7 @@ fi
 
 if [ ! -d Urho3D ]
 then
-    git clone https://github.com/urho3d/Urho3D.git
+    git clone https://github.com/Sasha7b9/Urho3D.git
     
     case $1 in
     "make"  ) isMake=1  ;;

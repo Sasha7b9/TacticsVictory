@@ -17,7 +17,7 @@
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/Units/Tank/Tank_.h"
-#include "Utils/LogC.h"
+#include "Utils/Log_.h"
 #include "Utils/Settings.h"
 #include "Utils/SettingsTypes.h"
 
@@ -264,7 +264,7 @@ void Battler::CreateEditorSession()
 
 void Battler::OpenLog()
 {
-    TheLog = new LogC();
+    TheLog = new LogT();
     char buffer[50];
     srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
 
