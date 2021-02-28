@@ -116,7 +116,9 @@ void Battler::Start()
 
     TheServer = new ServerC();
 
-    TheServer->Connect("127.0.0.1", SERVER_PORT);
+//    TheServer->Connect("127.0.0.1", SERVER_PORT);
+
+    TheServer->Connect("78.24.217.211", SERVER_PORT);
 
     TheScene = new SceneC();
 

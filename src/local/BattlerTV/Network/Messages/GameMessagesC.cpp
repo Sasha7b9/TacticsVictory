@@ -54,7 +54,5 @@ void Message::CreateUnitTank::Handle(MemoryBuffer &msg)
 {
     Vector3 position = msg.ReadVector3();
 
-    static int counter = 0;
-
-    LOGINFOF("Received %d tanks", counter++);
+    TheTerrain->PutIn(TheScene->CreateComponent<Tank>(), position.z_, position.x_);
 }
