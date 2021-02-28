@@ -30,7 +30,7 @@ iptables --append INPUT --protocol udp --dport 30001 --jump ACCEPT
 iptables --append INPUT --protocol udp --dport 30002 --jump ACCEPT
 
 iptables --append INPUT --protocol tcp --dport 40000 --jump ACCEPT
-iptables --append INPUT --protocol udp --dport 40001 --jump ACCEPT
+iptables --append INPUT --protocol udp --dport 40000 --jump ACCEPT
 
 
 iptables --policy INPUT DROP
