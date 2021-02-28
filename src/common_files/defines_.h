@@ -13,8 +13,8 @@
 
 #define RESOURCES_DIR           "TVData"
 
-#define SERVER_ADDRESS          "127.0.0.1"
-#define SERVER_PORT             40000
+#define SERVER_ADDRESS          "78.24.217.211"
+#define SERVER_PORT             30000
 
 #define VIEW_MASK_FOR_MISSILE   1
 #define VIEW_MASK_FOR_EFFECTS   2
