@@ -8,7 +8,7 @@
 void Tank::RegisterObject()
 {
     TheContext->RegisterFactory<Tank>();
-    TheContext->RegisterFactory<TankSpecific>();
+    TheContext->RegisterFactory<TankSpecificS>();
 }
 
 

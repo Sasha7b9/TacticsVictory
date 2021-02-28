@@ -159,6 +159,7 @@ void Battle::RegistrationComponets()
     Rotator::RegisterObject();
     WaveAlgorithm::RegisterObject();
     SceneT::RegisterObject();
+
     GameObject::RegisterObjects();
     UnitObject::RegisterObjects();
     Tank::RegisterObject();
