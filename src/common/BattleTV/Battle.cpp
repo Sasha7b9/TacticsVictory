@@ -88,6 +88,8 @@ void Battle::Start()
 
     TheLevel = new Level();
 
+    TheLevel->Load("Game/Levels/level.map");
+
     TheScene->Create();
 
     SubscribeToEvents();

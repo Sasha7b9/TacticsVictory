@@ -42,11 +42,11 @@ void Message::RequestForLevel::Handle(const TConnection &connection)
 
 Message::ReturnLevel::ReturnLevel() : Message(CLNT_RETURN_LEVEL)
 {
-    uint width = TheTerrain->WidthZ();
     uint height = TheTerrain->HeightX();
+    uint width = TheTerrain->WidthZ();
 
-    buffer.WriteUInt(width);
     buffer.WriteUInt(height);
+    buffer.WriteUInt(width);
 
     for (uint row = 0; row < height; row++)
     {

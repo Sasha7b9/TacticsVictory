@@ -120,8 +120,6 @@ void Battler::Start()
 
     TheScene = new SceneC();
 
-    TheLevel = new Level();
-
     TheScene->CreateComponent<DebugRenderer>();
     TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
 

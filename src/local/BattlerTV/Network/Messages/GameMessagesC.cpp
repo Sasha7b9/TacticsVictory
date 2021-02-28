@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Game/Messages/GameMessages_.h"
+#include "Scene/Level_.h"
 #include "Scene/SceneC.h"
 
 
@@ -33,5 +34,21 @@ void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 {
     LOG_FUNC_ENTER();
 
-    LOGINFOF("Received %d bytes", msg.GetSize());
+    TheLevel = new Level();
+
+    TheLevel->Load(msg);
+
+    TheScene->Create();
+
+    ThePathIndicator = new PathIndicator();
+
+    for (int i = 0; i < 1000; i++)
+    {
+        uint colZ = (uint)Random((float)TheTerrain->WidthZ());
+        uint rowX = (uint)Random((float)TheTerrain->HeightX());
+
+        TheTerrain->PutIn(TheScene->CreateComponent<Tank>(), colZ, rowX);
+    }
+
+    TheCamera = CameraT::Create();
 }

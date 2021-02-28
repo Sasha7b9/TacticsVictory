@@ -12,7 +12,7 @@ Vector<Vector<float> > Level::map;
 
 Level::Level(Context *context) : Object(context)
 {
-    Load("Game/Levels/level.map");
+    
 }
 
 
@@ -67,7 +67,15 @@ void Level::Load(const char *fileName)
 
     SharedPtr<File> fileRead;
     fileRead = new File(TheContext);
-    if(fileRead->Open(GF::GetNameFile(fileName), FILE_READ))
+
+    fileRead->Open(fileName, FILE_READ);
+
+    if (!fileRead->IsOpen())
+    {
+        fileRead->Open(GF::GetNameFile(fileName), FILE_READ);
+    }
+
+    if(fileRead->IsOpen())
     {
         String str = fileRead->ReadString();
         const char *data = str.CString();
@@ -114,6 +122,38 @@ void Level::Load(const char *fileName)
     {
         map[i].Resize((numCols / SegmentTerrain::HEIGHT_X) * SegmentTerrain::HEIGHT_X);
     }
+}
+
+
+void Level::Load(MemoryBuffer &msg)
+{
+#define NAME_TEMP_FILE "level.tmp"
+
+    SharedPtr<File> file(new File(TheContext));
+
+    file->Open(NAME_TEMP_FILE, FILE_WRITE);
+
+    uint height = msg.ReadUInt();
+    uint width = msg.ReadUInt();
+
+    for (uint row = 0; row < height; row++)
+    {
+        for (uint col = 0; col < width; col++)
+        {
+            String value = String(msg.ReadFloat()) + " ";
+
+            file->Write(value.CString(), value.Length());
+        }
+
+        file->WriteByte(0x0d);
+        file->WriteByte(0x0a);
+    }
+
+    file->Close();
+
+    Load(NAME_TEMP_FILE);
+
+    TheFileSystem->Delete(NAME_TEMP_FILE);
 }
 
 
