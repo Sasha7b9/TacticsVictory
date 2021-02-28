@@ -20,14 +20,14 @@ void ServerC::Connect(const String &_address, uint16 _port)
     address = _address;
     port = _port;
 
-    LOGINFOF("Trying to join the server %s:%d", address.CString(), port);
-
-    TheNetwork->Connect(address, port, nullptr);
+    Connect();
 }
 
 
 void ServerC::Connect()
 {
+    LOGINFOF("Trying to join the server %s:%d", address.CString(), port);
+
     TheNetwork->Connect(address, port, nullptr);
 }
 
@@ -42,7 +42,7 @@ void ServerC::HandleMessage(StringHash, VariantMap & /*eventData*/)
 
 void ServerC::HandleServerConnected(StringHash, VariantMap &)
 {
-    LOG_FUNC_ENTER();
+    LOGINFOF("Connect to server %s:%d is ok", address.CString(), port);
 
     TheScene->Create();
 
@@ -57,8 +57,6 @@ void ServerC::HandleServerConnected(StringHash, VariantMap &)
     }
 
     TheCamera = CameraT::Create();
-
-//    Message::RequestForLevel().Send(true);
 }
 
 
@@ -70,7 +68,7 @@ void ServerC::HandleServerDisconnected(StringHash, VariantMap &)
 
 void ServerC::HandleConnectFailed(StringHash, VariantMap &)
 {
-    Connect();
+    LOGERRORF("Failed connected to server %s:%d", address.CString(), port);
 
-    LOG_FUNC_ENTER();
+    Connect();
 }
