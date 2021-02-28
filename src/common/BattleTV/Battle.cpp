@@ -109,6 +109,7 @@ void Battle::Stop()
     delete TheLevel;
     delete TheSet;
     delete TheLog;
+    delete TheServer;
 }
 
 
