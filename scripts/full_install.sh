@@ -11,7 +11,7 @@ cd $dir
 
 # *** Clone and build Urho3D ***
 cd install/Urho3D
-./assembly.sh build all
+./assembly.sh full all
 cd $dir
 
 # *** Build TacticsVictory ***

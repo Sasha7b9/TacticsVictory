@@ -2,6 +2,7 @@
 *.ilk
 *.exe
 *.log
+*.swp
 
 archive.zip
 

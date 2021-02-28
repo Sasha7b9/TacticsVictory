@@ -43,7 +43,7 @@ typedef LPCSTR PCTSTR, LPCTSTR, PCUTSTR, LPCUTSTR;
 
 #else
 
-    LOG_ERROR("error %d in line %s : %d", errno, file, line);
+    LOGERRORF("error %d in line %s : %d", errno, file, line);
 
 #endif
 }
