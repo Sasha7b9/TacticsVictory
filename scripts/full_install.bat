@@ -11,7 +11,7 @@ cd %start_dir%
 
 rem *** Clone and build Urho3D ***
 cd install\Urho3D
-call assembly.bat full all
+call assembly.bat build all
 cd %start_dir%
 
 rem *** Build TacticsVictory ***

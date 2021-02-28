@@ -13,15 +13,11 @@ set current_dir=%CD%
 
 cd ../../../..
 
-if not exist Urho3D git clone https://github.com/Sasha7b9/Urho3D.git& set isMake=1& cd Urho3D& goto START_WITH_MAKE
+if not exist Urho3D git clone https://github.com/Sasha7b9/Urho3D.git& set isMake = 1
 
 cd Urho3D
 
 git pull
-
-set isMake=0
-set isBuild=1
-goto LABEL1
 
 :START_WITH_MAKE
 if %1==build set isBuild=1 & goto LABEL1
