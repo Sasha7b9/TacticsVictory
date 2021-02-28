@@ -206,8 +206,8 @@ void Battler::RegistrationComponets()
     SceneT::RegisterObject();
     TileSelected::RegisterObject();
 
-    GameObject::RegisterObjects();
-    UnitObject::RegisterObjects();
+    GameObject::RegisterObject();
+    UnitObject::RegisterObject();
     Tank::RegisterObject();
 }
 

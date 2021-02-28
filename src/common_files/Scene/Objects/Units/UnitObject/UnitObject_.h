@@ -26,7 +26,7 @@ public:
 
     static Vector<UnitObject *> storage;
 
-    static void RegisterObjects();
+    static void RegisterObject();
 
 protected:
 

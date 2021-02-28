@@ -160,8 +160,8 @@ void Battle::RegistrationComponets()
     WaveAlgorithm::RegisterObject();
     SceneT::RegisterObject();
 
-    GameObject::RegisterObjects();
-    UnitObject::RegisterObjects();
+    GameObject::RegisterObject();
+    UnitObject::RegisterObject();
     Tank::RegisterObject();
 }
 

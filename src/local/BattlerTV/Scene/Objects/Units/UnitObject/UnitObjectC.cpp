@@ -5,7 +5,7 @@
 #include "Scene/Objects/Units/UnitObject/UnitObjectC.h"
 
 
-void UnitObject::RegisterObjects()
+void UnitObject::RegisterObject()
 {
     TheContext->RegisterFactory<UnitObjectSpecificC>();
     TheContext->RegisterFactory<EngineGround>();

@@ -14,7 +14,7 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
 }
 
 
-void GameObject::RegisterObjects()
+void GameObject::RegisterObject()
 {
     TheContext->RegisterFactory<PhysicsComponent>();
 }

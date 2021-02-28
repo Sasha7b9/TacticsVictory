@@ -3,7 +3,7 @@
 #include "Scene/Objects/Units/UnitObject/UnitObjectS.h"
 
 
-void UnitObject::RegisterObjects()
+void UnitObject::RegisterObject()
 {
     TheContext->RegisterFactory<UnitObjectSpecificS>();
     TheContext->RegisterFactory<EngineGround>();
