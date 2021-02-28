@@ -3,6 +3,7 @@
 *.exe
 *.log
 *.swp
+*.tmp
 
 archive.zip
 
