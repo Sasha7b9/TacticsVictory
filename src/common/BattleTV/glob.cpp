@@ -18,6 +18,7 @@ Battle            *TheBattle = nullptr;
 Level             *TheLevel = nullptr;
 LogT              *TheLog = nullptr;
 SceneT            *TheScene = nullptr;
+ServerS           *TheServer = nullptr;
 Settings          *TheSet = nullptr;
 TerrainT          *TheTerrain = nullptr;
 Vector<Connection *> connections;

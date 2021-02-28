@@ -3,6 +3,7 @@
 #include "Battle.h"
 #include "Game/Logic/Rotator_.h"
 #include "Game/Logic/SunEngine_.h"
+#include "Network/ServerS.h"
 #include "Scene/Level_.h"
 #include "Scene/Scene_.h"
 #include "Utils/Log_.h"
@@ -49,6 +50,7 @@ void Battle::GetSubsystems()
     TheProfiler = GetSubsystem<Profiler>();
     TheEngine = GetSubsystem<Engine>();
     TheLocalization = GetSubsystem<Localization>();
+    TheNetwork = GetSubsystem<Network>();
 
     CreateScriptSystem();
 }
@@ -89,6 +91,10 @@ void Battle::Start()
     TheScene->Create();
 
     SubscribeToEvents();
+
+    TheServer = new ServerS();
+
+    TheServer->Start(SERVER_PORT);
 
     PROFILER_FUNC_LEAVE();
 }

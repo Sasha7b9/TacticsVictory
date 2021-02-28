@@ -18,6 +18,12 @@ LogT::LogT(Context *context) : Log(context)
 }
 
 
+LogT::~LogT()
+{
+    ConsoleLog::Destroy();
+}
+
+
 void LogT::Write(int level, const String &message, pchar file, pchar func, int numLine)
 {
     String str = message;
@@ -107,6 +113,12 @@ void ConsoleLog::Create()
     }
 
 #endif
+}
+
+
+void ConsoleLog::Destroy()
+{
+    FreeConsole();
 }
 
 

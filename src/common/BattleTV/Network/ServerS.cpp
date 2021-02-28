@@ -17,7 +17,18 @@ ServerS::ServerS(Context *context) : Object(context)
 
 bool ServerS::Start(uint16 port)
 {
-    return TheNetwork->StartServer(port);
+    bool result = TheNetwork->StartServer(port);
+
+    if (result)
+    {
+        LOGINFOF("Start server on port %d succsefful", port);
+    }
+    else
+    {
+        LOGINFOF("Start server on port %d failed", port);
+    }
+
+    return result;
 }
 
 
@@ -31,7 +42,7 @@ void ServerS::HandleMessage(StringHash, VariantMap &eventData)
 
 void ServerS::HandleServerConnected(StringHash, VariantMap &)
 {
-//    LOG_FUNC_ENTER();
+    LOG_FUNC_ENTER();
 }
 
 

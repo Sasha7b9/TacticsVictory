@@ -8,6 +8,7 @@ class LogT : public Log
 
 public:
     LogT(Context *context = TheContext);
+    virtual ~LogT();
     virtual void Write(int level, const String &message, pchar file, pchar func, int numLine);
     void EnableExtendedInfo();
     void DisableExtendedInfo();
@@ -35,3 +36,6 @@ struct ConsoleLog
 #define LOGINFOF(format, ...)   TheLog->Write(LOG_INFO, ToString(format, ##__VA_ARGS__), __FILE__, __FUNCTION__, __LINE__)
 #define LOGERROR(message)       TheLog->Write(LOG_ERROR, message, __FILE__, __FUNCTION__, __LINE__)
 #define LOGERRORF(format, ...)  TheLog->Write(LOG_ERROR, ToString(format, ##__VA_ARGS__), __FILE__, __FUNCTION__, __LINE__)
+
+//#define LOG_FUNC_ENTER()  URHO3D_LOGINFOF(">>>>>>>>>>>>>>>            %s", __FUNCTION__);
+#define LOG_FUNC_ENTER() LOGINFOF(">>>>>>>>>>>>>>>            %s", __FUNCTION__)
