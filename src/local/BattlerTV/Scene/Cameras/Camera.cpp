@@ -61,7 +61,7 @@ SharedPtr<CameraT> CameraT::Create()
 
 Vector3 CameraT::GetPosition()
 {
-    return cameraNode->GetPosition();
+    return cameraNode ? cameraNode->GetPosition() : Vector3::ZERO;
 }
 
 

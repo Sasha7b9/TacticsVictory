@@ -65,6 +65,11 @@ void GUI::RegistrationObjects()
 
 static float GetPosCameraY()
 {
+    if (TheCamera == nullptr)
+    {
+        return 0.0f;
+    }
+
     return TheCamera->GetPosition().y_;
 }
 

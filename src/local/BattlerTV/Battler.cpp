@@ -133,6 +133,14 @@ void Battler::Start()
     TheFileSelector->GetWindow()->SetModal(false);
     TheFileSelector->GetWindow()->SetVisible(false);
 
+//    CreateScene();
+
+    PROFILER_FUNC_LEAVE();
+}
+
+
+void Battler::CreateScene()
+{
     TheScene->Create();
 
     ThePathIndicator = new PathIndicator();
@@ -146,8 +154,6 @@ void Battler::Start()
     }
 
     TheCamera = CameraT::Create();
-
-    PROFILER_FUNC_LEAVE();
 }
 
 

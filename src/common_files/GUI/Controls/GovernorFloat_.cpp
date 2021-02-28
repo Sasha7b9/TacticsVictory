@@ -268,6 +268,11 @@ void GovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF fu
 
 void GovernorFloat::Update(float timeStep)
 {
+    if (!TheCamera)
+    {
+        return;
+    }
+
     UIElement::Update(timeStep);
 
     if(funcWrite && valueChanged)
