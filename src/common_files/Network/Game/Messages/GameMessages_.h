@@ -21,7 +21,7 @@ namespace Message
 
     struct RequestForLevel : public Message
     {
-        RequestForLevel() : Message(MSG_REQUEST_FOR_LEVEL) {}
+        RequestForLevel() : Message(SERV_REQUEST_FOR_LEVEL) {}
 
         void Handle(const TConnection &connection);
     };
@@ -31,14 +31,14 @@ namespace Message
     {
         ReturnLevel();
 
-        void Handle(MemoryBuffer & /*msg*/) {};
+        void Handle(MemoryBuffer &);
     };
 
 
     // Передача текстовой строки
     struct TextString : public Message
     {
-        TextString(const String &message) : Message(MSG_TEXTSTRING)
+        TextString(const String &message) : Message(SERV_TEXTSTRING)
         {
             buffer.WriteString(message);
         }
@@ -54,7 +54,7 @@ namespace Message
     struct KeyEvent : public Message
     {
         KeyEvent(Key key,                                       // Код клавиши
-            bool press) : Message(MSG_KEY_EVENT)                // true - нажатие, false, отпускание
+            bool press) : Message(SERV_KEY_EVENT)                // true - нажатие, false, отпускание
         {
             buffer.WriteInt(key);
             buffer.WriteBool(press);
