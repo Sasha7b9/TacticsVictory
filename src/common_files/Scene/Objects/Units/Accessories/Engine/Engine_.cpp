@@ -22,9 +22,21 @@ void EngineAir::Update(float /*timeStep*/)
 }
 
 
-void EngineGround::Update(float /*timeStep*/)
+void EngineGround::Update(float timeStep)
 {
+    if (algorithm->IsFinished())
+    {
+        return;
+    }
 
+    EngineExecutor::Result result = executor.Execute(algorithm->steps[0], algorithm->current, timeStep);
+
+    if (result.IsFinished())
+    {
+        algorithm->steps.Erase(0);
+    }
+
+    physics->position = algorithm->current;
 }
 
 

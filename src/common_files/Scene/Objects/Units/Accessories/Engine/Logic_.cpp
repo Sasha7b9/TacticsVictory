@@ -37,7 +37,7 @@ EngineAlgorithm *EngineCalculator::Calculate(const PhysicsComponent *component, 
 }
 
 
-EngineExecutor::Result::E EngineExecutor::Execute(const Step & /*step*/, Vector3 & /*current*/, float /*timeStep*/)
+EngineExecutor::Result EngineExecutor::Execute(const Step & /*step*/, Vector3 & /*current*/, float /*timeStep*/)
 {
-    return EngineExecutor::Result::Finished;
+    return EngineExecutor::Result(EngineExecutor::Result::Finished);
 }

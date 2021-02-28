@@ -22,15 +22,17 @@ public:
     // Возвращет true, если мотор заглушен
     bool IsStopped() const;
 
-private:
-
-    SharedPtr<PhysicsComponent> physics;
-
-    EngineCalculator calculator;                // Занимается расчётом алгоритма движения
+protected:
 
     SharedPtr<EngineAlgorithm> algorithm;
 
     EngineExecutor executor;
+
+    SharedPtr<PhysicsComponent> physics;
+
+private:
+
+    EngineCalculator calculator;                // Занимается расчётом алгоритма движения
 };
 
 
