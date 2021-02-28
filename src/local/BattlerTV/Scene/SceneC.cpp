@@ -15,7 +15,7 @@ SceneC::SceneC(Context *context) : SceneT(context)
 
 SceneC::~SceneC()
 {
-    delete TheWindowTarget;
+
 }
 
 

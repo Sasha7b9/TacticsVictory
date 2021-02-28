@@ -122,6 +122,17 @@ void Battler::Start()
 
     TheLevel = new Level();
 
+    TheScene->CreateComponent<DebugRenderer>();
+    TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
+
+    CreateGUI();
+
+    LOGINFO("Загружаю настройки");
+    TheMenu = new MenuT();
+    TheFileSelector = new FileSelector(TheContext);
+    TheFileSelector->GetWindow()->SetModal(false);
+    TheFileSelector->GetWindow()->SetVisible(false);
+
     TheScene->Create();
 
     ThePathIndicator = new PathIndicator();
@@ -135,17 +146,6 @@ void Battler::Start()
     }
 
     TheCamera = CameraT::Create();
-
-    TheScene->CreateComponent<DebugRenderer>();
-    TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
-
-    CreateGUI();
-
-    LOGINFO("Загружаю настройки");
-    TheMenu = new MenuT();
-    TheFileSelector = new FileSelector(TheContext);
-    TheFileSelector->GetWindow()->SetModal(false);
-    TheFileSelector->GetWindow()->SetVisible(false);
 
     PROFILER_FUNC_LEAVE();
 }
@@ -166,10 +166,10 @@ void Battler::Stop()
 
     TilePath::RemoveAll();
 
+    delete TheScene;
     delete TheServer;
     delete TheMouse;
     delete ThePathIndicator;
-    delete TheScene;
     delete TheFileSelector;
     delete TheLevel;
     delete TheMenu;
