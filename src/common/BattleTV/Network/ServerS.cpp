@@ -34,6 +34,8 @@ bool ServerS::Start(uint16 port)
 
 void ServerS::HandleMessage(StringHash, VariantMap &eventData)
 {
+    LOG_FUNC_ENTER();
+
     int id = eventData[NetworkMessage::P_MESSAGEID].GetInt();
 
     Message::Message(id).Handle(eventData);
@@ -54,7 +56,7 @@ void ServerS::HandleServerDisconnected(StringHash, VariantMap &)
 
 void ServerS::HandleClientConnected(StringHash, VariantMap &eventData)
 {
-//    LOG_FUNC_ENTER();
+    LOG_FUNC_ENTER();
 
     using namespace ClientConnected;
 

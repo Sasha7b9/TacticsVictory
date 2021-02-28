@@ -1,2 +1,2 @@
-StartServer.vbs
-StartClient.vbs
+start BattleTV.exe
+start BattlerTV.exe

@@ -271,11 +271,6 @@ void Battler::CreateEditorSession()
 void Battler::OpenLog()
 {
     TheLog = new LogT();
-    char buffer[50];
-    srand(static_cast<uint>(time(static_cast<time_t*>(0)))); //-V202
-
-    sprintf_s(buffer, 50, "TV.log");
-
-    TheLog->Open(buffer);
+    TheLog->Open(GetTypeName() + ".log");
     TheLog->SetLevel(LOG_DEBUG);
 }

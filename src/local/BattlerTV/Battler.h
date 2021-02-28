@@ -7,6 +7,7 @@ class SceneT;
 
 class Battler : public Application
 {
+    URHO3D_OBJECT(Battler, Application);
 public:
     Battler(Context* context);
 
