@@ -15,9 +15,9 @@ namespace Message
         {
             ((ReturnLevel *)this)->Handle(msg);
         }
-        else if (id == CLNT_CREATE_UNIT_TANK)
+        else if (id == CLNT_CREATE_COMPONENT)
         {
-            ((CreateUnitTank *)this)->Handle(msg);
+            ((CreateComponent *)this)->Handle(msg);
         }
     }
 }
@@ -50,7 +50,7 @@ void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 }
 
 
-void Message::CreateUnitTank::Handle(MemoryBuffer &msg)
+void Message::CreateComponent::Handle(MemoryBuffer &msg)
 {
     uint ID = msg.ReadUInt();
     Vector3 position = msg.ReadVector3();
