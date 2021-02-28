@@ -110,8 +110,6 @@
 
 #include <Urho3D/DebugNew.h>
 
-#include <Urho3d/ThirdParty/AngelScript/angelscript.h>
-
 using namespace Urho3D;
 
 #include <cfloat>
@@ -131,3 +129,4 @@ using namespace Urho3D;
 #include "GUI/Controls/Hint_.h"
 #include "GUI/Controls/Label_.h"
 #include "GUI/Logic/LineTranslator2D.h"
+#include "Utils/Log_.h"

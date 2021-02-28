@@ -40,6 +40,7 @@ MenuT           *TheMenu = nullptr;
 Mouse           *TheMouse = nullptr;
 PathIndicator   *ThePathIndicator = nullptr;
 SceneC          *TheScene = nullptr;
+ServerC         *TheServer = nullptr;
 Settings        *TheSet = nullptr;
 Battler         *TheBattler = nullptr;
 TerrainT        *TheTerrain = nullptr;

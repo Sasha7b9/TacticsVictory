@@ -13,6 +13,7 @@
 #include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/Menu.h"
 #include "Input/Mouse.h"
+#include "Network/ServerC.h"
 #include "Scene/Level_.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
@@ -62,6 +63,7 @@ void Battler::GetSubsystems()
     TheUI = GetSubsystem<UI>();
     TheInput = GetSubsystem<Input>();
     TheLocalization = GetSubsystem<Localization>();
+    TheNetwork = GetSubsystem<Network>();
 
     CreateScriptSystem();
 }
@@ -140,6 +142,10 @@ void Battler::Start()
     TheFileSelector->GetWindow()->SetVisible(false);
 
     SubscribeToEvents();
+
+    TheServer = new ServerC();
+
+    TheServer->Connect("127.0.0.1", SERVER_PORT);
 
     PROFILER_FUNC_LEAVE();
 }
