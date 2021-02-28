@@ -10,8 +10,6 @@ public:
 
     PhysicsComponent(Context *context) : Component(context) {}
 
-    Vector3 position;
-    Vector3 rotation;
     Vector3 speedMove;
     Vector3 speedRotate;
     Vector3 currentSpeedMove;

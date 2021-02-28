@@ -56,10 +56,17 @@ public:
 //----------------------------------------------------------------------------------------------------------------------
 //  –ассчитывет действи€, необходимые произвести, чтобы выполнить команду
 //
-class EngineCalculator
+class EngineCalculator : public Component
 {
+    URHO3D_OBJECT(EngineCalculator, Component);
+
 public:
-    EngineAlgorithm *Calculate(const PhysicsComponent *start, CommandEngine::E command);
+
+    EngineCalculator(Context *context = TheContext) : Component(context) {}
+
+    static void RegisterObject();
+
+    EngineAlgorithm *Calculate(CommandEngine::E command);
 };
 
 

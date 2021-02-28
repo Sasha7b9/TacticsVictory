@@ -3,13 +3,13 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-EngineAlgorithm *EngineCalculator::Calculate(const PhysicsComponent *component, CommandEngine::E command)
+EngineAlgorithm *EngineCalculator::Calculate(CommandEngine::E command)
 {
     EngineAlgorithm *result = new EngineAlgorithm();
 
     Step step(Step::Type::Move);
 
-    step.start = component->position;
+    step.start = node_->GetPosition();
     step.end = step.start;
 
     if (command == CommandEngine::MoveToNorth)
@@ -31,7 +31,7 @@ EngineAlgorithm *EngineCalculator::Calculate(const PhysicsComponent *component, 
 
     result->steps.Push(step);
 
-    result->current = component->position;
+    result->current = node_->GetPosition();
 
     return result;
 }

@@ -12,7 +12,7 @@ EngineT::EngineT(Context *context) : Component(context)
 
 void EngineT::GiveCommand(CommandEngine::E command)
 {
-    algorithm = calculator.Calculate(physics, command);
+    algorithm = calculator.Calculate(command);
 }
 
 
@@ -42,7 +42,7 @@ void EngineGround::Update(float timeStep)
         algorithm->steps.Erase(0);
     }
 
-    physics->position = algorithm->current;
+    node_->SetPosition(algorithm->current);
 }
 
 
