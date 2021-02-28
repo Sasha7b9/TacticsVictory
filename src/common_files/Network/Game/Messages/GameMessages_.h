@@ -66,8 +66,9 @@ namespace Message
 
     struct CreateUnitTank : public Message
     {
-        CreateUnitTank(const Vector3 position) : Message(CLNT_CREATE_UNIT_TANK)
+        CreateUnitTank(uint id, const Vector3 position) : Message(CLNT_CREATE_UNIT_TANK)
         {
+            buffer.WriteUInt(id);
             buffer.WriteVector3(position);
         }
 
