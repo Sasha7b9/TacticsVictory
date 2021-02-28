@@ -68,7 +68,11 @@ public:
 class EngineExecutor
 {
 public:
-    void Execute(SharedPtr<EngineAlgorithm> algorithm);
 
-    SharedPtr<EngineAlgorithm> algorithm;
+    struct Result { enum E {
+        Running,            // Это значение означает, что следует продолжить выполнение шага
+        Finished            // Это значение означает, что выполнение шага завершено
+    }; };
+
+    Result::E Execute(const Step &step, Vector3 &current, float timeStep);
 };

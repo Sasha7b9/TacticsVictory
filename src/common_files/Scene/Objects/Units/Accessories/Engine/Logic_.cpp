@@ -37,7 +37,7 @@ EngineAlgorithm *EngineCalculator::Calculate(const PhysicsComponent *component, 
 }
 
 
-void EngineExecutor::Execute(SharedPtr<EngineAlgorithm> _algorithm)
+EngineExecutor::Result::E EngineExecutor::Execute(const Step & /*step*/, Vector3 & /*current*/, float /*timeStep*/)
 {
-    algorithm = _algorithm;
+    return EngineExecutor::Result::Finished;
 }

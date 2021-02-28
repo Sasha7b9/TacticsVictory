@@ -28,7 +28,9 @@ private:
 
     EngineCalculator calculator;                // Занимается расчётом алгоритма движения
 
-    EngineExecutor executor;                    // Выполняет алгоритм движения
+    SharedPtr<EngineAlgorithm> algorithm;
+
+    EngineExecutor executor;
 };
 
 

@@ -6,9 +6,7 @@
 
 void EngineT::GiveCommand(CommandEngine::E command)
 {
-    SharedPtr<EngineAlgorithm> algorithm(calculator.Calculate(physics, command));
-
-    executor.Execute(algorithm);
+    algorithm = calculator.Calculate(physics, command);
 }
 
 
