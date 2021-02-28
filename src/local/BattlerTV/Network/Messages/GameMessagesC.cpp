@@ -55,5 +55,7 @@ void Message::CreateUnitTank::Handle(MemoryBuffer &msg)
     uint ID = msg.ReadUInt();
     Vector3 position = msg.ReadVector3();
 
-    TheTerrain->PutIn(TheScene->CreateComponent<Tank>(LOCAL, ID), (uint)position.z_, (uint)position.x_);
+    Component *component = TheScene->CreateComponent("Tank", LOCAL, ID);
+
+    TheTerrain->PutIn((Tank *)component, (uint)position.z_, (uint)position.x_);
 }
