@@ -21,12 +21,16 @@ iptables --append INPUT --match conntrack --ctstate ESTABLISHED,RELATED --jump A
 iptables --append INPUT --protocol tcp --dport 22 --jump ACCEPT
 iptables --append INPUT --protocol tcp --dport 80 --jump ACCEPT
 iptables --append INPUT --protocol tcp --dport 443 --jump ACCEPT
+
 iptables --append INPUT --protocol tcp --dport 30000 --jump ACCEPT
 iptables --append INPUT --protocol tcp --dport 30001 --jump ACCEPT
 iptables --append INPUT --protocol tcp --dport 30002 --jump ACCEPT
 iptables --append INPUT --protocol udp --dport 30000 --jump ACCEPT
 iptables --append INPUT --protocol udp --dport 30001 --jump ACCEPT
 iptables --append INPUT --protocol udp --dport 30002 --jump ACCEPT
+
+iptables --append INPUT --protocol tcp --dport 40000 --jump ACCEPT
+iptables --append INPUT --protocol udp --dport 40001 --jump ACCEPT
 
 
 iptables --policy INPUT DROP
