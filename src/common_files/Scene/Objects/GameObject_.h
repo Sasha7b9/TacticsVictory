@@ -2,6 +2,8 @@
 #pragma once
 
 
+//----------------------------------------------------------------------------------------------------------------------
+// Здесь хранятся 
 class ShiftParameters : public Component
 {
     URHO3D_OBJECT(ShiftParameters, Component);
@@ -17,6 +19,7 @@ public:
 };
 
 
+//----------------------------------------------------------------------------------------------------------------------
 class GameObject : public LogicComponent
 {
     URHO3D_OBJECT(GameObject, LogicComponent);
