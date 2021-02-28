@@ -25,4 +25,9 @@ private:
     void HandleServerDisconnected(StringHash, VariantMap &);
 
     void HandleConnectFailed(StringHash, VariantMap &);
+
+    void Connect();
+
+    String address;
+    uint16 port = 0;
 };

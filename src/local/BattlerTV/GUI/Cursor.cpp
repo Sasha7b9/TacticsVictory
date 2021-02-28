@@ -250,6 +250,11 @@ Drawable* CursorT::GetRaycastNode(Vector3 *hitPos_)
         return nullptr;
     }
 
+    if (!TheCamera)
+    {
+        return nullptr;
+    }
+
     Ray ray = TheCamera->GetCursorRay();
     PODVector<RayQueryResult> results;
     RayOctreeQuery query(results, ray, RAY_TRIANGLE, M_INFINITY, DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);

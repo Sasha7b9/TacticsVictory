@@ -133,27 +133,7 @@ void Battler::Start()
     TheFileSelector->GetWindow()->SetModal(false);
     TheFileSelector->GetWindow()->SetVisible(false);
 
-//    CreateScene();
-
     PROFILER_FUNC_LEAVE();
-}
-
-
-void Battler::CreateScene()
-{
-    TheScene->Create();
-
-    ThePathIndicator = new PathIndicator();
-
-    for (int i = 0; i < 1000; i++)
-    {
-        uint colZ = (uint)Random((float)TheTerrain->WidthZ());
-        uint rowX = (uint)Random((float)TheTerrain->HeightX());
-
-        TheTerrain->PutIn(TheScene->CreateComponent<Tank>(), colZ, rowX);
-    }
-
-    TheCamera = CameraT::Create();
 }
 
 

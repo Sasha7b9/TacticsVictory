@@ -29,7 +29,6 @@ private:
     void GetSubsystems();
     void TuneEngineParameters();
     void CreateGUI();
-    void CreateScene();
 
     void HandleMenuEvent(StringHash, VariantMap&);
     void HandlePostRenderUpdate(StringHash, VariantMap&);
