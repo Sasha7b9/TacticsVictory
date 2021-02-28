@@ -5,6 +5,7 @@
 
 void UnitObject::RegisterObjects()
 {
+    TheContext->RegisterFactory<UnitObjectSpecificS>();
     TheContext->RegisterFactory<EngineGround>();
 }
 
