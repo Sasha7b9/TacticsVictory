@@ -43,21 +43,24 @@ void ServerC::HandleMessage(StringHash, VariantMap & /*eventData*/)
 
 void ServerC::HandleServerConnected(StringHash, VariantMap &)
 {
-    LOGINFOF("Connect to server %s:%d is ok", address.CString(), port);
-
-    TheScene->Create();
-
-    ThePathIndicator = new PathIndicator();
-
-    for (int i = 0; i < 1000; i++)
-    {
-        uint colZ = (uint)Random((float)TheTerrain->WidthZ());
-        uint rowX = (uint)Random((float)TheTerrain->HeightX());
-
-        TheTerrain->PutIn(TheScene->CreateComponent<Tank>(), colZ, rowX);
-    }
-
-    TheCamera = CameraT::Create();
+    Message::RequestForLevel().Send(true);
+    
+    
+//    LOGINFOF("Connect to server %s:%d is ok", address.CString(), port);
+//
+//    TheScene->Create();
+//
+//    ThePathIndicator = new PathIndicator();
+//
+//    for (int i = 0; i < 1000; i++)
+//    {
+//        uint colZ = (uint)Random((float)TheTerrain->WidthZ());
+//        uint rowX = (uint)Random((float)TheTerrain->HeightX());
+//
+//        TheTerrain->PutIn(TheScene->CreateComponent<Tank>(), colZ, rowX);
+//    }
+//
+//    TheCamera = CameraT::Create();
 }
 
 

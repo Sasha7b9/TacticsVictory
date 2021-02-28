@@ -8,5 +8,10 @@ void Message::RequestForLevel::Handle(const TConnection &connection)
 {
     Vector3 position(10.0f, 10.0f, 10.0f);
 
-    connection.SendMessage(true, ReturnLevel(position));
+    connection.SendMessage(true, ReturnLevel());
+}
+
+
+Message::ReturnLevel::ReturnLevel() : Message(MSG_RETURN_LEVEL)
+{
 }

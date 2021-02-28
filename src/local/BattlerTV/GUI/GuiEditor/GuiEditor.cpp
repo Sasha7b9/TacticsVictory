@@ -300,8 +300,8 @@ void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
     windowNewMap->SetVisible(false);
 
     TheCamera->SetPosition(
-        {TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()},
-        {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeight() / 2.0f)});
+        {TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeightX()},
+        {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeightX() / 2.0f)});
 }
 
 
@@ -395,8 +395,8 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
         TheTerrain = new TerrainT();
         TheTerrain->CreateFromVector(TheLevel->map);
         TheCamera->SetPosition(
-            {TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()},
-            {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeight() / 2.0f)});
+            {TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeightX()},
+            {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeightX() / 2.0f)});
     }
     
     TheFileSelector->GetWindow()->SetVisible(false);

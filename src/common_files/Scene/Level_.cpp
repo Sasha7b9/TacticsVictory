@@ -242,7 +242,7 @@ uint Level::GetWidth()
 }
 
 
-uint Level::GetHeight()
+uint Level::GetHeightX()
 {
     return map.Empty() ? 0 : map.Size();
 }

@@ -29,11 +29,7 @@ namespace Message
 
     struct ReturnLevel : public Message
     {
-        ReturnLevel(const Vector3 &position)             // позиция созданной сущности клиента
-            : Message(MSG_RETURN_LEVEL)
-        {
-            buffer.WriteVector3(position);
-        }
+        ReturnLevel();
 
         void Handle(MemoryBuffer & /*msg*/) {};
     };
