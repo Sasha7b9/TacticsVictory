@@ -17,6 +17,4 @@ public:
     static void RegisterObject(Context *context = TheContext);
 
     virtual void Create();
-
-    Vector<Vector<float>> level;
 };

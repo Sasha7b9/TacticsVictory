@@ -3,6 +3,7 @@
 #include "GUI/Cursor.h"
 #include "GUI/GUI.h"
 #include "GUI/Windows/Console.h"
+#include "Scene/Level_.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 
@@ -49,8 +50,8 @@ SharedPtr<CameraT> CameraT::Create()
 {
     SharedPtr<CameraT> camera(TheScene->CreateChild("TCamera")->CreateComponent<CameraT>());
 
-    uint sizeX = TheScene->level[0].Size();
-    uint sizeZ = TheScene->level.Size();
+    uint sizeX = TheLevel->GetWidth();
+    uint sizeZ = TheLevel->GetHeight();
 
     camera->SetPosition({ sizeX / 2.0f, 25.0f, static_cast<float>(sizeZ) / 2.0f - 10.0f },
                         { sizeX / 2.0f, 0.0f, (sizeZ / 2.0f) });

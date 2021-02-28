@@ -36,7 +36,7 @@ void ServerC::Connect()
 void ServerC::HandleMessage(StringHash, VariantMap & /*eventData*/)
 {
 //    int id = eventData[NetworkMessage::P_MESSAGEID].GetInt();
-//
+// 
 //    Message::Message(id).Handle(eventData);
 }
 

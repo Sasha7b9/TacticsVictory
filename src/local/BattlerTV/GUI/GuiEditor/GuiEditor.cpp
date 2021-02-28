@@ -389,12 +389,11 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
 
     if(ok)
     {
-        Vector<Vector<float>> map = TheLevel->Load(
-            (char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
+        TheLevel->Load((char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
 
         delete TheTerrain;
         TheTerrain = new TerrainT();
-        TheTerrain->CreateFromVector(map);
+        TheTerrain->CreateFromVector(TheLevel->map);
         TheCamera->SetPosition(
             {TheLevel->GetWidth() / 2.0f, 20.0f, -(float)TheLevel->GetHeight()},
             {TheLevel->GetWidth() / 2.0f, 0.0f, -(TheLevel->GetHeight() / 2.0f)});

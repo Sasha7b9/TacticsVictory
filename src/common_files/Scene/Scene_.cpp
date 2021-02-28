@@ -49,15 +49,13 @@ void SceneT::Create()
     float dColor = 0.1f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    level = Level::Load("Game/Levels/level.map");
-
     TheTerrain = new TerrainT();
-    TheTerrain->CreateFromVector(level);
+    TheTerrain->CreateFromVector(TheLevel->map);
 
     SharedPtr<Node> lightNode;
     lightNode = CreateChild("LigthNode");
     SunEngine *sunEngine = lightNode->CreateComponent<SunEngine>();
-    sunEngine->SetCenter({ level[0].Size() / 2.0f, 25.0f, level.Size() / 2.0f });
+    sunEngine->SetCenter({ TheLevel->map[0].Size() / 2.0f, 25.0f, TheLevel->map.Size() / 2.0f });
     sunEngine->SetMoveSpeed(0.5f);
 
     Light *light = lightNode->CreateComponent<Light>();

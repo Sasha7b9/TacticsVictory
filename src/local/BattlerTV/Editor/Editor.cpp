@@ -27,10 +27,10 @@ void Editor::Run()
     float dColor = 0.3f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    Vector<Vector<float>> level = TheLevel->Load("Game/Levels/level.map");
+    TheLevel->Load("Game/Levels/level.map");
 
     TheTerrain = new TerrainT();
-    TheTerrain->CreateFromVector(level);
+    TheTerrain->CreateFromVector(TheLevel->map);
 
     lightNode = TheScene->CreateChild("LightNode");
 

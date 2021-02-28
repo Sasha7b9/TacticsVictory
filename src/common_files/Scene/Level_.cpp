@@ -12,7 +12,7 @@ Vector<Vector<float> > Level::map;
 
 Level::Level(Context *context) : Object(context)
 {
-
+    Load("Game/Levels/level.map");
 }
 
 
@@ -61,7 +61,7 @@ Vector<Vector<float>> Level::Get()
 }
 
 
-Vector<Vector<float>> Level::Load(const char *fileName)
+void Level::Load(const char *fileName)
 {
     map.Clear();
 
@@ -114,8 +114,6 @@ Vector<Vector<float>> Level::Load(const char *fileName)
     {
         map[i].Resize((numCols / SegmentTerrain::HEIGHT_X) * SegmentTerrain::HEIGHT_X);
     }
-
-    return map;
 }
 
 
