@@ -3,7 +3,7 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-EngineAlgorithm *EngineCalculator::Calculate(CommandEngine::E command)
+EngineAlgorithm *EngineCalculator::Calculate(Node *node, CommandEngine::E command)
 {
     EngineAlgorithm *result = new EngineAlgorithm();
 

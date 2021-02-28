@@ -4,38 +4,48 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
+void EngineParameters::RegisterObject()
+{
+    TheContext->RegisterFactory<EngineParameters>();
+}
+
+
 EngineT::EngineT(Context *context) : Component(context)
 {
-    algorithm = new EngineAlgorithm();
+
 }
 
 
 void EngineT::RegisterObject()
 {
     TheContext->RegisterFactory<EngineT>();
+
+    EngineParameters::RegisterObject();
 }
 
 
 void EngineT::GiveCommand(CommandEngine::E command)
 {
-    algorithm = calculator.Calculate(command);
+    calculator.Calculate(node_, command);
 }
 
 
 bool EngineT::IsStopped() const
 {
-    return physics->speedMove == Vector3::ZERO && physics->speedRotate == Vector3::ZERO;
+    EngineParameters *params = GetComponent<EngineParameters>();
+
+    return (params->speedMove == 0.0f) && (params->speedRotate == 0.0f);
 }
 
 
 void EngineT::Update(float timeStep)
 {
-    if (algorithm->IsFinished())
+    if (algorithm.IsFinished())
     {
         return;
     }
 
-    EngineExecutor::Result result = executor.Execute(algorithm->steps[0], algorithm->current, timeStep);
+    EngineExecutor::Result result = executor.Execute(node_, timeStep);
 
     if (result.IsFinished())
     {

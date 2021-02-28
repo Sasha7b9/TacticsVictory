@@ -5,6 +5,29 @@
 
 
 //----------------------------------------------------------------------------------------------------------------------
+class EngineParameters : public Component
+{
+    URHO3D_OBJECT(EngineParameters, Component);
+
+public:
+
+    EngineParameters(Context *context = TheContext) : Component(context) {}
+
+    static void RegisterObject();
+
+    float maxSpeedMove = 0.2f;      // Максимальная скорость движения
+    float maxSpeedRotate = 60.0f;   // Максимальная скорость поворота
+
+    Vector3 direction;              // Направление движения
+    float speedMove;                // Установившаяся скорость движения
+    float accelerationMove;         // Ускорение движения при трогании с места
+    Vector3 axisRotate;             // Ось поворота
+    float speedRotate;              // Скорость поворота
+    float accelerationRotate;       // Ускорение поворота
+};
+
+
+//----------------------------------------------------------------------------------------------------------------------
 class EngineT : public Component
 {
     URHO3D_OBJECT(EngineT, Component);
@@ -29,11 +52,4 @@ protected:
     EngineCalculator calculator;    // Занимается расчётом алгоритма движения
     EngineAlgorithm algorithm;      // Собственно алгоритм движения
     EngineExecutor executor;        // Собственно выполнитель алгоритма движения
-
-    Vector3 speedMove;              // Установившаяся скорость движения
-    float accelerationMove;         // Ускорение движения при трогании с места
-    Vector3 speedRotate;            // Скорость поворота
-    float accelerationRotate;       // Ускорение поворота
-    Vector3 currentSpeedMove;       // Текущая скорость движения
-    Vector3 currentSpeedRotate;     // Текущая скорость поворота
 };

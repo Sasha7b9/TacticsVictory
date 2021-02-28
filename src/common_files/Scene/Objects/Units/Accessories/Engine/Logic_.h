@@ -36,7 +36,6 @@ public:
 
 //----------------------------------------------------------------------------------------------------------------------
 // Алгоритм действий - результат деятельности EngineCalculator
-//
 class EngineAlgorithm : public Object
 {
     URHO3D_OBJECT(EngineAlgorithm, Object);
@@ -55,7 +54,6 @@ public:
 
 //----------------------------------------------------------------------------------------------------------------------
 //  Рассчитывет действия, необходимые произвести, чтобы выполнить команду
-//
 class EngineCalculator : public Component
 {
     URHO3D_OBJECT(EngineCalculator, Component);
@@ -66,14 +64,12 @@ public:
 
     static void RegisterObject();
 
-    EngineAlgorithm *Calculate(CommandEngine::E command);
+    void Calculate(Node *node, CommandEngine::E command);
 };
 
 
 //----------------------------------------------------------------------------------------------------------------------
-/*
-*  Выполняет действия, ранее рассчитанные EngineCalculator
-*/
+// Выполняет действия, ранее рассчитанные EngineCalculator
 class EngineExecutor
 {
 public:
@@ -90,5 +86,5 @@ public:
         bool IsFinished() const { return value == Finished; }
     };
 
-    Result Execute(const Step &step, Vector3 &current, float timeStep);
+    Result Execute(Node *_node, float timeStep);
 };
