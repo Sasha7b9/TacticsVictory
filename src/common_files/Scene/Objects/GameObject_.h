@@ -33,11 +33,6 @@ public:
 
 protected:
 
-    struct Type { enum E {
-        Client,
-        Server
-    }; };
-
     GameObject(Context *context);
 
     void LoadFromJSON(const String &file);
@@ -45,8 +40,6 @@ protected:
     void Normalize(float k = 1.0f);
 
     virtual void OnNodeSet(Node *node) override;
-
-    static const Type::E type;
 
 private:
 
