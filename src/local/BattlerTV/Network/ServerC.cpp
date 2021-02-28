@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Network/ServerC.h"
 #include "Network/Game/Messages/GameMessages_.h"
+#include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/Units/Tank/Tank_.h"
 
