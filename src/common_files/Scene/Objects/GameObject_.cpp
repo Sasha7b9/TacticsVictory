@@ -3,6 +3,7 @@
 #include "Core/Math_.h"
 #include "Scene/Objects/GameObject_.h"
 #include "Scene/Objects/Components/PhysicsComponent.h"
+#include "Scene/Objects/Units/UnitObject/UnitObject_.h"
 
 
 Vector<GameObject *> GameObject::storage;
@@ -17,6 +18,8 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
 void GameObject::RegisterObject()
 {
     TheContext->RegisterFactory<PhysicsComponent>();
+
+    UnitObject::RegisterObject();
 }
 
 

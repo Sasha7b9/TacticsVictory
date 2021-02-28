@@ -161,8 +161,6 @@ void Battle::RegistrationComponets()
     SceneT::RegisterObject();
 
     GameObject::RegisterObject();
-    UnitObject::RegisterObject();
-    Tank::RegisterObject();
 }
 
 
