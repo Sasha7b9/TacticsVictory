@@ -120,7 +120,7 @@ void Battler::Start()
 
     TheScene = new SceneC();
 
-    TheScene->CreateComponent<DebugRenderer>();
+    TheScene->CreateComponent<DebugRenderer>(LOCAL);
     TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
 
     CreateGUI();

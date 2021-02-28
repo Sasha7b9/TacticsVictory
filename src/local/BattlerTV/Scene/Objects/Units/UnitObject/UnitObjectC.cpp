@@ -14,7 +14,7 @@ void UnitObject::RegisterObjects()
 
 void UnitObjectSpecific::CreateSpecific(Node *node)
 {
-    node->CreateComponent<UnitObjectSpecificC>();
+    node->CreateComponent<UnitObjectSpecificC>(LOCAL);
 }
 
 
@@ -51,7 +51,7 @@ void UnitObjectSpecificC::OnNodeSet(Node *node)
     {
         UnitObjectSpecific::OnNodeSet(node);
 
-        tile = node->CreateComponent<TileSelected>();
+        tile = node->CreateComponent<TileSelected>(LOCAL);
 
         SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(UnitObjectSpecificC, HandleMouseClick));
     }

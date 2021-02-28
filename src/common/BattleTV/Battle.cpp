@@ -99,7 +99,7 @@ void Battle::Start()
         uint colZ = (uint)Random((float)TheTerrain->WidthZ());
         uint rowX = (uint)Random((float)TheTerrain->HeightX());
 
-        TheTerrain->PutIn(TheScene->CreateComponent<Tank>(), colZ, rowX);
+        TheTerrain->PutIn(TheScene->CreateComponent<Tank>(LOCAL), colZ, rowX);
     }
 
     SubscribeToEvents();

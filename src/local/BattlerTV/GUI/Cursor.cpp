@@ -38,7 +38,7 @@ CursorT::CursorT(Context *context) : Cursor(context)
     shapes = new CursorShapes();
 
     nodeSprite = TheScene->CreateChild("Cursor sprite");
-    staticSprite = nodeSprite->CreateComponent<StaticSprite2D>();
+    staticSprite = nodeSprite->CreateComponent<StaticSprite2D>(LOCAL);
     staticSprite->SetColor(Color(Random(1.0f), Random(1.0f), Random(1.0f), 1.0f));
     staticSprite->SetBlendMode(BLEND_ALPHA);
     nodeSprite->SetEnabled(true);

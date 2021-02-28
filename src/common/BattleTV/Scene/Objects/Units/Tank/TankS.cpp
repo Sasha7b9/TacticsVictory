@@ -14,5 +14,5 @@ void Tank::RegisterObject()
 
 void TankSpecific::CreateSpecific(Node *node)
 {
-    node->CreateComponent<TankSpecificS>();
+    node->CreateComponent<TankSpecificS>(LOCAL);
 }

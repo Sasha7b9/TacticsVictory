@@ -22,20 +22,20 @@ CameraT::CameraT(Context *context) : LogicComponent(context)
 {
     cameraNode = TheScene->CreateChild("Camera");
 
-    Camera *camera = cameraNode->CreateComponent<Camera>();
+    Camera *camera = cameraNode->CreateComponent<Camera>(LOCAL);
     camera->SetFarClip(1000.0f);
     camera->SetNearClip(1.0f);
     cameraNode->SetRotation(Quaternion(pitch, yaw, 0.0f));
     cameraNode->SetPosition({120.0f, 50.0f, -160.0f});
 
-    light = cameraNode->CreateComponent<Light>();
+    light = cameraNode->CreateComponent<Light>(LOCAL);
     light->SetLightType(LIGHT_POINT);
     light->SetRange(25.0f);
     light->SetEnabled(true);
 
     SetupViewport();
     Node *listenerNode = cameraNode->CreateChild("Listener");
-    SoundListener *listener = listenerNode->CreateComponent<SoundListener>();
+    SoundListener *listener = listenerNode->CreateComponent<SoundListener>(LOCAL);
     TheAudio->SetListener(listener);
 }
 
@@ -48,7 +48,7 @@ void CameraT::RegisterObject()
 
 SharedPtr<CameraT> CameraT::Create()
 {
-    SharedPtr<CameraT> camera(TheScene->CreateChild("TCamera")->CreateComponent<CameraT>());
+    SharedPtr<CameraT> camera(TheScene->CreateChild("TCamera")->CreateComponent<CameraT>(LOCAL));
 
     uint sizeZ = TheLevel->GetWidthZ();
     uint sizeX = TheLevel->GetHeightX();

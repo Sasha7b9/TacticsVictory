@@ -26,9 +26,9 @@ void SceneT::RegisterObject(Context *context)
 
 void SceneT::Create()
 {
-    CreateComponent<Octree>();
+    CreateComponent<Octree>(LOCAL);
 
-    ThePhysicsWorld = CreateComponent<PhysicsWorld>();
+    ThePhysicsWorld = CreateComponent<PhysicsWorld>(LOCAL);
 
     ThePhysicsWorld->SetGravity(Vector3::ZERO);
 
@@ -39,7 +39,7 @@ void SceneT::Create()
     // and Z axes.) Drawable objects "pick up" the zone they belong to and use it when rendering; several zones can exist
 
     Node* zoneNode = CreateChild("Zone");
-    Zone* zone = zoneNode->CreateComponent<Zone>();
+    Zone* zone = zoneNode->CreateComponent<Zone>(LOCAL);
     // Set same volume as the Octree, set a close bluish fog and some ambient light
     zone->SetBoundingBox(BoundingBox(-1000.0f, 1000.0f));
     zone->SetFogColor(Color::GRAY);
@@ -54,11 +54,11 @@ void SceneT::Create()
 
     SharedPtr<Node> lightNode;
     lightNode = CreateChild("LigthNode");
-    SunEngine *sunEngine = lightNode->CreateComponent<SunEngine>();
+    SunEngine *sunEngine = lightNode->CreateComponent<SunEngine>(LOCAL);
     sunEngine->SetCenter({ TheLevel->map[0].Size() / 2.0f, 25.0f, TheLevel->map.Size() / 2.0f });
     sunEngine->SetMoveSpeed(0.5f);
 
-    Light *light = lightNode->CreateComponent<Light>();
+    Light *light = lightNode->CreateComponent<Light>(LOCAL);
     lightNode->SetScale(0.01f);
     light->SetLightType(LIGHT_POINT);
     light->SetRange(1000.0f);

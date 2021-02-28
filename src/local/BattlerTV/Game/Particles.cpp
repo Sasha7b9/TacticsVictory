@@ -16,7 +16,7 @@ void Particles::Init()
 
     // Explosion_Tank
     Node *node = TheScene->CreateChild("Emitter");
-    ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
+    ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>(LOCAL);
     emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
     emitter->SetEffect(TheCache->GetResource<ParticleEffect>("Models/Units/Tank/FireTank.xml"));
     emitter->SetEmitting(false);
@@ -32,7 +32,7 @@ void Particles::EmittingStatic(TypeParticles type, const Vector3 &position)
         Node *node = TheScene->CreateChild();
         node->SetScale(1.0f);
         node->SetPosition(position);
-        ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
+        ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>(LOCAL);
         emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
         emitter->SetEffect(TheCache->GetResource<ParticleEffect>("Particle/Disco.xml"));
         emitter->SetAutoRemoveMode(REMOVE_COMPONENT);
@@ -81,7 +81,7 @@ void Particles::EmittingDinamic(TypeParticles type, Node *node_)
     {
         Node *node = node_->CreateChild(name);
         node->SetScale(50.0f);
-        ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
+        ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>(LOCAL);
         emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
         emitter->SetEffect(TheCache->GetResource<ParticleEffect>("Models/Units/Tank/FireTank.xml"));
         emitter->SetAutoRemoveMode(REMOVE_COMPONENT);
@@ -92,7 +92,7 @@ void Particles::EmittingDinamic(TypeParticles type, Node *node_)
         Node *node = node_->CreateChild(name);
         node->SetScale(25.0f);
         node->SetPosition({0.0f, 15.5f, 0.0f});
-        ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>();
+        ParticleEmitter *emitter = node->CreateComponent<ParticleEmitter>(LOCAL);
         emitter->SetViewMask(VIEW_MASK_FOR_EFFECTS);
         emitter->SetEffect(TheCache->GetResource<ParticleEffect>("Particle/Disco.xml"));
         emitter->SetAutoRemoveMode(REMOVE_COMPONENT);

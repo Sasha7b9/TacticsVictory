@@ -52,5 +52,5 @@ void EngineGround::OnNodeSet(Node *node)
 
 EngineT *EngineGround::CreateEngine(Node *node)
 {
-    return node->CreateComponent<EngineGround>();
+    return node->CreateComponent<EngineGround>(LOCAL);
 }

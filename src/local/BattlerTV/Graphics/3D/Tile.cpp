@@ -56,7 +56,7 @@ void Tile::Start()
         3, 2, 0
     };
 
-    SharedPtr<CustomGeometry> geometry(node_->CreateComponent<CustomGeometry>());
+    SharedPtr<CustomGeometry> geometry(node_->CreateComponent<CustomGeometry>(LOCAL));
 
     geometry->BeginGeometry(0, TRIANGLE_LIST);
     geometry->SetViewMask(VIEW_MASK_FOR_EFFECTS);

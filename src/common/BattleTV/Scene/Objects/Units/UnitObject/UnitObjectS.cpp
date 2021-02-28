@@ -12,5 +12,5 @@ void UnitObject::RegisterObjects()
 
 void UnitObjectSpecific::CreateSpecific(Node *node)
 {
-    node->CreateComponent<UnitObjectSpecificS>();
+    node->CreateComponent<UnitObjectSpecificS>(LOCAL);
 }

@@ -12,7 +12,7 @@ void Sounds::Init()
 {
     sounds[StringHash(Sound_Explosion)] = TheCache->GetResource<Sound>("Sounds/ExplosionMissile.wav");
     Node *nodeSource = TheScene->CreateChild("Sound");
-    SoundSource3D* soundSource = nodeSource->CreateComponent<SoundSource3D>();
+    SoundSource3D* soundSource = nodeSource->CreateComponent<SoundSource3D>(LOCAL);
     soundSource->SetDistanceAttenuation(1.0f, 5.0f, 0.01f);
     soundSource->SetSoundType(SOUND_EFFECT);
     sources.Push(soundSource);

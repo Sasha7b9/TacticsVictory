@@ -30,7 +30,7 @@ void GameObject::LoadFromJSON(const String &fileName)
     String fileModel = modelValue.Get("fileModel").GetString();
     String fileMaterials = modelValue.Get("fileMaterials").GetString();
 
-    staticModel = node_->CreateComponent<StaticModel>();
+    staticModel = node_->CreateComponent<StaticModel>(LOCAL);
     staticModel->SetViewMask(VIEW_MASK_FOR_MISSILE);
     staticModel->SetModel(TheCache->GetResource<Model>(fileModel));
     staticModel->ApplyMaterialList(fileMaterials);

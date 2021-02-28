@@ -21,7 +21,7 @@ Editor::Editor(Context *context) : Object(context)
 void Editor::Run()
 {
     Node* zoneNode = TheScene->CreateChild("Zone");
-    Zone* zone = zoneNode->CreateComponent<Zone>();
+    Zone* zone = zoneNode->CreateComponent<Zone>(LOCAL);
     zone->SetBoundingBox(BoundingBox(-50.0f, 50.0f));
 
     float dColor = 0.3f;
@@ -34,7 +34,7 @@ void Editor::Run()
 
     lightNode = TheScene->CreateChild("LightNode");
 
-    SharedPtr<Light> light(lightNode->CreateComponent<Light>());
+    SharedPtr<Light> light(lightNode->CreateComponent<Light>(LOCAL));
     lightNode->SetScale(0.01f);
     light->SetLightType(LIGHT_POINT);
     light->SetRange(1000.0f);
