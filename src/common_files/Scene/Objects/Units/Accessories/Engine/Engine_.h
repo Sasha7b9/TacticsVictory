@@ -11,7 +11,7 @@ class EngineT : public Component
 
 public:
 
-    EngineT(Context *context) : Component(context) {}
+    EngineT(Context *context = TheContext);
 
     virtual void Update(float timeStep) { UNUSED(timeStep); };
 

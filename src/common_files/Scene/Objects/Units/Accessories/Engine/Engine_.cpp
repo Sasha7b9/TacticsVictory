@@ -4,6 +4,12 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
+EngineT::EngineT(Context *context) : Component(context)
+{
+    algorithm = new EngineAlgorithm();
+}
+
+
 void EngineT::GiveCommand(CommandEngine::E command)
 {
     algorithm = calculator.Calculate(physics, command);

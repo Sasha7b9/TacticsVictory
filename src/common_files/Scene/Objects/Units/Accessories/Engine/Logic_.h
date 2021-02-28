@@ -45,7 +45,7 @@ public:
 
     EngineAlgorithm(Context *context = TheContext) : Object(context) {}
 
-    bool IsFinished() const { return !steps.Empty(); }
+    bool IsFinished() const { return steps.Empty(); }
 
     Vector<Step> steps;     // Здесь хранятся шаги алгоритма - от первого к последнему. Когда заканчивается
                             // выполнение шага [0], он удаляется.
