@@ -2,6 +2,21 @@
 #pragma once
 
 
+class ShiftParameters : public Component
+{
+    URHO3D_OBJECT(ShiftParameters, Component);
+
+public:
+
+    ShiftParameters(Context *context = TheContext) : Component(context) {}
+
+    static void RegisterObject();
+
+    float rotate = 0.0f;               // ѕоворот модели относительно направлени€ ноды
+    Vector3 position = Vector3::ZERO;  // ≈сли модель не выровнена относительно начала координат, здесь смещение
+};
+
+
 class GameObject : public LogicComponent
 {
     URHO3D_OBJECT(GameObject, LogicComponent);
@@ -25,13 +40,13 @@ protected:
 
     void Normalize(float k = 1.0f);
 
+    virtual void OnNodeSet(Node *node) override;
+
     static const Type::E type;
 
 private:
 
     float speed = 0.0f;                     // — такой скоростью объект перемещаетс€
-    float shiftRotate = 0.0f;               // ѕоворот модели относительно направлени€ ноды
-    Vector3 shiftPosition = Vector3::ZERO;  // ≈сли модель не выровнена относительно начала координат, здесь смещение
 
     SharedPtr<StaticModel> staticModel;
 

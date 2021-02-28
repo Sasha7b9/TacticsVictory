@@ -9,6 +9,12 @@
 Vector<GameObject *> GameObject::storage;
 
 
+void ShiftParameters::RegisterObject()
+{
+    TheContext->RegisterFactory<ShiftParameters>();
+}
+
+
 GameObject::GameObject(Context *context) : LogicComponent(context)
 {
     storage.Push(this);
@@ -20,11 +26,25 @@ void GameObject::RegisterObject()
     TheContext->RegisterFactory<PhysicsComponent>();
 
     UnitObject::RegisterObject();
+    ShiftParameters::RegisterObject();
+}
+
+
+void GameObject::OnNodeSet(Node *node)
+{
+    if (node)
+    {
+        node->CreateComponent<ShiftParameters>();
+    }
+
+    LogicComponent::OnNodeSet(node);
 }
 
 
 void GameObject::LoadFromJSON(const String &fileName)
 {
+    ShiftParameters *shift = node_->GetComponent<ShiftParameters>();
+
     JSONFile *file(TheCache->GetResource<JSONFile>(fileName));
 
     JSONValue &root = file->GetRoot();
@@ -41,9 +61,9 @@ void GameObject::LoadFromJSON(const String &fileName)
 
     speed = root.Get("speed").GetFloat();
 
-    shiftRotate = root.Get("deltaRotate").GetFloat();
+    shift->rotate = root.Get("deltaRotate").GetFloat();
 
-    Quaternion rotate(shiftRotate, Vector3::UP);
+    Quaternion rotate(shift->rotate, Vector3::UP);
     node_->SetRotation(Quaternion(0, Vector3::UP));
     node_->Rotate(rotate);
 }
@@ -51,6 +71,8 @@ void GameObject::LoadFromJSON(const String &fileName)
 
 void GameObject::Normalize(float k)
 {
+    ShiftParameters *shift = node_->GetComponent<ShiftParameters>();
+
     Vector3 pos = GetPosition();
     node_->SetPosition(Vector3::ZERO);
     node_->SetScale(1.0f);
@@ -63,9 +85,9 @@ void GameObject::Normalize(float k)
 
     Vector3 scale = Vector3::ONE * k / divider;
 
-    shiftPosition.y_ = -box.min_.y_ * k / divider;
-    shiftPosition.z_ = -(box.max_.z_ + box.min_.z_) * k / 2.0f / divider;
-    shiftPosition.x_ = (box.max_.x_ + box.min_.x_) * k / 2.0f / divider;
+    shift->position.y_ = -box.min_.y_ * k / divider;
+    shift->position.z_ = -(box.max_.z_ + box.min_.z_) * k / 2.0f / divider;
+    shift->position.x_ = (box.max_.x_ + box.min_.x_) * k / 2.0f / divider;
 
     node_->SetScale(scale);
 
@@ -75,11 +97,11 @@ void GameObject::Normalize(float k)
 
 Vector3 GameObject::GetPosition() const
 {
-    return node_->GetPosition() - shiftPosition;
+    return node_->GetPosition() - node_->GetComponent<ShiftParameters>()->position;
 }
 
 
 void GameObject::SetPosition(const Vector3 &position)
 {
-    node_->SetPosition(position + shiftPosition);
+    node_->SetPosition(position + node_->GetComponent<ShiftParameters>()->position);
 }
