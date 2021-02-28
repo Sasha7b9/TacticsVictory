@@ -4,6 +4,20 @@
 #include "Scene/SceneC.h"
 
 
+namespace Message
+{
+    void Message::Handle(VariantMap &map)
+    {
+        MemoryBuffer msg(map[NetworkMessage::P_DATA].GetBuffer());
+
+        if (id == CLNT_RETURN_LEVEL)
+        {
+            ((ReturnLevel *)this)->Handle(msg);
+        }
+    }
+}
+
+
 void Message::Message::Send(bool reliable)
 {
     Connection *connection = TheNetwork->GetServerConnection();
@@ -15,7 +29,9 @@ void Message::Message::Send(bool reliable)
 }
 
 
-//void Message::BuildScene::Handle(MemoryBuffer & /*msg*/)
-//{
-//    TheScene->Create();
-//}
+void Message::ReturnLevel::Handle(MemoryBuffer &msg)
+{
+    LOG_FUNC_ENTER();
+
+    LOGINFOF("Received %d bytes", msg.GetSize());
+}
