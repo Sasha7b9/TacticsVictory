@@ -48,8 +48,8 @@ static int PushToVector(const char *data, Vector<float> *vec)
         data++;
     }
 
-    int value = atoi(buffer);
-    vec->Push(static_cast<float>(value));
+    float value = (float)atof(buffer);
+    vec->Push(value);
 
     return retValue;
 }
@@ -100,7 +100,7 @@ void Level::Load(const char *fileName)
     }
     else
     {
-        URHO3D_LOGERROR("Can not load file");
+        LOGERROR("Can not load file");
     }
 
     uint numRows = map.Size();

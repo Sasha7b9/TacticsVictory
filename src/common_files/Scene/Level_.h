@@ -14,7 +14,8 @@ class Level : public Object
 
 public:
     Level(Context *context = TheContext);
-    void Load(const char *fileName);             // Load from file simple level (from height map)
+    void Load(const char *fileName);
+    void Load(MemoryBuffer &msg);
     bool Save(const String &fileName);
     Vector<Vector<float>> Create(int sizeZ, int sizeX);     // Create a new simpe level height == 0.0f; 
     Vector<Vector<float>> CreateRandom(uint numRows, uint numCols);
