@@ -45,7 +45,7 @@ void Message::RequestForLevel::Handle(const TConnection &connection)
     {
         LOGINFOF("Send tank %d", counter++);
 
-        connection.SendMessage(true, CreateComponent(tank->GetID(), tank->GetNode()->GetPosition()));
+        connection.SendMessage(true, CreateComponent("Tank", tank->GetID(), tank->GetNode()->GetPosition()));
     }
 }
 

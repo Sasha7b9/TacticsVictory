@@ -52,10 +52,14 @@ void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 
 void Message::CreateComponent::Handle(MemoryBuffer &msg)
 {
+    StringHash hash = msg.ReadStringHash();
     uint ID = msg.ReadUInt();
     Vector3 position = msg.ReadVector3();
 
-    Component *component = TheScene->CreateComponent("Tank", LOCAL, ID);
+    Component *component = TheScene->CreateComponent(hash, LOCAL, ID);
 
-    TheTerrain->PutIn((Tank *)component, (uint)position.z_, (uint)position.x_);
+    if (hash == "Tank")
+    {
+        TheTerrain->PutIn((Tank *)component, (uint)position.z_, (uint)position.x_);
+    }
 }
