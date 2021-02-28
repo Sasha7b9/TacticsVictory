@@ -19,25 +19,23 @@ namespace Message
     };
 
 
-    // По этому сообщению клиент стрОит сцену
-    struct BuildScene : public Message
+    struct RequestForLevel : public Message
     {
-        BuildScene(const Vector3 &position)             // позиция созданной сущности клиента
-            : Message(MSG_BUILD_SCENE)
+        RequestForLevel() : Message(MSG_REQUEST_FOR_LEVEL) {}
+
+        void Handle(const TConnection &connection);
+    };
+
+
+    struct ReturnLevel : public Message
+    {
+        ReturnLevel(const Vector3 &position)             // позиция созданной сущности клиента
+            : Message(MSG_RETURN_LEVEL)
         {
             buffer.WriteVector3(position);
         }
 
         void Handle(MemoryBuffer & /*msg*/) {};
-    };
-
-
-    // Запрос на построение сцены. Выполняется клиентом после инициализации
-    struct RequestForBuildScene : public Message
-    {
-        RequestForBuildScene() : Message(MSG_REQUEST_FOR_BUILD_SCENE) {}
-
-        void Handle(const TConnection &connection);
     };
 
 

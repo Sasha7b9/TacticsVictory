@@ -33,7 +33,7 @@ void ServerC::HandleServerConnected(StringHash, VariantMap &)
 {
     LOG_FUNC_ENTER();
 
-    Message::RequestForBuildScene().Send(true);
+    Message::RequestForLevel().Send(true);
 }
 
 

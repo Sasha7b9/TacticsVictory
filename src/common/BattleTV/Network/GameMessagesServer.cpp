@@ -4,9 +4,9 @@
 #include "Network/Game/GameMessages_.h"
 
 
-void Message::RequestForBuildScene::Handle(const TConnection &connection)
+void Message::RequestForLevel::Handle(const TConnection &connection)
 {
     Vector3 position(10.0f, 10.0f, 10.0f);
 
-    connection.SendMessage(true, BuildScene(position));
+    connection.SendMessage(true, ReturnLevel(position));
 }

@@ -18,9 +18,9 @@ namespace Message
 
         }
 
-        else if (id == MSG_BUILD_SCENE)
+        else if (id == MSG_RETURN_LEVEL)
         {
-            ((BuildScene *)this)->Handle(msg);
+            ((ReturnLevel *)this)->Handle(msg);
         }
 
 //        else if (id == MSG_REQUEST_FOR_BUILD_SCENE)
