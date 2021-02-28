@@ -3,9 +3,11 @@
 #include "Battle.h"
 #include "Game/Logic/Rotator_.h"
 #include "Game/Logic/SunEngine_.h"
+#include "Game/Path/WaveAlgorithm_.h"
 #include "Network/ServerS.h"
 #include "Scene/Level_.h"
 #include "Scene/Scene_.h"
+#include "Scene/Objects/Units/Tank/Tank_.h"
 #include "Utils/Log_.h"
 #include "Utils/Settings.h"
 
@@ -92,6 +94,14 @@ void Battle::Start()
 
     TheScene->Create();
 
+    for (int i = 0; i < 1000; i++)
+    {
+        uint colZ = (uint)Random((float)TheTerrain->WidthZ());
+        uint rowX = (uint)Random((float)TheTerrain->HeightX());
+
+        TheTerrain->PutIn(TheScene->CreateComponent<Tank>(), colZ, rowX);
+    }
+
     SubscribeToEvents();
 
     TheServer = new ServerS();
@@ -147,8 +157,11 @@ void Battle::RegistrationComponets()
 {
     SunEngine::RegisterObject();
     Rotator::RegisterObject();
-
+    WaveAlgorithm::RegisterObject();
     SceneT::RegisterObject();
+    GameObject::RegisterObjects();
+    UnitObject::RegisterObjects();
+    Tank::RegisterObject();
 }
 
 

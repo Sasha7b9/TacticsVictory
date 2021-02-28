@@ -15,6 +15,10 @@ namespace Message
         {
             ((ReturnLevel *)this)->Handle(msg);
         }
+        else if (id == CLNT_CREATE_UNIT_TANK)
+        {
+            ((CreateUnitTank *)this)->Handle(msg);
+        }
     }
 }
 
@@ -42,13 +46,15 @@ void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 
     ThePathIndicator = new PathIndicator();
 
-    for (int i = 0; i < 1000; i++)
-    {
-        uint colZ = (uint)Random((float)TheTerrain->WidthZ());
-        uint rowX = (uint)Random((float)TheTerrain->HeightX());
-
-        TheTerrain->PutIn(TheScene->CreateComponent<Tank>(), colZ, rowX);
-    }
-
     TheCamera = CameraT::Create();
+}
+
+
+void Message::CreateUnitTank::Handle(MemoryBuffer &msg)
+{
+    Vector3 position = msg.ReadVector3();
+
+    static int counter = 0;
+
+    LOGINFOF("Received %d tanks", counter++);
 }

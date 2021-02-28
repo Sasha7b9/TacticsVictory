@@ -62,4 +62,15 @@ namespace Message
 
         void Handle(MemoryBuffer & /*msg*/) {};
     };
+
+
+    struct CreateUnitTank : public Message
+    {
+        CreateUnitTank(const Vector3 position) : Message(CLNT_CREATE_UNIT_TANK)
+        {
+            buffer.WriteVector3(position);
+        }
+
+        void Handle(MemoryBuffer &);
+    };
 }

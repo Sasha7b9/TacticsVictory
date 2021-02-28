@@ -5,6 +5,13 @@
 #include "Scene/Objects/Units/UnitObject/UnitObjectS.h"
 
 
+void Tank::RegisterObject()
+{
+    TheContext->RegisterFactory<Tank>();
+    TheContext->RegisterFactory<TankSpecific>();
+}
+
+
 void TankSpecific::CreateSpecific(Node *node)
 {
     node->CreateComponent<TankSpecificS>();

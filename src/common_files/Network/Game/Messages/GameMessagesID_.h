@@ -9,5 +9,6 @@ enum Messages
     SERV_KEY_EVENT,
 
     CLNT_RETURN_LEVEL,               // ¬ этом сообщении сервер возрващает уровень
+    CLNT_CREATE_UNIT_TANK,
     CLNT_SEND_OBJECT_STATE
 };

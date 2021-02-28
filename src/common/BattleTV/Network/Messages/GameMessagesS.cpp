@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Network/Game/Connection_.h"
 #include "Network/Game/Messages/GameMessages_.h"
+#include "Scene/Objects/Units/Tank/Tank_.h"
 #include "Scene/Terrain/Terrain_.h"
 
 
@@ -37,6 +38,15 @@ void Message::RequestForLevel::Handle(const TConnection &connection)
     Vector3 position(10.0f, 10.0f, 10.0f);
 
     connection.SendMessage(true, ReturnLevel());
+
+    static int counter = 0;
+
+    for (Tank *tank : Tank::storage)
+    {
+        LOGINFOF("Send tank %d", counter++);
+
+        connection.SendMessage(true, CreateUnitTank(tank->GetNode()->GetPosition()));
+    }
 }
 
 

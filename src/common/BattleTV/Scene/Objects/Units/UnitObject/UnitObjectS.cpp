@@ -3,6 +3,12 @@
 #include "Scene/Objects/Units/UnitObject/UnitObjectS.h"
 
 
+void UnitObject::RegisterObjects()
+{
+    TheContext->RegisterFactory<EngineGround>();
+}
+
+
 void UnitObjectSpecific::CreateSpecific(Node *node)
 {
     node->CreateComponent<UnitObjectSpecificS>();
