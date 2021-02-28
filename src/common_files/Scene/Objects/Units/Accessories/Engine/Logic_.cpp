@@ -1,15 +1,16 @@
 // 2021/02/27 10:04:52 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Scene/Objects/Units/Accessories/Engine/Engine_.h"
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-EngineAlgorithm *EngineCalculator::Calculate(Node *node, CommandEngine::E command)
+void EngineCalculator::Calculate(Node *node, CommandEngine::E command)
 {
-    EngineAlgorithm *result = new EngineAlgorithm();
+    EngineAlgorithm &algorithm = node->GetComponent<EngineT>()->algorithm;
 
     Step step(Step::Type::Move);
 
-    step.start = node_->GetPosition();
+    step.start = node->GetPosition();
     step.end = step.start;
 
     if (command == CommandEngine::MoveToNorth)
@@ -29,15 +30,11 @@ EngineAlgorithm *EngineCalculator::Calculate(Node *node, CommandEngine::E comman
         step.end.z_ -= 1.0f;
     }
 
-    result->steps.Push(step);
-
-    result->current = node_->GetPosition();
-
-    return result;
+    algorithm.steps.Push(step);
 }
 
 
-EngineExecutor::Result EngineExecutor::Execute(const Step & /*step*/, Vector3 & /*current*/, float /*timeStep*/)
+EngineExecutor::Result EngineExecutor::Execute(Node * /*_node*/, float /*timeStep*/)
 {
     return EngineExecutor::Result(EngineExecutor::Result::Finished);
 }

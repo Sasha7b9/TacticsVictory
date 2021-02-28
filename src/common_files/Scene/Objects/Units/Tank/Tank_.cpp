@@ -41,15 +41,11 @@ void Tank::Start()
 
     storage.Push(this);
 
-    node_->CreateComponent<PhysicsComponent>(LOCAL);
-
     UnitObjectSpecific::CreateSpecific(node_);
 
     TankSpecific::CreateSpecific(node_);
 
-    engine = EngineGround::CreateEngine(node_);
-
-    engine = engine;
+    node_->CreateComponent<EngineT>(LOCAL);
 }
 
 

@@ -1,6 +1,5 @@
 // 2021/02/27 10:05:08 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Objects/Components/PhysicsComponent.h"
 
 
 struct CommandEngine { enum E {
@@ -36,13 +35,9 @@ public:
 
 //----------------------------------------------------------------------------------------------------------------------
 // Алгоритм действий - результат деятельности EngineCalculator
-class EngineAlgorithm : public Object
+class EngineAlgorithm
 {
-    URHO3D_OBJECT(EngineAlgorithm, Object);
-
 public:
-
-    EngineAlgorithm(Context *context = TheContext) : Object(context) {}
 
     bool IsFinished() const { return steps.Empty(); }
 
@@ -53,16 +48,10 @@ public:
 
 
 //----------------------------------------------------------------------------------------------------------------------
-//  Рассчитывет действия, необходимые произвести, чтобы выполнить команду
-class EngineCalculator : public Component
+//  Рассчитывет алгоритм действий, необходимых для выполнения команды
+class EngineCalculator
 {
-    URHO3D_OBJECT(EngineCalculator, Component);
-
 public:
-
-    EngineCalculator(Context *context = TheContext) : Component(context) {}
-
-    static void RegisterObject();
 
     void Calculate(Node *node, CommandEngine::E command);
 };

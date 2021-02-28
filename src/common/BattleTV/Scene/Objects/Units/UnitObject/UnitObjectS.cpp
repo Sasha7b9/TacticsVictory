@@ -7,7 +7,6 @@
 void UnitObject::RegisterObject()
 {
     TheContext->RegisterFactory<UnitObjectSpecificS>();
-    TheContext->RegisterFactory<EngineGround>();
 
     Tank::RegisterObject();
 }

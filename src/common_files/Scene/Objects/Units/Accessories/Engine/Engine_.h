@@ -1,6 +1,5 @@
 // 2021/02/26 21:54:16 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Objects/Components/PhysicsComponent.h"
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
@@ -46,8 +45,6 @@ public:
 
     // Возвращет true, если мотор заглушен
     bool IsStopped() const;
-
-protected:
 
     EngineCalculator calculator;    // Занимается расчётом алгоритма движения
     EngineAlgorithm algorithm;      // Собственно алгоритм движения

@@ -49,23 +49,12 @@ void EngineT::Update(float timeStep)
 
     if (result.IsFinished())
     {
-        algorithm->steps.Erase(0);
+        algorithm.steps.Erase(0);
     }
-
-    node_->SetPosition(algorithm->current);
 }
 
 
 void EngineT::OnNodeSet(Node *node)
 {
     Component::OnNodeSet(node);
-}
-
-
-void EngineT::OnNodeSet(Node *node)
-{
-    if (node)
-    {
-        EngineT::OnNodeSet(node);
-    }
 }
