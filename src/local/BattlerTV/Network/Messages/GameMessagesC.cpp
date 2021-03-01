@@ -80,7 +80,7 @@ void Message::SendTankPosition::Handle(MemoryBuffer &msg)
     {
         Node *node = component->GetNode();
 
-        if (node->GetComponent<Tank>())
+        if (!node->GetComponent<Camera>())
         {
             component->GetNode()->SetPosition(msg.ReadVector3());
         }

@@ -48,7 +48,7 @@ void CameraT::RegisterObject()
 
 SharedPtr<CameraT> CameraT::Create()
 {
-    SharedPtr<CameraT> camera(TheScene->CreateChild("TCamera")->CreateComponent<CameraT>(LOCAL, 11111));
+    SharedPtr<CameraT> camera(TheScene->CreateChild("TCamera")->CreateComponent<CameraT>(LOCAL));
 
     uint sizeZ = TheLevel->GetWidthZ();
     uint sizeX = TheLevel->GetHeightX();
