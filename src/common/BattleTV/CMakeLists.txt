@@ -51,6 +51,7 @@ file(GLOB SCENE_OBJECTS_AMMO_ROCKET              ../../common_files/Scene/Object
 file(GLOB SCENE_OBJECTS_BUILDINGS                ../../common_files/Scene/Objects/Buildings/*.*)
 file(GLOB SCENE_OBJECTS_UNITS                    ../../common_files/Scene/Objects/Units/*.*
                                                                     Scene/Objects/Units/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_ACCESSORIES        ../../common_files/Scene/Objects/Units/Accessories/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE ../../common_files/Scene/Objects/Units/Accessories/Engine/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_LOGIC              ../../common_files/Scene/Objects/Units/Logic/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_TANK               ../../common_files/Scene/Objects/Units/Tank/*.*
@@ -76,6 +77,7 @@ source_group(Scene\\Objects\\Ammo                       FILES ${SCENE_OBJECTS_AM
 source_group(Scene\\Objects\\Ammo\\Rocket               FILES ${SCENE_OBJECTS_AMMO_ROCKET})
 source_group(Scene\\Objects\\Buildings                  FILES ${SCENE_OBJECTS_BUILDINGS})
 source_group(Scene\\Objects\\Units                      FILES ${SCENE_OBJECTS_UNITS})
+source_group(Scene\\Objects\\Units\\Accessories         FILES ${SCENE_OBJECTS_UNITS_ACCESSORIES})
 source_group(Scene\\Objects\\Units\\Accessories\\Engine FILES ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE})
 source_group(Scene\\Objects\\Units\\Logic               FILES ${SCENE_OBJECTS_UNITS_LOGIC})
 source_group(Scene\\Objects\\Units\\Tank                FILES ${SCENE_OBJECTS_UNITS_TANK})
@@ -89,7 +91,9 @@ add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GAME_PATH} ${NETW
     ${SCENE} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_BUILDINGS}
-    ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE} ${SCENE_OBJECTS_UNITS_TANK}
+    ${SCENE_OBJECTS_UNITS}
+    ${SCENE_OBJECTS_UNITS_ACCESSORIES} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE}
+    ${SCENE_OBJECTS_UNITS_TANK}
     ${SCENE_OBJECTS_UNITS_UNITOBJECT}
     ${SCENE_OBJECTS_UNITS_LOGIC}
     ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS})
