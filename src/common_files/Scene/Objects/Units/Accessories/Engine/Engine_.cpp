@@ -49,7 +49,7 @@ void EngineT::Update(float timeStep)
 
     if (result.IsFinished())
     {
-        algorithm.steps.Erase(0);
+        algorithm.steps.PopFront();
     }
 }
 

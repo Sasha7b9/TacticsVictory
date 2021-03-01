@@ -43,7 +43,7 @@ EngineExecutor::Result EngineExecutor::Execute(Node *node, float timeStep)
         return EngineExecutor::Result::Finished;
     }
 
-    Step &step = engine->algorithm.steps[0];
+    Step &step = engine->algorithm.steps.Front();
     EngineParameters *param = node->GetComponent<EngineParameters>();
 
     Vector3 currentPos = node->GetPosition();
