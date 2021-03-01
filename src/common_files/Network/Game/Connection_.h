@@ -8,10 +8,10 @@ namespace Message
 }
 
 
-class TConnection
+class ConnectionT
 {
 public:
-    TConnection(Connection *connection) : self(connection) {}
+    ConnectionT(Connection *connection) : self(connection) {}
 
     void SendMessage(bool reliable, const Message::Message &message) const;
 

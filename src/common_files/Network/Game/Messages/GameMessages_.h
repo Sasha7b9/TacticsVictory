@@ -2,7 +2,7 @@
 #pragma once
 #include "Network/Game/Messages/GameMessagesID_.h"
 
-class TConnection;
+class ConnectionT;
 
 namespace Message
 {
@@ -23,7 +23,7 @@ namespace Message
     {
         RequestForLevel() : Message(SERV_REQUEST_FOR_LEVEL) {}
 
-        void Handle(const TConnection &connection);
+        void Handle(const ConnectionT &connection);
     };
 
 

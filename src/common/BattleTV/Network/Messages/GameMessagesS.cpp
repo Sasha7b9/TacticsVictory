@@ -10,7 +10,7 @@ namespace Message
 {
     void Message::Handle(VariantMap &map)
     {
-        TConnection connection((Connection *)map[NetworkMessage::P_CONNECTION].GetPtr());
+        ConnectionT connection((Connection *)map[NetworkMessage::P_CONNECTION].GetPtr());
 
         MemoryBuffer msg(map[NetworkMessage::P_DATA].GetBuffer());
 
@@ -31,7 +31,7 @@ namespace Message
 }
 
 
-void Message::RequestForLevel::Handle(const TConnection &connection)
+void Message::RequestForLevel::Handle(const ConnectionT &connection)
 {
     LOG_FUNC_ENTER();
 

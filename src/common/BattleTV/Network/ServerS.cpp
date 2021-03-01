@@ -62,7 +62,7 @@ void ServerS::HandleClientConnected(StringHash, VariantMap &eventData)
 
     Connection *newConnection = (Connection *)eventData[P_CONNECTION].GetPtr();
 
-    connections.Push(TConnection(newConnection));
+    connections.Push(ConnectionT(newConnection));
 }
 
 
@@ -82,7 +82,7 @@ void ServerS::HandleConnectFailed(StringHash, VariantMap &)
 
 void ServerS::SendToAll(const Message::Message &message)
 {
-    for (TConnection &connection : connections)
+    for (ConnectionT &connection : connections)
     {
         connection.SendMessage(true, message);
     }

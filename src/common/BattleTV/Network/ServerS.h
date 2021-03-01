@@ -3,7 +3,7 @@
 #include "Network/Game/Messages/GameMessages_.h"
 
 
-class TConnection;
+class ConnectionT;
 
 
 class ServerS : public Object
@@ -20,7 +20,7 @@ public:
 
 private:
 
-    Vector<TConnection> connections;
+    Vector<ConnectionT> connections;
 
     void HandleMessage(StringHash, VariantMap &);
 
