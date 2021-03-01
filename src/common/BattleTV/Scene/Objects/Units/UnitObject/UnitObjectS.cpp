@@ -5,13 +5,9 @@
 #include "Scene/Objects/Units/UnitObject/UnitObjectS.h"
 
 
-void UnitObject::RegisterObject()
+void UnitObjectSpecific::RegisterObject()
 {
     TheContext->RegisterFactory<UnitObjectSpecificS>();
-
-    Accessories::RegisterObject();
-
-    Tank::RegisterObject();
 }
 
 

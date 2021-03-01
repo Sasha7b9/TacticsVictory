@@ -32,7 +32,7 @@ void EngineT::GiveCommand(CommandEngine::E command)
 
 bool EngineT::IsStopped() const
 {
-    EngineParameters *params = GetComponent<EngineParameters>();
+    EngineParameters *params = node_->GetComponent<EngineParameters>(true);
 
     return (params->speedMove == 0.0f) && (params->speedRotate == 0.0f);
 }
@@ -56,5 +56,10 @@ void EngineT::Update(float timeStep)
 
 void EngineT::OnNodeSet(Node *node)
 {
+    if (node)
+    {
+        node_->CreateComponent<EngineParameters>(LOCAL);
+    }
+
     Component::OnNodeSet(node);
 }

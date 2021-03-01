@@ -6,5 +6,5 @@
 
 void Accessories::RegisterObject()
 {
-    TheContext->RegisterFactory<EngineT>();
+    EngineT::RegisterObject();
 }

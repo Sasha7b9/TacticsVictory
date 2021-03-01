@@ -13,6 +13,8 @@ public:
 
     UnitObjectSpecific(Context *context) : Component(context) {}
 
+    static void RegisterObject();
+
     static void CreateSpecific(Node *node);
 };
 

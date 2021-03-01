@@ -35,7 +35,7 @@ public:
 
     EngineT(Context *context = TheContext);
 
-    void RegisterObject();
+    static void RegisterObject();
 
     virtual void OnNodeSet(Node *node) override;
 
