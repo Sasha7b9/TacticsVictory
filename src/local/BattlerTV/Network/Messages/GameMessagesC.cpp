@@ -78,6 +78,11 @@ void Message::SendTankPosition::Handle(MemoryBuffer &msg)
 
     if (component)
     {
-        component->GetNode()->SetPosition(msg.ReadVector3());
+        Node *node = component->GetNode();
+
+        if (node->GetComponent<Tank>())
+        {
+            component->GetNode()->SetPosition(msg.ReadVector3());
+        }
     }
 }
