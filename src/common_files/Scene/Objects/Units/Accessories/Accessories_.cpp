@@ -4,7 +4,7 @@
 #include "Scene/Objects/Units/Accessories/Engine/Engine_.h"
 
 
-void Accessories::Register()
+void Accessories::RegisterObject()
 {
     TheContext->RegisterFactory<EngineT>();
 }

@@ -4,5 +4,6 @@
 
 class Accessories
 {
-    static void Register();
+public:
+    static void RegisterObject();
 };
