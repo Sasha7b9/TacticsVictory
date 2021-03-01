@@ -1,5 +1,7 @@
 // 2021/02/25 22:10:06 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Network/ServerS.h"
+#include "Network/Game/Messages/GameMessages_.h"
 #include "Scene/Objects/Units/Tank/Tank_.h"
 #include "Scene/Objects/Units/Tank/TankS.h"
 #include "Scene/Objects/Units/UnitObject/UnitObjectS.h"
@@ -30,4 +32,6 @@ void Tank::Update(float timeStep)
 
         engine->GiveCommand((CommandEngine::E)(direct + 1));
     }
+
+    TheServer->SendToAll(Message::SendTankPosition(GetID(), node_->GetPosition()));
 }

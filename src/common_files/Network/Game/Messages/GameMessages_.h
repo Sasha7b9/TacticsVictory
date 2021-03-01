@@ -75,4 +75,16 @@ namespace Message
 
         void Handle(MemoryBuffer &);
     };
+
+
+    struct SendTankPosition : public Message
+    {
+        SendTankPosition(uint ID, const Vector3 &position) : Message(CLNT_SEND_TANK_POSITION)
+        {
+            buffer.WriteUInt(ID);
+            buffer.WriteVector3(position);
+        }
+
+        void Handle(MemoryBuffer &);
+    };
 }

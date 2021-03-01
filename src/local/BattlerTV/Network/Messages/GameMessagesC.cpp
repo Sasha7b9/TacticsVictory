@@ -19,6 +19,10 @@ namespace Message
         {
             ((CreateComponent *)this)->Handle(msg);
         }
+        else if (id == CLNT_SEND_TANK_POSITION)
+        {
+            ((SendTankPosition *)this)->Handle(msg);
+        }
     }
 }
 
@@ -62,5 +66,18 @@ void Message::CreateComponent::Handle(MemoryBuffer &msg)
     if (hash == "Tank")
     {
         TheTerrain->PutIn((Tank *)component, (uint)position.z_, (uint)position.x_);
+    }
+}
+
+
+void Message::SendTankPosition::Handle(MemoryBuffer &msg)
+{
+    uint ID = msg.ReadUInt();
+
+    Component *component = TheScene->GetComponent(ID);
+
+    if (component)
+    {
+        component->GetNode()->SetPosition(msg.ReadVector3());
     }
 }

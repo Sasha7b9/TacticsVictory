@@ -11,6 +11,7 @@
 #include <Urho3D/AngelScript/ScriptFile.h>
 #include <Urho3D/AngelScript/ScriptInstance.h>
 
+#include <Urho3D/Container/HashMap.h>
 #include <Urho3D/Core/Mutex.h>
 #include <Urho3D/Core/Profiler.h>
 #include <Urho3D/Core/Thread.h>

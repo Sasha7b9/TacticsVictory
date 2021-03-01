@@ -16,5 +16,3 @@ extern SceneT     *TheScene;
 extern ServerS    *TheServer;
 extern Settings   *TheSet;
 extern TerrainT   *TheTerrain;
-
-extern Vector<Connection *> connections;

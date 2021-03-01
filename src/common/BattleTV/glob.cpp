@@ -21,4 +21,3 @@ SceneT            *TheScene = nullptr;
 ServerS           *TheServer = nullptr;
 Settings          *TheSet = nullptr;
 TerrainT          *TheTerrain = nullptr;
-Vector<Connection *> connections;

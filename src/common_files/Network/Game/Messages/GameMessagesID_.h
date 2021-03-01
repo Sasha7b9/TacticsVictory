@@ -10,5 +10,6 @@ enum Messages
 
     CLNT_RETURN_LEVEL,               // ¬ этом сообщении сервер возрващает уровень
     CLNT_CREATE_COMPONENT,
-    CLNT_SEND_OBJECT_STATE
+    CLNT_SEND_OBJECT_STATE,
+    CLNT_SEND_TANK_POSITION
 };
