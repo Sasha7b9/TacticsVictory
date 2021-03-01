@@ -111,6 +111,11 @@ void TerrainT::CreateFromVector(const Vector<Vector<float>> &lev)
 
 float TerrainT::GetHeight(uint colZ, uint rowX)
 {
+    if (colZ >= WidthZ() || rowX >= HeightX())
+    {
+        return 0;
+    }
+
     return level[rowX][colZ];
 }
 
