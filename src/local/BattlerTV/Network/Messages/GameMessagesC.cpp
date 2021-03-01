@@ -61,6 +61,7 @@ void Message::CreateComponent::Handle(MemoryBuffer &msg)
     Vector3 position = msg.ReadVector3();
 
     Component *component = TheScene->CreateComponent(hash, LOCAL, ID);
+
     component->GetNode()->SetPosition(position);
 
     if (hash == "Tank")
