@@ -41,7 +41,7 @@ void Message::RequestForLevel::Handle(const ConnectionT &connection)
 
     for (Tank *tank : Tank::storage)
     {
-        connection.SendMessage(true, CreateComponent("Tank", tank->GetID(), tank->GetNode()->GetPosition()));
+        connection.SendMessage(true, CreateComponent("Tank", tank->GetNode()->GetName(), tank->GetNode()->GetPosition()));
     }
 }
 

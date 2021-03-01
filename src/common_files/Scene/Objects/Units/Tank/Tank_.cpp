@@ -31,6 +31,8 @@ void Tank::Start()
     TankSpecific::CreateSpecific(node_);
 
     node_->CreateComponent<EngineT>(LOCAL);
+
+    node_->SetName(String(node_->GetID()));
 }
 
 

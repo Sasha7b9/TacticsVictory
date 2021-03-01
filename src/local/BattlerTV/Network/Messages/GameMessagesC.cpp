@@ -56,15 +56,16 @@ void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 
 void Message::CreateComponent::Handle(MemoryBuffer &msg)
 {
-    StringHash hash = msg.ReadStringHash();
-    uint ID = msg.ReadUInt();
+    StringHash type = msg.ReadStringHash();
+    String name = msg.ReadString();
     Vector3 position = msg.ReadVector3();
 
-    Component *component = TheScene->CreateComponent(hash, LOCAL, ID);
+    Component *component = TheScene->CreateComponent(type, LOCAL);
 
+    component->GetNode()->SetName(name);
     component->GetNode()->SetPosition(position);
 
-    if (hash == "Tank")
+    if (type == "Tank")
     {
         TheTerrain->PutIn((Tank *)component, (uint)position.z_, (uint)position.x_);
     }
@@ -73,17 +74,12 @@ void Message::CreateComponent::Handle(MemoryBuffer &msg)
 
 void Message::SendTankPosition::Handle(MemoryBuffer &msg)
 {
-    uint ID = msg.ReadUInt();
+    String name = msg.ReadString();
 
-    Component *component = TheScene->GetComponent(ID);
+    Node *node = TheScene->GetChild(name);
 
-    if (component)
+    if (node)
     {
-        Node *node = component->GetNode();
-
-        if (!node->GetComponent<Camera>())
-        {
-            component->GetNode()->SetPosition(msg.ReadVector3());
-        }
+        node->SetPosition(msg.ReadVector3());
     }
 }
