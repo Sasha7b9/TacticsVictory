@@ -20,7 +20,7 @@ void Tank::Update(float timeStep)
 
     engine->Update(timeStep);
 
-    if (engine->IsStopped())
+    if (engine->algorithm.IsFinished())
     {
         int direct = Rand() % 4;
 
