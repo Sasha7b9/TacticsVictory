@@ -14,15 +14,15 @@ public:
 
     static void RegisterObject();
 
-    float maxSpeedMove = 0.2f;      // Максимальная скорость движения
-    float maxSpeedRotate = 60.0f;   // Максимальная скорость поворота
+    float maxSpeedMove = 0.2f;          // Максимальная скорость движения
+    float maxSpeedRotate = 60.0f;       // Максимальная скорость поворота
+    float accelerationMove = 1.0f;      // Ускорение движения при трогании с места
+    float accelerationRotate = 1.0f;    // Ускорение поворота
 
-    Vector3 direction;              // Направление движения
-    float speedMove;                // Установившаяся скорость движения
-    float accelerationMove;         // Ускорение движения при трогании с места
-    Vector3 axisRotate;             // Ось поворота
-    float speedRotate;              // Скорость поворота
-    float accelerationRotate;       // Ускорение поворота
+    Vector3 direction = Vector3::ONE;   // Направление движения
+    float speedMove = 0.0f;             // Установившаяся скорость движения
+    Vector3 axisRotate = Vector3::UP;   // Ось поворота
+    float speedRotate = 0.0f;           // Скорость поворота
 };
 
 
