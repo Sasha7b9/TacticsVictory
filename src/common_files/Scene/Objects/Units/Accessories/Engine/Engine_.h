@@ -14,7 +14,7 @@ public:
 
     static void RegisterObject();
 
-    float maxSpeedMove = 0.2f;          // Максимальная скорость движения
+    float maxSpeedMove = 1.f;          // Максимальная скорость движения
     float maxSpeedRotate = 60.0f;       // Максимальная скорость поворота
     float accelerationMove = 1.0f;      // Ускорение движения при трогании с места
     float accelerationRotate = 1.0f;    // Ускорение поворота
