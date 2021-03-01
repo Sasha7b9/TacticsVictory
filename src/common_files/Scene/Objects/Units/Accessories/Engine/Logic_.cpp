@@ -34,7 +34,35 @@ void EngineCalculator::Calculate(Node *node, CommandEngine::E command)
 }
 
 
-EngineExecutor::Result EngineExecutor::Execute(Node * /*_node*/, float /*timeStep*/)
+EngineExecutor::Result EngineExecutor::Execute(Node *node, float timeStep)
 {
-    return EngineExecutor::Result(EngineExecutor::Result::Finished);
+    EngineT *engine = node->GetComponent<EngineT>();
+
+    if (engine->algorithm.IsFinished())
+    {
+        return EngineExecutor::Result::Finished;
+    }
+
+    Step &step = engine->algorithm.steps[0];
+    EngineParameters *param = node->GetComponent<EngineParameters>();
+
+    Vector3 currentPos = node->GetPosition();
+
+    float dist = param->maxSpeedMove * timeStep;            // Нужно проехать
+
+    float delta = (step.end - currentPos).Length();         // Осталось до конечной точки
+
+    if (dist >= delta)                                      // Если проедем больше, чем нужно
+    {
+        node->SetPosition(step.end);
+
+        return EngineExecutor::Result::Finished;            // То завершаем выполение шага
+    }
+
+    Vector3 direction = (step.end - currentPos);
+    direction.Normalize();
+
+    node->SetPosition(currentPos + direction * dist);
+
+    return EngineExecutor::Result(EngineExecutor::Result::Running);
 }

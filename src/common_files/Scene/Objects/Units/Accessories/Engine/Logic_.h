@@ -75,5 +75,6 @@ public:
         bool IsFinished() const { return value == Finished; }
     };
 
+    // Выполняет текуцщий (т.е. нулевой) шаг алгоритма. Если выполнение шага закончено - возвращает Result::Finished
     Result Execute(Node *_node, float timeStep);
 };

@@ -14,7 +14,7 @@ Tank::Tank(Context *context) : UnitObject(context)
 }
 
 
-void Tank::FixedUpdate(float timeStep)
+void Tank::Update(float timeStep)
 {
     EngineT *engine = GetComponent<EngineT>();
 

@@ -49,7 +49,7 @@ private:
 
     static Vector<GameObject *> storage;
 
-    virtual void FixedUpdate(float time) override = 0;
+    virtual void Update(float time) override = 0;
 
     Vector3 GetPosition() const;
 };
