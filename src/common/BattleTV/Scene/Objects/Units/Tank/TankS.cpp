@@ -16,3 +16,18 @@ void TankSpecific::CreateSpecific(Node *node)
 {
     node->CreateComponent<TankSpecificS>(LOCAL);
 }
+
+
+void Tank::Update(float timeStep)
+{
+    EngineT *engine = GetComponent<EngineT>();
+
+    engine->Update(timeStep);
+
+    if (engine->algorithm.IsFinished())
+    {
+        int direct = Rand() % 4;
+
+        engine->GiveCommand((CommandEngine::E)(direct + 1));
+    }
+}

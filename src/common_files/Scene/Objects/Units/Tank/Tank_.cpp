@@ -14,21 +14,6 @@ Tank::Tank(Context *context) : UnitObject(context)
 }
 
 
-void Tank::Update(float timeStep)
-{
-    EngineT *engine = GetComponent<EngineT>();
-
-    engine->Update(timeStep);
-
-    if (engine->algorithm.IsFinished())
-    {
-        int direct = Rand() % 4;
-
-        engine->GiveCommand((CommandEngine::E)(direct + 1));
-    }
-}
-
-
 void Tank::Start()
 {
     UnitObject::Start();

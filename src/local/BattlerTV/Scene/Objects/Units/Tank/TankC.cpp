@@ -16,3 +16,9 @@ void TankSpecific::CreateSpecific(Node *node)
 {
     node->CreateComponent<TankSpecificC>(LOCAL);
 }
+
+
+void Tank::Update(float)
+{
+
+}
