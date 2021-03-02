@@ -56,6 +56,15 @@ void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 
 void Message::CreateComponent::Handle(MemoryBuffer &msg)
 {
+    static int counter = 0;
+
+    counter++;
+
+    if (counter % 1000 == 0)
+    {
+        LOGINFOF("Recived %d components", counter);
+    }
+
     StringHash type = msg.ReadStringHash();
     String name = msg.ReadString();
     Vector3 position = msg.ReadVector3();

@@ -80,10 +80,10 @@ void ServerS::HandleConnectFailed(StringHash, VariantMap &)
 }
 
 
-void ServerS::SendToAll(const Message::Message &message)
+void ServerS::SendToAll(bool reliable, const Message::Message &message)
 {
     for (ConnectionT &connection : connections)
     {
-        connection.SendMessage(true, message);
+        connection.SendMessage(reliable, message);
     }
 }

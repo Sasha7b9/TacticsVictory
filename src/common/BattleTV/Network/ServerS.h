@@ -16,7 +16,7 @@ public:
 
     bool Start(uint16 port);
 
-    void SendToAll(const Message::Message &message);
+    void SendToAll(bool reliable, const Message::Message &message);
 
 private:
 

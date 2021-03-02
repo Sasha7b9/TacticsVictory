@@ -33,5 +33,5 @@ void Tank::Update(float timeStep)
         engine->GiveCommand((CommandEngine::E)(direct + 1));
     }
 
-    TheServer->SendToAll(Message::SendTankPosition(node_->GetName(), node_->GetPosition()));
+    TheServer->SendToAll(false, Message::SendTankPosition(node_->GetName(), node_->GetPosition()));
 }
