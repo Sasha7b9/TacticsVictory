@@ -33,5 +33,10 @@ void Tank::Update(float timeStep)
         engine->GiveCommand((CommandEngine::E)(direct + 1));
     }
 
-    TheServer->SendToAll(false, Message::SendTankPosition(node_->GetName(), node_->GetPosition()));
+    if (TheTime->GetElapsedTime() >= GetComponent<TankSpecificS>()->timeNextTimeSend)
+    {
+        TheServer->SendToAll(false, Message::SendTankPosition(node_->GetName(), node_->GetPosition()));
+
+        GetComponent<TankSpecificS>()->timeNextTimeSend = TheTime->GetElapsedTime() + 0.5f;
+    }
 }

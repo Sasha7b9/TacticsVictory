@@ -19,9 +19,6 @@ bool ServerS::Start(uint16 port)
 {
     bool result = TheNetwork->StartServer(port);
 
-    TheNetwork->SetSimulatedLatency(200);
-    TheNetwork->SetSimulatedPacketLoss(0.9f);
-
     if (result)
     {
         LOGINFOF("Start server on port %d succsefful", port);
