@@ -94,7 +94,7 @@ void Battle::Start()
 
     TheScene->Create();
 
-    for (int i = 0; i < 5000; i++)
+    for (int i = 0; i < 2500; i++)
     {
         uint colZ = (uint)Random((float)TheTerrain->WidthZ());
         uint rowX = (uint)Random((float)TheTerrain->HeightX());
