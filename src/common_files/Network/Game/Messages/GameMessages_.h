@@ -1,8 +1,8 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Network/Game/Connection_.h"
 #include "Network/Game/Messages/GameMessagesID_.h"
 
-class ConnectionT;
 
 namespace Message
 {
