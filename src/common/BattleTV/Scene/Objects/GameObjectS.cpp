@@ -21,8 +21,6 @@ void GameObjectSpecificS::Update(float)
 {
     if (TheTime->GetElapsedTime() >= timeNextTimeSend)
     {
-        Node *node = object->GetNode();
-
         Vector3 position = node->GetPosition();
 
         TheServer->SendToAll(false, Message::SendTankPosition(node->GetName(), node->GetPosition()));

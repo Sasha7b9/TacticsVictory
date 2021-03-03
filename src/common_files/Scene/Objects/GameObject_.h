@@ -49,9 +49,11 @@ public:
 
 protected:
 
-    GameObjectSpecific(GameObject *_object) : Object(TheContext), object(_object) {}
+    GameObjectSpecific(GameObject *_object);
 
     GameObject *object = nullptr;
+
+    Node *node = nullptr;
 };
 
 

@@ -8,6 +8,14 @@
 Vector<GameObject *> GameObject::storage;
 
 
+GameObjectSpecific::GameObjectSpecific(GameObject *_object) : Object(TheContext),
+    object(_object),
+    node(_object->GetNode())
+{
+}
+
+
+
 GameObject::GameObject(Context *context) : LogicComponent(context)
 {
     shift = new ShiftParameters();

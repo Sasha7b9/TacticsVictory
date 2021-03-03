@@ -26,8 +26,6 @@ void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
 {
     using namespace UnitMouseClick;
 
-    Node *node = object->GetNode();
-
     if (eventData[P_NODE].GetPtr() == node)
     {
         if (!eventData[P_CTRL_PRESSED].GetBool())
