@@ -14,6 +14,12 @@ TankSpecific::TankSpecific(Tank *tank) : UnitObjectSpecific(tank)
 }
 
 
+void TankSpecific::Update(float timeStep)
+{
+    UnitObjectSpecific::Update(timeStep);
+}
+
+
 Tank::Tank(Context *context) : UnitObject(context)
 {
 
@@ -34,9 +40,7 @@ void Tank::Start()
 
     storage.Push(this);
 
-//    UnitObjectSpecific::Create(this);
-
-    TankSpecific::Create(this);
+    specific = TankSpecific::Create(this);
 
     engine = new EngineGround(node_);
 }

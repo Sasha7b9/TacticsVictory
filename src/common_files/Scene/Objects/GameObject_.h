@@ -80,6 +80,8 @@ protected:
 
     virtual void Update(float time) override;
 
+    SharedPtr<GameObjectSpecific> specific;         // Клиент/сервер специфичные параметры
+
 private:
 
     SharedPtr<StaticModel> staticModel;
@@ -87,6 +89,4 @@ private:
     static Vector<GameObject *> storage;            // Здесь хранятся все объекты типа GameObject (и их подклассы)
 
     SharedPtr<PhysicsParameters> physics;           // Параметры в физическом мире. Такие как координаты
-
-    SharedPtr<GameObjectSpecific> specific;         // Клиент/сервер специфичные параметры
 };

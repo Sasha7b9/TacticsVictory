@@ -22,8 +22,6 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
 
     physics = new PhysicsParameters(this);
 
-    specific = GameObjectSpecific::Create(this);
-
     storage.Push(this);
 }
 

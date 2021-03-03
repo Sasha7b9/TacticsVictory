@@ -15,7 +15,7 @@ public:
 
     TankSpecific(Tank *tank);
 
-    virtual void Update(float /*timeStep*/) {};
+    virtual void Update(float timeStep);
 };
 
 

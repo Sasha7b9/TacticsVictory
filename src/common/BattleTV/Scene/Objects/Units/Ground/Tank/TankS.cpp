@@ -18,7 +18,7 @@ void Tank::Update(float timeStep)
 }
 
 
-void TankSpecificS::Update(float /*timeStep*/)
+void TankSpecificS::Update(float timeStep)
 {
-
+    TankSpecific::Update(timeStep);
 }
