@@ -32,6 +32,14 @@ void GameObject::OnNodeSet(Node *node)
 }
 
 
+void GameObject::Start()
+{
+    LogicComponent::Start();
+
+    CreateSpecific();
+}
+
+
 void GameObject::LoadFromJSON(const String &fileName)
 {
     JSONFile *file(TheCache->GetResource<JSONFile>(fileName));

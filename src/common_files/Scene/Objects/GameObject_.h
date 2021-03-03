@@ -78,6 +78,10 @@ protected:
 
     virtual void OnNodeSet(Node *node) override;
 
+    virtual void Start() override;
+
+    virtual void CreateSpecific() = 0;
+
     virtual void Update(float time) override;
 
     SharedPtr<GameObjectSpecific> specific;         // Клиент/сервер специфичные параметры

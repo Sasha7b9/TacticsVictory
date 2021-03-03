@@ -5,13 +5,13 @@
 #include "Scene/Objects/Units/UnitObjectC.h"
 
 
-GameObjectSpecific *TankSpecific::Create(Tank *tank)
-{
-    return new TankSpecificC(tank);
-}
-
-
 void TankSpecificC::Update(float timeStep)
 {
     UnitObjectSpecificC::Update(timeStep);
+}
+
+
+void Tank::CreateSpecific()
+{
+    specific = new TankSpecificC(this);
 }

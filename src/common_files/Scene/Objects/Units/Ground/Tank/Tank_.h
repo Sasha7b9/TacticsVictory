@@ -3,16 +3,6 @@
 #include "Scene/Objects/Units/UnitObject_.h"
 
 
-class Tank;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-namespace TankSpecific
-{
-    GameObjectSpecific *Create(Tank *tank);
-};
-
-
 //----------------------------------------------------------------------------------------------------------------------
 class Tank : public UnitObject
 {
@@ -23,6 +13,8 @@ public:
     Tank(Context *);
 
     static void RegisterObject();
+
+    virtual void CreateSpecific() override;
 
     // Хранилище всех созданных объектов типа "Tank"
     static Vector<Tank *> storage;

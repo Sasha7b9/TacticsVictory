@@ -34,8 +34,6 @@ void Tank::Start()
 
     storage.Push(this);
 
-    specific = TankSpecific::Create(this);
-
     engine = new EngineGround(node_);
 }
 
