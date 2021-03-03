@@ -18,25 +18,13 @@ void Tank::Update(float timeStep)
 {
     UnitObject::Update(timeStep);
 
-    static Node *node = nullptr;
-
     if (TheTime->GetElapsedTime() >= GetComponent<TankSpecificS>()->timeNextTimeSend)
     {
-        if (node == nullptr)
-        {
-            node = node_;
-        }
-
         Vector3 position = node_->GetPosition();
 
         TheServer->SendToAll(false, Message::SendTankPosition(node_->GetName(), node_->GetPosition()));
 
         GetComponent<TankSpecificS>()->timeNextTimeSend = TheTime->GetElapsedTime() + 0.1f;
-
-        if (node_ == node)
-        {
-            node = node;
-        }
     }
 }
 

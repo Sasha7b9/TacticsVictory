@@ -83,27 +83,12 @@ void Message::CreateComponent::Handle(MemoryBuffer &msg)
 
 void Message::SendTankPosition::Handle(MemoryBuffer &msg)
 {
-    static String temp("");
-
     String name = msg.ReadString();
-
-    if (temp == "")
-    {
-        temp = name;
-    }
 
     Node *node = TheScene->GetChild(name);
 
     if (node)
     {
-        Vector3 position = msg.ReadVector3();
-
-        node->SetPosition(position);
-
-        if (name == temp)
-        {
-            name = name;
-        }
-
+        node->SetPosition(msg.ReadVector3());
     }
 }
