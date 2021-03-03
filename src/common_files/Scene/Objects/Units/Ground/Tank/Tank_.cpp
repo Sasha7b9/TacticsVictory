@@ -29,6 +29,8 @@ void Tank::Start()
     UnitObjectSpecific::Create(node_);
 
     TankSpecific::Create(node_);
+
+    engine = new EngineGround(node_);
 }
 
 

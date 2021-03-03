@@ -25,9 +25,11 @@ public:
 //----------------------------------------------------------------------------------------------------------------------
 class EngineT : public Object
 {
+    URHO3D_OBJECT(EngineT, Object);
+
 public:
 
-    EngineT() : Object(TheContext) {};
+    EngineT(Node *_node) : Object(TheContext), node(_node) {};
     virtual ~EngineT() {}
 
     virtual void Update(float timeStep);
@@ -54,7 +56,7 @@ class EngineGround : public EngineT
 {
 public:
 
-    EngineGround() : EngineT() {}
+    EngineGround(Node *node) : EngineT(node) {}
 };
 
 
@@ -63,5 +65,5 @@ class EngineAir : public EngineT
 {
 public:
 
-    EngineAir() : EngineT() {}
+    EngineAir(Node *node) : EngineT(node) {}
 };
