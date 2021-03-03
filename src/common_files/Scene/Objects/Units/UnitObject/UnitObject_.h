@@ -15,7 +15,7 @@ public:
 
     static void RegisterObject();
 
-    static void CreateSpecific(Node *node);
+    static void Create(Node *node);
 };
 
 

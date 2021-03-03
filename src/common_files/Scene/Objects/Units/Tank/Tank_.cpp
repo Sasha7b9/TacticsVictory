@@ -26,7 +26,7 @@ void Tank::Start()
 
     storage.Push(this);
 
-    UnitObjectSpecific::CreateSpecific(node_);
+    UnitObjectSpecific::Create(node_);
 
     TankSpecific::CreateSpecific(node_);
 

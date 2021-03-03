@@ -12,7 +12,7 @@ void UnitObjectSpecific::RegisterObject()
 }
 
 
-void UnitObjectSpecific::CreateSpecific(Node *node)
+void UnitObjectSpecific::Create(Node *node)
 {
     node->CreateComponent<UnitObjectSpecificC>(LOCAL);
 }
