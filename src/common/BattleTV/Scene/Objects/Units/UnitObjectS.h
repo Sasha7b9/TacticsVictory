@@ -9,10 +9,13 @@ class UnitObjectSpecificS : public GameObjectSpecificS
 
 public:
 
-    UnitObjectSpecificS(UnitObject *object) : GameObjectSpecificS(object) {}
+    UnitObjectSpecificS(UnitObject *object) : GameObjectSpecificS(object), unit(object) {}
 
 protected:
 
     virtual void Update(float timeStep) override;
-};
 
+private:
+
+    UnitObject *unit = nullptr;
+};

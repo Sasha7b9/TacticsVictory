@@ -14,7 +14,7 @@ GameObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
 
 void UnitObjectSpecificS::Update(float timeStep)
 {
-    EngineT *engine = ((UnitObject *)object)->engine;
+    EngineT *engine = unit->engine;
 
     engine->Update(timeStep);
 
