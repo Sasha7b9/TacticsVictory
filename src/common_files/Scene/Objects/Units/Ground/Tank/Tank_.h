@@ -7,15 +7,9 @@ class Tank;
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class TankSpecific : public UnitObjectSpecific
+namespace TankSpecific
 {
-    URHO3D_OBJECT(TankSpecific, UnitObjectSpecific);
-
-public:
-
-    TankSpecific(Tank *tank);
-
-    virtual void Update(float timeStep);
+    GameObjectSpecific *Create(Tank *tank);
 };
 
 

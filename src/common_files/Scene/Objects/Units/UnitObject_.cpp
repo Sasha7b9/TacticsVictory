@@ -8,18 +8,6 @@
 Vector<UnitObject *> UnitObject::storage;
 
 
-UnitObjectSpecific::UnitObjectSpecific(UnitObject *object) : GameObjectSpecific(object)
-{
-
-}
-
-
-void UnitObjectSpecific::Update(float timeStep)
-{
-    GameObjectSpecific::Update(timeStep);
-}
-
-
 UnitObject::UnitObject(Context *context) : GameObject(context)
 {
 

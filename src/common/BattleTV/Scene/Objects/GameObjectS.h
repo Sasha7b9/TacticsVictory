@@ -1,5 +1,6 @@
 // 2021/03/03 21:08:52 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Scene/Objects/GameObject_.h"
 
 
 class GameObject;

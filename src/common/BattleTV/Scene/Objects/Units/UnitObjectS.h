@@ -1,15 +1,15 @@
 // 2021/02/26 16:01:57 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Objects/Units/UnitObject_.h"
+#include "Scene/Objects/GameObjectS.h"
 
 
-class UnitObjectSpecificS : public UnitObjectSpecific
+class UnitObjectSpecificS : public GameObjectSpecificS
 {
-    URHO3D_OBJECT(UnitObjectSpecificS, UnitObjectSpecific);
+    URHO3D_OBJECT(UnitObjectSpecificS, GameObjectSpecificS);
 
 public:
 
-    UnitObjectSpecificS(UnitObject *object) : UnitObjectSpecific(object) {}
+    UnitObjectSpecificS(UnitObject *object) : GameObjectSpecificS(object) {}
 
 protected:
 

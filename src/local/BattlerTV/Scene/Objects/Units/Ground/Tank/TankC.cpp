@@ -5,6 +5,12 @@
 #include "Scene/Objects/Units/UnitObjectC.h"
 
 
+GameObjectSpecific *TankSpecific::Create(Tank *tank)
+{
+    return new GameObjectSpecificC(tank);
+}
+
+
 void Tank::RegisterObject()
 {
     TheContext->RegisterFactory<Tank>();

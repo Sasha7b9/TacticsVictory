@@ -8,17 +8,9 @@ class UnitObject;
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class UnitObjectSpecific : public GameObjectSpecific
+namespace UnitObjectSpecific
 {
-    URHO3D_OBJECT(UnitObjectSpecific, GameObjectSpecific);
-
-public:
-
-    UnitObjectSpecific(UnitObject *object);
-
-    static UnitObjectSpecific *Create(UnitObject *object);
-
-    virtual void Update(float timeStep) override;
+    GameObjectSpecific *Create(UnitObject *object);
 };
 
 

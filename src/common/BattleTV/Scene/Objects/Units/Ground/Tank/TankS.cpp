@@ -6,6 +6,12 @@
 #include "Scene/Objects/Units/UnitObjectS.h"
 
 
+GameObjectSpecific *TankSpecific::Create(Tank *tank)
+{
+    return new TankSpecificS(tank);
+}
+
+
 void Tank::RegisterObject()
 {
     TheContext->RegisterFactory<Tank>();
@@ -20,5 +26,5 @@ void Tank::Update(float timeStep)
 
 void TankSpecificS::Update(float timeStep)
 {
-    TankSpecific::Update(timeStep);
+    UnitObjectSpecificS::Update(timeStep);
 }

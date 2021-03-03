@@ -7,19 +7,18 @@
 #include "Scene/Objects/Units/UnitObjectC.h"
 
 
-UnitObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
+GameObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
 {
     return new UnitObjectSpecificC(object);
 }
 
 
-UnitObjectSpecificC::UnitObjectSpecificC(UnitObject *object) : UnitObjectSpecific(object)
+UnitObjectSpecificC::UnitObjectSpecificC(UnitObject *object) : GameObjectSpecificC(object)
 {
     tile = object->GetNode()->CreateComponent<TileSelected>(LOCAL);
 
     SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(UnitObjectSpecificC, HandleMouseClick));
 }
-
 
 
 void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
@@ -51,5 +50,5 @@ void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
 
 void UnitObjectSpecificC::Update(float timeStep)
 {
-    UnitObjectSpecific::Update(timeStep);
+    GameObjectSpecificC::Update(timeStep);
 }

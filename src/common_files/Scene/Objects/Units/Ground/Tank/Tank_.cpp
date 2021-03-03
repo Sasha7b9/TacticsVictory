@@ -8,18 +8,6 @@
 Vector<Tank *> Tank::storage;
 
 
-TankSpecific::TankSpecific(Tank *tank) : UnitObjectSpecific(tank)
-{
-
-}
-
-
-void TankSpecific::Update(float timeStep)
-{
-    UnitObjectSpecific::Update(timeStep);
-}
-
-
 Tank::Tank(Context *context) : UnitObject(context)
 {
 
