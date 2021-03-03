@@ -32,7 +32,7 @@ void UnitObject::Start()
 }
 
 
-void UnitObject::Update(float /*timeStep*/)
+void UnitObject::Update(float timeStep)
 {
-
+    GameObject::Update(timeStep);
 }

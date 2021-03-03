@@ -102,3 +102,23 @@ void GameObject::SetPosition(const Vector3 &position)
 {
     node_->SetPosition(position + node_->GetComponent<ShiftParameters>()->position);
 }
+
+
+void GameObject::Update(float timeStep)
+{
+    LogicComponent::Update(timeStep);
+
+    EngineT *engine = GetComponent<EngineT>();
+
+    if (engine)
+    {
+        engine->Update(timeStep);
+
+        if (engine->algorithm.IsFinished())
+        {
+            int direct = Rand() % 4;
+
+            engine->GiveCommand((CommandEngine::E)(direct + 1));
+        }
+    }
+}

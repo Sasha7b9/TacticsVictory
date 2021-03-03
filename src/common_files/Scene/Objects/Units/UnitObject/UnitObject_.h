@@ -30,7 +30,7 @@ public:
 
     static void RegisterObject();
 
-    virtual void Update(float timeStep);
+    virtual void Update(float timeStep) override;
 
 protected:
 

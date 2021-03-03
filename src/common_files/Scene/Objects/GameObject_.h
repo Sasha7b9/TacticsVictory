@@ -41,6 +41,8 @@ protected:
 
     virtual void OnNodeSet(Node *node) override;
 
+    virtual void Update(float time) override;
+
 private:
 
     float speed = 0.0f;                     // С такой скоростью объект перемещается
@@ -48,8 +50,6 @@ private:
     SharedPtr<StaticModel> staticModel;
 
     static Vector<GameObject *> storage;
-
-    virtual void Update(float time) override = 0;
 
     Vector3 GetPosition() const;
 };

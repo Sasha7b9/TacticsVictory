@@ -18,17 +18,6 @@ void Tank::Update(float timeStep)
 {
     UnitObject::Update(timeStep);
 
-    EngineT *engine = GetComponent<EngineT>();
-
-    engine->Update(timeStep);
-
-    if (engine->algorithm.IsFinished())
-    {
-        int direct = Rand() % 4;
-
-        engine->GiveCommand((CommandEngine::E)(direct + 1));
-    }
-
     if (TheTime->GetElapsedTime() >= GetComponent<TankSpecificS>()->timeNextTimeSend)
     {
         TheServer->SendToAll(false, Message::SendTankPosition(node_->GetName(), node_->GetPosition()));
