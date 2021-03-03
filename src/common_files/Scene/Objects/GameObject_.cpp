@@ -12,6 +12,8 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
 {
     shift = new ShiftParameters();
 
+    physics = new PhysicsParameters(this);
+
     storage.Push(this);
 }
 
@@ -56,7 +58,7 @@ void GameObject::LoadFromJSON(const String &fileName)
 
 void GameObject::Normalize(float k)
 {
-    Vector3 pos = GetPosition();
+    Vector3 pos = physics->GetPosition();
     node_->SetPosition(Vector3::ZERO);
     node_->SetScale(1.0f);
 
@@ -78,9 +80,9 @@ void GameObject::Normalize(float k)
 }
 
 
-Vector3 GameObject::GetPosition() const
+Vector3 PhysicsParameters::GetPosition() const
 {
-    return node_->GetPosition() - shift->position;
+    return object->GetNode()->GetPosition() - object->shift->position;
 }
 
 

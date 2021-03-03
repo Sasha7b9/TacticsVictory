@@ -19,6 +19,24 @@ public:
 
 
 //----------------------------------------------------------------------------------------------------------------------
+class PhysicsParameters : public Object
+{
+    URHO3D_OBJECT(PhysicsParameters, Object);
+
+public:
+
+    PhysicsParameters(GameObject *_object) : Object(TheContext), object(_object) {}
+
+    Vector3 GetPosition() const;                // Возвращает реальную позицию в мире
+
+private:
+
+    GameObject *object = nullptr;
+};
+
+
+//----------------------------------------------------------------------------------------------------------------------
+// Специфичные для клент/серверных объектов параметры
 class GameObjectSpecific : public Component
 {
     URHO3D_OBJECT(GameObjectSpecific, Component);
@@ -40,6 +58,8 @@ public:
 
     static void RegisterObject();
 
+    SharedPtr<ShiftParameters> shift;               // Используется для приведения параметров модели к текущей сцене
+
 protected:
 
     GameObject(Context *context);
@@ -58,7 +78,5 @@ private:
 
     static Vector<GameObject *> storage;            // Здесь хранятся все объекты типа GameObject (и их подклассы)
 
-    Vector3 GetPosition() const;
-
-    SharedPtr<ShiftParameters> shift;
+    SharedPtr<PhysicsParameters> physics;           // Параметры в физическом мире. Такие как координаты
 };
