@@ -7,7 +7,13 @@
 
 GameObjectSpecific *TankSpecific::Create(Tank *tank)
 {
-    return new GameObjectSpecificC(tank);
+    return new TankSpecificC(tank);
+}
+
+
+void TankSpecificC::Update(float timeStep)
+{
+    UnitObjectSpecificC::Update(timeStep);
 }
 
 
