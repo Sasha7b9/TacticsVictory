@@ -50,3 +50,14 @@ public:
     EngineAlgorithm algorithm;      // Собственно алгоритм движения
     EngineExecutor executor;        // Собственно выполнитель алгоритма движения
 };
+
+
+//----------------------------------------------------------------------------------------------------------------------
+class EngineTank : public EngineT
+{
+    URHO3D_OBJECT(EngineTank, EngineT);
+
+public:
+
+    EngineTank(Context *context = TheContext) : EngineT(context) {}
+};

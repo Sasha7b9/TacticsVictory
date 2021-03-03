@@ -11,6 +11,7 @@ void Tank::RegisterObject()
 {
     TheContext->RegisterFactory<Tank>();
     TheContext->RegisterFactory<TankSpecificS>();
+    TheContext->RegisterFactory<EngineTank>();
 }
 
 
