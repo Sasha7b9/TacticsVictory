@@ -4,36 +4,14 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-void EngineParameters::RegisterObject()
-{
-    TheContext->RegisterFactory<EngineParameters>();
-}
-
-
-EngineT::EngineT(Context *context) : Component(context)
-{
-
-}
-
-
-void EngineT::RegisterObject()
-{
-    TheContext->RegisterFactory<EngineT>();
-
-    EngineParameters::RegisterObject();
-}
-
-
 void EngineT::GiveCommand(CommandEngine::E command)
 {
-    calculator.Calculate(node_, command);
+    calculator.Calculate(node, command, algorithm);
 }
 
 
 bool EngineT::IsStopped() const
 {
-    EngineParameters *params = node_->GetComponent<EngineParameters>(true);
-
     return (params->speedMove == 0.0f) && (params->speedRotate == 0.0f);
 }
 
@@ -45,21 +23,10 @@ void EngineT::Update(float timeStep)
         return;
     }
 
-    EngineExecutor::Result result = executor.Execute(node_, timeStep);
+    EngineExecutor::Result result = executor.Execute(node, timeStep, *this);
 
     if (result.IsFinished())
     {
         algorithm.steps.PopFront();
     }
-}
-
-
-void EngineT::OnNodeSet(Node *node)
-{
-    if (node)
-    {
-        node_->CreateComponent<EngineParameters>(LOCAL);
-    }
-
-    Component::OnNodeSet(node);
 }

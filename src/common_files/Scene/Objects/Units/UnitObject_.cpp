@@ -35,4 +35,13 @@ void UnitObject::Start()
 void UnitObject::Update(float timeStep)
 {
     GameObject::Update(timeStep);
+
+    engine->Update(timeStep);
+
+    if (engine->algorithm.IsFinished())
+    {
+        int direct = Rand() % 4;
+
+        engine->GiveCommand((CommandEngine::E)(direct + 1));
+    }
 }

@@ -2,6 +2,9 @@
 #pragma once
 
 
+class EngineT;
+
+
 struct CommandEngine { enum E {
     None,
     MoveToNorth,
@@ -52,7 +55,7 @@ class EngineCalculator
 {
 public:
 
-    void Calculate(Node *node, CommandEngine::E command);
+    void Calculate(Node *node, CommandEngine::E command, EngineAlgorithm &algorithm);
 };
 
 
@@ -75,5 +78,5 @@ public:
     };
 
     // Выполняет текуцщий (т.е. нулевой) шаг алгоритма. Если выполнение шага закончено - возвращает Result::Finished
-    Result Execute(Node *_node, float timeStep);
+    Result Execute(Node *_node, float timeStep, EngineT &engine);
 };

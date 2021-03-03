@@ -6,5 +6,5 @@
 
 void Accessories::RegisterObject()
 {
-    EngineT::RegisterObject();
+
 }

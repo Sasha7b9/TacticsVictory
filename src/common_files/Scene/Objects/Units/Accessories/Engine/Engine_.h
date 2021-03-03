@@ -4,15 +4,11 @@
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class EngineParameters : public Component
+class EngineParameters : public Object
 {
-    URHO3D_OBJECT(EngineParameters, Component);
-
 public:
 
-    EngineParameters(Context *context = TheContext) : Component(context) {}
-
-    static void RegisterObject();
+    EngineParameters() : Object(TheContext) {}
 
     float maxSpeedMove = 1.0f;           // Максимальная скорость движения
     float maxSpeedRotate = 60.0f;       // Максимальная скорость поворота
@@ -27,17 +23,12 @@ public:
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class EngineT : public Component
+class EngineT : public Object
 {
-    URHO3D_OBJECT(EngineT, Component);
-
 public:
 
-    EngineT(Context *context = TheContext);
-
-    static void RegisterObject();
-
-    virtual void OnNodeSet(Node *node) override;
+    EngineT() : Object(TheContext) {};
+    virtual ~EngineT() {}
 
     virtual void Update(float timeStep);
 
@@ -49,15 +40,28 @@ public:
     EngineCalculator calculator;    // Занимается расчётом алгоритма движения
     EngineAlgorithm algorithm;      // Собственно алгоритм движения
     EngineExecutor executor;        // Собственно выполнитель алгоритма движения
+
+    SharedPtr<EngineParameters> params;
+
+protected:
+
+    Node *node = nullptr;
 };
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class EngineTank : public EngineT
+class EngineGround : public EngineT
 {
-    URHO3D_OBJECT(EngineTank, EngineT);
-
 public:
 
-    EngineTank(Context *context = TheContext) : EngineT(context) {}
+    EngineGround() : EngineT() {}
+};
+
+
+//----------------------------------------------------------------------------------------------------------------------
+class EngineAir : public EngineT
+{
+public:
+
+    EngineAir() : EngineT() {}
 };

@@ -4,10 +4,8 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-void EngineCalculator::Calculate(Node *node, CommandEngine::E command)
+void EngineCalculator::Calculate(Node *node, CommandEngine::E command, EngineAlgorithm &algorithm)
 {
-    EngineAlgorithm &algorithm = node->GetComponent<EngineT>()->algorithm;
-
     Step step(Step::Type::Move);
 
     step.start = node->GetPosition();
@@ -34,21 +32,18 @@ void EngineCalculator::Calculate(Node *node, CommandEngine::E command)
 }
 
 
-EngineExecutor::Result EngineExecutor::Execute(Node *node, float timeStep)
+EngineExecutor::Result EngineExecutor::Execute(Node *node, float timeStep, EngineT &engine)
 {
-    EngineT *engine = node->GetComponent<EngineT>();
-
-    if (engine->algorithm.IsFinished())
+    if (engine.algorithm.IsFinished())
     {
         return EngineExecutor::Result::Finished;
     }
 
-    Step &step = engine->algorithm.steps.Front();
-    EngineParameters *param = node->GetComponent<EngineParameters>();
+    Step &step = engine.algorithm.steps.Front();
 
     Vector3 currentPos = node->GetPosition();
 
-    float dist = param->maxSpeedMove * timeStep;            // Нужно проехать
+    float dist = engine.params->maxSpeedMove * timeStep;            // Нужно проехать
 
     float delta = (step.end - currentPos).Length();         // Осталось до конечной точки
 
