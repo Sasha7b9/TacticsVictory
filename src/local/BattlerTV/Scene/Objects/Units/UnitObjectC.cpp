@@ -33,7 +33,7 @@ void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
             {
                 if (t->GetNode() != node)
                 {
-//                    t->GetNode()->GetComponentile->Disable();
+                    t->GetNode()->GetComponent<TileSelected>()->Disable();
                 }
                 else
                 {
