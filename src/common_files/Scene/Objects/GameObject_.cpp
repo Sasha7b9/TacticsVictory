@@ -56,7 +56,7 @@ void GameObject::LoadFromJSON(const String &fileName)
     staticModel->ApplyMaterialList(fileMaterials);
     staticModel->SetCastShadows(true);
 
-    speed = root.Get("speed").GetFloat();
+//    speed = root.Get("speed").GetFloat();
 
     shift->rotate = root.Get("deltaRotate").GetFloat();
 

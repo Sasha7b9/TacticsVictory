@@ -56,11 +56,9 @@ protected:
 
 private:
 
-    float speed = 0.0f;                     // С такой скоростью объект перемещается
-
     SharedPtr<StaticModel> staticModel;
 
-    static Vector<GameObject *> storage;
+    static Vector<GameObject *> storage;            // Здесь 
 
     Vector3 GetPosition() const;
 };
