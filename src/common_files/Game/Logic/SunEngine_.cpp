@@ -34,7 +34,7 @@ void SunEngine::Update(float time)
 }
 
 
-void SunEngine::RegisterObject(Context *context)
+void SunEngine::RegisterComponent(Context *context)
 {
     context->RegisterFactory<SunEngine>();
 }

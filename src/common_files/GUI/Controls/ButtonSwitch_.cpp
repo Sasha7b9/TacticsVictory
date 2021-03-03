@@ -19,7 +19,7 @@ ButtonSwitch::ButtonSwitch(UIElement *uielement, char *text, int width, int heig
 }
 
 
-void ButtonSwitch::RegisterObject(Context *context)
+void ButtonSwitch::RegisterComponent(Context *context)
 {
     context->RegisterFactory<ButtonSwitch>("UI");
 

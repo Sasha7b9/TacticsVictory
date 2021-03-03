@@ -155,9 +155,9 @@ void Battle::CreateScriptSystem()
 
 void Battle::RegistrationComponets()
 {
-    SunEngine::RegisterObject();
-    Rotator::RegisterObject();
-    WaveAlgorithm::RegisterObject();
+    SunEngine::RegisterComponent();
+    Rotator::RegisterComponent();
+    WaveAlgorithm::RegisterComponent();
     SceneT::RegisterObject();
 
     Tank::RegisterObject();

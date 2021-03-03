@@ -12,7 +12,7 @@ public:
     void SetRotationSpeed(const Vector3& speed);
     virtual void Update(float timeStep);
 
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterComponent(Context *context = TheContext);
     
     const Vector3& GetRotationSpeed() const { return rotationSpeed; }
     

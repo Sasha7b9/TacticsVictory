@@ -17,7 +17,7 @@ public:
     PODVector<Coord> GetPath();
     virtual void ThreadFunction();
 
-    static void RegisterObject();
+    static void RegisterComponent();
 
 private:
     typedef Vector<Coord> Wave;

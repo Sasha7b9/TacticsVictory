@@ -201,9 +201,9 @@ void Battler::RegistrationComponets()
     CameraT::RegisterObject();
     CursorT::RegisterObject();
     TImage::RegisterObject();
-    SunEngine::RegisterObject();
-    Rotator::RegisterObject();
-    WaveAlgorithm::RegisterObject();
+    SunEngine::RegisterComponent();
+    Rotator::RegisterComponent();
+    WaveAlgorithm::RegisterComponent();
     SceneT::RegisterObject();
     TileSelected::RegisterObject();
 

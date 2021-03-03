@@ -10,7 +10,7 @@ class ButtonSwitch : public TButton
 public:
     ButtonSwitch(Context *context = TheContext);
     ButtonSwitch(UIElement *uielement, char *text, int width = -1, int height = -1);
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterComponent(Context *context = TheContext);
     void AddState(char *item);
     void SetState(uint state);
     uint GetState();
