@@ -1,9 +1,14 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Network/Game/Messages/GameMessages_.h"
 
 
 class ConnectionT;
+
+
+namespace Message
+{
+    struct Message;
+}
 
 
 class ServerS : public Object

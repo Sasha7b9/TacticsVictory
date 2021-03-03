@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "Scene/Objects/GameObject_.h"
 #include "Scene/Objects/GameObjectS.h"
-#include "Network/ServerS.h"
 
 
 
