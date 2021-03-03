@@ -14,12 +14,6 @@ void Tank::RegisterObject()
 }
 
 
-void TankSpecific::CreateSpecific(Node *node)
-{
-    node->CreateComponent<TankSpecificS>(LOCAL);
-}
-
-
 void Tank::Update(float timeStep)
 {
     EngineT *engine = GetComponent<EngineT>();
@@ -37,6 +31,18 @@ void Tank::Update(float timeStep)
     {
         TheServer->SendToAll(false, Message::SendTankPosition(node_->GetName(), node_->GetPosition()));
 
-        GetComponent<TankSpecificS>()->timeNextTimeSend = TheTime->GetElapsedTime() + 0.5f;
+        GetComponent<TankSpecificS>()->timeNextTimeSend = TheTime->GetElapsedTime() + 0.1f;
     }
+}
+
+
+void TankSpecific::CreateSpecific(Node *node)
+{
+    node->CreateComponent<TankSpecificS>(LOCAL);
+}
+
+
+void TankSpecificS::Update(float /*timeStep*/)
+{
+
 }
