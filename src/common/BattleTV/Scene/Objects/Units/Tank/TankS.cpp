@@ -16,6 +16,8 @@ void Tank::RegisterObject()
 
 void Tank::Update(float timeStep)
 {
+    UnitObject::Update(timeStep);
+
     EngineT *engine = GetComponent<EngineT>();
 
     engine->Update(timeStep);

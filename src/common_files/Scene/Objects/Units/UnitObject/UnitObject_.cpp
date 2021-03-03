@@ -30,3 +30,9 @@ void UnitObject::Start()
 
     node_->SetVar(VAR_NODE_IS_UNIT, true);
 }
+
+
+void UnitObject::Update(float /*timeStep*/)
+{
+
+}

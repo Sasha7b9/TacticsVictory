@@ -30,6 +30,8 @@ public:
 
     static void RegisterObject();
 
+    virtual void Update(float timeStep);
+
 protected:
 
     UnitObject(Context *);
