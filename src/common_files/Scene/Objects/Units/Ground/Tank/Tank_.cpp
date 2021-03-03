@@ -49,3 +49,9 @@ void Tank::OnNodeSet(Node *node)
 
     UnitObject::OnNodeSet(node ? node_ : node);
 }
+
+
+void Tank::Update(float timeStep)
+{
+    UnitObject::Update(timeStep);
+}

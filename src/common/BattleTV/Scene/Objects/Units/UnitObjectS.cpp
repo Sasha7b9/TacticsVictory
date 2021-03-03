@@ -14,5 +14,16 @@ GameObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
 
 void UnitObjectSpecificS::Update(float timeStep)
 {
+    EngineT *engine = ((UnitObject *)object)->engine;
+
+    engine->Update(timeStep);
+
+    if (engine->algorithm.IsFinished())
+    {
+        int direct = Rand() % 4;
+
+        engine->GiveCommand((CommandEngine::E)(direct + 1));
+    }
+
     GameObjectSpecificS::Update(timeStep);
 }

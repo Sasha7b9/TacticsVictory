@@ -15,9 +15,3 @@ void TankSpecificC::Update(float timeStep)
 {
     UnitObjectSpecificC::Update(timeStep);
 }
-
-
-void Tank::Update(float)
-{
-
-}

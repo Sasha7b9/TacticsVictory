@@ -25,11 +25,11 @@ public:
 
     virtual void Update(float timeStep) override;
 
+    SharedPtr<EngineT> engine;
+
 protected:
 
     UnitObject(Context *);
 
     virtual void Start() override;
-
-    SharedPtr<EngineT> engine;
 };

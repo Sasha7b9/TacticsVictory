@@ -12,12 +12,6 @@ GameObjectSpecific *TankSpecific::Create(Tank *tank)
 }
 
 
-void Tank::Update(float timeStep)
-{
-    UnitObject::Update(timeStep);
-}
-
-
 void TankSpecificS::Update(float timeStep)
 {
     UnitObjectSpecificS::Update(timeStep);
