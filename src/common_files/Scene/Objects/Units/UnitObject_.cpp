@@ -44,4 +44,8 @@ void UnitObject::Update(float timeStep)
 
         engine->GiveCommand((CommandEngine::E)(direct + 1));
     }
+    else
+    {
+        int i = 0;
+    }
 }

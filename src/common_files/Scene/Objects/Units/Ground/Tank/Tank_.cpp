@@ -20,6 +20,8 @@ void Tank::Start()
 
     node_->SetVar(VAR_NODE_IS_FLYING, false);
 
+    node_->SetName(String(node_->GetID()));
+
     LoadFromJSON(JSON_MODEL_TANK);
 
     Normalize();
