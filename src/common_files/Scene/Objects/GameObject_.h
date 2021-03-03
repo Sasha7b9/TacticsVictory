@@ -5,15 +5,13 @@
 //----------------------------------------------------------------------------------------------------------------------
 // Здесь хранятся смещения для параметров модели, которые нужно применить к ней для правильной ориентации.
 // Масштаб является параметром у node_
-class ShiftParameters : public Component
+class ShiftParameters : public Object
 {
-    URHO3D_OBJECT(ShiftParameters, Component);
+    URHO3D_OBJECT(ShiftParameters, Object);
 
 public:
 
-    ShiftParameters(Context *context = TheContext) : Component(context) {}
-
-    static void RegisterObject();
+    ShiftParameters() : Object(TheContext) {}
 
     float rotate = 0.0f;               // Поворот модели относительно направления ноды
     Vector3 position = Vector3::ZERO;  // Если модель не выровнена относительно начала координат, здесь смещение
@@ -58,7 +56,9 @@ private:
 
     SharedPtr<StaticModel> staticModel;
 
-    static Vector<GameObject *> storage;            // Здесь 
+    static Vector<GameObject *> storage;            // Здесь хранятся все объекты типа GameObject (и их подклассы)
 
     Vector3 GetPosition() const;
+
+    SharedPtr<ShiftParameters> shift;
 };

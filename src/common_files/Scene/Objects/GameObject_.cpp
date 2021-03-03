@@ -8,14 +8,10 @@
 Vector<GameObject *> GameObject::storage;
 
 
-void ShiftParameters::RegisterObject()
-{
-    TheContext->RegisterFactory<ShiftParameters>();
-}
-
-
 GameObject::GameObject(Context *context) : LogicComponent(context)
 {
+    shift = new ShiftParameters();
+
     storage.Push(this);
 }
 
@@ -23,25 +19,17 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
 void GameObject::RegisterObject()
 {
     UnitObject::RegisterObject();
-    ShiftParameters::RegisterObject();
 }
 
 
 void GameObject::OnNodeSet(Node *node)
 {
-    if (node)
-    {
-        node->CreateComponent<ShiftParameters>();
-    }
-
     LogicComponent::OnNodeSet(node);
 }
 
 
 void GameObject::LoadFromJSON(const String &fileName)
 {
-    ShiftParameters *shift = node_->GetComponent<ShiftParameters>();
-
     JSONFile *file(TheCache->GetResource<JSONFile>(fileName));
 
     JSONValue &root = file->GetRoot();
@@ -68,8 +56,6 @@ void GameObject::LoadFromJSON(const String &fileName)
 
 void GameObject::Normalize(float k)
 {
-    ShiftParameters *shift = node_->GetComponent<ShiftParameters>();
-
     Vector3 pos = GetPosition();
     node_->SetPosition(Vector3::ZERO);
     node_->SetScale(1.0f);
@@ -94,13 +80,13 @@ void GameObject::Normalize(float k)
 
 Vector3 GameObject::GetPosition() const
 {
-    return node_->GetPosition() - node_->GetComponent<ShiftParameters>()->position;
+    return node_->GetPosition() - shift->position;
 }
 
 
 void GameObject::SetPosition(const Vector3 &position)
 {
-    node_->SetPosition(position + node_->GetComponent<ShiftParameters>()->position);
+    node_->SetPosition(position + shift->position);
 }
 
 
