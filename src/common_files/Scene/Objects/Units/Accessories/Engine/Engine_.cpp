@@ -4,6 +4,12 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
+EngineT::EngineT(Node *_node) : Object(TheContext), node(_node)
+{
+    params = new EngineParameters();
+};
+
+
 void EngineT::GiveCommand(CommandEngine::E command)
 {
     calculator.Calculate(node, command, algorithm);
