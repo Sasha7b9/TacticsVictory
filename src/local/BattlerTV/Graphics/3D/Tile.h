@@ -10,7 +10,7 @@ public:
 
     Tile(Context *context);
 
-    static void RegisterObject();
+    static void RegisterComponent();
 
     // Включить отображение
     void Enable();
