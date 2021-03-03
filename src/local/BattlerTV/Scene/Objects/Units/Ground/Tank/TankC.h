@@ -8,5 +8,5 @@ class TankSpecificC : public TankSpecific
 
 public:
 
-    TankSpecificC(Context *context) : TankSpecific(context) {}
+    TankSpecificC(Tank *tank) : TankSpecific(tank) {}
 };

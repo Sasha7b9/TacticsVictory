@@ -6,15 +6,9 @@
 #include "Scene/Objects/Units/UnitObjectC.h"
 
 
-void UnitObjectSpecific::RegisterObject()
+UnitObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
 {
-    TheContext->RegisterFactory<UnitObjectSpecificC>();
-}
-
-
-void UnitObjectSpecific::Create(Node *node)
-{
-    node->CreateComponent<UnitObjectSpecificC>(LOCAL);
+    return new UnitObjectSpecificC(object);
 }
 
 
@@ -22,15 +16,17 @@ void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
 {
     using namespace UnitMouseClick;
 
-    if (eventData[P_NODE].GetPtr() == node_)
+    Node *node = object->GetNode();
+
+    if (eventData[P_NODE].GetPtr() == node)
     {
         if (!eventData[P_CTRL_PRESSED].GetBool())
         {
             for (Tank *t : Tank::storage)
             {
-                if (t->GetNode() != node_)
+                if (t->GetNode() != node)
                 {
-                    t->GetNode()->GetComponent<UnitObjectSpecificC>()->tile->Disable();
+//                    t->GetNode()->GetComponentile->Disable();
                 }
                 else
                 {
@@ -45,14 +41,20 @@ void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
 }
 
 
-void UnitObjectSpecificC::OnNodeSet(Node *node)
+void UnitObjectSpecificC::Update(float timeStep)
 {
-    if (node)
-    {
-        UnitObjectSpecific::OnNodeSet(node);
-
-        tile = node->CreateComponent<TileSelected>(LOCAL);
-
-        SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(UnitObjectSpecificC, HandleMouseClick));
-    }
+    UnitObjectSpecific::Update(timeStep);
 }
+
+
+//void UnitObjectSpecificC::OnNodeSet(Node *node)
+//{
+//    if (node)
+//    {
+//        UnitObjectSpecific::OnNodeSet(node);
+//
+//        tile = node->CreateComponent<TileSelected>(LOCAL);
+//
+//        SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(UnitObjectSpecificC, HandleMouseClick));
+//    }
+//}

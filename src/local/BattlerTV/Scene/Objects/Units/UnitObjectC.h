@@ -10,11 +10,11 @@ class UnitObjectSpecificC : public UnitObjectSpecific
 
 public:
 
-    UnitObjectSpecificC(Context *context) : UnitObjectSpecific(context) {}
-
-    virtual void OnNodeSet(Node *node) override;
+    UnitObjectSpecificC(UnitObject *object) : UnitObjectSpecific(object) {}
 
     SharedPtr<TileSelected> tile;
+
+    virtual void Update(float timeStep) override;
 
     virtual void HandleMouseClick(StringHash, VariantMap &);
 };

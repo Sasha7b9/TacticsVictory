@@ -18,6 +18,7 @@
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/GameObject_.h"
+#include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Utils/Log_.h"
 #include "Utils/Settings.h"
 #include "Utils/SettingsTypes.h"
@@ -206,7 +207,7 @@ void Battler::RegistrationComponets()
     SceneT::RegisterObject();
     TileSelected::RegisterObject();
 
-    GameObject::RegisterObject();
+    Tank::RegisterObject();
 }
 
 

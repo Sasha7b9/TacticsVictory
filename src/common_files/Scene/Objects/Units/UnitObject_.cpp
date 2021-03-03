@@ -8,19 +8,21 @@
 Vector<UnitObject *> UnitObject::storage;
 
 
-UnitObject::UnitObject(Context *context) : GameObject(context)
+UnitObjectSpecific::UnitObjectSpecific(UnitObject *object) : GameObjectSpecific(object)
 {
 
 }
 
 
-void UnitObject::RegisterObject()
+void UnitObjectSpecific::Update(float timeStep)
 {
-    UnitObjectSpecific::RegisterObject();
+    GameObjectSpecific::Update(timeStep);
+}
 
-    Accessories::RegisterObject();
 
-    Tank::RegisterObject();
+UnitObject::UnitObject(Context *context) : GameObject(context)
+{
+
 }
 
 

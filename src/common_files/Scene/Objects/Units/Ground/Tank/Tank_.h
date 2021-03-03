@@ -3,6 +3,9 @@
 #include "Scene/Objects/Units/UnitObject_.h"
 
 
+class Tank;
+
+
 //----------------------------------------------------------------------------------------------------------------------
 class TankSpecific : public UnitObjectSpecific
 {
@@ -10,10 +13,7 @@ class TankSpecific : public UnitObjectSpecific
 
 public:
 
-    TankSpecific(Context *context) : UnitObjectSpecific(context) {};
-
-    // Создаёт на заданной ноде специфичный для данной среды (сервер/клиент) объект
-    static void Create(Node *);
+    TankSpecific(Tank *tank);
 
     virtual void Update(float /*timeStep*/) {};
 };

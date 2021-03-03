@@ -8,6 +8,12 @@
 Vector<Tank *> Tank::storage;
 
 
+TankSpecific::TankSpecific(Tank *tank) : UnitObjectSpecific(tank)
+{
+
+}
+
+
 Tank::Tank(Context *context) : UnitObject(context)
 {
 
@@ -28,9 +34,9 @@ void Tank::Start()
 
     storage.Push(this);
 
-    UnitObjectSpecific::Create(node_);
+//    UnitObjectSpecific::Create(this);
 
-    TankSpecific::Create(node_);
+    TankSpecific::Create(this);
 
     engine = new EngineGround(node_);
 }

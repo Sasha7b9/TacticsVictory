@@ -60,7 +60,8 @@ file(GLOB NETWORK_MESSAGES                       ../../common_files/Network/Game
 file(GLOB SCENE                                  ../../common_files/Scene/*.*
                                                                     Scene/*.*)
 file(GLOB SCENE_CAMERAS                                             Scene/Cameras/*.*)
-file(GLOB SCENE_OBJECTS                          ../../common_files/Scene/Objects/*.*)
+file(GLOB SCENE_OBJECTS                          ../../common_files/Scene/Objects/*.*
+                                                                    Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                     ../../common_files/Scene/Objects/Ammo/*.*)
 file(GLOB SCENE_OBJECTS_AMMO_ROCKET                                 Scene/Objects/Ammo/Rocket/*.*
                                                  ../../common_files/Scene/Objects/Ammo/Rocket/*.*)

@@ -10,28 +10,12 @@
 void Tank::RegisterObject()
 {
     TheContext->RegisterFactory<Tank>();
-    TheContext->RegisterFactory<TankSpecificS>();
 }
 
 
 void Tank::Update(float timeStep)
 {
     UnitObject::Update(timeStep);
-
-    if (TheTime->GetElapsedTime() >= GetComponent<TankSpecificS>()->timeNextTimeSend)
-    {
-        Vector3 position = node_->GetPosition();
-
-        TheServer->SendToAll(false, Message::SendTankPosition(node_->GetName(), node_->GetPosition()));
-
-        GetComponent<TankSpecificS>()->timeNextTimeSend = TheTime->GetElapsedTime() + 0.1f;
-    }
-}
-
-
-void TankSpecific::Create(Node *node)
-{
-    node->CreateComponent<TankSpecificS>(LOCAL);
 }
 
 

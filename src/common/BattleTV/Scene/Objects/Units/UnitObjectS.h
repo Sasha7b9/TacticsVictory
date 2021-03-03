@@ -9,8 +9,10 @@ class UnitObjectSpecificS : public UnitObjectSpecific
 
 public:
 
-    UnitObjectSpecificS(Context *context) : UnitObjectSpecific(context) {}
+    UnitObjectSpecificS(UnitObject *object) : UnitObjectSpecific(object) {}
 
 protected:
+
+    virtual void Update(float timeStep) override;
 };
 

@@ -14,13 +14,9 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
 
     physics = new PhysicsParameters(this);
 
+    specific = GameObjectSpecific::Create(this);
+
     storage.Push(this);
-}
-
-
-void GameObject::RegisterObject()
-{
-    UnitObject::RegisterObject();
 }
 
 
@@ -95,4 +91,6 @@ void GameObject::SetPosition(const Vector3 &position)
 void GameObject::Update(float timeStep)
 {
     LogicComponent::Update(timeStep);
+
+    specific->Update(timeStep);
 }

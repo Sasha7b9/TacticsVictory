@@ -5,13 +5,13 @@
 #include "Scene/Objects/Units/UnitObjectS.h"
 
 
-void UnitObjectSpecific::RegisterObject()
+UnitObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
 {
-    TheContext->RegisterFactory<UnitObjectSpecificS>();
+    return new UnitObjectSpecificS(object);
 }
 
 
-void UnitObjectSpecific::Create(Node *node)
+void UnitObjectSpecificS::Update(float timeStep)
 {
-    node->CreateComponent<UnitObjectSpecificS>(LOCAL);
+    UnitObjectSpecific::Update(timeStep);
 }

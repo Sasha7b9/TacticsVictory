@@ -4,6 +4,9 @@
 #include "Scene/Objects/Units/Accessories/Engine/Engine_.h"
 
 
+class UnitObject;
+
+
 //----------------------------------------------------------------------------------------------------------------------
 class UnitObjectSpecific : public GameObjectSpecific
 {
@@ -11,11 +14,11 @@ class UnitObjectSpecific : public GameObjectSpecific
 
 public:
 
-    UnitObjectSpecific(Context *context) : GameObjectSpecific(context) {}
+    UnitObjectSpecific(UnitObject *object);
 
-    static void RegisterObject();
+    static UnitObjectSpecific *Create(UnitObject *object);
 
-    static void Create(Node *node);
+    virtual void Update(float timeStep) override;
 };
 
 
@@ -27,8 +30,6 @@ class UnitObject : public GameObject
 public:
 
     static Vector<UnitObject *> storage;
-
-    static void RegisterObject();
 
     virtual void Update(float timeStep) override;
 

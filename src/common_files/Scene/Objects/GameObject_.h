@@ -37,13 +37,21 @@ private:
 
 //----------------------------------------------------------------------------------------------------------------------
 // Специфичные для клент/серверных объектов параметры
-class GameObjectSpecific : public Component
+class GameObjectSpecific : public Object
 {
-    URHO3D_OBJECT(GameObjectSpecific, Component);
+    URHO3D_OBJECT(GameObjectSpecific, Object);
 
 public:
 
-    GameObjectSpecific(Context *context = TheContext) : Component(context) {}
+    static GameObjectSpecific *Create(GameObject *object);
+
+    virtual void Update(float /*timeStep*/) {};
+
+protected:
+
+    GameObjectSpecific(GameObject *_object) : Object(TheContext), object(_object) {}
+
+    GameObject *object = nullptr;
 };
 
 
@@ -55,8 +63,6 @@ class GameObject : public LogicComponent
 public:
 
     void SetPosition(const Vector3 &position);
-
-    static void RegisterObject();
 
     SharedPtr<ShiftParameters> shift;               // Используется для приведения параметров модели к текущей сцене
 
@@ -79,4 +85,6 @@ private:
     static Vector<GameObject *> storage;            // Здесь хранятся все объекты типа GameObject (и их подклассы)
 
     SharedPtr<PhysicsParameters> physics;           // Параметры в физическом мире. Такие как координаты
+
+    SharedPtr<GameObjectSpecific> specific;         // Клиент/сервер специфичные параметры
 };

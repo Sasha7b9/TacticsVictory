@@ -8,9 +8,7 @@ class TankSpecificS : public TankSpecific
 
 public:
 
-    TankSpecificS(Context *context) : TankSpecific(context) {}
-
-    float timeNextTimeSend = 0.0f;        // Время следующей засылки состояния объекта
+    TankSpecificS(Tank *tank) : TankSpecific(tank) {}
 
     virtual void Update(float timeStep) override;
 };

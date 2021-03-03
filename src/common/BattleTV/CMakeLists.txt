@@ -45,7 +45,8 @@ file(GLOB NETWORK                                                   Network/*.*
 file(GLOB NETWORK_MESSAGES                       ../../common_files/Network/Game/Messages/*.*
                                                                     Network/Messages/*.*)
 file(GLOB SCENE                                  ../../common_files/Scene/*.*)
-file(GLOB SCENE_OBJECTS                          ../../common_files/Scene/Objects/*.*)
+file(GLOB SCENE_OBJECTS                          ../../common_files/Scene/Objects/*.*
+                                                                    Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                     ../../common_files/Scene/Objects/Ammo/*.*)
 file(GLOB SCENE_OBJECTS_AMMO_ROCKET              ../../common_files/Scene/Objects/Ammo/Rocket/*.*)
 file(GLOB SCENE_OBJECTS_BUILDINGS                ../../common_files/Scene/Objects/Buildings/*.*)
