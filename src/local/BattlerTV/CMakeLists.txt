@@ -72,8 +72,6 @@ file(GLOB SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE ../../common_files/Scene/Object
 file(GLOB SCENE_OBJECTS_UNITS_AIRPLANE           ../../common_files/Scene/Objects/Units/Airplane/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_GROUND_TANK        ../../common_files/Scene/Objects/Units/Ground/Tank/*.*
                                                                     Scene/Objects/Units/Ground/Tank/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_UNITOBJECT         ../../common_files/Scene/Objects/Units/UnitObject/*.*
-                                                                    Scene/Objects/Units/UnitObject/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Objects/Weapons/*.*)
 file(GLOB SCENE_PRIMITIVES                       ../../common_files/Scene/Primitives/*.*)
 file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*
@@ -112,7 +110,6 @@ source_group(Scene\\Objects\\Units\\Accessories\\       FILES ${SCENE_OBJECTS_UN
 source_group(Scene\\Objects\\Units\\Accessories\\Engine FILES ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE})
 source_group(Scene\\Objects\\Units\\Ariplane            FILES ${SCENE_OBJECTS_UNITS_AIRPLANE})
 source_group(Scene\\Objects\\Units\\Ground\\Tank        FILES ${SCENE_OBJECTS_UNITS_GROUND_TANK})
-source_group(Scene\\Objects\\Units\\UnitObject          FILES ${SCENE_OBJECTS_UNITS_UNITOBJECT})
 source_group(Scene\\Objects\\Weapons                    FILES ${SCENE_OBJECTS_WEAPONS})
 source_group(Scene\\Primitives                          FILES ${SCENE_PRIMITIVES})
 source_group(Scene\\Terrain                             FILES ${SCENE_TERRAIN})
@@ -125,7 +122,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME
     ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_BUILDINGS}
     ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_ACCESSORIES} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE}
-    ${SCENE_OBJECTS_UNITS_AIRPLANE} ${SCENE_OBJECTS_UNITS_GROUND_TANK} ${SCENE_OBJECTS_UNITS_UNITOBJECT}
+    ${SCENE_OBJECTS_UNITS_AIRPLANE} ${SCENE_OBJECTS_UNITS_GROUND_TANK}
     ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)
