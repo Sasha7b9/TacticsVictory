@@ -12,12 +12,6 @@ GameObjectSpecific *TankSpecific::Create(Tank *tank)
 }
 
 
-void Tank::RegisterObject()
-{
-    TheContext->RegisterFactory<Tank>();
-}
-
-
 void Tank::Update(float timeStep)
 {
     UnitObject::Update(timeStep);
