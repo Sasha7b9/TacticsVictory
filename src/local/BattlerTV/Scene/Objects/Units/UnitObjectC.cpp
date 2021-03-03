@@ -37,10 +37,7 @@ void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
         {
             for (Tank *t : Tank::storage)
             {
-                if (t->GetNode() != node)
-                {
-                    t->GetNode()->GetComponent<TileSelected>()->Disable();
-                }
+                t->GetNode()->GetComponent<TileSelected>()->Disable();
             }
         }
 
