@@ -1,6 +1,6 @@
 // 2021/02/26 16:01:57 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Objects/Units/UnitObject/UnitObject_.h"
+#include "Scene/Objects/Units/UnitObject_.h"
 
 
 class UnitObjectSpecificS : public UnitObjectSpecific

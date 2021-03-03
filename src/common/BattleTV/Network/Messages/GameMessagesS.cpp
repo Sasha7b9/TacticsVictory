@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Network/Game/Connection_.h"
 #include "Network/Game/Messages/GameMessages_.h"
-#include "Scene/Objects/Units/Tank/Tank_.h"
+#include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Scene/Terrain/Terrain_.h"
 
 

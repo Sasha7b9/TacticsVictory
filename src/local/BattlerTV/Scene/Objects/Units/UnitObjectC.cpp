@@ -2,8 +2,8 @@
 #include "stdafx.h"
 #include "Scene/Objects/Units/UnitsEvents_.h"
 #include "Scene/Objects/Units/Accessories/Accessories_.h"
-#include "Scene/Objects/Units/Tank/Tank_.h"
-#include "Scene/Objects/Units/UnitObject/UnitObjectC.h"
+#include "Scene/Objects/Units/Ground/Tank/Tank_.h"
+#include "Scene/Objects/Units/UnitObjectC.h"
 
 
 void UnitObjectSpecific::RegisterObject()

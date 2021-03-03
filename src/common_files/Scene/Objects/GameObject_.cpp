@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Core/Math_.h"
 #include "Scene/Objects/GameObject_.h"
-#include "Scene/Objects/Units/UnitObject/UnitObject_.h"
+#include "Scene/Objects/Units/UnitObject_.h"
 
 
 Vector<GameObject *> GameObject::storage;

@@ -2,9 +2,9 @@
 #include "stdafx.h"
 #include "Network/ServerS.h"
 #include "Network/Game/Messages/GameMessages_.h"
-#include "Scene/Objects/Units/Tank/Tank_.h"
-#include "Scene/Objects/Units/Tank/TankS.h"
-#include "Scene/Objects/Units/UnitObject/UnitObjectS.h"
+#include "Scene/Objects/Units/Ground/Tank/Tank_.h"
+#include "Scene/Objects/Units/Ground/Tank/TankS.h"
+#include "Scene/Objects/Units/UnitObjectS.h"
 
 
 void Tank::RegisterObject()
