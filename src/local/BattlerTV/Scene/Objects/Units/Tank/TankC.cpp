@@ -12,7 +12,7 @@ void Tank::RegisterObject()
 }
 
 
-void TankSpecific::CreateSpecific(Node *node)
+void TankSpecific::Create(Node *node)
 {
     node->CreateComponent<TankSpecificC>(LOCAL);
 }

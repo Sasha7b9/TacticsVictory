@@ -28,11 +28,9 @@ void Tank::Start()
 
     UnitObjectSpecific::Create(node_);
 
-    TankSpecific::CreateSpecific(node_);
+    TankSpecific::Create(node_);
 
     node_->CreateComponent<EngineTank>(LOCAL);
-
-    node_->SetName(String(node_->GetID()));
 }
 
 

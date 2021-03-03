@@ -28,7 +28,7 @@ void Tank::Update(float timeStep)
 }
 
 
-void TankSpecific::CreateSpecific(Node *node)
+void TankSpecific::Create(Node *node)
 {
     node->CreateComponent<TankSpecificS>(LOCAL);
 }

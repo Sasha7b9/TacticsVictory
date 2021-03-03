@@ -21,6 +21,17 @@ public:
 
 
 //----------------------------------------------------------------------------------------------------------------------
+class GameObjectSpecific : public Component
+{
+    URHO3D_OBJECT(GameObjectSpecific, Component);
+
+public:
+
+    GameObjectSpecific(Context *context = TheContext) : Component(context) {}
+};
+
+
+//----------------------------------------------------------------------------------------------------------------------
 class GameObject : public LogicComponent
 {
     URHO3D_OBJECT(GameObject, LogicComponent);

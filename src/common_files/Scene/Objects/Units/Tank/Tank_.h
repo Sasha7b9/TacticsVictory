@@ -4,16 +4,16 @@
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class TankSpecific : public Component
+class TankSpecific : public UnitObjectSpecific
 {
-    URHO3D_OBJECT(TankSpecific, Component);
+    URHO3D_OBJECT(TankSpecific, UnitObjectSpecific);
 
 public:
 
-    TankSpecific(Context *context) : Component(context) {};
+    TankSpecific(Context *context) : UnitObjectSpecific(context) {};
 
     // Создаёт на заданной ноде специфичный для данной среды (сервер/клиент) объект
-    static void CreateSpecific(Node *);
+    static void Create(Node *);
 
     virtual void Update(float /*timeStep*/) {};
 };

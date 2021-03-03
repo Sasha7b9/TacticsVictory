@@ -5,13 +5,13 @@
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class UnitObjectSpecific : public Component
+class UnitObjectSpecific : public GameObjectSpecific
 {
-    URHO3D_OBJECT(UnitObjectSpecific, Component);
+    URHO3D_OBJECT(UnitObjectSpecific, GameObjectSpecific);
 
 public:
 
-    UnitObjectSpecific(Context *context) : Component(context) {}
+    UnitObjectSpecific(Context *context) : GameObjectSpecific(context) {}
 
     static void RegisterObject();
 
