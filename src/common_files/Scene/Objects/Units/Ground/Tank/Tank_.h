@@ -12,7 +12,7 @@ public:
 
     Tank(Context *);
 
-    static void RegisterObject();
+    static void RegisterComponent();
 
     virtual void CreateSpecific() override;
 

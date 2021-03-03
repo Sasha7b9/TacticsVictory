@@ -158,9 +158,9 @@ void Battle::RegistrationComponets()
     SunEngine::RegisterComponent();
     Rotator::RegisterComponent();
     WaveAlgorithm::RegisterComponent();
-    SceneT::RegisterObject();
+    SceneT::RegisterComponent();
 
-    Tank::RegisterObject();
+    Tank::RegisterComponent();
 }
 
 

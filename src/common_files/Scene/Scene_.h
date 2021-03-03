@@ -14,7 +14,7 @@ public:
     SceneT(Context *context = TheContext);
     virtual ~SceneT();
 
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterComponent(Context *context = TheContext);
 
     virtual void Create();
 };

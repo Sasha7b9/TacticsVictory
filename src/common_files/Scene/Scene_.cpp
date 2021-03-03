@@ -18,7 +18,7 @@ SceneT::~SceneT()
 }
 
 
-void SceneT::RegisterObject(Context *context)
+void SceneT::RegisterComponent(Context *context)
 {
     context->RegisterFactory<SceneT>();
 }

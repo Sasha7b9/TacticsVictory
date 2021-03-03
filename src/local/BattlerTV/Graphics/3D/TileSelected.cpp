@@ -15,7 +15,7 @@ TileSelected::~TileSelected()
 }
 
 
-void TileSelected::RegisterObject()
+void TileSelected::RegisterComponent()
 {
     TheContext->RegisterFactory<TileSelected>();
 }

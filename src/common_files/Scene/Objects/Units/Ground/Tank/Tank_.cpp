@@ -14,7 +14,7 @@ Tank::Tank(Context *context) : UnitObject(context)
 }
 
 
-void Tank::RegisterObject()
+void Tank::RegisterComponent()
 {
     TheContext->RegisterFactory<Tank>();
 }

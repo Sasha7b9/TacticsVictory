@@ -11,7 +11,7 @@ public:
 
     TileSelected(Context *context);
 
-    static void RegisterObject();
+    static void RegisterComponent();
 
 private:
 
