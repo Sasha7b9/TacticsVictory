@@ -74,11 +74,11 @@ void ServerS::HandleCliendDisconnected(StringHash, VariantMap &eventData)
 
     Connection *closedConnection = (Connection *)eventData[P_CONNECTION].GetPtr();
 
-    for (uint i = 0; i < connections.Size(); i++)
+    for (ConnectionT &connection : connections)
     {
-        if (connections[i].self == closedConnection)
+        if (connection.self == closedConnection)
         {
-            connections.Remove(connections[i]);
+            connections.Remove(connection);
             break;
         }
     }
