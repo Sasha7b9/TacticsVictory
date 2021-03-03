@@ -66,11 +66,27 @@ void ServerS::HandleClientConnected(StringHash, VariantMap &eventData)
 }
 
 
-void ServerS::HandleCliendDisconnected(StringHash, VariantMap &)
+void ServerS::HandleCliendDisconnected(StringHash, VariantMap &eventData)
 {
-//    LOG_FUNC_ENTER();
+    LOG_FUNC_ENTER();
 
-    TheEngine->Exit();
+    using namespace ClientDisconnected;
+
+    Connection *closedConnection = (Connection *)eventData[P_CONNECTION].GetPtr();
+
+    for (uint i = 0; i < connections.Size(); i++)
+    {
+        if (connections[i].self == closedConnection)
+        {
+            connections.Remove(connections[i]);
+            break;
+        }
+    }
+
+    if (connections.Size() == 0)
+    {
+        TheEngine->Exit();
+    }
 }
 
 
