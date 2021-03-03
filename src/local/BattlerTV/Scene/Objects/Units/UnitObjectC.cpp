@@ -13,6 +13,12 @@ GameObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
 }
 
 
+void UnitObjectSpecificC::Update(float timeStep)
+{
+    GameObjectSpecificC::Update(timeStep);
+}
+
+
 UnitObjectSpecificC::UnitObjectSpecificC(UnitObject *object) : GameObjectSpecificC(object)
 {
     tile = object->GetNode()->CreateComponent<TileSelected>(LOCAL);
@@ -35,20 +41,9 @@ void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
                 {
                     t->GetNode()->GetComponent<TileSelected>()->Disable();
                 }
-                else
-                {
-                    int i = 0;
-                    i++;
-                }
             }
         }
 
         tile->IsEnabled() ? tile->Disable() : tile->Enable();
     }
-}
-
-
-void UnitObjectSpecificC::Update(float timeStep)
-{
-    GameObjectSpecificC::Update(timeStep);
 }

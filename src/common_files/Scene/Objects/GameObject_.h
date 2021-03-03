@@ -78,7 +78,7 @@ protected:
 
     virtual void OnNodeSet(Node *node) override;
 
-    virtual void Start() override;
+    virtual void DelayedStart() override;
 
     virtual void CreateSpecific() = 0;
 

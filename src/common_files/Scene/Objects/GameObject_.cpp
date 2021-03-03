@@ -32,9 +32,9 @@ void GameObject::OnNodeSet(Node *node)
 }
 
 
-void GameObject::Start()
+void GameObject::DelayedStart()
 {
-    LogicComponent::Start();
+    LogicComponent::DelayedStart();
 
     CreateSpecific();
 }
