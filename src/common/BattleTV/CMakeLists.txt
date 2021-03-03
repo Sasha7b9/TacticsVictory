@@ -1,5 +1,7 @@
 project (BattleTV)
 
+#set(CMAKE_UNITY_BUILD ON)
+
 include_directories(.
                     ../../common_files
                     ../../../../Urho3D/generated/${SUB_DIR}/include

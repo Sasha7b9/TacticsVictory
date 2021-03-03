@@ -3,6 +3,8 @@
 #include "Network/Game/Messages/GameMessages_.h"
 #include "Scene/Level_.h"
 #include "Scene/SceneC.h"
+#include "Scene/Cameras/Camera.h"
+#include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 
 
 namespace Message

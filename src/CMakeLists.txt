@@ -7,8 +7,6 @@ project (VictoryU3D)
 
 set (TARGET_NAME VictoryU3D)
 
-set(CMAKE_UNITY_BUILD ON)
-
 if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
     set(SUB_DIR debug)
     add_definitions(-DDEBUG)
