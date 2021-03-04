@@ -7,8 +7,6 @@ class Tank;
 
 class SceneT : public Scene
 {
-    URHO3D_OBJECT(SceneT, Scene);
-
 public:
 
     SceneT(Context *context = TheContext);

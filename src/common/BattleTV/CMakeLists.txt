@@ -48,7 +48,8 @@ file(GLOB NETWORK                                                   Network/*.*
                                                  ../../common_files/Network/Game/*.*)
 file(GLOB NETWORK_MESSAGES                       ../../common_files/Network/Game/Messages/*.*
                                                                     Network/Messages/*.*)
-file(GLOB SCENE                                  ../../common_files/Scene/*.*)
+file(GLOB SCENE                                  ../../common_files/Scene/*.*
+                                                                    Scene/*.*)
 file(GLOB SCENE_OBJECTS                          ../../common_files/Scene/Objects/*.*
                                                                     Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                     ../../common_files/Scene/Objects/Ammo/*.*)

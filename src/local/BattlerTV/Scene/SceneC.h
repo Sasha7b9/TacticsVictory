@@ -6,8 +6,6 @@
 
 class SceneC : public SceneT
 {
-    URHO3D_OBJECT(SceneC, SceneT);
-
 public:
 
     SceneC(Context *context = TheContext);
