@@ -70,3 +70,9 @@ void SceneT::Comporess(VectorBuffer &buffer)
         object->Compress(buffer);
     }
 }
+
+
+void SceneT::Decompress(MemoryBuffer & /*buffer*/)
+{
+
+}

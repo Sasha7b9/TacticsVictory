@@ -110,7 +110,7 @@ void ObjectT::Update(float timeStep)
 }
 
 
-void ObjectT::Compress(VectorBuffer & /*buffer*/)
+void ObjectT::Compress(VectorBuffer &buffer)
 {
 
 }

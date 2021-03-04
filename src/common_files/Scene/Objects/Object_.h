@@ -68,7 +68,9 @@ public:
 
     SharedPtr<ShiftParameters> shift;               // Используется для приведения параметров модели к текущей сцене
 
-    static Vector<ObjectT *> storage;            // Здесь хранятся все объекты типа ObjectT (и их подклассы)
+    static Vector<ObjectT *> storage;               // Здесь хранятся все объекты типа ObjectT (и их подклассы)
+
+    SharedPtr<PhysicsParameters> physics;           // Параметры в физическом мире. Такие как координаты
 
     // Упаковать состояние объекта для передачи по сети
     virtual void Compress(VectorBuffer &buffer);
@@ -97,6 +99,4 @@ protected:
 private:
 
     SharedPtr<StaticModel> staticModel;
-
-    SharedPtr<PhysicsParameters> physics;           // Параметры в физическом мире. Такие как координаты
 };
