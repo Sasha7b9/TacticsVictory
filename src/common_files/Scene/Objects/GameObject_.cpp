@@ -108,3 +108,15 @@ void GameObject::Update(float timeStep)
 
     specific->Update(timeStep);
 }
+
+
+void GameObject::Compress(VectorBuffer & /*buffer*/)
+{
+
+}
+
+
+void GameObject::Decompress(MemoryBuffer & /*buffer*/)
+{
+
+}

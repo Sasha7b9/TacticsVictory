@@ -26,3 +26,15 @@ void UnitObject::Update(float timeStep)
 {
     GameObject::Update(timeStep);
 }
+
+
+void UnitObject::Compress(VectorBuffer &buffer)
+{
+    GameObject::Compress(buffer);
+}
+
+
+void UnitObject::Decompress(MemoryBuffer &buffer)
+{
+    GameObject::Decompress(buffer);
+}

@@ -27,6 +27,10 @@ public:
 
     SharedPtr<EngineT> engine;
 
+    virtual void Compress(VectorBuffer &buffer) override;
+
+    virtual void Decompress(MemoryBuffer &buffer) override;
+
 protected:
 
     UnitObject(Context *);

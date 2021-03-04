@@ -68,6 +68,14 @@ public:
 
     SharedPtr<ShiftParameters> shift;               // Используется для приведения параметров модели к текущей сцене
 
+    static Vector<GameObject *> storage;            // Здесь хранятся все объекты типа GameObject (и их подклассы)
+
+    // Упаковать состояние объекта для передачи по сети
+    virtual void Compress(VectorBuffer &buffer);
+
+    // Распаковать состояние объекта, принятого по сети
+    virtual void Decompress(MemoryBuffer &buffer);
+
 protected:
 
     GameObject(Context *context);
@@ -89,8 +97,6 @@ protected:
 private:
 
     SharedPtr<StaticModel> staticModel;
-
-    static Vector<GameObject *> storage;            // Здесь хранятся все объекты типа GameObject (и их подклассы)
 
     SharedPtr<PhysicsParameters> physics;           // Параметры в физическом мире. Такие как координаты
 };

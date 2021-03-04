@@ -13,4 +13,7 @@ public:
     virtual ~SceneT();
 
     virtual void Create();
+
+    // ”паковать состо€ние сцены в buffer
+    void Comporess(VectorBuffer &buffer);
 };

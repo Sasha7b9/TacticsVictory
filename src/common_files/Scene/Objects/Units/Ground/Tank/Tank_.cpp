@@ -51,3 +51,15 @@ void Tank::Update(float timeStep)
 {
     UnitObject::Update(timeStep);
 }
+
+
+void Tank::Compress(VectorBuffer &buffer)
+{
+    UnitObject::Compress(buffer);
+}
+
+
+void Tank::Decompress(MemoryBuffer &buffer)
+{
+    UnitObject::Decompress(buffer);
+}
