@@ -15,7 +15,7 @@ void Battle::HandlePostUpdate(StringHash, VariantMap& /*eventData*/)
 {
     static uint prevSend = 0;
 
-    if (TheTime->GetSystemTime() - prevSend < 500)
+    if (TheTime->GetSystemTime() - prevSend > 500)
     {
         TheServer->SendToAll(true, Message::SendScene());
 
