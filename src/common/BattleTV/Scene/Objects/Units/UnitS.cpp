@@ -1,9 +1,9 @@
 // 2021/02/26 17:28:47 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Scene/Objects/GameObjectS.h"
+#include "Scene/Objects/ObjectS.h"
 #include "Scene/Objects/Units/Accessories/Accessories_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
-#include "Scene/Objects/Units/UnitObjectS.h"
+#include "Scene/Objects/Units/UnitS.h"
 
 
 GameObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)

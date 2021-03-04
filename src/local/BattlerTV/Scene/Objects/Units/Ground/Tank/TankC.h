@@ -1,6 +1,6 @@
 // 2021/02/25 22:14:38 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Objects/Units/UnitObjectC.h"
+#include "Scene/Objects/Units/UnitC.h"
 
 
 class TankSpecificC : public UnitObjectSpecificC

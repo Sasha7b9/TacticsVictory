@@ -3,7 +3,7 @@
 #include "Network/Game/Messages/GameMessages_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Scene/Objects/Units/Ground/Tank/TankS.h"
-#include "Scene/Objects/Units/UnitObjectS.h"
+#include "Scene/Objects/Units/UnitS.h"
 
 
 void TankSpecificS::Update(float timeStep)

@@ -3,8 +3,8 @@
 #include "Network/ServerS.h"
 #include "Network/Game/Messages/GameMessages_.h"
 #include "Scene/SceneS.h"
-#include "Scene/Objects/GameObject_.h"
-#include "Scene/Objects/GameObjectS.h"
+#include "Scene/Objects/Object_.h"
+#include "Scene/Objects/ObjectS.h"
 
 
 

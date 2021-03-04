@@ -1,7 +1,7 @@
 // 2021/02/26 15:53:20 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Graphics/3D/TileSelected.h"
-#include "Scene/Objects/GameObjectC.h"
+#include "Scene/Objects/ObjectC.h"
 
 
 class UnitObjectSpecificC : public GameObjectSpecificC
