@@ -9,7 +9,7 @@ class UnitObjectSpecificS : public ObjectSpecificS
 
 public:
 
-    UnitObjectSpecificS(UnitObject *object) : ObjectSpecificS(object), unit(object) {}
+    UnitObjectSpecificS(Unit *object) : ObjectSpecificS(object), unit(object) {}
 
 protected:
 
@@ -17,5 +17,5 @@ protected:
 
 private:
 
-    UnitObject *unit = nullptr;
+    Unit *unit = nullptr;
 };

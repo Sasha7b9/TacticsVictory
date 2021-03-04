@@ -6,12 +6,6 @@
 #include "Scene/Objects/Units/UnitS.h"
 
 
-ObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
-{
-    return new UnitObjectSpecificS(object);
-}
-
-
 void UnitObjectSpecificS::Update(float timeStep)
 {
     EngineT *engine = unit->engine;

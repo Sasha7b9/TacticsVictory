@@ -10,7 +10,7 @@ class UnitObjectSpecificC : public ObjectSpecificC
 
 public:
 
-    UnitObjectSpecificC(UnitObject *object);
+    UnitObjectSpecificC(Unit *object);
 
     SharedPtr<TileSelected> tile;
 

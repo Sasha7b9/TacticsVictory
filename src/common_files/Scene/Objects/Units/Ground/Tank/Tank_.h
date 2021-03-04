@@ -4,9 +4,9 @@
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class Tank : public UnitObject
+class Tank : public Unit
 {
-    URHO3D_OBJECT(Tank, UnitObject);
+    URHO3D_OBJECT(Tank, Unit);
 
 public:
 

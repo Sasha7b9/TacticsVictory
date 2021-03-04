@@ -8,7 +8,7 @@
 Vector<Tank *> Tank::storage;
 
 
-Tank::Tank(Context *context) : UnitObject(context)
+Tank::Tank(Context *context) : Unit(context)
 {
     storage.Push(this);
 }
@@ -22,7 +22,7 @@ void Tank::RegisterComponent()
 
 void Tank::Start()
 {
-    UnitObject::Start();
+    Unit::Start();
 
     node_->SetVar(VAR_NODE_IS_FLYING, false);
 
@@ -43,23 +43,23 @@ void Tank::OnNodeSet(Node *node)
         node_ = node->CreateChild(NAME_NODE_TANK);
     }
 
-    UnitObject::OnNodeSet(node ? node_ : node);
+    Unit::OnNodeSet(node ? node_ : node);
 }
 
 
 void Tank::Update(float timeStep)
 {
-    UnitObject::Update(timeStep);
+    Unit::Update(timeStep);
 }
 
 
 void Tank::Compress(VectorBuffer &buffer)
 {
-    UnitObject::Compress(buffer);
+    Unit::Compress(buffer);
 }
 
 
 void Tank::Decompress(MemoryBuffer &buffer)
 {
-    UnitObject::Decompress(buffer);
+    Unit::Decompress(buffer);
 }

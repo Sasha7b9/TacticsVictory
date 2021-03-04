@@ -5,16 +5,16 @@
 #include "Scene/Objects/Units/Unit_.h"
 
 
-Vector<UnitObject *> UnitObject::storage;
+Vector<Unit *> Unit::storage;
 
 
-UnitObject::UnitObject(Context *context) : ObjectT(context)
+Unit::Unit(Context *context) : ObjectT(context)
 {
     storage.Push(this);
 }
 
 
-void UnitObject::Start()
+void Unit::Start()
 {
     ObjectT::Start();
 
@@ -22,19 +22,19 @@ void UnitObject::Start()
 }
 
 
-void UnitObject::Update(float timeStep)
+void Unit::Update(float timeStep)
 {
     ObjectT::Update(timeStep);
 }
 
 
-void UnitObject::Compress(VectorBuffer &buffer)
+void Unit::Compress(VectorBuffer &buffer)
 {
     ObjectT::Compress(buffer);
 }
 
 
-void UnitObject::Decompress(MemoryBuffer &buffer)
+void Unit::Decompress(MemoryBuffer &buffer)
 {
     ObjectT::Decompress(buffer);
 }

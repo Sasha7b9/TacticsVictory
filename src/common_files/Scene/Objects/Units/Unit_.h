@@ -4,24 +4,14 @@
 #include "Scene/Objects/Units/Accessories/Engine/Engine_.h"
 
 
-class UnitObject;
-
-
 //----------------------------------------------------------------------------------------------------------------------
-namespace UnitObjectSpecific
+class Unit : public ObjectT
 {
-    ObjectSpecific *Create(UnitObject *object);
-};
-
-
-//----------------------------------------------------------------------------------------------------------------------
-class UnitObject : public ObjectT
-{
-    URHO3D_OBJECT(UnitObject, ObjectT);
+    URHO3D_OBJECT(Unit, ObjectT);
 
 public:
 
-    static Vector<UnitObject *> storage;
+    static Vector<Unit *> storage;
 
     virtual void Update(float timeStep) override;
 
@@ -33,7 +23,7 @@ public:
 
 protected:
 
-    UnitObject(Context *);
+    Unit(Context *);
 
     virtual void Start() override;
 };

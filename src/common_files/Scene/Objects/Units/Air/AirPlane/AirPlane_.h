@@ -3,9 +3,9 @@
 #include "Scene/Objects/Units/Unit_.h"
 
 
-class AirPlane : public UnitObject
+class AirPlane : public Unit
 {
-    URHO3D_OBJECT(AirPlane, UnitObject);
+    URHO3D_OBJECT(AirPlane, Unit);
 
 public:
 

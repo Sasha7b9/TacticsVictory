@@ -7,19 +7,13 @@
 #include "Scene/Objects/Units/UnitC.h"
 
 
-ObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
-{
-    return new UnitObjectSpecificC(object);
-}
-
-
 void UnitObjectSpecificC::Update(float timeStep)
 {
     ObjectSpecificC::Update(timeStep);
 }
 
 
-UnitObjectSpecificC::UnitObjectSpecificC(UnitObject *object) : ObjectSpecificC(object)
+UnitObjectSpecificC::UnitObjectSpecificC(Unit *object) : ObjectSpecificC(object)
 {
     tile = object->GetNode()->CreateComponent<TileSelected>(LOCAL);
 
@@ -35,7 +29,7 @@ void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
     {
         if (!eventData[P_CTRL_PRESSED].GetBool())
         {
-            for (UnitObject *o : UnitObject::storage)
+            for (Unit *o : Unit::storage)
             {
                 o->GetNode()->GetComponent<TileSelected>()->Disable();
             }
