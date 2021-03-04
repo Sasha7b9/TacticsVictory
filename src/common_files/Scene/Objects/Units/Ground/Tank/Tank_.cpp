@@ -10,7 +10,7 @@ Vector<Tank *> Tank::storage;
 
 Tank::Tank(Context *context) : UnitObject(context)
 {
-
+    storage.Push(this);
 }
 
 
@@ -31,8 +31,6 @@ void Tank::Start()
     LoadFromJSON(JSON_MODEL_TANK);
 
     Normalize();
-
-    storage.Push(this);
 
     engine = new EngineGround(node_);
 }

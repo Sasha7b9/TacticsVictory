@@ -35,9 +35,9 @@ void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
     {
         if (!eventData[P_CTRL_PRESSED].GetBool())
         {
-            for (Tank *t : Tank::storage)
+            for (UnitObject *o : UnitObject::storage)
             {
-                t->GetNode()->GetComponent<TileSelected>()->Disable();
+                o->GetNode()->GetComponent<TileSelected>()->Disable();
             }
         }
 
