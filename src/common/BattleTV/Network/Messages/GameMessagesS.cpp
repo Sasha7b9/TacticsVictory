@@ -15,18 +15,11 @@ namespace Message
 
         MemoryBuffer msg(map[NetworkMessage::P_DATA].GetBuffer());
 
-        if (id == SERV_TEXTSTRING)
+        switch (id)
         {
-            ((TextString *)this)->Handle(msg);
-
-        }
-        else if (id == SERV_REQUEST_FOR_LEVEL)
-        {
-            ((RequestForLevel *)this)->Handle(connection);
-        }
-        else if (id == SERV_KEY_EVENT)
-        {
-            ((KeyEvent *)this)->Handle(msg);
+        case SERV_TEXTSTRING:        ((TextString *)this)->Handle(msg);             break;
+        case SERV_REQUEST_FOR_LEVEL: ((RequestForLevel *)this)->Handle(connection); break;
+        case SERV_KEY_EVENT:         ((KeyEvent *)this)->Handle(msg);               break;
         }
     }
 }

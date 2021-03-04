@@ -13,22 +13,14 @@ namespace Message
     {
         MemoryBuffer msg(map[NetworkMessage::P_DATA].GetBuffer());
 
-        if (id == CLNT_RETURN_LEVEL)
+        switch (id)
         {
-            ((ReturnLevel *)this)->Handle(msg);
+        case CLNT_RETURN_LEVEL:       ((ReturnLevel *)this)->Handle(msg);      break;
+        case CLNT_CREATE_COMPONENT:   ((CreateComponent *)this)->Handle(msg);  break;
+        case CLNT_SEND_TANK_POSITION: ((SendTankPosition *)this)->Handle(msg); break;
+        case CLNT_SEND_SCENE:         ((SendScene *)this)->Handle(msg);        break;
         }
-        else if (id == CLNT_CREATE_COMPONENT)
-        {
-            ((CreateComponent *)this)->Handle(msg);
-        }
-        else if (id == CLNT_SEND_TANK_POSITION)
-        {
-            ((SendTankPosition *)this)->Handle(msg);
-        }
-        else if (id == CLNT_SEND_SCENE)
-        {
-            ((SendScene *)this)->Handle(msg);
-        }
+
     }
 }
 
