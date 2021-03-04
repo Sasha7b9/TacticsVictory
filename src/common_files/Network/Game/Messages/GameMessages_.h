@@ -66,11 +66,11 @@ namespace Message
 
     struct CreateGameObject : public Message
     {
-        CreateGameObject(const StringHash &type, const String &name, const Vector3 &position) :
+        CreateGameObject(uint idNode, const StringHash &hashTypeObject, const Vector3 &position) :
             Message(CLNT_CREATE_GAME_OBJECT)
         {
-            buffer.WriteStringHash(type);
-            buffer.WriteString(name);
+            buffer.WriteUInt(idNode);
+            buffer.WriteStringHash(hashTypeObject);
             buffer.WriteVector3(position);
         }
 

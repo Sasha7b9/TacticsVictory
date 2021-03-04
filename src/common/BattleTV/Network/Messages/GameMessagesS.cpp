@@ -31,9 +31,13 @@ void Message::RequestForLevel::Handle(const ConnectionT &connection)
 
     connection.SendMessage(true, ReturnLevel());
 
-    for (Tank *tank : Tank::storage)
+    for (ObjectT *object : ObjectT::storage)
     {
-        connection.SendMessage(true, CreateGameObject("Tank", tank->GetNode()->GetName(), tank->GetNode()->GetPosition()));
+        connection.SendMessage(true,
+            CreateGameObject(
+                object->GetNode()->GetID(),
+                StringHash(object->GetTypeName()),
+                object->GetNode()->GetPosition()));
     }
 }
 

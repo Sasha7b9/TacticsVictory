@@ -4,6 +4,7 @@
 #include "Scene/Level_.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
+#include "Scene/Objects/ObjectC.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 
 
@@ -52,28 +53,15 @@ void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 
 void Message::CreateGameObject::Handle(MemoryBuffer &msg)
 {
-    static int counter = 0;
-
-    counter++;
-
-    if (counter % 1000 == 0)
-    {
-        LOGINFOF("Recived %d components", counter);
-    }
-
-    StringHash type = msg.ReadStringHash();
-    String name = msg.ReadString();
+    uint idNode = msg.ReadUInt();
+    StringHash hashTypeObject = msg.ReadStringHash();
     Vector3 position = msg.ReadVector3();
 
-    Component *component = TheScene->CreateChild("", LOCAL)->CreateComponent(type, LOCAL);
+    ObjectT *object = (ObjectT *)TheScene->CreateChild("", LOCAL)->CreateComponent(hashTypeObject, LOCAL);
 
-    component->GetNode()->SetName(name);
-    component->GetNode()->SetPosition(position);
+    object->GetNode()->SetPosition(position);
 
-    if (type == "Tank")
-    {
-        TheTerrain->PutIn((Tank *)component, (uint)position.z_, (uint)position.x_);
-    }
+    ObjectSpecificC::remoteStorage[idNode] = object;
 }
 
 

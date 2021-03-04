@@ -4,6 +4,9 @@
 #include "Scene/Objects/ObjectC.h"
 
 
+HashMap<uint, ObjectT *> ObjectSpecificC::remoteStorage;
+
+
 ObjectSpecific *ObjectSpecific::Create(ObjectT *object)
 {
     return new ObjectSpecificC(object);
