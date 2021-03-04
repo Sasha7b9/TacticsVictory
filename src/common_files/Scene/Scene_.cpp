@@ -79,9 +79,9 @@ void SceneT::Decompress(MemoryBuffer &buffer)
         StringHash typeHash = buffer.ReadStringHash();
         String nameNode = buffer.ReadString();
 
-        Node *node = GetChild(nameNode);
+        Node *node = GetChild(nameNode, true);
 
-        Tank *component = (Tank *)node->GetParentComponent(typeHash);
+//        Tank *component = (Tank *)node->GetParentComponent(typeHash);
 
         node->SetPosition(buffer.ReadVector3());
 

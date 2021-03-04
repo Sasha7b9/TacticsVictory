@@ -117,20 +117,11 @@ void ObjectT::Update(float timeStep)
 
 void ObjectT::Compress(VectorBuffer &buffer)
 {
-    StringHash hash(GetTypeName());
-    String name(GetNode()->GetName());
-    Vector3 position(GetNode()->GetPosition());
-
     buffer.WriteStringHash(StringHash(GetTypeName()));  // Сохраняем имя нашего компонента
 
-    buffer.WriteString(GetNode()->GetName());               // Сохранямем имя ноды (по нему производится поиск нужного компонента)
+    buffer.WriteString(node_->GetName());               // Сохранямем имя ноды (по нему производится поиск нужного компонента)
 
-    buffer.WriteVector3(GetNode()->GetPosition());          // Сохраняем позицию в мире
-
-//    if (buffer.GetSize() < 50)
-//    {
-//        LOGINFOF("%s %s %s", hash.ToString().CString(), name.CString(), position.ToString().CString());
-//    }
+    buffer.WriteVector3(node_->GetPosition());          // Сохраняем позицию в мире
 }
 
 
