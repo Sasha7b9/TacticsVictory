@@ -68,9 +68,9 @@ void Mouse::ProcessMouseRight()
 {
     ThePathIndicator->Disable();
 
-    Drawable *object = TheCursor->GetRaycastNode();
-
-    if (object && object->GetNode()->GetName() == NAME_NODE_TANK)
-    {
-    }
+//    Drawable *object = TheCursor->GetRaycastNode();
+//
+//    if (object && object->GetNode()->GetName() == NAME_NODE_TANK)
+//    {
+//    }
 }

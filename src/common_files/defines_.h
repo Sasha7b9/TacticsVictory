@@ -10,7 +10,6 @@
 #define VAR_NODE_IS_FLYING      "isFlaying"
 
 #define NAME_NODE_CAMERA_TARGET "CameraTarget"
-#define NAME_NODE_TANK          "Tank"
 #define NAME_NODE_TERRAIN       "Terrain"
 #define NAME_NODE_TILE_PATH     "TilePath"
 

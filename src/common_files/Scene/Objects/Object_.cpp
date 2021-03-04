@@ -29,6 +29,11 @@ ObjectT::ObjectT(Context *context) : LogicComponent(context)
 void ObjectT::OnNodeSet(Node *node)
 {
     LogicComponent::OnNodeSet(node);
+
+    if (node)
+    {
+        node->SetVar(VAR_OBJECT_TYPE_NAME, GetTypeName());
+    }
 }
 
 
@@ -110,7 +115,7 @@ void ObjectT::Update(float timeStep)
 }
 
 
-void ObjectT::Compress(VectorBuffer &buffer)
+void ObjectT::Compress(VectorBuffer & /*buffer*/)
 {
 
 }

@@ -40,7 +40,7 @@ void Tank::OnNodeSet(Node *node)
 {
     if (node)
     {
-        node_ = node->CreateChild(NAME_NODE_TANK);
+        node_ = node->CreateChild();
     }
 
     Unit::OnNodeSet(node ? node_ : node);
