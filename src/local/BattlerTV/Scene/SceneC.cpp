@@ -47,7 +47,10 @@ void SceneT::Decompress(MemoryBuffer &buffer)
 
         ObjectT *object = ObjectSpecificC::remoteStorage[id];
 
-        object->GetNode()->SetPosition(position);
+        if (object)
+        {
+            object->GetNode()->SetPosition(position);
+        }
     }
 
     LOGINFOF("time receive scene %d ms", TheTime->GetSystemTime() - start);
