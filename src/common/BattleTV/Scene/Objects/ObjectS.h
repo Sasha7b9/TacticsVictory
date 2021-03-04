@@ -6,11 +6,11 @@
 class ObjectT;
 
 
-class GameObjectSpecificS : public ObjectSpecific
+class ObjectSpecificS : public ObjectSpecific
 {
 public:
 
-    GameObjectSpecificS(ObjectT *object);
+    ObjectSpecificS(ObjectT *object);
 
     virtual void Update(float timeStep) override;
 

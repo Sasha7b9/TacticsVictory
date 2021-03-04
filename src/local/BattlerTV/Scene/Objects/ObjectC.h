@@ -2,11 +2,11 @@
 #pragma once
 
 
-class GameObjectSpecificC : public ObjectSpecific
+class ObjectSpecificC : public ObjectSpecific
 {
-    URHO3D_OBJECT(GameObjectSpecificC, ObjectSpecific);
+    URHO3D_OBJECT(ObjectSpecificC, ObjectSpecific);
 
 public:
 
-    GameObjectSpecificC(ObjectT *object);
+    ObjectSpecificC(ObjectT *object);
 };

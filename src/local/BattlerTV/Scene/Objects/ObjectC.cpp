@@ -6,11 +6,11 @@
 
 ObjectSpecific *ObjectSpecific::Create(ObjectT *object)
 {
-    return new GameObjectSpecificC(object);
+    return new ObjectSpecificC(object);
 }
 
 
-GameObjectSpecificC::GameObjectSpecificC(ObjectT *object) : ObjectSpecific(object)
+ObjectSpecificC::ObjectSpecificC(ObjectT *object) : ObjectSpecific(object)
 {
 
 }

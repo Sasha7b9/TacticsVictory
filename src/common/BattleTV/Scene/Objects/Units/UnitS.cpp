@@ -25,5 +25,5 @@ void UnitObjectSpecificS::Update(float timeStep)
         engine->GiveCommand((CommandEngine::E)(direct + 1));
     }
 
-    GameObjectSpecificS::Update(timeStep);
+    ObjectSpecificS::Update(timeStep);
 }

@@ -15,11 +15,11 @@ ObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
 
 void UnitObjectSpecificC::Update(float timeStep)
 {
-    GameObjectSpecificC::Update(timeStep);
+    ObjectSpecificC::Update(timeStep);
 }
 
 
-UnitObjectSpecificC::UnitObjectSpecificC(UnitObject *object) : GameObjectSpecificC(object)
+UnitObjectSpecificC::UnitObjectSpecificC(UnitObject *object) : ObjectSpecificC(object)
 {
     tile = object->GetNode()->CreateComponent<TileSelected>(LOCAL);
 

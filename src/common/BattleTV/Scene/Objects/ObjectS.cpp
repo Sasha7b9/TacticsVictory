@@ -10,17 +10,17 @@
 
 ObjectSpecific *ObjectSpecific::Create(ObjectT *object)
 {
-    return new GameObjectSpecificS(object);
+    return new ObjectSpecificS(object);
 }
 
 
-GameObjectSpecificS::GameObjectSpecificS(ObjectT *object) : ObjectSpecific(object)
+ObjectSpecificS::ObjectSpecificS(ObjectT *object) : ObjectSpecific(object)
 {
 
 }
 
 
-void GameObjectSpecificS::Update(float)
+void ObjectSpecificS::Update(float)
 {
     if (TheTime->GetElapsedTime() >= timeNextTimeSend)
     {

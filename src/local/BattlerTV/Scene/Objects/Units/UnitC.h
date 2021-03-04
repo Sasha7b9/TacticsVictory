@@ -4,9 +4,9 @@
 #include "Scene/Objects/ObjectC.h"
 
 
-class UnitObjectSpecificC : public GameObjectSpecificC
+class UnitObjectSpecificC : public ObjectSpecificC
 {
-    URHO3D_OBJECT(UnitObjectSpecificC, GameObjectSpecificC);
+    URHO3D_OBJECT(UnitObjectSpecificC, ObjectSpecificC);
 
 public:
 
