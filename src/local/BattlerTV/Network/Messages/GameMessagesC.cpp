@@ -16,7 +16,7 @@ namespace Message
         switch (id)
         {
         case CLNT_RETURN_LEVEL:       ((ReturnLevel *)this)->Handle(msg);      break;
-        case CLNT_CREATE_COMPONENT:   ((CreateComponent *)this)->Handle(msg);  break;
+        case CLNT_CREATE_GAME_OBJECT: ((CreateComponent *)this)->Handle(msg);  break;
         case CLNT_SEND_TANK_POSITION: ((SendTankPosition *)this)->Handle(msg); break;
         case CLNT_SEND_SCENE:         ((SendScene *)this)->Handle(msg);        break;
         }

@@ -66,7 +66,8 @@ namespace Message
 
     struct CreateComponent : public Message
     {
-        CreateComponent(const StringHash &type, const String &name, const Vector3 &position) : Message(CLNT_CREATE_COMPONENT)
+        CreateComponent(const StringHash &type, const String &name, const Vector3 &position) :
+            Message(CLNT_CREATE_GAME_OBJECT)
         {
             buffer.WriteStringHash(type);
             buffer.WriteString(name);

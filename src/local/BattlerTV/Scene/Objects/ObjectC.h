@@ -9,4 +9,6 @@ class ObjectSpecificC : public ObjectSpecific
 public:
 
     ObjectSpecificC(ObjectT *object);
+
+    static HashMap<uint, ObjectT *> remoteStorage;  // Здесь хранятся игровые объекты сцены по id сцены на сервере
 };
