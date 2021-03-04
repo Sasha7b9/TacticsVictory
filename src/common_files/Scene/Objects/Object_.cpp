@@ -117,7 +117,7 @@ void ObjectT::Update(float timeStep)
 
 void ObjectT::Compress(VectorBuffer &buffer)
 {
-    buffer.WriteString(GetTypeName());              // Сохраняем имя нашего компонента
+    buffer.WriteString(GetName());              // Сохраняем имя нашего компонента
 
     buffer.WriteString(node_->GetName());           // Сохранямем имя ноды (по нему производится поиск нужного компонента)
 
