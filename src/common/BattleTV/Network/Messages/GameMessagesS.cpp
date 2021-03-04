@@ -27,8 +27,6 @@ namespace Message
 
 void Message::RequestForLevel::Handle(const ConnectionT &connection)
 {
-    LOG_FUNC_ENTER();
-
     Vector3 position(10.0f, 10.0f, 10.0f);
 
     connection.SendMessage(true, ReturnLevel());
