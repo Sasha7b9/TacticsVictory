@@ -115,13 +115,17 @@ void ObjectT::Update(float timeStep)
 }
 
 
-void ObjectT::Compress(VectorBuffer & /*buffer*/)
+void ObjectT::Compress(VectorBuffer &buffer)
 {
+    buffer.WriteString(GetTypeName());              // Сохраняем имя нашего компонента
 
+    buffer.WriteString(node_->GetName());           // Сохранямем имя ноды (по нему производится поиск нужного компонента)
+
+    buffer.WriteVector3(node_->GetPosition());      // Сохраняем позицию в мире
 }
 
 
-void ObjectT::Decompress(MemoryBuffer & /*buffer*/)
+void ObjectT::Decompress(MemoryBuffer &buffer)
 {
-
+    GetNode()->SetPosition(buffer.ReadVector3());
 }

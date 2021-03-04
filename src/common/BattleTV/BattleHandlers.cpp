@@ -12,5 +12,7 @@ void Battle::HandleUpdate(StringHash, VariantMap& /*eventData*/)
 
 void Battle::HandlePostUpdate(StringHash, VariantMap& /*eventData*/)
 {
+    VectorBuffer buffer;
 
+    TheScene->Comporess(buffer);
 }

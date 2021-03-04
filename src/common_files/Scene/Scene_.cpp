@@ -72,7 +72,17 @@ void SceneT::Comporess(VectorBuffer &buffer)
 }
 
 
-void SceneT::Decompress(MemoryBuffer & /*buffer*/)
+void SceneT::Decompress(MemoryBuffer &buffer)
 {
+    while (!buffer.IsEof())
+    {
+        String typeName = buffer.ReadString();
+        String nameNode = buffer.ReadString();
 
+        Node *node = GetChild(nameNode);
+
+        LogicComponent *component = (LogicComponent *)node->GetComponent(typeName);
+
+        ((ObjectT *)component)->Decompress(buffer);
+    }
 }
