@@ -40,8 +40,6 @@ void ObjectT::OnNodeSet(Node *node)
 void ObjectT::Start()
 {
     LogicComponent::Start();
-
-    node_->SetName(String("node name") + String(node_->GetID()));
 }
 
 
@@ -133,9 +131,16 @@ void ObjectT::Compress(VectorBuffer &buffer)
 
     static bool first = true;
 
+    static int counter = 0;
+   
+    counter++;
+
     if (first)
     {
-        first = false;
+        if (counter > 5)
+        {
+            first = false;
+        }
 
         LOGINFOF("nested = %d", NestingDepth());
     }
@@ -144,15 +149,33 @@ void ObjectT::Compress(VectorBuffer &buffer)
 
 void ObjectT::Decompress(MemoryBuffer &buffer)
 {
-    node_->SetPosition(buffer.ReadVector3());
-
     static bool first = true;
+
+    static Node *logged = nullptr;
+
+    if (first)
+    {
+        logged = node_;
+    }
+
+    Vector3 position = buffer.ReadVector3();
+
+    node_->SetPosition(position);
 
     if (first)
     {
         first = false;
 
         LOGINFOF("nested = %d", NestingDepth());
+    }
+
+    if (node_ == logged)
+    {
+        LOGINFOF("%s position %d %s", node_->GetName().CString(), logged->GetID(), position.ToString().CString());
+    }
+    else
+    {
+        LOGINFOF("Anoter node");
     }
 }
 

@@ -67,7 +67,7 @@ void Message::CreateComponent::Handle(MemoryBuffer &msg)
     String name = msg.ReadString();
     Vector3 position = msg.ReadVector3();
 
-    Component *component = TheScene->CreateComponent(type, LOCAL);
+    Component *component = TheScene->CreateChild("", LOCAL)->CreateComponent(type, LOCAL);
 
     component->GetNode()->SetName(name);
     component->GetNode()->SetPosition(position);
