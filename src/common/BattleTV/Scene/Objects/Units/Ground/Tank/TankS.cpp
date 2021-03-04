@@ -8,7 +8,7 @@
 
 void TankSpecificS::Update(float timeStep)
 {
-    UnitObjectSpecificS::Update(timeStep);
+    UnitSpecificS::Update(timeStep);
 }
 
 

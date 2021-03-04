@@ -6,7 +6,7 @@
 #include "Scene/Objects/Units/UnitS.h"
 
 
-void UnitObjectSpecificS::Update(float timeStep)
+void UnitSpecificS::Update(float timeStep)
 {
     EngineT *engine = unit->engine;
 

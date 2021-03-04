@@ -3,13 +3,13 @@
 #include "Scene/Objects/ObjectS.h"
 
 
-class UnitObjectSpecificS : public ObjectSpecificS
+class UnitSpecificS : public ObjectSpecificS
 {
-    URHO3D_OBJECT(UnitObjectSpecificS, ObjectSpecificS);
+    URHO3D_OBJECT(UnitSpecificS, ObjectSpecificS);
 
 public:
 
-    UnitObjectSpecificS(Unit *object) : ObjectSpecificS(object), unit(object) {}
+    UnitSpecificS(Unit *object) : ObjectSpecificS(object), unit(object) {}
 
 protected:
 
