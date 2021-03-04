@@ -9,8 +9,8 @@ enum Messages
     SERV_KEY_EVENT,
 
     CLNT_RETURN_LEVEL,              // В этом сообщении сервер возрващает уровень
-    CLNT_CREATE_COMPONENT,
+    CLNT_CREATE_COMPONENT,          // Создание нового компонента
     CLNT_SEND_OBJECT_STATE,
-    CLNT_SEND_TANK_POSITION,
+    CLNT_SEND_TANK_POSITION,        // Передаёт позицию танка
     CLNT_SEND_SCENE                 // Посылает состояние сцены
 };

@@ -1,6 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Battle.h"
+#include "Network/Game/Messages/GameMessages_.h"
 #include "Scene/Scene_.h"
 
 
@@ -12,7 +13,12 @@ void Battle::HandleUpdate(StringHash, VariantMap& /*eventData*/)
 
 void Battle::HandlePostUpdate(StringHash, VariantMap& /*eventData*/)
 {
-    VectorBuffer buffer;
+    static uint prevSend = 0;
 
-    TheScene->Comporess(buffer);
+    if (TheTime->GetSystemTime() - prevSend < 500)
+    {
+        TheServer->SendToAll(true, Message::SendScene());
+
+        prevSend = TheTime->GetSystemTime();
+    }
 }
