@@ -1,7 +1,7 @@
 // 2021/02/27 18:48:41 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Core/Math_.h"
-#include "Scene/Scene_.h"
+#include "Scene/SceneS.h"
 #include "Scene/Terrain/LayerTerrain_.h"
 
 

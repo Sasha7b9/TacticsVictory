@@ -4,7 +4,7 @@
 class Battle;
 class Level;
 class LogT;
-class SceneT;
+class SceneS;
 class ServerS;
 class Settings;
 class TerrainT;
@@ -12,7 +12,7 @@ class TerrainT;
 extern Battle     *TheBattle;
 extern Level      *TheLevel;
 extern LogT       *TheLog;
-extern SceneT     *TheScene;
+extern SceneS     *TheScene;
 extern ServerS    *TheServer;
 extern Settings   *TheSet;
 extern TerrainT   *TheTerrain;

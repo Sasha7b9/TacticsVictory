@@ -6,7 +6,7 @@
 #include "Game/Path/WaveAlgorithm_.h"
 #include "Network/ServerS.h"
 #include "Scene/Level_.h"
-#include "Scene/Scene_.h"
+#include "Scene/SceneS.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Utils/Log_.h"
 #include "Utils/Settings.h"
@@ -86,7 +86,7 @@ void Battle::Start()
 
     RegistrationComponets();
 
-    TheScene = new SceneT();
+    TheScene = new SceneS();
 
     TheLevel = new Level();
 
