@@ -33,7 +33,7 @@ void Message::RequestForLevel::Handle(const ConnectionT &connection)
 
     for (Tank *tank : Tank::storage)
     {
-        connection.SendMessage(true, CreateComponent("Tank", tank->GetNode()->GetName(), tank->GetNode()->GetPosition()));
+        connection.SendMessage(true, CreateGameObject("Tank", tank->GetNode()->GetName(), tank->GetNode()->GetPosition()));
     }
 }
 

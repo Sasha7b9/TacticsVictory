@@ -16,7 +16,7 @@ namespace Message
         switch (id)
         {
         case CLNT_RETURN_LEVEL:       ((ReturnLevel *)this)->Handle(msg);      break;
-        case CLNT_CREATE_GAME_OBJECT: ((CreateComponent *)this)->Handle(msg);  break;
+        case CLNT_CREATE_GAME_OBJECT: ((CreateGameObject *)this)->Handle(msg); break;
         case CLNT_SEND_TANK_POSITION: ((SendTankPosition *)this)->Handle(msg); break;
         case CLNT_SEND_SCENE:         ((SendScene *)this)->Handle(msg);        break;
         }
@@ -50,7 +50,7 @@ void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 }
 
 
-void Message::CreateComponent::Handle(MemoryBuffer &msg)
+void Message::CreateGameObject::Handle(MemoryBuffer &msg)
 {
     static int counter = 0;
 
