@@ -19,9 +19,9 @@ public:
     // Хранилище всех созданных объектов типа "Tank"
     static Vector<Tank *> storage;
 
-    virtual void Compress(VectorBuffer &buffer) override;
+    virtual void Compress(VectorBuffer &buffer, bool log = false) override;
 
-    virtual void Decompress(MemoryBuffer &buffer) override;
+    virtual void Decompress(MemoryBuffer &buffer, bool log = false) override;
 
 private:
 

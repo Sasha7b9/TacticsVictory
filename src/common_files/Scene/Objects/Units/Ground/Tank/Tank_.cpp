@@ -38,7 +38,7 @@ void Tank::OnNodeSet(Node *node)
 {
     Unit::OnNodeSet(node ? node_ : node);
 
-    node_->SetName(String("node name") + String(node_->GetID()));
+    node_->SetName(String("node_name_") + String(node_->GetID()));
 }
 
 
@@ -48,13 +48,13 @@ void Tank::Update(float timeStep)
 }
 
 
-void Tank::Compress(VectorBuffer &buffer)
+void Tank::Compress(VectorBuffer &buffer, bool log)
 {
-    Unit::Compress(buffer);
+    Unit::Compress(buffer, log);
 }
 
 
-void Tank::Decompress(MemoryBuffer &buffer)
+void Tank::Decompress(MemoryBuffer &buffer, bool log)
 {
-    Unit::Decompress(buffer);
+    Unit::Decompress(buffer, log);
 }

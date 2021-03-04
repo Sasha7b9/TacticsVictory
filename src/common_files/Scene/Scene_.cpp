@@ -65,19 +65,32 @@ void SceneT::Create()
 
 void SceneT::Comporess(VectorBuffer &buffer)
 {
-    for (ObjectT *object : ObjectT::storage)
+    LOGINFOF("");
+
+    for (uint i = 0; i < ObjectT::storage.Size(); i++)
     {
-        object->Compress(buffer);
+        ObjectT::storage[i]->Compress(buffer, i < 10);
     }
 }
 
 
 void SceneT::Decompress(MemoryBuffer &buffer)
 {
+    int counter = 0;
+
+    LOGINFOF("");
+
+    uint start = TheTime->GetSystemTime();
+
     while (!buffer.IsEof())
     {
         StringHash typeHash = buffer.ReadStringHash();
         String nameNode = buffer.ReadString();
+
+        if (counter < 10)
+        {
+            LOGINFOF("%s %s", typeHash.ToString().CString(), nameNode.CString());
+        }
 
         Node *node = GetChild(nameNode, true);
 
@@ -87,8 +100,12 @@ void SceneT::Decompress(MemoryBuffer &buffer)
 
             if (component)
             {
-                component->Decompress(buffer);
+                component->Decompress(buffer, counter < 10);
             }
         }
+
+        counter++;
     }
+
+    LOGINFOF("Time receive scene %d ms", TheTime->GetSystemTime() - start);
 }

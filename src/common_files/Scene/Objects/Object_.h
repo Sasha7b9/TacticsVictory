@@ -73,10 +73,10 @@ public:
     SharedPtr<PhysicsParameters> physics;           // Параметры в физическом мире. Такие как координаты
 
     // Упаковать состояние объекта для передачи по сети
-    virtual void Compress(VectorBuffer &buffer);
+    virtual void Compress(VectorBuffer &buffer, bool log = false);
 
     // Распаковать состояние объекта, принятого по сети
-    virtual void Decompress(MemoryBuffer &buffer);
+    virtual void Decompress(MemoryBuffer &buffer, bool log = false);
 
 protected:
 

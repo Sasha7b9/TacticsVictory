@@ -22,12 +22,12 @@ ObjectSpecificS::ObjectSpecificS(ObjectT *object) : ObjectSpecific(object)
 
 void ObjectSpecificS::Update(float)
 {
-//    if (TheTime->GetElapsedTime() >= timeNextTimeSend)
-//    {
-//        Vector3 position = node->GetPosition();
-//
-//        TheServer->SendToAll(false, Message::SendTankPosition(node->GetName(), node->GetPosition()));
-//
-//        timeNextTimeSend = TheTime->GetElapsedTime() + 0.1f;
-//    }
+    if (TheTime->GetElapsedTime() >= timeNextTimeSend)
+    {
+        Vector3 position = node->GetPosition();
+
+        TheServer->SendToAll(false, Message::SendTankPosition(node->GetName(), node->GetPosition()));
+
+        timeNextTimeSend = TheTime->GetElapsedTime() + 0.1f;
+    }
 }
