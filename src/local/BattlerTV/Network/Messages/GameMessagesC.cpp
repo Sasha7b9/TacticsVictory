@@ -38,8 +38,6 @@ void Message::Message::Send(bool reliable)
 
 void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 {
-    LOG_FUNC_ENTER();
-
     TheLevel = new Level();
 
     TheLevel->Load(msg);
