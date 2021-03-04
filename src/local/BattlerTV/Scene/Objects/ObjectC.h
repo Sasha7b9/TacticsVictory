@@ -8,5 +8,5 @@ class GameObjectSpecificC : public GameObjectSpecific
 
 public:
 
-    GameObjectSpecificC(GameObject *object);
+    GameObjectSpecificC(ObjectT *object);
 };

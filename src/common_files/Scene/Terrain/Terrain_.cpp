@@ -191,7 +191,7 @@ SegmentTerrain* TerrainT::GetSegmentForCoord(uint row, uint col)
 }
 
 
-void TerrainT::PutIn(GameObject *object, uint colZ, uint rowX)
+void TerrainT::PutIn(ObjectT *object, uint colZ, uint rowX)
 {
     float height = GetHeight(colZ, rowX);
 

@@ -18,7 +18,7 @@ ContextMenuUnit::ContextMenuUnit(Context *context) :
 }
 
 
-void ContextMenuUnit::Create(GameObject *object_)
+void ContextMenuUnit::Create(ObjectT *object_)
 {
     object = object_;
 }

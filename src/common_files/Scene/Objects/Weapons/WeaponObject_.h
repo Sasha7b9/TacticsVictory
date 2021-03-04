@@ -3,9 +3,9 @@
 #include "Scene/Objects/Object_.h"
 
 
-class WeaponObject : public GameObject
+class WeaponObject : public ObjectT
 {
-    URHO3D_OBJECT(WeaponObject, GameObject);
+    URHO3D_OBJECT(WeaponObject, ObjectT);
 
 public:
 

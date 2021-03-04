@@ -5,10 +5,10 @@
 #include "Scene/Objects/Units/Unit_.h"
 
 
-Vector<GameObject *> GameObject::storage;
+Vector<ObjectT *> ObjectT::storage;
 
 
-GameObjectSpecific::GameObjectSpecific(GameObject *_object) : Object(TheContext),
+GameObjectSpecific::GameObjectSpecific(ObjectT *_object) : Object(TheContext),
     object(_object),
     node(_object->GetNode())
 {
@@ -16,7 +16,7 @@ GameObjectSpecific::GameObjectSpecific(GameObject *_object) : Object(TheContext)
 
 
 
-GameObject::GameObject(Context *context) : LogicComponent(context)
+ObjectT::ObjectT(Context *context) : LogicComponent(context)
 {
     shift = new ShiftParameters();
 
@@ -26,13 +26,13 @@ GameObject::GameObject(Context *context) : LogicComponent(context)
 }
 
 
-void GameObject::OnNodeSet(Node *node)
+void ObjectT::OnNodeSet(Node *node)
 {
     LogicComponent::OnNodeSet(node);
 }
 
 
-void GameObject::DelayedStart()
+void ObjectT::DelayedStart()
 {
     LogicComponent::DelayedStart();
 
@@ -40,7 +40,7 @@ void GameObject::DelayedStart()
 }
 
 
-void GameObject::LoadFromJSON(const String &fileName)
+void ObjectT::LoadFromJSON(const String &fileName)
 {
     JSONFile *file(TheCache->GetResource<JSONFile>(fileName));
 
@@ -66,7 +66,7 @@ void GameObject::LoadFromJSON(const String &fileName)
 }
 
 
-void GameObject::Normalize(float k)
+void ObjectT::Normalize(float k)
 {
     Vector3 pos = physics->GetPosition();
     node_->SetPosition(Vector3::ZERO);
@@ -96,13 +96,13 @@ Vector3 PhysicsParameters::GetPosition() const
 }
 
 
-void GameObject::SetPosition(const Vector3 &position)
+void ObjectT::SetPosition(const Vector3 &position)
 {
     node_->SetPosition(position + shift->position);
 }
 
 
-void GameObject::Update(float timeStep)
+void ObjectT::Update(float timeStep)
 {
     LogicComponent::Update(timeStep);
 
@@ -110,13 +110,13 @@ void GameObject::Update(float timeStep)
 }
 
 
-void GameObject::Compress(VectorBuffer & /*buffer*/)
+void ObjectT::Compress(VectorBuffer & /*buffer*/)
 {
 
 }
 
 
-void GameObject::Decompress(MemoryBuffer & /*buffer*/)
+void ObjectT::Decompress(MemoryBuffer & /*buffer*/)
 {
 
 }

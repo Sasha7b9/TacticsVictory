@@ -8,7 +8,7 @@
 Vector<UnitObject *> UnitObject::storage;
 
 
-UnitObject::UnitObject(Context *context) : GameObject(context)
+UnitObject::UnitObject(Context *context) : ObjectT(context)
 {
     storage.Push(this);
 }
@@ -16,7 +16,7 @@ UnitObject::UnitObject(Context *context) : GameObject(context)
 
 void UnitObject::Start()
 {
-    GameObject::Start();
+    ObjectT::Start();
 
     node_->SetVar(VAR_NODE_IS_UNIT, true);
 }
@@ -24,17 +24,17 @@ void UnitObject::Start()
 
 void UnitObject::Update(float timeStep)
 {
-    GameObject::Update(timeStep);
+    ObjectT::Update(timeStep);
 }
 
 
 void UnitObject::Compress(VectorBuffer &buffer)
 {
-    GameObject::Compress(buffer);
+    ObjectT::Compress(buffer);
 }
 
 
 void UnitObject::Decompress(MemoryBuffer &buffer)
 {
-    GameObject::Decompress(buffer);
+    ObjectT::Decompress(buffer);
 }

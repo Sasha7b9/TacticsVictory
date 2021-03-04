@@ -25,13 +25,13 @@ class PhysicsParameters : public Object
 
 public:
 
-    PhysicsParameters(GameObject *_object) : Object(TheContext), object(_object) {}
+    PhysicsParameters(ObjectT *_object) : Object(TheContext), object(_object) {}
 
     Vector3 GetPosition() const;                // Возвращает реальную позицию в мире
 
 private:
 
-    GameObject *object = nullptr;
+    ObjectT *object = nullptr;
 };
 
 
@@ -43,24 +43,24 @@ class GameObjectSpecific : public Object
 
 public:
 
-    static GameObjectSpecific *Create(GameObject *object);
+    static GameObjectSpecific *Create(ObjectT *object);
 
     virtual void Update(float /*timeStep*/) {};
 
 protected:
 
-    GameObjectSpecific(GameObject *_object);
+    GameObjectSpecific(ObjectT *_object);
 
-    GameObject *object = nullptr;
+    ObjectT *object = nullptr;
 
     Node *node = nullptr;
 };
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class GameObject : public LogicComponent
+class ObjectT : public LogicComponent
 {
-    URHO3D_OBJECT(GameObject, LogicComponent);
+    URHO3D_OBJECT(ObjectT, LogicComponent);
 
 public:
 
@@ -68,7 +68,7 @@ public:
 
     SharedPtr<ShiftParameters> shift;               // Используется для приведения параметров модели к текущей сцене
 
-    static Vector<GameObject *> storage;            // Здесь хранятся все объекты типа GameObject (и их подклассы)
+    static Vector<ObjectT *> storage;            // Здесь хранятся все объекты типа ObjectT (и их подклассы)
 
     // Упаковать состояние объекта для передачи по сети
     virtual void Compress(VectorBuffer &buffer);
@@ -78,7 +78,7 @@ public:
 
 protected:
 
-    GameObject(Context *context);
+    ObjectT(Context *context);
 
     void LoadFromJSON(const String &file);
 

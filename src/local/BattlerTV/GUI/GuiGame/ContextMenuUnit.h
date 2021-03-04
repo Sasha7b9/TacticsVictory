@@ -3,7 +3,7 @@
 #include "GUI/Controls/Window_.h"
 
 
-class GameObject;
+class ObjectT;
 class Label;
 
 
@@ -13,11 +13,11 @@ class ContextMenuUnit : public WindowT
 
 public:
     ContextMenuUnit(Context *context = TheContext);
-    void Create(GameObject *object);
+    void Create(ObjectT *object);
 
 private:
     SharedPtr<Label> title;
-    GameObject *object = nullptr; //-V122
+    ObjectT *object = nullptr; //-V122
 
     void CreateForUnit();
     void HandleToggledFiedView(StringHash, VariantMap&);

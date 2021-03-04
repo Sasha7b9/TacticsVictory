@@ -3,14 +3,14 @@
 #include "Scene/Objects/Object_.h"
 
 
-class GameObject;
+class ObjectT;
 
 
 class GameObjectSpecificS : public GameObjectSpecific
 {
 public:
 
-    GameObjectSpecificS(GameObject *object);
+    GameObjectSpecificS(ObjectT *object);
 
     virtual void Update(float timeStep) override;
 

@@ -8,13 +8,13 @@
 
 
 
-GameObjectSpecific *GameObjectSpecific::Create(GameObject *object)
+GameObjectSpecific *GameObjectSpecific::Create(ObjectT *object)
 {
     return new GameObjectSpecificS(object);
 }
 
 
-GameObjectSpecificS::GameObjectSpecificS(GameObject *object) : GameObjectSpecific(object)
+GameObjectSpecificS::GameObjectSpecificS(ObjectT *object) : GameObjectSpecific(object)
 {
 
 }

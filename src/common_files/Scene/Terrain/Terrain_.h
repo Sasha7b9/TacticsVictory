@@ -4,7 +4,7 @@
 #include "Scene/Terrain/CubeTerrain_.h"
 
 
-class GameObject;
+class ObjectT;
 class SegmentTerrain;
 
 
@@ -46,7 +46,7 @@ public:
     // "Положить" игровой объект в точку {colZ, rowX}. Объект будет на поверхности ланшафта. Если объект может находить-
     // ся над поверхностью, его координата Y не изменится, если он находится над землёй. Иначе так же как и для
     // остальных
-    void PutIn(GameObject *object, uint colZ, uint rowX);
+    void PutIn(ObjectT *object, uint colZ, uint rowX);
 
     TPlane GetIntersectionPlane(Ray &ray);
 

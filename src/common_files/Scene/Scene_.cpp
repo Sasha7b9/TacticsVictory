@@ -65,7 +65,7 @@ void SceneT::Create()
 
 void SceneT::Comporess(VectorBuffer &buffer)
 {
-    for (GameObject *object : GameObject::storage)
+    for (ObjectT *object : ObjectT::storage)
     {
         object->Compress(buffer);
     }

@@ -15,9 +15,9 @@ namespace UnitObjectSpecific
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class UnitObject : public GameObject
+class UnitObject : public ObjectT
 {
-    URHO3D_OBJECT(UnitObject, GameObject);
+    URHO3D_OBJECT(UnitObject, ObjectT);
 
 public:
 
