@@ -81,10 +81,14 @@ void SceneT::Decompress(MemoryBuffer &buffer)
 
         Node *node = GetChild(nameNode, true);
 
-//        Tank *component = (Tank *)node->GetParentComponent(typeHash);
+        if (node)
+        {
+            Tank *component = (Tank *)node->GetParent()->GetComponent(typeHash, true);
 
-        node->SetPosition(buffer.ReadVector3());
-
-//        component->Decompress(buffer);
+            if (component)
+            {
+                component->Decompress(buffer);
+            }
+        }
     }
 }

@@ -33,7 +33,16 @@ void ObjectT::OnNodeSet(Node *node)
     if (node)
     {
         node->SetVar(VAR_OBJECT_TYPE_NAME, GetTypeName());
+        node_ = node;
     }
+}
+
+
+void ObjectT::Start()
+{
+    LogicComponent::Start();
+
+    node_->SetName(String(node_->GetID()));
 }
 
 
@@ -127,5 +136,5 @@ void ObjectT::Compress(VectorBuffer &buffer)
 
 void ObjectT::Decompress(MemoryBuffer &buffer)
 {
-    node_->SetPosition(buffer.ReadVector3());
+    node_->GetParent()->SetPosition(buffer.ReadVector3());
 }
