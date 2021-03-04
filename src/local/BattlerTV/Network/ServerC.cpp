@@ -43,19 +43,21 @@ void ServerC::HandleMessage(StringHash, VariantMap & eventData)
 
 void ServerC::HandleServerConnected(StringHash, VariantMap &)
 {
+    LOGINFOF("%s : Connect to server is ok", __FUNCTION__);
+
     Message::RequestForLevel().Send(true);
 }
 
 
 void ServerC::HandleServerDisconnected(StringHash, VariantMap &)
 {
-    LOG_FUNC_ENTER();
+    LOGINFOF("%s : Disconnect from server", __FUNCTION__);
 }
 
 
 void ServerC::HandleConnectFailed(StringHash, VariantMap &)
 {
-    LOGERRORF("Failed connected to server %s:%d", address.CString(), port);
+    LOGERRORF("%s : failed connection", __FUNCTION__);
 
     Connect();
 }
