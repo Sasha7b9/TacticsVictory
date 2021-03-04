@@ -7,7 +7,7 @@
 #include "Scene/Objects/Units/UnitC.h"
 
 
-GameObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
+ObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
 {
     return new UnitObjectSpecificC(object);
 }

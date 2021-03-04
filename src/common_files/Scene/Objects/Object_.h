@@ -37,19 +37,19 @@ private:
 
 //----------------------------------------------------------------------------------------------------------------------
 // Специфичные для клент/серверных объектов параметры
-class GameObjectSpecific : public Object
+class ObjectSpecific : public Object
 {
-    URHO3D_OBJECT(GameObjectSpecific, Object);
+    URHO3D_OBJECT(ObjectSpecific, Object);
 
 public:
 
-    static GameObjectSpecific *Create(ObjectT *object);
+    static ObjectSpecific *Create(ObjectT *object);
 
     virtual void Update(float /*timeStep*/) {};
 
 protected:
 
-    GameObjectSpecific(ObjectT *_object);
+    ObjectSpecific(ObjectT *_object);
 
     ObjectT *object = nullptr;
 
@@ -92,7 +92,7 @@ protected:
 
     virtual void Update(float time) override;
 
-    SharedPtr<GameObjectSpecific> specific;         // Клиент/сервер специфичные параметры
+    SharedPtr<ObjectSpecific> specific;         // Клиент/сервер специфичные параметры
 
 private:
 

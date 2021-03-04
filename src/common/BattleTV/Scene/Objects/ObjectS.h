@@ -6,7 +6,7 @@
 class ObjectT;
 
 
-class GameObjectSpecificS : public GameObjectSpecific
+class GameObjectSpecificS : public ObjectSpecific
 {
 public:
 

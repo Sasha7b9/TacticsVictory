@@ -2,9 +2,9 @@
 #pragma once
 
 
-class GameObjectSpecificC : public GameObjectSpecific
+class GameObjectSpecificC : public ObjectSpecific
 {
-    URHO3D_OBJECT(GameObjectSpecificC, GameObjectSpecific);
+    URHO3D_OBJECT(GameObjectSpecificC, ObjectSpecific);
 
 public:
 

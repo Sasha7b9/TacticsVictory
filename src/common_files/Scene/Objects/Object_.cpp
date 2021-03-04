@@ -8,7 +8,7 @@
 Vector<ObjectT *> ObjectT::storage;
 
 
-GameObjectSpecific::GameObjectSpecific(ObjectT *_object) : Object(TheContext),
+ObjectSpecific::ObjectSpecific(ObjectT *_object) : Object(TheContext),
     object(_object),
     node(_object->GetNode())
 {

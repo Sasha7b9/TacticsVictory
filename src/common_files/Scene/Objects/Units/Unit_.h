@@ -10,7 +10,7 @@ class UnitObject;
 //----------------------------------------------------------------------------------------------------------------------
 namespace UnitObjectSpecific
 {
-    GameObjectSpecific *Create(UnitObject *object);
+    ObjectSpecific *Create(UnitObject *object);
 };
 
 

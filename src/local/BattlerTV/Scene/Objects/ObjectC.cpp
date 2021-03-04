@@ -4,13 +4,13 @@
 #include "Scene/Objects/ObjectC.h"
 
 
-GameObjectSpecific *GameObjectSpecific::Create(ObjectT *object)
+ObjectSpecific *ObjectSpecific::Create(ObjectT *object)
 {
     return new GameObjectSpecificC(object);
 }
 
 
-GameObjectSpecificC::GameObjectSpecificC(ObjectT *object) : GameObjectSpecific(object)
+GameObjectSpecificC::GameObjectSpecificC(ObjectT *object) : ObjectSpecific(object)
 {
 
 }

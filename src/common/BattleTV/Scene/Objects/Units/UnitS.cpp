@@ -6,7 +6,7 @@
 #include "Scene/Objects/Units/UnitS.h"
 
 
-GameObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
+ObjectSpecific *UnitObjectSpecific::Create(UnitObject *object)
 {
     return new UnitObjectSpecificS(object);
 }
