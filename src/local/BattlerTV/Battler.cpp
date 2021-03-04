@@ -204,7 +204,6 @@ void Battler::RegistrationComponets()
     SunEngine::RegisterComponent();
     Rotator::RegisterComponent();
     WaveAlgorithm::RegisterComponent();
-    SceneT::RegisterComponent();
     TileSelected::RegisterComponent();
 
     Tank::RegisterComponent();
