@@ -18,12 +18,6 @@ SceneT::~SceneT()
 }
 
 
-void SceneT::RegisterComponent(Context *context)
-{
-    context->RegisterFactory<SceneT>();
-}
-
-
 void SceneT::Create()
 {
     CreateComponent<Octree>(LOCAL);
