@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Network/Game/Connection_.h"
 #include "Network/Game/Messages/GameMessages_.h"
+#include "Scene/SceneS.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Scene/Terrain/Terrain_.h"
 
@@ -61,4 +62,10 @@ Message::ReturnLevel::ReturnLevel() : Message(CLNT_RETURN_LEVEL)
             buffer.WriteFloat(TheTerrain->GetHeight(col, row));
         }
     }
+}
+
+
+Message::SendScene::SendScene() : Message(CLNT_SEND_SCENE)
+{
+    TheScene->Comporess(buffer);
 }

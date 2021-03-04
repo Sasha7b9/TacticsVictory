@@ -54,7 +54,7 @@ namespace Message
     struct KeyEvent : public Message
     {
         KeyEvent(Key key,                                       // Код клавиши
-            bool press) : Message(SERV_KEY_EVENT)                // true - нажатие, false, отпускание
+            bool press) : Message(SERV_KEY_EVENT)               // true - нажатие, false, отпускание
         {
             buffer.WriteInt(key);
             buffer.WriteBool(press);
@@ -84,6 +84,13 @@ namespace Message
             buffer.WriteString(name);
             buffer.WriteVector3(position);
         }
+
+        void Handle(MemoryBuffer &);
+    };
+
+    struct SendScene : public Message
+    {
+        SendScene();
 
         void Handle(MemoryBuffer &);
     };

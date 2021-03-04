@@ -25,6 +25,10 @@ namespace Message
         {
             ((SendTankPosition *)this)->Handle(msg);
         }
+        else if (id == CLNT_SEND_SCENE)
+        {
+            ((SendScene *)this)->Handle(msg);
+        }
     }
 }
 
@@ -93,4 +97,10 @@ void Message::SendTankPosition::Handle(MemoryBuffer &msg)
     {
         node->SetPosition(msg.ReadVector3());
     }
+}
+
+
+void Message::SendScene::Handle(MemoryBuffer &msg)
+{
+    TheScene->Decompress(msg);
 }
