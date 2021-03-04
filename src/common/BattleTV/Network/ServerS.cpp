@@ -34,8 +34,6 @@ bool ServerS::Start(uint16 port)
 
 void ServerS::HandleMessage(StringHash, VariantMap &eventData)
 {
-    LOG_FUNC_ENTER();
-
     int id = eventData[NetworkMessage::P_MESSAGEID].GetInt();
 
     Message::Message(id).Handle(eventData);
@@ -56,11 +54,11 @@ void ServerS::HandleServerDisconnected(StringHash, VariantMap &)
 
 void ServerS::HandleClientConnected(StringHash, VariantMap &eventData)
 {
-    LOG_FUNC_ENTER();
-
     using namespace ClientConnected;
 
     Connection *newConnection = (Connection *)eventData[P_CONNECTION].GetPtr();
+
+    LOGINFOF("%s : client %s is connected", __FUNCTION__, newConnection->ToString().CString());
 
     connections.Push(ConnectionT(newConnection));
 }
@@ -68,11 +66,11 @@ void ServerS::HandleClientConnected(StringHash, VariantMap &eventData)
 
 void ServerS::HandleCliendDisconnected(StringHash, VariantMap &eventData)
 {
-    LOG_FUNC_ENTER();
-
     using namespace ClientDisconnected;
 
     Connection *closedConnection = (Connection *)eventData[P_CONNECTION].GetPtr();
+
+    LOGINFOF("%s : client %s is disconnected", __FUNCTION__, closedConnection->ToString().CString());
 
     for (ConnectionT &connection : connections)
     {
@@ -92,7 +90,7 @@ void ServerS::HandleCliendDisconnected(StringHash, VariantMap &eventData)
 
 void ServerS::HandleConnectFailed(StringHash, VariantMap &)
 {
-//    LOG_FUNC_ENTER();
+    LOGERRORF("%s : failed connection");
 }
 
 

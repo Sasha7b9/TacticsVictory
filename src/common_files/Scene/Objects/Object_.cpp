@@ -166,16 +166,16 @@ void ObjectT::Decompress(MemoryBuffer &buffer)
     {
         first = false;
 
-        LOGINFOF("nested = %d", NestingDepth());
+//        LOGINFOF("nested = %d", NestingDepth());
     }
 
     if (node_ == logged)
     {
-        LOGINFOF("%s position %d %s", node_->GetName().CString(), logged->GetID(), position.ToString().CString());
+//        LOGINFOF("%s position %d %s", node_->GetName().CString(), logged->GetID(), position.ToString().CString());
     }
     else
     {
-        LOGINFOF("Anoter node");
+//        LOGINFOF("Anoter node");
     }
 }
 
@@ -188,7 +188,7 @@ int ObjectT::NestingDepth()
 
     while (node != nullptr)
     {
-        LOGINFOF("%d : %s", node->GetID(), node->GetName().CString());
+//        LOGINFOF("%d : %s", node->GetID(), node->GetName().CString());
 
         node = node->GetParent();
         result++;
