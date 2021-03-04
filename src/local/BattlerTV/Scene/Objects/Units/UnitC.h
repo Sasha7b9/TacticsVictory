@@ -4,13 +4,13 @@
 #include "Scene/Objects/ObjectC.h"
 
 
-class UnitObjectSpecificC : public ObjectSpecificC
+class UnitSpecificC : public ObjectSpecificC
 {
-    URHO3D_OBJECT(UnitObjectSpecificC, ObjectSpecificC);
+    URHO3D_OBJECT(UnitSpecificC, ObjectSpecificC);
 
 public:
 
-    UnitObjectSpecificC(Unit *object);
+    UnitSpecificC(Unit *object);
 
     SharedPtr<TileSelected> tile;
 

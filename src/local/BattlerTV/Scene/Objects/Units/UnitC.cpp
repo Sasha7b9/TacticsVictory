@@ -7,21 +7,21 @@
 #include "Scene/Objects/Units/UnitC.h"
 
 
-void UnitObjectSpecificC::Update(float timeStep)
+void UnitSpecificC::Update(float timeStep)
 {
     ObjectSpecificC::Update(timeStep);
 }
 
 
-UnitObjectSpecificC::UnitObjectSpecificC(Unit *object) : ObjectSpecificC(object)
+UnitSpecificC::UnitSpecificC(Unit *object) : ObjectSpecificC(object)
 {
     tile = object->GetNode()->CreateComponent<TileSelected>(LOCAL);
 
-    SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(UnitObjectSpecificC, HandleMouseClick));
+    SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(UnitSpecificC, HandleMouseClick));
 }
 
 
-void UnitObjectSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
+void UnitSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
 {
     using namespace UnitMouseClick;
 

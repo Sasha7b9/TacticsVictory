@@ -3,13 +3,13 @@
 #include "Scene/Objects/Units/UnitC.h"
 
 
-class TankSpecificC : public UnitObjectSpecificC
+class TankSpecificC : public UnitSpecificC
 {
-    URHO3D_OBJECT(TankSpecificC, UnitObjectSpecificC);
+    URHO3D_OBJECT(TankSpecificC, UnitSpecificC);
 
 public:
 
-    TankSpecificC(Tank *tank) : UnitObjectSpecificC(tank) {}
+    TankSpecificC(Tank *tank) : UnitSpecificC(tank) {}
 
     virtual void Update(float timeStep) override;
 };
