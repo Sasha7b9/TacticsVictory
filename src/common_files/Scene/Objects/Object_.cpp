@@ -33,7 +33,6 @@ void ObjectT::OnNodeSet(Node *node)
     if (node)
     {
         node->SetVar(VAR_OBJECT_TYPE_NAME, GetTypeName());
-        node_ = node;
     }
 }
 
@@ -42,7 +41,7 @@ void ObjectT::Start()
 {
     LogicComponent::Start();
 
-    node_->SetName(String(node_->GetID()));
+    node_->SetName(String("node name") + String(node_->GetID()));
 }
 
 
@@ -131,10 +130,46 @@ void ObjectT::Compress(VectorBuffer &buffer)
     buffer.WriteString(node_->GetName());               // Сохранямем имя ноды (по нему производится поиск нужного компонента)
 
     buffer.WriteVector3(node_->GetPosition());          // Сохраняем позицию в мире
+
+    static bool first = true;
+
+    if (first)
+    {
+        first = false;
+
+        LOGINFOF("nested = %d", NestingDepth());
+    }
 }
 
 
 void ObjectT::Decompress(MemoryBuffer &buffer)
 {
-    node_->GetParent()->SetPosition(buffer.ReadVector3());
+    node_->SetPosition(buffer.ReadVector3());
+
+    static bool first = true;
+
+    if (first)
+    {
+        first = false;
+
+        LOGINFOF("nested = %d", NestingDepth());
+    }
+}
+
+
+int ObjectT::NestingDepth()
+{
+    int result = 0;
+
+    Node *node = node_;
+
+    while (node != nullptr)
+    {
+        LOGINFOF("%d : %s", node->GetID(), node->GetName().CString());
+
+        node = node->GetParent();
+        result++;
+    }
+
+    return result;
 }

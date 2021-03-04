@@ -96,6 +96,9 @@ protected:
 
     virtual void Update(float time) override;
 
+    // Возвращает глубину вложенности node_ (относительно корневой ноды сцены)
+    int NestingDepth();
+
     SharedPtr<ObjectSpecific> specific;         // Клиент/сервер специфичные параметры
 
 private:
