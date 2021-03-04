@@ -38,6 +38,8 @@ void SceneC::Create()
 
 void SceneT::Decompress(MemoryBuffer &buffer)
 {
+    uint start = TheTime->GetSystemTime();
+
     while (!buffer.IsEof())
     {
         uint id = buffer.ReadUInt();
@@ -47,4 +49,6 @@ void SceneT::Decompress(MemoryBuffer &buffer)
 
         object->GetNode()->SetPosition(position);
     }
+
+    LOGINFOF("time receive scene %d ms", TheTime->GetSystemTime() - start);
 }
