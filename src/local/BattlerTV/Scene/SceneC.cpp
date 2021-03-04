@@ -5,6 +5,7 @@
 #include "GUI/Cursor.h"
 #include "GUI/GuiGame/WindowTarget.h"
 #include "Scene/SceneC.h"
+#include "Scene/Objects/ObjectC.h"
 
 
 SceneC::SceneC(Context *context) : SceneT(context)
@@ -32,4 +33,18 @@ void SceneC::Create()
     TheWindowTarget = new WindowTarget();
     TheUIRoot->AddChild(TheWindowTarget);
     TheWindowTarget->SetVisible(false);
+}
+
+
+void SceneT::Decompress(MemoryBuffer &buffer)
+{
+    while (!buffer.IsEof())
+    {
+        uint id = buffer.ReadUInt();
+        Vector3 position = buffer.ReadVector3();
+
+        ObjectT *object = ObjectSpecificC::remoteStorage[id];
+
+        object->GetNode()->SetPosition(position);
+    }
 }

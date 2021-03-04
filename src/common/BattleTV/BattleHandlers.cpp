@@ -13,16 +13,16 @@ void Battle::HandleUpdate(StringHash, VariantMap& /*eventData*/)
 
 void Battle::HandlePostUpdate(StringHash, VariantMap& /*eventData*/)
 {
-//    static uint prevSend = 0;
-//
-//    if (TheTime->GetSystemTime() - prevSend > 1000)
-//    {
-//        uint start = TheTime->GetSystemTime();
-//
-//        TheServer->SendToAll(true, Message::SendScene());
-//
-//        LOGINFOF("Time send scene %d ms", TheTime->GetSystemTime() - start);
-//
-//        prevSend = TheTime->GetSystemTime();
-//    }
+    static uint prevSend = 0;
+
+    if (TheTime->GetSystemTime() - prevSend > 500)
+    {
+        uint start = TheTime->GetSystemTime();
+
+        TheServer->SendToAll(true, Message::SendScene());
+
+        LOGINFOF("Time send scene %d ms", TheTime->GetSystemTime() - start);
+
+        prevSend = TheTime->GetSystemTime();
+    }
 }

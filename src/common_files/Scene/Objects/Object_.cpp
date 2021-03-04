@@ -121,35 +121,21 @@ void ObjectT::Update(float timeStep)
 }
 
 
-void ObjectT::Compress(VectorBuffer &buffer, bool log)
+void ObjectT::Compress(VectorBuffer &buffer, bool /*log*/)
 {
-    StringHash typeHash(GetTypeName());
-    String name(node_->GetName());
-    Vector3 position(node_->GetPosition());
+    uint id = node_->GetID();
+    Vector3 position = node_->GetPosition();
 
-    buffer.WriteStringHash(typeHash);   // Сохраняем имя нашего компонента
-
-    buffer.WriteString(name);           // Сохранямем имя ноды (по нему производится поиск нужного компонента)
-
-    buffer.WriteVector3(position);      // Сохраняем позицию в мире
-
-    if (log)
-    {
-        LOGINFOF("%s : typeHash:%s nameNode:%s %s", __FUNCTION__, typeHash.ToString().CString(), name.CString(), position.ToString().CString());
-    }
+    buffer.WriteUInt(id);
+    buffer.WriteVector3(position);
 }
 
 
-void ObjectT::Decompress(MemoryBuffer &buffer, bool log)
+void ObjectT::Decompress(MemoryBuffer &buffer, bool /*log*/)
 {
     Vector3 position = buffer.ReadVector3();
 
     node_->SetPosition(position);
-
-    if (log)
-    {
-        LOGINFOF("%s : %s", __FUNCTION__, position.ToString().CString());
-    }
 }
 
 
