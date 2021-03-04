@@ -158,7 +158,6 @@ void Battle::RegistrationComponets()
     SunEngine::RegisterComponent();
     Rotator::RegisterComponent();
     WaveAlgorithm::RegisterComponent();
-    SceneT::RegisterComponent();
 
     Tank::RegisterComponent();
 }
