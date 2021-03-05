@@ -12,7 +12,7 @@ EngineT::EngineT(ObjectT *_object) : Object(TheContext), object(_object)
 
 void EngineT::GiveCommand(CommandEngine::E command)
 {
-    calculator.Calculate(object, command, algorithm);
+    calculator.Calculate(*object->physics, command, algorithm);
 }
 
 

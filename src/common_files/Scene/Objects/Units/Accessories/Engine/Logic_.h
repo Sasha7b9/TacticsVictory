@@ -58,7 +58,7 @@ class EngineCalculator
 {
 public:
 
-    void Calculate(ObjectT *object, CommandEngine::E command, EngineAlgorithm &algorithm);
+    void Calculate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm);
 
 private:
 

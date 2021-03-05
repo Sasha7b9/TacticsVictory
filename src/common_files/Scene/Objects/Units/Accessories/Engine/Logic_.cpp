@@ -5,11 +5,11 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-void EngineCalculator::Calculate(ObjectT *object, CommandEngine::E command, EngineAlgorithm &algorithm)
+void EngineCalculator::Calculate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm)
 {
-    CalculateRotate(*object->physics, command, algorithm);
+    CalculateRotate(physics, command, algorithm);
 
-    CalculateMovement(*object->physics, command, algorithm);
+    CalculateMovement(physics, command, algorithm);
 }
 
 
