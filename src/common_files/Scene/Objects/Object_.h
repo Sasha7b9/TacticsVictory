@@ -159,4 +159,6 @@ private:
 public:
 
     uint GetID() const { return node_->GetID(); }
+
+    Node *_GetNode() const { return Component::GetNode(); }
 };

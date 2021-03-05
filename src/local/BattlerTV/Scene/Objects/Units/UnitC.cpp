@@ -14,7 +14,7 @@ void UnitSpecificC::Update(float timeStep)
 
 UnitSpecificC::UnitSpecificC(Unit *object) : ObjectSpecificC(object)
 {
-    tile = object->GetNode()->CreateComponent<TileSelected>(LOCAL);
+    tile = object->_GetNode()->CreateComponent<TileSelected>(LOCAL);
 
     SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(UnitSpecificC, HandleMouseClick));
 }
@@ -24,13 +24,13 @@ void UnitSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
 {
     using namespace UnitMouseClick;
 
-    if (eventData[P_NODE].GetPtr() == object->GetNode())
+    if (eventData[P_NODE].GetPtr() == object->_GetNode())
     {
         if (!eventData[P_CTRL_PRESSED].GetBool())
         {
             for (Unit *o : Unit::storage)
             {
-                o->GetNode()->GetComponent<TileSelected>()->Disable();
+                o->_GetNode()->GetComponent<TileSelected>()->Disable();
             }
         }
 
