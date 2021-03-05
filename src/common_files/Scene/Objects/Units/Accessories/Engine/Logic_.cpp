@@ -91,7 +91,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(ObjectT *object, float ti
 
     Vector3 currentPos = object->GetNode()->GetPosition();
 
-    float dist = engine.params->max.speedMove * timeStep;    // Ќужно проехать
+    float dist = object->physics->max.SpeedMove() * timeStep;    // Ќужно проехать
 
     float delta = (step.end - currentPos).Length();         // ќсталось до конечной точки
 
@@ -125,8 +125,8 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(ObjectT *object, float time
     float angleNeed = direction.Angle(dirToTarget);         // Ќа такой угол нам нужно повернутьс€, чтобы смотреть на
                                                             // целевую точку
 
-    float angleCan = engine.params->max.speedRotate * timeStep;  // ћаксимальный угол, на который можно повернутьс€
-                                                                // в этом кадре
+    float angleCan = object->physics->max.SpeedRotate() * timeStep;     // ћаксимальный угол, на который можно повернутьс€
+                                                                        // в этом кадре
 
     if (angleCan >= angleNeed)
     {

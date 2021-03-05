@@ -12,16 +12,7 @@ public:
 
     EngineParameters() : Object(TheContext) {}
 
-    struct Max                           // ¬ этой структуре будут хранитьс€ максимально возможные значени€ параметров
-    {
-        float speedMove = 5.0f;             // ћаксимальна€ скорость движени€
-        float speedRotate = 60.0f;          // ћаксимальна€ скорость поворота
-    };
 
-    Max max;
-
-    Vector3 speedMove = Vector3::ZERO;      // ”становивша€с€ скорость движени€
-    Vector3 speedRotate = Vector3::ZERO;    // ”становивша€с€ скорость вращени€
 };
 
 

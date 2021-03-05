@@ -36,9 +36,25 @@ public:
     // Возвращает направление движения (даже если объект неподвижен)
     Vector3 GetDirection() const; 
 
+    Vector3 GetSpeedMove() const { return speedMove; }
+
+    Vector3 GetSpeedRotate() const { return speedRotate; }
+
+    struct Max                           // В этой структуре будут храниться максимально возможные значения параметров
+    {
+        float SpeedMove() const { return speedMove; }
+        float SpeedRotate() const { return speedRotate; }
+    private:
+        float speedMove = 5.0f;             // Максимальная скорость движения
+        float speedRotate = 60.0f;          // Максимальная скорость поворота
+    } max;
+
 private:
 
     ObjectT *object = nullptr;
+
+    Vector3 speedMove = Vector3::ZERO;      // Установившаяся скорость движения
+    Vector3 speedRotate = Vector3::ZERO;    // Установившаяся скорость вращения
 };
 
 
