@@ -31,6 +31,8 @@ struct RotationPP
 
     void Set(const Quaternion &rotation);
 
+    void Change(const Quaternion &delta);
+
 private:
 
     ObjectT *object = nullptr;

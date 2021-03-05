@@ -31,3 +31,9 @@ void RotationPP::Set(const Quaternion &rotation)
 {
     object->GetObjectNode()->SetRotation(rotation);
 }
+
+
+void RotationPP::Change(const Quaternion &delta)
+{
+    object->GetObjectNode()->Rotate(delta);
+}
