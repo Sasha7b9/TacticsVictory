@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Scene/Objects/Object_.h"
 #include "Scene/Objects/ObjectC.h"
+#include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 
 
 HashMap<uint, ObjectT *> ObjectSpecificC::remoteStorage;
