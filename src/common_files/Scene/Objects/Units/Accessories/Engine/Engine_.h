@@ -4,19 +4,6 @@
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class EngineParameters : public Object
-{
-    URHO3D_OBJECT(EngineParameters, Object);
-
-public:
-
-    EngineParameters() : Object(TheContext) {}
-
-
-};
-
-
-//----------------------------------------------------------------------------------------------------------------------
 class EngineT : public Object
 {
     URHO3D_OBJECT(EngineT, Object);
@@ -36,8 +23,6 @@ public:
     EngineCalculator calculator;    // Занимается расчётом алгоритма движения
     EngineAlgorithm  algorithm;     // Собственно алгоритм движения
     EngineExecutor   executor;      // Собственно выполнитель алгоритма движения
-
-    SharedPtr<EngineParameters> params;
 
 protected:
 

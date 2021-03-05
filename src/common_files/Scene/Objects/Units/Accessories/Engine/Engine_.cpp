@@ -6,7 +6,7 @@
 
 EngineT::EngineT(ObjectT *_object) : Object(TheContext), object(_object)
 {
-    params = new EngineParameters();
+
 };
 
 
