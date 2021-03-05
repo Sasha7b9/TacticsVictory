@@ -37,8 +37,6 @@ void Tank::Start()
 void Tank::OnNodeSet(Node *node)
 {
     Unit::OnNodeSet(node ? node_ : node);
-
-    node_->SetName(String("node_name_") + String(node_->GetID()));
 }
 
 
