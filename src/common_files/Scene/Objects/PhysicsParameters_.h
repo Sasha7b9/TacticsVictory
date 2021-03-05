@@ -5,57 +5,73 @@
 class ObjectT;
 
 
+//----------------------------------------------------------------------------------------------------------------------
 struct MovementPP
 {
     MovementPP(ObjectT *_object) : object(_object) {}
-    Vector3 GetSpeed() const {
-        return speedMove;
-    };
+
+    Vector3 GetSpeed() const { return speedMove; };
+
 private:
+
     ObjectT *object = nullptr;
+
     Vector3 speedMove = Vector3::ZERO;      // Установившаяся скорость движения
 };
 
 
+//----------------------------------------------------------------------------------------------------------------------
 struct RotationPP
 {
     RotationPP(ObjectT *_object) : object(_object) {}
-    Vector3 GetSpeed() const {
-        return speedRotate;
-    };
+
+    Vector3 GetSpeed() const { return speedRotate; };
+
 private:
+
     ObjectT *object = nullptr;
+
     Vector3 speedRotate = Vector3::ZERO;    // Установившаяся скорость вращения
 };
 
 
+//----------------------------------------------------------------------------------------------------------------------
 struct DirectionPP
 {
     DirectionPP(ObjectT *_object) : object(_object) {}
+
     Vector3 Get() const;                    // Возвращает направление движения (даже если объект неподвижен)
+
 private:
+
     ObjectT *object = nullptr;
 };
 
+
+//----------------------------------------------------------------------------------------------------------------------
 struct PositionPP
 {
     PositionPP(ObjectT *_object) : object(_object) {}
+
     Vector3 Get() const;                    // Возвращает реальную позицию в мире
+
     void Set(const Vector3 &position);      // Устанавливает позицию в мире с учётом смещения
+
 private:
+
     ObjectT *object = nullptr;
 };
 
 
+//----------------------------------------------------------------------------------------------------------------------
 struct MaxPP                              // В этой структуре будут храниться максимально возможные значения параметров
 {
-    float SpeedMove() const {
-        return speedMove;
-    }
-    float SpeedRotate() const {
-        return speedRotate;
-    }
+    float SpeedMove() const {  return speedMove; }
+
+    float SpeedRotate() const { return speedRotate; }
+
 private:
+
     float speedMove = 5.0f;                 // Максимальная скорость движения
     float speedRotate = 60.0f;              // Максимальная скорость поворота
 };
