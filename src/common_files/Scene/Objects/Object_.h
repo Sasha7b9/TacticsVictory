@@ -40,6 +40,11 @@ public:
 
     Vector3 GetSpeedRotate() const { return speedRotate; }
 
+    struct Position
+    {
+        Vector3 Get() const;
+    };
+
     struct Max                           // ¬ этой структуре будут хранитьс€ максимально возможные значени€ параметров
     {
         float SpeedMove() const { return speedMove; }
@@ -47,7 +52,11 @@ public:
     private:
         float speedMove = 5.0f;             // ћаксимальна€ скорость движени€
         float speedRotate = 60.0f;          // ћаксимальна€ скорость поворота
-    } max;
+    };
+
+    Max max;
+
+    Position position;
 
 private:
 

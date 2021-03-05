@@ -89,7 +89,7 @@ public:
     // Выполняет текуцщий (т.е. нулевой) шаг алгоритма. Если выполнение шага закончено - возвращает Result::Finished
     Result Execute(ObjectT *object, float timeStep, EngineT &engine);
 
-    Result ExecuteRotate(ObjectT *object, float timeStep, EngineT &engine);
+    Result ExecuteRotate(PhysicsParameters &physics, float timeStep, EngineT &engine);
 
     Result ExecuteMovement(ObjectT *object, float timeStep, EngineT &engine);
 };

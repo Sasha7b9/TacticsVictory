@@ -76,7 +76,7 @@ EngineExecutor::Result EngineExecutor::Execute(ObjectT *object, float timeStep, 
     switch (engine.algorithm.steps.Front().type)
     {
     case Step::Type::Move:      return ExecuteMovement(object, timeStep, engine);   break;
-    case Step::Type::Rotate:    return ExecuteRotate(object, timeStep, engine);     break;
+    case Step::Type::Rotate:    return ExecuteRotate(*object->physics, timeStep, engine);     break;
     case Step::Type::None:
         break;
     }
@@ -111,22 +111,22 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(ObjectT *object, float ti
 }
 
 
-EngineExecutor::Result EngineExecutor::ExecuteRotate(ObjectT *object, float timeStep, EngineT &engine)
+EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float timeStep, EngineT &engine)
 {
     Step &step = engine.algorithm.steps.Front();
 
-    Vector3 position = object->physics->GetPosition();
+    Vector3 position = physics.GetPosition();
 
     Vector3 dirToTarget = step.end - position;              // Ќаправление на точку, к которой нужно совершить поворот
     dirToTarget.Normalize();
 
-    Vector3 direction = object->physics->GetDirection();    // —юда нацелен наш юнит
+    Vector3 direction = physics.GetDirection();             // —юда нацелен наш юнит
 
     float angleNeed = direction.Angle(dirToTarget);         // Ќа такой угол нам нужно повернутьс€, чтобы смотреть на
                                                             // целевую точку
 
-    float angleCan = object->physics->max.SpeedRotate() * timeStep;     // ћаксимальный угол, на который можно повернутьс€
-                                                                        // в этом кадре
+    float angleCan = physics.max.SpeedRotate() * timeStep;  // ћаксимальный угол, на который можно повернутьс€
+                                                            // в этом кадре
 
     if (angleCan >= angleNeed)
     {
