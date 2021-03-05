@@ -28,24 +28,29 @@ class PhysicsParameters : public Object
 
 public:
 
-    PhysicsParameters(ObjectT *_object) : Object(TheContext), object(_object) {}
+    PhysicsParameters(ObjectT *_object) : Object(TheContext), position(_object), direction(_object), object(_object) {}
 
-    // Возвращает реальную позицию в мире
-    Vector3 GetPosition() const;
-
-    // Возвращает направление движения (даже если объект неподвижен)
-    Vector3 GetDirection() const; 
-
-    Vector3 GetSpeedMove() const { return speedMove; }
+     Vector3 GetSpeedMove() const { return speedMove; }
 
     Vector3 GetSpeedRotate() const { return speedRotate; }
 
-    struct Position
+    struct Direction
     {
-        Vector3 Get() const;
+        Direction(ObjectT *_object) : object(_object) {}
+        Vector3 Get() const;            // Возвращает направление движения (даже если объект неподвижен)
+    private:
+        ObjectT *object = nullptr;
     };
 
-    struct Max                           // В этой структуре будут храниться максимально возможные значения параметров
+    struct Position
+    {
+        Position(ObjectT *_object) : object(_object) {}
+        Vector3 Get() const;            // Возвращает реальную позицию в мире
+    private:
+        ObjectT *object = nullptr;
+    };
+
+    struct Max                          // В этой структуре будут храниться максимально возможные значения параметров
     {
         float SpeedMove() const { return speedMove; }
         float SpeedRotate() const { return speedRotate; }
@@ -55,8 +60,8 @@ public:
     };
 
     Max max;
-
     Position position;
+    Direction direction;
 
 private:
 

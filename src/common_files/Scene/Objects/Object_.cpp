@@ -79,7 +79,7 @@ void ObjectT::LoadFromJSON(const String &fileName)
 
 void ObjectT::Normalize(float k)
 {
-    Vector3 pos = physics->GetPosition();
+    Vector3 pos = physics->position.Get();
     node_->SetPosition(Vector3::ZERO);
     node_->SetScale(1.0f);
 
@@ -101,7 +101,7 @@ void ObjectT::Normalize(float k)
 }
 
 
-Vector3 PhysicsParameters::GetPosition() const
+Vector3 PhysicsParameters::Position::Get() const
 {
     return object->GetNode()->GetPosition() - object->shift->position;
 }
@@ -113,7 +113,7 @@ void ObjectT::SetPosition(const Vector3 &position)
 }
 
 
-Vector3 PhysicsParameters::GetDirection() const
+Vector3 PhysicsParameters::Direction::Get() const
 {
     return { -1.0f, 0.0f, 0.0f };
 }
