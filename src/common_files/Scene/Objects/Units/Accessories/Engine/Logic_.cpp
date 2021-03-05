@@ -36,7 +36,6 @@ void EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine
 
     Step step(Step::Type::Rotate);
 
-    step.start = direction;
     step.end = dirToTarget;
 
     algorithm.steps.Push(step);
@@ -47,8 +46,7 @@ void EngineCalculator::CalculateMovement(PhysicsParameters &physics, CommandEngi
 {
     Step step(Step::Type::Move);
 
-    step.start = physics.pos.Get();
-    step.end = step.start;
+    step.end = physics.pos.Get();
 
     switch (command)
     {

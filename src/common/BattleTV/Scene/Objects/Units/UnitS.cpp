@@ -17,10 +17,6 @@ void UnitSpecificS::Update(float timeStep)
 
         engine->GiveCommand((CommandEngine::E)(direct + 1));
     }
-    else
-    {
-        int i = 0;
-    }
 
     ObjectSpecificS::Update(timeStep);
 }
