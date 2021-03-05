@@ -28,11 +28,19 @@ class PhysicsParameters : public Object
 
 public:
 
-    PhysicsParameters(ObjectT *_object) : Object(TheContext), position(_object), direction(_object), object(_object) {}
-
-     Vector3 GetSpeedMove() const { return speedMove; }
+    PhysicsParameters(ObjectT *_object) : Object(TheContext),
+        position(_object), direction(_object), translation(_object), object(_object) {}
 
     Vector3 GetSpeedRotate() const { return speedRotate; }
+
+    struct Translation
+    {
+        Translation(ObjectT *_object) : object(_object) {}
+        Vector3 GetSpeed() const { return speedMove; };
+    private:
+        ObjectT *object = nullptr;
+        Vector3 speedMove = Vector3::ZERO;      // Установившаяся скорость движения
+    };
 
     struct Direction
     {
@@ -59,15 +67,16 @@ public:
         float speedRotate = 60.0f;          // Максимальная скорость поворота
     };
 
-    Max max;
-    Position position;
-    Direction direction;
+    Max         max;
+    Position    position;
+    Direction   direction;
+    Translation translation;
 
 private:
 
     ObjectT *object = nullptr;
 
-    Vector3 speedMove = Vector3::ZERO;      // Установившаяся скорость движения
+
     Vector3 speedRotate = Vector3::ZERO;    // Установившаяся скорость вращения
 };
 
