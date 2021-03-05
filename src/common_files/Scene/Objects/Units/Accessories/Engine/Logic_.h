@@ -91,5 +91,5 @@ public:
 
     Result ExecuteRotate(PhysicsParameters &physics, float timeStep, EngineT &engine);
 
-    Result ExecuteMovement(ObjectT *object, float timeStep, EngineT &engine);
+    Result ExecuteMovement(PhysicsParameters &physics, float timeStep, EngineT &engine);
 };

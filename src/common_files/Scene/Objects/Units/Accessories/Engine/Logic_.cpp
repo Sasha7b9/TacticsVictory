@@ -75,7 +75,7 @@ EngineExecutor::Result EngineExecutor::Execute(ObjectT *object, float timeStep, 
 
     switch (engine.algorithm.steps.Front().type)
     {
-    case Step::Type::Move:      return ExecuteMovement(object, timeStep, engine);   break;
+    case Step::Type::Move:      return ExecuteMovement(*object->physics, timeStep, engine);   break;
     case Step::Type::Rotate:    return ExecuteRotate(*object->physics, timeStep, engine);     break;
     case Step::Type::None:
         break;
@@ -85,19 +85,19 @@ EngineExecutor::Result EngineExecutor::Execute(ObjectT *object, float timeStep, 
 }
 
 
-EngineExecutor::Result EngineExecutor::ExecuteMovement(ObjectT *object, float timeStep, EngineT &engine)
+EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physics, float timeStep, EngineT &engine)
 {
     Step &step = engine.algorithm.steps.Front();
 
-    Vector3 currentPos = object->GetNode()->GetPosition();
+    Vector3 currentPos = physics.position.Get();
 
-    float dist = object->physics->max.SpeedMove() * timeStep;    // Нужно проехать
+    float dist = physics.max.SpeedMove() * timeStep;        // Нужно проехать
 
     float delta = (step.end - currentPos).Length();         // Осталось до конечной точки
 
     if (dist >= delta)                                      // Если проедем больше, чем нужно
     {
-        object->GetNode()->SetPosition(step.end);
+        physics.position.Set(step.end);
 
         return EngineExecutor::Result::Finished;            // То завершаем выполение шага
     }
@@ -105,7 +105,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(ObjectT *object, float ti
     Vector3 direction = (step.end - currentPos);
     direction.Normalize();
 
-    object->GetNode()->SetPosition(currentPos + direction * dist);
+    physics.position.Set(currentPos + direction * dist);
 
     return EngineExecutor::Result(EngineExecutor::Result::Running);
 }

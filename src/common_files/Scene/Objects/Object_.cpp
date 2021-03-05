@@ -97,7 +97,7 @@ void ObjectT::Normalize(float k)
 
     node_->SetScale(scale);
 
-    SetPosition(pos);
+    physics->position.Set(pos);
 }
 
 
@@ -107,9 +107,9 @@ Vector3 PhysicsParameters::Position::Get() const
 }
 
 
-void ObjectT::SetPosition(const Vector3 &position)
+void PhysicsParameters::Position::Set(const Vector3 &position)
 {
-    node_->SetPosition(position + shift->position);
+    object->GetNode()->SetPosition(position + object->shift->position);
 }
 
 

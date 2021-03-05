@@ -61,6 +61,7 @@ public:
     {
         Position(ObjectT *_object) : object(_object) {}
         Vector3 Get() const;                    // Возвращает реальную позицию в мире
+        void Set(const Vector3 &position);      // Устанавливает позицию в мире с учётом смещения
     private:
         ObjectT *object = nullptr;
     };
@@ -114,8 +115,6 @@ class ObjectT : public LogicComponent
     URHO3D_OBJECT(ObjectT, LogicComponent);
 
 public:
-
-    void SetPosition(const Vector3 &position);
 
     SharedPtr<ShiftParameters> shift;               // Используется для приведения параметров модели к текущей сцене
 
