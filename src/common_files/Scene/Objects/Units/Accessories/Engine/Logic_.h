@@ -62,7 +62,7 @@ public:
 
 private:
 
-    void CalculateRotate(ObjectT *object, CommandEngine::E command, EngineAlgorithm &algorithm);
+    void CalculateRotate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm);
 
     void CalculateMovement(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm);
 };

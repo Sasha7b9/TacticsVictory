@@ -7,17 +7,15 @@
 
 void EngineCalculator::Calculate(ObjectT *object, CommandEngine::E command, EngineAlgorithm &algorithm)
 {
-    CalculateRotate(object, command, algorithm);
+    CalculateRotate(*object->physics, command, algorithm);
 
     CalculateMovement(*object->physics, command, algorithm);
 }
 
 
-void EngineCalculator::CalculateRotate(ObjectT *object, CommandEngine::E command, EngineAlgorithm & algorithm)
+void EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm & algorithm)
 {
-//    float yaw = node->GetRotation().YawAngle();
-
-    Vector3 position = object->GetNode()->GetPosition();
+    Vector3 position = physics.position.Get();
 
     Vector3 target = position;
 
@@ -34,7 +32,7 @@ void EngineCalculator::CalculateRotate(ObjectT *object, CommandEngine::E command
     Vector3 dirToTarget = target - position;                // Направление на точку, к которой нужно совершить поворот
     dirToTarget.Normalize();
 
-    Vector3 direction = object->physics->direction.Get();    // Направление движения нашего юнита
+    Vector3 direction = physics.direction.Get();    // Направление движения нашего юнита
 
     Step step(Step::Type::Rotate);
 
