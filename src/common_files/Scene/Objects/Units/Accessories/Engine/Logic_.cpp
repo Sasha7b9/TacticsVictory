@@ -107,9 +107,9 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 }
 
 
-EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float /*timeStep*/, EngineT & /*engine*/)
+EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float timeStep, EngineT & /*engine*/)
 {
-    Quaternion rotate(1.0f, { 0.0f, 1.0f, 0.0f });
+    Quaternion rotate(physics.max.SpeedRotate() * timeStep, { 0.0f, 1.0f, 0.0f });
 
     Quaternion before = physics.rot.Get();
 

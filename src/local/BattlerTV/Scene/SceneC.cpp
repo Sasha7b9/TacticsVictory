@@ -44,13 +44,6 @@ void SceneT::Decompress(MemoryBuffer &buffer)
 
         ObjectT *object = ObjectSpecificC::remoteStorage[id];
 
-        if (object)
-        {
-            object->Decompress(buffer);
-        }
-        else
-        {
-            ObjectT::NullDecompress(buffer);
-        }
+        (object ? object : ObjectT::empty)->Decompress(buffer);
     }
 }

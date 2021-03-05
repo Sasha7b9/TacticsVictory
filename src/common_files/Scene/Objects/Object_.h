@@ -65,6 +65,8 @@ public:
 
     Node *GetObjectNode() const { return Component::GetNode(); }
 
+    static ObjectT *empty;
+
 protected:
 
     ObjectT(Context *context);
