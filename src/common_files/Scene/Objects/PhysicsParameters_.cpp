@@ -17,5 +17,17 @@ void PositionPP::Set(const Vector3 &position)
 
 Vector3 DirectionPP::Get() const
 {
-    return { -1.0f, 0.0f, 0.0f };
+    return object->GetObjectNode()->GetDirection();
+}
+
+
+Quaternion RotationPP::Get() const
+{
+    return object->GetObjectNode()->GetRotation();
+}
+
+
+void RotationPP::Set(const Quaternion &rotation)
+{
+    object->GetObjectNode()->SetRotation(rotation);
 }

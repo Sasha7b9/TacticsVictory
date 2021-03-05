@@ -25,13 +25,17 @@ struct RotationPP
 {
     RotationPP(ObjectT *_object) : object(_object) {}
 
-    Vector3 GetSpeed() const { return speedRotate; };
+    float GetSpeed() const { return speedRotate; };
+
+    Quaternion Get() const;
+
+    void Set(const Quaternion &rotation);
 
 private:
 
     ObjectT *object = nullptr;
 
-    Vector3 speedRotate = Vector3::ZERO;    // Установившаяся скорость вращения
+    float speedRotate = 0.0f;    // Установившаяся скорость вращения
 };
 
 

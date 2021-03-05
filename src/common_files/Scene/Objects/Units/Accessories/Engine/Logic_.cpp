@@ -128,7 +128,11 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics,
 
     if (angleCan >= angleNeed)
     {
-
+        
+    }
+    else
+    {
+        int i = 0;
     }
 
     return EngineExecutor::Result::Finished;

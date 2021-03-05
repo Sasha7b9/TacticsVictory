@@ -19,7 +19,7 @@ void EngineT::GiveCommand(CommandEngine::E command)
 bool EngineT::IsStopped() const
 {
     return (object->physics->movement.GetSpeed().Length() == 0.0f) &&
-        (object->physics->rotation.GetSpeed().Length() == 0.0f);
+        (object->physics->rotation.GetSpeed() == 0.0f);
 }
 
 
