@@ -113,6 +113,12 @@ void ObjectT::SetPosition(const Vector3 &position)
 }
 
 
+Vector3 PhysicsParameters::GetDirection() const
+{
+    return { -1.0f, 0.0f, 0.0f };
+}
+
+
 void ObjectT::Update(float timeStep)
 {
     LogicComponent::Update(timeStep);

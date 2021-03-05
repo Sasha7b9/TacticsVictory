@@ -27,7 +27,11 @@ public:
 
     PhysicsParameters(ObjectT *_object) : Object(TheContext), object(_object) {}
 
-    Vector3 GetPosition() const;                // Возвращает реальную позицию в мире
+    // Возвращает реальную позицию в мире
+    Vector3 GetPosition() const;
+
+    // Возвращает направление движения (даже если объект неподвижен)
+    Vector3 GetDirection() const; 
 
 private:
 

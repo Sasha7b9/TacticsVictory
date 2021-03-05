@@ -30,6 +30,19 @@ void EngineCalculator::CalculateRotate(ObjectT *object, CommandEngine::E command
     case CommandEngine::None:
         break;
     }
+
+    Vector3 dirToTarget = target - position;                // Ќаправление на точку, к которой нужно совершить поворот
+    dirToTarget.Normalize();
+
+    Vector3 direction = object->physics->GetDirection();    // —юда нацелен наш юнит
+
+    float angleNeed = direction.Angle(dirToTarget);         // Ќа такой угол нам нужно повернутьс€, чтобы смотреть на
+                                                            // целевую точку
+
+    if (std::fabsf(angleNeed) > std::numeric_limits<float>::epsilon())
+    {
+
+    }
 }
 
 
