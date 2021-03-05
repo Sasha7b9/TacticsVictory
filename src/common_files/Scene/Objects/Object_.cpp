@@ -100,19 +100,19 @@ void ObjectT::Normalize(float k)
 }
 
 
-Vector3 PhysicsParameters::Position::Get() const
+Vector3 PositionPP::Get() const
 {
     return object->GetObjectNode()->GetPosition() /*- object->shift->position*/;
 }
 
 
-void PhysicsParameters::Position::Set(const Vector3 &position)
+void PositionPP::Set(const Vector3 &position)
 {
     object->GetObjectNode()->SetPosition(position /* + object->shift->position*/);
 }
 
 
-Vector3 PhysicsParameters::Direction::Get() const
+Vector3 DirectionPP::Get() const
 {
     return { -1.0f, 0.0f, 0.0f };
 }
