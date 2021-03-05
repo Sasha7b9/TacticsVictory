@@ -89,11 +89,11 @@ class PhysicsParameters : public Object
 public:
 
     PhysicsParameters(ObjectT *_object) : Object(TheContext),
-        pos(_object), direction(_object), movement(_object), rotation(_object), object(_object) {}
+        pos(_object), dir(_object), movement(_object), rotation(_object), object(_object) {}
 
     MaxPP       max;
     PositionPP  pos;
-    DirectionPP direction;
+    DirectionPP dir;
     MovementPP  movement;
     RotationPP  rotation;
 
