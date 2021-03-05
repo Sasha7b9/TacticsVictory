@@ -131,13 +131,6 @@ void ObjectT::Decompress(MemoryBuffer &buffer)
 }
 
 
-void ObjectT::NullDecompress(MemoryBuffer &buffer)
-{
-    buffer.ReadVector3();
-    buffer.ReadQuaternion();
-}
-
-
 int ObjectT::NestingDepth()
 {
     int result = 0;

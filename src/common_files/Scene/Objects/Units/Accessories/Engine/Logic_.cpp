@@ -111,13 +111,7 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics,
 {
     Quaternion rotate(physics.max.SpeedRotate() * timeStep, { 0.0f, 1.0f, 0.0f });
 
-    Quaternion before = physics.rot.Get();
-
     physics.rot.Set(physics.rot.Get() * rotate);
-
-    Quaternion after = physics.rot.Get();
-
-    after = after;
 
 
 //    Step &step = engine.algorithm.steps.Front();
