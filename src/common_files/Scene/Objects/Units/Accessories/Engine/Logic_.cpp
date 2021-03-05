@@ -66,7 +66,7 @@ void EngineCalculator::CalculateMovement(ObjectT *object, CommandEngine::E comma
 }
 
 
-EngineExecutor::Result EngineExecutor::Execute(ObjectT *object, float timeStep, EngineT &engine)
+EngineExecutor::Result EngineExecutor::Execute(PhysicsParameters &physics, float timeStep, EngineT &engine)
 {
     if (engine.algorithm.IsFinished())
     {
@@ -75,8 +75,8 @@ EngineExecutor::Result EngineExecutor::Execute(ObjectT *object, float timeStep, 
 
     switch (engine.algorithm.steps.Front().type)
     {
-    case Step::Type::Move:      return ExecuteMovement(*object->physics, timeStep, engine);   break;
-    case Step::Type::Rotate:    return ExecuteRotate(*object->physics, timeStep, engine);     break;
+    case Step::Type::Move:      return ExecuteMovement(physics, timeStep, engine);   break;
+    case Step::Type::Rotate:    return ExecuteRotate(physics, timeStep, engine);     break;
     case Step::Type::None:
         break;
     }
