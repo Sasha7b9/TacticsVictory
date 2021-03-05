@@ -32,7 +32,7 @@ if(WIN32)
         add_compile_options(/wd4711)    # function 'function' selected for inline expansion
     endif()
 
-#    add_compile_options(/wd26812)
+    add_compile_options(/wd26812)
 #    add_compile_options(/wd28251)
 else()
     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -lGL -lGLX -lX11 -lGLdispatch")
