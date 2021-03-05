@@ -9,8 +9,7 @@ Vector<ObjectT *> ObjectT::storage;
 
 
 ObjectSpecific::ObjectSpecific(ObjectT *_object) : Object(TheContext),
-    object(_object),
-    node(_object->GetNode())
+    object(_object)
 {
 }
 

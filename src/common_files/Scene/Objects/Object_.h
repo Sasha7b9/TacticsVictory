@@ -104,8 +104,6 @@ protected:
     ObjectSpecific(ObjectT *_object);
 
     ObjectT *object = nullptr;
-
-    Node *node = nullptr;
 };
 
 
@@ -156,4 +154,9 @@ private:
 //    Node *GetNode() const { return Component::GetNode(); }
 
     SharedPtr<StaticModel> staticModel;
+
+
+public:
+
+    uint GetID() const { return node_->GetID(); }
 };
