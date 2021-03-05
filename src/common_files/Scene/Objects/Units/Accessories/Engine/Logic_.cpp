@@ -9,7 +9,7 @@ void EngineCalculator::Calculate(ObjectT *object, CommandEngine::E command, Engi
 {
     CalculateRotate(object, command, algorithm);
 
-    CalculateMovement(object, command, algorithm);
+    CalculateMovement(*object->physics, command, algorithm);
 }
 
 
@@ -45,11 +45,11 @@ void EngineCalculator::CalculateRotate(ObjectT *object, CommandEngine::E command
 }
 
 
-void EngineCalculator::CalculateMovement(ObjectT *object, CommandEngine::E command, EngineAlgorithm &algorithm)
+void EngineCalculator::CalculateMovement(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm)
 {
     Step step(Step::Type::Move);
 
-    step.start = object->GetNode()->GetPosition();
+    step.start = physics.position.Get();
     step.end = step.start;
 
     switch (command)
