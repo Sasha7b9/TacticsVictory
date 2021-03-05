@@ -37,7 +37,7 @@ void Message::RequestForLevel::Handle(const ConnectionT &connection)
             CreateGameObject(
                 object->GetObjectNode()->GetID(),
                 StringHash(object->GetTypeName()),
-                object->physics->position.Get()));
+                object->physics->pos.Get()));
     }
 }
 

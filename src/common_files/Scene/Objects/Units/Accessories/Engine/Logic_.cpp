@@ -15,7 +15,7 @@ void EngineCalculator::Calculate(PhysicsParameters &physics, CommandEngine::E co
 
 void EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm & algorithm)
 {
-    Vector3 position = physics.position.Get();
+    Vector3 position = physics.pos.Get();
 
     Vector3 target = position;
 
@@ -47,7 +47,7 @@ void EngineCalculator::CalculateMovement(PhysicsParameters &physics, CommandEngi
 {
     Step step(Step::Type::Move);
 
-    step.start = physics.position.Get();
+    step.start = physics.pos.Get();
     step.end = step.start;
 
     switch (command)
@@ -87,7 +87,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 {
     Step &step = engine.algorithm.steps.Front();
 
-    Vector3 currentPos = physics.position.Get();
+    Vector3 currentPos = physics.pos.Get();
 
     float dist = physics.max.SpeedMove() * timeStep;        // Нужно проехать
 
@@ -95,7 +95,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 
     if (dist >= delta)                                      // Если проедем больше, чем нужно
     {
-        physics.position.Set(step.end);
+        physics.pos.Set(step.end);
 
         return EngineExecutor::Result::Finished;            // То завершаем выполение шага
     }
@@ -103,7 +103,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
     Vector3 direction = (step.end - currentPos);
     direction.Normalize();
 
-    physics.position.Set(currentPos + direction * dist);
+    physics.pos.Set(currentPos + direction * dist);
 
     return EngineExecutor::Result(EngineExecutor::Result::Running);
 }
@@ -113,7 +113,7 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics,
 {
     Step &step = engine.algorithm.steps.Front();
 
-    Vector3 position = physics.position.Get();
+    Vector3 position = physics.pos.Get();
 
     Vector3 dirToTarget = step.end - position;              // Направление на точку, к которой нужно совершить поворот
     dirToTarget.Normalize();
@@ -132,7 +132,7 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics,
     }
     else
     {
-        int i = 0;
+
     }
 
     return EngineExecutor::Result::Finished;
