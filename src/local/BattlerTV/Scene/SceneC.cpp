@@ -47,7 +47,7 @@ void SceneT::Decompress(MemoryBuffer &buffer)
 
         if (object)
         {
-            object->GetNode()->SetPosition(position);
+            object->physics->position.Set(position);
         }
     }
 }
