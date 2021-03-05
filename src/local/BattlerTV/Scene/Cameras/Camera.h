@@ -9,14 +9,14 @@ class CameraT : public LogicComponent
 public:
 
     struct Direction { enum E {
-        Forward,
-        Back,
-        Left,
-        Right,
-        Closer,
-        Further,
-        RotateYAW,
-        RotatePITCH
+        Forward,        // Вперёд
+        Back,           // Назад
+        Left,           // Влево
+        Right,          // Вправо
+        Closer,         // Ближе
+        Further,        // Дальше
+        RotateYAW,      // Рыскать
+        RotatePITCH     // Склонять по высоте
     }; };
 
     CameraT(Context *context);
