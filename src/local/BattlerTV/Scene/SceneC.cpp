@@ -42,12 +42,14 @@ void SceneT::Decompress(MemoryBuffer &buffer)
     {
         uint id = buffer.ReadUInt();
         Vector3 position = buffer.ReadVector3();
+        Quaternion rotation = buffer.ReadQuaternion();
 
         ObjectT *object = ObjectSpecificC::remoteStorage[id];
 
         if (object)
         {
             object->physics->pos.Set(position);
+            object->physics->rot.Set(rotation);
         }
     }
 }
