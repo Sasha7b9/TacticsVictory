@@ -76,6 +76,20 @@ EngineExecutor::Result EngineExecutor::Execute(ObjectT *object, float timeStep, 
         return EngineExecutor::Result::Finished;
     }
 
+    switch (engine.algorithm.steps.Front().type)
+    {
+    case Step::Type::Move:      return ExecuteMovement(object, timeStep, engine);   break;
+    case Step::Type::Rotate:    return ExecuteRotate(object, timeStep, engine);     break;
+    case Step::Type::None:
+        break;
+    }
+
+    return EngineExecutor::Result::Finished;
+}
+
+
+EngineExecutor::Result EngineExecutor::ExecuteMovement(ObjectT *object, float timeStep, EngineT &engine)
+{
     Step &step = engine.algorithm.steps.Front();
 
     Vector3 currentPos = object->GetNode()->GetPosition();
@@ -97,4 +111,10 @@ EngineExecutor::Result EngineExecutor::Execute(ObjectT *object, float timeStep, 
     object->GetNode()->SetPosition(currentPos + direction * dist);
 
     return EngineExecutor::Result(EngineExecutor::Result::Running);
+}
+
+
+EngineExecutor::Result EngineExecutor::ExecuteRotate(ObjectT * /*object*/, float /*timeStep*/, EngineT & /*engine*/)
+{
+    return EngineExecutor::Result::Finished;
 }

@@ -33,6 +33,9 @@ public:
     Vector3 end;        // Если шаг перемещения, то здесь хранится конечная позиция, если шаг поворота - конечный угол
 
     Type::E type = Type::None;
+
+    bool IsMovement() const { return type == Type::Move; }
+    bool IsRotate() const { return type == Type::Rotate; }
 };
 
 
@@ -85,4 +88,8 @@ public:
 
     // Выполняет текуцщий (т.е. нулевой) шаг алгоритма. Если выполнение шага закончено - возвращает Result::Finished
     Result Execute(ObjectT *object, float timeStep, EngineT &engine);
+
+    Result ExecuteRotate(ObjectT *object, float timeStep, EngineT &engine);
+
+    Result ExecuteMovement(ObjectT *object, float timeStep, EngineT &engine);
 };
