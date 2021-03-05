@@ -126,6 +126,8 @@ public:
     // Распаковать состояние объекта, принятого по сети
     virtual void Decompress(MemoryBuffer &buffer, bool log = false);
 
+    Node *GetObjectNode() const { return Component::GetNode(); }
+
 protected:
 
     ObjectT(Context *context);
@@ -159,6 +161,4 @@ private:
 public:
 
     uint GetID() const { return node_->GetID(); }
-
-    Node *_GetNode() const { return Component::GetNode(); }
 };
