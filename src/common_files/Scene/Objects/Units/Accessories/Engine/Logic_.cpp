@@ -107,22 +107,34 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 }
 
 
-EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float timeStep, EngineT & /*engine*/)
+static void Calculate(char *name, PhysicsParameters &physics, Step &step)
 {
+    Vector3 position = physics.pos.Get();
+    Vector3 dirToTarget = step.end - position;
+    dirToTarget.Normalize();                        // Направление на цель
+
+    Vector3 direction = physics.dir.Get();          // Направление нашего юнита
+
+    float angleNeed = direction.Angle(dirToTarget); // На такой угол нужно повернуть юнита
+
+    LOGINFOF("");
+    LOGINFOF("%s : %f", name, angleNeed);
+}
+
+
+EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float timeStep, EngineT &engine)
+{
+    Step &step = engine.algorithm.steps.Front();
+
     Quaternion rotate(physics.max.SpeedRotate() * timeStep, { 0.0f, 1.0f, 0.0f });
+
+    Calculate("before", physics, step);
 
     physics.rot.Set(physics.rot.Get() * rotate);
 
+    Calculate("after", physics, step);
 
-//    Step &step = engine.algorithm.steps.Front();
-//
-//    Vector3 position = physics.pos.Get();
-//
-//    Vector3 dirToTarget = step.end - position;              // Направление на точку, к которой нужно совершить поворот
-//    dirToTarget.Normalize();
-//
-//    Vector3 direction = physics.dir.Get();                  // Сюда нацелен наш юнит
-//
+
 //    float angleNeed = direction.Angle(dirToTarget);         // На такой угол нам нужно повернуться, чтобы смотреть на
 //                                                            // целевую точку
 //
