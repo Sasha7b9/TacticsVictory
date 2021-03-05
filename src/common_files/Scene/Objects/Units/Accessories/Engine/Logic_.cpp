@@ -79,7 +79,7 @@ EngineExecutor::Result EngineExecutor::Execute(PhysicsParameters &physics, float
         break;
     }
 
-    return EngineExecutor::Result::Finished;
+    return Result::Finished;
 }
 
 
@@ -105,7 +105,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 
     physics.pos.Set(currentPos + direction * dist);
 
-    return EngineExecutor::Result(EngineExecutor::Result::Running);
+    return Result::Running;
 }
 
 
@@ -118,7 +118,7 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics,
     Vector3 dirToTarget = step.end - position;              // Направление на точку, к которой нужно совершить поворот
     dirToTarget.Normalize();
 
-    Vector3 direction = physics.dir.Get();            // Сюда нацелен наш юнит
+    Vector3 direction = physics.dir.Get();                  // Сюда нацелен наш юнит
 
     float angleNeed = direction.Angle(dirToTarget);         // На такой угол нам нужно повернуться, чтобы смотреть на
                                                             // целевую точку
@@ -126,14 +126,20 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics,
     float angleCan = physics.max.SpeedRotate() * timeStep;  // Максимальный угол, на который можно повернуться
                                                             // в этом кадре
 
+    Vector3 axisRotate = direction.CrossProduct(dirToTarget);
+
     if (angleCan >= angleNeed)
     {
-        
+        physics.rot.Set(Quaternion(Vector3::UP, dirToTarget));
+
+        return Result::Finished;
     }
     else
     {
+        Quaternion qutRotate(angleCan, axisRotate);
 
+        physics.rot.Set(Quaternion(Vector3::UP, qutRotate * physics.dir.Get() * physics.mov.GetSpeed()));
     }
 
-    return EngineExecutor::Result::Finished;
+    return Result::Running;
 }

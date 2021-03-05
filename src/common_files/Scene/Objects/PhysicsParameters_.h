@@ -10,13 +10,13 @@ struct MovementPP
 {
     MovementPP(ObjectT *_object) : object(_object) {}
 
-    Vector3 GetSpeed() const { return speedMove; };
+    float GetSpeed() const { return speedMove; };
 
 private:
 
     ObjectT *object = nullptr;
 
-    Vector3 speedMove = Vector3::ZERO;      // Установившаяся скорость движения
+    float speedMove = 0.0f;      // Установившаяся скорость движения
 };
 
 
