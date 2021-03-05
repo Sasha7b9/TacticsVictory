@@ -39,7 +39,7 @@ void EngineCalculator::CalculateRotate(ObjectT *object, CommandEngine::E command
     float angleNeed = direction.Angle(dirToTarget);         // На такой угол нам нужно повернуться, чтобы смотреть на
                                                             // целевую точку
 
-    if (std::fabsf(angleNeed) > std::numeric_limits<float>::epsilon())
+    if (fabsf(angleNeed) > std::numeric_limits<float>::epsilon())
     {
 
     }
