@@ -1,10 +1,10 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Scene/Objects/Object_.h"
 #include "Scene/Primitives/Plane_.h"
 #include "Scene/Terrain/CubeTerrain_.h"
 
 
-class ObjectT;
 class SegmentTerrain;
 
 
