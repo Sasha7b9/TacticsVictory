@@ -30,7 +30,7 @@ void Tank::Start()
 
     Normalize();
 
-    engine = new EngineGround(node_);
+    engine = new EngineGround(this);
 }
 
 

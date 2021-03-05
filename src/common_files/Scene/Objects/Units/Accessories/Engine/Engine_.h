@@ -31,7 +31,7 @@ class EngineT : public Object
 
 public:
 
-    EngineT(Node *_node);
+    EngineT(ObjectT *object);
     virtual ~EngineT() {}
 
     virtual void Update(float timeStep);
@@ -49,7 +49,7 @@ public:
 
 protected:
 
-    Node *node = nullptr;
+    ObjectT *object = nullptr;
 };
 
 
@@ -58,7 +58,7 @@ class EngineGround : public EngineT
 {
 public:
 
-    EngineGround(Node *node) : EngineT(node) {}
+    EngineGround(ObjectT *object) : EngineT(object) {}
 };
 
 
@@ -67,5 +67,5 @@ class EngineAir : public EngineT
 {
 public:
 
-    EngineAir(Node *node) : EngineT(node) {}
+    EngineAir(ObjectT *object) : EngineT(object) {}
 };

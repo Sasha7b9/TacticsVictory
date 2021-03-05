@@ -55,13 +55,13 @@ class EngineCalculator
 {
 public:
 
-    void Calculate(Node *node, CommandEngine::E command, EngineAlgorithm &algorithm);
+    void Calculate(ObjectT *object, CommandEngine::E command, EngineAlgorithm &algorithm);
 
 private:
 
-    void CalculateRotate(Node *node, CommandEngine::E command, EngineAlgorithm &algorithm);
+    void CalculateRotate(ObjectT *object, CommandEngine::E command, EngineAlgorithm &algorithm);
 
-    void CalculateMovement(Node *node, CommandEngine::E command, EngineAlgorithm &algorithm);
+    void CalculateMovement(ObjectT *object, CommandEngine::E command, EngineAlgorithm &algorithm);
 };
 
 

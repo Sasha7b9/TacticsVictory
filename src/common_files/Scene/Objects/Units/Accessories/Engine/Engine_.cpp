@@ -4,7 +4,7 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-EngineT::EngineT(Node *_node) : Object(TheContext), node(_node)
+EngineT::EngineT(ObjectT *_object) : Object(TheContext), object(_object)
 {
     params = new EngineParameters();
 };
@@ -12,7 +12,7 @@ EngineT::EngineT(Node *_node) : Object(TheContext), node(_node)
 
 void EngineT::GiveCommand(CommandEngine::E command)
 {
-    calculator.Calculate(node, command, algorithm);
+    calculator.Calculate(object, command, algorithm);
 }
 
 
@@ -29,7 +29,7 @@ void EngineT::Update(float timeStep)
         return;
     }
 
-    EngineExecutor::Result result = executor.Execute(node, timeStep, *this);
+    EngineExecutor::Result result = executor.Execute(object->GetNode(), timeStep, *this);
 
     if (result.IsFinished())
     {
