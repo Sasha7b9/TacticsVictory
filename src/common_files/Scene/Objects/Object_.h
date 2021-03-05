@@ -52,7 +52,7 @@ public:
     struct Direction
     {
         Direction(ObjectT *_object) : object(_object) {}
-        Vector3 Get() const;            // Возвращает направление движения (даже если объект неподвижен)
+        Vector3 Get() const;                    // Возвращает направление движения (даже если объект неподвижен)
     private:
         ObjectT *object = nullptr;
     };
@@ -60,7 +60,7 @@ public:
     struct Position
     {
         Position(ObjectT *_object) : object(_object) {}
-        Vector3 Get() const;            // Возвращает реальную позицию в мире
+        Vector3 Get() const;                    // Возвращает реальную позицию в мире
     private:
         ObjectT *object = nullptr;
     };
@@ -70,8 +70,8 @@ public:
         float SpeedMove() const { return speedMove; }
         float SpeedRotate() const { return speedRotate; }
     private:
-        float speedMove = 5.0f;             // Максимальная скорость движения
-        float speedRotate = 60.0f;          // Максимальная скорость поворота
+        float speedMove = 5.0f;                 // Максимальная скорость движения
+        float speedRotate = 60.0f;              // Максимальная скорость поворота
     };
 
     Max       max;
