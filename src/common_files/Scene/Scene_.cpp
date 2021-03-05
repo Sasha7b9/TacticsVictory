@@ -67,6 +67,6 @@ void SceneT::Comporess(VectorBuffer &buffer)
 {
     for (uint i = 0; i < ObjectT::storage.Size(); i++)
     {
-        ObjectT::storage[i]->Compress(buffer, i < 10);
+        ObjectT::storage[i]->Compress(buffer);
     }
 }

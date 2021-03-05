@@ -27,13 +27,13 @@ void Unit::Update(float timeStep)
 }
 
 
-void Unit::Compress(VectorBuffer &buffer, bool log)
+void Unit::Compress(VectorBuffer &buffer)
 {
-    ObjectT::Compress(buffer, log);
+    ObjectT::Compress(buffer);
 }
 
 
-void Unit::Decompress(MemoryBuffer &buffer, bool log)
+void Unit::Decompress(MemoryBuffer &buffer)
 {
-    ObjectT::Decompress(buffer, log);
+    ObjectT::Decompress(buffer);
 }

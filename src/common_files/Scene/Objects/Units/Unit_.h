@@ -17,9 +17,9 @@ public:
 
     SharedPtr<EngineT> engine;
 
-    virtual void Compress(VectorBuffer &buffer, bool log = false) override;
+    virtual void Compress(VectorBuffer &buffer) override;
 
-    virtual void Decompress(MemoryBuffer &buffer, bool log = false) override;
+    virtual void Decompress(MemoryBuffer &buffer) override;
 
 protected:
 

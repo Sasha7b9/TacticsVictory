@@ -108,7 +108,7 @@ void ObjectT::Update(float timeStep)
 }
 
 
-void ObjectT::Compress(VectorBuffer &buffer, bool /*log*/)
+void ObjectT::Compress(VectorBuffer &buffer)
 {
     uint id = node_->GetID();
     Vector3 position = node_->GetPosition();
@@ -120,7 +120,7 @@ void ObjectT::Compress(VectorBuffer &buffer, bool /*log*/)
 }
 
 
-void ObjectT::Decompress(MemoryBuffer &buffer, bool /*log*/)
+void ObjectT::Decompress(MemoryBuffer &buffer)
 {
     Vector3 position = buffer.ReadVector3();
     Quaternion rotation = buffer.ReadQuaternion();

@@ -46,13 +46,13 @@ void Tank::Update(float timeStep)
 }
 
 
-void Tank::Compress(VectorBuffer &buffer, bool log)
+void Tank::Compress(VectorBuffer &buffer)
 {
-    Unit::Compress(buffer, log);
+    Unit::Compress(buffer);
 }
 
 
-void Tank::Decompress(MemoryBuffer &buffer, bool log)
+void Tank::Decompress(MemoryBuffer &buffer)
 {
-    Unit::Decompress(buffer, log);
+    Unit::Decompress(buffer);
 }
