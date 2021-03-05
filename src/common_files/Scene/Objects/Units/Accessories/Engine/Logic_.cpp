@@ -12,9 +12,23 @@ void EngineCalculator::Calculate(Node *node, CommandEngine::E command, EngineAlg
 }
 
 
-void EngineCalculator::CalculateRotate(Node *node, CommandEngine::E command, EngineAlgorithm &algorithm)
+void EngineCalculator::CalculateRotate(Node *node, CommandEngine::E command, EngineAlgorithm & /*algorithm*/)
 {
+//    float yaw = node->GetRotation().YawAngle();
 
+    Vector3 position = node->GetPosition();
+
+    Vector3 target = position;
+
+    switch (command)
+    {
+    case CommandEngine::MoveToNorth:    target.x_ -= 1.0f;      break;
+    case CommandEngine::MoveToEast:     target.z_ += 1.0f;      break;
+    case CommandEngine::MoveToSouth:    target.x_ += 1.0f;      break;
+    case CommandEngine::MoveToWest:     target.z_ -= 1.0f;      break;
+    case CommandEngine::None:
+        break;
+    }
 }
 
 
@@ -25,21 +39,14 @@ void EngineCalculator::CalculateMovement(Node *node, CommandEngine::E command, E
     step.start = node->GetPosition();
     step.end = step.start;
 
-    if (command == CommandEngine::MoveToNorth)
+    switch (command)
     {
-        step.end.x_ -= 1.0f;
-    }
-    else if (command == CommandEngine::MoveToEast)
-    {
-        step.end.z_ += 1.0f;
-    }
-    else if (command == CommandEngine::MoveToSouth)
-    {
-        step.end.x_ += 1.0f;
-    }
-    else if (command == CommandEngine::MoveToWest)
-    {
-        step.end.z_ -= 1.0f;
+    case CommandEngine::MoveToNorth:    step.end.x_ -= 1.0f;    break;
+    case CommandEngine::MoveToEast:     step.end.z_ += 1.0f;    break;
+    case CommandEngine::MoveToSouth:    step.end.x_ += 1.0f;    break;
+    case CommandEngine::MoveToWest:     step.end.z_ -= 1.0f;    break;
+    case CommandEngine::None:
+        break;
     }
 
     algorithm.steps.Push(step);
