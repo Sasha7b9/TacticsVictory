@@ -154,5 +154,7 @@ protected:
 
 private:
 
+//    Node *GetNode() const { return Component::GetNode(); }
+
     SharedPtr<StaticModel> staticModel;
 };
