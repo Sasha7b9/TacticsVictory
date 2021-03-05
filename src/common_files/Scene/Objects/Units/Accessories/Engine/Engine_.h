@@ -12,15 +12,16 @@ public:
 
     EngineParameters() : Object(TheContext) {}
 
-    float maxSpeedMove = 5.0f;          // Максимальная скорость движения
-    float maxSpeedRotate = 60.0f;       // Максимальная скорость поворота
-    float accelerationMove = 1.0f;      // Ускорение движения при трогании с места
-    float accelerationRotate = 1.0f;    // Ускорение поворота
+    struct Max                           // В этой структуре будут храниться максимально возможные значения параметров
+    {
+        float speedMove = 5.0f;             // Максимальная скорость движения
+        float speedRotate = 60.0f;          // Максимальная скорость поворота
+    };
 
-    Vector3 direction = Vector3::ONE;   // Направление движения
-    float speedMove = 0.0f;             // Установившаяся скорость движения
-    Vector3 axisRotate = Vector3::UP;   // Ось поворота
-    float speedRotate = 0.0f;           // Скорость поворота
+    Max max;
+
+    Vector3 speedMove = Vector3::ZERO;      // Установившаяся скорость движения
+    Vector3 speedRotate = Vector3::ZERO;    // Установившаяся скорость вращения
 };
 
 
@@ -42,8 +43,8 @@ public:
     bool IsStopped() const;
 
     EngineCalculator calculator;    // Занимается расчётом алгоритма движения
-    EngineAlgorithm algorithm;      // Собственно алгоритм движения
-    EngineExecutor executor;        // Собственно выполнитель алгоритма движения
+    EngineAlgorithm  algorithm;     // Собственно алгоритм движения
+    EngineExecutor   executor;      // Собственно выполнитель алгоритма движения
 
     SharedPtr<EngineParameters> params;
 

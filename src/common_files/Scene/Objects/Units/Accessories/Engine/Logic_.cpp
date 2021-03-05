@@ -34,10 +34,7 @@ void EngineCalculator::CalculateRotate(ObjectT *object, CommandEngine::E command
     Vector3 dirToTarget = target - position;                // Направление на точку, к которой нужно совершить поворот
     dirToTarget.Normalize();
 
-    Vector3 direction = object->physics->GetDirection();    // Сюда нацелен наш юнит
-
-//    float angleNeed = direction.Angle(dirToTarget);         // На такой угол нам нужно повернуться, чтобы смотреть на
-//                                                            // целевую точку
+    Vector3 direction = object->physics->GetDirection();    // Направление движения нашего юнита
 
     Step step(Step::Type::Rotate);
 
@@ -94,7 +91,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(ObjectT *object, float ti
 
     Vector3 currentPos = object->GetNode()->GetPosition();
 
-    float dist = engine.params->maxSpeedMove * timeStep;            // Нужно проехать
+    float dist = engine.params->max.speedMove * timeStep;    // Нужно проехать
 
     float delta = (step.end - currentPos).Length();         // Осталось до конечной точки
 
@@ -114,7 +111,27 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(ObjectT *object, float ti
 }
 
 
-EngineExecutor::Result EngineExecutor::ExecuteRotate(ObjectT * /*object*/, float /*timeStep*/, EngineT & /*engine*/)
+EngineExecutor::Result EngineExecutor::ExecuteRotate(ObjectT *object, float timeStep, EngineT &engine)
 {
+    Step &step = engine.algorithm.steps.Front();
+
+    Vector3 position = object->physics->GetPosition();
+
+    Vector3 dirToTarget = step.end - position;              // Направление на точку, к которой нужно совершить поворот
+    dirToTarget.Normalize();
+
+    Vector3 direction = object->physics->GetDirection();    // Сюда нацелен наш юнит
+
+    float angleNeed = direction.Angle(dirToTarget);         // На такой угол нам нужно повернуться, чтобы смотреть на
+                                                            // целевую точку
+
+    float angleCan = engine.params->max.speedRotate * timeStep;  // Максимальный угол, на который можно повернуться
+                                                                // в этом кадре
+
+    if (angleCan >= angleNeed)
+    {
+
+    }
+
     return EngineExecutor::Result::Finished;
 }

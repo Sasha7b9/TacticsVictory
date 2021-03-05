@@ -18,7 +18,7 @@ void EngineT::GiveCommand(CommandEngine::E command)
 
 bool EngineT::IsStopped() const
 {
-    return (params->speedMove == 0.0f) && (params->speedRotate == 0.0f);
+    return (params->speedMove.Length() == 0.0f) && (params->speedRotate.Length() == 0.0f);
 }
 
 
