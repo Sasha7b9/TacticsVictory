@@ -84,5 +84,5 @@ public:
     };
 
     // Выполняет текуцщий (т.е. нулевой) шаг алгоритма. Если выполнение шага закончено - возвращает Result::Finished
-    Result Execute(Node *_node, float timeStep, EngineT &engine);
+    Result Execute(ObjectT *object, float timeStep, EngineT &engine);
 };

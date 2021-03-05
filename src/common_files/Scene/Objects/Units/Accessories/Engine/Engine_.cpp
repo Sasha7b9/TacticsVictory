@@ -29,7 +29,7 @@ void EngineT::Update(float timeStep)
         return;
     }
 
-    EngineExecutor::Result result = executor.Execute(object->GetNode(), timeStep, *this);
+    EngineExecutor::Result result = executor.Execute(object, timeStep, *this);
 
     if (result.IsFinished())
     {

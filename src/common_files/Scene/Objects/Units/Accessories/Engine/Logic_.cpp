@@ -36,8 +36,8 @@ void EngineCalculator::CalculateRotate(ObjectT *object, CommandEngine::E command
 
     Vector3 direction = object->physics->GetDirection();    // Сюда нацелен наш юнит
 
-    float angleNeed = direction.Angle(dirToTarget);         // На такой угол нам нужно повернуться, чтобы смотреть на
-                                                            // целевую точку
+//    float angleNeed = direction.Angle(dirToTarget);         // На такой угол нам нужно повернуться, чтобы смотреть на
+//                                                            // целевую точку
 
     Step step(Step::Type::Rotate);
 
@@ -69,7 +69,7 @@ void EngineCalculator::CalculateMovement(ObjectT *object, CommandEngine::E comma
 }
 
 
-EngineExecutor::Result EngineExecutor::Execute(Node *node, float timeStep, EngineT &engine)
+EngineExecutor::Result EngineExecutor::Execute(ObjectT *object, float timeStep, EngineT &engine)
 {
     if (engine.algorithm.IsFinished())
     {
@@ -78,7 +78,7 @@ EngineExecutor::Result EngineExecutor::Execute(Node *node, float timeStep, Engin
 
     Step &step = engine.algorithm.steps.Front();
 
-    Vector3 currentPos = node->GetPosition();
+    Vector3 currentPos = object->GetNode()->GetPosition();
 
     float dist = engine.params->maxSpeedMove * timeStep;            // Нужно проехать
 
@@ -86,7 +86,7 @@ EngineExecutor::Result EngineExecutor::Execute(Node *node, float timeStep, Engin
 
     if (dist >= delta)                                      // Если проедем больше, чем нужно
     {
-        node->SetPosition(step.end);
+        object->GetNode()->SetPosition(step.end);
 
         return EngineExecutor::Result::Finished;            // То завершаем выполение шага
     }
@@ -94,7 +94,7 @@ EngineExecutor::Result EngineExecutor::Execute(Node *node, float timeStep, Engin
     Vector3 direction = (step.end - currentPos);
     direction.Normalize();
 
-    node->SetPosition(currentPos + direction * dist);
+    object->GetNode()->SetPosition(currentPos + direction * dist);
 
     return EngineExecutor::Result(EngineExecutor::Result::Running);
 }
