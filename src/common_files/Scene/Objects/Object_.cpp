@@ -26,13 +26,6 @@ ObjectT::ObjectT(Context *context) : LogicComponent(context)
     physics = new PhysicsParameters(this);
 
     storage.Push(this);
-
-    if (empty == nullptr)
-    {
-        empty = (ObjectT *)1;           // Чтобы избежать рекурсивного вызова
-        empty = TheScene->CreateChild("", LOCAL)->CreateComponent<Tank>();
-        empty->SetEnabled(false);
-    }
 }
 
 

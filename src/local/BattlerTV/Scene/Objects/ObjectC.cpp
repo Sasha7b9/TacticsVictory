@@ -23,5 +23,17 @@ ObjectT *ObjectSpecificC::GetFromID(uint id)
 {
     ObjectT *object = remoteStorage[id];
 
-    return object ? object : ObjectT::empty;
+    if (object)
+    {
+        return object;
+    }
+
+    if (ObjectT::empty == nullptr)
+    {
+        ObjectT::empty = (ObjectT *)(-1);               // Чтобы избежать рекурсивного вызова
+        ObjectT::empty = TheScene->CreateChild("", LOCAL)->CreateComponent<Tank>();
+        ObjectT::empty->SetEnabled(false);
+    }
+
+    return ObjectT::empty;
 }
