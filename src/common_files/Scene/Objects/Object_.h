@@ -61,6 +61,8 @@ public:
     // Распаковать состояние объекта, принятого по сети
     virtual void Decompress(MemoryBuffer &buffer);
 
+    static void NullDecompress(MemoryBuffer &buffer);
+
     Node *GetObjectNode() const { return Component::GetNode(); }
 
 protected:
