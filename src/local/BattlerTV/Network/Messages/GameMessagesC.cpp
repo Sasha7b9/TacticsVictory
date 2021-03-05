@@ -56,10 +56,13 @@ void Message::CreateGameObject::Handle(MemoryBuffer &msg)
     uint idNode = msg.ReadUInt();
     StringHash hashTypeObject = msg.ReadStringHash();
     Vector3 position = msg.ReadVector3();
+    Quaternion rotation = msg.ReadQuaternion();
 
     ObjectT *object = (ObjectT *)TheScene->CreateChild("", LOCAL)->CreateComponent(hashTypeObject, LOCAL);
 
     object->physics->pos.Set(position);
+
+    object->physics->rot.Set(rotation);
 
     ObjectSpecificC::remoteStorage[idNode] = object;
 }

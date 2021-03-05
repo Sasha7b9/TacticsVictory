@@ -66,12 +66,14 @@ namespace Message
 
     struct CreateGameObject : public Message
     {
-        CreateGameObject(uint idNode, const StringHash &hashTypeObject, const Vector3 &position) :
+        CreateGameObject(uint idNode, const StringHash &hashTypeObject, const Vector3 &position,
+            const Quaternion &rotation) :
             Message(CLNT_CREATE_GAME_OBJECT)
         {
             buffer.WriteUInt(idNode);
             buffer.WriteStringHash(hashTypeObject);
             buffer.WriteVector3(position);
+            buffer.WriteQuaternion(rotation);
         }
 
         void Handle(MemoryBuffer &);

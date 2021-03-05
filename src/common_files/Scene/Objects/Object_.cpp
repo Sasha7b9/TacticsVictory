@@ -112,17 +112,22 @@ void ObjectT::Compress(VectorBuffer &buffer, bool /*log*/)
 {
     uint id = node_->GetID();
     Vector3 position = node_->GetPosition();
+    Quaternion rotation = node_->GetRotation();
 
     buffer.WriteUInt(id);
     buffer.WriteVector3(position);
+    buffer.WriteQuaternion(rotation);
 }
 
 
 void ObjectT::Decompress(MemoryBuffer &buffer, bool /*log*/)
 {
     Vector3 position = buffer.ReadVector3();
+    Quaternion rotation = buffer.ReadQuaternion();
 
     node_->SetPosition(position);
+
+    node_->SetRotation(rotation);
 }
 
 

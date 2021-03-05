@@ -109,35 +109,46 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 
 EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float timeStep, EngineT &engine)
 {
-    Step &step = engine.algorithm.steps.Front();
+    Quaternion rotate(1.0f, { 0.0f, 1.0f, 0.0f });
 
-    Vector3 position = physics.pos.Get();
+    Quaternion before = physics.rot.Get();
 
-    Vector3 dirToTarget = step.end - position;              // Ќаправление на точку, к которой нужно совершить поворот
-    dirToTarget.Normalize();
+    physics.rot.Set(physics.rot.Get() * rotate);
 
-    Vector3 direction = physics.dir.Get();                  // —юда нацелен наш юнит
+    Quaternion after = physics.rot.Get();
 
-    float angleNeed = direction.Angle(dirToTarget);         // Ќа такой угол нам нужно повернутьс€, чтобы смотреть на
-                                                            // целевую точку
+    after = after;
 
-    float angleCan = physics.max.SpeedRotate() * timeStep;  // ћаксимальный угол, на который можно повернутьс€
-                                                            // в этом кадре
 
-    Vector3 axisRotate = direction.CrossProduct(dirToTarget);
-
-    if (angleCan >= angleNeed)
-    {
-        physics.rot.Set(Quaternion(Vector3::UP, dirToTarget));
-
-        return Result::Finished;
-    }
-    else
-    {
-        Quaternion qutRotate(angleCan, axisRotate);
-
-        physics.rot.Set(Quaternion(Vector3::UP, qutRotate * physics.dir.Get() * physics.mov.GetSpeed()));
-    }
+//    Step &step = engine.algorithm.steps.Front();
+//
+//    Vector3 position = physics.pos.Get();
+//
+//    Vector3 dirToTarget = step.end - position;              // Ќаправление на точку, к которой нужно совершить поворот
+//    dirToTarget.Normalize();
+//
+//    Vector3 direction = physics.dir.Get();                  // —юда нацелен наш юнит
+//
+//    float angleNeed = direction.Angle(dirToTarget);         // Ќа такой угол нам нужно повернутьс€, чтобы смотреть на
+//                                                            // целевую точку
+//
+//    float angleCan = physics.max.SpeedRotate() * timeStep;  // ћаксимальный угол, на который можно повернутьс€
+//                                                            // в этом кадре
+//
+//    Vector3 axisRotate = direction.CrossProduct(dirToTarget);
+//
+//    if (angleCan >= angleNeed)
+//    {
+//        physics.rot.Set(Quaternion(Vector3::UP, dirToTarget));
+//
+//        return Result::Finished;
+//    }
+//    else
+//    {
+//        Quaternion qutRotate(angleCan, axisRotate);
+//
+//        physics.rot.Set(Quaternion(Vector3::UP, qutRotate * physics.dir.Get() * physics.mov.GetSpeed()));
+//    }
 
     return Result::Running;
 }
