@@ -6,6 +6,20 @@
 
 void EngineCalculator::Calculate(Node *node, CommandEngine::E command, EngineAlgorithm &algorithm)
 {
+    CalculateRotate(node, command, algorithm);
+
+    CalculateMovement(node, command, algorithm);
+}
+
+
+void EngineCalculator::CalculateRotate(Node *node, CommandEngine::E command, EngineAlgorithm &algorithm)
+{
+
+}
+
+
+void EngineCalculator::CalculateMovement(Node *node, CommandEngine::E command, EngineAlgorithm &algorithm)
+{
     Step step(Step::Type::Move);
 
     step.start = node->GetPosition();
