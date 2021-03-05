@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "Scene/Objects/Units/UnitsEvents_.h"
 #include "Scene/Objects/Units/Unit_.h"
-#include "Scene/Objects/Units/Accessories/Accessories_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Scene/Objects/Units/UnitC.h"
 
