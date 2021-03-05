@@ -17,3 +17,11 @@ ObjectSpecificC::ObjectSpecificC(ObjectT *object) : ObjectSpecific(object)
 {
 
 }
+
+
+ObjectT *ObjectSpecificC::GetFromID(uint id)
+{
+    ObjectT *object = remoteStorage[id];
+
+    return object ? object : ObjectT::empty;
+}

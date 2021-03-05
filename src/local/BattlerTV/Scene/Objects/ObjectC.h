@@ -11,5 +11,7 @@ public:
 
     ObjectSpecificC(ObjectT *object);
 
+    static ObjectT *GetFromID(uint id);
+
     static HashMap<uint, ObjectT *> remoteStorage;  // Здесь хранятся игровые объекты сцены по id сцены на сервере
 };

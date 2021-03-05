@@ -42,8 +42,6 @@ void SceneT::Decompress(MemoryBuffer &buffer)
     {
         uint id = buffer.ReadUInt();
 
-        ObjectT *object = ObjectSpecificC::remoteStorage[id];
-
-        (object ? object : ObjectT::empty)->Decompress(buffer);
+        ObjectSpecificC::GetFromID(id)->Decompress(buffer);
     }
 }
