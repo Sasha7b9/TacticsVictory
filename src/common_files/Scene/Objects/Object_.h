@@ -156,8 +156,4 @@ private:
     Node *GetNode() const { return Component::GetNode(); }
 
     SharedPtr<StaticModel> staticModel;
-
-public:
-
-    uint GetID() const { return node_->GetID(); }
 };
