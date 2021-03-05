@@ -13,7 +13,7 @@ void EngineCalculator::Calculate(ObjectT *object, CommandEngine::E command, Engi
 }
 
 
-void EngineCalculator::CalculateRotate(ObjectT *object, CommandEngine::E command, EngineAlgorithm & /*algorithm*/)
+void EngineCalculator::CalculateRotate(ObjectT *object, CommandEngine::E command, EngineAlgorithm & algorithm)
 {
 //    float yaw = node->GetRotation().YawAngle();
 
@@ -39,10 +39,12 @@ void EngineCalculator::CalculateRotate(ObjectT *object, CommandEngine::E command
     float angleNeed = direction.Angle(dirToTarget);         // На такой угол нам нужно повернуться, чтобы смотреть на
                                                             // целевую точку
 
-    if (fabsf(angleNeed) > std::numeric_limits<float>::epsilon())
-    {
+    Step step(Step::Type::Rotate);
 
-    }
+    step.start = direction;
+    step.end = dirToTarget;
+
+    algorithm.steps.Push(step);
 }
 
 
