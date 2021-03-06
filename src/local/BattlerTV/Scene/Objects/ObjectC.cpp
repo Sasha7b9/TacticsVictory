@@ -47,10 +47,16 @@ void ObjectSpecificC::OnPostRenderUpdate()
     {
         Node *node = object->GetObjectNode();
 
-        Vector3 start = node->GetWorldPosition();
-        Vector3 delta(0.0f, 1.0f, 0.0f);
-        Vector3 end = start + delta;
+        Vector3 pos = node->GetWorldPosition();
 
-        TheDebugRenderer->AddLine(start, end, Color::GREEN);
+        Vector3 dir = node->GetWorldDirection();
+        Vector3 dir2 = dir + dir;
+
+        TheDebugRenderer->AddLine(pos + Vector3::UP / 20.0f, dir + pos + Vector3::UP / 20.0f, Color::RED);
+        
+        
+//        TheDebugRenderer->AddLine(dir + pos + Vector3(0.0f, 0.1f, 0.0f), dir + pos + Vector3(1.0f, 0.0f, 0.0f), Color::RED);
+//        TheDebugRenderer->AddLine(dir + pos + Vector3(0.0f, 0.1f, 0.0f), dir + pos + Vector3(0.0f, 1.0f, 0.0f), Color::GREEN);
+//        TheDebugRenderer->AddLine(dir + pos + Vector3(0.0f, 0.1f, 0.0f), dir + pos + Vector3(0.0f, 0.0f, 1.0f), Color::BLUE);
     }
 }

@@ -117,8 +117,8 @@ static void Calculate(char *name, PhysicsParameters &physics, Step &step)
 
     float angleNeed = direction.Angle(dirToTarget); // На такой угол нужно повернуть юнита
 
-    LOGINFOF("");
-    LOGINFOF("%s : %f", name, angleNeed);
+//    LOGINFOF("");
+//    LOGINFOF("%s : %f", name, angleNeed);
 }
 
 
