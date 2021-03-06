@@ -37,13 +37,7 @@ void UnitSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
 
             while (it != Unit::storage.End())
             {
-                Unit *unit = *it;
-
-                Node *node = unit->GetObjectNode();
-
-                TileSelected *t = node->GetComponent<TileSelected>();
-
-                t->Disable();
+                (*it)->GetObjectNode()->GetComponent<TileSelected>()->Disable();
 
                 it++;
             }

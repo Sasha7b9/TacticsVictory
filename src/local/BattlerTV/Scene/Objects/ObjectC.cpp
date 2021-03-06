@@ -47,7 +47,7 @@ void ObjectSpecificC::OnPostRenderUpdate()
     {
         Node *node = object->GetObjectNode();
 
-        Vector3 pos = node->GetWorldPosition();
+        Vector3 pos = node->GetWorldPosition() + Vector3::UP / 20.0f;
 
         float d = 1.0f;
 
@@ -55,10 +55,8 @@ void ObjectSpecificC::OnPostRenderUpdate()
         Vector3 up = node->GetWorldUp() * d;
         Vector3 right = node->GetWorldRight() * d;
 
-        Vector3 delta = Vector3::UP / 20.0f;
-
-//        TheDebugRenderer->AddLine(pos + delta, pos + dir + delta, Color::RED);
-//        TheDebugRenderer->AddLine(pos + delta, pos + up + delta, Color::GREEN);
-//        TheDebugRenderer->AddLine(pos + delta, pos + right + delta, Color::BLUE);
+        TheDebugRenderer->AddLine(pos, pos + dir, Color::RED);
+        TheDebugRenderer->AddLine(pos, pos + up, Color::GREEN);
+        TheDebugRenderer->AddLine(pos, pos + right, Color::BLUE);
     }
 }
