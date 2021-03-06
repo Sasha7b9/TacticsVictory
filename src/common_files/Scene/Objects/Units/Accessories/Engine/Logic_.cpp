@@ -150,12 +150,12 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics,
 
     if (angleCan < angleNeed)                       // Если за этот фрейм не получится полностью повернуться
     {
-        Quaternion delta(angleCan, Vector3::UP);
+        Quaternion delta(angleCan, axixRotate);
         physics.rot.ChangeWorld(delta);
         return Result::Running;
     }
 
-    physics.rot.ChangeWorld(Quaternion(angleNeed, Vector3::UP));
+    physics.rot.ChangeWorld(Quaternion(angleNeed, axixRotate));
 
     return Result::Finished;
 }
