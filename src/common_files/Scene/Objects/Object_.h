@@ -70,7 +70,7 @@ protected:
 
     ObjectT(Context *context);
 
-    void LoadFromJSON();
+    bool LoadFromJSON();
 
     void Normalize(float k = 1.0f);
 

@@ -26,7 +26,11 @@ void Tank::Start()
 
     node_->SetVar(VAR_NODE_IS_FLYING, false);
 
-    LoadFromJSON();
+    if (!LoadFromJSON())
+    {
+        LOGERRORF("Can not load json file");
+        return;
+    }
 
     Normalize();
 

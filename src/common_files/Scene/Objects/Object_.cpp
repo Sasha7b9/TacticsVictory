@@ -51,11 +51,19 @@ void ObjectT::DelayedStart()
 }
 
 
-void ObjectT::LoadFromJSON()
+bool ObjectT::LoadFromJSON()
 {
-    String fileName = String("Models/") + GetTypeName() + ".json";
+    String fileName = String("Models/") + GetTypeName() + ".json1";
 
     JSONFile *file(TheCache->GetResource<JSONFile>(fileName));
+
+    if (file == nullptr)
+    {
+        LOGERRORF("Don't load file %s", fileName.CString());
+        TheEngine->Exit();
+
+        return false;
+    }
 
     JSONValue &root = file->GetRoot();
     JSONValue modelValue = root.Get("model");
@@ -76,6 +84,8 @@ void ObjectT::LoadFromJSON()
     Quaternion rotate(shift->rotate, Vector3::UP);
     node_->SetRotation(Quaternion(0, Vector3::UP));
     node_->Rotate(rotate);
+
+    return true;
 }
 
 
