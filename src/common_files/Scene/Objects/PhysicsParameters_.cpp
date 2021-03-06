@@ -19,9 +19,9 @@ Vector3 DirectionPP::GetWorldDir() const
 {
     Vector3 dir = object->GetObjectNode()->GetWorldDirection();
 
-//    Quaternion rotate()
+    Quaternion rotate(object->shift->rotateY, Vector3::UP);
 
-    return dir;
+    return rotate * dir;
 }
 
 
@@ -33,7 +33,11 @@ Vector3 DirectionPP::GetWorldUp() const
 
 Vector3 DirectionPP::GetWorldRight() const
 {
-    return object->GetObjectNode()->GetWorldRight();
+    Vector3 dir = object->GetObjectNode()->GetWorldRight();
+
+    Quaternion rotate(object->shift->rotateY, Vector3::UP);
+
+    return rotate * dir;
 }
 
 

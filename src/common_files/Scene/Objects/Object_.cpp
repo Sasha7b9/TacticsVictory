@@ -77,11 +77,9 @@ bool ObjectT::LoadFromJSON()
     staticModel->ApplyMaterialList(fileMaterials);
     staticModel->SetCastShadows(true);
 
-//    speed = root.Get("speed").GetFloat();
-
     shift->rotateY = root.Get("deltaRotateY").GetFloat();
 
-    physics->rot.Set(Quaternion(0.0f, Vector3::UP));
+    physics->rot.Set(Quaternion(-90.0f, Vector3::UP));
 
     return true;
 }

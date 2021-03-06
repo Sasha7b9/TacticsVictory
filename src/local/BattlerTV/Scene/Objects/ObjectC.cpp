@@ -47,15 +47,13 @@ void ObjectSpecificC::OnPostRenderUpdate()
     {
         PhysicsParameters &physics = *object->physics;
 
-        Node *node = object->GetObjectNode();
-
         Vector3 pos = physics.pos.Get() + Vector3::UP / 20.0f;
 
         float d = 1.0f;
 
         Vector3 dir = physics.dir.GetWorldDir() * d;
-        Vector3 up = node->GetWorldUp() * d;
-        Vector3 right = node->GetWorldRight() * d;
+        Vector3 up = physics.dir.GetWorldUp() * d;
+        Vector3 right = physics.dir.GetWorldRight() * d;
 
         TheDebugRenderer->AddLine(pos, pos + dir, Color::RED);
         TheDebugRenderer->AddLine(pos, pos + up, Color::GREEN);
