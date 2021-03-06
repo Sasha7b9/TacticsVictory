@@ -60,7 +60,7 @@ void Message::CreateGameObject::Handle(MemoryBuffer &msg)
 
     ObjectT *object = (ObjectT *)TheScene->CreateChild("", LOCAL)->CreateComponent(hashTypeObject, LOCAL);
 
-    object->physics->pos.Set(position);
+    object->physics->pos.SetWorld(position);
 
     object->physics->rot.SetWorld(rotation);
 

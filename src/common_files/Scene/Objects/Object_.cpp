@@ -87,7 +87,7 @@ bool ObjectT::LoadFromJSON()
 
 void ObjectT::Normalize(float k)
 {
-    Vector3 pos = physics->pos.Get();
+    Vector3 pos = physics->pos.GetWorld();
     node_->SetPosition(Vector3::ZERO);
     node_->SetScale(1.0f);
 
@@ -105,7 +105,7 @@ void ObjectT::Normalize(float k)
 
     node_->SetScale(scale);
 
-    physics->pos.Set(pos);
+    physics->pos.SetWorld(pos);
 }
 
 

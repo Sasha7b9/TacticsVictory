@@ -15,7 +15,7 @@ void EngineCalculator::Calculate(PhysicsParameters &physics, CommandEngine::E co
 
 void EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm & algorithm)
 {
-    Vector3 position = physics.pos.Get();
+    Vector3 position = physics.pos.GetWorld();
 
     Vector3 target = position;
 
@@ -46,7 +46,7 @@ void EngineCalculator::CalculateMovement(PhysicsParameters &physics, CommandEngi
 {
     Step step(Step::Type::Move);
 
-    step.end = physics.pos.Get();
+    step.end = physics.pos.GetWorld();
 
     switch (command)
     {
@@ -85,7 +85,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 {
     Step &step = engine.algorithm.steps.Front();
 
-    Vector3 currentPos = physics.pos.Get();
+    Vector3 currentPos = physics.pos.GetWorld();
 
     float dist = physics.max.SpeedMove() * timeStep;        // Нужно проехать
 
@@ -93,7 +93,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 
     if (dist >= delta)                                      // Если проедем больше, чем нужно
     {
-        physics.pos.Set(step.end);
+        physics.pos.SetWorld(step.end);
 
         return EngineExecutor::Result::Finished;            // То завершаем выполение шага
     }
@@ -101,7 +101,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
     Vector3 direction = (step.end - currentPos);
     direction.Normalize();
 
-    physics.pos.Set(currentPos + direction * dist);
+    physics.pos.SetWorld(currentPos + direction * dist);
 
     return Result::Running;
 }
@@ -109,7 +109,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 
 static void Calculate(char * /*name*/, PhysicsParameters &physics, Step &step)
 {
-    Vector3 position = physics.pos.Get();
+    Vector3 position = physics.pos.GetWorld();
     Vector3 dirToTarget = step.end - position;
     dirToTarget.Normalize();                        // Направление на цель
 

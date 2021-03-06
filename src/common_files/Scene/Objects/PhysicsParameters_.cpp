@@ -3,13 +3,13 @@
 #include "Scene/Objects/PhysicsParameters_.h"
 
 
-Vector3 PositionPP::Get() const
+Vector3 PositionPP::GetWorld() const
 {
     return object->GetObjectNode()->GetPosition() /*- object->shift->position*/;
 }
 
 
-void PositionPP::Set(const Vector3 &position)
+void PositionPP::SetWorld(const Vector3 &position)
 {
     object->GetObjectNode()->SetPosition(position /* + object->shift->position*/);
 }

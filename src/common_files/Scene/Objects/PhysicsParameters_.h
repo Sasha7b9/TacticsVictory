@@ -61,9 +61,9 @@ struct PositionPP
 {
     PositionPP(ObjectT *_object) : object(_object) {}
 
-    Vector3 Get() const;                    // Возвращает реальную позицию в мире
+    Vector3 GetWorld() const;                    // Возвращает реальную позицию в мире
 
-    void Set(const Vector3 &position);      // Устанавливает позицию в мире с учётом смещения
+    void SetWorld(const Vector3 &position);      // Устанавливает позицию в мире с учётом смещения
 
 private:
 

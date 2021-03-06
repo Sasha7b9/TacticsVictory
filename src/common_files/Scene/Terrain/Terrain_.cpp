@@ -195,5 +195,5 @@ void TerrainT::PutIn(ObjectT *object, uint colZ, uint rowX)
 {
     float height = GetHeight(colZ, rowX);
 
-    object->physics->pos.Set({ (float)rowX, height, (float)colZ });
+    object->physics->pos.SetWorld({ (float)rowX, height, (float)colZ });
 }

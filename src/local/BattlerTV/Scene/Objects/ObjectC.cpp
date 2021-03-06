@@ -47,7 +47,7 @@ void ObjectSpecificC::OnPostRenderUpdate()
     {
         PhysicsParameters &physics = *object->physics;
 
-        Vector3 pos = physics.pos.Get() + Vector3::UP / 20.0f;
+        Vector3 pos = physics.pos.GetWorld() + Vector3::UP / 20.0f;
 
         float d = 1.0f;
 
