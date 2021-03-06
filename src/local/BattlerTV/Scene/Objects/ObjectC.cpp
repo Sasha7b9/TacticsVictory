@@ -45,9 +45,11 @@ void ObjectSpecificC::OnPostRenderUpdate()
 {
     if (TheBattler->drawDebug)
     {
+        PhysicsParameters &physics = *object->physics;
+
         Node *node = object->GetObjectNode();
 
-        Vector3 pos = node->GetWorldPosition() + Vector3::UP / 20.0f;
+        Vector3 pos = physics.pos.Get() + Vector3::UP / 20.0f;
 
         float d = 1.0f;
 

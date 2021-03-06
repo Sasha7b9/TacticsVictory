@@ -17,7 +17,7 @@ public:
 
     ShiftParameters() : Object(TheContext) {}
 
-//    float rotate = 0.0f;               // Поворот модели относительно направления ноды
+    float rotateY = 0.0f;               // Поворот модели относительно направления ноды
 //    Vector3 position = Vector3::ZERO;  // Если модель не выровнена относительно начала координат, здесь смещение
 };
 

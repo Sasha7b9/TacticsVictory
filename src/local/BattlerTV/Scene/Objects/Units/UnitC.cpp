@@ -16,11 +16,6 @@ UnitSpecificC::UnitSpecificC(Unit *object) : ObjectSpecificC(object)
 {
     tile = object->GetObjectNode()->CreateComponent<TileSelected>(LOCAL);
 
-    if (tile == nullptr)
-    {
-        tile = tile;
-    }
-
     SubscribeToEvent(EU_MOUSE_CLICK, URHO3D_HANDLER(UnitSpecificC, HandleMouseClick));
 }
 

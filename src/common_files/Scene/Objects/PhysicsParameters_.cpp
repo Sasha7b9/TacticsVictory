@@ -30,6 +30,10 @@ Quaternion RotationPP::Get() const
 void RotationPP::Set(const Quaternion &rotation)
 {
     object->GetObjectNode()->SetRotation(rotation);
+
+//    Quaternion shift(object->shift->rotateY, Vector3::UP);
+//
+//    object->GetObjectNode()->Rotate(shift);
 }
 
 

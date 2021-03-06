@@ -5,5 +5,5 @@
     },
 
     "speed": 1,
-    "deltaRotate" : 90
+    "deltaRotateY" : 90
 }

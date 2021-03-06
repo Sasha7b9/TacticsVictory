@@ -79,11 +79,9 @@ bool ObjectT::LoadFromJSON()
 
 //    speed = root.Get("speed").GetFloat();
 
-//    shift->rotate = root.Get("deltaRotate").GetFloat();
+    shift->rotateY = root.Get("deltaRotateY").GetFloat();
 
-//    Quaternion rotate(shift->rotate, Vector3::UP);
-//    node_->SetRotation(Quaternion(0, Vector3::UP));
-//    node_->Rotate(rotate);
+    physics->rot.Set(Quaternion(0.0f, Vector3::UP));
 
     return true;
 }
