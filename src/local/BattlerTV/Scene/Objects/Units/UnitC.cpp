@@ -28,9 +28,19 @@ void UnitSpecificC::HandleMouseClick(StringHash, VariantMap &eventData)
     {
         if (!eventData[P_CTRL_PRESSED].GetBool())
         {
-            for (Unit *o : Unit::storage)
+            RandomAccessIterator<Unit *> it = Unit::storage.Begin();
+
+            while (it != Unit::storage.End())
             {
-                o->GetObjectNode()->GetComponent<TileSelected>()->Disable();
+                Unit *unit = *it;
+
+                Node *node = unit->GetObjectNode();
+
+                TileSelected *t = node->GetComponent<TileSelected>();
+
+                t->Disable();
+
+                it++;
             }
         }
 

@@ -57,8 +57,8 @@ void ObjectSpecificC::OnPostRenderUpdate()
 
         Vector3 delta = Vector3::UP / 20.0f;
 
-        TheDebugRenderer->AddLine(pos + delta, pos + dir + delta, Color::RED);
-        TheDebugRenderer->AddLine(pos + delta, pos + up + delta, Color::GREEN);
-        TheDebugRenderer->AddLine(pos + delta, pos + right + delta, Color::BLUE);
+//        TheDebugRenderer->AddLine(pos + delta, pos + dir + delta, Color::RED);
+//        TheDebugRenderer->AddLine(pos + delta, pos + up + delta, Color::GREEN);
+//        TheDebugRenderer->AddLine(pos + delta, pos + right + delta, Color::BLUE);
     }
 }

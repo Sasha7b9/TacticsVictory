@@ -21,7 +21,7 @@ void Battler::HandlePostRenderUpdate(StringHash, VariantMap&)
         TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 1000.0f}, Color::BLUE);
     }
 
-    auto key = ObjectSpecificC::remoteStorage.Begin();
+    HashMap<uint, ObjectT *>::Iterator key = ObjectSpecificC::remoteStorage.Begin();
 
     while (key->second_)
     {
