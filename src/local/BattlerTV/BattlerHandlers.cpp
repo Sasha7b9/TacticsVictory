@@ -27,7 +27,10 @@ void Battler::HandlePostRenderUpdate(StringHash, VariantMap&)
         {
             ObjectT *object = key.second_;
 
-            object->OnPostRenderUpdate();
+            if (object)
+            {
+                object->OnPostRenderUpdate();
+            }
         }
     }
 }

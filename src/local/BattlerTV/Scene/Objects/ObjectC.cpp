@@ -49,7 +49,6 @@ void ObjectSpecificC::OnPostRenderUpdate()
 
         Vector3 start = node->GetWorldPosition();
         Vector3 delta(0.0f, 1.0f, 0.0f);
-        delta *= node->GetWorldScale();
         Vector3 end = start + delta;
 
         TheDebugRenderer->AddLine(start, end, Color::GREEN);
