@@ -7,7 +7,7 @@
 
 void EngineCalculator::Calculate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm)
 {
-//    CalculateRotate(physics, command, algorithm);
+    CalculateRotate(physics, command, algorithm);
 
     CalculateMovement(physics, command, algorithm);
 }
@@ -29,14 +29,9 @@ void EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine
         break;
     }
 
-    Vector3 dirToTarget = target - position;                // Направление на точку, к которой нужно совершить поворот
-    dirToTarget.Normalize();
-
-    Vector3 direction = physics.dir.GetWorldDir();    // Направление движения нашего юнита
-
     Step step(Step::Type::Rotate);
 
-    step.end = dirToTarget;
+    step.endPos = target;
 
     algorithm.steps.Push(step);
 }
@@ -46,14 +41,14 @@ void EngineCalculator::CalculateMovement(PhysicsParameters &physics, CommandEngi
 {
     Step step(Step::Type::Move);
 
-    step.end = physics.pos.GetWorld();
+    step.endPos = physics.pos.GetWorld();
 
     switch (command)
     {
-    case CommandEngine::MoveToNorth:    step.end.x_ -= 1.0f;    break;
-    case CommandEngine::MoveToEast:     step.end.z_ += 1.0f;    break;
-    case CommandEngine::MoveToSouth:    step.end.x_ += 1.0f;    break;
-    case CommandEngine::MoveToWest:     step.end.z_ -= 1.0f;    break;
+    case CommandEngine::MoveToNorth:    step.endPos.x_ -= 1.0f;    break;
+    case CommandEngine::MoveToEast:     step.endPos.z_ += 1.0f;    break;
+    case CommandEngine::MoveToSouth:    step.endPos.x_ += 1.0f;    break;
+    case CommandEngine::MoveToWest:     step.endPos.z_ -= 1.0f;    break;
     case CommandEngine::None:
         break;
     }
@@ -89,16 +84,16 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 
     float dist = physics.max.SpeedMove() * timeStep;        // Нужно проехать
 
-    float delta = (step.end - currentPos).Length();         // Осталось до конечной точки
+    float delta = (step.endPos - currentPos).Length();      // Осталось до конечной точки
 
     if (dist >= delta)                                      // Если проедем больше, чем нужно
     {
-        physics.pos.SetWorld(step.end);
+        physics.pos.SetWorld(step.endPos);
 
         return EngineExecutor::Result::Finished;            // То завершаем выполение шага
     }
 
-    Vector3 direction = (step.end - currentPos);
+    Vector3 direction = (step.endPos - currentPos);
     direction.Normalize();
 
     physics.pos.SetWorld(currentPos + direction * dist);
@@ -107,54 +102,48 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 }
 
 
-static void Calculate(char * /*name*/, PhysicsParameters &physics, Step &step)
+static void Calculate(char *name, PhysicsParameters &physics, Step &step)
 {
     Vector3 position = physics.pos.GetWorld();
-    Vector3 dirToTarget = step.end - position;
+    Vector3 dirToTarget = step.endPos - position;
     dirToTarget.Normalize();                        // Направление на цель
 
     Vector3 direction = physics.dir.GetWorldDir();          // Направление нашего юнита
 
-//    float angleNeed = direction.Angle(dirToTarget); // На такой угол нужно повернуть юнита
+    float angleNeed = direction.Angle(dirToTarget); // На такой угол нужно повернуть юнита
 
-//    LOGINFOF("");
-//    LOGINFOF("%s : %f", name, angleNeed);
+    LOGINFOF("");
+    LOGINFOF("%s : %f", name, angleNeed);
+}
+
+
+Vector3 CalcualteDirToTarget(PhysicsParameters &physics, Step &step)
+{
+    Vector3 position = physics.pos.GetWorld();
+    Vector3 dirToTarget = step.endPos - position;
+    dirToTarget.Normalize();
+    return dirToTarget;
 }
 
 
 EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float timeStep, EngineT &engine)
 {
+    PhysicsParameters *pointer = &physics;
+
     Step &step = engine.algorithm.steps.Front();
 
-    Calculate("before", physics, step);
+    Vector3 dirToTarget = CalcualteDirToTarget(physics, step);
+
+    Vector3 dir = physics.dir.GetWorldDir();
+
+    if (dir.Equals(dirToTarget))
+    {
+        return Result::Finished;
+    }
 
     Quaternion delta(physics.max.SpeedRotate() * timeStep, { 0.0f, 1.0f, 0.0f });
 
     physics.rot.ChangeWorld(delta);
-
-    Calculate("after", physics, step);
-
-
-//    float angleNeed = direction.Angle(dirToTarget);         // На такой угол нам нужно повернуться, чтобы смотреть на
-//                                                            // целевую точку
-//
-//    float angleCan = physics.max.SpeedRotate() * timeStep;  // Максимальный угол, на который можно повернуться
-//                                                            // в этом кадре
-//
-//    Vector3 axisRotate = direction.CrossProduct(dirToTarget);
-//
-//    if (angleCan >= angleNeed)
-//    {
-//        physics.rot.Set(Quaternion(Vector3::UP, dirToTarget));
-//
-//        return Result::Finished;
-//    }
-//    else
-//    {
-//        Quaternion qutRotate(angleCan, axisRotate);
-//
-//        physics.rot.Set(Quaternion(Vector3::UP, qutRotate * physics.dir.Get() * physics.mov.GetSpeed()));
-//    }
 
     return Result::Running;
 }

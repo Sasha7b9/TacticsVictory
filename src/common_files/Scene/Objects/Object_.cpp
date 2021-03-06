@@ -81,6 +81,8 @@ bool ObjectT::LoadFromJSON()
 
     physics->rot.SetWorld(Quaternion(-90.0f, Vector3::UP));
 
+    Quaternion rotation = physics->rot.GetWorld();
+
     return true;
 }
 
