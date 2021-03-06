@@ -21,17 +21,11 @@ void Battler::HandlePostRenderUpdate(StringHash, VariantMap&)
         TheDebugRenderer->AddLine(Vector3::ZERO, {0.0f, 0.0f, 1000.0f}, Color::BLUE);
     }
 
-    if (ObjectSpecificC::remoteStorage.Size() != 0)
-    {
-        for (auto key : ObjectSpecificC::remoteStorage)
-        {
-            ObjectT *object = key.second_;
+    auto key = ObjectSpecificC::remoteStorage.Begin();
 
-            if (object)
-            {
-                object->OnPostRenderUpdate();
-            }
-        }
+    while (key->second_)
+    {
+        (key++)->second_->OnPostRenderUpdate();
     }
 }
 
