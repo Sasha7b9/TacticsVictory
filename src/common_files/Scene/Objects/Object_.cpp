@@ -53,7 +53,7 @@ void ObjectT::DelayedStart()
 
 bool ObjectT::LoadFromJSON()
 {
-    String fileName = String("Models/") + GetTypeName() + ".json1";
+    String fileName = String("Models/") + GetTypeName() + ".json";
 
     JSONFile *file(TheCache->GetResource<JSONFile>(fileName));
 
@@ -79,11 +79,11 @@ bool ObjectT::LoadFromJSON()
 
 //    speed = root.Get("speed").GetFloat();
 
-    shift->rotate = root.Get("deltaRotate").GetFloat();
+//    shift->rotate = root.Get("deltaRotate").GetFloat();
 
-    Quaternion rotate(shift->rotate, Vector3::UP);
-    node_->SetRotation(Quaternion(0, Vector3::UP));
-    node_->Rotate(rotate);
+//    Quaternion rotate(shift->rotate, Vector3::UP);
+//    node_->SetRotation(Quaternion(0, Vector3::UP));
+//    node_->Rotate(rotate);
 
     return true;
 }
@@ -103,9 +103,9 @@ void ObjectT::Normalize(float k)
 
     Vector3 scale = Vector3::ONE * k / divider;
 
-    shift->position.y_ = -box.min_.y_ * k / divider;
-    shift->position.z_ = -(box.max_.z_ + box.min_.z_) * k / 2.0f / divider;
-    shift->position.x_ = (box.max_.x_ + box.min_.x_) * k / 2.0f / divider;
+//    shift->position.y_ = -box.min_.y_ * k / divider;
+//    shift->position.z_ = -(box.max_.z_ + box.min_.z_) * k / 2.0f / divider;
+//    shift->position.x_ = (box.max_.x_ + box.min_.x_) * k / 2.0f / divider;
 
     node_->SetScale(scale);
 
