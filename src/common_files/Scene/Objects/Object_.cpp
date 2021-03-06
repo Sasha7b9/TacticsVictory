@@ -40,14 +40,14 @@ void ObjectT::OnNodeSet(Node *node)
 void ObjectT::Start()
 {
     LogicComponent::Start();
+
+    CreateSpecific();
 }
 
 
 void ObjectT::DelayedStart()
 {
     LogicComponent::DelayedStart();
-
-    CreateSpecific();
 }
 
 
