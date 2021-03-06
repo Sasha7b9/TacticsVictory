@@ -34,11 +34,13 @@ public:
 
     virtual void Update(float /*timeStep*/) {};
 
+    virtual void OnPostRenderUpdate() {};
+
 protected:
 
     ObjectSpecific(ObjectT *_object);
 
-    ObjectT *object = nullptr;
+    ObjectT *object       = nullptr;
 };
 
 
@@ -49,21 +51,20 @@ class ObjectT : public LogicComponent
 
 public:
 
-    SharedPtr<ShiftParameters> shift;               // Используется для приведения параметров модели к текущей сцене
-
-    static Vector<ObjectT *> storage;               // Здесь хранятся все объекты типа ObjectT (и их подклассы)
-
-    SharedPtr<PhysicsParameters> physics;           // Параметры в физическом мире. Такие как координаты
-
     // Упаковать состояние объекта для передачи по сети
     virtual void Compress(VectorBuffer &buffer);
 
     // Распаковать состояние объекта, принятого по сети
     virtual void Decompress(MemoryBuffer &buffer);
 
+    virtual void OnPostRenderUpdate();
+
     Node *GetObjectNode() const { return Component::GetNode(); }
 
-    static ObjectT *empty;
+    SharedPtr<ShiftParameters>   shift;     // Используется для приведения параметров модели к текущей сцене
+    static Vector<ObjectT *>     storage;   // Здесь хранятся все объекты типа ObjectT (и их подклассы)
+    SharedPtr<PhysicsParameters> physics;   // Параметры в физическом мире. Такие как координаты
+    static ObjectT              *empty;     // Этот объект используется в качестве null-объекта
 
 protected:
 
@@ -84,12 +85,14 @@ protected:
     virtual void Update(float time) override;
 
     // Возвращает глубину вложенности node_ (относительно корневой ноды сцены)
-    int NestingDepth();
+    int NestingDepth() const;
 
     SharedPtr<ObjectSpecific> specific;         // Клиент/сервер специфичные параметры
 
 private:
 
+    // Непосредственный доступ к ноде запрещён в большинстве случаев. Там, где это необходимо, нужно использовать
+    // GetObjectNode.
     Node *GetNode() const { return Component::GetNode(); }
 
     SharedPtr<StaticModel> staticModel;

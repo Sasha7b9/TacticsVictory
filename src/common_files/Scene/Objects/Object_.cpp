@@ -131,7 +131,13 @@ void ObjectT::Decompress(MemoryBuffer &buffer)
 }
 
 
-int ObjectT::NestingDepth()
+void ObjectT::OnPostRenderUpdate()
+{
+    specific->OnPostRenderUpdate();
+}
+
+
+int ObjectT::NestingDepth() const
 {
     int result = 0;
 

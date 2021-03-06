@@ -1,5 +1,6 @@
 // 2021/02/26 16:25:51 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Battler.h"
 #include "Scene/Objects/Object_.h"
 #include "Scene/Objects/ObjectC.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
@@ -37,4 +38,20 @@ ObjectT *ObjectSpecificC::GetFromID(uint id)
     }
 
     return ObjectT::empty;
+}
+
+
+void ObjectSpecificC::OnPostRenderUpdate()
+{
+    if (TheBattler->drawDebug)
+    {
+        Node *node = object->GetObjectNode();
+
+        Vector3 start = node->GetWorldPosition();
+        Vector3 delta(0.0f, 1.0f, 0.0f);
+        delta *= node->GetWorldScale();
+        Vector3 end = start + delta;
+
+        TheDebugRenderer->AddLine(start, end, Color::GREEN);
+    }
 }

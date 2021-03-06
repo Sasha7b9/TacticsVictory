@@ -15,8 +15,9 @@ public:
     virtual void Start();
     virtual void Stop();
 
-private:
     bool drawDebug = false;
+
+private:
 
     void OpenLog();
     void RegistrationComponets();
