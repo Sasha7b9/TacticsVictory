@@ -15,9 +15,25 @@ void PositionPP::Set(const Vector3 &position)
 }
 
 
-Vector3 DirectionPP::Get() const
+Vector3 DirectionPP::GetWorldDir() const
 {
-    return object->GetObjectNode()->GetDirection();
+    Vector3 dir = object->GetObjectNode()->GetWorldDirection();
+
+//    Quaternion rotate()
+
+    return dir;
+}
+
+
+Vector3 DirectionPP::GetWorldUp() const
+{
+    return object->GetObjectNode()->GetWorldUp();
+}
+
+
+Vector3 DirectionPP::GetWorldRight() const
+{
+    return object->GetObjectNode()->GetWorldRight();
 }
 
 
@@ -31,9 +47,9 @@ void RotationPP::Set(const Quaternion &rotation)
 {
     object->GetObjectNode()->SetRotation(rotation);
 
-//    Quaternion shift(object->shift->rotateY, Vector3::UP);
-//
-//    object->GetObjectNode()->Rotate(shift);
+    Quaternion shift(object->shift->rotateY, Vector3::UP);
+
+    object->GetObjectNode()->Rotate(shift);
 }
 
 

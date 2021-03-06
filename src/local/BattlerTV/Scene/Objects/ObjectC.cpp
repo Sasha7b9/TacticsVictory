@@ -53,7 +53,7 @@ void ObjectSpecificC::OnPostRenderUpdate()
 
         float d = 1.0f;
 
-        Vector3 dir = node->GetWorldDirection() * d;
+        Vector3 dir = physics.dir.GetWorldDir() * d;
         Vector3 up = node->GetWorldUp() * d;
         Vector3 right = node->GetWorldRight() * d;
 

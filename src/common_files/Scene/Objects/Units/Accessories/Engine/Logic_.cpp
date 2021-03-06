@@ -32,7 +32,7 @@ void EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine
     Vector3 dirToTarget = target - position;                // Направление на точку, к которой нужно совершить поворот
     dirToTarget.Normalize();
 
-    Vector3 direction = physics.dir.Get();    // Направление движения нашего юнита
+    Vector3 direction = physics.dir.GetWorldDir();    // Направление движения нашего юнита
 
     Step step(Step::Type::Rotate);
 
@@ -113,7 +113,7 @@ static void Calculate(char * /*name*/, PhysicsParameters &physics, Step &step)
     Vector3 dirToTarget = step.end - position;
     dirToTarget.Normalize();                        // Направление на цель
 
-    Vector3 direction = physics.dir.Get();          // Направление нашего юнита
+    Vector3 direction = physics.dir.GetWorldDir();          // Направление нашего юнита
 
 //    float angleNeed = direction.Angle(dirToTarget); // На такой угол нужно повернуть юнита
 

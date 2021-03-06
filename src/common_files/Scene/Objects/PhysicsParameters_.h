@@ -44,9 +44,11 @@ private:
 //----------------------------------------------------------------------------------------------------------------------
 struct DirectionPP
 {
-    DirectionPP(ObjectT *_object) : object(_object) {}
+    DirectionPP(ObjectT *_object) : object(_object) { }
 
-    Vector3 Get() const;                    // Возвращает направление движения (даже если объект неподвижен)
+    Vector3 GetWorldDir() const;
+    Vector3 GetWorldUp() const;
+    Vector3 GetWorldRight() const;
 
 private:
 

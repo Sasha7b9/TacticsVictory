@@ -20,9 +20,9 @@ ObjectT::ObjectT(Context *context) : LogicComponent(context)
 {
     shift = new ShiftParameters();
 
-    physics = new PhysicsParameters(this);
-
     storage.Push(this);
+
+    physics = new PhysicsParameters(this);
 }
 
 
