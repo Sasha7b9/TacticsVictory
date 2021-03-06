@@ -27,11 +27,11 @@ struct RotationPP
 
     float GetSpeed() const { return speedRotate; };
 
-    Quaternion Get() const;
+    Quaternion GetWorld() const;
 
-    void Set(const Quaternion &rotation);
+    void SetWorld(const Quaternion &rotation);
 
-    void Change(const Quaternion &delta);
+    void ChangeWorld(const Quaternion &delta);
 
 private:
 

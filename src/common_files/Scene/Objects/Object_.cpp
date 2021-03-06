@@ -79,7 +79,7 @@ bool ObjectT::LoadFromJSON()
 
     shift->rotateY = root.Get("deltaRotateY").GetFloat();
 
-    physics->rot.Set(Quaternion(-90.0f, Vector3::UP));
+    physics->rot.SetWorld(Quaternion(-90.0f, Vector3::UP));
 
     return true;
 }

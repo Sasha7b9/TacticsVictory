@@ -130,7 +130,7 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics,
 
     Quaternion delta(physics.max.SpeedRotate() * timeStep, { 0.0f, 1.0f, 0.0f });
 
-    physics.rot.Change(delta);
+    physics.rot.ChangeWorld(delta);
 
     Calculate("after", physics, step);
 

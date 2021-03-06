@@ -41,13 +41,13 @@ Vector3 DirectionPP::GetWorldRight() const
 }
 
 
-Quaternion RotationPP::Get() const
+Quaternion RotationPP::GetWorld() const
 {
     return object->GetObjectNode()->GetRotation();
 }
 
 
-void RotationPP::Set(const Quaternion &rotation)
+void RotationPP::SetWorld(const Quaternion &rotation)
 {
     object->GetObjectNode()->SetRotation(rotation);
 
@@ -57,7 +57,7 @@ void RotationPP::Set(const Quaternion &rotation)
 }
 
 
-void RotationPP::Change(const Quaternion &delta)
+void RotationPP::ChangeWorld(const Quaternion &delta)
 {
     object->GetObjectNode()->Rotate(delta);
 }

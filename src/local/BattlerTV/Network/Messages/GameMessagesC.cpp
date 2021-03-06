@@ -62,7 +62,7 @@ void Message::CreateGameObject::Handle(MemoryBuffer &msg)
 
     object->physics->pos.Set(position);
 
-    object->physics->rot.Set(rotation);
+    object->physics->rot.SetWorld(rotation);
 
     ObjectSpecificC::remoteStorage[idNode] = object;
 }
