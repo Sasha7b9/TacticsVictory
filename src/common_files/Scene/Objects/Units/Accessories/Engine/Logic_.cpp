@@ -107,7 +107,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 }
 
 
-static void Calculate(char *name, PhysicsParameters &physics, Step &step)
+static void Calculate(char * /*name*/, PhysicsParameters &physics, Step &step)
 {
     Vector3 position = physics.pos.Get();
     Vector3 dirToTarget = step.end - position;
@@ -115,7 +115,7 @@ static void Calculate(char *name, PhysicsParameters &physics, Step &step)
 
     Vector3 direction = physics.dir.Get();          // Направление нашего юнита
 
-    float angleNeed = direction.Angle(dirToTarget); // На такой угол нужно повернуть юнита
+//    float angleNeed = direction.Angle(dirToTarget); // На такой угол нужно повернуть юнита
 
 //    LOGINFOF("");
 //    LOGINFOF("%s : %f", name, angleNeed);

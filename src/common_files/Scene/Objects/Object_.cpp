@@ -51,8 +51,10 @@ void ObjectT::DelayedStart()
 }
 
 
-void ObjectT::LoadFromJSON(const String &fileName)
+void ObjectT::LoadFromJSON()
 {
+    String fileName = String("Models/") + GetTypeName() + ".json";
+
     JSONFile *file(TheCache->GetResource<JSONFile>(fileName));
 
     JSONValue &root = file->GetRoot();
