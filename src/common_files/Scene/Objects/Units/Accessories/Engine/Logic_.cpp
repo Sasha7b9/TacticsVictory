@@ -123,25 +123,29 @@ Vector3 CalcualteDirToTarget(PhysicsParameters &physics, Step &step)
 }
 
 
+static float CalculateDelta(PhysicsParameters &physics, Step &step)
+{
+    Vector3 dirToTarget = CalcualteDirToTarget(physics, step);
+
+    Vector3 dir = physics.dir.GetWorldDir();
+
+    return (dir - dirToTarget).Length();
+}
+
+
 EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float timeStep, EngineT &engine)
 {
     PhysicsParameters *pointer = &physics;
 
     Step &step = engine.algorithm.steps.Front();
 
-    Vector3 dirToTarget = CalcualteDirToTarget(physics, step);
-
-    Vector3 dir = physics.dir.GetWorldDir();
-
-    float abs = (dir - dirToTarget).Length();
+    float abs = CalculateDelta(physics, step);
 
     Quaternion delta(physics.max.SpeedRotate() * timeStep, { 0.0f, 1.0f, 0.0f });
 
     physics.rot.ChangeWorld(delta);
 
-    dir = physics.dir.GetWorldUp();
-
-    if ((dir - dirToTarget).Length() > abs)
+    if (CalculateDelta(physics, step) > abs)
     {
         return Result::Finished;
     }
