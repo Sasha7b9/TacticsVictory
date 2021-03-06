@@ -47,6 +47,8 @@ public:
 
     bool IsFinished() const { return steps.Empty(); }
 
+    Step &GetStep() { return steps.Front(); }
+
     List<Step> steps;     // Здесь хранятся шаги алгоритма - от первого к последнему. Когда заканчивается
                           // выполнение шага [0], он удаляется.
 };
@@ -87,9 +89,9 @@ public:
     };
 
     // Выполняет текуцщий (т.е. нулевой) шаг алгоритма. Если выполнение шага закончено - возвращает Result::Finished
-    Result Execute(PhysicsParameters &physics, float timeStep, EngineT &engine);
+    Result Execute(PhysicsParameters &physics, float dT, EngineT &engine);
 
-    Result ExecuteRotate(PhysicsParameters &physics, float timeStep, EngineT &engine);
+    Result ExecuteRotate(PhysicsParameters &physics, float dT, EngineT &engine);
 
-    Result ExecuteMovement(PhysicsParameters &physics, float timeStep, EngineT &engine);
+    Result ExecuteMovement(PhysicsParameters &physics, float dT, EngineT &engine);
 };

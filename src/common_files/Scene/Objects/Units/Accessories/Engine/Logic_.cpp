@@ -133,22 +133,29 @@ static float CalculateDelta(PhysicsParameters &physics, Step &step)
 }
 
 
-EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float timeStep, EngineT &engine)
+EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float dT, EngineT &engine)
 {
-    PhysicsParameters *pointer = &physics;
+    Vector3 &endPos = engine.algorithm.GetStep().endPos;            // К этой точке нужно повернуться
 
-    Step &step = engine.algorithm.steps.Front();
+    Vector3 dir = physics.dir.GetWorldDir();                        // Направление движения юнита
 
-    float abs = CalculateDelta(physics, step);
+    Vector3 dirToEndPos = endPos - physics.pos.GetWorld();
+    dirToEndPos.Normalize();                                        // Направление на цель
 
-    Quaternion delta(physics.max.SpeedRotate() * timeStep, { 0.0f, 1.0f, 0.0f });
+    float angleNeed = dir.Angle(dirToEndPos);
 
-    physics.rot.ChangeWorld(delta);
+    float angleCan = physics.max.SpeedRotate() * dT;
 
-    if (CalculateDelta(physics, step) > abs)
+    Vector3 axixRotate = dir.CrossProduct(dirToEndPos);
+
+    if (angleCan < angleNeed)                       // Если за этот фрейм не получится полностью повернуться
     {
-        return Result::Finished;
+        Quaternion delta(angleCan, Vector3::UP);
+        physics.rot.ChangeWorld(delta);
+        return Result::Running;
     }
 
-    return Result::Running;
+    physics.rot.ChangeWorld(Quaternion(angleNeed, Vector3::UP));
+
+    return Result::Finished;
 }
