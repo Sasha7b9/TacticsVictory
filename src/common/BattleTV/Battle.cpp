@@ -94,13 +94,13 @@ void Battle::Start()
 
     TheScene->Create();
 
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < 1; i++)
     {
-        uint colZ = (uint)Random((float)TheTerrain->WidthZ());
-        uint rowX = (uint)Random((float)TheTerrain->HeightX());
+//        uint colZ = (uint)Random((float)TheTerrain->WidthZ());
+//        uint rowX = (uint)Random((float)TheTerrain->HeightX());
 
-//        uint colZ = TheTerrain->WidthZ() / 2;
-//        uint rowX = TheTerrain->HeightX() / 2;
+        uint colZ = TheTerrain->WidthZ() / 2;
+        uint rowX = TheTerrain->HeightX() / 2;
 
         TheTerrain->PutIn(TheScene->CreateChild("", LOCAL)->CreateComponent<Tank>(LOCAL), colZ, rowX);
     }

@@ -93,10 +93,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
         return EngineExecutor::Result::Finished;            // То завершаем выполение шага
     }
 
-    Vector3 direction = (step.endPos - currentPos);
-    direction.Normalize();
-
-    physics.pos.SetWorld(currentPos + direction * dist);
+    physics.pos.SetWorld(currentPos + physics.dir.GetWorldDir() * dist);
 
     return Result::Running;
 }
@@ -136,14 +133,18 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics,
 
     Vector3 dir = physics.dir.GetWorldDir();
 
-    if (dir.Equals(dirToTarget))
-    {
-        return Result::Finished;
-    }
+    float abs = (dir - dirToTarget).Length();
 
     Quaternion delta(physics.max.SpeedRotate() * timeStep, { 0.0f, 1.0f, 0.0f });
 
     physics.rot.ChangeWorld(delta);
+
+    dir = physics.dir.GetWorldUp();
+
+    if ((dir - dirToTarget).Length() > abs)
+    {
+        return Result::Finished;
+    }
 
     return Result::Running;
 }
