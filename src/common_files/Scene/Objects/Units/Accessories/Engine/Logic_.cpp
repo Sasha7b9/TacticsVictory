@@ -7,7 +7,7 @@
 
 void EngineCalculator::Calculate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm)
 {
-    CalculateRotate(physics, command, algorithm);
+//    CalculateRotate(physics, command, algorithm);
 
     CalculateMovement(physics, command, algorithm);
 }

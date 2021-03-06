@@ -49,9 +49,11 @@ void ObjectSpecificC::OnPostRenderUpdate()
 
         Vector3 pos = node->GetWorldPosition();
 
-        Vector3 dir = node->GetWorldDirection();
-        Vector3 up = node->GetWorldUp();
-        Vector3 right = node->GetWorldRight();
+        float d = 1.0f;
+
+        Vector3 dir = node->GetWorldDirection() * d;
+        Vector3 up = node->GetWorldUp() * d;
+        Vector3 right = node->GetWorldRight() * d;
 
         Vector3 delta = Vector3::UP / 20.0f;
 
