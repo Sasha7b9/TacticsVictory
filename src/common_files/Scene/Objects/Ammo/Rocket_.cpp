@@ -4,9 +4,10 @@
 
 
 static const MinPP minRocket = { 0.0f };
+static const MaxPP maxRocket(1.0f, 120.0f, 10.0f);
 
 
-Rocket::Rocket(Context *context) : AmmoObject(context, minRocket)
+Rocket::Rocket(Context *context) : AmmoObject(context, minRocket, maxRocket)
 {
 
 }

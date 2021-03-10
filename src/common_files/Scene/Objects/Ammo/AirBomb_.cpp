@@ -3,7 +3,12 @@
 #include "Scene/Objects/Ammo/AirBomb_.h"
 
 
-AirBomb::AirBomb(Context *context, MinPP &min) : AmmoObject(context, min)
+static const MinPP minAirBomb = { 0.0f };
+static const MaxPP maxAirBomb(1.0f, 120.0f, 10.0f);
+
+
+AirBomb::AirBomb(Context *context) :
+    AmmoObject(context, minAirBomb, maxAirBomb)
 {
 
 }

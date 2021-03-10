@@ -9,9 +9,11 @@ Vector<Tank *> Tank::storage;
 
 
 static const MinPP minTank = { 0.0f };
+static const MaxPP maxTank(1.0f, 120.0f, 10.0f);
 
 
-Tank::Tank(Context *context) : GroundUnit(context, minTank)
+Tank::Tank(Context *context) :
+    GroundUnit(context, minTank, maxTank)
 {
     storage.Push(this);
 }

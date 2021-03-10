@@ -70,7 +70,7 @@ public:
 
 protected:
 
-    ObjectT(Context *context, const MinPP &_min);
+    ObjectT(Context *context, const MinPP &min, const MaxPP &max);
 
     bool LoadFromJSON(pchar name);
 

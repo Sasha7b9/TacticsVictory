@@ -16,13 +16,13 @@ ObjectSpecific::ObjectSpecific(ObjectT *_object) : Object(TheContext),
 
 
 
-ObjectT::ObjectT(Context *context, const MinPP &min) : LogicComponent(context)
+ObjectT::ObjectT(Context *context, const MinPP &min, const MaxPP &max) : LogicComponent(context)
 {
     shift = new ShiftParameters();
 
     storage.Push(this);
 
-    physics = new PhysicsParameters(this, min);
+    physics = new PhysicsParameters(this, min, max);
 }
 
 

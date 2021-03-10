@@ -11,5 +11,5 @@ public:
 
 protected:
 
-    GrenadeLauncher(Context *context, MinPP &min);
+    GrenadeLauncher(Context *context);
 };

@@ -9,5 +9,5 @@ class GroundUnit : public Unit
 
 public:
 
-    GroundUnit(Context *context, const MinPP &min) : Unit(context, min) {}
+    GroundUnit(Context *context, const MinPP &min, const MaxPP &max) : Unit(context, min, max) {}
 };

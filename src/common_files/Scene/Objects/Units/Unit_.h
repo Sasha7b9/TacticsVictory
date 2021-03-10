@@ -26,7 +26,7 @@ public:
 
 protected:
 
-    Unit(Context *, const MinPP &min);
+    Unit(Context *, const MinPP &min, const MaxPP &max);
 
     virtual void Start() override;
 };

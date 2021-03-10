@@ -74,6 +74,8 @@ private:
 //----------------------------------------------------------------------------------------------------------------------
 struct MaxPP                               // В этой структуре будут храниться максимально возможные значения параметров
 {
+    MaxPP(float move, float rotate, float alt) : speedMove(move), speedRotate(rotate), altitude(alt) {}
+
     float SpeedMove() const {  return speedMove; }
 
     float SpeedRotate() const { return speedRotate; }
@@ -89,7 +91,7 @@ private:
 //----------------------------------------------------------------------------------------------------------------------
 struct MinPP                                // В этой структуре будут храниться минимально возможные значения параметров
 {
-    float altitude = 0.0f;                  // Минимальная высота над поверхностью
+    const float altitude = 0.0f;                  // Минимальная высота над поверхностью
 };
 
 
@@ -103,8 +105,8 @@ public:
 #undef min
 #undef max
 
-    PhysicsParameters(ObjectT *_object, MinPP _min) : Object(TheContext),
-        min(_min), pos(_object), dir(_object), mov(_object), rot(_object), object(_object) {}
+    PhysicsParameters(ObjectT *_object, const MinPP &_min, const MaxPP &_max) : Object(TheContext),
+        min(_min), max(_max), pos(_object), dir(_object), mov(_object), rot(_object), object(_object) {}
 
     MinPP       min;
     MaxPP       max;

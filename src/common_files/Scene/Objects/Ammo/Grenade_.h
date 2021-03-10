@@ -11,5 +11,5 @@ public:
 
 protected:
 
-    Grenade(Context *context, MinPP &min);
+    Grenade(Context *context);
 };

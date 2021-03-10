@@ -3,7 +3,11 @@
 #include "Scene/Objects/Ammo/Grenade_.h"
 
 
-Grenade::Grenade(Context *context, MinPP &min) : AmmoObject(context, min)
+static const MinPP minGrenade = { 0.0f };
+static const MaxPP maxGrenade(1.0f, 120.0f, 10.0f);
+
+
+Grenade::Grenade(Context *context) : AmmoObject(context, minGrenade, maxGrenade)
 {
 
 }

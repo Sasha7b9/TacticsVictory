@@ -7,9 +7,11 @@ Vector<AirPlane *> AirPlane::storage;
 
 
 static const MinPP minAirPlane = { 8.0f };
+static const MaxPP maxAirPlane(10.0f, 1200.0f, 10.0f);
 
 
-AirPlane::AirPlane(Context *context) : Unit(context, minAirPlane)
+AirPlane::AirPlane(Context *context) :
+    Unit(context, minAirPlane, maxAirPlane)
 {
     storage.Push(this);
 }

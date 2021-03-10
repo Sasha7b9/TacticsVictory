@@ -3,7 +3,12 @@
 #include "Scene/Objects/Weapons/GrenadeLauncher_.h"
 
 
-GrenadeLauncher::GrenadeLauncher(Context *context, MinPP &min) : WeaponObject(context, min)
+static const MinPP minGrenadeLauncher = { 0.0f };
+static const MaxPP maxGrenadeLauncher(1.0f, 120.0f, 10.0f);
+
+
+GrenadeLauncher::GrenadeLauncher(Context *context) :
+    WeaponObject(context, minGrenadeLauncher, maxGrenadeLauncher)
 {
 
 }

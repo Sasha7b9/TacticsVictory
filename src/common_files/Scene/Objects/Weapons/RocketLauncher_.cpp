@@ -3,7 +3,12 @@
 #include "Scene/Objects/Weapons/RocketLauncher_.h"
 
 
-RocketLauncher::RocketLauncher(Context *context, MinPP &min) : WeaponObject(context, min)
+static const MinPP minRocketLauncher = { 0.0f };
+static const MaxPP maxRocketLauncher = { 1.0f, 120.0f, 10.0f };
+
+
+RocketLauncher::RocketLauncher(Context *context) :
+    WeaponObject(context, minRocketLauncher, maxRocketLauncher)
 {
 
 }

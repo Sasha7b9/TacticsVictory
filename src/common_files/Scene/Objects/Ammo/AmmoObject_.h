@@ -11,5 +11,5 @@ public:
 
 protected:
 
-    AmmoObject(Context *context, const MinPP &min);
+    AmmoObject(Context *context, const MinPP &min, const MaxPP &max);
 };
