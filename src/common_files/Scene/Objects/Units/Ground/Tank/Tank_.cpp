@@ -26,7 +26,7 @@ void Tank::Start()
 
     node_->SetVar(VAR_NODE_IS_FLYING, false);
 
-    if (!LoadFromJSON())
+    if (!LoadFromJSON("Models/Units/Ground/Tank/Tank.json"))
     {
         LOGERRORF("Can not load json file");
         return;

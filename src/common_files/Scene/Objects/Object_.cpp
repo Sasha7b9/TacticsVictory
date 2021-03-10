@@ -51,15 +51,13 @@ void ObjectT::DelayedStart()
 }
 
 
-bool ObjectT::LoadFromJSON()
+bool ObjectT::LoadFromJSON(pchar name)
 {
-    String fileName = String("Models/") + GetTypeName() + ".json";
-
-    JSONFile *file(TheCache->GetResource<JSONFile>(fileName));
+    JSONFile *file(TheCache->GetResource<JSONFile>(name));
 
     if (file == nullptr)
     {
-        LOGERRORF("Don't load file %s", fileName.CString());
+        LOGERRORF("Don't load file %s", name);
         TheEngine->Exit();
 
         return false;

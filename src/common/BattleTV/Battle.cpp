@@ -102,10 +102,10 @@ void Battle::Start()
 
         TheTerrain->PutIn(TheScene->CreateChild("", LOCAL)->CreateComponent<Tank>(LOCAL), colZ, rowX);
 
-        colZ = TheTerrain->WidthZ() / 2;
-        rowX = TheTerrain->HeightX() / 2;
-
-        TheTerrain->PutIn(TheScene->CreateChild("", LOCAL)->CreateComponent<AirPlane>(LOCAL), colZ, rowX);
+//        colZ = TheTerrain->WidthZ() / 2;
+//        rowX = TheTerrain->HeightX() / 2;
+//
+//        TheTerrain->PutIn(TheScene->CreateChild("", LOCAL)->CreateComponent<AirPlane>(LOCAL), colZ, rowX);
     }
 
     SubscribeToEvents();

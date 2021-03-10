@@ -30,7 +30,7 @@ void AirPlane::Start()
 
     node_->SetVar(VAR_NODE_IS_FLYING, true);
 
-    if (!LoadFromJSON())
+    if (!LoadFromJSON("Models/Units/Air/AirPlane/AirPlane.json"))
     {
         LOGERRORF("Can not load json file");
         return;

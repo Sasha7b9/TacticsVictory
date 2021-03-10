@@ -1,0 +1,9 @@
+{
+    "model": {
+        "fileModel": "Models/Units/Ground/Tank/Tank.mdl",
+        "fileMaterials": "Models/Units/Ground/Tank/Tank.txt"
+    },
+
+    "speed": 1,
+    "deltaRotateY" : 180
+}
