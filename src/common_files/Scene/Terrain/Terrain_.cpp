@@ -200,6 +200,11 @@ SegmentTerrain* TerrainT::GetSegmentForCoord(uint row, uint col)
 void TerrainT::PutIn(ObjectT *object, uint colZ, uint rowX)
 {
     float height = GetHeight(colZ, rowX);
+    
+    if (object->IsFlying())
+    {
+        height += object->physics->min.altitude;
+    }
 
     object->physics->pos.SetWorld({ (float)rowX, height, (float)colZ });
 }

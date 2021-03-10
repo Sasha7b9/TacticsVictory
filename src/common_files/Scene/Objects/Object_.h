@@ -61,6 +61,8 @@ public:
 
     Node *GetObjectNode() const { return Component::GetNode(); }
 
+    virtual bool IsFlying() const { return node_->GetVar(VAR_NODE_IS_FLYING).GetBool(); }
+
     SharedPtr<ShiftParameters>   shift;     // Используется для приведения параметров модели к текущей сцене
     static Vector<ObjectT *>     storage;   // Здесь хранятся все объекты типа ObjectT (и их подклассы)
     SharedPtr<PhysicsParameters> physics;   // Параметры в физическом мире. Такие как координаты

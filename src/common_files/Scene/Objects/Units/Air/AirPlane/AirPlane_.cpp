@@ -6,7 +6,7 @@
 Vector<AirPlane *> AirPlane::storage;
 
 
-static const MinPP minAirPlane = { 3.0f };
+static const MinPP minAirPlane = { 8.0f };
 
 
 AirPlane::AirPlane(Context *context) : Unit(context, minAirPlane)
