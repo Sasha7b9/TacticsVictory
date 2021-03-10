@@ -8,7 +8,7 @@
 Vector<Tank *> Tank::storage;
 
 
-Tank::Tank(Context *context) : Unit(context)
+Tank::Tank(Context *context) : GroundUnit(context)
 {
     storage.Push(this);
 }

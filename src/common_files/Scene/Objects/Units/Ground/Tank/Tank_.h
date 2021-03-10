@@ -1,12 +1,12 @@
 // 2021/02/22 15:41:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #pragma once
-#include "Scene/Objects/Units/Unit_.h"
+#include "Scene/Objects/Units/Ground/GroundUnit_.h"
 
 
 //----------------------------------------------------------------------------------------------------------------------
-class Tank : public Unit
+class Tank : public GroundUnit
 {
-    URHO3D_OBJECT(Tank, Unit);
+    URHO3D_OBJECT(Tank, GroundUnit);
 
 public:
 
