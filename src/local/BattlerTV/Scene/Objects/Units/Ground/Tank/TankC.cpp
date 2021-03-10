@@ -5,13 +5,13 @@
 #include "Scene/Objects/Units/UnitC.h"
 
 
-void TankSpecificC::Update(float timeStep)
-{
-    UnitSpecificC::Update(timeStep);
-}
-
-
 void Tank::CreateSpecific()
 {
     specific = new TankSpecificC(this);
+}
+
+
+void TankSpecificC::Update(float dT)
+{
+    UnitSpecificC::Update(dT);
 }

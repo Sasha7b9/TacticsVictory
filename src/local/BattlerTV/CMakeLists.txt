@@ -78,7 +78,8 @@ file(GLOB SCENE_OBJECTS_UNITS                    ../../common_files/Scene/Object
                                                                     Scene/Objects/Units/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_ACCESSORIES        ../../common_files/Scene/Objects/Units/Accessories/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE ../../common_files/Scene/Objects/Units/Accessories/Engine/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_AIR_AIRPLANE       ../../common_files/Scene/Objects/Units/Air/Airplane/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_AIR_AIRPLANE       ../../common_files/Scene/Objects/Units/Air/AirPlane/*.*
+                                                                    Scene/Objects/Units/Air/AirPlane/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_GROUND_TANK        ../../common_files/Scene/Objects/Units/Ground/Tank/*.*
                                                                     Scene/Objects/Units/Ground/Tank/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Objects/Weapons/*.*)

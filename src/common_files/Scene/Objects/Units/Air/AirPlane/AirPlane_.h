@@ -9,7 +9,23 @@ class AirPlane : public Unit
 
 public:
 
-protected:
+    AirPlane(Context *);
 
-    AirPlane();
+    static void RegisterComponent();
+
+    virtual void CreateSpecific() override;
+
+    static Vector<AirPlane *> storage;
+
+    virtual void Compress(VectorBuffer &buffer) override;
+
+    virtual void Decompress(MemoryBuffer &buffer) override;
+
+private:
+
+    virtual void OnNodeSet(Node *node) override;
+
+    virtual void Start() override;
+
+    virtual void Update(float dT) override;
 };

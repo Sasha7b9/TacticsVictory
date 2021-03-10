@@ -11,5 +11,5 @@ public:
 
     TankSpecificS(Tank *tank) : UnitSpecificS(tank) {}
 
-    virtual void Update(float timeStep) override;
+    virtual void Update(float dT) override;
 };

@@ -31,5 +31,5 @@ private:
     // Эта функция вызывается из NodeSet
     virtual void Start() override;
 
-    virtual void Update(float time) override;
+    virtual void Update(float dT) override;
 };
