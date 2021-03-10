@@ -20,6 +20,12 @@ void Tank::RegisterComponent()
 }
 
 
+void Tank::OnNodeSet(Node *node)
+{
+    Unit::OnNodeSet(node ? node_ : node);
+}
+
+
 void Tank::Start()
 {
     Unit::Start();
@@ -35,12 +41,6 @@ void Tank::Start()
     Normalize();
 
     engine = new EngineGround(this);
-}
-
-
-void Tank::OnNodeSet(Node *node)
-{
-    Unit::OnNodeSet(node ? node_ : node);
 }
 
 

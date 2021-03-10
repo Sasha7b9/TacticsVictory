@@ -95,17 +95,14 @@ void Battle::Start()
 
     TheScene->Create();
 
-    for (int i = 0; i < 5000; i++)
+    for (int i = 0; i < 1000; i++)
     {
         uint colZ = (uint)Random((float)TheTerrain->WidthZ());
         uint rowX = (uint)Random((float)TheTerrain->HeightX());
 
         TheTerrain->PutIn(TheScene->CreateChild("", LOCAL)->CreateComponent<Tank>(LOCAL), colZ, rowX);
 
-//        colZ = TheTerrain->WidthZ() / 2;
-//        rowX = TheTerrain->HeightX() / 2;
-//
-//        TheTerrain->PutIn(TheScene->CreateChild("", LOCAL)->CreateComponent<AirPlane>(LOCAL), colZ, rowX);
+        TheTerrain->PutIn(TheScene->CreateChild("", LOCAL)->CreateComponent<AirPlane>(LOCAL), colZ, rowX);
     }
 
     SubscribeToEvents();

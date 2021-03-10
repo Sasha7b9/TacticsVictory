@@ -1,7 +1,7 @@
 {
     "model": {
-        "fileModel": "Models/Units/Plane/Plane.mdl",
-        "fileMaterials": "Models/Units/Plane/Plane.txt"
+        "fileModel": "Models/Units/Air/AirPlane/AirPlane.mdl",
+        "fileMaterials": "Models/Units/Air/AirPlane/AirPlane.txt"
     },
 
     "speed": 1,

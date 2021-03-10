@@ -35,6 +35,10 @@ void AirPlane::Start()
         LOGERRORF("Can not load json file");
         return;
     }
+
+    Normalize();
+
+    engine = new EngineAir(this);
 }
 
 
