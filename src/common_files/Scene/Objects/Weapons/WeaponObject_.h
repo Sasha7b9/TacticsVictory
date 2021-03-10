@@ -11,5 +11,5 @@ public:
 
 protected:
 
-    WeaponObject(Context *context);
+    WeaponObject(Context *context, MinPP &min);
 };

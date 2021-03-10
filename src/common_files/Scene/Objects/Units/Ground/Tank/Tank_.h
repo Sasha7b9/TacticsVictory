@@ -1,5 +1,6 @@
 // 2021/02/22 15:41:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #pragma once
+#include "Scene/Objects/PhysicsParameters_.h"
 #include "Scene/Objects/Units/Ground/GroundUnit_.h"
 
 

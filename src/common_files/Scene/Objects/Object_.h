@@ -68,7 +68,7 @@ public:
 
 protected:
 
-    ObjectT(Context *context);
+    ObjectT(Context *context, const MinPP &_min);
 
     bool LoadFromJSON(pchar name);
 

@@ -3,7 +3,7 @@
 #include "Scene/Objects/Weapons/AirBombLauncher_.h"
 
 
-AirBombLauncher::AirBombLauncher(Context *context) : WeaponObject(context)
+AirBombLauncher::AirBombLauncher(Context *context, MinPP &min) : WeaponObject(context, min)
 {
 
 }

@@ -7,7 +7,7 @@
 Vector<Unit *> Unit::storage;
 
 
-Unit::Unit(Context *context) : ObjectT(context)
+Unit::Unit(Context *context, const MinPP &min) : ObjectT(context, min)
 {
     storage.Push(this);
 }

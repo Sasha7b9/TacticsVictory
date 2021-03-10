@@ -3,7 +3,10 @@
 #include "Scene/Objects/Ammo/Rocket_.h"
 
 
-Rocket::Rocket(Context *context) : AmmoObject(context)
+static const MinPP minRocket = { 0.0f };
+
+
+Rocket::Rocket(Context *context) : AmmoObject(context, minRocket)
 {
 
 }

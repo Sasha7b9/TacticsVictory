@@ -3,7 +3,7 @@
 #include "Scene/Objects/Weapons/WeaponObject_.h"
 
 
-WeaponObject::WeaponObject(Context *context) : ObjectT(context)
+WeaponObject::WeaponObject(Context *context, MinPP &min) : ObjectT(context, min)
 {
 
 }

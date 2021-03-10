@@ -3,7 +3,7 @@
 #include "Scene/Objects/Weapons/RocketLauncher_.h"
 
 
-RocketLauncher::RocketLauncher(Context *context) : WeaponObject(context)
+RocketLauncher::RocketLauncher(Context *context, MinPP &min) : WeaponObject(context, min)
 {
 
 }
