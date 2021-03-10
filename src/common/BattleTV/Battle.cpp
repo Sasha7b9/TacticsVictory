@@ -7,6 +7,7 @@
 #include "Network/ServerS.h"
 #include "Scene/Level_.h"
 #include "Scene/SceneS.h"
+#include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Utils/Log_.h"
 #include "Utils/Settings.h"
@@ -99,10 +100,12 @@ void Battle::Start()
         uint colZ = (uint)Random((float)TheTerrain->WidthZ());
         uint rowX = (uint)Random((float)TheTerrain->HeightX());
 
-//        uint colZ = TheTerrain->WidthZ() / 2;
-//        uint rowX = TheTerrain->HeightX() / 2;
-
         TheTerrain->PutIn(TheScene->CreateChild("", LOCAL)->CreateComponent<Tank>(LOCAL), colZ, rowX);
+
+        colZ = TheTerrain->WidthZ() / 2;
+        rowX = TheTerrain->HeightX() / 2;
+
+        TheTerrain->PutIn(TheScene->CreateChild("", LOCAL)->CreateComponent<AirPlane>(LOCAL), colZ, rowX);
     }
 
     SubscribeToEvents();
@@ -162,6 +165,7 @@ void Battle::RegistrationComponets()
     Rotator::RegisterComponent();
     WaveAlgorithm::RegisterComponent();
 
+    AirPlane::RegisterComponent();
     Tank::RegisterComponent();
 }
 
