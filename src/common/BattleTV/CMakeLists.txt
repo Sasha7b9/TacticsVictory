@@ -65,8 +65,10 @@ file(GLOB SCENE_OBJECTS_UNITS                    ../../common_files/Scene/Object
                                                                     Scene/Objects/Units/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_ACCESSORIES        ../../common_files/Scene/Objects/Units/Accessories/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE ../../common_files/Scene/Objects/Units/Accessories/Engine/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_AIR                ../../common_files/Scene/Objects/Units/Air/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_AIR_AIRPLANE       ../../common_files/Scene/Objects/Units/Air/AirPlane/*.*
                                                                     Scene/Objects/Units/Air/AirPlane/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_GROUND             ../../common_files/Scene/Objects/Units/Ground/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_GROUND_TANK        ../../common_files/Scene/Objects/Units/Ground/Tank/*.*
                                                                     Scene/Objects/Units/Ground/Tank/*.*)
 file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Objects/Weapons/*.*)
@@ -90,7 +92,9 @@ source_group(Scene\\Objects\\Buildings                  FILES ${SCENE_OBJECTS_BU
 source_group(Scene\\Objects\\Units                      FILES ${SCENE_OBJECTS_UNITS})
 source_group(Scene\\Objects\\Units\\Accessories         FILES ${SCENE_OBJECTS_UNITS_ACCESSORIES})
 source_group(Scene\\Objects\\Units\\Accessories\\Engine FILES ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE})
+source_group(Scene\\Objects\\Units\\Air                 FILES ${SCENE_OBJECTS_UNITS_AIR})
 source_group(Scene\\Objects\\Units\\Air\\AirPlane       FILES ${SCENE_OBJECTS_UNITS_AIR_AIRPLANE})
+source_group(Scene\\Objects\\Units\\Ground              FILES ${SCENE_OBJECTS_UNITS_GROUND})
 source_group(Scene\\Objects\\Units\\Ground\\Tank        FILES ${SCENE_OBJECTS_UNITS_GROUND_TANK})
 source_group(Scene\\Objects\\Weapons                    FILES ${SCENE_OBJECTS_WEAPONS})
 source_group(Scene\\Primitives                          FILES ${SCENE_PRIMITIVES})
@@ -103,7 +107,8 @@ add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GAME_PATH} ${NETW
     ${SCENE_OBJECTS_BUILDINGS}
     ${SCENE_OBJECTS_UNITS}
     ${SCENE_OBJECTS_UNITS_ACCESSORIES} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE}
-    ${SCENE_OBJECTS_UNITS_AIR_AIRPLANE} ${SCENE_OBJECTS_UNITS_GROUND_TANK}
+    ${SCENE_OBJECTS_UNITS_AIR} ${SCENE_OBJECTS_UNITS_AIR_AIRPLANE}
+    ${SCENE_OBJECTS_UNITS_GROUND} ${SCENE_OBJECTS_UNITS_GROUND_TANK}
     ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)

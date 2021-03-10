@@ -2,6 +2,7 @@
 #pragma once
 #include "Graphics/3D/TileSelected.h"
 #include "Scene/Objects/ObjectC.h"
+#include "Scene/Objects/Units/Unit_.h"
 
 
 class UnitSpecificC : public ObjectSpecificC
