@@ -37,3 +37,20 @@ void Unit::Decompress(MemoryBuffer &buffer)
 {
     ObjectT::Decompress(buffer);
 }
+
+
+bool Unit::CanMoveTo(float colZ, float rowX) const
+{
+    if (colZ < 0.0f || rowX < 0.0f)
+    {
+        return false;
+    }
+
+    if (colZ >= TheTerrain->WidthZ() || rowX >= TheTerrain->HeightX())
+    {
+        return false;
+    }
+
+    return TheTerrain->GetHeight(physics->pos.GetWorld().z_, physics->pos.GetWorld().x_) ==
+        TheTerrain->GetHeight(colZ, rowX);
+}

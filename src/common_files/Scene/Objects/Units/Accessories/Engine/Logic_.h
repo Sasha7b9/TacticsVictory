@@ -3,6 +3,7 @@
 
 
 class EngineT;
+class Unit;
 
 
 struct CommandEngine { enum E {
@@ -64,14 +65,16 @@ class EngineCalculator
 {
 public:
 
-    void Calculate(PhysicsParameters &physics, CommandEngine::E command, int count, EngineAlgorithm &algorithm);
+    void Calculate(PhysicsParameters &physics, CommandEngine::E command, int count, EngineAlgorithm &algorithm,
+        Unit &unit);
 
 private:
 
     // Возвращает false, если поворот не нужен (юнит всё равно туда не проедет)
-    bool CalculateRotate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm);
+    bool CalculateRotate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm, Unit &unit);
 
-    void CalculateMovement(PhysicsParameters &physics, CommandEngine::E command, int count, EngineAlgorithm &algorithm);
+    void CalculateMovement(PhysicsParameters &physics, CommandEngine::E command, int count, EngineAlgorithm &algorithm,
+        Unit &unit);
 };
 
 

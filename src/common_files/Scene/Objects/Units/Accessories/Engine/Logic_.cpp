@@ -1,22 +1,23 @@
 // 2021/02/27 10:04:52 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Scene/Objects/Object_.h"
+#include "Scene/Objects/Units/Unit_.h"
 #include "Scene/Objects/Units/Accessories/Engine/Engine_.h"
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
 void EngineCalculator::Calculate(PhysicsParameters &physics, CommandEngine::E command, int count,
-    EngineAlgorithm &algorithm)
+    EngineAlgorithm &algorithm, Unit &unit)
 {
-    if (CalculateRotate(physics, command, algorithm))
+    if (CalculateRotate(physics, command, algorithm, unit))
     {
-        CalculateMovement(physics, command, count, algorithm);
+        CalculateMovement(physics, command, count, algorithm, unit);
     }
 }
 
 
 bool EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine::E command,
-    EngineAlgorithm & algorithm)
+    EngineAlgorithm & algorithm, Unit &unit)
 {
     Vector3 position = physics.pos.GetWorld();
 
@@ -36,8 +37,7 @@ bool EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine
         break;
     }
 
-    if (TheTerrain->GetHeight(physics.pos.GetWorld().z_, physics.pos.GetWorld().x_) !=
-        TheTerrain->GetHeight(target.z_, target.x_))
+    if (!unit.CanMoveTo(target.z_, target.x_))
     {
         return false;
     }
@@ -53,7 +53,7 @@ bool EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine
 
 
 void EngineCalculator::CalculateMovement(PhysicsParameters &physics, CommandEngine::E command, int count,
-    EngineAlgorithm &algorithm)
+    EngineAlgorithm &algorithm, Unit &unit)
 {
     Step step(Step::Type::Move);
 
@@ -75,8 +75,7 @@ void EngineCalculator::CalculateMovement(PhysicsParameters &physics, CommandEngi
             break;
         }
 
-        if (TheTerrain->GetHeight(physics.pos.GetWorld().z_, physics.pos.GetWorld().x_) ==
-            TheTerrain->GetHeight(step.endPos.z_, step.endPos.x_))
+        if (unit.CanMoveTo(step.endPos.z_, step.endPos.x_))
         {
             algorithm.steps.Push(step);
         }

@@ -15,7 +15,7 @@ public:
 
     virtual void Update(float timeStep);
 
-    void GiveCommand(CommandEngine::E command, int count);
+    void GiveCommand(Unit &unit, CommandEngine::E command, int count);
 
     // Возвращет true, если мотор заглушен
     bool IsStopped() const;
