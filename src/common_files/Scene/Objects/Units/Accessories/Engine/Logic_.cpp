@@ -5,15 +5,18 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-void EngineCalculator::Calculate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm)
+void EngineCalculator::Calculate(PhysicsParameters &physics, CommandEngine::E command, int count,
+    EngineAlgorithm &algorithm)
 {
-    CalculateRotate(physics, command, algorithm);
-
-    CalculateMovement(physics, command, algorithm);
+    if (CalculateRotate(physics, command, algorithm))
+    {
+        CalculateMovement(physics, command, count, algorithm);
+    }
 }
 
 
-void EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm & algorithm)
+bool EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine::E command,
+    EngineAlgorithm & algorithm)
 {
     Vector3 position = physics.pos.GetWorld();
 
@@ -33,35 +36,55 @@ void EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine
         break;
     }
 
+    if (TheTerrain->GetHeight(physics.pos.GetWorld().z_, physics.pos.GetWorld().x_) !=
+        TheTerrain->GetHeight(target.z_, target.x_))
+    {
+        return false;
+    }
+
     Step step(Step::Type::Rotate);
 
     step.endPos = target;
 
     algorithm.steps.Push(step);
+
+    return true;
 }
 
 
-void EngineCalculator::CalculateMovement(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm)
+void EngineCalculator::CalculateMovement(PhysicsParameters &physics, CommandEngine::E command, int count,
+    EngineAlgorithm &algorithm)
 {
     Step step(Step::Type::Move);
 
     step.endPos = physics.pos.GetWorld();
 
-    switch (command)
+    while (count-- > 0)
     {
-    case CommandEngine::MoveToNorth:     step.endPos.x_ -= 1.0f;                         break;
-    case CommandEngine::MoveToNorthEast: step.endPos.x_ -= 1.0f; step.endPos.z_ += 1.0f; break;
-    case CommandEngine::MoveToEast:      step.endPos.z_ += 1.0f;                         break;
-    case CommandEngine::MoveToEastSouth: step.endPos.z_ += 1.0f; step.endPos.x_ += 1.0f; break;
-    case CommandEngine::MoveToSouth:     step.endPos.x_ += 1.0f;                         break;
-    case CommandEngine::MoveToSouthWest: step.endPos.x_ += 1.0f; step.endPos.z_ -= 1.0f; break;
-    case CommandEngine::MoveToWest:      step.endPos.z_ -= 1.0f;                         break;
-    case CommandEngine::MoveToWestNorth: step.endPos.z_ -= 1.0f; step.endPos.x_ -= 1.0f; break;
-    case CommandEngine::None:
-        break;
-    }
+        switch (command)
+        {
+        case CommandEngine::MoveToNorth:     step.endPos.x_ -= 1.0f;                         break;
+        case CommandEngine::MoveToNorthEast: step.endPos.x_ -= 1.0f; step.endPos.z_ += 1.0f; break;
+        case CommandEngine::MoveToEast:      step.endPos.z_ += 1.0f;                         break;
+        case CommandEngine::MoveToEastSouth: step.endPos.z_ += 1.0f; step.endPos.x_ += 1.0f; break;
+        case CommandEngine::MoveToSouth:     step.endPos.x_ += 1.0f;                         break;
+        case CommandEngine::MoveToSouthWest: step.endPos.x_ += 1.0f; step.endPos.z_ -= 1.0f; break;
+        case CommandEngine::MoveToWest:      step.endPos.z_ -= 1.0f;                         break;
+        case CommandEngine::MoveToWestNorth: step.endPos.z_ -= 1.0f; step.endPos.x_ -= 1.0f; break;
+        case CommandEngine::None:
+            break;
+        }
 
-    algorithm.steps.Push(step);
+        if (TheTerrain->GetHeight(physics.pos.GetWorld().z_, physics.pos.GetWorld().x_) ==
+            TheTerrain->GetHeight(step.endPos.z_, step.endPos.x_))
+        {
+            algorithm.steps.Push(step);
+        }
+        else
+        {
+            break;
+        }
+    }
 }
 
 

@@ -64,13 +64,14 @@ class EngineCalculator
 {
 public:
 
-    void Calculate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm);
+    void Calculate(PhysicsParameters &physics, CommandEngine::E command, int count, EngineAlgorithm &algorithm);
 
 private:
 
-    void CalculateRotate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm);
+    // Возвращает false, если поворот не нужен (юнит всё равно туда не проедет)
+    bool CalculateRotate(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm);
 
-    void CalculateMovement(PhysicsParameters &physics, CommandEngine::E command, EngineAlgorithm &algorithm);
+    void CalculateMovement(PhysicsParameters &physics, CommandEngine::E command, int count, EngineAlgorithm &algorithm);
 };
 
 

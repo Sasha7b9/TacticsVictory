@@ -120,6 +120,12 @@ float TerrainT::GetHeight(uint colZ, uint rowX)
 }
 
 
+float TerrainT::GetHeight(float colZ, float rowX)
+{
+    return GetHeight((uint)colZ, (uint)rowX);
+}
+
+
 void TerrainT::SetHeight(uint row, uint col, float height)
 {
     level[row][col] = height;

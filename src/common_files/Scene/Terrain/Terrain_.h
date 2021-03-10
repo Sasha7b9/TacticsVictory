@@ -35,6 +35,8 @@ public:
 
     float GetHeight(uint colZ, uint rowX);
 
+    float GetHeight(float colZ, float rowX);
+
     void SetHeight(uint row, uint col, float height);
 
     uint HeightX();
