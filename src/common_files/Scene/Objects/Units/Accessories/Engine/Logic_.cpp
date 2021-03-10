@@ -21,10 +21,14 @@ void EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine
 
     switch (command)
     {
-    case CommandEngine::MoveToNorth:    target.x_ -= 1.0f;      break;
-    case CommandEngine::MoveToEast:     target.z_ += 1.0f;      break;
-    case CommandEngine::MoveToSouth:    target.x_ += 1.0f;      break;
-    case CommandEngine::MoveToWest:     target.z_ -= 1.0f;      break;
+    case CommandEngine::MoveToNorth:     target.x_ -= 1.0f;                    break;
+    case CommandEngine::MoveToNorthEast: target.x_ -= 1.0f; target.z_ += 1.0f; break;
+    case CommandEngine::MoveToEast:      target.z_ += 1.0f;                    break;
+    case CommandEngine::MoveToEastSouth: target.z_ += 1.0f; target.x_ += 1.0f; break;
+    case CommandEngine::MoveToSouth:     target.x_ += 1.0f;                    break;
+    case CommandEngine::MoveToSouthWest: target.x_ += 1.0f; target.z_ -= 1.0f; break;
+    case CommandEngine::MoveToWest:      target.z_ -= 1.0f;                    break;
+    case CommandEngine::MoveToWestNorth: target.z_ -= 1.0f; target.x_ -= 1.0f; break;
     case CommandEngine::None:
         break;
     }
@@ -45,10 +49,14 @@ void EngineCalculator::CalculateMovement(PhysicsParameters &physics, CommandEngi
 
     switch (command)
     {
-    case CommandEngine::MoveToNorth:    step.endPos.x_ -= 1.0f;    break;
-    case CommandEngine::MoveToEast:     step.endPos.z_ += 1.0f;    break;
-    case CommandEngine::MoveToSouth:    step.endPos.x_ += 1.0f;    break;
-    case CommandEngine::MoveToWest:     step.endPos.z_ -= 1.0f;    break;
+    case CommandEngine::MoveToNorth:     step.endPos.x_ -= 1.0f;                         break;
+    case CommandEngine::MoveToNorthEast: step.endPos.x_ -= 1.0f; step.endPos.z_ += 1.0f; break;
+    case CommandEngine::MoveToEast:      step.endPos.z_ += 1.0f;                         break;
+    case CommandEngine::MoveToEastSouth: step.endPos.z_ += 1.0f; step.endPos.x_ += 1.0f; break;
+    case CommandEngine::MoveToSouth:     step.endPos.x_ += 1.0f;                         break;
+    case CommandEngine::MoveToSouthWest: step.endPos.x_ += 1.0f; step.endPos.z_ -= 1.0f; break;
+    case CommandEngine::MoveToWest:      step.endPos.z_ -= 1.0f;                         break;
+    case CommandEngine::MoveToWestNorth: step.endPos.z_ -= 1.0f; step.endPos.x_ -= 1.0f; break;
     case CommandEngine::None:
         break;
     }
@@ -99,19 +107,19 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physic
 }
 
 
-static void Calculate(char *name, PhysicsParameters &physics, Step &step)
-{
-    Vector3 position = physics.pos.GetWorld();
-    Vector3 dirToTarget = step.endPos - position;
-    dirToTarget.Normalize();                        // Направление на цель
-
-    Vector3 direction = physics.dir.GetWorldDir();          // Направление нашего юнита
-
-    float angleNeed = direction.Angle(dirToTarget); // На такой угол нужно повернуть юнита
-
-    LOGINFOF("");
-    LOGINFOF("%s : %f", name, angleNeed);
-}
+//static void Calculate(char *name, PhysicsParameters &physics, Step &step)
+//{
+//    Vector3 position = physics.pos.GetWorld();
+//    Vector3 dirToTarget = step.endPos - position;
+//    dirToTarget.Normalize();                        // Направление на цель
+//
+//    Vector3 direction = physics.dir.GetWorldDir();          // Направление нашего юнита
+//
+//    float angleNeed = direction.Angle(dirToTarget); // На такой угол нужно повернуть юнита
+//
+//    LOGINFOF("");
+//    LOGINFOF("%s : %f", name, angleNeed);
+//}
 
 
 Vector3 CalcualteDirToTarget(PhysicsParameters &physics, Step &step)
@@ -123,14 +131,14 @@ Vector3 CalcualteDirToTarget(PhysicsParameters &physics, Step &step)
 }
 
 
-static float CalculateDelta(PhysicsParameters &physics, Step &step)
-{
-    Vector3 dirToTarget = CalcualteDirToTarget(physics, step);
-
-    Vector3 dir = physics.dir.GetWorldDir();
-
-    return (dir - dirToTarget).Length();
-}
+//static float CalculateDelta(PhysicsParameters &physics, Step &step)
+//{
+//    Vector3 dirToTarget = CalcualteDirToTarget(physics, step);
+//
+//    Vector3 dir = physics.dir.GetWorldDir();
+//
+//    return (dir - dirToTarget).Length();
+//}
 
 
 EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float dT, EngineT &engine)

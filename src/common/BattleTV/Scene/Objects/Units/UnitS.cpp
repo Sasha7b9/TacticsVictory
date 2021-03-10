@@ -13,9 +13,9 @@ void UnitSpecificS::Update(float timeStep)
 
     if (engine->algorithm.IsFinished())
     {
-        int direct = Rand() % 4;
+        int direct = Rand() % (CommandEngine::MoveToWestNorth - CommandEngine::None);
 
-        engine->GiveCommand((CommandEngine::E)(direct + 1));
+        engine->GiveCommand((CommandEngine::E)(direct + CommandEngine::None + 1));
     }
 
     ObjectSpecificS::Update(timeStep);

@@ -8,9 +8,13 @@ class EngineT;
 struct CommandEngine { enum E {
     None,
     MoveToNorth,
+    MoveToNorthEast,
     MoveToEast,
+    MoveToEastSouth,
     MoveToSouth,
-    MoveToWest
+    MoveToSouthWest,
+    MoveToWest,
+    MoveToWestNorth
 }; };
 
 
