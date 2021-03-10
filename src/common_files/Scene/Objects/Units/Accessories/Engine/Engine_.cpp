@@ -1,25 +1,26 @@
 // 2021/02/26 21:54:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Scene/Objects/Units/Unit_.h"
 #include "Scene/Objects/Units/Accessories/Engine/Engine_.h"
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-EngineT::EngineT(ObjectT *_object) : Object(TheContext), object(_object)
+EngineT::EngineT(Unit *_unit) : Object(TheContext), unit(_unit)
 {
 
 };
 
 
-void EngineT::GiveCommand(Unit &unit, CommandEngine::E command, int count)
+void EngineT::GiveCommand(CommandEngine::E command, int count)
 {
-    calculator.Calculate(unit, command, count, algorithm);
+    calculator.Calculate(*unit, command, count, algorithm);
 }
 
 
 bool EngineT::IsStopped() const
 {
-    return (object->physics->mov.GetSpeed() == 0.0f) &&
-        (object->physics->rot.GetSpeed() == 0.0f);
+    return (unit->physics->mov.GetSpeed() == 0.0f) &&
+        (unit->physics->rot.GetSpeed() == 0.0f);
 }
 
 
@@ -30,7 +31,7 @@ void EngineT::Update(float timeStep)
         return;
     }
 
-    EngineExecutor::Result result = executor.Execute(*object->physics, timeStep, *this);
+    EngineExecutor::Result result = executor.Execute(*unit, timeStep);
 
     if (result.IsFinished())
     {

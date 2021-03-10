@@ -95,9 +95,9 @@ public:
     };
 
     // Выполняет текуцщий (т.е. нулевой) шаг алгоритма. Если выполнение шага закончено - возвращает Result::Finished
-    Result Execute(PhysicsParameters &physics, float dT, EngineT &engine);
+    Result Execute(Unit &unit, float dT);
 
-    Result ExecuteRotate(PhysicsParameters &physics, float dT, EngineT &engine);
+    Result ExecuteRotate(Unit &unit, float dT);
 
-    Result ExecuteMovement(PhysicsParameters &physics, float dT, EngineT &engine);
+    Result ExecuteMovement(Unit &unit, float dT);
 };

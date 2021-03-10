@@ -15,7 +15,7 @@ void UnitSpecificS::Update(float timeStep)
     {
         int direct = Rand() % (CommandEngine::MoveToWestNorth - CommandEngine::None);
 
-        engine->GiveCommand(*unit, (CommandEngine::E)(direct + CommandEngine::None + 1), (Rand() % 10) + 1);
+        engine->GiveCommand((CommandEngine::E)(direct + CommandEngine::None + 1), (Rand() % 10) + 1);
     }
 
     ObjectSpecificS::Update(timeStep);

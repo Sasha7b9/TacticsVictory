@@ -84,17 +84,17 @@ void EngineCalculator::CalculateMovement(Unit &unit, CommandEngine::E command, i
 }
 
 
-EngineExecutor::Result EngineExecutor::Execute(PhysicsParameters &physics, float timeStep, EngineT &engine)
+EngineExecutor::Result EngineExecutor::Execute(Unit &unit, float timeStep)
 {
-    if (engine.algorithm.IsFinished())
+    if (unit.engine->algorithm.IsFinished())
     {
         return EngineExecutor::Result::Finished;
     }
 
-    switch (engine.algorithm.steps.Front().type)
+    switch (unit.engine->algorithm.steps.Front().type)
     {
-    case Step::Type::Move:      return ExecuteMovement(physics, timeStep, engine);   break;
-    case Step::Type::Rotate:    return ExecuteRotate(physics, timeStep, engine);     break;
+    case Step::Type::Move:      return ExecuteMovement(unit, timeStep);   break;
+    case Step::Type::Rotate:    return ExecuteRotate(unit, timeStep);     break;
     case Step::Type::None:
         break;
     }
@@ -103,9 +103,11 @@ EngineExecutor::Result EngineExecutor::Execute(PhysicsParameters &physics, float
 }
 
 
-EngineExecutor::Result EngineExecutor::ExecuteMovement(PhysicsParameters &physics, float timeStep, EngineT &engine)
+EngineExecutor::Result EngineExecutor::ExecuteMovement(Unit &unit, float timeStep)
 {
-    Step &step = engine.algorithm.steps.Front();
+    Step &step = unit.engine->algorithm.steps.Front();
+
+    PhysicsParameters &physics = *unit.physics;
 
     Vector3 currentPos = physics.pos.GetWorld();
 
@@ -160,9 +162,11 @@ Vector3 CalcualteDirToTarget(PhysicsParameters &physics, Step &step)
 //}
 
 
-EngineExecutor::Result EngineExecutor::ExecuteRotate(PhysicsParameters &physics, float dT, EngineT &engine)
+EngineExecutor::Result EngineExecutor::ExecuteRotate(Unit &unit, float dT)
 {
-    Vector3 &endPos = engine.algorithm.GetStep().endPos;            // К этой точке нужно повернуться
+    PhysicsParameters &physics = *unit.physics;
+
+    Vector3 &endPos = unit.engine->algorithm.GetStep().endPos;            // К этой точке нужно повернуться
 
     Vector3 dir = physics.dir.GetWorldDir();                        // Направление движения юнита
 

@@ -10,12 +10,12 @@ class EngineT : public Object
 
 public:
 
-    EngineT(ObjectT *object);
+    EngineT(Unit *unit);
     virtual ~EngineT() {}
 
     virtual void Update(float timeStep);
 
-    void GiveCommand(Unit &unit, CommandEngine::E command, int count);
+    void GiveCommand(CommandEngine::E command, int count);
 
     // Возвращет true, если мотор заглушен
     bool IsStopped() const;
@@ -26,7 +26,7 @@ public:
 
 protected:
 
-    ObjectT *object = nullptr;
+    Unit *unit = nullptr;
 };
 
 
@@ -35,7 +35,7 @@ class EngineGround : public EngineT
 {
 public:
 
-    EngineGround(ObjectT *object) : EngineT(object) {}
+    EngineGround(Unit *unit) : EngineT(unit) {}
 };
 
 
@@ -44,5 +44,5 @@ class EngineAir : public EngineT
 {
 public:
 
-    EngineAir(ObjectT *object) : EngineT(object) {}
+    EngineAir(Unit *unit) : EngineT(unit) {}
 };
