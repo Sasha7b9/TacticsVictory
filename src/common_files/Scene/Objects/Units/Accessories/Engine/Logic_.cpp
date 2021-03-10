@@ -6,20 +6,18 @@
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
 
 
-void EngineCalculator::Calculate(PhysicsParameters &physics, CommandEngine::E command, int count,
-    EngineAlgorithm &algorithm, Unit &unit)
+void EngineCalculator::Calculate(Unit &unit, CommandEngine::E command, int count, EngineAlgorithm &algorithm)
 {
-    if (CalculateRotate(physics, command, algorithm, unit))
+    if (CalculateRotate(unit, command, algorithm))
     {
-        CalculateMovement(physics, command, count, algorithm, unit);
+        CalculateMovement(unit, command, count, algorithm);
     }
 }
 
 
-bool EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine::E command,
-    EngineAlgorithm & algorithm, Unit &unit)
+bool EngineCalculator::CalculateRotate(Unit &unit, CommandEngine::E command, EngineAlgorithm &algorithm)
 {
-    Vector3 position = physics.pos.GetWorld();
+    Vector3 position = unit.physics->pos.GetWorld();
 
     Vector3 target = position;
 
@@ -52,12 +50,11 @@ bool EngineCalculator::CalculateRotate(PhysicsParameters &physics, CommandEngine
 }
 
 
-void EngineCalculator::CalculateMovement(PhysicsParameters &physics, CommandEngine::E command, int count,
-    EngineAlgorithm &algorithm, Unit &unit)
+void EngineCalculator::CalculateMovement(Unit &unit, CommandEngine::E command, int count, EngineAlgorithm &algorithm)
 {
     Step step(Step::Type::Move);
 
-    step.endPos = physics.pos.GetWorld();
+    step.endPos = unit.physics->pos.GetWorld();
 
     while (count-- > 0)
     {
