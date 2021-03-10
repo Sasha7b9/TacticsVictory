@@ -1,3 +1,3 @@
-PATH = %PATH%;c:\Urho3D14\build\bin\tool\;c:\Urho3D14\build\bin\
-AssetImporter model Import\Models\Missile\Missile.fbx Models\Missile.mdl -l -nf -t -ct
+PATH = %PATH%;d:\My\Urho3D\bin\;d:\My\Urho3D\generated\debug\bin\tool\;
+AssetImporter model Models\Units\Plane\Plane.obj Models\Units\Plane\Plane   .mdl -l -nf -t -ct
 pause

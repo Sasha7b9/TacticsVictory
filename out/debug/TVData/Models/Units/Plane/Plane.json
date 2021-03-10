@@ -1,0 +1,9 @@
+{
+    "model": {
+        "fileModel": "Models/Units/Plane/Plane.mdl",
+        "fileMaterials": "Models/Units/Plane/Plane.txt"
+    },
+
+    "speed": 1,
+    "deltaRotateY" : 180
+}
