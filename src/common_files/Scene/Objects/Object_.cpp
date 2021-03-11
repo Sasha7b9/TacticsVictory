@@ -183,7 +183,9 @@ bool ObjectT::IsIntersectionWithUnitOrBuilding() const
         {
             BoundingBox another = object->GetBoundingBox();
 
-            if (box.IsInside(another))
+            Intersection intersect = box.IsInside(another);
+
+            if (intersect != OUTSIDE)
             {
                 return true;
             }
@@ -196,5 +198,5 @@ bool ObjectT::IsIntersectionWithUnitOrBuilding() const
 
 BoundingBox ObjectT::GetBoundingBox() const
 {
-    return staticModel->GetBoundingBox();
+    return staticModel->GetWorldBoundingBox();
 }
