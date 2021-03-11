@@ -37,9 +37,9 @@ void SceneT::Create()
     // Set same volume as the Octree, set a close bluish fog and some ambient light
     zone->SetBoundingBox(BoundingBox(-1000.0f, 1000.0f));
     zone->SetFogColor(Color::GRAY);
-    zone->SetFogHeightScale(10000.0f);
+    zone->SetFogHeightScale(100000.0f);
     zone->SetFogStart(0.0f);
-    zone->SetFogEnd(1000.0f);
+    zone->SetFogEnd(10000.0f);
     float dColor = 0.1f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
