@@ -171,7 +171,9 @@ void ObjectT::StoreState()
 
 void ObjectT::RestoreState()
 {
-    physics->pos.SetWorld(state.ReadVector3());
+    MemoryBuffer buffer(state.GetData(), state.GetSize());
+
+    physics->pos.SetWorld(buffer.ReadVector3());
 }
 
 
