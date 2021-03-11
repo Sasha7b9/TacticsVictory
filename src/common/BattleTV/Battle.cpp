@@ -101,9 +101,9 @@ void Battle::Start()
 
     for (int i = 0; i < 1000; i++)
     {
-        ObjectT::Create<Tank>(Math::RandomUINT(rangeX), Math::RandomUINT(rangeZ));
+        ObjectCreator::Create<Tank>(Math::RandomUINT(rangeX), Math::RandomUINT(rangeZ));
 
-        ObjectT::Create<AirPlane>(Math::RandomUINT(rangeX), Math::RandomUINT(rangeZ));
+        ObjectCreator::Create<AirPlane>(Math::RandomUINT(rangeX), Math::RandomUINT(rangeZ));
     }
 
     SubscribeToEvents();

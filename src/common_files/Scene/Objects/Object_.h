@@ -44,19 +44,23 @@ protected:
 };
 
 
+namespace ObjectCreator
+{
+    template<class T> T *Create(uint rowX, uint colZ)
+    {
+        T *object = TheScene->CreateChild("", LOCAL)->CreateComponent<T>(LOCAL);
+        TheTerrain->PutIn(object, rowX, colZ);
+        return object;
+    }
+}
+
+
 //----------------------------------------------------------------------------------------------------------------------
 class ObjectT : public LogicComponent
 {
     URHO3D_OBJECT(ObjectT, LogicComponent);
 
 public:
-
-    template<class T> static T *Create(uint rowX, uint colZ)
-    {
-        T *object = TheScene->CreateChild("", LOCAL)->CreateComponent<T>(LOCAL);
-        TheTerrain->PutIn(object, rowX, colZ);
-        return object;
-    }
 
     // Упаковать состояние объекта для передачи по сети
     virtual void Compress(VectorBuffer &buffer);
