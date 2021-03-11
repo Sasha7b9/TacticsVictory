@@ -96,7 +96,7 @@ void WaveAlgorithm::ThreadFunction()
 
 void WaveAlgorithm::FindPath()
 {
-    if (fabs(TheTerrain->GetHeight(start.row, start.col) - TheTerrain->GetHeight(end.row, end.col)) > M_EPSILON)
+    if (fabs(TheTerrain->_GetHeight(start.rowX, start.colZ) - TheTerrain->_GetHeight(end.rowX, end.colZ)) > M_EPSILON)
     {
         return;
     }
@@ -115,12 +115,12 @@ void WaveAlgorithm::FindPath()
         }
     }
 
-    heightStart = TheTerrain->GetHeight(start.row, start.col);
+    heightStart = TheTerrain->_GetHeight(start.rowX, start.colZ);
 
     Vector<Wave> waves;
 
     Wave wave;
-    SetCell(wave, start.row, start.col, 0);
+    SetCell(wave, start.rowX, start.colZ, 0);
 
     waves.Push(wave);
 
@@ -172,8 +172,8 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
     {
         for (int i = 0; i < 8; i++)
         {
-            uint row = coord.row;
-            uint col = coord.col;
+            uint row = coord.rowX;
+            uint col = coord.colZ;
 
             int dR = dRow[i];
             int dC = dCol[i];
@@ -184,7 +184,10 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
             uint newRow = static_cast<uint>(iRow);
             uint newCol = static_cast<uint>(iCol);
 
-            if (newRow < numRows && newCol < numCols && cells[newRow][newCol] == -1 && fabs(TheTerrain->GetHeight(newRow, newCol) - heightStart) < M_EPSILON)
+            if (newRow < numRows &&
+                newCol < numCols &&
+                cells[newRow][newCol] == -1 &&
+                fabs(TheTerrain->GetHeight(newRow, newCol) - heightStart) < M_EPSILON)
             {
                 if (i == 4 && (!TERRAIN_HEIGHT_EQUAL(row, col - 1) || !TERRAIN_HEIGHT_EQUAL(row - 1, col)))
                 {

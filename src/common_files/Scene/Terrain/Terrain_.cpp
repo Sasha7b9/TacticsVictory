@@ -127,15 +127,15 @@ void TerrainT::CreateFromVector(const Vector<Vector<float>> &lev)
 }
 
 
-float TerrainT::GetHeight(uint colZ, uint rowX) const
+float TerrainT::_GetHeight(uint rowX, uint colZ) const
 {
-    return level.GetHeight(colZ, rowX);
+    return level.GetHeight(rowX, colZ);
 }
 
 
-float TerrainT::GetHeight(float colZ, float rowX) const
+float TerrainT::GetHeight(float rowX, float colZ) const
 {
-    return GetHeight((uint)colZ, (uint)rowX);
+    return _GetHeight((uint)rowX, (uint)colZ);
 }
 
 
@@ -230,9 +230,9 @@ SegmentTerrain* TerrainT::GetSegmentForCoord(uint row, uint col)
 }
 
 
-void TerrainT::PutIn(ObjectT *object, uint colZ, uint rowX)
+void TerrainT::PutIn(ObjectT *object, uint rowX, uint colZ)
 {
-    float height = GetHeight(colZ, rowX);
+    float height = _GetHeight(rowX, colZ);
     
     if (object->IsFlying())
     {

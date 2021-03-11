@@ -56,8 +56,8 @@ public:
 
     void CreateFromVector(const Vector<Vector<float>> &level);
 
-    float GetHeight(uint colZ, uint rowX) const;
-    float GetHeight(float colZ, float rowX) const;
+    float _GetHeight(uint rowX, uint colZ) const;
+    float GetHeight(float rowX, float colZ) const;
     float GetHeight(const Vector2 coord) const;
 
     void SetHeight(uint row, uint col, float height);
@@ -70,7 +70,7 @@ public:
     // "Положить" игровой объект в точку {colZ, rowX}. Объект будет на поверхности ланшафта. Если объект может находить-
     // ся над поверхностью, его координата Y не изменится, если он находится над землёй. Иначе так же как и для
     // остальных
-    void PutIn(ObjectT *object, uint colZ, uint rowX);
+    void PutIn(ObjectT *object, uint rowX, uint colZ);
 
     TPlane GetIntersectionPlane(Ray &ray);
 
@@ -96,7 +96,7 @@ public:
 
         void CreateFromVector(const Vector<Vector<float>> &lev);
 
-        float GetHeight(uint colZ, uint rowX) const
+        float GetHeight(uint rowX, uint colZ) const
         {
             if (colZ >= level[0].Size() || rowX >= level.Size())
             {

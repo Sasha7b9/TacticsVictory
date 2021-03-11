@@ -8,21 +8,21 @@ extern TerrainT *TheTerrain;
 
 struct Coord
 {
-    Coord(const Coord &coord) : row(coord.row), col(coord.col) { }
+    Coord(const Coord &coord) : rowX(coord.rowX), colZ(coord.colZ) { }
 
-    Coord(uint row_ = 0U, uint col_ = 0U) : row(row_), col(col_) { }
+    Coord(uint _rowX = 0U, uint _colZ = 0U) : rowX(_rowX), colZ(_colZ) { }
 
-    uint row = 0;
-    uint col = 0;
+    uint rowX = 0U;
+    uint colZ = 0U;
 
     bool operator ==(const Coord& rhs) const
     {
-        return row == rhs.row && col == rhs.col;
+        return (rowX == rhs.rowX) && (colZ == rhs.colZ);
     }
     Coord& operator =(const Coord& rhs)
     {
-        row = rhs.row;
-        col = rhs.col;
+        rowX = rhs.rowX;
+        colZ = rhs.colZ;
         return *this;
     }
 
@@ -30,9 +30,9 @@ struct Coord
     {
         Vector3 retValue;
 
-        retValue.x_ = static_cast<float>(col) + 0.5f;
-        retValue.y_ = TheTerrain->GetHeight(row, col);
-        retValue.z_ = -static_cast<float>(row) - 0.5f;
+        retValue.x_ = static_cast<float>(rowX) + 0.5f;
+        retValue.y_ = TheTerrain->_GetHeight(rowX, colZ);
+        retValue.z_ = -static_cast<float>(colZ) + 0.5f;
 
         return retValue;
     }
