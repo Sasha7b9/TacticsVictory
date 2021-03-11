@@ -28,7 +28,7 @@ void SceneC::Create()
 
     Sounds::Init();
 
-    TheRenderer->SetShadowMapSize(2048);
+    TheRenderer->SetShadowMapSize(16384);
 
     TheWindowTarget = new WindowTarget();
     TheUIRoot->AddChild(TheWindowTarget);

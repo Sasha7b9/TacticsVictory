@@ -49,8 +49,8 @@ void SceneT::Create()
     SharedPtr<Node> lightNode;
     lightNode = CreateChild("LigthNode");
     SunEngine *sunEngine = lightNode->CreateComponent<SunEngine>(LOCAL);
-    sunEngine->SetCenter({ TheLevel->map[0].Size() / 2.0f, 25.0f, TheLevel->map.Size() / 2.0f });
-    sunEngine->SetMoveSpeed(0.5f);
+    sunEngine->SetCenter({ TheTerrain->HeightX() / 2.0f, 50.0f, TheTerrain->WidthZ() / 2.0f });
+    sunEngine->SetMoveSpeed(0.1f);
 
     Light *light = lightNode->CreateComponent<Light>(LOCAL);
     lightNode->SetScale(0.01f);
