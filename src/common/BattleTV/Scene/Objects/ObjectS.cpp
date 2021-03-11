@@ -5,7 +5,12 @@
 #include "Scene/SceneS.h"
 #include "Scene/Objects/Object_.h"
 #include "Scene/Objects/ObjectS.h"
+#include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
+#include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 
+
+template Tank     *ObjectCreator::Create<Tank>();
+template AirPlane *ObjectCreator::Create<AirPlane>();
 
 
 ObjectSpecific *ObjectSpecific::Create(ObjectT *object)
@@ -17,6 +22,12 @@ ObjectSpecific *ObjectSpecific::Create(ObjectT *object)
 ObjectSpecificS::ObjectSpecificS(ObjectT *object) : ObjectSpecific(object)
 {
 
+}
+
+
+template<class T> T *ObjectCreator::Create()
+{
+    return TheScene->CreateChild("", LOCAL)->CreateComponent<T>(LOCAL);
 }
 
 

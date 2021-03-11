@@ -60,3 +60,9 @@ void ObjectSpecificC::OnPostRenderUpdate()
         TheDebugRenderer->AddLine(pos, pos + right, Color::BLUE);
     }
 }
+
+
+template<class T> T *ObjectCreator::Create()
+{
+    return TheScene->CreateChild("", LOCAL)->CreateComponent<T>(LOCAL);
+}
