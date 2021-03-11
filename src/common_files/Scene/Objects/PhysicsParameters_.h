@@ -74,7 +74,7 @@ struct PositionPP
     Vector2 GetCoord() const;
 
     // Эта функция рассчитывает дистанцию от центра
-    void CalculateDistanceFromCenter() { distanceFromCenter = GetWorld().LengthSquared(); }
+    void CalculateDistanceFromCenter() { distanceFromCenter = GetWorld().Length(); }
 
     float distanceFromCenter = 0.0f;        // Дистанция от центра
 
