@@ -12,7 +12,9 @@ ObjectT *ObjectT::empty = nullptr;
 
 
 template Tank     *ObjectCreator::Create<Tank>();
+template Tank     *ObjectCreator::Create<Tank>(uint rowX, uint colZ);
 template AirPlane *ObjectCreator::Create<AirPlane>();
+template AirPlane *ObjectCreator::Create<AirPlane>(uint rowX, uint colZ);
 
 
 ObjectSpecific::ObjectSpecific(ObjectT *_object) : Object(TheContext),
@@ -215,4 +217,12 @@ BoundingBox ObjectT::GetBoundingBox() const
 template<class T> T *ObjectCreator::Create()
 {
     return TheScene->CreateChild("", LOCAL)->CreateComponent<T>(LOCAL);
+}
+
+
+template<class T> T *ObjectCreator::Create(uint rowX, uint colZ)
+{
+    T *object = Create<T>();
+    TheTerrain->PutIn(object, rowX, colZ);
+    return object;
 }

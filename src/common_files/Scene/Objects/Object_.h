@@ -50,12 +50,7 @@ namespace ObjectCreator
     template<class T> T *Create();
 
     // Создаёт объект и помещает его на карту
-    template<class T> T *Create(uint rowX, uint colZ)
-    {
-        T *object = Create<T>();
-        TheTerrain->PutIn(object, rowX, colZ);
-        return object;
-    }
+    template<class T> T *Create(uint rowX, uint colZ);
 }
 
 
