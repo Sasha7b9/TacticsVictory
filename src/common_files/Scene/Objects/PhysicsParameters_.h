@@ -61,9 +61,17 @@ struct PositionPP
 {
     PositionPP(ObjectT *_object) : object(_object) {}
 
-    Vector3 GetWorld() const;                    // Возвращает реальную позицию в мире
+    // Возвращает реальную позицию в мире
+    Vector3 GetWorld() const;
 
-    void SetWorld(const Vector3 &position);      // Устанавливает позицию в мире с учётом смещения
+    // Устанавливает позицию в мире с учётом смещения
+    void SetWorld(const Vector3 &position);
+
+    // Возвращает высоту объекта (координата y)
+    float GetAltitude() const { return GetWorld().y_; }
+
+    // Возвращает координаты объекта в пространстве карты
+    Vector2 GetCoord() const;
 
 private:
 

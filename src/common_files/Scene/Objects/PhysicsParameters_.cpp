@@ -9,6 +9,14 @@ Vector3 PositionPP::GetWorld() const
 }
 
 
+Vector2 PositionPP::GetCoord() const
+{
+    Vector3 coord = GetWorld();
+
+    return { coord.z_, coord.x_ };
+}
+
+
 void PositionPP::SetWorld(const Vector3 &position)
 {
     object->GetObjectNode()->SetPosition(position /* + object->shift->position*/);

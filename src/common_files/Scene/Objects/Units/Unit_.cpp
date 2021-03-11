@@ -46,6 +46,14 @@ bool Unit::CanMoveTo(float colZ, float rowX) const
         return false;
     }
 
+    if (IsFlying())
+    {
+        if (physics->pos.GetAltitude() >= TheTerrain->GetHeight(physics->pos.GetCoord()))
+        {
+            return true;
+        }
+    }
+
     return TheTerrain->GetHeight(physics->pos.GetWorld().z_, physics->pos.GetWorld().x_) ==
         TheTerrain->GetHeight(colZ, rowX);
 }

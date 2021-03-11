@@ -109,7 +109,7 @@ void TerrainT::CreateFromVector(const Vector<Vector<float>> &lev)
 }
 
 
-float TerrainT::GetHeight(uint colZ, uint rowX)
+float TerrainT::GetHeight(uint colZ, uint rowX) const
 {
     if (colZ >= WidthZ() || rowX >= HeightX())
     {
@@ -120,9 +120,15 @@ float TerrainT::GetHeight(uint colZ, uint rowX)
 }
 
 
-float TerrainT::GetHeight(float colZ, float rowX)
+float TerrainT::GetHeight(float colZ, float rowX) const
 {
     return GetHeight((uint)colZ, (uint)rowX);
+}
+
+
+float TerrainT::GetHeight(const Vector2 coord) const
+{
+    return GetHeight(coord.x_, coord.y_);
 }
 
 
@@ -132,13 +138,13 @@ void TerrainT::SetHeight(uint row, uint col, float height)
 }
 
 
-uint TerrainT::HeightX()
+uint TerrainT::HeightX() const
 {
     return level.Size();
 }
 
 
-uint TerrainT::WidthZ()
+uint TerrainT::WidthZ() const
 {
     return level[0].Size();
 }

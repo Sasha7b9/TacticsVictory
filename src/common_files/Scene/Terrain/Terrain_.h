@@ -33,15 +33,15 @@ public:
 
     void CreateFromVector(const Vector<Vector<float>> &level);
 
-    float GetHeight(uint colZ, uint rowX);
-
-    float GetHeight(float colZ, float rowX);
+    float GetHeight(uint colZ, uint rowX) const;
+    float GetHeight(float colZ, float rowX) const;
+    float GetHeight(const Vector2 coord) const;
 
     void SetHeight(uint row, uint col, float height);
 
-    uint HeightX();
+    uint HeightX() const;
 
-    uint WidthZ();
+    uint WidthZ() const;
 
     bool Empty();
 
