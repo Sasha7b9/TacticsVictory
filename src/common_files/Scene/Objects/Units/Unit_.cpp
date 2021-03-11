@@ -63,23 +63,15 @@ bool Unit::TooCloseToAnoterUnit() const
 {
     Vector3 position = physics->pos.GetWorld();
 
+    physics->pos.CalculateDistanceFromCenter();
+
+    float distance = physics->pos.GetDistanceFromCenter();
+
     for (Unit *unit : Unit::storage)
     {
         if (unit != this)
         {
-            Vector3 pos_unit = unit->physics->pos.GetWorld();
-
-            if (std::fabsf(pos_unit.x_ - position.x_) > 2.0f)
-            {
-                continue;
-            }
-
-            if (std::fabsf(pos_unit.y_ - position.y_) > 2.0f)
-            {
-                continue;
-            }
-
-            if (std::fabsf(pos_unit.z_ - position.z_) > 2.0f)
+            if (std::fabsf(distance - unit->physics->pos.GetDistanceFromCenter()) > 2.0f)
             {
                 continue;
             }

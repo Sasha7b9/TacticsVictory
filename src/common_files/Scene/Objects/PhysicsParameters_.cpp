@@ -15,6 +15,18 @@ void PositionPP::SetWorld(const Vector3 &position)
 }
 
 
+void PositionPP::CalculateDistanceFromCenter()
+{
+    distanceFromCenter = GetWorld().LengthSquared();
+}
+
+
+float PositionPP::GetDistanceFromCenter() const
+{
+    return distanceFromCenter;
+}
+
+
 Vector2 PositionPP::GetCoord() const
 {
     Vector3 coord = GetWorld();

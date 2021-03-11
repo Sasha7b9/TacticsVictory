@@ -217,3 +217,9 @@ template<class T> T *ObjectCreator::Create(uint rowX, uint colZ)
     TheTerrain->PutIn(object, rowX, colZ);
     return object;
 }
+
+
+void ObjectSpecific::Update(float  /*dT*/)
+{
+    object->physics->pos.CalculateDistanceFromCenter();
+}

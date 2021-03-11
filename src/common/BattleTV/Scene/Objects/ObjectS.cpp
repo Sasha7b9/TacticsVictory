@@ -31,8 +31,10 @@ template<class T> T *ObjectCreator::Create()
 }
 
 
-void ObjectSpecificS::Update(float)
+void ObjectSpecificS::Update(float dT)
 {
+    ObjectSpecific::Update(dT);
+
 //    if (TheTime->GetElapsedTime() >= timeNextTimeSend)
 //    {
 //        Vector3 position = node->GetPosition();

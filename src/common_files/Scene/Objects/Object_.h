@@ -32,7 +32,7 @@ public:
 
     static ObjectSpecific *Create(ObjectT *object);
 
-    virtual void Update(float /*timeStep*/) {};
+    virtual void Update(float dT);
 
     virtual void OnPostRenderUpdate() {};
 

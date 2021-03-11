@@ -73,9 +73,15 @@ struct PositionPP
     // Возвращает координаты объекта в пространстве карты
     Vector2 GetCoord() const;
 
+    void CalculateDistanceFromCenter();
+
+    float GetDistanceFromCenter() const;
+
 private:
 
     ObjectT *object = nullptr;
+
+    float distanceFromCenter = 0.0f;        // Дистанция от центра
 };
 
 
