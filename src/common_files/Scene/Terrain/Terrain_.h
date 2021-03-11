@@ -64,13 +64,13 @@ public:
 
     struct LogicCell
     {
-        float height;
+        float height;                   // Высота ячейки
+        Vector<ObjectT *> objects;      // Объекты, находящиеся в ячейке
     };
 
 private:
 
     Vector<Vector<LogicCell>> level;
-    Vector<Vector<Vector<Object *>>> objects;               // Массив объектов, находящихся в каждом квадрате
     Vector<Vector<SharedPtr<SegmentTerrain>>> segments;
 
     SegmentTerrain *GetSegmentForCoord(uint row, uint col);
