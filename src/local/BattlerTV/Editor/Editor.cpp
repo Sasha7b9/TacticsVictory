@@ -85,7 +85,7 @@ void Editor::ClearScene()
 
 void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 {
-    if (!TheTerrain || TheTerrain->Empty())
+    if (!TheTerrain || TheTerrain->IsEmpty())
     {
         return;
     }

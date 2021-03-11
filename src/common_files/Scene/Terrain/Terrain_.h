@@ -40,10 +40,9 @@ public:
     void SetHeight(uint row, uint col, float height);
 
     uint HeightX() const;
-
     uint WidthZ() const;
 
-    bool Empty();
+    bool IsEmpty() const;
 
     // "Положить" игровой объект в точку {colZ, rowX}. Объект будет на поверхности ланшафта. Если объект может находить-
     // ся над поверхностью, его координата Y не изменится, если он находится над землёй. Иначе так же как и для
@@ -64,8 +63,8 @@ public:
 
 private:
 
-    Vector<Vector<float>> level;
-
+    Vector<Vector<float>> level;                            // Высота квадратов
+    Vector<Vector<Vector<Object *>>> objects;               // Массив объектов, находящихся в каждом квадрате
     Vector<Vector<SharedPtr<SegmentTerrain>>> segments;
 
     SegmentTerrain *GetSegmentForCoord(uint row, uint col);

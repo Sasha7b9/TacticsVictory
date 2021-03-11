@@ -150,7 +150,7 @@ uint TerrainT::WidthZ() const
 }
 
 
-bool TerrainT::Empty()
+bool TerrainT::IsEmpty() const
 {
     return level.Empty();
 }
