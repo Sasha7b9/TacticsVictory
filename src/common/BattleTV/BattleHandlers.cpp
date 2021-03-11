@@ -9,7 +9,7 @@ void Battle::HandleUpdate(StringHash, VariantMap& eventData)
 {
     float dT = eventData[Update::P_TIMESTEP].GetFloat();
 
-    LOGINFOF("dT = %f ms", dT);
+    LOGINFOF("dT = %f ms", dT * 1000);
 }
 
 

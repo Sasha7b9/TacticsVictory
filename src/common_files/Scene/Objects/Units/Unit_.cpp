@@ -67,6 +67,23 @@ bool Unit::TooCloseToAnoterUnit() const
     {
         if (unit != this)
         {
+            Vector3 pos_unit = unit->physics->pos.GetWorld();
+
+            if (std::fabsf(pos_unit.x_ - position.x_) > 2.0f)
+            {
+                continue;
+            }
+
+            if (std::fabsf(pos_unit.y_ - position.y_) > 2.0f)
+            {
+                continue;
+            }
+
+            if (std::fabsf(pos_unit.z_ - position.z_) > 2.0f)
+            {
+                continue;
+            }
+
             if (position.DistanceToPoint(unit->physics->pos.GetWorld()) < 0.9f)
             {
                 return true;
