@@ -163,6 +163,8 @@ int ObjectT::NestingDepth() const
 
 void ObjectT::StoreState()
 {
+    state.Clear();
+
     state.WriteVector3(physics->pos.GetWorld());
 }
 

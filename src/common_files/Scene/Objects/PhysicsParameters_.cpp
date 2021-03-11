@@ -5,13 +5,13 @@
 
 Vector3 PositionPP::GetWorld() const
 {
-    return object->GetObjectNode()->GetPosition();
+    return object->GetObjectNode()->GetWorldPosition();
 }
 
 
 void PositionPP::SetWorld(const Vector3 &position)
 {
-    object->GetObjectNode()->SetPosition(position);
+    object->GetObjectNode()->SetWorldPosition(position);
 }
 
 
