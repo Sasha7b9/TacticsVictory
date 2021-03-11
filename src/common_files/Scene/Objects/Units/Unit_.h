@@ -22,7 +22,7 @@ public:
     virtual void Decompress(MemoryBuffer &buffer) override;
 
     // Возвращает true, если юнит может переместиться в точку (colZ, rowX)
-    virtual bool CanMoveTo(float colZ, float rowX) const;
+    virtual bool CanMoveTo(float rowX, float colZ) const;
 
 protected:
 

@@ -35,7 +35,7 @@ bool EngineCalculator::CalculateRotate(Unit &unit, CommandEngine::E command, Eng
         break;
     }
 
-    if (!unit.CanMoveTo(target.z_, target.x_))
+    if (!unit.CanMoveTo(target.x_, target.z_))
     {
         return false;
     }
@@ -72,7 +72,7 @@ void EngineCalculator::CalculateMovement(Unit &unit, CommandEngine::E command, i
             break;
         }
 
-        if (unit.CanMoveTo(step.endPos.z_, step.endPos.x_))
+        if (unit.CanMoveTo(step.endPos.x_, step.endPos.z_))
         {
             algorithm.steps.Push(step);
         }
