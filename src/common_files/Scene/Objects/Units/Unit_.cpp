@@ -54,6 +54,6 @@ bool Unit::CanMoveTo(float rowX, float colZ) const
         }
     }
 
-    return TheTerrain->GetHeight(physics->pos.GetWorld().x_, physics->pos.GetWorld().z_) ==
+    return TheTerrain->GetHeight(physics->pos.GetCoord()) ==
         TheTerrain->GetHeight(rowX, colZ);
 }

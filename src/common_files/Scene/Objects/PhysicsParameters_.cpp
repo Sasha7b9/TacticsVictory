@@ -19,7 +19,7 @@ Vector2 PositionPP::GetCoord() const
 {
     Vector3 coord = GetWorld();
 
-    return { coord.z_, coord.x_ };
+    return { coord.x_, coord.z_ };
 }
 
 
