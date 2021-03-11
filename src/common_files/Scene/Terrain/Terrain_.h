@@ -56,7 +56,7 @@ public:
 
     void CreateFromVector(const Vector<Vector<float>> &level);
 
-    float _GetHeight(uint rowX, uint colZ) const;
+    float GetHeight(uint rowX, uint colZ) const;
     float GetHeight(float rowX, float colZ) const;
     float GetHeight(const Vector2 coord) const;
 

@@ -3,7 +3,7 @@
 #include "Game/Path/WaveAlgorithm_.h"
 
 
-#define TERRAIN_HEIGHT_EQUAL(x,y) (fabs(TheTerrain->_GetHeight(x, y) - heightStart) < M_EPSILON)
+#define TERRAIN_HEIGHT_EQUAL(x,z) (fabs(TheTerrain->GetHeight(x, z) - heightStart) < M_EPSILON)
 
 
 WaveAlgorithm::WaveAlgorithm(Context *context) : Thread(), Object(context)
@@ -96,7 +96,7 @@ void WaveAlgorithm::ThreadFunction()
 
 void WaveAlgorithm::FindPath()
 {
-    if (fabs(TheTerrain->_GetHeight(start.rowX, start.colZ) - TheTerrain->_GetHeight(end.rowX, end.colZ)) > M_EPSILON)
+    if (fabs(TheTerrain->GetHeight(start.rowX, start.colZ) - TheTerrain->GetHeight(end.rowX, end.colZ)) > M_EPSILON)
     {
         return;
     }
@@ -115,7 +115,7 @@ void WaveAlgorithm::FindPath()
         }
     }
 
-    heightStart = TheTerrain->_GetHeight(start.rowX, start.colZ);
+    heightStart = TheTerrain->GetHeight(start.rowX, start.colZ);
 
     Vector<Wave> waves;
 
@@ -187,7 +187,7 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
             if (newRow < numRows &&
                 newCol < numCols &&
                 cells[newRow][newCol] == -1 &&
-                fabs(TheTerrain->_GetHeight(newRow, newCol) - heightStart) < M_EPSILON)
+                fabs(TheTerrain->GetHeight(newRow, newCol) - heightStart) < M_EPSILON)
             {
                 if (i == 4 && (!TERRAIN_HEIGHT_EQUAL(row, col - 1) || !TERRAIN_HEIGHT_EQUAL(row - 1, col)))
                 {

@@ -55,7 +55,7 @@ Message::ReturnLevel::ReturnLevel() : Message(CLNT_RETURN_LEVEL)
     {
         for (uint col = 0; col < widthZ; col++)
         {
-            buffer.WriteFloat(TheTerrain->_GetHeight(row, col));
+            buffer.WriteFloat(TheTerrain->GetHeight(row, col));
         }
     }
 }
