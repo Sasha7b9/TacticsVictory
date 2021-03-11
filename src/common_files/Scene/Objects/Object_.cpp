@@ -2,11 +2,17 @@
 #include "stdafx.h"
 #include "Core/Math_.h"
 #include "Scene/Objects/Object_.h"
+#include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
+#include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 
 
 Vector<ObjectT *> ObjectT::storage;
 
 ObjectT *ObjectT::empty = nullptr;
+
+
+template Tank     *ObjectCreator::Create<Tank>();
+template AirPlane *ObjectCreator::Create<AirPlane>();
 
 
 ObjectSpecific::ObjectSpecific(ObjectT *_object) : Object(TheContext),
@@ -21,7 +27,7 @@ ObjectT::ObjectT(Context *context, const MinPP &min, const MaxPP &max) : LogicCo
     shift = new ShiftParameters();
 
     storage.Push(this);
-
+     
     physics = new PhysicsParameters(this, min, max);
 }
 
@@ -203,4 +209,10 @@ bool ObjectT::IsIntersectionWithUnitOrBuilding() const
 BoundingBox ObjectT::GetBoundingBox() const
 {
     return staticModel->GetWorldBoundingBox();
+}
+
+
+template<class T> T *ObjectCreator::Create()
+{
+    return TheScene->CreateChild("", LOCAL)->CreateComponent<T>(LOCAL);
 }
