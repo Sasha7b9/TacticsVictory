@@ -235,7 +235,7 @@ void Editor::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         uint row = selectedPlane.row;
         uint col = selectedPlane.col;
-        float height = TheTerrain->GetHeight(row, col);
+        float height = TheTerrain->_GetHeight(row, col);
         if(KEY_IS_KP_MINUS)
         {
             TheTerrain->SetHeight(row, col, height - 1.0f);

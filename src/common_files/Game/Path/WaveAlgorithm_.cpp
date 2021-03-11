@@ -3,7 +3,7 @@
 #include "Game/Path/WaveAlgorithm_.h"
 
 
-#define TERRAIN_HEIGHT_EQUAL(x,y) (fabs(TheTerrain->GetHeight(x, y) - heightStart) < M_EPSILON)
+#define TERRAIN_HEIGHT_EQUAL(x,y) (fabs(TheTerrain->_GetHeight(x, y) - heightStart) < M_EPSILON)
 
 
 WaveAlgorithm::WaveAlgorithm(Context *context) : Thread(), Object(context)
@@ -187,7 +187,7 @@ void WaveAlgorithm::NextWave(Vector<Wave> &waves)
             if (newRow < numRows &&
                 newCol < numCols &&
                 cells[newRow][newCol] == -1 &&
-                fabs(TheTerrain->GetHeight(newRow, newCol) - heightStart) < M_EPSILON)
+                fabs(TheTerrain->_GetHeight(newRow, newCol) - heightStart) < M_EPSILON)
             {
                 if (i == 4 && (!TERRAIN_HEIGHT_EQUAL(row, col - 1) || !TERRAIN_HEIGHT_EQUAL(row - 1, col)))
                 {
@@ -225,14 +225,14 @@ void WaveAlgorithm::SetCell(Wave &wave, uint row, uint col, int numWave)
 void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path_)
 {
     Coord coord = path_[0];
-    uint row = coord.row;
-    uint col = coord.col;
-    int numWave = cells[row][col];
+    uint rowX = coord.rowX;
+    uint colZ = coord.colZ;
+    int numWave = cells[rowX][colZ];
 
     for (int i = 0; i < 8; i++)
     {
-        int iRow = static_cast<int>(row) + dRow[i];
-        int iCol = static_cast<int>(col) + dCol[i];
+        int iRow = static_cast<int>(rowX) + dRow[i];
+        int iCol = static_cast<int>(colZ) + dCol[i];
 
         uint newRow = static_cast<uint>(iRow);
         uint newCol = static_cast<uint>(iCol);

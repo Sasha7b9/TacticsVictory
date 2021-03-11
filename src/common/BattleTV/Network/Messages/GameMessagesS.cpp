@@ -45,17 +45,17 @@ void Message::RequestForLevel::Handle(const ConnectionT &connection)
 
 Message::ReturnLevel::ReturnLevel() : Message(CLNT_RETURN_LEVEL)
 {
-    uint height = TheTerrain->HeightX();
-    uint width = TheTerrain->WidthZ();
+    uint heightX = TheTerrain->HeightX();
+    uint widthZ = TheTerrain->WidthZ();
 
-    buffer.WriteUInt(height);
-    buffer.WriteUInt(width);
+    buffer.WriteUInt(heightX);
+    buffer.WriteUInt(widthZ);
 
-    for (uint row = 0; row < height; row++)
+    for (uint row = 0; row < heightX; row++)
     {
-        for (uint col = 0; col < width; col++)
+        for (uint col = 0; col < widthZ; col++)
         {
-            buffer.WriteFloat(TheTerrain->GetHeight(col, row));
+            buffer.WriteFloat(TheTerrain->_GetHeight(row, col));
         }
     }
 }

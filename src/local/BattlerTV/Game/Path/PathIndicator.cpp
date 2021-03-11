@@ -56,9 +56,9 @@ void PathIndicator::Update()
             Vector3 pos;
             for (uint i = 0; i < path.Size(); i++)
             {
-                pos.x_ = static_cast<float>(path[i].col);
-                pos.z_ = -static_cast<float>(path[i].row);
-                pos.y_ = (float)(int)TheTerrain->GetHeight(path[i].row, path[i].col);
+                pos.x_ = static_cast<float>(path[i].rowX);
+                pos.z_ = -static_cast<float>(path[i].colZ);
+                pos.y_ = (float)(int)TheTerrain->_GetHeight(path[i].rowX, path[i].colZ);
                 TilePath::Add(pos);
             }
         }
