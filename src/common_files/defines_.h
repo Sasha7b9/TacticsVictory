@@ -7,6 +7,7 @@
 
 #define VAR_NODE_IS_UNIT        "isUnit"
 #define VAR_NODE_IS_FLYING      "isFlaying"
+#define VAR_NODE_IS_BUILDING    "isBuilding"
 
 #define NAME_NODE_CAMERA_TARGET "CameraTarget"
 #define NAME_NODE_TERRAIN       "Terrain"

@@ -9,7 +9,16 @@ void UnitSpecificS::Update(float timeStep)
 {
     EngineT *engine = unit->engine;
 
-    engine->Update(timeStep);
+    unit->StoreState();                                         // Сохраняем текущее состояние юнита
+
+    engine->Update(timeStep);                                   // Обновляем его положение
+
+    if (unit->IsIntersectionWithUnitOrBuilding())               // Если теперь юнит пересекается с другим юнитом
+    {
+        engine->algorithm.Clear();                              // То завершаем выполнение алгоритма
+
+        unit->RestoreState();                                   // И восстанавливаем состояние юнита
+    }
 
     if (engine->algorithm.IsFinished())
     {

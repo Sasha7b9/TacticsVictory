@@ -61,7 +61,20 @@ public:
 
     Node *GetObjectNode() const { return Component::GetNode(); }
 
-    virtual bool IsFlying() const { return node_->GetVar(VAR_NODE_IS_FLYING).GetBool(); }
+    virtual bool IsFlying() const   { return node_->GetVar(VAR_NODE_IS_FLYING).GetBool(); }
+    virtual bool IsUnit() const     { return node_->GetVar(VAR_NODE_IS_UNIT).GetBool(); }
+    virtual bool IsBuilding() const { return node_->GetVar(VAR_NODE_IS_BUILDING).GetBool(); }
+
+    // Сохранить состояние объекта
+    void StoreState();
+
+    // Восстановить сохранкение объекта
+    void RestoreState();
+
+    // Возвращает true, если объект пересекается с юнитом или зданием
+    bool IsIntersectionWithUnitOrBuilding() const;
+
+    BoundingBox GetBoundingBox() const;
 
     SharedPtr<ShiftParameters>   shift;     // Используется для приведения параметров модели к текущей сцене
     static Vector<ObjectT *>     storage;   // Здесь хранятся все объекты типа ObjectT (и их подклассы)
@@ -98,4 +111,6 @@ private:
     Node *GetNode() const { return Component::GetNode(); }
 
     SharedPtr<StaticModel> staticModel;
+
+    VectorBuffer state;                     // Буфер предназначен для сохранения состояния
 };

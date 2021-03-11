@@ -52,6 +52,8 @@ public:
 
     bool IsFinished() const { return steps.Empty(); }
 
+    void Clear() { steps.Clear(); }
+
     Step &GetStep() { return steps.Front(); }
 
     List<Step> steps;     // Здесь хранятся шаги алгоритма - от первого к последнему. Когда заканчивается

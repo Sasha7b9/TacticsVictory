@@ -159,3 +159,42 @@ int ObjectT::NestingDepth() const
 
     return result;
 }
+
+
+void ObjectT::StoreState()
+{
+    state.WriteVector3(physics->pos.GetWorld());
+}
+
+
+void ObjectT::RestoreState()
+{
+    physics->pos.SetWorld(state.ReadVector3());
+}
+
+
+bool ObjectT::IsIntersectionWithUnitOrBuilding() const
+{
+    BoundingBox box = GetBoundingBox();
+
+    for (ObjectT *object : storage)
+    {
+        if ((object->IsUnit() || object->IsBuilding()) && object != this)
+        {
+            BoundingBox another = object->GetBoundingBox();
+
+            if (box.IsInside(another))
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+
+BoundingBox ObjectT::GetBoundingBox() const
+{
+    return staticModel->GetBoundingBox();
+}
