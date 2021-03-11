@@ -65,13 +65,13 @@ bool Unit::TooCloseToAnoterUnit() const
 
     physics->pos.CalculateDistanceFromCenter();
 
-    float distance = physics->pos.GetDistanceFromCenter();
+    float distance = physics->pos.distanceFromCenter;
 
     for (Unit *unit : Unit::storage)
     {
         if (unit != this)
         {
-            if (std::fabsf(distance - unit->physics->pos.GetDistanceFromCenter()) > 2.0f)
+            if (std::fabsf(distance - unit->physics->pos.distanceFromCenter) > 2.0f)
             {
                 continue;
             }

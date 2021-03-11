@@ -73,15 +73,14 @@ struct PositionPP
     // Возвращает координаты объекта в пространстве карты
     Vector2 GetCoord() const;
 
-    void CalculateDistanceFromCenter();
+    // Эта функция рассчитывает дистанцию от центра
+    void CalculateDistanceFromCenter() { distanceFromCenter = GetWorld().LengthSquared(); }
 
-    float GetDistanceFromCenter() const;
+    float distanceFromCenter = 0.0f;        // Дистанция от центра
 
 private:
 
     ObjectT *object = nullptr;
-
-    float distanceFromCenter = 0.0f;        // Дистанция от центра
 };
 
 
