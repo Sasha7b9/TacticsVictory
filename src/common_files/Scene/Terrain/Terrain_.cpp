@@ -214,3 +214,9 @@ void TerrainT::PutIn(ObjectT *object, uint colZ, uint rowX)
 
     object->physics->pos.SetWorld({ (float)rowX, height, (float)colZ });
 }
+
+
+void TerrainT::Update(float /*dT*/)
+{
+    
+}

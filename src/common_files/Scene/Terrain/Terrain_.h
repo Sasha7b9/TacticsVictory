@@ -31,6 +31,8 @@ public:
 
     ~TerrainT();
 
+    void Update(float dT);
+
     void CreateFromVector(const Vector<Vector<float>> &level);
 
     float GetHeight(uint colZ, uint rowX) const;
