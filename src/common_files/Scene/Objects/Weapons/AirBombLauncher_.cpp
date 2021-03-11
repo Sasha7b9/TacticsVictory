@@ -3,8 +3,8 @@
 #include "Scene/Objects/Weapons/AirBombLauncher_.h"
 
 
-static const MinPP minAirBombLauncher = { 0.0f };
-static const MaxPP maxAirBombLauncher(1.0f, 120.0f, 10.0f);
+static const MinPP minAirBombLauncher{ 0.0f };
+static const MaxPP maxAirBombLauncher{ 1.0f, 120.0f, 10.0f };
 
 
 AirBombLauncher::AirBombLauncher(Context *context) :

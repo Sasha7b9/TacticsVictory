@@ -74,8 +74,6 @@ private:
 //----------------------------------------------------------------------------------------------------------------------
 struct MaxPP                               // ¬ этой структуре будут хранитьс€ максимально возможные значени€ параметров
 {
-    MaxPP(float move, float rotate, float alt) : speedMove(move), speedRotate(rotate), altitude(alt) {}
-
     const float speedMove = 1.0f;                 // ћаксимальна€ скорость движени€
     const float speedRotate = 120.0f;             // ћаксимальна€ скорость поворота
     const float altitude = 10.0f;                 // ћаксимальна€ высота над поверхностью
