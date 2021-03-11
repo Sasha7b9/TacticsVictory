@@ -46,9 +46,16 @@ protected:
 
 namespace ObjectCreator
 {
+    // Создаёт объект без помещения его на карту
+    template<class T> T *Create()
+    {
+        return TheScene->CreateChild("", LOCAL)->CreateComponent<T>(LOCAL);
+    }
+
+    // Создаёт объект и помещает его на карту
     template<class T> T *Create(uint rowX, uint colZ)
     {
-        T *object = TheScene->CreateChild("", LOCAL)->CreateComponent<T>(LOCAL);
+        T *object = Create<T>();
         TheTerrain->PutIn(object, rowX, colZ);
         return object;
     }
