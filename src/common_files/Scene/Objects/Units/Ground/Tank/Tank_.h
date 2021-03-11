@@ -17,12 +17,11 @@ public:
 
     virtual void CreateSpecific() override;
 
-    // Хранилище всех созданных объектов типа "Tank"
-    static Vector<Tank *> storage;
-
     virtual void Compress(VectorBuffer &buffer) override;
 
     virtual void Decompress(MemoryBuffer &buffer) override;
+
+    static Vector<Tank *> storage;              // Хранилище всех созданных объектов типа "Tank"
 
 private:
 

@@ -51,6 +51,13 @@ class ObjectT : public LogicComponent
 
 public:
 
+    template<class T> static T *Create(uint rowX, uint colZ)
+    {
+        T *object = TheScene->CreateChild("", LOCAL)->CreateComponent<T>(LOCAL);
+        TheTerrain->PutIn(object, rowX, colZ);
+        return object;
+    }
+
     // Упаковать состояние объекта для передачи по сети
     virtual void Compress(VectorBuffer &buffer);
 
