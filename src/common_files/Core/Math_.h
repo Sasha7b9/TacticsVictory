@@ -55,6 +55,8 @@ public:
         return value > max ? max : value;
     }
 
+    static uint RandomUINT(float range);
+
     static int RandomInt(int min, int max)
     {
         int rnd = Rand();

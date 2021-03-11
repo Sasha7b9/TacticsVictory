@@ -21,3 +21,9 @@ BoundingBox Math::CalculateBoundingBox(const float *buffer, uint numVertexes)
 
     return box;
 }
+
+
+uint Math::RandomUINT(float range)
+{
+    return (uint)Random(range);
+}

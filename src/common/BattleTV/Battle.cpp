@@ -1,6 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Battle.h"
+#include "Core/Math_.h"
 #include "Game/Logic/Rotator_.h"
 #include "Game/Logic/SunEngine_.h"
 #include "Game/Path/WaveAlgorithm_.h"
@@ -95,14 +96,14 @@ void Battle::Start()
 
     TheScene->Create();
 
+    float rangeX = (float)TheTerrain->HeightX();
+    float rangeZ = (float)TheTerrain->WidthZ();
+
     for (int i = 0; i < 1000; i++)
     {
-        uint rowX = (uint)Random((float)TheTerrain->HeightX());
-        uint colZ = (uint)Random((float)TheTerrain->WidthZ());
+        ObjectT::Create<Tank>(Math::RandomUINT(rangeX), Math::RandomUINT(rangeZ));
 
-        ObjectT::Create<Tank>(rowX, colZ);
-
-        ObjectT::Create<AirPlane>(rowX, colZ);
+        ObjectT::Create<AirPlane>(Math::RandomUINT(rangeX), Math::RandomUINT(rangeZ));
     }
 
     SubscribeToEvents();
