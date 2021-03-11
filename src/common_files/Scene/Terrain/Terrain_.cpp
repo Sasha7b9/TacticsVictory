@@ -31,13 +31,17 @@ void TerrainT::Level::CreateFromVector(const Vector<Vector<float>> &lev)
 {
     Clear();
 
-    for (uint row = 0; row < lev.Size(); row++)
+    uint num_rows = lev.Size();
+
+    for (uint row = 0; row < num_rows; row++)
     {
         Vector<LogicCell> layer;
         layer.Resize(lev[row].Size());
         level.Push(layer);
 
-        for (uint col = 0; col < lev[row].Size(); col++)
+        uint num_cols = lev[row].Size();
+
+        for (uint col = 0; col < num_cols; col++)
         {
             level[row][col].height = lev[row][col];
         }
@@ -70,13 +74,13 @@ void TerrainT::CreateFromVector(const Vector<Vector<float>> &lev)
         row.Resize(allCols);
     }
 
-    segments.Resize(segmentsInZ);
+    segments.Resize(segmentsInX);
 
     for(uint row0 = 0; row0 < allRows; row0 += widthZ)
     {
         uint i = row0 / widthZ;
 
-        segments[i].Resize(segmentsInX);
+        segments[i].Resize(segmentsInZ);
 
         for(uint col0 = 0; col0 < allCols; col0 += heightX)
         {
@@ -91,27 +95,15 @@ void TerrainT::CreateFromVector(const Vector<Vector<float>> &lev)
         }
     }
 
-    for(uint z = 0; z < segmentsInZ; z++)
+    for(uint rowX = 0; rowX < segmentsInX; rowX++)
     {
-        for(uint x = 0; x < segmentsInX; x++)
+        for(uint colZ = 0; colZ < segmentsInZ; colZ++)
         {
-            SegmentTerrain *segment = segments[z][x];
-            if(x > 0)
-            {
-                segment->neighbours[SegmentTerrain::LEFT] = segments[z][x - 1];
-            }
-            if(z > 0)
-            {
-                segment->neighbours[SegmentTerrain::TOP] = segments[z - 1][x];
-            }
-            if(x < segmentsInX - 1)
-            {
-                segment->neighbours[SegmentTerrain::RIGHT] = segments[z][x + 1];
-            }
-            if(z < segmentsInZ - 1)
-            {
-                segment->neighbours[SegmentTerrain::BOTTOM] = segments[z + 1][x];
-            }
+            SegmentTerrain *segment = segments[rowX][colZ];
+            if(colZ > 0)               { segment->neighbours[SegmentTerrain::LEFT]   = segments[rowX][colZ - 1]; }
+            if(rowX > 0)               { segment->neighbours[SegmentTerrain::TOP]    = segments[rowX - 1][colZ]; }
+            if(colZ < segmentsInZ - 1) { segment->neighbours[SegmentTerrain::RIGHT]  = segments[rowX][colZ + 1]; }
+            if(rowX < segmentsInX - 1) { segment->neighbours[SegmentTerrain::BOTTOM] = segments[rowX + 1][colZ]; }
         }
     }
 
@@ -145,9 +137,9 @@ float TerrainT::GetHeight(const Vector2 coord) const
 }
 
 
-void TerrainT::SetHeight(uint row, uint col, float height)
+void TerrainT::Level::SetHeight(uint rowX, uint colZ, float height)
 {
-    level.level[row][col].height = height;
+    level[rowX][colZ].height = height;
 }
 
 

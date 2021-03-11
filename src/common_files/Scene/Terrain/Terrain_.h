@@ -60,8 +60,6 @@ public:
     float GetHeight(float rowX, float colZ) const;
     float GetHeight(const Vector2 coord) const;
 
-    void SetHeight(uint row, uint col, float height);
-
     uint HeightX() const;
     uint WidthZ() const;
 
@@ -106,13 +104,13 @@ public:
             return level[rowX][colZ].height;
         }
 
+        void SetHeight(uint rowX, uint colZ, float height);
+
         Vector<Vector<LogicCell>> level;
-    };
+    } level;
 
 private:
-
-    Level level;
-    
+   
     Vector<Vector<SharedPtr<SegmentTerrain>>> segments;
 
     SegmentTerrain *GetSegmentForCoord(uint row, uint col);

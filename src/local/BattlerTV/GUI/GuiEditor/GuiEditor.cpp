@@ -311,7 +311,7 @@ void GuiEditor::HandleTerrainClearTerrain(StringHash, VariantMap&)
     {
         for (uint col = 0; col < TheTerrain->WidthZ(); col++)
         {
-            TheTerrain->SetHeight(row, col, 0.0f);
+            TheTerrain->level.SetHeight(row, col, 0.0f);
         }
     }
 }
