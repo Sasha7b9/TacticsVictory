@@ -41,12 +41,7 @@ void Unit::Decompress(MemoryBuffer &buffer)
 
 bool Unit::CanMoveTo(float colZ, float rowX) const
 {
-    if (colZ < 0.0f || rowX < 0.0f)
-    {
-        return false;
-    }
-
-    if (colZ >= TheTerrain->WidthZ() || rowX >= TheTerrain->HeightX())
+    if (colZ < 0.0f || rowX < 0.0f || colZ >= TheTerrain->WidthZ() || rowX >= TheTerrain->HeightX())
     {
         return false;
     }

@@ -111,7 +111,7 @@ EngineExecutor::Result EngineExecutor::ExecuteMovement(Unit &unit, float timeSte
 
     Vector3 currentPos = physics.pos.GetWorld();
 
-    float dist = physics.max.SpeedMove() * timeStep;        // Нужно проехать
+    float dist = physics.max.speedMove * timeStep;        // Нужно проехать
 
     float delta = (step.endPos - currentPos).Length();      // Осталось до конечной точки
 
@@ -166,7 +166,7 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(Unit &unit, float dT)
 {
     PhysicsParameters &physics = *unit.physics;
 
-    Vector3 &endPos = unit.engine->algorithm.GetStep().endPos;            // К этой точке нужно повернуться
+    Vector3 &endPos = unit.engine->algorithm.GetStep().endPos;      // К этой точке нужно повернуться
 
     Vector3 dir = physics.dir.GetWorldDir();                        // Направление движения юнита
 
@@ -175,7 +175,7 @@ EngineExecutor::Result EngineExecutor::ExecuteRotate(Unit &unit, float dT)
 
     float angleNeed = dir.Angle(dirToEndPos);
 
-    float angleCan = physics.max.SpeedRotate() * dT;
+    float angleCan = physics.max.speedRotate * dT;
 
     Vector3 axixRotate = dir.CrossProduct(dirToEndPos);
 

@@ -76,22 +76,16 @@ struct MaxPP                               // ¬ этой структуре будут хранитьс€ м
 {
     MaxPP(float move, float rotate, float alt) : speedMove(move), speedRotate(rotate), altitude(alt) {}
 
-    float SpeedMove() const {  return speedMove; }
-
-    float SpeedRotate() const { return speedRotate; }
-
-private:
-
-    float speedMove = 1.0f;                 // ћаксимальна€ скорость движени€
-    float speedRotate = 120.0f;             // ћаксимальна€ скорость поворота
-    float altitude = 10.0f;                 // ћаксимальна€ высота над поверхностью
+    const float speedMove = 1.0f;                 // ћаксимальна€ скорость движени€
+    const float speedRotate = 120.0f;             // ћаксимальна€ скорость поворота
+    const float altitude = 10.0f;                 // ћаксимальна€ высота над поверхностью
 };
 
 
 //----------------------------------------------------------------------------------------------------------------------
 struct MinPP                                // ¬ этой структуре будут хранитьс€ минимально возможные значени€ параметров
 {
-    const float altitude = 0.0f;                  // ћинимальна€ высота над поверхностью
+    const float altitude = 0.0f;            // ћинимальна€ высота над поверхностью
 };
 
 
