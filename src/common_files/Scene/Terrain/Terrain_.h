@@ -52,8 +52,6 @@ public:
 
     ~TerrainT();
 
-    void Update(float dT);
-
     void CreateFromVector(const Vector<Vector<float>> &level);
 
     float GetHeight(uint rowX, uint colZ) const;
@@ -85,7 +83,6 @@ public:
     struct LogicCell
     {
         float height;                   // Высота ячейки
-        Vector<ObjectT *> objects;      // Объекты, находящиеся в ячейке
     };
 
     struct Level
@@ -94,15 +91,7 @@ public:
 
         void CreateFromVector(const Vector<Vector<float>> &lev);
 
-        float GetHeight(uint rowX, uint colZ) const
-        {
-            if (colZ >= level[0].Size() || rowX >= level.Size())
-            {
-                return 0;
-            }
-
-            return level[rowX][colZ].height;
-        }
+        float GetHeight(uint rowX, uint colZ) const;
 
         void SetHeight(uint rowX, uint colZ, float height);
 

@@ -24,6 +24,9 @@ public:
     // Возвращает true, если юнит может переместиться в точку (colZ, rowX)
     virtual bool CanMoveTo(float rowX, float colZ) const;
 
+    // Возвращает true, если слишком близко к другому юниту
+    bool TooCloseToAnoterUnit() const;
+
 protected:
 
     Unit(Context *, const MinPP &min, const MaxPP &max);

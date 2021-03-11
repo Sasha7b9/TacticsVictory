@@ -13,7 +13,7 @@ void UnitSpecificS::Update(float timeStep)
 
     engine->Update(timeStep);                                   // Обновляем его положение
 
-    if (unit->IsIntersectionWithUnitOrBuilding())               // Если теперь юнит пересекается с другим юнитом
+    if (unit->TooCloseToAnoterUnit())                           // Если теперь юнит слишком близко к другому юниту
     {
         engine->algorithm.Clear();                              // То завершаем выполнение алгоритма
 

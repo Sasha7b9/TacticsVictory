@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Scene/Objects/Object_.h"
+#include "Scene/Objects/Units/Unit_.h"
 #include "Scene/Terrain/SegmentTerrain_.h"
 
 
@@ -235,7 +236,12 @@ void TerrainT::PutIn(ObjectT *object, uint rowX, uint colZ)
 }
 
 
-void TerrainT::Update(float /*dT*/)
+float TerrainT::Level::GetHeight(uint rowX, uint colZ) const
 {
-    
+    if (colZ >= level[0].Size() || rowX >= level.Size())
+    {
+        return 0;
+    }
+
+    return level[rowX][colZ].height;
 }

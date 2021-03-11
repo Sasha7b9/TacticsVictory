@@ -57,3 +57,22 @@ bool Unit::CanMoveTo(float rowX, float colZ) const
     return TheTerrain->GetHeight(physics->pos.GetCoord()) ==
         TheTerrain->GetHeight(rowX, colZ);
 }
+
+
+bool Unit::TooCloseToAnoterUnit() const
+{
+    Vector3 position = physics->pos.GetWorld();
+
+    for (Unit *unit : Unit::storage)
+    {
+        if (unit != this)
+        {
+            if (position.DistanceToPoint(unit->physics->pos.GetWorld()) < 0.9f)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
