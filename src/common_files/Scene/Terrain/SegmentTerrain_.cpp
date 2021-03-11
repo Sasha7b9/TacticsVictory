@@ -15,7 +15,8 @@ SegmentTerrain::~SegmentTerrain()
 }
 
 
-void SegmentTerrain::CreateFromVector(const Vector<Vector<float>> &level, uint row0, uint col0, uint numRows, uint numCols)
+void SegmentTerrain::CreateFromVector(const Vector<Vector<TerrainT::LogicCell>> &level, uint row0, uint col0,
+    uint numRows, uint numCols)
 {
     float min = 1e10f;
     float max = -1e10f;
@@ -24,11 +25,13 @@ void SegmentTerrain::CreateFromVector(const Vector<Vector<float>> &level, uint r
     {
         for (uint col = col0; col < col0 + numCols; col++)
         {
-            float height = level[row][col];
+            float height = level[row][col].height;
+
             if(height < min)
             {
                 min = height;
             }
+
             if(height > max)
             {
                 max = height;
@@ -61,7 +64,7 @@ void SegmentTerrain::CreateFromVector(const Vector<Vector<float>> &level, uint r
     {
         for(uint col = col0; col < col0 + numCols; col++)
         {
-            SharedPtr<CubeTerrain> cube(new CubeTerrain(row, col, level[row][col]));
+            SharedPtr<CubeTerrain> cube(new CubeTerrain(row, col, level[row][col].height));
             AddCube(cube);
         }
     }

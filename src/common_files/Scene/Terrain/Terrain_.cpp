@@ -31,7 +31,19 @@ void TerrainT::CreateFromVector(const Vector<Vector<float>> &lev)
 {
     float time = TheTime->GetElapsedTime();
 
-    level = lev;
+    level.Clear();
+
+    for (uint row = 0; row < lev.Size(); row++)
+    {
+        Vector<LogicCell> layer;
+        layer.Resize(lev[row].Size());
+        level.Push(layer);
+
+        for (uint col = 0; col < lev[row].Size(); col++)
+        {
+            level[row][col].height = lev[row][col];
+        }
+    }
 
     CubeTerrain::terrain = this;
 
@@ -116,7 +128,7 @@ float TerrainT::GetHeight(uint colZ, uint rowX) const
         return 0;
     }
 
-    return level[rowX][colZ];
+    return level[rowX][colZ].height;
 }
 
 
@@ -134,7 +146,7 @@ float TerrainT::GetHeight(const Vector2 coord) const
 
 void TerrainT::SetHeight(uint row, uint col, float height)
 {
-    level[row][col] = height;
+    level[row][col].height = height;
 }
 
 
@@ -174,9 +186,23 @@ TPlane TerrainT::GetPlane(uint /*row*/, uint /*col*/)
 }
 
 
-Vector<Vector<float>> TerrainT::GetMap()
+Vector<Vector<float>> TerrainT::GetHeightMap()
 {
-    return level;
+    Vector<Vector<float>> result;
+
+    result.Resize(level.Size());
+
+    for (uint rowX = 0; rowX < level.Size(); rowX++)
+    {
+        result[rowX].Resize(level[rowX].Size());
+
+        for (uint colZ = 0; colZ < level[rowX].Size(); colZ++)
+        {
+            result[rowX][colZ] = level[rowX][colZ].height;
+        }
+    }
+
+    return result;
 }
 
 

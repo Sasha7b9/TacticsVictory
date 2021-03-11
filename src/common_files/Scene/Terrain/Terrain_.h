@@ -20,7 +20,6 @@ struct DIR { enum E {
 }; };
 
 
-
 class TerrainT : public Object
 {
     URHO3D_OBJECT(TerrainT, Object);
@@ -57,15 +56,20 @@ public:
 
     TPlane GetPlane(uint row, uint col);
 
-    Vector<Vector<float>> GetMap();
+    Vector<Vector<float>> GetHeightMap();
 
     PODVector<CubeTerrain*>* GetColumnCubes(const CubeTerrain *cube, DIR::E dir);
 
     static Vector<Vector<PODVector<CubeTerrain*>>> columnsCubes;
 
+    struct LogicCell
+    {
+        float height;
+    };
+
 private:
 
-    Vector<Vector<float>> level;                            // Высота квадратов
+    Vector<Vector<LogicCell>> level;
     Vector<Vector<Vector<Object *>>> objects;               // Массив объектов, находящихся в каждом квадрате
     Vector<Vector<SharedPtr<SegmentTerrain>>> segments;
 
