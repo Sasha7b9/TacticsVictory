@@ -20,6 +20,28 @@ struct DIR { enum E {
 }; };
 
 
+/*
+   0 1 2 3 ...........................N
+ 0 +--------------------------------------> colZ
+   |
+ 2 |
+   |
+ 3 |
+   |
+ 4 |
+ . |
+ . |
+ . |
+ . |
+ . |
+ . |
+   |
+   | rowX
+
+*/
+
+
+
 class TerrainT : public Object
 {
     URHO3D_OBJECT(TerrainT, Object);
@@ -68,9 +90,29 @@ public:
         Vector<ObjectT *> objects;      // Объекты, находящиеся в ячейке
     };
 
+    struct Level
+    {
+        void Clear() { level.Clear(); };
+
+        void CreateFromVector(const Vector<Vector<float>> &lev);
+
+        float GetHeight(uint colZ, uint rowX) const
+        {
+            if (colZ >= level[0].Size() || rowX >= level.Size())
+            {
+                return 0;
+            }
+
+            return level[rowX][colZ].height;
+        }
+
+        Vector<Vector<LogicCell>> level;
+    };
+
 private:
 
-    Vector<Vector<LogicCell>> level;
+    Level level;
+    
     Vector<Vector<SharedPtr<SegmentTerrain>>> segments;
 
     SegmentTerrain *GetSegmentForCoord(uint row, uint col);
