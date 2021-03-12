@@ -8,7 +8,7 @@ class LayerTerrain : public Object
     URHO3D_OBJECT(LayerTerrain, Object);
 
 public:
-    LayerTerrain(Context *context = TheContext);
+    LayerTerrain();
     ~LayerTerrain();
     void AddCube(const SharedPtr<CubeTerrain> &cube);
     void Create();

@@ -5,7 +5,7 @@
 #include "Scene/Terrain/LayerTerrain_.h"
 
 
-LayerTerrain::LayerTerrain(Context *context) : Object(context)
+LayerTerrain::LayerTerrain() : Object(TheContext)
 {
 
 }
