@@ -38,4 +38,5 @@ private:
     SharedPtr<LogT>    log;
     SharedPtr<SceneC>  scene;
     SharedPtr<ServerC> server;
+    SharedPtr<Mouse>   mouse;
 };

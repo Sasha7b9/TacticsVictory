@@ -107,7 +107,7 @@ void Battler::Start()
 
     RegistrationComponets();
 
-    TheMouse = new Mouse();
+    mouse = new Mouse(&TheMouse);
 
     SetWindowTitleAndIcon();
 
@@ -151,7 +151,6 @@ void Battler::Stop()
 
     TilePath::RemoveAll();
 
-    delete TheMouse;
     delete ThePathIndicator;
     delete TheFileSelector;
     delete TheMenu;

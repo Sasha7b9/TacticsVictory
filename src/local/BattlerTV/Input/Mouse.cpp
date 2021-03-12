@@ -6,9 +6,11 @@
 #include "Scene/Objects/Units/UnitsEvents_.h"
 
 
-Mouse::Mouse() : Object(TheContext)
+Mouse::Mouse(Mouse **self) : Object(TheContext)
 {
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(Mouse, HandleMouseDown));
+
+    *self = this;
 }
 
 
