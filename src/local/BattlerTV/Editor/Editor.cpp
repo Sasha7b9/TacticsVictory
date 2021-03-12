@@ -255,7 +255,7 @@ void Editor::HandleKeyDown(StringHash, VariantMap& eventData)
         }
         else if (KEY_IS_RIGHT)
         {
-            if (col < TheScene->level->GetWidthZ() - 1)
+            if (col < TheTerrain->WidthZ() - 1)
             {
                 selectedPlane = TheTerrain->GetPlane(row, col + 1);
             }
