@@ -87,9 +87,11 @@ void SliderInt::Decrease()
 }
 
 
-void SliderInt::RegisterObject(Context* context)
+void SliderInt::RegisterObject()
 {
-    context->RegisterFactory<SliderInt>("UI");
+    TheContext->RegisterFactory<SliderInt>("UI");
+
+    Context *context = TheContext;
 
     URHO3D_COPY_BASE_ATTRIBUTES(Slider);
 }
