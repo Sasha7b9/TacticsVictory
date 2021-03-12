@@ -10,10 +10,12 @@
 #include "Scene/Cameras/Camera.h"
 
 
-Editor::Editor(Context *context) : Object(context)
+Editor::Editor(Editor **self) : Object(TheContext)
 {
     currentPlane = TPlane::ZERO;
     selectedPlane = TPlane::ZERO;
+
+    *self = this;
 }
 
 

@@ -153,7 +153,6 @@ void Battler::Stop()
 
     delete ThePathIndicator;
     delete TheFileSelector;
-    delete TheEditor;
 }
 
 
@@ -234,9 +233,9 @@ void Battler::CreateConsoleAndDebugHud()
 
 void Battler::CreateEditorSession()
 {
-    if(!TheEditor)
+    if(!editor)
     {
-        TheEditor = new Editor();
+        editor = new Editor(&TheEditor);
     }
     TheGuiEditor->SetVisible(true);
     TheCamera->SetEnabled(true);

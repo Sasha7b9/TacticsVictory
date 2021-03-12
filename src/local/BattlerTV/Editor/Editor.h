@@ -7,7 +7,7 @@ class Editor : public Object
 {
     URHO3D_OBJECT(Editor, Object);
 public:
-    Editor(Context *context = TheContext);
+    Editor(Editor **self);
     void Run();
     void ClearScene();
 

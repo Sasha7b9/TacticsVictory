@@ -42,4 +42,5 @@ private:
     SharedPtr<Settings> settings;
     SharedPtr<MenuT>    menu;
     SharedPtr<GUI>      gui;
+    SharedPtr<Editor>   editor;
 };
