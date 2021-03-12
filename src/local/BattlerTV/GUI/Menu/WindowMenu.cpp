@@ -5,7 +5,7 @@
 #include "GUI/Menu/MenuStart.h"
 
 
-WindowMenu::WindowMenu() : WindowT(TheContext)
+WindowMenu::WindowMenu(Context *context) : WindowT(context)
 {
 
 }

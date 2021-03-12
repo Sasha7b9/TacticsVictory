@@ -15,7 +15,7 @@ class GuiEditor : public Object
     URHO3D_OBJECT(GuiEditor, Object);
 
 public:
-    GuiEditor(Context* context = TheContext);
+    GuiEditor(Context* context);
 
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
     bool IsInside(const IntVector2 &position);

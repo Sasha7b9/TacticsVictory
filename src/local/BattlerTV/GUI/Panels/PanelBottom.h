@@ -11,6 +11,6 @@ class PanelBottom : public WindowT
     URHO3D_OBJECT(PanelBottom, WindowT);
 
 public:
-    PanelBottom(Context *context = TheContext);
+    PanelBottom(Context *context);
     static void RegisterObject();
 };

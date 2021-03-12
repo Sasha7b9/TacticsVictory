@@ -111,13 +111,13 @@ void GuiGame::HandleKeyDown(StringHash, VariantMap& eventData)
 
 void GuiGame::CreatePanels()
 {
-    panelMap = new PanelMap();
+    panelMap = new PanelMap(TheContext);
     TheUIRoot->AddChild(panelMap);
 
-    panelMain = new PanelMain();
+    panelMain = new PanelMain(TheContext);
     TheUIRoot->AddChild(panelMain);
 
-    panelBottom = new PanelBottom();
+    panelBottom = new PanelBottom(TheContext);
     TheUIRoot->AddChild(panelBottom);
 
     panelBottom->SetPosition(0, TheGraphics->GetHeight() - panelBottom->GetHeight());

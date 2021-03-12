@@ -4,7 +4,7 @@
 #include "GUI/Menu/MenuAboutMe.h"
 
 
-MenuAboutMe::MenuAboutMe() : WindowMenu()
+MenuAboutMe::MenuAboutMe(Context *context) : WindowMenu(context)
 {
     const int width = 216;
     const int height = 130;

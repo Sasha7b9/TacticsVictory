@@ -7,7 +7,7 @@
 #include "Utils/SettingsTypes.h"
 
 
-MenuConfirmExit::MenuConfirmExit(Context * /*context*/) : WindowMenu()
+MenuConfirmExit::MenuConfirmExit(Context *context) : WindowMenu(context)
 {
     SET_VERTICAL_LAYOUT_0_6(this);
     SharedPtr<Label> label(Label::Create("Exit in OS?"));

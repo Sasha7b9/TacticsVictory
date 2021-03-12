@@ -201,7 +201,7 @@ void GUI::Create()
     TheGuiGame = new GuiGame();
     TheGuiGame->SetVisible(false);
 
-    TheGuiEditor = new GuiEditor();
+    TheGuiEditor = new GuiEditor(TheContext);
     TheGuiEditor->SetVisible(false);
 
     TheCursor = TheUIRoot->CreateChild<CursorT>("CursorT");

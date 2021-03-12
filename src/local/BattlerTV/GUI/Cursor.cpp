@@ -25,7 +25,7 @@ CursorT::CursorT(Context *context) : Cursor(context)
 
     int size = 100;
 
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(context));
     image->SetSize(size, size);
 
     image->Clear({0.0f, 0.0f, 1.0f, 1.0f});
@@ -88,7 +88,7 @@ void CursorT::Update(float dT)
 
     if(hidden)
     {
-        SharedPtr<TImage> image(new TImage());
+        SharedPtr<TImage> image(new TImage(TheContext));
         image->SetSize(1, 1);
         cursor->DefineShape("Normal", image, {0, 0, image->GetWidth(), image->GetHeight()}, {0, 0});
     }
@@ -349,7 +349,7 @@ void CursorShapes::CreateNormal(int numFrame)
 
     int size = 100;
 
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(TheContext));
     image->SetSize(size, size);
     image->Clear(transparent);
 
@@ -373,7 +373,7 @@ void CursorShapes::CreateSelected(int numFrame)
 
     int size = 100;
 
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(TheContext));
     image->SetSize(size, size);
     image->Clear(transparent);
 
@@ -395,7 +395,7 @@ void CursorShapes::CreateSelected(int numFrame)
 
 void CursorShapes::CreateLeft(int numFrame)
 {
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(TheContext));
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
 
     int width = dimensionTriangleSmall;
@@ -416,7 +416,7 @@ void CursorShapes::CreateLeft(int numFrame)
 
 void CursorShapes::CreateRight(int numFrame)
 {
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(TheContext));
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
 
     int width = dimensionTriangleSmall;
@@ -437,7 +437,7 @@ void CursorShapes::CreateRight(int numFrame)
 
 void CursorShapes::CreateUp(int numFrame)
 {
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(TheContext));
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
 
     int width = dimensionTriangleBig;
@@ -458,7 +458,7 @@ void CursorShapes::CreateUp(int numFrame)
 
 void CursorShapes::CreateDown(int numFrame)
 {
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(TheContext));
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
 
     int width = dimensionTriangleBig;
@@ -477,7 +477,7 @@ void CursorShapes::CreateDown(int numFrame)
 
 void CursorShapes::CreateTopLeft(int numFrame)
 {
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(TheContext));
     image->SetSize(dimensionTriangleBig, dimensionTriangleBig);
 
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
@@ -496,7 +496,7 @@ void CursorShapes::CreateTopLeft(int numFrame)
 void CursorShapes::CreateTopRight(int numFrame)
 {
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(TheContext));
     image->SetSize(size + 1, size + 1);
 
     FillGradient(image, CursorT::Type::TopRight, numFrame);
@@ -513,7 +513,7 @@ void CursorShapes::CreateTopRight(int numFrame)
 void CursorShapes::CreateDownLeft(int numFrame)
 {
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(TheContext));
     image->SetSize(size + 1, size + 1);
 
     FillGradient(image, CursorT::Type::DownLeft, numFrame);
@@ -531,7 +531,7 @@ void CursorShapes::CreateDownRight(int numFrame)
 {
     int size = static_cast<int>(dimensionTriangleSmall * 1.41f);
 
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(TheContext));
     image->SetSize(size + 1, size + 1);
 
     FillGradient(image, CursorT::Type::DownRight, numFrame);
@@ -548,7 +548,7 @@ void CursorShapes::CreateDownRight(int numFrame)
 void CursorShapes::CreateBusy(int numFrame)
 {
     int size = 72;
-    SharedPtr<TImage> image(new TImage());
+    SharedPtr<TImage> image(new TImage(TheContext));
     image->SetSize(size, size);
 
     FillGradient(image, CursorT::Type::Busy, numFrame);
@@ -672,7 +672,7 @@ void CursorShapes::FillGradient(TImage *image, CursorT::Type::E type, int numFra
         if (type == CursorT::Type::Selected && numFrame >= 360) // if numFrame > 360 - draw circle
         {
             numFrame -= 360;
-            SharedPtr<TImage> imageCircle(new TImage());
+            SharedPtr<TImage> imageCircle(new TImage(TheContext));
             imageCircle->SetSize(width, height);
 
             float k = 2.0f;

@@ -32,14 +32,14 @@ GuiEditor::GuiEditor(Context* context) : Object(context)
 
 void GuiEditor::CreatePanels()
 {
-    panelMap = new PanelMap();
+    panelMap = new PanelMap(TheContext);
     TheUIRoot->AddChild(panelMap);
 
-    panelMain = new PanelMain();
+    panelMain = new PanelMain(TheContext);
     TheUIRoot->AddChild(panelMain);
 
     // Panel bottom
-    panelBottom = new PanelBottom();
+    panelBottom = new PanelBottom(TheContext);
     panelBottom->SetPosition(0, TheSet->GetInt(TV_SCREEN_HEIGHT) - TheSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
 
     width = TheSet->GetInt(TV_PANEL_BOTTOM_BUTTON_WIDTH);

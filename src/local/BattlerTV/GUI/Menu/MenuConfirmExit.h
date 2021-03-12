@@ -8,7 +8,7 @@ class MenuConfirmExit : public WindowMenu
     URHO3D_OBJECT(MenuConfirmExit, WindowMenu);
 
 public:
-    MenuConfirmExit(Context *context = TheContext);
+    MenuConfirmExit(Context *context);
     static void RegisterObject();
 
 private:
