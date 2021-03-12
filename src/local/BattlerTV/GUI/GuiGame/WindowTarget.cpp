@@ -3,8 +3,8 @@
 #include "GUI/GuiGame/WindowTarget.h"
 
 
-WindowTarget::WindowTarget(Context *context) :
-    WindowT(context)
+WindowTarget::WindowTarget() :
+    WindowT(TheContext)
 {
     SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowNoBorder");

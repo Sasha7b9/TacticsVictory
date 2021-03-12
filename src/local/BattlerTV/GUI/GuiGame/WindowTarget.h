@@ -12,7 +12,7 @@ class WindowTarget : public WindowT
 
 public:
 
-    WindowTarget(Context *context = TheContext);
+    WindowTarget();
 
     void AddTank(Tank *tank);
 
