@@ -6,7 +6,7 @@ class ImageT : public Image
 {
     URHO3D_OBJECT(ImageT, Image);
 public:
-    ImageT(Context *context);
+    ImageT(Context *);
     ~ImageT();
     static void RegisterObject();
 

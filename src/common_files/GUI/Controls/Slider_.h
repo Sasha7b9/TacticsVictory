@@ -7,7 +7,7 @@ class SliderT : public Slider
     URHO3D_OBJECT(SliderT, Slider);
 
 public:
-    SliderT(Context *context);
+    SliderT(Context *);
     static void RegisterObject();
 
     static SharedPtr<SliderT> Create(Window *window, char *text);

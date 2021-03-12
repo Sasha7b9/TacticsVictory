@@ -14,7 +14,7 @@ class PanelMain : public WindowT
     URHO3D_OBJECT(PanelMain, WindowT);
 
 public:
-    PanelMain(Context *context);
+    PanelMain(Context *);
     static void RegisterObject();
 
     virtual void Update(float dT);

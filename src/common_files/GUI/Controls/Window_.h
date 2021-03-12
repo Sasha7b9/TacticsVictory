@@ -15,7 +15,7 @@ class WindowT : public Window
     URHO3D_OBJECT(WindowT, Window);
 
 public:
-    WindowT(Context *context);
+    WindowT(Context *);
     static void RegisterObject();
 
     bool IsChildOfParent();

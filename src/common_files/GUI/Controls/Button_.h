@@ -9,7 +9,7 @@ class TButton : public Button
 {
     URHO3D_OBJECT(TButton, Button);
 public:
-    TButton(Context *context);
+    TButton(Context *);
     TButton(UIElement *uielement, char *text, int widht = -1, int height = -1);
     static void RegisterObject();
 

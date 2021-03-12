@@ -8,7 +8,7 @@ class SunEngine : public LogicComponent
     URHO3D_OBJECT(SunEngine, LogicComponent);
 
 public:
-    SunEngine(Context *context);
+    SunEngine(Context *);
     static void RegisterComponent();
 
     void SetMoveSpeed(float speed);

@@ -8,7 +8,7 @@ class MenuAboutMe : public WindowMenu
     URHO3D_OBJECT(MenuAboutMe, WindowMenu);
 
 public:
-    MenuAboutMe(Context *context);
+    MenuAboutMe(Context *);
 
 private:
     SharedPtr<TButton> buttonOk;

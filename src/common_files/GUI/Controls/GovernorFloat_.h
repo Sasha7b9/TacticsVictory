@@ -22,7 +22,7 @@ public:
         Sign
     }; };
 
-    GovernorCell(Context *context);
+    GovernorCell(Context *);
     static void RegisterObject();
 
     void SetSymbol(char symbol);
@@ -58,7 +58,7 @@ class GovernorFloat : public WindowT
     URHO3D_OBJECT(GovernorFloat, WindowT);
 
 public:
-    GovernorFloat(Context *context);
+    GovernorFloat(Context *);
     static void RegisterObject();
 
     virtual void Update(float timeStep);

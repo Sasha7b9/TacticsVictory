@@ -27,7 +27,7 @@ public:
         Count
     }; };
 
-    CursorT(Context *context);
+    CursorT(Context *);
     static void RegisterObject();
     SharedPtr<Cursor> GetCursor();
     virtual void Update(float dT);

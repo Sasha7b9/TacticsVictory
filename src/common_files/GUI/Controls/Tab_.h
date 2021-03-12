@@ -8,7 +8,7 @@ class Tab : public WindowT
     URHO3D_OBJECT(Tab, WindowT);
 
 public:
-    Tab(Context *context);
+    Tab(Context *);
     static void RegisterObject();
 
     static SharedPtr<Tab> Create(char *title);

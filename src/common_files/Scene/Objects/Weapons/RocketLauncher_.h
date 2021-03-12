@@ -11,6 +11,6 @@ public:
 
 protected:
 
-    RocketLauncher(Context *context);
+    RocketLauncher(Context *);
 };
 

@@ -7,7 +7,7 @@ class Rotator : public LogicComponent
     URHO3D_OBJECT(Rotator, LogicComponent);
     
 public:
-    Rotator(Context *context);
+    Rotator(Context *);
     static void RegisterComponent();
 
     void SetRotationSpeed(const Vector3& speed);

@@ -11,7 +11,7 @@ class MenuGame : public WindowMenu
     URHO3D_OBJECT(MenuGame, WindowMenu);
 
 public:
-    MenuGame(Context *context);
+    MenuGame(Context *);
     static void RegisterObject();
 
     void Open();

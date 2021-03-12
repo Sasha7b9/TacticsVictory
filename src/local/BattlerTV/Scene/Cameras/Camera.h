@@ -19,7 +19,7 @@ public:
         RotatePITCH     // Склонять по высоте
     }; };
 
-    CameraT(Context *context);
+    CameraT(Context *);
 
     static void RegisterObject();
 

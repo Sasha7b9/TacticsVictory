@@ -11,5 +11,5 @@ public:
 
 protected:
 
-    Rocket(Context *context);
+    Rocket(Context *);
 };

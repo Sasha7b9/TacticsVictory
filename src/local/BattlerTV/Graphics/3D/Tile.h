@@ -8,7 +8,7 @@ class Tile : public LogicComponent
 
 public:
 
-    Tile(Context *context);
+    Tile(Context *);
 
     static void RegisterComponent();
 
