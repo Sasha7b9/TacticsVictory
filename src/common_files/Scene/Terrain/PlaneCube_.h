@@ -16,6 +16,6 @@ class PlaneCube : public Object
     URHO3D_OBJECT(PlaneCube, Object);
 
 public:
-    PlaneCube(Context *context = TheContext);
+    PlaneCube();
     PointPlane point[4];
 };

@@ -3,6 +3,6 @@
 #include "Scene/Terrain/SideCube_.h"
 
 
-PlaneCube::PlaneCube(Context *context) : Object(context)
+PlaneCube::PlaneCube() : Object(TheContext)
 {
 }
