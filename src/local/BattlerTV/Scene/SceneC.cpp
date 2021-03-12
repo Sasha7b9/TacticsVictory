@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Audio/Sounds.h"
 #include "Game/Particles.h"
+#include "Game/Logic/SunEngine_.h"
 #include "GUI/Cursor.h"
 #include "GUI/GuiGame/WindowTarget.h"
 #include "Scene/SceneC.h"

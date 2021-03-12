@@ -9,4 +9,6 @@ public:
 
     SceneS(Context *context = TheContext) : SceneT(context) {}
     virtual ~SceneS();
+
+    virtual void Create() override;
 };

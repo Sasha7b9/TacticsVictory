@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Game/Logic/SunEngine_.h"
 #include "Network/Game/Messages/GameMessages_.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
@@ -38,14 +39,26 @@ void Message::Message::Send(bool reliable)
 
 void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 {
-    if (!TheTerrain)
-    {
-        TheTerrain = new TerrainT();
-    }
-
-    TheTerrain->level->Load(msg);
-
     TheScene->Create();
+
+    TheTerrain = new TerrainT();
+    TheTerrain->level->Load(msg);
+    TheTerrain->CreateFromVector(TheTerrain->level->map);
+
+    SharedPtr<Node> lightNode;
+    lightNode = TheScene->CreateChild("LigthNode");
+    SunEngine *sunEngine = lightNode->CreateComponent<SunEngine>(LOCAL);
+    sunEngine->SetCenter({ TheTerrain->HeightX() / 2.0f, 50.0f, TheTerrain->WidthZ() / 2.0f });
+    sunEngine->SetMoveSpeed(0.1f);
+
+    Light *light = lightNode->CreateComponent<Light>(LOCAL);
+    lightNode->SetScale(0.01f);
+    light->SetLightType(LIGHT_POINT);
+    light->SetRange(1000.0f);
+    light->SetCastShadows(true);
+    light->SetShadowBias(BiasParameters(0.00011f, 2.0f));
+    light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
+    light->SetEnabled(true);
 
     ThePathIndicator = new PathIndicator();
 

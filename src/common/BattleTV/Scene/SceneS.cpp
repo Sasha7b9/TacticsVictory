@@ -7,3 +7,13 @@ SceneS::~SceneS()
 {
     
 }
+
+
+void SceneS::Create()
+{
+    SceneT::Create();
+
+    TheTerrain = new TerrainT();
+    TheTerrain->level->Load("Game/Levels/level.map");
+    TheTerrain->CreateFromVector(TheTerrain->level->map);
+}

@@ -41,25 +41,6 @@ void SceneT::Create()
     zone->SetFogEnd(10000.0f);
     float dColor = 0.1f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
-
-    TheTerrain = new TerrainT();
-    TheTerrain->level->Load("Game/Levels/level.map");
-    TheTerrain->CreateFromVector(TheTerrain->level->map);
-
-    SharedPtr<Node> lightNode;
-    lightNode = CreateChild("LigthNode");
-    SunEngine *sunEngine = lightNode->CreateComponent<SunEngine>(LOCAL);
-    sunEngine->SetCenter({ TheTerrain->HeightX() / 2.0f, 50.0f, TheTerrain->WidthZ() / 2.0f });
-    sunEngine->SetMoveSpeed(0.1f);
-
-    Light *light = lightNode->CreateComponent<Light>(LOCAL);
-    lightNode->SetScale(0.01f);
-    light->SetLightType(LIGHT_POINT);
-    light->SetRange(1000.0f);
-    light->SetCastShadows(true);
-    light->SetShadowBias(BiasParameters(0.00011f, 2.0f));
-    light->SetShadowCascade(CascadeParameters(10.0f, 50.0f, 200.0f, 0.0f, 0.8f));
-    light->SetEnabled(true);
 }
 
 
