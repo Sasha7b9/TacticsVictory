@@ -8,7 +8,7 @@ class ButtonSwitch : public TButton
     URHO3D_OBJECT(ButtonSwitch, TButton);
 
 public:
-    ButtonSwitch(Context *context = TheContext);
+    ButtonSwitch(Context *context);
     ButtonSwitch(UIElement *uielement, char *text, int width = -1, int height = -1);
     static void RegisterComponent();
 

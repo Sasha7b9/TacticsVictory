@@ -4,10 +4,10 @@
 #include "GUI/Controls/Tab_.h"
 
 
-Tab::Tab(Context *) : 
+Tab::Tab(Context *context) : 
     WindowT()
 {
-    buttonTitle = new ButtonToggled();
+    buttonTitle = new ButtonToggled(context);
     SetMovable(false);
 }
 
@@ -24,7 +24,7 @@ void Tab::RegisterObject()
 
 SharedPtr<Tab> Tab::Create(char *title)
 {
-    SharedPtr<Tab> tab(new Tab());
+    SharedPtr<Tab> tab(new Tab(TheContext));
     tab->buttonTitle = new ButtonToggled(nullptr, title, 125, 17);
     return tab;
 }

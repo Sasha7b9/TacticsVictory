@@ -10,7 +10,7 @@ class ButtonToggled : public CheckBox
     URHO3D_OBJECT(ButtonToggled, CheckBox);
 
 public:
-    ButtonToggled(Context *context = TheContext);
+    ButtonToggled(Context *context);
     ButtonToggled(UIElement *uielement, char *text, int width = -1, int height = -1);
     static void RegisterObject();
 
