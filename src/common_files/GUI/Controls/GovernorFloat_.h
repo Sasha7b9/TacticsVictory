@@ -61,7 +61,7 @@ class GovernorFloat : public WindowT
 public:
     GovernorFloat(Context *context = TheContext);
 
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterObject();
 
     virtual void Update(float timeStep);
 

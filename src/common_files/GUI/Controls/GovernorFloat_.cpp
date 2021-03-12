@@ -251,9 +251,11 @@ GovernorFloat::GovernorFloat(Context *context) :
 }
 
 
-void GovernorFloat::RegisterObject(Context *context)
+void GovernorFloat::RegisterObject()
 {
-    context->RegisterFactory<GovernorFloat>("UI");
+    TheContext->RegisterFactory<GovernorFloat>("UI");
+
+    Context *context = TheContext;
 
     URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
 }
