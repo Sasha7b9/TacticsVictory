@@ -7,7 +7,7 @@
 #define TAB "    "
 
 
-ConsoleParser::ConsoleParser(Context *context) : Object(context)
+ConsoleParser::ConsoleParser() : Object(TheContext)
 {
 
 }
