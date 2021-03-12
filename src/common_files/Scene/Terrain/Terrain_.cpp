@@ -10,7 +10,7 @@
 Vector<Vector<PODVector<CubeTerrain*>>> TerrainT::columnsCubes;
 
 
-TerrainT::TerrainT(Context *context) : Object(context)
+TerrainT::TerrainT(Context *context) : Object(context), level(new Level)
 {
 }
 
