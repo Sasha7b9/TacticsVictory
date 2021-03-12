@@ -9,7 +9,7 @@ class MenuStart : public WindowMenu
     URHO3D_OBJECT(MenuStart, WindowMenu);
 
 public:
-    MenuStart(Context *context = TheContext);
+    MenuStart();
     ~MenuStart();
 
 private:
