@@ -26,7 +26,7 @@ void Rotator::Update(float timeStep)
 }
 
 
-void Rotator::RegisterComponent()
+void Rotator::RegisterObject()
 {
     TheContext->RegisterFactory<Rotator>();
 }

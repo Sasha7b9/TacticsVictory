@@ -192,13 +192,12 @@ void Battler::RegistrationComponets()
     CameraT::RegisterObject();
     CursorT::RegisterObject();
     ImageT::RegisterObject();
-    SunEngine::RegisterComponent();
-    Rotator::RegisterComponent();
+    SunEngine::RegisterObject();
+    Rotator::RegisterObject();
     WaveAlgorithm::RegisterObject();
-    TileSelected::RegisterComponent();
-
+    TileSelected::RegisterObject();
     AirPlane::RegisterObject();
-    Tank::RegisterComponent();
+    Tank::RegisterObject();
 }
 
 

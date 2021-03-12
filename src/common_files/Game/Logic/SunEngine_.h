@@ -9,7 +9,7 @@ class SunEngine : public LogicComponent
 
 public:
     SunEngine(Context *);
-    static void RegisterComponent();
+    static void RegisterObject();
 
     void SetMoveSpeed(float speed);
     void SetCenter(const Vector3 &vec);

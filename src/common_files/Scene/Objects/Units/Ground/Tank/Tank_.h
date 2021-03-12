@@ -12,8 +12,7 @@ class Tank : public GroundUnit
 public:
 
     Tank(Context *);
-
-    static void RegisterComponent();
+    static void RegisterObject();
 
     virtual void CreateSpecific() override;
 

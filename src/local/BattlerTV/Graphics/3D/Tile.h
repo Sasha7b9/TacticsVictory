@@ -9,8 +9,7 @@ class Tile : public LogicComponent
 public:
 
     Tile(Context *);
-
-    static void RegisterComponent();
+    static void RegisterObject();
 
     // Включить отображение
     void Enable();

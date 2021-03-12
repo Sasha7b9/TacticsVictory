@@ -16,7 +16,7 @@ Tile::~Tile()
 }
 
 
-void Tile::RegisterComponent()
+void Tile::RegisterObject()
 {
     TheContext->RegisterFactory<Tile>();
 }

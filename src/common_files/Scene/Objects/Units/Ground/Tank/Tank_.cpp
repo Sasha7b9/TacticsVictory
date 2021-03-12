@@ -19,7 +19,7 @@ Tank::Tank(Context *context) :
 }
 
 
-void Tank::RegisterComponent()
+void Tank::RegisterObject()
 {
     TheContext->RegisterFactory<Tank>();
 }

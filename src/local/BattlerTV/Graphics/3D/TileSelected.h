@@ -10,8 +10,7 @@ class TileSelected : public Tile
 public:
 
     TileSelected(Context *);
-
-    static void RegisterComponent();
+    static void RegisterObject();
 
 private:
 
