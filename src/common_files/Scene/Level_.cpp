@@ -277,12 +277,6 @@ void Level::Clear()
 }
 
 
-uint Level::GetHeightX()
-{
-    return map.Empty() ? 0 : map.Size();
-}
-
-
 void Level::SetMap(const Vector<Vector<float>> &map_)
 {
     map = map_;

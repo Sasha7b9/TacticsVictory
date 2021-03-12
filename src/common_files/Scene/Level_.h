@@ -21,7 +21,6 @@ public:
     Vector<Vector<float>> CreateRandom(uint numRows, uint numCols);
     Vector<Vector<float>> Get();                            // Return the last loaded or created level
     void Clear();
-    uint GetHeightX();
     void SetMap(const Vector<Vector<float>> &map);
 
     static Vector<Vector<float>> map;
