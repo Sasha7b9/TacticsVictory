@@ -163,7 +163,7 @@ void Battle::RegistrationComponets()
     Rotator::RegisterComponent();
     WaveAlgorithm::RegisterObject();
 
-    AirPlane::RegisterComponent();
+    AirPlane::RegisterObject();
     Tank::RegisterComponent();
 }
 

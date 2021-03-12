@@ -10,8 +10,7 @@ class AirPlane : public Unit
 public:
 
     AirPlane(Context *);
-
-    static void RegisterComponent();
+    static void RegisterObject();
 
     virtual void CreateSpecific() override;
 

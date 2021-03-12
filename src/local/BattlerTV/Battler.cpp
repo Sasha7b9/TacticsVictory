@@ -197,7 +197,7 @@ void Battler::RegistrationComponets()
     WaveAlgorithm::RegisterObject();
     TileSelected::RegisterComponent();
 
-    AirPlane::RegisterComponent();
+    AirPlane::RegisterObject();
     Tank::RegisterComponent();
 }
 

@@ -17,7 +17,7 @@ AirPlane::AirPlane(Context *context) :
 }
 
 
-void AirPlane::RegisterComponent()
+void AirPlane::RegisterObject()
 {
     TheContext->RegisterFactory<AirPlane>();
 }
