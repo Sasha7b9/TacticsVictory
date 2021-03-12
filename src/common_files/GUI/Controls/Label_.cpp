@@ -9,9 +9,11 @@ Label::Label(Context *context) :
 }
 
 
-void Label::RegisterObject(Context *context)
+void Label::RegisterObject()
 {
-    context->RegisterFactory<Label>("UI");
+    TheContext->RegisterFactory<Label>("UI");
+
+    Context *context = TheContext;
 
     URHO3D_COPY_BASE_ATTRIBUTES(Text);
 }
