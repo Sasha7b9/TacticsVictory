@@ -15,7 +15,6 @@ Time              *TheTime = nullptr;
 
 
 Battle            *TheBattle = nullptr;
-Level             *TheLevel = nullptr;
 LogT              *TheLog = nullptr;
 SceneS            *TheScene = nullptr;
 ServerS           *TheServer = nullptr;

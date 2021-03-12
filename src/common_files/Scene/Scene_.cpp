@@ -15,6 +15,8 @@ SceneT::SceneT(Context *context) : Scene(context)
 SceneT::~SceneT()
 {
     delete TheTerrain;
+
+    delete level;
 }
 
 
@@ -44,7 +46,7 @@ void SceneT::Create()
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
     TheTerrain = new TerrainT();
-    TheTerrain->CreateFromVector(TheLevel->map);
+    TheTerrain->CreateFromVector(level->map);
 
     SharedPtr<Node> lightNode;
     lightNode = CreateChild("LigthNode");

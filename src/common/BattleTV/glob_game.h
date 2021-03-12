@@ -2,7 +2,6 @@
 #pragma once
 
 class Battle;
-class Level;
 class LogT;
 class SceneS;
 class ServerS;
@@ -10,7 +9,6 @@ class Settings;
 class TerrainT;
 
 extern Battle     *TheBattle;
-extern Level      *TheLevel;
 extern LogT       *TheLog;
 extern SceneS     *TheScene;
 extern ServerS    *TheServer;

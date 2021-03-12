@@ -100,13 +100,15 @@ void Battle::Start()
 
     RegistrationComponets();
 
+
     TheScene = new SceneS();
 
-    TheLevel = new Level();
+    TheScene->level = new Level();
 
-    TheLevel->Load("Game/Levels/level.map");
+    TheScene->level->Load("Game/Levels/level.map");
 
     TheScene->Create();
+
 
     float rangeX = (float)TheTerrain->HeightX();
     float rangeZ = (float)TheTerrain->WidthZ();
@@ -134,7 +136,6 @@ void Battle::Stop()
     engine_->DumpProfiler();
 
     delete TheScene;
-    delete TheLevel;
     delete TheSet;
     delete TheLog;
     delete TheServer;

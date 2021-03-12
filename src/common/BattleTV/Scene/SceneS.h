@@ -8,5 +8,5 @@ class SceneS : public SceneT
 public:
 
     SceneS(Context *context = TheContext) : SceneT(context) {}
-    virtual ~SceneS() {}
+    virtual ~SceneS();
 };

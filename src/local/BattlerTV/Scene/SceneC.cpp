@@ -29,7 +29,6 @@ void SceneC::Create()
     Sounds::Init();
 
     TheRenderer->SetShadowMapSize(16384);
-    TheRenderer->SetShadowQuality(SHADOWQUALITY_VSM);
 
     TheWindowTarget = new WindowTarget();
     TheUIRoot->AddChild(TheWindowTarget);
