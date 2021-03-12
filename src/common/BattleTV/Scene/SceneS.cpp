@@ -3,7 +3,7 @@
 #include "Scene/SceneS.h"
 
 
-SceneS::SceneS(SceneS **self) : SceneT(TheContext)
+SceneS::SceneS(SceneS **self) : SceneT()
 {
     *self = this;
 }

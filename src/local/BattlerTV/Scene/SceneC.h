@@ -8,7 +8,7 @@ class SceneC : public SceneT
 {
 public:
 
-    SceneC(Context *context = TheContext);
+    SceneC(SceneC **self);
     virtual ~SceneC();
 
     virtual void Create() override;

@@ -9,7 +9,7 @@ class SceneT : public Scene
 {
 public:
 
-    SceneT(Context *context = TheContext);
+    SceneT();
     virtual ~SceneT();
 
     virtual void Create();

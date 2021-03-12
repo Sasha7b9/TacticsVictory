@@ -119,7 +119,7 @@ void Battler::Start()
 
     TheServer->Connect(SERVER_ADDRESS, SERVER_PORT);
 
-    TheScene = new SceneC();
+    scene = new SceneC(&TheScene);
 
     TheScene->CreateComponent<DebugRenderer>(LOCAL);
     TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
@@ -151,7 +151,6 @@ void Battler::Stop()
 
     TilePath::RemoveAll();
 
-    delete TheScene;
     delete TheServer;
     delete TheMouse;
     delete ThePathIndicator;

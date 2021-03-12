@@ -5,7 +5,7 @@
 #include "Scene/Scene_.h"
 
 
-SceneT::SceneT(Context *context) : Scene(context)
+SceneT::SceneT() : Scene(TheContext)
 {
 
 }

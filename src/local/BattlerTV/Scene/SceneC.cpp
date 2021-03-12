@@ -9,9 +9,9 @@
 #include "Scene/Objects/ObjectC.h"
 
 
-SceneC::SceneC(Context *context) : SceneT(context)
+SceneC::SceneC(SceneC **self) : SceneT()
 {
-
+    *self = this;
 }
 
 
