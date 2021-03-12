@@ -20,7 +20,7 @@ public:
 private:
 
     void OpenLog();
-    void RegistrationComponets();
+    void RegistrationObjects();
     void SetWindowTitleAndIcon();
     void CreateConsoleAndDebugHud();
     void CreateEditorSession();

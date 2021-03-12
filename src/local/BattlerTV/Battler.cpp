@@ -105,7 +105,7 @@ void Battler::Start()
     SetLocalization();
     TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
 
-    RegistrationComponets();
+    RegistrationObjects();
 
     mouse = new Mouse(&TheMouse);
 
@@ -187,7 +187,7 @@ void Battler::CreateScriptSystem()
 }
 
 
-void Battler::RegistrationComponets()
+void Battler::RegistrationObjects()
 {
     CameraT::RegisterObject();
     CursorT::RegisterObject();
@@ -213,7 +213,7 @@ void Battler::SetWindowTitleAndIcon()
 {
     Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     TheGraphics->SetWindowIcon(icon);
-    TheGraphics->SetWindowTitle("Тактика победы");
+    SetWindowText(FindWindow(NULL, "Battler"), TEXT("Тактика Победы"));
 }
 
 
