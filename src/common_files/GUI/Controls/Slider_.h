@@ -9,6 +9,6 @@ class lSlider : public Slider
 public:
     lSlider(Context *context = TheContext);
 
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterObject();
     static SharedPtr<lSlider> Create(Window *window, char *text);
 };

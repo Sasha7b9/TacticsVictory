@@ -10,9 +10,11 @@ lSlider::lSlider(Context *context) :
 }
 
 
-void lSlider::RegisterObject(Context *context)
+void lSlider::RegisterObject()
 {
-    context->RegisterFactory<lSlider>("UI");
+    TheContext->RegisterFactory<lSlider>("UI");
+
+    Context *context = TheContext;
 
     URHO3D_COPY_BASE_ATTRIBUTES(Slider);
 }
