@@ -32,7 +32,6 @@ GUI             *TheGUI = nullptr;
 GuiEditor       *TheGuiEditor = nullptr;
 GuiGame         *TheGuiGame = nullptr;
 Hint            *TheHint = nullptr;
-Level           *TheLevel = nullptr;
 LogT            *TheLog = nullptr;
 MenuConfirmExit *TheMenuConfirmExit = nullptr;
 MenuGame        *TheMenuMain = nullptr;

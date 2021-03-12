@@ -12,6 +12,7 @@
 #include "GUI/Panels/PanelMap.h"
 #include "GUI/Windows/Console.h"
 #include "Scene/Level_.h"
+#include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/Settings.h"
@@ -290,7 +291,7 @@ void GuiEditor::CreateWindows()
 
 void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
 {
-    Vector<Vector<float>> map = TheLevel->CreateRandom(
+    Vector<Vector<float>> map = TheScene->level->CreateRandom(
         (uint)sliderSizeNewMapY->GetValue(),
         (uint)sliderSizeNewMapX->GetValue());
 
@@ -300,8 +301,8 @@ void GuiEditor::HandleTerrainCreateNewMap(StringHash, VariantMap&)
     windowNewMap->SetVisible(false);
 
     TheCamera->SetPosition(
-        {TheLevel->GetWidthZ() / 2.0f, 20.0f, -(float)TheLevel->GetHeightX()},
-        {TheLevel->GetWidthZ() / 2.0f, 0.0f, -(TheLevel->GetHeightX() / 2.0f)});
+        {TheScene->level->GetWidthZ() / 2.0f, 20.0f, -(float)TheScene->level->GetHeightX()},
+        {TheScene->level->GetWidthZ() / 2.0f, 0.0f, -(TheScene->level->GetHeightX() / 2.0f)});
 }
 
 
@@ -389,14 +390,14 @@ void GuiEditor::HandleFileSelectorLoadTerrain(StringHash, VariantMap& eventData)
 
     if(ok)
     {
-        TheLevel->Load((char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
+        TheScene->level->Load((char*)((String)eventData[FileSelected::P_FILENAME].GetString()).CString());
 
         delete TheTerrain;
         TheTerrain = new TerrainT();
-        TheTerrain->CreateFromVector(TheLevel->map);
+        TheTerrain->CreateFromVector(TheScene->level->map);
         TheCamera->SetPosition(
-            {TheLevel->GetWidthZ() / 2.0f, 20.0f, -(float)TheLevel->GetHeightX()},
-            {TheLevel->GetWidthZ() / 2.0f, 0.0f, -(TheLevel->GetHeightX() / 2.0f)});
+            {TheScene->level->GetWidthZ() / 2.0f, 20.0f, -(float)TheScene->level->GetHeightX()},
+            {TheScene->level->GetWidthZ() / 2.0f, 0.0f, -(TheScene->level->GetHeightX() / 2.0f)});
     }
     
     TheFileSelector->GetWindow()->SetVisible(false);
@@ -415,8 +416,8 @@ void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData)
     {
         String fileName = (String)eventData[FileSelected::P_FILENAME].GetString();
         fileName = ReplaceExtension(fileName, ".map");
-        TheLevel->SetMap(TheTerrain->GetHeightMap());
-        TheLevel->Save(fileName);
+        TheScene->level->SetMap(TheTerrain->GetHeightMap());
+        TheScene->level->Save(fileName);
     }
 
     TheFileSelector->GetWindow()->SetVisible(false);

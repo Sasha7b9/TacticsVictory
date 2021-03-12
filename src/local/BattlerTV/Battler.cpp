@@ -157,7 +157,6 @@ void Battler::Stop()
     delete TheMouse;
     delete ThePathIndicator;
     delete TheFileSelector;
-    delete TheLevel;
     delete TheMenu;
     delete TheGUI;
     delete TheSet;

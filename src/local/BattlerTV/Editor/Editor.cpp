@@ -27,10 +27,10 @@ void Editor::Run()
     float dColor = 0.3f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    TheLevel->Load("Game/Levels/level.map");
+    TheScene->level->Load("Game/Levels/level.map");
 
     TheTerrain = new TerrainT();
-    TheTerrain->CreateFromVector(TheLevel->map);
+    TheTerrain->CreateFromVector(TheScene->level->map);
 
     lightNode = TheScene->CreateChild("LightNode");
 
@@ -255,7 +255,7 @@ void Editor::HandleKeyDown(StringHash, VariantMap& eventData)
         }
         else if (KEY_IS_RIGHT)
         {
-            if (col < TheLevel->GetWidthZ() - 1)
+            if (col < TheScene->level->GetWidthZ() - 1)
             {
                 selectedPlane = TheTerrain->GetPlane(row, col + 1);
             }
@@ -269,7 +269,7 @@ void Editor::HandleKeyDown(StringHash, VariantMap& eventData)
         }
         else if (KEY_IS_DOWN)
         {
-            if (row < TheLevel->GetHeightX() - 1)
+            if (row < TheScene->level->GetHeightX() - 1)
             {
                 selectedPlane = TheTerrain->GetPlane(row + 1, col);
             }

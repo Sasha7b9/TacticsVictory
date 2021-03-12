@@ -39,9 +39,9 @@ void Message::Message::Send(bool reliable)
 
 void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 {
-    TheLevel = new Level();
+    TheScene->level = new Level();
 
-    TheLevel->Load(msg);
+    TheScene->level->Load(msg);
 
     TheScene->Create();
 
