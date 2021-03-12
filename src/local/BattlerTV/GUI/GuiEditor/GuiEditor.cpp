@@ -416,7 +416,7 @@ void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData)
     {
         String fileName = (String)eventData[FileSelected::P_FILENAME].GetString();
         fileName = ReplaceExtension(fileName, ".map");
-        TheScene->level->SetMap(TheTerrain->GetHeightMap());
+        TheScene->level->map = TheTerrain->GetHeightMap();
         TheScene->level->Save(fileName);
     }
 

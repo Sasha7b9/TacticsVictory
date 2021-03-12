@@ -269,9 +269,3 @@ void Level::Clear()
     VariantMap eventData = GetEventDataMap();
     SendEvent(E_MAP_CHANGED, eventData);
 }
-
-
-void Level::SetMap(const Vector<Vector<float>> &map_)
-{
-    map = map_;
-}

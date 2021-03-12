@@ -20,7 +20,6 @@ public:
     Vector<Vector<float>> Create(int sizeZ, int sizeX);     // Create a new simpe level height == 0.0f; 
     Vector<Vector<float>> CreateRandom(uint numRows, uint numCols);
     void Clear();
-    void SetMap(const Vector<Vector<float>> &map);
 
     static Vector<Vector<float>> map;
 };
