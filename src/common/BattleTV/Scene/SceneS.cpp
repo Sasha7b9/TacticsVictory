@@ -3,6 +3,11 @@
 #include "Scene/SceneS.h"
 
 
+SceneS::SceneS() : SceneT(TheContext)
+{
+}
+
+
 SceneS::~SceneS()
 {
     

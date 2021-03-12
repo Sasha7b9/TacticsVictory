@@ -7,7 +7,7 @@ class SceneS : public SceneT
 {
 public:
 
-    SceneS(Context *context = TheContext) : SceneT(context) {}
+    SceneS();
     virtual ~SceneS();
 
     virtual void Create() override;

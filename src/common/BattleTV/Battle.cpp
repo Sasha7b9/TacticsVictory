@@ -99,8 +99,8 @@ void Battle::Start()
 
     RegistrationComponets();
 
-    TheScene = new SceneS();
-
+    scene = new SceneS();
+    TheScene = scene;
     TheScene->Create();
 
     float rangeX = (float)TheTerrain->HeightX();
@@ -128,7 +128,6 @@ void Battle::Stop()
     engine_->DumpResources(true);
     engine_->DumpProfiler();
 
-    delete TheScene;
     delete TheSet;
     delete TheLog;
     delete TheServer;

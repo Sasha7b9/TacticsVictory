@@ -29,4 +29,6 @@ private:
 
     void HandleUpdate(StringHash, VariantMap&);
     void HandlePostUpdate(StringHash, VariantMap&);
+
+    SharedPtr<SceneS> scene;
 };
