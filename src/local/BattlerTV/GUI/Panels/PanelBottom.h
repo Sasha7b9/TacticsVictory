@@ -12,6 +12,5 @@ class PanelBottom : public WindowT
 
 public:
     PanelBottom(Context *context = TheContext);
-
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterObject();
 };

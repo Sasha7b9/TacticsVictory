@@ -13,8 +13,10 @@ PanelBottom::PanelBottom(Context *context) :
 }
 
 
-void PanelBottom::RegisterObject(Context *context)
+void PanelBottom::RegisterObject()
 {
+    Context *context = TheContext;
+
     context->RegisterFactory<PanelBottom>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
