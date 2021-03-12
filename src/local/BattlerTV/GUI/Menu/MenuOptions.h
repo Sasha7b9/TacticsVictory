@@ -15,8 +15,7 @@ class MenuOptions : public WindowMenu
 
 public:
     MenuOptions(Context *context = TheContext);
-
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterObject();
 
 private:
     void HandleItemSelected(StringHash eventType, VariantMap& eventData);

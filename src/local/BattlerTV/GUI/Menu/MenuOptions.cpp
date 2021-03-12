@@ -82,8 +82,10 @@ MenuOptions::MenuOptions(Context * /*context*/) : WindowMenu()
 }
 
 
-void MenuOptions::RegisterObject(Context *context)
+void MenuOptions::RegisterObject()
 {
+    Context *context = TheContext;
+
     context->RegisterFactory<MenuOptions>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(WindowMenu);
