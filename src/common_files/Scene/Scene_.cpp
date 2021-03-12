@@ -43,8 +43,8 @@ void SceneT::Create()
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
     TheTerrain = new TerrainT();
-    TheTerrain->level.Load("Game/Levels/level.map");
-    TheTerrain->CreateFromVector(TheTerrain->level.map);
+    TheTerrain->level->Load("Game/Levels/level.map");
+    TheTerrain->CreateFromVector(TheTerrain->level->map);
 
     SharedPtr<Node> lightNode;
     lightNode = CreateChild("LigthNode");

@@ -81,7 +81,7 @@ public:
 
     static Vector<Vector<PODVector<CubeTerrain*>>> columnsCubes;
 
-    Level level;
+    SharedPtr<Level> level;
 
 private:
    

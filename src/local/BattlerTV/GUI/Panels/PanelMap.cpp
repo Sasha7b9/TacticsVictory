@@ -47,7 +47,7 @@ void PanelMap::Update(float dT)
     
     if(redrawMap)
     {
-        map = TheTerrain->level.map;
+        map = TheTerrain->level->map;
 
         redrawMap = false;
 

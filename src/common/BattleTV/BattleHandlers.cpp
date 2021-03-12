@@ -5,7 +5,7 @@
 #include "Scene/Scene_.h"
 
 
-void Battle::HandleUpdate(StringHash, VariantMap& eventData)
+void Battle::HandleUpdate(StringHash, VariantMap& /*eventData*/)
 {
 //    float dT = eventData[Update::P_TIMESTEP].GetFloat();
 

@@ -38,7 +38,7 @@ void Message::Message::Send(bool reliable)
 
 void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 {
-    TheTerrain->level.Load(msg);
+    TheTerrain->level->Load(msg);
 
     TheScene->Create();
 

@@ -34,7 +34,7 @@ void TerrainT::CreateFromVector(const Vector<Vector<float>> &lev)
 {
     float time = TheTime->GetElapsedTime();
 
-    level.CreateFromVector(lev);
+    level->CreateFromVector(lev);
 
     CubeTerrain::terrain = this;
 
@@ -72,7 +72,7 @@ void TerrainT::CreateFromVector(const Vector<Vector<float>> &lev)
 
             segments[i][j] = new SegmentTerrain();
 
-            segments[i][j]->CreateFromVector(level.level, row0, col0, numRows, numCols);
+            segments[i][j]->CreateFromVector(level->level, row0, col0, numRows, numCols);
         }
     }
 
@@ -102,7 +102,7 @@ void TerrainT::CreateFromVector(const Vector<Vector<float>> &lev)
 
 float TerrainT::GetHeight(uint rowX, uint colZ) const
 {
-    return level.GetHeight(rowX, colZ);
+    return level->GetHeight(rowX, colZ);
 }
 
 
@@ -120,19 +120,19 @@ float TerrainT::GetHeight(const Vector2 coord) const
 
 uint TerrainT::HeightX() const
 {
-    return level.level.Size();
+    return level->level.Size();
 }
 
 
 uint TerrainT::WidthZ() const
 {
-    return level.level[0].Size();
+    return level->level[0].Size();
 }
 
 
 bool TerrainT::IsEmpty() const
 {
-    return level.level.Empty();
+    return level->level.Empty();
 }
 
 
@@ -158,15 +158,15 @@ Vector<Vector<float>> TerrainT::GetHeightMap()
 {
     Vector<Vector<float>> result;
 
-    result.Resize(level.level.Size());
+    result.Resize(level->level.Size());
 
-    for (uint rowX = 0; rowX < level.level.Size(); rowX++)
+    for (uint rowX = 0; rowX < level->level.Size(); rowX++)
     {
-        result[rowX].Resize(level.level[rowX].Size());
+        result[rowX].Resize(level->level[rowX].Size());
 
-        for (uint colZ = 0; colZ < level.level[rowX].Size(); colZ++)
+        for (uint colZ = 0; colZ < level->level[rowX].Size(); colZ++)
         {
-            result[rowX][colZ] = level.level[rowX][colZ].height;
+            result[rowX][colZ] = level->level[rowX][colZ].height;
         }
     }
 
