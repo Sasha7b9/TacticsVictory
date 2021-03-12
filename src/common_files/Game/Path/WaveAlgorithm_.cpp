@@ -6,9 +6,9 @@
 #define TERRAIN_HEIGHT_EQUAL(x,z) (fabs(TheTerrain->GetHeight(x, z) - heightStart) < M_EPSILON)
 
 
-WaveAlgorithm::WaveAlgorithm(Context *context) : Thread(), Object(context)
+WaveAlgorithm::WaveAlgorithm() : Thread(), Object(TheContext)
 {
-    //passValues.Insert(KeySet(5, )
+
 }
 
 
