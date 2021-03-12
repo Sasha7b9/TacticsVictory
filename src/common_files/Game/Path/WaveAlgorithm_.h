@@ -8,16 +8,15 @@ class WaveAlgorithm : public Thread, public Object
     URHO3D_OBJECT(WaveAlgorithm, Object);
 
 public:
-    WaveAlgorithm();
+    WaveAlgorithm(Context *context);
     virtual ~WaveAlgorithm();
+    static void RegisterObject();
 
     void SetSize(uint numRows, uint numCols);
     void StartFind(Coord start, Coord end);
     bool PathIsFound();
     PODVector<Coord> GetPath();
     virtual void ThreadFunction();
-
-    static void RegisterComponent();
 
 private:
     typedef Vector<Coord> Wave;

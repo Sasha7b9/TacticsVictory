@@ -194,7 +194,7 @@ void Battler::RegistrationComponets()
     ImageT::RegisterObject();
     SunEngine::RegisterComponent();
     Rotator::RegisterComponent();
-    WaveAlgorithm::RegisterComponent();
+    WaveAlgorithm::RegisterObject();
     TileSelected::RegisterComponent();
 
     AirPlane::RegisterComponent();

@@ -5,7 +5,7 @@
 #include "GUI/Cursor.h"
 
 
-PathIndicator::PathIndicator()
+PathIndicator::PathIndicator() : pathFinder(TheContext)
 {
     pathFinder.SetSize(TheTerrain->HeightX(), TheTerrain->WidthZ());
 }

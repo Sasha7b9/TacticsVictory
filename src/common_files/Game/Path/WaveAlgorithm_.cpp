@@ -6,7 +6,7 @@
 #define TERRAIN_HEIGHT_EQUAL(x,z) (fabs(TheTerrain->GetHeight(x, z) - heightStart) < M_EPSILON)
 
 
-WaveAlgorithm::WaveAlgorithm() : Thread(), Object(TheContext)
+WaveAlgorithm::WaveAlgorithm(Context *context) : Thread(), Object(context)
 {
 
 }
@@ -246,7 +246,7 @@ void WaveAlgorithm::AddPrevWave(PODVector<Coord> &path_)
 }
 
 
-void WaveAlgorithm::RegisterComponent()
+void WaveAlgorithm::RegisterObject()
 {
     RegisterInAS();
 }
