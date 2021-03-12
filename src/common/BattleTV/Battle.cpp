@@ -100,15 +100,9 @@ void Battle::Start()
 
     RegistrationComponets();
 
-
     TheScene = new SceneS();
 
-    TheScene->level = new Level();
-
-    TheScene->level->Load("Game/Levels/level.map");
-
     TheScene->Create();
-
 
     float rangeX = (float)TheTerrain->HeightX();
     float rangeZ = (float)TheTerrain->WidthZ();

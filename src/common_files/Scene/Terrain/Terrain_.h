@@ -96,6 +96,10 @@ public:
         void SetHeight(uint rowX, uint colZ, float height);
 
         Vector<Vector<LogicCell>> level;
+
+        void Load(const char *fileName);
+
+        Vector<Vector<float>> map;
     } level;
 
 private:

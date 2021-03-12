@@ -2,7 +2,6 @@
 #pragma once
 
 
-class Level;
 class Tank;
 
 
@@ -20,6 +19,4 @@ public:
 
     // Распаковать состояние сцены из buffer-а, принятого по сети
     void Decompress(MemoryBuffer &buffer);
-
-    Level *level = nullptr;
 };

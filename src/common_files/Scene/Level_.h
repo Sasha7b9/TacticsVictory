@@ -8,18 +8,18 @@ URHO3D_EVENT(E_MAP_CHANGED, MapChanged)
 }
 
 
-class Level : public Object
-{
-    URHO3D_OBJECT(Level, Object);
-
-public:
-    Level(Context *context = TheContext);
-    void Load(const char *fileName);
-    void Load(MemoryBuffer &msg);
-    bool Save(const String &fileName);
-    Vector<Vector<float>> Create(int sizeZ, int sizeX);     // Create a new simpe level height == 0.0f; 
-    Vector<Vector<float>> CreateRandom(uint numRows, uint numCols);
-    void Clear();
-
-    static Vector<Vector<float>> map;
-};
+//class Level : public Object
+//{
+//    URHO3D_OBJECT(Level, Object);
+//
+//public:
+//    Level(Context *context = TheContext);
+//    void Load(const char *fileName);
+//    void Load(MemoryBuffer &msg);
+//    bool Save(const String &fileName);
+//    Vector<Vector<float>> Create(int sizeZ, int sizeX);     // Create a new simpe level height == 0.0f; 
+//    Vector<Vector<float>> CreateRandom(uint numRows, uint numCols);
+//    void Clear();
+//
+//    static Vector<Vector<float>> map;
+//};

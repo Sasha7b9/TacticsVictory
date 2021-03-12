@@ -3,6 +3,8 @@
 #include "Scene/Objects/Object_.h"
 #include "Scene/Objects/Units/Unit_.h"
 #include "Scene/Terrain/SegmentTerrain_.h"
+#include "Utils/GlobalFunctions.h"
+#include "Utils/StringUtils.h"
 
 
 Vector<Vector<PODVector<CubeTerrain*>>> TerrainT::columnsCubes;
@@ -244,4 +246,108 @@ float TerrainT::Level::GetHeight(uint rowX, uint colZ) const
     }
 
     return level[rowX][colZ].height;
+}
+
+
+static bool IsCorrectSymbol(char symbol)
+{
+    if (symbol == '+')
+    {
+        return true;
+    }
+    if (symbol == '-')
+    {
+        return true;
+    }
+    if (symbol >= '0' && symbol <= '9')
+    {
+        return true;
+    }
+    return false;
+}
+
+
+static int PushToVector(const char *data, Vector<float> *vec)
+{
+    char buffer[20] = { 0 };
+
+    int retValue = 0;
+
+    while (IsCorrectSymbol(*data))
+    {
+        char add[2] = { *data, 0 };
+        SU::Strcat(buffer, add);
+        retValue++;
+        data++;
+    }
+
+    float value = (float)atof(buffer);
+    vec->Push(value);
+
+    return retValue;
+}
+
+
+void TerrainT::Level::Load(const char *fileName)
+{
+    map.Clear();
+
+    SharedPtr<File> fileRead;
+    fileRead = new File(TheContext);
+
+    fileRead->Open(fileName, FILE_READ);
+
+    if (!fileRead->IsOpen())
+    {
+        fileRead->Open(GF::GetNameFile(fileName), FILE_READ);
+    }
+
+    if (fileRead->IsOpen())
+    {
+        String str = fileRead->ReadString();
+        const char *data = str.CString();
+        size_t sizeData = strlen(data);
+
+        const char *end = data + sizeData;
+
+        Vector<float> curString;
+
+        while (data < end)
+        {
+            if (*data == '\n' || *data == 0x0d)
+            {
+                map.Push(curString);
+                curString.Clear();
+                data += 2;
+                continue;
+            }
+            if (*data == ' ')
+            {
+                data++;
+                continue;
+            }
+            if (IsCorrectSymbol(*data))
+            {
+                data += static_cast<uint64>(PushToVector(data, &curString));
+            }
+        }
+    }
+    else
+    {
+        LOGERROR("Can not load file");
+    }
+
+    fileRead->Close();
+
+    uint numRows = map.Size();
+
+    map.Resize((numRows / SegmentTerrain::WIDTH_Z) * SegmentTerrain::WIDTH_Z);
+
+
+    uint numCols = map[0].Size();
+
+    for (uint i = 0; i < map.Size(); i++)
+    {
+        map[i].Resize((numCols / SegmentTerrain::HEIGHT_X) * SegmentTerrain::HEIGHT_X);
+    }
 }
