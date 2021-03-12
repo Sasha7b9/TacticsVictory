@@ -190,9 +190,11 @@ void GovernorCell::HandleHoverEnd(StringHash, VariantMap &)
 }
 
 
-void GovernorCell::RegisterObject(Context *context)
+void GovernorCell::RegisterObject()
 {
-    context->RegisterFactory<GovernorCell>("UI");
+    TheContext->RegisterFactory<GovernorCell>("UI");
+
+    Context *context = TheContext;
 
     URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
 }

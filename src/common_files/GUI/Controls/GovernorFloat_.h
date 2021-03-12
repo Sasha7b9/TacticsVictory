@@ -24,7 +24,7 @@ public:
 
     GovernorCell(Context *context = TheContext);
 
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterObject();
 
     void SetSymbol(char symbol);
     char GetSymbol();

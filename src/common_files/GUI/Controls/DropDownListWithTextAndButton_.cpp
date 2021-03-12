@@ -71,9 +71,11 @@ void DropDownListWithTextAndButton::SetSelection(uint index)
 }
 
 
-void DropDownListWithTextAndButton::RegisterObject(Context* context)
+void DropDownListWithTextAndButton::RegisterObject()
 {
-    context->RegisterFactory<DropDownListWithTextAndButton>("UI");
+    TheContext->RegisterFactory<DropDownListWithTextAndButton>("UI");
+
+    Context *context = TheContext;
 
     URHO3D_COPY_BASE_ATTRIBUTES(UIElement);
 }

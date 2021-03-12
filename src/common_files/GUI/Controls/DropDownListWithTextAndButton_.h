@@ -11,7 +11,7 @@ public:
 
     DropDownListWithTextAndButton(char *text, int widthText, int widthDDList);
 
-    static void RegisterObject(Context* context = TheContext);
+    static void RegisterObject();
 
     void AddItem(char *text);
     void SetSelection(uint index);
