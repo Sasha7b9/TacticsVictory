@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Game/Messages/GameMessages_.h"
-#include "Scene/Level_.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/ObjectC.h"
@@ -39,9 +38,7 @@ void Message::Message::Send(bool reliable)
 
 void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 {
-    TheScene->level = new Level();
-
-    TheScene->level->Load(msg);
+    TheTerrain->level.Load(msg);
 
     TheScene->Create();
 

@@ -6,7 +6,6 @@
 #include "GUI/Controls/Hint_.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/Menu.h"
-#include "Scene/Level_.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 
@@ -27,10 +26,11 @@ void Editor::Run()
     float dColor = 0.3f;
     zone->SetAmbientColor(Color(dColor, dColor, dColor));
 
-    TheScene->level->Load("Game/Levels/level.map");
+    TheTerrain->level.Load("Game/Levels/level.map");
 
     TheTerrain = new TerrainT();
-    TheTerrain->CreateFromVector(TheScene->level->map);
+    
+    TheTerrain->CreateFromVector(TheTerrain->level.map);
 
     lightNode = TheScene->CreateChild("LightNode");
 

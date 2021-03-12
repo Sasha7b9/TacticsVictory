@@ -3,7 +3,6 @@
 #include "Graphics/2D/Image.h"
 #include "GUI/Cursor.h"
 #include "GUI/Panels/PanelMap.h"
-#include "Scene/Level_.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 #include "Utils/Settings.h"
@@ -48,7 +47,7 @@ void PanelMap::Update(float dT)
     
     if(redrawMap)
     {
-        map = TheScene->level->map;
+        map = TheTerrain->level.map;
 
         redrawMap = false;
 

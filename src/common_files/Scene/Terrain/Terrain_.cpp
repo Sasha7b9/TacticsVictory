@@ -30,28 +30,6 @@ TerrainT::~TerrainT()
 }
 
 
-void TerrainT::Level::CreateFromVector(const Vector<Vector<float>> &lev)
-{
-    Clear();
-
-    uint num_rows = lev.Size();
-
-    for (uint row = 0; row < num_rows; row++)
-    {
-        Vector<LogicCell> layer;
-        layer.Resize(lev[row].Size());
-        level.Push(layer);
-
-        uint num_cols = lev[row].Size();
-
-        for (uint col = 0; col < num_cols; col++)
-        {
-            level[row][col].height = lev[row][col];
-        }
-    }
-}
-
-
 void TerrainT::CreateFromVector(const Vector<Vector<float>> &lev)
 {
     float time = TheTime->GetElapsedTime();
@@ -137,12 +115,6 @@ float TerrainT::GetHeight(float rowX, float colZ) const
 float TerrainT::GetHeight(const Vector2 coord) const
 {
     return GetHeight(coord.x_, coord.y_);
-}
-
-
-void TerrainT::Level::SetHeight(uint rowX, uint colZ, float height)
-{
-    level[rowX][colZ].height = height;
 }
 
 
@@ -235,119 +207,4 @@ void TerrainT::PutIn(ObjectT *object, uint rowX, uint colZ)
     }
 
     object->physics->pos.SetWorld({ (float)rowX, height, (float)colZ });
-}
-
-
-float TerrainT::Level::GetHeight(uint rowX, uint colZ) const
-{
-    if (colZ >= level[0].Size() || rowX >= level.Size())
-    {
-        return 0;
-    }
-
-    return level[rowX][colZ].height;
-}
-
-
-static bool IsCorrectSymbol(char symbol)
-{
-    if (symbol == '+')
-    {
-        return true;
-    }
-    if (symbol == '-')
-    {
-        return true;
-    }
-    if (symbol >= '0' && symbol <= '9')
-    {
-        return true;
-    }
-    return false;
-}
-
-
-static int PushToVector(const char *data, Vector<float> *vec)
-{
-    char buffer[20] = { 0 };
-
-    int retValue = 0;
-
-    while (IsCorrectSymbol(*data))
-    {
-        char add[2] = { *data, 0 };
-        SU::Strcat(buffer, add);
-        retValue++;
-        data++;
-    }
-
-    float value = (float)atof(buffer);
-    vec->Push(value);
-
-    return retValue;
-}
-
-
-void TerrainT::Level::Load(const char *fileName)
-{
-    map.Clear();
-
-    SharedPtr<File> fileRead;
-    fileRead = new File(TheContext);
-
-    fileRead->Open(fileName, FILE_READ);
-
-    if (!fileRead->IsOpen())
-    {
-        fileRead->Open(GF::GetNameFile(fileName), FILE_READ);
-    }
-
-    if (fileRead->IsOpen())
-    {
-        String str = fileRead->ReadString();
-        const char *data = str.CString();
-        size_t sizeData = strlen(data);
-
-        const char *end = data + sizeData;
-
-        Vector<float> curString;
-
-        while (data < end)
-        {
-            if (*data == '\n' || *data == 0x0d)
-            {
-                map.Push(curString);
-                curString.Clear();
-                data += 2;
-                continue;
-            }
-            if (*data == ' ')
-            {
-                data++;
-                continue;
-            }
-            if (IsCorrectSymbol(*data))
-            {
-                data += static_cast<uint64>(PushToVector(data, &curString));
-            }
-        }
-    }
-    else
-    {
-        LOGERROR("Can not load file");
-    }
-
-    fileRead->Close();
-
-    uint numRows = map.Size();
-
-    map.Resize((numRows / SegmentTerrain::WIDTH_Z) * SegmentTerrain::WIDTH_Z);
-
-
-    uint numCols = map[0].Size();
-
-    for (uint i = 0; i < map.Size(); i++)
-    {
-        map[i].Resize((numCols / SegmentTerrain::HEIGHT_X) * SegmentTerrain::HEIGHT_X);
-    }
 }

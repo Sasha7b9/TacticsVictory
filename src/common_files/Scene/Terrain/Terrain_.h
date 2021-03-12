@@ -3,6 +3,7 @@
 #include "Scene/Objects/Object_.h"
 #include "Scene/Primitives/Plane_.h"
 #include "Scene/Terrain/CubeTerrain_.h"
+#include "Scene/Terrain/Level_.h"
 
 
 class SegmentTerrain;
@@ -80,27 +81,7 @@ public:
 
     static Vector<Vector<PODVector<CubeTerrain*>>> columnsCubes;
 
-    struct LogicCell
-    {
-        float height;                   // Высота ячейки
-    };
-
-    struct Level
-    {
-        void Clear() { level.Clear(); };
-
-        void CreateFromVector(const Vector<Vector<float>> &lev);
-
-        float GetHeight(uint rowX, uint colZ) const;
-
-        void SetHeight(uint rowX, uint colZ, float height);
-
-        Vector<Vector<LogicCell>> level;
-
-        void Load(const char *fileName);
-
-        Vector<Vector<float>> map;
-    } level;
+    Level level;
 
 private:
    

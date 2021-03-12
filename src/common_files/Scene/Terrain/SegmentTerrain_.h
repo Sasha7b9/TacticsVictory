@@ -25,7 +25,7 @@ public:
 
     SegmentTerrain(Context *context = TheContext);
     ~SegmentTerrain();
-    void CreateFromVector(const Vector<Vector<TerrainT::LogicCell>> &level, uint row0, uint col0, uint numRows, uint numCols);
+    void CreateFromVector(const Vector<Vector<Level::LogicCell>> &level, uint row0, uint col0, uint numRows, uint numCols);
     void Build();
     void GetColumnCubes(uint row, uint col, PODVector<CubeTerrain*> &column);
 

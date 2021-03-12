@@ -15,7 +15,7 @@ SegmentTerrain::~SegmentTerrain()
 }
 
 
-void SegmentTerrain::CreateFromVector(const Vector<Vector<TerrainT::LogicCell>> &level, uint row0, uint col0,
+void SegmentTerrain::CreateFromVector(const Vector<Vector<Level::LogicCell>> &level, uint row0, uint col0,
     uint numRows, uint numCols)
 {
     float min = 1e10f;

@@ -6,7 +6,6 @@
 #include "Game/Logic/SunEngine_.h"
 #include "Game/Path/WaveAlgorithm_.h"
 #include "Network/ServerS.h"
-#include "Scene/Level_.h"
 #include "Scene/SceneS.h"
 #include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
