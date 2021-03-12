@@ -53,7 +53,7 @@ void GUI::RegistrationObjects()
     MenuAboutMe::RegisterObject();
     Tab::RegisterObject();
     Label::RegisterObject();
-    lSlider::RegisterObject();
+    SliderT::RegisterObject();
     SliderInt::RegisterObject();
     GovernorCell::RegisterObject();
     GovernorFloat::RegisterObject();

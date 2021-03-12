@@ -3,16 +3,16 @@
 #include "GUI/Controls/Slider_.h"
 
 
-lSlider::lSlider(Context *context) :
+SliderT::SliderT(Context *context) :
     Slider(context)
 {
 
 }
 
 
-void lSlider::RegisterObject()
+void SliderT::RegisterObject()
 {
-    TheContext->RegisterFactory<lSlider>("UI");
+    TheContext->RegisterFactory<SliderT>("UI");
 
     Context *context = TheContext;
 
@@ -20,14 +20,14 @@ void lSlider::RegisterObject()
 }
 
 
-SharedPtr<lSlider> lSlider::Create(Window *window, char *text_)
+SharedPtr<SliderT> SliderT::Create(Window *window, char *text_)
 {
     SharedPtr<Text> text(new Text(TheContext));
     text->SetText(TheLocalization->Get(text_));
     text->SetStyle("MainMenuButton");
     window->AddChild(text);
 
-    SharedPtr<lSlider> slider(TheUIRoot->CreateChild<lSlider>());
+    SharedPtr<SliderT> slider(TheUIRoot->CreateChild<SliderT>());
     slider->SetMinHeight(15);
     window->AddChild(slider);
     slider->SetRange(1.0f);

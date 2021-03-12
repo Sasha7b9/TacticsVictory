@@ -2,13 +2,13 @@
 #pragma once
 
 
-class lSlider : public Slider
+class SliderT : public Slider
 {
-    URHO3D_OBJECT(lSlider, Slider);
+    URHO3D_OBJECT(SliderT, Slider);
 
 public:
-    lSlider(Context *context);
+    SliderT(Context *context);
     static void RegisterObject();
 
-    static SharedPtr<lSlider> Create(Window *window, char *text);
+    static SharedPtr<SliderT> Create(Window *window, char *text);
 };
