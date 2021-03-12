@@ -19,11 +19,11 @@ ButtonSwitch::ButtonSwitch(UIElement *uielement, char *text, int width, int heig
 }
 
 
-void ButtonSwitch::RegisterComponent()
+void ButtonSwitch::RegisterObject()
 {
-    TheContext->RegisterFactory<ButtonSwitch>("UI");
-
     Context *context = TheContext;
+
+    context->RegisterFactory<ButtonSwitch>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(TButton);
 }
