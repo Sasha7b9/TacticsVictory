@@ -73,9 +73,11 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
 }
 
 
-void SliderWithTextAndButtons::RegisterObject(Context* context)
+void SliderWithTextAndButtons::RegisterObject()
 {
-    context->RegisterFactory<SliderWithTextAndButtons>("UI");
+    TheContext->RegisterFactory<SliderWithTextAndButtons>("UI");
+
+    Context *context = TheContext;
 
     URHO3D_COPY_BASE_ATTRIBUTES(UIElement);
 }
