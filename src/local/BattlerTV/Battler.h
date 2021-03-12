@@ -40,4 +40,5 @@ private:
     SharedPtr<ServerC>  server;
     SharedPtr<Mouse>    mouse;
     SharedPtr<Settings> settings;
+    SharedPtr<MenuT>    menu;
 };

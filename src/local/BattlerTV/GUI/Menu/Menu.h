@@ -13,7 +13,7 @@ class MenuT : public Object
     URHO3D_OBJECT(MenuT, Object)
 
 public:
-    MenuT(Context *context = TheContext);
+    MenuT(MenuT **self);
     ~MenuT();
     void Hide();
     bool IsActive();

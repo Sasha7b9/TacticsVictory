@@ -16,13 +16,15 @@
     SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuT, HandleMenuEvent));
 
 
-MenuT::MenuT(Context *context) : Object(context)
+MenuT::MenuT(MenuT **self) : Object(TheContext)
 {   
     CREATE_MENU(menuStart, MenuStart, false);
     CREATE_MENU(menuAbout, MenuAboutMe, false);
     CREATE_MENU(menuOptions, MenuOptions, false);
 
     Open(menuStart);
+
+    *self = this;
 
     /*
     TheMenuMain = new MenuGame();

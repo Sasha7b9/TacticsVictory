@@ -127,7 +127,7 @@ void Battler::Start()
     CreateGUI();
 
     LOGINFO("Загружаю настройки");
-    TheMenu = new MenuT();
+    menu = new MenuT(&TheMenu);
     TheFileSelector = new FileSelector(TheContext);
     TheFileSelector->GetWindow()->SetModal(false);
     TheFileSelector->GetWindow()->SetVisible(false);
@@ -153,9 +153,7 @@ void Battler::Stop()
 
     delete ThePathIndicator;
     delete TheFileSelector;
-    delete TheMenu;
     delete TheGUI;
-    delete TheSet;
     delete TheEditor;
 }
 
