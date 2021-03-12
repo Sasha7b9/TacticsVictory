@@ -23,6 +23,18 @@ URHO3D_DEFINE_APPLICATION_MAIN(Battle)
 #endif
 
 
+/*
+*  Запуск сервера:
+*   ./BattleTV
+*       -exit:       : когда завершать функционирование сервера
+*             auto   - автоматическое завершение после отключения последнего игрока
+*             manual - ручное отключение / kill -9 $(pidof BattleTV) /
+*       -level:file_name.json : имя файла с уровнем
+*       -players:
+*  Первый вариант оцции выбиратеся по умолчаюнию
+*/
+
+
 Battle::Battle(Context* context) :
     Application(context)
 {
