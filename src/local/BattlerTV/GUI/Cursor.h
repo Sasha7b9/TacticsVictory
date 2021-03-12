@@ -28,7 +28,7 @@ public:
     }; };
 
     CursorT(Context *context);
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterObject();
     SharedPtr<Cursor> GetCursor();
     virtual void Update(float dT);
     void SetNormal();

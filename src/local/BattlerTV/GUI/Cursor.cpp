@@ -49,11 +49,11 @@ CursorT::CursorT(Context *context) : Cursor(context)
 
 
 
-void CursorT::RegisterObject(Context *context)
+void CursorT::RegisterObject()
 {
     pchar UI_CATEGORY = "UI";
 
-    context->RegisterFactory<CursorT>(UI_CATEGORY);
+    TheContext->RegisterFactory<CursorT>(UI_CATEGORY);
 }
 
 
