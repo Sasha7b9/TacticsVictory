@@ -9,11 +9,11 @@ class SunEngine : public LogicComponent
 
 public:
     SunEngine(Context *context = TheContext);
+    static void RegisterComponent();
+
     void SetMoveSpeed(float speed);
     void SetCenter(const Vector3 &vec);
     virtual void Update(float time);
-
-    static void RegisterComponent();
 
 private:
     float speed = 0.0f;

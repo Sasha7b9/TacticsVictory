@@ -8,9 +8,7 @@ class DropDownListWithTextAndButton : public UIElement
 
 public:
     DropDownListWithTextAndButton(Context *context = TheContext);
-
     DropDownListWithTextAndButton(char *text, int widthText, int widthDDList);
-
     static void RegisterObject();
 
     void AddItem(char *text);

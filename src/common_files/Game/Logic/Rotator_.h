@@ -8,12 +8,11 @@ class Rotator : public LogicComponent
     
 public:
     Rotator(Context *context = TheContext);
-    
+    static void RegisterComponent();
+
     void SetRotationSpeed(const Vector3& speed);
     virtual void Update(float timeStep);
-
-    static void RegisterComponent();
-    
+   
     const Vector3& GetRotationSpeed() const { return rotationSpeed; }
     
 private:

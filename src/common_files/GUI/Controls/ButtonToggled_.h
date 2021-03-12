@@ -13,6 +13,7 @@ public:
     ButtonToggled(Context *context = TheContext);
     ButtonToggled(UIElement *uielement, char *text, int width = -1, int height = -1);
     static void RegisterObject();
+
     void SetText(char *text);
 
 private:

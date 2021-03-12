@@ -11,6 +11,7 @@ public:
     ButtonSwitch(Context *context = TheContext);
     ButtonSwitch(UIElement *uielement, char *text, int width = -1, int height = -1);
     static void RegisterComponent();
+
     void AddState(char *item);
     void SetState(uint state);
     uint GetState();

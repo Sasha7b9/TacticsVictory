@@ -9,8 +9,7 @@ class MenuConfirmExit : public WindowMenu
 
 public:
     MenuConfirmExit(Context *context = TheContext);
-
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterObject();
 
 private:
     SharedPtr<TButton> buttonOk;

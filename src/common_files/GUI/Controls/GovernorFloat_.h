@@ -23,7 +23,6 @@ public:
     }; };
 
     GovernorCell(Context *context = TheContext);
-
     static void RegisterObject();
 
     void SetSymbol(char symbol);
@@ -60,7 +59,6 @@ class GovernorFloat : public WindowT
 
 public:
     GovernorFloat(Context *context = TheContext);
-
     static void RegisterObject();
 
     virtual void Update(float timeStep);

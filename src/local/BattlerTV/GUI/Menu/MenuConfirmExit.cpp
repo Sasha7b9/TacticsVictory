@@ -26,8 +26,10 @@ MenuConfirmExit::MenuConfirmExit(Context * /*context*/) : WindowMenu()
 }
 
 
-void MenuConfirmExit::RegisterObject(Context *context)
+void MenuConfirmExit::RegisterObject()
 {
+    Context *context = TheContext;
+
     context->RegisterFactory<MenuConfirmExit>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
