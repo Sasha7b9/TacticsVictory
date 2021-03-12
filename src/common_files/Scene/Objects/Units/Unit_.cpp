@@ -71,7 +71,7 @@ bool Unit::TooCloseToAnoterUnit() const
     {
         if (unit != this)
         {
-            if (std::fabsf(distance - unit->physics->pos.distanceFromCenter) > 2.0f)
+            if (std::fabs(distance - unit->physics->pos.distanceFromCenter) > 2.0f)
             {
                 continue;
             }
