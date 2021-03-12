@@ -8,6 +8,6 @@ class SideCube : public Object
     URHO3D_OBJECT(SideCube, Object);
 
 public:
-    SideCube(Context *context = TheContext);
+    SideCube();
     PlaneCube plane;
 };
