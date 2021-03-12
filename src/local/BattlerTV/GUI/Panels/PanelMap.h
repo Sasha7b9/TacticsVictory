@@ -3,7 +3,7 @@
 #include "GUI/Controls/Window_.h"
 
 
-class TImage;
+class ImageT;
 
 
 /*
@@ -21,7 +21,7 @@ public:
 
 private:
     Vector<Vector<float> > map;
-    SharedPtr<TImage> imageMap;
+    SharedPtr<ImageT> imageMap;
     int x0 = 0;
     int y0 = 0;
     float scale = 0.0f;

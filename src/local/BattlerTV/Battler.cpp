@@ -191,7 +191,7 @@ void Battler::RegistrationComponets()
 {
     CameraT::RegisterObject();
     CursorT::RegisterObject();
-    TImage::RegisterObject();
+    ImageT::RegisterObject();
     SunEngine::RegisterComponent();
     Rotator::RegisterComponent();
     WaveAlgorithm::RegisterComponent();

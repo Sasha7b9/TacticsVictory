@@ -2,7 +2,7 @@
 #pragma once
 
 
-class TImage;
+class ImageT;
 class CursorShapes;
 
 
@@ -61,7 +61,7 @@ class CursorShapes : public Object
     URHO3D_OBJECT(CursorShapes, Object);
 public:
     CursorShapes();
-    SharedPtr<TImage> GetShape(CursorT::Type::E type, int numFrame);
+    SharedPtr<ImageT> GetShape(CursorT::Type::E type, int numFrame);
 
 private:
     void CreateNormal(int numFrame);
@@ -75,7 +75,7 @@ private:
     void CreateDownLeft(int numFrame);
     void CreateDownRight(int numFrame);
     void CreateBusy(int numFrame);
-    void FillGradient(TImage *image, CursorT::Type::E type, int numFrame);
+    void FillGradient(ImageT *image, CursorT::Type::E type, int numFrame);
 
 public:
     struct StructShape
@@ -90,7 +90,7 @@ public:
     };
 
 private:
-    HashMap<StructShape, SharedPtr<TImage>> map;
+    HashMap<StructShape, SharedPtr<ImageT>> map;
     int dimensionTriangleSmall = 50;
     int dimensionTriangleBig = 100;
 

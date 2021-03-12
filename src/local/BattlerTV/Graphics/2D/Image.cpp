@@ -4,32 +4,32 @@
 #include "Graphics/2D/Image.h"
 
 
-TImage::TImage(Context *context) :
+ImageT::ImageT(Context *context) :
     Image(context)
 {
 
 }
 
 
-TImage::~TImage()
+ImageT::~ImageT()
 {
 
 }
 
 
-void TImage::SetSize(int width, int height)
+void ImageT::SetSize(int width, int height)
 {
     Image::SetSize(width, height, 4); //-V112
 }
 
 
-void TImage::RegisterObject()
+void ImageT::RegisterObject()
 {
-    TheContext->RegisterFactory<TImage>();
+    TheContext->RegisterFactory<ImageT>();
 }
 
 
-void TImage::SetPoint(int x, int y, const Color& color)
+void ImageT::SetPoint(int x, int y, const Color& color)
 {
     if(x < GetWidth() && y < GetHeight())
     {
@@ -38,7 +38,7 @@ void TImage::SetPoint(int x, int y, const Color& color)
 }
 
 
-void TImage::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
+void ImageT::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
 {
     if((x1 - x0) == 0 && (y1 - y0) == 0)
     {
@@ -93,7 +93,7 @@ void TImage::DrawLine(int x0, int y0, int x1, int y1, const Color &color)
 }
 
 
-void TImage::DrawRectangle(int x, int y, int width, int height, const Color &color)
+void ImageT::DrawRectangle(int x, int y, int width, int height, const Color &color)
 {
     DrawLine(x, y, x + width, y, color);
     DrawLine(x + width, y, x + width, y + height, color);
@@ -102,7 +102,7 @@ void TImage::DrawRectangle(int x, int y, int width, int height, const Color &col
 }
 
 
-void TImage::FillRectangle(int x0, int y0, int width, int height, const Color &color)
+void ImageT::FillRectangle(int x0, int y0, int width, int height, const Color &color)
 {
     for(int x = x0; x < x0 + width; x++)
     {
@@ -111,7 +111,7 @@ void TImage::FillRectangle(int x0, int y0, int width, int height, const Color &c
 }
 
 
-void TImage::FillRegion(int x, int y, const Color &color)
+void ImageT::FillRegion(int x, int y, const Color &color)
 {
     replacedColor = GetPixel(x, y);
 
@@ -121,7 +121,7 @@ void TImage::FillRegion(int x, int y, const Color &color)
 }
 
 
-void TImage::Replace4Points(int x, int y, const Color &color)
+void ImageT::Replace4Points(int x, int y, const Color &color)
 {
     if(y > 0)                       // upper pixel
     {
@@ -158,7 +158,7 @@ void TImage::Replace4Points(int x, int y, const Color &color)
 }
 
 
-void TImage::FillRegion(int x, int y, const Color &color, const Color &colorBound)
+void ImageT::FillRegion(int x, int y, const Color &color, const Color &colorBound)
 {
     boundingColor = colorBound;
 
@@ -170,7 +170,7 @@ void TImage::FillRegion(int x, int y, const Color &color, const Color &colorBoun
 }
 
 
-void TImage::CopyImage(int x0, int y0, const TImage &inImage)
+void ImageT::CopyImage(int x0, int y0, const ImageT &inImage)
 {
     int xMin = x0;
     int xMax = xMin + inImage.GetWidth();
@@ -212,7 +212,7 @@ void TImage::CopyImage(int x0, int y0, const TImage &inImage)
     }
 
 
-void TImage::Replace4PointsBound(int x, int y, const Color &color)
+void ImageT::Replace4PointsBound(int x, int y, const Color &color)
 {
     if(y > 0)
     {
@@ -233,7 +233,7 @@ void TImage::Replace4PointsBound(int x, int y, const Color &color)
 }
 
 
-void TImage::DrawPolyline(const Color &color, int numPoints, const int *xy)
+void ImageT::DrawPolyline(const Color &color, int numPoints, const int *xy)
 {
     int numLines = numPoints - 1;
 
@@ -244,7 +244,7 @@ void TImage::DrawPolyline(const Color &color, int numPoints, const int *xy)
 }
 
 
-void TImage::DrawCircle(float x, float y, float radius, const Color &color, float step)
+void ImageT::DrawCircle(float x, float y, float radius, const Color &color, float step)
 {
     for (float angle = 0.0f; angle < 360.0f; angle += step) //-V1034
     {
@@ -253,13 +253,13 @@ void TImage::DrawCircle(float x, float y, float radius, const Color &color, floa
 }
 
 
-IntVector2 TImage::GetHotSpot() const
+IntVector2 ImageT::GetHotSpot() const
 {
     return hotSpot;
 }
 
 
-void TImage::SetHotSpot(int x, int y)
+void ImageT::SetHotSpot(int x, int y)
 {
     hotSpot.x_ = x;
     hotSpot.y_ = y;
