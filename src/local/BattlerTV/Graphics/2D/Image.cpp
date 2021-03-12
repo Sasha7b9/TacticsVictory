@@ -23,9 +23,9 @@ void TImage::SetSize(int width, int height)
 }
 
 
-void TImage::RegisterObject(Context* context)
+void TImage::RegisterObject()
 {
-    context->RegisterFactory<TImage>();
+    TheContext->RegisterFactory<TImage>();
 }
 
 
