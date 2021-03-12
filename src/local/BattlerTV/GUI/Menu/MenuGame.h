@@ -12,8 +12,8 @@ class MenuGame : public WindowMenu
 
 public:
     MenuGame(Context *context = TheContext);
+    static void RegisterObject();
 
-    static void RegisterObject(Context *context = TheContext);
     void Open();
     void Close();
 

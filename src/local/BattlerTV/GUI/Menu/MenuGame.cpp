@@ -48,8 +48,10 @@ MenuGame::MenuGame(Context *) : WindowMenu()
 }
 
 
-void MenuGame::RegisterObject(Context* context)
+void MenuGame::RegisterObject()
 {
+    Context *context = TheContext;
+
     context->RegisterFactory<MenuGame>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(WindowMenu);
