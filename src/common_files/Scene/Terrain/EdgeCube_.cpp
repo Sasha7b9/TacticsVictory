@@ -3,7 +3,7 @@
 #include "Scene/Terrain/EdgeCube_.h"
 
 
-EdgeCube::EdgeCube(Context *context) : Object(context)
+EdgeCube::EdgeCube() : Object(TheContext)
 {
 
 }

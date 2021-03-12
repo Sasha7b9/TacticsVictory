@@ -8,6 +8,6 @@ class EdgeCube : public Object
     URHO3D_OBJECT(EdgeCube, Object);
 
 public:
-    EdgeCube(Context *context = TheContext);
+    EdgeCube();
     PlaneCube plane;
 };
