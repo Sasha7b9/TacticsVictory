@@ -220,8 +220,8 @@ bool ConsoleParser::Run(const ParserStruct *structs, Vector<String> &words, bool
 
 
 
-ConsoleT::ConsoleT(Context *context) :
-    WindowT(context)
+ConsoleT::ConsoleT() :
+    WindowT(TheContext)
 {
     SetVisible(false);
     SetResizable(true);

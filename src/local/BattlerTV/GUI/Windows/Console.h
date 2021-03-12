@@ -86,7 +86,7 @@ class ConsoleT : public WindowT
     URHO3D_OBJECT(ConsoleT, WindowT);
 
 public:
-    ConsoleT(Context *context = TheContext);
+    ConsoleT();
     void Toggle();
     bool IsActive();                            // Возвращает true, если активна строка ввода
     void Write(const String &message);
