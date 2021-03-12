@@ -9,7 +9,7 @@ class Tab : public WindowT
 
 public:
     Tab(Context *context = TheContext);
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterObject();
     static SharedPtr<Tab> Create(char *title);
 
     SharedPtr<ButtonToggled> buttonTitle;

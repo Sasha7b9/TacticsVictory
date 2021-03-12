@@ -12,8 +12,10 @@ Tab::Tab(Context *) :
 }
 
 
-void Tab::RegisterObject(Context *context)
+void Tab::RegisterObject()
 {
+    Context *context = TheContext;
+
     context->RegisterFactory<Tab>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
