@@ -4,7 +4,7 @@
 #include "Network/Game/Messages/GameMessages_.h"
 
 
-ServerS::ServerS(Context *context) : Object(context)
+ServerS::ServerS(ServerS **self) : Object(TheContext)
 {
     SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(ServerS, HandleMessage));
     SubscribeToEvent(E_SERVERCONNECTED, URHO3D_HANDLER(ServerS, HandleServerConnected));
@@ -12,6 +12,8 @@ ServerS::ServerS(Context *context) : Object(context)
     SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(ServerS, HandleConnectFailed));
     SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(ServerS, HandleClientConnected));
     SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(ServerS, HandleCliendDisconnected));
+
+    *self = this;
 }
 
 

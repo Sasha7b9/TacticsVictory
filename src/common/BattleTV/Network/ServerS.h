@@ -15,7 +15,7 @@ class ServerS : public Object
 
 public:
 
-    ServerS(Context *context = TheContext);
+    ServerS(ServerS **self);
 
     bool Start(uint16 port);
 

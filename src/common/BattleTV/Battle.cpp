@@ -114,7 +114,7 @@ void Battle::Start()
 
     SubscribeToEvents();
 
-    TheServer = new ServerS();
+    server = new ServerS(&TheServer);
 
     TheServer->Start(SERVER_PORT);
 
@@ -126,8 +126,6 @@ void Battle::Stop()
 {
     engine_->DumpResources(true);
     engine_->DumpProfiler();
-
-    delete TheServer;
 }
 
 
