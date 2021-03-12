@@ -49,7 +49,7 @@ void Battle::Setup()
 
     OpenLog();
 
-    TheSet = new Settings();
+    settings = new Settings(&TheSet);
 
     TheSet->Load();
 
@@ -127,7 +127,6 @@ void Battle::Stop()
     engine_->DumpResources(true);
     engine_->DumpProfiler();
 
-    delete TheSet;
     delete TheLog;
     delete TheServer;
 }
