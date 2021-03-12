@@ -41,4 +41,5 @@ private:
     SharedPtr<Mouse>    mouse;
     SharedPtr<Settings> settings;
     SharedPtr<MenuT>    menu;
+    SharedPtr<GUI>      gui;
 };

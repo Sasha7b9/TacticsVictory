@@ -25,10 +25,12 @@
 #include "Utils/Settings.h"
 
 
-GUI::GUI() : Object(TheContext)
+GUI::GUI(GUI **self) : Object(TheContext)
 {
     RegistrationObjects();
     Create();
+
+    *self = this;
 }
 
 

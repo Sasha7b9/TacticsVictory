@@ -140,7 +140,7 @@ void Battler::CreateGUI()
 {
     TheUIRoot = TheUI->GetRoot();
     TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-    TheGUI = new GUI();
+    gui = new GUI(&TheGUI);
 }
 
 
@@ -153,7 +153,6 @@ void Battler::Stop()
 
     delete ThePathIndicator;
     delete TheFileSelector;
-    delete TheGUI;
     delete TheEditor;
 }
 

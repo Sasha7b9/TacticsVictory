@@ -10,7 +10,7 @@ class GUI : public Object
     URHO3D_OBJECT(GUI, Object);
 
 public:
-    GUI();
+    GUI(GUI **self);
     ~GUI();
 
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
