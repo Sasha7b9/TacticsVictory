@@ -3,7 +3,7 @@
 #include "Scene/Terrain/CornerCube_.h"
 
 
-CornerCube::CornerCube(Context *context) : Object(context)
+CornerCube::CornerCube() : Object(TheContext)
 {
 
 }
