@@ -12,7 +12,7 @@ class GuiGame : public Object
 {
     URHO3D_OBJECT(GuiGame, Object);
 public:
-    GuiGame(Context *context = TheContext);
+    GuiGame();
 
     bool CheckOnDeadZoneForCursorBottomScreen(int x);
     bool IsInside(const IntVector2 &position);

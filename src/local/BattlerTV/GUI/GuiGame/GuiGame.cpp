@@ -10,8 +10,8 @@
 #include "Utils/Settings.h"
 
 
-GuiGame::GuiGame(Context *context) :
-    Object(context)
+GuiGame::GuiGame() :
+    Object(TheContext)
 {
     CreatePanels();
 
