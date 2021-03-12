@@ -16,7 +16,7 @@ class WindowT : public Window
 
 public:
     WindowT(Context *context = TheContext);
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterObject();
     bool IsChildOfParent();
     void Toggle();
     void SetEnabled();

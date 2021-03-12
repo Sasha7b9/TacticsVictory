@@ -16,8 +16,10 @@ WindowT::WindowT(Context *context) :
 }
 
 
-void WindowT::RegisterObject(Context *context)
+void WindowT::RegisterObject()
 {
+    Context *context = TheContext;
+
     context->RegisterFactory<WindowT>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(Window);
