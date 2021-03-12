@@ -43,7 +43,7 @@ void Battler::Setup()
 
     GetSubsystems();
 
-    TheSet = new Settings();
+    settings = new Settings(&TheSet);
 
     TheSet->Load();
 

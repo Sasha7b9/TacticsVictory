@@ -3,9 +3,11 @@
 #include "Utils/SettingsTypes.h"
 
 
-class Settings
+class Settings : public Object
 {
+    URHO3D_OBJECT(Settings, Object);
 public:
+    Settings(Settings **self) : Object(TheContext) { *self = this; }
     virtual ~Settings();
     bool Load();
     int GetInt(char *elem, char *name);

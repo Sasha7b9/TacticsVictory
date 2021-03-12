@@ -35,8 +35,9 @@ private:
     void HandlePostRenderUpdate(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
 
-    SharedPtr<LogT>    log;
-    SharedPtr<SceneC>  scene;
-    SharedPtr<ServerC> server;
-    SharedPtr<Mouse>   mouse;
+    SharedPtr<LogT>     log;
+    SharedPtr<SceneC>   scene;
+    SharedPtr<ServerC>  server;
+    SharedPtr<Mouse>    mouse;
+    SharedPtr<Settings> settings;
 };
