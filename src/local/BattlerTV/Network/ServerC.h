@@ -12,7 +12,7 @@ class ServerC : public Object
 
 public:
 
-    ServerC(Context *context = TheContext);
+    ServerC(ServerC **self);
 
     void Connect(const String &address, uint16 port);
 

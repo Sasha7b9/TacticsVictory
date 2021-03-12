@@ -115,7 +115,7 @@ void Battler::Start()
 
     SubscribeToEvents();
 
-    TheServer = new ServerC();
+    server = new ServerC(&TheServer);
 
     TheServer->Connect(SERVER_ADDRESS, SERVER_PORT);
 
@@ -151,7 +151,6 @@ void Battler::Stop()
 
     TilePath::RemoveAll();
 
-    delete TheServer;
     delete TheMouse;
     delete ThePathIndicator;
     delete TheFileSelector;

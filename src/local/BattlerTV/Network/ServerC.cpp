@@ -7,12 +7,14 @@
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 
 
-ServerC::ServerC(Context *context) : Object(context)
+ServerC::ServerC(ServerC **self) : Object(TheContext)
 {
     SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(ServerC, HandleMessage));
     SubscribeToEvent(E_SERVERCONNECTED, URHO3D_HANDLER(ServerC, HandleServerConnected));
     SubscribeToEvent(E_SERVERDISCONNECTED, URHO3D_HANDLER(ServerC, HandleServerDisconnected));
     SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(ServerC, HandleConnectFailed));
+
+    *self = this;
 }
 
 
