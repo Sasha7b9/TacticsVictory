@@ -7,7 +7,7 @@ class lSlider : public Slider
     URHO3D_OBJECT(lSlider, Slider);
 
 public:
-    lSlider(Context *context = TheContext);
+    lSlider(Context *context);
     static void RegisterObject();
 
     static SharedPtr<lSlider> Create(Window *window, char *text);

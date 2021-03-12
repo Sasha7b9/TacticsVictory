@@ -5,7 +5,7 @@
 
 
 Tab::Tab(Context *context) : 
-    WindowT()
+    WindowT(context)
 {
     buttonTitle = new ButtonToggled(context);
     SetMovable(false);

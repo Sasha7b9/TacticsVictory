@@ -21,7 +21,7 @@ void Label::RegisterObject()
 
 SharedPtr<Label> Label::Create(char *text_, bool center, int sizeFont, int width, int height)
 {
-    SharedPtr<Label> text(new Label());
+    SharedPtr<Label> text(new Label(TheContext));
     text->text = text_;
     text->SetFont(TheFont, (float)sizeFont);
     if (center)

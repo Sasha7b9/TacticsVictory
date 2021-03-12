@@ -7,8 +7,8 @@
 #include "Utils/Settings.h"
 
 
-GovernorCell::GovernorCell(Context *) :
-    WindowT()
+GovernorCell::GovernorCell(Context *context) :
+    WindowT(context)
 {
     SetMovable(false);
     SetStyleAuto();
@@ -201,7 +201,7 @@ void GovernorCell::RegisterObject()
 
 
 GovernorFloat::GovernorFloat(Context *context) :
-    WindowT()
+    WindowT(context)
 {
     SetMovable(false);
     SetStyle("WindowNoBorder");

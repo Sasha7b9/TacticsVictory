@@ -232,7 +232,7 @@ bool GuiEditor::IsInside(const IntVector2 &position)
 void GuiEditor::CreateWindows()
 {
     // window new map
-    windowNewMap = new WindowT();
+    windowNewMap = new WindowT(TheContext);
     SET_VERTICAL_LAYOUT_0_6(windowNewMap);
 
     windowNewMap->AddLabel("CreateNewMap");
@@ -249,7 +249,7 @@ void GuiEditor::CreateWindows()
     windowNewMap->SetVisible(false);
 
     // window menu
-    windowMenu = new WindowT();
+    windowMenu = new WindowT(TheContext);
     SET_VERTICAL_LAYOUT_0_0(windowMenu);
 
     SharedPtr<TButton> buttonOptions = windowMenu->AddButton("Options");
@@ -263,7 +263,7 @@ void GuiEditor::CreateWindows()
     windowMenu->SetVisible(false);
 
     // window confirm exit
-    windowConfirmExit = new WindowT();
+    windowConfirmExit = new WindowT(TheContext);
     SET_VERTICAL_LAYOUT_0_6(windowConfirmExit);
 
     SharedPtr<Label> label(Label::Create("Exit in main menu?"));

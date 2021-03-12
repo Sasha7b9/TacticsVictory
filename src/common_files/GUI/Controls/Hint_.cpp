@@ -3,7 +3,7 @@
 #include "GUI/Controls/Hint_.h"
 
 
-Hint::Hint(char *text_) : WindowT(), text(text_)
+Hint::Hint(char *text_) : WindowT(TheContext), text(text_)
 {
     label = Label::Create(text, true, 20);
     AddChild(label);

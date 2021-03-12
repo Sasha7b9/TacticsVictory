@@ -13,7 +13,7 @@ class SliderInt : public Slider
 {
     URHO3D_OBJECT(SliderInt, Slider);
 public:
-    SliderInt(Context *context = TheContext);
+    SliderInt(Context *context);
     static void RegisterObject();
 
     static SharedPtr<SliderInt> Create(UIElement *uielement, const IntVector2 &size);
