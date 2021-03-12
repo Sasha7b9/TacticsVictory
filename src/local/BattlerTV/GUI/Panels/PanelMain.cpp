@@ -22,8 +22,10 @@ PanelMain::PanelMain(Context *context) :
 }
 
 
-void PanelMain::RegisterObject(Context *context)
+void PanelMain::RegisterObject()
 {
+    Context *context = TheContext;
+
     context->RegisterFactory<PanelMain>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(WindowT);

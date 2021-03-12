@@ -15,8 +15,7 @@ class PanelMain : public WindowT
 
 public:
     PanelMain(Context *context = TheContext);
-
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterObject();
 
     virtual void Update(float dT);
     void AddTab(SharedPtr<Tab> tab);
