@@ -19,7 +19,6 @@ public:
     bool Save(const String &fileName);
     Vector<Vector<float>> Create(int sizeZ, int sizeX);     // Create a new simpe level height == 0.0f; 
     Vector<Vector<float>> CreateRandom(uint numRows, uint numCols);
-    Vector<Vector<float>> Get();                            // Return the last loaded or created level
     void Clear();
     void SetMap(const Vector<Vector<float>> &map);
 

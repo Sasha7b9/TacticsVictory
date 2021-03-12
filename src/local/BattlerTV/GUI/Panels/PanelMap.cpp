@@ -48,7 +48,7 @@ void PanelMap::Update(float dT)
     
     if(redrawMap)
     {
-        map = TheScene->level->Get();
+        map = TheScene->level->map;
 
         redrawMap = false;
 

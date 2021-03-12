@@ -55,12 +55,6 @@ static int PushToVector(const char *data, Vector<float> *vec)
 }
 
 
-Vector<Vector<float>> Level::Get()
-{
-    return map;
-}
-
-
 void Level::Load(const char *fileName)
 {
     map.Clear();
