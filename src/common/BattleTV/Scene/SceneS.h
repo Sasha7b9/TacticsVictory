@@ -7,7 +7,7 @@ class SceneS : public SceneT
 {
 public:
 
-    SceneS();
+    SceneS(SceneS **self);
     virtual ~SceneS();
 
     virtual void Create() override;

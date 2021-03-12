@@ -99,8 +99,7 @@ void Battle::Start()
 
     RegistrationComponets();
 
-    scene = new SceneS();
-    TheScene = scene;
+    scene = new SceneS(&TheScene);
     TheScene->Create();
 
     float rangeX = (float)TheTerrain->HeightX();
