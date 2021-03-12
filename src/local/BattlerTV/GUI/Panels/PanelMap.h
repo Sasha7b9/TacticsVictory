@@ -15,8 +15,7 @@ class PanelMap : public WindowT
 
 public:
     PanelMap(Context *context = TheContext);
-
-    static void RegisterObject(Context *context = TheContext);
+    static void RegisterObject();
 
     virtual void Update(float timeStep);
 

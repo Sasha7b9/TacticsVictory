@@ -28,8 +28,10 @@ PanelMap::PanelMap(Context *context) :
 }
 
 
-void PanelMap::RegisterObject(Context *context)
+void PanelMap::RegisterObject()
 {
+    Context *context = TheContext;
+
     context->RegisterFactory<PanelMap>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
