@@ -4,7 +4,7 @@
 #include "Scene/Terrain/SegmentTerrain_.h"
 
 
-SegmentTerrain::SegmentTerrain(Context *context) : Object(context)
+SegmentTerrain::SegmentTerrain() : Object(TheContext)
 {
     neighbours[LEFT] = neighbours[TOP] = neighbours[RIGHT] = neighbours[BOTTOM] = nullptr;
 }

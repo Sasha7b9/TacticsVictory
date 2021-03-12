@@ -23,7 +23,7 @@ public:
         BOTTOM
     };
 
-    SegmentTerrain(Context *context = TheContext);
+    SegmentTerrain();
     ~SegmentTerrain();
     void CreateFromVector(const Vector<Vector<Level::LogicCell>> &level, uint row0, uint col0, uint numRows, uint numCols);
     void Build();
