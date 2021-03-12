@@ -12,7 +12,7 @@ class ContextMenuUnit : public WindowT
     URHO3D_OBJECT(ContextMenuUnit, WindowT);
 
 public:
-    ContextMenuUnit(Context *context = TheContext);
+    ContextMenuUnit();
     void Create(ObjectT *object);
 
 private:

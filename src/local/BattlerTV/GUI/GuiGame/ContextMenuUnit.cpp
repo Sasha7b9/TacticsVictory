@@ -5,8 +5,8 @@
 #include "GUI/GuiGame/WindowTarget.h"
 
 
-ContextMenuUnit::ContextMenuUnit(Context *context) :
-    WindowT(context)
+ContextMenuUnit::ContextMenuUnit() :
+    WindowT(TheContext)
 {
     SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowBorder");
