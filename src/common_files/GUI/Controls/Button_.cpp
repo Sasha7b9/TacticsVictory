@@ -65,9 +65,11 @@ void TButton::HandleHoverEnd(StringHash, VariantMap &)
 }
 
 
-void TButton::RegisterObject(Context *context)
+void TButton::RegisterObject()
 {
-    context->RegisterFactory<TButton>("UI");
+    TheContext->RegisterFactory<TButton>("UI");
+
+    Context *context = TheContext;
 
     URHO3D_COPY_BASE_ATTRIBUTES(Button);
 }
