@@ -3,7 +3,7 @@
 #include "Game/Logic/Rotator_.h"
 
 
-Rotator::Rotator(Context* context) :
+Rotator::Rotator(Context *context) :
     LogicComponent(context),
     rotationSpeed(Vector3::ZERO)
 {
@@ -26,7 +26,7 @@ void Rotator::Update(float timeStep)
 }
 
 
-void Rotator::RegisterComponent(Context *context)
+void Rotator::RegisterComponent()
 {
-    context->RegisterFactory<Rotator>();
+    TheContext->RegisterFactory<Rotator>();
 }
