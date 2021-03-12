@@ -127,7 +127,6 @@ void Battle::Stop()
     engine_->DumpResources(true);
     engine_->DumpProfiler();
 
-    delete TheLog;
     delete TheServer;
 }
 
@@ -180,7 +179,7 @@ void Battle::SubscribeToEvents()
 
 void Battle::OpenLog()
 {
-    TheLog = new LogT();
+    log = new LogT(&TheLog);
     TheLog->Open(GetTypeName() + ".log");
     TheLog->SetLevel(LOG_DEBUG);
 }

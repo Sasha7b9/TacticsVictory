@@ -160,7 +160,6 @@ void Battler::Stop()
     delete TheGUI;
     delete TheSet;
     delete TheEditor;
-    delete TheLog;
 }
 
 
@@ -253,7 +252,7 @@ void Battler::CreateEditorSession()
 
 void Battler::OpenLog()
 {
-    TheLog = new LogT();
+    log = new LogT(&TheLog);
     TheLog->Open(GetTypeName() + ".log");
     TheLog->SetLevel(LOG_DEBUG);
 }

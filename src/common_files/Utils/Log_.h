@@ -7,7 +7,7 @@ class LogT : public Log
     URHO3D_OBJECT(LogT, Log);
 
 public:
-    LogT(Context *context = TheContext);
+    LogT(LogT **self);
     virtual ~LogT();
     virtual void Write(int level, const String &message, pchar file, pchar func, int numLine);
     void EnableExtendedInfo();

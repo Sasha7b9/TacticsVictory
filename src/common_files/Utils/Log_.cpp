@@ -12,9 +12,11 @@ HANDLE ConsoleLog::handle = nullptr;
 #endif
 
 
-LogT::LogT(Context *context) : Log(context)
+LogT::LogT(LogT **self) : Log(TheContext)
 {
     ConsoleLog::Create();
+
+    *self = this;
 }
 
 
