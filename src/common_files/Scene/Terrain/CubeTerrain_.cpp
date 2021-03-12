@@ -7,7 +7,7 @@
 TerrainT* CubeTerrain::terrain = nullptr;
 
 
-CubeTerrain::CubeTerrain(Context *context) : Object(context)
+CubeTerrain::CubeTerrain() : Object(TheContext)
 {
 }
 

@@ -37,7 +37,7 @@ public:
     }; };
 
 public:
-    CubeTerrain(Context *context = TheContext);
+    CubeTerrain();
     CubeTerrain(uint row, uint col, float height);  // Create cube with one
     void Create();
     void BuildVertexes(PODVector<float> &vertexes, PODVector<uint> &indexes);
