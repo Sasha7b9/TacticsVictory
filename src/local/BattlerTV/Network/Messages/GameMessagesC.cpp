@@ -38,6 +38,11 @@ void Message::Message::Send(bool reliable)
 
 void Message::ReturnLevel::Handle(MemoryBuffer &msg)
 {
+    if (!TheTerrain)
+    {
+        TheTerrain = new TerrainT();
+    }
+
     TheTerrain->level->Load(msg);
 
     TheScene->Create();

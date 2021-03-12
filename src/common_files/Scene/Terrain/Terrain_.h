@@ -49,7 +49,7 @@ class TerrainT : public Object
 
 public:
 
-    TerrainT(Context *context = TheContext);
+    TerrainT();
 
     ~TerrainT();
 
