@@ -23,7 +23,7 @@ MenuStart::MenuStart() : WindowMenu()
     buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
 
     buttonPlay = new ButtonT(this, "Play");
-    buttonPlay->SetVar(VAR_MENU_EVENT, Variant(ME_START_CLIENT));
+    buttonPlay->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_PLAY));
 
     buttonEditor = new ButtonT(this, "Editor");
 

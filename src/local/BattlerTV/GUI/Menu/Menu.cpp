@@ -72,7 +72,7 @@ void MenuT::HandleMenuEvent(StringHash, VariantMap& eventData)
     case ME_OPEN_OPTIONS:       Open(menuOptions, source);
         break;
 
-    case ME_OPEN_PLAY:
+    case ME_OPEN_PLAY:          Open(menuPlay, source);
         break;
 
     case ME_OPEN_ABOUT_ME:      Open(menuAbout, source);
