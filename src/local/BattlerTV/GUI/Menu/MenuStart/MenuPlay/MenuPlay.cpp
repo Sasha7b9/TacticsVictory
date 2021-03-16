@@ -14,5 +14,23 @@ MenuPlay::MenuPlay() : WindowMenu()
 
 
     SharedPtr<UIElement> layout(CreateChild<UIElement>());
+    layout->SetAlignment(HA_CENTER, VA_TOP);
 
+    buttonBack = new ButtonT(0, "Back", 100);
+    SubscribeToEvent(buttonBack, E_RELEASED, URHO3D_HANDLER(MenuPlay, HandleButtonRelease));
+    layout->AddChild(buttonBack);
+    AddChild(layout);
+}
+
+
+void MenuPlay::HandleButtonRelease(StringHash, VariantMap &eventData)
+{
+    using namespace Released;
+
+    Button *button = (Button *)(eventData[P_ELEMENT].GetPtr());
+
+    if (button == buttonBack)
+    {
+        SendEventClose();
+    }
 }

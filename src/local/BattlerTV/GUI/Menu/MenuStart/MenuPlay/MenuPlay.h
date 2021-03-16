@@ -9,4 +9,12 @@ class MenuPlay : public WindowMenu
 
 public:
     MenuPlay();
+
+private:
+
+    SharedPtr<ButtonT> findServer;      // "Найти сервер"
+    SharedPtr<ButtonT> createServer;    // "Создать сервер"
+    SharedPtr<ButtonT> buttonBack;      // Вернуться в предыдущее меню
+
+    void HandleButtonRelease(StringHash, VariantMap &);
 };
