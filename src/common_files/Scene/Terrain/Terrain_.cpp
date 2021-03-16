@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Scene/Objects/Object_.h"
+#include "Scene/Objects/PhysicsParameters_.h"
 #include "Scene/Objects/Units/Unit_.h"
 #include "Scene/Terrain/SegmentTerrain_.h"
 #include "Utils/GlobalFunctions.h"

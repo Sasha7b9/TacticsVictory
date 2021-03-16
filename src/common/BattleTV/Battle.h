@@ -2,9 +2,6 @@
 #pragma once
 
 
-class SceneT;
-
-
 class Battle : public Application
 {
     URHO3D_OBJECT(Battle, Application);

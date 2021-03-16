@@ -1,6 +1,7 @@
 // 2021/02/27 10:04:52 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Scene/Objects/Object_.h"
+#include "Scene/Objects/PhysicsParameters_.h"
 #include "Scene/Objects/Units/Unit_.h"
 #include "Scene/Objects/Units/Accessories/Engine/Engine_.h"
 #include "Scene/Objects/Units/Accessories/Engine/Logic_.h"
