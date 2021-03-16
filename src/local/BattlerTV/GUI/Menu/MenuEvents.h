@@ -4,8 +4,8 @@
 
 enum
 {
-    ME_OpenOptions,      // Нужно открыть меню "Опции" . P_SOURCE - меню, которое его открывает
-    ME_OpenAboutMe,
+    ME_OPEN_OPTIONS,      // Нужно открыть меню "Опции" . P_SOURCE - меню, которое его открывает
+    ME_OPEN_ABOUT_ME,
     ME_StartServer,
     ME_StartClient,
     ME_OpenEditor,

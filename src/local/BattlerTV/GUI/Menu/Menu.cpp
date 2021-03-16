@@ -19,15 +19,16 @@
 
 MenuT::MenuT(MenuT **self) : Object(TheContext)
 {
-    menuStart = new MenuStart();
-    allMenus.Push(menuStart);
-    GF::SetWindowInCenterScreen(menuStart);
-    menuStart->SetMovable(false);
-    SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuT, HandleMenuEvent));
+//    menuStart = new MenuStart();
+//    allMenus.Push(menuStart);
+//    GF::SetWindowInCenterScreen(menuStart);
+//    menuStart->SetMovable(false);
+//    SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuT, HandleMenuEvent));
 
-//    CREATE_MENU(menuStart, MenuStart, false);
+    CREATE_MENU(menuStart, MenuStart, false);
     CREATE_MENU(menuAbout, MenuAboutMe, false);
     CREATE_MENU(menuOptions, MenuOptions, false);
+    CREATE_MENU(menuPlay, MenuPlay, false);
 
     Open(menuStart);
 
@@ -67,11 +68,11 @@ void MenuT::HandleMenuEvent(StringHash, VariantMap& eventData)
     {
         TheEngine->Exit();
     }
-    else if (action == ME_OpenOptions)
+    else if (action == ME_OPEN_OPTIONS)
     {
         Open(menuOptions, source);
     }
-    else if(action == ME_OpenAboutMe)
+    else if(action == ME_OPEN_ABOUT_ME)
     {
         Open(menuAbout, source);
     }

@@ -8,5 +8,5 @@ class MenuPlay : public WindowMenu
     URHO3D_OBJECT(MenuPlay, WindowMenu);
 
 public:
-    MenuPlay(Context *);
+    MenuPlay();
 };

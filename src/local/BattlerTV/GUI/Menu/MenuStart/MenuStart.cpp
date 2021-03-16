@@ -28,12 +28,12 @@ MenuStart::MenuStart() : WindowMenu()
     buttonEditor = new ButtonT(this, "Editor");
 
     buttonOptions = new ButtonT(this, "Options");
-    buttonOptions->SetVar(VAR_MENU_EVENT, Variant(ME_OpenOptions));
+    buttonOptions->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_OPTIONS));
 
     buttonAboutGame = new ButtonT(this, "About game");
 
     buttonAboutMe = new ButtonT(this, "About me");
-    buttonAboutMe->SetVar(VAR_MENU_EVENT, Variant(ME_OpenAboutMe));
+    buttonAboutMe->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_ABOUT_ME));
 
     buttonExit = new ButtonT(this, "Exit");
 
