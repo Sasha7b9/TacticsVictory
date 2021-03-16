@@ -9,7 +9,7 @@
 #include "Utils/SettingsTypes.h"
 
 
-MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
+MenuOptions::MenuOptions() : WindowMenu(TheContext)
 {
     SET_VERTICAL_LAYOUT_0_6(this);
     SetName("Options menu");
@@ -79,16 +79,6 @@ MenuOptions::MenuOptions(Context *context) : WindowMenu(context)
     int x = GetWidth() - label->GetWidth() / 2;
     int y = label->GetPosition().y_;
     label->SetPosition(x, y);
-}
-
-
-void MenuOptions::RegisterObject()
-{
-    Context *context = TheContext;
-
-    context->RegisterFactory<MenuOptions>("UI");
-
-    URHO3D_COPY_BASE_ATTRIBUTES(WindowMenu);
 }
 
 

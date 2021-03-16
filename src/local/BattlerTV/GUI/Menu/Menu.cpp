@@ -9,7 +9,7 @@
 
 
 #define CREATE_MENU(name, type, moving)                                 \
-    name = new type(TheContext);                                        \
+    name = new type();                                                  \
     allMenus.Push(name);                                                \
     GF::SetWindowInCenterScreen(name);                                  \
     name->SetMovable(moving);                                           \
