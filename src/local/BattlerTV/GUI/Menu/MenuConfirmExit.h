@@ -8,8 +8,7 @@ class MenuConfirmExit : public WindowMenu
     URHO3D_OBJECT(MenuConfirmExit, WindowMenu);
 
 public:
-    MenuConfirmExit(Context *);
-    static void RegisterObject();
+    MenuConfirmExit();
 
 private:
     SharedPtr<ButtonT> buttonOk;

@@ -7,7 +7,7 @@
 #include "Utils/SettingsTypes.h"
 
 
-MenuConfirmExit::MenuConfirmExit(Context *context) : WindowMenu(context)
+MenuConfirmExit::MenuConfirmExit() : WindowMenu(TheContext)
 {
     SET_VERTICAL_LAYOUT_0_6(this);
     SharedPtr<Label> label(Label::Create("Exit in OS?"));
@@ -23,16 +23,6 @@ MenuConfirmExit::MenuConfirmExit(Context *context) : WindowMenu(context)
     SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(MenuConfirmExit, HandleButtonRelease));
 
     AddChild(layer);
-}
-
-
-void MenuConfirmExit::RegisterObject()
-{
-    Context *context = TheContext;
-
-    context->RegisterFactory<MenuConfirmExit>("UI");
-
-    URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
 }
 
 
