@@ -13,9 +13,11 @@
 MenuStart::MenuStart() : WindowMenu()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
+
     SetName("Start menu");
 
     SharedPtr<Label> text(Label::Create("Tactics Victory", true, 20, 120, -1));
+    text->SetTextAlignment(HA_CENTER);
     AddChild(text);
 
     buttonLanguage = new ButtonSwitch(this, "Language : EN");

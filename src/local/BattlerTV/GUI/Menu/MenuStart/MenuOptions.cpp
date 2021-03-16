@@ -15,6 +15,7 @@ MenuOptions::MenuOptions() : WindowMenu()
     SetName("Options menu");
 
     SharedPtr<Label> label(Label::Create("Options", true, 20));
+    label->SetTextAlignment(HA_CENTER);
     AddChild(label);
 
 #define CREATE_SWTAB(name, text, min, max, step, startIndex)                                  \
@@ -76,9 +77,9 @@ MenuOptions::MenuOptions() : WindowMenu()
 
     buttons.Push(buttonClose);
     
-    int x = GetWidth() - label->GetWidth() / 2;
-    int y = label->GetPosition().y_;
-    label->SetPosition(x, y);
+//    int x = GetWidth() - label->GetWidth() / 2;
+//    int y = label->GetPosition().y_;
+//    label->SetPosition(x, y);
 }
 
 

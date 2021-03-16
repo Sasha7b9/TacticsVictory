@@ -9,17 +9,12 @@ MenuPlay::MenuPlay() : WindowMenu()
     SET_VERTICAL_LAYOUT_0_6(this);
     SetName("Play menu");
 
-    SharedPtr<Label> label(Label::Create("Play", true, 20));
-    AddChild(label);
+    SharedPtr<Label> text(Label::Create("Play", true, 20, 120, -1));
+    text->SetTextAlignment(HA_CENTER);
+    AddChild(text);
 
-
-    SharedPtr<UIElement> layout(CreateChild<UIElement>());
-    layout->SetAlignment(HA_CENTER, VA_TOP);
-
-    buttonBack = new ButtonT(0, "Back", 100);
+    buttonBack = new ButtonT(this, "Back");
     SubscribeToEvent(buttonBack, E_RELEASED, URHO3D_HANDLER(MenuPlay, HandleButtonRelease));
-    layout->AddChild(buttonBack);
-    AddChild(layout);
 }
 
 
