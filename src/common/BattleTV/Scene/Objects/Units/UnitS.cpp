@@ -3,6 +3,7 @@
 #include "Scene/Objects/ObjectS.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Scene/Objects/Units/UnitS.h"
+#include "Scene/Objects/Units/Accessories/Engine/Engine_.h"
 
 
 void UnitSpecificS::Update(float timeStep)
