@@ -5,6 +5,7 @@
 #include "GUI/Menu/MenuStart/MenuAboutMe.h"
 #include "GUI/Menu/MenuStart/MenuOptions.h"
 #include "GUI/Menu/MenuStart/MenuStart.h"
+#include "GUI/Menu/MenuStart/MenuPlay/MenuPlay.h"
 #include "Utils/GlobalFunctions.h"
 
 

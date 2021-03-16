@@ -1,10 +1,10 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "GUI/Menu/MenuStart/MenuPlay/MenuPlay.h"
 
 
 class MenuAboutMe;
 class MenuOptions;
+class MenuPlay;
 class MenuStart;
 class WindowMenu;
 
