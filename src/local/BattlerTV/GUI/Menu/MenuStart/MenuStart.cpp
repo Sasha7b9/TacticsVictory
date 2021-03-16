@@ -10,7 +10,7 @@
 #define VAR_MENU_EVENT "VAR_MENU_EVENT"
 
 
-MenuStart::MenuStart(Context *context) : WindowMenu(context)
+MenuStart::MenuStart() : WindowMenu(TheContext)
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Start menu");

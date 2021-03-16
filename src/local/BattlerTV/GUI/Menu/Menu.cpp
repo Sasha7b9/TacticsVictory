@@ -18,7 +18,7 @@
 
 MenuT::MenuT(MenuT **self) : Object(TheContext)
 {
-    menuStart = new MenuStart(TheContext);
+    menuStart = new MenuStart();
     allMenus.Push(menuStart);
     GF::SetWindowInCenterScreen(menuStart);
     menuStart->SetMovable(false);
