@@ -76,10 +76,6 @@ MenuOptions::MenuOptions() : WindowMenu()
     buttonClose->SetPosition(GetWidth() / 2 - buttonClose->GetWidth() / 2, buttonClose->GetPosition().y_);
 
     buttons.Push(buttonClose);
-    
-//    int x = GetWidth() - label->GetWidth() / 2;
-//    int y = label->GetPosition().y_;
-//    label->SetPosition(x, y);
 }
 
 
