@@ -8,6 +8,7 @@
 #include "GUI/Menu/Menu.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
+#include "Scene/Terrain/Level_.h"
 
 
 Editor::Editor(Editor **self) : Object(TheContext)

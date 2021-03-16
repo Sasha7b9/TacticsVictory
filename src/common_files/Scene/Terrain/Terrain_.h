@@ -3,9 +3,10 @@
 #include "Scene/Objects/Object_.h"
 #include "Scene/Primitives/Plane_.h"
 #include "Scene/Terrain/CubeTerrain_.h"
-#include "Scene/Terrain/Level_.h"
+//#include "Scene/Terrain/Level_.h"
 
 
+class Level;
 class SegmentTerrain;
 
 

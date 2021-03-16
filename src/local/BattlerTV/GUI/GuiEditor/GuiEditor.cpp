@@ -13,6 +13,7 @@
 #include "GUI/Windows/Console.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
+#include "Scene/Terrain/Level_.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/Settings.h"
 #include "Utils/SettingsTypes.h"

@@ -5,6 +5,7 @@
 #include "GUI/Panels/PanelMap.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
+#include "Scene/Terrain/Level_.h"
 #include "Utils/Settings.h"
 
 
