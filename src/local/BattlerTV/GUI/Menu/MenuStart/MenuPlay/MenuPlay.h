@@ -12,8 +12,8 @@ public:
 
 private:
 
-    SharedPtr<ButtonT> findServer;      // "Найти сервер"
-    SharedPtr<ButtonT> createServer;    // "Создать сервер"
+    SharedPtr<ButtonT> buttonFindServer;      // "Найти сервер"
+    SharedPtr<ButtonT> buttonCreateServer;    // "Создать сервер"
     SharedPtr<ButtonT> buttonBack;      // Вернуться в предыдущее меню
 
     void HandleButtonRelease(StringHash, VariantMap &);

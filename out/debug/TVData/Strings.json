@@ -1,4 +1,7 @@
 {
+    "Back":                 { "en":"Back",              "ru":"Назад" },
+    "Create server":        { "en":"Create server",     "ru":"Создать сервер" },
+    "Find server":          { "en":"Find server",       "ru":"Найти сервер" },
     "Play":                 { "en":"Play",              "ru":"Играть" },
 
     "Buildings":            { "en":"Buildings",         "ru":"Здания" },
