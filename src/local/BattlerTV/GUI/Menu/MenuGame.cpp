@@ -9,7 +9,7 @@
 #include "Utils/SettingsTypes.h"
 
 
-MenuGame::MenuGame(Context *context) : WindowMenu(context)
+MenuGame::MenuGame(Context *) : WindowMenu()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");

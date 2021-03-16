@@ -8,7 +8,7 @@ class WindowMenu : public WindowT
     URHO3D_OBJECT(WindowMenu, WindowT)
 
 public:
-    WindowMenu(Context *);
+    WindowMenu();
     void Open(WindowMenu *prev = nullptr);                  // prev - меню, которое запрашивает открытие
     void Close();
     void ProcessingKey(int key);

@@ -9,7 +9,7 @@
 #include "Utils/SettingsTypes.h"
 
 
-MenuOptions::MenuOptions() : WindowMenu(TheContext)
+MenuOptions::MenuOptions() : WindowMenu()
 {
     SET_VERTICAL_LAYOUT_0_6(this);
     SetName("Options menu");
