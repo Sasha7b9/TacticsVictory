@@ -16,7 +16,7 @@ void WindowMenu::SendEventClose()
     using namespace MenuEvent;
 
     VariantMap eventData = GetEventDataMap();
-    eventData[P_TYPE] = ME_Close;
+    eventData[P_TYPE] = ME_CLOSE;
     eventData[P_SOURCE] = this;
     eventData[P_DESTINATION] = prevMenu;
     SendEvent(E_MENU, eventData);

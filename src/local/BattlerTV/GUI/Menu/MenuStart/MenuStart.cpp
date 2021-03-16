@@ -23,7 +23,7 @@ MenuStart::MenuStart() : WindowMenu()
     buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
 
     buttonPlay = new ButtonT(this, "Play");
-    buttonPlay->SetVar(VAR_MENU_EVENT, Variant(ME_StartClient));
+    buttonPlay->SetVar(VAR_MENU_EVENT, Variant(ME_START_CLIENT));
 
     buttonEditor = new ButtonT(this, "Editor");
 
@@ -78,7 +78,7 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
         eventData = GetEventDataMap();
         eventData[P_SOURCE] = this;
         eventData[P_TYPE] = value.GetUInt();
-        if(value == ME_StartServer)
+        if(value == ME_START_SERVER)
         {
             eventData[P_PORT] = SERVER_PORT;
         }
