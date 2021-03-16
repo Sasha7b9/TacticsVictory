@@ -137,9 +137,9 @@ bool TerrainT::IsEmpty() const
 }
 
 
-TPlane TerrainT::GetIntersectionPlane(Ray& /*ray*/)
+PlaneT TerrainT::GetIntersectionPlane(Ray& /*ray*/)
 {
-    return TPlane::ZERO;
+    return PlaneT::ZERO;
 }
 
 
@@ -149,9 +149,9 @@ Line TerrainT::GetIntersectionEdge(Ray &/*ray*/)
 }
 
 
-TPlane TerrainT::GetPlane(uint /*row*/, uint /*col*/)
+PlaneT TerrainT::GetPlane(uint /*row*/, uint /*col*/)
 {
-    return TPlane::ZERO;
+    return PlaneT::ZERO;
 }
 
 

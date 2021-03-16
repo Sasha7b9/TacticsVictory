@@ -12,8 +12,8 @@ public:
     void ClearScene();
 
 private:
-    TPlane currentPlane;
-    TPlane selectedPlane;
+    PlaneT currentPlane;
+    PlaneT selectedPlane;
     Line currentEdge;
     Line selectedEdge;
     SharedPtr<Node> lightNode;

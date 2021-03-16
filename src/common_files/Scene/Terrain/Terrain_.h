@@ -2,7 +2,6 @@
 #pragma once
 #include "Scene/Objects/Object_.h"
 #include "Scene/Primitives/Plane_.h"
-//#include "Scene/Terrain/CubeTerrain_.h"
 
 
 class CubeTerrain;
@@ -70,11 +69,11 @@ public:
     // остальных
     void PutIn(ObjectT *object, uint rowX, uint colZ);
 
-    TPlane GetIntersectionPlane(Ray &ray);
+    PlaneT GetIntersectionPlane(Ray &ray);
 
     Line GetIntersectionEdge(Ray &ray);
 
-    TPlane GetPlane(uint row, uint col);
+    PlaneT GetPlane(uint row, uint col);
 
     Vector<Vector<float>> GetHeightMap();
 

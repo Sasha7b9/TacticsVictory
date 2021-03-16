@@ -3,28 +3,28 @@
 #include "Core/Math_.h"
 
 
-TPlane TPlane::ZERO = TPlane(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);
+PlaneT PlaneT::ZERO = PlaneT(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);
 
 
-TPlane::TPlane(const Vector3 &v0_, const Vector3 &v1_, const Vector3 &v2_, const Vector3 &v3_) :
+PlaneT::PlaneT(const Vector3 &v0_, const Vector3 &v1_, const Vector3 &v2_, const Vector3 &v3_) :
     v0(v0_), v1(v1_), v2(v2_), v3(v3_)
 {
 }
 
 
-bool TPlane::IsEquals(const TPlane &plane)
+bool PlaneT::IsEquals(const PlaneT &plane)
 {
     return v0 == plane.v0 && v1 == plane.v1 && v2 == plane.v2 && v3 == plane.v3;
 }
 
 
-bool TPlane::IsZero()
+bool PlaneT::IsZero()
 {
     return v0 == Vector3::ZERO && v1 == Vector3::ZERO && v2 == Vector3::ZERO && v3 == Vector3::ZERO;
 }
 
 
-void TPlane::CalculateRowCol()
+void PlaneT::CalculateRowCol()
 {
     float xMin = Math::Min(v0.x_, v1.x_, v2.x_, v3.x_);
     float xMax = Math::Max(v0.x_, v1.x_, v2.x_, v3.x_);
@@ -36,13 +36,13 @@ void TPlane::CalculateRowCol()
 }
 
 
-void TPlane::SetY(float y)
+void PlaneT::SetY(float y)
 {
     v0.y_ = v1.y_ = v2.y_ = v3.y_ = y;
 }
 
 
-Line TPlane::NearEdge(const Ray &ray)
+Line PlaneT::NearEdge(const Ray &ray)
 {
     Line lines[] =
     {

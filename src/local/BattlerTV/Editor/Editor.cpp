@@ -13,8 +13,8 @@
 
 Editor::Editor(Editor **self) : Object(TheContext)
 {
-    currentPlane = TPlane::ZERO;
-    selectedPlane = TPlane::ZERO;
+    currentPlane = PlaneT::ZERO;
+    selectedPlane = PlaneT::ZERO;
 
     *self = this;
 }
@@ -208,14 +208,14 @@ void Editor::HandleMouseDown(StringHash, VariantMap&)
             !TheInput->GetMouseButtonDown(MOUSEB_MIDDLE) &&
             !TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
         {
-            if (!selectedPlane.IsEquals(TPlane::ZERO) && selectedPlane.IsEquals(currentPlane))
+            if (!selectedPlane.IsEquals(PlaneT::ZERO) && selectedPlane.IsEquals(currentPlane))
             {
-                selectedPlane = TPlane::ZERO;
+                selectedPlane = PlaneT::ZERO;
                 TheCamera->EnableArrows();
             }
             else
             {
-                selectedPlane = TPlane::ZERO;
+                selectedPlane = PlaneT::ZERO;
                 TheCamera->EnableArrows();
 
                 if (!currentPlane.IsZero())
