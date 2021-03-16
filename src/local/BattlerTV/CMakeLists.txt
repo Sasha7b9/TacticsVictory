@@ -58,6 +58,7 @@ file(GLOB GUI_GUIEDITOR                                             GUI/GuiEdito
 file(GLOB GUI_GAME                                                  GUI/GuiGame/*.*)
 file(GLOB GUI_LOGIC                                                 GUI/Logic/*.*)
 file(GLOB GUI_MENU                                                  GUI/Menu/*.*)
+file(GLOB GUI_MENU_MENUSTART                                        GUI/Menu/MenuStart/*.*)
 file(GLOB GUI_PANELS                                                GUI/Panels/*.*)
 file(GLOB GUI_WINDOWS                                               GUI/Windows/*.*)
 file(GLOB INPUT                                                     Input/*.*)
@@ -106,6 +107,7 @@ source_group(GUI\\GuiEditor                             FILES ${GUI_GUIEDITOR})
 source_group(GUI\\Game                                  FILES ${GUI_GAME})
 source_group(GUI\\Logic                                 FILES ${GUI_LOGIC})
 source_group(GUI\\Menu                                  FILES ${GUI_MENU})
+source_group(GUI\\Menu\\MenuStart                       FILES ${GUI_MENU_MENUSTART})
 source_group(GUI\\Panels                                FILES ${GUI_PANELS})
 source_group(GUI\\Windows                               FILES ${GUI_WINDOWS})
 source_group(Input                                      FILES ${INPUT})
@@ -131,7 +133,8 @@ source_group(Utils                                      FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
     ${GRAPHICS_3D}
-    ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC} ${GUI_MENU} ${GUI_PANELS}
+    ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC}
+    ${GUI_MENU} ${GUI_MENU_MENUSTART} ${GUI_PANELS}
     ${GUI_WINDOWS} ${INPUT} ${NETWORK} ${NETWORK_MESSAGES} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_BUILDINGS}

@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "GUI/Controls/ButtonSwitch_.h"
 #include "GUI/Menu/MenuEvents.h"
-#include "GUI/Menu/MenuStart.h"
+#include "GUI/Menu/MenuStart/MenuStart.h"
 
 
 WindowMenu::WindowMenu(Context *context) : WindowT(context)

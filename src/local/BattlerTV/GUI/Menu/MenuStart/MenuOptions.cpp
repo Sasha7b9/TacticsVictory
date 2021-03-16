@@ -4,7 +4,7 @@
 #include "GUI/Controls/DropDownListWithTextAndButton_.h"
 #include "GUI/Controls/SliderInt_.h"
 #include "GUI/Controls/SliderWithTextAndButtons_.h"
-#include "GUI/Menu/MenuOptions.h"
+#include "GUI/Menu/MenuStart/MenuOptions.h"
 #include "Utils/Settings.h"
 #include "Utils/SettingsTypes.h"
 

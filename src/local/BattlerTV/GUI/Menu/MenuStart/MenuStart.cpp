@@ -3,7 +3,7 @@
 #include "GUI/Controls/ButtonSwitch_.h"
 #include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Menu/MenuStart.h"
+#include "GUI/Menu/MenuStart/MenuStart.h"
 #include "Utils/Settings.h"
 
 
