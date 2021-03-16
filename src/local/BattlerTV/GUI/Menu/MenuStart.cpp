@@ -22,42 +22,33 @@ MenuStart::MenuStart(Context *context) : WindowMenu(context)
     buttonLanguage->AddState("Language : RU");
     buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
 
-    buttonServer = new TButton(this, "Server");
-    buttonServer->SetVar(VAR_MENU_EVENT, Variant(ME_StartServer));
+    buttonPlay = new ButtonT(this, "Play");
+    buttonPlay->SetVar(VAR_MENU_EVENT, Variant(ME_StartClient));
 
-    buttonClient = new TButton(this, "Client");
-    buttonClient->SetVar(VAR_MENU_EVENT, Variant(ME_StartClient));
+    buttonEditor = new ButtonT(this, "Editor");
 
-    buttonEditor = new TButton(this, "Editor");
-
-    buttonOptions = new TButton(this, "Options");
+    buttonOptions = new ButtonT(this, "Options");
     buttonOptions->SetVar(VAR_MENU_EVENT, Variant(ME_OpenOptions));
 
-    buttonHelp = new TButton(this, "Help");
+    buttonAboutGame = new ButtonT(this, "About game");
 
-    buttonAboutGame = new TButton(this, "About game");
-
-    buttonAboutMe = new TButton(this, "About me");
+    buttonAboutMe = new ButtonT(this, "About me");
     buttonAboutMe->SetVar(VAR_MENU_EVENT, Variant(ME_OpenAboutMe));
 
-    buttonExit = new TButton(this, "Exit");
+    buttonExit = new ButtonT(this, "Exit");
 
     buttons.Push(buttonLanguage);
-    buttons.Push(buttonServer);
-    buttons.Push(buttonClient);
+    buttons.Push(buttonPlay);
     buttons.Push(buttonEditor);
     buttons.Push(buttonOptions);
-    buttons.Push(buttonHelp);
     buttons.Push(buttonAboutGame);
     buttons.Push(buttonAboutMe);
     buttons.Push(buttonExit);
 
     SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonServer, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonClient, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonHelp, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonAboutMe, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));

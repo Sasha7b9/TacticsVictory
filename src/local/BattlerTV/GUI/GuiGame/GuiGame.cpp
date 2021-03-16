@@ -23,7 +23,7 @@ GuiGame::GuiGame() :
 
 void GuiGame::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
-    TButton *button = (TButton*)eventData[Released::P_ELEMENT].GetPtr();
+    ButtonT *button = (ButtonT *)eventData[Released::P_ELEMENT].GetPtr();
 
     if(button == buttonInterface)
     {
@@ -46,7 +46,7 @@ void GuiGame::SetVisible(bool visible)
 }
 
 
-bool GuiGame::IntersectionX(const TButton *button, int x)
+bool GuiGame::IntersectionX(const ButtonT *button, int x)
 {
     return x >= button->GetPosition().x_ && x <= button->GetPosition().x_ + button->GetWidth();
 }

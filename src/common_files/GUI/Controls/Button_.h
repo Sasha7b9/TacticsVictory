@@ -5,12 +5,14 @@
 class Label;
 
 
-class TButton : public Button
+class ButtonT : public Button
 {
-    URHO3D_OBJECT(TButton, Button);
+    URHO3D_OBJECT(ButtonT, Button);
+
 public:
-    TButton(Context *);
-    TButton(UIElement *uielement, char *text, int widht = -1, int height = -1);
+
+    ButtonT(Context *);
+    ButtonT(UIElement *uielement, char *text, int widht = -1, int height = -1);
     static void RegisterObject();
 
     void SetText(char *text);

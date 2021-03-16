@@ -3,7 +3,7 @@
 
 
 class WindowT;
-class TButton;
+class ButtonT;
 class PanelBottom;
 class PanelMap;
 class PanelMain;
@@ -29,10 +29,10 @@ public:
     } modeSelect = ModeSelect_Plane;
 
 private:
-    SharedPtr<TButton> buttonInterface;
-    SharedPtr<TButton> buttonMenu;
+    SharedPtr<ButtonT> buttonInterface;
+    SharedPtr<ButtonT> buttonMenu;
 
-    SharedPtr<TButton> btnNewMap;
+    SharedPtr<ButtonT> btnNewMap;
 
     SharedPtr<PanelBottom> panelBottom;
     SharedPtr<PanelMap>    panelMap;
@@ -50,7 +50,7 @@ private:
     int y = 10;
     int x = 10;
 
-    bool IntersectionX(const TButton *button, int x);
+    bool IntersectionX(const ButtonT *button, int x);
     void CreateWindows();
     void ToggleInterfacePanels();
 

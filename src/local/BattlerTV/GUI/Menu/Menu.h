@@ -20,7 +20,7 @@ public:
     bool ProcessingKey(int key);
 
 private:
-    PODVector<WindowMenu*>  allMenus;                           // Здесь список всех меню
+    PODVector<WindowMenu*>  allMenus;       // Здесь список всех меню
     SharedPtr<MenuStart>    menuStart;
     SharedPtr<MenuAboutMe>  menuAbout;
     SharedPtr<MenuOptions>  menuOptions;
@@ -30,3 +30,13 @@ private:
     void CloseAll();
     void HandleMenuEvent(StringHash, VariantMap&);
 };
+
+
+/*
+           +-----------+
+           | MenuStart |
+           +-----------+
+
+
+
+*/

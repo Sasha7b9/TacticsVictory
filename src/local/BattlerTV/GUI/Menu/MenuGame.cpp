@@ -17,14 +17,14 @@ MenuGame::MenuGame(Context *context) : WindowMenu(context)
     SharedPtr<Label> text(Label::Create("Tactics Victory", true, 20, -1, -1));
     AddChild(text);
     
-    buttonNewGame  = new TButton(this, "New game");
-    buttonEditor = new TButton(this, "Editor");
-    buttonOptions = new TButton(this, "Options");
+    buttonNewGame  = new ButtonT(this, "New game");
+    buttonEditor = new ButtonT(this, "Editor");
+    buttonOptions = new ButtonT(this, "Options");
     buttonLanguage = new ButtonSwitch(this, "Language : EN");
     buttonLanguage->AddState("Language : RU");
     buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
-    buttonExit = new TButton(this, "Exit");
-    buttonCancel = new TButton(this, "Cancel");
+    buttonExit = new ButtonT(this, "Exit");
+    buttonCancel = new ButtonT(this, "Cancel");
 
     buttons.Push(buttonNewGame);
     buttons.Push(buttonEditor);

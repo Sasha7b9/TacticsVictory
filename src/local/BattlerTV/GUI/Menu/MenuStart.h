@@ -15,13 +15,11 @@ public:
 private:
     void HandleButtonRelease(StringHash, VariantMap&);
 
-    SharedPtr<TButton> buttonServer;
-    SharedPtr<TButton> buttonClient;
-    SharedPtr<TButton> buttonEditor;
-    SharedPtr<TButton> buttonExit;
-    SharedPtr<TButton> buttonOptions;
-    SharedPtr<TButton> buttonHelp;
-    SharedPtr<TButton> buttonAboutGame;
-    SharedPtr<TButton> buttonAboutMe;
     SharedPtr<ButtonSwitch> buttonLanguage;
+    SharedPtr<ButtonT>      buttonPlay;
+    SharedPtr<ButtonT>      buttonEditor;
+    SharedPtr<ButtonT>      buttonOptions;
+    SharedPtr<ButtonT>      buttonAboutGame;
+    SharedPtr<ButtonT>      buttonAboutMe;
+    SharedPtr<ButtonT>      buttonExit;
 };

@@ -1,4 +1,6 @@
 {
+    "Play":                 { "en":"Play",              "ru":"Играть" },
+
     "Buildings":            { "en":"Buildings",         "ru":"Здания" },
 
     "Debug":                { "en":"Debug",             "ru":"Отладка" },

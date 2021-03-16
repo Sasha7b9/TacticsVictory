@@ -12,8 +12,8 @@ public:
     static void RegisterObject();
 
 private:
-    SharedPtr<TButton> buttonOk;
-    SharedPtr<TButton> buttonCancel;
+    SharedPtr<ButtonT> buttonOk;
+    SharedPtr<ButtonT> buttonCancel;
 
     void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
     void OnPressButtonOk();

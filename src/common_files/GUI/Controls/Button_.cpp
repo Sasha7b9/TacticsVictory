@@ -8,7 +8,7 @@
 #include "Utils/Settings.h"
 
 
-TButton::TButton(Context *context) :
+ButtonT::ButtonT(Context *context) :
     Button(context)
 {
     SetStyle("MainMenuButton");
@@ -18,7 +18,7 @@ TButton::TButton(Context *context) :
 }
 
 
-TButton::TButton(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
+ButtonT::ButtonT(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
     Button(TheContext)
 {
     SetStyleAuto(TheUIRoot->GetDefaultStyle());
@@ -48,26 +48,26 @@ TButton::TButton(UIElement *uielement, char *text, int width /* = -1 */, int hei
         SetFixedSize(width, height);
     }
 
-    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(TButton, HandleHoverBegin));
-    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(TButton, HandleHoverEnd));
+    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(ButtonT, HandleHoverBegin));
+    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(ButtonT, HandleHoverEnd));
 }
 
 
-void TButton::HandleHoverBegin(StringHash, VariantMap &)
+void ButtonT::HandleHoverBegin(StringHash, VariantMap &)
 {
     SendEvent(E_HOVER_BEGIN_ELEMENT_GUI);
 }
 
 
-void TButton::HandleHoverEnd(StringHash, VariantMap &)
+void ButtonT::HandleHoverEnd(StringHash, VariantMap &)
 {
     SendEvent(E_HOVER_END_ELEMENT_GUI);
 }
 
 
-void TButton::RegisterObject()
+void ButtonT::RegisterObject()
 {
-    TheContext->RegisterFactory<TButton>("UI");
+    TheContext->RegisterFactory<ButtonT>("UI");
 
     Context *context = TheContext;
 
@@ -75,19 +75,19 @@ void TButton::RegisterObject()
 }
 
 
-void TButton::SetText(char *text)
+void ButtonT::SetText(char *text)
 {
     label->SetText(text);
 }
 
 
-void TButton::SetHint(char *text)
+void ButtonT::SetHint(char *text)
 {
     hint = new Hint(text);
 }
 
 
-void TButton::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, MouseButton button,
+void ButtonT::OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, MouseButton button,
     MouseButtonFlags buttons, QualifierFlags qualifiers, Cursor* cursor) //-V813
 {
     Button::OnClickBegin(position, screenPosition, (MouseButton)button, (MouseButtonFlags)buttons, (QualifierFlags)qualifiers, cursor);
