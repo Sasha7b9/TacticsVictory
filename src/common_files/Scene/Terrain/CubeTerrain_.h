@@ -1,8 +1,8 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Terrain/CornerCube_.h"
 
 
+class CornerCube;
 class SideCube;
 class EdgeCube;
 class PointPlane;
