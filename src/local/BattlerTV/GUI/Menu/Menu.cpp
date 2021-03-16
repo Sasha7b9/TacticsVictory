@@ -63,28 +63,23 @@ void MenuT::HandleMenuEvent(StringHash, VariantMap& eventData)
     switch (action)
     {
     case ME_START_SERVER:
-    case ME_START_CLIENT:
-        Hide();
+    case ME_START_CLIENT:       Hide();
         break;
 
-    case ME_EXIT_IN_OS:
-        TheEngine->Exit();
+    case ME_EXIT_IN_OS:         TheEngine->Exit();
         break;
 
-    case ME_OPEN_OPTIONS:
-        Open(menuOptions, source);
+    case ME_OPEN_OPTIONS:       Open(menuOptions, source);
         break;
 
     case ME_OPEN_PLAY:
         break;
 
-    case ME_OPEN_ABOUT_ME:
-        Open(menuAbout, source);
+    case ME_OPEN_ABOUT_ME:      Open(menuAbout, source);
         break;
 
-    case ME_CLOSE:
-        CALL_MEMBER_IF_EXIST(source, Close);
-        CALL_MEMBER_IF_EXIST(destination, Open);
+    case ME_CLOSE:              CALL_MEMBER_IF_EXIST(source, Close);
+                                CALL_MEMBER_IF_EXIST(destination, Open);
         break;
     }
 }
