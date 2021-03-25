@@ -58,7 +58,7 @@ public:
 
     float GetHeight(uint rowX, uint colZ) const;
     float GetHeight(float rowX, float colZ) const;
-    float GetHeight(const Vector2 coord) const;
+    float GetHeight(const Vector2 &coord) const;
 
     uint HeightX() const;
     uint WidthZ() const;

@@ -23,7 +23,7 @@ void UnitSpecificS::Update(float timeStep)
 
     if (engine->algorithm.IsFinished())
     {
-        int direct = Rand() % (CommandEngine::MoveToWestNorth - CommandEngine::None);
+        int direct = Rand() % CommandEngine::MoveToWestNorth;
 
         engine->GiveCommand((CommandEngine::E)(direct + CommandEngine::None + 1), (Rand() % 10) + 1);
     }

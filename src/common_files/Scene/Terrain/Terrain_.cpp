@@ -113,7 +113,7 @@ float TerrainT::GetHeight(float rowX, float colZ) const
 }
 
 
-float TerrainT::GetHeight(const Vector2 coord) const
+float TerrainT::GetHeight(const Vector2 &coord) const
 {
     return GetHeight(coord.x_, coord.y_);
 }

@@ -72,9 +72,9 @@ void Battler::HandleKeyDown(StringHash, VariantMap& eventData)
     
     if(!TheConsole->IsActive())
     {
-        if(TheMenu->ProcessingKey(key))                       // Если меню обработало нажатие
+        if(TheMenu->ProcessingKey(key))             // Если меню обработало нажатие
         {
-            return;                                         // следовательно, оно активно, поэтому после обработки выходим
+            return;                                 // следовательно, оно активно, поэтому после обработки выходим
         }
     }
     

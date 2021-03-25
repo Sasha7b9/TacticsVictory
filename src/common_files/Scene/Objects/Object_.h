@@ -71,7 +71,7 @@ public:
 
     virtual void OnPostRenderUpdate();
 
-    Node *GetObjectNode() const { return Component::GetNode(); }
+    Node *GetObjectNode() const { return GetNode(); }
 
     virtual bool IsFlying() const   { return node_->GetVar(VAR_NODE_IS_FLYING).GetBool(); }
     virtual bool IsUnit() const     { return node_->GetVar(VAR_NODE_IS_UNIT).GetBool(); }
