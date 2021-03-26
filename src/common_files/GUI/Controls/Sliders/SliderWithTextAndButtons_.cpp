@@ -3,8 +3,8 @@
 #include "GUI/Cursor.h"
 #include "GUI/GUIEvents.h"
 #include "GUI/Controls/Hint_.h"
-#include "GUI/Controls/SliderInt_.h"
-#include "GUI/Controls/SliderWithTextAndButtons_.h"
+#include "GUI/Controls/Sliders/SliderInt_.h"
+#include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 #include "Utils/Settings.h"
 
 

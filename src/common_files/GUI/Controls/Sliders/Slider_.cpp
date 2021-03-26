@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Controls/Slider_.h"
+#include "GUI/Controls/Sliders/Slider_.h"
 
 
 SliderT::SliderT(Context *context) :

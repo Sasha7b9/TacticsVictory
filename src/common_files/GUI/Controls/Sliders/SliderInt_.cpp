@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Controls/SliderInt_.h"
+#include "GUI/Controls/Sliders/SliderInt_.h"
 
 
 SliderInt::SliderInt(Context *context) :

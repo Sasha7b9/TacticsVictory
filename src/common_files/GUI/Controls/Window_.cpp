@@ -2,9 +2,9 @@
 #include "stdafx.h"
 #include "GUI/Cursor.h"
 #include "GUI/Controls/DropDownListWithTextAndButton_.h"
-#include "GUI/Controls/SliderWithTextAndButtons_.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
 #include "GUI/Controls/Buttons/ButtonToggled_.h"
+#include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 
 
 WindowT::WindowT(Context *context) :

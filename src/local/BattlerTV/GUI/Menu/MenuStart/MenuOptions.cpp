@@ -1,9 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Controls/DropDownListWithTextAndButton_.h"
-#include "GUI/Controls/SliderInt_.h"
-#include "GUI/Controls/SliderWithTextAndButtons_.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
+#include "GUI/Controls/Sliders/SliderInt_.h"
+#include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 #include "GUI/Menu/MenuStart/MenuOptions.h"
 #include "Utils/Settings.h"
 #include "Utils/SettingsTypes.h"
