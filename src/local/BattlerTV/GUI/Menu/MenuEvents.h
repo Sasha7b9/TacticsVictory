@@ -4,9 +4,10 @@
 
 enum
 {
+    ME_OPEN_ABOUT_ME,
+    ME_OPEN_FIND_SERVER,
     ME_OPEN_PLAY,           // Открывает меню "Играть"
     ME_OPEN_OPTIONS,        // Нужно открыть меню "Опции" . P_SOURCE - меню, которое его открывает
-    ME_OPEN_ABOUT_ME,
     ME_START_SERVER,
     ME_START_CLIENT,
     ME_OPEN_EDITOR,

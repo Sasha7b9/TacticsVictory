@@ -7,9 +7,6 @@
 #include "Utils/Settings.h"
 
 
-#define VAR_MENU_EVENT "VAR_MENU_EVENT"
-
-
 MenuStart::MenuStart() : WindowMenu()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
@@ -75,6 +72,7 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     Button *button = dynamic_cast<Button*>(eventData[P_ELEMENT].GetPtr());
 
     const Variant &value = button->GetVar(VAR_MENU_EVENT); //-V522
+
     if(!value.IsEmpty())
     {
         eventData = GetEventDataMap();

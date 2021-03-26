@@ -5,6 +5,7 @@
 #include "GUI/Menu/MenuStart/MenuAboutMe.h"
 #include "GUI/Menu/MenuStart/MenuOptions.h"
 #include "GUI/Menu/MenuStart/MenuStart.h"
+#include "GUI/Menu/MenuStart/MenuPlay/MenuFindServer.h"
 #include "GUI/Menu/MenuStart/MenuPlay/MenuPlay.h"
 #include "Utils/GlobalFunctions.h"
 
@@ -29,6 +30,7 @@ MenuT::MenuT(MenuT **self) : Object(TheContext)
     CREATE_MENU(menuAbout, MenuAboutMe, false);
     CREATE_MENU(menuOptions, MenuOptions, false);
     CREATE_MENU(menuPlay, MenuPlay, false);
+    CREATE_MENU(menuFindServer, MenuFindServer, false);
 
     Open(menuStart);
 
@@ -69,13 +71,16 @@ void MenuT::HandleMenuEvent(StringHash, VariantMap& eventData)
     case ME_EXIT_IN_OS:         TheEngine->Exit();
         break;
 
+    case ME_OPEN_ABOUT_ME:      Open(menuAbout, source);
+        break;
+
+    case ME_OPEN_FIND_SERVER:   Open(menuFindServer, source);
+        break;
+
     case ME_OPEN_OPTIONS:       Open(menuOptions, source);
         break;
 
     case ME_OPEN_PLAY:          Open(menuPlay, source);
-        break;
-
-    case ME_OPEN_ABOUT_ME:      Open(menuAbout, source);
         break;
 
     case ME_CLOSE:              CALL_MEMBER_IF_EXIST(source, Close);
