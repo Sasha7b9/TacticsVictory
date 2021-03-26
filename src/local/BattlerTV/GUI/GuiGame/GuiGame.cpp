@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Controls/ButtonSwitch_.h"
 #include "GUI/Controls/Tab_.h"
+#include "GUI/Controls/Buttons/ButtonSwitch_.h"
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Panels/PanelBottom.h"
 #include "GUI/Panels/PanelMain.h"

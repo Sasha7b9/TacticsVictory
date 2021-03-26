@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Controls/ButtonToggled_.h"
+#include "GUI/Controls/Buttons/ButtonToggled_.h"
 #include "GUI/GuiGame/ContextMenuUnit.h"
 #include "GUI/GuiGame/WindowTarget.h"
 

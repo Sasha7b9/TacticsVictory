@@ -54,6 +54,7 @@ file(GLOB GRAPHICS_2D                                               Graphics/2D/
 file(GLOB GRAPHICS_3D                                               Graphics/3D/*.*)
 file(GLOB GUI                                                       GUI/*.*)
 file(GLOB GUI_CONTROLS                           ../../common_files/GUI/Controls/*.*)
+file(GLOB GUI_CONTROLS_BUTTONS                   ../../common_files/GUI/Controls/Buttons/*.*)
 file(GLOB GUI_GUIEDITOR                                             GUI/GuiEditor/*.*)
 file(GLOB GUI_GAME                                                  GUI/GuiGame/*.*)
 file(GLOB GUI_LOGIC                                                 GUI/Logic/*.*)
@@ -104,6 +105,7 @@ source_group(Graphics\\2D                               FILES ${GRAPHICS_2D})
 source_group(Graphics\\3D                               FILES ${GRAPHICS_3D})
 source_group(GUI                                        FILES ${GUI})
 source_group(GUI\\Controls                              FILES ${GUI_CONTROLS})
+source_group(GUI\\Controls\\Buttons                     FILES ${GUI_CONTROLS_BUTTONS})
 source_group(GUI\\GuiEditor                             FILES ${GUI_GUIEDITOR})
 source_group(GUI\\Game                                  FILES ${GUI_GAME})
 source_group(GUI\\Logic                                 FILES ${GUI_LOGIC})
@@ -135,7 +137,7 @@ source_group(Utils                                      FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
     ${GRAPHICS_3D}
-    ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC}
+    ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS} ${GUI_GUIEDITOR} ${GUI_GAME} ${GUI_LOGIC}
     ${GUI_MENU} ${GUI_MENU_START} ${GUI_MENU_START_PLAY} ${GUI_PANELS}
     ${GUI_WINDOWS} ${INPUT} ${NETWORK} ${NETWORK_MESSAGES} ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}

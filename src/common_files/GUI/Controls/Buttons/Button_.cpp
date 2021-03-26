@@ -2,9 +2,9 @@
 #include "stdafx.h"
 #include "GUI/Cursor.h"
 #include "GUI/GUIEvents.h"
-#include "GUI/Controls/ButtonSwitch_.h"
 #include "GUI/Controls/Hint_.h"
 #include "GUI/Controls/Label_.h"
+#include "GUI/Controls/Buttons/ButtonSwitch_.h"
 #include "Utils/Settings.h"
 
 

@@ -1,10 +1,10 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Cursor.h"
-#include "GUI/Controls/ButtonSwitch_.h"
-#include "GUI/Controls/ButtonToggled_.h"
 #include "GUI/Controls/DropDownListWithTextAndButton_.h"
 #include "GUI/Controls/SliderWithTextAndButtons_.h"
+#include "GUI/Controls/Buttons/ButtonSwitch_.h"
+#include "GUI/Controls/Buttons/ButtonToggled_.h"
 
 
 WindowT::WindowT(Context *context) :

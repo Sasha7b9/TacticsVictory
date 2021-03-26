@@ -47,12 +47,12 @@ bool ConsoleParser::ShowBriefHelp(const ParserStruct *structs, const Vector<Stri
     {
         const ParserStruct *str = structs;
 
-        size_t length = 0;
+        uint length = 0;
         while(str->command)
         {
-            if(strlen(str->command) > length)
+            if((uint)strlen(str->command) > length)
             {
-                length = strlen(str->command);
+                length = (uint)strlen(str->command);
             }
             str++;
         }

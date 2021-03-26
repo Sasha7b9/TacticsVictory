@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "GUi/Controls/ButtonSwitch_.h"
+#include "GUi/Controls/Buttons/ButtonSwitch_.h"
 #include "GUI/Menu/WindowMenu.h"
 
 

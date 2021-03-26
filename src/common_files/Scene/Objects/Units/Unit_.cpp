@@ -55,18 +55,20 @@ bool Unit::CanMoveTo(float rowX, float colZ) const
         }
     }
 
-    return TheTerrain->GetHeight(physics->pos.GetCoord()) ==
+    return TheTerrain->GetHeight(physics->pos.GetCoord()) == //-V550
         TheTerrain->GetHeight(rowX, colZ);
 }
 
 
 bool Unit::TooCloseToAnoterUnit() const
 {
-    Vector3 position = physics->pos.GetWorld();
+    PositionPP &pos = physics->pos;
 
-    physics->pos.CalculateDistanceFromCenter();
+    Vector3 position = pos.GetWorld();
 
-    float distance = physics->pos.distanceFromCenter;
+    pos.CalculateDistanceFromCenter();
+
+    float distance = pos.distanceFromCenter;
 
     for (Unit *unit : Unit::storage)
     {
