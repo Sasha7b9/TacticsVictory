@@ -1,5 +1,6 @@
 // 2021/03/12 12:00:09 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Core/Math_.h"
 #include "Scene/Terrain/Level_.h"
 #include "Scene/Terrain/SegmentTerrain_.h"
 #include "Utils/GlobalFunctions.h"

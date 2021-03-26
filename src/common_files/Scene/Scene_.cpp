@@ -3,6 +3,7 @@
 #include "Core/Math_.h"
 #include "Game/Logic/SunEngine_.h"
 #include "Scene/Scene_.h"
+#include "Scene/Objects/Object_.h"
 
 
 SceneT::SceneT() : Scene(TheContext)
