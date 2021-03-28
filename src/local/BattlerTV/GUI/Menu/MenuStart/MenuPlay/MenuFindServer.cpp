@@ -12,6 +12,9 @@ MenuFindServer::MenuFindServer() : WindowMenu()
     text->SetTextAlignment(HA_CENTER);
     AddChild(text);
 
+    buttonConnect = new ButtonT(this, "Connect");
+    SubscribeToEvent(buttonConnect, E_RELEASED, URHO3D_HANDLER(MenuFindServer, HandleButtonRelease));
+
     buttonBack = new ButtonT(this, "Back");
     SubscribeToEvent(buttonBack, E_RELEASED, URHO3D_HANDLER(MenuFindServer, HandleButtonRelease));
 }
