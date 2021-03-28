@@ -4,11 +4,16 @@
 #include "Utils/Settings.h"
 
 
-LineTable::LineTable() : WindowT(TheContext)
+HeaderTable::HeaderTable() : WindowT(TheContext)
 {
 
 }
 
+
+LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
+{
+
+}
 
 
 OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheContext)
@@ -20,7 +25,7 @@ OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheCont
 
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
 
-    SharedPtr<Label> label_title(Label::Create(title, true, 15, 400, 20));
+    SharedPtr<Label> label_title(Label::Create(title, true, 15, 700, 20));
     label_title->SetTextAlignment(HA_CENTER);
     window->AddChild(label_title);
 

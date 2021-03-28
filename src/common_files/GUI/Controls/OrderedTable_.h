@@ -2,13 +2,23 @@
 #pragma once
 
 
+class HeaderTable : public WindowT
+{
+    URHO3D_OBJECT(HeaderTable, WindowT);
+
+public:
+
+    HeaderTable();
+};
+
+
 class LineTable : public WindowT
 {
     URHO3D_OBJECT(LineTable, WindowT);
 
 public:
 
-    LineTable();
+    LineTable(HeaderTable *header);
 };
 
 
