@@ -74,9 +74,9 @@ private:
     SharedPtr<Button> buttonDown;
     SharedPtr<Label> label;
     int numCells = 11;
-    pFuncFV funcRead = nullptr; //-V122
-    pFuncVF funcWrite = nullptr; //-V122
-    char *title = nullptr; //-V122
+    pFuncFV funcRead = nullptr;
+    pFuncVF funcWrite = nullptr;
+    char *title = nullptr;
     bool valueChanged = false;
 
     void WriteValue(float value);

@@ -18,14 +18,18 @@ void WindowMenu::SendEventClose()
     VariantMap eventData = GetEventDataMap();
     eventData[P_TYPE] = ME_CLOSE;
     eventData[P_SOURCE] = this;
-    eventData[P_DESTINATION] = prevMenu;
+    eventData[P_DESTINATION] = prev_menu;
     SendEvent(E_MENU, eventData);
 }
 
 
 void WindowMenu::Open(WindowMenu *prev)
 {
-    prevMenu = prev;
+    if (prev)
+    {
+        prev_menu = prev;
+    }
+
     TheUIRoot->AddChild(this);
 }
 
@@ -42,7 +46,7 @@ void WindowMenu::ProcessingKey(int key)
     {
         SendEventClose();
     }
-    if (KEY_IS_UP || KEY_IS_LEFT)
+    else if (KEY_IS_UP || KEY_IS_LEFT)
     {
         SetFocusedPrev();
     }

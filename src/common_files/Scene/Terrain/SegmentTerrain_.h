@@ -30,7 +30,7 @@ public:
     void Build();
     void GetColumnCubes(uint row, uint col, PODVector<CubeTerrain*> &column);
 
-    SegmentTerrain* neighbours[4];      // Соседи соотвественно с четырёх сторон //-V122
+    SegmentTerrain* neighbours[4];      // Соседи соотвественно с четырёх сторон
 
 private:
     Vector<SharedPtr<LayerTerrain>> ground;          // Height (0, 1, 2, 3, ...)

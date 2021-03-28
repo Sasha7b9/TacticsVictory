@@ -32,7 +32,7 @@ MenuT::MenuT(MenuT **self) : Object(TheContext)
     CREATE_MENU(menuPlay, MenuPlay, false);
     CREATE_MENU(menuFindServer, MenuFindServer, false);
 
-    Open(menuStart);
+    Open(menuStart, nullptr);
 
     *self = this;
 

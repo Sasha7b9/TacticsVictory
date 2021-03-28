@@ -11,7 +11,7 @@ public:
     Hint(char *text);
 
 private:
-    char *text = nullptr; //-V122
+    char *text = nullptr;
     SharedPtr<Label> label;
 
     void HandleChangeLanguage(StringHash, VariantMap&);

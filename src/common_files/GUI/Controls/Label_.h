@@ -14,7 +14,7 @@ public:
     void SetText(char *text);
     
 private:
-    char *text = 0; //-V122
+    char *text = 0;
 
     void HandleChangeLanguage(StringHash, VariantMap&);
 };

@@ -30,7 +30,7 @@ private:
     SharedPtr<MenuFindServer> menuFindServer;
 
     WindowMenu* ActiveMenu();
-    void Open(WindowMenu* menu, WindowMenu *prev = nullptr);    // Открыть меню menu, при этом его хранителем указать prev
+    void Open(WindowMenu* menu, WindowMenu *prev);    // Открыть меню menu, при этом его хранителем указать prev
     void CloseAll();
     void HandleMenuEvent(StringHash, VariantMap&);
 };
