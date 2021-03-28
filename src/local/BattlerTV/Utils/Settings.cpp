@@ -132,6 +132,7 @@ void Settings::SetFloat(const char *category, const char *name, float value)
 void Settings::SetInt(const char *name, int value)
 {
     XMLElement child = root.GetChild(name);
+
     if (child.IsNull())
     {
         child = root.CreateChild(name);

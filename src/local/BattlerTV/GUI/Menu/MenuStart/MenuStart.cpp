@@ -78,10 +78,12 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
         eventData = GetEventDataMap();
         eventData[P_SOURCE] = this;
         eventData[P_TYPE] = value.GetUInt();
+
         if(value == ME_START_SERVER)
         {
             eventData[P_PORT] = SERVER_PORT;
         }
+
         SendEvent(E_MENU, eventData);
     }
     else if (button == buttonLanguage)

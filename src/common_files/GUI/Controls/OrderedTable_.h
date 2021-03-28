@@ -18,5 +18,5 @@ class OrderedTable : public WindowT
 
 public:
 
-    OrderedTable(char *table);
+    OrderedTable(UIElement *ui_element, char *title);
 };

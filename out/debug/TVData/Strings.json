@@ -29,8 +29,9 @@
 
     "Info":                 { "en":"Info",              "ru":"Информация" },
 
-    "Load":                 { "en":"Load",              "ru":"Загрузить" },
-    "Low":                  { "en":"Low",               "ru":"Низкое" },
+    "List of available servers" : {"ru":"Список доступных серверов" },
+    "Load":                       { "en":"Load",              "ru":"Загрузить" },
+    "Low":                        { "en":"Low",               "ru":"Низкое" },
 
     "Map":                  { "en":"Map",               "ru":"Карта" },
     "Material quality":     { "en":"Material quality",  "ru":"Качество материалов" },

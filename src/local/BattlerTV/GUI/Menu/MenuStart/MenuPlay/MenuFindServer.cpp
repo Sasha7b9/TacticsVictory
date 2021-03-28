@@ -12,6 +12,8 @@ MenuFindServer::MenuFindServer() : WindowMenu()
     text->SetTextAlignment(HA_CENTER);
     AddChild(text);
 
+    tableServers = new OrderedTable(this, "List of available servers");
+
     buttonConnect = new ButtonT(this, "Connect");
     SubscribeToEvent(buttonConnect, E_RELEASED, URHO3D_HANDLER(MenuFindServer, HandleButtonRelease));
 
