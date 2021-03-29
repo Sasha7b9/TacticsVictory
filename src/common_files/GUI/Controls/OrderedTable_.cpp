@@ -9,16 +9,19 @@ struct HeaderRowStruct
 {
     pchar name;
     int width;
+    HorizontalAlignment h_align;
     static const int NUM = 4;
+
+    String sample_text;
 };
 
 
-static const HeaderRowStruct header_rows[HeaderRowStruct::NUM] =
+static HeaderRowStruct header_rows[HeaderRowStruct::NUM] =
 {
-    { "Name", 450 },
-    { "Address", 150 },
-    { "Ping", 60 },
-    { "CPU%", 60 }
+    { "Name",    470, HA_LEFT,   "Server" },
+    { "Address", 135, HA_LEFT, "127.127.127.127" },
+    { "Ping",    40,  HA_CENTER, "999" },
+    { "CPU%",    40,  HA_CENTER, "100" }
 };
 
 
@@ -41,7 +44,7 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
         Row &row = rows[i];
         SharedPtr<ButtonT> header_row(new ButtonT(window, row.name));
         header_row->SetName(row.name);
-        header_row->SetMinWidth(row.width);
+        header_row->SetFixedWidth(row.width);
         window->AddChild(header_row);
     }
 
@@ -60,11 +63,18 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
 
     for (int i = 0; i < HeaderRowStruct::NUM; i++)
     {
-        String name = String("test") + header_rows[i].name;
-
-        SharedPtr<Label> label = Label::Create(name.CString());
+        SharedPtr<Label> label = Label::Create(header_rows[i].sample_text.CString());
+        label->SetTextAlignment(header_rows[i].h_align);
         UIElement *h = header->GetChild(header_rows[i].name, true);
-        label->SetMinWidth(h->GetWidth());
+        if (String("Address") == header_rows[i].name)
+        {
+            String address;
+            address.AppendWithFormat("%d.%d.%d.%d",
+                std::rand() % 255, std::rand() % 255, std::rand() % 255, std::rand() % 255);
+
+            label->SetText(address.CString());
+        }
+        label->SetFixedWidth(h->GetWidth());
         window->AddChild(label);
     }
 
