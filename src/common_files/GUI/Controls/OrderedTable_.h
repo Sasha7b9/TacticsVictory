@@ -12,8 +12,8 @@ public:
 
     struct Row
     {
-        Row(char *n) : name(n) {}
-        String name;
+        Row(pchar n) : name(n) {}
+        pchar name;
     };
 
     Vector<Row> rows;

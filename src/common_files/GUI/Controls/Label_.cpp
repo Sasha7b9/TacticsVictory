@@ -19,10 +19,10 @@ void Label::RegisterObject()
 }
 
 
-SharedPtr<Label> Label::Create(const String &text_, bool center, int sizeFont, int width, int height)
+SharedPtr<Label> Label::Create(pchar text_, bool center, int sizeFont, int width, int height)
 {
     SharedPtr<Label> text(new Label(TheContext));
-    text->text = text_.CString();
+    text->text = text_;
     text->SetFont(TheFont, (float)sizeFont);
     if (center)
     {
@@ -46,7 +46,7 @@ SharedPtr<Label> Label::Create(const String &text_, bool center, int sizeFont, i
         text->SetFixedSize(width, height);
     }
 
-    text->SetText(text_.CString());
+    text->SetText(text_);
 
     return text;
 }
