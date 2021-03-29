@@ -10,11 +10,13 @@ public:
     Label(Context *);
     static void RegisterObject();
 
-    static SharedPtr<Label> Create(char *text, bool center = true, int sizeFont = 20, int width = -1, int height = -1);
-    void SetText(char *text);
+    static SharedPtr<Label> Create(const String &text, bool center = true, int sizeFont = 20,
+        int width = -1, int height = -1);
+
+    void SetText(pchar text);
     
 private:
-    char *text = 0;
+    pchar text = nullptr;
 
     void HandleChangeLanguage(StringHash, VariantMap&);
 };

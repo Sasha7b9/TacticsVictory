@@ -9,6 +9,14 @@ class HeaderTable : public WindowT
 public:
 
     HeaderTable();
+
+    struct Row
+    {
+        Row(char *n) : name(n) {}
+        String name;
+    };
+
+    Vector<Row> rows;
 };
 
 
@@ -29,4 +37,7 @@ class OrderedTable : public WindowT
 public:
 
     OrderedTable(UIElement *ui_element, char *title);
+
+    SharedPtr<HeaderTable> header;
+    Vector<LineTable> lines;
 };

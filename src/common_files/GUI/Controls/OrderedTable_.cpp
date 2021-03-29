@@ -6,7 +6,24 @@
 
 HeaderTable::HeaderTable() : WindowT(TheContext)
 {
+    rows.Push("Name");
+    rows.Push("Ping");
 
+    SharedPtr<Window> window(new Window(TheContext));
+    window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
+    AddChild(window);
+
+    window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
+
+    for (uint i = 0; i < rows.Size(); i++)
+    {
+        SharedPtr<Label> label(Label::Create(rows[i].name, true));
+        label->SetTextAlignment(HA_CENTER);
+        window->AddChild(label);
+    }
+
+    SetMinSize(window->GetWidth(), window->GetHeight());
 }
 
 
@@ -23,11 +40,14 @@ OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheCont
     window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
     AddChild(window);
 
-    window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
+    window->SetLayout(LM_VERTICAL, 3, IntRect(3, 3, 3, 3));
 
     SharedPtr<Label> label_title(Label::Create(title, true, 15, 700, 20));
     label_title->SetTextAlignment(HA_CENTER);
     window->AddChild(label_title);
+
+    header = new HeaderTable();
+    window->AddChild(header);
 
     SetMinSize(window->GetWidth(), window->GetHeight());
 
