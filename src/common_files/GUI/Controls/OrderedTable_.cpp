@@ -1,15 +1,16 @@
 // 2021/03/28 21:56:56 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Controls/OrderedTable_.h"
+#include "GUI/Controls/Buttons/Button_.h"
 #include "Utils/Settings.h"
 
 
 HeaderTable::HeaderTable() : WindowT(TheContext)
 {
-    rows.Push({ "Name", 100 });
-    rows.Push({ "Ping", 50 });
-    rows.Push({ "CPU%", 40 });
-    rows.Push({ "Address", 50 });
+    rows.Push({ "Name", 450 });
+    rows.Push({ "Address", 150 });
+    rows.Push({ "Ping", 60 });
+    rows.Push({ "CPU%", 60 });
 
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/OrderedTableStyle.xml"));
@@ -21,10 +22,9 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
     for (uint i = 0; i < rows.Size(); i++)
     {
         Row &row = rows[i];
-        SharedPtr<Label> label(Label::Create(row.name, true));
-        label->SetTextAlignment(HA_CENTER);
-        label->SetMinWidth(row.width);
-        window->AddChild(label);
+        SharedPtr<ButtonT> header_row(new ButtonT(window, row.name));
+        header_row->SetMinWidth(row.width);
+        window->AddChild(header_row);
     }
 
     SetMinSize(window->GetWidth(), window->GetHeight());

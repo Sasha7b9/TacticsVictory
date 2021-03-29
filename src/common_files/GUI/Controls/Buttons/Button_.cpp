@@ -18,7 +18,7 @@ ButtonT::ButtonT(Context *context) :
 }
 
 
-ButtonT::ButtonT(UIElement *uielement, char *text, int width /* = -1 */, int height /* = -1 */) :
+ButtonT::ButtonT(UIElement *uielement, pchar text, int width /* = -1 */, int height /* = -1 */) :
     Button(TheContext)
 {
     SetStyleAuto(TheUIRoot->GetDefaultStyle());

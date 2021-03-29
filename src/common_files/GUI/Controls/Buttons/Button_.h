@@ -12,7 +12,7 @@ class ButtonT : public Button
 public:
 
     ButtonT(Context *);
-    ButtonT(UIElement *uielement, char *text, int widht = -1, int height = -1);
+    ButtonT(UIElement *uielement, pchar text, int widht = -1, int height = -1);
     static void RegisterObject();
 
     void SetText(char *text);
