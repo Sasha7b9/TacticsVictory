@@ -12,7 +12,7 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
     rows.Push({ "Address", 50 });
 
     SharedPtr<Window> window(new Window(TheContext));
-    window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/OrderedTableStyle.xml"));
     window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
     AddChild(window);
 
