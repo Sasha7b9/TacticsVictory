@@ -41,5 +41,7 @@ public:
     OrderedTable(UIElement *ui_element, char *title);
 
     SharedPtr<HeaderTable> header;
-    Vector<LineTable> lines;
+    Vector<LineTable *> lines;
+
+    static const int NUM_LINES = 10;
 };

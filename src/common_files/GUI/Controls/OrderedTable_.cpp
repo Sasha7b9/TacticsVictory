@@ -23,6 +23,7 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
     {
         Row &row = rows[i];
         SharedPtr<ButtonT> header_row(new ButtonT(window, row.name));
+        header_row->SetName(row.name);
         header_row->SetMinWidth(row.width);
         window->AddChild(header_row);
     }
@@ -31,9 +32,22 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
 }
 
 
-LineTable::LineTable(HeaderTable * /*header*/) : WindowT(TheContext)
+LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
 {
+    SharedPtr<Window> window(new Window(TheContext));
+    window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
+    AddChild(window);
 
+    window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
+
+    SharedPtr<Label> label = Label::Create("Test name");
+    UIElement *header_name = header->GetChild("Name", true);
+    label->SetMinWidth(header_name->GetWidth());
+
+    window->AddChild(label);
+
+    SetMinSize(window->GetWidth(), window->GetHeight());
 }
 
 
@@ -52,6 +66,13 @@ OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheCont
 
     header = new HeaderTable();
     window->AddChild(header);
+
+    for (int i = 0; i < NUM_LINES; i++)
+    {
+        SharedPtr<LineTable> line(new LineTable(header));
+        window->AddChild(line);
+        lines.Push(line);
+    }
 
     SetMinSize(window->GetWidth(), window->GetHeight());
 
