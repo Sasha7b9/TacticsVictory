@@ -68,6 +68,8 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
         UIElement *h = header->GetChild(header_rows[i].name, true);
         if (String("Address") == header_rows[i].name)
         {
+            label->SetAutoLocalizable(false);
+
             String address;
             address.AppendWithFormat("%d.%d.%d.%d",
                 std::rand() % 255, std::rand() % 255, std::rand() % 255, std::rand() % 255);
