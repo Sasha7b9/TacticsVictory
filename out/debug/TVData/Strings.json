@@ -39,6 +39,7 @@
     "Medium":               { "en":"Medium",            "ru":"Среднее" },
     "Menu":                 { "en":"Menu",              "ru":"Меню" },
 
+    "Name":                 { "ru":"Имя" },
     "New Game":             { "en":"New Game",          "ru":"Новая игра" },
     "New map":              { "en":"New map",           "ru":"Новая карта" },
 
@@ -48,6 +49,7 @@
     "Options":              { "en":"Options",           "ru":"Опции" },
 
     "Panel":                { "en":"Panel",             "ru":"Панель" },
+    "Ping":                 { "ru":"Пинг" },
     "Platoons":             { "en":"Platoons",          "ru":"Взводы" },
     "Play":                 { "en":"Play",              "ru":"Играть" },
     "Press this button":    { "en":"Press this button", "ru":"Нажмите эту кнопку" },
