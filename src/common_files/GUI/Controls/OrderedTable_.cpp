@@ -5,12 +5,29 @@
 #include "Utils/Settings.h"
 
 
+struct HeaderRowStruct
+{
+    pchar name;
+    int width;
+    static const int NUM = 4;
+};
+
+
+static const HeaderRowStruct header_rows[HeaderRowStruct::NUM] =
+{
+    { "Name", 450 },
+    { "Address", 150 },
+    { "Ping", 60 },
+    { "CPU%", 60 }
+};
+
+
 HeaderTable::HeaderTable() : WindowT(TheContext)
 {
-    rows.Push({ "Name", 450 });
-    rows.Push({ "Address", 150 });
-    rows.Push({ "Ping", 60 });
-    rows.Push({ "CPU%", 60 });
+    for (int i = 0; i < HeaderRowStruct::NUM; i++)
+    {
+        rows.Push({ header_rows[i].name, header_rows[i].width });
+    }
 
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/OrderedTableStyle.xml"));
@@ -41,11 +58,15 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
 
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
 
-    SharedPtr<Label> label = Label::Create("Test name");
-    UIElement *header_name = header->GetChild("Name", true);
-    label->SetMinWidth(header_name->GetWidth());
+    for (int i = 0; i < HeaderRowStruct::NUM; i++)
+    {
+        String name = String("test") + header_rows[i].name;
 
-    window->AddChild(label);
+        SharedPtr<Label> label = Label::Create(name.CString());
+        UIElement *h = header->GetChild(header_rows[i].name, true);
+        label->SetMinWidth(h->GetWidth());
+        window->AddChild(label);
+    }
 
     SetMinSize(window->GetWidth(), window->GetHeight());
 }
