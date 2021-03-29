@@ -6,8 +6,10 @@
 
 HeaderTable::HeaderTable() : WindowT(TheContext)
 {
-    rows.Push("Name");
-    rows.Push("Ping");
+    rows.Push({ "Name", 100 });
+    rows.Push({ "Ping", 50 });
+    rows.Push({ "CPU%", 40 });
+    rows.Push({ "Address", 50 });
 
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
@@ -18,8 +20,10 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
 
     for (uint i = 0; i < rows.Size(); i++)
     {
-        SharedPtr<Label> label(Label::Create(rows[i].name, true));
+        Row &row = rows[i];
+        SharedPtr<Label> label(Label::Create(row.name, true));
         label->SetTextAlignment(HA_CENTER);
+        label->SetMinWidth(row.width);
         window->AddChild(label);
     }
 
@@ -27,7 +31,7 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
 }
 
 
-LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
+LineTable::LineTable(HeaderTable * /*header*/) : WindowT(TheContext)
 {
 
 }

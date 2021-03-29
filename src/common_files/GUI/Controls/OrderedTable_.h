@@ -1,5 +1,6 @@
 // 2021/03/28 21:56:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "GUI/Controls/Label_.h"
 
 
 class HeaderTable : public WindowT
@@ -12,8 +13,9 @@ public:
 
     struct Row
     {
-        Row(pchar n) : name(n) {}
+        Row(pchar n, int w) : name(n), width(w) {}
         pchar name;
+        int width;
     };
 
     Vector<Row> rows;

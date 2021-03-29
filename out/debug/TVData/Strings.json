@@ -1,5 +1,6 @@
 {
     "Add":                  { "en":"Add",               "ru":"Добавить" },
+    "Address":              { "ru":"Адрес" },
 
     "Back":                 { "en":"Back",              "ru":"Назад" },
     "Blue":                 { "en":"Blue",              "ru":"Синий" },
