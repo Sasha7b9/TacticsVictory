@@ -57,7 +57,7 @@ void FS::RemoveFile(const std::string &nameFile)
         if (error != 2 &&               // Не удаётся найти указанный файл
             error != 3)                 // Системе не удается найти указанный путь
         {
-            LOG_ERROR("Can't remove file %s", nameFile.c_str());
+            LOGERROR("Can't remove file %s", nameFile.c_str());
 
             DISPLAY_LAST_ERROR();
         }
@@ -69,7 +69,7 @@ void FS::RemoveFile(const std::string &nameFile)
     {
         if (errno != 2)                 // Файл не существует
         {
-            LOG_ERROR("Can't remove file %s", nameFile.c_str());
+            LOGERROR("Can't remove file %s", nameFile.c_str());
 
             DISPLAY_LAST_ERROR();
         }
@@ -100,7 +100,7 @@ bool FS::File::Open(pchar _name, pchar file, int line, ModeAccess::E mode)
 
     if (handle == INVALID_HANDLE_VALUE)
     {
-        LOG_ERROR("Can't open file \"%s\" from %s : %d", name.c_str(), file, line);
+        LOGERROR("Can't open file \"%s\" from %s : %d", name.c_str(), file, line);
 
         DISPLAY_LAST_ERROR();
 
@@ -123,7 +123,7 @@ bool FS::File::Open(pchar _name, pchar file, int line, ModeAccess::E mode)
 
     if (fileDesc == -1)
     {
-        LOG_ERROR("Can't open file \"%s\"", name.c_str());
+        LOGERROR("Can't open file \"%s\"", name.c_str());
 
         DISPLAY_LAST_ERROR();
 
@@ -177,7 +177,7 @@ bool FS::File::Create(pchar _name, ModeAccess::E mode)
 
     if (handle == INVALID_HANDLE_VALUE)
     {
-        LOG_ERROR("Can't create file \"%s\"", name.c_str());
+        LOGERROR("Can't create file \"%s\"", name.c_str());
 
         DISPLAY_LAST_ERROR();
 
@@ -200,7 +200,7 @@ bool FS::File::Create(pchar _name, ModeAccess::E mode)
 
     if (fileDesc < 0)
     {
-        LOG_ERROR("Can't open file \"%s\"", name);
+        LOGERROR("Can't open file \"%s\"", name);
 
         DISPLAY_LAST_ERROR();
 
@@ -223,7 +223,7 @@ void FS::File::Write(const void *buffer, int numBytes)
 
     if (WriteFile(handle, buffer, (DWORD)numBytes, &counter, NULL) == 0)
     {
-        LOG_ERROR("Can't write to file %s", name.c_str());
+        LOGERROR("Can't write to file %s", name.c_str());
 
         DISPLAY_LAST_ERROR();
     }
@@ -232,7 +232,7 @@ void FS::File::Write(const void *buffer, int numBytes)
 
     if (write(fileDesc, buffer, numBytes) != numBytes)
     {
-        LOG_ERROR("Can't write to file %s", name.c_str());
+        LOGERROR("Can't write to file %s", name.c_str());
 
         DISPLAY_LAST_ERROR();
     }
@@ -258,7 +258,7 @@ void FS::File::Read(void *buffer, size_t numBytes)
 
     if (ReadFile(handle, buffer, (DWORD)numBytes, &counter, NULL) == 0) //-V202
     {
-        LOG_ERROR("Can't read from file %s %llu bytes", name.c_str(), numBytes);
+        LOGERROR("Can't read from file %s %llu bytes", name.c_str(), numBytes);
 
         DISPLAY_LAST_ERROR();
     }
@@ -267,7 +267,7 @@ void FS::File::Read(void *buffer, size_t numBytes)
 
     if (read(fileDesc, buffer, numBytes) != (ssize_t)numBytes)
     {
-        LOG_ERROR("Can't read from file %s %d bytes", name.c_str(), numBytes);
+        LOGERROR("Can't read from file %s %d bytes", name.c_str(), numBytes);
 
         DISPLAY_LAST_ERROR();
     }
@@ -333,7 +333,7 @@ void FS::CreateDirectory(std::string &path)
 
     if (SHCreateDirectory(NULL, wpath.c_str()) != 0)
     {
-        LOG_ERROR("Can't create directory %s", full.c_str());
+        LOGERROR("Can't create directory %s", full.c_str());
 
         DISPLAY_LAST_ERROR();
     }

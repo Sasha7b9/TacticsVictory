@@ -180,7 +180,7 @@ void Log::Write(pchar file, int line, pchar format, ...)
 
 Log::~Log()
 {
-    LOG_WRITE("Close application");
+    LOGWRITE("Close application");
 }
 
 #ifdef WIN32

@@ -36,16 +36,18 @@ else()
 
 endif()
 
-file(GLOB SRC                           *.cpp
+file(GLOB SRC         ../../common_files/defines_.h
+                                        *.cpp
                                         *.h)
 file(GLOB CONTAINER   ../../common_files/Container/Ptr_.*)
 file(GLOB FILE_SYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
                       ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK     ../../common_files/Network/Other/SocketsTCP_.*)
-file(GLOB UTILS       ../../common_files/Utils/StringUtils_.*
+file(GLOB UTILS       ../../common_files/Utils/Log_.*
+                      ../../common_files/Utils/LogRAW_.*
+                      ../../common_files/Utils/StringUtils_.*
                       ../../common_files/Utils/SystemFunctions_.*
-                      ../../common_files/Utils/SystemUtils_.*
-                                         Utils/Log.*)
+                      ../../common_files/Utils/SystemUtils_.*)
 
 source_group(src        FILES ${SRC})
 source_group(Container  FILES ${CONTAINER})

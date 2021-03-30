@@ -39,7 +39,7 @@
 
 #include "Network/Other/SocketsTCP_.h"
 
-#include "Utils/Log.h"
+#include "Utils/Log_.h"
 #include "Utils/StringUtils_.h"
 #include "Utils/SystemFunctions_.h"
 #include "Utils/SystemUtils_.h"

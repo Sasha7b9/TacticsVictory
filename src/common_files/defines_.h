@@ -45,3 +45,5 @@ typedef float(*pFuncFV)();
 typedef void(*pFuncVF)(float);
 
 #define UNUSED(x) (void)x
+
+#define SAFE_DELETE(x) if(x != nullptr) { delete x; x = nullptr; }

@@ -8,6 +8,6 @@
 
 #else
 
-
+#include "Utils/LogRAW_.h"
 
 #endif

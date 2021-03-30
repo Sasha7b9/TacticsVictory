@@ -21,7 +21,7 @@ int Master::Run()
 
     if (acceptor.Bind(port))
     {
-        LOG_WRITE("Wait connections ...");
+        LOGWRITE("Wait connections ...");
 
         while (run)
         {
@@ -33,7 +33,7 @@ int Master::Run()
             }
             else
             {
-                LOG_ERROR("Error accept");
+                LOGERROR("Error accept");
             }
         }
     }
@@ -75,7 +75,7 @@ static void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, in
             }
             else
             {
-                LOG_ERROR("Invalid request : \"%s %s %s\"", words[0].c_str(), words[1].c_str(), words[2].c_str());
+                LOGERROR("Invalid request : \"%s %s %s\"", words[0].c_str(), words[1].c_str(), words[2].c_str());
             }
         }
     }

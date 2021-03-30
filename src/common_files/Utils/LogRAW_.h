@@ -1,9 +1,9 @@
 #pragma once
 
 
-#define LOG_WRITE(...) Log::Write(__FILE__, __LINE__, __VA_ARGS__)
-#define LOG_ERROR(...) Log::Error(__FILE__, __LINE__, __VA_ARGS__)
-#define LOG_WARNING(...) Log::Warning(__FILE__, __LINE__, __VA_ARGS__);
+#define LOGWRITE(...) Log::Write(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGERROR(...) Log::Error(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGWARNING(...) Log::Warning(__FILE__, __LINE__, __VA_ARGS__);
 
 
 class Log

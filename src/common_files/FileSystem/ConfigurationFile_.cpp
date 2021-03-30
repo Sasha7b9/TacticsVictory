@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
 
-#define CHECK_ON_VALID_STRING   if (!isValid) { LOG_ERROR("Configuration file is not valid"); return nullptr; }
-#define CHECK_ON_VALID_INT      if (!isValid) { LOG_ERROR("Configuration file is not valid"); return -1; }
+#define CHECK_ON_VALID_STRING   if (!isValid) { LOGERROR("Configuration file is not valid"); return nullptr; }
+#define CHECK_ON_VALID_INT      if (!isValid) { LOGERROR("Configuration file is not valid"); return -1; }
 
 
 bool ConfigurationFile::Load(pchar name) //-V2506
@@ -14,7 +14,7 @@ bool ConfigurationFile::Load(pchar name) //-V2506
 
     if (!file.IsOpened())
     {
-        LOG_ERROR("Can't load configuration file %s", name);
+        LOGERROR("Can't load configuration file %s", name);
 
         return false;
     }
@@ -27,14 +27,14 @@ bool ConfigurationFile::Load(pchar name) //-V2506
 
     if (document->HasParseError())
     {
-        LOG_ERROR("Can't parse configuration file %s. Error %d", name, document->GetParseError());
+        LOGERROR("Can't parse configuration file %s. Error %d", name, document->GetParseError());
 
         isValid = false;
 
         return false;
     }
     
-    LOG_WRITE("Configuration file %s is parsed", name);
+    LOGWRITE("Configuration file %s is parsed", name);
 
     isValid = true;
 
@@ -59,7 +59,7 @@ int ConfigurationFile::GetIntValue(pchar key) //-V2506
         return it->value.GetInt();
     }
 
-    LOG_ERROR("Can't find value for \"%s\"", key);
+    LOGERROR("Can't find value for \"%s\"", key);
 
     return -1;
 }
@@ -84,7 +84,7 @@ int ConfigurationFile::GetIntValue(pchar key1, pchar key2) //-V2506
         }
     }
 
-    LOG_ERROR("Can't find value for \"%s\" \"%s\"", key1, key2);
+    LOGERROR("Can't find value for \"%s\" \"%s\"", key1, key2);
 
     return -1;
 }
@@ -101,7 +101,7 @@ pchar ConfigurationFile::GetStringValue(pchar key) //-V2506
         return it->value.GetString();
     }
 
-    LOG_ERROR("Can't find value for \"%s\" key", key);
+    LOGERROR("Can't find value for \"%s\" key", key);
 
     return nullptr;
 }
@@ -126,7 +126,7 @@ pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2) //-V2506
         }
     }
 
-    LOG_ERROR("Can't find value for \"%s\" \"%s\"", key1, key2);
+    LOGERROR("Can't find value for \"%s\" \"%s\"", key1, key2);
 
     return nullptr;
 }
@@ -156,7 +156,7 @@ pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2, pchar key3) //-V
         }
     }
 
-    LOG_ERROR("Can't find value for \"%s\" \"%s\" \"%s\"", key1, key2, key3);
+    LOGERROR("Can't find value for \"%s\" \"%s\" \"%s\"", key1, key2, key3);
 
     return nullptr;
 }
@@ -168,7 +168,7 @@ bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &st
 
     if (!isValid)
     {
-        LOG_ERROR("Configuration file is not valid");
+        LOGERROR("Configuration file is not valid");
         return false;
     }
 
@@ -192,7 +192,7 @@ bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &st
 
     if (strings.size() == 0)
     {
-        LOG_ERROR("Can't load array from key %s", key);
+        LOGERROR("Can't load array from key %s", key);
     }
 
     return strings.size() != 0;

@@ -24,11 +24,11 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
 
     if (connection->is_connected())
     {
-        LOG_WRITE("Connect to %s:%d success", host.c_str(), port);
+        LOGWRITE("Connect to %s:%d success", host.c_str(), port);
     }
     else
     {
-        LOG_ERROR("%d - Connect to %s:%d failed. Error : %s", counter++, host.c_str(), port, connection->last_error_str().c_str());
+        LOGERROR("%d - Connect to %s:%d failed. Error : %s", counter++, host.c_str(), port, connection->last_error_str().c_str());
     }
 
     return connection->is_connected();
@@ -87,7 +87,7 @@ void ConnectorTCP::Receive(std::string &data)
     }
     else
     {
-        LOG_WARNING("Not received a file from peer %s", connection->peer_address().to_string().c_str());
+        LOGWARNING("Not received a file from peer %s", connection->peer_address().to_string().c_str());
     }
 }
 
@@ -107,7 +107,7 @@ std::string ConnectorTCP::Receive()
     }
     else
     {
-        LOG_WARNING("Not received a file from address %s, peer %s", connection->address().to_string().c_str(), connection->peer_address().to_string().c_str());
+        LOGWARNING("Not received a file from address %s, peer %s", connection->address().to_string().c_str(), connection->peer_address().to_string().c_str());
     }
 
     return result;
@@ -133,12 +133,12 @@ bool AcceptorTCP::Bind(uint16 port)
 
     if (connection->is_open())
     {
-        LOG_WRITE("Bind to port %d success", port);
+        LOGWRITE("Bind to port %d success", port);
     }
     else
     {
-        LOG_ERROR("Bind to port %d failed", port);
-        LOG_ERROR(connection->last_error_str().c_str());
+        LOGERROR("Bind to port %d failed", port);
+        LOGERROR(connection->last_error_str().c_str());
     }
 
     return connection->is_open();
@@ -153,11 +153,11 @@ bool AcceptorTCP::Accept(Socket &socket)
 
     if (!socket.sock)
     {
-        LOG_ERROR("Fail accept connection. Error : %s", connection->last_error_str().c_str());
+        LOGERROR("Fail accept connection. Error : %s", connection->last_error_str().c_str());
     }
     else
     {
-        LOG_WRITE("Accept connection from %s", socket.peer->to_string().c_str());
+        LOGWRITE("Accept connection from %s", socket.peer->to_string().c_str());
     }
 
     return socket.sock.is_open();
@@ -176,7 +176,7 @@ void ThreadSocket(AcceptorTCP::Socket socket, void (*onReceive)(AcceptorTCP::Soc
 
         if (n <= 0)
         {
-            LOG_WRITE("Close connection %s", socket.peer->to_string().c_str());
+            LOGWRITE("Close connection %s", socket.peer->to_string().c_str());
             break;
         }
 

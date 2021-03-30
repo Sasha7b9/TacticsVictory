@@ -7,7 +7,7 @@ int main(int, char *[]) //-V2504
 
     Log::Create("Master.log");
 
-    LOG_WRITE("Start Master");
+    LOGWRITE("Start Master");
 
     if (!gConfig.Load("Master.conf"))
     {
