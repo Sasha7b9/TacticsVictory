@@ -46,3 +46,4 @@ if(WIN32)
 endif()
 
 add_subdirectory_with_folder("common" common/BattleTV)
+add_subdirectory_with_folder("remote" remote/Master)
