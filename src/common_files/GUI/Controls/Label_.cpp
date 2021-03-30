@@ -22,8 +22,11 @@ void Label::RegisterObject()
 SharedPtr<Label> Label::Create(pchar text_, bool center, int sizeFont, int width, int height)
 {
     SharedPtr<Label> text(new Label(TheContext));
-    text->text = text_;
+
+    text->SetText(text_);
+
     text->SetFont(TheFont, (float)sizeFont);
+
     if (center)
     {
         text->SetAlignment(HA_CENTER, VA_CENTER);
@@ -46,8 +49,6 @@ SharedPtr<Label> Label::Create(pchar text_, bool center, int sizeFont, int width
         text->SetFixedSize(width, height);
     }
 
-    text->SetText(text_);
-
     return text;
 }
 
@@ -62,5 +63,10 @@ void Label::SetText(pchar t)
 
 void Label::HandleChangeLanguage(StringHash, VariantMap&)
 {
+    if (text[3] == '.')
+    {
+        int i = 0;
+    }
+
     Text::SetText((char*)TheLocalization->Get(text).CString());
 }

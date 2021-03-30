@@ -63,19 +63,19 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
 
     for (int i = 0; i < HeaderRowStruct::NUM; i++)
     {
-        SharedPtr<Label> label = Label::Create(header_rows[i].sample_text.CString());
-        label->SetTextAlignment(header_rows[i].h_align);
-        UIElement *h = header->GetChild(header_rows[i].name, true);
+        String text = header_rows[i].sample_text;
+
         if (String("Address") == header_rows[i].name)
         {
-            label->SetAutoLocalizable(false);
-
-            String address;
-            address.AppendWithFormat("%d.%d.%d.%d",
+            text.Clear();
+            text.AppendWithFormat("%d.%d.%d.%d",
                 std::rand() % 255, std::rand() % 255, std::rand() % 255, std::rand() % 255);
-
-            label->SetText(address.CString());
         }
+
+        SharedPtr<Label> label = Label::Create(text.CString());
+        label->SetTextAlignment(header_rows[i].h_align);
+        UIElement *h = header->GetChild(header_rows[i].name, true);
+
         label->SetFixedWidth(h->GetWidth());
         window->AddChild(label);
     }
