@@ -14,7 +14,7 @@ public:
     void SetText(pchar text);
     
 private:
-    pchar text = nullptr;
+    String text;
 
     void HandleChangeLanguage(StringHash, VariantMap&);
 };

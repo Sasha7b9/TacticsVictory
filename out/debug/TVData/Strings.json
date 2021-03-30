@@ -60,6 +60,8 @@
     "Red":                  { "en":"Red",               "ru":"Красный" },
     "Return":               { "en":"Return",            "ru":"Вернуться" },
 
+    "Server":               { "ru":"Сервер" },
+
     "Tactics Victory":      { "en":"Tactics Victory",   "ru":"Тактика Победы" },
     "Texture anisotropy":   { "en":"Texture anisotropy","ru":"Фильтрация текстур" },
     "Texture quality":      { "en":"Texture quality",   "ru":"Качество текстур" },

@@ -73,6 +73,12 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
         }
 
         SharedPtr<Label> label = Label::Create(text.CString());
+
+        if (String("Address") == header_rows[i].name)
+        {
+            label->SetVar("NAME", "ADDRESS");
+        }
+
         label->SetTextAlignment(header_rows[i].h_align);
         UIElement *h = header->GetChild(header_rows[i].name, true);
 
