@@ -4,7 +4,7 @@
 #include "Scene/Terrain/Level_.h"
 #include "Scene/Terrain/SegmentTerrain_.h"
 #include "Utils/GlobalFunctions.h"
-#include "Utils/StringUtils.h"
+#include "Utils/StringUtils_.h"
 
 
 static bool IsCorrectSymbol(char symbol)

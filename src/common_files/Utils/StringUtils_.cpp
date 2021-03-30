@@ -1,4 +1,17 @@
 #include "stdafx.h"
+#include "Utils/StringUtils_.h"
+
+
+char *SU::Strcat(char *dest, pchar source)
+{
+#ifdef WIN32
+#pragma warning(push, 2)
+#endif
+    return strcat(dest, source);
+#ifdef WIN32
+#pragma warning(pop)
+#endif
+}
 
 
 void SU::SplitToWords(pchar symbols, int number, std::vector<std::string> &out)
