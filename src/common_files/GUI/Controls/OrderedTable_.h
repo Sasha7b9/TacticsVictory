@@ -11,14 +11,14 @@ public:
 
     HeaderTable();
 
-    struct Row
+    struct Column
     {
-        Row(pchar n, int w) : name(n), width(w) {}
+        Column(pchar n, int w) : name(n), width(w) {}
         pchar name;
-        int width;
+        int   width;
     };
 
-    Vector<Row> rows;
+    Vector<Column> columns;
 };
 
 

@@ -19,7 +19,7 @@ struct HeaderRowStruct
 static HeaderRowStruct header_rows[HeaderRowStruct::NUM] =
 {
     { "Name",    470, HA_LEFT,   "Server" },
-    { "Address", 135, HA_LEFT, "127.127.127.127" },
+    { "Address", 135, HA_LEFT,   "127.127.127.127" },
     { "Ping",    40,  HA_CENTER, "999" },
     { "CPU%",    40,  HA_CENTER, "100" }
 };
@@ -29,7 +29,7 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
 {
     for (int i = 0; i < HeaderRowStruct::NUM; i++)
     {
-        rows.Push({ header_rows[i].name, header_rows[i].width });
+        columns.Push({ header_rows[i].name, header_rows[i].width });
     }
 
     SharedPtr<Window> window(new Window(TheContext));
@@ -39,12 +39,12 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
 
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
 
-    for (uint i = 0; i < rows.Size(); i++)
+    for (uint i = 0; i < columns.Size(); i++)
     {
-        Row &row = rows[i];
-        SharedPtr<ButtonT> header_row(new ButtonT(window, row.name));
-        header_row->SetName(row.name);
-        header_row->SetFixedWidth(row.width);
+        Column &column = columns[i];
+        SharedPtr<ButtonT> header_row(new ButtonT(window, column.name));
+        header_row->SetName(column.name);
+        header_row->SetFixedWidth(column.width);
         window->AddChild(header_row);
     }
 
