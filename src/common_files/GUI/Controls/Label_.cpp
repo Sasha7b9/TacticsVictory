@@ -63,10 +63,5 @@ void Label::SetText(pchar t)
 
 void Label::HandleChangeLanguage(StringHash, VariantMap&)
 {
-    if (text[3] == '.')
-    {
-        int i = 0;
-    }
-
     Text::SetText((char*)TheLocalization->Get(text).CString());
 }
