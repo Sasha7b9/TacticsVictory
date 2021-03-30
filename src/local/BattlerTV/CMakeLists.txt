@@ -7,7 +7,7 @@ include_directories(.
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
-add_definitions(-DURHO3D_LOGGING)
+add_definitions(-DURHO3D_LOGGING -DLOG_U3D)
 
 if(WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
@@ -92,7 +92,11 @@ file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Object
 file(GLOB SCENE_PRIMITIVES                       ../../common_files/Scene/Primitives/*.*)
 file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*
                                                                     Scene/Terrain/*.*)
-file(GLOB UTILS                                  ../../common_files/Utils/*.*
+file(GLOB UTILS                                  ../../common_files/Utils/Log_.*
+                                                 ../../common_files/Utils/LogU3D_.*
+                                                 ../../common_files/Utils/StringUtils_.*
+                                                 ../../common_files/Utils/SystemFunctions_.*
+                                                 ../../common_files/Utils/SystemUtils_.*
                                                                     Utils/*.*)
 
 source_group(src                                        FILES ${SRC})
