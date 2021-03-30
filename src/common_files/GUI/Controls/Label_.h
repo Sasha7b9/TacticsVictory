@@ -10,7 +10,9 @@ public:
     Label(Context *);
     static void RegisterObject();
 
-    static SharedPtr<Label> Create(pchar text, bool center = true, int sizeFont = 20, int width = -1, int height = -1);
+    static SharedPtr<Label> Create(pchar text, bool center = true, int sizeFont = 20, int width = -1, int height = -1,
+        bool auto_translate = true);
+
     void SetText(pchar text);
     
 private:

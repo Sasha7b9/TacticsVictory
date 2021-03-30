@@ -19,9 +19,14 @@ void Label::RegisterObject()
 }
 
 
-SharedPtr<Label> Label::Create(pchar text_, bool center, int sizeFont, int width, int height)
+SharedPtr<Label> Label::Create(pchar text_, bool center, int sizeFont, int width, int height, bool auto_translate)
 {
     SharedPtr<Label> text(new Label(TheContext));
+
+    if (!auto_translate)
+    {
+        text->SetVar(VAR_GUI_NO_TRANSLATE, true);
+    }
 
     text->SetText(text_);
 
@@ -57,11 +62,20 @@ void Label::SetText(pchar t)
 {
     text = t;
 
-    Text::SetText(TheLocalization->Get(text));
+    Text::SetText(text);
+
+    VariantMap variant;
+
+    HandleChangeLanguage("", variant);
 }
 
 
 void Label::HandleChangeLanguage(StringHash, VariantMap&)
 {
-    Text::SetText((char*)TheLocalization->Get(text).CString());
+    const Variant &var = GetVar(VAR_GUI_NO_TRANSLATE);
+
+    if (var.IsEmpty() || !var.GetBool())
+    {
+        Text::SetText((char *)TheLocalization->Get(text).CString());
+    }
 }

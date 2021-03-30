@@ -194,7 +194,7 @@ void GUI::Create()
     TheWindowVars->AddFunctionFloat("Camera pitch", GetCameraPitch, nullptr);
     TheWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
     TheWindowVars->AddFunctionFloat("Net speed in, kB/s", GetSpeedNetIN, nullptr);
-    TheWindowVars->AddFunctionFloat("Net speec out, kB/s", GetSpeedNetOUT, nullptr);
+    TheWindowVars->AddFunctionFloat("Net speed out, kB/s", GetSpeedNetOUT, nullptr);
 
     TheLocalization->SetLanguage("en");
 

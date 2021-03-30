@@ -7,10 +7,11 @@
 
 struct HeaderRowStruct
 {
+    static const int NUM = 4;
+
     pchar name;
     int width;
     HorizontalAlignment h_align;
-    static const int NUM = 4;
 
     String sample_text;
 };
@@ -72,12 +73,7 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
                 std::rand() % 255, std::rand() % 255, std::rand() % 255, std::rand() % 255);
         }
 
-        SharedPtr<Label> label = Label::Create(text.CString());
-
-        if (String("Address") == header_rows[i].name)
-        {
-            label->SetVar("NAME", "ADDRESS");
-        }
+        SharedPtr<Label> label = Label::Create(text.CString(), true, 20, -1, -1, false);
 
         label->SetTextAlignment(header_rows[i].h_align);
         UIElement *h = header->GetChild(header_rows[i].name, true);

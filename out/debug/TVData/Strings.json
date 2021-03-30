@@ -1,6 +1,6 @@
 {
     "Add":                  { "en":"Add",               "ru":"Добавить" },
-    "Address":              { "ru":"Адрес" },
+    "Address":              { "en":"Address",           "ru":"Адрес" },
 
     "Back":                 { "en":"Back",              "ru":"Назад" },
     "Blue":                 { "en":"Blue",              "ru":"Синий" },
@@ -12,7 +12,10 @@
     "Cancel":               { "en":"Cancel",            "ru":"Отмена" },
     "Close":                { "en":"Close",             "ru":"Закрыть" },
     "Clear":                { "en":"Clear",             "ru":"Очистить" },
+    "Connect":              { "en":"Connect",           "ru":"Соединение" },
+    "CPU%":                 { "en":"CPU%",              "ru":"CPU%" },
     "Create server":        { "en":"Create server",     "ru":"Создать сервер" },
+    "CreateNewMap":         { "en":"CreateNewMap",      "ru":"CreateNewMap" },
 
     "Debug":                { "en":"Debug",             "ru":"Отладка" },
     "Dimension X":          { "en":"Dimension X",       "ru":"Размер X" },
@@ -30,9 +33,9 @@
 
     "Info":                 { "en":"Info",              "ru":"Информация" },
 
-    "List of available servers" : {"ru":"Список доступных серверов" },
-    "Load":                       { "en":"Load",              "ru":"Загрузить" },
-    "Low":                        { "en":"Low",               "ru":"Низкое" },
+    "List of available servers" : { "en":"List of available servers", "ru":"Список доступных серверов" },
+    "Load":                       { "en":"Load",                      "ru":"Загрузить" },
+    "Low":                        { "en":"Low",                       "ru":"Низкое" },
 
     "Map":                  { "en":"Map",               "ru":"Карта" },
     "Material quality":     { "en":"Material quality",  "ru":"Качество материалов" },
@@ -40,9 +43,11 @@
     "Medium":               { "en":"Medium",            "ru":"Среднее" },
     "Menu":                 { "en":"Menu",              "ru":"Меню" },
 
-    "Name":                 { "ru":"Имя" },
-    "New Game":             { "en":"New Game",          "ru":"Новая игра" },
-    "New map":              { "en":"New map",           "ru":"Новая карта" },
+    "Name":                 { "en":"Name",                "ru":"Имя" },
+    "Net speed in, kB/s":   { "en":"Net speed in, kB/s",  "ru":"Net speed in, kB/s" },
+    "Net speed out, kB/s":  { "en":"Net speed out, kB/s", "ru":"Net speed out, kB/s" },
+    "New Game":             { "en":"New Game",            "ru":"Новая игра" },
+    "New map":              { "en":"New map",             "ru":"Новая карта" },
 
     "Off":                  { "en":"Off",               "ru":"Откл" },
     "Ok":                   { "en":"Ok",                "ru":"Хорошо" },
@@ -50,7 +55,7 @@
     "Options":              { "en":"Options",           "ru":"Опции" },
 
     "Panel":                { "en":"Panel",             "ru":"Панель" },
-    "Ping":                 { "ru":"Пинг" },
+    "Ping":                 { "en":"Ping",              "ru":"Пинг" },
     "Platoons":             { "en":"Platoons",          "ru":"Взводы" },
     "Play":                 { "en":"Play",              "ru":"Играть" },
     "Press this button":    { "en":"Press this button", "ru":"Нажмите эту кнопку" },
@@ -66,6 +71,7 @@
     "Texture anisotropy":   { "en":"Texture anisotropy","ru":"Фильтрация текстур" },
     "Texture quality":      { "en":"Texture quality",   "ru":"Качество текстур" },
     "Title":                { "en":"Title",             "ru":"Заголовок" },
+    "TPlane":               { "en":"TPlane",            "ru":"TPlane" },
 
     "Units":                { "en":"Units",             "ru":"Подразделения" },
 
