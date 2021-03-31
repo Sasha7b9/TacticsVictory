@@ -15,6 +15,7 @@ cmake_policy(SET CMP0091 NEW)
 # Set project name
 project (ThirdParty)
 
+set(CMAKE_CXX_STANDARD 17)
 set (TARGET_NAME ThirdParty)
 set (PROGECT_TANKIST_DIR /home/sasha/TankistU3D)
 
