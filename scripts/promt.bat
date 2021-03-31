@@ -1,5 +1,7 @@
 @echo off
 
+set PATH=%PATH%;C:\Program Files\CMake\bin
+
 set _CURRENT_DIR_=%CD%
 
 cd ..
