@@ -12,4 +12,7 @@ public:
 private:
 
     static void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar data, int size);
+
+    // Мастер работает, пока run == true
+    static bool run;
 };
