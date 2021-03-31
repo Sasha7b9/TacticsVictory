@@ -2,9 +2,9 @@
 #include "stdafx.h"
 
 
-static void HandlerClose(AcceptorTCP::Socket &socket, std::vector<std::string> &words, void *cookie = nullptr);
-static void HandlerGet(AcceptorTCP::Socket &socket, std::vector<std::string> &words, void *cookie = nullptr);
-static void HandlerTerminate(AcceptorTCP::Socket &socket, std::vector<std::string> &words, void *cookie);
+static void HandlerClose(AcceptorTCP::Socket &socket, const std::vector<std::string> &words, void *cookie = nullptr);
+static void HandlerGet(AcceptorTCP::Socket &socket, const std::vector<std::string> &words, void *cookie = nullptr);
+static void HandlerTerminate(AcceptorTCP::Socket &socket, const std::vector<std::string> &words, void *cookie);
 
 
 void Master::PrepareHandlers()
@@ -39,11 +39,11 @@ void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, i
     {
         HandlerGet(socket, words);
     }
-    else if (words[0] == "close" && words.size() == 2 && words[1] == "connection")          // close connection
+    else if (words[0] == "close")               // close connection
     {
         HandlerClose(socket, words);
     }
-    else if (words[0] == "terminate")                                                       // terminate //-V2516
+    else if (words[0] == "terminate")           // terminate //-V2516
     {
         HandlerTerminate(socket, words, (void *)&run);
     }
@@ -52,7 +52,7 @@ void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, i
 }
 
 
-static void HandlerClose(AcceptorTCP::Socket &socket, std::vector<std::string> &words, void *)
+static void HandlerClose(AcceptorTCP::Socket &socket, const std::vector<std::string> &words, void *)
 {
     if (words.size() == 2 && words[1] == "connection")
     {
@@ -61,7 +61,7 @@ static void HandlerClose(AcceptorTCP::Socket &socket, std::vector<std::string> &
 }
 
 
-static void HandlerGet(AcceptorTCP::Socket &socket, std::vector<std::string> &words, void *)
+static void HandlerGet(AcceptorTCP::Socket &socket, const std::vector<std::string> &words, void *)
 {
     if (words.size() == 3)
     {
@@ -81,7 +81,7 @@ static void HandlerGet(AcceptorTCP::Socket &socket, std::vector<std::string> &wo
 }
 
 
-static void HandlerTerminate(AcceptorTCP::Socket &, std::vector<std::string> &, void *cookie)
+static void HandlerTerminate(AcceptorTCP::Socket &, const std::vector<std::string> &, void *cookie)
 {
     bool *run = (bool *)cookie;
 
