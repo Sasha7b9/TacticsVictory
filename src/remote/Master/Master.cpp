@@ -40,3 +40,9 @@ int Master::Run()
 
     return 0;
 }
+
+
+void Master::Terminate()
+{
+    run = false;
+}

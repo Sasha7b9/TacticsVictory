@@ -9,6 +9,8 @@ public:
 
     int Run();
 
+    static void Terminate();
+
 private:
 
     static void PrepareHandlers();

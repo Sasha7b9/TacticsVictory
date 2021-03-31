@@ -2,14 +2,22 @@
 #include "stdafx.h"
 
 
-static void HandlerClose(AcceptorTCP::Socket &socket, const std::vector<std::string> &words, void *cookie = nullptr);
-static void HandlerGet(AcceptorTCP::Socket &socket, const std::vector<std::string> &words, void *cookie = nullptr);
-static void HandlerTerminate(AcceptorTCP::Socket &socket, const std::vector<std::string> &words, void *cookie);
+static void HandlerClose(AcceptorTCP::Socket &socket, const std::vector<std::string> &words);
+static void HandlerGet(AcceptorTCP::Socket &socket, const std::vector<std::string> &words);
+static void HandlerTerminate(AcceptorTCP::Socket &socket, const std::vector<std::string> &words);
+
+
+typedef void (*Handler)(AcceptorTCP::Socket &, const std::vector<std::string> &);
+
+
+static std::map<std::string, Handler> map;
 
 
 void Master::PrepareHandlers()
 {
-
+    map["close"] = HandlerClose;
+    map["get"] = HandlerGet;
+    map["terminate"] = HandlerTerminate;
 }
 
 
@@ -24,35 +32,29 @@ void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, i
         return;
     }
 
-    uint *sizeCommand = (uint *)&buffer[0]; //-V206
+    uint *size_ñommand = (uint *)&buffer[0]; //-V206
 
-    if ((uint)(buffer.size() - sizeof(uint)) < *sizeCommand) //-V202
+    if ((uint)(buffer.size() - sizeof(uint)) < *size_ñommand) //-V202
     {
         return;
     }
 
     std::vector<std::string> words;
 
-    SU::SplitToWords(&buffer[sizeof(uint)], (int)*sizeCommand, words);
+    SU::SplitToWords(&buffer[sizeof(uint)], (int)*size_ñommand, words);
 
-    if (words[0] == "get")
+    auto iter = map.find(words[0]);
+
+    if (iter != map.end())
     {
-        HandlerGet(socket, words);
-    }
-    else if (words[0] == "close")               // close connection
-    {
-        HandlerClose(socket, words);
-    }
-    else if (words[0] == "terminate")           // terminate //-V2516
-    {
-        HandlerTerminate(socket, words, (void *)&run);
+        iter->second(socket, words);
     }
 
-    buffer.erase(0, sizeof(uint) + (size_t)*sizeCommand); //-V201
+    buffer.erase(0, sizeof(uint) + (size_t)*size_ñommand); //-V201
 }
 
 
-static void HandlerClose(AcceptorTCP::Socket &socket, const std::vector<std::string> &words, void *)
+static void HandlerClose(AcceptorTCP::Socket &socket, const std::vector<std::string> &words)
 {
     if (words.size() == 2 && words[1] == "connection")
     {
@@ -61,7 +63,7 @@ static void HandlerClose(AcceptorTCP::Socket &socket, const std::vector<std::str
 }
 
 
-static void HandlerGet(AcceptorTCP::Socket &socket, const std::vector<std::string> &words, void *)
+static void HandlerGet(AcceptorTCP::Socket &socket, const std::vector<std::string> &words)
 {
     if (words.size() == 3)
     {
@@ -81,11 +83,9 @@ static void HandlerGet(AcceptorTCP::Socket &socket, const std::vector<std::strin
 }
 
 
-static void HandlerTerminate(AcceptorTCP::Socket &, const std::vector<std::string> &, void *cookie)
+static void HandlerTerminate(AcceptorTCP::Socket &, const std::vector<std::string> &)
 {
-    bool *run = (bool *)cookie;
-
-    *run = false;
+    Master::Terminate();
 
     //            MasterServer master(gConfig);
     //
