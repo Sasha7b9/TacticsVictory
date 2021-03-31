@@ -2,7 +2,9 @@
 #include "stdafx.h"
 
 
-static void HandlerGet(AcceptorTCP::Socket &socket, std::vector<std::string> &words);
+static void HandlerClose(AcceptorTCP::Socket &socket, std::vector<std::string> &words, void *cookie = nullptr);
+static void HandlerGet(AcceptorTCP::Socket &socket, std::vector<std::string> &words, void *cookie = nullptr);
+static void HandlerTerminate(AcceptorTCP::Socket &socket, std::vector<std::string> &words, void *cookie);
 
 
 void Master::PrepareHandlers()
@@ -39,22 +41,27 @@ void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, i
     }
     else if (words[0] == "close" && words.size() == 2 && words[1] == "connection")          // close connection
     {
-        socket.sock.close();
+        HandlerClose(socket, words);
     }
     else if (words[0] == "terminate")                                                       // terminate //-V2516
     {
-        run = false;
-
-        //            MasterServer master(gConfig);
-        //
-        //            master.Connnect("127.0.0.1", static_cast<uint16>(gConfig.GetIntValue("port")));
+        HandlerTerminate(socket, words, (void *)&run);
     }
 
     buffer.erase(0, sizeof(uint) + (size_t)*sizeCommand); //-V201
 }
 
 
-static void HandlerGet(AcceptorTCP::Socket &socket, std::vector<std::string> &words)
+static void HandlerClose(AcceptorTCP::Socket &socket, std::vector<std::string> &words, void *)
+{
+    if (words.size() == 2 && words[1] == "connection")
+    {
+        socket.sock.close();
+    }
+}
+
+
+static void HandlerGet(AcceptorTCP::Socket &socket, std::vector<std::string> &words, void *)
 {
     if (words.size() == 3)
     {
@@ -71,4 +78,16 @@ static void HandlerGet(AcceptorTCP::Socket &socket, std::vector<std::string> &wo
             }
         }
     }
+}
+
+
+static void HandlerTerminate(AcceptorTCP::Socket &, std::vector<std::string> &, void *cookie)
+{
+    bool *run = (bool *)cookie;
+
+    *run = false;
+
+    //            MasterServer master(gConfig);
+    //
+    //            master.Connnect("127.0.0.1", static_cast<uint16>(gConfig.GetIntValue("port")));
 }
