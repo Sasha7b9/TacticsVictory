@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.4)
+cmake_minimum_required(VERSION 3.20)
 
 
 # Libraries linked via full path no longer produce linker search paths

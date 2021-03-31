@@ -68,9 +68,9 @@ include(../../RuntimeLibrary.cmake)      # Исключаем зависимости от динамических
                                          # выполнения релизной версии
 
 if(WIN32)
-#    include(../../CopyToDirEXE.cmake)
-#    include(../../SetWorkingDirectory.cmake)
+    include(../../CopyToDirEXE.cmake)
+    include(../../SetWorkingDirectory.cmake)
 endif()
 
 include(../../LinkLibraries.cmake)          # Подключаем дополнительные библиотеки
-#include(../../Install.cmake)
+include(../../Install.cmake)
