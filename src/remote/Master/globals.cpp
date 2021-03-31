@@ -1,4 +1,4 @@
 #include "stdafx.h"
 
 
-ConfigurationFile gConfig;
+ConfigurationFile TheConfig;

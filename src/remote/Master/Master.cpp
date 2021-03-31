@@ -15,7 +15,7 @@ static bool run = true;
 
 int Master::Run()
 {
-    uint16 port = static_cast<uint16>(gConfig.GetIntValue("port"));
+    uint16 port = static_cast<uint16>(TheConfig.GetIntValue("port"));
 
     AcceptorTCP acceptor;
 
@@ -68,7 +68,7 @@ static void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, in
     {
         if (words[1] == "address")                                                          // get address
         {
-            pchar address = gConfig.GetStringValue("address", words[2].c_str());
+            pchar address = TheConfig.GetStringValue("address", words[2].c_str());
             if (address)
             {
                 socket.Transmit(address);

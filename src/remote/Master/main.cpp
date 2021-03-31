@@ -9,7 +9,7 @@ int main(int, char *[]) //-V2504
 
     LOGWRITE("Start Master");
 
-    if (!gConfig.Load("Master.conf"))
+    if (!TheConfig.Load("Master.conf"))
     {
         return -1;
     }

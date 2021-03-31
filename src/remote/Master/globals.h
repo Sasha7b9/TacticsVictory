@@ -3,4 +3,4 @@
 class ConfigurationFile;
 
 
-extern ConfigurationFile gConfig;
+extern ConfigurationFile TheConfig;
