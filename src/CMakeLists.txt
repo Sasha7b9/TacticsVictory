@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.9)
+cmake_minimum_required(VERSION 3.0)
 
 # link_directories() treats paths relative to the source dir.
 cmake_policy (SET CMP0015 NEW)
