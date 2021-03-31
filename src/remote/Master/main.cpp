@@ -9,10 +9,12 @@ int main(int, char *[]) //-V2504
 
     LOGWRITE("Start Master");
 
-    if (!TheConfig.Load("Master.conf"))
+    int result = -1;
+
+    if (TheConfig.Load("Master.conf"))
     {
-        return -1;
+        result = Master().Run();
     }
 
-    return Master().Run();
+    return result;
 }
