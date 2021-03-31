@@ -8,8 +8,6 @@
 */
 
 
-static void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar data, int size);
-
 // Мастер работает, пока run == true
 static bool run = true;
 
@@ -43,7 +41,7 @@ int Master::Run()
 }
 
 
-static void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, int number)
+void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, int number)
 {
     static std::string buffer;
 
