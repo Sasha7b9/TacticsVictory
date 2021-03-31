@@ -11,6 +11,8 @@ public:
 
 private:
 
+    static void PrepareHandlers();
+
     static void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar data, int size);
 
     // Мастер работает, пока run == true

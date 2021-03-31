@@ -13,6 +13,8 @@ bool Master::run = true;
 
 int Master::Run()
 {
+    PrepareHandlers();
+
     uint16 port = static_cast<uint16>(TheConfig.GetIntValue("port"));
 
     AcceptorTCP acceptor;

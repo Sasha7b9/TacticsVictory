@@ -2,6 +2,15 @@
 #include "stdafx.h"
 
 
+static void HandlerGet(AcceptorTCP::Socket &socket, std::vector<std::string> &words);
+
+
+void Master::PrepareHandlers()
+{
+
+}
+
+
 void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, int number)
 {
     static std::string buffer;
@@ -24,20 +33,9 @@ void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, i
 
     SU::SplitToWords(&buffer[sizeof(uint)], (int)*sizeCommand, words);
 
-    if (words[0] == "get" && words.size() == 3)
+    if (words[0] == "get")
     {
-        if (words[1] == "address")                                                          // get address
-        {
-            pchar address = TheConfig.GetStringValue("address", words[2].c_str());
-            if (address)
-            {
-                socket.Transmit(address);
-            }
-            else
-            {
-                LOGERROR("Invalid request : \"%s %s %s\"", words[0].c_str(), words[1].c_str(), words[2].c_str());
-            }
-        }
+        HandlerGet(socket, words);
     }
     else if (words[0] == "close" && words.size() == 2 && words[1] == "connection")          // close connection
     {
@@ -53,4 +51,24 @@ void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, i
     }
 
     buffer.erase(0, sizeof(uint) + (size_t)*sizeCommand); //-V201
+}
+
+
+static void HandlerGet(AcceptorTCP::Socket &socket, std::vector<std::string> &words)
+{
+    if (words.size() == 3)
+    {
+        if (words[1] == "address")                                                          // get address
+        {
+            pchar address = TheConfig.GetStringValue("address", words[2].c_str());
+            if (address)
+            {
+                socket.Transmit(address);
+            }
+            else
+            {
+                LOGERROR("Invalid request : \"%s %s %s\"", words[0].c_str(), words[1].c_str(), words[2].c_str());
+            }
+        }
+    }
 }
