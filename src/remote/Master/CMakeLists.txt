@@ -39,7 +39,6 @@ endif()
 file(GLOB SRC         ../../common_files/defines_.h
                                         *.cpp
                                         *.h)
-file(GLOB CONTAINER   ../../common_files/Container/Ptr_.*)
 file(GLOB FILE_SYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
                       ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK     ../../common_files/Network/Other/SocketsTCP_.*)
@@ -50,7 +49,6 @@ file(GLOB UTILS       ../../common_files/Utils/Log_.*
                       ../../common_files/Utils/SystemUtils_.*)
 
 source_group(src        FILES ${SRC})
-source_group(Container  FILES ${CONTAINER})
 source_group(FileSystem FILES ${FILE_SYSTEM})
 source_group(Network    FILES ${NETWORK})
 source_group(Utils      FILES ${UTILS})
@@ -62,7 +60,7 @@ if(WIN32)
     )
 endif()
 
-add_executable(${PROJECT_NAME} ${SRC} ${CONTAINER} ${FILE_SYSTEM} ${NETWORK} ${UTILS})
+add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
                                          # выполнени€ релизной версии
