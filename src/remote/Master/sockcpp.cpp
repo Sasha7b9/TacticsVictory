@@ -2,11 +2,11 @@
 
 #pragma warning(push, 0)
 
-#include "../../ThirdParty/sockpp_/sockpp/src/socket.cpp"
-#include "../../ThirdParty/sockpp_/sockpp/src/acceptor.cpp"
-#include "../../ThirdParty/sockpp_/sockpp/src/connector.cpp"
-#include "../../ThirdParty/sockpp_/sockpp/src/stream_socket.cpp"
-#include "../../ThirdParty/sockpp_/sockpp/src/exception.cpp"
-#include "../../ThirdParty/sockpp_/sockpp/src/inet_address.cpp"
+#include "../../ThirdParty/sockpp/src/socket.cpp"
+#include "../../ThirdParty/sockpp/src/acceptor.cpp"
+#include "../../ThirdParty/sockpp/src/connector.cpp"
+#include "../../ThirdParty/sockpp/src/stream_socket.cpp"
+#include "../../ThirdParty/sockpp/src/exception.cpp"
+#include "../../ThirdParty/sockpp/src/inet_address.cpp"
 
 #pragma warning(pop)

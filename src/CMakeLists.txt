@@ -23,8 +23,7 @@ endif()
 
 set(OUT_DIR $ENV{PROJECT_DIR}\\out\\${SUB_DIR})
 
-link_directories(../../Urho3D/generated/${SUB_DIR}/lib
-                 ../generated/${SUB_DIR}/ThirdParty/sockpp_/sockpp/${CMAKE_BUILD_TYPE})
+link_directories(../../Urho3D/generated/${SUB_DIR}/lib)
 
 # set(CMAKE_CXX_STANDARD 17)
 

@@ -2,8 +2,8 @@ project (Master)
 
 include_directories(.
                     ../../common_files
-                    ../../ThirdParty/sockpp_/sockpp/include
-                    ../../ThirdParty/rapidjson_/rapidjson/include)
+                    ../../ThirdParty/sockpp/include
+                    ../../ThirdParty/rapidjson/include)
 
 if(WIN32)
 
