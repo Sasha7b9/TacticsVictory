@@ -5,8 +5,6 @@ include_directories(.
                     ../../ThirdParty/sockpp_/sockpp/include
                     ../../ThirdParty/rapidjson_/rapidjson/include)
 
-set(USE_SOCKPP 1)
-
 if(WIN32)
 
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
@@ -70,5 +68,6 @@ if(WIN32)
     include(../../SetWorkingDirectory.cmake)
 endif()
 
-include(../../LinkLibraries.cmake)          # Подключаем дополнительные библиотеки
+target_link_libraries(${PROJECT_NAME} ws2_32)
+
 include(../../Install.cmake)

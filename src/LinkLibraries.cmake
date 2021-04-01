@@ -1,15 +1,4 @@
 
-if(USE_SOCKPP)
-
-    target_link_libraries(${PROJECT_NAME} sockpp)
-    
-    if(WIN32)
-        target_link_libraries(${PROJECT_NAME} ws2_32)
-    endif()
-
-endif()
-
-
 if(USE_CPPFS)
 
     if(${CMAKE_BUILD_TYPE} STREQUAL Release)
