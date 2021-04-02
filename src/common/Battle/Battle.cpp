@@ -177,7 +177,7 @@ void Battle::SubscribeToEvents()
 
 void Battle::OpenLog()
 {
-    log = new LogT(&TheLog);
+    log = new LogU3D(&TheLog);
     TheLog->Open(GetTypeName() + ".log");
     TheLog->SetLevel(LOG_DEBUG);
 }

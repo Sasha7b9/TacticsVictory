@@ -18,6 +18,9 @@ using namespace Urho3D;
 
 #include <rapidjson/document.h>
 
+#include <iostream>
+#include <sstream>
+
 
 #pragma warning(pop)
 

@@ -18,7 +18,7 @@ bool ConfigurationFile::Load(pchar name) //-V2506
 
     if (!file.IsOpened())
     {
-        LOGERROR("Can't load configuration file %s", name);
+        LOGERRORF("Can't load configuration file %s", name);
 
         return false;
     }
@@ -31,14 +31,14 @@ bool ConfigurationFile::Load(pchar name) //-V2506
 
     if (document->HasParseError())
     {
-        LOGERROR("Can't parse configuration file %s. Error %d", name, document->GetParseError());
+        LOGERRORF("Can't parse configuration file %s. Error %d", name, document->GetParseError());
 
         isValid = false;
 
         return false;
     }
     
-    LOGWRITE("Configuration file %s is parsed", name);
+    LOGWRITEF("Configuration file %s is parsed", name);
 
     isValid = true;
 
@@ -63,7 +63,7 @@ int ConfigurationFile::GetIntValue(pchar key) //-V2506
         return it->value.GetInt();
     }
 
-    LOGERROR("Can't find value for \"%s\"", key);
+    LOGERRORF("Can't find value for \"%s\"", key);
 
     return -1;
 }
@@ -88,7 +88,7 @@ int ConfigurationFile::GetIntValue(pchar key1, pchar key2) //-V2506
         }
     }
 
-    LOGERROR("Can't find value for \"%s\" \"%s\"", key1, key2);
+    LOGERRORF("Can't find value for \"%s\" \"%s\"", key1, key2);
 
     return -1;
 }
@@ -105,7 +105,7 @@ pchar ConfigurationFile::GetStringValue(pchar key) //-V2506
         return it->value.GetString();
     }
 
-    LOGERROR("Can't find value for \"%s\" key", key);
+    LOGERRORF("Can't find value for \"%s\" key", key);
 
     return nullptr;
 }
@@ -130,7 +130,7 @@ pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2) //-V2506
         }
     }
 
-    LOGERROR("Can't find value for \"%s\" \"%s\"", key1, key2);
+    LOGERRORF("Can't find value for \"%s\" \"%s\"", key1, key2);
 
     return nullptr;
 }
@@ -160,7 +160,7 @@ pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2, pchar key3) //-V
         }
     }
 
-    LOGERROR("Can't find value for \"%s\" \"%s\" \"%s\"", key1, key2, key3);
+    LOGERRORF("Can't find value for \"%s\" \"%s\" \"%s\"", key1, key2, key3);
 
     return nullptr;
 }
@@ -196,7 +196,7 @@ bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &st
 
     if (strings.size() == 0)
     {
-        LOGERROR("Can't load array from key %s", key);
+        LOGERRORF("Can't load array from key %s", key);
     }
 
     return strings.size() != 0;

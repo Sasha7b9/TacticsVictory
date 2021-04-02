@@ -29,6 +29,6 @@ private:
 
     SharedPtr<SceneS>   scene;
     SharedPtr<Settings> settings;
-    SharedPtr<LogT>     log;
+    SharedPtr<LogU3D>   log;
     SharedPtr<ServerS>  server;
 };

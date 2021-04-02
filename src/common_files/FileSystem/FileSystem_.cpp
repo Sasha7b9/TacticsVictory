@@ -1,5 +1,7 @@
 // Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Utils/StringUtils_.h"
+#include "Utils/SystemUtils_.h"
 
 #ifdef WIN32
 #pragma warning(push, 0)
@@ -58,7 +60,7 @@ void FS::RemoveFile(const std::string &nameFile)
         if (error != 2 &&               // Не удаётся найти указанный файл
             error != 3)                 // Системе не удается найти указанный путь
         {
-            LOGERROR("Can't remove file %s", nameFile.c_str());
+            LOGERRORF("Can't remove file %s", nameFile.c_str());
 
             DISPLAY_LAST_ERROR();
         }
@@ -101,7 +103,7 @@ bool FS::File::Open(pchar _name, pchar file, int line, ModeAccess::E mode)
 
     if (handle == INVALID_HANDLE_VALUE)
     {
-        LOGERROR("Can't open file \"%s\" from %s : %d", name.c_str(), file, line);
+        LOGERRORF("Can't open file \"%s\" from %s : %d", name.c_str(), file, line);
 
         DISPLAY_LAST_ERROR();
 
@@ -178,7 +180,7 @@ bool FS::File::Create(pchar _name, ModeAccess::E mode)
 
     if (handle == INVALID_HANDLE_VALUE)
     {
-        LOGERROR("Can't create file \"%s\"", name.c_str());
+        LOGERRORF("Can't create file \"%s\"", name.c_str());
 
         DISPLAY_LAST_ERROR();
 
@@ -224,7 +226,7 @@ void FS::File::Write(const void *buffer, int numBytes)
 
     if (WriteFile(handle, buffer, (DWORD)numBytes, &counter, NULL) == 0)
     {
-        LOGERROR("Can't write to file %s", name.c_str());
+        LOGERRORF("Can't write to file %s", name.c_str());
 
         DISPLAY_LAST_ERROR();
     }
@@ -259,7 +261,7 @@ void FS::File::Read(void *buffer, size_t numBytes)
 
     if (ReadFile(handle, buffer, (DWORD)numBytes, &counter, NULL) == 0) //-V202
     {
-        LOGERROR("Can't read from file %s %llu bytes", name.c_str(), numBytes);
+        LOGERRORF("Can't read from file %s %llu bytes", name.c_str(), numBytes);
 
         DISPLAY_LAST_ERROR();
     }
@@ -334,7 +336,7 @@ void FS::CreateDirectory(std::string &path)
 
     if (SHCreateDirectory(NULL, wpath.c_str()) != 0)
     {
-        LOGERROR("Can't create directory %s", full.c_str());
+        LOGERRORF("Can't create directory %s", full.c_str());
 
         DISPLAY_LAST_ERROR();
     }

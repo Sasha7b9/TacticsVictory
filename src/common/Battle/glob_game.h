@@ -2,14 +2,14 @@
 #pragma once
 
 class Battle;
-class LogT;
+class LogU3D;
 class SceneS;
 class ServerS;
 class Settings;
 class TerrainT;
 
 extern Battle     *TheBattle;
-extern LogT       *TheLog;
+extern LogU3D     *TheLog;
 extern SceneS     *TheScene;
 extern ServerS    *TheServer;
 extern Settings   *TheSet;

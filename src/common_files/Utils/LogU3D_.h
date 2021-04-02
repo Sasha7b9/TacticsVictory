@@ -2,13 +2,13 @@
 #pragma once
 
 
-class LogT : public Log
+class LogU3D : public Log
 {
-    URHO3D_OBJECT(LogT, Log);
+    URHO3D_OBJECT(LogU3D, Log);
 
 public:
-    LogT(LogT **self);
-    virtual ~LogT();
+    LogU3D(LogU3D **self);
+    virtual ~LogU3D();
     virtual void Write(int level, const String &message, pchar file, pchar func, int numLine);
     void EnableExtendedInfo();
     void DisableExtendedInfo();
@@ -34,6 +34,7 @@ struct ConsoleLog
 
 #define LOGINFO(message)        TheLog->Write(LOG_INFO, message, __FILE__, __FUNCTION__, __LINE__)
 #define LOGINFOF(format, ...)   TheLog->Write(LOG_INFO, ToString(format, ##__VA_ARGS__), __FILE__, __FUNCTION__, __LINE__)
+#define LOGWRITEF(format, ...)  TheLog->Write(LOG_INFO, ToString(format, ##__VA_ARGS__), __FILE__, __FUNCTION__, __LINE__)
 #define LOGERROR(message)       TheLog->Write(LOG_ERROR, message, __FILE__, __FUNCTION__, __LINE__)
 #define LOGERRORF(format, ...)  TheLog->Write(LOG_ERROR, ToString(format, ##__VA_ARGS__), __FILE__, __FUNCTION__, __LINE__)
 

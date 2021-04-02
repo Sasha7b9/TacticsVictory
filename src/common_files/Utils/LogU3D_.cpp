@@ -5,14 +5,14 @@
 #include "Utils/SystemUtils_.h"
 
 
-bool LogT::enabledExtendedInfo = false;
+bool LogU3D::enabledExtendedInfo = false;
 
 #ifdef WIN32
 HANDLE ConsoleLog::handle = nullptr;
 #endif
 
 
-LogT::LogT(LogT **self) : Log(TheContext)
+LogU3D::LogU3D(LogU3D **self) : Log(TheContext)
 {
     ConsoleLog::Create();
 
@@ -20,13 +20,13 @@ LogT::LogT(LogT **self) : Log(TheContext)
 }
 
 
-LogT::~LogT()
+LogU3D::~LogU3D()
 {
     ConsoleLog::Destroy();
 }
 
 
-void LogT::Write(int level, const String &message, pchar file, pchar func, int numLine)
+void LogU3D::Write(int level, const String &message, pchar file, pchar func, int numLine)
 {
     String str = message;
     if (enabledExtendedInfo)
@@ -49,13 +49,13 @@ void LogT::Write(int level, const String &message, pchar file, pchar func, int n
 }
 
 
-void LogT::EnableExtendedInfo()
+void LogU3D::EnableExtendedInfo()
 {
     enabledExtendedInfo = true;
 }
 
 
-void LogT::DisableExtendedInfo()
+void LogU3D::DisableExtendedInfo()
 {
     enabledExtendedInfo = false;
 }

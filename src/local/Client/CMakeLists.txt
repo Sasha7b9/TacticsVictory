@@ -22,6 +22,7 @@ add_compile_options(/wd4514)    # 'function' : unreferenced inline function has 
 add_compile_options(/wd4710)    # 'function' : function not inlined
 add_compile_options(/wd4711)    # function 'function' selected for inline expansion
 add_compile_options(/wd4820)    # 'bytes' bytes padding added after construct 'member_name'
+add_compile_options(/wd4996)    # 
 add_compile_options(/wd5026)    # 'type': move constructor was implicitly defined as deleted
 add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
 add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
@@ -36,7 +37,10 @@ file(GLOB SRC           ../../common_files/*.*
 file(GLOB FILE_SYSTEM   ../../common_files/FileSystem/ConfigurationFile_.*
                         ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB UTILS         ../../common_files/Utils/Log_.*
-                        ../../common_files/Utils/LogU3D_.*)
+                        ../../common_files/Utils/LogU3D_.*
+                        ../../common_files/Utils/StringUtils_.*
+                        ../../common_files/Utils/SystemFunctions_.*
+                        ../../common_files/Utils/SystemUtils_.*)
 
 source_group(src        FILES ${SRC})
 source_group(FileSystem FILES ${FILE_SYSTEM})
