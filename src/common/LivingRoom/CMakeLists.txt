@@ -4,7 +4,9 @@ project (LivingRoom)
 set(CMAKE_UNITY_BUILD ON)
 
 
-include_directories(.)
+include_directories(.
+                    ../../ThirdParty/sockpp/include
+                    ../../ThirdParty/rapidjson/include)
 
 add_definitions(-DURHO3D_LOGGING -DLOG_U3D)
 
