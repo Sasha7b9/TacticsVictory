@@ -34,22 +34,24 @@ else()
 
 endif()
 
-file(GLOB SRC         ../../common_files/defines_.h
-                                        *.cpp
-                                        *.h)
-file(GLOB FILE_SYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
-                      ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB NETWORK     ../../common_files/Network/Other/SocketsTCP_.*)
-file(GLOB UTILS       ../../common_files/Utils/Log_.*
-                      ../../common_files/Utils/LogRAW_.*
-                      ../../common_files/Utils/StringUtils_.*
-                      ../../common_files/Utils/SystemFunctions_.*
-                      ../../common_files/Utils/SystemUtils_.*)
+file(GLOB SRC                ../../common_files/defines_.h
+                                               *.cpp
+                                               *.h)
+file(GLOB FILE_SYSTEM        ../../common_files/FileSystem/ConfigurationFile_.*
+                             ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB NETWORK            ../../common_files/Network/Other/SocketsTCP_.*)
+file(GLOB UTILS              ../../common_files/Utils/Log_.*
+                             ../../common_files/Utils/LogRAW_.*
+                             ../../common_files/Utils/StringUtils_.*
+                             ../../common_files/Utils/SystemFunctions_.*
+                             ../../common_files/Utils/SystemUtils_.*)
+file(GLOB THIRD_PARTY_SOCKPP                    ThirdParty/sockpp.cpp)
 
-source_group(src        FILES ${SRC})
-source_group(FileSystem FILES ${FILE_SYSTEM})
-source_group(Network    FILES ${NETWORK})
-source_group(Utils      FILES ${UTILS})
+source_group(src                FILES ${SRC})
+source_group(FileSystem         FILES ${FILE_SYSTEM})
+source_group(Network            FILES ${NETWORK})
+source_group(Utils              FILES ${UTILS})
+source_group(ThirdParty\\sockpp FILES ${THIRD_PARTY_SOCKPP})
 
 if(WIN32)
     set_source_files_properties(stdafx.cpp
@@ -58,7 +60,7 @@ if(WIN32)
     )
 endif()
 
-add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS})
+add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} ${THIRD_PARTY_SOCKPP})
 
 include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
                                          # выполнени€ релизной версии
