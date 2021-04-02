@@ -1,15 +1,15 @@
-﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+﻿// 2021/04/02 17:53:21 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
 
 class SceneT;
 
 
-class Battler : public Application
+class Client : public Application
 {
-    URHO3D_OBJECT(Battler, Application);
+    URHO3D_OBJECT(Client, Application);
 public:
-    Battler(Context* context);
+    Client(Context* context);
 
     virtual void Setup();
     virtual void Start();
@@ -26,7 +26,6 @@ private:
     void CreateEditorSession();
     void SubscribeToEvents();
     void SetLocalization();
-    void CreateScriptSystem();
     void GetSubsystems();
     void TuneEngineParameters();
     void CreateGUI();
