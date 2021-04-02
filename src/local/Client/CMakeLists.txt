@@ -7,8 +7,6 @@ include_directories(.
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
-add_definitions(-DURHO3D_LOGGING -DLOG_U3D)
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS  /STACK:100000000")
 
@@ -37,7 +35,7 @@ file(GLOB SRC           ../../common_files/*.*
 file(GLOB FILE_SYSTEM   ../../common_files/FileSystem/ConfigurationFile_.*
                         ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB UTILS         ../../common_files/Utils/Log_.*
-                        ../../common_files/Utils/LogU3D_.*
+                        ../../common_files/Utils/LogRAW_.*
                         ../../common_files/Utils/StringUtils_.*
                         ../../common_files/Utils/SystemFunctions_.*
                         ../../common_files/Utils/SystemUtils_.*)

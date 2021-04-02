@@ -6,4 +6,4 @@ Context *TheContext     = nullptr;
 ResourceCache *TheCache = nullptr;
 
 Client *TheClient = nullptr;
-LogU3D *TheLog = nullptr;
+LogRAW *TheLog = nullptr;

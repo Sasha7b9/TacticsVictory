@@ -19,6 +19,7 @@ using namespace Urho3D;
 #include <rapidjson/document.h>
 
 #include <iostream>
+#include <mutex>
 #include <sstream>
 
 

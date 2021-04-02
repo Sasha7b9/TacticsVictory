@@ -2,7 +2,7 @@
 #pragma once
 
 class Client;
-class LogU3D;
+class LogRAW;
 
 extern Client *TheClient;
-extern LogU3D *TheLog;
+extern LogRAW *TheLog;
