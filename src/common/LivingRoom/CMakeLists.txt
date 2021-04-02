@@ -1,4 +1,4 @@
-project (Hall)
+project (LivingRoom)
 
 
 set(CMAKE_UNITY_BUILD ON)
@@ -23,3 +23,9 @@ file(GLOB SRC       *.h *.cpp)
 source_group(src    FILES ${SRC})
 
 add_executable( ${PROJECT_NAME} ${SRC})
+
+
+if(WIN32)
+    include(../../CopyToDirEXE.cmake)
+    include(../../SetWorkingDirectory.cmake)
+endif()

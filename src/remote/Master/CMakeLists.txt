@@ -60,6 +60,7 @@ source_group(src                               FILES ${SRC})
 source_group(FileSystem                        FILES ${FILE_SYSTEM})
 source_group(Network                           FILES ${NETWORK})
 source_group(Utils                             FILES ${UTILS})
+
 source_group(ThirdParty\\rapidjson             FILES ${RAPIDJSON})
 source_group(ThirdParty\\rapidjson\\error      FILES ${RAPIDJSON_ERROR})
 source_group(ThirdParty\\rapidjson\\internal   FILES ${RAPIDJSON_INTERNAL})
@@ -77,7 +78,7 @@ if(WIN32)
     )
 endif()
 
-add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} ${THIRD_PARTY_SOCKPP}
+add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
                 ${RAPIDJSON} ${RAPIDJSON_ERROR} ${RAPIDJSON_INTERNAL} ${RAPIDJSON_MSINTTYPES}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 

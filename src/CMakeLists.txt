@@ -56,8 +56,8 @@ if(WIN32)
 endif()
 
 add_subdirectory_with_folder("common" common/Battle)
-add_subdirectory_with_folder("common" common/Configurator)
-add_subdirectory_with_folder("common" common/Hall)
+add_subdirectory_with_folder("common" common/Controller)
+add_subdirectory_with_folder("common" common/LivingRoom)
 add_subdirectory_with_folder("common" common/Monitor)
 add_subdirectory_with_folder("common" common/Uploader)
 
