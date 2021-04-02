@@ -49,8 +49,8 @@ endfunction()
 
 
 if(WIN32)
-    add_subdirectory_with_folder("local" local/BattlerTV)
+    add_subdirectory_with_folder("local" local/Battler)
 endif()
 
-add_subdirectory_with_folder("common" common/BattleTV)
+add_subdirectory_with_folder("common" common/Battle)
 add_subdirectory_with_folder("remote" remote/Master)
