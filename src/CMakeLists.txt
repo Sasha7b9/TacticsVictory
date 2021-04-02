@@ -54,6 +54,7 @@ endif()
 
 add_subdirectory_with_folder("common" common/Battle)
 add_subdirectory_with_folder("common" common/Hall)
+add_subdirectory_with_folder("common" common/Monitor)
 add_subdirectory_with_folder("common" common/Uploader)
 
 add_subdirectory_with_folder("remote" remote/Master)
