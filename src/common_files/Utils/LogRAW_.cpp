@@ -17,6 +17,9 @@ static FS::File *outFile;
 
 #ifdef WIN32
 HANDLE ConsoleLog::handle = nullptr;
+#define END_LINE "\x0d\x0a"
+#else
+#define END_LINE "\n"
 #endif
 
 
@@ -90,7 +93,7 @@ void LogRAW::Error(pchar file, int line, pchar format, ...)
 
     if (outFile->IsOpened())
     {
-        *outFile << v.data() << "\n";
+        *outFile << v.data() << END_LINE;
     }
 
 #ifdef DEBUG
@@ -126,7 +129,7 @@ void LogRAW::Warning(pchar file, int line, pchar format, ...)
 
     if (outFile->IsOpened())
     {
-        *outFile << v.data() << "\n";
+        *outFile << v.data() << END_LINE;
     }
 
 #ifdef DEBUG
@@ -165,7 +168,7 @@ void LogRAW::Write(pchar file, int line, pchar format, ...)
 
     if (outFile->IsOpened())
     {
-        *outFile << v.data() << "\n";
+        *outFile << v.data() << END_LINE;
     }
 
 #ifdef DEBUG
