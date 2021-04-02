@@ -53,7 +53,7 @@
 	//#pragma warning(4 : 4996)	// Deprecated functions (CRT & all)
 	//#pragma warning(4 : 4250)	// Inheritance via dominance
 
-    #if !defined(WIN32_LEAN_AND_MEAN)
+	#if !defined(WIN32_LEAN_AND_MEAN)
 		#define WIN32_LEAN_AND_MEAN
 	#endif
 
@@ -63,12 +63,10 @@
 
 	//#include <cstddef>
 	//#include <windows.h>
-
 	#include <winsock2.h>
 	#include <ws2tcpip.h>
 
 	#define SOCKPP_SOCKET_T_DEFINED
-
 	using socket_t = SOCKET;
 
 	using socklen_t = int;
