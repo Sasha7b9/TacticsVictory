@@ -1,12 +1,12 @@
 #pragma once
 
 
-#define LOGWRITE(...) Log::Write(__FILE__, __LINE__, __VA_ARGS__)
-#define LOGERROR(...) Log::Error(__FILE__, __LINE__, __VA_ARGS__)
-#define LOGWARNING(...) Log::Warning(__FILE__, __LINE__, __VA_ARGS__);
+#define LOGWRITE(...)   LogRAW::Write(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGERROR(...)   LogRAW::Error(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGWARNING(...) LogRAW::Warning(__FILE__, __LINE__, __VA_ARGS__);
 
 
-class Log
+class LogRAW
 {
 public:
 
@@ -24,7 +24,7 @@ public:
     static void Warning(pchar file, int line, pchar format, ...);
 
 private:
-    virtual ~Log();
+    virtual ~LogRAW();
 };
 
 

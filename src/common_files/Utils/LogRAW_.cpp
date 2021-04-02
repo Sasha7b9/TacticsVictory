@@ -42,7 +42,7 @@ static pchar ExtractName(pchar fullName, int max)
 }
 
 
-void Log::Create(pchar nameLog)
+void LogRAW::Create(pchar nameLog)
 {
     outFile = new FS::File();
 
@@ -57,7 +57,7 @@ void Log::Create(pchar nameLog)
     outFile->Create((std::string("log") + FS::delimiter + nameLog).c_str());
 }
 
-void Log::Destroy()
+void LogRAW::Destroy()
 {
     ConsoleLog::Destroy();
 
@@ -65,7 +65,7 @@ void Log::Destroy()
 }
 
 
-void Log::Error(pchar file, int line, pchar format, ...)
+void LogRAW::Error(pchar file, int line, pchar format, ...)
 {
     file = ExtractName(file, numSymbolsForMarker - SU::Length(strERROR) - 1); //-V2513 //-V202
 
@@ -101,7 +101,7 @@ void Log::Error(pchar file, int line, pchar format, ...)
 }
 
 
-void Log::Warning(pchar file, int line, pchar format, ...)
+void LogRAW::Warning(pchar file, int line, pchar format, ...)
 {
     file = ExtractName(file, numSymbolsForMarker - SU::Length(strWARNING) - 1); //-V2513 //-V202
 
@@ -137,7 +137,7 @@ void Log::Warning(pchar file, int line, pchar format, ...)
 }
 
 
-void Log::Write(pchar file, int line, pchar format, ...)
+void LogRAW::Write(pchar file, int line, pchar format, ...)
 {
     static std::mutex mutex;
 
@@ -178,7 +178,7 @@ void Log::Write(pchar file, int line, pchar format, ...)
 }
 
 
-Log::~Log()
+LogRAW::~LogRAW()
 {
     LOGWRITE("Close application");
 }
