@@ -1,8 +1,6 @@
 project (Updater)
 
-
 set(CMAKE_UNITY_BUILD ON)
-
 
 include_directories(.)
 
