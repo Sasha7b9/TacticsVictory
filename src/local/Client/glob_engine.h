@@ -3,3 +3,4 @@
 
 
 extern Context       *TheContext;
+extern ResourceCache *TheCache;

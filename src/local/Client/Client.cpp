@@ -28,6 +28,7 @@ void Client::Setup()
 
 void Client::GetSubsystems()
 {
+    TheCache = GetSubsystem<ResourceCache>();
 }
 
 

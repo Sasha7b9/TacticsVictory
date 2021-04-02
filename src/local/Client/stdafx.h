@@ -9,6 +9,8 @@
 
 #include <Urho3D/IO/FileSystem.h>
 
+#include <Urho3D/Resource/ResourceCache.h>
+
 
 using namespace Urho3D;
 
