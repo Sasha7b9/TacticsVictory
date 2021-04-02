@@ -31,12 +31,18 @@ add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum'
 add_compile_options(/wd28251)   # Inconsistent annotation for function: this instance has an error
 
 
-file(GLOB SRC       ../../common_files/*.*
-                                       *.h *.cpp)
+file(GLOB SRC           ../../common_files/*.*
+                                           *.h *.cpp)
+file(GLOB FILE_SYSTEM   ../../common_files/FileSystem/ConfigurationFile_.*
+                        ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB UTILS         ../../common_files/Utils/Log_.*
+                        ../../common_files/Utils/LogU3D_.*)
 
-source_group(src    FILES ${SRC})
+source_group(src        FILES ${SRC})
+source_group(FileSystem FILES ${FILE_SYSTEM})
+source_group(Utils      FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC})
+add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)
 

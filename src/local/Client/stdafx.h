@@ -8,11 +8,15 @@
 #include <Urho3D/Engine/EngineDefs.h>
 
 #include <Urho3D/IO/FileSystem.h>
+#include <Urho3D/IO/Log.h>
 
 #include <Urho3D/Resource/ResourceCache.h>
 
 
 using namespace Urho3D;
+
+
+#include <rapidjson/document.h>
 
 
 #pragma warning(pop)
