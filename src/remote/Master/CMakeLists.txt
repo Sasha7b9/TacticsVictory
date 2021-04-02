@@ -5,6 +5,8 @@ include_directories(.
                     ../../ThirdParty/sockpp/include
                     ../../ThirdParty/rapidjson/include)
 
+set(CMAKE_UNITY_BUILD ON)
+
 if(WIN32)
 
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
@@ -45,17 +47,28 @@ file(GLOB UTILS              ../../common_files/Utils/Log_.*
                              ../../common_files/Utils/StringUtils_.*
                              ../../common_files/Utils/SystemFunctions_.*
                              ../../common_files/Utils/SystemUtils_.*)
-file(GLOB THIRD_PARTY_SOCKPP                    ThirdParty/sockpp.cpp)
-file(GLOB SOCKPP                          ../../ThirdParty/sockpp/src/*.cpp
-                                          ../../ThirdParty/sockpp/include/sockpp/*.h)
 
-source_group(src                FILES ${SRC})
-source_group(FileSystem         FILES ${FILE_SYSTEM})
-source_group(Network            FILES ${NETWORK})
-source_group(Utils              FILES ${UTILS})
-source_group(ThirdParty\\sockpp FILES ${THIRD_PARTY_SOCKPP} ${SOCKPP})
+file(GLOB RAPIDJSON                       ../../ThirdParty/rapidjson/include/rapidjson/*.*)
+file(GLOB RAPIDJSON_ERROR                 ../../ThirdParty/rapidjson/include/rapidjson/error/*.*)
+file(GLOB RAPIDJSON_INTERNAL              ../../ThirdParty/rapidjson/include/rapidjson/internal/*.*)
+file(GLOB RAPIDJSON_MSINTTYPES            ../../ThirdParty/rapidjson/include/rapidjson/msinttypes/*.*)
+file(GLOB SOCKPP                                ThirdParty/sockpp.cpp)
+file(GLOB SOCKPP_SOURCES                  ../../ThirdParty/sockpp/src/*.cpp)
+file(GLOB SOCKPP_INCLUDE                  ../../ThirdParty/sockpp/include/sockpp/*.h)
 
-set_source_files_properties(${SOCKPP} PROPERTIES HEADER_FILE_ONLY TRUE)
+source_group(src                               FILES ${SRC})
+source_group(FileSystem                        FILES ${FILE_SYSTEM})
+source_group(Network                           FILES ${NETWORK})
+source_group(Utils                             FILES ${UTILS})
+source_group(ThirdParty\\rapidjson             FILES ${RAPIDJSON})
+source_group(ThirdParty\\rapidjson\\error      FILES ${RAPIDJSON_ERROR})
+source_group(ThirdParty\\rapidjson\\internal   FILES ${RAPIDJSON_INTERNAL})
+source_group(ThirdParty\\rapidjson\\msinttypes FILES ${RAPIDJSON_MSINTTYPES})
+source_group(ThirdParty\\sockpp                FILES ${SOCKPP})
+source_group(ThirdParty\\sockpp\\sources       FILES ${SOCKPP_SOURCES})
+source_group(ThirdParty\\sockpp\\include       FILES ${SOCKPP_INCLUDE})
+
+set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 if(WIN32)
     set_source_files_properties(stdafx.cpp
@@ -64,7 +77,9 @@ if(WIN32)
     )
 endif()
 
-add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} ${THIRD_PARTY_SOCKPP} ${SOCKPP})
+add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} ${THIRD_PARTY_SOCKPP}
+                ${RAPIDJSON} ${RAPIDJSON_ERROR} ${RAPIDJSON_INTERNAL} ${RAPIDJSON_MSINTTYPES}
+                ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
                                          # выполнени€ релизной версии
