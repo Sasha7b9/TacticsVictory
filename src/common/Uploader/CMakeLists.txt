@@ -1,4 +1,4 @@
-project (Hall)
+project (Uploader)
 
 
 set(CMAKE_UNITY_BUILD ON)
