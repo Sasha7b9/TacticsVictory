@@ -1,5 +1,7 @@
 // Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "FileSystem/FileSystem_.h"
+#include "Utils/Log_.h"
 #include "Utils/StringUtils_.h"
 #include "Utils/SystemUtils_.h"
 

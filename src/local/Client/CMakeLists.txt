@@ -1,13 +1,12 @@
 project (Client)
 
-set(CMAKE_UNITY_BUILD ON)
-
 include_directories(.
                     ../../common_files
-                    ../../ThirdParty/sockpp/include
                     ../../ThirdParty/rapidjson/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
+
+#set(CMAKE_UNITY_BUILD ON)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS  /STACK:100000000")
@@ -36,6 +35,7 @@ file(GLOB SRC           ../../common_files/*.*
                                            *.h *.cpp)
 file(GLOB FILE_SYSTEM   ../../common_files/FileSystem/ConfigurationFile_.*
                         ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB NETWORK                          Network/*.*)
 file(GLOB UTILS         ../../common_files/Utils/Log_.*
                         ../../common_files/Utils/LogRAW_.*
                         ../../common_files/Utils/StringUtils_.*
@@ -46,27 +46,29 @@ file(GLOB RAPIDJSON                       ../../ThirdParty/rapidjson/include/rap
 file(GLOB RAPIDJSON_ERROR                 ../../ThirdParty/rapidjson/include/rapidjson/error/*.*)
 file(GLOB RAPIDJSON_INTERNAL              ../../ThirdParty/rapidjson/include/rapidjson/internal/*.*)
 file(GLOB RAPIDJSON_MSINTTYPES            ../../ThirdParty/rapidjson/include/rapidjson/msinttypes/*.*)
-file(GLOB SOCKPP                                ThirdParty/sockpp.cpp)
-file(GLOB SOCKPP_SOURCES                  ../../ThirdParty/sockpp/src/*.cpp)
-file(GLOB SOCKPP_INCLUDE                  ../../ThirdParty/sockpp/include/sockpp/*.h)
+#file(GLOB SOCKPP                                ThirdParty/sockpp.cpp)
+#file(GLOB SOCKPP_SOURCES                  ../../ThirdParty/sockpp/src/*.cpp)
+#file(GLOB SOCKPP_INCLUDE                  ../../ThirdParty/sockpp/include/sockpp/*.h)
 
 source_group(src        FILES ${SRC})
 source_group(FileSystem FILES ${FILE_SYSTEM})
+source_group(Network    FILES ${NETWORK})
 source_group(Utils      FILES ${UTILS})
 
 source_group(ThirdParty\\rapidjson             FILES ${RAPIDJSON})
 source_group(ThirdParty\\rapidjson\\error      FILES ${RAPIDJSON_ERROR})
 source_group(ThirdParty\\rapidjson\\internal   FILES ${RAPIDJSON_INTERNAL})
 source_group(ThirdParty\\rapidjson\\msinttypes FILES ${RAPIDJSON_MSINTTYPES})
-source_group(ThirdParty\\sockpp                FILES ${SOCKPP})
-source_group(ThirdParty\\sockpp\\sources       FILES ${SOCKPP_SOURCES})
-source_group(ThirdParty\\sockpp\\include       FILES ${SOCKPP_INCLUDE})
+#source_group(ThirdParty\\sockpp                FILES ${SOCKPP})
+#source_group(ThirdParty\\sockpp\\sources       FILES ${SOCKPP_SOURCES})
+#source_group(ThirdParty\\sockpp\\include       FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${UTILS}
+add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
                 ${RAPIDJSON} ${RAPIDJSON_ERROR} ${RAPIDJSON_INTERNAL} ${RAPIDJSON_MSINTTYPES}
-                ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+#                ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES}
+                )
 
 include(../../RuntimeLibrary.cmake)
 
