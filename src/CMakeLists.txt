@@ -53,4 +53,5 @@ if(WIN32)
 endif()
 
 add_subdirectory_with_folder("common" common/Battle)
+add_subdirectory_with_folder("common" common/Hall)
 add_subdirectory_with_folder("remote" remote/Master)
