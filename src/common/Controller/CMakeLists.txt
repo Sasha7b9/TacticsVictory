@@ -58,7 +58,6 @@ add_executable(${PROJECT_NAME} ${SRC}
 if(WIN32)
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
+
+    target_link_libraries(${PROJECT_NAME} ws2_32)
 endif()
-
-
-target_link_libraries(${PROJECT_NAME} ws2_32)
