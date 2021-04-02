@@ -125,6 +125,19 @@
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////
+// __cplusplus macro
+
+//!@cond RAPIDJSON_HIDDEN_FROM_DOXYGEN
+
+#if defined(_MSC_VER)
+#define RAPIDJSON_CPLUSPLUS _MSVC_LANG
+#else
+#define RAPIDJSON_CPLUSPLUS __cplusplus
+#endif
+
+//!@endcond
+
+///////////////////////////////////////////////////////////////////////////////
 // RAPIDJSON_HAS_STDSTRING
 
 #ifndef RAPIDJSON_HAS_STDSTRING
@@ -411,7 +424,7 @@ RAPIDJSON_NAMESPACE_END
 
 // Prefer C++11 static_assert, if available
 #ifndef RAPIDJSON_STATIC_ASSERT
-#if __cplusplus >= 201103L || ( defined(_MSC_VER) && _MSC_VER >= 1800 )
+#if RAPIDJSON_CPLUSPLUS >= 201103L || ( defined(_MSC_VER) && _MSC_VER >= 1800 )
 #define RAPIDJSON_STATIC_ASSERT(x) \
    static_assert(x, RAPIDJSON_STRINGIFY(x))
 #endif // C++11
@@ -541,8 +554,14 @@ RAPIDJSON_NAMESPACE_END
 ///////////////////////////////////////////////////////////////////////////////
 // C++11 features
 
+#ifndef RAPIDJSON_HAS_CXX11
+#define RAPIDJSON_HAS_CXX11 (RAPIDJSON_CPLUSPLUS >= 201103L)
+#endif
+
 #ifndef RAPIDJSON_HAS_CXX11_RVALUE_REFS
-#if defined(__clang__)
+#if RAPIDJSON_HAS_CXX11
+#define RAPIDJSON_HAS_CXX11_RVALUE_REFS 1
+#elif defined(__clang__)
 #if __has_feature(cxx_rvalue_references) && \
     (defined(_MSC_VER) || defined(_LIBCPP_VERSION) || defined(__GLIBCXX__) && __GLIBCXX__ >= 20080306)
 #define RAPIDJSON_HAS_CXX11_RVALUE_REFS 1
@@ -560,7 +579,9 @@ RAPIDJSON_NAMESPACE_END
 #endif // RAPIDJSON_HAS_CXX11_RVALUE_REFS
 
 #ifndef RAPIDJSON_HAS_CXX11_NOEXCEPT
-#if defined(__clang__)
+#if RAPIDJSON_HAS_CXX11
+#define RAPIDJSON_HAS_CXX11_NOEXCEPT 1
+#elif defined(__clang__)
 #define RAPIDJSON_HAS_CXX11_NOEXCEPT __has_feature(cxx_noexcept)
 #elif (defined(RAPIDJSON_GNUC) && (RAPIDJSON_GNUC >= RAPIDJSON_VERSION_CODE(4,6,0)) && defined(__GXX_EXPERIMENTAL_CXX0X__)) || \
     (defined(_MSC_VER) && _MSC_VER >= 1900) || \
@@ -570,11 +591,13 @@ RAPIDJSON_NAMESPACE_END
 #define RAPIDJSON_HAS_CXX11_NOEXCEPT 0
 #endif
 #endif
+#ifndef RAPIDJSON_NOEXCEPT
 #if RAPIDJSON_HAS_CXX11_NOEXCEPT
 #define RAPIDJSON_NOEXCEPT noexcept
 #else
-#define RAPIDJSON_NOEXCEPT /* noexcept */
+#define RAPIDJSON_NOEXCEPT throw()
 #endif // RAPIDJSON_HAS_CXX11_NOEXCEPT
+#endif
 
 // no automatic detection, yet
 #ifndef RAPIDJSON_HAS_CXX11_TYPETRAITS
@@ -600,9 +623,17 @@ RAPIDJSON_NAMESPACE_END
 ///////////////////////////////////////////////////////////////////////////////
 // C++17 features
 
-#if defined(__has_cpp_attribute)
-# if __has_cpp_attribute(fallthrough)
-#  define RAPIDJSON_DELIBERATE_FALLTHROUGH [[fallthrough]]
+#ifndef RAPIDJSON_HAS_CXX17
+#define RAPIDJSON_HAS_CXX17 (RAPIDJSON_CPLUSPLUS >= 201703L)
+#endif
+
+#if RAPIDJSON_HAS_CXX17
+# define RAPIDJSON_DELIBERATE_FALLTHROUGH [[fallthrough]]
+#elif defined(__has_cpp_attribute)
+# if __has_cpp_attribute(clang::fallthrough)
+#  define RAPIDJSON_DELIBERATE_FALLTHROUGH [[clang::fallthrough]]
+# elif __has_cpp_attribute(fallthrough)
+#  define RAPIDJSON_DELIBERATE_FALLTHROUGH __attribute__((fallthrough))
 # else
 #  define RAPIDJSON_DELIBERATE_FALLTHROUGH
 # endif
@@ -628,12 +659,8 @@ RAPIDJSON_NAMESPACE_END
 
 #ifndef RAPIDJSON_NOEXCEPT_ASSERT
 #ifdef RAPIDJSON_ASSERT_THROWS
-#if RAPIDJSON_HAS_CXX11_NOEXCEPT
-#define RAPIDJSON_NOEXCEPT_ASSERT(x)
-#else
 #include <cassert>
 #define RAPIDJSON_NOEXCEPT_ASSERT(x) assert(x)
-#endif // RAPIDJSON_HAS_CXX11_NOEXCEPT
 #else
 #define RAPIDJSON_NOEXCEPT_ASSERT(x) RAPIDJSON_ASSERT(x)
 #endif // RAPIDJSON_ASSERT_THROWS

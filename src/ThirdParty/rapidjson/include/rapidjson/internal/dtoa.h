@@ -34,7 +34,7 @@ RAPIDJSON_DIAG_OFF(array-bounds) // some gcc versions generate wrong warnings ht
 
 inline void GrisuRound(char* buffer, int len, uint64_t delta, uint64_t rest, uint64_t ten_kappa, uint64_t wp_w) {
     while (rest < wp_w && delta - rest >= ten_kappa &&
-           (rest + ten_kappa < wp_w ||  // closer
+           (rest + ten_kappa < wp_w ||  /// closer
             wp_w - rest > rest + ten_kappa - wp_w)) {
         buffer[len - 1]--;
         rest += ten_kappa;

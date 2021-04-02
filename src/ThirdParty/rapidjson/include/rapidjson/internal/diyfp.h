@@ -94,7 +94,7 @@ struct DiyFp {
         const uint64_t ad = a * d;
         const uint64_t bd = b * d;
         uint64_t tmp = (bd >> 32) + (ad & M32) + (bc & M32);
-        tmp += 1U << 31;  // mult_round
+        tmp += 1U << 31;  /// mult_round
         return DiyFp(ac + (ad >> 32) + (bc >> 32) + (tmp >> 32), e + rhs.e + 64);
 #endif
     }
