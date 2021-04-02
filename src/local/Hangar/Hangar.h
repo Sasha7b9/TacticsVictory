@@ -2,14 +2,11 @@
 #pragma once
 
 
-class SceneT;
-
-
-class Client : public Application
+class Hangar : public Application
 {
-    URHO3D_OBJECT(Client, Application);
+    URHO3D_OBJECT(Hangar, Application);
 public:
-    Client(Context* context);
+    Hangar(Context* context);
 
     virtual void Setup();
     virtual void Start();
