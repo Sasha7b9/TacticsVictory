@@ -1,27 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Battler.h"
-#include "Editor/Editor.h"
-#include "Game/Logic/Rotator_.h"
-#include "Game/Logic/SunEngine_.h"
-#include "Game/Path/TilePath.h"
-#include "Graphics/2D/Image.h"
-#include "Graphics/3D/TileSelected.h"
-#include "GUI/Cursor.h"
-#include "GUI/GUI.h"
-#include "GUI/GuiEditor/GuiEditor.h"
-#include "GUI/Menu/MenuEvents.h"
-#include "GUI/Menu/Menu.h"
-#include "Input/Mouse.h"
-#include "Network/ServerC.h"
-#include "Scene/SceneC.h"
-#include "Scene/Cameras/Camera.h"
-#include "Scene/Objects/Object_.h"
-#include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
-#include "Scene/Objects/Units/Ground/Tank/Tank_.h"
-#include "Utils/Log_.h"
-#include "Utils/Settings.h"
-#include "Utils/SettingsTypes.h"
+#include "Client.h"
 
 
 #pragma warning(push)
@@ -39,13 +18,9 @@ Battler::Battler(Context* context) :
 
 void Battler::Setup()
 {
-    TheBattler = this;
+    TheClient = this;
 
     GetSubsystems();
-
-    settings = new Settings(&TheSet);
-
-    TheSet->Load();
 
     TuneEngineParameters();
 }
