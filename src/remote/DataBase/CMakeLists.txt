@@ -1,6 +1,7 @@
 project (DataBase)
 
 include_directories(.
+                    ../../common_files
                     ../../ThirdParty/sockpp/include
                     ../../ThirdParty/rapidjson/include)
 

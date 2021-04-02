@@ -5,6 +5,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 
 include_directories(.
+                    ../../common_files
                     ../../ThirdParty/sockpp/include
                     ../../ThirdParty/rapidjson/include)
 
