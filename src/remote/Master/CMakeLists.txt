@@ -45,8 +45,9 @@ file(GLOB UTILS              ../../common_files/Utils/Log_.*
                              ../../common_files/Utils/StringUtils_.*
                              ../../common_files/Utils/SystemFunctions_.*
                              ../../common_files/Utils/SystemUtils_.*)
-file(GLOB THIRD_PARTY_SOCKPP                    ThirdParty/sockpp.cpp)
-
+file(GLOB THIRD_PARTY_SOCKPP                    ThirdParty/sockpp.cpp
+                                          ../../ThirdParty/sockpp/src/*.cpp
+                                          ../../ThirdParty/sockpp/include/sockpp/*.h)
 source_group(src                FILES ${SRC})
 source_group(FileSystem         FILES ${FILE_SYSTEM})
 source_group(Network            FILES ${NETWORK})
