@@ -15,13 +15,10 @@ if(WIN32)
 
     set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 
+    add_compile_options(/wd4710)    # 'function' : function not inlined
+    add_compile_options(/wd4711)    # function 'function' selected for inline expansion
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
-                                # specified
-
-    if(${CMAKE_BUILD_TYPE} STREQUAL Release)
-        add_compile_options(/wd4710)    # 'function' : function not inlined
-        add_compile_options(/wd4711)    # function 'function' selected for inline expansion
-    endif()
+                                    # specified
 
 else()
 

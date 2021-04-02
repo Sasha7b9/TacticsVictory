@@ -13,13 +13,10 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
 
 set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 
+add_compile_options(/wd4710)    # 'function' : function not inlined
+add_compile_options(/wd4711)    # function 'function' selected for inline expansion
 add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                 # specified
-
-if(${CMAKE_BUILD_TYPE} STREQUAL Release)
-    add_compile_options(/wd4710)    # 'function' : function not inlined
-    add_compile_options(/wd4711)    # function 'function' selected for inline expansion
-endif()
 
 file(GLOB SRC       *.h *.cpp)
 

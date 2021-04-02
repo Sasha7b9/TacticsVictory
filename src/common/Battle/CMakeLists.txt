@@ -22,17 +22,14 @@ if(WIN32)
     add_compile_options(/wd4626)    # 'derived class' : assignment operator was implicitly defined as deleted because a
                                     # base class assignment operator is inaccessible or deleted
     add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed
+    add_compile_options(/wd4710)    # 'function' : function not inlined
+    add_compile_options(/wd4711)    # function 'function' selected for inline expansion
     add_compile_options(/wd4820)    # 'bytes' bytes padding added after construct 'member_name'
     add_compile_options(/wd5026)    # 'type': move constructor was implicitly defined as deleted
     add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified
     add_compile_options(/wd5219)    # implicit conversion from 'type-1' to 'type-2', possible loss of data
-
-    if(${CMAKE_BUILD_TYPE} STREQUAL Release)
-        add_compile_options(/wd4710)    # 'function' : function not inlined
-        add_compile_options(/wd4711)    # function 'function' selected for inline expansion
-    endif()
 
     add_compile_options(/wd26812)
     add_compile_options(/wd28251)

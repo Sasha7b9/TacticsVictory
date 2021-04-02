@@ -19,24 +19,22 @@ add_compile_options(/wd4625)    # 'derived class' : copy constructor was implici
 add_compile_options(/wd4626)    # 'derived class' : assignment operator was implicitly defined as deleted because a
                                 # base class assignment operator is inaccessible or deleted
 add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed
+add_compile_options(/wd4710)    # 'function' : function not inlined
+add_compile_options(/wd4711)    # function 'function' selected for inline expansion
 add_compile_options(/wd4820)    # 'bytes' bytes padding added after construct 'member_name'
 add_compile_options(/wd5026)    # 'type': move constructor was implicitly defined as deleted
 add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
 add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                 # specified
 add_compile_options(/wd5219)    # implicit conversion from 'type-1' to 'type-2', possible loss of data
-add_compile_options(/wd26812)
-add_compile_options(/wd28251)
+add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum'
+add_compile_options(/wd28251)   # Inconsistent annotation for function: this instance has an error
 
-if(${CMAKE_BUILD_TYPE} STREQUAL Release)
-    add_compile_options(/wd4710)    # 'function' : function not inlined
-    add_compile_options(/wd4711)    # function 'function' selected for inline expansion
-endif()
 
-file(GLOB SRC                                    ../../common_files/*.*
-                                                                    *.h *.cpp)
+file(GLOB SRC       ../../common_files/*.*
+                                       *.h *.cpp)
 
-source_group(src                                        FILES ${SRC})
+source_group(src    FILES ${SRC})
 
 add_executable( ${PROJECT_NAME} ${SRC})
 
