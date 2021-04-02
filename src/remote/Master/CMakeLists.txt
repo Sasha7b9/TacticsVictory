@@ -45,14 +45,17 @@ file(GLOB UTILS              ../../common_files/Utils/Log_.*
                              ../../common_files/Utils/StringUtils_.*
                              ../../common_files/Utils/SystemFunctions_.*
                              ../../common_files/Utils/SystemUtils_.*)
-file(GLOB THIRD_PARTY_SOCKPP                    ThirdParty/sockpp.cpp
-                                          ../../ThirdParty/sockpp/src/*.cpp
+file(GLOB THIRD_PARTY_SOCKPP                    ThirdParty/sockpp.cpp)
+file(GLOB SOCKPP                          ../../ThirdParty/sockpp/src/*.cpp
                                           ../../ThirdParty/sockpp/include/sockpp/*.h)
+
 source_group(src                FILES ${SRC})
 source_group(FileSystem         FILES ${FILE_SYSTEM})
 source_group(Network            FILES ${NETWORK})
 source_group(Utils              FILES ${UTILS})
-source_group(ThirdParty\\sockpp FILES ${THIRD_PARTY_SOCKPP})
+source_group(ThirdParty\\sockpp FILES ${THIRD_PARTY_SOCKPP} ${SOCKPP})
+
+set_source_files_properties(${SOCKPP} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 if(WIN32)
     set_source_files_properties(stdafx.cpp
@@ -61,7 +64,7 @@ if(WIN32)
     )
 endif()
 
-add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} ${THIRD_PARTY_SOCKPP})
+add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} ${THIRD_PARTY_SOCKPP} ${SOCKPP})
 
 include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
                                          # выполнени€ релизной версии
