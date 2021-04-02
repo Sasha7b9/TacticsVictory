@@ -24,7 +24,7 @@ void Client::Setup()
 
     LOGWRITE("Start Client");
 
-    TheConfig.Load("Clieng.conf");
+    TheConfig.Load("Client.conf");
 
     TheClient = this;
 
