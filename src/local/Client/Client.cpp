@@ -1,6 +1,7 @@
 ﻿// 2021/04/02 17:53:03 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Client.h"
+#include "FileSystem/ConfigurationFile_.h"
 #include "Utils/Log_.h"
 
 
@@ -22,6 +23,8 @@ void Client::Setup()
     LogRAW::Create("Client.log");
 
     LOGWRITE("Start Client");
+
+    TheConfig.Load("Clieng.conf");
 
     TheClient = this;
 

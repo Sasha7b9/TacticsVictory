@@ -20,7 +20,7 @@ add_compile_options(/wd4514)    # 'function' : unreferenced inline function has 
 add_compile_options(/wd4710)    # 'function' : function not inlined
 add_compile_options(/wd4711)    # function 'function' selected for inline expansion
 add_compile_options(/wd4820)    # 'bytes' bytes padding added after construct 'member_name'
-add_compile_options(/wd4996)    # 
+add_compile_options(/wd4996)    # Your code uses a function, class member, variable, or typedef that's marked deprecated
 add_compile_options(/wd5026)    # 'type': move constructor was implicitly defined as deleted
 add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
 add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch

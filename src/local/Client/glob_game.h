@@ -2,7 +2,9 @@
 #pragma once
 
 class Client;
+class ConfigurationFile;
 class LogRAW;
 
-extern Client *TheClient;
-extern LogRAW *TheLog;
+extern Client           *TheClient;
+extern ConfigurationFile TheConfig;
+extern LogRAW           *TheLog;
