@@ -80,12 +80,8 @@ void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symb
         strcat(v.data(), " ");
     }
 
-    std::strcat(v.data(), " | ");
     std::strcat(v.data(), symbols);
-    if (symbols[0] != '\0')
-    {
-        std::strcat(v.data(), " ");
-    }
+    std::strcat(v.data(), " | ");
 }
 
 
