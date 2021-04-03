@@ -30,7 +30,7 @@ void Client::Setup()
 
     TheMaster.Destroy();
 
-    LOGWRITE("Address uploader is %s", address.c_str());
+    LOGWRITEF("Address uploader is %s", address.c_str());
 
     TheClient = this;
 

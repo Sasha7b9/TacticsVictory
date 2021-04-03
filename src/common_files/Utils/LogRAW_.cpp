@@ -108,7 +108,7 @@ void LogRAW::Error(pchar file, int line, pchar format, ...)
 }
 
 
-void LogRAW::Warning(pchar file, int line, pchar format, ...)
+void LogRAW::WarningF(pchar file, int line, pchar format, ...)
 {
     file = ExtractName(file, numSymbolsForMarker - SU::Length(strWARNING) - 1);
 
