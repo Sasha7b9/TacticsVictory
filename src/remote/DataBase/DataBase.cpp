@@ -12,7 +12,7 @@ int main()
 
     TheConfig.Load("DataBase.cfg");
 
-    TheMaster.Connnect();
+    TheMaster.Connect();
 
     return 0;
 }

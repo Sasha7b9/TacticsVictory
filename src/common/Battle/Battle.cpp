@@ -51,7 +51,7 @@ void Battle::Setup()
 
     TheConfig.Load("Battle.cfg");
 
-    TheMaster.Connnect();
+    TheMaster.Connect();
 
     settings = new Settings(&TheSet);
 

@@ -3,14 +3,20 @@
 #include "Network/Other/MasterServer_.h"
 
 
-void MasterServer::Connnect() //-V2506
+void MasterServer::Connect() //-V2506
+{
+    pchar full_address = TheConfig.GetStringValue("address master");
+
+    Connect(full_address);
+}
+
+
+void MasterServer::Connect(pchar full_address)
 {
     mutex.lock();
     destroy = false;
 
-    pchar fullAddress = TheConfig.GetStringValue("address master");
-
-    auto [host, port] = ConnectorTCP::ParseAddress(fullAddress);
+    auto [host, port] = ConnectorTCP::ParseAddress(full_address);
 
     while (!connector.Connect(host, port) && !destroy)
     {

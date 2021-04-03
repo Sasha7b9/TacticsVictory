@@ -2,17 +2,22 @@
 #include "stdafx.h"
 
 
-int main()
+int main(int argc, char *argv[])
 {
+    if (argc != 2)
+    {
+        return -1;
+    }
+
     setlocale(LC_ALL, "Russian");
 
     LogRAW::Create("Updater.log");
 
     LOGWRITE("Start Updater");
 
-    TheConfig.Load("Updater.cfg");
+    TheMaster.Connect(argv[1]);
 
-    TheMaster.Connnect();
+    TheMaster.Destroy();
 
     return 0;
 }

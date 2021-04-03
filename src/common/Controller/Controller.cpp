@@ -12,7 +12,7 @@ int main()
 
     TheConfig.Load("Contoller.cfg");
 
-    TheMaster.Connnect();
+    TheMaster.Connect();
 
     return 0;
 }

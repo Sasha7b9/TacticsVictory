@@ -21,7 +21,9 @@ class MasterServer
 public:
 
     // Делает попытку присоединения к серверу
-    void Connnect();
+    void Connect();
+
+    void Connect(pchar full_address);
 
     void Destroy();
 

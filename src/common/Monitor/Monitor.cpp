@@ -12,7 +12,7 @@ int main()
 
     TheConfig.Load("Monitor.cfg");
 
-    TheMaster.Connnect();
+    TheMaster.Connect();
 
     return 0;
 }

@@ -24,7 +24,7 @@ void Hangar::Setup()
 
     TheHangar = this;
 
-    TheMaster.Connnect();
+    TheMaster.Connect();
 
     GetSubsystems();
 

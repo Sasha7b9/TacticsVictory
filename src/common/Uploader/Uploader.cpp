@@ -11,7 +11,7 @@ int main()
 
     TheConfig.Load("Uploader.cfg");
 
-    TheMaster.Connnect();
+    TheMaster.Connect();
 
     return 0;
 }
