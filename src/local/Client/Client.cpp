@@ -18,6 +18,8 @@ Client::Client(Context* context) :
 
 void Client::Setup()
 {
+    OpenLog();
+
     LogRAW::Create("Client.log", true);
 
     LOGWRITE("Start Client");
@@ -32,14 +34,6 @@ void Client::Setup()
     }
 
     TheConfig.Load("Client.conf");
-
-    TheMaster.Connect(TheConfig.GetStringValue("address master"));
-
-    std::string address = TheMaster.GetValue(MASTER_GET_ADDRESS_UPLOADER);
-
-    TheMaster.Destroy();
-
-    LOGWRITEF("Address uploader is %s", address.c_str());
 
     TheClient = this;
 
@@ -79,8 +73,6 @@ void Client::TuneEngineParameters()
 
 void Client::Start()
 {
-    OpenLog();
-
     GetSubsystems();
 
     Application::Start();
@@ -137,4 +129,7 @@ void Client::CreateConsoleAndDebugHud()
 
 void Client::OpenLog()
 {
+    log = new Log(TheContext);
+    log->Open(GetTypeName() + ".log");
+    log->SetLevel(LOG_DEBUG);
 }

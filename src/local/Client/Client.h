@@ -28,4 +28,6 @@ private:
     void GetSubsystems();
     void TuneEngineParameters();
     void CreateGUI();
+
+    SharedPtr<Log>      log;
 };
