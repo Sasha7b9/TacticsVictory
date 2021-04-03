@@ -39,6 +39,7 @@ private:
     virtual ~LogRAW();
 
     static void CommonWrite(pchar file, int line, pchar text, pchar symbols);
+    static void CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symbols);
 };
 
 

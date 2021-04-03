@@ -72,21 +72,28 @@ void LogRAW::Destroy()
 }
 
 
-void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
+void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symbols)
 {
     file = ExtractName(file, numSymbolsForMarker - SU::Length(STR_ERROR) - 1);
 
-    std::vector<char> v(1024);
-
     snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
 
-    while (SU::Length(v.data())  < numSymbolsForMarker - SU::Length(STR_ERROR) - 1)
+    while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(STR_ERROR) - 1)
     {
         strcat(v.data(), " ");
     }
 
-    std::strcat(v.data(), STR_ERROR);
+    std::strcat(v.data(), symbols);
     std::strcat(v.data(), " | ");
+
+}
+
+
+void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
+{
+    std::vector<char> v(1024);
+
+    CommonWriteF(file, line, v, STR_ERROR);
 
     std::va_list args;
     va_start(args, format);
@@ -101,19 +108,9 @@ void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
 
 void LogRAW::WarningF(pchar file, int line, pchar format, ...)
 {
-    file = ExtractName(file, numSymbolsForMarker - SU::Length(STR_WARNING) - 1);
-
     std::vector<char> v(1024);
 
-    snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
-
-    while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(STR_WARNING) - 1)
-    {
-        std::strcat(v.data(), " ");
-    }
-
-    std::strcat(v.data(), STR_WARNING);
-    std::strcat(v.data(), " | ");
+    CommonWriteF(file, line, v, STR_WARNING);
 
     std::va_list args;
     va_start(args, format);
@@ -128,22 +125,9 @@ void LogRAW::WarningF(pchar file, int line, pchar format, ...)
 
 void LogRAW::WriteF(pchar file, int line, pchar format, ...)
 {
-    static std::mutex mutex;
-
-    mutex.lock();
-
-    file = ExtractName(file, numSymbolsForMarker);
-
     std::vector<char> v(1024);
 
-    snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
-
-    while (SU::Length(v.data()) < numSymbolsForMarker)
-    {
-        std::strcat(v.data(), " ");
-    }
-
-    std::strcat(v.data(), "| ");
+    CommonWriteF(file, line, v, "");
 
     std::va_list args;
     va_start(args, format);
