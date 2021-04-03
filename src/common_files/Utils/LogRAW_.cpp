@@ -14,8 +14,8 @@
 
 static const int numSymbolsForMarker = 40;          // Количество сиволов под позицию ошибки
 
-static pchar strERROR = "*ERROR*";
-static pchar strWARNING = "*WARNING*";
+static pchar STR_ERROR = "*ERROR*";
+static pchar STR_WARNING = "*WARNING*";
 
 static FS::File *outFile;
 
@@ -74,7 +74,7 @@ void LogRAW::Destroy()
 
 void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
 {
-    file = ExtractName(file, numSymbolsForMarker - SU::Length(strERROR) - 1);
+    file = ExtractName(file, numSymbolsForMarker - SU::Length(STR_ERROR) - 1);
 
     std::va_list args;
     va_start(args, format);
@@ -83,12 +83,12 @@ void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
 
     snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
 
-    while (SU::Length(v.data())  < numSymbolsForMarker - SU::Length(strERROR) - 1)
+    while (SU::Length(v.data())  < numSymbolsForMarker - SU::Length(STR_ERROR) - 1)
     {
         strcat(v.data(), " ");
     }
 
-    std::strcat(v.data(), strERROR);
+    std::strcat(v.data(), STR_ERROR);
     std::strcat(v.data(), " | ");
 
     std::vsnprintf(v.data() + SU::Length(v.data()), v.size(), format, args);
@@ -108,9 +108,15 @@ void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
 }
 
 
+void LogRAW::Error(pchar /*file*/, int /*line*/, pchar /*text*/)
+{
+
+}
+
+
 void LogRAW::WarningF(pchar file, int line, pchar format, ...)
 {
-    file = ExtractName(file, numSymbolsForMarker - SU::Length(strWARNING) - 1);
+    file = ExtractName(file, numSymbolsForMarker - SU::Length(STR_WARNING) - 1);
 
     std::va_list args;
     va_start(args, format);
@@ -119,12 +125,12 @@ void LogRAW::WarningF(pchar file, int line, pchar format, ...)
 
     snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
 
-    while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(strWARNING) - 1)
+    while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(STR_WARNING) - 1)
     {
         std::strcat(v.data(), " ");
     }
 
-    std::strcat(v.data(), strWARNING);
+    std::strcat(v.data(), STR_WARNING);
     std::strcat(v.data(), " | ");
 
     std::vsnprintf(v.data() + SU::Length(v.data()), v.size(), format, args);

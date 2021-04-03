@@ -76,7 +76,7 @@ static void HandlerGet(AcceptorTCP::Socket &socket, const std::vector<std::strin
             }
             else
             {
-                LOGERROR("Invalid request : \"%s %s %s\"", words[0].c_str(), words[1].c_str(), words[2].c_str());
+                LOGERRORF("Invalid request : \"%s %s %s\"", words[0].c_str(), words[1].c_str(), words[2].c_str());
             }
         }
     }
