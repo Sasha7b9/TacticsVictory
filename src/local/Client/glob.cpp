@@ -2,8 +2,8 @@
 #include "stdafx.h"
 
 
-Context *TheContext     = nullptr;
-ResourceCache *TheCache = nullptr;
+Context       *TheContext = nullptr;
+ResourceCache *TheCache   = nullptr;
 
 Client           *TheClient = nullptr;
 ConfigurationFile TheConfig;

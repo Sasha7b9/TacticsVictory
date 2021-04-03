@@ -37,6 +37,6 @@ using namespace Urho3D;
 #include "glob_engine.h"
 #include "glob_game.h"
 
-#include "FileSystem/FileSystem_.h"
+#include "FileSystem/ConfigurationFile_.h"
 #include "Network/Other/MasterServer_.h"
-#include "Utils/SystemFunctions_.h"
+#include "Utils/Log_.h"
