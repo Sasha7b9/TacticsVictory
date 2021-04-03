@@ -24,6 +24,8 @@ void Hangar::Setup()
 
     TheHangar = this;
 
+    TheMaster.Connnect();
+
     GetSubsystems();
 
     TuneEngineParameters();

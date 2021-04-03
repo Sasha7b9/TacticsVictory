@@ -7,3 +7,4 @@ Context *TheContext = nullptr;
 ConfigurationFile TheConfig;
 Hangar           *TheHangar = nullptr;
 LogU3D           *TheLog = nullptr;
+MasterServer      TheMaster;
