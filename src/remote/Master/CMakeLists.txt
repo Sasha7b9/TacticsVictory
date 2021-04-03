@@ -10,6 +10,8 @@ set(CMAKE_UNITY_BUILD ON)
 if(WIN32)
 
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
+    set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
+
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
 
     add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed
@@ -62,13 +64,6 @@ source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
 source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
-
-if(WIN32)
-    set_source_files_properties(stdafx.cpp
-        PROPERTIES
-        COMPILE_FLAGS "/Ycstdafx.h"
-    )
-endif()
 
 add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
