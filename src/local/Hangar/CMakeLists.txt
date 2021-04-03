@@ -4,6 +4,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
+                    ../../ThirdParty/sockpp/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
@@ -22,6 +23,7 @@ add_compile_options(/wd4514)    # 'function' : unreferenced inline function has 
 add_compile_options(/wd4710)    # 'function' : function not inlined
 add_compile_options(/wd4711)    # function 'function' selected for inline expansion
 add_compile_options(/wd4820)    # 'bytes' bytes padding added after construct 'member_name'
+add_compile_options(/wd4996)    # Your code uses a function, class member, variable, or typedef that's marked deprecated
 add_compile_options(/wd5026)    # 'type': move constructor was implicitly defined as deleted
 add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
 add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
@@ -30,17 +32,21 @@ add_compile_options(/wd5219)    # implicit conversion from 'type-1' to 'type-2',
 add_compile_options(/wd26812)
 add_compile_options(/wd28251)
 
-file(GLOB SRC       ../../common_files/*.*
-                                       *.h *.cpp)
-file(GLOB UTILS     ../../common_files/Utils/Log_.*
-                    ../../common_files/Utils/LogU3D_.*
-                    ../../common_files/Utils/SystemFunctions_.*
-                    ../../common_files/Utils/SystemUtils_.*)
+file(GLOB SRC         ../../common_files/*.*
+                                         *.h *.cpp)
+file(GLOB FILE_SYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
+                      ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB UTILS       ../../common_files/Utils/Log_.*
+                      ../../common_files/Utils/LogU3D_.*
+                      ../../common_files/Utils/StringUtils_.*
+                      ../../common_files/Utils/SystemFunctions_.*
+                      ../../common_files/Utils/SystemUtils_.*)
 
-source_group(src    FILES ${SRC})
-source_group(Utils  FILES ${UTILS})
+source_group(src        FILES ${SRC})
+source_group(FileSystem FILES ${FILE_SYSTEM})
+source_group(Utils      FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${UTILS})
+add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)
 

@@ -4,5 +4,6 @@
 
 Context *TheContext = nullptr;
 
-Hangar  *TheHangar = nullptr;
-LogU3D  *TheLog = nullptr;
+ConfigurationFile TheConfig;
+Hangar           *TheHangar = nullptr;
+LogU3D           *TheLog = nullptr;

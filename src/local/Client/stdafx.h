@@ -6,7 +6,6 @@
 #define _WINSOCKAPI_
 #include <windows.h>
 
-
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Engine/EngineDefs.h>
 
@@ -15,9 +14,7 @@
 
 #include <Urho3D/Resource/ResourceCache.h>
 
-
 using namespace Urho3D;
-
 
 #include <rapidjson/document.h>
 
@@ -29,14 +26,13 @@ using namespace Urho3D;
 #include <mutex>
 #include <sstream>
 
-
 #pragma warning(pop)
 
 #include "defines.h"
 
-#include "glob_engine.h"
-#include "glob_game.h"
-
 #include "FileSystem/ConfigurationFile_.h"
 #include "Network/Other/MasterServer_.h"
 #include "Utils/Log_.h"
+
+#include "glob_engine.h"
+#include "glob_game.h"

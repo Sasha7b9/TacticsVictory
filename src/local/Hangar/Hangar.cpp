@@ -20,6 +20,8 @@ void Hangar::Setup()
 {
     OpenLog();
 
+    TheConfig.Load("Hangar.cfg");
+
     TheHangar = this;
 
     GetSubsystems();
