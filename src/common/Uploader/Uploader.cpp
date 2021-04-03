@@ -3,5 +3,15 @@
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
+
+    LogRAW::Create("Controller.log");
+
+    LOGWRITE("Start Controller");
+
+    TheConfig.Load("Contoller.cfg");
+
+    TheMaster.Connnect();
+
     return 0;
 }
