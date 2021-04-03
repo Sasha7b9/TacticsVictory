@@ -45,7 +45,7 @@ endif()
 file(GLOB SRC                                    ../../common_files/*.*
                                                                     *.h *.cpp)
 file(GLOB CORE                                   ../../common_files/Core/*.*)
-file(GLOB FILE_SYSTEM                            ../../common_files/FileSystem/ConfigurationFIle_.*
+file(GLOB FILE_SYSTEM                            ../../common_files/FileSystem/ConfigurationFile_.*
                                                  ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB GAME_LOGIC                             ../../common_files/Game/Logic/*.*)
 file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.*)
