@@ -2,7 +2,11 @@
 #pragma once
 
 
+extern Audio         *TheAudio;
 extern Context       *TheContext;
+extern Graphics      *TheGraphics;
+extern Input         *TheInput;
 extern ResourceCache *TheCache;
+extern Scene         *TheScene;
 extern UI            *TheUI;
 extern UIElement     *TheUIRoot;

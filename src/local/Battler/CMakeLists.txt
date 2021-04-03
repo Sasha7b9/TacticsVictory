@@ -51,7 +51,9 @@ file(GLOB GUI_CONTROLS_SLIDERS                   ../../common_files/GUI/Controls
 file(GLOB GUI_GUIEDITOR                                             GUI/GuiEditor/*.*)
 file(GLOB GUI_GAME                                                  GUI/GuiGame/*.*)
 file(GLOB GUI_LOGIC                                                 GUI/Logic/*.*)
-file(GLOB GUI_MENU                                                  GUI/Menu/*.*)
+file(GLOB GUI_MENU                               ../../common_files/GUI/Menu/MenuConfirmExit_.*
+                                                 ../../common_files/GUI/Menu/WindowMenu_.*
+                                                                    GUI/Menu/*.*)
 file(GLOB GUI_MENU_START                                            GUI/Menu/MenuStart/*.*)
 file(GLOB GUI_MENU_START_PLAY                                       GUI/Menu/MenuStart/MenuPlay/*.*)
 file(GLOB GUI_PANELS                                                GUI/Panels/*.*)

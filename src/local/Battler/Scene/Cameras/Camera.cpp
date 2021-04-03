@@ -92,7 +92,7 @@ void CameraT::ParallelTranslateLookAt(const Vector3 &lookAt_)
 }
 
 
-void CameraT::PostUpdate(float time) //-V2008
+void CameraT::PostUpdate(float time)
 {
     if(!enabled || TheConsole->IsActive())
     {

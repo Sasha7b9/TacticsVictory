@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/GUI.h"
-#include "GUI/Windows/Console.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 
@@ -48,12 +47,6 @@ SharedPtr<CameraT> CameraT::Create()
 {
     SharedPtr<CameraT> camera(TheScene->CreateChild("TCamera")->CreateComponent<CameraT>(LOCAL));
 
-    uint sizeZ = TheTerrain->WidthZ();
-    uint sizeX = TheTerrain->HeightX();
-
-    camera->SetPosition({ sizeX / 2.0f, 25.0f, static_cast<float>(sizeZ) / 2.0f - 10.0f },
-                        { sizeX / 2.0f, 0.0f, (sizeZ / 2.0f) });
-
     return camera;
 }
 
@@ -93,107 +86,11 @@ void CameraT::ParallelTranslateLookAt(const Vector3 &lookAt_)
 }
 
 
-void CameraT::PostUpdate(float time) //-V2008
+void CameraT::PostUpdate(float /*time*/)
 {
     if(!enabled || TheConsole->IsActive())
     {
         return;
-    }
-
-    CursorT::Type::E cursor = TheCursor->GetType();
-
-    const float MOVE_SPEED = 30.0f;
-
-    float distance = MOVE_SPEED * time;
-
-    if(CURSOR_UP || CURSOR_TOP_LEFT || CURSOR_TOP_RIGHT || ((PRESS_UP || PRESS_W) && arrowEnabled))
-    {
-        MoveOn(Direction::Forward, distance);
-    }
-    if(CURSOR_DOWN || CURSOR_DOWN_LEFT || CURSOR_DOWN_RIGhT || ((PRESS_DOWN || PRESS_S) && arrowEnabled))
-    {
-        MoveOn(Direction::Back, distance);
-    }
-    if(CURSOR_LEFT || CURSOR_TOP_LEFT || CURSOR_DOWN_LEFT || ((PRESS_LEFT || PRESS_A) && arrowEnabled))
-    {
-        MoveOn(Direction::Left, distance);
-    }
-    if(CURSOR_RIGHT || CURSOR_TOP_RIGHT || CURSOR_DOWN_RIGhT || ((PRESS_RIGHT || PRESS_D) && arrowEnabled))
-    {
-        MoveOn(Direction::Right, distance);
-    }
-    if(PRESS_HOME || PRESS_Q)
-    {
-        MoveOn(Direction::Closer, distance);
-    }
-    if(PRESS_PAGEUP || PRESS_E)
-    {
-        MoveOn(Direction::Further, distance);
-    }
-    if(TheInput->GetKeyDown(KEY_END))
-    {
-        MoveOn(Direction::RotateYAW, -distance);
-    }
-    if(TheInput->GetKeyDown(KEY_PAGEDOWN))
-    {
-        MoveOn(Direction::RotateYAW, distance);
-    }
-    if(TheInput->GetKeyDown(KEY_INSERT))
-    {
-        MoveOn(Direction::RotatePITCH, distance);
-    }
-    if(TheInput->GetKeyDown(KEY_DELETE))
-    {
-        MoveOn(Direction::RotatePITCH, -distance);
-    }
-
-    int dX = TheInput->GetMouseMoveX();
-    int dY = TheInput->GetMouseMoveY();
-
-    if((dX || dY) && !TheGUI->UnderCursor())
-    {
-        IntVector2 posCursor = TheCursor->GetCursor()->GetPosition();
-        posCursor.x_ -= dX;
-        posCursor.y_ -= dY;
-        if((dY || dX) && TheInput->GetMouseButtonDown(MOUSEB_LEFT) && TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
-        {
-            MoveOn(dY < 0 ? Direction::Closer : Direction::Further, fabs(dY / 10.0f));
-            TheCursor->GetCursor()->SetPosition(posCursor);
-        }
-        else if((dX || dY) && TheInput->GetMouseButtonDown(MOUSEB_RIGHT))
-        {
-            MoveOn(Direction::RotateYAW, dX / 10.0f);
-            MoveOn(Direction::RotatePITCH, dY / 10.0f);
-            TheCursor->GetCursor()->SetPosition(posCursor);
-        }
-        else if((dX || dY) && TheInput->GetMouseButtonDown(MOUSEB_MIDDLE))
-        {
-            float k = 20.0f;
-            if(dX > 0)
-            {
-                MoveOn(Direction::Left, dX / k);
-            }
-            else if(dX < 0)
-            {
-                MoveOn(Direction::Right, -dX / k);
-            }
-            if(dY > 0)
-            {
-                MoveOn(Direction::Forward, dY / k);
-            }
-            else if(dY < 0)
-            {
-                MoveOn(Direction::Back, -dY / k);
-            }
-            TheCursor->GetCursor()->SetPosition(posCursor);
-        }
-    }
-
-    int wheel = TheInput->GetMouseMoveWheel();
-
-    if(wheel != 0)
-    {
-        MoveOn(wheel < 0 ? Direction::Closer : Direction::Further, fabs(wheel * 10.0f));
     }
 }
 
@@ -312,11 +209,6 @@ void CameraT::SetEnabled(bool _enabled)
 
 void CameraT::SetupViewport()
 {
-    Camera *camera = cameraNode->GetComponent<Camera>();
-
-    SharedPtr<Viewport> viewport(new Viewport(TheContext, TheScene, camera));
-
-    TheRenderer->SetViewport(0, viewport);
 }
 
 
@@ -328,6 +220,4 @@ SharedPtr<Node> CameraT::GetNode()
 
 Ray CameraT::GetCursorRay()
 {
-    IntVector2 pos = TheUI->GetCursorPosition();
-    return cameraNode->GetComponent<Camera>()->GetScreenRay(static_cast<float>(pos.x_) / TheGraphics->GetWidth(), static_cast<float>(pos.y_) / TheGraphics->GetHeight());
 }

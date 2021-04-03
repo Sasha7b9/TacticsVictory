@@ -1,6 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Cursor.h"
 #include "GUI/GUI.h"
 #include "GUI/Controls/DropDownListWithTextAndButton_.h"
 #include "GUI/Controls/GovernorFloat_.h"
@@ -10,9 +9,7 @@
 #include "GUI/Controls/Sliders/Slider_.h"
 #include "GUI/Controls/Sliders/SliderInt_.h"
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
-#include "GUI/GuiEditor/GuiEditor.h"
-#include "GUI/GuiGame/GuiGame.h"
-#include "GUI/Menu/MenuConfirmExit.h"
+#include "GUI/Menu/MenuConfirmExit_.h"
 #include "GUI/Menu/MenuGame.h"
 #include "GUI/Menu/MenuStart/MenuAboutMe.h"
 #include "GUI/Menu/MenuStart/MenuOptions.h"

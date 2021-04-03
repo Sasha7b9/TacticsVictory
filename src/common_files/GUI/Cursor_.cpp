@@ -598,7 +598,7 @@ void CursorShapes::CreateBusy(int numFrame)
     CORRECTION_COLOR
 
 
-void CursorShapes::FillGradient(ImageT *image, CursorT::Type::E type, int numFrame) //-V2008
+void CursorShapes::FillGradient(ImageT *image, CursorT::Type::E type, int numFrame)
 {
     int width = image->GetWidth();
     int height = image->GetHeight();

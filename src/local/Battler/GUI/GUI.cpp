@@ -11,7 +11,7 @@
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/GuiGame/GuiGame.h"
-#include "GUI/Menu/MenuConfirmExit.h"
+#include "GUI/Menu/MenuConfirmExit_.h"
 #include "GUI/Menu/MenuGame.h"
 #include "GUI/Menu/MenuStart/MenuAboutMe.h"
 #include "GUI/Menu/MenuStart/MenuOptions.h"

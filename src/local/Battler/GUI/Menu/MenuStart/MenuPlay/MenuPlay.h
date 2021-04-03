@@ -1,6 +1,6 @@
 // 2021/03/16 21:50:02 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "GUI/Menu/WindowMenu.h"
+#include "GUI/Menu/WindowMenu_.h"
 
 
 class MenuPlay : public WindowMenu
