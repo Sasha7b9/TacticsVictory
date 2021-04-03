@@ -8,8 +8,6 @@ include_directories(.
                     ../../common_files
                     ../../ThirdParty/sockpp/include)
 
-add_definitions(-DURHO3D_LOGGING -DLOG_U3D)
-
 if(WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
@@ -18,6 +16,7 @@ if(WIN32)
 
     add_compile_options(/wd4710)    # 'function' : function not inlined
     add_compile_options(/wd4711)    # function 'function' selected for inline expansion
+    add_compile_options(/wd4996)
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified
 
@@ -26,21 +25,30 @@ else()
     SET(LDFLAGS "${LDFLAGS} -ldl")
 endif()
 
-file(GLOB SRC       *.h *.cpp)
+file(GLOB SRC        ../../common_files/*.h *.cpp
+                                        *.h *.cpp)
+file(GLOB FILESYSTEM ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB UTILS      ../../common_files/Utils/Log_.*
+                     ../../common_files/Utils/LogRAW_.*
+                     ../../common_files/Utils/StringUtils_.*
+                     ../../common_files/Utils/SystemFunctions_.*
+                     ../../common_files/Utils/SystemUtils_.*)
 
-file(GLOB SOCKPP                                ThirdParty/sockpp.cpp)
-file(GLOB SOCKPP_SOURCES                  ../../ThirdParty/sockpp/src/*.cpp)
-file(GLOB SOCKPP_INCLUDE                  ../../ThirdParty/sockpp/include/sockpp/*.h)
+file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
+file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
+file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
 
-source_group(src    FILES ${SRC})
+source_group(src        FILES ${SRC})
+source_group(FileSystem FILES ${FILESYSTEM})
+source_group(Utils      FILES ${UTILS})
 
-source_group(ThirdParty\\sockpp                FILES ${SOCKPP})
-source_group(ThirdParty\\sockpp\\sources       FILES ${SOCKPP_SOURCES})
-source_group(ThirdParty\\sockpp\\include       FILES ${SOCKPP_INCLUDE})
+source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
+source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
+source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable(${PROJECT_NAME} ${SRC}
+add_executable(${PROJECT_NAME} ${SRC} ${FILESYSTEM} ${UTILS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 if(WIN32)
