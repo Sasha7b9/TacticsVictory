@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
     setlocale(LC_ALL, "Russian");
 
-    LogRAW::Create("Updater.log");
+    LogRAW::Create("Updater.log", false);
 
     LOGWRITE("Start Updater");
 

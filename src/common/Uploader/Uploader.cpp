@@ -5,7 +5,7 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    LogRAW::Create("Uploader.log");
+    LogRAW::Create("Uploader.log", false);
 
     LOGWRITE("Start Uploader");
 

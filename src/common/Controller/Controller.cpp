@@ -6,7 +6,7 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    LogRAW::Create("Controller.log");
+    LogRAW::Create("Controller.log", false);
 
     LOGWRITE("Start Controller");
 

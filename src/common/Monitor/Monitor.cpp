@@ -6,7 +6,7 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    LogRAW::Create("Monitor.log");
+    LogRAW::Create("Monitor.log", false);
 
     LOGWRITE("Start Monitor");
 

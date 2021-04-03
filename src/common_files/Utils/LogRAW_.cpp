@@ -49,13 +49,11 @@ static pchar ExtractName(pchar fullName, int max)
 }
 
 
-void LogRAW::Create(pchar nameLog)
+void LogRAW::Create(pchar nameLog, bool new_console)
 {
     outFile = new FS::File();
 
     ConsoleLog::Create();
-
-    FreeConsole();
 
     outFile->Create((std::string("log") + FS::delimiter + nameLog).c_str());
 }

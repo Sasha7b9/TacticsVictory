@@ -18,7 +18,7 @@ Client::Client(Context* context) :
 
 void Client::Setup()
 {
-    LogRAW::Create("Client.log");
+    LogRAW::Create("Client.log", true);
 
     LOGWRITE("Start Client");
 

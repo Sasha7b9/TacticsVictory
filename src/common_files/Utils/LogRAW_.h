@@ -18,7 +18,8 @@ class LogRAW
 {
 public:
 
-    static void Create(pchar nameLog);
+    // ≈сли create_console == true, то нужно создавать новую консоль
+    static void Create(pchar nameLog, bool create_console);
 
     static void Destroy();
 

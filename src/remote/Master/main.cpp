@@ -6,7 +6,7 @@ int main(int, char *[]) //-V2504
 {
     setlocale(LC_ALL, "Russian");
 
-    LogRAW::Create("Master.log");
+    LogRAW::Create("Master.log", false);
 
     LOGWRITE("Start Master");
 

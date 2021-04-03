@@ -6,7 +6,7 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    LogRAW::Create("DataBase.log");
+    LogRAW::Create("DataBase.log", false);
 
     LOGWRITE("Start DataBase");
 

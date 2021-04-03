@@ -6,7 +6,7 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    LogRAW::Create("LivingRoom.log");
+    LogRAW::Create("LivingRoom.log", false);
 
     LOGWRITE("Start LivingRoom");
 
