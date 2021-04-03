@@ -10,8 +10,8 @@
 #define LOGWARNINGF(...) LogRAW::WarningF(__FILE__, __LINE__, __VA_ARGS__);
 
 // Критичные ошибки.
-#define LOGERROR(...)    LogRAW::Error(__FILE__, __LINE__, __VA_ARGS__)
-#define LOGERRORF(...)   LogRAW::Error(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGERROR(...)    LogRAW::ErrorF(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGERRORF(...)   LogRAW::ErrorF(__FILE__, __LINE__, __VA_ARGS__)
 
 
 class LogRAW
@@ -32,7 +32,7 @@ public:
     static void Warning(pchar file, int line, pchar text);
 
     //+V576,class:Log,function:Error,format_arg:3,ellipsis_arg:4
-    static void Error(pchar file, int line, pchar format, ...);
+    static void ErrorF(pchar file, int line, pchar format, ...);
 
 private:
     virtual ~LogRAW();

@@ -72,7 +72,7 @@ void LogRAW::Destroy()
 }
 
 
-void LogRAW::Error(pchar file, int line, pchar format, ...)
+void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
 {
     file = ExtractName(file, numSymbolsForMarker - SU::Length(strERROR) - 1);
 
