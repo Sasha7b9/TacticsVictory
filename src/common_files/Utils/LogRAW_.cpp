@@ -53,13 +53,9 @@ void LogRAW::Create(pchar nameLog)
 {
     outFile = new FS::File();
 
-#ifdef DEBUG
     ConsoleLog::Create();
-#else
-#ifdef WIN32
-    FreeConsole();
-#endif
-#endif
+
+//    FreeConsole();
 
     outFile->Create((std::string("log") + FS::delimiter + nameLog).c_str());
 }
@@ -188,11 +184,7 @@ void LogRAW::Write(pchar text)
         *outFile << text << END_LINE;
     }
 
-#ifdef DEBUG
-
     ConsoleLog::Write(text);
-
-#endif
 
     mutex.unlock();
 }
