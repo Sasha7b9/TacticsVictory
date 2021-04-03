@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Network/Other/MasterServer_.h"
 
 
 void MasterServer::Connnect() //-V2506

@@ -5,6 +5,10 @@
 #pragma warning(push, 0)
 #endif
 
+#define _WINSOCKAPI_
+#include <windows.h>
+
+
 #include <Urho3D/AngelScript/Addons.h>
 #include <Urho3D/AngelScript/APITemplates.h>
 #include <Urho3D/AngelScript/Script.h>
@@ -69,9 +73,17 @@
 
 using namespace Urho3D;
 
+#include <rapidjson/rapidjson.h>
+#include <rapidjson/document.h>
+
+#include <sockpp/tcp_acceptor.h>
+#include <sockpp/tcp_connector.h>
+
 #include <cfloat>
 #include <ctime>
 #include <iostream>
+#include <map>
+#include <mutex>
 #include <sstream>
 
 #ifdef WIN32
@@ -84,4 +96,6 @@ using namespace Urho3D;
 #include "glob_game.h"
 
 #include "Core/Structures_.h"
+#include "FileSystem/ConfigurationFile_.h"
 #include "Utils/Log_.h"
+#include "Utils/StringUtils_.h"

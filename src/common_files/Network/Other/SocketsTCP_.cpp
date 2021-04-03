@@ -24,11 +24,11 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
 
     if (connection->is_connected())
     {
-        LOGWRITE("Connect to %s:%d success", host.c_str(), port);
+        LOGWRITEF("Connect to %s:%d success", host.c_str(), port);
     }
     else
     {
-        LOGERROR("%d - Connect to %s:%d failed. Error : %s", counter++, host.c_str(), port, connection->last_error_str().c_str());
+        LOGERRORF("%d - Connect to %s:%d failed. Error : %s", counter++, host.c_str(), port, connection->last_error_str().c_str());
     }
 
     return connection->is_connected();
@@ -87,7 +87,7 @@ void ConnectorTCP::Receive(std::string &data)
     }
     else
     {
-        LOGWARNING("Not received a file from peer %s", connection->peer_address().to_string().c_str());
+        LOGWARNINGF("Not received a file from peer %s", connection->peer_address().to_string().c_str());
     }
 }
 
@@ -107,7 +107,8 @@ std::string ConnectorTCP::Receive()
     }
     else
     {
-        LOGWARNING("Not received a file from address %s, peer %s", connection->address().to_string().c_str(), connection->peer_address().to_string().c_str());
+        LOGWARNINGF("Not received a file from address %s, peer %s", connection->address().to_string().c_str(),
+            connection->peer_address().to_string().c_str());
     }
 
     return result;
@@ -133,11 +134,11 @@ bool AcceptorTCP::Bind(uint16 port)
 
     if (connection->is_open())
     {
-        LOGWRITE("Bind to port %d success", port);
+        LOGWRITEF("Bind to port %d success", port);
     }
     else
     {
-        LOGERROR("Bind to port %d failed", port);
+        LOGERRORF("Bind to port %d failed", port);
         LOGERROR(connection->last_error_str().c_str());
     }
 
@@ -153,11 +154,11 @@ bool AcceptorTCP::Accept(Socket &socket)
 
     if (!socket.sock)
     {
-        LOGERROR("Fail accept connection. Error : %s", connection->last_error_str().c_str());
+        LOGERRORF("Fail accept connection. Error : %s", connection->last_error_str().c_str());
     }
     else
     {
-        LOGWRITE("Accept connection from %s", socket.peer->to_string().c_str());
+        LOGWRITEF("Accept connection from %s", socket.peer->to_string().c_str());
     }
 
     return socket.sock.is_open();
@@ -176,7 +177,7 @@ void ThreadSocket(AcceptorTCP::Socket socket, void (*onReceive)(AcceptorTCP::Soc
 
         if (n <= 0)
         {
-            LOGWRITE("Close connection %s", socket.peer->to_string().c_str());
+            LOGWRITEF("Close connection %s", socket.peer->to_string().c_str());
             break;
         }
 

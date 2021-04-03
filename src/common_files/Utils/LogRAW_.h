@@ -1,11 +1,12 @@
 #pragma once
 
 
-#define LOGWRITE(...)   LogRAW::Write(__FILE__, __LINE__, __VA_ARGS__)
-#define LOGWRITEF(...)  LogRAW::Write(__FILE__, __LINE__, __VA_ARGS__)
-#define LOGERROR(...)   LogRAW::Error(__FILE__, __LINE__, __VA_ARGS__)
-#define LOGERRORF(...)  LogRAW::Error(__FILE__, __LINE__, __VA_ARGS__)
-#define LOGWARNING(...) LogRAW::Warning(__FILE__, __LINE__, __VA_ARGS__);
+#define LOGWRITE(...)    LogRAW::Write(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGWRITEF(...)   LogRAW::Write(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGERROR(...)    LogRAW::Error(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGERRORF(...)   LogRAW::Error(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGWARNING(...)  LogRAW::Warning(__FILE__, __LINE__, __VA_ARGS__);
+#define LOGWARNINGF(...) LogRAW::Warning(__FILE__, __LINE__, __VA_ARGS__);
 
 
 class LogRAW

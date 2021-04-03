@@ -6,6 +6,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
+                    ../../ThirdParty/sockpp/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
@@ -45,12 +46,15 @@ endif()
 file(GLOB SRC                                    ../../common_files/*.*
                                                                     *.h *.cpp)
 file(GLOB CORE                                   ../../common_files/Core/*.*)
+file(GLOB FILE_SYSTEM                            ../../common_files/FileSystem/ConfigurationFIle_.*)
 file(GLOB GAME_LOGIC                             ../../common_files/Game/Logic/*.*)
 file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.*)
-file(GLOB NETWORK                                                   Network/*.*
-                                                 ../../common_files/Network/Game/*.*)
+file(GLOB NETWORK                                ../../common_files/Network/Game/*.*
+                                                                    Network/*.*)
 file(GLOB NETWORK_MESSAGES                       ../../common_files/Network/Game/Messages/*.*
                                                                     Network/Messages/*.*)
+file(GLOB NETWORK_OTHER                          ../../common_files/Network/Other/MasterServer_.*
+                                                 ../../common_files/Network/Other/SocketsTCP_.*)
 file(GLOB SCENE                                  ../../common_files/Scene/*.*
                                                                     Scene/*.*)
 file(GLOB SCENE_OBJECTS                          ../../common_files/Scene/Objects/*.*
@@ -79,12 +83,18 @@ file(GLOB UTILS                                  ../../common_files/Utils/Log_.*
                                                  ../../common_files/Utils/SystemUtils_.*
                                                                     Utils/*.*)
 
+file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
+file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
+file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
+
 source_group(src                                        FILES ${SRC})
 source_group(Core                                       FILES ${CORE})
+source_group(FileSystem                                 FILES ${FILE_SYSTEM})
 source_group(Game\\Logic                                FILES ${GAME_LOGIC})
 source_group(Game\\Path                                 FILES ${GAME_PATH})
 source_group(Network                                    FILES ${NETWORK})
 source_group(Network\\Messages                          FILES ${NETWORK_MESSAGES})
+source_group(Network\\Other                             FILES ${NETWORK_OTHER})
 source_group(Scene                                      FILES ${SCENE})
 source_group(Scene\\Objects                             FILES ${SCENE_OBJECTS})
 source_group(Scene\\Objects\\Ammo                       FILES ${SCENE_OBJECTS_AMMO})
@@ -102,7 +112,14 @@ source_group(Scene\\Primitives                          FILES ${SCENE_PRIMITIVES
 source_group(Scene\\Terrain                             FILES ${SCENE_TERRAIN})
 source_group(Utils                                      FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GAME_PATH} ${NETWORK} ${NETWORK_MESSAGES}
+source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
+source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
+source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
+
+set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
+
+add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${FILE_SYSTEM} ${GAME_LOGIC} ${GAME_PATH}
+    ${NETWORK} ${NETWORK_MESSAGES} ${NETWORK_OTHER}
     ${SCENE} ${SCENE_OBJECTS}
     ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
     ${SCENE_OBJECTS_BUILDINGS}
@@ -110,7 +127,8 @@ add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${GAME_LOGIC} ${GAME_PATH} ${NETW
     ${SCENE_OBJECTS_UNITS_ACCESSORIES} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE}
     ${SCENE_OBJECTS_UNITS_AIR} ${SCENE_OBJECTS_UNITS_AIR_AIRPLANE}
     ${SCENE_OBJECTS_UNITS_GROUND} ${SCENE_OBJECTS_UNITS_GROUND_TANK}
-    ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS})
+    ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS}
+    ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 include(../../RuntimeLibrary.cmake)
 
@@ -120,6 +138,7 @@ if(WIN32)
     else()
         target_link_libraries(${PROJECT_NAME} Urho3D)
     endif()
+    target_link_libraries(${PROJECT_NAME} ws2_32)
 else()
     target_link_libraries(${PROJECT_NAME} Urho3D)
 endif()

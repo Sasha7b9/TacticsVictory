@@ -2,15 +2,17 @@
 #pragma once
 
 class Battle;
+class ConfigurationFile;
 class LogU3D;
 class SceneS;
 class ServerS;
 class Settings;
 class TerrainT;
 
-extern Battle     *TheBattle;
-extern LogU3D     *TheLog;
-extern SceneS     *TheScene;
-extern ServerS    *TheServer;
-extern Settings   *TheSet;
-extern TerrainT   *TheTerrain;
+extern Battle           *TheBattle;
+extern ConfigurationFile TheConfig;
+extern LogU3D           *TheLog;
+extern SceneS           *TheScene;
+extern ServerS          *TheServer;
+extern Settings         *TheSet;
+extern TerrainT         *TheTerrain;
