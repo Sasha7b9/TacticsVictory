@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Core/Math_.h"
 #include "Scene/SceneS.h"
+#include "Scene/Terrain/CubeTerrain_.h"
 #include "Scene/Terrain/LayerTerrain_.h"
 
 

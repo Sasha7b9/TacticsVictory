@@ -5,6 +5,9 @@
 #pragma warning(push, 0)
 #endif
 
+#include <rapidjson/rapidjson.h>
+#include <rapidjson/document.h>
+
 #define _WINSOCKAPI_
 #include <windows.h>
 
@@ -72,9 +75,6 @@
 #include <Urho3D/DebugNew.h>
 
 using namespace Urho3D;
-
-#include <rapidjson/rapidjson.h>
-#include <rapidjson/document.h>
 
 #include <sockpp/tcp_acceptor.h>
 #include <sockpp/tcp_connector.h>

@@ -1,8 +1,6 @@
 project (Battle)
 
-
 set(CMAKE_UNITY_BUILD ON)
-
 
 include_directories(.
                     ../../common_files
@@ -26,6 +24,7 @@ if(WIN32)
     add_compile_options(/wd4710)    # 'function' : function not inlined
     add_compile_options(/wd4711)    # function 'function' selected for inline expansion
     add_compile_options(/wd4820)    # 'bytes' bytes padding added after construct 'member_name'
+    add_compile_options(/wd4996)
     add_compile_options(/wd5026)    # 'type': move constructor was implicitly defined as deleted
     add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
@@ -46,7 +45,8 @@ endif()
 file(GLOB SRC                                    ../../common_files/*.*
                                                                     *.h *.cpp)
 file(GLOB CORE                                   ../../common_files/Core/*.*)
-file(GLOB FILE_SYSTEM                            ../../common_files/FileSystem/ConfigurationFIle_.*)
+file(GLOB FILE_SYSTEM                            ../../common_files/FileSystem/ConfigurationFIle_.*
+                                                 ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB GAME_LOGIC                             ../../common_files/Game/Logic/*.*)
 file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.*)
 file(GLOB NETWORK                                ../../common_files/Network/Game/*.*
