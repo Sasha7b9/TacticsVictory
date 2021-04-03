@@ -13,7 +13,6 @@
 #include "GUI/Menu/MenuGame.h"
 #include "GUI/Menu/MenuStart/MenuAboutMe.h"
 #include "Scene/Cameras/Camera.h"
-#include "Utils/Settings.h"
 
 
 GUI::GUI(GUI **self) : Object(TheContext)
