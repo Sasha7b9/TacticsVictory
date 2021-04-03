@@ -76,9 +76,6 @@ void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
 {
     file = ExtractName(file, numSymbolsForMarker - SU::Length(STR_ERROR) - 1);
 
-    std::va_list args;
-    va_start(args, format);
-
     std::vector<char> v(1024);
 
     snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
@@ -91,35 +88,20 @@ void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
     std::strcat(v.data(), STR_ERROR);
     std::strcat(v.data(), " | ");
 
+    std::va_list args;
+    va_start(args, format);
+
     std::vsnprintf(v.data() + SU::Length(v.data()), v.size(), format, args);
 
     va_end(args);
 
-    if (outFile->IsOpened())
-    {
-        *outFile << v.data() << END_LINE;
-    }
-
-#ifdef DEBUG
-
-    ConsoleLog::Write(v.data());
-
-#endif
-}
-
-
-void LogRAW::Error(pchar /*file*/, int /*line*/, pchar /*text*/)
-{
-
+    Write(v.data());
 }
 
 
 void LogRAW::WarningF(pchar file, int line, pchar format, ...)
 {
     file = ExtractName(file, numSymbolsForMarker - SU::Length(STR_WARNING) - 1);
-
-    std::va_list args;
-    va_start(args, format);
 
     std::vector<char> v(1024);
 
@@ -133,20 +115,14 @@ void LogRAW::WarningF(pchar file, int line, pchar format, ...)
     std::strcat(v.data(), STR_WARNING);
     std::strcat(v.data(), " | ");
 
+    std::va_list args;
+    va_start(args, format);
+
     std::vsnprintf(v.data() + SU::Length(v.data()), v.size(), format, args);
 
     va_end(args);
 
-    if (outFile->IsOpened())
-    {
-        *outFile << v.data() << END_LINE;
-    }
-
-#ifdef DEBUG
-
-    ConsoleLog::Write(v.data());
-
-#endif 
+    Write(v.data());
 }
 
 
@@ -158,9 +134,6 @@ void LogRAW::WriteF(pchar file, int line, pchar format, ...)
 
     file = ExtractName(file, numSymbolsForMarker);
 
-    std::va_list args;
-    va_start(args, format);
-
     std::vector<char> v(1024);
 
     snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
@@ -172,6 +145,9 @@ void LogRAW::WriteF(pchar file, int line, pchar format, ...)
 
     std::strcat(v.data(), "| ");
 
+    std::va_list args;
+    va_start(args, format);
+
     std::vsnprintf(v.data() + SU::Length(v.data()) , v.size(), format, args);
 
     va_end(args);
@@ -181,6 +157,24 @@ void LogRAW::WriteF(pchar file, int line, pchar format, ...)
 
 
 void LogRAW::Write(pchar file, int line, pchar text)
+{
+    CommonWrite(file, line, text, "");
+}
+
+
+void LogRAW::Warning(pchar file, int line, pchar text)
+{
+    CommonWrite(file, line, text, STR_WARNING);
+}
+
+
+void LogRAW::Error(pchar file, int line, pchar text)
+{
+    CommonWrite(file, line, text, STR_ERROR);
+}
+
+
+void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar symbols)
 {
     file = ExtractName(file, numSymbolsForMarker);
 
@@ -193,9 +187,7 @@ void LogRAW::Write(pchar file, int line, pchar text)
         std::strcat(v.data(), " ");
     }
 
-    std::strcat(v.data(), "| ");
-
-    std::strcat(v.data(), text);
+    snprintf((char *const)v.data() + std::strlen(v.data()), 1024, "| %s %s", symbols, text);
 
     Write(v.data());
 }

@@ -37,6 +37,8 @@ public:
 
 private:
     virtual ~LogRAW();
+
+    static void CommonWrite(pchar file, int line, pchar text, pchar symbols);
 };
 
 
