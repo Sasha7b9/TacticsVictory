@@ -4,20 +4,25 @@
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
-    {
-        return -1;
-    }
-
     setlocale(LC_ALL, "Russian");
 
     LogRAW::Create("Updater.log");
 
     LOGWRITE("Start Updater");
 
+    if (argc != 2)
+    {
+        LOGERROR("No address master server specified.");
+        LOGERROR("Define it: Updater.exe 127.0.0.1:40000");
+
+        return -1;
+    }
+
     TheMaster.Connect(argv[1]);
 
     TheMaster.Destroy();
+
+    LOGWRITE("Exit Updater");
 
     return 0;
 }
