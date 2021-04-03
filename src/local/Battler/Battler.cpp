@@ -9,7 +9,6 @@
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/Menu.h"
-#include "Input/Mouse.h"
 #include "Network/ServerC.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"

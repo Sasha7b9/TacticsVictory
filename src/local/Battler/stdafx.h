@@ -133,6 +133,7 @@ using namespace Urho3D;
 #include "GUI/Controls/Hint_.h"
 #include "GUI/Controls/Label_.h"
 #include "GUI/Logic/LineTranslator2D.h"
+#include "Input/Mouse_.h"
 #include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Scene/Terrain/Level_.h"

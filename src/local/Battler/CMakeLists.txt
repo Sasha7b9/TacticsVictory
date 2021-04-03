@@ -56,7 +56,7 @@ file(GLOB GUI_MENU_START                                            GUI/Menu/Men
 file(GLOB GUI_MENU_START_PLAY                                       GUI/Menu/MenuStart/MenuPlay/*.*)
 file(GLOB GUI_PANELS                                                GUI/Panels/*.*)
 file(GLOB GUI_WINDOWS                                               GUI/Windows/*.*)
-file(GLOB INPUT                                                     Input/*.*)
+file(GLOB INPUT                                  ../../common_files/Input/*.*)
 file(GLOB NETWORK                                ../../common_files/Network/Game/*.*
                                                                     Network/*.*)
 file(GLOB NETWORK_MESSAGES                       ../../common_files/Network/Game/Messages/*.*
