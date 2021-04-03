@@ -6,7 +6,8 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
-                    ../../ThirdParty/sockpp/include)
+                    ../../ThirdParty/sockpp/include
+                    ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
 if(WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
@@ -14,8 +15,10 @@ if(WIN32)
 
     set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 
+    add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed
     add_compile_options(/wd4710)    # 'function' : function not inlined
     add_compile_options(/wd4711)    # function 'function' selected for inline expansion
+    add_compile_options(/wd4820)    # 'bytes' bytes padding added after construct 'member_name'
     add_compile_options(/wd4996)
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified

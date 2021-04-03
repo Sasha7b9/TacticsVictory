@@ -3,6 +3,9 @@
 
 #pragma warning(push, 0)
 
+#include <rapidjson/rapidjson.h>
+#include <rapidjson/document.h>
+
 #define _WINSOCKAPI_
 #include <windows.h>
 
@@ -16,4 +19,5 @@
 
 #include "defines.h"
 
+#include "FileSystem/ConfigurationFile_.h"
 #include "Utils/Log_.h"
