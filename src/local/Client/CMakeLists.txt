@@ -7,10 +7,10 @@ include_directories(.
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
-#set(CMAKE_UNITY_BUILD ON)
+set(CMAKE_UNITY_BUILD ON)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS  /STACK:100000000")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
 
 set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 
@@ -66,6 +66,7 @@ source_group(ThirdParty\\sockpp\\include       FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
+
 add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
                 ${RAPIDJSON} ${RAPIDJSON_ERROR} ${RAPIDJSON_INTERNAL} ${RAPIDJSON_MSINTTYPES}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES}
@@ -78,6 +79,8 @@ if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
 else()
     target_link_libraries(${PROJECT_NAME} Urho3D)
 endif()
+
+target_link_libraries(${PROJECT_NAME} ws2_32)
 
 include(../../SetWorkingDirectory.cmake)
 include(../../Install.cmake)

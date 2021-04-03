@@ -3,6 +3,9 @@
 
 #pragma warning(push, 0)
 
+#define _WINSOCKAPI_
+#include <windows.h>
+
 
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Engine/EngineDefs.h>
