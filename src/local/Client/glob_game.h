@@ -4,7 +4,9 @@
 class Client;
 class ConfigurationFile;
 class LogRAW;
+class MasterServer;
 
 extern Client           *TheClient;
 extern ConfigurationFile TheConfig;
 extern LogRAW           *TheLog;
+extern MasterServer      TheMaster;

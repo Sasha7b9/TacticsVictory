@@ -7,7 +7,7 @@ void MasterServer::Connnect() //-V2506
     mutex.lock();
     destroy = false;
 
-    pchar fullAddress = gConfig.GetStringValue("address master");
+    pchar fullAddress = TheConfig.GetStringValue("address master");
 
     auto [host, port] = ConnectorTCP::ParseAddress(fullAddress);
 
