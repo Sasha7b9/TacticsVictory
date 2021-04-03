@@ -1,7 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Windows/Console.h"
-#include "GUI/Windows/WindowVariables.h"
+#include "GUI/Windows/Console_.h"
+#include "GUI/Windows/WindowVariables_.h"
 #include "Scene/SceneC.h"
 #include "Utils/GlobalFunctions.h"
 

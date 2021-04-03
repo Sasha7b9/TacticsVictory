@@ -8,5 +8,6 @@ class MasterServer;
 
 extern Client           *TheClient;
 extern ConfigurationFile TheConfig;
+extern GUI              *TheGUI;
 extern LogRAW           *TheLog;
 extern MasterServer      TheMaster;

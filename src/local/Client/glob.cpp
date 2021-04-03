@@ -7,7 +7,8 @@ ResourceCache *TheCache   = nullptr;
 UI            *TheUI      = nullptr;
 UIElement     *TheUIRoot  = nullptr;
 
-Client           *TheClient = nullptr;
 ConfigurationFile TheConfig;
-LogRAW           *TheLog = nullptr;
 MasterServer      TheMaster;
+Client           *TheClient = nullptr;
+GUI              *TheGUI    = nullptr;
+LogRAW           *TheLog    = nullptr;

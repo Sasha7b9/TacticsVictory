@@ -3,7 +3,6 @@
 #include "Battler.h"
 #include "Editor/Editor.h"
 #include "Game/Path/TilePath.h"
-#include "Graphics/2D/Image.h"
 #include "Graphics/3D/TileSelected.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"

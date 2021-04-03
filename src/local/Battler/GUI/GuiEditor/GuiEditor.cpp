@@ -10,7 +10,6 @@
 #include "GUI/Panels/PanelBottom.h"
 #include "GUI/Panels/PanelMain.h"
 #include "GUI/Panels/PanelMap.h"
-#include "GUI/Windows/Console.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Terrain/Level_.h"

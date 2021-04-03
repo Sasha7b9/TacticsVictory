@@ -1,5 +1,6 @@
 ﻿// 2021/04/02 17:53:21 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "GUI/GUI.h"
 
 
 class SceneT;
@@ -29,5 +30,5 @@ private:
     void CreateGUI();
 
     SharedPtr<Log>      log;
-//    SharedPtr<GUI>      gui;
+    SharedPtr<GUI>      gui;
 };

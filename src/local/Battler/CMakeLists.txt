@@ -41,7 +41,7 @@ file(GLOB GAME                                                      Game/*.*)
 file(GLOB GAME_LOGIC                             ../../common_files/Game/Logic/*.*)
 file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.*
                                                                     Game/Path/*.*)
-file(GLOB GRAPHICS_2D                                               Graphics/2D/*.*)
+file(GLOB GRAPHICS_2D                            ../../common_files/Graphics/2D/*.*)
 file(GLOB GRAPHICS_3D                                               Graphics/3D/*.*)
 file(GLOB GUI                                    ../../common_files/GUI/*.*
                                                                     GUI/*.*)
@@ -55,7 +55,7 @@ file(GLOB GUI_MENU                                                  GUI/Menu/*.*
 file(GLOB GUI_MENU_START                                            GUI/Menu/MenuStart/*.*)
 file(GLOB GUI_MENU_START_PLAY                                       GUI/Menu/MenuStart/MenuPlay/*.*)
 file(GLOB GUI_PANELS                                                GUI/Panels/*.*)
-file(GLOB GUI_WINDOWS                                               GUI/Windows/*.*)
+file(GLOB GUI_WINDOWS                            ../../common_files/GUI/Windows/*.*)
 file(GLOB INPUT                                  ../../common_files/Input/*.*)
 file(GLOB NETWORK                                ../../common_files/Network/Game/*.*
                                                                     Network/*.*)

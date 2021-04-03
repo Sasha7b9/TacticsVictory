@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Graphics/2D/Image.h"
+#include "Graphics/2D/Image_.h"
 #include "GUI/Cursor_.h"
 #include "GUI/GUIEvents_.h"
 #include "GUI/GUI.h"

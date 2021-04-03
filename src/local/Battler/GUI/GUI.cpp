@@ -18,8 +18,6 @@
 #include "GUI/Panels/PanelBottom.h"
 #include "GUI/Panels/PanelMain.h"
 #include "GUI/Panels/PanelMap.h"
-#include "GUI/Windows/Console.h"
-#include "GUI/Windows/WindowVariables.h"
 #include "Scene/Cameras/Camera.h"
 #include "Utils/Settings.h"
 

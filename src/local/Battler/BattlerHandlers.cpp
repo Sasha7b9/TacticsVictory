@@ -5,7 +5,6 @@
 #include "GUI/Controls/Hint_.h"
 #include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Windows/Console.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/ObjectC.h"

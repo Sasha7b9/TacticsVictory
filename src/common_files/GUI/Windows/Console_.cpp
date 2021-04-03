@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Windows/Console.h"
+#include "GUI/Windows/Console_.h"
 #include "Utils/GlobalFunctions.h"
 
 

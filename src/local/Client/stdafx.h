@@ -11,10 +11,16 @@
 
 #include <Urho3D/IO/FileSystem.h>
 #include <Urho3D/IO/Log.h>
+#include <Urho3D/IO/MemoryBuffer.h>
 
 #include <Urho3D/Resource/ResourceCache.h>
 
+#include <Urho3D/Scene/Scene.h>
+
 #include <Urho3D/UI/UI.h>
+
+#include <Urho3D/Urho2D/Sprite2D.h>
+#include <Urho3D/Urho2D/StaticSprite2D.h>
 
 using namespace Urho3D;
 
@@ -33,8 +39,10 @@ using namespace Urho3D;
 #include "defines.h"
 
 #include "FileSystem/ConfigurationFile_.h"
+#include "GUI/GUI.h"
 #include "Network/Other/MasterServer_.h"
 #include "Utils/Log_.h"
+#include "Utils/StringUtils_.h"
 
 #include "glob_engine.h"
 #include "glob_game.h"
