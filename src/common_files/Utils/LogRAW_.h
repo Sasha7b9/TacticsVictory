@@ -6,7 +6,7 @@
 #define LOGWRITEF(...)   LogRAW::WriteF(__FILE__, __LINE__, __VA_ARGS__)
 
 // Некритичные ошибки
-#define LOGWARNING(...)  LogRAW::WarningF(__FILE__, __LINE__, __VA_ARGS__);
+#define LOGWARNING(x)    LogRAW::Warning(__FILE__, __LINE__, x);
 #define LOGWARNINGF(...) LogRAW::WarningF(__FILE__, __LINE__, __VA_ARGS__);
 
 // Критичные ошибки.
@@ -29,6 +29,7 @@ public:
 
     //+V576,class:Log,function:Warning,format_arg:3,ellipsis_arg:4
     static void WarningF(pchar file, int line, pchar format, ...);
+    static void Warning(pchar file, int line, pchar text);
 
     //+V576,class:Log,function:Error,format_arg:3,ellipsis_arg:4
     static void Error(pchar file, int line, pchar format, ...);
