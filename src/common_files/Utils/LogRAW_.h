@@ -27,6 +27,8 @@ public:
 
     //+V576,class:Log,function:Write,format_arg:3,ellipsis_arg:4
     static void WriteF(pchar file, int line, pchar format, ...);
+    static void Write(pchar file, int line, pchar text);
+    static void Write(pchar text);
 
     //+V576,class:Log,function:Warning,format_arg:3,ellipsis_arg:4
     static void Warning(pchar file, int line, pchar format, ...);

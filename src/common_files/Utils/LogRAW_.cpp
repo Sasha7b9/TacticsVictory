@@ -170,14 +170,45 @@ void LogRAW::WriteF(pchar file, int line, pchar format, ...)
 
     va_end(args);
 
+    Write(v.data());
+}
+
+
+void LogRAW::Write(pchar file, int line, pchar text)
+{
+    file = ExtractName(file, numSymbolsForMarker);
+
+    std::vector<char> v(1024);
+
+    snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
+
+    while (SU::Length(v.data()) < numSymbolsForMarker) //-V806 //-V814 PVS выдаёт ложное предупреждение //-V2513
+    {
+        std::strcat(v.data(), " "); //-V2513
+    }
+
+    std::strcat(v.data(), "| "); //-V2513
+
+    std::strcat(v.data(), text);
+
+    Write(v.data());
+}
+
+
+void LogRAW::Write(pchar text)
+{
+    static std::mutex mutex;
+
+    mutex.lock();
+
     if (outFile->IsOpened())
     {
-        *outFile << v.data() << END_LINE;
+        *outFile << text << END_LINE;
     }
 
 #ifdef DEBUG
 
-    ConsoleLog::Write(v.data());
+    ConsoleLog::Write(text);
 
 #endif
 
