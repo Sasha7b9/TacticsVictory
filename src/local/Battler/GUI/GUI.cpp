@@ -19,7 +19,6 @@
 #include "GUI/Panels/PanelMain.h"
 #include "GUI/Panels/PanelMap.h"
 #include "Scene/Cameras/Camera.h"
-#include "Utils/Settings.h"
 
 
 GUI::GUI(GUI **self) : Object(TheContext)

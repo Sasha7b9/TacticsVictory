@@ -4,7 +4,6 @@
 #include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/Menu.h"
 #include "GUI/Menu/MenuStart/MenuStart.h"
-#include "Utils/Settings.h"
 
 
 MenuStart::MenuStart() : WindowMenu()

@@ -5,6 +5,8 @@
 #include "GUI/Menu/MenuGame.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
+#include "Utils/Settings.h"
+#include "Utils/SettingsTypes.h"
 
 
 MenuGame::MenuGame(Context *) : WindowMenu()

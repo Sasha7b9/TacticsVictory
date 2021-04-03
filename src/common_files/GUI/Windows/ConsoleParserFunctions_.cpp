@@ -3,7 +3,6 @@
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"
 #include "Scene/SceneC.h"
-#include "Utils/GlobalFunctions.h"
 
 
 bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)

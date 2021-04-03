@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Utils/GlobalFunctions.h"
+#include "Utils/GlobalFunctions_.h"
 
 
 void GF::SetWindowInCenterScreen(Window *window)

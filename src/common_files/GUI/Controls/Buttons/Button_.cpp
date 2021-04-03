@@ -5,7 +5,6 @@
 #include "GUI/Controls/Hint_.h"
 #include "GUI/Controls/Label_.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
-#include "Utils/Settings.h"
 
 
 ButtonT::ButtonT(Context *context) :

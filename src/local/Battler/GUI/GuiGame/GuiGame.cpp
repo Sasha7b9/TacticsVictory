@@ -6,7 +6,6 @@
 #include "GUI/Panels/PanelBottom.h"
 #include "GUI/Panels/PanelMain.h"
 #include "GUI/Panels/PanelMap.h"
-#include "Utils/Settings.h"
 
 
 GuiGame::GuiGame() :

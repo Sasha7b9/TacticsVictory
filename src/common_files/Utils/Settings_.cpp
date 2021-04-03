@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Utils/GlobalFunctions.h"
-#include "Utils/Settings.h"
+#include "Utils/Settings_.h"
 
 
 Settings::~Settings()

@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "GUI/Controls/OrderedTable_.h"
 #include "GUI/Controls/Buttons/Button_.h"
-#include "Utils/Settings.h"
 
 
 struct HeaderRowStruct

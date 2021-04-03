@@ -13,9 +13,6 @@
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Terrain/Level_.h"
-#include "Utils/GlobalFunctions.h"
-#include "Utils/Settings.h"
-#include "Utils/SettingsTypes.h"
 
 
 GuiEditor::GuiEditor(Context* context) : Object(context)

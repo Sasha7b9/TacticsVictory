@@ -11,8 +11,6 @@
 #include "Network/ServerC.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
-#include "Utils/Settings.h"
-#include "Utils/SettingsTypes.h"
 
 
 #pragma warning(push)

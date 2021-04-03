@@ -4,7 +4,6 @@
 #include "GUI/GUIEvents_.h"
 #include "GUI/Controls/GovernorFloat_.h"
 #include "GUI/Controls/Label_.h"
-#include "Utils/Settings.h"
 
 
 GovernorCell::GovernorCell(Context *context) :

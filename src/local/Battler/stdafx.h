@@ -140,6 +140,8 @@ using namespace Urho3D;
 #include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Scene/Terrain/Level_.h"
+#include "Utils/GlobalFunctions_.h"
 #include "Utils/Log_.h"
+#include "Utils/Settings_.h"
 #include "Utils/SystemFunctions_.h"
 #include "Utils/SystemUtils_.h"

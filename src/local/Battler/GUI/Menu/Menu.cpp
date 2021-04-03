@@ -7,7 +7,6 @@
 #include "GUI/Menu/MenuStart/MenuStart.h"
 #include "GUI/Menu/MenuStart/MenuPlay/MenuFindServer.h"
 #include "GUI/Menu/MenuStart/MenuPlay/MenuPlay.h"
-#include "Utils/GlobalFunctions.h"
 
 
 #define CREATE_MENU(name, type, moving)                                 \

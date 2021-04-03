@@ -5,8 +5,6 @@
 #include "GUI/Controls/Sliders/SliderInt_.h"
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 #include "GUI/Menu/MenuStart/MenuOptions.h"
-#include "Utils/Settings.h"
-#include "Utils/SettingsTypes.h"
 
 
 MenuOptions::MenuOptions() : WindowMenu()

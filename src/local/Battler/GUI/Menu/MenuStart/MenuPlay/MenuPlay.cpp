@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/MenuStart/MenuPlay/MenuPlay.h"
-#include "Utils/SettingsTypes.h"
 
 
 MenuPlay::MenuPlay() : WindowMenu()

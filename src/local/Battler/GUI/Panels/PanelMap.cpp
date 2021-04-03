@@ -3,7 +3,6 @@
 #include "GUI/Panels/PanelMap.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
-#include "Utils/Settings.h"
 
 
 PanelMap::PanelMap(Context *context) :

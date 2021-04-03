@@ -3,7 +3,6 @@
 #include "GUI/Controls/Tab_.h"
 #include "GUI/Controls/Buttons/ButtonToggled_.h"
 #include "GUI/Panels/PanelMain.h"
-#include "Utils/Settings.h"
 
 
 PanelMain::PanelMain(Context *context) :

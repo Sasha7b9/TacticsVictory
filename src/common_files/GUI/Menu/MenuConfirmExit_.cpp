@@ -4,7 +4,6 @@
 #include "GUI/Menu/MenuConfirmExit_.h"
 #include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/MenuGame.h"
-#include "Utils/SettingsTypes.h"
 
 
 MenuConfirmExit::MenuConfirmExit() : WindowMenu()

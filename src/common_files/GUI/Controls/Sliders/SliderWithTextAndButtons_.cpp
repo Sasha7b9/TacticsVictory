@@ -5,7 +5,6 @@
 #include "GUI/Controls/Hint_.h"
 #include "GUI/Controls/Sliders/SliderInt_.h"
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
-#include "Utils/Settings.h"
 
 
 SliderWithTextAndButtons::SliderWithTextAndButtons(Context *context) :
