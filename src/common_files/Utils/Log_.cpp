@@ -69,22 +69,6 @@ void LogRAW::Destroy()
 }
 
 
-void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symbols)
-{
-    file = ExtractName(file, numSymbolsForMarker - SU::Length(symbols) - 1);
-
-    snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
-
-    while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(symbols) - 1)
-    {
-        strcat(v.data(), " ");
-    }
-
-    std::strcat(v.data(), symbols);
-    std::strcat(v.data(), " | ");
-}
-
-
 void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
 {
     std::vector<char> v(1024);
@@ -156,27 +140,48 @@ void LogRAW::Error(pchar file, int line, pchar text)
 
 void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar symbols)
 {
-    file = ExtractName(file, numSymbolsForMarker);
+    file = ExtractName(file, numSymbolsForMarker - SU::Length(symbols) - 1);
 
     std::vector<char> v(1024);
 
     snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
 
-    while (SU::Length(v.data()) < numSymbolsForMarker)
-    {
-        std::strcat(v.data(), " ");
-    }
-
     if (symbols[0] == '\0')
     {
+        while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(symbols) - 1)
+        {
+            std::strcat(v.data(), " ");
+        }
+
         snprintf((char *const)v.data() + std::strlen(v.data()), 1024, "| %s", text);
     }
     else
     {
-        snprintf((char *const)v.data() + std::strlen(v.data()), 1024, "| %s %s", symbols, text);
+        while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(symbols) - 2)
+        {
+            std::strcat(v.data(), " ");
+        }
+
+        snprintf((char *const)v.data() + std::strlen(v.data()), 1024, "%s | %s", symbols, text);
     }
 
     Write(v.data());
+}
+
+
+void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symbols)
+{
+    file = ExtractName(file, numSymbolsForMarker - SU::Length(symbols) - 1);
+
+    snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
+
+    while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(symbols) - 2)
+    {
+        strcat(v.data(), " ");
+    }
+
+    std::strcat(v.data(), symbols);
+    std::strcat(v.data(), " | ");
 }
 
 

@@ -13,7 +13,6 @@ public:
 
     virtual void Setup();
     virtual void Start();
-    virtual void Stop();
 
     bool drawDebug = false;
 

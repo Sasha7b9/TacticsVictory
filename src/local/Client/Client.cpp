@@ -26,6 +26,14 @@ void Client::Setup()
 
     const Vector<String> &arguments = GetArguments();
 
+    if (arguments.Size() != 1)
+    {
+        LOGERROR("No address master server apecified.");
+        LOGERROR("Define it: Updater.exe 127.0.0.1:40000");
+
+        Stop();
+    }
+
     LOGWRITEF("%d arguments: ", arguments.Size());
 
     for (uint i = 0; i < arguments.Size(); i++)
@@ -93,12 +101,6 @@ void Client::Start()
 
 void Client::CreateGUI()
 {
-}
-
-
-void Client::Stop()
-{
-    LOGWRITE("Stop Client");
 }
 
 
