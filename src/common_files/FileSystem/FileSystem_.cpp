@@ -261,7 +261,7 @@ void FS::File::Read(void *buffer, size_t numBytes)
 
     DWORD counter = 0;
 
-    if (ReadFile(handle, buffer, (DWORD)numBytes, &counter, NULL) == 0) //-V202
+    if (ReadFile(handle, buffer, (DWORD)numBytes, &counter, NULL) == 0)
     {
         LOGERRORF("Can't read from file %s %llu bytes", name.c_str(), numBytes);
 
@@ -332,9 +332,9 @@ void FS::CreateDirectory(std::string &path)
     full.append("\\");
     full += path;
 
-    int size = MultiByteToWideChar(CP_UTF8, 0, &full[0], (int)full.size(), NULL, 0); //-V202
+    int size = MultiByteToWideChar(CP_UTF8, 0, &full[0], (int)full.size(), NULL, 0);
     std::wstring wpath((uint64)size, 0);
-    MultiByteToWideChar(CP_UTF8, 0, &full[0], (int)full.size(), &wpath[0], size); //-V202
+    MultiByteToWideChar(CP_UTF8, 0, &full[0], (int)full.size(), &wpath[0], size);
 
     if (SHCreateDirectory(NULL, wpath.c_str()) != 0)
     {

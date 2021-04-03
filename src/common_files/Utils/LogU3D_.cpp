@@ -132,7 +132,7 @@ void ConsoleLog::Write(pchar message)
 
     if (handle)
     {
-        if (!WriteConsoleA(handle, (void *)message, (DWORD)std::strlen(message), NULL, NULL)) //-V202
+        if (!WriteConsoleA(handle, (void *)message, (DWORD)std::strlen(message), NULL, NULL))
         {
             DISPLAY_LAST_ERROR();
         }

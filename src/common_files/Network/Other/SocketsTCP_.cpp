@@ -182,7 +182,7 @@ void ThreadSocket(AcceptorTCP::Socket socket, void (*onReceive)(AcceptorTCP::Soc
             break;
         }
 
-        onReceive(socket, received, static_cast<int>(n)); //-V202
+        onReceive(socket, received, static_cast<int>(n));
     }
 }
 
@@ -233,7 +233,7 @@ std::pair<std::string, uint16> ConnectorTCP::ParseAddress(pchar fullAddressIn)
         ++pointer;
     }
 
-    result.second = static_cast<uint16>(atoi(pointer + 1)); //-V2508 //-V2563
+    result.second = static_cast<uint16>(atoi(pointer + 1)); //-V2508
 
     return result;
 }

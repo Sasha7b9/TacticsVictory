@@ -38,13 +38,13 @@ void SU::SplitToWords(pchar symbols, int number, std::vector<std::string> &out)
 
 int SU::Length(pchar str)
 {
-    return (int)std::strlen(str); //-V2513 //-V202
+    return (int)std::strlen(str);
 }
 
 
 int SU::Compare(pchar str1, pchar str2)
 {
-    return std::strcmp(str1, str2); //-V2513
+    return std::strcmp(str1, str2);
 }
 
 

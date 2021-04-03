@@ -34,7 +34,7 @@ void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, i
 
     uint *size_ñommand = (uint *)&buffer[0]; //-V206
 
-    if ((uint)(buffer.size() - sizeof(uint)) < *size_ñommand) //-V202
+    if ((uint)(buffer.size() - sizeof(uint)) < *size_ñommand)
     {
         return;
     }

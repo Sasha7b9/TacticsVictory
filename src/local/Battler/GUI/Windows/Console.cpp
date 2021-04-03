@@ -160,7 +160,7 @@ bool ConsoleParser::ExtractFloat(const String &str, float *value)
 
 bool ConsoleParser::BeginFrom(const String &str, const char *begin)
 {
-    return str.Substring(str[0] == '-' ? 1U : 0U, static_cast<uint>(strlen(begin))) == String(begin); //-V202
+    return str.Substring(str[0] == '-' ? 1U : 0U, static_cast<uint>(strlen(begin))) == String(begin);
 }
 
 

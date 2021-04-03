@@ -29,7 +29,7 @@ HANDLE ConsoleLog::handle = nullptr;
 
 static pchar ExtractName(pchar fullName, int max)
 {
-    pchar pointer = fullName + SU::Length(fullName) - 1; //-V104 //-V2563
+    pchar pointer = fullName + SU::Length(fullName) - 1;
 
     int numSlash = 0;
 
@@ -45,7 +45,7 @@ static pchar ExtractName(pchar fullName, int max)
         length++;
     }
 
-    return pointer + (length < max ? 2 : 6); //-V2563
+    return pointer + (length < max ? 2 : 6);
 }
 
 
@@ -74,7 +74,7 @@ void LogRAW::Destroy()
 
 void LogRAW::Error(pchar file, int line, pchar format, ...)
 {
-    file = ExtractName(file, numSymbolsForMarker - SU::Length(strERROR) - 1); //-V2513 //-V202
+    file = ExtractName(file, numSymbolsForMarker - SU::Length(strERROR) - 1);
 
     std::va_list args;
     va_start(args, format);
@@ -83,15 +83,15 @@ void LogRAW::Error(pchar file, int line, pchar format, ...)
 
     snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
 
-    while (SU::Length(v.data())  < numSymbolsForMarker - SU::Length(strERROR) - 1) //-V806 //-V814 PVS выдаёт ложные предупреждения //-V2513
+    while (SU::Length(v.data())  < numSymbolsForMarker - SU::Length(strERROR) - 1)
     {
-        strcat(v.data(), " "); //-V2513
+        strcat(v.data(), " ");
     }
 
-    std::strcat(v.data(), strERROR); //-V2513
-    std::strcat(v.data(), " | "); //-V2513
+    std::strcat(v.data(), strERROR);
+    std::strcat(v.data(), " | ");
 
-    std::vsnprintf(v.data() + SU::Length(v.data()), v.size(), format, args); //-V806 Ложное предупреждение PVS //-V2513 //-V2563 //-V104
+    std::vsnprintf(v.data() + SU::Length(v.data()), v.size(), format, args);
 
     va_end(args);
 
@@ -110,7 +110,7 @@ void LogRAW::Error(pchar file, int line, pchar format, ...)
 
 void LogRAW::Warning(pchar file, int line, pchar format, ...)
 {
-    file = ExtractName(file, numSymbolsForMarker - SU::Length(strWARNING) - 1); //-V2513 //-V202
+    file = ExtractName(file, numSymbolsForMarker - SU::Length(strWARNING) - 1);
 
     std::va_list args;
     va_start(args, format);
@@ -119,15 +119,15 @@ void LogRAW::Warning(pchar file, int line, pchar format, ...)
 
     snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
 
-    while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(strWARNING) - 1) //-V806 //-V814 PVS выдаёт ложное предупреждение //-V2513
+    while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(strWARNING) - 1)
     {
-        std::strcat(v.data(), " "); //-V2513
+        std::strcat(v.data(), " ");
     }
 
-    std::strcat(v.data(), strWARNING); //-V2513
-    std::strcat(v.data(), " | "); //-V2513
+    std::strcat(v.data(), strWARNING);
+    std::strcat(v.data(), " | ");
 
-    std::vsnprintf(v.data() + SU::Length(v.data()), v.size(), format, args); //-V806 PVS выдаёт ложное предупреждение //-V2513 //-V2563 //-V104
+    std::vsnprintf(v.data() + SU::Length(v.data()), v.size(), format, args);
 
     va_end(args);
 
@@ -159,14 +159,14 @@ void LogRAW::WriteF(pchar file, int line, pchar format, ...)
 
     snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
 
-    while (SU::Length(v.data()) < numSymbolsForMarker) //-V806 //-V814 PVS выдаёт ложное предупреждение //-V2513
+    while (SU::Length(v.data()) < numSymbolsForMarker)
     {
-        std::strcat(v.data(), " "); //-V2513
+        std::strcat(v.data(), " ");
     }
 
-    std::strcat(v.data(), "| "); //-V2513
+    std::strcat(v.data(), "| ");
 
-    std::vsnprintf(v.data() + SU::Length(v.data()) , v.size(), format, args); //-V806 PVS выдаёт ложное предупреждение //-V2513 //-V2563 //-V104
+    std::vsnprintf(v.data() + SU::Length(v.data()) , v.size(), format, args);
 
     va_end(args);
 
@@ -182,12 +182,12 @@ void LogRAW::Write(pchar file, int line, pchar text)
 
     snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
 
-    while (SU::Length(v.data()) < numSymbolsForMarker) //-V806 //-V814 PVS выдаёт ложное предупреждение //-V2513
+    while (SU::Length(v.data()) < numSymbolsForMarker)
     {
-        std::strcat(v.data(), " "); //-V2513
+        std::strcat(v.data(), " ");
     }
 
-    std::strcat(v.data(), "| "); //-V2513
+    std::strcat(v.data(), "| ");
 
     std::strcat(v.data(), text);
 
@@ -298,7 +298,7 @@ void ConsoleLog::Write(pchar message)
 
     if (handle)
     {
-        if(!WriteConsoleA(handle, (void *)message, (DWORD)std::strlen(message), NULL, NULL)) //-V202
+        if(!WriteConsoleA(handle, (void *)message, (DWORD)std::strlen(message), NULL, NULL))
         {
             DISPLAY_LAST_ERROR();
         }

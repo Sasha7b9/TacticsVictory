@@ -22,7 +22,7 @@ typedef LPCSTR PCTSTR, LPCTSTR, PCUTSTR, LPCUTSTR;
         (LPTSTR)&lpMsgBuf,
         0, NULL);
 
-    lpDisplayBuf = (void *)LocalAlloc(LMEM_ZEROINIT, (lstrlenA((LPCTSTR)lpMsgBuf) + 40) * sizeof(TCHAR)); //-V2571 //-V303 //-V104
+    lpDisplayBuf = (void *)LocalAlloc(LMEM_ZEROINIT, (lstrlenA((LPCTSTR)lpMsgBuf) + 40) * sizeof(TCHAR)); //-V2571 //-V303
 
     char buffer[500];
 

@@ -222,7 +222,7 @@ Vector<Vector<float>> Level::CreateRandom(uint numRows, uint numCols)
 
     Vector<float> str;
 
-    srand((uint)time(NULL)); //-V202
+    srand((uint)time(NULL));
 
     SetRandomSeed(static_cast<uint>(rand()));
 
