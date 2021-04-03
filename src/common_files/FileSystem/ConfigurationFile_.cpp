@@ -7,7 +7,7 @@
 #define CHECK_ON_VALID_INT      if (!isValid) { LOGERROR("Configuration file is not valid"); return -1; }
 
 
-bool ConfigurationFile::Load(pchar name) //-V2506
+bool ConfigurationFile::Load(pchar name)
 {
     document = new rapidjson::Document(); //-V2511
 
@@ -50,7 +50,7 @@ void ConfigurationFile::Unload()
 }
 
 
-int ConfigurationFile::GetIntValue(pchar key) //-V2506
+int ConfigurationFile::GetIntValue(pchar key)
 {
     CHECK_ON_VALID_INT;
 
@@ -67,7 +67,7 @@ int ConfigurationFile::GetIntValue(pchar key) //-V2506
 }
 
 
-int ConfigurationFile::GetIntValue(pchar key1, pchar key2) //-V2506
+int ConfigurationFile::GetIntValue(pchar key1, pchar key2)
 {
     CHECK_ON_VALID_INT;
 
@@ -92,7 +92,7 @@ int ConfigurationFile::GetIntValue(pchar key1, pchar key2) //-V2506
 }
 
 
-pchar ConfigurationFile::GetStringValue(pchar key) //-V2506
+pchar ConfigurationFile::GetStringValue(pchar key)
 {
     CHECK_ON_VALID_STRING;
 
@@ -109,7 +109,7 @@ pchar ConfigurationFile::GetStringValue(pchar key) //-V2506
 }
 
 
-pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2) //-V2506
+pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2)
 {
     CHECK_ON_VALID_STRING;
 
@@ -134,7 +134,7 @@ pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2) //-V2506
 }
 
 
-pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2, pchar key3) //-V2506
+pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2, pchar key3)
 {
     CHECK_ON_VALID_STRING;
 
@@ -164,7 +164,7 @@ pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2, pchar key3) //-V
 }
 
 
-bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &strings) //-V2506
+bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &strings)
 {
     strings.clear();
 

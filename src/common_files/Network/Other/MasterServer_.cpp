@@ -3,14 +3,6 @@
 #include "Network/Other/MasterServer_.h"
 
 
-void MasterServer::Connect() //-V2506
-{
-    pchar full_address = TheConfig.GetStringValue("address master");
-
-    Connect(full_address);
-}
-
-
 void MasterServer::Connect(pchar full_address)
 {
     mutex.lock();

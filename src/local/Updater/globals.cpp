@@ -2,5 +2,4 @@
 #include "stdafx.h"
 
 
-ConfigurationFile TheConfig;
 MasterServer      TheMaster;

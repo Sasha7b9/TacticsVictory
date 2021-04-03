@@ -12,7 +12,7 @@ int main()
 
     TheConfig.Load("Contoller.cfg");
 
-    TheMaster.Connect();
+    TheMaster.Connect(TheConfig.GetStringValue("address master"));
 
     return 0;
 }

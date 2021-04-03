@@ -24,7 +24,7 @@ void Client::Setup()
 
     TheConfig.Load("Client.conf");
 
-    TheMaster.Connect();
+    TheMaster.Connect(TheConfig.GetStringValue("address master"));
 
     std::string address = TheMaster.GetValue(MASTER_GET_ADDRESS_UPLOADER);
 

@@ -2,5 +2,4 @@
 #pragma once
 
 
-extern ConfigurationFile TheConfig;
 extern MasterServer      TheMaster;

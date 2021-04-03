@@ -51,7 +51,7 @@ void Battle::Setup()
 
     TheConfig.Load("Battle.cfg");
 
-    TheMaster.Connect();
+    TheMaster.Connect(TheConfig.GetStringValue("address master"));
 
     settings = new Settings(&TheSet);
 
