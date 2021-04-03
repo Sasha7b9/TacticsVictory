@@ -35,6 +35,10 @@ void Battler::Setup()
 {
     TheBattler = this;
 
+    LogRAW::Create("Battler.log", true);
+
+    LOGWRITE("Start Battler");
+
     GetSubsystems();
 
     settings = new Settings(&TheSet);
