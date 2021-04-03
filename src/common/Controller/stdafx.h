@@ -27,3 +27,5 @@
 #include "FileSystem/ConfigurationFile_.h"
 #include "Network/Other/MasterServer_.h"
 #include "Utils/Log_.h"
+
+#include "globals.h"
