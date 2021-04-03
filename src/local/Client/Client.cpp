@@ -24,6 +24,14 @@ void Client::Setup()
 
     TheConfig.Load("Client.conf");
 
+    TheMaster.Connnect();
+
+    std::string address = TheMaster.GetValue(MASTER_GET_ADDRESS_UPLOADER);
+
+    TheMaster.Destroy();
+
+    LOGWRITE("Address uploader is %s", address.c_str());
+
     TheClient = this;
 
     GetSubsystems();
