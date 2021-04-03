@@ -29,7 +29,7 @@ void ServerC::Connect(const String &_address, uint16 _port)
 
 void ServerC::Connect()
 {
-    LOGINFOF("Trying to join the server %s:%d", address.CString(), port);
+    LOGWRITEF("Trying to join the server %s:%d", address.CString(), port);
 
     TheNetwork->Connect(address, port, nullptr);
 }
@@ -45,7 +45,7 @@ void ServerC::HandleMessage(StringHash, VariantMap & eventData)
 
 void ServerC::HandleServerConnected(StringHash, VariantMap &)
 {
-    LOGINFOF("%s : Connect to server is ok", __FUNCTION__);
+    LOGWRITEF("%s : Connect to server is ok", __FUNCTION__);
 
     Message::RequestForLevel().Send(true);
 }
@@ -53,7 +53,7 @@ void ServerC::HandleServerConnected(StringHash, VariantMap &)
 
 void ServerC::HandleServerDisconnected(StringHash, VariantMap &)
 {
-    LOGINFOF("%s : Disconnect from server", __FUNCTION__);
+    LOGWRITEF("%s : Disconnect from server", __FUNCTION__);
 }
 
 

@@ -20,7 +20,6 @@ add_compile_options(/wd4626)    # 'derived class' : assignment operator was impl
 add_compile_options(/wd4710)    # 'function' : function not inlined
 add_compile_options(/wd4711)    # function 'function' selected for inline expansion
 add_compile_options(/wd4820)    # 'bytes' bytes padding added after construct 'member_name'
-add_compile_options(/wd4996)    # 'func': This function or variable may be unsafe
 add_compile_options(/wd5026)    # 'type': move constructor was implicitly defined as deleted
 add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
 add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch

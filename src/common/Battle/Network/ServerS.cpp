@@ -23,11 +23,11 @@ bool ServerS::Start(uint16 port)
 
     if (result)
     {
-        LOGINFOF("Start server on port %d succsefful", port);
+        LOGWRITEF("Start server on port %d succsefful", port);
     }
     else
     {
-        LOGINFOF("Start server on port %d failed", port);
+        LOGWRITEF("Start server on port %d failed", port);
     }
 
     return result;
@@ -60,7 +60,7 @@ void ServerS::HandleClientConnected(StringHash, VariantMap &eventData)
 
     Connection *newConnection = (Connection *)eventData[P_CONNECTION].GetPtr();
 
-    LOGINFOF("%s : client %s is connected", __FUNCTION__, newConnection->ToString().CString());
+    LOGWRITEF("%s : client %s is connected", __FUNCTION__, newConnection->ToString().CString());
 
     connections.Push(ConnectionT(newConnection));
 }
@@ -72,7 +72,7 @@ void ServerS::HandleCliendDisconnected(StringHash, VariantMap &eventData)
 
     Connection *closedConnection = (Connection *)eventData[P_CONNECTION].GetPtr();
 
-    LOGINFOF("%s : client %s is disconnected", __FUNCTION__, closedConnection->ToString().CString());
+    LOGWRITEF("%s : client %s is disconnected", __FUNCTION__, closedConnection->ToString().CString());
 
     for (ConnectionT &connection : connections)
     {

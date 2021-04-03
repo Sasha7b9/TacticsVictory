@@ -118,7 +118,7 @@ void Hangar::CreateConsoleAndDebugHud()
 
 void Hangar::OpenLog()
 {
-    log = new LogU3D(&TheLog);
-    TheLog->Open(GetTypeName() + ".log");
-    TheLog->SetLevel(LOG_DEBUG);
+    log = new Log(TheContext);
+    log->Open(GetTypeName() + ".log");
+    log->SetLevel(LOG_DEBUG);
 }

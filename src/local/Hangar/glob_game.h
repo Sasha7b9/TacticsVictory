@@ -7,5 +7,4 @@ class Hangar;
 
 extern ConfigurationFile TheConfig;
 extern Hangar           *TheHangar;
-extern LogU3D           *TheLog;
 extern MasterServer      TheMaster;

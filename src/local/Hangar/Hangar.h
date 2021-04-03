@@ -26,5 +26,5 @@ private:
     void TuneEngineParameters();
     void CreateGUI();
 
-    SharedPtr<LogU3D> log;
+    SharedPtr<Log> log;
 };

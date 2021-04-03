@@ -6,6 +6,7 @@ Context           *TheContext = nullptr;
 Engine            *TheEngine = nullptr;
 FileSystem        *TheFileSystem = nullptr;
 Localization      *TheLocalization = nullptr;
+Log               *TheLog = nullptr;
 Network           *TheNetwork = nullptr;
 PhysicsWorld      *ThePhysicsWorld = nullptr;
 Profiler          *TheProfiler = nullptr;
@@ -16,7 +17,6 @@ Time              *TheTime = nullptr;
 
 Battle            *TheBattle = nullptr;
 ConfigurationFile  TheConfig;
-LogU3D            *TheLog = nullptr;
 MasterServer       TheMaster;
 SceneS            *TheScene = nullptr;
 ServerS           *TheServer = nullptr;

@@ -8,7 +8,7 @@ include_directories(.
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
-add_definitions(-DURHO3D_LOGGING -DLOG_U3D)
+add_definitions(-DURHO3D_LOGGING)
 
 if(WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
@@ -24,7 +24,6 @@ if(WIN32)
     add_compile_options(/wd4710)    # 'function' : function not inlined
     add_compile_options(/wd4711)    # function 'function' selected for inline expansion
     add_compile_options(/wd4820)    # 'bytes' bytes padding added after construct 'member_name'
-    add_compile_options(/wd4996)
     add_compile_options(/wd5026)    # 'type': move constructor was implicitly defined as deleted
     add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch

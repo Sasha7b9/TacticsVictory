@@ -363,10 +363,8 @@ namespace FS
     File &operator<< (File &out, uint64 value)
     {
         char buffer[30];
-        std::sprintf(buffer, "%llu", value);
-
+        sprintf_s(buffer, 30, "%llu", value);
         out.Write(buffer, SU::Length(buffer));
-
         return out;
     }
 }

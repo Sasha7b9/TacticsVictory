@@ -144,9 +144,9 @@ void Settings::SetInt(const char *name, int value)
 
 void Settings::Save()
 {
-    File outFile(TheContext);
-    outFile.Open(nameFile, FILE_WRITE);
-    file->Save(outFile);
+    File out_file(TheContext);
+    out_file.Open(nameFile, FILE_WRITE);
+    file->Save(out_file);
 }
 
 

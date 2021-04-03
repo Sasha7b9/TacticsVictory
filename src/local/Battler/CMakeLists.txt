@@ -36,6 +36,7 @@ file(GLOB SRC                                    ../../common_files/*.*
 file(GLOB AUDIO                                                     Audio/*.*)
 file(GLOB CORE                                   ../../common_files/Core/*.*)
 file(GLOB EDITOR                                                    Editor/*.*)
+file(GLOB FILESYSTEM                             ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB GAME                                                      Game/*.*)
 file(GLOB GAME_LOGIC                             ../../common_files/Game/Logic/*.*)
 file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.*
@@ -93,6 +94,7 @@ source_group(src                                        FILES ${SRC})
 source_group(Audio                                      FILES ${AUDIO})
 source_group(Core                                       FILES ${CORE})
 source_group(Editor                                     FILES ${EDITOR})
+source_group(FileSystem                                 FILES ${FILESYSTEM})
 source_group(Game                                       FILES ${GAME})
 source_group(Game\\Logic                                FILES ${GAME_LOGIC})
 source_group(Game\\Path                                 FILES ${GAME_PATH})
@@ -131,8 +133,8 @@ source_group(Scene\\Primitives                          FILES ${SCENE_PRIMITIVES
 source_group(Scene\\Terrain                             FILES ${SCENE_TERRAIN})
 source_group(Utils                                      FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${GAME} ${GAME_LOGIC} ${GAME_PATH} ${GRAPHICS_2D}
-    ${GRAPHICS_3D}
+add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${FILESYSTEM} ${GAME} ${GAME_LOGIC} ${GAME_PATH}
+    ${GRAPHICS_2D} ${GRAPHICS_3D}
     ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS} ${GUI_CONTROLS_SLIDERS} ${GUI_GUIEDITOR}
     ${GUI_GAME} ${GUI_LOGIC}
     ${GUI_MENU} ${GUI_MENU_START} ${GUI_MENU_START_PLAY} ${GUI_PANELS}

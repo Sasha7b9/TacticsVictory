@@ -149,7 +149,7 @@ static void MessageCallback(const asSMessageInfo *msg, void *)
     else if (msg->type == asMSGTYPE_INFORMATION)
         type = "AS INFO ";
 
-    LOGINFOF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); //-V111
+    LOGWRITEF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); //-V111
 }
 
 
@@ -181,7 +181,7 @@ void Battle::SubscribeToEvents()
 
 void Battle::OpenLog()
 {
-    log = new LogU3D(&TheLog);
-    TheLog->Open(GetTypeName() + ".log");
-    TheLog->SetLevel(LOG_DEBUG);
+    log = new Log(TheContext);
+    log->Open(GetTypeName() + ".log");
+    log->SetLevel(LOG_DEBUG);
 }
