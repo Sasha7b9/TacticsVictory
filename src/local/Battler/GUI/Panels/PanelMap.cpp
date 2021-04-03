@@ -1,11 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Graphics/2D/Image.h"
-#include "GUI/Cursor.h"
 #include "GUI/Panels/PanelMap.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
-#include "Scene/Terrain/Level_.h"
 #include "Utils/Settings.h"
 
 

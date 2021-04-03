@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Editor/Editor.h"
-#include "GUI/Cursor.h"
 #include "GUI/GUI.h"
 #include "GUI/Controls/Hint_.h"
 #include "GUI/GuiEditor/GuiEditor.h"

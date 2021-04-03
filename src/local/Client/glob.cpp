@@ -4,6 +4,8 @@
 
 Context       *TheContext = nullptr;
 ResourceCache *TheCache   = nullptr;
+UI            *TheUI      = nullptr;
+UIElement     *TheUIRoot  = nullptr;
 
 Client           *TheClient = nullptr;
 ConfigurationFile TheConfig;

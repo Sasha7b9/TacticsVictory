@@ -5,7 +5,6 @@
 #include "Game/Path/TilePath.h"
 #include "Graphics/2D/Image.h"
 #include "Graphics/3D/TileSelected.h"
-#include "GUI/Cursor.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/MenuEvents.h"

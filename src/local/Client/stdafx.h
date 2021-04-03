@@ -14,6 +14,8 @@
 
 #include <Urho3D/Resource/ResourceCache.h>
 
+#include <Urho3D/UI/UI.h>
+
 using namespace Urho3D;
 
 #include <rapidjson/document.h>

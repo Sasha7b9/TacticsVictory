@@ -101,6 +101,9 @@ void Client::Start()
 
 void Client::CreateGUI()
 {
+    TheUIRoot = TheUI->GetRoot();
+    TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+//    gui = new GUI(&TheGUI);
 }
 
 

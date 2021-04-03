@@ -1,7 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Battler.h"
-#include "GUI/Cursor.h"
+#include "GUI/Cursor_.h"
 #include "GUI/Controls/Hint_.h"
 #include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/Menu.h"

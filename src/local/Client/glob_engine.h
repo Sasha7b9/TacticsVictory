@@ -4,3 +4,5 @@
 
 extern Context       *TheContext;
 extern ResourceCache *TheCache;
+extern UI            *TheUI;
+extern UIElement     *TheUIRoot;

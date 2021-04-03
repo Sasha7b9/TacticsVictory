@@ -29,4 +29,5 @@ private:
     void CreateGUI();
 
     SharedPtr<Log>      log;
+//    SharedPtr<GUI>      gui;
 };

@@ -43,7 +43,8 @@ file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.
                                                                     Game/Path/*.*)
 file(GLOB GRAPHICS_2D                                               Graphics/2D/*.*)
 file(GLOB GRAPHICS_3D                                               Graphics/3D/*.*)
-file(GLOB GUI                                                       GUI/*.*)
+file(GLOB GUI                                    ../../common_files/GUI/*.*
+                                                                    GUI/*.*)
 file(GLOB GUI_CONTROLS                           ../../common_files/GUI/Controls/*.*)
 file(GLOB GUI_CONTROLS_BUTTONS                   ../../common_files/GUI/Controls/Buttons/*.*)
 file(GLOB GUI_CONTROLS_SLIDERS                   ../../common_files/GUI/Controls/Sliders/*.*)
