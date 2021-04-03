@@ -49,6 +49,10 @@ void Battle::Setup()
 
     OpenLog();
 
+    TheConfig.Load("Battle.cfg");
+
+    TheMaster.Connnect();
+
     settings = new Settings(&TheSet);
 
     TheSet->Load();

@@ -17,6 +17,7 @@ Time              *TheTime = nullptr;
 Battle            *TheBattle = nullptr;
 ConfigurationFile  TheConfig;
 LogU3D            *TheLog = nullptr;
+MasterServer       TheMaster;
 SceneS            *TheScene = nullptr;
 ServerS           *TheServer = nullptr;
 Settings          *TheSet = nullptr;
