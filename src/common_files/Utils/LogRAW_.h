@@ -2,8 +2,8 @@
 
 
 // Информационные сообщения.
-#define LOGWRITE(...)    LogRAW::Write(__FILE__, __LINE__, __VA_ARGS__)
-#define LOGWRITEF(...)   LogRAW::Write(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGWRITE(...)    LogRAW::WriteF(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGWRITEF(...)   LogRAW::WriteF(__FILE__, __LINE__, __VA_ARGS__)
 
 // Некритичные ошибки
 #define LOGWARNING(...)  LogRAW::Warning(__FILE__, __LINE__, __VA_ARGS__);
@@ -26,7 +26,7 @@ public:
     static void Error(pchar file, int line, pchar format, ...);
 
     //+V576,class:Log,function:Write,format_arg:3,ellipsis_arg:4
-    static void Write(pchar file, int line, pchar format, ...);
+    static void WriteF(pchar file, int line, pchar format, ...);
 
     //+V576,class:Log,function:Warning,format_arg:3,ellipsis_arg:4
     static void Warning(pchar file, int line, pchar format, ...);

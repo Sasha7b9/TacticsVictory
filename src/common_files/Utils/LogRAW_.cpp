@@ -144,7 +144,7 @@ void LogRAW::Warning(pchar file, int line, pchar format, ...)
 }
 
 
-void LogRAW::Write(pchar file, int line, pchar format, ...)
+void LogRAW::WriteF(pchar file, int line, pchar format, ...)
 {
     static std::mutex mutex;
 
