@@ -8,14 +8,19 @@
 #include <Urho3D/Engine/EngineDefs.h>
 
 #include <Urho3D/IO/FileSystem.h>
+#include <Urho3D/IO/Log.h>
 
 
 using namespace Urho3D;
+
+#include <iostream>
 
 
 #pragma warning(pop)
 
 #include "defines.h"
+
+#include "Utils/Log_.h"
 
 #include "glob_engine.h"
 #include "glob_game.h"

@@ -18,7 +18,7 @@ Hangar::Hangar(Context* context) :
 
 void Hangar::Setup()
 {
-
+    OpenLog();
 
     TheHangar = this;
 
@@ -114,4 +114,7 @@ void Hangar::CreateConsoleAndDebugHud()
 
 void Hangar::OpenLog()
 {
+    log = new LogU3D(&TheLog);
+    TheLog->Open(GetTypeName() + ".log");
+    TheLog->SetLevel(LOG_DEBUG);
 }

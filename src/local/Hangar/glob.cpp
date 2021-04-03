@@ -5,3 +5,4 @@
 Context *TheContext = nullptr;
 
 Hangar  *TheHangar = nullptr;
+LogU3D  *TheLog = nullptr;

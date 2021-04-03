@@ -32,10 +32,15 @@ add_compile_options(/wd28251)
 
 file(GLOB SRC       ../../common_files/*.*
                                        *.h *.cpp)
+file(GLOB UTILS     ../../common_files/Utils/Log_.*
+                    ../../common_files/Utils/LogU3D_.*
+                    ../../common_files/Utils/SystemFunctions_.*
+                    ../../common_files/Utils/SystemUtils_.*)
 
 source_group(src    FILES ${SRC})
+source_group(Utils  FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC})
+add_executable( ${PROJECT_NAME} ${SRC} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)
 

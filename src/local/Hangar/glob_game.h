@@ -4,3 +4,4 @@
 class Hangar;
 
 extern Hangar          *TheHangar;
+extern LogU3D          *TheLog;

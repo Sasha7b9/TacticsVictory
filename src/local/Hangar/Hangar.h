@@ -25,4 +25,6 @@ private:
     void GetSubsystems();
     void TuneEngineParameters();
     void CreateGUI();
+
+    SharedPtr<LogU3D> log;
 };
