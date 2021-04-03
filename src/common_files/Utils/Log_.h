@@ -11,3 +11,17 @@
 #include "Utils/LogRAW_.h"
 
 #endif
+
+
+struct ConsoleLog
+{
+    static void Create();
+
+    static void Write(pchar message);
+
+    static void Destroy();
+
+#ifdef WIN32
+    static HANDLE handle;
+#endif
+};

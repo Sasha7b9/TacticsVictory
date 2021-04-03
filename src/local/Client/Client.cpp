@@ -22,6 +22,15 @@ void Client::Setup()
 
     LOGWRITE("Start Client");
 
+    const Vector<String> &arguments = GetArguments();
+
+    LOGWRITEF("%d arguments: ", arguments.Size());
+
+    for (uint i = 0; i < arguments.Size(); i++)
+    {
+        LOGWRITE(arguments[i].CString());
+    }
+
     TheConfig.Load("Client.conf");
 
     TheMaster.Connect(TheConfig.GetStringValue("address master"));

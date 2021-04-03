@@ -41,17 +41,3 @@ private:
     static void CommonWrite(pchar file, int line, pchar text, pchar symbols);
     static void CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symbols);
 };
-
-
-struct ConsoleLog
-{
-    static void Create();
-    
-    static void Write(pchar message);
-
-    static void Destroy();
-
-#ifdef WIN32
-    static HANDLE handle;
-#endif
-};

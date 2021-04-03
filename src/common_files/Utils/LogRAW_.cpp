@@ -55,7 +55,7 @@ void LogRAW::Create(pchar nameLog)
 
     ConsoleLog::Create();
 
-//    FreeConsole();
+    FreeConsole();
 
     outFile->Create((std::string("log") + FS::delimiter + nameLog).c_str());
 }
@@ -198,95 +198,3 @@ LogRAW::~LogRAW()
 #ifdef WIN32
 #pragma warning(pop)
 #endif
-
-
-void ConsoleLog::Create()
-{
-#ifdef WIN32
-    
-    if (GetStdHandle(STD_OUTPUT_HANDLE) == nullptr)
-    {
-        /*
-        *  Чтобы в консоли не выводились кракозяблы вместо русских букв, нужно устанавливать шрифт Lucida Console
-        */
-
-        win::SetConsoleCP(1251);
-        
-        if (!SetConsoleOutputCP(1251))
-        {
-            DISPLAY_LAST_ERROR();
-        }
-
-        if (!AllocConsole())
-        {
-            DISPLAY_LAST_ERROR();
-        }
-
-        win::SetConsoleCP(1251);
-        
-        if (!SetConsoleOutputCP(1251))
-        {
-            DISPLAY_LAST_ERROR();
-        }
-
-        handle = GetStdHandle(STD_OUTPUT_HANDLE);
-
-        if (handle == INVALID_HANDLE_VALUE)
-        {
-            DISPLAY_LAST_ERROR();
-        }
-
-        RECT rect;
-
-        HWND hwnd = GetConsoleWindow();
-
-        if (!GetWindowRect(hwnd, &rect))
-        {
-            DISPLAY_LAST_ERROR();
-        }
-
-        if (!MoveWindow(hwnd, 0, 0, rect.right - rect.left, rect.bottom - rect.top, true))
-        {
-            DISPLAY_LAST_ERROR();
-        }
-    }
-
-#endif
-}
-
-
-void ConsoleLog::Destroy()
-{
-#ifdef WIN32
-    if (!FreeConsole())
-    {
-        DISPLAY_LAST_ERROR();
-    }
-#endif
-}
-
-
-void ConsoleLog::Write(pchar message)
-{
-#ifdef WIN32
-
-    if (handle)
-    {
-        if(!WriteConsoleA(handle, (void *)message, (DWORD)std::strlen(message), NULL, NULL))
-        {
-            DISPLAY_LAST_ERROR();
-        }
-        
-        if (!WriteConsoleA(handle, "\n", 1, NULL, NULL))
-        {
-            DISPLAY_LAST_ERROR();
-        }
-    }
-    else
-
-#endif
-
-    {
-        std::cout << message << "\n";
-    }
-}
