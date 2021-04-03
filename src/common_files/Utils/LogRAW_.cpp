@@ -49,7 +49,7 @@ static pchar ExtractName(pchar fullName, int max)
 }
 
 
-void LogRAW::Create(pchar nameLog, bool new_console)
+void LogRAW::Create(pchar nameLog, bool /*new_console*/)
 {
     outFile = new FS::File();
 
