@@ -126,7 +126,11 @@ using namespace Urho3D;
 #include "glob_game.h"
 
 #include "Core/Structures_.h"
+#include "Game/Logic/Rotator_.h"
+#include "Game/Logic/SunEngine_.h"
 #include "GUI/Controls/Hint_.h"
 #include "GUI/Controls/Label_.h"
 #include "GUI/Logic/LineTranslator2D.h"
+#include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
+#include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Utils/Log_.h"

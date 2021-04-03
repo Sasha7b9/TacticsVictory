@@ -18,6 +18,8 @@ Hangar::Hangar(Context* context) :
 
 void Hangar::Setup()
 {
+
+
     TheHangar = this;
 
     GetSubsystems();
