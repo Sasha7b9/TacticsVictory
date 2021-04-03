@@ -1,8 +1,5 @@
 // Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "FileSystem/ConfigurationFile_.h"
-#include "FileSystem/FileSystem_.h"
-#include "Utils/Log_.h"
 
 
 #define CHECK_ON_VALID_STRING   if (!isValid) { LOGERROR("Configuration file is not valid"); return nullptr; }
