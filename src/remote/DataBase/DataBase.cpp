@@ -6,11 +6,11 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    LogRAW::Create("LivingRoom.log");
+    LogRAW::Create("DataBase.log");
 
-    LOGWRITE("Start LivingRoom");
+    LOGWRITE("Start DataBase");
 
-    TheConfig.Load("LivingRoom.cfg");
+    TheConfig.Load("DataBase.cfg");
 
     TheMaster.Connnect();
 

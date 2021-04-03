@@ -35,8 +35,8 @@ else()
 
 endif()
 
-file(GLOB SRC         ../../common_files/*.h
-                      *.h *.cpp)
+file(GLOB SRC           ../../common_files/*.h
+                                           *.h *.cpp)
 file(GLOB FILESYSTEM    ../../common_files/FileSystem/ConfigurationFile_.*
                         ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK_OTHER ../../common_files/Network/Other/MasterServer_.*
@@ -47,18 +47,18 @@ file(GLOB UTILS         ../../common_files/Utils/Log_.*
                         ../../common_files/Utils/SystemFunctions_.*
                         ../../common_files/Utils/SystemUtils_.*)
 
-file(GLOB SOCKPP                                ThirdParty/sockpp.cpp)
-file(GLOB SOCKPP_SOURCES                  ../../ThirdParty/sockpp/src/*.cpp)
-file(GLOB SOCKPP_INCLUDE                  ../../ThirdParty/sockpp/include/sockpp/*.h)
+file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
+file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
+file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
 
-source_group(src    FILES ${SRC})
+source_group(src            FILES ${SRC})
 source_group(FileSystem     FILES ${FILESYSTEM})
 source_group(Network\\Other FILES ${NETWORK_OTHER})
 source_group(Utils          FILES ${UTILS})
 
-source_group(ThirdParty\\sockpp                FILES ${SOCKPP})
-source_group(ThirdParty\\sockpp\\sources       FILES ${SOCKPP_SOURCES})
-source_group(ThirdParty\\sockpp\\include       FILES ${SOCKPP_INCLUDE})
+source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
+source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
+source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 

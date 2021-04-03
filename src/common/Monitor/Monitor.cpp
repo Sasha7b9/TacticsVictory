@@ -6,11 +6,11 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    LogRAW::Create("Controller.log");
+    LogRAW::Create("Monitor.log");
 
-    LOGWRITE("Start Controller");
+    LOGWRITE("Start Monitor");
 
-    TheConfig.Load("Contoller.cfg");
+    TheConfig.Load("Monitor.cfg");
 
     TheMaster.Connnect();
 
