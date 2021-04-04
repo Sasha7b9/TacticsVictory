@@ -57,16 +57,12 @@ void ConfigurationFile::Unload()
 
 int ConfigurationFile::GetInt(pchar key)
 {
-    CHECK_ON_VALID_INT;
-
-    auto it = document->FindMember(key);
+    auto it = FindMember(key);
 
     if (&*it && it->value.IsInt())
     {
         return it->value.GetInt();
     }
-
-    LOGERRORF("Can't find value for \"%s\"", key);
 
     return -1;
 }
@@ -89,14 +85,61 @@ int ConfigurationFile::GetInt(pchar key1, pchar key2)
 }
 
 
+rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key)
+{
+    auto it = document->FindMember(key);
+
+    if (&*it)
+    {
+        return it;
+    }
+
+    LOGERRORF("Can not find value for \"%s\"", key);
+
+    return it;
+}
+
+
 rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, pchar key2)
 {
     auto it = document->FindMember(key1);
 
     if (&*it)
     {
-        return it->value.FindMember(key2);
+        it = it->value.FindMember(key2);
+
+        if (&*it)
+        {
+            return it;
+        }
     }
+
+    LOGERRORF("Can not find value for \"%s\" \"%s\"", key1, key2);
+
+    return it;
+}
+
+
+rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, pchar key2, pchar key3)
+{
+    auto it = document->FindMember(key1);
+
+    if (&*it)
+    {
+        it = it->value.FindMember(key2);
+
+        if (&*it)
+        {
+            it = it->value.FindMember(key3);
+
+            if (&*it)
+            {
+                return it;
+            }
+        }
+    }
+
+    LOGERRORF("Can not find value for \"%s\" \"%s\"", key1, key2);
 
     return it;
 }
@@ -116,10 +159,17 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
 
             if (&*it)
             {
-                return it->value.FindMember(key4);
+                it = it->value.FindMember(key4);
+
+                if (&*it)
+                {
+                    return it;
+                }
             }
         }
     }
+
+    LOGERRORF("Can not find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
 
     return it;
 }
@@ -325,9 +375,11 @@ bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &st
 }
 
 
-IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pchar /*key3*/, pchar /*key4*/)
+IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, pchar key4)
 {
-    IntVector2 result(40, 40);
+    IntVector2 result(0, 0);
+
+    auto it = FindMember(key1, key2, key3, key4);
 
     LOGERRORF("%s has not realisation", __FUNCTION__);
 
