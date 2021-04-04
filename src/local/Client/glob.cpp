@@ -9,7 +9,7 @@ FileSelector  *TheFileSelector = nullptr;
 FileSystem    *TheFileSystem   = nullptr;
 Font          *TheFont         = nullptr;
 Graphics      *TheGraphics     = nullptr;
-Input         *TheInput = nullptr;
+Input         *TheInput        = nullptr;
 ResourceCache *TheCache        = nullptr;
 Localization  *TheLocalization = nullptr;
 Scene         *TheScene        = nullptr;
@@ -17,6 +17,7 @@ UI            *TheUI           = nullptr;
 UIElement     *TheUIRoot       = nullptr;
 
 ConfigurationFile TheConfig;
+ConfigurationFile TheSettings;
 MasterServer      TheMaster;
 
 CameraT          *TheCamera     = nullptr;
@@ -24,12 +25,11 @@ Client           *TheClient     = nullptr;
 ConsoleT         *TheConsole    = nullptr;
 CursorT          *TheCursor     = nullptr;
 GUI              *TheGUI        = nullptr;
-Hint             *TheHint = nullptr;
+Hint             *TheHint       = nullptr;
 LogRAW           *TheLog        = nullptr;
 MenuT            *TheMenu       = nullptr;
 MenuMain         *TheMenuMain   = nullptr;
-Mouse            *TheMouse = nullptr;
-Settings         *TheSet        = nullptr;
+Mouse            *TheMouse      = nullptr;
 WindowVariables  *TheWindowVars = nullptr;
 
 Vector<WindowT *> TheOpenedWindow;
