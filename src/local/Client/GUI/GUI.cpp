@@ -26,8 +26,6 @@ GUI::GUI(GUI **self) : Object(TheContext)
 
 GUI::~GUI()
 {
-    delete TheGuiGame;
-    delete TheGuiEditor;
 }
 
 
@@ -38,7 +36,6 @@ void GUI::RegistrationObjects()
     ButtonToggled::RegisterObject();
     WindowT::RegisterObject();
     MenuGame::RegisterObject();
-    MenuOptions::RegisterObject();
     MenuConfirmExit::RegisterObject();
     MenuAboutMe::RegisterObject();
     Tab::RegisterObject();
@@ -47,9 +44,6 @@ void GUI::RegistrationObjects()
     SliderInt::RegisterObject();
     GovernorCell::RegisterObject();
     GovernorFloat::RegisterObject();
-    PanelBottom::RegisterObject();
-    PanelMap::RegisterObject();
-    PanelMain::RegisterObject();
     SliderWithTextAndButtons::RegisterObject();
     DropDownListWithTextAndButton::RegisterObject();
 }
@@ -188,29 +182,9 @@ void GUI::Create()
 
     TheLocalization->SetLanguage("en");
 
-    TheGuiGame = new GuiGame();
-    TheGuiGame->SetVisible(false);
-
-    TheGuiEditor = new GuiEditor(TheContext);
-    TheGuiEditor->SetVisible(false);
-
     TheCursor = TheUIRoot->CreateChild<CursorT>("CursorT");
 
     TheLocalization->SetLanguage(TheSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
-}
-
-
-bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
-{
-    if (TheGuiGame->IsVisible())
-    {
-        return TheGuiGame->CheckOnDeadZoneForCursorBottomScreen(x);
-    }
-    else if (TheGuiEditor->IsVisible())
-    {
-        return TheGuiEditor->CheckOnDeadZoneForCursorBottomScreen(x);
-    }
-    return false;
 }
 
 

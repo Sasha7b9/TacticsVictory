@@ -131,10 +131,6 @@ void CursorT::Update(float dT)
             {
                 type = Type::Up;
             }
-            else if(posY > height - delta && !TheGUI->GheckOnDeadZoneForCursorBottomScreen(posX))
-            {
-                type = Type::Down;
-            }
             else if (TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
             {
                 static float thisNumFrame = 0.0f;

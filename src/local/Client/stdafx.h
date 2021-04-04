@@ -19,6 +19,7 @@
 #include <Urho3D/IO/Log.h>
 #include <Urho3D/IO/MemoryBuffer.h>
 #include <Urho3D/Math/Ray.h>
+#include <Urho3D/Resource/Localization.h>
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Scene.h>
@@ -28,6 +29,7 @@
 #include <Urho3D/UI/LineEdit.h>
 #include <Urho3D/UI/ScrollBar.h>
 #include <Urho3D/UI/Slider.h>
+#include <Urho3D/UI/Text.h>
 #include <Urho3D/UI/UI.h>
 #include <Urho3D/UI/Window.h>
 #include <Urho3D/Urho2D/Sprite2D.h>
@@ -48,14 +50,17 @@ using namespace Urho3D;
 #pragma warning(pop)
 
 #include "defines.h"
+#include "glob_engine.h"
 #include "FileSystem/ConfigurationFile_.h"
 #include "GUI/Cursor_.h"
 #include "GUI/GUI.h"
 #include "GUI/Controls/Hint_.h"
+#include "GUI/Controls/Label_.h"
 #include "GUI/Menu/Menu.h"
 #include "GUI/Windows/Console_.h"
+#include "GUI/Windows/WindowVariables_.h"
 #include "Network/Other/MasterServer_.h"
 #include "Utils/Log_.h"
+#include "Utils/Settings_.h"
 #include "Utils/StringUtils_.h"
-#include "glob_engine.h"
 #include "glob_game.h"

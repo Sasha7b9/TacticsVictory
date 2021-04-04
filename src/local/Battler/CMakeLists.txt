@@ -52,6 +52,7 @@ file(GLOB GUI_GUIEDITOR                                             GUI/GuiEdito
 file(GLOB GUI_GAME                                                  GUI/GuiGame/*.*)
 file(GLOB GUI_LOGIC                                                 GUI/Logic/*.*)
 file(GLOB GUI_MENU                               ../../common_files/GUI/Menu/MenuConfirmExit_.*
+                                                 ../../common_files/GUI/Menu/MenuEvents_.*
                                                  ../../common_files/GUI/Menu/WindowMenu_.*
                                                                     GUI/Menu/*.*)
 file(GLOB GUI_MENU_START                                            GUI/Menu/MenuStart/*.*)

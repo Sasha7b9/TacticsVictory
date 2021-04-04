@@ -13,7 +13,6 @@ public:
     GUI(GUI **self);
     ~GUI();
 
-    bool GheckOnDeadZoneForCursorBottomScreen(int x);
     bool UnderCursor();                                             // Возвращает true, если меню под курсором
     void SetVisibleWindow(WindowT *window, bool visible);
     void SetUnvisibleAllWindows();

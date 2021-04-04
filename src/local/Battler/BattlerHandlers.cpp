@@ -3,7 +3,6 @@
 #include "Battler.h"
 #include "GUI/Cursor_.h"
 #include "GUI/Controls/Hint_.h"
-#include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/Menu.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
