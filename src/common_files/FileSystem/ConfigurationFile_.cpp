@@ -70,16 +70,12 @@ int ConfigurationFile::GetInt(pchar key)
 
 int ConfigurationFile::GetInt(pchar key1, pchar key2)
 {
-    CHECK_ON_VALID_INT;
-
     auto it = FindMember(key1, key2);
 
     if (&*it && it->value.IsInt())
     {
         return it->value.GetInt();
     }
-
-    LOGERRORF("Can't find value for \"%s\" \"%s\"", key1, key2);
 
     return -1;
 }
