@@ -26,24 +26,20 @@ void Client::Setup()
 
     const Vector<String> &arguments = GetArguments();
 
-    if (arguments.Size() != 1)
-    {
-        LOGERROR("No address master server apecified.");
-        LOGERROR("Define it: Updater.exe 127.0.0.1:40000");
-
-        Stop();
-    }
-
-    LOGWRITEF("%d arguments: ", arguments.Size());
-
-    for (uint i = 0; i < arguments.Size(); i++)
-    {
-        LOGWRITE(arguments[i].CString());
-    }
-
     TheConfig.Load("Client.conf");
 
     TheClient = this;
+
+    String address_master = DEFAULT_MASTER_SERVER_ADDRESS;
+
+    if (arguments.Size() == 0)
+    {
+        LOGWARNINGF("Not specified address master server. Default is %s", DEFAULT_MASTER_SERVER_ADDRESS);
+    }
+    else
+    {
+        address_master = String(arguments[0]);
+    }
 
     GetSubsystems();
 
