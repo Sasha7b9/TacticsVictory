@@ -31,6 +31,8 @@ bool ConfigurationFile::Load(pchar name)
 
     file.Read(buffer, file.Size());
 
+    file.Close();
+
     document->Parse(buffer.c_str());
 
     if (document->HasParseError())
@@ -52,6 +54,28 @@ bool ConfigurationFile::Load(pchar name)
 
 void ConfigurationFile::Unload()
 {
+    FS::File file;
+    file.Create(file_name.c_str());
+
+    if (file.IsOpened())
+    {
+        using namespace rapidjson;
+
+        StringBuffer buffer;
+
+        Writer<StringBuffer> writer(buffer);
+
+        document->Accept(writer);
+
+        file.Write(buffer.GetString(), (int)buffer.GetSize());
+
+        file.Close();
+    }
+    else
+    {
+        LOGERRORF("Can not open file %s for save configuration", file_name.c_str());
+    }
+
     SAFE_DELETE(document);
 }
 

@@ -61,6 +61,8 @@
 using namespace Urho3D;
 
 #include <rapidjson/document.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/writer.h>
 
 #include <cfloat>
 #include <ctime>

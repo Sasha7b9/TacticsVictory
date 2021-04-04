@@ -20,6 +20,9 @@ using namespace Urho3D;
 
 #undef Bool
 #include <rapidjson/document.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/writer.h>
+
 #include <sockpp/tcp_acceptor.h>
 #include <sockpp/tcp_connector.h>
 
