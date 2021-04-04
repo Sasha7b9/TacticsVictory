@@ -7,11 +7,10 @@
 #define CHECK_ON_VALID_STRING   if (!isValid) { LOGERROR("Configuration file is not valid"); return nullptr; }
 #define CHECK_ON_VALID_INT      if (!isValid) { LOGERROR("Configuration file is not valid"); return -1; }
 
-//#define IS_VALID(x)             (&*(x) && (x)->value.IsObject())
 #define IS_VALID(x)             (&*(x))
+#define IS_VALID_AND_HAS_KEY(x, k) (IS_VALID(x) && k[0] && x->value.HasMember(k))
 
 
-//#define ERROR_FUNCTION
 #define ERROR_FUNCTION      LOGERRORF("%s has not realisation", __FUNCTION__);
 
 
@@ -60,6 +59,14 @@ void ConfigurationFile::Unload()
 
 int ConfigurationFile::GetInt(pchar key1, pchar key2, pchar key3, pchar key4)
 {
+    static int counter = 0;
+    counter++;
+
+    if (counter == 171)
+    {
+        counter = counter;
+    }
+
     auto it = FindMember(key1, key2, key3, key4);
 
     if (&*it && it->value.IsInt())
@@ -103,46 +110,31 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
 
     if (IS_VALID(it))
     {
-        if (key2[0])
+        if (IS_VALID_AND_HAS_KEY(it, key2))
         {
             it = it->value.FindMember(key2);
 
-            if (IS_VALID(it))
+            if (IS_VALID_AND_HAS_KEY(it, key3))
             {
-                if (key3[0])
+                it = it->value.FindMember(key3);
+
+                if (IS_VALID_AND_HAS_KEY(it, key4))
                 {
-                    it = it->value.FindMember(key3);
+                    it = it->value.FindMember(key4);
 
                     if (IS_VALID(it))
                     {
-                        if (key4[0])
-                        {
-                            it = it->value.FindMember(key4);
-
-                            if (IS_VALID(it))
-                            {
-                                return it;
-                            }
-                        }
-                        else
-                        {
-                            return it;
-                        }
+                        return it;
                     }
-                }
-                else
-                {
-                    return it;
                 }
             }
         }
-        else
-        {
-            return it;
-        }
     }
 
-    LOGERRORF("Can not find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
+    if (!IS_VALID(it))
+    {
+        LOGERRORF("Can not find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
+    }
 
     return it;
 }
@@ -176,10 +168,6 @@ bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &st
 IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, pchar key4)
 {
     IntVector2 result(0, 0);
-
-    static int counter = 0;
-
-    counter++;
 
     auto it = FindMember(key1, key2, key3, key4);
 
