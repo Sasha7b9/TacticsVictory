@@ -198,14 +198,6 @@ IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, 
 
 
 
-IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pchar /*key3*/)
-{
-    LOGERRORF("%s has not realisation", __FUNCTION__);
-
-    return { 50, 50 };
-}
-
-
 void ConfigurationFile::SetInt(pchar /*key*/, int /*value*/)
 {
     LOGERRORF("%s has not realisation", __FUNCTION__);
