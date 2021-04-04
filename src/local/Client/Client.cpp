@@ -54,6 +54,7 @@ void Client::Setup()
 void Client::GetSubsystems()
 {
     TheCache = GetSubsystem<ResourceCache>();
+    TheEngine = GetSubsystem<Engine>();
     TheFileSystem = GetSubsystem<FileSystem>();
     TheGraphics = GetSubsystem<Graphics>();
     TheLocalization = GetSubsystem<Localization>();
@@ -107,6 +108,13 @@ void Client::Start()
     CreateGUI();
 
     menu = new MenuT(&TheMenu);
+}
+
+
+void Client::Stop()
+{
+    engine_->DumpResources(true);
+    engine_->DumpProfiler();
 }
 
 

@@ -12,8 +12,9 @@ class Client : public Application
 public:
     Client(Context* context);
 
-    virtual void Setup();
-    virtual void Start();
+    virtual void Setup()  override;
+    virtual void Start() override;
+    virtual void Stop() override;
 
     bool drawDebug = false;
 
