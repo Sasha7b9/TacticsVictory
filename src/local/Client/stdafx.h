@@ -31,6 +31,7 @@
 #include <Urho3D/UI/CheckBox.h>
 #include <Urho3D/UI/DropDownList.h>
 #include <Urho3D/UI/FileSelector.h>
+#include <Urho3D/UI/Font.h>
 #include <Urho3D/UI/LineEdit.h>
 #include <Urho3D/UI/ScrollBar.h>
 #include <Urho3D/UI/Slider.h>
@@ -68,6 +69,7 @@ using namespace Urho3D;
 #include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"
+#include "Input/Mouse_.h"
 #include "Network/Other/MasterServer_.h"
 #include "Utils/GlobalFunctions_.h"
 #include "Utils/Log_.h"

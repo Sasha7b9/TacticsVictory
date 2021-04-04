@@ -28,6 +28,7 @@ Hint             *TheHint = nullptr;
 LogRAW           *TheLog        = nullptr;
 MenuT            *TheMenu       = nullptr;
 MenuGame         *TheMenuMain   = nullptr;
+Mouse            *TheMouse = nullptr;
 Settings         *TheSet        = nullptr;
 WindowVariables  *TheWindowVars = nullptr;
 

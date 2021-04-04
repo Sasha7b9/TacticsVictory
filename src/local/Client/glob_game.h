@@ -22,6 +22,7 @@ extern Hint            *TheHint;
 extern LogRAW          *TheLog;
 extern MenuT           *TheMenu;
 extern MenuGame        *TheMenuMain;
+extern Mouse           *TheMouse;
 extern Settings        *TheSet;
 extern WindowVariables *TheWindowVars;
 

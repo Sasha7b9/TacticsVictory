@@ -58,6 +58,8 @@ file(GLOB GUI_MENU_MENUSTART_MENUPLAY                    GUI/Menu/MenuStart/Menu
 file(GLOB GUI_WINDOWS                 ../../common_files/GUI/Windows/Console_.*
                                       ../../common_files/GUI/Windows/ConsoleParserFunctions_.*
                                       ../../common_files/GUI/Windows/WindowVariables_.*)
+file(GLOB INPUT                       ../../common_files/Input/Mouse_.*
+                                                         Input/*.*)
 file(GLOB NETWORK                     ../../common_files/Network/Other/MasterServer_.*
                                       ../../common_files/Network/Other/SocketsTCP_.*)
 file(GLOB SCENE                                          Scene/*.*)
@@ -86,6 +88,7 @@ source_group(GUI\\Menu                      FILES ${GUI_MENU})
 source_group(GUI\\Menu\\MenuStart           FILES ${GUI_MENU_MENUSTART})
 source_group(GUI\\Menu\\MenuStart\\MenuPlay FILES ${GUI_MENU_MENUSTART_MENUPLAY})
 source_group(GUI\\Windows                   FILES ${GUI_WINDOWS})
+source_group(Input                          FILES ${INPUT})
 source_group(Network                        FILES ${NETWORK})
 source_group(Scene                          FILES ${SCENE})
 source_group(Scene\\Cameras                 FILES ${SCENE_CAMERAS})
@@ -101,7 +104,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D}
                 ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS} ${GUI_CONTROLS_SLIDERS}
                 ${GUI_LOGIC}
                 ${GUI_MENU} ${GUI_MENU_MENUSTART} ${GUI_MENU_MENUSTART_MENUPLAY} ${GUI_WINDOWS}
-                ${NETWORK} ${UTILS}
+                ${INPUT} ${NETWORK} ${UTILS}
                 ${SCENE} ${SCENE_CAMERAS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 

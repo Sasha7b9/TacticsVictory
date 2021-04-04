@@ -43,6 +43,10 @@ void Client::Setup()
 
     GetSubsystems();
 
+    settings = new Settings(&TheSet);
+
+    TheSet->Load();
+
     TuneEngineParameters();
 }
 
@@ -50,6 +54,10 @@ void Client::Setup()
 void Client::GetSubsystems()
 {
     TheCache = GetSubsystem<ResourceCache>();
+    TheFileSystem = GetSubsystem<FileSystem>();
+    TheGraphics = GetSubsystem<Graphics>();
+    TheLocalization = GetSubsystem<Localization>();
+    TheUI = GetSubsystem<UI>();
 }
 
 
@@ -71,7 +79,7 @@ void Client::TuneEngineParameters()
         engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/release";
 #endif
 
-//    TheCache->AddResourceDir(RESOURCES_DIR);
+    TheCache->AddResourceDir(RESOURCES_DIR);
 }
 
 
@@ -82,8 +90,11 @@ void Client::Start()
     Application::Start();
 
     SetLocalization();
+    TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
 
     RegistrationObjects();
+
+    mouse = new Mouse(&TheMouse);
 
     SetWindowTitleAndIcon();
 
