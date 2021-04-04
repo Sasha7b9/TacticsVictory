@@ -14,10 +14,10 @@ PanelMap::PanelMap(Context *context) :
 
     SetMovable(false);
 
-    IntVector2 posStart = {0, TheGraphics->GetHeight() - TheSettings.GetIntValue("panel", "bottom", "height") -
-        - TheSettings.GetIntValue("panel", "map", "height") + 1};
+    IntVector2 posStart = {0, TheGraphics->GetHeight() - TheSettings.GetInt("panel", "bottom", "height") -
+        - TheSettings.GetInt("panel", "map", "height") + 1};
 
-    IntVector2 posFinish = {-TheSettings.GetIntValue("panel", "map", "width"), posStart.y_};
+    IntVector2 posFinish = {-TheSettings.GetInt("panel", "map", "width"), posStart.y_};
 
     translator = new LineTranslator2D(posStart, posFinish, TheSettings.GetFloat("panel", "speed"),
         LineTranslator2D::State_PointStart);

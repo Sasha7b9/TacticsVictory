@@ -65,8 +65,8 @@ bool GuiGame::IsInside(const IntVector2 &position)
         panelMap->IsInside(position, true)
         ) &&
         position.x_ > 0 &&
-        position.x_ < TheSettings.GetIntValue("screen", "width") - 1 &&
-        position.y_ < TheSettings.GetIntValue("screen", "height") - 1;
+        position.x_ < TheSettings.GetInt("screen", "width") - 1 &&
+        position.y_ < TheSettings.GetInt("screen", "height") - 1;
 }
 
 
@@ -120,15 +120,15 @@ void GuiGame::CreatePanels()
 
     panelBottom->SetPosition(0, TheGraphics->GetHeight() - panelBottom->GetHeight());
 
-    int width = TheSettings.GetIntValue("panel_bottom", "button_width");
-    int height = TheSettings.GetIntValue("panel_bottom", "button_height");
+    int width = TheSettings.GetInt("panel_bottom", "button_width");
+    int height = TheSettings.GetInt("panel_bottom", "button_height");
 
-    int x = TheSettings.GetIntValue("panel_map", "width") / 2 - width / 2;
-    int y = TheSettings.GetIntValue("panel_bottom", "y");
+    int x = TheSettings.GetInt("panel_map", "width") / 2 - width / 2;
+    int y = TheSettings.GetInt("panel_bottom", "y");
     buttonInterface = panelBottom->AddButton("Interface", x, y, width, height);
     SubscribeToEvent(buttonInterface, E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
 
-    x = TheSettings.GetIntValue("screen", "width") - 2 * width;
+    x = TheSettings.GetInt("screen", "width") - 2 * width;
     buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
     SubscribeToEvent(buttonMenu, E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
 }

@@ -37,19 +37,19 @@ void GuiEditor::CreatePanels()
 
     // Panel bottom
     panelBottom = new PanelBottom(TheContext);
-    panelBottom->SetPosition(0, TheSettings.GetIntValue("screen", "height") -
-        TheSettings.GetIntValue("panel_bottom", "height"));
+    panelBottom->SetPosition(0, TheSettings.GetInt("screen", "height") -
+        TheSettings.GetInt("panel_bottom", "height"));
 
-    width = TheSettings.GetIntValue("panel_bottom", "button_width");
-    height = TheSettings.GetIntValue("panel_bottom", "button_height");
+    width = TheSettings.GetInt("panel_bottom", "button_width");
+    height = TheSettings.GetInt("panel_bottom", "button_height");
 
-    x = TheSettings.GetIntValue("panel_map", "width") / 2 - width / 2;
-    y = TheSettings.GetIntValue("panel_bottom", "y");
+    x = TheSettings.GetInt("panel_map", "width") / 2 - width / 2;
+    y = TheSettings.GetInt("panel_bottom", "y");
 
     buttonInterface = panelBottom->AddButton("Interface", x, y, width, height);
     SubscribeToEvent(buttonInterface, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
-    x = TheSettings.GetIntValue("screen", "width") - 2 * width;
+    x = TheSettings.GetInt("screen", "width") - 2 * width;
     buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
     SubscribeToEvent(buttonMenu, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
@@ -222,8 +222,8 @@ bool GuiEditor::IsInside(const IntVector2 &position)
             windowNewMap->IsInside(position, true)
         ) && 
         position.x_ > 0 && 
-        position.x_ < TheSettings.GetIntValue("screen", "width") - 1 &&
-        position.y_ < TheSettings.GetIntValue("screen", "height") - 1;
+        position.x_ < TheSettings.GetInt("screen", "width") - 1 &&
+        position.y_ < TheSettings.GetInt("screen", "height") - 1;
 }
 
 

@@ -25,7 +25,7 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
 
     SharedPtr<Label> text(Label::Create(text_, true, 15, widthText));
     text->SetStyle("Window");
-    text->SetFixedHeight(TheSettings.GetIntValue("menu", "text", "height"));
+    text->SetFixedHeight(TheSettings.GetInt("menu", "text", "height"));
     window->AddChild(text);
 
     ddList = CreateChild<DropDownList>();
@@ -34,7 +34,7 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
     ddList->SetDefaultStyle(style);
 
     ddList->SetStyleAuto();
-    ddList->SetFixedSize(widthDDList, TheSettings.GetIntValue("menu", "ddlist", "height"));
+    ddList->SetFixedSize(widthDDList, TheSettings.GetInt("menu", "ddlist", "height"));
     ddList->SetResizePopup(true);
     window->AddChild(ddList);
 

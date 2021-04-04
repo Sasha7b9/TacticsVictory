@@ -22,15 +22,15 @@ MenuOptions::MenuOptions() : WindowMenu()
     SubscribeToEvent(name, E_SLIDERINTCHANGED, URHO3D_HANDLER(MenuOptions, HandleOnSlider));  \
     name->SetValue(startIndex);
 
-    CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, 1, TheSettings.GetIntValue("brightness"));
+    CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, 1, TheSettings.GetInt("brightness"));
 
-    CREATE_SWTAB(sliderVolume, "Volume", 0, 100, 1, TheSettings.GetIntValue("volume"));
+    CREATE_SWTAB(sliderVolume, "Volume", 0, 100, 1, TheSettings.GetInt("volume"));
 
     CREATE_SWTAB(sliderMaxOccluderTriangles, "Max occluder triangles", 0, 5000, 1,
-        TheSettings.GetIntValue("max_occluder_triangles"));
+        TheSettings.GetInt("max_occluder_triangles"));
 
-    int width0 = TheSettings.GetIntValue("menu", "text", "width");
-    int width1 = TheSettings.GetIntValue("menu", "ddlist", "width");
+    int width0 = TheSettings.GetInt("menu", "text", "width");
+    int width1 = TheSettings.GetInt("menu", "ddlist", "width");
 
 #define CREATE_DDLWTAB(name, text, num, itms, startIndex)                                       \
     name = DropDownListWithTextAndButton::Create(this, text, width0, width1, num, itms);        \
@@ -39,22 +39,22 @@ MenuOptions::MenuOptions() : WindowMenu()
 
     char *items1[] = {"Low", "Medium", "High"};
     CREATE_DDLWTAB(ddlTextureQuality, "Texture quality", 3, items1,
-        (uint)TheSettings.GetIntValue("texture", "quality"));
+        (uint)TheSettings.GetInt("texture", "quality"));
 
     char *items2[] = {"x1", "x2", "x4", "x8", "x16", "x32"};
     CREATE_DDLWTAB(ddlTextureAnisotropy, "Texture anisotropy", 6, items2,
-        (uint)TheSettings.GetIntValue("texture", "anisotropy"));
+        (uint)TheSettings.GetInt("texture", "anisotropy"));
 
     char *items3[] = {"Low", "Medium", "High", "Max"};
     CREATE_DDLWTAB(ddlMaterialQuality, "Material quality", 4, items3,
-        (uint)TheSettings.GetIntValue("material", "quality"));
+        (uint)TheSettings.GetInt("material", "quality"));
 
     char *items4[] = {"Off", "On"};
     CREATE_DDLWTAB(ddlShadowsEnabled, "Shadows", 2, items4,
-        (uint)TheSettings.GetIntValue("shadow", "draw"));
+        (uint)TheSettings.GetInt("shadow", "draw"));
 
     CREATE_DDLWTAB(ddlSpecularLighting, "Specular lighting", 2, items4,
-        (uint)TheSettings.GetIntValue("lighting", "specular"));
+        (uint)TheSettings.GetInt("lighting", "specular"));
 
     CREATE_DDLWTAB(ddlDynamicInstancing, "Dynamic instancing", 2, items4, TheRenderer->GetDynamicInstancing() ? 1U : 0U);
 
@@ -63,7 +63,7 @@ MenuOptions::MenuOptions() : WindowMenu()
     
     char *items6[] = {"64", "128", "256", "512", "1024", "2048", "4096", "8192", "16384"};
     CREATE_DDLWTAB(ddlShadowMapSize, "Shadow map size", 9, items6,
-        (uint)TheSettings.GetIntValue("shadow", "map_size"));
+        (uint)TheSettings.GetInt("shadow", "map_size"));
 
     char *items7[] = {"low 16bit", "low 24bit", "high 16bit", "high 24bit"};
     CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, static_cast<uint>(TheRenderer->GetShadowQuality()));

@@ -12,7 +12,7 @@ ButtonT::ButtonT(Context *context) :
 {
     SetStyle("MainMenuButton");
 
-    label = Label::Create("", true, TheSettings.GetIntValue("menu", "font", "size", "item"));
+    label = Label::Create("", true, TheSettings.GetInt("menu", "font", "size", "item"));
     AddChild(label);
 }
 
@@ -22,7 +22,7 @@ ButtonT::ButtonT(UIElement *uielement, pchar text, int width /* = -1 */, int hei
 {
     SetStyleAuto(TheUIRoot->GetDefaultStyle());
     SetStyle("MainMenuButton");
-    label = Label::Create(text, true, TheSettings.GetIntValue("menu", "font", "size", "item"));
+    label = Label::Create(text, true, TheSettings.GetInt("menu", "font", "size", "item"));
     AddChild(label);
 
     if (uielement)

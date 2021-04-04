@@ -14,11 +14,11 @@ PanelMain::PanelMain(Context *context) :
 
     SetMovable(false);
 
-    IntVector2 posStart = {TheSettings.GetIntValue("panel", "map", "width") - 1, 
-        TheGraphics->GetHeight() - TheSettings.GetIntValue("panel", "bottom", "height") -
-        TheSettings.GetIntValue("panel", "main", "height") + 1};
+    IntVector2 posStart = {TheSettings.GetInt("panel", "map", "width") - 1, 
+        TheGraphics->GetHeight() - TheSettings.GetInt("panel", "bottom", "height") -
+        TheSettings.GetInt("panel", "main", "height") + 1};
 
-    IntVector2 posFinish = {TheSettings.GetIntValue("panel", "map", "width") - 1, TheGraphics->GetHeight()};
+    IntVector2 posFinish = {TheSettings.GetInt("panel", "map", "width") - 1, TheGraphics->GetHeight()};
 
     translator = new LineTranslator2D(posStart, posFinish, TheSettings.GetFloat("panel", "speed"),
         LineTranslator2D::State_PointStart);

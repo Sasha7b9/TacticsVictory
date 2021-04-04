@@ -214,8 +214,8 @@ GovernorFloat::GovernorFloat(Context *context) :
     for(int i = 0; i < numCells; i++)
     {
         SharedPtr<GovernorCell> cell(new GovernorCell(context));
-        cell->SetPosition(i * (TheSettings.GetIntValue("menu", "governor", "cell", "width") - 1) + widthLabel +
-            (i > 1 ? TheSettings.GetIntValue("menu", "governor", "cell", "width") : 0), 0);
+        cell->SetPosition(i * (TheSettings.GetInt("menu", "governor", "cell", "width") - 1) + widthLabel +
+            (i > 1 ? TheSettings.GetInt("menu", "governor", "cell", "width") : 0), 0);
 
         cell->SetSymbol((char)(0x30 + i));
         AddChild(cell);
@@ -236,17 +236,17 @@ GovernorFloat::GovernorFloat(Context *context) :
 
     SharedPtr<GovernorCell> cell(new GovernorCell(context));
     cell->SetType(GovernorCell::Type::Static);
-    cell->SetPosition(2 * (TheSettings.GetIntValue("menu", "governor", "cell", "width") - 1) + widthLabel, 0);
+    cell->SetPosition(2 * (TheSettings.GetInt("menu", "governor", "cell", "width") - 1) + widthLabel, 0);
     cell->SetSymbol('.');
     AddChild(cell);
 
-    SetFixedSize((TheSettings.GetIntValue("menu", "governor", "cell", "width") - 1) * (numCells + 1) + 17 + widthLabel,
-        TheSettings.GetIntValue("menu", "governor", "cell", "height"));
+    SetFixedSize((TheSettings.GetInt("menu", "governor", "cell", "width") - 1) * (numCells + 1) + 17 + widthLabel,
+        TheSettings.GetInt("menu", "governor", "cell", "height"));
 
     buttonDown = new Button(TheContext);
     buttonDown->SetStyle("DropDownButtonDown");
     AddChild(buttonDown);
-    buttonDown->SetPosition((numCells + 1) * (TheSettings.GetIntValue("menu", "governor", "cell", "width") - 1)
+    buttonDown->SetPosition((numCells + 1) * (TheSettings.GetInt("menu", "governor", "cell", "width") - 1)
         + 4 + widthLabel, 0);
 
     SubscribeToEvent(buttonDown, E_HOVERBEGIN, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonBegin));

@@ -26,7 +26,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
 
     SharedPtr<Label> text(Label::Create(text_, true, 15, widthText == -1 ? 
-        TheSettings.GetIntValue("menu", "text", "width") : widthText, -1));
+        TheSettings.GetInt("menu", "text", "width") : widthText, -1));
 
     window->AddChild(text);
     

@@ -55,7 +55,7 @@ void ConfigurationFile::Unload()
 }
 
 
-int ConfigurationFile::GetIntValue(pchar key)
+int ConfigurationFile::GetInt(pchar key)
 {
     CHECK_ON_VALID_INT;
 
@@ -72,7 +72,7 @@ int ConfigurationFile::GetIntValue(pchar key)
 }
 
 
-int ConfigurationFile::GetIntValue(pchar key1, pchar key2)
+int ConfigurationFile::GetInt(pchar key1, pchar key2)
 {
     CHECK_ON_VALID_INT;
 
@@ -97,7 +97,7 @@ int ConfigurationFile::GetIntValue(pchar key1, pchar key2)
 }
 
 
-int ConfigurationFile::GetIntValue(pchar key1, pchar key2, pchar key3)
+int ConfigurationFile::GetInt(pchar key1, pchar key2, pchar key3)
 {
     CHECK_ON_VALID_INT;
 
@@ -127,7 +127,7 @@ int ConfigurationFile::GetIntValue(pchar key1, pchar key2, pchar key3)
 }
 
 
-int ConfigurationFile::GetIntValue(pchar key1, pchar key2, pchar key3, pchar key4)
+int ConfigurationFile::GetInt(pchar key1, pchar key2, pchar key3, pchar key4)
 {
     CHECK_ON_VALID_INT;
 
