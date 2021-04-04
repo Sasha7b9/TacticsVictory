@@ -130,6 +130,8 @@ void Client::CreateGUI()
 
 void Client::SetLocalization()
 {
+    TheLocalization->LoadJSONFile("Strings.json");
+    TheLocalization->SetLanguage("ru");
 }
 
 
