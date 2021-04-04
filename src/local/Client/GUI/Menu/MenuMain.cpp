@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Menu/MenuStart.h"
+#include "GUI/Menu/MenuMain.h"
 
 
 MenuStart::MenuStart() : WindowMenu()

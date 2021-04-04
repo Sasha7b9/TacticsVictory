@@ -3,7 +3,7 @@
 #include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Menu/Menu.h"
 #include "GUI/Menu/MenuAboutMe.h"
-#include "GUI/Menu/MenuStart.h"
+#include "GUI/Menu/MenuMain.h"
 #include "GUI/Menu/MenuFindServer.h"
 #include "GUI/Menu/MenuPlay.h"
 
