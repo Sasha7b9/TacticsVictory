@@ -1,7 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
-#include "GUI/Menu/MenuStart.h"
+#include "GUI/Menu/WindowMenu_.h"
 
 
 WindowMenu::WindowMenu() : WindowT(TheContext)
