@@ -93,32 +93,32 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     if(ddList == ddlTextureQuality)
     {
         TheRenderer->SetTextureQuality((MaterialQuality)index);
-        TheSettings.SetInt("texture", "quality", index);
+        TheSettings.SetInt(index, "texture", "quality");
     }
     else if(ddList == ddlTextureAnisotropy)
     {
         TheRenderer->SetTextureAnisotropy(index + 1);
-        TheSettings.SetInt("texture", "anisotropy", index);
+        TheSettings.SetInt(index, "texture", "anisotropy");
     }
     else if(ddList == ddlMaterialQuality)
     {
         TheRenderer->SetMaterialQuality((MaterialQuality)index);
-        TheSettings.SetInt("material", "quality", index);
+        TheSettings.SetInt(index, "material", "quality");
     }
     else if(ddList == ddlShadowsEnabled)
     {
         TheRenderer->SetDrawShadows(index == 1);
-        TheSettings.SetInt("shadow", "draw", index);
+        TheSettings.SetInt(index, "shadow", "draw");
     }
     else if(ddList == ddlSpecularLighting)
     {
         TheRenderer->SetSpecularLighting(index == 1);
-        TheSettings.SetInt("lighting", "specular", index);
+        TheSettings.SetInt(index, "lighting", "specular");
     }
     else if(ddList == ddlShadowMapSize)
     {
         TheRenderer->SetShadowMapSize(shadowMapSizes[(uint)index]);
-        TheSettings.SetInt("shadow", "map_size", index);
+        TheSettings.SetInt(index, "shadow", "map_size");
     }
     else if(ddList == ddlShadowQuality)
     {

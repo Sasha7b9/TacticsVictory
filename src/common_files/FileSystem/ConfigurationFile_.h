@@ -24,7 +24,7 @@ public:
     float      GetFloat(pchar key1, pchar key2 = "");
 
     void SetInt(int value, pchar key);
-    void SetInt(pchar key1, pchar key2, int value);
+    void SetInt(int value, pchar key1, pchar key2);
 
     bool IsValid() const { return isValid; }
 

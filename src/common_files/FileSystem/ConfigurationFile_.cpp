@@ -237,7 +237,7 @@ void ConfigurationFile::SetInt(int /*value*/, pchar /*key*/)
 }
 
 
-void ConfigurationFile::SetInt(pchar /*key1*/, pchar /*key2*/, int /*value*/)
+void ConfigurationFile::SetInt(int /*value*/, pchar /*key1*/, pchar /*key2*/)
 {
     LOGERRORF("%s has not realisation", __FUNCTION__);
 }
