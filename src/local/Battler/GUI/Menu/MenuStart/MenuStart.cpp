@@ -21,23 +21,14 @@ MenuStart::MenuStart() : WindowMenu()
     buttonOptions = new ButtonT(this, "Options");
     buttonOptions->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_OPTIONS));
 
-    buttonAboutGame = new ButtonT(this, "About game");
-
-    buttonAboutMe = new ButtonT(this, "About me");
-    buttonAboutMe->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_ABOUT_ME));
-
     buttonExit = new ButtonT(this, "Exit");
 
     buttons.Push(buttonPlay);
     buttons.Push(buttonOptions);
-    buttons.Push(buttonAboutGame);
-    buttons.Push(buttonAboutMe);
     buttons.Push(buttonExit);
 
     SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonAboutMe, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
 }
 

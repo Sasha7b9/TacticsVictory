@@ -17,7 +17,5 @@ private:
 
     SharedPtr<ButtonT>      buttonPlay;
     SharedPtr<ButtonT>      buttonOptions;
-    SharedPtr<ButtonT>      buttonAboutGame;
-    SharedPtr<ButtonT>      buttonAboutMe;
     SharedPtr<ButtonT>      buttonExit;
 };
