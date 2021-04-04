@@ -84,19 +84,6 @@ int ConfigurationFile::GetInt(pchar key1, pchar key2)
 }
 
 
-int ConfigurationFile::GetInt(pchar key1, pchar key2, pchar key3)
-{
-    auto it = FindMember(key1, key2, key3);
-
-    if (&*it && it->value.IsInt())
-    {
-        return it->value.GetInt();
-    }
-
-    return -1;
-}
-
-
 int ConfigurationFile::GetInt(pchar key1, pchar key2, pchar key3, pchar key4)
 {
     auto it = FindMember(key1, key2, key3, key4);

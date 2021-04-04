@@ -26,8 +26,7 @@ public:
 
     int GetInt(pchar key);
     int GetInt(pchar key1, pchar key2);
-    int GetInt(pchar key1, pchar key2, pchar key3);
-    int GetInt(pchar key1, pchar key2, pchar key3, pchar key4);
+    int GetInt(pchar key1, pchar key2, pchar key3, pchar key4 = nullptr);
 
     IntVector2 GetIntVector2(pchar key1, pchar key2, pchar key3);
     IntVector2 GetIntVector2(pchar key1, pchar key2, pchar key3, pchar key4);
