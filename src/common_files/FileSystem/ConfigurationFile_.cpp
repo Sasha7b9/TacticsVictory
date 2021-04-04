@@ -7,9 +7,6 @@
 #define CHECK_ON_VALID_STRING   if (!isValid) { LOGERROR("Configuration file is not valid"); return nullptr; }
 #define CHECK_ON_VALID_INT      if (!isValid) { LOGERROR("Configuration file is not valid"); return -1; }
 
-#define IS_VALID(x)                (&*(x))
-#define IS_VALID_AND_HAS_KEY(x, k) (IS_VALID(x) && k[0] && x->value.IsObject() && x->value.HasMember(k))
-
 
 #define ERROR_FUNCTION      LOGERRORF("%s has not realisation", __FUNCTION__);
 
@@ -98,6 +95,10 @@ float ConfigurationFile::GetFloat(pchar key1, pchar key2)
 
 rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, pchar key2, pchar key3, pchar key4)
 {
+
+#define IS_VALID(x)                (&*(x))
+#define IS_VALID_AND_HAS_KEY(x, k) (IS_VALID(x) && k[0] && x->value.IsObject() && x->value.HasMember(k))
+
     auto it = document->FindMember(key1);
 
     if (IS_VALID(it) && it != document->MemberEnd())
