@@ -31,6 +31,7 @@
 #include <Urho3D/UI/Slider.h>
 #include <Urho3D/UI/Text.h>
 #include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/UIEvents.h>
 #include <Urho3D/UI/Window.h>
 #include <Urho3D/Urho2D/Sprite2D.h>
 #include <Urho3D/Urho2D/StaticSprite2D.h>
@@ -60,6 +61,7 @@ using namespace Urho3D;
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"
 #include "Network/Other/MasterServer_.h"
+#include "Utils/GlobalFunctions_.h"
 #include "Utils/Log_.h"
 #include "Utils/Settings_.h"
 #include "Utils/StringUtils_.h"

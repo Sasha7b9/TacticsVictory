@@ -1,12 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
-#include "GUI/Menu/MenuEvents.h"
 #include "GUI/Menu/MenuGame.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
-#include "Utils/Settings.h"
-#include "Utils/SettingsTypes.h"
 
 
 MenuGame::MenuGame(Context *) : WindowMenu()

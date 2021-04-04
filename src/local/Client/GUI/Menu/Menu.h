@@ -25,7 +25,6 @@ private:
     PODVector<WindowMenu*>    allMenus;       // Здесь список всех меню
     SharedPtr<MenuStart>      menuStart;
     SharedPtr<MenuAboutMe>    menuAbout;
-    SharedPtr<MenuOptions>    menuOptions;
     SharedPtr<MenuPlay>       menuPlay;
     SharedPtr<MenuFindServer> menuFindServer;
 
