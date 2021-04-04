@@ -121,6 +121,9 @@ void Client::SetLocalization()
 
 void Client::RegistrationObjects()
 {
+    CameraT::RegisterObject();
+    CursorT::RegisterObject();
+    ImageT::RegisterObject();
 }
 
 
