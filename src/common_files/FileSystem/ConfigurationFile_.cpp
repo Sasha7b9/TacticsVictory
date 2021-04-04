@@ -71,6 +71,19 @@ int ConfigurationFile::GetInt(pchar key1, pchar key2, pchar key3, pchar key4)
 }
 
 
+pchar ConfigurationFile::GetString(pchar key1, pchar key2, pchar key3, pchar key4)
+{
+    auto it = FindMember(key1, key2, key3, key4);
+
+    if (&*it && it->value.IsString())
+    {
+        return it->value.GetString();
+    }
+
+    return "";
+}
+
+
 rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, pchar key2, pchar key3, pchar key4)
 {
     auto it = document->FindMember(key1);
@@ -119,105 +132,6 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
     LOGERRORF("Can not find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
 
     return it;
-}
-
-
-pchar ConfigurationFile::GetString(pchar key)
-{
-    CHECK_ON_VALID_STRING;
-
-    rapidjson::Value::ConstMemberIterator it = document->FindMember(key);
-
-    if (it != document->MemberEnd() && it->value.IsString())
-    {
-        return it->value.GetString();
-    }
-
-    LOGERRORF("Can't find value for \"%s\" key", key);
-
-    return nullptr;
-}
-
-
-pchar ConfigurationFile::GetString(pchar key1, pchar key2)
-{
-    CHECK_ON_VALID_STRING;
-
-    auto it = FindMember(key1, key2);
-
-    if (&*it && it->value.IsString())
-    {
-        return it->value.GetString();
-    }
-
-    LOGERRORF("Can't find value for \"%s\" \"%s\"", key1, key2);
-
-    return nullptr;
-}
-
-
-pchar ConfigurationFile::GetString(pchar key1, pchar key2, pchar key3)
-{
-    CHECK_ON_VALID_STRING;
-
-    rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
-
-    if (it->value.GetType() == rapidjson::Type::kObjectType)
-    {
-        it = it->value.FindMember(key2);
-
-        if (it->value.GetType() == rapidjson::Type::kObjectType)
-        {
-            if (it->value.HasMember(key3))
-            {
-                it = it->value.FindMember(key3);
-
-                if (it->value.IsString())
-                {
-                    return it->value.GetString();
-                }
-            }
-        }
-    }
-
-    LOGERRORF("Can't find value for \"%s\" \"%s\" \"%s\"", key1, key2, key3);
-
-    return nullptr;
-}
-
-
-pchar ConfigurationFile::GetString(pchar key1, pchar key2, pchar key3, pchar key4)
-{
-    CHECK_ON_VALID_STRING;
-
-    rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
-
-    if (it->value.GetType() == rapidjson::Type::kObjectType)
-    {
-        it = it->value.FindMember(key2);
-
-        if (it->value.GetType() == rapidjson::Type::kObjectType)
-        {
-            if (it->value.HasMember(key3))
-            {
-                it = it->value.FindMember(key3);
-
-                if (it->value.HasMember(key4))
-                {
-                    it = it->value.FindMember(key4);
-
-                    if (it->value.IsString())
-                    {
-                        return it->value.GetString();
-                    }
-                }
-            }
-        }
-    }
-
-    LOGERRORF("Can't find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
-
-    return nullptr;
 }
 
 
