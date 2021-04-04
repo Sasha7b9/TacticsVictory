@@ -23,7 +23,7 @@ public:
     IntVector2 GetIntVector2(pchar key1, pchar key2 = "", pchar key3 = "", pchar key4 = "");
     float      GetFloat(pchar key1, pchar key2 = "");
 
-    void SetInt(pchar key, int value);
+    void SetInt(int value, pchar key);
     void SetInt(pchar key1, pchar key2, int value);
 
     bool IsValid() const { return isValid; }

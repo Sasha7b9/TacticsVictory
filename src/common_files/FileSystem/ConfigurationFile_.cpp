@@ -231,7 +231,7 @@ IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, 
 
 
 
-void ConfigurationFile::SetInt(pchar /*key*/, int /*value*/)
+void ConfigurationFile::SetInt(int /*value*/, pchar /*key*/)
 {
     LOGERRORF("%s has not realisation", __FUNCTION__);
 }

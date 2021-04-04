@@ -139,15 +139,15 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
     if(slider == sliderMaxOccluderTriangles)
     {
         TheRenderer->SetMaxOccluderTriangles(value);
-        TheSettings.SetInt("max_occluder_triangles", value);
+        TheSettings.SetInt(value, "max_occluder_triangles");
     }
     else if (slider == sliderBrightness)
     {
-        TheSettings.SetInt("brightness", value);
+        TheSettings.SetInt(value, "brightness");
     }
     else if (slider == sliderVolume)
     {
-        TheSettings.SetInt("volume", value);
+        TheSettings.SetInt(value, "volume");
     }
 }
 

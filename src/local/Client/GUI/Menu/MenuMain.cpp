@@ -82,7 +82,7 @@ void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
     else if (button == buttonLanguage)
     {
         TheLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
-        TheSettings.SetInt("language", (int)buttonLanguage->GetState());
+        TheSettings.SetInt((int)buttonLanguage->GetState(), "language");
     }
     else if (button == buttonEditor)
     {
