@@ -100,7 +100,7 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
 {
     auto it = document->FindMember(key1);
 
-    if (IS_VALID(it))
+    if (IS_VALID(it) && it != document->MemberEnd())
     {
         if (IS_VALID_AND_HAS_KEY(it, key2))
         {
