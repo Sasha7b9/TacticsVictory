@@ -62,3 +62,6 @@ typedef void(*pFuncVF)(float);
 #define KEY_IS_KP_PLUS  (key == KEY_KP_PLUS)
 #define KEY_IS_9        (key == KEY_9)
 #define KEY_IS_I        (key == KEY_I)
+
+#define VAR_MENU_EVENT         "VAR_MENU_EVENT"
+#define VAR_GUI_NO_TRANSLATE   "VAR_GUI_NO_TRANSLATE"

@@ -216,8 +216,3 @@ SharedPtr<Node> CameraT::GetNode()
 {
     return cameraNode;
 }
-
-
-Ray CameraT::GetCursorRay()
-{
-}

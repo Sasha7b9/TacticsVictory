@@ -30,35 +30,44 @@ add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum'
 add_compile_options(/wd28251)   # Inconsistent annotation for function: this instance has an error
 
 
-file(GLOB SRC           ../../common_files/*.*
-                                           *.h *.cpp)
-file(GLOB FILE_SYSTEM   ../../common_files/FileSystem/ConfigurationFile_.*
-                        ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB GUI           ../../common_files/GUI/*.*
-                                           GUI/*.*)
-file(GLOB GUI_MENU                         GUI/Menu/*.*)
-file(GLOB NETWORK       ../../common_files/Network/Other/MasterServer_.*
-                        ../../common_files/Network/Other/SocketsTCP_.*)
-file(GLOB SCENE                            Scene/*.*)
-file(GLOB SCENE_CAMERAS                    Scene/Cameras/*.*)
-file(GLOB UTILS         ../../common_files/Utils/Log_.*
-                        ../../common_files/Utils/LogRAW_.*
-                        ../../common_files/Utils/StringUtils_.*
-                        ../../common_files/Utils/SystemFunctions_.*
-                        ../../common_files/Utils/SystemUtils_.*)
+file(GLOB SRC                         ../../common_files/*.*
+                                                         *.h *.cpp)
+file(GLOB FILE_SYSTEM                 ../../common_files/FileSystem/ConfigurationFile_.*
+                                      ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB GUI                         ../../common_files/GUI/*.*
+                                                         GUI/*.*)
+file(GLOB GUI_CONTROLS                ../../common_files/GUI/Controls/Window_.*
+                                      ../../common_files/GUI/Controls/GovernorFloat_.*)
+file(GLOB GUI_CONTROLS_BUTTONS        ../../common_files/GUI/Controls/Buttons/ButtonToggled_.*)
+file(GLOB GUI_MENU                                       GUI/Menu/*.*)
+file(GLOB GUI_MENU_MENUSTART                             GUI/Menu/MenuStart/*.*)
+file(GLOB GUI_MENU_MENUSTART_MENUPLAY                    GUI/Menu/MenuStart/MenuPlay/*.*)
+file(GLOB NETWORK                     ../../common_files/Network/Other/MasterServer_.*
+                                      ../../common_files/Network/Other/SocketsTCP_.*)
+file(GLOB SCENE                                          Scene/*.*)
+file(GLOB SCENE_CAMERAS                                  Scene/Cameras/*.*)
+file(GLOB UTILS                       ../../common_files/Utils/Log_.*
+                                      ../../common_files/Utils/LogRAW_.*
+                                      ../../common_files/Utils/StringUtils_.*
+                                      ../../common_files/Utils/SystemFunctions_.*
+                                      ../../common_files/Utils/SystemUtils_.*)
 
 file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
 file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
 file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
 
-source_group(src            FILES ${SRC})
-source_group(FileSystem     FILES ${FILE_SYSTEM})
-source_group(GUI            FILES ${GUI})
-source_group(GUI\\Menu      FILES ${GUI_MENU})
-source_group(Network        FILES ${NETWORK})
-source_group(Scene          FILES ${SCENE})
-source_group(Scene\\Cameras FILES ${SCENE_CAMERAS})
-source_group(Utils          FILES ${UTILS})
+source_group(src                            FILES ${SRC})
+source_group(FileSystem                     FILES ${FILE_SYSTEM})
+source_group(GUI                            FILES ${GUI})
+source_group(GUI\\Controls                  FILES ${GUI_CONTROLS})
+source_group(GUI\\Controls\\Butttons        FILES ${GUI_CONTROLS_BUTTONS})
+source_group(GUI\\Menu                      FILES ${GUI_MENU})
+source_group(GUI\\Menu\\MenuStart           FILES ${GUI_MENU_MENUSTART})
+source_group(GUI\\Menu\\MenuStart\\MenuPlay FILES ${GUI_MENU_MENUSTART_MENUPLAY})
+source_group(Network                        FILES ${NETWORK})
+source_group(Scene                          FILES ${SCENE})
+source_group(Scene\\Cameras                 FILES ${SCENE_CAMERAS})
+source_group(Utils                          FILES ${UTILS})
 
 source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
 source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
@@ -66,7 +75,11 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${SCENE} ${SCENE_CAMERAS} ${GUI} ${GUI_MENU} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
+add_executable( ${PROJECT_NAME} ${SRC}
+                ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS}
+                ${GUI_MENU} ${GUI_MENU_MENUSTART} ${GUI_MENU_MENUSTART_MENUPLAY}
+                ${FILE_SYSTEM} ${NETWORK} ${UTILS}
+                ${SCENE} ${SCENE_CAMERAS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 include(../../RuntimeLibrary.cmake)
