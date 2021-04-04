@@ -97,7 +97,7 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
 {
 
 #define IS_VALID(x)                (&*(x))
-#define IS_VALID_AND_HAS_KEY(x, k) (IS_VALID(x) && k[0] && x->value.IsObject() && x->value.HasMember(k))
+#define IS_VALID_AND_HAS_KEY(x, k) (IS_VALID(x) && k[0] && x->value.HasMember(k))
 
     auto it = document->FindMember(key1);
 
