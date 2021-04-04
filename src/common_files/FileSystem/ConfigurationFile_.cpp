@@ -84,6 +84,19 @@ pchar ConfigurationFile::GetString(pchar key1, pchar key2, pchar key3, pchar key
 }
 
 
+float ConfigurationFile::GetFloat(pchar key1, pchar key2)
+{
+    auto it = FindMember(key1, key2);
+
+    if (&*it && it->value.IsFloat())
+    {
+        return it->value.GetFloat();
+    }
+
+    return 0.0f;
+}
+
+
 rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, pchar key2, pchar key3, pchar key4)
 {
     auto it = document->FindMember(key1);
@@ -190,14 +203,6 @@ IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pcha
     LOGERRORF("%s has not realisation", __FUNCTION__);
 
     return { 50, 50 };
-}
-
-
-float ConfigurationFile::GetFloat(pchar /*key1*/, pchar /*key2*/)
-{
-    LOGERRORF("%s has not realisation", __FUNCTION__);
-
-    return 50.0f;
 }
 
 
