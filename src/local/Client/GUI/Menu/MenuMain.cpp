@@ -16,7 +16,6 @@ MenuMain::MenuMain(Context *) : WindowMenu()
     
     buttonNewGame  = new ButtonT(this, "New game");
     buttonEditor = new ButtonT(this, "Editor");
-    buttonOptions = new ButtonT(this, "Options");
     buttonLanguage = new ButtonSwitch(this, "Language : EN");
     buttonLanguage->AddState("Language : RU");
     buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
@@ -25,12 +24,10 @@ MenuMain::MenuMain(Context *) : WindowMenu()
 
     buttons.Push(buttonNewGame);
     buttons.Push(buttonEditor);
-    buttons.Push(buttonOptions);
     buttons.Push(buttonLanguage);
     buttons.Push(buttonExit);
     buttons.Push(buttonCancel);
 
-    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonNewGame, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
     SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
@@ -39,7 +36,6 @@ MenuMain::MenuMain(Context *) : WindowMenu()
 
     text->SetWidth(GetWidth());
 
-    mapButtonsActions[buttonOptions] = ME_OPEN_OPTIONS;
     mapButtonsActions[buttonEditor] = ME_OPEN_EDITOR;
     mapButtonsActions[buttonExit] = ME_EXIT_IN_OS;
 }
@@ -69,12 +65,6 @@ void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
     {
         TheLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
         TheSet->SetInt(TV_LANGUAGE, (int)buttonLanguage->GetState());
-    }
-    else if (button == buttonOptions)
-    {
-        eventData = GetEventDataMap();
-        eventData[MenuEvent::P_TYPE] = mapButtonsActions[button];
-        SendEvent(E_MENU, eventData);
     }
     else if (button == buttonNewGame)
     {
