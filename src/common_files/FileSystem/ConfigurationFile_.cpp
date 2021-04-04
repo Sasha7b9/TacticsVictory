@@ -210,19 +210,11 @@ pchar ConfigurationFile::GetString(pchar key1, pchar key2)
 {
     CHECK_ON_VALID_STRING;
 
-    rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
+    auto it = FindMember(key1, key2);
 
-    if (it->value.GetType() == rapidjson::Type::kObjectType)
+    if (&*it && it->value.IsString())
     {
-        if (it->value.HasMember(key2))
-        {
-            it = it->value.FindMember(key2);
-
-            if (it->value.IsString())
-            {
-                return it->value.GetString();
-            }
-        }
+        return it->value.GetString();
     }
 
     LOGERRORF("Can't find value for \"%s\" \"%s\"", key1, key2);
