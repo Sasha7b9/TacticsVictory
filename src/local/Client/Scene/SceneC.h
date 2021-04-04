@@ -3,12 +3,12 @@
 #include "Scene/Scene_.h"
 
 
-class SceneC : public SceneT
+class SceneC : public Scene
 {
 public:
 
     SceneC(SceneC **self);
     virtual ~SceneC();
 
-    virtual void Create() override;
+    virtual void Create();
 };

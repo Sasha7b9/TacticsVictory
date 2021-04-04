@@ -3,7 +3,7 @@
 #include "Scene/SceneC.h"
 
 
-SceneC::SceneC(SceneC **self) : SceneT()
+SceneC::SceneC(SceneC **self) : Scene(TheContext)
 {
     *self = this;
 }
@@ -17,5 +17,4 @@ SceneC::~SceneC()
 
 void SceneC::Create()
 {
-    SceneT::Create();
 }
