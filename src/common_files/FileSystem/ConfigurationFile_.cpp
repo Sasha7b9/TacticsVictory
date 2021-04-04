@@ -100,14 +100,6 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
 {
     auto it = document->FindMember(key1);
 
-    static int counter = 0;
-    counter++;
-
-    if (counter == 267)
-    {
-        counter = counter;
-    }
-
     if (IS_VALID(it))
     {
         if (IS_VALID_AND_HAS_KEY(it, key2))
@@ -122,7 +114,7 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
                 {
                     it = it->value.FindMember(key4);
 
-                    if (IS_VALID(it))
+                    if (IS_VALID(it) && it != document->MemberEnd())
                     {
                         return it;
                     }
@@ -131,7 +123,7 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
         }
     }
 
-    if (!IS_VALID(it))
+    if (!IS_VALID(it) || it == document->MemberEnd())
     {
         LOGERRORF("Can not find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
     }
