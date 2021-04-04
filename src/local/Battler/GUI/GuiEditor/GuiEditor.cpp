@@ -38,13 +38,13 @@ void GuiEditor::CreatePanels()
     // Panel bottom
     panelBottom = new PanelBottom(TheContext);
     panelBottom->SetPosition(0, TheSettings.GetInt("screen", "height") -
-        TheSettings.GetInt("panel_bottom", "height"));
+        TheSettings.GetInt("panel", "bottom", "height"));
 
-    width = TheSettings.GetInt("panel_bottom", "button_width");
-    height = TheSettings.GetInt("panel_bottom", "button_height");
+    width = TheSettings.GetInt("panel", "bottom", "button_width");
+    height = TheSettings.GetInt("panel", "bottom", "button_height");
 
     x = TheSettings.GetInt("panel_map", "width") / 2 - width / 2;
-    y = TheSettings.GetInt("panel_bottom", "y");
+    y = TheSettings.GetInt("panel", "bottom", "y");
 
     buttonInterface = panelBottom->AddButton("Interface", x, y, width, height);
     SubscribeToEvent(buttonInterface, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));

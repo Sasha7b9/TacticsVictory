@@ -120,11 +120,11 @@ void GuiGame::CreatePanels()
 
     panelBottom->SetPosition(0, TheGraphics->GetHeight() - panelBottom->GetHeight());
 
-    int width = TheSettings.GetInt("panel_bottom", "button_width");
-    int height = TheSettings.GetInt("panel_bottom", "button_height");
+    int width = TheSettings.GetInt("panel", "bottom", "button_width");
+    int height = TheSettings.GetInt("panel", "bottom", "button_height");
 
     int x = TheSettings.GetInt("panel_map", "width") / 2 - width / 2;
-    int y = TheSettings.GetInt("panel_bottom", "y");
+    int y = TheSettings.GetInt("panel", "bottom", "y");
     buttonInterface = panelBottom->AddButton("Interface", x, y, width, height);
     SubscribeToEvent(buttonInterface, E_RELEASED, URHO3D_HANDLER(GuiGame, HandleButtonRelease));
 

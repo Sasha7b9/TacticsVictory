@@ -7,7 +7,7 @@ PanelBottom::PanelBottom(Context *context) :
     WindowT(context)
 {
     SetName("PanelBottom");
-    SetFixedSize(TheSettings.GetInt("screen", "width"), TheSettings.GetInt("panel_bottom", "height"));
+    SetFixedSize(TheSettings.GetInt("screen", "width"), TheSettings.GetInt("panel", "bottom", "height"));
     SetMovable(false);
 }
 
