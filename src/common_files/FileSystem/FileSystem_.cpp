@@ -378,7 +378,7 @@ size_t FS::File::Size()
 
     DWORD hiSize = 0;
 
-    DWORD result = GetFileSize(handle, &hiSize); //-V303 //-V2001
+    DWORD result = GetFileSize(handle, &hiSize); //-V2001
 
     if (result == INVALID_FILE_SIZE) //-V2523
     {

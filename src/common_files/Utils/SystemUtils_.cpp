@@ -22,21 +22,21 @@ typedef LPCSTR PCTSTR, LPCTSTR, PCUTSTR, LPCUTSTR;
         (LPTSTR)&lpMsgBuf,
         0, NULL);
 
-    lpDisplayBuf = (void *)LocalAlloc(LMEM_ZEROINIT, (lstrlenA((LPCTSTR)lpMsgBuf) + 40) * sizeof(TCHAR)); //-V2571 //-V303
+    lpDisplayBuf = (void *)LocalAlloc(LMEM_ZEROINIT, (lstrlenA((LPCTSTR)lpMsgBuf) + 40) * sizeof(TCHAR));
 
     char buffer[500];
 
 #ifdef WIN32
 #pragma warning(push, 0)
 #endif
-    std::sprintf(buffer, "%s:%d : Error %d : %s", file, line, (int)dw, (char *)lpMsgBuf); //-V2571
+    std::sprintf(buffer, "%s:%d : Error %d : %s", file, line, (int)dw, (char *)lpMsgBuf);
 #ifdef WIN32
 #pragma warning(pop)
 #endif
 
     buffer[std::strlen(buffer) - 1] = '\0';
 
-    LOGERROR(buffer); //-V576
+    LOGERROR(buffer);
 
     LocalFree(lpMsgBuf);
     LocalFree(lpDisplayBuf);
