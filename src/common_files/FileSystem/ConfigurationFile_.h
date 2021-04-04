@@ -43,5 +43,7 @@ private:
 
     bool isValid = false;
 
-    rapidjson::Document *document = nullptr; //-V122
+    rapidjson::Document *document = nullptr;
+
+    rapidjson::Value::ConstMemberIterator FindMember(pchar key1, pchar key2, pchar key3, pchar key4);
 };

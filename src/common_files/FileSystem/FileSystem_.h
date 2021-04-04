@@ -55,7 +55,7 @@ namespace FS
         std::string name;
 
 #ifdef WIN32
-        HANDLE handle = nullptr; //-V122
+        HANDLE handle = nullptr;
 #else
         int fileDesc = -1;
 #endif

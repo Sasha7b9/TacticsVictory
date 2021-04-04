@@ -8,8 +8,8 @@
 #define CHECK_ON_VALID_INT      if (!isValid) { LOGERROR("Configuration file is not valid"); return -1; }
 
 
-#define ERROR_FUNCTION
-//#define ERROR_FUNCTION      LOGERRORF("%s has not realisation", __FUNCTION__);
+//#define ERROR_FUNCTION
+#define ERROR_FUNCTION      LOGERRORF("%s has not realisation", __FUNCTION__);
 
 
 bool ConfigurationFile::Load(pchar name)
@@ -78,7 +78,7 @@ int ConfigurationFile::GetInt(pchar key1, pchar key2)
 
     rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
 
-    if ((&*it) && (it->value.GetType() == rapidjson::Type::kObjectType))
+    if (it != document->MemberEnd() && it->value.IsObject())
     {
         if (it->value.HasMember(key2))
         {
@@ -306,19 +306,18 @@ bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &st
 }
 
 
-IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pchar /*key3*/)
+IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, pchar key4)
 {
-    LOGERRORF("%s has not realisation", __FUNCTION__);
+    IntVector2 result(40, 40);
 
-    return { 50, 50 };
+    return result;
 }
 
 
-IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pchar /*key3*/, pchar /*key4*/)
-{
-//    LOGERRORF("%s has not realisation", __FUNCTION__);
 
-    ERROR_FUNCTION
+IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pchar /*key3*/)
+{
+    LOGERRORF("%s has not realisation", __FUNCTION__);
 
     return { 50, 50 };
 }
