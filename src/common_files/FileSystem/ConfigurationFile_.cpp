@@ -7,7 +7,8 @@
 #define CHECK_ON_VALID_STRING   if (!isValid) { LOGERROR("Configuration file is not valid"); return nullptr; }
 #define CHECK_ON_VALID_INT      if (!isValid) { LOGERROR("Configuration file is not valid"); return -1; }
 
-#define IS_VALID(x)             (&*(x) && (x)->value.IsObject())
+//#define IS_VALID(x)             (&*(x) && (x)->value.IsObject())
+#define IS_VALID(x)             (&*(x))
 
 
 //#define ERROR_FUNCTION
