@@ -138,9 +138,40 @@ void ConfigurationFile::SetInt(int value, pchar key)
 }
 
 
+void ConfigurationFile::SetInt(int value, pchar key1, pchar key2)
+{
+    auto it = document->FindMember(key1);
+
+    if (IS_VALID(it) && it != document->MemberEnd())
+    {
+        if (IS_VALID_AND_KEY(it, key2))
+        {
+            if (it->value.HasMember(key2))
+            {
+                it = it->value.FindMember(key2);
+
+                it->value.SetInt(value);
+            }
+            else
+            {
+                LOGERRORF("Can not set value %s %s", key1, key2);
+            }
+        }
+        else
+        {
+            LOGERRORF("Can not set value %s %s", key1, key2);
+        }
+    }
+    else
+    {
+        LOGERRORF("Can not set value %s %s", key1, key2);
+    }
+}
+
+
+
 rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, pchar key2, pchar key3, pchar key4)
 {
-
     auto it = document->FindMember(key1);
 
     if (IS_VALID(it) && it != document->MemberEnd())
@@ -269,11 +300,4 @@ IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, 
     }
 
     return result;
-}
-
-
-
-void ConfigurationFile::SetInt(int /*value*/, pchar /*key1*/, pchar /*key2*/)
-{
-    LOGERRORF("%s has not realisation", __FUNCTION__);
 }
