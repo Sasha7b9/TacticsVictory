@@ -59,9 +59,9 @@ int ConfigurationFile::GetInt(pchar key)
 {
     CHECK_ON_VALID_INT;
 
-    rapidjson::Value::ConstMemberIterator it = document->FindMember(key);
+    auto it = document->FindMember(key);
 
-    if (it != document->MemberEnd() && it->value.IsInt())
+    if (&*it && it->value.IsInt())
     {
         return it->value.GetInt();
     }
