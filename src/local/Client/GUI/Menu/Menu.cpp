@@ -2,10 +2,10 @@
 #include "stdafx.h"
 #include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Menu/MenuStart/MenuAboutMe.h"
-#include "GUI/Menu/MenuStart/MenuStart.h"
-#include "GUI/Menu/MenuStart/MenuPlay/MenuFindServer.h"
-#include "GUI/Menu/MenuStart/MenuPlay/MenuPlay.h"
+#include "GUI/Menu/MenuAboutMe.h"
+#include "GUI/Menu/MenuStart.h"
+#include "GUI/Menu/MenuFindServer.h"
+#include "GUI/Menu/MenuPlay.h"
 
 
 #define CREATE_MENU(name, type, moving)                                 \
