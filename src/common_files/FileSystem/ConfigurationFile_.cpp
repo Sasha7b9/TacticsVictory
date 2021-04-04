@@ -81,6 +81,32 @@ int ConfigurationFile::GetInt(pchar key1, pchar key2)
 }
 
 
+int ConfigurationFile::GetInt(pchar key1, pchar key2, pchar key3)
+{
+    auto it = FindMember(key1, key2, key3);
+
+    if (&*it && it->value.IsInt())
+    {
+        return it->value.GetInt();
+    }
+
+    return -1;
+}
+
+
+int ConfigurationFile::GetInt(pchar key1, pchar key2, pchar key3, pchar key4)
+{
+    auto it = FindMember(key1, key2, key3, key4);
+
+    if (&*it && it->value.IsInt())
+    {
+        return it->value.GetInt();
+    }
+
+    return -1;
+}
+
+
 rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key)
 {
     auto it = document->FindMember(key);
@@ -168,70 +194,6 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
     LOGERRORF("Can not find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
 
     return it;
-}
-
-int ConfigurationFile::GetInt(pchar key1, pchar key2, pchar key3)
-{
-    CHECK_ON_VALID_INT;
-
-    rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
-
-    if (it->value.GetType() == rapidjson::Type::kObjectType)
-    {
-        if (it->value.HasMember(key2))
-        {
-            it = it->value.FindMember(key2);
-
-            if (it->value.HasMember(key3))
-            {
-                it = it->value.FindMember(key3);
-
-                if (it->value.IsInt())
-                {
-                    return it->value.GetInt();
-                }
-            }
-        }
-    }
-
-    LOGERRORF("Can't find value for \"%s\" \"%s\" \"%s\"", key1, key2, key3);
-
-    return -1;
-}
-
-
-int ConfigurationFile::GetInt(pchar key1, pchar key2, pchar key3, pchar key4)
-{
-    CHECK_ON_VALID_INT;
-
-    rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
-
-    if (it->value.GetType() == rapidjson::Type::kObjectType)
-    {
-        if (it->value.HasMember(key2))
-        {
-            it = it->value.FindMember(key2);
-
-            if (it->value.HasMember(key3))
-            {
-                it = it->value.FindMember(key3);
-
-                if (it->value.HasMember(key4))
-                {
-                    it = it->value.FindMember(key4);
-
-                    if (it->value.IsInt())
-                    {
-                        return it->value.GetInt();
-                    }
-                }
-            }
-        }
-    }
-
-    LOGERRORF("Can't find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
-
-    return -1;
 }
 
 
