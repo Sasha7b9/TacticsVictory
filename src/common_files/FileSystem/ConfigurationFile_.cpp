@@ -91,16 +91,38 @@ int ConfigurationFile::GetInt(pchar key1, pchar key2)
 
 rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, pchar key2)
 {
-    rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
+    auto it = document->FindMember(key1);
 
-    if (it != document->MemberEnd() && it->value.IsObject())
+    if (&*it)
     {
-        it = it->value.FindMember(key2);
+        return it->value.FindMember(key2);
     }
 
     return it;
 }
 
+
+rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, pchar key2, pchar key3, pchar key4)
+{
+    auto it = document->FindMember(key1);
+
+    if (&*it && it->value.IsObject())
+    {
+        it = it->value.FindMember(key2);
+
+        if (&*it && it->value.IsObject())
+        {
+            it = it->value.FindMember(key3);
+
+            if (&*it)
+            {
+                return it->value.FindMember(key4);
+            }
+        }
+    }
+
+    return it;
+}
 
 int ConfigurationFile::GetInt(pchar key1, pchar key2, pchar key3)
 {
@@ -314,6 +336,8 @@ bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &st
 IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pchar /*key3*/, pchar /*key4*/)
 {
     IntVector2 result(40, 40);
+
+    LOGERRORF("%s has not realisation", __FUNCTION__);
 
     return result;
 }
