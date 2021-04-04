@@ -28,7 +28,6 @@ private:
     void HandlePostUpdate(StringHash, VariantMap&);
 
     SharedPtr<SceneS>   scene;
-    SharedPtr<Settings> settings;
     SharedPtr<Log>      log;
     SharedPtr<ServerS>  server;
 };

@@ -10,14 +10,18 @@ PanelMain::PanelMain(Context *context) :
 {
     SetName("PanelMain");
 
-    SetFixedSize(SET::PANEL::MAIN::SIZE);
+    SetFixedSize(TheSettings.GetIntVector2("panel", "main", "size"));
 
     SetMovable(false);
 
-    IntVector2 posStart = {SET::PANEL::MAP::WIDTH - 1, TheGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAIN::HEIGHT + 1};
-    IntVector2 posFinish = {SET::PANEL::MAP::WIDTH - 1, TheGraphics->GetHeight()};
+    IntVector2 posStart = {TheSettings.GetIntValue("panel", "map", "width") - 1, 
+        TheGraphics->GetHeight() - TheSettings.GetIntValue("panel", "bottom", "height") -
+        TheSettings.GetIntValue("panel", "main", "height") + 1};
 
-    translator = new LineTranslator2D(posStart, posFinish, TheSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
+    IntVector2 posFinish = {TheSettings.GetIntValue("panel", "map", "width") - 1, TheGraphics->GetHeight()};
+
+    translator = new LineTranslator2D(posStart, posFinish, TheSettings.GetFloat("panel", "speed"),
+        LineTranslator2D::State_PointStart);
 }
 
 

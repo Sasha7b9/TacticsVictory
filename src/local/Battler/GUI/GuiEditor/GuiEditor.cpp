@@ -37,18 +37,19 @@ void GuiEditor::CreatePanels()
 
     // Panel bottom
     panelBottom = new PanelBottom(TheContext);
-    panelBottom->SetPosition(0, TheSet->GetInt(TV_SCREEN_HEIGHT) - TheSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
+    panelBottom->SetPosition(0, TheSettings.GetIntValue("screen", "height") -
+        TheSettings.GetIntValue("panel_bottom", "height"));
 
-    width = TheSet->GetInt(TV_PANEL_BOTTOM_BUTTON_WIDTH);
-    height = TheSet->GetInt(TV_PANEL_BOTTOM_BUTTON_HEIGHT);
+    width = TheSettings.GetIntValue("panel_bottom", "button_width");
+    height = TheSettings.GetIntValue("panel_bottom", "button_height");
 
-    x = TheSet->GetInt(TV_PANEL_MAP_WIDTH) / 2 - width / 2;
-    y = TheSet->GetInt(TV_PANEL_BOTTOM_BUTTON_Y);
+    x = TheSettings.GetIntValue("panel_map", "width") / 2 - width / 2;
+    y = TheSettings.GetIntValue("panel_bottom", "y");
 
     buttonInterface = panelBottom->AddButton("Interface", x, y, width, height);
     SubscribeToEvent(buttonInterface, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
-    x = TheSet->GetInt(TV_SCREEN_WIDTH) - 2 * width;
+    x = TheSettings.GetIntValue("screen", "width") - 2 * width;
     buttonMenu = panelBottom->AddButton("Menu", x, y, width, height);
     SubscribeToEvent(buttonMenu, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleButtonRelease));
 
@@ -221,8 +222,8 @@ bool GuiEditor::IsInside(const IntVector2 &position)
             windowNewMap->IsInside(position, true)
         ) && 
         position.x_ > 0 && 
-        position.x_ < TheSet->GetInt(TV_SCREEN_WIDTH) - 1 &&
-        position.y_ < TheSet->GetInt(TV_SCREEN_HEIGHT) - 1;
+        position.x_ < TheSettings.GetIntValue("screen", "width") - 1 &&
+        position.y_ < TheSettings.GetIntValue("screen", "height") - 1;
 }
 
 
@@ -230,7 +231,7 @@ void GuiEditor::CreateWindows()
 {
     // window new map
     windowNewMap = new WindowT(TheContext);
-    SET_VERTICAL_LAYOUT_0_6(windowNewMap);
+    windowNewMap->SetLayout(LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
 
     windowNewMap->AddLabel("CreateNewMap");
     sliderSizeNewMapX = windowNewMap->AddSlider("Dimension X", 50, 250, 50);
@@ -247,7 +248,7 @@ void GuiEditor::CreateWindows()
 
     // window menu
     windowMenu = new WindowT(TheContext);
-    SET_VERTICAL_LAYOUT_0_0(windowMenu);
+    windowMenu->SetLayout(LM_VERTICAL, 0, IntRect(0, 0, 0, 0));
 
     SharedPtr<ButtonT> buttonOptions = windowMenu->AddButton("Options");
     SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleOptions));
@@ -261,13 +262,13 @@ void GuiEditor::CreateWindows()
 
     // window confirm exit
     windowConfirmExit = new WindowT(TheContext);
-    SET_VERTICAL_LAYOUT_0_6(windowConfirmExit);
+    windowConfirmExit->SetLayout(LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
 
     SharedPtr<Label> label(Label::Create("Exit in main menu?"));
     windowConfirmExit->AddChild(label);
 
     SharedPtr<UIElement> layer(windowConfirmExit->CreateChild<UIElement>());
-    SET_HORIZONTAL_LAYOUT_6_6(layer);
+    layer->SetLayout(LM_HORIZONTAL, 6, IntRect(6, 6, 6, 6));
 
     SharedPtr<ButtonT> buttonOk(new ButtonT(layer, "Ok"));
     SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleExitOk));

@@ -7,12 +7,12 @@
 
 MenuConfirmExit::MenuConfirmExit() : WindowMenu()
 {
-    SET_VERTICAL_LAYOUT_0_6(this);
+    SetLayout(LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
     SharedPtr<Label> label(Label::Create("Exit in OS?"));
     AddChild(label);
 
     SharedPtr<UIElement> layer(CreateChild<UIElement>());
-    SET_HORIZONTAL_LAYOUT_6_6(layer);
+    layer->SetLayout(LM_HORIZONTAL, 6, IntRect(6, 6, 6, 6));
     
     buttonOk = new ButtonT(layer, "Ok");
     buttonCancel = new ButtonT(layer, "Cancel");

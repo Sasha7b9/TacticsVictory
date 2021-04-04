@@ -39,7 +39,6 @@ private:
     SharedPtr<SceneC>   scene;
     SharedPtr<ServerC>  server;
     SharedPtr<Mouse>    mouse;
-    SharedPtr<Settings> settings;
     SharedPtr<MenuT>    menu;
     SharedPtr<GUI>      gui;
     SharedPtr<Editor>   editor;

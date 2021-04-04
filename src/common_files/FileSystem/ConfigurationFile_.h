@@ -18,16 +18,24 @@ public:
     void Unload();
 
     pchar GetStringValue(pchar key);
-
     pchar GetStringValue(pchar key1, pchar key2);
-
     pchar GetStringValue(pchar key1, pchar key2, pchar key3);
+    pchar GetStringValue(pchar key1, pchar key2, pchar key3, pchar key4);
 
     bool GetVectorStrings(pchar key, std::vector<std::string> &strings);
 
     int GetIntValue(pchar key);
-
     int GetIntValue(pchar key1, pchar key2);
+    int GetIntValue(pchar key1, pchar key2, pchar key3);
+    int GetIntValue(pchar key1, pchar key2, pchar key3, pchar key4);
+
+    IntVector2 GetIntVector2(pchar key1, pchar key2, pchar key3);
+    IntVector2 GetIntVector2(pchar key1, pchar key2, pchar key3, pchar key4);
+
+    float GetFloat(pchar key1, pchar key2);
+
+    void SetInt(pchar key, int value);
+    void SetInt(pchar key1, pchar key2, int value);
 
     bool IsValid() const { return isValid; }
 

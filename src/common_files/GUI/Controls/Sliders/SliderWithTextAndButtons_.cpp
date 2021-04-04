@@ -20,15 +20,17 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
 {
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-    window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
+    window->SetStyle(TheSettings.GetStringValue("menu", "elem", "window", "style"));
     AddChild(window);
  
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
 
-    SharedPtr<Label> text(Label::Create(text_, true, 15, widthText == -1 ? SET::MENU::TEXT::WIDTH : widthText, -1));
+    SharedPtr<Label> text(Label::Create(text_, true, 15, widthText == -1 ? 
+        TheSettings.GetIntValue("menu", "text", "width") : widthText, -1));
+
     window->AddChild(text);
     
-    IntVector2 sizeSlider = SET::MENU::SLIDER::SIZE;
+    IntVector2 sizeSlider = TheSettings.GetIntVector2("menu", "slider", "size");
     if (widthRoller != -1)
     {
         sizeSlider.x_ = widthRoller;

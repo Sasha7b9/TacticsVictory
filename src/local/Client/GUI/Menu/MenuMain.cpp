@@ -17,7 +17,7 @@ MenuMain::MenuMain() : WindowMenu()
 
     buttonLanguage = new ButtonSwitch(this, "Language : EN");
     buttonLanguage->AddState("Language : RU");
-    buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
+    buttonLanguage->SetState((uint)TheSettings.GetIntValue("language"));
 
     buttonPlay = new ButtonT(this, "Play");
     buttonPlay->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_PLAY));

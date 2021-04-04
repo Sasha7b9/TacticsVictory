@@ -6,13 +6,13 @@ class ConfigurationFile;
 class MasterServer;
 class SceneS;
 class ServerS;
-class Settings;
 class TerrainT;
 
-extern Battle           *TheBattle;
 extern ConfigurationFile TheConfig;
+extern ConfigurationFile TheSettings;
+
+extern Battle *TheBattle;
 extern MasterServer      TheMaster;
 extern SceneS           *TheScene;
 extern ServerS          *TheServer;
-extern Settings         *TheSet;
 extern TerrainT         *TheTerrain;

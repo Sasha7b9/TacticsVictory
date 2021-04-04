@@ -13,7 +13,7 @@ GovernorCell::GovernorCell(Context *context) :
     SetStyleAuto();
     SetStyle("WindowGovernorCell");
     //ApplyAttributes();
-    SetFixedSize(SET::MENU::GOVERNOR::CELL::SIZE);
+    SetFixedSize(TheSettings.GetIntVector2("menu", "governor", "cell", "size"));
 
     label = new Text(TheContext);
     label->SetFont(TheFont, 8);
@@ -214,7 +214,9 @@ GovernorFloat::GovernorFloat(Context *context) :
     for(int i = 0; i < numCells; i++)
     {
         SharedPtr<GovernorCell> cell(new GovernorCell(context));
-        cell->SetPosition(i * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + widthLabel + (i > 1 ? SET::MENU::GOVERNOR::CELL::WIDTH : 0), 0);
+        cell->SetPosition(i * (TheSettings.GetIntValue("menu", "governor", "cell", "width") - 1) + widthLabel +
+            (i > 1 ? TheSettings.GetIntValue("menu", "governor", "cell", "width") : 0), 0);
+
         cell->SetSymbol((char)(0x30 + i));
         AddChild(cell);
         cells.Push(cell);
@@ -234,16 +236,18 @@ GovernorFloat::GovernorFloat(Context *context) :
 
     SharedPtr<GovernorCell> cell(new GovernorCell(context));
     cell->SetType(GovernorCell::Type::Static);
-    cell->SetPosition(2 * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + widthLabel, 0);
+    cell->SetPosition(2 * (TheSettings.GetIntValue("menu", "governor", "cell", "width") - 1) + widthLabel, 0);
     cell->SetSymbol('.');
     AddChild(cell);
 
-    SetFixedSize((SET::MENU::GOVERNOR::CELL::WIDTH - 1) * (numCells + 1) + 17 + widthLabel, SET::MENU::GOVERNOR::CELL::HEIGHT);
+    SetFixedSize((TheSettings.GetIntValue("menu", "governor", "cell", "width") - 1) * (numCells + 1) + 17 + widthLabel,
+        TheSettings.GetIntValue("menu", "governor", "cell", "height"));
 
     buttonDown = new Button(TheContext);
     buttonDown->SetStyle("DropDownButtonDown");
     AddChild(buttonDown);
-    buttonDown->SetPosition((numCells + 1) * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + 4 + widthLabel, 0);
+    buttonDown->SetPosition((numCells + 1) * (TheSettings.GetIntValue("menu", "governor", "cell", "width") - 1)
+        + 4 + widthLabel, 0);
 
     SubscribeToEvent(buttonDown, E_HOVERBEGIN, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonBegin));
     SubscribeToEvent(buttonDown, E_HOVEREND, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonEnd));

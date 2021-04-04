@@ -9,6 +9,10 @@
 #define _WINSOCKAPI_
 #include <windows.h>
 
+#include <Urho3D/Math/Vector2.h>
+
+using namespace Urho3D;
+
 #include <cstdarg>
 #include <iostream>
 #include <locale>

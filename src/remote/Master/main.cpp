@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 
-int main(int, char *[]) //-V2504
+int main(int, char *[])
 {
     setlocale(LC_ALL, "Russian");
 

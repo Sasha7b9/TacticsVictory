@@ -1,5 +1,6 @@
 // 2021/03/28 21:56:56 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "FileSystem/ConfigurationFile_.h"
 #include "GUI/Controls/OrderedTable_.h"
 #include "GUI/Controls/Buttons/Button_.h"
 
@@ -34,7 +35,7 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
 
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/OrderedTableStyle.xml"));
-    window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
+    window->SetStyle(TheSettings.GetStringValue("menu", "elem", "window", "style"));
     AddChild(window);
 
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
@@ -56,7 +57,7 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
 {
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-    window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
+    window->SetStyle(TheSettings.GetStringValue("menu", "elem", "window", "style"));
     AddChild(window);
 
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
@@ -89,7 +90,7 @@ OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheCont
 {
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-    window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
+    window->SetStyle(TheSettings.GetStringValue("menu", "elem", "window", "style"));
     AddChild(window);
 
     window->SetLayout(LM_VERTICAL, 3, IntRect(3, 3, 3, 3));

@@ -35,9 +35,7 @@ void Battler::Setup()
 
     GetSubsystems();
 
-    settings = new Settings(&TheSet);
-
-    TheSet->Load();
+    TheSettings.Load("Settings.conf");
 
     TuneEngineParameters();
 }
@@ -69,8 +67,8 @@ void Battler::TuneEngineParameters()
                                                         GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_[EP_FULL_SCREEN] = false;
     engineParameters_[EP_TEXTURE_QUALITY] = 32;
-    engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
-    engineParameters_[EP_WINDOW_HEIGHT] = TheSet->GetInt(TV_SCREEN_HEIGHT);
+    engineParameters_[EP_WINDOW_WIDTH] = TheSettings.GetIntValue("screen", "width");
+    engineParameters_[EP_WINDOW_HEIGHT] = TheSettings.GetIntValue("screen", "height");
     engineParameters_[EP_HEADLESS] = false;
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
@@ -95,7 +93,7 @@ void Battler::Start()
     Application::Start();
 
     SetLocalization();
-    TheFont = TheCache->GetResource<Font>(SET::MENU::FONT::NAME);
+    TheFont = TheCache->GetResource<Font>(TheSettings.GetStringValue("menu", "font", "name"));
 
     RegistrationObjects();
 

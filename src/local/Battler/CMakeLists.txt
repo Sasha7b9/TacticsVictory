@@ -36,7 +36,8 @@ file(GLOB SRC                                    ../../common_files/*.*
 file(GLOB AUDIO                                                     Audio/*.*)
 file(GLOB CORE                                   ../../common_files/Core/*.*)
 file(GLOB EDITOR                                                    Editor/*.*)
-file(GLOB FILESYSTEM                             ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB FILESYSTEM                             ../../common_files/FileSystem/ConfigurationFile_.*
+                                                 ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB GAME                                                      Game/*.*)
 file(GLOB GAME_LOGIC                             ../../common_files/Game/Logic/*.*)
 file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.*
@@ -90,7 +91,6 @@ file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrai
 file(GLOB UTILS                                  ../../common_files/Utils/GlobalFunctions_.*
                                                  ../../common_files/Utils/Log_.*
                                                  ../../common_files/Utils/LogU3D_.*
-                                                 ../../common_files/Utils/Settings_.*
                                                  ../../common_files/Utils/StringUtils_.*
                                                  ../../common_files/Utils/SystemFunctions_.*
                                                  ../../common_files/Utils/SystemUtils_.*

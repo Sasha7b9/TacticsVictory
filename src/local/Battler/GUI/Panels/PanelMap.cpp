@@ -10,14 +10,17 @@ PanelMap::PanelMap(Context *context) :
 {
     SetName("PanelMap");
 
-    SetFixedSize(SET::PANEL::MAP::SIZE);
+    SetFixedSize(TheSettings.GetIntVector2("panel", "map", "size"));
 
     SetMovable(false);
 
-    IntVector2 posStart = {0, TheGraphics->GetHeight() - SET::PANEL::BOTTOM::HEIGHT - SET::PANEL::MAP::HEIGHT + 1};
-    IntVector2 posFinish = {-SET::PANEL::MAP::WIDTH, posStart.y_};
+    IntVector2 posStart = {0, TheGraphics->GetHeight() - TheSettings.GetIntValue("panel", "bottom", "height") -
+        - TheSettings.GetIntValue("panel", "map", "height") + 1};
 
-    translator = new LineTranslator2D(posStart, posFinish, TheSet->GetFloat(TV_PANEL_SPEED), LineTranslator2D::State_PointStart);
+    IntVector2 posFinish = {-TheSettings.GetIntValue("panel", "map", "width"), posStart.y_};
+
+    translator = new LineTranslator2D(posStart, posFinish, TheSettings.GetFloat("panel", "speed"),
+        LineTranslator2D::State_PointStart);
 
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(PanelMap, HandleMouseDown));
     SubscribeToEvent(E_MOUSEMOVE, URHO3D_HANDLER(PanelMap, HandleMouseMove));

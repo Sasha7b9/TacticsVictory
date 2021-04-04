@@ -24,6 +24,9 @@ FileSelector    *TheFileSelector = nullptr;
 Profiler        *TheProfiler = nullptr;
 Script          *TheScript = nullptr;
 
+
+ConfigurationFile TheSettings;
+
 CameraT         *TheCamera = nullptr;
 ConsoleT        *TheConsole = nullptr;
 CursorT         *TheCursor = nullptr;
@@ -40,7 +43,6 @@ Mouse           *TheMouse = nullptr;
 PathIndicator   *ThePathIndicator = nullptr;
 SceneC          *TheScene = nullptr;
 ServerC         *TheServer = nullptr;
-Settings        *TheSet = nullptr;
 Battler         *TheBattler = nullptr;
 TerrainT        *TheTerrain = nullptr;
 WindowTarget    *TheWindowTarget = nullptr;

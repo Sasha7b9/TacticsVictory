@@ -10,7 +10,6 @@
 #include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Utils/Log_.h"
-#include "Utils/Settings.h"
 
 
 #ifdef WIN32
@@ -53,9 +52,7 @@ void Battle::Setup()
 
     TheMaster.Connect(TheConfig.GetStringValue("address master"));
 
-    settings = new Settings(&TheSet);
-
-    TheSet->Load();
+    TheSettings.Load("Settings.json");
 
     TuneEngineParameters();  
 }

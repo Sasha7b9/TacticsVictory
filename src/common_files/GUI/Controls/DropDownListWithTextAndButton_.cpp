@@ -18,14 +18,14 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
 {
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-    window->SetStyle(SET::MENU::ELEM::WINDOW::STYLE);
+    window->SetStyle(TheSettings.GetStringValue("menu", "elem", "window", "style"));
     AddChild(window);
 
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
 
     SharedPtr<Label> text(Label::Create(text_, true, 15, widthText));
     text->SetStyle("Window");
-    text->SetFixedHeight(SET::MENU::TEXT::HEIGHT);
+    text->SetFixedHeight(TheSettings.GetIntValue("menu", "text", "height"));
     window->AddChild(text);
 
     ddList = CreateChild<DropDownList>();
@@ -34,7 +34,7 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
     ddList->SetDefaultStyle(style);
 
     ddList->SetStyleAuto();
-    ddList->SetFixedSize(widthDDList, SET::MENU::DDLIST::HEIGHT);
+    ddList->SetFixedSize(widthDDList, TheSettings.GetIntValue("menu", "ddlist", "height"));
     ddList->SetResizePopup(true);
     window->AddChild(ddList);
 

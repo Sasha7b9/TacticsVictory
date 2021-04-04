@@ -1,5 +1,6 @@
 // Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "FileSystem/ConfigurationFile_.h"
 #include "FileSystem/FileSystem_.h"
 
 
@@ -92,6 +93,71 @@ int ConfigurationFile::GetIntValue(pchar key1, pchar key2)
 }
 
 
+int ConfigurationFile::GetIntValue(pchar key1, pchar key2, pchar key3)
+{
+    CHECK_ON_VALID_INT;
+
+    rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
+
+    if (it->value.GetType() == rapidjson::Type::kObjectType)
+    {
+        if (it->value.HasMember(key2))
+        {
+            it = it->value.FindMember(key2);
+
+            if (it->value.HasMember(key3))
+            {
+                it = it->value.FindMember(key3);
+
+                if (it->value.IsInt())
+                {
+                    return it->value.GetInt();
+                }
+            }
+        }
+    }
+
+    LOGERRORF("Can't find value for \"%s\" \"%s\" \"%s\"", key1, key2, key3);
+
+    return -1;
+}
+
+
+int ConfigurationFile::GetIntValue(pchar key1, pchar key2, pchar key3, pchar key4)
+{
+    CHECK_ON_VALID_INT;
+
+    rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
+
+    if (it->value.GetType() == rapidjson::Type::kObjectType)
+    {
+        if (it->value.HasMember(key2))
+        {
+            it = it->value.FindMember(key2);
+
+            if (it->value.HasMember(key3))
+            {
+                it = it->value.FindMember(key3);
+
+                if (it->value.HasMember(key4))
+                {
+                    it = it->value.FindMember(key4);
+
+                    if (it->value.IsInt())
+                    {
+                        return it->value.GetInt();
+                    }
+                }
+            }
+        }
+    }
+
+    LOGERRORF("Can't find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
+
+    return -1;
+}
+
+
 pchar ConfigurationFile::GetStringValue(pchar key)
 {
     CHECK_ON_VALID_STRING;
@@ -164,6 +230,41 @@ pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2, pchar key3)
 }
 
 
+pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2, pchar key3, pchar key4)
+{
+    CHECK_ON_VALID_STRING;
+
+    rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
+
+    if (it->value.GetType() == rapidjson::Type::kObjectType)
+    {
+        it = it->value.FindMember(key2);
+
+        if (it->value.GetType() == rapidjson::Type::kObjectType)
+        {
+            if (it->value.HasMember(key3))
+            {
+                it = it->value.FindMember(key3);
+
+                if (it->value.HasMember(key4))
+                {
+                    it = it->value.FindMember(key4);
+
+                    if (it->value.IsString())
+                    {
+                        return it->value.GetString();
+                    }
+                }
+            }
+        }
+    }
+
+    LOGERRORF("Can't find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
+
+    return nullptr;
+}
+
+
 bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &strings)
 {
     strings.clear();
@@ -198,4 +299,40 @@ bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &st
     }
 
     return strings.size() != 0;
+}
+
+
+IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pchar /*key3*/)
+{
+    LOGERRORF("%s has not realisation", __FUNCTION__);
+
+    return { 50, 50 };
+}
+
+
+IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pchar /*key3*/, pchar /*key4*/)
+{
+    LOGERRORF("%s has not realisation", __FUNCTION__);
+
+    return { 50, 50 };
+}
+
+
+float ConfigurationFile::GetFloat(pchar /*key1*/, pchar /*key2*/)
+{
+    LOGERRORF("%s has not realisation", __FUNCTION__);
+
+    return 50.0f;
+}
+
+
+void ConfigurationFile::SetInt(pchar /*key*/, int /*value*/)
+{
+    LOGERRORF("%s has not realisation", __FUNCTION__);
+}
+
+
+void ConfigurationFile::SetInt(pchar /*key1*/, pchar /*key2*/, int /*value*/)
+{
+    LOGERRORF("%s has not realisation", __FUNCTION__);
 }

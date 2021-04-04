@@ -202,7 +202,7 @@ void GUI::Create()
 
     TheCursor = TheUIRoot->CreateChild<CursorT>("CursorT");
 
-    TheLocalization->SetLanguage(TheSet->GetInt(TV_LANGUAGE) == 0 ? "en" : "ru");
+    TheLocalization->SetLanguage(TheSettings.GetIntValue("language") == 0 ? "en" : "ru");
 }
 
 

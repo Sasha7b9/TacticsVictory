@@ -7,7 +7,7 @@ PanelBottom::PanelBottom(Context *context) :
     WindowT(context)
 {
     SetName("PanelBottom");
-    SetFixedSize(TheSet->GetInt(TV_SCREEN_WIDTH), TheSet->GetInt(TV_PANEL_BOTTOM_HEIGHT));
+    SetFixedSize(TheSettings.GetIntValue("screen", "width"), TheSettings.GetIntValue("panel_bottom", "height"));
     SetMovable(false);
 }
 

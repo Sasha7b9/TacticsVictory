@@ -15,10 +15,11 @@ Script            *TheScript = nullptr;
 Time              *TheTime = nullptr;
 
 
-Battle            *TheBattle = nullptr;
 ConfigurationFile  TheConfig;
+ConfigurationFile  TheSettings;
+
+Battle            *TheBattle = nullptr;
 MasterServer       TheMaster;
 SceneS            *TheScene = nullptr;
 ServerS           *TheServer = nullptr;
-Settings          *TheSet = nullptr;
 TerrainT          *TheTerrain = nullptr;
