@@ -15,7 +15,6 @@ MenuGame::MenuGame(Context *) : WindowMenu()
     AddChild(text);
     
     buttonNewGame  = new ButtonT(this, "New game");
-    buttonEditor = new ButtonT(this, "Editor");
     buttonOptions = new ButtonT(this, "Options");
     buttonLanguage = new ButtonSwitch(this, "Language : EN");
     buttonLanguage->AddState("Language : RU");
@@ -24,14 +23,12 @@ MenuGame::MenuGame(Context *) : WindowMenu()
     buttonCancel = new ButtonT(this, "Cancel");
 
     buttons.Push(buttonNewGame);
-    buttons.Push(buttonEditor);
     buttons.Push(buttonOptions);
     buttons.Push(buttonLanguage);
     buttons.Push(buttonExit);
     buttons.Push(buttonCancel);
 
     SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
-    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
     SubscribeToEvent(buttonNewGame, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
     SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
     SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
@@ -40,7 +37,6 @@ MenuGame::MenuGame(Context *) : WindowMenu()
     text->SetWidth(GetWidth());
 
     mapButtonsActions[buttonOptions] = ME_OPEN_OPTIONS;
-    mapButtonsActions[buttonEditor] = ME_OPEN_EDITOR;
     mapButtonsActions[buttonExit] = ME_EXIT_IN_OS;
 }
 

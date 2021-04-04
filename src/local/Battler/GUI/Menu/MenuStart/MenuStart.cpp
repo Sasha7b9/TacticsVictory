@@ -22,8 +22,6 @@ MenuStart::MenuStart() : WindowMenu()
     buttonPlay = new ButtonT(this, "Play");
     buttonPlay->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_PLAY));
 
-    buttonEditor = new ButtonT(this, "Editor");
-
     buttonOptions = new ButtonT(this, "Options");
     buttonOptions->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_OPTIONS));
 
@@ -36,7 +34,6 @@ MenuStart::MenuStart() : WindowMenu()
 
     buttons.Push(buttonLanguage);
     buttons.Push(buttonPlay);
-    buttons.Push(buttonEditor);
     buttons.Push(buttonOptions);
     buttons.Push(buttonAboutGame);
     buttons.Push(buttonAboutMe);
@@ -44,7 +41,6 @@ MenuStart::MenuStart() : WindowMenu()
 
     SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonAboutMe, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
