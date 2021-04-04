@@ -3,7 +3,6 @@
 #include "GUI/GUI.h"
 #include "GUI/Controls/DropDownListWithTextAndButton_.h"
 #include "GUI/Controls/GovernorFloat_.h"
-#include "GUI/Controls/Tab_.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
 #include "GUI/Controls/Buttons/ButtonToggled_.h"
 #include "GUI/Controls/Sliders/Slider_.h"
@@ -38,7 +37,6 @@ void GUI::RegistrationObjects()
     MenuGame::RegisterObject();
     MenuConfirmExit::RegisterObject();
     MenuAboutMe::RegisterObject();
-    Tab::RegisterObject();
     Label::RegisterObject();
     SliderT::RegisterObject();
     SliderInt::RegisterObject();

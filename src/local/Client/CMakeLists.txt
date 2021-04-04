@@ -34,21 +34,39 @@ file(GLOB SRC                         ../../common_files/*.*
                                                          *.h *.cpp)
 file(GLOB FILE_SYSTEM                 ../../common_files/FileSystem/ConfigurationFile_.*
                                       ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB GRAPHICS_2D                 ../../common_files/Graphics/2D/*.*)
 file(GLOB GUI                         ../../common_files/GUI/*.*
                                                          GUI/*.*)
-file(GLOB GUI_CONTROLS                ../../common_files/GUI/Controls/Window_.*
-                                      ../../common_files/GUI/Controls/GovernorFloat_.*)
-file(GLOB GUI_CONTROLS_BUTTONS        ../../common_files/GUI/Controls/Buttons/ButtonToggled_.*)
-file(GLOB GUI_MENU                                       GUI/Menu/*.*)
+file(GLOB GUI_CONTROLS                ../../common_files/GUI/Controls/Label_.*
+                                      ../../common_files/GUI/Controls/Hint_.*
+                                      ../../common_files/GUI/Controls/Window_.*
+                                      ../../common_files/GUI/Controls/DropDownListWithTextAndButton_.*
+                                      ../../common_files/GUI/Controls/GovernorFloat_.*
+                                      ../../common_files/GUI/Controls/OrderedTable_.*)
+file(GLOB GUI_CONTROLS_BUTTONS        ../../common_files/GUI/Controls/Buttons/Button_.*
+                                      ../../common_files/GUI/Controls/Buttons/ButtonSwitch_.*
+                                      ../../common_files/GUI/Controls/Buttons/ButtonToggled_.*)
+file(GLOB GUI_CONTROLS_SLIDERS        ../../common_files/GUI/Controls/Sliders/Slider_.*
+                                      ../../common_files/GUI/Controls/Sliders/SliderInt_.*
+                                      ../../common_files/GUI/Controls/Sliders/SliderWithTextAndButtons_.*)
+file(GLOB GUI_LOGIC                   ../../common_files/GUI/Logic/LineTranslator1D_.*
+                                      ../../common_files/GUI/Logic/LineTranslator2D_.*)
+file(GLOB GUI_MENU                    ../../common_files/GUI/Menu/WindowMenu_.*
+                                                         GUI/Menu/*.*)
 file(GLOB GUI_MENU_MENUSTART                             GUI/Menu/MenuStart/*.*)
 file(GLOB GUI_MENU_MENUSTART_MENUPLAY                    GUI/Menu/MenuStart/MenuPlay/*.*)
+file(GLOB GUI_WINDOWS                 ../../common_files/GUI/Windows/Console_.*
+                                      ../../common_files/GUI/Windows/ConsoleParserFunctions_.*
+                                      ../../common_files/GUI/Windows/WindowVariables_.*)
 file(GLOB NETWORK                     ../../common_files/Network/Other/MasterServer_.*
                                       ../../common_files/Network/Other/SocketsTCP_.*)
 file(GLOB SCENE                                          Scene/*.*)
 file(GLOB SCENE_CAMERAS                                  Scene/Cameras/*.*)
-file(GLOB UTILS                       ../../common_files/Utils/Log_.*
+file(GLOB UTILS                       ../../common_files/Utils/GlobalFunctions_.*
+                                      ../../common_files/Utils/Log_.*
                                       ../../common_files/Utils/LogRAW_.*
                                       ../../common_files/Utils/StringUtils_.*
+                                      ../../common_files/Utils/Settings_.*
                                       ../../common_files/Utils/SystemFunctions_.*
                                       ../../common_files/Utils/SystemUtils_.*)
 
@@ -58,12 +76,16 @@ file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
 
 source_group(src                            FILES ${SRC})
 source_group(FileSystem                     FILES ${FILE_SYSTEM})
+source_group(Graphics\\2D                   FILES ${GRAPHICS_2D})
 source_group(GUI                            FILES ${GUI})
 source_group(GUI\\Controls                  FILES ${GUI_CONTROLS})
 source_group(GUI\\Controls\\Butttons        FILES ${GUI_CONTROLS_BUTTONS})
+source_group(GUI\\Controls\\Sliders         FILES ${GUI_CONTROLS_SLIDERS})
+source_group(GUI\\Logic                     FILES ${GUI_LOGIC})
 source_group(GUI\\Menu                      FILES ${GUI_MENU})
 source_group(GUI\\Menu\\MenuStart           FILES ${GUI_MENU_MENUSTART})
 source_group(GUI\\Menu\\MenuStart\\MenuPlay FILES ${GUI_MENU_MENUSTART_MENUPLAY})
+source_group(GUI\\Windows                   FILES ${GUI_WINDOWS})
 source_group(Network                        FILES ${NETWORK})
 source_group(Scene                          FILES ${SCENE})
 source_group(Scene\\Cameras                 FILES ${SCENE_CAMERAS})
@@ -75,10 +97,11 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC}
-                ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS}
-                ${GUI_MENU} ${GUI_MENU_MENUSTART} ${GUI_MENU_MENUSTART_MENUPLAY}
-                ${FILE_SYSTEM} ${NETWORK} ${UTILS}
+add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D}
+                ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS} ${GUI_CONTROLS_SLIDERS}
+                ${GUI_LOGIC}
+                ${GUI_MENU} ${GUI_MENU_MENUSTART} ${GUI_MENU_MENUSTART_MENUPLAY} ${GUI_WINDOWS}
+                ${NETWORK} ${UTILS}
                 ${SCENE} ${SCENE_CAMERAS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 

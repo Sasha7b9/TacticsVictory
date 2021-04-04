@@ -5,6 +5,8 @@
 extern Audio         *TheAudio;
 extern Context       *TheContext;
 extern Engine        *TheEngine;
+extern FileSelector  *TheFileSelector;
+extern FileSystem    *TheFileSystem;
 extern Font          *TheFont;
 extern Graphics      *TheGraphics;
 extern Input         *TheInput;
