@@ -78,7 +78,7 @@ int ConfigurationFile::GetInt(pchar key1, pchar key2)
 
     auto it = FindMember(key1, key2);
 
-    if (it != document->MemberEnd() && it->value.IsInt())
+    if (&*it && it->value.IsInt())
     {
         return it->value.GetInt();
     }
