@@ -9,7 +9,7 @@
 #include "GUI/Controls/Sliders/SliderInt_.h"
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 #include "GUI/Menu/MenuConfirmExit_.h"
-#include "GUI/Menu/MenuGame.h"
+#include "GUI/Menu/MenuMain.h"
 #include "GUI/Menu/MenuStart/MenuAboutMe.h"
 #include "Scene/Cameras/Camera.h"
 
