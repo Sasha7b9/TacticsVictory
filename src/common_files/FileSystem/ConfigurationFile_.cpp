@@ -74,7 +74,7 @@ int ConfigurationFile::GetIntValue(pchar key1, pchar key2)
 
     rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
 
-    if (it->value.GetType() == rapidjson::Type::kObjectType)
+    if ((&*it) && (it->value.GetType() == rapidjson::Type::kObjectType))
     {
         if (it->value.HasMember(key2))
         {
