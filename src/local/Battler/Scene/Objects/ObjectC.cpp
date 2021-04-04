@@ -10,6 +10,10 @@
 HashMap<uint, ObjectT *> ObjectSpecificC::remoteStorage;
 
 
+template Tank     *ObjectCreator::Create<Tank>();
+template AirPlane *ObjectCreator::Create<AirPlane>();
+
+
 ObjectSpecific *ObjectSpecific::Create(ObjectT *object)
 {
     return new ObjectSpecificC(object);

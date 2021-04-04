@@ -14,11 +14,18 @@ template Tank     *ObjectCreator::Create<Tank>(uint rowX, uint colZ);
 template AirPlane *ObjectCreator::Create<AirPlane>(uint rowX, uint colZ);
 
 
+template<class T> T *ObjectCreator::Create(uint rowX, uint colZ)
+{
+    T *object = Create<T>();
+    TheTerrain->PutIn(object, rowX, colZ);
+    return object;
+}
+
+
 ObjectSpecific::ObjectSpecific(ObjectT *_object) : Object(TheContext),
     object(_object)
 {
 }
-
 
 
 ObjectT::ObjectT(Context *context, const MinPP &min, const MaxPP &max) : LogicComponent(context)
@@ -208,14 +215,6 @@ bool ObjectT::IsIntersectionWithUnitOrBuilding() const
 BoundingBox ObjectT::GetBoundingBox() const
 {
     return staticModel->GetWorldBoundingBox();
-}
-
-
-template<class T> T *ObjectCreator::Create(uint rowX, uint colZ)
-{
-    T *object = Create<T>();
-    TheTerrain->PutIn(object, rowX, colZ);
-    return object;
 }
 
 
