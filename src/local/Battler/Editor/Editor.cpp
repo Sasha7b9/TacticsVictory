@@ -121,7 +121,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
                 if (!selectedPlane.IsEquals(currentPlane))
                 {
                     Color color = static_cast<int>
-                        (TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
+                        (TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE;
 
                     TheDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v1, currentPlane.v2, color, true);
                     TheDebugRenderer->AddTriangle(currentPlane.v0, currentPlane.v2, currentPlane.v3, color, true);
@@ -147,7 +147,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
                 (TheCursor->GetType() == CursorT::Type::Normal || TheCursor->GetType() == CursorT::Type::Selected))
             {
                 Color color = static_cast<int>
-                    (TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE; //-V112
+                    (TheTime->GetElapsedTime() * 10.0f) % 4 < 2 ? Color::CYAN : Color::BLUE;
 
                 float dX = fabs(currentEdge.start.x_ - currentEdge.end.x_);
                 float dZ = fabs(currentEdge.start.z_ - currentEdge.end.z_);

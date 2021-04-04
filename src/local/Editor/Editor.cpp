@@ -1,26 +1,26 @@
 ﻿// 2021/04/02 17:53:03 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Client.h"
+#include "Editor.h"
 
 
 #pragma warning(push)
 #pragma warning(disable:4100)
-URHO3D_DEFINE_APPLICATION_MAIN(Client)
+URHO3D_DEFINE_APPLICATION_MAIN(Editor)
 #pragma warning(pop)
 
 
-Client::Client(Context* context) :
+Editor::Editor(Context* context) :
     Application(context)
 {
     TheContext = context;
 }
 
 
-void Client::Setup()
+void Editor::Setup()
 {
     OpenLog();
 
-    LogRAW::Create("Client.log", true);
+    LogRAW::Create((GetTypeName() + ".log").CString(), true);
 
     LOGWRITE("Start Client");
 
@@ -51,7 +51,7 @@ void Client::Setup()
 }
 
 
-void Client::GetSubsystems()
+void Editor::GetSubsystems()
 {
     TheCache = GetSubsystem<ResourceCache>();
     TheEngine = GetSubsystem<Engine>();
@@ -62,15 +62,15 @@ void Client::GetSubsystems()
 }
 
 
-void Client::TuneEngineParameters()
+void Editor::TuneEngineParameters()
 {
     engineParameters_[EP_WINDOW_TITLE] = GetTypeName();
     engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->
                                                         GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_[EP_FULL_SCREEN] = false;
     engineParameters_[EP_TEXTURE_QUALITY] = 32;
-    engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
-    engineParameters_[EP_WINDOW_HEIGHT] = TheSet->GetInt(TV_SCREEN_HEIGHT);
+//    engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
+//    engineParameters_[EP_WINDOW_HEIGHT] = TheSet->GetInt(TV_SCREEN_HEIGHT);
     engineParameters_[EP_HEADLESS] = false;
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
@@ -84,7 +84,7 @@ void Client::TuneEngineParameters()
 }
 
 
-void Client::Start()
+void Editor::Start()
 {
     GetSubsystems();
 
@@ -111,7 +111,7 @@ void Client::Start()
 }
 
 
-void Client::Stop()
+void Editor::Stop()
 {
     engine_->DumpResources(true);
     engine_->DumpProfiler();
@@ -120,7 +120,7 @@ void Client::Stop()
 }
 
 
-void Client::CreateGUI()
+void Editor::CreateGUI()
 {
     TheUIRoot = TheUI->GetRoot();
     TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
@@ -128,12 +128,12 @@ void Client::CreateGUI()
 }
 
 
-void Client::SetLocalization()
+void Editor::SetLocalization()
 {
 }
 
 
-void Client::RegistrationObjects()
+void Editor::RegistrationObjects()
 {
     CameraT::RegisterObject();
     CursorT::RegisterObject();
@@ -141,22 +141,22 @@ void Client::RegistrationObjects()
 }
 
 
-void Client::SubscribeToEvents()
+void Editor::SubscribeToEvents()
 {
 }
 
 
-void Client::SetWindowTitleAndIcon()
+void Editor::SetWindowTitleAndIcon()
 {
 }
 
 
-void Client::CreateConsoleAndDebugHud()
+void Editor::CreateConsoleAndDebugHud()
 {
 }
 
 
-void Client::OpenLog()
+void Editor::OpenLog()
 {
     log = new Log(TheContext);
     log->Open(GetTypeName() + ".log");

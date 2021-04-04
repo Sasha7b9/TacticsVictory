@@ -243,7 +243,7 @@ GovernorFloat::GovernorFloat(Context *context) :
     buttonDown = new Button(TheContext);
     buttonDown->SetStyle("DropDownButtonDown");
     AddChild(buttonDown);
-    buttonDown->SetPosition((numCells + 1) * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + 4 + widthLabel, 0); //-V112
+    buttonDown->SetPosition((numCells + 1) * (SET::MENU::GOVERNOR::CELL::WIDTH - 1) + 4 + widthLabel, 0);
 
     SubscribeToEvent(buttonDown, E_HOVERBEGIN, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonBegin));
     SubscribeToEvent(buttonDown, E_HOVEREND, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonEnd));

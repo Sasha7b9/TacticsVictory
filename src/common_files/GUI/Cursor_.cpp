@@ -355,7 +355,7 @@ void CursorShapes::CreateNormal(int numFrame)
 
     FillGradient(image, CursorT::Type::Normal, numFrame);
 
-    DRAW_LINE(border, 4, 0, 0, x1, y1, x2, y2, 0, 0); //-V112
+    DRAW_LINE(border, 4, 0, 0, x1, y1, x2, y2, 0, 0);
 
     StructShape key = {CursorT::Type::Normal, numFrame / 10};
 
@@ -379,7 +379,7 @@ void CursorShapes::CreateSelected(int numFrame)
 
     FillGradient(image, CursorT::Type::Selected, numFrame);
 
-    DRAW_LINE(border, 4, 0, 0, x1, y1, x2, y2, 0, 0); //-V112
+    DRAW_LINE(border, 4, 0, 0, x1, y1, x2, y2, 0, 0);
 
     FillGradient(image, CursorT::Type::Selected, numFrame + 360);   // Draw circle
 
@@ -399,7 +399,7 @@ void CursorShapes::CreateLeft(int numFrame)
 
     FillGradient(image, CursorT::Type::Left, numFrame);
 
-    DRAW_LINE(border, 4, 0, height / 2, width, 0, width, height, 0, height / 2); //-V112
+    DRAW_LINE(border, 4, 0, height / 2, width, 0, width, height, 0, height / 2);
 
     image->FillRegion(1, 1, transparent, border);
     image->FillRegion(1, height - 1, transparent, border);
@@ -420,7 +420,7 @@ void CursorShapes::CreateRight(int numFrame)
 
     FillGradient(image, CursorT::Type::Right, numFrame);
 
-    DRAW_LINE(border, 4, 0, 0, width, height / 2, 0, height, 0, 0); //-V112
+    DRAW_LINE(border, 4, 0, 0, width, height / 2, 0, height, 0, 0);
 
     image->FillRegion(1, 1, transparent, border);
     image->FillRegion(width - 1, 1, transparent, border);
@@ -441,7 +441,7 @@ void CursorShapes::CreateUp(int numFrame)
 
     FillGradient(image, CursorT::Type::Up, numFrame);
 
-    DRAW_LINE(border, 4, width / 2, 0, width, height, 0, height, width / 2, 0); //-V112
+    DRAW_LINE(border, 4, width / 2, 0, width, height, 0, height, width / 2, 0);
 
     image->FillRegion(1, 1, transparent, border);
     image->FillRegion(width - 1, 1, transparent, border);
@@ -462,7 +462,7 @@ void CursorShapes::CreateDown(int numFrame)
 
     FillGradient(image, CursorT::Type::Down, numFrame);
 
-    DRAW_LINE(border, 4, 0, 0, width, 0, width / 2, height, 0, 0); //-V112
+    DRAW_LINE(border, 4, 0, 0, width, 0, width / 2, height, 0, 0);
 
     image->FillRegion(width / 2, height + 1, transparent, border);
     image->SetHotSpot(width / 2, height);
@@ -480,7 +480,7 @@ void CursorShapes::CreateTopLeft(int numFrame)
 
     FillGradient(image, CursorT::Type::TopLeft, numFrame);
 
-    DRAW_LINE(border, 4, 0, 0, size, 0, 0, size, 0, 0); //-V112
+    DRAW_LINE(border, 4, 0, 0, size, 0, 0, size, 0, 0);
 
     image->FillRegion(size, size, transparent, border);
     image->SetHotSpot(0, 0);
@@ -497,7 +497,7 @@ void CursorShapes::CreateTopRight(int numFrame)
 
     FillGradient(image, CursorT::Type::TopRight, numFrame);
 
-    DRAW_LINE(border, 4, 0, 0, size, 0, size, size, 0, 0); //-V112
+    DRAW_LINE(border, 4, 0, 0, size, 0, size, size, 0, 0);
 
     image->FillRegion(0, size, transparent, border);
     image->SetHotSpot(size, 0);
@@ -514,7 +514,7 @@ void CursorShapes::CreateDownLeft(int numFrame)
 
     FillGradient(image, CursorT::Type::DownLeft, numFrame);
 
-    DRAW_LINE(border, 4, 0, 0, size, size, 0, size, 0, 0); //-V112
+    DRAW_LINE(border, 4, 0, 0, size, size, 0, size, 0, 0);
 
     image->FillRegion(size, 0, transparent, border);
     image->SetHotSpot(0, size);
@@ -532,7 +532,7 @@ void CursorShapes::CreateDownRight(int numFrame)
 
     FillGradient(image, CursorT::Type::DownRight, numFrame);
 
-    DRAW_LINE(border, 4, size, 0, size, size, 0, size, size, 0); //-V112
+    DRAW_LINE(border, 4, size, 0, size, size, 0, size, size, 0);
 
     image->FillRegion(0, 0, transparent, border);
     image->SetHotSpot(size, size);

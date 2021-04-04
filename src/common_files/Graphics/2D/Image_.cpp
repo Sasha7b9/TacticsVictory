@@ -19,7 +19,7 @@ ImageT::~ImageT()
 
 void ImageT::SetSize(int width, int height)
 {
-    Image::SetSize(width, height, 4); //-V112
+    Image::SetSize(width, height, 4);
 }
 
 

@@ -31,7 +31,7 @@ bool Settings::Load()
     mapIntChild[IntKey(TV_MATERIAL_QUALITY)] = 3;
     mapIntChild[IntKey(TV_SHADOW_DRAW)] = 1;
     mapIntChild[IntKey(TV_SPECULAR_LIGHTING)] = 1;
-    mapIntChild[IntKey(TV_SHADOW_MAP_SIZE)] = 4; //-V112
+    mapIntChild[IntKey(TV_SHADOW_MAP_SIZE)] = 4;
     mapIntChild[IntKey(TV_PANEL_BOTTOM_BUTTON_WIDTH)] = SET::PANEL::BOTTOM::BUTTON::WIDTH;
     mapIntChild[IntKey(TV_PANEL_BOTTOM_BUTTON_HEIGHT)] = SET::PANEL::BOTTOM::BUTTON::HEIGHT;
     mapIntChild[IntKey(TV_PANEL_BOTTOM_HEIGHT)] = SET::PANEL::BOTTOM::HEIGHT;

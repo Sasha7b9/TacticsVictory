@@ -81,7 +81,7 @@ bool GF::GetAddressPort(const Vector<String> &words, String &address, uint16 &po
             }
             address = word.Substring(8);
         }
-        else if(word.Substring(0, 4) == "port") //-V112
+        else if(word.Substring(0, 4) == "port")
         {
             if(word[4] != ':')
             {

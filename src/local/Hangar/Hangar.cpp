@@ -43,7 +43,7 @@ void Hangar::TuneEngineParameters()
     engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->
                                                         GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_[EP_FULL_SCREEN] = false;
-    engineParameters_[EP_TEXTURE_QUALITY] = 32; //-V112
+    engineParameters_[EP_TEXTURE_QUALITY] = 32;
 //    engineParameters_[EP_WINDOW_WIDTH] = TheSet->GetInt(TV_SCREEN_WIDTH);
 //    engineParameters_[EP_WINDOW_HEIGHT] = TheSet->GetInt(TV_SCREEN_HEIGHT);
     engineParameters_[EP_HEADLESS] = false;

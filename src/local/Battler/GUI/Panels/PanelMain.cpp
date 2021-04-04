@@ -40,7 +40,7 @@ void PanelMain::Update(float dT)
 void PanelMain::AddTab(SharedPtr<Tab> tab)
 {
     static const int x0 = 10;
-    static const int y0 = 4; //-V112
+    static const int y0 = 4;
 
     int x = x0;
 
