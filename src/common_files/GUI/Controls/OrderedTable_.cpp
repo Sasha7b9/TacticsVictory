@@ -35,7 +35,7 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
 
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/OrderedTableStyle.xml"));
-    window->SetStyle(TheSettings.GetStringValue("menu", "elem", "window", "style"));
+    window->SetStyle(TheSettings.GetString("menu", "elem", "window", "style"));
     AddChild(window);
 
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
@@ -57,7 +57,7 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
 {
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-    window->SetStyle(TheSettings.GetStringValue("menu", "elem", "window", "style"));
+    window->SetStyle(TheSettings.GetString("menu", "elem", "window", "style"));
     AddChild(window);
 
     window->SetLayout(LM_HORIZONTAL, 3, IntRect(3, 3, 3, 3));
@@ -90,7 +90,7 @@ OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheCont
 {
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
-    window->SetStyle(TheSettings.GetStringValue("menu", "elem", "window", "style"));
+    window->SetStyle(TheSettings.GetString("menu", "elem", "window", "style"));
     AddChild(window);
 
     window->SetLayout(LM_VERTICAL, 3, IntRect(3, 3, 3, 3));

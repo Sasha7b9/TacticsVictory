@@ -12,7 +12,7 @@ int main()
 
     TheConfig.Load("LivingRoom.cfg");
 
-    TheMaster.Connect(TheConfig.GetStringValue("address master"));
+    TheMaster.Connect(TheConfig.GetString("address master"));
 
     return 0;
 }

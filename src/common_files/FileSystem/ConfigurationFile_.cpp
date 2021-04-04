@@ -162,7 +162,7 @@ int ConfigurationFile::GetIntValue(pchar key1, pchar key2, pchar key3, pchar key
 }
 
 
-pchar ConfigurationFile::GetStringValue(pchar key)
+pchar ConfigurationFile::GetString(pchar key)
 {
     CHECK_ON_VALID_STRING;
 
@@ -179,7 +179,7 @@ pchar ConfigurationFile::GetStringValue(pchar key)
 }
 
 
-pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2)
+pchar ConfigurationFile::GetString(pchar key1, pchar key2)
 {
     CHECK_ON_VALID_STRING;
 
@@ -204,7 +204,7 @@ pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2)
 }
 
 
-pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2, pchar key3)
+pchar ConfigurationFile::GetString(pchar key1, pchar key2, pchar key3)
 {
     CHECK_ON_VALID_STRING;
 
@@ -234,7 +234,7 @@ pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2, pchar key3)
 }
 
 
-pchar ConfigurationFile::GetStringValue(pchar key1, pchar key2, pchar key3, pchar key4)
+pchar ConfigurationFile::GetString(pchar key1, pchar key2, pchar key3, pchar key4)
 {
     CHECK_ON_VALID_STRING;
 

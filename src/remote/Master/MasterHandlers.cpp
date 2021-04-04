@@ -69,7 +69,7 @@ static void HandlerGet(AcceptorTCP::Socket &socket, const std::vector<std::strin
     {
         if (words[1] == "address")                                                          // get address
         {
-            pchar address = TheConfig.GetStringValue("address", words[2].c_str());
+            pchar address = TheConfig.GetString("address", words[2].c_str());
             if (address)
             {
                 socket.Transmit(address);

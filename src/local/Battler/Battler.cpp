@@ -93,7 +93,7 @@ void Battler::Start()
     Application::Start();
 
     SetLocalization();
-    TheFont = TheCache->GetResource<Font>(TheSettings.GetStringValue("menu", "font", "name"));
+    TheFont = TheCache->GetResource<Font>(TheSettings.GetString("menu", "font", "name"));
 
     RegistrationObjects();
 

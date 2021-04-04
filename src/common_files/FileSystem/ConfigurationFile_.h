@@ -17,10 +17,10 @@ public:
 
     void Unload();
 
-    pchar GetStringValue(pchar key);
-    pchar GetStringValue(pchar key1, pchar key2);
-    pchar GetStringValue(pchar key1, pchar key2, pchar key3);
-    pchar GetStringValue(pchar key1, pchar key2, pchar key3, pchar key4);
+    pchar GetString(pchar key);
+    pchar GetString(pchar key1, pchar key2);
+    pchar GetString(pchar key1, pchar key2, pchar key3);
+    pchar GetString(pchar key1, pchar key2, pchar key3, pchar key4);
 
     bool GetVectorStrings(pchar key, std::vector<std::string> &strings);
 
