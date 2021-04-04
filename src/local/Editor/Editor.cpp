@@ -130,6 +130,8 @@ void Editor::CreateGUI()
 
 void Editor::SetLocalization()
 {
+    TheLocalization->LoadJSONFile("Strings.json");
+    TheLocalization->SetLanguage("ru");
 }
 
 
