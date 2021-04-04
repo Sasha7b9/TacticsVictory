@@ -7,6 +7,8 @@
 #define CHECK_ON_VALID_STRING   if (!isValid) { LOGERROR("Configuration file is not valid"); return nullptr; }
 #define CHECK_ON_VALID_INT      if (!isValid) { LOGERROR("Configuration file is not valid"); return -1; }
 
+#define IS_VALID(x)             (&*(x) && (x)->value.IsObject())
+
 
 //#define ERROR_FUNCTION
 #define ERROR_FUNCTION      LOGERRORF("%s has not realisation", __FUNCTION__);
@@ -111,7 +113,7 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key)
 {
     auto it = document->FindMember(key);
 
-    if (&*it)
+    if (IS_VALID(it))
     {
         return it;
     }
@@ -126,11 +128,11 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
 {
     auto it = document->FindMember(key1);
 
-    if (&*it)
+    if (IS_VALID(it))
     {
         it = it->value.FindMember(key2);
 
-        if (&*it)
+        if (IS_VALID(it))
         {
             return it;
         }
@@ -146,15 +148,15 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
 {
     auto it = document->FindMember(key1);
 
-    if (&*it)
+    if (IS_VALID(it))
     {
         it = it->value.FindMember(key2);
 
-        if (&*it)
+        if (IS_VALID(it))
         {
             it = it->value.FindMember(key3);
 
-            if (&*it)
+            if (IS_VALID(it))
             {
                 return it;
             }
@@ -171,19 +173,19 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
 {
     auto it = document->FindMember(key1);
 
-    if (&*it && it->value.IsObject())
+    if (IS_VALID(it))
     {
         it = it->value.FindMember(key2);
 
-        if (&*it && it->value.IsObject())
+        if (IS_VALID(it))
         {
             it = it->value.FindMember(key3);
 
-            if (&*it)
+            if (IS_VALID(it))
             {
                 it = it->value.FindMember(key4);
 
-                if (&*it)
+                if (IS_VALID(it))
                 {
                     return it;
                 }
