@@ -23,7 +23,7 @@ private:
     bool GetFloatFromChild(const char *child, const char *name, float *value);
     bool GetIntFromChild(const char *name, int *value);
 
-    String nameFile;
+    String name_file;
     SharedPtr<XMLFile> file;
     XMLElement root;
     

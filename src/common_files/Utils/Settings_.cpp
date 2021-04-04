@@ -23,7 +23,7 @@ bool operator==(const Settings::FloatKey & keyLeft, const Settings::FloatKey& ke
 
 bool Settings::Load()
 {
-    nameFile = GF::GetNameFile("settings.xml");
+    name_file= GF::GetNameFile("settings.xml");
 
     mapIntChild[IntKey(TV_SCREEN_WIDTH)] = SET::WINDOW::WIDTH;
     mapIntChild[IntKey(TV_SCREEN_HEIGHT)] = SET::WINDOW::HEIGHT;
@@ -47,24 +47,31 @@ bool Settings::Load()
 
     File inFile(TheContext);
 
-    if(inFile.Open(nameFile, FILE_READ))
+    if(inFile.Open(name_file, FILE_READ))
     {
         file = new XMLFile(TheContext);
+
         bool begined = file->BeginLoad(inFile);
+
         if(begined)
         {
             root = file->GetRoot();
             if(!root.IsNull())
             {
+                inFile.Close();
                 return true;
             }
         }
+
+        inFile.Close();
     }
     if (file == nullptr)
     {
         file = new XMLFile(TheContext);
     }
+
     root = file->CreateRoot("settings");
+
     return false;
 }
 
@@ -144,8 +151,15 @@ void Settings::SetInt(const char *name, int value)
 void Settings::Save()
 {
     File out_file(TheContext);
-    out_file.Open(nameFile, FILE_WRITE);
-    file->Save(out_file);
+
+    if (out_file.Open(name_file, FILE_WRITE))
+    {
+        file->Save(out_file);
+    }
+    else
+    {
+        LOGERROR("Can not open settings file for saving");
+    }
 }
 
 
