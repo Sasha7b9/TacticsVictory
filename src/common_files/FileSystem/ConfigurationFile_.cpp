@@ -96,32 +96,45 @@ float ConfigurationFile::GetFloat(pchar key1, pchar key2)
 rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, pchar key2, pchar key3, pchar key4)
 {
 
-#define IS_VALID(x)                (&*(x))
-#define IS_VALID_AND_HAS_KEY(x, k) (IS_VALID(x) && k[0] && x->value.HasMember(k))
+#define IS_VALID(x)            (&*(x))
 #define IS_VALID_AND_KEY(x, k) (IS_VALID(x) && k[0])
 
     auto it = document->FindMember(key1);
 
     if (IS_VALID(it) && it != document->MemberEnd())
     {
-        if((&*it) && key2[0])
+        if(IS_VALID_AND_KEY(it, key2))
         {
             if (it->value.HasMember(key2))
             {
                 it = it->value.FindMember(key2);
 
-                if (IS_VALID_AND_HAS_KEY(it, key3))
+                if (IS_VALID_AND_KEY(it, key3))
                 {
-                    it = it->value.FindMember(key3);
-
-                    if (IS_VALID_AND_HAS_KEY(it, key4))
+                    if (it->value.HasMember(key3))
                     {
-                        it = it->value.FindMember(key4);
+                        it = it->value.FindMember(key3);
 
-                        if (IS_VALID(it) && it != document->MemberEnd())
+                        if (IS_VALID_AND_KEY(it, key4))
                         {
-                            return it;
+                            if (it->value.HasMember(key4))
+                            {
+                                it = it->value.FindMember(key4);
+
+                                if (IS_VALID(it) && it != document->MemberEnd())
+                                {
+                                    return it;
+                                }
+                            }
+                            else
+                            {
+                                LOGERRORF("Can not find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
+                            }
                         }
+                    }
+                    else
+                    {
+                        LOGERRORF("Can not find value for \"%s\" \"%s\" \"%s\" \"%s\"", key1, key2, key3, key4);
                     }
                 }
             }
