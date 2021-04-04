@@ -177,6 +177,10 @@ IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, 
 {
     IntVector2 result(0, 0);
 
+    static int counter = 0;
+
+    counter++;
+
     auto it = FindMember(key1, key2, key3, key4);
 
     if (&*it)
