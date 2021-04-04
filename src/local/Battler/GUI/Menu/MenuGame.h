@@ -23,6 +23,5 @@ private:
     SharedPtr<ButtonT>      buttonNewGame;
     SharedPtr<ButtonT>      buttonExit;
     SharedPtr<ButtonT>      buttonOptions;
-    SharedPtr<ButtonSwitch> buttonLanguage;
     SharedPtr<ButtonT>      buttonCancel;
 };

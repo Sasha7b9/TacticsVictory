@@ -15,10 +15,6 @@ MenuStart::MenuStart() : WindowMenu()
     text->SetTextAlignment(HA_CENTER);
     AddChild(text);
 
-    buttonLanguage = new ButtonSwitch(this, "Language : EN");
-    buttonLanguage->AddState("Language : RU");
-    buttonLanguage->SetState((uint)TheSet->GetInt(TV_LANGUAGE));
-
     buttonPlay = new ButtonT(this, "Play");
     buttonPlay->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_PLAY));
 
@@ -32,14 +28,12 @@ MenuStart::MenuStart() : WindowMenu()
 
     buttonExit = new ButtonT(this, "Exit");
 
-    buttons.Push(buttonLanguage);
     buttons.Push(buttonPlay);
     buttons.Push(buttonOptions);
     buttons.Push(buttonAboutGame);
     buttons.Push(buttonAboutMe);
     buttons.Push(buttonExit);
 
-    SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
     SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
@@ -79,11 +73,6 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
         }
 
         SendEvent(E_MENU, eventData);
-    }
-    else if (button == buttonLanguage)
-    {
-        TheLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
-        TheSet->SetInt(TV_LANGUAGE, static_cast<int>(buttonLanguage->GetState()));
     }
     else if (button == buttonExit)
     {
