@@ -6,7 +6,7 @@ class MenuAboutMe;
 class MenuFindServer;
 class MenuOptions;
 class MenuPlay;
-class MenuStart;
+class MenuMain;
 class WindowMenu;
 
 
@@ -23,7 +23,7 @@ public:
 
 private:
     PODVector<WindowMenu*>    allMenus;       // Здесь список всех меню
-    SharedPtr<MenuStart>      menuStart;
+    SharedPtr<MenuMain>      menuStart;
     SharedPtr<MenuAboutMe>    menuAbout;
     SharedPtr<MenuPlay>       menuPlay;
     SharedPtr<MenuFindServer> menuFindServer;

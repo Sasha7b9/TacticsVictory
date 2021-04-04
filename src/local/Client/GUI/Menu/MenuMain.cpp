@@ -5,7 +5,7 @@
 #include "GUI/Menu/MenuMain.h"
 
 
-MenuStart::MenuStart() : WindowMenu()
+MenuMain::MenuMain() : WindowMenu()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
 
@@ -42,22 +42,22 @@ MenuStart::MenuStart() : WindowMenu()
     buttons.Push(buttonAboutMe);
     buttons.Push(buttonExit);
 
-    SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonAboutMe, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonAboutMe, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuMain, HandleButtonRelease));
 }
 
 
-MenuStart::~MenuStart()
+MenuMain::~MenuMain()
 {
 }
 
 
-void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
+void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     if(!TheMenu->IsActive())
     {

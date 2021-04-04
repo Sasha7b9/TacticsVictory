@@ -24,7 +24,7 @@ MenuT::MenuT(MenuT **self) : Object(TheContext)
 //    menuStart->SetMovable(false);
 //    SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuT, HandleMenuEvent));
 
-    CREATE_MENU(menuStart, MenuStart, false);
+    CREATE_MENU(menuStart, MenuMain, false);
     CREATE_MENU(menuAbout, MenuAboutMe, false);
     CREATE_MENU(menuPlay, MenuPlay, false);
     CREATE_MENU(menuFindServer, MenuFindServer, false);
