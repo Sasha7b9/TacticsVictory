@@ -50,7 +50,7 @@ file(GLOB GUI_CONTROLS_BUTTONS                   ../../common_files/GUI/Controls
 file(GLOB GUI_CONTROLS_SLIDERS                   ../../common_files/GUI/Controls/Sliders/*.*)
 file(GLOB GUI_GUIEDITOR                                             GUI/GuiEditor/*.*)
 file(GLOB GUI_GAME                                                  GUI/GuiGame/*.*)
-file(GLOB GUI_LOGIC                                                 GUI/Logic/*.*)
+file(GLOB GUI_LOGIC                              ../../common_files/GUI/Logic/*.*)
 file(GLOB GUI_MENU                               ../../common_files/GUI/Menu/MenuConfirmExit_.*
                                                  ../../common_files/GUI/Menu/MenuEvents_.*
                                                  ../../common_files/GUI/Menu/WindowMenu_.*

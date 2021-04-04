@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "LineTranslator1D.h"
+#include "GUI/Logic/LineTranslator1D_.h"
 
 
 class LineTranslator2D : public Object
