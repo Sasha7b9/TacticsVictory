@@ -75,6 +75,5 @@ using namespace Urho3D;
 #include "Network/Other/MasterServer_.h"
 #include "Utils/GlobalFunctions_.h"
 #include "Utils/Log_.h"
-#include "Utils/Settings_.h"
 #include "Utils/StringUtils_.h"
 #include "glob_game.h"

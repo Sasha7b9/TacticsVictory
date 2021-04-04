@@ -43,9 +43,7 @@ void Editor::Setup()
 
     GetSubsystems();
 
-    settings = new Settings(&TheSet);
-
-    TheSet->Load();
+    TheSettings.Load("Settings.json");
 
     TuneEngineParameters();
 }

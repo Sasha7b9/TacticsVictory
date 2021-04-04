@@ -17,6 +17,7 @@ UI            *TheUI           = nullptr;
 UIElement     *TheUIRoot       = nullptr;
 
 ConfigurationFile TheConfig;
+ConfigurationFile TheSettings;
 MasterServer      TheMaster;
 
 CameraT          *TheCamera     = nullptr;
@@ -29,7 +30,6 @@ LogRAW           *TheLog        = nullptr;
 MenuT            *TheMenu       = nullptr;
 MenuMain         *TheMenuMain   = nullptr;
 Mouse            *TheMouse      = nullptr;
-Settings         *TheSet        = nullptr;
 WindowVariables  *TheWindowVars = nullptr;
 
 Vector<WindowT *> TheOpenedWindow;

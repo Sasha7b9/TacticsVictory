@@ -7,10 +7,10 @@ class ConfigurationFile;
 class LogRAW;
 class MasterServer;
 class MenuMain;
-class Settings;
 class WindowVariables;
 
 extern ConfigurationFile TheConfig;
+extern ConfigurationFile TheSettings;
 extern MasterServer      TheMaster;
 
 extern CameraT         *TheCamera;
@@ -23,7 +23,6 @@ extern LogRAW          *TheLog;
 extern MenuT           *TheMenu;
 extern MenuMain        *TheMenuMain;
 extern Mouse           *TheMouse;
-extern Settings        *TheSet;
 extern WindowVariables *TheWindowVars;
 
 extern Vector<WindowT *> TheOpenedWindow;
