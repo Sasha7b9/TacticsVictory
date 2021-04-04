@@ -115,6 +115,8 @@ void Client::Stop()
 {
     engine_->DumpResources(true);
     engine_->DumpProfiler();
+
+    delete TheScene;
 }
 
 
