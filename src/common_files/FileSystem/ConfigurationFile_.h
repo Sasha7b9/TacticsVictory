@@ -17,16 +17,12 @@ public:
 
     void Unload();
 
-    pchar GetString(pchar key1, pchar key2 = nullptr, pchar key3 = nullptr, pchar key4 = nullptr);
-
-    bool GetVectorStrings(pchar key, std::vector<std::string> &strings);
-
-    int GetInt(pchar key1, pchar key2 = nullptr, pchar key3 = nullptr, pchar key4 = nullptr);
-
+    int        GetInt(pchar key1, pchar key2 = nullptr, pchar key3 = nullptr, pchar key4 = nullptr);
+    pchar      GetString(pchar key1, pchar key2 = nullptr, pchar key3 = nullptr, pchar key4 = nullptr);
+    bool       GetVectorStrings(pchar key, std::vector<std::string> &strings);
     IntVector2 GetIntVector2(pchar key1, pchar key2, pchar key3);
     IntVector2 GetIntVector2(pchar key1, pchar key2, pchar key3, pchar key4);
-
-    float GetFloat(pchar key1, pchar key2);
+    float      GetFloat(pchar key1, pchar key2);
 
     void SetInt(pchar key, int value);
     void SetInt(pchar key1, pchar key2, int value);
