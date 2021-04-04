@@ -47,6 +47,5 @@ private:
 
     rapidjson::Value::ConstMemberIterator FindMember(pchar key);
     rapidjson::Value::ConstMemberIterator FindMember(pchar key1, pchar key2);
-    rapidjson::Value::ConstMemberIterator FindMember(pchar key1, pchar key2, pchar key3);
-    rapidjson::Value::ConstMemberIterator FindMember(pchar key1, pchar key2, pchar key3, pchar key4);
+    rapidjson::Value::ConstMemberIterator FindMember(pchar key1, pchar key2, pchar key3, pchar key4 = nullptr);
 };
