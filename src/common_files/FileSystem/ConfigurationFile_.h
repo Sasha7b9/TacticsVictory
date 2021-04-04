@@ -34,5 +34,7 @@ private:
 
     rapidjson::Document *document = nullptr;
 
+    std::string file_name;
+
     rapidjson::Value::ConstMemberIterator FindMember(pchar key1, pchar key2 = "", pchar key3 = "", pchar key4 = "");
 };
