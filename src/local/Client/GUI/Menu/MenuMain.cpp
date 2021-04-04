@@ -84,6 +84,11 @@ void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
         TheLocalization->SetLanguage(buttonLanguage->GetState() == 0 ? "en" : "ru");
         TheSet->SetInt(TV_LANGUAGE, static_cast<int>(buttonLanguage->GetState()));
     }
+    else if (button == buttonEditor)
+    {
+        system("start Editor.exe");
+        TheEngine->Exit();
+    }
     else if (button == buttonExit)
     {
         TheEngine->Exit();
