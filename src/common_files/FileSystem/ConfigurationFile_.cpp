@@ -76,24 +76,29 @@ int ConfigurationFile::GetInt(pchar key1, pchar key2)
 {
     CHECK_ON_VALID_INT;
 
-    rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
+    auto it = FindMember(key1, key2);
 
-    if (it != document->MemberEnd() && it->value.IsObject())
+    if (it != document->MemberEnd() && it->value.IsInt())
     {
-        if (it->value.HasMember(key2))
-        {
-            it = it->value.FindMember(key2);
-
-            if (it->value.IsInt())
-            {
-                return it->value.GetInt();
-            }
-        }
+        return it->value.GetInt();
     }
 
     LOGERRORF("Can't find value for \"%s\" \"%s\"", key1, key2);
 
     return -1;
+}
+
+
+rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, pchar key2)
+{
+    rapidjson::Value::ConstMemberIterator it = document->FindMember(key1);
+
+    if (it != document->MemberEnd() && it->value.IsObject())
+    {
+        it = it->value.FindMember(key2);
+    }
+
+    return it;
 }
 
 
@@ -306,7 +311,7 @@ bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &st
 }
 
 
-IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, pchar key4)
+IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pchar /*key3*/, pchar /*key4*/)
 {
     IntVector2 result(40, 40);
 
