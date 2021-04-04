@@ -8,6 +8,10 @@
 #define CHECK_ON_VALID_INT      if (!isValid) { LOGERROR("Configuration file is not valid"); return -1; }
 
 
+#define ERROR_FUNCTION
+//#define ERROR_FUNCTION      LOGERRORF("%s has not realisation", __FUNCTION__);
+
+
 bool ConfigurationFile::Load(pchar name)
 {
     document = new rapidjson::Document(); //-V2511
@@ -312,7 +316,9 @@ IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pcha
 
 IntVector2 ConfigurationFile::GetIntVector2(pchar /*key1*/, pchar /*key2*/, pchar /*key3*/, pchar /*key4*/)
 {
-    LOGERRORF("%s has not realisation", __FUNCTION__);
+//    LOGERRORF("%s has not realisation", __FUNCTION__);
+
+    ERROR_FUNCTION
 
     return { 50, 50 };
 }
