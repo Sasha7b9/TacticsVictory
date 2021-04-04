@@ -102,7 +102,11 @@ void Client::Start()
 
     SubscribeToEvents();
 
+    TheScene = new Scene(TheContext);
+
     CreateGUI();
+
+    menu = new MenuT(&TheMenu);
 }
 
 
