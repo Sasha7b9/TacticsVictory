@@ -2,7 +2,13 @@
 #pragma once
 
 
-// C++
+#ifdef WIN32
+#pragma warning(push, 0)
+#endif
+
+#include <Urho3D/Math/Vector2.h>
+
+using namespace Urho3D;
 
 #include <cstdarg>
 #include <map>
@@ -12,24 +18,14 @@
 #include <thread>
 #include <vector>
 
-
-// Third party
-
-#ifdef WIN32
-    #pragma warning(push, 0)
-#endif 
-
-    #undef Bool
-    #include <rapidjson/document.h>
-    #include <sockpp/tcp_acceptor.h>
-    #include <sockpp/tcp_connector.h>
+#undef Bool
+#include <rapidjson/document.h>
+#include <sockpp/tcp_acceptor.h>
+#include <sockpp/tcp_connector.h>
 
 #ifdef WIN32
     #pragma warning(pop)
 #endif
-
-
-// Tankist
 
 #include "defines.h"
 

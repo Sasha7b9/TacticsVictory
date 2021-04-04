@@ -1,11 +1,14 @@
 project (Master)
 
+set(CMAKE_UNITY_BUILD ON)
+
 include_directories(.
                     ../../common_files
                     ../../ThirdParty/sockpp/include
+                    ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
-set(CMAKE_UNITY_BUILD ON)
+add_definitions(-DURHO3D_STATIC_DEFINE)
 
 if(WIN32)
 
