@@ -17,11 +17,11 @@ public:
 
     void Unload();
 
-    int        GetInt(pchar key1, pchar key2 = nullptr, pchar key3 = nullptr, pchar key4 = nullptr);
-    pchar      GetString(pchar key1, pchar key2 = nullptr, pchar key3 = nullptr, pchar key4 = nullptr);
+    int        GetInt(pchar key1, pchar key2 = "", pchar key3 = "", pchar key4 = "");
+    pchar      GetString(pchar key1, pchar key2 = "", pchar key3 = "", pchar key4 = "");
     bool       GetVectorStrings(pchar key, std::vector<std::string> &strings);
-    IntVector2 GetIntVector2(pchar key1, pchar key2 = nullptr, pchar key3 = nullptr, pchar key4 = nullptr);
-    float      GetFloat(pchar key1, pchar key2 = nullptr);
+    IntVector2 GetIntVector2(pchar key1, pchar key2 = "", pchar key3 = "", pchar key4 = "");
+    float      GetFloat(pchar key1, pchar key2 = "");
 
     void SetInt(pchar key, int value);
     void SetInt(pchar key1, pchar key2, int value);
@@ -34,6 +34,5 @@ private:
 
     rapidjson::Document *document = nullptr;
 
-    rapidjson::Value::ConstMemberIterator FindMember(pchar key1, pchar key2 = nullptr, pchar key3 = nullptr,
-        pchar key4 = nullptr);
+    rapidjson::Value::ConstMemberIterator FindMember(pchar key1, pchar key2 = "", pchar key3 = "", pchar key4 = "");
 };

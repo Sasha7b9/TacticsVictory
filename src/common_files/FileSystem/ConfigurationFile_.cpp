@@ -103,19 +103,19 @@ rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, 
 
     if (IS_VALID(it))
     {
-        if (key2)
+        if (key2[0])
         {
             it = it->value.FindMember(key2);
 
             if (IS_VALID(it))
             {
-                if (key3)
+                if (key3[0])
                 {
                     it = it->value.FindMember(key3);
 
                     if (IS_VALID(it))
                     {
-                        if (key4)
+                        if (key4[0])
                         {
                             it = it->value.FindMember(key4);
 
@@ -152,36 +152,24 @@ bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &st
 {
     strings.clear();
 
-    if (!isValid)
+    auto it = FindMember(key);
+
+    if (&*it && it->value.IsArray() && it->value.Size() > 0)
     {
-        LOGERROR("Configuration file is not valid");
-        return false;
-    }
-
-    if (document->HasMember(key))
-    {
-        rapidjson::Value::ConstMemberIterator it = document->FindMember(key);
-
-        auto &value = it->value;
-
-        if (value.IsArray() && value.Size() > 0)
+        for (auto elem = it->value.Begin(); elem != it->value.End(); ++elem)
         {
-            for (rapidjson::Value::ConstValueIterator elem = value.Begin(); elem != value.End(); ++elem)
+            if (elem->IsString())
             {
-                if (elem->IsString())
-                {
-                    strings.push_back(elem->GetString());
-                }
+                strings.push_back(elem->GetString());
+            }
+            else
+            {
+                LOGERRORF("\"%s\" array, but element not string", key);
             }
         }
     }
 
-    if (strings.size() == 0)
-    {
-        LOGERRORF("Can't load array from key %s", key);
-    }
-
-    return strings.size() != 0;
+    return (strings.size() != 0);
 }
 
 
@@ -191,7 +179,46 @@ IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, 
 
     auto it = FindMember(key1, key2, key3, key4);
 
-    LOGERRORF("%s has not realisation", __FUNCTION__);
+    if (&*it)
+    {
+        auto &value = it->value;
+
+        if (value.IsArray())
+        {
+            if (value.Size() == 2)
+            {
+                auto elem = value.Begin();
+
+                if (elem->IsInt())
+                {
+                    result.x_ = elem->GetInt();
+                }
+                else
+                {
+                    LOGERRORF("\"%s\" \"%s\" \"%s\" \"%s\" array, but first element not integer", key1, key2, key3, key4);
+                }
+
+                elem++;
+
+                if (elem->IsInt())
+                {
+                    result.y_ = elem->GetInt();
+                }
+                else
+                {
+                    LOGERRORF("\"%s\" \"%s\" \"%s\" \"%s\" array, but second element not integer", key1, key2, key3, key4);
+                }
+            }
+            else
+            {
+                LOGERRORF("\"%s\" \"%s\" \"%s\" \"%s\" array, but size not 2", key1, key2, key3, key4);
+            }
+        }
+        else
+        {
+            LOGERRORF("\"%s\" \"%s\" \"%s\" \"%s\" not array", key1, key2, key3, key4);
+        }
+    }
 
     return result;
 }
