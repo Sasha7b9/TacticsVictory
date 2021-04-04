@@ -109,7 +109,7 @@ void Battler::Start()
 
     server = new ServerC(&TheServer);
 
-    TheServer->Connect(SERVER_ADDRESS, SERVER_PORT);
+//    TheServer->Connect(SERVER_ADDRESS, SERVER_PORT);
 
     scene = new SceneC(&TheScene);
 

@@ -120,7 +120,7 @@ void Battle::Start()
 
     server = new ServerS(&TheServer);
 
-    TheServer->Start(SERVER_PORT);
+//    TheServer->Start(SERVER_PORT);
 
     PROFILER_FUNC_LEAVE();
 }

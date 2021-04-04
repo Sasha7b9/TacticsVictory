@@ -79,7 +79,7 @@ void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
 
         if(value == ME_START_SERVER)
         {
-            eventData[P_PORT] = SERVER_PORT;
+//            eventData[P_PORT] = SERVER_PORT;
         }
 
         SendEvent(E_MENU, eventData);

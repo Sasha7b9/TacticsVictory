@@ -17,15 +17,15 @@ bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 }
 
 
-bool ConsoleParser::FuncClientStart(Vector<String> &words, bool)
+bool ConsoleParser::FuncClientStart(Vector<String> &/*words*/, bool)
 {
-    String address = SERVER_ADDRESS;
-    uint16 port = SERVER_PORT;
-    if(!GF::GetAddressPort(words, address, port))
-    {
-        return false;
-    }
-
+//    String address = SERVER_ADDRESS;
+//    uint16 port = SERVER_PORT;
+//    if(!GF::GetAddressPort(words, address, port))
+//    {
+//        return false;
+//    }
+//
 //    if(TheClient->IsConnected())
 //    {
 //        TheConsole->Write("Command forbidden. The client already running");
