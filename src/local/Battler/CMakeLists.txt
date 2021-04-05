@@ -54,7 +54,7 @@ file(GLOB GUI_GAME                                                  GUI/GuiGame/
 file(GLOB GUI_LOGIC                              ../../common_files/GUI/Logic/*.*)
 file(GLOB GUI_MENU                               ../../common_files/GUI/Menu/MenuConfirmExit_.*
                                                  ../../common_files/GUI/Menu/MenuEvents_.*
-                                                 ../../common_files/GUI/Menu/WindowMenu_.*
+                                                 ../../common_files/GUI/Menu/Page_.*
                                                                     GUI/Menu/*.*)
 file(GLOB GUI_MENU_START                                            GUI/Menu/MenuStart/*.*)
 file(GLOB GUI_PANELS                                                GUI/Panels/*.*)
