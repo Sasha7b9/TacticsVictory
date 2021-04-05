@@ -2,7 +2,7 @@
 #pragma once
 #include "GUI/Controls/OrderedTable_.h"
 #include "GUI/Controls/Buttons/Button_.h"
-#include "GUI/Menu/Page_.h"
+#include "GUI/Menu/MenuPage_.h"
 
 
 class MenuFindServer : public WindowMenu

@@ -2,9 +2,6 @@
 #pragma once
 
 
-class MenuAboutMe;
-class MenuFindServer;
-class MenuOptions;
 class MenuPlay;
 class MenuMain;
 class WindowMenu;

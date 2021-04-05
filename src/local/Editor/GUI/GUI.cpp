@@ -9,7 +9,6 @@
 #include "GUI/Controls/Sliders/SliderInt_.h"
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 #include "GUI/Menu/MenuConfirmExit_.h"
-#include "GUI/Menu/MenuAboutMe.h"
 #include "Scene/Cameras/Camera.h"
 
 
@@ -34,7 +33,6 @@ void GUI::RegistrationObjects()
     ButtonToggled::RegisterObject();
     WindowT::RegisterObject();
     MenuConfirmExit::RegisterObject();
-    MenuAboutMe::RegisterObject();
     Label::RegisterObject();
     SliderT::RegisterObject();
     SliderInt::RegisterObject();

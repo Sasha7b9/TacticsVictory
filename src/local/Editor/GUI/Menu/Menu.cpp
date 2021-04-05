@@ -2,17 +2,13 @@
 #include "stdafx.h"
 #include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Menu/MenuAboutMe.h"
 #include "GUI/Menu/MenuMain.h"
-#include "GUI/Menu/MenuFindServer.h"
 #include "GUI/Menu/MenuPlay.h"
 
 
 PODVector<WindowMenu *>   allMenus;       // Здесь список всех меню
 SharedPtr<MenuMain>       menuStart;
-SharedPtr<MenuAboutMe>    menuAbout;
 SharedPtr<MenuPlay>       menuPlay;
-SharedPtr<MenuFindServer> menuFindServer;
 
 
 
@@ -28,9 +24,7 @@ SharedPtr<MenuFindServer> menuFindServer;
 void ::Menu::Create()
 {
     CREATE_MENU(menuStart, MenuMain, false);
-    CREATE_MENU(menuAbout, MenuAboutMe, false);
     CREATE_MENU(menuPlay, MenuPlay, false);
-    CREATE_MENU(menuFindServer, MenuFindServer, false);
 
     Open(menuStart, nullptr);
 }
@@ -51,12 +45,6 @@ void ::Menu::HandleMenuEvent(StringHash, VariantMap& eventData)
         break;
 
     case ME_EXIT_IN_OS:         TheEngine->Exit();
-        break;
-
-    case ME_OPEN_ABOUT_ME:      Open(menuAbout, source);
-        break;
-
-    case ME_OPEN_FIND_SERVER:   Open(menuFindServer, source);
         break;
 
     case ME_OPEN_PLAY:          Open(menuPlay, source);

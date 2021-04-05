@@ -51,7 +51,7 @@ file(GLOB GUI_CONTROLS_SLIDERS        ../../common_files/GUI/Controls/Sliders/Sl
                                       ../../common_files/GUI/Controls/Sliders/SliderWithTextAndButtons_.*)
 file(GLOB GUI_LOGIC                   ../../common_files/GUI/Logic/LineTranslator1D_.*
                                       ../../common_files/GUI/Logic/LineTranslator2D_.*)
-file(GLOB GUI_MENU                    ../../common_files/GUI/Menu/Page_.*
+file(GLOB GUI_MENU                    ../../common_files/GUI/Menu/MenuPage_.*
                                                          GUI/Menu/*.*)
 file(GLOB GUI_MENU_MENUSTART                             GUI/Menu/MenuStart/*.*)
 file(GLOB GUI_MENU_MENUSTART_MENUPLAY                    GUI/Menu/MenuStart/MenuPlay/*.*)
