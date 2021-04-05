@@ -4,7 +4,7 @@
 
 class PageAboutMe;
 class PageFindServer;
-class MenuOptions;
+class PageOptions;
 class PagePlay;
 class PageMain;
 class MenuPage;

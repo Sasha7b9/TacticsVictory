@@ -9,12 +9,12 @@ enum
 };
 
 
-class MenuOptions : public MenuPage
+class PageOptions : public MenuPage
 {
-    URHO3D_OBJECT(MenuOptions, MenuPage);
+    URHO3D_OBJECT(PageOptions, MenuPage);
 
 public:
-    MenuOptions();
+    PageOptions();
 
 private:
     void HandleItemSelected(StringHash eventType, VariantMap& eventData);

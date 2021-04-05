@@ -7,7 +7,7 @@
 #include "GUI/Menu/PageOptions.h"
 
 
-MenuOptions::MenuOptions() : MenuPage()
+PageOptions::PageOptions() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 0, IntRect(0, 0, 0, 0));
 
@@ -19,7 +19,7 @@ MenuOptions::MenuOptions() : MenuPage()
 
 #define CREATE_SWTAB(name, text, min, max, step, startIndex)                                  \
     name = new SliderWithTextAndButtons(this, text, min, max, step);                          \
-    SubscribeToEvent(name, E_SLIDERINTCHANGED, URHO3D_HANDLER(MenuOptions, HandleOnSlider));  \
+    SubscribeToEvent(name, E_SLIDERINTCHANGED, URHO3D_HANDLER(PageOptions, HandleOnSlider));  \
     name->SetValue(startIndex);
 
     CREATE_SWTAB(sliderBrightness, "Brightness", 0, 100, 1, TheSettings.GetInt("brightness"));
@@ -34,7 +34,7 @@ MenuOptions::MenuOptions() : MenuPage()
 
 #define CREATE_DDLWTAB(name, text, num, itms, startIndex)                                       \
     name = DropDownListWithTextAndButton::Create(this, text, width0, width1, num, itms);        \
-    SubscribeToEvent(name, E_ITEMSELECTED, URHO3D_HANDLER(MenuOptions, HandleItemSelected));    \
+    SubscribeToEvent(name, E_ITEMSELECTED, URHO3D_HANDLER(PageOptions, HandleItemSelected));    \
     name->SetSelection(startIndex);
 
     char *items1[] = {"Low", "Medium", "High"};
@@ -72,7 +72,7 @@ MenuOptions::MenuOptions() : MenuPage()
     layout->SetAlignment(HA_CENTER, VA_TOP);
 
     buttonClose = new ButtonT(0, "Close", 100);
-    SubscribeToEvent(buttonClose, E_RELEASED, URHO3D_HANDLER(MenuOptions, HandleButtonRelease));
+    SubscribeToEvent(buttonClose, E_RELEASED, URHO3D_HANDLER(PageOptions, HandleButtonRelease));
     layout->AddChild(buttonClose);
     AddChild(layout);
     layout->SetMinHeight(buttonClose->GetHeight());
@@ -85,7 +85,7 @@ MenuOptions::MenuOptions() : MenuPage()
 }
 
 
-void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
+void PageOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 {
     DropDownListWithTextAndButton *ddList = dynamic_cast<DropDownListWithTextAndButton*>(eventData[ItemSelected::P_ELEMENT].GetPtr());
     int index = eventData[ItemSelected::P_SELECTION].GetInt();
@@ -131,7 +131,7 @@ void MenuOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 }
 
 
-void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
+void PageOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 {
     SliderWithTextAndButtons *slider = (SliderWithTextAndButtons *)eventData[SliderIntChanged::P_ELEMENT].GetPtr();
     int value = eventData[SliderIntChanged::P_VALUE].GetInt();
@@ -152,7 +152,7 @@ void MenuOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 }
 
 
-void MenuOptions::HandleButtonRelease(StringHash, VariantMap&)
+void PageOptions::HandleButtonRelease(StringHash, VariantMap&)
 {
     SendEventClose();
 }

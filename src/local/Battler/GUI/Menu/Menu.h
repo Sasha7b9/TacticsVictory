@@ -2,7 +2,7 @@
 #pragma once
 
 
-class MenuOptions;
+class PageOptions;
 class MenuStart;
 class MenuPage;
 
@@ -23,7 +23,7 @@ private:
 
     PODVector<MenuPage *> allMenus;       // Здесь список всех меню
     SharedPtr<MenuStart>    menuStart;
-    SharedPtr<MenuOptions>  menuOptions;
+    SharedPtr<PageOptions>  menuOptions;
 
     MenuPage* ActiveMenu();
     void Open(MenuPage* menu, MenuPage *prev);    // Открыть меню menu, при этом его хранителем указать prev
