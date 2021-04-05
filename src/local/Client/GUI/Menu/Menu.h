@@ -24,14 +24,14 @@ public:
 
 private:
     PODVector<MenuPage *>     allMenus;    // Здесь список всех меню
-    SharedPtr<PageMain>       menuStart;
-    SharedPtr<PageAboutMe>    menuAbout;
-    SharedPtr<PagePlay>       menuPlay;
-    SharedPtr<PageFindServer> menuFindServer;
+    SharedPtr<PageMain>       pageStart;
+    SharedPtr<PageAboutMe>    pageAbout;
+    SharedPtr<PagePlay>       pagePlay;
+    SharedPtr<PageFindServer> pageFindServer;
 
     MenuPage* ActiveMenu();
 
-    void Open(MenuPage* menu, MenuPage *prev);    // Открыть меню menu, при этом его хранителем указать prev
+    void Open(MenuPage* page, MenuPage *prev);    // Открыть меню menu, при этом его хранителем указать prev
     void CloseAll();
     void HandleMenuEvent(StringHash, VariantMap&);
 };

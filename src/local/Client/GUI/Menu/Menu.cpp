@@ -8,7 +8,7 @@
 #include "GUI/Menu/PagePlay.h"
 
 
-#define CREATE_MENU(name, type, moving)                                 \
+#define CREATE_PAGE(name, type, moving)                                 \
     name = new type();                                                  \
     allMenus.Push(name);                                                \
     GF::SetWindowInCenterScreen(name);                                  \
@@ -18,12 +18,12 @@
 
 Menus::Menus(Menus **self) : Object(TheContext)
 {
-    CREATE_MENU(menuStart, PageMain, false);
-    CREATE_MENU(menuAbout, PageAboutMe, false);
-    CREATE_MENU(menuPlay, PagePlay, false);
-    CREATE_MENU(menuFindServer, PageFindServer, false);
+    CREATE_PAGE(pageStart,      PageMain,       false);
+    CREATE_PAGE(pageAbout,      PageAboutMe,    false);
+    CREATE_PAGE(pagePlay,       PagePlay,       false);
+    CREATE_PAGE(pageFindServer, PageFindServer, false);
 
-    Open(menuStart, nullptr);
+    Open(pageStart, nullptr);
 
     *self = this;
 }
@@ -46,13 +46,13 @@ void Menus::HandleMenuEvent(StringHash, VariantMap& eventData)
     case ME_EXIT_IN_OS:         TheEngine->Exit();
         break;
 
-    case ME_OPEN_ABOUT_ME:      Open(menuAbout, source);
+    case ME_OPEN_ABOUT_ME:      Open(pageAbout, source);
         break;
 
-    case ME_OPEN_FIND_SERVER:   Open(menuFindServer, source);
+    case ME_OPEN_FIND_SERVER:   Open(pageFindServer, source);
         break;
 
-    case ME_OPEN_PLAY:          Open(menuPlay, source);
+    case ME_OPEN_PLAY:          Open(pagePlay, source);
         break;
 
     case ME_CLOSE:              CALL_MEMBER_IF_EXIST(source, Close);
@@ -96,7 +96,7 @@ bool Menus::ProcessingKey(int key)
 
     if(active)
     {
-        if(KEY_IS_ESC && active == menuStart)    // Если находимся в стартовом менюю и нажата кнопка ESCAPE - ничего делать не будем
+        if(KEY_IS_ESC && active == pageStart)    // Если находимся в стартовом менюю и нажата кнопка ESCAPE - ничего делать не будем
         {
 
         }
