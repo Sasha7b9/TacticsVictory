@@ -24,10 +24,11 @@ public:
 
 private:
     PODVector<MenuPage *>     allMenus;    // Здесь список всех меню
-    SharedPtr<PageStart>       pageStart;
+    SharedPtr<PageStart>      pageStart;
     SharedPtr<PageAboutMe>    pageAbout;
     SharedPtr<PagePlay>       pagePlay;
     SharedPtr<PageFindServer> pageFindServer;
+    SharedPtr<PageOptions>    pageOptions;
 
     MenuPage* ActiveMenu();
 

@@ -18,17 +18,12 @@ PageStart::PageStart() : MenuPage()
     buttonPlay = new ButtonT(this, "Play");
     buttonPlay->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_PLAY));
 
-    buttonOptions = new ButtonT(this, "Options");
-    buttonOptions->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_OPTIONS));
-
     buttonExit = new ButtonT(this, "Exit");
 
     buttons.Push(buttonPlay);
-    buttons.Push(buttonOptions);
     buttons.Push(buttonExit);
 
     SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
-    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
     SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
 }
 

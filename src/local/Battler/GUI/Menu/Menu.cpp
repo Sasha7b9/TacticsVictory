@@ -1,7 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Menu/PageOptions.h"
 #include "GUI/Menu/PageStart.h"
 
 
@@ -16,7 +15,6 @@
 Menus::Menus(Menus **self) : Object(TheContext)
 {
     CREATE_PAGE(pageStart,   PageStart, false);
-    CREATE_PAGE(pageOptions, PageOptions, false);
 
     Open(pageStart, nullptr);
 
@@ -39,9 +37,6 @@ void Menus::HandleMenuEvent(StringHash, VariantMap& eventData)
         break;
 
     case ME_EXIT_IN_OS:         TheEngine->Exit();
-        break;
-
-    case ME_OPEN_OPTIONS:       Open(pageOptions, source);
         break;
 
     case ME_CLOSE:              CALL_MEMBER_IF_EXIST(source, Close);

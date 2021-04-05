@@ -2,7 +2,6 @@
 #pragma once
 
 
-class PageOptions;
 class PageStart;
 class MenuPage;
 
@@ -23,7 +22,6 @@ private:
 
     PODVector<MenuPage *>  allMenus;       // Здесь список всех меню
     SharedPtr<PageStart>   pageStart;
-    SharedPtr<PageOptions> pageOptions;
 
     MenuPage* ActiveMenu();
 

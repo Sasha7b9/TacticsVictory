@@ -13,7 +13,6 @@
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/PageConfirmExit_.h"
 #include "GUI/Menu/PageGame.h"
-#include "GUI/Menu/PageOptions.h"
 #include "GUI/Panels/PanelBottom.h"
 #include "GUI/Panels/PanelMain.h"
 #include "GUI/Panels/PanelMap.h"
@@ -43,7 +42,6 @@ void GUI::RegistrationObjects()
     ButtonToggled::RegisterObject();
     WindowT::RegisterObject();
     PageGame::RegisterObject();
-    PageOptions::RegisterObject();
     MenuConfirmExit::RegisterObject();
     Tab::RegisterObject();
     Label::RegisterObject();

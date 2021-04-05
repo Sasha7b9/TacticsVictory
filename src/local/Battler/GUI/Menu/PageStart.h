@@ -16,6 +16,5 @@ private:
     void HandleButtonRelease(StringHash, VariantMap&);
 
     SharedPtr<ButtonT>      buttonPlay;
-    SharedPtr<ButtonT>      buttonOptions;
     SharedPtr<ButtonT>      buttonExit;
 };

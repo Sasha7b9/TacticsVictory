@@ -65,7 +65,7 @@ void Battler::TuneEngineParameters()
     engineParameters_[EP_WINDOW_TITLE] = GetTypeName();
     engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->
                                                         GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
-    engineParameters_[EP_FULL_SCREEN] = true;
+    engineParameters_[EP_FULL_SCREEN] = false;
     engineParameters_[EP_TEXTURE_QUALITY] = 32;
     engineParameters_[EP_WINDOW_WIDTH] = TheSettings.GetInt("screen", "width");
     engineParameters_[EP_WINDOW_HEIGHT] = TheSettings.GetInt("screen", "height");
@@ -206,8 +206,8 @@ void Battler::SetWindowTitleAndIcon()
     Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     TheGraphics->SetWindowIcon(icon);
 
-    SetWindowText(FindWindow(NULL, "Client"), TheLocalization->GetLanguage() == "en" ? TEXT("Tactics Victory") :
-                                                                                       TEXT("Тактика Победы"));
+    SetWindowText(FindWindow(NULL, "Battler"), TheSettings.GetInt("language") == 0 ? TEXT("Tactics Victory") :
+                                                                                     TEXT("Тактика Победы"));
 }
 
 
