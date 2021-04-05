@@ -20,7 +20,7 @@ extern CursorT         *TheCursor;
 extern GUI             *TheGUI;
 extern Hint            *TheHint;
 extern LogRAW          *TheLog;
-extern MenuT           *TheMenu;
+extern ::Menu          *TheMenu;
 extern MenuMain        *TheMenuMain;
 extern Mouse           *TheMouse;
 extern WindowVariables *TheWindowVars;

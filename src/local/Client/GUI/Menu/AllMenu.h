@@ -10,13 +10,13 @@ class MenuMain;
 class WindowMenu;
 
 
-class MenuT : public Object
+class Menu : public Object
 {
-    URHO3D_OBJECT(MenuT, Object)
+    URHO3D_OBJECT(Menu, Object)
 
 public:
-    MenuT(MenuT **self);
-    ~MenuT();
+    Menu(Menu **self);
+    ~Menu();
     void Hide();
     bool IsActive();
     bool ProcessingKey(int key);
