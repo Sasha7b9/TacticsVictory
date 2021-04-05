@@ -53,7 +53,7 @@ void PageGame::HandleButtonRelease(StringHash, VariantMap& eventData)
     if (button == buttonExit)
     {
         TheEngine->Exit();
-        TheMenuMain->SetDisabled();
+        ThePageGame->SetDisabled();
     
     }
     else if (button == buttonOptions)
@@ -68,7 +68,7 @@ void PageGame::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     else if (button == buttonCancel)
     {
-        TheMenuMain->Close();
+        ThePageGame->Close();
     }
 }
 

@@ -37,7 +37,7 @@ extern Hint              *TheHint;
 extern LogU3D            *TheLog;
 extern MenuConfirmExit   *TheMenuConfirmExit;
 extern Menus             *TheMenu;
-extern PageGame          *TheMenuMain;
+extern PageGame          *ThePageGame;
 extern Mouse             *TheMouse;
 extern PathIndicator     *ThePathIndicator;
 extern SceneC            *TheScene;
