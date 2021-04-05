@@ -22,7 +22,6 @@ extern GUI             *TheGUI;
 extern Hint            *TheHint;
 extern LogRAW          *TheLog;
 extern Menus           *TheMenu;
-extern MenuMain        *TheMenuMain;
 extern Mouse           *TheMouse;
 extern WindowVariables *TheWindowVars;
 
