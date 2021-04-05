@@ -25,6 +25,7 @@ class WindowT;
 
 extern ConfigurationFile  TheSettings;
 
+extern Battler *TheBattler;
 extern CameraT           *TheCamera;
 extern ConsoleT          *TheConsole;
 extern CursorT           *TheCursor;
@@ -35,12 +36,11 @@ extern GuiGame           *TheGuiGame;
 extern Hint              *TheHint;
 extern LogU3D            *TheLog;
 extern Menus             *TheMenu;
+extern Mouse *TheMouse;
 extern PageGame          *ThePageGame;
-extern Mouse             *TheMouse;
 extern PathIndicator     *ThePathIndicator;
 extern SceneC            *TheScene;
 extern ServerC           *TheServer;
-extern Battler           *TheBattler;
 extern TerrainT          *TheTerrain;
 extern WindowTarget      *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 extern WindowVariables   *TheWindowVars;

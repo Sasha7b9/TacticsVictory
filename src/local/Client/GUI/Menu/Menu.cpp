@@ -3,7 +3,7 @@
 #include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Menu/Menu.h"
 #include "GUI/Menu/PageAboutMe.h"
-#include "GUI/Menu/PageMain.h"
+#include "GUI/Menu/PageStart.h"
 #include "GUI/Menu/PageFindServer.h"
 #include "GUI/Menu/PagePlay.h"
 
@@ -18,7 +18,7 @@
 
 Menus::Menus(Menus **self) : Object(TheContext)
 {
-    CREATE_PAGE(pageStart,      PageMain,       false);
+    CREATE_PAGE(pageStart,      PageStart,       false);
     CREATE_PAGE(pageAbout,      PageAboutMe,    false);
     CREATE_PAGE(pagePlay,       PagePlay,       false);
     CREATE_PAGE(pageFindServer, PageFindServer, false);

@@ -2,10 +2,10 @@
 #include "stdafx.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Menu/PageMain.h"
+#include "GUI/Menu/PageStart.h"
 
 
-PageMain::PageMain() : MenuPage()
+PageStart::PageStart() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
 
@@ -38,21 +38,21 @@ PageMain::PageMain() : MenuPage()
     buttons.Push(buttonAboutMe);
     buttons.Push(buttonExit);
 
-    SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(PageMain, HandleButtonRelease));
-    SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(PageMain, HandleButtonRelease));
-    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(PageMain, HandleButtonRelease));
-    SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(PageMain, HandleButtonRelease));
-    SubscribeToEvent(buttonAboutMe, E_RELEASED, URHO3D_HANDLER(PageMain, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(PageMain, HandleButtonRelease));
+    SubscribeToEvent(buttonLanguage, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
+    SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
+    SubscribeToEvent(buttonEditor, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
+    SubscribeToEvent(buttonAboutGame, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
+    SubscribeToEvent(buttonAboutMe, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
 }
 
 
-PageMain::~PageMain()
+PageStart::~PageStart()
 {
 }
 
 
-void PageMain::HandleButtonRelease(StringHash, VariantMap& eventData)
+void PageStart::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     if(!TheMenu->IsActive())
     {
@@ -64,7 +64,7 @@ void PageMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 
     Button *button = dynamic_cast<Button*>(eventData[P_ELEMENT].GetPtr());
 
-    const Variant &value = button->GetVar(VAR_MENU_EVENT); //-V522
+    const Variant &value = button->GetVar(VAR_MENU_EVENT);
 
     if(!value.IsEmpty())
     {

@@ -50,7 +50,7 @@ void PageStart::HandleButtonRelease(StringHash, VariantMap& eventData)
 
     Button *button = dynamic_cast<Button*>(eventData[P_ELEMENT].GetPtr());
 
-    const Variant &value = button->GetVar(VAR_MENU_EVENT); //-V522
+    const Variant &value = button->GetVar(VAR_MENU_EVENT);
 
     if(!value.IsEmpty())
     {

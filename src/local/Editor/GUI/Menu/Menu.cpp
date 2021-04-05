@@ -2,10 +2,10 @@
 #include "stdafx.h"
 #include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Menu/PageMain.h"
+#include "GUI/Menu/PageStart.h"
 
 
-#define CREATE_MENU(name, type, moving)                                 \
+#define CREATE_PAGE(name, type, moving)                                 \
     name = new type();                                                  \
     allMenus.Push(name);                                                \
     GF::SetWindowInCenterScreen(name);                                  \
@@ -15,9 +15,9 @@
 
 Menus::Menus(Menus **self) : Object(TheContext)
 {
-    CREATE_MENU(menuStart, PageMain, false);
+    CREATE_PAGE(pageStart, PageStart, false);
 
-    Open(menuStart, nullptr);
+    Open(pageStart, nullptr);
 
     *self = this;
 }
@@ -81,7 +81,7 @@ bool Menus::ProcessingKey(int key)
 
     if(active)
     {
-        if(KEY_IS_ESC && active == menuStart)    // Если находимся в стартовом менюю и нажата кнопка ESCAPE - ничего делать не будем
+        if(KEY_IS_ESC && active == pageStart)    // Если находимся в стартовом менюю и нажата кнопка ESCAPE - ничего делать не будем
         {
 
         }

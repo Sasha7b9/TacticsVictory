@@ -6,7 +6,7 @@ class PageAboutMe;
 class PageFindServer;
 class PageOptions;
 class PagePlay;
-class PageMain;
+class PageStart;
 class MenuPage;
 
 
@@ -24,7 +24,7 @@ public:
 
 private:
     PODVector<MenuPage *>     allMenus;    // Здесь список всех меню
-    SharedPtr<PageMain>       pageStart;
+    SharedPtr<PageStart>       pageStart;
     SharedPtr<PageAboutMe>    pageAbout;
     SharedPtr<PagePlay>       pagePlay;
     SharedPtr<PageFindServer> pageFindServer;

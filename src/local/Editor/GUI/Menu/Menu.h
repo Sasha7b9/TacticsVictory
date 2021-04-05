@@ -3,7 +3,7 @@
 
 
 class PagePlay;
-class PageMain;
+class PageStart;
 class MenuPage;
 
 
@@ -22,11 +22,11 @@ public:
 private:
 
     PODVector<MenuPage *> allMenus;       // Здесь список всех меню
-    SharedPtr<PageMain>   menuStart;
+    SharedPtr<PageStart>  pageStart;
 
     MenuPage* ActiveMenu();
 
-    void Open(MenuPage* menu, MenuPage *prev);    // Открыть меню menu, при этом его хранителем указать prev
+    void Open(MenuPage* page, MenuPage *prev);    // Открыть меню menu, при этом его хранителем указать prev
     void CloseAll();
     void HandleMenuEvent(StringHash, VariantMap&);
 };
