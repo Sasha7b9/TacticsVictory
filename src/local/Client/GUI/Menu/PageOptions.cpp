@@ -56,17 +56,16 @@ PageOptions::PageOptions() : MenuPage()
     CREATE_DDLWTAB(ddlSpecularLighting, "Specular lighting", 2, items4,
         (uint)TheSettings.GetInt("lighting", "specular"));
 
-    CREATE_DDLWTAB(ddlDynamicInstancing, "Dynamic instancing", 2, items4, TheRenderer->GetDynamicInstancing() ? 1U : 0U);
+    CREATE_DDLWTAB(ddlDynamicInstancing, "Dynamic instancing", 2, items4,
+        (uint)TheSettings.GetInt("dynamic_instancing"));
 
-    int itemSizes[9] = {64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
-    shadowMapSizes.Push(PODVector<int>(itemSizes, sizeof(itemSizes) / sizeof(int)));
-    
     char *items6[] = {"64", "128", "256", "512", "1024", "2048", "4096", "8192", "16384"};
     CREATE_DDLWTAB(ddlShadowMapSize, "Shadow map size", 9, items6,
         (uint)TheSettings.GetInt("shadow", "map_size"));
 
     char *items7[] = {"low 16bit", "low 24bit", "high 16bit", "high 24bit"};
-    CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7, static_cast<uint>(TheRenderer->GetShadowQuality()));
+    CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7,
+        (uint)TheSettings.GetInt("shadow", "quality"));
  
     SharedPtr<UIElement> layout(CreateChild<UIElement>());
     layout->SetAlignment(HA_CENTER, VA_TOP);
@@ -87,46 +86,40 @@ PageOptions::PageOptions() : MenuPage()
 
 void PageOptions::HandleItemSelected(StringHash, VariantMap& eventData)
 {
-    DropDownListWithTextAndButton *ddList = dynamic_cast<DropDownListWithTextAndButton*>(eventData[ItemSelected::P_ELEMENT].GetPtr());
+    DropDownListWithTextAndButton *ddList = (DropDownListWithTextAndButton *)eventData[ItemSelected::P_ELEMENT].GetPtr();
     int index = eventData[ItemSelected::P_SELECTION].GetInt();
 
     if(ddList == ddlTextureQuality)
     {
-        TheRenderer->SetTextureQuality((MaterialQuality)index);
         TheSettings.SetInt(index, "texture", "quality");
     }
     else if(ddList == ddlTextureAnisotropy)
     {
-        TheRenderer->SetTextureAnisotropy(index + 1);
         TheSettings.SetInt(index, "texture", "anisotropy");
     }
     else if(ddList == ddlMaterialQuality)
     {
-        TheRenderer->SetMaterialQuality((MaterialQuality)index);
         TheSettings.SetInt(index, "material", "quality");
     }
     else if(ddList == ddlShadowsEnabled)
     {
-        TheRenderer->SetDrawShadows(index == 1);
         TheSettings.SetInt(index, "shadow", "draw");
     }
     else if(ddList == ddlSpecularLighting)
     {
-        TheRenderer->SetSpecularLighting(index == 1);
         TheSettings.SetInt(index, "lighting", "specular");
     }
     else if(ddList == ddlShadowMapSize)
     {
-        TheRenderer->SetShadowMapSize(shadowMapSizes[(uint)index]);
         TheSettings.SetInt(index, "shadow", "map_size");
     }
     else if(ddList == ddlShadowQuality)
     {
-        TheRenderer->SetShadowQuality((ShadowQuality)index);
+        TheSettings.SetInt(index, "shadow", "quality");
     }
     else if(ddList == ddlDynamicInstancing)
     {
-        TheRenderer->SetDynamicInstancing(index == 1);
+        TheSettings.SetInt(index, "dynamic_instancing");
     }
 }
 
@@ -138,7 +131,6 @@ void PageOptions::HandleOnSlider(StringHash, VariantMap& eventData)
 
     if(slider == sliderMaxOccluderTriangles)
     {
-        TheRenderer->SetMaxOccluderTriangles(value);
         TheSettings.SetInt(value, "max_occluder_triangles");
     }
     else if (slider == sliderBrightness)

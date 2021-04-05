@@ -116,6 +116,8 @@ void Battler::Start()
 
     CreateGUI();
 
+    SetOptionsRenderer();
+
     LOGWRITE("Loading settings");
 
     menu = new Menus(&TheMenu);
@@ -241,4 +243,20 @@ void Battler::OpenLog()
     log = new Log(TheContext);
     log->Open(GetTypeName() + ".log");
     log->SetLevel(LOG_DEBUG);
+}
+
+
+void Battler::SetOptionsRenderer()
+{
+    static const int shadow_map_sizes[] = { 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384 };
+    TheRenderer->SetShadowMapSize(shadow_map_sizes[TheSettings.GetInt("shadow", "map_size")]);
+
+    TheRenderer->SetTextureQuality((MaterialQuality)TheSettings.GetInt("texture", "quality"));
+    TheRenderer->SetTextureAnisotropy(TheSettings.GetInt("texture", "anisotropy"));
+    TheRenderer->SetMaterialQuality((MaterialQuality)TheSettings.GetInt("material", "quality"));
+    TheRenderer->SetDrawShadows(TheSettings.GetInt("shadow", "draw") == 1);
+    TheRenderer->SetSpecularLighting(TheSettings.GetInt("lighting", "specular") == 1);
+    TheRenderer->SetShadowQuality((ShadowQuality)TheSettings.GetInt("shadow", "quality"));
+    TheRenderer->SetDynamicInstancing(TheSettings.GetInt("dynamic_instancing") == 1);
+    TheRenderer->SetMaxOccluderTriangles(TheSettings.GetInt("max_occluder_triangles"));
 }

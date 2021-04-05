@@ -8,8 +8,9 @@
 #include "GUI/Controls/Sliders/Slider_.h"
 #include "GUI/Controls/Sliders/SliderInt_.h"
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
-#include "GUI/Menu/PageConfirmExit_.h"
 #include "GUI/Menu/PageAboutMe.h"
+#include "GUI/Menu/PageConfirmExit_.h"
+#include "GUI/Menu/PageOptions.h"
 #include "Scene/Cameras/Camera.h"
 
 

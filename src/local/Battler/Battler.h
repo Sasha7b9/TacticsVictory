@@ -30,6 +30,7 @@ private:
     void GetSubsystems();
     void TuneEngineParameters();
     void CreateGUI();
+    void SetOptionsRenderer();
 
     void HandleMenuEvent(StringHash, VariantMap&);
     void HandlePostRenderUpdate(StringHash, VariantMap&);
