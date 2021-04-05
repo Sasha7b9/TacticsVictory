@@ -1,8 +1,8 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Menu/MenuStart/PageOptions.h"
-#include "GUI/Menu/MenuStart/PageStart.h"
+#include "GUI/Menu/PageOptions.h"
+#include "GUI/Menu/PageStart.h"
 
 
 #define CREATE_MENU(name, type, moving)                                 \

@@ -13,7 +13,7 @@
 #include "GUI/GuiGame/GuiGame.h"
 #include "GUI/Menu/PageConfirmExit_.h"
 #include "GUI/Menu/PageGame.h"
-#include "GUI/Menu/MenuStart/PageOptions.h"
+#include "GUI/Menu/PageOptions.h"
 #include "GUI/Panels/PanelBottom.h"
 #include "GUI/Panels/PanelMain.h"
 #include "GUI/Panels/PanelMap.h"
