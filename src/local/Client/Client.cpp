@@ -68,8 +68,8 @@ void Client::TuneEngineParameters()
                                                         GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_[EP_FULL_SCREEN] = false;
     engineParameters_[EP_TEXTURE_QUALITY] = 32;
-    engineParameters_[EP_WINDOW_WIDTH] = TheSettings.GetInt("screen", "width");
-    engineParameters_[EP_WINDOW_HEIGHT] = TheSettings.GetInt("screen", "height");
+    engineParameters_[EP_WINDOW_WIDTH] = TheSettings.GetInt("client", "screen", "width");
+    engineParameters_[EP_WINDOW_HEIGHT] = TheSettings.GetInt("client", "screen", "height");
     engineParameters_[EP_HEADLESS] = false;
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
@@ -96,8 +96,6 @@ void Client::Start()
 
     mouse = new Mouse(&TheMouse);
 
-    SetWindowTitleAndIcon();
-
     CreateConsoleAndDebugHud();
 
     SubscribeToEvents();
@@ -107,6 +105,8 @@ void Client::Start()
     CreateGUI();
 
     menu = new Menus(&TheMenu);
+
+    SetWindowTitleAndIcon();
 }
 
 
@@ -149,6 +149,11 @@ void Client::SubscribeToEvents()
 
 void Client::SetWindowTitleAndIcon()
 {
+    Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
+    TheGraphics->SetWindowIcon(icon);
+
+    SetWindowText(FindWindow(NULL, "Client"), TheSettings.GetInt("language") == 0 ? TEXT("Tactics Victory") :
+                                                                                    TEXT("Тактика Победы"));
 }
 
 

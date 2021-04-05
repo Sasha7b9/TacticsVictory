@@ -18,11 +18,12 @@ public:
 
     bool drawDebug = false;
 
+    void SetWindowTitleAndIcon();
+
 private:
 
     void OpenLog();
     void RegistrationObjects();
-    void SetWindowTitleAndIcon();
     void CreateConsoleAndDebugHud();
     void SubscribeToEvents();
     void SetLocalization();

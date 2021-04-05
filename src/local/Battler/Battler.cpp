@@ -205,7 +205,9 @@ void Battler::SetWindowTitleAndIcon()
 {
     Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     TheGraphics->SetWindowIcon(icon);
-    SetWindowText(FindWindow(NULL, "Battler"), TEXT("Тактика Победы"));
+
+    SetWindowText(FindWindow(NULL, "Battler"), TheSettings.GetInt("language") == 0 ? TEXT("Tactics Victory") :
+                                                                                     TEXT("Тактика Победы"));
 }
 
 
