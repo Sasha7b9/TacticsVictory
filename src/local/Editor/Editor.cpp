@@ -1,6 +1,7 @@
 ﻿// 2021/04/02 17:53:03 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Editor.h"
+#include "GUI/Menu/Menu.h"
 
 
 #pragma warning(push)
@@ -105,7 +106,7 @@ void Editor::Start()
 
     CreateGUI();
 
-    menu = new MenuT(&TheMenu);
+    ::Menu::Create();
 }
 
 

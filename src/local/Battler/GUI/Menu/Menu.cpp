@@ -1,18 +1,15 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Menu/MenuEvents_.h"
-#include "GUI/Menu/AllMenu.h"
-#include "GUI/Menu/PageAboutMe.h"
-#include "GUI/Menu/PageMain.h"
-#include "GUI/Menu/PageFindServer.h"
-#include "GUI/Menu/PagePlay.h"
+#include "GUI/Menu/Menu.h"
+#include "GUI/Menu/MenuStart/MenuAboutMe.h"
+#include "GUI/Menu/MenuStart/MenuOptions.h"
+#include "GUI/Menu/MenuStart/MenuStart.h"
 
 
-static PODVector<WindowMenu *> allMenus;    // Здесь список всех меню
-static SharedPtr<MenuMain>       menuStart;
-static SharedPtr<MenuAboutMe>    menuAbout;
-static SharedPtr<MenuPlay>       menuPlay;
-static SharedPtr<MenuFindServer> menuFindServer;
+PODVector<WindowMenu *> allMenus;       // Здесь список всех меню
+SharedPtr<MenuStart>    menuStart;
+SharedPtr<MenuAboutMe>  menuAbout;
+SharedPtr<MenuOptions>  menuOptions;
 
 
 #define CREATE_MENU(name, type, moving)                                 \
@@ -21,15 +18,14 @@ static SharedPtr<MenuFindServer> menuFindServer;
     GF::SetWindowInCenterScreen(name);                                  \
     name->SetMovable(moving);
 
-//    SubscribeToEvent(E_MENU, URHO3D_HANDLER(::Menu, HandleMenuEvent));
+//SubscribeToEvent(E_MENU, URHO3D_HANDLER(::Menu, HandleMenuEvent));
 
 
 void ::Menu::Create()
 {
-    CREATE_MENU(menuStart, MenuMain, false);
+    CREATE_MENU(menuStart, MenuStart, false);
     CREATE_MENU(menuAbout, MenuAboutMe, false);
-    CREATE_MENU(menuPlay, MenuPlay, false);
-    CREATE_MENU(menuFindServer, MenuFindServer, false);
+    CREATE_MENU(menuOptions, MenuOptions, false);
 
     Open(menuStart, nullptr);
 }
@@ -55,10 +51,7 @@ void ::Menu::HandleMenuEvent(StringHash, VariantMap& eventData)
     case ME_OPEN_ABOUT_ME:      Open(menuAbout, source);
         break;
 
-    case ME_OPEN_FIND_SERVER:   Open(menuFindServer, source);
-        break;
-
-    case ME_OPEN_PLAY:          Open(menuPlay, source);
+    case ME_OPEN_OPTIONS:       Open(menuOptions, source);
         break;
 
     case ME_CLOSE:              CALL_MEMBER_IF_EXIST(source, Close);

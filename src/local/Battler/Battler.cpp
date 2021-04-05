@@ -6,7 +6,7 @@
 #include "Graphics/3D/TileSelected.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
-#include "GUI/Menu/AllMenu.h"
+#include "GUI/Menu/Menu.h"
 #include "Network/ServerC.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"

@@ -4,7 +4,7 @@
 #include "GUI/GUI.h"
 #include "GUI/Controls/Hint_.h"
 #include "GUI/GuiEditor/GuiEditor.h"
-#include "GUI/Menu/AllMenu.h"
+#include "GUI/Menu/Menu.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Terrain/Level_.h"
