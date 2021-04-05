@@ -2,8 +2,8 @@
 #pragma once
 
 
-class MenuPlay;
-class MenuMain;
+class PagePlay;
+class PageMain;
 class MenuPage;
 
 
@@ -22,8 +22,8 @@ public:
 private:
 
     PODVector<MenuPage *> allMenus;       // Здесь список всех меню
-    SharedPtr<MenuMain>   menuStart;
-    SharedPtr<MenuPlay>   menuPlay;
+    SharedPtr<PageMain>   menuStart;
+    SharedPtr<PagePlay>   menuPlay;
 
     MenuPage* ActiveMenu();
 

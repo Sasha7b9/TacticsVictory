@@ -3,10 +3,10 @@
 
 
 class PageAboutMe;
-class MenuFindServer;
+class PageFindServer;
 class MenuOptions;
-class MenuPlay;
-class MenuMain;
+class PagePlay;
+class PageMain;
 class MenuPage;
 
 
@@ -24,10 +24,10 @@ public:
 
 private:
     PODVector<MenuPage *>     allMenus;    // Здесь список всех меню
-    SharedPtr<MenuMain>       menuStart;
+    SharedPtr<PageMain>       menuStart;
     SharedPtr<PageAboutMe>    menuAbout;
-    SharedPtr<MenuPlay>       menuPlay;
-    SharedPtr<MenuFindServer> menuFindServer;
+    SharedPtr<PagePlay>       menuPlay;
+    SharedPtr<PageFindServer> menuFindServer;
 
     MenuPage* ActiveMenu();
 

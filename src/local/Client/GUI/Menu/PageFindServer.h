@@ -5,13 +5,13 @@
 #include "GUI/Menu/MenuPage_.h"
 
 
-class MenuFindServer : public MenuPage
+class PageFindServer : public MenuPage
 {
-    URHO3D_OBJECT(MenuFindServer, MenuPage);
+    URHO3D_OBJECT(PageFindServer, MenuPage);
 
 public:
 
-    MenuFindServer();
+    PageFindServer();
 
 private:
 

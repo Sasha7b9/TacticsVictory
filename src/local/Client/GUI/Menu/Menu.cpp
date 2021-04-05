@@ -18,10 +18,10 @@
 
 Menus::Menus(Menus **self) : Object(TheContext)
 {
-    CREATE_MENU(menuStart, MenuMain, false);
+    CREATE_MENU(menuStart, PageMain, false);
     CREATE_MENU(menuAbout, PageAboutMe, false);
-    CREATE_MENU(menuPlay, MenuPlay, false);
-    CREATE_MENU(menuFindServer, MenuFindServer, false);
+    CREATE_MENU(menuPlay, PagePlay, false);
+    CREATE_MENU(menuFindServer, PageFindServer, false);
 
     Open(menuStart, nullptr);
 

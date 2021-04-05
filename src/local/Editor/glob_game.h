@@ -6,7 +6,7 @@ class Editor;
 class ConfigurationFile;
 class LogRAW;
 class MasterServer;
-class MenuMain;
+class PageMain;
 class Menus;
 class WindowVariables;
 

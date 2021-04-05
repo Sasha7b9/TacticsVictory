@@ -3,7 +3,7 @@
 #include "GUI/Menu/PageFindServer.h"
 
 
-MenuFindServer::MenuFindServer() : MenuPage()
+PageFindServer::PageFindServer() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Find server");
@@ -15,14 +15,14 @@ MenuFindServer::MenuFindServer() : MenuPage()
     tableServers = new OrderedTable(this, "List of available servers");
 
     buttonConnect = new ButtonT(this, "Connect");
-    SubscribeToEvent(buttonConnect, E_RELEASED, URHO3D_HANDLER(MenuFindServer, HandleButtonRelease));
+    SubscribeToEvent(buttonConnect, E_RELEASED, URHO3D_HANDLER(PageFindServer, HandleButtonRelease));
 
     buttonBack = new ButtonT(this, "Back");
-    SubscribeToEvent(buttonBack, E_RELEASED, URHO3D_HANDLER(MenuFindServer, HandleButtonRelease));
+    SubscribeToEvent(buttonBack, E_RELEASED, URHO3D_HANDLER(PageFindServer, HandleButtonRelease));
 }
 
 
-void MenuFindServer::HandleButtonRelease(StringHash, VariantMap &eventData)
+void PageFindServer::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
     using namespace Released;
 

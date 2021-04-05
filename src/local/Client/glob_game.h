@@ -7,7 +7,7 @@ class ConfigurationFile;
 class LogRAW;
 class MasterServer;
 class Menus;
-class MenuMain;
+class PageMain;
 class WindowVariables;
 
 extern ConfigurationFile TheConfig;

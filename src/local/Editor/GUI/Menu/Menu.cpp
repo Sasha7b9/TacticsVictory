@@ -16,8 +16,8 @@
 
 Menus::Menus(Menus **self) : Object(TheContext)
 {
-    CREATE_MENU(menuStart, MenuMain, false);
-    CREATE_MENU(menuPlay, MenuPlay, false);
+    CREATE_MENU(menuStart, PageMain, false);
+    CREATE_MENU(menuPlay, PagePlay, false);
 
     Open(menuStart, nullptr);
 

@@ -3,7 +3,7 @@
 #include "GUI/Menu/MenuPlay.h"
 
 
-MenuPlay::MenuPlay() : MenuPage()
+PagePlay::PagePlay() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Play menu");
@@ -17,12 +17,12 @@ MenuPlay::MenuPlay() : MenuPage()
     buttonCreateServer = new ButtonT(this, "Create server");
     buttonBack = new ButtonT(this, "Back");
 
-    SubscribeToEvent(buttonBack, E_RELEASED, URHO3D_HANDLER(MenuPlay, HandleButtonRelease));
-    SubscribeToEvent(buttonFindServer, E_RELEASED, URHO3D_HANDLER(MenuPlay, HandleButtonRelease));
+    SubscribeToEvent(buttonBack, E_RELEASED, URHO3D_HANDLER(PagePlay, HandleButtonRelease));
+    SubscribeToEvent(buttonFindServer, E_RELEASED, URHO3D_HANDLER(PagePlay, HandleButtonRelease));
 }
 
 
-void MenuPlay::HandleButtonRelease(StringHash, VariantMap &eventData)
+void PagePlay::HandleButtonRelease(StringHash, VariantMap &eventData)
 {
     using namespace Released;
     using namespace MenuEvent;

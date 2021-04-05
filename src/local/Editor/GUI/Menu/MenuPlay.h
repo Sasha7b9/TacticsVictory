@@ -3,12 +3,12 @@
 #include "GUI/Menu/MenuPage_.h"
 
 
-class MenuPlay : public MenuPage
+class PagePlay : public MenuPage
 {
-    URHO3D_OBJECT(MenuPlay, MenuPage);
+    URHO3D_OBJECT(PagePlay, MenuPage);
 
 public:
-    MenuPlay();
+    PagePlay();
 
 private:
 
