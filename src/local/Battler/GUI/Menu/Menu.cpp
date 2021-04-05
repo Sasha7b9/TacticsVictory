@@ -5,7 +5,7 @@
 #include "GUI/Menu/PageStart.h"
 
 
-#define CREATE_MENU(name, type, moving)                                 \
+#define CREATE_PAGE(name, type, moving)                                 \
     name = new type();                                                  \
     allMenus.Push(name);                                                \
     GF::SetWindowInCenterScreen(name);                                  \
@@ -15,8 +15,8 @@
 
 Menus::Menus(Menus **self) : Object(TheContext)
 {
-    CREATE_MENU(menuStart,   MenuStart, false);
-    CREATE_MENU(menuOptions, PageOptions, false);
+    CREATE_PAGE(menuStart,   MenuStart, false);
+    CREATE_PAGE(pageOptions, PageOptions, false);
 
     Open(menuStart, nullptr);
 
@@ -41,7 +41,7 @@ void Menus::HandleMenuEvent(StringHash, VariantMap& eventData)
     case ME_EXIT_IN_OS:         TheEngine->Exit();
         break;
 
-    case ME_OPEN_OPTIONS:       Open(menuOptions, source);
+    case ME_OPEN_OPTIONS:       Open(pageOptions, source);
         break;
 
     case ME_CLOSE:              CALL_MEMBER_IF_EXIST(source, Close);

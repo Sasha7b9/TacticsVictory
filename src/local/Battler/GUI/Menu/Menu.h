@@ -23,7 +23,7 @@ private:
 
     PODVector<MenuPage *> allMenus;       // Здесь список всех меню
     SharedPtr<MenuStart>    menuStart;
-    SharedPtr<PageOptions>  menuOptions;
+    SharedPtr<PageOptions>  pageOptions;
 
     MenuPage* ActiveMenu();
     void Open(MenuPage* menu, MenuPage *prev);    // Открыть меню menu, при этом его хранителем указать prev
