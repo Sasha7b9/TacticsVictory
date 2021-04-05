@@ -87,6 +87,7 @@ using namespace Urho3D;
 #include "GUI/Controls/Hint_.h"
 #include "GUI/Controls/Label_.h"
 #include "GUI/Logic/LineTranslator2D_.h"
+#include "GUI/Menu/AllMenu.h"
 #include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"

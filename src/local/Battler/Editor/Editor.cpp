@@ -108,7 +108,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
             TheDebugRenderer->AddTriangle(selectedPlane.v0, selectedPlane.v2, selectedPlane.v3, color, false);
         }
 
-        if (!TheMenu->IsActive() &&
+        if (!::Menu::IsActive() &&
             !TheGUI->UnderCursor() &&
             !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {
@@ -137,7 +137,7 @@ void Editor::HandlePostRenderUpdate(StringHash, VariantMap &)
 
     if (TheGuiEditor->modeSelect == GuiEditor::ModeSelect_Edge)
     {
-        if (!TheMenu->IsActive() &&
+        if (!::Menu::IsActive() &&
             !TheGUI->UnderCursor() &&
             !TheInput->GetMouseButtonDown(MOUSEB_RIGHT | MOUSEB_MIDDLE))
         {

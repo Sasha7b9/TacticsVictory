@@ -38,7 +38,6 @@ Hint            *TheHint = nullptr;
 LogU3D          *TheLog = nullptr;
 MenuConfirmExit *TheMenuConfirmExit = nullptr;
 MenuGame        *TheMenuMain = nullptr;
-MenuT           *TheMenu = nullptr;
 Mouse           *TheMouse = nullptr;
 PathIndicator   *ThePathIndicator = nullptr;
 SceneC          *TheScene = nullptr;

@@ -117,7 +117,9 @@ void Battler::Start()
     CreateGUI();
 
     LOGWRITE("Loading settings");
-    menu = new MenuT(&TheMenu);
+
+    ::Menu::Create();
+
     TheFileSelector = new FileSelector(TheContext);
     TheFileSelector->GetWindow()->SetModal(false);
     TheFileSelector->GetWindow()->SetVisible(false);
