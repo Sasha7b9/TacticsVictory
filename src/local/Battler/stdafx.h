@@ -82,6 +82,7 @@ using namespace Urho3D;
 #include "FileSystem/ConfigurationFile_.h"
 #include "Game/Logic/Rotator_.h"
 #include "Game/Logic/SunEngine_.h"
+#include "Graphics/Renderer_.h"
 #include "Graphics/2D/Image_.h"
 #include "GUI/Cursor_.h"
 #include "GUI/Controls/Hint_.h"

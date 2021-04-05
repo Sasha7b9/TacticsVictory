@@ -11,6 +11,7 @@ Font          *TheFont         = nullptr;
 Graphics      *TheGraphics     = nullptr;
 Input         *TheInput        = nullptr;
 ResourceCache *TheCache        = nullptr;
+Renderer      *TheRenderer = nullptr;
 Localization  *TheLocalization = nullptr;
 Scene         *TheScene        = nullptr;
 UI            *TheUI           = nullptr;

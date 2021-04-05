@@ -56,6 +56,7 @@ void Editor::GetSubsystems()
     TheEngine = GetSubsystem<Engine>();
     TheFileSystem = GetSubsystem<FileSystem>();
     TheGraphics = GetSubsystem<Graphics>();
+    TheRenderer = GetSubsystem<Renderer>();
     TheLocalization = GetSubsystem<Localization>();
     TheUI = GetSubsystem<UI>();
 }
@@ -105,6 +106,8 @@ void Editor::Start()
     TheScene = new Scene(TheContext);
 
     CreateGUI();
+
+    RendererT::LoadSettings();
 
     menu = new Menus(&TheMenu);
 }

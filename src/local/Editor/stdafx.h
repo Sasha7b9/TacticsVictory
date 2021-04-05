@@ -14,6 +14,7 @@
 #include <Urho3D/Graphics/Graphics.h>
 #include <Urho3D/Graphics/Octree.h>
 #include <Urho3D/Graphics/OctreeQuery.h>
+#include <Urho3D/Graphics/Renderer.h>
 #include <Urho3D/Graphics/StaticModel.h>
 #include <Urho3D/Input/Input.h>
 #include <Urho3D/IO/FileSystem.h>
@@ -61,6 +62,7 @@ using namespace Urho3D;
 #include "defines.h"
 #include "glob_engine.h"
 #include "FileSystem/ConfigurationFile_.h"
+#include "Graphics/Renderer_.h"
 #include "Graphics/2D/Image_.h"
 #include "GUI/Cursor_.h"
 #include "GUI/GUI.h"

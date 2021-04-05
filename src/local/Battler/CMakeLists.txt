@@ -42,6 +42,7 @@ file(GLOB GAME                                                      Game/*.*)
 file(GLOB GAME_LOGIC                             ../../common_files/Game/Logic/*.*)
 file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.*
                                                                     Game/Path/*.*)
+file(GLOB GRAPHICS                               ../../common_files/Graphics/*.*)
 file(GLOB GRAPHICS_2D                            ../../common_files/Graphics/2D/*.*)
 file(GLOB GRAPHICS_3D                                               Graphics/3D/*.*)
 file(GLOB GUI                                    ../../common_files/GUI/*.*
@@ -103,6 +104,7 @@ source_group(FileSystem                                 FILES ${FILESYSTEM})
 source_group(Game                                       FILES ${GAME})
 source_group(Game\\Logic                                FILES ${GAME_LOGIC})
 source_group(Game\\Path                                 FILES ${GAME_PATH})
+source_group(Graphics                                   FILES ${GRAPHICS})
 source_group(Graphics\\2D                               FILES ${GRAPHICS_2D})
 source_group(Graphics\\3D                               FILES ${GRAPHICS_3D})
 source_group(GUI                                        FILES ${GUI})
@@ -137,7 +139,7 @@ source_group(Scene\\Terrain                             FILES ${SCENE_TERRAIN})
 source_group(Utils                                      FILES ${UTILS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${FILESYSTEM} ${GAME} ${GAME_LOGIC} ${GAME_PATH}
-    ${GRAPHICS_2D} ${GRAPHICS_3D}
+    ${GRAPHICS} ${GRAPHICS_2D} ${GRAPHICS_3D}
     ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS} ${GUI_CONTROLS_SLIDERS} ${GUI_GUIEDITOR}
     ${GUI_GAME} ${GUI_LOGIC}
     ${GUI_MENU} ${GUI_PANELS}
