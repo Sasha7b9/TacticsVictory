@@ -8,7 +8,9 @@
 #define CHECK_ON_VALID_INT      if (!isValid) { LOGERROR("Configuration file is not valid"); return -1; }
 
 
-#define ERROR_FUNCTION      LOGERRORF("%s has not realisation", __FUNCTION__);
+#define ERROR_FUNCTION         LOGERRORF("%s has not realisation", __FUNCTION__);
+#define IS_VALID(x)            (&*(x))
+#define IS_VALID_AND_KEY(x, k) (IS_VALID(x) && k[0])
 
 
 bool ConfigurationFile::Load(pchar name)
@@ -119,10 +121,6 @@ float ConfigurationFile::GetFloat(pchar key1, pchar key2)
 }
 
 
-#define IS_VALID(x)            (&*(x))
-#define IS_VALID_AND_KEY(x, k) (IS_VALID(x) && k[0])
-
-
 void ConfigurationFile::SetInt(int value, pchar key)
 {
     auto it = document->FindMember(key);
@@ -172,6 +170,11 @@ void ConfigurationFile::SetInt(int value, pchar key1, pchar key2)
 
 rapidjson::Value::ConstMemberIterator ConfigurationFile::FindMember(pchar key1, pchar key2, pchar key3, pchar key4)
 {
+    if (!isValid)
+    {
+        LOGERROR("Configuration document not loaded");
+    }
+
     auto it = document->FindMember(key1);
 
     if (IS_VALID(it) && it != document->MemberEnd())
