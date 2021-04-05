@@ -1,6 +1,6 @@
 // 2021/03/26 23:38:24 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Menu/MenuFindServer.h"
+#include "GUI/Menu/PageFindServer.h"
 
 
 MenuFindServer::MenuFindServer() : WindowMenu()
