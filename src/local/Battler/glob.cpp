@@ -36,7 +36,6 @@ GuiEditor       *TheGuiEditor = nullptr;
 GuiGame         *TheGuiGame = nullptr;
 Hint            *TheHint = nullptr;
 LogU3D          *TheLog = nullptr;
-MenuConfirmExit *TheMenuConfirmExit = nullptr;
 PageGame        *ThePageGame = nullptr;
 Menus           *TheMenu = nullptr;
 Mouse           *TheMouse = nullptr;
