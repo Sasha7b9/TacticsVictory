@@ -6,7 +6,7 @@
 #include "Scene/Cameras/Camera.h"
 
 
-MenuGame::MenuGame(Context *) : MenuPage()
+PageGame::PageGame(Context *) : MenuPage()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
@@ -24,10 +24,10 @@ MenuGame::MenuGame(Context *) : MenuPage()
     buttons.Push(buttonExit);
     buttons.Push(buttonCancel);
 
-    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
-    SubscribeToEvent(buttonNewGame, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
-    SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(MenuGame, HandleButtonRelease));
+    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(PageGame, HandleButtonRelease));
+    SubscribeToEvent(buttonNewGame, E_RELEASED, URHO3D_HANDLER(PageGame, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(PageGame, HandleButtonRelease));
+    SubscribeToEvent(buttonCancel, E_RELEASED, URHO3D_HANDLER(PageGame, HandleButtonRelease));
 
     text->SetWidth(GetWidth());
 
@@ -36,17 +36,17 @@ MenuGame::MenuGame(Context *) : MenuPage()
 }
 
 
-void MenuGame::RegisterObject()
+void PageGame::RegisterObject()
 {
     Context *context = TheContext;
 
-    context->RegisterFactory<MenuGame>("UI");
+    context->RegisterFactory<PageGame>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(MenuPage);
 }
 
 
-void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
+void PageGame::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Released::P_ELEMENT].GetPtr();
 
@@ -73,14 +73,14 @@ void MenuGame::HandleButtonRelease(StringHash, VariantMap& eventData)
 }
 
 
-void MenuGame::Open()
+void PageGame::Open()
 {
     TheScene->SetTimeScale(0.0f);
     TheCamera->SetEnabled(false);
 }
 
 
-void MenuGame::Close()
+void PageGame::Close()
 {
     TheScene->SetTimeScale(1.0f);
     TheCamera->SetEnabled(true);

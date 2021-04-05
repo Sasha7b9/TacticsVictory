@@ -3,15 +3,12 @@
 #include "GUI/Menu/MenuPage_.h"
 
 
-class ButtonSwitch;
-
-
-class MenuGame : public MenuPage
+class PageGame : public MenuPage
 {
-    URHO3D_OBJECT(MenuGame, MenuPage);
+    URHO3D_OBJECT(PageGame, MenuPage);
 
 public:
-    MenuGame(Context *);
+    PageGame(Context *);
     static void RegisterObject();
 
     void Open();

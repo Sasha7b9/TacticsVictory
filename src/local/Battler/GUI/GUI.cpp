@@ -42,7 +42,7 @@ void GUI::RegistrationObjects()
     ButtonSwitch::RegisterObject();
     ButtonToggled::RegisterObject();
     WindowT::RegisterObject();
-    MenuGame::RegisterObject();
+    PageGame::RegisterObject();
     MenuOptions::RegisterObject();
     MenuConfirmExit::RegisterObject();
     Tab::RegisterObject();
