@@ -105,7 +105,7 @@ void Client::Start()
 
     CreateGUI();
 
-    menu = new ::Menu(&TheMenu);
+    ::Menu::Create();
 }
 
 

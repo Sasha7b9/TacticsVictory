@@ -33,5 +33,4 @@ private:
     SharedPtr<Log>      log;
     SharedPtr<GUI>      gui;
     SharedPtr<Mouse>    mouse;
-    SharedPtr<::Menu>    menu;
 };

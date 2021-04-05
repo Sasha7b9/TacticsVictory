@@ -10,36 +10,20 @@ class MenuMain;
 class WindowMenu;
 
 
-class Menu : public Object
+class Menu
 {
-    URHO3D_OBJECT(Menu, Object)
-
 public:
-    Menu(Menu **self);
-    ~Menu();
-    void Hide();
-    bool IsActive();
-    bool ProcessingKey(int key);
+
+    static void Create();
+    static void Hide();
+    static bool IsActive();
+    static bool ProcessingKey(int key);
 
 private:
-    PODVector<WindowMenu*>    allMenus;       // Здесь список всех меню
-    SharedPtr<MenuMain>      menuStart;
-    SharedPtr<MenuAboutMe>    menuAbout;
-    SharedPtr<MenuPlay>       menuPlay;
-    SharedPtr<MenuFindServer> menuFindServer;
 
-    WindowMenu* ActiveMenu();
-    void Open(WindowMenu* menu, WindowMenu *prev);    // Открыть меню menu, при этом его хранителем указать prev
-    void CloseAll();
-    void HandleMenuEvent(StringHash, VariantMap&);
+    static WindowMenu* ActiveMenu();
+
+    static void Open(WindowMenu* menu, WindowMenu *prev);    // Открыть меню menu, при этом его хранителем указать prev
+    static void CloseAll();
+    static void HandleMenuEvent(StringHash, VariantMap&);
 };
-
-
-/*
-           +-----------+
-           | MenuStart |
-           +-----------+
-
-
-
-*/

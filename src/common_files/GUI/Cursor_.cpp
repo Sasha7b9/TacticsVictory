@@ -101,7 +101,7 @@ void CursorT::Update(float dT)
         int height = TheGraphics->GetHeight();
         int numFrame = static_cast<int>(angle0) / 10;
 
-        if(!TheMenu->IsActive() && !TheGUI->UnderCursor())
+        if(!::Menu::IsActive() && !TheGUI->UnderCursor())
         {
             if(posX < delta && posY < delta)
             {

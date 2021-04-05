@@ -8,46 +8,30 @@
 #include "GUI/Menu/PagePlay.h"
 
 
+static PODVector<WindowMenu *> allMenus;    // Здесь список всех меню
+static SharedPtr<MenuMain>       menuStart;
+static SharedPtr<MenuAboutMe>    menuAbout;
+static SharedPtr<MenuPlay>       menuPlay;
+static SharedPtr<MenuFindServer> menuFindServer;
+
+
 #define CREATE_MENU(name, type, moving)                                 \
     name = new type();                                                  \
     allMenus.Push(name);                                                \
     GF::SetWindowInCenterScreen(name);                                  \
-    name->SetMovable(moving);                                           \
-    SubscribeToEvent(E_MENU, URHO3D_HANDLER(::Menu, HandleMenuEvent));
+    name->SetMovable(moving);
+
+//    SubscribeToEvent(E_MENU, URHO3D_HANDLER(::Menu, HandleMenuEvent));
 
 
-::Menu::Menu(Menu **self) : Object(TheContext)
+void ::Menu::Create()
 {
-//    menuStart = new MenuStart();
-//    allMenus.Push(menuStart);
-//    GF::SetWindowInCenterScreen(menuStart);
-//    menuStart->SetMovable(false);
-//    SubscribeToEvent(E_MENU, URHO3D_HANDLER(MenuT, HandleMenuEvent));
-
     CREATE_MENU(menuStart, MenuMain, false);
     CREATE_MENU(menuAbout, MenuAboutMe, false);
     CREATE_MENU(menuPlay, MenuPlay, false);
     CREATE_MENU(menuFindServer, MenuFindServer, false);
 
     Open(menuStart, nullptr);
-
-    *self = this;
-
-    /*
-    TheMenuMain = new MenuGame();
-    SetWindowInCenterScreen(TheMenuMain);
-
-    gMenuOptions = new MenuOptions();
-    SetWindowInCenterScreen(gMenuOptions);
-
-    TheMenuConfirmExit = new MenuConfirmExit();
-    SetWindowInCenterScreen(TheMenuConfirmExit);
-    */
-}
-
-
-::Menu::~Menu()
-{
 }
 
 
