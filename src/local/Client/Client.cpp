@@ -130,7 +130,7 @@ void Client::CreateGUI()
 void Client::SetLocalization()
 {
     TheLocalization->LoadJSONFile("Strings.json");
-    TheLocalization->SetLanguage("ru");
+    TheLocalization->SetLanguage(TheSettings.GetInt("language") == 0 ? "en" : "ru");
 }
 
 
@@ -152,8 +152,8 @@ void Client::SetWindowTitleAndIcon()
     Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     TheGraphics->SetWindowIcon(icon);
 
-    SetWindowText(FindWindow(NULL, "Client"), TheSettings.GetInt("language") == 0 ? TEXT("Tactics Victory") :
-                                                                                    TEXT("Тактика Победы"));
+    SetWindowText(FindWindow(NULL, "Client"), TheLocalization->GetLanguage() == "en" ? TEXT("Tactics Victory") :
+                                                                                       TEXT("Тактика Победы"));
 }
 
 
