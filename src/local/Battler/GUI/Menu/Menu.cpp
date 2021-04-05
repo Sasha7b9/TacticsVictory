@@ -15,10 +15,10 @@
 
 Menus::Menus(Menus **self) : Object(TheContext)
 {
-    CREATE_PAGE(menuStart,   MenuStart, false);
+    CREATE_PAGE(pageStart,   PageStart, false);
     CREATE_PAGE(pageOptions, PageOptions, false);
 
-    Open(menuStart, nullptr);
+    Open(pageStart, nullptr);
 
     *self = this;
 }
@@ -85,7 +85,7 @@ bool Menus::ProcessingKey(int key)
 
     if(active)
     {
-        if(KEY_IS_ESC && active == menuStart)    // Если находимся в стартовом менюю и нажата кнопка ESCAPE - ничего делать не будем
+        if(KEY_IS_ESC && active == pageStart)    // Если находимся в стартовом менюю и нажата кнопка ESCAPE - ничего делать не будем
         {
 
         }

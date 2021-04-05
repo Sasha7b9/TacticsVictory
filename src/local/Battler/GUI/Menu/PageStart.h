@@ -4,13 +4,13 @@
 #include "GUI/Menu/MenuPage_.h"
 
 
-class MenuStart : public MenuPage
+class PageStart : public MenuPage
 {
-    URHO3D_OBJECT(MenuStart, MenuPage);
+    URHO3D_OBJECT(PageStart, MenuPage);
 
 public:
-    MenuStart();
-    ~MenuStart();
+    PageStart();
+    ~PageStart();
 
 private:
     void HandleButtonRelease(StringHash, VariantMap&);

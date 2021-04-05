@@ -5,7 +5,7 @@
 #include "GUI/Menu/PageStart.h"
 
 
-MenuStart::MenuStart() : MenuPage()
+PageStart::PageStart() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
 
@@ -27,18 +27,18 @@ MenuStart::MenuStart() : MenuPage()
     buttons.Push(buttonOptions);
     buttons.Push(buttonExit);
 
-    SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
+    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(PageStart, HandleButtonRelease));
 }
 
 
-MenuStart::~MenuStart()
+PageStart::~PageStart()
 {
 }
 
 
-void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
+void PageStart::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     if(!TheMenu->IsActive())
     {
