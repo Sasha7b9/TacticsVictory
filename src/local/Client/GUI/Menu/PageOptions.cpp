@@ -37,7 +37,11 @@ PageOptions::PageOptions() : MenuPage()
     SubscribeToEvent(name, E_ITEMSELECTED, URHO3D_HANDLER(PageOptions, HandleItemSelected));    \
     name->SetSelection(startIndex);
 
-    char *items1[] = {"Low", "Medium", "High"};
+    char *items0[] = { "Off", "On" };
+    CREATE_DDLWTAB(ddlFullScreen, "Full screen", 2, items0,
+        (uint)TheSettings.GetInt("full_screen"));
+
+    char *items1[] = { "Low", "Medium", "High" };
     CREATE_DDLWTAB(ddlTextureQuality, "Texture quality", 3, items1,
         (uint)TheSettings.GetInt("texture", "quality"));
 
@@ -89,7 +93,11 @@ void PageOptions::HandleItemSelected(StringHash, VariantMap& eventData)
     DropDownListWithTextAndButton *ddList = (DropDownListWithTextAndButton *)eventData[ItemSelected::P_ELEMENT].GetPtr();
     int index = eventData[ItemSelected::P_SELECTION].GetInt();
 
-    if(ddList == ddlTextureQuality)
+    if (ddList == ddlFullScreen)
+    {
+        TheSettings.SetInt(index, "full_screen");
+    }
+    else if(ddList == ddlTextureQuality)
     {
         TheSettings.SetInt(index, "texture", "quality");
     }

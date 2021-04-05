@@ -67,11 +67,20 @@ void Editor::TuneEngineParameters()
     engineParameters_[EP_WINDOW_TITLE] = GetTypeName();
     engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->
                                                         GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
-    engineParameters_[EP_FULL_SCREEN] = false;
+    engineParameters_[EP_FULL_SCREEN] = TheSettings.GetInt("full_screen") == 1;
     engineParameters_[EP_TEXTURE_QUALITY] = 32;
-//    engineParameters_[EP_WINDOW_WIDTH] = TheSettings.GetInt("screen", "width");
-//    engineParameters_[EP_WINDOW_HEIGHT] = TheSettings.GetInt("screen", "height");
     engineParameters_[EP_HEADLESS] = false;
+
+    if (TheSettings.GetInt("full_screen") == 1)
+    {
+        engineParameters_[EP_FULL_SCREEN] = true;
+    }
+    else
+    {
+        engineParameters_[EP_FULL_SCREEN] = false;
+        engineParameters_[EP_WINDOW_WIDTH] = TheSettings.GetInt("screen", "width");
+        engineParameters_[EP_WINDOW_HEIGHT] = TheSettings.GetInt("screen", "height");
+    }
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
 #ifdef DEBUG

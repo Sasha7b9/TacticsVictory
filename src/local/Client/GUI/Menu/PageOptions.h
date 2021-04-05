@@ -27,6 +27,7 @@ private:
     SharedPtr<SliderWithTextAndButtons> sliderMaxOccluderTriangles;
     SharedPtr<SliderWithTextAndButtons> sliderVolume;
 
+    SharedPtr<DropDownListWithTextAndButton> ddlFullScreen;
     SharedPtr<DropDownListWithTextAndButton> ddlTextureQuality;
     SharedPtr<DropDownListWithTextAndButton> ddlMaterialQuality;
     SharedPtr<DropDownListWithTextAndButton> ddlTextureAnisotropy;
