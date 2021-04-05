@@ -35,10 +35,11 @@ private:
     void HandlePostRenderUpdate(StringHash, VariantMap&);
     void HandleKeyDown(StringHash, VariantMap&);
 
-    SharedPtr<Log>      log;
-    SharedPtr<SceneC>   scene;
-    SharedPtr<ServerC>  server;
-    SharedPtr<Mouse>    mouse;
-    SharedPtr<GUI>      gui;
-    SharedPtr<Editor>   editor;
+    SharedPtr<Log>     log;
+    SharedPtr<SceneC>  scene;
+    SharedPtr<ServerC> server;
+    SharedPtr<Mouse>   mouse;
+    SharedPtr<GUI>     gui;
+    SharedPtr<Editor>  editor;
+    SharedPtr<Menus>   menu;
 };

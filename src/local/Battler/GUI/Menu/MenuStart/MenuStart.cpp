@@ -40,7 +40,7 @@ MenuStart::~MenuStart()
 
 void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    if(!Menus::IsActive())
+    if(!TheMenu->IsActive())
     {
         return;
     }

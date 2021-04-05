@@ -106,7 +106,7 @@ void Editor::Start()
 
     CreateGUI();
 
-    Menus::Create();
+    menu = new Menus(&TheMenu);
 }
 
 

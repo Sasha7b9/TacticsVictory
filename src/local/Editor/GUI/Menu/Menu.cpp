@@ -6,27 +6,22 @@
 #include "GUI/Menu/MenuPlay.h"
 
 
-PODVector<MenuPage *>   allMenus;       // Здесь список всех меню
-SharedPtr<MenuMain>       menuStart;
-SharedPtr<MenuPlay>       menuPlay;
-
-
-
 #define CREATE_MENU(name, type, moving)                                 \
     name = new type();                                                  \
     allMenus.Push(name);                                                \
     GF::SetWindowInCenterScreen(name);                                  \
-    name->SetMovable(moving);
+    name->SetMovable(moving);                                           \
+    SubscribeToEvent(E_MENU, URHO3D_HANDLER(Menus, HandleMenuEvent));
 
-// SubscribeToEvent(E_MENU, URHO3D_HANDLER(::Menu, HandleMenuEvent));
 
-
-void Menus::Create()
+Menus::Menus(Menus **self) : Object(TheContext)
 {
     CREATE_MENU(menuStart, MenuMain, false);
     CREATE_MENU(menuPlay, MenuPlay, false);
 
     Open(menuStart, nullptr);
+
+    *self = this;
 }
 
 

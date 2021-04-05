@@ -4,6 +4,7 @@
 
 
 class SceneT;
+class Menus;
 
 
 class Editor : public Application
@@ -30,7 +31,8 @@ private:
     void TuneEngineParameters();
     void CreateGUI();
 
-    SharedPtr<Log>      log;
-    SharedPtr<GUI>      gui;
-    SharedPtr<Mouse>    mouse;
+    SharedPtr<Log>   log;
+    SharedPtr<GUI>   gui;
+    SharedPtr<Mouse> mouse;
+    SharedPtr<Menus> menu;
 };

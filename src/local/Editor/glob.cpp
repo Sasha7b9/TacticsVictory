@@ -20,15 +20,16 @@ ConfigurationFile TheConfig;
 ConfigurationFile TheSettings;
 MasterServer      TheMaster;
 
-CameraT          *TheCamera     = nullptr;
-Editor           *TheClient     = nullptr;
-ConsoleT         *TheConsole    = nullptr;
-CursorT          *TheCursor     = nullptr;
-GUI              *TheGUI        = nullptr;
-Hint             *TheHint       = nullptr;
-LogRAW           *TheLog        = nullptr;
-MenuMain         *TheMenuMain   = nullptr;
-Mouse            *TheMouse      = nullptr;
-WindowVariables  *TheWindowVars = nullptr;
+CameraT         *TheCamera     = nullptr;
+Editor          *TheClient     = nullptr;
+ConsoleT        *TheConsole    = nullptr;
+CursorT         *TheCursor     = nullptr;
+GUI             *TheGUI        = nullptr;
+Hint            *TheHint       = nullptr;
+LogRAW          *TheLog        = nullptr;
+MenuMain        *TheMenuMain   = nullptr;
+Menus           *TheMenu = nullptr;
+Mouse           *TheMouse      = nullptr;
+WindowVariables *TheWindowVars = nullptr;
 
 Vector<WindowT *> TheOpenedWindow;
