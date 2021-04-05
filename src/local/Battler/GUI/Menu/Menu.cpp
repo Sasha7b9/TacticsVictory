@@ -17,7 +17,7 @@
 Menus::Menus(Menus **self) : Object(TheContext)
 {
     CREATE_MENU(menuStart, MenuStart, false);
-    CREATE_MENU(menuAbout, MenuAboutMe, false);
+    CREATE_MENU(menuAbout, PageAboutMe, false);
     CREATE_MENU(menuOptions, MenuOptions, false);
 
     Open(menuStart, nullptr);

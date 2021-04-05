@@ -4,7 +4,7 @@
 #include "GUI/Menu/MenuStart/MenuAboutMe.h"
 
 
-MenuAboutMe::MenuAboutMe() : MenuPage()
+PageAboutMe::PageAboutMe() : MenuPage()
 {
     const int width = 216;
     const int height = 130;
@@ -23,13 +23,13 @@ MenuAboutMe::MenuAboutMe() : MenuPage()
 
     buttons.Push(buttonOk);
 
-    SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(MenuAboutMe, HandleButtonRelease));
+    SubscribeToEvent(buttonOk, E_RELEASED, URHO3D_HANDLER(PageAboutMe, HandleButtonRelease));
 
     SetMovable(false);
 }
 
 
-void MenuAboutMe::HandleButtonRelease(StringHash, VariantMap&)
+void PageAboutMe::HandleButtonRelease(StringHash, VariantMap&)
 {
     SendEventClose();
 }

@@ -34,7 +34,7 @@ void GUI::RegistrationObjects()
     ButtonToggled::RegisterObject();
     WindowT::RegisterObject();
     MenuConfirmExit::RegisterObject();
-    MenuAboutMe::RegisterObject();
+    PageAboutMe::RegisterObject();
     Label::RegisterObject();
     SliderT::RegisterObject();
     SliderInt::RegisterObject();

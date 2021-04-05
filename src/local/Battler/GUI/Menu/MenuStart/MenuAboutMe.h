@@ -3,12 +3,12 @@
 #include "GUI/Menu/MenuPage_.h"
 
 
-class MenuAboutMe : public MenuPage
+class PageAboutMe : public MenuPage
 {
-    URHO3D_OBJECT(MenuAboutMe, MenuPage);
+    URHO3D_OBJECT(PageAboutMe, MenuPage);
 
 public:
-    MenuAboutMe();
+    PageAboutMe();
 
 private:
     SharedPtr<ButtonT> buttonOk;

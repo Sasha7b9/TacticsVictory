@@ -46,7 +46,7 @@ void GUI::RegistrationObjects()
     MenuGame::RegisterObject();
     MenuOptions::RegisterObject();
     MenuConfirmExit::RegisterObject();
-    MenuAboutMe::RegisterObject();
+    PageAboutMe::RegisterObject();
     Tab::RegisterObject();
     Label::RegisterObject();
     SliderT::RegisterObject();

@@ -19,7 +19,7 @@
 Menus::Menus(Menus **self) : Object(TheContext)
 {
     CREATE_MENU(menuStart, MenuMain, false);
-    CREATE_MENU(menuAbout, MenuAboutMe, false);
+    CREATE_MENU(menuAbout, PageAboutMe, false);
     CREATE_MENU(menuPlay, MenuPlay, false);
     CREATE_MENU(menuFindServer, MenuFindServer, false);
 
