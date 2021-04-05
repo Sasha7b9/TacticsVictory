@@ -11,10 +11,9 @@
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/GuiGame/GuiGame.h"
-#include "GUI/Menu/MenuConfirmExit_.h"
-#include "GUI/Menu/MenuGame.h"
-#include "GUI/Menu/MenuStart/MenuAboutMe.h"
-#include "GUI/Menu/MenuStart/MenuOptions.h"
+#include "GUI/Menu/PageConfirmExit_.h"
+#include "GUI/Menu/PageGame.h"
+#include "GUI/Menu/MenuStart/PageOptions.h"
 #include "GUI/Panels/PanelBottom.h"
 #include "GUI/Panels/PanelMain.h"
 #include "GUI/Panels/PanelMap.h"
@@ -46,7 +45,6 @@ void GUI::RegistrationObjects()
     MenuGame::RegisterObject();
     MenuOptions::RegisterObject();
     MenuConfirmExit::RegisterObject();
-    PageAboutMe::RegisterObject();
     Tab::RegisterObject();
     Label::RegisterObject();
     SliderT::RegisterObject();

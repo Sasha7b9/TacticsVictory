@@ -2,8 +2,7 @@
 #include "stdafx.h"
 #include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Menu/MenuMain.h"
-#include "GUI/Menu/MenuPlay.h"
+#include "GUI/Menu/PageMain.h"
 
 
 #define CREATE_MENU(name, type, moving)                                 \
@@ -17,7 +16,6 @@
 Menus::Menus(Menus **self) : Object(TheContext)
 {
     CREATE_MENU(menuStart, PageMain, false);
-    CREATE_MENU(menuPlay, PagePlay, false);
 
     Open(menuStart, nullptr);
 
@@ -40,9 +38,6 @@ void Menus::HandleMenuEvent(StringHash, VariantMap& eventData)
         break;
 
     case ME_EXIT_IN_OS:         TheEngine->Exit();
-        break;
-
-    case ME_OPEN_PLAY:          Open(menuPlay, source);
         break;
 
     case ME_CLOSE:              CALL_MEMBER_IF_EXIST(source, Close);

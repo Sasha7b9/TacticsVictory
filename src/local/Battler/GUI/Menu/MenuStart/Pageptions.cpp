@@ -4,7 +4,7 @@
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
 #include "GUI/Controls/Sliders/SliderInt_.h"
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
-#include "GUI/Menu/MenuStart/MenuOptions.h"
+#include "GUI/Menu/MenuStart/PageOptions.h"
 
 
 MenuOptions::MenuOptions() : MenuPage()

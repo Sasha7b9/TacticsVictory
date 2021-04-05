@@ -23,7 +23,6 @@ private:
 
     PODVector<MenuPage *> allMenus;       // Здесь список всех меню
     SharedPtr<PageMain>   menuStart;
-    SharedPtr<PagePlay>   menuPlay;
 
     MenuPage* ActiveMenu();
 

@@ -2,10 +2,10 @@
 #include "stdafx.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Menu/MenuStart/MenuStart.h"
+#include "GUI/Menu/PageMain.h"
 
 
-MenuStart::MenuStart() : MenuPage()
+PageMain::PageMain() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
 
@@ -18,27 +18,22 @@ MenuStart::MenuStart() : MenuPage()
     buttonPlay = new ButtonT(this, "Play");
     buttonPlay->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_PLAY));
 
-    buttonOptions = new ButtonT(this, "Options");
-    buttonOptions->SetVar(VAR_MENU_EVENT, Variant(ME_OPEN_OPTIONS));
-
     buttonExit = new ButtonT(this, "Exit");
 
     buttons.Push(buttonPlay);
-    buttons.Push(buttonOptions);
     buttons.Push(buttonExit);
 
-    SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonOptions, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
-    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(MenuStart, HandleButtonRelease));
+    SubscribeToEvent(buttonPlay, E_RELEASED, URHO3D_HANDLER(PageMain, HandleButtonRelease));
+    SubscribeToEvent(buttonExit, E_RELEASED, URHO3D_HANDLER(PageMain, HandleButtonRelease));
 }
 
 
-MenuStart::~MenuStart()
+PageMain::~PageMain()
 {
 }
 
 
-void MenuStart::HandleButtonRelease(StringHash, VariantMap& eventData)
+void PageMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
     if(!TheMenu->IsActive())
     {

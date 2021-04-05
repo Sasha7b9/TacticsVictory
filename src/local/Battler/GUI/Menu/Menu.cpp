@@ -1,9 +1,8 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Menu/Menu.h"
-#include "GUI/Menu/MenuStart/MenuAboutMe.h"
-#include "GUI/Menu/MenuStart/MenuOptions.h"
-#include "GUI/Menu/MenuStart/MenuStart.h"
+#include "GUI/Menu/MenuStart/PageOptions.h"
+#include "GUI/Menu/MenuStart/PageStart.h"
 
 
 #define CREATE_MENU(name, type, moving)                                 \
@@ -16,8 +15,7 @@
 
 Menus::Menus(Menus **self) : Object(TheContext)
 {
-    CREATE_MENU(menuStart, MenuStart, false);
-    CREATE_MENU(menuAbout, PageAboutMe, false);
+    CREATE_MENU(menuStart,   MenuStart, false);
     CREATE_MENU(menuOptions, MenuOptions, false);
 
     Open(menuStart, nullptr);
@@ -41,9 +39,6 @@ void Menus::HandleMenuEvent(StringHash, VariantMap& eventData)
         break;
 
     case ME_EXIT_IN_OS:         TheEngine->Exit();
-        break;
-
-    case ME_OPEN_ABOUT_ME:      Open(menuAbout, source);
         break;
 
     case ME_OPEN_OPTIONS:       Open(menuOptions, source);
