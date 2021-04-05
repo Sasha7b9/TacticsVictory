@@ -244,7 +244,7 @@ ConsoleT::ConsoleT() :
     */
 
     text = TheUIRoot->CreateChild<Text>();
-    text->SetStyle("WindowMenu");
+    text->SetStyle("MenuPage");
     text->SetWordwrap(true);
     AddChild(text);
 

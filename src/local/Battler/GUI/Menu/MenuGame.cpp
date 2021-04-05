@@ -6,7 +6,7 @@
 #include "Scene/Cameras/Camera.h"
 
 
-MenuGame::MenuGame(Context *) : WindowMenu()
+MenuGame::MenuGame(Context *) : MenuPage()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
@@ -42,7 +42,7 @@ void MenuGame::RegisterObject()
 
     context->RegisterFactory<MenuGame>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(WindowMenu);
+    URHO3D_COPY_BASE_ATTRIBUTES(MenuPage);
 }
 
 

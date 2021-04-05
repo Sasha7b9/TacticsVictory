@@ -4,7 +4,7 @@
 
 class MenuPlay;
 class MenuMain;
-class WindowMenu;
+class MenuPage;
 
 
 class Menu
@@ -18,8 +18,8 @@ public:
 
 private:
 
-    static WindowMenu* ActiveMenu();
-    static void Open(WindowMenu* menu, WindowMenu *prev);    // Открыть меню menu, при этом его хранителем указать prev
+    static MenuPage* ActiveMenu();
+    static void Open(MenuPage* menu, MenuPage *prev);    // Открыть меню menu, при этом его хранителем указать prev
     static void CloseAll();
     static void HandleMenuEvent(StringHash, VariantMap&);
 };

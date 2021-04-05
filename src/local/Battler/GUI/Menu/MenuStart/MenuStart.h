@@ -4,9 +4,9 @@
 #include "GUI/Menu/MenuPage_.h"
 
 
-class MenuStart : public WindowMenu
+class MenuStart : public MenuPage
 {
-    URHO3D_OBJECT(MenuStart, WindowMenu);
+    URHO3D_OBJECT(MenuStart, MenuPage);
 
 public:
     MenuStart();

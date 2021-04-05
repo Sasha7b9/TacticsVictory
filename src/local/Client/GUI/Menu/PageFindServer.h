@@ -5,9 +5,9 @@
 #include "GUI/Menu/MenuPage_.h"
 
 
-class MenuFindServer : public WindowMenu
+class MenuFindServer : public MenuPage
 {
-    URHO3D_OBJECT(MenuFindServer, WindowMenu);
+    URHO3D_OBJECT(MenuFindServer, MenuPage);
 
 public:
 

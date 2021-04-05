@@ -5,7 +5,7 @@
 #include "GUI/Menu/PageMain.h"
 
 
-MenuMain::MenuMain() : WindowMenu()
+MenuMain::MenuMain() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
 

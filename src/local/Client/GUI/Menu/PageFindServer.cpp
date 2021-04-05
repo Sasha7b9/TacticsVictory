@@ -3,7 +3,7 @@
 #include "GUI/Menu/PageFindServer.h"
 
 
-MenuFindServer::MenuFindServer() : WindowMenu()
+MenuFindServer::MenuFindServer() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Find server");

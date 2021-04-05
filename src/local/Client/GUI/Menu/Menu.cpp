@@ -8,7 +8,7 @@
 #include "GUI/Menu/PagePlay.h"
 
 
-static PODVector<WindowMenu *> allMenus;    // Здесь список всех меню
+static PODVector<MenuPage *> allMenus;    // Здесь список всех меню
 static SharedPtr<MenuMain>       menuStart;
 static SharedPtr<MenuAboutMe>    menuAbout;
 static SharedPtr<MenuPlay>       menuPlay;
@@ -40,8 +40,8 @@ void ::Menu::HandleMenuEvent(StringHash, VariantMap& eventData)
     using namespace MenuEvent;
 
     uint action = eventData[P_TYPE].GetUInt();
-    WindowMenu *source = dynamic_cast<WindowMenu*>(eventData[P_SOURCE].GetPtr());
-    WindowMenu *destination = dynamic_cast<WindowMenu*>(eventData[P_DESTINATION].GetPtr());
+    MenuPage *source = dynamic_cast<MenuPage*>(eventData[P_SOURCE].GetPtr());
+    MenuPage *destination = dynamic_cast<MenuPage*>(eventData[P_DESTINATION].GetPtr());
 
     switch (action)
     {
@@ -68,7 +68,7 @@ void ::Menu::HandleMenuEvent(StringHash, VariantMap& eventData)
 }
 
 
-void ::Menu::Open(WindowMenu* menu, WindowMenu *prev)
+void ::Menu::Open(MenuPage* menu, MenuPage *prev)
 {
     CloseAll();
     menu->Open(prev);
@@ -77,7 +77,7 @@ void ::Menu::Open(WindowMenu* menu, WindowMenu *prev)
 
 void ::Menu::CloseAll()
 {
-    for (WindowMenu *window : allMenus)
+    for (MenuPage *window : allMenus)
     {
         TheUIRoot->RemoveChild(window);
     }
@@ -98,7 +98,7 @@ bool ::Menu::IsActive()
 
 bool ::Menu::ProcessingKey(int key)
 {
-    WindowMenu *active = ActiveMenu();
+    MenuPage *active = ActiveMenu();
 
     if(active)
     {
@@ -116,9 +116,9 @@ bool ::Menu::ProcessingKey(int key)
 }
 
 
-WindowMenu* ::Menu::ActiveMenu()
+MenuPage* ::Menu::ActiveMenu()
 {
-    for(WindowMenu *window : allMenus)
+    for(MenuPage *window : allMenus)
     {
         if(window->GetParent())
         {

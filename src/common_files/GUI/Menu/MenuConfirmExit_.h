@@ -3,9 +3,9 @@
 #include "GUI/Menu/MenuPage_.h"
 
 
-class MenuConfirmExit : public WindowMenu
+class MenuConfirmExit : public MenuPage
 {
-    URHO3D_OBJECT(MenuConfirmExit, WindowMenu);
+    URHO3D_OBJECT(MenuConfirmExit, MenuPage);
 
 public:
     MenuConfirmExit();

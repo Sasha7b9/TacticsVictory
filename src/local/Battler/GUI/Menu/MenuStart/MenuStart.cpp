@@ -5,7 +5,7 @@
 #include "GUI/Menu/MenuStart/MenuStart.h"
 
 
-MenuStart::MenuStart() : WindowMenu()
+MenuStart::MenuStart() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
 

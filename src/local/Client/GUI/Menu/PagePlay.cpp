@@ -3,7 +3,7 @@
 #include "GUI/Menu/PagePlay.h"
 
 
-MenuPlay::MenuPlay() : WindowMenu()
+MenuPlay::MenuPlay() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Play menu");

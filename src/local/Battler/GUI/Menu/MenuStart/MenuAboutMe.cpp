@@ -4,7 +4,7 @@
 #include "GUI/Menu/MenuStart/MenuAboutMe.h"
 
 
-MenuAboutMe::MenuAboutMe() : WindowMenu()
+MenuAboutMe::MenuAboutMe() : MenuPage()
 {
     const int width = 216;
     const int height = 130;

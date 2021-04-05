@@ -5,7 +5,7 @@
 #include "GUI/Menu/MenuGame.h"
 
 
-MenuConfirmExit::MenuConfirmExit() : WindowMenu()
+MenuConfirmExit::MenuConfirmExit() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
     SharedPtr<Label> label(Label::Create("Exit in OS?"));

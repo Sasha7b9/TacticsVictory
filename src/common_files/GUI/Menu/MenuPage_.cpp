@@ -4,13 +4,13 @@
 #include "GUI/Menu/MenuPage_.h"
 
 
-WindowMenu::WindowMenu() : WindowT(TheContext)
+MenuPage::MenuPage() : WindowT(TheContext)
 {
 
 }
 
 
-void WindowMenu::SendEventClose()
+void MenuPage::SendEventClose()
 {
     using namespace MenuEvent;
 
@@ -22,7 +22,7 @@ void WindowMenu::SendEventClose()
 }
 
 
-void WindowMenu::Open(WindowMenu *prev)
+void MenuPage::Open(MenuPage *prev)
 {
     if (prev)
     {
@@ -33,13 +33,13 @@ void WindowMenu::Open(WindowMenu *prev)
 }
 
 
-void WindowMenu::Close()
+void MenuPage::Close()
 {
     TheUIRoot->RemoveChild(this);
 }
 
 
-void WindowMenu::ProcessingKey(int key)
+void MenuPage::ProcessingKey(int key)
 {
     if(KEY_IS_ESC)
     {
@@ -56,14 +56,14 @@ void WindowMenu::ProcessingKey(int key)
 }
 
 
-void WindowMenu::SetFocusedNext()
+void MenuPage::SetFocusedNext()
 {
     int numButton = (NumFocusedButton() + 1) % (int)buttons.Size();
     buttons[(uint)numButton]->SetFocus(true);
 }
 
 
-void WindowMenu::SetFocusedPrev()
+void MenuPage::SetFocusedPrev()
 {
     int numButton = NumFocusedButton() - 1;
     if (numButton < 0)
@@ -74,7 +74,7 @@ void WindowMenu::SetFocusedPrev()
 }
 
 
-int WindowMenu::NumFocusedButton()
+int MenuPage::NumFocusedButton()
 {
     for (uint i = 0; i < buttons.Size(); i++)
     {

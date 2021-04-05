@@ -9,9 +9,9 @@ enum
 };
 
 
-class MenuOptions : public WindowMenu
+class MenuOptions : public MenuPage
 {
-    URHO3D_OBJECT(MenuOptions, WindowMenu);
+    URHO3D_OBJECT(MenuOptions, MenuPage);
 
 public:
     MenuOptions();

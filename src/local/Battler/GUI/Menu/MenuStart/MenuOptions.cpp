@@ -7,7 +7,7 @@
 #include "GUI/Menu/MenuStart/MenuOptions.h"
 
 
-MenuOptions::MenuOptions() : WindowMenu()
+MenuOptions::MenuOptions() : MenuPage()
 {
     SetLayout(LM_VERTICAL, 0, IntRect(0, 0, 0, 0));
 
