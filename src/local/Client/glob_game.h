@@ -6,6 +6,7 @@ class Client;
 class ConfigurationFile;
 class LogRAW;
 class MasterServer;
+class Menus;
 class MenuMain;
 class WindowVariables;
 
@@ -20,6 +21,7 @@ extern CursorT         *TheCursor;
 extern GUI             *TheGUI;
 extern Hint            *TheHint;
 extern LogRAW          *TheLog;
+extern Menus           *TheMenu;
 extern MenuMain        *TheMenuMain;
 extern Mouse           *TheMouse;
 extern WindowVariables *TheWindowVars;

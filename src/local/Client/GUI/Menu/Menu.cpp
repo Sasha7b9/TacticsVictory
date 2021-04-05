@@ -8,23 +8,15 @@
 #include "GUI/Menu/PagePlay.h"
 
 
-static PODVector<MenuPage *> allMenus;    // Здесь список всех меню
-static SharedPtr<MenuMain>       menuStart;
-static SharedPtr<MenuAboutMe>    menuAbout;
-static SharedPtr<MenuPlay>       menuPlay;
-static SharedPtr<MenuFindServer> menuFindServer;
-
-
 #define CREATE_MENU(name, type, moving)                                 \
     name = new type();                                                  \
     allMenus.Push(name);                                                \
     GF::SetWindowInCenterScreen(name);                                  \
-    name->SetMovable(moving);
+    name->SetMovable(moving);                                           \
+    SubscribeToEvent(E_MENU, URHO3D_HANDLER(Menus, HandleMenuEvent));
 
-//    SubscribeToEvent(E_MENU, URHO3D_HANDLER(::Menu, HandleMenuEvent));
 
-
-void ::Menu::Create()
+Menus::Menus(Menus **self) : Object(TheContext)
 {
     CREATE_MENU(menuStart, MenuMain, false);
     CREATE_MENU(menuAbout, MenuAboutMe, false);
@@ -32,10 +24,12 @@ void ::Menu::Create()
     CREATE_MENU(menuFindServer, MenuFindServer, false);
 
     Open(menuStart, nullptr);
+
+    *self = this;
 }
 
 
-void ::Menu::HandleMenuEvent(StringHash, VariantMap& eventData)
+void Menus::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     using namespace MenuEvent;
 
@@ -68,14 +62,14 @@ void ::Menu::HandleMenuEvent(StringHash, VariantMap& eventData)
 }
 
 
-void ::Menu::Open(MenuPage* menu, MenuPage *prev)
+void Menus::Open(MenuPage* menu, MenuPage *prev)
 {
     CloseAll();
     menu->Open(prev);
 }
 
 
-void ::Menu::CloseAll()
+void Menus::CloseAll()
 {
     for (MenuPage *window : allMenus)
     {
@@ -84,19 +78,19 @@ void ::Menu::CloseAll()
 }
 
 
-void ::Menu::Hide()
+void Menus::Hide()
 {
     CloseAll();
 }
 
 
-bool ::Menu::IsActive()
+bool Menus::IsActive()
 {
     return ActiveMenu() != nullptr;
 }
 
 
-bool ::Menu::ProcessingKey(int key)
+bool Menus::ProcessingKey(int key)
 {
     MenuPage *active = ActiveMenu();
 
@@ -116,7 +110,7 @@ bool ::Menu::ProcessingKey(int key)
 }
 
 
-MenuPage* ::Menu::ActiveMenu()
+MenuPage* Menus::ActiveMenu()
 {
     for(MenuPage *window : allMenus)
     {

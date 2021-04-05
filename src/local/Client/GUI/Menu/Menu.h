@@ -10,20 +10,28 @@ class MenuMain;
 class MenuPage;
 
 
-class Menu
+class Menus : public Object
 {
+    URHO3D_OBJECT(Menus, Object);
+
 public:
 
-    static void Create();
-    static void Hide();
-    static bool IsActive();
-    static bool ProcessingKey(int key);
+    Menus(Menus **self);
+
+    void Hide();
+    bool IsActive();
+    bool ProcessingKey(int key);
 
 private:
+    PODVector<MenuPage *>     allMenus;    // Здесь список всех меню
+    SharedPtr<MenuMain>       menuStart;
+    SharedPtr<MenuAboutMe>    menuAbout;
+    SharedPtr<MenuPlay>       menuPlay;
+    SharedPtr<MenuFindServer> menuFindServer;
 
-    static MenuPage* ActiveMenu();
+    MenuPage* ActiveMenu();
 
-    static void Open(MenuPage* menu, MenuPage *prev);    // Открыть меню menu, при этом его хранителем указать prev
-    static void CloseAll();
-    static void HandleMenuEvent(StringHash, VariantMap&);
+    void Open(MenuPage* menu, MenuPage *prev);    // Открыть меню menu, при этом его хранителем указать prev
+    void CloseAll();
+    void HandleMenuEvent(StringHash, VariantMap&);
 };

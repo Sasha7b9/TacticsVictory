@@ -54,7 +54,7 @@ MenuMain::~MenuMain()
 
 void MenuMain::HandleButtonRelease(StringHash, VariantMap& eventData)
 {
-    if(!::Menu::IsActive())
+    if(!TheMenu->IsActive())
     {
         return;
     }

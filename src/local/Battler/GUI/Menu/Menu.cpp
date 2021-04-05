@@ -21,7 +21,7 @@ SharedPtr<MenuOptions>  menuOptions;
 //SubscribeToEvent(E_MENU, URHO3D_HANDLER(::Menu, HandleMenuEvent));
 
 
-void ::Menu::Create()
+void Menus::Create()
 {
     CREATE_MENU(menuStart, MenuStart, false);
     CREATE_MENU(menuAbout, MenuAboutMe, false);
@@ -31,7 +31,7 @@ void ::Menu::Create()
 }
 
 
-void ::Menu::HandleMenuEvent(StringHash, VariantMap& eventData)
+void Menus::HandleMenuEvent(StringHash, VariantMap& eventData)
 {
     using namespace MenuEvent;
 
@@ -61,14 +61,14 @@ void ::Menu::HandleMenuEvent(StringHash, VariantMap& eventData)
 }
 
 
-void ::Menu::Open(MenuPage* menu, MenuPage *prev)
+void Menus::Open(MenuPage* menu, MenuPage *prev)
 {
     CloseAll();
     menu->Open(prev);
 }
 
 
-void ::Menu::CloseAll()
+void Menus::CloseAll()
 {
     for (MenuPage *window : allMenus)
     {
@@ -77,19 +77,19 @@ void ::Menu::CloseAll()
 }
 
 
-void ::Menu::Hide()
+void Menus::Hide()
 {
     CloseAll();
 }
 
 
-bool ::Menu::IsActive()
+bool Menus::IsActive()
 {
     return ActiveMenu() != nullptr;
 }
 
 
-bool ::Menu::ProcessingKey(int key)
+bool Menus::ProcessingKey(int key)
 {
     MenuPage *active = ActiveMenu();
 
@@ -109,7 +109,7 @@ bool ::Menu::ProcessingKey(int key)
 }
 
 
-MenuPage* ::Menu::ActiveMenu()
+MenuPage* Menus::ActiveMenu()
 {
     for(MenuPage *window : allMenus)
     {
