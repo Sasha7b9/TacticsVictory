@@ -27,8 +27,7 @@ CursorT         *TheCursor     = nullptr;
 GUI             *TheGUI        = nullptr;
 Hint            *TheHint       = nullptr;
 LogRAW          *TheLog        = nullptr;
-MenuMain        *TheMenuMain   = nullptr;
-Menus           *TheMenu = nullptr;
+Menus           *TheMenu       = nullptr;
 Mouse           *TheMouse      = nullptr;
 WindowVariables *TheWindowVars = nullptr;
 

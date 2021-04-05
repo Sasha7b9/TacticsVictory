@@ -21,7 +21,6 @@ extern CursorT         *TheCursor;
 extern GUI             *TheGUI;
 extern Hint            *TheHint;
 extern LogRAW          *TheLog;
-extern MenuMain        *TheMenuMain;
 extern Menus           *TheMenu;
 extern Mouse           *TheMouse;
 extern WindowVariables *TheWindowVars;
