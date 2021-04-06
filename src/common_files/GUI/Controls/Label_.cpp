@@ -22,7 +22,7 @@ void Label::RegisterObject()
 }
 
 
-SharedPtr<Label> Label::Create(pchar text_, bool center, int sizeFont, int width, int height, bool auto_translate)
+SharedPtr<Label> Label::Create(pchar text_, int sizeFont, int width, int height, bool auto_translate)
 {
     SharedPtr<Label> text(new Label(TheContext));
 
@@ -34,11 +34,6 @@ SharedPtr<Label> Label::Create(pchar text_, bool center, int sizeFont, int width
     text->SetText(text_);
 
     text->SetFont(TheFont, (float)sizeFont);
-
-    if (center)
-    {
-        text->SetAlignment(HA_CENTER, VA_CENTER);
-    }
 
     if(width == -1 && height == -1)
     {

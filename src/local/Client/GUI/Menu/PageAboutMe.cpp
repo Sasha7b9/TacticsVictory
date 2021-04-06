@@ -13,8 +13,8 @@ PageAboutMe::PageAboutMe() : MenuPage()
 
     SetSize(width, height);
 
-    AddLabel("Alexandr Shevchenko", false, 20, 20, 200, 40);
-    AddLabel("e-mail Sasha7b9@tut.by", false, 20, 50, 200, 40);
+    AddLabel("Alexandr Shevchenko", 20, 20, 200, 40);
+    AddLabel("e-mail Sasha7b9@tut.by", 20, 50, 200, 40);
 
     int x = width / 2 - widthButton / 2;
     int y = height - 2 * heightButton;

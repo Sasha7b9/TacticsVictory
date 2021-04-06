@@ -65,14 +65,17 @@ SharedPtr<ButtonT> WindowT::AddButton(char *text, int x, int y, int width, int h
 }
 
 
-SharedPtr<Label> WindowT::AddLabel(char *text, bool center, int x, int y, int width, int height)
+SharedPtr<Label> WindowT::AddLabel(char *text, int x, int y, int width, int height)
 {
-    SharedPtr<Label> label(Label::Create(text, center, 20, width, height));
+    SharedPtr<Label> label(Label::Create(text, 20, width, height));
+
     if (x != -1 && y != -1)
     {
         label->SetPosition(x, y);
     }
+
     AddChild(label);
+
     return label;
 }
 

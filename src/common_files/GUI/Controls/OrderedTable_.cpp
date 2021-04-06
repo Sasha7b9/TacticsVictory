@@ -73,8 +73,8 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
                 std::rand() % 255, std::rand() % 255, std::rand() % 255, std::rand() % 255);
         }
 
-        SharedPtr<Label> label = Label::Create(text.CString(), true, 20, -1, -1, false);
-
+        SharedPtr<Label> label = Label::Create(text.CString(), 20, -1, -1, false);
+        label->SetAlignment(HA_CENTER, VA_CENTER);
         label->SetTextAlignment(header_rows[i].h_align);
         UIElement *h = header->GetChild(header_rows[i].name, true);
 
@@ -95,7 +95,8 @@ OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheCont
 
     window->SetLayout(LM_VERTICAL, 3, IntRect(3, 3, 3, 3));
 
-    SharedPtr<Label> label_title(Label::Create(title, true, 15, 700, 20));
+    SharedPtr<Label> label_title(Label::Create(title, 15, 700, 20));
+    label_title->SetAlignment(HA_CENTER, VA_CENTER);
     label_title->SetTextAlignment(HA_CENTER);
     window->AddChild(label_title);
 

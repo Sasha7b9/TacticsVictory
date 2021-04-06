@@ -11,7 +11,8 @@ PageStart::PageStart() : MenuPage()
 
     SetName("Start menu");
 
-    SharedPtr<Label> text(Label::Create("Tactics Victory", true, 20, 120, -1));
+    SharedPtr<Label> text(Label::Create("Tactics Victory", 20, 120, -1));
+    text->SetAlignment(HA_CENTER, VA_CENTER);
     text->SetTextAlignment(HA_CENTER);
     AddChild(text);
 

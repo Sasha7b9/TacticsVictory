@@ -8,7 +8,8 @@ PagePlay::PagePlay() : MenuPage()
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Play menu");
 
-    SharedPtr<Label> text(Label::Create("Play", true, 20, 120, -1));
+    SharedPtr<Label> text(Label::Create("Play", 20, 120, -1));
+    text->SetAlignment(HA_CENTER, VA_CENTER);
     text->SetTextAlignment(HA_CENTER);
     AddChild(text);
 

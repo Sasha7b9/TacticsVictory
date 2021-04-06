@@ -8,7 +8,8 @@ PageFindServer::PageFindServer() : MenuPage()
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Find server");
 
-    SharedPtr<Label> text(Label::Create("Find server", true, 20, 120, -1));
+    SharedPtr<Label> text(Label::Create("Find server", 20, 120, -1));
+    text->SetAlignment(HA_CENTER, VA_CENTER);
     text->SetTextAlignment(HA_CENTER);
     AddChild(text);
 

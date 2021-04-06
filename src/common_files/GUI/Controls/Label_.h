@@ -11,8 +11,8 @@ public:
     Label(Context *context = TheContext);
     static void RegisterObject();
 
-    static SharedPtr<Label> Create(pchar text, bool center = true, int sizeFont = 20,
-        int width = -1, int height = -1, bool auto_translate = true);
+    static SharedPtr<Label> Create(pchar text, int sizeFont = 20, int width = -1, int height = -1,
+        bool auto_translate = true);
 
     void SetText(pchar text);
 

@@ -11,7 +11,8 @@ PageGame::PageGame(Context *) : MenuPage()
     SetLayout(LM_VERTICAL, 6, IntRect(6, 6, 6, 6));
     SetName("Main menu");
 
-    SharedPtr<Label> text(Label::Create("Tactics Victory", true, 20, -1, -1));
+    SharedPtr<Label> text(Label::Create("Tactics Victory", 20, -1, -1));
+    text->SetAlignment(HA_CENTER, VA_CENTER);
     AddChild(text);
     
     buttonNewGame  = new ButtonT(this, "New game");
