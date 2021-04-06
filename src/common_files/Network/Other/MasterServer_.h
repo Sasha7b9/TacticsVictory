@@ -30,6 +30,8 @@ public:
 
     bool IsConnected() const { return connector.IsConnected(); };
 
+    pchar GetAddress() const { return address.c_str(); }
+
 private:
 
     ConnectorTCP connector;             // Соединитель для связи с удалённым мастер-сервером

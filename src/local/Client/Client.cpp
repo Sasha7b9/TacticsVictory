@@ -167,6 +167,7 @@ void Client::RegistrationObjects()
 void Client::SubscribeToEvents()
 {
     SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Client, HandlePostRenderUpdate));
+    SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(Client, HandleUpdate));
 }
 
 

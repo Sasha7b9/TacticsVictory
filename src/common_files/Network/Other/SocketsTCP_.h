@@ -15,7 +15,7 @@ public:
 
     void Disconnect();
 
-    bool IsConnected() const { return connection->is_connected(); }
+    bool IsConnected() const { return connection && connection->is_open() && connection->is_connected(); }
 
     void SetReadTimeOut(uint timeOutMS);
 

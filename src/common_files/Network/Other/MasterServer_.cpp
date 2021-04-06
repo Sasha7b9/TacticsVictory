@@ -25,6 +25,15 @@ void MasterServer::Connect()
         return;
     }
 
+    if (mutex.try_lock())
+    {
+        mutex.unlock();
+    }
+    else
+    {
+        return;
+    }
+
     if (address.empty())
     {
         LOGERRORF("Not specified address master server");
@@ -32,7 +41,7 @@ void MasterServer::Connect()
         return;
     }
 
-    std::thread thread(ThreadConnect, &connector, address.c_str(), &mutex);
+    std::thread thread(ThreadConnect, &connector, std::move(address.c_str()), &mutex);
 
     thread.detach();
 }

@@ -3,6 +3,23 @@
 #include "Client.h"
 
 
+void Client::HandleUpdate(StringHash, VariantMap &)
+{
+    if (TheMasterServer.IsConnected())
+    {
+        TheGUI->AppendInfo("Connection to master server established");
+    }
+    else
+    {
+        if (TheMasterServer.GetAddress()[0])
+        {
+            TheGUI->AppendWarning("Can't connect to master server");
+
+            TheMasterServer.Connect();
+        }
+    }
+}
+
 void Client::HandlePostRenderUpdate(StringHash, VariantMap &)
 {
 
