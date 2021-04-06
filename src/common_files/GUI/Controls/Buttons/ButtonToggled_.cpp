@@ -8,7 +8,8 @@ ButtonToggled::ButtonToggled(Context *context) :
     CheckBox(context)
 {
     SetStyleAuto();
-    label = Label::Create("", true, TheSettings.GetInt("menu", "font", "size", "item"));
+    label = Label::Create("", TheSettings.GetInt("menu", "font", "size", "item"));
+    label->SetAlignment(HA_CENTER, VA_CENTER);
     AddChild(label);
 }
 
@@ -17,7 +18,8 @@ ButtonToggled::ButtonToggled(UIElement * uielement, char * text, int width, int 
     CheckBox(TheContext)
 {
     SetStyleAuto(TheUIRoot->GetDefaultStyle());
-    label = Label::Create(text, true, TheSettings.GetInt("menu", "font", "size", "item"));
+    label = Label::Create(text, TheSettings.GetInt("menu", "font", "size", "item"));
+    label->SetAlignment(HA_CENTER, VA_CENTER);
     AddChild(label);
 
     if(uielement)

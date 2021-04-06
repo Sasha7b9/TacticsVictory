@@ -164,11 +164,10 @@ void GUI::Create()
 
     TheLocalization->SetLanguage(TheSettings.GetInt("language") == 0 ? "en" : "ru");
 
-    label_master = Label::Create("No response from master server", false,
-        TheSettings.GetInt("menu", "font", "size", "item"));
-
+    label_master = Label::Create("No response from master server", TheSettings.GetInt("menu", "font", "size", "item"));
+    label_master->SetAlignment(HA_CENTER, VA_TOP);
+    label_master->SetPosition(0, 50);
     label_master->SetColor(Color::RED);
-
     TheUIRoot->AddChild(label_master);
 }
 

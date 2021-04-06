@@ -5,7 +5,8 @@
 
 Hint::Hint(char *text_) : WindowT(TheContext), text(text_)
 {
-    label = Label::Create(text, true, 20);
+    label = Label::Create(text, 20);
+    label->SetAlignment(HA_CENTER, VA_CENTER);
     AddChild(label);
 
     SetSize(label->GetWidth() + 10, label->GetHeight() + 10);
