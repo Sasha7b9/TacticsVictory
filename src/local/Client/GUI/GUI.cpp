@@ -1,17 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/GUI.h"
-#include "GUI/Controls/DropDownListWithTextAndButton_.h"
-#include "GUI/Controls/GovernorFloat_.h"
-#include "GUI/Controls/Buttons/ButtonSwitch_.h"
-#include "GUI/Controls/Buttons/ButtonToggled_.h"
-#include "GUI/Controls/Sliders/Slider_.h"
 #include "GUI/Controls/Sliders/SliderInt_.h"
-#include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
-#include "GUI/Menu/PageAboutMe.h"
 #include "GUI/Menu/PageConfirmExit_.h"
-#include "GUI/Menu/PageOptions.h"
-#include "Scene/Cameras/Camera.h"
 
 
 GUI::GUI(GUI **self) : Object(TheContext)
@@ -31,19 +21,8 @@ GUI::~GUI()
 void GUI::RegistrationObjects()
 {
     ButtonT::RegisterObject();
-    ButtonSwitch::RegisterObject();
-    ButtonToggled::RegisterObject();
-    WindowT::RegisterObject();
-    MenuConfirmExit::RegisterObject();
-    PageAboutMe::RegisterObject();
-    PageOptions::RegisterObject();
-    Label::RegisterObject();
-    SliderT::RegisterObject();
     SliderInt::RegisterObject();
-    GovernorCell::RegisterObject();
-    GovernorFloat::RegisterObject();
-    SliderWithTextAndButtons::RegisterObject();
-    DropDownListWithTextAndButton::RegisterObject();
+    MenuConfirmExit::RegisterObject();
 }
 
 
