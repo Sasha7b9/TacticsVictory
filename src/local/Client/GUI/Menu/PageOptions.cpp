@@ -14,6 +14,7 @@ PageOptions::PageOptions() : MenuPage()
     SetName("Options menu");
 
     SharedPtr<Label> label(Label::Create("Options", true, 20));
+    label->SetAlignment(HA_CENTER, VA_CENTER);
     label->SetTextAlignment(HA_CENTER);
     AddChild(label);
 
