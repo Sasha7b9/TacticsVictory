@@ -170,7 +170,7 @@ void GUI::CreateLabelMaster()
 {
     label_info = Label::Create("", TheSettings.GetInt("menu", "font", "size", "item"));
     label_info->SetAlignment(HA_CENTER, VA_TOP);
-    label_info->SetPosition(0, 50);
+    label_info->SetPosition(0, 10);
     label_info->SetColor(Color::RED);
     TheUIRoot->AddChild(label_info);
  

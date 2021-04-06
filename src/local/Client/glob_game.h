@@ -12,7 +12,7 @@ class WindowVariables;
 
 extern ConfigurationFile TheConfig;
 extern ConfigurationFile TheSettings;
-extern MasterServer      TheMaster;
+extern MasterServer      TheMasterServer;
 
 extern CameraT         *TheCamera;
 extern Client          *TheClient;
