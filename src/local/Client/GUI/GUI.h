@@ -13,7 +13,14 @@ class GUI : public Object
 public:
     GUI(GUI **self);
 
-    bool UnderCursor();                                             // Возвращает true, если меню под курсором
+    // Возвращает true, если меню под курсором
+    bool UnderCursor();
+
+    // Добавить информационное сообщение
+    void AppendInfo(pchar text);
+
+    // Добавить предупреждающее сообщение
+    void AppendWarning(pchar text);
 
 private:
     void Create();

@@ -19,6 +19,8 @@ public:
     void SetMutator(Mutator *_mutator) { mutator = _mutator; }
 
     virtual void Update(float dT) override;
+
+    Mutator *GetMutator() { return mutator; }
     
 private:
     String text;

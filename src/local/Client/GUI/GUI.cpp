@@ -174,6 +174,11 @@ public:
 
     virtual void Update(float /*dT*/) override
     {
+        if (!enabled)
+        {
+            return;
+        }
+
         static float prev = 0.0F;
 
         if (TheTime->GetElapsedTime() - prev > 0.5f)
@@ -185,14 +190,31 @@ public:
     }
 };
 
+
 void GUI::CreateLabelMaster()
 {
-    label_info = Label::Create("No response from master server", TheSettings.GetInt("menu", "font", "size", "item"));
+    label_info = Label::Create("", TheSettings.GetInt("menu", "font", "size", "item"));
     label_info->SetAlignment(HA_CENTER, VA_TOP);
     label_info->SetPosition(0, 50);
     label_info->SetColor(Color::RED);
     TheUIRoot->AddChild(label_info);
     label_info->SetMutator(new MutatorLabel(label_info));
+}
+
+
+void GUI::AppendInfo(pchar text)
+{
+    label_info->GetMutator()->Disable();
+    label_info->SetColor(Color::WHITE);
+    label_info->SetText(text);
+}
+
+
+void GUI::AppendWarning(pchar text)
+{
+    label_info->GetMutator()->Enable();
+    label_info->SetColor(Color::RED);
+    label_info->SetText(text);
 }
 
 

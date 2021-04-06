@@ -13,7 +13,13 @@ public:
 
     static Mutator *Empty();
 
+    void Enable() { enabled = true; };
+
+    void Disable() { enabled = false; };
+
 protected:
 
     UIElement *node;
+
+    bool enabled = true;
 };
