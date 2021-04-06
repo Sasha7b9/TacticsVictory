@@ -30,6 +30,7 @@ private:
     void GetSubsystems();
     void TuneEngineParameters();
     void CreateGUI();
+    void ParseArguments();
 
     SharedPtr<Log>   log;
     SharedPtr<GUI>   gui;

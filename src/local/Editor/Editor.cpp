@@ -25,22 +25,22 @@ void Editor::Setup()
 
     LOGWRITE("Start Client");
 
-    const Vector<String> &arguments = GetArguments();
-
     TheConfig.Load("Client.conf");
 
     TheClient = this;
 
-    String address_master = DEFAULT_MASTER_SERVER_ADDRESS;
+//    const Vector<String> &arguments = GetArguments();
 
-    if (arguments.Size() == 0)
-    {
-        LOGWARNINGF("Not specified address master server. Default is %s", DEFAULT_MASTER_SERVER_ADDRESS);
-    }
-    else
-    {
-        address_master = String(arguments[0]);
-    }
+//    String address_master = DEFAULT_MASTER_SERVER_ADDRESS;
+//
+//    if (arguments.Size() == 0)
+//    {
+//        LOGWARNINGF("Not specified address master server. Default is %s", DEFAULT_MASTER_SERVER_ADDRESS);
+//    }
+//    else
+//    {
+//        address_master = String(arguments[0]);
+//    }
 
     GetSubsystems();
 

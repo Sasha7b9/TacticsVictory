@@ -25,22 +25,9 @@ void Client::Setup()
 
     LOGWRITE("Start Client");
 
-    const Vector<String> &arguments = GetArguments();
-
     TheConfig.Load("Client.conf");
 
     TheClient = this;
-
-    String address_master = DEFAULT_MASTER_SERVER_ADDRESS;
-
-    if (arguments.Size() == 0)
-    {
-        LOGWARNINGF("Not specified address master server. Default is %s", DEFAULT_MASTER_SERVER_ADDRESS);
-    }
-    else
-    {
-        address_master = String(arguments[0]);
-    }
 
     GetSubsystems();
 
@@ -108,6 +95,26 @@ void Client::Start()
     menu = new Menus(&TheMenu);
 
     SetWindowTitleAndIcon();
+
+    ParseArguments();
+}
+
+
+void Client::ParseArguments()
+{
+    const Vector<String> &arguments = GetArguments();
+
+    String address_master = "127.0.0.1:40000";
+
+    if (arguments.Size() == 0)
+    {
+        LOGWARNINGF("Not specified address master server");
+        TheGUI->AppendWarning("Not specified address master server");
+    }
+    else
+    {
+        address_master = String(arguments[0]);
+    }
 }
 
 

@@ -15,8 +15,6 @@
 
 #define RESOURCES_DIR           "TVData"
 
-#define DEFAULT_MASTER_SERVER_ADDRESS "127.0.0.1:40000"
-
 #define VIEW_MASK_FOR_MISSILE   1
 #define VIEW_MASK_FOR_EFFECTS   2
 
