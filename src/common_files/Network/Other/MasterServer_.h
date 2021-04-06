@@ -20,8 +20,7 @@ class MasterServer
 {
 public:
 
-    // callback вызывается после удачной либо неудачной попытки подключения (из Connect())
-    MasterServer(pFuncVV callback);
+    void SetCallback(pFuncVV _callback) { callback = _callback; };
 
     // Делает попытку присоединения к серверу
     void Connect(pchar full_address);
@@ -30,12 +29,15 @@ public:
 
     std::string GetValue(pchar key);
 
-    bool IsConnected() const;
+    bool IsConnected() const { return connector.IsConnected(); };
 
 private:
 
     ConnectorTCP connector;             // Соединитель для связи с удалённым мастер-сервером
 
     bool destroy = false;
+
+    pFuncVV callback = nullptr;
+
     std::mutex mutex;                   // Данный mutex будет захвачен, пока сервер находится в процессе соединения
 };

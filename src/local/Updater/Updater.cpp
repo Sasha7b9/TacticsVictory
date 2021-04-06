@@ -18,9 +18,9 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    TheMaster->Connect(argv[1]);
+    TheMasterServer.Connect(argv[1]);
 
-    TheMaster->Destroy();
+    TheMasterServer.Destroy();
 
     LOGWRITE("Exit Updater");
 

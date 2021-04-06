@@ -3,4 +3,4 @@
 
 
 extern ConfigurationFile  TheConfig;
-extern MasterServer      *TheMaster;
+extern MasterServer       TheMasterServer;

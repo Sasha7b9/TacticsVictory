@@ -2,4 +2,4 @@
 #include "stdafx.h"
 
 
-MasterServer      *TheMaster = nullptr;
+MasterServer TheMasterServer;

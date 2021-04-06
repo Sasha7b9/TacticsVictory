@@ -10,9 +10,9 @@ class TerrainT;
 
 extern ConfigurationFile TheConfig;
 extern ConfigurationFile TheSettings;
+extern MasterServer      TheMasterServer;
 
 extern Battle       *TheBattle;
-extern MasterServer *TheMaster;
 extern SceneS       *TheScene;
 extern ServerS      *TheServer;
 extern TerrainT     *TheTerrain;

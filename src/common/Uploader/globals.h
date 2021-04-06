@@ -2,5 +2,5 @@
 #pragma once
 
 
-extern ConfigurationFile  TheConfig;
-extern MasterServer      *TheMaster;
+extern ConfigurationFile TheConfig;
+extern MasterServer      TheMasterServer;
