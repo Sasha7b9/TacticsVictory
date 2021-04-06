@@ -24,5 +24,3 @@ extern LogRAW          *TheLog;
 extern Menus           *TheMenu;
 extern Mouse           *TheMouse;
 extern WindowVariables *TheWindowVars;
-
-extern Vector<WindowT *> TheOpenedWindow;

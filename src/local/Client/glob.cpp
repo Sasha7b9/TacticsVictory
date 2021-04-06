@@ -30,5 +30,3 @@ LogRAW           *TheLog        = nullptr;
 Menus            *TheMenu       = nullptr;
 Mouse            *TheMouse      = nullptr;
 WindowVariables  *TheWindowVars = nullptr;
-
-Vector<WindowT *> TheOpenedWindow;

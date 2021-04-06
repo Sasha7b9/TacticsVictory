@@ -180,34 +180,3 @@ bool GUI::UnderCursor()
 
     return false;
 }
-
-
-void GUI::SetVisibleWindow(WindowT *window, bool visible)
-{
-    window->SetVisible(visible);
-    if(visible)
-    {
-        while(!TheOpenedWindow.Empty())
-        {
-            window = TheOpenedWindow.Back();
-            window->SetVisible(false);
-            TheOpenedWindow.Remove(window);
-        }
-        TheOpenedWindow.Push(window);
-    }
-    else
-    {
-        TheOpenedWindow.Remove(window);
-    }
-}
-
-
-void GUI::SetUnvisibleAllWindows()
-{
-    while(!TheOpenedWindow.Empty())
-    {
-        WindowT *window = TheOpenedWindow.Back();
-        window->SetVisible(false);
-        TheOpenedWindow.Remove(window);
-    }
-}

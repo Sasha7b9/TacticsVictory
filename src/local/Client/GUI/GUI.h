@@ -14,8 +14,6 @@ public:
     ~GUI();
 
     bool UnderCursor();                                             // Возвращает true, если меню под курсором
-    void SetVisibleWindow(WindowT *window, bool visible);
-    void SetUnvisibleAllWindows();
 
 private:
     void Create();
