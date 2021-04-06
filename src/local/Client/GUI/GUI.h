@@ -2,6 +2,7 @@
 #pragma once
 
 
+class Label;
 class WindowT;
 
 
@@ -14,6 +15,8 @@ public:
     ~GUI();
 
     bool UnderCursor();                                             // Возвращает true, если меню под курсором
+
+    SharedPtr<Label> label_master;      // Здесь выводится состояние мастер-сервера
 
 private:
     void Create();

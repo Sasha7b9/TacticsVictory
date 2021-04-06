@@ -21,6 +21,7 @@ GUI::~GUI()
 void GUI::RegistrationObjects()
 {
     ButtonT::RegisterObject();
+    Label::RegisterObject();
     SliderInt::RegisterObject();
     PageConfirmExit::RegisterObject();
 }
@@ -162,6 +163,13 @@ void GUI::Create()
     TheCursor = TheUIRoot->CreateChild<CursorT>("CursorT");
 
     TheLocalization->SetLanguage(TheSettings.GetInt("language") == 0 ? "en" : "ru");
+
+    label_master = Label::Create("No response from master server", false,
+        TheSettings.GetInt("menu", "font", "size", "item"));
+
+    label_master->SetColor(Color::RED);
+
+    TheUIRoot->AddChild(label_master);
 }
 
 
