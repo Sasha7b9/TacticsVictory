@@ -49,6 +49,7 @@
     "Net speed out, kB/s":  { "en":"Net speed out, kB/s", "ru":"Net speed out, kB/s" },
     "New Game":             { "en":"New Game",            "ru":"Новая игра" },
     "New map":              { "en":"New map",             "ru":"Новая карта" },
+    "No response from master server": { "en":"No response from master server", "ru":"Нет ответа от мастер-сервера"},
 
     "Off":                  { "en":"Off",               "ru":"Откл" },
     "Ok":                   { "en":"Ok",                "ru":"Хорошо" },

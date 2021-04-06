@@ -187,12 +187,12 @@ public:
 
 void GUI::CreateLabelMaster()
 {
-    label_master = Label::Create("No response from master server", TheSettings.GetInt("menu", "font", "size", "item"));
-    label_master->SetAlignment(HA_CENTER, VA_TOP);
-    label_master->SetPosition(0, 50);
-    label_master->SetColor(Color::RED);
-    TheUIRoot->AddChild(label_master);
-    label_master->SetMutator(new MutatorLabel(label_master));
+    label_info = Label::Create("No response from master server", TheSettings.GetInt("menu", "font", "size", "item"));
+    label_info->SetAlignment(HA_CENTER, VA_TOP);
+    label_info->SetPosition(0, 50);
+    label_info->SetColor(Color::RED);
+    TheUIRoot->AddChild(label_info);
+    label_info->SetMutator(new MutatorLabel(label_info));
 }
 
 
