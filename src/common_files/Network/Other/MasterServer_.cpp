@@ -5,6 +5,12 @@
 
 void MasterServer::Connect(pchar full_address)
 {
+    if (callback == nullptr)
+    {
+        LOGERRORF("Callback for connection not set");
+        return;
+    }
+
     mutex.lock();
     destroy = false;
 
@@ -13,6 +19,7 @@ void MasterServer::Connect(pchar full_address)
     while (!connector.Connect(host, port) && !destroy)
     {
         std::this_thread::sleep_for(std::chrono::seconds(1));
+        callback();
     }
 
     connector.SetReadTimeOut(10000);
