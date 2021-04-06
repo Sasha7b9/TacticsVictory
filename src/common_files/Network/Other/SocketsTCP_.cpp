@@ -81,11 +81,11 @@ void ConnectorTCP::Receive(std::string &data)
 
     connection->read_n(&size, sizeof(uint));
 
-    data.resize(size); //-V106
+    data.resize(size);
 
     if (size != 0)
     {
-        connection->read_n(&data[0], size); //-V106
+        connection->read_n(&data[0], size);
     }
     else
     {
@@ -101,11 +101,11 @@ std::string ConnectorTCP::Receive()
     connection->read_n(&size, sizeof(uint));
 
     std::string result;
-    result.resize((size_t)size); //-V2533 //-V201
+    result.resize((size_t)size);
 
     if (size != 0)
     {
-        connection->read_n(&result[0], (size_t)size); //-V2533 //-V201
+        connection->read_n(&result[0], (size_t)size);
     }
     else
     {
@@ -234,7 +234,7 @@ std::pair<std::string, uint16> ConnectorTCP::ParseAddress(pchar fullAddressIn)
         ++pointer;
     }
 
-    result.second = static_cast<uint16>(atoi(pointer + 1)); //-V2508
+    result.second = static_cast<uint16>(atoi(pointer + 1));
 
     return result;
 }

@@ -387,7 +387,7 @@ size_t FS::File::Size()
         return 0;
     }
 
-    return (size_t)result; //-V201
+    return (size_t)result;
 
 #else
 

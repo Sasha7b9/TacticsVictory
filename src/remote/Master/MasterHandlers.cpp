@@ -25,7 +25,7 @@ void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, i
 {
     static std::string buffer;
 
-    buffer.append(symbols, (size_t)number); //-V201
+    buffer.append(symbols, (size_t)number);
 
     if (buffer.size() < 5)
     {
@@ -50,7 +50,7 @@ void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, i
         iter->second(socket, words);
     }
 
-    buffer.erase(0, sizeof(uint) + (size_t)*size_ñommand); //-V201
+    buffer.erase(0, sizeof(uint) + (size_t)*size_ñommand);
 }
 
 
