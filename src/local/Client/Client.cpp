@@ -58,6 +58,7 @@ void Client::GetSubsystems()
     TheGraphics = GetSubsystem<Graphics>();
     TheLocalization = GetSubsystem<Localization>();
     TheUI = GetSubsystem<UI>();
+    TheTime = GetSubsystem<Time>();
 }
 
 

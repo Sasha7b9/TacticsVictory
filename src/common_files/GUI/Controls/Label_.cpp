@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "GUI/Mutator_.h"
+#include "GUI/Logic/Mutator_.h"
 
 
 Label::Label(Context *context) :

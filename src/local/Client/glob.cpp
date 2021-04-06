@@ -13,6 +13,7 @@ Input         *TheInput        = nullptr;
 ResourceCache *TheCache        = nullptr;
 Localization  *TheLocalization = nullptr;
 Scene         *TheScene        = nullptr;
+Time          *TheTime = nullptr;
 UI            *TheUI           = nullptr;
 UIElement     *TheUIRoot       = nullptr;
 

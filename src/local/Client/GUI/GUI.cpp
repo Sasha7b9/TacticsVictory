@@ -4,6 +4,9 @@
 #include "GUI/Menu/PageConfirmExit_.h"
 
 
+
+
+
 GUI::GUI(GUI **self) : Object(TheContext)
 {
     RegistrationObjects();
@@ -159,11 +162,37 @@ void GUI::Create()
 
     TheLocalization->SetLanguage(TheSettings.GetInt("language") == 0 ? "en" : "ru");
 
+    CreateLabelMaster();
+}
+
+
+class MutatorLabel : public Mutator
+{
+public:
+
+    MutatorLabel(UIElement *element) : Mutator(element) {}
+
+    virtual void Update(float /*dT*/) override
+    {
+        static float prev = 0.0F;
+
+        if (TheTime->GetElapsedTime() - prev > 0.5f)
+        {
+            node->SetVisible(node->IsVisible() ? false : true);
+
+            prev = TheTime->GetElapsedTime();
+        }
+    }
+};
+
+void GUI::CreateLabelMaster()
+{
     label_master = Label::Create("No response from master server", TheSettings.GetInt("menu", "font", "size", "item"));
     label_master->SetAlignment(HA_CENTER, VA_TOP);
     label_master->SetPosition(0, 50);
     label_master->SetColor(Color::RED);
     TheUIRoot->AddChild(label_master);
+    label_master->SetMutator(new MutatorLabel(label_master));
 }
 
 
@@ -182,3 +211,5 @@ bool GUI::UnderCursor()
 
     return false;
 }
+
+

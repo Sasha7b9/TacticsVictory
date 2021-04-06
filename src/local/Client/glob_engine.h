@@ -13,5 +13,6 @@ extern Input         *TheInput;
 extern Localization  *TheLocalization;
 extern ResourceCache *TheCache;
 extern Scene         *TheScene;
+extern Time          *TheTime;
 extern UI            *TheUI;
 extern UIElement     *TheUIRoot;

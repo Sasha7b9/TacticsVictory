@@ -36,7 +36,9 @@ file(GLOB FILE_SYSTEM                 ../../common_files/FileSystem/Configuratio
                                       ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB GRAPHICS                    ../../common_files/Graphics/*.*)
 file(GLOB GRAPHICS_2D                 ../../common_files/Graphics/2D/*.*)
-file(GLOB GUI                         ../../common_files/GUI/*.*
+file(GLOB GUI                         ../../common_files/GUI/Cursor_.*
+                                      ../../common_files/GUI/GUI.*
+                                      ../../common_files/GUI/GUIEvents.*
                                                          GUI/*.*)
 file(GLOB GUI_CONTROLS                ../../common_files/GUI/Controls/Label_.*
                                       ../../common_files/GUI/Controls/Hint_.*
@@ -51,7 +53,8 @@ file(GLOB GUI_CONTROLS_SLIDERS        ../../common_files/GUI/Controls/Sliders/Sl
                                       ../../common_files/GUI/Controls/Sliders/SliderInt_.*
                                       ../../common_files/GUI/Controls/Sliders/SliderWithTextAndButtons_.*)
 file(GLOB GUI_LOGIC                   ../../common_files/GUI/Logic/LineTranslator1D_.*
-                                      ../../common_files/GUI/Logic/LineTranslator2D_.*)
+                                      ../../common_files/GUI/Logic/LineTranslator2D_.*
+                                      ../../common_files/GUI/Logic/Mutator_.*)
 file(GLOB GUI_MENU                    ../../common_files/GUI/Menu/MenuPage_.*
                                                          GUI/Menu/*.*)
 file(GLOB GUI_MENU_MENUSTART                             GUI/Menu/MenuStart/*.*)

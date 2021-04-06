@@ -20,4 +20,5 @@ public:
 private:
     void Create();
     void RegistrationObjects();
+    void CreateLabelMaster();
 };
