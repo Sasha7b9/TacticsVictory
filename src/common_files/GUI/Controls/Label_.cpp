@@ -1,10 +1,16 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "GUI/Mutator_.h"
 
 
-Label::Label(Context *context) :
-    Text(context)
+Label::Label(Context *context, Mutator *_mutator) :
+    Text(context), mutator(_mutator)
 {
+    if (mutator == nullptr)
+    {
+        mutator = Mutator::Empty();
+    }
+
     SubscribeToEvent(E_CHANGELANGUAGE, URHO3D_HANDLER(Label, HandleChangeLanguage));
 }
 
@@ -78,4 +84,10 @@ void Label::HandleChangeLanguage(StringHash, VariantMap&)
     {
         Text::SetText((char *)TheLocalization->Get(text).CString());
     }
+}
+
+
+void Label::Update(float dT)
+{
+    Text::Update(dT);
 }

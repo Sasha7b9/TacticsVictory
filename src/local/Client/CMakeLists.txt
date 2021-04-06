@@ -35,7 +35,8 @@ file(GLOB SRC                         ../../common_files/*.*
 file(GLOB FILE_SYSTEM                 ../../common_files/FileSystem/ConfigurationFile_.*
                                       ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB GRAPHICS_2D                 ../../common_files/Graphics/2D/*.*)
-file(GLOB GUI                         ../../common_files/GUI/*.*
+file(GLOB GUI                         ../../common_files/GUI/Cursor_.*
+                                      ../../common_files/GUI/Mutator_.*
                                                          GUI/*.*)
 file(GLOB GUI_CONTROLS                ../../common_files/GUI/Controls/Label_.*
                                       ../../common_files/GUI/Controls/Hint_.*
