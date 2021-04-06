@@ -8,6 +8,7 @@
 
 #include <Urho3D/Audio/Audio.h>
 #include <Urho3D/Audio/SoundListener.h>
+#include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Engine/EngineDefs.h>
 #include <Urho3D/Graphics/Camera.h>

@@ -32,6 +32,9 @@ private:
     void CreateGUI();
     void ParseArguments();
 
+
+    void HandlePostRenderUpdate(StringHash, VariantMap &);
+
     SharedPtr<Log>   log;
     SharedPtr<GUI>   gui;
     SharedPtr<Mouse> mouse;
