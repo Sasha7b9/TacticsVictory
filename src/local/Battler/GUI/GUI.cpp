@@ -38,22 +38,8 @@ GUI::~GUI()
 void GUI::RegistrationObjects()
 {
     ButtonT::RegisterObject();
-    ButtonSwitch::RegisterObject();
-    ButtonToggled::RegisterObject();
-    WindowT::RegisterObject();
-    PageGame::RegisterObject();
-    PageConfirmExit::RegisterObject();
-    Tab::RegisterObject();
-    Label::RegisterObject();
-    SliderT::RegisterObject();
     SliderInt::RegisterObject();
-    GovernorCell::RegisterObject();
-    GovernorFloat::RegisterObject();
-    PanelBottom::RegisterObject();
-    PanelMap::RegisterObject();
-    PanelMain::RegisterObject();
-    SliderWithTextAndButtons::RegisterObject();
-    DropDownListWithTextAndButton::RegisterObject();
+    PageConfirmExit::RegisterObject();
 }
 
 
