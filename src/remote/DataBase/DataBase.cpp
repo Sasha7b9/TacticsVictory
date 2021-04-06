@@ -12,7 +12,7 @@ int main()
 
     TheConfig.Load("DataBase.cfg");
 
-    TheMaster.Connect(TheConfig.GetString("address master"));
+    TheMaster->Connect(TheConfig.GetString("address master"));
 
     return 0;
 }

@@ -19,7 +19,7 @@ ConfigurationFile  TheConfig;
 ConfigurationFile  TheSettings;
 
 Battle            *TheBattle = nullptr;
-MasterServer       TheMaster;
+MasterServer      *TheMaster = nullptr;
 SceneS            *TheScene = nullptr;
 ServerS           *TheServer = nullptr;
 TerrainT          *TheTerrain = nullptr;

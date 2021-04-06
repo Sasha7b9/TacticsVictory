@@ -19,15 +19,15 @@ UIElement     *TheUIRoot       = nullptr;
 
 ConfigurationFile TheConfig;
 ConfigurationFile TheSettings;
-MasterServer      TheMasterServer;
 
-CameraT          *TheCamera     = nullptr;
-Client           *TheClient     = nullptr;
-ConsoleT         *TheConsole    = nullptr;
-CursorT          *TheCursor     = nullptr;
-GUI              *TheGUI        = nullptr;
-Hint             *TheHint       = nullptr;
-LogRAW           *TheLog        = nullptr;
-Menus            *TheMenu       = nullptr;
-Mouse            *TheMouse      = nullptr;
-WindowVariables  *TheWindowVars = nullptr;
+CameraT          *TheCamera       = nullptr;
+Client           *TheClient       = nullptr;
+ConsoleT         *TheConsole      = nullptr;
+CursorT          *TheCursor       = nullptr;
+GUI              *TheGUI          = nullptr;
+Hint             *TheHint         = nullptr;
+LogRAW           *TheLog          = nullptr;
+MasterServer     *TheMasterServer = nullptr;
+Menus            *TheMenu         = nullptr;
+Mouse            *TheMouse        = nullptr;
+WindowVariables  *TheWindowVars   = nullptr;

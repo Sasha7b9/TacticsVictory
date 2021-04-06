@@ -11,8 +11,8 @@ class TerrainT;
 extern ConfigurationFile TheConfig;
 extern ConfigurationFile TheSettings;
 
-extern Battle *TheBattle;
-extern MasterServer      TheMaster;
-extern SceneS           *TheScene;
-extern ServerS          *TheServer;
-extern TerrainT         *TheTerrain;
+extern Battle       *TheBattle;
+extern MasterServer *TheMaster;
+extern SceneS       *TheScene;
+extern ServerS      *TheServer;
+extern TerrainT     *TheTerrain;

@@ -12,7 +12,6 @@ void MasterServer::Connect(pchar full_address)
 
     while (!connector.Connect(host, port) && !destroy)
     {
-        TheGUI->AppendWarning("Can't connect to master server");
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 

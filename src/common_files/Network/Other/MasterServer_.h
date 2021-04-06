@@ -20,12 +20,17 @@ class MasterServer
 {
 public:
 
+    // callback вызывается после удачной либо неудачной попытки подключения (из Connect())
+    MasterServer(pFuncVV callback);
+
     // Делает попытку присоединения к серверу
     void Connect(pchar full_address);
 
     void Destroy();
 
     std::string GetValue(pchar key);
+
+    bool IsConnected() const;
 
 private:
 

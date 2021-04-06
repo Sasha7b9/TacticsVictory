@@ -3,4 +3,4 @@
 
 
 ConfigurationFile TheConfig;
-MasterServer      TheMaster;
+MasterServer      *TheMaster = nullptr;

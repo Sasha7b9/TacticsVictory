@@ -37,8 +37,9 @@ typedef unsigned int       uint;
 typedef unsigned long long uint64;
 typedef const char        *pchar;
 
+typedef void (*pFuncVV)();
 typedef float(*pFuncFV)();
-typedef void(*pFuncVF)(float);
+typedef void (*pFuncVF)(float);
 
 #define UNUSED(x) (void)x
 

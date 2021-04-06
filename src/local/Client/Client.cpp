@@ -106,7 +106,7 @@ void Client::ParseArguments()
 
     if (arguments.Size() != 0)
     {
-        TheMasterServer.Connect(arguments[0].CString());
+        TheMasterServer->Connect(arguments[0].CString());
     }
     else
     {

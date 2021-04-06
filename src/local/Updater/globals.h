@@ -2,4 +2,4 @@
 #pragma once
 
 
-extern MasterServer      TheMaster;
+extern MasterServer      *TheMaster;

@@ -50,7 +50,7 @@ void Battle::Setup()
 
     TheConfig.Load("Battle.cfg");
 
-    TheMaster.Connect(TheConfig.GetString("address master"));
+    TheMaster->Connect(TheConfig.GetString("address master"));
 
     TheSettings.Load("Settings.json");
 

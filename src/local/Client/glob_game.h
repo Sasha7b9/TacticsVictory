@@ -12,7 +12,6 @@ class WindowVariables;
 
 extern ConfigurationFile TheConfig;
 extern ConfigurationFile TheSettings;
-extern MasterServer      TheMasterServer;
 
 extern CameraT         *TheCamera;
 extern Client          *TheClient;
@@ -21,6 +20,7 @@ extern CursorT         *TheCursor;
 extern GUI             *TheGUI;
 extern Hint            *TheHint;
 extern LogRAW          *TheLog;
+extern MasterServer    *TheMasterServer;
 extern Menus           *TheMenu;
 extern Mouse           *TheMouse;
 extern WindowVariables *TheWindowVars;

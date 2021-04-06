@@ -19,7 +19,6 @@ UIElement     *TheUIRoot       = nullptr;
 
 ConfigurationFile TheConfig;
 ConfigurationFile TheSettings;
-MasterServer      TheMaster;
 
 CameraT         *TheCamera     = nullptr;
 Editor          *TheClient     = nullptr;
@@ -28,6 +27,7 @@ CursorT         *TheCursor     = nullptr;
 GUI             *TheGUI        = nullptr;
 Hint            *TheHint       = nullptr;
 LogRAW          *TheLog        = nullptr;
+MasterServer    *TheMaster     = nullptr;
 Menus           *TheMenu       = nullptr;
 Mouse           *TheMouse      = nullptr;
 WindowVariables *TheWindowVars = nullptr;
