@@ -1,163 +1,527 @@
 {
-    "Add":                  { "en":"Add",               "ru":"Добавить" },
-    "Address":              { "en":"Address",           "ru":"Адрес" },
-
-    "Back":                 { "en":"Back",              "ru":"Назад" },
-    "Blue":                 { "en":"Blue",              "ru":"Синий" },
-    "Brightness":           { "en":"Brightness",        "ru":"Яркость" },
-    "Brush X":              { "en":"Brush X",           "ru":"Кисть X" },
-    "Brush Y":              { "en":"Brush Y",           "ru":"Кисть Y" },
-    "Buildings":            { "en":"Buildings",         "ru":"Здания" },
-
-    "Cancel":               { "en":"Cancel",            "ru":"Отмена" },
-    "Close":                { "en":"Close",             "ru":"Закрыть" },
-    "Clear":                { "en":"Clear",             "ru":"Очистить" },
-    "Connect":              { "en":"Connect",           "ru":"Соединение" },
-    "CPU%":                 { "en":"CPU%",              "ru":"CPU%" },
-    "Create server":        { "en":"Create server",     "ru":"Создать сервер" },
-    "CreateNewMap":         { "en":"CreateNewMap",      "ru":"CreateNewMap" },
-
-    "Debug":                { "en":"Debug",             "ru":"Отладка" },
-    "Dimension X":          { "en":"Dimension X",       "ru":"Размер X" },
-    "Dimension Y":          { "en":"Dimension Y",       "ru":"Размер Y" },
-
-    "Edit":                 { "en":"Edit",              "ru":"Редактировать" },
-    "Editor":               { "en":"Editor",            "ru":"Редактор" },
-    "Exit":                 { "en":"Exit",              "ru":"Выход" },
-    "Exit from game":       { "en":"Exit from game",    "ru":"Выйти из игры" },
-
-    "File":                 { "en":"File",              "ru":"Файл" },
-    "Find server":          { "en":"Find server",       "ru":"Найти сервер" },
-    "Full screen":          { "en":"Full screen",       "ru":"Полный экран" },
-
-    "Green":                { "en":"Green",             "ru":"Зелёный" },
-
-    "Info":                 { "en":"Info",              "ru":"Информация" },
-
-    "List of available servers" : { "en":"List of available servers", "ru":"Список доступных серверов" },
-    "Load":                       { "en":"Load",                      "ru":"Загрузить" },
-    "Low":                        { "en":"Low",                       "ru":"Низкое" },
-
-    "Map":                  { "en":"Map",               "ru":"Карта" },
-    "Material quality":     { "en":"Material quality",  "ru":"Качество материалов" },
-    "Max":                  { "en":"Max",               "ru":"Максимальное" },
-    "Medium":               { "en":"Medium",            "ru":"Среднее" },
-    "Menu":                 { "en":"Menu",              "ru":"Меню" },
-
-    "Name":                 { "en":"Name",                "ru":"Имя" },
-    "Net speed in, kB/s":   { "en":"Net speed in, kB/s",  "ru":"Net speed in, kB/s" },
-    "Net speed out, kB/s":  { "en":"Net speed out, kB/s", "ru":"Net speed out, kB/s" },
-    "New Game":             { "en":"New Game",            "ru":"Новая игра" },
-    "New map":              { "en":"New map",             "ru":"Новая карта" },
-    "No response from master server":      { "en":"No response from master server",     "ru":"Нет ответа от мастер-сервера" },
-    "Not specified address master server": {"en":"Not specified address master server", "ru":"Не задан адрес мастер-сервера" },
-
-    "Off":                  { "en":"Off",               "ru":"Откл" },
-    "Ok":                   { "en":"Ok",                "ru":"Хорошо" },
-    "On":                   { "en":"On",                "ru":"Вкл" },
-    "Options":              { "en":"Options",           "ru":"Опции" },
-
-    "Panel":                { "en":"Panel",             "ru":"Панель" },
-    "Ping":                 { "en":"Ping",              "ru":"Пинг" },
-    "Platoons":             { "en":"Platoons",          "ru":"Взводы" },
-    "Play":                 { "en":"Play",              "ru":"Играть" },
-    "Press this button":    { "en":"Press this button", "ru":"Нажмите эту кнопку" },
-
-    "Quit":                 { "en":"Quit",              "ru":"Выйти" },
-
-    "Red":                  { "en":"Red",               "ru":"Красный" },
-    "Return":               { "en":"Return",            "ru":"Вернуться" },
-
-    "Server":               { "ru":"Сервер" },
-
-    "Tactics Victory":      { "en":"Tactics Victory",   "ru":"Тактика Победы" },
-    "Texture anisotropy":   { "en":"Texture anisotropy","ru":"Фильтрация текстур" },
-    "Texture quality":      { "en":"Texture quality",   "ru":"Качество текстур" },
-    "Title":                { "en":"Title",             "ru":"Заголовок" },
-    "TPlane":               { "en":"TPlane",            "ru":"TPlane" },
-
-    "Units":                { "en":"Units",             "ru":"Подразделения" },
-
-
-
-
-    "Volume":               { "en":"Volume",            "ru":"Громкость" },
-    "High":                 { "en":"High",              "ru":"Высокое" },
-    "Shadows":              { "en":"Shadows",           "ru":"Тени" },
-    "Specular lighting":    { "en":"Specular lighting", "ru":"Отражения света" },
-    "low 16bit":            { "en":"low 16bit",         "ru":"низкое 16бит" },
-    "low 24bit":            { "en":"low 24bit",         "ru":"низкое 24бит" },
-    "high 16bit":           { "en":"high 16bit",        "ru":"высокое 16бит" },
-    "high 24bit":           { "en":"high 24bit",        "ru":"высокое 24бит" },
-    "Shadow quality":       { "en":"Shadow quality",    "ru":"Качество теней" },
-    "Variables":            { "en":"Variables",         "ru":"Переменные" },
-    "Interface":            { "en":"Interface",         "ru":"Интерфейс" },
-    "Exit in OS?":          { "en":"Exit in OS?",       "ru":"Выход в ОС?" },
-    "Save":                 { "en":"Save",              "ru":"Сохранить" },
-    "PlaneRTS":             { "en":"Plane",             "ru":"Плоскость" },
-    "Edge":                 { "en":"Edge",              "ru":"Ребро" },
-    "Mode select":          { "en":"Mode select",       "ru":"Режим выбора" },
-    "Undo":                 { "en":"Undo",              "ru":"Отменить" },
-    "Redo":                 { "en":"Redo",              "ru":"Вернуть" },
-    "Objects":              { "en":"Objects",           "ru":"Объекты" },
-    "Language : EN":        { "en":"Language : EN",     "ru":"Language : EN" },
-    "Language : RU":        { "en":"Language : RU",     "ru":"Language : RU" },
-    "Camera position Y":    { "en":"Camera position Y", "ru":"Camera position Y" },
-    "Camera pos Y":         { "en":"Camera pos Y",      "ru":"Camera pos Y" },
-    "Camera position Y":    { "en":"Camera position Y", "ru":"Camera position Y" },
-    "Camera pos X":         { "en":"Camera pos X",      "ru":"Camera pos X" },
-    "Camera position Y":    { "en":"Camera position Y", "ru":"Camera position Y" },
-    "Camera pos Z":         { "en":"Camera pos Z",      "ru":"Camera pos Z" },
-    "Camera position Y":    { "en":"Camera position Y", "ru":"Camera position Y" },
-    "Camera pitch":         { "en":"Camera pitch",      "ru":"Camera pitch" },
-    "Camera position Y":    { "en":"Camera position Y", "ru":"Camera position Y" },
-    "Camera yaw":           { "en":"Camera yaw",        "ru":"Camera yaw" },
-    
-    "x1":                   { "en":"x1",                "ru":"x1" },
-    "x2":                   { "en":"x2",                "ru":"x2" },
-    "x4":                   { "en":"x4",                "ru":"x4" },
-    "x8":                   { "en":"x8",                "ru":"x8" },
-    "x16":                  { "en":"x16",               "ru":"x16" },
-    "x32":                  { "en":"x32",               "ru":"x32" },
-    "Dynamic instancing":   { "en":"Dynamic instancing","ru":"Dynamic instancing" },
-    "Shadow map size":      { "en":"Shadow map size",   "ru":"Shadow map size" },
-    "64":                   { "en":"64",                "ru":"64" },
-    "128":                  { "en":"128",               "ru":"128" },
-    "256":                  { "en":"256",               "ru":"256" },
-    "512":                  { "en":"512",               "ru":"512" },
-    "1024":                 { "en":"1024",              "ru":"1024" },
-    "2048":                 { "en":"2048",              "ru":"2048" },
-    "4096":                 { "en":"4096",              "ru":"4096" },
-    "8192":                 { "en":"8192",              "ru":"8192" },
-    "16384":                { "en":"16384",             "ru":"16384" },
-    "Create":               { "en":"Create",            "ru":"Создать" },
-    "Max occluder triangles":   
-                            { "en":"Max occluder triangles",    "ru":"Max occluder triangles" },
-    "e-mail Sasha7b9@tut.by":
-                            { "en":"e-mail Sasha7b9@tut.by",    "ru":"e-mail Sasha7b9@tut.by" },
-                            
-    "Alexandr Shevchenko":  { "en":"Alexandr Shevchenko",   "ru":"Александр Шевченко" },
-    "loadMapFromFile":      { "en":"Load map from file",    "ru":"Загрузить карту из файла" },
-    "saveMapToFile":        { "en":"Save map to file",      "ru":"Сохранить карту в файл" },
-    "createNewMap":         { "en":"Create new map",        "ru":"Создать новую карту" },
-    "clearTerrain":         { "en":"Clear terrain",         "ru":"Очистить ландашафт" },
-    "Terrain":              { "en":"Terrain",               "ru":"Ландшафт" },
-    "PAUSE":                { "en":"PAUSE",                 "ru":"ПАУЗА" },
-    "Exit in main menu?":   { "en":"Exit in main menu?",    "ru":"Выйти в главное меню?" },
-    "Start server":         { "en":"Start server",          "ru":"Запустить сервер" },
-    "Start client":         { "en":"Start client",          "ru":"Запустить клиент" },
-    "Start editor":         { "en":"Start editor",          "ru":"Запустить редактор" },
-    "Server":               { "en":"Server",                "ru":"Сервер" },
-    "Client":               { "en":"Client",                "ru":"Клиент" },
-    "Help":                 { "en":"Help",                  "ru":"Помощь" },
-    "About game":           { "en":"About game",            "ru":"Об игре" },
-    "About me":             { "en":"About me",              "ru":"Обо мне" },
-
-    "hintSliderDefaultHeight":  
-                            { "en":"This value will fill a landscape after cleaning",   "ru":"Этим значением будет заполнен ландшафт после очистки" },
-    "hintObjectsAdd":       { "en":"Add new object in factory",                         "ru":"Добавить новый объект в фабрику" },
-    "hintEditUndo":         { "en":"To cancel previous action",                         "ru":"Отменяет предыдущее действие" },
-    "hintEditRedo":         { "en":"Returns to previous action",                        "ru":"Возвращает предыдущее действие" },
-    "hintSliderSizeBrushX": { "en":"Set of the size X of a brush",                      "ru":"Установка размера Х кисти"},
-    "hintSliderSizeBrushY": { "en":"Set of the size Y of a brush",                      "ru":"Установка размера Y кисти"}
+    "Connection to master server established":
+  {
+    "en":"Connection to master server established", 
+    "ru":"Соединение с мастер-сервером установлено"
+  },
+  "64": {
+    "en": "64",
+    "ru": "64"
+  },
+  "128": {
+    "en": "128",
+    "ru": "128"
+  },
+  "256": {
+    "en": "256",
+    "ru": "256"
+  },
+  "512": {
+    "en": "512",
+    "ru": "512"
+  },
+  "1024": {
+    "en": "1024",
+    "ru": "1024"
+  },
+  "2048": {
+    "en": "2048",
+    "ru": "2048"
+  },
+  "4096": {
+    "en": "4096",
+    "ru": "4096"
+  },
+  "8192": {
+    "en": "8192",
+    "ru": "8192"
+  },
+  "16384": {
+    "en": "16384",
+    "ru": "16384"
+  },
+  "Add": {
+    "en": "Add",
+    "ru": "Добавить"
+  },
+  "Address": {
+    "en": "Address",
+    "ru": "Адрес"
+  },
+  "Back": {
+    "en": "Back",
+    "ru": "Назад"
+  },
+  "Blue": {
+    "en": "Blue",
+    "ru": "Синий"
+  },
+  "Brightness": {
+    "en": "Brightness",
+    "ru": "Яркость"
+  },
+  "Brush X": {
+    "en": "Brush X",
+    "ru": "Кисть X"
+  },
+  "Brush Y": {
+    "en": "Brush Y",
+    "ru": "Кисть Y"
+  },
+  "Buildings": {
+    "en": "Buildings",
+    "ru": "Здания"
+  },
+  "Can't connect to master server": {
+    "en": "Can't connect to master server",
+    "ru": "Не могу подключиться к мастер-серверу"
+  },
+  "Cancel": {
+    "en": "Cancel",
+    "ru": "Отмена"
+  },
+  "Close": {
+    "en": "Close",
+    "ru": "Закрыть"
+  },
+  "Clear": {
+    "en": "Clear",
+    "ru": "Очистить"
+  },
+  "Connect": {
+    "en": "Connect",
+    "ru": "Соединение"
+  },
+  "CPU%": {
+    "en": "CPU%",
+    "ru": "CPU%"
+  },
+  "Create server": {
+    "en": "Create server",
+    "ru": "Создать сервер"
+  },
+  "CreateNewMap": {
+    "en": "CreateNewMap",
+    "ru": "CreateNewMap"
+  },
+  "Debug": {
+    "en": "Debug",
+    "ru": "Отладка"
+  },
+  "Dimension X": {
+    "en": "Dimension X",
+    "ru": "Размер X"
+  },
+  "Dimension Y": {
+    "en": "Dimension Y",
+    "ru": "Размер Y"
+  },
+  "Edit": {
+    "en": "Edit",
+    "ru": "Редактировать"
+  },
+  "Editor": {
+    "en": "Editor",
+    "ru": "Редактор"
+  },
+  "Exit": {
+    "en": "Exit",
+    "ru": "Выход"
+  },
+  "Exit from game": {
+    "en": "Exit from game",
+    "ru": "Выйти из игры"
+  },
+  "File": {
+    "en": "File",
+    "ru": "Файл"
+  },
+  "Find server": {
+    "en": "Find server",
+    "ru": "Найти сервер"
+  },
+  "Full screen": {
+    "en": "Full screen",
+    "ru": "Полный экран"
+  },
+  "Green": {
+    "en": "Green",
+    "ru": "Зелёный"
+  },
+  "Info": {
+    "en": "Info",
+    "ru": "Информация"
+  },
+  "List of available servers": {
+    "en": "List of available servers",
+    "ru": "Список доступных серверов"
+  },
+  "Load": {
+    "en": "Load",
+    "ru": "Загрузить"
+  },
+  "Low": {
+    "en": "Low",
+    "ru": "Низкое"
+  },
+  "Map": {
+    "en": "Map",
+    "ru": "Карта"
+  },
+  "Material quality": {
+    "en": "Material quality",
+    "ru": "Качество материалов"
+  },
+  "Max": {
+    "en": "Max",
+    "ru": "Максимальное"
+  },
+  "Medium": {
+    "en": "Medium",
+    "ru": "Среднее"
+  },
+  "Menu": {
+    "en": "Menu",
+    "ru": "Меню"
+  },
+  "Name": {
+    "en": "Name",
+    "ru": "Имя"
+  },
+  "Net speed in, kB/s": {
+    "en": "Net speed in, kB/s",
+    "ru": "Net speed in, kB/s"
+  },
+  "Net speed out, kB/s": {
+    "en": "Net speed out, kB/s",
+    "ru": "Net speed out, kB/s"
+  },
+  "New Game": {
+    "en": "New Game",
+    "ru": "Новая игра"
+  },
+  "New map": {
+    "en": "New map",
+    "ru": "Новая карта"
+  },
+  "No response from master server": {
+    "en": "No response from master server",
+    "ru": "Нет ответа от мастер-сервера"
+  },
+  "Not specified address master server": {
+    "en": "Not specified address master server",
+    "ru": "Не задан адрес мастер-сервера"
+  },
+  "Off": {
+    "en": "Off",
+    "ru": "Откл"
+  },
+  "Ok": {
+    "en": "Ok",
+    "ru": "Хорошо"
+  },
+  "On": {
+    "en": "On",
+    "ru": "Вкл"
+  },
+  "Options": {
+    "en": "Options",
+    "ru": "Опции"
+  },
+  "Panel": {
+    "en": "Panel",
+    "ru": "Панель"
+  },
+  "Ping": {
+    "en": "Ping",
+    "ru": "Пинг"
+  },
+  "Platoons": {
+    "en": "Platoons",
+    "ru": "Взводы"
+  },
+  "Play": {
+    "en": "Play",
+    "ru": "Играть"
+  },
+  "Press this button": {
+    "en": "Press this button",
+    "ru": "Нажмите эту кнопку"
+  },
+  "Quit": {
+    "en": "Quit",
+    "ru": "Выйти"
+  },
+  "Red": {
+    "en": "Red",
+    "ru": "Красный"
+  },
+  "Return": {
+    "en": "Return",
+    "ru": "Вернуться"
+  },
+  "Server": {
+    "en": "Server",
+    "ru": "Сервер"
+  },
+  "Tactics Victory": {
+    "en": "Tactics Victory",
+    "ru": "Тактика Победы"
+  },
+  "Texture anisotropy": {
+    "en": "Texture anisotropy",
+    "ru": "Фильтрация текстур"
+  },
+  "Texture quality": {
+    "en": "Texture quality",
+    "ru": "Качество текстур"
+  },
+  "Title": {
+    "en": "Title",
+    "ru": "Заголовок"
+  },
+  "TPlane": {
+    "en": "TPlane",
+    "ru": "TPlane"
+  },
+  "Units": {
+    "en": "Units",
+    "ru": "Подразделения"
+  },
+  "Volume": {
+    "en": "Volume",
+    "ru": "Громкость"
+  },
+  "High": {
+    "en": "High",
+    "ru": "Высокое"
+  },
+  "Shadows": {
+    "en": "Shadows",
+    "ru": "Тени"
+  },
+  "Specular lighting": {
+    "en": "Specular lighting",
+    "ru": "Отражения света"
+  },
+  "low 16bit": {
+    "en": "low 16bit",
+    "ru": "низкое 16бит"
+  },
+  "low 24bit": {
+    "en": "low 24bit",
+    "ru": "низкое 24бит"
+  },
+  "high 16bit": {
+    "en": "high 16bit",
+    "ru": "высокое 16бит"
+  },
+  "high 24bit": {
+    "en": "high 24bit",
+    "ru": "высокое 24бит"
+  },
+  "Shadow quality": {
+    "en": "Shadow quality",
+    "ru": "Качество теней"
+  },
+  "Variables": {
+    "en": "Variables",
+    "ru": "Переменные"
+  },
+  "Interface": {
+    "en": "Interface",
+    "ru": "Интерфейс"
+  },
+  "Exit in OS?": {
+    "en": "Exit in OS?",
+    "ru": "Выход в ОС?"
+  },
+  "Save": {
+    "en": "Save",
+    "ru": "Сохранить"
+  },
+  "PlaneRTS": {
+    "en": "Plane",
+    "ru": "Плоскость"
+  },
+  "Edge": {
+    "en": "Edge",
+    "ru": "Ребро"
+  },
+  "Mode select": {
+    "en": "Mode select",
+    "ru": "Режим выбора"
+  },
+  "Undo": {
+    "en": "Undo",
+    "ru": "Отменить"
+  },
+  "Redo": {
+    "en": "Redo",
+    "ru": "Вернуть"
+  },
+  "Objects": {
+    "en": "Objects",
+    "ru": "Объекты"
+  },
+  "Language : EN": {
+    "en": "Language : EN",
+    "ru": "Language : EN"
+  },
+  "Language : RU": {
+    "en": "Language : RU",
+    "ru": "Language : RU"
+  },
+  "Camera position Y": {
+    "en": "Camera position Y",
+    "ru": "Camera position Y"
+  },
+  "Camera pos Y": {
+    "en": "Camera pos Y",
+    "ru": "Camera pos Y"
+  },
+  "Camera pos X": {
+    "en": "Camera pos X",
+    "ru": "Camera pos X"
+  },
+  "Camera pos Z": {
+    "en": "Camera pos Z",
+    "ru": "Camera pos Z"
+  },
+  "Camera pitch": {
+    "en": "Camera pitch",
+    "ru": "Camera pitch"
+  },
+  "Camera yaw": {
+    "en": "Camera yaw",
+    "ru": "Camera yaw"
+  },
+  "x1": {
+    "en": "x1",
+    "ru": "x1"
+  },
+  "x2": {
+    "en": "x2",
+    "ru": "x2"
+  },
+  "x4": {
+    "en": "x4",
+    "ru": "x4"
+  },
+  "x8": {
+    "en": "x8",
+    "ru": "x8"
+  },
+  "x16": {
+    "en": "x16",
+    "ru": "x16"
+  },
+  "x32": {
+    "en": "x32",
+    "ru": "x32"
+  },
+  "Dynamic instancing": {
+    "en": "Dynamic instancing",
+    "ru": "Dynamic instancing"
+  },
+  "Shadow map size": {
+    "en": "Shadow map size",
+    "ru": "Shadow map size"
+  },
+  "Create": {
+    "en": "Create",
+    "ru": "Создать"
+  },
+  "Max occluder triangles": {
+    "en": "Max occluder triangles",
+    "ru": "Max occluder triangles"
+  },
+  "e-mail Sasha7b9@tut.by": {
+    "en": "e-mail Sasha7b9@tut.by",
+    "ru": "e-mail Sasha7b9@tut.by"
+  },
+  "Alexandr Shevchenko": {
+    "en": "Alexandr Shevchenko",
+    "ru": "Александр Шевченко"
+  },
+  "loadMapFromFile": {
+    "en": "Load map from file",
+    "ru": "Загрузить карту из файла"
+  },
+  "saveMapToFile": {
+    "en": "Save map to file",
+    "ru": "Сохранить карту в файл"
+  },
+  "createNewMap": {
+    "en": "Create new map",
+    "ru": "Создать новую карту"
+  },
+  "clearTerrain": {
+    "en": "Clear terrain",
+    "ru": "Очистить ландашафт"
+  },
+  "Terrain": {
+    "en": "Terrain",
+    "ru": "Ландшафт"
+  },
+  "PAUSE": {
+    "en": "PAUSE",
+    "ru": "ПАУЗА"
+  },
+  "Exit in main menu?": {
+    "en": "Exit in main menu?",
+    "ru": "Выйти в главное меню?"
+  },
+  "Start server": {
+    "en": "Start server",
+    "ru": "Запустить сервер"
+  },
+  "Start client": {
+    "en": "Start client",
+    "ru": "Запустить клиент"
+  },
+  "Start editor": {
+    "en": "Start editor",
+    "ru": "Запустить редактор"
+  },
+  "Client": {
+    "en": "Client",
+    "ru": "Клиент"
+  },
+  "Help": {
+    "en": "Help",
+    "ru": "Помощь"
+  },
+  "About game": {
+    "en": "About game",
+    "ru": "Об игре"
+  },
+  "About me": {
+    "en": "About me",
+    "ru": "Обо мне"
+  },
+  "hintSliderDefaultHeight": {
+    "en": "This value will fill a landscape after cleaning",
+    "ru": "Этим значением будет заполнен ландшафт после очистки"
+  },
+  "hintObjectsAdd": {
+    "en": "Add new object in factory",
+    "ru": "Добавить новый объект в фабрику"
+  },
+  "hintEditUndo": {
+    "en": "To cancel previous action",
+    "ru": "Отменяет предыдущее действие"
+  },
+  "hintEditRedo": {
+    "en": "Returns to previous action",
+    "ru": "Возвращает предыдущее действие"
+  },
+  "hintSliderSizeBrushX": {
+    "en": "Set of the size X of a brush",
+    "ru": "Установка размера Х кисти"
+  },
+  "hintSliderSizeBrushY": {
+    "en": "Set of the size Y of a brush",
+    "ru": "Установка размера Y кисти"
+  }
 }

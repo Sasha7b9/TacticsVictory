@@ -104,16 +104,14 @@ void Client::ParseArguments()
 {
     const Vector<String> &arguments = GetArguments();
 
-    String address_master = "127.0.0.1:40000";
-
-    if (arguments.Size() == 0)
+    if (arguments.Size() != 0)
     {
-        LOGWARNINGF("Not specified address master server");
-        TheGUI->AppendWarning("Not specified address master server");
+        TheMasterServer.Connect(arguments[0].CString());
     }
     else
     {
-        address_master = String(arguments[0]);
+        LOGWARNINGF("Not specified address master server");
+        TheGUI->AppendWarning("Not specified address master server");
     }
 }
 
