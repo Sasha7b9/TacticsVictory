@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 
-int main(int argc, char *argv[])
+int main(int argc, char * /*argv*/ [])
 {
     setlocale(LC_ALL, "Russian");
 
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    TheMasterServer.Connect(argv[1]);
+//    TheMasterServer.Connect(argv[1]);
 
     TheMasterServer.Destroy();
 

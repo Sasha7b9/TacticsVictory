@@ -24,7 +24,7 @@ void Hangar::Setup()
 
     TheHangar = this;
 
-    TheMasterServer.Connect(TheConfig.GetString("address master"));
+//    TheMasterServer.Connect(TheConfig.GetString("address master"));
 
     GetSubsystems();
 

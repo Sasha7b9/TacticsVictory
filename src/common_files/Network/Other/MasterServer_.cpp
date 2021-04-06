@@ -3,7 +3,7 @@
 #include "Network/Other/MasterServer_.h"
 
 
-static void ThreadConnect(ConnectorTCP *connector, pchar full_address, pFuncVV callback, std::mutex *mutex)
+static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mutex *mutex)
 {
     mutex->lock();
 
@@ -15,25 +15,24 @@ static void ThreadConnect(ConnectorTCP *connector, pchar full_address, pFuncVV c
     }
 
     mutex->unlock();
-
-    callback();
 }
 
 
-void MasterServer::Connect(pchar full_address)
+void MasterServer::Connect()
 {
     if (destroy)
     {
         return;
     }
 
-    if (callback == nullptr)
+    if (address.empty())
     {
-        LOGERRORF("Callback for connection not set");
+        LOGERRORF("Not specified address master server");
+
         return;
     }
 
-    std::thread thread(ThreadConnect, &connector, full_address, callback, &mutex);
+    std::thread thread(ThreadConnect, &connector, address.c_str(), &mutex);
 
     thread.detach();
 }

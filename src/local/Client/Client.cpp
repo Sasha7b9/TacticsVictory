@@ -86,7 +86,7 @@ void Client::Start()
 
     CreateConsoleAndDebugHud();
 
-//    SubscribeToEvents();
+    SubscribeToEvents();
 
     TheScene = new Scene(TheContext);
 
@@ -106,20 +106,21 @@ void Client::ParseArguments()
 
     if (arguments.Size() != 0)
     {
-        TheMasterServer.SetCallback([]()
-            {
-                if (TheMasterServer.IsConnected())
-                {
-                    TheGUI->AppendInfo("Connection to master server established");
-                }
-                else
-                {
-                    TheGUI->AppendWarning("Can't connect to master server");
-                    TheMasterServer.Connect(GetArguments()[0].CString());
-                }
-            });
+        TheMasterServer.SetAddress(arguments[0].CString());
 
-        TheMasterServer.Connect(arguments[0].CString());
+//        TheMasterServer.SetCallback([]()
+//            {
+//                if (TheMasterServer.IsConnected())
+//                {
+//                    TheGUI->AppendInfo("Connection to master server established");
+//                }
+//                else
+//                {
+//                    TheGUI->AppendWarning("Can't connect to master server");
+//                    TheMasterServer.Connect(GetArguments()[0].CString());
+//                }
+//            });
+//        TheMasterServer.Connect(arguments[0].CString());
     }
     else
     {

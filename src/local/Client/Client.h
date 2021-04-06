@@ -32,7 +32,6 @@ private:
     void CreateGUI();
     void ParseArguments();
 
-
     void HandlePostRenderUpdate(StringHash, VariantMap &);
 
     SharedPtr<Log>   log;

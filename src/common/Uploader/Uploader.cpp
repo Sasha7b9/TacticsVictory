@@ -11,7 +11,7 @@ int main()
 
     TheConfig.Load("Uploader.cfg");
 
-    TheMasterServer.Connect(TheConfig.GetString("address master"));
+//    TheMasterServer.Connect(TheConfig.GetString("address master"));
 
     return 0;
 }

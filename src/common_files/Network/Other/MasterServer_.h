@@ -20,10 +20,9 @@ class MasterServer
 {
 public:
 
-    void SetCallback(pFuncVV _callback) { callback = _callback; };
+    void SetAddress(pchar full_address) {address = full_address; };
 
-    // Делает попытку присоединения к серверу
-    void Connect(pchar full_address);
+    void Connect();
 
     void Destroy();
 
@@ -37,7 +36,7 @@ private:
 
     bool destroy = false;
 
-    pFuncVV callback = nullptr;
-
     std::mutex mutex;                   // Данный mutex будет захвачен, пока сервер находится в процессе соединения
+
+    std::string address;
 };
