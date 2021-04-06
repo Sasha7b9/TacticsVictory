@@ -184,6 +184,7 @@ void GUI::CreateLabelMaster()
         {
             if (!enabled)
             {
+                node->SetVisible(true);
                 return;
             }
 

@@ -28,7 +28,7 @@ public:
 
     std::string GetValue(pchar key);
 
-    bool IsConnected() const { return connector.IsConnected(); };
+    bool IsConnected();
 
     pchar GetAddress() const { return address.c_str(); }
 

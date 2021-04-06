@@ -64,3 +64,16 @@ void MasterServer::Destroy()
 
     connector.Release();
 }
+
+
+bool MasterServer::IsConnected()
+{
+    if (mutex.try_lock())
+    {
+        mutex.unlock();
+        
+        return connector.IsConnected();
+    }
+
+    return false;
+}

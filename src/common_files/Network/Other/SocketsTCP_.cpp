@@ -94,6 +94,27 @@ void ConnectorTCP::Receive(std::string &data)
 }
 
 
+bool ConnectorTCP::IsConnected() const
+{
+    if (!connection)
+    {
+        return false;
+    }
+
+    if (!connection->is_open())
+    {
+        return false;
+    }
+
+    if (!connection->is_connected())
+    {
+        return false;
+    }
+
+    return true;
+}
+
+
 std::string ConnectorTCP::Receive()
 {
     uint size = 0;
