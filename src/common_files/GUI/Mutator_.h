@@ -10,7 +10,7 @@ public:
     Mutator(Context *context);
     virtual ~Mutator();
 
-    virtual void Update();
+    virtual void Update(float dT);
 
     static Mutator *Empty();
 };

@@ -3,13 +3,10 @@
 #include "GUI/Mutator_.h"
 
 
-Label::Label(Context *context, Mutator *_mutator) :
-    Text(context), mutator(_mutator)
+Label::Label(Context *context) :
+    Text(context)
 {
-    if (mutator == nullptr)
-    {
-        mutator = Mutator::Empty();
-    }
+    mutator = Mutator::Empty();
 
     SubscribeToEvent(E_CHANGELANGUAGE, URHO3D_HANDLER(Label, HandleChangeLanguage));
 }
@@ -90,4 +87,9 @@ void Label::HandleChangeLanguage(StringHash, VariantMap&)
 void Label::Update(float dT)
 {
     Text::Update(dT);
+
+    if (mutator)
+    {
+        mutator->Update(dT);
+    }
 }
