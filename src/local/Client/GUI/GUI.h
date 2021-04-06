@@ -12,7 +12,6 @@ class GUI : public Object
 
 public:
     GUI(GUI **self);
-    ~GUI();
 
     bool UnderCursor();                                             // Возвращает true, если меню под курсором
 

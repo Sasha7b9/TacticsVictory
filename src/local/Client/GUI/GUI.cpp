@@ -13,11 +13,6 @@ GUI::GUI(GUI **self) : Object(TheContext)
 }
 
 
-GUI::~GUI()
-{
-}
-
-
 void GUI::RegistrationObjects()
 {
     ButtonT::RegisterObject();
