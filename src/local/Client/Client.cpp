@@ -114,7 +114,7 @@ void Client::ParseArguments()
                 }
                 else
                 {
-                    TheGUI->AppendInfo("Can't connect to master server");
+                    TheGUI->AppendWarning("Can't connect to master server");
                     TheMasterServer.Connect(GetArguments()[0].CString());
                 }
             });
@@ -131,6 +131,8 @@ void Client::ParseArguments()
 
 void Client::Stop()
 {
+    TheMasterServer.Destroy();
+
     engine_->DumpResources(true);
     engine_->DumpProfiler();
 

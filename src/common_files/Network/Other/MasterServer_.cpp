@@ -3,12 +3,9 @@
 #include "Network/Other/MasterServer_.h"
 
 
-static void ThreadConnect(ConnectorTCP *connector, pchar full_address, bool *destroy, pFuncVV callback,
-    std::mutex *mutex)
+static void ThreadConnect(ConnectorTCP *connector, pchar full_address, pFuncVV callback, std::mutex *mutex)
 {
     mutex->lock();
-
-    *destroy = false;
 
     auto [host, port] = ConnectorTCP::ParseAddress(full_address);
 
@@ -22,15 +19,21 @@ static void ThreadConnect(ConnectorTCP *connector, pchar full_address, bool *des
     callback();
 }
 
+
 void MasterServer::Connect(pchar full_address)
 {
+    if (destroy)
+    {
+        return;
+    }
+
     if (callback == nullptr)
     {
         LOGERRORF("Callback for connection not set");
         return;
     }
 
-    std::thread thread(ThreadConnect, &connector, full_address, &destroy, callback, &mutex);
+    std::thread thread(ThreadConnect, &connector, full_address, callback, &mutex);
 
     thread.detach();
 }
@@ -48,7 +51,7 @@ void MasterServer::Destroy()
 {
     destroy = true;
 
-    mutex.lock();
+    mutex.lock();           // Ожидаем завершения ThreadConnect
     mutex.unlock();
 
     connector.Release();

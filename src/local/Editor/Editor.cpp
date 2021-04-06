@@ -23,9 +23,9 @@ void Editor::Setup()
 
     LogRAW::Create((GetTypeName() + ".log").CString(), true);
 
-    LOGWRITE("Start Client");
+    LOGWRITE((String("Start") + GetTypeName()).CString());
 
-    TheConfig.Load("Client.conf");
+    TheConfig.Load((GetTypeName() + ".conf").CString());
 
     TheClient = this;
 
