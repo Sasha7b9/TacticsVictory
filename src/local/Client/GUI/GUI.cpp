@@ -166,31 +166,6 @@ void GUI::Create()
 }
 
 
-class MutatorLabel : public Mutator
-{
-public:
-
-    MutatorLabel(UIElement *element) : Mutator(element) {}
-
-    virtual void Update(float /*dT*/) override
-    {
-        if (!enabled)
-        {
-            return;
-        }
-
-        static float prev = 0.0F;
-
-        if (TheTime->GetElapsedTime() - prev > 0.5f)
-        {
-            node->SetVisible(node->IsVisible() ? false : true);
-
-            prev = TheTime->GetElapsedTime();
-        }
-    }
-};
-
-
 void GUI::CreateLabelMaster()
 {
     label_info = Label::Create("", TheSettings.GetInt("menu", "font", "size", "item"));
@@ -198,6 +173,31 @@ void GUI::CreateLabelMaster()
     label_info->SetPosition(0, 50);
     label_info->SetColor(Color::RED);
     TheUIRoot->AddChild(label_info);
+ 
+    class MutatorLabel : public Mutator
+    {
+    public:
+
+        MutatorLabel(UIElement *element) : Mutator(element) {}
+
+        virtual void Update(float /*dT*/) override
+        {
+            if (!enabled)
+            {
+                return;
+            }
+
+            static float prev = 0.0F;
+
+            if (TheTime->GetElapsedTime() - prev > 0.5f)
+            {
+                node->SetVisible(node->IsVisible() ? false : true);
+
+                prev = TheTime->GetElapsedTime();
+            }
+        }
+    };
+
     label_info->SetMutator(new MutatorLabel(label_info));
 }
 
