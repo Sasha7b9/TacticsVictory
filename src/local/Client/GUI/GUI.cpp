@@ -22,7 +22,7 @@ void GUI::RegistrationObjects()
 {
     ButtonT::RegisterObject();
     SliderInt::RegisterObject();
-    MenuConfirmExit::RegisterObject();
+    PageConfirmExit::RegisterObject();
 }
 
 

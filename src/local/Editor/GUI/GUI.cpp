@@ -32,7 +32,7 @@ void GUI::RegistrationObjects()
     ButtonSwitch::RegisterObject();
     ButtonToggled::RegisterObject();
     WindowT::RegisterObject();
-    MenuConfirmExit::RegisterObject();
+    PageConfirmExit::RegisterObject();
     Label::RegisterObject();
     SliderT::RegisterObject();
     SliderInt::RegisterObject();

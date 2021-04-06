@@ -3,12 +3,12 @@
 #include "GUI/Menu/MenuPage_.h"
 
 
-class MenuConfirmExit : public MenuPage
+class PageConfirmExit : public MenuPage
 {
-    URHO3D_OBJECT(MenuConfirmExit, MenuPage);
+    URHO3D_OBJECT(PageConfirmExit, MenuPage);
 
 public:
-    MenuConfirmExit();
+    PageConfirmExit();
 
 private:
     SharedPtr<ButtonT> buttonOk;
