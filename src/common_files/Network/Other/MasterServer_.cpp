@@ -82,21 +82,17 @@ std::string MasterServer::GetValue(pchar key)
 
 static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, uint8 *state)
 {
+    using namespace std::chrono;
     mutex->lock();
-
-    auto start = std::chrono::system_clock::now();
-
+    auto start = system_clock::now();
     connector->Transmit("ping");
-
     std::string result = connector->Receive();
 
     if (result == "ping")
     {
         *state = MasterServer::State::GetPing;
-
-        auto end = std::chrono::system_clock::now();
-
-        *ping = (int)std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+        auto end = system_clock::now();
+        *ping = (int)duration_cast<milliseconds>(end - start).count();
     }
     else
     {
@@ -146,9 +142,18 @@ void MasterServer::Update()
 
     case State::InConnection:
         {
-            state = State::WaitPing;
-            std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
-            thread.detach();
+            using namespace std::chrono;
+            static auto prev_time = system_clock::now();
+            auto now = system_clock::now();
+            uint delta = (uint)duration_cast<milliseconds>(now - prev_time).count();
+
+            if (delta >= 1000)
+            {
+                state = State::WaitPing;
+                std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
+                thread.detach();
+                prev_time = now;
+            }
         }
         break;
 
