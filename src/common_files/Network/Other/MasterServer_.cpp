@@ -3,27 +3,6 @@
 #include "Network/Other/MasterServer_.h"
 
 
-static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mutex *mutex,
-    uint8 *state)
-{
-    mutex->lock();
-
-    auto [host, port] = ConnectorTCP::ParseAddress(full_address);
-
-    if (connector->Connect(host, port))
-    {
-        *state = MasterServer::State::EventConnection;
-        connector->SetReadTimeOut(10000);
-    }
-    else
-    {
-        *state = MasterServer::State::EventFailConnection;
-    }
-
-    mutex->unlock();
-}
-
-
 std::string MasterServer::GetValue(pchar key)
 {
     connector.Transmit(key);
@@ -80,6 +59,26 @@ void MasterServer::Connect()
 }
 
 
+static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mutex *mutex,  uint8 *state)
+{
+    mutex->lock();
+
+    auto [host, port] = ConnectorTCP::ParseAddress(full_address);
+
+    if (connector->Connect(host, port))
+    {
+        *state = MasterServer::State::EventConnection;
+        connector->SetReadTimeOut(10000);
+    }
+    else
+    {
+        *state = MasterServer::State::EventFailConnection;
+    }
+
+    mutex->unlock();
+}
+
+
 void MasterServer::Update()
 {
     switch (state)
@@ -106,13 +105,13 @@ void MasterServer::Update()
         break;
 
     case State::EventConnection:
-        funcConnection();
         state = State::InConnection;
+        funcConnection();
         break;
 
     case State::EventFailConnection:
+        state = State::Idle;
         funcFailConnection();
-        state = State::EventFailConnection;
         break;
 
     case State::InConnection:
