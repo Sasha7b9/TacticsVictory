@@ -44,7 +44,9 @@ public:
         EventConnection,        // Произошло соединение, нужно вызывать функцию funcConnection
         EventFailConnection,    // Неудачное соединение, нужно вызывать функцию funcFailConnection
         InConnection,           // Подключено
-        WaitPing                // Ожидание сообщения о пинге
+        WaitPing,               // Ожидание сообщения о пинге
+        EventDisconnect,        // Событие обрыва связи с мастер-сервером
+        GetPing                 // Получен пинг
     }; };
 
 private:
@@ -56,6 +58,7 @@ private:
     pFuncVV funcFailConnection = nullptr;   // Вызывается в случае неуспешной попытки соединения
     pFuncVV funcConnection     = nullptr;   // Вызывается в случае успешной попытки соединения
     pFuncVV funcDisconnection  = nullptr;   // Вызывается при потере связи с сервером
+    pFuncVI funcPing           = nullptr;
 
     State::E state = State::Idle;
 };

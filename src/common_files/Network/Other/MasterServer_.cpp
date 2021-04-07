@@ -3,14 +3,6 @@
 #include "Network/Other/MasterServer_.h"
 
 
-std::string MasterServer::GetValue(pchar key)
-{
-    connector.Transmit(key);
-
-    return connector.ReceiveWait();
-}
-
-
 void MasterServer::Destroy()
 {
     destroy = true;
@@ -39,7 +31,7 @@ void MasterServer::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV discon
 
 void MasterServer::Connect()
 {
-    if (!funcFailConnection || !funcConnection || !funcDisconnection)
+    if (!funcFailConnection || !funcConnection || !funcDisconnection || !funcPing)
     {
         LOGERROR("Callbacks not defined");
         return;
@@ -79,8 +71,45 @@ static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mute
 }
 
 
+std::string MasterServer::GetValue(pchar key)
+{
+    connector.Transmit(key);
+
+    return connector.ReceiveWait();
+}
+
+
+static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, uint8 *state)
+{
+    mutex->lock();
+
+    auto start = std::chrono::system_clock::now();
+
+    connector->Transmit("ping");
+
+    std::string result = connector->Receive();
+
+    if (result == "ping")
+    {
+        *state = MasterServer::State::GetPing;
+
+        auto end = std::chrono::system_clock::now();
+
+        *ping = (int)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    }
+    else
+    {
+        *state = MasterServer::State::EventDisconnect;
+    }
+
+    mutex->unlock();
+}
+
+
 void MasterServer::Update()
 {
+    static int ping = 999;
+
     switch (state)
     {
     case State::Idle:
@@ -94,7 +123,7 @@ void MasterServer::Update()
                 {
                     mutex.unlock();
                     state = State::AttemptConnection;
-                    std::thread thread(ThreadConnect, &connector, std::move(address.c_str()), &mutex, (uint8*)&state);
+                    std::thread thread(ThreadConnect, &connector, std::move(address.c_str()), &mutex, (uint8 *)&state);
                     thread.detach();
                 }
             }
@@ -115,16 +144,25 @@ void MasterServer::Update()
         break;
 
     case State::InConnection:
-
+        {
+            state = State::WaitPing;
+            std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
+            thread.detach();
+        }
         break;
 
     case State::WaitPing:
         break;
+
+    case State::EventDisconnect:
+        state = State::Idle;
+        funcPing(ping);
+        funcDisconnection();
+        break;
+
+    case State::GetPing:
+        state = State::InConnection;
+        funcPing(ping);
+        break;
     }
-
-
-//    if (TheMasterServer.IsConnected())
-//    {
-//        TheGUI->AppendInfo("Connection to master server established");
-//    }
 }

@@ -38,6 +38,7 @@ typedef unsigned long long uint64;
 typedef const char        *pchar;
 
 typedef void (*pFuncVV)();
+typedef void (*pFuncVI)(int);
 typedef float(*pFuncFV)();
 typedef void (*pFuncVF)(float);
 

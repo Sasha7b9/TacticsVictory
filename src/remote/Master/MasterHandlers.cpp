@@ -96,10 +96,7 @@ static void HandlerGet()
 
 static void HandlerPing()
 {
-    if (words->size() == 2)
-    {
-        sock->Transmit(std::string("ping ") + (*words)[1]);
-    }
+    sock->Transmit(std::string("ping"));
 }
 
 
