@@ -17,16 +17,6 @@ static std::map<std::string, Handler> map;
 static AcceptorTCP::Socket *sock = nullptr;             // Используется в обработчиках
 static std::vector<std::string> *words = nullptr;       // Используется в обработчиках
 
-struct ServerInfo
-{
-    std::string name;
-    std::string address;
-    int         ping;
-    int         cpu;
-};
-
-static std::map<std::string, ServerInfo> servers;
-
 
 void Master::Prepare()
 {
