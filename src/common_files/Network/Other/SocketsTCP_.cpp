@@ -142,10 +142,7 @@ std::string ConnectorTCP::ReceiveWait()
 {
     std::string result;
 
-    while (result.size() == 0)
-    {
-        Receive(result);
-    }
+    Receive(result);
 
     return result;
 }
