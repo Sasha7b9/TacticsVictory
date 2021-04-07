@@ -30,7 +30,7 @@ public:
 
     void Destroy();
 
-    std::string GetValue(pchar key);
+    std::string GetAnswer(pchar key);
 
     bool IsConnected();
 
@@ -64,4 +64,6 @@ private:
     pFuncVI funcPing           = nullptr;
 
     State::E state = State::Idle;
+
+    void ExecuteTasks(int64 now);
 };

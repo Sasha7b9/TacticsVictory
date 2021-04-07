@@ -76,7 +76,7 @@ static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mute
 }
 
 
-std::string MasterServer::GetValue(pchar key)
+std::string MasterServer::GetAnswer(pchar key)
 {
     mutex.lock();
 
@@ -166,19 +166,9 @@ void MasterServer::Update()
                 prev_time = now;
             }
 
-            long long now_ms = duration_cast<milliseconds>(now.time_since_epoch()).count();
+            int64 now_ms = duration_cast<milliseconds>(now.time_since_epoch()).count();
 
-            for each (TaskMasterServer * task in tasks)
-            {
-                if (now_ms >= task->prev_time + task->delta_time)
-                {
-                    std::string answer = GetValue(task->request.c_str());
-
-                    task->process(answer.c_str());
-
-                    task->prev_time = now_ms;
-                }
-            }
+            ExecuteTasks(now_ms);
         }
         break;
 
@@ -196,6 +186,22 @@ void MasterServer::Update()
         state = State::InConnection;
         funcPing(ping);
         break;
+    }
+}
+
+
+void MasterServer::ExecuteTasks(int64 now)
+{
+    for each (TaskMasterServer * task in tasks)
+    {
+        if (now >= task->prev_time + task->delta_time)
+        {
+            std::string answer = GetAnswer(task->request.c_str());
+
+            task->process(answer.c_str());
+
+            task->prev_time = now;
+        }
     }
 }
 
