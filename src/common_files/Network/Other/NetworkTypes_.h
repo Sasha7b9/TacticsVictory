@@ -19,4 +19,7 @@ struct ServerInfo
     std::string name = "";
     int         ping = 0;
     int         cpu = 0;
+
+    // Добавляет информация о сервере в строку buffer для передачи
+    void AppendInfo(std::string address, std::string &buffer);
 };

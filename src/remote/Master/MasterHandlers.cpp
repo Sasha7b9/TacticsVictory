@@ -83,7 +83,18 @@ static void HandlerGet()
     {
         if ((*words)[1] == "servers")
         {
+            std::string data;
 
+            auto room = livingrooms.begin();
+
+            while (room != livingrooms.end())
+            {
+                room->second.AppendInfo(room->first, data);
+
+                room++;
+            }
+
+            sock->Transmit(data);
         }
     }
     else if (words->size() == 3)
