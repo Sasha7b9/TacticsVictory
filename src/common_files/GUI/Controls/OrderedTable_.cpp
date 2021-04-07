@@ -67,22 +67,10 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
     {
         SharedPtr<Label> label = Label::Create("", 20, -1, -1, false);
 
-        if (i == 0)
-        {
-            name = label;
-        }
-        else if (i == 1)
-        {
-            address = label;
-        }
-        else if (i == 2)
-        {
-            ping = label;
-        }
-        else if (i == 3)
-        {
-            cpu = label;
-        }
+        if (i == 0)      { name = label; }
+        else if (i == 1) { address = label; }
+        else if (i == 2) { ping = label; }
+        else if (i == 3) { cpu = label; }
 
         label->SetAlignment(HA_CENTER, VA_CENTER);
         label->SetTextAlignment(header_rows[i].h_align);
