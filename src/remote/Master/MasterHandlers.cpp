@@ -94,8 +94,6 @@ static void HandlerGet()
                 room++;
             }
 
-            LOGWRITE(data.c_str());
-
             sock->Transmit(data);
         }
     }

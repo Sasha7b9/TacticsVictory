@@ -8,7 +8,7 @@ void ServerInfo::AppendInfo(std::string address, std::string &buffer)
 {
     std::stringstream ss;
 
-    ss << address << ' ' << name << ' ' << ping << ' ' << cpu << '.';
+    ss << address << ' ' << name << ' ' << std::rand() % 500 << ' ' << std::rand() % 100 << ':';
 
     buffer.append(ss.str());
 }
