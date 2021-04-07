@@ -4,6 +4,9 @@
 #include "Network/Other/NetworkTypes_.h"
 
 
+static std::vector<TaskMasterServer *> tasks;
+
+
 void MasterServer::Destroy()
 {
     destroy = true;
@@ -152,15 +155,29 @@ void MasterServer::Update()
             using namespace std::chrono;
             static auto prev_time = system_clock::now();
             auto now = system_clock::now();
-            uint delta = (uint)duration_cast<milliseconds>(now - prev_time).count();
+            long long delta = duration_cast<milliseconds>(now - prev_time).count();
 
             if (delta >= 1000)
             {
                 state = State::WaitPing;
                 std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
                 thread.detach();
+
+                long long now_ms = duration_cast<milliseconds>(now.time_since_epoch()).count();
+
+                for each (TaskMasterServer *task in tasks)
+                {
+                    if (now_ms >= task->prev_time + task->delta_time)
+                    {
+                        std::string answer = GetValue(task->request.c_str());
+
+                        task->process(answer.c_str());
+                    }
+                }
+
                 std::string livingrooms = GetValue(MSG_GET_LIVINGROMS);
-                LOGWRITEF("livingrooms = %s", livingrooms.c_str());
+                //TheMenu->pageFindServer->SetServersInfo(livingrooms);
+                LOGWRITE(livingrooms.c_str());
                 prev_time = now;
             }
         }
@@ -180,4 +197,10 @@ void MasterServer::Update()
         funcPing(ping);
         break;
     }
+}
+
+
+void MasterServer::AppendTask(TaskMasterServer *task)
+{
+    tasks.push_back(task);
 }

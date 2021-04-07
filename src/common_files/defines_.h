@@ -41,6 +41,7 @@ typedef void (*pFuncVV)();
 typedef void (*pFuncVI)(int);
 typedef float(*pFuncFV)();
 typedef void (*pFuncVF)(float);
+typedef void (*pFuncVpCh)(pchar);
 
 #define UNUSED(x) (void)x
 

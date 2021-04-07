@@ -13,6 +13,8 @@ public:
 
     PageFindServer();
 
+    void SetServersInfo(std::string &data);
+
 private:
 
     SharedPtr<OrderedTable> tableServers;
