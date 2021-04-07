@@ -163,24 +163,21 @@ void MasterServer::Update()
                 std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
                 thread.detach();
 
-                long long now_ms = duration_cast<milliseconds>(now.time_since_epoch()).count();
-
-                for each (TaskMasterServer *task in tasks)
-                {
-                    if (now_ms >= task->prev_time + task->delta_time)
-                    {
-                        std::string answer = GetValue(task->request.c_str());
-
-                        task->process(answer.c_str());
-
-                        task->prev_time = now_ms;
-                    }
-                }
-
-                std::string livingrooms = GetValue(MSM_GET_LIVINGROMS);
-                //TheMenu->pageFindServer->SetServersInfo(livingrooms);
-                LOGWRITE(livingrooms.c_str());
                 prev_time = now;
+            }
+
+            long long now_ms = duration_cast<milliseconds>(now.time_since_epoch()).count();
+
+            for each (TaskMasterServer * task in tasks)
+            {
+                if (now_ms >= task->prev_time + task->delta_time)
+                {
+                    std::string answer = GetValue(task->request.c_str());
+
+                    task->process(answer.c_str());
+
+                    task->prev_time = now_ms;
+                }
             }
         }
         break;
@@ -190,6 +187,7 @@ void MasterServer::Update()
 
     case State::EventDisconnect:
         state = State::Idle;
+        tasks.clear();
         funcPing(ping);
         funcDisconnection();
         break;
