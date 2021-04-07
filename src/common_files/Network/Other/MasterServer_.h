@@ -23,6 +23,8 @@ public:
 
     void SetAddress(pchar full_address) {address = full_address; };
 
+    void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection);
+
     void Connect();
 
     void Destroy();
@@ -33,13 +35,25 @@ public:
 
     pchar GetAddress() const { return address.c_str(); }
 
+    void Update();
+
+    struct State { enum E {
+        Idle,                   // Простой
+        NeedConnection,         // Нужно подключать
+        AttemptConnection,      // В процессе подлючения
+        InConnection,           // Подключено
+        WaitPing                // Ожидание сообщения о пинге
+    }; };
+
 private:
 
-    ConnectorTCP connector;             // Соединитель для связи с удалённым мастер-сервером
-
+    ConnectorTCP connector;     // Соединитель для связи с удалённым мастер-сервером
     bool destroy = false;
-
-    std::mutex mutex;                   // Данный mutex будет захвачен, пока сервер находится в процессе соединения
-
+    std::mutex  mutex;          // Данный mutex будет захвачен, пока сервер находится в процессе соединения
     std::string address;
+    pFuncVV funcFailConnection = nullptr;   // Вызывается в случае неуспешной попытки соединения
+    pFuncVV funcConnection     = nullptr;   // Вызывается в случае успешной попытки соединения
+    pFuncVV funcDisconnection  = nullptr;   // Вызывается при потере связи с сервером
+
+    State::E state = State::Idle;
 };

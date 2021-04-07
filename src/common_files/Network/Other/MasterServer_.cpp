@@ -3,7 +3,8 @@
 #include "Network/Other/MasterServer_.h"
 
 
-static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mutex *mutex)
+static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mutex *mutex,
+    uint8 *state)
 {
     mutex->lock();
 
@@ -11,39 +12,15 @@ static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mute
 
     if (connector->Connect(host, port))
     {
+        *state = MasterServer::State::InConnection;
         connector->SetReadTimeOut(10000);
-    }
-
-    mutex->unlock();
-}
-
-
-void MasterServer::Connect()
-{
-    if (destroy)
-    {
-        return;
-    }
-
-    if (mutex.try_lock())
-    {
-        mutex.unlock();
     }
     else
     {
-        return;
+        *state = MasterServer::State::Idle;
     }
 
-    if (address.empty())
-    {
-        LOGERRORF("Not specified address master server");
-
-        return;
-    }
-
-    std::thread thread(ThreadConnect, &connector, std::move(address.c_str()), &mutex);
-
-    thread.detach();
+    mutex->unlock();
 }
 
 
@@ -76,4 +53,83 @@ bool MasterServer::IsConnected()
     }
 
     return false;
+}
+
+
+void MasterServer::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
+{
+    funcFailConnection = fail;
+    funcConnection = connection;
+    funcDisconnection = disconnection;
+}
+
+
+void MasterServer::Connect()
+{
+    if (!funcFailConnection || !funcConnection || !funcDisconnection)
+    {
+        LOGERROR("Callbacks not defined");
+        return;
+    }
+
+    if (address.empty())
+    {
+        LOGERRORF("Not specified address master server");
+
+        return;
+    }
+
+    if (state == State::Idle)
+    {
+        state = State::NeedConnection;
+    }
+}
+
+
+void MasterServer::Update()
+{
+    switch (state)
+    {
+    case State::Idle:
+        break;
+
+    case State::NeedConnection:
+        {
+            if (!destroy)
+            {
+                if (mutex.try_lock())
+                {
+                    mutex.unlock();
+                    state = State::AttemptConnection;
+                    std::thread thread(ThreadConnect, &connector, std::move(address.c_str()), &mutex, (uint8*)&state);
+                    thread.detach();
+                }
+            }
+        }
+        break;
+
+    case State::AttemptConnection:
+        break;
+
+    case State::InConnection:
+        break;
+
+    case State::WaitPing:
+        break;
+    }
+
+
+//    if (TheMasterServer.IsConnected())
+//    {
+//        TheGUI->AppendInfo("Connection to master server established");
+//    }
+//    else
+//    {
+//        if (TheMasterServer.GetAddress()[0])
+//        {
+//            TheGUI->AppendWarning("Can't connect to master server");
+//
+//            TheMasterServer.Connect();
+//        }
+//    }
 }
