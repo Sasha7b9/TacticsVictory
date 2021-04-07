@@ -41,6 +41,8 @@ public:
         Idle,                   // Простой
         NeedConnection,         // Нужно подключать
         AttemptConnection,      // В процессе подлючения
+        EventConnection,        // Произошло соединение, нужно вызывать функцию funcConnection
+        EventFailConnection,    // Неудачное соединение, нужно вызывать функцию funcFailConnection
         InConnection,           // Подключено
         WaitPing                // Ожидание сообщения о пинге
     }; };

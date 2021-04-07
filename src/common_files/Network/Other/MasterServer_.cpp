@@ -12,12 +12,12 @@ static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mute
 
     if (connector->Connect(host, port))
     {
-        *state = MasterServer::State::InConnection;
+        *state = MasterServer::State::EventConnection;
         connector->SetReadTimeOut(10000);
     }
     else
     {
-        *state = MasterServer::State::Idle;
+        *state = MasterServer::State::EventFailConnection;
     }
 
     mutex->unlock();
@@ -45,14 +45,8 @@ void MasterServer::Destroy()
 
 bool MasterServer::IsConnected()
 {
-    if (mutex.try_lock())
-    {
-        mutex.unlock();
-        
-        return connector.IsConnected();
-    }
-
-    return false;
+    return (state == State::InConnection ||
+        state == State::WaitPing);
 }
 
 
@@ -111,7 +105,18 @@ void MasterServer::Update()
     case State::AttemptConnection:
         break;
 
+    case State::EventConnection:
+        funcConnection();
+        state = State::InConnection;
+        break;
+
+    case State::EventFailConnection:
+        funcFailConnection();
+        state = State::EventFailConnection;
+        break;
+
     case State::InConnection:
+
         break;
 
     case State::WaitPing:
@@ -122,14 +127,5 @@ void MasterServer::Update()
 //    if (TheMasterServer.IsConnected())
 //    {
 //        TheGUI->AppendInfo("Connection to master server established");
-//    }
-//    else
-//    {
-//        if (TheMasterServer.GetAddress()[0])
-//        {
-//            TheGUI->AppendWarning("Can't connect to master server");
-//
-//            TheMasterServer.Connect();
-//        }
 //    }
 }

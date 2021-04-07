@@ -1,9 +1,5 @@
 {
-    "Connection to master server established":
-  {
-    "en":"Connection to master server established", 
-    "ru":"Соединение с мастер-сервером установлено"
-  },
+  "The master server is down. Attempting to connect":{"en":"The master server is down. Attempting to connect...", "ru":"Мастер-сервер отключён. Попытка подключения ..."},
   "64": {
     "en": "64",
     "ru": "64"
@@ -39,6 +35,10 @@
   "16384": {
     "en": "16384",
     "ru": "16384"
+  },
+  "Connection to master server established": {
+    "en": "Connection to master server established",
+    "ru": "Соединение с мастер-сервером установлено"
   },
   "Add": {
     "en": "Add",
