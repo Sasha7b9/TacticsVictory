@@ -75,9 +75,15 @@ static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mute
 
 std::string MasterServer::GetValue(pchar key)
 {
+    mutex.lock();
+
     connector.Transmit(key);
 
-    return connector.ReceiveWait();
+    std::string result = connector.ReceiveWait();
+
+    mutex.unlock();
+
+    return result;
 }
 
 
@@ -153,6 +159,8 @@ void MasterServer::Update()
                 state = State::WaitPing;
                 std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
                 thread.detach();
+                std::string livingrooms = GetValue(MSG_GET_LIVINGROMS);
+                LOGWRITEF("livingrooms = %s", livingrooms.c_str());
                 prev_time = now;
             }
         }

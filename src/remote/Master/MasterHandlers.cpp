@@ -81,7 +81,7 @@ static void HandlerGet()
 {
     if (words->size() == 2)
     {
-        if ((*words)[1] == "servers")
+        if ((*words)[1] == "livingrooms")
         {
             std::string data;
 
@@ -93,6 +93,8 @@ static void HandlerGet()
 
                 room++;
             }
+
+            LOGWRITE(data.c_str());
 
             sock->Transmit(data);
         }
