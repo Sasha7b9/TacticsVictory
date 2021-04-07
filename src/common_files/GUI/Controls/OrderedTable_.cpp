@@ -65,16 +65,7 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
 
     for (int i = 0; i < HeaderRowStruct::NUM; i++)
     {
-        String text = header_rows[i].sample_text;
-
-        if (String("Address") == header_rows[i].name)
-        {
-            text.Clear();
-            text.AppendWithFormat("%d.%d.%d.%d",
-                std::rand() % 255, std::rand() % 255, std::rand() % 255, std::rand() % 255);
-        }
-
-        SharedPtr<Label> label = Label::Create(text.CString(), 20, -1, -1, false);
+        SharedPtr<Label> label = Label::Create("", 20, -1, -1, false);
 
         if (i == 0)
         {
@@ -109,6 +100,8 @@ void LineTable::SetServerInfo(ServerInfo *info)
 {
     name->SetText(info->name.c_str());
     address->SetText(info->address.c_str());
+    ping->SetText(String().AppendWithFormat("%d", info->ping).CString());
+    cpu->SetText(String().AppendWithFormat("%d", info->cpu).CString());
 }
 
 
