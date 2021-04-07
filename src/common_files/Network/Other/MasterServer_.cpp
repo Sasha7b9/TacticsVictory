@@ -155,7 +155,7 @@ void MasterServer::Update()
             using namespace std::chrono;
             static auto prev_time = system_clock::now();
             auto now = system_clock::now();
-            long long delta = duration_cast<milliseconds>(now - prev_time).count();
+            int64 delta = duration_cast<milliseconds>(now - prev_time).count();
 
             if (delta >= 1000)
             {
