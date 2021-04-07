@@ -30,8 +30,9 @@ void ServerInfo::ParseString(const std::string &data, std::vector<ServerInfo> &s
 
         ss >> info.cpu;
 
-        ss.get();
-
-        servers.push_back(info);
+        if (!info.name.empty() && !info.address.empty())
+        {
+            servers.push_back(info);
+        }
     }
 }
