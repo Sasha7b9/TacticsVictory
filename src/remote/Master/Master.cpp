@@ -10,8 +10,6 @@
 
 bool Master::run = true;
 
-std::map<std::string, ServerInfo> Master::servers;
-
 
 int Master::Run()
 {
@@ -31,8 +29,6 @@ int Master::Run()
 
             if (acceptor.Accept(socket))
             {
-                servers[socket.sock.address().to_string()] = ServerInfo();
-
                 socket.Run(HandlerReceivedSocket);
             }
             else

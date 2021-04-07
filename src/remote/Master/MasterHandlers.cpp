@@ -1,5 +1,6 @@
 // 2021/03/31 22:30:19 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Network/Other/NetworkTypes_.h"
 
 
 static void HandlerClose();
@@ -7,15 +8,14 @@ static void HandlerGet();
 static void HandlerPing();
 static void HandlerTerminate();
 
-
 typedef void (*Handler)();
 
-
-static std::map<std::string, Handler> map;
-
+static std::map<std::string, Handler> map;              // Здесь хранятся обработчики запросов по первому слову
 
 static AcceptorTCP::Socket *sock = nullptr;             // Используется в обработчиках
 static std::vector<std::string> *words = nullptr;       // Используется в обработчиках
+
+static std::map<std::string, ServerInfo> livingrooms;   // Здесь хранится информация о доступных ангарах
 
 
 void Master::Prepare()
@@ -24,6 +24,10 @@ void Master::Prepare()
     map["get"] = HandlerGet;
     map["ping"] = HandlerPing;
     map["terminate"] = HandlerTerminate;
+
+    livingrooms["127.0.0.0"] = { "master1", 10, 100 };
+    livingrooms["127.0.0.1"] = { "master2", 11, 100 };
+    livingrooms["127.0.0.2"] = { "master3", 12, 100 };
 }
 
 

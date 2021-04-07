@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Other/MasterServer_.h"
+#include "Network/Other/NetworkTypes_.h"
 
 
 void MasterServer::Destroy()
@@ -85,10 +86,10 @@ static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, ui
     using namespace std::chrono;
     mutex->lock();
     auto start = system_clock::now();
-    connector->Transmit("ping");
+    connector->Transmit(MSM_PING);
     std::string result = connector->Receive();
 
-    if (result == "ping")
+    if (result == MSM_PING)
     {
         *state = MasterServer::State::GetPing;
         auto end = system_clock::now();

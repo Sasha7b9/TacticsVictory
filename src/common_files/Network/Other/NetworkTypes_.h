@@ -8,7 +8,7 @@
 #define MSM_GET_ADDRESS_HANGAR   "get address hangar"       // вернуть адрес hangar
 #define MSM_GET_ADDRESS_DATABASE "get address database"     // вернуть адрес database
 #define MSM_GET_ADDRESS_BATTLE   "get address battle"       // вернуть адрес боя
-#define MSG_GET_SERVERS          "get servers"              // возвращает список имеющихся серверов
+#define MSG_GET_SERVERS          "get livingrooms"          // возвращает список доступных гостиных
 #define MSM_PING                 "ping"                     // запрос пинга
 #define MSM_TERMINCATE           "terminate"                // завершить выполнение master
 
@@ -17,12 +17,6 @@
 struct ServerInfo
 {
     std::string name = "";
-    std::string address = "";
     int         ping = 0;
     int         cpu = 0;
-
-    bool operator<(const ServerInfo &rhs)
-    {
-        return name < rhs.name;
-    }
 };
