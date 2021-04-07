@@ -21,11 +21,12 @@ bool MasterServer::IsConnected()
 }
 
 
-void MasterServer::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
+void MasterServer::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping)
 {
     funcFailConnection = fail;
     funcConnection = connection;
     funcDisconnection = disconnection;
+    funcPing = ping;
 }
 
 
@@ -95,7 +96,7 @@ static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, ui
 
         auto end = std::chrono::system_clock::now();
 
-        *ping = (int)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+        *ping = (int)std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
     }
     else
     {

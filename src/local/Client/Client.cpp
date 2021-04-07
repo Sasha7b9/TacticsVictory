@@ -108,18 +108,30 @@ void Client::ParseArguments()
     {
         TheMasterServer.SetAddress(arguments[0].CString());
 
-        TheMasterServer.SetCallbacks([]()
+        TheMasterServer.SetCallbacks
+        (
+            []()
             {
                 TheGUI->AppendWarning("Can't connect to master server");
                 TheMasterServer.Connect();
-            }, []()
+                LOGWRITE("Attempt connection to master-server");
+            },
+            []()
             {
                 TheGUI->AppendInfo("Connection to master server established");
-            }, []()
+                LOGWRITE("Connection to master server established");
+            },
+            []()
             {
                 TheGUI->AppendWarning("The master server is down. Attempting to connect");
                 TheMasterServer.Connect();
-            });
+                LOGWRITE("The master server is down. Attempting to connect");
+            },
+            [](int ping)
+            {
+                LOGWRITEF("ping = %d", ping);
+            }
+        );
 
         TheMasterServer.Connect();
     }

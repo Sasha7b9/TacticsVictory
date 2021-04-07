@@ -23,7 +23,7 @@ public:
 
     void SetAddress(pchar full_address) {address = full_address; };
 
-    void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection);
+    void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping);
 
     void Connect();
 
