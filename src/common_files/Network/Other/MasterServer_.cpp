@@ -172,10 +172,12 @@ void MasterServer::Update()
                         std::string answer = GetValue(task->request.c_str());
 
                         task->process(answer.c_str());
+
+                        task->prev_time = now_ms;
                     }
                 }
 
-                std::string livingrooms = GetValue(MSG_GET_LIVINGROMS);
+                std::string livingrooms = GetValue(MSM_GET_LIVINGROMS);
                 //TheMenu->pageFindServer->SetServersInfo(livingrooms);
                 LOGWRITE(livingrooms.c_str());
                 prev_time = now;

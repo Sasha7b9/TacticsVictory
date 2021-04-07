@@ -34,3 +34,9 @@ void PageFindServer::HandleButtonRelease(StringHash, VariantMap &eventData)
         SendEventClose();
     }
 }
+
+
+void PageFindServer::SetServersInfo(const std::string &data)
+{
+
+}

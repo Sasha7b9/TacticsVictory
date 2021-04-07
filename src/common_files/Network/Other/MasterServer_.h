@@ -11,8 +11,8 @@
 struct TaskMasterServer
 {
     int         count;          // Сколько раз выполнять задание (0 - бесконечно)
-    uint        delta_time;     // Через такие промежутки времени выполнять задание
-    uint        prev_time;
+    int64        delta_time;     // Через такие промежутки времени выполнять задание
+    int64        prev_time;
     std::string request;        // Выполняемыз запрос
     pFuncVpCh   process;        // Обработка ответа от мастер-сервера
 };

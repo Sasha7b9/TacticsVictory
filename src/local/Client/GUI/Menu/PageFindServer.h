@@ -13,7 +13,7 @@ public:
 
     PageFindServer();
 
-    void SetServersInfo(std::string &data);
+    void SetServersInfo(const std::string &data);
 
 private:
 

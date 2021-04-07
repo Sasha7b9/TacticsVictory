@@ -2,6 +2,8 @@
 #include "stdafx.h"
 #include "Client.h"
 #include "GUI/Menu/Menu.h"
+#include "GUI/Menu/PageFindServer.h"
+#include "Network/Other/NetworkTypes_.h"
 
 
 #pragma warning(push)
@@ -120,6 +122,15 @@ void Client::ParseArguments()
             {
                 TheGUI->AppendInfo("Connection to master server established");
                 LOGWRITE("Connection to master server established");
+
+                static TaskMasterServer task = { 0, 1000, 0, MSM_GET_LIVINGROMS,
+                [](pchar answer)
+                {
+                    TheMenu->pageFindServer->SetServersInfo(std::string(answer));
+                } };
+
+                TheMasterServer.AppendTask(&task);
+
             },
             []()
             {
