@@ -75,6 +75,24 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
         }
 
         SharedPtr<Label> label = Label::Create(text.CString(), 20, -1, -1, false);
+
+        if (i == 0)
+        {
+            name = label;
+        }
+        else if (i == 1)
+        {
+            address = label;
+        }
+        else if (i == 2)
+        {
+            ping = label;
+        }
+        else if (i == 3)
+        {
+            cpu = label;
+        }
+
         label->SetAlignment(HA_CENTER, VA_CENTER);
         label->SetTextAlignment(header_rows[i].h_align);
         UIElement *h = header->GetChild(header_rows[i].name, true);
@@ -84,6 +102,13 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
     }
 
     SetMinSize(window->GetWidth(), window->GetHeight());
+}
+
+
+void LineTable::SetServerInfo(ServerInfo *info)
+{
+    name->SetText(info->name.c_str());
+    address->SetText(info->address.c_str());
 }
 
 
@@ -122,4 +147,9 @@ void OrderedTable::SetServersInfo(const std::string &data)
     std::vector<ServerInfo> servers;
 
     ServerInfo::ParseString(data, servers);
+
+    for (uint i = 0; i < servers.size(); i++)
+    {
+        lines[i]->SetServerInfo(&servers[i]);
+    }
 }

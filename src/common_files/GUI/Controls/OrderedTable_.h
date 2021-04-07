@@ -3,6 +3,9 @@
 #include "GUI/Controls/Label_.h"
 
 
+struct ServerInfo;
+
+
 class HeaderTable : public WindowT
 {
     URHO3D_OBJECT(HeaderTable, WindowT);
@@ -29,6 +32,13 @@ class LineTable : public WindowT
 public:
 
     LineTable(HeaderTable *header);
+
+    void SetServerInfo(ServerInfo *info);
+
+    SharedPtr<Label> name;
+    SharedPtr<Label> address;
+    SharedPtr<Label> ping;
+    SharedPtr<Label> cpu;
 };
 
 

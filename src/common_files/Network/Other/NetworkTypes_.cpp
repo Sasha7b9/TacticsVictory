@@ -16,11 +16,11 @@ void ServerInfo::AppendInfo(std::string addr, std::string &buffer)
 
 void ServerInfo::ParseString(const std::string &data, std::vector<ServerInfo> &servers)
 {
-    while (data.size() > 1)
+    std::stringstream ss(data);
+
+    while (!ss.eof())
     {
         ServerInfo info;
-
-        std::stringstream ss(data);
 
         ss >> info.address;
 
@@ -29,6 +29,8 @@ void ServerInfo::ParseString(const std::string &data, std::vector<ServerInfo> &s
         ss >> info.ping;
 
         ss >> info.cpu;
+
+        ss.get();
 
         servers.push_back(info);
     }
