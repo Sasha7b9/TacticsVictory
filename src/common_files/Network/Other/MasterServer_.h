@@ -13,6 +13,7 @@
 #define MSM_GET_ADDRESS_HANGAR   "get address hangar"       // вернуть адрес hangar
 #define MSM_GET_ADDRESS_DATABASE "get address database"     // вернуть адрес database
 #define MSM_GET_ADDRESS_BATTLE   "get address battle"       // вернуть адрес боя
+#define MSG_GET_SERVERS          "get servers"              // возвращает список имеющихся серверов
 #define MSM_PING                 "ping"                     // запрос пинга
 #define MSM_TERMINCATE           "terminate"                // завершить выполнение master
 

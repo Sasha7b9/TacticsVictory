@@ -81,7 +81,7 @@ PageOptions::PageOptions() : MenuPage()
     AddChild(layout);
     layout->SetMinHeight(buttonClose->GetHeight());
 
-    SetMinSize(GetWidth(), GetHeight());
+    SetMinSize(GetWidth() + 15, GetHeight() + 50);
 
     buttonClose->SetPosition(GetWidth() / 2 - buttonClose->GetWidth() / 2, buttonClose->GetPosition().y_);
 

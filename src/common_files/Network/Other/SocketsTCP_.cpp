@@ -209,7 +209,7 @@ void ThreadSocket(AcceptorTCP::Socket socket, void (*onReceive)(AcceptorTCP::Soc
 }
 
 
-void AcceptorTCP::Socket::Run(void(*onReceive)(AcceptorTCP::Socket &socket, pchar symbols, int numSymbols))
+void AcceptorTCP::Socket::Run(void(*onReceive)(AcceptorTCP::Socket &socket, pchar data, int numBytes))
 {
     std::thread thread(ThreadSocket, std::move(*this), onReceive);
     thread.detach();

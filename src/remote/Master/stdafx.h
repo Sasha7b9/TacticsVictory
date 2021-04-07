@@ -11,6 +11,7 @@
 using namespace Urho3D;
 
 #include <cstdarg>
+#include <list>
 #include <map>
 #include <mutex>
 #include <sstream>

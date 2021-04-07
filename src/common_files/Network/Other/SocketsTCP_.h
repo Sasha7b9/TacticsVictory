@@ -47,7 +47,7 @@ public:
     {
         std::unique_ptr<sockpp::inet_address>  peer;
         sockpp::tcp_socket sock;
-        void Run(void(*onReceive)(Socket &socket, pchar data, int numBytes));
+        void Run(void(*onReceive)(AcceptorTCP::Socket &socket, pchar data, int numBytes));
         void Transmit(pchar string);
         void Transmit(const std::string &data);
     };

@@ -13,7 +13,7 @@ public:
 
 private:
 
-    static void PrepareHandlers();
+    static void Prepare();
 
     static void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar data, int size);
 

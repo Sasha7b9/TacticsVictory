@@ -14,11 +14,21 @@ typedef void (*Handler)();
 static std::map<std::string, Handler> map;
 
 
-static AcceptorTCP::Socket *sock = nullptr;
-static std::vector<std::string> *words = nullptr;
+static AcceptorTCP::Socket *sock = nullptr;             // Используется в обработчиках
+static std::vector<std::string> *words = nullptr;       // Используется в обработчиках
+
+struct ServerInfo
+{
+    std::string name;
+    std::string address;
+    int         ping;
+    int         cpu;
+};
+
+static std::map<std::string, ServerInfo> servers;
 
 
-void Master::PrepareHandlers()
+void Master::Prepare()
 {
     map["close"] = HandlerClose;
     map["get"] = HandlerGet;
@@ -75,7 +85,14 @@ static void HandlerClose()
 
 static void HandlerGet()
 {
-    if (words->size() == 3)
+    if (words->size() == 2)
+    {
+        if ((*words)[1] == "servers")
+        {
+
+        }
+    }
+    else if (words->size() == 3)
     {
         if ((*words)[1] == "address")                                                          // get address
         {

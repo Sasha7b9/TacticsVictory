@@ -13,7 +13,7 @@ bool Master::run = true;
 
 int Master::Run()
 {
-    PrepareHandlers();
+    Prepare();
 
     uint16 port = static_cast<uint16>(TheConfig.GetInt("port"));
 
