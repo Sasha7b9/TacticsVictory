@@ -25,9 +25,9 @@ void Master::Prepare()
     map["ping"] = HandlerPing;
     map["terminate"] = HandlerTerminate;
 
-    livingrooms["127.0.0.0"] = { "master1", 10, 100 };
-    livingrooms["127.0.0.1"] = { "master2", 11, 100 };
-    livingrooms["127.0.0.2"] = { "master3", 12, 100 };
+    livingrooms["127.0.0.0"] = { "127.0.0.0", "master1", 10, 100 };
+    livingrooms["127.0.0.1"] = { "127.0.0.1", "master2", 11, 100 };
+    livingrooms["127.0.0.2"] = { "127.0.0.2", "master3", 12, 100 };
 }
 
 

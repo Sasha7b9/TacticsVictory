@@ -62,7 +62,7 @@ file(GLOB GUI_WINDOWS                 ../../common_files/GUI/Windows/Console_.*
 file(GLOB INPUT                       ../../common_files/Input/Mouse_.*
                                                          Input/*.*)
 file(GLOB NETWORK                     ../../common_files/Network/Other/MasterServer_.*
-                                      ../../common_files/Network/Other/NetworkTypes_.h
+                                      ../../common_files/Network/Other/NetworkTypes_.*
                                       ../../common_files/Network/Other/SocketsTCP_.*)
 file(GLOB SCENE                                          Scene/*.*)
 file(GLOB SCENE_CAMERAS                                  Scene/Cameras/*.*)

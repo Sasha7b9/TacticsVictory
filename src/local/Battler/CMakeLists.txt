@@ -47,7 +47,12 @@ file(GLOB GRAPHICS_2D                            ../../common_files/Graphics/2D/
 file(GLOB GRAPHICS_3D                                               Graphics/3D/*.*)
 file(GLOB GUI                                    ../../common_files/GUI/*.*
                                                                     GUI/*.*)
-file(GLOB GUI_CONTROLS                           ../../common_files/GUI/Controls/*.*)
+file(GLOB GUI_CONTROLS                           ../../common_files/GUI/Controls/DropDownListWithTextAndButton_.*
+                                                 ../../common_files/GUI/Controls/GovernorFloat_.*
+                                                 ../../common_files/GUI/Controls/Hint_.*
+                                                 ../../common_files/GUI/Controls/Label_.*
+                                                 ../../common_files/GUI/Controls/Tab_.*
+                                                 ../../common_files/GUI/Controls/Window_.*)
 file(GLOB GUI_CONTROLS_BUTTONS                   ../../common_files/GUI/Controls/Buttons/*.*)
 file(GLOB GUI_CONTROLS_SLIDERS                   ../../common_files/GUI/Controls/Sliders/*.*)
 file(GLOB GUI_GUIEDITOR                                             GUI/GuiEditor/*.*)

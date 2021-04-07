@@ -36,6 +36,8 @@ class OrderedTable : public WindowT
 {
     URHO3D_OBJECT(OrderedTable, WindowT);
 
+    void SetServersInfo(const std::string &data);
+
 public:
 
     OrderedTable(UIElement *ui_element, char *title);

@@ -3,6 +3,7 @@
 #include "FileSystem/ConfigurationFile_.h"
 #include "GUI/Controls/OrderedTable_.h"
 #include "GUI/Controls/Buttons/Button_.h"
+#include "Network/Other/NetworkTypes_.h"
 
 
 struct HeaderRowStruct
@@ -113,4 +114,12 @@ OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheCont
     SetMinSize(window->GetWidth(), window->GetHeight());
 
     ui_element->AddChild(this);
+}
+
+
+void OrderedTable::SetServersInfo(const std::string &data)
+{
+    std::vector<ServerInfo> servers;
+
+    ServerInfo::ParseString(data, servers);
 }

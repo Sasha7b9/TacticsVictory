@@ -38,5 +38,5 @@ void PageFindServer::HandleButtonRelease(StringHash, VariantMap &eventData)
 
 void PageFindServer::SetServersInfo(const std::string &data)
 {
-    LOGWRITE(data.c_str());
+    tableServers->SetServersInfo(data);
 }
