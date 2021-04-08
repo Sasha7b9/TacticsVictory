@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Utils/GlobalFunctions_.h"
+#include "Utils/GlobalFunctionsU3D_.h"
 
 
 void GF::SetWindowInCenterScreen(Window *window)
@@ -126,4 +126,13 @@ bool GF::GetAddressPort(const Vector<String> &words, String &address, uint16 &po
     }
 
     return true;
+}
+
+
+void GF::DelayMS(uint delay)
+{
+    using namespace std::chrono;
+    using namespace std::this_thread;
+
+    sleep_until(system_clock::now() + milliseconds(delay));
 }

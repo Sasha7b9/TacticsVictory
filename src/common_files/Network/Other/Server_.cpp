@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/Server_.h"
+//#include "Utils/GlobalFunctionsU3D_.h"
 
 
 static std::vector<TaskMasterServer *> tasks;
@@ -15,6 +16,7 @@ void ServerT::Destroy()
     mutex.unlock();
 
     connOUT.Release();
+    connIN.Release();
 }
 
 
@@ -56,14 +58,28 @@ void ServerT::Connect()
 }
 
 
-static void ThreadConnect(ConnectorTCP *connector, pchar host, uint16 port, std::mutex *mutex,  uint8 *state)
+static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP *conn_in,
+    pchar host, uint16 port, std::mutex *mutex, uint8 *state)
 {
     mutex->lock();
 
-    if (connector->Connect(host, port))
+    if (conn_out->Connect(host, port))
     {
-        *state = ServerT::State::EventConnection;
-        connector->SetReadTimeOut(10000);
+        conn_out->SetReadTimeOut(10000);
+
+//        GF::DelayMS(100);
+
+        if (conn_out->Connect(host, (uint16)(port + 1)))
+        {
+            *state = ServerT::State::EventConnection;
+            conn_in->SetReadTimeOut(10000);
+        }
+        else
+        {
+            *state = ServerT::State::Idle;
+            conn_out->Release();
+            conn_in->Release();
+        }
     }
     else
     {
@@ -140,7 +156,8 @@ void ServerT::Update()
                 {
                     mutex.unlock();
                     state = State::AttemptConnection;
-                    std::thread thread(ThreadConnect, &connOUT, std::move(host.c_str()), port, &mutex, (uint8 *)&state);
+                    std::thread thread(ThreadConnect, &connOUT, &connIN, std::move(host.c_str()), port, 
+                        &mutex, (uint8 *)&state);
                     thread.detach();
                 }
             }
