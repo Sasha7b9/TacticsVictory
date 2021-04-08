@@ -21,7 +21,7 @@ class ServerT
 {
 public:
 
-    void SetAddress(pchar _ip, uint16 _port) { ip = _ip; port_out = _port; };
+    void SetAddress(pchar _host, uint16 _port) { host = _host; port = _port; };
 
     void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping);
 
@@ -59,8 +59,8 @@ private:
     ConnectorTCP connOUT;       // Сюдой посылаем данные в сервер
     ConnectorTCP connIN;        // Сюда принимаем данные от сервера
 
-    std::string ip;
-    uint16 port_out;            // Порт засылки в сервер. порт чтения на 1 больше
+    std::string host;
+    uint16 port;                // Порт засылки в сервер. порт чтения на 1 больше
 
     bool destroy = false;
     std::mutex  mutex;          // Данный mutex будет захвачен, пока сервер находится в процессе соединения

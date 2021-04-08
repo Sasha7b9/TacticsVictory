@@ -42,7 +42,7 @@ void ServerT::Connect()
         return;
     }
 
-    if (ip.empty())
+    if (host.empty())
     {
         LOGERRORF("Not specified address master server");
 
@@ -56,11 +56,9 @@ void ServerT::Connect()
 }
 
 
-static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mutex *mutex,  uint8 *state)
+static void ThreadConnect(ConnectorTCP *connector, pchar host, uint16 port, std::mutex *mutex,  uint8 *state)
 {
     mutex->lock();
-
-    auto [host, port] = ConnectorTCP::ParseAddress(full_address);
 
     if (connector->Connect(host, port))
     {
@@ -142,7 +140,7 @@ void ServerT::Update()
                 {
                     mutex.unlock();
                     state = State::AttemptConnection;
-                    std::thread thread(ThreadConnect, &connOUT, std::move(ip.c_str()), &mutex, (uint8 *)&state);
+                    std::thread thread(ThreadConnect, &connOUT, std::move(host.c_str()), port, &mutex, (uint8 *)&state);
                     thread.detach();
                 }
             }
