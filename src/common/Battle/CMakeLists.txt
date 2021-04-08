@@ -78,8 +78,7 @@ file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrai
 file(GLOB UTILS                                  ../../common_files/Utils/GlobalFunctions_.*
                                                  ../../common_files/Utils/Log_.*
                                                  ../../common_files/Utils/LogU3D_.*
-                                                 ../../common_files/Utils/StringUtils_.*
-                                                                    Utils/*.*)
+                                                 ../../common_files/Utils/StringUtils_.*)
 file(GLOB UTILS_OS                               ../../common_files/Utils/OS/FunctionsOS_.*
                                                  ../../common_files/Utils/OS/UtilsOS_.*)
 

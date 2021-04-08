@@ -10,4 +10,8 @@ namespace GF
     unsigned GetLastModifiedTime(char *name);
 
     String IntToString(int value, uint length);
+
+    // ¬озвращает в address aдрес, если в векторе есть строка вида
+    // "-address:xxxx", в port - адрес порта, если в векторе есть строка вида "-port:xx"
+    bool GetAddressPort(const Vector<String> &words, String &address, uint16 &port);
 }
