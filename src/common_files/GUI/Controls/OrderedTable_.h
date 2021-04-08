@@ -33,7 +33,7 @@ public:
 
     LineTable(HeaderTable *header);
 
-    void SetServerInfo(ServerInfo *info);
+    void SetServerInfo(const ServerInfo &info);
 
     SharedPtr<Label> name;
     SharedPtr<Label> address;

@@ -13,6 +13,7 @@ public:
 
     PageFindServer();
 
+    // Если передаётся пустая строка, происходит очистка
     void SetServersInfo(const std::string &data);
 
 private:

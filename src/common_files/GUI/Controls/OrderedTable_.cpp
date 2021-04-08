@@ -88,12 +88,12 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
 }
 
 
-void LineTable::SetServerInfo(ServerInfo *info)
+void LineTable::SetServerInfo(const ServerInfo &info)
 {
-    name->SetText(info->name.c_str());
-    address->SetText(info->address.c_str());
-    ping->SetText(String().AppendWithFormat("%d", info->ping).CString());
-    cpu->SetText(String().AppendWithFormat("%d", info->cpu).CString());
+    name->SetText(info.name.c_str());
+    address->SetText(info.address.c_str());
+    ping->SetText(info.ping < 0 ? "" : String().AppendWithFormat("%d", info.ping).CString());
+    cpu->SetText(info.cpu < 0 ? "" : String().AppendWithFormat("%d", info.cpu).CString());
 }
 
 
@@ -129,12 +129,22 @@ OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheCont
 
 void OrderedTable::SetServersInfo(const std::string &data)
 {
-    std::vector<ServerInfo> servers;
-
-    ServerInfo::ParseString(data, servers);
-
-    for (uint i = 0; i < servers.size(); i++)
+    if (data.empty())
     {
-        lines[i]->SetServerInfo(&servers[i]);
+        for (uint i = 0; i < NUM_LINES; i++)
+        {
+            lines[i]->SetServerInfo(ServerInfo());
+        }
+    }
+    else
+    {
+        std::vector<ServerInfo> servers;
+
+        ServerInfo::ParseString(data, servers);
+
+        for (uint i = 0; i < servers.size(); i++)
+        {
+            lines[i]->SetServerInfo(servers[i]);
+        }
     }
 }
