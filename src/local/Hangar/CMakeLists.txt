@@ -39,9 +39,9 @@ file(GLOB NETWORK     ../../common_files/Network/Other/MasterServer_.*
                       ../../common_files/Network/Other/SocketsTCP_.*)
 file(GLOB UTILS       ../../common_files/Utils/Log_.*
                       ../../common_files/Utils/LogU3D_.*
-                      ../../common_files/Utils/StringUtils_.*
-                      ../../common_files/Utils/SystemFunctions_.*
-                      ../../common_files/Utils/SystemUtils_.*)
+                      ../../common_files/Utils/StringUtils_.*)
+file(GLOB UTILS_OS    ../../common_files/Utils/OS/FunctionsOS_.*
+                      ../../common_files/Utils/OS/UtilsOS_.*)
 
 file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
 file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
@@ -51,6 +51,7 @@ source_group(src        FILES ${SRC})
 source_group(FileSystem FILES ${FILE_SYSTEM})
 source_group(Network    FILES ${NETWORK})
 source_group(Utils      FILES ${UTILS})
+source_group(Utils\\OS  FILES ${UTILS_OS})
 
 source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
 source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
@@ -58,7 +59,7 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
+add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} ${UTILS_OS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 include(../../RuntimeLibrary.cmake)

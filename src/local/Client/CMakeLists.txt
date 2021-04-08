@@ -70,9 +70,9 @@ file(GLOB UTILS                       ../../common_files/Utils/GlobalFunctionsU3
                                       ../../common_files/Utils/Log_.*
                                       ../../common_files/Utils/LogRAW_.*
                                       ../../common_files/Utils/StringUtils_.*
-                                      ../../common_files/Utils/Settings_.*
-                                      ../../common_files/Utils/SystemFunctions_.*
-                                      ../../common_files/Utils/SystemUtils_.*)
+                                      ../../common_files/Utils/Settings_.*)
+file(GLOB UTILS_OS                    ../../common_files/Utils/OS/FunctionsOS_.*
+                                      ../../common_files/Utils/OS/UtilsOS_.*)
 
 file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
 file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
@@ -95,6 +95,7 @@ source_group(Network                        FILES ${NETWORK})
 source_group(Scene                          FILES ${SCENE})
 source_group(Scene\\Cameras                 FILES ${SCENE_CAMERAS})
 source_group(Utils                          FILES ${UTILS})
+source_group(Utils\\OS                      FILES ${UTILS_OS})
 
 source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
 source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
@@ -106,7 +107,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D}
                 ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS} ${GUI_CONTROLS_SLIDERS}
                 ${GUI_LOGIC}
                 ${GUI_MENU} ${GUI_MENU_MENUSTART} ${GUI_MENU_MENUSTART_MENUPLAY} ${GUI_WINDOWS}
-                ${INPUT} ${NETWORK} ${UTILS}
+                ${INPUT} ${NETWORK} ${UTILS} ${UTILS_OS}
                 ${SCENE} ${SCENE_CAMERAS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
