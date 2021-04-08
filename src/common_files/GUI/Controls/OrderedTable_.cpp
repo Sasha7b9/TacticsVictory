@@ -8,22 +8,23 @@
 
 struct HeaderRowStruct
 {
-    static const int NUM = 4;
+    static const int NUM = 7;
 
     pchar name;
     int width;
     HorizontalAlignment h_align;
-
-    String sample_text;
 };
 
 
 static HeaderRowStruct header_rows[HeaderRowStruct::NUM] =
 {
-    { "Name",    470, HA_LEFT,   "Server" },
-    { "Address", 135, HA_LEFT,   "127.127.127.127" },
-    { "Ping",    40,  HA_CENTER, "999" },
-    { "CPU%",    40,  HA_CENTER, "100" }
+    { "Name",    350, HA_LEFT},
+    { "Address", 135, HA_LEFT},
+    { "Ping",    40,  HA_CENTER},
+    { "CPU%",    40,  HA_CENTER},
+    { "L",       40,  HA_CENTER},
+    { "N",       40,  HA_CENTER},
+    { "P",       40,  HA_CENTER}
 };
 
 
@@ -71,6 +72,9 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
         else if (i == 1) { address = label; }
         else if (i == 2) { ping = label; }
         else if (i == 3) { cpu = label; }
+        else if (i == 4) { lang = label; }
+        else if (i == 5) { network = label; }
+        else if (i == 6) { players = label; }
 
         label->SetAlignment(HA_CENTER, VA_CENTER);
         label->SetTextAlignment(header_rows[i].h_align);

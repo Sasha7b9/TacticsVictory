@@ -39,6 +39,9 @@ public:
     SharedPtr<Label> address;
     SharedPtr<Label> ping;
     SharedPtr<Label> cpu;
+    SharedPtr<Label> lang;
+    SharedPtr<Label> network;
+    SharedPtr<Label> players;
 };
 
 
