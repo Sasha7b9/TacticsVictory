@@ -165,19 +165,19 @@ void MasterServer::Update()
     case State::InConnection:
         {
             using namespace std::chrono;
-//            static auto prev_time = system_clock::now();
+            static auto prev_time = system_clock::now();
             auto now = system_clock::now();
-//            int64 delta = duration_cast<milliseconds>(now - prev_time).count();
-//
-//            if (delta >= 1000)
-//            {
-//                state = State::WaitPing;
-//                std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
-//                thread.detach();
-//
-//                prev_time = now;
-//            }
-//
+            int64 delta = duration_cast<milliseconds>(now - prev_time).count();
+
+            if (delta >= 1000)
+            {
+                state = State::WaitPing;
+                std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
+                thread.detach();
+
+                prev_time = now;
+            }
+
             int64 now_ms = duration_cast<milliseconds>(now.time_since_epoch()).count();
 
             ExecuteTasks(now_ms);
