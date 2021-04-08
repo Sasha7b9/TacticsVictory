@@ -9,4 +9,8 @@ public:
     LivingRoom();
 
     int Run(pchar address);
+
+private:
+
+    static void SetTasks();
 };

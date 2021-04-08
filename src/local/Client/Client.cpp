@@ -130,7 +130,6 @@ void Client::ParseArguments()
                 } };
 
                 TheMasterServer.AppendTask(&task);
-
             },
             []()
             {
@@ -140,7 +139,7 @@ void Client::ParseArguments()
             },
             [](int ping)
             {
-                LOGWRITEF("ping = %d", ping);
+                TheGUI->SetPing(ping);
             }
         );
 

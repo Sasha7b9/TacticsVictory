@@ -10,6 +10,7 @@
 #define MSM_GET_ADDRESS_BATTLE   "get address battle"       // вернуть адрес боя
 #define MSM_GET_LIVINGROMS       "get livingrooms"          // возвращает список доступных гостиных
 #define MSM_PING                 "ping"                     // запрос пинга
+#define MSM_SEND_LIVINGROOM_INFO "send livingroom info"
 #define MSM_TERMINCATE           "terminate"                // завершить выполнение master
 
 

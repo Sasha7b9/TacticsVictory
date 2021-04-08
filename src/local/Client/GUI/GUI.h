@@ -22,6 +22,8 @@ public:
     // Добавить предупреждающее сообщение
     void AppendWarning(pchar text);
 
+    void SetPing(int) {};
+
 private:
     void Create();
     void RegistrationObjects();
