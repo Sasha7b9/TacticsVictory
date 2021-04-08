@@ -159,7 +159,7 @@ void Client::SetTasks()
         }
     };
 
-    TheMasterServer.AppendTask(&task);
+    TheMasterServer.SetTask(&task);
 }
 
 

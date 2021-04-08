@@ -220,7 +220,7 @@ void MasterServer::ExecuteTasks(int64 now)
 }
 
 
-void MasterServer::AppendTask(TaskMasterServer *task)
+void MasterServer::SetTask(TaskMasterServer *task)
 {
     tasks.push_back(task);
 }

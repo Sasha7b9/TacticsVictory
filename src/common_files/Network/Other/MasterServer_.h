@@ -41,7 +41,11 @@ public:
 
     void Update();
 
-    void AppendTask(TaskMasterServer *task);
+    // Один раз выполнить задачу
+    void RunTask(TaskMasterServer *task);
+
+    // Выполнять задачу через заданные промежутки времени
+    void SetTask(TaskMasterServer *task);
 
     struct State { enum E {
         Idle,                   // Простой
