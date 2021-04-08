@@ -27,7 +27,7 @@ add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for me
 
 file(GLOB SRC                             *.h *.cpp)
 file(GLOB FILESYSTEM    ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB NETWORK_OTHER ../../common_files/Network/Other/MasterServer_.*
+file(GLOB NETWORK_OTHER ../../common_files/Network/Other/Server_.*
                         ../../common_files/Network/Other/SocketsTCP_.*)
 file(GLOB UTILS         ../../common_files/Utils/Log_.*
                         ../../common_files/Utils/LogRAW_.*

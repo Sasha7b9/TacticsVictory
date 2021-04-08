@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Network/Other/MasterServer_.h"
 #include "Network/Other/NetworkTypes_.h"
+#include "Network/Other/Server_.h"
 
 
 static std::vector<TaskMasterServer *> tasks;
