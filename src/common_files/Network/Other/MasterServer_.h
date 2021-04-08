@@ -41,9 +41,6 @@ public:
 
     void Update();
 
-    // Один раз выполнить задачу
-    void RunTask(TaskMasterServer *task);
-
     // Выполнять задачу через заданные промежутки времени
     void SetTask(TaskMasterServer *task);
 
@@ -61,7 +58,9 @@ public:
 
 private:
 
-    ConnectorTCP connector;     // Соединитель для связи с удалённым мастер-сервером
+    ConnectorTCP connOUT;       // Сюдой посылаем данные в сервер
+    ConnectorTCP connIN;        // Сюда принимаем данные от сервера
+
     bool destroy = false;
     std::mutex  mutex;          // Данный mutex будет захвачен, пока сервер находится в процессе соединения
     std::string address;

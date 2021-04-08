@@ -14,7 +14,7 @@ void MasterServer::Destroy()
     mutex.lock();           // Ожидаем завершения ThreadConnect
     mutex.unlock();
 
-    connector.Release();
+    connOUT.Release();
 }
 
 
@@ -80,9 +80,9 @@ std::string MasterServer::GetAnswer(pchar key)
 {
     mutex.lock();
 
-    connector.Transmit(key);
+    connOUT.Transmit(key);
 
-    std::string result = connector.ReceiveWait();
+    std::string result = connOUT.ReceiveWait();
 
     mutex.unlock();
 
@@ -92,13 +92,13 @@ std::string MasterServer::GetAnswer(pchar key)
 
 void MasterServer::SendString(pchar string)
 {
-    connector.Transmit(string);
+    connOUT.Transmit(string);
 }
 
 
 std::string MasterServer::GetAnswer()
 {
-    return connector.Receive();
+    return connOUT.Receive();
 }
 
 
@@ -142,7 +142,7 @@ void MasterServer::Update()
                 {
                     mutex.unlock();
                     state = State::AttemptConnection;
-                    std::thread thread(ThreadConnect, &connector, std::move(address.c_str()), &mutex, (uint8 *)&state);
+                    std::thread thread(ThreadConnect, &connOUT, std::move(address.c_str()), &mutex, (uint8 *)&state);
                     thread.detach();
                 }
             }
@@ -172,7 +172,7 @@ void MasterServer::Update()
             if (delta >= 1000)
             {
                 state = State::WaitPing;
-                std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
+                std::thread thread(ThreadPing, &connOUT, &mutex, &ping, (uint8 *)&state);
                 thread.detach();
 
                 prev_time = now;
