@@ -90,6 +90,18 @@ std::string MasterServer::GetAnswer(pchar key)
 }
 
 
+void MasterServer::SendRequest(pchar request)
+{
+    connector.Transmit(request);
+}
+
+
+std::string MasterServer::GetAnswer()
+{
+    return connector.Receive();
+}
+
+
 static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, uint8 *state)
 {
     using namespace std::chrono;
@@ -196,11 +208,13 @@ void MasterServer::ExecuteTasks(int64 now)
     {
         if (now >= task->prev_time + task->delta_time)
         {
-            std::string answer = GetAnswer(task->request.c_str());
+            mutex.lock();
 
-            task->process(answer.c_str());
+            task->func();
 
             task->prev_time = now;
+
+            mutex.unlock();
         }
     }
 }

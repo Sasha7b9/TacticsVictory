@@ -11,10 +11,9 @@
 struct TaskMasterServer
 {
     int         count;          // Сколько раз выполнять задание (0 - бесконечно)
-    int64        delta_time;     // Через такие промежутки времени выполнять задание
-    int64        prev_time;
-    std::string request;        // Выполняемыз запрос
-    pFuncVpCh   process;        // Обработка ответа от мастер-сервера
+    int64       delta_time;     // Через такие промежутки времени выполнять задание
+    pFuncVV     func;           // Обработка ответа от мастер-сервера
+    int64       prev_time;
 };
 
 
@@ -31,6 +30,10 @@ public:
     void Destroy();
 
     std::string GetAnswer(pchar key);
+
+    void SendRequest(pchar request);
+
+    std::string GetAnswer();
 
     bool IsConnected();
 

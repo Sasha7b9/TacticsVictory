@@ -149,14 +149,16 @@ void Client::ParseArguments()
 
 void Client::SetTasks()
 {
-    static TaskMasterServer task = { 0, 1000, 0, MSM_GET_LIVINGROMS,
-    [](pchar answer)
-    {
-        TheMenu->pageFindServer->SetServersInfo(std::string(answer));
-    } };
+    static TaskMasterServer task = { 0, 1000,
+        []()
+        {
+            TheMasterServer.SendRequest(MSM_GET_LIVINGROMS);
+            std::string answer = TheMasterServer.GetAnswer();
+            TheMenu->pageFindServer->SetServersInfo(answer);
+        }
+    };
 
     TheMasterServer.AppendTask(&task);
-
 }
 
 
