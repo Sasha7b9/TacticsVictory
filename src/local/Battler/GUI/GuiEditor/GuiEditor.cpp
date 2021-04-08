@@ -242,7 +242,7 @@ void GuiEditor::CreateWindows()
     SubscribeToEvent(buttonCreateMap, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleTerrainCreateNewMap));
 
     windowNewMap->SetFixedSize(windowNewMap->GetSize());
-    GF::SetWindowInCenterScreen(windowNewMap);
+    GFU3D::SetWindowInCenterScreen(windowNewMap);
     TheUIRoot->AddChild(windowNewMap);
     windowNewMap->SetVisible(false);
 
@@ -280,7 +280,7 @@ void GuiEditor::CreateWindows()
 
     TheUIRoot->AddChild(windowConfirmExit);
     windowConfirmExit->SetVisible(false);
-    GF::SetWindowInCenterScreen(windowConfirmExit);
+    GFU3D::SetWindowInCenterScreen(windowConfirmExit);
 
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GuiEditor, HandleMouseDown));
 }
@@ -359,7 +359,7 @@ void GuiEditor::HandleFileLoad(StringHash, VariantMap&)
 
     filters.Push("*.map");
 
-    GF::OpenFileSelector("Load landscape", "Load", "Cancel", filters);
+    GFU3D::OpenFileSelector("Load landscape", "Load", "Cancel", filters);
 
     SubscribeToEvent(TheFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorLoadTerrain));
 }
@@ -373,7 +373,7 @@ void GuiEditor::HandleFileSave(StringHash, VariantMap&)
 
     filters.Push("*.map");
 
-    GF::OpenFileSelector("Save landscape", "Save", "Cancel", filters);
+    GFU3D::OpenFileSelector("Save landscape", "Save", "Cancel", filters);
 
     SubscribeToEvent(TheFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorSaveTerrain));
 }

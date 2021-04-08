@@ -13,46 +13,6 @@ unsigned GF::GetLastModifiedTime(char* name)
 }
 
 
-String GF::GetNameFile(const char *name)
-{
-    String fullName;
-
-    if(TheCache)
-    {
-        Vector<String> dirs = TheCache->GetResourceDirs();
-
-        for(String &dir : dirs)
-        {
-            fullName = dir + name;
-            if(TheFileSystem->FileExists(fullName))
-            {
-                break;
-            }
-            fullName = "";
-        }
-    }
-
-    if(fullName.Empty())
-    {
-        fullName = RESOURCES_DIR + String(name);
-        if(!TheFileSystem->FileExists(fullName))
-        {
-            fullName = "../out/" + fullName;
-            if(!TheFileSystem->FileExists(fullName))
-            {
-                fullName = "../" + fullName;
-                if(!TheFileSystem->FileExists(fullName))
-                {
-                    fullName = "";
-                }
-            }
-        }
-    }
-
-    return fullName;
-}
-
-
 String GF::IntToString(int value, uint length)
 {
     String str(value);

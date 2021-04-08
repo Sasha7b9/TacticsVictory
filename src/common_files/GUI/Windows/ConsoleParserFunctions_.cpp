@@ -21,7 +21,7 @@ bool ConsoleParser::FuncClientStart(Vector<String> &/*words*/, bool)
 {
 //    String address = SERVER_ADDRESS;
 //    uint16 port = SERVER_PORT;
-//    if(!GF::GetAddressPort(words, address, port))
+//    if(!GFU3D::GetAddressPort(words, address, port))
 //    {
 //        return false;
 //    }

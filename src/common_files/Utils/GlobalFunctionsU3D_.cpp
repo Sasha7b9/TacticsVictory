@@ -3,14 +3,14 @@
 #include "Utils/GlobalFunctionsU3D_.h"
 
 
-void GF::SetWindowInCenterScreen(Window *window)
+void GFU3D::SetWindowInCenterScreen(Window *window)
 {
     window->SetPosition(TheGraphics->GetWidth() / 2 - window->GetWidth() / 2,
         TheGraphics->GetHeight() / 2 - window->GetHeight() / 2);
 }
 
 
-void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
+void GFU3D::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
 {
     delete TheFileSelector;
     TheFileSelector = new FileSelector(TheContext);
@@ -31,7 +31,7 @@ void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vec
 }
 
 
-unsigned GF::GetLastModifiedTime(char* name)
+unsigned GFU3D::GetLastModifiedTime(char* name)
 {
     String fullName = TheFileSystem->GetProgramDir();
     fullName.Erase(fullName.Length() - 1);
@@ -41,47 +41,7 @@ unsigned GF::GetLastModifiedTime(char* name)
 }
 
 
-String GF::GetNameFile(const char *name)
-{
-    String fullName;
-
-    if(TheCache)
-    {
-        Vector<String> dirs = TheCache->GetResourceDirs();
-
-        for(String &dir : dirs)
-        {
-            fullName = dir + name;
-            if(TheFileSystem->FileExists(fullName))
-            {
-                break;
-            }
-            fullName = "";
-        }
-    }
-
-    if(fullName.Empty())
-    {
-        fullName = RESOURCES_DIR + String(name);
-        if(!TheFileSystem->FileExists(fullName))
-        {
-            fullName = "../out/" + fullName;
-            if(!TheFileSystem->FileExists(fullName))
-            {
-                fullName = "../" + fullName;
-                if(!TheFileSystem->FileExists(fullName))
-                {
-                    fullName = "";
-                }
-            }
-        }
-    }
-
-    return fullName;
-}
-
-
-String GF::IntToString(int value, uint length)
+String GFU3D::IntToString(int value, uint length)
 {
     String str(value);
     while(str.Length() < length)
@@ -92,7 +52,7 @@ String GF::IntToString(int value, uint length)
 }
 
 
-bool GF::GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
+bool GFU3D::GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
 {
     for(String word : words)
     {
@@ -129,7 +89,7 @@ bool GF::GetAddressPort(const Vector<String> &words, String &address, uint16 &po
 }
 
 
-void GF::DelayMS(uint delay)
+void GFU3D::DelayMS(uint delay)
 {
     using namespace std::chrono;
     using namespace std::this_thread;

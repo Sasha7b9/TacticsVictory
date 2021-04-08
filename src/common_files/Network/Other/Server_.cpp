@@ -67,7 +67,7 @@ static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP *conn_in,
     {
         conn_out->SetReadTimeOut(10000);
 
-//        GF::DelayMS(100);
+//        GFU3D::DelayMS(100);
 
         if (conn_out->Connect(host, (uint16)(port + 1)))
         {

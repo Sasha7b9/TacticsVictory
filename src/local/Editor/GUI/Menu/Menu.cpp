@@ -8,7 +8,7 @@
 #define CREATE_PAGE(name, type, moving)                                 \
     name = new type();                                                  \
     allMenus.Push(name);                                                \
-    GF::SetWindowInCenterScreen(name);                                  \
+    GFU3D::SetWindowInCenterScreen(name);                                  \
     name->SetMovable(moving);                                           \
     SubscribeToEvent(E_MENU, URHO3D_HANDLER(Menus, HandleMenuEvent));
 

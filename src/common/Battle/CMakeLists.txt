@@ -75,7 +75,8 @@ file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Object
 file(GLOB SCENE_PRIMITIVES                       ../../common_files/Scene/Primitives/*.*)
 file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*
                                                                     Scene/Terrain/*.*)
-file(GLOB UTILS                                  ../../common_files/Utils/Log_.*
+file(GLOB UTILS                                  ../../common_files/Utils/GlobalFunctions_.*
+                                                 ../../common_files/Utils/Log_.*
                                                  ../../common_files/Utils/LogU3D_.*
                                                  ../../common_files/Utils/StringUtils_.*
                                                                     Utils/*.*)
