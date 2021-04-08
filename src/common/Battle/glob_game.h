@@ -3,14 +3,14 @@
 
 class Battle;
 class ConfigurationFile;
-class MasterServer;
+class ServerT;
 class SceneS;
 class ServerS;
 class TerrainT;
 
 extern ConfigurationFile TheConfig;
 extern ConfigurationFile TheSettings;
-extern MasterServer      TheMasterServer;
+extern ServerT      TheMasterServer;
 
 extern Battle       *TheBattle;
 extern SceneS       *TheScene;

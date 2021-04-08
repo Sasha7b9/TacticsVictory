@@ -17,7 +17,7 @@ Time              *TheTime = nullptr;
 
 ConfigurationFile TheConfig;
 ConfigurationFile TheSettings;
-MasterServer      TheMasterServer;
+ServerT           TheMasterServer;
 
 Battle            *TheBattle = nullptr;
 SceneS            *TheScene = nullptr;

@@ -7,7 +7,7 @@
 static std::vector<TaskMasterServer *> tasks;
 
 
-void MasterServer::Destroy()
+void ServerT::Destroy()
 {
     destroy = true;
 
@@ -18,14 +18,14 @@ void MasterServer::Destroy()
 }
 
 
-bool MasterServer::IsConnected()
+bool ServerT::IsConnected()
 {
     return (state == State::InConnection ||
         state == State::WaitPing);
 }
 
 
-void MasterServer::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping)
+void ServerT::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping)
 {
     funcFailConnection = fail;
     funcConnection = connection;
@@ -34,7 +34,7 @@ void MasterServer::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV discon
 }
 
 
-void MasterServer::Connect()
+void ServerT::Connect()
 {
     if (!funcFailConnection || !funcConnection || !funcDisconnection || !funcPing)
     {
@@ -64,19 +64,19 @@ static void ThreadConnect(ConnectorTCP *connector, pchar full_address, std::mute
 
     if (connector->Connect(host, port))
     {
-        *state = MasterServer::State::EventConnection;
+        *state = ServerT::State::EventConnection;
         connector->SetReadTimeOut(10000);
     }
     else
     {
-        *state = MasterServer::State::EventFailConnection;
+        *state = ServerT::State::EventFailConnection;
     }
 
     mutex->unlock();
 }
 
 
-std::string MasterServer::GetAnswer(pchar key)
+std::string ServerT::GetAnswer(pchar key)
 {
     mutex.lock();
 
@@ -90,13 +90,13 @@ std::string MasterServer::GetAnswer(pchar key)
 }
 
 
-void MasterServer::SendString(pchar string)
+void ServerT::SendString(pchar string)
 {
     connOUT.Transmit(string);
 }
 
 
-std::string MasterServer::GetAnswer()
+std::string ServerT::GetAnswer()
 {
     return connOUT.Receive();
 }
@@ -112,20 +112,20 @@ static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, ui
 
     if (result == MSM_PING)
     {
-        *state = MasterServer::State::GetPing;
+        *state = ServerT::State::GetPing;
         auto end = system_clock::now();
         *ping = (int)duration_cast<milliseconds>(end - start).count();
     }
     else
     {
-        *state = MasterServer::State::EventDisconnect;
+        *state = ServerT::State::EventDisconnect;
     }
 
     mutex->unlock();
 }
 
 
-void MasterServer::Update()
+void ServerT::Update()
 {
     static int ping = 999;
 
@@ -202,7 +202,7 @@ void MasterServer::Update()
 }
 
 
-void MasterServer::ExecuteTasks(int64 now)
+void ServerT::ExecuteTasks(int64 now)
 {
     for each (TaskMasterServer * task in tasks)
     {
@@ -220,7 +220,7 @@ void MasterServer::ExecuteTasks(int64 now)
 }
 
 
-void MasterServer::SetTask(TaskMasterServer *task)
+void ServerT::SetTask(TaskMasterServer *task)
 {
     tasks.push_back(task);
 }

@@ -3,4 +3,4 @@
 
 
 ConfigurationFile TheConfig;
-MasterServer      TheMasterServer;
+ServerT           TheMasterServer;

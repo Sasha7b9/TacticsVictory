@@ -5,14 +5,14 @@ class CameraT;
 class Client;
 class ConfigurationFile;
 class LogRAW;
-class MasterServer;
+class ServerT;
 class Menus;
 class PageStart;
 class WindowVariables;
 
 extern ConfigurationFile TheConfig;
 extern ConfigurationFile TheSettings;
-extern MasterServer      TheMasterServer;
+extern ServerT      TheMasterServer;
 
 extern CameraT         *TheCamera;
 extern Client          *TheClient;

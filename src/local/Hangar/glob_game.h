@@ -6,6 +6,6 @@ class Hangar;
 
 
 extern ConfigurationFile TheConfig;
-extern MasterServer      TheMasterServer;
+extern ServerT      TheMasterServer;
 
 extern Hangar            *TheHangar;

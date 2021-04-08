@@ -126,7 +126,7 @@ static void HandlerTerminate()
 {
     Master::Terminate();
 
-    //            MasterServer master(gConfig);
+    //            ServerT master(gConfig);
     //
     //            master.Connnect("127.0.0.1", static_cast<uint16>(gConfig.GetIntValue("port")));
 }
