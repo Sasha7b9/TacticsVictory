@@ -19,7 +19,7 @@ int main(int args, char *argv[])
 
     if (TheConfig.Load("LivingRoom.conf"))
     {
-        return LivingRoom().Run();
+        return LivingRoom().Run(argv[1]);
     }
 
     return 0;

@@ -9,7 +9,7 @@ LivingRoom::LivingRoom()
 }
 
 
-int LivingRoom::Run()
+int LivingRoom::Run(pchar address)
 {
 
 

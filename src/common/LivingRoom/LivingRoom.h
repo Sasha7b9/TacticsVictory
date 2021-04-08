@@ -5,7 +5,8 @@
 class LivingRoom
 {
 public:
+
     LivingRoom();
 
-    int Run();
+    int Run(pchar address);
 };
