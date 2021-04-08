@@ -65,3 +65,8 @@ typedef void (*pFuncVpCh)(pchar);
 
 #define VAR_MENU_EVENT         "VAR_MENU_EVENT"
 #define VAR_GUI_NO_TRANSLATE   "VAR_GUI_NO_TRANSLATE"
+
+#define PORT_MASTER     40000
+#define PORT_UPLOADER   40001
+#define PORT_DATABASE   40002
+#define PORT_LIVINGROOM 40003

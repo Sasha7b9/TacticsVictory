@@ -10,12 +10,10 @@ int main(int, char *[])
 
     LOGWRITE("Start Master");
 
-    int result = -1;
-
     if (TheConfig.Load("Master.conf"))
     {
-        result = Master().Run();
+        return Master().Run();
     }
 
-    return result;
+    return -1;
 }

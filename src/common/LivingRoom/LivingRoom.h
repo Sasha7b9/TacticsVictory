@@ -2,3 +2,10 @@
 #pragma once
 
 
+class LivingRoom
+{
+public:
+    LivingRoom();
+
+    int Run();
+};
