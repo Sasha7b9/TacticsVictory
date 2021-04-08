@@ -153,7 +153,7 @@ void Client::SetTasks()
     static TaskMasterServer task = { 0, 1000,
         []()
         {
-            TheMasterServer.SendRequest(MSM_GET_LIVINGROMS);
+            TheMasterServer.SendString(MSM_GET_LIVINGROMS);
             std::string answer = TheMasterServer.GetAnswer();
             TheMenu->pageFindServer->SetServersInfo(answer);
         }

@@ -21,7 +21,7 @@ class MasterServer
 {
 public:
 
-    void SetAddress(pchar full_address) {address = full_address; };
+    void SetAddress(pchar full_address) { address = full_address; };
 
     void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping);
 
@@ -31,7 +31,7 @@ public:
 
     std::string GetAnswer(pchar key);
 
-    void SendRequest(pchar request);
+    void SendString(pchar string);
 
     std::string GetAnswer();
 

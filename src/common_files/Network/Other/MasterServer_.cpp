@@ -90,9 +90,9 @@ std::string MasterServer::GetAnswer(pchar key)
 }
 
 
-void MasterServer::SendRequest(pchar request)
+void MasterServer::SendString(pchar string)
 {
-    connector.Transmit(request);
+    connector.Transmit(string);
 }
 
 
