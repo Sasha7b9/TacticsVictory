@@ -3,17 +3,6 @@
 #include "Utils/GlobalFunctions.h"
 
 
-String GF::IntToString(int value, uint length)
-{
-    String str(value);
-    while(str.Length() < length)
-    {
-        str.Insert(0, '0');
-    }
-    return str;
-}
-
-
 bool GF::GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
 {
     for(String word : words)

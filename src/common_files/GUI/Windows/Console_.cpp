@@ -359,8 +359,8 @@ void ConsoleT::Write(const String &message)
 
     SYSTEMTIME st;
     GetLocalTime(&st);
-    str = GFU3D::IntToString(st.wHour, 2) + ":" + GFU3D::IntToString(st.wMinute, 2) + ":" +
-        GFU3D::IntToString(st.wSecond, 2) + ":" + GFU3D::IntToString(st.wMilliseconds, 3) + " ";
+    str = GF::IntToString(st.wHour, 2) + ":" + GF::IntToString(st.wMinute, 2) + ":" +
+        GF::IntToString(st.wSecond, 2) + ":" + GF::IntToString(st.wMilliseconds, 3) + " ";
 
 #endif
 

@@ -31,17 +31,6 @@ void GFU3D::OpenFileSelector(char *title, char *textOk, char *textCancel, const 
 }
 
 
-String GFU3D::IntToString(int value, uint length)
-{
-    String str(value);
-    while(str.Length() < length)
-    {
-        str.Insert(0, '0');
-    }
-    return str;
-}
-
-
 bool GFU3D::GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
 {
     for(String word : words)

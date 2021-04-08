@@ -8,4 +8,6 @@ namespace GF
 
     // Return the file's last modified time. File path relative from TVData
     unsigned GetLastModifiedTime(char *name);
+
+    String IntToString(int value, uint length);
 }
