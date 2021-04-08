@@ -17,7 +17,7 @@ int main(int args, char *argv[])
         return -1;
     }
 
-    if (TheConfig.Load("LivingRoom.conf"))
+    if (TheSettings.Load("Settings.conf"))
     {
         return LivingRoom().Run(argv[1]);
     }

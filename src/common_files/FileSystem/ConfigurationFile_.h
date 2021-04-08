@@ -11,7 +11,7 @@ class ConfigurationFile
 {
 public:
 
-    virtual ~ConfigurationFile() { Unload(); }
+    virtual ~ConfigurationFile() { }
 
     bool Load(pchar name);
 

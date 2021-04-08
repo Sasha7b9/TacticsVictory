@@ -21,7 +21,7 @@ class MasterServer
 {
 public:
 
-    void SetAddress(pchar full_address) { address = full_address; };
+    void SetAddress(pchar _ip, uint16 _port) { ip = _ip; port_out = _port; };
 
     void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping);
 
@@ -36,8 +36,6 @@ public:
     std::string GetAnswer();
 
     bool IsConnected();
-
-    pchar GetAddress() const { return address.c_str(); }
 
     void Update();
 
@@ -61,9 +59,11 @@ private:
     ConnectorTCP connOUT;       // Сюдой посылаем данные в сервер
     ConnectorTCP connIN;        // Сюда принимаем данные от сервера
 
+    std::string ip;
+    uint16 port_out;            // Порт засылки в сервер. порт чтения на 1 больше
+
     bool destroy = false;
     std::mutex  mutex;          // Данный mutex будет захвачен, пока сервер находится в процессе соединения
-    std::string address;
     pFuncVV funcFailConnection = nullptr;   // Вызывается в случае неуспешной попытки соединения
     pFuncVV funcConnection     = nullptr;   // Вызывается в случае успешной попытки соединения
     pFuncVV funcDisconnection  = nullptr;   // Вызывается при потере связи с сервером

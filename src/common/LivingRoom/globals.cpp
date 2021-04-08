@@ -2,5 +2,5 @@
 #include "stdafx.h"
 
 
-ConfigurationFile TheConfig;
+ConfigurationFile TheSettings;
 MasterServer      TheMasterServer;

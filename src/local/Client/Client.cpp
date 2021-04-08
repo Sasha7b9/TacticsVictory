@@ -108,7 +108,7 @@ void Client::ParseArguments()
 
     if (arguments.Size() != 0)
     {
-        TheMasterServer.SetAddress(arguments[0].CString());
+        TheMasterServer.SetAddress(arguments[0].CString(), (uint16)TheSettings.GetInt("main port"));
 
         TheMasterServer.SetCallbacks
         (
@@ -165,6 +165,8 @@ void Client::SetTasks()
 
 void Client::Stop()
 {
+    TheSettings.Unload();
+
     TheMasterServer.Destroy();
 
     engine_->DumpResources(true);

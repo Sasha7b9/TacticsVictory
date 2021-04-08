@@ -11,7 +11,7 @@ LivingRoom::LivingRoom()
 
 int LivingRoom::Run(pchar address)
 {
-    TheMasterServer.SetAddress(address);
+    TheMasterServer.SetAddress(address, (uint16)TheSettings.GetInt("main port"));
 
     TheMasterServer.SetCallbacks
     (

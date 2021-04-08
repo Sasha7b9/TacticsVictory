@@ -8,7 +8,7 @@ public:
 
     LivingRoom();
 
-    int Run(pchar address);
+    int Run(pchar ip);
 
 private:
 

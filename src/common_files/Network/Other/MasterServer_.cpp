@@ -42,7 +42,7 @@ void MasterServer::Connect()
         return;
     }
 
-    if (address.empty())
+    if (ip.empty())
     {
         LOGERRORF("Not specified address master server");
 
@@ -142,7 +142,7 @@ void MasterServer::Update()
                 {
                     mutex.unlock();
                     state = State::AttemptConnection;
-                    std::thread thread(ThreadConnect, &connOUT, std::move(address.c_str()), &mutex, (uint8 *)&state);
+                    std::thread thread(ThreadConnect, &connOUT, std::move(ip.c_str()), &mutex, (uint8 *)&state);
                     thread.detach();
                 }
             }

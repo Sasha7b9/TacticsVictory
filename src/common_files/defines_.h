@@ -66,7 +66,11 @@ typedef void (*pFuncVpCh)(pchar);
 #define VAR_MENU_EVENT         "VAR_MENU_EVENT"
 #define VAR_GUI_NO_TRANSLATE   "VAR_GUI_NO_TRANSLATE"
 
-#define PORT_MASTER     40000
-#define PORT_UPLOADER   40001
-#define PORT_DATABASE   40002
-#define PORT_LIVINGROOM 40003
+#define DELTA_PORT_MASTER_IN      0     // Порт входящих сообщений мастер-сервера
+#define DELTA_PORT_MASTER_OUT     1     // Порт исходящих сообщений мастер-сервера
+#define DELTA_PORT_UPLOADER_IN    2     // На этот порт uploader принимает сообщения
+#define DELTA_PORT_UPLOADER_OUT   3     // С этого порта uploader посылает сообщения
+#define DELTA_PORT_DATABASE_IN    4     // В этот порт база данных принимает сообщения
+#define DELTA_PORT_DATABASE_OUT   5     // С этого порта база данных отправляет сообщения
+#define DELTA_PORT_LIVINGROOM_IN  6
+#define DELTA_PORT_LIVINGROOM_OUT 7
