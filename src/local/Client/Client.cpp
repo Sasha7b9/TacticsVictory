@@ -149,7 +149,7 @@ void Client::ParseArguments()
 
 void Client::SetTasks()
 {
-    static TaskMasterServer task = { 0, 1000,
+    static TaskMasterServer taskLivingrooms = { 0, 1000,
         []()
         {
             TheMasterServer.SendRequest(MSM_GET_LIVINGROMS);
@@ -158,7 +158,22 @@ void Client::SetTasks()
         }
     };
 
-    TheMasterServer.AppendTask(&task);
+    TheMasterServer.AppendTask(&taskLivingrooms);
+
+
+    static TaskMasterServer taskPing = { 0, 1000,
+        []()
+        {
+            using namespace std::chrono;
+            auto start = system_clock::now();
+            TheMasterServer.SendRequest(MSM_PING);
+            std::string answer = TheMasterServer.GetAnswer();
+            auto end = system_clock::now();
+            TheGUI->SetPing((int)duration_cast<milliseconds>(end - start).count());
+        }
+    };
+
+    TheMasterServer.AppendTask(&taskPing);
 }
 
 

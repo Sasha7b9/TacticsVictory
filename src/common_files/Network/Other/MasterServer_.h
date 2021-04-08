@@ -47,9 +47,9 @@ public:
         Idle,                   // Простой
         NeedConnection,         // Нужно подключать
         AttemptConnection,      // В процессе подлючения
+        InConnection,           // Подключено
         EventConnection,        // Произошло соединение, нужно вызывать функцию funcConnection
         EventFailConnection,    // Неудачное соединение, нужно вызывать функцию funcFailConnection
-        InConnection,           // Подключено
         WaitPing,               // Ожидание сообщения о пинге
         EventDisconnect,        // Событие обрыва связи с мастер-сервером
         GetPing                 // Получен пинг
