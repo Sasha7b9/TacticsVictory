@@ -31,16 +31,6 @@ void GFU3D::OpenFileSelector(char *title, char *textOk, char *textCancel, const 
 }
 
 
-unsigned GFU3D::GetLastModifiedTime(char* name)
-{
-    String fullName = TheFileSystem->GetProgramDir();
-    fullName.Erase(fullName.Length() - 1);
-    fullName.Erase(fullName.FindLast('/'), 6);
-    fullName += String("/") + RESOURCES_DIR + "/" + name;
-    return TheFileSystem->GetLastModifiedTime(fullName);
-}
-
-
 String GFU3D::IntToString(int value, uint length)
 {
     String str(value);

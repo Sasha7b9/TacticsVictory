@@ -41,3 +41,13 @@ String GF::GetNameFile(const char *name)
 
     return fullName;
 }
+
+
+unsigned GF::GetLastModifiedTime(char *name)
+{
+    String fullName = TheFileSystem->GetProgramDir();
+    fullName.Erase(fullName.Length() - 1);
+    fullName.Erase(fullName.FindLast('/'), 6);
+    fullName += String("/") + RESOURCES_DIR + "/" + name;
+    return TheFileSystem->GetLastModifiedTime(fullName);
+}
