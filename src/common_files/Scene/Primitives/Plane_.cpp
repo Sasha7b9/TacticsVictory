@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Core/Math_.h"
+#include "Scene/Primitives/Plane_.h"
 
 
 PlaneT PlaneT::ZERO = PlaneT(Vector3::ZERO, Vector3::ZERO, Vector3::ZERO, Vector3::ZERO);

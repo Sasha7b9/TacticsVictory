@@ -3,6 +3,7 @@
 #include "Scene/Terrain/CubeTerrain_.h"
 #include "Scene/Terrain/EdgeCube_.h"
 #include "Scene/Terrain/SideCube_.h"
+#include "Scene/Terrain/Terrain_.h"
 
 
 TerrainT* CubeTerrain::terrain = nullptr;

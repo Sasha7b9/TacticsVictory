@@ -3,6 +3,7 @@
 #include "Scene/Objects/Units/Unit_.h"
 #include "Scene/Objects/Units/Accessories/Engine/Engine_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
+#include "Scene/Terrain/Terrain_.h"
 
 
 Vector<Unit *> Unit::storage;
