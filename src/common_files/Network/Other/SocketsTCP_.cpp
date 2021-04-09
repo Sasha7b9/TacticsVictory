@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Other/SocketsTCP_.h"
+#include "Utils/StringUtils_.h"
 
 
 static sockpp::socket_initializer sockInit;

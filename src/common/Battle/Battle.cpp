@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Battle.h"
 #include "Core/Math_.h"
+#include "FileSystem/ConfigurationFile_.h"
 #include "Game/Logic/Rotator_.h"
 #include "Game/Logic/SunEngine_.h"
 #include "Game/Path/WaveAlgorithm_.h"
