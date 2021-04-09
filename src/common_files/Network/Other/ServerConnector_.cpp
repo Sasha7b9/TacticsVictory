@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Other/NetworkTypes_.h"
-#include "Network/Other/Server_.h"
+#include "Network/Other/ServerConnector_.h"
 #include "Utils/GlobalFunctions_.h"
 
 

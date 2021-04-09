@@ -2,5 +2,8 @@
 #pragma once
 
 
+class ServerConnector;
+
+
 extern ConfigurationFile TheSettings;
-extern ServerConnector           TheMasterServer;
+extern ServerConnector   TheMasterServer;

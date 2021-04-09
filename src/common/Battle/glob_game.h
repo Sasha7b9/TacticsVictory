@@ -8,9 +8,10 @@ class SceneS;
 class ServerS;
 class TerrainT;
 
+
 extern ConfigurationFile TheConfig;
 extern ConfigurationFile TheSettings;
-extern ServerConnector      TheMasterServer;
+
 
 extern Battle       *TheBattle;
 extern SceneS       *TheScene;

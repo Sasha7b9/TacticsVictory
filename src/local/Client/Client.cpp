@@ -4,6 +4,7 @@
 #include "GUI/Menu/Menu.h"
 #include "GUI/Menu/PageFindServer.h"
 #include "Network/Other/NetworkTypes_.h"
+#include "Network/Other/ServerConnector_.h"
 
 
 #pragma warning(push)

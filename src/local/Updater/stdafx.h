@@ -28,7 +28,6 @@ using namespace Urho3D;
 
 #include "defines.h"
 
-#include "Network/Other/Server_.h"
 #include "Utils/Log_.h"
 
 #include "globals.h"

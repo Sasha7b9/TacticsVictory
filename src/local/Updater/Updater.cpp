@@ -1,5 +1,6 @@
 // 2021/04/02 17:14:22 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Network/Other/ServerConnector_.h"
 
 
 int main(int argc, char * /*argv*/ [])

@@ -2,4 +2,7 @@
 #pragma once
 
 
+class ServerConnector;
+
+
 extern ServerConnector TheMasterServer;

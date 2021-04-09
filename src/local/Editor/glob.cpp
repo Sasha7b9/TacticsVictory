@@ -1,5 +1,6 @@
 ﻿// 2021/04/02 17:53:31 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Network/Other/ServerConnector_.h"
 
 
 Audio         *TheAudio        = nullptr;
@@ -19,7 +20,7 @@ UIElement     *TheUIRoot       = nullptr;
 
 ConfigurationFile TheConfig;
 ConfigurationFile TheSettings;
-ServerConnector           TheMasterServer;
+ServerConnector   TheMasterServer;
 
 CameraT         *TheCamera     = nullptr;
 Editor          *TheClient     = nullptr;

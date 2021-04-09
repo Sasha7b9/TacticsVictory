@@ -74,7 +74,6 @@ using namespace Urho3D;
 #include "GUI/Windows/WindowVariables_.h"
 #include "Input/Mouse_.h"
 #include "Scene/Cameras/Camera.h"
-#include "Network/Other/Server_.h"
 #include "Utils/GlobalFunctions_.h"
 #include "Utils/Log_.h"
 #include "Utils/StringUtils_.h"

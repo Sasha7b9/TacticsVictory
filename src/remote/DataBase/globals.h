@@ -2,5 +2,9 @@
 #pragma once
 
 
+class ConfigurationFile;
+class ServerConnector;
+
+
 extern ConfigurationFile TheConfig;
-extern ServerConnector      TheMasterServer;
+extern ServerConnector   TheMasterServer;
