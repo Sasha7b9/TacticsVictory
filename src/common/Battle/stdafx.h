@@ -83,8 +83,6 @@ using namespace Urho3D;
 #endif
 
 #include "defines.h"
-
 #include "glob_engine.h"
 #include "glob_game.h"
-
 #include "Utils/Log_.h"
