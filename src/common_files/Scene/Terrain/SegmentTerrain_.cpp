@@ -3,6 +3,7 @@
 #include "Scene/Terrain/CubeTerrain_.h"
 #include "Scene/Terrain/LayerTerrain_.h"
 #include "Scene/Terrain/SegmentTerrain_.h"
+#include "Scene/Terrain/Terrain_.h"
 
 
 SegmentTerrain::SegmentTerrain() : Object(TheContext)

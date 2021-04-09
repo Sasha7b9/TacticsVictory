@@ -5,6 +5,7 @@
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
 #include "GUI/Controls/Buttons/ButtonToggled_.h"
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
+#include "GUI/Logic/LineTranslator2D_.h"
 
 
 WindowT::WindowT(Context *context) :

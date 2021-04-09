@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Game/Path/PathIndicator.h"
 #include "Game/Path/TilePath.h"
+#include "GUI/Cursor_.h"
 
 
 PathIndicator::PathIndicator() : pathFinder(TheContext)

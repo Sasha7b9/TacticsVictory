@@ -1,6 +1,8 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "GUI/Cursor_.h"
 #include "GUI/GUI.h"
+#include "GUI/Windows/Console_.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 

@@ -4,6 +4,7 @@
 #include "Game/Logic/SunEngine_.h"
 #include "Scene/Scene_.h"
 #include "Scene/Objects/Object_.h"
+#include "Scene/Terrain/Terrain_.h"
 
 
 SceneT::SceneT() : Scene(TheContext)

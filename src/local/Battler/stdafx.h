@@ -74,27 +74,6 @@ using namespace Urho3D;
 #pragma warning(pop)
 
 #include "defines.h"
-
 #include "glob_engine.h"
 #include "glob_game.h"
-
-#include "Core/Structures_.h"
-#include "FileSystem/ConfigurationFile_.h"
-#include "Game/Logic/Rotator_.h"
-#include "Game/Logic/SunEngine_.h"
-#include "Graphics/Renderer_.h"
-#include "Graphics/2D/Image_.h"
-#include "GUI/Cursor_.h"
-#include "GUI/Controls/Hint_.h"
-#include "GUI/Controls/Label_.h"
-#include "GUI/Logic/LineTranslator2D_.h"
-#include "GUI/Menu/MenuEvents_.h"
-#include "GUI/Windows/Console_.h"
-#include "GUI/Windows/WindowVariables_.h"
-#include "Input/Mouse_.h"
-#include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
-#include "Scene/Objects/Units/Ground/Tank/Tank_.h"
-#include "Scene/Terrain/Level_.h"
-#include "Utils/GlobalFunctions_.h"
 #include "Utils/Log_.h"
-#include "Utils/UtilsOS_.h"
