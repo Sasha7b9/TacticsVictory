@@ -361,7 +361,7 @@ void GuiEditor::HandleFileLoad(StringHash, VariantMap&)
 
     filters.Push("*.map");
 
-    GFU3D::OpenFileSelector("Load landscape", "Load", "Cancel", filters);
+    GF::OpenFileSelector("Load landscape", "Load", "Cancel", filters);
 
     SubscribeToEvent(TheFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorLoadTerrain));
 }
@@ -375,7 +375,7 @@ void GuiEditor::HandleFileSave(StringHash, VariantMap&)
 
     filters.Push("*.map");
 
-    GFU3D::OpenFileSelector("Save landscape", "Save", "Cancel", filters);
+    GF::OpenFileSelector("Save landscape", "Save", "Cancel", filters);
 
     SubscribeToEvent(TheFileSelector, E_FILESELECTED, URHO3D_HANDLER(GuiEditor, HandleFileSelectorSaveTerrain));
 }

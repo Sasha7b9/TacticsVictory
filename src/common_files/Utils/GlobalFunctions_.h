@@ -21,5 +21,7 @@ namespace GF
 
     void SetWindowInCenterScreen(Window *window);
 
+    void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters);
+
 #endif
 }
