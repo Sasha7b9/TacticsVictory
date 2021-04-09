@@ -1,13 +1,15 @@
 // 2021/03/31 22:30:19 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Other/NetworkTypes_.h"
+#include "Network/Other/SocketsTCP_.h"
 #include "Utils/StringUtils_.h"
 
+
+extern void HandlerTerminate();
 
 static void HandlerClose();
 static void HandlerGet();
 static void HandlerPing();
-static void HandlerTerminate();
 
 typedef void (*Handler)();
 
@@ -19,7 +21,7 @@ static std::vector<std::string> *words = nullptr;       // Используется в обрабо
 static std::map<std::string, ServerInfo> livingrooms;   // Здесь хранится информация о доступных ангарах
 
 
-void Master::Prepare()
+void Prepare()
 {
     map["close"] = HandlerClose;
     map["get"] = HandlerGet;
@@ -32,7 +34,7 @@ void Master::Prepare()
 }
 
 
-void Master::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, int number)
+void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, int number)
 {
     sock = &socket;
 
@@ -120,14 +122,4 @@ static void HandlerGet()
 static void HandlerPing()
 {
     sock->Transmit(std::string("ping"));
-}
-
-
-static void HandlerTerminate()
-{
-    Master::Terminate();
-
-    //            ServerConnector master(gConfig);
-    //
-    //            master.Connnect("127.0.0.1", static_cast<uint16>(gConfig.GetIntValue("port")));
 }

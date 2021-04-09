@@ -10,7 +10,10 @@
 */
 
 
-bool Master::run = true;
+static bool run = true;
+
+extern void Prepare();
+void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar data, int size);
 
 
 int main(int, char *[])
@@ -21,18 +24,11 @@ int main(int, char *[])
 
     LOGWRITE("Start Master");
 
-    if (TheConfig.Load("Master.conf"))
+    if (!TheConfig.Load("Master.conf"))
     {
-        return Master().Run();
+        return -1;
     }
 
-    return -1;
-}
-
-
-
-int Master::Run()
-{
     Prepare();
 
     uint16 port = static_cast<uint16>(TheConfig.GetInt("port"));
@@ -62,7 +58,8 @@ int Master::Run()
 }
 
 
-void Master::Terminate()
+
+void HandlerTerminate()
 {
     run = false;
 }
