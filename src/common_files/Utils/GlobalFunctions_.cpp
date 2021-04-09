@@ -3,6 +3,16 @@
 #include "Utils/GlobalFunctions_.h"
 
 
+void GF::DelayMS(uint delay)
+{
+    using namespace std::chrono;
+    using namespace std::this_thread;
+
+    sleep_until(system_clock::now() + milliseconds(delay));
+}
+
+
+
 String GF::GetNameFile(const char *name)
 {
     String fullName;

@@ -4,6 +4,8 @@
 
 namespace GF
 {
+    void DelayMS(uint delay);
+
     String GetNameFile(const char *name);
 
     // Return the file's last modified time. File path relative from TVData

@@ -29,12 +29,3 @@ void GFU3D::OpenFileSelector(char *title, char *textOk, char *textCancel, const 
     window->BringToFront();
     TheFileSelector->SetFilters(filters, 0);
 }
-
-
-void GFU3D::DelayMS(uint delay)
-{
-    using namespace std::chrono;
-    using namespace std::this_thread;
-
-    sleep_until(system_clock::now() + milliseconds(delay));
-}
