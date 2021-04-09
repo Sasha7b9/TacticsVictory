@@ -27,8 +27,6 @@ using namespace Urho3D;
 #pragma warning(pop)
 
 #include "defines.h"
-
-#include "FileSystem/ConfigurationFile_.h"
+#include "globals.h"
 #include "Utils/Log_.h"
 
-#include "globals.h"
