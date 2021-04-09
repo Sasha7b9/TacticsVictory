@@ -2,9 +2,8 @@
 #include "stdafx.h"
 #include "GUI/Controls/Sliders/SliderInt_.h"
 #include "GUI/Menu/PageConfirmExit_.h"
-
-
-
+#include "GUI/Windows/Console_.h"
+#include "GUI/Windows/WindowVariables_.h"
 
 
 GUI::GUI(GUI **self) : Object(TheContext)

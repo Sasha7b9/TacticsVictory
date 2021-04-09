@@ -1,6 +1,7 @@
 // 2021/03/28 21:56:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "GUI/Controls/Label_.h"
+#include "GUI/Controls/Window_.h"
 
 
 struct ServerInfo;

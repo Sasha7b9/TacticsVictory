@@ -4,9 +4,14 @@
 class CameraT;
 class Client;
 class ConfigurationFile;
+class ConsoleT;
+class CursorT;
+class GUI;
+class Hint;
 class LogRAW;
 class ServerConnector;
 class Menus;
+class Mouse;
 class PageStart;
 class WindowVariables;
 

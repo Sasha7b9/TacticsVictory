@@ -7,6 +7,7 @@
 #include "GUI/Menu/PageOptions.h"
 #include "GUI/Menu/PagePlay.h"
 #include "GUI/Menu/PageStart.h"
+#include "Utils/GlobalFunctions_.h"
 
 
 #define CREATE_PAGE(name, type, moving)                                 \
