@@ -191,7 +191,7 @@ bool AcceptorTCP::Accept(Socket &socket)
 }
 
 
-void ThreadSocket(AcceptorTCP::Socket socket, void (*onReceive)(AcceptorTCP::Socket &, pchar, int))
+static void ThreadSocket(AcceptorTCP::Socket socket, void (*onReceive)(AcceptorTCP::Socket &, pchar, int))
 {
     while (socket.sock.is_open())
     {
