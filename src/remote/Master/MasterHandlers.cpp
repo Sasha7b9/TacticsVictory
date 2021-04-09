@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "FileSystem/ConfigurationFile_.h"
 #include "Network/Other/NetworkTypes_.h"
+#include "Network/Other/Server_.h"
 #include "Network/Other/SocketsTCP_.h"
 #include "Utils/StringUtils_.h"
 
@@ -24,14 +25,20 @@ static std::map<std::string, ServerInfo> livingrooms;   // Здесь хранится информ
 
 void Server::Prepare()
 {
-    map["close"] = HandlerClose;
-    map["get"] = HandlerGet;
-    map["ping"] = HandlerPing;
-    map["terminate"] = HandlerTerminate;
+    AppendHandler("close", HandlerClose);
+    AppendHandler("get", HandlerGet);
+    AppendHandler("ping", HandlerPing);
+    AppendHandler("terminate", HandlerTerminate);
 
     livingrooms["127.0.0.0"] = { "127.0.0.0", "master1", 10, 100 };
     livingrooms["127.0.0.1"] = { "127.0.0.1", "master2", 11, 100 };
     livingrooms["127.0.0.2"] = { "127.0.0.2", "master3", 12, 100 };
+}
+
+
+void Server::AppendHandler(pchar command, pFuncVV handler)
+{
+    map[command] = handler;
 }
 
 

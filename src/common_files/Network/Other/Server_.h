@@ -8,6 +8,8 @@ public:
 
     void Run();
 
+    void AppendHandler(pchar command, pFuncVV handler);
+
 private:
 
     void Prepare();
