@@ -18,7 +18,7 @@ static std::vector<std::string> *words = nullptr;       // Используется в обрабо
 
 
 std::map<std::string, pFuncVV> Server::handlers;
-std::map<std::string, ServerInfo> Server::clients;
+std::map<std::string, ServerInfo> Server::infos;
 
 
 void Server::Prepare()
@@ -88,9 +88,9 @@ static void HandlerGet()
         {
             std::string data;
 
-            auto room = Server::clients.begin();
+            auto room = Server::infos.begin();
 
-            while (room != Server::clients.end())
+            while (room != Server::infos.end())
             {
                 room->second.AppendInfo(room->first, data);
 

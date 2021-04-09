@@ -14,7 +14,7 @@ void Server::AppendHandler(pchar command, pFuncVV handler)
 
 void Server::AppendServerInfo(const ServerInfo &info)
 {
-    clients[info.address] = info;
+    infos[info.address] = info;
 }
 
 
@@ -36,6 +36,9 @@ void Server::Run()
 
             if (acceptor.Accept(socket))
             {
+                LOGWRITEF("peer = %s", socket.peer->to_string().c_str());
+                LOGWRITEF("socket = %s", socket.sock.address().to_string().c_str());
+
                 socket.Run(HandlerReceivedSocket);
             }
             else
@@ -44,5 +47,4 @@ void Server::Run()
             }
         }
     }
-
 }
