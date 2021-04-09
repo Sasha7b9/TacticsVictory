@@ -1,6 +1,7 @@
 // 2021/03/31 22:30:19 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Other/NetworkTypes_.h"
+#include "Utils/StringUtils_.h"
 
 
 static void HandlerClose();
