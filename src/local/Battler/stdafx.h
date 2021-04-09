@@ -95,7 +95,7 @@ using namespace Urho3D;
 #include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Scene/Terrain/Level_.h"
-#include "Utils/GlobalFunctionsU3D_.h"
+#include "Utils/GlobalFunctions_.h"
 #include "Utils/Log_.h"
 #include "Utils/OS/FunctionsOS_.h"
 #include "Utils/OS/UtilsOS_.h"

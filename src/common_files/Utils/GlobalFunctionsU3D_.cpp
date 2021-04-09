@@ -1,13 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Utils/GlobalFunctions_.h"
 #include "Utils/GlobalFunctionsU3D_.h"
-
-
-void GFU3D::SetWindowInCenterScreen(Window *window)
-{
-    window->SetPosition(TheGraphics->GetWidth() / 2 - window->GetWidth() / 2,
-        TheGraphics->GetHeight() / 2 - window->GetHeight() / 2);
-}
 
 
 void GFU3D::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
@@ -19,7 +13,7 @@ void GFU3D::OpenFileSelector(char *title, char *textOk, char *textCancel, const 
 
     Window *window = TheFileSelector->GetWindow();
     window->SetResizable(false);
-    SetWindowInCenterScreen(window);
+    GF::SetWindowInCenterScreen(window);
     window->SetVisible(false);
     window->SetModal(false);
 

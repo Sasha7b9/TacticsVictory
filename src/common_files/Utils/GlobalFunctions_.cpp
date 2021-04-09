@@ -109,3 +109,14 @@ bool GF::GetAddressPort(const Vector<String> &words, String &address, uint16 &po
 
     return true;
 }
+
+
+#ifdef GRAPHICS
+
+void GF::SetWindowInCenterScreen(Window *window)
+{
+    window->SetPosition(TheGraphics->GetWidth() / 2 - window->GetWidth() / 2,
+        TheGraphics->GetHeight() / 2 - window->GetHeight() / 2);
+}
+
+#endif

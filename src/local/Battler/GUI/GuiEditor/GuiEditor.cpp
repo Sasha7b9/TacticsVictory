@@ -13,6 +13,8 @@
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"
 #include "Scene/Terrain/Level_.h"
+#include "Utils/GlobalFunctions_.h"
+#include "Utils/GlobalFunctionsU3D_.h"
 
 
 GuiEditor::GuiEditor(Context* context) : Object(context)
@@ -242,7 +244,7 @@ void GuiEditor::CreateWindows()
     SubscribeToEvent(buttonCreateMap, E_RELEASED, URHO3D_HANDLER(GuiEditor, HandleTerrainCreateNewMap));
 
     windowNewMap->SetFixedSize(windowNewMap->GetSize());
-    GFU3D::SetWindowInCenterScreen(windowNewMap);
+    GF::SetWindowInCenterScreen(windowNewMap);
     TheUIRoot->AddChild(windowNewMap);
     windowNewMap->SetVisible(false);
 
@@ -280,7 +282,7 @@ void GuiEditor::CreateWindows()
 
     TheUIRoot->AddChild(windowConfirmExit);
     windowConfirmExit->SetVisible(false);
-    GFU3D::SetWindowInCenterScreen(windowConfirmExit);
+    GF::SetWindowInCenterScreen(windowConfirmExit);
 
     SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(GuiEditor, HandleMouseDown));
 }

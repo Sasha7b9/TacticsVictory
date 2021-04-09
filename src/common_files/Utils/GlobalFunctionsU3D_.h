@@ -4,6 +4,5 @@
 
 namespace GFU3D
 {
-    void SetWindowInCenterScreen(Window *window);
     void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters);
 }
