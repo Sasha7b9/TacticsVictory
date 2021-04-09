@@ -38,6 +38,8 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
 
     if (connection->is_connected())
     {
+        SetReadTimeOut(1000);
+
         LOGWRITEF("Connect to %s:%d success", host.c_str(), port);
     }
     else
@@ -47,6 +49,12 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
     }
 
     return connection->is_connected();
+}
+
+
+void ConnectorTCP::SetReadTimeOut(uint timeout)
+{
+    connection->read_timeout((std::chrono::milliseconds)timeout);
 }
 
 
