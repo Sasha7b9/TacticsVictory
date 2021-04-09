@@ -5,6 +5,7 @@ set(CMAKE_UNITY_BUILD ON)
 include_directories(.
                     ../../common_files
                     ../../ThirdParty/sockpp/include
+                    ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
@@ -29,7 +30,8 @@ file(GLOB SRC                             *.h *.cpp)
 file(GLOB FILESYSTEM    ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK_OTHER ../../common_files/Network/Other/Server_.*
                         ../../common_files/Network/Other/SocketsTCP_.*)
-file(GLOB UTILS         ../../common_files/Utils/Log_.*
+file(GLOB UTILS         ../../common_files/Utils/GlobalFunctions_.*
+                        ../../common_files/Utils/Log_.*
                         ../../common_files/Utils/LogRAW_.*
                         ../../common_files/Utils/StringUtils_.*
                         ../../common_files/Utils/UtilsOS_.*)

@@ -9,6 +9,12 @@
 #define _WINSOCKAPI_
 #include <windows.h>
 
+
+#include <Urho3D/Container/Str.h>
+
+using namespace Urho3D;
+
+
 #include <cstdarg>
 #include <locale>
 #include <map>

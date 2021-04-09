@@ -12,60 +12,13 @@ void GF::DelayMS(uint delay)
 }
 
 
-
-String GF::GetNameFile(const char *name)
-{
-    String fullName;
-
-    if (TheCache)
-    {
-        Vector<String> dirs = TheCache->GetResourceDirs();
-
-        for (String &dir : dirs)
-        {
-            fullName = dir + name;
-            if (TheFileSystem->FileExists(fullName))
-            {
-                break;
-            }
-            fullName = "";
-        }
-    }
-
-    if (fullName.Empty())
-    {
-        fullName = RESOURCES_DIR + String(name);
-        if (!TheFileSystem->FileExists(fullName))
-        {
-            fullName = "../out/" + fullName;
-            if (!TheFileSystem->FileExists(fullName))
-            {
-                fullName = "../" + fullName;
-                if (!TheFileSystem->FileExists(fullName))
-                {
-                    fullName = "";
-                }
-            }
-        }
-    }
-
-    return fullName;
-}
-
-
-unsigned GF::GetLastModifiedTime(char *name)
-{
-    String fullName = TheFileSystem->GetProgramDir();
-    fullName.Erase(fullName.Length() - 1);
-    fullName.Erase(fullName.FindLast('/'), 6);
-    fullName += String("/") + RESOURCES_DIR + "/" + name;
-    return TheFileSystem->GetLastModifiedTime(fullName);
-}
+#ifdef U3D
 
 
 String GF::IntToString(int value, uint length)
 {
     String str(value);
+
     while (str.Length() < length)
     {
         str.Insert(0, '0');
@@ -111,6 +64,56 @@ bool GF::GetAddressPort(const Vector<String> &words, String &address, uint16 &po
 }
 
 
+unsigned GF::GetLastModifiedTime(char *name)
+{
+    String fullName = TheFileSystem->GetProgramDir();
+    fullName.Erase(fullName.Length() - 1);
+    fullName.Erase(fullName.FindLast('/'), 6);
+    fullName += String("/") + RESOURCES_DIR + "/" + name;
+    return TheFileSystem->GetLastModifiedTime(fullName);
+}
+
+
+String GF::GetNameFile(const char *name)
+{
+    String fullName;
+
+    if (TheCache)
+    {
+        Vector<String> dirs = TheCache->GetResourceDirs();
+
+        for (String &dir : dirs)
+        {
+            fullName = dir + name;
+            if (TheFileSystem->FileExists(fullName))
+            {
+                break;
+            }
+            fullName = "";
+        }
+    }
+
+    if (fullName.Empty())
+    {
+        fullName = RESOURCES_DIR + String(name);
+        if (!TheFileSystem->FileExists(fullName))
+        {
+            fullName = "../out/" + fullName;
+            if (!TheFileSystem->FileExists(fullName))
+            {
+                fullName = "../" + fullName;
+                if (!TheFileSystem->FileExists(fullName))
+                {
+                    fullName = "";
+                }
+            }
+        }
+    }
+
+    return fullName;
+}
+
+
 #ifdef GRAPHICS
 
 void GF::SetWindowInCenterScreen(Window *window)
@@ -138,5 +141,7 @@ void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vec
     window->BringToFront();
     TheFileSelector->SetFilters(filters, 0);
 }
+
+#endif
 
 #endif

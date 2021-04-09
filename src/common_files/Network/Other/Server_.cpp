@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/Server_.h"
-//#include "Utils/GlobalFunctionsU3D_.h"
+#include "Utils/GlobalFunctions_.h"
 
 
 static std::vector<TaskMasterServer *> tasks;
@@ -67,7 +67,7 @@ static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP *conn_in,
     {
         conn_out->SetReadTimeOut(10000);
 
-//        GFU3D::DelayMS(100);
+        GF::DelayMS(100);
 
         if (conn_out->Connect(host, (uint16)(port + 1)))
         {

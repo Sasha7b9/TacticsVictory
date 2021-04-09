@@ -41,7 +41,8 @@ file(GLOB FILESYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
 file(GLOB NETWORK    ../../common_files/Network/Other/NetworkTypes_.*
                      ../../common_files/Network/Other/Server_.*
                      ../../common_files/Network/Other/SocketsTCP_.*)
-file(GLOB UTILS      ../../common_files/Utils/Log_.*
+file(GLOB UTILS      ../../common_files/Utils/GlobalFunctions_.*
+                     ../../common_files/Utils/Log_.*
                      ../../common_files/Utils/LogRAW_.*
                      ../../common_files/Utils/StringUtils_.*
                      ../../common_files/Utils/UtilsOS_.*)
