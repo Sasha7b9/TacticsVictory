@@ -2,6 +2,8 @@
 #pragma once
 
 class ConfigurationFile;
+class Server;
 
 
 extern ConfigurationFile TheConfig;
+extern Server            TheServer;

@@ -22,7 +22,7 @@ static std::vector<std::string> *words = nullptr;       // Используется в обрабо
 static std::map<std::string, ServerInfo> livingrooms;   // Здесь хранится информация о доступных ангарах
 
 
-void Prepare()
+void Server::Prepare()
 {
     map["close"] = HandlerClose;
     map["get"] = HandlerGet;

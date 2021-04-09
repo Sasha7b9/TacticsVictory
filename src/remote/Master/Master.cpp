@@ -1,6 +1,7 @@
 ﻿// Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "FileSystem/ConfigurationFile_.h"
+#include "Network/Other/Server_.h"
 #include "Network/Other/SocketsTCP_.h"
 
 
@@ -12,7 +13,6 @@
 
 static bool run = true;
 
-extern void Prepare();
 extern void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar data, int size);
 
 
@@ -29,30 +29,7 @@ int main(int, char *[])
         return -1;
     }
 
-    Prepare();
-
-    uint16 port = static_cast<uint16>(TheConfig.GetInt("port"));
-
-    AcceptorTCP acceptor;
-
-    if (acceptor.Bind(port))
-    {
-        LOGWRITE("Wait connections ...");
-
-        while (run)
-        {
-            AcceptorTCP::Socket socket;
-
-            if (acceptor.Accept(socket))
-            {
-                socket.Run(HandlerReceivedSocket);
-            }
-            else
-            {
-                LOGERROR("Error accept");
-            }
-        }
-    }
+    TheServer.Run();
 
     return 0;
 }
