@@ -2,6 +2,9 @@
 #pragma once
 
 
+struct ServerInfo;
+
+
 class Server
 {
 public:
@@ -9,6 +12,8 @@ public:
     void Run();
 
     void AppendHandler(pchar command, pFuncVV handler);
+
+    void AppendServerInfo(const ServerInfo &info);
 
 private:
 
