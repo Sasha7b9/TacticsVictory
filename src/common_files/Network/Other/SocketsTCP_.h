@@ -28,8 +28,6 @@ public:
 private:
 
     std::unique_ptr<sockpp::tcp_connector>  connection;
-
-    static std::pair<std::string, uint16> ParseAddress(pchar fullAddressIn);
 };
 
 

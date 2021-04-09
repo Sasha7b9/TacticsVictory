@@ -21,7 +21,16 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
         connection = std::make_unique<sockpp::tcp_connector>();
     }
 
-    connection->connect({ host, port });
+    try
+    {
+        connection->connect({ sockpp::inet_address().resolve_name(host), port });
+    }
+    catch(std::runtime_error &error)
+    {
+        LOGERRORF("%s:%d %s", host.c_str(), port, error.what());
+
+        return false;
+    }
 
     if (connection->is_connected())
     {
@@ -214,29 +223,4 @@ void AcceptorTCP::Socket::Transmit(const std::string &data)
     sock.write(&size, sizeof(int));
 
     sock.write(data);
-}
- 
-
-std::pair<std::string, uint16> ConnectorTCP::ParseAddress(pchar fullAddressIn)
-{
-    std::pair<std::string, uint16> result;
-
-    if (fullAddressIn == nullptr || *fullAddressIn == '\0')
-    {
-        result.first = "";
-        result.second = 0;
-        return result;
-    }
-
-    pchar pointer = fullAddressIn;
-
-    while (*pointer != ':')
-    {
-        result.first.push_back(*pointer);
-        ++pointer;
-    }
-
-    result.second = static_cast<uint16>(atoi(pointer + 1));
-
-    return result;
 }

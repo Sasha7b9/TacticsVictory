@@ -10,9 +10,8 @@ class Menus;
 class PageStart;
 class WindowVariables;
 
-extern ConfigurationFile TheConfig;
 extern ConfigurationFile TheSettings;
-extern ServerT      TheMasterServer;
+extern ServerT           TheMasterServer;
 
 extern CameraT         *TheCamera;
 extern Client          *TheClient;

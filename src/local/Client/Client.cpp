@@ -27,8 +27,6 @@ void Client::Setup()
 
     LOGWRITE("Start Client");
 
-    TheConfig.Load("Client.conf");
-
     TheClient = this;
 
     GetSubsystems();

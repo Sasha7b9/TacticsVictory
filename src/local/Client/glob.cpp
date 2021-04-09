@@ -17,7 +17,6 @@ Time          *TheTime         = nullptr;
 UI            *TheUI           = nullptr;
 UIElement     *TheUIRoot       = nullptr;
 
-ConfigurationFile TheConfig;
 ConfigurationFile TheSettings;
 ServerT           TheMasterServer;
 

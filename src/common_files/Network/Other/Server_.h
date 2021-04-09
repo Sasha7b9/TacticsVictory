@@ -21,7 +21,11 @@ class ServerT
 {
 public:
 
-    void SetAddress(pchar _host, uint16 _port) { host = _host; port = _port; };
+    void SetAddress(pchar _host, uint16 _port)
+    {
+        host = _host;
+        port = _port;
+    };
 
     void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping);
 
