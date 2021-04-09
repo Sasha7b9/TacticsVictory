@@ -4,7 +4,6 @@
 #include "Scene/Terrain/Level_.h"
 #include "Scene/Terrain/SegmentTerrain_.h"
 #include "Utils/GlobalFunctions_.h"
-#include "Utils/GlobalFunctionsU3D_.h"
 #include "Utils/StringUtils_.h"
 
 

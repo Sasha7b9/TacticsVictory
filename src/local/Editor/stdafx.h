@@ -77,7 +77,6 @@ using namespace Urho3D;
 #include "Scene/Cameras/Camera.h"
 #include "Network/Other/Server_.h"
 #include "Utils/GlobalFunctions_.h"
-#include "Utils/GlobalFunctionsU3D_.h"
 #include "Utils/Log_.h"
 #include "Utils/StringUtils_.h"
 #include "glob_game.h"

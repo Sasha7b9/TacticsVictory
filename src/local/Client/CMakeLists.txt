@@ -69,7 +69,6 @@ file(GLOB NETWORK                     ../../common_files/Network/Other/NetworkTy
 file(GLOB SCENE                                          Scene/*.*)
 file(GLOB SCENE_CAMERAS                                  Scene/Cameras/*.*)
 file(GLOB UTILS                       ../../common_files/Utils/GlobalFunctions_.*
-                                      ../../common_files/Utils/GlobalFunctionsU3D_.*
                                       ../../common_files/Utils/Log_.*
                                       ../../common_files/Utils/LogRAW_.*
                                       ../../common_files/Utils/StringUtils_.*
