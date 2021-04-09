@@ -11,6 +11,8 @@ public:
 
     void Run();
 
+    void Stop() { run = false; }
+
     void AppendHandler(pchar command, pFuncVV handler);
 
     void AppendServerInfo(const ServerInfo &info);
@@ -18,4 +20,6 @@ public:
 private:
 
     void Prepare();
+
+    bool run = true;
 };

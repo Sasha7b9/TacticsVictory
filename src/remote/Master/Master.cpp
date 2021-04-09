@@ -11,9 +11,7 @@
 */
 
 
-static bool run = true;
-
-extern void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar data, int size);
+//extern void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar data, int size);
 
 
 int main(int, char *[])
@@ -32,11 +30,4 @@ int main(int, char *[])
     TheServer.Run();
 
     return 0;
-}
-
-
-
-void HandlerTerminate()
-{
-    run = false;
 }

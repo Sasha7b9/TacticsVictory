@@ -7,11 +7,11 @@
 #include "Utils/StringUtils_.h"
 
 
-extern void HandlerTerminate();
-
 static void HandlerClose();
 static void HandlerGet();
 static void HandlerPing();
+extern void HandlerTerminate();
+
 
 typedef void (*Handler)();
 
@@ -136,4 +136,10 @@ static void HandlerGet()
 static void HandlerPing()
 {
     sock->Transmit(std::string("ping"));
+}
+
+
+void HandlerTerminate()
+{
+    TheServer.Stop();
 }
