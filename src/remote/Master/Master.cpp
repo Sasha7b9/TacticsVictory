@@ -1,7 +1,7 @@
 ﻿// Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "FileSystem/ConfigurationFile_.h"
-#include "Master.h"
+#include "Network/Other/SocketsTCP_.h"
 
 
 /*
@@ -13,7 +13,7 @@
 static bool run = true;
 
 extern void Prepare();
-void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar data, int size);
+extern void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar data, int size);
 
 
 int main(int, char *[])
