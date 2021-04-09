@@ -13,6 +13,24 @@
 bool Master::run = true;
 
 
+int main(int, char *[])
+{
+    setlocale(LC_ALL, "Russian");
+
+    LogRAW::Create("Master.log", false);
+
+    LOGWRITE("Start Master");
+
+    if (TheConfig.Load("Master.conf"))
+    {
+        return Master().Run();
+    }
+
+    return -1;
+}
+
+
+
 int Master::Run()
 {
     Prepare();
