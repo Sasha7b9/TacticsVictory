@@ -32,11 +32,11 @@ add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum'
 add_compile_options(/wd28251)   # Inconsistent annotation for function: this instance has an error
 
 
-file(GLOB SRC                         ../../common_files/*.*
+file(GLOB SRC                         ../../common_files/defines_.*
                                                          *.h *.cpp)
 file(GLOB FILE_SYSTEM                 ../../common_files/FileSystem/ConfigurationFile_.*
                                       ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB GRAPHICS_2D                 ../../common_files/Graphics/2D/*.*)
+file(GLOB GRAPHICS_2D                 ../../common_files/Graphics/2D/Image_.*)
 file(GLOB GUI                         ../../common_files/GUI/Cursor_.*
                                                          GUI/*.*)
 file(GLOB GUI_CONTROLS                ../../common_files/GUI/Controls/Label_.*
@@ -103,7 +103,8 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D}
+add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM}
+                ${GRAPHICS_2D}
                 ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS} ${GUI_CONTROLS_SLIDERS}
                 ${GUI_LOGIC}
                 ${GUI_MENU} ${GUI_MENU_MENUSTART} ${GUI_MENU_MENUSTART_MENUPLAY} ${GUI_WINDOWS}
