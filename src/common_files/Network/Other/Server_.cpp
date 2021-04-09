@@ -1,8 +1,21 @@
 // 2021/04/09 14:45:08 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "FileSystem/ConfigurationFile_.h"
+#include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/Server_.h"
 #include "Network/Other/SocketsTCP_.h"
+
+
+void Server::AppendHandler(pchar command, pFuncVV handler)
+{
+    map[command] = handler;
+}
+
+
+void Server::AppendServerInfo(const ServerInfo &info)
+{
+    livingrooms[info.address] = info;
+}
 
 
 void Server::Run()

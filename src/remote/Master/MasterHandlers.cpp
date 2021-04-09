@@ -13,14 +13,12 @@ static void HandlerPing();
 extern void HandlerTerminate();
 
 
-typedef void (*Handler)();
-
-static std::map<std::string, Handler> map;              // Здесь хранятся обработчики запросов по первому слову
-
 static AcceptorTCP::Socket *sock = nullptr;             // Используется в обработчиках
 static std::vector<std::string> *words = nullptr;       // Используется в обработчиках
 
-static std::map<std::string, ServerInfo> livingrooms;   // Здесь хранится информация о доступных ангарах
+
+std::map<std::string, pFuncVV> Server::map;
+std::map<std::string, ServerInfo> Server::livingrooms;
 
 
 void Server::Prepare()
@@ -36,19 +34,7 @@ void Server::Prepare()
 }
 
 
-void Server::AppendHandler(pchar command, pFuncVV handler)
-{
-    map[command] = handler;
-}
-
-
-void Server::AppendServerInfo(const ServerInfo &info)
-{
-    livingrooms[info.address] = info;
-}
-
-
-void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, int number)
+void Server::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, int number)
 {
     sock = &socket;
 
@@ -102,9 +88,9 @@ static void HandlerGet()
         {
             std::string data;
 
-            auto room = livingrooms.begin();
+            auto room = Server::livingrooms.begin();
 
-            while (room != livingrooms.end())
+            while (room != Server::livingrooms.end())
             {
                 room->second.AppendInfo(room->first, data);
 

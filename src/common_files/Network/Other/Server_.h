@@ -1,5 +1,6 @@
 // 2021/04/09 14:45:04 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Network/Other/SocketsTCP_.h"
 
 
 struct ServerInfo;
@@ -17,9 +18,13 @@ public:
 
     void AppendServerInfo(const ServerInfo &info);
 
-private:
-
     void Prepare();
 
+    static void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, int number);
+
     bool run = true;
+
+    static std::map<std::string, pFuncVV> map;    // Здесь хранятся обработчики запросов по первому слову
+
+    static std::map<std::string, ServerInfo> livingrooms;   // Здесь хранится информация о подключенных клиентах
 };
