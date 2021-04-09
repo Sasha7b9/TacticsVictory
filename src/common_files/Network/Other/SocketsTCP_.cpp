@@ -21,9 +21,11 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
         connection = std::make_unique<sockpp::tcp_connector>();
     }
 
+    volatile in_addr_t addr = 0;
+
     try
     {
-        connection->connect({ sockpp::inet_address().resolve_name(host), port });
+        addr = sockpp::inet_address().resolve_name(host);
     }
     catch(std::runtime_error &error)
     {
@@ -31,6 +33,8 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
 
         return false;
     }
+
+    connection->connect({ host, port });
 
     if (connection->is_connected())
     {
