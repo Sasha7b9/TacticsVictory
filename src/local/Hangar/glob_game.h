@@ -2,6 +2,7 @@
 #pragma once
 
 
+class ConfigurationFile;
 class Hangar;
 class ServerConnector;
 

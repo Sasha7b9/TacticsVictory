@@ -29,8 +29,5 @@ using namespace Urho3D;
 
 #include "defines.h"
 #include "glob_engine.h"
-
-#include "FileSystem/ConfigurationFile_.h"
-#include "Utils/Log_.h"
-
 #include "glob_game.h"
+#include "Utils/Log_.h"
