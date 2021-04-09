@@ -97,9 +97,8 @@ file(GLOB UTILS                                  ../../common_files/Utils/Global
                                                  ../../common_files/Utils/Log_.*
                                                  ../../common_files/Utils/LogU3D_.*
                                                  ../../common_files/Utils/StringUtils_.*
+                                                 ../../common_files/Utils/UtilsOS_.*
                                                                     Utils/*.*)
-file(GLOB UTILS_OS                               ../../common_files/Utils/OS/FunctionsOS_.*
-                                                 ../../common_files/Utils/OS/UtilsOS_.*)
 
 source_group(src                                        FILES ${SRC})
 source_group(Audio                                      FILES ${AUDIO})
@@ -142,7 +141,6 @@ source_group(Scene\\Objects\\Weapons                    FILES ${SCENE_OBJECTS_WE
 source_group(Scene\\Primitives                          FILES ${SCENE_PRIMITIVES})
 source_group(Scene\\Terrain                             FILES ${SCENE_TERRAIN})
 source_group(Utils                                      FILES ${UTILS})
-source_group(Utils\\OS                                  FILES ${UTILS_OS})
 
 add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${FILESYSTEM} ${GAME} ${GAME_LOGIC} ${GAME_PATH}
     ${GRAPHICS} ${GRAPHICS_2D} ${GRAPHICS_3D}
@@ -155,7 +153,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${FILESYSTEM} 
     ${SCENE_OBJECTS_UNITS} ${SCENE_OBJECTS_UNITS_ACCESSORIES} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE}
     ${SCENE_OBJECTS_UNITS_AIR} ${SCENE_OBJECTS_UNITS_AIR_AIRPLANE}
     ${SCENE_OBJECTS_UNITS_GROUND} ${SCENE_OBJECTS_UNITS_GROUND_TANK}
-    ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS} ${UTILS_OS})
+    ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS})
 
 include(../../RuntimeLibrary.cmake)
 

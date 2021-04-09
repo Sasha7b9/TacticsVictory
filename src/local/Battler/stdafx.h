@@ -97,5 +97,4 @@ using namespace Urho3D;
 #include "Scene/Terrain/Level_.h"
 #include "Utils/GlobalFunctions_.h"
 #include "Utils/Log_.h"
-#include "Utils/OS/FunctionsOS_.h"
-#include "Utils/OS/UtilsOS_.h"
+#include "Utils/UtilsOS_.h"

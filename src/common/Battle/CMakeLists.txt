@@ -78,9 +78,8 @@ file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrai
 file(GLOB UTILS                                  ../../common_files/Utils/GlobalFunctions_.*
                                                  ../../common_files/Utils/Log_.*
                                                  ../../common_files/Utils/LogU3D_.*
-                                                 ../../common_files/Utils/StringUtils_.*)
-file(GLOB UTILS_OS                               ../../common_files/Utils/OS/FunctionsOS_.*
-                                                 ../../common_files/Utils/OS/UtilsOS_.*)
+                                                 ../../common_files/Utils/StringUtils_.*
+                                                 ../../common_files/Utils/UtilsOS_.*)
 
 file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
 file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
@@ -110,7 +109,6 @@ source_group(Scene\\Objects\\Weapons                    FILES ${SCENE_OBJECTS_WE
 source_group(Scene\\Primitives                          FILES ${SCENE_PRIMITIVES})
 source_group(Scene\\Terrain                             FILES ${SCENE_TERRAIN})
 source_group(Utils                                      FILES ${UTILS})
-source_group(Utils\\OS                                  FILES ${UTILS_OS})
 
 source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
 source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
@@ -127,7 +125,7 @@ add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${FILE_SYSTEM} ${GAME_LOGIC} ${GA
     ${SCENE_OBJECTS_UNITS_ACCESSORIES} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE}
     ${SCENE_OBJECTS_UNITS_AIR} ${SCENE_OBJECTS_UNITS_AIR_AIRPLANE}
     ${SCENE_OBJECTS_UNITS_GROUND} ${SCENE_OBJECTS_UNITS_GROUND_TANK}
-    ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS} ${UTILS_OS}
+    ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS}
     ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 include(../../RuntimeLibrary.cmake)

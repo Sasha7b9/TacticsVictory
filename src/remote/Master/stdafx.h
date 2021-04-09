@@ -41,7 +41,6 @@ using namespace Urho3D;
 
 #include "Utils/Log_.h"
 #include "Utils/StringUtils_.h"
-#include "Utils/OS/FunctionsOS_.h"
-#include "Utils/OS/UtilsOS_.h"
+#include "Utils/UtilsOS_.h"
 
 #include "globals.h"

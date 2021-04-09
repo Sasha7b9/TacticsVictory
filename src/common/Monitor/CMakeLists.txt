@@ -43,9 +43,8 @@ file(GLOB NETWORK_OTHER ../../common_files/Network/Other/MasterServer_.*
                         ../../common_files/Network/Other/SocketsTCP_.*)
 file(GLOB UTILS         ../../common_files/Utils/Log_.*
                         ../../common_files/Utils/LogRAW_.*
-                        ../../common_files/Utils/StringUtils_.*)
-file(GLOB UTILS_OS      ../../common_files/Utils/OS/FunctionsOS_.*
-                        ../../common_files/Utils/OS/UtilsOS_.*)
+                        ../../common_files/Utils/StringUtils_.*
+                        ../../common_files/Utils/UtilsOS_.*)
 
 file(GLOB SOCKPP                                ThirdParty/sockpp.cpp)
 file(GLOB SOCKPP_SOURCES                  ../../ThirdParty/sockpp/src/*.cpp)
@@ -55,7 +54,6 @@ source_group(src            FILES ${SRC})
 source_group(FileSystem     FILES ${FILESYSTEM})
 source_group(Network\\Other FILES ${NETWORK_OTHER})
 source_group(Utils          FILES ${UTILS})
-source_group(Utils\\OS      FILES ${UTILS_OS})
 
 source_group(ThirdParty\\sockpp                FILES ${SOCKPP})
 source_group(ThirdParty\\sockpp\\sources       FILES ${SOCKPP_SOURCES})
@@ -63,7 +61,7 @@ source_group(ThirdParty\\sockpp\\include       FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${FILESYSTEM} ${NETWORK_OTHER} ${UTILS} ${UTILS_OS}
+add_executable( ${PROJECT_NAME} ${SRC} ${FILESYSTEM} ${NETWORK_OTHER} ${UTILS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 if(WIN32)
