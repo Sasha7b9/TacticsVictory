@@ -42,7 +42,6 @@ public:
     {
         std::unique_ptr<sockpp::inet_address>  peer;            // Здесь хранится адрес подключённого клиента
         sockpp::tcp_socket sock;
-        void Run(void(*onReceive)(AcceptorTCP::Socket &socket, pchar data, int numBytes));
         void Transmit(pchar string);
         void Transmit(const std::string &data);
     };

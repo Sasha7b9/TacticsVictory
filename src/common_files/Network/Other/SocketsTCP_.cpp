@@ -191,34 +191,6 @@ bool AcceptorTCP::Accept(Socket &socket)
 }
 
 
-static void ThreadSocket(AcceptorTCP::Socket socket, void (*onReceive)(AcceptorTCP::Socket &, pchar, int))
-{
-    while (socket.sock.is_open())
-    {
-        static const int MAX_RECEIVED = 512;
-
-        char received[MAX_RECEIVED];
-
-        ssize_t n = socket.sock.read(received, MAX_RECEIVED);
-
-        if (n <= 0)
-        {
-            LOGWRITEF("Close connection %s", socket.peer->to_string().c_str());
-            break;
-        }
-
-        onReceive(socket, received, static_cast<int>(n));
-    }
-}
-
-
-void AcceptorTCP::Socket::Run(void(*onReceive)(AcceptorTCP::Socket &socket, pchar data, int numBytes))
-{
-    std::thread thread(ThreadSocket, std::move(*this), onReceive);
-    thread.detach();
-}
-
-
 void AcceptorTCP::Socket::Transmit(pchar data)
 {
     int size = SU::Length(data);
