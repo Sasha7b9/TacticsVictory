@@ -58,6 +58,12 @@ void ServerT::Connect()
 }
 
 
+std::string ServerT::GetAnswer()
+{
+    return connOUT.Receive();
+}
+
+
 static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP *conn_in,
     pchar host, uint16 port, std::mutex *mutex, uint8 *state)
 {
@@ -65,14 +71,13 @@ static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP *conn_in,
 
     if (conn_out->Connect(host, port))
     {
-        conn_out->SetReadTimeOut(10000);
-
-        GF::DelayMS(100);
-
-        if (conn_out->Connect(host, (uint16)(port + 1)))
-        {
+        std::string id = conn_out->Receive();           // После подключения получем id, который передадим серверу для
+                                                        // идентификации conn_in
+        if (conn_in->Connect(host, (uint16)(port + 1))) // Следующий по порядку номер порта будет использоваться
+        {                                               // для приёма ответных сообщений
+            conn_in->Transmit(id);                      // После подключения передаём полученный id, чтобы сервер мог
+                                                        // идентифицровать входящий порт
             *state = ServerT::State::EventConnection;
-            conn_in->SetReadTimeOut(10000);
         }
         else
         {
@@ -96,7 +101,7 @@ std::string ServerT::GetAnswer(pchar key)
 
     connOUT.Transmit(key);
 
-    std::string result = connOUT.ReceiveWait();
+    std::string result = connOUT.Receive();
 
     mutex.unlock();
 
@@ -107,12 +112,6 @@ std::string ServerT::GetAnswer(pchar key)
 void ServerT::SendString(pchar string)
 {
     connOUT.Transmit(string);
-}
-
-
-std::string ServerT::GetAnswer()
-{
-    return connOUT.Receive();
 }
 
 

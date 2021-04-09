@@ -53,12 +53,6 @@ void ConnectorTCP::Disconnect()
 }
 
 
-void ConnectorTCP::SetReadTimeOut(uint timeOutMS)
-{
-    connection->read_timeout(std::chrono::milliseconds(timeOutMS));
-}
-
-
 void ConnectorTCP::Transmit(pchar data)
 {
     int size = SU::Length(data);
@@ -133,16 +127,6 @@ std::string ConnectorTCP::Receive()
         LOGWARNINGF("Not received a file from address %s, peer %s", connection->address().to_string().c_str(),
             connection->peer_address().to_string().c_str());
     }
-
-    return result;
-}
-
-
-std::string ConnectorTCP::ReceiveWait()
-{
-    std::string result;
-
-    Receive(result);
 
     return result;
 }

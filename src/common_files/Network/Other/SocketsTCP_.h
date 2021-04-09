@@ -17,8 +17,6 @@ public:
 
     bool IsConnected() const;
 
-    void SetReadTimeOut(uint timeOutMS);
-
     void Transmit(pchar data);
 
     void Transmit(const std::string &data);
@@ -26,9 +24,6 @@ public:
     void Receive(std::string &data);
 
     std::string Receive();
-
-    // ќжидать данные, пока не будут получены
-    std::string ReceiveWait();
 
 private:
 
