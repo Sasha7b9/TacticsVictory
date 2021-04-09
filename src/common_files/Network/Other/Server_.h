@@ -22,9 +22,9 @@ public:
 
     static void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, int number);
 
-    static std::map<std::string, pFuncVV> map;    // Здесь хранятся обработчики запросов по первому слову
+    static std::map<std::string, pFuncVV> handlers;    // Здесь хранятся обработчики запросов по первому слову
 
-    static std::map<std::string, ServerInfo> livingrooms;   // Здесь хранится информация о подключенных клиентах
+    static std::map<std::string, ServerInfo> clients;   // Здесь хранится информация о подключенных клиентах
 
 private:
 

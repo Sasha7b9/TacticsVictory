@@ -8,13 +8,13 @@
 
 void Server::AppendHandler(pchar command, pFuncVV handler)
 {
-    map[command] = handler;
+    handlers[command] = handler;
 }
 
 
 void Server::AppendServerInfo(const ServerInfo &info)
 {
-    livingrooms[info.address] = info;
+    clients[info.address] = info;
 }
 
 

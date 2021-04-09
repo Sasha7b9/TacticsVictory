@@ -17,8 +17,8 @@ static AcceptorTCP::Socket *sock = nullptr;             // Используется в обрабо
 static std::vector<std::string> *words = nullptr;       // Используется в обработчиках
 
 
-std::map<std::string, pFuncVV> Server::map;
-std::map<std::string, ServerInfo> Server::livingrooms;
+std::map<std::string, pFuncVV> Server::handlers;
+std::map<std::string, ServerInfo> Server::clients;
 
 
 void Server::Prepare()
@@ -60,9 +60,9 @@ void Server::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, i
 
     words = &_words;
 
-    auto iter = map.find(_words[0]);
+    auto iter = handlers.find(_words[0]);
 
-    if (iter != map.end())
+    if (iter != handlers.end())
     {
         iter->second();
     }
@@ -88,9 +88,9 @@ static void HandlerGet()
         {
             std::string data;
 
-            auto room = Server::livingrooms.begin();
+            auto room = Server::clients.begin();
 
-            while (room != Server::livingrooms.end())
+            while (room != Server::clients.end())
             {
                 room->second.AppendInfo(room->first, data);
 
