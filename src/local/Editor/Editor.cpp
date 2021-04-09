@@ -1,7 +1,13 @@
 ﻿// 2021/04/02 17:53:03 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Editor.h"
+#include "FileSystem/ConfigurationFile_.h"
+#include "Graphics/2D/Image_.h"
+#include "Graphics/Renderer_.h"
+#include "GUI/Cursor_.h"
 #include "GUI/Menu/Menu.h"
+#include "Input/Mouse_.h"
+#include "Scene/Cameras/Camera.h"
 
 
 #pragma warning(push)

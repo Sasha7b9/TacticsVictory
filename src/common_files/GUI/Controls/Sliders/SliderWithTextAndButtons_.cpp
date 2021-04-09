@@ -1,8 +1,10 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "FileSystem/ConfigurationFile_.h"
 #include "GUI/Cursor_.h"
 #include "GUI/GUIEvents_.h"
 #include "GUI/Controls/Hint_.h"
+#include "GUI/Controls/Label_.h"
 #include "GUI/Controls/Sliders/SliderInt_.h"
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 

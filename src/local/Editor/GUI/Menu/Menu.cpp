@@ -3,6 +3,7 @@
 #include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Menu/Menu.h"
 #include "GUI/Menu/PageStart.h"
+#include "Utils/GlobalFunctions_.h"
 
 
 #define CREATE_PAGE(name, type, moving)                                 \

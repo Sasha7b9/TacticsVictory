@@ -4,10 +4,16 @@
 class CameraT;
 class Editor;
 class ConfigurationFile;
+class ConsoleT;
+class CursorT;
+class GUI;
+class Hint;
 class LogRAW;
-class ServerConnector;
-class PageStart;
 class Menus;
+class Mouse;
+class PageStart;
+class ServerConnector;
+class WindowT;
 class WindowVariables;
 
 extern ConfigurationFile TheConfig;

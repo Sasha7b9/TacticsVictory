@@ -3,12 +3,15 @@
 #include "GUI/GUI.h"
 #include "GUI/Controls/DropDownListWithTextAndButton_.h"
 #include "GUI/Controls/GovernorFloat_.h"
+#include "GUI/Controls/Label_.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
 #include "GUI/Controls/Buttons/ButtonToggled_.h"
 #include "GUI/Controls/Sliders/Slider_.h"
 #include "GUI/Controls/Sliders/SliderInt_.h"
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 #include "GUI/Menu/PageConfirmExit_.h"
+#include "GUI/Windows/Console_.h"
+#include "GUI/Windows/WindowVariables_.h"
 #include "Scene/Cameras/Camera.h"
 
 
