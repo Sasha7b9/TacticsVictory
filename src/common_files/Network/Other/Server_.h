@@ -4,7 +4,7 @@
 
 
 /*
-*   Класс ServerT должны использовать все приложения, которым нужен доступ к мастер-серверу
+*   Класс ServerConnector должны использовать все приложения, которым нужен доступ к мастер-серверу
 */
 
 
@@ -17,7 +17,7 @@ struct TaskMasterServer
 };
 
 
-class ServerT
+class ServerConnector
 {
 public:
 

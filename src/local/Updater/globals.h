@@ -2,4 +2,4 @@
 #pragma once
 
 
-extern ServerT TheMasterServer;
+extern ServerConnector TheMasterServer;

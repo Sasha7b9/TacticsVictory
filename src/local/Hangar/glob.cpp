@@ -5,6 +5,6 @@
 Context *TheContext = nullptr;
 
 ConfigurationFile TheConfig;
-ServerT           TheMasterServer;
+ServerConnector           TheMasterServer;
 
 Hangar            *TheHangar = nullptr;

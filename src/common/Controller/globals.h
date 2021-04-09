@@ -3,4 +3,4 @@
 
 
 extern ConfigurationFile  TheConfig;
-extern ServerT       TheMasterServer;
+extern ServerConnector       TheMasterServer;

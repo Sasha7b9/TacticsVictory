@@ -3,4 +3,4 @@
 
 
 ConfigurationFile TheSettings;
-ServerT           TheMasterServer;
+ServerConnector           TheMasterServer;

@@ -8,7 +8,7 @@
 static std::vector<TaskMasterServer *> tasks;
 
 
-void ServerT::Destroy()
+void ServerConnector::Destroy()
 {
     destroy = true;
 
@@ -20,14 +20,14 @@ void ServerT::Destroy()
 }
 
 
-bool ServerT::IsConnected()
+bool ServerConnector::IsConnected()
 {
     return (state == State::InConnection ||
         state == State::WaitPing);
 }
 
 
-void ServerT::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping)
+void ServerConnector::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping)
 {
     funcFailConnection = fail;
     funcConnection = connection;
@@ -36,7 +36,7 @@ void ServerT::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnecti
 }
 
 
-void ServerT::Connect()
+void ServerConnector::Connect()
 {
     if (!funcFailConnection || !funcConnection || !funcDisconnection || !funcPing)
     {
@@ -58,7 +58,7 @@ void ServerT::Connect()
 }
 
 
-std::string ServerT::GetAnswer()
+std::string ServerConnector::GetAnswer()
 {
     return connOUT.Receive();
 }
@@ -83,25 +83,25 @@ static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP *conn_in,
         {                                               // для приёма ответных сообщений
             conn_in->Transmit(id);                      // После подключения передаём полученный id, чтобы сервер мог
                                                         // идентифицровать входящий порт
-            *state = ServerT::State::EventConnection;
+            *state = ServerConnector::State::EventConnection;
         }
         else
         {
-            *state = ServerT::State::Idle;
+            *state = ServerConnector::State::Idle;
             conn_out->Release();
             conn_in->Release();
         }
     }
     else
     {
-        *state = ServerT::State::EventFailConnection;
+        *state = ServerConnector::State::EventFailConnection;
     }
 
     mutex->unlock();
 }
 
 
-std::string ServerT::GetAnswer(pchar key)
+std::string ServerConnector::GetAnswer(pchar key)
 {
     mutex.lock();
 
@@ -115,7 +115,7 @@ std::string ServerT::GetAnswer(pchar key)
 }
 
 
-void ServerT::SendString(pchar string)
+void ServerConnector::SendString(pchar string)
 {
     connOUT.Transmit(string);
 }
@@ -131,20 +131,20 @@ static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, ui
 
     if (result == MSM_PING)
     {
-        *state = ServerT::State::GetPing;
+        *state = ServerConnector::State::GetPing;
         auto end = system_clock::now();
         *ping = (int)duration_cast<milliseconds>(end - start).count();
     }
     else
     {
-        *state = ServerT::State::EventDisconnect;
+        *state = ServerConnector::State::EventDisconnect;
     }
 
     mutex->unlock();
 }
 
 
-void ServerT::Update()
+void ServerConnector::Update()
 {
     static int ping = 999;
 
@@ -222,7 +222,7 @@ void ServerT::Update()
 }
 
 
-void ServerT::ExecuteTasks(int64 now)
+void ServerConnector::ExecuteTasks(int64 now)
 {
     for each (TaskMasterServer * task in tasks)
     {
@@ -240,7 +240,7 @@ void ServerT::ExecuteTasks(int64 now)
 }
 
 
-void ServerT::SetTask(TaskMasterServer *task)
+void ServerConnector::SetTask(TaskMasterServer *task)
 {
     tasks.push_back(task);
 }

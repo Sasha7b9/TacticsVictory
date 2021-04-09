@@ -2,4 +2,4 @@
 #include "stdafx.h"
 
 
-ServerT TheMasterServer;
+ServerConnector TheMasterServer;

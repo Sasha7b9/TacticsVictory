@@ -19,7 +19,7 @@ UIElement     *TheUIRoot       = nullptr;
 
 ConfigurationFile TheConfig;
 ConfigurationFile TheSettings;
-ServerT           TheMasterServer;
+ServerConnector           TheMasterServer;
 
 CameraT         *TheCamera     = nullptr;
 Editor          *TheClient     = nullptr;
