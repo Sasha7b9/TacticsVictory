@@ -7,7 +7,6 @@ include_directories(.
                     ../../ThirdParty/libevent/compat
                     ../../ThirdParty/libevent/include
                     ../../ThirdParty/libevent/build/include
-                    ../../ThirdParty/sockpp/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
@@ -81,10 +80,6 @@ file(GLOB LIBEVENT_SOURCES ../../ThirdParty/libevent/buffer.c
                            ../../ThirdParty/libevent/wepoll.c
                            ../../ThirdParty/libevent/win32select.c)
 
-file(GLOB SOCKPP                 ThirdParty/sockpp.cpp)
-file(GLOB SOCKPP_SOURCES   ../../ThirdParty/sockpp/src/*.cpp)
-file(GLOB SOCKPP_INCLUDE   ../../ThirdParty/sockpp/include/sockpp/*.h)
-
 source_group(src        FILES ${SRC})
 source_group(FileSystem FILES ${FILE_SYSTEM})
 source_group(Network    FILES ${NETWORK})
@@ -94,16 +89,12 @@ source_group(ThirdParty\\libevent          FILES ${LIBEVENT})
 source_group(ThirdParty\\libevent\\include FILES ${LIBEVENT_INCLUDE})
 source_group(ThirdParty\\libevent\\sources FILES ${LIBEVENT_SOURCES})
 
-source_group(ThirdParty\\sockpp            FILES ${SOCKPP})
-source_group(ThirdParty\\sockpp\\sources   FILES ${SOCKPP_SOURCES})
-source_group(ThirdParty\\sockpp\\include   FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${LIBEVENT_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties(${SOCKPP_SOURCES}   PROPERTIES HEADER_FILE_ONLY TRUE)
 
 add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
-               ${LIBEVENT} ${LIBEVENT_INCLUDE} ${LIBEVENT_SOURCES}
-               ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+               ${LIBEVENT} ${LIBEVENT_INCLUDE} ${LIBEVENT_SOURCES})
 
 
 set_target_properties(${PROJECT_NAME}      PROPERTIES UNITY_BUILD_MODE GROUP)
