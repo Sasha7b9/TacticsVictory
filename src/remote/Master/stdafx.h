@@ -11,6 +11,7 @@
 using namespace Urho3D;
 
 #include <cstdarg>
+#include <iostream>
 #include <map>
 #include <mutex>
 #include <sstream>
@@ -22,9 +23,6 @@ using namespace Urho3D;
 #include <rapidjson/document.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
-
-#include <sockpp/tcp_acceptor.h>
-#include <sockpp/tcp_connector.h>
 
 #include <event2/bufferevent.h>
 #include <event2/buffer.h>
