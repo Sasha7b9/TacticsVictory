@@ -75,6 +75,10 @@ static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP * /*conn_in*/,
 
         conn_out->Transmit("Test string");
 
+        conn_out->Transmit("Test string 2");
+
+        conn_out->Transmit("Test string 3");
+
 //        conn_out->Disconnect();
     }
     else

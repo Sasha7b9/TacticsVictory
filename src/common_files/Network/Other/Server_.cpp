@@ -8,17 +8,10 @@
 static const char MESSAGE[] = "Hello, World!";
 
 // Вызывается при новом соединении
-static void CallbackListener(struct evconnlistener *, evutil_socket_t, struct sockaddr *, int socklen, void *);
-static void CallbackSignal(evutil_socket_t, short, void *);
-static void CallbackEvents(struct bufferevent *, short, void *);
 static void CallbackRead(struct bufferevent *, void *);
-static void CallbackWrite(struct bufferevent *, void *);
 static void CallbackAccept(evutil_socket_t listener, short event, void *arg);
 static void CallbackError(struct bufferevent *bev, short what, void *ctx);
-
-
 static void SendString(void *bufevnt, pchar message);
-
 static void CallbackLog(int, const char *);
 
 
@@ -76,7 +69,7 @@ static void CallbackLog(int, const char *message)
 }
 
 
-static void CallbackAccept(evutil_socket_t listener, short event, void *arg)
+static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 {
     struct event_base *base = (struct event_base *)arg;
 
@@ -91,6 +84,15 @@ static void CallbackAccept(evutil_socket_t listener, short event, void *arg)
     }
     else
     {
+        struct sockaddr_in &sin = (sockaddr_in &)ss;
+
+        LOGWRITEF("Connection from %d.%d.%d.%d:%d accepted",
+            sin.sin_addr.S_un.S_un_b.s_b1,
+            sin.sin_addr.S_un.S_un_b.s_b2,
+            sin.sin_addr.S_un.S_un_b.s_b3,
+            sin.sin_addr.S_un.S_un_b.s_b4,
+            sin.sin_port);
+
         evutil_make_socket_nonblocking(fd);
         struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
         bufferevent_setcb(bev, CallbackRead, NULL, CallbackError, NULL);
@@ -100,74 +102,14 @@ static void CallbackAccept(evutil_socket_t listener, short event, void *arg)
 }
 
 
-static void CallbackListener(struct evconnlistener *, evutil_socket_t fd, struct sockaddr *addr, int ,
-    void *user_data)
-{
-    sockaddr_in &sin = (sockaddr_in &)*addr;
-    
-    LOGWRITEF("Connection from %d.%d.%d.%d:%d accepted",
-        sin.sin_addr.S_un.S_un_b.s_b1,
-        sin.sin_addr.S_un.S_un_b.s_b2,
-        sin.sin_addr.S_un.S_un_b.s_b3,
-        sin.sin_addr.S_un.S_un_b.s_b4,
-        sin.sin_port);
-
-    struct event_base *base = (event_base *)user_data;
-
-    struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
-
-    if (!bev)
-    {
-        fprintf(stderr, "Error constructing bufferevent!");
-        event_base_loopbreak(base);
-        return;
-    }
-
-    bufferevent_setcb(bev, CallbackRead, CallbackWrite, CallbackEvents, NULL);
-    bufferevent_enable(bev, EV_TIMEOUT);
-    bufferevent_enable(bev, EV_WRITE);
-    bufferevent_enable(bev, EV_READ);
-    bufferevent_enable(bev, EV_SIGNAL);
-    bufferevent_enable(bev, EV_CLOSED);
-
-
-//    SendString(bev, MESSAGE);
-}
-
-
-static void SendString(void *bufevnt, pchar message)
-{
-    uint size = (uint)std::strlen(message);
-
-    bufferevent_write((bufferevent *)bufevnt, &size, 4);
-
-    bufferevent_write((bufferevent *)bufevnt, message, size);
-}
-
-
-static void CallbackSignal(evutil_socket_t , short , void *user_data)
-{
-    struct event_base *base = (event_base *)user_data;
-    struct timeval delay = { 2, 0 };
-
-    LOGWRITE("Caught an interrupt signal; exiting cleanly in two seconds.");
-
-    event_base_loopexit(base, &delay);
-}
-
-
-static void CallbackWrite(struct bufferevent *bev, void *)
-{
-    LOGWRITE(__FUNCTION__);
-
-    struct evbuffer *output = bufferevent_get_output(bev);
-
-    if (evbuffer_get_length(output) == 0)
-    {
-        LOGWRITE("flushed answer");
-        bufferevent_free(bev);
-    }
-}
+//static void SendString(void *bufevnt, pchar message)
+//{
+//    uint size = (uint)std::strlen(message);
+//
+//    bufferevent_write((bufferevent *)bufevnt, &size, 4);
+//
+//    bufferevent_write((bufferevent *)bufevnt, message, size);
+//}
 
 
 static void CallbackRead(struct bufferevent *bev, void *)
@@ -198,7 +140,7 @@ static void CallbackRead(struct bufferevent *bev, void *)
 }
 
 
-static void CallbackError(struct bufferevent *bev, short error, void *ctx)
+static void CallbackError(struct bufferevent *bev, short error, void *)
 {
     if (error & BEV_EVENT_READING)
     {
@@ -230,47 +172,6 @@ static void CallbackError(struct bufferevent *bev, short error, void *ctx)
         LOGERROR("Unknown error occured");
     }
 
-    bufferevent_free(bev);
-}
-
-
-static void CallbackEvents(struct bufferevent *bev, short events, void *)
-{
-    LOGWRITE(__FUNCTION__);
-
-    if (events & BEV_EVENT_READING)
-    {
-        LOGWRITE("Occured event reading");
-    }
-    
-    if (events & BEV_EVENT_WRITING)
-    {
-        LOGWRITE("Occured event writing");
-    }
-    
-    if (events & BEV_EVENT_EOF)
-    {
-        LOGWRITE("Occured event EOF");
-    }
-    
-    if (events & BEV_EVENT_ERROR)
-    {
-        char buffer[1024];
-        LOGERRORF("Got an error on the connection: %s", strerror_s(buffer, 1024, errno));
-    }
-    
-    if (events & BEV_EVENT_TIMEOUT)
-    {
-        LOGWRITE("Occured event timeout");
-    }
-    
-    if (events & BEV_EVENT_CONNECTED)
-    {
-        LOGWRITE("Occured  event connected");
-    }
-
-    /* None of the other events can happen here, since we haven't enabled
-     * timeouts */
     bufferevent_free(bev);
 }
 
