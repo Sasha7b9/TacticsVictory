@@ -114,7 +114,8 @@ static void conn_eventcb(struct bufferevent *bev, short events, void *)
     }
     else if (events & BEV_EVENT_ERROR)
     {
-        LOGERRORF("Got an error on the connection: %s", strerror(errno));
+        char buffer[1024];
+        LOGERRORF("Got an error on the connection: %s", strerror_s(buffer, 1024, errno));
     }
 
     /* None of the other events can happen here, since we haven't enabled
