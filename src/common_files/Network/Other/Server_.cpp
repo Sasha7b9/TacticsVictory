@@ -179,9 +179,39 @@ static void CallbackRead(struct bufferevent *bev, void *)
 }
 
 
-static void CallbackError(struct bufferevent *bev, short what, void *ctx)
+static void CallbackError(struct bufferevent *bev, short error, void *ctx)
 {
-    LOGERROR("Error occured");
+    if (error & BEV_EVENT_READING)
+    {
+        LOGERROR("BEV_EVENT_READING");
+        LOGWRITE("Closed connetion");
+    }
+    else if (error & BEV_EVENT_WRITING)
+    {
+        LOGERROR("BEV_EVENT_WRITING");
+    }
+    else if (error & BEV_EVENT_EOF)
+    {
+        LOGERROR("BEV_EVENT_EOF");
+    }
+    else if (error & BEV_EVENT_EOF)
+    {
+        LOGERROR("BEV_EVENT_EOF");
+    }
+    else if (error & BEV_EVENT_TIMEOUT)
+    {
+        LOGERROR("BEV_EVENT_TIMEOUT");
+    }
+    else if (error & BEV_EVENT_CONNECTED)
+    {
+        LOGERROR("BEV_EVENT_TIMEOUT");
+    }
+    else
+    {
+        LOGERROR("Unknown error occured");
+    }
+
+    bufferevent_free(bev);
 }
 
 
