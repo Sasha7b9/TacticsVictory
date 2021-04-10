@@ -33,22 +33,6 @@ if(WIN32)
                                     # implies that compiler generated copy/move constructors and copy/move assignment
                                     # operators are not trivial
 
-    add_compile_options(/wd4668)
-    add_compile_options(/wd4255)
-    add_compile_options(/wd4100)
-    add_compile_options(/wd4242)
-    add_compile_options(/wd4244)
-    add_compile_options(/wd4131)
-    add_compile_options(/wd4706)
-    add_compile_options(/wd4702)
-    add_compile_options(/wd4127)
-    add_compile_options(/wd4996)
-    add_compile_options(/wd4152)
-    add_compile_options(/wd4456)
-    add_compile_options(/wd4115)
-    add_compile_options(/wd4295)
-    add_compile_options(/wd4457)
-
 else()
 
    add_definitions(-Wno-cpp
