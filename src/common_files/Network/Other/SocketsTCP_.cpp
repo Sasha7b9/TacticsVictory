@@ -70,6 +70,8 @@ void ConnectorTCP::Disconnect()
 {
     if (connection)
     {
+        LOGWRITE("Disconnect");
+
         connection->close();
     }
 }

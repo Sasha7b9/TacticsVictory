@@ -71,19 +71,21 @@ static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP * /*conn_in*/,
 
     if (conn_out->Connect(host, port))
     {
-        *state = ServerConnector::State::EventConnection;
+//        *state = ServerConnector::State::EventConnection;
 
-        std::string id = conn_out->Receive();           // После подключения получем id, который передадим серверу для
+//        std::string id = conn_out->Receive();           // После подключения получем id, который передадим серверу для
                                                         // идентификации conn_in
 
-        if (id.empty())
-        {
-            LOGERROR("Port ID not received for incoming messages");
-        }
-        else
-        {
-            LOGWRITEF("Received message : %s", id.c_str());
-        }
+//        if (id.empty())
+//        {
+//            LOGERROR("Port ID not received for incoming messages");
+//        }
+//        else
+//        {
+//            LOGWRITEF("Received message : %s", id.c_str());
+//        }
+
+        conn_out->Disconnect();
 
 //        if (conn_in->Connect(host, (uint16)(port + 1))) // Следующий по порядку номер порта будет использоваться
 //        {                                               // для приёма ответных сообщений

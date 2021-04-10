@@ -14,6 +14,8 @@ static void CallbackEvents(struct bufferevent *, short, void *);
 static void CallbackRead(struct bufferevent *, void *);
 static void CallbackWrite(struct bufferevent *, void *);
 
+static void CallbackError(struct evconnlistener *, void *ptr);
+
 
 static void SendString(void *bufevnt, pchar message);
 
@@ -61,6 +63,8 @@ void Server::Run()
         return;
     }
 
+    evconnlistener_set_error_cb(listener, CallbackError);
+
     event_base_dispatch(base);
 
     evconnlistener_free(listener);
@@ -93,10 +97,14 @@ static void CallbackListener(struct evconnlistener *, evutil_socket_t fd, struct
     }
 
     bufferevent_setcb(bev, CallbackRead, CallbackWrite, CallbackEvents, NULL);
+    bufferevent_enable(bev, EV_TIMEOUT);
     bufferevent_enable(bev, EV_WRITE);
     bufferevent_enable(bev, EV_READ);
+    bufferevent_enable(bev, EV_SIGNAL);
+    bufferevent_enable(bev, EV_CLOSED);
 
-    SendString(bev, MESSAGE);
+
+//    SendString(bev, MESSAGE);
 }
 
 
@@ -139,19 +147,25 @@ static void CallbackRead(struct bufferevent *, void *)
 }
 
 
+static void CallbackError(struct evconnlistener *, void *)
+{
+    LOGERROR("Error occured");
+}
+
+
 static void CallbackEvents(struct bufferevent *bev, short events, void *)
 {
     if (events & BEV_EVENT_READING)
     {
-
+        LOGWRITE("Occured event reading");
     }
     else if (events & BEV_EVENT_WRITING)
     {
-
+        LOGWRITE("Occured event writing");
     }
     else if (events & BEV_EVENT_EOF)
     {
-        LOGWRITE("Connection closed");
+        LOGWRITE("Occured event EOF");
     }
     else if (events & BEV_EVENT_ERROR)
     {
@@ -160,16 +174,20 @@ static void CallbackEvents(struct bufferevent *bev, short events, void *)
     }
     else if (events & BEV_EVENT_TIMEOUT)
     {
-
+        LOGWRITE("Occured event timeout");
     }
     else if (events & BEV_EVENT_CONNECTED)
     {
-
+        LOGWRITE("Occured  event connected");
+    }
+    else
+    {
+        LOGERROR("An unknown event occured");
     }
 
     /* None of the other events can happen here, since we haven't enabled
      * timeouts */
-    bufferevent_free(bev);
+//    bufferevent_free(bev);
 }
 
 
