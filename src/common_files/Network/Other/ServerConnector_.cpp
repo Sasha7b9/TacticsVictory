@@ -73,9 +73,9 @@ static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP * /*conn_in*/,
     {
         *state = ServerConnector::State::EventConnection;
 
-        conn_out->Transmit("Test data");
+        conn_out->Transmit("Test string");
 
-        conn_out->Disconnect();
+//        conn_out->Disconnect();
     }
     else
     {

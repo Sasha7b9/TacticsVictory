@@ -22,6 +22,9 @@ static void SendString(void *bufevnt, pchar message);
 static void CallbackLog(int, const char *);
 
 
+#define MAX_LINE 16384
+
+
 void Server::Run()
 {
     event_set_log_callback(CallbackLog);
@@ -91,7 +94,7 @@ static void CallbackAccept(evutil_socket_t listener, short event, void *arg)
         evutil_make_socket_nonblocking(fd);
         struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
         bufferevent_setcb(bev, CallbackRead, NULL, CallbackError, NULL);
-        bufferevent_setwatermark(bev, EV_READ, 0, 16384);
+        bufferevent_setwatermark(bev, EV_READ, 0, MAX_LINE);
         bufferevent_enable(bev, EV_READ | EV_WRITE);
     }
 }
@@ -169,13 +172,29 @@ static void CallbackWrite(struct bufferevent *bev, void *)
 
 static void CallbackRead(struct bufferevent *bev, void *)
 {
-    struct evbuffer *input = bufferevent_get_input(bev);
+    uint size = 0;
 
-    size_t n = 0;
+    size_t readed = bufferevent_read(bev, &size, 4);
 
-    char *buf = evbuffer_readln(input, &n, EVBUFFER_EOL_ANY);
+    if (readed != 4)
+    {
+        LOGERRORF("Readed %d bytes, but not 4", readed);
+    }
 
-    LOGWRITE(__FUNCTION__);
+    char *buffer = (char *)malloc(size + 1);
+
+    readed = bufferevent_read(bev, buffer, size);
+
+    if (readed != size)
+    {
+        LOGERRORF("Readed %d bytes, but not %d", readed, size);
+    }
+
+    buffer[readed] = 0;
+
+    LOGWRITEF("Received string : %s", buffer);
+
+    free(buffer);
 }
 
 
