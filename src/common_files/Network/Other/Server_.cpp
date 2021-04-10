@@ -20,24 +20,18 @@ static void CallbackLog(int, const char *);
 
 struct SocketAddress
 {
-    SocketAddress(sockaddr_in *_sin) : sin(*_sin) {}
-
     std::string ToString()
     {
-        std::stringstream ss;
-
         char buffer[100];
 
-        ss << _itoa_s((int)sin.sin_addr.S_un.S_un_b.s_b1, buffer, 100, 10) << "." <<
-              _itoa_s((int)sin.sin_addr.S_un.S_un_b.s_b2, buffer, 100, 10) << "." <<
-              _itoa_s((int)sin.sin_addr.S_un.S_un_b.s_b3, buffer, 100, 10) << "." <<
-              _itoa_s((int)sin.sin_addr.S_un.S_un_b.s_b4, buffer, 100, 10) << ":" <<
-              _itoa_s((int)sin.sin_port, buffer, 100, 10);
+        sprintf_s(buffer, 100, "%d.%d.%d.%d:%d", sin.sin_addr.S_un.S_un_b.s_b1,
+            sin.sin_addr.S_un.S_un_b.s_b2,
+            sin.sin_addr.S_un.S_un_b.s_b3,
+            sin.sin_addr.S_un.S_un_b.s_b4,
+            sin.sin_port);
 
-        return ss.str();
+        return std::string(buffer);
     };
-
-private:
 
     sockaddr_in sin;
 };
@@ -117,15 +111,18 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
     }
     else
     {
-        SocketAddress address((sockaddr_in *)&ss);
-
-        LOGWRITEF("Connection from %s accepted", address.ToString().c_str());
-
         evutil_make_socket_nonblocking(fd);
         struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
         bufferevent_setcb(bev, CallbackRead, NULL, CallbackError, NULL);
         bufferevent_setwatermark(bev, EV_READ, 0, MAX_LINE);
         bufferevent_enable(bev, EV_READ | EV_WRITE);
+
+        ClientInfo info;
+        info.address.sin = *((sockaddr_in *)&ss);
+
+        LOGWRITEF("Connection from %s accepted", info.address.ToString().c_str());
+
+        clients[bev] = info;
     }
 }
 
@@ -173,7 +170,7 @@ static void CallbackError(struct bufferevent *bev, short error, void *)
     if (error & BEV_EVENT_READING)
     {
         LOGERROR("BEV_EVENT_READING");
-        LOGWRITE("Closed connetion");
+        LOGWRITEF("Closed connetion %s", clients[bev].address.ToString().c_str());
     }
     else if (error & BEV_EVENT_WRITING)
     {
