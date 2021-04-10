@@ -18,6 +18,39 @@ static void CallbackLog(int, const char *);
 #define MAX_LINE 16384
 
 
+struct SocketAddress
+{
+    SocketAddress(sockaddr_in *_sin) : sin(*_sin) {}
+
+    std::string ToString()
+    {
+        std::stringstream ss;
+
+        char buffer[100];
+
+        ss << _itoa_s((int)sin.sin_addr.S_un.S_un_b.s_b1, buffer, 100, 10) << "." <<
+              _itoa_s((int)sin.sin_addr.S_un.S_un_b.s_b2, buffer, 100, 10) << "." <<
+              _itoa_s((int)sin.sin_addr.S_un.S_un_b.s_b3, buffer, 100, 10) << "." <<
+              _itoa_s((int)sin.sin_addr.S_un.S_un_b.s_b4, buffer, 100, 10) << ":" <<
+              _itoa_s((int)sin.sin_port, buffer, 100, 10);
+
+        return ss.str();
+    };
+
+private:
+
+    sockaddr_in sin;
+};
+
+
+struct ClientInfo
+{
+    SocketAddress address;
+};
+
+std::map<void *, ClientInfo> clients;
+
+
 void Server::Run()
 {
     event_set_log_callback(CallbackLog);
@@ -84,14 +117,9 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
     }
     else
     {
-        struct sockaddr_in &sin = (sockaddr_in &)ss;
+        SocketAddress address((sockaddr_in *)&ss);
 
-        LOGWRITEF("Connection from %d.%d.%d.%d:%d accepted",
-            sin.sin_addr.S_un.S_un_b.s_b1,
-            sin.sin_addr.S_un.S_un_b.s_b2,
-            sin.sin_addr.S_un.S_un_b.s_b3,
-            sin.sin_addr.S_un.S_un_b.s_b4,
-            sin.sin_port);
+        LOGWRITEF("Connection from %s accepted", address.ToString().c_str());
 
         evutil_make_socket_nonblocking(fd);
         struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
