@@ -14,6 +14,8 @@ add_definitions(-DURHO3D_STATIC_DEFINE -DEVENT__HAVE_SA_FAMILY_T -DHAVE_CONFIG_H
 
 if(WIN32)
 
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHs")
+
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
 
     add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed
@@ -97,11 +99,8 @@ add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
                ${LIBEVENT} ${LIBEVENT_INCLUDE} ${LIBEVENT_SOURCES})
 
 
-set_target_properties(${PROJECT_NAME}      PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${SRC}         PROPERTIES UNITY_GROUP "bucket_src")
-set_source_files_properties(${FILE_SYSTEM} PROPERTIES UNITY_GROUP "bucket_file_system")
-set_source_files_properties(${NETWORK}     PROPERTIES UNITY_GROUP "bucket_network")
-set_source_files_properties(${UTILS}       PROPERTIES UNITY_GROUP "bucket_utils")
+set_target_properties(${PROJECT_NAME}                                 PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} PROPERTIES UNITY_GROUP "bucket")
 
 include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
                                          # выполнени€ релизной версии
