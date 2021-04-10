@@ -9,8 +9,8 @@ static const char MESSAGE[] = "Hello, World!";
 
 // Вызывается при новом соединении
 static void CallbackListener(struct evconnlistener *, evutil_socket_t, struct sockaddr *, int socklen, void *);
-static void signal_cb(evutil_socket_t, short, void *);
-static void conn_writecb(struct bufferevent *, void *);
+static void CallbackSignal(evutil_socket_t, short, void *);
+static void CallbackWrite(struct bufferevent *, void *);
 static void conn_eventcb(struct bufferevent *, short, void *);
 
 
@@ -49,7 +49,7 @@ void Server::Run()
         return;
     }
 
-    struct event *signal_event = evsignal_new(base, 2 /* SIGINT */, signal_cb, (void *)&base);
+    struct event *signal_event = evsignal_new(base, 2 /* SIGINT */, CallbackSignal, (void *)&base);
 
     if (!signal_event || event_add(signal_event, NULL) < 0)
     {
@@ -69,9 +69,8 @@ static void CallbackListener(struct evconnlistener *, evutil_socket_t fd, struct
     void *user_data)
 {
     struct event_base *base = (event_base *)user_data;
-    struct bufferevent *bev;
 
-    bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
+    struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
 
     if (!bev)
     {
@@ -80,7 +79,7 @@ static void CallbackListener(struct evconnlistener *, evutil_socket_t fd, struct
         return;
     }
 
-    bufferevent_setcb(bev, NULL, conn_writecb, conn_eventcb, NULL);
+    bufferevent_setcb(bev, NULL, CallbackWrite, conn_eventcb, NULL);
     bufferevent_enable(bev, EV_WRITE);
     bufferevent_disable(bev, EV_READ);
 
@@ -88,7 +87,7 @@ static void CallbackListener(struct evconnlistener *, evutil_socket_t fd, struct
 }
 
 
-static void signal_cb(evutil_socket_t , short , void *user_data)
+static void CallbackSignal(evutil_socket_t , short , void *user_data)
 {
     struct event_base *base = (event_base *)user_data;
     struct timeval delay = { 2, 0 };
@@ -99,7 +98,7 @@ static void signal_cb(evutil_socket_t , short , void *user_data)
 }
 
 
-static void conn_writecb(struct bufferevent *bev, void *)
+static void CallbackWrite(struct bufferevent *bev, void *)
 {
     struct evbuffer *output = bufferevent_get_output(bev);
 
@@ -113,7 +112,15 @@ static void conn_writecb(struct bufferevent *bev, void *)
 
 static void conn_eventcb(struct bufferevent *bev, short events, void *)
 {
-    if (events & BEV_EVENT_EOF)
+    if (events & BEV_EVENT_READING)
+    {
+
+    }
+    else if (events & BEV_EVENT_WRITING)
+    {
+
+    }
+    else if (events & BEV_EVENT_EOF)
     {
         LOGWRITE("Connection closed");
     }
@@ -121,6 +128,14 @@ static void conn_eventcb(struct bufferevent *bev, short events, void *)
     {
         char buffer[1024];
         LOGERRORF("Got an error on the connection: %s", strerror_s(buffer, 1024, errno));
+    }
+    else if (events & BEV_EVENT_TIMEOUT)
+    {
+
+    }
+    else if (events & BEV_EVENT_CONNECTED)
+    {
+
     }
 
     /* None of the other events can happen here, since we haven't enabled
