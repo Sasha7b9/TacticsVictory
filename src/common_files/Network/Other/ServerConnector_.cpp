@@ -71,34 +71,9 @@ static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP * /*conn_in*/,
 
     if (conn_out->Connect(host, port))
     {
-//        *state = ServerConnector::State::EventConnection;
+        *state = ServerConnector::State::EventConnection;
 
-//        std::string id = conn_out->Receive();           // После подключения получем id, который передадим серверу для
-                                                        // идентификации conn_in
-
-//        if (id.empty())
-//        {
-//            LOGERROR("Port ID not received for incoming messages");
-//        }
-//        else
-//        {
-//            LOGWRITEF("Received message : %s", id.c_str());
-//        }
-
-        conn_out->Disconnect();
-
-//        if (conn_in->Connect(host, (uint16)(port + 1))) // Следующий по порядку номер порта будет использоваться
-//        {                                               // для приёма ответных сообщений
-//            conn_in->Transmit(id);                      // После подключения передаём полученный id, чтобы сервер мог
-//                                                        // идентифицровать входящий порт
-//            *state = ServerConnector::State::EventConnection;
-//        }
-//        else
-//        {
-//            *state = ServerConnector::State::Idle;
-//            conn_out->Release();
-//            conn_in->Release();
-//        }
+//        conn_out->Transmit("Test data");
     }
     else
     {
@@ -192,23 +167,23 @@ void ServerConnector::Update()
 
     case State::InConnection:
         {
-            using namespace std::chrono;
-            static auto prev_time = system_clock::now();
-            auto now = system_clock::now();
-            int64 delta = duration_cast<milliseconds>(now - prev_time).count();
-
-            if (delta >= 1000)
-            {
-                state = State::WaitPing;
-                std::thread thread(ThreadPing, &connOUT, &mutex, &ping, (uint8 *)&state);
-                thread.detach();
-
-                prev_time = now;
-            }
-
-            int64 now_ms = duration_cast<milliseconds>(now.time_since_epoch()).count();
-
-            ExecuteTasks(now_ms);
+//            using namespace std::chrono;
+//            static auto prev_time = system_clock::now();
+//            auto now = system_clock::now();
+//            int64 delta = duration_cast<milliseconds>(now - prev_time).count();
+//
+//            if (delta >= 1000)
+//            {
+//                state = State::WaitPing;
+//                std::thread thread(ThreadPing, &connOUT, &mutex, &ping, (uint8 *)&state);
+//                thread.detach();
+//
+//                prev_time = now;
+//            }
+//
+//            int64 now_ms = duration_cast<milliseconds>(now.time_since_epoch()).count();
+//
+//            ExecuteTasks(now_ms);
         }
         break;
 

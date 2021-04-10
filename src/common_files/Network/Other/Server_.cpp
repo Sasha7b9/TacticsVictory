@@ -13,16 +13,23 @@ static void CallbackSignal(evutil_socket_t, short, void *);
 static void CallbackEvents(struct bufferevent *, short, void *);
 static void CallbackRead(struct bufferevent *, void *);
 static void CallbackWrite(struct bufferevent *, void *);
-
-static void CallbackError(struct evconnlistener *, void *ptr);
+static void CallbackAccept(evutil_socket_t listener, short event, void *arg);
+static void CallbackError(struct bufferevent *bev, short what, void *ctx);
 
 
 static void SendString(void *bufevnt, pchar message);
 
+static void CallbackLog(int, const char *);
+
 
 void Server::Run()
 {
-    struct sockaddr_in sin = { 0 };
+    event_set_log_callback(CallbackLog);
+
+    struct sockaddr_in sin;
+    sin.sin_family = AF_INET;
+    sin.sin_addr.s_addr = 0;
+    sin.sin_port = htons(40000);
 
 #ifdef WIN32
     WSADATA wsa_data;
@@ -31,45 +38,62 @@ void Server::Run()
 
     struct event_base *base = event_base_new();
 
-    if (!base)
+    evutil_socket_t listener = (evutil_socket_t)socket(AF_INET, SOCK_STREAM, 0);
+
+    evutil_make_socket_nonblocking(listener);
+
+#ifndef WIN32
     {
-        LOGERROR("Could not initialize libevent");
-        return;
+        int one = 1;
+        setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
+    }
+#endif
+
+    if (bind((SOCKET)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+    {
+        LOGERROR("Can not bind to port");
     }
 
-    uint16 port = static_cast<uint16>(TheConfig.GetInt("port"));
-
-    sin.sin_family = AF_INET;
-    sin.sin_port = htons(port);
-
-    struct evconnlistener *listener = evconnlistener_new_bind(base, CallbackListener, (void *)base,
-        LEV_OPT_REUSEABLE | LEV_OPT_CLOSE_ON_FREE, -1, (struct sockaddr *)&sin, sizeof(sin));
-
-    if (listener)
+    if (listen((SOCKET)listener, 100) < 0)
     {
-        LOGWRITEF("Bind to port %d is ok", port);
+        LOGERROR("Can not call listen()");
+    }
+
+    struct event *listener_event = event_new(base, listener, EV_READ | EV_PERSIST, CallbackAccept, (void *)base);
+
+    event_add(listener_event, NULL);
+
+    event_base_dispatch(base);
+}
+
+
+static void CallbackLog(int, const char *message)
+{
+    LOGERROR(message);
+}
+
+
+static void CallbackAccept(evutil_socket_t listener, short event, void *arg)
+{
+    struct event_base *base = (struct event_base *)arg;
+
+    struct sockaddr_storage ss;
+    socklen_t slen = sizeof(ss);
+
+    int fd = (int)accept((SOCKET)listener, (struct sockaddr *)&ss, &slen);
+
+    if (fd < 0)
+    {
+        LOGERROR("Error accepted");
     }
     else
     {
-        LOGERROR("Could not create a listener");
-        return;
+        evutil_make_socket_nonblocking(fd);
+        struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
+        bufferevent_setcb(bev, CallbackRead, NULL, CallbackError, NULL);
+        bufferevent_setwatermark(bev, EV_READ, 0, 16384);
+        bufferevent_enable(bev, EV_READ | EV_WRITE);
     }
-
-    struct event *signal_event = evsignal_new(base, 2 /* SIGINT */, CallbackSignal, (void *)&base);
-
-    if (!signal_event || event_add(signal_event, NULL) < 0)
-    {
-        LOGERROR("Could not create/add a signal event!");
-        return;
-    }
-
-    evconnlistener_set_error_cb(listener, CallbackError);
-
-    event_base_dispatch(base);
-
-    evconnlistener_free(listener);
-    event_free(signal_event);
-    event_base_free(base);
 }
 
 
@@ -131,6 +155,8 @@ static void CallbackSignal(evutil_socket_t , short , void *user_data)
 
 static void CallbackWrite(struct bufferevent *bev, void *)
 {
+    LOGWRITE(__FUNCTION__);
+
     struct evbuffer *output = bufferevent_get_output(bev);
 
     if (evbuffer_get_length(output) == 0)
@@ -141,13 +167,19 @@ static void CallbackWrite(struct bufferevent *bev, void *)
 }
 
 
-static void CallbackRead(struct bufferevent *, void *)
+static void CallbackRead(struct bufferevent *bev, void *)
 {
+    struct evbuffer *input = bufferevent_get_input(bev);
 
+    size_t n = 0;
+
+    char *buf = evbuffer_readln(input, &n, EVBUFFER_EOL_ANY);
+
+    LOGWRITE(__FUNCTION__);
 }
 
 
-static void CallbackError(struct evconnlistener *, void *)
+static void CallbackError(struct bufferevent *bev, short what, void *ctx)
 {
     LOGERROR("Error occured");
 }
@@ -155,39 +187,42 @@ static void CallbackError(struct evconnlistener *, void *)
 
 static void CallbackEvents(struct bufferevent *bev, short events, void *)
 {
+    LOGWRITE(__FUNCTION__);
+
     if (events & BEV_EVENT_READING)
     {
         LOGWRITE("Occured event reading");
     }
-    else if (events & BEV_EVENT_WRITING)
+    
+    if (events & BEV_EVENT_WRITING)
     {
         LOGWRITE("Occured event writing");
     }
-    else if (events & BEV_EVENT_EOF)
+    
+    if (events & BEV_EVENT_EOF)
     {
         LOGWRITE("Occured event EOF");
     }
-    else if (events & BEV_EVENT_ERROR)
+    
+    if (events & BEV_EVENT_ERROR)
     {
         char buffer[1024];
         LOGERRORF("Got an error on the connection: %s", strerror_s(buffer, 1024, errno));
     }
-    else if (events & BEV_EVENT_TIMEOUT)
+    
+    if (events & BEV_EVENT_TIMEOUT)
     {
         LOGWRITE("Occured event timeout");
     }
-    else if (events & BEV_EVENT_CONNECTED)
+    
+    if (events & BEV_EVENT_CONNECTED)
     {
         LOGWRITE("Occured  event connected");
-    }
-    else
-    {
-        LOGERROR("An unknown event occured");
     }
 
     /* None of the other events can happen here, since we haven't enabled
      * timeouts */
-//    bufferevent_free(bev);
+    bufferevent_free(bev);
 }
 
 
