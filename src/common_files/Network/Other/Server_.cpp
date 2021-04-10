@@ -15,6 +15,9 @@ static void CallbackRead(struct bufferevent *, void *);
 static void CallbackWrite(struct bufferevent *, void *);
 
 
+static void SendString(void *bufevnt, pchar message);
+
+
 void Server::Run()
 {
     struct sockaddr_in sin = { 0 };
@@ -66,9 +69,18 @@ void Server::Run()
 }
 
 
-static void CallbackListener(struct evconnlistener *, evutil_socket_t fd, struct sockaddr *, int ,
+static void CallbackListener(struct evconnlistener *, evutil_socket_t fd, struct sockaddr *addr, int ,
     void *user_data)
 {
+    sockaddr_in &sin = (sockaddr_in &)*addr;
+    
+    LOGWRITEF("Connection from %d.%d.%d.%d:%d accepted",
+        sin.sin_addr.S_un.S_un_b.s_b1,
+        sin.sin_addr.S_un.S_un_b.s_b2,
+        sin.sin_addr.S_un.S_un_b.s_b3,
+        sin.sin_addr.S_un.S_un_b.s_b4,
+        sin.sin_port);
+
     struct event_base *base = (event_base *)user_data;
 
     struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
@@ -84,7 +96,17 @@ static void CallbackListener(struct evconnlistener *, evutil_socket_t fd, struct
     bufferevent_enable(bev, EV_WRITE);
     bufferevent_enable(bev, EV_READ);
 
-    bufferevent_write(bev, MESSAGE, strlen(MESSAGE));
+    SendString(bev, MESSAGE);
+}
+
+
+static void SendString(void *bufevnt, pchar message)
+{
+    uint size = (uint)std::strlen(message);
+
+    bufferevent_write((bufferevent *)bufevnt, &size, 4);
+
+    bufferevent_write((bufferevent *)bufevnt, message, size);
 }
 
 
