@@ -26,6 +26,10 @@ using namespace Urho3D;
 #include <sockpp/tcp_acceptor.h>
 #include <sockpp/tcp_connector.h>
 
+#include <event2/bufferevent.h>
+#include <event2/buffer.h>
+#include <event2/listener.h>
+
 #ifdef WIN32
     #pragma warning(pop)
 #endif

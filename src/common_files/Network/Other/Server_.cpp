@@ -41,6 +41,25 @@ static void SocketThread(AcceptorTCP::Socket socket, void (*onReceive)(AcceptorT
 
 void Server::Run()
 {
+    struct event_base *base;
+    struct evconnlistener *listener;
+    struct event *signal_event;
+
+    struct sockaddr_in sin = { 0 };
+
+#ifdef WIN32
+    WSADATA wsa_data;
+    WSAStartup(0x0201, &wsa_data);
+#endif
+
+    base = event_base_new();
+
+
+
+
+
+
+    /*
     Prepare();
 
     uint16 port = static_cast<uint16>(TheConfig.GetInt("port"));
@@ -66,4 +85,5 @@ void Server::Run()
             }
         }
     }
+    */
 }

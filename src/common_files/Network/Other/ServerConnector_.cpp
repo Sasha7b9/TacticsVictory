@@ -64,7 +64,7 @@ std::string ServerConnector::GetAnswer()
 }
 
 
-static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP *conn_in,
+static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP * /*conn_in*/,
     pchar host, uint16 port, std::mutex *mutex, uint8 *state)
 {
     mutex->lock();

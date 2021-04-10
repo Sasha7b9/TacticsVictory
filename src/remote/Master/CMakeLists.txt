@@ -4,11 +4,14 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
+                    ../../ThirdParty/libevent/compat
+                    ../../ThirdParty/libevent/include
+                    ../../ThirdParty/libevent/build/include
                     ../../ThirdParty/sockpp/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
-add_definitions(-DURHO3D_STATIC_DEFINE)
+add_definitions(-DURHO3D_STATIC_DEFINE -DEVENT__HAVE_SA_FAMILY_T -DHAVE_CONFIG_H -DTINYTEST_LOCAL)
 
 if(WIN32)
 
@@ -53,23 +56,32 @@ file(GLOB UTILS       ../../common_files/Utils/Log_.*
                       ../../common_files/Utils/StringUtils_.*
                       ../../common_files/Utils/UtilsOS_.*)
 
-file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
-file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
-file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
+file(GLOB LIBEVENT_INCLUDE ../../ThirdParty/libevent/include/event2/bufferevent.h
+                           ../../ThirdParty/libevent/include/event2/buffer.h
+                           ../../ThirdParty/libevent/include/event2/listener.h)
+file(GLOB LIBEVENT_SOURCES ../../ThirdParty/libevent/event.cpp)
+
+file(GLOB SOCKPP                 ThirdParty/sockpp.cpp)
+file(GLOB SOCKPP_SOURCES   ../../ThirdParty/sockpp/src/*.cpp)
+file(GLOB SOCKPP_INCLUDE   ../../ThirdParty/sockpp/include/sockpp/*.h)
 
 source_group(src        FILES ${SRC})
 source_group(FileSystem FILES ${FILE_SYSTEM})
 source_group(Network    FILES ${NETWORK})
 source_group(Utils      FILES ${UTILS})
 
-source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
-source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
-source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
+source_group(ThirdParty\\libevent\\include FILES ${LIBEVENT_INCLUDE})
+source_group(ThirdParty\\libevent\\sources FILES ${LIBEVENT_SOURCES})
+
+source_group(ThirdParty\\sockpp            FILES ${SOCKPP})
+source_group(ThirdParty\\sockpp\\sources   FILES ${SOCKPP_SOURCES})
+source_group(ThirdParty\\sockpp\\include   FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
-                ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+               ${LIBEVENT_INCLUDE} ${LIBEVENT_SOURCES}
+               ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
                                          # выполнени€ релизной версии
