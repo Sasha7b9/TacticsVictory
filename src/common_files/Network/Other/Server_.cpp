@@ -143,25 +143,30 @@ static void CallbackRead(struct bufferevent *bev, void *)
 
     size_t readed = bufferevent_read(bev, &size, 4);
 
-    if (readed != 4)
+    while (readed != 0)
     {
-        LOGERRORF("Readed %d bytes, but not 4", readed);
+        if (readed != 4)
+        {
+            LOGERRORF("Readed %d bytes, but not 4", readed);
+        }
+
+        char *buffer = (char *)malloc(size + 1);
+
+        readed = bufferevent_read(bev, buffer, size);
+
+        if (readed != size)
+        {
+            LOGERRORF("Readed %d bytes, but not %d", readed, size);
+        }
+
+        buffer[readed] = 0;
+
+        LOGWRITEF("Received string : %s", buffer);
+
+        readed = bufferevent_read(bev, &size, 4);
+
+        free(buffer);
     }
-
-    char *buffer = (char *)malloc(size + 1);
-
-    readed = bufferevent_read(bev, buffer, size);
-
-    if (readed != size)
-    {
-        LOGERRORF("Readed %d bytes, but not %d", readed, size);
-    }
-
-    buffer[readed] = 0;
-
-    LOGWRITEF("Received string : %s", buffer);
-
-    free(buffer);
 }
 
 
