@@ -10,8 +10,9 @@ static const char MESSAGE[] = "Hello, World!";
 // Вызывается при новом соединении
 static void CallbackListener(struct evconnlistener *, evutil_socket_t, struct sockaddr *, int socklen, void *);
 static void CallbackSignal(evutil_socket_t, short, void *);
+static void CallbackEvents(struct bufferevent *, short, void *);
+static void CallbackRead(struct bufferevent *, void *);
 static void CallbackWrite(struct bufferevent *, void *);
-static void conn_eventcb(struct bufferevent *, short, void *);
 
 
 void Server::Run()
@@ -79,9 +80,9 @@ static void CallbackListener(struct evconnlistener *, evutil_socket_t fd, struct
         return;
     }
 
-    bufferevent_setcb(bev, NULL, CallbackWrite, conn_eventcb, NULL);
+    bufferevent_setcb(bev, CallbackRead, CallbackWrite, CallbackEvents, NULL);
     bufferevent_enable(bev, EV_WRITE);
-    bufferevent_disable(bev, EV_READ);
+    bufferevent_enable(bev, EV_READ);
 
     bufferevent_write(bev, MESSAGE, strlen(MESSAGE));
 }
@@ -110,7 +111,13 @@ static void CallbackWrite(struct bufferevent *bev, void *)
 }
 
 
-static void conn_eventcb(struct bufferevent *bev, short events, void *)
+static void CallbackRead(struct bufferevent *, void *)
+{
+
+}
+
+
+static void CallbackEvents(struct bufferevent *bev, short events, void *)
 {
     if (events & BEV_EVENT_READING)
     {
