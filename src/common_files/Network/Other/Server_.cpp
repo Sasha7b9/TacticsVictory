@@ -18,32 +18,32 @@ void Server::AppendServerInfo(const ServerInfo &info)
 }
 
 
-static void SocketThread(AcceptorTCP::Socket socket, void (*onReceive)(AcceptorTCP::Socket &, pchar, int))
-{
-    while (socket.sock.is_open())
-    {
-        static const int MAX_RECEIVED = 512;
-
-        char received[MAX_RECEIVED];
-
-        ssize_t n = socket.sock.read(received, MAX_RECEIVED);
-
-        if (n <= 0)
-        {
-            LOGWRITEF("Close connection %s", socket.peer->to_string().c_str());
-            break;
-        }
-
-        onReceive(socket, received, static_cast<int>(n));
-    }
-}
+//static void SocketThread(AcceptorTCP::Socket socket, void (*onReceive)(AcceptorTCP::Socket &, pchar, int))
+//{
+//    while (socket.sock.is_open())
+//    {
+//        static const int MAX_RECEIVED = 512;
+//
+//        char received[MAX_RECEIVED];
+//
+//        ssize_t n = socket.sock.read(received, MAX_RECEIVED);
+//
+//        if (n <= 0)
+//        {
+//            LOGWRITEF("Close connection %s", socket.peer->to_string().c_str());
+//            break;
+//        }
+//
+//        onReceive(socket, received, static_cast<int>(n));
+//    }
+//}
 
 
 void Server::Run()
 {
     struct event_base *base;
-    struct evconnlistener *listener;
-    struct event *signal_event;
+//    struct evconnlistener *listener;
+//    struct event *signal_event;
 
     struct sockaddr_in sin = { 0 };
 

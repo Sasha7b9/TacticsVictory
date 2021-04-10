@@ -1,6 +1,6 @@
 project (Master)
 
-set(CMAKE_UNITY_BUILD ON)
+#set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
@@ -14,9 +14,6 @@ include_directories(.
 add_definitions(-DURHO3D_STATIC_DEFINE -DEVENT__HAVE_SA_FAMILY_T -DHAVE_CONFIG_H -DTINYTEST_LOCAL)
 
 if(WIN32)
-
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
-    set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
 
@@ -35,6 +32,22 @@ if(WIN32)
     add_compile_options(/wd5220)    # 'xxx:yyy': a non-static data member with a volatile qualified type no longer
                                     # implies that compiler generated copy/move constructors and copy/move assignment
                                     # operators are not trivial
+
+    add_compile_options(/wd4668)
+    add_compile_options(/wd4255)
+    add_compile_options(/wd4100)
+    add_compile_options(/wd4242)
+    add_compile_options(/wd4244)
+    add_compile_options(/wd4131)
+    add_compile_options(/wd4706)
+    add_compile_options(/wd4702)
+    add_compile_options(/wd4127)
+    add_compile_options(/wd4996)
+    add_compile_options(/wd4152)
+    add_compile_options(/wd4456)
+    add_compile_options(/wd4115)
+    add_compile_options(/wd4295)
+    add_compile_options(/wd4457)
 
 else()
 
@@ -59,7 +72,28 @@ file(GLOB UTILS       ../../common_files/Utils/Log_.*
 file(GLOB LIBEVENT_INCLUDE ../../ThirdParty/libevent/include/event2/bufferevent.h
                            ../../ThirdParty/libevent/include/event2/buffer.h
                            ../../ThirdParty/libevent/include/event2/listener.h)
-file(GLOB LIBEVENT_SOURCES ../../ThirdParty/libevent/event.cpp)
+file(GLOB LIBEVENT_SOURCES ../../ThirdParty/libevent/buffer.c
+                           ../../ThirdParty/libevent/buffer_iocp.c
+                           ../../ThirdParty/libevent/bufferevent.c
+                           ../../ThirdParty/libevent/bufferevent_async.c
+                           ../../ThirdParty/libevent/bufferevent_filter.c
+                           ../../ThirdParty/libevent/bufferevent_pair.c
+                           ../../ThirdParty/libevent/bufferevent_ratelim.c
+                           ../../ThirdParty/libevent/bufferevent_sock.c
+                           ../../ThirdParty/libevent/epoll.c
+                           ../../ThirdParty/libevent/event.c
+                           ../../ThirdParty/libevent/event_iocp.c
+                           ../../ThirdParty/libevent/evmap.c
+                           ../../ThirdParty/libevent/evthread.c
+                           ../../ThirdParty/libevent/evutil.c
+                           ../../ThirdParty/libevent/evutil_rand.c
+                           ../../ThirdParty/libevent/evutil_time.c
+                           ../../ThirdParty/libevent/listener.c
+                           ../../ThirdParty/libevent/log.c
+                           ../../ThirdParty/libevent/signal.c
+                           ../../ThirdParty/libevent/strlcpy.c
+                           ../../ThirdParty/libevent/wepoll.c
+                           ../../ThirdParty/libevent/win32select.c)
 
 file(GLOB SOCKPP                 ThirdParty/sockpp.cpp)
 file(GLOB SOCKPP_SOURCES   ../../ThirdParty/sockpp/src/*.cpp)
@@ -91,6 +125,6 @@ if(WIN32)
     include(../../SetWorkingDirectory.cmake)
 endif()
 
-target_link_libraries(${PROJECT_NAME} ws2_32)
+target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt)
 
 include(../../Install.cmake)
