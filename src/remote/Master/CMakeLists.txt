@@ -46,8 +46,7 @@ file(GLOB SRC         ../../common_files/defines_.h
 file(GLOB FILE_SYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
                       ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK     ../../common_files/Network/Other/NetworkTypes_.*
-                      ../../common_files/Network/Other/Server_.*
-                      ../../common_files/Network/Other/SocketsTCP_.*)
+                      ../../common_files/Network/Other/Server_.*)
 file(GLOB UTILS       ../../common_files/Utils/Log_.*
                       ../../common_files/Utils/LogRAW_.*
                       ../../common_files/Utils/StringUtils_.*

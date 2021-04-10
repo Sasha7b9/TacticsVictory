@@ -3,7 +3,6 @@
 #include "FileSystem/ConfigurationFile_.h"
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/Server_.h"
-#include "Network/Other/SocketsTCP_.h"
 #include "Utils/StringUtils_.h"
 
 
@@ -13,7 +12,7 @@ static void HandlerPing();
 extern void HandlerTerminate();
 
 
-static AcceptorTCP::Socket *sock = nullptr;             // Используется в обработчиках
+//static AcceptorTCP::Socket *sock = nullptr;             // Используется в обработчиках
 static std::vector<std::string> *words = nullptr;       // Используется в обработчиках
 
 
@@ -34,9 +33,9 @@ void Server::Prepare()
 }
 
 
-void Server::HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar symbols, int number)
+void Server::HandlerReceivedSocket(pchar symbols, int number)
 {
-    sock = &socket;
+//    sock = &socket;
 
     static std::string buffer;
 
@@ -75,7 +74,7 @@ static void HandlerClose()
 {
     if (words->size() == 2 && (*words)[1] == "connection")
     {
-        sock->sock.close();
+//        sock->sock.close();
     }
 }
 
@@ -97,7 +96,7 @@ static void HandlerGet()
                 room++;
             }
 
-            sock->Transmit(data);
+//            sock->Transmit(data);
         }
     }
     else if (words->size() == 3)
@@ -107,7 +106,7 @@ static void HandlerGet()
             pchar address = TheConfig.GetString("address", (*words)[2].c_str());
             if (address)
             {
-                sock->Transmit(address);
+//                sock->Transmit(address);
             }
             else
             {
@@ -121,7 +120,7 @@ static void HandlerGet()
 
 static void HandlerPing()
 {
-    sock->Transmit(std::string("ping"));
+//    sock->Transmit(std::string("ping"));
 }
 
 
