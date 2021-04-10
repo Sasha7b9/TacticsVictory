@@ -5,6 +5,124 @@
 #include "Network/Other/Server_.h"
 
 
+static const char MESSAGE[] = "Hello, World!";
+
+static void listener_cb(struct evconnlistener *, evutil_socket_t, struct sockaddr *, int socklen, void *);
+static void signal_cb(evutil_socket_t, short, void *);
+static void conn_writecb(struct bufferevent *, void *);
+static void conn_eventcb(struct bufferevent *, short, void *);
+
+
+void Server::Run()
+{
+    struct sockaddr_in sin = { 0 };
+
+#ifdef WIN32
+    WSADATA wsa_data;
+    WSAStartup(0x0201, &wsa_data);
+#endif
+
+    struct event_base *base = event_base_new();
+
+    if (!base)
+    {
+        LOGERROR("Could not initialize libevent");
+        return;
+    }
+
+    uint16 port = static_cast<uint16>(TheConfig.GetInt("port"));
+
+    sin.sin_family = AF_INET;
+    sin.sin_port = htons(port);
+
+    struct evconnlistener *listener = evconnlistener_new_bind(base, listener_cb, (void *)base,
+        LEV_OPT_REUSEABLE | LEV_OPT_CLOSE_ON_FREE, -1, (struct sockaddr *)&sin, sizeof(sin));
+
+    if (!listener)
+    {
+        LOGERROR("Could not create a listener");
+        return;
+    }
+                                                  // SIGING
+    struct event *signal_event = evsignal_new(base, 2, signal_cb, (void *)&base);
+
+    if (!signal_event || event_add(signal_event, NULL) < 0)
+    {
+        LOGERROR("Could not create/add a signal event!");
+        return;
+    }
+
+    event_base_dispatch(base);
+
+    evconnlistener_free(listener);
+    event_free(signal_event);
+    event_base_free(base);
+}
+
+
+static void listener_cb(struct evconnlistener *, evutil_socket_t fd, struct sockaddr *, int ,
+    void *user_data)
+{
+    struct event_base *base = (event_base *)user_data;
+    struct bufferevent *bev;
+
+    bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
+
+    if (!bev)
+    {
+        fprintf(stderr, "Error constructing bufferevent!");
+        event_base_loopbreak(base);
+        return;
+    }
+
+    bufferevent_setcb(bev, NULL, conn_writecb, conn_eventcb, NULL);
+    bufferevent_enable(bev, EV_WRITE);
+    bufferevent_disable(bev, EV_READ);
+
+    bufferevent_write(bev, MESSAGE, strlen(MESSAGE));
+}
+
+
+static void signal_cb(evutil_socket_t , short , void *user_data)
+{
+    struct event_base *base = (event_base *)user_data;
+    struct timeval delay = { 2, 0 };
+
+    LOGWRITE("Caught an interrupt signal; exiting cleanly in two seconds.");
+
+    event_base_loopexit(base, &delay);
+}
+
+
+static void conn_writecb(struct bufferevent *bev, void *)
+{
+    struct evbuffer *output = bufferevent_get_output(bev);
+
+    if (evbuffer_get_length(output) == 0)
+    {
+        LOGWRITE("flushed answer");
+        bufferevent_free(bev);
+    }
+}
+
+
+static void conn_eventcb(struct bufferevent *bev, short events, void *)
+{
+    if (events & BEV_EVENT_EOF)
+    {
+        LOGWRITE("Connection closed");
+    }
+    else if (events & BEV_EVENT_ERROR)
+    {
+        LOGERRORF("Got an error on the connection: %s", strerror(errno));
+    }
+
+    /* None of the other events can happen here, since we haven't enabled
+     * timeouts */
+    bufferevent_free(bev);
+}
+
+
 void Server::AppendHandler(pchar command, pFuncVV handler)
 {
     handlers[command] = handler;
@@ -14,75 +132,4 @@ void Server::AppendHandler(pchar command, pFuncVV handler)
 void Server::AppendServerInfo(const ServerInfo &info)
 {
     infos[info.address] = info;
-}
-
-
-//static void SocketThread(AcceptorTCP::Socket socket, void (*onReceive)(AcceptorTCP::Socket &, pchar, int))
-//{
-//    while (socket.sock.is_open())
-//    {
-//        static const int MAX_RECEIVED = 512;
-//
-//        char received[MAX_RECEIVED];
-//
-//        ssize_t n = socket.sock.read(received, MAX_RECEIVED);
-//
-//        if (n <= 0)
-//        {
-//            LOGWRITEF("Close connection %s", socket.peer->to_string().c_str());
-//            break;
-//        }
-//
-//        onReceive(socket, received, static_cast<int>(n));
-//    }
-//}
-
-
-void Server::Run()
-{
-    struct event_base *base;
-//    struct evconnlistener *listener;
-//    struct event *signal_event;
-
-    struct sockaddr_in sin = { 0 };
-
-#ifdef WIN32
-    WSADATA wsa_data;
-    WSAStartup(0x0201, &wsa_data);
-#endif
-
-    base = event_base_new();
-
-
-
-
-
-
-    /*
-    Prepare();
-
-    uint16 port = static_cast<uint16>(TheConfig.GetInt("port"));
-
-    AcceptorTCP acceptor;
-
-    if (acceptor.Bind(port))
-    {
-        LOGWRITE("Wait connections ...");
-
-        while (run)
-        {
-            AcceptorTCP::Socket socket;
-
-            if (acceptor.Accept(socket))
-            {
-                std::thread thread(SocketThread, std::move(socket), HandlerReceivedSocket);
-                thread.detach();
-            }
-            else
-            {
-                LOGERROR("Error accept");
-            }
-        }
-    }
-    */
 }
