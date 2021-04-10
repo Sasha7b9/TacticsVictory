@@ -69,6 +69,9 @@ file(GLOB UTILS       ../../common_files/Utils/Log_.*
                       ../../common_files/Utils/StringUtils_.*
                       ../../common_files/Utils/UtilsOS_.*)
 
+file(GLOB LIBEVENT               ThirdParty/libevent.c
+                                 ThirdParty/libevent2.c
+                                 ThirdParty/libevent3.c)
 file(GLOB LIBEVENT_INCLUDE ../../ThirdParty/libevent/include/event2/bufferevent.h
                            ../../ThirdParty/libevent/include/event2/buffer.h
                            ../../ThirdParty/libevent/include/event2/listener.h)
@@ -104,6 +107,7 @@ source_group(FileSystem FILES ${FILE_SYSTEM})
 source_group(Network    FILES ${NETWORK})
 source_group(Utils      FILES ${UTILS})
 
+source_group(ThirdParty\\libevent          FILES ${LIBEVENT})
 source_group(ThirdParty\\libevent\\include FILES ${LIBEVENT_INCLUDE})
 source_group(ThirdParty\\libevent\\sources FILES ${LIBEVENT_SOURCES})
 
@@ -111,10 +115,11 @@ source_group(ThirdParty\\sockpp            FILES ${SOCKPP})
 source_group(ThirdParty\\sockpp\\sources   FILES ${SOCKPP_SOURCES})
 source_group(ThirdParty\\sockpp\\include   FILES ${SOCKPP_INCLUDE})
 
-set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties(${LIBEVENT_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties(${SOCKPP_SOURCES}   PROPERTIES HEADER_FILE_ONLY TRUE)
 
 add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
-               ${LIBEVENT_INCLUDE} ${LIBEVENT_SOURCES}
+               ${LIBEVENT} ${LIBEVENT_INCLUDE} ${LIBEVENT_SOURCES}
                ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 include(../../RuntimeLibrary.cmake)      # Исключаем зависимости от динамических библиотек VS времени
