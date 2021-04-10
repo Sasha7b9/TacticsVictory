@@ -1,6 +1,6 @@
 project (Master)
 
-#set(CMAKE_UNITY_BUILD ON)
+set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
@@ -121,6 +121,13 @@ set_source_files_properties(${SOCKPP_SOURCES}   PROPERTIES HEADER_FILE_ONLY TRUE
 add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
                ${LIBEVENT} ${LIBEVENT_INCLUDE} ${LIBEVENT_SOURCES}
                ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+
+
+set_target_properties(${PROJECT_NAME}      PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${SRC}         PROPERTIES UNITY_GROUP "bucket_src")
+set_source_files_properties(${FILE_SYSTEM} PROPERTIES UNITY_GROUP "bucket_file_system")
+set_source_files_properties(${NETWORK}     PROPERTIES UNITY_GROUP "bucket_network")
+set_source_files_properties(${UTILS}       PROPERTIES UNITY_GROUP "bucket_utils")
 
 include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
                                          # выполнени€ релизной версии
