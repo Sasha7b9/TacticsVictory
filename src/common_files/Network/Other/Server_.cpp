@@ -7,7 +7,8 @@
 
 static const char MESSAGE[] = "Hello, World!";
 
-static void listener_cb(struct evconnlistener *, evutil_socket_t, struct sockaddr *, int socklen, void *);
+// Вызывается при новом соединении
+static void CallbackListener(struct evconnlistener *, evutil_socket_t, struct sockaddr *, int socklen, void *);
 static void signal_cb(evutil_socket_t, short, void *);
 static void conn_writecb(struct bufferevent *, void *);
 static void conn_eventcb(struct bufferevent *, short, void *);
@@ -35,16 +36,20 @@ void Server::Run()
     sin.sin_family = AF_INET;
     sin.sin_port = htons(port);
 
-    struct evconnlistener *listener = evconnlistener_new_bind(base, listener_cb, (void *)base,
+    struct evconnlistener *listener = evconnlistener_new_bind(base, CallbackListener, (void *)base,
         LEV_OPT_REUSEABLE | LEV_OPT_CLOSE_ON_FREE, -1, (struct sockaddr *)&sin, sizeof(sin));
 
-    if (!listener)
+    if (listener)
+    {
+        LOGWRITEF("Bind to port %d is ok", port);
+    }
+    else
     {
         LOGERROR("Could not create a listener");
         return;
     }
-                                                  // SIGING
-    struct event *signal_event = evsignal_new(base, 2, signal_cb, (void *)&base);
+
+    struct event *signal_event = evsignal_new(base, 2 /* SIGINT */, signal_cb, (void *)&base);
 
     if (!signal_event || event_add(signal_event, NULL) < 0)
     {
@@ -60,7 +65,7 @@ void Server::Run()
 }
 
 
-static void listener_cb(struct evconnlistener *, evutil_socket_t fd, struct sockaddr *, int ,
+static void CallbackListener(struct evconnlistener *, evutil_socket_t fd, struct sockaddr *, int ,
     void *user_data)
 {
     struct event_base *base = (event_base *)user_data;
