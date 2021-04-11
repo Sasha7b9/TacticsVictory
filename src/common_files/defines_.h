@@ -40,6 +40,7 @@ typedef const char        *pchar;
 
 typedef void (*pFuncVV)();
 typedef void (*pFuncVpV)(void *);
+typedef void (*pFuncVUpV)(uint, void *);
 typedef void (*pFuncVI)(int);
 typedef float(*pFuncFV)();
 typedef void (*pFuncVF)(float);

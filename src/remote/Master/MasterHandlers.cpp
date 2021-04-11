@@ -6,14 +6,14 @@
 #include "Utils/StringUtils_.h"
 
 
-static void HandlerClose(void *);
-static void HandlerGet(void *);
-static void HandlerPing(void *);
-extern void HandlerTerminate(void *);
+static void HandlerClose(uint, void *);
+static void HandlerGet(uint, void *);
+static void HandlerPing(uint, void *);
+extern void HandlerTerminate(uint, void *);
 
 
-std::map<std::string, pFuncVpV> Server::handlers;
-std::vector<std::string>        Server::words;
+std::map<std::string, pFuncVUpV> Server::handlers;
+std::vector<std::string>         Server::words;
 
 
 void Server::Prepare()
@@ -25,7 +25,7 @@ void Server::Prepare()
 }
 
 
-static void HandlerClose(void *)
+static void HandlerClose(uint, void *)
 {
     if (Server::words.size() == 2 && (Server::words)[1] == "connection")
     {
@@ -34,7 +34,7 @@ static void HandlerClose(void *)
 }
 
 
-static void HandlerGet(void *)
+static void HandlerGet(uint, void *)
 {
 //    if (words->size() == 2)
 //    {
@@ -73,7 +73,7 @@ static void HandlerGet(void *)
 }
 
 
-static void HandlerPing(void *ci)
+static void HandlerPing(uint id, void *ci)
 {
     LOGWRITE("Request for ping");
 
@@ -81,11 +81,11 @@ static void HandlerPing(void *ci)
 
     struct bufferevent *bev = (struct bufferevent *)info.buffer;
 
-    TheServer.SendString(bev, MSM_PING);
+    TheServer.SendAnswer(bev, id, MSM_PING);
 }
 
 
-void HandlerTerminate(void *)
+void HandlerTerminate(uint, void *)
 {
     TheServer.Stop();
 }

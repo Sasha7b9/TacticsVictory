@@ -112,6 +112,14 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 }
 
 
+void Server::SendAnswer(void *bev, uint id, pchar message)
+{
+    bufferevent_write((struct bufferevent *)bev, &id, 4);
+
+    SendString(bev, message);
+}
+
+
 void Server::SendString(void *bufevnt, pchar message)
 {
     uint size = (uint)std::strlen(message);
@@ -153,18 +161,20 @@ static void ProcessClient(ClientInfo &info)
 {
     std::vector<uint8> &data = info.data;
 
-    while (data.size() > 4)
+    while (data.size() > 8)         // Если принято данных больше, чем занимают id и размер данных
     {
-        uint size = *(uint *)data.data();
+        uint id = *(uint *)data.data();
+
+        uint size = *(uint *)(data.data() + 4);
 
         if (data.size() >= 4 + size)
         {
             std::vector<char> buffer(size + 1);
 
-            std::memcpy(buffer.data(), data.data() + 4, size);
+            std::memcpy(buffer.data(), data.data() + 8, size);
             buffer[size] = '\0';
 
-            data.erase(data.begin(), data.begin() + 4 + size);
+            data.erase(data.begin(), data.begin() + 8 + size);
 
             SU::SplitToWords(buffer.data(), size, Server::words);
 
@@ -172,7 +182,7 @@ static void ProcessClient(ClientInfo &info)
 
             if (it != Server::handlers.end())
             {
-                it->second(&info);
+                it->second(id, &info);
             }
         }
     }
@@ -212,7 +222,7 @@ static void CallbackError(struct bufferevent *bev, short error, void *)
 }
 
 
-void Server::AppendHandler(pchar command, pFuncVpV handler)
+void Server::AppendHandler(pchar command, pFuncVUpV handler)
 {
     handlers[command] = handler;
 }

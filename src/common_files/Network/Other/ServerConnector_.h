@@ -35,6 +35,10 @@ public:
 
     void Destroy();
 
+    // Посылка запроса. Каждый запрос помечается уникальным 32-х битным идентификатором, который передаётся четырьмя
+    // байтами в начале засылки.
+    void SendRequest(pchar request);
+
     std::string GetAnswer(pchar key);
 
     void SendString(pchar string);
@@ -75,6 +79,8 @@ private:
     pFuncVI funcPing           = nullptr;
 
     State::E state = State::Idle;
+
+    uint last_request_id = 0;
 
     void ExecuteTasks();
 };

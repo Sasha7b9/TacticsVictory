@@ -19,6 +19,8 @@ public:
 
     bool IsConnected() const;
 
+    void Request(uint num, pchar data);
+
     void Transmit(pchar data);
 
     void Transmit(const std::string &data);

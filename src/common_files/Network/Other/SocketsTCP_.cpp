@@ -77,6 +77,14 @@ void ConnectorTCP::Disconnect()
 }
 
 
+void ConnectorTCP::Request(uint num, pchar data)
+{
+    connection->write(&num, sizeof(uint));
+
+    Transmit(data);
+}
+
+
 void ConnectorTCP::Transmit(pchar data)
 {
     int size = SU::Length(data);

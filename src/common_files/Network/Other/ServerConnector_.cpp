@@ -97,6 +97,12 @@ void ServerConnector::SendString(pchar string)
 }
 
 
+void ServerConnector::SendRequest(pchar request)
+{
+    connector.Request(++last_request_id, request);
+}
+
+
 static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, uint8 *state)
 {
     mutex->lock();

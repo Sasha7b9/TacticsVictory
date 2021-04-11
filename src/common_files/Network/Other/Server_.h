@@ -40,17 +40,19 @@ public:
 
     void Stop() { run = false; }
 
-    void AppendHandler(pchar command, pFuncVpV handler);
+    void AppendHandler(pchar command, pFuncVUpV handler);
 
     void Prepare();
 
-    void SendString(void *bev, pchar message);
+    void SendAnswer(void *bev, uint id, pchar message);
 
-    static std::map<std::string, pFuncVpV> handlers;    // Здесь хранятся обработчики запросов по первому слову
+    static std::map<std::string, pFuncVUpV> handlers;   // Здесь хранятся обработчики запросов по первому слову
 
     static std::vector<std::string> words;              // Используется в обработчиках
 
 private:
+
+    void SendString(void *bev, pchar message);
 
     bool run = true;
 };
