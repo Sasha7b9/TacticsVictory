@@ -131,7 +131,7 @@ void Client::ParseArguments()
                 TheGUI->AppendInfo("Connection to master server established");
                 LOGWRITE("Connection to master server established");
 
-                TheClient->SetTasks();
+                TheMasterServer.SetTasks();
             },
             []()
             {
@@ -152,7 +152,7 @@ void Client::ParseArguments()
 }
 
 
-void Client::SetTasks()
+void ServerConnector::SetTasks()
 {
     static TaskMasterServer taskPing = { 1000,
         []()

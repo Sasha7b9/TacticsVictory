@@ -31,6 +31,8 @@ public:
 
     void Connect();
 
+    void SetTasks();
+
     void Update();
 
     void Destroy();

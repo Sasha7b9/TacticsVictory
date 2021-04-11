@@ -20,8 +20,6 @@ public:
 
     void SetWindowTitleAndIcon();
 
-    void SetTasks();
-
 private:
 
     void OpenLog();
