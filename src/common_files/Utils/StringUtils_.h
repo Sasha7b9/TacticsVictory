@@ -5,7 +5,7 @@ namespace SU
 {
     char *Strcat(char *dest, pchar source);
 
-    void SplitToWords(pchar symbols, uint number, std::vector<std::string> &out);
+    void SplitToWords(pchar text, std::vector<std::string> &out);
 
     int Length(pchar str);
 

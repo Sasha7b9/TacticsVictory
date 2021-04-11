@@ -169,7 +169,7 @@ void ServerConnector::ReceiveData()
 
     uint8 buffer[SIZE_CHUNK];
 
-    uint received = connector.Receive(buffer, SIZE_CHUNK);
+    ssize_t received = connector.Receive(buffer, SIZE_CHUNK);
 
     while (received > 0)
     {

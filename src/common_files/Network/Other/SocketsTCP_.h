@@ -26,7 +26,7 @@ public:
 
     // Делает попытку приёма size байт в массив data. Возвращает количество реально принятых байт.
     // В случае ошибки возрващает -1
-    uint Receive(void *data, uint size);
+    ssize_t Receive(void *data, uint size);
 
 private:
 

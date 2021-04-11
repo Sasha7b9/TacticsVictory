@@ -90,9 +90,9 @@ void ConnectorTCP::Transmit(const void *data, uint size)
 }
 
 
-uint ConnectorTCP::Receive(void *data, uint size)
+ssize_t ConnectorTCP::Receive(void *data, uint size)
 {
-    return (uint)connection->read_n(data, size);
+    return connection->read_n(data, size);
 }
 
 

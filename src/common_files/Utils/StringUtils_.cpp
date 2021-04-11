@@ -14,15 +14,17 @@ char *SU::Strcat(char *dest, pchar source)
 }
 
 
-void SU::SplitToWords(pchar symbols, uint number, std::vector<std::string> &out)
+void SU::SplitToWords(pchar text, std::vector<std::string> &out)
 {
     out.clear();
     std::string token;
     std::string input;
 
-    for (uint i = 0; i < number; i++)
+    size_t number = std::strlen(text);
+
+    for (size_t i = 0; i < number; i++)
     {
-        input.push_back(*symbols++);
+        input.push_back(*text++);
     }
 
     input.push_back(' ');

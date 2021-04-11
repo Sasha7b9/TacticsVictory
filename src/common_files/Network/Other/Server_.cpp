@@ -112,21 +112,20 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 }
 
 
-void Server::SendAnswer(void *bev, uint id, pchar message)
+void Server::SendAnswer(void *bev, uint id, pchar message, void *data, uint size_data)
 {
     bufferevent_write((struct bufferevent *)bev, &id, 4);
 
-    SendString(bev, message);
-}
+    uint full_size = (uint)std::strlen(message) + 1 + size_data;
 
+    bufferevent_write((struct bufferevent *)bev, &full_size, 4);
 
-void Server::SendString(void *bufevnt, pchar message)
-{
-    uint size = (uint)std::strlen(message);
+    bufferevent_write((struct bufferevent *)bev, message, std::strlen(message) + 1);
 
-    bufferevent_write((struct bufferevent *)bufevnt, &size, 4);
-
-    bufferevent_write((struct bufferevent *)bufevnt, message, size);
+    if (data)
+    {
+        bufferevent_write((struct bufferevent *)bev, data, size_data);
+    }
 }
 
 
@@ -174,7 +173,7 @@ static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data)
 {
     uint size = GetSize(received);
 
-    data.resize(size + 1);
+    data.resize(size);
 
     std::memcpy(data.data(), received.data() + 8, size);
 
@@ -196,8 +195,7 @@ static void ProcessClient(ClientInfo &info)
         {
             MoveData(received, info.message);
 
-            SU::SplitToWords((char *)info.message.data(), (uint)std::strlen((char *)info.message.data()),
-                info.words);
+            SU::SplitToWords((char *)info.message.data(), info.words);
 
             auto it = Server::handlers.find(info.words[0]);
 
@@ -250,4 +248,17 @@ static void CallbackError(struct bufferevent *bev, short error, void *)
 void Server::AppendHandler(pchar command, handlerClient handler)
 {
     handlers[command] = handler;
+}
+
+
+void *ClientInfo::GetRawData()
+{
+    char *string = (char *)message.data();
+
+    if (std::strlen(string) + 1 == message.size())
+    {
+        return nullptr;
+    }
+
+    return message.data() + std::strlen(string) + 1;
 }

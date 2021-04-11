@@ -32,6 +32,8 @@ struct ClientInfo
     std::vector<uint8> message;     // «десь хранитс€ прин€тое сообщение - сначала строка, а потом дополнительные
                                     // данные, если есть
     std::vector<std::string> words; // –азбита€ на слова текстова€ часть сообщени€
+
+    void *GetRawData();             // ¬озвращает указатель на данные, если таковые имеютс€ в сообщении
 };
 
 
@@ -49,13 +51,11 @@ public:
 
     void Prepare();
 
-    void SendAnswer(void *bev, uint id, pchar message);
+    void SendAnswer(void *bev, uint id, pchar message, void *data = nullptr, uint size = 0);
 
     static std::map<std::string, handlerClient> handlers;   // «десь хран€тс€ обработчики запросов по первому слову
 
 private:
-
-    void SendString(void *bev, pchar message);
 
     bool run = true;
 };

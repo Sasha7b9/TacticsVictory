@@ -78,7 +78,7 @@ static void HandlerPing(uint id, ClientInfo &info)
 
     struct bufferevent *bev = (struct bufferevent *)info.benv;
 
-    TheServer.SendAnswer(bev, id, MSM_PING);
+    TheServer.SendAnswer(bev, id, MSM_PING, info.GetRawData(), 4);
 }
 
 
