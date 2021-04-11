@@ -40,9 +40,13 @@ struct SocketAddress
 struct ClientInfo
 {
     SocketAddress address;
+    std::vector<uint8> data;
 };
 
 std::map<void *, ClientInfo> clients;
+
+
+static void ProcessData(ClientInfo &info);
 
 
 void Server::Run()
@@ -139,33 +143,44 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 
 static void CallbackRead(struct bufferevent *bev, void *)
 {
-    uint size = 0;
+    std::vector<uint8> &data = clients[bev].data;
 
-    size_t readed = bufferevent_read(bev, &size, 4);
+#define SIZE_CHUNK 1024
 
-    while (readed != 0)
+    uint8 buffer[SIZE_CHUNK];
+
+    size_t readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
+
+    while (readed)
     {
-        if (readed != 4)
+        data.insert(data.end(), &buffer[0], &buffer[readed]);
+
+        readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
+    }
+
+    ProcessData(clients[bev]);
+}
+
+
+static void ProcessData(ClientInfo &info)
+{
+    std::vector<uint8> &data = info.data;
+
+    while (data.size() > 4)
+    {
+        uint size = *(uint *)data.data();
+
+        if (data.size() >= 4 + size)
         {
-            LOGERRORF("Readed %d bytes, but not 4", readed);
+            std::vector<char> buffer(size + 1);
+
+            std::memcpy(buffer.data(), data.data() + 4, size);
+            buffer[size] = '\0';
+
+            LOGWRITEF("Received \"%s\" from %s", buffer.data(), info.address.ToString().c_str());
+
+            data.erase(data.begin(), data.begin() + 4 + size);
         }
-
-        char *buffer = (char *)malloc(size + 1);
-
-        readed = bufferevent_read(bev, buffer, size);
-
-        if (readed != size)
-        {
-            LOGERRORF("Readed %d bytes, but not %d", readed, size);
-        }
-
-        buffer[readed] = 0;
-
-        LOGWRITEF("Received string : %s", buffer);
-
-        readed = bufferevent_read(bev, &size, 4);
-
-        free(buffer);
     }
 }
 
@@ -175,14 +190,12 @@ static void CallbackError(struct bufferevent *bev, short error, void *)
     if (error & BEV_EVENT_READING)
     {
         LOGWRITEF("Client %s disconnected", clients[bev].address.ToString().c_str());
+
+        clients.erase(bev);
     }
     else if (error & BEV_EVENT_WRITING)
     {
         LOGERROR("BEV_EVENT_WRITING");
-    }
-    else if (error & BEV_EVENT_EOF)
-    {
-        LOGERROR("BEV_EVENT_EOF");
     }
     else if (error & BEV_EVENT_EOF)
     {
