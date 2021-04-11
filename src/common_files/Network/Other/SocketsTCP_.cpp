@@ -90,9 +90,20 @@ void ConnectorTCP::Transmit(const void *data, uint size)
 }
 
 
-ssize_t ConnectorTCP::Receive(void *data, uint size, int flags)
+ssize_t ConnectorTCP::Receive(void *data, uint size)
 {
-    return connection->read(data, size, flags);
+    fd_set set = { 1, { connection->handle() } };
+
+    TIMEVAL time = { 0, 1000 };
+
+    int ready = ::select(0, &set, 0, 0, &time);
+
+    if (ready == 1)
+    {
+        return connection->read(data, size);
+    }
+
+    return 0;
 }
 
 
