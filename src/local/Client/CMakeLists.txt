@@ -65,7 +65,8 @@ file(GLOB INPUT                       ../../common_files/Input/Mouse_.*
                                                          Input/*.*)
 file(GLOB NETWORK                     ../../common_files/Network/Other/NetworkTypes_.*
                                       ../../common_files/Network/Other/ServerConnector_.*
-                                      ../../common_files/Network/Other/SocketsTCP_.*)
+                                      ../../common_files/Network/Other/SocketsTCP_.*
+                                                         Network/*.*)
 file(GLOB SCENE                                          Scene/*.*)
 file(GLOB SCENE_CAMERAS                                  Scene/Cameras/*.*)
 file(GLOB UTILS                       ../../common_files/Utils/GlobalFunctions_.*

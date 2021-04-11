@@ -152,27 +152,6 @@ void Client::ParseArguments()
 }
 
 
-void ServerConnector::SetTasks()
-{
-    static TaskMasterServer taskPing = { 1000,
-        []()
-        {
-            int64 now = GF::Timer::TimeMS();
-
-            return TheMasterServer.SendRequest(MSG_NTW_PING, &now, 4);
-        },
-        [](pchar, void *data, uint)
-        {
-            uint prev_time = *((uint *)data);
-
-            LOGWRITEF("ping = %d ms", GF::Timer::TimeMS() - prev_time);
-        }
-    };
-
-    TheMasterServer.SetTask(&taskPing);
-}
-
-
 void Client::Stop()
 {
     TheSettings.Unload();
