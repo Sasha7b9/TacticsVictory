@@ -14,13 +14,13 @@ std::map<std::string, Server::handlerClient> Server::handlers;
 
 void Server::Prepare()
 {
-    AppendHandler("ping", HandlerPing);
-}
+    AppendHandler(MSG_NTW_PING, HandlerPing);
+};
 
 
 static void HandlerPing(uint id, ClientInfo &info)
 {
     struct bufferevent *bev = (struct bufferevent *)info.benv;
 
-    TheServer.SendAnswer(bev, id, MSM_PING, info.GetRawData(), 4);
+    TheServer.SendAnswer(bev, id, MSG_NTW_PING, info.GetRawData(), 4);
 }
