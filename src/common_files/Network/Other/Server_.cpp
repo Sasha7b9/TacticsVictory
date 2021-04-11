@@ -120,7 +120,7 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
         ClientInfo info;
         info.address.sin = *((sockaddr_in *)&ss);
 
-        LOGWRITEF("Connection from %s accepted", info.address.ToString().c_str());
+        LOGWRITEF("Client %s connected", info.address.ToString().c_str());
 
         clients[bev] = info;
     }
@@ -174,8 +174,7 @@ static void CallbackError(struct bufferevent *bev, short error, void *)
 {
     if (error & BEV_EVENT_READING)
     {
-        LOGERROR("BEV_EVENT_READING");
-        LOGWRITEF("Closed connetion %s", clients[bev].address.ToString().c_str());
+        LOGWRITEF("Client %s disconnected", clients[bev].address.ToString().c_str());
     }
     else if (error & BEV_EVENT_WRITING)
     {
