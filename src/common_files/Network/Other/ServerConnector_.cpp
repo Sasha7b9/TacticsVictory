@@ -202,7 +202,7 @@ void ServerConnector::ProcessData()
 
                 uint size_buffer = 0;
 
-                if (std::strlen(answer) + 1 > size_answer)
+                if (std::strlen(answer) + 1 < size_answer)
                 {
                     buffer = data.data() + 4 + 4 + std::strlen(answer) + 1;
 
@@ -234,8 +234,6 @@ void ServerConnector::ExecuteTasks()
     {
         if (now >= task->prev_time + task->delta_time)
         {
-            mutex.lock();
-
             uint id = task->request();
 
             task->prev_time = now;
@@ -244,8 +242,6 @@ void ServerConnector::ExecuteTasks()
             {
                 active_tasks[id] = task;
             }
-
-            mutex.unlock();
         }
     }
 }
