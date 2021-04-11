@@ -102,28 +102,21 @@ void ServerConnector::SendString(pchar string)
 
 static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, uint8 *state)
 {
-    using namespace std::chrono;
     mutex->lock();
-    auto start = system_clock::now();
 
-    GF::Timer::TimeStart();
+    int64 start = GF::Timer::TimeMS();
 
     connector->Transmit(MSM_PING);
-    std::string result = connector->Receive();
 
-    LOGWRITEF("Time received answer ping %d ms", GF::Timer::DeltaMS());
+    std::string result = connector->Receive();
 
     if (result == MSM_PING)
     {
-        LOGWRITE("Message ping received");
-
         *state = ServerConnector::State::GetPing;
-        auto end = system_clock::now();
-        *ping = (int)duration_cast<milliseconds>(end - start).count();
+        *ping = (int)(GF::Timer::TimeMS() - start);
     }
     else
     {
-        LOGERROR("Not answer for ping");
         *state = ServerConnector::State::EventDisconnect;
     }
 
@@ -181,7 +174,7 @@ void ServerConnector::Update()
                 std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
                 thread.detach();
 
-                prev_time = GF::Timer::TimeMS() - prev_time;
+                prev_time = GF::Timer::TimeMS();
             }
 
             ExecuteTasks();
