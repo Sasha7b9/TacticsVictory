@@ -10,6 +10,7 @@ static const char MESSAGE[] = "Hello, World!";
 
 // Вызывается при новом соединении
 static void CallbackRead(struct bufferevent *, void *);
+static void CallbackWrite(struct bufferevent *, void *);
 static void CallbackAccept(evutil_socket_t listener, short event, void *arg);
 static void CallbackError(struct bufferevent *bev, short what, void *ctx);
 static void CallbackLog(int, const char *);
@@ -96,8 +97,8 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
     {
         evutil_make_socket_nonblocking(fd);
         struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
-        bufferevent_setcb(bev, CallbackRead, NULL, CallbackError, NULL);
-        bufferevent_setwatermark(bev, EV_READ, 0, MAX_LINE);
+        bufferevent_setcb(bev, CallbackRead, CallbackWrite, CallbackError, NULL);
+//        bufferevent_setwatermark(bev, EV_READ | EV_WRITE, 0, 2);
         bufferevent_enable(bev, EV_READ | EV_WRITE);
 
         ClientInfo info;
@@ -139,6 +140,12 @@ static void CallbackRead(struct bufferevent *bev, void *)
     }
 
     ProcessClient(clients[bev]);
+}
+
+
+static void CallbackWrite(struct bufferevent *, void *)
+{
+    LOGWRITE(__FUNCTION__);
 }
 
 

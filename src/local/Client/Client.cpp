@@ -10,6 +10,7 @@
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/ServerConnector_.h"
 #include "Scene/Cameras/Camera.h"
+#include "Utils/GlobalFunctions_.h"
 
 
 #pragma warning(push)
@@ -127,7 +128,7 @@ void Client::ParseArguments()
                 TheGUI->AppendInfo("Connection to master server established");
                 LOGWRITE("Connection to master server established");
 
-//                TheClient->SetTasks();
+                TheClient->SetTasks();
             },
             []()
             {
@@ -155,16 +156,28 @@ void Client::ParseArguments()
 
 void Client::SetTasks()
 {
-    static TaskMasterServer task = { 0, 1000,
+//    static TaskMasterServer task = { 0, 1000,
+//        []()
+//        {
+//            TheMasterServer.SendString(MSM_GET_LIVINGROMS);
+//            std::string answer = TheMasterServer.GetAnswer();
+//            TheMenu->pageFindServer->SetServersInfo(answer);
+//        }
+//    };
+//
+//    TheMasterServer.SetTask(&task);
+
+    static TaskMasterServer taskPing = { 0, 1000,
         []()
         {
-            TheMasterServer.SendString(MSM_GET_LIVINGROMS);
+            TheMasterServer.SendString(MSM_PING);
+            int64 start = GF::Timer::TimeMS();
             std::string answer = TheMasterServer.GetAnswer();
-            TheMenu->pageFindServer->SetServersInfo(answer);
+            LOGWRITEF(": ping = %d", GF::Timer::TimeMS() - start);
         }
     };
 
-    TheMasterServer.SetTask(&task);
+    TheMasterServer.SetTask(&taskPing);
 }
 
 

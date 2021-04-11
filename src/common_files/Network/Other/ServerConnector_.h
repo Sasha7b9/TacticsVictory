@@ -31,6 +31,8 @@ public:
 
     void Connect();
 
+    void Update();
+
     void Destroy();
 
     std::string GetAnswer(pchar key);
@@ -40,8 +42,6 @@ public:
     std::string GetAnswer();
 
     bool IsConnected();
-
-    void Update();
 
     // Выполнять задачу через заданные промежутки времени
     void SetTask(TaskMasterServer *task);
