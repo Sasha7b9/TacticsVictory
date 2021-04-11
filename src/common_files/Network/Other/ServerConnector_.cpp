@@ -179,7 +179,41 @@ void ServerConnector::ReceiveData()
 
 void ServerConnector::ProcessData()
 {
+    if (data.size() > 4 + 4)        // Если принято данных больше чем id и количество байт в сообщении
+    {
+        uint id = *((uint *)data.data());
 
+        uint size_answer = *((uint *)(data.data() + 4));
+
+        if (data.size() >= 4 + 4 + size_answer)
+        {
+            auto it = active_tasks.find(id);
+
+            if (it != active_tasks.end())
+            {
+                pchar answer = (pchar)data.data() + 4 + 4;
+
+                void *buffer = nullptr;
+
+                uint size_buffer = 0;
+
+                if (std::strlen(answer) + 1 > size_answer)
+                {
+                    buffer = data.data() + 4 + 4 + std::strlen(answer) + 1;
+
+                    size_buffer = size_answer - (uint)std::strlen(answer) - 1;
+                }
+
+                it->second->handler_answer(answer, buffer, size_buffer);
+            }
+            else
+            {
+                LOGERRORF("Handler for id %d not found", id);
+            }
+
+            data.erase(data.begin(), data.begin() + 4 + 4 + size_answer);
+        }
+    }
 }
 
 
