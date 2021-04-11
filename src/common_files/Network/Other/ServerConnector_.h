@@ -63,7 +63,7 @@ private:
     std::string host;
     uint16 port;                    // ѕорт засылки в сервер. порт чтени€ на 1 больше
 
-    std::vector<TaskMasterServer *> tasks;
+    std::vector<TaskMasterServer *> all_tasks;      // «десь периодически выполн€емые задачи
 
     bool destroy = false;
     std::mutex  mutex;              // ƒанный mutex будет захвачен, пока сервер находитс€ в процессе соединени€

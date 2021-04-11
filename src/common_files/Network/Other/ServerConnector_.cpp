@@ -140,7 +140,7 @@ void ServerConnector::Update()
 
     case State::EventDisconnect:
         state = State::Idle;
-        tasks.clear();
+        all_tasks.clear();
         funcPing(ping);
         funcDisconnection();
         break;
@@ -185,7 +185,7 @@ void ServerConnector::ExecuteTasks()
 {
     int64 now = GF::Timer::TimeMS();
 
-    for each (TaskMasterServer * task in tasks)
+    for each (TaskMasterServer * task in all_tasks)
     {
         if (now >= task->prev_time + task->delta_time)
         {
@@ -203,5 +203,5 @@ void ServerConnector::ExecuteTasks()
 
 void ServerConnector::SetTask(TaskMasterServer *task)
 {
-    tasks.push_back(task);
+    all_tasks.push_back(task);
 }
