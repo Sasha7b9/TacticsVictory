@@ -116,7 +116,7 @@ void Client::ParseArguments()
 
     if (arguments.Size() != 0)
     {
-        TheMasterServer.SetAddress(arguments[0].CString(), (uint16)TheSettings.GetInt("main port"));
+        TheMasterServer.SetAddress(arguments[0].CString(), (uint16)TheSettings.GetInt("master_server", "port"));
 
         TheMasterServer.SetCallbacks
         (

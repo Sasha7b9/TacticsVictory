@@ -3,15 +3,7 @@
 
 
 // Обрабатываемые мастер-сервером запросы
-#define MSM_CLOSE_CONNECTION     "close connection"         // отконнектиться от master
-#define MSM_GET_ADDRESS_UPLOADER "get address uploader"     // вернуть адрес uploader
-#define MSM_GET_ADDRESS_HANGAR   "get address hangar"       // вернуть адрес hangar
-#define MSM_GET_ADDRESS_DATABASE "get address database"     // вернуть адрес database
-#define MSM_GET_ADDRESS_BATTLE   "get address battle"       // вернуть адрес боя
-#define MSM_GET_LIVINGROMS       "get livingrooms"          // возвращает список доступных гостиных
 #define MSM_PING                 "ping"                     // запрос пинга
-#define MSM_SEND_LIVINGROOM_INFO "send livingroom info"
-#define MSM_TERMINCATE           "terminate"                // завершить выполнение master
 
 
 // В таких структурах будет храниться информация о серверах на стороне Мастер-сервера
