@@ -33,12 +33,11 @@ static void HandleInfoLivingRoms(uint id, ClientInfo &info)
         if (!ci.name.empty())
         {
             stream << ci.name;
+            stream << "|";
         }
-
-        stream << "|";
     }
 
-    TheServer.SendAnswer(info.benv, id, MSG_NTW_INFO_LIVINGROOM, result.c_str());
+    TheServer.SendAnswer(info.benv, id, MSG_NTW_INFO_LIVINGROOM, stream.str().c_str());
 }
 
 
@@ -54,5 +53,5 @@ static void HandlerSetNameLivingRoom(uint, ClientInfo &info)
 
     info.name = name;
 
-    LOGWRITEF("name connected livingroom is %s", name);
+    LOGWRITEF("name connected livingroom is \"%s\"", name);
 }
