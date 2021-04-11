@@ -145,6 +145,7 @@ public:
 	 * @return The number of bytes read on success, or @em -1 on error.
 	 */
 	virtual ssize_t read(void *buf, size_t n);
+	virtual ssize_t read(void *buf, size_t n, int flags);
 	/**
 	 * Best effort attempts to read the specified number of bytes.
 	 * This will make repeated read attempts until all the bytes are read in

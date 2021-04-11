@@ -92,7 +92,12 @@ void ConnectorTCP::Transmit(const void *data, uint size)
 
 ssize_t ConnectorTCP::Receive(void *data, uint size)
 {
-    return connection->read_n(data, size);
+    if (size == 0)
+    {
+        return connection->read(data, 0, MSG_PEEK);
+    }
+
+    return connection->read(data, size);
 }
 
 

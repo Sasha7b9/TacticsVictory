@@ -69,6 +69,16 @@ ssize_t stream_socket::read(void *buf, size_t n)
 	#endif
 }
 
+ssize_t stream_socket::read(void *buf, size_t n, int flags)
+{
+#if defined(_WIN32)
+	return check_ret(::recv(handle(), reinterpret_cast<char *>(buf),
+		int(n), flags));
+#else
+	return check_ret(::recv(handle(), buf, n, 0));
+#endif
+}
+
 // --------------------------------------------------------------------------
 // Attempts to read the requested number of bytes by repeatedly calling
 // read() until it has the data or an error occurs.
