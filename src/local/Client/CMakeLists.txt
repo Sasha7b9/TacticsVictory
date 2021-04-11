@@ -114,7 +114,7 @@ set_target_properties(${PROJECT_NAME}                                           
 set_source_files_properties(${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D} ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS}
                             ${GUI_CONTROLS_SLIDERS} ${GUI_LOGIC} ${GUI_MENU} ${GUI_MENU_MENUSTART}
                             ${GUI_MENU_MENUSTART_MENUPLAY} ${GUI_WINDOWS} ${INPUT} ${NETWORK} ${SCENE} ${SCENE_CAMERAS}
-                            ${UTILS}                                                    PROPERTIES UNITY_GROUP "bucket")
+                            ${UTILS} ${SOCKPP}                                          PROPERTIES UNITY_GROUP "bucket")
 
 include(../../RuntimeLibrary.cmake)
 
