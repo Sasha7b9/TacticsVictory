@@ -165,23 +165,17 @@ void ServerConnector::ReceiveData()
 
     mutex.lock();
 
-    
+    static const int SIZE_CHUNK = 1024;
 
-    char buf[100];
+    char buffer[SIZE_CHUNK];
 
-    ssize_t available_bytes = connector.Receive(buf, 0);
+    ssize_t available_bytes = connector.Receive(buffer, SIZE_CHUNK);
 
-    if (available_bytes > 0)
+    while (available_bytes > 0)
     {
-        std::vector<uint8> buffer((size_t)available_bytes);
+        data.insert(data.end(), buffer, buffer + available_bytes);
 
-        connector.Receive(buffer.data(), (uint)available_bytes);
-
-        data.insert(data.begin(), buffer.begin(), buffer.end());
-    }
-    else
-    {
-        LOGWRITE("Not data for read");
+        available_bytes = connector.Receive(buffer, SIZE_CHUNK);
     }
 
     mutex.unlock();
