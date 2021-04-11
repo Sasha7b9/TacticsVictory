@@ -34,10 +34,10 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
 
     window->AddChild(text);
     
-    IntVector2 sizeSlider = TheSettings.GetIntVector2("menu", "slider", "size");
+    auto sizeSlider = TheSettings.GetIntVector2("menu", "slider", "size");
     if (widthRoller != -1)
     {
-        sizeSlider.x_ = widthRoller;
+        sizeSlider.first = widthRoller;
     }
     slider = SliderInt::Create(window, sizeSlider);
     SubscribeToEvent(slider, E_SLIDERINTCHANGED, URHO3D_HANDLER(SliderWithTextAndButtons, HandleSliderIntChanged));

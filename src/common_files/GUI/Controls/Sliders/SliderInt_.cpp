@@ -97,6 +97,12 @@ void SliderInt::RegisterObject()
 }
 
 
+SharedPtr<SliderInt> SliderInt::Create(UIElement *uielement, const std::pair<int, int> &size)
+{
+    return Create(uielement, IntVector2(size.first, size.second));
+}
+
+
 SharedPtr<SliderInt> SliderInt::Create(UIElement *uielement, const IntVector2 &size)
 {
     SharedPtr<SliderInt> slider(TheUIRoot->CreateChild<SliderInt>());

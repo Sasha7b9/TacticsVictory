@@ -6,6 +6,8 @@
 #include "GUI/Controls/Buttons/ButtonToggled_.h"
 #include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 #include "GUI/Logic/LineTranslator2D_.h"
+#include "GUI/Controls/Label_.h"
+#include "GUI/Controls/Window_.h"
 
 
 WindowT::WindowT(Context *context) :

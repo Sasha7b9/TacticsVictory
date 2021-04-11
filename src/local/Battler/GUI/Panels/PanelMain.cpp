@@ -11,7 +11,9 @@ PanelMain::PanelMain(Context *context) :
 {
     SetName("PanelMain");
 
-    SetFixedSize(TheSettings.GetIntVector2("panel", "main", "size"));
+    auto size = TheSettings.GetIntVector2("panel", "main", "size");
+
+    SetFixedSize(size.first, size.second);
 
     SetMovable(false);
 

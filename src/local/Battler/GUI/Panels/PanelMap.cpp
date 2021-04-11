@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "FileSystem/ConfigurationFile_.h"
 #include "Graphics/2D/Image_.h"
 #include "GUI/Cursor_.h"
 #include "GUI/Panels/PanelMap.h"
@@ -13,7 +14,9 @@ PanelMap::PanelMap(Context *context) :
 {
     SetName("PanelMap");
 
-    SetFixedSize(TheSettings.GetIntVector2("panel", "map", "size"));
+    auto size = TheSettings.GetIntVector2("panel", "map", "size");
+
+    SetFixedSize(size.first, size.second);
 
     SetMovable(false);
 

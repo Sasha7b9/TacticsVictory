@@ -255,9 +255,9 @@ bool ConfigurationFile::GetVectorStrings(pchar key, std::vector<std::string> &st
 }
 
 
-IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, pchar key4)
+std::pair<int, int> ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, pchar key4)
 {
-    IntVector2 result(0, 0);
+    std::pair<int, int> result(0, 0);
 
     auto it = FindMember(key1, key2, key3, key4);
 
@@ -273,7 +273,7 @@ IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, 
 
                 if (elem->IsInt())
                 {
-                    result.x_ = elem->GetInt();
+                    result.first = elem->GetInt();
                 }
                 else
                 {
@@ -284,7 +284,7 @@ IntVector2 ConfigurationFile::GetIntVector2(pchar key1, pchar key2, pchar key3, 
 
                 if (elem->IsInt())
                 {
-                    result.y_ = elem->GetInt();
+                    result.second = elem->GetInt();
                 }
                 else
                 {

@@ -14,7 +14,9 @@ GovernorCell::GovernorCell(Context *context) :
     SetStyleAuto();
     SetStyle("WindowGovernorCell");
     //ApplyAttributes();
-    SetFixedSize(TheSettings.GetIntVector2("menu", "governor", "cell", "size"));
+
+    auto size = TheSettings.GetIntVector2("menu", "governor", "cell", "size");
+    SetFixedSize({ size.first, size.second });
 
     label = new Text(TheContext);
     label->SetFont(TheFont, 8);

@@ -17,6 +17,7 @@ public:
     static void RegisterObject();
 
     static SharedPtr<SliderInt> Create(UIElement *uielement, const IntVector2 &size);
+    static SharedPtr<SliderInt> Create(UIElement *uielement, const std::pair<int, int> &size);
 
     void SetRange(int min, int max, int step = 1);
     virtual void OnDragMove(const IntVector2 &position, const IntVector2 &screenPosition, const IntVector2 &deltaPos,

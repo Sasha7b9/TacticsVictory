@@ -6,10 +6,6 @@
 #pragma warning(push, 0)
 #endif
 
-#include <Urho3D/Math/Vector2.h>
-
-using namespace Urho3D;
-
 #include <cstdarg>
 #include <iostream>
 #include <istream>
