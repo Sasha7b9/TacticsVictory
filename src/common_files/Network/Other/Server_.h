@@ -26,10 +26,10 @@ struct SocketAddress
 
 struct ClientInfo
 {
-    SocketAddress      address;
-    std::vector<uint8> data;
-    void              *benv;
-//    std::vector<uint8> data;        // «десь хранитс€ прин€тое сообщение - сначала строка, а потом дополнительные
+    SocketAddress      address;     // јдрес клиента
+    std::vector<uint8> bindata;     // Ќепосредственно прин€тые данные
+    void              *benv;        // Ѕуфер событий libevent
+    std::vector<uint8> message;     // «десь хранитс€ прин€тое сообщение - сначала строка, а потом дополнительные
                                     // данные, если есть
 };
 

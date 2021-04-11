@@ -132,7 +132,7 @@ void Server::SendString(void *bufevnt, pchar message)
 
 static void CallbackRead(struct bufferevent *bev, void *)
 {
-    std::vector<uint8> &data = clients[bev].data;
+    std::vector<uint8> &data = clients[bev].bindata;
 
 #define SIZE_CHUNK 1024
 
@@ -184,7 +184,7 @@ static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data)
 
 static void ProcessClient(ClientInfo &info)
 {
-    std::vector<uint8> &received = info.data;
+    std::vector<uint8> &received = info.bindata;
 
     while (received.size() > 4 + 4)         // Если принято данных больше, чем занимают id и размер данных
     {
