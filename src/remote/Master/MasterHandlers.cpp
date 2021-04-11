@@ -7,6 +7,7 @@
 
 
 static void HandlerPing(uint, ClientInfo &);
+static void HandlerSetNameLivingRoom(uint, ClientInfo &);
 
 
 std::map<std::string, Server::handlerClient> Server::handlers;
@@ -14,7 +15,8 @@ std::map<std::string, Server::handlerClient> Server::handlers;
 
 void Server::Prepare()
 {
-    AppendHandler(MSG_NTW_PING, HandlerPing);
+    AppendHandler(MSG_NTW_PING,                HandlerPing);
+    AppendHandler(MSG_NTW_SET_NAME_LIVINGROOM, HandlerSetNameLivingRoom);
 };
 
 
@@ -23,4 +25,11 @@ static void HandlerPing(uint id, ClientInfo &info)
     struct bufferevent *bev = (struct bufferevent *)info.benv;
 
     TheServer.SendAnswer(bev, id, MSG_NTW_PING, info.GetRawData(), 4);
+}
+
+static void HandlerSetNameLivingRoom(uint, ClientInfo &info)
+{
+    char *name = (char *)info.GetRawData();
+
+    info.name = name;
 }

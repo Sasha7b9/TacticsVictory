@@ -45,7 +45,11 @@ void LivingRoom::SetTasks()
 
 void LivingRoom::SendNameToMasterServer()
 {
-//    TheMasterServer.SendRequest(MSG_NTW_SET_NAME_LIVINGROOM, (std::string("LivingRoom") +
-//        std::string(std::rand())).c_str());
-//
+    std::string name;
+
+    std::stringstream stream(name);
+
+    stream << "LivingRoom " << std::rand();
+
+    TheMasterServer.SendRequest(MSG_NTW_SET_NAME_LIVINGROOM, stream.str().c_str());
 }
