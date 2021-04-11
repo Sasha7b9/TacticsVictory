@@ -12,38 +12,11 @@ static const char MESSAGE[] = "Hello, World!";
 static void CallbackRead(struct bufferevent *, void *);
 static void CallbackAccept(evutil_socket_t listener, short event, void *arg);
 static void CallbackError(struct bufferevent *bev, short what, void *ctx);
-static void SendString(void *bufevnt, pchar message);
 static void CallbackLog(int, const char *);
 
 
 #define MAX_LINE 16384
 
-
-struct SocketAddress
-{
-    std::string ToString()
-    {
-        char buffer[100];
-
-        sprintf_s(buffer, 100, "%d.%d.%d.%d:%d", sin.sin_addr.S_un.S_un_b.s_b1,
-            sin.sin_addr.S_un.S_un_b.s_b2,
-            sin.sin_addr.S_un.S_un_b.s_b3,
-            sin.sin_addr.S_un.S_un_b.s_b4,
-            sin.sin_port);
-
-        return std::string(buffer);
-    };
-
-    sockaddr_in sin;
-};
-
-
-struct ClientInfo
-{
-    SocketAddress      address;
-    std::vector<uint8> data;
-    void              *buffer;
-};
 
 std::map<void *, ClientInfo> clients;
 
@@ -134,14 +107,14 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 }
 
 
-//static void SendString(void *bufevnt, pchar message)
-//{
-//    uint size = (uint)std::strlen(message);
-//
-//    bufferevent_write((bufferevent *)bufevnt, &size, 4);
-//
-//    bufferevent_write((bufferevent *)bufevnt, message, size);
-//}
+void Server::SendString(void *bufevnt, pchar message)
+{
+    uint size = (uint)std::strlen(message);
+
+    bufferevent_write((struct bufferevent *)bufevnt, &size, 4);
+
+    bufferevent_write((struct bufferevent *)bufevnt, message, size);
+}
 
 
 static void CallbackRead(struct bufferevent *bev, void *)

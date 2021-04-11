@@ -73,11 +73,15 @@ static void HandlerGet(void *)
 }
 
 
-static void HandlerPing(void *)
+static void HandlerPing(void *ci)
 {
     LOGWRITE("Request for ping");
 
-//    sock->Transmit(std::string("ping"));
+    ClientInfo &info = *((ClientInfo *)ci);
+
+    struct bufferevent *bev = (struct bufferevent *)info.buffer;
+
+    TheServer.SendString(bev, "ping");
 }
 
 
