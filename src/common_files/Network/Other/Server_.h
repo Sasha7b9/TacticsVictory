@@ -2,23 +2,9 @@
 #pragma once
 
 
-struct ServerInfo;
-
-
 struct SocketAddress
 {
-    std::string ToString()
-    {
-        char buffer[100];
-
-        sprintf_s(buffer, 100, "%d.%d.%d.%d:%d", sin.sin_addr.S_un.S_un_b.s_b1,
-            sin.sin_addr.S_un.S_un_b.s_b2,
-            sin.sin_addr.S_un.S_un_b.s_b3,
-            sin.sin_addr.S_un.S_un_b.s_b4,
-            sin.sin_port);
-
-        return std::string(buffer);
-    };
+    std::string ToString() const;
 
     sockaddr_in sin;
 };

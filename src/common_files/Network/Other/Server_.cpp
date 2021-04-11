@@ -25,6 +25,20 @@ std::map<void *, ClientInfo> clients;
 static void ProcessClient(ClientInfo &info);
 
 
+std::string SocketAddress::ToString() const
+{
+    char buffer[100];
+
+    sprintf_s(buffer, 100, "%d.%d.%d.%d:%d", sin.sin_addr.S_un.S_un_b.s_b1,
+        sin.sin_addr.S_un.S_un_b.s_b2,
+        sin.sin_addr.S_un.S_un_b.s_b3,
+        sin.sin_addr.S_un.S_un_b.s_b4,
+        sin.sin_port);
+
+    return std::string(buffer);
+}
+
+
 void Server::Run()
 {
     event_set_log_callback(CallbackLog);
