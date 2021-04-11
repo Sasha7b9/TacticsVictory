@@ -5,9 +5,6 @@
 #include "Utils/GlobalFunctions_.h"
 
 
-static std::vector<TaskMasterServer *> tasks;
-
-
 void ServerConnector::Destroy()
 {
     destroy = true;

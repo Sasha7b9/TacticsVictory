@@ -65,6 +65,8 @@ private:
     std::string host;
     uint16 port;                    // Порт засылки в сервер. порт чтения на 1 больше
 
+    std::vector<TaskMasterServer *> tasks;
+
     bool destroy = false;
     std::mutex  mutex;              // Данный mutex будет захвачен, пока сервер находится в процессе соединения
     pFuncVV funcFailConnection = nullptr;   // Вызывается в случае неуспешной попытки соединения
