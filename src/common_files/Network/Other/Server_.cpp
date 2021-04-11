@@ -39,14 +39,14 @@ std::string ClientInfo::SocketAddress::ToString() const
 }
 
 
-void Server::Run()
+void Server::Run(uint16 port)
 {
     event_set_log_callback(CallbackLog);
 
     struct sockaddr_in sin;
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = 0;
-    sin.sin_port = htons(40000);
+    sin.sin_port = htons(port);
 
 #ifdef WIN32
     WSADATA wsa_data;

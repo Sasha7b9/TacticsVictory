@@ -27,7 +27,7 @@ public:
 
     typedef void (*handlerClient) (uint, ClientInfo &);
 
-    void Run();
+    void Run(uint16 port);
 
     void Stop() { run = false; }
 

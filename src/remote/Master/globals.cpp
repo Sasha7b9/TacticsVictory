@@ -6,3 +6,4 @@
 
 ConfigurationFile TheConfig;
 Server            TheServer;
+ConfigurationFile TheSettings;

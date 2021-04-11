@@ -7,3 +7,4 @@ class Server;
 
 extern ConfigurationFile TheConfig;
 extern Server            TheServer;
+extern ConfigurationFile TheSettings;
