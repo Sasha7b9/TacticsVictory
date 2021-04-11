@@ -161,7 +161,13 @@ void Client::SetTasks()
         {
             int64 now = GF::Timer::TimeMS();
 
-            TheMasterServer.SendRequest(MSM_PING, &now, 4);
+            return TheMasterServer.SendRequest(MSM_PING, &now, 4);
+        },
+        [](pchar, void *data, uint)
+        {
+            uint prev_time = *((uint *)data);
+
+            LOGWRITEF("ping = %d ms", GF::Timer::TimeMS() - prev_time);
         }
     };
 

@@ -10,9 +10,10 @@
 
 struct TaskMasterServer
 {
-    int64       delta_time;     // Через такие промежутки времени выполнять задание
-    pFuncVV     func;           // Обработка ответа от мастер-сервера
-    int64       prev_time;
+    int64      delta_time = 0;     // Через такие промежутки времени выполнять задание
+    pFuncUV    request = 0;        // Обработчик запроса. Должен возвращать id запроса
+    pFuncpCpVU handler_answer = 0; // Обработчик ответа
+    int64      prev_time = 0;
 };
 
 
@@ -36,7 +37,7 @@ public:
 
     // Посылка запроса. Каждый запрос помечается уникальным 32-х битным идентификатором, который передаётся четырьмя
     // байтами в начале засылки.
-    void SendRequest(pchar request, const void *data = nullptr, uint size = 0);
+    uint SendRequest(pchar request, const void *data = nullptr, uint size = 0);
 
     bool IsConnected();
 
@@ -63,7 +64,8 @@ private:
     std::string host;
     uint16 port;                    // Порт засылки в сервер. порт чтения на 1 больше
 
-    std::vector<TaskMasterServer *> all_tasks;      // Здесь периодически выполняемые задачи
+    std::vector<TaskMasterServer *>    all_tasks;       // Здесь периодически выполняемые задачи
+    std::map<uint, TaskMasterServer *> active_tasks;    // Задачи, ожидающие ответа
 
     bool destroy = false;
     std::mutex  mutex;              // Данный mutex будет захвачен, пока сервер находится в процессе соединения

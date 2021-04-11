@@ -70,7 +70,7 @@ void ServerConnector::Connect()
 }
 
 
-void ServerConnector::SendRequest(pchar request, const void *buffer, uint size_buffer)
+uint ServerConnector::SendRequest(pchar request, const void *buffer, uint size_buffer)
 {
     mutex.lock();
 
@@ -78,18 +78,20 @@ void ServerConnector::SendRequest(pchar request, const void *buffer, uint size_b
 
     connector.Transmit(&last_request_id, 4);
 
-    uint size = (uint)std::strlen(request) + size_buffer;
+    uint size_full = (uint)std::strlen(request) + size_buffer + 1;
 
-    connector.Transmit(&size, 4);
+    connector.Transmit(&size_full, 4);
 
-    connector.Transmit(request, (uint)std::strlen(request));
+    connector.Transmit(request, (uint)std::strlen(request) + 1);
 
     if (buffer)
     {
-        connector.Transmit(buffer, size);
+        connector.Transmit(buffer, size_buffer);
     }
 
     mutex.unlock();
+
+    return last_request_id;
 }
 
 
@@ -191,9 +193,14 @@ void ServerConnector::ExecuteTasks()
         {
             mutex.lock();
 
-            task->func();
+            uint id = task->request();
 
             task->prev_time = now;
+
+            if (task->handler_answer)
+            {
+                active_tasks[id] = task;
+            }
 
             mutex.unlock();
         }
