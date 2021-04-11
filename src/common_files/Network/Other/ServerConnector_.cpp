@@ -171,10 +171,9 @@ void ServerConnector::Update()
 
     case State::InConnection:
         {
-            using namespace std::chrono;
-            static auto prev_time = system_clock::now();
-            auto now = system_clock::now();
-            int64 delta = duration_cast<milliseconds>(now - prev_time).count();
+            static int64 prev_time = GF::Timer::TimeMS();
+
+            int64 delta = GF::Timer::TimeMS() - prev_time;
 
             if (delta >= 1000)
             {
@@ -182,7 +181,7 @@ void ServerConnector::Update()
                 std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
                 thread.detach();
 
-                prev_time = now;
+                prev_time = GF::Timer::TimeMS() - prev_time;
             }
 
             ExecuteTasks();
@@ -227,8 +226,6 @@ void ServerConnector::ExecuteTasks()
             mutex.unlock();
         }
     }
-
-    LOGWRITEF("Time processing tasks %d ms", GF::Timer::TimeMS() - now);
 }
 
 
