@@ -22,7 +22,20 @@ static TaskMasterServer taskPing = { 1000,
 };
 
 
+static TaskMasterServer taskGetInfoLivingRooms = { 1000,
+    []()
+    {
+        return TheMasterServer.SendRequest(MSG_NTW_INFO_LIVINGROOM);
+    },
+    [](pchar, void *, uint)
+    {
+
+    }
+};
+
+
 void ServerConnector::SetTasks()
 {
     TheMasterServer.SetTask(&taskPing);
+    TheMasterServer.SetTask(&taskGetInfoLivingRooms);
 }
