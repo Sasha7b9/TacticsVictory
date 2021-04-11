@@ -105,8 +105,13 @@ static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, ui
     using namespace std::chrono;
     mutex->lock();
     auto start = system_clock::now();
+
+    GF::Timer::TimeStart();
+
     connector->Transmit(MSM_PING);
     std::string result = connector->Receive();
+
+    LOGWRITEF("Time received answer ping %d ms", GF::Timer::DeltaMS());
 
     if (result == MSM_PING)
     {

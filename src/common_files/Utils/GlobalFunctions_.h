@@ -4,6 +4,15 @@
 
 namespace GF
 {
+    namespace Timer
+    {
+        // Засекает начальный момент измерения
+        void TimeStart();
+
+        // Возвращает время в миллисекундах, прошедшее с момента вызова TimeStart();
+        int64 DeltaMS();
+    };
+
     void DelayMS(uint delay);
 
 #ifdef U3D

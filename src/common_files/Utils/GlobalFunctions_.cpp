@@ -3,12 +3,29 @@
 #include "Utils/GlobalFunctions_.h"
 
 
+
+static std::chrono::system_clock::time_point time_start;
+
+
+
 void GF::DelayMS(uint delay)
 {
     using namespace std::chrono;
     using namespace std::this_thread;
 
     sleep_until(system_clock::now() + milliseconds(delay));
+}
+
+
+void GF::Timer::TimeStart()
+{
+    time_start = std::chrono::system_clock::now();
+}
+
+
+int64 GF::Timer::DeltaMS()
+{
+    return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - time_start).count();
 }
 
 
