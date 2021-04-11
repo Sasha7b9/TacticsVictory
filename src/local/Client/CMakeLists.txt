@@ -10,9 +10,6 @@ include_directories(.
 
 add_definitions(-DURHO3D_LOGGING -DLOG_U3D -DU3D -DGRAPHICS)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
-set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
-
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /STACK:100000000")
 
 add_compile_options(/wd4625)    # 'derived class' : copy constructor was implicitly defined as deleted because a
@@ -112,6 +109,12 @@ add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM}
                 ${INPUT} ${NETWORK} ${UTILS}
                 ${SCENE} ${SCENE_CAMERAS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+
+set_target_properties(${PROJECT_NAME}                                                 PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D} ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS}
+                            ${GUI_CONTROLS_SLIDERS} ${GUI_LOGIC} ${GUI_MENU} ${GUI_MENU_MENUSTART}
+                            ${GUI_MENU_MENUSTART_MENUPLAY} ${GUI_WINDOWS} ${INPUT} ${NETWORK} ${SCENE} ${SCENE_CAMERAS}
+                            ${UTILS}                                                    PROPERTIES UNITY_GROUP "bucket")
 
 include(../../RuntimeLibrary.cmake)
 
