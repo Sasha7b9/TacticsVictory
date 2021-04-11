@@ -46,7 +46,7 @@ struct ClientInfo
 std::map<void *, ClientInfo> clients;
 
 
-static void ProcessData(ClientInfo &info);
+static void ProcessClient(ClientInfo &info);
 
 
 void Server::Run()
@@ -158,11 +158,11 @@ static void CallbackRead(struct bufferevent *bev, void *)
         readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
     }
 
-    ProcessData(clients[bev]);
+    ProcessClient(clients[bev]);
 }
 
 
-static void ProcessData(ClientInfo &info)
+static void ProcessClient(ClientInfo &info)
 {
     std::vector<uint8> &data = info.data;
 

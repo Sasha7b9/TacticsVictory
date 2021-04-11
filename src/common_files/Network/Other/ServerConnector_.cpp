@@ -72,12 +72,6 @@ static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP * /*conn_in*/,
     if (conn_out->Connect(host, port))
     {
         *state = ServerConnector::State::EventConnection;
-
-        conn_out->Transmit("Test string");
-
-        conn_out->Transmit("Test string 2");
-
-        conn_out->Transmit("Test string 3");
     }
     else
     {
@@ -108,27 +102,27 @@ void ServerConnector::SendString(pchar string)
 }
 
 
-static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, uint8 *state)
-{
-    using namespace std::chrono;
-    mutex->lock();
-    auto start = system_clock::now();
-    connector->Transmit(MSM_PING);
-    std::string result = connector->Receive();
-
-    if (result == MSM_PING)
-    {
-        *state = ServerConnector::State::GetPing;
-        auto end = system_clock::now();
-        *ping = (int)duration_cast<milliseconds>(end - start).count();
-    }
-    else
-    {
-        *state = ServerConnector::State::EventDisconnect;
-    }
-
-    mutex->unlock();
-}
+//static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, uint8 *state)
+//{
+//    using namespace std::chrono;
+//    mutex->lock();
+//    auto start = system_clock::now();
+//    connector->Transmit(MSM_PING);
+//    std::string result = connector->Receive();
+//
+//    if (result == MSM_PING)
+//    {
+//        *state = ServerConnector::State::GetPing;
+//        auto end = system_clock::now();
+//        *ping = (int)duration_cast<milliseconds>(end - start).count();
+//    }
+//    else
+//    {
+//        *state = ServerConnector::State::EventDisconnect;
+//    }
+//
+//    mutex->unlock();
+//}
 
 
 void ServerConnector::Update()
