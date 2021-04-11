@@ -1,5 +1,6 @@
 // 2021/04/11 20:20:59 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "GUI/Menu/Menu.h"
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/ServerConnector_.h"
 #include "Utils/GlobalFunctions_.h"
@@ -27,9 +28,11 @@ static TaskMasterServer taskGetInfoLivingRooms = { 1000,
     {
         return TheMasterServer.SendRequest(MSG_NTW_INFO_LIVINGROOM);
     },
-    [](pchar, void *, uint)
+    [](pchar, void *data, uint)
     {
+        LOGWRITEF("received data for living rooms : %s", (char *)data);
 
+//        TheMenu->pageFindServer->SetServersInfo((char *)data);
     }
 };
 

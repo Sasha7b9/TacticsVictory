@@ -19,9 +19,6 @@ static void CallbackLog(int, const char *);
 #define MAX_LINE 16384
 
 
-std::map<void *, ClientInfo> clients;
-
-
 static void ProcessClient(ClientInfo &info);
 
 
@@ -121,7 +118,7 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 
         LOGWRITEF("Client %s connected", info.address.ToString().c_str());
 
-        clients[bev] = info;
+        TheServer.clients[bev] = info;
     }
 }
 
@@ -145,7 +142,7 @@ void Server::SendAnswer(void *bev, uint id, pchar message, void *data, uint size
 
 static void CallbackRead(struct bufferevent *bev, void *)
 {
-    std::vector<uint8> &data = clients[bev].bindata;
+    std::vector<uint8> &data = TheServer.clients[bev].bindata;
 
 #define SIZE_CHUNK 1024
 
@@ -160,7 +157,7 @@ static void CallbackRead(struct bufferevent *bev, void *)
         readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
     }
 
-    ProcessClient(clients[bev]);
+    ProcessClient(TheServer.clients[bev]);
 }
 
 
@@ -229,9 +226,9 @@ static void CallbackError(struct bufferevent *bev, short error, void *)
 {
     if (error & BEV_EVENT_READING)
     {
-        LOGWRITEF("Client %s disconnected", clients[bev].address.ToString().c_str());
+        LOGWRITEF("Client %s disconnected", TheServer.clients[bev].address.ToString().c_str());
 
-        clients.erase(bev);
+        TheServer.clients.erase(bev);
     }
     else if (error & BEV_EVENT_WRITING)
     {

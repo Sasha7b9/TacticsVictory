@@ -1,9 +1,9 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "GUI/Menu/PageFindServer.h"
 
 
 class PageAboutMe;
-class PageFindServer;
 class PageOptions;
 class PagePlay;
 class PageStart;

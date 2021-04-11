@@ -40,6 +40,8 @@ public:
 
     static std::map<std::string, handlerClient> handlers;   // Здесь хранятся обработчики запросов по первому слову
 
+    std::map<void *, ClientInfo> clients;
+
 private:
 
     bool run = true;
