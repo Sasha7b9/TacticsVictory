@@ -19,7 +19,7 @@ public:
 
     bool IsConnected() const;
 
-    void Request(uint num, pchar data);
+    void SendRequest(uint num, pchar data);
 
     void Transmit(pchar data);
 

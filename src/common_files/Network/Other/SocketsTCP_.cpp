@@ -77,7 +77,7 @@ void ConnectorTCP::Disconnect()
 }
 
 
-void ConnectorTCP::Request(uint num, pchar data)
+void ConnectorTCP::SendRequest(uint num, pchar data)
 {
     connection->write(&num, sizeof(uint));
 

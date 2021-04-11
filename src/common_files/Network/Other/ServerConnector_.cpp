@@ -91,7 +91,7 @@ void ServerConnector::SendString(pchar string)
 
 void ServerConnector::SendRequest(pchar request)
 {
-    connector.Request(++last_request_id, request);
+    connector.SendRequest(++last_request_id, request);
 }
 
 
