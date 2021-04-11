@@ -170,7 +170,7 @@ void Client::SetTasks()
     static TaskMasterServer taskPing = { 0, 1000,
         []()
         {
-            TheMasterServer.SendString(MSM_PING);
+            TheMasterServer.SendRequest(MSM_PING);
             int64 start = GF::Timer::TimeMS();
             std::string answer = TheMasterServer.GetAnswer();
             LOGWRITEF(": ping = %d", GF::Timer::TimeMS() - start);

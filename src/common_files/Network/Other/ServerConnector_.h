@@ -41,8 +41,6 @@ public:
 
     std::string GetAnswer(pchar key);
 
-    void SendString(pchar string);
-
     std::string GetAnswer();
 
     bool IsConnected();
@@ -83,4 +81,6 @@ private:
     uint last_request_id = 0;
 
     void ExecuteTasks();
+
+    void SendString(pchar string);
 };
