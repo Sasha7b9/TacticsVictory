@@ -38,6 +38,48 @@ void SU::SplitToWords(pchar text, std::vector<std::string> &out)
 }
 
 
+// Возвращает true, если symbol равен одному из символов в массиве symbols
+static bool SymbolIsEqual(char symbol, char *symbols)
+{
+    while (*symbols != '\0')
+    {
+        if (symbol == *symbols)
+        {
+            return true;
+        }
+
+        symbols++;
+    }
+
+    return false;
+}
+
+
+void SU::SplitToWords(pchar text, std::vector<std::string> &out, char *symbols)
+{
+    while (*text)
+    {
+        std::string word;
+
+        char symbol = *text;
+
+        if (SymbolIsEqual(symbol, symbols))
+        {
+            if (!word.empty())
+            {
+                out.push_back(word);
+            }
+        }
+        else
+        {
+            word.push_back(symbol);
+        }
+
+        text++;
+    }
+}
+
+
 int SU::Length(pchar str)
 {
     return (int)std::strlen(str);

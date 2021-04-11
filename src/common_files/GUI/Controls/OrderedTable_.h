@@ -34,7 +34,7 @@ public:
 
     LineTable(HeaderTable *header);
 
-    void SetServerInfo(const ServerInfo &info);
+    void SetServerInfo(std::string server_info);
 
     SharedPtr<Label> name;
     SharedPtr<Label> address;
@@ -50,7 +50,7 @@ class OrderedTable : public WindowT
 {
     URHO3D_OBJECT(OrderedTable, WindowT);
 
-    void SetServersInfo(const std::string &data);
+    void SetServersInfo(std::string &data);
 
 public:
 

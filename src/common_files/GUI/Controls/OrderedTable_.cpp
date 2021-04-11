@@ -4,6 +4,7 @@
 #include "GUI/Controls/OrderedTable_.h"
 #include "GUI/Controls/Buttons/Button_.h"
 #include "Network/Other/NetworkTypes_.h"
+#include "Utils/StringUtils_.h"
 
 
 struct HeaderRowStruct
@@ -88,12 +89,19 @@ LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
 }
 
 
-void LineTable::SetServerInfo(const ServerInfo &info)
+void LineTable::SetServerInfo(std::string info)
 {
-    name->SetText(info.name.c_str());
-    address->SetText(info.address.c_str());
-    ping->SetText(info.ping < 0 ? "" : String().AppendWithFormat("%d", info.ping).CString());
-    cpu->SetText(info.cpu < 0 ? "" : String().AppendWithFormat("%d", info.cpu).CString());
+    std::vector<std::string> words;
+
+    SU::SplitToWords(info.c_str(), words, ",|");
+
+    name->SetText(words.size() > 0 ? words[0].c_str() : "");
+
+    address->SetText(words.size() > 1 ? words[1].c_str() : "");
+
+    ping->SetText(words.size() > 2 ? words[2].c_str() : "");
+
+    cpu->SetText(words.size() > 3 ? words[3].c_str() : "");
 }
 
 
@@ -127,24 +135,20 @@ OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheCont
 }
 
 
-void OrderedTable::SetServersInfo(const std::string &data)
+void OrderedTable::SetServersInfo(std::string &data)
 {
-    if (data.empty())
+    for (uint i = 0; i < NUM_LINES; i++)
     {
-        for (uint i = 0; i < NUM_LINES; i++)
+        size_t pos = data.find('|');
+
+        if (pos == std::string::npos)
         {
-            lines[i]->SetServerInfo(ServerInfo());
+            lines[i]->SetServerInfo("");
         }
-    }
-    else
-    {
-        std::vector<ServerInfo> servers;
-
-        ServerInfo::ParseString(data, servers);
-
-        for (uint i = 0; i < servers.size(); i++)
+        else
         {
-            lines[i]->SetServerInfo(servers[i]);
+            lines[i]->SetServerInfo(data.substr(0, pos));
+            data.erase(0, pos);
         }
     }
 }

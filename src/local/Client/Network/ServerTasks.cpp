@@ -28,13 +28,9 @@ static TaskMasterServer taskGetInfoLivingRooms = { 1000,
     {
         return TheMasterServer.SendRequest(MSG_NTW_INFO_LIVINGROOM);
     },
-    [](pchar, void *data, uint size)
+    [](pchar, void *data, uint)
     {
-        LOGWRITEF("received data for living rooms : %s", (char *)data);
-
-        LOGWRITEF("size = %d", size);
-
-//        TheMenu->pageFindServer->SetServersInfo((char *)data);
+        TheMenu->pageFindServer->SetServersInfo((char *)data);
     }
 };
 
