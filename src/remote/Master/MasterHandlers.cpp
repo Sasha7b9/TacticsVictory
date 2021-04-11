@@ -6,14 +6,13 @@
 #include "Utils/StringUtils_.h"
 
 
-static void HandlerClose(uint, void *);
-static void HandlerGet(uint, void *);
-static void HandlerPing(uint, void *);
-extern void HandlerTerminate(uint, void *);
+static void HandlerClose(uint, ClientInfo &);
+static void HandlerGet(uint, ClientInfo &);
+static void HandlerPing(uint, ClientInfo &);
+extern void HandlerTerminate(uint, ClientInfo &);
 
 
-std::map<std::string, pFuncVUpV> Server::handlers;
-std::vector<std::string>         Server::words;
+std::map<std::string, handlerClient> Server::handlers;
 
 
 void Server::Prepare()
@@ -25,16 +24,16 @@ void Server::Prepare()
 }
 
 
-static void HandlerClose(uint, void *)
+static void HandlerClose(uint, ClientInfo &info)
 {
-    if (Server::words.size() == 2 && (Server::words)[1] == "connection")
+    if (info.words.size() == 2 && (info.words)[1] == "connection")
     {
 //        sock->sock.close();
     }
 }
 
 
-static void HandlerGet(uint, void *)
+static void HandlerGet(uint, ClientInfo &)
 {
 //    if (words->size() == 2)
 //    {
@@ -73,11 +72,9 @@ static void HandlerGet(uint, void *)
 }
 
 
-static void HandlerPing(uint id, void *ci)
+static void HandlerPing(uint id, ClientInfo &info)
 {
     LOGWRITE("Request for ping");
-
-    ClientInfo &info = *((ClientInfo *)ci);
 
     struct bufferevent *bev = (struct bufferevent *)info.benv;
 
@@ -85,7 +82,7 @@ static void HandlerPing(uint id, void *ci)
 }
 
 
-void HandlerTerminate(uint, void *)
+void HandlerTerminate(uint, ClientInfo &)
 {
     TheServer.Stop();
 }

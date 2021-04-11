@@ -194,17 +194,16 @@ static void ProcessClient(ClientInfo &info)
 
         if (received.size() >= 4 + 4 + size)
         {
-            std::vector<uint8> data;
+            MoveData(received, info.message);
 
-            MoveData(received, data);
+            SU::SplitToWords((char *)info.message.data(), (uint)std::strlen((char *)info.message.data()),
+                info.words);
 
-            SU::SplitToWords((char *)data.data(), (uint)std::strlen((char *)data.data()), Server::words);
-
-            auto it = Server::handlers.find(Server::words[0]);
+            auto it = Server::handlers.find(info.words[0]);
 
             if (it != Server::handlers.end())
             {
-                it->second(id, &info);
+                it->second(id, info);
             }
         }
         else
@@ -248,7 +247,7 @@ static void CallbackError(struct bufferevent *bev, short error, void *)
 }
 
 
-void Server::AppendHandler(pchar command, pFuncVUpV handler)
+void Server::AppendHandler(pchar command, handlerClient handler)
 {
     handlers[command] = handler;
 }

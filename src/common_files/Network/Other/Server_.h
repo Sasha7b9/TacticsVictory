@@ -31,8 +31,11 @@ struct ClientInfo
     void              *benv;        // Буфер событий libevent
     std::vector<uint8> message;     // Здесь хранится принятое сообщение - сначала строка, а потом дополнительные
                                     // данные, если есть
+    std::vector<std::string> words; // Разбитая на слова текстовая часть сообщения
 };
 
+
+typedef void (*handlerClient) (uint, ClientInfo &);
 
 class Server
 {
@@ -42,15 +45,13 @@ public:
 
     void Stop() { run = false; }
 
-    void AppendHandler(pchar command, pFuncVUpV handler);
+    void AppendHandler(pchar command, handlerClient handler);
 
     void Prepare();
 
     void SendAnswer(void *bev, uint id, pchar message);
 
-    static std::map<std::string, pFuncVUpV> handlers;   // Здесь хранятся обработчики запросов по первому слову
-
-    static std::vector<std::string> words;              // Используется в обработчиках
+    static std::map<std::string, handlerClient> handlers;   // Здесь хранятся обработчики запросов по первому слову
 
 private:
 
