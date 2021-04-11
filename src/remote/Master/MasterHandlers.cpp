@@ -81,7 +81,7 @@ static void HandlerPing(void *ci)
 
     struct bufferevent *bev = (struct bufferevent *)info.buffer;
 
-    TheServer.SendString(bev, "ping");
+    TheServer.SendString(bev, MSM_PING);
 }
 
 

@@ -110,12 +110,15 @@ static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, ui
 
     if (result == MSM_PING)
     {
+        LOGWRITE("Message ping received");
+
         *state = ServerConnector::State::GetPing;
         auto end = system_clock::now();
         *ping = (int)duration_cast<milliseconds>(end - start).count();
     }
     else
     {
+        LOGERROR("Not answer for ping");
         *state = ServerConnector::State::EventDisconnect;
     }
 
