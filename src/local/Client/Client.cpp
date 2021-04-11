@@ -53,6 +53,7 @@ void Client::GetSubsystems()
     TheLocalization = GetSubsystem<Localization>();
     TheUI = GetSubsystem<UI>();
     TheTime = GetSubsystem<Time>();
+    TheInput = GetSubsystem<Input>();
 }
 
 
@@ -104,6 +105,8 @@ void Client::Start()
     SetWindowTitleAndIcon();
 
     ParseArguments();
+
+    TheInput->SetMouseMode(MouseMode::MM_FREE);
 }
 
 
