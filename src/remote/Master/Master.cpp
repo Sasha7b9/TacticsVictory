@@ -23,6 +23,8 @@ int main(int, char *[])
         return -1;
     }
 
+    TheServer.Prepare();
+
     TheServer.Run();
 
     return 0;

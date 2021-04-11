@@ -222,9 +222,3 @@ void Server::AppendHandler(pchar command, pFuncVV handler)
 {
     handlers[command] = handler;
 }
-
-
-void Server::AppendServerInfo(const ServerInfo &info)
-{
-    infos[info.address] = info;
-}

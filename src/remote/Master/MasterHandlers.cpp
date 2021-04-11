@@ -17,7 +17,6 @@ static std::vector<std::string> *words = nullptr;       // Используется в обрабо
 
 
 std::map<std::string, pFuncVV> Server::handlers;
-std::map<std::string, ServerInfo> Server::infos;
 
 
 void Server::Prepare()
@@ -26,10 +25,6 @@ void Server::Prepare()
     AppendHandler("get", HandlerGet);
     AppendHandler("ping", HandlerPing);
     AppendHandler("terminate", HandlerTerminate);
-
-    AppendServerInfo( { "127.0.0.0", "master1", 10, 100 } );
-    AppendServerInfo( { "127.0.0.1", "master2", 11, 100 } );
-    AppendServerInfo( { "127.0.0.2", "master3", 12, 100 } );
 }
 
 
@@ -44,40 +39,40 @@ static void HandlerClose()
 
 static void HandlerGet()
 {
-    if (words->size() == 2)
-    {
-        if ((*words)[1] == "livingrooms")
-        {
-            std::string data;
-
-            auto room = Server::infos.begin();
-
-            while (room != Server::infos.end())
-            {
-                room->second.AppendInfo(room->first, data);
-
-                room++;
-            }
-
-//            sock->Transmit(data);
-        }
-    }
-    else if (words->size() == 3)
-    {
-        if ((*words)[1] == "address")                                                          // get address
-        {
-            pchar address = TheConfig.GetString("address", (*words)[2].c_str());
-            if (address)
-            {
-//                sock->Transmit(address);
-            }
-            else
-            {
-                LOGERRORF("Invalid request : \"%s %s %s\"",
-                    (*words)[0].c_str(), (*words)[1].c_str(), (*words)[2].c_str());
-            }
-        }
-    }
+//    if (words->size() == 2)
+//    {
+//        if ((*words)[1] == "livingrooms")
+//        {
+//            std::string data;
+//
+//            auto room = Server::infos.begin();
+//
+//            while (room != Server::infos.end())
+//            {
+//                room->second.AppendInfo(room->first, data);
+//
+//                room++;
+//            }
+//
+////            sock->Transmit(data);
+//        }
+//    }
+//    else if (words->size() == 3)
+//    {
+//        if ((*words)[1] == "address")                                                          // get address
+//        {
+//            pchar address = TheConfig.GetString("address", (*words)[2].c_str());
+//            if (address)
+//            {
+////                sock->Transmit(address);
+//            }
+//            else
+//            {
+//                LOGERRORF("Invalid request : \"%s %s %s\"",
+//                    (*words)[0].c_str(), (*words)[1].c_str(), (*words)[2].c_str());
+//            }
+//        }
+//    }
 }
 
 

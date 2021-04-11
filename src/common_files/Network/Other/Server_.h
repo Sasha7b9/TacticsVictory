@@ -15,13 +15,9 @@ public:
 
     void AppendHandler(pchar command, pFuncVV handler);
 
-    void AppendServerInfo(const ServerInfo &info);
-
     void Prepare();
 
     static std::map<std::string, pFuncVV> handlers;    // Здесь хранятся обработчики запросов по первому слову
-
-    static std::map<std::string, ServerInfo> infos;   // Здесь хранится информация о подключенных клиентах
 
 private:
 
