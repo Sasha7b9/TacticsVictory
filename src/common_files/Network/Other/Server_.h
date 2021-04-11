@@ -38,7 +38,7 @@ public:
 
     void SendAnswer(void *bev, uint id, pchar message, void *data = nullptr, uint size = 0);
 
-    static std::map<std::string, handlerClient> handlers;   // Здесь хранятся обработчики запросов по первому слову
+    std::map<std::string, handlerClient> handlers;   // Здесь хранятся обработчики запросов по первому слову
 
     std::map<void *, ClientInfo> clients;
 

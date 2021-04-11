@@ -12,9 +12,6 @@ static void HandlerSetNameLivingRoom(uint, ClientInfo &);
 
 
 
-std::map<std::string, Server::handlerClient> Server::handlers;
-
-
 void Server::Prepare()
 {
     AppendHandler(MSG_NTW_INFO_LIVINGROOM,     HandleInfoLivingRoms);

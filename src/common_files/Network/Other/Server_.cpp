@@ -207,9 +207,9 @@ static void ProcessClient(ClientInfo &info)
 
             SU::SplitToWords((char *)info.message.data(), info.words);
 
-            auto it = Server::handlers.find(info.words[0]);
+            auto it = TheServer.handlers.find(info.words[0]);
 
-            if (it != Server::handlers.end())
+            if (it != TheServer.handlers.end())
             {
                 it->second(id, info);
             }
