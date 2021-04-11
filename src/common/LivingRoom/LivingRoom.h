@@ -6,11 +6,10 @@ class LivingRoom
 {
 public:
 
-    LivingRoom();
-
     int Run(pchar ip);
 
-private:
+    void SetTasks();
 
-    static void SetTasks();
+    // Послать своё имя мастер-серверу
+    void SendNameToMasterServer();
 };

@@ -2,13 +2,8 @@
 #include "stdafx.h"
 #include "LivingRoom.h"
 #include "FileSystem/ConfigurationFile_.h"
+#include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/ServerConnector_.h"
-
-
-LivingRoom::LivingRoom()
-{
-
-}
 
 
 int LivingRoom::Run(pchar address)
@@ -27,7 +22,9 @@ int LivingRoom::Run(pchar address)
         {
             LOGWRITE("Connection to master server established");
 
-            SetTasks();
+            TheLivingRoom.SendNameToMasterServer();
+
+            TheLivingRoom.SetTasks();
         },
         []()
         {
@@ -43,4 +40,12 @@ int LivingRoom::Run(pchar address)
 void LivingRoom::SetTasks()
 {
 
+}
+
+
+void LivingRoom::SendNameToMasterServer()
+{
+//    TheMasterServer.SendRequest(MSG_NTW_SET_NAME_LIVINGROOM, (std::string("LivingRoom") +
+//        std::string(std::rand())).c_str());
+//
 }

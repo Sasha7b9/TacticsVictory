@@ -38,6 +38,7 @@ public:
     // Посылка запроса. Каждый запрос помечается уникальным 32-х битным идентификатором, который передаётся четырьмя
     // байтами в начале засылки.
     uint SendRequest(pchar request, const void *data = nullptr, uint size = 0);
+    uint SendRequest(pchar request, pchar data);
 
     bool IsConnected();
 

@@ -94,6 +94,12 @@ uint ServerConnector::SendRequest(pchar request, const void *buffer, uint size_b
 }
 
 
+uint ServerConnector::SendRequest(pchar request, pchar _data)
+{
+    return SendRequest(request, _data, (uint)std::strlen(_data) + 1);
+}
+
+
 void ServerConnector::Update()
 {
     static int ping = 999;
