@@ -141,8 +141,7 @@ void ServerConnector::Update()
                 {
                     mutex.unlock();
                     state = State::AttemptConnection;
-                    std::thread thread(ThreadConnect, &connector, std::move(host.c_str()), port,
-                        &mutex, (uint8 *)&state);
+                    std::thread thread(ThreadConnect, &connector, std::move(host.c_str()), port, &mutex, (uint8 *)&state);
                     thread.detach();
                 }
             }

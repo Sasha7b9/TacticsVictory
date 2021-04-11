@@ -35,7 +35,11 @@ void Server::Run()
 
 #ifdef WIN32
     WSADATA wsa_data;
-    WSAStartup(0x0201, &wsa_data);
+    if (WSAStartup(0x0201, &wsa_data) != 0)
+    {
+        LOGERROR("Can not execute WSAStartup(0x0201, &wsa_data)");
+        return;
+    };
 #endif
 
     struct event_base *base = event_base_new();

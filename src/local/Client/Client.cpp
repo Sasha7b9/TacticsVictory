@@ -139,6 +139,7 @@ void Client::ParseArguments()
             [](int ping)
             {
                 TheGUI->SetPing(ping);
+                LOGWRITEF("ping = %d", ping);
             }
         );
 
