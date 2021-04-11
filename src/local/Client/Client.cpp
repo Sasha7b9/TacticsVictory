@@ -139,11 +139,6 @@ void Client::ParseArguments()
                 TheMasterServer.Connect();
                 LOGWRITE("The master server is down. Attempting to connect");
                 TheMenu->pageFindServer->SetServersInfo("");
-            },
-            [](int ping)
-            {
-                TheGUI->SetPing(ping);
-                LOGWRITEF("ping = %d", ping);
             }
         );
 

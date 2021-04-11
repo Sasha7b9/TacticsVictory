@@ -33,9 +33,6 @@ int LivingRoom::Run(pchar address)
         {
             TheMasterServer.Connect();
             LOGWRITE("The master server is down. Attempting to connect");
-        },
-        [](int)
-        {
         }
     );
 

@@ -27,7 +27,7 @@ public:
         port = _port;
     };
 
-    void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping);
+    void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection);
 
     void Connect();
 
@@ -72,7 +72,6 @@ private:
     pFuncVV funcFailConnection = nullptr;   // Вызывается в случае неуспешной попытки соединения
     pFuncVV funcConnection     = nullptr;   // Вызывается в случае успешной попытки соединения
     pFuncVV funcDisconnection  = nullptr;   // Вызывается при потере связи с сервером
-    pFuncVI funcPing           = nullptr;
 
     State::E state = State::Idle;
 

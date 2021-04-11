@@ -39,18 +39,17 @@ bool ServerConnector::IsConnected()
 }
 
 
-void ServerConnector::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection, pFuncVI ping)
+void ServerConnector::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
 {
     funcFailConnection = fail;
     funcConnection = connection;
     funcDisconnection = disconnection;
-    funcPing = ping;
 }
 
 
 void ServerConnector::Connect()
 {
-    if (!funcFailConnection || !funcConnection || !funcDisconnection || !funcPing)
+    if (!funcFailConnection || !funcConnection || !funcDisconnection)
     {
         LOGERROR("Callbacks not defined");
         return;
@@ -143,13 +142,11 @@ void ServerConnector::Update()
     case State::EventDisconnect:
         state = State::Idle;
         all_tasks.clear();
-        funcPing(ping);
         funcDisconnection();
         break;
 
     case State::GetPing:
         state = State::InConnection;
-        funcPing(ping);
         break;
     }
 }
