@@ -137,7 +137,6 @@ OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheCont
 
 void OrderedTable::SetServersInfo(std::string &data)
 {
-    LOGWRITE("");
     for (uint i = 0; i < NUM_LINES; i++)
     {
         size_t pos = data.find('|');
@@ -145,13 +144,11 @@ void OrderedTable::SetServersInfo(std::string &data)
         if (pos != std::string::npos)
         {
             std::string text = data.substr(0, pos);
-            LOGWRITEF("Line not empty : %s", text.c_str());
             lines[i]->SetServerInfo(text);
             data.erase(0, pos + 1);
         }
         else
         {
-            LOGWRITE("Line empty");
             lines[i]->SetServerInfo("");
         }
     }

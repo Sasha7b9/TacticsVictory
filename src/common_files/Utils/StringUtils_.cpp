@@ -57,10 +57,10 @@ static bool SymbolIsEqual(char symbol, char *symbols)
 
 void SU::SplitToWords(pchar text, std::vector<std::string> &out, char *symbols)
 {
+    std::string word;
+
     while (*text)
     {
-        std::string word;
-
         char symbol = *text;
 
         if (SymbolIsEqual(symbol, symbols))
@@ -68,6 +68,7 @@ void SU::SplitToWords(pchar text, std::vector<std::string> &out, char *symbols)
             if (!word.empty())
             {
                 out.push_back(word);
+                word.clear();
             }
         }
         else
@@ -76,6 +77,11 @@ void SU::SplitToWords(pchar text, std::vector<std::string> &out, char *symbols)
         }
 
         text++;
+    }
+
+    if (!word.empty())
+    {
+        out.push_back(word);
     }
 }
 
