@@ -10,8 +10,6 @@ include_directories(.
 add_definitions(-DURHO3D_STATIC_DEFINE)
 
 if(WIN32)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
-    set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
 
@@ -64,6 +62,8 @@ set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 add_executable( ${PROJECT_NAME} ${SRC} ${FILESYSTEM} ${NETWORK} ${UTILS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
+set_target_properties(${PROJECT_NAME}                                PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${SRC} ${FILESYSTEM} ${NETWORK} ${UTILS} PROPERTIES UNITY_GROUP "bucket")
 
 if(WIN32)
     include(../../CopyToDirEXE.cmake)
