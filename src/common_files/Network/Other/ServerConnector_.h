@@ -74,5 +74,5 @@ private:
 
     State::E state = State::Idle;
 
-    void ExecuteTasks(int64 now);
+    void ExecuteTasks();
 };

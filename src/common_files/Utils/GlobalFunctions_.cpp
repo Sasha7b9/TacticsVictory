@@ -29,6 +29,12 @@ int64 GF::Timer::DeltaMS()
 }
 
 
+int64 GF::Timer::TimeMS()
+{
+    return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+}
+
+
 #ifdef U3D
 
 

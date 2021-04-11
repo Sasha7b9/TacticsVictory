@@ -185,13 +185,14 @@ void ServerConnector::Update()
                 prev_time = now;
             }
 
-            int64 now_ms = duration_cast<milliseconds>(now.time_since_epoch()).count();
-
-            ExecuteTasks(now_ms);
+            ExecuteTasks();
         }
         break;
 
     case State::WaitPing:
+
+        ExecuteTasks();
+
         break;
 
     case State::EventDisconnect:
@@ -209,8 +210,10 @@ void ServerConnector::Update()
 }
 
 
-void ServerConnector::ExecuteTasks(int64 now)
+void ServerConnector::ExecuteTasks()
 {
+    int64 now = GF::Timer::TimeMS();
+
     for each (TaskMasterServer * task in tasks)
     {
         if (now >= task->prev_time + task->delta_time)

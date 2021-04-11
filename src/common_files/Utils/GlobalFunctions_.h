@@ -11,6 +11,9 @@ namespace GF
 
         // Возвращает время в миллисекундах, прошедшее с момента вызова TimeStart();
         int64 DeltaMS();
+
+        // Текущее время в миллисекундах
+        int64 TimeMS();
     };
 
     void DelayMS(uint delay);
