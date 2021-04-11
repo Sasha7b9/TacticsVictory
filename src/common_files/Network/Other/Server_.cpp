@@ -152,7 +152,6 @@ static void CallbackRead(struct bufferevent *bev, void *)
 
 static void CallbackWrite(struct bufferevent *, void *)
 {
-    LOGWRITE(__FUNCTION__);
 }
 
 

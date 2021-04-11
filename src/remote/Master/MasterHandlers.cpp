@@ -74,8 +74,6 @@ static void HandlerGet(uint, ClientInfo &)
 
 static void HandlerPing(uint id, ClientInfo &info)
 {
-    LOGWRITE("Request for ping");
-
     struct bufferevent *bev = (struct bufferevent *)info.benv;
 
     TheServer.SendAnswer(bev, id, MSM_PING, info.GetRawData(), 4);
