@@ -158,6 +158,11 @@ void ServerConnector::Update()
 
 void ServerConnector::ReceiveData()
 {
+    if (!IsConnected())
+    {
+        return;
+    }
+
     mutex.lock();
 
     static const uint SIZE_CHUNK = 1024;
