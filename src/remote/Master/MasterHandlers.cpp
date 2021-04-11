@@ -6,14 +6,14 @@
 #include "Utils/StringUtils_.h"
 
 
-static void HandlerClose();
-static void HandlerGet();
-static void HandlerPing();
-extern void HandlerTerminate();
+static void HandlerClose(void *);
+static void HandlerGet(void *);
+static void HandlerPing(void *);
+extern void HandlerTerminate(void *);
 
 
-std::map<std::string, pFuncVV> Server::handlers;
-std::vector<std::string>       Server::words;
+std::map<std::string, pFuncVpV> Server::handlers;
+std::vector<std::string>        Server::words;
 
 
 void Server::Prepare()
@@ -25,7 +25,7 @@ void Server::Prepare()
 }
 
 
-static void HandlerClose()
+static void HandlerClose(void *)
 {
     if (Server::words.size() == 2 && (Server::words)[1] == "connection")
     {
@@ -34,7 +34,7 @@ static void HandlerClose()
 }
 
 
-static void HandlerGet()
+static void HandlerGet(void *)
 {
 //    if (words->size() == 2)
 //    {
@@ -73,7 +73,7 @@ static void HandlerGet()
 }
 
 
-static void HandlerPing()
+static void HandlerPing(void *)
 {
     LOGWRITE("Request for ping");
 
@@ -81,7 +81,7 @@ static void HandlerPing()
 }
 
 
-void HandlerTerminate()
+void HandlerTerminate(void *)
 {
     TheServer.Stop();
 }

@@ -39,6 +39,7 @@ typedef long long          int64;
 typedef const char        *pchar;
 
 typedef void (*pFuncVV)();
+typedef void (*pFuncVpV)(void *);
 typedef void (*pFuncVI)(int);
 typedef float(*pFuncFV)();
 typedef void (*pFuncVF)(float);

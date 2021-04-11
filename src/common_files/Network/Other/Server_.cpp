@@ -40,8 +40,9 @@ struct SocketAddress
 
 struct ClientInfo
 {
-    SocketAddress address;
+    SocketAddress      address;
     std::vector<uint8> data;
+    void              *buffer;
 };
 
 std::map<void *, ClientInfo> clients;
@@ -124,6 +125,7 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 
         ClientInfo info;
         info.address.sin = *((sockaddr_in *)&ss);
+        info.buffer = bev;
 
         LOGWRITEF("Client %s connected", info.address.ToString().c_str());
 
@@ -186,7 +188,7 @@ static void ProcessClient(ClientInfo &info)
 
             if (it != Server::handlers.end())
             {
-                it->second();
+                it->second(&info);
             }
         }
     }
@@ -226,7 +228,7 @@ static void CallbackError(struct bufferevent *bev, short error, void *)
 }
 
 
-void Server::AppendHandler(pchar command, pFuncVV handler)
+void Server::AppendHandler(pchar command, pFuncVpV handler)
 {
     handlers[command] = handler;
 }

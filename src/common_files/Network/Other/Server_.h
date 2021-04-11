@@ -13,11 +13,11 @@ public:
 
     void Stop() { run = false; }
 
-    void AppendHandler(pchar command, pFuncVV handler);
+    void AppendHandler(pchar command, pFuncVpV handler);
 
     void Prepare();
 
-    static std::map<std::string, pFuncVV> handlers;     // Здесь хранятся обработчики запросов по первому слову
+    static std::map<std::string, pFuncVpV> handlers;    // Здесь хранятся обработчики запросов по первому слову
 
     static std::vector<std::string> words;              // Используется в обработчиках
 
