@@ -32,4 +32,6 @@ static void HandlerSetNameLivingRoom(uint, ClientInfo &info)
     char *name = (char *)info.GetRawData();
 
     info.name = name;
+
+    LOGWRITEF("name connected livingroom is %s", name);
 }

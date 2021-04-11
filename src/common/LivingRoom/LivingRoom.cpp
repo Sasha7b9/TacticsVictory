@@ -8,7 +8,7 @@
 
 int LivingRoom::Run(pchar address)
 {
-    TheMasterServer.SetAddress(address, (uint16)TheSettings.GetInt("main port"));
+    TheMasterServer.SetAddress(address, (uint16)TheSettings.GetInt("master_server", "port"));
 
     TheMasterServer.SetCallbacks
     (
@@ -32,6 +32,13 @@ int LivingRoom::Run(pchar address)
             LOGWRITE("The master server is down. Attempting to connect");
         }
     );
+
+    TheMasterServer.Connect();
+
+    while (true)
+    {
+        TheMasterServer.Update();
+    }
 
     return 0;
 }
