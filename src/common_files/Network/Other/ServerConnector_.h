@@ -60,14 +60,13 @@ public:
 
 private:
 
-    ConnectorTCP connOUT;       // Сюдой посылаем данные в сервер
-    ConnectorTCP connIN;        // Сюда принимаем данные от сервера
+    ConnectorTCP connector;         // Сюдой посылаем данные в сервер
 
     std::string host;
-    uint16 port;                // Порт засылки в сервер. порт чтения на 1 больше
+    uint16 port;                    // Порт засылки в сервер. порт чтения на 1 больше
 
     bool destroy = false;
-    std::mutex  mutex;          // Данный mutex будет захвачен, пока сервер находится в процессе соединения
+    std::mutex  mutex;              // Данный mutex будет захвачен, пока сервер находится в процессе соединения
     pFuncVV funcFailConnection = nullptr;   // Вызывается в случае неуспешной попытки соединения
     pFuncVV funcConnection     = nullptr;   // Вызывается в случае успешной попытки соединения
     pFuncVV funcDisconnection  = nullptr;   // Вызывается при потере связи с сервером

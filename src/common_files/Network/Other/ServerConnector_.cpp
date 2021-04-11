@@ -15,8 +15,7 @@ void ServerConnector::Destroy()
     mutex.lock();           // Ожидаем завершения ThreadConnect
     mutex.unlock();
 
-    connOUT.Release();
-    connIN.Release();
+    connector.Release();
 }
 
 
@@ -60,12 +59,11 @@ void ServerConnector::Connect()
 
 std::string ServerConnector::GetAnswer()
 {
-    return connOUT.Receive();
+    return connector.Receive();
 }
 
 
-static void ThreadConnect(ConnectorTCP *conn_out, ConnectorTCP * /*conn_in*/,
-    pchar host, uint16 port, std::mutex *mutex, uint8 *state)
+static void ThreadConnect(ConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
 {
     mutex->lock();
 
@@ -86,9 +84,9 @@ std::string ServerConnector::GetAnswer(pchar key)
 {
     mutex.lock();
 
-    connOUT.Transmit(key);
+    connector.Transmit(key);
 
-    std::string result = connOUT.Receive();
+    std::string result = connector.Receive();
 
     mutex.unlock();
 
@@ -98,31 +96,31 @@ std::string ServerConnector::GetAnswer(pchar key)
 
 void ServerConnector::SendString(pchar string)
 {
-    connOUT.Transmit(string);
+    connector.Transmit(string);
 }
 
 
-//static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, uint8 *state)
-//{
-//    using namespace std::chrono;
-//    mutex->lock();
-//    auto start = system_clock::now();
-//    connector->Transmit(MSM_PING);
-//    std::string result = connector->Receive();
-//
-//    if (result == MSM_PING)
-//    {
-//        *state = ServerConnector::State::GetPing;
-//        auto end = system_clock::now();
-//        *ping = (int)duration_cast<milliseconds>(end - start).count();
-//    }
-//    else
-//    {
-//        *state = ServerConnector::State::EventDisconnect;
-//    }
-//
-//    mutex->unlock();
-//}
+static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, uint8 *state)
+{
+    using namespace std::chrono;
+    mutex->lock();
+    auto start = system_clock::now();
+    connector->Transmit(MSM_PING);
+    std::string result = connector->Receive();
+
+    if (result == MSM_PING)
+    {
+        *state = ServerConnector::State::GetPing;
+        auto end = system_clock::now();
+        *ping = (int)duration_cast<milliseconds>(end - start).count();
+    }
+    else
+    {
+        *state = ServerConnector::State::EventDisconnect;
+    }
+
+    mutex->unlock();
+}
 
 
 void ServerConnector::Update()
@@ -142,7 +140,7 @@ void ServerConnector::Update()
                 {
                     mutex.unlock();
                     state = State::AttemptConnection;
-                    std::thread thread(ThreadConnect, &connOUT, &connIN, std::move(host.c_str()), port, 
+                    std::thread thread(ThreadConnect, &connector, std::move(host.c_str()), port,
                         &mutex, (uint8 *)&state);
                     thread.detach();
                 }
@@ -165,23 +163,23 @@ void ServerConnector::Update()
 
     case State::InConnection:
         {
-//            using namespace std::chrono;
-//            static auto prev_time = system_clock::now();
-//            auto now = system_clock::now();
-//            int64 delta = duration_cast<milliseconds>(now - prev_time).count();
-//
-//            if (delta >= 1000)
-//            {
-//                state = State::WaitPing;
-//                std::thread thread(ThreadPing, &connOUT, &mutex, &ping, (uint8 *)&state);
-//                thread.detach();
-//
-//                prev_time = now;
-//            }
-//
-//            int64 now_ms = duration_cast<milliseconds>(now.time_since_epoch()).count();
-//
-//            ExecuteTasks(now_ms);
+            using namespace std::chrono;
+            static auto prev_time = system_clock::now();
+            auto now = system_clock::now();
+            int64 delta = duration_cast<milliseconds>(now - prev_time).count();
+
+            if (delta >= 1000)
+            {
+                state = State::WaitPing;
+                std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
+                thread.detach();
+
+                prev_time = now;
+            }
+
+            int64 now_ms = duration_cast<milliseconds>(now.time_since_epoch()).count();
+
+            ExecuteTasks(now_ms);
         }
         break;
 
