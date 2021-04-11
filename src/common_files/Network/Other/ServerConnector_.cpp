@@ -227,6 +227,8 @@ void ServerConnector::ExecuteTasks()
             mutex.unlock();
         }
     }
+
+    LOGWRITEF("Time processing tasks %d ms", GF::Timer::TimeMS() - now);
 }
 
 
