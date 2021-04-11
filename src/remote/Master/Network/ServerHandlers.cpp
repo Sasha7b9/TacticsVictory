@@ -32,7 +32,10 @@ static void HandleInfoLivingRoms(uint id, ClientInfo &info)
 
         if (!ci.name.empty())
         {
-            stream << ci.name;
+            stream << ci.name << ',';
+            stream << std::rand() << ',';
+            stream << std::rand() << ',';
+            stream << std::rand() << ',';
             stream << "|";
         }
     }
