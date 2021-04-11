@@ -40,6 +40,7 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
     if (connection->is_connected())
     {
         SetReadTimeOut(1000);
+        SetWriteTimeOut(1000);
 
         LOGWRITEF("Connect to %s:%d success", host.c_str(), port);
     }
@@ -56,6 +57,12 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
 void ConnectorTCP::SetReadTimeOut(uint timeout)
 {
     connection->read_timeout((std::chrono::milliseconds)timeout);
+}
+
+
+void ConnectorTCP::SetWriteTimeOut(uint timeout)
+{
+    connection->write_timeout((std::chrono::milliseconds)timeout);
 }
 
 
@@ -77,46 +84,15 @@ void ConnectorTCP::Disconnect()
 }
 
 
-void ConnectorTCP::SendRequest(uint num, pchar data)
+void ConnectorTCP::Transmit(void *data, uint size)
 {
-    connection->write(&num, sizeof(uint));
-
-    Transmit(data);
+    connection->write_n(data, size);
 }
 
 
-void ConnectorTCP::Transmit(pchar data)
+uint ConnectorTCP::Receive(void *data, uint size)
 {
-    int size = SU::Length(data);
-
-    connection->write(&size, sizeof(int));
-
-    connection->write(data);
-}
-
-
-void ConnectorTCP::Transmit(const std::string &data)
-{
-    Transmit(data.c_str());
-}
-
-
-void ConnectorTCP::Receive(std::string &data)
-{
-    uint size = 0;
-
-    connection->read_n(&size, sizeof(uint));
-
-    data.resize(size);
-
-    if (size != 0)
-    {
-        connection->read_n(&data[0], size);
-    }
-    else
-    {
-        LOGWARNINGF("Not received a file from peer %s", connection->peer_address().to_string().c_str());
-    }
+    return (uint)connection->read_n(data, size);
 }
 
 

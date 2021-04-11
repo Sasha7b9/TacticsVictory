@@ -15,17 +15,18 @@ public:
 
     void SetReadTimeOut(uint timeout);
 
+    void SetWriteTimeOut(uint timeout);
+
     void Disconnect();
 
     bool IsConnected() const;
 
-    void SendRequest(uint num, pchar data);
+    // Передаёт size байт из массива data
+    void Transmit(void *data, uint size);
 
-    void Transmit(pchar data);
-
-    void Transmit(const std::string &data);
-
-    void Receive(std::string &data);
+    // Делает попытку приёма size байт в массив data. Возвращает количество реально принятых байт.
+    // В случае ошибки возрващает -1
+    uint Receive(void *data, uint size);
 
     std::string Receive();
 
