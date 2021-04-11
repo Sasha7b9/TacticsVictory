@@ -165,18 +165,22 @@ void ServerConnector::ReceiveData()
 
     mutex.lock();
 
+    GF::Timer::TimeStart();
+
     static const int SIZE_CHUNK = 1024;
 
     char buffer[SIZE_CHUNK];
 
-    ssize_t available_bytes = connector.Receive(buffer, SIZE_CHUNK);
+    ssize_t available_bytes = connector.Receive(buffer, SIZE_CHUNK, MSG_PEEK);
 
-    while (available_bytes > 0)
+    if (available_bytes > 0)
     {
-        data.insert(data.end(), buffer, buffer + available_bytes);
+        ssize_t received = connector.Receive(buffer, (uint)available_bytes);
 
-        available_bytes = connector.Receive(buffer, SIZE_CHUNK);
+        data.insert(data.end(), buffer, buffer + received);
     }
+
+    LOGWRITEF("time functioin = %d ms", GF::Timer::DeltaMS());
 
     mutex.unlock();
 }
