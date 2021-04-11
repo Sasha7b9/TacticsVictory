@@ -12,7 +12,7 @@ static void HandlerPing(uint, ClientInfo &);
 extern void HandlerTerminate(uint, ClientInfo &);
 
 
-std::map<std::string, handlerClient> Server::handlers;
+std::map<std::string, Server::handlerClient> Server::handlers;
 
 
 void Server::Prepare()

@@ -25,7 +25,7 @@ std::map<void *, ClientInfo> clients;
 static void ProcessClient(ClientInfo &info);
 
 
-std::string SocketAddress::ToString() const
+std::string ClientInfo::SocketAddress::ToString() const
 {
     char buffer[100];
 

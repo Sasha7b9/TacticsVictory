@@ -2,32 +2,30 @@
 #pragma once
 
 
-struct SocketAddress
-{
-    std::string ToString() const;
-
-    sockaddr_in sin;
-};
-
-
 struct ClientInfo
 {
-    SocketAddress      address;     // Адрес клиента
-    std::vector<uint8> bindata;     // Непосредственно принятые данные
-    void              *benv;        // Буфер событий libevent
-    std::vector<uint8> message;     // Здесь хранится принятое сообщение - сначала строка, а потом дополнительные
-                                    // данные, если есть
-    std::vector<std::string> words; // Разбитая на слова текстовая часть сообщения
+    struct SocketAddress
+    {
+        std::string ToString() const;
 
-    void *GetRawData();             // Возвращает указатель на данные, если таковые имеются в сообщении
+        sockaddr_in sin;
+    }                        address;   // Адрес клиента
+
+    std::vector<uint8>       bindata;   // Непосредственно принятые данные
+    void                    *benv;      // Буфер событий libevent
+    std::vector<uint8>       message;   // Здесь хранится принятое сообщение - сначала строка, а потом дополнительные
+                                        // данные, если есть
+    std::vector<std::string> words;     // Разбитая на слова текстовая часть сообщения
+
+    void *GetRawData();                 // Возвращает указатель на данные, если таковые имеются в сообщении
 };
 
-
-typedef void (*handlerClient) (uint, ClientInfo &);
 
 class Server
 {
 public:
+
+    typedef void (*handlerClient) (uint, ClientInfo &);
 
     void Run();
 
