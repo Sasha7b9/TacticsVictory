@@ -28,7 +28,9 @@ struct ClientInfo
 {
     SocketAddress      address;
     std::vector<uint8> data;
-    void *buffer;
+    void              *benv;
+//    std::vector<uint8> data;        // Здесь хранится принятое сообщение - сначала строка, а потом дополнительные
+                                    // данные, если есть
 };
 
 

@@ -79,7 +79,7 @@ static void HandlerPing(uint id, void *ci)
 
     ClientInfo &info = *((ClientInfo *)ci);
 
-    struct bufferevent *bev = (struct bufferevent *)info.buffer;
+    struct bufferevent *bev = (struct bufferevent *)info.benv;
 
     TheServer.SendAnswer(bev, id, MSM_PING);
 }

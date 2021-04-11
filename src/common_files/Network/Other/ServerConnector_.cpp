@@ -184,7 +184,7 @@ void ServerConnector::ReceiveData()
 
 void ServerConnector::ProcessData()
 {
-    if (data.size() > 4 + 4)        // ≈сли прин€то данных больше чем id и количество байт в сообщении
+    while (data.size() > 4 + 4)        // ≈сли прин€то данных больше чем id и количество байт в сообщении
     {
         uint id = *((uint *)data.data());
 
@@ -217,6 +217,10 @@ void ServerConnector::ProcessData()
             }
 
             data.erase(data.begin(), data.begin() + 4 + 4 + size_answer);
+        }
+        else
+        {
+            break;          // ≈сли не прин€ты все байты сообщени€
         }
     }
 }

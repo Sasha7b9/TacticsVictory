@@ -103,7 +103,7 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 
         ClientInfo info;
         info.address.sin = *((sockaddr_in *)&ss);
-        info.buffer = bev;
+        info.benv = bev;
 
         LOGWRITEF("Client %s connected", info.address.ToString().c_str());
 
@@ -157,26 +157,48 @@ static void CallbackWrite(struct bufferevent *, void *)
 }
 
 
+static uint GetID(std::vector<uint8> &received)
+{
+    return *(uint *)received.data();
+}
+
+
+static uint GetSize(std::vector<uint8> &received)
+{
+    return *(uint *)(received.data() + 4);
+}
+
+
+// ѕеремещает байты запроса из received в data. ѕри этом из искоходного вектора перемещЄнные данные удал€ютс€
+static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data)
+{
+    uint size = GetSize(received);
+
+    data.resize(size + 1);
+
+    std::memcpy(data.data(), received.data() + 8, size);
+
+    received.erase(received.begin(), received.begin() + 8 + size);
+}
+
+
 static void ProcessClient(ClientInfo &info)
 {
-    std::vector<uint8> &data = info.data;
+    std::vector<uint8> &received = info.data;
 
-    while (data.size() > 8)         // ≈сли прин€то данных больше, чем занимают id и размер данных
+    while (received.size() > 4 + 4)         // ≈сли прин€то данных больше, чем занимают id и размер данных
     {
-        uint id = *(uint *)data.data();
+        uint id = GetID(received);
 
-        uint size = *(uint *)(data.data() + 4);
+        uint size = GetSize(received);
 
-        if (data.size() >= 4 + size)
+        if (received.size() >= 4 + 4 + size)
         {
-            std::vector<char> buffer(size + 1);
+            std::vector<uint8> data;
 
-            std::memcpy(buffer.data(), data.data() + 8, size);
-            buffer[size] = '\0';
+            MoveData(received, data);
 
-            data.erase(data.begin(), data.begin() + 8 + size);
-
-            SU::SplitToWords(buffer.data(), size, Server::words);
+            SU::SplitToWords((char *)data.data(), (uint)std::strlen((char *)data.data()), Server::words);
 
             auto it = Server::handlers.find(Server::words[0]);
 
@@ -184,6 +206,10 @@ static void ProcessClient(ClientInfo &info)
             {
                 it->second(id, &info);
             }
+        }
+        else
+        {
+            break;      // ≈сли прин€ты не все байты запроса
         }
     }
 }
