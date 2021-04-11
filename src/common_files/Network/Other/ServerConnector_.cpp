@@ -5,6 +5,23 @@
 #include "Utils/GlobalFunctions_.h"
 
 
+static void ThreadConnect(ConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
+{
+    mutex->lock();
+
+    if (conn_out->Connect(host, port))
+    {
+        *state = ServerConnector::State::EventConnection;
+    }
+    else
+    {
+        *state = ServerConnector::State::EventFailConnection;
+    }
+
+    mutex->unlock();
+}
+
+
 void ServerConnector::Destroy()
 {
     destroy = true;
@@ -18,8 +35,7 @@ void ServerConnector::Destroy()
 
 bool ServerConnector::IsConnected()
 {
-    return (state == State::InConnection ||
-        state == State::WaitPing);
+    return (state == State::InConnection);
 }
 
 
@@ -54,74 +70,36 @@ void ServerConnector::Connect()
 }
 
 
-static void ThreadConnect(ConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
-{
-    mutex->lock();
-
-    if (conn_out->Connect(host, port))
-    {
-        *state = ServerConnector::State::EventConnection;
-    }
-    else
-    {
-        *state = ServerConnector::State::EventFailConnection;
-    }
-
-    mutex->unlock();
-}
-
-
-std::string ServerConnector::GetAnswer()
+void ServerConnector::SendRequest(pchar request, const void *buffer, uint size_buffer)
 {
     mutex.lock();
 
-    std::string result = connector.Receive();
+    last_request_id++;
+
+    connector.Transmit(&last_request_id, 4);
+
+    uint size = (uint)std::strlen(request) + size_buffer;
+
+    connector.Transmit(&size, 4);
+
+    connector.Transmit(request, (uint)std::strlen(request));
+
+    if (buffer)
+    {
+        connector.Transmit(buffer, size);
+    }
 
     mutex.unlock();
-
-    return result;
-}
-
-
-void ServerConnector::SendString(pchar string)
-{
-    connector.Transmit(string);
-}
-
-
-void ServerConnector::SendRequest(pchar request)
-{
-    connector.SendRequest(++last_request_id, request);
-}
-
-
-static void ThreadPing(ConnectorTCP *connector, std::mutex *mutex, int *ping, uint8 *state)
-{
-    mutex->lock();
-
-    int64 start = GF::Timer::TimeMS();
-
-    connector->Transmit(MSM_PING);
-
-    std::string result = connector->Receive();
-
-    if (result == MSM_PING)
-    {
-        *state = ServerConnector::State::GetPing;
-        *ping = (int)(GF::Timer::TimeMS() - start);
-    }
-    else
-    {
-        *state = ServerConnector::State::EventDisconnect;
-    }
-
-    mutex->unlock();
 }
 
 
 void ServerConnector::Update()
 {
     static int ping = 999;
+
+    ReceiveData();
+
+    ProcessData();
 
     switch (state)
     {
@@ -157,28 +135,7 @@ void ServerConnector::Update()
         break;
 
     case State::InConnection:
-        {
-            static int64 prev_time = GF::Timer::TimeMS();
-
-            int64 delta = GF::Timer::TimeMS() - prev_time;
-
-            if (delta >= 1000)
-            {
-                state = State::WaitPing;
-                std::thread thread(ThreadPing, &connector, &mutex, &ping, (uint8 *)&state);
-                thread.detach();
-
-                prev_time = GF::Timer::TimeMS();
-            }
-
-            ExecuteTasks();
-        }
-        break;
-
-    case State::WaitPing:
-
         ExecuteTasks();
-
         break;
 
     case State::EventDisconnect:
@@ -193,6 +150,34 @@ void ServerConnector::Update()
         funcPing(ping);
         break;
     }
+}
+
+
+
+void ServerConnector::ReceiveData()
+{
+    mutex.lock();
+
+    static const uint SIZE_CHUNK = 1024;
+
+    uint8 buffer[SIZE_CHUNK];
+
+    uint received = connector.Receive(buffer, SIZE_CHUNK);
+
+    while (received > 0)
+    {
+        data.insert(data.begin(), buffer, &buffer[received]);
+
+        received = connector.Receive(buffer, SIZE_CHUNK);
+    }
+
+    mutex.unlock();
+}
+
+
+void ServerConnector::ProcessData()
+{
+
 }
 
 

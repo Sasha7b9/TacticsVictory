@@ -156,24 +156,12 @@ void Client::ParseArguments()
 
 void Client::SetTasks()
 {
-//    static TaskMasterServer task = { 0, 1000,
-//        []()
-//        {
-//            TheMasterServer.SendString(MSM_GET_LIVINGROMS);
-//            std::string answer = TheMasterServer.GetAnswer();
-//            TheMenu->pageFindServer->SetServersInfo(answer);
-//        }
-//    };
-//
-//    TheMasterServer.SetTask(&task);
-
-    static TaskMasterServer taskPing = { 0, 1000,
+    static TaskMasterServer taskPing = { 1000,
         []()
         {
-            TheMasterServer.SendRequest(MSM_PING);
-            int64 start = GF::Timer::TimeMS();
-            std::string answer = TheMasterServer.GetAnswer();
-            LOGWRITEF(": ping = %d", GF::Timer::TimeMS() - start);
+            int64 now = GF::Timer::TimeMS();
+
+            TheMasterServer.SendRequest(MSM_PING, &now, 4);
         }
     };
 

@@ -10,7 +10,6 @@
 
 struct TaskMasterServer
 {
-    int         count;          // Сколько раз выполнять задание (0 - бесконечно)
     int64       delta_time;     // Через такие промежутки времени выполнять задание
     pFuncVV     func;           // Обработка ответа от мастер-сервера
     int64       prev_time;
@@ -37,9 +36,7 @@ public:
 
     // Посылка запроса. Каждый запрос помечается уникальным 32-х битным идентификатором, который передаётся четырьмя
     // байтами в начале засылки.
-    void SendRequest(pchar request);
-
-    std::string GetAnswer();
+    void SendRequest(pchar request, const void *data = nullptr, uint size = 0);
 
     bool IsConnected();
 
@@ -53,10 +50,11 @@ public:
         EventConnection,        // Произошло соединение, нужно вызывать функцию funcConnection
         EventFailConnection,    // Неудачное соединение, нужно вызывать функцию funcFailConnection
         InConnection,           // Подключено
-        WaitPing,               // Ожидание сообщения о пинге
         EventDisconnect,        // Событие обрыва связи с мастер-сервером
         GetPing                 // Получен пинг
     }; };
+
+    std::vector<uint8> data;        // Здесь хранятся принятые данные
 
 private:
 
@@ -80,5 +78,9 @@ private:
 
     void ExecuteTasks();
 
-    void SendString(pchar string);
+    // Принять имеющиеся данные
+    void ReceiveData();
+
+    // Обработать принятые данные
+    void ProcessData();
 };

@@ -22,13 +22,11 @@ public:
     bool IsConnected() const;
 
     // Передаёт size байт из массива data
-    void Transmit(void *data, uint size);
+    void Transmit(const void *data, uint size);
 
     // Делает попытку приёма size байт в массив data. Возвращает количество реально принятых байт.
     // В случае ошибки возрващает -1
     uint Receive(void *data, uint size);
-
-    std::string Receive();
 
 private:
 

@@ -39,8 +39,8 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
 
     if (connection->is_connected())
     {
-        SetReadTimeOut(1000);
-        SetWriteTimeOut(1000);
+        SetReadTimeOut(1);
+        SetWriteTimeOut(1);
 
         LOGWRITEF("Connect to %s:%d success", host.c_str(), port);
     }
@@ -84,7 +84,7 @@ void ConnectorTCP::Disconnect()
 }
 
 
-void ConnectorTCP::Transmit(void *data, uint size)
+void ConnectorTCP::Transmit(const void *data, uint size)
 {
     connection->write_n(data, size);
 }
@@ -114,29 +114,6 @@ bool ConnectorTCP::IsConnected() const
     }
 
     return true;
-}
-
-
-std::string ConnectorTCP::Receive()
-{
-    uint size = 0;
-    
-    connection->read_n(&size, sizeof(uint));
-
-    std::string result;
-    result.resize((size_t)size);
-
-    if (size != 0)
-    {
-        connection->read_n(&result[0], (size_t)size);
-    }
-    else
-    {
-        LOGWARNINGF("Not received a file from address %s, peer %s", connection->address().to_string().c_str(),
-            connection->peer_address().to_string().c_str());
-    }
-
-    return result;
 }
 
 
