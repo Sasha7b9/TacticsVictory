@@ -3,6 +3,7 @@
 #include "FileSystem/ConfigurationFile_.h"
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/Server_.h"
+#include "Utils/StringUtils_.h"
 
 
 static const char MESSAGE[] = "Hello, World!";
@@ -177,9 +178,16 @@ static void ProcessClient(ClientInfo &info)
             std::memcpy(buffer.data(), data.data() + 4, size);
             buffer[size] = '\0';
 
-            LOGWRITEF("Received \"%s\" from %s", buffer.data(), info.address.ToString().c_str());
-
             data.erase(data.begin(), data.begin() + 4 + size);
+
+            SU::SplitToWords(buffer.data(), size, Server::words);
+
+            auto it = Server::handlers.find(Server::words[0]);
+
+            if (it != Server::handlers.end())
+            {
+                it->second();
+            }
         }
     }
 }

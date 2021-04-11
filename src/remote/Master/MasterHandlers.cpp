@@ -12,11 +12,8 @@ static void HandlerPing();
 extern void HandlerTerminate();
 
 
-//static AcceptorTCP::Socket *sock = nullptr;             // Используется в обработчиках
-static std::vector<std::string> *words = nullptr;       // Используется в обработчиках
-
-
 std::map<std::string, pFuncVV> Server::handlers;
+std::vector<std::string>       Server::words;
 
 
 void Server::Prepare()
@@ -30,7 +27,7 @@ void Server::Prepare()
 
 static void HandlerClose()
 {
-    if (words->size() == 2 && (*words)[1] == "connection")
+    if (Server::words.size() == 2 && (Server::words)[1] == "connection")
     {
 //        sock->sock.close();
     }
@@ -78,6 +75,8 @@ static void HandlerGet()
 
 static void HandlerPing()
 {
+    LOGWRITE("Request for ping");
+
 //    sock->Transmit(std::string("ping"));
 }
 
