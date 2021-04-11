@@ -54,12 +54,6 @@ void ServerConnector::Connect()
 }
 
 
-std::string ServerConnector::GetAnswer()
-{
-    return connector.Receive();
-}
-
-
 static void ThreadConnect(ConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
 {
     mutex->lock();
@@ -77,11 +71,9 @@ static void ThreadConnect(ConnectorTCP *conn_out, pchar host, uint16 port, std::
 }
 
 
-std::string ServerConnector::GetAnswer(pchar key)
+std::string ServerConnector::GetAnswer()
 {
     mutex.lock();
-
-    connector.Transmit(key);
 
     std::string result = connector.Receive();
 

@@ -39,8 +39,6 @@ public:
     // байтами в начале засылки.
     void SendRequest(pchar request);
 
-    std::string GetAnswer(pchar key);
-
     std::string GetAnswer();
 
     bool IsConnected();
