@@ -33,43 +33,6 @@ void Server::Prepare()
 }
 
 
-void Server::HandlerReceivedSocket(pchar symbols, int number)
-{
-//    sock = &socket;
-
-    static std::string buffer;
-
-    buffer.append(symbols, (size_t)number);
-
-    if (buffer.size() < 5)
-    {
-        return;
-    }
-
-    uint *size_ñommand = (uint *)&buffer[0];
-
-    if ((uint)(buffer.size() - sizeof(uint)) < *size_ñommand)
-    {
-        return;
-    }
-
-    std::vector<std::string> _words;
-
-    SU::SplitToWords(&buffer[sizeof(uint)], (int)*size_ñommand, _words);
-
-    words = &_words;
-
-    auto iter = handlers.find(_words[0]);
-
-    if (iter != handlers.end())
-    {
-        iter->second();
-    }
-
-    buffer.erase(0, sizeof(uint) + (size_t)*size_ñommand);
-}
-
-
 static void HandlerClose()
 {
     if (words->size() == 2 && (*words)[1] == "connection")

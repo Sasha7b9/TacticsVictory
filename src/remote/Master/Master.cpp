@@ -10,9 +10,6 @@
 */
 
 
-//extern void HandlerReceivedSocket(AcceptorTCP::Socket &socket, pchar data, int size);
-
-
 int main(int, char *[])
 {
     setlocale(LC_ALL, "Russian");
