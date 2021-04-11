@@ -140,6 +140,12 @@ void Server::SendAnswer(void *bev, uint id, pchar message, void *data, uint size
 }
 
 
+void Server::SendAnswer(void *bev, uint id, pchar message, pchar data)
+{
+    SendAnswer(bev, id, message, (void *)data, (uint)std::strlen(data) + 1);
+}
+
+
 static void CallbackRead(struct bufferevent *bev, void *)
 {
     std::vector<uint8> &data = TheServer.clients[bev].bindata;

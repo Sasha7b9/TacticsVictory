@@ -20,17 +20,31 @@ void Server::Prepare()
 };
 
 
-static void HandleInfoLivingRoms(uint, ClientInfo &)
+static void HandleInfoLivingRoms(uint id, ClientInfo &info)
 {
+    std::string result;
 
+    std::stringstream stream(result);
+
+    for each (auto &pair in TheServer.clients)
+    {
+        const ClientInfo &ci = pair.second;
+
+        if (!ci.name.empty())
+        {
+            stream << ci.name;
+        }
+
+        stream << "|";
+    }
+
+    TheServer.SendAnswer(info.benv, id, MSG_NTW_INFO_LIVINGROOM, result.c_str());
 }
 
 
 static void HandlerPing(uint id, ClientInfo &info)
 {
-    struct bufferevent *bev = (struct bufferevent *)info.benv;
-
-    TheServer.SendAnswer(bev, id, MSG_NTW_PING, info.GetRawData(), 4);
+    TheServer.SendAnswer(info.benv, id, MSG_NTW_PING, info.GetRawData(), 4);
 }
 
 
