@@ -3,7 +3,7 @@ project (test_libevent)
 include_directories(.
                     ../../ThirdParty/libevent/compat
                     ../../ThirdParty/libevent/include
-                    ../../ThirdParty/libevent/build/include)
+                    ../../ThirdParty/libevent/include/include)
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
 
