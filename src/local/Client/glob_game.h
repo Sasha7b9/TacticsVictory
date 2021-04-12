@@ -16,7 +16,7 @@ class PageStart;
 class WindowVariables;
 
 extern ConfigurationFile TheSettings;
-extern ServerConnector   TheMasterServer;
+extern ServerConnector   TheServerConnector;
 
 extern CameraT         *TheCamera;
 extern Client          *TheClient;

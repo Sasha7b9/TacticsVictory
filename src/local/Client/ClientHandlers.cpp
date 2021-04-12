@@ -5,7 +5,7 @@
 
 void Client::HandleUpdate(StringHash, VariantMap &)
 {
-    TheMasterServer.Update();
+    TheServerConnector.Update();
 }
 
 void Client::HandlePostRenderUpdate(StringHash, VariantMap &)
