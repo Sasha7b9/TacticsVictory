@@ -14,8 +14,13 @@
 #include <Urho3D/IO/Log.h>
 #include <Urho3D/Resource/Localization.h>
 #include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/UI/Button.h>
+#include <Urho3D/UI/CheckBox.h>
+#include <Urho3D/UI/DropDownList.h>
 #include <Urho3D/UI/Font.h>
+#include <Urho3D/UI/Text.h>
 #include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/Window.h>
 #include <Urho3D/Urho2D/Sprite2D.h>
 #include <Urho3D/Urho2D/StaticSprite2D.h>
 

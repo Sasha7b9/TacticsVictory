@@ -28,32 +28,35 @@ add_compile_options(/wd5219)    # implicit conversion from 'type-1' to 'type-2',
 add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum' (Enum.3)
 add_compile_options(/wd28251)   # Inconsistent annotation for function: this instance has an error
 
-file(GLOB SRC         ../../common_files/*.*
-                                         *.h *.cpp)
-file(GLOB FILE_SYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
-                      ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB GUI                            GUI/*.*)
-file(GLOB GUI_CHAT                       GUI/Chat/*.*)
-file(GLOB INPUT       ../../common_files/Input/Mouse_.*
-                                         Input/Mouse.cpp)
-file(GLOB NETWORK     ../../common_files/Network/Other/MasterServer_.*
-                      ../../common_files/Network/Other/SocketsTCP_.*)
-file(GLOB UTILS       ../../common_files/Utils/Log_.*
-                      ../../common_files/Utils/LogU3D_.*
-                      ../../common_files/Utils/StringUtils_.*
-                      ../../common_files/Utils/UtilsOS_.*)
+file(GLOB SRC          ../../common_files/*.*
+                                          *.h *.cpp)
+file(GLOB FILE_SYSTEM  ../../common_files/FileSystem/ConfigurationFile_.*
+                       ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB GUI          ../../common_files/GUI/Cursor_.*
+                                          GUI/*.*)
+file(GLOB GUI_CHAT                        GUI/Chat/*.*)
+file(GLOB GUI_CONTROLS ../../common_files/GUI/Controls/Window_.*)
+file(GLOB INPUT        ../../common_files/Input/Mouse_.*
+                                          Input/Mouse.cpp)
+file(GLOB NETWORK      ../../common_files/Network/Other/MasterServer_.*
+                       ../../common_files/Network/Other/SocketsTCP_.*)
+file(GLOB UTILS        ../../common_files/Utils/Log_.*
+                       ../../common_files/Utils/LogU3D_.*
+                       ../../common_files/Utils/StringUtils_.*
+                       ../../common_files/Utils/UtilsOS_.*)
 
 file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
 file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
 file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
 
-source_group(src        FILES ${SRC})
-source_group(FileSystem FILES ${FILE_SYSTEM})
-source_group(GUI        FILES ${GUI})
-source_group(GUI\\Chat  FILES ${GUI_CHAT})
-source_group(Input      FILES ${INPUT})
-source_group(Network    FILES ${NETWORK})
-source_group(Utils      FILES ${UTILS})
+source_group(src           FILES ${SRC})
+source_group(FileSystem    FILES ${FILE_SYSTEM})
+source_group(GUI           FILES ${GUI})
+source_group(GUI\\Chat     FILES ${GUI_CHAT})
+source_group(GUI\\Controls FILES ${GUI_CONTROLS})
+source_group(Input         FILES ${INPUT})
+source_group(Network       FILES ${NETWORK})
+source_group(Utils         FILES ${UTILS})
 
 source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
 source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
@@ -61,11 +64,11 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${GUI} ${GUI_CHAT} ${INPUT} ${NETWORK} ${UTILS}
+add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${INPUT} ${NETWORK} ${UTILS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 set_target_properties(${PROJECT_NAME}                                                 PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${SRC} ${FILE_SYSTEM} ${GUI} ${GUI_CHAT} ${INPUT} ${NETWORK} ${UTILS} 
+set_source_files_properties(${SRC} ${FILE_SYSTEM} ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${INPUT} ${NETWORK} ${UTILS} 
                                                                                       PROPERTIES UNITY_GROUP "bucket")
 
 include(../../RuntimeLibrary.cmake)

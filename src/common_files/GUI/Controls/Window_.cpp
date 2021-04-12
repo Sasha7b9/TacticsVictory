@@ -92,25 +92,34 @@ SharedPtr<ButtonToggled> WindowT::AddButtonToggled(char *text, int x, int y, int
 }
 
 
-SharedPtr<SliderWithTextAndButtons> WindowT::AddSlider(char *text, int min, int max, int step, int x, int y, int widthText, int widthRoller)
+SharedPtr<SliderWithTextAndButtons> WindowT::AddSlider(char *text, int min, int max, int step, int x, int y,
+    int widthText, int widthRoller)
 {
-    SharedPtr<SliderWithTextAndButtons> slider(new SliderWithTextAndButtons(this, text, min, max, step, widthText, widthRoller));
+    SharedPtr<SliderWithTextAndButtons> slider(new SliderWithTextAndButtons(this, text, min, max, step, widthText,
+        widthRoller));
+
     AddChild(slider);
+
     if (x != -1 && y != -1)
     {
         slider->SetPosition(x, y);
     }
+
     return slider;
 }
 
 
-SharedPtr<DropDownListWithTextAndButton> WindowT::AddDDList(char *text, int widthText, int widthDDList, int numItems, char *items[], int x, int y)
+SharedPtr<DropDownListWithTextAndButton> WindowT::AddDDList(char *text, int widthText, int widthDDList, int numItems,
+    char *items[], int x, int y)
 {
-    SharedPtr<DropDownListWithTextAndButton> ddList(DropDownListWithTextAndButton::Create(this, text, widthText, widthDDList, numItems, items));
+    SharedPtr<DropDownListWithTextAndButton> ddList(DropDownListWithTextAndButton::Create(this, text, widthText,
+        widthDDList, numItems, items));
+
     if (x != -1 && y != -1)
     {
         ddList->SetPosition(x, y);
     }
+
     return ddList;
 }
 

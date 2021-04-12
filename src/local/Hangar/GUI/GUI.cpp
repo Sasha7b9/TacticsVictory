@@ -19,5 +19,6 @@ void GUI::RegistrationObjects()
 
 void GUI::Create()
 {
-
+    TheChat = new Chat();
+    TheUIRoot->AddChild(TheChat);
 }

@@ -2,12 +2,16 @@
 #pragma once
 #include "Hangar.h"
 #include "FileSystem/ConfigurationFile_.h"
+#include "GUI/Cursor_.h"
+#include "GUI/Chat/Chat.h"
 #include "Network/Other/ServerConnector_.h"
 
 
 extern ConfigurationFile TheSettings;
 extern ServerConnector   TheMasterServer;
 
+extern Chat              *TheChat;
+extern CursorT           *TheCursor;
 extern GUI               *TheGUI;
 extern Hangar            *TheHangar;
 extern Mouse             *TheMouse;
