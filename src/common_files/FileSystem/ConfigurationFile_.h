@@ -18,6 +18,7 @@ public:
     void Unload();
 
     int                 GetInt(pchar key1, pchar key2 = "", pchar key3 = "", pchar key4 = "");
+    bool                GetBool(pchar key1, pchar key2 = "", pchar key3 = "", pchar key4 = "");
     pchar               GetString(pchar key1, pchar key2 = "", pchar key3 = "", pchar key4 = "");
     bool                GetVectorStrings(pchar key, std::vector<std::string> &strings);
     std::pair<int, int> GetIntVector2(pchar key1, pchar key2 = "", pchar key3 = "", pchar key4 = "");

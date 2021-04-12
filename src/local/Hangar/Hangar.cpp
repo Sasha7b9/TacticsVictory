@@ -57,7 +57,7 @@ void Hangar::TuneEngineParameters()
     engineParameters_[EP_TEXTURE_QUALITY] = 32;
     engineParameters_[EP_HEADLESS] = false;
 
-    if (TheSettings.GetInt("full_screen") == 1)
+    if (TheSettings.GetBool("full_screen"))
     {
         engineParameters_[EP_FULL_SCREEN] = true;
     }
