@@ -3,3 +3,11 @@
 
 
 extern Context       *TheContext;
+extern Engine        *TheEngine;
+extern FileSystem    *TheFileSystem;
+extern Graphics      *TheGraphics;
+extern Input         *TheInput;
+extern Localization  *TheLocalization;
+extern ResourceCache *TheCache;
+extern Time          *TheTime;
+extern UI            *TheUI;

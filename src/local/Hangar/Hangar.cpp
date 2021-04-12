@@ -21,7 +21,7 @@ void Hangar::Setup()
 {
     OpenLog();
 
-    LogRAW::Create("Client.log", true);
+    LogRAW::Create((GetTypeName() + ".log").CString(), true);
 
     LOGWRITE("Start Hangar");
 
@@ -37,6 +37,14 @@ void Hangar::Setup()
 
 void Hangar::GetSubsystems()
 {
+    TheCache = GetSubsystem<ResourceCache>();
+    TheEngine = GetSubsystem<Engine>();
+    TheFileSystem = GetSubsystem<FileSystem>();
+    TheGraphics = GetSubsystem<Graphics>();
+    TheLocalization = GetSubsystem<Localization>();
+    TheUI = GetSubsystem<UI>();
+    TheTime = GetSubsystem<Time>();
+    TheInput = GetSubsystem<Input>();
 }
 
 
@@ -91,6 +99,10 @@ void Hangar::CreateGUI()
 
 void Hangar::Stop()
 {
+    TheSettings.Unload();
+
+    engine_->DumpResources(true);
+    engine_->DumpProfiler();
 }
 
 

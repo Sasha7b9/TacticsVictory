@@ -3,9 +3,18 @@
 #include "Network/Other/ServerConnector_.h"
 
 
-Context *TheContext = nullptr;
+Context       *TheContext      = nullptr;
+Engine        *TheEngine       = nullptr;
+FileSystem    *TheFileSystem   = nullptr;
+Graphics      *TheGraphics     = nullptr;
+Input         *TheInput        = nullptr;
+Localization  *TheLocalization = nullptr;
+ResourceCache *TheCache        = nullptr;
+Time          *TheTime         = nullptr;
+UI            *TheUI           = nullptr;
+
+Hangar        *TheHangar       = nullptr;
 
 ConfigurationFile TheSettings;
 ServerConnector   TheMasterServer;
 
-Hangar            *TheHangar = nullptr;

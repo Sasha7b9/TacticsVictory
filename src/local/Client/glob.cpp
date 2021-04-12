@@ -2,31 +2,31 @@
 #include "stdafx.h"
 
 
-Audio         *TheAudio        = nullptr;
-Context       *TheContext      = nullptr;
-Engine        *TheEngine       = nullptr;
-FileSelector  *TheFileSelector = nullptr;
-FileSystem    *TheFileSystem   = nullptr;
-Font          *TheFont         = nullptr;
-Graphics      *TheGraphics     = nullptr;
-Input         *TheInput        = nullptr;
-ResourceCache *TheCache        = nullptr;
-Localization  *TheLocalization = nullptr;
-Scene         *TheScene        = nullptr;
-Time          *TheTime         = nullptr;
-UI            *TheUI           = nullptr;
-UIElement     *TheUIRoot       = nullptr;
+Audio           *TheAudio        = nullptr;
+Context         *TheContext      = nullptr;
+Engine          *TheEngine       = nullptr;
+FileSelector    *TheFileSelector = nullptr;
+FileSystem      *TheFileSystem   = nullptr;
+Font            *TheFont         = nullptr;
+Graphics        *TheGraphics     = nullptr;
+Input           *TheInput        = nullptr;
+ResourceCache   *TheCache        = nullptr;
+Localization    *TheLocalization = nullptr;
+Scene           *TheScene        = nullptr;
+Time            *TheTime         = nullptr;
+UI              *TheUI           = nullptr;
+UIElement       *TheUIRoot       = nullptr;
+
+CameraT         *TheCamera       = nullptr;
+Client          *TheClient       = nullptr;
+ConsoleT        *TheConsole      = nullptr;
+CursorT         *TheCursor       = nullptr;
+GUI             *TheGUI          = nullptr;
+Hint            *TheHint         = nullptr;
+LogRAW          *TheLog          = nullptr;
+Menus           *TheMenu         = nullptr;
+Mouse           *TheMouse        = nullptr;
+WindowVariables *TheWindowVars   = nullptr;
 
 ConfigurationFile TheSettings;
 ServerConnector   TheServerConnector;
-
-CameraT          *TheCamera       = nullptr;
-Client           *TheClient       = nullptr;
-ConsoleT         *TheConsole      = nullptr;
-CursorT          *TheCursor       = nullptr;
-GUI              *TheGUI          = nullptr;
-Hint             *TheHint         = nullptr;
-LogRAW           *TheLog          = nullptr;
-Menus            *TheMenu         = nullptr;
-Mouse            *TheMouse        = nullptr;
-WindowVariables  *TheWindowVars   = nullptr;

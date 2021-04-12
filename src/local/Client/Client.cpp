@@ -30,7 +30,7 @@ void Client::Setup()
 {
     OpenLog();
 
-    LogRAW::Create("Client.log", true);
+    LogRAW::Create((GetTypeName() + ".log").CString(), true);
 
     LOGWRITE("Start Client");
 
