@@ -250,7 +250,9 @@ void ServerConnector::ExecuteTasks()
 }
 
 
-void ServerConnector::SetTask(TaskMasterServer *task)
+void ServerConnector::SetTask(int64 dT, TaskMasterServer *task)
 {
+    task->delta_time = dT;
+
     all_tasks.push_back(task);
 }

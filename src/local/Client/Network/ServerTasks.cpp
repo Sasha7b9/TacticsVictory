@@ -7,12 +7,12 @@
 #include "Utils/Log_.h"
 
 
-static TaskMasterServer taskPing = { 1000,
+static TaskMasterServer taskPing = {
     []()
     {
         int64 now = GF::Timer::TimeMS();
 
-        return TheMasterServer.SendRequest(MSG_NTW_PING, &now, 4);
+        return TheServerConnector.SendRequest(MSG_NTW_PING, &now, 4);
     },
     [](pchar, void *data, uint)
     {
@@ -23,10 +23,10 @@ static TaskMasterServer taskPing = { 1000,
 };
 
 
-static TaskMasterServer taskGetInfoLivingRooms = { 1000,
+static TaskMasterServer taskGetInfoLivingRooms = {
     []()
     {
-        return TheMasterServer.SendRequest(MSG_NTW_INFO_LIVINGROOM);
+        return TheServerConnector.SendRequest(MSG_NTW_INFO_LIVINGROOM);
     },
     [](pchar, void *data, uint)
     {
@@ -37,6 +37,6 @@ static TaskMasterServer taskGetInfoLivingRooms = { 1000,
 
 void ServerConnector::SetTasks()
 {
-    TheMasterServer.SetTask(&taskPing);
-    TheMasterServer.SetTask(&taskGetInfoLivingRooms);
+    TheServerConnector.SetTask(1000, &taskPing);
+    TheServerConnector.SetTask(1000, &taskGetInfoLivingRooms);
 }

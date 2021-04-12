@@ -18,7 +18,7 @@ UI            *TheUI           = nullptr;
 UIElement     *TheUIRoot       = nullptr;
 
 ConfigurationFile TheSettings;
-ServerConnector           TheMasterServer;
+ServerConnector   TheServerConnector;
 
 CameraT          *TheCamera       = nullptr;
 Client           *TheClient       = nullptr;
