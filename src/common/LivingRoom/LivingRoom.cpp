@@ -8,14 +8,14 @@
 
 int LivingRoom::Run(pchar address)
 {
-    TheMasterServer.SetAddress(address, (uint16)TheSettings.GetInt("master_server", "port"));
+    TheServerConnector.SetAddress(address, (uint16)TheSettings.GetInt("master_server", "port"));
 
-    TheMasterServer.SetCallbacks
+    TheServerConnector.SetCallbacks
     (
         []()
         {
             LOGERROR("Can't connect to master server");
-            TheMasterServer.Connect();
+            TheServerConnector.Connect();
             LOGWRITE("Attempt connection to master-server");
         },
         []()
@@ -28,16 +28,16 @@ int LivingRoom::Run(pchar address)
         },
         []()
         {
-            TheMasterServer.Connect();
+            TheServerConnector.Connect();
             LOGWRITE("The master server is down. Attempting to connect");
         }
     );
 
-    TheMasterServer.Connect();
+    TheServerConnector.Connect();
 
     while (true)
     {
-        TheMasterServer.Update();
+        TheServerConnector.Update();
     }
 
     return 0;
@@ -58,5 +58,5 @@ void LivingRoom::SendNameToMasterServer()
 
     stream << "LivingRoom " << std::rand();
 
-    TheMasterServer.SendRequest(MSG_NTW_SET_NAME_LIVINGROOM, stream.str().c_str());
+    TheServerConnector.SendRequest(MSG_NTW_SET_NAME_LIVINGROOM, stream.str().c_str());
 }

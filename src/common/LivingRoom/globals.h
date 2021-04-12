@@ -7,4 +7,4 @@
 
 extern ConfigurationFile TheSettings;
 extern LivingRoom        TheLivingRoom;
-extern ServerConnector   TheMasterServer;
+extern ServerConnector   TheServerConnector;
