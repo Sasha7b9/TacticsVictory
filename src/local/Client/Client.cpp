@@ -64,8 +64,6 @@ void Client::TuneEngineParameters()
                                                         GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_[EP_FULL_SCREEN] = false;
     engineParameters_[EP_TEXTURE_QUALITY] = 32;
-    engineParameters_[EP_WINDOW_WIDTH] = TheSettings.GetInt("client", "screen", "width");
-    engineParameters_[EP_WINDOW_HEIGHT] = TheSettings.GetInt("client", "screen", "height");
     engineParameters_[EP_HEADLESS] = false;
 
     if (!engineParameters_.Contains(EP_RESOURCE_PREFIX_PATHS))
