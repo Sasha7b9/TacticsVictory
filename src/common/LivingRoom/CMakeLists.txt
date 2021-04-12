@@ -25,6 +25,7 @@ if(WIN32)
     add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified
+    add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum'
 
 else()
     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -lGL -lGLX -lX11 -lGLdispatch")

@@ -46,8 +46,8 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
     }
     else
     {
-        LOGERRORF("%d - Connect to %s:%d failed. Error : %s", counter++, host.c_str(), port,
-            connection->last_error_str().c_str());
+//        LOGERRORF("%d - Connect to %s:%d failed. Error : %s", counter++, host.c_str(), port,
+//            connection->last_error_str().c_str());
     }
 
     return connection->is_connected();

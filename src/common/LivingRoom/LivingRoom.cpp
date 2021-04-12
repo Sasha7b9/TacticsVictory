@@ -14,9 +14,9 @@ int LivingRoom::Run(pchar address)
     (
         []()
         {
-            LOGERROR("Can't connect to master server");
+//            LOGERROR("Can't connect to master server");
             TheServerConnector.Connect();
-            LOGWRITE("Attempt connection to master-server");
+//            LOGWRITE("Attempt connection to master-server");
         },
         []()
         {
@@ -32,6 +32,8 @@ int LivingRoom::Run(pchar address)
             LOGWRITE("The master server is down. Attempting to connect");
         }
     );
+
+    LOGWRITE("Wait server for connection");
 
     TheServerConnector.Connect();
 
