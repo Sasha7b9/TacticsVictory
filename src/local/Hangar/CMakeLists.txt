@@ -60,6 +60,9 @@ set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
+set_target_properties(${PROJECT_NAME}                                 PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} PROPERTIES UNITY_GROUP "bucket")
+
 include(../../RuntimeLibrary.cmake)
 
 if(${CMAKE_BUILD_TYPE} STREQUAL Debug)

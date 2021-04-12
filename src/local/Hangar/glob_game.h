@@ -7,7 +7,7 @@ class Hangar;
 class ServerConnector;
 
 
-extern ConfigurationFile TheConfig;
+extern ConfigurationFile TheSettings;
 extern ServerConnector   TheMasterServer;
 
 extern Hangar            *TheHangar;

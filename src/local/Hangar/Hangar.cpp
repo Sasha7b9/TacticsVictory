@@ -21,13 +21,15 @@ void Hangar::Setup()
 {
     OpenLog();
 
-    TheConfig.Load("Hangar.cfg");
+    LogRAW::Create("Client.log", true);
+
+    LOGWRITE("Start Hangar");
 
     TheHangar = this;
 
-//    TheMasterServer.Connect(TheConfig.GetString("address master"));
-
     GetSubsystems();
+
+    TheSettings.Load("Settings.conf");
 
     TuneEngineParameters();
 }
