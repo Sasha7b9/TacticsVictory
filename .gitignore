@@ -12,3 +12,4 @@ generated/*
 out/debug/*.dll
 out/debug/BattleTV
 out/release/*
+src/ThirdParty/libevent/build
