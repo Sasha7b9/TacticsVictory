@@ -32,6 +32,8 @@ public:
 
     void Connect();
 
+    void Disconnect();
+
     void SetTasks();
 
     void Update();
@@ -88,4 +90,7 @@ private:
 
     // ќбработать прин€тые данные
     void ProcessData();
+
+    // ¬озвращает false, если соединение с сервером потер€но
+    bool ExistConnection();
 };

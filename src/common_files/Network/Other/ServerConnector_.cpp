@@ -3,6 +3,7 @@
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/ServerConnector_.h"
 #include "Utils/GlobalFunctions_.h"
+#include <limits>
 
 
 static void ThreadConnect(ConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
@@ -69,6 +70,19 @@ void ServerConnector::Connect()
 }
 
 
+void ServerConnector::Disconnect()
+{
+    if (IsConnected())
+    {
+        mutex.lock();
+        connector.Disconnect();
+        mutex.unlock();
+
+        state = State::EventDisconnect;
+    }
+}
+
+
 uint ServerConnector::SendRequest(pchar request, const void *buffer, uint size_buffer)
 {
     mutex.lock();
@@ -107,6 +121,11 @@ void ServerConnector::Update()
     ReceiveData();
 
     ProcessData();
+
+    if (!ExistConnection())
+    {
+        Disconnect();
+    }
 
     switch (state)
     {
@@ -212,7 +231,11 @@ void ServerConnector::ProcessData()
                     size_buffer = size_answer - (uint)std::strlen(answer) - 1;
                 }
 
-                it->second->handler_answer(answer, buffer, size_buffer);
+                TaskMasterServer *task = it->second;
+
+                task->handler_answer(answer, buffer, size_buffer);
+
+                task->last_tive_receive = GF::Timer::TimeMS();
             }
             else
             {
@@ -254,5 +277,30 @@ void ServerConnector::SetTask(int64 dT, TaskMasterServer *task)
 {
     task->delta_time = dT;
 
+    task->last_tive_receive = LLONG_MAX;
+
     all_tasks.push_back(task);
+}
+
+
+bool ServerConnector::ExistConnection()
+{
+    int64 now = GF::Timer::TimeMS();
+
+    if (active_tasks.size() == 0)
+    {
+        return true;
+    }
+
+    for each (auto &it in active_tasks)
+    {
+        TaskMasterServer *task = it.second;
+
+        if (now - task->last_tive_receive < 1500)
+        {
+            return true;
+        }
+    }
+
+    return false;
 }

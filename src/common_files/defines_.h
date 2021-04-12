@@ -35,7 +35,7 @@ typedef unsigned char      uint8;
 typedef short unsigned     uint16;
 typedef unsigned int       uint;
 typedef unsigned long long uint64;
-typedef long long          int64;
+typedef long long int      int64;
 typedef const char        *pchar;
 
 typedef void (*pFuncVV)();
