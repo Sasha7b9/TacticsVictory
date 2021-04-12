@@ -75,21 +75,22 @@ void Hangar::TuneEngineParameters()
         engineParameters_[EP_RESOURCE_PREFIX_PATHS] = ";../../../../../../out/release";
 #endif
 
-//    TheCache->AddResourceDir(RESOURCES_DIR);
+    TheCache->AddResourceDir(RESOURCES_DIR);
 }
 
 
 void Hangar::Start()
 {
-    OpenLog();
-
     GetSubsystems();
 
     Application::Start();
 
     SetLocalization();
+    TheFont = TheCache->GetResource<Font>(TheSettings.GetString("menu", "font", "name"));
 
     RegistrationObjects();
+
+    mouse = new Mouse(&TheMouse);
 
     SetWindowTitleAndIcon();
 

@@ -8,18 +8,16 @@
 
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Engine/EngineDefs.h>
-
 #include <Urho3D/Graphics/Graphics.h>
-
 #include <Urho3D/Input/Input.h>
-
 #include <Urho3D/IO/FileSystem.h>
 #include <Urho3D/IO/Log.h>
-
 #include <Urho3D/Resource/Localization.h>
 #include <Urho3D/Resource/ResourceCache.h>
-
+#include <Urho3D/UI/Font.h>
 #include <Urho3D/UI/UI.h>
+#include <Urho3D/Urho2D/Sprite2D.h>
+#include <Urho3D/Urho2D/StaticSprite2D.h>
 
 using namespace Urho3D;
 

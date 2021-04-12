@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "GUI/Cursor_.h"
 #include "Input/Mouse_.h"
-#include "Scene/SceneC.h"
 #include "Scene/Objects/Units/UnitsEvents_.h"
 
 

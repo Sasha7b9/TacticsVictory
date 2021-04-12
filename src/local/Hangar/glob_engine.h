@@ -5,6 +5,7 @@
 extern Context       *TheContext;
 extern Engine        *TheEngine;
 extern FileSystem    *TheFileSystem;
+extern Font          *TheFont;
 extern Graphics      *TheGraphics;
 extern Input         *TheInput;
 extern Localization  *TheLocalization;

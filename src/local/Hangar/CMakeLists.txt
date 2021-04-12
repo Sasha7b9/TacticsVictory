@@ -32,6 +32,8 @@ file(GLOB SRC         ../../common_files/*.*
                                          *.h *.cpp)
 file(GLOB FILE_SYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
                       ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB INPUT       ../../common_files/Input/Mouse_.*
+                                         Input/Mouse.cpp)
 file(GLOB NETWORK     ../../common_files/Network/Other/MasterServer_.*
                       ../../common_files/Network/Other/SocketsTCP_.*)
 file(GLOB UTILS       ../../common_files/Utils/Log_.*
@@ -45,6 +47,7 @@ file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
 
 source_group(src        FILES ${SRC})
 source_group(FileSystem FILES ${FILE_SYSTEM})
+source_group(Input      FILES ${INPUT})
 source_group(Network    FILES ${NETWORK})
 source_group(Utils      FILES ${UTILS})
 
@@ -54,11 +57,11 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
+add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${INPUT} ${NETWORK} ${UTILS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
-set_target_properties(${PROJECT_NAME}                                 PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} PROPERTIES UNITY_GROUP "bucket")
+set_target_properties(${PROJECT_NAME}                                          PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${SRC} ${FILE_SYSTEM} ${INPUT} ${NETWORK} ${UTILS} PROPERTIES UNITY_GROUP "bucket")
 
 include(../../RuntimeLibrary.cmake)
 

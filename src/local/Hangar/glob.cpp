@@ -6,6 +6,7 @@
 Context       *TheContext      = nullptr;
 Engine        *TheEngine       = nullptr;
 FileSystem    *TheFileSystem   = nullptr;
+Font          *TheFont         = nullptr;
 Graphics      *TheGraphics     = nullptr;
 Input         *TheInput        = nullptr;
 Localization  *TheLocalization = nullptr;
@@ -14,6 +15,7 @@ Time          *TheTime         = nullptr;
 UI            *TheUI           = nullptr;
 
 Hangar        *TheHangar       = nullptr;
+Mouse         *TheMouse        = nullptr;
 
 ConfigurationFile TheSettings;
 ServerConnector   TheMasterServer;

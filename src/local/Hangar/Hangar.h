@@ -1,5 +1,6 @@
 ﻿// 2021/04/02 17:53:21 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Input/Mouse_.h"
 
 
 class Hangar : public Application
@@ -26,5 +27,6 @@ private:
     void TuneEngineParameters();
     void CreateGUI();
 
-    SharedPtr<Log> log;
+    SharedPtr<Log>   log;
+    SharedPtr<Mouse> mouse;
 };
