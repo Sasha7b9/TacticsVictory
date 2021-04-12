@@ -24,7 +24,7 @@ int LivingRoom::Run(pchar address)
 
             TheLivingRoom.SendNameToMasterServer();
 
-            TheLivingRoom.SetTasks();
+            TheServerConnector.SetTasks();
         },
         []()
         {
@@ -44,17 +44,13 @@ int LivingRoom::Run(pchar address)
 }
 
 
-void LivingRoom::SetTasks()
-{
-
-}
-
-
 void LivingRoom::SendNameToMasterServer()
 {
     std::string name;
 
     std::stringstream stream(name);
+
+    std::srand((uint)time(nullptr));
 
     stream << "LivingRoom " << std::rand();
 
