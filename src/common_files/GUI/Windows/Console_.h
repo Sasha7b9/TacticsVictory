@@ -7,7 +7,8 @@ class ConsoleParser : public Object
 {
     URHO3D_OBJECT(ConsoleParser, Object);
 
-    typedef bool (ConsoleParser::*pFuncMember)(Vector<String>&, bool);  // Если второй параметр == true, то выводим информацию о команде, иначе - выполняем
+    typedef bool (ConsoleParser::*pFuncMember)(Vector<String>&, bool);  // Если второй параметр == true, то выводим
+                                                                        // информацию о команде, иначе - выполняем
 
 public:
     ConsoleParser();
@@ -30,8 +31,8 @@ public:
     void Execute(const String &string);
 
 private:
-    bool serverRunning = false;     // При запуске сервера это значение устанавливается в truе, потому что остановить сервер может только тот 
-                                    // экземпляр, который его запустил
+    bool serverRunning = false;     // При запуске сервера это значение устанавливается в truе, потому что остановить
+                                    // сервер может только тот экземпляр, который его запустил
 
     bool FuncClient(Vector<String> &, bool);
     bool FuncClientStart(Vector<String> &, bool);
