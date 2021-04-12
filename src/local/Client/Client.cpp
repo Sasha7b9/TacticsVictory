@@ -124,7 +124,7 @@ void Client::ParseArguments()
             {
                 TheGUI->AppendWarning("Can't connect to master server");
                 TheServerConnector.Connect();
-                LOGWRITE("Attempt connection to master-server");
+//                LOGWRITE("Attempt connection to master-server");
             },
             []()
             {
@@ -141,6 +141,8 @@ void Client::ParseArguments()
                 TheMenu->pageFindServer->SetServersInfo("");
             }
         );
+
+        LOGWRITE("Wait server for connection");
 
         TheServerConnector.Connect();
     }
