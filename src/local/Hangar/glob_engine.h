@@ -12,3 +12,4 @@ extern Localization  *TheLocalization;
 extern ResourceCache *TheCache;
 extern Time          *TheTime;
 extern UI            *TheUI;
+extern UIElement     *TheUIRoot;

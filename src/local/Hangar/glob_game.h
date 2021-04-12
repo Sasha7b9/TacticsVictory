@@ -8,5 +8,6 @@
 extern ConfigurationFile TheSettings;
 extern ServerConnector   TheMasterServer;
 
+extern GUI               *TheGUI;
 extern Hangar            *TheHangar;
 extern Mouse             *TheMouse;

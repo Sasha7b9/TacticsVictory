@@ -13,7 +13,9 @@ Localization  *TheLocalization = nullptr;
 ResourceCache *TheCache        = nullptr;
 Time          *TheTime         = nullptr;
 UI            *TheUI           = nullptr;
+UIElement     *TheUIRoot       = nullptr;
 
+GUI           *TheGUI          = nullptr;
 Hangar        *TheHangar       = nullptr;
 Mouse         *TheMouse        = nullptr;
 

@@ -1,9 +1,13 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "GUI/GUI.h"
+#include "GUI/Controls/Label_.h"
+#include "GUI/Controls/Buttons/Button_.h"
 #include "GUI/Controls/Sliders/SliderInt_.h"
 #include "GUI/Menu/PageConfirmExit_.h"
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"
+#include "Scene/Cameras/Camera.h"
 
 
 GUI::GUI(GUI **self) : Object(TheContext)

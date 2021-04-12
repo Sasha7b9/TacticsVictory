@@ -8,7 +8,7 @@ include_directories(.
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
-add_definitions(-DURHO3D_LOGGING -DLOG_U3D)
+add_definitions(-DURHO3D_LOGGING -DLOG_U3D -DU3D -DGRAPHICS)
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS  /STACK:100000000")
 
@@ -32,6 +32,7 @@ file(GLOB SRC         ../../common_files/*.*
                                          *.h *.cpp)
 file(GLOB FILE_SYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
                       ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB GUI                            GUI/*.*)
 file(GLOB INPUT       ../../common_files/Input/Mouse_.*
                                          Input/Mouse.cpp)
 file(GLOB NETWORK     ../../common_files/Network/Other/MasterServer_.*
@@ -47,6 +48,7 @@ file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
 
 source_group(src        FILES ${SRC})
 source_group(FileSystem FILES ${FILE_SYSTEM})
+source_group(GUI        FILES ${GUI})
 source_group(Input      FILES ${INPUT})
 source_group(Network    FILES ${NETWORK})
 source_group(Utils      FILES ${UTILS})
@@ -57,11 +59,11 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${INPUT} ${NETWORK} ${UTILS}
+add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${GUI} ${INPUT} ${NETWORK} ${UTILS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
-set_target_properties(${PROJECT_NAME}                                          PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${SRC} ${FILE_SYSTEM} ${INPUT} ${NETWORK} ${UTILS} PROPERTIES UNITY_GROUP "bucket")
+set_target_properties(${PROJECT_NAME}                                                 PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${SRC} ${FILE_SYSTEM} ${GUI} ${INPUT} ${NETWORK} ${UTILS} PROPERTIES UNITY_GROUP "bucket")
 
 include(../../RuntimeLibrary.cmake)
 

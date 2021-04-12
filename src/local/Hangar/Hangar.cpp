@@ -92,18 +92,25 @@ void Hangar::Start()
 
     mouse = new Mouse(&TheMouse);
 
-    SetWindowTitleAndIcon();
-
     CreateConsoleAndDebugHud();
 
     SubscribeToEvents();
 
     CreateGUI();
+
+    SetWindowTitleAndIcon();
+
+    ParseArguments();
+
+    TheInput->SetMouseMode(MouseMode::MM_FREE);
 }
 
 
 void Hangar::CreateGUI()
 {
+    TheUIRoot = TheUI->GetRoot();
+    TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
+    gui = new GUI(&TheGUI);
 }
 
 
@@ -146,4 +153,10 @@ void Hangar::OpenLog()
     log = new Log(TheContext);
     log->Open(GetTypeName() + ".log");
     log->SetLevel(LOG_DEBUG);
+}
+
+
+void Hangar::ParseArguments()
+{
+
 }
