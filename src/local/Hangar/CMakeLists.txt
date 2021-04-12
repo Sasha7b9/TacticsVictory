@@ -10,9 +10,6 @@ include_directories(.
 
 add_definitions(-DURHO3D_LOGGING -DLOG_U3D)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
-set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
-
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS  /STACK:100000000")
 
 add_compile_options(/wd4625)    # 'derived class' : copy constructor was implicitly defined as deleted because a
@@ -28,8 +25,8 @@ add_compile_options(/wd5027)    # 'type': move assignment operator was implicitl
 add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                 # specified
 add_compile_options(/wd5219)    # implicit conversion from 'type-1' to 'type-2', possible loss of data
-add_compile_options(/wd26812)
-add_compile_options(/wd28251)
+add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum' (Enum.3)
+add_compile_options(/wd28251)   # Inconsistent annotation for function: this instance has an error
 
 file(GLOB SRC         ../../common_files/*.*
                                          *.h *.cpp)
