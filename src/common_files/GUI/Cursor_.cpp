@@ -5,8 +5,7 @@
 #include "GUI/GUIEvents_.h"
 #include "GUI/GUI.h"
 #include "GUI/Menu/Menu.h"
-#include "Scene/SceneC.h"
-#include "Scene/Cameras/Camera.h"
+//#include "Scene/Cameras/Camera.h"
 
 
 bool operator==(const CursorShapes::StructShape& keyLeft, const CursorShapes::StructShape& keyRight)
@@ -236,43 +235,6 @@ void CursorT::SetNormal()
 void CursorT::SetSelected()
 {
     selected = true;
-}
-
-
-Drawable* CursorT::GetRaycastNode(Vector3 *hitPos_)
-{
-    if(TheUI->GetElementAt(TheUI->GetCursorPosition(), true))
-    {
-        return nullptr;
-    }
-
-    if (!TheCamera)
-    {
-        return nullptr;
-    }
-
-    Ray ray = TheCamera->GetCursorRay();
-    PODVector<RayQueryResult> results;
-    RayOctreeQuery query(results, ray, RAY_TRIANGLE, M_INFINITY, DRAWABLE_GEOMETRY, VIEW_MASK_FOR_MISSILE);
-    TheScene->GetComponent<Octree>()->Raycast(query);
-
-    if(results.Size())
-    {
-        RayQueryResult& result = results[0];
-        String name = result.drawable_->GetNode()->GetName();
-        if (result.drawable_->GetNode()->GetName() == NAME_NODE_TILE_PATH && results.Size() > 1)
-        {
-            result = results[1];
-        }
-
-        if(hitPos_)
-        {
-            *hitPos_ = result.position_;
-        }
-        return result.drawable_;
-    }
-
-    return nullptr;
 }
 
 

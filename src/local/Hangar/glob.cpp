@@ -19,6 +19,7 @@ Chat          *TheChat         = nullptr;
 CursorT       *TheCursor       = nullptr;
 GUI           *TheGUI          = nullptr;
 Hangar        *TheHangar       = nullptr;
+Menus         *TheMenu         = nullptr;
 Mouse         *TheMouse        = nullptr;
 
 ConfigurationFile TheSettings;
