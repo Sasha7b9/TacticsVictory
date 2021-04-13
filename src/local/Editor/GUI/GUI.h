@@ -2,8 +2,6 @@
 #pragma once
 #include "GUI/GUI_.h"
 
-class WindowT;
-
 
 class GUI : public GUIT
 {

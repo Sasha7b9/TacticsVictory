@@ -1,6 +1,6 @@
 project (Editor)
 
-set(CMAKE_UNITY_BUILD ON)
+#set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files

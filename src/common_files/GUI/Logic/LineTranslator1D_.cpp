@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Core/Math_.h"
+#include "GUI/Logic/LineTranslator1D_.h"
 
 
 LineTranslator1D::LineTranslator1D(int start_, int finish_, float speed_, State startPosition) :
