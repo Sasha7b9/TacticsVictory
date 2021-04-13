@@ -346,8 +346,6 @@ void ConsoleT::HandlerResize(StringHash, VariantMap&)
         pos.y_ = -(heightText - height);
         text->SetPosition(pos);
     }
-
-    text->SetPosition(50, 50);
 }
 
 
