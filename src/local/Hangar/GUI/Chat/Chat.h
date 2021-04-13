@@ -13,7 +13,7 @@ public:
 
 private:
 
-    SharedPtr<LineEdit> line_edit;      // Здесь вводим свой текст
+    SharedPtr<LineEdit> lineEdit;       // Здесь вводим свой текст
     SharedPtr<Text>     text;           // Здесь выводятся последние сообщения - свои и собеседников
 
     void HandlerFinishedText(StringHash, VariantMap &);

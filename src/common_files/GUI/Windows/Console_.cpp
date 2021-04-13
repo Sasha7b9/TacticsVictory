@@ -326,8 +326,9 @@ void ConsoleT::HandlerResize(StringHash, VariantMap&)
     text->SetPosition(2, 0);
 
     // Теперь ограничим количество строк
-#define MAX_STRING 100
-    while (text->GetNumRows() > MAX_STRING)
+    static const uint MAX_STRINGS = 100;
+
+    while (text->GetNumRows() > MAX_STRINGS)
     {
         uint pos = text->GetText().Find("\n");
         text->SetText(text->GetText().Substring(pos + 2));
