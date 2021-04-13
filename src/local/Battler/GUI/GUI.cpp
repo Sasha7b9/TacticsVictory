@@ -22,7 +22,7 @@
 #include "Scene/Cameras/Camera.h"
 
 
-GUI::GUI(GUI **self) : Object(TheContext)
+GUI::GUI(GUI **self) : GUIT((GUIT **)self)
 {
     RegistrationObjects();
     Create();
@@ -201,23 +201,6 @@ bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
     {
         return TheGuiEditor->CheckOnDeadZoneForCursorBottomScreen(x);
     }
-    return false;
-}
-
-
-bool GUI::UnderCursor()
-{
-    PODVector<UIElement*> elements;
-    TheUIRoot->GetChildren(elements);
-
-    for(UIElement *elem : elements)
-    {
-        if(elem->GetName() != "Cursor" && elem->IsVisible() && elem->IsInside(TheCursor->GetCursor()->GetPosition(), true))
-        {
-            return true;
-        }
-    }
-
     return false;
 }
 

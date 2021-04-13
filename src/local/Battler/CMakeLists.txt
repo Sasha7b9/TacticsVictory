@@ -45,7 +45,8 @@ file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.
 file(GLOB GRAPHICS                               ../../common_files/Graphics/*.*)
 file(GLOB GRAPHICS_2D                            ../../common_files/Graphics/2D/*.*)
 file(GLOB GRAPHICS_3D                                               Graphics/3D/*.*)
-file(GLOB GUI                                    ../../common_files/GUI/*.*
+file(GLOB GUI                                    ../../common_files/GUI/Cursor_.*
+                                                 ../../common_files/GUI/GUI_.*
                                                                     GUI/*.*)
 file(GLOB GUI_CONTROLS                           ../../common_files/GUI/Controls/DropDownListWithTextAndButton_.*
                                                  ../../common_files/GUI/Controls/GovernorFloat_.*

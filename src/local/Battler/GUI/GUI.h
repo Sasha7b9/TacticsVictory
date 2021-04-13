@@ -1,20 +1,17 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "GUI/GUI_.h"
 
 
-class WindowT;
-
-
-class GUI : public Object
+class GUI : public GUIT
 {
-    URHO3D_OBJECT(GUI, Object);
+    URHO3D_OBJECT(GUI, GUIT);
 
 public:
     GUI(GUI **self);
     ~GUI();
 
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
-    bool UnderCursor();                                             // Возвращает true, если меню под курсором
     void SetVisibleWindow(WindowT *window, bool visible);
     void SetUnvisibleAllWindows();
 
