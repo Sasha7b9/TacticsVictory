@@ -134,6 +134,8 @@ void Hangar::Stop()
 
 void Hangar::SetLocalization()
 {
+    TheLocalization->LoadJSONFile("Strings.json");
+    TheLocalization->SetLanguage(TheSettings.GetInt("language") == 0 ? "en" : "ru");
 }
 
 
@@ -151,6 +153,11 @@ void Hangar::SubscribeToEvents()
 
 void Hangar::SetWindowTitleAndIcon()
 {
+    Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
+    TheGraphics->SetWindowIcon(icon);
+
+    SetWindowText(FindWindow(NULL, "Battler"), TheSettings.GetInt("language") == 0 ? TEXT("Tactics Victory") :
+        TEXT("Тактика Победы"));
 }
 
 

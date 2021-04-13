@@ -260,5 +260,5 @@ void Battler::OpenLog()
 {
     log = new Log(TheContext);
     log->Open(GetTypeName() + ".log");
-    log->SetLevel(LOG_DEBUG);
+    log->SetLevel(LOG_TRACE);
 }
