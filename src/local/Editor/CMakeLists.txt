@@ -39,8 +39,8 @@ file(GLOB FILE_SYSTEM                 ../../common_files/FileSystem/Configuratio
 file(GLOB GRAPHICS                    ../../common_files/Graphics/*.*)
 file(GLOB GRAPHICS_2D                 ../../common_files/Graphics/2D/*.*)
 file(GLOB GUI                         ../../common_files/GUI/Cursor_.*
-                                      ../../common_files/GUI/GUI.*
-                                      ../../common_files/GUI/GUIEvents.*
+                                      ../../common_files/GUI/GUI_.*
+                                      ../../common_files/GUI/GUIEvents_.*
                                                          GUI/*.*)
 file(GLOB GUI_CONTROLS                ../../common_files/GUI/Controls/Label_.*
                                       ../../common_files/GUI/Controls/Hint_.*

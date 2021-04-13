@@ -34,6 +34,7 @@ file(GLOB FILE_SYSTEM  ../../common_files/FileSystem/ConfigurationFile_.*
                        ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB GRAPHICS_2D  ../../common_files/Graphics/2D/Image_.*)
 file(GLOB GUI          ../../common_files/GUI/Cursor_.*
+                       ../../common_files/GUI/GUI_.*
                                           GUI/*.*)
 file(GLOB GUI_CHAT                        GUI/Chat/*.*)
 file(GLOB GUI_CONTROLS ../../common_files/GUI/Controls/DropDownListWithTextAndButton_.*
