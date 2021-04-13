@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Hangar.h"
 #include "FileSystem/ConfigurationFile_.h"
+#include "Graphics/2D/Image_.h"
 
 
 #pragma warning(push)
@@ -114,7 +115,7 @@ void Hangar::CreateGUI()
 {
     TheUIRoot = TheUI->GetRoot();
 
-    XMLFile *style = TheCache->GetResource<XMLFile>("UI/MainStyle.xm");
+    XMLFile *style = TheCache->GetResource<XMLFile>("UI/MainStyle.xml");
 
     TheUIRoot->SetDefaultStyle(style);
 
@@ -138,6 +139,8 @@ void Hangar::SetLocalization()
 
 void Hangar::RegistrationObjects()
 {
+    CursorT::RegisterObject();
+    ImageT::RegisterObject();
 }
 
 
@@ -153,6 +156,14 @@ void Hangar::SetWindowTitleAndIcon()
 
 void Hangar::CreateConsoleAndDebugHud()
 {
+    XMLFile *xmlFile = TheCache->GetResource<XMLFile>("UI/ConsoleStyle.xml");
+
+    TheEngineConsole = engine_->CreateConsole();
+    TheEngineConsole->SetDefaultStyle(xmlFile);
+    TheEngineConsole->GetBackground()->SetOpacity(0.8f);
+
+    TheDebugHud = engine_->CreateDebugHud();
+    TheDebugHud->SetDefaultStyle(xmlFile);
 }
 
 
@@ -160,7 +171,7 @@ void Hangar::OpenLog()
 {
     log = new Log(TheContext);
     log->Open(GetTypeName() + ".log");
-    log->SetLevel(LOG_DEBUG);
+    log->SetLevel(LOG_ERROR);
 }
 
 

@@ -3,7 +3,9 @@
 #include "Scene/SceneC.h"
 
 
+extern Console       *TheEngineConsole;
 extern Context       *TheContext;
+extern DebugHud      *TheDebugHud;
 extern Engine        *TheEngine;
 extern FileSystem    *TheFileSystem;
 extern Font          *TheFont;

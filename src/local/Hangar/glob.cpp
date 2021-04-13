@@ -3,26 +3,28 @@
 #include "Network/Other/ServerConnector_.h"
 
 
-Context       *TheContext      = nullptr;
-Engine        *TheEngine       = nullptr;
-FileSystem    *TheFileSystem   = nullptr;
-Font          *TheFont         = nullptr;
-Graphics      *TheGraphics     = nullptr;
-Input         *TheInput        = nullptr;
-Localization  *TheLocalization = nullptr;
-ResourceCache *TheCache        = nullptr;
-SceneC        *TheScene        = nullptr;
-Time          *TheTime         = nullptr;
-UI            *TheUI           = nullptr;
-UIElement     *TheUIRoot       = nullptr;
+Console       *TheEngineConsole = nullptr;
+Context       *TheContext       = nullptr;
+DebugHud      *TheDebugHud      = nullptr;
+Engine        *TheEngine        = nullptr;
+FileSystem    *TheFileSystem    = nullptr;
+Font          *TheFont          = nullptr;
+Graphics      *TheGraphics      = nullptr;
+Input         *TheInput         = nullptr;
+Localization  *TheLocalization  = nullptr;
+ResourceCache *TheCache         = nullptr;
+Time          *TheTime          = nullptr;
+UI            *TheUI            = nullptr;
+UIElement     *TheUIRoot        = nullptr;
 
-Chat          *TheChat         = nullptr;
-CursorT       *TheCursor       = nullptr;
-GUI           *TheGUI          = nullptr;
-Hangar        *TheHangar       = nullptr;
-Hint          *TheHint         = nullptr;
-Menus         *TheMenu         = nullptr;
-Mouse         *TheMouse        = nullptr;
+Chat          *TheChat          = nullptr;
+CursorT       *TheCursor        = nullptr;
+GUI           *TheGUI           = nullptr;
+Hangar        *TheHangar        = nullptr;
+Hint          *TheHint          = nullptr;
+Menus         *TheMenu          = nullptr;
+Mouse         *TheMouse         = nullptr;
+SceneC        *TheScene         = nullptr;
 
 ConfigurationFile TheSettings;
 ServerConnector   TheMasterServer;
