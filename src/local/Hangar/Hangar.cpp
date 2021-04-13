@@ -100,6 +100,8 @@ void Hangar::Start()
 
     CreateGUI();
 
+    menu = new Menus(&TheMenu);
+
     SetWindowTitleAndIcon();
 
     ParseArguments();

@@ -3,6 +3,12 @@
 #include "GUI/Menu/Menu.h"
 
 
+Menus::Menus(Menus **self) : Object(TheContext)
+{
+    *self = this;
+}
+
+
 bool Menus::IsActive()
 {
     return ActiveMenu() != nullptr;
