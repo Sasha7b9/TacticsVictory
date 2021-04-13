@@ -3,3 +3,21 @@
 #include "GUI/Menu/Menu.h"
 
 
+bool Menus::IsActive()
+{
+    return ActiveMenu() != nullptr;
+}
+
+
+MenuPage *Menus::ActiveMenu()
+{
+    for (MenuPage *window : allMenus)
+    {
+        if (window->GetParent())
+        {
+            return window;
+        }
+    }
+
+    return nullptr;
+}

@@ -32,15 +32,29 @@ file(GLOB SRC          ../../common_files/*.*
                                           *.h *.cpp)
 file(GLOB FILE_SYSTEM  ../../common_files/FileSystem/ConfigurationFile_.*
                        ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB GRAPHICS_2D  ../../common_files/Graphics/2D/Image_.*)
 file(GLOB GUI          ../../common_files/GUI/Cursor_.*
                                           GUI/*.*)
 file(GLOB GUI_CHAT                        GUI/Chat/*.*)
-file(GLOB GUI_CONTROLS ../../common_files/GUI/Controls/Window_.*)
-file(GLOB GUI_MENU                        GUI/Menu/*.*)
+file(GLOB GUI_CONTROLS ../../common_files/GUI/Controls/DropDownListWithTextAndButton_.*
+                       ../../common_files/GUI/Controls/Label_.*
+                       ../../common_files/GUI/Controls/Hint_.*
+                       ../../common_files/GUI/Controls/Window_.*
+                       ../../common_files/GUI/Controls/Buttons/Button_.*
+                       ../../common_files/GUI/Controls/Buttons/ButtonToggled_.*
+                       ../../common_files/GUI/Controls/Sliders/Slider_.*
+                       ../../common_files/GUI/Controls/Sliders/SliderInt_.*
+                       ../../common_files/GUI/Controls/Sliders/SliderWithTextAndButtons_.*)
+file(GLOB GUI_LOGIC    ../../common_files/GUI/Logic/LineTranslator1D_.*
+                       ../../common_files/GUI/Logic/LineTranslator2D_.*
+                       ../../common_files/GUI/Logic/Mutator_.*)
+file(GLOB GUI_MENU     ../../common_files/GUI/Menu/MenuPage_.*
+                                          GUI/Menu/*.*)
 file(GLOB INPUT        ../../common_files/Input/Mouse_.*
                                           Input/Mouse.cpp)
 file(GLOB NETWORK      ../../common_files/Network/Other/MasterServer_.*
                        ../../common_files/Network/Other/SocketsTCP_.*)
+file(GLOB SCENE                           Scene/*.*)
 file(GLOB UTILS        ../../common_files/Utils/Log_.*
                        ../../common_files/Utils/LogU3D_.*
                        ../../common_files/Utils/StringUtils_.*
@@ -52,12 +66,15 @@ file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
 
 source_group(src           FILES ${SRC})
 source_group(FileSystem    FILES ${FILE_SYSTEM})
+source_group(Graphics\\2D  FILES ${GRAPHICS_2D})
 source_group(GUI           FILES ${GUI})
 source_group(GUI\\Chat     FILES ${GUI_CHAT})
 source_group(GUI\\Controls FILES ${GUI_CONTROLS})
+source_group(GUI\\Logic    FILES ${GUI_LOGIC})
 source_group(GUI\\Menu     FILES ${GUI_MENU})
 source_group(Input         FILES ${INPUT})
 source_group(Network       FILES ${NETWORK})
+source_group(Scene         FILES ${SCENE})
 source_group(Utils         FILES ${UTILS})
 
 source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
@@ -66,13 +83,15 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_MENU}
-                ${INPUT} ${NETWORK} ${UTILS}
+add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D}
+                ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_LOGIC} ${GUI_MENU}
+                ${INPUT} ${NETWORK} ${SCENE} ${UTILS}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 set_target_properties(${PROJECT_NAME}                                                 PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${SRC} ${FILE_SYSTEM} ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_MENU}
-                            ${INPUT} ${NETWORK} ${UTILS} 
+set_source_files_properties(${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D}
+                            ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_LOGIC} ${GUI_MENU}
+                            ${INPUT} ${NETWORK} ${SCENE} ${UTILS} 
                                                                                       PROPERTIES UNITY_GROUP "bucket")
 
 include(../../RuntimeLibrary.cmake)

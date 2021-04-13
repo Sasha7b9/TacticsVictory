@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "GUI/Controls/Sliders/Slider_.h"
 
 
 URHO3D_EVENT(E_SLIDERINTCHANGED, SliderIntChanged)

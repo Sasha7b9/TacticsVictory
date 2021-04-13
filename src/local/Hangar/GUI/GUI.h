@@ -10,6 +10,9 @@ public:
 
     GUI(GUI **self);
 
+    // Возвращает true, если меню под курсором
+    bool UnderCursor();
+
 private:
 
     void Create();

@@ -25,6 +25,7 @@ public:
     SharedPtr<PageFindServer> pageFindServer;
 
 private:
+
     PODVector<MenuPage *>     allMenus;    // Здесь список всех меню
     SharedPtr<PageStart>      pageStart;
     SharedPtr<PageAboutMe>    pageAbout;

@@ -4,6 +4,7 @@
 #include "FileSystem/ConfigurationFile_.h"
 #include "GUI/Cursor_.h"
 #include "GUI/Chat/Chat.h"
+#include "GUI/Controls/Hint_.h"
 #include "GUI/Menu/Menu.h"
 #include "Network/Other/ServerConnector_.h"
 
@@ -15,5 +16,6 @@ extern Chat              *TheChat;
 extern CursorT           *TheCursor;
 extern GUI               *TheGUI;
 extern Hangar            *TheHangar;
+extern Hint              *TheHint;
 extern Menus             *TheMenu;
 extern Mouse             *TheMouse;

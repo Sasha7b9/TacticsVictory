@@ -11,6 +11,7 @@ Graphics      *TheGraphics     = nullptr;
 Input         *TheInput        = nullptr;
 Localization  *TheLocalization = nullptr;
 ResourceCache *TheCache        = nullptr;
+Scene         *TheScene        = nullptr;
 Time          *TheTime         = nullptr;
 UI            *TheUI           = nullptr;
 UIElement     *TheUIRoot       = nullptr;
@@ -19,6 +20,7 @@ Chat          *TheChat         = nullptr;
 CursorT       *TheCursor       = nullptr;
 GUI           *TheGUI          = nullptr;
 Hangar        *TheHangar       = nullptr;
+Hint          *TheHint         = nullptr;
 Menus         *TheMenu         = nullptr;
 Mouse         *TheMouse        = nullptr;
 
