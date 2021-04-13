@@ -21,4 +21,10 @@ void GUI::Create()
 {
     TheChat = new Chat();
     TheUIRoot->AddChild(TheChat);
+
+    TheLocalization->SetLanguage("en");
+
+    TheCursor = TheUIRoot->CreateChild<CursorT>("CursorT");
+
+    TheLocalization->SetLanguage(TheSettings.GetInt("language") == 0 ? "en" : "ru");
 }

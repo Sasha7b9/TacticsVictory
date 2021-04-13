@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "FileSystem/ConfigurationFile_.h"
 #include "GUI/GUI.h"
 #include "GUI/Controls/Label_.h"
 #include "GUI/Controls/Buttons/Button_.h"
@@ -156,8 +157,6 @@ void GUI::Create()
     TheWindowVars->AddFunctionFloat("Camera yaw", GetCameraYaw, nullptr);
     TheWindowVars->AddFunctionFloat("Net speed in, kB/s", GetSpeedNetIN, nullptr);
     TheWindowVars->AddFunctionFloat("Net speed out, kB/s", GetSpeedNetOUT, nullptr);
-
-    TheLocalization->SetLanguage("en");
 
     TheCursor = TheUIRoot->CreateChild<CursorT>("CursorT");
 
