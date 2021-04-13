@@ -1,24 +1,17 @@
 // 2021/04/02 17:53:43 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-
-class CameraT;
-class Editor;
-class ConfigurationFile;
-class ConsoleT;
-class CursorT;
-class GUI;
-class Hint;
-class LogRAW;
-class Menus;
-class Mouse;
-class PageStart;
-class ServerConnector;
-class WindowT;
-class WindowVariables;
+#include "Editor.h"
+#include "FileSystem/ConfigurationFile_.h"
+#include "GUI/Cursor_.h"
+#include "GUI/Windows/Console_.h"
+#include "GUI/Windows/WindowVariables_.h"
+#include "Network/Other/ServerConnector_.h"
+#include "Scene/Cameras/Camera.h"
+#include "Utils/Log_.h"
 
 extern ConfigurationFile TheConfig;
 extern ConfigurationFile TheSettings;
-extern ServerConnector      TheMasterServer;
+extern ServerConnector   TheMasterServer;
 
 extern CameraT         *TheCamera;
 extern Editor          *TheClient;

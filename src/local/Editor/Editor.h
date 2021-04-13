@@ -1,6 +1,7 @@
 ﻿// 2021/04/02 17:53:21 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "GUI/GUI.h"
+#include "Input/Mouse_.h"
 
 
 class SceneT;
