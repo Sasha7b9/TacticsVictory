@@ -1,10 +1,15 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "GUI/Controls/DropDownListWithTextAndButton_.h"
-#include "GUI/Controls/Buttons/Button_.h"
-#include "GUI/Controls/Buttons/ButtonToggled_.h"
-#include "GUI/Controls/Sliders/SliderWithTextAndButtons_.h"
 #include "GUI/Logic/LineTranslator2D_.h"
+
+
+class LineTranslator2D;
+class ButtonT;
+class ButtonToggled;
+class SliderWithTextAndButtons;
+class Label;
+class DropDownListWithTextAndButton;
 
 
 class WindowT : public Window
