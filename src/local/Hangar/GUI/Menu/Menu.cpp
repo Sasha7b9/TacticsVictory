@@ -27,3 +27,9 @@ MenuPage *Menus::ActiveMenu()
 
     return nullptr;
 }
+
+
+bool Menus::ProcessingKey(int /*key*/)
+{
+    return false;
+}

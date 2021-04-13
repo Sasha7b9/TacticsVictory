@@ -6,6 +6,8 @@
 #include "GUI/Chat/Chat.h"
 #include "GUI/Controls/Hint_.h"
 #include "GUI/Menu/Menu.h"
+#include "GUI/Windows/Console_.h"
+#include "GUI/Windows/WindowVariables_.h"
 #include "Network/Other/ServerConnector_.h"
 
 
@@ -13,9 +15,11 @@ extern ConfigurationFile TheSettings;
 extern ServerConnector   TheMasterServer;
 
 extern Chat              *TheChat;
+extern ConsoleT          *TheConsole;
 extern CursorT           *TheCursor;
 extern GUI               *TheGUI;
 extern Hangar            *TheHangar;
 extern Hint              *TheHint;
 extern Menus             *TheMenu;
 extern Mouse             *TheMouse;
+extern WindowVariables   *TheWindowVars;

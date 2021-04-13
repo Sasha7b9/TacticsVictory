@@ -12,6 +12,7 @@ public:
     Menus(Menus **self);
 
     bool IsActive();
+    bool ProcessingKey(int key);
 
 private:
 

@@ -7,6 +7,7 @@ extern Console       *TheEngineConsole;
 extern Context       *TheContext;
 extern DebugHud      *TheDebugHud;
 extern Engine        *TheEngine;
+extern FileSelector  *TheFileSelector;
 extern FileSystem    *TheFileSystem;
 extern Font          *TheFont;
 extern Graphics      *TheGraphics;

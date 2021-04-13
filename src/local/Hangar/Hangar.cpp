@@ -3,6 +3,7 @@
 #include "Hangar.h"
 #include "FileSystem/ConfigurationFile_.h"
 #include "Graphics/2D/Image_.h"
+#include "GUI/Menu/MenuEvents_.h"
 
 
 #pragma warning(push)
@@ -148,6 +149,9 @@ void Hangar::RegistrationObjects()
 
 void Hangar::SubscribeToEvents()
 {
+    SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(Hangar, HandlerKeyDown));
+    SubscribeToEvent(E_MENU, URHO3D_HANDLER(Hangar, HandlerMenuEvent));
+    SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(Hangar, HandlerPostRenderUpdate));
 }
 
 

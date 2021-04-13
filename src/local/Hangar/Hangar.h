@@ -31,6 +31,11 @@ private:
     void CreateGUI();
     void ParseArguments();
 
+
+    void HandlerMenuEvent(StringHash, VariantMap &);
+    void HandlerPostRenderUpdate(StringHash, VariantMap &);
+    void HandlerKeyDown(StringHash, VariantMap &);
+
     SharedPtr<Log>    log;
     SharedPtr<SceneC> scene;
     SharedPtr<GUI>    gui;

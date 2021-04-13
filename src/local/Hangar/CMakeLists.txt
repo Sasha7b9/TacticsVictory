@@ -49,15 +49,18 @@ file(GLOB GUI_CONTROLS ../../common_files/GUI/Controls/DropDownListWithTextAndBu
 file(GLOB GUI_LOGIC    ../../common_files/GUI/Logic/LineTranslator1D_.*
                        ../../common_files/GUI/Logic/LineTranslator2D_.*
                        ../../common_files/GUI/Logic/Mutator_.*)
-file(GLOB GUI_MENU     ../../common_files/GUI/Menu/MenuPage_.*
+file(GLOB GUI_MENU     ../../common_files/GUI/Menu/MenuEvents_.*
+                       ../../common_files/GUI/Menu/MenuPage_.*
                                           GUI/Menu/*.*)
+file(GLOB GUI_WINDOWS  ../../common_files/GUI/Windows/Console_.*
+                       ../../common_files/GUI/Windows/ConsoleParserFunctions_.*)
 file(GLOB INPUT        ../../common_files/Input/Mouse_.*
                                           Input/Mouse.cpp)
 file(GLOB NETWORK      ../../common_files/Network/Other/MasterServer_.*
                        ../../common_files/Network/Other/SocketsTCP_.*)
 file(GLOB SCENE                           Scene/*.*)
-file(GLOB UTILS        ../../common_files/Utils/Log_.*
-                       ../../common_files/Utils/LogU3D_.*
+file(GLOB UTILS        ../../common_files/Utils/GlobalFunctions_.*
+                       ../../common_files/Utils/Log_.*
                        ../../common_files/Utils/StringUtils_.*
                        ../../common_files/Utils/UtilsOS_.*)
 
@@ -73,6 +76,7 @@ source_group(GUI\\Chat     FILES ${GUI_CHAT})
 source_group(GUI\\Controls FILES ${GUI_CONTROLS})
 source_group(GUI\\Logic    FILES ${GUI_LOGIC})
 source_group(GUI\\Menu     FILES ${GUI_MENU})
+source_group(GUI\\Windows  FILES ${GUI_WINDOWS})
 source_group(Input         FILES ${INPUT})
 source_group(Network       FILES ${NETWORK})
 source_group(Scene         FILES ${SCENE})
@@ -85,7 +89,7 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 file(GLOB FILES_UNITY ${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D}
-                      ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_LOGIC} ${GUI_MENU}
+                      ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_LOGIC} ${GUI_MENU} ${GUI_WINDOWS}
                       ${INPUT} ${NETWORK} ${SCENE} ${UTILS})
 
 add_executable( ${PROJECT_NAME} 
