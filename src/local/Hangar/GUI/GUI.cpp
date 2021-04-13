@@ -19,6 +19,9 @@ void GUI::RegistrationObjects()
 
 void GUI::Create()
 {
+    TheConsole = new ConsoleT();
+    TheUIRoot->AddChild(TheConsole);
+
     TheChat = new Chat();
     TheUIRoot->AddChild(TheChat);
 
