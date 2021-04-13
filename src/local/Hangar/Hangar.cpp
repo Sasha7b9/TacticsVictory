@@ -148,6 +148,7 @@ void Hangar::RegistrationObjects()
 {
     CursorT::RegisterObject();
     ImageT::RegisterObject();
+    WindowT::RegisterObject();
 }
 
 
