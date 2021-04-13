@@ -171,7 +171,7 @@ void Hangar::OpenLog()
 {
     log = new Log(TheContext);
     log->Open(GetTypeName() + ".log");
-    log->SetLevel(LOG_ERROR);
+    log->SetLevel(LOG_TRACE);
 }
 
 
