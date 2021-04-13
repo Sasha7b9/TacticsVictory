@@ -1,8 +1,11 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-
-
-class SceneT;
+#include "Editor/Editor.h"
+#include "GUI/GUI.h"
+#include "GUI/Menu/Menu.h"
+#include "Input/Mouse_.h"
+#include "Network/ServerC.h"
+#include "Scene/SceneC.h"
 
 
 class Battler : public Application

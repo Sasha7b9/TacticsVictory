@@ -35,7 +35,6 @@ GUI             *TheGUI = nullptr;
 GuiEditor       *TheGuiEditor = nullptr;
 GuiGame         *TheGuiGame = nullptr;
 Hint            *TheHint = nullptr;
-LogU3D          *TheLog = nullptr;
 PageGame        *ThePageGame = nullptr;
 Menus           *TheMenu = nullptr;
 Mouse           *TheMouse = nullptr;

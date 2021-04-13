@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "GUI/Controls/Label_.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
+#include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Menu/PageGame.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera.h"

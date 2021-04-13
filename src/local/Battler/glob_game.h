@@ -1,31 +1,20 @@
 // 2021/02/15 16:12:30 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #pragma once
-
-class CameraT;
-class ConfigurationFile;
-class ConsoleT;
-class CursorT;
-class Editor;
-class GUI;
-class GuiEditor;
-class GuiGame;
-class Hint;
-class LogU3D;
-class PageGame;
-class Menus;
-class Mouse;
-class PathIndicator;
-class SceneC;
-class ServerC;
-class Battler;
-class TerrainT;
-class WindowTarget;
-class WindowVariables;
-class WindowT;
+#include "Battler.h"
+#include "FileSystem/ConfigurationFile_.h"
+#include "GUI/Cursor_.h"
+#include "GUI/Controls/Hint_.h"
+#include "GUI/GuiEditor/GuiEditor.h"
+#include "GUI/GuiGame/GuiGame.h"
+#include "GUI/GuiGame/WindowTarget.h"
+#include "GUI/Menu/PageGame.h"
+#include "GUI/Windows/Console_.h"
+#include "GUI/Windows/WindowVariables_.h"
+#include "Scene/Cameras/Camera.h"
 
 extern ConfigurationFile  TheSettings;
 
-extern Battler *TheBattler;
+extern Battler           *TheBattler;
 extern CameraT           *TheCamera;
 extern ConsoleT          *TheConsole;
 extern CursorT           *TheCursor;
@@ -34,9 +23,8 @@ extern GUI               *TheGUI;
 extern GuiEditor         *TheGuiEditor;
 extern GuiGame           *TheGuiGame;
 extern Hint              *TheHint;
-extern LogU3D            *TheLog;
 extern Menus             *TheMenu;
-extern Mouse *TheMouse;
+extern Mouse             *TheMouse;
 extern PageGame          *ThePageGame;
 extern PathIndicator     *ThePathIndicator;
 extern SceneC            *TheScene;

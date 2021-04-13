@@ -3,9 +3,6 @@
 #include "GUI/Controls/Hint_.h"
 
 
-class Label;
-
-
 class ButtonT : public Button
 {
     URHO3D_OBJECT(ButtonT, Button);
