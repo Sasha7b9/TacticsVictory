@@ -10,4 +10,13 @@ class Chat : public WindowT
 public:
 
     Chat();
+
+private:
+
+    SharedPtr<LineEdit> line_edit;      // Здесь вводим свой текст
+    SharedPtr<Text>     text;           // Здесь выводятся последние сообщения - свои и собеседников
+
+    void HandleFinishedText(StringHash, VariantMap &);
+    void HandleUnhandledKey(StringHash, VariantMap &);
+    void HandleClick(StringHash, VariantMap &);
 };

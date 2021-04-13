@@ -95,11 +95,11 @@ public:
     void Clear();
 
 private:
-    SharedPtr<LineEdit> lineEdit;
-    SharedPtr<Text> text;
+    SharedPtr<LineEdit>  lineEdit;      // Сюда вводим команды
+    SharedPtr<Text>      text;          // Здесь всё набранное и выведенное
     SharedPtr<ScrollBar> scrollBar;
-    History history;
-    ConsoleParser parser;
+    History              history;
+    ConsoleParser        parser;
 
     void HandleFinishedText(StringHash, VariantMap&);
     void HandleUnhandledKey(StringHash, VariantMap&);

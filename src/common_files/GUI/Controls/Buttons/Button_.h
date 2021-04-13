@@ -20,7 +20,7 @@ public:
 
 private:
     SharedPtr<Label> label;
-    SharedPtr<Hint> hint;
+    SharedPtr<Hint>  hint;
 
     void HandleHoverBegin(StringHash, VariantMap&);
     void HandleHoverEnd(StringHash, VariantMap&);

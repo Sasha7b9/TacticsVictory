@@ -21,6 +21,7 @@
 #include <Urho3D/UI/CheckBox.h>
 #include <Urho3D/UI/DropDownList.h>
 #include <Urho3D/UI/Font.h>
+#include <Urho3D/UI/LineEdit.h>
 #include <Urho3D/UI/Slider.h>
 #include <Urho3D/UI/Text.h>
 #include <Urho3D/UI/UI.h>
