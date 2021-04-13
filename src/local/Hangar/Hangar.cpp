@@ -123,11 +123,7 @@ void Hangar::Start()
 void Hangar::CreateGUI()
 {
     TheUIRoot = TheUI->GetRoot();
-
-//    XMLFile *style = TheCache->GetResource<XMLFile>("UI/MainStyle.xml");
-//
-//    TheUIRoot->SetDefaultStyle(style);
-
+    TheUIRoot->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     gui = new GUI(&TheGUI);
 }
 

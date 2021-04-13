@@ -245,7 +245,10 @@ ConsoleT::ConsoleT() :  WindowT(TheContext)
 
     text = TheUIRoot->CreateChild<Text>();
 
+    text->SetStyle("LineEdit");
+
     text->SetWordwrap(true);
+
     AddChild(text);
 
     SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(ConsoleT, HandlerFinishedText));
@@ -280,10 +283,12 @@ bool ConsoleT::IsActive()
 void ConsoleT::HandlerFinishedText(StringHash, VariantMap&)
 {
     String command = lineEdit->GetText();
+
     if(command.Empty())
     {
         return;
     }
+
     history.AddString(command);
 
     String message;
@@ -374,7 +379,7 @@ void ConsoleT::Write(const String &message)
 
     URHO3D_LOGERROR(message);
 
-    //text->SetText(text->GetText() + str);
+    text->SetText(text->GetText() + str);
 
     VariantMap map;
     HandlerResize("", map);

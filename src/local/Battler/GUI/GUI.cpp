@@ -177,8 +177,6 @@ void GUI::Create()
     TheWindowVars->AddFunctionFloat("Net speed in, kB/s", GetSpeedNetIN, nullptr);
     TheWindowVars->AddFunctionFloat("Net speed out, kB/s", GetSpeedNetOUT, nullptr);
 
-    TheLocalization->SetLanguage("en");
-
     TheGuiGame = new GuiGame();
     TheGuiGame->SetVisible(false);
 
