@@ -9,8 +9,6 @@ class LineTranslator2D;
 class ButtonT;
 class ButtonToggled;
 class SliderWithTextAndButtons;
-class Label;
-class DropDownListWithTextAndButton;
 
 
 class WindowT : public Window
