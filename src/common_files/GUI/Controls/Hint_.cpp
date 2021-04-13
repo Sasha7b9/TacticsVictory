@@ -14,11 +14,11 @@ Hint::Hint(char *text_) : WindowT(TheContext), text(text_)
 
     SetMovable(false);
 
-    SubscribeToEvent(E_CHANGELANGUAGE, URHO3D_HANDLER(Hint, HandleChangeLanguage));
+    SubscribeToEvent(E_CHANGELANGUAGE, URHO3D_HANDLER(Hint, HandlerChangeLanguage));
 }
 
 
-void Hint::HandleChangeLanguage(StringHash, VariantMap&)
+void Hint::HandlerChangeLanguage(StringHash, VariantMap&)
 {
     label->SetText(text);
     SetSize(label->GetWidth() + 10, label->GetHeight() + 10);

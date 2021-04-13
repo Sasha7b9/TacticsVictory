@@ -30,9 +30,9 @@ private:
     SharedPtr<Button> buttonRight;
     SharedPtr<Hint> hint;
 
-    void HandleSliderIntChanged(StringHash, VariantMap&);
-    void HandleButtonDown(StringHash, VariantMap&);
-    void HandleHoverBegin(StringHash, VariantMap&);
-    void HandleHoverEnd(StringHash, VariantMap&);
-    void HandleMouseClick(StringHash, VariantMap&);
+    void HandlerSliderIntChanged(StringHash, VariantMap&);
+    void HandlerButtonDown(StringHash, VariantMap&);
+    void HandlerHoverBegin(StringHash, VariantMap&);
+    void HandlerHoverEnd(StringHash, VariantMap&);
+    void HandlerMouseClick(StringHash, VariantMap&);
 };

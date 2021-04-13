@@ -25,7 +25,7 @@ public:
 private:
     String text;
 
-    void HandleChangeLanguage(StringHash, VariantMap&);
+    void HandlerChangeLanguage(StringHash, VariantMap&);
 
     SharedPtr<Mutator> mutator;
 };

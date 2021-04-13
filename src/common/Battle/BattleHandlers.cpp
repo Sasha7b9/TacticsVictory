@@ -5,7 +5,7 @@
 #include "Scene/Scene_.h"
 
 
-void Battle::HandleUpdate(StringHash, VariantMap& /*eventData*/)
+void Battle::HandlerUpdate(StringHash, VariantMap& /*eventData*/)
 {
 //    float dT = eventData[Update::P_TIMESTEP].GetFloat();
 
@@ -13,7 +13,7 @@ void Battle::HandleUpdate(StringHash, VariantMap& /*eventData*/)
 }
 
 
-void Battle::HandlePostUpdate(StringHash, VariantMap& /*eventData*/)
+void Battle::HandlerPostUpdate(StringHash, VariantMap& /*eventData*/)
 {
     static uint prevSend = 0;
 

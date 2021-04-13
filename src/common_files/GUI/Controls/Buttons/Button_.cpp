@@ -49,18 +49,18 @@ ButtonT::ButtonT(UIElement *uielement, pchar text, int width /* = -1 */, int hei
         SetFixedSize(width, height);
     }
 
-    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(ButtonT, HandleHoverBegin));
-    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(ButtonT, HandleHoverEnd));
+    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(ButtonT, HandlerHoverBegin));
+    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(ButtonT, HandlerHoverEnd));
 }
 
 
-void ButtonT::HandleHoverBegin(StringHash, VariantMap &)
+void ButtonT::HandlerHoverBegin(StringHash, VariantMap &)
 {
     SendEvent(E_HOVER_BEGIN_ELEMENT_GUI);
 }
 
 
-void ButtonT::HandleHoverEnd(StringHash, VariantMap &)
+void ButtonT::HandlerHoverEnd(StringHash, VariantMap &)
 {
     SendEvent(E_HOVER_END_ELEMENT_GUI);
 }

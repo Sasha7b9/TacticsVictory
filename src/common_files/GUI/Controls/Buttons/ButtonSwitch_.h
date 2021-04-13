@@ -20,5 +20,5 @@ private:
     PODVector<char*> items;
     uint state = 0;
 
-    void HandleButtonRelease(StringHash, VariantMap&);
+    void HandlerButtonRelease(StringHash, VariantMap&);
 };

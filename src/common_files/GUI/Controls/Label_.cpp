@@ -69,7 +69,7 @@ void Label::SetText(pchar t)
 }
 
 
-void Label::HandleChangeLanguage(StringHash, VariantMap&)
+void Label::HandlerChangeLanguage(StringHash, VariantMap&)
 {
     const Variant &var = GetVar(VAR_GUI_NO_TRANSLATE);
 

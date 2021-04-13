@@ -262,6 +262,7 @@ ConsoleT::ConsoleT() :  WindowT(TheContext)
 void ConsoleT::Toggle()
 {
    SetVisible(!IsVisible());
+
    if(IsVisible())
    {
        this->BringToFront();

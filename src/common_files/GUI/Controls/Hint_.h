@@ -14,5 +14,5 @@ private:
     char *text = nullptr;
     SharedPtr<Label> label;
 
-    void HandleChangeLanguage(StringHash, VariantMap&);
+    void HandlerChangeLanguage(StringHash, VariantMap&);
 };

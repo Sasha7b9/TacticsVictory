@@ -63,7 +63,7 @@ private:
     bool ExtractInt(const String &str, int *value);           // Считывает целое значение после первого символа ':'
     bool ExtractFloat(const String &str, float *value);       // Считывает значение типа float после первого символа ':'
 
-    void HandleAsyncExecFinished(StringHash, VariantMap&);
+    void HandlerAsyncExecFinished(StringHash, VariantMap&);
 };
 
 

@@ -15,7 +15,7 @@ ButtonSwitch::ButtonSwitch(UIElement *uielement, char *text, int width, int heig
 {
     items.Push(text);
 
-    SubscribeToEvent(this, E_RELEASED, URHO3D_HANDLER(ButtonSwitch, HandleButtonRelease));
+    SubscribeToEvent(this, E_RELEASED, URHO3D_HANDLER(ButtonSwitch, HandlerButtonRelease));
 }
 
 
@@ -35,7 +35,7 @@ void ButtonSwitch::AddState(char *item)
 }
 
 
-void ButtonSwitch::HandleButtonRelease(StringHash, VariantMap&)
+void ButtonSwitch::HandlerButtonRelease(StringHash, VariantMap&)
 {
     state++;
     if (state == items.Size())

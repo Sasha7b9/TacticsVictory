@@ -27,11 +27,11 @@ GovernorCell::GovernorCell(Context *context) :
     label->SetPosition(1, -1);
     AddChild(label);
 
-    SubscribeToEvent(E_UIMOUSECLICK, URHO3D_HANDLER(GovernorCell, HandleMouseDown));
-    SubscribeToEvent(E_MOUSEBUTTONUP, URHO3D_HANDLER(GovernorCell, HandleMouseUp));
-    SubscribeToEvent(E_MOUSEMOVE, URHO3D_HANDLER(GovernorCell, HandleMouseMove));
-    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(GovernorCell, HandleHoverBegin));
-    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(GovernorCell, HandleHoverEnd));
+    SubscribeToEvent(E_UIMOUSECLICK, URHO3D_HANDLER(GovernorCell, HandlerMouseDown));
+    SubscribeToEvent(E_MOUSEBUTTONUP, URHO3D_HANDLER(GovernorCell, HandlerMouseUp));
+    SubscribeToEvent(E_MOUSEMOVE, URHO3D_HANDLER(GovernorCell, HandlerMouseMove));
+    SubscribeToEvent(this, E_HOVERBEGIN, URHO3D_HANDLER(GovernorCell, HandlerHoverBegin));
+    SubscribeToEvent(this, E_HOVEREND, URHO3D_HANDLER(GovernorCell, HandlerHoverEnd));
 }
 
 
@@ -78,7 +78,7 @@ char GovernorCell::GetSymbol()
 }
 
 
-void GovernorCell::HandleMouseDown(StringHash, VariantMap&)
+void GovernorCell::HandlerMouseDown(StringHash, VariantMap&)
 {
     if(type == Type::Static)
     {
@@ -95,7 +95,7 @@ void GovernorCell::HandleMouseDown(StringHash, VariantMap&)
 }
 
 
-void GovernorCell::HandleMouseMove(StringHash, VariantMap& eventData)
+void GovernorCell::HandlerMouseMove(StringHash, VariantMap& eventData)
 {
     if(type == Type::Static)
     {
@@ -153,7 +153,7 @@ void GovernorCell::ChangeValue(int d)
 }
 
 
-void GovernorCell::HandleMouseUp(StringHash, VariantMap&)
+void GovernorCell::HandlerMouseUp(StringHash, VariantMap&)
 {
     if(type == Type::Static)
     {
@@ -165,7 +165,7 @@ void GovernorCell::HandleMouseUp(StringHash, VariantMap&)
 }
 
 
-void GovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
+void GovernorCell::HandlerHoverBegin(StringHash, VariantMap& eventData)
 {
     if(type == Type::Static)
     {
@@ -180,7 +180,7 @@ void GovernorCell::HandleHoverBegin(StringHash, VariantMap& eventData)
 }
 
 
-void GovernorCell::HandleHoverEnd(StringHash, VariantMap &)
+void GovernorCell::HandlerHoverEnd(StringHash, VariantMap &)
 {
     if (type == Type::Static)
     {
@@ -234,7 +234,7 @@ GovernorFloat::GovernorFloat(Context *context) :
             cell->SetType(GovernorCell::Type::Digit);
             cell->SetSymbol('0');
         }
-        SubscribeToEvent(E_GOVERNORCELLCHANGED, URHO3D_HANDLER(GovernorFloat, HandleGovernorCellChanged));
+        SubscribeToEvent(E_GOVERNORCELLCHANGED, URHO3D_HANDLER(GovernorFloat, HandlerGovernorCellChanged));
     }
 
     SharedPtr<GovernorCell> cell(new GovernorCell(context));
@@ -252,8 +252,8 @@ GovernorFloat::GovernorFloat(Context *context) :
     buttonDown->SetPosition((numCells + 1) * (TheSettings.GetInt("menu", "governor", "cell", "width") - 1)
         + 4 + widthLabel, 0);
 
-    SubscribeToEvent(buttonDown, E_HOVERBEGIN, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonBegin));
-    SubscribeToEvent(buttonDown, E_HOVEREND, URHO3D_HANDLER(GovernorFloat, HandleHoverButtonEnd));
+    SubscribeToEvent(buttonDown, E_HOVERBEGIN, URHO3D_HANDLER(GovernorFloat, HandlerHoverButtonBegin));
+    SubscribeToEvent(buttonDown, E_HOVEREND, URHO3D_HANDLER(GovernorFloat, HandlerHoverButtonEnd));
 }
 
 
@@ -448,19 +448,19 @@ float GovernorFloat::GetValue()
 }
 
 
-void GovernorFloat::HandleGovernorCellChanged(StringHash, VariantMap&)
+void GovernorFloat::HandlerGovernorCellChanged(StringHash, VariantMap&)
 {
     valueChanged = true;
 }
 
 
-void GovernorFloat::HandleHoverButtonBegin(StringHash, VariantMap&)
+void GovernorFloat::HandlerHoverButtonBegin(StringHash, VariantMap&)
 {
     SendEvent(E_HOVER_BEGIN_ELEMENT_GUI);
 }
 
 
-void GovernorFloat::HandleHoverButtonEnd(StringHash, VariantMap&)
+void GovernorFloat::HandlerHoverButtonEnd(StringHash, VariantMap&)
 {
     SendEvent(E_HOVER_END_ELEMENT_GUI);
 }

@@ -40,25 +40,25 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
         sizeSlider.first = widthRoller;
     }
     slider = SliderInt::Create(window, sizeSlider);
-    SubscribeToEvent(slider, E_SLIDERINTCHANGED, URHO3D_HANDLER(SliderWithTextAndButtons, HandleSliderIntChanged));
-    SubscribeToEvent(slider, E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
-    SubscribeToEvent(slider, E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
+    SubscribeToEvent(slider, E_SLIDERINTCHANGED, URHO3D_HANDLER(SliderWithTextAndButtons, HandlerSliderIntChanged));
+    SubscribeToEvent(slider, E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandlerHoverBegin));
+    SubscribeToEvent(slider, E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandlerHoverEnd));
 
     buttonLeft = new Button(TheContext);
     buttonLeft->SetRepeat(0.25f, 20.0f);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
-    SubscribeToEvent(buttonLeft, E_PRESSED, URHO3D_HANDLER(SliderWithTextAndButtons, HandleButtonDown));
-    SubscribeToEvent(buttonLeft, E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
-    SubscribeToEvent(buttonLeft, E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
+    SubscribeToEvent(buttonLeft, E_PRESSED, URHO3D_HANDLER(SliderWithTextAndButtons, HandlerButtonDown));
+    SubscribeToEvent(buttonLeft, E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandlerHoverBegin));
+    SubscribeToEvent(buttonLeft, E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandlerHoverEnd));
 
     buttonRight = new Button(TheContext);
     buttonRight->SetRepeat(0.25f, 20.0f);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
-    SubscribeToEvent(buttonRight, E_PRESSED, URHO3D_HANDLER(SliderWithTextAndButtons, HandleButtonDown));
-    SubscribeToEvent(buttonRight, E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverBegin));
-    SubscribeToEvent(buttonRight, E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandleHoverEnd));
+    SubscribeToEvent(buttonRight, E_PRESSED, URHO3D_HANDLER(SliderWithTextAndButtons, HandlerButtonDown));
+    SubscribeToEvent(buttonRight, E_HOVERBEGIN, URHO3D_HANDLER(SliderWithTextAndButtons, HandlerHoverBegin));
+    SubscribeToEvent(buttonRight, E_HOVEREND, URHO3D_HANDLER(SliderWithTextAndButtons, HandlerHoverEnd));
 
     textValue = new Text(TheContext);
     textValue->SetFixedWidth(35);
@@ -75,7 +75,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *t
         uielement->AddChild(this);
     }
 
-    SubscribeToEvent(E_UIMOUSECLICK, URHO3D_HANDLER(SliderWithTextAndButtons, HandleMouseClick));
+    SubscribeToEvent(E_UIMOUSECLICK, URHO3D_HANDLER(SliderWithTextAndButtons, HandlerMouseClick));
 }
 
 
@@ -107,7 +107,7 @@ void SliderWithTextAndButtons::SetValue(int value)
 }
 
 
-void SliderWithTextAndButtons::HandleSliderIntChanged(StringHash, VariantMap& eventData_)
+void SliderWithTextAndButtons::HandlerSliderIntChanged(StringHash, VariantMap& eventData_)
 {
     int value = slider->GetValueInt();
     textValue->SetText(String(value));
@@ -119,7 +119,7 @@ void SliderWithTextAndButtons::HandleSliderIntChanged(StringHash, VariantMap& ev
 }
 
 
-void SliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventData)
+void SliderWithTextAndButtons::HandlerButtonDown(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Pressed::P_ELEMENT].GetPtr();
 
@@ -134,13 +134,13 @@ void SliderWithTextAndButtons::HandleButtonDown(StringHash, VariantMap& eventDat
 }
 
 
-void SliderWithTextAndButtons::HandleHoverBegin(StringHash, VariantMap&)
+void SliderWithTextAndButtons::HandlerHoverBegin(StringHash, VariantMap&)
 {
     SendEvent(E_HOVER_BEGIN_ELEMENT_GUI);
 }
 
 
-void SliderWithTextAndButtons::HandleHoverEnd(StringHash, VariantMap&)
+void SliderWithTextAndButtons::HandlerHoverEnd(StringHash, VariantMap&)
 {
     SendEvent(E_HOVER_END_ELEMENT_GUI);
 }
@@ -164,7 +164,7 @@ int SliderWithTextAndButtons::GetValueMax()
 }
 
 
-void SliderWithTextAndButtons::HandleMouseClick(StringHash, VariantMap& eventData)
+void SliderWithTextAndButtons::HandlerMouseClick(StringHash, VariantMap& eventData)
 {
     UIElement *pointer = (UIElement*)eventData[UIMouseClick::P_ELEMENT].GetPtr();
 

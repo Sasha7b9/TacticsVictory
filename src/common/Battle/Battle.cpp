@@ -172,8 +172,8 @@ void Battle::RegistrationComponets()
 
 void Battle::SubscribeToEvents()
 {
-    SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(Battle, HandleUpdate));
-    SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(Battle, HandlePostUpdate));
+    SubscribeToEvent(E_UPDATE, URHO3D_HANDLER(Battle, HandlerUpdate));
+    SubscribeToEvent(E_POSTUPDATE, URHO3D_HANDLER(Battle, HandlerPostUpdate));
 }
 
 

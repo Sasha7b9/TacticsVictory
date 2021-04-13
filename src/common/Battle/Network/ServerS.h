@@ -27,15 +27,10 @@ private:
 
     Vector<ConnectionT> connections;
 
-    void HandleMessage(StringHash, VariantMap &);
-
-    void HandleServerConnected(StringHash, VariantMap &);
-
-    void HandleServerDisconnected(StringHash, VariantMap &);
-
-    void HandleClientConnected(StringHash, VariantMap &);
-
-    void HandleCliendDisconnected(StringHash, VariantMap &);
-
-    void HandleConnectFailed(StringHash, VariantMap &);
+    void HandlerMessage(StringHash, VariantMap &);
+    void HandlerServerConnected(StringHash, VariantMap &);
+    void HandlerServerDisconnected(StringHash, VariantMap &);
+    void HandlerClientConnected(StringHash, VariantMap &);
+    void HandlerCliendDisconnected(StringHash, VariantMap &);
+    void HandlerConnectFailed(StringHash, VariantMap &);
 };

@@ -51,8 +51,8 @@ private:
 
     void SetSelectedOverUnit();
 
-    void HandleHoverBeginElementGUI(StringHash, VariantMap &);
-    void HandleHoverEndElementGUI(StringHash, VariantMap &);
+    void HandlerHoverBeginElementGUI(StringHash, VariantMap &);
+    void HandlerHoverEndElementGUI(StringHash, VariantMap &);
 };
 
 

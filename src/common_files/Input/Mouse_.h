@@ -12,7 +12,7 @@ public:
 
 private:
 
-    void HandleMouseDown(StringHash, VariantMap &);
+    void HandlerMouseDown(StringHash, VariantMap &);
     void ProcessMouseLeft();
     void ProcessMouseRight();
 };

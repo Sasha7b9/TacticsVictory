@@ -6,12 +6,12 @@
 
 ServerS::ServerS(ServerS **self) : Object(TheContext)
 {
-    SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(ServerS, HandleMessage));
-    SubscribeToEvent(E_SERVERCONNECTED, URHO3D_HANDLER(ServerS, HandleServerConnected));
-    SubscribeToEvent(E_SERVERDISCONNECTED, URHO3D_HANDLER(ServerS, HandleServerDisconnected));
-    SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(ServerS, HandleConnectFailed));
-    SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(ServerS, HandleClientConnected));
-    SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(ServerS, HandleCliendDisconnected));
+    SubscribeToEvent(E_NETWORKMESSAGE, URHO3D_HANDLER(ServerS, HandlerMessage));
+    SubscribeToEvent(E_SERVERCONNECTED, URHO3D_HANDLER(ServerS, HandlerServerConnected));
+    SubscribeToEvent(E_SERVERDISCONNECTED, URHO3D_HANDLER(ServerS, HandlerServerDisconnected));
+    SubscribeToEvent(E_CONNECTFAILED, URHO3D_HANDLER(ServerS, HandlerConnectFailed));
+    SubscribeToEvent(E_CLIENTCONNECTED, URHO3D_HANDLER(ServerS, HandlerClientConnected));
+    SubscribeToEvent(E_CLIENTDISCONNECTED, URHO3D_HANDLER(ServerS, HandlerCliendDisconnected));
 
     *self = this;
 }
@@ -34,7 +34,7 @@ bool ServerS::Start(uint16 port)
 }
 
 
-void ServerS::HandleMessage(StringHash, VariantMap &eventData)
+void ServerS::HandlerMessage(StringHash, VariantMap &eventData)
 {
     int id = eventData[NetworkMessage::P_MESSAGEID].GetInt();
 
@@ -42,19 +42,19 @@ void ServerS::HandleMessage(StringHash, VariantMap &eventData)
 }
 
 
-void ServerS::HandleServerConnected(StringHash, VariantMap &)
+void ServerS::HandlerServerConnected(StringHash, VariantMap &)
 {
     LOG_FUNC_ENTER();
 }
 
 
-void ServerS::HandleServerDisconnected(StringHash, VariantMap &)
+void ServerS::HandlerServerDisconnected(StringHash, VariantMap &)
 {
 //    LOG_FUNC_ENTER();
 }
 
 
-void ServerS::HandleClientConnected(StringHash, VariantMap &eventData)
+void ServerS::HandlerClientConnected(StringHash, VariantMap &eventData)
 {
     using namespace ClientConnected;
 
@@ -66,7 +66,7 @@ void ServerS::HandleClientConnected(StringHash, VariantMap &eventData)
 }
 
 
-void ServerS::HandleCliendDisconnected(StringHash, VariantMap &eventData)
+void ServerS::HandlerCliendDisconnected(StringHash, VariantMap &eventData)
 {
     using namespace ClientDisconnected;
 
@@ -90,7 +90,7 @@ void ServerS::HandleCliendDisconnected(StringHash, VariantMap &eventData)
 }
 
 
-void ServerS::HandleConnectFailed(StringHash, VariantMap &)
+void ServerS::HandlerConnectFailed(StringHash, VariantMap &)
 {
     LOGERRORF("%s : failed connection");
 }

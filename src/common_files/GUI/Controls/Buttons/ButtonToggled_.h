@@ -19,5 +19,5 @@ public:
 private:
     SharedPtr<Label> label;
 
-    void HandleMouseUp(StringHash eventType, VariantMap &eventData);
+    void HandlerMouseUp(StringHash eventType, VariantMap &eventData);
 };

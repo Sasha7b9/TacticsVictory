@@ -24,8 +24,8 @@ private:
     void GetSubsystems();
     void TuneEngineParameters();
 
-    void HandleUpdate(StringHash, VariantMap&);
-    void HandlePostUpdate(StringHash, VariantMap&);
+    void HandlerUpdate(StringHash, VariantMap&);
+    void HandlerPostUpdate(StringHash, VariantMap&);
 
     SharedPtr<SceneS>   scene;
     SharedPtr<Log>      log;

@@ -42,8 +42,8 @@ CursorT::CursorT(Context *context) : Cursor(context)
     staticSprite->SetBlendMode(BLEND_ALPHA);
     nodeSprite->SetEnabled(true);
 
-    SubscribeToEvent(E_HOVER_BEGIN_ELEMENT_GUI, URHO3D_HANDLER(CursorT, HandleHoverBeginElementGUI));
-    SubscribeToEvent(E_HOVER_END_ELEMENT_GUI, URHO3D_HANDLER(CursorT, HandleHoverEndElementGUI));
+    SubscribeToEvent(E_HOVER_BEGIN_ELEMENT_GUI, URHO3D_HANDLER(CursorT, HandlerHoverBeginElementGUI));
+    SubscribeToEvent(E_HOVER_END_ELEMENT_GUI, URHO3D_HANDLER(CursorT, HandlerHoverEndElementGUI));
 }
 
 
@@ -214,13 +214,13 @@ void CursorT::SetSelectedOverUnit()
 }
 
 
-void CursorT::HandleHoverBeginElementGUI(StringHash, VariantMap &)
+void CursorT::HandlerHoverBeginElementGUI(StringHash, VariantMap &)
 {
     overElementGUI = true;
 }
 
 
-void CursorT::HandleHoverEndElementGUI(StringHash, VariantMap &)
+void CursorT::HandlerHoverEndElementGUI(StringHash, VariantMap &)
 {
     overElementGUI = false;
 }

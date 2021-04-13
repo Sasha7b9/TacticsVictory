@@ -40,23 +40,23 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int wi
     ddList->SetResizePopup(true);
     window->AddChild(ddList);
 
-    SubscribeToEvent(ddList, E_ITEMSELECTED, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleItemSelected));
-    SubscribeToEvent(ddList, E_HOVERBEGIN, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
-    SubscribeToEvent(ddList, E_HOVEREND, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
+    SubscribeToEvent(ddList, E_ITEMSELECTED, URHO3D_HANDLER(DropDownListWithTextAndButton, HandlerItemSelected));
+    SubscribeToEvent(ddList, E_HOVERBEGIN, URHO3D_HANDLER(DropDownListWithTextAndButton, HandlerHoverBegin));
+    SubscribeToEvent(ddList, E_HOVEREND, URHO3D_HANDLER(DropDownListWithTextAndButton, HandlerHoverEnd));
 
     buttonLeft = new Button(TheContext);
     buttonLeft->SetStyle("SliderButtonLeft");
     window->AddChild(buttonLeft);
-    SubscribeToEvent(buttonLeft, E_PRESSED, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleButtonDown));
-    SubscribeToEvent(buttonLeft, E_HOVERBEGIN, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
-    SubscribeToEvent(buttonLeft, E_HOVEREND, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
+    SubscribeToEvent(buttonLeft, E_PRESSED, URHO3D_HANDLER(DropDownListWithTextAndButton, HandlerButtonDown));
+    SubscribeToEvent(buttonLeft, E_HOVERBEGIN, URHO3D_HANDLER(DropDownListWithTextAndButton, HandlerHoverBegin));
+    SubscribeToEvent(buttonLeft, E_HOVEREND, URHO3D_HANDLER(DropDownListWithTextAndButton, HandlerHoverEnd));
 
     buttonRight = new Button(TheContext);
     buttonRight->SetStyle("SliderButtonRight");
     window->AddChild(buttonRight);
-    SubscribeToEvent(buttonRight, E_PRESSED, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleButtonDown));
-    SubscribeToEvent(buttonRight, E_HOVERBEGIN, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverBegin));
-    SubscribeToEvent(buttonRight, E_HOVEREND, URHO3D_HANDLER(DropDownListWithTextAndButton, HandleHoverEnd));
+    SubscribeToEvent(buttonRight, E_PRESSED, URHO3D_HANDLER(DropDownListWithTextAndButton, HandlerButtonDown));
+    SubscribeToEvent(buttonRight, E_HOVERBEGIN, URHO3D_HANDLER(DropDownListWithTextAndButton, HandlerHoverBegin));
+    SubscribeToEvent(buttonRight, E_HOVEREND, URHO3D_HANDLER(DropDownListWithTextAndButton, HandlerHoverEnd));
 
     SetMinSize(window->GetWidth(), window->GetHeight());
 }
@@ -90,7 +90,7 @@ void DropDownListWithTextAndButton::AddItem(char *text)
 }
 
 
-void DropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& eventData_)
+void DropDownListWithTextAndButton::HandlerItemSelected(StringHash, VariantMap& eventData_)
 {
     VariantMap &eventData = GetEventDataMap();
     eventData[ItemSelected::P_ELEMENT] = this;
@@ -99,7 +99,7 @@ void DropDownListWithTextAndButton::HandleItemSelected(StringHash, VariantMap& e
 }
 
 
-void DropDownListWithTextAndButton::HandleButtonDown(StringHash, VariantMap& eventData)
+void DropDownListWithTextAndButton::HandlerButtonDown(StringHash, VariantMap& eventData)
 {
     Button *button = (Button*)eventData[Pressed::P_ELEMENT].GetPtr();
 
@@ -138,13 +138,13 @@ SharedPtr<DropDownListWithTextAndButton> DropDownListWithTextAndButton::Create(W
 }
 
 
-void DropDownListWithTextAndButton::HandleHoverBegin(StringHash, VariantMap&)
+void DropDownListWithTextAndButton::HandlerHoverBegin(StringHash, VariantMap&)
 {
     SendEvent(E_HOVER_BEGIN_ELEMENT_GUI, GetEventDataMap());
 }
 
 
-void DropDownListWithTextAndButton::HandleHoverEnd(StringHash, VariantMap&)
+void DropDownListWithTextAndButton::HandlerHoverEnd(StringHash, VariantMap&)
 {
     SendEvent(E_HOVER_END_ELEMENT_GUI, GetEventDataMap());
 }

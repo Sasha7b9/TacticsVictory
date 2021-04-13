@@ -21,8 +21,8 @@ private:
     SharedPtr<Button> buttonLeft;
     SharedPtr<Button> buttonRight;
 
-    void HandleItemSelected(StringHash eventType, VariantMap& eventData);
-    void HandleButtonDown(StringHash eventType, VariantMap& eventData);
-    void HandleHoverBegin(StringHash eventType, VariantMap& eventData);
-    void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
+    void HandlerItemSelected(StringHash eventType, VariantMap& eventData);
+    void HandlerButtonDown(StringHash eventType, VariantMap& eventData);
+    void HandlerHoverBegin(StringHash eventType, VariantMap& eventData);
+    void HandlerHoverEnd(StringHash eventType, VariantMap& eventData);
 };

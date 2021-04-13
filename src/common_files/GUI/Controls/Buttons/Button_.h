@@ -22,6 +22,6 @@ private:
     SharedPtr<Label> label;
     SharedPtr<Hint>  hint;
 
-    void HandleHoverBegin(StringHash, VariantMap&);
-    void HandleHoverEnd(StringHash, VariantMap&);
+    void HandlerHoverBegin(StringHash, VariantMap&);
+    void HandlerHoverEnd(StringHash, VariantMap&);
 };

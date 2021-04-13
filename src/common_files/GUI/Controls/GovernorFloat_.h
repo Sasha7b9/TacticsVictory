@@ -31,11 +31,11 @@ public:
     void SetNormal();
     void SetType(Type::E type_)    { type = type_; };
 
-    void HandleHoverBegin(StringHash eventType, VariantMap& eventData);
-    void HandleHoverEnd(StringHash eventType, VariantMap& eventData);
-    void HandleMouseDown(StringHash eventType, VariantMap& eventData);
-    void HandleMouseUp(StringHash eventType, VariantMap& eventData);
-    void HandleMouseMove(StringHash eventType, VariantMap& eventData);
+    void HandlerHoverBegin(StringHash eventType, VariantMap& eventData);
+    void HandlerHoverEnd(StringHash eventType, VariantMap& eventData);
+    void HandlerMouseDown(StringHash eventType, VariantMap& eventData);
+    void HandlerMouseUp(StringHash eventType, VariantMap& eventData);
+    void HandlerMouseMove(StringHash eventType, VariantMap& eventData);
 
 private:
     SharedPtr<Text> label;
@@ -65,9 +65,9 @@ public:
 
     void SetFunctionFloat(char *title, pFuncFV funcRead, pFuncVF funcWrite);
 
-    void HandleGovernorCellChanged(StringHash eventType, VariantMap& eventData);
-    void HandleHoverButtonBegin(StringHash eventType, VariantMap& eventData);
-    void HandleHoverButtonEnd(StringHash eventType, VariantMap& eventData);
+    void HandlerGovernorCellChanged(StringHash eventType, VariantMap& eventData);
+    void HandlerHoverButtonBegin(StringHash eventType, VariantMap& eventData);
+    void HandlerHoverButtonEnd(StringHash eventType, VariantMap& eventData);
 
 private:
     Vector<SharedPtr<GovernorCell> > cells;

@@ -7,13 +7,13 @@
 
 Mouse::Mouse(Mouse **self) : Object(TheContext)
 {
-    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(Mouse, HandleMouseDown));
+    SubscribeToEvent(E_MOUSEBUTTONDOWN, URHO3D_HANDLER(Mouse, HandlerMouseDown));
 
     *self = this;
 }
 
 
-void Mouse::HandleMouseDown(StringHash, VariantMap &eventData)
+void Mouse::HandlerMouseDown(StringHash, VariantMap &eventData)
 {
     int buttons = static_cast<int>(eventData[MouseButtonDown::P_BUTTONS].GetInt());
 

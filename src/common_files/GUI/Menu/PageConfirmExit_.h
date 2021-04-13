@@ -14,7 +14,7 @@ private:
     SharedPtr<ButtonT> buttonOk;
     SharedPtr<ButtonT> buttonCancel;
 
-    void HandleButtonRelease(StringHash eventType, VariantMap& eventData);
+    void HandlerButtonRelease(StringHash eventType, VariantMap& eventData);
     void OnPressButtonOk();
     void OnPressButtonCancel();
 };
