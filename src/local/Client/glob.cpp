@@ -1,5 +1,7 @@
 ﻿// 2021/04/02 17:53:31 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "FileSystem/ConfigurationFile_.h"
+#include "Network/Other/ServerConnector_.h"
 
 
 Audio           *TheAudio        = nullptr;
@@ -12,6 +14,7 @@ Graphics        *TheGraphics     = nullptr;
 Input           *TheInput        = nullptr;
 ResourceCache   *TheCache        = nullptr;
 Localization    *TheLocalization = nullptr;
+Renderer        *TheRenderer     = nullptr;
 Scene           *TheScene        = nullptr;
 Time            *TheTime         = nullptr;
 UI              *TheUI           = nullptr;
@@ -26,6 +29,7 @@ Hint            *TheHint         = nullptr;
 LogRAW          *TheLog          = nullptr;
 Menus           *TheMenu         = nullptr;
 Mouse           *TheMouse        = nullptr;
+TerrainT        *TheTerrain      = nullptr;
 WindowVariables *TheWindowVars   = nullptr;
 
 ConfigurationFile TheSettings;

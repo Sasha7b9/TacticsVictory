@@ -7,7 +7,7 @@
 #include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Windows/Console_.h"
 #include "Scene/SceneC.h"
-#include "Scene/Cameras/Camera.h"
+//#include "Scene/Cameras/Camera.h"
 #include "Scene/Objects/ObjectC.h"
 
 

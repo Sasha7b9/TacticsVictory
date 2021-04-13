@@ -1,8 +1,10 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Client.h"
+#include "FileSystem/ConfigurationFile_.h"
 #include "GUI/Controls/Buttons/ButtonSwitch_.h"
 #include "GUI/Menu/Menu.h"
+#include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Menu/PageStart.h"
 
 

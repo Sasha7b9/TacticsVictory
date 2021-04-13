@@ -73,7 +73,7 @@ file(GLOB NETWORK_MESSAGES                       ../../common_files/Network/Game
                                                                     Network/Messages/*.*)
 file(GLOB SCENE                                  ../../common_files/Scene/*.*
                                                                     Scene/*.*)
-file(GLOB SCENE_CAMERAS                                             Scene/Cameras/*.*)
+file(GLOB SCENE_CAMERAS                          ../../common_files/Scene/Cameras/Camera_.*)
 file(GLOB SCENE_OBJECTS                          ../../common_files/Scene/Objects/*.*
                                                                     Scene/Objects/*.*)
 file(GLOB SCENE_OBJECTS_AMMO                     ../../common_files/Scene/Objects/Ammo/*.*)

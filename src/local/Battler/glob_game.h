@@ -10,7 +10,7 @@
 #include "GUI/Menu/PageGame.h"
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"
-#include "Scene/Cameras/Camera.h"
+#include "Scene/Cameras/Camera_.h"
 
 extern ConfigurationFile  TheSettings;
 

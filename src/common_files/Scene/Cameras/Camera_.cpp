@@ -4,7 +4,8 @@
 #include "GUI/GUI.h"
 #include "GUI/Windows/Console_.h"
 #include "Scene/SceneC.h"
-#include "Scene/Cameras/Camera.h"
+#include "Scene/Cameras/Camera_.h"
+#include "Scene/Terrain/Terrain_.h"
 
 
 #define CURSOR_UP           (cursor == CursorT::Type::Up)

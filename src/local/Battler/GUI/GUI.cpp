@@ -19,7 +19,7 @@
 #include "GUI/Panels/PanelMap.h"
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"
-#include "Scene/Cameras/Camera.h"
+//#include "Scene/Cameras/Camera.h"
 
 
 GUI::GUI(GUI **self) : GUIT((GUIT **)self)

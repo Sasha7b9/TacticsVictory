@@ -17,7 +17,7 @@
 #include "Input/Mouse_.h"
 #include "Network/ServerC.h"
 #include "Scene/SceneC.h"
-#include "Scene/Cameras/Camera.h"
+#include "Scene/Cameras/Camera_.h"
 #include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 

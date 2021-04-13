@@ -5,7 +5,7 @@
 #include "GUI/Menu/MenuEvents_.h"
 #include "GUI/Menu/PageGame.h"
 #include "Scene/SceneC.h"
-#include "Scene/Cameras/Camera.h"
+//#include "Scene/Cameras/Camera.h"
 
 
 PageGame::PageGame(Context *) : MenuPage()

@@ -6,7 +6,7 @@
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"
 #include "Network/Other/ServerConnector_.h"
-#include "Scene/Cameras/Camera.h"
+#include "Scene/Cameras/Camera_.h"
 #include "Utils/Log_.h"
 
 extern ConfigurationFile TheConfig;

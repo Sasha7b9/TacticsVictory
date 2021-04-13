@@ -11,6 +11,7 @@ extern Font          *TheFont;
 extern Graphics      *TheGraphics;
 extern Input         *TheInput;
 extern Localization  *TheLocalization;
+extern Renderer      *TheRenderer;
 extern ResourceCache *TheCache;
 extern Scene         *TheScene;
 extern Time          *TheTime;

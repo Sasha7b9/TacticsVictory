@@ -1,7 +1,7 @@
 // 2021/04/12 23:34:50 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "GUI/Cursor_.h"
-#include "Scene/Cameras/Camera.h"
+//#include "Scene/Cameras/Camera.h"
 
 
 Drawable *CursorT::GetRaycastNode(Vector3 *hitPos_)

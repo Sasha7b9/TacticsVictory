@@ -1,6 +1,6 @@
 project (Client)
 
-set(CMAKE_UNITY_BUILD ON)
+#set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
@@ -66,7 +66,8 @@ file(GLOB NETWORK                     ../../common_files/Network/Other/NetworkTy
                                       ../../common_files/Network/Other/SocketsTCP_.*
                                                          Network/*.*)
 file(GLOB SCENE                                          Scene/*.*)
-file(GLOB SCENE_CAMERAS                                  Scene/Cameras/*.*)
+file(GLOB SCENE_CAMERAS               ../../common_files/Scene/Cameras/Camera_.*)
+file(GLOB SCENE_TERRAIN               ../../common_files/Scene/Terrain/*.*)
 file(GLOB UTILS                       ../../common_files/Utils/GlobalFunctions_.*
                                       ../../common_files/Utils/Log_.*
                                       ../../common_files/Utils/LogRAW_.*
@@ -94,6 +95,7 @@ source_group(Input                          FILES ${INPUT})
 source_group(Network                        FILES ${NETWORK})
 source_group(Scene                          FILES ${SCENE})
 source_group(Scene\\Cameras                 FILES ${SCENE_CAMERAS})
+source_group(Scene\\Terrain                 FILES ${SCENE_TERRAIN})
 source_group(Utils                          FILES ${UTILS})
 
 source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
@@ -108,14 +110,15 @@ add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM}
                 ${GUI_LOGIC}
                 ${GUI_MENU} ${GUI_MENU_MENUSTART} ${GUI_MENU_MENUSTART_MENUPLAY} ${GUI_WINDOWS}
                 ${INPUT} ${NETWORK} ${UTILS}
-                ${SCENE} ${SCENE_CAMERAS}
+                ${SCENE} ${SCENE_CAMERAS} ${SCENE_TERRAIN}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
-set_target_properties(${PROJECT_NAME}                                                 PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D} ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS}
-                            ${GUI_CONTROLS_SLIDERS} ${GUI_LOGIC} ${GUI_MENU} ${GUI_MENU_MENUSTART}
-                            ${GUI_MENU_MENUSTART_MENUPLAY} ${GUI_WINDOWS} ${INPUT} ${NETWORK} ${SCENE} ${SCENE_CAMERAS}
-                            ${UTILS} ${SOCKPP}                                          PROPERTIES UNITY_GROUP "bucket")
+#set_target_properties(${PROJECT_NAME}                                                 PROPERTIES UNITY_BUILD_MODE GROUP)
+#set_source_files_properties(${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D} ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS}
+#                            ${GUI_CONTROLS_SLIDERS} ${GUI_LOGIC} ${GUI_MENU} ${GUI_MENU_MENUSTART}
+#                            ${GUI_MENU_MENUSTART_MENUPLAY} ${GUI_WINDOWS} ${INPUT} ${NETWORK}
+#                            ${SCENE} ${SCENE_CAMERAS} ${SCENE_TERRAIN}
+#                            ${UTILS} ${SOCKPP}                                          PROPERTIES UNITY_GROUP "bucket")
 
 include(../../RuntimeLibrary.cmake)
 

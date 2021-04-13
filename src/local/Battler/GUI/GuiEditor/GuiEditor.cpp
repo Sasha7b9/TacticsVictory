@@ -15,7 +15,7 @@
 #include "GUI/Panels/PanelMap.h"
 #include "GUI/Windows/Console_.h"
 #include "Scene/SceneC.h"
-#include "Scene/Cameras/Camera.h"
+//#include "Scene/Cameras/Camera.h"
 #include "Scene/Terrain/Level_.h"
 #include "Utils/GlobalFunctions_.h"
 

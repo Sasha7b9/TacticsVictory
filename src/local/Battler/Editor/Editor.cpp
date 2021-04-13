@@ -6,7 +6,7 @@
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/Menu.h"
 #include "Scene/SceneC.h"
-#include "Scene/Cameras/Camera.h"
+//#include "Scene/Cameras/Camera.h"
 #include "Scene/Terrain/Level_.h"
 
 

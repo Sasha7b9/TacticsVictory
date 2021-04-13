@@ -3,7 +3,7 @@
 #include "Game/Logic/SunEngine_.h"
 #include "Network/Game/Messages/GameMessages_.h"
 #include "Scene/SceneC.h"
-#include "Scene/Cameras/Camera.h"
+#include "Scene/Cameras/Camera_.h"
 #include "Scene/Objects/ObjectC.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
 #include "Scene/Terrain/Level_.h"
