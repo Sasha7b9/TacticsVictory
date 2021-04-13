@@ -1,6 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "GUI/Controls/DropDownListWithTextAndButton_.h"
+#include "GUI/Controls/Label_.h"
 #include "GUI/Logic/LineTranslator2D_.h"
 
 
