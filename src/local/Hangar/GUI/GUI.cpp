@@ -13,7 +13,7 @@ GUI::GUI(GUI **self) : GUIT((GUIT **)self)
 
 void GUI::RegistrationObjects()
 {
-
+    CursorT::RegisterObject();
 }
 
 

@@ -9,12 +9,24 @@ Chat::Chat() : WindowT(TheContext)
     SetResizable(false);
 
     line_edit = TheUIRoot->CreateChild<LineEdit>();
-    line_edit->SetStyle("LineEdit");
+    
+    bool result = line_edit->SetStyle("LineEdit");
+
+    if (!result)
+    {
+        LOGERROR("Can not set style LineEdit");
+    }
 
     AddChild(line_edit);
 
     text = TheUIRoot->CreateChild<Text>();
-    text->SetStyle("MenuPage");
+    result = text->SetStyle("MenuPage");
+
+    if (!result)
+    {
+        LOGERROR("Can not set style MenuPage");
+    }
+
     text->SetWordwrap(true);
     AddChild(text);
 

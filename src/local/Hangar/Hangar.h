@@ -2,6 +2,7 @@
 #pragma once
 #include "Input/Mouse_.h"
 #include "GUI/GUI.h"
+#include "Scene/SceneC.h"
 
 
 class Hangar : public Application
@@ -29,7 +30,8 @@ private:
     void CreateGUI();
     void ParseArguments();
 
-    SharedPtr<Log>   log;
-    SharedPtr<GUI>   gui;
-    SharedPtr<Mouse> mouse;
+    SharedPtr<Log>    log;
+    SharedPtr<SceneC> scene;
+    SharedPtr<GUI>    gui;
+    SharedPtr<Mouse>  mouse;
 };

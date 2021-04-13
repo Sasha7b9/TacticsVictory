@@ -96,6 +96,8 @@ void Hangar::Start()
 
     SubscribeToEvents();
 
+    scene = new SceneC(&TheScene);
+
     CreateGUI();
 
     SetWindowTitleAndIcon();
