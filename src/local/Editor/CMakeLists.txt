@@ -34,6 +34,7 @@ add_compile_options(/wd28251)   # Inconsistent annotation for function: this ins
 
 file(GLOB SRC                         ../../common_files/*.*
                                                          *.h *.cpp)
+file(GLOB CORE                        ../../common_files/Core/Math_.*)
 file(GLOB FILE_SYSTEM                 ../../common_files/FileSystem/ConfigurationFile_.*
                                       ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB GRAPHICS                    ../../common_files/Graphics/*.*)
@@ -68,7 +69,12 @@ file(GLOB INPUT                       ../../common_files/Input/Mouse_.*
 file(GLOB NETWORK                     ../../common_files/Network/Other/MasterServer_.*
                                       ../../common_files/Network/Other/SocketsTCP_.*)
 file(GLOB SCENE                                          Scene/*.*)
-file(GLOB SCENE_CAMERAS                                  Scene/Cameras/*.*)
+file(GLOB SCENE_CAMERAS               ../../common_files/Scene/Cameras/*.*)
+file(GLOB SCENE_OBJECTS               ../../common_files/Scene/Objects/PhysicsParameters_.*)
+file(GLOB SCENE_PRIMITIVES            ../../common_files/Scene/Primitives/Line_.*
+                                      ../../common_files/Scene/Primitives/Plane_.*)
+file(GLOB SCENE_TERRAIN               ../../common_files/Scene/Terrain/*.*
+                                         ../common_files/Scene/Terrain/LayerTerrainC_.*)
 file(GLOB UTILS                       ../../common_files/Utils/GlobalFunctions_.*
                                       ../../common_files/Utils/Log_.*
                                       ../../common_files/Utils/LogRAW_.*
@@ -81,6 +87,7 @@ file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
 file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
 
 source_group(src                            FILES ${SRC})
+source_group(Core                           FILES ${CORE})
 source_group(FileSystem                     FILES ${FILE_SYSTEM})
 source_group(Graphics                       FILES ${GRAPHICS})
 source_group(Graphics\\2D                   FILES ${GRAPHICS_2D})
@@ -97,6 +104,9 @@ source_group(Input                          FILES ${INPUT})
 source_group(Network                        FILES ${NETWORK})
 source_group(Scene                          FILES ${SCENE})
 source_group(Scene\\Cameras                 FILES ${SCENE_CAMERAS})
+source_group(Scene\\Objects                 FILES ${SCENE_OBJECTS})
+source_group(Scene\\Primitives              FILES ${SCENE_PRIMITIVES})
+source_group(Scene\\Terrain                 FILES ${SCENE_TERRAIN})
 source_group(Utils                          FILES ${UTILS})
 
 source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
@@ -105,12 +115,12 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${GRAPHICS} ${GRAPHICS_2D}
+add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${FILE_SYSTEM} ${GRAPHICS} ${GRAPHICS_2D}
                 ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS} ${GUI_CONTROLS_SLIDERS}
                 ${GUI_LOGIC}
                 ${GUI_MENU} ${GUI_MENU_MENUSTART} ${GUI_MENU_MENUSTART_MENUPLAY} ${GUI_WINDOWS}
                 ${INPUT} ${NETWORK} ${UTILS}
-                ${SCENE} ${SCENE_CAMERAS}
+                ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 include(../../RuntimeLibrary.cmake)

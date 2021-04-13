@@ -14,5 +14,6 @@ extern Localization  *TheLocalization;
 extern Renderer      *TheRenderer;
 extern ResourceCache *TheCache;
 extern Scene         *TheScene;
+extern Time          *TheTime;
 extern UI            *TheUI;
 extern UIElement     *TheUIRoot;

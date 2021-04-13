@@ -6,6 +6,8 @@
 #define _WINSOCKAPI_
 #include <windows.h>
 
+#include <Urho3D/Audio/Audio.h>
+#include <Urho3D/Audio/SoundListener.h>
 #include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Engine/Console.h>

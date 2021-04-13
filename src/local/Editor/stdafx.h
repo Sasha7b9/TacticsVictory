@@ -11,7 +11,10 @@
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Engine/EngineDefs.h>
 #include <Urho3D/Graphics/Camera.h>
+#include <Urho3D/Graphics/Geometry.h>
 #include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/Graphics/IndexBuffer.h>
+#include <Urho3D/Graphics/Model.h>
 #include <Urho3D/Graphics/Octree.h>
 #include <Urho3D/Graphics/OctreeQuery.h>
 #include <Urho3D/Graphics/Renderer.h>

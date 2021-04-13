@@ -7,7 +7,9 @@
 #include "GUI/Windows/WindowVariables_.h"
 #include "Network/Other/ServerConnector_.h"
 #include "Scene/Cameras/Camera_.h"
+#include "Scene/Terrain/Terrain_.h"
 #include "Utils/Log_.h"
+
 
 extern ConfigurationFile TheConfig;
 extern ConfigurationFile TheSettings;
@@ -22,6 +24,7 @@ extern Hint            *TheHint;
 extern LogRAW          *TheLog;
 extern Menus           *TheMenu;
 extern Mouse           *TheMouse;
+extern TerrainT        *TheTerrain;
 extern WindowVariables *TheWindowVars;
 
 extern Vector<WindowT *> TheOpenedWindow;

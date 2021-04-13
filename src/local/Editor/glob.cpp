@@ -16,6 +16,7 @@ ResourceCache *TheCache        = nullptr;
 Renderer      *TheRenderer     = nullptr;
 Localization  *TheLocalization = nullptr;
 Scene         *TheScene        = nullptr;
+Time          *TheTime         = nullptr;
 UI            *TheUI           = nullptr;
 UIElement     *TheUIRoot       = nullptr;
 
@@ -32,6 +33,7 @@ Hint            *TheHint       = nullptr;
 LogRAW          *TheLog        = nullptr;
 Menus           *TheMenu       = nullptr;
 Mouse           *TheMouse      = nullptr;
+TerrainT        *TheTerrain    = nullptr;
 WindowVariables *TheWindowVars = nullptr;
 
 Vector<WindowT *> TheOpenedWindow;

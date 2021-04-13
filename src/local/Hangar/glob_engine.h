@@ -3,6 +3,7 @@
 #include "Scene/SceneC.h"
 
 
+extern Audio         *TheAudio;
 extern Console       *TheEngineConsole;
 extern Context       *TheContext;
 extern DebugHud      *TheDebugHud;

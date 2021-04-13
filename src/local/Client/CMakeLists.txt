@@ -72,7 +72,7 @@ file(GLOB SCENE_OBJECTS               ../../common_files/Scene/Objects/PhysicsPa
 file(GLOB SCENE_PRIMITIVES            ../../common_files/Scene/Primitives/Line_.*
                                       ../../common_files/Scene/Primitives/Plane_.*)
 file(GLOB SCENE_TERRAIN               ../../common_files/Scene/Terrain/*.*
-                                         ../common_files/Scene/Terrain/LayerTerrainC.cpp)
+                                         ../common_files/Scene/Terrain/LayerTerrainC_.cpp)
 file(GLOB UTILS                       ../../common_files/Utils/GlobalFunctions_.*
                                       ../../common_files/Utils/Log_.*
                                       ../../common_files/Utils/LogRAW_.*

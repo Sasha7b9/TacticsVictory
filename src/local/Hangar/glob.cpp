@@ -3,6 +3,7 @@
 #include "Network/Other/ServerConnector_.h"
 
 
+Audio           *TheAudio         = nullptr;
 Console         *TheEngineConsole = nullptr;
 Context         *TheContext       = nullptr;
 DebugHud        *TheDebugHud      = nullptr;
