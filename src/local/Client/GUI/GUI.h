@@ -24,7 +24,6 @@ public:
 
 private:
     void Create();
-    void RegistrationObjects();
     void CreateLabelMaster();
 
     SharedPtr<Label> label_info;                    // Здесь выводится состояние мастер-сервера

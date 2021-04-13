@@ -24,7 +24,6 @@
 
 GUI::GUI(GUI **self) : GUIT((GUIT **)self)
 {
-    RegistrationObjects();
     Create();
 
     *self = this;
@@ -35,14 +34,6 @@ GUI::~GUI()
 {
     delete TheGuiGame;
     delete TheGuiEditor;
-}
-
-
-void GUI::RegistrationObjects()
-{
-    ButtonT::RegisterObject();
-    SliderInt::RegisterObject();
-    PageConfirmExit::RegisterObject();
 }
 
 

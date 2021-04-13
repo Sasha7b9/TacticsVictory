@@ -4,16 +4,9 @@
 
 GUI::GUI(GUI **self) : GUIT((GUIT **)self)
 {
-    RegistrationObjects();
     Create();
 
     *self = this;
-}
-
-
-void GUI::RegistrationObjects()
-{
-    CursorT::RegisterObject();
 }
 
 

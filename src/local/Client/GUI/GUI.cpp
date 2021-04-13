@@ -13,17 +13,7 @@
 
 GUI::GUI(GUI **self) : GUIT((GUIT **)self)
 {
-    RegistrationObjects();
     Create();
-}
-
-
-void GUI::RegistrationObjects()
-{
-    ButtonT::RegisterObject();
-    Label::RegisterObject();
-    SliderInt::RegisterObject();
-    PageConfirmExit::RegisterObject();
 }
 
 

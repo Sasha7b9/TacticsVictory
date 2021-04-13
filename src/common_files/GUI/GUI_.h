@@ -12,4 +12,8 @@ public:
 
     // Возвращает true, если меню под курсором
     bool UnderCursor();
+
+private:
+
+    void RegistrationObjects();
 };

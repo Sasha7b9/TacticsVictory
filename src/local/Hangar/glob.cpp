@@ -20,6 +20,7 @@ Time            *TheTime          = nullptr;
 UI              *TheUI            = nullptr;
 UIElement       *TheUIRoot        = nullptr;
 
+CameraT         *TheCamera        = nullptr;
 Chat            *TheChat          = nullptr;
 ConsoleT        *TheConsole       = nullptr;
 CursorT         *TheCursor        = nullptr;

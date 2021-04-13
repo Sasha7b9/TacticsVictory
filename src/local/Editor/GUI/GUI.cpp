@@ -19,7 +19,6 @@
 
 GUI::GUI(GUI **self) : GUIT((GUIT **)self)
 {
-    RegistrationObjects();
     Create();
 
     *self = this;
@@ -28,23 +27,6 @@ GUI::GUI(GUI **self) : GUIT((GUIT **)self)
 
 GUI::~GUI()
 {
-}
-
-
-void GUI::RegistrationObjects()
-{
-    ButtonT::RegisterObject();
-    ButtonSwitch::RegisterObject();
-    ButtonToggled::RegisterObject();
-    WindowT::RegisterObject();
-    PageConfirmExit::RegisterObject();
-    Label::RegisterObject();
-    SliderT::RegisterObject();
-    SliderInt::RegisterObject();
-    GovernorCell::RegisterObject();
-    GovernorFloat::RegisterObject();
-    SliderWithTextAndButtons::RegisterObject();
-    DropDownListWithTextAndButton::RegisterObject();
 }
 
 

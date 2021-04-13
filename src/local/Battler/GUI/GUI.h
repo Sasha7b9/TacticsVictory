@@ -18,5 +18,4 @@ public:
 
 private:
     void Create();
-    void RegistrationObjects();
 };

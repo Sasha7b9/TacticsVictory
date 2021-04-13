@@ -9,11 +9,13 @@
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"
 #include "Network/Other/ServerConnector_.h"
+#include "Scene/Cameras/Camera.h"
 
 
 extern ConfigurationFile TheSettings;
 extern ServerConnector   TheMasterServer;
 
+extern CameraT           *TheCamera;
 extern Chat              *TheChat;
 extern ConsoleT          *TheConsole;
 extern CursorT           *TheCursor;
