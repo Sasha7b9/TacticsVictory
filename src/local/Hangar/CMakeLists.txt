@@ -84,16 +84,16 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D}
-                ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_LOGIC} ${GUI_MENU}
-                ${INPUT} ${NETWORK} ${SCENE} ${UTILS}
+file(GLOB FILES_UNITY ${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D}
+                      ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_LOGIC} ${GUI_MENU}
+                      ${INPUT} ${NETWORK} ${SCENE} ${UTILS})
+
+add_executable( ${PROJECT_NAME} 
+                ${FILES_UNITY}
                 ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
-set_target_properties(${PROJECT_NAME}                                                 PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D}
-                            ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_LOGIC} ${GUI_MENU}
-                            ${INPUT} ${NETWORK} ${SCENE} ${UTILS} 
-                                                                                      PROPERTIES UNITY_GROUP "bucket")
+set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
 
 include(../../RuntimeLibrary.cmake)
 
