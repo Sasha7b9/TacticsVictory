@@ -5,7 +5,6 @@
 #include "GUI/Logic/LineTranslator2D_.h"
 
 
-class LineTranslator2D;
 class ButtonT;
 class ButtonToggled;
 class SliderWithTextAndButtons;
