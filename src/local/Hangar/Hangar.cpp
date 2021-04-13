@@ -21,13 +21,13 @@ Hangar::Hangar(Context* context) :
 
 void Hangar::Setup()
 {
+    TheHangar = this;
+
     OpenLog();
 
     LogRAW::Create((GetTypeName() + ".log").CString(), true);
 
     LOGWRITE("Start Hangar");
-
-    TheHangar = this;
 
     GetSubsystems();
 
@@ -88,11 +88,14 @@ void Hangar::Start()
     Application::Start();
 
     SetLocalization();
+
     TheFont = TheCache->GetResource<Font>(TheSettings.GetString("menu", "font", "name"));
 
     RegistrationObjects();
 
     mouse = new Mouse(&TheMouse);
+
+    SetWindowTitleAndIcon();
 
     CreateConsoleAndDebugHud();
 
@@ -100,11 +103,12 @@ void Hangar::Start()
 
     scene = new SceneC(&TheScene);
 
+    TheScene->CreateComponent<DebugRenderer>(LOCAL);
+    TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
+
     CreateGUI();
 
     menu = new Menus(&TheMenu);
-
-    SetWindowTitleAndIcon();
 
     ParseArguments();
 
@@ -116,9 +120,9 @@ void Hangar::CreateGUI()
 {
     TheUIRoot = TheUI->GetRoot();
 
-    XMLFile *style = TheCache->GetResource<XMLFile>("UI/MainStyle.xml");
-
-    TheUIRoot->SetDefaultStyle(style);
+//    XMLFile *style = TheCache->GetResource<XMLFile>("UI/MainStyle.xml");
+//
+//    TheUIRoot->SetDefaultStyle(style);
 
     gui = new GUI(&TheGUI);
 }

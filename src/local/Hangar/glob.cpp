@@ -6,6 +6,7 @@
 Console         *TheEngineConsole = nullptr;
 Context         *TheContext       = nullptr;
 DebugHud        *TheDebugHud      = nullptr;
+DebugRenderer   *TheDebugRenderer = nullptr;
 Engine          *TheEngine        = nullptr;
 FileSelector    *TheFileSelector  = nullptr;
 FileSystem      *TheFileSystem    = nullptr;

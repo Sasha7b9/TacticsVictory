@@ -39,6 +39,8 @@ void Battler::Setup()
 {
     TheBattler = this;
 
+    OpenLog();
+
     LogRAW::Create("Battler.log", true);
 
     LOGWRITE("Start Battler");
@@ -102,10 +104,6 @@ void Battler::TuneEngineParameters()
 
 void Battler::Start()
 {
-    OpenLog();
-
-    PROFILER_FUNC_ENTER();
-
     GetSubsystems();
 
     Application::Start();
@@ -136,15 +134,11 @@ void Battler::Start()
 
     RendererT::LoadSettings();
 
-    LOGWRITE("Loading settings");
-
     menu = new Menus(&TheMenu);
 
     TheFileSelector = new FileSelector(TheContext);
     TheFileSelector->GetWindow()->SetModal(false);
     TheFileSelector->GetWindow()->SetVisible(false);
-
-    PROFILER_FUNC_LEAVE();
 }
 
 
