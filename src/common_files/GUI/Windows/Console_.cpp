@@ -244,11 +244,8 @@ ConsoleT::ConsoleT() :  WindowT(TheContext)
     */
 
     text = TheUIRoot->CreateChild<Text>();
-
-    text->SetStyle("LineEdit");
-
+    text->SetStyle("Text");
     text->SetWordwrap(true);
-
     AddChild(text);
 
     SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(ConsoleT, HandlerFinishedText));
@@ -349,6 +346,8 @@ void ConsoleT::HandlerResize(StringHash, VariantMap&)
         pos.y_ = -(heightText - height);
         text->SetPosition(pos);
     }
+
+    text->SetPosition(50, 50);
 }
 
 
