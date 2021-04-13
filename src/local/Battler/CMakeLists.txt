@@ -93,6 +93,7 @@ file(GLOB SCENE_OBJECTS_UNITS_GROUND_TANK        ../../common_files/Scene/Object
 file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Objects/Weapons/*.*)
 file(GLOB SCENE_PRIMITIVES                       ../../common_files/Scene/Primitives/*.*)
 file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*
+                                                    ../common_files/Scene/Terrain/LayerTerrainC.cpp
                                                                     Scene/Terrain/*.*)
 file(GLOB UTILS                                  ../../common_files/Utils/GlobalFunctions_.*
                                                  ../../common_files/Utils/Log_.*

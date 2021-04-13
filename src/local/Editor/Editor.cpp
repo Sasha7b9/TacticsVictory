@@ -7,7 +7,7 @@
 #include "GUI/Cursor_.h"
 #include "GUI/Menu/Menu.h"
 #include "Input/Mouse_.h"
-#include "Scene/Cameras/Camera.h"
+#include "Scene/Cameras/Camera_.h"
 
 
 #pragma warning(push)
