@@ -2,10 +2,7 @@
 #pragma once
 #include "GUI/GUI.h"
 #include "Input/Mouse_.h"
-
-
-class SceneT;
-class Menus;
+#include "GUI/Menu/Menu.h"
 
 
 class Editor : public Application
