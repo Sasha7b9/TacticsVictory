@@ -2,11 +2,11 @@
 #pragma once
 #include "GUI/Controls/DropDownListWithTextAndButton_.h"
 #include "GUI/Controls/Label_.h"
+#include "GUI/Controls/Buttons/ButtonToggled_.h"
 #include "GUI/Logic/LineTranslator2D_.h"
 
 
 class ButtonT;
-class ButtonToggled;
 class SliderWithTextAndButtons;
 
 
