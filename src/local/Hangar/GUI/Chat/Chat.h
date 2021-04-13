@@ -16,7 +16,8 @@ private:
     SharedPtr<LineEdit> line_edit;      // Здесь вводим свой текст
     SharedPtr<Text>     text;           // Здесь выводятся последние сообщения - свои и собеседников
 
-    void HandleFinishedText(StringHash, VariantMap &);
-    void HandleUnhandledKey(StringHash, VariantMap &);
-    void HandleClick(StringHash, VariantMap &);
+    void HandlerFinishedText(StringHash, VariantMap &);
+    void HandlerUnhandledKey(StringHash, VariantMap &);
+    void HandlerClick(StringHash, VariantMap &);
+    void HandlerResize(StringHash, VariantMap &);
 };

@@ -244,18 +244,18 @@ ConsoleT::ConsoleT() :  WindowT(TheContext)
     */
 
     text = TheUIRoot->CreateChild<Text>();
-    text->SetStyle("MenuPage");
+
     text->SetWordwrap(true);
     AddChild(text);
 
-    SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(ConsoleT, HandleFinishedText));
-    SubscribeToEvent(lineEdit, E_UNHANDLEDKEY, URHO3D_HANDLER(ConsoleT, HandleUnhandledKey));
-    SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(ConsoleT, HandleClick));
-    SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(ConsoleT, HandleClick));
-    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(ConsoleT, HandleResize));
+    SubscribeToEvent(lineEdit, E_TEXTFINISHED, URHO3D_HANDLER(ConsoleT, HandlerFinishedText));
+    SubscribeToEvent(lineEdit, E_UNHANDLEDKEY, URHO3D_HANDLER(ConsoleT, HandlerUnhandledKey));
+    SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(ConsoleT, HandlerClick));
+    SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(ConsoleT, HandlerClick));
+    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(ConsoleT, HandlerResize));
 
     VariantMap map;
-    HandleResize("", map);
+    HandlerResize("", map);
 }
 
 
@@ -276,7 +276,7 @@ bool ConsoleT::IsActive()
 }
 
 
-void ConsoleT::HandleFinishedText(StringHash, VariantMap&)
+void ConsoleT::HandlerFinishedText(StringHash, VariantMap&)
 {
     String command = lineEdit->GetText();
     if(command.Empty())
@@ -295,7 +295,7 @@ void ConsoleT::HandleFinishedText(StringHash, VariantMap&)
 }
 
 
-void ConsoleT::HandleUnhandledKey(StringHash, VariantMap& eventData)
+void ConsoleT::HandlerUnhandledKey(StringHash, VariantMap& eventData)
 {
     using namespace UnhandledKey;
     int key = eventData[P_KEY].GetInt();
@@ -311,13 +311,13 @@ void ConsoleT::HandleUnhandledKey(StringHash, VariantMap& eventData)
 }
 
 
-void ConsoleT::HandleClick(StringHash, VariantMap&)
+void ConsoleT::HandlerClick(StringHash, VariantMap&)
 {
     lineEdit->SetFocus(true);
 }
 
 
-void ConsoleT::HandleResize(StringHash, VariantMap&)
+void ConsoleT::HandlerResize(StringHash, VariantMap&)
 {
     lineEdit->SetSize(GetWidth() - 20, 15);
     lineEdit->SetPosition(2, GetHeight() - 15);
@@ -375,7 +375,7 @@ void ConsoleT::Write(const String &message)
     //text->SetText(text->GetText() + str);
 
     VariantMap map;
-    HandleResize("", map);
+    HandlerResize("", map);
 }
 
 

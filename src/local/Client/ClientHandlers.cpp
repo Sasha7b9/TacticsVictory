@@ -3,12 +3,12 @@
 #include "Client.h"
 
 
-void Client::HandleUpdate(StringHash, VariantMap &)
+void Client::HandlerUpdate(StringHash, VariantMap &)
 {
     TheServerConnector.Update();
 }
 
-void Client::HandlePostRenderUpdate(StringHash, VariantMap &)
+void Client::HandlerPostRenderUpdate(StringHash, VariantMap &)
 {
 
 }

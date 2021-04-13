@@ -10,46 +10,37 @@ Chat::Chat() : WindowT(TheContext)
 
     line_edit = TheUIRoot->CreateChild<LineEdit>();
     
-    bool result = line_edit->SetStyle("LineEdit");
-
-    if (!result)
-    {
-        LOGERROR("Can not set style LineEdit");
-    }
-
+    line_edit->SetStyle("LineEdit");
     AddChild(line_edit);
 
     text = TheUIRoot->CreateChild<Text>();
-    result = text->SetStyle("MenuPage");
-
-    if (!result)
-    {
-        LOGERROR("Can not set style MenuPage");
-    }
 
     text->SetWordwrap(true);
     AddChild(text);
 
-    SubscribeToEvent(line_edit, E_TEXTFINISHED, URHO3D_HANDLER(Chat, HandleFinishedText));
-    SubscribeToEvent(line_edit, E_UNHANDLEDKEY, URHO3D_HANDLER(Chat, HandleUnhandledKey));
-    SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(Chat, HandleClick));
-    SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(Chat, HandleClick));
+    SubscribeToEvent(line_edit, E_TEXTFINISHED, URHO3D_HANDLER(Chat, HandlerFinishedText));
+    SubscribeToEvent(line_edit, E_UNHANDLEDKEY, URHO3D_HANDLER(Chat, HandlerUnhandledKey));
+    SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(Chat, HandlerClick));
+    SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(Chat, HandlerClick));
+
+    VariantMap map;
+
 }
 
 
-void Chat::HandleFinishedText(StringHash, VariantMap &)
+void Chat::HandlerFinishedText(StringHash, VariantMap &)
 {
 
 }
 
 
-void Chat::HandleUnhandledKey(StringHash, VariantMap &)
+void Chat::HandlerUnhandledKey(StringHash, VariantMap &)
 {
 
 }
 
 
-void Chat::HandleClick(StringHash, VariantMap &)
+void Chat::HandlerClick(StringHash, VariantMap &)
 {
 
 }

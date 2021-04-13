@@ -101,8 +101,8 @@ private:
     History              history;
     ConsoleParser        parser;
 
-    void HandleFinishedText(StringHash, VariantMap&);
-    void HandleUnhandledKey(StringHash, VariantMap&);
-    void HandleClick(StringHash, VariantMap&);
-    void HandleResize(StringHash, VariantMap&);
+    void HandlerFinishedText(StringHash, VariantMap &);
+    void HandlerUnhandledKey(StringHash, VariantMap &);
+    void HandlerClick(StringHash, VariantMap &);
+    void HandlerResize(StringHash, VariantMap &);
 };

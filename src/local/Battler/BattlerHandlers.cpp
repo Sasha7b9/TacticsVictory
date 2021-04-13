@@ -11,7 +11,7 @@
 #include "Scene/Objects/ObjectC.h"
 
 
-void Battler::HandlePostRenderUpdate(StringHash, VariantMap&)
+void Battler::HandlerPostRenderUpdate(StringHash, VariantMap&)
 {
     if(drawDebug)
     {
@@ -30,7 +30,7 @@ void Battler::HandlePostRenderUpdate(StringHash, VariantMap&)
 }
 
 
-void Battler::HandleKeyDown(StringHash, VariantMap& eventData)
+void Battler::HandlerKeyDown(StringHash, VariantMap& eventData)
 {
     int key = eventData[KeyDown::P_KEY].GetInt();
 
@@ -95,7 +95,7 @@ void Battler::HandleKeyDown(StringHash, VariantMap& eventData)
 }
 
 
-void Battler::HandleMenuEvent(StringHash, VariantMap& eventData)
+void Battler::HandlerMenuEvent(StringHash, VariantMap& eventData)
 {
     int typeEvent = eventData[MenuEvent::P_TYPE].GetInt();
 

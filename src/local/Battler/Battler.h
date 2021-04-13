@@ -34,9 +34,9 @@ private:
     void TuneEngineParameters();
     void CreateGUI();
 
-    void HandleMenuEvent(StringHash, VariantMap &);
-    void HandlePostRenderUpdate(StringHash, VariantMap &);
-    void HandleKeyDown(StringHash, VariantMap &);
+    void HandlerMenuEvent(StringHash, VariantMap &);
+    void HandlerPostRenderUpdate(StringHash, VariantMap &);
+    void HandlerKeyDown(StringHash, VariantMap &);
 
     SharedPtr<Log>     log;
     SharedPtr<SceneC>  scene;
