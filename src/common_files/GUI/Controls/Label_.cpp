@@ -9,7 +9,7 @@ Label::Label(Context *context) :
 {
     mutator = Mutator::Empty();
 
-    SubscribeToEvent(E_CHANGELANGUAGE, URHO3D_HANDLER(Label, HandleChangeLanguage));
+    SubscribeToEvent(E_CHANGELANGUAGE, URHO3D_HANDLER(Label, HandlerChangeLanguage));
 }
 
 
@@ -65,7 +65,7 @@ void Label::SetText(pchar t)
 
     VariantMap variant;
 
-    HandleChangeLanguage("", variant);
+    HandlerChangeLanguage("", variant);
 }
 
 
