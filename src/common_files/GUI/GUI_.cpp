@@ -12,6 +12,8 @@
 
 GUIT::GUIT(GUIT **self) : Object(TheContext)
 {
+    RegistrationObjects();
+
     *self = this;
 }
 
