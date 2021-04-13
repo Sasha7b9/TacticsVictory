@@ -32,6 +32,7 @@ file(GLOB SRC          ../../common_files/*.*
                                           *.h *.cpp)
 file(GLOB FILE_SYSTEM  ../../common_files/FileSystem/ConfigurationFile_.*
                        ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB GRAPHICS     ../../common_files/Graphics/Renderer_.*)
 file(GLOB GRAPHICS_2D  ../../common_files/Graphics/2D/Image_.*)
 file(GLOB GUI          ../../common_files/GUI/Cursor_.*
                        ../../common_files/GUI/GUI_.*
@@ -70,6 +71,7 @@ file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
 
 source_group(src           FILES ${SRC})
 source_group(FileSystem    FILES ${FILE_SYSTEM})
+source_group(Graphics      FILES ${GRAPHICS})
 source_group(Graphics\\2D  FILES ${GRAPHICS_2D})
 source_group(GUI           FILES ${GUI})
 source_group(GUI\\Chat     FILES ${GUI_CHAT})
@@ -88,7 +90,7 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-file(GLOB FILES_UNITY ${SRC} ${FILE_SYSTEM} ${GRAPHICS_2D}
+file(GLOB FILES_UNITY ${SRC} ${FILE_SYSTEM} ${GRAPHICS} ${GRAPHICS_2D}
                       ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_LOGIC} ${GUI_MENU} ${GUI_WINDOWS}
                       ${INPUT} ${NETWORK} ${SCENE} ${UTILS})
 

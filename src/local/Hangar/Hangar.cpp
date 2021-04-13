@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Hangar.h"
 #include "FileSystem/ConfigurationFile_.h"
+#include "Graphics/Renderer_.h"
 #include "Graphics/2D/Image_.h"
 #include "GUI/Menu/MenuEvents_.h"
 
@@ -47,6 +48,7 @@ void Hangar::GetSubsystems()
     TheUI = GetSubsystem<UI>();
     TheTime = GetSubsystem<Time>();
     TheInput = GetSubsystem<Input>();
+    TheRenderer = GetSubsystem<Renderer>();
 }
 
 
@@ -107,6 +109,8 @@ void Hangar::Start()
     TheDebugRenderer = TheScene->GetComponent<DebugRenderer>();
 
     CreateGUI();
+
+    RendererT::LoadSettings();
 
     menu = new Menus(&TheMenu);
 
