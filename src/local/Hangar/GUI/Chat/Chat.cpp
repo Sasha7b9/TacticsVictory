@@ -6,7 +6,7 @@
 Chat::Chat() : WindowT(TheContext)
 {
     SetSize(500, 500);
-    SetResizable(false);
+    SetResizable(true);
 
     lineEdit = TheUIRoot->CreateChild<LineEdit>();
     
