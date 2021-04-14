@@ -85,15 +85,14 @@ then
     git clone https://github.com/Sasha7b9/Urho3D.git
 fi
 
-case $1 in
-"make"  ) isMake=1  ;;
+    case $1 in
+    "make"  ) isMake=1  ;;
 
-"build" ) isBuild=1 ;;
+    "build" ) isBuild=1 ;;
 
-"full"  ) isMake=1
-          isBuild=1 ;;
-
-*       ) ShowHint
+    "full"  ) isMake=1
+              isBuild=1 ;;
+       ) ShowHint
           exit      ;;
 esac
 

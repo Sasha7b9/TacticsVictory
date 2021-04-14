@@ -10,8 +10,10 @@
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 
+#ifdef WIN32
 #define _WINSOCKAPI_
 #include <windows.h>
+#endif
 
 #include <Urho3D/Math/Vector2.h>
 
