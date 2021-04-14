@@ -33,10 +33,10 @@ std::string ClientInfo::SocketAddress::ToString() const
         sin.sin_addr.S_un.S_un_b.s_b4,
         sin.sin_port);
 #else
-    sprintf_s(buffer, 100, "%d.%d.%d.%d:%d", (uint8)sin.sin_addr,
-        (uint8)(sin.sin_addr >> 8),
-        (uint8)(sin.sin_addr >> 16),
-        (uint8)(sin.sin_addr >> 24),
+    sprintf(buffer, "%d.%d.%d.%d:%d", (uint8)sin.sin_addr.s_addr,
+        (uint8)(sin.sin_addr.s_addr >> 8),
+        (uint8)(sin.sin_addr.s_addr >> 16),
+        (uint8)(sin.sin_addr.s_addr >> 24),
         sin.sin_port);
 #endif
 
