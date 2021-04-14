@@ -74,7 +74,7 @@ void FS::RemoveFile(const std::string &nameFile)
     {
         if (errno != 2)                 // Файл не существует
         {
-            LOGERROR("Can't remove file %s", nameFile.c_str());
+            LOGERRORF("Can't remove file %s", nameFile.c_str());
 
             DISPLAY_LAST_ERROR();
         }
@@ -128,7 +128,7 @@ bool FS::File::Open(pchar _name, pchar file, int line, ModeAccess::E mode)
 
     if (fileDesc == -1)
     {
-        LOGERROR("Can't open file \"%s\"", name.c_str());
+        LOGERRORF("Can't open file \"%s\"", name.c_str());
 
         DISPLAY_LAST_ERROR();
 
@@ -205,7 +205,7 @@ bool FS::File::Create(pchar _name, ModeAccess::E mode)
 
     if (fileDesc < 0)
     {
-        LOGERROR("Can't open file \"%s\"", name);
+        LOGERRORF("Can't open file \"%s\"", name);
 
         DISPLAY_LAST_ERROR();
 
@@ -237,7 +237,7 @@ void FS::File::Write(const void *buffer, int numBytes)
 
     if (write(fileDesc, buffer, numBytes) != numBytes)
     {
-        LOGERROR("Can't write to file %s", name.c_str());
+        LOGERRORF("Can't write to file %s", name.c_str());
 
         DISPLAY_LAST_ERROR();
     }
@@ -272,7 +272,7 @@ void FS::File::Read(void *buffer, size_t numBytes)
 
     if (read(fileDesc, buffer, numBytes) != (ssize_t)numBytes)
     {
-        LOGERROR("Can't read from file %s %d bytes", name.c_str(), numBytes);
+        LOGERRORF("Can't read from file %s %d bytes", name.c_str(), numBytes);
 
         DISPLAY_LAST_ERROR();
     }
