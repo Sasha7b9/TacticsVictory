@@ -115,7 +115,7 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 file(GLOB FILES_UNITY ${SRC} ${CORE} ${FILE_SYSTEM} ${GAME_LOGIC} ${GAME_PATH}
-                      ${NETWORK_MESSAGES} ${NETWORK_OTHER}
+                      ${NETWORK} ${NETWORK_MESSAGES} ${NETWORK_OTHER}
                       ${SCENE} ${SCENE_OBJECTS}
                       ${SCENE_OBJECTS_AMMO} ${SCENE_OBJECTS_AMMO_ROCKET}
                       ${SCENE_OBJECTS_BUILDINGS}
@@ -124,13 +124,11 @@ file(GLOB FILES_UNITY ${SRC} ${CORE} ${FILE_SYSTEM} ${GAME_LOGIC} ${GAME_PATH}
                       ${SCENE_OBJECTS_UNITS_AIR} ${SCENE_OBJECTS_UNITS_AIR_AIRPLANE}
                       ${SCENE_OBJECTS_UNITS_GROUND} ${SCENE_OBJECTS_UNITS_GROUND_TANK}
                       ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS} ${SOCKPP} )
-file(GLOB FILES_UNITY2 ${NETWORK})
 
-add_executable(${PROJECT_NAME} ${FILES_UNITY} ${FILES_UNITY2} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+add_executable(${PROJECT_NAME} ${FILES_UNITY} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
-set_source_files_properties(${FILES_UNITY2} PROPERTIES UNITY_GROUP "bucket2")
 
 include(../../RuntimeLibrary.cmake)
 
