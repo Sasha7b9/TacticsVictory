@@ -10,6 +10,7 @@
 #include "GUI/Windows/WindowVariables_.h"
 #include "Network/Other/ServerConnector_.h"
 #include "Scene/Cameras/Camera_.h"
+#include "Scene/Terrain/Terrain_.h"
 
 
 extern ConfigurationFile TheSettings;
@@ -24,4 +25,6 @@ extern Hangar            *TheHangar;
 extern Hint              *TheHint;
 extern Menus             *TheMenu;
 extern Mouse             *TheMouse;
+extern SceneC            *TheScene;
+extern TerrainT          *TheTerrain;
 extern WindowVariables   *TheWindowVars;

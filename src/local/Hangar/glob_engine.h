@@ -17,7 +17,6 @@ extern Input         *TheInput;
 extern Localization  *TheLocalization;
 extern Renderer      *TheRenderer;
 extern ResourceCache *TheCache;
-extern SceneC        *TheScene;
 extern Time          *TheTime;
 extern UI            *TheUI;
 extern UIElement     *TheUIRoot;

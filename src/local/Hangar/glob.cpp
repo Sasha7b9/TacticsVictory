@@ -31,6 +31,7 @@ Hint            *TheHint          = nullptr;
 Menus           *TheMenu          = nullptr;
 Mouse           *TheMouse         = nullptr;
 SceneC          *TheScene         = nullptr;
+TerrainT        *TheTerrain       = nullptr;
 WindowVariables *TheWindowVars    = nullptr;
 
 ConfigurationFile TheSettings;
