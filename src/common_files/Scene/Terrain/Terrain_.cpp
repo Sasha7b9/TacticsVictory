@@ -178,11 +178,11 @@ Vector<Vector<float>> TerrainT::GetHeightMap()
 
 PODVector<CubeTerrain*>* TerrainT::GetColumnCubes(const CubeTerrain *cube, DIR::E dir)
 {
-    const int dRow[8] = { 0, -1, -1, -1, 0, 1, 1,  1};
-    const int dCol[8] = {-1, -1,  0,  1, 1, 1, 0, -1};
+    const int d_row[8] = { 0, -1, -1, -1, 0, 1, 1,  1};
+    const int d_col[8] = {-1, -1,  0,  1, 1, 1, 0, -1};
 
-    uint row = (uint)((int)cube->row + dRow[dir]);
-    uint col = (uint)((int)cube->col + dCol[dir]);
+    uint row = (uint)((int)cube->row + d_row[dir]);
+    uint col = (uint)((int)cube->col + d_col[dir]);
 
     if(row > HeightX() - 1 || col > WidthZ() - 1)
     {

@@ -1,8 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-
-
-class ConnectionT;
+#include "Network/Game/Connection_.h"
 
 
 namespace Message
