@@ -8,17 +8,11 @@
 #pragma GCC diagnostic ignored "-Wclass-memaccess"
 #endif
 
-#ifndef WIN32
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wclass-memaccess"
-#endif
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
-#ifndef WIN32
-#pragma GCC diagnostic pop
-#endif
+
 
 #ifdef WIN32
 #define _WINSOCKAPI_
