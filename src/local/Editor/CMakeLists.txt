@@ -112,13 +112,18 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${CORE} ${FILE_SYSTEM} ${GRAPHICS} ${GRAPHICS_2D}
+file(GLOB FILES_UNITY ${SRC} ${CORE} ${FILE_SYSTEM} ${GRAPHICS} ${GRAPHICS_2D}
                 ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS} ${GUI_CONTROLS_SLIDERS}
                 ${GUI_LOGIC}
                 ${GUI_MENU} ${GUI_MENU_MENUSTART} ${GUI_MENU_MENUSTART_MENUPLAY} ${GUI_WINDOWS}
                 ${INPUT} ${NETWORK} ${UTILS}
                 ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN}
-                ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+                ${SOCKPP})
+
+add_executable( ${PROJECT_NAME} ${FILES_UNITY} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+
+set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
 
 include(../../RuntimeLibrary.cmake)
 
