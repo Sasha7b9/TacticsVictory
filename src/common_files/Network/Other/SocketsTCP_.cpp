@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Network/Other/SocketsTCP_.h"
 #include "Utils/StringUtils_.h"
+#include <sstream>
 
 
 static sockpp::socket_initializer sockInit;
@@ -15,7 +16,7 @@ ConnectorTCP::~ConnectorTCP()
 
 bool ConnectorTCP::Connect(const std::string &host, uint16 port)
 {
-    static int counter = 0;
+//    static int counter = 0;
 
     if (!connection)
     {
@@ -94,7 +95,11 @@ ssize_t ConnectorTCP::Receive(void *data, uint size)
 {
     fd_set set = { 1, { connection->handle() } };
 
+#ifdef WIN32
     TIMEVAL time = { 0, 1000 };
+#else
+    struct timeval time = { 1, 0 };
+#endif
 
     int ready = ::select(0, &set, 0, 0, &time);
 

@@ -4,6 +4,7 @@
 #include "Network/Other/ServerConnector_.h"
 #include "Utils/GlobalFunctions_.h"
 #include <limits>
+#include <thread>
 
 
 static void ThreadConnect(ConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
@@ -116,7 +117,7 @@ uint ServerConnector::SendRequest(pchar request, pchar _data)
 
 void ServerConnector::Update()
 {
-    static int ping = 999;
+//    static int ping = 999;
 
     ReceiveData();
 
@@ -256,7 +257,7 @@ void ServerConnector::ExecuteTasks()
 {
     int64 now = GF::Timer::TimeMS();
 
-    for each (TaskMasterServer * task in all_tasks)
+    for (TaskMasterServer * task : all_tasks)
     {
         if (now >= task->prev_time + task->delta_time)
         {
