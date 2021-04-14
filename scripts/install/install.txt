@@ -1,0 +1,58 @@
+*** Установка на удалённый сервер (Ubuntu 20.04 LTS) ***
+
+-  Настройки сети:
+    
+    # /etc/netplan/01-netcfg.yaml
+    # /etc/netplan/00-installer-config.yaml
+    
+    network:
+      ethernets:
+        ens3:
+          addresses: [ 62.109.6.164/32 ]
+          gateway4: 255.255.255.255
+          routes:
+            - to: 0.0.0.0/0
+              via: 10.0.0.1
+              on-link: true
+          nameservers:
+            addresses: [ 8.8.4.4, 8.8.8.8 ]
+    version: 2
+    renderer: networkd
+    
+    Для применения изменений : netplan apply
+      
+    # /etc/network/interfaces
+    
+    auto lo
+    iface lo inet loopback
+    
+    auto ens3
+    allow-hotplug ens3
+    iface ens3 inet static
+            address 62.109.6.164
+            netmask 255.255.255.255
+            gateway 10.0.0.1
+            pointtopoint 10.0.0.1
+            dns-nameservers 188.120.247.2 188.120.247.8 82.146.59.250
+            dns-search fvds.ru
+            
+    Для применения измений : перезагрузить систему
+    
+-  Раскрасить консоль:
+    sudo nano ~/.bashrc
+    В конце файла дописать строку PS1="\e[1;93m\u@\h \W$ \e[m "
+    Сохранить файл и выполнить команду source ~/.bashrc
+    Посмотреть на чужой системе можно echo $PS1
+
+-  sudo ./install_soft.sh
+-  sudo ./tune_ports.sh
+    
+- Склонировать репозиторий в домашний каталог :
+    зайти в домашний каталог
+    git clone https://github.com/Sasha7b9/PiEngine2.git
+    
+- Запустить скрипт :
+    ./install_tankist.sh | tee out.txt - с записью лога в файл
+    ./install_tankist.sh               - без записи лога в файл
+
+https://qastack.ru/superuser/408990/how-do-i-log-out-of-sudo-su
