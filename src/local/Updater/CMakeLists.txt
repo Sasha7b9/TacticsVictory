@@ -48,8 +48,12 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable( ${PROJECT_NAME} ${SRC} ${FILESYSTEM} ${NETWORK_OTHER} ${UTILS}
-                ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+file(GLOB FILES_UNITY ${SRC} ${FILESYSTEM} ${NETWORK_OTHER} ${UTILS} ${SOCKPP})
+
+add_executable( ${PROJECT_NAME} ${FILES_UNITY} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+
+set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
 
 include(../../CopyToDirEXE.cmake)
 include(../../SetWorkingDirectory.cmake)
