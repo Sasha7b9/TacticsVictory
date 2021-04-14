@@ -12,9 +12,6 @@ add_definitions(-DURHO3D_STATIC_DEFINE)
 
 if(WIN32)
 
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
-    set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
-
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
 
     add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed

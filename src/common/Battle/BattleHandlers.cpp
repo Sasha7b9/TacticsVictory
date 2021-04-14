@@ -1,6 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Battle.h"
+#include "Network/ServerS.h"
 #include "Network/Game/Messages/GameMessages_.h"
 #include "Scene/Scene_.h"
 

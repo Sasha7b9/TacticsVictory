@@ -4,6 +4,7 @@
 #include "Scene/Objects/Object_.h"
 #include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
+#include "Scene/Terrain/Terrain_.h"
 
 
 Vector<ObjectT *> ObjectT::storage;
