@@ -3,6 +3,9 @@
 
 #ifdef WIN32
 #pragma warning(push, 0)
+#else
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wclass-memaccess"
 #endif
 
 #ifndef WIN32
@@ -89,6 +92,8 @@ using namespace Urho3D;
 
 #ifdef WIN32
 #pragma warning(pop)
+#else
+#pragma GCC diagnostic pop
 #endif
 
 #include "defines.h"
