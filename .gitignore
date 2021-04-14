@@ -10,6 +10,7 @@ archive.zip
 
 generated/*
 out/debug/*.dll
-out/debug/BattleTV
+out/debug/Battle
+out/debug/Master
 out/release/*
 src/ThirdParty/libevent/build/*
