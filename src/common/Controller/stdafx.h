@@ -1,7 +1,9 @@
 // 2021/04/02 17:15:01 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
+#ifdef WIN32
 #pragma warning(push, 0)
+#endif
 
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
@@ -25,8 +27,9 @@ using namespace Urho3D;
 #include <sockpp/tcp_acceptor.h>
 #include <sockpp/tcp_connector.h>
 
-
+#ifdef WIN32
 #pragma warning(pop)
+#endif
 
 #include "defines.h"
 #include "globals.h"
