@@ -345,7 +345,7 @@ void FS::CreateDirectory(std::string &path)
 
 #else
 
-    
+
 
 #endif
 }
@@ -363,7 +363,7 @@ namespace FS
     File &operator<< (File &out, uint64 value)
     {
         char buffer[30];
-        sprintf_s(buffer, 30, "%llu", value);
+        sprintf(buffer, "%llu", value);
         out.Write(buffer, SU::Length(buffer));
         return out;
     }
