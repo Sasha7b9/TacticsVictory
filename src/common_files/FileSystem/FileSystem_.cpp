@@ -21,6 +21,7 @@ char FS::delimiter = '\\';
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 char FS::delimiter = '/';
 
