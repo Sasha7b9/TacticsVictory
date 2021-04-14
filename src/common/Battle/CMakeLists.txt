@@ -30,13 +30,12 @@ if(WIN32)
 
     add_compile_options(/wd26812)
     add_compile_options(/wd28251)
+
 else()
+
     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -lGL -lGLX -lX11 -lGLdispatch")
     SET(LDFLAGS "${LDFLAGS} -ldl")
-    add_definitions(-Wno-unused-function # 'xxx' defined but not used
-#                    -Wno-class-memaccess # 'function' writing to an object of type 'struct xxx' with no trivial
-                                         # copy-assignment
-    )
+
 endif()
 
 file(GLOB SRC                                    ../../common_files/*.*

@@ -6,6 +6,7 @@
 #else
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wclass-memaccess"
+#pragma GCC diagnostic ignored "-Wunused-function"
 #endif
 
 #include <rapidjson/rapidjson.h>
