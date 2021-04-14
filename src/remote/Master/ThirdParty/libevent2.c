@@ -7,8 +7,10 @@
 
 #ifdef WIN32
 #include "../../ThirdParty/libevent/wepoll.c"
+#include "../../ThirdParty/libevent/win32select.c"
 #else
 #include "../../ThirdParty/libevent/poll.c"
+#include "../../ThirdParty/libevent/select.c"
 #endif
 
 #include "../../ThirdParty/libevent/bufferevent_pair.c"

@@ -7,23 +7,15 @@
 
 #ifdef WIN32
 #include "../../ThirdParty/libevent/bufferevent_async.c"
+#include "../../ThirdParty/libevent/buffer_iocp.c"
+#include "../../ThirdParty/libevent/event_iocp.c"
 #endif
 
 #include "../../ThirdParty/libevent/buffer.c"
-
-#ifdef WIN32
-#include "../../ThirdParty/libevent/buffer_iocp.c"
-#endif
-
 #include "../../ThirdParty/libevent/bufferevent.c"
 #include "../../ThirdParty/libevent/bufferevent_ratelim.c"
 #include "../../ThirdParty/libevent/bufferevent_sock.c"
 #include "../../ThirdParty/libevent/epoll.c"
-
-#ifdef WIN32
-#include "../../ThirdParty/libevent/event_iocp.c"
-#endif
-
 #include "../../ThirdParty/libevent/evmap.c"
 #include "../../ThirdParty/libevent/evthread.c"
 #include "../../ThirdParty/libevent/evutil.c"
@@ -33,12 +25,6 @@
 #include "../../ThirdParty/libevent/log.c"
 #include "../../ThirdParty/libevent/signal.c"
 #include "../../ThirdParty/libevent/strlcpy.c"
-
-#ifdef WIN32
-#include "../../ThirdParty/libevent/win32select.c"
-#else
-#include "../../ThirdParty/libevent/select.c"
-#endif
 
 #ifdef WIN32
 #pragma warning(pop)
