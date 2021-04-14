@@ -8,9 +8,6 @@ include_directories(.
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
-set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
-
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
 
 add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed
