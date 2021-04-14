@@ -33,11 +33,6 @@ if(WIN32)
                                     # implies that compiler generated copy/move constructors and copy/move assignment
                                     # operators are not trivial
 
-else()
-
-   add_definitions(-Wno-cpp
-   )
-
 endif()
 
 file(GLOB SRC         ../../common_files/defines_.h
