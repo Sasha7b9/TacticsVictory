@@ -1,6 +1,5 @@
 // 2021/03/03 21:07:15 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Network/ServerS.h"
 #include "Network/Game/Messages/GameMessages_.h"
 #include "Scene/SceneS.h"
 #include "Scene/Objects/Object_.h"

@@ -1,5 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Network/ServerS.h"
+#include "Scene/SceneS.h"
 
 
 class Battle : public Application

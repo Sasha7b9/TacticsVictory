@@ -1,12 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Network/Game/Connection_.h"
-
-
-namespace Message
-{
-    struct Message;
-}
+#include "Network/Game/Messages/GameMessages_.h"
 
 
 class ServerS : public Object
