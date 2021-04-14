@@ -105,13 +105,14 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 file(GLOB FILES_UNITY ${SRC} ${CORE} ${FILE_SYSTEM} ${GRAPHICS} ${GRAPHICS_2D}
-                      ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_LOGIC} ${GUI_MENU} ${GUI_WINDOWS}
-                      ${INPUT} ${NETWORK}
-                      ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS})
+    ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_LOGIC} ${GUI_MENU} ${GUI_WINDOWS}
+    ${INPUT} ${NETWORK}
+    ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN}
+    ${UTILS} ${SOCKPP})
 
 add_executable( ${PROJECT_NAME} 
                 ${FILES_UNITY}
-                ${SOCKPP} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+                ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
