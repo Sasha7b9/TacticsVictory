@@ -146,6 +146,7 @@ void PanelMap::Update(float dT)
         y0 = 0;
     }
 
+#undef DRAW_LINE
 #define DRAW_LINE(p0, p1)                                                   \
     image->DrawLine((int)(x0 + p0.x_ * scale), (int)(y0 - p0.y_ * scale),   \
                     (int)(x0 + p1.x_ * scale), (int)(y0 - p1.y_ * scale), Color::BLUE);

@@ -9,10 +9,6 @@ include_directories(.
 
 add_definitions(-DURHO3D_LOGGING -DLOG_U3D -DU3D -DGRAPHICS)
 
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
-set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
-
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS  /STACK:100000000")
 
 add_compile_options(/wd4625)    # 'derived class' : copy constructor was implicitly defined as deleted because a
@@ -144,7 +140,8 @@ source_group(Scene\\Primitives                          FILES ${SCENE_PRIMITIVES
 source_group(Scene\\Terrain                             FILES ${SCENE_TERRAIN})
 source_group(Utils                                      FILES ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${FILESYSTEM} ${GAME} ${GAME_LOGIC} ${GAME_PATH}
+
+file(GLOB FILES_UNITY ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${FILESYSTEM} ${GAME} ${GAME_LOGIC} ${GAME_PATH}
     ${GRAPHICS} ${GRAPHICS_2D} ${GRAPHICS_3D}
     ${GRAPHICS_OBJECTS} ${GUI} ${GUI_CONTROLS} ${GUI_CONTROLS_BUTTONS} ${GUI_CONTROLS_SLIDERS} ${GUI_GUIEDITOR}
     ${GUI_GAME} ${GUI_LOGIC}
@@ -156,6 +153,11 @@ add_executable( ${PROJECT_NAME} ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${FILESYSTEM} 
     ${SCENE_OBJECTS_UNITS_AIR} ${SCENE_OBJECTS_UNITS_AIR_AIRPLANE}
     ${SCENE_OBJECTS_UNITS_GROUND} ${SCENE_OBJECTS_UNITS_GROUND_TANK}
     ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS})
+
+add_executable( ${PROJECT_NAME} ${FILES_UNITY})
+
+set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
 
 include(../../RuntimeLibrary.cmake)
 
