@@ -3,7 +3,7 @@
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/ServerConnector_.h"
 #include "Utils/GlobalFunctions_.h"
-#include <limits>
+#include <climits>
 #include <thread>
 
 
@@ -293,7 +293,7 @@ bool ServerConnector::ExistConnection()
         return true;
     }
 
-    for each (auto &it in active_tasks)
+    for (auto &it : active_tasks)
     {
         TaskMasterServer *task = it.second;
 

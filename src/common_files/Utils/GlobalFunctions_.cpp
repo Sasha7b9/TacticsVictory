@@ -1,7 +1,7 @@
 // 2021/04/08 22:06:43 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Utils/GlobalFunctions_.h"
-
+#include <thread>
 
 
 static std::chrono::system_clock::time_point time_start;
