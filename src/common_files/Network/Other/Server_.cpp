@@ -75,12 +75,20 @@ void Server::Run(uint16 port)
     }
 #endif
 
+#ifdef WIN32
     if (bind((SOCKET)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+#else
+    if (bind((int)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+#endif
     {
         LOGERROR("Can not bind to port");
     }
 
+#ifdef WIN32
     if (listen((SOCKET)listener, 100) < 0)
+#else
+    if (listen((int)listener, 100) < 0)
+#endif
     {
         LOGERROR("Can not call listen()");
     }
@@ -106,7 +114,11 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
     struct sockaddr_storage ss;
     socklen_t slen = sizeof(ss);
 
+#ifdef WIN32
     int fd = (int)accept((SOCKET)listener, (struct sockaddr *)&ss, &slen);
+#else
+    int fd = (int)accept((int)listener, (struct sockaddr *)&ss, &slen);
+#endif
 
     if (fd < 0)
     {

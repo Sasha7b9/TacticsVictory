@@ -26,7 +26,7 @@ static void HandleInfoLivingRoms(uint id, ClientInfo &info)
 
     std::stringstream stream(result);
 
-    for each (auto &pair in TheServer.clients)
+    for (auto &pair : TheServer.clients)
     {
         const ClientInfo &ci = pair.second;
 
