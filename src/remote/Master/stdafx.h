@@ -17,9 +17,16 @@
 #include <vector>
 
 #undef Bool
+#ifndef WIN32
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wclass-memaccess"
+#endif
 #include <rapidjson/document.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
+#ifndef WIN32
+#pragma GCC diagnostic pop
+#endif
 
 #include <event2/bufferevent.h>
 #include <event2/buffer.h>
