@@ -3,7 +3,7 @@
 #include "GUI/Windows/Chat.h"
 
 
-Chat::Chat() : WindowT()
+Chat::Chat() : WindowT("Chat")
 {
     SetSize(500, 500);
     SetResizable(true);
@@ -61,7 +61,7 @@ void Chat::CallbackOnResize()
     lineEdit->SetPosition(2, GetHeight() - 15);
 
     text->SetFixedSize(GetWidth(), GetHeight() - 20);
-    text->SetPosition(2, 0);
+    text->SetPosition(2, 15);
 
     // Теперь ограничим количество строк
     static const uint MAX_STRINGS = 100;

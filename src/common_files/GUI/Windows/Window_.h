@@ -8,9 +8,11 @@ class WindowT : public Control
 
 public:
 
-    WindowT();
+    WindowT(pchar title);
 
 protected:
+
+    SharedPtr<Label> title;
 
     void HandlerResize(StringHash, VariantMap &);
 

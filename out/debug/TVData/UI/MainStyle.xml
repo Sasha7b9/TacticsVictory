@@ -156,7 +156,7 @@
         <attribute name="Font" value="Font;Fonts/tech.fnt" />
         <attribute name="Border" value="4 4 4 4" />
         <attribute name="Image Rect" value="48 0 64 16" />
-        <attribute name="Color" value="0.8 0.8 0.8" />
+        <attribute name="Color" value="1 1 1 1" />
     </element>
     <element type="DropDownList" style="BorderImage">
         <attribute name="Image Rect" value="16 0 32 16" />

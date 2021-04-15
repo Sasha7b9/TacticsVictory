@@ -3,8 +3,13 @@
 #include "GUI/Windows/Window_.h"
 
 
-WindowT::WindowT() : Control(TheContext)
+WindowT::WindowT(pchar _title) : Control(TheContext)
 {
+    title = Label::Create(_title, 20, 120, -1);
+    title->SetAlignment(HA_LEFT, VA_TOP);
+    title->SetTemporary(HA_LEFT);
+    AddChild(title);
+
     SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(WindowT, HandlerResize));
 }
 
