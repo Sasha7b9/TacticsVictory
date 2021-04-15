@@ -33,6 +33,7 @@ if(WIN32)
 
 else()
 
+    add_definitions(-ffast-math)
     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -lGL -lGLX -lX11 -lGLdispatch")
     SET(LDFLAGS "${LDFLAGS} -ldl")
 
