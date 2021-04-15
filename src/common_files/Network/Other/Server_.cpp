@@ -83,6 +83,10 @@ void Server::Run(uint16 port)
     {
         LOGERROR("Can not bind to port");
     }
+    else
+    {
+        LOGWRITEF("Bind to port %d is Ok! Wait connections ...", sin.sin_port);
+    }
 
 #ifdef WIN32
     if (listen((SOCKET)listener, 100) < 0)
