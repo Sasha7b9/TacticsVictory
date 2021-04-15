@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Utils/StringUtils_.h"
+#include <sstream>
 
 
 char *SU::Strcat(char *dest, pchar source)
