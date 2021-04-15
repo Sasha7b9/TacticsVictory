@@ -97,16 +97,14 @@ add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS}
 set_target_properties(${PROJECT_NAME}                                 PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} PROPERTIES UNITY_GROUP "bucket")
 
-include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
-                                         # выполнени€ релизной версии
-
 if(WIN32)
+
+    include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
+                                             # выполнени€ релизной версии
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
-endif()
-
-if(WIN32)
     target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt)
+
 endif()
 
 include(../../Install.cmake)
