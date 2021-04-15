@@ -14,7 +14,7 @@
     SubscribeToEvent(E_MENU, URHO3D_HANDLER(Menus, HandleMenuEvent));
 
 
-Menus::Menus(Menus **self) : Object(TheContext)
+Menus::Menus(Menus **self) : MenuT((MenuT **)self)
 {
     CREATE_PAGE(pageStart,   PageStart, false);
 
@@ -70,12 +70,6 @@ void Menus::Hide()
 }
 
 
-bool Menus::IsActive()
-{
-    return ActiveMenu() != nullptr;
-}
-
-
 bool Menus::ProcessingKey(int key)
 {
     MenuPage *active = ActiveMenu();
@@ -93,18 +87,4 @@ bool Menus::ProcessingKey(int key)
     }
 
     return active != nullptr;
-}
-
-
-MenuPage* Menus::ActiveMenu()
-{
-    for(MenuPage *window : allMenus)
-    {
-        if(window->GetParent())
-        {
-            return window;
-        }
-    }
-
-    return nullptr;
 }

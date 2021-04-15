@@ -1,5 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "GUI/Menu/Menu_.h"
 
 
 class PagePlay;
@@ -7,9 +8,9 @@ class PageStart;
 class MenuPage;
 
 
-class Menus : public Object
+class Menus : public MenuT
 {
-    URHO3D_OBJECT(Menus, Object);
+    URHO3D_OBJECT(Menus, MenuT);
 
 public:
 
@@ -21,10 +22,7 @@ public:
 
 private:
 
-    PODVector<MenuPage *> allMenus;       // Здесь список всех меню
     SharedPtr<PageStart>  pageStart;
-
-    MenuPage* ActiveMenu();
 
     void Open(MenuPage* page, MenuPage *prev);    // Открыть меню menu, при этом его хранителем указать prev
     void CloseAll();

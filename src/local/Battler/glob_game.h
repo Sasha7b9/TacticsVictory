@@ -12,6 +12,8 @@
 #include "GUI/Windows/WindowVariables_.h"
 #include "Scene/Cameras/Camera_.h"
 
+class Menus;
+
 extern ConfigurationFile  TheSettings;
 
 extern Battler           *TheBattler;

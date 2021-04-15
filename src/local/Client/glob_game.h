@@ -1,10 +1,10 @@
 // 2021/04/02 17:53:43 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "GUI/Cursor_.h"
+#include "Scene/Cameras/Camera_.h"
 #include "Scene/Terrain/Terrain_.h"
 
 
-class CameraT;
 class Client;
 class ConfigurationFile;
 class ConsoleT;
