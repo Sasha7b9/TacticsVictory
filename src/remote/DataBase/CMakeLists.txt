@@ -6,12 +6,14 @@ include_directories(.
                     ../../common_files
                     ../../ThirdParty/sockpp/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
-                    ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
+                    ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty
+                    ../../../../Urho3D/Source/ThirdParty)
 
 add_definitions(-DURHO3D_STATIC_DEFINE)
 
 if(WIN32)
 
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHs")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
 
     add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed
