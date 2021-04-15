@@ -1,5 +1,5 @@
 echo off
-set address=127.0.0.1
+set address=82.146.54.49
 echo on
 Updater.exe %address%
 start Client.exe %address%
