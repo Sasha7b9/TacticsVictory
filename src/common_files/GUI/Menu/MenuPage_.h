@@ -3,9 +3,9 @@
 #include "GUI/Controls/Window_.h"
 
 
-class MenuPage : public WindowT
+class MenuPage : public Control
 {
-    URHO3D_OBJECT(MenuPage, WindowT)
+    URHO3D_OBJECT(MenuPage, Control)
 
 public:
     MenuPage();

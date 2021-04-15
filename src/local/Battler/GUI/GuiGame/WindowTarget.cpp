@@ -4,7 +4,7 @@
 
 
 WindowTarget::WindowTarget() :
-    WindowT(TheContext)
+    Control(TheContext)
 {
     SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowNoBorder");

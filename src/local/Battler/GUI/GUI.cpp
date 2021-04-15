@@ -194,7 +194,7 @@ bool GUI::GheckOnDeadZoneForCursorBottomScreen(int x)
 }
 
 
-void GUI::SetVisibleWindow(WindowT *window, bool visible)
+void GUI::SetVisibleControl(Control *window, bool visible)
 {
     window->SetVisible(visible);
     if(visible)
@@ -218,7 +218,7 @@ void GUI::SetUnvisibleAllWindows()
 {
     while(!TheOpenedWindow.Empty())
     {
-        WindowT *window = TheOpenedWindow.Back();
+        Control *window = TheOpenedWindow.Back();
         window->SetVisible(false);
         TheOpenedWindow.Remove(window);
     }

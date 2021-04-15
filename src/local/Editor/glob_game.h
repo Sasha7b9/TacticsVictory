@@ -27,4 +27,4 @@ extern Mouse           *TheMouse;
 extern TerrainT        *TheTerrain;
 extern WindowVariables *TheWindowVars;
 
-extern Vector<WindowT *> TheOpenedWindow;
+extern Vector<Control *> TheOpenedWindow;

@@ -235,7 +235,7 @@ bool GuiEditor::IsInside(const IntVector2 &position)
 void GuiEditor::CreateWindows()
 {
     // window new map
-    windowNewMap = new WindowT(TheContext);
+    windowNewMap = new Control(TheContext);
     windowNewMap->SetLayout(LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
 
     windowNewMap->AddLabel("CreateNewMap");
@@ -252,7 +252,7 @@ void GuiEditor::CreateWindows()
     windowNewMap->SetVisible(false);
 
     // window menu
-    windowMenu = new WindowT(TheContext);
+    windowMenu = new Control(TheContext);
     windowMenu->SetLayout(LM_VERTICAL, 0, IntRect(0, 0, 0, 0));
 
     SharedPtr<ButtonT> buttonOptions = windowMenu->AddButton("Options");
@@ -266,7 +266,7 @@ void GuiEditor::CreateWindows()
     windowMenu->SetVisible(false);
 
     // window confirm exit
-    windowConfirmExit = new WindowT(TheContext);
+    windowConfirmExit = new Control(TheContext);
     windowConfirmExit->SetLayout(LM_VERTICAL, 0, IntRect(6, 6, 6, 6));
 
     SharedPtr<Label> label(Label::Create("Exit in main menu?"));
@@ -344,7 +344,7 @@ void GuiEditor::HandleKeyDown(StringHash, VariantMap& eventData)
     {
         if(!TheOpenedWindow.Empty())
         {
-            WindowT *window = TheOpenedWindow.Back();
+            Control *window = TheOpenedWindow.Back();
             window->SetVisible(false);
             TheOpenedWindow.Remove(window);
         }
@@ -430,7 +430,7 @@ void GuiEditor::HandleFileSelectorSaveTerrain(StringHash, VariantMap& eventData)
 
 void GuiEditor::HandleExit(StringHash, VariantMap&)
 {
-    TheGUI->SetVisibleWindow(windowConfirmExit, true);
+    TheGUI->SetVisibleControl(windowConfirmExit, true);
 }
 
 
@@ -439,13 +439,13 @@ void GuiEditor::HandleExitOk(StringHash, VariantMap&)
     TheGuiEditor->SetVisible(false);
     TheCamera->SetEnabled(false);
     TheEditor->ClearScene();
-    TheGUI->SetVisibleWindow(windowConfirmExit, false);
+    TheGUI->SetVisibleControl(windowConfirmExit, false);
 }
 
 
 void GuiEditor::HandleExitCancel(StringHash, VariantMap&)
 {
-    TheGUI->SetVisibleWindow(windowConfirmExit, false);
+    TheGUI->SetVisibleControl(windowConfirmExit, false);
 }
 
 

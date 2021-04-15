@@ -83,9 +83,9 @@ private:
 
 
 
-class ConsoleT : public WindowT
+class ConsoleT : public Control
 {
-    URHO3D_OBJECT(ConsoleT, WindowT);
+    URHO3D_OBJECT(ConsoleT, Control);
 
 public:
     ConsoleT();

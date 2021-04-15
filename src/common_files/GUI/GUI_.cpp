@@ -24,7 +24,7 @@ void GUIT::RegistrationObjects()
     ButtonSwitch::RegisterObject();
     ButtonToggled::RegisterObject();
     CursorT::RegisterObject();
-    WindowT::RegisterObject();
+    Control::RegisterObject();
     PageConfirmExit::RegisterObject();
     Label::RegisterObject();
     SliderT::RegisterObject();

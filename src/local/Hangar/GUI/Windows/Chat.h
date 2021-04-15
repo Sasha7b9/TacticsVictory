@@ -3,9 +3,9 @@
 #include "GUI/Controls/Window_.h"
 
 
-class Chat : public WindowT
+class Chat : public Control
 {
-    URHO3D_OBJECT(Chat, WindowT);
+    URHO3D_OBJECT(Chat, Control);
 
 public:
 

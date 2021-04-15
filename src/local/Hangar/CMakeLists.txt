@@ -58,7 +58,8 @@ file(GLOB GUI_MENU         ../../common_files/GUI/Menu/Menu_.*
                            ../../common_files/GUI/Menu/MenuPage_.*
                                               GUI/Menu/*.*)
 file(GLOB GUI_WINDOWS      ../../common_files/GUI/Windows/Console_.*
-                           ../../common_files/GUI/Windows/ConsoleParserFunctions_.*)
+                           ../../common_files/GUI/Windows/ConsoleParserFunctions_.*
+                                              GUI/Windows/Chat.*)
 file(GLOB INPUT            ../../common_files/Input/Mouse_.*
                                               Input/Mouse.cpp)
 file(GLOB NETWORK          ../../common_files/Network/Other/MasterServer_.*

@@ -5,7 +5,7 @@
 
 
 PanelBottom::PanelBottom(Context *context) :
-    WindowT(context)
+    Control(context)
 {
     SetName("PanelBottom");
     SetFixedSize(TheSettings.GetInt("screen", "width"), TheSettings.GetInt("panel", "bottom", "height"));
@@ -19,5 +19,5 @@ void PanelBottom::RegisterObject()
 
     context->RegisterFactory<PanelBottom>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
+    URHO3D_COPY_BASE_ATTRIBUTES(Control);
 }

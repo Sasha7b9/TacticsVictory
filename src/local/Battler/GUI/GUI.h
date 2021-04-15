@@ -13,7 +13,7 @@ public:
     ~GUI();
 
     bool GheckOnDeadZoneForCursorBottomScreen(int x);
-    void SetVisibleWindow(WindowT *window, bool visible);
+    void SetVisibleControl(Control *control, bool visible);
     void SetUnvisibleAllWindows();
 
 private:

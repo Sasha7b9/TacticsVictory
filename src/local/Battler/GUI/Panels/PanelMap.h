@@ -9,9 +9,9 @@ class ImageT;
 /*
     Эта панель расположена в правом нижнем углу - миникарта
 */
-class PanelMap : public WindowT
+class PanelMap : public Control
 {
-    URHO3D_OBJECT(PanelMap, WindowT);
+    URHO3D_OBJECT(PanelMap, Control);
 
 public:
     PanelMap(Context *);

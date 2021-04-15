@@ -10,7 +10,7 @@
 
 
 PanelMap::PanelMap(Context *context) :
-    WindowT(context)
+    Control(context)
 {
     SetName("PanelMap");
 
@@ -40,7 +40,7 @@ void PanelMap::RegisterObject()
 
     context->RegisterFactory<PanelMap>("UI");
 
-    URHO3D_COPY_BASE_ATTRIBUTES(WindowT);
+    URHO3D_COPY_BASE_ATTRIBUTES(Control);
 }
 
 

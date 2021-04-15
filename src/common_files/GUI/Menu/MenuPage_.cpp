@@ -5,7 +5,7 @@
 #include "GUI/Menu/MenuPage_.h"
 
 
-MenuPage::MenuPage() : WindowT(TheContext)
+MenuPage::MenuPage() : Control(TheContext)
 {
 
 }

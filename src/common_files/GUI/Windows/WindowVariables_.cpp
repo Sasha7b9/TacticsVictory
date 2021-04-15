@@ -5,7 +5,7 @@
 #include "GUI/Windows/WindowVariables_.h"
 
 
-WindowVariables::WindowVariables() : WindowT(TheContext)
+WindowVariables::WindowVariables() : Control(TheContext)
 {
     SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
     SetStyle("WindowNoBorder");

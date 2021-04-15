@@ -12,7 +12,7 @@ public:
     GUI(GUI **self);
     ~GUI();
 
-    void SetVisibleWindow(WindowT *window, bool visible);
+    void SetVisibleWindow(Control *window, bool visible);
     void SetUnvisibleAllWindows();
 
 private:

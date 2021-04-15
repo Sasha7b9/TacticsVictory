@@ -35,4 +35,4 @@ extern TerrainT          *TheTerrain;
 extern WindowTarget      *TheWindowTarget;             // В этом окне можно посмотреть, что видит юнит
 extern WindowVariables   *TheWindowVars;
 
-extern Vector<WindowT *> TheOpenedWindow;
+extern Vector<Control *> TheOpenedWindow;

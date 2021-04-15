@@ -10,7 +10,7 @@
 #include "GUI/Controls/Window_.h"
 
 
-WindowT::WindowT(Context *context) :
+Control::Control(Context *context) :
     Window(context)
 {
     SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
@@ -19,23 +19,23 @@ WindowT::WindowT(Context *context) :
 }
 
 
-void WindowT::RegisterObject()
+void Control::RegisterObject()
 {
     Context *context = TheContext;
 
-    context->RegisterFactory<WindowT>("UI");
+    context->RegisterFactory<Control>("UI");
 
     URHO3D_COPY_BASE_ATTRIBUTES(Window);
 }
 
 
-bool WindowT::IsChildOfParent()
+bool Control::IsChildOfParent()
 {
     return TheUIRoot->FindChild(this) != M_MAX_UNSIGNED;
 }
 
 
-void WindowT::Toggle()
+void Control::Toggle()
 {
     if(translator)
     {
@@ -44,19 +44,19 @@ void WindowT::Toggle()
 }
 
 
-SharedPtr<LineTranslator2D> WindowT::GetTranslator()
+SharedPtr<LineTranslator2D> Control::GetTranslator()
 {
     return translator;
 }
 
 
-bool WindowT::UnderCursor()
+bool Control::UnderCursor()
 {
     return Window::IsInside(TheCursor->GetCursor()->GetPosition(), true);
 }
 
 
-SharedPtr<ButtonT> WindowT::AddButton(char *text, int x, int y, int width, int height)
+SharedPtr<ButtonT> Control::AddButton(char *text, int x, int y, int width, int height)
 {
     SharedPtr<ButtonT> retButton(new ButtonT(this, text, width, height));
     if (x != -1 && y != -1)
@@ -68,7 +68,7 @@ SharedPtr<ButtonT> WindowT::AddButton(char *text, int x, int y, int width, int h
 }
 
 
-SharedPtr<Label> WindowT::AddLabel(char *text, int x, int y, int width, int height)
+SharedPtr<Label> Control::AddLabel(char *text, int x, int y, int width, int height)
 {
     SharedPtr<Label> label(Label::Create(text, 20, width, height));
 
@@ -83,7 +83,7 @@ SharedPtr<Label> WindowT::AddLabel(char *text, int x, int y, int width, int heig
 }
 
 
-SharedPtr<ButtonToggled> WindowT::AddButtonToggled(char *text, int x, int y, int width, int height)
+SharedPtr<ButtonToggled> Control::AddButtonToggled(char *text, int x, int y, int width, int height)
 {
     SharedPtr<ButtonToggled> retButton(new ButtonToggled(this, text, width, height));
     retButton->SetPosition(x, y);
@@ -92,7 +92,7 @@ SharedPtr<ButtonToggled> WindowT::AddButtonToggled(char *text, int x, int y, int
 }
 
 
-SharedPtr<SliderWithTextAndButtons> WindowT::AddSlider(char *text, int min, int max, int step, int x, int y,
+SharedPtr<SliderWithTextAndButtons> Control::AddSlider(char *text, int min, int max, int step, int x, int y,
     int widthText, int widthRoller)
 {
     SharedPtr<SliderWithTextAndButtons> slider(new SliderWithTextAndButtons(this, text, min, max, step, widthText,
@@ -109,7 +109,7 @@ SharedPtr<SliderWithTextAndButtons> WindowT::AddSlider(char *text, int min, int 
 }
 
 
-SharedPtr<DropDownListWithTextAndButton> WindowT::AddDDList(char *text, int widthText, int widthDDList, int numItems,
+SharedPtr<DropDownListWithTextAndButton> Control::AddDDList(char *text, int widthText, int widthDDList, int numItems,
     char *items[], int x, int y)
 {
     SharedPtr<DropDownListWithTextAndButton> ddList(DropDownListWithTextAndButton::Create(this, text, widthText,
@@ -124,13 +124,13 @@ SharedPtr<DropDownListWithTextAndButton> WindowT::AddDDList(char *text, int widt
 }
 
 
-void WindowT::SetEnabled()
+void Control::SetEnabled()
 {
     SetVisible(true);
 }
 
 
-void WindowT::SetDisabled()
+void Control::SetDisabled()
 {
     SetVisible(false);
 }

@@ -3,9 +3,9 @@
 #include "GUI/Controls/Window_.h"
 
 
-class Tab : public WindowT
+class Tab : public Control
 {
-    URHO3D_OBJECT(Tab, WindowT);
+    URHO3D_OBJECT(Tab, Control);
 
 public:
     Tab(Context *);

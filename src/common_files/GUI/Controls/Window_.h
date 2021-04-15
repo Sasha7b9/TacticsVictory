@@ -10,12 +10,12 @@
 class ButtonT;
 
 
-class WindowT : public Window
+class Control : public Window
 {
-    URHO3D_OBJECT(WindowT, Window);
+    URHO3D_OBJECT(Control, Window);
 
 public:
-    WindowT(Context *);
+    Control(Context *);
     static void RegisterObject();
 
     bool IsChildOfParent();

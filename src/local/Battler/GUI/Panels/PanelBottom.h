@@ -6,9 +6,9 @@
 /*
     Нижняя панель - на ней расположены кнопки
 */
-class PanelBottom : public WindowT
+class PanelBottom : public Control
 {
-    URHO3D_OBJECT(PanelBottom, WindowT);
+    URHO3D_OBJECT(PanelBottom, Control);
 
 public:
     PanelBottom(Context *);

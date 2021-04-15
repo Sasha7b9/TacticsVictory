@@ -29,7 +29,7 @@ static HeaderRowStruct header_rows[HeaderRowStruct::NUM] =
 };
 
 
-HeaderTable::HeaderTable() : WindowT(TheContext)
+HeaderTable::HeaderTable() : Control(TheContext)
 {
     for (int i = 0; i < HeaderRowStruct::NUM; i++)
     {
@@ -56,7 +56,7 @@ HeaderTable::HeaderTable() : WindowT(TheContext)
 }
 
 
-LineTable::LineTable(HeaderTable *header) : WindowT(TheContext)
+LineTable::LineTable(HeaderTable *header) : Control(TheContext)
 {
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
@@ -105,7 +105,7 @@ void LineTable::SetServerInfo(std::string info)
 }
 
 
-OrderedTable::OrderedTable(UIElement *ui_element, char *title) : WindowT(TheContext)
+OrderedTable::OrderedTable(UIElement *ui_element, char *title) : Control(TheContext)
 {
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));

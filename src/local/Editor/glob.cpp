@@ -36,4 +36,4 @@ Mouse           *TheMouse      = nullptr;
 TerrainT        *TheTerrain    = nullptr;
 WindowVariables *TheWindowVars = nullptr;
 
-Vector<WindowT *> TheOpenedWindow;
+Vector<Control *> TheOpenedWindow;

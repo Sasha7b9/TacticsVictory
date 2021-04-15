@@ -4,7 +4,7 @@
 
 
 class Label;
-class WindowT;
+class Control;
 
 
 class GUI : public GUIT

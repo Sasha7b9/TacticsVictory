@@ -47,4 +47,4 @@ WindowTarget    *TheWindowTarget = nullptr;
 WindowVariables *TheWindowVars = nullptr;
 
 int *TheCounterHint = nullptr;
-Vector<WindowT *> TheOpenedWindow;
+Vector<Control *> TheOpenedWindow;

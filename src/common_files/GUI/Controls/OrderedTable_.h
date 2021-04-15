@@ -7,9 +7,9 @@
 struct ServerInfo;
 
 
-class HeaderTable : public WindowT
+class HeaderTable : public Control
 {
-    URHO3D_OBJECT(HeaderTable, WindowT);
+    URHO3D_OBJECT(HeaderTable, Control);
 
 public:
 
@@ -26,9 +26,9 @@ public:
 };
 
 
-class LineTable : public WindowT
+class LineTable : public Control
 {
-    URHO3D_OBJECT(LineTable, WindowT);
+    URHO3D_OBJECT(LineTable, Control);
 
 public:
 
@@ -46,9 +46,9 @@ public:
 };
 
 
-class OrderedTable : public WindowT
+class OrderedTable : public Control
 {
-    URHO3D_OBJECT(OrderedTable, WindowT);
+    URHO3D_OBJECT(OrderedTable, Control);
 
     void SetServersInfo(std::string &data);
 
