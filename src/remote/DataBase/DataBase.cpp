@@ -33,7 +33,7 @@ int main()
         LOGERRORF("Can't open database: %s", sqlite3_errmsg(db));
     }
 
-    char *sql = "CREATE TABLE COMPANY("    \
+    pchar sql = "CREATE TABLE COMPANY("    \
         "ID INT PRIMARY KEY     NOT NULL," \
         "NAME           TEXT    NOT NULL," \
         "AGE            INT     NOT NULL," \
@@ -46,6 +46,20 @@ int main()
     {
         LOGERRORF("SQL error: %s\n", zErrMsg);
     }
+
+    sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "   \
+        "VALUES (1, 'Paul', 32, 'California', 20000.00 ); "     \
+        "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "     \
+        "VALUES (2, 'Allen', 25, 'Texas', 15000.00 ); "         \
+        "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)"      \
+        "VALUES (3, 'Teddy', 23, 'Norway', 20000.00 );"         \
+        "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)"      \
+        "VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 );";
+
+    if (sqlite3_exec(db, sql, callback, 0, &zErrMsg) != SQLITE_OK)
+    {
+        LOGERRORF("SQL error: %s\n", zErrMsg);
+    };
 
     sqlite3_close(db);
 
