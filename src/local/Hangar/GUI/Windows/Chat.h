@@ -1,11 +1,11 @@
 // 2021/04/12 23:12:01 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "GUI/Controls/Control_.h"
+#include "GUI/Windows/Window_.h"
 
 
-class Chat : public Control
+class Chat : public WindowT
 {
-    URHO3D_OBJECT(Chat, Control);
+    URHO3D_OBJECT(Chat, WindowT);
 
 public:
 

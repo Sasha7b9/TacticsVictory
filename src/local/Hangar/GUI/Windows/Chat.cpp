@@ -3,7 +3,7 @@
 #include "GUI/Windows/Chat.h"
 
 
-Chat::Chat() : Control(TheContext)
+Chat::Chat() : WindowT()
 {
     SetSize(500, 500);
     SetResizable(true);
