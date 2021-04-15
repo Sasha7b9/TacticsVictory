@@ -7,7 +7,8 @@
 static int callback(void *data, int argc, char **argv, char **azColName) {
     int i;
 
-    LOGWRITEF("\n%s: ", (pchar)data);
+    LOGWRITE("");
+    LOGWRITEF("%s: ", (pchar)data);
 
     for (i = 0; i < argc; i++)
     {
