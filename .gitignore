@@ -11,7 +11,11 @@ archive.zip
 generated/*
 out/debug/*.dll
 out/debug/Battle
+out/debug/Controller
 out/debug/DataBase
+out/debug/LivingRoom
 out/debug/Master
+out/debug/Monitor
+out/debug/Uploader
 out/release/*
 src/ThirdParty/libevent/build/*
