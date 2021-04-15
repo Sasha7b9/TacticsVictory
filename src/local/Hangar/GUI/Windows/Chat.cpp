@@ -14,7 +14,7 @@ Chat::Chat() : WindowT()
     AddChild(lineEdit);
 
     text = TheUIRoot->CreateChild<Text>();
-
+    text->SetStyle("Text");
     text->SetWordwrap(true);
     AddChild(text);
 
@@ -30,7 +30,11 @@ Chat::Chat() : WindowT()
 
 void Chat::HandlerFinishedText(StringHash, VariantMap &)
 {
+    String message = lineEdit->GetText();
 
+    Write(message);
+
+    lineEdit->SetText("");
 }
 
 
@@ -42,7 +46,7 @@ void Chat::HandlerUnhandledKey(StringHash, VariantMap &)
 
 void Chat::HandlerClick(StringHash, VariantMap &)
 {
-
+    lineEdit->SetFocus(true);
 }
 
 
@@ -77,4 +81,13 @@ void Chat::CallbackOnResize()
         pos.y_ = -(heightText - height);
         text->SetPosition(pos);
     }
+}
+
+
+void Chat::Write(const String &message)
+{
+    text->SetText(text->GetText() + message + "\n");
+
+    VariantMap map;
+    HandlerResize("", map);
 }

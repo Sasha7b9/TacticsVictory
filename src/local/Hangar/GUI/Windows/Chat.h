@@ -21,4 +21,6 @@ private:
     void HandlerClick(StringHash, VariantMap &);
 
     virtual void CallbackOnResize() override;
+
+    void Write(const String &message);
 };

@@ -344,8 +344,6 @@ void ConsoleT::Write(const String &message)
 
     str += message + "\n";
 
-    URHO3D_LOGERROR(message);
-
     text->SetText(text->GetText() + str);
 
     VariantMap map;
