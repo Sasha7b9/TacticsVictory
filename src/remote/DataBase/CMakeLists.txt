@@ -27,10 +27,6 @@ if(WIN32)
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified
 
-else()
-
-    SET(LDFLAGS "${LDFLAGS} -ldl")
-
 endif()
 
 file(GLOB SRC                 ../../common_files/*.h
@@ -69,7 +65,7 @@ if(WIN32)
 
 else()
 
-    target_link_libraries(${PROJECT_NAME} ldl)
+    target_link_libraries(${PROJECT_NAME} dl)
 
 endif()
 
