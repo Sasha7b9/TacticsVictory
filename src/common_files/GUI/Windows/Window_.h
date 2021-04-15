@@ -9,4 +9,10 @@ class WindowT : public Control
 public:
 
     WindowT();
+
+protected:
+
+    void HandlerResize(StringHash, VariantMap &);
+
+    virtual void CallbackOnResize() = 0;
 };

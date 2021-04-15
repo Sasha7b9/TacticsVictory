@@ -320,35 +320,6 @@ void ConsoleT::HandlerClick(StringHash, VariantMap&)
 }
 
 
-void ConsoleT::HandlerResize(StringHash, VariantMap&)
-{
-    lineEdit->SetSize(GetWidth() - 20, 15);
-    lineEdit->SetPosition(2, GetHeight() - 15);
-
-    text->SetFixedSize(GetWidth(), GetHeight() - 20);
-    text->SetPosition(2, 0);
-
-    // Теперь ограничим количество строк
-    static const uint MAX_STRINGS = 100;
-
-    while (text->GetNumRows() > MAX_STRINGS)
-    {
-        uint pos = text->GetText().Find("\n");
-        text->SetText(text->GetText().Substring(pos + 2));
-    }
-
-    int height = GetHeight();
-    int heightText = text->GetHeight() + 15;
-
-    if (heightText > height)
-    {
-        IntVector2 pos = text->GetPosition();
-        pos.y_ = -(heightText - height);
-        text->SetPosition(pos);
-    }
-}
-
-
 void ConsoleT::Write(const String &message)
 {
     if(message[0] == '>')
@@ -387,6 +358,35 @@ void ConsoleT::Clear()
 {
     text->SetText("");
     text->SetPosition(2, 0);
+}
+
+
+void ConsoleT::CallbackOnResize()
+{
+    lineEdit->SetSize(GetWidth() - 20, 15);
+    lineEdit->SetPosition(2, GetHeight() - 15);
+
+    text->SetFixedSize(GetWidth(), GetHeight() - 20);
+    text->SetPosition(2, 0);
+
+    // Теперь ограничим количество строк
+    static const uint MAX_STRINGS = 100;
+
+    while (text->GetNumRows() > MAX_STRINGS)
+    {
+        uint pos = text->GetText().Find("\n");
+        text->SetText(text->GetText().Substring(pos + 2));
+    }
+
+    int height = GetHeight();
+    int heightText = text->GetHeight() + 15;
+
+    if (heightText > height)
+    {
+        IntVector2 pos = text->GetPosition();
+        pos.y_ = -(heightText - height);
+        text->SetPosition(pos);
+    }
 }
 
 
@@ -472,3 +472,4 @@ String History::GetNext()
 
     return strings[static_cast<uint>(position)];
 }
+

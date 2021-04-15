@@ -104,5 +104,8 @@ private:
     void HandlerFinishedText(StringHash, VariantMap &);
     void HandlerUnhandledKey(StringHash, VariantMap &);
     void HandlerClick(StringHash, VariantMap &);
-    void HandlerResize(StringHash, VariantMap &);
+
+private:
+
+    virtual void CallbackOnResize() override;
 };

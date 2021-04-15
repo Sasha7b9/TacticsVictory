@@ -19,5 +19,6 @@ private:
     void HandlerFinishedText(StringHash, VariantMap &);
     void HandlerUnhandledKey(StringHash, VariantMap &);
     void HandlerClick(StringHash, VariantMap &);
-    void HandlerResize(StringHash, VariantMap &);
+
+    virtual void CallbackOnResize() override;
 };

@@ -47,7 +47,7 @@ void Chat::HandlerClick(StringHash, VariantMap &)
 }
 
 
-void Chat::HandlerResize(StringHash, VariantMap &)
+void Chat::CallbackOnResize()
 {
     lineEdit->SetSize(GetWidth() - 20, 15);
     lineEdit->SetPosition(2, GetHeight() - 15);

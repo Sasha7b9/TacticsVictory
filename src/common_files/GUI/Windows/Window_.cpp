@@ -7,3 +7,9 @@ WindowT::WindowT() : Control(TheContext)
 {
 
 }
+
+
+void WindowT::HandlerResize(StringHash, VariantMap &)
+{
+    CallbackOnResize();
+}
