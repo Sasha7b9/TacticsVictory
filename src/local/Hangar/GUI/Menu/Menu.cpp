@@ -3,29 +3,9 @@
 #include "GUI/Menu/Menu.h"
 
 
-Menus::Menus(Menus **self) : Object(TheContext)
+Menus::Menus(Menus **self) : MenuT((MenuT **)self)
 {
     *self = this;
-}
-
-
-bool Menus::IsActive()
-{
-    return ActiveMenu() != nullptr;
-}
-
-
-MenuPage *Menus::ActiveMenu()
-{
-    for (MenuPage *window : allMenus)
-    {
-        if (window->GetParent())
-        {
-            return window;
-        }
-    }
-
-    return nullptr;
 }
 
 
