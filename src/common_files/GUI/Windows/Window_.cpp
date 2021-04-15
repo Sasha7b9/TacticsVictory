@@ -5,7 +5,7 @@
 
 WindowT::WindowT() : Control(TheContext)
 {
-
+    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(WindowT, HandlerResize));
 }
 
 

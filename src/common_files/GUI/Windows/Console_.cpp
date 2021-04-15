@@ -252,7 +252,6 @@ ConsoleT::ConsoleT() :  WindowT()
     SubscribeToEvent(lineEdit, E_UNHANDLEDKEY, URHO3D_HANDLER(ConsoleT, HandlerUnhandledKey));
     SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(ConsoleT, HandlerClick));
     SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(ConsoleT, HandlerClick));
-    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(ConsoleT, HandlerResize));
 
     VariantMap map;
     HandlerResize("", map);
@@ -363,6 +362,11 @@ void ConsoleT::Clear()
 
 void ConsoleT::CallbackOnResize()
 {
+    if (!lineEdit)
+    {
+        return;
+    }
+
     lineEdit->SetSize(GetWidth() - 20, 15);
     lineEdit->SetPosition(2, GetHeight() - 15);
 

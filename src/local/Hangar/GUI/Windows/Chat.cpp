@@ -22,7 +22,6 @@ Chat::Chat() : WindowT()
     SubscribeToEvent(lineEdit, E_UNHANDLEDKEY, URHO3D_HANDLER(Chat, HandlerUnhandledKey));
     SubscribeToEvent(text, E_CLICK, URHO3D_HANDLER(Chat, HandlerClick));
     SubscribeToEvent(this, E_CLICK, URHO3D_HANDLER(Chat, HandlerClick));
-    SubscribeToEvent(this, E_RESIZED, URHO3D_HANDLER(Chat, HandlerResize));
 
     VariantMap map;
     HandlerResize("", map);
@@ -49,6 +48,11 @@ void Chat::HandlerClick(StringHash, VariantMap &)
 
 void Chat::CallbackOnResize()
 {
+    if (!lineEdit)
+    {
+        return;
+    }
+
     lineEdit->SetSize(GetWidth() - 20, 15);
     lineEdit->SetPosition(2, GetHeight() - 15);
 
