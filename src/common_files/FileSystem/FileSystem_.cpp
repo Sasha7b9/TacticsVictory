@@ -364,7 +364,7 @@ namespace FS
     File &operator<< (File &out, uint64 value)
     {
         char buffer[30];
-        sprintf(buffer, "%llu", value);
+        snprintf(buffer, 30, "%llu", value);
         out.Write(buffer, SU::Length(buffer));
         return out;
     }
