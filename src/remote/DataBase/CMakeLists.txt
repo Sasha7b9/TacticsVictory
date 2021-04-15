@@ -29,25 +29,26 @@ if(WIN32)
 
 endif()
 
-file(GLOB SRC           ../../common_files/*.h
-                                           *.h *.cpp)
-file(GLOB FILESYSTEM    ../../common_files/FileSystem/ConfigurationFile_.*
-                        ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB UTILS         ../../common_files/Utils/Log_.*
-                        ../../common_files/Utils/LogRAW_.*
-                        ../../common_files/Utils/StringUtils_.*
-                        ../../common_files/Utils/UtilsOS_.*)
+file(GLOB SRC                 ../../common_files/*.h
+                                                 *.h *.cpp)
+file(GLOB FILESYSTEM          ../../common_files/FileSystem/ConfigurationFile_.*
+                              ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB UTILS               ../../common_files/Utils/Log_.*
+                              ../../common_files/Utils/LogRAW_.*
+                              ../../common_files/Utils/StringUtils_.*
+                              ../../common_files/Utils/UtilsOS_.*)
+file(GLOB SQLITE                                 ThirdParty/sqlite_bucket.c)
 
-source_group(src            FILES ${SRC})
-source_group(FileSystem     FILES ${FILESYSTEM})
-source_group(Utils          FILES ${UTILS})
-source_group(Utils\\OS      FILES ${UTILS_OS})
+source_group(src                FILES ${SRC})
+source_group(FileSystem         FILES ${FILESYSTEM})
+source_group(Utils              FILES ${UTILS})
+source_group(ThirdParty\\SQLite FILES ${SQLITE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 file(GLOB FILES_UNITY ${SRC} ${FILESYSTEM} ${UTILS})
 
-add_executable( ${PROJECT_NAME} ${FILES_UNITY})
+add_executable( ${PROJECT_NAME} ${FILES_UNITY} ${SQLITE})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
