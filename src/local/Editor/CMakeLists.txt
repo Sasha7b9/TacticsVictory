@@ -44,8 +44,7 @@ file(GLOB GUI_CONTROLS                ../../common_files/GUI/Controls/Control_.*
                                       ../../common_files/GUI/Controls/DropDownListWithTextAndButton_.*
                                       ../../common_files/GUI/Controls/GovernorFloat_.*
                                       ../../common_files/GUI/Controls/Label_.*
-                                      ../../common_files/GUI/Controls/Hint_.*
-                                      ../../common_files/GUI/Controls/Window_.*)
+                                      ../../common_files/GUI/Controls/Hint_.*)
 file(GLOB GUI_CONTROLS_BUTTONS        ../../common_files/GUI/Controls/Buttons/Button_.*
                                       ../../common_files/GUI/Controls/Buttons/ButtonSwitch_.*
                                       ../../common_files/GUI/Controls/Buttons/ButtonToggled_.*)
@@ -62,7 +61,8 @@ file(GLOB GUI_MENU_MENUSTART                             GUI/Menu/MenuStart/*.*)
 file(GLOB GUI_MENU_MENUSTART_MENUPLAY                    GUI/Menu/MenuStart/MenuPlay/*.*)
 file(GLOB GUI_WINDOWS                 ../../common_files/GUI/Windows/Console_.*
                                       ../../common_files/GUI/Windows/ConsoleParserFunctions_.*
-                                      ../../common_files/GUI/Windows/WindowVariables_.*)
+                                      ../../common_files/GUI/Windows/WindowVariables_.*
+                                      ../../common_files/GUI/Windows/Window_.*)
 file(GLOB INPUT                       ../../common_files/Input/Mouse_.*
                                                          Input/*.*)
 file(GLOB NETWORK                     ../../common_files/Network/Other/MasterServer_.*

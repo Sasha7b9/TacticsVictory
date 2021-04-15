@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "GUI/Controls/Control_.h"
+#include "GUI/Windows/Window_.h"
 
 
 class ConsoleParser : public Object
@@ -83,9 +83,9 @@ private:
 
 
 
-class ConsoleT : public Control
+class ConsoleT : public WindowT
 {
-    URHO3D_OBJECT(ConsoleT, Control);
+    URHO3D_OBJECT(ConsoleT, WindowT);
 
 public:
     ConsoleT();

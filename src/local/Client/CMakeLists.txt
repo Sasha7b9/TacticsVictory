@@ -60,6 +60,7 @@ file(GLOB GUI_MENU_MENUSTART                             GUI/Menu/MenuStart/*.*)
 file(GLOB GUI_MENU_MENUSTART_MENUPLAY                    GUI/Menu/MenuStart/MenuPlay/*.*)
 file(GLOB GUI_WINDOWS                 ../../common_files/GUI/Windows/Console_.*
                                       ../../common_files/GUI/Windows/ConsoleParserFunctions_.*
+                                      ../../common_files/GUI/Windows/Window_.*
                                       ../../common_files/GUI/Windows/WindowVariables_.*)
 file(GLOB INPUT                       ../../common_files/Input/Mouse_.*
                                                          Input/*.*)
