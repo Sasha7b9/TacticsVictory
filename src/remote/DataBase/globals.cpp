@@ -4,4 +4,3 @@
 
 
 ConfigurationFile TheConfig;
-ServerConnector   TheMasterServer;
