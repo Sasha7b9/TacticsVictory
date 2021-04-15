@@ -4,15 +4,15 @@
 #include "SQLite/src/sqlite3.h"
 
 
-static int callback(void * /*NotUsed*/, int argc, char **argv, char **azColName) {
+static int callback(void *data, int argc, char **argv, char **azColName) {
     int i;
+
+    LOGWRITEF("\n%s: ", (pchar)data);
 
     for (i = 0; i < argc; i++)
     {
-        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+        LOGWRITEF("%s = %s", azColName[i], argv[i] ? argv[i] : "NULL");
     }
-
-    printf("\n");
 
     return 0;
 }
@@ -44,7 +44,7 @@ int main()
 
     if (sqlite3_exec(db, sql, callback, 0, &zErrMsg) != SQLITE_OK)
     {
-        LOGERRORF("SQL error: %s\n", zErrMsg);
+        LOGERRORF("SQL error: %s", zErrMsg);
     }
 
     sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "   \
@@ -58,8 +58,17 @@ int main()
 
     if (sqlite3_exec(db, sql, callback, 0, &zErrMsg) != SQLITE_OK)
     {
-        LOGERRORF("SQL error: %s\n", zErrMsg);
+        LOGERRORF("SQL error: %s", zErrMsg);
     };
+
+    sql = "SELECT * from COMPANY";
+
+    pchar data = "Callback function called";
+
+    if (sqlite3_exec(db, sql, callback, (void *)data, &zErrMsg) != SQLITE_OK)
+    {
+        LOGERRORF("SQL error: %s", zErrMsg);
+    }
 
     sqlite3_close(db);
 
