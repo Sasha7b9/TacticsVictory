@@ -74,3 +74,5 @@ if(WIN32)
 
     target_link_libraries(${PROJECT_NAME} ws2_32)
 endif()
+
+include(../../Install.cmake)
