@@ -40,11 +40,12 @@ file(GLOB GUI                         ../../common_files/GUI/Cursor_.*
                                       ../../common_files/GUI/GUI_.*
                                       ../../common_files/GUI/GUIEvents_.*
                                                          GUI/*.*)
-file(GLOB GUI_CONTROLS                ../../common_files/GUI/Controls/Label_.*
-                                      ../../common_files/GUI/Controls/Hint_.*
-                                      ../../common_files/GUI/Controls/Window_.*
+file(GLOB GUI_CONTROLS                ../../common_files/GUI/Controls/Control_.*
                                       ../../common_files/GUI/Controls/DropDownListWithTextAndButton_.*
-                                      ../../common_files/GUI/Controls/GovernorFloat_.*)
+                                      ../../common_files/GUI/Controls/GovernorFloat_.*
+                                      ../../common_files/GUI/Controls/Label_.*
+                                      ../../common_files/GUI/Controls/Hint_.*
+                                      ../../common_files/GUI/Controls/Window_.*)
 file(GLOB GUI_CONTROLS_BUTTONS        ../../common_files/GUI/Controls/Buttons/Button_.*
                                       ../../common_files/GUI/Controls/Buttons/ButtonSwitch_.*
                                       ../../common_files/GUI/Controls/Buttons/ButtonToggled_.*)
