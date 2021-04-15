@@ -82,9 +82,9 @@ file(GLOB UTILS                       ../../common_files/Utils/GlobalFunctions_.
                                       ../../common_files/Utils/Settings_.*
                                       ../../common_files/Utils/UtilsOS_.*)
 
-file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
-file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
-file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
+file(GLOB SOCKPP                            ThirdParty/sockpp.cpp)
+file(GLOB SOCKPP_SOURCES              ../../ThirdParty/sockpp/src/*.cpp)
+file(GLOB SOCKPP_INCLUDE              ../../ThirdParty/sockpp/include/sockpp/*.h)
 
 source_group(src                            FILES ${SRC})
 source_group(Core                           FILES ${CORE})
@@ -126,6 +126,8 @@ add_executable( ${PROJECT_NAME}
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
+
+set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS "82.146.54.49")
 
 include(../../RuntimeLibrary.cmake)
 
