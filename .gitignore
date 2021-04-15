@@ -5,6 +5,7 @@
 *.swp
 *.tmp
 *~*
+*.sqlite3
 
 archive.zip
 
