@@ -61,7 +61,9 @@ file(GLOB GUI_MENU                               ../../common_files/GUI/Menu/Men
                                                  ../../common_files/GUI/Menu/MenuPage_.*
                                                                     GUI/Menu/*.*)
 file(GLOB GUI_PANELS                                                GUI/Panels/*.*)
-file(GLOB GUI_WINDOWS                            ../../common_files/GUI/Windows/*.*)
+file(GLOB GUI_WINDOWS                            ../../common_files/GUI/Windows/Console_.*
+                                                 ../../common_files/GUI/Windows/ConsoleParserFunctions_.*
+                                                 ../../common_files/GUI/Windows/WindowVariables_.*)
 file(GLOB INPUT                                  ../../common_files/Input/Mouse_.*
                                                                     Input/*.*)
 file(GLOB NETWORK                                ../../common_files/Network/Game/*.*
