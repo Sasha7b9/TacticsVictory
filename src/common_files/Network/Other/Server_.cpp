@@ -85,7 +85,7 @@ void Server::Run(uint16 port)
     }
     else
     {
-        LOGWRITEF("Bind to port %d is Ok! Wait connections ...", sin.sin_port);
+        LOGWRITEF("Bind to port %d is Ok! Wait connections ...", port);
     }
 
 #ifdef WIN32
