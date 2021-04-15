@@ -32,6 +32,7 @@ static TaskMasterServer taskGetInfoLivingRooms = {
     },
     [](pchar, void *data, uint)
     {
+        LOGWRITE((char *)data);
         TheMenu->pageFindServer->SetServersInfo((char *)data);
     }
 };
