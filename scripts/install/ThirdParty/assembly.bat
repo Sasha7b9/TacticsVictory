@@ -11,10 +11,11 @@ set isRelease=0
 
 set current_dir=%CD%
 
-cd ../../../ThirdParty
+cd ../../../src/ThirdParty
 
 :START_WITH_MAKE
 if %1==build set isBuild=1 & goto LABEL1
+if %1==make  set isMake=1 & goto LABEL1
 if %1==full  set isMake=1 & set isBuild=1 & goto LABEL1
 
 goto HINT
