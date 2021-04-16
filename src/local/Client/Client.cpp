@@ -102,9 +102,41 @@ void Client::Start()
 
     SetWindowTitleAndIcon();
 
-    ParseArguments();
-
     TheInput->SetMouseMode(MouseMode::MM_FREE);
+
+    TryConnectToLocalMaster();
+}
+
+
+void Client::TryConnectToLocalMaster()
+{
+    TheServerConnector.SetAddress("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
+
+    TheServerConnector.SetCallbacks
+    (
+        []()
+        {
+            LOGWRITE("Can not connect to local master server. Connect to remote");
+            TheClient->ParseArguments();
+        },
+        []()
+        {
+            TheGUI->AppendInfo("Connection to local master server established");
+            LOGWRITE("Connection to local master server established");
+            TheServerConnector.SetTasks();
+        },
+        []()
+        {
+            TheGUI->AppendWarning("The master server is down. Attempting to connect");
+            TheServerConnector.Connect();
+            LOGWRITE("The master server is down. Attempting to connect");
+            TheMenu->pageFindServer->SetServersInfo("");
+        }
+    );
+
+    LOGWRITE("Wait server for connection");
+
+    TheServerConnector.Connect();
 }
 
 
@@ -122,7 +154,6 @@ void Client::ParseArguments()
             {
                 TheGUI->AppendWarning("Can't connect to master server");
                 TheServerConnector.Connect();
-//                LOGWRITE("Attempt connection to master-server");
             },
             []()
             {

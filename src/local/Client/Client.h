@@ -20,6 +20,9 @@ public:
 
     void SetWindowTitleAndIcon();
 
+    // Разобрать аргументы командной строки
+    void ParseArguments();
+
 private:
 
     void OpenLog();
@@ -30,7 +33,9 @@ private:
     void GetSubsystems();
     void TuneEngineParameters();
     void CreateGUI();
-    void ParseArguments();
+
+    // Попытка подключения к локальному мастер-серверу
+    void TryConnectToLocalMaster();
 
     void HandlerUpdate(StringHash, VariantMap &);
     void HandlerPostRenderUpdate(StringHash, VariantMap &);
