@@ -22,6 +22,7 @@ set -e              # Немедленно выйти, если команда �
 
 stopMaster=0
 stopUploader=0
+stopLivingRoom=0
 
 
 if [[ $# -ne 1 ]]
@@ -35,8 +36,11 @@ case $1 in
 
     "uploader" ) stopUploader=1 ;;
 
+    "livingroom" ) stopLivingRoom=1 ;;
+
     "all"      ) stopMaster=1
-                 stopUploader=1 ;;
+                 stopUploader=1
+                 stopLivingRoom=1 ;;
 
     *          ) ShowHint
                  exit           ;;
@@ -44,3 +48,4 @@ esac
 
 Stop $stopUploader Uploader
 Stop $stopMaster Master
+Stop $stopLivingRoom LivingRoom
