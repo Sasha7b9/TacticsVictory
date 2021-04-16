@@ -30,10 +30,10 @@ function MakeProjects {
 
 
 function BuildProject {
-    cd generated/$1
+    cd ../../generated/$1
     make -j$(nproc)
     make
-    cd ../..
+    cd ../../..
 }
 
 
