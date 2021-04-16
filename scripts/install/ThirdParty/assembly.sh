@@ -7,7 +7,7 @@ function ShowHint {
 
 
 function MakeProject {
-    rm -R -f generated/$1/ThirdParty
+    rm -R -f ../../generated/$1/ThirdParty
     cmake . -B../../generated/$1/ThirdParty -G "CodeBlocks - Unix Makefiles" -DCMAKE_BUILD_TYPE=$2
 }
 
@@ -30,7 +30,7 @@ function MakeProjects {
 
 
 function BuildProject {
-    cd ../../generated/$1
+    cd ../../generated/$1/ThirdParty
     make -j$(nproc)
     make
     cd ../../..
