@@ -86,10 +86,6 @@ case $1 in
           exit      ;;
 esac
 
-cd Urho3D
-
-git pull
-
 case $2 in
     "debug"   ) isDebug=1   ;;
 
