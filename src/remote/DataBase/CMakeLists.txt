@@ -27,10 +27,6 @@ if(WIN32)
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified
 
-else()
-
-   add_definitions(-ldl)
-
 endif()
 
 file(GLOB SRC                 ../../common_files/*.h

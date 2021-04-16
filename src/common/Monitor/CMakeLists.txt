@@ -27,9 +27,6 @@ if(WIN32)
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified
 
-else()
-    SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -lGL -lGLX -lX11 -lGLdispatch")
-    SET(LDFLAGS "${LDFLAGS} -ldl")
 endif()
 
 file(GLOB SRC           ../../common_files/*.h  

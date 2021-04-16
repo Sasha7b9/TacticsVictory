@@ -27,9 +27,6 @@ if(WIN32)
                                     # specified
     add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum'
 
-else()
-    SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -lGL -lGLX -lX11 -lGLdispatch")
-    SET(LDFLAGS "${LDFLAGS} -ldl")
 endif()
 
 file(GLOB SRC        ../../common_files/*.h
@@ -73,6 +70,11 @@ if(WIN32)
     include(../../SetWorkingDirectory.cmake)
 
     target_link_libraries(${PROJECT_NAME} ws2_32)
+
+else()
+
+    target_link_libraries(${PROJECT_NAME} pthread)
+
 endif()
 
 include(../../Install.cmake)
