@@ -13,8 +13,8 @@ goto HINT
 
 :BUILD
 @echo on
-MSBuild.exe generated/%1/ThirdParty.sln /p:Configuration=%configuration% /t:build -clp:ErrorsOnly;WarningsOnly -nologo -m
-copy generated\%1\bin\*.dll ..\TacticsVictoryU3D\out\%1 /Y
+MSBuild.exe ../../generated/%1/ThirdParty/ThirdParty.sln /p:Configuration=%configuration% /t:build -clp:ErrorsOnly;WarningsOnly -nologo -m
+rem copy generated\%1\bin\*.dll ..\TacticsVictoryU3D\out\%1 /Y
 @echo off
 goto EXIT
 
