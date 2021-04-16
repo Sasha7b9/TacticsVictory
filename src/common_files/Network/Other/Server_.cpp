@@ -158,6 +158,25 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
     int fd = (int)accept((int)listener, (struct sockaddr *)&ss, &slen);
 #endif
 
+    sockaddr addr;
+    socklen_t len = sizeof(addr);
+
+    getsockname(fd, &addr, &len);
+
+    LOGWRITEF("%d %d %d %d %d %d %d %d %d %d %d %d",
+        addr.sa_data[0],
+        addr.sa_data[0],
+        addr.sa_data[0],
+        addr.sa_data[0],
+        addr.sa_data[0],
+        addr.sa_data[0],
+        addr.sa_data[0],
+        addr.sa_data[0],
+        addr.sa_data[0],
+        addr.sa_data[0],
+        addr.sa_data[0],
+        addr.sa_data[0]);
+
     if (fd < 0)
     {
         LOGERROR("Error accepted");
