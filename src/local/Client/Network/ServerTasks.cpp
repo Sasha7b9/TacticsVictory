@@ -18,9 +18,9 @@ static TaskMasterServer taskPing = {
     {
         (void)data;
 
-        uint prev_time = *((uint *)data);
-
-        LOGWRITEF("ping = %d ms", GF::Timer::TimeMS() - prev_time);
+//        uint prev_time = *((uint *)data);
+//
+//        LOGWRITEF("ping = %d ms", GF::Timer::TimeMS() - prev_time);
     }
 };
 
@@ -32,7 +32,6 @@ static TaskMasterServer taskGetInfoLivingRooms = {
     },
     [](pchar, void *data, uint)
     {
-        LOGWRITE((char *)data);
         TheMenu->pageFindServer->SetServersInfo((char *)data);
     }
 };

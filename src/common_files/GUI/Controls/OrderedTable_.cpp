@@ -19,8 +19,8 @@ struct HeaderRowStruct
 
 static HeaderRowStruct header_rows[HeaderRowStruct::NUM] =
 {
-    { "Name",    330, HA_LEFT},
-    { "Address", 155, HA_LEFT},
+    { "Name",    360, HA_LEFT},
+    { "Address", 125, HA_CENTER},
     { "Ping",    40,  HA_CENTER},
     { "CPU%",    40,  HA_CENTER},
     { "L",       40,  HA_CENTER},
