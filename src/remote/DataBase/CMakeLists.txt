@@ -54,7 +54,6 @@ if(WIN32)
     link_directories(../../../generated/${SUB_DIR}/ThirdParty/sqlite/${CMAKE_BUILD_TYPE})
 else()
     link_directories(../../../generated/${SUB_DIR}/ThirdParty/sqlite)
-    set(LDFLAGS "${LDFLAGS} -ldl")
 endif()
 
 add_executable( ${PROJECT_NAME} ${FILES_UNITY})
@@ -75,7 +74,6 @@ if(WIN32)
 else()
 
     target_link_libraries(${PROJECT_NAME} sqlite dl pthread)
-#    set(LDFLAGS "
 
 endif()
 
