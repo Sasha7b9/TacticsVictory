@@ -33,7 +33,7 @@ function BuildProject {
     cd ../../generated/$1/ThirdParty
     make -j$(nproc)
     make
-    cd ../../..
+    cd ../../../src/ThirdParty
 }
 
 
