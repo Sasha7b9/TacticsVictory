@@ -73,15 +73,18 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
         sin.sin_addr.S_un.S_un_b.s_b2 == 0 &&
         sin.sin_addr.S_un.S_un_b.s_b3 == 0 &&
         sin.sin_addr.S_un.S_un_b.s_b4 == 1)
+    {
+        system("ipconfig > address.txt");
+    }
 #else
     if ((uint8)(sin.sin_addr.s_addr >> 0) == 127 &&
         (uint8)(sin.sin_addr.s_addr >> 8) == 0 &&
         (uint8)(sin.sin_addr.s_addr >> 16) == 0 &&
         (uint8)(sin.sin_addr.s_addr >> 24) == 1)
-#endif
     {
-        system("ifconig > address.txt");
+        system("ifconfig > address.txt");
     }
+#endif
 }
 
 
