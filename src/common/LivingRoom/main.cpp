@@ -12,15 +12,9 @@ int main(int args, char *argv[])
 
     LOGWRITE("Start LivingRoom");
 
-    if (args < 2)
-    {
-        LOGERRORF("Not specified address master server");
-        return -1;
-    }
-
     if (TheSettings.Load("Settings.conf"))
     {
-        return LivingRoom().Run(argv[1]);
+        return TheLivingRoom.Run(args < 2 ? nullptr : argv[1]);
     }
 
     return 0;

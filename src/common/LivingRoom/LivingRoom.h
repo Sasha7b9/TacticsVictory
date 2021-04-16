@@ -8,8 +8,14 @@ public:
 
     int Run(pchar ip);
 
-    void SetTasks();
-
     // Послать своё имя мастер-серверу
     void SendNameToMasterServer();
+
+private:
+
+    int RunRemoteServer();
+
+    int MainCycle();
+
+    pchar remoteMasterIP = nullptr;     // Адрес удалённого мастер-сервера
 };

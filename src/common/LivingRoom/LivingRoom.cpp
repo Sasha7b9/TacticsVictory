@@ -6,24 +6,23 @@
 #include "Network/Other/ServerConnector_.h"
 
 
-int LivingRoom::Run(pchar address)
+int LivingRoom::Run(pchar ip)
 {
-    TheServerConnector.SetAddress(address, (uint16)TheSettings.GetInt("master_server", "port"));
+    remoteMasterIP = ip;
+
+    TheServerConnector.SetAddress("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
 
     TheServerConnector.SetCallbacks
     (
         []()
         {
-//            LOGERROR("Can't connect to master server");
-            TheServerConnector.Connect();
-//            LOGWRITE("Attempt connection to master-server");
+            LOGWRITE("Can not connect to local master server. Connect to remote");
+            TheLivingRoom.RunRemoteServer();
         },
         []()
         {
             LOGWRITE("Connection to master server established");
-
             TheLivingRoom.SendNameToMasterServer();
-
             TheServerConnector.SetTasks();
         },
         []()
@@ -37,6 +36,49 @@ int LivingRoom::Run(pchar address)
 
     TheServerConnector.Connect();
 
+    return MainCycle();
+}
+
+
+int LivingRoom::RunRemoteServer()
+{
+    if (!remoteMasterIP)
+    {
+        LOGERRORF("Not specified address master server");
+        return -1;
+    }
+
+    TheServerConnector.SetAddress(remoteMasterIP, (uint16)TheSettings.GetInt("master_server", "port"));
+
+    TheServerConnector.SetCallbacks
+    (
+        []()
+        {
+            TheServerConnector.Connect();
+        },
+        []()
+        {
+            LOGWRITE("Connection to master server established");
+            TheLivingRoom.SendNameToMasterServer();
+            TheServerConnector.SetTasks();
+        },
+            []()
+        {
+            TheServerConnector.Connect();
+            LOGWRITE("The master server is down. Attempting to connect");
+        }
+        );
+
+    LOGWRITE("Wait server for connection");
+
+    TheServerConnector.Connect();
+
+    return MainCycle();
+}
+
+
+int LivingRoom::MainCycle()
+{
     while (true)
     {
         TheServerConnector.Update();

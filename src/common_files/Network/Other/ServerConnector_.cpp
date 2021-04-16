@@ -117,8 +117,6 @@ uint ServerConnector::SendRequest(pchar request, pchar _data)
 
 void ServerConnector::Update()
 {
-//    static int ping = 999;
-
     ReceiveData();
 
     ProcessData();
