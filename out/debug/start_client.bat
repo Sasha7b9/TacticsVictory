@@ -1,4 +1,4 @@
 echo off
-set address=127.0.0.1
+set address=82.146.54.49
 echo on
 start Client.exe %address%
