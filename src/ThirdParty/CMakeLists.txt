@@ -25,9 +25,19 @@ set(OUT_DIR $ENV{PROJECT_DIR}\\out\\${SUB_DIR})
 set(CMAKE_CXX_STANDARD 17)
 
 if(WIN32)
+
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
+
 else()
+
     add_definitions(-m64 -msse -msse2 -pthread -fno-strict-aliasing -fmax-errors=1 -Wall)
+    
+    if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
+        add_definitions(-O0)
+    else()
+        add_definitions(-O3)
+    endif()
+
 endif()
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)

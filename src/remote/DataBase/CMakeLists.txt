@@ -65,7 +65,7 @@ if(WIN32)
 
 else()
 
-    target_link_libraries(${PROJECT_NAME} dl pthread)
+    target_link_libraries(${PROJECT_NAME} dl pthread sqlite)
 
 endif()
 
