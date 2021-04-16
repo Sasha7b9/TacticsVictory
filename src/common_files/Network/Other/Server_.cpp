@@ -64,6 +64,20 @@ std::string ClientInfo::SocketAddress::ToStringHost() const
 }
 
 
+void ClientInfo::SocketAddress::SetHostIP(void *ip)
+{
+    sin = *((sockaddr_in *)ip);
+
+    if (sin.sin_addr.S_un.S_un_b.s_b1 == 127 &&
+        sin.sin_addr.S_un.S_un_b.s_b2 == 0 &&
+        sin.sin_addr.S_un.S_un_b.s_b3 == 0 &&
+        sin.sin_addr.S_un.S_un_b.s_b4 == 1)
+    {
+
+    }
+}
+
+
 void Server::Run(uint16 port)
 {
     event_set_log_callback(CallbackLog);
@@ -157,7 +171,7 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
         bufferevent_enable(bev, EV_READ | EV_WRITE);
 
         ClientInfo info;
-        info.address.sin = *((sockaddr_in *)&ss);
+        info.address.SetHostIP(&ss);
         info.benv = bev;
 
         LOGWRITEF("Client %s connected", info.address.ToStringFull().c_str());

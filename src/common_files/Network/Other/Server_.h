@@ -6,6 +6,8 @@ struct ClientInfo
 {
     struct SocketAddress
     {
+        void SetHostIP(void *ip);
+
         // ¬озвращает полный адрес клиента в виде "host:port"
         std::string ToStringFull() const;
 
