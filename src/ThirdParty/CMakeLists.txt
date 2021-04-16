@@ -44,4 +44,4 @@ function(add_subdirectory_with_folder _folder_name _folder)
     set_property(DIRECTORY "${_folder}" PROPERTY FOLDER "${_folder_name}")
 endfunction()
 
-add_subdirectory_with_folder("sqlite" sqlite/sqlite)
+add_subdirectory_with_folder("sqlite" sqlite)

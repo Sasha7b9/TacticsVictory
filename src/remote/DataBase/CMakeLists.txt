@@ -4,7 +4,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
-                    ../../ThirdParty/sockpp/include
+                    ../../ThirdParty
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty
                     ../../../../Urho3D/Source/ThirdParty)
