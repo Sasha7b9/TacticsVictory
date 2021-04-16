@@ -27,9 +27,8 @@ if(WIN32)
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified
     add_compile_options(/wd5219)    # implicit conversion from 'type-1' to 'type-2', possible loss of data
-
-    add_compile_options(/wd26812)
-    add_compile_options(/wd28251)
+    add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum' (Enum.3)
+    add_compile_options(/wd28251)   # Inconsistent annotation for function: this instance has an error
 
 endif()
 
