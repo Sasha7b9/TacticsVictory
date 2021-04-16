@@ -30,9 +30,7 @@ if(WIN32)
 
 else()
 
-    add_definitions(-m64 -msse -msse2 -pthread -fno-strict-aliasing -fmax-errors=1 -Wall)
-
-    set(LDFLAGS "${LDFLAGS} -ldl")
+    add_definitions(-m64 -msse -msse2 -fno-strict-aliasing -fmax-errors=1 -Wall)
 
     if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
         add_definitions(-O0)
