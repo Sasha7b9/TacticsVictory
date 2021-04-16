@@ -3,6 +3,7 @@
 #include "FileSystem/FileSystem_.h"
 #include "Utils/StringUtils_.h"
 #include "Utils/UtilsOS_.h"
+#include <iostream>
 
 
 #ifdef WIN32

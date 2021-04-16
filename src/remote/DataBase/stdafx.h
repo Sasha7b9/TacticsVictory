@@ -32,9 +32,6 @@ using namespace Urho3D;
 #include <mutex>
 #include <vector>
 
-#include <sockpp/tcp_acceptor.h>
-#include <sockpp/tcp_connector.h>
-
 #ifdef WIN32
 #pragma warning(pop)
 #endif

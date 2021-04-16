@@ -1,7 +1,7 @@
 // 2021/04/02 17:14:22 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "FileSystem/ConfigurationFile_.h"
-#include "SQLite/src/sqlite3.h"
+#include "sqlite/src/sqlite3.h"
 
 
 static int callback(void *data, int argc, char **argv, char **azColName) {
