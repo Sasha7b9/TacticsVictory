@@ -13,6 +13,7 @@ if(WIN32)
 
 else()
 
+    set(LDFLAGS "${LDFLAGS} -ldl")
     target_link_libraries(${PROJECT_NAME} dl pthread)
 
 endif()
