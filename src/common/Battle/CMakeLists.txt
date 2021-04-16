@@ -31,11 +31,6 @@ if(WIN32)
     add_compile_options(/wd26812)
     add_compile_options(/wd28251)
 
-else()
-
-    SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -lGL -lGLX -lX11 -lGLdispatch")
-    SET(LDFLAGS "${LDFLAGS} -ldl")
-
 endif()
 
 file(GLOB SRC                                    ../../common_files/*.*
