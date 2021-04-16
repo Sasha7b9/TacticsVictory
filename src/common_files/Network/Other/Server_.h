@@ -6,7 +6,11 @@ struct ClientInfo
 {
     struct SocketAddress
     {
-        std::string ToString() const;
+        // Возвращает полный адрес клиента в виде "host:port"
+        std::string ToStringFull() const;
+
+        // Возвращает только ip-дарес клиента
+        std::string ToStringHost() const;
 
         sockaddr_in sin;
     }                        address;   // Адрес клиента

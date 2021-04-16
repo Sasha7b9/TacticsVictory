@@ -22,7 +22,7 @@ static void CallbackLog(int, const char *);
 static void ProcessClient(ClientInfo &info);
 
 
-std::string ClientInfo::SocketAddress::ToString() const
+std::string ClientInfo::SocketAddress::ToStringFull() const
 {
     char buffer[100];
 
@@ -38,6 +38,26 @@ std::string ClientInfo::SocketAddress::ToString() const
         (uint8)(sin.sin_addr.s_addr >> 16),
         (uint8)(sin.sin_addr.s_addr >> 24),
         sin.sin_port);
+#endif
+
+    return std::string(buffer);
+}
+
+
+std::string ClientInfo::SocketAddress::ToStringHost() const
+{
+    char buffer[100];
+
+#ifdef WIN32
+    sprintf_s(buffer, 100, "%d.%d.%d.%d", sin.sin_addr.S_un.S_un_b.s_b1,
+        sin.sin_addr.S_un.S_un_b.s_b2,
+        sin.sin_addr.S_un.S_un_b.s_b3,
+        sin.sin_addr.S_un.S_un_b.s_b4);
+#else
+    sprintf(buffer, "%d.%d.%d.%d", (uint8)sin.sin_addr.s_addr,
+        (uint8)(sin.sin_addr.s_addr >> 8),
+        (uint8)(sin.sin_addr.s_addr >> 16),
+        (uint8)(sin.sin_addr.s_addr >> 24));
 #endif
 
     return std::string(buffer);
@@ -140,7 +160,7 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
         info.address.sin = *((sockaddr_in *)&ss);
         info.benv = bev;
 
-        LOGWRITEF("Client %s connected", info.address.ToString().c_str());
+        LOGWRITEF("Client %s connected", info.address.ToStringFull().c_str());
 
         TheServer.clients[bev] = info;
     }
@@ -256,7 +276,7 @@ static void CallbackError(struct bufferevent *bev, short error, void *)
 {
     if (error & BEV_EVENT_READING)
     {
-        LOGWRITEF("Client %s disconnected", TheServer.clients[bev].address.ToString().c_str());
+        LOGWRITEF("Client %s disconnected", TheServer.clients[bev].address.ToStringFull().c_str());
 
         TheServer.clients.erase(bev);
     }
