@@ -68,10 +68,17 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
 {
     sin = *((sockaddr_in *)ip);
 
+#ifdef WIN32
     if (sin.sin_addr.S_un.S_un_b.s_b1 == 127 &&
         sin.sin_addr.S_un.S_un_b.s_b2 == 0 &&
         sin.sin_addr.S_un.S_un_b.s_b3 == 0 &&
         sin.sin_addr.S_un.S_un_b.s_b4 == 1)
+#else
+    if ((uint8)(sin.sin_addr.s_addr >> 0) == 127 &&
+        (uint8)(sin.sin_addr.s_addr >> 8) == 0 &&
+        (uint8)(sin.sin_addr.s_addr >> 16) == 0 &&
+        (uint8)(sin.sin_addr.s_addr >> 24) == 1)
+#endif
     {
         system("ifconig > address.txt");
     }
