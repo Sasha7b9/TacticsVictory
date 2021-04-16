@@ -7,8 +7,8 @@ function ShowHint {
 
 
 function MakeProject {
-    rm -R -f generated/$1
-    cmake . -Bgenerated/$1 -G "CodeBlocks - Unix Makefiles" -DCMAKE_BUILD_TYPE=$2 -DURHO3D_64BIT=1 -DURHO3D_THREADING=1 -DURHO3D_LIB_TYPE=SHARED
+    rm -R -f generated/$1/ThirdParty
+    cmake . -B../../generated/$1/ThirdParty -G "CodeBlocks - Unix Makefiles" -DCMAKE_BUILD_TYPE=$2
 }
 
 
@@ -72,18 +72,7 @@ echo $1
 
 dir=$PWD
 
-cd ../../../..
-
-if [ -d Urho3D ]
-then
-    isMake=0
-    isBuild=1
-fi
-
-if [ ! -d Urho3D ]
-then
-    git clone https://github.com/Sasha7b9/Urho3D.git
-fi
+cd ../../../src/ThirdParty
 
 case $1 in
 "make"  ) isMake=1  ;;
