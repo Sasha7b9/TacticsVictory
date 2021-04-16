@@ -59,7 +59,7 @@ function BuildProjects {
 
 # Start here <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-# ./stop.sh all
+./stop.sh all
 
 set -e              # Exit immediately if a command exits with a non-zero status.
 

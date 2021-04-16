@@ -3,7 +3,7 @@
 # Functions <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 function ShowHint {
     echo "    Usage:"
-    echo "          ./stop.sh [ master | uploader | all ]"
+    echo "          ./stop.sh [ master | uploader | livingroom | all ]"
 }
 
 function Start {
@@ -23,6 +23,7 @@ set -e              # Немедленно выйти, если команда �
 
 startMaster=0
 startUploader=0
+startLivingRoom=0
 
 
 if [[ $# -ne 1 ]]
@@ -36,8 +37,11 @@ case $1 in
 
     "uploader" ) startUploader=1 ;;
 
+    "livingroom" ) startLivingRoom=1 ;;
+
     "all"      ) startMaster=1
-                 startUploader=1 ;;
+                 startUploader=1
+                 startLivingRoom=1;;
 
     *          ) ShowHint
                  exit           ;;
@@ -49,5 +53,6 @@ cd ../../out/release
 
 Start $startUploader Uploader
 Start $startMaster Master
+Start $startLivingRoom LivingRoom
 
 cd $dir
