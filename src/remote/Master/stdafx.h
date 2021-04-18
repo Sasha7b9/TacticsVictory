@@ -4,7 +4,11 @@
 
 #ifdef WIN32
 #pragma warning(push, 0)
+#else
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wclass-memaccess"
 #endif
+
 
 #include <cstdarg>
 #include <iostream>
@@ -17,23 +21,18 @@
 #include <vector>
 
 #undef Bool
-#ifndef WIN32
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wclass-memaccess"
-#endif
 #include <rapidjson/document.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
-#ifndef WIN32
-#pragma GCC diagnostic pop
-#endif
 
 #include <event2/bufferevent.h>
 #include <event2/buffer.h>
 #include <event2/listener.h>
 
 #ifdef WIN32
-    #pragma warning(pop)
+#pragma warning(pop)
+#else
+#pragma GCC diagnostic pop
 #endif
 
 #include "defines.h"
