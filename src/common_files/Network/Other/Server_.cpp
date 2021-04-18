@@ -4,6 +4,12 @@
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/Server_.h"
 #include "Utils/StringUtils_.h"
+#ifdef WIN32
+#else
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#endif
 
 
 static const char MESSAGE[] = "Hello, World!";
