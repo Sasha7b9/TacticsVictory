@@ -98,6 +98,8 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
 
         file.ReadString(ip);
 
+        LOGWRITE("my ip is %s", ip.c_str());
+
         inet_aton(ip.c_str(), &sin.sin_addr);
     }
 #endif
