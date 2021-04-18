@@ -119,6 +119,8 @@ bool FS::File::Open(pchar _name, pchar file, int line, ModeAccess::E mode)
 
 #else
 
+    (void)file;
+
     uint access = 0;
 
     if (mode == ModeAccess::Read)       { access = O_RDONLY; } 
