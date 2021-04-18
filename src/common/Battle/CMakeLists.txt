@@ -40,7 +40,6 @@ else()
     add_compile_options(-Wtype-limits)
     add_compile_options(-Wuninitialized)
     add_compile_options(-Wunused-parameter)
-#    add_compile_options(-Wno-ignored-qualifiers)    # type qualifiers ignored on cast result type
 
 endif()
 

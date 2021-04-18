@@ -29,7 +29,14 @@ if(WIN32)
 
 else()
 
-    add_compile_options(-Wno-ignored-qualifiers)    # type qualifiers ignored on cast result type
+    add_compile_options(-Wclobbered)
+    add_compile_options(-Wempty-body)
+    add_compile_options(-Wignored-qualifiers)
+    add_compile_options(-Wmissing-field-initializers)
+    add_compile_options(-Wsign-compare)
+    add_compile_options(-Wtype-limits)
+    add_compile_options(-Wuninitialized)
+    add_compile_options(-Wunused-parameter)
 
 endif()
 

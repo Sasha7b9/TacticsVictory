@@ -33,6 +33,17 @@ if(WIN32)
                                     # implies that compiler generated copy/move constructors and copy/move assignment
                                     # operators are not trivial
 
+else()
+
+    add_compile_options(-Wclobbered)
+    add_compile_options(-Wempty-body)
+    add_compile_options(-Wignored-qualifiers)
+    add_compile_options(-Wmissing-field-initializers)
+    add_compile_options(-Wsign-compare)
+    add_compile_options(-Wtype-limits)
+    add_compile_options(-Wuninitialized)
+    add_compile_options(-Wunused-parameter)
+
 endif()
 
 file(GLOB SRC         ../../common_files/defines_.h
