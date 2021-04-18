@@ -120,6 +120,7 @@ bool FS::File::Open(pchar _name, pchar file, int line, ModeAccess::E mode)
 #else
 
     (void)file;
+    (void)line;
 
     uint access = 0;
 
