@@ -101,9 +101,9 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
 
         file.ReadString(ip);
 
-        LOGWRITEF("                      my ip is %s", ip.c_str());
-
         inet_aton(ip.c_str(), &sin.sin_addr);
+
+        FS::RemoveFile("address.txt");
     }
 #endif
 }
@@ -198,20 +198,6 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 #else
     getsockname(fd, &addr, &len);
 #endif
-
-    LOGWRITEF("%d %d %d %d %d %d %d %d %d %d %d %d",
-        addr.sa_data[0],
-        addr.sa_data[0],
-        addr.sa_data[0],
-        addr.sa_data[0],
-        addr.sa_data[0],
-        addr.sa_data[0],
-        addr.sa_data[0],
-        addr.sa_data[0],
-        addr.sa_data[0],
-        addr.sa_data[0],
-        addr.sa_data[0],
-        addr.sa_data[0]);
 
     if (fd < 0)
     {

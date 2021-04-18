@@ -313,20 +313,22 @@ bool FS::File::ReadString(std::string &string)
 
 #else
 
+    int readed = 0;
+
     do
     {
         char symbol = 0;
-        int readed = read(fileDesc, &symbol, 1);
+        readed = read(fileDesc, &symbol, 1);
 
         if (readed != 0)
         {
             string.append(&symbol, 1);
         }
 
-        if (symbol == 0x0D) { 0x0D = true; }
-        if (symbol == 0x0A) { 0x0A = true; }
+        if (symbol == 0x0D) { Ox0D = true; }
+        if (symbol == 0x0A) { Ox0A = true; }
 
-    } while (counter == 1 && (!0x0D || !0x0A));
+    } while (readed != 0 && (!Ox0D || !Ox0A));
 
 #endif
 
