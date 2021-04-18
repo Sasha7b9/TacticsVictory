@@ -46,6 +46,7 @@ file(GLOB FILESYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
                      ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK    ../../common_files/Network/Other/NetworkTypes_.*
                      ../../common_files/Network/Other/ServerConnectorTCP_.*
+                     ../../common_files/Network/Other/ServerUDP_.*
                      ../../common_files/Network/Other/SocketsTCP_.*
                                         Network/*.*)
 file(GLOB UTILS      ../../common_files/Utils/GlobalFunctions_.*
