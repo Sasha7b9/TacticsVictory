@@ -27,6 +27,10 @@ if(WIN32)
                                     # specified
     add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum'
 
+else()
+
+    add_compile_options(-Wno-ignored-qualifiers)    # type qualifiers ignored on cast result type
+
 endif()
 
 file(GLOB SRC        ../../common_files/*.h
