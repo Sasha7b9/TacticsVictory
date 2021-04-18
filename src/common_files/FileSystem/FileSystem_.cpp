@@ -289,12 +289,12 @@ bool FS::File::ReadString(std::string &string)
 {
     string.clear();
 
+    bool Ox0D = false;
+    bool Ox0A = false;
+
 #ifdef WIN32
 
     DWORD counter = 0;
-
-    bool Ox0D = false;
-    bool Ox0A = false;
 
     do 
     {
@@ -311,13 +311,26 @@ bool FS::File::ReadString(std::string &string)
 
     } while (counter == 1 && (!Ox0D || !Ox0A));
 
-    return Ox0D && Ox0A;
-
 #else
 
-    return false;
+    do
+    {
+        char symbol = 0;
+        int readed = read(fileDesc, &symbol, 1);
+
+        if (readed != 0)
+        {
+            string.append(&symbol, 1);
+        }
+
+        if (symbol == 0x0D) { 0x0D = true; }
+        if (symbol == 0x0A) { 0x0A = true; }
+
+    } while (counter == 1 && (!0x0D || !0x0A));
 
 #endif
+
+    return Ox0D && Ox0A;
 }
 
 
