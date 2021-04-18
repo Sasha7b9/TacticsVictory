@@ -58,9 +58,7 @@ file(GLOB UTILS               ../../common_files/Utils/Log_.*
                               ../../common_files/Utils/LogRAW_.*
                               ../../common_files/Utils/StringUtils_.*
                               ../../common_files/Utils/UtilsOS_.*)
-file(GLOB THIRDPARTY_LIBEVENT ../../ThirdParty/libevent/libevent_bucket1.c
-                              ../../ThirdParty/libevent/libevent_bucket2.c
-                              ../../ThirdParty/libevent/libevent_bucket3.c)
+file(GLOB THIRDPARTY_LIBEVENT ../../ThirdParty/libevent/libevent_bucket*.c)
 
 
 source_group(src                  FILES ${SRC})
