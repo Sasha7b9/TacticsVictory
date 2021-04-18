@@ -172,7 +172,11 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
     sockaddr addr;
     socklen_t len = sizeof(addr);
 
+#ifdef WIN32
+    getsockname((SOCKET)fd, &addr, &len);
+#else
     getsockname(fd, &addr, &len);
+#endif
 
     LOGWRITEF("%d %d %d %d %d %d %d %d %d %d %d %d",
         addr.sa_data[0],
