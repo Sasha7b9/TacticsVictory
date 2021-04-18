@@ -208,6 +208,7 @@ if (("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC") OR ("${CMAKE_C_SIMULATE_ID}" STRE
     set(MSVC 1)
 endif()
 
+
 # Detect library type
 set(EVENT_LIBRARY_TYPE)
 if ("${EVENT__LIBRARY_TYPE}" STREQUAL "DEFAULT")
@@ -352,6 +353,9 @@ if(WIN32)
         bcrypt
     )
     set(CMAKE_REQUIRED_DEFINITIONS -FIwinsock2.h -FIws2tcpip.h -D_WIN32_WINNT=0x0600)
+    
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -W0")
+
 endif()
 if (SOLARIS)
     list(APPEND CMAKE_REQUIRED_LIBRARIES

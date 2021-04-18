@@ -59,50 +59,20 @@ file(GLOB UTILS       ../../common_files/Utils/Log_.*
                       ../../common_files/Utils/StringUtils_.*
                       ../../common_files/Utils/UtilsOS_.*)
 
-#file(GLOB LIBEVENT               ThirdParty/libevent.c
-#                                 ThirdParty/libevent2.c
-#                                 ThirdParty/libevent3.c)
-#file(GLOB LIBEVENT_INCLUDE ../../ThirdParty/libevent/include/event2/bufferevent.h
-#                           ../../ThirdParty/libevent/include/event2/buffer.h
-#                           ../../ThirdParty/libevent/include/event2/listener.h)
-#file(GLOB LIBEVENT_SOURCES ../../ThirdParty/libevent/buffer.c
-#                           ../../ThirdParty/libevent/buffer_iocp.c
-#                           ../../ThirdParty/libevent/bufferevent.c
-#                           ../../ThirdParty/libevent/bufferevent_async.c
-#                           ../../ThirdParty/libevent/bufferevent_filter.c
-#                           ../../ThirdParty/libevent/bufferevent_pair.c
-#                           ../../ThirdParty/libevent/bufferevent_ratelim.c
-#                           ../../ThirdParty/libevent/bufferevent_sock.c
-#                           ../../ThirdParty/libevent/epoll.c
-#                           ../../ThirdParty/libevent/event.c
-#                           ../../ThirdParty/libevent/event_iocp.c
-#                           ../../ThirdParty/libevent/evmap.c
-#                           ../../ThirdParty/libevent/evthread.c
-#                           ../../ThirdParty/libevent/evutil.c
-#                           ../../ThirdParty/libevent/evutil_rand.c
-#                           ../../ThirdParty/libevent/evutil_time.c
-#                           ../../ThirdParty/libevent/listener.c
-#                           ../../ThirdParty/libevent/log.c
-#                           ../../ThirdParty/libevent/signal.c
-#                           ../../ThirdParty/libevent/strlcpy.c
-#                           ../../ThirdParty/libevent/wepoll.c
-#                           ../../ThirdParty/libevent/win32select.c)
-
 source_group(src        FILES ${SRC})
 source_group(FileSystem FILES ${FILE_SYSTEM})
 source_group(Network    FILES ${NETWORK})
 source_group(Utils      FILES ${UTILS})
 
-#source_group(ThirdParty\\libevent          FILES ${LIBEVENT})
-#source_group(ThirdParty\\libevent\\include FILES ${LIBEVENT_INCLUDE})
-#source_group(ThirdParty\\libevent\\sources FILES ${LIBEVENT_SOURCES})
-
-
 set_source_files_properties(${LIBEVENT_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties(${SOCKPP_SOURCES}   PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS})
+if(WIN32)
+    link_directories(../../../generated/${SUB_DIR}/ThirdParty/libevent/lib/${CMAKE_BUILD_TYPE})
+else()
+endif()
 
+add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS})
 
 set_target_properties(${PROJECT_NAME}                                 PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} PROPERTIES UNITY_GROUP "bucket")
@@ -113,11 +83,11 @@ if(WIN32)
                                              # выполнения релизной версии
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
-    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt)
+    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt event)
 
 else()
 
-    target_link_libraries(${PROJECT_NAME} libevent)
+    target_link_libraries(${PROJECT_NAME} event event_core event_extra)
 
 endif()
 
