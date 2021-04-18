@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "GUI/Menu/Menu.h"
 #include "Network/Other/NetworkTypes_.h"
-#include "Network/Other/ServerConnector_.h"
+#include "Network/Other/ServerConnectorTCP_.h"
 #include "Utils/GlobalFunctions_.h"
 #include "Utils/Log_.h"
 

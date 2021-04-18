@@ -8,7 +8,7 @@
 #include "GUI/Menu/PageFindServer.h"
 #include "Input/Mouse_.h"
 #include "Network/Other/NetworkTypes_.h"
-#include "Network/Other/ServerConnector_.h"
+#include "Network/Other/ServerConnectorTCP_.h"
 #include "Scene/Cameras/Camera_.h"
 #include "Utils/GlobalFunctions_.h"
 

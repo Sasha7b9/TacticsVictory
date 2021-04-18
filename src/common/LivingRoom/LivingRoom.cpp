@@ -3,7 +3,7 @@
 #include "LivingRoom.h"
 #include "FileSystem/ConfigurationFile_.h"
 #include "Network/Other/NetworkTypes_.h"
-#include "Network/Other/ServerConnector_.h"
+#include "Network/Other/ServerConnectorTCP_.h"
 
 
 int LivingRoom::Run(pchar ip)
