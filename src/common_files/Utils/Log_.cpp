@@ -153,7 +153,7 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar symbols)
             std::strcat(v.data(), " ");
         }
 
-        snprintf((char *const)v.data() + std::strlen(v.data()), 1024, "| %s", text);
+        snprintf(v.data() + std::strlen(v.data()), 1024, "| %s", text);
     }
     else
     {
@@ -162,7 +162,7 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar symbols)
             std::strcat(v.data(), " ");
         }
 
-        snprintf((char *const)v.data() + std::strlen(v.data()), 1024, "%s | %s", symbols, text);
+        snprintf(v.data() + std::strlen(v.data()), 1024, "%s | %s", symbols, text);
     }
 
     Write(v.data());
