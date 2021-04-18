@@ -349,7 +349,9 @@ void FS::CreateDirectory(std::string &path)
 
 #else
 
+    (void)path;
 
+    LOGERROR("Empty funciton");
 
 #endif
 }
