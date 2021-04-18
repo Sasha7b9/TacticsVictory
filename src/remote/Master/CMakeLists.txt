@@ -6,7 +6,7 @@ include_directories(.
                     ../../common_files
                     ../../ThirdParty/libevent/compat
                     ../../ThirdParty/libevent/include
-                    ../../../generated/${SUB_DIR}/ThirdParty/libevent/include
+                    ../../ThirdParty/libevent/build/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
 add_definitions(-DURHO3D_STATIC_DEFINE -DEVENT__HAVE_SA_FAMILY_T -DHAVE_CONFIG_H -DTINYTEST_LOCAL)
@@ -46,33 +46,30 @@ else()
 
 endif()
 
-file(GLOB SRC         ../../common_files/defines_.h
-                                        *.cpp
-                                        *.h)
-file(GLOB FILE_SYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
-                      ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB NETWORK     ../../common_files/Network/Other/NetworkTypes_.*
-                      ../../common_files/Network/Other/Server_.*
-                                         Network/ServerHandlers.cpp)
-file(GLOB UTILS       ../../common_files/Utils/Log_.*
-                      ../../common_files/Utils/LogRAW_.*
-                      ../../common_files/Utils/StringUtils_.*
-                      ../../common_files/Utils/UtilsOS_.*)
+file(GLOB SRC                 ../../common_files/defines_.h
+                                                *.cpp
+                                                *.h)
+file(GLOB FILE_SYSTEM         ../../common_files/FileSystem/ConfigurationFile_.*
+                              ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB NETWORK             ../../common_files/Network/Other/NetworkTypes_.*
+                              ../../common_files/Network/Other/Server_.*
+                                                 Network/ServerHandlers.cpp)
+file(GLOB UTILS               ../../common_files/Utils/Log_.*
+                              ../../common_files/Utils/LogRAW_.*
+                              ../../common_files/Utils/StringUtils_.*
+                              ../../common_files/Utils/UtilsOS_.*)
+file(GLOB THIRDPARTY_LIBEVENT ../../ThirdParty/libevent/libevent_bucket1.c
+                              ../../ThirdParty/libevent/libevent_bucket2.c
+                              ../../ThirdParty/libevent/libevent_bucket3.c)
 
-source_group(src        FILES ${SRC})
-source_group(FileSystem FILES ${FILE_SYSTEM})
-source_group(Network    FILES ${NETWORK})
-source_group(Utils      FILES ${UTILS})
 
-set_source_files_properties(${LIBEVENT_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties(${SOCKPP_SOURCES}   PROPERTIES HEADER_FILE_ONLY TRUE)
+source_group(src                  FILES ${SRC})
+source_group(FileSystem           FILES ${FILE_SYSTEM})
+source_group(Network              FILES ${NETWORK})
+source_group(Utils                FILES ${UTILS})
+source_group(ThirdParty\\libevent FILES ${THIRDPARTY_LIBEVENT})
 
-if(WIN32)
-    link_directories(../../../generated/${SUB_DIR}/ThirdParty/libevent/lib/${CMAKE_BUILD_TYPE})
-else()
-endif()
-
-add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS})
+add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} ${THIRDPARTY_LIBEVENT})
 
 set_target_properties(${PROJECT_NAME}                                 PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} PROPERTIES UNITY_GROUP "bucket")
@@ -83,11 +80,9 @@ if(WIN32)
                                              # выполнения релизной версии
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
-    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt event)
+    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt)
 
 else()
-
-    target_link_libraries(${PROJECT_NAME} event event_core event_extra)
 
 endif()
 

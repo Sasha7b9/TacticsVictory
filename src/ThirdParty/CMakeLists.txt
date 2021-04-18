@@ -55,4 +55,3 @@ function(add_subdirectory_with_folder _folder_name _folder)
 endfunction()
 
 add_subdirectory_with_folder("sqlite" sqlite)
-add_subdirectory_with_folder("libevent" libevent)
