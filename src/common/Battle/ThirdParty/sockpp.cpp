@@ -5,7 +5,7 @@
 #pragma warning(push, 0)
 #else
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-parameter"
+//#pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
 #include "../../ThirdParty/sockpp/src/socket.cpp"
