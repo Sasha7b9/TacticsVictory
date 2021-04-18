@@ -144,7 +144,7 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar symbols)
 
     std::vector<char> v(1024);
 
-    snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
+    snprintf((char *const)v.data(), 1024, "%s:%d ", file, line);
 
     if (symbols[0] == '\0')
     {
