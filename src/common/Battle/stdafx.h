@@ -7,7 +7,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wclass-memaccess"
 #pragma GCC diagnostic ignored "-Wunused-function"
-#pragma GCC diagnostic ignored "-Werror=unused-parameter"
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
 #include <rapidjson/rapidjson.h>
