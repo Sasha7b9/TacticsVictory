@@ -6,7 +6,7 @@
 #else
 #pragma GCC diagnostic push
 //#pragma GCC diagnostic ignored "-Wunused-parameter"
-#pragma GCC diagnostic ignored "-Wno-all"
+#pragma GCC diagnostic ignored "-all"
 #endif
 
 #include "../../ThirdParty/sockpp/src/socket.cpp"
