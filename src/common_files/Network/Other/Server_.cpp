@@ -83,6 +83,16 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
         (uint8)(sin.sin_addr.s_addr >> 24) == 1)
     {
         [[maybe_unused]] auto result = system("wget -qO- eth0.me > address.txt");
+
+        File file;
+
+        file.Open("address.txt");
+        
+        std::string ip;
+
+        file.ReadString(ip);
+
+        inet_aton(ip.c_str(), &sin.sin_addr);
     }
 #endif
 }
