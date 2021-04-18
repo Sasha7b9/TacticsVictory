@@ -86,7 +86,7 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
 
         FS::File file;
 
-        file.Open("address.txt");
+        file.Open("address.txt", __FILE__, __LINE__);
         
         std::string ip;
 
