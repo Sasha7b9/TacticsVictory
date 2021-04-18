@@ -112,7 +112,8 @@ void Server::Run(uint16 port)
 
     evutil_make_socket_nonblocking(listener);
 
-#ifndef WIN32
+#ifdef WIN32
+#else
     {
         int one = 1;
         setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
