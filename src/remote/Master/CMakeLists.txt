@@ -115,6 +115,10 @@ if(WIN32)
     include(../../SetWorkingDirectory.cmake)
     target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt)
 
+else()
+
+    target_link_libraries(${PROJECT_NAME} libevent)
+
 endif()
 
 include(../../Install.cmake)
