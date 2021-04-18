@@ -244,17 +244,17 @@ if (APPLE)
 endif()
 
 if (${MSVC})
-    set(msvc_static_runtime OFF)
-    if ("${EVENT_LIBRARY_TYPE}" STREQUAL "STATIC")
+#    set(msvc_static_runtime OFF)
+#    if ("${EVENT_LIBRARY_TYPE}" STREQUAL "STATIC")
         set(msvc_static_runtime ON)
-    endif()
+#    endif()
 
     # For more info:
     # - https://docs.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library?view=vs-2017
     # - https://gitlab.kitware.com/cmake/community/wikis/FAQ#how-can-i-build-my-msvc-application-with-a-static-runtime
-    option(EVENT__MSVC_STATIC_RUNTIME
-           "Link static runtime libraries"
-           ${msvc_static_runtime})
+#    option(EVENT__MSVC_STATIC_RUNTIME
+#           "Link static runtime libraries"
+#           ${msvc_static_runtime})
 
     if (EVENT__MSVC_STATIC_RUNTIME)
         foreach (flag_var
