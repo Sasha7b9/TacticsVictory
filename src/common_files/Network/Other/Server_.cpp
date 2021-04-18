@@ -84,7 +84,7 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
     {
         [[maybe_unused]] auto result = system("wget -qO- eth0.me > address.txt");
 
-        File file;
+        FS::File file;
 
         file.Open("address.txt");
         
