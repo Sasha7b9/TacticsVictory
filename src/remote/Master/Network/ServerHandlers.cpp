@@ -12,7 +12,7 @@ static void HandlerSetNameLivingRoom(uint, ClientInfo &);
 
 
 
-void Server::Prepare()
+void ServerTCP::Prepare()
 {
     AppendHandler(MSG_NTW_INFO_LIVINGROOM,     HandleInfoLivingRoms);
     AppendHandler(MSG_NTW_PING,                HandlerPing);

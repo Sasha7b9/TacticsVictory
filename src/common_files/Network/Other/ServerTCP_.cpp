@@ -109,7 +109,7 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
 }
 
 
-void Server::Run(uint16 port)
+void ServerTCP::Run(uint16 port)
 {
     event_set_log_callback(CallbackLog);
 
@@ -222,7 +222,7 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 }
 
 
-void Server::SendAnswer(void *bev, uint id, pchar message, void *data, uint size_data)
+void ServerTCP::SendAnswer(void *bev, uint id, pchar message, void *data, uint size_data)
 {
     bufferevent_write((struct bufferevent *)bev, &id, 4);
 
@@ -239,7 +239,7 @@ void Server::SendAnswer(void *bev, uint id, pchar message, void *data, uint size
 }
 
 
-void Server::SendAnswer(void *bev, uint id, pchar message, pchar data)
+void ServerTCP::SendAnswer(void *bev, uint id, pchar message, pchar data)
 {
     SendAnswer(bev, id, message, (void *)data, (uint)std::strlen(data) + 1);
 }
@@ -360,7 +360,7 @@ static void CallbackError(struct bufferevent *bev, short error, void *)
 }
 
 
-void Server::AppendHandler(pchar command, handlerClient handler)
+void ServerTCP::AppendHandler(pchar command, handlerClient handler)
 {
     handlers[command] = handler;
 }

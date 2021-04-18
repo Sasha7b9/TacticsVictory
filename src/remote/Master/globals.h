@@ -2,9 +2,9 @@
 #pragma once
 
 class ConfigurationFile;
-class Server;
+class ServerTCP;
 
 
 extern ConfigurationFile TheConfig;
-extern Server            TheServer;
+extern ServerTCP            TheServer;
 extern ConfigurationFile TheSettings;

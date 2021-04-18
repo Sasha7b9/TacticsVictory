@@ -28,7 +28,7 @@ struct ClientInfo
 };
 
 
-class Server
+class ServerTCP
 {
 public:
 

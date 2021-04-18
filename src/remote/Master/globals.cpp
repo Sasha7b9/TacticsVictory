@@ -5,5 +5,5 @@
 
 
 ConfigurationFile TheConfig;
-Server            TheServer;
+ServerTCP            TheServer;
 ConfigurationFile TheSettings;
