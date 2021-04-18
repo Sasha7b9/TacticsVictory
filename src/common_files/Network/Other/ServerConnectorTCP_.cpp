@@ -13,18 +13,18 @@ static void ThreadConnect(ConnectorTCP *conn_out, pchar host, uint16 port, std::
 
     if (conn_out->Connect(host, port))
     {
-        *state = ServerConnector::State::EventConnection;
+        *state = ServerConnectorTCP::State::EventConnection;
     }
     else
     {
-        *state = ServerConnector::State::EventFailConnection;
+        *state = ServerConnectorTCP::State::EventFailConnection;
     }
 
     mutex->unlock();
 }
 
 
-void ServerConnector::Destroy()
+void ServerConnectorTCP::Destroy()
 {
     destroy = true;
 
@@ -35,13 +35,13 @@ void ServerConnector::Destroy()
 }
 
 
-bool ServerConnector::IsConnected()
+bool ServerConnectorTCP::IsConnected()
 {
     return (state == State::InConnection);
 }
 
 
-void ServerConnector::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
+void ServerConnectorTCP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
 {
     funcFailConnection = fail;
     funcConnection = connection;
@@ -49,7 +49,7 @@ void ServerConnector::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV dis
 }
 
 
-void ServerConnector::Connect()
+void ServerConnectorTCP::Connect()
 {
     if (!funcFailConnection || !funcConnection || !funcDisconnection)
     {
@@ -71,7 +71,7 @@ void ServerConnector::Connect()
 }
 
 
-void ServerConnector::Disconnect()
+void ServerConnectorTCP::Disconnect()
 {
     if (IsConnected())
     {
@@ -84,7 +84,7 @@ void ServerConnector::Disconnect()
 }
 
 
-uint ServerConnector::SendRequest(pchar request, const void *buffer, uint size_buffer)
+uint ServerConnectorTCP::SendRequest(pchar request, const void *buffer, uint size_buffer)
 {
     mutex.lock();
 
@@ -109,13 +109,13 @@ uint ServerConnector::SendRequest(pchar request, const void *buffer, uint size_b
 }
 
 
-uint ServerConnector::SendRequest(pchar request, pchar _data)
+uint ServerConnectorTCP::SendRequest(pchar request, pchar _data)
 {
     return SendRequest(request, _data, (uint)std::strlen(_data) + 1);
 }
 
 
-void ServerConnector::Update()
+void ServerConnectorTCP::Update()
 {
     ReceiveData();
 
@@ -177,7 +177,7 @@ void ServerConnector::Update()
 
 
 
-void ServerConnector::ReceiveData()
+void ServerConnectorTCP::ReceiveData()
 {
     if (!IsConnected())
     {
@@ -203,7 +203,7 @@ void ServerConnector::ReceiveData()
 }
 
 
-void ServerConnector::ProcessData()
+void ServerConnectorTCP::ProcessData()
 {
     while (data.size() > 4 + 4)        // Если принято данных больше чем id и количество байт в сообщении
     {
@@ -251,7 +251,7 @@ void ServerConnector::ProcessData()
 }
 
 
-void ServerConnector::ExecuteTasks()
+void ServerConnectorTCP::ExecuteTasks()
 {
     int64 now = GF::Timer::TimeMS();
 
@@ -272,7 +272,7 @@ void ServerConnector::ExecuteTasks()
 }
 
 
-void ServerConnector::SetTask(int64 dT, TaskMasterServer *task)
+void ServerConnectorTCP::SetTask(int64 dT, TaskMasterServer *task)
 {
     task->delta_time = dT;
 
@@ -282,7 +282,7 @@ void ServerConnector::SetTask(int64 dT, TaskMasterServer *task)
 }
 
 
-bool ServerConnector::ExistConnection()
+bool ServerConnectorTCP::ExistConnection()
 {
     int64 now = GF::Timer::TimeMS();
 

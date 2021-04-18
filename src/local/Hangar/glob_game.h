@@ -14,7 +14,7 @@
 
 
 extern ConfigurationFile TheSettings;
-extern ServerConnector   TheMasterServer;
+extern ServerConnectorTCP   TheMasterServer;
 
 extern CameraT           *TheCamera;
 extern Chat              *TheChat;

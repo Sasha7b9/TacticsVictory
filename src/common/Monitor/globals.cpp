@@ -5,4 +5,4 @@
 
 
 ConfigurationFile TheConfig;
-ServerConnector   TheMasterServer;
+ServerConnectorTCP   TheMasterServer;

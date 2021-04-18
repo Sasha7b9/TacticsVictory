@@ -22,7 +22,7 @@ static TaskMasterServer taskPing = {
 };
 
 
-void ServerConnector::SetTasks()
+void ServerConnectorTCP::SetTasks()
 {
     TheServerConnector.SetTask(1000, &taskPing);
 }

@@ -11,14 +11,14 @@ class ConsoleT;
 class GUI;
 class Hint;
 class LogRAW;
-class ServerConnector;
+class ServerConnectorTCP;
 class Menus;
 class Mouse;
 class PageStart;
 class WindowVariables;
 
 extern ConfigurationFile TheSettings;
-extern ServerConnector   TheServerConnector;
+extern ServerConnectorTCP   TheServerConnector;
 
 extern CameraT         *TheCamera;
 extern Client          *TheClient;

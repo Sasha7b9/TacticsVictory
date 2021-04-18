@@ -2,7 +2,7 @@
 #pragma once
 
 
-class ServerConnector;
+class ServerConnectorTCP;
 
 
-extern ServerConnector TheMasterServer;
+extern ServerConnectorTCP TheMasterServer;

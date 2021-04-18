@@ -4,4 +4,4 @@
 
 ConfigurationFile TheSettings;
 LivingRoom        TheLivingRoom;
-ServerConnector   TheServerConnector;
+ServerConnectorTCP   TheServerConnector;

@@ -37,7 +37,7 @@ static TaskMasterServer taskGetInfoLivingRooms = {
 };
 
 
-void ServerConnector::SetTasks()
+void ServerConnectorTCP::SetTasks()
 {
     TheServerConnector.SetTask(1000, &taskPing);
     TheServerConnector.SetTask(1000, &taskGetInfoLivingRooms);
