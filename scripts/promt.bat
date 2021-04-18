@@ -1,6 +1,6 @@
 @echo off
 
-set PATH=%PATH%;C:\Program Files\CMake\bin
+set PATH=%PATH%;C:\Program Files\CMake\bin;c:\Program Files\Git\mingw64\bin\
 
 set _CURRENT_DIR_=%CD%
 
