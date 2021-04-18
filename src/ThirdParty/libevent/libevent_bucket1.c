@@ -6,6 +6,7 @@
 #else
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wimplicit-functioin-declaration"
 #endif
 
 #ifdef WIN32
