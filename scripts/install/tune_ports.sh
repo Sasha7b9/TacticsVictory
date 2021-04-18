@@ -18,6 +18,7 @@ iptables --append INPUT --in-interface lo --jump ACCEPT
 
 iptables --append INPUT --match conntrack --ctstate ESTABLISHED,RELATED --jump ACCEPT
 
+iptables --append INPUT --protocol tcp --dport 21 --jump ACCEPT
 iptables --append INPUT --protocol tcp --dport 22 --jump ACCEPT
 iptables --append INPUT --protocol tcp --dport 80 --jump ACCEPT
 iptables --append INPUT --protocol tcp --dport 443 --jump ACCEPT
