@@ -173,7 +173,7 @@ void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symb
 {
     file = ExtractName(file, numSymbolsForMarker - SU::Length(symbols) - 1);
 
-    snprintf(const_cast<char *const>(v.data()), 1024, "%s:%d ", file, line);
+    snprintf(v.data(), 1024, "%s:%d ", file, line);
 
     while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(symbols) - 2)
     {
