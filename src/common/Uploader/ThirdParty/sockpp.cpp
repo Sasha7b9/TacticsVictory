@@ -3,6 +3,9 @@
 
 #ifdef WIN32
 #pragma warning(push, 0)
+#else
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
 #include "../../ThirdParty/sockpp/src/socket.cpp"
@@ -14,4 +17,6 @@
 
 #ifdef WIN32
 #pragma warning(pop)
+#else
+#pragma GCC diagnostic pop
 #endif
