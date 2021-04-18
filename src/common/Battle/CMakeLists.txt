@@ -30,6 +30,10 @@ if(WIN32)
     add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum' (Enum.3)
     add_compile_options(/wd28251)   # Inconsistent annotation for function: this instance has an error
 
+else()
+
+    add_compile_options(-Wno-ignored-qualifiers)    # type qualifiers ignored on cast result type
+
 endif()
 
 file(GLOB SRC                                    ../../common_files/*.*
