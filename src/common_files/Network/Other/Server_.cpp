@@ -82,7 +82,7 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
         (uint8)(sin.sin_addr.s_addr >> 16) == 0 &&
         (uint8)(sin.sin_addr.s_addr >> 24) == 1)
     {
-        system("wget -qO- eth0.me > address.txt");
+        (void)system("wget -qO- eth0.me > address.txt");
     }
 #endif
 }
