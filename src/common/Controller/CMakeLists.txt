@@ -27,6 +27,10 @@ if(WIN32)
     add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                     # specified
 
+else()
+
+    add_compile_options(-Wno-ignored-qualifiers)    # type qualifiers ignored on cast result type
+
 endif()
 
 file(GLOB SRC           ../../common_files/*.h *.cpp
