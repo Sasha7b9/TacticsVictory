@@ -9,6 +9,7 @@
 #pragma GCC diagnostic push
 //#pragma GCC diagnostic ignored "-Wclass-memaccess"
 #pragma GCC diagnostic ignored "-Wall"
+#pragma GCC diagnostic ignored "-Wextra"
 #endif
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
