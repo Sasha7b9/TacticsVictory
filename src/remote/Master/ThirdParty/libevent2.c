@@ -2,6 +2,7 @@
 
 #ifdef WIN32
 #pragma warning(push, 0)
+#pragma warning(disable:4706)
 #else
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
