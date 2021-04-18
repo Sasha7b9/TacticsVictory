@@ -73,6 +73,8 @@ add_executable( ${PROJECT_NAME} ${FILES_UNITY} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCE
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
 
+include(../../RuntimeLibrary.cmake)
+
 if(WIN32)
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
