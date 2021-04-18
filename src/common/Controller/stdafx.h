@@ -5,8 +5,7 @@
 #pragma warning(push, 0)
 #else
 #pragma GCC diagnostic push
-//#pragma GCC diagnostic ignored "-Wclass-memaccess"
-#pragma GCC diagnostic ignored "-w"
+#pragma GCC diagnostic ignored "-Wclass-memaccess"
 #endif
 
 #include <rapidjson/rapidjson.h>
