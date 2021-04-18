@@ -7,7 +7,8 @@
 
 #ifndef WIN32
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wclass-memaccess"
+//#pragma GCC diagnostic ignored "-Wclass-memaccess"
+#pragma GCC diagnostic ignored "-Wall"
 #endif
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
@@ -43,3 +44,4 @@ using namespace Urho3D;
 #include "defines.h"
 #include "globals.h"
 #include "Utils/Log_.h"
+
