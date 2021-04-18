@@ -18,8 +18,8 @@ if %2==1 goto MAKE
 goto HINT
 
 :MAKE
-rem rmdir generated\%1 /S /Q
-cmake . -B..\..\generated\%1\ThirdParty -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_GENERATOR="Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=%BUILD_TYPE%
+rmdir ..\..\generated\%1\ThirdParty /S /Q
+cmake . -B..\..\generated\%1\ThirdParty -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_GENERATOR="Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=%BUILD_TYPE% -DEVENT__DISABLE_OPENSSL=ON -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_REGRESS=ON
 
 goto EXIT
 

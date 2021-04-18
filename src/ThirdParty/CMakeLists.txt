@@ -26,11 +26,11 @@ set(CMAKE_CXX_STANDARD 17)
 
 if(WIN32)
 
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP")
 
 else()
 
-    add_definitions(-m64 -msse -msse2 -fno-strict-aliasing -fmax-errors=1 -Wall)
+    add_definitions(-m64 -msse -msse2 -fno-strict-aliasing -fmax-errors=1)
 
     if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
         add_definitions(-O0)
@@ -55,4 +55,4 @@ function(add_subdirectory_with_folder _folder_name _folder)
 endfunction()
 
 add_subdirectory_with_folder("sqlite" sqlite)
-#add_subdirectory_with_folder("libevent" libevent)
+add_subdirectory_with_folder("libevent" libevent)
