@@ -208,7 +208,6 @@ if (("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC") OR ("${CMAKE_C_SIMULATE_ID}" STRE
     set(MSVC 1)
 endif()
 
-
 # Detect library type
 set(EVENT_LIBRARY_TYPE)
 if ("${EVENT__LIBRARY_TYPE}" STREQUAL "DEFAULT")
@@ -245,17 +244,17 @@ if (APPLE)
 endif()
 
 if (${MSVC})
-    set(msvc_static_runtime OFF)
-    if ("${EVENT_LIBRARY_TYPE}" STREQUAL "STATIC")
+#    set(msvc_static_runtime OFF)
+#    if ("${EVENT_LIBRARY_TYPE}" STREQUAL "STATIC")
         set(msvc_static_runtime ON)
-    endif()
+#    endif()
 
     # For more info:
     # - https://docs.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library?view=vs-2017
     # - https://gitlab.kitware.com/cmake/community/wikis/FAQ#how-can-i-build-my-msvc-application-with-a-static-runtime
-    option(EVENT__MSVC_STATIC_RUNTIME
-           "Link static runtime libraries"
-           ${msvc_static_runtime})
+#    option(EVENT__MSVC_STATIC_RUNTIME
+#           "Link static runtime libraries"
+#           ${msvc_static_runtime})
 
     if (EVENT__MSVC_STATIC_RUNTIME)
         foreach (flag_var
@@ -269,15 +268,6 @@ if (${MSVC})
             endif()
         endforeach()
     endif()
-    
-    if(${CMAKE_BUILD_TYPE} STREQUAL Release)        # Для релизной версии
-        set_property(GLOBAL PROPERTY
-            MSVC_RUNTIME_LIBRARY "MultiThreaded")   # Устанавливаем статическую линковку рантайм-библиотек
-    elseif(${CMAKE_BUILD_TYPE} STREQUAL Debug)
-        set_property(GLOBAL PROPERTY
-            MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDLL")
-    endif()
-    
 endif()
 
 # GNUC specific options.
@@ -362,9 +352,6 @@ if(WIN32)
         bcrypt
     )
     set(CMAKE_REQUIRED_DEFINITIONS -FIwinsock2.h -FIws2tcpip.h -D_WIN32_WINNT=0x0600)
-    
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -W0")
-
 endif()
 if (SOLARIS)
     list(APPEND CMAKE_REQUIRED_LIBRARIES
@@ -1637,16 +1624,16 @@ if (EVENT__DOXYGEN)
 endif()
 
 
-#if (NOT TARGET uninstall)
-#	# Create the uninstall target.
-#	# https://gitlab.kitware.com/cmake/community/wikis/FAQ#can-i-do-make-uninstall-with-cmake
-#	configure_file(${PROJECT_SOURCE_DIR}/cmake/Uninstall.cmake.in
-#				   ${PROJECT_BINARY_DIR}/Uninstall.cmake
-#				   @ONLY)
-#
-#	add_custom_target(uninstall
-#					  COMMAND ${CMAKE_COMMAND} -P ${PROJECT_BINARY_DIR}/Uninstall.cmake)
-#endif()
+if (NOT TARGET uninstall)
+	# Create the uninstall target.
+	# https://gitlab.kitware.com/cmake/community/wikis/FAQ#can-i-do-make-uninstall-with-cmake
+	configure_file(${PROJECT_SOURCE_DIR}/cmake/Uninstall.cmake.in
+				   ${PROJECT_BINARY_DIR}/Uninstall.cmake
+				   @ONLY)
+
+	add_custom_target(uninstall
+					  COMMAND ${CMAKE_COMMAND} -P ${PROJECT_BINARY_DIR}/Uninstall.cmake)
+endif()
 
 message(STATUS "")
 message(STATUS "        ---( Libevent " ${EVENT_VERSION} " )---")
