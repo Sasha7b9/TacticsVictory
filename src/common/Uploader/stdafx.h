@@ -3,19 +3,15 @@
 
 #ifdef WIN32
 #pragma warning(push, 0)
-#endif
-
-#ifndef WIN32
+#else
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wclass-memaccess"
 #endif
+
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
-#ifndef WIN32
-#pragma GCC diagnostic pop
-#endif
 
 #ifdef WIN32
 #define _WINSOCKAPI_
@@ -37,6 +33,8 @@ using namespace Urho3D;
 
 #ifdef WIN32
 #pragma warning(pop)
+#else
+#pragma GCC diagnostic pop
 #endif
 
 #include "defines.h"
