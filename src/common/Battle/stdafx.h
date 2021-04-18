@@ -8,7 +8,6 @@
 #pragma GCC diagnostic ignored "-Wclass-memaccess"
 #pragma GCC diagnostic ignored "-Wunused-function"
 #pragma GCC diagnostic ignored "-Wunused-parameter"
-#pragma GCC diagnostic ignroed "-Wextra"
 #endif
 
 #include <rapidjson/rapidjson.h>
