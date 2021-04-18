@@ -92,13 +92,16 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
 
         FS::File file;
 
-        file.Open("address.txt", __FILE__, __LINE__);
-        
+        if(!file.Open("address.txt", __FILE__, __LINE__))
+        {
+            LOGERROR("Can not open file with address");
+        }
+
         std::string ip;
 
         file.ReadString(ip);
 
-        LOGWRITE("                      my ip is %s", ip.c_str());
+        LOGWRITEF("                      my ip is %s", ip.c_str());
 
         inet_aton(ip.c_str(), &sin.sin_addr);
     }
