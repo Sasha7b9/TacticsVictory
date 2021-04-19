@@ -19,7 +19,6 @@
 #include <windows.h>
 #endif
 
-#include <cstdarg>
 #include <locale>
 #include <map>
 #include <mutex>

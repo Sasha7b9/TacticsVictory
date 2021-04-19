@@ -4,6 +4,7 @@
 #include "Utils/StringUtils_.h"
 #include "Utils/UtilsOS_.h"
 #include <iostream>
+#include <cstdarg>
 
 
 #ifdef WIN32
