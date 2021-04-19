@@ -14,15 +14,14 @@
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 
+#include <event2/bufferevent.h>
+#include <event2/buffer.h>
+#include <event2/listener.h>
+
 #define _WINSOCKAPI_
 #ifdef WIN32
 #include <windows.h>
 #endif
-
-#include <locale>
-#include <map>
-#include <mutex>
-#include <vector>
 
 #include <sockpp/tcp_acceptor.h>
 #include <sockpp/tcp_connector.h>

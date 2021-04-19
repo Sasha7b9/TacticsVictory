@@ -5,6 +5,8 @@ set(CMAKE_UNITY_BUILD ON)
 include_directories(.
                     ../../common_files
                     ../../ThirdParty/sockpp/include
+                    ../../ThirdParty/libevent/include
+                    ../../ThirdParty/libevent/build/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
 add_definitions(-DURHO3D_STATIC_DEFINE)
@@ -40,29 +42,31 @@ else()
 
 endif()
 
-file(GLOB SRC        ../../common_files/*.h
-                                        *.h *.cpp)
-file(GLOB FILESYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
-                     ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB NETWORK    ../../common_files/Network/Other/NetworkTypes_.*
-                     ../../common_files/Network/Other/ServerConnectorTCP_.*
-                     ../../common_files/Network/Other/ServerUDP_.*
-                     ../../common_files/Network/Other/SocketsTCP_.*
-                                        Network/*.*)
-file(GLOB UTILS      ../../common_files/Utils/GlobalFunctions_.*
-                     ../../common_files/Utils/Log_.*
-                     ../../common_files/Utils/LogRAW_.*
-                     ../../common_files/Utils/StringUtils_.*
-                     ../../common_files/Utils/UtilsOS_.*)
+file(GLOB SRC                 ../../common_files/*.h
+                                                 *.h *.cpp)
+file(GLOB FILESYSTEM          ../../common_files/FileSystem/ConfigurationFile_.*
+                              ../../common_files/FileSystem/FileSystem_.*)
+file(GLOB NETWORK             ../../common_files/Network/Other/NetworkTypes_.*
+                              ../../common_files/Network/Other/ServerConnectorTCP_.*
+                              ../../common_files/Network/Other/ServerUDP_.*
+                              ../../common_files/Network/Other/SocketsTCP_.*
+                                                 Network/*.*)
+file(GLOB UTILS               ../../common_files/Utils/GlobalFunctions_.*
+                              ../../common_files/Utils/Log_.*
+                              ../../common_files/Utils/LogRAW_.*
+                              ../../common_files/Utils/StringUtils_.*
+                              ../../common_files/Utils/UtilsOS_.*)
+file(GLOB THIRDPARTY_LIBEVENT ../../ThirdParty/libevent/libevent_bucket*.c)
 
 file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
 file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
 file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
 
-source_group(src        FILES ${SRC})
-source_group(FileSystem FILES ${FILESYSTEM})
-source_group(Network    FILES ${NETWORK})
-source_group(Utils      FILES ${UTILS})
+source_group(src                  FILES ${SRC})
+source_group(FileSystem           FILES ${FILESYSTEM})
+source_group(Network              FILES ${NETWORK})
+source_group(Utils                FILES ${UTILS})
+source_group(ThirdParty\\libevent FILES ${THIRDPARTY_LIBEVENT})
 
 source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
 source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})

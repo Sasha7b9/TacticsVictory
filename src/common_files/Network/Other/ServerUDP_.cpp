@@ -1,16 +1,43 @@
 // 2021/04/18 23:26:50 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Other/ServerUDP_.h"
-
 #include <stdio.h>
 #include <stdlib.h>
-//#include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
-//#include <sys/socket.h>
-//#include <netinet/in.h>
-//#include <arpa/inet.h>
 #include <iostream>
+
+
+/// \todo Избавиться от предупреждений
+
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable:4244 4365 4996)
+#endif
+
+
+class ThreadUDP
+{
+public:
+
+    virtual ~ThreadUDP()
+    {
+        if (base != nullptr)
+        {
+            event_base_loopexit(base, NULL);
+            event_base_free(base);
+            base = nullptr;
+        }
+    }
+
+protected:
+
+    int sock_fd = -1;
+    event_base *base = nullptr;
+    event *event = nullptr;
+
+private:
+};
 
 
 SocketUtility &SocketUtility::GetInstance()
@@ -117,4 +144,17 @@ int SocketUtility::InitSocket(TypeServer::E type)
         LOGERROR("Set socket to reuse failed");
         return -1;
     }
+
+    if (setsockopt(sock_fd, SOL_SOCKET, SO_KEEPALIVE, (char *)&on, sizeof(on)) < 0)
+    {
+        LOGERROR("Set socket to keep alive failed");
+        return -1;
+    }
+
+    return sock_fd;
 }
+
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif
