@@ -92,8 +92,15 @@ protected:
     int sock_fd = -1;
     event_base *base = nullptr;
     event *ev = nullptr;
+    const int buffer_size = 1024;
+};
 
-private:
+
+class ThreadForTransactionUDP : public ThreadUDP
+{
+public:
+    ThreadForTransactionUDP() = default;
+    virtual ~ThreadForTransactionUDP() = default;
 };
 
 
