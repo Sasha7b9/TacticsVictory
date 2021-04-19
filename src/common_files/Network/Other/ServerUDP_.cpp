@@ -28,13 +28,70 @@ public:
             event_base_free(base);
             base = nullptr;
         }
+
+        if (ev != nullptr)
+        {
+            event_free(ev);
+            ev = nullptr;
+        }
+    }
+
+    bool Init(int fd)
+    {
+        if (fd < 0)
+        {
+            return false;
+        }
+
+        sock_fd = fd;
+        base = event_base_new();
+
+        if (nullptr == base)
+        {
+            return false;
+        }
+
+        ev = event_new(base, sock_fd, EV_READ | EV_PERSIST, ThreadUDP::CallbackReadUDP, this);
+
+        if (nullptr == ev)
+        {
+            return false;
+        }
+
+        return 0 == event_add(ev, NULL);
+    }
+
+    void DispatchEventUDP()
+    {
+        if (base != nullptr)
+        {
+            event_base_dispatch(base);
+        }
+    }
+
+    virtual bool DealMessageUDP(int fd) = 0;
+
+#ifdef WIN32
+    static void CallbackReadUDP(intptr_t fd, int16, void *arg)
+#else
+    static void CallbackReadUDP(int fd, short ev, void *arg)
+#endif
+    {
+        ThreadUDP *p = reinterpret_cast<ThreadUDP *>(arg);
+
+        if (nullptr == p)
+        {
+            return;
+        }
+
+        p->DealMessageUDP(fd);
     }
 
 protected:
 
     int sock_fd = -1;
     event_base *base = nullptr;
-    event *event = nullptr;
+    event *ev = nullptr;
 
 private:
 };
