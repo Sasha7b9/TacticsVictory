@@ -4,37 +4,7 @@
 #include <map>
 
 
-// Клиент клиента
-class BaseConnectorTCP
-{
-public:
 
-    virtual ~BaseConnectorTCP();
-
-    void Release();
-
-    bool Connect(const std::string &host, uint16 port);
-
-    void SetReadTimeOut(uint timeout);
-
-    void SetWriteTimeOut(uint timeout);
-
-    void Disconnect();
-
-    bool IsConnected() const;
-
-    // Передаёт size байт из массива data
-    void Transmit(const void *data, uint size);
-
-    // Делает попытку приёма size байт в массив data. Возвращает количество реально принятых байт.
-    // В случае ошибки возрващает -1
-    // Если size == 0, то ничего не читает, а возвращает количество доступных для чтения байт
-    ssize_t Receive(void *data, uint size);
-
-private:
-
-    std::unique_ptr<sockpp::tcp_connector>  connection;
-};
 
 
 // Сервер
