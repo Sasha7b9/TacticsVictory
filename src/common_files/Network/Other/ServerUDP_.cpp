@@ -107,6 +107,7 @@ public:
     {
         char buf[buffer_size] = "";
         socklen_t size = sizeof(struct sockaddr);
+
         struct sockaddr_in client_addr = { 0 };
 
         int len = recvfrom(fd, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
@@ -148,7 +149,9 @@ int SocketUtility::BindSocket(const SocketConfig &config)
         return sock_fd;
     }
 
-    struct sockaddr_in addr = { 0 };
+    struct sockaddr_in addr;
+    addr.sin_family = 0;
+
     addr.sin_family = AF_INET;
     addr.sin_addr.s_addr = inet_addr(config.ip.c_str());
     addr.sin_port = htons(config.port);
