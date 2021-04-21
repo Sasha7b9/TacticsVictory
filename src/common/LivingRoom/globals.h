@@ -2,7 +2,7 @@
 #pragma once
 #include "LivingRoom.h"
 #include "FileSystem/ConfigurationFile_.h"
-#include "Network/Other/ServerConnectorTCP_.h"
+#include "Network/Other/ConnectorTCP_.h"
 
 
 extern ConfigurationFile  TheSettings;

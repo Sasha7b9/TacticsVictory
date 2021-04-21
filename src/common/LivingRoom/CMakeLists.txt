@@ -48,8 +48,8 @@ file(GLOB SRC                 ../../common_files/*.h
                                                  *.h *.cpp)
 file(GLOB FILESYSTEM          ../../common_files/FileSystem/ConfigurationFile_.*
                               ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB NETWORK             ../../common_files/Network/Other/NetworkTypes_.*
-                              ../../common_files/Network/Other/ServerConnectorTCP_.*
+file(GLOB NETWORK             ../../common_files/Network/Other/ConnectorTCP_.*
+                              ../../common_files/Network/Other/NetworkTypes_.*
                               ../../common_files/Network/Other/ServerUDP_.*
                               ../../common_files/Network/Other/SocketsTCP_.*
                                                  Network/*.*)

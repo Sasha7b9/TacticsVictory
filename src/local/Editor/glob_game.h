@@ -5,15 +5,15 @@
 #include "GUI/Cursor_.h"
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"
-#include "Network/Other/ServerConnectorTCP_.h"
+#include "Network/Other/ConnectorTCP_.h"
 #include "Scene/Cameras/Camera_.h"
 #include "Scene/Terrain/Terrain_.h"
 #include "Utils/Log_.h"
 
 
-extern ConfigurationFile TheConfig;
-extern ConfigurationFile TheSettings;
-extern ServerConnectorTCP   TheMasterServer;
+extern ConfigurationFile  TheConfig;
+extern ConfigurationFile  TheSettings;
+extern ServerConnectorTCP TheMasterServer;
 
 extern CameraT         *TheCamera;
 extern Editor          *TheClient;
