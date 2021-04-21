@@ -58,7 +58,11 @@ public:
     bool Init(const SocketConfig &config, int network_size);
 
 private:
+
+    void Prepare();
+
     void StartThreadUDP(int index);
+
     SocketConfig config;
     std::vector<std::unique_ptr<ThreadUDP>> threadsUPD;
     std::vector<std::thread> threads;
