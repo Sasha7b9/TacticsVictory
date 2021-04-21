@@ -110,9 +110,9 @@ void Client::Start()
 
 void Client::TryConnectToLocalMaster()
 {
-    TheServerConnector.SetAddress("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
+    TheMaster.SetAddress("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
 
-    TheServerConnector.SetCallbacks
+    TheMaster.SetCallbacks
     (
         []()
         {
@@ -123,12 +123,12 @@ void Client::TryConnectToLocalMaster()
         {
             TheGUI->AppendInfo("Connection to local master server established");
             LOGWRITE("Connection to local master server established");
-            TheServerConnector.SetTasks();
+            TheMaster.SetTasks();
         },
         []()
         {
             TheGUI->AppendWarning("The master server is down. Attempting to connect");
-            TheServerConnector.Connect();
+            TheMaster.Connect();
             LOGWRITE("The master server is down. Attempting to connect");
             TheMenu->pageFindServer->SetServersInfo("");
         }
@@ -136,7 +136,7 @@ void Client::TryConnectToLocalMaster()
 
     LOGWRITE("Wait server for connection");
 
-    TheServerConnector.Connect();
+    TheMaster.Connect();
 }
 
 
@@ -146,26 +146,26 @@ void Client::ParseArguments()
 
     if (arguments.Size() != 0)
     {
-        TheServerConnector.SetAddress(arguments[0].CString(), (uint16)TheSettings.GetInt("master_server", "port"));
+        TheMaster.SetAddress(arguments[0].CString(), (uint16)TheSettings.GetInt("master_server", "port"));
 
-        TheServerConnector.SetCallbacks
+        TheMaster.SetCallbacks
         (
             []()
             {
                 TheGUI->AppendWarning("Can't connect to master server");
-                TheServerConnector.Connect();
+                TheMaster.Connect();
             },
             []()
             {
                 TheGUI->AppendInfo("Connection to master server established");
                 LOGWRITE("Connection to master server established");
 
-                TheServerConnector.SetTasks();
+                TheMaster.SetTasks();
             },
             []()
             {
                 TheGUI->AppendWarning("The master server is down. Attempting to connect");
-                TheServerConnector.Connect();
+                TheMaster.Connect();
                 LOGWRITE("The master server is down. Attempting to connect");
                 TheMenu->pageFindServer->SetServersInfo("");
             }
@@ -173,7 +173,7 @@ void Client::ParseArguments()
 
         LOGWRITE("Wait server for connection");
 
-        TheServerConnector.Connect();
+        TheMaster.Connect();
     }
     else
     {
@@ -187,7 +187,7 @@ void Client::Stop()
 {
     TheSettings.Unload();
 
-    TheServerConnector.Destroy();
+    TheMaster.Destroy();
 
     engine_->DumpResources(true);
     engine_->DumpProfiler();
