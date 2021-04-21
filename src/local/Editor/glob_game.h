@@ -11,9 +11,9 @@
 #include "Utils/Log_.h"
 
 
-extern ConfigurationFile  TheConfig;
-extern ConfigurationFile  TheSettings;
-extern ConnectorTCP TheMasterServer;
+extern ConfigurationFile TheConfig;
+extern ConfigurationFile TheSettings;
+extern ConnectorTCP      TheMasterServer;
 
 extern CameraT         *TheCamera;
 extern Editor          *TheClient;

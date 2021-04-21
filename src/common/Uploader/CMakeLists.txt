@@ -44,9 +44,9 @@ file(GLOB SRC           ../../common_files/*.h
                                            *.h *.cpp)
 file(GLOB FILESYSTEM    ../../common_files/FileSystem/ConfigurationFile_.*
                         ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB NETWORK_OTHER ../../common_files/Network/Other/MasterServer_.*
-                        ../../common_files/Network/Other/SocketsTCP_.*)
-file(GLOB UTILS         ../../common_files/Utils/Log_.*
+file(GLOB NETWORK_OTHER ../../common_files/Network/Other/ConnectorTCP_.*)
+file(GLOB UTILS         ../../common_files/Utils/GlobalFunctions_.*
+                        ../../common_files/Utils/Log_.*
                         ../../common_files/Utils/LogRAW_.*
                         ../../common_files/Utils/StringUtils_.*
                         ../../common_files/Utils/UtilsOS_.*)

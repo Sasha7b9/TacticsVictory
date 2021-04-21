@@ -65,8 +65,7 @@ file(GLOB GUI_WINDOWS                 ../../common_files/GUI/Windows/Console_.*
                                       ../../common_files/GUI/Windows/Window_.*)
 file(GLOB INPUT                       ../../common_files/Input/Mouse_.*
                                                          Input/*.*)
-file(GLOB NETWORK                     ../../common_files/Network/Other/MasterServer_.*
-                                      ../../common_files/Network/Other/SocketsTCP_.*)
+file(GLOB NETWORK                     ../../common_files/Network/Other/ConnectorTCP_.*)
 file(GLOB SCENE                                          Scene/*.*)
 file(GLOB SCENE_CAMERAS               ../../common_files/Scene/Cameras/*.*)
 file(GLOB SCENE_OBJECTS               ../../common_files/Scene/Objects/PhysicsParameters_.*)

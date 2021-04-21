@@ -54,8 +54,7 @@ file(GLOB NETWORK                                ../../common_files/Network/Game
                                                                     Network/*.*)
 file(GLOB NETWORK_MESSAGES                       ../../common_files/Network/Game/Messages/*.*
                                                                     Network/Messages/*.*)
-file(GLOB NETWORK_OTHER                          ../../common_files/Network/Other/MasterServer_.*
-                                                 ../../common_files/Network/Other/SocketsTCP_.*)
+file(GLOB NETWORK_OTHER                          ../../common_files/Network/Other/MasterServer_.*)
 file(GLOB SCENE                                  ../../common_files/Scene/*.*
                                                                     Scene/*.*)
 file(GLOB SCENE_OBJECTS                          ../../common_files/Scene/Objects/*.*

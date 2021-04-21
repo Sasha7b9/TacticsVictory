@@ -7,6 +7,133 @@
 #include <thread>
 
 
+static sockpp::socket_initializer sockInit;
+
+
+BaseConnectorTCP::~BaseConnectorTCP()
+{
+    Release();
+}
+
+
+bool BaseConnectorTCP::Connect(const std::string &host, uint16 port)
+{
+    //    static int counter = 0;
+
+    if (!connection)
+    {
+        connection = std::make_unique<sockpp::tcp_connector>();
+    }
+
+    try
+    {
+        volatile in_addr_t addr = sockpp::inet_address().resolve_name(host);
+        addr = addr;
+    }
+    catch (std::runtime_error &error)
+    {
+        LOGERRORF("%s:%d %s", host.c_str(), port, error.what());
+
+        return false;
+    }
+
+    connection->connect({ host, port });
+
+    if (connection->is_connected())
+    {
+        SetReadTimeOut(1);
+        SetWriteTimeOut(1);
+
+        LOGWRITEF("Connect to %s:%d success", host.c_str(), port);
+    }
+    else
+    {
+        //        LOGERRORF("%d - Connect to %s:%d failed. Error : %s", counter++, host.c_str(), port,
+        //            connection->last_error_str().c_str());
+    }
+
+    return connection->is_connected();
+}
+
+
+void BaseConnectorTCP::SetReadTimeOut(uint timeout)
+{
+    connection->read_timeout((std::chrono::milliseconds)timeout);
+}
+
+
+void BaseConnectorTCP::SetWriteTimeOut(uint timeout)
+{
+    connection->write_timeout((std::chrono::milliseconds)timeout);
+}
+
+
+void BaseConnectorTCP::Release()
+{
+    Disconnect();
+    connection.reset();
+}
+
+
+void BaseConnectorTCP::Disconnect()
+{
+    if (connection)
+    {
+        LOGWRITE("Disconnect");
+
+        connection->close();
+    }
+}
+
+
+void BaseConnectorTCP::Transmit(const void *data, uint size)
+{
+    connection->write_n(data, size);
+}
+
+
+ssize_t BaseConnectorTCP::Receive(void *data, uint size)
+{
+    fd_set set = { 1, { connection->handle() } };
+
+#ifdef WIN32
+    TIMEVAL time = { 0, 1000 };
+#else
+    struct timeval time = { 1, 0 };
+#endif
+
+    int ready = ::select(0, &set, 0, 0, &time);
+
+    if (ready == 1)
+    {
+        return connection->read(data, size);
+    }
+
+    return 0;
+}
+
+
+bool BaseConnectorTCP::IsConnected() const
+{
+    if (!connection)
+    {
+        return false;
+    }
+
+    if (!connection->is_open())
+    {
+        return false;
+    }
+
+    if (!connection->is_connected())
+    {
+        return false;
+    }
+
+    return true;
+}
+
+
 static void ThreadConnect(BaseConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
 {
     mutex->lock();
