@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
+#include <functional>
 #include <iostream>
 
 
@@ -108,7 +109,7 @@ public:
         socklen_t size = sizeof(struct sockaddr);
         struct sockaddr_in client_addr = { 0 };
 
-        int len = recvfrom(fd, buf, sizeof(buf), 0, (struct sockadr *)&client_addr, &size);
+        int len = recvfrom(fd, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
 
         if (len < 0)
         {
@@ -246,7 +247,7 @@ int SocketUtility::InitSocket(TypeServer::E type)
 }
 
 
-ServerUDP::ServerUDP(const SocketConfig &_config) : sock_fd(-1), config(_config)
+ServerUDP::ServerUDP(const SocketConfig &_config) : config(_config), sock_fd(-1)
 {
 
 }
@@ -282,7 +283,34 @@ bool ServerUDP::Init(int network_size)
 
     threads.resize(network_size);
 
+    for (int i = 0; i < network_size; i++)
+    {
+        threadsUPD.emplace_back(std::unique_ptr<ThreadUDP>(new ThreadForTransactionUDP()));
 
+        if (!threadsUPD[i]->Init(sock_fd))
+        {
+            LOGERROR("UDP thread init failed");
+            continue;
+        }
+
+        try
+        {
+            threads[i] = std::thread(std::bind(&ServerUDP::StartThreadUDP, this, i));
+        }
+        catch (const std::exception &ex)
+        {
+            LOGERRORF(ex.what());
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+void ServerUDP::StartThreadUDP(int index)
+{
+    threadsUPD[index]->DispatchEventUDP();
 }
 
 

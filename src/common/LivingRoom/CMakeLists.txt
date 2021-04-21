@@ -5,6 +5,7 @@ set(CMAKE_UNITY_BUILD ON)
 include_directories(.
                     ../../common_files
                     ../../ThirdParty/sockpp/include
+                    ../../ThirdParty/libevent/compat
                     ../../ThirdParty/libevent/include
                     ../../ThirdParty/libevent/build/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
@@ -77,7 +78,7 @@ set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 file(GLOB FILES_UNITY ${SRC} ${FILESYSTEM} ${NETWORK} ${UTILS} ${SOCKPP})
 
-add_executable( ${PROJECT_NAME} ${FILES_UNITY} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+add_executable( ${PROJECT_NAME} ${FILES_UNITY} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES} ${THIRDPARTY_LIBEVENT})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
@@ -85,10 +86,11 @@ set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
 include(../../RuntimeLibrary.cmake)
 
 if(WIN32)
+
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
 
-    target_link_libraries(${PROJECT_NAME} ws2_32)
+    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt)
 
 else()
 

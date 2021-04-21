@@ -2,6 +2,9 @@
 #pragma once
 
 
+class ThreadUDP;
+
+
 struct TypeServer
 {
     enum E
