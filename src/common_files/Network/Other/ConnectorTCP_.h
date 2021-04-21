@@ -66,7 +66,7 @@ public:
 
 private:
 
-    ConnectorTCP connector;         // Сюдой посылаем данные в сервер
+    BaseConnectorTCP connector;         // Сюдой посылаем данные в сервер
 
     std::string host;
     uint16 port;                    // Порт засылки в сервер. порт чтения на 1 больше

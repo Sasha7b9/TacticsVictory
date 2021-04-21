@@ -8,13 +8,13 @@
 static sockpp::socket_initializer sockInit;
 
 
-ConnectorTCP::~ConnectorTCP()
+BaseConnectorTCP::~BaseConnectorTCP()
 {
     Release();
 }
 
 
-bool ConnectorTCP::Connect(const std::string &host, uint16 port)
+bool BaseConnectorTCP::Connect(const std::string &host, uint16 port)
 {
 //    static int counter = 0;
 
@@ -54,26 +54,26 @@ bool ConnectorTCP::Connect(const std::string &host, uint16 port)
 }
 
 
-void ConnectorTCP::SetReadTimeOut(uint timeout)
+void BaseConnectorTCP::SetReadTimeOut(uint timeout)
 {
     connection->read_timeout((std::chrono::milliseconds)timeout);
 }
 
 
-void ConnectorTCP::SetWriteTimeOut(uint timeout)
+void BaseConnectorTCP::SetWriteTimeOut(uint timeout)
 {
     connection->write_timeout((std::chrono::milliseconds)timeout);
 }
 
 
-void ConnectorTCP::Release()
+void BaseConnectorTCP::Release()
 {
     Disconnect();
     connection.reset();
 }
 
 
-void ConnectorTCP::Disconnect()
+void BaseConnectorTCP::Disconnect()
 {
     if (connection)
     {
@@ -84,13 +84,13 @@ void ConnectorTCP::Disconnect()
 }
 
 
-void ConnectorTCP::Transmit(const void *data, uint size)
+void BaseConnectorTCP::Transmit(const void *data, uint size)
 {
     connection->write_n(data, size);
 }
 
 
-ssize_t ConnectorTCP::Receive(void *data, uint size)
+ssize_t BaseConnectorTCP::Receive(void *data, uint size)
 {
     fd_set set = { 1, { connection->handle() } };
 
@@ -111,7 +111,7 @@ ssize_t ConnectorTCP::Receive(void *data, uint size)
 }
 
 
-bool ConnectorTCP::IsConnected() const
+bool BaseConnectorTCP::IsConnected() const
 {
     if (!connection)
     {

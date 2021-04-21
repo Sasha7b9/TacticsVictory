@@ -7,7 +7,7 @@
 #include <thread>
 
 
-static void ThreadConnect(ConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
+static void ThreadConnect(BaseConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
 {
     mutex->lock();
 

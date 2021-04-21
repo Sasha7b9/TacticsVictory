@@ -5,11 +5,11 @@
 
 
 // Клиент клиента
-class ConnectorTCP
+class BaseConnectorTCP
 {
 public:
 
-    virtual ~ConnectorTCP();
+    virtual ~BaseConnectorTCP();
 
     void Release();
 
