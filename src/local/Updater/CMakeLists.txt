@@ -53,7 +53,7 @@ file(GLOB FILES_UNITY ${SRC} ${FILESYSTEM} ${NETWORK_OTHER} ${UTILS} ${SOCKPP})
 add_executable( ${PROJECT_NAME} ${FILES_UNITY} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
+set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "updater")
 
 include(../../RuntimeLibrary.cmake)
 

@@ -161,7 +161,7 @@ file(GLOB FILES_UNITY ${SRC} ${AUDIO} ${CORE} ${EDITOR} ${FILESYSTEM} ${GAME} ${
 add_executable( ${PROJECT_NAME} ${FILES_UNITY})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
+set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "battler")
 
 include(../../RuntimeLibrary.cmake)
 
