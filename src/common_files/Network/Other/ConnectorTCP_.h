@@ -83,6 +83,9 @@ public:
     // Выполнять задачу через заданные промежутки времени
     void SetTask(int64 dT, TaskMasterServer *task);
 
+    // Единожды выполнить задачу
+    void RunTask(TaskMasterServer *task);
+
     struct State { enum E {
         Idle,                   // Простой
         NeedConnection,         // Нужно подключать

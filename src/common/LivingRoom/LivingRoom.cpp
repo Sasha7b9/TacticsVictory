@@ -19,17 +19,8 @@ int LivingRoom::Run(pchar ip)
             LOGWRITE("Can not connect to local master server. Connect to remote");
             TheLivingRoom.RunRemoteServer();
         },
-        []()
-        {
-            LOGWRITE("Connection to master server established");
-            TheLivingRoom.SendNameToMasterServer();
-            TheMaster.SetTasks();
-        },
-        []()
-        {
-            TheMaster.Connect();
-            LOGWRITE("The master server is down. Attempting to connect");
-        }
+        OnConnect,
+        OnDisconnect
     );
 
     LOGWRITE("Wait server for connection");
@@ -56,24 +47,30 @@ int LivingRoom::RunRemoteServer()
         {
             TheMaster.Connect();
         },
-        []()
-        {
-            LOGWRITE("Connection to master server established");
-            TheLivingRoom.SendNameToMasterServer();
-            TheMaster.SetTasks();
-        },
-            []()
-        {
-            TheMaster.Connect();
-            LOGWRITE("The master server is down. Attempting to connect");
-        }
-        );
+        OnConnect,
+        OnDisconnect
+    );
 
     LOGWRITE("Wait server for connection");
 
     TheMaster.Connect();
 
     return MainCycle();
+}
+
+
+void LivingRoom::OnConnect()
+{
+    LOGWRITE("Connection to master server established");
+    TheLivingRoom.SendNameToMasterServer();
+    TheMaster.SetTasks();
+}
+
+
+void LivingRoom::OnDisconnect()
+{
+    TheMaster.Connect();
+    LOGWRITE("The master server is down. Attempting to connect");
 }
 
 
