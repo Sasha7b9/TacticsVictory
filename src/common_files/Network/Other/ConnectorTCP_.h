@@ -97,20 +97,20 @@ public:
         GetPing                 // Получен пинг
     }; };
 
-    std::vector<uint8> data;        // Здесь хранятся принятые данные
+    std::vector<uint8> data;            // Здесь хранятся принятые данные
 
 private:
 
     BaseConnectorTCP connector;         // Сюдой посылаем данные в сервер
 
     std::string host;
-    uint16 port;                    // Порт засылки в сервер. порт чтения на 1 больше
+    uint16 port;                        // Порт засылки в сервер. порт чтения на 1 больше
 
-    std::vector<TaskMasterServer *>    all_tasks;       // Здесь периодически выполняемые задачи
+    std::vector<TaskMasterServer *>       all_tasks;    // Здесь периодически выполняемые задачи
     std::map<uint, TaskMasterServer *> active_tasks;    // Задачи, ожидающие ответа
 
     bool destroy = false;
-    std::mutex  mutex;              // Данный mutex будет захвачен, пока сервер находится в процессе соединения
+    std::mutex  mutex;                      // Данный mutex будет захвачен, пока сервер находится в процессе соединения
     pFuncVV funcFailConnection = nullptr;   // Вызывается в случае неуспешной попытки соединения
     pFuncVV funcConnection     = nullptr;   // Вызывается в случае успешной попытки соединения
     pFuncVV funcDisconnection  = nullptr;   // Вызывается при потере связи с сервером
