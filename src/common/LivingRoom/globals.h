@@ -5,6 +5,6 @@
 #include "Network/Other/ServerConnectorTCP_.h"
 
 
-extern ConfigurationFile TheSettings;
-extern LivingRoom        TheLivingRoom;
-extern ServerConnectorTCP   TheServerConnector;
+extern ConfigurationFile  TheSettings;
+extern LivingRoom         TheLivingRoom;
+extern ServerConnectorTCP TheServerConnector;

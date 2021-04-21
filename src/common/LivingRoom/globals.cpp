@@ -2,6 +2,6 @@
 #include "stdafx.h"
 
 
-ConfigurationFile TheSettings;
-LivingRoom        TheLivingRoom;
-ServerConnectorTCP   TheServerConnector;
+ConfigurationFile  TheSettings;
+LivingRoom         TheLivingRoom;
+ServerConnectorTCP TheServerConnector;
