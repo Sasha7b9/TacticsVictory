@@ -10,9 +10,9 @@ int LivingRoom::Run(pchar ip)
 {
     remoteMasterIP = ip;
 
-    TheServerConnector.SetAddress("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
+    TheMaster.SetAddress("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
 
-    TheServerConnector.SetCallbacks
+    TheMaster.SetCallbacks
     (
         []()
         {
@@ -23,18 +23,18 @@ int LivingRoom::Run(pchar ip)
         {
             LOGWRITE("Connection to master server established");
             TheLivingRoom.SendNameToMasterServer();
-            TheServerConnector.SetTasks();
+            TheMaster.SetTasks();
         },
         []()
         {
-            TheServerConnector.Connect();
+            TheMaster.Connect();
             LOGWRITE("The master server is down. Attempting to connect");
         }
     );
 
     LOGWRITE("Wait server for connection");
 
-    TheServerConnector.Connect();
+    TheMaster.Connect();
 
     return MainCycle();
 }
@@ -48,30 +48,30 @@ int LivingRoom::RunRemoteServer()
         return -1;
     }
 
-    TheServerConnector.SetAddress(remoteMasterIP, (uint16)TheSettings.GetInt("master_server", "port"));
+    TheMaster.SetAddress(remoteMasterIP, (uint16)TheSettings.GetInt("master_server", "port"));
 
-    TheServerConnector.SetCallbacks
+    TheMaster.SetCallbacks
     (
         []()
         {
-            TheServerConnector.Connect();
+            TheMaster.Connect();
         },
         []()
         {
             LOGWRITE("Connection to master server established");
             TheLivingRoom.SendNameToMasterServer();
-            TheServerConnector.SetTasks();
+            TheMaster.SetTasks();
         },
             []()
         {
-            TheServerConnector.Connect();
+            TheMaster.Connect();
             LOGWRITE("The master server is down. Attempting to connect");
         }
         );
 
     LOGWRITE("Wait server for connection");
 
-    TheServerConnector.Connect();
+    TheMaster.Connect();
 
     return MainCycle();
 }
@@ -81,7 +81,7 @@ int LivingRoom::MainCycle()
 {
     while (true)
     {
-        TheServerConnector.Update();
+        TheMaster.Update();
     }
 
     return 0;
@@ -98,5 +98,5 @@ void LivingRoom::SendNameToMasterServer()
 
     stream << "LivingRoom " << std::rand();
 
-    TheServerConnector.SendRequest(MSG_NTW_SET_NAME_LIVINGROOM, stream.str().c_str());
+    TheMaster.SendRequest(MSG_NTW_SET_NAME_LIVINGROOM, stream.str().c_str());
 }

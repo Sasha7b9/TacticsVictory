@@ -6,5 +6,5 @@ class ServerTCP;
 
 
 extern ConfigurationFile TheConfig;
-extern ServerTCP            TheServer;
+extern ServerTCP         TheServer;
 extern ConfigurationFile TheSettings;

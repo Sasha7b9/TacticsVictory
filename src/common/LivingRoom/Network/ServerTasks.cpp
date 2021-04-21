@@ -10,7 +10,7 @@ static TaskMasterServer taskPing = {
     {
         int64 now = GF::Timer::TimeMS();
 
-        return TheServerConnector.SendRequest(MSG_NTW_PING, &now, 4);
+        return TheMaster.SendRequest(MSG_NTW_PING, &now, 4);
     },
     [](pchar, void *data, uint)
     {
@@ -24,5 +24,5 @@ static TaskMasterServer taskPing = {
 
 void ConnectorTCP::SetTasks()
 {
-    TheServerConnector.SetTask(1000, &taskPing);
+    TheMaster.SetTask(1000, &taskPing);
 }
