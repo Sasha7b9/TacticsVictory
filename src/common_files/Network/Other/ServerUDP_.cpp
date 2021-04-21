@@ -92,7 +92,7 @@ protected:
     int sock_fd = -1;
     event_base *base = nullptr;
     event *ev = nullptr;
-    const int buffer_size = 1024;
+    static const int buffer_size = 1024;
 };
 
 
@@ -101,6 +101,33 @@ class ThreadForTransactionUDP : public ThreadUDP
 public:
     ThreadForTransactionUDP() = default;
     virtual ~ThreadForTransactionUDP() = default;
+
+    virtual bool DealMessageUDP(int fd) override
+    {
+        char buf[buffer_size] = "";
+        socklen_t size = sizeof(struct sockaddr);
+        struct sockaddr_in client_addr = { 0 };
+
+        int len = recvfrom(fd, buf, sizeof(buf), 0, (struct sockadr *)&client_addr, &size);
+
+        if (len < 0)
+        {
+            LOGERROR("Server recv() message error");
+            return false;
+        }
+
+        if (len == 0)
+        {
+            LOGERROR("Connection closed");
+        }
+
+        LOGWRITEF("Connection port %d", client_addr.sin_port);
+        LOGWRITEF("Connection IP %s", inet_ntoa(client_addr.sin_addr));
+        LOGWRITEF("Server recv() message len %d", len);
+        LOGWRITE("Server send back message now");
+        sendto(fd, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, size);
+        return true;
+    }
 };
 
 
@@ -216,6 +243,46 @@ int SocketUtility::InitSocket(TypeServer::E type)
     }
 
     return sock_fd;
+}
+
+
+ServerUDP::ServerUDP(const SocketConfig &_config) : sock_fd(-1), config(_config)
+{
+
+}
+
+
+ServerUDP::~ServerUDP()
+{
+    for (auto &it : threads)
+    {
+        if (it.joinable())
+        {
+            it.join();
+        }
+    }
+
+    SocketUtility::GetInstance().CloseSocket(sock_fd);
+}
+
+
+bool ServerUDP::Init(int network_size)
+{
+    if (network_size <= 0 || network_size > network_capacity)
+    {
+        return false;
+    }
+
+    sock_fd = SocketUtility::GetInstance().BindSocket(config);
+
+    if (sock_fd < 0)
+    {
+        return false;
+    }
+
+    threads.resize(network_size);
+
+
 }
 
 

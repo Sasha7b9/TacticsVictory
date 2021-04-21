@@ -48,5 +48,17 @@ private:
 
 class ServerUDP
 {
+public:
+    ServerUDP(const SocketConfig &config);
+    virtual ~ServerUDP();
 
+    bool Init(int network_size);
+
+private:
+    void StartThreadUDP(int index);
+    SocketConfig config;
+    std::vector<std::unique_ptr<ThreadUDP>> threadsUPD;
+    std::vector<std::thread> threads;
+    int sock_fd = 0;
+    static const int network_capacity = 128;
 };
