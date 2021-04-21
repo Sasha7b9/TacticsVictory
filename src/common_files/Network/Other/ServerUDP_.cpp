@@ -75,7 +75,7 @@ public:
 #ifdef WIN32
     static void CallbackReadUDP(intptr_t fd, int16, void *arg)
 #else
-    static void CallbackReadUDP(int fd, short ev, void *arg)
+    static void CallbackReadUDP(int fd, int16, void *arg)
 #endif
     {
         ThreadUDP *p = reinterpret_cast<ThreadUDP *>(arg);
