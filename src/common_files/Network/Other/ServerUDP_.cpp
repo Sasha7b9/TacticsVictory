@@ -108,7 +108,8 @@ public:
         char buf[buffer_size] = "";
         socklen_t size = sizeof(struct sockaddr);
 
-        struct sockaddr_in client_addr = { 0 };
+        struct sockaddr_in client_addr;
+        client_addr.sin_family = 0;
 
         int len = recvfrom(fd, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
 
