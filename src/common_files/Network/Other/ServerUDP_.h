@@ -52,10 +52,10 @@ private:
 class ServerUDP
 {
 public:
-    ServerUDP(const SocketConfig &config);
+    ServerUDP();
     virtual ~ServerUDP();
 
-    bool Init(int network_size);
+    bool Init(const SocketConfig &config, int network_size);
 
 private:
     void StartThreadUDP(int index);

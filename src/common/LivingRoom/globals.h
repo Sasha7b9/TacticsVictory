@@ -3,8 +3,10 @@
 #include "LivingRoom.h"
 #include "FileSystem/ConfigurationFile_.h"
 #include "Network/Other/ConnectorTCP_.h"
+#include "Network/Other/ServerUDP_.h"
 
 
 extern ConfigurationFile  TheSettings;
 extern LivingRoom         TheLivingRoom;
-extern ConnectorTCP       TheMaster;
+extern ConnectorTCP       TheMaster;        // Для связи с мастер-сервером
+extern ServerUDP          TheServer;        // Для обратной связи с клиентами

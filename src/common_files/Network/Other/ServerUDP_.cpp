@@ -251,7 +251,7 @@ int SocketUtility::InitSocket(TypeServer::E type)
 }
 
 
-ServerUDP::ServerUDP(const SocketConfig &_config) : config(_config), sock_fd(-1)
+ServerUDP::ServerUDP() : sock_fd(-1)
 {
 
 }
@@ -271,8 +271,10 @@ ServerUDP::~ServerUDP()
 }
 
 
-bool ServerUDP::Init(int network_size)
+bool ServerUDP::Init(const SocketConfig &_config, int network_size)
 {
+    config = _config;
+
     if (network_size <= 0 || network_size > network_capacity)
     {
         return false;

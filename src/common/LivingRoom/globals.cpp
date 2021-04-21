@@ -2,6 +2,7 @@
 #include "stdafx.h"
 
 
-ConfigurationFile  TheSettings;
-LivingRoom         TheLivingRoom;
-ConnectorTCP       TheMaster;
+ConfigurationFile TheSettings;
+LivingRoom        TheLivingRoom;
+ConnectorTCP      TheMaster;
+ServerUDP         TheServer;
