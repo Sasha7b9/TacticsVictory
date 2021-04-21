@@ -125,7 +125,7 @@ add_executable( ${PROJECT_NAME}
                 ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
+set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "client")
 
 set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS "82.146.54.49")
 

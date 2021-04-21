@@ -81,7 +81,7 @@ file(GLOB FILES_UNITY ${SRC} ${FILESYSTEM} ${NETWORK} ${UTILS} ${SOCKPP})
 add_executable( ${PROJECT_NAME} ${FILES_UNITY} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES} ${THIRDPARTY_LIBEVENT})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "bucket")
+set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "livingroom")
 
 include(../../RuntimeLibrary.cmake)
 
