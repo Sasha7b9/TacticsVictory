@@ -40,8 +40,6 @@ public:
 
     void AppendHandler(pchar command, handlerClient handler);
 
-    void Prepare();
-
     void SendAnswer(void *bev, uint id, pchar message, void *data = nullptr, uint size = 0);
     void SendAnswer(void *bev, uint id, pchar message, pchar data);
 
@@ -50,6 +48,8 @@ public:
     std::map<void *, ClientInfo> clients;
 
 private:
+
+    void Prepare();
 
     bool run = true;
 };
