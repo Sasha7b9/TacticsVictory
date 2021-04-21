@@ -12,6 +12,7 @@ class GUI;
 class Hint;
 class LogRAW;
 class ConnectorTCP;
+class ConnectorUDP;
 class Menus;
 class Mouse;
 class PageStart;
@@ -19,6 +20,7 @@ class WindowVariables;
 
 extern ConfigurationFile TheSettings;
 extern ConnectorTCP      TheMaster;
+extern ConnectorUDP      TheLivingRoomUDP;
 
 extern CameraT         *TheCamera;
 extern Client          *TheClient;

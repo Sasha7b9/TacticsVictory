@@ -34,3 +34,4 @@ WindowVariables *TheWindowVars   = nullptr;
 
 ConfigurationFile TheSettings;
 ConnectorTCP      TheMaster;
+ConnectorUDP      TheLivingRoomUDP;
