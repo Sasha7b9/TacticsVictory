@@ -64,6 +64,20 @@ void LivingRoom::OnConnect()
     LOGWRITE("Connection to master server established");
     TheLivingRoom.SendNameToMasterServer();
     TheMaster.SetTasks();
+
+    static TaskMasterServer taskPort =
+    {
+        []()
+        {
+            return TheMaster.SendRequest(MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP);
+        },
+        [](pchar, void *, uint)
+        {
+
+        }
+    };
+
+    TheMaster.RunTask(&taskPort);
 }
 
 

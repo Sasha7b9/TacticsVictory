@@ -5,7 +5,8 @@
 #include "Utils/GlobalFunctions_.h"
 
 
-static TaskMasterServer taskPing = {
+static TaskMasterServer taskPing =
+{
     []()
     {
         int64 now = GF::Timer::TimeMS();

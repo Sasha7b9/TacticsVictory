@@ -362,6 +362,11 @@ void ConnectorTCP::ProcessData()
                 task->handler_answer(answer, buffer, size_buffer);
 
                 task->last_tive_receive = GF::Timer::TimeMS();
+                
+                if (task->delta_time == -1)
+                {
+                    all_tasks.erase(it);
+                }
             }
             else
             {
@@ -402,6 +407,16 @@ void ConnectorTCP::ExecuteTasks()
 void ConnectorTCP::SetTask(int64 dT, TaskMasterServer *task)
 {
     task->delta_time = dT;
+
+    task->last_tive_receive = LLONG_MAX;
+
+    all_tasks.push_back(task);
+}
+
+
+void ConnectorTCP::RunTask(TaskMasterServer *task)
+{
+    task->delta_time = -1;
 
     task->last_tive_receive = LLONG_MAX;
 

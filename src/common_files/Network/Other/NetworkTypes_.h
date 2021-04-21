@@ -7,3 +7,5 @@
 #define MSG_NTW_INFO_LIVINGROOM     "info_livingroom"       // Этим сообщением гостиная сообщает мастер-серверу о
                                                             // своём состоянии
 #define MSG_NTW_SET_NAME_LIVINGROOM "set_name_livingrom"    // Установка имени гостиной
+                                                            // Запрос смещения порта гостевой комнаты относительно
+#define MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP "get port livingroom_broadcast_udp"   // порта мастер-сервера
