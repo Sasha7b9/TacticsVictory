@@ -55,7 +55,7 @@ class ConnectorTCP
 {
 public:
 
-    void SetAddress(pchar _host, uint16 _port)
+    void Init(pchar _host, uint16 _port)
     {
         host = _host;
         port = _port;

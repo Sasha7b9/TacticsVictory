@@ -10,7 +10,7 @@ int LivingRoom::Run(pchar ip)
 {
     remoteMasterIP = ip;
 
-    TheMaster.SetAddress("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
+    TheMaster.Init("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
 
     TheMaster.SetCallbacks
     (
@@ -48,7 +48,7 @@ int LivingRoom::RunRemoteServer()
         return -1;
     }
 
-    TheMaster.SetAddress(remoteMasterIP, (uint16)TheSettings.GetInt("master_server", "port"));
+    TheMaster.Init(remoteMasterIP, (uint16)TheSettings.GetInt("master_server", "port"));
 
     TheMaster.SetCallbacks
     (

@@ -110,7 +110,7 @@ void Client::Start()
 
 void Client::TryConnectToLocalMaster()
 {
-    TheMaster.SetAddress("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
+    TheMaster.Init("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
 
     TheMaster.SetCallbacks
     (
@@ -146,7 +146,7 @@ void Client::ParseArguments()
 
     if (arguments.Size() != 0)
     {
-        TheMaster.SetAddress(arguments[0].CString(), (uint16)TheSettings.GetInt("master_server", "port"));
+        TheMaster.Init(arguments[0].CString(), (uint16)TheSettings.GetInt("master_server", "port"));
 
         TheMaster.SetCallbacks
         (
