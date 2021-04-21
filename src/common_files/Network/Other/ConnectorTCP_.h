@@ -5,7 +5,7 @@
 
 
 /*
- *   Через класс ServerConnectorTCP осуществляется взаимодействие с сервером со стороны клиента
+ *   Через класс ConnectorTCP осуществляется взаимодействие с сервером со стороны клиента
  */
 
 
@@ -19,7 +19,7 @@ struct TaskMasterServer
 };
 
 
-class ServerConnectorTCP
+class ConnectorTCP
 {
 public:
 

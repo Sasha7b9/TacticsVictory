@@ -3,8 +3,8 @@
 
 
 class ConfigurationFile;
-class ServerConnectorTCP;
+class ConnectorTCP;
 
 
 extern ConfigurationFile TheConfig;
-extern ServerConnectorTCP   TheMasterServer;
+extern ConnectorTCP   TheMasterServer;

@@ -13,18 +13,18 @@ static void ThreadConnect(BaseConnectorTCP *conn_out, pchar host, uint16 port, s
 
     if (conn_out->Connect(host, port))
     {
-        *state = ServerConnectorTCP::State::EventConnection;
+        *state = ConnectorTCP::State::EventConnection;
     }
     else
     {
-        *state = ServerConnectorTCP::State::EventFailConnection;
+        *state = ConnectorTCP::State::EventFailConnection;
     }
 
     mutex->unlock();
 }
 
 
-void ServerConnectorTCP::Destroy()
+void ConnectorTCP::Destroy()
 {
     destroy = true;
 
@@ -35,13 +35,13 @@ void ServerConnectorTCP::Destroy()
 }
 
 
-bool ServerConnectorTCP::IsConnected()
+bool ConnectorTCP::IsConnected()
 {
     return (state == State::InConnection);
 }
 
 
-void ServerConnectorTCP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
+void ConnectorTCP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
 {
     funcFailConnection = fail;
     funcConnection = connection;
@@ -49,7 +49,7 @@ void ServerConnectorTCP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV 
 }
 
 
-void ServerConnectorTCP::Connect()
+void ConnectorTCP::Connect()
 {
     if (!funcFailConnection || !funcConnection || !funcDisconnection)
     {
@@ -71,7 +71,7 @@ void ServerConnectorTCP::Connect()
 }
 
 
-void ServerConnectorTCP::Disconnect()
+void ConnectorTCP::Disconnect()
 {
     if (IsConnected())
     {
@@ -84,7 +84,7 @@ void ServerConnectorTCP::Disconnect()
 }
 
 
-uint ServerConnectorTCP::SendRequest(pchar request, const void *buffer, uint size_buffer)
+uint ConnectorTCP::SendRequest(pchar request, const void *buffer, uint size_buffer)
 {
     mutex.lock();
 
@@ -109,13 +109,13 @@ uint ServerConnectorTCP::SendRequest(pchar request, const void *buffer, uint siz
 }
 
 
-uint ServerConnectorTCP::SendRequest(pchar request, pchar _data)
+uint ConnectorTCP::SendRequest(pchar request, pchar _data)
 {
     return SendRequest(request, _data, (uint)std::strlen(_data) + 1);
 }
 
 
-void ServerConnectorTCP::Update()
+void ConnectorTCP::Update()
 {
     ReceiveData();
 
@@ -177,7 +177,7 @@ void ServerConnectorTCP::Update()
 
 
 
-void ServerConnectorTCP::ReceiveData()
+void ConnectorTCP::ReceiveData()
 {
     if (!IsConnected())
     {
@@ -203,7 +203,7 @@ void ServerConnectorTCP::ReceiveData()
 }
 
 
-void ServerConnectorTCP::ProcessData()
+void ConnectorTCP::ProcessData()
 {
     while (data.size() > 4 + 4)        // Если принято данных больше чем id и количество байт в сообщении
     {
@@ -251,7 +251,7 @@ void ServerConnectorTCP::ProcessData()
 }
 
 
-void ServerConnectorTCP::ExecuteTasks()
+void ConnectorTCP::ExecuteTasks()
 {
     int64 now = GF::Timer::TimeMS();
 
@@ -272,7 +272,7 @@ void ServerConnectorTCP::ExecuteTasks()
 }
 
 
-void ServerConnectorTCP::SetTask(int64 dT, TaskMasterServer *task)
+void ConnectorTCP::SetTask(int64 dT, TaskMasterServer *task)
 {
     task->delta_time = dT;
 
@@ -282,7 +282,7 @@ void ServerConnectorTCP::SetTask(int64 dT, TaskMasterServer *task)
 }
 
 
-bool ServerConnectorTCP::ExistConnection()
+bool ConnectorTCP::ExistConnection()
 {
     int64 now = GF::Timer::TimeMS();
 

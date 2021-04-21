@@ -33,4 +33,4 @@ TerrainT        *TheTerrain      = nullptr;
 WindowVariables *TheWindowVars   = nullptr;
 
 ConfigurationFile TheSettings;
-ServerConnectorTCP   TheServerConnector;
+ConnectorTCP   TheServerConnector;

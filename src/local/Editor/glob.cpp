@@ -22,7 +22,7 @@ UIElement     *TheUIRoot       = nullptr;
 
 ConfigurationFile  TheConfig;
 ConfigurationFile  TheSettings;
-ServerConnectorTCP TheMasterServer;
+ConnectorTCP TheMasterServer;
 
 CameraT         *TheCamera     = nullptr;
 Editor          *TheClient     = nullptr;
