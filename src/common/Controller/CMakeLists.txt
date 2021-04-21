@@ -81,6 +81,11 @@ if(WIN32)
     include(../../SetWorkingDirectory.cmake)
 
     target_link_libraries(${PROJECT_NAME} ws2_32)
+
+else()
+
+    target_link_libraries(${PROJECT_NAME} pthread)
+
 endif()
 
 include(../../Install.cmake)
