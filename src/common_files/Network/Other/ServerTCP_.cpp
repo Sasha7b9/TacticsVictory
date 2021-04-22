@@ -263,7 +263,7 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
         readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
     }
 
-    ProcessClient(args->server->clients[bev]);
+    ProcessClient(args->server->clients[bev], args->server);
 }
 
 
@@ -297,7 +297,7 @@ static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data)
 }
 
 
-void ServerTCP::ProcessClient(ClientInfo &info)
+void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 {
     std::vector<uint8> &received = info.bindata;
 
@@ -313,9 +313,9 @@ void ServerTCP::ProcessClient(ClientInfo &info)
 
             SU::SplitToWords((char *)info.message.data(), info.words);
 
-            auto it = TheServer.handlers.find(info.words[0]);
+            auto it = server->handlers.find(info.words[0]);
 
-            if (it != TheServer.handlers.end())
+            if (it != server->handlers.end())
             {
                 it->second(id, info);
             }

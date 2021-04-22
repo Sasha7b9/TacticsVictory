@@ -66,5 +66,5 @@ private:
     static void CallbackError(struct bufferevent *bev, short what, void *ctx);
     static void CallbackLog(int, const char *);
 
-    static void ProcessClient(ClientInfo &info);
+    static void ProcessClient(ClientInfo &info, ServerTCP *server);
 };
