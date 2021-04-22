@@ -14,9 +14,13 @@
 
 
 #include <Urho3D/Container/Str.h>
+#include <Urho3D/Input/InputEvents.h>
 #include <Urho3D/Math/Ray.h>
-#include <Urho3D/AngelScript/Script.h>
+#include <Urho3D/Resource/Image.h>
+#include <Urho3D/UI/Cursor.h>
 #include <Urho3D/UI/Window.h>
+#include <Urho3D/Urho2D/Sprite2D.h>
+#include <Urho3D/Urho2D/StaticSprite2D.h>
 
 using namespace Urho3D;
 

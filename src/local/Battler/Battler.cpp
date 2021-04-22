@@ -14,7 +14,7 @@
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/Menu.h"
 #include "GUI/Menu/MenuEvents_.h"
-#include "Input/Mouse_.h"
+#include "Input/Mouse_v.h"
 #include "Network/ServerC.h"
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera_.h"
@@ -113,7 +113,7 @@ void Battler::Start()
 
     RegistrationObjects();
 
-    mouse = new Mouse(&TheMouse);
+    mouse = new Mouse(&TheMouse, TheContext);
 
     SetWindowTitleAndIcon();
 

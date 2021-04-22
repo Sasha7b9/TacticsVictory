@@ -68,7 +68,7 @@ file(GLOB GUI_WINDOWS                            ../../common_files/GUI/Windows/
                                                  ../../common_files/GUI/Windows/ConsoleParserFunctions_.*
                                                  ../../common_files/GUI/Windows/WindowVariables_.*
                                                  ../../common_files/GUI/Windows/Window_.*)
-file(GLOB INPUT                                  ../../common_files/Input/Mouse_.*
+file(GLOB INPUT                                  ../../libs/victory/Input/Mouse_v.h
                                                                     Input/*.*)
 file(GLOB NETWORK                                ../../common_files/Network/Game/*.*
                                                                     Network/*.*)

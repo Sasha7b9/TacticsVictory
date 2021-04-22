@@ -51,6 +51,7 @@ endif()
 file(GLOB SRC                                  *.h *.cpp)
 file(GLOB CORE                                 Core/*.*)
 file(GLOB FILESYSTEM                           FileSystem/*.*)
+file(GLOB INPUT                                Input/*.*)
 file(GLOB NETWORK                              Network/Other/*.*)
 file(GLOB UTILS                                Utils/*.*)
 
@@ -62,6 +63,7 @@ file(GLOB SOCKPP_INCLUDE     ../../ThirdParty/sockpp/include/sockpp/*.h)
 source_group(src                         FILES ${SRC})
 source_group(Core                        FILES ${CORE})
 source_group(FileSystem                  FILES ${FILESYSTEM})
+source_group(Input                       FILES ${INPUT})
 source_group(Network                     FILES ${NETWORK})
 source_group(Utils                       FILES ${UTILS})
 
@@ -74,7 +76,7 @@ set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 file(GLOB FILES_UNITY ${SRC} ${FILESYSTEM} ${UTILS} ${SOCKPP})
 
-add_library(${PROJECT_NAME} ${FILES_UNITY} ${CORE} ${NETWORK} ${LIBEVENT})
+add_library(${PROJECT_NAME} ${FILES_UNITY} ${CORE} ${INPUT}  ${NETWORK} ${LIBEVENT})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "victory")

@@ -6,7 +6,7 @@
 #include "GUI/Cursor_.h"
 #include "GUI/Menu/Menu.h"
 #include "GUI/Menu/PageFindServer.h"
-#include "Input/Mouse_.h"
+#include "Input/Mouse_v.h"
 #include "Network/Other/ConnectorTCP_v.h"
 #include "Network/Other/NetworkTypes_.h"
 #include "Scene/Cameras/Camera_.h"
@@ -88,7 +88,7 @@ void Client::Start()
 
     RegistrationObjects();
 
-    mouse = new Mouse(&TheMouse);
+    mouse = new Mouse(&TheMouse, TheContext);
 
     CreateConsoleAndDebugHud();
 

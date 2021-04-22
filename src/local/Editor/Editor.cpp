@@ -6,7 +6,7 @@
 #include "Graphics/Renderer_.h"
 #include "GUI/Cursor_.h"
 #include "GUI/Menu/Menu.h"
-#include "Input/Mouse_.h"
+#include "Input/Mouse_v.h"
 #include "Scene/Cameras/Camera_.h"
 
 
@@ -110,7 +110,7 @@ void Editor::Start()
 
     RegistrationObjects();
 
-    mouse = new Mouse(&TheMouse);
+    mouse = new Mouse(&TheMouse, TheContext);
 
     SetWindowTitleAndIcon();
 

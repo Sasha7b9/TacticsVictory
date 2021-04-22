@@ -8,7 +8,7 @@ class Mouse : public Object
 
 public:
 
-    Mouse(Mouse **self);
+    Mouse(Mouse **self, Context *context);
 
 private:
 

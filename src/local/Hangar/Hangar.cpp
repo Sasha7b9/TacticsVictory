@@ -95,7 +95,7 @@ void Hangar::Start()
 
     RegistrationObjects();
 
-    mouse = new Mouse(&TheMouse);
+    mouse = new Mouse(&TheMouse, TheContext);
 
     SetWindowTitleAndIcon();
 
