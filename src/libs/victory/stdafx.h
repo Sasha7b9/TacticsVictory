@@ -1,13 +1,15 @@
 // 2021/04/22 11:56:38 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
+
 #ifdef WIN32
 #pragma warning(push, 0)
-#else
-#endif
 
 #define _WINSOCKAPI_
 #include <windows.h>
+#else
+#endif
+
 
 #include <Urho3D/Container/Str.h>
 #include <Urho3D/Core/StringUtils.h>
