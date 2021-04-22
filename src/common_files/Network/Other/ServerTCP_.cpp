@@ -18,9 +18,6 @@ static const char MESSAGE[] = "Hello, World!";
 #define MAX_LINE 16384
 
 
-static void ProcessClient(ClientInfo &info);
-
-
 std::string ClientInfo::SocketAddress::ToStringFull() const
 {
     char buffer[100];
