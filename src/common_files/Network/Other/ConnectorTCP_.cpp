@@ -292,7 +292,8 @@ void ConnectorTCP::Update()
 
     case State::EventDisconnect:
         state = State::Idle;
-        all_tasks.clear();
+        wait_tasks.clear();
+        new_tasks.clear();
         funcDisconnection();
         break;
 
@@ -340,9 +341,9 @@ void ConnectorTCP::ProcessData()
 
         if (data.size() >= 4 + 4 + size_answer)
         {
-            auto it = active_tasks.find(id);
+            auto it = wait_tasks.find(id);
 
-            if (it != active_tasks.end())
+            if (it != wait_tasks.end())
             {
                 pchar answer = (pchar)data.data() + 4 + 4;
 
@@ -362,11 +363,8 @@ void ConnectorTCP::ProcessData()
                 task->handler_answer(answer, buffer, size_buffer);
 
                 task->last_tive_receive = GF::Timer::TimeMS();
-                
-                if (task->delta_time == -1)
-                {
-                    all_tasks.erase(it);
-                }
+
+                wait_tasks.erase(it);
             }
             else
             {
@@ -387,7 +385,7 @@ void ConnectorTCP::ExecuteTasks()
 {
     int64 now = GF::Timer::TimeMS();
 
-    for (TaskMasterServer * task : all_tasks)
+    for (TaskMasterServer *task : new_tasks)
     {
         if (now >= task->prev_time + task->delta_time)
         {
@@ -395,9 +393,20 @@ void ConnectorTCP::ExecuteTasks()
 
             task->prev_time = now;
 
-            if (task->handler_answer)
+            task->counter--;
+
+            wait_tasks[id] = task;
+        }
+    }
+
+    while (new_tasks.size() && TaskMasterServer::ExistCompleted(new_tasks))
+    {
+        for (auto it = new_tasks.begin(); it < new_tasks.end(); it++)
+        {
+            if ((*it)->counter == 0)
             {
-                active_tasks[id] = task;
+                new_tasks.erase(it);
+                break;
             }
         }
     }
@@ -410,7 +419,7 @@ void ConnectorTCP::SetTask(int64 dT, TaskMasterServer *task)
 
     task->last_tive_receive = LLONG_MAX;
 
-    all_tasks.push_back(task);
+    new_tasks.push_back(task);
 }
 
 
@@ -420,7 +429,9 @@ void ConnectorTCP::RunTask(TaskMasterServer *task)
 
     task->last_tive_receive = LLONG_MAX;
 
-    all_tasks.push_back(task);
+    task->counter = 1;
+
+    new_tasks.push_back(task);
 }
 
 
@@ -428,16 +439,30 @@ bool ConnectorTCP::ExistConnection()
 {
     int64 now = GF::Timer::TimeMS();
 
-    if (active_tasks.size() == 0)
+    if (wait_tasks.size() == 0)
     {
         return true;
     }
 
-    for (auto &it : active_tasks)
+    for (auto &it : wait_tasks)
     {
         TaskMasterServer *task = it.second;
 
         if (now - task->last_tive_receive < 1500)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+bool TaskMasterServer::ExistCompleted(std::vector<TaskMasterServer *> &tasks)
+{
+    for (auto task : tasks)
+    {
+        if (task->counter == 0)
         {
             return true;
         }
