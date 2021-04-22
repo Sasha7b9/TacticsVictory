@@ -14,10 +14,15 @@
 
 
 #include <Urho3D/Container/Str.h>
+#include <Urho3D/Core/StringUtils.h>
+#include <Urho3D/Graphics/Graphics.h>
 #include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/IO/FileSystem.h>
 #include <Urho3D/Math/Ray.h>
 #include <Urho3D/Resource/Image.h>
+#include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/UI/Cursor.h>
+#include <Urho3D/UI/FileSelector.h>
 #include <Urho3D/UI/Window.h>
 #include <Urho3D/Urho2D/Sprite2D.h>
 #include <Urho3D/Urho2D/StaticSprite2D.h>

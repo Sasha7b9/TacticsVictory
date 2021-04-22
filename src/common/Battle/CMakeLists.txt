@@ -77,11 +77,11 @@ file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Object
 file(GLOB SCENE_PRIMITIVES                       ../../common_files/Scene/Primitives/*.*)
 file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*
                                                                     Scene/Terrain/*.*)
-file(GLOB UTILS                                  ../../libs/victory/Utils/Log_.h
-                                                 ../../common_files/Utils/LogU3D_.*
-                                                 ../../common_files/Utils/StringUtils_.*
-                                                 ../../common_files/Utils/UtilsOS_.*
-                                                 ../../common_files/Utils/GlobalFunctions_.*)
+file(GLOB UTILS                                  ../../common_files/Utils/GlobalFunctions_.*
+                                                 ../../libs/victory/Utils/Log_.h
+                                                 ../../libs/victory/Utils/LogU3D_.h
+                                                 ../../libs/victory/Utils/StringUtils_.h
+                                                 ../../libs/victory/Utils/UtilsOS_.h)
 
 source_group(src                                        FILES ${SRC})
 source_group(Core                                       FILES ${CORE})
