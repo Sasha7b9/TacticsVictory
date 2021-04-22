@@ -8,6 +8,13 @@
 #include <functional>
 #include <iostream>
 
+#ifdef WIN32
+#else
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#endif
+
 
 /// \todo Избавиться от предупреждений
 
