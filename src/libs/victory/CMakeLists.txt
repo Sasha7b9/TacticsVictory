@@ -47,11 +47,13 @@ endif()
 
 file(GLOB SRC       *.h *.cpp)
 file(GLOB NETWORK   Network/Other/*.*)
+file(GLOB UTILS     Utils/*.*)
 
 source_group(src     FILES ${SRC})
 source_group(Network FILES ${NETWORK})
+source_group(Utils   FILES ${UTILS})
 
-add_library(${PROJECT_NAME} ${SRC} ${NETWORK})
+add_library(${PROJECT_NAME} ${SRC} ${NETWORK} ${UTILS})
 
 if(WIN32)
 
