@@ -8,7 +8,7 @@
 #include "Network/Other/ConnectorTCP_.h"
 #include "Scene/Cameras/Camera_.h"
 #include "Scene/Terrain/Terrain_.h"
-#include "Utils/Log_.h"
+#include "Utils/Log_v.h"
 
 
 extern ConfigurationFile TheConfig;

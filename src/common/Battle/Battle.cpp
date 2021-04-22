@@ -9,7 +9,7 @@
 #include "Scene/SceneS.h"
 #include "Scene/Objects/Units/Air/AirPlane/AirPlane_.h"
 #include "Scene/Objects/Units/Ground/Tank/Tank_.h"
-#include "Utils/Log_.h"
+#include "Utils/Log_v.h"
 
 
 #ifdef WIN32

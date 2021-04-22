@@ -4,7 +4,7 @@
 #include "Network/Other/ConnectorTCP_.h"
 #include "Network/Other/NetworkTypes_.h"
 #include "Utils/GlobalFunctions_.h"
-#include "Utils/Log_.h"
+#include "Utils/Log_v.h"
 
 
 static TaskMasterServer taskPing = {

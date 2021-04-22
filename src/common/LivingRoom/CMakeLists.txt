@@ -49,7 +49,6 @@ file(GLOB UTILS               ../../common_files/Utils/GlobalFunctions_.*
                               ../../libs/victory/Utils/Log_.h
                               ../../common_files/Utils/StringUtils_.*
                               ../../common_files/Utils/UtilsOS_.*)
-file(GLOB THIRDPARTY_LIBEVENT ../../ThirdParty/libevent/libevent_bucket*.c)
 
 file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
 file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
@@ -59,7 +58,6 @@ source_group(src                  FILES ${SRC})
 source_group(FileSystem           FILES ${FILESYSTEM})
 source_group(Network              FILES ${NETWORK})
 source_group(Utils                FILES ${UTILS})
-source_group(ThirdParty\\libevent FILES ${THIRDPARTY_LIBEVENT})
 
 source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
 source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
@@ -69,7 +67,7 @@ set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 file(GLOB FILES_UNITY ${SRC} ${FILESYSTEM} ${NETWORK} ${UTILS} ${SOCKPP})
 
-add_executable( ${PROJECT_NAME} ${FILES_UNITY} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES} ${THIRDPARTY_LIBEVENT})
+add_executable( ${PROJECT_NAME} ${FILES_UNITY} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "livingroom")
