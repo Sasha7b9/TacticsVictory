@@ -45,9 +45,10 @@ file(GLOB SRC                 ../../common_files/*.h
                                                  *.h *.cpp)
 file(GLOB FILESYSTEM          ../../common_files/FileSystem/ConfigurationFile_.*
                               ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB UTILS               ../../libs/victory/Utils/Log_.h
-                              ../../common_files/Utils/StringUtils_.*
-                              ../../common_files/Utils/UtilsOS_.*)
+file(GLOB UTILS               ../../common_files/Utils/GlobalFunctions_.*
+                              ../../libs/victory/Utils/Log_v.h
+                              ../../libs/victory/Utils/StringUtils_v.h
+                              ../../libs/victory/Utils/UtilsOS_v.h)
 
 source_group(src                FILES ${SRC})
 source_group(FileSystem         FILES ${FILESYSTEM})

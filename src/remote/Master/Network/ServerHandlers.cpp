@@ -13,12 +13,12 @@ static void HandlerGet(uint, ClientInfo &);
 
 
 
-void ServerTCP::Prepare()
+void PrepareServerTCP()
 {
-    AppendHandler(MSG_NTW_INFO_LIVINGROOM,     HandleInfoLivingRoms);
-    AppendHandler(MSG_NTW_PING,                HandlerPing);
-    AppendHandler(MSG_NTW_SET_NAME_LIVINGROOM, HandlerSetNameLivingRoom);
-    AppendHandler(MSG_NTW_GET,                 HandlerGet);
+    TheServer.AppendHandler(MSG_NTW_INFO_LIVINGROOM,     HandleInfoLivingRoms);
+    TheServer.AppendHandler(MSG_NTW_PING,                HandlerPing);
+    TheServer.AppendHandler(MSG_NTW_SET_NAME_LIVINGROOM, HandlerSetNameLivingRoom);
+    TheServer.AppendHandler(MSG_NTW_GET,                 HandlerGet);
 };
 
 

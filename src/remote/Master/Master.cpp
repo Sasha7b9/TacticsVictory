@@ -26,6 +26,10 @@ int main(int, char *[])
 
     TheSettings.Load("Settings.conf");
 
+    extern void PrepareServerTCP();
+
+    PrepareServerTCP();
+
     TheServer.Run((uint16)TheSettings.GetInt("master_server", "port"));
 
     return 0;

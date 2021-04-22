@@ -62,7 +62,7 @@ public:
 
 private:
 
-    void Prepare();
+//    void Prepare();
 
     void StartThreadUDP(int index);
 

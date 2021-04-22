@@ -102,8 +102,6 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
 
 void ServerTCP::Run(uint16 port)
 {
-    Prepare();
-
     event_set_log_callback(CallbackLog);
 
     struct sockaddr_in sin;

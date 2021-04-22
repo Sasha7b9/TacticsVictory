@@ -283,8 +283,6 @@ bool ServerUDP::Init(const SocketConfig &_config, int network_size)
 {
     config = _config;
 
-    Prepare();
-
     if (network_size <= 0 || network_size > network_capacity)
     {
         return false;

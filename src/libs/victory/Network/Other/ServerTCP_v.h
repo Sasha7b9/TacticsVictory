@@ -53,8 +53,6 @@ public:
 
 private:
 
-    void Prepare();
-
     bool run = true;
 
     struct CallbackArgs

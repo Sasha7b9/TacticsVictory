@@ -53,11 +53,12 @@ file(GLOB SRC                 ../../common_files/defines_.h
 file(GLOB FILE_SYSTEM         ../../common_files/FileSystem/ConfigurationFile_.*
                               ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK             ../../common_files/Network/Other/NetworkTypes_.*
-                              ../../libs/victory/Network/Other/ServerTCP_.h
+                              ../../libs/victory/Network/Other/ServerTCP_v.h
                                                  Network/ServerHandlers.cpp)
-file(GLOB UTILS               ../../libs/victory/Utils/Log_.h
-                              ../../common_files/Utils/StringUtils_.*
-                              ../../common_files/Utils/UtilsOS_.*)
+file(GLOB UTILS               ../../common_files/Utils/GlobalFunctions_.*
+                              ../../libs/victory/Utils/Log_.h
+                              ../../libs/victory/Utils/StringUtils_.h
+                              ../../libs/victory/Utils/UtilsOS_.h)
 
 
 source_group(src                  FILES ${SRC})
