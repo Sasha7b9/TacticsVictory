@@ -96,7 +96,7 @@ file(GLOB SCENE_PRIMITIVES                       ../../common_files/Scene/Primit
 file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*
                                                     ../common_files/Scene/Terrain/LayerTerrainC_.cpp
                                                                     Scene/Terrain/*.*)
-file(GLOB UTILS                                  ../../libs/victory/Utils/GlobalFunctions_.*
+file(GLOB UTILS                                  ../../libs/victory/Utils/GlobalFunctions_.h
                                                  ../../common_files/Utils/Log_.*
                                                  ../../common_files/Utils/LogU3D_.*
                                                  ../../common_files/Utils/StringUtils_.*
@@ -171,6 +171,8 @@ if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
 else()
     target_link_libraries(${PROJECT_NAME} Urho3D)
 endif()
+
+target_link_libraries(${PROJECT_NAME} victory)
 
 include(../../SetWorkingDirectory.cmake)
 include(../../Install.cmake)

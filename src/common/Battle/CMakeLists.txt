@@ -81,7 +81,7 @@ file(GLOB UTILS                                  ../../common_files/Utils/Log_.*
                                                  ../../common_files/Utils/LogU3D_.*
                                                  ../../common_files/Utils/StringUtils_.*
                                                  ../../common_files/Utils/UtilsOS_.*
-                                                 ../../libs/victory/Utils/GlobalFunctions_.*)
+                                                 ../../libs/victory/Utils/GlobalFunctions_.h)
 
 file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
 file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
@@ -137,14 +137,19 @@ set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "battle")
 include(../../RuntimeLibrary.cmake)
 
 if(WIN32)
+
     if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
         target_link_libraries(${PROJECT_NAME} Urho3D_d)
     else()
         target_link_libraries(${PROJECT_NAME} Urho3D)
     endif()
-    target_link_libraries(${PROJECT_NAME} ws2_32)
+
+    target_link_libraries(${PROJECT_NAME} ws2_32 victory)
+
 else()
+
     target_link_libraries(${PROJECT_NAME} Urho3D)
+
 endif()
 
 include(../../SetWorkingDirectory.cmake)

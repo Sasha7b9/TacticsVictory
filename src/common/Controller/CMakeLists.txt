@@ -46,7 +46,7 @@ file(GLOB SRC        ../../common_files/*.h *.cpp
 file(GLOB FILESYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
                      ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK    ../../common_files/Network/Other/ConnectorTCP_.*)
-file(GLOB UTILS      ../../libs/victory/Utils/GlobalFunctions_.*
+file(GLOB UTILS      ../../libs/victory/Utils/GlobalFunctions_.h
                      ../../common_files/Utils/Log_.*
                      ../../common_files/Utils/LogRAW_.*
                      ../../common_files/Utils/StringUtils_.*
@@ -80,7 +80,7 @@ if(WIN32)
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
 
-    target_link_libraries(${PROJECT_NAME} ws2_32)
+    target_link_libraries(${PROJECT_NAME} ws2_32 victory)
 
 else()
 

@@ -54,7 +54,7 @@ file(GLOB NETWORK             ../../common_files/Network/Other/ConnectorTCP_.*
                               ../../common_files/Network/Other/ServerUDP_.*
                               ../../common_files/Network/Other/SocketsTCP_.*
                                                  Network/*.*)
-file(GLOB UTILS               ../../libs/victory/Utils/GlobalFunctions_.*
+file(GLOB UTILS               ../../libs/victory/Utils/GlobalFunctions_.h
                               ../../common_files/Utils/Log_.*
                               ../../common_files/Utils/LogRAW_.*
                               ../../common_files/Utils/StringUtils_.*
@@ -91,7 +91,7 @@ if(WIN32)
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
 
-    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt)
+    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt victory)
 
 else()
 

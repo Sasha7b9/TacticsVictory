@@ -76,7 +76,7 @@ file(GLOB SCENE_PRIMITIVES            ../../common_files/Scene/Primitives/Line_.
                                       ../../common_files/Scene/Primitives/Plane_.*)
 file(GLOB SCENE_TERRAIN               ../../common_files/Scene/Terrain/*.*
                                          ../common_files/Scene/Terrain/LayerTerrainC_.cpp)
-file(GLOB UTILS                       ../../libs/victory/Utils/GlobalFunctions_.*
+file(GLOB UTILS                       ../../libs/victory/Utils/GlobalFunctions_.h
                                       ../../common_files/Utils/Log_.*
                                       ../../common_files/Utils/LogRAW_.*
                                       ../../common_files/Utils/StringUtils_.*
@@ -138,7 +138,7 @@ else()
     target_link_libraries(${PROJECT_NAME} Urho3D)
 endif()
 
-target_link_libraries(${PROJECT_NAME} ws2_32)
+target_link_libraries(${PROJECT_NAME} ws2_32 victory)
 
 include(../../SetWorkingDirectory.cmake)
 include(../../Install.cmake)
