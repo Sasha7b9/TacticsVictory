@@ -4,7 +4,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
-#                    ../../libs/victory
+                    ../../libs/victory
                     ../../ThirdParty/sockpp/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
@@ -75,8 +75,7 @@ file(GLOB SCENE_PRIMITIVES            ../../common_files/Scene/Primitives/Line_.
 file(GLOB SCENE_TERRAIN               ../../common_files/Scene/Terrain/*.*
                                          ../common_files/Scene/Terrain/LayerTerrainC_.*)
 file(GLOB UTILS                       ../../common_files/Utils/GlobalFunctions_.*
-                                      ../../common_files/Utils/Log_.*
-                                      ../../common_files/Utils/LogRAW_.*
+                                      ../../libs/victory/Utils/Log_.h
                                       ../../common_files/Utils/StringUtils_.*
                                       ../../common_files/Utils/Settings_.*
                                       ../../common_files/Utils/UtilsOS_.*)

@@ -4,7 +4,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
-#                    ../../libs/victory
+                    ../../libs/victory
                     ../../ThirdParty/sockpp/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
@@ -47,8 +47,7 @@ file(GLOB FILESYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
                      ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK    ../../common_files/Network/Other/ConnectorTCP_.*)
 file(GLOB UTILS      ../../common_files/Utils/GlobalFunctions_.*
-                     ../../common_files/Utils/Log_.*
-                     ../../common_files/Utils/LogRAW_.*
+                     ../../libs/victory/Utils/Log_.h
                      ../../common_files/Utils/StringUtils_.*
                      ../../common_files/Utils/UtilsOS_.*)
 
@@ -80,9 +79,11 @@ if(WIN32)
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
 
-    target_link_libraries(${PROJECT_NAME} ws2_32 victory)
+    target_link_libraries(${PROJECT_NAME} ws2_32)
 else()
     target_link_libraries(${PROJECT_NAME} pthread)
 endif()
+
+target_link_libraries(${PROJECT_NAME} victory)
 
 include(../../Install.cmake)

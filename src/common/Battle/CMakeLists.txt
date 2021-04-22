@@ -4,7 +4,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
-#                    ../../libs/victory
+                    ../../libs/victory
                     ../../ThirdParty/sockpp/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
@@ -77,7 +77,7 @@ file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Object
 file(GLOB SCENE_PRIMITIVES                       ../../common_files/Scene/Primitives/*.*)
 file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*
                                                                     Scene/Terrain/*.*)
-file(GLOB UTILS                                  ../../common_files/Utils/Log_.*
+file(GLOB UTILS                                  ../../libs/victory/Utils/Log_.h
                                                  ../../common_files/Utils/LogU3D_.*
                                                  ../../common_files/Utils/StringUtils_.*
                                                  ../../common_files/Utils/UtilsOS_.*
@@ -144,13 +144,11 @@ if(WIN32)
         target_link_libraries(${PROJECT_NAME} Urho3D)
     endif()
 
-    target_link_libraries(${PROJECT_NAME} ws2_32 victory)
-
-else()
-
-    target_link_libraries(${PROJECT_NAME} Urho3D)
+    target_link_libraries(${PROJECT_NAME} ws2_32)
 
 endif()
+
+target_link_libraries(${PROJECT_NAME} victory)
 
 include(../../SetWorkingDirectory.cmake)
 include(../../Install.cmake)

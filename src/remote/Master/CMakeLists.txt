@@ -55,8 +55,7 @@ file(GLOB FILE_SYSTEM         ../../common_files/FileSystem/ConfigurationFile_.*
 file(GLOB NETWORK             ../../common_files/Network/Other/NetworkTypes_.*
                               ../../libs/victory/Network/Other/ServerTCP_.h
                                                  Network/ServerHandlers.cpp)
-file(GLOB UTILS               ../../common_files/Utils/Log_.*
-                              ../../common_files/Utils/LogRAW_.*
+file(GLOB UTILS               ../../libs/victory/Utils/Log_.h
                               ../../common_files/Utils/StringUtils_.*
                               ../../common_files/Utils/UtilsOS_.*)
 file(GLOB THIRDPARTY_LIBEVENT ../../ThirdParty/libevent/libevent_bucket*.c)
@@ -79,12 +78,10 @@ if(WIN32)
                                              # выполнения релизной версии
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
-    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt victory)
-
-else()
-
-    target_link_libraries(${PROJECT_NAME} victory)
+    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt)
 
 endif()
+
+target_link_libraries(${PROJECT_NAME} victory)
 
 include(../../Install.cmake)

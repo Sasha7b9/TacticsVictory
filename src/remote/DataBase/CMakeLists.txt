@@ -4,6 +4,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
+                    ../../libs/victory
                     ../../ThirdParty
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty
@@ -44,8 +45,7 @@ file(GLOB SRC                 ../../common_files/*.h
                                                  *.h *.cpp)
 file(GLOB FILESYSTEM          ../../common_files/FileSystem/ConfigurationFile_.*
                               ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB UTILS               ../../common_files/Utils/Log_.*
-                              ../../common_files/Utils/LogRAW_.*
+file(GLOB UTILS               ../../libs/victory/Utils/Log_.h
                               ../../common_files/Utils/StringUtils_.*
                               ../../common_files/Utils/UtilsOS_.*)
 
@@ -83,5 +83,7 @@ else()
     target_link_libraries(${PROJECT_NAME} sqlite dl pthread)
 
 endif()
+
+target_link_libraries(${PROJECT_NAME} victory)
 
 include(../../Install.cmake)

@@ -4,7 +4,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
-#                    ../../libs/victory
+                    ../../libs/victory
                     ../../ThirdParty/sockpp/include
                     ../../ThirdParty/libevent/compat
                     ../../ThirdParty/libevent/include
@@ -34,15 +34,6 @@ if(WIN32)
 
 else()
 
-#    add_compile_options(-Wclobbered)
-#    add_compile_options(-Wempty-body)
-#    add_compile_options(-Wignored-qualifiers)
-#    add_compile_options(-Wmissing-field-initializers)
-#    add_compile_options(-Wsign-compare)
-#    add_compile_options(-Wtype-limits)
-#    add_compile_options(-Wuninitialized)
-#    add_compile_options(-Wunused-parameter)
-
 endif()
 
 file(GLOB SRC                 ../../common_files/*.h
@@ -55,8 +46,7 @@ file(GLOB NETWORK             ../../common_files/Network/Other/ConnectorTCP_.*
                               ../../common_files/Network/Other/SocketsTCP_.*
                                                  Network/*.*)
 file(GLOB UTILS               ../../common_files/Utils/GlobalFunctions_.*
-                              ../../common_files/Utils/Log_.*
-                              ../../common_files/Utils/LogRAW_.*
+                              ../../libs/victory/Utils/Log_.h
                               ../../common_files/Utils/StringUtils_.*
                               ../../common_files/Utils/UtilsOS_.*)
 file(GLOB THIRDPARTY_LIBEVENT ../../ThirdParty/libevent/libevent_bucket*.c)
@@ -91,12 +81,14 @@ if(WIN32)
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
 
-    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt victory)
+    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt)
 
 else()
 
     target_link_libraries(${PROJECT_NAME} pthread)
 
 endif()
+
+target_link_libraries(${PROJECT_NAME} victory)
 
 include(../../Install.cmake)
