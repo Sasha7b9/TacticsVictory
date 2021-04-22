@@ -1,7 +1,5 @@
 project (victory)
 
-#set(CMAKE_UNITY_BUILD ON)
-
 include_directories(.
                     ../../common_files
                     ../../ThirdParty/sockpp/include
@@ -51,19 +49,24 @@ endif()
 file(GLOB SRC                                  *.h *.cpp)
 file(GLOB NETWORK                              Network/Other/*.*)
 file(GLOB UTILS                                Utils/*.*)
+
 file(GLOB THIRDPARTY_LIBEVENT ../../ThirdParty/libevent/libevent_bucket*.c)
+file(GLOB SOCKPP                   ThirdParty/sockpp.cpp)
+file(GLOB SOCKPP_SOURCES     ../../ThirdParty/sockpp/src/*.cpp)
+file(GLOB SOCKPP_INCLUDE     ../../ThirdParty/sockpp/include/sockpp/*.h)
 
-source_group(src                  FILES ${SRC})
-source_group(Network              FILES ${NETWORK})
-source_group(Utils                FILES ${UTILS})
-source_group(ThirdParty\\libevent FILES ${THIRDPARTY_LIBEVENT})
+source_group(src                         FILES ${SRC})
+source_group(Network                     FILES ${NETWORK})
+source_group(Utils                       FILES ${UTILS})
 
-#file(GLOB FILES_UNITY ${SRC} ${NETWORK} ${UTILS})
+source_group(ThirdParty\\libevent        FILES ${THIRDPARTY_LIBEVENT})
+source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
+source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
+source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
-add_library(${PROJECT_NAME} ${SRC} ${NETWORK} ${UTILS} ${THIRDPARTY_LIBEVENT})
+set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-#set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
-#set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "victory")
+add_library(${PROJECT_NAME} ${SRC} ${NETWORK} ${UTILS} ${THIRDPARTY_LIBEVENT} ${SOCKPP})
 
 
 if(WIN32)
