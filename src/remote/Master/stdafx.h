@@ -10,16 +10,6 @@
 #endif
 
 
-#include <cstdarg>
-#include <iostream>
-#include <istream>
-#include <map>
-#include <mutex>
-#include <sstream>
-#include <string>
-#include <thread>
-#include <vector>
-
 #undef Bool
 #include <rapidjson/document.h>
 #include <rapidjson/stringbuffer.h>

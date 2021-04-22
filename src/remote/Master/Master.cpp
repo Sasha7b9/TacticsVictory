@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "FileSystem/ConfigurationFile_.h"
 #include "Network/Other/ServerTCP_.h"
+#include <locale>
 
 
 /*
