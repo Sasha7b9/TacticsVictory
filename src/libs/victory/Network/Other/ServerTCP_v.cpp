@@ -4,7 +4,7 @@
 #include "FileSystem/FileSystem_v.h"
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/ServerTCP_v.h"
-#include "Utils/StringUtils_.h"
+#include "Utils/StringUtils_v.h"
 #ifdef WIN32
 #else
 #include <sys/socket.h>

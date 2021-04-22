@@ -6,7 +6,7 @@
 #include "Scene/Terrain/CubeTerrain_.h"
 #include "Scene/Terrain/SegmentTerrain_.h"
 #include "Scene/Terrain/Terrain_.h"
-#include "Utils/StringUtils_.h"
+#include "Utils/StringUtils_v.h"
 
 
 Vector<Vector<PODVector<CubeTerrain*>>> TerrainT::columnsCubes;

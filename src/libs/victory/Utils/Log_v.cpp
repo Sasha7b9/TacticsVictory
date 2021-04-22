@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "FileSystem/FileSystem_v.h"
-#include "Utils/StringUtils_.h"
+#include "Utils/StringUtils_v.h"
 #include "Utils/UtilsOS_v.h"
 #include <cstdarg>
 #include <iostream>

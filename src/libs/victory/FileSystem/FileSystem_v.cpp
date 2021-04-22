@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "FileSystem/FileSystem_v.h"
 #include "Utils/Log_v.h"
-#include "Utils/StringUtils_.h"
+#include "Utils/StringUtils_v.h"
 #include "Utils/UtilsOS_v.h"
 
 #ifdef WIN32

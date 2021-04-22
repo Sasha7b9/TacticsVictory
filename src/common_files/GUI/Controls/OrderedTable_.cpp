@@ -4,7 +4,7 @@
 #include "GUI/Controls/OrderedTable_.h"
 #include "GUI/Controls/Buttons/Button_.h"
 #include "Network/Other/NetworkTypes_.h"
-#include "Utils/StringUtils_.h"
+#include "Utils/StringUtils_v.h"
 
 
 struct HeaderRowStruct

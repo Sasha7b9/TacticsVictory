@@ -3,7 +3,7 @@
 #include "FileSystem/ConfigurationFile_v.h"
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/ServerTCP_v.h"
-#include "Utils/StringUtils_.h"
+#include "Utils/StringUtils_v.h"
 
 
 static void HandleInfoLivingRoms(uint, ClientInfo &);
