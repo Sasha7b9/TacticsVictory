@@ -42,7 +42,7 @@ file(GLOB FILESYSTEM          ../../common_files/FileSystem/ConfigurationFile_.*
                               ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK             ../../common_files/Network/Other/ConnectorTCP_.*
                               ../../common_files/Network/Other/NetworkTypes_.*
-                              ../../common_files/Network/Other/ServerUDP_.*
+                              ../../libs/victory/Network/Other/ServerUDP_v.h
                               ../../common_files/Network/Other/SocketsTCP_.*
                                                  Network/*.*)
 file(GLOB UTILS               ../../common_files/Utils/GlobalFunctions_.*
