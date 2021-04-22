@@ -5,7 +5,6 @@
 
 extern TerrainT *TheTerrain;
 
-
 struct Coord
 {
     Coord(const Coord &coord) : rowX(coord.rowX), colZ(coord.colZ) { }
@@ -37,5 +36,5 @@ struct Coord
         return retValue;
     }
 
-    static void RegisterInAS();
+    static void RegisterInAS(Urho3D::Script *script);
 };

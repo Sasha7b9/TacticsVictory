@@ -1,7 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Battle.h"
-#include "Core/Math_.h"
+#include "Core/Math_v.h"
 #include "FileSystem/ConfigurationFile_v.h"
 #include "Game/Logic/Rotator_.h"
 #include "Game/Logic/SunEngine_.h"

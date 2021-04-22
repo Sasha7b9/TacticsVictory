@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Core/Math_.h"
+#include "Core/Math_v.h"
 
 
 int Math::CircularIncrease(int value, int min, int max)

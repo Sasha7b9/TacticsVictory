@@ -17,7 +17,7 @@ if(WIN32)
 
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHs")
 
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE /FORCE:MULTIPLE")
 
     add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed
     add_compile_options(/wd4625)    # 'derived class' : copy constructor was implicitly defined as deleted because a
@@ -49,6 +49,7 @@ else()
 endif()
 
 file(GLOB SRC                                  *.h *.cpp)
+file(GLOB CORE                                 Core/*.*)
 file(GLOB FILESYSTEM                           FileSystem/*.*)
 file(GLOB NETWORK                              Network/Other/*.*)
 file(GLOB UTILS                                Utils/*.*)
@@ -59,6 +60,7 @@ file(GLOB SOCKPP_SOURCES     ../../ThirdParty/sockpp/src/*.cpp)
 file(GLOB SOCKPP_INCLUDE     ../../ThirdParty/sockpp/include/sockpp/*.h)
 
 source_group(src                         FILES ${SRC})
+source_group(Core                        FILES ${CORE})
 source_group(FileSystem                  FILES ${FILESYSTEM})
 source_group(Network                     FILES ${NETWORK})
 source_group(Utils                       FILES ${UTILS})
@@ -72,18 +74,12 @@ set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 file(GLOB FILES_UNITY ${SRC} ${FILESYSTEM} ${UTILS} ${SOCKPP})
 
-add_library(${PROJECT_NAME} ${FILES_UNITY} ${NETWORK} ${LIBEVENT})
+add_library(${PROJECT_NAME} ${FILES_UNITY} ${CORE} ${NETWORK} ${LIBEVENT})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "victory")
 
 if(WIN32)
-
-    if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
-        target_link_libraries(${PROJECT_NAME} Urho3D_d)
-    else()
-        target_link_libraries(${PROJECT_NAME} Urho3D)
-    endif()
 
     include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
                                              # выполнени€ релизной версии

@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Core/Math_.h"
+#include "Core/Math_v.h"
 #include "Scene/Scene_.h"
 #include "Scene/Terrain/CubeTerrain_.h"
 #include "Scene/Terrain/LayerTerrain_.h"
