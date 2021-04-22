@@ -12,6 +12,12 @@
 #endif
 
 
+#include <Urho3D/Container/Str.h>
+#include <Urho3D/UI/Window.h>
+
+using namespace Urho3D;
+
+
 #undef Bool
 #include <rapidjson/document.h>
 #include <rapidjson/stringbuffer.h>
@@ -21,6 +27,9 @@
 #include <event2/bufferevent.h>
 #include <event2/buffer.h>
 #include <event2/listener.h>
+
+#include <sockpp/tcp_acceptor.h>
+#include <sockpp/tcp_connector.h>
 
 
 #ifdef WIN32

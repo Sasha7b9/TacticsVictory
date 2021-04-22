@@ -5,7 +5,7 @@
 #include "GUI/Cursor_.h"
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"
-#include "Network/Other/ConnectorTCP_.h"
+#include "Network/Other/ConnectorTCP_v.h"
 #include "Scene/Cameras/Camera_.h"
 #include "Scene/Terrain/Terrain_.h"
 #include "Utils/Log_v.h"

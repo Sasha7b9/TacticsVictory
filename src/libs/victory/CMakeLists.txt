@@ -4,6 +4,7 @@ project (victory)
 
 include_directories(.
                     ../../common_files
+                    ../../ThirdParty/sockpp/include
                     ../../ThirdParty/libevent/compat
                     ../../ThirdParty/libevent/include
                     ../../ThirdParty/libevent/build/include

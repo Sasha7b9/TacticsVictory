@@ -66,7 +66,7 @@ file(GLOB GUI_WINDOWS                 ../../common_files/GUI/Windows/Console_.*
 file(GLOB INPUT                       ../../common_files/Input/Mouse_.*
                                                          Input/*.*)
 file(GLOB NETWORK                     ../../common_files/Network/Other/ConnectorTCP_.*
-                                      ../../common_files/Network/Other/ConnectorUDP_.*
+                                      ../../libs/victory/Network/Other/ConnectorUDP_v.h
                                       ../../common_files/Network/Other/NetworkTypes_.*
                                                          Network/*.*)
 file(GLOB SCENE                                          Scene/*.*)
