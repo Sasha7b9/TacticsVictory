@@ -2,13 +2,13 @@
 #pragma once
 
 
-extern Context       *TheContext;
-extern FileSystem    *TheFileSystem;
-extern Graphics      *TheGraphics;
-extern ResourceCache *TheCache;
-
-#ifdef GRAPHICS
-extern FileSelector *TheFileSelector;
-#endif
+//extern Context       *TheContext;
+//extern FileSystem    *TheFileSystem;
+//extern Graphics      *TheGraphics;
+//extern ResourceCache *TheCache;
+//
+//#ifdef GRAPHICS
+//extern FileSelector *TheFileSelector;
+//#endif
 
 

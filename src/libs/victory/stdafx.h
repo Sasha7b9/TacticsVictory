@@ -13,13 +13,13 @@
 #endif
 
 
-#include <Urho3D/Container/Str.h>
-#include <Urho3D/Core/StringUtils.h>
-#include <Urho3D/Graphics/Graphics.h>
-#include <Urho3D/IO/FileSystem.h>
-#include <Urho3D/Resource/ResourceCache.h>
-#include <Urho3D/UI/FileSelector.h>
-#include <Urho3D/UI/Window.h>
+//#include <Urho3D/Container/Str.h>
+//#include <Urho3D/Core/StringUtils.h>
+//#include <Urho3D/Graphics/Graphics.h>
+//#include <Urho3D/IO/FileSystem.h>
+//#include <Urho3D/Resource/ResourceCache.h>
+//#include <Urho3D/UI/FileSelector.h>
+//#include <Urho3D/UI/Window.h>
 
 
 #undef Bool
@@ -39,7 +39,7 @@
 #endif
 
 
-using namespace Urho3D;
+//using namespace Urho3D;
 
 
 #include "defines.h"
