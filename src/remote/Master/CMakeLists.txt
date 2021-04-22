@@ -4,6 +4,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
+                    ../../libs/victory
                     ../../ThirdParty/libevent/compat
                     ../../ThirdParty/libevent/include
                     ../../ThirdParty/libevent/build/include
@@ -52,7 +53,7 @@ file(GLOB SRC                 ../../common_files/defines_.h
 file(GLOB FILE_SYSTEM         ../../common_files/FileSystem/ConfigurationFile_.*
                               ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK             ../../common_files/Network/Other/NetworkTypes_.*
-                              ../../common_files/Network/Other/ServerTCP_.*
+                              ../../libs/victory/Network/Other/ServerTCP_.*
                                                  Network/ServerHandlers.cpp)
 file(GLOB UTILS               ../../common_files/Utils/Log_.*
                               ../../common_files/Utils/LogRAW_.*

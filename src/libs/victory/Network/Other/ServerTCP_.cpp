@@ -14,18 +14,8 @@
 
 static const char MESSAGE[] = "Hello, World!";
 
-// Вызывается при новом соединении
-static void CallbackRead(struct bufferevent *, void *);
-static void CallbackWrite(struct bufferevent *, void *);
-static void CallbackAccept(evutil_socket_t listener, short event, void *arg);
-static void CallbackError(struct bufferevent *bev, short what, void *ctx);
-static void CallbackLog(int, const char *);
-
 
 #define MAX_LINE 16384
-
-
-static void ProcessClient(ClientInfo &info);
 
 
 std::string ClientInfo::SocketAddress::ToStringFull() const
@@ -165,7 +155,9 @@ void ServerTCP::Run(uint16 port)
         LOGERROR("Can not call listen()");
     }
 
-    struct event *listener_event = event_new(base, listener, EV_READ | EV_PERSIST, CallbackAccept, (void *)base);
+    CallbackArgs args = { this, base };
+
+    struct event *listener_event = event_new(base, listener, EV_READ | EV_PERSIST, CallbackAccept, &args);
 
     event_add(listener_event, NULL);
 
@@ -173,15 +165,17 @@ void ServerTCP::Run(uint16 port)
 }
 
 
-static void CallbackLog(int, const char *message)
+void ServerTCP::CallbackLog(int, const char *message)
 {
     LOGERROR(message);
 }
 
 
-static void CallbackAccept(evutil_socket_t listener, short, void *arg)
+void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
 {
-    struct event_base *base = (struct event_base *)arg;
+    CallbackArgs *args = (CallbackArgs *)_args;
+
+    struct event_base *base = args->base;
 
     struct sockaddr_storage ss;
     socklen_t slen = sizeof(ss);
@@ -209,7 +203,7 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
     {
         evutil_make_socket_nonblocking(fd);
         struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
-        bufferevent_setcb(bev, CallbackRead, CallbackWrite, CallbackError, NULL);
+        bufferevent_setcb(bev, CallbackRead, CallbackWrite, CallbackError, args);
 //        bufferevent_setwatermark(bev, EV_READ | EV_WRITE, 0, 2);
         bufferevent_enable(bev, EV_READ | EV_WRITE);
 
@@ -219,7 +213,7 @@ static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 
         LOGWRITEF("Client %s connected", info.address.ToStringFull().c_str());
 
-        clients[bev] = info;
+        args->server->clients[bev] = info;
     }
 }
 
@@ -247,9 +241,11 @@ void ServerTCP::SendAnswer(void *bev, uint id, pchar message, pchar data)
 }
 
 
-static void CallbackRead(struct bufferevent *bev, void *)
+void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
 {
-    std::vector<uint8> &data = TheServer.clients[bev].bindata;
+    CallbackArgs *args = (CallbackArgs *)_args;
+
+    std::vector<uint8> &data = args->server->clients[bev].bindata;
 
 #define SIZE_CHUNK 1024
 
@@ -264,11 +260,11 @@ static void CallbackRead(struct bufferevent *bev, void *)
         readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
     }
 
-    ProcessClient(TheServer.clients[bev]);
+    ProcessClient(args->server->clients[bev], args->server);
 }
 
 
-static void CallbackWrite(struct bufferevent *, void *)
+void ServerTCP::CallbackWrite(struct bufferevent *, void *)
 {
 }
 
@@ -298,7 +294,7 @@ static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data)
 }
 
 
-static void ProcessClient(ClientInfo &info)
+void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 {
     std::vector<uint8> &received = info.bindata;
 
@@ -314,9 +310,9 @@ static void ProcessClient(ClientInfo &info)
 
             SU::SplitToWords((char *)info.message.data(), info.words);
 
-            auto it = TheServer.handlers.find(info.words[0]);
+            auto it = server->handlers.find(info.words[0]);
 
-            if (it != TheServer.handlers.end())
+            if (it != server->handlers.end())
             {
                 it->second(id, info);
             }
@@ -329,13 +325,15 @@ static void ProcessClient(ClientInfo &info)
 }
 
 
-static void CallbackError(struct bufferevent *bev, short error, void *)
+void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *_args)
 {
+    ServerTCP *server = ((CallbackArgs *)_args)->server;
+
     if (error & BEV_EVENT_READING)
     {
-        LOGWRITEF("Client %s disconnected", TheServer.clients[bev].address.ToStringFull().c_str());
+        LOGWRITEF("Client %s disconnected", server->clients[bev].address.ToStringFull().c_str());
 
-        TheServer.clients.erase(bev);
+        server->clients.erase(bev);
     }
     else if (error & BEV_EVENT_WRITING)
     {
