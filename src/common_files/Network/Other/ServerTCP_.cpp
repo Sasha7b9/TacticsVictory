@@ -216,7 +216,7 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
 
         LOGWRITEF("Client %s connected", info.address.ToStringFull().c_str());
 
-        TheServer.clients[bev] = info;
+        args->server->clients[bev] = info;
     }
 }
 
