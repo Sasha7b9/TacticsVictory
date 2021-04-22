@@ -1,5 +1,7 @@
 project (victory)
 
+#set(CMAKE_UNITY_BUILD ON)
+
 include_directories(.
                     ../../common_files
                     ../../ThirdParty/libevent/compat
@@ -55,7 +57,12 @@ source_group(Network              FILES ${NETWORK})
 source_group(Utils                FILES ${UTILS})
 source_group(ThirdParty\\libevent FILES ${THIRDPARTY_LIBEVENT})
 
+#file(GLOB FILES_UNITY ${SRC} ${NETWORK} ${UTILS})
+
 add_library(${PROJECT_NAME} ${SRC} ${NETWORK} ${UTILS} ${THIRDPARTY_LIBEVENT})
+
+#set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
+#set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "victory")
 
 
 if(WIN32)
