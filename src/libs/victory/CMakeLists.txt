@@ -81,6 +81,8 @@ if(WIN32)
 
 else()
 
+    target_link_libraries(${PROJECT_NAME} Urho3D)
+
 endif()
 
 include(../../Install.cmake)
