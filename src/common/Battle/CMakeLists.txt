@@ -83,10 +83,6 @@ file(GLOB UTILS                                  ../../libs/victory/Utils/Log_.h
                                                  ../../common_files/Utils/UtilsOS_.*
                                                  ../../common_files/Utils/GlobalFunctions_.*)
 
-file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
-file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
-file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
-
 source_group(src                                        FILES ${SRC})
 source_group(Core                                       FILES ${CORE})
 source_group(FileSystem                                 FILES ${FILE_SYSTEM})
@@ -112,12 +108,6 @@ source_group(Scene\\Primitives                          FILES ${SCENE_PRIMITIVES
 source_group(Scene\\Terrain                             FILES ${SCENE_TERRAIN})
 source_group(Utils                                      FILES ${UTILS})
 
-source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
-source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
-source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
-
-set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
-
 file(GLOB FILES_UNITY ${SRC} ${CORE} ${FILE_SYSTEM} ${GAME_LOGIC} ${GAME_PATH}
                       ${NETWORK} ${NETWORK_MESSAGES} ${NETWORK_OTHER}
                       ${SCENE} ${SCENE_OBJECTS}
@@ -127,9 +117,9 @@ file(GLOB FILES_UNITY ${SRC} ${CORE} ${FILE_SYSTEM} ${GAME_LOGIC} ${GAME_PATH}
                       ${SCENE_OBJECTS_UNITS_ACCESSORIES} ${SCENE_OBJECTS_UNITS_ACCESSORIES_ENGINE}
                       ${SCENE_OBJECTS_UNITS_AIR} ${SCENE_OBJECTS_UNITS_AIR_AIRPLANE}
                       ${SCENE_OBJECTS_UNITS_GROUND} ${SCENE_OBJECTS_UNITS_GROUND_TANK}
-                      ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS} ${SOCKPP} )
+                      ${SCENE_OBJECTS_WEAPONS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN} ${UTILS})
 
-add_executable(${PROJECT_NAME} ${FILES_UNITY} ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+add_executable(${PROJECT_NAME} ${FILES_UNITY})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "battle")
