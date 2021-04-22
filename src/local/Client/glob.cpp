@@ -1,6 +1,6 @@
 ﻿// 2021/04/02 17:53:31 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "FileSystem/ConfigurationFile_.h"
+#include "FileSystem/ConfigurationFile_v.h"
 #include "Network/Other/ConnectorTCP_v.h"
 #include "Network/Other/ConnectorUDP_v.h"
 

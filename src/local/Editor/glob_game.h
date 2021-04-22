@@ -1,7 +1,7 @@
 // 2021/04/02 17:53:43 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Editor.h"
-#include "FileSystem/ConfigurationFile_.h"
+#include "FileSystem/ConfigurationFile_v.h"
 #include "GUI/Cursor_.h"
 #include "GUI/Windows/Console_.h"
 #include "GUI/Windows/WindowVariables_.h"

@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Editor/Editor.h"
-#include "FileSystem/ConfigurationFile_.h"
+#include "FileSystem/ConfigurationFile_v.h"
 #include "GUI/GUI.h"
 #include "GUI/Controls/DropDownListWithTextAndButton_.h"
 #include "GUI/Controls/Label_.h"

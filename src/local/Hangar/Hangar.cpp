@@ -1,7 +1,7 @@
 ﻿// 2021/04/02 17:53:03 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Hangar.h"
-#include "FileSystem/ConfigurationFile_.h"
+#include "FileSystem/ConfigurationFile_v.h"
 #include "Graphics/Renderer_.h"
 #include "Graphics/2D/Image_.h"
 #include "GUI/Menu/MenuEvents_.h"

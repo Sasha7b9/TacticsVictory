@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "FileSystem/ConfigurationFile_.h"
+#include "FileSystem/ConfigurationFile_v.h"
 #include "GUI/Controls/Label_.h"
 #include "GUI/Controls/Buttons/ButtonToggled_.h"
 

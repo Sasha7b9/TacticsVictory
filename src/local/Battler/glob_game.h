@@ -1,7 +1,7 @@
 // 2021/02/15 16:12:30 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by 
 #pragma once
 #include "Battler.h"
-#include "FileSystem/ConfigurationFile_.h"
+#include "FileSystem/ConfigurationFile_v.h"
 #include "GUI/Cursor_.h"
 #include "GUI/Controls/Hint_.h"
 #include "GUI/GuiEditor/GuiEditor.h"

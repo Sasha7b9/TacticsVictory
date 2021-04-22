@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Battler.h"
 #include "Editor/Editor.h"
-#include "FileSystem/ConfigurationFile_.h"
+#include "FileSystem/ConfigurationFile_v.h"
 #include "Game/Logic/Rotator_.h"
 #include "Game/Logic/SunEngine_.h"
 #include "Game/Path/TilePath.h"

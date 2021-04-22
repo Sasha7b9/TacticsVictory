@@ -1,6 +1,6 @@
 // 2021/03/28 21:56:56 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "FileSystem/ConfigurationFile_.h"
+#include "FileSystem/ConfigurationFile_v.h"
 #include "GUI/Controls/OrderedTable_.h"
 #include "GUI/Controls/Buttons/Button_.h"
 #include "Network/Other/NetworkTypes_.h"
