@@ -33,6 +33,7 @@ private:
     void GetSubsystems();
     void TuneEngineParameters();
     void CreateGUI();
+    void InitMouse();
 
     void HandlerMenuEvent(StringHash, VariantMap &);
     void HandlerPostRenderUpdate(StringHash, VariantMap &);

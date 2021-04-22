@@ -10,9 +10,16 @@ public:
 
     Mouse(Mouse **self, Context *context);
 
+    void Init(pFuncVV _onLeft, pFuncVV _onRight)
+    {
+        onButtonLeft = _onLeft;
+        onButtonRight = _onRight;
+    };
+
 private:
 
     void HandlerMouseDown(StringHash, VariantMap &);
-    void ProcessMouseLeft();
-    void ProcessMouseRight();
+
+    pFuncVV onButtonLeft = EmptyFuncVV;
+    pFuncVV onButtonRight = EmptyFuncVV;
 };

@@ -28,6 +28,7 @@ private:
     void GetSubsystems();
     void TuneEngineParameters();
     void CreateGUI();
+    void InitMouse();
 
     SharedPtr<Log>   log;
     SharedPtr<GUI>   gui;

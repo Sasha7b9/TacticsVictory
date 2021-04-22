@@ -113,7 +113,7 @@ void Battler::Start()
 
     RegistrationObjects();
 
-    mouse = new Mouse(&TheMouse, TheContext);
+    InitMouse();
 
     SetWindowTitleAndIcon();
 
@@ -255,4 +255,52 @@ void Battler::OpenLog()
     log = new Log(TheContext);
     log->Open(GetTypeName() + ".log");
     log->SetLevel(LOG_TRACE);
+}
+
+
+void Battler::InitMouse()
+{
+    mouse = new Mouse(&TheMouse, TheContext);
+
+    mouse->Init
+    (
+        []()
+        {
+            Vector3 hitCoord;
+            Drawable *object = TheCursor->GetRaycastNode(&hitCoord);
+
+            if (!object)
+            {
+                return;
+            }
+
+            Node *node = object->GetNode();
+            String name = node->GetName();
+
+            if (node->GetVar(VAR_NODE_IS_UNIT).GetBool())
+            {
+                VariantMap &eventData = TheBattler->GetEventDataMap();
+                eventData[UnitMouseClick::P_NODE] = node;
+                eventData[UnitMouseClick::P_CTRL_PRESSED] = TheInput->GetKeyDown(KEY_CTRL);
+                node->SendEvent(EU_MOUSE_CLICK, eventData);
+            }
+            else if (name == NAME_NODE_TERRAIN)
+            {
+                ThePathIndicator->Enable();
+            }
+
+            //    if (name == NAME_NODE_TANK)
+            //    {
+            //        Vector3 position = node->GetPosition();
+            //        Coord coord(static_cast<uint>(-position.z_), static_cast<uint>(position.x_)); //-V2004
+            //
+            //        ThePathIndicator->SetStartPosition(coord);
+            //        ThePathIndicator->Disable();
+            //    }
+        },
+        []()
+        {
+            ThePathIndicator->Disable();
+        }
+    );
 }

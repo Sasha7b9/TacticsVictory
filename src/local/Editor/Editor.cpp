@@ -110,7 +110,7 @@ void Editor::Start()
 
     RegistrationObjects();
 
-    mouse = new Mouse(&TheMouse, TheContext);
+    InitMouse();
 
     SetWindowTitleAndIcon();
 
@@ -180,4 +180,31 @@ void Editor::OpenLog()
     log = new Log(TheContext);
     log->Open(GetTypeName() + ".log");
     log->SetLevel(LOG_DEBUG);
+}
+
+
+void Editor::InitMouse()
+{
+    mouse = new Mouse(&TheMouse, TheContext);
+
+    mouse->Init
+    (
+        []()
+        {
+            Vector3 hitCoord;
+            Drawable *object = TheCursor->GetRaycastNode(&hitCoord);
+
+            if (!object)
+            {
+                return;
+            }
+
+            Node *node = object->GetNode();
+            String name = node->GetName();
+        },
+        []()
+        {
+
+        }
+    );
 }

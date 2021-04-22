@@ -12,8 +12,6 @@ include_directories(.
 add_definitions(-DURHO3D_LOGGING -DLOG_U3D -DU3D -DGRAPHICS)
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /STACK:100000000")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /FORCE:MULTIPLE /ignore:4075 /ignore:4006")   # Без этих опций
-                                    # линкер ругается на уже определённые в victory конструкторы
 
 add_compile_options(/wd4625)    # 'derived class' : copy constructor was implicitly defined as deleted because a
                                 # base class copy constructor is inaccessible or deleted
@@ -66,8 +64,7 @@ file(GLOB GUI_WINDOWS                 ../../common_files/GUI/Windows/Console_.*
                                       ../../common_files/GUI/Windows/ConsoleParserFunctions_.*
                                       ../../common_files/GUI/Windows/WindowVariables_.*
                                       ../../common_files/GUI/Windows/Window_.*)
-file(GLOB INPUT                       ../../common_files/Input/Mouse_.*
-                                                         Input/*.*)
+file(GLOB INPUT                       ../../livs/victory/Input/Mouse_v.h)
 file(GLOB NETWORK                     ../../common_files/Network/Other/ConnectorTCP_.*)
 file(GLOB SCENE                                          Scene/*.*)
 file(GLOB SCENE_CAMERAS               ../../common_files/Scene/Cameras/*.*)

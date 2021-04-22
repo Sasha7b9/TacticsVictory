@@ -8,11 +8,9 @@ include_directories(.
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
-add_definitions(-DURHO3D_LOGGING -DLOG_U3D -DU3D -DGRAPHICS)
+add_definitions(-DURHO3D_LOGGING -DLOG_U3D -DU3D -DGRAPHICS -DUSE_MOUSE)
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS  /STACK:100000000")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /FORCE:MULTIPLE /ignore:4075 /ignore:4006")   # Без этих опций
-                                    # линкер ругается на уже определённые в victory конструкторы
 
 add_compile_options(/wd4625)    # 'derived class' : copy constructor was implicitly defined as deleted because a
                                 # base class copy constructor is inaccessible or deleted
@@ -68,8 +66,7 @@ file(GLOB GUI_WINDOWS                            ../../common_files/GUI/Windows/
                                                  ../../common_files/GUI/Windows/ConsoleParserFunctions_.*
                                                  ../../common_files/GUI/Windows/WindowVariables_.*
                                                  ../../common_files/GUI/Windows/Window_.*)
-file(GLOB INPUT                                  ../../libs/victory/Input/Mouse_v.h
-                                                                    Input/*.*)
+file(GLOB INPUT                                  ../../libs/victory/Input/Mouse_v.h)
 file(GLOB NETWORK                                ../../common_files/Network/Game/*.*
                                                                     Network/*.*)
 file(GLOB NETWORK_MESSAGES                       ../../common_files/Network/Game/Messages/*.*

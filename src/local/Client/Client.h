@@ -33,6 +33,7 @@ private:
     void GetSubsystems();
     void TuneEngineParameters();
     void CreateGUI();
+    void InitMouse();
 
     // Попытка подключения к локальному мастер-серверу
     void TryConnectToLocalMaster();

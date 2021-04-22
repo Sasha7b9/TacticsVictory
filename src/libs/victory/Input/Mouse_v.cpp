@@ -19,26 +19,10 @@ void Mouse::HandlerMouseDown(StringHash, VariantMap &eventData)
 
     if (buttons == MOUSEB_LEFT)
     {
-        ProcessMouseLeft();
+        onButtonLeft();
     }
     else if (buttons == MOUSEB_RIGHT)
     {
-        ProcessMouseRight();
+        onButtonRight();
     }
 }
-
-#ifndef USE_MOUSE
-
-void Mouse::ProcessMouseLeft()
-{
-
-}
-
-
-void Mouse::ProcessMouseRight()
-{
-
-}
-
-
-#endif
