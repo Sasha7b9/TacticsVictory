@@ -4,6 +4,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
+                    ../../libs/victory
                     ../../ThirdParty/sockpp/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
@@ -45,7 +46,7 @@ file(GLOB SRC        ../../common_files/*.h *.cpp
 file(GLOB FILESYSTEM ../../common_files/FileSystem/ConfigurationFile_.*
                      ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK    ../../common_files/Network/Other/ConnectorTCP_.*)
-file(GLOB UTILS      ../../common_files/Utils/GlobalFunctions_.*
+file(GLOB UTILS      ../../libs/victory/Utils/GlobalFunctions_.*
                      ../../common_files/Utils/Log_.*
                      ../../common_files/Utils/LogRAW_.*
                      ../../common_files/Utils/StringUtils_.*

@@ -4,6 +4,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
+                    ../../libs/victory
                     ../../ThirdParty/sockpp/include
                     ../../ThirdParty/libevent/compat
                     ../../ThirdParty/libevent/include
@@ -53,7 +54,7 @@ file(GLOB NETWORK             ../../common_files/Network/Other/ConnectorTCP_.*
                               ../../common_files/Network/Other/ServerUDP_.*
                               ../../common_files/Network/Other/SocketsTCP_.*
                                                  Network/*.*)
-file(GLOB UTILS               ../../common_files/Utils/GlobalFunctions_.*
+file(GLOB UTILS               ../../libs/victory/Utils/GlobalFunctions_.*
                               ../../common_files/Utils/Log_.*
                               ../../common_files/Utils/LogRAW_.*
                               ../../common_files/Utils/StringUtils_.*

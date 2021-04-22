@@ -4,6 +4,7 @@ set(CMAKE_UNITY_BUILD ON)
 
 include_directories(.
                     ../../common_files
+                    ../../libs/victory
                     ../../ThirdParty/sockpp/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
@@ -76,11 +77,11 @@ file(GLOB SCENE_OBJECTS_WEAPONS                  ../../common_files/Scene/Object
 file(GLOB SCENE_PRIMITIVES                       ../../common_files/Scene/Primitives/*.*)
 file(GLOB SCENE_TERRAIN                          ../../common_files/Scene/Terrain/*.*
                                                                     Scene/Terrain/*.*)
-file(GLOB UTILS                                  ../../common_files/Utils/GlobalFunctions_.*
-                                                 ../../common_files/Utils/Log_.*
+file(GLOB UTILS                                  ../../common_files/Utils/Log_.*
                                                  ../../common_files/Utils/LogU3D_.*
                                                  ../../common_files/Utils/StringUtils_.*
-                                                 ../../common_files/Utils/UtilsOS_.*)
+                                                 ../../common_files/Utils/UtilsOS_.*
+                                                 ../../libs/victory/Utils/GlobalFunctions_.*)
 
 file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
 file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
