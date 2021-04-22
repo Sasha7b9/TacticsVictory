@@ -139,12 +139,16 @@ include(../../RuntimeLibrary.cmake)
 if(WIN32)
 
     if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
-        target_link_libraries(${PROJECT_NAME} Urho3D_d)
+        target_link_libraries(${PROJECT_NAME} Urho3D_d) 
     else()
         target_link_libraries(${PROJECT_NAME} Urho3D)
     endif()
 
     target_link_libraries(${PROJECT_NAME} ws2_32)
+
+else()
+
+    target_link_libraries(${PROJECT_NAME} Urho3D)
 
 endif()
 
