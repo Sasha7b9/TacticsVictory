@@ -8,6 +8,8 @@
 #define _WINSOCKAPI_
 #include <windows.h>
 #else
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
 
