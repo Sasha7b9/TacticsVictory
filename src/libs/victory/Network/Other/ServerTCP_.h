@@ -1,6 +1,9 @@
 // 2021/04/09 14:45:04 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include <map>
+#ifdef WIN32
+#include <WinSock2.h>
+#endif
 
 
 struct ClientInfo

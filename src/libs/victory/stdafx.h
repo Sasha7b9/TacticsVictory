@@ -4,22 +4,12 @@
 
 #ifdef WIN32
 #pragma warning(push, 0)
-
 #define _WINSOCKAPI_
 #include <windows.h>
 #else
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
-
-
-//#include <Urho3D/Container/Str.h>
-//#include <Urho3D/Core/StringUtils.h>
-//#include <Urho3D/Graphics/Graphics.h>
-//#include <Urho3D/IO/FileSystem.h>
-//#include <Urho3D/Resource/ResourceCache.h>
-//#include <Urho3D/UI/FileSelector.h>
-//#include <Urho3D/UI/Window.h>
 
 
 #undef Bool
@@ -37,9 +27,6 @@
 #pragma warning(pop)
 #else
 #endif
-
-
-//using namespace Urho3D;
 
 
 #include "defines.h"

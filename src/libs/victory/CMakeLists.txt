@@ -45,15 +45,18 @@ else()
 
 endif()
 
-file(GLOB SRC       *.h *.cpp)
-file(GLOB NETWORK   Network/Other/*.*)
-file(GLOB UTILS     Utils/*.*)
+file(GLOB SRC                                  *.h *.cpp)
+file(GLOB NETWORK                              Network/Other/*.*)
+file(GLOB UTILS                                Utils/*.*)
+file(GLOB THIRDPARTY_LIBEVENT ../../ThirdParty/libevent/libevent_bucket*.c)
 
-source_group(src     FILES ${SRC})
-source_group(Network FILES ${NETWORK})
-source_group(Utils   FILES ${UTILS})
+source_group(src                  FILES ${SRC})
+source_group(Network              FILES ${NETWORK})
+source_group(Utils                FILES ${UTILS})
+source_group(ThirdParty\\libevent FILES ${THIRDPARTY_LIBEVENT})
 
-add_library(${PROJECT_NAME} ${SRC} ${NETWORK} ${UTILS})
+add_library(${PROJECT_NAME} ${SRC} ${NETWORK} ${UTILS} ${THIRDPARTY_LIBEVENT})
+
 
 if(WIN32)
 

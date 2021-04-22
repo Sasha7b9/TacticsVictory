@@ -58,16 +58,14 @@ file(GLOB NETWORK             ../../common_files/Network/Other/NetworkTypes_.*
 file(GLOB UTILS               ../../libs/victory/Utils/Log_.h
                               ../../common_files/Utils/StringUtils_.*
                               ../../common_files/Utils/UtilsOS_.*)
-file(GLOB THIRDPARTY_LIBEVENT ../../ThirdParty/libevent/libevent_bucket*.c)
 
 
 source_group(src                  FILES ${SRC})
 source_group(FileSystem           FILES ${FILE_SYSTEM})
 source_group(Network              FILES ${NETWORK})
 source_group(Utils                FILES ${UTILS})
-source_group(ThirdParty\\libevent FILES ${THIRDPARTY_LIBEVENT})
 
-add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} ${THIRDPARTY_LIBEVENT})
+add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS})
 
 set_target_properties(${PROJECT_NAME}                                 PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS} PROPERTIES UNITY_GROUP "master")
