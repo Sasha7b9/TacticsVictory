@@ -158,7 +158,9 @@ void ServerTCP::Run(uint16 port)
         LOGERROR("Can not call listen()");
     }
 
-    struct event *listener_event = event_new(base, listener, EV_READ | EV_PERSIST, CallbackAccept, (void *)base);
+    CallbackArgs args = { this, base };
+
+    struct event *listener_event = event_new(base, listener, EV_READ | EV_PERSIST, CallbackAccept, &args);
 
     event_add(listener_event, NULL);
 
@@ -172,9 +174,11 @@ void ServerTCP::CallbackLog(int, const char *message)
 }
 
 
-void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *arg)
+void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
 {
-    struct event_base *base = (struct event_base *)arg;
+    CallbackArgs *args = (CallbackArgs *)_args;
+
+    struct event_base *base = args->base;
 
     struct sockaddr_storage ss;
     socklen_t slen = sizeof(ss);

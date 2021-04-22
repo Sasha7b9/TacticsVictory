@@ -53,9 +53,15 @@ private:
 
     bool run = true;
 
+    struct CallbackArgs
+    {
+        ServerTCP  *server;
+        event_base *base;
+    };
+
     // Вызывается при новом соединении
-    static void CallbackRead(struct bufferevent *, void *);
-    static void CallbackWrite(struct bufferevent *, void *);
+    static void CallbackRead(struct bufferevent *, void *arg);
+    static void CallbackWrite(struct bufferevent *, void *arg);
     static void CallbackAccept(evutil_socket_t listener, short event, void *arg);
     static void CallbackError(struct bufferevent *bev, short what, void *ctx);
     static void CallbackLog(int, const char *);
