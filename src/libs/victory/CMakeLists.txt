@@ -55,6 +55,12 @@ add_library(${PROJECT_NAME} ${SRC} ${UTILS})
 
 if(WIN32)
 
+    if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
+        target_link_libraries(${PROJECT_NAME} Urho3D_d)
+    else()
+        target_link_libraries(${PROJECT_NAME} Urho3D)
+    endif()
+
     include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
                                              # выполнени€ релизной версии
     include(../../SetWorkingDirectory.cmake)

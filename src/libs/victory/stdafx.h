@@ -20,4 +20,4 @@ using namespace Urho3D;
 
 
 #include "defines.h"
-#include "glob.h"
+#include "victory.h"
