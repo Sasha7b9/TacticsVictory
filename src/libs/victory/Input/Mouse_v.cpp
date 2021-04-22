@@ -26,3 +26,19 @@ void Mouse::HandlerMouseDown(StringHash, VariantMap &eventData)
         ProcessMouseRight();
     }
 }
+
+#ifndef USE_MOUSE
+
+void Mouse::ProcessMouseLeft()
+{
+
+}
+
+
+void Mouse::ProcessMouseRight()
+{
+
+}
+
+
+#endif
