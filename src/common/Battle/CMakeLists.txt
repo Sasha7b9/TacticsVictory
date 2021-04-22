@@ -48,7 +48,7 @@ file(GLOB SRC                                    ../../common_files/*.*
                                                                     *.h *.cpp)
 file(GLOB CORE                                   ../../common_files/Core/*.*)
 file(GLOB FILE_SYSTEM                            ../../common_files/FileSystem/ConfigurationFile_.*
-                                                 ../../common_files/FileSystem/FileSystem_.*)
+                                                 ../../libs/victory/FileSystem/FileSystem_v.h)
 file(GLOB GAME_LOGIC                             ../../common_files/Game/Logic/*.*)
 file(GLOB GAME_PATH                              ../../common_files/Game/Path/*.*)
 file(GLOB NETWORK                                ../../common_files/Network/Game/*.*
