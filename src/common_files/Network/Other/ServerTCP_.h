@@ -65,4 +65,6 @@ private:
     static void CallbackAccept(evutil_socket_t listener, short event, void *arg);
     static void CallbackError(struct bufferevent *bev, short what, void *ctx);
     static void CallbackLog(int, const char *);
+
+    static void ProcessClient(ClientInfo &info);
 };

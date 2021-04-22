@@ -297,7 +297,7 @@ static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data)
 }
 
 
-static void ProcessClient(ClientInfo &info)
+void ServerTCP::ProcessClient(ClientInfo &info)
 {
     std::vector<uint8> &received = info.bindata;
 
