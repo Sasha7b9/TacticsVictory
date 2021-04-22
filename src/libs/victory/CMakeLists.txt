@@ -1,5 +1,7 @@
 project (victory)
 
+set(CMAKE_UNITY_BUILD ON)
+
 include_directories(.
                     ../../common_files
                     ../../ThirdParty/sockpp/include
@@ -68,8 +70,12 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_library(${PROJECT_NAME} ${SRC} ${FILESYSTEM} ${NETWORK} ${UTILS} ${LIBEVENT} ${SOCKPP})
+file(GLOB FILES_UNITY ${SRC})
 
+add_library(${PROJECT_NAME} ${FILES_UNITY} ${FILESYSTEM} ${NETWORK} ${UTILS} ${LIBEVENT} ${SOCKPP})
+
+set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "victory")
 
 if(WIN32)
 
