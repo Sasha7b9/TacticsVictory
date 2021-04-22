@@ -77,10 +77,6 @@ file(GLOB UTILS            ../../common_files/Utils/GlobalFunctions_.*
                            ../../common_files/Utils/StringUtils_.*
                            ../../common_files/Utils/UtilsOS_.*)
 
-file(GLOB SOCKPP               ThirdParty/sockpp.cpp)
-file(GLOB SOCKPP_SOURCES ../../ThirdParty/sockpp/src/*.cpp)
-file(GLOB SOCKPP_INCLUDE ../../ThirdParty/sockpp/include/sockpp/*.h)
-
 source_group(src               FILES ${SRC})
 source_group(Core              FILES ${CORE})
 source_group(FileSystem        FILES ${FILE_SYSTEM})
@@ -101,21 +97,14 @@ source_group(Scene\\Primitives FILES ${SCENE_PRIMITIVES})
 source_group(Scene\\Terrain    FILES ${SCENE_TERRAIN})
 source_group(Utils             FILES ${UTILS})
 
-source_group(ThirdParty\\sockpp          FILES ${SOCKPP})
-source_group(ThirdParty\\sockpp\\sources FILES ${SOCKPP_SOURCES})
-source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
-
-set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
-
 file(GLOB FILES_UNITY ${SRC} ${CORE} ${FILE_SYSTEM} ${GRAPHICS} ${GRAPHICS_2D}
     ${GUI} ${GUI_CHAT} ${GUI_CONTROLS} ${GUI_LOGIC} ${GUI_MENU} ${GUI_WINDOWS}
     ${INPUT} ${NETWORK}
     ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_PRIMITIVES} ${SCENE_TERRAIN}
-    ${UTILS} ${SOCKPP})
+    ${UTILS})
 
 add_executable( ${PROJECT_NAME} 
-                ${FILES_UNITY}
-                ${SOCKPP_INCLUDE} ${SOCKPP_SOURCES})
+                ${FILES_UNITY})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "hangar")
