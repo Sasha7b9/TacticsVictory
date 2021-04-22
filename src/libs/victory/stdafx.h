@@ -1,7 +1,10 @@
 // 2021/04/22 11:56:38 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
+#ifdef WIN32
 #pragma warning(push, 0)
+#else
+#endif
 
 #define _WINSOCKAPI_
 #include <windows.h>
@@ -26,7 +29,10 @@
 #include <event2/listener.h>
 
 
+#ifdef WIN32
 #pragma warning(pop)
+#else
+#endif
 
 
 using namespace Urho3D;
