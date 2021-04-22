@@ -9,6 +9,7 @@
 static void HandleInfoLivingRoms(uint, ClientInfo &);
 static void HandlerPing(uint, ClientInfo &);
 static void HandlerSetNameLivingRoom(uint, ClientInfo &);
+static void HandlerGet(uint, ClientInfo &);
 
 
 
@@ -17,6 +18,7 @@ void ServerTCP::Prepare()
     AppendHandler(MSG_NTW_INFO_LIVINGROOM,     HandleInfoLivingRoms);
     AppendHandler(MSG_NTW_PING,                HandlerPing);
     AppendHandler(MSG_NTW_SET_NAME_LIVINGROOM, HandlerSetNameLivingRoom);
+    AppendHandler(MSG_NTW_GET,                 HandlerGet);
 };
 
 
@@ -56,4 +58,25 @@ static void HandlerSetNameLivingRoom(uint, ClientInfo &info)
     info.name = name;
 
     LOGWRITEF("name connected livingroom is \"%s\"", name);
+}
+
+
+static void HandlerGet(uint, ClientInfo &info)
+{
+    if (info.words.size() > 0)
+    {
+        LOGWRITEF(info.words[0].c_str());
+    }
+
+    if (info.words.size() > 1)
+    {
+        LOGWRITEF(info.words[1].c_str());
+    }
+
+    if (info.words.size() > 2)
+    {
+        LOGWRITEF(info.words[2].c_str());
+    }
+
+    LOGWRITE("");
 }

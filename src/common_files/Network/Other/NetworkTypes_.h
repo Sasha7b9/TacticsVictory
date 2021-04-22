@@ -8,4 +8,7 @@
                                                             // своЄм состо€нии
 #define MSG_NTW_SET_NAME_LIVINGROOM "set_name_livingrom"    // ”становка имени гостиной
                                                             // «апрос смещени€ порта гостевой комнаты относительно
-#define MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP "get port livingroom_broadcast_udp"   // порта мастер-сервера
+
+#define MSG_NTW_GET                 "get"
+#define MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP           \
+                                            MSG_NTW_GET " port livingroom_broadcast_udp"   // порта мастер-сервера
