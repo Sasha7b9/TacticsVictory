@@ -76,7 +76,6 @@ if(WIN32)
                                              # выполнения релизной версии
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
-    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt)
 
 endif()
 
