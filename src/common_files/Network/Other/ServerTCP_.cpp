@@ -206,7 +206,7 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
     {
         evutil_make_socket_nonblocking(fd);
         struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
-        bufferevent_setcb(bev, CallbackRead, CallbackWrite, CallbackError, NULL);
+        bufferevent_setcb(bev, CallbackRead, CallbackWrite, CallbackError, args);
 //        bufferevent_setwatermark(bev, EV_READ | EV_WRITE, 0, 2);
         bufferevent_enable(bev, EV_READ | EV_WRITE);
 
@@ -244,9 +244,11 @@ void ServerTCP::SendAnswer(void *bev, uint id, pchar message, pchar data)
 }
 
 
-void ServerTCP::CallbackRead(struct bufferevent *bev, void *)
+void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
 {
-    std::vector<uint8> &data = TheServer.clients[bev].bindata;
+    CallbackArgs *args = (CallbackArgs *)_args;
+
+    std::vector<uint8> &data = args->server->clients[bev].bindata;
 
 #define SIZE_CHUNK 1024
 
@@ -261,7 +263,7 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *)
         readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
     }
 
-    ProcessClient(TheServer.clients[bev]);
+    ProcessClient(args->server->clients[bev]);
 }
 
 
