@@ -53,7 +53,7 @@ file(GLOB SRC                 ../../common_files/defines_.h
 file(GLOB FILE_SYSTEM         ../../common_files/FileSystem/ConfigurationFile_.*
                               ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK             ../../common_files/Network/Other/NetworkTypes_.*
-                              ../../libs/victory/Network/Other/ServerTCP_.*
+                              ../../libs/victory/Network/Other/ServerTCP_.h
                                                  Network/ServerHandlers.cpp)
 file(GLOB UTILS               ../../common_files/Utils/Log_.*
                               ../../common_files/Utils/LogRAW_.*
@@ -79,7 +79,7 @@ if(WIN32)
                                              # выполнения релизной версии
     include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
-    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt)
+    target_link_libraries(${PROJECT_NAME} ws2_32 iphlpapi bcrypt victory)
 
 else()
 
