@@ -70,9 +70,9 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-file(GLOB FILES_UNITY ${SRC})
+file(GLOB FILES_UNITY ${SRC} ${FILESYSTEM})
 
-add_library(${PROJECT_NAME} ${FILES_UNITY} ${FILESYSTEM} ${NETWORK} ${UTILS} ${LIBEVENT} ${SOCKPP})
+add_library(${PROJECT_NAME} ${FILES_UNITY} ${NETWORK} ${UTILS} ${LIBEVENT} ${SOCKPP})
 
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "victory")
