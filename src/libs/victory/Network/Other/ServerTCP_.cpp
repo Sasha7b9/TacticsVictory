@@ -14,6 +14,13 @@
 
 static const char MESSAGE[] = "Hello, World!";
 
+// Вызывается при новом соединении
+static void CallbackRead(struct bufferevent *, void *);
+static void CallbackWrite(struct bufferevent *, void *);
+static void CallbackAccept(evutil_socket_t listener, short event, void *arg);
+static void CallbackError(struct bufferevent *bev, short what, void *ctx);
+static void CallbackLog(int, const char *);
+
 
 #define MAX_LINE 16384
 
@@ -166,13 +173,13 @@ void ServerTCP::Run(uint16 port)
 }
 
 
-void ServerTCP::CallbackLog(int, const char *message)
+static void CallbackLog(int, const char *message)
 {
     LOGERROR(message);
 }
 
 
-void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *arg)
+static void CallbackAccept(evutil_socket_t listener, short, void *arg)
 {
     struct event_base *base = (struct event_base *)arg;
 
@@ -212,7 +219,7 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *arg)
 
         LOGWRITEF("Client %s connected", info.address.ToStringFull().c_str());
 
-        TheServer.clients[bev] = info;
+        clients[bev] = info;
     }
 }
 
@@ -240,7 +247,7 @@ void ServerTCP::SendAnswer(void *bev, uint id, pchar message, pchar data)
 }
 
 
-void ServerTCP::CallbackRead(struct bufferevent *bev, void *)
+static void CallbackRead(struct bufferevent *bev, void *)
 {
     std::vector<uint8> &data = TheServer.clients[bev].bindata;
 
@@ -261,7 +268,7 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *)
 }
 
 
-void ServerTCP::CallbackWrite(struct bufferevent *, void *)
+static void CallbackWrite(struct bufferevent *, void *)
 {
 }
 
@@ -322,7 +329,7 @@ static void ProcessClient(ClientInfo &info)
 }
 
 
-void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *)
+static void CallbackError(struct bufferevent *bev, short error, void *)
 {
     if (error & BEV_EVENT_READING)
     {

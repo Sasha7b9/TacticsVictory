@@ -1,5 +1,6 @@
 // 2021/04/09 14:45:04 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include <map>
 
 
 struct ClientInfo
@@ -52,11 +53,4 @@ private:
     void Prepare();
 
     bool run = true;
-
-    // Вызывается при новом соединении
-    static void CallbackRead(struct bufferevent *, void *);
-    static void CallbackWrite(struct bufferevent *, void *);
-    static void CallbackAccept(evutil_socket_t listener, short event, void *arg);
-    static void CallbackError(struct bufferevent *bev, short what, void *ctx);
-    static void CallbackLog(int, const char *);
 };
