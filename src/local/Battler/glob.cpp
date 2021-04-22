@@ -22,7 +22,6 @@ Font            *TheFont = nullptr;
 Time            *TheTime = nullptr;
 FileSelector    *TheFileSelector = nullptr;
 Profiler        *TheProfiler = nullptr;
-Script          *TheScript = nullptr;
 
 
 ConfigurationFile TheSettings;

@@ -19,7 +19,6 @@ extern PhysicsWorld  *ThePhysicsWorld;
 extern Profiler      *TheProfiler;
 extern Renderer      *TheRenderer;
 extern ResourceCache *TheCache;
-extern Script        *TheScript;
 extern Time          *TheTime;
 extern UI            *TheUI;
 extern UIElement     *TheUIRoot;

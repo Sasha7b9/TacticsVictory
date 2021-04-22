@@ -138,23 +138,23 @@ void Battle::SetLocalization()
 }
 
 
-static void MessageCallback(const asSMessageInfo *msg, void *)
-{
-    const char *type = "AS ERROR ";
-    if (msg->type == asMSGTYPE_WARNING)
-        type = "AS WARN ";
-    else if (msg->type == asMSGTYPE_INFORMATION)
-        type = "AS INFO ";
-
-    LOGWRITEF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); //-V111
-}
+//static void MessageCallback(const asSMessageInfo *msg, void *)
+//{
+//    const char *type = "AS ERROR ";
+//    if (msg->type == asMSGTYPE_WARNING)
+//        type = "AS WARN ";
+//    else if (msg->type == asMSGTYPE_INFORMATION)
+//        type = "AS INFO ";
+//
+//    LOGWRITEF("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); //-V111
+//}
 
 
 void Battle::CreateScriptSystem()
 {
-    TheContext->RegisterSubsystem(new Script(TheContext));
-    TheScript = GetSubsystem<Script>();
-    TheScript->GetScriptEngine()->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
+//    TheContext->RegisterSubsystem(new Script(TheContext));
+//    TheScript = GetSubsystem<Script>();
+//    TheScript->GetScriptEngine()->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
 }
 
 

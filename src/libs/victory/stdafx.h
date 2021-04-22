@@ -18,8 +18,6 @@
 #include <Urho3D/AngelScript/Script.h>
 #include <Urho3D/UI/Window.h>
 
-#include <AngelScript/angelscript.h>
-
 using namespace Urho3D;
 
 

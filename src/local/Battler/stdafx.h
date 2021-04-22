@@ -3,7 +3,6 @@
 
 #pragma warning(push, 0)
 
-#include <Urho3D/AngelScript/APITemplates.h>
 #include <Urho3D/Audio/Audio.h>
 #include <Urho3D/Audio/Sound.h>
 #include <Urho3D/Audio/SoundListener.h>
@@ -23,6 +22,7 @@
 #include <Urho3D/Graphics/Octree.h>
 #include <Urho3D/Graphics/ParticleEffect.h>
 #include <Urho3D/Graphics/ParticleEmitter.h>
+#include <Urho3D/Graphics/StaticModel.h>
 #include <Urho3D/Graphics/Texture2D.h>
 #include <Urho3D/Graphics/Renderer.h>
 #include <Urho3D/Graphics/Zone.h>
@@ -42,6 +42,7 @@
 #include <Urho3D/Urho2D/Sprite2D.h>
 #include <Urho3D/IO/IOEvents.h>
 #include <Urho3D/IO/FileSystem.h>
+#include <Urho3D/IO/Log.h>
 #include <Urho3D/IO/MemoryBuffer.h>
 #ifdef SendMessage
 #undef SendMessage

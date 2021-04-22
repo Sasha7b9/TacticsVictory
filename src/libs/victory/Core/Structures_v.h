@@ -35,6 +35,4 @@ struct Coord
 
         return retValue;
     }
-
-    static void RegisterInAS(Urho3D::Script *script);
 };

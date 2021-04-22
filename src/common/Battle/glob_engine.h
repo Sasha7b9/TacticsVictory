@@ -10,5 +10,4 @@ extern Network       *TheNetwork;
 extern PhysicsWorld  *ThePhysicsWorld;
 extern Profiler      *TheProfiler;
 extern ResourceCache *TheCache;
-extern Script        *TheScript;
 extern Time          *TheTime;

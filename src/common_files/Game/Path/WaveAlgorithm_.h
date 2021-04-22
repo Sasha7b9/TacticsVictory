@@ -38,17 +38,18 @@ private:
     static void RegisterInAS();
 
 public:
-    CScriptArray* GetPathUINT()
-    {
-        static PODVector<uint> vect;
-        vect.Clear();
-        for (uint i = 0; i < 10; i++)
-        {
-            vect.Push(i);
-        }
+//    CScriptArray* GetPathUINT()
+//    {
+//        static PODVector<uint> vect;
+//        vect.Clear();
+//        for (uint i = 0; i < 10; i++)
+//        {
+//            vect.Push(i);
+//        }
+//
+//        return VectorToArray<uint>(vect, "Array<uint>");
+//    }
 
-        return VectorToArray<uint>(vect, "Array<uint>");
-    }
     const PODVector<String>& GetPathString()
     {
         static PODVector<String> vect;

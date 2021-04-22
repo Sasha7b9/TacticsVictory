@@ -10,7 +10,9 @@ include_directories(.
 
 add_definitions(-DURHO3D_LOGGING -DLOG_U3D -DU3D -DGRAPHICS)
 
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS  /STACK:100000000 /FORCE:MULTIPLE")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS  /STACK:100000000")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /FORCE:MULTIPLE /ignore:4075 /ignore:4006")   # Без этих опций
+                                    # линкер ругается на уже определённые в victory конструкторы
 
 add_compile_options(/wd4625)    # 'derived class' : copy constructor was implicitly defined as deleted because a
                                 # base class copy constructor is inaccessible or deleted

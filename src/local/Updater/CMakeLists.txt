@@ -49,4 +49,10 @@ include(../../RuntimeLibrary.cmake)
 include(../../CopyToDirEXE.cmake)
 include(../../SetWorkingDirectory.cmake)
 
+if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
+    target_link_libraries(${PROJECT_NAME} Urho3D_d) 
+else()
+    target_link_libraries(${PROJECT_NAME} Urho3D)
+endif()
+
 target_link_libraries(${PROJECT_NAME} ws2_32 victory)

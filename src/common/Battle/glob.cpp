@@ -13,7 +13,7 @@ Network           *TheNetwork = nullptr;
 PhysicsWorld      *ThePhysicsWorld = nullptr;
 Profiler          *TheProfiler = nullptr;
 ResourceCache     *TheCache = nullptr;
-Script            *TheScript = nullptr;
+//Script            *TheScript = nullptr;
 Time              *TheTime = nullptr;
 
 

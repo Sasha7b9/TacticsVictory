@@ -23,11 +23,6 @@
 #endif
 
 
-#include <Urho3D/AngelScript/Addons.h>
-#include <Urho3D/AngelScript/APITemplates.h>
-#include <Urho3D/AngelScript/Script.h>
-#include <Urho3D/AngelScript/ScriptFile.h>
-#include <Urho3D/AngelScript/ScriptInstance.h>
 #include <Urho3D/Container/HashMap.h>
 #include <Urho3D/Core/Mutex.h>
 #include <Urho3D/Core/Profiler.h>
@@ -42,6 +37,7 @@
 #include <Urho3D/Graphics/IndexBuffer.h>
 #include <Urho3D/Graphics/Model.h>
 #include <Urho3D/Graphics/Octree.h>
+#include <Urho3D/Graphics/StaticModel.h>
 #include <Urho3D/Graphics/VertexBuffer.h>
 #include <Urho3D/Graphics/Zone.h>
 #include <Urho3D/Math/MathDefs.h>
