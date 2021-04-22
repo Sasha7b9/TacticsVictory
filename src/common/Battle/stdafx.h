@@ -5,8 +5,7 @@
 #pragma warning(push, 0)
 #else
 #pragma GCC diagnostic push
-//#pragma GCC diagnostic ignored "-Wall"
-//#pragma GCC diagnostic ignored "-Wclass-memaccess"
+#pragma GCC diagnostic ignored "-Wclass-memaccess"
 #pragma GCC diagnostic ignored "-Wunused-function"
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
@@ -93,5 +92,3 @@ using namespace Urho3D;
 #include "glob_engine.h"
 #include "glob_game.h"
 #include "Utils/Log_v.h"
-
-//#include "victory.h"
