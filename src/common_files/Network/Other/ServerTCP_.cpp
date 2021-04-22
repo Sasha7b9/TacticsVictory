@@ -325,13 +325,15 @@ void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 }
 
 
-void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *)
+void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *_args)
 {
+    ServerTCP *server = ((CallbackArgs *)_args)->server;
+
     if (error & BEV_EVENT_READING)
     {
-        LOGWRITEF("Client %s disconnected", TheServer.clients[bev].address.ToStringFull().c_str());
+        LOGWRITEF("Client %s disconnected", server->clients[bev].address.ToStringFull().c_str());
 
-        TheServer.clients.erase(bev);
+        server->clients.erase(bev);
     }
     else if (error & BEV_EVENT_WRITING)
     {
