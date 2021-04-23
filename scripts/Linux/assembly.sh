@@ -117,3 +117,4 @@ if [ $isBuild -eq 1 ]
 then
     BuildProjects $isBuildDebug $isBuildRelease
 fi
+
