@@ -1,6 +1,6 @@
 if(WIN32)
     install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "${CMAKE_BINARY_DIR}/../out/${SUB_DIR}")
 else()
+    set(CMAKE_INSTALL_RPATH "/home")
     install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "${CMAKE_BINARY_DIR}/../../../out/${SUB_DIR}")
-    SET(CMAKE_INSTALL_RPATH "/home")
 endif()
