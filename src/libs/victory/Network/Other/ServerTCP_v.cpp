@@ -145,8 +145,6 @@ void ServerTCP::SendAnswer(void *bev, uint id, pchar message, void *data, uint s
 
     if (data)
     {
-        LOGWRITEF("Send answer for %x : %s", bev, message);
-
         bufferevent_write((struct bufferevent *)bev, data, size_data);
     }
 }
