@@ -71,9 +71,11 @@ void LivingRoom::OnConnect()
         {
             return TheMaster.SendRequest(MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP);
         },
-        [](pchar, void *, uint)
+        [](pchar, void *data, uint)
         {
+            int delta = *((int *)data);
 
+            LOGWRITEF("Number port for connection %d", TheSettings.GetInt("master_server", "port") + delta);
         }
     };
 

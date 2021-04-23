@@ -40,10 +40,9 @@ file(GLOB SRC                 ../../common_files/*.h
                                                  *.h *.cpp)
 file(GLOB FILESYSTEM          ../../common_files/FileSystem/ConfigurationFile_.*
                               ../../common_files/FileSystem/FileSystem_.*)
-file(GLOB NETWORK             ../../common_files/Network/Other/ConnectorTCP_.*
+file(GLOB NETWORK             ../../libs/victory/Network/Other/ConnectorTCP_v.h
                               ../../common_files/Network/Other/NetworkTypes_.*
                               ../../libs/victory/Network/Other/ServerUDP_v.h
-                              ../../common_files/Network/Other/SocketsTCP_.*
                                                  Network/*.*)
 file(GLOB UTILS               ../../common_files/Utils/GlobalFunctions_.*
                               ../../libs/victory/Utils/Log_.h

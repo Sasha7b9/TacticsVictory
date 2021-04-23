@@ -62,8 +62,6 @@ public:
 
 private:
 
-//    void Prepare();
-
     void StartThreadUDP(int index);
 
     SocketConfig config;
