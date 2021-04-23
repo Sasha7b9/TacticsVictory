@@ -92,6 +92,7 @@ else()
 
 endif()
 
+include(../../Install.cmake)
+
 target_link_libraries(${PROJECT_NAME} victory)
 
-include(../../Install.cmake)
