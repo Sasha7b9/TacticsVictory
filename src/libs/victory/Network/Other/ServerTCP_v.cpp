@@ -240,6 +240,12 @@ void ServerTCP::SendAnswer(void *bev, uint id, pchar message, pchar data)
 }
 
 
+void ServerTCP::SendAnswer(void *bev, uint id, pchar message, int value)
+{
+    SendAnswer(bev, id, message, &value, sizeof(value));
+}
+
+
 void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
 {
     CallbackArgs *args = (CallbackArgs *)_args;

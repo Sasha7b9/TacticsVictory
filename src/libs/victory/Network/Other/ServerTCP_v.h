@@ -46,6 +46,7 @@ public:
 
     void SendAnswer(void *bev, uint id, pchar message, void *data = nullptr, uint size = 0);
     void SendAnswer(void *bev, uint id, pchar message, pchar data);
+    void SendAnswer(void *bev, uint id, pchar message, int value);
 
     std::map<std::string, handlerClient> handlers;   // Здесь хранятся обработчики запросов по первому слову
 

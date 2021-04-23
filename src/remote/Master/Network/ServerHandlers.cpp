@@ -62,22 +62,28 @@ static void HandlerSetNameLivingRoom(uint, ClientInfo &info)
 }
 
 
-static void HandlerGet(uint, ClientInfo &info)
+static void HandlerGet(uint id, ClientInfo &info)
 {
-    if (info.words.size() > 0)
-    {
-        LOGWRITEF(info.words[0].c_str());
-    }
+    std::vector<std::string> &words = info.words;
 
-    if (info.words.size() > 1)
+    if (words.size() > 0)
     {
-        LOGWRITEF(info.words[1].c_str());
-    }
+        if (words[0] == MSG_NTW_GET)
+        {
+            if (words.size() > 2)
+            {
+                if (words[1] == "port")
+                {
+                    if (words[2] == "livingroom_broadcast_udp")
+                    {
+                        LOGWRITE("Request port for connect living room");
 
-    if (info.words.size() > 2)
-    {
-        LOGWRITEF(info.words[2].c_str());
-    }
+                        int delta = TheConfig.GetInt(words[1].c_str(), words[2].c_str());
 
-    LOGWRITE("");
+                        TheServer.SendAnswer(info.benv, id, MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP, delta);
+                    }
+                }
+            }
+        }
+    }
 }
