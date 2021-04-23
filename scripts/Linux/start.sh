@@ -51,7 +51,7 @@ dir=$PWD
 
 cd ../../out/release
 
-Start $startUploader Uploader
+#Start $startUploader Uploader
 Start $startMaster Master
 Start $startLivingRoom LivingRoom
 
