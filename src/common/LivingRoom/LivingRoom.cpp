@@ -76,6 +76,10 @@ void LivingRoom::OnConnect()
             int delta = *((int *)data);
 
             LOGWRITEF("Number port for connection %d", TheSettings.GetInt("master_server", "port") + delta);
+
+            static SocketConfig config;
+
+            TheServer.Init(config, (int)std::thread::hardware_concurrency());
         }
     };
 

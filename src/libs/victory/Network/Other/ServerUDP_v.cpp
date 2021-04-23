@@ -1,333 +1,384 @@
-// 2021/04/18 23:26:50 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2021/04/09 14:45:08 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Network/Other/ServerUDP_v.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <fcntl.h>
-#include <functional>
-#include <iostream>
-
+#include "FileSystem/ConfigurationFile_v.h"
+#include "FileSystem/FileSystem_v.h"
+#include "Network/Other/NetworkTypes_.h"
+#include "Network/Other/ServerTCP_v.h"
+#include "Utils/StringUtils_v.h"
 #ifdef WIN32
 #else
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <unistd.h>
 #endif
 
 
-/// \todo Избавиться от предупреждений
-
-#ifdef WIN32
-#pragma warning(push)
-#pragma warning(disable:4244 4365 4996)
-#endif
+static const char MESSAGE[] = "Hello, World!";
 
 
-class ThreadUDP
+#define MAX_LINE 16384
+
+
+std::string ClientInfo::SocketAddress::ToStringFull() const
 {
-public:
-
-    virtual ~ThreadUDP()
-    {
-        if (base != nullptr)
-        {
-            event_base_loopexit(base, NULL);
-            event_base_free(base);
-            base = nullptr;
-        }
-
-        if (ev != nullptr)
-        {
-            event_free(ev);
-            ev = nullptr;
-        }
-    }
-
-    bool Init(int fd)
-    {
-        if (fd < 0)
-        {
-            return false;
-        }
-
-        sock_fd = fd;
-        base = event_base_new();
-
-        if (nullptr == base)
-        {
-            return false;
-        }
-
-        ev = event_new(base, sock_fd, EV_READ | EV_PERSIST, ThreadUDP::CallbackReadUDP, this);
-
-        if (nullptr == ev)
-        {
-            return false;
-        }
-
-        return 0 == event_add(ev, NULL);
-    }
-
-    void DispatchEventUDP()
-    {
-        if (base != nullptr)
-        {
-            event_base_dispatch(base);
-        }
-    }
-
-    virtual bool DealMessageUDP(int fd) = 0;
+    char buffer[100];
 
 #ifdef WIN32
-    static void CallbackReadUDP(intptr_t fd, int16, void *arg)
+    sprintf_s(buffer, 100, "%d.%d.%d.%d:%d", sin.sin_addr.S_un.S_un_b.s_b1,
+        sin.sin_addr.S_un.S_un_b.s_b2,
+        sin.sin_addr.S_un.S_un_b.s_b3,
+        sin.sin_addr.S_un.S_un_b.s_b4,
+        sin.sin_port);
 #else
-    static void CallbackReadUDP(int fd, int16, void *arg)
+    sprintf(buffer, "%d.%d.%d.%d:%d", (uint8)sin.sin_addr.s_addr,
+        (uint8)(sin.sin_addr.s_addr >> 8),
+        (uint8)(sin.sin_addr.s_addr >> 16),
+        (uint8)(sin.sin_addr.s_addr >> 24),
+        sin.sin_port);
 #endif
-    {
-        ThreadUDP *p = reinterpret_cast<ThreadUDP *>(arg);
 
-        if (nullptr == p)
-        {
-            return;
-        }
-
-        p->DealMessageUDP(fd);
-    }
-
-protected:
-
-    int sock_fd = -1;
-    event_base *base = nullptr;
-    event *ev = nullptr;
-    static const int buffer_size = 1024;
-};
-
-
-class ThreadForTransactionUDP : public ThreadUDP
-{
-public:
-    ThreadForTransactionUDP() = default;
-    virtual ~ThreadForTransactionUDP() = default;
-
-    virtual bool DealMessageUDP(int fd) override
-    {
-        char buf[buffer_size] = "";
-        socklen_t size = sizeof(struct sockaddr);
-
-        struct sockaddr_in client_addr;
-        client_addr.sin_family = 0;
-
-        int len = recvfrom(fd, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
-
-        if (len < 0)
-        {
-            LOGERROR("Server recv() message error");
-            return false;
-        }
-
-        if (len == 0)
-        {
-            LOGERROR("Connection closed");
-        }
-
-        LOGWRITEF("Connection port %d", client_addr.sin_port);
-        LOGWRITEF("Connection IP %s", inet_ntoa(client_addr.sin_addr));
-        LOGWRITEF("Server recv() message len %d", len);
-        LOGWRITE("Server send back message now");
-        sendto(fd, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, size);
-        return true;
-    }
-};
-
-
-SocketUtility &SocketUtility::GetInstance()
-{
-    static SocketUtility object;
-    return object;
+    return std::string(buffer);
 }
 
 
-int SocketUtility::BindSocket(const SocketConfig &config)
+std::string ClientInfo::SocketAddress::ToStringHost() const
 {
-    int sock_fd = InitSocket(config.type);
-
-    if (sock_fd < 0)
-    {
-        return sock_fd;
-    }
-
-    struct sockaddr_in addr;
-    addr.sin_family = 0;
-
-    addr.sin_family = AF_INET;
-    addr.sin_addr.s_addr = inet_addr(config.ip.c_str());
-    addr.sin_port = htons(config.port);
-
-    if (bind(sock_fd, (struct sockaddr *)&addr, sizeof(addr)) < 0)
-    {
-        LOGERRORF("Socket bind failed on %s:%d", config.ip.c_str(), config.port);
-        return sock_fd;
-    }
-
-    if (config.type == TypeServer::TCP)
-    {
-        if (listen(sock_fd, config.backLog) < 0)
-        {
-            LOGERRORF("Socket listen failed on backlog %d", config.backLog);
-            return -1;
-        }
-    }
+    char buffer[100];
 
 #ifdef WIN32
-
-    LOGWARNING("Not realized for Windows");
-
+    sprintf_s(buffer, 100, "%d.%d.%d.%d", sin.sin_addr.S_un.S_un_b.s_b1,
+        sin.sin_addr.S_un.S_un_b.s_b2,
+        sin.sin_addr.S_un.S_un_b.s_b3,
+        sin.sin_addr.S_un.S_un_b.s_b4);
 #else
-
-    int flag = fcntl(sock_fd, F_GETFL, 0);
-
-    if (flag < 0)
-    {
-        LOGERRORF("fcntl F_GETFL on socket %d failed", sock_fd);
-        return -1;
-    }
-
-    if (fcntl(sock_fd, F_SETFL, flag | O_NONBLOCK) < 0)
-    {
-        LOGERRORF("fcntl F_SETFL non block on socket %d failed", sock_fd);
-        return -1;
-    }
-
+    sprintf(buffer, "%d.%d.%d.%d", (uint8)sin.sin_addr.s_addr,
+        (uint8)(sin.sin_addr.s_addr >> 8),
+        (uint8)(sin.sin_addr.s_addr >> 16),
+        (uint8)(sin.sin_addr.s_addr >> 24));
 #endif
 
-    return sock_fd;
+    return std::string(buffer);
 }
 
 
-bool SocketUtility::CloseSocket(int &sock_fd)
+void ClientInfo::SocketAddress::SetHostIP(void *ip)
 {
-    if (sock_fd > 0)
-    {
+    sin = *((sockaddr_in *)ip);
+
 #ifdef WIN32
-        closesocket(sock_fd);
+    if (sin.sin_addr.S_un.S_un_b.s_b1 == 127 &&
+        sin.sin_addr.S_un.S_un_b.s_b2 == 0 &&
+        sin.sin_addr.S_un.S_un_b.s_b3 == 0 &&
+        sin.sin_addr.S_un.S_un_b.s_b4 == 1)
+    {
+        system("ipconfig > address.txt");
+    }
 #else
-        close(sock_fd);
+    if ((uint8)(sin.sin_addr.s_addr >> 0) == 127 &&
+        (uint8)(sin.sin_addr.s_addr >> 8) == 0 &&
+        (uint8)(sin.sin_addr.s_addr >> 16) == 0 &&
+        (uint8)(sin.sin_addr.s_addr >> 24) == 1)
+    {
+        [[maybe_unused]] auto result = system("wget -qO- eth0.me > address.txt");
+
+        FS::File file;
+
+        if(!file.Open("address.txt", __FILE__, __LINE__))
+        {
+            LOGERROR("Can not open file with address");
+        }
+
+        std::string ip;
+
+        file.ReadString(ip);
+
+        inet_aton(ip.c_str(), &sin.sin_addr);
+
+        FS::RemoveFile("address.txt");
+    }
 #endif
-
-        return true;
-    }
-
-    return false;
 }
 
 
-int SocketUtility::InitSocket(TypeServer::E type)
+void ServerTCP::Run(uint16 port)
 {
-    int sock_fd = -1;
+    event_set_log_callback(CallbackLog);
 
-    switch (type)
-    {
-    case TypeServer::UDP:   sock_fd = socket(AF_INET, SOCK_DGRAM, 0);  break;
-
-    case TypeServer::TCP:   sock_fd = socket(AF_INET, SOCK_STREAM, 0);  break;
-    }
-
-    if (sock_fd < 0)
-    {
-        LOGERROR("Socket fd create failed ");
-
-        return sock_fd;
-    }
-
-    int on = 1;
-
-    if (setsockopt(sock_fd, SOL_SOCKET, SO_REUSEADDR, (char *)&on, sizeof(on)) < 0)
-    {
-        LOGERROR("Set socket to reuse failed");
-        return -1;
-    }
-
-    if (setsockopt(sock_fd, SOL_SOCKET, SO_KEEPALIVE, (char *)&on, sizeof(on)) < 0)
-    {
-        LOGERROR("Set socket to keep alive failed");
-        return -1;
-    }
-
-    return sock_fd;
-}
-
-
-ServerUDP::ServerUDP() : sock_fd(-1)
-{
-
-}
-
-
-ServerUDP::~ServerUDP()
-{
-    for (auto &it : threads)
-    {
-        if (it.joinable())
-        {
-            it.join();
-        }
-    }
-
-    SocketUtility::GetInstance().CloseSocket(sock_fd);
-}
-
-
-bool ServerUDP::Init(const SocketConfig &_config, int network_size)
-{
-    config = _config;
-
-    if (network_size <= 0 || network_size > network_capacity)
-    {
-        return false;
-    }
-
-    sock_fd = SocketUtility::GetInstance().BindSocket(config);
-
-    if (sock_fd < 0)
-    {
-        return false;
-    }
-
-    threads.resize(network_size);
-
-    for (int i = 0; i < network_size; i++)
-    {
-        threadsUPD.emplace_back(std::unique_ptr<ThreadUDP>(new ThreadForTransactionUDP()));
-
-        if (!threadsUPD[i]->Init(sock_fd))
-        {
-            LOGERROR("UDP thread init failed");
-            continue;
-        }
-
-        try
-        {
-            threads[i] = std::thread(std::bind(&ServerUDP::StartThreadUDP, this, i));
-        }
-        catch (const std::exception &ex)
-        {
-            LOGERRORF(ex.what());
-            return false;
-        }
-    }
-
-    return true;
-}
-
-
-void ServerUDP::StartThreadUDP(int index)
-{
-    threadsUPD[index]->DispatchEventUDP();
-}
-
+    struct sockaddr_in sin;
+    sin.sin_family = AF_INET;
+    sin.sin_addr.s_addr = 0;
+    sin.sin_port = htons(port);
 
 #ifdef WIN32
-#pragma warning(pop)
+    WSADATA wsa_data;
+    if (WSAStartup(0x0201, &wsa_data) != 0)
+    {
+        LOGERROR("Can not execute WSAStartup(0x0201, &wsa_data)");
+        return;
+    };
 #endif
+
+    struct event_base *base = event_base_new();
+
+    evutil_socket_t listener = (evutil_socket_t)socket(AF_INET, SOCK_STREAM, 0);
+
+    evutil_make_socket_nonblocking(listener);
+
+#ifdef WIN32
+#else
+    {
+        int one = 1;
+        setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
+    }
+#endif
+
+#ifdef WIN32
+    if (bind((SOCKET)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+#else
+    if (bind((int)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+#endif
+    {
+        LOGERROR("Can not bind to port");
+    }
+    else
+    {
+        LOGWRITEF("Bind to port %d is Ok! Wait connections ...", port);
+    }
+
+#ifdef WIN32
+    if (listen((SOCKET)listener, 100) < 0)
+#else
+    if (listen((int)listener, 100) < 0)
+#endif
+    {
+        LOGERROR("Can not call listen()");
+    }
+
+    CallbackArgs args = { this, base };
+
+    struct event *listener_event = event_new(base, listener, EV_READ | EV_PERSIST, CallbackAccept, &args);
+
+    event_add(listener_event, NULL);
+
+    event_base_dispatch(base);
+}
+
+
+void ServerTCP::CallbackLog(int, const char *message)
+{
+    LOGERROR(message);
+}
+
+
+void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
+{
+    CallbackArgs *args = (CallbackArgs *)_args;
+
+    struct event_base *base = args->base;
+
+    struct sockaddr_storage ss;
+    socklen_t slen = sizeof(ss);
+
+#ifdef WIN32
+    int fd = (int)accept((SOCKET)listener, (struct sockaddr *)&ss, &slen);
+#else
+    int fd = (int)accept((int)listener, (struct sockaddr *)&ss, &slen);
+#endif
+
+    sockaddr addr;
+    socklen_t len = sizeof(addr);
+
+#ifdef WIN32
+    getsockname((SOCKET)fd, &addr, &len);
+#else
+    getsockname(fd, &addr, &len);
+#endif
+
+    if (fd < 0)
+    {
+        LOGERROR("Error accepted");
+    }
+    else
+    {
+        evutil_make_socket_nonblocking(fd);
+        struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
+        bufferevent_setcb(bev, CallbackRead, CallbackWrite, CallbackError, args);
+//        bufferevent_setwatermark(bev, EV_READ | EV_WRITE, 0, 2);
+        bufferevent_enable(bev, EV_READ | EV_WRITE);
+
+        ClientInfo info;
+        info.address.SetHostIP(&ss);
+        info.benv = bev;
+
+        LOGWRITEF("Client %s connected", info.address.ToStringFull().c_str());
+
+        args->server->clients[bev] = info;
+    }
+}
+
+
+void ServerTCP::SendAnswer(void *bev, uint id, pchar message, void *data, uint size_data)
+{
+    bufferevent_write((struct bufferevent *)bev, &id, 4);
+
+    uint full_size = (uint)std::strlen(message) + 1 + size_data;
+
+    bufferevent_write((struct bufferevent *)bev, &full_size, 4);
+
+    bufferevent_write((struct bufferevent *)bev, message, std::strlen(message) + 1);
+
+    if (data)
+    {
+        bufferevent_write((struct bufferevent *)bev, data, size_data);
+    }
+}
+
+
+void ServerTCP::SendAnswer(void *bev, uint id, pchar message, pchar data)
+{
+    SendAnswer(bev, id, message, (void *)data, (uint)std::strlen(data) + 1);
+}
+
+
+void ServerTCP::SendAnswer(void *bev, uint id, pchar message, int value)
+{
+    SendAnswer(bev, id, message, &value, sizeof(value));
+}
+
+
+void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
+{
+    CallbackArgs *args = (CallbackArgs *)_args;
+
+    std::vector<uint8> &data = args->server->clients[bev].bindata;
+
+#define SIZE_CHUNK 1024
+
+    uint8 buffer[SIZE_CHUNK];
+
+    size_t readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
+
+    while (readed)
+    {
+        data.insert(data.end(), &buffer[0], &buffer[readed]);
+
+        readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
+    }
+
+    ProcessClient(args->server->clients[bev], args->server);
+}
+
+
+void ServerTCP::CallbackWrite(struct bufferevent *, void *)
+{
+}
+
+
+static uint GetID(std::vector<uint8> &received)
+{
+    return *(uint *)received.data();
+}
+
+
+static uint GetSize(std::vector<uint8> &received)
+{
+    return *(uint *)(received.data() + 4);
+}
+
+
+// Перемещает байты запроса из received в data. При этом из искоходного вектора перемещённые данные удаляются
+static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data)
+{
+    uint size = GetSize(received);
+
+    data.resize(size);
+
+    std::memcpy(data.data(), received.data() + 8, size);
+
+    received.erase(received.begin(), received.begin() + 8 + size);
+}
+
+
+void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
+{
+    std::vector<uint8> &received = info.bindata;
+
+    while (received.size() > 4 + 4)         // Если принято данных больше, чем занимают id и размер данных
+    {
+        uint id = GetID(received);
+
+        uint size = GetSize(received);
+
+        if (received.size() >= 4 + 4 + size)
+        {
+            MoveData(received, info.message);
+
+            SU::SplitToWords((char *)info.message.data(), info.words);
+
+            auto it = server->handlers.find(info.words[0]);
+
+            if (it != server->handlers.end())
+            {
+                it->second(id, info);
+            }
+        }
+        else
+        {
+            break;      // Если приняты не все байты запроса
+        }
+    }
+}
+
+
+void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *_args)
+{
+    ServerTCP *server = ((CallbackArgs *)_args)->server;
+
+    if (error & BEV_EVENT_READING)
+    {
+        LOGWRITEF("Client %s disconnected", server->clients[bev].address.ToStringFull().c_str());
+
+        server->clients.erase(bev);
+    }
+    else if (error & BEV_EVENT_WRITING)
+    {
+        LOGERROR("BEV_EVENT_WRITING");
+    }
+    else if (error & BEV_EVENT_EOF)
+    {
+        LOGERROR("BEV_EVENT_EOF");
+    }
+    else if (error & BEV_EVENT_TIMEOUT)
+    {
+        LOGERROR("BEV_EVENT_TIMEOUT");
+    }
+    else if (error & BEV_EVENT_CONNECTED)
+    {
+        LOGERROR("BEV_EVENT_TIMEOUT");
+    }
+    else
+    {
+        LOGERROR("Unknown error occured");
+    }
+
+    bufferevent_free(bev);
+}
+
+
+void ServerTCP::AppendHandler(pchar command, handlerClient handler)
+{
+    handlers[command] = handler;
+}
+
+
+void *ClientInfo::GetRawData()
+{
+    char *string = (char *)message.data();
+
+    if (std::strlen(string) + 1 == message.size())
+    {
+        return nullptr;
+    }
+
+    return message.data() + std::strlen(string) + 1;
+}
