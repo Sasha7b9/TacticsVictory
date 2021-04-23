@@ -68,6 +68,8 @@ source_group(FileSystem           FILES ${FILE_SYSTEM})
 source_group(Network              FILES ${NETWORK})
 source_group(Utils                FILES ${UTILS})
 
+include(../../Install.cmake)
+
 add_executable(${PROJECT_NAME} ${SRC} ${FILE_SYSTEM} ${NETWORK} ${UTILS})
 
 set_target_properties(${PROJECT_NAME}                                 PROPERTIES UNITY_BUILD_MODE GROUP)
@@ -91,8 +93,6 @@ else()
     target_link_libraries(${PROJECT_NAME} Urho3D)
 
 endif()
-
-include(../../Install.cmake)
 
 target_link_libraries(${PROJECT_NAME} victory)
 
