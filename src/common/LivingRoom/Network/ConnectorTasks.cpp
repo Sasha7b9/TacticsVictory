@@ -16,9 +16,9 @@ static TaskMasterServer taskPing =
     [](pchar, void *data, uint)
     {
         (void)data;
-//        uint prev_time = *((uint *)data);
+        uint prev_time = *((uint *)data);
 
-//        LOGWRITEF("ping = %d ms", GF::Timer::TimeMS() - prev_time);
+        LOGWRITEF("ping = %d ms", GF::Timer::TimeMS() - prev_time);
     }
 };
 
