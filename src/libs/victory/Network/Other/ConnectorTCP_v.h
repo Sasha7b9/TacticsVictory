@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Network/Other/NetworkTypes_v.h"
 #include <map>
 #include <mutex>
 #include <thread>

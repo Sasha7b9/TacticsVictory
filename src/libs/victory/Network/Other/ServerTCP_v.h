@@ -1,5 +1,6 @@
 // 2021/04/09 14:45:04 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Network/Other/NetworkTypes_v.h"
 #include <map>
 #ifdef WIN32
 #include <WinSock2.h>
