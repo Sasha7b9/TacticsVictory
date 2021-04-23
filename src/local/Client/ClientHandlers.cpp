@@ -6,7 +6,7 @@
 
 void Client::HandlerUpdate(StringHash, VariantMap &)
 {
-    TheMaster.Update();
+
 }
 
 void Client::HandlerPostRenderUpdate(StringHash, VariantMap &)

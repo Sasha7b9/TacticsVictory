@@ -244,6 +244,11 @@ uint ConnectorTCP::SendRequest(pchar request, pchar _data)
 
 void ConnectorTCP::Update()
 {
+    if (!IsConnected())
+    {
+        return;
+    }
+
     ReceiveData();
 
     ProcessData();
