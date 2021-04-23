@@ -324,6 +324,8 @@ void ConnectorTCP::ReceiveData()
     {
         data.insert(data.end(), buffer, buffer + received);
 
+        LOGWRITEF("                             Received %d bytes", received);
+
         received = connector.Receive(buffer, SIZE_CHUNK);
     }
 
