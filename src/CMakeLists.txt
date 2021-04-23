@@ -6,6 +6,8 @@ cmake_policy (SET CMP0003 NEW)
 cmake_policy (SET CMP0015 NEW)
 # MSVC runtime library flags are selected an abstraction
 cmake_policy(SET CMP0091 NEW)
+# RPATH entries are properly escaped in the intermediary CMake install script.
+cmake_policy(SET CMP0095 NEW)
 
 project (VictoryU3D)
 
