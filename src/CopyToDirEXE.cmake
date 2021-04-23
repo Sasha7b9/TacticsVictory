@@ -7,6 +7,6 @@ if(WIN32)
 else()
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND copy "$(OutputPath)${PROJECT_NAME}" ${OUT_DIR}
+        COMMAND cp "$(OutputPath)${PROJECT_NAME}" ${OUT_DIR}
     )
 endif()
