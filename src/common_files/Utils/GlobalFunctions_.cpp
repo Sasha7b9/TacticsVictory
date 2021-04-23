@@ -38,7 +38,7 @@ int64 GF::Timer::TimeMS()
 #ifdef U3D
 
 
-String GF::IntToString(int value, uint length)
+std::string GF::IntToString(int value, uint length)
 {
     String str(value);
 
@@ -46,40 +46,41 @@ String GF::IntToString(int value, uint length)
     {
         str.Insert(0, '0');
     }
-    return str;
+
+    return str.CString();
 }
 
 
-bool GF::GetAddressPort(const Vector<String> &words, String &address, uint16 &port)
+bool GF::GetAddressPort(const Vector<std::string> &words, std::string &address, uint16 &port)
 {
-    for (String word : words)
+    for (std::string word : words)
     {
         if (word[0] == '-')
         {
-            word.Erase(0, 1);
+            word.erase(0, 1);
         }
 
-        if (word.Substring(0, 7) == "address")
+        if (word.substr(0, 7) == "address")
         {
             if (word[7] != ':')
             {
                 return false;
             }
-            address = word.Substring(8);
+            address = word.substr(8);
         }
-        else if (word.Substring(0, 4) == "port")
+        else if (word.substr(0, 4) == "port")
         {
             if (word[4] != ':')
             {
                 return false;
             }
-            port = static_cast<uint16>(ToUInt(word.Substring(5)));
+            port = static_cast<uint16>(ToUInt(word.substr(5).c_str()));
         }
     }
 
     if (port == 0)
     {
-        address = String::EMPTY;
+        address = "";
         return false;
     }
 
@@ -97,7 +98,7 @@ unsigned GF::GetLastModifiedTime(char *name)
 }
 
 
-String GF::GetNameFile(const char *name)
+std::string GF::GetNameFile(pchar name)
 {
     String fullName;
 
@@ -133,7 +134,7 @@ String GF::GetNameFile(const char *name)
         }
     }
 
-    return fullName;
+    return fullName.CString();
 }
 
 
@@ -145,7 +146,7 @@ void GF::SetWindowInCenterScreen(Window *window)
         TheGraphics->GetHeight() / 2 - window->GetHeight() / 2);
 }
 
-void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters)
+void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<std::string> &_filters)
 {
     delete TheFileSelector;
     TheFileSelector = new FileSelector(TheContext);
@@ -162,6 +163,14 @@ void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vec
     TheFileSelector->SetButtonTexts(textOk, textCancel);
     window->SetVisible(true);
     window->BringToFront();
+
+    static Vector<String> filters;
+    filters.Clear();
+    for (auto &filtr : _filters)
+    {
+        filters.Push(filtr.c_str());
+    }
+
     TheFileSelector->SetFilters(filters, 0);
 }
 

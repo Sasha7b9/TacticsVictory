@@ -20,23 +20,23 @@ namespace GF
 
 #ifdef U3D
 
-    String IntToString(int value, uint length);
+    std::string IntToString(int value, uint length);
 
     // ¬озвращает в address aдрес, если в векторе есть строка вида
     // "-address:xxxx", в port - адрес порта, если в векторе есть строка вида "-port:xx"
-    bool GetAddressPort(const Vector<String> &words, String &address, uint16 &port);
+    bool GetAddressPort(const Vector<std::string> &words, std::string &address, uint16 &port);
 
 
     // Return the file's last modified time. File path relative from TVData
     unsigned GetLastModifiedTime(char *name);
 
-    String GetNameFile(const char *name);
+    std::string GetNameFile(pchar name);
 
 #ifdef GRAPHICS
 
     void SetWindowInCenterScreen(Window *window);
 
-    void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<String> &filters);
+    void OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<std::string> &filters);
 
 #endif
 

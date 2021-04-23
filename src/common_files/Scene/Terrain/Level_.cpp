@@ -96,7 +96,7 @@ void Level::Load(const char *fileName)
 
     if (!fileRead->IsOpen())
     {
-        fileRead->Open(GF::GetNameFile(fileName), FILE_READ);
+        fileRead->Open(String(GF::GetNameFile(fileName).c_str()), FILE_READ);
     }
 
     if (fileRead->IsOpen())

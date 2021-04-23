@@ -360,7 +360,7 @@ void GuiEditor::HandleFileLoad(StringHash, VariantMap&)
 {
     TheCamera->SetEnabled(false);
 
-    Vector<String> filters;
+    Vector<std::string> filters;
 
     filters.Push("*.map");
 
@@ -374,7 +374,7 @@ void GuiEditor::HandleFileSave(StringHash, VariantMap&)
 {
     TheCamera->SetEnabled(false);
 
-    Vector<String> filters;
+    Vector<std::string> filters;
 
     filters.Push("*.map");
 
