@@ -377,8 +377,6 @@ void ConnectorTCP::ReceiveData()
     {
         data.insert(data.end(), buffer, buffer + received);
 
-        LOGWRITEF("                             Received %d bytes", received);
-
         received = connector.Receive(buffer, SIZE_CHUNK);
     }
 
@@ -419,7 +417,7 @@ void ConnectorTCP::ProcessData()
 
                 task->last_tive_receive = GF::Timer::TimeMS();
 
-                wait_tasks.erase(it);
+//                wait_tasks.erase(it);
             }
             else
             {

@@ -61,6 +61,8 @@ add_executable( ${PROJECT_NAME} ${FILES_UNITY})
 set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
 set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "livingroom")
 
+set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS "127.0.0.1")
+
 include(../../RuntimeLibrary.cmake)
 
 if(WIN32)
