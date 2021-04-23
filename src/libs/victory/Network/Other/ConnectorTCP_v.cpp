@@ -1,13 +1,13 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Network/Other/NetworkTypes_.h"
+#include "Network/Other/NetworkTypes_v.h"
 #include "Network/Other/ConnectorTCP_v.h"
 #include "Utils/GlobalFunctions_.h"
 #include <climits>
 #include <thread>
 
 
-static sockpp::socket_initializer sockInit;
+static sockpp::socket_initializer sock_init;
 
 
 BaseConnectorTCP::~BaseConnectorTCP()
@@ -134,7 +134,7 @@ bool BaseConnectorTCP::IsConnected() const
 }
 
 
-static void ThreadConnect(BaseConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
+static void ThreadConnectTCP(BaseConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
 {
     mutex->lock();
 
@@ -266,7 +266,7 @@ void ConnectorTCP::Update()
                 {
                     mutex.unlock();
                     state = State::AttemptConnection;
-                    std::thread thread(ThreadConnect, &connector, std::move(host.c_str()), port, &mutex, (uint8 *)&state);
+                    std::thread thread(ThreadConnectTCP, &connector, std::move(host.c_str()), port, &mutex, (uint8 *)&state);
                     thread.detach();
                 }
             }
@@ -449,20 +449,6 @@ bool ConnectorTCP::ExistConnection()
         TaskMasterServer *task = it.second;
 
         if (now - task->last_tive_receive < 1500)
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-
-bool TaskMasterServer::ExistCompleted(std::vector<TaskMasterServer *> &tasks)
-{
-    for (auto task : tasks)
-    {
-        if (task->counter == 0)
         {
             return true;
         }

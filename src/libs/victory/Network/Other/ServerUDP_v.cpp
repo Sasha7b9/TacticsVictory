@@ -2,8 +2,8 @@
 #include "stdafx.h"
 #include "FileSystem/ConfigurationFile_v.h"
 #include "FileSystem/FileSystem_v.h"
-#include "Network/Other/NetworkTypes_.h"
-#include "Network/Other/ServerTCP_v.h"
+#include "Network/Other/NetworkTypes_v.h"
+#include "Network/Other/ServerUDP_v.h"
 #include "Utils/StringUtils_v.h"
 #ifdef WIN32
 #else
@@ -13,94 +13,10 @@
 #endif
 
 
-static const char MESSAGE[] = "Hello, World!";
-
-
 #define MAX_LINE 16384
 
 
-std::string ClientInfo::SocketAddress::ToStringFull() const
-{
-    char buffer[100];
-
-#ifdef WIN32
-    sprintf_s(buffer, 100, "%d.%d.%d.%d:%d", sin.sin_addr.S_un.S_un_b.s_b1,
-        sin.sin_addr.S_un.S_un_b.s_b2,
-        sin.sin_addr.S_un.S_un_b.s_b3,
-        sin.sin_addr.S_un.S_un_b.s_b4,
-        sin.sin_port);
-#else
-    sprintf(buffer, "%d.%d.%d.%d:%d", (uint8)sin.sin_addr.s_addr,
-        (uint8)(sin.sin_addr.s_addr >> 8),
-        (uint8)(sin.sin_addr.s_addr >> 16),
-        (uint8)(sin.sin_addr.s_addr >> 24),
-        sin.sin_port);
-#endif
-
-    return std::string(buffer);
-}
-
-
-std::string ClientInfo::SocketAddress::ToStringHost() const
-{
-    char buffer[100];
-
-#ifdef WIN32
-    sprintf_s(buffer, 100, "%d.%d.%d.%d", sin.sin_addr.S_un.S_un_b.s_b1,
-        sin.sin_addr.S_un.S_un_b.s_b2,
-        sin.sin_addr.S_un.S_un_b.s_b3,
-        sin.sin_addr.S_un.S_un_b.s_b4);
-#else
-    sprintf(buffer, "%d.%d.%d.%d", (uint8)sin.sin_addr.s_addr,
-        (uint8)(sin.sin_addr.s_addr >> 8),
-        (uint8)(sin.sin_addr.s_addr >> 16),
-        (uint8)(sin.sin_addr.s_addr >> 24));
-#endif
-
-    return std::string(buffer);
-}
-
-
-void ClientInfo::SocketAddress::SetHostIP(void *ip)
-{
-    sin = *((sockaddr_in *)ip);
-
-#ifdef WIN32
-    if (sin.sin_addr.S_un.S_un_b.s_b1 == 127 &&
-        sin.sin_addr.S_un.S_un_b.s_b2 == 0 &&
-        sin.sin_addr.S_un.S_un_b.s_b3 == 0 &&
-        sin.sin_addr.S_un.S_un_b.s_b4 == 1)
-    {
-        system("ipconfig > address.txt");
-    }
-#else
-    if ((uint8)(sin.sin_addr.s_addr >> 0) == 127 &&
-        (uint8)(sin.sin_addr.s_addr >> 8) == 0 &&
-        (uint8)(sin.sin_addr.s_addr >> 16) == 0 &&
-        (uint8)(sin.sin_addr.s_addr >> 24) == 1)
-    {
-        [[maybe_unused]] auto result = system("wget -qO- eth0.me > address.txt");
-
-        FS::File file;
-
-        if(!file.Open("address.txt", __FILE__, __LINE__))
-        {
-            LOGERROR("Can not open file with address");
-        }
-
-        std::string ip;
-
-        file.ReadString(ip);
-
-        inet_aton(ip.c_str(), &sin.sin_addr);
-
-        FS::RemoveFile("address.txt");
-    }
-#endif
-}
-
-
-void ServerTCP::Run(uint16 port)
+void ServerUDP::Run(uint16 port)
 {
     event_set_log_callback(CallbackLog);
 
@@ -164,13 +80,13 @@ void ServerTCP::Run(uint16 port)
 }
 
 
-void ServerTCP::CallbackLog(int, const char *message)
+void ServerUDP::CallbackLog(int, const char *message)
 {
     LOGERROR(message);
 }
 
 
-void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
+void ServerUDP::CallbackAccept(evutil_socket_t listener, short, void *_args)
 {
     CallbackArgs *args = (CallbackArgs *)_args;
 
@@ -217,7 +133,7 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
 }
 
 
-void ServerTCP::SendAnswer(void *bev, uint id, pchar message, void *data, uint size_data)
+void ServerUDP::SendAnswer(void *bev, uint id, pchar message, void *data, uint size_data)
 {
     bufferevent_write((struct bufferevent *)bev, &id, 4);
 
@@ -234,19 +150,19 @@ void ServerTCP::SendAnswer(void *bev, uint id, pchar message, void *data, uint s
 }
 
 
-void ServerTCP::SendAnswer(void *bev, uint id, pchar message, pchar data)
+void ServerUDP::SendAnswer(void *bev, uint id, pchar message, pchar data)
 {
     SendAnswer(bev, id, message, (void *)data, (uint)std::strlen(data) + 1);
 }
 
 
-void ServerTCP::SendAnswer(void *bev, uint id, pchar message, int value)
+void ServerUDP::SendAnswer(void *bev, uint id, pchar message, int value)
 {
     SendAnswer(bev, id, message, &value, sizeof(value));
 }
 
 
-void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
+void ServerUDP::CallbackRead(struct bufferevent *bev, void *_args)
 {
     CallbackArgs *args = (CallbackArgs *)_args;
 
@@ -269,49 +185,24 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
 }
 
 
-void ServerTCP::CallbackWrite(struct bufferevent *, void *)
+void ServerUDP::CallbackWrite(struct bufferevent *, void *)
 {
 }
 
 
-static uint GetID(std::vector<uint8> &received)
-{
-    return *(uint *)received.data();
-}
-
-
-static uint GetSize(std::vector<uint8> &received)
-{
-    return *(uint *)(received.data() + 4);
-}
-
-
-// ѕеремещает байты запроса из received в data. ѕри этом из искоходного вектора перемещЄнные данные удал€ютс€
-static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data)
-{
-    uint size = GetSize(received);
-
-    data.resize(size);
-
-    std::memcpy(data.data(), received.data() + 8, size);
-
-    received.erase(received.begin(), received.begin() + 8 + size);
-}
-
-
-void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
+void ServerUDP::ProcessClient(ClientInfo &info, ServerUDP *server)
 {
     std::vector<uint8> &received = info.bindata;
 
     while (received.size() > 4 + 4)         // ≈сли прин€то данных больше, чем занимают id и размер данных
     {
-        uint id = GetID(received);
+        uint id = ClientInfo::GetID(received);
 
-        uint size = GetSize(received);
+        uint size = ClientInfo::GetSize(received);
 
         if (received.size() >= 4 + 4 + size)
         {
-            MoveData(received, info.message);
+            ClientInfo::MoveData(received, info.message);
 
             SU::SplitToWords((char *)info.message.data(), info.words);
 
@@ -330,9 +221,9 @@ void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 }
 
 
-void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *_args)
+void ServerUDP::CallbackError(struct bufferevent *bev, short error, void *_args)
 {
-    ServerTCP *server = ((CallbackArgs *)_args)->server;
+    ServerUDP *server = ((CallbackArgs *)_args)->server;
 
     if (error & BEV_EVENT_READING)
     {
@@ -365,20 +256,7 @@ void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *_args)
 }
 
 
-void ServerTCP::AppendHandler(pchar command, handlerClient handler)
+void ServerUDP::AppendHandler(pchar command, handlerClient handler)
 {
     handlers[command] = handler;
-}
-
-
-void *ClientInfo::GetRawData()
-{
-    char *string = (char *)message.data();
-
-    if (std::strlen(string) + 1 == message.size())
-    {
-        return nullptr;
-    }
-
-    return message.data() + std::strlen(string) + 1;
 }

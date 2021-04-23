@@ -3,7 +3,7 @@
 #include "FileSystem/ConfigurationFile_v.h"
 #include "GUI/Controls/OrderedTable_.h"
 #include "GUI/Controls/Buttons/Button_.h"
-#include "Network/Other/NetworkTypes_.h"
+#include "Network/Other/NetworkTypes_v.h"
 #include "Utils/StringUtils_v.h"
 
 

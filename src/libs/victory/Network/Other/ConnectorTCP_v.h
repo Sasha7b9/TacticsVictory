@@ -39,19 +39,6 @@ private:
 };
 
 
-struct TaskMasterServer
-{
-    pFuncUV    request = 0;             // Обработчик запроса. Должен возвращать id запроса
-    pFuncpCpVU handler_answer = 0;      // Обработчик ответа
-    int64      delta_time = 0;          // Через такие промежутки времени выполнять задание
-    int64      prev_time = 0;
-    int64      last_tive_receive = 0;
-    uint       counter = 0xFFFFFFFF;     // Столько раз выполнять задачу
-
-    // Возвращает true, если существуют выполненные задания (те, у которых счётчик == 0)
-    static bool ExistCompleted(std::vector<TaskMasterServer *> &tasks);
-};
-
 /*
  *   Через класс ConnectorTCP осуществляется взаимодействие с сервером со стороны клиента
  */

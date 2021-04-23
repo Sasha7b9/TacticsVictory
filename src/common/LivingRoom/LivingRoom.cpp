@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "LivingRoom.h"
 #include "FileSystem/ConfigurationFile_v.h"
-#include "Network/Other/NetworkTypes_.h"
+#include "Network/Other/NetworkTypes_v.h"
 #include "Network/Other/ConnectorTCP_v.h"
 
 

@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Network/Other/NetworkTypes_.h"
-#include "Network/Other/ConnectorTCP_v.h"
+#include "Network/Other/NetworkTypes_v.h"
+#include "Network/Other/ConnectorUDP_v.h"
 #include "Utils/GlobalFunctions_.h"
 #include <climits>
 #include <thread>
@@ -10,13 +10,13 @@
 static sockpp::socket_initializer sockInit;
 
 
-BaseConnectorTCP::~BaseConnectorTCP()
+BaseConnectorUDP::~BaseConnectorUDP()
 {
     Release();
 }
 
 
-bool BaseConnectorTCP::Connect(const std::string &host, uint16 port)
+bool BaseConnectorUDP::Connect(const std::string &host, uint16 port)
 {
     //    static int counter = 0;
 
@@ -56,26 +56,26 @@ bool BaseConnectorTCP::Connect(const std::string &host, uint16 port)
 }
 
 
-void BaseConnectorTCP::SetReadTimeOut(uint timeout)
+void BaseConnectorUDP::SetReadTimeOut(uint timeout)
 {
     connection->read_timeout((std::chrono::milliseconds)timeout);
 }
 
 
-void BaseConnectorTCP::SetWriteTimeOut(uint timeout)
+void BaseConnectorUDP::SetWriteTimeOut(uint timeout)
 {
     connection->write_timeout((std::chrono::milliseconds)timeout);
 }
 
 
-void BaseConnectorTCP::Release()
+void BaseConnectorUDP::Release()
 {
     Disconnect();
     connection.reset();
 }
 
 
-void BaseConnectorTCP::Disconnect()
+void BaseConnectorUDP::Disconnect()
 {
     if (connection)
     {
@@ -86,13 +86,13 @@ void BaseConnectorTCP::Disconnect()
 }
 
 
-void BaseConnectorTCP::Transmit(const void *data, uint size)
+void BaseConnectorUDP::Transmit(const void *data, uint size)
 {
     connection->write_n(data, size);
 }
 
 
-ssize_t BaseConnectorTCP::Receive(void *data, uint size)
+ssize_t BaseConnectorUDP::Receive(void *data, uint size)
 {
     fd_set set = { 1, { connection->handle() } };
 
@@ -113,7 +113,7 @@ ssize_t BaseConnectorTCP::Receive(void *data, uint size)
 }
 
 
-bool BaseConnectorTCP::IsConnected() const
+bool BaseConnectorUDP::IsConnected() const
 {
     if (!connection)
     {
@@ -134,24 +134,24 @@ bool BaseConnectorTCP::IsConnected() const
 }
 
 
-static void ThreadConnect(BaseConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
+static void ThreadConnectUDP(BaseConnectorUDP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
 {
     mutex->lock();
 
     if (conn_out->Connect(host, port))
     {
-        *state = ConnectorTCP::State::EventConnection;
+        *state = ConnectorUDP::State::EventConnection;
     }
     else
     {
-        *state = ConnectorTCP::State::EventFailConnection;
+        *state = ConnectorUDP::State::EventFailConnection;
     }
 
     mutex->unlock();
 }
 
 
-void ConnectorTCP::Destroy()
+void ConnectorUDP::Destroy()
 {
     destroy = true;
 
@@ -162,13 +162,13 @@ void ConnectorTCP::Destroy()
 }
 
 
-bool ConnectorTCP::IsConnected()
+bool ConnectorUDP::IsConnected()
 {
     return (state == State::InConnection);
 }
 
 
-void ConnectorTCP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
+void ConnectorUDP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
 {
     funcFailConnection = fail;
     funcConnection = connection;
@@ -176,7 +176,7 @@ void ConnectorTCP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV discon
 }
 
 
-void ConnectorTCP::Connect()
+void ConnectorUDP::Connect()
 {
     if (!funcFailConnection || !funcConnection || !funcDisconnection)
     {
@@ -198,7 +198,7 @@ void ConnectorTCP::Connect()
 }
 
 
-void ConnectorTCP::Disconnect()
+void ConnectorUDP::Disconnect()
 {
     if (IsConnected())
     {
@@ -211,7 +211,7 @@ void ConnectorTCP::Disconnect()
 }
 
 
-uint ConnectorTCP::SendRequest(pchar request, const void *buffer, uint size_buffer)
+uint ConnectorUDP::SendRequest(pchar request, const void *buffer, uint size_buffer)
 {
     mutex.lock();
 
@@ -236,13 +236,13 @@ uint ConnectorTCP::SendRequest(pchar request, const void *buffer, uint size_buff
 }
 
 
-uint ConnectorTCP::SendRequest(pchar request, pchar _data)
+uint ConnectorUDP::SendRequest(pchar request, pchar _data)
 {
     return SendRequest(request, _data, (uint)std::strlen(_data) + 1);
 }
 
 
-void ConnectorTCP::Update()
+void ConnectorUDP::Update()
 {
     ReceiveData();
 
@@ -266,7 +266,7 @@ void ConnectorTCP::Update()
                 {
                     mutex.unlock();
                     state = State::AttemptConnection;
-                    std::thread thread(ThreadConnect, &connector, std::move(host.c_str()), port, &mutex, (uint8 *)&state);
+                    std::thread thread(ThreadConnectUDP, &connector, std::move(host.c_str()), port, &mutex, (uint8 *)&state);
                     thread.detach();
                 }
             }
@@ -305,7 +305,7 @@ void ConnectorTCP::Update()
 
 
 
-void ConnectorTCP::ReceiveData()
+void ConnectorUDP::ReceiveData()
 {
     if (!IsConnected())
     {
@@ -331,7 +331,7 @@ void ConnectorTCP::ReceiveData()
 }
 
 
-void ConnectorTCP::ProcessData()
+void ConnectorUDP::ProcessData()
 {
     while (data.size() > 4 + 4)        // Если принято данных больше чем id и количество байт в сообщении
     {
@@ -381,7 +381,7 @@ void ConnectorTCP::ProcessData()
 }
 
 
-void ConnectorTCP::ExecuteTasks()
+void ConnectorUDP::ExecuteTasks()
 {
     int64 now = GF::Timer::TimeMS();
 
@@ -413,7 +413,7 @@ void ConnectorTCP::ExecuteTasks()
 }
 
 
-void ConnectorTCP::SetTask(int64 dT, TaskMasterServer *task)
+void ConnectorUDP::SetTask(int64 dT, TaskMasterServer *task)
 {
     task->delta_time = dT;
 
@@ -423,7 +423,7 @@ void ConnectorTCP::SetTask(int64 dT, TaskMasterServer *task)
 }
 
 
-void ConnectorTCP::RunTask(TaskMasterServer *task)
+void ConnectorUDP::RunTask(TaskMasterServer *task)
 {
     task->delta_time = -1;
 
@@ -435,7 +435,7 @@ void ConnectorTCP::RunTask(TaskMasterServer *task)
 }
 
 
-bool ConnectorTCP::ExistConnection()
+bool ConnectorUDP::ExistConnection()
 {
     int64 now = GF::Timer::TimeMS();
 
@@ -449,20 +449,6 @@ bool ConnectorTCP::ExistConnection()
         TaskMasterServer *task = it.second;
 
         if (now - task->last_tive_receive < 1500)
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-
-bool TaskMasterServer::ExistCompleted(std::vector<TaskMasterServer *> &tasks)
-{
-    for (auto task : tasks)
-    {
-        if (task->counter == 0)
         {
             return true;
         }

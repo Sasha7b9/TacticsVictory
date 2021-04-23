@@ -6,32 +6,6 @@
 #endif
 
 
-struct ClientInfo
-{
-    struct SocketAddress
-    {
-        void SetHostIP(void *ip);
-
-        // ¬озвращает полный адрес клиента в виде "host:port"
-        std::string ToStringFull() const;
-
-        // ¬озвращает только ip-дарес клиента
-        std::string ToStringHost() const;
-
-        sockaddr_in sin;
-    }                        address;   // јдрес клиента
-
-    std::vector<uint8>       bindata;   // Ќепосредственно прин€тые данные
-    void                    *benv;      // Ѕуфер событий libevent
-    std::vector<uint8>       message;   // «десь хранитс€ прин€тое сообщение - сначала строка, а потом дополнительные
-                                        // данные, если есть
-    std::vector<std::string> words;     // –азбита€ на слова текстова€ часть сообщени€
-    std::string              name;      // »м€ гостиной, как оно будет отображатьс€ в окне выбора сервера у игроков
-
-    void *GetRawData();                 // ¬озвращает указатель на данные, если таковые имеютс€ в сообщении
-};
-
-
 class ServerTCP
 {
 public:
