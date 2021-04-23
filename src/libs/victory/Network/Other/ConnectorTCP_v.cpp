@@ -168,11 +168,51 @@ bool ConnectorTCP::IsConnected()
 }
 
 
+static void ThreadUpdateTCP(ConnectorTCP *connector)
+{
+    LOGWRITE("Enter thread");
+
+    connector->thread_is_stopped = false;
+
+    while (!connector->thread_need_stopped)
+    {
+        connector->Update();
+    }
+
+    connector->thread_is_stopped = true;
+
+    LOGWRITE("Enter leave");
+}
+
+
 void ConnectorTCP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
 {
     funcFailConnection = fail;
     funcConnection = connection;
     funcDisconnection = disconnection;
+
+    LOGWRITE("point 1");
+
+    RunCycle();
+
+    LOGWRITE("point 2");
+}
+
+
+void ConnectorTCP::RunCycle()
+{
+    if (thread_update == nullptr)
+    {
+        thread_update = std::make_unique<std::thread>(ThreadUpdateTCP, this);
+    }
+
+    thread_need_stopped = true;
+
+    while (!thread_is_stopped)  { }
+
+    thread_need_stopped = false;
+
+    thread_update->detach();
 }
 
 

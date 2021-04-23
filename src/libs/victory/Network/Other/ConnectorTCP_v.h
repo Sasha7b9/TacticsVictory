@@ -56,6 +56,8 @@ public:
 
     void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection);
 
+    void RunCycle();
+
     void Connect();
 
     void Disconnect();
@@ -92,6 +94,9 @@ public:
 
     std::vector<uint8> data;                        // Здесь хранятся принятые данные
 
+    bool thread_need_stopped = false;       // true, если поток нуждается в запуске
+    bool thread_is_stopped = true;          // true, если поток остановлен
+
 private:
 
     BaseConnectorTCP connector;                     // Сюдой посылаем данные в сервер
@@ -108,6 +113,8 @@ private:
     pFuncVV funcFailConnection = nullptr;   // Вызывается в случае неуспешной попытки соединения
     pFuncVV funcConnection     = nullptr;   // Вызывается в случае успешной попытки соединения
     pFuncVV funcDisconnection  = nullptr;   // Вызывается при потере связи с сервером
+
+    std::unique_ptr<std::thread> thread_update = nullptr;
 
     State::E state = State::Idle;
 
