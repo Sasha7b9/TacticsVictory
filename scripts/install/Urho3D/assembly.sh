@@ -8,7 +8,7 @@ function ShowHint {
 
 function MakeProject {
     rm -R -f generated/$1
-    cmake . -Bgenerated/$1 -G "CodeBlocks - Unix Makefiles" -DCMAKE_BUILD_TYPE=%BUILD_TYPE% -DURHO3D_64BIT=1 -DURHO3D_THREADING=1 -DURHO3D_LUA=0 -DURHO3D_ANGELSCRIPT=0 -DURHO3D_LIB_TYPE=SHARED 
+    cmake . -Bgenerated/$1 -G "CodeBlocks - Unix Makefiles" -DCMAKE_BUILD_TYPE=%BUILD_TYPE% -DURHO3D_64BIT=1 -DURHO3D_THREADING=1 -DURHO3D_LUA=0 -DURHO3D_ANGELSCRIPT=0 -DURHO3D_SAMPLES=0 -DURHO3D_LIB_TYPE=SHARED 
 }
 
 
