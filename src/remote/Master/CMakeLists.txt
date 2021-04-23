@@ -36,6 +36,8 @@ if(WIN32)
 
 else()
 
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -L.")
+
 #    add_compile_options(-Wclobbered)
 #    add_compile_options(-Wempty-body)
 #    add_compile_options(-Wignored-qualifiers)
