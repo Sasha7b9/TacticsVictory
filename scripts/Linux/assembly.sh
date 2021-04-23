@@ -36,6 +36,13 @@ function BuildProject {
     cd ../../generated/$1/VictoryU3D
     make -j$(nproc)
     make install
+    cp remote/Master/Master         ../../../out/$1
+    cp remote/DataBase/DataBase     ../../../out/$1
+    cp common/Battle/Battle         ../../../out/$1
+    cp common/Controller/Controller ../../../out/$1
+    cp common/LivingRoom/LivingRoom ../../../out/$1
+    cp common/Monitor/Monitor       ../../../out/$1
+    cp common/Uploader/Uploader     ../../../out/$1
     cd $dir
 }
 
