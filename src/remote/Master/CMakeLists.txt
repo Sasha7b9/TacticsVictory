@@ -77,7 +77,6 @@ if(WIN32)
 
     include(../../RuntimeLibrary.cmake)      # »сключаем зависимости от динамических библиотек VS времени
                                              # выполнени€ релизной версии
-    include(../../CopyToDirEXE.cmake)
     include(../../SetWorkingDirectory.cmake)
 
     if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
@@ -92,6 +91,8 @@ else()
 
 endif()
 
+target_link_libraries(${PROJECT_NAME} victory)
+
+include(../../CopyToDirEXE.cmake)
 include(../../Install.cmake)
 
-target_link_libraries(${PROJECT_NAME} victory)
