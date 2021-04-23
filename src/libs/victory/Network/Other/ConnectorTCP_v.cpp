@@ -138,12 +138,17 @@ static void ThreadConnectTCP(BaseConnectorTCP *conn_out, pchar host, uint16 port
 {
     mutex->lock();
 
+    LOG_FUNC_ENTER();
+
     if (conn_out->Connect(host, port))
     {
+        LOGWRITE("Sucsess connection");
+
         *state = ConnectorTCP::State::EventConnection;
     }
     else
     {
+        LOGWRITE("Fail connection");
         *state = ConnectorTCP::State::EventFailConnection;
     }
 
@@ -170,6 +175,8 @@ bool ConnectorTCP::IsConnected()
 
 static void ThreadUpdateTCP(ConnectorTCP *connector)
 {
+    LOG_FUNC_ENTER();
+
     LOGWRITE("Enter thread");
 
     connector->thread_is_stopped = false;
@@ -187,6 +194,8 @@ static void ThreadUpdateTCP(ConnectorTCP *connector)
 
 void ConnectorTCP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
 {
+    LOG_FUNC_ENTER();
+
     funcFailConnection = fail;
     funcConnection = connection;
     funcDisconnection = disconnection;
@@ -201,6 +210,8 @@ void ConnectorTCP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV discon
 
 void ConnectorTCP::RunCycle()
 {
+    LOG_FUNC_ENTER();
+
     if (thread_update == nullptr)
     {
         thread_update = std::make_unique<std::thread>(ThreadUpdateTCP, this);
@@ -218,6 +229,8 @@ void ConnectorTCP::RunCycle()
 
 void ConnectorTCP::Connect()
 {
+    LOG_FUNC_ENTER();
+
     if (!funcFailConnection || !funcConnection || !funcDisconnection)
     {
         LOGERROR("Callbacks not defined");
@@ -284,11 +297,6 @@ uint ConnectorTCP::SendRequest(pchar request, pchar _data)
 
 void ConnectorTCP::Update()
 {
-    if (!IsConnected())
-    {
-        return;
-    }
-
     ReceiveData();
 
     ProcessData();
