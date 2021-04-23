@@ -22,12 +22,6 @@
 
 using namespace Urho3D;
 
-#include <cstdarg>
-#include <locale>
-#include <map>
-#include <mutex>
-#include <vector>
-
 #ifdef WIN32
 #pragma warning(pop)
 #else

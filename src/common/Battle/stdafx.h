@@ -75,13 +75,6 @@ using namespace Urho3D;
 #include <sockpp/tcp_acceptor.h>
 #include <sockpp/tcp_connector.h>
 
-#include <cfloat>
-#include <ctime>
-#include <iostream>
-#include <map>
-#include <mutex>
-#include <sstream>
-
 #ifdef WIN32
 #pragma warning(pop)
 #else

@@ -7,6 +7,7 @@
 #include "Scene/SceneC.h"
 #include "Scene/Cameras/Camera_.h"
 #include "Scene/Terrain/Level_.h"
+#include <d3d9types.h>
 
 
 PanelMap::PanelMap(Context *context) :

@@ -22,12 +22,6 @@
 
 using namespace Urho3D;
 
-#include <cstdarg>
-#include <locale>
-#include <map>
-#include <mutex>
-#include <vector>
-
 #include <sockpp/tcp_acceptor.h>
 #include <sockpp/tcp_connector.h>
 

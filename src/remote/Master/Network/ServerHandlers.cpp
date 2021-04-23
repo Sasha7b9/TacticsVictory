@@ -4,6 +4,7 @@
 #include "Network/Other/NetworkTypes_.h"
 #include "Network/Other/ServerTCP_v.h"
 #include "Utils/StringUtils_v.h"
+#include <sstream>
 
 
 static void HandleInfoLivingRoms(uint, ClientInfo &);

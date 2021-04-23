@@ -65,13 +65,6 @@ using namespace Urho3D;
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 
-#include <cfloat>
-#include <ctime>
-#include <iostream>
-#include <mutex>
-#include <sstream>
-#include <d3d9types.h>
-
 #pragma warning(pop)
 
 #include "defines.h"

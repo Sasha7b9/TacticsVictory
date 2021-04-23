@@ -5,6 +5,7 @@
 #include "Scene/Terrain/SegmentTerrain_.h"
 #include "Utils/GlobalFunctions_.h"
 #include "Utils/StringUtils_v.h"
+#include <ctime>
 
 
 static bool IsCorrectSymbol(char symbol)
