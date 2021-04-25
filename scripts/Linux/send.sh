@@ -1,5 +1,4 @@
-data=${cat build.log}
-curl -X POST \
-    -H 'Content-Type: application/json' \
-    -d '{"chat_id": "546264605", "text": "'$data'" , "disable_notification": false}' \
-    https://api.telegram.org/bot1796168405:AAGOO4O_gydbNEY-J96KspPdmlsoPFlrVNY/sendMessage
+#data=$(cat build.log)
+#curl -X POST \
+#,    -F document=@"build.log" '{"chat_id": "546264605"
+curl -F document=@"build.log" https://api.telegram.org/bot1796168405:AAGOO4O_gydbNEY-J96KspPdmlsoPFlrVNY/sendDocument?chat_id=546264605
