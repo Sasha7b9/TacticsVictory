@@ -3,7 +3,7 @@
 
 
 // В этой переменой ноды будет храниться имя типа игрового объекта
- #define VAR_OBJECT_TYPE_NAME    "Object type name"
+#define VAR_OBJECT_TYPE_NAME    "Object type name"
 
 #define VAR_NODE_IS_UNIT        "isUnit"
 #define VAR_NODE_IS_FLYING      "isFlaying"
