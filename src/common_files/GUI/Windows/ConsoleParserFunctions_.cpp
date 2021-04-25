@@ -190,7 +190,7 @@ bool ConsoleParser::FuncUnit(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
     {
-        {"camera",  None,   &ConsoleParser::FuncUnitCamera,     "функции управления видом от первого лица"}
+        {(char *)"camera",  None,   &ConsoleParser::FuncUnitCamera,     "функции управления видом от первого лица"}
     };
 
     return Run(structs, words, showInfo);
