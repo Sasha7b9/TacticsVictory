@@ -76,7 +76,7 @@ private:
     int numCells = 11;
     pFuncFV funcRead = nullptr;
     pFuncVF funcWrite = nullptr;
-    char *title = nullptr;
+    pchar title = nullptr;
     bool valueChanged = false;
 
     void WriteValue(float value);
