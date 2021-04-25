@@ -6,11 +6,16 @@
 #include "Graphics/2D/Image_.h"
 #include "GUI/Menu/MenuEvents_.h"
 
-
+#ifdef WIN32
 #pragma warning(push)
 #pragma warning(disable:4100)
+#endif
+
 URHO3D_DEFINE_APPLICATION_MAIN(Hangar)
+
+#ifdef WIN32
 #pragma warning(pop)
+#endif
 
 
 Hangar::Hangar(Context* context) :
