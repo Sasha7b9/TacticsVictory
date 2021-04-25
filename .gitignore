@@ -8,6 +8,8 @@
 
 archive.zip
 
+scripts/Linux/out.txt
+
 generated/*
 out/debug/*.dll
 out/debug/Battle
