@@ -10,7 +10,7 @@ ButtonSwitch::ButtonSwitch(Context *context) :
 }
 
 
-ButtonSwitch::ButtonSwitch(UIElement *uielement, char *text, int width, int height) :
+ButtonSwitch::ButtonSwitch(UIElement *uielement, pchar text, int width, int height) :
     ButtonT(uielement, text, width, height)
 {
     items.Push(text);

@@ -9,7 +9,7 @@ class ButtonSwitch : public ButtonT
 
 public:
     ButtonSwitch(Context *);
-    ButtonSwitch(UIElement *uielement, char *text, int width = -1, int height = -1);
+    ButtonSwitch(UIElement *uielement, pchar text, int width = -1, int height = -1);
     static void RegisterObject();
 
     void AddState(char *item);
