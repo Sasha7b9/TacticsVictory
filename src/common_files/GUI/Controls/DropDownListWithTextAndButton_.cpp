@@ -82,7 +82,7 @@ void DropDownListWithTextAndButton::RegisterObject()
 }
 
 
-void DropDownListWithTextAndButton::AddItem(char *text)
+void DropDownListWithTextAndButton::AddItem(pchar text)
 {
     SharedPtr<Label> label(Label::Create(text, 16));
     label->SetAlignment(HA_CENTER, VA_CENTER);
