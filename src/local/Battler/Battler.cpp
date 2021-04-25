@@ -9,7 +9,7 @@
 #include "Graphics/Renderer_.h"
 #include "Graphics/2D/Image_.h"
 #include "Graphics/3D/TileSelected.h"
-#include "GUi/Cursor_.h"
+#include "GUI/Cursor_.h"
 #include "GUI/GUI.h"
 #include "GUI/GuiEditor/GuiEditor.h"
 #include "GUI/Menu/Menu.h"
