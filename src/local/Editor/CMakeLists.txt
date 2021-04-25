@@ -119,13 +119,19 @@ set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "editor")
 
 include(../../RuntimeLibrary.cmake)
 
-if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
-    target_link_libraries(${PROJECT_NAME} Urho3D_d)
+if(WIN32)
+    if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
+        target_link_libraries(${PROJECT_NAME} Urho3D_d)
+    else()
+        target_link_libraries(${PROJECT_NAME} Urho3D)
+    endif()
+    
+    target_link_libraries(${PROJECT_NAME} ws2_32)
 else()
     target_link_libraries(${PROJECT_NAME} Urho3D)
 endif()
 
-target_link_libraries(${PROJECT_NAME} ws2_32 victory)
+target_link_libraries(${PROJECT_NAME} victory)
 
 include(../../SetWorkingDirectory.cmake)
 include(../../Install.cmake)
