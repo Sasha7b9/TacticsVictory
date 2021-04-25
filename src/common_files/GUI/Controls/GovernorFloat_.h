@@ -63,7 +63,7 @@ public:
 
     virtual void Update(float timeStep);
 
-    void SetFunctionFloat(char *title, pFuncFV funcRead, pFuncVF funcWrite);
+    void SetFunctionFloat(pchar title, pFuncFV funcRead, pFuncVF funcWrite);
 
     void HandlerGovernorCellChanged(StringHash eventType, VariantMap& eventData);
     void HandlerHoverButtonBegin(StringHash eventType, VariantMap& eventData);

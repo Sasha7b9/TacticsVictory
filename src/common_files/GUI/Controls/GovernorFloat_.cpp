@@ -267,7 +267,7 @@ void GovernorFloat::RegisterObject()
 }
 
 
-void GovernorFloat::SetFunctionFloat(char *title_, pFuncFV funcRead_, pFuncVF funcWrite_)
+void GovernorFloat::SetFunctionFloat(pchar title_, pFuncFV funcRead_, pFuncVF funcWrite_)
 {
     funcRead = funcRead_;
     funcWrite = funcWrite_;
