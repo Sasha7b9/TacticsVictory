@@ -10,7 +10,7 @@ do
         rm build.log
         time ./assembly.sh build all 2>> build.log
         FILENAME=build.log
-        FILESIZE=$(stat -c$s "$FILENAME")
+        FILESIZE=$(stat -c%s "$FILENAME")
         if [ $FILESIZE != "0" ]
         then
             ./send.sh
