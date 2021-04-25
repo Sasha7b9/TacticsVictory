@@ -106,7 +106,7 @@ void PanelMap::Update(float dT)
                 }
                 prevY = posY;
             }
-            prevX = posX;
+//            prevX = posX;
         }
 
         imageMap->Resize(GetWidth(), GetHeight());
