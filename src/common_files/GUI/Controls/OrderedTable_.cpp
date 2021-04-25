@@ -93,7 +93,7 @@ void LineTable::SetServerInfo(std::string info)
 {
     std::vector<std::string> words;
 
-    SU::SplitToWords(info.c_str(), words, ",|");
+    SU::SplitToWords((pchar)info.c_str(), words, ",|");
 
     name->SetText(words.size() > 0 ? words[0].c_str() : "");
 
