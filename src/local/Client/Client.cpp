@@ -13,10 +13,16 @@
 #include "Utils/GlobalFunctions_.h"
 
 
+#ifdef WIN32
 #pragma warning(push)
 #pragma warning(disable:4100)
+#endif
+
 URHO3D_DEFINE_APPLICATION_MAIN(Client)
+
+#ifdef WIN32
 #pragma warning(pop)
+#endif
 
 
 Client::Client(Context* context) :
