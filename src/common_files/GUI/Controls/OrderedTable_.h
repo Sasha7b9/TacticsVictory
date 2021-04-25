@@ -54,7 +54,7 @@ class OrderedTable : public Control
 
 public:
 
-    OrderedTable(UIElement *ui_element, char *title);
+    OrderedTable(UIElement *ui_element, pchar title);
 
     SharedPtr<HeaderTable> header;
     Vector<LineTable *> lines;

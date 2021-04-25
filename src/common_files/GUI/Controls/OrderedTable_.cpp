@@ -105,7 +105,7 @@ void LineTable::SetServerInfo(std::string info)
 }
 
 
-OrderedTable::OrderedTable(UIElement *ui_element, char *title) : Control(TheContext)
+OrderedTable::OrderedTable(UIElement *ui_element, pchar title) : Control(TheContext)
 {
     SharedPtr<Window> window(new Window(TheContext));
     window->SetDefaultStyle(TheCache->GetResource<XMLFile>("UI/MainStyle.xml"));
