@@ -11,7 +11,7 @@ public:
     Hint(pchar text);
 
 private:
-    char *text = nullptr;
+    pchar text = nullptr;
     SharedPtr<Label> label;
 
     void HandlerChangeLanguage(StringHash, VariantMap&);
