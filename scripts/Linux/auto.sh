@@ -2,5 +2,5 @@
 
 while true
 do
-    ./assembly.sh full all
+    time ./assembly.sh build all
 done
