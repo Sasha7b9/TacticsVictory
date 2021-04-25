@@ -3,15 +3,13 @@
 
 #ifdef WIN32
 #pragma warning(push, 0)
+#define _WINSOCKAPI_
+#include <windows.h>
 #else
 #endif
 
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
-
-#define _WINSOCKAPI_
-#include <windows.h>
-
 
 #include <Urho3D/Container/Str.h>
 
