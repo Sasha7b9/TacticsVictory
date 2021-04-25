@@ -22,7 +22,7 @@ public:
 
     struct ParserStruct
     {
-        char* command;
+        pchar command;
         Parameter typeParameter;
         pFuncMember func;
         String help;
