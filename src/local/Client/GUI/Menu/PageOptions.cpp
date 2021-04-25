@@ -39,7 +39,7 @@ PageOptions::PageOptions() : MenuPage()
     SubscribeToEvent(name, E_ITEMSELECTED, URHO3D_HANDLER(PageOptions, HandleItemSelected));    \
     name->SetSelection(startIndex);
 
-    char *items0[] = { "Off", "On" };
+    pchar items0[] = { "Off", "On" };
     CREATE_DDLWTAB(ddlFullScreen, "Full screen", 2, items0,
         (uint)TheSettings.GetInt("full_screen"));
 
