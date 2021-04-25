@@ -56,7 +56,7 @@ bool Control::UnderCursor()
 }
 
 
-SharedPtr<ButtonT> Control::AddButton(char *text, int x, int y, int width, int height)
+SharedPtr<ButtonT> Control::AddButton(pchar text, int x, int y, int width, int height)
 {
     SharedPtr<ButtonT> retButton(new ButtonT(this, text, width, height));
     if (x != -1 && y != -1)
