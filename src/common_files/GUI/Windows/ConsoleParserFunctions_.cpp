@@ -51,10 +51,10 @@ bool ConsoleParser::FuncServer(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
     {
-        {"start",       Int,    &ConsoleParser::FuncServerStart,        "cоздать сервер на порт XX"},
-        {"stop",        None,   &ConsoleParser::FuncServerStop,         "остановить сервер"},
-        {"latency",     Int,    &ConsoleParser::FuncServerLatency,      "эмулировать задержку сети длительностью XX миллисекунд"},
-        {"packetloss",  Float,  &ConsoleParser::FuncServerPacketLoss,   "эмулировать потерю X.X пакетров"}
+        {(char *)"start",       Int,    &ConsoleParser::FuncServerStart,        "cоздать сервер на порт XX"},
+        {(char *)"stop",        None,   &ConsoleParser::FuncServerStop,         "остановить сервер"},
+        {(char *)"latency",     Int,    &ConsoleParser::FuncServerLatency,      "эмулировать задержку сети длительностью XX миллисекунд"},
+        {(char *)"packetloss",  Float,  &ConsoleParser::FuncServerPacketLoss,   "эмулировать потерю X.X пакетров"}
     };
 
     return Run(structs, words, showInfo);
