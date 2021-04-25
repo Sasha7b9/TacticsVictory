@@ -17,7 +17,7 @@ public:
     uint GetState();
 
 private:
-    PODVector<char*> items;
+    PODVector<pchar> items;
     uint state = 0;
 
     void HandlerButtonRelease(StringHash, VariantMap&);
