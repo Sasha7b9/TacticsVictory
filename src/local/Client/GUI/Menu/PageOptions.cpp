@@ -51,11 +51,11 @@ PageOptions::PageOptions() : MenuPage()
     CREATE_DDLWTAB(ddlTextureAnisotropy, "Texture anisotropy", 6, items2,
         (uint)TheSettings.GetInt("texture", "anisotropy"));
 
-    char *items3[] = {"Low", "Medium", "High", "Max"};
+    pchar items3[] = {"Low", "Medium", "High", "Max"};
     CREATE_DDLWTAB(ddlMaterialQuality, "Material quality", 4, items3,
         (uint)TheSettings.GetInt("material", "quality"));
 
-    char *items4[] = {"Off", "On"};
+    pchar items4[] = {"Off", "On"};
     CREATE_DDLWTAB(ddlShadowsEnabled, "Shadows", 2, items4,
         (uint)TheSettings.GetInt("shadow", "draw"));
 
@@ -65,11 +65,11 @@ PageOptions::PageOptions() : MenuPage()
     CREATE_DDLWTAB(ddlDynamicInstancing, "Dynamic instancing", 2, items4,
         (uint)TheSettings.GetInt("dynamic_instancing"));
 
-    char *items6[] = {"64", "128", "256", "512", "1024", "2048", "4096", "8192", "16384"};
+    pchar items6[] = {"64", "128", "256", "512", "1024", "2048", "4096", "8192", "16384"};
     CREATE_DDLWTAB(ddlShadowMapSize, "Shadow map size", 9, items6,
         (uint)TheSettings.GetInt("shadow", "map_size"));
 
-    char *items7[] = {"low 16bit", "low 24bit", "high 16bit", "high 24bit"};
+    pchar items7[] = {"low 16bit", "low 24bit", "high 16bit", "high 24bit"};
     CREATE_DDLWTAB(ddlShadowQuality, "Shadow quality", 4, items7,
         (uint)TheSettings.GetInt("shadow", "quality"));
  
