@@ -8,7 +8,7 @@ namespace SU
     void SplitToWords(pchar text, std::vector<std::string> &out);
 
     // Разбить text на слова, разделённые символами из массива symbols
-    void SplitToWords(pchar text, std::vector<std::string> &out, char *symbols);
+    void SplitToWords(pchar text, std::vector<std::string> &out, pchar symbols);
 
     int Length(pchar str);
 

@@ -56,7 +56,7 @@ static bool SymbolIsEqual(char symbol, char *symbols)
 }
 
 
-void SU::SplitToWords(pchar text, std::vector<std::string> &out, char *symbols)
+void SU::SplitToWords(pchar text, std::vector<std::string> &out, pchar symbols)
 {
     std::string word;
 
