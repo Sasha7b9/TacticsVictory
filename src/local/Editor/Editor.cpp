@@ -10,10 +10,16 @@
 #include "Scene/Cameras/Camera_.h"
 
 
+#ifdef WIN32
 #pragma warning(push)
 #pragma warning(disable:4100)
+#endif
+
 URHO3D_DEFINE_APPLICATION_MAIN(Editor)
+
+#ifdef WIN32
 #pragma warning(pop)
+#endif
 
 
 Editor::Editor(Context* context) :
