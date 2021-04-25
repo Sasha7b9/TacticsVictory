@@ -9,20 +9,21 @@ include_directories(.
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
-
 if(WIN32)
-add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed
-add_compile_options(/wd4625)    # 'derived class' : copy constructor was implicitly defined as deleted because a
-                                # base class copy constructor is inaccessible or deleted
-add_compile_options(/wd4626)    # 'derived class' : assignment operator was implicitly defined as deleted because a
-                                # base class assignment operator is inaccessible or deleted
-add_compile_options(/wd4710)    # 'function' : function not inlined
-add_compile_options(/wd4711)    # function 'function' selected for inline expansion
-add_compile_options(/wd4820)    # 'bytes' bytes padding added after construct 'member_name'
-add_compile_options(/wd5026)    # 'type': move constructor was implicitly defined as deleted
-add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
-add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
+
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
+
+    add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed
+    add_compile_options(/wd4625)    # 'derived class' : copy constructor was implicitly defined as deleted because a
+                                    # base class copy constructor is inaccessible or deleted
+    add_compile_options(/wd4626)    # 'derived class' : assignment operator was implicitly defined as deleted because a
+                                    # base class assignment operator is inaccessible or deleted
+    add_compile_options(/wd4710)    # 'function' : function not inlined
+    add_compile_options(/wd4711)    # function 'function' selected for inline expansion
+    add_compile_options(/wd4820)    # 'bytes' bytes padding added after construct 'member_name'
+    add_compile_options(/wd5026)    # 'type': move constructor was implicitly defined as deleted
+    add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
+    add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                 # specified
 else()
 endif()
