@@ -104,7 +104,7 @@ void PanelMap::Update(float dT)
                 {
                     imageMap->SetPoint(posX, posY, col);
                 }
-                prevY = posY;
+//                prevY = posY;
             }
 //            prevX = posX;
         }
