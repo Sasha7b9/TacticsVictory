@@ -1,4 +1,4 @@
-data=$(/home/sasha/TacticsVictory/scripts/Linux/build.log)
+data=$(cat /home/sasha/TacticsVictory/scripts/Linux/build.log)
 curl -X POST \
     -H 'Content-Type: application/json' \
     -d '{"chat_id": "546264605", "text": "'$data'" , "disable_notification": false}' \
