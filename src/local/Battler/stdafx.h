@@ -1,7 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
+#ifdef WIN32
 #pragma warning(push, 0)
+#endif
 
 #include <Urho3D/Audio/Audio.h>
 #include <Urho3D/Audio/Sound.h>
@@ -65,7 +67,9 @@ using namespace Urho3D;
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 
+#ifdef WIN32
 #pragma warning(pop)
+#endif
 
 #include "defines.h"
 #include "glob_engine.h"
