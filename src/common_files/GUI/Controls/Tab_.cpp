@@ -22,7 +22,7 @@ void Tab::RegisterObject()
 }
 
 
-SharedPtr<Tab> Tab::Create(char *title)
+SharedPtr<Tab> Tab::Create(pchar title)
 {
     SharedPtr<Tab> tab(new Tab(TheContext));
     tab->buttonTitle = new ButtonToggled(nullptr, title, 125, 17);

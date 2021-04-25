@@ -11,7 +11,7 @@ public:
     Tab(Context *);
     static void RegisterObject();
 
-    static SharedPtr<Tab> Create(char *title);
+    static SharedPtr<Tab> Create(pchar title);
 
     SharedPtr<ButtonToggled> buttonTitle;
 };
