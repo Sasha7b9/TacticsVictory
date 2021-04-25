@@ -12,7 +12,7 @@ class SliderWithTextAndButtons : public UIElement
 
 public:
     SliderWithTextAndButtons(Context *);
-    SliderWithTextAndButtons(UIElement *uielement, char *text, int min, int max, int step, int widthText = -1,
+    SliderWithTextAndButtons(UIElement *uielement, pchar text, int min, int max, int step, int widthText = -1,
         int widthRoller = -1);
     static void RegisterObject();
 

@@ -16,7 +16,7 @@ SliderWithTextAndButtons::SliderWithTextAndButtons(Context *context) :
 }
 
 
-SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, char *text_, int min, int max, int step,
+SliderWithTextAndButtons::SliderWithTextAndButtons(UIElement *uielement, pchar text_, int min, int max, int step,
     int widthText, int widthRoller) :
     UIElement(TheContext)
 {
