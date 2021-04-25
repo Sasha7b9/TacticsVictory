@@ -29,7 +29,7 @@ void ButtonSwitch::RegisterObject()
 }
 
 
-void ButtonSwitch::AddState(char *item)
+void ButtonSwitch::AddState(pchar item)
 {
     items.Push(item);
 }

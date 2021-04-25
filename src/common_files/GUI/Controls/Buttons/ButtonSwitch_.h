@@ -12,7 +12,7 @@ public:
     ButtonSwitch(UIElement *uielement, pchar text, int width = -1, int height = -1);
     static void RegisterObject();
 
-    void AddState(char *item);
+    void AddState(pchar item);
     void SetState(uint state);
     uint GetState();
 
