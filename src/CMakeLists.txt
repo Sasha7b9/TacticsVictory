@@ -13,7 +13,7 @@ project (VictoryU3D)
 
 set (TARGET_NAME VictoryU3D)
 
-if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
+i f(${CMAKE_BUILD_TYPE} STREQUAL Debug)
     set(SUB_DIR debug)
     add_definitions(-DDEBUG)
 elseif(${CMAKE_BUILD_TYPE} STREQUAL Release)
