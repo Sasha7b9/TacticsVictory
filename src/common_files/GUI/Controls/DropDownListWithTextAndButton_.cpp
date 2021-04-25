@@ -14,7 +14,7 @@ DropDownListWithTextAndButton::DropDownListWithTextAndButton(Context *context) :
 }
 
 
-DropDownListWithTextAndButton::DropDownListWithTextAndButton(char *text_, int widthText, int widthDDList) :
+DropDownListWithTextAndButton::DropDownListWithTextAndButton(pchar text_, int widthText, int widthDDList) :
     UIElement(TheContext)
 {
     SharedPtr<Window> window(new Window(TheContext));
