@@ -11,10 +11,10 @@ class ButtonToggled : public CheckBox
 
 public:
     ButtonToggled(Context *);
-    ButtonToggled(UIElement *uielement, char *text, int width = -1, int height = -1);
+    ButtonToggled(UIElement *uielement, pchar text, int width = -1, int height = -1);
     static void RegisterObject();
 
-    void SetText(char *text);
+    void SetText(pchar text);
 
 private:
     SharedPtr<Label> label;

@@ -15,7 +15,7 @@ ButtonToggled::ButtonToggled(Context *context) :
 }
 
 
-ButtonToggled::ButtonToggled(UIElement * uielement, char * text, int width, int height) :
+ButtonToggled::ButtonToggled(UIElement * uielement, pchar text, int width, int height) :
     CheckBox(TheContext)
 {
     SetStyleAuto(TheUIRoot->GetDefaultStyle());
@@ -57,7 +57,7 @@ void ButtonToggled::RegisterObject()
 }
 
 
-void ButtonToggled::SetText(char *text)
+void ButtonToggled::SetText(pchar text)
 {
     label->SetText(text);
 }
