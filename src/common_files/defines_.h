@@ -85,3 +85,4 @@ inline void EmptyFuncVV() {};
 
 #define VAR_MENU_EVENT         "VAR_MENU_EVENT"
 #define VAR_GUI_NO_TRANSLATE   "VAR_GUI_NO_TRANSLATE"
+
