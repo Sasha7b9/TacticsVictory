@@ -13,7 +13,7 @@ public:
     ButtonT(UIElement *uielement, pchar text, int widht = -1, int height = -1);
     static void RegisterObject();
 
-    void SetText(char *text);
+    void SetText(pchar text);
     void SetHint(char *text);
     virtual void OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, MouseButton button,
         MouseButtonFlags buttons, QualifierFlags qualifiers, Cursor* cursor) override;

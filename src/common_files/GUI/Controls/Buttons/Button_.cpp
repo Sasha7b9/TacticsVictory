@@ -76,7 +76,7 @@ void ButtonT::RegisterObject()
 }
 
 
-void ButtonT::SetText(char *text)
+void ButtonT::SetText(pchar text)
 {
     label->SetText(text);
 }
