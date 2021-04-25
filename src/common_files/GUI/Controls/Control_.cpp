@@ -68,7 +68,7 @@ SharedPtr<ButtonT> Control::AddButton(char *text, int x, int y, int width, int h
 }
 
 
-SharedPtr<Label> Control::AddLabel(char *text, int x, int y, int width, int height)
+SharedPtr<Label> Control::AddLabel(pchar text, int x, int y, int width, int height)
 {
     SharedPtr<Label> label(Label::Create(text, 20, width, height));
 
