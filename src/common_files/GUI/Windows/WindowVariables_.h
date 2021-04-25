@@ -14,7 +14,7 @@ public:
     WindowVariables();
 
     void SetVar(float *var, char *title);
-    void AddFunctionFloat(char *title, pFuncFV funcRead, pFuncVF funcWrite);
+    void AddFunctionFloat(pchar title, pFuncFV funcRead, pFuncVF funcWrite);
 
 private:
     float *var = nullptr;
