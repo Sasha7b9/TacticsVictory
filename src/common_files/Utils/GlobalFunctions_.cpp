@@ -146,7 +146,7 @@ void GF::SetWindowInCenterScreen(Window *window)
         TheGraphics->GetHeight() / 2 - window->GetHeight() / 2);
 }
 
-void GF::OpenFileSelector(char *title, char *textOk, char *textCancel, const Vector<std::string> &_filters)
+void GF::OpenFileSelector(pchar title, pchar textOk, pchar textCancel, const Vector<std::string> &_filters)
 {
     delete TheFileSelector;
     TheFileSelector = new FileSelector(TheContext);
