@@ -40,7 +40,7 @@ void SU::SplitToWords(pchar text, std::vector<std::string> &out)
 
 
 // Возвращает true, если symbol равен одному из символов в массиве symbols
-static bool SymbolIsEqual(char symbol, char *symbols)
+static bool SymbolIsEqual(char symbol, pchar symbols)
 {
     while (*symbols != '\0')
     {
