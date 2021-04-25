@@ -167,11 +167,13 @@ void Hangar::SubscribeToEvents()
 
 void Hangar::SetWindowTitleAndIcon()
 {
+#ifdef WIN32
     Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     TheGraphics->SetWindowIcon(icon);
 
     SetWindowText(FindWindow(NULL, "Battler"), TheSettings.GetInt("language") == 0 ? TEXT("Tactics Victory") :
         TEXT("Тактика Победы"));
+#endif
 }
 
 
