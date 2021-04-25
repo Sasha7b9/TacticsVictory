@@ -11,6 +11,7 @@ include_directories(.
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
 
+if(WIN32)
 add_compile_options(/wd4514)    # 'function' : unreferenced inline function has been removed
 add_compile_options(/wd4625)    # 'derived class' : copy constructor was implicitly defined as deleted because a
                                 # base class copy constructor is inaccessible or deleted
@@ -23,6 +24,8 @@ add_compile_options(/wd5026)    # 'type': move constructor was implicitly define
 add_compile_options(/wd5027)    # 'type': move assignment operator was implicitly defined as deleted
 add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch
                                 # specified
+else()
+endif()
 
 file(GLOB SRC                          *.h *.cpp)
 file(GLOB FILESYSTEM ../../common_files/FileSystem/FileSystem_.*)
