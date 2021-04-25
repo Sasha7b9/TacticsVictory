@@ -82,7 +82,7 @@ void ButtonT::SetText(pchar text)
 }
 
 
-void ButtonT::SetHint(char *text)
+void ButtonT::SetHint(pchar text)
 {
     hint = new Hint(text);
 }

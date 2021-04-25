@@ -14,7 +14,7 @@ public:
     static void RegisterObject();
 
     void SetText(pchar text);
-    void SetHint(char *text);
+    void SetHint(pchar text);
     virtual void OnClickBegin(const IntVector2& position, const IntVector2& screenPosition, MouseButton button,
         MouseButtonFlags buttons, QualifierFlags qualifiers, Cursor* cursor) override;
 
