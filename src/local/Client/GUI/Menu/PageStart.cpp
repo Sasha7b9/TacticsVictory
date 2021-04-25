@@ -96,7 +96,8 @@ void PageStart::HandleButtonRelease(StringHash, VariantMap& eventData)
     }
     else if (button == buttonEditor)
     {
-        system("start Editor.exe");
+        int result = system("start Editor.exe");
+        (void)result;
         TheEngine->Exit();
     }
     else if (button == buttonExit)
