@@ -122,8 +122,8 @@ bool ConsoleParser::FuncVars(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
     {
-        {"open",    None,   &ConsoleParser::FuncVarsOpen,   "открыть окно переменных"},
-        {"close",   None,   &ConsoleParser::FuncVarsClose,  "закрыть окно переменных"}
+        {(char *)"open",    None,   &ConsoleParser::FuncVarsOpen,   "открыть окно переменных"},
+        {(char *)"close",   None,   &ConsoleParser::FuncVarsClose,  "закрыть окно переменных"}
     };
 
     if(words.Size() || showInfo)
