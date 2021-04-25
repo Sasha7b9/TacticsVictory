@@ -20,7 +20,7 @@ void SliderT::RegisterObject()
 }
 
 
-SharedPtr<SliderT> SliderT::Create(Window *window, char *text_)
+SharedPtr<SliderT> SliderT::Create(Window *window, pchar text_)
 {
     SharedPtr<Text> text(new Text(TheContext));
     text->SetText(TheLocalization->Get(text_));

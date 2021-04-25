@@ -10,5 +10,5 @@ public:
     SliderT(Context *);
     static void RegisterObject();
 
-    static SharedPtr<SliderT> Create(Window *window, char *text);
+    static SharedPtr<SliderT> Create(Window *window, pchar text);
 };
