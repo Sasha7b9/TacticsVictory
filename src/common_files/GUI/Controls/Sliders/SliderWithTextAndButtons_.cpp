@@ -89,7 +89,7 @@ void SliderWithTextAndButtons::RegisterObject()
 }
 
 
-void SliderWithTextAndButtons::SetHint(char *text)
+void SliderWithTextAndButtons::SetHint(pchar text)
 {
     hint = new Hint(text);
 }

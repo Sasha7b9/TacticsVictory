@@ -21,7 +21,7 @@ public:
     int GetValue();
     int GetValueMax();
     int GetValueMin();
-    void SetHint(char *text);
+    void SetHint(pchar text);
 
 private:
     SharedPtr<SliderInt> slider;
