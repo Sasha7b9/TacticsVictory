@@ -7,7 +7,7 @@ do
     FILESIZE=$(stat -c%s "$FILENAME")
     if [ $FILESIZE != "20" ]
     then
-        time ./assembly.sh build all > build.txt
+        time ./assembly.sh build all > build.log
         ./send.sh
     fi
     sleep 1
