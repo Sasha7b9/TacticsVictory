@@ -234,11 +234,13 @@ void Client::SubscribeToEvents()
 
 void Client::SetWindowTitleAndIcon()
 {
+#ifdef WIN32
     Image *icon = TheCache->GetResource<Image>("Textures/TacticsVictoryIcon.png");
     TheGraphics->SetWindowIcon(icon);
 
     SetWindowText(FindWindow(NULL, "Client"), TheLocalization->GetLanguage() == "en" ? TEXT("Tactics Victory") :
                                                                                        TEXT("Тактика Победы"));
+#endif
 }
 
 
