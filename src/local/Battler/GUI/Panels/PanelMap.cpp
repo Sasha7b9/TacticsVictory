@@ -77,7 +77,7 @@ void PanelMap::Update(float dT)
         float stand = 0.0f;
         float scaleColor = (1.0f - stand) / maxHeight;
 
-        int prevX = 0;
+//        int prevX = 0;
         int prevY = 0;
         int posX = 0;
 
