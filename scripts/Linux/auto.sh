@@ -9,4 +9,5 @@ do
     then
         time ./assembly.sh build all
     fi
+    sleep 1
 done
