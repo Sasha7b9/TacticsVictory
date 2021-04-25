@@ -109,8 +109,8 @@ SharedPtr<SliderWithTextAndButtons> Control::AddSlider(char *text, int min, int 
 }
 
 
-SharedPtr<DropDownListWithTextAndButton> Control::AddDDList(char *text, int widthText, int widthDDList, int numItems,
-    char *items[], int x, int y)
+SharedPtr<DropDownListWithTextAndButton> Control::AddDDList(pchar text, int widthText, int widthDDList, int numItems,
+    pchar items[], int x, int y)
 {
     SharedPtr<DropDownListWithTextAndButton> ddList(DropDownListWithTextAndButton::Create(this, text, widthText,
         widthDDList, numItems, items));
