@@ -9,7 +9,7 @@ bool ConsoleParser::FuncClient(Vector<String> &words, bool showInfo)
 {
     const ParserStruct structs[100] =
     {
-        {"start",   None,   &ConsoleParser::FuncClientStart,    "запуск клиента. Формат команды - client -start -address:XX.XX.XX.XX -port:XX"},
+        {(char *)"start",   None,   &ConsoleParser::FuncClientStart,    "запуск клиента. Формат команды - client -start -address:XX.XX.XX.XX -port:XX"},
         {"stop",    None,   &ConsoleParser::FuncClientStop,     "останов клиента"}
     };
 
