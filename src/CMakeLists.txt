@@ -54,10 +54,7 @@ function(add_subdirectory_with_folder _folder_name _folder)
 endfunction()
 
 
-if(WIN32)
-    add_subdirectory_with_folder("local" local/Battler)
-endif()
-
+add_subdirectory_with_folder("local" local/Battler)
 add_subdirectory_with_folder("local" local/Client)
 add_subdirectory_with_folder("local" local/Editor)
 add_subdirectory_with_folder("local" local/Hangar)
