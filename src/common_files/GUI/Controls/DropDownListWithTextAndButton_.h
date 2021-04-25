@@ -14,7 +14,7 @@ public:
     void AddItem(char *text);
     void SetSelection(uint index);
 
-    static SharedPtr<DropDownListWithTextAndButton> Create(Window *window, pchar text, int widthText, int widthDDList, int numItems, char * items[]);
+    static SharedPtr<DropDownListWithTextAndButton> Create(Window *window, pchar text, int widthText, int widthDDList, int numItems, pchar items[]);
 
 private:
     SharedPtr<DropDownList> ddList;

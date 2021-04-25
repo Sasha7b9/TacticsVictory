@@ -125,7 +125,7 @@ void DropDownListWithTextAndButton::HandlerButtonDown(StringHash, VariantMap& ev
 
 
 SharedPtr<DropDownListWithTextAndButton> DropDownListWithTextAndButton::Create(Window *window, pchar text,
-    int widthText, int widthDDList, int numItems, char *items[])
+    int widthText, int widthDDList, int numItems, pchar items[])
 {
     SharedPtr<DropDownListWithTextAndButton> ddl(new DropDownListWithTextAndButton(text, widthText, widthDDList));
     for(uint64 i = 0; i < (uint64)numItems; i++)
