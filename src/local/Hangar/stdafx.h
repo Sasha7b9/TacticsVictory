@@ -1,10 +1,12 @@
 // 2021/04/02 17:53:54 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
+#ifdef WIN32
 #pragma warning(push, 0)
-
 #define _WINSOCKAPI_
 #include <windows.h>
+#else
+#endif
 
 #include <Urho3D/Audio/Audio.h>
 #include <Urho3D/Audio/SoundListener.h>
@@ -56,7 +58,10 @@ using namespace Urho3D;
 #include <sockpp/tcp_acceptor.h>
 #include <sockpp/tcp_connector.h>
 
+#ifdef WIN32
 #pragma warning(pop)
+#else
+#endif
 
 #include "defines.h"
 #include "glob_engine.h"
