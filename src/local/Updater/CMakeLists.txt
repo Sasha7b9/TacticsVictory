@@ -59,4 +59,9 @@ else()
     target_link_libraries(${PROJECT_NAME} Urho3D)
 endif()
 
-target_link_libraries(${PROJECT_NAME} ws2_32 victory)
+if(WIN32)
+    target_link_libraries(${PROJECT_NAME} ws2_32)
+else()
+endif()
+
+target_link_libraries(${PROJECT_NAME} victory)
