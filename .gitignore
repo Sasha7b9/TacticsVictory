@@ -13,8 +13,12 @@ scripts/Linux/out.txt
 generated/*
 out/debug/*.dll
 out/debug/Battle
+out/debug/Battler
+out/debug/Client
 out/debug/Controller
 out/debug/DataBase
+out/debug/Editor
+out/debug/Hangar
 out/debug/LivingRoom
 out/debug/Master
 out/debug/Monitor
