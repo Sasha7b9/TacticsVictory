@@ -92,7 +92,7 @@ SharedPtr<ButtonToggled> Control::AddButtonToggled(char *text, int x, int y, int
 }
 
 
-SharedPtr<SliderWithTextAndButtons> Control::AddSlider(char *text, int min, int max, int step, int x, int y,
+SharedPtr<SliderWithTextAndButtons> Control::AddSlider(pchar text, int min, int max, int step, int x, int y,
     int widthText, int widthRoller)
 {
     SharedPtr<SliderWithTextAndButtons> slider(new SliderWithTextAndButtons(this, text, min, max, step, widthText,
