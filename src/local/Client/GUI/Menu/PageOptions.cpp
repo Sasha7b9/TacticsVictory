@@ -43,11 +43,11 @@ PageOptions::PageOptions() : MenuPage()
     CREATE_DDLWTAB(ddlFullScreen, "Full screen", 2, items0,
         (uint)TheSettings.GetInt("full_screen"));
 
-    char *items1[] = { "Low", "Medium", "High" };
+    pchar items1[] = { "Low", "Medium", "High" };
     CREATE_DDLWTAB(ddlTextureQuality, "Texture quality", 3, items1,
         (uint)TheSettings.GetInt("texture", "quality"));
 
-    char *items2[] = {"x1", "x2", "x4", "x8", "x16", "x32"};
+    pchar items2[] = {"x1", "x2", "x4", "x8", "x16", "x32"};
     CREATE_DDLWTAB(ddlTextureAnisotropy, "Texture anisotropy", 6, items2,
         (uint)TheSettings.GetInt("texture", "anisotropy"));
 
