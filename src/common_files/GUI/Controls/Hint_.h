@@ -8,7 +8,7 @@ class Hint : public Control
     URHO3D_OBJECT(Hint, Control);
 
 public:
-    Hint(char *text);
+    Hint(pchar text);
 
 private:
     char *text = nullptr;

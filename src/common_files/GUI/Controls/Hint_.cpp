@@ -4,7 +4,7 @@
 #include "GUI/Controls/Label_.h"
 
 
-Hint::Hint(char *text_) : Control(TheContext), text(text_)
+Hint::Hint(pchar text_) : Control(TheContext), text(text_)
 {
     label = Label::Create(text, 20);
     label->SetAlignment(HA_CENTER, VA_CENTER);
