@@ -4,6 +4,7 @@
 *.log
 *.swp
 *.tmp
+*.build
 *~*
 
 archive.zip
