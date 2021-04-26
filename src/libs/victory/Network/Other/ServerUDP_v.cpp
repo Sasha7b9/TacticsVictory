@@ -64,9 +64,9 @@ void ServerUDP::Run(uint16 port)
 
     CallbackArgs args = { this, base };
 
-    struct event *listener_event = event_new(base, sock, EV_READ | EV_PERSIST, CallbackAccept, &args);
+    struct event *event = event_new(base, sock, EV_READ | EV_PERSIST, CallbackAccept, &args);
 
-    event_add(listener_event, NULL);
+    event_add(event, NULL);
 
     event_base_dispatch(base);
 }
