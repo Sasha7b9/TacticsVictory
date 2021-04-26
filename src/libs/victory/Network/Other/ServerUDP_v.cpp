@@ -107,26 +107,40 @@ void ServerUDP::SendAnswer(void *bev, uint id, pchar message, int value)
 }
 
 
-void ServerUDP::CallbackRead(evutil_socket_t listener, short event, void *_arg)
+void ServerUDP::CallbackRead(evutil_socket_t sock, short /*event*/, void *)
 {
-//    CallbackArgs *args = (CallbackArgs *)_args;
-//
-//    std::vector<uint8> &data = args->server->clients[bev].bindata;
-//
-//#define SIZE_CHUNK 1024
-//
-//    uint8 buffer[SIZE_CHUNK];
-//
-//    size_t readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
-//
-//    while (readed)
-//    {
-//        data.insert(data.end(), &buffer[0], &buffer[readed]);
-//
-//        readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
-//    }
-//
-//    ProcessClient(args->server->clients[bev], args->server);
+    char buf[1024] = "";
+
+    socklen_t size = sizeof(struct sockaddr);
+
+    struct sockaddr_in client_addr = { 0 };
+
+    int len = recvfrom((SOCKET)sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
+
+    if (len < 0)
+    {
+        LOGERROR("Server recv message error");
+        return;
+    }
+
+    if (len == 0)
+    {
+        LOGERROR("Connetioin closed");
+    }
+
+#ifdef WIN32
+#pragma warning(push, 0)
+#endif
+
+    LOGWRITEF("Connection port = %d", client_addr.sin_port);
+    LOGWRITEF("Connetion IP = %s", inet_ntoa(client_addr.sin_addr));
+    LOGWRITEF("Server recv message len = %d", len);
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif
+
+    sendto((SOCKET)sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, size);
 }
 
 

@@ -32,8 +32,8 @@ private:
 
     struct CallbackArgs
     {
-        ServerUDP  *server;
-        event_base *base;
+        ServerUDP       *server;
+        event_base      *base;
     };
 
     // Вызывается при новом соединении
