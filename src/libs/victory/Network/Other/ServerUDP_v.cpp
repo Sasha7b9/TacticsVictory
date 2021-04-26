@@ -20,11 +20,6 @@ void ServerUDP::Run(uint16 port)
 {
     event_set_log_callback(CallbackLog);
 
-    struct sockaddr_in sin;
-    sin.sin_family = AF_INET;
-    sin.sin_addr.s_addr = 0;
-    sin.sin_port = htons(port);
-
 #ifdef WIN32
     WSADATA wsa_data;
     if (WSAStartup(0x0201, &wsa_data) != 0)
@@ -36,7 +31,7 @@ void ServerUDP::Run(uint16 port)
 
     struct event_base *base = event_base_new();
 
-    evutil_socket_t listener = (evutil_socket_t)socket(AF_INET, SOCK_STREAM, 0);
+    evutil_socket_t listener = (evutil_socket_t)socket(AF_INET, SOCK_DGRAM, 0);
 
     evutil_make_socket_nonblocking(listener);
 
@@ -49,6 +44,12 @@ void ServerUDP::Run(uint16 port)
 #endif
 
 #ifdef WIN32
+
+    struct sockaddr_in sin;
+    sin.sin_family = AF_INET;
+    sin.sin_addr.s_addr = 0;
+    sin.sin_port = htons(port);
+
     if (bind((SOCKET)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
 #else
     if (bind((int)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
