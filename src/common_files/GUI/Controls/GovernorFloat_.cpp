@@ -353,7 +353,11 @@ void GovernorFloat::GetOrderAndMantiss(float value, int *order, int *mantiss)
 {
     static const int SIZE_BUFFER = 30;
     char buffer[SIZE_BUFFER];
+#ifdef WIN32
+    sprintf_s(buffer, SIZE_BUFFER, "%e", value);
+#else
     sprintf(buffer, "%e", value);
+#endif
     int first = 0;
     for(int i = 0; i < SIZE_BUFFER; i++)
     {

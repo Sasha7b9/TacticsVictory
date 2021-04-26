@@ -20,4 +20,6 @@ namespace SU
     bool BeginWith(pchar string, pchar symbols);
 
     bool VerifyOnMask(pchar string, pchar mask);
+
+
 }
