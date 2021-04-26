@@ -43,12 +43,12 @@ void ServerUDP::Run(uint16 port)
     }
 #endif
 
-#ifdef WIN32
-
     struct sockaddr_in sin;
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = 0;
     sin.sin_port = htons(port);
+
+#ifdef WIN32
 
     if (bind((SOCKET)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
 #else
