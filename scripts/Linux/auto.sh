@@ -9,7 +9,7 @@ do
     then
         rm fail.log
         time ./assembly.sh build all 2>> fail.log
-        FILENAME=build.log
+        FILENAME=fail.log
         FILESIZE=$(stat -c%s "$FILENAME")
         if [ $FILESIZE != "0" ]
         then
