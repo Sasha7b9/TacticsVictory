@@ -115,7 +115,11 @@ void ServerUDP::CallbackRead(evutil_socket_t sock, short /*event*/, void *)
 
     struct sockaddr_in client_addr = { 0 };
 
+#ifdef WIN32
     int len = recvfrom((SOCKET)sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
+#else
+    int len = recvfrom(sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
+#endif
 
     if (len < 0)
     {
