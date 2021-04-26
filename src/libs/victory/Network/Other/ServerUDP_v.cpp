@@ -31,15 +31,15 @@ void ServerUDP::Run(uint16 port)
 
     struct event_base *base = event_base_new();
 
-    evutil_socket_t listener = (evutil_socket_t)socket(AF_INET, SOCK_DGRAM, 0);
+    evutil_socket_t sock = (evutil_socket_t)socket(AF_INET, SOCK_DGRAM, 0);
 
-    evutil_make_socket_nonblocking(listener);
+    evutil_make_socket_nonblocking(sock);
 
 #ifdef WIN32
 #else
     {
         int one = 1;
-        setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
+        setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
     }
 #endif
 
@@ -50,9 +50,9 @@ void ServerUDP::Run(uint16 port)
 
 #ifdef WIN32
 
-    if (bind((SOCKET)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+    if (bind((SOCKET)sock, (struct sockaddr *)&sin, sizeof(sin)) < 0)
 #else
-    if (bind((int)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+    if (bind((int)sock, (struct sockaddr *)&sin, sizeof(sin)) < 0)
 #endif
     {
         LOGERROR("Can not bind to port");
@@ -63,9 +63,9 @@ void ServerUDP::Run(uint16 port)
     }
 
 #ifdef WIN32
-    if (listen((SOCKET)listener, 100) < 0)
+    if (listen((SOCKET)sock, 100) < 0)
 #else
-    if (listen((int)listener, 100) < 0)
+    if (listen((int)sock, 100) < 0)
 #endif
     {
         LOGERROR("Can not call listen()");
@@ -73,7 +73,7 @@ void ServerUDP::Run(uint16 port)
 
     CallbackArgs args = { this, base };
 
-    struct event *listener_event = event_new(base, listener, EV_READ | EV_PERSIST, CallbackAccept, &args);
+    struct event *listener_event = event_new(base, sock, EV_READ | EV_PERSIST, CallbackAccept, &args);
 
     event_add(listener_event, NULL);
 
