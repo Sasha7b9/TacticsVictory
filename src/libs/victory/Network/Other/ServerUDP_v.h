@@ -37,9 +37,7 @@ private:
     };
 
     // Вызывается при новом соединении
-    static void CallbackRead(struct bufferevent *, void *arg);
-    static void CallbackWrite(struct bufferevent *, void *arg);
-    static void CallbackAccept(evutil_socket_t listener, short event, void *arg);
+    static void CallbackRead(evutil_socket_t listener, short event, void *arg);
     static void CallbackError(struct bufferevent *bev, short what, void *ctx);
     static void CallbackLog(int, const char *);
 

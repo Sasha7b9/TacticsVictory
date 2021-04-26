@@ -64,7 +64,7 @@ void ServerUDP::Run(uint16 port)
 
     CallbackArgs args = { this, base };
 
-    struct event *evnt = event_new(base, sock, EV_READ | EV_PERSIST, CallbackAccept, &args);
+    struct event *evnt = event_new(base, sock, EV_READ | EV_PERSIST, CallbackRead, &args);
 
     event_add(evnt, NULL);
 
@@ -75,53 +75,6 @@ void ServerUDP::Run(uint16 port)
 void ServerUDP::CallbackLog(int, const char *message)
 {
     LOGERROR(message);
-}
-
-
-void ServerUDP::CallbackAccept(evutil_socket_t listener, short, void *_args)
-{
-    CallbackArgs *args = (CallbackArgs *)_args;
-
-    struct event_base *base = args->base;
-
-    struct sockaddr_storage ss;
-    socklen_t slen = sizeof(ss);
-
-#ifdef WIN32
-    int fd = (int)accept((SOCKET)listener, (struct sockaddr *)&ss, &slen);
-#else
-    int fd = (int)accept((int)listener, (struct sockaddr *)&ss, &slen);
-#endif
-
-    sockaddr addr;
-    socklen_t len = sizeof(addr);
-
-#ifdef WIN32
-    getsockname((SOCKET)fd, &addr, &len);
-#else
-    getsockname(fd, &addr, &len);
-#endif
-
-    if (fd < 0)
-    {
-        LOGERROR("Error accepted");
-    }
-    else
-    {
-        evutil_make_socket_nonblocking(fd);
-        struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
-        bufferevent_setcb(bev, CallbackRead, CallbackWrite, CallbackError, args);
-//        bufferevent_setwatermark(bev, EV_READ | EV_WRITE, 0, 2);
-        bufferevent_enable(bev, EV_READ | EV_WRITE);
-
-        ClientInfo info;
-        info.address.SetHostIP(&ss);
-        info.benv = bev;
-
-        LOGWRITEF("Client %s connected", info.address.ToStringFull().c_str());
-
-        args->server->clients[bev] = info;
-    }
 }
 
 
@@ -154,31 +107,26 @@ void ServerUDP::SendAnswer(void *bev, uint id, pchar message, int value)
 }
 
 
-void ServerUDP::CallbackRead(struct bufferevent *bev, void *_args)
+void ServerUDP::CallbackRead(evutil_socket_t listener, short event, void *_arg)
 {
-    CallbackArgs *args = (CallbackArgs *)_args;
-
-    std::vector<uint8> &data = args->server->clients[bev].bindata;
-
-#define SIZE_CHUNK 1024
-
-    uint8 buffer[SIZE_CHUNK];
-
-    size_t readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
-
-    while (readed)
-    {
-        data.insert(data.end(), &buffer[0], &buffer[readed]);
-
-        readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
-    }
-
-    ProcessClient(args->server->clients[bev], args->server);
-}
-
-
-void ServerUDP::CallbackWrite(struct bufferevent *, void *)
-{
+//    CallbackArgs *args = (CallbackArgs *)_args;
+//
+//    std::vector<uint8> &data = args->server->clients[bev].bindata;
+//
+//#define SIZE_CHUNK 1024
+//
+//    uint8 buffer[SIZE_CHUNK];
+//
+//    size_t readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
+//
+//    while (readed)
+//    {
+//        data.insert(data.end(), &buffer[0], &buffer[readed]);
+//
+//        readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
+//    }
+//
+//    ProcessClient(args->server->clients[bev], args->server);
 }
 
 
