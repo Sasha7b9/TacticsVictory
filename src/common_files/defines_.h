@@ -6,7 +6,7 @@
 #define VAR_OBJECT_TYPE_NAME    "Object type name"
 
 #define VAR_NODE_IS_UNIT        "isUnit"
-#define VAR_NODE_IS_FLYING      "isFlaying"
+#define VAR_NODE_IS_FLYING      "isFlay ing"
 #define VAR_NODE_IS_BUILDING    "isBuilding"
 
 #define NAME_NODE_CAMERA_TARGET "CameraTarget"
