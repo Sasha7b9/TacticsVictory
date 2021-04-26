@@ -62,15 +62,6 @@ void ServerUDP::Run(uint16 port)
         LOGWRITEF("Bind to port %d is Ok! Wait connections ...", port);
     }
 
-#ifdef WIN32
-    if (listen((SOCKET)sock, 100) < 0)
-#else
-    if (listen((int)sock, 100) < 0)
-#endif
-    {
-        LOGERROR("Can not call listen()");
-    }
-
     CallbackArgs args = { this, base };
 
     struct event *listener_event = event_new(base, sock, EV_READ | EV_PERSIST, CallbackAccept, &args);
