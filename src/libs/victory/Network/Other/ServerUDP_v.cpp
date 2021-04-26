@@ -144,7 +144,11 @@ void ServerUDP::CallbackRead(evutil_socket_t sock, short /*event*/, void *)
 #pragma warning(pop)
 #endif
 
+#ifdef WIN32
     sendto((SOCKET)sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, size);
+#else
+    sendto(sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, size);
+#endif
 }
 
 
