@@ -7,13 +7,19 @@ do
     FILESIZE=$(stat -c%s "$FILENAME")
     if [ $FILESIZE != "20" ]
     then
-        rm build.log
-        time ./assembly.sh build all 2>> build.log
+        rm fail.log
+        time ./assembly.sh build all 2>> fail.log
         FILENAME=build.log
         FILESIZE=$(stat -c%s "$FILENAME")
         if [ $FILESIZE != "0" ]
         then
-            ./send.sh
+            ./send_fail.sh
+        fi
+        rm good.log
+        if [ $FILESIZE == "0" ]
+        then
+            time ./assembly.sh build all > good.log
+            ./send_good.sh
         fi
     fi
     sleep 1
