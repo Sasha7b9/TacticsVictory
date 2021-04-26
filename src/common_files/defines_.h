@@ -1,3 +1,4 @@
+
 // 2021/02/23 22:42:59 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
