@@ -12,6 +12,6 @@ public:
 
 private:
 
-    SOCKET sock_fd = 0;
+    socket_t sock_fd = 0;
     struct sockaddr_in addr;
 };
