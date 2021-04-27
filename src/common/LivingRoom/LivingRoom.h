@@ -13,11 +13,9 @@ public:
 
 private:
 
-    int RunRemoteServer();
-
-    int MainCycle();
-
     static void OnConnect();
+
+    static int MainCycle();
 
     static void OnDisconnect();
 };

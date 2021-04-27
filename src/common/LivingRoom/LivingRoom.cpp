@@ -4,6 +4,7 @@
 #include "FileSystem/ConfigurationFile_v.h"
 #include "Network/Other/NetworkTypes_v.h"
 #include "Network/Other/ConnectorTCP_v.h"
+#include "Utils/GlobalFunctions_.h"
 #include <sstream>
 
 
@@ -15,7 +16,7 @@ int LivingRoom::Run(pchar ip)
     (
         [](pchar file, int line)
         {
-            LOGWRITEF("Can not connect to master server. Connect to remote from %s %d", file, line);
+            LOGWRITEF("Can not connect to master server from %s %d", file, line);
             TheConnMaster.Connect();
         },
         OnConnect,
@@ -25,6 +26,17 @@ int LivingRoom::Run(pchar ip)
     TheConnMaster.Connect();
 
     return MainCycle();
+}
+
+
+int LivingRoom::MainCycle()
+{
+    while (1)
+    {
+        GF::DelayMS(50);
+    }
+
+    return 0;
 }
 
 
@@ -62,17 +74,6 @@ void LivingRoom::OnDisconnect()
 {
     TheConnMaster.Connect();
     LOGWRITE("The master server is down. Attempting to connect");
-}
-
-
-int LivingRoom::MainCycle()
-{
-    while (true)
-    {
-        TheConnMaster.Update();
-    }
-
-    return 0;
 }
 
 
