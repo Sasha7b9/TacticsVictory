@@ -8,7 +8,7 @@ do
     if [ $FILESIZE != "20" ]
     then
 
-        time ./assembly.sh build all 2>> fail.build
+        time ./assembly.sh build all 2> fail.build
         FILENAME=fail.build
         FILESIZE=$(stat -c%s "$FILENAME")
 
