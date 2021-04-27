@@ -134,7 +134,7 @@ bool BaseConnectorTCP::IsConnected() const
 }
 
 
-static void ThreadConnectTCP(BaseConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
+void BaseConnectorTCP::ThreadConnect(BaseConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state)
 {
     mutex->lock();
 
@@ -156,24 +156,7 @@ static void ThreadConnectTCP(BaseConnectorTCP *conn_out, pchar host, uint16 port
 }
 
 
-void ConnectorTCP::Destroy()
-{
-    destroy = true;
-
-    mutex.lock();           // Ожидаем завершения ThreadConnect
-    mutex.unlock();
-
-    connector.Release();
-}
-
-
-bool ConnectorTCP::IsConnected()
-{
-    return (state == State::InConnection);
-}
-
-
-static void ThreadUpdateTCP(ConnectorTCP *connector)
+void ConnectorTCP::ThreadUpdate(ConnectorTCP *connector)
 {
     LOG_FUNC_ENTER();
 
@@ -189,6 +172,23 @@ static void ThreadUpdateTCP(ConnectorTCP *connector)
     connector->thread_is_stopped = true;
 
     LOGWRITE("Enter leave");
+}
+
+
+void ConnectorTCP::Destroy()
+{
+    destroy = true;
+
+    mutex.lock();           // Ожидаем завершения ThreadConnect
+    mutex.unlock();
+
+    connector.Release();
+}
+
+
+bool ConnectorTCP::IsConnected()
+{
+    return (state == State::InConnection);
 }
 
 
@@ -214,7 +214,7 @@ void ConnectorTCP::RunCycle()
 
     if (thread_update == nullptr)
     {
-        thread_update = std::make_unique<std::thread>(ThreadUpdateTCP, this);
+        thread_update = std::make_unique<std::thread>(ConnectorTCP::ThreadUpdate, this);
     }
 
     thread_need_stopped = true;
@@ -319,7 +319,7 @@ void ConnectorTCP::Update()
                 {
                     mutex.unlock();
                     state = State::AttemptConnection;
-                    std::thread thread(ThreadConnectTCP, &connector, std::move(host.c_str()), port, &mutex, (uint8 *)&state);
+                    std::thread thread(BaseConnectorTCP::ThreadConnect, &connector, std::move(host.c_str()), port, &mutex, (uint8 *)&state);
                     thread.detach();
                 }
             }

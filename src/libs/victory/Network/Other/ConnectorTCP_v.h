@@ -34,6 +34,8 @@ public:
     // Если size == 0, то ничего не читает, а возвращает количество доступных для чтения байт
     ssize_t Receive(void *data, uint size);
 
+    static void ThreadConnect(BaseConnectorTCP *conn_out, pchar host, uint16 port, std::mutex *mutex, uint8 *state);
+
 private:
 
     std::unique_ptr<sockpp::tcp_connector>  connection;
@@ -96,6 +98,8 @@ public:
 
     bool thread_need_stopped = false;       // true, если поток нуждается в запуске
     bool thread_is_stopped = true;          // true, если поток остановлен
+
+    static void ThreadUpdate(ConnectorTCP *connector);
 
 private:
 
