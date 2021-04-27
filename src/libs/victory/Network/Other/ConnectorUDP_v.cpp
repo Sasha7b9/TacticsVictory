@@ -5,18 +5,17 @@
 
 void ConnectorUDP::AcceptServer(pchar _ip, uint16 _port)
 {
-    static sockpp::socket_initializer sock_init;
+    sock_fd = socket(AF_INET, SOCK_DGRAM, 0);
 
-    ip = _ip;
-    port = _port;
-
-    address = sockpp::inet_address(ip, port);
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(_port);
+    addr.sin_addr.S_un.S_addr = inet_addr(_ip);
 }
 
 
 void ConnectorUDP::SendMessage(pchar message)
 {
-    ssize_t num_bytes = sock.send_to(message, address);
+    int num_bytes = sendto(sock_fd, message, std::strlen(message), 0, (struct sockaddr *)&addr, sizeof(addr));
 
-    LOGWRITEF("Sending %d bytes from message %s", num_bytes, message);
+    LOGWRITEF("Sended %d bytes", num_bytes);
 }

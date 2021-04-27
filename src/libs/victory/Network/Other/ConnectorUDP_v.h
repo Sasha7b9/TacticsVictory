@@ -12,9 +12,6 @@ public:
 
 private:
 
-    pchar ip = "";
-    uint16 port = 0;
-
-    sockpp::udp_socket sock;
-    sockpp::inet_address address;
+    SOCKET sock_fd = 0;
+    struct sockaddr_in addr;
 };
