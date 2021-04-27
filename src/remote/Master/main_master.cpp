@@ -1,5 +1,5 @@
 ﻿// Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#incl u de "stdafx.h"
+#include "stdafx.h"
 #include "FileSystem/ConfigurationFile_v.h"
 #include "Network/Other/ServerTCP_v.h"
 #include <locale>
