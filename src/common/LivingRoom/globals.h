@@ -8,5 +8,5 @@
 
 extern ConfigurationFile  TheSettings;
 extern LivingRoom         TheLivingRoom;
-extern ConnectorTCP       TheConnMaster;    // Для связи с мастер-сервером
-extern ServerUDP          TheServer;        // Для обратной связи с клиентами
+extern ConnectorTCP       TheConnMaster;            // Для связи с мастер-сервером
+extern ServerUDP          TheBroadcastServerUDP;    // Для обратной связи с клиентами

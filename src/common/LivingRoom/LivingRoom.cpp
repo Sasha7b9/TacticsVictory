@@ -58,12 +58,11 @@ void LivingRoom::OnConnect()
         {
             int delta = *((int *)data);
 
-            LOGWRITEF("Number port for incoming broadcast connections %d",
-                TheSettings.GetInt("master_server", "port") + delta);
+            uint16 port_udp = (uint16)(TheSettings.GetInt("master_server", "port") + delta);
 
-//            static SocketConfig config;
-//
-//            TheServer.Init(config, (int)std::thread::hardware_concurrency());
+            LOGWRITEF("Number port for incoming broadcast connections %d", port_udp);
+
+            TheBroadcastServerUDP.Run(port_udp);
         }
     };
         

@@ -59,7 +59,7 @@ void ServerUDP::Run(uint16 port)
     }
     else
     {
-        LOGWRITEF("Bind to port %d is Ok! Wait connections ...", port);
+        LOGWRITEF("Bind to port %d for broadcast messages is Ok! Wait messages ...", port);
     }
 
     CallbackArgs args = { this, base };
