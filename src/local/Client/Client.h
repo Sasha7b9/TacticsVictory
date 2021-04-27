@@ -35,9 +35,6 @@ private:
     void CreateGUI();
     void InitMouse();
 
-    // Попытка подключения к локальному мастер-серверу
-    void TryConnectToLocalMaster();
-
     void HandlerUpdate(StringHash, VariantMap &);
     void HandlerPostRenderUpdate(StringHash, VariantMap &);
 

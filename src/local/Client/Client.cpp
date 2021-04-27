@@ -110,39 +110,7 @@ void Client::Start()
 
     TheInput->SetMouseMode(MouseMode::MM_FREE);
 
-    TryConnectToLocalMaster();
-}
-
-
-void Client::TryConnectToLocalMaster()
-{
-    TheMaster.Init("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
-
-    TheMaster.SetCallbacks
-    (
-        []()
-        {
-            LOGWRITE("Can not connect to local master server. Connect to remote");
-            TheClient->ParseArguments();
-        },
-        []()
-        {
-            TheGUI->AppendInfo("Connection to local master server established");
-            LOGWRITE("Connection to local master server established");
-            TheMaster.SetTasks();
-        },
-        []()
-        {
-            TheGUI->AppendWarning("The master server is down. Attempting to connect");
-            TheMaster.Connect();
-            LOGWRITE("The master server is down. Attempting to connect");
-            TheMenu->pageFindServer->SetServersInfo("");
-        }
-    );
-
-    LOGWRITE("Wait server for connection");
-
-    TheMaster.Connect();
+    ParseArguments();
 }
 
 
