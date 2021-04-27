@@ -43,6 +43,7 @@ typedef void (*pFuncVV)();
 typedef uint (*pFuncUV)();
 typedef void (*pFuncVpV)(void *);
 typedef void (*pFuncpCpVU)(pchar, void *, uint);
+typedef void (*pFuncpCI)(pchar, int);
 typedef void (*pFuncVUpV)(uint, void *);
 typedef void (*pFuncVI)(int);
 typedef float(*pFuncFV)();

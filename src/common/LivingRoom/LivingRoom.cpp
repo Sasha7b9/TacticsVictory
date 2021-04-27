@@ -31,7 +31,9 @@ int LivingRoom::Run(pchar ip)
 void LivingRoom::OnConnect()
 {
     LOGWRITE("Connection to master server established");
+
     TheLivingRoom.SendNameToMasterServer();
+
     TheConnMaster.SetTasks();
 
     static TaskMasterServer taskPort =
