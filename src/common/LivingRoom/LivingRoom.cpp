@@ -11,18 +11,18 @@ int LivingRoom::Run(pchar ip)
 {
     TheConnMaster.Init(ip, (uint16)TheSettings.GetInt("master_server", "port"));
 
-    TheMaster.SetCallbacks
+    TheConnMaster.SetCallbacks
     (
         []()
         {
             LOGWRITE("Can not connect to master server. Connect to remote");
-            TheMaster.Connect();
+            TheConnMaster.Connect();
         },
         OnConnect,
         OnDisconnect
     );
 
-    TheMaster.Connect();
+    TheConnMaster.Connect();
 
     return MainCycle();
 }
@@ -32,13 +32,13 @@ void LivingRoom::OnConnect()
 {
     LOGWRITE("Connection to master server established");
     TheLivingRoom.SendNameToMasterServer();
-    TheMaster.SetTasks();
+    TheConnMaster.SetTasks();
 
     static TaskMasterServer taskPort =
     {
         []()
         {
-            return TheMaster.SendRequest(MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP);
+            return TheConnMaster.SendRequest(MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP);
         },
         [](pchar, void *data, uint)
         {
@@ -52,13 +52,13 @@ void LivingRoom::OnConnect()
         }
     };
         
-    TheMaster.RunTask(&taskPort);
+    TheConnMaster.RunTask(&taskPort);
 }
 
 
 void LivingRoom::OnDisconnect()
 {
-    TheMaster.Connect();
+    TheConnMaster.Connect();
     LOGWRITE("The master server is down. Attempting to connect");
 }
 
@@ -67,7 +67,7 @@ int LivingRoom::MainCycle()
 {
     while (true)
     {
-        TheMaster.Update();
+        TheConnMaster.Update();
     }
 
     return 0;
@@ -84,5 +84,5 @@ void LivingRoom::SendNameToMasterServer()
 
     stream << "LivingRoom " << std::rand();
 
-    TheMaster.SendRequest(MSG_NTW_SET_NAME_LIVINGROOM, stream.str().c_str());
+    TheConnMaster.SendRequest(MSG_NTW_SET_NAME_LIVINGROOM, stream.str().c_str());
 }

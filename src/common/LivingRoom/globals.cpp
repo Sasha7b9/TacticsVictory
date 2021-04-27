@@ -4,5 +4,5 @@
 
 ConfigurationFile TheSettings;
 LivingRoom        TheLivingRoom;
-ConnectorTCP      TheMaster;
+ConnectorTCP      TheConnMaster;
 ServerUDP         TheServer;
