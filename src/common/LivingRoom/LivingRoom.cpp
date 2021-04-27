@@ -9,7 +9,7 @@
 
 int LivingRoom::Run(pchar ip)
 {
-    TheMaster.Init(ip, (uint16)TheSettings.GetInt("master_server", "port"));
+    TheConnMaster.Init(ip, (uint16)TheSettings.GetInt("master_server", "port"));
 
     TheMaster.SetCallbacks
     (
