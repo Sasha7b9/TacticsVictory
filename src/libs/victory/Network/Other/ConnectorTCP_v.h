@@ -56,7 +56,8 @@ public:
         port = _port;
     };
 
-    void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection);
+//    void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection);
+    void SetCallbacks(pFuncpCI fail, pFuncVV connection, pFuncVV disconnection);
 
     void RunCycle();
 
@@ -114,7 +115,8 @@ private:
 
     bool destroy = false;
     std::mutex  mutex;                      // Данный mutex будет захвачен, пока сервер находится в процессе соединения
-    pFuncVV funcFailConnection = nullptr;   // Вызывается в случае неуспешной попытки соединения
+
+    pFuncpCI funcFailConnection = nullptr;  // Вызывается в случае неуспешной попытки соединения
     pFuncVV funcConnection     = nullptr;   // Вызывается в случае успешной попытки соединения
     pFuncVV funcDisconnection  = nullptr;   // Вызывается при потере связи с сервером
 

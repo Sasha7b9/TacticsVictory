@@ -13,9 +13,9 @@ int LivingRoom::Run(pchar ip)
 
     TheConnMaster.SetCallbacks
     (
-        []()
+        [](pchar file, int line)
         {
-            LOGWRITE("Can not connect to master server. Connect to remote");
+            LOGWRITEF("Can not connect to master server. Connect to remote from %s %d", file, line);
             TheConnMaster.Connect();
         },
         OnConnect,

@@ -34,5 +34,5 @@ TerrainT        *TheTerrain      = nullptr;
 WindowVariables *TheWindowVars   = nullptr;
 
 ConfigurationFile TheSettings;
-ConnectorTCP      TheConnectorMaster;
+ConnectorTCP      TheConnMaster;
 ConnectorUDP      TheLivingRoomUDP;

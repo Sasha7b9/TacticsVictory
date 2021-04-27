@@ -12,7 +12,7 @@ static TaskMasterServer taskPing = {
     {
         int64 now = GF::Timer::TimeMS();
 
-        return TheConnectorMaster.SendRequest(MSG_NTW_PING, &now, 4);
+        return TheConnMaster.SendRequest(MSG_NTW_PING, &now, 4);
     },
     [](pchar, void *data, uint)
     {
@@ -28,7 +28,7 @@ static TaskMasterServer taskPing = {
 static TaskMasterServer taskGetInfoLivingRooms = {
     []()
     {
-        return TheConnectorMaster.SendRequest(MSG_NTW_INFO_LIVINGROOM);
+        return TheConnMaster.SendRequest(MSG_NTW_INFO_LIVINGROOM);
     },
     [](pchar, void *data, uint)
     {
@@ -39,6 +39,6 @@ static TaskMasterServer taskGetInfoLivingRooms = {
 
 void ConnectorTCP::SetTasks()
 {
-    TheConnectorMaster.SetTask(1000, &taskPing);
-    TheConnectorMaster.SetTask(1000, &taskGetInfoLivingRooms);
+    TheConnMaster.SetTask(1000, &taskPing);
+    TheConnMaster.SetTask(1000, &taskGetInfoLivingRooms);
 }
