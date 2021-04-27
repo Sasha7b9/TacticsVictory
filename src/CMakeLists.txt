@@ -69,6 +69,6 @@ add_subdirectory_with_folder("common" common/Uploader)
 add_subdirectory_with_folder("remote" remote/Master)
 add_subdirectory_with_folder("remote" remote/DataBase)
 
-add_ subdirectory_with_folder("libs" libs/victory)
+add_subdirectory_with_folder("libs" libs/victory)
 
 # add_subdirectory_with_folder("experimental" experimental/test_libevent)
