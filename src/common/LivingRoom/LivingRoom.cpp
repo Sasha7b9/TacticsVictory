@@ -14,9 +14,9 @@ int LivingRoom::Run(pchar ip)
 
     TheConnMaster.SetCallbacks
     (
-        [](pchar file, int line)
+        []()
         {
-            LOGWRITEF("Can not connect to master server from %s %d", file, line);
+            LOGWRITE("Can not connect to master server");
             TheConnMaster.Connect();
         },
         OnConnect,
@@ -58,7 +58,8 @@ void LivingRoom::OnConnect()
         {
             int delta = *((int *)data);
 
-            LOGWRITEF("Number port for connection %d", TheSettings.GetInt("master_server", "port") + delta);
+            LOGWRITEF("Number port for incoming broadcast connections %d",
+                TheSettings.GetInt("master_server", "port") + delta);
 
 //            static SocketConfig config;
 //

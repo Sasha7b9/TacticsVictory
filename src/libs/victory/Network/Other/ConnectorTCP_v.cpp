@@ -185,7 +185,7 @@ bool ConnectorTCP::IsConnected()
 }
 
 
-void ConnectorTCP::SetCallbacks(pFuncpCI fail, pFuncVV connection, pFuncVV disconnection)
+void ConnectorTCP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
 {
     funcFailConnection = fail;
     funcConnection = connection;
@@ -319,7 +319,7 @@ void ConnectorTCP::Update()
 
     case State::EventFailConnection:
         state = State::Idle;
-        funcFailConnection(__FILE__, __LINE__);
+        funcFailConnection();
         break;
 
     case State::InConnection:

@@ -124,7 +124,7 @@ void Client::ParseArguments()
 
         TheConnMaster.SetCallbacks
         (
-            [](pchar, int)
+            []()
             {
                 LOGWRITE("Can not connect to master server");
                 TheGUI->AppendWarning("Can't connect to master server");
