@@ -182,6 +182,13 @@ void ConnectorTCP::Destroy()
     mutex.lock();           // Ожидаем завершения ThreadConnect
     mutex.unlock();
 
+    thread_need_stopped = true;
+
+    while (!thread_is_stopped)
+    {
+
+    }
+
     connector.Release();
 }
 
