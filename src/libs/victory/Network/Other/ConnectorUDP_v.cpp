@@ -3,15 +3,20 @@
 #include "Network/Other/ConnectorUDP_v.h"
 
 
-void ConnectorUDP::AcceptServer(pchar ip, uint16 port)
+void ConnectorUDP::AcceptServer(pchar _ip, uint16 _port)
 {
     static sockpp::socket_initializer sock_init;
 
-    sockpp::udp_socket sock;
+    ip = _ip;
+    port = _port;
+
+    address = sockpp::inet_address(ip, port);
 }
 
 
 void ConnectorUDP::SendMessage(pchar message)
 {
+    ssize_t num_bytes = sock.send_to(message, address);
 
+    LOGWRITEF("Sending %d bytes from message %s", num_bytes, message);
 }

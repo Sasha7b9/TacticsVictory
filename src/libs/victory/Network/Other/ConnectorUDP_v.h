@@ -11,4 +11,10 @@ public:
     void SendMessage(pchar message);
 
 private:
+
+    pchar ip = "";
+    uint16 port = 0;
+
+    sockpp::udp_socket sock;
+    sockpp::inet_address address;
 };
