@@ -9,50 +9,18 @@
 
 int LivingRoom::Run(pchar ip)
 {
-    remoteMasterIP = ip;
-
-    TheMaster.Init("127.0.0.1", (uint16)TheSettings.GetInt("master_server", "port"));
+    TheMaster.Init(ip, (uint16)TheSettings.GetInt("master_server", "port"));
 
     TheMaster.SetCallbacks
     (
         []()
         {
-            LOGWRITE("Can not connect to local master server. Connect to remote");
-            TheLivingRoom.RunRemoteServer();
-        },
-        OnConnect,
-        OnDisconnect
-    );
-
-    LOGWRITE("Wait server for connection");
-
-    TheMaster.Connect();
-
-    return MainCycle();
-}
-
-
-int LivingRoom::RunRemoteServer()
-{
-    if (!remoteMasterIP)
-    {
-        LOGERRORF("Not specified address master server");
-        return -1;
-    }
-
-    TheMaster.Init(remoteMasterIP, (uint16)TheSettings.GetInt("master_server", "port"));
-
-    TheMaster.SetCallbacks
-    (
-        []()
-        {
+            LOGWRITE("Can not connect to master server. Connect to remote");
             TheMaster.Connect();
         },
         OnConnect,
         OnDisconnect
     );
-
-    LOGWRITE("Wait server for connection");
 
     TheMaster.Connect();
 

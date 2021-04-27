@@ -13,8 +13,6 @@ public:
 
 private:
 
-    pchar remoteMasterIP = nullptr;     // Адрес удалённого мастер-сервера
-
     int RunRemoteServer();
 
     int MainCycle();
