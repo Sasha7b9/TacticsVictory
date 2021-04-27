@@ -7,9 +7,6 @@
 #include <thread>
 
 
-static sockpp::socket_initializer sock_init;
-
-
 BaseConnectorTCP::~BaseConnectorTCP()
 {
     Release();
@@ -18,7 +15,7 @@ BaseConnectorTCP::~BaseConnectorTCP()
 
 bool BaseConnectorTCP::Connect(const std::string &host, uint16 port)
 {
-    //    static int counter = 0;
+    static sockpp::socket_initializer sock_init;
 
     if (!connection)
     {

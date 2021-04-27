@@ -5,5 +5,10 @@
 class ConnectorUDP
 {
 public:
+
+    void AcceptServer(pchar ip, uint16 port);
+
+    void SendMessage(pchar message);
+
 private:
 };

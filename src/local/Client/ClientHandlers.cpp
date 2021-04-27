@@ -6,7 +6,7 @@
 
 void Client::HandlerUpdate(StringHash, VariantMap &)
 {
-
+    TheLivingRoomUDP.SendMessage("Test message");
 }
 
 void Client::HandlerPostRenderUpdate(StringHash, VariantMap &)

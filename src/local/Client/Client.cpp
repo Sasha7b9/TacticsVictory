@@ -8,6 +8,7 @@
 #include "GUI/Menu/PageFindServer.h"
 #include "Input/Mouse_v.h"
 #include "Network/Other/ConnectorTCP_v.h"
+#include "Network/Other/ConnectorUDP_v.h"
 #include "Network/Other/NetworkTypes_v.h"
 #include "Scene/Cameras/Camera_.h"
 #include "Utils/GlobalFunctions_.h"
@@ -111,6 +112,8 @@ void Client::Start()
     TheInput->SetMouseMode(MouseMode::MM_FREE);
 
     ParseArguments();
+
+    TheLivingRoomUDP.AcceptServer("127.0.0.1", 40001);
 }
 
 
