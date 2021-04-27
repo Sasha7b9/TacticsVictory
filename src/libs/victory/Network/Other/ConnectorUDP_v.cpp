@@ -12,7 +12,11 @@ void ConnectorUDP::AcceptServer(pchar _ip, uint16 _port)
 #endif
     addr.sin_family = AF_INET;
     addr.sin_port = htons(_port);
+#ifdef WIN32
     addr.sin_addr.S_un.S_addr = inet_addr(_ip);
+#else
+    addr.sin_addr.s_addr = inet_addr(_ip);
+#endif
 #ifdef WIN32
 #pragma warning(pop)
 #endif
