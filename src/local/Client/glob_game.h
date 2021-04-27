@@ -19,7 +19,7 @@ class PageStart;
 class WindowVariables;
 
 extern ConfigurationFile TheSettings;
-extern ConnectorTCP      TheMaster;
+extern ConnectorTCP      TheConnectorMaster;
 extern ConnectorUDP      TheLivingRoomUDP;
 
 extern CameraT         *TheCamera;

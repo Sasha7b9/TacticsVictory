@@ -120,26 +120,26 @@ void Client::ParseArguments()
 
     if (arguments.Size() != 0)
     {
-        TheMaster.Init(arguments[0].CString(), (uint16)TheSettings.GetInt("master_server", "port"));
+        TheConnectorMaster.Init(arguments[0].CString(), (uint16)TheSettings.GetInt("master_server", "port"));
 
-        TheMaster.SetCallbacks
+        TheConnectorMaster.SetCallbacks
         (
             []()
             {
                 TheGUI->AppendWarning("Can't connect to master server");
-                TheMaster.Connect();
+                TheConnectorMaster.Connect();
             },
             []()
             {
                 TheGUI->AppendInfo("Connection to master server established");
                 LOGWRITE("Connection to master server established");
 
-                TheMaster.SetTasks();
+                TheConnectorMaster.SetTasks();
             },
             []()
             {
                 TheGUI->AppendWarning("The master server is down. Attempting to connect");
-                TheMaster.Connect();
+                TheConnectorMaster.Connect();
                 LOGWRITE("The master server is down. Attempting to connect");
                 TheMenu->pageFindServer->SetServersInfo("");
             }
@@ -147,7 +147,7 @@ void Client::ParseArguments()
 
         LOGWRITE("Wait server for connection");
 
-        TheMaster.Connect();
+        TheConnectorMaster.Connect();
     }
     else
     {
@@ -161,7 +161,7 @@ void Client::Stop()
 {
     TheSettings.Unload();
 
-    TheMaster.Destroy();
+    TheConnectorMaster.Destroy();
 
     engine_->DumpResources(true);
     engine_->DumpProfiler();
