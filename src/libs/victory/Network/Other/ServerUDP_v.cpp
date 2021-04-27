@@ -121,6 +121,11 @@ void ServerUDP::CallbackRead(evutil_socket_t sock, short /*event*/, void *)
     int len = recvfrom(sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
 #endif
 
+    for (int i = 0; i < len; i++)
+    {
+        LOGWRITEF("%c", buf[i]);
+    }
+
     if (len < 0)
     {
         LOGERROR("Server recv message error");
