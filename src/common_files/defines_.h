@@ -1,5 +1,5 @@
 // 2021/02/23 22:42:59 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#pr agma once
+#pragma once
 
 // В этой переменой ноды будет храниться имя типа игрового объекта
 #define VAR_OBJECT_TYPE_NAME    "Object type name"
