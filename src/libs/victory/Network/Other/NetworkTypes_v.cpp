@@ -133,3 +133,18 @@ bool TaskMasterServer::ExistCompleted(std::vector<TaskMasterServer *> &tasks)
 
     return false;
 }
+
+
+sockaddr *SockAddrIn::GetAddr()
+{
+    addr.sin_family = sin_family;
+    addr.sin_port = sin_port;
+
+#ifdef WIN32
+    addr.sin_addr.S_un.S_addr = sin_addr;
+#else
+    addr.sin_addr.s_addr = sin_addr;
+#endif
+
+    return (struct sockaddr *)&addr;
+}

@@ -59,3 +59,15 @@ struct ClientInfo
     // Перемещает байты запроса из received в data. При этом из искоходного вектора перемещённые данные удаляются
     static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data);
 };
+
+
+struct SockAddrIn
+{
+    uint16 sin_family = 0;
+    uint16 sin_port = 0;
+    unsigned long sin_addr = 0;
+
+    sockaddr *GetAddr();
+
+    sockaddr_in addr;
+};
