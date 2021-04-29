@@ -68,7 +68,8 @@ function BuildProjects {
     then
         while [ $ready_make_debug -eq 0 ]
         do
-            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! wait ready make debug"
+            :
+#            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! wait ready make debug"
         done
         BuildProject "debug" &
     fi
@@ -77,7 +78,8 @@ function BuildProjects {
     then
         while [ $ready_make_release -eq 0 ]
         do
-            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! wait ready make release"
+            :
+#            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! wait ready make release"
         done
         BuildProject "release"
     fi
