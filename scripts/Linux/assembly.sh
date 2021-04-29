@@ -110,8 +110,8 @@ case $2 in
                 exit              ;;
 esac
 
-ready_make_debug=1
-ready_make_release=1
+export ready_make_debug=1
+export ready_make_release=1
 
 if [ $isMake -eq 1 ]
 then
