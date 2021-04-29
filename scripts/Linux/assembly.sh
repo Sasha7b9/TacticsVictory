@@ -190,7 +190,5 @@ do
     rd=$(<ready_build_release)
 done
 
-echo " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! point 1"
-
 rm ready_build_debug
 rm ready_build_release
