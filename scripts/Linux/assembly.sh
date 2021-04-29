@@ -57,6 +57,7 @@ function BuildProjectDebug {
     cp common/Monitor/Monitor       ../../../out/debug
     cp common/Uploader/Uploader     ../../../out/debug
     
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! point 2"
     rm ready_build_debug
     echo "1" >> ready_build_debug
 }
@@ -74,6 +75,7 @@ function BuildProjectRelease {
     cp common/Monitor/Monitor       ../../../out/release
     cp common/Uploader/Uploader     ../../../out/release
     
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! point 3"
     rm ready_build_release
     echo "1" >> ready_build_release
 }
