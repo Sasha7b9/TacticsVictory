@@ -69,5 +69,5 @@ struct SockAddrIn
 
 private:
 
-    sockaddr_in addr;
+    sockaddr_in addr = { 0 };
 };
