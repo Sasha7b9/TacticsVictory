@@ -160,7 +160,7 @@ int SockAddrIn::RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer)
 {
     socklen_t size = sizeof(struct sockaddr);
 
-    int received = recvfrom((SOCKET)socket, buffer, size_buffer, 0, GetAddr(), &size);
+    int received = recvfrom((socket_t)socket, buffer, size_buffer, 0, GetAddr(), &size);
 
     if (received < 0)
     {
