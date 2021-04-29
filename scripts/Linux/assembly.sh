@@ -138,8 +138,8 @@ case $2 in
                 exit              ;;
 esac
 
-ready_make_debug=1
-ready_make_release=1
+env ready_make_debug=1
+env ready_make_release=1
 
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! start make projects"
 
