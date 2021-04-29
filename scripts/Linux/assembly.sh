@@ -9,20 +9,18 @@ function ShowHint {
 
 
 function MakeProjectDebug {
-    echo $ready_make_debug
     rm -R -f ../../generated/debug/VictoryU3D
     cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/debug/VictoryU3D -DCMAKE_BUILD_TYPE=Debug
-    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! make debug is done !!!"
-    ready_make_debug=1
-    echo $ready_make_debug
+    rm ready_make_debug
+    echo "1" >> ready_make_debug
 }
 
 
 function MakeProjectRelease {
     rm -R -f ../../generated/release/VictoryU3D
     cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/release/VictoryU3D -DCMAKE_BUILD_TYPE=Release
-    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! make release is done !!!"
-    ready_make_release=1
+    rm ready_make_debug
+    echo "1" >> ready_make_debug
 }
 
 
@@ -33,13 +31,15 @@ function MakeProjects {
 
     if [ $1 -eq 1 ]
     then
-        ready_make_debug=0
+        rm ready_make_debug
+        echo "0" >> ready_make_debug
         MakeProjectDebug &
     fi
 
     if [ $2 -eq 1 ]
     then
-        ready_make_release=0
+        rm ready_make_release
+        echo "0" >> ready_make_release
         MakeProjectRelease &
     fi
 }
@@ -110,9 +110,6 @@ case $2 in
                 exit              ;;
 esac
 
-#rm ready_make_debug
-#rm ready_make_release
-
 echo "1" >> ready_make_debug
 echo "1" >> ready_make_release
 
@@ -126,9 +123,11 @@ then
 
     if [ $isBuildDebug -eq 1 ]
     then
-        while [ $ready_make_debug -eq 0 ]
+        rd_mk_db=0
+        ready_make_debug >> rd_mk_db
+        while [ $rd_mk_db -eq "0" ]
         do
-            :
+            ready_make_debug >> rd_mk_db
         done
         BuildProject "debug" &
     fi
