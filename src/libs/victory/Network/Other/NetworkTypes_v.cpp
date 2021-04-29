@@ -25,22 +25,20 @@ std::string SockAddrIn::ToStringFull() const
 }
 
 
-std::string ClientInfo::SocketAddress::ToStringHost() const
+std::string SockAddrIn::ToStringHost() const
 {
     char buffer[100];
 
-    const sockaddr_in &_sin = sin.GetSockAddrInConst();
-
 #ifdef WIN32
-    sprintf_s(buffer, 100, "%d.%d.%d.%d", _sin.sin_addr.S_un.S_un_b.s_b1,
-        _sin.sin_addr.S_un.S_un_b.s_b2,
-        _sin.sin_addr.S_un.S_un_b.s_b3,
-        _sin.sin_addr.S_un.S_un_b.s_b4);
+    sprintf_s(buffer, 100, "%d.%d.%d.%d", addr.sin_addr.S_un.S_un_b.s_b1,
+        addr.sin_addr.S_un.S_un_b.s_b2,
+        addr.sin_addr.S_un.S_un_b.s_b3,
+        addr.sin_addr.S_un.S_un_b.s_b4);
 #else
-    sprintf(buffer, "%d.%d.%d.%d", (uint8)_sin.sin_addr.s_addr,
-        (uint8)(_sin.sin_addr.s_addr >> 8),
-        (uint8)(_sin.sin_addr.s_addr >> 16),
-        (uint8)(_sin.sin_addr.s_addr >> 24));
+    sprintf(buffer, "%d.%d.%d.%d", (uint8)addr.sin_addr.s_addr,
+        (uint8)(addr.sin_addr.s_addr >> 8),
+        (uint8)(addr.sin_addr.s_addr >> 16),
+        (uint8)(addr.sin_addr.s_addr >> 24));
 #endif
 
     return std::string(buffer);

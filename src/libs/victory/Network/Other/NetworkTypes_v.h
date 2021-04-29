@@ -44,6 +44,9 @@ struct SockAddrIn
     // Возвращает полный адрес клиента в виде "host:port"
     std::string ToStringFull() const;
 
+    // Возвращает только ip-дарес клиента
+    std::string ToStringHost() const;
+
     const sockaddr_in &GetSockAddrInConst() const { return addr; };
 
     sockaddr_in &GetSockAddrIn() {  return addr;  };
@@ -58,9 +61,6 @@ struct ClientInfo
 {
     struct SocketAddress
     {
-        // Возвращает только ip-дарес клиента
-        std::string ToStringHost() const;
-
         SockAddrIn sin;
     }                        address;   // Адрес клиента
 
