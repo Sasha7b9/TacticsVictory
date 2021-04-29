@@ -5,6 +5,9 @@ set(CMAKE_UNITY_BUILD ON)
 include_directories(.
                     ../../common_files
                     ../../libs/victory
+                    ../../ThirdParty/libevent/compat
+                    ../../ThirdParty/libevent/include
+                    ../../ThirdParty/libevent/build/include
                     ../../ThirdParty/sockpp/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
