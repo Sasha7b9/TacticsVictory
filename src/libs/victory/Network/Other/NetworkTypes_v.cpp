@@ -82,7 +82,7 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
 
         file.ReadString(ip);
 
-        inet_aton(ip.c_str(), &sin.sin_addr);
+        inet_aton(ip.c_str(), &_sin.sin_addr);
 
         FS::RemoveFile("address.txt");
     }
