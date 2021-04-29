@@ -7,9 +7,7 @@ void ConnectorUDP::AcceptServer(pchar _ip, uint16 _port)
 {
     sock_fd = socket(AF_INET, SOCK_DGRAM, 0);
 
-    addr.sin_family = AF_INET;
-    addr.sin_port = htons(_port);
-    addr.sin_addr = inet_addr(_ip);
+    addr.Init(AF_INET, _ip, _port);
 }
 
 

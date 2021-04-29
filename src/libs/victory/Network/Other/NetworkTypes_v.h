@@ -63,11 +63,11 @@ struct ClientInfo
 
 struct SockAddrIn
 {
-    uint16 sin_family = 0;
-    uint16 sin_port = 0;
-    unsigned long sin_addr = 0;
+    void Init(uint16 family, pchar ip, uint16 port);
 
     sockaddr *GetAddr();
+
+private:
 
     sockaddr_in addr;
 };
