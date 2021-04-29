@@ -182,14 +182,12 @@ rd=$(<ready_build_debug)
 while [ $rd -eq "0" ]
 do
     rd=$(<ready_build_debug)
-    echo "wait 1"
 done
 
 rd=$(<ready_build_release)
 while [ $rd -eq "0" ]
 do
     rd=$(<ready_build_release)
-    echo "wait 2"
 done
 
 rm ready_build_debug
