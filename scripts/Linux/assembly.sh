@@ -113,12 +113,13 @@ case $2 in
                 exit              ;;
 esac
 
+ready_make_debug=0
+ready_make_release=0
 
 if [ $isMake -eq 1 ]
 then
     MakeProjects $isBuildDebug $isBuildRelease
 fi
-
 
 if [ $isBuild -eq 1 ]
 then
