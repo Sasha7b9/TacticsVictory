@@ -70,6 +70,7 @@ function BuildProjects {
         do
             :
 #            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! wait ready make debug"
+            echo $ready_make_debug
         done
         BuildProject "debug" &
     fi
