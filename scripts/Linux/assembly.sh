@@ -113,8 +113,8 @@ esac
 #rm ready_make_debug
 #rm ready_make_release
 
-"1" >> ready_make_debug
-"1" >> ready_make_release
+echo "1" >> ready_make_debug
+echo "1" >> ready_make_release
 
 if [ $isMake -eq 1 ]
 then
