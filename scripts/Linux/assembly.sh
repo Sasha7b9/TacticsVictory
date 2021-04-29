@@ -45,19 +45,37 @@ function MakeProjects {
 }
 
 
-function BuildProject {
-    dir=$PWD
-    cd ../../generated/$1/VictoryU3D
+function BuildProjectDebug {
+    cd ../../generated/debug/VictoryU3D
     make -j$(nproc)
     make install
-    cp remote/Master/Master         ../../../out/$1
-    cp remote/DataBase/DataBase     ../../../out/$1
-    cp common/Battle/Battle         ../../../out/$1
-    cp common/Controller/Controller ../../../out/$1
-    cp common/LivingRoom/LivingRoom ../../../out/$1
-    cp common/Monitor/Monitor       ../../../out/$1
-    cp common/Uploader/Uploader     ../../../out/$1
-    cd $dir
+    cp remote/Master/Master         ../../../out/debug
+    cp remote/DataBase/DataBase     ../../../out/debug
+    cp common/Battle/Battle         ../../../out/debug
+    cp common/Controller/Controller ../../../out/debug
+    cp common/LivingRoom/LivingRoom ../../../out/debug
+    cp common/Monitor/Monitor       ../../../out/debug
+    cp common/Uploader/Uploader     ../../../out/debug
+    
+    rm ready_build_debug
+    echo "1" >> ready_build_debug
+}
+
+
+function BuildProjectRelease {
+    cd ../../generated/release/VictoryU3D
+    make -j$(nproc)
+    make install
+    cp remote/Master/Master         ../../../out/release
+    cp remote/DataBase/DataBase     ../../../out/release
+    cp common/Battle/Battle         ../../../out/release
+    cp common/Controller/Controller ../../../out/release
+    cp common/LivingRoom/LivingRoom ../../../out/release
+    cp common/Monitor/Monitor       ../../../out/release
+    cp common/Uploader/Uploader     ../../../out/release
+    
+    rm ready_build_release
+    echo "1" >> ready_build_release
 }
 
 
@@ -118,31 +136,53 @@ then
     MakeProjects $isBuildDebug $isBuildRelease
 fi
 
+echo "1" >> ready_build_debug
+echo "1" >> ready_build_release
+
 if [ $isBuild -eq 1 ]
 then
 
     if [ $isBuildDebug -eq 1 ]
     then
+        rm ready_build_debug
+        echo "0" >> ready_build_debug
+    
         rd_mk_db=$(<ready_make_debug)
         while [ $rd_mk_db -eq "0" ]
         do
-            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! not ready debug"
             rd_mk_db=$(<ready_make_debug)
         done
-        BuildProject "debug" &
+        BuildProjectDebug &
     fi
 
     if [ $isBuildRelease -eq 1 ]
     then
+        rm ready_build_release
+        echo "0" >> ready_build_release
+
         rd_mk_rl=$(<ready_make_release)
         while [ $rd_mk_rl -eq "0" ]
         do
-            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! not ready release"
             rd_mk_rl=$(<ready_make_release)
         done
-        BuildProject "release" &
+        BuildProjectRelease &
     fi
 fi
 
 rm ready_make_debug
 rm ready_make_release
+
+rd=$(<ready_build_debug)
+while [ $rd -eq "0" ]
+do
+    rd=$(<ready_build_debug)
+done
+
+rd=$(<ready_build_release)
+while [ $rd -eq "0" ]
+do
+    rd=$(<ready_build_release)
+done
+
+rm ready_build_debug
+rm ready_build_release
