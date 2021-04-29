@@ -11,6 +11,7 @@ function ShowHint {
 function MakeProjectDebug {
     rm -R -f ../../generated/debug/VictoryU3D
     cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/debug/VictoryU3D -DCMAKE_BUILD_TYPE=Debug
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! make debug is done !!!"
     ready_make_debug=1
 }
 
@@ -18,6 +19,7 @@ function MakeProjectDebug {
 function MakeProjectRelease {
     rm -R -f ../../generated/release/VictoryU3D
     cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/release/VictoryU3D -DCMAKE_BUILD_TYPE=Release
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! make release is done !!!"
     ready_make_release=1
 }
 
@@ -66,7 +68,7 @@ function BuildProjects {
     then
         while [ $ready_make_debug -eq 0 ]
         do
-            :
+            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! wait ready make debug"
         done
         BuildProject "debug" &
     fi
@@ -75,7 +77,7 @@ function BuildProjects {
     then
         while [ $ready_make_release -eq 0 ]
         do
-            :
+            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! wait ready make release"
         done
         BuildProject "release"
     fi
