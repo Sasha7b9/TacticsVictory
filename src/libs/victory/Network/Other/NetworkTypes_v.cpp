@@ -14,7 +14,7 @@ std::string SockAddrIn::ToStringFull() const
         addr.sin_addr.S_un.S_un_b.s_b4,
         addr.sin_port);
 #else
-    sprintf(buffer, "%d.%d.%d.%d:%d", (uint8)_sin.sin_addr.s_addr,
+    sprintf(buffer, "%d.%d.%d.%d:%d", (uint8)addr.sin_addr.s_addr,
         (uint8)(addr.sin_addr.s_addr >> 8),
         (uint8)(addr.sin_addr.s_addr >> 16),
         (uint8)(addr.sin_addr.s_addr >> 24),
