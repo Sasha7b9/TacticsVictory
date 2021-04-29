@@ -46,7 +46,9 @@ function MakeProjects {
 
 
 function BuildProjectDebug {
+    dir=$PWD
     cd ../../generated/debug/VictoryU3D
+
     make -j$(nproc)
     make install
     cp remote/Master/Master         ../../../out/debug
@@ -57,14 +59,16 @@ function BuildProjectDebug {
     cp common/Monitor/Monitor       ../../../out/debug
     cp common/Uploader/Uploader     ../../../out/debug
     
-    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! point 2"
+    cd $dir
     rm ready_build_debug
     echo "1" >> ready_build_debug
 }
 
 
 function BuildProjectRelease {
+    dir=$PWD
     cd ../../generated/release/VictoryU3D
+
     make -j$(nproc)
     make install
     cp remote/Master/Master         ../../../out/release
@@ -74,8 +78,8 @@ function BuildProjectRelease {
     cp common/LivingRoom/LivingRoom ../../../out/release
     cp common/Monitor/Monitor       ../../../out/release
     cp common/Uploader/Uploader     ../../../out/release
-    
-    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! point 3"
+
+    cd $dir    
     rm ready_build_release
     echo "1" >> ready_build_release
 }
