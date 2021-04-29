@@ -39,6 +39,10 @@ struct SockAddrIn
     char *GetIP();
     uint16 GetPort();
 
+    const sockaddr_in &GetSockAddrInConst() const { return addr; };
+
+    sockaddr_in &GetSockAddrIn() {  return addr;  };
+
 private:
 
     sockaddr_in addr = { 0 };
@@ -57,7 +61,7 @@ struct ClientInfo
         // Возвращает только ip-дарес клиента
         std::string ToStringHost() const;
 
-        sockaddr_in sin;
+        SockAddrIn sin;
     }                        address;   // Адрес клиента
 
     std::vector<uint8>       bindata;   // Непосредственно принятые данные

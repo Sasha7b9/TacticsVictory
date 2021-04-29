@@ -7,18 +7,20 @@ std::string ClientInfo::SocketAddress::ToStringFull() const
 {
     char buffer[100];
 
+    const sockaddr_in &_sin = sin.GetSockAddrInConst();
+
 #ifdef WIN32
-    sprintf_s(buffer, 100, "%d.%d.%d.%d:%d", sin.sin_addr.S_un.S_un_b.s_b1,
-        sin.sin_addr.S_un.S_un_b.s_b2,
-        sin.sin_addr.S_un.S_un_b.s_b3,
-        sin.sin_addr.S_un.S_un_b.s_b4,
-        sin.sin_port);
+    sprintf_s(buffer, 100, "%d.%d.%d.%d:%d", _sin.sin_addr.S_un.S_un_b.s_b1,
+        _sin.sin_addr.S_un.S_un_b.s_b2,
+        _sin.sin_addr.S_un.S_un_b.s_b3,
+        _sin.sin_addr.S_un.S_un_b.s_b4,
+        _sin.sin_port);
 #else
-    sprintf(buffer, "%d.%d.%d.%d:%d", (uint8)sin.sin_addr.s_addr,
-        (uint8)(sin.sin_addr.s_addr >> 8),
-        (uint8)(sin.sin_addr.s_addr >> 16),
-        (uint8)(sin.sin_addr.s_addr >> 24),
-        sin.sin_port);
+    sprintf(buffer, "%d.%d.%d.%d:%d", (uint8)_sin.sin_addr.s_addr,
+        (uint8)(_sin.sin_addr.s_addr >> 8),
+        (uint8)(_sin.sin_addr.s_addr >> 16),
+        (uint8)(_sin.sin_addr.s_addr >> 24),
+        _sin.sin_port);
 #endif
 
     return std::string(buffer);
@@ -29,16 +31,18 @@ std::string ClientInfo::SocketAddress::ToStringHost() const
 {
     char buffer[100];
 
+    const sockaddr_in &_sin = sin.GetSockAddrInConst();
+
 #ifdef WIN32
-    sprintf_s(buffer, 100, "%d.%d.%d.%d", sin.sin_addr.S_un.S_un_b.s_b1,
-        sin.sin_addr.S_un.S_un_b.s_b2,
-        sin.sin_addr.S_un.S_un_b.s_b3,
-        sin.sin_addr.S_un.S_un_b.s_b4);
+    sprintf_s(buffer, 100, "%d.%d.%d.%d", _sin.sin_addr.S_un.S_un_b.s_b1,
+        _sin.sin_addr.S_un.S_un_b.s_b2,
+        _sin.sin_addr.S_un.S_un_b.s_b3,
+        _sin.sin_addr.S_un.S_un_b.s_b4);
 #else
-    sprintf(buffer, "%d.%d.%d.%d", (uint8)sin.sin_addr.s_addr,
-        (uint8)(sin.sin_addr.s_addr >> 8),
-        (uint8)(sin.sin_addr.s_addr >> 16),
-        (uint8)(sin.sin_addr.s_addr >> 24));
+    sprintf(buffer, "%d.%d.%d.%d", (uint8)_sin.sin_addr.s_addr,
+        (uint8)(_sin.sin_addr.s_addr >> 8),
+        (uint8)(_sin.sin_addr.s_addr >> 16),
+        (uint8)(_sin.sin_addr.s_addr >> 24));
 #endif
 
     return std::string(buffer);
@@ -47,21 +51,23 @@ std::string ClientInfo::SocketAddress::ToStringHost() const
 
 void ClientInfo::SocketAddress::SetHostIP(void *ip)
 {
-    sin = *((sockaddr_in *)ip);
+    sockaddr_in &_sin = sin.GetSockAddrIn();
+
+    _sin = *((sockaddr_in *)ip);
 
 #ifdef WIN32
-    if (sin.sin_addr.S_un.S_un_b.s_b1 == 127 &&
-        sin.sin_addr.S_un.S_un_b.s_b2 == 0 &&
-        sin.sin_addr.S_un.S_un_b.s_b3 == 0 &&
-        sin.sin_addr.S_un.S_un_b.s_b4 == 1)
+    if (_sin.sin_addr.S_un.S_un_b.s_b1 == 127 &&
+        _sin.sin_addr.S_un.S_un_b.s_b2 == 0 &&
+        _sin.sin_addr.S_un.S_un_b.s_b3 == 0 &&
+        _sin.sin_addr.S_un.S_un_b.s_b4 == 1)
     {
         system("ipconfig > address.txt");
     }
 #else
-    if ((uint8)(sin.sin_addr.s_addr >> 0) == 127 &&
-        (uint8)(sin.sin_addr.s_addr >> 8) == 0 &&
-        (uint8)(sin.sin_addr.s_addr >> 16) == 0 &&
-        (uint8)(sin.sin_addr.s_addr >> 24) == 1)
+    if ((uint8)(_sin.sin_addr.s_addr >> 0) == 127 &&
+        (uint8)(_sin.sin_addr.s_addr >> 8) == 0 &&
+        (uint8)(_sin.sin_addr.s_addr >> 16) == 0 &&
+        (uint8)(_sin.sin_addr.s_addr >> 24) == 1)
     {
         [[maybe_unused]] auto result = system("wget -qO- eth0.me > address.txt");
 
