@@ -134,10 +134,14 @@ esac
 ready_make_debug=1
 ready_make_release=1
 
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! make projects"
+
 if [ $isMake -eq 1 ]
 then
     MakeProjects $isBuildDebug $isBuildRelease
 fi
+
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! build projects"
 
 if [ $isBuild -eq 1 ]
 then
