@@ -133,13 +133,12 @@ then
 
     if [ $isBuildRelease -eq 1 ]
     then
-        while [ $ready_make_release -eq 0 ]
+        rd_mk_rl=$(<ready_make_release)
+        while [ $rd_mk_rl -eq 0 ]
         do
-            :
+            rd_mk_db=$(<ready_make_release)
         done
         BuildProject "release" &
     fi
-
-#    BuildProjects $isBuildDebug $isBuildRelease
 fi
 
