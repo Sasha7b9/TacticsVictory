@@ -20,7 +20,7 @@ function MakeProjectRelease {
     rm -R -f ../../generated/release/VictoryU3D
     cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/release/VictoryU3D -DCMAKE_BUILD_TYPE=Release
     rm ready_make_debug
-    echo "1" >> ready_make_debug
+    echo "1" >> ready_make_release
 }
 
 
