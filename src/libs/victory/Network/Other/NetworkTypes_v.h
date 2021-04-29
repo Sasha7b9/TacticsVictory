@@ -65,9 +65,10 @@ struct SockAddrIn
 {
     void Init(uint16 family, pchar ip, uint16 port);
 
-    sockaddr *GetAddr();
+    // ¬озвращает количество прин€тых байт
+    int RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer);
 
-private:
+    sockaddr *GetAddr();
 
     sockaddr_in addr = { 0 };
 };

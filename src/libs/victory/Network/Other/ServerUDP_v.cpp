@@ -111,34 +111,43 @@ void ServerUDP::CallbackRead(evutil_socket_t sock, short /*event*/, void *)
 {
     char buf[1024] = "";
 
-    socklen_t size = sizeof(struct sockaddr);
+    SockAddrIn address;
 
-    struct sockaddr_in client_addr = { 0 };
+    int size = address.RecvFrom(sock, buf, 1024);
+
+    if (size > 0)
+    {
+        LOGWRITEF("From %s:%d : \"%s\"", inet_ntoa(address.addr.sin_addr), address.addr.sin_port, buf);
+    }
+
+//    socklen_t size = sizeof(struct sockaddr);
+//
+//    struct sockaddr_in client_addr = { 0 };
+//
+//#ifdef WIN32
+//    int len = recvfrom((SOCKET)sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
+//#else
+//    int len = recvfrom(sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
+//#endif
+//
+//    if (len < 0)
+//    {
+//        LOGERROR("Server recv message error");
+//        return;
+//    }
+//    else if (len == 0)
+//    {
+//        LOGERROR("Connetioin closed");
+//    }
+//    else
+//    {
+//        LOGWRITEF("From %s:%d : \"%s\"", inet_ntoa(client_addr.sin_addr), client_addr.sin_port, buf);
+//    }
 
 #ifdef WIN32
-    int len = recvfrom((SOCKET)sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
+    sendto((SOCKET)sock, buf, sizeof(buf), 0, (struct sockaddr *)&address.addr, size);
 #else
-    int len = recvfrom(sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, &size);
-#endif
-
-    if (len < 0)
-    {
-        LOGERROR("Server recv message error");
-        return;
-    }
-    else if (len == 0)
-    {
-        LOGERROR("Connetioin closed");
-    }
-    else
-    {
-        LOGWRITEF("From %s:%d : \"%s\"", inet_ntoa(client_addr.sin_addr), client_addr.sin_port, buf);
-    }
-
-#ifdef WIN32
-    sendto((SOCKET)sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, size);
-#else
-    sendto(sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, size);
+    sendto(sock, buf, sizeof(buf), 0, (struct sockaddr *)&address.addr, size);
 #endif
 }
 

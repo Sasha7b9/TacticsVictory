@@ -156,6 +156,25 @@ void SockAddrIn::Init(uint16 family, pchar ip, uint16 port)
 }
 
 
+int SockAddrIn::RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer)
+{
+    socklen_t size = sizeof(struct sockaddr);
+
+    int received = recvfrom((SOCKET)socket, buffer, size_buffer, 0, GetAddr(), &size);
+
+    if (received < 0)
+    {
+        LOGERROR("Server recv message error");
+    }
+    else if (received == 0)
+    {
+        LOGERROR("Connetioin closed");
+    }
+
+    return received;
+}
+
+
 sockaddr *SockAddrIn::GetAddr()
 {
     return (struct sockaddr *)&addr;
