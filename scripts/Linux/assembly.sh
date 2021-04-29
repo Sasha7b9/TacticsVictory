@@ -110,8 +110,8 @@ case $2 in
                 exit              ;;
 esac
 
-rm ready_make_debug
-rm ready_make_release
+#rm ready_make_debug
+#rm ready_make_release
 
 "1" >> ready_make_debug
 "1" >> ready_make_release
