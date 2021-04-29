@@ -66,6 +66,7 @@ function BuildProjects {
     then
         while [ $ready_make_debug -eq 0 ]
         do
+            :
         done
         BuildProject "debug" &
     fi
@@ -74,6 +75,7 @@ function BuildProjects {
     then
         while [ $ready_make_release -eq 0 ]
         do
+            :
         done
         BuildProject "release"
     fi
