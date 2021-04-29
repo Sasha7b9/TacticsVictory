@@ -54,6 +54,10 @@ using namespace Urho3D;
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 
+#include <event2/bufferevent.h>
+#include <event2/buffer.h>
+#include <event2/listener.h>
+
 #include <sockpp/tcp_acceptor.h>
 #include <sockpp/tcp_connector.h>
 
