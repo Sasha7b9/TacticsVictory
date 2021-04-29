@@ -61,34 +61,6 @@ function BuildProject {
 }
 
 
-function BuildProjects {
-
-# $1 - debug build
-# $2 - release build
-
-    if [ $1 -eq 1 ]
-    then
-        while [ $ready_make_debug -eq "0" ]
-        do
-            :
-#            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! wait ready make debug"
-#            echo $ready_make_debug
-        done
-        BuildProject "debug" &
-    fi
-
-    if [ $2 -eq 1 ]
-    then
-        while [ $ready_make_release -eq 0 ]
-        do
-            :
-#            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! wait ready make release"
-        done
-        BuildProject "release"
-    fi
-}
-
-
 # Start here <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ./stop.sh all
@@ -141,19 +113,32 @@ esac
 ready_make_debug=1
 ready_make_release=1
 
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! start make projects"
-
 if [ $isMake -eq 1 ]
 then
     MakeProjects $isBuildDebug $isBuildRelease
 fi
 
-echo $ready_make_debug
-
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! start build projects"
-
 if [ $isBuild -eq 1 ]
 then
-    BuildProjects $isBuildDebug $isBuildRelease
+
+    if [ $isBuildDebug -eq 1 ]
+    then
+        while [ $ready_make_debug -eq 0 ]
+        do
+            :
+        done
+        BuildProject "debug" &
+    fi
+
+    if [ $isBuildRelease -eq 1 ]
+    then
+        while [ $ready_make_release -eq 0 ]
+        do
+            :
+        done
+        BuildProject "release" &
+    fi
+
+#    BuildProjects $isBuildDebug $isBuildRelease
 fi
 
