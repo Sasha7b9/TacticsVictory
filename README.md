@@ -1,3 +1,3 @@
 # TacticsVictory-Urho3D-
 
-RTS game on Urho3D engine
+RTS game on Urho3D engine.
