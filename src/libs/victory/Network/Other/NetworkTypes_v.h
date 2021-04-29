@@ -68,7 +68,12 @@ struct SockAddrIn
     // ¬озвращает количество прин€тых байт
     int RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer);
 
-    sockaddr *GetAddr();
+    char *GetIP();
+    uint16 GetPort();
+
+    sockaddr *GetSockAddr();
+
+private:
 
     sockaddr_in addr = { 0 };
 };

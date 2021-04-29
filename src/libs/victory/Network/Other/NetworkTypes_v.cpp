@@ -160,7 +160,7 @@ int SockAddrIn::RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer)
 {
     socklen_t size = sizeof(struct sockaddr);
 
-    int received = recvfrom((socket_t)socket, buffer, size_buffer, 0, GetAddr(), &size);
+    int received = recvfrom((socket_t)socket, buffer, size_buffer, 0, GetSockAddr(), &size);
 
     if (received < 0)
     {
@@ -175,7 +175,19 @@ int SockAddrIn::RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer)
 }
 
 
-sockaddr *SockAddrIn::GetAddr()
+char *SockAddrIn::GetIP()
+{
+    return inet_ntoa(addr.sin_addr);
+}
+
+
+uint16 SockAddrIn::GetPort()
+{
+    return addr.sin_port;
+}
+
+
+sockaddr *SockAddrIn::GetSockAddr()
 {
     return (struct sockaddr *)&addr;
 }

@@ -117,14 +117,14 @@ void ServerUDP::CallbackRead(evutil_socket_t sock, short /*event*/, void *)
 
     if (size > 0)
     {
-        LOGWRITEF("From %s:%d : \"%s\"", inet_ntoa(address.addr.sin_addr), address.addr.sin_port, buf);
+        LOGWRITEF("From %s:%d : \"%s\"", address.GetIP(), address.GetPort(), buf);
     }
 
-#ifdef WIN32
-    sendto((SOCKET)sock, buf, sizeof(buf), 0, (struct sockaddr *)&address.addr, size);
-#else
-    sendto(sock, buf, sizeof(buf), 0, (struct sockaddr *)&address.addr, size);
-#endif
+//#ifdef WIN32
+//    sendto((SOCKET)sock, buf, sizeof(buf), 0, (struct sockaddr *)&address.addr, size);
+//#else
+//    sendto(sock, buf, sizeof(buf), 0, (struct sockaddr *)&address.addr, size);
+//#endif
 }
 
 
