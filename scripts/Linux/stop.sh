@@ -3,7 +3,7 @@
 # Functions <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 function ShowHint {
     echo "    Usage:"
-    echo "          ./stop.sh [ master | uploader | all ]"
+    echo "          ./stop.sh [ master | uploader | livingroom | all ]"
 }
 
 function Stop {
