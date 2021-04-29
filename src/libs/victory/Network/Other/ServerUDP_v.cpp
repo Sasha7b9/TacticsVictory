@@ -132,20 +132,8 @@ void ServerUDP::CallbackRead(evutil_socket_t sock, short /*event*/, void *)
     }
     else
     {
-        LOGWRITEF("Receive message \"%s\"", buf);
+        LOGWRITEF("From %s:%d : \"%s\"", inet_ntoa(client_addr.sin_addr), client_addr.sin_port, buf);
     }
-
-#ifdef WIN32
-#pragma warning(push, 0)
-#endif
-
-    LOGWRITEF("Connection port = %d", client_addr.sin_port);
-    LOGWRITEF("Connetion IP = %s", inet_ntoa(client_addr.sin_addr));
-    LOGWRITEF("Server recv message len = %d", len);
-
-#ifdef WIN32
-#pragma warning(pop)
-#endif
 
 #ifdef WIN32
     sendto((SOCKET)sock, buf, sizeof(buf), 0, (struct sockaddr *)&client_addr, size);
