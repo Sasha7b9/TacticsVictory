@@ -68,7 +68,7 @@ function BuildProjects {
 
     if [ $1 -eq 1 ]
     then
-        while [ $ready_make_debug -eq 0 ]
+        while [ $ready_make_debug -eq "0" ]
         do
             :
 #            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! wait ready make debug"
