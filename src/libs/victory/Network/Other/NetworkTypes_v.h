@@ -28,6 +28,23 @@ struct TaskMasterServer
 };
 
 
+struct SockAddrIn
+{
+    void Init(uint16 family, pchar ip, uint16 port);
+
+    // Возвращает количество принятых байт
+    int RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer);
+
+    sockaddr *GetSockAddr();
+    char *GetIP();
+    uint16 GetPort();
+
+private:
+
+    sockaddr_in addr = { 0 };
+};
+
+
 struct ClientInfo
 {
     struct SocketAddress
@@ -58,22 +75,4 @@ struct ClientInfo
 
     // Перемещает байты запроса из received в data. При этом из искоходного вектора перемещённые данные удаляются
     static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data);
-};
-
-
-struct SockAddrIn
-{
-    void Init(uint16 family, pchar ip, uint16 port);
-
-    // Возвращает количество принятых байт
-    int RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer);
-
-    char *GetIP();
-    uint16 GetPort();
-
-    sockaddr *GetSockAddr();
-
-private:
-
-    sockaddr_in addr = { 0 };
 };
