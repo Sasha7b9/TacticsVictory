@@ -1,2 +1,3 @@
-start BattleTV.exe
-start BattlerTV.exe
+start Master.exe
+start LivingRoom.exe
+start Client.exe

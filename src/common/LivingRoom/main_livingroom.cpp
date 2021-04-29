@@ -14,7 +14,7 @@ int main(int args, char *argv[])
 
     if (TheSettings.Load("Settings.conf"))
     {
-        return TheLivingRoom.Run(args < 2 ? nullptr : argv[1]);
+        return TheLivingRoom.Run(TheSettings.GetString("master_server", "host"));
     }
 
     return 0;

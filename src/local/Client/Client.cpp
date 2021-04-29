@@ -113,49 +113,40 @@ void Client::Start()
 
     ParseArguments();
 
-    TheLivingRoomUDP.AcceptServer("127.0.0.1", 40001);
+    TheLivingRoomUDP.AcceptServer(TheSettings.GetString("master_server", "host"), 40001);
 }
 
 
 void Client::ParseArguments()
 {
-    const Vector<String> &arguments = GetArguments();
+    TheConnMaster.Init(TheSettings.GetString("master_server", "host"),
+               (uint16)TheSettings.GetInt("master_server", "port"));
 
-    if (arguments.Size() != 0)
-    {
-        TheConnMaster.Init(arguments[0].CString(), (uint16)TheSettings.GetInt("master_server", "port"));
+    TheConnMaster.SetCallbacks
+    (
+        []()
+        {
+            LOGWRITE("Can not connect to master server");
+            TheGUI->AppendWarning("Can't connect to master server");
+            TheConnMaster.Connect();
+        },
+        []()
+        {
+            TheGUI->AppendInfo("Connection to master server established");
+            LOGWRITE("Connection to master server established");
 
-        TheConnMaster.SetCallbacks
-        (
-            []()
-            {
-                LOGWRITE("Can not connect to master server");
-                TheGUI->AppendWarning("Can't connect to master server");
-                TheConnMaster.Connect();
-            },
-            []()
-            {
-                TheGUI->AppendInfo("Connection to master server established");
-                LOGWRITE("Connection to master server established");
+            TheConnMaster.SetTasks();
+        },
+        []()
+        {
+            TheGUI->AppendWarning("The master server is down. Attempting to connect");
+            TheConnMaster.Connect();
+            LOGWRITE("The master server is down. Attempting to connect");
+            TheMenu->pageFindServer->SetServersInfo("");
+        }
+    );
 
-                TheConnMaster.SetTasks();
-            },
-            []()
-            {
-                TheGUI->AppendWarning("The master server is down. Attempting to connect");
-                TheConnMaster.Connect();
-                LOGWRITE("The master server is down. Attempting to connect");
-                TheMenu->pageFindServer->SetServersInfo("");
-            }
-        );
-
-        TheConnMaster.Connect();
-    }
-    else
-    {
-        LOGWARNINGF("Not specified address master server");
-        TheGUI->AppendWarning("Not specified address master server");
-    }
+    TheConnMaster.Connect();
 }
 
 
