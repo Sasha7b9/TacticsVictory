@@ -123,11 +123,10 @@ then
 
     if [ $isBuildDebug -eq 1 ]
     then
-        rd_mk_db=0
-        ready_make_debug >> rd_mk_db
+        rd_mk_db=$(<ready_make_debug)
         while [ $rd_mk_db -eq "0" ]
         do
-            ready_make_debug >> rd_mk_db
+            rd_mk_db=$(<ready_make_debug)
         done
         BuildProject "debug" &
     fi
