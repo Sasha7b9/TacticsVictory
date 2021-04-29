@@ -123,7 +123,7 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
         bufferevent_enable(bev, EV_READ | EV_WRITE);
 
         ClientInfo info;
-        info.address.SetHostIP(&ss);
+        info.address.sin.SetHostIP(&ss);
         info.benv = bev;
 
         LOGWRITEF("Client %s connected", info.address.ToStringFull().c_str());

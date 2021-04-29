@@ -39,6 +39,8 @@ struct SockAddrIn
     char *GetIP();
     uint16 GetPort();
 
+    void SetHostIP(void *ip);
+
     const sockaddr_in &GetSockAddrInConst() const { return addr; };
 
     sockaddr_in &GetSockAddrIn() {  return addr;  };
@@ -53,8 +55,6 @@ struct ClientInfo
 {
     struct SocketAddress
     {
-        void SetHostIP(void *ip);
-
         // ¬озвращает полный адрес клиента в виде "host:port"
         std::string ToStringFull() const;
 

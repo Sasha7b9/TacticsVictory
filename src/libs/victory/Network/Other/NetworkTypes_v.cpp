@@ -49,25 +49,23 @@ std::string ClientInfo::SocketAddress::ToStringHost() const
 }
 
 
-void ClientInfo::SocketAddress::SetHostIP(void *ip)
+void SockAddrIn::SetHostIP(void *ip)
 {
-    sockaddr_in &_sin = sin.GetSockAddrIn();
-
-    _sin = *((sockaddr_in *)ip);
+    addr = *((sockaddr_in *)ip);
 
 #ifdef WIN32
-    if (_sin.sin_addr.S_un.S_un_b.s_b1 == 127 &&
-        _sin.sin_addr.S_un.S_un_b.s_b2 == 0 &&
-        _sin.sin_addr.S_un.S_un_b.s_b3 == 0 &&
-        _sin.sin_addr.S_un.S_un_b.s_b4 == 1)
+    if (addr.sin_addr.S_un.S_un_b.s_b1 == 127 &&
+        addr.sin_addr.S_un.S_un_b.s_b2 == 0 &&
+        addr.sin_addr.S_un.S_un_b.s_b3 == 0 &&
+        addr.sin_addr.S_un.S_un_b.s_b4 == 1)
     {
         system("ipconfig > address.txt");
     }
 #else
-    if ((uint8)(_sin.sin_addr.s_addr >> 0) == 127 &&
-        (uint8)(_sin.sin_addr.s_addr >> 8) == 0 &&
-        (uint8)(_sin.sin_addr.s_addr >> 16) == 0 &&
-        (uint8)(_sin.sin_addr.s_addr >> 24) == 1)
+    if ((uint8)(addr.sin_addr.s_addr >> 0) == 127 &&
+        (uint8)(addr.sin_addr.s_addr >> 8) == 0 &&
+        (uint8)(addr.sin_addr.s_addr >> 16) == 0 &&
+        (uint8)(addr.sin_addr.s_addr >> 24) == 1)
     {
         [[maybe_unused]] auto result = system("wget -qO- eth0.me > address.txt");
 
@@ -82,7 +80,7 @@ void ClientInfo::SocketAddress::SetHostIP(void *ip)
 
         file.ReadString(ip);
 
-        inet_aton(ip.c_str(), &_sin.sin_addr);
+        inet_aton(ip.c_str(), &addr.sin_addr);
 
         FS::RemoveFile("address.txt");
     }
