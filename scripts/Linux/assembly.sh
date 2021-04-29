@@ -8,19 +8,9 @@ function ShowHint {
 }
 
 
-function MakeProjectDebug {
-    rm -R -f ../../generated/debug/VictoryU3D
-    cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/debug/VictoryU3D -DCMAKE_BUILD_TYPE=Debug
-    rm ready_make_debug
-    echo "1" >> ready_make_debug
-}
-
-
-function MakeProjectRelease {
-    rm -R -f ../../generated/release/VictoryU3D
-    cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/release/VictoryU3D -DCMAKE_BUILD_TYPE=Release
-    rm ready_make_release
-    echo "1" >> ready_make_release
+function MakeProject {
+    rm -R -f ../../generated/$1/VictoryU3D
+    cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/$1/VictoryU3D -DCMAKE_BUILD_TYPE=$2
 }
 
 
@@ -31,57 +21,46 @@ function MakeProjects {
 
     if [ $1 -eq 1 ]
     then
-        rm ready_make_debug
-        echo "0" >> ready_make_debug
-        MakeProjectDebug &
+        MakeProject "debug" "Debug"
     fi
 
     if [ $2 -eq 1 ]
     then
-        rm ready_make_release
-        echo "0" >> ready_make_release
-        MakeProjectRelease &
+        MakeProject "release" "Release"
     fi
 }
 
 
-function BuildProjectDebug {
+function BuildProject {
     dir=$PWD
-    cd ../../generated/debug/VictoryU3D
-
+    cd ../../generated/$1/VictoryU3D
     make -j$(nproc)
     make install
-    cp remote/Master/Master         ../../../out/debug
-    cp remote/DataBase/DataBase     ../../../out/debug
-    cp common/Battle/Battle         ../../../out/debug
-    cp common/Controller/Controller ../../../out/debug
-    cp common/LivingRoom/LivingRoom ../../../out/debug
-    cp common/Monitor/Monitor       ../../../out/debug
-    cp common/Uploader/Uploader     ../../../out/debug
-    
+    cp remote/Master/Master         ../../../out/$1
+    cp remote/DataBase/DataBase     ../../../out/$1
+    cp common/Battle/Battle         ../../../out/$1
+    cp common/Controller/Controller ../../../out/$1
+    cp common/LivingRoom/LivingRoom ../../../out/$1
+    cp common/Monitor/Monitor       ../../../out/$1
+    cp common/Uploader/Uploader     ../../../out/$1
     cd $dir
-    rm ready_build_debug
-    echo "1" >> ready_build_debug
 }
 
 
-function BuildProjectRelease {
-    dir=$PWD
-    cd ../../generated/release/VictoryU3D
+function BuildProjects {
 
-    make -j$(nproc)
-    make install
-    cp remote/Master/Master         ../../../out/release
-    cp remote/DataBase/DataBase     ../../../out/release
-    cp common/Battle/Battle         ../../../out/release
-    cp common/Controller/Controller ../../../out/release
-    cp common/LivingRoom/LivingRoom ../../../out/release
-    cp common/Monitor/Monitor       ../../../out/release
-    cp common/Uploader/Uploader     ../../../out/release
+# $1 - debug build
+# $2 - release build
 
-    cd $dir    
-    rm ready_build_release
-    echo "1" >> ready_build_release
+    if [ $1 -eq 1 ]
+    then
+        BuildProject "debug"
+    fi
+
+    if [ $2 -eq 1 ]
+    then
+        BuildProject "release"
+    fi
 }
 
 
@@ -134,61 +113,15 @@ case $2 in
                 exit              ;;
 esac
 
-echo "1" >> ready_make_debug
-echo "1" >> ready_make_release
 
 if [ $isMake -eq 1 ]
 then
     MakeProjects $isBuildDebug $isBuildRelease
 fi
 
-echo "1" >> ready_build_debug
-echo "1" >> ready_build_release
 
 if [ $isBuild -eq 1 ]
 then
-
-    if [ $isBuildDebug -eq 1 ]
-    then
-        rm ready_build_debug
-        echo "0" >> ready_build_debug
-    
-        rd_mk_db=$(<ready_make_debug)
-        while [ $rd_mk_db -eq "0" ]
-        do
-            rd_mk_db=$(<ready_make_debug)
-        done
-        BuildProjectDebug &
-    fi
-
-    if [ $isBuildRelease -eq 1 ]
-    then
-        rm ready_build_release
-        echo "0" >> ready_build_release
-
-        rd_mk_rl=$(<ready_make_release)
-        while [ $rd_mk_rl -eq "0" ]
-        do
-            rd_mk_rl=$(<ready_make_release)
-        done
-        BuildProjectRelease &
-    fi
+    BuildProjects $isBuildDebug $isBuildRelease
 fi
 
-rm ready_make_debug
-rm ready_make_release
-
-rd=$(<ready_build_debug)
-while [ $rd -eq "0" ]
-do
-    rd=$(<ready_build_debug)
-done
-
-rd=$(<ready_build_release)
-while [ $rd -eq "0" ]
-do
-    rd=$(<ready_build_release)
-done
-
-rm ready_build_debug
-rm ready_build_release
