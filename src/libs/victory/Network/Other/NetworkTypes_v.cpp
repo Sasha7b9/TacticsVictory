@@ -141,7 +141,14 @@ void SockAddrIn::Init(uint16 family, pchar ip, uint16 port)
     addr.sin_port = htons(port);
     
 #ifdef WIN32
-    addr.sin_addr.S_un.S_addr = inet_addr(ip);
+
+    int result = InetPtonA(family, ip, &addr.sin_addr.S_un.S_addr);
+
+    if (result != 1)
+    {
+        LOGERRORF("Error int function InetPtonA this ip-address %s", ip);
+    }
+
 #else
     addr.sin_addr.s_addr = inet_addr(ip);
 #endif
