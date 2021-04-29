@@ -59,13 +59,10 @@ private:
 
 struct ClientInfo
 {
-    struct SocketAddress
-    {
-        SockAddrIn sin;
-    }                        address;   // Адрес клиента
+    SockAddrIn address;                 // Адрес клиента
 
     std::vector<uint8>       bindata;   // Непосредственно принятые данные
-    void *benv;      // Буфер событий libevent
+    void *benv;                         // Буфер событий libevent
     std::vector<uint8>       message;   // Здесь хранится принятое сообщение - сначала строка, а потом дополнительные
                                         // данные, если есть
     std::vector<std::string> words;     // Разбитая на слова текстовая часть сообщения

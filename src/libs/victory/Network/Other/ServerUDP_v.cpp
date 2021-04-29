@@ -165,7 +165,7 @@ void ServerUDP::CallbackError(struct bufferevent *bev, short error, void *_args)
 
     if (error & BEV_EVENT_READING)
     {
-        LOGWRITEF("Client %s disconnected", server->clients[bev].address.sin.ToStringFull().c_str());
+        LOGWRITEF("Client %s disconnected", server->clients[bev].address.ToStringFull().c_str());
 
         server->clients.erase(bev);
     }
