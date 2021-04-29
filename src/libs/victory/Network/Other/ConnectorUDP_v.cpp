@@ -15,7 +15,16 @@ void ConnectorUDP::AcceptServer(pchar _ip, uint16 _port)
 
 void ConnectorUDP::SendMessage(pchar message)
 {
-    int num_bytes = sendto(sock_fd, message, (int)std::strlen(message), 0, addr.GetAddr(), sizeof(addr));
+    int need_bytes = (int)std::strlen(message);
 
-    LOGWRITEF("Sended %d bytes", num_bytes);
+    int sending_bytes = sendto(sock_fd, message, (int)std::strlen(message), 0, addr.GetAddr(), sizeof(addr));
+
+    if (need_bytes == sending_bytes)
+    {
+        LOGWRITEF("Send message \"%s\"", message);
+    }
+    else
+    {
+        LOGERROR("Can not send message");
+    }
 }
