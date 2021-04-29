@@ -8,9 +8,17 @@ function ShowHint {
 }
 
 
-function MakeProject {
-    rm -R -f ../../generated/$1/VictoryU3D
-    cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/$1/VictoryU3D -DCMAKE_BUILD_TYPE=$2
+function MakeProjectDebug {
+    rm -R -f ../../generated/debug/VictoryU3D
+    cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/debug/VictoryU3D -DCMAKE_BUILD_TYPE=Debug
+    ready_make_debug=1
+}
+
+
+function MakeProjectRelease {
+    rm -R -f ../../generated/release/VictoryU3D
+    cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/release/VictoryU3D -DCMAKE_BUILD_TYPE=Release
+    ready_make_release=1
 }
 
 
@@ -21,12 +29,14 @@ function MakeProjects {
 
     if [ $1 -eq 1 ]
     then
-        MakeProject "debug" "Debug"
+        ready_make_debug=0
+        MakeProjectDebug &
     fi
 
     if [ $2 -eq 1 ]
     then
-        MakeProject "release" "Release"
+        ready_make_release=0
+        MakeProjectRelease &
     fi
 }
 
@@ -54,11 +64,17 @@ function BuildProjects {
 
     if [ $1 -eq 1 ]
     then
-        BuildProject "debug"
+        while [ $ready_make_debug -eq 0 ]
+        do
+        done
+        BuildProject "debug" &
     fi
 
     if [ $2 -eq 1 ]
     then
+        while [ $ready_make_release -eq 0 ]
+        do
+        done
         BuildProject "release"
     fi
 }
@@ -113,8 +129,8 @@ case $2 in
                 exit              ;;
 esac
 
-ready_make_debug=0
-ready_make_release=0
+ready_make_debug=1
+ready_make_release=1
 
 if [ $isMake -eq 1 ]
 then
