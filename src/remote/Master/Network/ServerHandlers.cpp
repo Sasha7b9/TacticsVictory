@@ -36,7 +36,7 @@ static void HandleInfoLivingRoms(uint id, ClientInfo &info)
         if (!ci.name.empty())
         {
             stream << ci.name << ',';
-            stream << ci.address.ToStringHost().c_str() << ',';
+            stream << ci.address.sin.ToStringHost().c_str() << ',';
             stream << (std::rand() % 1000) << ',';
             stream << 123 << '|';
         }
