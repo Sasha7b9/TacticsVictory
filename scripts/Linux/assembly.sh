@@ -138,8 +138,8 @@ case $2 in
                 exit              ;;
 esac
 
-env ready_make_debug=1
-env ready_make_release=1
+ready_make_debug=1
+ready_make_release=1
 
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! start make projects"
 
@@ -147,6 +147,8 @@ if [ $isMake -eq 1 ]
 then
     MakeProjects $isBuildDebug $isBuildRelease
 fi
+
+echo $ready_make_debug
 
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! start build projects"
 
