@@ -126,6 +126,7 @@ then
         rd_mk_db=$(<ready_make_debug)
         while [ $rd_mk_db -eq "0" ]
         do
+            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! not ready debug"
             rd_mk_db=$(<ready_make_debug)
         done
         BuildProject "debug" &
@@ -134,8 +135,9 @@ then
     if [ $isBuildRelease -eq 1 ]
     then
         rd_mk_rl=$(<ready_make_release)
-        while [ $rd_mk_rl -eq 0 ]
+        while [ $rd_mk_rl -eq "0" ]
         do
+            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! not ready release"
             rd_mk_db=$(<ready_make_release)
         done
         BuildProject "release" &
