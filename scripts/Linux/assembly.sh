@@ -9,10 +9,12 @@ function ShowHint {
 
 
 function MakeProjectDebug {
+    echo $ready_make_debug
     rm -R -f ../../generated/debug/VictoryU3D
     cmake ../../src/CMakeLists.txt -G "CodeBlocks - Unix Makefiles" -B../../generated/debug/VictoryU3D -DCMAKE_BUILD_TYPE=Debug
     echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! make debug is done !!!"
     ready_make_debug=1
+    echo $ready_make_debug
 }
 
 
@@ -70,7 +72,7 @@ function BuildProjects {
         do
             :
 #            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! wait ready make debug"
-            echo $ready_make_debug
+#            echo $ready_make_debug
         done
         BuildProject "debug" &
     fi
