@@ -138,7 +138,7 @@ then
         while [ $rd_mk_rl -eq "0" ]
         do
             echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! not ready release"
-            rd_mk_db=$(<ready_make_release)
+            rd_mk_rl=$(<ready_make_release)
         done
         BuildProject "release" &
     fi
