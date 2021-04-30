@@ -57,11 +57,7 @@ void ServerTCP::Run(uint16 port)
         LOGERRORF("Error bind()");
     }
 
-#ifdef WIN32
-    if (listen((SOCKET)listener, 100) < 0)
-#else
-    if (listen((int)listener, 100) < 0)
-#endif
+    if(listen((socket_t)listener, 100) < 0)
     {
         LOGERROR("Can not call listen()");
     }
