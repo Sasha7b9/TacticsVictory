@@ -50,6 +50,8 @@ static void HandleInfoLivingRoms(uint id, ClientInfo &info)
 
 static void HandlerPing(uint id, ClientInfo &info)
 {
+    LOG_FUNC_ENTER();
+
     TheServer.SendAnswer(info.benv, id, MSG_NTW_PING, info.GetRawData(), 4);
 }
 
