@@ -128,6 +128,7 @@ void Client::RunMasterServer()
         {
             LOGWRITE("Can not connect to master server");
             TheGUI->AppendWarning("Can't connect to master server");
+
             TheConnMaster.Connect();
         },
         []()
