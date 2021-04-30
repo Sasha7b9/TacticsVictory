@@ -60,25 +60,17 @@ if(WIN32)
     add_subdirectory_with_folder("local" local/Editor)
     add_subdirectory_with_folder("local" local/Hangar)
     add_subdirectory_with_folder("local" local/Updater)
-endif()
 
-if(WIN32)
     add_subdirectory_with_folder("common" common/Battle)
     add_subdirectory_with_folder("common" common/Controller)
+    add_subdirectory_with_folder("common" common/Monitor)
+    add_subdirectory_with_folder("common" common/Uploader)
+
+    add_subdirectory_with_folder("remote" remote/DataBase)
 endif()
 
 add_subdirectory_with_folder("common" common/LivingRoom)
-
-if(WIN32)
-    add_subdirectory_with_folder("common" common/Monitor)
-    add_subdirectory_with_folder("common" common/Uploader)
-endif()
-
 add_subdirectory_with_folder("remote" remote/Master)
-
-if(WIN32)
-    add_subdirectory_with_folder("remote" remote/DataBase)
-endif()
 
 add_subdirectory_with_folder("libs" libs/victory)
 
