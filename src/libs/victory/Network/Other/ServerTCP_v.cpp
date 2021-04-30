@@ -81,11 +81,7 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
     struct sockaddr_storage ss;
     socklen_t slen = sizeof(ss);
 
-#ifdef WIN32
-    int fd = (int)accept((SOCKET)listener, (struct sockaddr *)&ss, &slen);
-#else
-    int fd = (int)accept((int)listener, (struct sockaddr *)&ss, &slen);
-#endif
+    int fd = (int)accept((socket_t)listener, (struct sockaddr *)&ss, &slen);
 
     sockaddr addr;
     socklen_t len = sizeof(addr);
