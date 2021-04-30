@@ -18,5 +18,8 @@ void MapLivingRooms::Append(pchar ip, uint16 port)
 
 void MapLivingRooms::SenMessageToAll(pchar message)
 {
-    // TheLivingRoomUDP.SendMessage(message.c_str());
+    for (auto &connector : connectors)
+    {
+        connector.second.SendMessage(message);
+    }
 }
