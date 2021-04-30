@@ -11,17 +11,18 @@
 #pragma GCC diagnostic ignored "-Wclass-memaccess"
 #endif
 
+#include <Urho3D/Container/Str.h>
+
+using namespace Urho3D;
 
 #undef Bool
 #include <rapidjson/document.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 
-
 #include <event2/bufferevent.h>
 #include <event2/buffer.h>
 #include <event2/listener.h>
-
 
 #ifdef WIN32
 #pragma warning(pop)

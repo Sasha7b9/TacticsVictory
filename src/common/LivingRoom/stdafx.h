@@ -8,6 +8,10 @@
 #pragma GCC diagnostic ignored "-Wclass-memaccess"
 #endif
 
+#include <Urho3D/Container/Str.h>
+
+using namespace Urho3D;
+
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
 #include <rapidjson/stringbuffer.h>

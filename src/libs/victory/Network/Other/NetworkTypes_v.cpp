@@ -1,27 +1,12 @@
 // 2021/04/07 20:56:25 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Other/NetworkTypes_v.h"
+#include "Utils/GlobalFunctions_.h"
 
 
 std::string SockAddrIn::ToStringFull() const
 {
-    char buffer[100];
-
-#ifdef WIN32
-    sprintf_s(buffer, 100, "%d.%d.%d.%d:%d", addr.sin_addr.S_un.S_un_b.s_b1,
-        addr.sin_addr.S_un.S_un_b.s_b2,
-        addr.sin_addr.S_un.S_un_b.s_b3,
-        addr.sin_addr.S_un.S_un_b.s_b4,
-        addr.sin_port);
-#else
-    sprintf(buffer, "%d.%d.%d.%d:%d", (uint8)addr.sin_addr.s_addr,
-        (uint8)(addr.sin_addr.s_addr >> 8),
-        (uint8)(addr.sin_addr.s_addr >> 16),
-        (uint8)(addr.sin_addr.s_addr >> 24),
-        addr.sin_port);
-#endif
-
-    return std::string(buffer);
+    return ToStringHost() + ":" + GF::IntToString(addr.sin_port, 0);
 }
 
 
@@ -48,39 +33,6 @@ std::string SockAddrIn::ToStringHost() const
 void SockAddrIn::SetHostIP(void *ip)
 {
     addr = *((sockaddr_in *)ip);
-
-//#ifdef WIN32
-//    if (addr.sin_addr.S_un.S_un_b.s_b1 == 127 &&
-//        addr.sin_addr.S_un.S_un_b.s_b2 == 0 &&
-//        addr.sin_addr.S_un.S_un_b.s_b3 == 0 &&
-//        addr.sin_addr.S_un.S_un_b.s_b4 == 1)
-//    {
-//        system("ipconfig > address.txt");
-//    }
-//#else
-//    if ((uint8)(addr.sin_addr.s_addr >> 0) == 127 &&
-//        (uint8)(addr.sin_addr.s_addr >> 8) == 0 &&
-//        (uint8)(addr.sin_addr.s_addr >> 16) == 0 &&
-//        (uint8)(addr.sin_addr.s_addr >> 24) == 1)
-//    {
-//        [[maybe_unused]] auto result = system("wget -qO- eth0.me > address.txt");
-//
-//        FS::File file;
-//
-//        if (!file.Open("address.txt", __FILE__, __LINE__))
-//        {
-//            LOGERROR("Can not open file with address");
-//        }
-//
-//        std::string ip;
-//
-//        file.ReadString(ip);
-//
-//        inet_aton(ip.c_str(), &addr.sin_addr);
-//
-//        FS::RemoveFile("address.txt");
-//    }
-//#endif
 }
 
 

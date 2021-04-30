@@ -8,6 +8,7 @@ include_directories(.
                     ../../ThirdParty/libevent/compat
                     ../../ThirdParty/libevent/include
                     ../../ThirdParty/libevent/build/include
+                    ../../../../Urho3D/generated/${SUB_DIR}/include
                     ../../../../Urho3D/generated/${SUB_DIR}/include/Urho3D/ThirdParty)
 
 add_definitions(-DURHO3D_STATIC_DEFINE -DEVENT__HAVE_SA_FAMILY_T -DHAVE_CONFIG_H -DTINYTEST_LOCAL)

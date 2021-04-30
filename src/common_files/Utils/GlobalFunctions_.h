@@ -1,5 +1,6 @@
 // 2021/04/08 22:06:06 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include <string>
 
 
 namespace GF
@@ -18,9 +19,9 @@ namespace GF
 
     void DelayMS(uint delay);
 
-#ifdef U3D
-
     std::string IntToString(int value, uint length);
+
+#ifdef U3D
 
     // ¬озвращает в address aдрес, если в векторе есть строка вида
     // "-address:xxxx", в port - адрес порта, если в векторе есть строка вида "-port:xx"

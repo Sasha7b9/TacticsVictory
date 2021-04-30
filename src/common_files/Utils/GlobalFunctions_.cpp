@@ -35,9 +35,6 @@ int64 GF::Timer::TimeMS()
 }
 
 
-#ifdef U3D
-
-
 std::string GF::IntToString(int value, uint length)
 {
     String str(value);
@@ -49,6 +46,9 @@ std::string GF::IntToString(int value, uint length)
 
     return str.CString();
 }
+
+
+#ifdef U3D
 
 
 bool GF::GetAddressPort(const Vector<std::string> &words, std::string &address, uint16 &port)
