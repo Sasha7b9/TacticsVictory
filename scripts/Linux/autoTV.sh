@@ -5,7 +5,7 @@ do
     git pull > out.txt
     FILENAME=out.txt
     FILESIZE=$(stat -c%s "$FILENAME")
-    if [ $FILESIZE != "20" ]            // 20 - size string "Already up to date."
+    if [ $FILESIZE != "20" ]            #  20 - size string "Already up to date."
     then
 
         ./stop.sh all
