@@ -43,7 +43,8 @@ void ServerTCP::Run(uint16 port)
     }
 #endif
 
-    SockAddrIn sin(AF_INET, "", port);
+    SockAddrIn sin;
+    sin.Init(AF_INET, "127.0.0.1", port);
 
     if (sin.Bind(listener) >= 0)
     {

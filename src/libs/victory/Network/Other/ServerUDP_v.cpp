@@ -43,7 +43,8 @@ void ServerUDP::Run(uint16 port)
     }
 #endif
 
-    SockAddrIn sin(AF_INET, 0, port);
+    SockAddrIn sin;
+    sin.Init(AF_INET, "127.0.0.1", port);
 
     if (sin.Bind(sock) >= 0)
     {

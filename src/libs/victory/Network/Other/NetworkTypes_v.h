@@ -30,8 +30,6 @@ struct TaskMasterServer
 
 struct SockAddrIn
 {
-    SockAddrIn(uint16 family = AF_INET, pchar ip = "127.0.0.1", uint16 port = 0) { Init(family, ip, port); }
-
     void Init(uint16 family, pchar ip, uint16 port);
 
     // ¬озвращает количество прин€тых байт
