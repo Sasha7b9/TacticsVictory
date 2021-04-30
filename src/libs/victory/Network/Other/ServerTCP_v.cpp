@@ -135,6 +135,8 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
 
 void ServerTCP::SendAnswer(void *bev, uint id, pchar message, void *data, uint size_data)
 {
+    LOGWRITEF("answer \"%s\"", message);
+
     bufferevent_write((struct bufferevent *)bev, &id, 4);
 
     uint full_size = (uint)std::strlen(message) + 1 + size_data;
