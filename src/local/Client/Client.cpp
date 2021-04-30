@@ -111,13 +111,13 @@ void Client::Start()
 
     TheInput->SetMouseMode(MouseMode::MM_FREE);
 
-    ParseArguments();
+    RunMasterServer();
 
     TheLivingRoomUDP.AcceptServer(TheSettings.GetString("master_server", "host"), 40001);
 }
 
 
-void Client::ParseArguments()
+void Client::RunMasterServer()
 {
     TheConnMaster.Init(TheSettings.GetString("master_server", "host"),
                (uint16)TheSettings.GetInt("master_server", "port"));

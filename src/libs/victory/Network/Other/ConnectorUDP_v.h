@@ -8,8 +8,6 @@ class ConnectorUDP
 {
 public:
 
-    void SetTasks();
-
     void AcceptServer(pchar ip, uint16 port);
 
     void SendMessage(pchar message);

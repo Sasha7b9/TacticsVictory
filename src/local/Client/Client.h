@@ -21,7 +21,7 @@ public:
     void SetWindowTitleAndIcon();
 
     // Разобрать аргументы командной строки
-    void ParseArguments();
+    void RunMasterServer();
 
 private:
 
@@ -34,7 +34,9 @@ private:
     void TuneEngineParameters();
     void CreateGUI();
     void InitMouse();
+
     void SetTasksMasterServer();
+    void SetTasksLivingRoomUDP();
 
     void HandlerUpdate(StringHash, VariantMap &);
     void HandlerPostRenderUpdate(StringHash, VariantMap &);
