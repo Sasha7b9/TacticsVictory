@@ -347,6 +347,8 @@ void ConnectorTCP::ReceiveData()
         return;
     }
 
+    LOGWRITE("Data received");
+
     mutex.lock();
 
     static const int SIZE_CHUNK = 1024;

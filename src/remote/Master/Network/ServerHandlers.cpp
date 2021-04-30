@@ -64,8 +64,6 @@ static void HandlerSetNameLivingRoom(uint, ClientInfo &info)
 
 static void HandlerGet(uint id, ClientInfo &info)
 {
-    LOG_FUNC_ENTER();
-
     std::vector<std::string> &words = info.words;
 
     if (words.size() > 0)

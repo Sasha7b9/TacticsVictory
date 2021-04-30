@@ -135,8 +135,6 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
 
 void ServerTCP::SendAnswer(void *bev, uint id, pchar message, void *data, uint size_data)
 {
-    LOGWRITEF("answer \"%s\"", message);
-
     if (bufferevent_write((struct bufferevent *)bev, &id, 4) == -1)
     {
         LOGERROR("");
@@ -225,7 +223,7 @@ void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
             {
                 if (info.words[i] != "ping")
                 {
-                    LOGWRITEF("received \"%s\"", info.words[i].c_str());
+//                    LOGWRITEF("received \"%s\"", info.words[i].c_str());
                 }
             }
 
@@ -246,8 +244,6 @@ void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 
 void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *_args)
 {
-    LOG_FUNC_ENTER();
-
     ServerTCP *server = ((CallbackArgs *)_args)->server;
 
     if (error & BEV_EVENT_READING)
