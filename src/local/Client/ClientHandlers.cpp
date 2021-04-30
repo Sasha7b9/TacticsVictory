@@ -2,11 +2,20 @@
 #include "stdafx.h"
 #include "Client.h"
 #include "Network/Other/ConnectorTCP_v.h"
+#include "Network/Other/ConnectorUDP_v.h"
+#include "Utils/GlobalFunctions_.h"
 
 
 void Client::HandlerUpdate(StringHash, VariantMap &)
 {
-    TheLivingRoomUDP.SendMessage("Test message");
+    int64 prev_time = -100000;
+
+    if (GF::Timer::TimeMS() - prev_time > 2000)
+    {
+        prev_time = GF::Timer::TimeMS();
+
+        TheLivingRoomUDP.SendMessage("Test message");
+    }
 }
 
 void Client::HandlerPostRenderUpdate(StringHash, VariantMap &)
