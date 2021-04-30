@@ -11,6 +11,8 @@ public:
 
     static void Append(pchar ip, uint16 port);
 
+    static void Update();
+
     static void SenMessageToAll(pchar message);
 
     // Обрабатывает полученную от мастер-сервера информацию о доступных гостиных
