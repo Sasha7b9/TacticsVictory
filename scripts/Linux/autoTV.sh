@@ -12,7 +12,6 @@ do
 
         echo
         echo Start build ...
-        echo
 
         time ./assembly.sh build release 1>good.build  2>fail.build
         FILENAME=fail.build
