@@ -33,7 +33,7 @@ static ServerTask taskGetInfoLivingRooms = {
     },
     [](pchar, void *data, uint)
     {
-        TheMenu->pageFindServer->SetServersInfo((char *)data);
+        MapLivingRooms::ParseInfo(data);
     }
 };
 

@@ -13,6 +13,9 @@ public:
 
     static void SenMessageToAll(pchar message);
 
+    // Обрабатывает полученную от мастер-сервера информацию о доступных гостиных
+    static void ParseInfo(void *data);
+
 private:
 
     static std::map<std::pair<pchar, uint16>, ConnectorUDP> connectors;

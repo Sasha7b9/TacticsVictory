@@ -1,6 +1,7 @@
 // 2021/04/30 20:21:27 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#include "defines.h"
+#include "stdafx.h"
 #include "Network/MapLivingRooms.h"
+#include "GUI/Menu/Menu.h"
 
 
 std::map<std::pair<pchar, uint16>, ConnectorUDP> MapLivingRooms::connectors;
@@ -22,4 +23,10 @@ void MapLivingRooms::SenMessageToAll(pchar message)
     {
         connector.second.SendMessage(message);
     }
+}
+
+
+void MapLivingRooms::ParseInfo(void *data)
+{
+    TheMenu->pageFindServer->SetServersInfo((char *)data);
 }
