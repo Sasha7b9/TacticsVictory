@@ -135,7 +135,7 @@ void Client::ParseArguments()
             TheGUI->AppendInfo("Connection to master server established");
             LOGWRITE("Connection to master server established");
 
-            TheConnMaster.SetTasks();
+            TheClient->SetTasksMasterServer();
         },
         []()
         {

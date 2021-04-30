@@ -63,8 +63,6 @@ public:
 
     void Disconnect();
 
-    void SetTasks();
-
     void Update();
 
     void Destroy();

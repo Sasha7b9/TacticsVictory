@@ -46,7 +46,7 @@ void LivingRoom::OnConnect()
 
     TheLivingRoom.SendNameToMasterServer();
 
-    TheConnMaster.SetTasks();
+    TheLivingRoom.SetTasksMasterServer();
 
     static TaskMasterServer taskPort =
     {

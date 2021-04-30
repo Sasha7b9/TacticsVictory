@@ -18,4 +18,6 @@ private:
     static int MainCycle();
 
     static void OnDisconnect();
+
+    void SetTasksMasterServer();
 };

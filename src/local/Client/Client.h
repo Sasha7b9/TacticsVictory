@@ -34,6 +34,7 @@ private:
     void TuneEngineParameters();
     void CreateGUI();
     void InitMouse();
+    void SetTasksMasterServer();
 
     void HandlerUpdate(StringHash, VariantMap &);
     void HandlerPostRenderUpdate(StringHash, VariantMap &);

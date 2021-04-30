@@ -23,7 +23,7 @@ static TaskMasterServer taskPing =
 };
 
 
-void ConnectorTCP::SetTasks()
+void LivingRoom::SetTasksMasterServer()
 {
     TheConnMaster.SetTask(1000, &taskPing);
 }
