@@ -422,8 +422,6 @@ void ConnectorTCP::ExecuteTasks()
 
     for (TaskMasterServer *task : new_tasks)
     {
-        LOGWRITEF("task %x", task);
-
         if (now >= task->prev_time + task->delta_time)
         {
             uint id = task->request();
