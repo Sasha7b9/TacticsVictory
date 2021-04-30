@@ -86,11 +86,7 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
     sockaddr addr;
     socklen_t len = sizeof(addr);
 
-#ifdef WIN32
-    getsockname((SOCKET)fd, &addr, &len);
-#else
-    getsockname(fd, &addr, &len);
-#endif
+    getsockname((socket_t)fd, &addr, &len);
 
     if (fd < 0)
     {
