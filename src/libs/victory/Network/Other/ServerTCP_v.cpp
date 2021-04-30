@@ -193,6 +193,7 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
 
 void ServerTCP::CallbackWrite(struct bufferevent *, void *)
 {
+    LOG_FUNC_ENTER();
 }
 
 
