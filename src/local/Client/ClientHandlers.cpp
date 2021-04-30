@@ -8,13 +8,18 @@
 
 void Client::HandlerUpdate(StringHash, VariantMap &)
 {
-    int64 prev_time = -100000;
+    static int64 prev_time = -100000;
 
     if (GF::Timer::TimeMS() - prev_time > 2000)
     {
         prev_time = GF::Timer::TimeMS();
 
-        TheLivingRoomUDP.SendMessage("Test message");
+        static int counter = 0;
+
+        std::string message("Test message ");
+        message += GF::IntToString(++counter, 0);
+
+        TheLivingRoomUDP.SendMessage(message.c_str());
     }
 }
 
