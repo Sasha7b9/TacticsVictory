@@ -140,7 +140,7 @@ void SockAddrIn::Init(uint16 family, pchar ip, uint16 port)
     addr.sin_family = family;
     addr.sin_port = htons(port);
     
-    int result = inet_pton(family, ip, &addr.sin_addr.S_un.S_addr);
+    int result = inet_pton(family, ip, &addr.sin_addr);
 
     if (result != 1)
     {
