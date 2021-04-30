@@ -137,17 +137,29 @@ void ServerTCP::SendAnswer(void *bev, uint id, pchar message, void *data, uint s
 {
     LOGWRITEF("answer \"%s\"", message);
 
-    bufferevent_write((struct bufferevent *)bev, &id, 4);
+    if (bufferevent_write((struct bufferevent *)bev, &id, 4) == -1)
+    {
+        LOGERROR("");
+    }
 
     uint full_size = (uint)std::strlen(message) + 1 + size_data;
 
-    bufferevent_write((struct bufferevent *)bev, &full_size, 4);
+    if (bufferevent_write((struct bufferevent *)bev, &full_size, 4) == -1)
+    {
+        LOGERROR("");
+    }
 
-    bufferevent_write((struct bufferevent *)bev, message, std::strlen(message) + 1);
+    if (bufferevent_write((struct bufferevent *)bev, message, std::strlen(message) + 1) == -1)
+    {
+        LOGERROR("");
+    }
 
     if (data)
     {
-        bufferevent_write((struct bufferevent *)bev, data, size_data);
+        if (bufferevent_write((struct bufferevent *)bev, data, size_data) == -1)
+        {
+            LOGERROR("");
+        }
     }
 }
 
@@ -178,11 +190,7 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
 
     while (readed)
     {
-//        buffer[readed] = '\0';
-
         data.insert(data.end(), &buffer[0], &buffer[readed]);
-
-//        LOGWRITEF("received \"%s\"", buffer);
 
         readed = bufferevent_read(bev, buffer, SIZE_CHUNK - 1);
     }
@@ -193,7 +201,7 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
 
 void ServerTCP::CallbackWrite(struct bufferevent *, void *)
 {
-    LOG_FUNC_ENTER();
+
 }
 
 
