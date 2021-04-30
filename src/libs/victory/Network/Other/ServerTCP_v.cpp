@@ -46,15 +46,9 @@ void ServerTCP::Run(uint16 port)
     SockAddrIn sin;
     sin.Init(AF_INET, nullptr, port);
 
-    LOGWRITEF("Attempt bind to port %d", port);
-
     if (sin.Bind(listener) >= 0)
     {
         LOGWRITEF("Bind to port %d is Ok! Wait connections ...", port);
-    }
-    else
-    {
-        LOGERRORF("Error bind()");
     }
 
     if(listen((socket_t)listener, 100) < 0)
