@@ -126,7 +126,7 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
         info.address.SetHostIP(&ss);
         info.benv = bev;
 
-        LOGWRITEF("Connection from %s established", info.address.ToStringFull().c_str());
+        LOGWRITEF("Established connection from %s", info.address.ToStringFull().c_str());
 
         args->server->clients[bev] = info;
     }
@@ -248,7 +248,7 @@ void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *_args)
 
     if (error & BEV_EVENT_READING)
     {
-        LOGWRITEF("Client %s disconnected", server->clients[bev].address.ToStringFull().c_str());
+        LOGWRITEF("Lost connection from %s", server->clients[bev].address.ToStringFull().c_str());
 
         server->clients.erase(bev);
     }
