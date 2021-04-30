@@ -43,21 +43,9 @@ void ServerUDP::Run(uint16 port)
     }
 #endif
 
-    struct sockaddr_in sin;
-    sin.sin_family = AF_INET;
-    sin.sin_addr.s_addr = 0;
-    sin.sin_port = htons(port);
+    SockAddrIn sin(AF_INET, 0, port);
 
-#ifdef WIN32
-
-    if (bind((SOCKET)sock, (struct sockaddr *)&sin, sizeof(sin)) < 0)
-#else
-    if (bind((int)sock, (struct sockaddr *)&sin, sizeof(sin)) < 0)
-#endif
-    {
-        LOGERROR("Can not bind to port");
-    }
-    else
+    if (sin.Bind(sock) >= 0)
     {
         LOGWRITEF("Bind to port %d for broadcast messages is Ok! Wait messages ...", port);
     }
