@@ -340,14 +340,12 @@ void ConnectorTCP::Update()
 
 void ConnectorTCP::ReceiveData()
 {
-    LOG_FUNC_ENTER();
-
     if (!IsConnected())
     {
         return;
     }
 
-    LOGWRITE("Data received");
+    LOG_FUNC_ENTER();
 
     mutex.lock();
 
@@ -359,6 +357,8 @@ void ConnectorTCP::ReceiveData()
 
     while (received > 0)
     {
+        LOGWRITE("Data received");
+
         data.insert(data.end(), buffer, buffer + received);
 
         received = connector.Receive(buffer, SIZE_CHUNK);

@@ -49,38 +49,38 @@ void SockAddrIn::SetHostIP(void *ip)
 {
     addr = *((sockaddr_in *)ip);
 
-#ifdef WIN32
-    if (addr.sin_addr.S_un.S_un_b.s_b1 == 127 &&
-        addr.sin_addr.S_un.S_un_b.s_b2 == 0 &&
-        addr.sin_addr.S_un.S_un_b.s_b3 == 0 &&
-        addr.sin_addr.S_un.S_un_b.s_b4 == 1)
-    {
-        system("ipconfig > address.txt");
-    }
-#else
-    if ((uint8)(addr.sin_addr.s_addr >> 0) == 127 &&
-        (uint8)(addr.sin_addr.s_addr >> 8) == 0 &&
-        (uint8)(addr.sin_addr.s_addr >> 16) == 0 &&
-        (uint8)(addr.sin_addr.s_addr >> 24) == 1)
-    {
-        [[maybe_unused]] auto result = system("wget -qO- eth0.me > address.txt");
-
-        FS::File file;
-
-        if (!file.Open("address.txt", __FILE__, __LINE__))
-        {
-            LOGERROR("Can not open file with address");
-        }
-
-        std::string ip;
-
-        file.ReadString(ip);
-
-        inet_aton(ip.c_str(), &addr.sin_addr);
-
-        FS::RemoveFile("address.txt");
-    }
-#endif
+//#ifdef WIN32
+//    if (addr.sin_addr.S_un.S_un_b.s_b1 == 127 &&
+//        addr.sin_addr.S_un.S_un_b.s_b2 == 0 &&
+//        addr.sin_addr.S_un.S_un_b.s_b3 == 0 &&
+//        addr.sin_addr.S_un.S_un_b.s_b4 == 1)
+//    {
+//        system("ipconfig > address.txt");
+//    }
+//#else
+//    if ((uint8)(addr.sin_addr.s_addr >> 0) == 127 &&
+//        (uint8)(addr.sin_addr.s_addr >> 8) == 0 &&
+//        (uint8)(addr.sin_addr.s_addr >> 16) == 0 &&
+//        (uint8)(addr.sin_addr.s_addr >> 24) == 1)
+//    {
+//        [[maybe_unused]] auto result = system("wget -qO- eth0.me > address.txt");
+//
+//        FS::File file;
+//
+//        if (!file.Open("address.txt", __FILE__, __LINE__))
+//        {
+//            LOGERROR("Can not open file with address");
+//        }
+//
+//        std::string ip;
+//
+//        file.ReadString(ip);
+//
+//        inet_aton(ip.c_str(), &addr.sin_addr);
+//
+//        FS::RemoveFile("address.txt");
+//    }
+//#endif
 }
 
 
