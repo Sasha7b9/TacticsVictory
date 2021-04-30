@@ -10,7 +10,7 @@ do
 
         ./stop.sh all
 
-        time ./assembly.sh build all 1>good.build  2>fail.build
+        time ./assembly.sh build release 1>good.build  2>fail.build
         FILENAME=fail.build
         FILESIZE=$(stat -c%s "$FILENAME")
 
