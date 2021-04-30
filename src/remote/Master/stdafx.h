@@ -1,7 +1,6 @@
 // Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
-
 #ifdef WIN32
 #pragma warning(push, 0)
 #define _WINSOCKAPI_
