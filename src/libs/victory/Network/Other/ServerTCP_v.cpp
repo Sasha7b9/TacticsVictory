@@ -238,6 +238,8 @@ void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 
 void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *_args)
 {
+    LOG_FUNC_ENTER();
+
     ServerTCP *server = ((CallbackArgs *)_args)->server;
 
     if (error & BEV_EVENT_READING)
