@@ -56,8 +56,6 @@ static void HandlerPing(uint id, ClientInfo &info)
 
 static void HandlerSetNameLivingRoom(uint, ClientInfo &info)
 {
-    LOG_FUNC_ENTER();
-
     char *name = (char *)info.GetRawData();
 
     info.name = name;
