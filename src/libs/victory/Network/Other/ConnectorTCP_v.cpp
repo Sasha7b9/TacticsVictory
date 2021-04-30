@@ -93,6 +93,17 @@ ssize_t BaseConnectorTCP::Receive(void *data, uint size)
 {
     fd_set set = { 1, { connection->handle() } };
 
+    {
+        static int64 prev_time = -10000;
+
+        if (GF::Timer::TimeMS() - prev_time > 1000)
+        {
+            prev_time = GF::Timer::TimeMS();
+
+            LOGWRITEF("handle->handle() = %d", connection->handle());
+        }
+    }
+
 #ifdef WIN32
     TIMEVAL time = { 0, 1000 };
 #else
