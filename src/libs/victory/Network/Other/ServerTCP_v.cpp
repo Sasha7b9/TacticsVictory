@@ -178,7 +178,11 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
     {
         data.insert(data.end(), &buffer[0], &buffer[readed]);
 
-        readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
+        readed = bufferevent_read(bev, buffer, SIZE_CHUNK - 1);
+
+        buffer[readed] = '\0';
+
+        LOGWRITE("received \"%s\"", buffer);
     }
 
     ProcessClient(args->server->clients[bev], args->server);
