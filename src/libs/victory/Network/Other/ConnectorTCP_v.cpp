@@ -123,6 +123,8 @@ ssize_t BaseConnectorTCP::Receive(void *data, uint size)
         }
     }
 
+    LOGWRITEF("ready = %d", ready);
+
     if (ready == 1)
     {
         ssize_t num_bytes = connection->read(data, size);
