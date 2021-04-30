@@ -52,8 +52,6 @@ void LivingRoom::OnConnect()
     {
         []()
         {
-            LOGWRITE("Task port");
-
             return TheConnMaster.SendRequest(MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP);
         },
         [](pchar, void *data, uint)
