@@ -46,7 +46,7 @@ void ServerTCP::Run(uint16 port)
 #endif
 
     SockAddrIn sin;
-    sin.Init(AF_INET, nullptr, port);
+    sin.Init(AF_INET, "", port);
 
     LOGWRITEF("Attempt bind to port %d", port);
 
