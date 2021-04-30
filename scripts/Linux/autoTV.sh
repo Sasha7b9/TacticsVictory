@@ -8,6 +8,8 @@ do
     if [ $FILESIZE != "20" ]            // 20 - size string "Already up to date."
     then
 
+        ./stop.sh all
+
         time ./assembly.sh build all 1>good.build  2>fail.build
         FILENAME=fail.build
         FILESIZE=$(stat -c%s "$FILENAME")
@@ -23,6 +25,9 @@ do
             ./send_good.sh
             rm good.build
         fi
+
+        ./start.sh all
+
     fi
     sleep 1
 done
