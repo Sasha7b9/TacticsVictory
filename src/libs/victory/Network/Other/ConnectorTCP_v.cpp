@@ -417,7 +417,6 @@ void ConnectorTCP::ProcessData()
 void ConnectorTCP::ExecuteTasks()
 {
     LOG_FUNC_ENTER();
-    LOGWRITE("Test");
 
     int64 now = GF::Timer::TimeMS();
 
