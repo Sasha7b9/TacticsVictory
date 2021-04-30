@@ -1,7 +1,9 @@
 // 2021/04/11 20:20:59 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Client.h"
+#include "FileSystem/ConfigurationFile_v.h"
 #include "GUI/Menu/Menu.h"
+#include "Network/MapLivingRooms.h"
 #include "Network/Other/ConnectorTCP_v.h"
 #include "Network/Other/NetworkTypes_v.h"
 #include "Utils/GlobalFunctions_.h"
@@ -42,4 +44,22 @@ void Client::SetTasksMasterServer()
 {
     TheConnMaster.SetTask(1000, &taskPing);
     TheConnMaster.SetTask(1000, &taskGetInfoLivingRooms);
+
+    static ServerTask taskPortLivingRoom =
+    {
+        []()
+        {
+            return TheConnMaster.SendRequest(MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP);
+        },
+        [](pchar, void *data, uint)
+        {
+            int delta = *((int *)data);
+
+            uint16 port_udp = (uint16)(TheSettings.GetInt("master_server", "port") + delta);
+
+            LOGWRITEF("Number port for connecting to Living Room %d", port_udp);
+        }
+    };
+
+    TheConnMaster.RunTask(&taskPortLivingRoom);
 }
