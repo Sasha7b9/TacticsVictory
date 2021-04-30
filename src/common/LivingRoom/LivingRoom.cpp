@@ -48,7 +48,7 @@ void LivingRoom::OnConnect()
 
     TheLivingRoom.SetTasksMasterServer();
 
-    static TaskMasterServer taskPort =
+    static ServerTask taskPort =
     {
         []()
         {

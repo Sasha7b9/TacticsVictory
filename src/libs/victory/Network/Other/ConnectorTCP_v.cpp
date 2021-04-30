@@ -397,7 +397,7 @@ void ConnectorTCP::ProcessData()
                     size_buffer = size_answer - (uint)std::strlen(answer) - 1;
                 }
 
-                TaskMasterServer *task = it->second;
+                ServerTask *task = it->second;
 
                 task->handler_answer(answer, buffer, size_buffer);
 
@@ -424,7 +424,7 @@ void ConnectorTCP::ExecuteTasks()
 {
     int64 now = GF::Timer::TimeMS();
 
-    for (TaskMasterServer *task : new_tasks)
+    for (ServerTask *task : new_tasks)
     {
         if (now >= task->prev_time + task->delta_time)
         {
@@ -438,7 +438,7 @@ void ConnectorTCP::ExecuteTasks()
         }
     }
 
-    while (new_tasks.size() && TaskMasterServer::ExistCompleted(new_tasks))
+    while (new_tasks.size() && ServerTask::ExistCompleted(new_tasks))
     {
         for (auto it = new_tasks.begin(); it < new_tasks.end(); it++)
         {
@@ -452,7 +452,7 @@ void ConnectorTCP::ExecuteTasks()
 }
 
 
-void ConnectorTCP::SetTask(int64 dT, TaskMasterServer *task)
+void ConnectorTCP::SetTask(int64 dT, ServerTask *task)
 {
     task->delta_time = dT;
 
@@ -462,7 +462,7 @@ void ConnectorTCP::SetTask(int64 dT, TaskMasterServer *task)
 }
 
 
-void ConnectorTCP::RunTask(TaskMasterServer *task)
+void ConnectorTCP::RunTask(ServerTask *task)
 {
     task->delta_time = -1;
 
@@ -485,7 +485,7 @@ bool ConnectorTCP::ExistConnection()
 
     for (auto &it : wait_tasks)
     {
-        TaskMasterServer *task = it.second;
+        ServerTask *task = it.second;
 
         if (now - task->last_tive_receive < 1500)
         {

@@ -14,7 +14,7 @@
                                             MSG_NTW_GET " port livingroom_broadcast_udp"   // порта мастер-сервера
 
 
-struct TaskMasterServer
+struct ServerTask
 {
     pFuncUV    request = 0;             // Обработчик запроса. Должен возвращать id запроса
     pFuncpCpVU handler_answer = 0;      // Обработчик ответа
@@ -24,7 +24,7 @@ struct TaskMasterServer
     uint       counter = 0xFFFFFFFF;     // Столько раз выполнять задачу
 
     // Возвращает true, если существуют выполненные задания (те, у которых счётчик == 0)
-    static bool ExistCompleted(std::vector<TaskMasterServer *> &tasks);
+    static bool ExistCompleted(std::vector<ServerTask *> &tasks);
 };
 
 

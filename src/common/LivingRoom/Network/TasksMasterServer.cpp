@@ -5,7 +5,7 @@
 #include "Utils/GlobalFunctions_.h"
 
 
-static TaskMasterServer taskPing =
+static ServerTask taskPing =
 {
     []()
     {

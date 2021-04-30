@@ -75,10 +75,10 @@ public:
     bool IsConnected();
 
     // ¬ыполн€ть задачу через заданные промежутки времени
-    void SetTask(int64 dT, TaskMasterServer *task);
+    void SetTask(int64 dT, ServerTask *task);
 
     // ≈диножды выполнить задачу
-    void RunTask(TaskMasterServer *task);
+    void RunTask(ServerTask *task);
 
     struct State { enum E {
         Idle,                   // ѕростой
@@ -105,8 +105,8 @@ private:
     std::string host;
     uint16 port;                                    // ѕорт засылки в сервер. порт чтени€ на 1 больше
 
-    std::map<uint, TaskMasterServer *> wait_tasks;  // «адачи, ожидающие ответа (выполненные)
-    std::vector<TaskMasterServer *>    new_tasks;   // «адачи, ожидающие выполнени€ (поставленные в очередь дл€
+    std::map<uint, ServerTask *> wait_tasks;  // «адачи, ожидающие ответа (выполненные)
+    std::vector<ServerTask *>    new_tasks;   // «адачи, ожидающие выполнени€ (поставленные в очередь дл€
                                                     // выполнени€
 
     bool destroy = false;

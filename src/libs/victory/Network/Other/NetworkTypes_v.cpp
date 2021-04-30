@@ -73,7 +73,7 @@ void *ClientInfo::GetRawData()
 }
 
 
-bool TaskMasterServer::ExistCompleted(std::vector<TaskMasterServer *> &tasks)
+bool ServerTask::ExistCompleted(std::vector<ServerTask *> &tasks)
 {
     for (auto task : tasks)
     {
