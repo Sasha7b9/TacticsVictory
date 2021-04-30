@@ -4,7 +4,7 @@
 #include "FileSystem/ConfigurationFile_v.h"
 
 
-int main(int args, char *argv[])
+int main(int , char *[])
 {
     setlocale(LC_ALL, "Russian");
 
