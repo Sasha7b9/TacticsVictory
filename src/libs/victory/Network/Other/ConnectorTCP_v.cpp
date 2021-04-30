@@ -422,7 +422,7 @@ void ConnectorTCP::ExecuteTasks()
 
     for (TaskMasterServer *task : new_tasks)
     {
-        LOGWRITEF("tast %x", task);
+        LOGWRITEF("task %x", task);
 
         if (now >= task->prev_time + task->delta_time)
         {
