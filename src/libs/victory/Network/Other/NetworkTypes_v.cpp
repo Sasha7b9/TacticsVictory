@@ -140,19 +140,12 @@ void SockAddrIn::Init(uint16 family, pchar ip, uint16 port)
     addr.sin_family = family;
     addr.sin_port = htons(port);
     
-#ifdef WIN32
-
-    int result = InetPtonA(family, ip, &addr.sin_addr.S_un.S_addr);
+    int result = inet_pton(family, ip, &addr.sin_addr.S_un.S_addr);
 
     if (result != 1)
     {
-        LOGERRORF("Error int function InetPtonA this ip-address %s", ip);
+        LOGERRORF("Error int function inet_pton() this ip-address %s", ip);
     }
-
-#else
-    addr.sin_addr.s_addr = inet_addr(ip);
-#endif
-
 }
 
 
