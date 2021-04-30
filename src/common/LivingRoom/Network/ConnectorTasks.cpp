@@ -9,7 +9,7 @@ static TaskMasterServer taskPing =
 {
     []()
     {
-        LOG_FUNC_ENTER();
+        LOGWRITE("Task ping");
 
         int64 now = GF::Timer::TimeMS();
 
