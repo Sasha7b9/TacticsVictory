@@ -112,9 +112,25 @@ ssize_t BaseConnectorTCP::Receive(void *data, uint size)
 
     int ready = ::select(0, &set, 0, 0, &time);
 
+    {
+        static int64 prev_time = -10000;
+
+        if (GF::Timer::TimeMS() - prev_time > 1000)
+        {
+            prev_time = GF::Timer::TimeMS();
+
+            LOGWRITEF("ready = %d", ready);
+        }
+    }
+
     if (ready == 1)
     {
-        return connection->read(data, size);
+        ssize_t num_bytes = connection->read(data, size);
+
+        LOGWRITE("ready == 1");
+        LOGWRITEF("num_bytes == %d", num_bytes);
+
+        return num_bytes;
     }
 
     return 0;
