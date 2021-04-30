@@ -466,7 +466,7 @@ void ConnectorTCP::RunTask(TaskMasterServer *task)
 
     task->last_tive_receive = LLONG_MAX;
 
-    task->counter = 2;
+    task->counter = 1;
 
     new_tasks.push_back(task);
 }

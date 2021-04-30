@@ -9,8 +9,6 @@ static TaskMasterServer taskPing =
 {
     []()
     {
-        LOGWRITE("Task ping");
-
         int64 now = GF::Timer::TimeMS();
 
         return TheConnMaster.SendRequest(MSG_NTW_PING, &now, 4);
