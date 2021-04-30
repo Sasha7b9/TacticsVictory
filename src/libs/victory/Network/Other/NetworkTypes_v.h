@@ -36,7 +36,7 @@ struct SockAddrIn
     int RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer);
 
     sockaddr *GetSockAddr();
-    char *GetIP();
+    pchar GetIP();
     uint16 GetPort();
 
     void SetHostIP(void *ip);

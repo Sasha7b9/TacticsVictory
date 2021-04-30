@@ -156,6 +156,23 @@ void SockAddrIn::Init(uint16 family, pchar ip, uint16 port)
 }
 
 
+pchar SockAddrIn::GetIP()
+{
+    const int SIZE_BUFFER = 100;
+
+    static char buffer[SIZE_BUFFER];
+
+    pchar result = inet_ntop(addr.sin_family, &addr.sin_addr, buffer, SIZE_BUFFER);
+
+    if (result == nullptr)
+    {
+        LOGERROR("Error in inet_ntop()");
+    }
+
+    return result;
+}
+
+
 int SockAddrIn::RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer)
 {
     socklen_t size = sizeof(struct sockaddr);
@@ -172,12 +189,6 @@ int SockAddrIn::RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer)
     }
 
     return received;
-}
-
-
-char *SockAddrIn::GetIP()
-{
-    return inet_ntoa(addr.sin_addr);
 }
 
 
