@@ -9,7 +9,9 @@ class MapLivingRooms
 {
 public:
 
-    static void Append(pchar ip, uint16 port);
+    static void Append(pchar ip);
+
+    static void SetPort(uint16 p) { port = p; }
 
     static void Update();
 
@@ -21,4 +23,6 @@ public:
 private:
 
     static std::map<std::pair<pchar, uint16>, ConnectorUDP> connectors;
+
+    static uint16 port;
 };

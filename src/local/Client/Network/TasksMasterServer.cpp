@@ -59,7 +59,7 @@ void Client::SetTasksMasterServer()
 
             LOGWRITEF("Number port for connecting to Living Room %d", port_udp);
 
-            MapLivingRooms::Append(TheSettings.GetString("master_server", "host"), 40001);
+            MapLivingRooms::SetPort(port_udp);
         }
     };
 
