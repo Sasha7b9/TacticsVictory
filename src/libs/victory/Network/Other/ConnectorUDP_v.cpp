@@ -19,7 +19,7 @@ void ConnectorUDP::SendMessage(pchar message)
 
     if (need_bytes == sending_bytes)
     {
-        LOGWRITEF("Send message \"%s\"", message);
+//        LOGWRITEF("Send message \"%s\"", message);
     }
     else
     {
