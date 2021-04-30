@@ -212,7 +212,10 @@ void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 
             for (uint i = 0; i < info.words.size(); i++)
             {
-                LOGWRITEF("received \"%s\"", info.words[i].c_str());
+                if (info.words[i] != "ping")
+                {
+                    LOGWRITEF("received \"%s\"", info.words[i].c_str());
+                }
             }
 
             auto it = server->handlers.find(info.words[0]);
