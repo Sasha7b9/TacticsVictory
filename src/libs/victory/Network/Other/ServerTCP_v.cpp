@@ -20,11 +20,6 @@ void ServerTCP::Run(uint16 port)
 {
     event_set_log_callback(CallbackLog);
 
-    struct sockaddr_in sin;
-    sin.sin_family = AF_INET;
-    sin.sin_addr.s_addr = 0;
-    sin.sin_port = htons(port);
-
 #ifdef WIN32
     WSADATA wsa_data;
     if (WSAStartup(0x0201, &wsa_data) != 0)
@@ -48,15 +43,10 @@ void ServerTCP::Run(uint16 port)
     }
 #endif
 
-#ifdef WIN32
-    if (bind((SOCKET)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
-#else
-    if (bind((int)listener, (struct sockaddr *)&sin, sizeof(sin)) < 0)
-#endif
-    {
-        LOGERROR("Can not bind to port");
-    }
-    else
+    SockAddrIn sin;
+    sin.Init(AF_INET, "", port);
+
+    if (sin.Bind(listener) >= 0)
     {
         LOGWRITEF("Bind to port %d is Ok! Wait connections ...", port);
     }

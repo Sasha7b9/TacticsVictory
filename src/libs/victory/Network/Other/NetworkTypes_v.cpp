@@ -137,6 +137,19 @@ int SockAddrIn::RecvFrom(evutil_socket_t socket, char *buffer, int size_buffer)
 }
 
 
+int SockAddrIn::Bind(evutil_socket_t socket)
+{
+    int result = bind((socket_t)socket, GetSockAddr(), sizeof(struct sockaddr));
+
+    if (result < 0)
+    {
+        LOGERROR("Can not bind to port");
+    }
+
+    return result;
+}
+
+
 uint16 SockAddrIn::GetPort()
 {
     return addr.sin_port;
