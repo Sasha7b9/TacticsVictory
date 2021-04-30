@@ -54,7 +54,7 @@ function(add_subdirectory_with_folder _folder_name _folder)
 endfunction()
 
 
-if(WIN32)
+#if(WIN32)
     add_subdirectory_with_folder("local" local/Battler)
     add_subdirectory_with_folder("local" local/Client)
     add_subdirectory_with_folder("local" local/Editor)
@@ -67,7 +67,7 @@ if(WIN32)
     add_subdirectory_with_folder("common" common/Uploader)
 
     add_subdirectory_with_folder("remote" remote/DataBase)
-endif()
+#endif()
 
 add_subdirectory_with_folder("common" common/LivingRoom)
 add_subdirectory_with_folder("remote" remote/Master)
