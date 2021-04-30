@@ -65,12 +65,25 @@ source_group(ThirdParty\\sockpp\\include FILES ${SOCKPP_INCLUDE})
 
 set_source_files_properties(${SOCKPP_SOURCES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
-file(GLOB FILES_UNITY ${SRC} ${CORE} ${FILESYSTEM} ${INPUT} ${NETWORK} ${UTILS} ${SOCKPP})
+file(GLOB FILES_UNITY   ${SRC})
+file(GLOB FILES_UNITY_2 ${CORE})
+file(GLOB FILES_UNITY_3 ${FILESYSTEM})
+file(GLOB FILES_UNITY_4 ${INPUT})
+file(GLOB FILES_UNITY_5 ${NETWORK})
+file(GLOB FILES_UNITY_6 ${UTILS})
+file(GLOB FILES_UNITY_7 ${SOCKPP})
 
-add_library(${PROJECT_NAME} ${FILES_UNITY} ${LIBEVENT})
+add_library(${PROJECT_NAME} ${FILES_UNITY} ${FILES_UNITY_2} ${FILES_UNITY_3} ${FILES_UNITY_4} ${FILES_UNITY_5}
+            ${FILES_UNITY_6} ${FILES_UNITY_7} ${LIBEVENT})
 
-set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "victory")
+set_target_properties(${PROJECT_NAME}        PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${FILES_UNITY}   PROPERTIES UNITY_GROUP "victory")
+set_source_files_properties(${FILES_UNITY_2} PROPERTIES UNITY_GROUP "victory2")
+set_source_files_properties(${FILES_UNITY_3} PROPERTIES UNITY_GROUP "victory3")
+set_source_files_properties(${FILES_UNITY_4} PROPERTIES UNITY_GROUP "victory4")
+set_source_files_properties(${FILES_UNITY_5} PROPERTIES UNITY_GROUP "victory5")
+set_source_files_properties(${FILES_UNITY_6} PROPERTIES UNITY_GROUP "victory6")
+set_source_files_properties(${FILES_UNITY_7} PROPERTIES UNITY_GROUP "victory7")
 
 if(WIN32)
 
