@@ -15,5 +15,5 @@ public:
 
 private:
 
-    std::map<std::pair<pchar, uint16>, ConnectorUDP> connectors;
+    static std::map<pchar, ConnectorUDP> connectors;
 };

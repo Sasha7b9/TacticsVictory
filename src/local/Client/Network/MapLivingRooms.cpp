@@ -3,8 +3,15 @@
 #include "Network/MapLivingRooms.h"
 
 
+std::map<pchar, ConnectorUDP> MapLivingRooms::connectors;
+
+
 void MapLivingRooms::Append(pchar ip, uint16 port)
 {
+    auto pair = std::make_pair(ip, port);
+
+    connectors[ip] = ConnectorUDP();
+
     // TheLivingRoomUDP.AcceptServer(TheSettings.GetString("master_server", "host"), 40001);
 }
 
