@@ -126,7 +126,7 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
         info.address.SetHostIP(&ss);
         info.benv = bev;
 
-        LOGWRITEF("Client %s connected", info.address.ToStringFull().c_str());
+        LOGWRITEF("Connection from %s established", info.address.ToStringFull().c_str());
 
         args->server->clients[bev] = info;
     }
