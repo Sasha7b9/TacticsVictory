@@ -19,7 +19,7 @@ void Client::HandlerUpdate(StringHash, VariantMap &)
         std::string message("Test message ");
         message += GF::IntToString(++counter, 0);
 
-        TheLivingRoomUDP.SendMessage(message.c_str());
+        MapLivingRooms::SenMessageToAll(message.c_str());
     }
 }
 

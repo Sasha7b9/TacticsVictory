@@ -7,6 +7,7 @@
 #include "GUI/Menu/Menu.h"
 #include "GUI/Menu/PageFindServer.h"
 #include "Input/Mouse_v.h"
+#include "Network/MapLivingRooms.h"
 #include "Network/Other/ConnectorTCP_v.h"
 #include "Network/Other/ConnectorUDP_v.h"
 #include "Network/Other/NetworkTypes_v.h"
@@ -113,7 +114,7 @@ void Client::Start()
 
     RunMasterServer();
 
-    TheLivingRoomUDP.AcceptServer(TheSettings.GetString("master_server", "host"), 40001);
+    MapLivingRooms::Append(TheSettings.GetString("master_server", "host"), 40001);
 }
 
 
