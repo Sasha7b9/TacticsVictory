@@ -176,13 +176,13 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
 
     while (readed)
     {
-        data.insert(data.end(), &buffer[0], &buffer[readed]);
-
-        readed = bufferevent_read(bev, buffer, SIZE_CHUNK - 1);
-
         buffer[readed] = '\0';
 
-        LOGWRITE("received \"%s\"", buffer);
+        data.insert(data.end(), &buffer[0], &buffer[readed]);
+
+        LOGWRITEF("received \"%s\"", buffer);
+
+        readed = bufferevent_read(bev, buffer, SIZE_CHUNK - 1);
     }
 
     ProcessClient(args->server->clients[bev], args->server);
