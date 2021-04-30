@@ -113,8 +113,6 @@ void Client::Start()
     TheInput->SetMouseMode(MouseMode::MM_FREE);
 
     RunMasterServer();
-
-    MapLivingRooms::Append(TheSettings.GetString("master_server", "host"), 40001);
 }
 
 
