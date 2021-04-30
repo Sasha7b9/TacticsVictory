@@ -246,6 +246,8 @@ void ConnectorTCP::Disconnect()
 
 uint ConnectorTCP::SendRequest(pchar request, const void *buffer, uint size_buffer)
 {
+    LOGWRITEF("request \"%s\"", request);
+
     mutex.lock();
 
     last_request_id++;
