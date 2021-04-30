@@ -106,7 +106,7 @@ void ServerUDP::CallbackRead(evutil_socket_t sock, short /*event*/, void *)
 
     if (size > 0)
     {
-//        LOGWRITEF("From %s:%d : \"%s\"", address.GetIP(), address.GetPort(), buf);;
+        LOGWRITEF("From %s:%d : \"%s\"", address.GetIP(), address.GetPort(), buf);;
     }
 
 //#ifdef WIN32
