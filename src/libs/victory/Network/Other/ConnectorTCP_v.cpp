@@ -340,6 +340,8 @@ void ConnectorTCP::Update()
 
 void ConnectorTCP::ReceiveData()
 {
+    LOG_FUNC_ENTER();
+
     if (!IsConnected())
     {
         return;
