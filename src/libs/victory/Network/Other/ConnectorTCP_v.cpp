@@ -293,12 +293,16 @@ void ConnectorTCP::Update()
 
     case State::NeedConnection:
         {
+        static int64 prev_connection = 0;
+
             if (!destroy)
             {
-                if (mutex.try_lock())
+                if ((GF::Timer::TimeMS() - prev_connection > 2000) &&
+                    mutex.try_lock())
                 {
                     mutex.unlock();
                     state = State::AttemptConnection;
+                    prev_connection = GF::Timer::TimeMS();
                     std::thread thread(BaseConnectorTCP::ThreadConnect, &connector, std::move(host.c_str()), port, &mutex, (uint8 *)&state);
                     thread.detach();
                 }
