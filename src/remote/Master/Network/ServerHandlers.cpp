@@ -25,8 +25,6 @@ void PrepareServerTCP()
 
 static void HandleInfoLivingRoms(uint id, ClientInfo &info)
 {
-    LOG_FUNC_ENTER();
-
     std::string result;
 
     std::stringstream stream(result);

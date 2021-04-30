@@ -93,17 +93,6 @@ ssize_t BaseConnectorTCP::Receive(void *data, uint size)
 {
     fd_set set = { 1, { connection->handle() } };
 
-    {
-        static int64 prev_time = -10000;
-
-        if (GF::Timer::TimeMS() - prev_time > 1000)
-        {
-            prev_time = GF::Timer::TimeMS();
-
-            LOGWRITEF("handle->handle() = %d", connection->handle());
-        }
-    }
-
 #ifdef WIN32
     TIMEVAL time = { 0, 1000 };
 #else
@@ -112,25 +101,9 @@ ssize_t BaseConnectorTCP::Receive(void *data, uint size)
 
     int ready = ::select(1, &set, 0, 0, &time);
 
-    {
-        static int64 prev_time = -10000;
-
-        if (GF::Timer::TimeMS() - prev_time > 1000)
-        {
-            prev_time = GF::Timer::TimeMS();
-
-            LOGWRITEF("ready = %d", ready);
-        }
-    }
-
-    LOGWRITEF("ready = %d", ready);
-
     if (ready == 1)
     {
         ssize_t num_bytes = connection->read(data, size);
-
-        LOGWRITE("ready == 1");
-        LOGWRITEF("num_bytes == %d", num_bytes);
 
         return num_bytes;
     }
@@ -378,8 +351,6 @@ void ConnectorTCP::ReceiveData()
         return;
     }
 
-    LOG_FUNC_ENTER();
-
     mutex.lock();
 
     static const int SIZE_CHUNK = 1024;
@@ -390,8 +361,6 @@ void ConnectorTCP::ReceiveData()
 
     while (received > 0)
     {
-        LOGWRITE("Data received");
-
         data.insert(data.end(), buffer, buffer + received);
 
         received = connector.Receive(buffer, SIZE_CHUNK);
