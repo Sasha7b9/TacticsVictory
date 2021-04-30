@@ -416,6 +416,8 @@ void ConnectorTCP::ProcessData()
 
 void ConnectorTCP::ExecuteTasks()
 {
+    LOG_FUNC_ENTER();
+
     int64 now = GF::Timer::TimeMS();
 
     for (TaskMasterServer *task : new_tasks)
