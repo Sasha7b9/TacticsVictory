@@ -110,7 +110,7 @@ ssize_t BaseConnectorTCP::Receive(void *data, uint size)
     struct timeval time = { 1, 0 };
 #endif
 
-    int ready = ::select(0, &set, 0, 0, &time);
+    int ready = ::select(1, &set, 0, 0, &time);
 
     {
         static int64 prev_time = -10000;
