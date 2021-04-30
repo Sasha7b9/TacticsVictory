@@ -92,15 +92,14 @@ void SockAddrIn::Init(uint16 family, pchar ip, uint16 port)
     addr.sin_family = family;
     addr.sin_port = htons(port);
 
-    LOGWRITE("point 1");
-    
-    int result = inet_pton(family, ip, &addr.sin_addr);
-
-    LOGWRITE("point 2");
-
-    if (result != 1)
+    if (ip != nullptr)
     {
-        LOGERRORF("Error int function inet_pton() this ip-address %s", ip);
+        int result = inet_pton(family, ip, &addr.sin_addr);
+
+        if (result != 1)
+        {
+            LOGERRORF("Error int function inet_pton() this ip-address %s", ip);
+        }
     }
 }
 
