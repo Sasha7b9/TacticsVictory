@@ -117,8 +117,8 @@ file(GLOB FILES_UNITY ${SRC} ${CORE} ${FILE_SYSTEM} ${GRAPHICS_2D} ${GUI} ${GUI_
 add_executable( ${PROJECT_NAME}
                 ${FILES_UNITY})
 
-set_target_properties(${PROJECT_NAME}       PROPERTIES UNITY_BUILD_MODE GROUP)
-set_source_files_properties(${FILES_UNITY}  PROPERTIES UNITY_GROUP "client")
+set_target_properties(${PROJECT_NAME}      PROPERTIES UNITY_BUILD_MODE GROUP)
+set_source_files_properties(${FILES_UNITY} PROPERTIES UNITY_GROUP "client")
 
 #set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS "127.0.0.1")
 
