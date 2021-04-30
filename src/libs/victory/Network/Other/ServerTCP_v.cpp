@@ -18,6 +18,8 @@
 
 void ServerTCP::Run(uint16 port)
 {
+    LOG_FUNC_ENTER();
+
     event_set_log_callback(CallbackLog);
 
 #ifdef WIN32
