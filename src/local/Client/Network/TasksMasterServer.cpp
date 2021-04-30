@@ -1,5 +1,6 @@
 // 2021/04/11 20:20:59 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
+#include "Client.h"
 #include "GUI/Menu/Menu.h"
 #include "Network/Other/ConnectorTCP_v.h"
 #include "Network/Other/NetworkTypes_v.h"
