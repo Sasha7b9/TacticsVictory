@@ -176,11 +176,11 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
 
     while (readed)
     {
-        buffer[readed] = '\0';
+//        buffer[readed] = '\0';
 
         data.insert(data.end(), &buffer[0], &buffer[readed]);
 
-        LOGWRITEF("received \"%s\"", buffer);
+//        LOGWRITEF("received \"%s\"", buffer);
 
         readed = bufferevent_read(bev, buffer, SIZE_CHUNK - 1);
     }
@@ -209,6 +209,11 @@ void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
             ClientInfo::MoveData(received, info.message);
 
             SU::SplitToWords((char *)info.message.data(), info.words);
+
+            for (uint i = 0; i < info.words.size(); i++)
+            {
+                LOGWRITEF("received \"%s\"", info.words[i].c_str());
+            }
 
             auto it = server->handlers.find(info.words[0]);
 
