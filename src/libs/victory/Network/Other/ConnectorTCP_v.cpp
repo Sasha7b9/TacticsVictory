@@ -137,8 +137,6 @@ void BaseConnectorTCP::ThreadConnect(BaseConnectorTCP *conn_out, pchar host, uin
 {
     mutex->lock();
 
-    LOGWRITEF("Attempt connection to %s:%d", host, port);
-
     if (conn_out->Connect(host, port))
     {
         *state = ConnectorTCP::State::EventConnection;
