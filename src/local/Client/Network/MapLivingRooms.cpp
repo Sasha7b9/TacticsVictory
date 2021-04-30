@@ -73,4 +73,6 @@ void MapLivingRooms::ParseInfo(void *data)
 
         pos = info.find('|');
     }
+
+    SetTasks();
 }

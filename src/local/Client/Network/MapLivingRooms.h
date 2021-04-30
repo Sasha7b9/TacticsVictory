@@ -25,4 +25,7 @@ private:
     static std::map<std::pair<pchar, uint16>, ConnectorUDP> connectors;
 
     static uint16 port;
+
+    // Установить задания для всех гостиных
+    static void SetTasks();
 };

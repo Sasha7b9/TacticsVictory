@@ -12,6 +12,8 @@ public:
 
     void SendMessage(pchar message);
 
+    void SetTask(ServerTask *task);
+
 private:
 
     socket_t sock_fd = 0;

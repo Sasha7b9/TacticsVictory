@@ -10,7 +10,8 @@
 #include "Utils/Log_v.h"
 
 
-static ServerTask taskPing = {
+static ServerTask taskPing =
+{
     []()
     {
         int64 now = GF::Timer::TimeMS();
@@ -28,7 +29,8 @@ static ServerTask taskPing = {
 };
 
 
-static ServerTask taskGetInfoLivingRooms = {
+static ServerTask taskGetInfoLivingRooms =
+{
     []()
     {
         return TheConnMaster.SendRequest(MSG_NTW_INFO_LIVINGROOM);

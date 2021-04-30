@@ -17,3 +17,9 @@ void ConnectorUDP::SendMessage(pchar message)
 
     sendto(sock_fd, message, need_bytes, 0, addr.GetSockAddr(), sizeof(addr));
 }
+
+
+void ConnectorUDP::SetTask(ServerTask *)
+{
+
+}
