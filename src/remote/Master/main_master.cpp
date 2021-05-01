@@ -15,7 +15,7 @@ int main(int, char *[])
 
     LogRAW::Create("Master.log", false);
 
-    LOGWRITE("Start Master");
+    //LOGWRITE("Start Master");
 
     if (!TheConfig.Load("Master.conf"))
     {
