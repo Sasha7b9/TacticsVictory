@@ -41,7 +41,7 @@ bool BaseConnectorTCP::Connect(const std::string &host, uint16 port)
         SetReadTimeOut(1);
         SetWriteTimeOut(1);
 
-        LOGWRITEF("Connect to %s:%d success", host.c_str(), port);
+//        LOGWRITEF("Connect to %s:%d success", host.c_str(), port);
     }
     else
     {
