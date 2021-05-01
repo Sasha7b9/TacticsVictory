@@ -46,7 +46,7 @@ bool ConfigurationFile::Load(pchar name)
         return false;
     }
     
-    LOGWRITEF("Configuration file %s is parsed", name);
+//    LOGWRITEF("Configuration file %s is parsed", name);
 
     isValid = true;
 
