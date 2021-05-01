@@ -16,8 +16,8 @@
 
 static const int num_symbols_for_info = 30; // Количество сиволов под информацию об ошибке (файл, строка и т.д)
 
-static pchar STR_ERROR   = "  *ERROR*";
-static pchar STR_WARNING = "*WARNING*";
+static pchar STR_ERROR   = "  *** ERROR *** ";
+static pchar STR_WARNING = " ***WARNING *** ";
 
 static FS::File *outFile;
 
@@ -163,7 +163,7 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
 
     if (warn_err[0] == '\0')                                                       // Не нужно указывать тип ошибки
     {
-        while (SU::Length(v.data()) < num_symbols_for_info - 1)
+        while (SU::Length(v.data()) < num_symbols_for_info)
         {
             std::strcat(v.data(), " ");
         }
@@ -192,7 +192,7 @@ void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar warn
 
     snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d ", file, line);
 
-    while (SU::Length(v.data()) < num_symbols_for_info - SU::Length(warn_err) - 2)
+    while (SU::Length(v.data()) < num_symbols_for_info - SU::Length(warn_err) - 1)
     {
         strcat(v.data(), " ");
     }
