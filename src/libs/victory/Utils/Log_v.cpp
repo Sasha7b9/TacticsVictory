@@ -83,7 +83,7 @@ void LogRAW::Destroy()
 void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
 {
     std::string v;
-    v.resize(1024);
+    v.reserve(1024);
 
     CommonWriteF(file, line, v, STR_ERROR);
 
@@ -101,7 +101,7 @@ void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
 void LogRAW::WarningF(pchar file, int line, pchar format, ...)
 {
     std::string v;
-    v.resize(1024);
+    v.reserve(1024);
 
     CommonWriteF(file, line, v, STR_WARNING);
 
@@ -119,7 +119,7 @@ void LogRAW::WarningF(pchar file, int line, pchar format, ...)
 void LogRAW::WriteF(pchar file, int line, pchar format, ...)
 {
     std::string v;
-    v.resize(1024);
+    v.reserve(1024);
 
     CommonWriteF(file, line, v, "");
 
@@ -155,7 +155,7 @@ void LogRAW::Error(pchar file, int line, pchar text)
 void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
 {
     std::string v;
-    v.resize(1024);
+    v.reserve(1024);
 
     v.append(NameApplication());
     v.append(" |");
