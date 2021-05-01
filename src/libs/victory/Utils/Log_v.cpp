@@ -179,7 +179,7 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
         v.append(text);
     }
 
-    Write(v.data());
+    Write(v.c_str());
 }
 
 
