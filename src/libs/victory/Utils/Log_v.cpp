@@ -177,9 +177,11 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar symbols)
 
 void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symbols)
 {
+    snprintf(v.data(), 1024, "%s | ", NameApplication().c_str());
+
     file = ExtractName(file, numSymbolsForMarker - SU::Length(symbols) - 1);
 
-    snprintf(v.data(), 1024, "%s:%d ", file, line);
+    snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d ", file, line);
 
     while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(symbols) - 2)
     {
