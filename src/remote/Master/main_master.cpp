@@ -16,9 +16,9 @@ int main(int, char *[])
     LogRAW::Create("Master.log", false);
 
     LOGWRITE("Start Master");
-    LOGWARNING("Test Warning");
-    int i = 10;
-    LOGWARNINGF("Test Warning %d", i);
+//    LOGWARNING("Test Warning");
+//    int i = 10;
+//    LOGWARNINGF("Test Warning %d", i);
 
     if (!TheConfig.Load("Master.conf"))
     {
