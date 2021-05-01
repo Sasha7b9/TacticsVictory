@@ -192,7 +192,7 @@ void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar warn
 
     snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d ", file, line);
 
-    while (SU::Length(v.data()) < num_symbols_for_info - SU::Length(warn_err) - 2)
+    while (SU::Length(v.data()) < num_symbols_for_info - SU::Length(warn_err) - 3)
     {
         strcat(v.data(), " ");
     }
