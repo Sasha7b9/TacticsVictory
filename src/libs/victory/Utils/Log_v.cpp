@@ -196,7 +196,7 @@ void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar warn
         std::strcat(v.data(), " ");
     }
 
-    snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "| %s", warn_err);
+    snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "%s", warn_err);
 }
 
 
