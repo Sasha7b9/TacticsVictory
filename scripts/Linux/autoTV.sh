@@ -37,6 +37,7 @@ do
     FILESIZE=$(stat -c%s "$FILENAME")
     if [ $FILESIZE != "20" ]            #  20 - size string "Already up to date."
     then
+        echo
         Build
     fi
     sleep 1
