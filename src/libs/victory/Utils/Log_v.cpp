@@ -43,8 +43,14 @@ static pchar ExtractName(pchar fullName, int max)
         {
             numSlash++;
         }
+
         pointer--;
         length++;
+
+        if (length == max)
+        {
+            break;
+        }
     }
 
     return pointer + (length < max ? 2 : 6);
