@@ -127,7 +127,7 @@ void Client::RunMasterServer()
     (
         []()
         {
-            LOGWRITE("Can not connect to master server");
+            LOGWARNINGF("Can not connect to master server %s", TheConnMaster.GetFullAddress().c_str());
             TheGUI->AppendWarning("Can't connect to master server");
 
             TheConnMaster.Connect();
@@ -135,7 +135,7 @@ void Client::RunMasterServer()
         []()
         {
             TheGUI->AppendInfo("Connection to master server established");
-            LOGWRITE("Connection to master server established");
+            LOGWRITEF("Connection to master server %s established", TheConnMaster.GetFullAddress().c_str());
 
             TheClient->SetTasksMasterServer();
         },
