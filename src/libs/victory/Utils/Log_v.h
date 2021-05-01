@@ -45,7 +45,7 @@ private:
 
     // В случае, если нужно уточнение важности ошибки (ERROR, WARNING, etc..) здесь эта строка находится
     static void CommonWrite(pchar file, int line, pchar text, pchar warn_err);
-    static void CommonWriteF(pchar file, int line, std::vector<char> &v, pchar warn_err);
+    static void CommonWriteF(pchar file, int line, std::string &v, pchar warn_err);
 
     static std::string NameApplication();
 };

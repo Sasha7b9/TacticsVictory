@@ -82,7 +82,8 @@ void LogRAW::Destroy()
 
 void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
 {
-    std::vector<char> v(1024);
+    std::string v;
+    v.resize(1024);
 
     CommonWriteF(file, line, v, STR_ERROR);
 
@@ -99,7 +100,8 @@ void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
 
 void LogRAW::WarningF(pchar file, int line, pchar format, ...)
 {
-    std::vector<char> v(1024);
+    std::string v;
+    v.resize(1024);
 
     CommonWriteF(file, line, v, STR_WARNING);
 
@@ -116,7 +118,8 @@ void LogRAW::WarningF(pchar file, int line, pchar format, ...)
 
 void LogRAW::WriteF(pchar file, int line, pchar format, ...)
 {
-    std::vector<char> v(1024);
+    std::string v;
+    v.resize(1024);
 
     CommonWriteF(file, line, v, "");
 
@@ -180,28 +183,26 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
 }
 
 
-void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar warn_err)
+void LogRAW::CommonWriteF(pchar file, int line, std::string &v, pchar warn_err)
 {
-    const int SIZE_STRING = 1024;
-
-    snprintf(v.data(), SIZE_STRING, "%s | ", NameApplication().c_str());
-
-    file = ExtractName(file);
-
-    snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "%s:%d ", file, line);
+    v.append(NameApplication());
+    v.append(" | ");
+    v.append(ExtractName(file));
+    v.append(":");
+    v.append(std::to_string(line));
 
     if (warn_err[0])
     {
-        snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "%s", warn_err);
+        v.append(warn_err);
     }
     else
     {
-        while (SU::Length(v.data()) < num_symbols_for_info)
+        while (v.length() < num_symbols_for_info)
         {
-            std::strcat(v.data(), " ");
+            v.append(" ");
         }
 
-        std::strcat(v.data(), "| ");
+        v.append("| ");
     }
 }
 
