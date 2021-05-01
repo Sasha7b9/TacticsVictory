@@ -142,11 +142,15 @@ void LogRAW::Error(pchar file, int line, pchar text)
 
 void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar symbols)
 {
-    file = ExtractName(file, numSymbolsForMarker - SU::Length(symbols) - 1);
-
     std::vector<char> v(1024);
 
-    snprintf(v.data(), 1024, "%s:%d ", file, line);
+    std::string name = NameApplication();
+
+    snprintf(v.data(), 1024, "%s | ", name.c_str());
+
+    file = ExtractName(file, numSymbolsForMarker - SU::Length(symbols) - 1);
+
+    snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d ", file, line);
 
     if (symbols[0] == '\0')
     {
@@ -302,4 +306,10 @@ void ConsoleLog::Write(pchar message)
     {
         std::cout << message << "\n";
     }
+}
+
+
+std::string LogRAW::NameApplication()
+{
+    return "Client";
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <string>
 
 
 // Информационные сообщения.
@@ -44,6 +45,8 @@ private:
 
     static void CommonWrite(pchar file, int line, pchar text, pchar symbols);
     static void CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symbols);
+
+    static std::string NameApplication();
 };
 
 
