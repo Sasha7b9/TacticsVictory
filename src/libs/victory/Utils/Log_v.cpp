@@ -16,8 +16,8 @@
 
 static const int num_symbols_for_info = 30; // Количество сиволов под информацию об ошибке (файл, строка и т.д)
 
-static pchar STR_ERROR   = "  *** ERROR *** ";
-static pchar STR_WARNING = " ***WARNING *** ";
+static pchar STR_ERROR   = "   *** ERROR *** ";
+static pchar STR_WARNING = " *** WARNING *** ";
 
 static FS::File *outFile;
 
@@ -159,26 +159,26 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
 
     file = ExtractName(file);
 
-    snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d ", file, line);
+    snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d | %s %s", file, line, warn_err, text);
 
-    if (warn_err[0] == '\0')                                                       // Не нужно указывать тип ошибки
-    {
-        while (SU::Length(v.data()) < num_symbols_for_info)
-        {
-            std::strcat(v.data(), " ");
-        }
-
-        snprintf(v.data() + std::strlen(v.data()), 1024, "| %s", text);
-    }
-    else                                                                         // Нужно указывать тип ошибки
-    {
-        while (SU::Length(v.data()) < num_symbols_for_info)
-        {
-            std::strcat(v.data(), " ");
-        }
-
-        snprintf(v.data() + std::strlen(v.data()), 1024, "%s | %s", warn_err, text);
-    }
+//    if (warn_err[0] == '\0')                                                       // Не нужно указывать тип ошибки
+//    {
+//        while (SU::Length(v.data()) < num_symbols_for_info)
+//        {
+//            std::strcat(v.data(), " ");
+//        }
+//
+//        snprintf(v.data() + std::strlen(v.data()), 1024, "| %s", text);
+//    }
+//    else                                                                         // Нужно указывать тип ошибки
+//    {
+//        while (SU::Length(v.data()) < num_symbols_for_info)
+//        {
+//            std::strcat(v.data(), " ");
+//        }
+//
+//        snprintf(v.data() + std::strlen(v.data()), 1024, "%s | %s", warn_err, text);
+//    }
 
     Write(v.data());
 }
