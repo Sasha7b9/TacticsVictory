@@ -143,7 +143,7 @@ void Client::RunMasterServer()
         {
             TheGUI->AppendWarning("The master server is down. Attempting to connect");
             TheConnMaster.Connect();
-            LOGWRITE("The master server is down. Attempting to connect");
+            LOGWRITEF("The master server %s is down. Attempting to connect", TheConnMaster.GetFullAddress().c_str());
             TheMenu->pageFindServer->SetServersInfo("");
         }
     );
