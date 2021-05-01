@@ -16,7 +16,7 @@ int main(int, char *[])
     LogRAW::Create("Master.log", false);
 
     LOGWRITE("Start Master");
-//    LOGWARNING("Test Warning");
+    LOGWARNING("Test Warning");
 //    int i = 10;
 //    LOGWARNINGF("Test Warning %d", i);
 
