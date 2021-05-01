@@ -16,8 +16,8 @@
 
 static const int num_symbols_for_info = 50; // Количество сиволов под информацию об ошибке (файл, строка и т.д)
 
-static pchar STR_ERROR   =   " ... ERROR ... ";
-static pchar STR_WARNING = " ... WARNING ... ";
+pchar LogRAW::STR_ERROR   =   " ... ERROR ... ";
+pchar LogRAW::STR_WARNING = " ... WARNING ... ";
 
 static FS::File *outFile;
 
@@ -80,56 +80,12 @@ void LogRAW::Destroy()
 }
 
 
-void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
+void LogRAW::WriteF(pchar file, int line, pchar warn_err, pchar format, ...)
 {
     std::string v;
     v.reserve(1024);
 
-    CommonWriteF(file, line, v, STR_ERROR);
-
-    std::va_list args;
-    va_start(args, format);
-
-    char buffer[1024];
-
-    std::vsnprintf(buffer, 1024, format, args);
-
-    v.append(buffer);
-
-    va_end(args);
-
-    Write(v.data());
-}
-
-
-void LogRAW::WarningF(pchar file, int line, pchar format, ...)
-{
-    std::string v;
-    v.reserve(1024);
-
-    CommonWriteF(file, line, v, STR_WARNING);
-
-    std::va_list args;
-    va_start(args, format);
-
-    char buffer[1024];
-
-    std::vsnprintf(buffer, 1024, format, args);
-
-    v.append(buffer);
-
-    va_end(args);
-
-    Write(v.data());
-}
-
-
-void LogRAW::WriteF(pchar file, int line, pchar format, ...)
-{
-    std::string v;
-    v.reserve(1024);
-
-    CommonWriteF(file, line, v, "");
+    CommonWriteF(file, line, v, warn_err);
 
     std::va_list args;
     va_start(args, format);

@@ -5,15 +5,15 @@
 
 // Информационные сообщения.
 #define LOGWRITE(x)      LogRAW::Write(__FILE__, __LINE__, x)
-#define LOGWRITEF(...)   LogRAW::WriteF(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGWRITEF(...)   LogRAW::WriteF(__FILE__, __LINE__, "", __VA_ARGS__)
 
 // Некритичные ошибки
 #define LOGWARNING(x)    LogRAW::Warning(__FILE__, __LINE__, x);
-#define LOGWARNINGF(...) LogRAW::WarningF(__FILE__, __LINE__, __VA_ARGS__);
+#define LOGWARNINGF(...) LogRAW::WriteF(__FILE__, __LINE__, LogRAW::STR_WARNING, __VA_ARGS__);
 
 // Критичные ошибки.
 #define LOGERROR(x)      LogRAW::Error(__FILE__, __LINE__, x)
-#define LOGERRORF(...)   LogRAW::ErrorF(__FILE__, __LINE__, __VA_ARGS__)
+#define LOGERRORF(...)   LogRAW::WriteF(__FILE__, __LINE__, LogRAW::STR_ERROR,  __VA_ARGS__)
 
 #define LOG_FUNC_ENTER() LogRAW::WriteF(__FILE__, __LINE__, ">>>>>>>>> %s", __FUNCTION__)
 
@@ -28,17 +28,18 @@ public:
     static void Destroy();
 
     //+V576,class:Log,function:Write,format_arg:3,ellipsis_arg:4
-    static void WriteF(pchar file, int line, pchar format, ...);
+    static void WriteF(pchar file, int line, pchar warn_err, pchar format, ...);
     static void Write(pchar file, int line, pchar text);
     static void Write(pchar text);
 
     //+V576,class:Log,function:Warning,format_arg:3,ellipsis_arg:4
-    static void WarningF(pchar file, int line, pchar format, ...);
     static void Warning(pchar file, int line, pchar text);
 
     //+V576,class:Log,function:Error,format_arg:3,ellipsis_arg:4
-    static void ErrorF(pchar file, int line, pchar format, ...);
     static void Error(pchar file, int line, pchar text);
+
+    static pchar STR_ERROR;
+    static pchar STR_WARNING;
 
 private:
     virtual ~LogRAW();
