@@ -53,7 +53,7 @@ static pchar ExtractName(pchar fullName, int max)
         }
     }
 
-    return pointer + (length < max ? 2 : 6);
+    return pointer + length;
 }
 
 
