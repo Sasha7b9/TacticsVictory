@@ -163,7 +163,7 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
 
     if (warn_err[0] == '\0')                                                       // Не нужно указывать тип ошибки
     {
-        while (SU::Length(v.data()) < num_symbols_for_info)
+        while (SU::Length(v.data()) < num_symbols_for_info - 1)
         {
             std::strcat(v.data(), " ");
         }
