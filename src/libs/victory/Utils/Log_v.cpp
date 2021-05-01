@@ -33,10 +33,16 @@ static pchar ExtractName(pchar fullName, int max)
 {
     pchar pointer = fullName + SU::Length(fullName) - 1;
 
+    int numSlash = 0;
+
     int length = 1;
 
     while (length < max)
     {
+        if (*pointer == '\\' || *pointer == '/')
+        {
+            numSlash++;
+        }
         pointer--;
         length++;
     }
