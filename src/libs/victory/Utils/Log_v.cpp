@@ -32,7 +32,7 @@ HANDLE ConsoleLog::handle = nullptr;
 // Оставляет от имени файла не более определённого количества символов
 static pchar ExtractName(pchar fullName)
 {
-    const int max = num_symbols_for_info - 12;
+    const int max = num_symbols_for_info - 13;
 
     pchar pointer = fullName + SU::Length(fullName) - 1;
 
