@@ -245,3 +245,9 @@ void Client::InitMouse()
         }
     );
 }
+
+
+std::string LogRAW::NameApplication()
+{
+    return "Client";
+}

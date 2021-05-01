@@ -17,3 +17,9 @@ int main()
 
     return 0;
 }
+
+
+std::string LogRAW::NameApplication()
+{
+    return "Contrl";
+}

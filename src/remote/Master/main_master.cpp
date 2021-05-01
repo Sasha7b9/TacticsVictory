@@ -32,3 +32,9 @@ int main(int, char *[])
 
     return 0;
 }
+
+
+std::string LogRAW::NameApplication()
+{
+    return "Master";
+}

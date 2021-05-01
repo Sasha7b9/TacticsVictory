@@ -214,3 +214,9 @@ void Editor::InitMouse()
         }
     );
 }
+
+
+std::string LogRAW::NameApplication()
+{
+    return "Editor";
+}

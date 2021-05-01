@@ -202,3 +202,9 @@ void Hangar::ParseArguments()
 {
 
 }
+
+
+std::string LogRAW::NameApplication()
+{
+    return "Hangar";
+}

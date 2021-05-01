@@ -312,3 +312,9 @@ void Battler::InitMouse()
         }
     );
 }
+
+
+std::string LogRAW::NameApplication()
+{
+    return "Batler";
+}

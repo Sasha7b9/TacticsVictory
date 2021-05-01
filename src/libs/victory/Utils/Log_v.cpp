@@ -307,9 +307,3 @@ void ConsoleLog::Write(pchar message)
         std::cout << message << "\n";
     }
 }
-
-
-std::string LogRAW::NameApplication()
-{
-    return "Client";
-}

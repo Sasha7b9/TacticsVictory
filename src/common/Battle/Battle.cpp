@@ -182,3 +182,9 @@ void Battle::OpenLog()
     log->Open(GetTypeName() + ".log");
     log->SetLevel(LOG_DEBUG);
 }
+
+
+std::string LogRAW::NameApplication()
+{
+    return "Battle";
+}
