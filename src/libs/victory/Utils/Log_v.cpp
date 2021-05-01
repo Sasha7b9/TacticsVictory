@@ -126,7 +126,11 @@ void LogRAW::WriteF(pchar file, int line, pchar format, ...)
     std::va_list args;
     va_start(args, format);
 
-    std::vsnprintf(v.data() + SU::Length(v.data()) , v.size(), format, args);
+    char buffer[512];
+
+    std::vsnprintf(buffer, 512, format, args);
+
+    v.append(buffer);
 
     va_end(args);
 
