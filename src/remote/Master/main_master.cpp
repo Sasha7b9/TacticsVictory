@@ -18,8 +18,8 @@ int main(int, char *[])
     LOGWRITE("Start Master");
     LOGWARNING("Test Warning");
     LOGERROR("Test Error");
-//    int i = 10;
-//    LOGWARNINGF("Test Warning %d", i);
+    int i = 10;
+    LOGWARNINGF("Test Warning %d", i);
 
     if (!TheConfig.Load("Master.conf"))
     {
