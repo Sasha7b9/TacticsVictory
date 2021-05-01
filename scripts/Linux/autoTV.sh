@@ -26,6 +26,8 @@ function Build {
     ./start.sh all    
 }
 
+echo
+
 Build
 
 while true
