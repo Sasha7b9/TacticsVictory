@@ -42,7 +42,7 @@ int LivingRoom::MainCycle()
 
 void LivingRoom::OnConnect()
 {
-    LOGWRITE("Connection to master server established");
+    LOGWRITEF("Connection to master server %s established", TheConnMaster.GetFullAddress().c_str());
 
     TheLivingRoom.SendNameToMasterServer();
 

@@ -93,10 +93,12 @@ public:
 
     std::vector<uint8> data;                        // Здесь хранятся принятые данные
 
-    bool thread_need_stopped = false;       // true, если поток нуждается в запуске
-    bool thread_is_stopped = true;          // true, если поток остановлен
+    bool thread_need_stopped = false;               // true, если поток нуждается в запуске
+    bool thread_is_stopped = true;                  // true, если поток остановлен
 
     static void ThreadUpdate(ConnectorTCP *connector);
+
+    std::string GetFullAddress() const;
 
 private:
 
@@ -105,8 +107,8 @@ private:
     std::string host;
     uint16 port;                                    // Порт засылки в сервер. порт чтения на 1 больше
 
-    std::map<uint, ServerTask *> wait_tasks;  // Задачи, ожидающие ответа (выполненные)
-    std::vector<ServerTask *>    new_tasks;   // Задачи, ожидающие выполнения (поставленные в очередь для
+    std::map<uint, ServerTask *> wait_tasks;        // Задачи, ожидающие ответа (выполненные)
+    std::vector<ServerTask *>    new_tasks;         // Задачи, ожидающие выполнения (поставленные в очередь для
                                                     // выполнения
 
     bool destroy = false;

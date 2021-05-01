@@ -495,3 +495,9 @@ bool ConnectorTCP::ExistConnection()
 
     return false;
 }
+
+
+std::string ConnectorTCP::GetFullAddress() const
+{
+    return host + ":" + GF::IntToString(port, 0);
+}
