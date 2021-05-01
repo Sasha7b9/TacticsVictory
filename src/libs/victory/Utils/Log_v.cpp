@@ -14,7 +14,7 @@
 #endif
 
 
-static const int numSymbolsForMarker = 40;          // Количество сиволов под позицию ошибки
+static const int numSymbolsForMarker = 30;          // Количество сиволов под позицию ошибки
 
 static pchar STR_ERROR   = "  *ERROR*";
 static pchar STR_WARNING = "*WARNING*";
