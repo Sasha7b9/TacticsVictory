@@ -14,7 +14,7 @@
 #endif
 
 
-static const int numSymbolsForMarker = 30;          // Количество сиволов под позицию ошибки
+static const int num_symbols_for_info = 30; // Количество сиволов под информацию об ошибке (файл, строка и т.д)
 
 static pchar STR_ERROR   = "  *ERROR*";
 static pchar STR_WARNING = "*WARNING*";
@@ -32,7 +32,7 @@ HANDLE ConsoleLog::handle = nullptr;
 // Оставляет от имени файла не более определённого количества символов
 static pchar ExtractName(pchar fullName)
 {
-    const int max = numSymbolsForMarker - 12;
+    const int max = num_symbols_for_info - 12;
 
     pchar pointer = fullName + SU::Length(fullName) - 1;
 
@@ -149,7 +149,7 @@ void LogRAW::Error(pchar file, int line, pchar text)
 }
 
 
-void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar symbols)
+void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
 {
     std::vector<char> v(1024);
 
@@ -161,30 +161,30 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar symbols)
 
     snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d ", file, line);
 
-    if (symbols[0] == '\0')
+    if (warn_err[0] == '\0')                                                       // Не нужно указывать тип ошибки
     {
-        while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(symbols) - 1)
+        while (SU::Length(v.data()) < num_symbols_for_info)
         {
             std::strcat(v.data(), " ");
         }
 
         snprintf(v.data() + std::strlen(v.data()), 1024, "| %s", text);
     }
-    else
+    else                                                                         // Нужно указывать тип ошибки
     {
-        while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(symbols) - 2)
+        while (SU::Length(v.data()) < num_symbols_for_info)
         {
             std::strcat(v.data(), " ");
         }
 
-        snprintf(v.data() + std::strlen(v.data()), 1024, "%s | %s", symbols, text);
+        snprintf(v.data() + std::strlen(v.data()), 1024, "%s | %s", warn_err, text);
     }
 
     Write(v.data());
 }
 
 
-void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symbols)
+void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar warn_err)
 {
     snprintf(v.data(), 1024, "%s | ", NameApplication().c_str());
 
@@ -192,12 +192,12 @@ void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symb
 
     snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d ", file, line);
 
-    while (SU::Length(v.data()) < numSymbolsForMarker - SU::Length(symbols) - 2)
+    while (SU::Length(v.data()) < num_symbols_for_info - SU::Length(warn_err) - 2)
     {
         strcat(v.data(), " ");
     }
 
-    std::strcat(v.data(), symbols);
+    std::strcat(v.data(), warn_err);
     std::strcat(v.data(), " | ");
 }
 
