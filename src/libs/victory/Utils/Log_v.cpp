@@ -16,8 +16,8 @@
 
 static const int num_symbols_for_info = 30; // Количество сиволов под информацию об ошибке (файл, строка и т.д)
 
-static pchar STR_ERROR   = "  *** ERROR ***";
-static pchar STR_WARNING = "*** WARNING ***";
+static pchar STR_ERROR   = "  *** ERROR *** ";
+static pchar STR_WARNING = "*** WARNING *** ";
 
 static FS::File *outFile;
 
@@ -168,7 +168,7 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
         std::strcat(v.data(), " ");
     }
 
-    snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "| %s %s", warn_err, text);
+    snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "| %s%s", warn_err, text);
 
     Write(v.data());
 }
