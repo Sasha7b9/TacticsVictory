@@ -30,7 +30,6 @@ Build
 
 while true
 do
-    echo
     git pull > out.txt
     FILENAME=out.txt
     FILESIZE=$(stat -c%s "$FILENAME")
