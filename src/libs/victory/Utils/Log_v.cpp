@@ -163,17 +163,17 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
 
     snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "%s:%d", file, line);
 
-    while (SU::Length(v.data()) < num_symbols_for_info)
-    {
-        std::strcat(v.data(), " ");
-    }
-
     if (warn_err[0])
     {
         snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "%s%s", warn_err, text);
     }
     else
     {
+        while (SU::Length(v.data()) < num_symbols_for_info)
+        {
+            std::strcat(v.data(), " ");
+        }
+
         snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "| %s", text);
     }
 
@@ -191,17 +191,17 @@ void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar warn
 
     snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "%s:%d ", file, line);
 
-    while (SU::Length(v.data()) < num_symbols_for_info)
-    {
-        std::strcat(v.data(), " ");
-    }
-
     if (warn_err[0])
     {
         snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "%s", warn_err);
     }
     else
     {
+        while (SU::Length(v.data()) < num_symbols_for_info)
+        {
+            std::strcat(v.data(), " ");
+        }
+
         std::strcat(v.data(), "| ");
     }
 }
