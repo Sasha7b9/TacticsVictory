@@ -90,7 +90,11 @@ void LogRAW::ErrorF(pchar file, int line, pchar format, ...)
     std::va_list args;
     va_start(args, format);
 
-    std::vsnprintf(v.data() + SU::Length(v.data()), v.size(), format, args);
+    char buffer[1024];
+
+    std::vsnprintf(buffer, 1024, format, args);
+
+    v.append(buffer);
 
     va_end(args);
 
@@ -108,7 +112,11 @@ void LogRAW::WarningF(pchar file, int line, pchar format, ...)
     std::va_list args;
     va_start(args, format);
 
-    std::vsnprintf(v.data() + SU::Length(v.data()), v.size(), format, args);
+    char buffer[1024];
+
+    std::vsnprintf(buffer, 1024, format, args);
+
+    v.append(buffer);
 
     va_end(args);
 
@@ -126,9 +134,9 @@ void LogRAW::WriteF(pchar file, int line, pchar format, ...)
     std::va_list args;
     va_start(args, format);
 
-    char buffer[512];
+    char buffer[1024];
 
-    std::vsnprintf(buffer, 512, format, args);
+    std::vsnprintf(buffer, 1024, format, args);
 
     v.append(buffer);
 
