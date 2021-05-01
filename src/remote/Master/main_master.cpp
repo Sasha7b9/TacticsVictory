@@ -20,6 +20,7 @@ int main(int, char *[])
     LOGERROR("Test Error");
     int i = 10;
     LOGWARNINGF("Test Warning %d", i);
+    LOGWRITE("Long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long string");
 
     if (!TheConfig.Load("Master.conf"))
     {
