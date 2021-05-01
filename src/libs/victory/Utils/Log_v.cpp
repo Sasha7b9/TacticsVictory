@@ -29,8 +29,11 @@ HANDLE ConsoleLog::handle = nullptr;
 #endif
 
 
-static pchar ExtractName(pchar fullName, int max)
+// Оставляет от имени файла не более определённого количества символов
+static pchar ExtractName(pchar fullName)
 {
+    const int max = 15;
+
     pchar pointer = fullName + SU::Length(fullName) - 1;
 
     int numSlash = 0;
@@ -154,7 +157,7 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar symbols)
 
     snprintf(v.data(), 1024, "%s | ", name.c_str());
 
-    file = ExtractName(file, numSymbolsForMarker - SU::Length(symbols) - 1);
+    file = ExtractName(file);
 
     snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d ", file, line);
 
@@ -185,7 +188,7 @@ void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar symb
 {
     snprintf(v.data(), 1024, "%s | ", NameApplication().c_str());
 
-    file = ExtractName(file, numSymbolsForMarker - SU::Length(symbols) - 1);
+    file = ExtractName(file);
 
     snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d ", file, line);
 
