@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 
-function Build
-{
+function Build {
     ./stop.sh all
 
     echo
