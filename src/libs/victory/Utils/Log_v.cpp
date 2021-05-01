@@ -14,9 +14,9 @@
 #endif
 
 
-static const int numSymbolsForMarker = 50;          // Количество сиволов под позицию ошибки
+static const int numSymbolsForMarker = 40;          // Количество сиволов под позицию ошибки
 
-static pchar STR_ERROR = "*ERROR*";
+static pchar STR_ERROR   = "  *ERROR*";
 static pchar STR_WARNING = "*WARNING*";
 
 static FS::File *outFile;
@@ -32,7 +32,7 @@ HANDLE ConsoleLog::handle = nullptr;
 // Оставляет от имени файла не более определённого количества символов
 static pchar ExtractName(pchar fullName)
 {
-    const int max = 37;
+    const int max = numSymbolsForMarker - 12;
 
     pchar pointer = fullName + SU::Length(fullName) - 1;
 
