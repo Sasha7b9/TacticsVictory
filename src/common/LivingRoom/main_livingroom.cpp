@@ -10,7 +10,7 @@ int main(int , char *[])
 
     LogRAW::Create("LivingRoom.log", false);
 
-    LOGWRITE("Start LivingRoom");
+    //LOGWRITE("Start LivingRoom");
 
     if (TheSettings.Load("Settings.conf"))
     {
