@@ -151,34 +151,24 @@ void LogRAW::Error(pchar file, int line, pchar text)
 
 void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
 {
-    std::vector<char> v(1024);
+    const int SIZE_STRING = 1024;
+
+    std::vector<char> v(SIZE_STRING);
 
     std::string name = NameApplication();
 
-    snprintf(v.data(), 1024, "%s | ", name.c_str());
+    snprintf(v.data(), SIZE_STRING, "%s | ", name.c_str());
 
     file = ExtractName(file);
 
-    snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d | %s %s", file, line, warn_err, text);
+    snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "%s:%d", file, line);
 
-//    if (warn_err[0] == '\0')                                                       // Не нужно указывать тип ошибки
-//    {
-//        while (SU::Length(v.data()) < num_symbols_for_info)
-//        {
-//            std::strcat(v.data(), " ");
-//        }
-//
-//        snprintf(v.data() + std::strlen(v.data()), 1024, "| %s", text);
-//    }
-//    else                                                                         // Нужно указывать тип ошибки
-//    {
-//        while (SU::Length(v.data()) < num_symbols_for_info)
-//        {
-//            std::strcat(v.data(), " ");
-//        }
-//
-//        snprintf(v.data() + std::strlen(v.data()), 1024, "%s | %s", warn_err, text);
-//    }
+    while (SU::Length(v.data()) < num_symbols_for_info)
+    {
+        std::strcat(v.data(), " ");
+    }
+
+    snprintf(v.data() + std::strlen(v.data()), SIZE_STRING, "| %s %s", text, warn_err);
 
     Write(v.data());
 }
@@ -190,7 +180,7 @@ void LogRAW::CommonWriteF(pchar file, int line, std::vector<char> &v, pchar warn
 
     file = ExtractName(file);
 
-    snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d ", file, line);
+    snprintf(v.data() + std::strlen(v.data()), 1024, "%s:%d | %s", file, line, warn_err);
 
     while (SU::Length(v.data()) < num_symbols_for_info - SU::Length(warn_err))
     {
