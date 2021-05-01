@@ -37,7 +37,7 @@ static pchar ExtractName(pchar fullName, int max)
 
     int length = 1;
 
-    while (numSlash < 2 || length < max)
+    while (length < max)
     {
         if (*pointer == '\\' || *pointer == '/')
         {
@@ -45,6 +45,11 @@ static pchar ExtractName(pchar fullName, int max)
         }
         pointer--;
         length++;
+
+        if (numSlash == 2)
+        {
+            break;
+        }
     }
 
     return pointer + (length < max ? 2 : 6);
