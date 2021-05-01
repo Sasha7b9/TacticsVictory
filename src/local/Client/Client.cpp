@@ -42,7 +42,7 @@ void Client::Setup()
 
     LogRAW::Create((GetTypeName() + ".log").CString(), true);
 
-    LOGWRITE("Start Client");
+    //LOGWRITE("Start Client");
 
     TheClient = this;
 

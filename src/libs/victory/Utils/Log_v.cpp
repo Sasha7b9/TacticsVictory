@@ -158,7 +158,7 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
     v.reserve(1024);
 
     v.append(NameApplication());
-    v.append(" |");
+    v.append(" | ");
     v.append(ExtractName(file));
     v.append(":");
     v.append(std::to_string(line));
