@@ -3,6 +3,17 @@
 #include "Network/Server.h"
 
 
+ServerClientInfo::ServerClientInfo(const ClientInfo &rhs)
+{
+    address = rhs.address;
+    bindata = rhs.bindata;
+    benv = rhs.benv;
+    message = rhs.message;
+    words = rhs.words;
+    name = rhs.name;
+}
+
+
 Server::Server() : ServerTCP()
 {
 

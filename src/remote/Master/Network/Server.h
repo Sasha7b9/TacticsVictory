@@ -3,6 +3,13 @@
 #include "Network/Other/ServerTCP_v.h"
 
 
+struct ServerClientInfo : public ClientInfo
+{
+    ServerClientInfo() {}
+    ServerClientInfo(const ClientInfo &);
+};
+
+
 class Server : public ServerTCP
 {
 public:
@@ -11,7 +18,7 @@ public:
 
     virtual ~Server() {};
 
-    std::map<void *, ClientInfo> clients;
+    std::map<void *, ServerClientInfo> clients;
 
 private:
 
