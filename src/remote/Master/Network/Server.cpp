@@ -2,3 +2,8 @@
 #include "stdafx.h"
 #include "Network/Server.h"
 
+
+Server::Server() : ServerTCP()
+{
+
+}

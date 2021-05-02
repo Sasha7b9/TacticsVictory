@@ -6,5 +6,6 @@
 class Server : public ServerTCP
 {
 public:
+    Server();
 private:
 };

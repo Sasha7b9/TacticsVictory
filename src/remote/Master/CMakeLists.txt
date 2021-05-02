@@ -46,12 +46,11 @@ file(GLOB FILE_SYSTEM         ../../common_files/FileSystem/ConfigurationFile_.*
                               ../../common_files/FileSystem/FileSystem_.*)
 file(GLOB NETWORK             ../../common_files/Network/Other/NetworkTypes_.*
                               ../../libs/victory/Network/Other/ServerTCP_v.h
-                                                 Network/ServerHandlers.cpp)
+                                                 Network/*.*)
 file(GLOB UTILS               ../../common_files/Utils/GlobalFunctions_.*
                               ../../libs/victory/Utils/Log_.h
                               ../../libs/victory/Utils/StringUtils_.h
                               ../../libs/victory/Utils/UtilsOS_.h)
-
 
 source_group(src                  FILES ${SRC})
 source_group(FileSystem           FILES ${FILE_SYSTEM})
