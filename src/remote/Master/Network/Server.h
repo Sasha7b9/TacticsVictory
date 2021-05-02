@@ -3,10 +3,14 @@
 #include "Network/Other/ServerTCP_v.h"
 
 
-struct ServerClientInfo : public ClientInfo
+struct ClientServerInfo : public ClientInfo
 {
-    ServerClientInfo() {}
-    ServerClientInfo(const ClientInfo &);
+    ClientServerInfo() {}
+    ClientServerInfo(const ClientInfo &);
+
+    bool IsLivingRoom() const { return !name.empty(); }
+
+    std::string     name;      // Имя гостиной, как оно будет отображаться в окне выбора сервера у игроков
 };
 
 
@@ -14,11 +18,15 @@ class Server : public ServerTCP
 {
 public:
 
+    typedef void (*handlerClient) (uint, ClientServerInfo &);
+
     Server();
 
     virtual ~Server() {};
 
-    std::map<void *, ServerClientInfo> clients;
+    std::map<void *, ClientServerInfo> clients;
+
+    void AppendHandler(pchar command, handlerClient handler);
 
 private:
 

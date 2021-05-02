@@ -3,14 +3,13 @@
 #include "Network/Server.h"
 
 
-ServerClientInfo::ServerClientInfo(const ClientInfo &rhs)
+ClientServerInfo::ClientServerInfo(const ClientInfo &rhs)
 {
     address = rhs.address;
     bindata = rhs.bindata;
     benv = rhs.benv;
     message = rhs.message;
     words = rhs.words;
-    name = rhs.name;
 }
 
 
@@ -42,4 +41,10 @@ void Server::HandlerOnError(void *bev)
 {
     LOGWRITEF("Close connection from %s", clients[bev].address.ToStringFull().c_str());
     clients.erase(bev);
+}
+
+
+void Server::AppendHandler(pchar command, handlerClient handler)
+{
+    ServerTCP::AppendHandler(command, (ServerTCP::handlerClient)handler);
 }

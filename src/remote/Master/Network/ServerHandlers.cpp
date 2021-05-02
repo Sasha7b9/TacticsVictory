@@ -1,16 +1,16 @@
 // 2021/03/31 22:30:19 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "FileSystem/ConfigurationFile_v.h"
+#include "Network/Server.h"
 #include "Network/Other/NetworkTypes_v.h"
-#include "Network/Other/ServerTCP_v.h"
 #include "Utils/StringUtils_v.h"
 #include <sstream>
 
 
-static void HandleInfoLivingRoms(uint, ClientInfo &);
-static void HandlerPing(uint, ClientInfo &);
-static void HandlerSetNameLivingRoom(uint, ClientInfo &);
-static void HandlerGet(uint, ClientInfo &);
+static void HandleInfoLivingRoms(uint, ClientServerInfo &);
+static void HandlerPing(uint, ClientServerInfo &);
+static void HandlerSetNameLivingRoom(uint, ClientServerInfo &);
+static void HandlerGet(uint, ClientServerInfo &);
 
 
 
@@ -23,7 +23,7 @@ void PrepareServerTCP()
 };
 
 
-static void HandleInfoLivingRoms(uint id, ClientInfo &info)
+static void HandleInfoLivingRoms(uint id, ClientServerInfo &info)
 {
     std::string result;
 
@@ -31,9 +31,9 @@ static void HandleInfoLivingRoms(uint id, ClientInfo &info)
 
     for (auto &pair : TheServer.clients)
     {
-        const ClientInfo &ci = pair.second;
+        const ClientServerInfo &ci = pair.second;
 
-        if (!ci.name.empty())
+        if (ci.IsLivingRoom())
         {
             stream << ci.name << ',';
             stream << ci.address.ToStringHost().c_str() << ',';
@@ -46,13 +46,13 @@ static void HandleInfoLivingRoms(uint id, ClientInfo &info)
 }
 
 
-static void HandlerPing(uint id, ClientInfo &info)
+static void HandlerPing(uint id, ClientServerInfo &info)
 {
     TheServer.SendAnswer(info.benv, id, MSG_NTW_PING, info.GetRawData(), 4);
 }
 
 
-static void HandlerSetNameLivingRoom(uint, ClientInfo &info)
+static void HandlerSetNameLivingRoom(uint, ClientServerInfo &info)
 {
     char *name = (char *)info.GetRawData();
 
@@ -60,7 +60,7 @@ static void HandlerSetNameLivingRoom(uint, ClientInfo &info)
 }
 
 
-static void HandlerGet(uint id, ClientInfo &info)
+static void HandlerGet(uint id, ClientServerInfo &info)
 {
     std::vector<std::string> &words = info.words;
 
