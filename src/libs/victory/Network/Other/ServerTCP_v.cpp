@@ -104,7 +104,7 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
 
         ClientInfo info;
         info.address.SetHostIP(&ss);
-        info.benv = bevnt;
+        info.bevnt = bevnt;
         info.id = ++id;
 
         LOGWRITEF("Open connection from %s", info.address.ToStringFull().c_str());

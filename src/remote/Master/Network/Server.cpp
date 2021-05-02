@@ -9,7 +9,7 @@ ClientServerInfo ClientServerInfo::empty;
 ClientServerInfo::ClientServerInfo(const ClientInfo &rhs)
 {
     address = rhs.address;
-    benv = rhs.benv;
+    bevnt = rhs.bevnt;
     message = rhs.message;
 }
 
@@ -59,7 +59,7 @@ ClientServerInfo &Server::GetClient(void *bevnt)
     {
         ClientServerInfo &client = elem.second;
 
-        if (client.benv == bevnt)
+        if (client.bevnt == bevnt)
         {
             return client;
         }

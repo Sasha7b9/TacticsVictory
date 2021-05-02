@@ -92,7 +92,7 @@ struct ClientInfo
 
     SockAddrIn address;                 // Адрес клиента
 
-    void *benv;                         // Буфер событий libevent
+    void *bevnt;                        // Буфер событий libevent
 
     ClientMessage message;
 };

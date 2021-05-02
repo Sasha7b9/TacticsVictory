@@ -42,13 +42,13 @@ static void HandleInfoLivingRoms(uint id, ClientServerInfo &info)
         }
     }
 
-    TheServer.SendAnswer(info.benv, id, MSG_NTW_INFO_LIVINGROOM, stream.str().c_str());
+    TheServer.SendAnswer(info.bevnt, id, MSG_NTW_INFO_LIVINGROOM, stream.str().c_str());
 }
 
 
 static void HandlerPing(uint id, ClientServerInfo &info)
 {
-    TheServer.SendAnswer(info.benv, id, MSG_NTW_PING, info.message.GetRawData(), 4);
+    TheServer.SendAnswer(info.bevnt, id, MSG_NTW_PING, info.message.GetRawData(), 4);
 }
 
 
@@ -76,7 +76,7 @@ static void HandlerGet(uint id, ClientServerInfo &info)
                     {
                         int delta = TheConfig.GetInt(words[1].c_str(), words[2].c_str());
 
-                        TheServer.SendAnswer(info.benv, id, MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP, delta);
+                        TheServer.SendAnswer(info.bevnt, id, MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP, delta);
                     }
                 }
             }
