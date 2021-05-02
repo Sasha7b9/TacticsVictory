@@ -129,7 +129,7 @@ void ServerUDP::ProcessClient(ClientInfo &info, ServerUDP *server)
 
         if (received.size() >= sizeof(uint) * 2 + size)
         {
-            ClientMessage::MoveData(received, info.message.raw);
+            info.message.MoveRawFrom(received);
 
             SU::SplitToWords((char *)info.message.raw.data(), info.message.words);
 

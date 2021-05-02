@@ -191,15 +191,15 @@ void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 {
     std::vector<uint8> &received = info.message.data;
 
-    while (received.size() > 4 + 4)         // Если принято данных больше, чем занимают id и размер данных
+    while (received.size() > sizeof(uint) * 2)         // Если принято данных больше, чем занимают id и размер данных
     {
         uint id = ClientMessage::GetID(received);
 
         uint size = ClientMessage::GetSize(received);
 
-        if (received.size() >= 4 + 4 + size)
+        if (received.size() >= sizeof(uint) * 2 + size)
         {
-            ClientMessage::MoveData(received, info.message.raw);
+            info.message.MoveRawFrom(received);
 
             SU::SplitToWords((char *)info.message.raw.data(), info.message.words);
 

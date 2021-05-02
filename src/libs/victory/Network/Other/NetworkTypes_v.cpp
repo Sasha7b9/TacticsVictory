@@ -48,15 +48,15 @@ uint ClientMessage::GetSize(std::vector<uint8> &received)
 }
 
 
-void ClientMessage::MoveData(std::vector<uint8> &received, std::vector<uint8> &data)
+void ClientMessage::MoveRawFrom(std::vector<uint8> &received)
 {
     uint size = GetSize(received);
 
-    data.resize(size);
+    raw.resize(size);
 
-    std::memcpy(data.data(), received.data() + 8, size);
+    std::memcpy(raw.data(), received.data() + sizeof(uint) * 2, size);
 
-    received.erase(received.begin(), received.begin() + 8 + size);
+    received.erase(received.begin(), received.begin() + sizeof(uint) * 2 + size);
 }
 
 
