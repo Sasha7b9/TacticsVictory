@@ -41,38 +41,45 @@ void MapLivingRooms::Update()
 
 void MapLivingRooms::SenMessageToAll(pchar message)
 {
+    if (port == 0)
+    {
+        LOGERRORF("Can not sending. Pot is not set");
+    }
+
     for (auto &connector : connectors)
     {
-        connector.second.SendMessage(message);
+        connector.second.Send(message);
     }
 }
 
 
 void MapLivingRooms::ParseInfo(void *data)
 {
-    TheMenu->pageFindServer->SetServersInfo((char *)data);
+    LOGWRITE((char *)data);
 
-    std::string info((char *)data);
-
-    size_t pos = info.find('|');
-
-    while (pos != std::string::npos)
-    {
-        std::string info_server = info.substr(0, pos);
-
-        std::vector<std::string> words;
-
-        SU::SplitToWords(info_server.c_str(), words, ",|");
-
-        if (words.size() > 1)
-        {
-            Append(words[1].c_str());
-        }
-
-        info.erase(0, pos + 1);
-
-        pos = info.find('|');
-    }
-
-    SetTasks();
+//    TheMenu->pageFindServer->SetServersInfo((char *)data);
+//
+//    std::string info((char *)data);
+//
+//    size_t pos = info.find('|');
+//
+//    while (pos != std::string::npos)
+//    {
+//        std::string info_server = info.substr(0, pos);
+//
+//        std::vector<std::string> words;
+//
+//        SU::SplitToWords(info_server.c_str(), words, ",|");
+//
+//        if (words.size() > 1)
+//        {
+//            Append(words[1].c_str());
+//        }
+//
+//        info.erase(0, pos + 1);
+//
+//        pos = info.find('|');
+//    }
+//
+//    SetTasks();
 }

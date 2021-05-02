@@ -46,24 +46,4 @@ void Client::SetTasksMasterServer()
 {
     TheConnMaster.SetTask(&taskPing);
     TheConnMaster.SetTask(&taskGetInfoLivingRooms);
-
-    static ServerTask taskPortLivingRoom
-    (
-        []()
-        {
-            return TheConnMaster.SendRequest(MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP);
-        },
-        [](pchar, void *data, uint)
-        {
-            int delta = *((int *)data);
-
-            uint16 port_udp = (uint16)(TheSettings.GetInt("master_server", "port") + delta);
-
-            LOGWRITEF("Number port for connecting to Living Room %d", port_udp);
-
-            MapLivingRooms::SetPort(port_udp);
-        }
-    );
-
-    TheConnMaster.RunTask(&taskPortLivingRoom);
 }

@@ -11,11 +11,14 @@ void ConnectorUDP::AcceptServer(pchar _ip, uint16 _port)
 }
 
 
-void ConnectorUDP::SendMessage(pchar message)
+void ConnectorUDP::Send(pchar message)
 {
     int need_bytes = (int)std::strlen(message) + 1;
 
-    sendto(sock_fd, message, need_bytes, 0, addr.GetSockAddr(), sizeof(addr));
+    if (sendto(sock_fd, message, need_bytes, 0, addr.GetSockAddr(), sizeof(addr)) == -1)
+    {
+        LOGERRORF("Can not send to %s", addr.ToStringFull().c_str());
+    }
 }
 
 

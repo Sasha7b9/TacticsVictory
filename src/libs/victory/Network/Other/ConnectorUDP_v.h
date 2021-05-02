@@ -10,7 +10,7 @@ public:
 
     void AcceptServer(pchar ip, uint16 port);
 
-    void SendMessage(pchar message);
+    void Send(pchar message);
 
     void SetTask(ServerTask *task);
 
