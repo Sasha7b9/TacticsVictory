@@ -88,6 +88,8 @@ struct ClientMessage
 
 struct ClientInfo
 {
+    uint id = 0;
+
     SockAddrIn address;                 // Адрес клиента
 
     void *benv;                         // Буфер событий libevent

@@ -3,6 +3,9 @@
 #include "Network/Server.h"
 
 
+ClientServerInfo ClientServerInfo::empty;
+
+
 ClientServerInfo::ClientServerInfo(const ClientInfo &rhs)
 {
     address = rhs.address;
@@ -17,32 +20,50 @@ Server::Server() : ServerTCP()
 }
 
 
-void Server::HandlerOnAccepted(uint , void *bev, ClientInfo info)
+void Server::HandlerOnAccepted(ClientInfo &info)
 {
-    clients[bev] = info;
+    clients[info.id] = info;
 }
 
 
 std::vector<uint8> &Server::HandlerOnRead1(void *bev)
 {
-    return clients[bev].message.data;
+    return GetClient(bev).message.data;
 }
 
 
 ClientInfo &Server::HandlerOnRead2(void *bev)
 {
-    return clients[bev];
+    return GetClient(bev);
 }
 
 
 void Server::HandlerOnError(void *bev)
 {
-    LOGWRITEF("Close connection from %s", clients[bev].address.ToStringFull().c_str());
-    clients.erase(bev);
+    ClientServerInfo *client = &GetClient(bev);
+
+    LOGWRITEF("Close connection from %s", client->address.ToStringFull().c_str());
+    clients.erase(client->id);
 }
 
 
 void Server::AppendHandler(pchar command, handlerClient handler)
 {
     ServerTCP::AppendHandler(command, (ServerTCP::handlerClient)handler);
+}
+
+
+ClientServerInfo &Server::GetClient(void *bev)
+{
+    for (auto &elem : clients)
+    {
+        ClientServerInfo &client = elem.second;
+
+        if (client.benv == bev)
+        {
+            return client;
+        }
+    }
+
+    return ClientServerInfo::empty;
 }

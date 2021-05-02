@@ -11,6 +11,8 @@ struct ClientServerInfo : public ClientInfo
     bool IsLivingRoom() const { return !name.empty(); }
 
     std::string     name;      // »м€ гостиной, как оно будет отображатьс€ в окне выбора сервера у игроков
+
+    static ClientServerInfo empty;
 };
 
 
@@ -24,14 +26,17 @@ public:
 
     virtual ~Server() {};
 
-    std::map<void *, ClientServerInfo> clients;
+    std::map<uint, ClientServerInfo> clients;   //  лиенты здесь хран€тс€ по своим уникальным ID, назначемым им сервером
 
     void AppendHandler(pchar command, handlerClient handler);
 
 private:
 
-    virtual void HandlerOnAccepted(uint id, void *bev, ClientInfo info) override;
-    virtual std::vector<uint8> &HandlerOnRead1(void *bev) override;
-    virtual ClientInfo &HandlerOnRead2(void *bev) override;
-    virtual void HandlerOnError(void *bev) override;
+    virtual void                HandlerOnAccepted(ClientInfo &info) override;
+    virtual std::vector<uint8>& HandlerOnRead1(void *bev) override;
+    virtual ClientInfo&         HandlerOnRead2(void *bev) override;
+    virtual void                HandlerOnError(void *bev) override;
+
+    // ¬озвращает клиент с буфером bev
+    ClientServerInfo &GetClient(void *bev);
 };

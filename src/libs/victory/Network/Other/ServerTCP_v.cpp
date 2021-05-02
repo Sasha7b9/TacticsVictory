@@ -100,17 +100,16 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
 //        bufferevent_setwatermark(bev, EV_READ | EV_WRITE, 0, 2);
         bufferevent_enable(bev, EV_READ | EV_WRITE);
 
+        static uint id = 0;
+
         ClientInfo info;
         info.address.SetHostIP(&ss);
         info.benv = bev;
+        info.id = ++id;
 
         LOGWRITEF("Open connection from %s", info.address.ToStringFull().c_str());
 
-//        args->server->clients[bev] = info;
-
-        static uint id = 0;
-
-        args->server->HandlerOnAccepted(++id, bev, info);
+        args->server->HandlerOnAccepted(info);
     }
 }
 

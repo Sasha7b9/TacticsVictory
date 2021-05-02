@@ -47,7 +47,7 @@ private:
     static void ProcessClient(ClientInfo &info, ServerTCP *server);
 
     // Вызывается в CallbackAccept() при присоединении нового клиента
-    virtual void HandlerOnAccepted(uint id, void *bev, ClientInfo info) = 0;
+    virtual void HandlerOnAccepted(ClientInfo &info) = 0;
 
     // Вызываются в CallbackRead()
     virtual std::vector<uint8> &HandlerOnRead1(void *bev) = 0;
