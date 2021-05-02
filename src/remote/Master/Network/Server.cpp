@@ -8,6 +8,7 @@ ClientServerInfo ClientServerInfo::empty;
 
 ClientServerInfo::ClientServerInfo(const ClientInfo &rhs)
 {
+    id = rhs.id;
     address = rhs.address;
     bevnt = rhs.bevnt;
     message = rhs.message;
@@ -22,7 +23,6 @@ Server::Server() : ServerTCP()
 
 void Server::HandlerOnAccepted(ClientInfo &info)
 {
-    LOGWRITEF("HandlerOnAccepted() info.if = %d", info.id);
     clients[info.id] = info;
 }
 
