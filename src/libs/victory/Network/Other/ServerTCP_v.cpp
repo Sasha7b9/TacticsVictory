@@ -101,11 +101,12 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
         bufferevent_enable(bevnt, EV_READ | EV_WRITE);
 
         static uint id = 0;
+        id++;
 
         ClientInfo info;
         info.address.SetHostIP(&ss);
         info.bevnt = bevnt;
-        info.id = ++id;
+        info.id = id;
 
         LOGWRITEF("Open connection from %s", info.address.ToStringFull().c_str());
 
