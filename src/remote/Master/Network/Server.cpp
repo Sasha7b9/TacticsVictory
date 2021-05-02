@@ -7,3 +7,28 @@ Server::Server() : ServerTCP()
 {
 
 }
+
+
+void Server::HandlerOnAccepted(uint , void *bev, ClientInfo info)
+{
+    clients[bev] = info;
+}
+
+
+std::vector<uint8> &Server::HandlerOnRead1(void *bev)
+{
+    return clients[bev].bindata;
+}
+
+
+ClientInfo &Server::HandlerOnRead2(void *bev)
+{
+    return clients[bev];
+}
+
+
+void Server::HandlerOnError(void *bev)
+{
+    LOGWRITEF("Close connection from %s", clients[bev].address.ToStringFull().c_str());
+    clients.erase(bev);
+}

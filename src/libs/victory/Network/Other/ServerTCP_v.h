@@ -11,6 +11,8 @@ class ServerTCP
 {
 public:
 
+    virtual ~ServerTCP() {}
+
     typedef void (*handlerClient) (uint, ClientInfo &);
 
     void Run(uint16 port);
@@ -24,8 +26,6 @@ public:
     void SendAnswer(void *bev, uint id, pchar message, int value);
 
     std::map<std::string, handlerClient> handlers;   // Здесь хранятся обработчики запросов по первому слову
-
-    std::map<void *, ClientInfo> clients;
 
 private:
 
@@ -45,4 +45,14 @@ private:
     static void CallbackLog(int, const char *);
 
     static void ProcessClient(ClientInfo &info, ServerTCP *server);
+
+    // Вызывается в CallbackAccept() при присоединении нового клиента
+    virtual void HandlerOnAccepted(uint id, void *bev, ClientInfo info) = 0;
+
+    // Вызываются в CallbackRead()
+    virtual std::vector<uint8> &HandlerOnRead1(void *bev) = 0;
+    virtual ClientInfo &HandlerOnRead2(void *bev) = 0;
+
+    // Вызывается в CallbackError()
+    virtual void HandlerOnError(void *bev) = 0;
 };

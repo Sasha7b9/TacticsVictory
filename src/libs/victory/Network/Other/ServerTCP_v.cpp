@@ -106,7 +106,11 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
 
         LOGWRITEF("Open connection from %s", info.address.ToStringFull().c_str());
 
-        args->server->clients[bev] = info;
+//        args->server->clients[bev] = info;
+
+        static uint id = 0;
+
+        args->server->HandlerOnAccepted(++id, bev, info);
     }
 }
 
@@ -156,7 +160,7 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
 {
     CallbackArgs *args = (CallbackArgs *)_args;
 
-    std::vector<uint8> &data = args->server->clients[bev].bindata;
+    std::vector<uint8> &data = args->server->HandlerOnRead1(bev);
 
 #define SIZE_CHUNK 1024
 
@@ -171,7 +175,9 @@ void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
         readed = bufferevent_read(bev, buffer, SIZE_CHUNK - 1);
     }
 
-    ProcessClient(args->server->clients[bev], args->server);
+//    ProcessClient(args->server->clients[bev], args->server);
+
+    ProcessClient(args->server->HandlerOnRead2(bev), args->server);
 }
 
 
@@ -226,9 +232,7 @@ void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *_args)
 
     if (error & BEV_EVENT_READING)
     {
-        LOGWRITEF("Close connection from %s", server->clients[bev].address.ToStringFull().c_str());
-
-        server->clients.erase(bev);
+        server->HandlerOnError(bev);
     }
     else if (error & BEV_EVENT_WRITING)
     {
