@@ -48,13 +48,13 @@ static void HandleInfoLivingRoms(uint id, ClientServerInfo &info)
 
 static void HandlerPing(uint id, ClientServerInfo &info)
 {
-    TheServer.SendAnswer(info.benv, id, MSG_NTW_PING, info.GetRawData(), 4);
+    TheServer.SendAnswer(info.benv, id, MSG_NTW_PING, info.message.GetRawData(), 4);
 }
 
 
 static void HandlerSetNameLivingRoom(uint, ClientServerInfo &info)
 {
-    char *name = (char *)info.GetRawData();
+    char *name = (char *)info.message.GetRawData();
 
     info.name = name;
 }
@@ -62,7 +62,7 @@ static void HandlerSetNameLivingRoom(uint, ClientServerInfo &info)
 
 static void HandlerGet(uint id, ClientServerInfo &info)
 {
-    std::vector<std::string> &words = info.words;
+    std::vector<std::string> &words = info.message.words;
 
     if (words.size() > 0)
     {

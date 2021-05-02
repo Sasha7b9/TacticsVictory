@@ -121,19 +121,19 @@ void ServerUDP::ProcessClient(ClientInfo &info, ServerUDP *server)
 {
     std::vector<uint8> &received = info.message.data;
 
-    while (received.size() > 4 + 4)         // Если принято данных больше, чем занимают id и размер данных
+    while (received.size() > sizeof(uint) * 2)         // Если принято данных больше, чем занимают id и размер данных
     {
-        uint id = ClientInfo::GetID(received);
+        uint id = ClientMessage::GetID(received);
 
-        uint size = ClientInfo::GetSize(received);
+        uint size = ClientMessage::GetSize(received);
 
-        if (received.size() >= 4 + 4 + size)
+        if (received.size() >= sizeof(uint) * 2 + size)
         {
-            ClientInfo::MoveData(received, info.message.raw);
+            ClientMessage::MoveData(received, info.message.raw);
 
-            SU::SplitToWords((char *)info.message.raw.data(), info.words);
+            SU::SplitToWords((char *)info.message.raw.data(), info.message.words);
 
-            auto it = server->handlers.find(info.words[0]);
+            auto it = server->handlers.find(info.message.words[0]);
 
             if (it != server->handlers.end())
             {

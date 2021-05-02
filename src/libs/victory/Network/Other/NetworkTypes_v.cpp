@@ -36,19 +36,19 @@ void SockAddrIn::SetHostIP(void *ip)
 }
 
 
-uint ClientInfo::GetID(std::vector<uint8> &received)
+uint ClientMessage::GetID(std::vector<uint8> &received)
 {
     return *(uint *)received.data();
 }
 
 
-uint ClientInfo::GetSize(std::vector<uint8> &received)
+uint ClientMessage::GetSize(std::vector<uint8> &received)
 {
     return *(uint *)(received.data() + 4);
 }
 
 
-void ClientInfo::MoveData(std::vector<uint8> &received, std::vector<uint8> &data)
+void ClientMessage::MoveData(std::vector<uint8> &received, std::vector<uint8> &data)
 {
     uint size = GetSize(received);
 
@@ -60,16 +60,16 @@ void ClientInfo::MoveData(std::vector<uint8> &received, std::vector<uint8> &data
 }
 
 
-void *ClientInfo::GetRawData()
+void *ClientMessage::GetRawData()
 {
-    char *string = (char *)message.raw.data();
+    char *string = (char *)raw.data();
 
-    if (std::strlen(string) + 1 == message.raw.size())
+    if (std::strlen(string) + 1 == raw.size())
     {
         return nullptr;
     }
 
-    return message.raw.data() + std::strlen(string) + 1;
+    return raw.data() + std::strlen(string) + 1;
 }
 
 

@@ -193,25 +193,25 @@ void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 
     while (received.size() > 4 + 4)         // Если принято данных больше, чем занимают id и размер данных
     {
-        uint id = ClientInfo::GetID(received);
+        uint id = ClientMessage::GetID(received);
 
-        uint size = ClientInfo::GetSize(received);
+        uint size = ClientMessage::GetSize(received);
 
         if (received.size() >= 4 + 4 + size)
         {
-            ClientInfo::MoveData(received, info.message.raw);
+            ClientMessage::MoveData(received, info.message.raw);
 
-            SU::SplitToWords((char *)info.message.raw.data(), info.words);
+            SU::SplitToWords((char *)info.message.raw.data(), info.message.words);
 
-            for (uint i = 0; i < info.words.size(); i++)
+            for (uint i = 0; i < info.message.words.size(); i++)
             {
-                if (info.words[i] != "ping")
+                if (info.message.words[i] != "ping")
                 {
 //                    LOGWRITEF("received \"%s\"", info.words[i].c_str());
                 }
             }
 
-            auto it = server->handlers.find(info.words[0]);
+            auto it = server->handlers.find(info.message.words[0]);
 
             if (it != server->handlers.end())
             {

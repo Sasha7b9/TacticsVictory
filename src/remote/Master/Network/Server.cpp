@@ -8,7 +8,6 @@ ClientServerInfo::ClientServerInfo(const ClientInfo &rhs)
     address = rhs.address;
     benv = rhs.benv;
     message = rhs.message;
-    words = rhs.words;
 }
 
 

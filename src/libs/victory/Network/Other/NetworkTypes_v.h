@@ -65,10 +65,19 @@ private:
 
 struct ClientMessage
 {
-    std::vector<uint8> raw;     // Здесь хранится принятое сообщение - сначала строка, а потом дополнительные
-                                // данные, если есть
-    std::vector<uint8> data;    // Данные сообщения, если таковые имюется.
+    std::vector<uint8> raw;         // Здесь хранится принятое сообщение - сначала строка, а потом дополнительные
+                                    // данные, если есть
+    std::vector<uint8> data;        // Данные сообщения, если таковые имюется.
+    std::vector<std::string> words; // Разбитая на слова текстовая часть сообщения
 
+    void *GetRawData();             // Возвращает указатель на данные, если таковые имеются в сообщении
+
+    static uint GetID(std::vector<uint8> &received);
+
+    static uint GetSize(std::vector<uint8> &received);
+
+    // Перемещает байты запроса из received в data. При этом из искоходного вектора перемещённые данные удаляются
+    static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data);
 };
 
 
@@ -79,15 +88,4 @@ struct ClientInfo
     void *benv;                         // Буфер событий libevent
 
     ClientMessage message;
-
-    std::vector<std::string> words;     // Разбитая на слова текстовая часть сообщения
-
-    void *GetRawData();                 // Возвращает указатель на данные, если таковые имеются в сообщении
-
-    static uint GetID(std::vector<uint8> &received);
-
-    static uint GetSize(std::vector<uint8> &received);
-
-    // Перемещает байты запроса из received в data. При этом из искоходного вектора перемещённые данные удаляются
-    static void MoveData(std::vector<uint8> &received, std::vector<uint8> &data);
 };
