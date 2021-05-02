@@ -33,10 +33,10 @@ public:
 private:
 
     virtual void                HandlerOnAccepted(ClientInfo &info) override;
-    virtual std::vector<uint8>& HandlerOnRead1(void *bev) override;
-    virtual ClientInfo&         HandlerOnRead2(void *bev) override;
-    virtual void                HandlerOnError(void *bev) override;
+    virtual std::vector<uint8>& HandlerOnRead1(void *bevnt) override;
+    virtual ClientInfo&         HandlerOnRead2(void *bevnt) override;
+    virtual void                HandlerOnError(void *bevnt) override;
 
-    // Возвращает клиент с буфером bev
-    ClientServerInfo &GetClient(void *bev);
+    // Возвращает клиент с буфером bevnt
+    ClientServerInfo &GetClient(void *bevnt);
 };

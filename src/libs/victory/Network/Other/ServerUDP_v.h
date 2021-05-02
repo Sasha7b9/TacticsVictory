@@ -18,9 +18,9 @@ public:
 
     void AppendHandler(pchar command, handlerClient handler);
 
-    void SendAnswer(void *bev, uint id, pchar message, void *data = nullptr, uint size = 0);
-    void SendAnswer(void *bev, uint id, pchar message, pchar data);
-    void SendAnswer(void *bev, uint id, pchar message, int value);
+    void SendAnswer(void *bevnt, uint id, pchar message, void *data = nullptr, uint size = 0);
+    void SendAnswer(void *bevnt, uint id, pchar message, pchar data);
+    void SendAnswer(void *bevnt, uint id, pchar message, int value);
 
     std::map<std::string, handlerClient> handlers;   // Здесь хранятся обработчики запросов по первому слову
 
@@ -38,7 +38,7 @@ private:
 
     // Вызывается при новом соединении
     static void CallbackRead(evutil_socket_t listener, short event, void *arg);
-    static void CallbackError(struct bufferevent *bev, short what, void *ctx);
+    static void CallbackError(struct bufferevent *bevnt, short what, void *ctx);
     static void CallbackLog(int, const char *);
 
     static void ProcessClient(ClientInfo &info, ServerUDP *server);

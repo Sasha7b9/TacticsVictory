@@ -21,9 +21,9 @@ public:
 
     void AppendHandler(pchar command, handlerClient handler);
 
-    void SendAnswer(void *bev, uint id, pchar message, void *data = nullptr, uint size = 0);
-    void SendAnswer(void *bev, uint id, pchar message, pchar data);
-    void SendAnswer(void *bev, uint id, pchar message, int value);
+    void SendAnswer(void *bevnt, uint id, pchar message, void *data = nullptr, uint size = 0);
+    void SendAnswer(void *bevnt, uint id, pchar message, pchar data);
+    void SendAnswer(void *bevnt, uint id, pchar message, int value);
 
     std::map<std::string, handlerClient> handlers;   // Здесь хранятся обработчики запросов по первому слову
 
@@ -41,7 +41,7 @@ private:
     static void CallbackRead(struct bufferevent *, void *arg);
     static void CallbackWrite(struct bufferevent *, void *arg);
     static void CallbackAccept(evutil_socket_t listener, short event, void *arg);
-    static void CallbackError(struct bufferevent *bev, short what, void *ctx);
+    static void CallbackError(struct bufferevent *bevnt, short what, void *ctx);
     static void CallbackLog(int, const char *);
 
     static void ProcessClient(ClientInfo &info, ServerTCP *server);
@@ -50,9 +50,9 @@ private:
     virtual void HandlerOnAccepted(ClientInfo &info) = 0;
 
     // Вызываются в CallbackRead()
-    virtual std::vector<uint8> &HandlerOnRead1(void *bev) = 0;
-    virtual ClientInfo &HandlerOnRead2(void *bev) = 0;
+    virtual std::vector<uint8> &HandlerOnRead1(void *bevnt) = 0;
+    virtual ClientInfo &HandlerOnRead2(void *bevnt) = 0;
 
     // Вызывается в CallbackError()
-    virtual void HandlerOnError(void *bev) = 0;
+    virtual void HandlerOnError(void *bevnt) = 0;
 };

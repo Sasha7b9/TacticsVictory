@@ -26,21 +26,21 @@ void Server::HandlerOnAccepted(ClientInfo &info)
 }
 
 
-std::vector<uint8> &Server::HandlerOnRead1(void *bev)
+std::vector<uint8> &Server::HandlerOnRead1(void *bevnt)
 {
-    return GetClient(bev).message.data;
+    return GetClient(bevnt).message.data;
 }
 
 
-ClientInfo &Server::HandlerOnRead2(void *bev)
+ClientInfo &Server::HandlerOnRead2(void *bevnt)
 {
-    return GetClient(bev);
+    return GetClient(bevnt);
 }
 
 
-void Server::HandlerOnError(void *bev)
+void Server::HandlerOnError(void *bevnt)
 {
-    ClientServerInfo *client = &GetClient(bev);
+    ClientServerInfo *client = &GetClient(bevnt);
 
     LOGWRITEF("Close connection from %s", client->address.ToStringFull().c_str());
     clients.erase(client->id);
@@ -53,13 +53,13 @@ void Server::AppendHandler(pchar command, handlerClient handler)
 }
 
 
-ClientServerInfo &Server::GetClient(void *bev)
+ClientServerInfo &Server::GetClient(void *bevnt)
 {
     for (auto &elem : clients)
     {
         ClientServerInfo &client = elem.second;
 
-        if (client.benv == bev)
+        if (client.benv == bevnt)
         {
             return client;
         }

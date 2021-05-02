@@ -95,16 +95,16 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
     else
     {
         evutil_make_socket_nonblocking(fd);
-        struct bufferevent *bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
-        bufferevent_setcb(bev, CallbackRead, CallbackWrite, CallbackError, args);
-//        bufferevent_setwatermark(bev, EV_READ | EV_WRITE, 0, 2);
-        bufferevent_enable(bev, EV_READ | EV_WRITE);
+        struct bufferevent *bevnt = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
+        bufferevent_setcb(bevnt, CallbackRead, CallbackWrite, CallbackError, args);
+//        bufferevent_setwatermark(bevnt, EV_READ | EV_WRITE, 0, 2);
+        bufferevent_enable(bevnt, EV_READ | EV_WRITE);
 
         static uint id = 0;
 
         ClientInfo info;
         info.address.SetHostIP(&ss);
-        info.benv = bev;
+        info.benv = bevnt;
         info.id = ++id;
 
         LOGWRITEF("Open connection from %s", info.address.ToStringFull().c_str());
@@ -114,28 +114,28 @@ void ServerTCP::CallbackAccept(evutil_socket_t listener, short, void *_args)
 }
 
 
-void ServerTCP::SendAnswer(void *bev, uint id, pchar message, void *data, uint size_data)
+void ServerTCP::SendAnswer(void *bevnt, uint id, pchar message, void *data, uint size_data)
 {
-    if (bufferevent_write((struct bufferevent *)bev, &id, 4) == -1)
+    if (bufferevent_write((struct bufferevent *)bevnt, &id, 4) == -1)
     {
         LOGERROR("");
     }
 
     uint full_size = (uint)std::strlen(message) + 1 + size_data;
 
-    if (bufferevent_write((struct bufferevent *)bev, &full_size, 4) == -1)
+    if (bufferevent_write((struct bufferevent *)bevnt, &full_size, 4) == -1)
     {
         LOGERROR("");
     }
 
-    if (bufferevent_write((struct bufferevent *)bev, message, std::strlen(message) + 1) == -1)
+    if (bufferevent_write((struct bufferevent *)bevnt, message, std::strlen(message) + 1) == -1)
     {
         LOGERROR("");
     }
 
     if (data)
     {
-        if (bufferevent_write((struct bufferevent *)bev, data, size_data) == -1)
+        if (bufferevent_write((struct bufferevent *)bevnt, data, size_data) == -1)
         {
             LOGERROR("");
         }
@@ -143,40 +143,38 @@ void ServerTCP::SendAnswer(void *bev, uint id, pchar message, void *data, uint s
 }
 
 
-void ServerTCP::SendAnswer(void *bev, uint id, pchar message, pchar data)
+void ServerTCP::SendAnswer(void *bevnt, uint id, pchar message, pchar data)
 {
-    SendAnswer(bev, id, message, (void *)data, (uint)std::strlen(data) + 1);
+    SendAnswer(bevnt, id, message, (void *)data, (uint)std::strlen(data) + 1);
 }
 
 
-void ServerTCP::SendAnswer(void *bev, uint id, pchar message, int value)
+void ServerTCP::SendAnswer(void *bevnt, uint id, pchar message, int value)
 {
-    SendAnswer(bev, id, message, &value, sizeof(value));
+    SendAnswer(bevnt, id, message, &value, sizeof(value));
 }
 
 
-void ServerTCP::CallbackRead(struct bufferevent *bev, void *_args)
+void ServerTCP::CallbackRead(struct bufferevent *bevnt, void *_args)
 {
     CallbackArgs *args = (CallbackArgs *)_args;
 
-    std::vector<uint8> &data = args->server->HandlerOnRead1(bev);
+    std::vector<uint8> &data = args->server->HandlerOnRead1(bevnt);
 
 #define SIZE_CHUNK 1024
 
     uint8 buffer[SIZE_CHUNK];
 
-    size_t readed = bufferevent_read(bev, buffer, SIZE_CHUNK);
+    size_t readed = bufferevent_read(bevnt, buffer, SIZE_CHUNK);
 
     while (readed)
     {
         data.insert(data.end(), &buffer[0], &buffer[readed]);
 
-        readed = bufferevent_read(bev, buffer, SIZE_CHUNK - 1);
+        readed = bufferevent_read(bevnt, buffer, SIZE_CHUNK - 1);
     }
 
-//    ProcessClient(args->server->clients[bev], args->server);
-
-    ProcessClient(args->server->HandlerOnRead2(bev), args->server);
+    ProcessClient(args->server->HandlerOnRead2(bevnt), args->server);
 }
 
 
@@ -225,13 +223,13 @@ void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 }
 
 
-void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *_args)
+void ServerTCP::CallbackError(struct bufferevent *bevnt, short error, void *_args)
 {
     ServerTCP *server = ((CallbackArgs *)_args)->server;
 
     if (error & BEV_EVENT_READING)
     {
-        server->HandlerOnError(bev);
+        server->HandlerOnError(bevnt);
     }
     else if (error & BEV_EVENT_WRITING)
     {
@@ -254,7 +252,7 @@ void ServerTCP::CallbackError(struct bufferevent *bev, short error, void *_args)
         LOGERROR("Unknown error occured");
     }
 
-    bufferevent_free(bev);
+    bufferevent_free(bevnt);
 }
 
 

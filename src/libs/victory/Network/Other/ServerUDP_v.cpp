@@ -67,32 +67,32 @@ void ServerUDP::CallbackLog(int, const char *message)
 }
 
 
-void ServerUDP::SendAnswer(void *bev, uint id, pchar message, void *data, uint size_data)
+void ServerUDP::SendAnswer(void *bevnt, uint id, pchar message, void *data, uint size_data)
 {
-    bufferevent_write((struct bufferevent *)bev, &id, 4);
+    bufferevent_write((struct bufferevent *)bevnt, &id, 4);
 
     uint full_size = (uint)std::strlen(message) + 1 + size_data;
 
-    bufferevent_write((struct bufferevent *)bev, &full_size, 4);
+    bufferevent_write((struct bufferevent *)bevnt, &full_size, 4);
 
-    bufferevent_write((struct bufferevent *)bev, message, std::strlen(message) + 1);
+    bufferevent_write((struct bufferevent *)bevnt, message, std::strlen(message) + 1);
 
     if (data)
     {
-        bufferevent_write((struct bufferevent *)bev, data, size_data);
+        bufferevent_write((struct bufferevent *)bevnt, data, size_data);
     }
 }
 
 
-void ServerUDP::SendAnswer(void *bev, uint id, pchar message, pchar data)
+void ServerUDP::SendAnswer(void *bevnt, uint id, pchar message, pchar data)
 {
-    SendAnswer(bev, id, message, (void *)data, (uint)std::strlen(data) + 1);
+    SendAnswer(bevnt, id, message, (void *)data, (uint)std::strlen(data) + 1);
 }
 
 
-void ServerUDP::SendAnswer(void *bev, uint id, pchar message, int value)
+void ServerUDP::SendAnswer(void *bevnt, uint id, pchar message, int value)
 {
-    SendAnswer(bev, id, message, &value, sizeof(value));
+    SendAnswer(bevnt, id, message, &value, sizeof(value));
 }
 
 
@@ -148,15 +148,15 @@ void ServerUDP::ProcessClient(ClientInfo &info, ServerUDP *server)
 }
 
 
-void ServerUDP::CallbackError(struct bufferevent *bev, short error, void *_args)
+void ServerUDP::CallbackError(struct bufferevent *bevnt, short error, void *_args)
 {
     ServerUDP *server = ((CallbackArgs *)_args)->server;
 
     if (error & BEV_EVENT_READING)
     {
-        LOGWRITEF("Client %s disconnected", server->clients[bev].address.ToStringFull().c_str());
+        LOGWRITEF("Client %s disconnected", server->clients[bevnt].address.ToStringFull().c_str());
 
-        server->clients.erase(bev);
+        server->clients.erase(bevnt);
     }
     else if (error & BEV_EVENT_WRITING)
     {
@@ -179,7 +179,7 @@ void ServerUDP::CallbackError(struct bufferevent *bev, short error, void *_args)
         LOGERROR("Unknown error occured");
     }
 
-    bufferevent_free(bev);
+    bufferevent_free(bevnt);
 }
 
 
