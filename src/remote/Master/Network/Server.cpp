@@ -22,6 +22,7 @@ Server::Server() : ServerTCP()
 
 void Server::HandlerOnAccepted(ClientInfo &info)
 {
+    LOGWRITEF("HandlerOnAccepted() info.if = %d", info.id);
     clients[info.id] = info;
 }
 
