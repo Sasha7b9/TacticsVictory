@@ -50,7 +50,8 @@ uint ClientMessage::GetSize(std::vector<uint8> &received)
 
 void ClientMessage::MoveRawFrom(std::vector<uint8> &received)
 {
-    uint size = GetSize(received);
+    size = GetSize(received);
+    number = GetID(received);
 
     raw.resize(size);
 
