@@ -36,9 +36,7 @@ static void HandleInfoLivingRoms(uint id, ClientServerInfo &info)
         if (ci.IsLivingRoom())
         {
             stream << ci.name << ',';
-            stream << ci.address.ToStringFull().c_str() << ',';
-            stream << (std::rand() % 1000) << ',';
-            stream << 123 << '|';
+            stream << ci.address.ToStringFull().c_str() << '|';
         }
     }
 
