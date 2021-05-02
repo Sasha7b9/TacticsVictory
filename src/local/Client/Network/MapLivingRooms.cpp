@@ -53,7 +53,7 @@ void MapLivingRooms::SenMessageToAll(pchar message)
 }
 
 
-void MapLivingRooms::ParseInfo(void *data)
+void MapLivingRooms::ParseInfo(pchar data)
 {
     LOGWRITE((char *)data);
 

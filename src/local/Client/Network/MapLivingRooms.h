@@ -18,7 +18,7 @@ public:
     static void SenMessageToAll(pchar message);
 
     // Обрабатывает полученную от мастер-сервера информацию о доступных гостиных
-    static void ParseInfo(void *data);
+    static void ParseInfo(pchar data);
 
 private:
 

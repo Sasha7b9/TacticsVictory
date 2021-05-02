@@ -37,7 +37,7 @@ static ServerTask taskGetInfoLivingRooms
     },
     [](pchar, void *data, uint)
     {
-        MapLivingRooms::ParseInfo(data);
+        MapLivingRooms::ParseInfo((pchar)data);
     }
 );
 
