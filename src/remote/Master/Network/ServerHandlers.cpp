@@ -31,12 +31,13 @@ static void HandleInfoLivingRoms(uint id, ClientServerInfo &info)
 
     for (auto &pair : TheServer.clients)
     {
-        const ClientServerInfo &ci = pair.second;
+        const ClientServerInfo &csi = pair.second;
 
-        if (ci.IsLivingRoom())
+        if (csi.IsLivingRoom())
         {
-            stream << ci.name << ',';
-            stream << ci.address.ToStringFull().c_str() << '|';
+            stream << csi.id << ',' <<
+                      csi.name << ',' <<
+                      csi.address.ToStringFull().c_str() << '|';
         }
     }
 
