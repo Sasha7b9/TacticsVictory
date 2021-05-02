@@ -43,7 +43,7 @@ void MapLivingRooms::SenMessageToAll(pchar message)
 {
     if (port == 0)
     {
-        LOGERRORF("Can not sending. Pot is not set");
+        LOGERRORF("Can not sending. Port is not set");
     }
 
     for (auto &connector : connectors)
