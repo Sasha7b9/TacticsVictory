@@ -65,8 +65,10 @@ private:
 
 struct ClientMessage
 {
-    std::vector<uint8> raw; // Здесь хранится принятое сообщение - сначала строка, а потом дополнительные
-                            // данные, если есть
+    std::vector<uint8> raw;     // Здесь хранится принятое сообщение - сначала строка, а потом дополнительные
+                                // данные, если есть
+    std::vector<uint8> data;    // Данные сообщения, если таковые имюется.
+
 };
 
 
@@ -77,8 +79,6 @@ struct ClientInfo
     void *benv;                         // Буфер событий libevent
 
     ClientMessage message;
-
-    std::vector<uint8>       bindata;   // Непосредственно принятые данные
 
     std::vector<std::string> words;     // Разбитая на слова текстовая часть сообщения
 

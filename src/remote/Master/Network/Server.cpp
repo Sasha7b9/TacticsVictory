@@ -6,7 +6,6 @@
 ClientServerInfo::ClientServerInfo(const ClientInfo &rhs)
 {
     address = rhs.address;
-    bindata = rhs.bindata;
     benv = rhs.benv;
     message = rhs.message;
     words = rhs.words;
@@ -27,7 +26,7 @@ void Server::HandlerOnAccepted(uint , void *bev, ClientInfo info)
 
 std::vector<uint8> &Server::HandlerOnRead1(void *bev)
 {
-    return clients[bev].bindata;
+    return clients[bev].message.data;
 }
 
 

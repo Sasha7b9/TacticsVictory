@@ -189,7 +189,7 @@ void ServerTCP::CallbackWrite(struct bufferevent *, void *)
 
 void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 {
-    std::vector<uint8> &received = info.bindata;
+    std::vector<uint8> &received = info.message.data;
 
     while (received.size() > 4 + 4)         // Если принято данных больше, чем занимают id и размер данных
     {

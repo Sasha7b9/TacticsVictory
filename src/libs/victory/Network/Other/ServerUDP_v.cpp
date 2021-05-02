@@ -119,7 +119,7 @@ void ServerUDP::CallbackRead(evutil_socket_t sock, short /*event*/, void *)
 
 void ServerUDP::ProcessClient(ClientInfo &info, ServerUDP *server)
 {
-    std::vector<uint8> &received = info.bindata;
+    std::vector<uint8> &received = info.message.data;
 
     while (received.size() > 4 + 4)         // Если принято данных больше, чем занимают id и размер данных
     {
