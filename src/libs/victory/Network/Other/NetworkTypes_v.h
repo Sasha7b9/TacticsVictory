@@ -63,14 +63,23 @@ private:
 };
 
 
+struct ClientMessage
+{
+    std::vector<uint8> raw; // «десь хранитс€ прин€тое сообщение - сначала строка, а потом дополнительные
+                            // данные, если есть
+};
+
+
 struct ClientInfo
 {
     SockAddrIn address;                 // јдрес клиента
 
-    std::vector<uint8>       bindata;   // Ќепосредственно прин€тые данные
     void *benv;                         // Ѕуфер событий libevent
-    std::vector<uint8>       message;   // «десь хранитс€ прин€тое сообщение - сначала строка, а потом дополнительные
-                                        // данные, если есть
+
+    ClientMessage message;
+
+    std::vector<uint8>       bindata;   // Ќепосредственно прин€тые данные
+
     std::vector<std::string> words;     // –азбита€ на слова текстова€ часть сообщени€
 
     void *GetRawData();                 // ¬озвращает указатель на данные, если таковые имеютс€ в сообщении

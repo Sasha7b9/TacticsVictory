@@ -129,9 +129,9 @@ void ServerUDP::ProcessClient(ClientInfo &info, ServerUDP *server)
 
         if (received.size() >= 4 + 4 + size)
         {
-            ClientInfo::MoveData(received, info.message);
+            ClientInfo::MoveData(received, info.message.raw);
 
-            SU::SplitToWords((char *)info.message.data(), info.words);
+            SU::SplitToWords((char *)info.message.raw.data(), info.words);
 
             auto it = server->handlers.find(info.words[0]);
 

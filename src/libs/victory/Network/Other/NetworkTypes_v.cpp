@@ -62,14 +62,14 @@ void ClientInfo::MoveData(std::vector<uint8> &received, std::vector<uint8> &data
 
 void *ClientInfo::GetRawData()
 {
-    char *string = (char *)message.data();
+    char *string = (char *)message.raw.data();
 
-    if (std::strlen(string) + 1 == message.size())
+    if (std::strlen(string) + 1 == message.raw.size())
     {
         return nullptr;
     }
 
-    return message.data() + std::strlen(string) + 1;
+    return message.raw.data() + std::strlen(string) + 1;
 }
 
 

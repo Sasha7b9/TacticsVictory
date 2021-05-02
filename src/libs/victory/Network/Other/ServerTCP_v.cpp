@@ -199,9 +199,9 @@ void ServerTCP::ProcessClient(ClientInfo &info, ServerTCP *server)
 
         if (received.size() >= 4 + 4 + size)
         {
-            ClientInfo::MoveData(received, info.message);
+            ClientInfo::MoveData(received, info.message.raw);
 
-            SU::SplitToWords((char *)info.message.data(), info.words);
+            SU::SplitToWords((char *)info.message.raw.data(), info.words);
 
             for (uint i = 0; i < info.words.size(); i++)
             {
