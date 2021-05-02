@@ -5,8 +5,7 @@
 #include "Utils/GlobalFunctions_.h"
 
 
-static ServerTask taskPing =
-{
+static ServerTask taskPing(
     []()
     {
         int64 now = GF::Timer::TimeMS();
@@ -20,10 +19,10 @@ static ServerTask taskPing =
 
         LOGWRITEF("ping = %d ms", GF::Timer::TimeMS() - prev_time);
     }
-};
+);
 
 
 void LivingRoom::SetTasksMasterServer()
 {
-    TheConnMaster.SetTask(1000, &taskPing);
+    TheConnMaster.SetTask(&taskPing);
 }

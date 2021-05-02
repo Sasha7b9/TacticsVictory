@@ -16,12 +16,17 @@
 
 struct ServerTask
 {
-    pFuncUV    request = 0;             // Обработчик запроса. Должен возвращать id запроса
-    pFuncpCpVU handler_answer = 0;      // Обработчик ответа
-    int64      delta_time = 0;          // Через такие промежутки времени выполнять задание
+    ServerTask(pFuncUV _request, pFuncpCpVU _handler_answer, int64 _delta_time = 1000, uint _counter = 0xFFFFFFFF)
+        : request(_request), handler_answer(_handler_answer), delta_time(_delta_time),
+        prev_time(0), last_tive_receive(0),  counter(_counter)
+    { }
+
+    pFuncUV    request = nullptr;           // Обработчик запроса. Должен возвращать id запроса
+    pFuncpCpVU handler_answer = nullptr;    // Обработчик ответа
+    int64      delta_time = 0;              // Через такие промежутки времени выполнять задание
     int64      prev_time = 0;
     int64      last_tive_receive = 0;
-    uint       counter = 0xFFFFFFFF;     // Столько раз выполнять задачу
+    uint       counter = 0xFFFFFFFF;        // Столько раз выполнять задачу
 
     // Возвращает true, если существуют выполненные задания (те, у которых счётчик == 0)
     static bool ExistCompleted(std::vector<ServerTask *> &tasks);

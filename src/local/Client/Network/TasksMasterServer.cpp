@@ -10,8 +10,8 @@
 #include "Utils/Log_v.h"
 
 
-static ServerTask taskPing =
-{
+static ServerTask taskPing
+(
     []()
     {
         int64 now = GF::Timer::TimeMS();
@@ -26,11 +26,11 @@ static ServerTask taskPing =
 
         LOGWRITEF("ping master = %d ms", GF::Timer::TimeMS() - prev_time);
     }
-};
+);
 
 
-static ServerTask taskGetInfoLivingRooms =
-{
+static ServerTask taskGetInfoLivingRooms
+(
     []()
     {
         return TheConnMaster.SendRequest(MSG_NTW_INFO_LIVINGROOM);
@@ -39,16 +39,16 @@ static ServerTask taskGetInfoLivingRooms =
     {
         MapLivingRooms::ParseInfo(data);
     }
-};
+);
 
 
 void Client::SetTasksMasterServer()
 {
-    TheConnMaster.SetTask(1000, &taskPing);
-    TheConnMaster.SetTask(1000, &taskGetInfoLivingRooms);
+    TheConnMaster.SetTask(&taskPing);
+    TheConnMaster.SetTask(&taskGetInfoLivingRooms);
 
-    static ServerTask taskPortLivingRoom =
-    {
+    static ServerTask taskPortLivingRoom
+    (
         []()
         {
             return TheConnMaster.SendRequest(MSG_NTW_GET_PORT_LIVINGROOM_BROADCAST_UDP);
@@ -63,7 +63,7 @@ void Client::SetTasksMasterServer()
 
             MapLivingRooms::SetPort(port_udp);
         }
-    };
+    );
 
     TheConnMaster.RunTask(&taskPortLivingRoom);
 }

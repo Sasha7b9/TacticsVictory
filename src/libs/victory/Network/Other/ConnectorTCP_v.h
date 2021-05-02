@@ -75,7 +75,7 @@ public:
     bool IsConnected();
 
     // ¬ыполн€ть задачу через заданные промежутки времени
-    void SetTask(int64 dT, ServerTask *task);
+    void SetTask(ServerTask *task);
 
     // ≈диножды выполнить задачу
     void RunTask(ServerTask *task);

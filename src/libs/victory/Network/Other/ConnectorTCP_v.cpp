@@ -452,10 +452,8 @@ void ConnectorTCP::ExecuteTasks()
 }
 
 
-void ConnectorTCP::SetTask(int64 dT, ServerTask *task)
+void ConnectorTCP::SetTask(ServerTask *task)
 {
-    task->delta_time = dT;
-
     task->last_tive_receive = LLONG_MAX;
 
     new_tasks.push_back(task);
