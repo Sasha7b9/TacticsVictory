@@ -14,13 +14,13 @@ int LivingRoom::Run(pchar ip)
 
     TheConnMaster.SetCallbacks
     (
+        OnConnect,
+        OnDisconnect,
         []()
         {
             LOGWRITE("Can not connect to master server");
             TheConnMaster.Connect();
-        },
-        OnConnect,
-        OnDisconnect
+        }
     );
 
     TheConnMaster.Connect();

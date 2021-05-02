@@ -127,13 +127,6 @@ void Client::RunMasterServer()
     (
         []()
         {
-            LOGWARNINGF("Can not connect to master server %s", TheConnMaster.GetFullAddress().c_str());
-            TheGUI->AppendWarning("Can't connect to master server");
-
-            TheConnMaster.Connect();
-        },
-        []()
-        {
             TheGUI->AppendInfo("Connection to master server established");
             LOGWRITEF("Connection to master server %s established", TheConnMaster.GetFullAddress().c_str());
 
@@ -145,6 +138,13 @@ void Client::RunMasterServer()
             TheConnMaster.Connect();
             LOGWRITEF("The master server %s is down. Attempting to connect", TheConnMaster.GetFullAddress().c_str());
             TheMenu->pageFindServer->SetServersInfo("");
+        },
+        []()
+        {
+            LOGWARNINGF("Can not connect to master server %s", TheConnMaster.GetFullAddress().c_str());
+            TheGUI->AppendWarning("Can't connect to master server");
+
+            TheConnMaster.Connect();
         }
     );
 

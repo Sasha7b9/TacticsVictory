@@ -184,7 +184,7 @@ bool ConnectorTCP::IsConnected()
 }
 
 
-void ConnectorTCP::SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection)
+void ConnectorTCP::SetCallbacks(pFuncVV connection, pFuncVV disconnection, pFuncVV fail)
 {
     funcFailConnection = fail;
     funcConnection = connection;

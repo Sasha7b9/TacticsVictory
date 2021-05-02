@@ -55,7 +55,7 @@ public:
         port = _port;
     };
 
-    void SetCallbacks(pFuncVV fail, pFuncVV connection, pFuncVV disconnection);
+    void SetCallbacks(pFuncVV connection, pFuncVV disconnection, pFuncVV fail);
 
     void RunCycle();
 
