@@ -13,6 +13,7 @@ function Build {
 
     if [ $FILESIZE != "0" ]
     then
+        cat fail.build
         ./send_fail.sh
         rm fail.build
     fi
