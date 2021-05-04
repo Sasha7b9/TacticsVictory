@@ -7,7 +7,7 @@ function Build {
     echo
     echo Start build ...
 
-    time ./assembly.sh build all 1>good.build  2>fail.build
+    time ./assembly.sh full all 1>good.build  2>fail.build
     FILENAME=fail.build
     FILESIZE=$(stat -c%s "$FILENAME")
 
