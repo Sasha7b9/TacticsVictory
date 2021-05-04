@@ -7,7 +7,7 @@ function Build {
     echo
     echo Start build ...
 
-    time ./assembly.sh full all 1>good.build  2>fail.build
+    time ./assembly.sh build release 1>good.build  2>fail.build
     FILENAME=fail.build
     FILESIZE=$(stat -c%s "$FILENAME")
 
@@ -34,7 +34,7 @@ do
     git pull > out.txt
     FILENAME=out.txt
     FILESIZE=$(stat -c%s "$FILENAME")
-    if [ $FILESIZE == "20" ]            #  20 - size string "Already up to date."
+    if [ $FILESIZE != "20" ]            #  20 - size string "Already up to date."
     then
         Build
     fi
