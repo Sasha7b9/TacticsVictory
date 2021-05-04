@@ -15,6 +15,7 @@ function Build {
     then
         cat fail.build
         ./send_fail.sh
+        cat fail.build
         rm fail.build
     fi
 
