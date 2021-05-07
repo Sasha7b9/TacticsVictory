@@ -2,6 +2,8 @@
 
 
 function Build {
+    date
+
     ./stop.sh all
 
     echo
