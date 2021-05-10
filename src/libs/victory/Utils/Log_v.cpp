@@ -14,7 +14,7 @@
 #endif
 
 
-static const int num_symbols_for_info = 50; // Количество сиволов под информацию об ошибке (файл, строка и т.д)
+static const int num_symbols_for_info = 55; // Количество сиволов под информацию об ошибке (файл, строка и т.д)
 
 pchar LogRAW::STR_ERROR   =   " ... ERROR ... ";
 pchar LogRAW::STR_WARNING = " ... WARNING ... ";
@@ -27,6 +27,29 @@ HANDLE ConsoleLog::handle = nullptr;
 #else
 #define END_LINE "\n"
 #endif
+
+
+
+static std::string CurrentTime()
+{
+    time_t now = time(0);
+
+    char buf[80];
+
+#ifdef WIN32
+#pragma warning(push, 0)
+#endif
+
+    struct tm tstruct = *localtime(&now);
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif
+
+    strftime(buf, sizeof(buf), "%X", &tstruct);
+
+    return buf;
+}
 
 
 // Оставляет от имени файла не более определённого количества символов
@@ -125,6 +148,8 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
     std::string v;
     v.reserve(1024);
 
+    v.append(CurrentTime().c_str());
+    v.append(" | ");
     v.append(NameApplication());
     v.append(" | ");
     v.append(ExtractName(file));
@@ -153,6 +178,8 @@ void LogRAW::CommonWrite(pchar file, int line, pchar text, pchar warn_err)
 
 void LogRAW::CommonWriteF(pchar file, int line, std::string &v, pchar warn_err)
 {
+    v.append(CurrentTime().c_str());
+    v.append(" | ");
     v.append(NameApplication());
     v.append(" | ");
     v.append(ExtractName(file));

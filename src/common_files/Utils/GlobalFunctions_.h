@@ -21,6 +21,8 @@ namespace GF
 
     std::string IntToString(int value, uint length);
 
+    std::string CurrentTime();
+
 #ifdef U3D
 
     // Возвращает в address aдрес, если в векторе есть строка вида
