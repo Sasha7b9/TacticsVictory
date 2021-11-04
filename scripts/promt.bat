@@ -1,6 +1,6 @@
 @echo off
 
-set PATH=%PATH%;C:\Program Files\CMake\bin;c:\Program Files\Git\mingw64\bin\
+set PATH=%PATH%;C:\Program Files\CMake\bin;c:\Program Files\Git\mingw64\bin\;c:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\cmd\
 
 set _CURRENT_DIR_=%CD%
 
