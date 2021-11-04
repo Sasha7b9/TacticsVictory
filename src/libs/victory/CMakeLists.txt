@@ -39,7 +39,8 @@ else()
 
 endif()
 
-file(GLOB SRC                                  *.h *.cpp)
+file(GLOB SRC                                  *.h *.cpp
+                                               ../../common_files/defines_.h)
 file(GLOB CORE                                 Core/*.*)
 file(GLOB FILESYSTEM                           FileSystem/*.*)
 file(GLOB INPUT                                Input/*.*)

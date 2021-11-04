@@ -355,7 +355,7 @@ void ConnectorTCP::ReceiveData()
 
     static const int SIZE_CHUNK = 1024;
 
-    char buffer[SIZE_CHUNK];
+    uint8 buffer[SIZE_CHUNK];
 
     ssize_t received = connector.Receive(buffer, SIZE_CHUNK);
 

@@ -3,8 +3,9 @@
 
 
 #ifdef WIN32
-#pragma warning(push, 0)
 #define _WINSOCKAPI_
+#define WIN32_LEAN_AND_MEAN     // для исключения предупрежедния warning C4668: '_WIN32_WINNT_WIN10_TH2' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif'
+#pragma warning(push, 0)
 #include <windows.h>
 #else
 #pragma GCC diagnostic push
