@@ -21,7 +21,7 @@ static int callback(void *data, int argc, char **argv, char **azColName) {
 
 int main()
 {
-    setlocale(LC_ALL, "Russian");
+    //setlocale(LC_ALL, "Russian");         todo
 
     LogRAW::Create("DataBase.log", false);
 
