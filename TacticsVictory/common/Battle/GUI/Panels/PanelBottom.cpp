@@ -1,4 +1,5 @@
-﻿#include <stdafx.h>
+﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#include <stdafx.h>
 #include "PanelBottom.h"
 #include "Settings.h"
 #include "GUI/Widgets/Button.h"

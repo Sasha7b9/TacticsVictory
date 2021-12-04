@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <stdafx.h>
 #include "DrawingWidget.h"
 #include "Utils/Math.h"
@@ -36,7 +37,7 @@ DrawingWidget::DrawingWidget(const Vector2D &size) : Widget()
 
     texture = Texture::Get(textureHeader, imageData);
 
-    ImageWidget *image = new ImageWidget(size, texture);
+    image = new ImageWidget(size, texture);
 
     Clear();
 
@@ -47,6 +48,7 @@ DrawingWidget::~DrawingWidget()
 {
     SAFE_DELETE_ARRAY(imageData);
     SAFE_DELETE(textureHeader);
+    delete image;
     texture->Release();
 }
 

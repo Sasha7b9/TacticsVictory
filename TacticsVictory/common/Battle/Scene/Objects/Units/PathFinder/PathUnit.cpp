@@ -1,6 +1,6 @@
 // 2021/12/3 20:53:10 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Scene/Objects/Units/PathUnit.h"
+#include "Scene/Objects/Units/PathFinder/PathUnit.h"
 #include "Scene/World/GameWorld.h"
 #include "Scene/World/Landscape.h"
 

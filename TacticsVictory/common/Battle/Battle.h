@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Scene/Cameras/CameraRTS.h"
 #include "Shaders/SparkParticleSystem.h"
@@ -17,7 +18,8 @@ namespace Pi
         Battle();
         ~Battle();
     
-        void ApplicationTask() override;
+        virtual void ApplicationTask() override;
+
         void HandleOnButtonQuit(Widget *widget, const WidgetEventData *eventData);
     
         // ¬озвращает путь к каталогу с данными игры (Data/TacticsVictory)

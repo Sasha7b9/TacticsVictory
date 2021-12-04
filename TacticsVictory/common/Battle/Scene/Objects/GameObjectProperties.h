@@ -20,7 +20,7 @@ namespace Pi
 
         GameObjectProperty(GameObject *);
 
-        virtual ~GameObjectProperty() {};
+        virtual ~GameObjectProperty();
 
         bool IsSelectable() const { return true; }
 

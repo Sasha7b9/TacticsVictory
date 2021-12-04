@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
 
@@ -33,6 +34,7 @@ namespace Pi
         uint *imageData = nullptr;
         ColorRGBA colorBackground;
         ColorRGBA colorBrush;
+        ImageWidget *image = nullptr;
     
         uint GetColorUINT(int x, int y);
         bool FillFourPoints(float x, float y, uint colorUINT);

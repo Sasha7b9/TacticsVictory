@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <stdafx.h>
 #include "Battle.h"
 #include "Scene/Cameras/CameraRTS.h"

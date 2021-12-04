@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <stdafx.h>
 #include "Scene/World/Landscape.h"
 #include "Utils/Log.h"
@@ -331,6 +332,8 @@ void Landscape::CreateGeometryForField(FieldTV *field)
 
         material->Release();
 
+//        surface->Detach();
+//        surfaceList->Purge();
         delete surfaceList;
 
         field->state = FieldTV::State::Created;
@@ -708,11 +711,11 @@ int Landscape::AddPlane(GeometrySurface *surface, const Point3D points[4])
         Cross(points[2] - points[1], points[0] - points[1])
     };
 
-    GeometryPolygon *polygon = new GeometryPolygon();
+    GeometryPolygon *polygon(new GeometryPolygon());
 
     for (int i = 0; i < 3; i++)
     {
-        GeometryVertex *vertex = new GeometryVertex();
+        GeometryVertex *vertex(new GeometryVertex());
         vertex->position = positons[i];
         vertex->normal = normals[i];
         vertex->texcoord[0] = texCoord[i];
@@ -725,7 +728,7 @@ int Landscape::AddPlane(GeometrySurface *surface, const Point3D points[4])
 
     for (int i = 3; i < 6; i++)
     {
-        GeometryVertex *vertex = new GeometryVertex();
+        GeometryVertex *vertex(new GeometryVertex());
         vertex->position = positons[i];
         vertex->normal = normals[i];
         vertex->texcoord[0] = texCoord[i];
@@ -954,9 +957,9 @@ int Landscape::GetNumLines(char *buffer, int size)
 {
     int numLines = 0;
 
-    char *end = buffer + (size_t)size;
+    char *end_buffer = buffer + (size_t)size;
 
-    while(buffer < end)
+    while(buffer < end_buffer)
     {
         if(*buffer == 0x0d)
         {
@@ -1102,7 +1105,7 @@ float Landscape::GetHeight(float x, float y, bool forPanelMap)
 
     CollisionData data;
 
-    if (GameWorld::Get()->DetectCollision({x, y, 100.0f}, {x, y, -100.0f}, 0.0f, PiKindCollision::Landscape, &data))
+    if (GameWorld::Get()->DetectCollision({x, y, 100.0f}, {x, y, -100.0f}, 0.0f, ~PiKindCollision::Landscape, &data))
     {
         return data.position.z;
     }
@@ -1197,7 +1200,7 @@ void LandscapeController::Move()
                     landscape->AddSurfaceToMesh(field);
                 }
 
-                if (field->state == FieldTV::State::Added)
+                if (field && field->state == FieldTV::State::Added)
                 {
                     added++;
                 }

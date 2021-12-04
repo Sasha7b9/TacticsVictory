@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <stdafx.h>
 #include "Battle.h"
 #include "GUI/GUI.h"
@@ -9,7 +10,7 @@
 #include "Scene/World/Sun.h"
 #include "Scene/World/WorldGismo.h"
 #include "Scene/Objects/Units/Ground/Tank.h"
-#include "Scene/Objects/Units/PathUnit.h"
+#include "Scene/Objects/Units/PathFinder/PathUnit.h"
 
 
 using namespace Pi;
@@ -27,7 +28,7 @@ GameWorld::GameWorld(pchar name)
 GameWorld::~GameWorld()
 {
     SAFE_DELETE(TheCursor);
-
+    SAFE_DELETE(sun);
 }
 
 const LocatorMarker *GameWorld::FindSpectatorLocator(const Zone *zone)

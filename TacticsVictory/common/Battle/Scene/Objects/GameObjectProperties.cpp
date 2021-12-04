@@ -11,7 +11,12 @@ GameObjectProperty::GameObjectProperty(GameObject *_gameObject) :
     gameObject(_gameObject),
     indicator(new Indicator())
 {
+}
 
+
+GameObjectProperty::~GameObjectProperty()
+{
+    delete indicator;
 }
 
 

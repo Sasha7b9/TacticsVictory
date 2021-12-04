@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "GUI/Panels/PanelGUI.h"
 

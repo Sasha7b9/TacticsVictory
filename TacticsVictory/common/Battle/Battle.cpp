@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <stdafx.h>
 #include "Battle.h"
 #include "GUI/GUI.h"
@@ -7,7 +8,6 @@
 #include "Scene/Cameras/CameraRTS.h"
 #include "Scene/Objects/Units/Ground/Tank.h"
 #include "Scene/World/GameWorld.h"
-//#include "Scene/World/Sun.h"
 #include "Input/Input.h"
 #include "Input/Mouse.h"
 #include "GUI/Mutators/MovementMutator.h"
@@ -15,6 +15,7 @@
 #include "Utils/Log.h"
 #include "Scene/World/Landscape.h"
 #include "GUI/Widgets/ObjectViewportWidget.h"
+#include "Scene/Objects/Units/PathFinder/WaveAlgorithm.h"
 
 
 using namespace Pi;
@@ -76,14 +77,12 @@ Battle::~Battle()
     TheWorldMgr->SetWorldCreator(nullptr);
     TheMessageMgr->EndGame();
     SAFE_DELETE(TheSoundPlayer);
+    WaveAlgorithm::Destroy();
 }
 
 void Battle::CreateScene()
 {
     TheWorldMgr->LoadWorld("world/Empty");
-//    Landscape *landscape = TheGameWorld->GetLandscape();
-//    int width = landscape->GetSizeX();
-//    int height = landscape->GetSizeY();
 }
 
 World *Battle::ConstructWorld(pchar name, void * /*cookie*/)
@@ -92,29 +91,6 @@ World *Battle::ConstructWorld(pchar name, void * /*cookie*/)
     TheGameWorld = static_cast<GameWorld*>(world);
 
     return world;
-}
-
-void Battle::HandleDisplayEvent(const DisplayEventData *eventData, void * /*cookie*/)
-{
-    if(eventData->eventType == EventDisplay::Change)
-    {
-    }
-}
-
-void Battle::ApplicationTask()
-{
-    static bool first = true;
-    if(first)
-    {
-        first = false;
-        GameWorld::Get()->ChangeCursorPosition(1.0f, 1.0f);
-    }
-}
-
-
-void Battle::HandleOnButtonQuit(Widget *, const WidgetEventData *)
-{
-    TheEngine->Quit();
 }
 
 

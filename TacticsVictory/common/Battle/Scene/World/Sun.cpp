@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <stdafx.h>
 #include "Sun.h"
 
@@ -29,7 +30,10 @@ Sun::Sun() : Node("Sun")
     primGeometry->SetMaterialObject(0, sphereMaterial);
     sphereMaterial->Release();
 
-    TheControllerSun = new ControllerReg<SunController>(PiTypeController::Sun, "Sun");
+    if(!TheControllerSun)
+    {
+        TheControllerSun = new ControllerReg<SunController>(PiTypeController::Sun, "Sun");
+    }
     controller = new SunController();
     SetController(controller);
     controller->Wake();

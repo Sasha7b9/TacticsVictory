@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <stdafx.h>
 #include "CursorGUI.h"
 #include "GUI/Panels/PanelBottom.h"
@@ -46,7 +47,7 @@ CursorGUI::~CursorGUI()
     {
         for(int fr = 0; fr < numFrames; fr++)
         {
-            SAFE_DELETE(skins[st][fr]);
+            delete skins[st][fr];
         }
     }
 }
@@ -109,7 +110,6 @@ void CursorGUI::PrepareSkins()
     {
         for(int i = 0; i < numFrames; i++)
         {
-            skins[s][i] = CreateOutScreenSkin((State::E)s, i);
             skins[s][i] = CreateOutScreenSkin((State::E)s, i);
         }
     }

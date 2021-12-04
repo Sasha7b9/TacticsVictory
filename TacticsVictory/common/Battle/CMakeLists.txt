@@ -35,6 +35,7 @@ file(GLOB SCENE_WORLD                                      Scene/World/*.*)
 file(GLOB SHADERS                                          Shaders/*.*)
 file(GLOB SOUNDS                                           Sounds/*.*)
 file(GLOB UTILS                                            Utils/*.*)
+#file(GLOB EXPERIMENTS                                      Experiments/*.*)
 
 
 source_group(src                                                  FILES ${SRC})
@@ -54,8 +55,8 @@ source_group(Scene\\World                                         FILES ${SCENE_
 source_group(Shaders                                              FILES ${SHADERS})
 source_group(Sounds                                               FILES ${SOUNDS})
 source_group(Utils                                                FILES ${UTILS})
+#source_group(Experiments                                          FILES ${EXPERIMENTS})
 
-#set_source_files_properties(${SCENE_OBJECTS_UNITS_PATHFINDER}                   PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties(${SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 
@@ -63,7 +64,9 @@ add_executable(${PROJECT_NAME} ${SRC} ${GUI} ${GUI_MUTATORS} ${GUI_PANELS} ${GUI
                                ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_UNITS}
                                ${SCENE_OBJECTS_UNITS_GROUND} ${SCENE_OBJECTS_UNITS_PATHFINDER}
                                ${SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER}
-                               ${SCENE_WORLD} ${SHADERS} ${SOUNDS} ${UTILS})
+                               ${SCENE_WORLD} ${SHADERS} ${SOUNDS} ${UTILS}
+#                               ${EXPERIMENTS}
+                               )
 
 tune_precopiled_header()
 
@@ -87,8 +90,8 @@ message("CMAKE_ROOT:               ${CMAKE_ROOT}")
 message("CMAKE_SYSTEM:             ${CMAKE_SYSTEM}")
 message("CMAKE_SYSTEM_VERSION:     ${CMAKE_SYSTEM_VERSION}")
 message("CMAKE_SYSTEM_PROCESSOR:   ${CMAKE_SYSTEM_PROCESSOR}")
-message("CMAKE_SKIP_RPATH:         ${CMAKE_SKIP_RPATH}")
-message("CMAKE_VERBOSE_MAKEFILE:   ${CMAKE_VERBOSE_MAKEFILE}")
+#message("CMAKE_SKIP_RPATH:         ${CMAKE_SKIP_RPATH}")
+#message("CMAKE_VERBOSE_MAKEFILE:   ${CMAKE_VERBOSE_MAKEFILE}")
 #message("CMAKE_CXX_FLAGS:          ${CMAKE_CXX_FLAGS}")
 #message("CMAKE_BUILD_TYPE:         ${CMAKE_BUILD_TYPE}")
 #message("CMAKE_C_COMPILER:         ${CMAKE_C_COMPILER} (id ${CMAKE_C_COMPILER_ID}, clang ${CLANG}, GNUC ${GNUC})")
