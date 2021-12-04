@@ -1,0 +1,33 @@
+#include "winver.h"
+
+1 ICON "PiIcon.ico"
+
+1 VERSIONINFO
+FILEVERSION		4,5,0,0
+PRODUCTVERSION	4,5,0,0
+FILEFLAGSMASK	VS_FFI_FILEFLAGSMASK
+FILEFLAGS		0
+FILEOS			VOS__WINDOWS32
+FILETYPE		VFT_APP
+FILESUBTYPE		VFT2_UNKNOWN
+BEGIN
+	BLOCK "StringFileInfo"
+	BEGIN
+		BLOCK "04090000"
+		BEGIN
+			VALUE "CompanyName", "Terathon Software LLC"
+			VALUE "FileDescription", "Pi Engine"
+			VALUE "FileVersion", "0.0.1"
+			VALUE "InternalName", "PiEngine"
+			VALUE "LegalCopyright", "Copyright 1999-2015 Terathon Software LLC"
+			VALUE "OriginalFilename", "PiEngine.dll"
+			VALUE "ProductName", "Pi Engine"
+			VALUE "ProductVersion", "0.0.1"
+		END
+	END
+
+	BLOCK "VarFileInfo"
+	BEGIN
+		VALUE "Translation", 0x409, 0
+	END
+END
