@@ -5,18 +5,16 @@
 
 namespace Pi
 {
-
     class PanelMain : public PanelGUI, public Singleton<PanelMain>
     {
     public:
         PanelMain();
         ~PanelMain();
-    
+
+        static PanelMain *self;
+
         void HandleHideShow(Widget *widget, const WidgetEventData *eventData);
-    
+
     private:
     };
-    
-    extern PanelMain *ThePanelMain;
-
 }

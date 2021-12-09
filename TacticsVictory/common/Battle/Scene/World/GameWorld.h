@@ -20,6 +20,8 @@ namespace Pi
         WorldResult::B Preprocess() override;
 
         static GameWorld *Get();
+
+        static GameWorld *self;
     
         virtual void Render() override;
 
@@ -44,6 +46,4 @@ namespace Pi
     
         Landscape *landscape = nullptr;
     };
-    
-    extern GameWorld *TheGameWorld;
 }

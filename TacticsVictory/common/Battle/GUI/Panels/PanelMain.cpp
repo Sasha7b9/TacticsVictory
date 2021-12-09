@@ -8,21 +8,27 @@
 using namespace Pi;
 
 
-PanelMain::PanelMain() 
+PanelMain *PanelMain::self = nullptr;
+
+
+PanelMain::PanelMain()
     : PanelGUI(SET::GUI::MAIN::SIZE()),
-    Singleton<PanelMain>(ThePanelMain) {
+    Singleton<PanelMain>(PanelMain::self)
+{
 
     SetMovementMutator(Point2D((float)SET::GUI::MAIN::VIEW::X(), (float)SET::GUI::MAIN::VIEW::Y()),
         Point2D((float)SET::GUI::MAIN::VIEW::X(), (float)SET::WINDOW::SIZE().y),
         Vector2D(0.0f, SET::GUI::PANEL::SPEED()));
 
-    AppendNewSubnode(TheTabWidgetMainPanel = new TabWidgetMainPanel(this));
+    AppendNewSubnode(new TabWidgetMainPanel(this));
 }
 
-PanelMain::~PanelMain() {
-    SAFE_DELETE(TheTabWidgetMainPanel);
+PanelMain::~PanelMain()
+{
+    SAFE_DELETE(TabWidgetMainPanel::self);
 }
 
-void PanelMain::HandleHideShow(Widget *, const WidgetEventData *) {
+void PanelMain::HandleHideShow(Widget *, const WidgetEventData *)
+{
     Toggle();
 }

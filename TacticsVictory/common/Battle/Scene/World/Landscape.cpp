@@ -1124,7 +1124,7 @@ Point3D Landscape::GetPointScreen(float x, float y, bool &result)
 {
     result = false;
 
-    Ray ray = TheCamera->GetWorldRayFromPoint({x, y});
+    Ray ray = CameraRTS::self->GetWorldRayFromPoint({x, y});
 
     CollisionData data;
 

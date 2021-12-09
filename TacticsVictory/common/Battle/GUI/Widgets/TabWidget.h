@@ -5,38 +5,38 @@
 
 namespace Pi
 {
-
     class PanelGUI;
     class Tab;
     class DrawingWidget;
     class CheckBox;
     class TabTitle;
     class ObjectViewportWidget;
-    
+
+
     class TabWidget : public Widget
     {
-    
+
     public:
         TabWidget(PanelGUI *parent);
         ~TabWidget();
-    
+
         void Move() override
-        {
-        };
+        {};
         void AddTab(Tab *tab);
-    
+
     protected:
         TabTitle *tabTitle = nullptr;
         DrawingWidget *mainWidget = nullptr;
         int numTabs = 0;
-        Array<Tab*> tabs;
-    
+        Array<Tab *> tabs;
+
     private:
         TabWidget();
         PanelGUI *parent = nullptr;
     };
-    
-    class TabWidgetMainPanel : public TabWidget
+
+
+    class TabWidgetMainPanel : public TabWidget, public Singleton<TabWidgetMainPanel>
     {
         enum
         {
@@ -48,40 +48,44 @@ namespace Pi
     public:
         TabWidgetMainPanel(PanelGUI *parent);
         ~TabWidgetMainPanel();
-    
+
+        static TabWidgetMainPanel *self;
+
         void HandleSwitchTab(Widget *widget, const WidgetEventData *eventData);
         void SetActiveTab(uint tabID);
     };
-    
+
+
     class TabTitle : public Widget
     {
         friend class TabWidgetMainPanel;
     public:
-        TabTitle(TabWidget *parent, Array<Tab*> *tabs);
+        TabTitle(TabWidget *parent, Array<Tab *> *tabs);
         ~TabTitle();
-    
+
         void Move() override
-        {
-        };
-    
+        {};
+
     private:
         TabTitle();
         TabWidget *parent;
-        Array<Tab*> *tabs;
-        Array<TButton*> buttons;
+        Array<Tab *> *tabs;
+        Array<TButton *> buttons;
         WidgetObserver<TabWidgetMainPanel> observerSwitchTab;
     };
-    
+
+
     class SubTab : public Widget
     {
-    
+
     public:
         SubTab(Tab *parent);
-    
+
     private:
         SubTab();
     };
-    
+
+
     class Tab : public Widget
     {
         friend class TabTitle;
@@ -89,43 +93,49 @@ namespace Pi
     public:
         Tab();
         Tab(TabWidget *parent, pchar name);
-        virtual ~Tab() {};
-    
-        void Move() override
-        {
-        };
+        virtual ~Tab()
+        {};
+
+        virtual void Move() override
+        {};
         pchar Name()
         {
             return name;
         };
-    
+
     protected:
         TabWidget *parent = nullptr;
         pchar name = nullptr;
     };
-    
-    class TabInfo : public Tab
+
+
+    class TabInfo : public Tab, public Singleton<TabInfo>
     {
     public:
         TabInfo(TabWidget *parent, pchar name);
-        virtual ~TabInfo() override;
+        virtual ~TabInfo();
+
+        static TabInfo *self;
 
     private:
         TabInfo();
-    
+
         ObjectViewportWidget *viewer = nullptr;
     };
-    
-    class TabUnits : public Tab
+
+
+    class TabUnits : public Tab, public Singleton<TabUnits>
     {
-    
+
     public:
         TabUnits(TabWidget *parent, pchar name);
         ~TabUnits() override;
-    
+
+        static TabUnits *self;
+
     private:
         TabUnits();
-    
+
         CheckBox *chbxAll = nullptr;
         CheckBox *chbxCivil = nullptr;
         CheckBox *chbxMilitary = nullptr;
@@ -133,33 +143,33 @@ namespace Pi
         CheckBox *chbxWater = nullptr;
         CheckBox *chbxAir = nullptr;
     };
-    
-    class TabPlatoons : public Tab
+
+
+    class TabPlatoons : public Tab, public Singleton<TabPlatoons>
     {
-    
+
     public:
         TabPlatoons(TabWidget *parent, pchar name);
         ~TabPlatoons();
-    
+
+        static TabPlatoons *self;
+
     private:
         TabPlatoons();
     };
-    
-    class TabStructures : public Tab
+
+
+    class TabStructures : public Tab, public Singleton<TabStructures>
     {
-    
+
     public:
         TabStructures(TabWidget *parent, pchar name);
         ~TabStructures();
-    
+
+    static TabStructures *self;
+
     private:
         TabStructures();
     };
-    
-    extern TabWidgetMainPanel  *TheTabWidgetMainPanel;
-    extern TabInfo             *TheTabInfo;
-    extern TabUnits            *TheTabUnits;
-    extern TabPlatoons         *TheTabPlatoons;
-    extern TabStructures       *TheTabStructures;
 
 }

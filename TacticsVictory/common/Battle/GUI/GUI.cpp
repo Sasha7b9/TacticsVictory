@@ -17,61 +17,74 @@
 using namespace Pi;
 
 
+namespace Pi
+{
+    GUI *GUI::self = nullptr;
+}
+
+
 GUI::GUI() :
     Widget(),
-    Singleton<GUI>(TheGUI) 
+    Singleton<GUI>(self)
 {
-    TheConsole = new Console(SET::GUI::CONSOLE::SIZE());
-    TheConsole->Toggle();
+    new Console(SET::GUI::CONSOLE::SIZE());
+    Console::self->Toggle();
     
-    ThePanelBottom = new PanelBottom();
+    new PanelBottom();
 
     Show();
 
-    TheMenuMain = new MenuMain();
+    new MenuMain();
 //    TheInterfaceMgr->AddWidget(TheMenuMain);
 
-    TheCursor = new CursorGUI();
-    TheInterfaceMgr->AddWidget(TheCursor);
+    new CursorGUI();
+    TheInterfaceMgr->AddWidget(CursorGUI::self);
 }
+
+
+void GUI::Create()
+{
+    new GUI();
+}
+
 
 GUI::~GUI() 
 {
-    TheInterfaceMgr->RemoveWidget(TheMenuMain);
-    SAFE_DELETE(TheMenuMain);
+    TheInterfaceMgr->RemoveWidget(MenuMain::self);
+    SAFE_DELETE(MenuMain::self);
 
-    TheInterfaceMgr->RemoveWidget(TheConsole);
-    SAFE_DELETE(TheConsole);
-    TheInterfaceMgr->RemoveWidget(TheCursor);
+    TheInterfaceMgr->RemoveWidget(Console::self);
+    SAFE_DELETE(Console::self);
+    TheInterfaceMgr->RemoveWidget(CursorGUI::self);
 
-    TheInterfaceMgr->RemoveWidget(ThePanelBottom);
-    SAFE_DELETE(ThePanelBottom);
+    TheInterfaceMgr->RemoveWidget(PanelBottom::self);
+    SAFE_DELETE(PanelBottom::self);
 
-    TheInterfaceMgr->RemoveWidget(TheMenuGame);
-    TheInterfaceMgr->RemoveWidget(ThePanelMain);
-    TheInterfaceMgr->RemoveWidget(ThePanelMap);
+    TheInterfaceMgr->RemoveWidget(MenuGame::self);
+    TheInterfaceMgr->RemoveWidget(PanelMain::self);
+    TheInterfaceMgr->RemoveWidget(PanelMap::self);
 
-    SAFE_DELETE(ThePanelMap);
-    SAFE_DELETE(ThePanelMain);
-    SAFE_DELETE(TheMenuGame);
+    SAFE_DELETE(PanelMap::self);
+    SAFE_DELETE(PanelMain::self);
+    SAFE_DELETE(MenuGame::self);
 }
 
 void GUI::Hide()
 {
-    TheInterfaceMgr->RemoveWidget(TheConsole);
-    TheInterfaceMgr->RemoveWidget(ThePanelMap);
-    TheInterfaceMgr->RemoveWidget(ThePanelMain);
-    TheInterfaceMgr->RemoveWidget(ThePanelBottom);
-    TheInterfaceMgr->RemoveWidget(TheMenuGame);
+    TheInterfaceMgr->RemoveWidget(Console::self);
+    TheInterfaceMgr->RemoveWidget(PanelMap::self);
+    TheInterfaceMgr->RemoveWidget(PanelMain::self);
+    TheInterfaceMgr->RemoveWidget(PanelBottom::self);
+    TheInterfaceMgr->RemoveWidget(MenuGame::self);
 }
 
 void GUI::Show()
 {
-    TheInterfaceMgr->AddWidget(TheConsole);
-    TheInterfaceMgr->AddWidget(ThePanelMap);
-    TheInterfaceMgr->AddWidget(ThePanelMain);
-    TheInterfaceMgr->AddWidget(ThePanelBottom);
-    TheInterfaceMgr->AddWidget(TheMenuGame);
+    TheInterfaceMgr->AddWidget(Console::self);
+    TheInterfaceMgr->AddWidget(PanelMap::self);
+    TheInterfaceMgr->AddWidget(PanelMain::self);
+    TheInterfaceMgr->AddWidget(PanelBottom::self);
+    TheInterfaceMgr->AddWidget(MenuGame::self);
 }
 
 

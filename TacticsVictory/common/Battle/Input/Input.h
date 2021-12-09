@@ -41,8 +41,8 @@ namespace Pi
     
         NavigationAction(PiTypeAction::S type, CameraRTS::E flag) : Action(type) { movementFlag = flag; }
         virtual ~NavigationAction()    { }
-        void Begin() { TheCamera->AddNavFlag(movementFlag);    }
-        void End()   { TheCamera->RemoveNavFlag(movementFlag); }
+        void Begin() { CameraRTS::self->AddNavFlag(movementFlag);    }
+        void End()   { CameraRTS::self->RemoveNavFlag(movementFlag); }
     
     private:
         CameraRTS::E movementFlag;

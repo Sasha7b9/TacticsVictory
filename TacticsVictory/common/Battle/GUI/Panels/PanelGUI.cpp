@@ -10,53 +10,64 @@
 using namespace Pi;
 
 
-PanelGUI::PanelGUI(const Vector2D &size) 
-    : DrawingWidget(size) {
+PanelGUI::PanelGUI(const Vector2D &size)
+    : DrawingWidget(size)
+{
 
     Clear();
 
     EndScene();
 }
 
-PanelGUI::~PanelGUI() {
+PanelGUI::~PanelGUI()
+{
 
 }
 
-void PanelGUI::Preprocess() {
+void PanelGUI::Preprocess()
+{
     //GetRootWidget()->AddMovingWidget(this);
 }
 
-void PanelGUI::SetMovementMutator(Point2D posShow, Point2D posHide, Vector2D speed) {
+void PanelGUI::SetMovementMutator(Point2D posShow, Point2D posHide, Vector2D speed)
+{
     Mutator *mutator = GetFirstMutator();
-    while (mutator) {
-        if (mutator->GetMutatorType() == kMutatorMovement) {
-            static_cast<MovementMutator*>(mutator)->SetParameters(posShow, posHide, speed);
+    while (mutator)
+    {
+        if (mutator->GetMutatorType() == kMutatorMovement)
+        {
+            static_cast<MovementMutator *>(mutator)->SetParameters(posShow, posHide, speed);
             break;
         }
         mutator = mutator->Next();
     }
-    if (!mutator) {
+    if (!mutator)
+    {
         MovementMutator *_mutator = new MovementMutator(posShow, posHide, speed);
         _mutator->SetMutatorState(0);
         AddMutator(_mutator);
     }
 }
 
-void PanelGUI::Toggle() {
-    TheSoundPlayer->Play(kMovePanel);
+void PanelGUI::Toggle()
+{
+    SoundPlayer::self->Play(kMovePanel);
     Mutator *mutator = GetFirstMutator();
-    while (mutator) {
-        if (mutator->GetMutatorType() == kMutatorMovement) {
-            static_cast<MovementMutator*>(mutator)->Toggle();
+    while (mutator)
+    {
+        if (mutator->GetMutatorType() == kMutatorMovement)
+        {
+            static_cast<MovementMutator *>(mutator)->Toggle();
             break;
         }
         mutator = mutator->Next();
     }
 }
 
-void PanelGUI::Clear() {
+void PanelGUI::Clear()
+{
     SetColorBackground(K::black);
     DrawingWidget::Clear();
     SetColorBrush(K::cyan);
-    DrawRectangle({ 0.0f, 0.0f }, { GetWidgetSize().x - 1, GetWidgetSize().y - 1 });
+    DrawRectangle({0.0f, 0.0f}, {GetWidgetSize().x - 1, GetWidgetSize().y - 1});
 }

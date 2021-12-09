@@ -8,13 +8,14 @@
 using namespace Pi;
 
 
-LineEdit* Console::lineEdit = nullptr;
+LineEdit *Console::lineEdit = nullptr;
 static MovementMutator *mutator = nullptr;
+Console *Console::self = nullptr;
 
 
-Console::Console(const Vector2D &size) : 
-    DrawingWidget(size), 
-    Singleton<Console>(TheConsole) 
+Console::Console(const Vector2D &size) :
+    DrawingWidget(size),
+    Singleton<Console>(Console::self)
 {
     keyboardEventHandler = new KeyboardEventHandler(&OnKeyboardEvent, this);
     TheEngine->InstallKeyboardEventHandler(keyboardEventHandler);
@@ -29,7 +30,7 @@ Console::Console(const Vector2D &size) :
     lineEdit = new LineEdit(Vector2D(SET::GUI::CONSOLE::SIZE().x - delta * 2.0f, heightLineEdit));
     lineEdit->SetWidgetPosition(Point2D(delta, SET::GUI::CONSOLE::SIZE().y - heightLineEdit - delta));
     AppendNewSubnode(lineEdit);
-    
+
 
     EndScene();
 }
@@ -40,7 +41,7 @@ Console::~Console()
     SAFE_DELETE(lineEdit);
     RemoveMutator(mutator);
     SAFE_DELETE(mutator);
-    
+
 }
 
 void Console::Toggle()
@@ -48,17 +49,17 @@ void Console::Toggle()
     Mutator *_mutator = GetFirstMutator();
     if (_mutator)
     {
-        static_cast<MovementMutator*>(_mutator)->Toggle();
+        static_cast<MovementMutator *>(_mutator)->Toggle();
         isOpen = !isOpen;
     }
 
-//    isOpen ? CaptureKeyboard() : ReleaseKeyboard();
+    //    isOpen ? CaptureKeyboard() : ReleaseKeyboard();
 }
 
 void Console::ReleaseKeyboard()
 {
     TheInterfaceMgr->SetInputManagementMode(InputManagementMode::Automatic);
- //   TheInputMgr->SetInputMode(InputMode::Inactive);
+    //   TheInputMgr->SetInputMode(InputMode::Inactive);
 }
 
 void Console::CaptureKeyboard()
@@ -67,7 +68,7 @@ void Console::CaptureKeyboard()
     TheInputMgr->SetInputMode(InputMode::MouseActive);
 }
 
-bool Console::OnKeyboardEvent(const KeyboardEventData *eventData, void*)
+bool Console::OnKeyboardEvent(const KeyboardEventData *eventData, void *)
 {
     lineEdit->HandleKeyboardEvent(eventData);
     return false;

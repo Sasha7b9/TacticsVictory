@@ -4,8 +4,7 @@
 
 namespace Pi
 {
-
-    class CameraRTS : public FrustumCamera
+    class CameraRTS : public FrustumCamera, public Singleton<CameraRTS>
     {
     
     public:
@@ -28,6 +27,8 @@ namespace Pi
     public:
         CameraRTS();
         ~CameraRTS();
+
+        static CameraRTS *self;
     
         virtual void Preprocess() override;
         virtual void Move() override;
@@ -79,7 +80,4 @@ namespace Pi
         const float MAX_TILT_ANGLE = -0.05F * K::pi;
         const float STEP_TILT_ANGLE = 0.05F;
     };
-    
-    extern CameraRTS *TheCamera;
-
 }

@@ -10,6 +10,12 @@
 using namespace Pi;
 
 
+namespace Pi
+{
+    Mouse *Mouse::self = nullptr;
+}
+
+
 MouseObservable::~MouseObservable()
 {
 }
@@ -31,7 +37,7 @@ void Mouse::SetLeftPressed()
     leftIsPressed = true;
     leftNowReleased = false;
 
-    GameObjectProperty *prop = GameWorld::Get()->GameObjectPropertyInPosition(TheCursor->position);
+    GameObjectProperty *prop = GameWorld::Get()->GameObjectPropertyInPosition(CursorGUI::self->position);
 
     if (prop && prop->IsSelectable())
     {

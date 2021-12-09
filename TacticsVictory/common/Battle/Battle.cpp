@@ -15,7 +15,7 @@
 #include "Utils/Log.h"
 #include "Scene/World/Landscape.h"
 #include "GUI/Widgets/ObjectViewportWidget.h"
-#include "Scene/Objects/Units/PathFinder/WaveAlgorithm.h"
+#include "Scene/Objects/Units/PathFinder/PathUnit.h"
 
 
 using namespace Pi;
@@ -29,14 +29,20 @@ using namespace std;
 using namespace std::filesystem;
 
 
+namespace Pi
+{
+    Battle *Battle::self = nullptr;
+}
+
+
 Battle::Battle()
-    : Singleton<Battle>(TheBattle),
+    : Singleton<Battle>(self),
     displayEventHandler(&HandleDisplayEvent),
     locatorReg(kLocatorSpectator, "Spectator Camera")
 {
     uint64 timeEnter = TheTimeMgr->GetMicrosecondCount();
 
-    TheCamera = new CameraRTS();
+    new CameraRTS();
 
     TheWorldMgr->SetWorldCreator(&ConstructWorld);
 
@@ -47,19 +53,23 @@ Battle::Battle()
     TheInterfaceMgr->SetInputManagementMode(InputManagementMode::Automatic);
     TheMessageMgr->BeginSinglePlayerGame();
 
-    TheMouse = new Mouse();
+    new Mouse();
 
-    TheGUI = new GUI();
+    GUI::Create();
 
     CreateScene();
+
+    new PathUnit();
+
+    PathUnit::self->Find({0.0f, 0.0f}, {50.0f, 50.0f});
 
     float halfDisplayWidth = 0.5f * static_cast<float>(TheDisplayMgr->GetDisplayWidth());
     float halfDisplayHeight = 0.5f * static_cast<float>(TheDisplayMgr->GetDisplayHeight());
 
-    TheCursor->position = Vector2D(halfDisplayWidth, halfDisplayHeight);
-    TheCursor->Invalidate();
+    CursorGUI::self->position = Vector2D(halfDisplayWidth, halfDisplayHeight);
+    CursorGUI::self->Invalidate();
 
-    TheSoundPlayer = new SoundPlayer();
+    new SoundPlayer();
 
 //    TheGraphicsMgr->SetDiagnosticFlags(TheGraphicsMgr->GetDiagnosticFlags() | PiFlagDiagnostic::Normals);
 
@@ -70,14 +80,14 @@ Battle::Battle()
 
 Battle::~Battle()
 {
-    SAFE_DELETE(TheCamera);
-    SAFE_DELETE(TheMouse);
-    SAFE_DELETE(TheGUI);
+    SAFE_DELETE(CameraRTS::self);
+    SAFE_DELETE(Mouse::self);
+    SAFE_DELETE(GUI::self);
     TheWorldMgr->UnloadWorld();
     TheWorldMgr->SetWorldCreator(nullptr);
     TheMessageMgr->EndGame();
-    SAFE_DELETE(TheSoundPlayer);
-    WaveAlgorithm::Destroy();
+    SAFE_DELETE(SoundPlayer::self);
+    PathUnit::self->Destroy();
 }
 
 void Battle::CreateScene()
@@ -85,12 +95,11 @@ void Battle::CreateScene()
     TheWorldMgr->LoadWorld("world/Empty");
 }
 
-World *Battle::ConstructWorld(pchar name, void * /*cookie*/)
+World *Battle::ConstructWorld(pchar name, void *)
 {
-    World *world = new GameWorld(name);
-    TheGameWorld = static_cast<GameWorld*>(world);
+    new GameWorld(name);
 
-    return world;
+    return GameWorld::self;
 }
 
 

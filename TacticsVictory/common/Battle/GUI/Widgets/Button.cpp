@@ -62,7 +62,7 @@ TButton::TButton(Type type, const Vector2D &position, pchar text)
     SetState((uint)ButtonSkin::State::Normal);
 
     observer = new Observer<TButton, MouseObservable>(this, &TButton::HandleObserver);
-    TheMouse->AddObserver(observer);
+    Mouse::self->AddObserver(observer);
 }
 
 TButton::~TButton()
@@ -102,7 +102,7 @@ void TButton::HandleObserver(MouseObservable *, uint)
     */
 
     Point3D pos = GetWorldPosition();
-    bool mouseOnButton = Mathem::PointInRect(&(TheCursor->position), pos.x, pos.y, (float)SET::GUI::BUTTON::WIDTH(buttonType), (float)SET::GUI::BUTTON::HEIGHT(buttonType));
+    bool mouseOnButton = Mathem::PointInRect(&(CursorGUI::self->position), pos.x, pos.y, (float)SET::GUI::BUTTON::WIDTH(buttonType), (float)SET::GUI::BUTTON::HEIGHT(buttonType));
 
     if (!mouseOnButton) 
     {
@@ -117,14 +117,14 @@ void TButton::HandleObserver(MouseObservable *, uint)
     }
     if (buttonType == TButton::Type::Normal) 
     {
-        SetState(TheMouse->LeftIsPressed() ? (uint)ButtonSkin::State::Pressed : (uint)ButtonSkin::State::UnderMouse);
+        SetState(Mouse::self->LeftIsPressed() ? (uint)ButtonSkin::State::Pressed : (uint)ButtonSkin::State::UnderMouse);
     } 
     else if (buttonType == TButton::Type::NameTab) 
     {
         SetState(selected ? (uint)ButtonSkin::State::Pressed : (uint)ButtonSkin::State::UnderMouse);
     }
 
-    if (TheMouse->LeftNowReleased()) 
+    if (Mouse::self->LeftNowReleased())
     {
         if (buttonType == TButton::Type::NameTab) 
         {
@@ -133,7 +133,7 @@ void TButton::HandleObserver(MouseObservable *, uint)
         SetState(buttonType == TButton::Type::NameTab ? (uint)ButtonSkin::State::Pressed : (uint)ButtonSkin::State::UnderMouse);
         this->selected = false;
         PostEvent(&eventData);
-        TheMouse->SetLeftReleased();
+        Mouse::self->SetLeftReleased();
     }
 }
 

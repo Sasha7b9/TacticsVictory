@@ -33,8 +33,8 @@ namespace Pi
         {
             this->center = _center;
         }
-        void Preprocess() override;
-        void Move();
+        virtual void Preprocess() override;
+        virtual void Move() override;
     
     private:
         float angle = 0.0f;

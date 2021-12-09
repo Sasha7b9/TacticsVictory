@@ -16,13 +16,13 @@ BEGIN
 	BEGIN
 		BLOCK "04090000"
 		BEGIN
-			VALUE "CompanyName", "Terathon Software LLC"
-			VALUE "FileDescription", "Pi Engine"
+			VALUE "CompanyName", "Phuntik LTD"
+			VALUE "FileDescription", "Tactics Victory"
 			VALUE "FileVersion", "0.0.1"
-			VALUE "InternalName", "PiEngine"
-			VALUE "LegalCopyright", "Copyright 1999-2015 Terathon Software LLC"
+			VALUE "InternalName", "Tactics Victory"
+			VALUE "LegalCopyright", "Copyright 2021 Phuntik LTD"
 			VALUE "OriginalFilename", "PiEngine.dll"
-			VALUE "ProductName", "Pi Engine"
+			VALUE "ProductName", "Tactics Victory"
 			VALUE "ProductVersion", "0.0.1"
 		END
 	END

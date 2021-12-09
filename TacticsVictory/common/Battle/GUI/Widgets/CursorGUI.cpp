@@ -17,9 +17,15 @@ using namespace Pi;
 const float CursorGUI::speedAnimation = 5.0f * 1e-2f;
 
 
+namespace Pi
+{
+    CursorGUI *CursorGUI::self = nullptr;
+}
+
+
 CursorGUI::CursorGUI()
     : Widget(),
-    Singleton<CursorGUI>(TheCursor)
+    Singleton<CursorGUI>(self)
 {
 
     for(int st = 0; st < State::Count; st++)
@@ -56,7 +62,7 @@ void CursorGUI::Move()
 {
     GameWorld *world = GameWorld::Get();
 
-    Vector2D speed = TheCamera->GetSpeed();
+    Vector2D speed = CameraRTS::self->GetSpeed();
 
     if (speed == Vector2D::ZERO)
     {

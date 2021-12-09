@@ -6,18 +6,20 @@
 using namespace Pi;
 
 
-SoundPlayer::SoundPlayer() : Singleton<SoundPlayer>(TheSoundPlayer)
+SoundPlayer *SoundPlayer::self = nullptr;
+
+
+SoundPlayer::SoundPlayer() : Singleton<SoundPlayer>(self)
 {
-     sounds[kMovePanel] = "sounds/shoot";
+    sounds[kMovePanel] = "sounds/shoot";
 }
 
 SoundPlayer::~SoundPlayer()
-{
-}
+{}
 
 void SoundPlayer::Play(uint number)
 {
     Sound *sound = new Sound();
     sound->Load(sounds[number]);
     sound->Play();
-} //-V773
+}

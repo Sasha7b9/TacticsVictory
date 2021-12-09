@@ -4,23 +4,24 @@
 
 namespace Pi
 {
-
     class PanelMap;
     class PanelMain;
     class PanelBottom;
     
     class GUI : public Widget, public Singleton<GUI> {
     
-    public:
+    private:
         GUI();
+    public:
         ~GUI();
+
+        static void Create();
+
+        static GUI *self;
     
         void Hide();
         void Show();
     
     private:
     };
-    
-    extern GUI *TheGUI;
-
 }

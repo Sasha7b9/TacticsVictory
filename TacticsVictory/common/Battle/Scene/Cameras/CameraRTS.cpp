@@ -10,8 +10,14 @@
 using namespace Pi;
 
 
+namespace Pi
+{
+    CameraRTS *CameraRTS::self = nullptr;
+}
+
+
 CameraRTS::CameraRTS()
-    : FrustumCamera(2.0f, 1.0f)
+    : FrustumCamera(2.0f, 1.0f), Singleton(self)
 {
     FrustumCameraObject *object = GetObject();
     object->SetFrustumFlags(PiFlagFrustum::Infinite);
@@ -64,9 +70,9 @@ void CameraRTS::Move()
 
     GameWorld *world = GameWorld::Get();
 
-    if(TheMouse->RightIsPressed())
+    if(Mouse::self->RightIsPressed())
     {
-        if(TheMouse->LeftIsPressed())
+        if(Mouse::self->LeftIsPressed())
         {
             distance += (deltaY * dt * distance / 10.0f);
         }
@@ -76,7 +82,7 @@ void CameraRTS::Move()
             angleTilt -= deltaY * dt / 10.0f;
         }
     }
-    else if (TheMouse->MiddleIsPressed())
+    else if (Mouse::self->MiddleIsPressed())
     {
         deltaFwd -= deltaY * dt / 5.0f;
         deltaRight += deltaX * dt / 5.0f;
@@ -86,7 +92,7 @@ void CameraRTS::Move()
         world->ChangeCursorPosition(deltaX, deltaY);
     }
 
-    Point2D cursorPos = TheCursor->position;
+    Point2D cursorPos = CursorGUI::self->position;
 
     float autoScrollThreshold = 0.005f;
 

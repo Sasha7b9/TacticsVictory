@@ -8,10 +8,7 @@ namespace Pi
     class Mouse;
     class TButton;
     class PanelMap;
-    
-    extern Mouse *TheMouse;
-    
-    
+
     class MouseObservable : public Observable<MouseObservable, Type>
     {
     public:
@@ -35,8 +32,10 @@ namespace Pi
             PositionChanged
         };
     
-        Mouse() : Singleton<Mouse>(*&TheMouse) { }
+        Mouse() : Singleton<Mouse>(self) { }
         virtual ~Mouse() { }
+
+        static Mouse *self;
     
         void AddObserver(Observer<TButton, MouseObservable> *observer);
         void AddObserver(Observer<PanelMap, MouseObservable> *observer);

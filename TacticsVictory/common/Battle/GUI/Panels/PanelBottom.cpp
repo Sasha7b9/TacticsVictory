@@ -11,12 +11,15 @@
 using namespace Pi;
 
 
-PanelBottom::PanelBottom() 
+PanelBottom *PanelBottom::self = nullptr;
+
+
+PanelBottom::PanelBottom()
     : PanelGUI(SET::GUI::BOTTOM::SIZE()),
-    Singleton<PanelBottom>(ThePanelBottom),
-    observerPanelMainHide((new PanelMain(), ThePanelMain), &PanelMain::HandleHideShow),
-    observerPanelMapHide((new PanelMap(), ThePanelMap), &PanelMap::HandleHideShow),
-    observerButtonMenu((new MenuGame(), TheMenuGame), &MenuGame::HandleOnButtonMenu) 
+    Singleton<PanelBottom>(PanelBottom::self),
+    observerPanelMainHide((new PanelMain(), PanelMain::self), &PanelMain::HandleHideShow),
+    observerPanelMapHide((new PanelMap(), PanelMap::self), &PanelMap::HandleHideShow),
+    observerButtonMenu((new MenuGame(), MenuGame::self), &MenuGame::HandleOnButtonMenu)
 {
     SetWidgetPosition(Point3D((float)SET::GUI::BOTTOM::X(), (float)SET::GUI::BOTTOM::Y(), 0.0f));
 

@@ -2,39 +2,41 @@
 #pragma once
 #include "Scene/Cameras/CameraRTS.h"
 #include "Shaders/SparkParticleSystem.h"
+#include "Scene/Objects/Units/PathFinder/PathUnit.h"
 
 
 namespace Pi
 {
-
     enum
     {
         kLocatorSpectator = 'spec'
     };
-    
+
     class Battle : public Application, public Singleton<Battle>
     {
     public:
         Battle();
         ~Battle();
-    
+
+        static Battle *self;
+
         virtual void ApplicationTask() override;
 
         void HandleOnButtonQuit(Widget *widget, const WidgetEventData *eventData);
-    
+
         // ¬озвращает путь к каталогу с данными игры (Data/TacticsVictory)
         std::string DataPath() const;
-    
+
     private:
-        DisplayEventHandler             displayEventHandler;
-        LocatorRegistration             locatorReg;
-    
-        static World* ConstructWorld(pchar name, void *cookie);
+        DisplayEventHandler               displayEventHandler;
+        LocatorRegistration               locatorReg;
+
+        static World *ConstructWorld(pchar name, void *cookie);
+
         static void HandleDisplayEvent(const DisplayEventData *eventData, void *data);
-    
+
+        virtual void HandleGameEvent(GameEvent::E event, const void *param) override;
+
         void CreateScene();
     };
-    
-    extern Battle *TheBattle;
-
 }

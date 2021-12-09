@@ -14,7 +14,7 @@ namespace Pi
     };
     
     
-    class CursorGUI : public Widget, public Singleton < CursorGUI >
+    class CursorGUI : public Widget, public Singleton <CursorGUI>
     {
     public:
     
@@ -43,6 +43,8 @@ namespace Pi
         CursorGUI();
         ~CursorGUI();
     
+        static CursorGUI *self;
+
         Point2D position;
     
         void Move() override;
@@ -64,9 +66,7 @@ namespace Pi
         DrawingWidget *CreateNormalOverSkin(int numFrame, State::E state);
         DrawingWidget *CreateOutScreenSkin(State::E state, int numFrame);
     };
-    
-    extern CursorGUI *TheCursor;
-    
+
     class CursorGUIMutator final : public Mutator
     {
         friend class MutatorReg < CursorGUIMutator > ;

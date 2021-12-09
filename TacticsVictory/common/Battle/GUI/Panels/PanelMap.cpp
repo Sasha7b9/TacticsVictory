@@ -15,11 +15,13 @@ using namespace Pi;
 
 float PanelMapMutator::scale = 0.0f;
 Point2D PanelMapMutator::leftTop;
+PanelMap *PanelMap::self = nullptr;
 
 
-PanelMap::PanelMap() 
+PanelMap::PanelMap()
     : PanelGUI(SET::GUI::MAP::SIZE()),
-    Singleton<PanelMap>(ThePanelMap) {
+    Singleton<PanelMap>(self)
+{
 
     SetMovementMutator(Point2D((float)SET::GUI::MAP::VIEW::X(), (float)SET::GUI::MAP::VIEW::Y()),
         Point2D((float)-SET::GUI::MAP::WIDTH(), (float)SET::GUI::MAP::VIEW::Y()),
@@ -29,7 +31,7 @@ PanelMap::PanelMap()
     AddMutator(mutator);
 
     observer = new Observer<PanelMap, MouseObservable>(this, &PanelMap::HandleObserver);
-    TheMouse->AddObserver(observer);
+    Mouse::self->AddObserver(observer);
 }
 
 
@@ -41,27 +43,29 @@ PanelMap::~PanelMap()
 
 void PanelMap::HandleObserver(MouseObservable *, ::Type type)
 {
-    if((uint)type == (uint)Mouse::Event::RightChanged)
+    if ((uint)type == (uint)Mouse::Event::RightChanged)
     {
         Point3D position = GetWorldPosition();
         Vector2D size = GetWidgetSize();
-        Point2D positionMouse = TheMouse->GetPosition();
-        if(!Mathem::PointInRect(&positionMouse, position.x, position.y, size.x, size.y))
+        Point2D positionMouse = Mouse::self->GetPosition();
+        if (!Mathem::PointInRect(&positionMouse, position.x, position.y, size.x, size.y))
         {
             return;
         }
-        Point3D coordCamera = TheCamera->GetCurrentFocus();
+        Point3D coordCamera = CameraRTS::self->GetCurrentFocus();
         Point3D coordWorld = PanelMapMutator::CoordMapToWorld({positionMouse.x - position.x, positionMouse.y - position.y});
         coordWorld.z = coordCamera.z;
-        TheCamera->MoveOn(coordWorld - coordCamera);
+        CameraRTS::self->MoveOn(coordWorld - coordCamera);
     }
 }
 
-void PanelMap::Preprocess() {
+void PanelMap::Preprocess()
+{
     PanelGUI::Preprocess();
 }
 
-void PanelMap::HandleHideShow(Widget *, const WidgetEventData *) {
+void PanelMap::HandleHideShow(Widget *, const WidgetEventData *)
+{
     Toggle();
 }
 
@@ -90,7 +94,7 @@ void PanelMapMutator::Move()
     Point2D sizeRect(scale * static_cast<float>(sizeMapX) - 1.0F, scale * static_cast<float>(sizeMapY) - 1.0F);
     leftTop = Point2D(1.0F, 1.0F);
 
-    if(scaleX < scaleY)
+    if (scaleX < scaleY)
     {
         leftTop.y = sizePanelY / 2 - sizeRect.y / 2;
     }
@@ -101,24 +105,24 @@ void PanelMapMutator::Move()
 
     panel->Clear();
 
-    for(int row = 0; row < sizeMapY; row++)
+    for (int row = 0; row < sizeMapY; row++)
     {
-        for(int col = 0; col < sizeMapX; col++)
+        for (int col = 0; col < sizeMapX; col++)
         {
             float height = landscape->GetHeight((float)col, (float)row, true);
             float r = height / 10.0F;
-            if(r < 0.0F)
+            if (r < 0.0F)
             {
                 r = 0.0F;
             }
-            if(r > 1.0F)
+            if (r > 1.0F)
             {
                 r = 1.0F;
             }
             float g = r;
             r /= 5.0F;
             panel->SetColorBrush(ColorRGBA(0.0F, g, 0.0F));
-            if(scale > 1.0F)
+            if (scale > 1.0F)
             {
                 panel->FillRegion(leftTop.x + static_cast<float>(col) * scale, leftTop.y + static_cast<float>(row) * scale, scale, scale);
             }
@@ -141,21 +145,21 @@ void PanelMapMutator::Move()
 
     panel->SetColorBrush(K::white);
 
-    if(TheCamera->GetIntersectionPlaneZ(points[0], &point))
+    if (CameraRTS::self->GetIntersectionPlaneZ(points[0], &point))
     {
         Point3D point1;
-        if(TheCamera->GetIntersectionPlaneZ(points[1], &point1))
+        if (CameraRTS::self->GetIntersectionPlaneZ(points[1], &point1))
         {
-//            panel->DrawLine(CoordWorldToMap(point), CoordWorldToMap(point1));
+            //            panel->DrawLine(CoordWorldToMap(point), CoordWorldToMap(point1));
             Point3D point2;
-            if(TheCamera->GetIntersectionPlaneZ(points[2], &point2))
+            if (CameraRTS::self->GetIntersectionPlaneZ(points[2], &point2))
             {
-//                panel->DrawLine(CoordWorldToMap(point1), CoordWorldToMap(point2));
+                //                panel->DrawLine(CoordWorldToMap(point1), CoordWorldToMap(point2));
                 Point3D point3;
-                if(TheCamera->GetIntersectionPlaneZ(points[3], &point3))
+                if (CameraRTS::self->GetIntersectionPlaneZ(points[3], &point3))
                 {
-//                    panel->DrawLine(CoordWorldToMap(point2), CoordWorldToMap(point3));
-//                    panel->DrawLine(CoordWorldToMap(point3), CoordWorldToMap(point));
+                    //                    panel->DrawLine(CoordWorldToMap(point2), CoordWorldToMap(point3));
+                    //                    panel->DrawLine(CoordWorldToMap(point3), CoordWorldToMap(point));
                 }
             }
         }

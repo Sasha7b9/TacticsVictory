@@ -5,26 +5,24 @@
 
 namespace Pi
 {
-
     class Battle;
-    
-    
+
+
     class MenuGame : public PanelGUI, public Singleton<MenuGame>
     {
     public:
         MenuGame();
         ~MenuGame();
-    
+
+        static MenuGame *self;
+
         void HandleOnButtonMenu(Widget *widget, const WidgetEventData *eventData);
-    
+
     private:
         TButton *btnQuit = nullptr;
         TButton *btnOptions = nullptr;
         TButton *btnReturn = nullptr;
-    
+
         WidgetObserver<Battle> observerQuit;
     };
-    
-    extern MenuGame *TheMenuGame;
-
 }

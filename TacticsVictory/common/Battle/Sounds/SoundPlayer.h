@@ -4,25 +4,23 @@
 
 namespace Pi
 {
-
     enum
     {
         kMovePanel,
         kNumSounds
     };
-    
+
     class SoundPlayer : public Singleton<SoundPlayer>
     {
     public:
         SoundPlayer();
         ~SoundPlayer();
-    
+
+        static SoundPlayer *self;
+
         void Play(uint number);
-    
+
     private:
         pchar sounds[kNumSounds];
     };
-    
-    extern SoundPlayer *TheSoundPlayer;
-
 }

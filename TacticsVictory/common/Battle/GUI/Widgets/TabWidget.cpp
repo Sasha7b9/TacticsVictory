@@ -11,6 +11,16 @@
 using namespace Pi;
 
 
+namespace Pi
+{
+    TabWidgetMainPanel *TabWidgetMainPanel::self = nullptr;
+    TabInfo *TabInfo::self = nullptr;
+    TabUnits *TabUnits::self = nullptr;
+    TabPlatoons *TabPlatoons::self = nullptr;
+    TabStructures *TabStructures::self = nullptr;
+}
+
+
 TabTitle::TabTitle(TabWidget *parent, Array<Tab*> *_tabs)
     : Widget(),
     observerSwitchTab(static_cast<TabWidgetMainPanel*>(parent), &TabWidgetMainPanel::HandleSwitchTab) {
@@ -45,7 +55,7 @@ Tab::Tab(TabWidget *parent, pchar name) : Widget() {
 
 
 TabInfo::TabInfo(TabWidget *parent, pchar name)
-    : Tab(parent, name) 
+    : Tab(parent, name), Singleton<TabInfo>(self)
 {
     //float delta = 3.0f;
     /*
@@ -64,7 +74,8 @@ TabInfo::~TabInfo() {
 
 
 TabUnits::TabUnits(TabWidget *parent, pchar name)
-    : Tab(parent, name) {
+    : Tab(parent, name), Singleton<TabUnits>(self)
+{
 
     float x = 10;
     float y = 10;
@@ -102,7 +113,8 @@ TabUnits::~TabUnits() {
 }
 
 TabPlatoons::TabPlatoons(TabWidget *parent, pchar name)
-    : Tab(parent, name) {
+    : Tab(parent, name), Singleton<TabPlatoons>(self)
+{
 
     TButton *button = new TButton(TButton::Type::Normal, {15.0f, 15.0f}, "Platoons");
     AppendNewSubnode(button);
@@ -113,7 +125,8 @@ TabPlatoons::~TabPlatoons() {
 }
 
 TabStructures::TabStructures(TabWidget *parent, pchar name)
-    : Tab(parent, name) {
+    : Tab(parent, name), Singleton<TabStructures>(self)
+{
 
     TButton *button = new TButton(TButton::Type::Normal, {20.0f, 20.0f}, "Structures");
     AppendNewSubnode(button);
@@ -151,26 +164,22 @@ void TabWidget::AddTab(Tab * /*tab*/) {
 }
 
 TabWidgetMainPanel::TabWidgetMainPanel(PanelGUI *parent) 
-    : TabWidget(parent) {
-
+    : TabWidget(parent), Singleton<TabWidgetMainPanel>(self)
+{
     numTabs = 4;
 
-    TheTabInfo = new TabInfo(this, "Information");
-    tabs.InsertElement(Tab_Info, TheTabInfo);
-    AppendNewSubnode(TheTabInfo);
-    
-    TheTabUnits = new TabUnits(this, "Units");
-    tabs.InsertElement(Tab_Units, TheTabUnits);
-    AppendNewSubnode(TheTabUnits);
+    tabs.InsertElement(Tab_Info, new TabInfo(this, "Information"));
+    AppendNewSubnode(TabInfo::self);
 
-    TheTabPlatoons = new TabPlatoons(this, "Platoons");
-    tabs.InsertElement(Tab_Platoons , TheTabPlatoons);
-    AppendNewSubnode(TheTabPlatoons);
+    tabs.InsertElement(Tab_Units, new TabUnits(this, "Units"));
+    AppendNewSubnode(TabUnits::self);
 
-    TheTabStructures = new TabStructures(this, "Structures");
-    tabs.InsertElement(Tab_Structures, TheTabStructures);
-    AppendNewSubnode(TheTabStructures);
-    
+    tabs.InsertElement(Tab_Platoons, new TabPlatoons(this, "Platoons"));
+    AppendNewSubnode(TabPlatoons::self);
+
+    tabs.InsertElement(Tab_Structures, new TabStructures(this, "Structures"));
+    AppendNewSubnode(TabStructures::self);
+
     tabTitle = new TabTitle(this, &tabs);
     AppendNewSubnode(tabTitle);
 

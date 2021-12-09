@@ -8,6 +8,9 @@
 using namespace Pi;
 
 
+MenuMain *MenuMain::self = nullptr;
+
+
 static float CalculateX()
 {
     return (SET::GUI::MENU_MAIN::SIZE().x - SET::GUI::BUTTON::WIDTH(TButton::Type::Normal)) / 2.0f;
@@ -20,8 +23,8 @@ static float CalculateY(int numButton)
 
 MenuMain::MenuMain()
     : PanelGUI(SET::GUI::MENU_MAIN::SIZE()),
-    Singleton<MenuMain>(TheMenuMain),
-    observerQuit(TheBattle, &Battle::HandleOnButtonQuit)
+    Singleton<MenuMain>(MenuMain::self),
+    observerQuit(Battle::self, &Battle::HandleOnButtonQuit)
 {
     SetWidgetPosition(Point3D((SET::WINDOW::SIZE().x - SET::GUI::MENU_MAIN::SIZE().x) / 2.0f, (SET::WINDOW::SIZE().y - SET::GUI::MENU_MAIN::SIZE().y) / 2.0f, 0.0f));
 

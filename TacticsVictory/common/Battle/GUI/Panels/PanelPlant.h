@@ -5,7 +5,6 @@
 
 namespace Pi
 {
-
     class PanelPlant : public PanelGUI, public Singleton <PanelPlant> {
     
     public:
@@ -15,5 +14,4 @@ namespace Pi
     private:
        
     };
-
 }

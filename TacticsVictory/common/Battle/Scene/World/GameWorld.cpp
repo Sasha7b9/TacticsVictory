@@ -10,7 +10,6 @@
 #include "Scene/World/Sun.h"
 #include "Scene/World/WorldGismo.h"
 #include "Scene/Objects/Units/Ground/Tank.h"
-#include "Scene/Objects/Units/PathFinder/PathUnit.h"
 
 
 using namespace Pi;
@@ -20,14 +19,21 @@ Sun *sun = nullptr;
 Sun *sunViewport = nullptr;
 
 
+namespace Pi
+{
+    GameWorld *GameWorld::self = nullptr;
+}
+
+
 GameWorld::GameWorld(pchar name)
     : World(name)
 {
+    self = this;
 }
 
 GameWorld::~GameWorld()
 {
-    SAFE_DELETE(TheCursor);
+    SAFE_DELETE(CursorGUI::self);
     SAFE_DELETE(sun);
 }
 
@@ -78,11 +84,11 @@ WorldResult::B GameWorld::Preprocess()
         return (result);
     }
 
-    SetCamera(TheCamera);
-    TheCamera->Invalidate();
-    TheCamera->Update();
+    SetCamera(CameraRTS::self);
+    CameraRTS::self->Invalidate();
+    CameraRTS::self->Update();
 
-    landscape = new Landscape((TheBattle->DataPath() + "levels/level2.lvl").c_str(), 0.1f);
+    landscape = new Landscape((Battle::self->DataPath() + "levels/level2.lvl").c_str(), 0.1f);
     GetRootNode()->AppendNewSubnode(landscape);
 
     sun = new Sun();
@@ -121,44 +127,34 @@ void GameWorld::Move()
             tank->SetMapPosition((float)Math::Random(0, landscape->GetSizeX() - 1), (float)Math::Random(0, landscape->GetSizeY() - 1));
             GameWorld::Get()->AppendGameObject(tank);
         }
-
-        PathUnit::Create();
-    }
-
-    if(created)
-    {
-        bool result = false;
-        Point3D point = landscape->GetPointScreen(TheCursor->position.x, TheCursor->position.y, result);
-        PathUnit::SetPosition(point);
-        result ? PathUnit::PowerOn() : PathUnit::PowerOff();
     }
 }
 
 
 void GameWorld::ChangeCursorPosition(float deltaX, float deltaY)
 {
-    TheCursor->position.x += deltaX * 3.0F;
-    TheCursor->position.y += deltaY * 3.0F;
+    CursorGUI::self->position.x += deltaX * 3.0F;
+    CursorGUI::self->position.y += deltaY * 3.0F;
 
     float displayWidth = (float)TheDisplayMgr->GetDisplayWidth();
     float displayHeight = (float)TheDisplayMgr->GetDisplayHeight();
 
-    TheCursor->position.x = FmaxZero(TheCursor->position.x);
-    TheCursor->position.y = FmaxZero(TheCursor->position.y);
+    CursorGUI::self->position.x = FmaxZero(CursorGUI::self->position.x);
+    CursorGUI::self->position.y = FmaxZero(CursorGUI::self->position.y);
 
-    TheCursor->position.x = Fmin(displayWidth - 1, TheCursor->position.x);
-    TheCursor->position.y = Fmin(displayHeight - 1, TheCursor->position.y);
+    CursorGUI::self->position.x = Fmin(displayWidth - 1,  CursorGUI::self->position.x);
+    CursorGUI::self->position.y = Fmin(displayHeight - 1, CursorGUI::self->position.y);
 
-    Vector2D cursorSize = TheCursor->GetWidgetSize();
-    float posX = TheCursor->position.x - 0.5F * cursorSize.x;
-    float posY = TheCursor->position.y - 0.5F * cursorSize.y;
+    Vector2D cursorSize = CursorGUI::self->GetWidgetSize();
+    float posX = CursorGUI::self->position.x - 0.5F * cursorSize.x;
+    float posY = CursorGUI::self->position.y - 0.5F * cursorSize.y;
 
-    TheCursor->SetWidgetPosition(Point3D((float)((int)posX), (float)((int)posY), 0.0F));
-    TheCursor->Invalidate();
+    CursorGUI::self->SetWidgetPosition(Point3D((float)((int)posX), (float)((int)posY), 0.0F));
+    CursorGUI::self->Invalidate();
 
-    if(TheGUI)
+    if(GUI::self)
     {
-        TheMouse->ChangePos((int)posX, (int)posY);
+        Mouse::self->ChangePos((int)posX, (int)posY);
     }
 }
 
@@ -173,7 +169,7 @@ GameObject *GameWorld::GameObjectInPosition(const Point2D &coord)
 
 GameObjectProperty *GameWorld::GameObjectPropertyInPosition(const Point2D &coord)
 {
-    Ray ray = TheCamera->GetWorldRayFromPoint(coord);
+    Ray ray = CameraRTS::self->GetWorldRayFromPoint(coord);
 
     CollisionData data;
 
@@ -214,10 +210,10 @@ GameWorld *GameWorld::Get()
 Point3D GameWorld::TransformWorldCoordToDisplay(const Point3D &worldPosition)
 {
     // Transform the world point into camera space
-    Point3D displayPoint = TheCamera->GetInverseWorldTransform() * worldPosition;
+    Point3D displayPoint = CameraRTS::self->GetInverseWorldTransform() * worldPosition;
 
     // Project the point onto the focal plane
-    const FrustumCameraObject *object = TheCamera->GetObject();
+    const FrustumCameraObject *object = CameraRTS::self->GetObject();
     float focalLength = object->GetFocalLength();
     displayPoint.x *= focalLength / displayPoint.z;
     displayPoint.y *= focalLength / displayPoint.z;

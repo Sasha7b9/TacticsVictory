@@ -39,7 +39,7 @@ void KeyboardAction::Begin()
 
     if (type == PiTypeAction::F1)
     {
-        TheConsole->Toggle();
+        Console::self->Toggle();
     }
     else if (type == PiTypeAction::Esc)
     {
@@ -53,15 +53,15 @@ void MouseButtonAction::Begin() {
 
     if (type == PiTypeAction::MouseLeft)
     {
-        TheMouse->SetLeftPressed();
+        Mouse::self->SetLeftPressed();
     }
     else if (type == PiTypeAction::MouseMiddle)
     {
-        TheMouse->SetMiddlePressed();
+        Mouse::self->SetMiddlePressed();
     }
     else if (type == PiTypeAction::MouseRight)
     {
-        TheMouse->SetRightPressed();
+        Mouse::self->SetRightPressed();
     }
 }
 
@@ -71,15 +71,15 @@ void MouseButtonAction::End()
 
     if (type == PiTypeAction::MouseLeft)
     {
-        TheMouse->SetLeftReleased();
+        Mouse::self->SetLeftReleased();
     }
     else if (type == PiTypeAction::MouseMiddle)
     {
-        TheMouse->SetMiddleReleased();
+        Mouse::self->SetMiddleReleased();
     }
     else if (type == PiTypeAction::MouseRight)
     {
-        TheMouse->SetRightReleased();
+        Mouse::self->SetRightReleased();
     }
 }
 
@@ -91,11 +91,11 @@ void MouseButtonAction::Update(float value)
     {
         if (value > 0)
         {
-            TheCamera->TiltAngleDecrease();
+            CameraRTS::self->TiltAngleDecrease();
         }
         else
         {
-            TheCamera->TiltAngleIncrease();
+            CameraRTS::self->TiltAngleIncrease();
         }
     }
 }
