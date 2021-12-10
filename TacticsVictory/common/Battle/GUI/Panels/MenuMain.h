@@ -48,6 +48,6 @@ namespace Pi
 
         TButton *btnExit = nullptr;
 
-        WidgetObserver<Battle> observerQuit;
+        WidgetObserver<Battle> observerQuit {Battle::self, &Battle::HandleOnButtonQuit};
     };
 }

@@ -1,13 +1,11 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "PanelGUI.h"
+#include "Battle.h"
 
 
 namespace Pi
 {
-    class Battle;
-
-
     class MenuGame : public PanelGUI, public Singleton<MenuGame>
     {
     public:
@@ -23,6 +21,6 @@ namespace Pi
         TButton *btnOptions = nullptr;
         TButton *btnReturn = nullptr;
 
-        WidgetObserver<Battle> observerQuit;
+        WidgetObserver<Battle> observerQuit {Battle::self, &Battle::HandleOnButtonQuit};
     };
 }

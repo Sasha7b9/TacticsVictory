@@ -5,7 +5,7 @@
 
 using namespace Pi;
 
-GroundUnitController::GroundUnitController(Type _groundUnitType, const PiTypeController::S &contrType) :
+GroundUnitController::GroundUnitController(const PiTypeController::S &contrType) :
     UnitController(UnitController::Type::Ground, contrType.Value())
 {
 

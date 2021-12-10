@@ -14,8 +14,7 @@ MenuGame *MenuGame::self = nullptr;
 
 MenuGame::MenuGame()
     : PanelGUI(SET::GUI::MENU_GAME::SIZE()),
-    Singleton<MenuGame>(MenuGame::self),
-    observerQuit(Battle::self, &Battle::HandleOnButtonQuit)
+    Singleton<MenuGame>(MenuGame::self)
 {
 
     SetWidgetPosition(Point3D((float)(SET::WINDOW::SIZE().x - 300), (float)(SET::WINDOW::SIZE().y - 64), 0.0f));

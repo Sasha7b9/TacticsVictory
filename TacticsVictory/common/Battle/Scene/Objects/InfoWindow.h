@@ -6,10 +6,10 @@
 namespace Pi
 {
     // Здесь отображется информация о юните при наведении на него курсора и выделении
-    class Indicator : public DrawingWidget
+    class InfoWindow : public DrawingWidget
     {
     public:
-        Indicator();
-        virtual ~Indicator() {};
+        InfoWindow();
+        virtual ~InfoWindow() {};
     };
 }

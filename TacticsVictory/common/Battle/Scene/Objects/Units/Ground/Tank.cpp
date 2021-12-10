@@ -6,13 +6,6 @@
 using namespace Pi;
 
 
-Tank::Tank() :
-    tankControllerRegistration(PiTypeController::Tank, "Tank"),
-    tankModelRegistration(PiTypeModel::Tank, "Tank", "models/Tank", ModelRegistrationFlag::Precache, PiTypeController::Tank)
-{
-}
-
-
 GameObject *Tank::Create()
 {
     Tank *node = new Tank();
@@ -28,7 +21,7 @@ GameObject *Tank::Create()
 
 
 TankController::TankController() :
-    GroundUnitController(GroundUnitController::Type::Tank, PiTypeController::Tank)
+    GroundUnitController(PiTypeController::Tank)
 {
 
 }

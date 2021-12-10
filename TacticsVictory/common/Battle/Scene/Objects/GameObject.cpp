@@ -4,37 +4,27 @@
 #include "Scene/Cameras/CameraRTS.h"
 #include "Scene/World/Landscape.h"
 #include "Scene/World/GameWorld.h"
+#include "Scene/Objects/InfoWindow.h"
+#include "Scene/Objects/Units/PathFinder/PathUnit.h"
 
 
 using namespace Pi;
 
 
-GameObject::GameObject() : Node()
+GameObject::GameObject(PiTypeGameObject::S _type) : Node(), type(_type)
 {
-    AddProperty(new GameObjectProperty(this));
+    AddProperty(new GameObjectProperty(*this));
 }
 
 
 void GameObject::SetMapPosition(float mapX, float mapY)
 {
-    GetGameObjectProperty()->SetMapPosition(mapX, mapY);
+    GetGameObjectProperty().SetMapPosition(mapX, mapY);
 
     float x = mapX + 0.5f;
     float y = mapY + 0.5f;
 
     SetNodePosition({x, y, GameWorld::Get()->GetLandscape()->GetHeight(x, y)});
-}
-
-
-void GameObject::SetNodePosition(const Point3D &position)
-{
-    Node::SetNodePosition(position);
-}
-
-
-GameObjectProperty *GameObject::GetGameObjectProperty()
-{
-    return (GameObjectProperty *)GetProperty(PiTypeProperty::GameObject);
 }
 
 
@@ -51,20 +41,19 @@ GameObjectController::GameObjectController(const GameObjectController &gameObjec
     gameObjectType = gameObjectController.gameObjectType;
 }
 
-GameObjectController::~GameObjectController()
-{
 
-}
-
-void GameObjectController::Preprocess()
+GameObject &GameObject::GetFromScreen(const Point2D &coord)
 {
-    Controller::Preprocess();
+    GameObjectProperty *property = GameObjectProperty::GetFromScreen(coord);
+
+    return property ? property->gameObject : Empty();
 }
 
 
 GameObject &GameObject::Empty()
 {
-    static GameObject empty;
+    static GameObject empty(PiTypeGameObject::Empty);
+
     return empty;
 }
 
@@ -75,14 +64,79 @@ void GameObjectController::Move()
 
     GameObjectProperty *property = (GameObjectProperty *)GetTargetNode()->GetProperty(PiTypeProperty::GameObject);
 
-    if(property->IsSelected())
+    if(property->Selected())
     {
         Point3D coord = GameWorld::Get()->TransformWorldCoordToDisplay(GetTargetNode()->GetWorldPosition());
-        coord.x -= property->indicator->GetWidgetSize().x / 2;
-        coord.y -= property->indicator->GetWidgetSize().y / 2;
+        coord.x -= property->infoWindow->GetWidgetSize().x / 2;
+        coord.y -= property->infoWindow->GetWidgetSize().y / 2;
         coord.x = (float)((int)coord.x);
         coord.y = (float)((int)coord.y);
-        property->indicator->SetWidgetPosition(coord);
-        property->indicator->Invalidate();
+        property->infoWindow->SetWidgetPosition(coord);
+        property->infoWindow->Invalidate();
     }
+}
+
+
+GameObjectProperty::GameObjectProperty(GameObject &_gameObject) :
+    Property(PiTypeProperty::GameObject),
+    gameObject(_gameObject),
+    infoWindow(new InfoWindow())
+{}
+
+
+void GameObjectProperty::SetSelection()
+{
+    selected = true;
+    TheInterfaceMgr->AddWidget(infoWindow);
+}
+
+
+void GameObjectProperty::RemoveSelection()
+{
+    selected = false;
+    TheInterfaceMgr->RemoveWidget(infoWindow);
+}
+
+
+void GameObjectProperty::MouseEvent(uint state)
+{
+    if(Selectable())
+    {
+        if (state & (1 << 0))
+        {
+            Selected() ? RemoveSelection() : SetSelection();
+        }
+
+        PathUnit::self->SetTarget(Selected() ? gameObject.CastToUnitObject() : nullptr);
+    }
+}
+
+
+GameObjectProperty *GameObjectProperty::GetFromScreen(const Point2D &coord)
+{
+    Ray ray = CameraRTS::self->GetWorldRayFromPoint(coord);
+
+    CollisionData data;
+
+    Point3D p1 = ray.origin;
+    Point3D p2 = p1 + ray.direction * ray.tmax;
+
+    if (GameWorld::Get()->DetectCollision(p1, p2, 0.0f, PiKindCollision::RigidBody, &data))
+    {
+        Node *node = data.geometry->GetSuperNode();
+
+        while (node)
+        {
+            GameObjectProperty *property = (GameObjectProperty *)node->GetProperty(PiTypeProperty::GameObject);
+
+            if (property)
+            {
+                return property;
+            }
+
+            node = node->GetSuperNode();
+        }
+    }
+
+    return nullptr;
 }

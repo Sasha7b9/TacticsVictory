@@ -23,8 +23,7 @@ static float CalculateY(int numButton)
 
 MenuMain::MenuMain()
     : PanelGUI(SET::GUI::MENU_MAIN::SIZE()),
-    Singleton<MenuMain>(MenuMain::self),
-    observerQuit(Battle::self, &Battle::HandleOnButtonQuit)
+    Singleton<MenuMain>(MenuMain::self)
 {
     SetWidgetPosition(Point3D((SET::WINDOW::SIZE().x - SET::GUI::MENU_MAIN::SIZE().x) / 2.0f, (SET::WINDOW::SIZE().y - SET::GUI::MENU_MAIN::SIZE().y) / 2.0f, 0.0f));
 

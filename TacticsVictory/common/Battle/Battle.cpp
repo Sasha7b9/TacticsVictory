@@ -61,8 +61,6 @@ Battle::Battle()
 
     new PathUnit();
 
-    PathUnit::self->Find({0.0f, 0.0f}, {50.0f, 50.0f});
-
     float halfDisplayWidth = 0.5f * static_cast<float>(TheDisplayMgr->GetDisplayWidth());
     float halfDisplayHeight = 0.5f * static_cast<float>(TheDisplayMgr->GetDisplayHeight());
 
@@ -87,7 +85,6 @@ Battle::~Battle()
     TheWorldMgr->SetWorldCreator(nullptr);
     TheMessageMgr->EndGame();
     SAFE_DELETE(SoundPlayer::self);
-    PathUnit::self->Destroy();
 }
 
 void Battle::CreateScene()

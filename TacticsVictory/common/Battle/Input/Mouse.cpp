@@ -37,12 +37,11 @@ void Mouse::SetLeftPressed()
     leftIsPressed = true;
     leftNowReleased = false;
 
-    GameObjectProperty *prop = GameWorld::Get()->GameObjectPropertyInPosition(CursorGUI::self->position);
+    GameObjectProperty *prop = GameObjectProperty::GetFromScreen(CursorGUI::self->position);
 
-    if (prop && prop->IsSelectable())
+    if (prop)
     {
-        if (prop->IsSelected()) { prop->RemoveSelection(); }
-        else                    { prop->SetSelection();    }
+        prop->MouseEvent(1U);
     }
     else
     {

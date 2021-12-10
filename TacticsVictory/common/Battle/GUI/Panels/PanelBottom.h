@@ -1,8 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "PanelGUI.h"
-#include "PanelMap.h"
-#include "MenuGame.h"
+#include "GUI/Panels/PanelGUI.h"
+#include "GUI/Panels/PanelMap.h"
+#include "GUI/Panels/MenuGame.h"
+#include "GUI/Panels/PanelMain.h"
 
 
 namespace Pi
@@ -26,8 +27,8 @@ namespace Pi
         TButton *btnHideMain = nullptr;
         TButton *btnMenu = nullptr;
 
-        WidgetObserver<PanelMain> observerPanelMainHide;
-        WidgetObserver<PanelMap> observerPanelMapHide;
-        WidgetObserver<MenuGame> observerButtonMenu;
+        WidgetObserver<PanelMain> observerPanelMainHide {(new PanelMain(), PanelMain::self), &PanelMain::HandleHideShow};
+        WidgetObserver<PanelMap> observerPanelMapHide {(new PanelMap(), PanelMap::self), &PanelMap::HandleHideShow};
+        WidgetObserver<MenuGame> observerButtonMenu {(new MenuGame(), MenuGame::self), &MenuGame::HandleOnButtonMenu};
     };
 }

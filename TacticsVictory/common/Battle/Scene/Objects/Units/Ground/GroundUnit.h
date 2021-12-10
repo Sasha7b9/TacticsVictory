@@ -5,21 +5,27 @@
 
 namespace Pi
 {
+    namespace PiTypeGroundUnitObject
+    {
+        typedef StringHash S;
+
+        const S Tank = "Tank";
+    }
+
     class GroundUnitObject : public UnitObject
     {
-
+    public:
+    protected:
+        GroundUnitObject(PiTypeGroundUnitObject::S _type) : UnitObject(PiTypeUnitObject::Ground), type(_type) {}
+    private:
+        PiTypeGroundUnitObject::S type;
     };
 
     class GroundUnitController : public UnitController
     {
     public:
-        enum class Type
-        {
-            Tank
-        };
     protected:
-        GroundUnitController(Type grounUnitType, const PiTypeController::S &contrType);
-        GroundUnitController(const GameObjectController &gameObjectController);
+        GroundUnitController(const PiTypeController::S &contrType);
     public:
         virtual ~GroundUnitController() {};
     };

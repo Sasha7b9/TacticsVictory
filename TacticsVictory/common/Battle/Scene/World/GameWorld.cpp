@@ -159,44 +159,6 @@ void GameWorld::ChangeCursorPosition(float deltaX, float deltaY)
 }
 
 
-GameObject *GameWorld::GameObjectInPosition(const Point2D &coord)
-{
-    GameObjectProperty *property = GameObjectPropertyInPosition(coord);
-
-    return property ? property->GetGameObject() : nullptr;
-}
-
-
-GameObjectProperty *GameWorld::GameObjectPropertyInPosition(const Point2D &coord)
-{
-    Ray ray = CameraRTS::self->GetWorldRayFromPoint(coord);
-
-    CollisionData data;
-
-    Point3D p1 = ray.origin;
-    Point3D p2 = p1 + ray.direction * ray.tmax;
-
-    if (DetectCollision(p1, p2, 0.0f, PiKindCollision::RigidBody, &data))
-    {
-        Node *node = data.geometry->GetSuperNode();
-
-        while (node)
-        {
-            GameObjectProperty *property = (GameObjectProperty *)node->GetProperty(PiTypeProperty::GameObject);
-
-            if (property)
-            {
-                return property;
-            }
-
-            node = node->GetSuperNode();
-        }
-    }
-
-    return nullptr;
-}
-
-
 GameWorld *GameWorld::Get()
 {
     static GameWorld empty("world/Empty");

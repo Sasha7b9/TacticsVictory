@@ -63,10 +63,6 @@ void MovementMutator::Toggle()
     {
         state = kShowToHideMoving;
     }
-    else
-    {
-        // здесь ничего
-    }
 }
 
 void MovementMutator::Move()
@@ -79,10 +75,7 @@ void MovementMutator::Move()
     {
         CalculateNewPosition(-1.0F);
     }
-    else
-    {
-        // здесь ничего
-    }
+
     SetCurrenPosition();
 }
 
@@ -143,10 +136,12 @@ int MovementMutator::GetSettingCount() const
 Setting *MovementMutator::GetSetting(int index) const
 {
     int count = Mutator::GetSettingCount();
+
     if(index < count)
     {
         return Mutator::GetSetting(index);
     }
+
     return nullptr;
 }
 

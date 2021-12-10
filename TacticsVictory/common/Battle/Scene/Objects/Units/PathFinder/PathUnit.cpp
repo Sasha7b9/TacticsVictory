@@ -13,6 +13,7 @@ using namespace Pi;
 
 
 PathUnit *PathUnit::self = nullptr;
+List<PathUnit::CellPath> PathUnit::CellPath::chains;                   // Здесь хранятся визуализированные клеточки
 
 
 void PathUnitController::Move()
@@ -21,11 +22,33 @@ void PathUnitController::Move()
 
     PathUnit *pathUnit = (PathUnit *)GetTargetNode();
 
-    if(pathUnit->PathIsFound() && !pathUnit->Enabled())
+    if (!pathUnit->target)
     {
-        pathUnit->Enable();
+        return;
+    }
+
+    if (pathUnit->needSearching)
+    {
+        pathUnit->needSearching = false;
+        pathUnit->start = pathUnit->target->GetWorldPosition().GetPoint2D();
+        pathUnit->start.x = (float)(int)pathUnit->start.x;
+        pathUnit->start.y = (float)(int)pathUnit->start.y;
+        pathUnit->end = Point2D{99.0f, 99.0f};
+
+        pathUnit->StartSearch();
+    }
+
+    if(pathUnit->pathIsFound && !pathUnit->visualized)
+    {
         pathUnit->Visualize();
     }
+}
+
+
+void PathUnit::StartSearch()
+{
+    jobFinder = new PathUnit::JobPathFinder(this);
+    TheJobMgr->SubmitJob(jobFinder);
 }
 
 
@@ -34,47 +57,63 @@ PathUnit::PathUnit() : Node("PathUnit"), Singleton<PathUnit>(self)
     PathUnitController *controller = new PathUnitController();
     SetController(controller);
     controller->Wake();
-    Disable();
 
     TheWorldMgr->GetWorld()->GetRootNode()->AppendNewSubnode(this);
 }
 
 
-void PathUnit::Find(const UnitObject *unit, const Point2D &destination)
+void PathUnit::SetTarget(const UnitObject *unit)
 {
-    Find(unit->GetWorldPosition().GetPoint2D(), destination);
+    StopSearch();
+
+    target = unit;
+
+    needSearching = true;
 }
 
 
-void PathUnit::Find(const Point2D &source, const Point2D &destination)
+void PathUnit::RemoveTarget()
 {
-    static bool submitted = false;       // true, если работа уже добавлена в менеджер работ
+    StopSearch();
+
+    target = nullptr;
+
+    needSearching = false;
+}
+
+
+void PathUnit::StopSearch()
+{
+    if(jobFinder)
+    {
+        TheJobMgr->CancelJob(jobFinder);
+
+        while (!jobFinder->Cancelled() || !jobFinder->Complete()) { }
+
+        delete jobFinder;
+        jobFinder = nullptr;
+    }
+
+    Clear();
+}
+
+
+void PathUnit::Clear()
+{
+    delete jobFinder;
+
+    jobFinder = nullptr;
 
     pathIsFound = false;
 
-    start = source;
-    end = destination;
-
-    if (jobFinder == nullptr)
+    for (auto *chain : CellPath::chains)
     {
-        jobFinder = new JobPathFinder(this);
+        chain->Disable();
     }
-
-    if(submitted)
-    {
-        TheJobMgr->CancelJob(jobFinder);
-    
-        while (!jobFinder->Cancelled() || !jobFinder->Complete())
-        {}
-    }
-
-    TheJobMgr->SubmitJob(jobFinder);
-
-    submitted = true;
 }
 
 
-void PathUnit::JobPathFinder::JobFunction(Job *, void *cookie)
+void PathUnit::JobPathFinder::JobFunction(Job *job, void *cookie)
 {
     PathUnit *pathUnit = (PathUnit *)cookie;
 
@@ -85,13 +124,7 @@ void PathUnit::JobPathFinder::JobFunction(Job *, void *cookie)
     pathUnit->landscape = GameWorld::Get()->GetLandscape();
     pathUnit->SetSize();
     pathUnit->path.Clear();
-    pathUnit->FindPath();
-}
-
-
-bool PathUnit::PathIsFound()
-{
-    return pathIsFound;
+    pathUnit->FindPath(job);
 }
 
 
@@ -103,10 +136,23 @@ Array<Point2D> PathUnit::ToArray()
 
 void PathUnit::Visualize()
 {
-    for (Point2D &cell : path)
+    for (Point2D &point : path)
     {
-        AppendSubnode(new CellPath(cell));
+        if (CellPath::chains.GetElementCount())
+        {
+            CellPath *cell = CellPath::chains.First();
+            CellPath::chains.Remove(cell);
+            cell->MoveTo(point);
+            AppendSubnode(cell);
+            cell->Enable();
+        }
+        else
+        {
+            AppendSubnode(new CellPath(point));
+        }
     }
+
+    visualized = true;
 }
 
 
@@ -115,16 +161,11 @@ void PathUnit::SetSize()
     numRows = (uint)landscape->GetSizeX();
     numCols = (uint)landscape->GetSizeY();
 
-    cells.SetElementCount((int)numRows);
-
-    for (auto &row : cells)
-    {
-        row.SetElementCount((int)numCols);
-    }
+    cells.SetDimensions((int)numRows, (int)numCols);
 }
 
 
-void PathUnit::FindPath()
+void PathUnit::FindPath(Job *job)
 {
     if (fabs(landscape->GetHeight(start.x, start.y) - landscape->GetHeight(end.x, end.y)) > K::epsilon)
     {
@@ -139,13 +180,7 @@ void PathUnit::FindPath()
         return;
     }
 
-    for (auto &row : cells)
-    {
-        for (auto &cell : row)
-        {
-            cell = -1;
-        }
-    }
+    cells.Fill(-1);
 
     heightStart = landscape->GetHeight(start.x, start.y);
 
@@ -159,12 +194,13 @@ void PathUnit::FindPath()
     do
     {
         NextWave(waves);
+
     } while(waves[waves.GetElementCount() - 1].GetElementCount() && !Contain(waves[waves.GetElementCount() - 1], end));
 
     if(Contain(waves[waves.GetElementCount() - 1], end))
     {
         path.AddElement(end);
-        while(!(path[0] == start))
+        while(path[0] != start)
         {
             AddPrevWave(path);
         }
@@ -280,13 +316,9 @@ void PathUnit::AddPrevWave(Array<Point2D> &path_)
 }
 
 
-void PathUnit::Destroy()
+PathUnit::CellPath::CellPath(const Point2D &position) : Node(), ListElement<CellPath>()
 {
-}
-
-
-PathUnit::CellPath::CellPath(const Point2D &position) : Node("PathUnit")
-{
+    SetNodeName("CellPath");
     AppendSubnode(CreateMember({(float)(int)position.x + 0.5f, (float)(int)position.y + 0.5f}));
     GameWorld::Get()->GetRootNode()->AppendNewSubnode(this);
 }
@@ -311,7 +343,13 @@ Node *PathUnit::CellPath::CreateMember(const Point2D &position)
     geometry->SetMaterialObject(0, material);
     material->Release();
 
-    geometry->SetNodePosition({position.x, position.y, GameWorld::Get()->GetLandscape()->GetHeight(position.x, position.y)});
+    MoveTo(position);
 
     return geometry;
+}
+
+
+void PathUnit::CellPath::MoveTo(const Point2D &position)
+{
+    SetNodePosition({position.x, position.y, GameWorld::Get()->GetLandscape()->GetHeight(position.x, position.y)});
 }

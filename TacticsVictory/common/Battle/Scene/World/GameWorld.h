@@ -31,10 +31,6 @@ namespace Pi
 
         Landscape *GetLandscape() const { return landscape; }
 
-        // Возвращает указатель на объект, кторый находится в экранных координатах coord
-        GameObject *GameObjectInPosition(const Point2D &coord);
-        GameObjectProperty *GameObjectPropertyInPosition(const Point2D &coord);
-
         // Преобразует мировые координаты точки в экранные
         Point3D TransformWorldCoordToDisplay(const Point3D &worldPosition);
 

@@ -16,10 +16,7 @@ PanelBottom *PanelBottom::self = nullptr;
 
 PanelBottom::PanelBottom()
     : PanelGUI(SET::GUI::BOTTOM::SIZE()),
-    Singleton<PanelBottom>(PanelBottom::self),
-    observerPanelMainHide((new PanelMain(), PanelMain::self), &PanelMain::HandleHideShow),
-    observerPanelMapHide((new PanelMap(), PanelMap::self), &PanelMap::HandleHideShow),
-    observerButtonMenu((new MenuGame(), MenuGame::self), &MenuGame::HandleOnButtonMenu)
+    Singleton<PanelBottom>(PanelBottom::self)
 {
     SetWidgetPosition(Point3D((float)SET::GUI::BOTTOM::X(), (float)SET::GUI::BOTTOM::Y(), 0.0f));
 

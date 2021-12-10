@@ -27,10 +27,10 @@ namespace Pi
     
     private:
     
-        ControllerReg<TankController> tankControllerRegistration;
-        ModelRegistration             tankModelRegistration;
+        ControllerReg<TankController> tankControllerRegistration {PiTypeController::Tank, "Tank"};
+        ModelRegistration             tankModelRegistration {PiTypeModel::Tank, "Tank", "models/Tank", ModelRegistrationFlag::Precache, PiTypeController::Tank};
     
-        Tank();
+        Tank() : GroundUnitObject(PiTypeGroundUnitObject::Tank) {};
         virtual ~Tank() {};
     };
     

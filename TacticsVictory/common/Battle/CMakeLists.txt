@@ -34,6 +34,7 @@ file(GLOB SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER Scene/Objects/Units/P
 file(GLOB SCENE_WORLD                                      Scene/World/*.*)
 file(GLOB SHADERS                                          Shaders/*.*)
 file(GLOB SOUNDS                                           Sounds/*.*)
+file(GLOB SYSTEM                                           System/*.*)
 file(GLOB UTILS                                            Utils/*.*)
 file(GLOB _RESOURCES                                       _resources/*.*)
 #file(GLOB EXPERIMENTS                                      Experiments/*.*)
@@ -55,18 +56,20 @@ source_group(Scene\\Objects\\Units\\PathFinder\\NavmeshController FILES ${SCENE_
 source_group(Scene\\World                                         FILES ${SCENE_WORLD})
 source_group(Shaders                                              FILES ${SHADERS})
 source_group(Sounds                                               FILES ${SOUNDS})
+source_group(System                                               FILES ${SYSTEM})
 source_group(Utils                                                FILES ${UTILS})
 source_group(_resources                                           FILES ${_RESOURCES})
 #source_group(Experiments                                          FILES ${EXPERIMENTS})
 
 set_source_files_properties(${SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER} PROPERTIES HEADER_FILE_ONLY TRUE)
 
+#set_source_files_properties(Utils/Array2D.cpp PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 
 add_executable(${PROJECT_NAME} ${SRC} ${GUI} ${GUI_MUTATORS} ${GUI_PANELS} ${GUI_WIDGETS} ${INPUT}
                                ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_UNITS}
                                ${SCENE_OBJECTS_UNITS_GROUND} ${SCENE_OBJECTS_UNITS_PATHFINDER}
                                ${SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER}
-                               ${SCENE_WORLD} ${SHADERS} ${SOUNDS} ${UTILS}
+                               ${SCENE_WORLD} ${SHADERS} ${SOUNDS} ${SYSTEM} ${UTILS}
                                ${_RESOURCES}
 #                               ${EXPERIMENTS}
                                )
@@ -91,9 +94,9 @@ message("CMAKE_MODULE_PATH:        ${CMAKE_MODULE_PATH}")
 message("CMAKE_COMMAND:            ${CMAKE_COMMAND}")
 message("CMAKE_ROOT:               ${CMAKE_ROOT}")
 message("CMAKE_SYSTEM:             ${CMAKE_SYSTEM}")
-#message("CMAKE_SYSTEM_VERSION:     ${CMAKE_SYSTEM_VERSION}")
-#message("CMAKE_SYSTEM_PROCESSOR:   ${CMAKE_SYSTEM_PROCESSOR}")
-#message("CMAKE_SKIP_RPATH:         ${CMAKE_SKIP_RPATH}")
+message("CMAKE_SYSTEM_VERSION:     ${CMAKE_SYSTEM_VERSION}")
+message("CMAKE_SYSTEM_PROCESSOR:   ${CMAKE_SYSTEM_PROCESSOR}")
+message("CMAKE_SKIP_RPATH:         ${CMAKE_SKIP_RPATH}")
 #message("CMAKE_VERBOSE_MAKEFILE:   ${CMAKE_VERBOSE_MAKEFILE}")
 #message("CMAKE_CXX_FLAGS:          ${CMAKE_CXX_FLAGS}")
 #message("CMAKE_BUILD_TYPE:         ${CMAKE_BUILD_TYPE}")

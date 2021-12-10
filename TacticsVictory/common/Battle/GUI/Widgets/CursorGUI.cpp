@@ -60,15 +60,11 @@ CursorGUI::~CursorGUI()
 
 void CursorGUI::Move()
 {
-    GameWorld *world = GameWorld::Get();
-
     Vector2D speed = CameraRTS::self->GetSpeed();
 
     if (speed == Vector2D::ZERO)
     {
-        GameObject *object = world->GameObjectInPosition(position);
-
-        state = (object && object->GetGameObjectProperty()->IsSelectable()) ? State::OverObject : State::Normal;
+        state = GameObject::GetFromScreen(position).GetGameObjectProperty().Selectable() ? State::OverObject : State::Normal;
     }
     else
     {

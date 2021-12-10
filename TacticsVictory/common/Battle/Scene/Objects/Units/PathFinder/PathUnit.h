@@ -1,5 +1,6 @@
 ﻿// 2021/12/4 11:09:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Utils/Array2D.h"
 
 
 namespace Pi
@@ -31,15 +32,13 @@ namespace Pi
 
         static PathUnit *self;
 
-        void Find(const UnitObject *unit, const Point2D &destionation);
+        // Установить цель для наблюдения
+        void SetTarget(const UnitObject *uint);
 
-        void Find(const Point2D &source, const Point2D &destination);
-
-        bool PathIsFound();
+        // Снять наблюдение
+        void RemoveTarget();
 
         Array<Point2D> ToArray();
-
-        void Destroy();
 
     private:
 
@@ -49,19 +48,25 @@ namespace Pi
         void NextWave(Array<Wave> &waves);
         bool Contain(const Wave &wave, const Point2D &coord);
         void AddPrevWave(Array<Point2D> &path);
-        void FindPath();
+        void FindPath(Job *job);
         void SetSize();
-        void Visualize();
+        void Visualize();                       // Отобразить найденный путь
+        void Clear();
+        void StopSearch();
+        void StartSearch();
 
-        bool pathIsFound = false;
+        const UnitObject *target = nullptr;     // Цель для наблюдения
+        bool needSearching = false;             // Если true - нужно производить поиск
+        bool pathIsFound = false;               // Если true - путь найден
         Point2D start{0.0f, 0.0f};
         Point2D end{0.0f, 0.0f};
-        Array<Array<int>> cells;
+        Array2D<int> cells;
         float heightStart = 0.0f;
-        uint numRows = 0U;                    // Количество ячеек по X
-        uint numCols = 0U;                    // Количество ячеек по Y
-        Array<Point2D> path;                  // Здесь хранится рассчитанный путь
-        Landscape *landscape = landscape;
+        uint numRows = 0U;                      // Количество ячеек по X
+        uint numCols = 0U;                      // Количество ячеек по Y
+        Array<Point2D> path;                    // Здесь хранится рассчитанный путь
+        Landscape *landscape = nullptr;
+        bool visualized = false;                // Если true, то путь уже визуализирован
 
 
         // Этот класс в отдельном потоке будет рассчитывать путь -----------------------------------------------------------
@@ -70,18 +75,22 @@ namespace Pi
         private:
             static void JobFunction(Job *, void *);
         public:
-            JobPathFinder(PathUnit *_path) : Job(JobFunction, (void *)_path)
-            {};
+            JobPathFinder(PathUnit *_path) : Job(JobFunction, (void *)_path) {};
         };
 
         JobPathFinder *jobFinder = nullptr;
 
 
         // Класс визуализирует путь перемещения юнита -----------------------------------------------------------------------
-        class CellPath : public Node
+        class CellPath : public Node, public ListElement<CellPath>
         {
         public:
             CellPath(const Point2D &position);
+            virtual ~CellPath() {};
+
+            void MoveTo(const Point2D &position);
+
+            static List<CellPath> chains;                   // Здесь хранятся визуализированные клеточки
 
         private:
 
