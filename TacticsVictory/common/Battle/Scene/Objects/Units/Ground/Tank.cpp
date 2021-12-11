@@ -12,7 +12,7 @@ GameObject *Tank::Create()
 
     node->SetController(new TankController());
 
-    Model *model = Model::Get(PiTypeModel::Tank);
+    Model *model = Model::Get(PiTypeGroundUnitObject::Tank);
 
     node->AppendNewSubnode(model);
 
@@ -21,7 +21,7 @@ GameObject *Tank::Create()
 
 
 TankController::TankController() :
-    GroundUnitController(PiTypeController::Tank)
+    GroundUnitController(PiTypeGroundUnitObject::Tank)
 {
 
 }

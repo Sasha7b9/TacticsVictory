@@ -7,10 +7,10 @@
 
 namespace Pi
 {
-    enum
+    namespace PiTypeLocator
     {
-        kLocatorSpectator = 'spec'
-    };
+        const S Spectator = 'spec';
+    }
 
     class Battle : public Application, public Singleton<Battle>
     {
@@ -28,8 +28,8 @@ namespace Pi
         std::string DataPath() const;
 
     private:
-        DisplayEventHandler               displayEventHandler;
-        LocatorRegistration               locatorReg;
+        DisplayEventHandler    displayEventHandler{&HandleDisplayEvent};
+        LocatorRegistration    locatorReg{PiTypeLocator::Spectator, "Spectator Camera"};
 
         static World *ConstructWorld(pchar name, void *cookie);
 

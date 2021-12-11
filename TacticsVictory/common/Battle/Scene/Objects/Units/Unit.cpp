@@ -6,7 +6,7 @@
 using namespace Pi;
 
 
-UnitController::UnitController(Type unitType, PiTypeController::S contrType) :
-    GameObjectController(GameObjectController::Type::Unit, contrType)
+UnitController::UnitController(PiTypeController::S contrType) :
+    GameObjectController(PiTypeGameObject::Unit, contrType)
 {
 }

@@ -1,6 +1,6 @@
 // 2021/12/3 13:54:05 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Scene/World/WorldGismo.h"
+#include "Scene/World/WorldGizmo.h"
 
 
 using namespace Pi;

@@ -2,6 +2,7 @@
 #pragma once
 #include "System/Events.h"
 #include "Scene/Objects/InfoWindow.h"
+#include "Scene/Objects/GameObjectTypes.h"
 
 
 namespace Pi
@@ -10,18 +11,6 @@ namespace Pi
     class InfoWindow;
     class UnitObject;
 
-    namespace PiTypeProperty
-    {
-        const S GameObject = "GameObject";
-    }
-
-    namespace PiTypeGameObject
-    {
-        typedef StringHash S;
-
-        const S Empty = "Empty";
-        const S Unit  = "Unit";
-    }
 
     //----------------------------------------------------------------------------------------------------------------------------
     class GameObject : public Node
@@ -39,7 +28,7 @@ namespace Pi
         // Преобразует к указателю на UnitObject, если возможно, и возвращает nullptr в ином случае
         UnitObject *CastToUnitObject() { return IsUnit() ? (UnitObject *)this : nullptr; }
 
-        bool IsUnit() const { return type == PiTypeGameObject::Unit; }
+        bool IsUnit() const { return typeObject == PiTypeGameObject::Unit; }
 
         static GameObject &Empty();
 
@@ -52,41 +41,33 @@ namespace Pi
     private:
         void SetNodePosition(const Point3D &position) { Node::SetNodePosition(position); }
 
-        PiTypeGameObject::S type;
+        PiTypeGameObject::S typeObject;
     };
 
 
     //----------------------------------------------------------------------------------------------------------------------------
     class GameObjectController : public Controller, public LinkTarget<GameObjectController>
     {
-    
     public:
-
-        enum class Type
-        {
-            Unit
-        };
     
         virtual ~GameObjectController() {};
     
-        virtual void Preprocess() override { Controller::Preprocess(); }
+        virtual void Preprocess() override;
 
         virtual void Move() override;
     
     protected:
     
-        GameObjectController(Type gameObjType, PiTypeController::S contrType);
+        GameObjectController(PiTypeGameObject::S typeObject, PiTypeController::S contrType);
         GameObjectController(const GameObjectController &gameObjectController);
     
     private:
     
-        Type gameObjectType;
-    
+        PiTypeGameObject::S typeObject;
         float scaleDefault = 1.0F;
         Vector3D rotateDefault {Vector3D::ZERO};
-    
-    
         Point3D coordGame;
+        GameObjectProperty *property = nullptr;
     };
 
 

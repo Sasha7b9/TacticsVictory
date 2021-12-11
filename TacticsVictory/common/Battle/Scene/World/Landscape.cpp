@@ -8,29 +8,25 @@
 namespace Pi
 {
 
-class CellTV;
-class FieldTV;
+class TCell;
+class TField;
 class Landscape;
 
 
-static CellTV    *mapCell = nullptr;
-static FieldTV   *mapField = nullptr;
+static TCell    *mapCell = nullptr;
+static TField   *mapField = nullptr;
 static Landscape *landscape = nullptr;
 
 
-#include "Landscape.h"
-#include "Utils/Log.h"
-
-
-class CellTV : public ListElement <CellTV>
+class TCell : public ListElement <TCell>
 {
 
 public:
 
-    static int NUM_ROWS;
-    static int NUM_COLS;
+    static int NUM_ROWS_Y;          // Количество клеток по Y
+    static int NUM_COLS_X;          // Количество клеток по X
 
-    CellTV() {};
+    TCell() {};
 
     void Construct(int x, int y, float _height)
     {
@@ -38,40 +34,40 @@ public:
         height = _height;
     }
 
-    ~CellTV() {};
+    ~TCell() {};
 
     Integer2D   coord;
     float       height = 1.0F;
-    FieldTV *   field = nullptr;
+    TField *   field = nullptr;
 
 };
 
-CellTV *GGetCell(int x, int y)
+TCell *GGetCell(int x, int y)
 {
-    if(x >= 0 && x < CellTV::NUM_COLS && y >= 0 && y < CellTV::NUM_ROWS)
+    if(x >= 0 && x < TCell::NUM_COLS_X && y >= 0 && y < TCell::NUM_ROWS_Y)
     {
-        return  &(mapCell[(size_t)x + (size_t)y * (size_t)CellTV::NUM_COLS]);
+        return  &(mapCell[(size_t)x + (size_t)y * (size_t)TCell::NUM_COLS_X]);
     }
 
-    static CellTV cell;
+    static TCell cell;
 
     return &cell;
 }
 
 
 // Этот класс представляет собой прямоугольник, заполняемый потоком
-class FieldTV
+class TField
 {
 
 public:
 
-    static int NUM_ROWS;
-    static int NUM_COLS;
+    static int NUM_ROWS_Y;      // Количество зон, на которые бъётся ландшафт, по оси Y
+    static int NUM_COLS_X;
 
     static const int SIZE_SIDE = 64;
     static const int SIZE_IN_CELLS = SIZE_SIDE * SIZE_SIDE;
 
-    FieldTV() {};
+    TField() = default;
 
     void Construct(int col, int row)
     {
@@ -79,19 +75,19 @@ public:
 
         int xFirst = col * SIZE_SIDE;
         int yFirst = row * SIZE_SIDE;
-        int xLast = MaxZero(CellTV::NUM_COLS);
+        int xLast = MaxZero(TCell::NUM_COLS_X);
         int yLast = (row + 1) * SIZE_SIDE;
 
-        if(yLast > CellTV::NUM_ROWS)
+        if(yLast > TCell::NUM_ROWS_Y)
         {
-            yLast = CellTV::NUM_ROWS;
+            yLast = TCell::NUM_ROWS_Y;
         }
  
        for(int y = yFirst; y < yLast; y++)
         {
             for(int x = xFirst; x < xLast; x++)
             {
-                CellTV *cell = GGetCell(x, y);
+                TCell *cell = GGetCell(x, y);
                 if(cell)
                 {
                     cell->field = this;
@@ -101,14 +97,14 @@ public:
         }
     };
 
-    CellTV *GetCell(int numCell)
+    TCell *GetCell(int numCell)
     {
         if(numCell >= cells.GetElementCount())
         {
             return nullptr;
         }
 
-        CellTV *cell = cells.First();
+        TCell *cell = cells.First();
 
         for(int i = 0; i < numCell; i++)
         {
@@ -118,7 +114,7 @@ public:
         return cell;
     }
     Integer2D       coord {0, 0};
-    List<CellTV>    cells;
+    List<TCell>    cells;
 
     enum class State
     {
@@ -131,23 +127,23 @@ public:
     Mutex mutexCreating;
 };
 
-FieldTV *GetField(int x, int y)
+TField *GetField(int x, int y)
 {
-    if(x >= 0 && x < FieldTV::NUM_COLS && y >= 0 && y < FieldTV::NUM_ROWS)
+    if(x >= 0 && x < TField::NUM_COLS_X && y >= 0 && y < TField::NUM_ROWS_Y)
     {
-        return &(mapField[(size_t)x + (size_t)y * (size_t)FieldTV::NUM_COLS]);
+        return &(mapField[(size_t)x + (size_t)y * (size_t)TField::NUM_COLS_X]);
     }
 
-    static FieldTV empty;
+    static TField empty;
 
     return &empty;
 }
 
-int FieldTV::NUM_ROWS = 0;
-int FieldTV::NUM_COLS = 0;
+int TField::NUM_ROWS_Y = 0;
+int TField::NUM_COLS_X = 0;
 
-int CellTV::NUM_ROWS = 0;
-int CellTV::NUM_COLS = 0;
+int TCell::NUM_ROWS_Y = 0;
+int TCell::NUM_COLS_X = 0;
 
 class CoordCell : public MapElement <CoordCell>
 {
@@ -246,11 +242,8 @@ using namespace Pi;
 
 
 
-Landscape::Landscape(pchar nameFile, float delta) :
-    Node()
+Landscape::Landscape(pchar nameFile, float delta) : Node()
 {
-//    FUNC_ENTER
-
     this->delta = delta;
     landscape = this;
 
@@ -260,9 +253,7 @@ Landscape::Landscape(pchar nameFile, float delta) :
     controller = new LandscapeController();
     SetController(controller);
     controller->Wake();
-    SetNodePosition({0, (float)GetSizeY(), 0});
-
-//    FUNC_LEAVE
+    SetNodePosition({0, (float)GetSizeY_Rows(), 0});
 }
 
 
@@ -286,20 +277,20 @@ Landscape::~Landscape()
 }
 
 
-void Landscape::CreateGeometryForField(FieldTV *field)
+void Landscape::CreateGeometryForField(TField *field)
 {
     if(!field->mutexCreating.TryAcquire())
     {
         return;
     }
 
-    if(field->state == FieldTV::State::Empty)
+    if(field->state == TField::State::Empty)
     {
         GeometrySurface *surface = new GeometrySurface();
 
-        for(int i = 0; i < FieldTV::SIZE_IN_CELLS; i++)
+        for(int i = 0; i < TField::SIZE_IN_CELLS; i++)
         {
-            CellTV *cell = field->GetCell(i);
+            TCell *cell = field->GetCell(i);
             if(cell)
             {
                 AddFace(surface, cell->coord.x, cell->coord.y);
@@ -336,16 +327,16 @@ void Landscape::CreateGeometryForField(FieldTV *field)
 //        surfaceList->Purge();
         delete surfaceList;
 
-        field->state = FieldTV::State::Created;
+        field->state = TField::State::Created;
     }
 
     field->mutexCreating.Release();
 }
 
 
-void Landscape::AddSurfaceToMesh(FieldTV *field)
+void Landscape::AddSurfaceToMesh(TField *field)
 {
-    if(field->state == FieldTV::State::Empty || field->state == FieldTV::State::Added)
+    if(field->state == TField::State::Empty || field->state == TField::State::Added)
     {
         return;
     }
@@ -353,7 +344,7 @@ void Landscape::AddSurfaceToMesh(FieldTV *field)
     AppendNewSubnode(field->geometry);
     field->geometry->GetObject()->SetCollisionExclusionMask(PiKindCollision::Landscape);
 
-    field->state = FieldTV::State::Added;
+    field->state = TField::State::Added;
 }
 
 
@@ -506,9 +497,9 @@ Point3D Landscape::CoordVertex(int numVert, int x, int y)
     
     float Z = 0.0f;
 
-    if(x >= 0 && x < CellTV::NUM_COLS && y >= 0 && y < CellTV::NUM_ROWS)
+    if(x >= 0 && x < TCell::NUM_COLS_X && y >= 0 && y < TCell::NUM_ROWS_Y)
     {
-        CellTV *cell = GGetCell(x, y);
+        TCell *cell = GGetCell(x, y);
         if (cell)
         {
             Z = cell->height;
@@ -519,7 +510,7 @@ Point3D Landscape::CoordVertex(int numVert, int x, int y)
     {
         case 0:
         {
-            if((y < 0 || x < 0) || (x > CellTV::NUM_COLS - 1) || (y > CellTV::NUM_ROWS - 1))
+            if((y < 0 || x < 0) || (x > TCell::NUM_COLS_X - 1) || (y > TCell::NUM_ROWS_Y - 1))
             {
                 return Point3D(0.0f, 0.0f, 0.0f);
             }
@@ -539,11 +530,11 @@ Point3D Landscape::CoordVertex(int numVert, int x, int y)
 
         case 1:
         {
-            if((y < 0 || x > CellTV::NUM_COLS - 1) || (x < 0) || (y > CellTV::NUM_ROWS - 1))
+            if((y < 0 || x > TCell::NUM_COLS_X - 1) || (x < 0) || (y > TCell::NUM_ROWS_Y - 1))
             {
                 return Point3D(1.0f, 0.0f, 0.0f);
             }
-            if((y == 0) || (x == CellTV::NUM_COLS - 1))
+            if((y == 0) || (x == TCell::NUM_COLS_X - 1))
             {
                 return Point3D(1.0f, 0.0f, Z);
             }
@@ -564,7 +555,7 @@ Point3D Landscape::CoordVertex(int numVert, int x, int y)
             {
                 return Point3D(1.0f, -1.0f, 0.0f);
             }
-            if(y == CellTV::NUM_ROWS - 1 || x == CellTV::NUM_COLS - 1)
+            if(y == TCell::NUM_ROWS_Y - 1 || x == TCell::NUM_COLS_X - 1)
             {
                 return Point3D(1.0f, -1.0f, Z);
             }
@@ -580,11 +571,11 @@ Point3D Landscape::CoordVertex(int numVert, int x, int y)
 
         case 3:
         {
-            if((y < 0) || (x > CellTV::NUM_COLS - 1))
+            if((y < 0) || (x > TCell::NUM_COLS_X - 1))
             {
                 return Point3D(0.0f, -1.0f, 0.0f);
             }
-            if(x == 0 || y == CellTV::NUM_ROWS - 1)
+            if(x == 0 || y == TCell::NUM_ROWS_Y - 1)
             {
                 return Point3D(0.0f, -1.0f, Z);
             }
@@ -606,7 +597,7 @@ Point3D Landscape::CoordVertex(int numVert, int x, int y)
 
 float Landscape::CellZ(int x, int y)
 {
-    CellTV *cell = GGetCell(x, y);
+    TCell *cell = GGetCell(x, y);
     return cell ? cell->height : 0.0f;
 }
 
@@ -791,7 +782,7 @@ int Landscape::AddFace(GeometrySurface *surface, int x, int y)
 
     // Draw right side plane
 
-    if(x == CellTV::NUM_COLS - 1)
+    if(x == TCell::NUM_COLS_X - 1)
     {
         numVertices += AddPlane(surface, NEW_POINT(1, 0, 0), NEW_POINT(2, 0, 0), NEW_POINT(3, 1, 0), NEW_POINT(0, 1, 0));
     }
@@ -820,7 +811,7 @@ int Landscape::AddFace(GeometrySurface *surface, int x, int y)
 
     // Draw bottom side plane
 
-    if(y == CellTV::NUM_ROWS - 1)
+    if(y == TCell::NUM_ROWS_Y - 1)
     {
         numVertices += AddPlane(surface, NEW_POINT(3, 0, 0), NEW_POINT(0, 0, 1), NEW_POINT(1, 0, 1), NEW_POINT(2, 0, 0));
     }
@@ -841,7 +832,7 @@ int Landscape::AddFace(GeometrySurface *surface, int x, int y)
         }
     }
 
-    if(x > 0 && y < CellTV::NUM_ROWS - 1)
+    if(x > 0 && y < TCell::NUM_ROWS_Y - 1)
     {
         DrawTriangle *triangle = triangleLeftBottom.Find(DrawTriangle::Key(DeltaZ(x, y, x - 1, y), DeltaZ(x, y, x - 1, y + 1), DeltaZ(x, y, x, y + 1)));
         if(triangle)
@@ -850,7 +841,7 @@ int Landscape::AddFace(GeometrySurface *surface, int x, int y)
         }
     }
 
-    if(x < CellTV::NUM_COLS - 1 && y < CellTV::NUM_ROWS - 1)
+    if(x < TCell::NUM_COLS_X - 1 && y < TCell::NUM_ROWS_Y - 1)
     {
         DrawTriangle *triangle = triangleRightBottom.Find(DrawTriangle::Key(DeltaZ(x, y, x + 1, y), DeltaZ(x, y, x + 1, y + 1), DeltaZ(x, y, x, y + 1)));
         if(triangle)
@@ -859,7 +850,7 @@ int Landscape::AddFace(GeometrySurface *surface, int x, int y)
         }
     }
 
-    if(x < CellTV::NUM_COLS - 1 && y > 0)
+    if(x < TCell::NUM_COLS_X - 1 && y > 0)
     {
         DrawTriangle *triangle = triangleRightTop.Find(DrawTriangle::Key(DeltaZ(x, y, x, y - 1), DeltaZ(x, y, x + 1, y - 1), DeltaZ(x, y, x + 1, y)));
         if(triangle)
@@ -876,36 +867,6 @@ void Landscape::FillMap(pchar nameFile)
 {
     FillTables();
 
-    /*
-    Cell::NUM_ROWS = 50;
-    Cell::NUM_COLS = 100;
-
-    Field::NUM_ROWS = Cell::NUM_ROWS / Field::SIZE_SIDE + ((Cell::NUM_ROWS % Field::SIZE_SIDE == 0) ? 0 : 1);
-    Field::NUM_COLS = Cell::NUM_COLS / Field::SIZE_SIDE + ((Cell::NUM_COLS % Field::SIZE_SIDE == 0) ? 0 : 1);
-
-    mapCell = new Cell[(size_t)(Cell::NUM_ROWS * Cell::NUM_COLS)];
-    mapField = new Field[(size_t)(Field::NUM_ROWS * Field::NUM_COLS)];
-
-    for(int y = 0; y < Cell::NUM_ROWS; y++)
-    {
-        for(int x = 0; x < Cell::NUM_COLS; x++)
-        {
-            //mapCell[x + y * Cell::NUM_COLS].Construct(x, y, 5.0f);
-            GetCell(x, y)->Construct(x, y, (float)Random(10));
-        }
-    }
-
-    for(int row = 0; row < Field::NUM_ROWS; row++)
-    {
-        for(int col = 0; col < Field::NUM_COLS; col++)
-        {
-            mapField[col + row * Field::NUM_COLS].Construct(col, row);
-        }
-    }
-
-    return;
-    */
-    
     File file;
     
     if(file.Open(nameFile) != EngineResult::Okay)
@@ -922,27 +883,29 @@ void Landscape::FillMap(pchar nameFile)
 
     file.Close();
 
-    CellTV::NUM_ROWS = GetNumLines(buffer, (int)size);
-    CellTV::NUM_COLS = GetNumElementInLine(buffer);
+    TCell::NUM_ROWS_Y = GetNumLines(buffer, (int)size);
+    TCell::NUM_COLS_X = GetNumElementInLine(buffer);
 
-    FieldTV::NUM_ROWS = CellTV::NUM_ROWS / FieldTV::SIZE_SIDE + ((CellTV::NUM_ROWS % FieldTV::SIZE_SIDE == 0) ? 0 : 1);
-    FieldTV::NUM_COLS = CellTV::NUM_COLS / FieldTV::SIZE_SIDE + ((CellTV::NUM_COLS % FieldTV::SIZE_SIDE == 0) ? 0 : 1);
+    heightMap.SetDimensions(TCell::NUM_COLS_X, TCell::NUM_ROWS_Y);
 
-    mapCell = new CellTV[(size_t)CellTV::NUM_ROWS * (size_t)CellTV::NUM_COLS];
-    mapField = new FieldTV[(size_t)FieldTV::NUM_ROWS * (size_t)FieldTV::NUM_COLS];
+    TField::NUM_ROWS_Y = TCell::NUM_ROWS_Y / TField::SIZE_SIDE + ((TCell::NUM_ROWS_Y % TField::SIZE_SIDE == 0) ? 0 : 1);
+    TField::NUM_COLS_X = TCell::NUM_COLS_X / TField::SIZE_SIDE + ((TCell::NUM_COLS_X % TField::SIZE_SIDE == 0) ? 0 : 1);
+
+    mapCell = new TCell[(size_t)TCell::NUM_ROWS_Y * (size_t)TCell::NUM_COLS_X];
+    mapField = new TField[(size_t)TField::NUM_ROWS_Y * (size_t)TField::NUM_COLS_X];
 
     char *pointer = buffer;
 
-    for(int i = 0; i < CellTV::NUM_ROWS; i++)
+    for(int i = 0; i < TCell::NUM_ROWS_Y; i++)
     {
-        pointer = ParseLineText(pointer, mapCell + i * CellTV::NUM_COLS);
+        pointer = ParseLineText(pointer, mapCell + i * TCell::NUM_COLS_X);
     }
 
-    for(int row = 0; row < FieldTV::NUM_ROWS; row++)
+    for(int row = 0; row < TField::NUM_ROWS_Y; row++)
     {
-        for(int col = 0; col < FieldTV::NUM_COLS; col++)
+        for(int col = 0; col < TField::NUM_COLS_X; col++)
         {
-            FieldTV *field = GetField(col, row);
+            TField *field = GetField(col, row);
             if (field)
             {
                 field->Construct(col, row);
@@ -1009,7 +972,7 @@ int Landscape::GetNumElementInLine(char *text)
 }
 
 
-char *Landscape::ParseLineText(char *text, CellTV *values)
+char *Landscape::ParseLineText(char * const text, TCell *values)
 {
     char *pointer = text;
     size_t numValue = 0;
@@ -1038,10 +1001,11 @@ char *Landscape::ParseLineText(char *text, CellTV *values)
                 if(symbol == ' ' || symbol == 0x0d)
                 {
                     int numCell = (int)(values + numValue - mapCell);
-                    int y = numCell / CellTV::NUM_COLS;
-                    int x = (numCell - y * CellTV::NUM_COLS) % CellTV::NUM_COLS;
+                    int y = numCell / TCell::NUM_COLS_X;
+                    int x = (numCell - y * TCell::NUM_COLS_X) % TCell::NUM_COLS_X;
 
                     values[numValue].Construct(x, y, (float)SymbolsToInt(firstSymbol, lastSymbol));
+                    heightMap.At(x, TCell::NUM_ROWS_Y - y - 1) = values[numValue].height;                   // Отражаем y, потому что после загрузки ландшафт смещается по Y
                     state = State::InSpace;
                     numValue++;
                 }
@@ -1084,19 +1048,19 @@ int Landscape::SymbolsToInt(pchar firstSymbol, pchar lastSymbol)
 }
 
 
-int Landscape::GetSizeX()
+int Landscape::GetSizeX_Columns()
 {
-    return CellTV::NUM_COLS;
+    return TCell::NUM_COLS_X;
 }
 
 
-int Landscape::GetSizeY()
+int Landscape::GetSizeY_Rows()
 {
-    return CellTV::NUM_ROWS;
+    return TCell::NUM_ROWS_Y;
 }
 
 
-float Landscape::GetHeight(float x, float y, bool forPanelMap)
+float Landscape::GetHeightAccurately(float x, float y, bool forPanelMap)
 {
     if (forPanelMap)
     {
@@ -1116,7 +1080,7 @@ float Landscape::GetHeight(float x, float y, bool forPanelMap)
 
 float Landscape::GetHeightCenter(float x, float y)
 {
-    return GetHeight((float)(int)x, (float)(int)y);
+    return heightMap.At((int)x, (int)y);
 }
 
 
@@ -1189,25 +1153,25 @@ void LandscapeController::Move()
     {
         int added = 0;
 
-        for(int y = 0; y < FieldTV::NUM_ROWS; y++)
+        for(int y = 0; y < TField::NUM_ROWS_Y; y++)
         {
-            for(int x = 0; x < FieldTV::NUM_COLS; x++)
+            for(int x = 0; x < TField::NUM_COLS_X; x++)
             {
-                FieldTV *field = GetField(x, y);
+                TField *field = GetField(x, y);
 
-                if(field && field->state == FieldTV::State::Created)
+                if(field && field->state == TField::State::Created)
                 {
                     landscape->AddSurfaceToMesh(field);
                 }
 
-                if (field && field->state == FieldTV::State::Added)
+                if (field && field->state == TField::State::Added)
                 {
                     added++;
                 }
             }
         }
 
-        if (added == FieldTV::NUM_ROWS * FieldTV::NUM_COLS)
+        if (added == TField::NUM_ROWS_Y * TField::NUM_COLS_X)
         {
             landscape->created = true;
         }
@@ -1217,9 +1181,9 @@ void LandscapeController::Move()
 
 void LandscapeController::TheAdditionsOfSurfaces(const Thread * /*thread*/, void * /*cookie*/)
 {
-    for(int y = 0; y < FieldTV::NUM_ROWS; y++)
+    for(int y = 0; y < TField::NUM_ROWS_Y; y++)
     {
-        for(int x = 0; x < FieldTV::NUM_COLS; x++)
+        for(int x = 0; x < TField::NUM_COLS_X; x++)
         {
             landscape->CreateGeometryForField(GetField(x, y));
         }

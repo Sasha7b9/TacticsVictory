@@ -5,22 +5,18 @@
 
 namespace Pi
 {
-    namespace PiTypeGroundUnitObject
-    {
-        typedef StringHash S;
-
-        const S Tank = "Tank";
-    }
-
+    // ----------------------------------------------------------------------------------------------------------------
     class GroundUnitObject : public UnitObject
     {
     public:
     protected:
-        GroundUnitObject(PiTypeGroundUnitObject::S _type) : UnitObject(PiTypeUnitObject::Ground), type(_type) {}
+        GroundUnitObject(PiTypeGroundUnitObject::S _type) : UnitObject(PiTypeUnitObject::Ground), typeGroundUnit(_type) {}
     private:
-        PiTypeGroundUnitObject::S type;
+        PiTypeGroundUnitObject::S typeGroundUnit;
     };
 
+
+    // ----------------------------------------------------------------------------------------------------------------
     class GroundUnitController : public UnitController
     {
     public:

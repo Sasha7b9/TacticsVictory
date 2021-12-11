@@ -8,7 +8,7 @@
 #include "Scene/World/GameWorld.h"
 #include "Scene/World/Landscape.h"
 #include "Scene/World/Sun.h"
-#include "Scene/World/WorldGismo.h"
+#include "Scene/World/WorldGizmo.h"
 #include "Scene/Objects/Units/Ground/Tank.h"
 
 
@@ -44,12 +44,12 @@ const LocatorMarker *GameWorld::FindSpectatorLocator(const Zone *zone)
     {
         if(marker->Enabled())
         {
-            MarkerType::S type = marker->GetMarkerType();
+            PiTypeMarker::S type = marker->GetMarkerType();
 
-            if(type == MarkerType::Locator)
+            if(type == PiTypeMarker::Locator)
             {
                 const LocatorMarker *locator = static_cast<const LocatorMarker *>(marker);
-                if(locator->GetLocatorType() == kLocatorSpectator)
+                if(locator->GetLocatorType() == PiTypeLocator::Spectator)
                 {
                     return (locator);
                 }
@@ -124,7 +124,7 @@ void GameWorld::Move()
         for (int i = 0; i < 100; i++)
         {
             GameObject *tank = Tank::Create();
-            tank->SetMapPosition((float)Math::Random(0, landscape->GetSizeX() - 1), (float)Math::Random(0, landscape->GetSizeY() - 1));
+            tank->SetMapPosition((float)Math::Random(0, landscape->GetSizeX_Columns() - 1), (float)Math::Random(0, landscape->GetSizeY_Rows() - 1));
             GameWorld::Get()->AppendGameObject(tank);
         }
     }

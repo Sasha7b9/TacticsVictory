@@ -5,36 +5,22 @@
 
 namespace Pi
 {
-    namespace PiTypeUnitObject
-    {
-        typedef StringHash S;
-
-        const S Ground = "Ground";
-    }
-
-
+    // ----------------------------------------------------------------------------------------------------------------
     class UnitObject : public GameObject
     {
     protected:
-        UnitObject(PiTypeUnitObject::S _type) : GameObject(PiTypeGameObject::Unit), type(_type) {}
+        UnitObject(PiTypeUnitObject::S _type) : GameObject(PiTypeGameObject::Unit), typeUnit(_type) {}
     private:
-        PiTypeUnitObject::S type;
+        PiTypeUnitObject::S typeUnit;
     };
 
 
+    // ----------------------------------------------------------------------------------------------------------------
     class UnitController : public GameObjectController
     {
     public:
-        enum class Type
-        {
-            None_,
-            Ground
-        };
-    protected:
-        UnitController(Type unitType, PiTypeController::S contrType);
-    public:
         virtual ~UnitController() {};
-    private:
-        Type unitType = Type::None_;
+    protected:
+        UnitController(PiTypeController::S contrType);
     };
 }

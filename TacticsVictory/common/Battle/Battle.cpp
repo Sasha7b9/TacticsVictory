@@ -18,6 +18,8 @@
 #include "Scene/Objects/Units/PathFinder/PathUnit.h"
 
 
+using namespace std;
+using namespace std::filesystem;
 using namespace Pi;
 
 static String<> commandLine;
@@ -25,20 +27,11 @@ static String<> commandLine;
 PI_ENTER_POINT(Battle)
 
 
-using namespace std;
-using namespace std::filesystem;
-
-
-namespace Pi
-{
-    Battle *Battle::self = nullptr;
-}
+Battle *Battle::self = nullptr;
 
 
 Battle::Battle()
-    : Singleton<Battle>(self),
-    displayEventHandler(&HandleDisplayEvent),
-    locatorReg(kLocatorSpectator, "Spectator Camera")
+    : Singleton<Battle>(self)
 {
     uint64 timeEnter = TheTimeMgr->GetMicrosecondCount();
 

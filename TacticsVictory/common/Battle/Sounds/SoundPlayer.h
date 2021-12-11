@@ -14,7 +14,7 @@ namespace Pi
     {
     public:
         SoundPlayer();
-        ~SoundPlayer();
+        virtual ~SoundPlayer();
 
         static SoundPlayer *self;
 

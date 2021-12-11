@@ -9,7 +9,7 @@
 using namespace Pi;
 
 
-#define TERRAIN_HEIGHT_EQUAL(x,z) (fabs(landscape->GetHeight((float)x, (float)z) - heightStart) < K::epsilon)
+#define TERRAIN_HEIGHT_EQUAL(_col_, _row_) (fabs(heightMap.At(_col_, _row_) - heightStart) < K::epsilon)
 
 
 PathUnit *PathUnit::self = nullptr;
@@ -31,9 +31,9 @@ void PathUnitController::Move()
     {
         pathUnit->needSearching = false;
         pathUnit->start = pathUnit->target->GetWorldPosition().GetPoint2D();
-        pathUnit->start.x = (float)(int)pathUnit->start.x;
-        pathUnit->start.y = (float)(int)pathUnit->start.y;
-        pathUnit->end = Point2D{99.0f, 99.0f};
+        pathUnit->end = Point2DI{99, 99};
+
+        pathUnit->SetSize();
 
         pathUnit->StartSearch();
     }
@@ -117,18 +117,12 @@ void PathUnit::JobPathFinder::JobFunction(Job *job, void *cookie)
 {
     PathUnit *pathUnit = (PathUnit *)cookie;
 
-    while (!GameWorld::Get()->GetLandscape()->IsCreated())
-    {
-    }
-
-    pathUnit->landscape = GameWorld::Get()->GetLandscape();
-    pathUnit->SetSize();
     pathUnit->path.Clear();
     pathUnit->FindPath(job);
 }
 
 
-Array<Point2D> PathUnit::ToArray()
+Array<Point2DI> PathUnit::ToArray()
 {
     return path;
 }
@@ -136,8 +130,12 @@ Array<Point2D> PathUnit::ToArray()
 
 void PathUnit::Visualize()
 {
-    for (Point2D &point : path)
+    TheConsoleWindow->AddText(Text::Format("In path %d elements:", path.GetElementCount()));
+
+    for (Point2DI &point : path)
     {
+        TheConsoleWindow->AddText(Text::Format("%d %d", point.x, point.y));
+
         if (CellPath::chains.GetElementCount())
         {
             CellPath *cell = CellPath::chains.First();
@@ -148,7 +146,8 @@ void PathUnit::Visualize()
         }
         else
         {
-            AppendSubnode(new CellPath(point));
+            CellPath *cell = new CellPath(point);
+            AppendSubnode(cell);
         }
     }
 
@@ -158,19 +157,40 @@ void PathUnit::Visualize()
 
 void PathUnit::SetSize()
 {
-    numRows = (uint)landscape->GetSizeX();
-    numCols = (uint)landscape->GetSizeY();
+    while (!GameWorld::Get()->GetLandscape()->IsCreated())
+    {
+    }
 
-    cells.SetDimensions((int)numRows, (int)numCols);
+    Landscape *landscape = GameWorld::Get()->GetLandscape();
+
+    int sizeX_cols = landscape->GetSizeX_Columns();
+    int sizeY_rows = landscape->GetSizeY_Rows();
+
+    heightMap.SetDimensions(sizeX_cols, sizeY_rows);
+
+    for (int row = 0; row < sizeY_rows; row++)
+    {
+        for (int col = 0; col < sizeX_cols; col++)
+        {
+            heightMap.At(col, row) = landscape->GetHeightCenter((float)col, (float)row);
+        }
+    }
+
+    num_wave.SetDimensions(sizeX_cols, sizeY_rows);
+
+    num_wave.Fill(-1);
 }
 
 
 void PathUnit::FindPath(Job *job)
 {
-    if (fabs(landscape->GetHeight(start.x, start.y) - landscape->GetHeight(end.x, end.y)) > K::epsilon)
+    start = {0, 0};
+    end = {1, 2};
+
+    if (fabs(heightMap.At(start.x, start.y) - heightMap.At(end.x, end.y)) > K::epsilon)
     {
         pathIsFound = true;
-        return;
+        return; 
     }
 
     if (start == end)
@@ -180,24 +200,26 @@ void PathUnit::FindPath(Job *job)
         return;
     }
 
-    cells.Fill(-1);
-
-    heightStart = landscape->GetHeight(start.x, start.y);
-
     Array<Wave> waves;
 
     Wave wave;
-    SetCell(wave, (uint)start.x, (uint)start.y, 0);
+    wave.SetCell(start.x, start.y, 0, num_wave);
 
     waves.AddElement(wave);
 
     do
     {
-        NextWave(waves);
+        int numElements = waves[waves.GetElementCount() - 1].GetElementCount();
 
-    } while(waves[waves.GetElementCount() - 1].GetElementCount() && !Contain(waves[waves.GetElementCount() - 1], end));
+        CalculateNextWave(waves);
 
-    if(Contain(waves[waves.GetElementCount() - 1], end))
+        numElements = waves[waves.GetElementCount() - 1].GetElementCount();
+        numElements = numElements;
+
+    } while(waves[waves.GetElementCount() - 1].GetElementCount() &&     // В волне есть хотя бы одна клетка
+            !waves[waves.GetElementCount() - 1].Contain(end));         // И волна не содержит целевую клетку
+
+    if(waves[waves.GetElementCount() - 1].Contain(end))
     {
         path.AddElement(end);
         while(path[0] != start)
@@ -210,15 +232,19 @@ void PathUnit::FindPath(Job *job)
         path.AddElement(start);
     }
 
+    TheConsoleWindow->AddText(Text::Format("Start : %d %d", start.x, start.y));
+    TheConsoleWindow->AddText(Text::Format("End : %d %d", end.x, end.y));
+    TheConsoleWindow->AddText(Text::Format("Total %d waves", waves.GetElementCount()));
+
     pathIsFound = true;
 }
 
 
-bool PathUnit::Contain(const Wave &wave, const Point2D &coord)
+bool PathUnit::Wave::Contain(const Point2DI &coord)
 {
-    for (auto &crd : wave)
+    for (int i = 0; i < GetElementCount(); i++)
     {
-        if (crd == coord)
+        if (points[i] == coord)
         {
             return true;
         }
@@ -227,56 +253,78 @@ bool PathUnit::Contain(const Wave &wave, const Point2D &coord)
     return false;
 }
 
+//                                        в
+//                                     в  п   в
+//                                 в   п  р   л
+//                                 л   р  а   е
+//                                 е   а  в   в
+//                                 в   в  о   о
+//                          в      о   о  -   -
+//                   в      п  в   -   -  в   в
+//                   л   в  р  в   в   в  в   в
+//                   е   н  а  е   н   н  е   е
+//                   в   и  в  р   и   и  р   р
+//                   о   з  о  х   з   з  х   х
+static int d_x[] = {-1,  0, 1, 0, -1,  1, 1, -1};
+static int d_y[] = { 0, -1, 0, 1, -1, -1, 1,  1};
+//                   0   1  2  3   4   5  6   7
 
-static int dRow[] = {0, -1, 0, 1, -1, -1, 1, 1};
-static int dCol[] = {-1, 0, 1, 0, -1, 1, 1, -1};
 
-
-void PathUnit::NextWave(Array<Wave> &waves)
+void PathUnit::CalculateNextWave(Array<Wave> &waves)
 {
-    int numWave = static_cast<int>(waves.GetElementCount());
-    Wave &prevWave = waves[static_cast<uint>(numWave - 1)];
+    const int num_current_wave = waves.GetElementCount();           // Рассчитываем эту волну
+    const Wave &prev_wave = waves[num_current_wave - 1];            // Предыщущая рассчитанная волна
     Wave wave;
 
-    for (auto coord : prevWave)
+    const int sizeX_cols = heightMap.GetNumberColumns();
+    const int sizeY_rows = heightMap.GetNumberRows();
+
+    const float heightStart = heightMap.At(start.x, start.y);
+
+    for (int j = 0; j < prev_wave.GetElementCount(); j++)
     {
+        Point2DI &coord = prev_wave[j];
+
         for (int i = 0; i < 8; i++)
         {
-            uint row = (uint)coord.x;
-            uint col = (uint)coord.y;
+            int col = coord.x;
+            int row = coord.y;
 
-            int dR = dRow[i];
-            int dC = dCol[i];
+            int newRow = row + d_y[i];         // Вычисляет координаты очередной
+            int newCol = col + d_x[i];         // соседней клетки
 
-            int iRow = static_cast<int>(row) + dR;
-            int iCol = static_cast<int>(col) + dC;
+            
 
-            uint newRow = static_cast<uint>(iRow);
-            uint newCol = static_cast<uint>(iCol);
-
-            if (newRow < numRows &&
-                newCol < numCols &&
-                cells[newRow][newCol] == -1 &&
-                fabs(landscape->GetHeightCenter((float)newRow, (float)newCol) - heightStart) < K::epsilon)
+            if (newRow == 1 && newCol == 1)
             {
-                if (i == 4 && (!TERRAIN_HEIGHT_EQUAL(row, col - 1) || !TERRAIN_HEIGHT_EQUAL(row - 1, col)))
+                newRow = newRow;
+                float height = heightMap.At(newCol, newRow);
+                height = height;
+            }
+
+            if (newRow < sizeY_rows && newRow >= 0 &&
+                newCol < sizeX_cols && newCol >= 0 &&
+                num_wave.At(newCol, newRow) == -1 &&                      // Если очередная соседняя клетка ещё не принадлежит никакой волне
+                fabs(heightMap.At(newCol, newRow) - heightStart) < K::epsilon)
+            {
+                if (i == 4 && (!TERRAIN_HEIGHT_EQUAL(col, row - 1) || !TERRAIN_HEIGHT_EQUAL(col - 1, row)))
                 {
                     continue;
                 }
-                else if (i == 5 && (!TERRAIN_HEIGHT_EQUAL(row - 1, col) || !TERRAIN_HEIGHT_EQUAL(row, col)))
+                else if (i == 5 && (!TERRAIN_HEIGHT_EQUAL(col - 1, row) || !TERRAIN_HEIGHT_EQUAL(col, row)))
                 {
                     continue;
                 }
-                else if (i == 6 && (!TERRAIN_HEIGHT_EQUAL(row, col + 1) || !TERRAIN_HEIGHT_EQUAL(row + 1, col)))
+                else if (i == 6 && (!TERRAIN_HEIGHT_EQUAL(col, row + 1) || !TERRAIN_HEIGHT_EQUAL(col + 1, row)))
                 {
                     continue;
                 }
-                else if (i == 7 && (!TERRAIN_HEIGHT_EQUAL(row, col - 1) || !TERRAIN_HEIGHT_EQUAL(row + 1, col)))
+                else if (i == 7 && (!TERRAIN_HEIGHT_EQUAL(col, row - 1) || !TERRAIN_HEIGHT_EQUAL(col + 1, row)))
                 {
                     continue;
                 }
 
-                SetCell(wave, newRow, newCol, numWave);
+                wave.SetCell(newCol, newRow, num_current_wave, num_wave);
             }
         }
     }
@@ -285,38 +333,36 @@ void PathUnit::NextWave(Array<Wave> &waves)
 }
 
 
-void PathUnit::SetCell(Wave &wave, uint row, uint col, int numWave)
+void PathUnit::Wave::SetCell(int col, int row, int numWave, Array2D<int> &num_wave)
 {
-    wave.AddElement(Point2D((float)row, (float)col));
-    cells[row][col] = numWave;
+    points.AddElement(Point2DI{col, row});
+    num_wave.At(col, row) = numWave;
 }
 
 
-void PathUnit::AddPrevWave(Array<Point2D> &path_)
+void PathUnit::AddPrevWave(Array<Point2DI> &path_)
 {
-    Point2D coord = path_[0];
-    uint rowX = (uint)coord.x;
-    uint colZ = (uint)coord.y;
-    int numWave = cells[rowX][colZ];
+    int colX = path_[0].x;
+    int rowY = path_[0].y;
+    int numWave = num_wave.At(colX, rowY);
 
     for (int i = 0; i < 8; i++)
     {
-        int iRow = static_cast<int>(rowX) + dRow[i];
-        int iCol = static_cast<int>(colZ) + dCol[i];
+        int newRow = rowY + d_y[i];
+        int newCol = colX + d_x[i];
 
-        uint newRow = static_cast<uint>(iRow);
-        uint newCol = static_cast<uint>(iCol);
-
-        if (newRow < (uint)landscape->GetSizeX() && newCol < (uint)landscape->GetSizeY() && cells[newRow][newCol] == numWave - 1)
+        if (newRow < heightMap.GetNumberRows() && newRow >= 0 &&
+            newCol < heightMap.GetNumberColumns() && newCol >= 0 &&
+            num_wave.At(newCol, newRow) == numWave - 1)
         {
-            path_.InsertElement(0, Point2D((float)newRow, (float)newCol));
+            path_.InsertElement(0, Point2D((float)newCol, (float)newRow));
             return;
         }
     }
 }
 
 
-PathUnit::CellPath::CellPath(const Point2D &position) : Node(), ListElement<CellPath>()
+PathUnit::CellPath::CellPath(const Point2DI &position) : Node(), ListElement<CellPath>()
 {
     SetNodeName("CellPath");
     AppendSubnode(CreateMember({(float)(int)position.x + 0.5f, (float)(int)position.y + 0.5f}));
@@ -349,7 +395,8 @@ Node *PathUnit::CellPath::CreateMember(const Point2D &position)
 }
 
 
-void PathUnit::CellPath::MoveTo(const Point2D &position)
+void PathUnit::CellPath::MoveTo(const Point2DI &position)
 {
-    SetNodePosition({position.x, position.y, GameWorld::Get()->GetLandscape()->GetHeight(position.x, position.y)});
+    SetNodePosition({(float)position.x + 0.5F, (float)position.y + 0.5F,
+                    GameWorld::Get()->GetLandscape()->GetHeightAccurately((float)position.x + 0.5f, (float)position.y + 0.5f)});
 }

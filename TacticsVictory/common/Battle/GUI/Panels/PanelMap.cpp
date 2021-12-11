@@ -80,8 +80,8 @@ void PanelMapMutator::Move()
     GameWorld *world = GameWorld::Get();
 
     Landscape *landscape = world->GetLandscape();
-    int sizeMapX = landscape->GetSizeX();
-    int sizeMapY = landscape->GetSizeY();
+    int sizeMapX = landscape->GetSizeX_Columns();
+    int sizeMapY = landscape->GetSizeY_Rows();
 
     float sizePanelX = panel->GetWidgetSize().x;
     float sizePanelY = panel->GetWidgetSize().y;
@@ -109,7 +109,7 @@ void PanelMapMutator::Move()
     {
         for (int col = 0; col < sizeMapX; col++)
         {
-            float height = landscape->GetHeight((float)col, (float)row, true);
+            float height = landscape->GetHeightAccurately((float)col, (float)row, true);
             float r = height / 10.0F;
             if (r < 0.0F)
             {

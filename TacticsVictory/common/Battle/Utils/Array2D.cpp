@@ -5,12 +5,13 @@
 
 using namespace Pi;
 
+template void Array2D<float>::SetDimensions(int, int);
 template void Array2D<int>::SetDimensions(int, int);
 template void Array2D<int>::Fill(int);
 
 
 template <typename T>
-void Array2D<T>::SetDimensions(int numRows, int numCols)
+void Array2D<T>::SetDimensions(int numCols, int numRows)
 {
     array.SetElementCount(numRows);
 

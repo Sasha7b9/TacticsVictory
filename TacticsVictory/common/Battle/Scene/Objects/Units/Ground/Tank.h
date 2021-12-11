@@ -5,49 +5,42 @@
 
 namespace Pi
 {
-    namespace PiTypeController
-    {
-        const S Tank{"Tank"};
-    }
-
-    namespace PiTypeModel
-    {
-        const S Tank{"Tank"};
-    }
-
-
     class TankController;
-    
-    
+
+
+    // ----------------------------------------------------------------------------------------------------------------
     class Tank : public GroundUnitObject
     {
     public:
 
         static GameObject *Create();
-    
+
     private:
-    
-        ControllerReg<TankController> tankControllerRegistration {PiTypeController::Tank, "Tank"};
-        ModelRegistration             tankModelRegistration {PiTypeModel::Tank, "Tank", "models/Tank", ModelRegistrationFlag::Precache, PiTypeController::Tank};
-    
+
+        ControllerReg<TankController> tankControllerRegistration {PiTypeGroundUnitObject::Tank, "Tank"};
+        ModelRegistration             tankModelRegistration {PiTypeGroundUnitObject::Tank, "Tank", "models/Tank",
+                                        ModelRegistrationFlag::Precache, PiTypeGroundUnitObject::Tank};
+
         Tank() : GroundUnitObject(PiTypeGroundUnitObject::Tank) {};
         virtual ~Tank() {};
     };
-    
+
+
+    // ----------------------------------------------------------------------------------------------------------------
     class TankController final : public GroundUnitController
     {
-    
+
     public:
-    
+
         TankController();
         ~TankController();
-    
+
         void Preprocess() override;
-    
+
     private:
-    
+
         TankController(const TankController &tankController);
-    
+
         Controller *Replicate() const override;
     };
 

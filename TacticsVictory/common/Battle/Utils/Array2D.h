@@ -8,9 +8,11 @@ namespace Pi
     class Array2D
     {
     public:
-        void SetDimensions(int numRows, int numCols);
+        void SetDimensions(int numCols, int numRows);
+        int GetNumberRows() const { return array.GetElementCount(); }
+        int GetNumberColumns() const { return GetNumberRows() > 0 ? array[0].GetElementCount() : 0; }
         void Fill(T value);
-        T *operator[](uint i) { return array[i]; }
+        T &At(int col, int row) { return array[row][col]; }
     private:
         Array<Array<T>> array;
     };

@@ -11,7 +11,7 @@
 using namespace Pi;
 
 
-GameObject::GameObject(PiTypeGameObject::S _type) : Node(), type(_type)
+GameObject::GameObject(PiTypeGameObject::S _type) : Node(), typeObject(_type)
 {
     AddProperty(new GameObjectProperty(*this));
 }
@@ -24,13 +24,13 @@ void GameObject::SetMapPosition(float mapX, float mapY)
     float x = mapX + 0.5f;
     float y = mapY + 0.5f;
 
-    SetNodePosition({x, y, GameWorld::Get()->GetLandscape()->GetHeight(x, y)});
+    SetNodePosition({x, y, GameWorld::Get()->GetLandscape()->GetHeightAccurately(x, y)});
 }
 
 
-GameObjectController::GameObjectController(Type _gameObjectType, PiTypeController::S contrType) :
+GameObjectController::GameObjectController(PiTypeGameObject::S _typeObject, PiTypeController::S contrType) :
     Controller(contrType),
-    gameObjectType(_gameObjectType)
+    typeObject(_typeObject)
 {
 
 }
@@ -38,7 +38,7 @@ GameObjectController::GameObjectController(Type _gameObjectType, PiTypeControlle
 GameObjectController::GameObjectController(const GameObjectController &gameObjectController) :
     Controller(gameObjectController)
 {
-    gameObjectType = gameObjectController.gameObjectType;
+    typeObject = gameObjectController.typeObject;
 }
 
 
@@ -58,12 +58,16 @@ GameObject &GameObject::Empty()
 }
 
 
+void GameObjectController::Preprocess()
+{
+    Controller::Preprocess();
+
+    property = (GameObjectProperty *)GetTargetNode()->GetProperty(PiTypeProperty::GameObject);
+}
+
+
 void GameObjectController::Move()
 {
-    Controller::Move();
-
-    GameObjectProperty *property = (GameObjectProperty *)GetTargetNode()->GetProperty(PiTypeProperty::GameObject);
-
     if(property->Selected())
     {
         Point3D coord = GameWorld::Get()->TransformWorldCoordToDisplay(GetTargetNode()->GetWorldPosition());
@@ -107,7 +111,14 @@ void GameObjectProperty::MouseEvent(uint state)
             Selected() ? RemoveSelection() : SetSelection();
         }
 
-        PathUnit::self->SetTarget(Selected() ? gameObject.CastToUnitObject() : nullptr);
+        if(Selected())
+        {
+            PathUnit::self->SetTarget(Selected() ? gameObject.CastToUnitObject() : nullptr);
+        }
+//        else
+//        {
+//            PathUnit::self->Clear();
+//        }
     }
 }
 

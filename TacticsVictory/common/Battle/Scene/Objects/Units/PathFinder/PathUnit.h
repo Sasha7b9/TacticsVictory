@@ -1,12 +1,12 @@
 ﻿// 2021/12/4 11:09:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Utils/Array2D.h"
+#include "Utils/Point2DI.h"
 
 
 namespace Pi
 {
     class UnitObject;
-    class Landscape;
 
     namespace PiTypeController
     {
@@ -38,34 +38,46 @@ namespace Pi
         // Снять наблюдение
         void RemoveTarget();
 
-        Array<Point2D> ToArray();
+        Array<Point2DI> ToArray();
+
+        void Clear();
 
     private:
 
-        typedef Array<Point2D> Wave;
+        // В волне содержится набор клеток для каждой волны
+        class Wave
+        {
+        public:
+            int GetElementCount() const { return points.GetElementCount(); }
+            void AddElement(const Point2DI &point) { points.AddElement(point); }
+            // Добавить в волну клетку с координатами (col, row) и отметить её индекс в массиве num_wave
+            void SetCell(int col, int row, int numWave, Array2D<int> &num_wave);
+            bool Contain(const Point2DI &coord);
 
-        void SetCell(Wave &wave, uint row, uint col, int numWave);
-        void NextWave(Array<Wave> &waves);
-        bool Contain(const Wave &wave, const Point2D &coord);
-        void AddPrevWave(Array<Point2D> &path);
+            Point2DI &operator[](int i) { return points[i]; }
+            Point2DI &operator[](int i) const { return points[i]; }
+
+        private:
+            Array<Point2DI> points;
+        };
+
+        // Рассчитать и добавить следующую волну в массив волн
+        void CalculateNextWave(Array<Wave> &waves);
+        void AddPrevWave(Array<Point2DI> &path);
         void FindPath(Job *job);
         void SetSize();
         void Visualize();                       // Отобразить найденный путь
-        void Clear();
         void StopSearch();
         void StartSearch();
 
         const UnitObject *target = nullptr;     // Цель для наблюдения
         bool needSearching = false;             // Если true - нужно производить поиск
         bool pathIsFound = false;               // Если true - путь найден
-        Point2D start{0.0f, 0.0f};
-        Point2D end{0.0f, 0.0f};
-        Array2D<int> cells;
-        float heightStart = 0.0f;
-        uint numRows = 0U;                      // Количество ячеек по X
-        uint numCols = 0U;                      // Количество ячеек по Y
-        Array<Point2D> path;                    // Здесь хранится рассчитанный путь
-        Landscape *landscape = nullptr;
+        Point2DI start{0, 0};
+        Point2DI end{0, 0};
+        Array2D<int> num_wave;                  // Здесь будет храниться номер волны (расстояние в клетках от точки начала поиска
+        Array<Point2DI> path;                   // Здесь хранится рассчитанный путь
+        Array2D<float> heightMap;               // Карта высот
         bool visualized = false;                // Если true, то путь уже визуализирован
 
 
@@ -85,10 +97,10 @@ namespace Pi
         class CellPath : public Node, public ListElement<CellPath>
         {
         public:
-            CellPath(const Point2D &position);
+            CellPath(const Point2DI &position);
             virtual ~CellPath() {};
 
-            void MoveTo(const Point2D &position);
+            void MoveTo(const Point2DI &position);
 
             static List<CellPath> chains;                   // Здесь хранятся визуализированные клеточки
 

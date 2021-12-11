@@ -31,9 +31,12 @@ ButtonSkin::ButtonSkin(TButton::Type type, pchar text, State state)
     textWidget->SetTextAlignment(TextAlignment::Center);
     textWidget->SetWidgetColor(colorText);
     textWidget->SetWidgetPosition(Point3D(0, 2, 0));
-    if(type == TButton::Type::NameTab) {
+
+    if(type == TButton::Type::NameTab)
+    {
         textWidget->SetWidgetPosition(Point3D(0, 4, 0));
     }
+
     AppendNewSubnode(textWidget);
 
     EndScene();
@@ -140,12 +143,14 @@ void TButton::HandleObserver(MouseObservable *, uint)
 void TButton::SetState(uint state) 
 {
     Widget *widget = GetFirstSubnode();
+
     while (widget) 
     {
         Widget *node = widget;
         widget = widget->Next();
         RemoveSubnode(node);
     }
+
     AppendSubnode(skins[state]);
     Update();
     Invalidate();
