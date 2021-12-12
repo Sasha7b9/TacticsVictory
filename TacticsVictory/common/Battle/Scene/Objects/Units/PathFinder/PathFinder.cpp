@@ -1,9 +1,9 @@
 ﻿// 2021/12/4 11:09:03 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Scene/Objects/Units/PathFinder/PathUnit.h"
 #include "Scene/World/Landscape.h"
 #include "Scene/World/GameWorld.h"
 #include "Scene/Objects/Units/Unit.h"
+#include "Scene/Objects/Units/PathFinder/PathFinder.h"
 
 
 using namespace Pi;
@@ -12,77 +12,64 @@ using namespace Pi;
 #define TERRAIN_HEIGHT_EQUAL(_col_, _row_) (fabs(heightMap.At(_col_, _row_) - heightStart) < K::epsilon)
 
 
-PathUnit *PathUnit::self = nullptr;
-List<PathUnit::CellPath> PathUnit::CellPath::chains;                   // Здесь хранятся визуализированные клеточки
+List<PathFinder::CellPath> PathFinder::CellPath::chains;                   // Здесь хранятся визуализированные клеточки
 
 
-void PathUnitController::Move()
+void PathFinderController::Preprocess()
 {
-    Controller::Move();
+    Controller::Preprocess();
 
-    PathUnit *pathUnit = (PathUnit *)GetTargetNode();
+    Wake();
+}
 
-    if (!pathUnit->target)
-    {
-        return;
-    }
+
+void PathFinderController::Move()
+{
+    PathFinder *pathUnit = (PathFinder *)GetTargetNode();
 
     if (pathUnit->needSearching)
     {
         pathUnit->needSearching = false;
-        pathUnit->start = pathUnit->target->GetWorldPosition().GetPoint2D();
-        pathUnit->end = Point2DI{99, 99};
-
         pathUnit->SetSize();
-
         pathUnit->StartSearch();
     }
 
-    if(pathUnit->pathIsFound && !pathUnit->visualized)
+    if (pathUnit->pathIsFound)
     {
-        pathUnit->Visualize();
+        pathUnit->callbackComplete(pathUnit->path);
+        pathUnit->pathIsFound = false;
+        pathUnit->Clear();
     }
 }
 
 
-void PathUnit::StartSearch()
+void PathFinder::StartSearch()
 {
-    jobFinder = new PathUnit::JobPathFinder(this);
+    jobFinder = new PathFinder::JobPathFinder(this);
     TheJobMgr->SubmitJob(jobFinder);
 }
 
 
-PathUnit::PathUnit() : Node("PathUnit"), Singleton<PathUnit>(self)
-{
-    PathUnitController *controller = new PathUnitController();
-    SetController(controller);
-    controller->Wake();
 
+PathFinder::PathFinder(const Point2D &_start, const Point2D &_finish) : Node(), start(_start), finish(_finish)
+{
+    SetNodeName("PathFinder");
+    SetController(new PathFinderController);
     TheWorldMgr->GetWorld()->GetRootNode()->AppendNewSubnode(this);
 }
 
 
-void PathUnit::SetTarget(const UnitObject *unit)
+void PathFinder::Find(std::function<void(const Array<Point2DI> &path)> funcComplete)
 {
     StopSearch();
 
-    target = unit;
+    callbackComplete = funcComplete;
 
     needSearching = true;
 }
 
 
-void PathUnit::RemoveTarget()
-{
-    StopSearch();
-
-    target = nullptr;
-
-    needSearching = false;
-}
-
-
-void PathUnit::StopSearch()
+void PathFinder::StopSearch()
 {
     if(jobFinder)
     {
@@ -98,44 +85,35 @@ void PathUnit::StopSearch()
 }
 
 
-void PathUnit::Clear()
+void PathFinder::Clear()
 {
     delete jobFinder;
 
     jobFinder = nullptr;
 
     pathIsFound = false;
-
-    for (auto *chain : CellPath::chains)
-    {
-        chain->Disable();
-    }
 }
 
 
-void PathUnit::JobPathFinder::JobFunction(Job *job, void *cookie)
+void PathFinder::JobPathFinder::JobFunction(Job *job, void *cookie)
 {
-    PathUnit *pathUnit = (PathUnit *)cookie;
+    PathFinder *pathUnit = (PathFinder *)cookie;
 
     pathUnit->path.Clear();
     pathUnit->FindPath(job);
 }
 
 
-Array<Point2DI> PathUnit::ToArray()
+Array<Point2DI> PathFinder::ToArray()
 {
     return path;
 }
 
 
-void PathUnit::Visualize()
+void PathFinder::Visualize()
 {
-    TheConsoleWindow->AddText(Text::Format("In path %d elements:", path.GetElementCount()));
-
     for (Point2DI &point : path)
     {
-        TheConsoleWindow->AddText(Text::Format("%d %d", point.x, point.y));
-
         if (CellPath::chains.GetElementCount())
         {
             CellPath *cell = CellPath::chains.First();
@@ -155,7 +133,7 @@ void PathUnit::Visualize()
 }
 
 
-void PathUnit::SetSize()
+void PathFinder::SetSize()
 {
     while (!GameWorld::Get()->GetLandscape()->IsCreated())
     {
@@ -182,18 +160,15 @@ void PathUnit::SetSize()
 }
 
 
-void PathUnit::FindPath(Job *job)
+void PathFinder::FindPath(Job *job)
 {
-    start = {0, 0};
-    end = {1, 2};
-
-    if (fabs(heightMap.At(start.x, start.y) - heightMap.At(end.x, end.y)) > K::epsilon)
+    if (fabs(heightMap.At(start.x, start.y) - heightMap.At(finish.x, finish.y)) > K::epsilon)
     {
         pathIsFound = true;
         return; 
     }
 
-    if (start == end)
+    if (start == finish)
     {
         path.AddElement(start);
         pathIsFound = true;
@@ -209,19 +184,14 @@ void PathUnit::FindPath(Job *job)
 
     do
     {
-        int numElements = waves[waves.GetElementCount() - 1].GetElementCount();
-
         CalculateNextWave(waves);
 
-        numElements = waves[waves.GetElementCount() - 1].GetElementCount();
-        numElements = numElements;
-
     } while(waves[waves.GetElementCount() - 1].GetElementCount() &&     // В волне есть хотя бы одна клетка
-            !waves[waves.GetElementCount() - 1].Contain(end));         // И волна не содержит целевую клетку
+            !waves[waves.GetElementCount() - 1].Contain(finish));         // И волна не содержит целевую клетку
 
-    if(waves[waves.GetElementCount() - 1].Contain(end))
+    if(waves[waves.GetElementCount() - 1].Contain(finish))
     {
-        path.AddElement(end);
+        path.AddElement(finish);
         while(path[0] != start)
         {
             AddPrevWave(path);
@@ -232,15 +202,11 @@ void PathUnit::FindPath(Job *job)
         path.AddElement(start);
     }
 
-    TheConsoleWindow->AddText(Text::Format("Start : %d %d", start.x, start.y));
-    TheConsoleWindow->AddText(Text::Format("End : %d %d", end.x, end.y));
-    TheConsoleWindow->AddText(Text::Format("Total %d waves", waves.GetElementCount()));
-
     pathIsFound = true;
 }
 
 
-bool PathUnit::Wave::Contain(const Point2DI &coord)
+bool PathFinder::Wave::Contain(const Point2DI &coord)
 {
     for (int i = 0; i < GetElementCount(); i++)
     {
@@ -270,7 +236,7 @@ static int d_y[] = { 0, -1, 0, 1, -1, -1, 1,  1};
 //                   0   1  2  3   4   5  6   7
 
 
-void PathUnit::CalculateNextWave(Array<Wave> &waves)
+void PathFinder::CalculateNextWave(Array<Wave> &waves)
 {
     const int num_current_wave = waves.GetElementCount();           // Рассчитываем эту волну
     const Wave &prev_wave = waves[num_current_wave - 1];            // Предыщущая рассчитанная волна
@@ -292,15 +258,6 @@ void PathUnit::CalculateNextWave(Array<Wave> &waves)
 
             int newRow = row + d_y[i];         // Вычисляет координаты очередной
             int newCol = col + d_x[i];         // соседней клетки
-
-            
-
-            if (newRow == 1 && newCol == 1)
-            {
-                newRow = newRow;
-                float height = heightMap.At(newCol, newRow);
-                height = height;
-            }
 
             if (newRow < sizeY_rows && newRow >= 0 &&
                 newCol < sizeX_cols && newCol >= 0 &&
@@ -333,14 +290,14 @@ void PathUnit::CalculateNextWave(Array<Wave> &waves)
 }
 
 
-void PathUnit::Wave::SetCell(int col, int row, int numWave, Array2D<int> &num_wave)
+void PathFinder::Wave::SetCell(int col, int row, int numWave, Array2D<int> &num_wave)
 {
     points.AddElement(Point2DI{col, row});
     num_wave.At(col, row) = numWave;
 }
 
 
-void PathUnit::AddPrevWave(Array<Point2DI> &path_)
+void PathFinder::AddPrevWave(Array<Point2DI> &path_)
 {
     int colX = path_[0].x;
     int rowY = path_[0].y;
@@ -362,7 +319,7 @@ void PathUnit::AddPrevWave(Array<Point2DI> &path_)
 }
 
 
-PathUnit::CellPath::CellPath(const Point2DI &position) : Node(), ListElement<CellPath>()
+PathFinder::CellPath::CellPath(const Point2DI &position) : Node(), ListElement<CellPath>()
 {
     SetNodeName("CellPath");
     AppendSubnode(CreateMember({(float)(int)position.x + 0.5f, (float)(int)position.y + 0.5f}));
@@ -370,7 +327,7 @@ PathUnit::CellPath::CellPath(const Point2DI &position) : Node(), ListElement<Cel
 }
 
 
-Node *PathUnit::CellPath::CreateMember(const Point2D &position)
+Node *PathFinder::CellPath::CreateMember(const Point2D &position)
 {
     float size = 0.4f;
 
@@ -395,7 +352,7 @@ Node *PathUnit::CellPath::CreateMember(const Point2D &position)
 }
 
 
-void PathUnit::CellPath::MoveTo(const Point2DI &position)
+void PathFinder::CellPath::MoveTo(const Point2DI &position)
 {
     SetNodePosition({(float)position.x + 0.5F, (float)position.y + 0.5F,
                     GameWorld::Get()->GetLandscape()->GetHeightAccurately((float)position.x + 0.5f, (float)position.y + 0.5f)});

@@ -15,7 +15,7 @@
 #include "Utils/Log.h"
 #include "Scene/World/Landscape.h"
 #include "GUI/Widgets/ObjectViewportWidget.h"
-#include "Scene/Objects/Units/PathFinder/PathUnit.h"
+#include "Scene/Objects/Units/PathFinder/PathFinder.h"
 
 
 using namespace std;
@@ -50,9 +50,9 @@ Battle::Battle()
 
     GUI::Create();
 
-    CreateScene();
+    GameObject::Construct();
 
-    new PathUnit();
+    CreateScene();
 
     float halfDisplayWidth = 0.5f * static_cast<float>(TheDisplayMgr->GetDisplayWidth());
     float halfDisplayHeight = 0.5f * static_cast<float>(TheDisplayMgr->GetDisplayHeight());
@@ -61,8 +61,6 @@ Battle::Battle()
     CursorGUI::self->Invalidate();
 
     new SoundPlayer();
-
-//    TheGraphicsMgr->SetDiagnosticFlags(TheGraphicsMgr->GetDiagnosticFlags() | PiFlagDiagnostic::Normals);
 
     float timeConstructor = (float) (TheTimeMgr->GetMicrosecondCount() - timeEnter) * 1e-6f;
 
@@ -78,6 +76,7 @@ Battle::~Battle()
     TheWorldMgr->SetWorldCreator(nullptr);
     TheMessageMgr->EndGame();
     SAFE_DELETE(SoundPlayer::self);
+    GameObject::Destruct();
 }
 
 void Battle::CreateScene()

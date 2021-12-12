@@ -10,39 +10,40 @@ namespace Pi
 
     namespace PiTypeController
     {
-        const S PathUnit = "PathUnit";
+        const S PathFinder = "PathFinder";
     }
 
-    class PathUnitController : public Controller
+
+    // ----------------------------------------------------------------------------------------------------------------
+    class PathFinderController : public Controller
     {
     public:
-        PathUnitController() : Controller(PiTypeController::PathUnit) {}
+        PathFinderController() : Controller(PiTypeController::PathFinder) {}
     private:
+        virtual void Preprocess() override;
         virtual void Move() override;
     };
 
-    class PathUnit : public Node, public Singleton<PathUnit>
+
+    // ----------------------------------------------------------------------------------------------------------------
+    class PathFinder : public Node
     {
-        friend class PathUnitController;
+        friend class PathFinderController;
 
     public:
-        // Конструктор принимает указатель на оъект, которого требуется переместить в точку destination и собственно destination
-        PathUnit();
-        virtual ~PathUnit() {};
 
-        static PathUnit *self;
+        PathFinder(const Point2D &start, const Point2D &finish);
 
-        // Установить цель для наблюдения
-        void SetTarget(const UnitObject *uint);
+        // Метод принимает в качестве аргумента указатель на функцюи, в которую нужно передать результат вычисления
+        void Find(std::function<void (const Array<Point2DI> &)>);
 
-        // Снять наблюдение
-        void RemoveTarget();
+    private:
+
+        virtual ~PathFinder()  {};
 
         Array<Point2DI> ToArray();
 
         void Clear();
-
-    private:
 
         // В волне содержится набор клеток для каждой волны
         class Wave
@@ -70,11 +71,11 @@ namespace Pi
         void StopSearch();
         void StartSearch();
 
-        const UnitObject *target = nullptr;     // Цель для наблюдения
+        std::function<void(const Array<Point2DI> &path)> callbackComplete = nullptr;    // Эта функция будет вызвана после завершения поиска
         bool needSearching = false;             // Если true - нужно производить поиск
         bool pathIsFound = false;               // Если true - путь найден
         Point2DI start{0, 0};
-        Point2DI end{0, 0};
+        Point2DI finish{0, 0};
         Array2D<int> num_wave;                  // Здесь будет храниться номер волны (расстояние в клетках от точки начала поиска
         Array<Point2DI> path;                   // Здесь хранится рассчитанный путь
         Array2D<float> heightMap;               // Карта высот
@@ -87,7 +88,7 @@ namespace Pi
         private:
             static void JobFunction(Job *, void *);
         public:
-            JobPathFinder(PathUnit *_path) : Job(JobFunction, (void *)_path) {};
+            JobPathFinder(PathFinder *_path) : Job(JobFunction, (void *)_path) {};
         };
 
         JobPathFinder *jobFinder = nullptr;

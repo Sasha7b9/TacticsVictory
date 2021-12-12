@@ -5,10 +5,29 @@
 #include "Scene/World/Landscape.h"
 #include "Scene/World/GameWorld.h"
 #include "Scene/Objects/InfoWindow.h"
-#include "Scene/Objects/Units/PathFinder/PathUnit.h"
+#include "Scene/Objects/Units/PathFinder/PathFinder.h"
 
 
 using namespace Pi;
+
+
+GameObject *GameObject::empty = nullptr;
+
+
+void GameObject::Construct()
+{
+    empty = new GameObject(PiTypeGameObject::Empty);
+}
+
+
+void GameObject::Destruct()
+{
+    Property *property = empty->GetProperty(PiTypeProperty::GameObject);
+
+    delete property;
+
+    delete empty;
+}
 
 
 GameObject::GameObject(PiTypeGameObject::S _type) : Node(), typeObject(_type)
@@ -46,15 +65,7 @@ GameObject &GameObject::GetFromScreen(const Point2D &coord)
 {
     GameObjectProperty *property = GameObjectProperty::GetFromScreen(coord);
 
-    return property ? property->gameObject : Empty();
-}
-
-
-GameObject &GameObject::Empty()
-{
-    static GameObject empty(PiTypeGameObject::Empty);
-
-    return empty;
+    return property ? property->gameObject : *empty;
 }
 
 
@@ -85,7 +96,14 @@ GameObjectProperty::GameObjectProperty(GameObject &_gameObject) :
     Property(PiTypeProperty::GameObject),
     gameObject(_gameObject),
     infoWindow(new InfoWindow())
-{}
+{
+}
+
+
+GameObjectProperty::~GameObjectProperty()
+{
+    delete infoWindow;
+}
 
 
 void GameObjectProperty::SetSelection()
@@ -113,12 +131,17 @@ void GameObjectProperty::MouseEvent(uint state)
 
         if(Selected())
         {
-            PathUnit::self->SetTarget(Selected() ? gameObject.CastToUnitObject() : nullptr);
+            (new PathFinder(gameObject.GetWorldPosition().GetPoint2D(), {50.0f, 50.0f}))->Find(
+                [this](const Array<Point2DI> &_path)
+                {
+                    path.CreateFrom(_path);
+//                    Point2DI start = path[0];
+//                    Point2DI finish = path[path.GetElementCount() - 1];
+//                    TheConsoleWindow->AddText(Text::Format("Path from %d element is found:", path.GetElementCount()));
+//                    TheConsoleWindow->AddText(Text::Format("%d:%d - %d:%d", start.x, start.y, finish.x, finish.y));
+                }
+            );
         }
-//        else
-//        {
-//            PathUnit::self->Clear();
-//        }
     }
 }
 

@@ -3,6 +3,7 @@
 #include "System/Events.h"
 #include "Scene/Objects/InfoWindow.h"
 #include "Scene/Objects/GameObjectTypes.h"
+#include "Scene/Objects/Units/PathFinder/PathMapping.h"
 
 
 namespace Pi
@@ -17,6 +18,10 @@ namespace Pi
     {
     public:
 
+        static void Construct();
+
+        static void Destruct();
+
         GameObjectProperty &GetGameObjectProperty() { return *(GameObjectProperty *)GetProperty(PiTypeProperty::GameObject); }
 
         // Установить координаты объекта на карте. От мировых они отличаются на 0.5f
@@ -30,7 +35,7 @@ namespace Pi
 
         bool IsUnit() const { return typeObject == PiTypeGameObject::Unit; }
 
-        static GameObject &Empty();
+        static GameObject *empty;
 
     protected:
 
@@ -80,7 +85,7 @@ namespace Pi
 
         GameObjectProperty(GameObject &);
 
-        virtual ~GameObjectProperty() { delete infoWindow; };
+        virtual ~GameObjectProperty();
 
         bool Selectable() const { return gameObject.IsUnit(); }
 
@@ -109,5 +114,6 @@ namespace Pi
         Vector3D    rotate = Vector3D::ZERO;
         float       scale = 1.0F;
         Vector2D    positionMap{0.0f, 0.0f};
+        PathMapping path;
     };
 }

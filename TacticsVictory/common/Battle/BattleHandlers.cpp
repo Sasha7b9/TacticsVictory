@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "Battle.h"
 #include "Scene/World/GameWorld.h"
-#include "Scene/Objects/Units/PathFinder/PathUnit.h"
 #include "Scene/World/Landscape.h"
 
 

@@ -2,7 +2,6 @@
 #pragma once
 #include "Scene/Cameras/CameraRTS.h"
 #include "Shaders/SparkParticleSystem.h"
-#include "Scene/Objects/Units/PathFinder/PathUnit.h"
 
 
 namespace Pi

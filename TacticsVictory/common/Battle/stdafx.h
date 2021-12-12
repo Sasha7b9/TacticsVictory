@@ -12,6 +12,7 @@
 #include <cstdio>
 #include <string>
 #include <filesystem>
+#include <functional>
 
 #include <Base/PiMemory.h>
 #include <Graphics/PiRender.h>

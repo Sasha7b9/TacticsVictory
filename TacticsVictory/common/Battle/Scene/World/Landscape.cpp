@@ -273,7 +273,7 @@ Landscape::~Landscape()
 
     SAFE_DELETE_ARRAY(mapCell);
     SAFE_DELETE_ARRAY(mapField);
-//    SAFE_DELETE_ARRAY(mapField);
+    SAFE_DELETE_ARRAY(mapField);
 }
 
 
@@ -307,14 +307,8 @@ void Landscape::CreateGeometryForField(TField *field)
         MaterialObject *material = new MaterialObject();
         DiffuseTextureAttribute *diffTexture = new DiffuseTextureAttribute("MapCell");
         material->AddAttribute(diffTexture);
-        //DiffuseAttribute *diffAttrib = new DiffuseAttribute(ColorRGBA(0.6f, 0.6f, 0.6f));
-        //material->AddAttribute(diffAttrib);
         SpecularTextureAttribute *specTexture = new SpecularTextureAttribute("MapCell");
         material->AddAttribute(specTexture);
-        //SpecularAttribute *specAttrib = new SpecularAttribute(ColorRGBA(1.0f, 1.0f, 1.0f), 1.0f);
-        //material->AddAttribute(specAttrib);
-        //ReflectionAttribute *reflection = new ReflectionAttribute(ColorRGBA(1.0f, 0.0f, 0.0f), 1.0f, 1.0f);
-        //material->AddAttribute(reflection);
 
         Array<MaterialObject*> materialArray;
         materialArray.AddElement(material);
@@ -323,8 +317,6 @@ void Landscape::CreateGeometryForField(TField *field)
 
         material->Release();
 
-//        surface->Detach();
-//        surfaceList->Purge();
         delete surfaceList;
 
         field->state = TField::State::Created;

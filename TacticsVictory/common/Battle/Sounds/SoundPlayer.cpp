@@ -22,4 +22,4 @@ void SoundPlayer::Play(uint number)
     Sound *sound = new Sound();
     sound->Load(sounds[number]);
     sound->Play();
-}
+} //-V773
