@@ -67,7 +67,6 @@ namespace Pi
         void AddPrevWave(Array<Point2DI> &path);
         void FindPath(Job *job);
         void SetSize();
-        void Visualize();                       // Отобразить найденный путь
         void StopSearch();
         void StartSearch();
 
@@ -79,7 +78,6 @@ namespace Pi
         Array2D<int> num_wave;                  // Здесь будет храниться номер волны (расстояние в клетках от точки начала поиска
         Array<Point2DI> path;                   // Здесь хранится рассчитанный путь
         Array2D<float> heightMap;               // Карта высот
-        bool visualized = false;                // Если true, то путь уже визуализирован
 
 
         // Этот класс в отдельном потоке будет рассчитывать путь -----------------------------------------------------------
@@ -92,22 +90,5 @@ namespace Pi
         };
 
         JobPathFinder *jobFinder = nullptr;
-
-
-        // Класс визуализирует путь перемещения юнита -----------------------------------------------------------------------
-        class CellPath : public Node, public ListElement<CellPath>
-        {
-        public:
-            CellPath(const Point2DI &position);
-            virtual ~CellPath() {};
-
-            void MoveTo(const Point2DI &position);
-
-            static List<CellPath> chains;                   // Здесь хранятся визуализированные клеточки
-
-        private:
-
-            Node *CreateMember(const Point2D &position);
-        };
     };
 }

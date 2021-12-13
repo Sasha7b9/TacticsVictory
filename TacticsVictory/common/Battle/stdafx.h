@@ -5,12 +5,7 @@
 #pragma warning(push, 0)
 #endif
 
-#include <cmath>
-#include <cstring>
-#include <cctype>
 #include <cstdarg>
-#include <cstdio>
-#include <string>
 #include <filesystem>
 #include <functional>
 

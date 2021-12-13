@@ -15,10 +15,11 @@ if(MSVC)
         -D__PLACEMENT_VEC_NEW_INLINE    # без этого ругается на placement operator new
     )
 
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:100000000")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:1000000000")
 endif()
 
 file(GLOB SRC                                              *.h *.*c*)
+file(GLOB GRAPHICS                                         Graphics/*.*)
 file(GLOB GUI                                              GUI/*.*)
 file(GLOB GUI_MUTATORS                                     GUI/Mutators/*.*)
 file(GLOB GUI_PANELS                                       GUI/Panels/*.*)
@@ -31,16 +32,17 @@ file(GLOB SCENE_OBJECTS_UNITS                              Scene/Objects/Units/*
 file(GLOB SCENE_OBJECTS_UNITS_GROUND                       Scene/Objects/Units/Ground/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_PATHFINDER                   Scene/Objects/Units/PathFinder/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER Scene/Objects/Units/PathFinder/NavmeshController/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_SELECTION                    Scene/Objects/Units/Selection/*.*)
 file(GLOB SCENE_WORLD                                      Scene/World/*.*)
 file(GLOB SHADERS                                          Shaders/*.*)
 file(GLOB SOUNDS                                           Sounds/*.*)
 file(GLOB SYSTEM                                           System/*.*)
 file(GLOB UTILS                                            Utils/*.*)
-file(GLOB _RESOURCES                                       _resources/*.*)
 #file(GLOB EXPERIMENTS                                      Experiments/*.*)
 
 
 source_group(src                                                  FILES ${SRC})
+source_group(Graphics                                             FILES ${GRAPHICS})
 source_group(GUI                                                  FILES ${GUI})
 source_group(GUI\\Mutators                                        FILES ${GUI_MUTATORS})
 source_group(GUI\\Panels                                          FILES ${GUI_PANELS})
@@ -53,24 +55,24 @@ source_group(Scene\\Objects\\Units                                FILES ${SCENE_
 source_group(Scene\\Objects\\Units\\Ground                        FILES ${SCENE_OBJECTS_UNITS_GROUND})
 source_group(Scene\\Objects\\Units\\PathFinder                    FILES ${SCENE_OBJECTS_UNITS_PATHFINDER})
 source_group(Scene\\Objects\\Units\\PathFinder\\NavmeshController FILES ${SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER})
+source_group(Scene\\Objects\\Units\\Selection                     FILES ${SCENE_OBJECTS_UNITS_SELECTION})
 source_group(Scene\\World                                         FILES ${SCENE_WORLD})
 source_group(Shaders                                              FILES ${SHADERS})
 source_group(Sounds                                               FILES ${SOUNDS})
 source_group(System                                               FILES ${SYSTEM})
 source_group(Utils                                                FILES ${UTILS})
-source_group(_resources                                           FILES ${_RESOURCES})
 #source_group(Experiments                                          FILES ${EXPERIMENTS})
 
 set_source_files_properties(${SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 #set_source_files_properties(Utils/Array2D.cpp PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 
-add_executable(${PROJECT_NAME} ${SRC} ${GUI} ${GUI_MUTATORS} ${GUI_PANELS} ${GUI_WIDGETS} ${INPUT}
+add_executable(${PROJECT_NAME} ${SRC} ${GRAPHICS} ${GUI} ${GUI_MUTATORS} ${GUI_PANELS} ${GUI_WIDGETS} ${INPUT}
                                ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_UNITS}
                                ${SCENE_OBJECTS_UNITS_GROUND} ${SCENE_OBJECTS_UNITS_PATHFINDER}
                                ${SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER}
+                               ${SCENE_OBJECTS_UNITS_SELECTION}
                                ${SCENE_WORLD} ${SHADERS} ${SOUNDS} ${SYSTEM} ${UTILS}
-                               ${_RESOURCES}
 #                               ${EXPERIMENTS}
                                )
 

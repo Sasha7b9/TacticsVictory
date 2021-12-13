@@ -17,8 +17,8 @@ namespace Pi
 
     namespace PiKindCollision
     {
-        const B Landscape = 1 << 17;
-        const B PathUnit  = 1 << 18;
+        const B Landscape = 1 << 17;        // Ладшафт
+        const B PathUnit  = 1 << 18;        // Метка пути
     }
     
     class Landscape : public Node

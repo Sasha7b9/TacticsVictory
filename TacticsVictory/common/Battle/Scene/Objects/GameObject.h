@@ -3,7 +3,6 @@
 #include "System/Events.h"
 #include "Scene/Objects/InfoWindow.h"
 #include "Scene/Objects/GameObjectTypes.h"
-#include "Scene/Objects/Units/PathFinder/PathMapping.h"
 
 
 namespace Pi
@@ -37,6 +36,8 @@ namespace Pi
 
         static GameObject *empty;
 
+        int GetID() const { return id; }
+
     protected:
 
         GameObject(PiTypeGameObject::S);
@@ -47,6 +48,9 @@ namespace Pi
         void SetNodePosition(const Point3D &position) { Node::SetNodePosition(position); }
 
         PiTypeGameObject::S typeObject;
+
+        static int createdObjects;              // Столько объектов уже создано
+        int id = 0;
     };
 
 
@@ -114,6 +118,5 @@ namespace Pi
         Vector3D    rotate = Vector3D::ZERO;
         float       scale = 1.0F;
         Vector2D    positionMap{0.0f, 0.0f};
-        PathMapping path;
     };
 }

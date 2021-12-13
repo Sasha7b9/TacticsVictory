@@ -6,22 +6,29 @@
 #include "Scene/World/GameWorld.h"
 #include "Scene/Objects/InfoWindow.h"
 #include "Scene/Objects/Units/PathFinder/PathFinder.h"
+#include "Scene/Objects/Units/PathFinder/PathMapping.h"
+#include "Scene/Objects/Units/Unit.h"
 
 
 using namespace Pi;
 
 
 GameObject *GameObject::empty = nullptr;
+int         GameObject::createdObjects = 0;
 
 
 void GameObject::Construct()
 {
     empty = new GameObject(PiTypeGameObject::Empty);
+
+    UnitObject::Construct();
 }
 
 
 void GameObject::Destruct()
 {
+    UnitObject::Destruct();
+
     Property *property = empty->GetProperty(PiTypeProperty::GameObject);
 
     delete property;
@@ -32,6 +39,8 @@ void GameObject::Destruct()
 
 GameObject::GameObject(PiTypeGameObject::S _type) : Node(), typeObject(_type)
 {
+    id = ++createdObjects;
+
     AddProperty(new GameObjectProperty(*this));
 }
 
@@ -110,6 +119,14 @@ void GameObjectProperty::SetSelection()
 {
     selected = true;
     TheInterfaceMgr->AddWidget(infoWindow);
+
+    PathFinder *finder = new PathFinder(gameObject.GetWorldPosition().GetPoint2D(), {50.0f, 50.0f});
+    gameObject.AppendNewSubnode(finder);
+    finder->Find([this](const Array<Point2DI> &_path)
+        {
+            GameWorld::Get()->GetRootNode()->AppendNewSubnode(new PathMapping(gameObject, _path));
+        }
+    );
 }
 
 
@@ -117,6 +134,12 @@ void GameObjectProperty::RemoveSelection()
 {
     selected = false;
     TheInterfaceMgr->RemoveWidget(infoWindow);
+
+    PathMapping *path = PathMapping::FromScene(gameObject);
+    if (path)
+    {
+        delete path;
+    }
 }
 
 
@@ -127,20 +150,6 @@ void GameObjectProperty::MouseEvent(uint state)
         if (state & (1 << 0))
         {
             Selected() ? RemoveSelection() : SetSelection();
-        }
-
-        if(Selected())
-        {
-            (new PathFinder(gameObject.GetWorldPosition().GetPoint2D(), {50.0f, 50.0f}))->Find(
-                [this](const Array<Point2DI> &_path)
-                {
-                    path.CreateFrom(_path);
-//                    Point2DI start = path[0];
-//                    Point2DI finish = path[path.GetElementCount() - 1];
-//                    TheConsoleWindow->AddText(Text::Format("Path from %d element is found:", path.GetElementCount()));
-//                    TheConsoleWindow->AddText(Text::Format("%d:%d - %d:%d", start.x, start.y, finish.x, finish.y));
-                }
-            );
         }
     }
 }

@@ -12,9 +12,6 @@ using namespace Pi;
 #define TERRAIN_HEIGHT_EQUAL(_col_, _row_) (fabs(heightMap.At(_col_, _row_) - heightStart) < K::epsilon)
 
 
-List<PathFinder::CellPath> PathFinder::CellPath::chains;                   // Здесь хранятся визуализированные клеточки
-
-
 void PathFinderController::Preprocess()
 {
     Controller::Preprocess();
@@ -39,6 +36,10 @@ void PathFinderController::Move()
         pathUnit->callbackComplete(pathUnit->path);
         pathUnit->pathIsFound = false;
         pathUnit->Clear();
+
+        Node *target = GetTargetNode();
+        target->GetRootNode()->RemoveSubnode(target);
+        delete target;
     }
 }
 
@@ -50,12 +51,12 @@ void PathFinder::StartSearch()
 }
 
 
-
-PathFinder::PathFinder(const Point2D &_start, const Point2D &_finish) : Node(), start(_start), finish(_finish)
+PathFinder::PathFinder(const Point2D &_start, const Point2D &_finish) :
+    Node(StringHash(typeid(PathFinder).name())),
+    start(_start), finish(_finish)
 {
     SetNodeName("PathFinder");
     SetController(new PathFinderController);
-    TheWorldMgr->GetWorld()->GetRootNode()->AppendNewSubnode(this);
 }
 
 
@@ -107,29 +108,6 @@ void PathFinder::JobPathFinder::JobFunction(Job *job, void *cookie)
 Array<Point2DI> PathFinder::ToArray()
 {
     return path;
-}
-
-
-void PathFinder::Visualize()
-{
-    for (Point2DI &point : path)
-    {
-        if (CellPath::chains.GetElementCount())
-        {
-            CellPath *cell = CellPath::chains.First();
-            CellPath::chains.Remove(cell);
-            cell->MoveTo(point);
-            AppendSubnode(cell);
-            cell->Enable();
-        }
-        else
-        {
-            CellPath *cell = new CellPath(point);
-            AppendSubnode(cell);
-        }
-    }
-
-    visualized = true;
 }
 
 
@@ -276,7 +254,7 @@ void PathFinder::CalculateNextWave(Array<Wave> &waves)
                 {
                     continue;
                 }
-                else if (i == 7 && (!TERRAIN_HEIGHT_EQUAL(col, row - 1) || !TERRAIN_HEIGHT_EQUAL(col + 1, row)))
+                else if (i == 7 && (!TERRAIN_HEIGHT_EQUAL(col - 1, row) || !TERRAIN_HEIGHT_EQUAL(col, row + 1)))
                 {
                     continue;
                 }
@@ -316,44 +294,4 @@ void PathFinder::AddPrevWave(Array<Point2DI> &path_)
             return;
         }
     }
-}
-
-
-PathFinder::CellPath::CellPath(const Point2DI &position) : Node(), ListElement<CellPath>()
-{
-    SetNodeName("CellPath");
-    AppendSubnode(CreateMember({(float)(int)position.x + 0.5f, (float)(int)position.y + 0.5f}));
-    GameWorld::Get()->GetRootNode()->AppendNewSubnode(this);
-}
-
-
-Node *PathFinder::CellPath::CreateMember(const Point2D &position)
-{
-    float size = 0.4f;
-
-    PrimitiveGeometry *geometry = new SphereGeometry({size, size, 0.1f});
-    PrimitiveGeometryObject *object = geometry->GetObject();
-    object->SetCollisionExclusionMask(PiKindCollision::PathUnit);
-    object->DissableGeometryFlags(PiFlagGeometry::CastShadows);
-    object->SetBuildLevelCount(1);
-    geometry->Update();
-    object->Build(geometry);
-    geometry->Update();
-
-    MaterialObject *material = new MaterialObject();
-    DiffuseAttribute *diffuse = new DiffuseAttribute(K::blue);
-    material->AddAttribute(diffuse);
-    geometry->SetMaterialObject(0, material);
-    material->Release();
-
-    MoveTo(position);
-
-    return geometry;
-}
-
-
-void PathFinder::CellPath::MoveTo(const Point2DI &position)
-{
-    SetNodePosition({(float)position.x + 0.5F, (float)position.y + 0.5F,
-                    GameWorld::Get()->GetLandscape()->GetHeightAccurately((float)position.x + 0.5f, (float)position.y + 0.5f)});
 }

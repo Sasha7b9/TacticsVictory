@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "winver.h"
 
-1 ICON "PiIcon.ico"
+1 ICON "..\\..\\resources\\PiIcon.ico"
 
 1 VERSIONINFO
 FILEVERSION		4,5,0,0

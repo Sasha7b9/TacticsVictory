@@ -3,6 +3,7 @@
 #include "Scene/World/Landscape.h"
 #include "Utils/Log.h"
 #include "Scene/World/GameWorld.h"
+#include "Graphics/CanvasTexture.h"
 
 
 namespace Pi
@@ -305,10 +306,11 @@ void Landscape::CreateGeometryForField(TField *field)
         const List<GeometrySurface> *surfaceTable = surfaceList;
 
         MaterialObject *material = new MaterialObject();
-        DiffuseTextureAttribute *diffTexture = new DiffuseTextureAttribute("MapCell");
+
+        CanvasTexture *canvas = new CanvasTexture();
+
+        DiffuseTextureAttribute *diffTexture = new DiffuseTextureAttribute(canvas->GetTexture());
         material->AddAttribute(diffTexture);
-        SpecularTextureAttribute *specTexture = new SpecularTextureAttribute("MapCell");
-        material->AddAttribute(specTexture);
 
         Array<MaterialObject*> materialArray;
         materialArray.AddElement(material);
@@ -316,6 +318,10 @@ void Landscape::CreateGeometryForField(TField *field)
         field->geometry = new GenericGeometry(1, &surfaceTable, materialArray);
 
         material->Release();
+
+        canvas->SetColorBrush({0.0f, 0.0f, 0.3f});
+        canvas->FillRegion(5, 5, 10, 10);
+        canvas->EndPaint();
 
         delete surfaceList;
 
@@ -667,13 +673,15 @@ int Landscape::AddPlane(GeometrySurface *surface, const Point3D points[4])
     size.x = MyCeil(size.x);
     size.y = MyCeil(size.y);
 
+    const float k = 32.0f;
+
     Point2D texCoord[] = {
         Point2D(0.0f, 0.0f),
-        Point2D(0.0f, 1.0f * size.y),
-        Point2D(1.0f * size.x, 0.0f),
-        Point2D(1.0f * size.x, 0.0f),
-        Point2D(0.0f, 1.0f * size.y),
-        Point2D(1.0f * size.x, 1.0f * size.y)
+        Point2D(0.0f, 1.0f * size.y * k),
+        Point2D(1.0f * size.x * k, 0.0f),
+        Point2D(1.0f * size.x * k, 0.0f),
+        Point2D(0.0f, 1.0f * size.y * k),
+        Point2D(1.0f * size.x * k, 1.0f * size.y * k)
     };
 
     Point3D positons[6] = {

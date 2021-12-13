@@ -8,9 +8,17 @@ namespace Pi
     // ----------------------------------------------------------------------------------------------------------------
     class UnitObject : public GameObject
     {
+    public:
+
+        static void Construct();
+        static void Destruct();
+
     protected:
+
         UnitObject(PiTypeUnitObject::S _type) : GameObject(PiTypeGameObject::Unit), typeUnit(_type) {}
+
     private:
+
         PiTypeUnitObject::S typeUnit;
     };
 
