@@ -63,21 +63,21 @@ namespace Pi
     private:
         ulong movementFlags = 0;
         Point3D pointFocus {5.0f, -5.0f, 0.0f};     // Точка, вокруг которой происходит вращение камера. Сюда всегда направлен её взгляд
-        float distance = 50.0f;
+        float distance = 25.0f;
     
-        float azimuth = -0.2f * K::pi;           // Угол поворота в горизонтальной плоскости
-        float angleTilt = -0.001f * K::pi;        // Угол поворота в вертикальной плоскости
+        float azimuth = -0.2f * K::pi;              // Угол поворота в горизонтальной плоскости
+        float angleTilt = -0.1f * K::pi;          // Угол поворота в вертикальной плоскости
 
-        Vector2D speed {0.0f, 0.0f};            // Скорость камеры в плоскости ландашфта
+        Vector2D speed {0.0f, 0.0f};                // Скорость камеры в плоскости ландашфта
     
         Vector3D GetVectorMoveXY(float deltaFwd, float deltaRight, float anglePlaneXY);
         void SetDistance(float distance);
         void SetTiltAngle(float tiltAngle);
     
         const float MIN_DISTANCE = 2.0F;
-        const float MAX_DISTANCE = 1e4F;
-        const float MIN_TILT_ANGLE = -0.49F * K::pi;
-        const float MAX_TILT_ANGLE = -0.05F * K::pi;
+        const float MAX_DISTANCE = 1e3F;
+        const float MIN_TILT_ANGLE = -0.499F * K::pi;
+        const float MAX_TILT_ANGLE = -0.00001F * K::pi;
         const float STEP_TILT_ANGLE = 0.05F;
     };
 }

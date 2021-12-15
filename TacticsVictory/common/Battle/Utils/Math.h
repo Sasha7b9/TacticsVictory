@@ -33,5 +33,19 @@ namespace Pi
                 Swap<T>(value1, value2);
             }
         }
+
+        template <class T>
+        int Sign(T x)
+        {
+            if (x > T(0))      { return 1;  }
+            else if (x < T(0)) { return -1; }
+            else               { return 0;  }
+        }
+
+        template <class T>
+        T Abs(T x)
+        {
+            return (x < 0) ? -x : x;
+        }
     }
 }

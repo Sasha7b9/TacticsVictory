@@ -15,19 +15,19 @@ DrawingWidget::DrawingWidget(const Vector2D &size) : Widget()
     colorBackground = K::black;
     colorBrush = K::white;
 
-    textureHeader = new Texture::Header();
+    textureHeader = new TextureHeader();
 
-    textureHeader->textureType = TextureType::_2D;
-    textureHeader->textureFlags = TextureFlag::Dynamic;
-    textureHeader->colorSemantic = Texture::Semantic::Diffuse;
-    textureHeader->alphaSemantic = Texture::Semantic::Transparency;
-    textureHeader->imageFormat = Texture::Format::RGBA8;
+    textureHeader->textureType = PiTypeTexture::_2D;
+    textureHeader->textureFlags = PiFlagTexture::Dynamic;
+    textureHeader->colorSemantic = PiSemanticTexture::Diffuse;
+    textureHeader->alphaSemantic = PiSemanticTexture::Transparency;
+    textureHeader->imageFormat = PiFormatTexture::RGBA8;
     textureHeader->imageWidth = (int)size.x;
     textureHeader->imageHeight = (int)size.y;
     textureHeader->imageDepth = 1;
-    textureHeader->wrapMode[0] = Texture::Wrap::Clamp;
-    textureHeader->wrapMode[1] = Texture::Wrap::Clamp;
-    textureHeader->wrapMode[2] = Texture::Wrap::Clamp;
+    textureHeader->wrapMode[0] = PiWrapTexture::Clamp;
+    textureHeader->wrapMode[1] = PiWrapTexture::Clamp;
+    textureHeader->wrapMode[2] = PiWrapTexture::Clamp;
     textureHeader->mipmapCount = 1;
     textureHeader->mipmapDataOffset = 0;
     textureHeader->auxiliaryDataSize = 0;
@@ -207,10 +207,10 @@ void DrawingWidget::DrawLine(float x0, float y0, float x1, float y1)
     }
     int x = (int)x0;
     int y = (int)y0;
-    int dx = (int)fabs((float)(x1 - x0));
-    int dy = (int)fabs((float)(y1 - y0));
-    int s1 = (int)Sign<float>(x1 - x0);
-    int s2 = (int)Sign<float>(y1 - y0);
+    int dx = (int)Mathem::Abs((float)(x1 - x0));
+    int dy = (int)Mathem::Abs((float)(y1 - y0));
+    int s1 = (int)Mathem::Sign<float>(x1 - x0);
+    int s2 = (int)Mathem::Sign<float>(y1 - y0);
     int temp = 0;
     bool exchange = false;
     if(dy > dx)

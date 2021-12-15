@@ -3,6 +3,7 @@
 #include "Scene/Objects/Units/Unit.h"
 #include "Scene/Objects/Units/PathFinder/PathFinder.h"
 #include "Scene/Objects/Units/PathFinder/PathMapping.h"
+#include "Scene/Objects/Units/Selector/Selector.h"
 
 
 using namespace Pi;

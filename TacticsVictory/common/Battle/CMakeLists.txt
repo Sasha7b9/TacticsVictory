@@ -20,6 +20,7 @@ endif()
 
 file(GLOB SRC                                              *.h *.*c*)
 file(GLOB GRAPHICS                                         Graphics/*.*)
+file(GLOB GRAPHICS_TEXTURES                                Graphics/Textures/*.*)
 file(GLOB GUI                                              GUI/*.*)
 file(GLOB GUI_MUTATORS                                     GUI/Mutators/*.*)
 file(GLOB GUI_PANELS                                       GUI/Panels/*.*)
@@ -32,7 +33,7 @@ file(GLOB SCENE_OBJECTS_UNITS                              Scene/Objects/Units/*
 file(GLOB SCENE_OBJECTS_UNITS_GROUND                       Scene/Objects/Units/Ground/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_PATHFINDER                   Scene/Objects/Units/PathFinder/*.*)
 file(GLOB SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER Scene/Objects/Units/PathFinder/NavmeshController/*.*)
-file(GLOB SCENE_OBJECTS_UNITS_SELECTION                    Scene/Objects/Units/Selection/*.*)
+file(GLOB SCENE_OBJECTS_UNITS_SELECTOR                     Scene/Objects/Units/Selector/*.*)
 file(GLOB SCENE_WORLD                                      Scene/World/*.*)
 file(GLOB SHADERS                                          Shaders/*.*)
 file(GLOB SOUNDS                                           Sounds/*.*)
@@ -43,6 +44,7 @@ file(GLOB UTILS                                            Utils/*.*)
 
 source_group(src                                                  FILES ${SRC})
 source_group(Graphics                                             FILES ${GRAPHICS})
+source_group(Graphics\\Textures                                   FILES ${GRAPHICS_TEXTURES})
 source_group(GUI                                                  FILES ${GUI})
 source_group(GUI\\Mutators                                        FILES ${GUI_MUTATORS})
 source_group(GUI\\Panels                                          FILES ${GUI_PANELS})
@@ -55,7 +57,7 @@ source_group(Scene\\Objects\\Units                                FILES ${SCENE_
 source_group(Scene\\Objects\\Units\\Ground                        FILES ${SCENE_OBJECTS_UNITS_GROUND})
 source_group(Scene\\Objects\\Units\\PathFinder                    FILES ${SCENE_OBJECTS_UNITS_PATHFINDER})
 source_group(Scene\\Objects\\Units\\PathFinder\\NavmeshController FILES ${SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER})
-source_group(Scene\\Objects\\Units\\Selection                     FILES ${SCENE_OBJECTS_UNITS_SELECTION})
+source_group(Scene\\Objects\\Units\\Selection                     FILES ${SCENE_OBJECTS_UNITS_SELECTOR})
 source_group(Scene\\World                                         FILES ${SCENE_WORLD})
 source_group(Shaders                                              FILES ${SHADERS})
 source_group(Sounds                                               FILES ${SOUNDS})
@@ -67,11 +69,12 @@ set_source_files_properties(${SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER} 
 
 #set_source_files_properties(Utils/Array2D.cpp PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 
-add_executable(${PROJECT_NAME} ${SRC} ${GRAPHICS} ${GUI} ${GUI_MUTATORS} ${GUI_PANELS} ${GUI_WIDGETS} ${INPUT}
+add_executable(${PROJECT_NAME} ${SRC} ${GRAPHICS} ${GRAPHICS_TEXTURES}
+                               ${GUI} ${GUI_MUTATORS} ${GUI_PANELS} ${GUI_WIDGETS} ${INPUT}
                                ${SCENE} ${SCENE_CAMERAS} ${SCENE_OBJECTS} ${SCENE_OBJECTS_UNITS}
                                ${SCENE_OBJECTS_UNITS_GROUND} ${SCENE_OBJECTS_UNITS_PATHFINDER}
                                ${SCENE_OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER}
-                               ${SCENE_OBJECTS_UNITS_SELECTION}
+                               ${SCENE_OBJECTS_UNITS_SELECTOR}
                                ${SCENE_WORLD} ${SHADERS} ${SOUNDS} ${SYSTEM} ${UTILS}
 #                               ${EXPERIMENTS}
                                )
@@ -99,7 +102,7 @@ message("CMAKE_SYSTEM:             ${CMAKE_SYSTEM}")
 message("CMAKE_SYSTEM_VERSION:     ${CMAKE_SYSTEM_VERSION}")
 message("CMAKE_SYSTEM_PROCESSOR:   ${CMAKE_SYSTEM_PROCESSOR}")
 message("CMAKE_SKIP_RPATH:         ${CMAKE_SKIP_RPATH}")
-#message("CMAKE_VERBOSE_MAKEFILE:   ${CMAKE_VERBOSE_MAKEFILE}")
+message("CMAKE_VERBOSE_MAKEFILE:   ${CMAKE_VERBOSE_MAKEFILE}")
 #message("CMAKE_CXX_FLAGS:          ${CMAKE_CXX_FLAGS}")
 #message("CMAKE_BUILD_TYPE:         ${CMAKE_BUILD_TYPE}")
 #message("CMAKE_C_COMPILER:         ${CMAKE_C_COMPILER} (id ${CMAKE_C_COMPILER_ID}, clang ${CLANG}, GNUC ${GNUC})")

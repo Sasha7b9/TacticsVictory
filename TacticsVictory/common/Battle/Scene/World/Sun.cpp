@@ -1,12 +1,9 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#include <stdafx.h>
-#include "Sun.h"
+/// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#include "stdafx.h"
+#include "Scene/World/Sun.h"
 
 
 using namespace Pi;
-
-
-static ControllerReg<SunController> *TheControllerSun = nullptr;
 
 
 Sun::Sun() : Node("Sun")
@@ -30,18 +27,11 @@ Sun::Sun() : Node("Sun")
     primGeometry->SetMaterialObject(0, sphereMaterial);
     sphereMaterial->Release();
 
-    if(!TheControllerSun)
-    {
-        TheControllerSun = new ControllerReg<SunController>(PiTypeController::Sun, "Sun");
-    }
-    controller = new SunController();
-    SetController(controller);
-    controller->Wake();
+    SetController(new SunController());
 }
 
 Sun::~Sun()
 {
-    SAFE_DELETE(TheControllerSun);
 }
 
 SunController::SunController() : Controller(PiTypeController::Sun)

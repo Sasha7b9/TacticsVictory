@@ -135,11 +135,7 @@ void GameObjectProperty::RemoveSelection()
     selected = false;
     TheInterfaceMgr->RemoveWidget(infoWindow);
 
-    PathMapping *path = PathMapping::FromScene(gameObject);
-    if (path)
-    {
-        delete path;
-    }
+    delete PathMapping::FromScene(gameObject);
 }
 
 

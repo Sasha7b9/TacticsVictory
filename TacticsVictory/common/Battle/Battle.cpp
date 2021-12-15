@@ -16,6 +16,7 @@
 #include "Scene/World/Landscape.h"
 #include "GUI/Widgets/ObjectViewportWidget.h"
 #include "Scene/Objects/Units/PathFinder/PathFinder.h"
+#include "Graphics/Textures/PoolTextures.h"
 
 
 using namespace std;
@@ -34,6 +35,8 @@ Battle::Battle()
     : Singleton<Battle>(self)
 {
     uint64 timeEnter = TheTimeMgr->GetMicrosecondCount();
+
+    PoolTextures::Construct();
 
     new CameraRTS();
 
@@ -77,6 +80,7 @@ Battle::~Battle()
     TheMessageMgr->EndGame();
     SAFE_DELETE(SoundPlayer::self);
     GameObject::Destruct();
+    PoolTextures::Destruct();
 }
 
 void Battle::CreateScene()

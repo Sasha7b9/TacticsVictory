@@ -30,7 +30,7 @@ namespace Pi
     
     private:
         Texture *texture = nullptr;
-        Texture::Header *textureHeader = nullptr;
+        TextureHeader *textureHeader = nullptr;
         uint *imageData = nullptr;
         ColorRGBA colorBackground;
         ColorRGBA colorBrush;

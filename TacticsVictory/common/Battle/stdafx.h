@@ -8,6 +8,7 @@
 #include <cstdarg>
 #include <filesystem>
 #include <functional>
+#include <climits>
 
 #include <Base/PiMemory.h>
 #include <Graphics/PiRender.h>
@@ -21,6 +22,7 @@
 #include <Geometry/PiPrimitives.h>
 #include <Controllers/PiController.h>
 #include <Effects/PiParticles.h>
+#include <Effects/PiMarkings.h>
 #include <World/PiModels.h>
 #include <World/PiSources.h>
 #include <Interface/PiPaint.h>

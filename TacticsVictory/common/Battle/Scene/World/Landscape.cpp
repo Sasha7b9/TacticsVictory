@@ -3,19 +3,20 @@
 #include "Scene/World/Landscape.h"
 #include "Utils/Log.h"
 #include "Scene/World/GameWorld.h"
-#include "Graphics/CanvasTexture.h"
+#include "Graphics/Textures/CanvasTexture.h"
+#include "Graphics/Textures/PoolTextures.h"
 
 
 namespace Pi
 {
 
 class TCell;
-class TField;
+class TZone;
 class Landscape;
 
 
 static TCell    *mapCell = nullptr;
-static TField   *mapField = nullptr;
+static TZone   *mapField = nullptr;
 static Landscape *landscape = nullptr;
 
 
@@ -39,7 +40,7 @@ public:
 
     Integer2D   coord;
     float       height = 1.0F;
-    TField *   field = nullptr;
+    TZone *   field = nullptr;
 
 };
 
@@ -56,8 +57,8 @@ TCell *GGetCell(int x, int y)
 }
 
 
-// Этот класс представляет собой прямоугольник, заполняемый потоком
-class TField
+// Этот класс представляет собой зону ландшафта, заполняемую потоком за раз
+class TZone
 {
 
 public:
@@ -68,7 +69,7 @@ public:
     static const int SIZE_SIDE = 64;
     static const int SIZE_IN_CELLS = SIZE_SIDE * SIZE_SIDE;
 
-    TField() = default;
+    TZone() = default;
 
     void Construct(int col, int row)
     {
@@ -128,20 +129,20 @@ public:
     Mutex mutexCreating;
 };
 
-TField *GetField(int x, int y)
+TZone *GetField(int x, int y)
 {
-    if(x >= 0 && x < TField::NUM_COLS_X && y >= 0 && y < TField::NUM_ROWS_Y)
+    if(x >= 0 && x < TZone::NUM_COLS_X && y >= 0 && y < TZone::NUM_ROWS_Y)
     {
-        return &(mapField[(size_t)x + (size_t)y * (size_t)TField::NUM_COLS_X]);
+        return &(mapField[(size_t)x + (size_t)y * (size_t)TZone::NUM_COLS_X]);
     }
 
-    static TField empty;
+    static TZone empty;
 
     return &empty;
 }
 
-int TField::NUM_ROWS_Y = 0;
-int TField::NUM_COLS_X = 0;
+int TZone::NUM_ROWS_Y = 0;
+int TZone::NUM_COLS_X = 0;
 
 int TCell::NUM_ROWS_Y = 0;
 int TCell::NUM_COLS_X = 0;
@@ -274,22 +275,21 @@ Landscape::~Landscape()
 
     SAFE_DELETE_ARRAY(mapCell);
     SAFE_DELETE_ARRAY(mapField);
-    SAFE_DELETE_ARRAY(mapField);
 }
 
 
-void Landscape::CreateGeometryForField(TField *field)
+void Landscape::CreateGeometryForField(TZone *field)
 {
     if(!field->mutexCreating.TryAcquire())
     {
         return;
     }
 
-    if(field->state == TField::State::Empty)
+    if(field->state == TZone::State::Empty)
     {
         GeometrySurface *surface = new GeometrySurface();
 
-        for(int i = 0; i < TField::SIZE_IN_CELLS; i++)
+        for(int i = 0; i < TZone::SIZE_IN_CELLS; i++)
         {
             TCell *cell = field->GetCell(i);
             if(cell)
@@ -307,9 +307,9 @@ void Landscape::CreateGeometryForField(TField *field)
 
         MaterialObject *material = new MaterialObject();
 
-        CanvasTexture *canvas = new CanvasTexture();
+        Texture *texture = PoolTextures::Get(CanvasTexture::Type::Landscape);
 
-        DiffuseTextureAttribute *diffTexture = new DiffuseTextureAttribute(canvas->GetTexture());
+        DiffuseTextureAttribute *diffTexture = new DiffuseTextureAttribute(texture);
         material->AddAttribute(diffTexture);
 
         Array<MaterialObject*> materialArray;
@@ -319,22 +319,18 @@ void Landscape::CreateGeometryForField(TField *field)
 
         material->Release();
 
-        canvas->SetColorBrush({0.0f, 0.0f, 0.3f});
-        canvas->FillRegion(5, 5, 10, 10);
-        canvas->EndPaint();
-
         delete surfaceList;
 
-        field->state = TField::State::Created;
+        field->state = TZone::State::Created;
     }
 
     field->mutexCreating.Release();
 }
 
 
-void Landscape::AddSurfaceToMesh(TField *field)
+void Landscape::AddSurfaceToMesh(TZone *field)
 {
-    if(field->state == TField::State::Empty || field->state == TField::State::Added)
+    if(field->state == TZone::State::Empty || field->state == TZone::State::Added)
     {
         return;
     }
@@ -342,7 +338,7 @@ void Landscape::AddSurfaceToMesh(TField *field)
     AppendNewSubnode(field->geometry);
     field->geometry->GetObject()->SetCollisionExclusionMask(PiKindCollision::Landscape);
 
-    field->state = TField::State::Added;
+    field->state = TZone::State::Added;
 }
 
 
@@ -673,7 +669,7 @@ int Landscape::AddPlane(GeometrySurface *surface, const Point3D points[4])
     size.x = MyCeil(size.x);
     size.y = MyCeil(size.y);
 
-    const float k = 32.0f;
+    const float k = 1.0f;
 
     Point2D texCoord[] = {
         Point2D(0.0f, 0.0f),
@@ -888,11 +884,11 @@ void Landscape::FillMap(pchar nameFile)
 
     heightMap.SetDimensions(TCell::NUM_COLS_X, TCell::NUM_ROWS_Y);
 
-    TField::NUM_ROWS_Y = TCell::NUM_ROWS_Y / TField::SIZE_SIDE + ((TCell::NUM_ROWS_Y % TField::SIZE_SIDE == 0) ? 0 : 1);
-    TField::NUM_COLS_X = TCell::NUM_COLS_X / TField::SIZE_SIDE + ((TCell::NUM_COLS_X % TField::SIZE_SIDE == 0) ? 0 : 1);
+    TZone::NUM_ROWS_Y = TCell::NUM_ROWS_Y / TZone::SIZE_SIDE + ((TCell::NUM_ROWS_Y % TZone::SIZE_SIDE == 0) ? 0 : 1);
+    TZone::NUM_COLS_X = TCell::NUM_COLS_X / TZone::SIZE_SIDE + ((TCell::NUM_COLS_X % TZone::SIZE_SIDE == 0) ? 0 : 1);
 
     mapCell = new TCell[(size_t)TCell::NUM_ROWS_Y * (size_t)TCell::NUM_COLS_X];
-    mapField = new TField[(size_t)TField::NUM_ROWS_Y * (size_t)TField::NUM_COLS_X];
+    mapField = new TZone[(size_t)TZone::NUM_ROWS_Y * (size_t)TZone::NUM_COLS_X];
 
     char *pointer = buffer;
 
@@ -901,11 +897,11 @@ void Landscape::FillMap(pchar nameFile)
         pointer = ParseLineText(pointer, mapCell + i * TCell::NUM_COLS_X);
     }
 
-    for(int row = 0; row < TField::NUM_ROWS_Y; row++)
+    for(int row = 0; row < TZone::NUM_ROWS_Y; row++)
     {
-        for(int col = 0; col < TField::NUM_COLS_X; col++)
+        for(int col = 0; col < TZone::NUM_COLS_X; col++)
         {
-            TField *field = GetField(col, row);
+            TZone *field = GetField(col, row);
             if (field)
             {
                 field->Construct(col, row);
@@ -1147,45 +1143,64 @@ void LandscapeController::Preprocess()
 
 void LandscapeController::Move()
 {
-    Controller::Move();
-
     if(!landscape->created)
     {
         int added = 0;
 
-        for(int y = 0; y < TField::NUM_ROWS_Y; y++)
+        for(int y = 0; y < TZone::NUM_ROWS_Y; y++)
         {
-            for(int x = 0; x < TField::NUM_COLS_X; x++)
+            for(int x = 0; x < TZone::NUM_COLS_X; x++)
             {
-                TField *field = GetField(x, y);
+                TZone *field = GetField(x, y);
 
-                if(field && field->state == TField::State::Created)
+                if(field && field->state == TZone::State::Created)
                 {
                     landscape->AddSurfaceToMesh(field);
                 }
 
-                if (field && field->state == TField::State::Added)
+                if (field && field->state == TZone::State::Added)
                 {
                     added++;
                 }
             }
         }
 
-        if (added == TField::NUM_ROWS_Y * TField::NUM_COLS_X)
+        if (added == TZone::NUM_ROWS_Y * TZone::NUM_COLS_X)
         {
             landscape->created = true;
+        }
+    }
+    else
+    {
+        Sleep();
+        TheConsoleWindow->AddText("Landscape created");
+    }
+}
+
+
+void LandscapeController::TheAdditionsOfSurfaces(const Thread *, void *)
+{
+    for(int y = 0; y < TZone::NUM_ROWS_Y; y++)
+    {
+        for(int x = 0; x < TZone::NUM_COLS_X; x++)
+        {
+            landscape->CreateGeometryForField(GetField(x, y));
         }
     }
 }
 
 
-void LandscapeController::TheAdditionsOfSurfaces(const Thread * /*thread*/, void * /*cookie*/)
+PointLandscape::PointLandscape(const Point3D &point)
 {
-    for(int y = 0; y < TField::NUM_ROWS_Y; y++)
-    {
-        for(int x = 0; x < TField::NUM_COLS_X; x++)
-        {
-            landscape->CreateGeometryForField(GetField(x, y));
-        }
-    }
+    z = point.z;
+
+    x = point.x + 0.5f;
+    x *= 10.0f;
+    x = (float)(int)x;
+    x /= 10.0f;
+
+    y = point.y + 0.5f;
+    y *= 10.0f;
+    y = (float)(int)y;
+    y /= 10.0f;
 }
