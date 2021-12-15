@@ -5,12 +5,16 @@
 
 using namespace Pi;
 
-
-static Array<CanvasTexture *> textures;
-
-
-static CanvasTexture *CreateLandscape();
-static CanvasTexture *CreateSelect();
+namespace Pi
+{
+    namespace PoolTextures
+    {
+        static Array<CanvasTexture *> textures;
+    
+        CanvasTexture *CreateLandscape();
+        CanvasTexture *CreateSelect();
+    }
+}
 
 
 void PoolTextures::Construct()
@@ -26,7 +30,7 @@ void PoolTextures::Destruct()
 {
     for(int i = 0; i < textures.GetElementCount(); i++)
     {
-//        delete textures[i];
+        delete textures[i];
     }
 }
  
@@ -37,19 +41,19 @@ Texture *PoolTextures::Get(CanvasTexture::Type type)
 }
 
 
-static CanvasTexture *CreateLandscape()
+CanvasTexture *PoolTextures::CreateLandscape()
 {
     CanvasTexture *canvas = new CanvasTexture(32, 32);
 
     canvas->BeginPaint({{0.0f, 0.3f, 0.0f}, 1.0f}, {0.0f, 0.0f, 0.3f});
-    canvas->DrawRectangle(1, 1, 30, 30);
+    canvas->DrawRectangle(2, 2, 28, 28);
     canvas->EndPaint();
 
     return canvas;
 }
 
 
-static CanvasTexture *CreateSelect()
+CanvasTexture *PoolTextures::CreateSelect()
 {
     CanvasTexture *canvas = new CanvasTexture(32, 32);
 

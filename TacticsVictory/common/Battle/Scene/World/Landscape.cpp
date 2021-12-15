@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+ï»¿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <stdafx.h>
 #include "Scene/World/Landscape.h"
 #include "Utils/Log.h"
@@ -25,8 +25,8 @@ class TCell : public ListElement <TCell>
 
 public:
 
-    static int NUM_ROWS_Y;          // Êîëè÷åñòâî êëåòîê ïî Y
-    static int NUM_COLS_X;          // Êîëè÷åñòâî êëåòîê ïî X
+    static int NUM_ROWS_Y;          // ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ»ÐµÑ‚Ð¾Ðº Ð¿Ð¾ Y
+    static int NUM_COLS_X;          // ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ»ÐµÑ‚Ð¾Ðº Ð¿Ð¾ X
 
     TCell() {};
 
@@ -57,16 +57,16 @@ TCell *GGetCell(int x, int y)
 }
 
 
-// Ýòîò êëàññ ïðåäñòàâëÿåò ñîáîé çîíó ëàíäøàôòà, çàïîëíÿåìóþ ïîòîêîì çà ðàç
+// Ð­Ñ‚Ð¾Ñ‚ ÐºÐ»Ð°ÑÑ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÑÐµÑ‚ ÑÐ¾Ð±Ð¾Ð¹ Ð·Ð¾Ð½Ñƒ Ð»Ð°Ð½Ð´ÑˆÐ°Ñ„Ñ‚Ð°, Ð·Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ÑƒÑŽ Ð¿Ð¾Ñ‚Ð¾ÐºÐ¾Ð¼ Ð·Ð° Ñ€Ð°Ð·
 class TZone
 {
 
 public:
 
-    static int NUM_ROWS_Y;      // Êîëè÷åñòâî çîí, íà êîòîðûå áú¸òñÿ ëàíäøàôò, ïî îñè Y
+    static int NUM_ROWS_Y;      // ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð¾Ð½, Ð½Ð° ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±ÑŠÑ‘Ñ‚ÑÑ Ð»Ð°Ð½Ð´ÑˆÐ°Ñ„Ñ‚, Ð¿Ð¾ Ð¾ÑÐ¸ Y
     static int NUM_COLS_X;
 
-    static const int SIZE_SIDE = 64;
+    static const int SIZE_SIDE = 50;
     static const int SIZE_IN_CELLS = SIZE_SIDE * SIZE_SIDE;
 
     TZone() = default;
@@ -316,6 +316,8 @@ void Landscape::CreateGeometryForField(TZone *field)
         materialArray.AddElement(material);
 
         field->geometry = new GenericGeometry(1, &surfaceTable, materialArray);
+//        field->geometry->GetObject()->EnableGeometryFlags(PiFlagGeometry::RenderEffectPass);        // Ð’ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ð¿Ñ€Ð¾Ð·Ñ€Ð°Ñ‡Ð½Ð¾ÑÑ‚ÑŒ
+//        field->geometry->GetObject()->EnableGeometryEffectFlags(PiFlagGeometryEffect::Accumulate);
 
         material->Release();
 
@@ -1001,7 +1003,7 @@ char *Landscape::ParseLineText(char * const text, TCell *values)
                     int x = (numCell - y * TCell::NUM_COLS_X) % TCell::NUM_COLS_X;
 
                     values[numValue].Construct(x, y, (float)SymbolsToInt(firstSymbol, lastSymbol));
-                    heightMap.At(x, TCell::NUM_ROWS_Y - y - 1) = values[numValue].height;                   // Îòðàæàåì y, ïîòîìó ÷òî ïîñëå çàãðóçêè ëàíäøàôò ñìåùàåòñÿ ïî Y
+                    heightMap.At(x, TCell::NUM_ROWS_Y - y - 1) = values[numValue].height;                   // ÐžÑ‚Ñ€Ð°Ð¶Ð°ÐµÐ¼ y, Ð¿Ð¾Ñ‚Ð¾Ð¼Ñƒ Ñ‡Ñ‚Ð¾ Ð¿Ð¾ÑÐ»Ðµ Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ð»Ð°Ð½Ð´ÑˆÐ°Ñ„Ñ‚ ÑÐ¼ÐµÑ‰Ð°ÐµÑ‚ÑÑ Ð¿Ð¾ Y
                     state = State::InSpace;
                     numValue++;
                 }
@@ -1091,7 +1093,7 @@ Point3D Landscape::GetPointScreen(float x, float y, bool &result)
     Point3D p1 = ray.origin;
     Point3D p2 = p1 + ray.direction * ray.tmax;
 
-    // Ñíà÷àëà îïðåäåëÿåì ñòîëêíîâåíèå ïåðâîé ïîïàâøåéñÿ ãåîìåòðèåé
+    // Ð¡Ð½Ð°Ñ‡Ð°Ð»Ð° Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÑÐµÐ¼ ÑÑ‚Ð¾Ð»ÐºÐ½Ð¾Ð²ÐµÐ½Ð¸Ðµ Ð¿ÐµÑ€Ð²Ð¾Ð¹ Ð¿Ð¾Ð¿Ð°Ð²ÑˆÐµÐ¹ÑÑ Ð³ÐµÐ¾Ð¼ÐµÑ‚Ñ€Ð¸ÐµÐ¹
     if (GameWorld::Get()->DetectCollision(p1, p2, 0.0f, PiKindCollision::PathUnit, &data))
     {
         GeometryObject *object = data.geometry->GetObject();

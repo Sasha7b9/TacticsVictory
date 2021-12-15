@@ -1,5 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#include <stdafx.h>
+#include "stdafx.h"
 #include "CursorGUI.h"
 #include "GUI/Panels/PanelBottom.h"
 #include "GUI/Panels/PanelGUI.h"
@@ -8,7 +8,7 @@
 #include "Utils/Math.h"
 #include "Scene/Cameras/CameraRTS.h"
 #include "Scene/World/GameWorld.h"
-#include "Scene/Objects/GameObject.h"
+#include "Objects/GameObject.h"
 
 
 using namespace Pi;

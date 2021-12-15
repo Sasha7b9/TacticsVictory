@@ -1,17 +1,18 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#include <stdafx.h>
+#include "stdafx.h"
 #include "Battle.h"
 #include "GUI/GUI.h"
 #include "GUI/Widgets/CursorGUI.h"
 #include "Input/Mouse.h"
-#include "Scene/Objects/GameObject.h"
+#include "Objects/GameObject.h"
 #include "Scene/World/GameWorld.h"
 #include "Scene/World/Landscape.h"
 #include "Scene/World/Sun.h"
-#include "Scene/World/WorldGizmo.h"
-#include "Scene/Objects/Units/Ground/Tank.h"
+#include "Graphics/Meshes/WorldGizmo.h"
+#include "Objects/Units/Ground/Tank.h"
 #include "Graphics/Textures/PoolTextures.h"
-#include "Scene/Objects/Units/Selector/Selector.h"
+#include "Objects/Units/Selector/Selector.h"
+#include "Objects/Units/Air/Airplane.h"
 
 
 using namespace Pi;
@@ -127,25 +128,14 @@ void GameWorld::Move()
         {
             GameObject *tank = Tank::Create();
             tank->SetMapPosition((float)Math::Random(0, landscape->GetSizeX_Columns() - 1), (float)Math::Random(0, landscape->GetSizeY_Rows() - 1));
-            GameWorld::Get()->AppendGameObject(tank);
+            AppendGameObject(tank);
         }
 
-        Texture *texture = PoolTextures::Get(CanvasTexture::Type::Select);
-        DiffuseTextureAttribute *diffuse = new DiffuseTextureAttribute(texture);
-        MaterialObject *material = new MaterialObject();
-        material->AddAttribute(diffuse);
+        Airplane *airplane = Airplane::Create();
 
-        MarkingData data;
-        data.markingFlags = PiFlagMarking::Light;
-        data.markingOffset = 10.0f;
-        data.center.Set(3.5f, 3.5f, 0.0f);
-        data.normal.Set(0.0f, 0.0f, 1.0f);
-        data.tangent = Get()->GetRootNode()->GetWorldTransform()[0];
-        data.radius = 0.5f;
-        data.materialObject = material;
-        data.color.Set(1.0f, 1.0f, 1.0f, 1.0f);
-        data.lifeTime = INT_MAX;
-        MarkingEffect::New(this, &data);
+        airplane->SetMapPosition(3.0f, 3.0f, 3.0f);
+
+        AppendGameObject(airplane);
 
         GetRootNode()->AppendNewSubnode(new Selector());
     }

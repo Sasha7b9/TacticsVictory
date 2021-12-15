@@ -1,9 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#include <stdafx.h>
-#include "Mouse.h"
+#include "stdafx.h"
+#include "Input/Mouse.h"
 #include "GUI/Widgets/Button.h"
 #include "GUI/Widgets/CursorGUI.h"
-#include "Scene/Objects/GameObject.h"
+#include "Objects/GameObject.h"
 #include "Scene/World/GameWorld.h"
 
 

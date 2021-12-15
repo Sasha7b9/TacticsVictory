@@ -6,7 +6,7 @@
 #include "GUI/Widgets/CursorGUI.h"
 #include "GUI/Widgets/Console.h"
 #include "Scene/Cameras/CameraRTS.h"
-#include "Scene/Objects/Units/Ground/Tank.h"
+#include "Objects/Units/Ground/Tank.h"
 #include "Scene/World/GameWorld.h"
 #include "Input/Input.h"
 #include "Input/Mouse.h"
@@ -15,8 +15,9 @@
 #include "Utils/Log.h"
 #include "Scene/World/Landscape.h"
 #include "GUI/Widgets/ObjectViewportWidget.h"
-#include "Scene/Objects/Units/PathFinder/PathFinder.h"
+#include "Objects/Units/PathFinder/PathFinder.h"
 #include "Graphics/Textures/PoolTextures.h"
+#include "Graphics/Geometry/PoolGeometry.h"
 
 
 using namespace std;
@@ -37,6 +38,7 @@ Battle::Battle()
     uint64 timeEnter = TheTimeMgr->GetMicrosecondCount();
 
     PoolTextures::Construct();
+    PoolGeometry::Construct();
 
     new CameraRTS();
 
@@ -80,6 +82,7 @@ Battle::~Battle()
     TheMessageMgr->EndGame();
     SAFE_DELETE(SoundPlayer::self);
     GameObject::Destruct();
+    PoolGeometry::Destruct();
     PoolTextures::Destruct();
 }
 
