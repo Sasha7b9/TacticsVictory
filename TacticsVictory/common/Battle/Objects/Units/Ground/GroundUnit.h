@@ -5,28 +5,28 @@
 
 namespace Pi
 {
-    // ----------------------------------------------------------------------------------------------------------------
     class GroundUnitObject : public UnitObject
     {
+    public:
+
+        const TypeGroundUnit::S typeGroundUnit;
+
     protected:
 
-        GroundUnitObject(TTypeGroundUnit::S _type) : UnitObject(TTypeUnit::Ground), typeGroundUnit(_type) {}
-
-    private:
-
-        TTypeGroundUnit::S typeGroundUnit;
+        GroundUnitObject(TypeGroundUnit::S _type) : UnitObject(TypeUnit::Ground), typeGroundUnit(_type) {}
     };
 
 
-    // ----------------------------------------------------------------------------------------------------------------
     class GroundUnitController : public UnitController
     {
-    protected:
-
-        GroundUnitController(const PiTypeController::S &contrType);
-
     public:
 
         virtual ~GroundUnitController() {};
+
+        GroundUnitObject *GetGroundUnitObject() const { return (GroundUnitObject *)GetTargetNode(); }
+
+    protected:
+
+        GroundUnitController(const PiTypeController::S &, UnitParameters *);
     };
 }

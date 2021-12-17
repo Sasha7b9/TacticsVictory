@@ -27,7 +27,7 @@ CanvasTexture::CanvasTexture(int width, int height)
     header->auxiliaryDataSize = 0;
     header->auxiliaryDataOffset = 0;
 
-    data = new uint[(size_t)(width * height)];
+    data = new uint[(size_t)(width * height)]; //-V1028
 
     texture = Texture::Get(header, data);
 }
@@ -94,7 +94,7 @@ void CanvasTexture::DrawLine(int x1, int y1, int x2, int y2)
         while (height--)
         {
             *pixel = colorBrush;
-            pixel += header->imageWidth;
+            pixel += header->imageWidth; //-V102
         }
     }
     else

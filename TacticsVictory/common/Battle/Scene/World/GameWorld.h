@@ -33,8 +33,6 @@ namespace Pi
 
         // Преобразует мировые координаты точки в экранные
         Point3D TransformWorldCoordToDisplay(const Point3D &worldPosition);
-
-        void AppendGameObject(GameObject *gameObject);
     
     private:
     

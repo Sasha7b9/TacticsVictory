@@ -14,11 +14,11 @@ namespace Pi
 
     protected:
 
-        AmmoObject(TTypeAmmo::S type) : GameObject(TTypeGameObject::Ammo), typeAmmo(type) {};
+        AmmoObject(TypeAmmo::S type) : GameObject(TypeGameObject::Ammo), typeAmmo(type) {};
 
     private:
 
-        TTypeAmmo::S typeAmmo;
+        TypeAmmo::S typeAmmo;
     };
 
 

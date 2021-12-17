@@ -1,6 +1,7 @@
 ﻿// 2021/12/15 21:10:21 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Objects/Units/Air/Airplane.h"
+#include "Objects/Units/UnitParameters.h"
 
 
 using namespace Pi;
@@ -16,7 +17,7 @@ Airplane *Airplane::Create()
 }
 
 
-Airplane::Airplane() : AirUnitObject(TTypeAirUnit::Airplane)
+Airplane::Airplane() : AirUnitObject(TypeAirUnit::Airplane)
 {
     PrimitiveGeometry *geometry = new PyramidGeometry({1.0f, 1.0f}, 1.0f);
     geometry->GetObject()->Build(geometry);
@@ -43,7 +44,7 @@ Airplane::~Airplane()
 }
 
 
-AirplaneController::AirplaneController() : AirUnitController(TTypeAirUnit::Airplane)
+AirplaneController::AirplaneController() : AirUnitController(TypeAirUnit::Airplane, &parameters)
 {
 
 }
@@ -70,20 +71,47 @@ Controller *AirplaneController::Replicate() const
 void AirplaneController::Preprocess()
 {
     AirUnitController::Preprocess();
+
+    param->speed.y = Math::RandomFloat(0.00001f, 0.003f);
 }
 
 
 void AirplaneController::Move()
 {
     AirUnitController::Move();
+}
 
-    float speed = 1.0f;
 
-    float dT = TheTimeMgr->GetDeltaSeconds();
+NavigatorAirplane::NavigatorAirplane(UnitController *controller) : Commander(controller)
+{
 
-    Point3D position = GetTargetNode()->GetNodePosition();
-    position.y += dT * speed;
+}
 
-    GetTargetNode()->SetNodePosition(position);
-    GetTargetNode()->Invalidate();
+
+void NavigatorAirplane::Update(float dT)
+{
+    Commander::Update(dT);
+}
+
+
+DriverAirplane::DriverAirplane(UnitController *controller) : Driver(controller)
+{
+
+}
+
+
+void DriverAirplane::Update(float dT)
+{
+    Point3D position = unit->GetNodePosition();
+
+    position.y += controller->param->speed.y * dT;
+
+    unit->SetNodePosition(position);
+    unit->Invalidate();
+}
+
+
+ShooterAirplane::ShooterAirplane(UnitController *controller) : Shooter(controller)
+{
+
 }

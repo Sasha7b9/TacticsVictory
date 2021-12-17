@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Objects/Units/Ground/Tank.h"
+#include "Objects/Units/UnitParameters.h"
 
 
 using namespace Pi;
@@ -12,7 +13,7 @@ GameObject *Tank::Create()
 
     node->SetController(new TankController());
 
-    Model *model = Model::Get(TTypeGroundUnit::Tank);
+    Model *model = Model::Get(TypeGroundUnit::Tank);
 
     node->AppendNewSubnode(model);
 
@@ -20,9 +21,8 @@ GameObject *Tank::Create()
 }
 
 
-TankController::TankController() : GroundUnitController(TTypeGroundUnit::Tank)
+TankController::TankController() : GroundUnitController(TypeGroundUnit::Tank, &parameters)
 {
-
 }
 
 
@@ -47,4 +47,34 @@ Controller *TankController::Replicate() const
 void TankController::Preprocess()
 {
     GroundUnitController::Preprocess();
+}
+
+
+NavigatorTank::NavigatorTank(UnitController *controller) : Commander(controller)
+{
+
+}
+
+
+void NavigatorTank::Update(float dT)
+{
+
+}
+
+
+DriverTank::DriverTank(UnitController *controller) : Driver(controller)
+{
+
+}
+
+
+void DriverTank::Update(float dT)
+{
+
+}
+
+
+ShooterTank::ShooterTank(UnitController *controller) : Shooter(controller)
+{
+
 }

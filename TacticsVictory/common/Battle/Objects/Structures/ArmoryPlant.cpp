@@ -12,7 +12,7 @@ GameObject *ArmoryPlant::Create()
 }
 
 
-ArmoryPlantController::ArmoryPlantController() : StructureController(TTypeStructure::ArmoryPlant)
+ArmoryPlantController::ArmoryPlantController() : StructureController(TypeStructure::ArmoryPlant)
 {
 
 }

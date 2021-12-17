@@ -22,7 +22,7 @@ Sun::Sun() : Node("Sun")
     primGeometry->Update();
 
     MaterialObject *sphereMaterial = new MaterialObject();
-    DiffuseAttribute *diffuse = new DiffuseAttribute(K::white->GetColorRGB());
+    SpecularAttribute *diffuse = new SpecularAttribute(K::white->GetColorRGB(), 1.0f);
     sphereMaterial->AddAttribute(diffuse);
     primGeometry->SetMaterialObject(0, sphereMaterial);
     sphereMaterial->Release();

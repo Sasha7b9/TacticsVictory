@@ -12,7 +12,7 @@ GameObject *RocketLauncher::Create()
 }
 
 
-RocketLauncherController::RocketLauncherController() : WeaponController(TTypeWeapon::RocketLauncher)
+RocketLauncherController::RocketLauncherController() : WeaponController(TypeWeapon::RocketLauncher)
 {
 
 }

@@ -13,7 +13,7 @@ namespace Pi
 
     private:
 
-        CivilianPlant() : StructureObject(TTypeStructure::CivilianPlant) {};
+        CivilianPlant() : StructureObject(TypeStructure::CivilianPlant) {};
         virtual ~CivilianPlant() {};
     };
 

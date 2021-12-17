@@ -13,7 +13,7 @@ namespace Pi
 
     private:
 
-        Boat() : WaterUnitObject(TTypeWaterUnit::Boat) {};
+        Boat() : WaterUnitObject(TypeWaterUnit::Boat) {};
         virtual ~Boat() {};
     };
 
@@ -29,8 +29,56 @@ namespace Pi
 
     private:
 
+        static const UnitParameters parameters;
+
         BoatController(const BoatController &);
 
         virtual Controller *Replicate() const override;
+    };
+
+
+    class NavigatorBoat : public Commander
+    {
+        friend class Commander;
+
+    public:
+
+        virtual ~NavigatorBoat() {}
+
+        virtual void Update(float dT) override;
+
+    protected:
+
+        NavigatorBoat(UnitController *);
+    };
+
+
+    class DriverBoat : public Driver
+    {
+        friend class Driver;
+
+    public:
+
+        virtual ~DriverBoat() {}
+
+        virtual void Update(float dT) override;
+
+    protected:
+
+        DriverBoat(UnitController *);
+    };
+
+
+    class ShooterBoat : public Shooter
+    {
+        friend class Shooter;
+
+    public:
+
+        virtual ~ShooterBoat() {}
+
+    protected:
+
+        ShooterBoat(UnitController *);
     };
 }

@@ -12,7 +12,7 @@ GameObject *Bullet::Create()
 }
 
 
-BulletController::BulletController() : AmmoController(TTypeAmmo::Bullet)
+BulletController::BulletController() : AmmoController(TypeAmmo::Bullet)
 {
 
 }

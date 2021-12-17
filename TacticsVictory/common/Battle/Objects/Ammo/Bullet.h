@@ -13,7 +13,7 @@ namespace Pi
 
     private:
 
-        Bullet() : AmmoObject(TTypeAmmo::Bullet) {};
+        Bullet() : AmmoObject(TypeAmmo::Bullet) {};
         virtual ~Bullet() {};
     };
 

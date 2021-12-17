@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <stdafx.h>
 #include "Objects/GameObject.h"
 #include "Scene/Cameras/CameraRTS.h"
@@ -9,6 +9,7 @@
 #include "Objects/Units/PathFinder/PathMapping.h"
 #include "Objects/Units/Unit.h"
 #include "Objects/Ammo/Ammo.h"
+#include "Scene/World/Water.h"
 
 
 using namespace Pi;
@@ -20,7 +21,7 @@ int         GameObject::createdObjects = 0;
 
 void GameObject::Construct()
 {
-    empty = new GameObject(TTypeGameObject::Empty);
+    empty = new GameObject(TypeGameObject::Empty);
 
     AmmoObject::Construct();
     UnitObject::Construct();
@@ -40,7 +41,7 @@ void GameObject::Destruct()
 }
 
 
-GameObject::GameObject(TTypeGameObject::S _type) : Node(), typeObject(_type)
+GameObject::GameObject(TypeGameObject::S _type) : Node(), typeObject(_type)
 {
     id = ++createdObjects;
 
@@ -48,24 +49,53 @@ GameObject::GameObject(TTypeGameObject::S _type) : Node(), typeObject(_type)
 }
 
 
-void GameObject::SetMapPosition(float mapX, float mapY)
+bool GameObject::AppendInGame(int _x, int _y)
 {
-    GetGameObjectProperty().SetMapPosition(mapX, mapY);
+    float x = (float)_x;
+    float y = (float)_y;
 
-    float x = mapX + 0.5f;
-    float y = mapY + 0.5f;
+    bool append = false;
 
-    SetNodePosition({x, y, GameWorld::Get()->GetLandscape()->GetHeightAccurately(x, y)});
+    if (IsUnit())
+    {
+        UnitObject *unit = CastToUnitObject();
+
+        if (unit->typeUnit == TypeUnit::Air)
+        {
+            float height = Water::UnderWater(_x, _y) ? 0 : GameWorld::self->GetLandscape()->GetHeightAccurately(x, y);
+            unit->SetNodePosition({x, y, height + 5.0f});
+            append = true;
+        }
+        else if (unit->typeUnit == TypeUnit::Ground)
+        {
+            if (!Water::UnderWater(_x, _y))
+            {
+                float height = GameWorld::self->GetLandscape()->GetHeightAccurately(x, y);
+                unit->SetNodePosition({x, y, height});
+                append = true;
+            }
+        }
+        else if (unit->typeUnit == TypeUnit::Water)
+        {
+            if (Water::UnderWater(_x, _y))
+            {
+                unit->SetNodePosition({x, y, Water::Level()});
+                append = true;
+            }
+        }
+    }
+
+    if (append)
+    {
+        GameWorld::self->GetRootNode()->AppendNewSubnode(this);
+        return true;
+    }
+
+    return false;
 }
 
 
-void GameObject::SetMapPosition(float mapX, float mapY, float mapZ)
-{
-    SetNodePosition({mapX, mapY, mapZ});
-}
-
-
-GameObjectController::GameObjectController(TTypeGameObject::S _typeObject, PiTypeController::S contrType) :
+GameObjectController::GameObjectController(TypeGameObject::S _typeObject, PiTypeController::S contrType) :
     Controller(contrType),
     typeObject(_typeObject)
 {

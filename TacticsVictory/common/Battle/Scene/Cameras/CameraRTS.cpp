@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+п»ї// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <stdafx.h>
 #include "CameraRTS.h"
 #include "GUI/Widgets/CursorGUI.h"
@@ -57,8 +57,8 @@ void CameraRTS::TiltAngleDecrease()
 void CameraRTS::Move()
 {
     float dt = TheTimeMgr->GetFloatDeltaTime() * 0.005f;
-    float deltaFwd = 0.0f;                  // Смещение по линии вперёд/назад
-    float deltaRight = 0.0f;                // Смещение по линии влево/вправо
+    float deltaFwd = 0.0f;                  // РЎРјРµС‰РµРЅРёРµ РїРѕ Р»РёРЅРёРё РІРїРµСЂС‘Рґ/РЅР°Р·Р°Рґ
+    float deltaRight = 0.0f;                // РЎРјРµС‰РµРЅРёРµ РїРѕ Р»РёРЅРёРё РІР»РµРІРѕ/РІРїСЂР°РІРѕ
 
     const float sensitivity = 300.0f;
 

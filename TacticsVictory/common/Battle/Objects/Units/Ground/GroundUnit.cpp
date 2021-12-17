@@ -6,8 +6,8 @@
 using namespace Pi;
 
 
-GroundUnitController::GroundUnitController(const PiTypeController::S &type) :
-    UnitController(type)
+GroundUnitController::GroundUnitController(const PiTypeController::S &type, UnitParameters *param) :
+    UnitController(type, param)
 {
 
 }

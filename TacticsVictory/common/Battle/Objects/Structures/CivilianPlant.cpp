@@ -12,7 +12,7 @@ GameObject *CivilianPlant::Create()
 }
 
 
-CivilianPlantController::CivilianPlantController() : StructureController(TTypeStructure::CivilianPlant)
+CivilianPlantController::CivilianPlantController() : StructureController(TypeStructure::CivilianPlant)
 {
 
 }

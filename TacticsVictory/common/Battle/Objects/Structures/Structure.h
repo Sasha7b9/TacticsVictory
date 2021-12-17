@@ -9,11 +9,11 @@ namespace Pi
     {
     protected:
 
-        StructureObject(TTypeStructure::S type) : GameObject(TTypeGameObject::Structure), typeStructure(type) {};
+        StructureObject(TypeStructure::S type) : GameObject(TypeGameObject::Structure), typeStructure(type) {};
 
     private:
 
-        TTypeStructure::S typeStructure;
+        TypeStructure::S typeStructure;
     };
 
     class StructureController : public GameObjectController

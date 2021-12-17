@@ -13,7 +13,7 @@ namespace Pi
 
     private:
 
-        RocketLauncher() : WeaponObject(TTypeWeapon::RocketLauncher) {};
+        RocketLauncher() : WeaponObject(TypeWeapon::RocketLauncher) {};
         virtual ~RocketLauncher() {};
     };
 

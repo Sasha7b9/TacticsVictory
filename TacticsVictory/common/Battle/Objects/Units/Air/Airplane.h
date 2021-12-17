@@ -31,8 +31,56 @@ namespace Pi
 
     private:
 
+        static UnitParameters parameters;
+
         AirplaneController(const AirplaneController &);
 
         virtual Controller *Replicate() const override;
+    };
+
+
+    class NavigatorAirplane : public Commander
+    {
+        friend class Commander;
+
+    public:
+
+        virtual ~NavigatorAirplane() {}
+
+        virtual void Update(float dT) override;
+
+    protected:
+
+        NavigatorAirplane(UnitController *);
+    };
+
+
+    class DriverAirplane : public Driver
+    {
+        friend class Driver;
+
+    public:
+
+        virtual ~DriverAirplane() {}
+
+        virtual void Update(float dT) override;
+
+    protected:
+
+        DriverAirplane(UnitController *);
+    };
+
+
+    class ShooterAirplane : public Shooter
+    {
+        friend class Shooter;
+
+    public:
+
+        virtual ~ShooterAirplane() {}
+
+    protected:
+
+        ShooterAirplane(UnitController *);
     };
 }

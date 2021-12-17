@@ -7,24 +7,26 @@ namespace Pi
 {
     class WaterUnitObject : public UnitObject
     {
+    public:
+
+        const TypeWaterUnit::S typeWaterUnit;
+
     protected:
 
-        WaterUnitObject(TTypeWaterUnit::S _type) : UnitObject(TTypeUnit::Water), typeWaterUnit(_type) {}
-
-    private:
-
-        TTypeWaterUnit::S typeWaterUnit;
+        WaterUnitObject(TypeWaterUnit::S _type) : UnitObject(TypeUnit::Water), typeWaterUnit(_type) {}
     };
 
 
     class WaterUnitController : public UnitController
     {
-    protected:
-
-        WaterUnitController(const PiTypeController::S &contrType);
-
     public:
 
         virtual ~WaterUnitController() {};
+
+        WaterUnitObject *GetWaterUnitObject() const { return (WaterUnitObject *)GetTargetNode(); }
+
+    protected:
+
+        WaterUnitController(const PiTypeController::S &, const UnitParameters *);
     };
 }

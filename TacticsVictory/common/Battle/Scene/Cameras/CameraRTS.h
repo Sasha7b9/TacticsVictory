@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+п»ї// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
 
@@ -62,13 +62,13 @@ namespace Pi
     
     private:
         ulong movementFlags = 0;
-        Point3D pointFocus {5.0f, 5.0f, 0.0f};     // Точка, вокруг которой происходит вращение камера. Сюда всегда направлен её взгляд
+        Point3D pointFocus {10.0f, 25.0f, 0.0f};     // РўРѕС‡РєР°, РІРѕРєСЂСѓРі РєРѕС‚РѕСЂРѕР№ РїСЂРѕРёСЃС…РѕРґРёС‚ РІСЂР°С‰РµРЅРёРµ РєР°РјРµСЂР°. РЎСЋРґР° РІСЃРµРіРґР° РЅР°РїСЂР°РІР»РµРЅ РµС‘ РІР·РіР»СЏРґ
         float distance = 25.0f;
     
-        float azimuth = -0.5f * K::pi;              // Угол поворота в горизонтальной плоскости
-        float angleTilt = -0.1f * K::pi;            // Угол поворота в вертикальной плоскости
+        float azimuth = -0.5f * K::pi;              // РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р° РІ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕР№ РїР»РѕСЃРєРѕСЃС‚Рё
+        float angleTilt = -0.1f * K::pi;            // РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р° РІ РІРµСЂС‚РёРєР°Р»СЊРЅРѕР№ РїР»РѕСЃРєРѕСЃС‚Рё
 
-        Vector2D speed {0.0f, 0.0f};                // Скорость камеры в плоскости ландашфта
+        Vector2D speed {0.0f, 0.0f};                // РЎРєРѕСЂРѕСЃС‚СЊ РєР°РјРµСЂС‹ РІ РїР»РѕСЃРєРѕСЃС‚Рё Р»Р°РЅРґР°С€С„С‚Р°
     
         Vector3D GetVectorMoveXY(float deltaFwd, float deltaRight, float anglePlaneXY);
         void SetDistance(float distance);

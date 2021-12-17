@@ -6,7 +6,7 @@
 using namespace Pi;
 
 
-StructureController::StructureController(PiTypeController::S type) : GameObjectController(TTypeGameObject::Structure, type)
+StructureController::StructureController(PiTypeController::S type) : GameObjectController(TypeGameObject::Structure, type)
 {
 
 }

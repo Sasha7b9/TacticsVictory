@@ -6,8 +6,8 @@
 using namespace Pi;
 
 
-AirUnitController::AirUnitController(const PiTypeController::S &type) :
-    UnitController(type)
+AirUnitController::AirUnitController(const PiTypeController::S &type, UnitParameters *param) :
+    UnitController(type, param)
 {
 
 }

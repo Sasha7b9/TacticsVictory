@@ -40,6 +40,7 @@
 #include <System/PiMain.h>
 #include <Math/PiVector3D.h>
 #include <Interface/PiToolWindows.h>
+#include <Physics/PiWater.h>
 
 
 #ifdef WIN32
@@ -50,3 +51,4 @@
 
 
 #include "defines.h" 
+#include "Utils/Log.h"

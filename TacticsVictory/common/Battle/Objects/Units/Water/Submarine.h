@@ -1,6 +1,7 @@
 ﻿// 2021/12/15 22:05:44 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Objects/Units/Water/WaterUnit.h"
+#include "Objects/Units/UnitParameters.h"
 
 
 namespace Pi
@@ -9,11 +10,12 @@ namespace Pi
     {
     public:
 
-        static GameObject *Create();
+        static Submarine *Create();
 
     private:
 
-        Submarine() : WaterUnitObject(TTypeWaterUnit::Submarine) {};
+        Submarine();
+
         virtual ~Submarine() {};
     };
 
@@ -22,15 +24,59 @@ namespace Pi
     {
     public:
 
-        SubmarineController();
-        virtual ~SubmarineController();
+        SubmarineController() : WaterUnitController(TypeWaterUnit::Submarine, &parameters) {}
 
-        virtual void Preprocess() override;
+        virtual ~SubmarineController() {}
 
     private:
 
-        SubmarineController(const SubmarineController &);
+        static UnitParameters parameters;
+    };
 
-        virtual Controller *Replicate() const override;
+
+    class CommanderSubmarine : public Commander
+    {
+        friend class Commander;
+
+    public:
+
+        virtual ~CommanderSubmarine() {}
+
+    protected:
+
+        CommanderSubmarine(UnitController *controller) : Commander(controller) {}
+
+        virtual void ParseDive(const UnitTask *) const override;
+        virtual void ParseRotate(const UnitTask *) const override;
+    };
+
+
+    class DriverSubmarine : public Driver
+    {
+        friend class Driver;
+
+    public:
+
+        virtual ~DriverSubmarine() {}
+
+        virtual void Update(float dT) override;
+
+    protected:
+
+        DriverSubmarine(UnitController *controller) : Driver(controller) {}
+    };
+
+
+    class ShooterSubmarine : public Shooter
+    {
+        friend class Shooter;
+
+    public:
+
+        virtual ~ShooterSubmarine() {}
+
+    protected:
+
+        ShooterSubmarine(UnitController *controller) : Shooter(controller) {}
     };
 }

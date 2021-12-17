@@ -6,7 +6,7 @@
 using namespace Pi;
 
 
-WeaponController::WeaponController(PiTypeController::S type) : GameObjectController(TTypeGameObject::Weapon, type)
+WeaponController::WeaponController(PiTypeController::S type) : GameObjectController(TypeGameObject::Weapon, type)
 {
 
 }

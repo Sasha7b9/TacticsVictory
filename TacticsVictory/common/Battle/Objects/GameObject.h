@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+п»ї// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "System/Events.h"
 #include "Objects/InfoWindow.h"
@@ -12,7 +12,6 @@ namespace Pi
     class UnitObject;
 
 
-    //----------------------------------------------------------------------------------------------------------------------------
     class GameObject : public Node
     {
     public:
@@ -23,18 +22,22 @@ namespace Pi
 
         GameObjectProperty &GetGameObjectProperty() { return *(GameObjectProperty *)GetProperty(PiTypeProperty::GameObject); }
 
-        // Установить координаты объекта на карте. От мировых они отличаются на 0.5f
-        void SetMapPosition(float mapX, float mapY);
+        // Р”РѕР±Р°РІРёС‚СЊ РѕР±СЉРµРєС‚ РІ РёРіСЂСѓ
+        bool AppendInGame(int x, int y);
 
-        void SetMapPosition(float mapX, float mapY, float mapZ);
+        template<typename T>
+        T *GetController()
+        {
+            return (T *)Node::GetController();
+        }
 
-        // Возвращает указатель на объект, кторый находится в экранных координатах coord
+        // Р’РѕР·РІСЂР°С‰Р°РµС‚ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚, РєС‚РѕСЂС‹Р№ РЅР°С…РѕРґРёС‚СЃСЏ РІ СЌРєСЂР°РЅРЅС‹С… РєРѕРѕСЂРґРёРЅР°С‚Р°С… coord
         static GameObject &GetFromScreen(const Point2D &coord);
 
-        // Преобразует к указателю на UnitObject, если возможно, и возвращает nullptr в ином случае
+        // РџСЂРµРѕР±СЂР°Р·СѓРµС‚ Рє СѓРєР°Р·Р°С‚РµР»СЋ РЅР° UnitObject, РµСЃР»Рё РІРѕР·РјРѕР¶РЅРѕ, Рё РІРѕР·РІСЂР°С‰Р°РµС‚ nullptr РІ РёРЅРѕРј СЃР»СѓС‡Р°Рµ
         UnitObject *CastToUnitObject() { return IsUnit() ? (UnitObject *)this : nullptr; }
 
-        bool IsUnit() const { return typeObject == TTypeGameObject::Unit; }
+        bool IsUnit() const { return typeObject == TypeGameObject::Unit; }
 
         static GameObject *empty;
 
@@ -42,21 +45,19 @@ namespace Pi
 
     protected:
 
-        GameObject(TTypeGameObject::S);
+        GameObject(TypeGameObject::S);
 
         virtual ~GameObject() {}
 
     private:
-        void SetNodePosition(const Point3D &position) { Node::SetNodePosition(position); }
 
-        TTypeGameObject::S typeObject;
+        TypeGameObject::S typeObject;
 
-        static int createdObjects;              // Столько объектов уже создано
+        static int createdObjects;              // РЎС‚РѕР»СЊРєРѕ РѕР±СЉРµРєС‚РѕРІ СѓР¶Рµ СЃРѕР·РґР°РЅРѕ
         int id = 0;
     };
 
 
-    //----------------------------------------------------------------------------------------------------------------------------
     class GameObjectController : public Controller, public LinkTarget<GameObjectController>
     {
     public:
@@ -69,12 +70,12 @@ namespace Pi
     
     protected:
     
-        GameObjectController(TTypeGameObject::S typeObject, PiTypeController::S contrType);
+        GameObjectController(TypeGameObject::S typeObject, PiTypeController::S contrType);
         GameObjectController(const GameObjectController &gameObjectController);
     
     private:
     
-        TTypeGameObject::S typeObject;
+        TypeGameObject::S typeObject;
         float scaleDefault = 1.0F;
         Vector3D rotateDefault {Vector3D::ZERO};
         Point3D coordGame;
@@ -82,7 +83,6 @@ namespace Pi
     };
 
 
-    //----------------------------------------------------------------------------------------------------------------------------
     class GameObjectProperty : public Property, public EventTarget
     {
         friend class GameObjectController;
@@ -95,20 +95,18 @@ namespace Pi
 
         bool Selectable() const { return gameObject.IsUnit(); }
 
-        // Установить выделение
+        // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РІС‹РґРµР»РµРЅРёРµ
         void SetSelection();
 
-        // Снять выделение
+        // РЎРЅСЏС‚СЊ РІС‹РґРµР»РµРЅРёРµ
         void RemoveSelection();
 
-        // Сюда посылается событие мыши : 0 - левая кнопка, 1 - средняя кнопка, 2 - правая кнопка
+        // РЎСЋРґР° РїРѕСЃС‹Р»Р°РµС‚СЃСЏ СЃРѕР±С‹С‚РёРµ РјС‹С€Рё : 0 - Р»РµРІР°СЏ РєРЅРѕРїРєР°, 1 - СЃСЂРµРґРЅСЏСЏ РєРЅРѕРїРєР°, 2 - РїСЂР°РІР°СЏ РєРЅРѕРїРєР°
         void MouseEvent(uint state);
-
-        void SetMapPosition(float x, float y) { positionMap = {x, y}; }
 
         bool Selected() const { return selected; }
 
-        // Возвращает GameObjectProperty в позиции на экране, указываемой координатами coord
+        // Р’РѕР·РІСЂР°С‰Р°РµС‚ GameObjectProperty РІ РїРѕР·РёС†РёРё РЅР° СЌРєСЂР°РЅРµ, СѓРєР°Р·С‹РІР°РµРјРѕР№ РєРѕРѕСЂРґРёРЅР°С‚Р°РјРё coord
         static GameObjectProperty *GetFromScreen(const Point2D &coord);
 
         GameObject &gameObject;
@@ -117,8 +115,5 @@ namespace Pi
 
         bool        selected = false;
         InfoWindow *infoWindow = nullptr;
-        Vector3D    rotate = Vector3D::ZERO;
-        float       scale = 1.0F;
-        Vector2D    positionMap{0.0f, 0.0f};
     };
 }

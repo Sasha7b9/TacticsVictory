@@ -13,7 +13,7 @@ namespace Pi
 
     private:
 
-        Laser() : WeaponObject(TTypeWeapon::Laser) {};
+        Laser() : WeaponObject(TypeWeapon::Laser) {};
         virtual ~Laser() {};
     };
 

@@ -7,21 +7,27 @@ namespace Pi
 {
     class AirUnitObject : public UnitObject
     {
+    public:
+
+        const TypeAirUnit::S typeAirUnit;
+
     protected:
 
-        AirUnitObject(TTypeAirUnit::S _type) : UnitObject(TTypeUnit::Air), typeAirUnit(_type) {}
-
-    private:
-
-        TTypeAirUnit::S typeAirUnit;
+        AirUnitObject(TypeAirUnit::S _type) : UnitObject(TypeUnit::Air), typeAirUnit(_type) {}
     };
 
 
     class AirUnitController : public UnitController
     {
+    public:
+
+        virtual ~AirUnitController() {};
+
+        AirUnitObject *GetAirUnitObject()  { return (AirUnitObject *)GetTargetNode(); }
+
     protected:
 
-        AirUnitController(const PiTypeController::S &contrType);
+        AirUnitController(const PiTypeController::S &, UnitParameters *);
     };
 }
 

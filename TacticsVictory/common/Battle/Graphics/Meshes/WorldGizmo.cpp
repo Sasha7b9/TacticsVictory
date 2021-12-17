@@ -1,6 +1,7 @@
 // 2021/12/3 13:54:05 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Graphics/Meshes/WorldGizmo.h"
+#include "Scene/World/Landscape.h"
 
 
 using namespace Pi;
@@ -22,6 +23,7 @@ Node *WorldGizmo::CreateAxis(const ColorRGBA &color, const Transform4D &transfor
     PrimitiveGeometryObject *object = geometry->GetObject();
     object->DisableGeometryFlags(PiFlagGeometry::CastShadows);
     object->Build(geometry);
+    object->SetCollisionExclusionMask(PiKindCollision::Unit);
 
     MaterialObject *material = new MaterialObject();
     DiffuseAttribute *diffuse = new DiffuseAttribute(color);

@@ -12,7 +12,7 @@ GameObject *Rocket::Create()
 }
 
 
-RocketController::RocketController() : AmmoController(TTypeAmmo::Rocket)
+RocketController::RocketController() : AmmoController(TypeAmmo::Rocket)
 {
 
 }

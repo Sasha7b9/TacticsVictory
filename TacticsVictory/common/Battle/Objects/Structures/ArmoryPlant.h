@@ -13,7 +13,7 @@ namespace Pi
 
     private:
 
-        ArmoryPlant() : StructureObject(TTypeStructure::ArmoryPlant) {};
+        ArmoryPlant() : StructureObject(TypeStructure::ArmoryPlant) {};
         virtual ~ArmoryPlant() {};
     };
 

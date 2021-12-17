@@ -13,7 +13,7 @@ namespace Pi
 
     private:
 
-        Helicopter() : AirUnitObject(TTypeAirUnit::Helicopter) {};
+        Helicopter() : AirUnitObject(TypeAirUnit::Helicopter) {};
         virtual ~Helicopter() {};
     };
 
@@ -29,8 +29,56 @@ namespace Pi
 
     private:
 
+        static UnitParameters parameters;
+
         HelicopterController(const HelicopterController &);
 
         virtual Controller *Replicate() const override;
+    };
+
+
+    class NavigatorHelicopter : public Commander
+    {
+        friend class Commander;
+
+    public:
+
+        virtual ~NavigatorHelicopter() {}
+
+        virtual void Update(float dT) override;
+
+    protected:
+
+        NavigatorHelicopter(UnitController *);
+    };
+
+
+    class DriverHelicopter : public Driver
+    {
+        friend class Driver;
+
+    public:
+
+        virtual ~DriverHelicopter() {}
+
+        virtual void Update(float dT) override;
+
+    protected:
+
+        DriverHelicopter(UnitController *);
+    };
+
+
+    class ShooterHelicopter : public Shooter
+    {
+        friend class Shooter;
+
+    public:
+
+        virtual ~ShooterHelicopter() {}
+
+    protected:
+
+        ShooterHelicopter(UnitController *);
     };
 }

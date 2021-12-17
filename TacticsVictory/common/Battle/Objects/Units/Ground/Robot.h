@@ -13,7 +13,7 @@ namespace Pi
 
     private:
 
-        Robot() : GroundUnitObject(TTypeGroundUnit::Robot) {};
+        Robot() : GroundUnitObject(TypeGroundUnit::Robot) {};
         virtual ~Robot() {};
     };
 
@@ -23,14 +23,63 @@ namespace Pi
     public:
 
         RobotController();
+
         virtual ~RobotController();
 
         virtual void Preprocess() override;
 
     private:
 
+        static UnitParameters parameters;
+
         RobotController(const RobotController &);
 
         virtual Controller *Replicate() const override;
+    };
+
+
+    class NavigatorRobot : public Commander
+    {
+        friend class Commander;
+
+    public:
+
+        virtual ~NavigatorRobot() {}
+
+        virtual void Update(float dT) override;
+
+    protected:
+
+        NavigatorRobot(UnitController *);
+    };
+
+
+    class DriverRobot : public Driver
+    {
+        friend class Driver;
+
+    public:
+
+        virtual ~DriverRobot() {}
+
+        virtual void Update(float dT) override;
+
+    protected:
+
+        DriverRobot(UnitController *);
+    };
+
+
+    class ShooterRobot : public Shooter
+    {
+        friend class Shooter;
+
+    public:
+
+        virtual ~ShooterRobot() {}
+
+    protected:
+
+        ShooterRobot(UnitController *);
     };
 }

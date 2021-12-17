@@ -82,17 +82,17 @@ NavmeshInterface *GetNavmeshController(char const *name);
 
 //  These should be built-in to C4, I think!
 
-template<size_t N> Pi::String<N> &operator+=(Pi::String<N> &left, Pi::Vector3D const &right)
+template<size_t Navi> Pi::String<Navi> &operator+=(Pi::String<Navi> &left, Pi::Vector3D const &right)
 {
   return (((((left += right.x) += ",") += right.y) += ",") += right.z);
 }
 
-template<size_t N> Pi::String<N> &operator+=(Pi::String<N> &left, Pi::Point3D const &right)
+template<size_t Navi> Pi::String<Navi> &operator+=(Pi::String<Navi> &left, Pi::Point3D const &right)
 {
   return (((((left += right.x) += ",") += right.y) += ",") += right.z);
 }
 
-template<size_t N> Pi::String<N> &operator+=(Pi::String<N> &left, float const &right)
+template<size_t Navi> Pi::String<Navi> &operator+=(Pi::String<Navi> &left, float const &right)
 {
   return left += Pi::Text::FloatToString(right);
 }

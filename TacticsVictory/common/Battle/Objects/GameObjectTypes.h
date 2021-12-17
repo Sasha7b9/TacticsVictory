@@ -9,7 +9,7 @@ namespace Pi
         const S GameObject = "GameObject";
     }
 
-    namespace TTypeGameObject
+    namespace TypeGameObject
     {
         typedef StringHash S;
 
@@ -20,7 +20,7 @@ namespace Pi
         const S Weapon    = "Weapon";
     }
 
-    namespace TTypeAmmo
+    namespace TypeAmmo
     {
         typedef StringHash S;
 
@@ -28,7 +28,7 @@ namespace Pi
         const S Rocket = "Rocket";
     }
 
-    namespace TTypeStructure
+    namespace TypeStructure
     {
         typedef StringHash S;
 
@@ -36,17 +36,15 @@ namespace Pi
         const S CivilianPlant = "CivilianPlant";
     }
 
-    namespace TTypeUnit
+    enum class TypeUnit
     {
-        typedef StringHash S;
+        Air,
+        Ground,
+        Underground,
+        Water
+    };
 
-        const S Air         = "Air";
-        const S Ground      = "Ground";
-        const S Underground = "Underground";
-        const S Water       = "Water";
-    }
-
-    namespace TTypeWeapon
+    namespace TypeWeapon
     {
         typedef StringHash S;
 
@@ -54,7 +52,7 @@ namespace Pi
         const S Laser          = "Laser";
     }
 
-    namespace TTypeAirUnit
+    namespace TypeAirUnit
     {
         typedef StringHash S;
 
@@ -62,20 +60,20 @@ namespace Pi
         const S Helicopter = "Helicopter";
     }
 
-    namespace TTypeGroundUnit
+    namespace TypeGroundUnit
     {
         typedef StringHash S;
 
-        const S Tank  = "Tank";
         const S Robot = "Robot";
+        const S Tank  = "Tank";
         const S Worm  = "Worm";
     }
 
-    namespace TTypeWaterUnit
+    namespace TypeWaterUnit
     {
         typedef StringHash S;
 
-        const S Submarine = "Submarine";
         const S Boat      = "Bot";
+        const S Submarine = "Submarine";
     }
 }

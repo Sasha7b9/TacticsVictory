@@ -19,6 +19,8 @@ namespace Pi
     {
         const B Landscape = 1 << 17;        // Ладшафт
         const B PathUnit  = 1 << 18;        // Метка пути
+        const B Water     = 1 << 19;        // Вода
+        const B Unit      = 1 << 20;
     }
 
     // Преобразует произвольные координаты на ланшафте в соответствующую точку клети ландшафта
@@ -50,7 +52,7 @@ namespace Pi
         float           GetHeightCenter(float x_col, float y_row);
         // Возвращет точку ландшафта, находящуюся в экранных координатах x, y
         Point3D         GetPointScreen(float x_col, float y_row, bool &result);
-        Array2D<float>  heightMap;
+        Array2D<float>  _heightMap;
 
     private:
         static int      AddTriangle(GeometrySurface *surface, const Point3D points[3]);

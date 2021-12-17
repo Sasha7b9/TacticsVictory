@@ -13,7 +13,7 @@ namespace Pi
 
     private:
 
-        Worm() : GroundUnitObject(TTypeGroundUnit::Worm) {};
+        Worm() : GroundUnitObject(TypeGroundUnit::Worm) {};
         virtual ~Worm() {};
     };
 
@@ -23,14 +23,63 @@ namespace Pi
     public:
 
         WormController();
+
         virtual ~WormController();
 
         virtual void Preprocess() override;
 
     private:
 
+        static UnitParameters parameters;
+
         WormController(const WormController &);
 
         virtual Controller *Replicate() const override;
+    };
+
+
+    class NavigatorWorm : public Commander
+    {
+        friend class Commander;
+
+    public:
+
+        virtual ~NavigatorWorm() {}
+
+        virtual void Update(float dT) override;
+
+    protected:
+
+        NavigatorWorm(UnitController *);
+    };
+
+
+    class DriverWorm : public Driver
+    {
+        friend class Driver;
+
+    public:
+
+        virtual ~DriverWorm() {}
+
+        virtual void Update(float dT) override;
+
+    protected:
+
+        DriverWorm(UnitController *);
+    };
+
+
+    class ShooterWorm : public Shooter
+    {
+        friend class Shooter;
+
+    public:
+
+        virtual ~ShooterWorm() {}
+
+    protected:
+
+        ShooterWorm(UnitController *);
     };
 }

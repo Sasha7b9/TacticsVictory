@@ -13,6 +13,9 @@
 #include "Graphics/Textures/PoolTextures.h"
 #include "Objects/Units/Selector/Selector.h"
 #include "Objects/Units/Air/Airplane.h"
+#include "Scene/World/Water.h"
+#include "Objects/Units/UnitLogic/UnitTask.h"
+#include "Objects/Units/Water/Submarine.h"
 
 
 using namespace Pi;
@@ -114,6 +117,41 @@ void GameWorld::Render()
 }
 
 
+static void AppendObject(GameObject *object)
+{
+    Landscape *landscape = GameWorld::self->GetLandscape();
+
+    int sizeX = landscape->GetSizeX_Columns();
+    int sizeY = landscape->GetSizeY_Rows();
+
+    bool added = false;
+
+    while (!added)
+    {
+        added = object->AppendInGame(std::rand() % sizeX, std::rand() % sizeY);
+    }
+}
+
+
+static void CreateObjects(GameWorld *world)
+{
+    for (int i = 0; i < 50; i++)
+    {
+        AppendObject(Tank::Create());
+
+        AppendObject(Airplane::Create());
+
+        Submarine *submarine = Submarine::Create();
+
+        AppendObject(submarine);
+
+        submarine->GetController<UnitController>()->AppendTask(new DiveUnitTaskAbs(-5.0f));
+    }
+
+    world->GetRootNode()->AppendNewSubnode(new Selector());
+}
+
+
 void GameWorld::Move()
 {
     World::Move();
@@ -124,20 +162,11 @@ void GameWorld::Move()
     {
         created = true;
 
-        for (int i = 0; i < 100; i++)
-        {
-            GameObject *tank = Tank::Create();
-            tank->SetMapPosition((float)Math::Random(0, landscape->GetSizeX_Columns() - 1), (float)Math::Random(0, landscape->GetSizeY_Rows() - 1));
-            AppendGameObject(tank);
-        }
+        self = this;
 
-        Airplane *airplane = Airplane::Create();
+        Water::Create();
 
-        airplane->SetMapPosition(3.0f, 3.0f, 3.0f);
-
-        AppendGameObject(airplane);
-
-        GetRootNode()->AppendNewSubnode(new Selector());
+        CreateObjects(Get());
     }
 }
 
@@ -199,10 +228,4 @@ Point3D GameWorld::TransformWorldCoordToDisplay(const Point3D &worldPosition)
     displayPoint.z = 0.0f;
 
     return displayPoint;
-}
-
-
-void GameWorld::AppendGameObject(GameObject *object)
-{
-    Get()->GetRootNode()->AppendNewSubnode(object);
 }

@@ -5,6 +5,7 @@
 #include "Scene/World/GameWorld.h"
 #include "Graphics/Textures/CanvasTexture.h"
 #include "Graphics/Textures/PoolTextures.h"
+#include "Scene/World/Water.h"
 
 
 namespace Pi
@@ -255,7 +256,7 @@ Landscape::Landscape(pchar nameFile, float delta) : Node()
     controller = new LandscapeController();
     SetController(controller);
     controller->Wake();
-    SetNodePosition({0, (float)GetSizeY_Rows(), 0});
+    SetNodePosition({0 - 0.5f, (float)GetSizeY_Rows() - 0.5f, 0});
 }
 
 
@@ -316,8 +317,6 @@ void Landscape::CreateGeometryForField(TZone *field)
         materialArray.AddElement(material);
 
         field->geometry = new GenericGeometry(1, &surfaceTable, materialArray);
-//        field->geometry->GetObject()->EnableGeometryFlags(PiFlagGeometry::RenderEffectPass);        // Включаем прозрачность
-//        field->geometry->GetObject()->EnableGeometryEffectFlags(PiFlagGeometryEffect::Accumulate);
 
         material->Release();
 
@@ -884,7 +883,7 @@ void Landscape::FillMap(pchar nameFile)
     TCell::NUM_ROWS_Y = GetNumLines(buffer, (int)size);
     TCell::NUM_COLS_X = GetNumElementInLine(buffer);
 
-    heightMap.SetDimensions(TCell::NUM_COLS_X, TCell::NUM_ROWS_Y);
+    _heightMap.SetDimensions(TCell::NUM_COLS_X, TCell::NUM_ROWS_Y);
 
     TZone::NUM_ROWS_Y = TCell::NUM_ROWS_Y / TZone::SIZE_SIDE + ((TCell::NUM_ROWS_Y % TZone::SIZE_SIDE == 0) ? 0 : 1);
     TZone::NUM_COLS_X = TCell::NUM_COLS_X / TZone::SIZE_SIDE + ((TCell::NUM_COLS_X % TZone::SIZE_SIDE == 0) ? 0 : 1);
@@ -1002,8 +1001,18 @@ char *Landscape::ParseLineText(char * const text, TCell *values)
                     int y = numCell / TCell::NUM_COLS_X;
                     int x = (numCell - y * TCell::NUM_COLS_X) % TCell::NUM_COLS_X;
 
-                    values[numValue].Construct(x, y, (float)SymbolsToInt(firstSymbol, lastSymbol));
-                    heightMap.At(x, TCell::NUM_ROWS_Y - y - 1) = values[numValue].height;                   // Отражаем y, потому что после загрузки ландшафт смещается по Y
+                    float value = (float)SymbolsToInt(firstSymbol, lastSymbol);
+ 
+                    int col = x;
+                    int row = TCell::NUM_ROWS_Y - y - 1;
+
+                    if (Water::UnderWater(col, row))
+                    {
+                        value = -10.0f;
+                    }
+
+                    values[numValue].Construct(x, y, value);
+                    _heightMap.At(col, row) = values[numValue].height;                   // Отражаем y, потому что после загрузки ландшафт смещается по Y
                     state = State::InSpace;
                     numValue++;
                 }
@@ -1078,7 +1087,7 @@ float Landscape::GetHeightAccurately(float x, float y, bool forPanelMap)
 
 float Landscape::GetHeightCenter(float x, float y)
 {
-    return heightMap.At((int)x, (int)y);
+    return _heightMap.At((int)x, (int)y);
 }
 
 

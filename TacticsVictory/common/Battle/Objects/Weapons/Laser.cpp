@@ -12,7 +12,7 @@ GameObject *Laser::Create()
 }
 
 
-LaserController::LaserController() : WeaponController(TTypeWeapon::Laser)
+LaserController::LaserController() : WeaponController(TypeWeapon::Laser)
 {
 
 }

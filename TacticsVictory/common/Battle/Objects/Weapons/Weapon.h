@@ -9,11 +9,11 @@ namespace Pi
     {
     protected:
 
-        WeaponObject(TTypeWeapon::S type) : GameObject(TTypeGameObject::Weapon), typeWeapon(type) {};
+        WeaponObject(TypeWeapon::S type) : GameObject(TypeGameObject::Weapon), typeWeapon(type) {};
 
     private:
 
-        TTypeWeapon::S typeWeapon;
+        TypeWeapon::S typeWeapon;
     };
 
 

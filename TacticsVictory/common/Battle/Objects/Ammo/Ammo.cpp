@@ -18,7 +18,7 @@ void AmmoObject::Destruct()
 }
 
 
-AmmoController::AmmoController(PiTypeController::S type) : GameObjectController(TTypeGameObject::Ammo, type)
+AmmoController::AmmoController(PiTypeController::S type) : GameObjectController(TypeGameObject::Ammo, type)
 {
 
 }

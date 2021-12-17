@@ -1,6 +1,7 @@
 ﻿// 2021/12/15 21:32:35 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Objects/Units/Ground/Worm.h"
+#include "Objects/Units/UnitParameters.h"
 
 
 using namespace Pi;
@@ -12,7 +13,7 @@ GameObject *Worm::Create()
 }
 
 
-WormController::WormController() : GroundUnitController(TTypeGroundUnit::Worm)
+WormController::WormController() : GroundUnitController(TypeGroundUnit::Worm, &parameters)
 {
 
 }
@@ -39,4 +40,34 @@ Controller *WormController::Replicate() const
 void WormController::Preprocess()
 {
     GroundUnitController::Preprocess();
+}
+
+
+NavigatorWorm::NavigatorWorm(UnitController *controller) : Commander(controller)
+{
+
+}
+
+
+void NavigatorWorm::Update(float dT)
+{
+
+}
+
+
+DriverWorm::DriverWorm(UnitController *controller) : Driver(controller)
+{
+
+}
+
+
+void DriverWorm::Update(float dT)
+{
+
+}
+
+
+ShooterWorm::ShooterWorm(UnitController *controller) : Shooter(controller)
+{
+
 }
