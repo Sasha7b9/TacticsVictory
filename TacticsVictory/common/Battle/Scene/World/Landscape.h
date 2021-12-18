@@ -52,9 +52,13 @@ namespace Pi
         float           GetHeightCenter(float x_col, float y_row);
         // Возвращет точку ландшафта, находящуюся в экранных координатах x, y
         Point3D         GetPointScreen(float x_col, float y_row, bool &result);
-        Array2D<float>  _heightMap;
+
 
     private:
+
+        Array2D<float>  heightMap;
+        File            file;
+
         static int      AddTriangle(GeometrySurface *surface, const Point3D points[3]);
         static int      AddTriangle(GeometrySurface *surface, const Point3D &point0, const Point3D &point1, const Point3D &point2);
         static Point3D  NewPoint(int x, int y, int num, int dX, int dY);

@@ -26,7 +26,13 @@ namespace Pi
         // ¬озвращает путь к каталогу с данными игры (Data/TacticsVictory)
         std::string DataPath() const;
 
+        void ReloadLandscape() const;
+
     private:
+
+        CommandObserver<Battle> gizmoCommandObserver { this, &Battle::HandleGizmoCommand };
+        CommandObserver<Battle> fogDensityCommandObserver { this, &Battle::HandleFogDensityCommand };
+
         DisplayEventHandler    displayEventHandler{&HandleDisplayEvent};
         LocatorRegistration    locatorReg{PiTypeLocator::Spectator, "Spectator Camera"};
 
@@ -36,6 +42,11 @@ namespace Pi
 
         virtual void HandleGameEvent(GameEvent::E event, const void *param) override;
 
+        void HandleGizmoCommand(Command *, pchar);
+        void HandleFogDensityCommand(Command *, pchar);
+
         void CreateScene();
+
+        void CreateCommands();
     };
 }

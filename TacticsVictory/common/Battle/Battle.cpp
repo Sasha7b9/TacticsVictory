@@ -15,7 +15,7 @@
 #include "Utils/Log.h"
 #include "Scene/World/Landscape.h"
 #include "GUI/Widgets/ObjectViewportWidget.h"
-#include "Objects/Units/PathFinder/PathFinder.h"
+#include "Objects/Units/Logic/PathFinder/PathFinder.h"
 #include "Graphics/Textures/PoolTextures.h"
 #include "Graphics/Geometry/PoolGeometry.h"
 
@@ -69,6 +69,8 @@ Battle::Battle()
 
     float timeConstructor = (float) (TheTimeMgr->GetMicrosecondCount() - timeEnter) * 1e-6f;
 
+    CreateCommands();
+
     LOG_WRITE("Game constructor %f seconds", timeConstructor);
 }
 
@@ -91,6 +93,15 @@ void Battle::CreateScene()
     TheWorldMgr->LoadWorld("world/Empty");
 }
 
+
+void Battle::CreateCommands()
+{
+    TheEngine->AddCommand(new Command("gizmo", &gizmoCommandObserver, {"enable/disable units gizmo"}));
+
+    TheEngine->AddCommand(new Command("waterFogDensity", &fogDensityCommandObserver, {"set fog density for water"}));
+}
+
+
 World *Battle::ConstructWorld(pchar name, void *)
 {
     new GameWorld(name);
@@ -102,4 +113,10 @@ World *Battle::ConstructWorld(pchar name, void *)
 string Battle::DataPath() const
 {
     return current_path().string() + "/Data/TacticsVictory/";
+}
+
+
+void Battle::ReloadLandscape() const
+{
+    LOG_WRITE("Need reload landscape");
 }

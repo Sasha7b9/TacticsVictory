@@ -4,7 +4,6 @@
 #include "Scene/World/Water.h"
 #include "Scene/World/Landscape.h"
 #include "Utils/Math.h"
-#include "Objects/Units/UnitLogic/StepAction.h"
 
 
 using namespace Pi;
@@ -38,40 +37,16 @@ Submarine::Submarine() : WaterUnitObject(TypeWaterUnit::Submarine)
 }
 
 
-void CommanderSubmarine::ParseDive(const UnitTask *task) const
+void CommanderSubmarine::ParseDive(const CommanderTask *task) const
 {
-    if (task->destination.z == unit->GetNodePosition().z)
+    if (task->destination.z != unit->GetNodePosition().z)
     {
-        return;
+        driver->AppendTask(new DriverTaskDive(driver, task->destination.z));
     }
-
-    driver->AppendTask(new DiveUnitTaskAbs(task->destination.z));
 }
 
 
-void CommanderSubmarine::ParseRotate(const UnitTask *) const
+void CommanderSubmarine::ParseRotate(const CommanderTask *task) const
 {
-
-}
-
-
-void DriverSubmarine::Update(float dT)
-{
-    Driver::Update(dT);
-
-    if (tasks.GetElementCount() == 0)
-    {
-        return;
-    }
-
-    const UnitTask *task = tasks[0];
-
-    if (task->type == UnitTask::Type::Dive)
-    {
-        if(ActionDive().Run(unit, task, controller, dT))
-        {
-            delete task;
-            tasks.RemoveElement(0);
-        }
-    }
+    driver->AppendTask(new DriverTaskRotate(driver, Vector3D::UP, task->destination.z));
 }

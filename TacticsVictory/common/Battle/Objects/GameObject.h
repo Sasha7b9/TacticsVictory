@@ -43,6 +43,8 @@ namespace Pi
 
         int GetID() const { return id; }
 
+        void SetNodeDirection(const Vector3D &direction, const Vector3D &up = Vector3D::UP);
+
     protected:
 
         GameObject(TypeGameObject::S);

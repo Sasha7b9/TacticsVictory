@@ -3,7 +3,7 @@
 #include "Scene/World/Landscape.h"
 #include "Scene/World/GameWorld.h"
 #include "Objects/Units/Unit.h"
-#include "Objects/Units/PathFinder/PathFinder.h"
+#include "Objects/Units/Logic/PathFinder/PathFinder.h"
 
 
 using namespace Pi;

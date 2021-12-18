@@ -11,10 +11,9 @@
 #include "Graphics/Meshes/WorldGizmo.h"
 #include "Objects/Units/Ground/Tank.h"
 #include "Graphics/Textures/PoolTextures.h"
-#include "Objects/Units/Selector/Selector.h"
+#include "Objects/Units/Logic/Selector.h"
 #include "Objects/Units/Air/Airplane.h"
 #include "Scene/World/Water.h"
-#include "Objects/Units/UnitLogic/UnitTask.h"
 #include "Objects/Units/Water/Submarine.h"
 
 
@@ -144,8 +143,6 @@ static void CreateObjects(GameWorld *world)
         Submarine *submarine = Submarine::Create();
 
         AppendObject(submarine);
-
-        submarine->GetController<UnitController>()->AppendTask(new DiveUnitTaskAbs(-5.0f));
     }
 
     world->GetRootNode()->AppendNewSubnode(new Selector());

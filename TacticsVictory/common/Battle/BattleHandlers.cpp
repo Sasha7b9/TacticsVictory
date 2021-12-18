@@ -3,6 +3,7 @@
 #include "Battle.h"
 #include "Scene/World/GameWorld.h"
 #include "Scene/World/Landscape.h"
+#include "Scene/World/Water.h"
 
 
 using namespace Pi;
@@ -32,4 +33,18 @@ void Battle::ApplicationTask()
 void Battle::HandleOnButtonQuit(Widget *, const WidgetEventData *)
 {
     TheEngine->Quit();
+}
+
+
+void Battle::HandleGizmoCommand(Command *, pchar)
+{
+
+}
+
+
+void Battle::HandleFogDensityCommand(Command *, pchar text)
+{
+    float density = Text::StringToFloat(text);
+
+    Water::SetFogDensity(density);
 }

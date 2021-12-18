@@ -1,6 +1,6 @@
 // 2021/12/12 21:37:18 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Objects/Units/PathFinder/PathMapping.h"
+#include "Objects/Units/Logic/PathFinder/PathMapping.h"
 #include "Scene/World/GameWorld.h"
 #include "Scene/World/Landscape.h"
 

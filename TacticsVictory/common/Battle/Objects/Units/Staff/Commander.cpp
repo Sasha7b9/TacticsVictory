@@ -1,6 +1,6 @@
 ﻿// 2021/12/17 0:00:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Objects/Units/UnitLogic/Commander.h"
+#include "Objects/Units/Staff/Commander.h"
 #include "Objects/Units/Unit.h"
 #include "Objects/Units/Air/AirUnit.h"
 #include "Objects/Units/Ground/GroundUnit.h"
@@ -12,6 +12,7 @@
 #include "Objects/Units/Ground/Tank.h"
 #include "Objects/Units/Ground/Worm.h"
 #include "Objects/Units/Water/Submarine.h"
+#include "Scene/World/Water.h"
 
 
 using namespace Pi;
@@ -54,9 +55,9 @@ Commander *Commander::New(UnitController *controller)
 
 void Commander::Update(float dT)
 {
-    while (tasks.GetElementCount())
+    while (!tasks.Empty())
     {
-        const UnitTask *task = tasks[0];
+        const CommanderTask *task = tasks[0];
 
         BreakIntoSteps(task);
 
@@ -74,27 +75,36 @@ void Commander::Update(float dT)
 
 void Commander::AppendRandomTask()
 {
+    int value = 127;
 
+    if ((rand() % value) == 0)
+    {
+        AppendTask(new CommanderTaskDive(Math::RandomFloat(-9.0f, Water::Level())));
+    }
+    else if ((rand() % value) == 0)
+    {
+        AppendTask(new CommanderTaskRotate({0.0f, 0.0f, Math::RandomFloat(-K::pi, K::pi)}));
+    }
 }
 
 
-void Commander::BreakIntoSteps(const UnitTask *task) const
+void Commander::BreakIntoSteps(const CommanderTask *task) const
 {
     if (!controller->CanExecute(task->type))
     {
-        LOG_ERROR("Can not process task %d", task->type);
+//        LOG_ERROR("Can not process task %d", task->type);
         return;
     }
 
-    if (task->type == UnitTask::Type::Move)
+    if (task->type == CommanderTask::Type::Move)
     {
         ParseMove(task);
     }
-    else if (task->type == UnitTask::Type::Dive)
+    else if (task->type == CommanderTask::Type::Dive)
     {
         ParseDive(task);
     }
-    else if (task->type == UnitTask::Type::Rotate)
+    else if (task->type == CommanderTask::Type::Rotate)
     {
         ParseRotate(task);
     }
@@ -105,19 +115,19 @@ void Commander::BreakIntoSteps(const UnitTask *task) const
 }
 
 
-void Commander::ParseMove(const UnitTask *task) const
+void Commander::ParseMove(const CommanderTask *task) const
 {
-    LOG_ERROR("Empty function %s", __FUNCTION__);
+//    LOG_ERROR("Empty function %s", __FUNCTION__);
 }
 
 
-void Commander::ParseDive(const UnitTask *task) const
+void Commander::ParseDive(const CommanderTask *task) const
 {
-    LOG_ERROR("Empty function %s", __FUNCTION__);
+//    LOG_ERROR("Empty function %s", __FUNCTION__);
 }
 
 
-void Commander::ParseRotate(const UnitTask *task) const
+void Commander::ParseRotate(const CommanderTask *task) const
 {
-    LOG_ERROR("Empty function %s", __FUNCTION__);
+//    LOG_ERROR("Empty function %s", __FUNCTION__);
 }

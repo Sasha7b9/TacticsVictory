@@ -6,6 +6,7 @@
 #include "Graphics/Textures/CanvasTexture.h"
 #include "Graphics/Textures/PoolTextures.h"
 #include "Scene/World/Water.h"
+#include "Battle.h"
 
 
 namespace Pi
@@ -864,8 +865,6 @@ void Landscape::FillMap(pchar nameFile)
 {
     FillTables();
 
-    File file;
-    
     if(file.Open(nameFile) != EngineResult::Okay)
     {
         LOG_ERROR("Can't open file %s", nameFile);
@@ -883,7 +882,7 @@ void Landscape::FillMap(pchar nameFile)
     TCell::NUM_ROWS_Y = GetNumLines(buffer, (int)size);
     TCell::NUM_COLS_X = GetNumElementInLine(buffer);
 
-    _heightMap.SetDimensions(TCell::NUM_COLS_X, TCell::NUM_ROWS_Y);
+    heightMap.SetDimensions(TCell::NUM_COLS_X, TCell::NUM_ROWS_Y);
 
     TZone::NUM_ROWS_Y = TCell::NUM_ROWS_Y / TZone::SIZE_SIDE + ((TCell::NUM_ROWS_Y % TZone::SIZE_SIDE == 0) ? 0 : 1);
     TZone::NUM_COLS_X = TCell::NUM_COLS_X / TZone::SIZE_SIDE + ((TCell::NUM_COLS_X % TZone::SIZE_SIDE == 0) ? 0 : 1);
@@ -1012,7 +1011,7 @@ char *Landscape::ParseLineText(char * const text, TCell *values)
                     }
 
                     values[numValue].Construct(x, y, value);
-                    _heightMap.At(col, row) = values[numValue].height;                   // Отражаем y, потому что после загрузки ландшафт смещается по Y
+                    heightMap.At(col, row) = values[numValue].height;                   // Отражаем y, потому что после загрузки ландшафт смещается по Y
                     state = State::InSpace;
                     numValue++;
                 }
@@ -1087,7 +1086,7 @@ float Landscape::GetHeightAccurately(float x, float y, bool forPanelMap)
 
 float Landscape::GetHeightCenter(float x, float y)
 {
-    return _heightMap.At((int)x, (int)y);
+    return heightMap.At((int)x, (int)y);
 }
 
 
@@ -1183,8 +1182,35 @@ void LandscapeController::Move()
     }
     else
     {
-        Sleep();
-        TheConsoleWindow->AddText("Landscape created");
+        static bool first = true;
+
+        if (first)
+        {
+            first = false;
+            TheConsoleWindow->AddText("Landscape created");
+        }
+        else
+        {
+            static machine prevDateTime = -1;
+
+            landscape->file.Open();
+
+            machine dateTime = landscape->file.GetDateTimeCreate();
+
+            landscape->file.Close();
+
+            if (prevDateTime != -1)
+            {
+                if (prevDateTime != dateTime)
+                {
+                    Battle::self->ReloadLandscape();
+                }
+            }
+
+            prevDateTime = dateTime;
+
+            landscape->file.Close();
+        }
     }
 }
 

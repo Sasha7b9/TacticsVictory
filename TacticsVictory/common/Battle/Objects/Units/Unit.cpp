@@ -1,9 +1,9 @@
 ﻿// 2021/12/1 10:05:05 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Objects/Units/Unit.h"
-#include "Objects/Units/PathFinder/PathFinder.h"
-#include "Objects/Units/PathFinder/PathMapping.h"
-#include "Objects/Units/Selector/Selector.h"
+#include "Objects/Units/Logic/PathFinder/PathFinder.h"
+#include "Objects/Units/Logic/PathFinder/PathMapping.h"
+#include "Objects/Units/Logic/Selector.h"
 #include "Graphics/Geometry/PoolGeometry.h"
 #include "Objects/Units/Water/WaterUnit.h"
 
@@ -45,7 +45,7 @@ UnitController::~UnitController()
 }
 
 
-UnitController *UnitController::AppendTask(const UnitTask *task)
+UnitController *UnitController::AppendTask(const CommanderTask *task)
 {
     commander->AppendTask(task);
 
@@ -79,13 +79,13 @@ void UnitController::Move()
 }
 
 
-bool UnitController::CanExecute(UnitTask::Type task) const
+bool UnitController::CanExecute(CommanderTask::Type task) const
 {
-    if (task == UnitTask::Type::Move)
+    if (task == CommanderTask::Type::Move)
     {
         return true;
     }
-    else if (task == UnitTask::Type::Dive)
+    else if (task == CommanderTask::Type::Dive)
     {
         WaterUnitObject *unit = GetWaterUnitOject();
 
@@ -97,7 +97,7 @@ bool UnitController::CanExecute(UnitTask::Type task) const
             }
         }
     }
-    else if (task == UnitTask::Type::Rotate)
+    else if (task == CommanderTask::Type::Rotate)
     {
         return true;
     }

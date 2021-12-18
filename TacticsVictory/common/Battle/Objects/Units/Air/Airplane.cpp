@@ -30,7 +30,7 @@ Airplane::Airplane() : AirUnitObject(TypeAirUnit::Airplane)
 
     Node *rootNode = new Node();
 
-    rootNode->SetNodeTransform({1.0f, 0.2f, 1.0f}, {-0.5f, -0.1f, 0.0f}, Transform4D().SetRotationAboutX(-K::pi / 2.0f));
+    rootNode->SetNodeTransform({1.0f, 0.05f, 0.5f}, {-0.5f, -0.025f, 0.0f}, Transform4D().SetRotationAboutX(-K::pi / 2.0f));
 
     rootNode->AppendNewSubnode(geometry);
 

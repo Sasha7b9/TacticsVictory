@@ -15,41 +15,60 @@ using namespace Pi;
 
 const UnitParameters BoatController::parameters = UnitParameters
 {
-    {{0.0f, 0.0f, 0.0f}}
+    {
+        {0.0f, 0.05f, 0.0f},
+        {0.0f, 0.0f, 0.05f}
+    }
 };
 
 
 UnitParameters AirplaneController::parameters =
 {
-    {{0.05f, 0.5f, 0.05f}}
+    {
+        {0.05f, 0.5f, 0.05f},
+        {0.05f, 0.05f, 0.05f}
+    }
 };
 
 
 UnitParameters HelicopterController::parameters =
 {
-    {{0.25f, 0.25f, 0.25f}}
+    {
+        {0.25f, 0.25f, 0.25f},
+        {0.001f, 0.01f, 0.05f}
+    }
 };
 
 
 UnitParameters RobotController::parameters =
 {
-    {{0.0f, 0.2f, 0.0f}}
+    {
+        {0.0f, 0.2f, 0.0f},
+        {0.0f, 0.0f, 0.05f}
+    }
 };
 
 
 UnitParameters SubmarineController::parameters =
 {
-    {{0.0f, 0.3f, 0.00025f}}
+    {
+        {0.0f, 0.3f, 0.005f},
+        {0.01f, 0.0f, 0.001f}
+    }
 };
 
 
 UnitParameters TankController::parameters =
 {
-    {{0.0f, 0.3f, 0.0f}}
+    {
+        {0.0f, 0.3f, 0.0f}
+    }
 };
 
 
 UnitParameters WormController::parameters =
 {
-    {{0.0f, 0.1f, 0.0f}}
+    {
+        {0.0f, 0.1f, 0.0f}
+    }
 };

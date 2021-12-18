@@ -31,6 +31,8 @@ namespace Pi
 
         Array<StructLake> lakes;
 
+        FogSpaceObject *fog_object = nullptr;
+
         void CreateLake(const StructLake &lake, bool fog);
 
         float Level()
@@ -76,13 +78,17 @@ void Water::Create()
     }
 
     FogSpace *fog = new FogSpace({(float)GameWorld::Get()->GetLandscape()->GetSizeX_Columns(), (float)GameWorld::Get()->GetLandscape()->GetSizeX_Columns()});
-    FogSpaceObject *object = fog->GetObject();
-    object->SetFogColor({0.0f, 0.0f, 0.0f});
-    object->SetFogDensity(0.02f);
-    object->SetFogFunction(PiFogFunction::Linear);
+    fog_object = fog->GetObject();
+    fog_object->SetFogColor({0.0f, 0.0f, 0.0f});
+    fog_object->SetFogDensity(0.05f);
+    fog_object->SetFogFunction(PiFogFunction::Linear);
     GameWorld::Get()->GetRootNode()->AppendNewSubnode(fog);
 }
 
+void Water::SetFogDensity(float density)
+{
+    fog_object->SetFogDensity(density);
+}
 
 void Water::CreateLake(const StructLake &lake, bool need_fog)
 {

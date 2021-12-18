@@ -1,9 +1,9 @@
 ﻿// 2021/12/1 9:47:27 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Objects/GameObject.h"
-#include "Objects/Units/UnitLogic/Commander.h"
-#include "Objects/Units/UnitLogic/Driver.h"
-#include "Objects/Units/UnitLogic/Shooter.h"
+#include "Objects/Units/Staff/Commander.h"
+#include "Objects/Units/Staff/Driver.h"
+#include "Objects/Units/Staff/Shooter.h"
 #include "Objects/Units/UnitParameters.h"
 
 
@@ -40,7 +40,7 @@ namespace Pi
         virtual ~UnitController();
 
         // Добавить задание в конец очереди (оно выполнится после всех заданий)
-        UnitController *AppendTask(const UnitTask *task);
+        UnitController *AppendTask(const CommanderTask *task);
 
         UnitObject *GetUnitOjbect() const { return (UnitObject *)GetTargetNode(); }
 
@@ -63,7 +63,7 @@ namespace Pi
         WaterUnitObject *GetWaterUnitOject() const { return (GetUnitOjbect()->typeUnit == TypeUnit::Water) ? (WaterUnitObject *)GetUnitOjbect() : nullptr; };
 
         // Может ли обрабатывать задания типа type
-        bool CanExecute(UnitTask::Type type) const;
+        bool CanExecute(CommanderTask::Type type) const;
 
         UnitParameters *param = nullptr;
 

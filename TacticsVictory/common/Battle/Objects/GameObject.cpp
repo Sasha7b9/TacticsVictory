@@ -5,8 +5,8 @@
 #include "Scene/World/Landscape.h"
 #include "Scene/World/GameWorld.h"
 #include "Objects/InfoWindow.h"
-#include "Objects/Units/PathFinder/PathFinder.h"
-#include "Objects/Units/PathFinder/PathMapping.h"
+#include "Objects/Units/Logic/PathFinder/PathFinder.h"
+#include "Objects/Units/Logic/PathFinder/PathMapping.h"
 #include "Objects/Units/Unit.h"
 #include "Objects/Ammo/Ammo.h"
 #include "Scene/World/Water.h"
@@ -114,6 +114,17 @@ GameObject &GameObject::GetFromScreen(const Point2D &coord)
     GameObjectProperty *property = GameObjectProperty::GetFromScreen(coord);
 
     return property ? property->gameObject : *empty;
+}
+
+
+void GameObject::SetNodeDirection(const Vector3D &direction, const Vector3D &up)
+{
+    Point3D position = GetNodePosition();
+    Vector3D front = direction * InverseMag(direction);
+    Vector3D left = Cross(up, direction).Normalize();
+    Vector3D top = Cross(front, left);
+
+    SetNodeTransform(Transform4D(front, left, top, position));
 }
 
 

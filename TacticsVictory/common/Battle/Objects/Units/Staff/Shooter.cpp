@@ -1,6 +1,6 @@
 ﻿// 2021/12/17 0:05:44 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Objects/Units/UnitLogic/Shooter.h"
+#include "Objects/Units/Staff/Shooter.h"
 #include "Objects/Units/Unit.h"
 #include "Objects/Units/Air/AirUnit.h"
 #include "Objects/Units/Air/Airplane.h"

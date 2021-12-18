@@ -16,12 +16,13 @@ namespace Pi
 
         struct Max
         {
-            Vector3D speed = Vector3D::ZERO;
+            Vector3D speed  = Vector3D::ZERO;
+            Vector3D rotate = Vector3D::ZERO;
         };
 
         Max max;
 
-        Vector3D speed = Vector3D::ZERO;
+        Vector3D speed     = Vector3D::ZERO;
         Vector3D direction = Vector3D::ZERO;
     };
 }

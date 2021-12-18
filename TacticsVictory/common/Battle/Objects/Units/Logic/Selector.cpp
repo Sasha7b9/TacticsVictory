@@ -1,6 +1,6 @@
 // 2021/12/13 15:33:07 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Objects/Units/Selector/Selector.h"
+#include "Objects/Units/Logic/Selector.h"
 #include "Input/Mouse.h"
 
 

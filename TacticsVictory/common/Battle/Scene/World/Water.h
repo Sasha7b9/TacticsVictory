@@ -15,5 +15,7 @@ namespace Pi
 
         // Определяет пересечение с водой
         bool DetectHeight(float x, float y, float *height);
+
+        void SetFogDensity(float density);
     }
 }

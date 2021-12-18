@@ -46,8 +46,8 @@ namespace Pi
 
         CommanderSubmarine(UnitController *controller) : Commander(controller) {}
 
-        virtual void ParseDive(const UnitTask *) const override;
-        virtual void ParseRotate(const UnitTask *) const override;
+        virtual void ParseDive(const CommanderTask *) const override;
+        virtual void ParseRotate(const CommanderTask *) const override;
     };
 
 
@@ -58,8 +58,6 @@ namespace Pi
     public:
 
         virtual ~DriverSubmarine() {}
-
-        virtual void Update(float dT) override;
 
     protected:
 
