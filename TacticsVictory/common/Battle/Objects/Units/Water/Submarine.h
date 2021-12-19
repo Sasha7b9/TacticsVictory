@@ -24,7 +24,7 @@ namespace Pi
     {
     public:
 
-        SubmarineController() : WaterUnitController(TypeWaterUnit::Submarine, &parameters) {}
+        SubmarineController();
 
         virtual ~SubmarineController() {}
 

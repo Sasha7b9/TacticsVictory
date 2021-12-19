@@ -118,5 +118,5 @@ string Battle::DataPath() const
 
 void Battle::ReloadLandscape() const
 {
-    LOG_WRITE("Need reload landscape");
+    GameWorld::Get()->GetLandscape()->Reload();
 }

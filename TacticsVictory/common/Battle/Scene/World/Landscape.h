@@ -23,16 +23,6 @@ namespace Pi
         const B Unit      = 1 << 20;
     }
 
-    // Преобразует произвольные координаты на ланшафте в соответствующую точку клети ландшафта
-    class PointLandscape
-    {
-    public:
-        PointLandscape(const Point3D &point);
-        float x;
-        float y;
-        float z;
-    };
-
     class Landscape : public Node
     {
         friend class LandscapeController;
@@ -41,31 +31,45 @@ namespace Pi
     public:
 
         Landscape(pchar nameFile, float delta = 0.0F);
-        virtual ~Landscape();
 
-        bool            IsCreated() const { return created; }
-        int             GetSizeX_Columns();
-        int             GetSizeY_Rows();
+        void    Reload();
+        bool    IsCreated() const { return created; }
+        int     GetSizeX_Columns();
+        int     GetSizeY_Rows();
+
         // Найти точное значение высоты - как нарисовано на экране
-        float           GetHeightAccurately(float x_col, float y_row, bool forPanelMap = false);
-        // Возвращает высоту ландшафта в центре клетки, которой принадлежать координаты x,y - как записано в файле .lvl
-        float           GetHeightCenter(float x_col, float y_row);
-        // Возвращет точку ландшафта, находящуюся в экранных координатах x, y
-        Point3D         GetPointScreen(float x_col, float y_row, bool &result);
+        float   GetHeightAccurately(float x_col, float y_row, bool forPanelMap = false);
 
+        // Возвращает высоту ландшафта в центре клетки, которой принадлежать координаты x,y - как записано в файле .lvl
+        float   GetHeightCenter(float x_col, float y_row);
+
+        // Возвращает true, если точка принадлежит водной поверхности
+        bool    UnderWater(int x, int y);
 
     private:
 
         Array2D<float>  heightMap;
         File            file;
 
+        virtual ~Landscape();
+
+        Array2D<float>  ReadFile(pchar nameFile);
+        // Возвращет точку ландшафта, находящуюся в экранных координатах x, y
+        Point3D         GetPointScreen(float x_col, float y_row, bool &result);
         static int      AddTriangle(GeometrySurface *surface, const Point3D points[3]);
         static int      AddTriangle(GeometrySurface *surface, const Point3D &point0, const Point3D &point1, const Point3D &point2);
         static Point3D  NewPoint(int x, int y, int num, int dX, int dY);
-        void            FillMap(pchar nameFile);
-        int             GetNumLines(char *buffer, int size);
+        void            FillMap(const Array2D<float> &array);
+        // Возвращает количество строк в карте
+        int             GetRowsInMap(char *buffer, int size);
         int             GetNumElementInLine(char *buffer);
-        char *ParseLineText(char *const text, TCell *values);
+
+        // Создать строку *TCell из строки массива
+        void            FillRowTCell(int row, const Array2D<float> &array, TCell *values);
+
+        // Распарсить строку текстового файла в массив
+        char           *ParseRowLandscape(bool forWater, char * const text, int row, Array2D<float> &array);
+
         int             SymbolsToInt(pchar firstSymbol, pchar lastSymbol);
         int             AddFace(GeometrySurface *surface, int x, int y);
         static Point3D  CoordVertex(int numVert, int x, int y);
@@ -80,7 +84,7 @@ namespace Pi
         Vector2D        CalculateSizePlane(const Point3D ponts[4]);
 
         // Создание зоны ландшафта
-        void            CreateGeometryForField(TZone *field);
+        void            CreateGeometryForZone(TZone *field);
 
         // Добавление зоны лондшафта в общую геометрию
         void            AddSurfaceToMesh(TZone *field);
@@ -89,6 +93,7 @@ namespace Pi
         bool            created = false;
         LandscapeController *controller = nullptr;
     };
+
 
     class LandscapeController final : public Controller
     {
@@ -109,7 +114,18 @@ namespace Pi
         Thread *threads[MAX_THREADS];
 
         // Эта функция будет вызывться несколькими потоками для создания отдельных зон ландшафта
-        static void TheAdditionsOfSurfaces(const Thread *thread, void *cookie);
+        static void CreateGeometeryZones(const Thread *thread, void *cookie);
     };
 
+    namespace Water
+    {
+        void Create();
+
+        float Level();
+
+        // Определяет пересечение с водой
+        bool DetectHeight(float x, float y, float *height);
+
+        void SetFogDensity(float density);
+    }
 }

@@ -9,7 +9,6 @@
 #include "Objects/Units/Logic/PathFinder/PathMapping.h"
 #include "Objects/Units/Unit.h"
 #include "Objects/Ammo/Ammo.h"
-#include "Scene/World/Water.h"
 
 
 using namespace Pi;
@@ -62,13 +61,13 @@ bool GameObject::AppendInGame(int _x, int _y)
 
         if (unit->typeUnit == TypeUnit::Air)
         {
-            float height = Water::UnderWater(_x, _y) ? 0 : GameWorld::self->GetLandscape()->GetHeightAccurately(x, y);
+            float height = GameWorld::self->GetLandscape()->UnderWater(_x, _y) ? 0 : GameWorld::self->GetLandscape()->GetHeightAccurately(x, y);
             unit->SetNodePosition({x, y, height + 5.0f});
             append = true;
         }
         else if (unit->typeUnit == TypeUnit::Ground)
         {
-            if (!Water::UnderWater(_x, _y))
+            if (!GameWorld::self->GetLandscape()->UnderWater(_x, _y))
             {
                 float height = GameWorld::self->GetLandscape()->GetHeightAccurately(x, y);
                 unit->SetNodePosition({x, y, height});
@@ -77,7 +76,7 @@ bool GameObject::AppendInGame(int _x, int _y)
         }
         else if (unit->typeUnit == TypeUnit::Water)
         {
-            if (Water::UnderWater(_x, _y))
+            if (GameWorld::self->GetLandscape()->UnderWater(_x, _y))
             {
                 unit->SetNodePosition({x, y, Water::Level()});
                 append = true;

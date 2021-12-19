@@ -12,7 +12,8 @@
 #include "Objects/Units/Ground/Tank.h"
 #include "Objects/Units/Ground/Worm.h"
 #include "Objects/Units/Water/Submarine.h"
-#include "Scene/World/Water.h"
+#include "Scene/World/Landscape.h"
+#include "Scene/World/GameWorld.h"
 
 
 using namespace Pi;
@@ -79,7 +80,9 @@ void Commander::AppendRandomTask()
 
     if ((rand() % value) == 0)
     {
-        AppendTask(new CommanderTaskDive(Math::RandomFloat(-9.0f, Water::Level())));
+        Point3D position = unit->GetNodePosition();
+
+        AppendTask(new CommanderTaskDive(Math::RandomFloat(GameWorld::self->GetLandscape()->GetHeightCenter(position.x, position.y), Water::Level())));
     }
     else if ((rand() % value) == 0)
     {

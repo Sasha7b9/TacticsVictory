@@ -5,7 +5,6 @@
 #include "Scene/World/GameWorld.h"
 #include "Graphics/Textures/CanvasTexture.h"
 #include "Graphics/Textures/PoolTextures.h"
-#include "Scene/World/Water.h"
 #include "Battle.h"
 
 
@@ -17,8 +16,8 @@ class TZone;
 class Landscape;
 
 
-static TCell    *mapCell = nullptr;
-static TZone   *mapField = nullptr;
+static TCell     *mapCell = nullptr;
+static TZone     *mapZone = nullptr;
 static Landscape *landscape = nullptr;
 
 
@@ -32,31 +31,30 @@ public:
 
     TCell() {};
 
+    ~TCell() {};
+
+    static TCell *Get(int x, int y)
+    {
+        if (x >= 0 && x < TCell::NUM_COLS_X && y >= 0 && y < TCell::NUM_ROWS_Y)
+        {
+            return  &(mapCell[(size_t)x + (size_t)y * (size_t)TCell::NUM_COLS_X]);
+        }
+
+        static TCell cell;
+
+        return &cell;
+    }
+
     void Construct(int x, int y, float _height)
     {
         coord = Integer2D(x, y);
         height = _height;
     }
 
-    ~TCell() {};
-
-    Integer2D   coord;
-    float       height = 1.0F;
-    TZone *   field = nullptr;
-
+    Integer2D coord;
+    float     height = 1.0F;
+    TZone    *zone = nullptr;
 };
-
-TCell *GGetCell(int x, int y)
-{
-    if(x >= 0 && x < TCell::NUM_COLS_X && y >= 0 && y < TCell::NUM_ROWS_Y)
-    {
-        return  &(mapCell[(size_t)x + (size_t)y * (size_t)TCell::NUM_COLS_X]);
-    }
-
-    static TCell cell;
-
-    return &cell;
-}
 
 
 // Этот класс представляет собой зону ландшафта, заполняемую потоком за раз
@@ -75,6 +73,8 @@ public:
 
     void Construct(int col, int row)
     {
+        cells.RemoveAll();
+
         coord = Integer2D(col, row);
 
         int xFirst = col * SIZE_SIDE;
@@ -91,10 +91,10 @@ public:
         {
             for(int x = xFirst; x < xLast; x++)
             {
-                TCell *cell = GGetCell(x, y);
+                TCell *cell = TCell::Get(x, y);
                 if(cell)
                 {
-                    cell->field = this;
+                    cell->zone = this;
                     cells.Append(cell);
                 }
             }
@@ -117,37 +117,42 @@ public:
 
         return cell;
     }
-    Integer2D       coord {0, 0};
-    List<TCell>    cells;
+
+    static TZone *Get(int x, int y)
+    {
+        if (x >= 0 && x < TZone::NUM_COLS_X && y >= 0 && y < TZone::NUM_ROWS_Y)
+        {
+            return &(mapZone[(size_t)x + (size_t)y * (size_t)TZone::NUM_COLS_X]);
+        }
+
+        static TZone empty;
+
+        return &empty;
+    }
 
     enum class State
     {
         Empty,      
-        Created,    // Surface create but not added to mesh
-        Added       // Surface create and added to mesh. Complete
-    } state = State::Empty;
+        Created,        // Surface create but not added to mesh
+        Added,          // Surface create and added to mesh. Complete
+        NeedReload      // Зона нуждается в перезагруке (видимо, из-за того, что файл с картой высот изменился)
+    };
 
+
+    State            state = State::Empty;
+    Integer2D        coord{0, 0};
+    List<TCell>      cells;
     GenericGeometry *geometry = nullptr;
-    Mutex mutexCreating;
+    Mutex            mutexCreating;
 };
 
-TZone *GetField(int x, int y)
-{
-    if(x >= 0 && x < TZone::NUM_COLS_X && y >= 0 && y < TZone::NUM_ROWS_Y)
-    {
-        return &(mapField[(size_t)x + (size_t)y * (size_t)TZone::NUM_COLS_X]);
-    }
-
-    static TZone empty;
-
-    return &empty;
-}
 
 int TZone::NUM_ROWS_Y = 0;
 int TZone::NUM_COLS_X = 0;
 
 int TCell::NUM_ROWS_Y = 0;
 int TCell::NUM_COLS_X = 0;
+
 
 class CoordCell : public MapElement <CoordCell>
 {
@@ -237,8 +242,6 @@ static Map<DrawTriangle> triangleRightTop;
 static Map<DrawTriangle> triangleRightBottom;
 static Map<DrawTriangle> triangleLeftBottom;
 
-static ControllerReg<LandscapeController> *TheControllerReg = nullptr;
-
 }
 
 
@@ -251,9 +254,21 @@ Landscape::Landscape(pchar nameFile, float delta) : Node()
     this->delta = delta;
     landscape = this;
 
-    FillMap(nameFile);
+    heightMap = ReadFile(nameFile);
 
-    TheControllerReg = new ControllerReg<LandscapeController>(PiTypeController::Landscape, "Landscape");
+    FillTables();
+
+    TCell::NUM_ROWS_Y = heightMap.GetNumberRows();
+    TCell::NUM_COLS_X = heightMap.GetNumberColumns();
+
+    TZone::NUM_ROWS_Y = TCell::NUM_ROWS_Y / TZone::SIZE_SIDE + ((TCell::NUM_ROWS_Y % TZone::SIZE_SIDE == 0) ? 0 : 1);
+    TZone::NUM_COLS_X = TCell::NUM_COLS_X / TZone::SIZE_SIDE + ((TCell::NUM_COLS_X % TZone::SIZE_SIDE == 0) ? 0 : 1);
+
+    mapCell = new TCell[(size_t)TCell::NUM_ROWS_Y * (size_t)TCell::NUM_COLS_X];
+    mapZone = new TZone[(size_t)TZone::NUM_ROWS_Y * (size_t)TZone::NUM_COLS_X];
+
+    FillMap(heightMap);
+
     controller = new LandscapeController();
     SetController(controller);
     controller->Wake();
@@ -273,27 +288,102 @@ Landscape::~Landscape()
     triangleRightBottom.Purge();
 
     SAFE_DELETE(controller);
-    SAFE_DELETE(TheControllerReg);
 
     SAFE_DELETE_ARRAY(mapCell);
-    SAFE_DELETE_ARRAY(mapField);
+    SAFE_DELETE_ARRAY(mapZone);
 }
 
 
-void Landscape::CreateGeometryForField(TZone *field)
+void Landscape::FillMap(const Array2D<float> &array)
 {
-    if(!field->mutexCreating.TryAcquire())
+    for (int row = 0; row < TCell::NUM_ROWS_Y; row++)
+    {
+        FillRowTCell(row, array, mapCell + row * TCell::NUM_COLS_X);
+    }
+
+    for (int row = 0; row < TZone::NUM_ROWS_Y; row++)
+    {
+        for (int col = 0; col < TZone::NUM_COLS_X; col++)
+        {
+            TZone *zone = TZone::Get(col, row);
+            if (zone)
+            {
+                zone->Construct(col, row);
+            }
+        }
+    }
+}
+
+
+void Landscape::Reload()
+{
+    Array2D<float> map = ReadFile(file.GetFileName());
+
+    for (int col = 0; col < map.GetNumberColumns(); col++)
+    {
+        for (int row = 0; row < map.GetNumberRows(); row++)
+        {
+            if (map.At(col, row) != heightMap.At(col, row))
+            {
+                TCell::Get(col, row)->zone->state = TZone::State::NeedReload;
+            }
+        }
+    }
+
+    heightMap = map;
+
+    for (int row = 0; row < TCell::NUM_ROWS_Y; row++)
+    {
+        FillRowTCell(row, heightMap, mapCell + row * TCell::NUM_COLS_X);
+    }
+
+    for (int col = 0; col < TZone::NUM_COLS_X; col++)
+    {
+        for (int row = 0; row < TZone::NUM_ROWS_Y; row++)
+        {
+            TZone *zone = TZone::Get(col, row);
+
+            if (zone->state == TZone::State::NeedReload)
+            {
+                zone->geometry->Neutralize();
+                RemoveSubnode(zone->geometry);
+                delete zone->geometry;
+                zone->state = TZone::State::Empty;
+                CreateGeometryForZone(zone);
+                AddSurfaceToMesh(zone);
+            }
+        }
+    }
+}
+
+
+void Landscape::AddSurfaceToMesh(TZone *zone)
+{
+    if (zone->state == TZone::State::Empty || zone->state == TZone::State::Added)
     {
         return;
     }
 
-    if(field->state == TZone::State::Empty)
+    AppendNewSubnode(zone->geometry);
+    zone->geometry->GetObject()->SetCollisionExclusionMask(PiKindCollision::Landscape);
+    zone->state = TZone::State::Added;
+}
+
+
+void Landscape::CreateGeometryForZone(TZone *zone)
+{
+    if(!zone->mutexCreating.TryAcquire())
+    {
+        return;
+    }
+
+    if(zone->state == TZone::State::Empty)
     {
         GeometrySurface *surface = new GeometrySurface();
 
         for(int i = 0; i < TZone::SIZE_IN_CELLS; i++)
         {
-            TCell *cell = field->GetCell(i);
+            TCell *cell = zone->GetCell(i);
             if(cell)
             {
                 AddFace(surface, cell->coord.x, cell->coord.y);
@@ -317,30 +407,16 @@ void Landscape::CreateGeometryForField(TZone *field)
         Array<MaterialObject*> materialArray;
         materialArray.AddElement(material);
 
-        field->geometry = new GenericGeometry(1, &surfaceTable, materialArray);
+        zone->geometry = new GenericGeometry(1, &surfaceTable, materialArray);
 
         material->Release();
 
         delete surfaceList;
 
-        field->state = TZone::State::Created;
+        zone->state = TZone::State::Created;
     }
 
-    field->mutexCreating.Release();
-}
-
-
-void Landscape::AddSurfaceToMesh(TZone *field)
-{
-    if(field->state == TZone::State::Empty || field->state == TZone::State::Added)
-    {
-        return;
-    }
-
-    AppendNewSubnode(field->geometry);
-    field->geometry->GetObject()->SetCollisionExclusionMask(PiKindCollision::Landscape);
-
-    field->state = TZone::State::Added;
+    zone->mutexCreating.Release();
 }
 
 
@@ -495,7 +571,7 @@ Point3D Landscape::CoordVertex(int numVert, int x, int y)
 
     if(x >= 0 && x < TCell::NUM_COLS_X && y >= 0 && y < TCell::NUM_ROWS_Y)
     {
-        TCell *cell = GGetCell(x, y);
+        TCell *cell = TCell::Get(x, y);
         if (cell)
         {
             Z = cell->height;
@@ -593,7 +669,7 @@ Point3D Landscape::CoordVertex(int numVert, int x, int y)
 
 float Landscape::CellZ(int x, int y)
 {
-    TCell *cell = GGetCell(x, y);
+    TCell *cell = TCell::Get(x, y);
     return cell ? cell->height : 0.0f;
 }
 
@@ -861,74 +937,70 @@ int Landscape::AddFace(GeometrySurface *surface, int x, int y)
 }
 
 
-void Landscape::FillMap(pchar nameFile)
+Array2D<float> Landscape::ReadFile(pchar nameFile)
 {
-    FillTables();
+    Array2D<float> result;
 
-    if(file.Open(nameFile) != EngineResult::Okay)
+    if (file.Open(nameFile) != FileResult::Okay)
     {
         LOG_ERROR("Can't open file %s", nameFile);
-        return;
+        return result;
     }
-    
 
     uint64 size = file.GetSize();
 
-    char *buffer = new char[size];
-    file.Read(buffer, (uint)size);
+    MemoryBuffer<char> buffer(size);
+    file.Read(buffer.data, (uint)size);
 
     file.Close();
 
-    TCell::NUM_ROWS_Y = GetNumLines(buffer, (int)size);
-    TCell::NUM_COLS_X = GetNumElementInLine(buffer);
+    int sizeY = GetRowsInMap(buffer.data, (int)size);
+    int sizeX = GetNumElementInLine(buffer.data);
 
-    heightMap.SetDimensions(TCell::NUM_COLS_X, TCell::NUM_ROWS_Y);
+    result.SetDimensions(sizeX, sizeY);
 
-    TZone::NUM_ROWS_Y = TCell::NUM_ROWS_Y / TZone::SIZE_SIDE + ((TCell::NUM_ROWS_Y % TZone::SIZE_SIDE == 0) ? 0 : 1);
-    TZone::NUM_COLS_X = TCell::NUM_COLS_X / TZone::SIZE_SIDE + ((TCell::NUM_COLS_X % TZone::SIZE_SIDE == 0) ? 0 : 1);
+    char *pointer = buffer.data;
 
-    mapCell = new TCell[(size_t)TCell::NUM_ROWS_Y * (size_t)TCell::NUM_COLS_X];
-    mapField = new TZone[(size_t)TZone::NUM_ROWS_Y * (size_t)TZone::NUM_COLS_X];
-
-    char *pointer = buffer;
-
-    for(int i = 0; i < TCell::NUM_ROWS_Y; i++)
+    for (int row = 0; row < sizeY; row++)
     {
-        pointer = ParseLineText(pointer, mapCell + i * TCell::NUM_COLS_X);
+        pointer = ParseRowLandscape(false, pointer, row, result);
     }
 
-    for(int row = 0; row < TZone::NUM_ROWS_Y; row++)
+    pointer += 3;
+
+    for (int row = 0; row < sizeY; row++)
     {
-        for(int col = 0; col < TZone::NUM_COLS_X; col++)
-        {
-            TZone *field = GetField(col, row);
-            if (field)
-            {
-                field->Construct(col, row);
-            }
-        }
+        pointer = ParseRowLandscape(true, pointer, row, result);
     }
 
-    SAFE_DELETE_ARRAY(buffer);
+    return result;
 }
 
-int Landscape::GetNumLines(char *buffer, int size)
+
+int Landscape::GetRowsInMap(char *buffer, int size)
 {
     int numLines = 0;
 
     char *end_buffer = buffer + (size_t)size;
 
-    while(buffer < end_buffer)
+    while(buffer++ < end_buffer)
     {
         if(*buffer == 0x0d)
         {
             numLines++; //-V127
         }
-        buffer++;
+
+        if (*(buffer + 1) == 0x0a &&        // Двойной конец строки означает, что дальше идёт карта глубины
+            *(buffer + 2) == 0x0d &&
+            *(buffer + 3) == 0x0a)
+        {
+            break;
+        }
     }
 
     return numLines;
 }
+
 
 int Landscape::GetNumElementInLine(char *text)
 {
@@ -968,10 +1040,10 @@ int Landscape::GetNumElementInLine(char *text)
 }
 
 
-char *Landscape::ParseLineText(char * const text, TCell *values)
+char *Landscape::ParseRowLandscape(bool forWater, char * const text, int row, Array2D<float> &array)
 {
     char *pointer = text;
-    size_t numValue = 0;
+    int col = 0;
 
     char *firstSymbol = pointer;
     char *lastSymbol = pointer;
@@ -986,54 +1058,63 @@ char *Landscape::ParseLineText(char * const text, TCell *values)
 
     char symbol = 0;
 
-    do {
+    do
+    {
         pointer++;
 
         symbol = *pointer;
 
-        switch(state)
+        switch (state)
         {
-            case State::InValue:
-                if(symbol == ' ' || symbol == 0x0d)
+        case State::InValue:
+            if (symbol == ' ' || symbol == 0x0d)
+            {
+                float value = (float)SymbolsToInt(firstSymbol, lastSymbol);
+
+                if (forWater)
                 {
-                    int numCell = (int)(values + numValue - mapCell);
-                    int y = numCell / TCell::NUM_COLS_X;
-                    int x = (numCell - y * TCell::NUM_COLS_X) % TCell::NUM_COLS_X;
-
-                    float value = (float)SymbolsToInt(firstSymbol, lastSymbol);
- 
-                    int col = x;
-                    int row = TCell::NUM_ROWS_Y - y - 1;
-
-                    if (Water::UnderWater(col, row))
+                    if (value > 0.0f)
                     {
-                        value = -10.0f;
+                        array.At(col, row) = -value;
                     }
-
-                    values[numValue].Construct(x, y, value);
-                    heightMap.At(col, row) = values[numValue].height;                   // Отражаем y, потому что после загрузки ландшафт смещается по Y
-                    state = State::InSpace;
-                    numValue++;
                 }
                 else
                 {
-                    lastSymbol++;
+                    array.At(col, row) = value;
                 }
-                break;
 
-            case State::InSpace:
-                if(symbol != ' ')
-                {
-                    firstSymbol = pointer;
-                    lastSymbol = pointer;
-                    state = State::InValue;
-                }
-                break;
+                col++;
+                state = State::InSpace;
+            }
+            else
+            {
+                lastSymbol++;
+            }
+            break;
+
+        case State::InSpace:
+            if (symbol != ' ')
+            {
+                firstSymbol = pointer;
+                lastSymbol = pointer;
+                state = State::InValue;
+            }
+            break;
         }
 
-    } while(symbol != 0x0d);
+    } while (symbol != 0x0d);
 
     return pointer + 2;
+}
+
+
+void Landscape::FillRowTCell(int row, const Array2D<float> &array, TCell *values)
+{
+    for (int col = 0; col < array.GetNumberColumns(); col++)
+    {
+        values->Construct(col, row, array.At(col, row));
+        values++;
+    }
 }
 
 
@@ -1086,7 +1167,16 @@ float Landscape::GetHeightAccurately(float x, float y, bool forPanelMap)
 
 float Landscape::GetHeightCenter(float x, float y)
 {
-    return heightMap.At((int)x, (int)y);
+    int col = (int)x;
+    int row = (int)y;
+    row = heightMap.GetNumberRows() - row - 1;
+
+    if (col < 0 || col >= heightMap.GetNumberColumns() || row < 0 || row >= heightMap.GetNumberRows())
+    {
+        return 0.0f;
+    }
+
+    return heightMap.At(col, row);
 }
 
 
@@ -1146,7 +1236,7 @@ void LandscapeController::Preprocess()
 
     for(int i = 0; i < numThreads; i++)
     {
-        threads[i] = new Thread(&TheAdditionsOfSurfaces, nullptr);
+        threads[i] = new Thread(&CreateGeometeryZones, nullptr);
     }
 }
 
@@ -1161,14 +1251,14 @@ void LandscapeController::Move()
         {
             for(int x = 0; x < TZone::NUM_COLS_X; x++)
             {
-                TZone *field = GetField(x, y);
+                TZone *zone = TZone::Get(x, y);
 
-                if(field && field->state == TZone::State::Created)
+                if(zone && zone->state == TZone::State::Created)
                 {
-                    landscape->AddSurfaceToMesh(field);
+                    landscape->AddSurfaceToMesh(zone);
                 }
 
-                if (field && field->state == TZone::State::Added)
+                if (zone && zone->state == TZone::State::Added)
                 {
                     added++;
                 }
@@ -1215,29 +1305,108 @@ void LandscapeController::Move()
 }
 
 
-void LandscapeController::TheAdditionsOfSurfaces(const Thread *, void *)
+void LandscapeController::CreateGeometeryZones(const Thread *, void *)
 {
     for(int y = 0; y < TZone::NUM_ROWS_Y; y++)
     {
         for(int x = 0; x < TZone::NUM_COLS_X; x++)
         {
-            landscape->CreateGeometryForField(GetField(x, y));
+            landscape->CreateGeometryForZone(TZone::Get(x, y));
         }
     }
 }
 
 
-PointLandscape::PointLandscape(const Point3D &point)
+namespace Pi
 {
-    z = point.z;
+    namespace Water
+    {
+        FogSpaceObject *fog_object = nullptr;
 
-    x = point.x + 0.5f;
-    x *= 10.0f;
-    x = (float)(int)x;
-    x /= 10.0f;
+        void CreateLake(int x, int y, int width, int height);
 
-    y = point.y + 0.5f;
-    y *= 10.0f;
-    y = (float)(int)y;
-    y /= 10.0f;
+        float Level()
+        {
+            return -0.3f;
+        }
+    }
+}
+
+
+bool Landscape::UnderWater(int x, int y)
+{
+    return heightMap.At(x, heightMap.GetNumberRows() - y - 1) < 0.0f;
+}
+
+
+void Water::Create()
+{
+    CreateLake(7, 66, 88, 31);
+    CreateLake(47, 30, 20, 33);
+
+    FogSpace *fog = new FogSpace({(float)GameWorld::Get()->GetLandscape()->GetSizeX_Columns(), (float)GameWorld::Get()->GetLandscape()->GetSizeX_Columns()});
+    fog_object = fog->GetObject();
+    fog_object->SetFogColor({0.0f, 0.0f, 0.0f});
+    fog_object->SetFogDensity(0.075f);
+    fog_object->SetFogFunction(PiFogFunction::Linear);
+    GameWorld::Get()->GetRootNode()->AppendNewSubnode(fog);
+}
+
+void Water::SetFogDensity(float density)
+{
+    fog_object->SetFogDensity(density);
+}
+
+void Water::CreateLake(int col, int row, int width, int height)
+{
+    int sizeX = width / 4 + 1;
+    int sizeY = height / 4 + 1;
+
+    WaterBlock *block = new WaterBlock({sizeX, sizeY}, 4, 1.0f, 2.0f, {0, 10.0f});
+
+    ((WaterController *)block->GetController())->Run();
+    ((WaterController *)block->GetController())->SetWaterViscosity(4e-3F);
+    ((WaterController *)block->GetController())->SetWaterSpeed(5.0e-3F);
+
+    MaterialObject *material = new MaterialObject();
+
+    material->AddAttribute(new DiffuseAttribute({0.0f, 0.0f, 1.0f}));
+    material->AddAttribute(new EmissionAttribute({0.0f, 0.0f, 1.0f}));
+
+    for (int x = 0; x < sizeX; x++)
+    {
+        for (int y = 0; y < sizeY; y++)
+        {
+            WaterGeometry *geometry = new WaterGeometry(block, {x, y});
+            geometry->SetMaterialObject(0, material);
+            WaterGeometryObject *object = geometry->GetObject();
+            object->SetCollisionExclusionMask(PiKindCollision::Water);
+            object->EnableGeometryFlags(PiFlagGeometry::RenderEffectPass);
+            object->EnableGeometryEffectFlags(PiFlagGeometryEffect::Opaque | PiFlagGeometryEffect::Accumulate);
+            object->Build(geometry);
+            block->AppendSubnode(geometry);
+        }
+    }
+
+    block->SetNodePosition({(float)col - 0.5f, (float)row - 0.5f, Level()});
+
+    GameWorld::Get()->GetRootNode()->AppendNewSubnode(block);
+
+    material->Release();
+}
+
+
+bool Water::DetectHeight(float x, float y, float *height)
+{
+    CollisionData data;
+
+    //  \todo Не работает. Не детектит воду
+
+    if (GameWorld::Get()->DetectCollision({x - 0.3f, y, 5.0f}, {x - 0.3f, y, -5.0f}, 0.0f, 0, &data))
+    {
+        *height = data.position.z;
+        return true;
+    }
+
+    return false;
 }

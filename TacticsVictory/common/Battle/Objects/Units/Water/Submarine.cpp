@@ -1,7 +1,6 @@
 ﻿// 2021/12/15 22:10:02 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Objects/Units/Water/Submarine.h"
-#include "Scene/World/Water.h"
 #include "Scene/World/Landscape.h"
 #include "Utils/Math.h"
 
@@ -49,4 +48,9 @@ void CommanderSubmarine::ParseDive(const CommanderTask *task) const
 void CommanderSubmarine::ParseRotate(const CommanderTask *task) const
 {
     driver->AppendTask(new DriverTaskRotate(driver, Vector3D::UP, task->destination.z));
+}
+
+
+SubmarineController::SubmarineController() : WaterUnitController(TypeWaterUnit::Submarine, &parameters)
+{
 }
