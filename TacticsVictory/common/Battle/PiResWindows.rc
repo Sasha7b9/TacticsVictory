@@ -21,7 +21,7 @@ BEGIN
 			VALUE "FileVersion", "0.0.1"
 			VALUE "InternalName", "Tactics Victory"
 			VALUE "LegalCopyright", "Copyright 2021 Phuntik LTD"
-			VALUE "OriginalFilename", "PiEngine.dll"
+			VALUE "OriginalFilename", "TVPiBattle.exe"
 			VALUE "ProductName", "Tactics Victory"
 			VALUE "ProductVersion", "0.0.1"
 		END

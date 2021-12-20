@@ -11,37 +11,31 @@
 #include <climits>
 
 #include <Base/PiMemory.h>
-#include <Graphics/PiRender.h>
-#include <System/PiAudioCapture.h>
-#include <Physics/PiCharacter.h>
-#include <System/PiInput.h>
-#include <Graphics/PiGraphics.h>
-#include <System/PiApplication.h>
-#include <Geometry/PiMesh.h>
-#include <Interface/PiConfiguration.h>
-#include <Geometry/PiPrimitives.h>
+
 #include <Controllers/PiController.h>
-#include <Effects/PiParticles.h>
-#include <Effects/PiMarkings.h>
-#include <World/PiModels.h>
-#include <World/PiSources.h>
-#include <Interface/PiPaint.h>
+
+#include <Math/PiVector3D.h>
+
+#include <Physics/PiCharacter.h>
 #include <Physics/PiContacts.h>
 #include <Physics/PiPhysics.h>
-#include <World/PiWorld.h>
-#include <Resource/PiPacking.h>
-#include <System/PiTypes.h>
-#include <System/PiSound.h>
-#include <Interface/PiMutators.h>
-#include <Interface/PiViewports.h>
 #include <Physics/PiSimulation.h>
-#include <Interface/PiWidgets.h>
-#include <World/PiMarkers.h>
-#include <System/PiMain.h>
-#include <Math/PiVector3D.h>
-#include <Interface/PiToolWindows.h>
 #include <Physics/PiWater.h>
 
+#include <Resource/PiPacking.h>
+
+#include <System/PiAudioCapture.h>
+#include <System/PiInput.h>
+#include <System/PiApplication.h>
+#include <System/PiTypes.h>
+#include <System/PiSound.h>
+#include <System/PiMain.h>
+#include <System/PiEngine.h>
+
+#include <World/PiModels.h>
+#include <World/PiSources.h>
+#include <World/PiWorld.h>
+#include <World/PiMarkers.h>
 
 #ifdef WIN32
 #pragma warning(pop)
@@ -50,5 +44,5 @@
 #define SIZE_CHUNK_HEADER 4
 
 
-#include "defines.h" 
-#include "Utils/Log.h"
+#include "defines.h"
+#include "Utils/Log_.h"

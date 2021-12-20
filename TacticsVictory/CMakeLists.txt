@@ -17,5 +17,6 @@ function(add_subdirectory_with_folder _folder_name _folder)
 endfunction()
 
 
-add_subdirectory_with_folder("TacticsVictory/common" common/Battle    )
+add_subdirectory_with_folder(TacticsVictory/common common/Battle)
+add_subdirectory_with_folder(TacticsVictory/local  local/Battler)
 
