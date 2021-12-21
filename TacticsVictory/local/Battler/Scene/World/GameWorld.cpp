@@ -91,9 +91,6 @@ WorldResult::B GameWorld::Preprocess()
     CameraRTS::self->Invalidate();
     CameraRTS::self->Update();
 
-//    new Landscape((Battler::self->DataPath() + "levels/level2.lvl").c_str());
-//    GetRootNode()->AppendNewSubnode(Landscape::self);
-
     sun = new Sun();
 
     static_cast<SunController*>(sun->GetController())

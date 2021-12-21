@@ -34,6 +34,8 @@ Battler *Battler::self = nullptr;
 Battler::Battler()
     : Singleton<Battler>(self)
 {
+    Log::Construct();
+
     uint64 timeEnter = TheTimeMgr->GetMicrosecondCount();
 
     PoolTextures::Construct();
@@ -82,6 +84,7 @@ Battler::~Battler()
     GameObject::Destruct();
     PoolGeometry::Destruct();
     PoolTextures::Destruct();
+    Log::Destruct();
 }
 
 void Battler::CreateScene()

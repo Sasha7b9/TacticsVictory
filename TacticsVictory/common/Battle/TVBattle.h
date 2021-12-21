@@ -29,14 +29,11 @@ namespace Pi
 
         virtual void ApplicationTask() override;
 
+        // Network
         virtual void HandleConnectionEvent(ConnectionEvent, const NetworkAddress &, const void *) override;
-
-        virtual void HandleGameEvent(GameEvent::E, const void *) override;
-
-        virtual void HandlePlayerEvent(PlayerEvent::E, Player *, const void *) override;
-
+        virtual void HandleGameEvent(GameEvent, const void *) override;
+        virtual void HandlePlayerEvent(PlayerEvent, Player *, const void *) override;
         virtual void ReceiveMessage(Player *, const NetworkAddress &, const Message *) override;
-
-        virtual Message *CreateMessage(MessageType::E, Decompressor &) const override;
+        virtual Message *CreateMessage(PiTypeMessage::E, Decompressor &) const override;
     };
 }

@@ -17,6 +17,8 @@ Battle *Battle::self = nullptr;
 Battle::Battle()
     : Singleton<Battle>(self)
 {
+    Log::Construct();
+
     TheWorldMgr->SetWorldCreator(&ConstructWorld);
 
     TheWorldMgr->LoadWorld("world/Empty");
@@ -28,6 +30,8 @@ Battle::~Battle()
     TheWorldMgr->UnloadWorld();
     TheWorldMgr->SetWorldCreator(nullptr);
     TheMessageMgr->EndGame();
+
+    Log::Destruct();
 }
 
 

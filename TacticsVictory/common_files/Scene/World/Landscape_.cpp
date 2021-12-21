@@ -1069,6 +1069,7 @@ void LandscapeController::Move()
         if (added == TZone::NUM_ROWS_Y * TZone::NUM_COLS_X)
         {
             landscape->created = true;
+            LOG_WRITE("Landscape is created");
         }
     }
     else

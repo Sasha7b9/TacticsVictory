@@ -16,19 +16,11 @@ void Battler::HandleDisplayEvent(const DisplayEventData *eventData, void * /*coo
 }
 
 
-void Battler::HandleGameEvent(GameEvent::E event, const void *param)
-{
-    if (event == GameEvent::E::GameSynchronized)
-    {
-    }
-}
-
-
 void Battler::ApplicationTask()
 {
     static bool first = true;
 
-    if(first)
+    if (first)
     {
         first = false;
 
@@ -45,6 +37,8 @@ void Battler::ApplicationTask()
         address.SetPort(PORT_NUMBER);
     
         TheMessageMgr->Connect(address);
+
+        LOG_WRITE("Attempt connection to %s:%d ...", LOCAL_ADDRESS, PORT_NUMBER);
     }
 }
 

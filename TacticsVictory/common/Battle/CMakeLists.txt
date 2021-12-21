@@ -22,6 +22,7 @@ endif()
 file(GLOB SRC                                          *.h *.*c*
                                     ../../common_files/*.*)
 file(GLOB NETWORK                                      Network/*.*)
+file(GLOB NETWORK_MESSAGES          ../../common_files/Network/Messages/MessagesServer_.*)
 file(GLOB OBJECTS                   ../../common_files/Objects/*.*
                                                        Objects/*.*)
 file(GLOB OBJECTS_AMMO              ../../common_files/Objects/Ammo/*.*
@@ -43,6 +44,7 @@ file(GLOB UTILS                     ../../common_files/Utils/Array2D_.*
 
 source_group(src                    FILES ${SRC})
 source_group(Network                FILES ${NETWORK})
+source_group(Network\\Messages      FILES ${NETWORK_MESSAGES})
 source_group(Objects                FILES ${OBJECTS})
 source_group(Objects\\Ammo          FILES ${OBJECTS_AMMO})
 source_group(Objects\\Structures    FILES ${OBJECTS_STRUCTURES})
@@ -59,6 +61,7 @@ set_source_files_properties(${OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER} PROPER
 
 add_executable(${PROJECT_NAME} ${SRC}
                                ${NETWORK}
+                               ${NETWORK_MESSAGES}
                                ${OBJECTS}
                                ${OBJECTS_AMMO}
                                ${OBJECTS_STRUCTURES}

@@ -41,15 +41,19 @@ namespace Pi
 
         static void HandleDisplayEvent(const DisplayEventData *eventData, void *data);
 
-        virtual void HandleGameEvent(GameEvent::E event, const void *param) override;
-
-        virtual void HandleConnectionEvent(ConnectionEvent, const NetworkAddress &, const void *) override;
-
-        void HandleGizmoCommand(Command *, pchar);
-        void HandleFogDensityCommand(Command *, pchar);
-
         void CreateScene();
 
         void CreateCommands();
+
+        // Commands
+        void HandleGizmoCommand(Command *, pchar);
+        void HandleFogDensityCommand(Command *, pchar);
+
+        // Network
+        virtual void HandleConnectionEvent(ConnectionEvent, const NetworkAddress &, const void *) override;
+        virtual void HandleGameEvent(GameEvent, const void *) override;
+        virtual void HandlePlayerEvent(PlayerEvent, Player *, const void *) override;
+        virtual void ReceiveMessage(Player *, const NetworkAddress &, const Message *) override;
+        virtual Message *CreateMessage(PiTypeMessage::E, Decompressor &) const override;
     };
 }

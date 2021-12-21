@@ -49,6 +49,9 @@ namespace Pi
         // Возвращает true, если точка принадлежит водной поверхности
         bool    UnderWater(int x, int y);
 
+        // Возвращает имя загруженного ландшафта
+        String<> GetNameFile() { return file.GetFileName(); }
+
     private:
 
         Array2D<float>  heightMap;

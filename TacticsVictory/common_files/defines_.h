@@ -13,5 +13,11 @@ typedef unsigned long  ulong;
 
 
 #define PORT_NUMBER   30001
+
+
+// Ноутбук
 #define LOCAL_ADDRESS "192.168.27.1"
+
+// ПК
+//#define LOCAL_ADDRESS "192.168.100.34"
 

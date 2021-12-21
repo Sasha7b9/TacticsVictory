@@ -31,6 +31,8 @@ file(GLOB GUI_PANELS                                        GUI/Panels/*.*)
 file(GLOB GUI_WIDGETS                                       GUI/Widgets/*.*)
 file(GLOB INPUT                                             Input/*.*)
 file(GLOB NETWORK                                           Network/*.*)
+file(GLOB NETWORK_MESSAGES               ../../common_files/Network/Messages/MessagesClient_.*
+                                         ../../common_files/Network/Messages/MessagesServer_.*)
 file(GLOB OBJECTS                        ../../common_files/Objects/*.*
                                                             Objects/*.*)
 file(GLOB OBJECTS_AMMO                   ../../common_files/Objects/Ammo/*.*)
@@ -66,6 +68,7 @@ source_group(GUI\\Panels                       FILES ${GUI_PANELS})
 source_group(GUI\\Widgets                      FILES ${GUI_WIDGETS})
 source_group(Input                             FILES ${INPUT})
 source_group(Network                           FILES ${NETWORK})
+source_group(Network\\Messages                 FILES ${NETWORK_MESSAGES})
 source_group(Objects                           FILES ${OBJECTS})
 source_group(Objects\\Ammo                     FILES ${OBJECTS_AMMO})
 source_group(Objects\\Structures               FILES ${OBJECTS_STRUCTURES})
@@ -94,6 +97,7 @@ add_executable(${PROJECT_NAME} ${SRC} ${GRAPHICS} ${GRAPHICS_GEOMETRY} ${GRAPHIC
                                ${GRAPHICS_TEXTURES} ${GUI} ${GUI_MUTATORS} ${GUI_PANELS} ${GUI_WIDGETS}
                                ${INPUT}
                                ${NETWORK}
+                               ${NETWORK_MESSAGES}
                                ${SCENE} ${SCENE_CAMERAS} ${OBJECTS} ${OBJECTS_AMMO}
                                ${OBJECTS_STRUCTURES}
                                ${OBJECTS_UNITS}

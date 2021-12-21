@@ -22,6 +22,8 @@ void Battle::ApplicationTask()
             TheNetworkMgr->SetBroadcastPortNumber(PORT_NUMBER);
             TheMessageMgr->SetMaxPlayerCount(10);
             TheMessageMgr->BeginMultiplayerGame(true);
+
+            LOG_WRITE("Connected to port %d is OK. Wait connections ...", PORT_NUMBER)
         }
     }
 }
