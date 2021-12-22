@@ -4,6 +4,8 @@
 
 namespace Pi
 {
+    class GameObject;
+
     class GameWorld : public World
     {
     public:
@@ -14,6 +16,9 @@ namespace Pi
 
         static GameWorld *self;
 
+        void AppendObject(GameObject *object);
+
+    private:
         virtual WorldResult::B Preprocess() override;
     };
 }

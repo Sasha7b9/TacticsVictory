@@ -4,6 +4,7 @@
 #include "Scene/World/GameWorld.h"
 #include "Objects/Units/Unit_.h"
 #include "Objects/Units/Logic/PathFinder/PathFinder.h"
+#include "GameState.h"
 
 
 using namespace Pi;
@@ -118,7 +119,7 @@ Array<Integer2D> PathFinder::ToArray()
 
 void PathFinder::SetSize()
 {
-    while (!Landscape::self->IsCreated())
+    while (!GameState::landscapeCreated)
     {
     }
 

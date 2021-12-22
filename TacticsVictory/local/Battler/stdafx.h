@@ -32,6 +32,8 @@
 
 #include <Math/PiVector3D.h>
 
+#include <Network/PiMessages.h>
+
 #include <Physics/PiCharacter.h>
 #include <Physics/PiContacts.h>
 #include <Physics/PiPhysics.h>

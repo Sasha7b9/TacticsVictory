@@ -13,7 +13,7 @@ namespace Pi
 
     protected:
 
-        WaterUnitObject(TypeWaterUnit::S _type) : UnitObject(TypeUnit::Water), typeWaterUnit(_type) {}
+        WaterUnitObject(TypeWaterUnit::S _type, int id = -1) : UnitObject(TypeUnit::Water, id), typeWaterUnit(_type) {}
     };
 
 

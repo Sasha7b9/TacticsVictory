@@ -92,7 +92,7 @@ void Log::WriteTrace(pchar name_file, int num_line, pchar format, ...)
     vsprintf(buffer, format, args);
     va_end(args);
 
-    sprintf(&buffer[strlen(buffer)], "%s - \t\t\t\t%s:%d\n", buffer, name_file, num_line);
+    sprintf(&buffer[strlen(buffer)], "%s - \t\t\t\t%s:%d", buffer, name_file, num_line);
 
     WriteMessage(buffer);
 }
@@ -132,7 +132,7 @@ void Log::WarningTrace(pchar name_file, int num_line, pchar format, ...)
     vsprintf(&buffer[strlen(buffer)], format, args);
     va_end(args);
 
-    sprintf(&buffer[strlen(buffer)], "%s - \t\t\t\t%s:%d\n", buffer, name_file, num_line);
+    sprintf(&buffer[strlen(buffer)], "%s - \t\t\t\t%s:%d", buffer, name_file, num_line);
 
     WriteMessage(buffer);
 }
@@ -172,7 +172,7 @@ void Log::ErrorTrace(pchar name_file, int num_line, pchar format, ...)
     vsprintf(&buffer[strlen(buffer)], format, args);
     va_end(args);
 
-    sprintf(&buffer[strlen(buffer)], "%s - \t\t\t\t%s:%d\n", buffer, name_file, num_line);
+    sprintf(&buffer[strlen(buffer)], "%s - \t\t\t\t%s:%d", buffer, name_file, num_line);
 
     WriteMessage(buffer);
 }

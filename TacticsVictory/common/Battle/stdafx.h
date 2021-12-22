@@ -16,6 +16,8 @@
 
 #include <Math/PiVector3D.h>
 
+#include <Network/PiMessages.h>
+
 #include <Physics/PiCharacter.h>
 #include <Physics/PiContacts.h>
 #include <Physics/PiPhysics.h>
@@ -36,6 +38,7 @@
 #include <World/PiSources.h>
 #include <World/PiWorld.h>
 #include <World/PiMarkers.h>
+
 
 #ifdef WIN32
 #pragma warning(pop)

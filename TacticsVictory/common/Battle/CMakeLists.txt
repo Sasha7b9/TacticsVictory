@@ -16,13 +16,16 @@ if(MSVC)
         -D__PLACEMENT_VEC_NEW_INLINE    # без этого ругается на placement operator new
     )
 
+    add_definitions(-DPiSERVER)
+
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:1000000000")
 endif()
 
 file(GLOB SRC                                          *.h *.*c*
                                     ../../common_files/*.*)
 file(GLOB NETWORK                                      Network/*.*)
-file(GLOB NETWORK_MESSAGES          ../../common_files/Network/Messages/MessagesServer_.*)
+file(GLOB NETWORK_MESSAGES          ../../common_files/Network/Messages/*.*
+                                                       Network/Messages/*.*)
 file(GLOB OBJECTS                   ../../common_files/Objects/*.*
                                                        Objects/*.*)
 file(GLOB OBJECTS_AMMO              ../../common_files/Objects/Ammo/*.*

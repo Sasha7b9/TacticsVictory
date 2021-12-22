@@ -16,6 +16,8 @@ if(MSVC)
         -D__PLACEMENT_VEC_NEW_INLINE    # без этого ругается на placement operator new
     )
 
+    add_definitions(-DPiCLIENT)
+
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:1000000000")
 endif()
 
@@ -31,8 +33,8 @@ file(GLOB GUI_PANELS                                        GUI/Panels/*.*)
 file(GLOB GUI_WIDGETS                                       GUI/Widgets/*.*)
 file(GLOB INPUT                                             Input/*.*)
 file(GLOB NETWORK                                           Network/*.*)
-file(GLOB NETWORK_MESSAGES               ../../common_files/Network/Messages/MessagesClient_.*
-                                         ../../common_files/Network/Messages/MessagesServer_.*)
+file(GLOB NETWORK_MESSAGES               ../../common_files/Network/Messages/*.*
+                                                            Network/Messages/*.*)
 file(GLOB OBJECTS                        ../../common_files/Objects/*.*
                                                             Objects/*.*)
 file(GLOB OBJECTS_AMMO                   ../../common_files/Objects/Ammo/*.*)

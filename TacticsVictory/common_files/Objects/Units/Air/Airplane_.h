@@ -9,11 +9,11 @@ namespace Pi
     {
     public:
 
-        static Airplane *Create();
+        static Airplane *Create(int id = -1);
 
     private:
 
-        Airplane();
+        Airplane(int id = -1);
 
         virtual ~Airplane();
     };

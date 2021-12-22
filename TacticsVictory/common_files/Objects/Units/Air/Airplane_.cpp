@@ -7,9 +7,9 @@
 using namespace Pi;
 
 
-Airplane *Airplane::Create()
+Airplane *Airplane::Create(int id)
 {
-    Airplane *node = new Airplane();
+    Airplane *node = new Airplane(id);
 
     node->SetController(new AirplaneController());
 
@@ -17,7 +17,7 @@ Airplane *Airplane::Create()
 }
 
 
-Airplane::Airplane() : AirUnitObject(TypeAirUnit::Airplane)
+Airplane::Airplane(int id) : AirUnitObject(TypeAirUnit::Airplane, id)
 {
     PrimitiveGeometry *geometry = new PyramidGeometry({1.0f, 1.0f}, 1.0f);
     geometry->GetObject()->Build(geometry);

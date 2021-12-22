@@ -8,9 +8,9 @@
 using namespace Pi;
 
 
-Submarine *Submarine::Create()
+Submarine *Submarine::Create(int id)
 {
-    Submarine *node = new Submarine();
+    Submarine *node = new Submarine(id);
 
     node->SetController(new SubmarineController());
 
@@ -18,7 +18,7 @@ Submarine *Submarine::Create()
 }
 
 
-Submarine::Submarine() : WaterUnitObject(TypeWaterUnit::Submarine)
+Submarine::Submarine(int id) : WaterUnitObject(TypeWaterUnit::Submarine, id)
 {
     const float size = 1.0f;
 

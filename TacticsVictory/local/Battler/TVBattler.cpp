@@ -31,10 +31,9 @@ PI_ENTER_POINT(Battler)
 Battler *Battler::self = nullptr;
 
 
-Battler::Battler()
-    : Singleton<Battler>(self)
+Battler::Battler() : Singleton<Battler>(self)
 {
-    Log::Construct();
+    Log::Construct(FlagLog::All, DirectionLog::EngineReport | DirectionLog::File);
 
     uint64 timeEnter = TheTimeMgr->GetMicrosecondCount();
 

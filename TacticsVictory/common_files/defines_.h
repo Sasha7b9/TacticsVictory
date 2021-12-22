@@ -16,8 +16,11 @@ typedef unsigned long  ulong;
 
 
 // Ноутбук
-#define LOCAL_ADDRESS "192.168.27.1"
+//#define LOCAL_ADDRESS "192.168.27.1"
+#define LOCAL_ADDRESS "192.168.100.110"
 
 // ПК
 //#define LOCAL_ADDRESS "192.168.100.34"
+
+#define REMOTE_ADDRESS "62.109.4.198"
 

@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "TVBattle.h"
 #include "Network/Messages/MessagesServer_.h"
+#include "Network/Messages/MessagesClient_.h"
 #include "Scene/World/Landscape_.h"
 
 
@@ -108,15 +109,7 @@ void Battle::HandlePlayerEvent(PlayerEvent event, Player *player, const void *pa
 
 void Battle::ReceiveMessage(Player *, const NetworkAddress &, const Message *message)
 {
-    switch (message->GetMessageType())
-    {
-    case PiTypeMessage::CreateLandscape:
-        break;
-
-    default:
-        LOG_ERROR_TRACE("Unknown type message %d", message->GetMessageType());
-        break;
-    }
+    LOG_ERROR_TRACE("Unknown type message %d", message->GetMessageType());
 }
 
 
@@ -124,9 +117,7 @@ Message *Battle::CreateMessage(PiTypeMessage::E type, Decompressor &) const
 {
     switch (type)
     {
-    case PiTypeMessage::CreateLandscape:
-        return new MessageCreateLandscape();
-        break;
+    case PiTypeMessage::RequestGameObjects: return new MessageRequestGameObjects(); break;
 
     default:
         LOG_ERROR_TRACE("Unknown type message %d", type);

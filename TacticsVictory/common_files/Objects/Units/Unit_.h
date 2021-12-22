@@ -13,7 +13,6 @@ namespace Pi
     class GroundUnitObject;
     class WaterUnitObject;
 
-
     class UnitObject : public GameObject
     {
     friend class UnitController;
@@ -25,9 +24,13 @@ namespace Pi
 
         const TypeUnit typeUnit;
 
+        AirUnitObject *GetAirUnit() { return typeUnit == TypeUnit::Air ? (AirUnitObject *)this : nullptr; }
+        GroundUnitObject *GetGroundUnit() { return typeUnit == TypeUnit::Ground ? (GroundUnitObject *)this : nullptr; }
+        WaterUnitObject *GetWaterUnit() { return typeUnit == TypeUnit::Water ? (WaterUnitObject *)this : nullptr; }
+
     protected:
 
-        UnitObject(TypeUnit type);
+        UnitObject(TypeUnit type, int id = -1);
     };
 
 

@@ -8,9 +8,9 @@
 using namespace Pi;
 
 
-GameObject *Tank::Create()
+GameObject *Tank::Create(int id)
 {
-    Tank *node = new Tank();
+    Tank *node = new Tank(id);
 
     node->SetController(new TankController());
 
@@ -18,7 +18,7 @@ GameObject *Tank::Create()
 }
 
 
-Tank::Tank() : GroundUnitObject(TypeGroundUnit::Tank)
+Tank::Tank(int id) : GroundUnitObject(TypeGroundUnit::Tank, id)
 {
     GetNodeGeometry()->AppendNewSubnode(CreateBody());
     GetNodeGeometry()->AppendNewSubnode(CreateTrack(true));

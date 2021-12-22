@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Scene/World/Landscape_.h"
 #include "Scene/World/GameWorld.h"
+#include "GameState.h"
 
 
 namespace Pi
@@ -1044,7 +1045,7 @@ void LandscapeController::Preprocess()
 
 void LandscapeController::Move()
 {
-    if(!landscape->created)
+    if(!GameState::landscapeCreated)
     {
         int added = 0;
 
@@ -1068,7 +1069,7 @@ void LandscapeController::Move()
 
         if (added == TZone::NUM_ROWS_Y * TZone::NUM_COLS_X)
         {
-            landscape->created = true;
+            GameState::landscapeCreated = true;
             LOG_WRITE("Landscape is created");
         }
     }

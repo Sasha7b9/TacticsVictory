@@ -10,11 +10,11 @@ namespace Pi
     {
     public:
 
-        static Submarine *Create();
+        static Submarine *Create(int id = -1);
 
     private:
 
-        Submarine();
+        Submarine(int id = -1);
 
         virtual ~Submarine() {};
     };

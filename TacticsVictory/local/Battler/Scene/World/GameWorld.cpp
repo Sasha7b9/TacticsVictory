@@ -110,31 +110,8 @@ void GameWorld::Render()
 }
 
 
-static void AppendObject(GameObject *object)
-{
-    int sizeX = Landscape::self->GetSizeX_Columns();
-    int sizeY = Landscape::self->GetSizeY_Rows();
-
-    bool added = false;
-
-    while (!added)
-    {
-        added = object->AppendInGame(std::rand() % sizeX, std::rand() % sizeY);
-    }
-}
-
-
 void GameWorld::CreateObjects()
 {
-    for (int i = 0; i < 50; i++)
-    {
-        AppendObject(Tank::Create());
-
-        AppendObject(Airplane::Create());
-
-        AppendObject(Submarine::Create());
-    }
-
     GetRootNode()->AppendNewSubnode(new Selector());
 }
 

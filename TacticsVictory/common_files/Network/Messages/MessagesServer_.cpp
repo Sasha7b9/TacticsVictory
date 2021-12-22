@@ -1,34 +1,14 @@
 ﻿// 2021/12/21 17:52:04 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Network/Messages/MessagesServer_.h"
+#include "Objects/GameObject_.h"
+#include "Objects/Units/Unit_.h"
+#include "Objects/Units/Air/AirUnit_.h"
+#include "Objects/Units/Ground/GroundUnit_.h"
+#include "Objects/Units/Water/WaterUnit_.h"
 
 
 using namespace Pi;
-
-
-MessageCreateLandscape::MessageCreateLandscape(pchar _name_file) : Message(PiTypeMessage::CreateLandscape)
-{
-    pchar pointer = &_name_file[strlen(_name_file) - 1];
-
-    while (*pointer != '\\' && *pointer != '/')
-    {
-        pointer--;
-    }
-
-    pointer--;
-
-    while (*pointer != '\\' && *pointer != '/')
-    {
-        pointer--;
-    }
-
-    name_file = pointer + 1;
-}
-
-
-MessageCreateLandscape::MessageCreateLandscape() : Message(PiTypeMessage::CreateLandscape)
-{
-}
 
 
 void MessageCreateLandscape::Compress(Compressor &data) const
@@ -50,7 +30,48 @@ bool MessageCreateLandscape::Decompress(Decompressor &data)
 }
 
 
-bool MessageCreateLandscape::HandleMessage(Player *sender) const
+void MessageCreateGameObject::Compress(Compressor &data) const
 {
-    return false;
+    data << id;
+    data << typeGameObject;
+    data << (int)typeUnit;
+    data << typeAirUnit;
+    data << typeGroundUnit;
+    data << typeWaterUnit;
+    data.Write(&transform, sizeof(transform));
+}
+
+
+bool MessageCreateGameObject::Decompress(Decompressor &data)
+{
+    data >> id;
+    data >> typeGameObject;
+
+    int type = 0;
+    data >> type;
+    typeUnit = (TypeUnit)type;
+
+    data >> typeAirUnit;
+    data >> typeGroundUnit;
+    data >> typeWaterUnit;
+
+    data.Read(&transform, sizeof(transform));
+
+    return true;
+}
+
+
+void MessageGameObjectNodeTransform::Compress(Compressor &data) const
+{
+    data << id;
+    data.Write(&transform, sizeof(transform));
+}
+
+
+bool MessageGameObjectNodeTransform::Decompress(Decompressor &data)
+{
+    data >> id;
+    data.Read(&transform, sizeof(transform));
+
+    return true;
 }

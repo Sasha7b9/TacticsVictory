@@ -5,15 +5,19 @@
 
 namespace Pi
 {
+    class Tank;
+
     class GroundUnitObject : public UnitObject
     {
     public:
+
+        Tank *GetTank() { return typeGroundUnit == TypeGroundUnit::Tank ? (Tank *)this : nullptr; }
 
         const TypeGroundUnit::S typeGroundUnit;
 
     protected:
 
-        GroundUnitObject(TypeGroundUnit::S _type) : UnitObject(TypeUnit::Ground), typeGroundUnit(_type) {}
+        GroundUnitObject(TypeGroundUnit::S _type, int id = -1) : UnitObject(TypeUnit::Ground, id), typeGroundUnit(_type) {}
     };
 
 

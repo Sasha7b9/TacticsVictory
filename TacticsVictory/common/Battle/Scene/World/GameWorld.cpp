@@ -3,6 +3,7 @@
 #include "Scene/World/GameWorld.h"
 #include "Scene/World/Landscape_.h"
 #include "TVBattle.h"
+#include "Objects/GameObject_.h"
 
 
 using namespace Pi;
@@ -37,4 +38,18 @@ WorldResult::B GameWorld::Preprocess()
     GetRootNode()->AppendNewSubnode(Landscape::self);
 
     return WorldResult::Okay;
+}
+
+
+void GameWorld::AppendObject(GameObject *object)
+{
+    int sizeX = Landscape::self->GetSizeX_Columns();
+    int sizeY = Landscape::self->GetSizeY_Rows();
+
+    bool added = false;
+
+    while (!added)
+    {
+        added = object->AppendInGame(std::rand() % sizeX, std::rand() % sizeY);
+    }
 }

@@ -11,9 +11,13 @@ namespace Pi
     class UnitObject;
 
 
-    class GameObject : public Node
+    class GameObject : public Node, public MapElement<GameObject>
     {
     public:
+
+        typedef int KeyType;
+
+        KeyType GetKey() const { return id; }
 
         static void Construct();
 
@@ -30,9 +34,9 @@ namespace Pi
         static GameObject &GetFromScreen(const Point2D &coord);
 
         // Преобразует к указателю на UnitObject, если возможно, и возвращает nullptr в ином случае
-        UnitObject *CastToUnitObject() { return IsUnit() ? (UnitObject *)this : nullptr; }
+        UnitObject *GetUnitObject() { return IsUnit() ? (UnitObject *)this : nullptr; }
 
-        bool IsUnit() const { return typeObject == TypeGameObject::Unit; }
+        bool IsUnit() const { return typeGameObject == TypeGameObject::Unit; }
 
         static GameObject *empty;
 
@@ -47,17 +51,19 @@ namespace Pi
         // Создаёт узел с именем name и подвешивает к нему узел с геометрией
         Node *CreateNodeForGeometry(pchar name, Node *nodeGeometry);
 
+        const TypeGameObject::S typeGameObject;
+
+        static Map<GameObject> objects;
+
     protected:
 
-        GameObject(TypeGameObject::S);
+        GameObject(TypeGameObject::S, int id = -1);
 
         virtual ~GameObject() {}
 
     private:
 
-        TypeGameObject::S typeObject;
-
-        Node *nodeGeometry = nullptr;
+        Node *nodeGeometry = nullptr;           // На этом узле хранится геометрия
 
         static int createdObjects;              // Столько объектов уже создано
         int id = 0;

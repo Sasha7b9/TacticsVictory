@@ -56,6 +56,8 @@ Commander *Commander::New(UnitController *controller)
 
 void Commander::Update(float dT)
 {
+#ifdef PiSERVER
+
     while (!tasks.Empty())
     {
         const CommanderTask *task = tasks[0];
@@ -71,6 +73,8 @@ void Commander::Update(float dT)
     {
         AppendRandomTask();
     }
+
+#endif
 }
 
 

@@ -20,7 +20,7 @@ void UnitObject::Destruct()
 }
 
 
-UnitObject::UnitObject(TypeUnit type) : GameObject(TypeGameObject::Unit), typeUnit(type)
+UnitObject::UnitObject(TypeUnit type, int id) : GameObject(TypeGameObject::Unit, id), typeUnit(type)
 {
     AppendNewSubnode(PoolGeometry::Get(TTypeGeometry::GizmoObject));
 }

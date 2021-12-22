@@ -38,9 +38,9 @@ namespace Pi
 
     enum class TypeUnit
     {
+        None_,
         Air,
         Ground,
-        Underground,
         Water
     };
 
@@ -56,6 +56,7 @@ namespace Pi
     {
         typedef StringHash S;
 
+        const S Empty      = "Empty";
         const S Airplane   = "Airplane";
         const S Helicopter = "Helicopter";
     }
@@ -64,6 +65,7 @@ namespace Pi
     {
         typedef StringHash S;
 
+        const S Empty = "Empty";
         const S Robot = "Robot";
         const S Tank  = "Tank";
         const S Worm  = "Worm";
@@ -73,6 +75,7 @@ namespace Pi
     {
         typedef StringHash S;
 
+        const S Empty     = "Empty";
         const S Boat      = "Bot";
         const S Submarine = "Submarine";
     }

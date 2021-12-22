@@ -12,7 +12,7 @@ namespace Pi
     {
     public:
 
-        static GameObject *Create();
+        static GameObject *Create(int id = -1);
 
     private:
 
@@ -20,7 +20,7 @@ namespace Pi
         ModelRegistration             tankModelRegistration {TypeGroundUnit::Tank, "Tank", "models/Tank",
                                       ModelRegistrationFlag::Precache, TypeGroundUnit::Tank};
 
-        Tank();
+        Tank(int id = -1);
         virtual ~Tank() {};
 
         Node *CreateBody();

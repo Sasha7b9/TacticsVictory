@@ -12,8 +12,9 @@
 using namespace Pi;
 
 
-GameObject *GameObject::empty = nullptr;
-int         GameObject::createdObjects = 0;
+GameObject     *GameObject::empty = nullptr;
+int             GameObject::createdObjects = 0;
+Map<GameObject> GameObject::objects;
 
 
 void GameObject::Construct()
@@ -38,9 +39,16 @@ void GameObject::Destruct()
 }
 
 
-GameObject::GameObject(TypeGameObject::S _type) : Node(), typeObject(_type)
+GameObject::GameObject(TypeGameObject::S _type, int _id) : Node(), typeGameObject(_type)
 {
-    id = ++createdObjects;
+    if(_id == -1)
+    {
+        id = ++createdObjects;
+    }
+    else
+    {
+        id = _id;
+    }
 
     AddProperty(new GameObjectProperty(*this));
 
@@ -49,6 +57,8 @@ GameObject::GameObject(TypeGameObject::S _type) : Node(), typeObject(_type)
     nodeGeometry->SetNodeName("Geometry");
 
     AppendNewSubnode(nodeGeometry);
+
+    objects.Insert(this);
 }
 
 
@@ -61,7 +71,7 @@ bool GameObject::AppendInGame(int _x, int _y)
 
     if (IsUnit())
     {
-        UnitObject *unit = CastToUnitObject();
+        UnitObject *unit = GetUnitObject();
 
         if (unit->typeUnit == TypeUnit::Air) //-V522
         {

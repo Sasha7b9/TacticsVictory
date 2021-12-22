@@ -13,7 +13,7 @@ namespace Pi
 
     protected:
 
-        AirUnitObject(TypeAirUnit::S _type) : UnitObject(TypeUnit::Air), typeAirUnit(_type) {}
+        AirUnitObject(TypeAirUnit::S _type, int id = -1) : UnitObject(TypeUnit::Air, id), typeAirUnit(_type) {}
     };
 
 

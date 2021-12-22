@@ -35,7 +35,7 @@ namespace Pi
         static Landscape *self;
 
         void    Reload();
-        bool    IsCreated() const { return created; }
+//        bool    IsCreated() const { return created; }
         int     GetSizeX_Columns();
         int     GetSizeY_Rows();
 
@@ -99,7 +99,7 @@ namespace Pi
         void            ReloadIfNeed();
 
         float           delta = 0.0f;
-        bool            created = false;
+//        bool            created = false;
         LandscapeController *controller = nullptr;
     };
 

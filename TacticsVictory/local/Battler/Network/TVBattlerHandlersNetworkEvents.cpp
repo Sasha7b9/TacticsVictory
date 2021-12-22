@@ -18,7 +18,12 @@ void Battler::HandleConnectionEvent(ConnectionEvent event, const NetworkAddress 
         break;
 
     case ConnectionEvent::AttemptFailed:
-        LOG_ERROR_TRACE("ConnectionEvent::AttemptFailed");
+        {
+            LOG_ERROR_TRACE("ConnectionEvent::AttemptFailed");
+            NetworkAddress localAddress = MessageMgr::StringToAddress(LOCAL_ADDRESS);
+            localAddress.SetPort(PORT_NUMBER);
+            TheMessageMgr->Connect(localAddress);
+        }
         break;
 
     case ConnectionEvent::ClientOpened:
@@ -104,22 +109,7 @@ void Battler::HandlePlayerEvent(PlayerEvent event, Player *player, const void *p
 
 void Battler::ReceiveMessage(Player *, const NetworkAddress &, const Message *message)
 {
-    switch (message->GetMessageType())
-    {
-    case PiTypeMessage::CreateLandscape:
-        {
-            const MessageCreateLandscape *msg = (const MessageCreateLandscape *)message;
-            LOG_WRITE("Load landscape %s", msg->GetNameLandscapeFile().c_str());
-            new Landscape((Battler::self->DataPath() + msg->GetNameLandscapeFile().c_str()).c_str());
-            GameWorld::self->GetRootNode()->AppendNewSubnode(Landscape::self);
-            Water::Create();
-        }
-        break;
-
-    default:
-        LOG_ERROR_TRACE("Received unknown message type %d", message->GetMessageType());
-        break;
-    }
+    LOG_ERROR_TRACE("Received unknown message type %d", message->GetMessageType());
 }
 
 
@@ -127,9 +117,9 @@ Message *Battler::CreateMessage(PiTypeMessage::E type, Decompressor &) const
 {
     switch (type)
     {
-    case PiTypeMessage::CreateLandscape:
-        return new MessageCreateLandscape();
-        break;
+    case PiTypeMessage::CreateLandscape:             return new MessageCreateLandscape();         break;
+    case PiTypeMessage::CreateGameObject:            return new MessageCreateGameObject();        break;
+    case PiTypeMessage::SendGameObjectNodeTransform: return new MessageGameObjectNodeTransform(); break;
 
     default:
         LOG_ERROR_TRACE("Unkndown message type %d", type);
