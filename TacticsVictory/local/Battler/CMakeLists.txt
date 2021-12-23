@@ -16,10 +16,10 @@ if(MSVC)
         -D__PLACEMENT_VEC_NEW_INLINE    # без этого ругается на placement operator new
     )
 
-    add_definitions(-DPiCLIENT)
-
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:1000000000")
 endif()
+
+add_definitions(-DPiCLIENT)
 
 file(GLOB SRC                                               *.h *.*c*
                                          ../../common_files/*.*)

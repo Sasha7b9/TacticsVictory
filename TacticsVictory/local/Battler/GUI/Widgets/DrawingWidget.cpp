@@ -264,8 +264,8 @@ void DrawingWidget::DrawPolyLine(const Point2D *points, int numPoints)
 
 void DrawingWidget::ClearAndFillRegion(const Point2D *points, int numPoints, const ColorRGBA &colorFill, const ColorRGBA &colorBorder, const Point2D &pointFill)
 {
-    ColorRGBA colBackground;
-    ColorRGBA colBrush;
+    ColorRGBA colBackground = colorBackground;
+    ColorRGBA colBrush = colorBrush;
 
     SetColorBackground(ColorRGBA(0.0f, 0.0f, 0.0f, 0.0f));
     Clear();

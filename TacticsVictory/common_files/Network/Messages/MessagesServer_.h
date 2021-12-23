@@ -56,9 +56,16 @@ namespace Pi
     public:
         MessageGameObjectNodeTransform(GameObject *);
         MessageGameObjectNodeTransform() : Message(PiTypeMessage::SendGameObjectNodeTransform) {}
+
+        void AddObject(GameObject *);
+        int NumObjects() const { return num_objects; }
+        int MaxNumObjects() const { return 30; }
+
     private:
-        int id = 0;
-        Transform4D transform;
+
+        int     num_objects = 0;
+        int     id[30];
+        Point3D position[30];
 
         virtual void Compress(Compressor &) const override;
         virtual bool Decompress(Decompressor &) override;

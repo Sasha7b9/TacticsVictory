@@ -20,7 +20,7 @@ void Battler::HandleConnectionEvent(ConnectionEvent event, const NetworkAddress 
     case ConnectionEvent::AttemptFailed:
         {
             LOG_ERROR_TRACE("ConnectionEvent::AttemptFailed");
-            NetworkAddress localAddress = MessageMgr::StringToAddress(LOCAL_ADDRESS);
+            NetworkAddress localAddress = MessageMgr::StringToAddress(REMOTE_ADDRESS);
             localAddress.SetPort(PORT_NUMBER);
             TheMessageMgr->Connect(localAddress);
         }
@@ -115,6 +115,18 @@ void Battler::ReceiveMessage(Player *, const NetworkAddress &, const Message *me
 
 Message *Battler::CreateMessage(PiTypeMessage::E type, Decompressor &) const
 {
+//    static uint time = TheTimeMgr->GetMillisecondCount();
+//    static int counter = 0;
+//    counter++;
+//
+//    if (TheTimeMgr->GetMillisecondCount() - time >= 1000)
+//    {
+//        LOG_WRITE("messages - %d", counter);
+//        counter = 0;
+//        time = TheTimeMgr->GetMillisecondCount();
+//    }
+
+
     switch (type)
     {
     case PiTypeMessage::CreateLandscape:             return new MessageCreateLandscape();         break;

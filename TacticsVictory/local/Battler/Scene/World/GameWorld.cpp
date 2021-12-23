@@ -104,21 +104,9 @@ WorldResult::B GameWorld::Preprocess()
 }
 
 
-void GameWorld::Render()
-{
-    World::Render();
-}
-
-
 void GameWorld::CreateObjects()
 {
     GetRootNode()->AppendNewSubnode(new Selector());
-}
-
-
-void GameWorld::Move()
-{
-    World::Move();
 }
 
 
@@ -169,4 +157,19 @@ Point3D GameWorld::TransformWorldCoordToDisplay(const Point3D &worldPosition)
     displayPoint.z = 0.0f;
 
     return displayPoint;
+}
+
+
+void GameWorld::Render()
+{
+    World::Render();
+
+//    static uint prev_time = TheTimeMgr->GetMillisecondCount();
+//
+//    if (TheTimeMgr->GetMillisecondCount() - prev_time > 40)
+//    {
+//        LOG_WRITE("last delta render %d ms", TheTimeMgr->GetMillisecondCount() - prev_time);
+//    }
+//
+//    prev_time = TheTimeMgr->GetMillisecondCount();
 }

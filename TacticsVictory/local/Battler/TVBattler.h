@@ -22,6 +22,8 @@ namespace Pi
 
         virtual void ApplicationTask() override;
 
+        void AdditionalTasks();
+
         void HandleOnButtonQuit(Widget *widget, const WidgetEventData *eventData);
 
         // ¬озвращает путь к каталогу с данными игры (Data/TacticsVictory)

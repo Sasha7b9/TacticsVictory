@@ -123,6 +123,9 @@ namespace Pi
 
         GameObject &gameObject;
 
+        bool    needNewPosition = false;
+        Point3D newPosition;
+
     private:
 
         bool        selected = false;

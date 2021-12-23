@@ -7,6 +7,8 @@
 #include "Objects/Units/Air/Airplane_.h"
 #include "Objects/Units/Ground/Tank_.h"
 #include "Objects/Units/Water/Submarine_.h"
+#include "GameState.h"
+#include "Objects/Units/Unit_.h"
 
 
 using namespace Pi;
@@ -82,16 +84,43 @@ bool MessageCreateGameObject::HandleMessage(Player *sender) const
 
 bool MessageGameObjectNodeTransform::HandleMessage(Player *) const
 {
-    GameObject *object = GameObject::objects.Find(id);
-
-    if(object)
+    if (!GameState::landscapeCreated)
     {
-        object->SetNodeTransform(transform);
-        object->Invalidate();
+        return true;
     }
-    else
+
+    for (int i = 0; i < num_objects; i++)
     {
-//        LOG_ERROR_TRACE("Can not find object with id %d", id);
+        int _id = id[i];
+        GameObject *object = GameObject::objects.Find(_id);
+
+        if (object)
+        {
+            GameObjectProperty &property = object->GetGameObjectProperty();
+
+            property.needNewPosition = true;
+            property.newPosition = position[i];
+
+//            if (_id == 5)
+//            {
+//                static uint timePrevUpdate = 0;
+//                uint timeUpdate = TheTimeMgr->GetAbsoluteTime();
+//
+//                uint delta = timeUpdate - timePrevUpdate;
+//                timePrevUpdate = timeUpdate;
+//
+//                static uint prevTime = 0;
+//
+//                if (TheTimeMgr->GetAbsoluteTime() - prevTime >= 1000)
+//                {
+//                    prevTime = TheTimeMgr->GetAbsoluteTime();
+//
+//                    LOG_WRITE("delta = %d ms", delta);
+//
+//                    LOG_WRITE("in scene %d objects", GameObject::objects.GetElementCount());
+//                }
+//            }
+        }
     }
 
     return true;

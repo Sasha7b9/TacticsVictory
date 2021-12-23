@@ -63,15 +63,21 @@ bool MessageCreateGameObject::Decompress(Decompressor &data)
 
 void MessageGameObjectNodeTransform::Compress(Compressor &data) const
 {
-    data << id;
-    data.Write(&transform, sizeof(transform));
+    data << num_objects;
+
+    data.Write(id, sizeof(id[0]) * num_objects);
+
+    data.Write(position, sizeof(position[0]) * num_objects);
 }
 
 
 bool MessageGameObjectNodeTransform::Decompress(Decompressor &data)
 {
-    data >> id;
-    data.Read(&transform, sizeof(transform));
+    data >> num_objects;
+
+    data.Read(id, sizeof(id[0]) * num_objects);
+
+    data.Read(position, sizeof(position[0]) * num_objects);
 
     return true;
 }

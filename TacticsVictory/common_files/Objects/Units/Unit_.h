@@ -28,6 +28,8 @@ namespace Pi
         GroundUnitObject *GetGroundUnit() { return typeUnit == TypeUnit::Ground ? (GroundUnitObject *)this : nullptr; }
         WaterUnitObject *GetWaterUnit() { return typeUnit == TypeUnit::Water ? (WaterUnitObject *)this : nullptr; }
 
+        UnitController *GetUnitController();
+
     protected:
 
         UnitObject(TypeUnit type, int id = -1);

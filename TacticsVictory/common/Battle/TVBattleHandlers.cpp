@@ -13,11 +13,14 @@
 using namespace Pi;
 
 
+#define NUM_OBJECTS 300
+
+
 void Battle::ApplicationTask()
 {
     if(GameState::landscapeCreated && !GameState::objectsCreated)
     {
-        for (int i = 0; i < 33; i++)
+        for (int i = 0; i < NUM_OBJECTS / 3; i++)
         {
             GameWorld::self->AppendObject(Tank::Create());
 
@@ -52,9 +55,35 @@ void Battle::ApplicationTask()
         {
             prevTime = TheTimeMgr->GetAbsoluteTime();
 
+            uint64 start_time = TheTimeMgr->GetMicrosecondCount();
+
+            static int counter = 0;
+
+            MessageGameObjectNodeTransform *message = new MessageGameObjectNodeTransform();
+
             for (GameObject *object : GameObject::objects)
             {
-                TheMessageMgr->SendMessage(PlayerType::Clients, MessageGameObjectNodeTransform(object));
+                if (message->NumObjects() == message->MaxNumObjects())
+                {
+                    TheMessageMgr->SendMessageClients(*message);
+                    delete message;
+                    message = new MessageGameObjectNodeTransform(object);
+                }
+
+                message->AddObject(object);
+            }
+
+            if (message)
+            {
+                TheMessageMgr->SendMessageClients(*message);
+                delete message;
+            }
+
+            if (counter++ >= 25)
+            {
+                counter = 0;
+
+                LOG_WRITE("time send %ld us", TheTimeMgr->GetMicrosecondCount() - start_time);
             }
         }
     }
@@ -66,7 +95,7 @@ void Battle::ApplicationTask()
         {
             prevTime = TheTimeMgr->GetAbsoluteTime();
 
-            LOG_WRITE("%d", prevTime);
+            LOG_WRITE("FPS = %d", TheEngine->GetFPS());
         }
     }
 }

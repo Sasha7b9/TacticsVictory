@@ -18,11 +18,9 @@ namespace Pi
 
         virtual WorldResult::B Preprocess() override;
 
-        static GameWorld *self;
-
         virtual void Render() override;
 
-        virtual void Move() override;
+        static GameWorld *self;
 
         void ChangeCursorPosition(float deltaX, float deltaY);
 

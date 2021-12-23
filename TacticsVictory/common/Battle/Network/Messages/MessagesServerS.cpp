@@ -100,8 +100,16 @@ void MessageCreateGameObject::FillWaterUnit(WaterUnitObject *unit)
 
 
 MessageGameObjectNodeTransform::MessageGameObjectNodeTransform(GameObject *object) :
-    Message(PiTypeMessage::SendGameObjectNodeTransform),
-    id(object->GetID()),
-    transform(object->GetNodeTransform())
+    Message(PiTypeMessage::SendGameObjectNodeTransform, PiFlagMessage::Unordered | PiFlagMessage::Unreliable)
 {
+}
+
+
+void MessageGameObjectNodeTransform::AddObject(GameObject *object)
+{
+    id[num_objects] = object->GetID();
+
+    position[num_objects] = object->GetNodePosition();
+
+    num_objects++;
 }

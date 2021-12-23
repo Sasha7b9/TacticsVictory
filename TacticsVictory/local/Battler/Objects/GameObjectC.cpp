@@ -23,6 +23,13 @@ void GameObjectController::Move()
         property->infoWindow->SetWidgetPosition(coord);
         property->infoWindow->Invalidate();
     }
+
+    if (property->needNewPosition)
+    {
+        GetTargetNode()->SetNodePosition(property->newPosition);
+        GetTargetNode()->Invalidate();
+        property->needNewPosition = false;
+    }
 }
 
 
