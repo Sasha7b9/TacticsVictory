@@ -6,8 +6,15 @@
 using namespace Pi;
 
 
-WaterUnitController::WaterUnitController(const PiTypeController::S &type, const UnitParameters *param) :
-    UnitController(type, param)
+WaterUnitObject::WaterUnitObject(TypeWaterUnit type, int id, WaterUnitController *controller) :
+    UnitObject(TypeUnit::Water, id, controller),
+    typeWaterUnit(type)
 {
 
+}
+
+
+WaterUnitController::WaterUnitController(WaterUnitObject *object, const UnitParameters &param) :
+    UnitController(object, param)
+{
 }

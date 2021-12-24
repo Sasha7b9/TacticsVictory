@@ -22,8 +22,6 @@ namespace Pi
 
         virtual void ApplicationTask() override;
 
-        void AdditionalTasks();
-
         void HandleOnButtonQuit(Widget *widget, const WidgetEventData *eventData);
 
         // Возвращает путь к каталогу с данными игры (Data/TacticsVictory)
@@ -33,23 +31,21 @@ namespace Pi
 
     private:
 
-        CommandObserver<Battler> gizmoCommandObserver { this, &Battler::HandleGizmoCommand };
-        CommandObserver<Battler> fogDensityCommandObserver { this, &Battler::HandleFogDensityCommand };
-
-        DisplayEventHandler    displayEventHandler{&HandleDisplayEvent};
-        LocatorRegistration    locatorReg{PiTypeLocator::Spectator, "Spectator Camera"};
-
         static World *ConstructWorld(pchar name, void *cookie);
 
-        static void HandleDisplayEvent(const DisplayEventData *eventData, void *data);
-
-        void CreateScene();
-
-        void CreateCommands();
+        // Отложенные задачи
+        List<DeferredTask> deferredTasks;
 
         // Commands
+        CommandObserver<Battler> gizmoCommandObserver{this, &Battler::HandleGizmoCommand};
+        CommandObserver<Battler> fogDensityCommandObserver{this, &Battler::HandleFogDensityCommand};
+        CommandObserver<Battler> pingCommandObserver{this, &Battler::HandlePingCommand};
+
         void HandleGizmoCommand(Command *, pchar);
         void HandleFogDensityCommand(Command *, pchar);
+        void HandlePingCommand(Command *, pchar);
+
+        void CreateCommands();
 
         // Network
         virtual void HandleConnectionEvent(ConnectionEvent, const NetworkAddress &, const void *) override;

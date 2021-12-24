@@ -12,13 +12,9 @@ namespace Pi
     {
     public:
 
-        static GameObject *Create(int id = -1);
+        static Tank *Create(int id = -1);
 
     private:
-
-        ControllerReg<TankController> tankControllerRegistration {TypeGroundUnit::Tank, "Tank"};
-        ModelRegistration             tankModelRegistration {TypeGroundUnit::Tank, "Tank", "models/Tank",
-                                      ModelRegistrationFlag::Precache, TypeGroundUnit::Tank};
 
         Tank(int id = -1);
         virtual ~Tank() {};
@@ -34,7 +30,7 @@ namespace Pi
     {
     public:
 
-        TankController();
+        TankController(Tank *);
 
         virtual ~TankController();
 
@@ -42,13 +38,7 @@ namespace Pi
 
     private:
 
-        static UnitParameters parameters;
-
-        TankController(const TankController &);
-
-        TankController &operator=(const TankController &) { return *this; }
-
-        virtual Controller *Replicate() const override;
+        static const UnitParameters parameters;
     };
 
 

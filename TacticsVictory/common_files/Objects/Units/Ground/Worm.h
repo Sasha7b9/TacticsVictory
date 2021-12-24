@@ -13,7 +13,8 @@ namespace Pi
 
     private:
 
-        Worm() : GroundUnitObject(TypeGroundUnit::Worm) {};
+        Worm(int id = -1);
+
         virtual ~Worm() {};
     };
 
@@ -22,7 +23,7 @@ namespace Pi
     {
     public:
 
-        WormController();
+        WormController(Worm *);
 
         virtual ~WormController();
 
@@ -30,13 +31,7 @@ namespace Pi
 
     private:
 
-        static UnitParameters parameters;
-
-        WormController(const WormController &);
-
-        WormController &operator=(const WormController &) { return *this; }
-
-        virtual Controller *Replicate() const override;
+        static const UnitParameters parameters;
     };
 
 

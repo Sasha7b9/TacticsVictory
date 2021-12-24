@@ -5,15 +5,17 @@
 
 namespace Pi
 {
+    class WeaponController;
+
     class WeaponObject : public GameObject
     {
     protected:
 
-        WeaponObject(TypeWeapon::S type) : GameObject(TypeGameObject::Weapon), typeWeapon(type) {};
+        WeaponObject(TypeWeapon, int, WeaponController *);
 
     private:
 
-        TypeWeapon::S typeWeapon;
+        TypeWeapon typeWeapon;
     };
 
 
@@ -25,6 +27,6 @@ namespace Pi
 
     protected:
 
-        WeaponController(PiTypeController::S type);
+        WeaponController(WeaponObject *);
     };
 }

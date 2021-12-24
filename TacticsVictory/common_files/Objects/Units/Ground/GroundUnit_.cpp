@@ -6,8 +6,15 @@
 using namespace Pi;
 
 
-GroundUnitController::GroundUnitController(const PiTypeController::S &type, UnitParameters *param) :
-    UnitController(type, param)
+GroundUnitObject::GroundUnitObject(TypeGroundUnit type, int id, GroundUnitController *controller) :
+    UnitObject(TypeUnit::Ground, id, controller),
+    typeGroundUnit(type)
 {
+}
 
+
+
+GroundUnitController::GroundUnitController(GroundUnitObject *groundUnit, const UnitParameters &parameters) :
+    UnitController(groundUnit, parameters)
+{
 }

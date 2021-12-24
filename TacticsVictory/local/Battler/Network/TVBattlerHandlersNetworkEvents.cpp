@@ -4,6 +4,7 @@
 #include "Network/Messages/MessagesServer_.h"
 #include "Scene/World/GameWorld.h"
 #include "Scene/World/Landscape_.h"
+#include "Network/Messages/MessagesClient_.h"
 
 
 using namespace Pi;
@@ -109,29 +110,21 @@ void Battler::HandlePlayerEvent(PlayerEvent event, Player *player, const void *p
 
 void Battler::ReceiveMessage(Player *, const NetworkAddress &, const Message *message)
 {
-    LOG_ERROR_TRACE("Received unknown message type %d", message->GetMessageType());
+    if((TheEngine->GetEngineFlags() & PiFlagEngine::Quit) == 0)
+    {
+        LOG_ERROR_TRACE("Received unknown message type %d", message->GetMessageType());
+    }
 }
 
 
 Message *Battler::CreateMessage(PiTypeMessage::E type, Decompressor &) const
 {
-//    static uint time = TheTimeMgr->GetMillisecondCount();
-//    static int counter = 0;
-//    counter++;
-//
-//    if (TheTimeMgr->GetMillisecondCount() - time >= 1000)
-//    {
-//        LOG_WRITE("messages - %d", counter);
-//        counter = 0;
-//        time = TheTimeMgr->GetMillisecondCount();
-//    }
-
-
     switch (type)
     {
     case PiTypeMessage::CreateLandscape:             return new MessageCreateLandscape();         break;
     case PiTypeMessage::CreateGameObject:            return new MessageCreateGameObject();        break;
     case PiTypeMessage::SendGameObjectNodeTransform: return new MessageGameObjectNodeTransform(); break;
+    case PiTypeMessage::Ping:                        return new MessagePing();                    break;
 
     default:
         LOG_ERROR_TRACE("Unkndown message type %d", type);

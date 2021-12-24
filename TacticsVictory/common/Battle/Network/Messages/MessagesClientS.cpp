@@ -12,10 +12,31 @@ bool MessageRequestGameObjects::HandleMessage(Player *sender) const
 {
     LOG_WRITE("Received a request to send objects. In scene %d objects", GameObject::objects.GetElementCount());
 
+    MessageCreateGameObject message;
+
     for (GameObject *object : GameObject::objects)
     {
-        TheMessageMgr->SendMessage(sender->GetPlayerKey(), MessageCreateGameObject(object));
+        if (message.NumObjects() == MessageCreateGameObject::MAX_NUM_OBJECTS)
+        {
+            TheMessageMgr->SendMessage(sender->GetPlayerKey(), message);
+            message.Clear();
+        }
+
+        message.AppendObject(object);
     }
+
+    if (message.NumObjects() > 0)
+    {
+        TheMessageMgr->SendMessage(sender->GetPlayerKey(), message);
+    }
+
+    return true;
+}
+
+
+bool MessagePing::HandleMessage(Player *sender) const
+{
+    TheMessageMgr->SendMessage(sender->GetPlayerKey(), MessagePing(timeSend));
 
     return true;
 }

@@ -12,7 +12,12 @@ GameObject *Bullet::Create()
 }
 
 
-BulletController::BulletController() : AmmoController(TypeAmmo::Bullet)
+Bullet::Bullet(int id) : AmmoObject(TypeAmmo::Bullet, id, new BulletController(this))
+{
+}
+
+
+BulletController::BulletController(Bullet *bullet) : AmmoController(bullet)
 {
 
 }
@@ -27,12 +32,6 @@ BulletController::BulletController(const BulletController &controller) : AmmoCon
 BulletController::~BulletController()
 {
 
-}
-
-
-Controller *BulletController::Replicate() const
-{
-    return new BulletController(*this);
 }
 
 

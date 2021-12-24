@@ -22,7 +22,7 @@ namespace Pi
     protected:
 
         UnitObject *unit = nullptr;
-        UnitController *controller = nullptr;
+        UnitController * const controller = nullptr;
         bool completed = false;
 
         // Эта функция вызывается, когда задание завершено
@@ -95,6 +95,8 @@ namespace Pi
 
         virtual ~Driver();
 
+        UnitController *const controller = nullptr;
+
         static Driver *New(UnitController *);
 
         void Update(float dT);
@@ -103,14 +105,11 @@ namespace Pi
 
         bool EmptyTaskList() const { return tasks.GetElementCount() == 0; };
 
-        UnitController *GetController() const { return controller; }
-
     protected:
 
         Driver(UnitController *controller);
 
         UnitObject *unit = nullptr;
-        UnitController *controller = nullptr;
 
         Array<DriverTask *> tasks;
     };

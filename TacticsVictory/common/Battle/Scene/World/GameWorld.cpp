@@ -4,6 +4,7 @@
 #include "Scene/World/Landscape_.h"
 #include "TVBattle.h"
 #include "Objects/GameObject_.h"
+#include "Network/Messages/MessagesServer_.h"
 
 
 using namespace Pi;
@@ -51,5 +52,61 @@ void GameWorld::AppendObject(GameObject *object)
     while (!added)
     {
         added = object->AppendInGame(std::rand() % sizeX, std::rand() % sizeY);
+    }
+
+    object->controller->Preprocess();
+}
+
+
+void GameWorld::Move()
+{
+    World::Move();
+
+    static uint64 prevTime = TheTimeMgr->GetMicrosecondCount();
+
+    if (TheTimeMgr->GetMicrosecondCount() - prevTime >= 40000)
+    {
+        float dT = (float)(TheTimeMgr->GetMicrosecondCount() - prevTime) / 1e3f;
+
+        if (dT > 1000.0f)
+        {
+            LOG_ERROR_TRACE("dT = %f, prevTime = %llu, microCount = %llu", dT, prevTime, TheTimeMgr->GetMicrosecondCount());
+        }
+
+        numTick++;
+
+        RunOneTick();
+
+        prevTime += 40000;
+    }
+}
+
+
+void GameWorld::RunOneTick()
+{
+    for (GameObject *object : GameObject::objects)
+    {
+        object->controller->Move(40.0f);
+    }
+
+    if(TheMessageMgr->GetPlayerCount() > 1)
+    {
+        MessageGameObjectNodeTransform message;
+
+        for (GameObject *object : GameObject::objects)
+        {
+            if (message.NumObjects() == message.MaxNumObjects())
+            {
+                TheMessageMgr->SendMessageClients(message);
+                message.ResetCounter();
+            }
+
+            message.AddObject(object);
+        }
+
+        if (message.NumObjects() > 0)
+        {
+            TheMessageMgr->SendMessageClients(message);
+        }
     }
 }

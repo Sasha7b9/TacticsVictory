@@ -10,10 +10,11 @@
 using namespace Pi;
 
 
-UnitController::UnitController(PiTypeController::S type, const UnitParameters *_param) :
-    GameObjectController(TypeGameObject::Unit, type)
+UnitController::UnitController(UnitObject *_object, const UnitParameters &_param) :
+    GameObjectController(_object),
+    param(_param),
+    object(_object)
 {
-    param = _param->Replicate();
 }
 
 
@@ -22,7 +23,6 @@ UnitController::~UnitController()
     delete commander;
     delete driver;
     delete shooter;
-    delete param;
 }
 
 
@@ -39,18 +39,18 @@ void UnitController::Preprocess()
     GameObjectController::Preprocess();
     
     commander = Commander::New(this);
+
     driver = Driver::New(this);
+
     shooter = Shooter::New(this);
 
     commander->SetDriver(driver);
 }
 
 
-void UnitController::Move()
+void UnitController::Move(float dT)
 {
-    GameObjectController::Move();
-
-    float dT = TheTimeMgr->GetFloatDeltaTime();
+    GameObjectController::Move(dT);
 
     commander->Update(dT);
 
@@ -68,7 +68,7 @@ bool UnitController::CanExecute(CommanderTask::Type task) const
     }
     else if (task == CommanderTask::Type::Dive)
     {
-        WaterUnitObject *unit = GetWaterUnitOject();
+        WaterUnitObject *unit = GetWaterUnitObject();
 
         if (unit)
         {

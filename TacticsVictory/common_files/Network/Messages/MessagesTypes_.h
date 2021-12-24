@@ -14,7 +14,8 @@ namespace Pi
             SendGameObjectNodeTransform,            // Сообщение с новым пространственным преобразованием Game Object
 
             // Сообщения от клиента серверу
-            RequestGameObjects                      // Запрос об имеющихся GameObject в мире
+            RequestGameObjects,                     // Запрос об имеющихся GameObject в мире
+            Ping
         };
     }
 }

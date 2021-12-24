@@ -14,7 +14,8 @@ GameObject *Helicopter::Create()
 }
 
 
-HelicopterController::HelicopterController() : AirUnitController(TypeAirUnit::Helicopter, &parameters)
+HelicopterController::HelicopterController(Helicopter *helicopter) :
+    AirUnitController(helicopter, parameters)
 {
 
 }
@@ -29,12 +30,6 @@ HelicopterController::HelicopterController(const HelicopterController &controlle
 HelicopterController::~HelicopterController()
 {
 
-}
-
-
-Controller *HelicopterController::Replicate() const
-{
-    return new HelicopterController(*this);
 }
 
 

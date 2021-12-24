@@ -12,4 +12,30 @@ namespace Pi
     private:
         virtual bool HandleMessage(Player *sender) const override;
     };
+
+
+    class MessagePing : public Message
+    {
+    public:
+        MessagePing(uint time);
+        MessagePing() : Message(PiTypeMessage::Ping) {};
+    private:
+        uint timeSend = 0;                                  // Время отправления сообщения серверу
+        virtual void Compress(Compressor &) const override;
+        virtual bool Decompress(Decompressor &) override;
+        virtual bool HandleMessage(Player *) const override;
+    };
+
+
+    class MessageServerCommand : public Message
+    {
+    public:
+        MessageServerCommand(pchar command);
+        MessageServerCommand();
+    private:
+        String<> command;
+        virtual void Compress(Compressor &) const override;
+        virtual bool Decompress(Decompressor &) override;
+        virtual bool HandleMessage(Player *) const override;
+    };
 }

@@ -6,6 +6,7 @@
 
 namespace Pi
 {
+    class GameObjectController;
     class GameObjectProperty;
     class InfoWindow;
     class UnitObject;
@@ -51,13 +52,15 @@ namespace Pi
         // Создаёт узел с именем name и подвешивает к нему узел с геометрией
         Node *CreateNodeForGeometry(pchar name, Node *nodeGeometry);
 
-        const TypeGameObject::S typeGameObject;
+        const TypeGameObject typeGameObject;
 
         static Map<GameObject> objects;
 
+        GameObjectController * const controller = nullptr;
+
     protected:
 
-        GameObject(TypeGameObject::S, int id = -1);
+        GameObject(TypeGameObject, int, GameObjectController *);
 
         virtual ~GameObject() {}
 
@@ -70,24 +73,26 @@ namespace Pi
     };
 
 
-    class GameObjectController : public Controller, public LinkTarget<GameObjectController>
+    class GameObjectController
     {
+        friend class GameObject;
+
     public:
     
         virtual ~GameObjectController() {};
     
-        virtual void Preprocess() override;
+        virtual void Preprocess();
 
-        virtual void Move() override;
+        virtual void Move(float dT);
     
     protected:
     
-        GameObjectController(TypeGameObject::S typeObject, PiTypeController::S contrType);
-        GameObjectController(const GameObjectController &gameObjectController);
+        GameObjectController(GameObject *);
+
+        GameObject * const gameObject = nullptr;
     
     private:
-    
-        TypeGameObject::S typeObject;
+
         float scaleDefault = 1.0F;
         Vector3D rotateDefault {Vector3D::ZERO};
         Point3D coordGame;
@@ -122,9 +127,6 @@ namespace Pi
         static GameObjectProperty *GetFromScreen(const Point2D &coord);
 
         GameObject &gameObject;
-
-        bool    needNewPosition = false;
-        Point3D newPosition;
 
     private:
 

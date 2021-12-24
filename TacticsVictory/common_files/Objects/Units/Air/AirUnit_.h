@@ -5,15 +5,17 @@
 
 namespace Pi
 {
+    class AirUnitController;
+
     class AirUnitObject : public UnitObject
     {
     public:
 
-        const TypeAirUnit::S typeAirUnit;
+        const TypeAirUnit typeAirUnit;
 
     protected:
 
-        AirUnitObject(TypeAirUnit::S _type, int id = -1) : UnitObject(TypeUnit::Air, id), typeAirUnit(_type) {}
+        AirUnitObject(TypeAirUnit, int, AirUnitController *);
     };
 
 
@@ -23,11 +25,9 @@ namespace Pi
 
         virtual ~AirUnitController() {};
 
-        AirUnitObject *GetAirUnitObject()  { return (AirUnitObject *)GetTargetNode(); }
-
     protected:
 
-        AirUnitController(const PiTypeController::S &, UnitParameters *);
+        AirUnitController(AirUnitObject *, const UnitParameters &);
     };
 }
 

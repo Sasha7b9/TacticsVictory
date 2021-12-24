@@ -46,8 +46,6 @@ Battler::Battler() : Singleton<Battler>(self)
 
     Input::Init();
 
-    TheDisplayMgr->InstallDisplayEventHandler(&displayEventHandler);
-
     TheInterfaceMgr->SetInputManagementMode(InputManagementMode::Automatic);
 
     new Mouse();
@@ -56,7 +54,7 @@ Battler::Battler() : Singleton<Battler>(self)
 
     GameObject::Construct();
 
-    CreateScene();
+    TheWorldMgr->LoadWorld("world/Empty");
 
     CursorGUI::self->position = Vector2D((float)TheDisplayMgr->GetDisplayWidth() / 2.0f,
                                          (float)TheDisplayMgr->GetDisplayHeight() / 2.0f);
@@ -67,6 +65,34 @@ Battler::Battler() : Singleton<Battler>(self)
     float timeConstructor = (float) (TheTimeMgr->GetMicrosecondCount() - timeEnter) * 1e-6f;
 
     CreateCommands();
+
+    TheMessageMgr->EndGame();
+
+    TheNetworkMgr->NetworkTask();
+
+    TheNetworkMgr->SetProtocol(kGameProtocol);
+    TheNetworkMgr->SetPortNumber(0);
+    TheNetworkMgr->SetBroadcastPortNumber(PORT_NUMBER);
+    PiResultNetwork::B result = TheMessageMgr->BeginMultiplayerGame(false);
+
+    if (result != PiResultNetwork::Okay)
+    {
+        LOG_ERROR_TRACE("Can not begin mulitplayer game");
+    }
+
+    NetworkAddress address = MessageMgr::StringToAddress(REMOTE_ADDRESS);
+    address.SetPort(PORT_NUMBER);
+
+    result = TheMessageMgr->Connect(address);
+
+    if (result != PiResultNetwork::Okay)
+    {
+        LOG_ERROR_TRACE("Can not connect to %s:%d", REMOTE_ADDRESS, PORT_NUMBER);
+    }
+    else
+    {
+        LOG_WRITE("Attempt connection to %s:%d ...", REMOTE_ADDRESS, PORT_NUMBER);
+    }
 
     LOG_WRITE("Game constructor %f seconds", timeConstructor);
 }
@@ -86,17 +112,14 @@ Battler::~Battler()
     Log::Destruct();
 }
 
-void Battler::CreateScene()
-{
-    TheWorldMgr->LoadWorld("world/Empty");
-}
-
 
 void Battler::CreateCommands()
 {
     TheEngine->AddCommand(new Command("gizmo", &gizmoCommandObserver, {"enable/disable units gizmo"}));
 
     TheEngine->AddCommand(new Command("waterFogDensity", &fogDensityCommandObserver, {"set fog density for water"}));
+
+    TheEngine->AddCommand(new Command("ping", &pingCommandObserver, {"reques for ping. type \"ping period times\""}));
 }
 
 

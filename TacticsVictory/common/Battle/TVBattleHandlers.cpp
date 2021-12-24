@@ -13,7 +13,7 @@
 using namespace Pi;
 
 
-#define NUM_OBJECTS 300
+#define NUM_OBJECTS 333
 
 
 void Battle::ApplicationTask()
@@ -45,57 +45,5 @@ void Battle::ApplicationTask()
         }
 
         GameState::objectsCreated = true;
-    }
-
-    if (GameState::objectsCreated && TheMessageMgr->GetPlayerCount() > 1)
-    {
-        static uint prevTime = TheTimeMgr->GetAbsoluteTime();
-
-        if(TheTimeMgr->GetAbsoluteTime() - prevTime >= 40)
-        {
-            prevTime = TheTimeMgr->GetAbsoluteTime();
-
-            uint64 start_time = TheTimeMgr->GetMicrosecondCount();
-
-            static int counter = 0;
-
-            MessageGameObjectNodeTransform *message = new MessageGameObjectNodeTransform();
-
-            for (GameObject *object : GameObject::objects)
-            {
-                if (message->NumObjects() == message->MaxNumObjects())
-                {
-                    TheMessageMgr->SendMessageClients(*message);
-                    delete message;
-                    message = new MessageGameObjectNodeTransform(object);
-                }
-
-                message->AddObject(object);
-            }
-
-            if (message)
-            {
-                TheMessageMgr->SendMessageClients(*message);
-                delete message;
-            }
-
-            if (counter++ >= 25)
-            {
-                counter = 0;
-
-                LOG_WRITE("time send %ld us", TheTimeMgr->GetMicrosecondCount() - start_time);
-            }
-        }
-    }
-
-    {
-        static uint prevTime = TheTimeMgr->GetAbsoluteTime();
-
-        if (TheTimeMgr->GetAbsoluteTime() - prevTime > 1000)
-        {
-            prevTime = TheTimeMgr->GetAbsoluteTime();
-
-            LOG_WRITE("FPS = %d", TheEngine->GetFPS());
-        }
     }
 }

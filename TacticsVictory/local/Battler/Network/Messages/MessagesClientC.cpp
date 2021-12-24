@@ -6,8 +6,16 @@
 using namespace Pi;
 
 
-bool MessageRequestGameObjects::HandleMessage(Player *sender) const
+bool MessageRequestGameObjects::HandleMessage(Player *) const
 {
+    return true;
+}
+
+
+bool MessagePing::HandleMessage(Player *) const
+{
+    LOG_WRITE("ping = %d ms", TheTimeMgr->GetMillisecondCount() - timeSend);
+
     return true;
 }
 

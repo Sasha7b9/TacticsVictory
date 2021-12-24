@@ -21,7 +21,7 @@ using namespace Pi;
 
 Commander::Commander(UnitController *_controller) : controller(_controller)
 {
-    unit = (UnitObject *)controller->GetTargetNode();
+    unit = controller->object;
 }
 
 
@@ -29,14 +29,14 @@ Commander *Commander::New(UnitController *controller)
 {
     if (controller->BelongAir())
     {
-        TypeAirUnit::S type = ((AirUnitController *)controller)->GetAirUnitObject()->typeAirUnit;
+        TypeAirUnit type = controller->GetAirUnitObject()->typeAirUnit;
 
         if (type == TypeAirUnit::Airplane)         return new CommanderAirplane(controller);
         else if (type == TypeAirUnit::Helicopter)  return new CommanderHelicopter(controller);
     }
     else if (controller->BelongGround())
     {
-        TypeGroundUnit::S type = ((GroundUnitController *)controller)->GetGroundUnitObject()->typeGroundUnit;
+        TypeGroundUnit type = controller->GetGroundUnitObject()->typeGroundUnit;
 
         if (type == TypeGroundUnit::Robot)     return new CommanderRobot(controller);
         else if (type == TypeGroundUnit::Tank) return new CommanderTank(controller);
@@ -44,7 +44,7 @@ Commander *Commander::New(UnitController *controller)
     }
     else if (controller->BelongWater())
     {
-        TypeWaterUnit::S type = ((WaterUnitController *)controller)->GetWaterUnitObject()->typeWaterUnit;
+        TypeWaterUnit type = controller->GetWaterUnitObject()->typeWaterUnit;
 
         if (type == TypeWaterUnit::Boat)           return new CommanderBoat(controller);
         else if (type == TypeWaterUnit::Submarine) return new CommanderSubmarine(controller);

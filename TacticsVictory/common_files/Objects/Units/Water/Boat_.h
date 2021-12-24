@@ -13,7 +13,8 @@ namespace Pi
 
     private:
 
-        Boat() : WaterUnitObject(TypeWaterUnit::Boat) {};
+        Boat(int id = -1);
+
         virtual ~Boat() {};
     };
 
@@ -22,7 +23,7 @@ namespace Pi
     {
     public:
 
-        BoatController();
+        BoatController(Boat *);
         virtual ~BoatController();
 
         virtual void Preprocess() override;
@@ -30,12 +31,6 @@ namespace Pi
     private:
 
         static const UnitParameters parameters;
-
-        BoatController(const BoatController &);
-
-        BoatController &operator=(const BoatController &rhs) { *this = rhs; return *this; }
-
-        virtual Controller *Replicate() const override;
     };
 
 

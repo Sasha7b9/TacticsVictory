@@ -27,14 +27,14 @@ Shooter *Shooter::New(UnitController *controller)
 {
     if (controller->BelongAir())
     {
-        TypeAirUnit::S type = ((AirUnitController *)controller)->GetAirUnitObject()->typeAirUnit;
+        TypeAirUnit type = ((AirUnitController *)controller)->GetAirUnitObject()->typeAirUnit;
 
         if (type == TypeAirUnit::Airplane)        return new ShooterAirplane(controller);
         else if (type == TypeAirUnit::Helicopter) return new ShooterHelicopter(controller);
     }
     else if (controller->BelongGround())
     {
-        TypeGroundUnit::S type = ((GroundUnitController *)controller)->GetGroundUnitObject()->typeGroundUnit;
+        TypeGroundUnit type = ((GroundUnitController *)controller)->GetGroundUnitObject()->typeGroundUnit;
 
         if (type == TypeGroundUnit::Robot)     return new ShooterRobot(controller);
         else if (type == TypeGroundUnit::Tank) return new ShooterTank(controller);
@@ -42,7 +42,7 @@ Shooter *Shooter::New(UnitController *controller)
     }
     else if (controller->BelongWater())
     {
-        TypeWaterUnit::S type = ((WaterUnitController *)controller)->GetWaterUnitObject()->typeWaterUnit;
+        TypeWaterUnit type = ((WaterUnitController *)controller)->GetWaterUnitObject()->typeWaterUnit;
 
         if (type == TypeWaterUnit::Boat)           return new ShooterBoat(controller);
         else if (type == TypeWaterUnit::Submarine) return new ShooterSubmarine(controller);

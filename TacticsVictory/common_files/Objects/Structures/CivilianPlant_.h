@@ -13,24 +13,22 @@ namespace Pi
 
     private:
 
-        CivilianPlant() : StructureObject(TypeStructure::CivilianPlant) {};
+        CivilianPlant(int id = -1);
+
         virtual ~CivilianPlant() {};
     };
 
 
     class CivilianPlantController : public StructureController
     {
-    public:
-
-        CivilianPlantController();
-        virtual ~CivilianPlantController();
-
-        virtual void Preprocess() override;
+        friend class CivilianPlant;
 
     private:
 
-        CivilianPlantController(const CivilianPlantController &controller);
+        CivilianPlantController(CivilianPlant *);
 
-        virtual Controller *Replicate() const override;
+        virtual ~CivilianPlantController();
+
+        virtual void Preprocess() override;
     };
 }

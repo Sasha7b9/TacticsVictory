@@ -7,13 +7,6 @@ namespace Pi
     // Параметры описывают физические свойства юнита
     struct UnitParameters
     {
-        UnitParameters *Replicate() const
-        {
-            UnitParameters *parameters = new UnitParameters();
-            *parameters = *this;
-            return parameters;
-        }
-
         struct Max
         {
             Vector3D speed  = Vector3D::ZERO;

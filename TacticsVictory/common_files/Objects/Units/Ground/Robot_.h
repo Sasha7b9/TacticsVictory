@@ -13,7 +13,8 @@ namespace Pi
 
     private:
 
-        Robot() : GroundUnitObject(TypeGroundUnit::Robot) {};
+        Robot(int id = -1);
+
         virtual ~Robot() {};
     };
 
@@ -22,7 +23,7 @@ namespace Pi
     {
     public:
 
-        RobotController();
+        RobotController(Robot *);
 
         virtual ~RobotController();
 
@@ -30,13 +31,7 @@ namespace Pi
 
     private:
 
-        static UnitParameters parameters;
-
-        RobotController(const RobotController &);
-
-        RobotController &operator=(const RobotController &) { return *this; }
-
-        virtual Controller *Replicate() const override;
+        static const UnitParameters parameters;
     };
 
 

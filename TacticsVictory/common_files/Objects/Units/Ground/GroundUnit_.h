@@ -6,6 +6,7 @@
 namespace Pi
 {
     class Tank;
+    class GroundUnitController;
 
     class GroundUnitObject : public UnitObject
     {
@@ -13,11 +14,11 @@ namespace Pi
 
         Tank *GetTank() { return typeGroundUnit == TypeGroundUnit::Tank ? (Tank *)this : nullptr; }
 
-        const TypeGroundUnit::S typeGroundUnit;
+        const TypeGroundUnit typeGroundUnit;
 
     protected:
 
-        GroundUnitObject(TypeGroundUnit::S _type, int id = -1) : UnitObject(TypeUnit::Ground, id), typeGroundUnit(_type) {}
+        GroundUnitObject(TypeGroundUnit, int, GroundUnitController *);
     };
 
 
@@ -25,12 +26,10 @@ namespace Pi
     {
     public:
 
-        virtual ~GroundUnitController() {};
-
-        GroundUnitObject *GetGroundUnitObject() const { return (GroundUnitObject *)GetTargetNode(); }
+        virtual ~GroundUnitController() {}
 
     protected:
 
-        GroundUnitController(const PiTypeController::S &, UnitParameters *);
+        GroundUnitController(GroundUnitObject *, const UnitParameters &);
     };
 }

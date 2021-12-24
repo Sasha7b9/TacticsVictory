@@ -19,7 +19,7 @@ Map<GameObject> GameObject::objects;
 
 void GameObject::Construct()
 {
-    empty = new GameObject(TypeGameObject::Empty);
+    empty = new GameObject(TypeGameObject::Empty, 0, new GameObjectController(nullptr));
 
     AmmoObject::Construct();
     UnitObject::Construct();
@@ -39,7 +39,10 @@ void GameObject::Destruct()
 }
 
 
-GameObject::GameObject(TypeGameObject::S _type, int _id) : Node(), typeGameObject(_type)
+GameObject::GameObject(TypeGameObject type, int _id, GameObjectController *_controller) :
+    Node(),
+    typeGameObject(type),
+    controller(_controller)
 {
     if(_id == -1)
     {
@@ -108,17 +111,9 @@ bool GameObject::AppendInGame(int _x, int _y)
 }
 
 
-GameObjectController::GameObjectController(TypeGameObject::S _typeObject, PiTypeController::S contrType) :
-    Controller(contrType),
-    typeObject(_typeObject)
+GameObjectController::GameObjectController(GameObject *_object) : gameObject(_object)
 {
 
-}
-
-GameObjectController::GameObjectController(const GameObjectController &gameObjectController) :
-    Controller(gameObjectController)
-{
-    typeObject = gameObjectController.typeObject;
 }
 
 
@@ -152,9 +147,7 @@ Node *GameObject::CreateNodeForGeometry(pchar name, Node *_nodeGeometry)
 
 void GameObjectController::Preprocess()
 {
-    Controller::Preprocess();
-
-    property = (GameObjectProperty *)GetTargetNode()->GetProperty(PiTypeProperty::GameObject);
+    property = (GameObjectProperty *)gameObject->GetProperty(PiTypeProperty::GameObject);
 }
 
 

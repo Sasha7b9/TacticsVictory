@@ -12,14 +12,14 @@ GameObject *CivilianPlant::Create()
 }
 
 
-CivilianPlantController::CivilianPlantController() : StructureController(TypeStructure::CivilianPlant)
+CivilianPlant::CivilianPlant(int id) :
+    StructureObject(TypeStructure::CivilianPlant, id, new CivilianPlantController(this))
 {
-
 }
 
 
-CivilianPlantController::CivilianPlantController(const CivilianPlantController &controller) :
-    StructureController(controller)
+
+CivilianPlantController::CivilianPlantController(CivilianPlant *plant) : StructureController(plant)
 {
 
 }
@@ -28,12 +28,6 @@ CivilianPlantController::CivilianPlantController(const CivilianPlantController &
 CivilianPlantController::~CivilianPlantController()
 {
 
-}
-
-
-Controller *CivilianPlantController::Replicate() const
-{
-    return new CivilianPlantController(*this);
 }
 
 

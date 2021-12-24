@@ -5,15 +5,18 @@
 
 namespace Pi
 {
+    class WaterUnitController;
+
+
     class WaterUnitObject : public UnitObject
     {
     public:
 
-        const TypeWaterUnit::S typeWaterUnit;
+        const TypeWaterUnit typeWaterUnit;
 
     protected:
 
-        WaterUnitObject(TypeWaterUnit::S _type, int id = -1) : UnitObject(TypeUnit::Water, id), typeWaterUnit(_type) {}
+        WaterUnitObject(TypeWaterUnit, int, WaterUnitController *);
     };
 
 
@@ -23,10 +26,10 @@ namespace Pi
 
         virtual ~WaterUnitController() {};
 
-        WaterUnitObject *GetWaterUnitObject() const { return (WaterUnitObject *)GetTargetNode(); }
+//        WaterUnitObject *GetWaterUnitObject() const { return (WaterUnitObject *)gameObject; }
 
     protected:
 
-        WaterUnitController(const PiTypeController::S &, const UnitParameters *);
+        WaterUnitController(WaterUnitObject *, const UnitParameters &);
     };
 }

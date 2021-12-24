@@ -6,7 +6,7 @@
 using namespace Pi;
 
 
-void GameObjectController::Move()
+void GameObjectController::Move(float dT)
 {
 
 }

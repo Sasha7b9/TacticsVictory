@@ -5,25 +5,27 @@
 
 namespace Pi
 {
+    class StructureController;
+
+
     class StructureObject : public GameObject
     {
     protected:
 
-        StructureObject(TypeStructure::S type) : GameObject(TypeGameObject::Structure), typeStructure(type) {};
+        StructureObject(TypeStructure, int, StructureController *);
 
     private:
 
-        TypeStructure::S typeStructure;
+        TypeStructure typeStructure;
     };
+
 
     class StructureController : public GameObjectController
     {
-    public:
-
-        virtual ~StructureController() {};
-
     protected:
 
-        StructureController(PiTypeController::S type);
+        StructureController(StructureObject *);
+
+        virtual ~StructureController() {}
     };
 }

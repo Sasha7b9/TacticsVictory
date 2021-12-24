@@ -8,17 +8,13 @@
 using namespace Pi;
 
 
-GameObject *Tank::Create(int id)
+Tank *Tank::Create(int id)
 {
-    Tank *node = new Tank(id);
-
-    node->SetController(new TankController());
-
-    return node;
+    return new Tank(id);
 }
 
 
-Tank::Tank(int id) : GroundUnitObject(TypeGroundUnit::Tank, id)
+Tank::Tank(int id) : GroundUnitObject(TypeGroundUnit::Tank, id, new TankController(this))
 {
     GetNodeGeometry()->AppendNewSubnode(CreateBody());
     GetNodeGeometry()->AppendNewSubnode(CreateTrack(true));
@@ -136,26 +132,13 @@ Node *Tank::CreateBarrel()
 }
 
 
-TankController::TankController() : GroundUnitController(TypeGroundUnit::Tank, &parameters)
+TankController::TankController(Tank *tank) : GroundUnitController(tank, parameters)
 {
-}
-
-
-TankController::TankController(const TankController &controller) : GroundUnitController(controller)
-{
-
 }
 
 
 TankController::~TankController()
 {
-
-}
-
-
-Controller *TankController::Replicate() const
-{
-    return new TankController(*this);
 }
 
 
@@ -167,7 +150,6 @@ void TankController::Preprocess()
 
 CommanderTank::CommanderTank(UnitController *controller) : Commander(controller)
 {
-
 }
 
 
@@ -196,11 +178,9 @@ void CommanderTank::ParseMove(const CommanderTask *task) const
 
 DriverTank::DriverTank(UnitController *controller) : Driver(controller)
 {
-
 }
 
 
 ShooterTank::ShooterTank(UnitController *controller) : Shooter(controller)
 {
-
 }

@@ -13,7 +13,8 @@ namespace Pi
 
     private:
 
-        Helicopter() : AirUnitObject(TypeAirUnit::Helicopter) {};
+        Helicopter(int id);
+
         virtual ~Helicopter() {};
     };
 
@@ -22,20 +23,18 @@ namespace Pi
     {
     public:
 
-        HelicopterController();
+        HelicopterController(Helicopter *);
         ~HelicopterController();
 
         virtual void Preprocess() override;
 
     private:
 
-        static UnitParameters parameters;
+        static const UnitParameters parameters;
 
         HelicopterController(const HelicopterController &);
 
         HelicopterController &operator=(const HelicopterController &) { return *this; }
-
-        virtual Controller *Replicate() const override;
     };
 
 

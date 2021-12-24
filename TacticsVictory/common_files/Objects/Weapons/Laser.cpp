@@ -12,27 +12,18 @@ GameObject *Laser::Create()
 }
 
 
-LaserController::LaserController() : WeaponController(TypeWeapon::Laser)
+Laser::Laser(int id) : WeaponObject(TypeWeapon::Laser, id, new LaserController(this))
 {
-
 }
 
 
-LaserController::LaserController(const LaserController &controller) : WeaponController(controller)
+LaserController::LaserController(Laser *laser) : WeaponController(laser)
 {
-
 }
 
 
 LaserController::~LaserController()
 {
-
-}
-
-
-Controller *LaserController::Replicate() const
-{
-    return new LaserController(*this);
 }
 
 

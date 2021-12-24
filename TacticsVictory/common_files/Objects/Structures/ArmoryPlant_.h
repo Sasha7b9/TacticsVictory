@@ -9,28 +9,25 @@ namespace Pi
     {
     public:
 
-        static GameObject *Create();
+        static ArmoryPlant *Create();
 
     private:
 
-        ArmoryPlant() : StructureObject(TypeStructure::ArmoryPlant) {};
-        virtual ~ArmoryPlant() {};
+        ArmoryPlant(int id = -1);
+
+        virtual ~ArmoryPlant() {}
     };
 
 
     class ArmoryPlantController : public StructureController
     {
-    public:
-
-        ArmoryPlantController();
-        virtual ~ArmoryPlantController();
-
-        virtual void Preprocess() override;
+        friend class ArmoryPlant;
 
     private:
 
-        ArmoryPlantController(const ArmoryPlantController &controller);
+        ArmoryPlantController(ArmoryPlant *);
+        virtual ~ArmoryPlantController();
 
-        virtual Controller *Replicate() const override;
+        virtual void Preprocess() override;
     };
 }

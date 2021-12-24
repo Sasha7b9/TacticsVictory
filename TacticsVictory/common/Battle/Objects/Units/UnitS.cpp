@@ -16,6 +16,6 @@ void UnitObject::Destruct()
 }
 
 
-UnitObject::UnitObject(TypeUnit type, int id) : GameObject(TypeGameObject::Unit, id), typeUnit(type)
+UnitObject::UnitObject(TypeUnit type, int id, UnitController *controller) : GameObject(TypeGameObject::Unit, id, controller), typeUnit(type)
 {
 }

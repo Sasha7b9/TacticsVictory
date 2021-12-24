@@ -13,27 +13,18 @@ GameObject *Robot::Create()
 }
 
 
-RobotController::RobotController() : GroundUnitController(TypeGroundUnit::Robot, &parameters)
+Robot::Robot(int id) : GroundUnitObject(TypeGroundUnit::Robot, id, new RobotController(this))
 {
-
 }
 
 
-RobotController::RobotController(const RobotController &controller) : GroundUnitController(controller)
+RobotController::RobotController(Robot *robot) : GroundUnitController(robot, parameters)
 {
-
 }
 
 
 RobotController::~RobotController()
 {
-
-}
-
-
-Controller *RobotController::Replicate() const
-{
-    return new RobotController(*this);
 }
 
 
@@ -45,17 +36,14 @@ void RobotController::Preprocess()
 
 CommanderRobot::CommanderRobot(UnitController *controller) : Commander(controller)
 {
-
 }
 
 
 DriverRobot::DriverRobot(UnitController *controller) : Driver(controller)
 {
-
 }
 
 
 ShooterRobot::ShooterRobot(UnitController *controller) : Shooter(controller)
 {
-
 }

@@ -12,28 +12,19 @@ GameObject *RocketLauncher::Create()
 }
 
 
-RocketLauncherController::RocketLauncherController() : WeaponController(TypeWeapon::RocketLauncher)
+RocketLauncher::RocketLauncher(int id) : WeaponObject(TypeWeapon::RocketLauncher, id, new RocketLauncherController(this))
 {
-
 }
 
 
-RocketLauncherController::RocketLauncherController(const RocketLauncherController &controller) :
-    WeaponController(controller)
+RocketLauncherController::RocketLauncherController(RocketLauncher *rocketLauncher) :
+    WeaponController(rocketLauncher)
 {
-
 }
 
 
 RocketLauncherController::~RocketLauncherController()
 {
-
-}
-
-
-Controller *RocketLauncherController::Replicate() const
-{
-    return new RocketLauncherController(*this);
 }
 
 

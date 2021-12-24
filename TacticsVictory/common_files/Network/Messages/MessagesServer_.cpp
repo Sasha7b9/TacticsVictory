@@ -32,30 +32,19 @@ bool MessageCreateLandscape::Decompress(Decompressor &data)
 
 void MessageCreateGameObject::Compress(Compressor &data) const
 {
-    data << id;
-    data << typeGameObject;
-    data << (int)typeUnit;
-    data << typeAirUnit;
-    data << typeGroundUnit;
-    data << typeWaterUnit;
-    data.Write(&transform, sizeof(transform));
+    data << num_objects;
+    data.Write(id, sizeof(id[0]) * num_objects);
+    data.Write(type, sizeof(type[0][0]) * num_objects * 3);
+    data.Write(transform, sizeof(transform[0]) * num_objects);
 }
 
 
 bool MessageCreateGameObject::Decompress(Decompressor &data)
 {
-    data >> id;
-    data >> typeGameObject;
-
-    int type = 0;
-    data >> type;
-    typeUnit = (TypeUnit)type;
-
-    data >> typeAirUnit;
-    data >> typeGroundUnit;
-    data >> typeWaterUnit;
-
-    data.Read(&transform, sizeof(transform));
+    data >> num_objects;
+    data.Read(id, sizeof(id[0]) * num_objects);
+    data.Read(type, sizeof(type[0][0]) * num_objects * 3);
+    data.Read(transform, sizeof(transform[0]) * num_objects);
 
     return true;
 }

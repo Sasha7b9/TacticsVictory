@@ -13,27 +13,18 @@ GameObject *Boat::Create()
 }
 
 
-BoatController::BoatController() : WaterUnitController(TypeWaterUnit::Boat, &parameters)
+Boat::Boat(int id) : WaterUnitObject(TypeWaterUnit::Boat, id, new BoatController(this))
 {
-
 }
 
 
-BoatController::BoatController(const BoatController &controller) : WaterUnitController(controller)
+BoatController::BoatController(Boat *boat) : WaterUnitController(boat, parameters)
 {
-
 }
 
 
 BoatController::~BoatController()
 {
-
-}
-
-
-Controller *BoatController::Replicate() const
-{
-    return new BoatController(*this);
 }
 
 
@@ -45,17 +36,14 @@ void BoatController::Preprocess()
 
 CommanderBoat::CommanderBoat(UnitController *controller) : Commander(controller)
 {
-
 }
 
 
 DriverBoat::DriverBoat(UnitController *controller) : Driver(controller)
 {
-
 }
 
 
 ShooterBoat::ShooterBoat(UnitController *controller) : Shooter(controller)
 {
-
 }

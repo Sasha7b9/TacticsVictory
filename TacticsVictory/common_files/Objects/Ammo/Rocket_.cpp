@@ -12,13 +12,13 @@ GameObject *Rocket::Create()
 }
 
 
-RocketController::RocketController() : AmmoController(TypeAmmo::Rocket)
+Rocket::Rocket(int id) : AmmoObject(TypeAmmo::Rocket, id, new RocketController(this))
 {
-
 }
 
 
-RocketController::RocketController(const RocketController &controller) : AmmoController(controller)
+
+RocketController::RocketController(Rocket *rocket) : AmmoController(rocket)
 {
 
 }
@@ -27,12 +27,6 @@ RocketController::RocketController(const RocketController &controller) : AmmoCon
 RocketController::~RocketController()
 {
 
-}
-
-
-Controller *RocketController::Replicate() const
-{
-    return new RocketController(*this);
 }
 
 

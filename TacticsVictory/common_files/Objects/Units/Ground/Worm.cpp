@@ -13,27 +13,19 @@ GameObject *Worm::Create()
 }
 
 
-WormController::WormController() : GroundUnitController(TypeGroundUnit::Worm, &parameters)
+Worm::Worm(int id) : GroundUnitObject(TypeGroundUnit::Worm, id, new WormController(this))
 {
-
 }
 
 
-WormController::WormController(const WormController &controller) : GroundUnitController(controller)
-{
 
+WormController::WormController(Worm *worm) : GroundUnitController(worm, parameters)
+{
 }
 
 
 WormController::~WormController()
 {
-
-}
-
-
-Controller *WormController::Replicate() const
-{
-    return new WormController(*this);
 }
 
 
@@ -45,17 +37,14 @@ void WormController::Preprocess()
 
 CommanderWorm::CommanderWorm(UnitController *controller) : Commander(controller)
 {
-
 }
 
 
 DriverWorm::DriverWorm(UnitController *controller) : Driver(controller)
 {
-
 }
 
 
 ShooterWorm::ShooterWorm(UnitController *controller) : Shooter(controller)
 {
-
 }

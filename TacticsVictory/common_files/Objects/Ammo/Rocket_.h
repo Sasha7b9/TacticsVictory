@@ -13,24 +13,21 @@ namespace Pi
 
     private:
 
-        Rocket() : AmmoObject(TypeAmmo::Rocket) {};
+        Rocket(int id = -1);
+
         virtual ~Rocket() {};
     };
 
 
     class RocketController : public AmmoController
     {
-    public:
-
-        RocketController();
-        ~RocketController();
-
-        virtual void Preprocess() override;
+        friend class Rocket;
 
     private:
 
-        RocketController(const RocketController &controller);
+        RocketController(Rocket *);
+        virtual ~RocketController();
 
-        virtual Controller *Replicate() const override;
+        virtual void Preprocess() override;
     };
 }

@@ -23,21 +23,15 @@ namespace Pi
     {
     public:
 
-        AirplaneController();
-        ~AirplaneController();
+        AirplaneController(Airplane *);
+        virtual ~AirplaneController();
 
         virtual void Preprocess() override;
-        virtual void Move() override;
+        virtual void Move(float dT) override;
 
     private:
 
-        static UnitParameters parameters;
-
-        AirplaneController(const AirplaneController &);
-
-        AirplaneController &operator=(const AirplaneController &rhs) { *this = rhs;  return *this; }
-
-        virtual Controller *Replicate() const override;
+        const static UnitParameters parameters;
     };
 
 

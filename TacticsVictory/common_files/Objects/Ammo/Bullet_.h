@@ -13,7 +13,7 @@ namespace Pi
 
     private:
 
-        Bullet() : AmmoObject(TypeAmmo::Bullet) {};
+        Bullet(int id = -1);
         virtual ~Bullet() {};
     };
 
@@ -22,7 +22,8 @@ namespace Pi
     {
     public:
 
-        BulletController();
+        BulletController(Bullet *);
+
         virtual ~BulletController();
 
         virtual void Preprocess() override;
@@ -30,7 +31,5 @@ namespace Pi
     private:
 
         BulletController(const BulletController &);
-
-        virtual Controller *Replicate() const override;
     };
 }

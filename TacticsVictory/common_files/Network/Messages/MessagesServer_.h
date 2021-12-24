@@ -22,44 +22,50 @@ namespace Pi
 
         virtual void Compress(Compressor &) const override;
         virtual bool Decompress(Decompressor &) override;
-        virtual bool HandleMessage(Player *sender) const override;
+        virtual bool HandleMessage(Player *) const override;
     };
 
 
     class MessageCreateGameObject : public Message
     {
     public:
-        MessageCreateGameObject(GameObject *);
-        MessageCreateGameObject() : Message(PiTypeMessage::CreateGameObject) {}
+        MessageCreateGameObject() : Message(PiTypeMessage::CreateGameObject) {};
+
+        static const int MAX_NUM_OBJECTS = 3;
+
+        void AppendObject(GameObject *);
+
+        int NumObjects() const { return num_objects; }
+
+        void Clear() { num_objects = 0; }
+
     private:
-        int id = 0;
-        TypeGameObject::S typeGameObject = TypeGameObject::Empty;
-        TypeUnit          typeUnit       = TypeUnit::None_;
-        TypeAirUnit::S    typeAirUnit    = TypeAirUnit::Empty;
-        TypeGroundUnit::S typeGroundUnit = TypeGroundUnit::Empty;
-        TypeWaterUnit::S  typeWaterUnit  = TypeWaterUnit::Empty;
-        Transform4D transform;
+
+        int num_objects = 0;
+        int id[MAX_NUM_OBJECTS];
+        int type[MAX_NUM_OBJECTS][3];   // [0] - TypeGameObject
+                                        // [1] - TypeUnit, TypeStructure, TypeWeapon, TypeAmmo
+                                        // [2] - TypeAirUnit, TypeGroundUnit, TypeWaterUnit
+        Transform4D transform[MAX_NUM_OBJECTS];
 
         virtual void Compress(Compressor &) const override;
         virtual bool Decompress(Decompressor &) override;
         virtual bool HandleMessage(Player *sender) const override;
 
         void FillUnit(UnitObject *);
-        void FillAirUnit(AirUnitObject *);
-        void FillGroundUnit(GroundUnitObject *);
-        void FillWaterUnit(WaterUnitObject *);
     };
 
 
     class MessageGameObjectNodeTransform : public Message
     {
     public:
-        MessageGameObjectNodeTransform(GameObject *);
-        MessageGameObjectNodeTransform() : Message(PiTypeMessage::SendGameObjectNodeTransform) {}
+        MessageGameObjectNodeTransform() :
+            Message(PiTypeMessage::SendGameObjectNodeTransform, PiFlagMessage::Unordered | PiFlagMessage::Unreliable) {}
 
         void AddObject(GameObject *);
         int NumObjects() const { return num_objects; }
         int MaxNumObjects() const { return 30; }
+        void ResetCounter() { num_objects = 0; }
 
     private:
 

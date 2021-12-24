@@ -21,6 +21,6 @@ namespace Pi
 
         Shooter(UnitController *);
 
-        UnitController *controller = nullptr;
+        UnitController * const controller = nullptr;
     };
 }

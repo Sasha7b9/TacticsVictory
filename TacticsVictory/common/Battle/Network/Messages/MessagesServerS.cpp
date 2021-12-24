@@ -49,59 +49,40 @@ MessageCreateLandscape::MessageCreateLandscape(pchar _name_file) : Message(PiTyp
 }
 
 
-MessageCreateGameObject::MessageCreateGameObject(GameObject *object) :
-    Message(PiTypeMessage::CreateGameObject),
-    id(object->GetID()),
-    typeGameObject(object->typeGameObject),
-    transform(object->GetNodeTransform())
+void MessageCreateGameObject::AppendObject(GameObject *object)
 {
-    if (typeGameObject == TypeGameObject::Unit)
+    if (num_objects == MAX_NUM_OBJECTS)
     {
-        FillUnit(object->GetUnitObject());
+        LOG_ERROR_TRACE("buffer overflow");
+        return;
     }
+
+    id[num_objects] = object->GetID();
+    transform[num_objects] = object->GetNodeTransform();
+    type[num_objects][0] = (int)object->typeGameObject;
+
+    FillUnit(object->GetUnitObject());
+
+    num_objects++;
 }
 
 
 void MessageCreateGameObject::FillUnit(UnitObject *unit)
 {
-    typeUnit = unit->typeUnit;
+    type[num_objects][1] = (int)unit->typeUnit;
 
-    if (typeUnit == TypeUnit::Air)
+    if (type[num_objects][1] == (int)TypeUnit::Air)
     {
-        FillAirUnit(unit->GetAirUnit());
+        type[num_objects][2] = (int)unit->GetAirUnit()->typeAirUnit;
     }
-    else if (typeUnit == TypeUnit::Ground)
+    else if (type[num_objects][1] == (int)TypeUnit::Ground)
     {
-        FillGroundUnit(unit->GetGroundUnit());
+        type[num_objects][2] = (int)unit->GetGroundUnit()->typeGroundUnit;
     }
-    else if (typeUnit == TypeUnit::Water)
+    else if (type[num_objects][1] == (int)TypeUnit::Water)
     {
-        FillWaterUnit(unit->GetWaterUnit());
+        type[num_objects][2] = (int)unit->GetWaterUnit()->typeWaterUnit;
     }
-}
-
-
-void MessageCreateGameObject::FillAirUnit(AirUnitObject *unit)
-{
-    typeAirUnit = unit->typeAirUnit;
-}
-
-
-void MessageCreateGameObject::FillGroundUnit(GroundUnitObject *unit)
-{
-    typeGroundUnit = unit->typeGroundUnit;
-}
-
-
-void MessageCreateGameObject::FillWaterUnit(WaterUnitObject *unit)
-{
-    typeWaterUnit = unit->typeWaterUnit;
-}
-
-
-MessageGameObjectNodeTransform::MessageGameObjectNodeTransform(GameObject *object) :
-    Message(PiTypeMessage::SendGameObjectNodeTransform, PiFlagMessage::Unordered | PiFlagMessage::Unreliable)
-{
 }
 
 

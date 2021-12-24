@@ -9,15 +9,11 @@ using namespace Pi;
 
 Airplane *Airplane::Create(int id)
 {
-    Airplane *node = new Airplane(id);
-
-    node->SetController(new AirplaneController());
-
-    return node;
+    return new Airplane(id);
 }
 
 
-Airplane::Airplane(int id) : AirUnitObject(TypeAirUnit::Airplane, id)
+Airplane::Airplane(int id) : AirUnitObject(TypeAirUnit::Airplane, id, new AirplaneController(this))
 {
     PrimitiveGeometry *geometry = new PyramidGeometry({1.0f, 1.0f}, 1.0f);
     geometry->GetObject()->Build(geometry);
@@ -41,31 +37,16 @@ Airplane::Airplane(int id) : AirUnitObject(TypeAirUnit::Airplane, id)
 
 Airplane::~Airplane()
 {
-
 }
 
 
-AirplaneController::AirplaneController() : AirUnitController(TypeAirUnit::Airplane, &parameters)
+AirplaneController::AirplaneController(Airplane *airplane) : AirUnitController(airplane, parameters)
 {
-
-}
-
-
-AirplaneController::AirplaneController(const AirplaneController &controller) : AirUnitController(controller)
-{
-
 }
 
 
 AirplaneController::~AirplaneController()
 {
-
-}
-
-
-Controller *AirplaneController::Replicate() const
-{
-    return new AirplaneController(*this);
 }
 
 
@@ -73,29 +54,26 @@ void AirplaneController::Preprocess()
 {
     AirUnitController::Preprocess();
 
-    param->speed.y = Math::RandomFloat(0.00001f, 0.003f);
+    param.speed.y = Math::RandomFloat(0.00001f, 0.003f);
 }
 
 
-void AirplaneController::Move()
+void AirplaneController::Move(float dT)
 {
-    AirUnitController::Move();
+    AirUnitController::Move(dT);
 }
 
 
 CommanderAirplane::CommanderAirplane(UnitController *controller) : Commander(controller)
 {
-
 }
 
 
 DriverAirplane::DriverAirplane(UnitController *controller) : Driver(controller)
 {
-
 }
 
 
 ShooterAirplane::ShooterAirplane(UnitController *controller) : Shooter(controller)
 {
-
 }

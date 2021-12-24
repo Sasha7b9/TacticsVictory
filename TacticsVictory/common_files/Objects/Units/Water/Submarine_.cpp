@@ -10,15 +10,11 @@ using namespace Pi;
 
 Submarine *Submarine::Create(int id)
 {
-    Submarine *node = new Submarine(id);
-
-    node->SetController(new SubmarineController());
-
-    return node;
+    return new Submarine(id);
 }
 
 
-Submarine::Submarine(int id) : WaterUnitObject(TypeWaterUnit::Submarine, id)
+Submarine::Submarine(int id) : WaterUnitObject(TypeWaterUnit::Submarine, id, new SubmarineController(this))
 {
     const float size = 1.0f;
 
@@ -57,6 +53,6 @@ void CommanderSubmarine::ParseRotate(const CommanderTask *task) const
 }
 
 
-SubmarineController::SubmarineController() : WaterUnitController(TypeWaterUnit::Submarine, &parameters)
+SubmarineController::SubmarineController(Submarine *submarine) : WaterUnitController(submarine, parameters)
 {
 }

@@ -13,8 +13,9 @@ namespace Pi
 
     private:
 
-        RocketLauncher() : WeaponObject(TypeWeapon::RocketLauncher) {};
-        virtual ~RocketLauncher() {};
+        RocketLauncher(int id = -1);
+
+        virtual ~RocketLauncher() {}
     };
 
 
@@ -22,15 +23,9 @@ namespace Pi
     {
     public:
 
-        RocketLauncherController();
+        RocketLauncherController(RocketLauncher *);
         virtual ~RocketLauncherController();
 
         virtual void Preprocess() override;
-
-    private:
-
-        RocketLauncherController(const RocketLauncherController &);
-
-        virtual Controller *Replicate() const override;
     };
 }

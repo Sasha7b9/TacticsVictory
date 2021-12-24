@@ -9,32 +9,26 @@ namespace Pi
         const S GameObject = "GameObject";
     }
 
-    namespace TypeGameObject
+    enum class TypeGameObject
     {
-        typedef StringHash S;
+        Empty,
+        Ammo,
+        Structure,
+        Unit,
+        Weapon
+    };
 
-        const S Empty     = "Empty";
-        const S Ammo      = "Ammo";
-        const S Structure = "Structure";
-        const S Unit      = "Unit";
-        const S Weapon    = "Weapon";
-    }
-
-    namespace TypeAmmo
+    enum class TypeAmmo
     {
-        typedef StringHash S;
+        Bullet,
+        Rocket
+    };
 
-        const S Bullet = "Bullet";
-        const S Rocket = "Rocket";
-    }
-
-    namespace TypeStructure
+    enum class TypeStructure
     {
-        typedef StringHash S;
-
-        const S ArmoryPlant   = "ArmoryPlant";
-        const S CivilianPlant = "CivilianPlant";
-    }
+        ArmoryPlant,
+        CivilianPlant
+    };
 
     enum class TypeUnit
     {
@@ -44,39 +38,31 @@ namespace Pi
         Water
     };
 
-    namespace TypeWeapon
+    enum class TypeWeapon
     {
-        typedef StringHash S;
+        RocketLauncher,
+        Laser
+    };
 
-        const S RocketLauncher = "RocketLauncher";
-        const S Laser          = "Laser";
-    }
-
-    namespace TypeAirUnit
+    enum class TypeAirUnit
     {
-        typedef StringHash S;
+        Empty,
+        Airplane,
+        Helicopter
+    };
 
-        const S Empty      = "Empty";
-        const S Airplane   = "Airplane";
-        const S Helicopter = "Helicopter";
-    }
-
-    namespace TypeGroundUnit
+    enum class TypeGroundUnit
     {
-        typedef StringHash S;
+        Empty,
+        Robot,
+        Tank,
+        Worm
+    };
 
-        const S Empty = "Empty";
-        const S Robot = "Robot";
-        const S Tank  = "Tank";
-        const S Worm  = "Worm";
-    }
-
-    namespace TypeWaterUnit
+    enum class TypeWaterUnit
     {
-        typedef StringHash S;
-
-        const S Empty     = "Empty";
-        const S Boat      = "Bot";
-        const S Submarine = "Submarine";
-    }
+        Empty,
+        Boat,
+        Submarine
+    };
 }

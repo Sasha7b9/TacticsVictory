@@ -6,34 +6,24 @@
 using namespace Pi;
 
 
-GameObject *ArmoryPlant::Create()
+ArmoryPlant *ArmoryPlant::Create()
 {
     return nullptr;
 }
 
 
-ArmoryPlantController::ArmoryPlantController() : StructureController(TypeStructure::ArmoryPlant)
+ArmoryPlant::ArmoryPlant(int id) : StructureObject(TypeStructure::ArmoryPlant, id, new ArmoryPlantController(this))
 {
-
 }
 
 
-ArmoryPlantController::ArmoryPlantController(const ArmoryPlantController &controller) :
-    StructureController(controller)
+ArmoryPlantController::ArmoryPlantController(ArmoryPlant *plant) : StructureController(plant)
 {
-
 }
 
 
 ArmoryPlantController::~ArmoryPlantController()
 {
-
-}
-
-
-Controller *ArmoryPlantController::Replicate() const
-{
-    return new ArmoryPlantController(*this);
 }
 
 

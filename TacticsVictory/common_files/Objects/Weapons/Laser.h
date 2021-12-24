@@ -13,7 +13,8 @@ namespace Pi
 
     private:
 
-        Laser() : WeaponObject(TypeWeapon::Laser) {};
+        Laser(int id = -1);
+
         virtual ~Laser() {};
     };
 
@@ -22,16 +23,10 @@ namespace Pi
     {
     public:
 
-        LaserController();
+        LaserController(Laser *);
         virtual ~LaserController();
 
         virtual void Preprocess() override;
-
-    private:
-
-        LaserController(const LaserController &);
-
-        virtual Controller *Replicate() const override;
     };
 }
 

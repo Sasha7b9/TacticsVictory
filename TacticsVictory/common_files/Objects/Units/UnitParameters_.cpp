@@ -22,7 +22,7 @@ const UnitParameters BoatController::parameters = UnitParameters
 };
 
 
-UnitParameters AirplaneController::parameters =
+const UnitParameters AirplaneController::parameters =
 {
     {
         {0.05f, 0.5f, 0.05f},
@@ -31,7 +31,7 @@ UnitParameters AirplaneController::parameters =
 };
 
 
-UnitParameters HelicopterController::parameters =
+const UnitParameters HelicopterController::parameters =
 {
     {
         {0.25f, 0.25f, 0.25f},
@@ -40,7 +40,7 @@ UnitParameters HelicopterController::parameters =
 };
 
 
-UnitParameters RobotController::parameters =
+const UnitParameters RobotController::parameters =
 {
     {
         {0.0f, 0.2f, 0.0f},
@@ -49,7 +49,7 @@ UnitParameters RobotController::parameters =
 };
 
 
-UnitParameters SubmarineController::parameters =
+const UnitParameters SubmarineController::parameters =
 {
     {
         {0.0f, 0.3f, 0.005f},
@@ -58,7 +58,7 @@ UnitParameters SubmarineController::parameters =
 };
 
 
-UnitParameters TankController::parameters =
+const UnitParameters TankController::parameters =
 {
     {
         {0.0f, 0.003f, 0.0f}
@@ -66,7 +66,7 @@ UnitParameters TankController::parameters =
 };
 
 
-UnitParameters WormController::parameters =
+const UnitParameters WormController::parameters =
 {
     {
         {0.0f, 0.1f, 0.0f}

@@ -20,7 +20,7 @@ using namespace Pi;
 
 Driver::Driver(UnitController *_controller) : controller(_controller)
 {
-    unit = (UnitObject *)controller->GetTargetNode();
+    unit = controller->object;
 }
 
 
@@ -40,14 +40,14 @@ Driver *Driver::New(UnitController *controller)
 {
     if (controller->BelongAir())
     {
-        TypeAirUnit::S type = ((AirUnitController *)controller)->GetAirUnitObject()->typeAirUnit;
+        TypeAirUnit type = ((AirUnitController *)controller)->GetAirUnitObject()->typeAirUnit;
 
         if (type == TypeAirUnit::Airplane)        return new DriverAirplane(controller);
         else if (type == TypeAirUnit::Helicopter) return new DriverHelicopter(controller);
     }
     else if (controller->BelongGround())
     {
-        TypeGroundUnit::S type = ((GroundUnitController *)controller)->GetGroundUnitObject()->typeGroundUnit;
+        TypeGroundUnit type = ((GroundUnitController *)controller)->GetGroundUnitObject()->typeGroundUnit;
 
         if (type == TypeGroundUnit::Robot)     return new DriverRobot(controller);
         else if (type == TypeGroundUnit::Tank) return new DriverTank(controller);
@@ -55,7 +55,7 @@ Driver *Driver::New(UnitController *controller)
     }
     else if (controller->BelongWater())
     {
-        TypeWaterUnit::S type = ((WaterUnitController *)controller)->GetWaterUnitObject()->typeWaterUnit;
+        TypeWaterUnit type = ((WaterUnitController *)controller)->GetWaterUnitObject()->typeWaterUnit;
 
         if (type == TypeWaterUnit::Boat)           return new DriverBoat(controller);
         else if (type == TypeWaterUnit::Submarine) return new DriverSubmarine(controller);
@@ -88,17 +88,16 @@ void Driver::AppendTask(DriverTask *task)
 }
 
 
-DriverTask::DriverTask(Driver *driver)
+DriverTask::DriverTask(Driver *driver) : controller(driver->controller)
 {
-    controller = driver->GetController();
-    unit = controller->GetUnitOjbect();
+    unit = controller->object;
 }
 
 
 DriverTaskDive::DriverTaskDive(Driver *driver, float z) : DriverTask(driver), destination_z(z)
 {
     position_z = unit->GetNodePosition().z;
-    speed = Fsgn(destination_z - position_z) > 0 ? controller->param->max.speed.z : -controller->param->max.speed.z;
+    speed = Fsgn(destination_z - position_z) > 0 ? controller->param.max.speed.z : -controller->param.max.speed.z;
 }
 
 
@@ -139,7 +138,7 @@ DriverTaskMove::DriverTaskMove(Driver *driver, const Point3D &pointTo) : DriverT
 
     Vector3D direction = (destination - unitPosition).Normalize();
 
-    speed = direction * controller->param->max.speed.y;
+    speed = direction * controller->param.max.speed.y;
 }
 
 
@@ -187,7 +186,7 @@ void DriverTaskRotate::RunStep(float dT)
 
     transform.SetTranslation(Point3D::ZERO);
 
-    float angle = dT * controller->param->max.rotate.z;
+    float angle = dT * controller->param.max.rotate.z;
 
     Transform4D rotate;
     rotate.SetRotationAboutAxis(angle, axis);

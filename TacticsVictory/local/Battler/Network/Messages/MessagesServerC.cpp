@@ -27,55 +27,58 @@ bool MessageCreateLandscape::HandleMessage(Player *sender) const
 
 bool MessageCreateGameObject::HandleMessage(Player *sender) const
 {
-    if (typeGameObject == TypeGameObject::Unit)
+    for(int i = 0; i < num_objects; i++)
     {
-        if (typeUnit == TypeUnit::Air)
+        if (type[i][0] == (int)TypeGameObject::Unit)
         {
-            if (typeAirUnit == TypeAirUnit::Airplane)
+            if (type[i][1] == (int)TypeUnit::Air)
             {
-                GameObject *airplane = Airplane::Create(id);
-                airplane->SetNodeTransform(transform);
-                GameWorld::self->GetRootNode()->AppendNewSubnode(airplane);
+                if (type[i][2] == (int)TypeAirUnit::Airplane)
+                {
+                    GameObject *airplane = Airplane::Create(id[i]);
+                    airplane->SetNodeTransform(transform[i]);
+                    GameWorld::self->GetRootNode()->AppendNewSubnode(airplane);
+                }
+                else
+                {
+                    LOG_ERROR_TRACE("Unknown type air unit");
+                }
+            }
+            else if (type[i][1] == (int)TypeUnit::Ground)
+            {
+                if (type[i][2] == (int)TypeGroundUnit::Tank)
+                {
+                    GameObject *tank = Tank::Create(id[i]);
+                    tank->SetNodeTransform(transform[i]);
+                    GameWorld::self->GetRootNode()->AppendNewSubnode(tank);
+                }
+                else
+                {
+                    LOG_ERROR_TRACE("Unknown type ground unit");
+                }
+            }
+            else if (type[i][1] == (int)TypeUnit::Water)
+            {
+                if (type[i][2] == (int)TypeWaterUnit::Submarine)
+                {
+                    GameObject *submarine = Submarine::Create(id[i]);
+                    submarine->SetNodeTransform(transform[i]);
+                    GameWorld::self->GetRootNode()->AppendNewSubnode(submarine);
+                }
+                else
+                {
+                    LOG_ERROR_TRACE("Unknown type water unit");
+                }
             }
             else
             {
-                LOG_ERROR_TRACE("Unknown type air unit");
-            }
-        }
-        else if (typeUnit == TypeUnit::Ground)
-        {
-            if (typeGroundUnit == TypeGroundUnit::Tank)
-            {
-                GameObject *tank = Tank::Create(id);
-                tank->SetNodeTransform(transform);
-                GameWorld::self->GetRootNode()->AppendNewSubnode(tank);
-            }
-            else
-            {
-                LOG_ERROR_TRACE("Unknown type ground unit");
-            }
-        }
-        else if (typeUnit == TypeUnit::Water)
-        {
-            if (typeWaterUnit == TypeWaterUnit::Submarine)
-            {
-                GameObject *submarine = Submarine::Create(id);
-                submarine->SetNodeTransform(transform);
-                GameWorld::self->GetRootNode()->AppendNewSubnode(submarine);
-            }
-            else
-            {
-                LOG_ERROR_TRACE("Unknown type water unit");
+                LOG_ERROR_TRACE("Unknows type unit");
             }
         }
         else
         {
-            LOG_ERROR_TRACE("Unknows type unit");
+            LOG_ERROR_TRACE("Unknown type game object");
         }
-    }
-    else
-    {
-        LOG_ERROR_TRACE("Unknown type game object");
     }
 
     return true;
@@ -96,30 +99,8 @@ bool MessageGameObjectNodeTransform::HandleMessage(Player *) const
 
         if (object)
         {
-            GameObjectProperty &property = object->GetGameObjectProperty();
-
-            property.needNewPosition = true;
-            property.newPosition = position[i];
-
-//            if (_id == 5)
-//            {
-//                static uint timePrevUpdate = 0;
-//                uint timeUpdate = TheTimeMgr->GetAbsoluteTime();
-//
-//                uint delta = timeUpdate - timePrevUpdate;
-//                timePrevUpdate = timeUpdate;
-//
-//                static uint prevTime = 0;
-//
-//                if (TheTimeMgr->GetAbsoluteTime() - prevTime >= 1000)
-//                {
-//                    prevTime = TheTimeMgr->GetAbsoluteTime();
-//
-//                    LOG_WRITE("delta = %d ms", delta);
-//
-//                    LOG_WRITE("in scene %d objects", GameObject::objects.GetElementCount());
-//                }
-//            }
+            object->SetNodePosition(position[i]);
+            object->Invalidate();
         }
     }
 

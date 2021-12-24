@@ -8,17 +8,22 @@ using namespace Pi;
 
 void AmmoObject::Construct()
 {
-
 }
 
 
 void AmmoObject::Destruct()
 {
-
 }
 
 
-AmmoController::AmmoController(PiTypeController::S type) : GameObjectController(TypeGameObject::Ammo, type)
+AmmoObject::AmmoObject(TypeAmmo type, int id, AmmoController *controller) :
+    GameObject(TypeGameObject::Ammo, id, controller),
+    typeAmmo(type)
 {
+}
 
+
+
+AmmoController::AmmoController(AmmoObject *object) : GameObjectController(object)
+{
 }

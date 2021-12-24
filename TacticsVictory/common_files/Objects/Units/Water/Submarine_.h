@@ -24,13 +24,13 @@ namespace Pi
     {
     public:
 
-        SubmarineController();
+        SubmarineController(Submarine *);
 
         virtual ~SubmarineController() {}
 
     private:
 
-        static UnitParameters parameters;
+        static const UnitParameters parameters;
     };
 
 
