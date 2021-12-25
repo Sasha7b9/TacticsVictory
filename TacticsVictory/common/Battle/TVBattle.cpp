@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "TVBattle.h"
 #include "Scene/World/GameWorld.h"
+#include "PeriodicTasks.h"
 
 
 using namespace Pi;
@@ -22,6 +23,8 @@ Battle::Battle()
     TheWorldMgr->SetWorldCreator(&ConstructWorld);
 
     TheWorldMgr->LoadWorld("world/Empty");
+
+    SetTasks();
 }
 
 
@@ -32,6 +35,25 @@ Battle::~Battle()
     TheMessageMgr->EndGame();
 
     Log::Destruct();
+}
+
+
+void Battle::ApplicationTask()
+{
+    periodicTasks.Run();
+    GameWorld::self->periodicTasks.Run();
+}
+
+
+void Battle::SetTasks()
+{
+    static TaskMain     mainTask;
+    static TaskRotator  rotatorTask;
+    static TaskProfiler profilerTask;
+
+    periodicTasks.Append(&mainTask, 40);
+    periodicTasks.Append(&rotatorTask, 40);
+    periodicTasks.Append(&profilerTask, 1000);
 }
 
 

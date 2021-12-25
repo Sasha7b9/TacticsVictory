@@ -8,11 +8,13 @@ namespace Pi
     class TankController;
 
 
-    class Tank : public GroundUnitObject
+    class Tank : public GroundUnitObject, public MapElement<Tank>
     {
     public:
 
         static Tank *Create(int id = -1);
+
+        static Map<Tank> objects;
 
     private:
 

@@ -6,11 +6,13 @@
 
 namespace Pi
 {
-    class Submarine : public WaterUnitObject
+    class Submarine : public WaterUnitObject, public MapElement<Submarine>
     {
     public:
 
         static Submarine *Create(int id = -1);
+
+        static Map<Submarine> objects;
 
     private:
 

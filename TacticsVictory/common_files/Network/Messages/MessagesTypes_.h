@@ -11,10 +11,15 @@ namespace Pi
             // Сообщения от сервера клиенту
             CreateLandscape = BaseCount,            // Сообщение о создании ландшафта при подключении нового клиента
             CreateGameObject,                       // Сообщение о создании нового GameObject
-            SendGameObjectNodeTransform,            // Сообщение с новым пространственным преобразованием Game Object
+            SendGameObjectState,                    // Сообщение с новым пространственным преобразованием Game Object
 
             // Сообщения от клиента серверу
-            RequestGameObjects,                     // Запрос об имеющихся GameObject в мире
+            RequestCreateGameObject,                // Когда клиент получает сообщение SendGameObjectState с id
+                                                    // несуществующего объекта, он посылает запрос на создание этого
+                                                    // объекта
+
+            // Симметричные команды
+            ServerCommand,                          // Команда серверу. Ответ от сервера
             Ping
         };
     }

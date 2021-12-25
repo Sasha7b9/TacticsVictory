@@ -121,10 +121,10 @@ Message *Battler::CreateMessage(PiTypeMessage::E type, Decompressor &) const
 {
     switch (type)
     {
-    case PiTypeMessage::CreateLandscape:             return new MessageCreateLandscape();         break;
-    case PiTypeMessage::CreateGameObject:            return new MessageCreateGameObject();        break;
-    case PiTypeMessage::SendGameObjectNodeTransform: return new MessageGameObjectNodeTransform(); break;
-    case PiTypeMessage::Ping:                        return new MessagePing();                    break;
+    case PiTypeMessage::CreateLandscape:            return new MessageCreateLandscape();        break;
+    case PiTypeMessage::CreateGameObject:           return new MessageCreateGameObject();       break;
+    case PiTypeMessage::SendGameObjectState:        return new MessageGameObjectState();        break;
+    case PiTypeMessage::Ping:                       return new MessagePing();                   break;
 
     default:
         LOG_ERROR_TRACE("Unkndown message type %d", type);

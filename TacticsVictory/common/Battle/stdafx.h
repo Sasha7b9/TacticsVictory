@@ -33,6 +33,9 @@
 #include <System/PiSound.h>
 #include <System/PiMain.h>
 #include <System/PiEngine.h>
+#include <System/PiProfiler.h>
+
+#include <Utilities/PiLog.h>
 
 #include <World/PiModels.h>
 #include <World/PiSources.h>
@@ -48,4 +51,3 @@
 
 
 #include "defines.h"
-#include "Utils/Log_.h"

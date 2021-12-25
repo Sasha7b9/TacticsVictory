@@ -6,10 +6,14 @@
 using namespace Pi;
 
 
+Map<AirUnitObject> AirUnitObject::objects;
+
+
 AirUnitObject::AirUnitObject(TypeAirUnit type, int id, AirUnitController *controller) :
     UnitObject(TypeUnit::Air, id, controller),
     typeAirUnit(type)
 {
+    objects.Insert(this);
 }
 
 

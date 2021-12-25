@@ -97,6 +97,7 @@ Battler::Battler() : Singleton<Battler>(self)
     LOG_WRITE("Game constructor %f seconds", timeConstructor);
 }
 
+
 Battler::~Battler()
 {
     SAFE_DELETE(CameraRTS::self);
@@ -113,13 +114,20 @@ Battler::~Battler()
 }
 
 
+void Battler::ApplicationTask()
+{
+    periodicTasks.Run();
+    GameWorld::self->periodicTasks.Run();
+}
+
+
 void Battler::CreateCommands()
 {
-    TheEngine->AddCommand(new Command("gizmo", &gizmoCommandObserver, {"enable/disable units gizmo"}));
-
+    TheEngine->AddCommand(new Command("gizmo",           &gizmoCommandObserver, {"enable/disable units gizmo"}));
     TheEngine->AddCommand(new Command("waterFogDensity", &fogDensityCommandObserver, {"set fog density for water"}));
-
-    TheEngine->AddCommand(new Command("ping", &pingCommandObserver, {"reques for ping. type \"ping period times\""}));
+    TheEngine->AddCommand(new Command("ping",            &pingCommandObserver, {"reques for ping. type \"ping period times\""}));
+    TheEngine->AddCommand(new Command("traffic",         &trafficCommandObserver, {"indicate info for recv/send traffic"}));
+    TheEngine->AddCommand(new Command("s",               &serverCommandObserver, {"send command to server"}));
 }
 
 

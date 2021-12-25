@@ -10,6 +10,9 @@
 using namespace Pi;
 
 
+Map<UnitObject> UnitObject::objects;
+
+
 UnitController::UnitController(UnitObject *_object, const UnitParameters &_param) :
     GameObjectController(_object),
     param(_param),

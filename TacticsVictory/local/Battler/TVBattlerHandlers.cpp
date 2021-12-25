@@ -11,19 +11,6 @@
 using namespace Pi;
 
 
-void Battler::ApplicationTask()
-{
-    if (GameState::landscapeCreated && !GameState::sendingRequestForObject)
-    {
-        GameState::sendingRequestForObject = true;
-
-        LOG_WRITE("Send request for game objects");
-
-        TheMessageMgr->SendMessage(PlayerType::Server, MessageRequestGameObjects());
-    }
-}
-
-
 void Battler::HandleOnButtonQuit(Widget *, const WidgetEventData *)
 {
     TheEngine->Quit();
@@ -32,7 +19,6 @@ void Battler::HandleOnButtonQuit(Widget *, const WidgetEventData *)
 
 void Battler::HandleGizmoCommand(Command *, pchar)
 {
-
 }
 
 
@@ -44,7 +30,37 @@ void Battler::HandleFogDensityCommand(Command *, pchar text)
 }
 
 
-void Battler::HandlePingCommand(Command *, pchar text)
+void Battler::HandlePingCommand(Command *, pchar)
 {
-    TheMessageMgr->SendMessage(PlayerType::Server, MessagePing(TheTimeMgr->GetMillisecondCount()));
+    if (periodicTasks.Consist(&taskPing))
+    {
+        periodicTasks.Remove(&taskPing);
+        LOG_WRITE("ping off");
+    }
+    else
+    {
+        periodicTasks.Append(&taskPing, 1000);
+        LOG_WRITE("ping on");
+    }
+}
+
+
+void Battler::HandleTrafficCommand(Command *, pchar)
+{
+    if (periodicTasks.Consist(&taskTraffic))
+    {
+        periodicTasks.Remove(&taskTraffic);
+        LOG_WRITE("traffic off");
+    }
+    else
+    {
+        periodicTasks.Append(&taskTraffic, 1000);
+        LOG_WRITE("traffic on");
+    }
+}
+
+
+void Battler::HandleServerCommand(Command *, pchar text)
+{
+    LOG_WRITE("Need send on server \"%s\"", text);
 }

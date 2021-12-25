@@ -8,11 +8,13 @@ namespace Pi
     class WaterUnitController;
 
 
-    class WaterUnitObject : public UnitObject
+    class WaterUnitObject : public UnitObject, public MapElement<WaterUnitObject>
     {
     public:
 
         const TypeWaterUnit typeWaterUnit;
+
+        static Map<WaterUnitObject> objects;
 
     protected:
 

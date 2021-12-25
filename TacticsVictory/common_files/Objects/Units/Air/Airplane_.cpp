@@ -7,6 +7,9 @@
 using namespace Pi;
 
 
+Map<Airplane> Airplane::objects;
+
+
 Airplane *Airplane::Create(int id)
 {
     return new Airplane(id);
@@ -32,6 +35,8 @@ Airplane::Airplane(int id) : AirUnitObject(TypeAirUnit::Airplane, id, new Airpla
     bodyNode->AppendNewSubnode(geometry);
 
     GetNodeGeometry()->AppendNewSubnode(bodyNode);
+
+    objects.Insert(this);
 }
 
 

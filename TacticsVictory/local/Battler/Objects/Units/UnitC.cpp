@@ -25,4 +25,5 @@ UnitObject::UnitObject(TypeUnit type, int id, UnitController *controller) :
     typeUnit(type)
 {
     GetNodeGeometry()->AppendNewSubnode(PoolGeometry::Get(TTypeGeometry::GizmoObject));
+    objects.Insert(this);
 }

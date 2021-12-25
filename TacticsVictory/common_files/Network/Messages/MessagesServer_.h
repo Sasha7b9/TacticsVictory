@@ -12,6 +12,7 @@ namespace Pi
     class WaterUnitObject;
     class UnitObject;
 
+
     class MessageCreateLandscape : public Message
     {
     public:
@@ -29,14 +30,17 @@ namespace Pi
     class MessageCreateGameObject : public Message
     {
     public:
-        MessageCreateGameObject() : Message(PiTypeMessage::CreateGameObject) {};
+        MessageCreateGameObject(GameObject *object = nullptr) :
+            Message(PiTypeMessage::CreateGameObject, PiFlagMessage::Unordered | PiFlagMessage::Unreliable)
+        {
+#ifdef PiSERVER
+            if(object) AppendObject(object);
+#endif
+        };
 
         static const int MAX_NUM_OBJECTS = 3;
-
         void AppendObject(GameObject *);
-
         int NumObjects() const { return num_objects; }
-
         void Clear() { num_objects = 0; }
 
     private:
@@ -56,22 +60,26 @@ namespace Pi
     };
 
 
-    class MessageGameObjectNodeTransform : public Message
+    class MessageGameObjectState : public Message
     {
     public:
-        MessageGameObjectNodeTransform() :
-            Message(PiTypeMessage::SendGameObjectNodeTransform, PiFlagMessage::Unordered | PiFlagMessage::Unreliable) {}
+        MessageGameObjectState() :
+            Message(PiTypeMessage::SendGameObjectState, PiFlagMessage::Unordered | PiFlagMessage::Unreliable) {}
 
         void AddObject(GameObject *);
-        int NumObjects() const { return num_objects; }
-        int MaxNumObjects() const { return 30; }
+        int  NumObjects() const { return num_objects; }
+        int  MaxNumObjects() const { return MAX_OBJECTS; }
         void ResetCounter() { num_objects = 0; }
 
     private:
 
-        int     num_objects = 0;
-        int     id[30];
-        Point3D position[30];
+        static const int MAX_OBJECTS = 10;
+
+        int      num_objects = 0;
+        int      id[MAX_OBJECTS];
+        Point3D  position[MAX_OBJECTS];
+        Vector3D direction[MAX_OBJECTS];
+        Vector3D up[MAX_OBJECTS];
 
         virtual void Compress(Compressor &) const override;
         virtual bool Decompress(Decompressor &) override;

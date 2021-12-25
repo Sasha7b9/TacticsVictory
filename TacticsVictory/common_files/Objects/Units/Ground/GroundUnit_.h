@@ -8,13 +8,15 @@ namespace Pi
     class Tank;
     class GroundUnitController;
 
-    class GroundUnitObject : public UnitObject
+    class GroundUnitObject : public UnitObject, public MapElement<GroundUnitObject>
     {
     public:
 
         Tank *GetTank() { return typeGroundUnit == TypeGroundUnit::Tank ? (Tank *)this : nullptr; }
 
         const TypeGroundUnit typeGroundUnit;
+
+        static Map<GroundUnitObject> objects;
 
     protected:
 

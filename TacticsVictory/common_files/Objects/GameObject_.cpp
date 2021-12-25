@@ -65,6 +65,12 @@ GameObject::GameObject(TypeGameObject type, int _id, GameObjectController *_cont
 }
 
 
+GameObject::~GameObject()
+{
+    delete controller;
+}
+
+
 bool GameObject::AppendInGame(int _x, int _y)
 {
     float x = (float)_x;
@@ -125,14 +131,16 @@ GameObject &GameObject::GetFromScreen(const Point2D &coord)
 }
 
 
-void GameObject::SetNodeDirection(const Vector3D &direction, const Vector3D &up)
+void GameObject::SetDirection(const Vector3D &direction, const Vector3D &up)
 {
-    Point3D position = GetNodePosition();
-    Vector3D front = direction * InverseMag(direction);
-    Vector3D left = Cross(up, direction).Normalize();
-    Vector3D top = Cross(front, left);
+//    Point3D position = GetNodePosition();
+    Vector3D front = direction;
+    Vector3D right = Cross(front, up).Normalize();
+    Vector3D top = Cross(right, front).Normalize();
 
-    SetNodeTransform(Transform4D(front, left, top, position));
+    GetNodeGeometry()->SetNodeMatrix3D({right, front, top});
+
+//    GetNodeGeometry()->SetNodeTransform(Transform4D(right, front, top, position));
 }
 
 

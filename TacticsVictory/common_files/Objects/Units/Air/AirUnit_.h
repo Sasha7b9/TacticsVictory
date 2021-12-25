@@ -7,11 +7,13 @@ namespace Pi
 {
     class AirUnitController;
 
-    class AirUnitObject : public UnitObject
+    class AirUnitObject : public UnitObject, public MapElement<AirUnitObject>
     {
     public:
 
         const TypeAirUnit typeAirUnit;
+
+        static Map<AirUnitObject> objects;
 
     protected:
 

@@ -9,6 +9,7 @@
 #include "Objects/Units/Water/Submarine_.h"
 #include "GameState.h"
 #include "Objects/Units/Unit_.h"
+#include "Network/Messages/MessagesClient_.h"
 
 
 using namespace Pi;
@@ -85,7 +86,7 @@ bool MessageCreateGameObject::HandleMessage(Player *sender) const
 }
 
 
-bool MessageGameObjectNodeTransform::HandleMessage(Player *) const
+bool MessageGameObjectState::HandleMessage(Player *) const
 {
     if (!GameState::landscapeCreated)
     {
@@ -99,8 +100,17 @@ bool MessageGameObjectNodeTransform::HandleMessage(Player *) const
 
         if (object)
         {
+            UnitParameters &param = object->GetUnitObject()->GetUnitController()->param;
+            param.direction = direction[i];
+            param.up = up[i];
+
             object->SetNodePosition(position[i]);
+            object->SetDirection(param.direction, param.up);
             object->Invalidate();
+        }
+        else
+        {
+            TheMessageMgr->SendMessage(PlayerType::Server, MessageRequestCreateGameObject(_id));
         }
     }
 

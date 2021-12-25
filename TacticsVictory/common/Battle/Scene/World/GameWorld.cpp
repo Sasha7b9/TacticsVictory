@@ -5,6 +5,9 @@
 #include "TVBattle.h"
 #include "Objects/GameObject_.h"
 #include "Network/Messages/MessagesServer_.h"
+#include "Objects/Units/Ground/Tank_.h"
+#include "Objects/Units/Air/Airplane_.h"
+#include "PeriodicTasks.h"
 
 
 using namespace Pi;
@@ -21,7 +24,6 @@ GameWorld::GameWorld(pchar name) : World(name)
 
 GameWorld::~GameWorld()
 {
-
 }
 
 
@@ -34,7 +36,9 @@ WorldResult::B GameWorld::Preprocess()
         return result;
     }
 
-    new Landscape((Battle::self->DataPath() + "levels/level2.lvl").c_str());
+    static TaskAfterLoadingLandscape taskAfterLoad;
+
+    new Landscape((Battle::self->DataPath() + "levels/level2.lvl").c_str(), &taskAfterLoad);
 
     GetRootNode()->AppendNewSubnode(Landscape::self);
 
@@ -55,58 +59,4 @@ void GameWorld::AppendObject(GameObject *object)
     }
 
     object->controller->Preprocess();
-}
-
-
-void GameWorld::Move()
-{
-    World::Move();
-
-    static uint64 prevTime = TheTimeMgr->GetMicrosecondCount();
-
-    if (TheTimeMgr->GetMicrosecondCount() - prevTime >= 40000)
-    {
-        float dT = (float)(TheTimeMgr->GetMicrosecondCount() - prevTime) / 1e3f;
-
-        if (dT > 1000.0f)
-        {
-            LOG_ERROR_TRACE("dT = %f, prevTime = %llu, microCount = %llu", dT, prevTime, TheTimeMgr->GetMicrosecondCount());
-        }
-
-        numTick++;
-
-        RunOneTick();
-
-        prevTime += 40000;
-    }
-}
-
-
-void GameWorld::RunOneTick()
-{
-    for (GameObject *object : GameObject::objects)
-    {
-        object->controller->Move(40.0f);
-    }
-
-    if(TheMessageMgr->GetPlayerCount() > 1)
-    {
-        MessageGameObjectNodeTransform message;
-
-        for (GameObject *object : GameObject::objects)
-        {
-            if (message.NumObjects() == message.MaxNumObjects())
-            {
-                TheMessageMgr->SendMessageClients(message);
-                message.ResetCounter();
-            }
-
-            message.AddObject(object);
-        }
-
-        if (message.NumObjects() > 0)
-        {
-            TheMessageMgr->SendMessageClients(message);
-        }
-    }
 }

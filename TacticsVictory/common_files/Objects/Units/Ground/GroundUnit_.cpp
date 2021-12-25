@@ -6,10 +6,14 @@
 using namespace Pi;
 
 
+Map<GroundUnitObject> GroundUnitObject::objects;
+
+
 GroundUnitObject::GroundUnitObject(TypeGroundUnit type, int id, GroundUnitController *controller) :
     UnitObject(TypeUnit::Ground, id, controller),
     typeGroundUnit(type)
 {
+    objects.Insert(this);
 }
 
 

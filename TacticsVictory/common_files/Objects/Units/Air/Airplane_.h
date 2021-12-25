@@ -5,11 +5,13 @@
 
 namespace Pi
 {
-    class Airplane : public AirUnitObject
+    class Airplane : public AirUnitObject, public MapElement<Airplane>
     {
     public:
 
         static Airplane *Create(int id = -1);
+
+        static Map<Airplane> objects;
 
     private:
 

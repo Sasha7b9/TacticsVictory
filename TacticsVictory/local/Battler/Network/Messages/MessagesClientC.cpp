@@ -6,9 +6,10 @@
 using namespace Pi;
 
 
-bool MessageRequestGameObjects::HandleMessage(Player *) const
+MessagePing::MessagePing() :
+    Message(PiTypeMessage::Ping, PiFlagMessage::Unordered),
+    timeSend(TheTimeMgr->GetMillisecondCount())
 {
-    return true;
 }
 
 
@@ -16,6 +17,12 @@ bool MessagePing::HandleMessage(Player *) const
 {
     LOG_WRITE("ping = %d ms", TheTimeMgr->GetMillisecondCount() - timeSend);
 
+    return true;
+}
+
+
+bool MessageRequestCreateGameObject::HandleMessage(Player *) const
+{
     return true;
 }
 

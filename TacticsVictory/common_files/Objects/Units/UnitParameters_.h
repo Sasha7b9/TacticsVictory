@@ -16,6 +16,7 @@ namespace Pi
         Max max;
 
         Vector3D speed     = Vector3D::ZERO;
-        Vector3D direction = Vector3D::ZERO;
+        Vector3D direction = Vector3D::FORWARD;
+        Vector3D up        = Vector3D::UP;
     };
 }

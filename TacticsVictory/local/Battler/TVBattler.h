@@ -2,6 +2,7 @@
 #pragma once
 #include "Scene/Cameras/CameraRTS.h"
 #include "Shaders/SparkParticleSystem.h"
+#include "PeriodicTasks.h"
 
 
 namespace Pi
@@ -34,16 +35,22 @@ namespace Pi
         static World *ConstructWorld(pchar name, void *cookie);
 
         // Отложенные задачи
-        List<DeferredTask> deferredTasks;
+        ListPeriodicTask   periodicTasks;
+        TaskPing           taskPing;
+        TaskTraffic        taskTraffic;
 
         // Commands
-        CommandObserver<Battler> gizmoCommandObserver{this, &Battler::HandleGizmoCommand};
-        CommandObserver<Battler> fogDensityCommandObserver{this, &Battler::HandleFogDensityCommand};
-        CommandObserver<Battler> pingCommandObserver{this, &Battler::HandlePingCommand};
+        CommandObserver<Battler> gizmoCommandObserver      {this, &Battler::HandleGizmoCommand};
+        CommandObserver<Battler> fogDensityCommandObserver {this, &Battler::HandleFogDensityCommand};
+        CommandObserver<Battler> pingCommandObserver       {this, &Battler::HandlePingCommand};
+        CommandObserver<Battler> trafficCommandObserver    {this, &Battler::HandleTrafficCommand};
+        CommandObserver<Battler> serverCommandObserver     {this, &Battler::HandleServerCommand};
 
         void HandleGizmoCommand(Command *, pchar);
         void HandleFogDensityCommand(Command *, pchar);
         void HandlePingCommand(Command *, pchar);
+        void HandleTrafficCommand(Command *, pchar);
+        void HandleServerCommand(Command *, pchar);
 
         void CreateCommands();
 

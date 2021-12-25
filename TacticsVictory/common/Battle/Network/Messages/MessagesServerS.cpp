@@ -23,7 +23,7 @@ bool MessageCreateGameObject::HandleMessage(Player *) const
 }
 
 
-bool MessageGameObjectNodeTransform::HandleMessage(Player *sender) const
+bool MessageGameObjectState::HandleMessage(Player *sender) const
 {
     return true;
 }
@@ -86,11 +86,17 @@ void MessageCreateGameObject::FillUnit(UnitObject *unit)
 }
 
 
-void MessageGameObjectNodeTransform::AddObject(GameObject *object)
+void MessageGameObjectState::AddObject(GameObject *object)
 {
     id[num_objects] = object->GetID();
 
     position[num_objects] = object->GetNodePosition();
+
+    UnitParameters &param = object->GetUnitObject()->GetUnitController()->param;
+
+    direction[num_objects] = param.direction;
+
+    up[num_objects] = param.up;
 
     num_objects++;
 }

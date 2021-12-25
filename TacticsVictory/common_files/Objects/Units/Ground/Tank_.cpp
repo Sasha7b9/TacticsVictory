@@ -8,6 +8,10 @@
 using namespace Pi;
 
 
+Map<Tank> Tank::objects;
+
+
+
 Tank *Tank::Create(int id)
 {
     return new Tank(id);
@@ -21,6 +25,8 @@ Tank::Tank(int id) : GroundUnitObject(TypeGroundUnit::Tank, id, new TankControll
     GetNodeGeometry()->AppendNewSubnode(CreateTrack(false));
     GetNodeGeometry()->AppendNewSubnode(CreateTower());
     GetNodeGeometry()->AppendNewSubnode(CreateBarrel());
+
+    objects.Insert(this);
 }
 
 

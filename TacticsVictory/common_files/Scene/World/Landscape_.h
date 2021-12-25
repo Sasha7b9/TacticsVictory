@@ -5,7 +5,7 @@
 
 namespace Pi
 {
-
+    class PeriodicTask;
     class LandscapeController;
     class TCell;
     class TZone;
@@ -30,12 +30,12 @@ namespace Pi
 
     public:
 
-        Landscape(pchar nameFile, float delta = 0.1F);
+        // Если задано afterTask, то оно будет выполнено по завершении создания
+        Landscape(pchar nameFile, PeriodicTask *afterTask = nullptr, float delta = 0.1F);
 
         static Landscape *self;
 
         void    Reload();
-//        bool    IsCreated() const { return created; }
         int     GetSizeX_Columns();
         int     GetSizeY_Rows();
 
@@ -56,6 +56,7 @@ namespace Pi
 
         Array2D<float>  heightMap;
         File            file;
+        PeriodicTask   *taskAfter = nullptr;            // Эта задача будет выполнена после создания ланшафта
 
         virtual ~Landscape();
 

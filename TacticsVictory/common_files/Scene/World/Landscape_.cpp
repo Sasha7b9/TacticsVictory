@@ -3,11 +3,11 @@
 #include "Scene/World/Landscape_.h"
 #include "Scene/World/GameWorld.h"
 #include "GameState.h"
+#include "PeriodicTasks.h"
 
 
 namespace Pi
 {
-
 class TCell;
 class TZone;
 class Landscape;
@@ -121,11 +121,12 @@ using namespace Pi;
 
 
 
-Landscape::Landscape(pchar nameFile, float delta) : Node()
+Landscape::Landscape(pchar nameFile, PeriodicTask *afterTask, float delta) : Node()
 {
     self = this;
     this->delta = delta;
     landscape = this;
+    taskAfter = afterTask;
 
     heightMap = ReadFile(nameFile);
 
@@ -1071,6 +1072,11 @@ void LandscapeController::Move()
         {
             GameState::landscapeCreated = true;
             LOG_WRITE("Landscape is created");
+
+            if (landscape->taskAfter)
+            {
+                GameWorld::self->periodicTasks.Append(landscape->taskAfter, 1, 1);
+            }
         }
     }
     else

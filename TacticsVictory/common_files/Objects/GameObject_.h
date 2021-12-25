@@ -43,7 +43,7 @@ namespace Pi
 
         int GetID() const { return id; }
 
-        void SetNodeDirection(const Vector3D &direction, const Vector3D &up = Vector3D::UP);
+        void SetDirection(const Vector3D &direction, const Vector3D &up = Vector3D::UP);
 
         Node *GetNodeGeometry() { return nodeGeometry; }
 
@@ -62,7 +62,7 @@ namespace Pi
 
         GameObject(TypeGameObject, int, GameObjectController *);
 
-        virtual ~GameObject() {}
+        virtual ~GameObject();
 
     private:
 

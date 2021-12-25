@@ -34,47 +34,11 @@ GameWorld::GameWorld(pchar name) : World(name)
     self = this;
 }
 
+
 GameWorld::~GameWorld()
 {
     SAFE_DELETE(CursorGUI::self);
     SAFE_DELETE(sun);
-}
-
-const LocatorMarker *GameWorld::FindSpectatorLocator(const Zone *zone)
-{
-    const Marker *marker = zone->GetFirstMarker();
-    while(marker)
-    {
-        if(marker->Enabled())
-        {
-            PiTypeMarker::S type = marker->GetMarkerType();
-
-            if(type == PiTypeMarker::Locator)
-            {
-                const LocatorMarker *locator = static_cast<const LocatorMarker *>(marker);
-                if(locator->GetLocatorType() == PiTypeLocator::Spectator)
-                {
-                    return (locator);
-                }
-            }
-        }
-
-        marker = marker->Next();
-    }
-
-    const Zone *subzone = zone->GetFirstSubzone();
-    while(subzone)
-    {
-        const LocatorMarker *locator = FindSpectatorLocator(subzone);
-        if(locator)
-        {
-            return (locator);
-        }
-
-        subzone = subzone->Next();
-    }
-
-    return (nullptr);
 }
 
 
@@ -157,19 +121,4 @@ Point3D GameWorld::TransformWorldCoordToDisplay(const Point3D &worldPosition)
     displayPoint.z = 0.0f;
 
     return displayPoint;
-}
-
-
-void GameWorld::Render()
-{
-    World::Render();
-
-//    static uint prev_time = TheTimeMgr->GetMillisecondCount();
-//
-//    if (TheTimeMgr->GetMillisecondCount() - prev_time > 40)
-//    {
-//        LOG_WRITE("last delta render %d ms", TheTimeMgr->GetMillisecondCount() - prev_time);
-//    }
-//
-//    prev_time = TheTimeMgr->GetMillisecondCount();
 }

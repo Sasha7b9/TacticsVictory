@@ -5,20 +5,10 @@
 
 namespace Pi
 {
-    class MessageRequestGameObjects : public Message
-    {
-    public:
-        MessageRequestGameObjects() : Message(PiTypeMessage::RequestGameObjects) {};
-    private:
-        virtual bool HandleMessage(Player *sender) const override;
-    };
-
-
     class MessagePing : public Message
     {
     public:
-        MessagePing(uint time);
-        MessagePing() : Message(PiTypeMessage::Ping) {};
+        MessagePing();
     private:
         uint timeSend = 0;                                  // Время отправления сообщения серверу
         virtual void Compress(Compressor &) const override;
@@ -27,13 +17,13 @@ namespace Pi
     };
 
 
-    class MessageServerCommand : public Message
+    class MessageRequestCreateGameObject : public Message
     {
     public:
-        MessageServerCommand(pchar command);
-        MessageServerCommand();
+        MessageRequestCreateGameObject(int _id = -1) :
+            Message(PiTypeMessage::RequestCreateGameObject, PiFlagMessage::Unreliable), id(_id) {}
     private:
-        String<> command;
+        int id;
         virtual void Compress(Compressor &) const override;
         virtual bool Decompress(Decompressor &) override;
         virtual bool HandleMessage(Player *) const override;

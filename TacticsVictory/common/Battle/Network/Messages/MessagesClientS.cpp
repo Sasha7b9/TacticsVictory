@@ -8,35 +8,31 @@
 using namespace Pi;
 
 
-bool MessageRequestGameObjects::HandleMessage(Player *sender) const
+MessagePing::MessagePing() :
+    Message(PiTypeMessage::Ping)
 {
-    LOG_WRITE("Received a request to send objects. In scene %d objects", GameObject::objects.GetElementCount());
-
-    MessageCreateGameObject message;
-
-    for (GameObject *object : GameObject::objects)
-    {
-        if (message.NumObjects() == MessageCreateGameObject::MAX_NUM_OBJECTS)
-        {
-            TheMessageMgr->SendMessage(sender->GetPlayerKey(), message);
-            message.Clear();
-        }
-
-        message.AppendObject(object);
-    }
-
-    if (message.NumObjects() > 0)
-    {
-        TheMessageMgr->SendMessage(sender->GetPlayerKey(), message);
-    }
-
-    return true;
 }
 
 
 bool MessagePing::HandleMessage(Player *sender) const
 {
-    TheMessageMgr->SendMessage(sender->GetPlayerKey(), MessagePing(timeSend));
+    TheMessageMgr->SendMessage(sender->GetPlayerKey(), *this);
+
+    return true;
+}
+
+
+bool MessageRequestCreateGameObject::HandleMessage(Player *sender) const
+{
+    GameObject *object = GameObject::objects.Find(id);
+
+    if(object)
+    {
+        MessageCreateGameObject message(object);
+        message.SetMessageFlags(PiFlagMessage::Unordered | PiFlagMessage::Unreliable);
+
+        TheMessageMgr->SendMessage(sender->GetPlayerKey(), message);
+    }
 
     return true;
 }

@@ -44,7 +44,8 @@ file(GLOB SCENE_WORLD               ../../common_files/Scene/World/Landscape_.*
                                     ../../common_files/Scene/World/GameWorld_.h
                                                        Scene/World/*.*)
 file(GLOB UTILS                     ../../common_files/Utils/Array2D_.*
-                                    ../../common_files/Utils/Log_.*)
+                                    ../../common_files/Utils/Log_.*
+                                    ../../common_files/Utils/PeriodicTask_.*)
 
 
 source_group(src                    FILES ${SRC})
@@ -90,7 +91,7 @@ copy_to_dir_exe($(OutputPath)${PROJECT_NAME} ${_INSTALL_DIR_})
 
 set_work_directory()
 
-message("CMAKE_BINARY_DIR:         ${CMAKE_BINARY_DIR}")
+#message("CMAKE_BINARY_DIR:         ${CMAKE_BINARY_DIR}")
 #message("CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
 #message("CMAKE_SOURCE_DIR:         ${CMAKE_SOURCE_DIR}")
 #message("CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")

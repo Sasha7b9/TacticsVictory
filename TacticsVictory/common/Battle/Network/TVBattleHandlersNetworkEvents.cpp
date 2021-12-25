@@ -117,8 +117,8 @@ Message *Battle::CreateMessage(PiTypeMessage::E type, Decompressor &) const
 {
     switch (type)
     {
-    case PiTypeMessage::RequestGameObjects: return new MessageRequestGameObjects(); break;
-    case PiTypeMessage::Ping:               return new MessagePing();               break;
+    case PiTypeMessage::Ping:                    return new MessagePing();                      break;
+    case PiTypeMessage::RequestCreateGameObject: return new MessageRequestCreateGameObject();   break;
 
     default:
         LOG_ERROR_TRACE("Unknown type message %d", type);

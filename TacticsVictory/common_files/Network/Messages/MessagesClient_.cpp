@@ -6,13 +6,6 @@
 using namespace Pi;
 
 
-MessagePing::MessagePing(uint time) :
-    Message(PiTypeMessage::Ping, PiFlagMessage::Unordered | PiFlagMessage::Unreliable),
-    timeSend(time)
-{
-}
-
-
 void MessagePing::Compress(Compressor &data) const
 {
     data << timeSend;
@@ -22,6 +15,20 @@ void MessagePing::Compress(Compressor &data) const
 bool MessagePing::Decompress(Decompressor &data)
 {
     data >> timeSend;
+
+    return true;
+}
+
+
+void MessageRequestCreateGameObject::Compress(Compressor &data) const
+{
+    data << id;
+}
+
+
+bool MessageRequestCreateGameObject::Decompress(Decompressor &data)
+{
+    data >> id;
 
     return true;
 }

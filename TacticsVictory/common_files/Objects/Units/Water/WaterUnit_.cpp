@@ -6,11 +6,14 @@
 using namespace Pi;
 
 
+Map<WaterUnitObject> WaterUnitObject::objects;
+
+
 WaterUnitObject::WaterUnitObject(TypeWaterUnit type, int id, WaterUnitController *controller) :
     UnitObject(TypeUnit::Water, id, controller),
     typeWaterUnit(type)
 {
-
+    objects.Insert(this);
 }
 
 

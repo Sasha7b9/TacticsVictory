@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Utils/PeriodicTask_.h"
 
 
 namespace Pi
@@ -21,6 +22,8 @@ namespace Pi
         // ¬озвращает путь к каталогу с данными игры (Data/TacticsVictory)
         std::string DataPath() const;
 
+        ListPeriodicTask periodicTasks;
+
     private:
 
         LocatorRegistration    locatorReg{PiTypeLocator::Spectator, "Spectator Camera"};
@@ -28,6 +31,8 @@ namespace Pi
         static World *ConstructWorld(pchar name, void *cookie);
 
         virtual void ApplicationTask() override;
+
+        void SetTasks();
 
         // Network
         virtual void HandleConnectionEvent(ConnectionEvent, const NetworkAddress &, const void *) override;

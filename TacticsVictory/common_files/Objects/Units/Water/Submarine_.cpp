@@ -8,6 +8,9 @@
 using namespace Pi;
 
 
+Map<Submarine> Submarine::objects;
+
+
 Submarine *Submarine::Create(int id)
 {
     return new Submarine(id);
@@ -35,6 +38,8 @@ Submarine::Submarine(int id) : WaterUnitObject(TypeWaterUnit::Submarine, id, new
     geometry->GetObject()->SetCollisionExclusionMask(PiKindCollision::Unit);
 
     GetNodeGeometry()->AppendNewSubnode(node);
+
+    objects.Insert(this);
 }
 
 
