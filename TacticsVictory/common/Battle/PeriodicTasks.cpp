@@ -13,7 +13,7 @@ using namespace Pi;
 
 void TaskAfterLoadingLandscape::Step()
 {
-    static const int NUM_OBJECTS = 333;
+    static const int NUM_OBJECTS = 99;
 
     for (int i = 0; i < NUM_OBJECTS / 3; i++)
     {
@@ -23,6 +23,8 @@ void TaskAfterLoadingLandscape::Step()
 
         GameWorld::self->AppendObject(Submarine::Create());
     }
+
+//    Airplane::Create()->AppendInGame(20, 20);
 
     TheNetworkMgr->SetProtocol(kGameProtocol);
     TheNetworkMgr->SetPortNumber(PORT_NUMBER);
@@ -41,8 +43,17 @@ void TaskAfterLoadingLandscape::Step()
 }
 
 
+TaskMain *TaskMain::Self()
+{
+    static TaskMain task;
+    return &task;
+}
+
+
 void TaskMain::Step()
 {
+//    PROFILER_ENTER_FUNC();
+
     for (GameObject *object : GameObject::objects)
     {
         object->controller->Move(40.0f);
@@ -68,11 +79,22 @@ void TaskMain::Step()
             TheMessageMgr->SendMessageClients(message);
         }
     }
+
+//    PROFILER_LEAVE();
+}
+
+
+TaskRotator *TaskRotator::Self()
+{
+    static TaskRotator task;
+    return &task;
 }
 
 
 void TaskRotator::Step()
 {
+//    PROFILER_ENTER_FUNC();
+
     for (Tank *tank : Tank::objects)
     {
         Vector3D &direction = tank->GetUnitController()->param.direction;
@@ -88,14 +110,36 @@ void TaskRotator::Step()
         Vector3D &direction = airplane->GetUnitController()->param.direction;
         Vector3D &up = airplane->GetUnitController()->param.up;
 
-        up.RotateAboutY(0.2f);
+        up.RotateAboutY(0.1f);
 
         airplane->SetDirection(direction, up);
     }
+
+//    PROFILER_LEAVE();
 }
 
 
-void TaskProfiler::Step()
+TaskProfilerFull *TaskProfilerFull::Self()
 {
-    LOG_WRITE("Number cycles %d", Profiler::NumberCycles());
+    static TaskProfilerFull task;
+    return &task;
+}
+
+
+void TaskProfilerFull::Step()
+{
+    PROFILER_LOG_FULL();
+}
+
+
+TaskProfilerLastFrame *TaskProfilerLastFrame::Self()
+{
+    static TaskProfilerLastFrame task;
+    return &task;
+}
+
+
+void TaskProfilerLastFrame::Step()
+{
+    PROFILER_LOG_LAST_FRAME();
 }

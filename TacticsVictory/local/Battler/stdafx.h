@@ -48,6 +48,7 @@
 #include <System/PiTypes.h>
 #include <System/PiSound.h>
 #include <System/PiMain.h>
+#include <System/PiProfiler.h>
 
 #include <Utilities/PiLog.h>
 

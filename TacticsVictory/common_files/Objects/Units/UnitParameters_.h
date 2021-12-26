@@ -11,12 +11,13 @@ namespace Pi
         {
             Vector3D speed  = Vector3D::ZERO;
             Vector3D rotate = Vector3D::ZERO;
+            float accelerateSpeed = 0.0f;
         };
 
         Max max;
 
-        Vector3D speed     = Vector3D::ZERO;
-        Vector3D direction = Vector3D::FORWARD;
-        Vector3D up        = Vector3D::UP;
+        float speed           = 0.0f;
+        Vector3D direction    = Vector3D::FORWARD;
+        Vector3D up           = Vector3D::UP;
     };
 }

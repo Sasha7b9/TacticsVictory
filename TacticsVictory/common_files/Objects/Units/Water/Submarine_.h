@@ -57,11 +57,9 @@ namespace Pi
     {
         friend class Driver;
 
-    public:
+    private:
 
         virtual ~DriverSubmarine() {}
-
-    protected:
 
         DriverSubmarine(UnitController *controller) : Driver(controller) {}
     };

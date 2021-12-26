@@ -8,73 +8,30 @@ namespace Pi
     class Airplane : public AirUnitObject, public MapElement<Airplane>
     {
     public:
-
         static Airplane *Create(int id = -1);
-
         static Map<Airplane> objects;
-
     private:
-
         Airplane(int id = -1);
-
-        virtual ~Airplane();
+        virtual ~Airplane() {}
     };
 
 
     class AirplaneController final : public AirUnitController
     {
-    public:
-
-        AirplaneController(Airplane *);
-        virtual ~AirplaneController();
-
-        virtual void Preprocess() override;
-        virtual void Move(float dT) override;
-
+        friend class Airplane;
     private:
-
+        AirplaneController(Airplane *airplane) : AirUnitController(airplane, parameters) { }
+        virtual ~AirplaneController() {};
         const static UnitParameters parameters;
-    };
-
-
-    class CommanderAirplane : public Commander
-    {
-        friend class Commander;
-
-    public:
-
-        virtual ~CommanderAirplane() {}
-
-    protected:
-
-        CommanderAirplane(UnitController *);
     };
 
 
     class DriverAirplane : public Driver
     {
         friend class Driver;
-
-    public:
-
+    private:
+        DriverAirplane(UnitController *controller) : Driver(controller) { }
         virtual ~DriverAirplane() {}
-
-    protected:
-
-        DriverAirplane(UnitController *);
-    };
-
-
-    class ShooterAirplane : public Shooter
-    {
-        friend class Shooter;
-
-    public:
-
-        virtual ~ShooterAirplane() {}
-
-    protected:
-
-        ShooterAirplane(UnitController *);
+        virtual void Update(float dT) override;
     };
 }

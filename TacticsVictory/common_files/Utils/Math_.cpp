@@ -6,11 +6,11 @@
 using namespace Pi;
 
 
-uint Mathem::RandomLargeUINT(uint range) {
+uint M::RandomLargeUINT(uint range) {
     return (Math::Random(65535) << 24) | (Math::Random(65535) << 16) | (Math::Random(65535) << 8) | Math::Random(65535) % range;
 }
 
-ColorRGBA Mathem::RandomColor(bool alpha) {
+ColorRGBA M::RandomColor(bool alpha) {
     ColorRGBA color(Math::RandomFloat(1.0f), Math::RandomFloat(1.0f), Math::RandomFloat(1.0f));
     if(alpha) {
         color.alpha = Math::RandomFloat(1.0f);
@@ -18,7 +18,7 @@ ColorRGBA Mathem::RandomColor(bool alpha) {
     return color;
 }
 
-uint Mathem::ColorToUINT(const ColorRGBA &color) {
+uint M::ColorToUINT(const ColorRGBA &color) {
     uint red = (uint)(color.red * 255);
     uint green = (uint)(color.green * 255);
     uint blue = (uint)(color.blue * 255);
@@ -27,7 +27,7 @@ uint Mathem::ColorToUINT(const ColorRGBA &color) {
     return red | (green << 8) | (blue << 16) | (alpha << 24);
 }
 
-ColorRGBA Mathem::SetColorBrightness(const ColorRGBA &color, float brightness) {
+ColorRGBA M::SetColorBrightness(const ColorRGBA &color, float brightness) {
     float maxComponent = color.red;
     if(color.green > maxComponent) {
         maxComponent = color.green;
@@ -43,24 +43,24 @@ ColorRGBA Mathem::SetColorBrightness(const ColorRGBA &color, float brightness) {
     return ColorRGBA(color100.red * brightness, color100.green * brightness, color100.blue * brightness, color.alpha);
 }
 
-bool Mathem::PointInRect(const Point2D *point, float xRect, float yRect, float widthRect, float heightRect) {
+bool M::PointInRect(const Point2D *point, float xRect, float yRect, float widthRect, float heightRect) {
     float rightRect = xRect + widthRect;
     float bottomRect = yRect + heightRect;
     return (point->x >= xRect && point->x <= rightRect && point->y >= yRect && point->y <= bottomRect);
 }
 
 
-Point2D Mathem::InvertPoint2D(Point2D &point) {
+Point2D M::InvertPoint2D(Point2D &point) {
     point.x = -point.x;
     point.y = -point.y;
     return point;
 }
 
-ColorRGBA Mathem::OneComplement(const ColorRGBA &color) {
+ColorRGBA M::OneComplement(const ColorRGBA &color) {
     return ColorRGBA(1.0f - color.red, 1.0f - color.green, 1.0f - color.blue);
 }
 
-float Mathem::LimitationFloat(float value, float min, float max) {
+float M::LimitationFloat(float value, float min, float max) {
     if(value < min) {
         return min;
     }
@@ -70,7 +70,7 @@ float Mathem::LimitationFloat(float value, float min, float max) {
     return value;
 }
 
-bool Mathem::BetweenTwoPoints(const Point2D &p0, const Point2D &p1, const Point2D &value) {
+bool M::BetweenTwoPoints(const Point2D &p0, const Point2D &p1, const Point2D &value) {
     int l = (int)p0.x;
     int r = (int)p1.x;
     int t = (int)p0.y;

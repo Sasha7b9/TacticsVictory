@@ -31,8 +31,9 @@ namespace Pi
             RightChanged,
             PositionChanged
         };
-    
-        Mouse() : Singleton<Mouse>(self) { }
+
+        static void Create();
+
         virtual ~Mouse() { }
 
         static Mouse *self;
@@ -103,6 +104,9 @@ namespace Pi
         }
     
     private:
+
+        Mouse() : Singleton<Mouse>(self) { }
+
         MouseObservable observable;
         Point2D pos;
     

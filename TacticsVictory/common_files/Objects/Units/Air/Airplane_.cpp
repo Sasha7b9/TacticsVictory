@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Objects/Units/Air/Airplane_.h"
 #include "Objects/Units/UnitParameters_.h"
+#include "Utils/Math_.h"
 
 
 using namespace Pi;
@@ -40,45 +41,14 @@ Airplane::Airplane(int id) : AirUnitObject(TypeAirUnit::Airplane, id, new Airpla
 }
 
 
-Airplane::~Airplane()
+void DriverAirplane::Update(float dT)
 {
-}
+    UnitParameters &param = controller->param;
 
+    param.speed = M::LimitationAbove(param.speed += param.max.accelerateSpeed * dT, param.max.speed.y);
 
-AirplaneController::AirplaneController(Airplane *airplane) : AirUnitController(airplane, parameters)
-{
-}
+    Point3D position = unit->GetNodePosition() + param.direction * param.speed;
 
-
-AirplaneController::~AirplaneController()
-{
-}
-
-
-void AirplaneController::Preprocess()
-{
-    AirUnitController::Preprocess();
-
-    param.speed.y = Math::RandomFloat(0.00001f, 0.003f);
-}
-
-
-void AirplaneController::Move(float dT)
-{
-    AirUnitController::Move(dT);
-}
-
-
-CommanderAirplane::CommanderAirplane(UnitController *controller) : Commander(controller)
-{
-}
-
-
-DriverAirplane::DriverAirplane(UnitController *controller) : Driver(controller)
-{
-}
-
-
-ShooterAirplane::ShooterAirplane(UnitController *controller) : Shooter(controller)
-{
+    unit->SetNodePosition(position);
+    unit->Invalidate();
 }

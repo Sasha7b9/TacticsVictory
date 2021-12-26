@@ -132,7 +132,7 @@ DrawingWidget* CursorGUI::CreateNormalOverSkin(int numFrame, State::E eState)
 
     DrawingWidget *skin = new DrawingWidget(Vector2D(size, size));
     ColorRGBA color(component, component, component);
-    skin->ClearAndFillRegion(points, 3, color, Mathem::OneComplement(color), Point2D(5, 5));
+    skin->ClearAndFillRegion(points, 3, color, M::OneComplement(color), Point2D(5, 5));
     skin->EndScene();
 
     float radiusMax = size / (eState == State::Normal ? 3.0f : 2.0f);

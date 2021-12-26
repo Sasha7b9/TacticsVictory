@@ -12,7 +12,7 @@ void Input::Init()
 {
     TheInputMgr->AddAction(new NavigationAction(PiTypeAction::Left, CameraRTS::E::MoveLeft));
     TheInputMgr->AddAction(new NavigationAction(PiTypeAction::Right, CameraRTS::E::MoveRight));
-    TheInputMgr->AddAction(new NavigationAction(PiTypeAction::Forward, CameraRTS::E::MovekForward));
+    TheInputMgr->AddAction(new NavigationAction(PiTypeAction::Forward, CameraRTS::E::MoveForward));
     TheInputMgr->AddAction(new NavigationAction(PiTypeAction::Backward, CameraRTS::E::MoveBackward));
     TheInputMgr->AddAction(new NavigationAction(PiTypeAction::RotLeft, CameraRTS::E::RotateLeft));
     TheInputMgr->AddAction(new NavigationAction(PiTypeAction::RotRight, CameraRTS::E::RotateRight));

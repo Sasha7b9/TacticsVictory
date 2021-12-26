@@ -17,7 +17,7 @@ namespace Pi
 
         static GameWorld *self;
 
-        void AppendObject(GameObject *object);
+        void AppendObject(GameObject *);
 
         ListPeriodicTask periodicTasks;
 

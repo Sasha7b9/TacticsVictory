@@ -13,14 +13,12 @@ namespace Pi
     class SoundPlayer : public Singleton<SoundPlayer>
     {
     public:
-        SoundPlayer();
+        static void Create();
         virtual ~SoundPlayer();
-
         static SoundPlayer *self;
-
         void Play(uint number);
-
     private:
+        SoundPlayer();
         pchar sounds[kNumSounds];
     };
 }

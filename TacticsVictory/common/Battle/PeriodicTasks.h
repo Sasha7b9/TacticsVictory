@@ -16,7 +16,8 @@ namespace Pi
     // Это основная задача - выполняется каждый кадр
     class TaskMain : public PeriodicTask
     {
-    protected:
+    public:
+        static TaskMain *Self();
         virtual void Step() override;
     };
 
@@ -24,14 +25,25 @@ namespace Pi
     // Тестовая задача
     class TaskRotator : public PeriodicTask
     {
+    public:
+        static TaskRotator *Self();
+        virtual void Step() override;
+    };
+
+
+    class TaskProfilerFull : public PeriodicTask
+    {
+    public:
+        static TaskProfilerFull *Self();
     protected:
         virtual void Step() override;
     };
 
 
-    class TaskProfiler : public PeriodicTask
+    class TaskProfilerLastFrame : public PeriodicTask
     {
-    protected:
+    public:
+        static TaskProfilerLastFrame *Self();
         virtual void Step() override;
     };
 }

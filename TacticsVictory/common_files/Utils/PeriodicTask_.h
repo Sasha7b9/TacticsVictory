@@ -31,6 +31,7 @@ namespace Pi
         void Remove(PeriodicTask *task);
         bool Consist(PeriodicTask *task);
         void Run();
+        void Purge();
     private:
         List<PeriodicTask> tasks;
     };

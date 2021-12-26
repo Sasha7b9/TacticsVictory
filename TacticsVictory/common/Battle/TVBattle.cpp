@@ -18,13 +18,9 @@ Battle *Battle::self = nullptr;
 Battle::Battle()
     : Singleton<Battle>(self)
 {
-    Log::Construct();
-
     TheWorldMgr->SetWorldCreator(&ConstructWorld);
 
     TheWorldMgr->LoadWorld("world/Empty");
-
-    SetTasks();
 }
 
 
@@ -40,20 +36,27 @@ Battle::~Battle()
 
 void Battle::ApplicationTask()
 {
-    periodicTasks.Run();
+    uint time = TheTimeMgr->GetMillisecondCount();
+
+    static uint timeNext = time;
+
+    if (time >= timeNext)
+    {
+        timeNext += 40;
+
+        TaskRotator::Self()->Step();
+        TaskMain::Self()->Step();
+
+        static uint timeNextLog = time;
+
+        if (time >= timeNextLog)
+        {
+            timeNextLog += 1000;
+            TaskProfilerLastFrame::Self()->Step();
+        }
+    }
+
     GameWorld::self->periodicTasks.Run();
-}
-
-
-void Battle::SetTasks()
-{
-    static TaskMain     mainTask;
-    static TaskRotator  rotatorTask;
-    static TaskProfiler profilerTask;
-
-    periodicTasks.Append(&mainTask, 40);
-    periodicTasks.Append(&rotatorTask, 40);
-    periodicTasks.Append(&profilerTask, 1000);
 }
 
 

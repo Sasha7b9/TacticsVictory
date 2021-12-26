@@ -17,10 +17,10 @@ ButtonSkin::ButtonSkin(TButton::Type type, pchar text, State state)
     ColorRGBA colorText(1.0f, 1.0f, 1.0f);
     if (state == ButtonSkin::State::UnderMouse)
     {
-        _colorBackground = Mathem::SetColorBrightness(_colorBackground, type == TButton::Type::Normal ? 0.2f : 0.3f);
+        _colorBackground = M::SetColorBrightness(_colorBackground, type == TButton::Type::Normal ? 0.2f : 0.3f);
     }
     else if (state == ButtonSkin::State::Pressed) {
-        _colorBackground = Mathem::SetColorBrightness(_colorBackground, type == TButton::Type::Normal ? 0.4f : 0.6f);
+        _colorBackground = M::SetColorBrightness(_colorBackground, type == TButton::Type::Normal ? 0.4f : 0.6f);
         colorText = ColorRGBA(0.0f, 0.0f, 0.0f);
     }
 
@@ -78,34 +78,8 @@ TButton::~TButton()
 
 void TButton::HandleObserver(MouseObservable *, uint)
 {
-    /*
-    if (!Visible() || !Enabled()) 
-    {
-        return;
-    }
-
-    bool mouseOnButton = false;
-    Widget *widget = GetFirstSubnode();
-    while (widget) 
-    {
-        Point3D position = TheMouse->pos;
-        Widget *detectingWidget = TheInterfaceMgr->DetectWidget(position);
-        if (detectingWidget == widget) 
-        {
-            mouseOnButton = true;
-            break;
-        }
-        widget = widget->Next();
-    }
-
-    if (!mouseOnButton) 
-    {
-        mouseOnButton = TheInterfaceMgr->DetectWidget(TheCursor->position) == this;
-    }
-    */
-
     Point3D pos = GetWorldPosition();
-    bool mouseOnButton = Mathem::PointInRect(&(CursorGUI::self->position), pos.x, pos.y, (float)SET::GUI::BUTTON::WIDTH(buttonType), (float)SET::GUI::BUTTON::HEIGHT(buttonType));
+    bool mouseOnButton = M::PointInRect(&(CursorGUI::self->position), pos.x, pos.y, (float)SET::GUI::BUTTON::WIDTH(buttonType), (float)SET::GUI::BUTTON::HEIGHT(buttonType));
 
     if (!mouseOnButton) 
     {

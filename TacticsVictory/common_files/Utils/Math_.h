@@ -4,7 +4,7 @@
 
 namespace Pi
 {
-    namespace Mathem
+    namespace M
     {
         uint         RandomLargeUINT(uint range);
         ColorRGBA    RandomColor(bool alpha = false);
@@ -32,6 +32,12 @@ namespace Pi
             {
                 Swap<T>(value1, value2);
             }
+        }
+
+        template<class T>
+        T LimitationAbove(T value, T max)
+        {
+            return (value > max) ? max : value;
         }
     }
 }

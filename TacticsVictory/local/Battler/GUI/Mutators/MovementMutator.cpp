@@ -83,7 +83,7 @@ void MovementMutator::CalculateNewPosition(float k)
 {
     Point2D positionPrev = positionCurrent;
     positionCurrent += k * speed * TheTimeMgr->GetFloatDeltaTime();
-    if(Mathem::BetweenTwoPoints(positionPrev, positionCurrent, k > 0 ? positionHide : positionShow))
+    if(M::BetweenTwoPoints(positionPrev, positionCurrent, k > 0 ? positionHide : positionShow))
     {
         positionCurrent = k > 0 ? positionHide : positionShow;
         state = k > 0 ? kHidePosition : kShowPosition;

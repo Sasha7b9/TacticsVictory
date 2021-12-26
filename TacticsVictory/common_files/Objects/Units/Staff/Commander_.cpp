@@ -31,7 +31,7 @@ Commander *Commander::New(UnitController *controller)
     {
         TypeAirUnit type = controller->GetAirUnitObject()->typeAirUnit;
 
-        if (type == TypeAirUnit::Airplane)         return new CommanderAirplane(controller);
+        if (type == TypeAirUnit::Airplane)         return new Commander(controller);
         else if (type == TypeAirUnit::Helicopter)  return new CommanderHelicopter(controller);
     }
     else if (controller->BelongGround())

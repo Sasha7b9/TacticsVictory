@@ -16,6 +16,12 @@ namespace Pi
 }
 
 
+void Mouse::Create()
+{
+    new Mouse();
+}
+
+
 MouseObservable::~MouseObservable()
 {
 }

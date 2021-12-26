@@ -32,8 +32,6 @@ namespace Pi
 
         virtual void ApplicationTask() override;
 
-        void SetTasks();
-
         // Network
         virtual void HandleConnectionEvent(ConnectionEvent, const NetworkAddress &, const void *) override;
         virtual void HandleGameEvent(GameEvent, const void *) override;

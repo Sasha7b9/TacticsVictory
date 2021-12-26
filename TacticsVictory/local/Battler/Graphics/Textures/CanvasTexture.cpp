@@ -43,13 +43,13 @@ CanvasTexture::~CanvasTexture()
 
 void CanvasTexture::SetColorBackground(const ColorRGBA &color)
 {
-    colorBackground = Mathem::ColorToUINT(color);
+    colorBackground = M::ColorToUINT(color);
 }
 
 
 void CanvasTexture::SetColorBrush(const ColorRGBA &color)
 {
-    colorBrush = Mathem::ColorToUINT(color);
+    colorBrush = M::ColorToUINT(color);
 }
 
 
@@ -74,7 +74,7 @@ void CanvasTexture::DrawLine(int x1, int y1, int x2, int y2)
 {
     if (y1 == y2)
     {
-        Mathem::PutInOrder(x1, x2);
+        M::PutInOrder(x1, x2);
         int width = x2 - x1 + 1;
 
         uint *pixel = Pixel(x1, y1);
@@ -86,7 +86,7 @@ void CanvasTexture::DrawLine(int x1, int y1, int x2, int y2)
     }
     else if (x1 == x2)
     {
-        Mathem::PutInOrder(y1, y2);
+        M::PutInOrder(y1, y2);
         int height = y2 - y1 + 1;
 
         uint *pixel = Pixel(x1, y1);

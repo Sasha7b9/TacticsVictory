@@ -48,7 +48,7 @@ void PanelMap::HandleObserver(MouseObservable *, ::Type type)
         Point3D position = GetWorldPosition();
         Vector2D size = GetWidgetSize();
         Point2D positionMouse = Mouse::self->GetPosition();
-        if (!Mathem::PointInRect(&positionMouse, position.x, position.y, size.x, size.y))
+        if (!M::PointInRect(&positionMouse, position.x, position.y, size.x, size.y))
         {
             return;
         }

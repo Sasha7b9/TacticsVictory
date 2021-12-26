@@ -9,13 +9,22 @@ using namespace Pi;
 SoundPlayer *SoundPlayer::self = nullptr;
 
 
+void SoundPlayer::Create()
+{
+    new SoundPlayer();
+}
+
+
 SoundPlayer::SoundPlayer() : Singleton<SoundPlayer>(self)
 {
     sounds[kMovePanel] = "sounds/shoot";
 }
 
+
 SoundPlayer::~SoundPlayer()
-{}
+{
+}
+
 
 void SoundPlayer::Play(uint number)
 {

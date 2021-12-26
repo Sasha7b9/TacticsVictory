@@ -16,8 +16,8 @@ using namespace Pi;
 const UnitParameters BoatController::parameters = UnitParameters
 {
     {
-        {0.0f, 0.05f, 0.0f},
-        {0.0f, 0.0f, 0.05f}
+        {0.0f, 0.05f, 0.0f},        // speed
+        {0.0f, 0.0f, 0.05f}         // rotate
     }
 };
 
@@ -25,9 +25,13 @@ const UnitParameters BoatController::parameters = UnitParameters
 const UnitParameters AirplaneController::parameters =
 {
     {
-        {0.05f, 0.5f, 0.05f},
-        {0.05f, 0.05f, 0.05f}
-    }
+        {0.00f, 0.5f,  0.00f},      // speed
+        {0.01f, 0.01f, 0.05f},      // rotate
+        0.00001f                    // accelerateSpeed
+    },
+    0.0f,                           // speed
+    Vector3D::FORWARD,              // direction
+    Vector3D::UP                    // up
 };
 
 

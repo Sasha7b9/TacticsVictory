@@ -11,24 +11,25 @@ namespace Pi
     
         enum class E
         {
-            MovekForward = 1 << 0,
+            MoveForward  = 1 << 0,
             MoveBackward = 1 << 1,
-            MoveLeft = 1 << 2,
-            MoveRight = 1 << 3,
-            MoveCenter = 1 << 4,
-            RotateLeft = 1 << 5,
-            RotateRight = 1 << 6,
-            RotateTop = 1 << 7,
-            RotateDown = 1 << 8,
-            ZoomIn = 1 << 9,
-            ZoomOut = 1 << 10
+            MoveLeft     = 1 << 2,
+            MoveRight    = 1 << 3,
+            MoveCenter   = 1 << 4,
+            RotateLeft   = 1 << 5,
+            RotateRight  = 1 << 6,
+            RotateTop    = 1 << 7,
+            RotateDown   = 1 << 8,
+            ZoomIn       = 1 << 9,
+            ZoomOut      = 1 << 10
         };
     
     public:
-        CameraRTS();
         ~CameraRTS();
 
         static CameraRTS *self;
+
+        static void Create();
     
         virtual void Preprocess() override;
         virtual void Move() override;
@@ -61,6 +62,9 @@ namespace Pi
         Vector2D GetSpeed() const { return speed; }
     
     private:
+
+        CameraRTS();
+
         ulong movementFlags = 0;
         Point3D pointFocus {10.0f, 25.0f, 0.0f};     // Точка, вокруг которой происходит вращение камера. Сюда всегда направлен её взгляд
         float distance = 25.0f;

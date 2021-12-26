@@ -73,7 +73,7 @@ namespace Pi
     };
 
 
-    class GameObjectController
+    class GameObjectController : public Controller
     {
         friend class GameObject;
 
@@ -81,9 +81,10 @@ namespace Pi
     
         virtual ~GameObjectController() {};
     
-        virtual void Preprocess();
+        virtual void Preprocess() override;
 
         virtual void Move(float dT);
+        virtual void Move() override {};
     
     protected:
     

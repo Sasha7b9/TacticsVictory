@@ -99,7 +99,7 @@ namespace Pi
 
         static Driver *New(UnitController *);
 
-        void Update(float dT);
+        virtual void Update(float dT);
 
         void AppendTask(DriverTask *);
 

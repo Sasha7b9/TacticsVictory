@@ -57,6 +57,4 @@ void GameWorld::AppendObject(GameObject *object)
     {
         added = object->AppendInGame(std::rand() % sizeX, std::rand() % sizeY);
     }
-
-    object->controller->Preprocess();
 }

@@ -172,32 +172,20 @@ void DriverTaskMove::ExecuteAfterCompletion()
 DriverTaskRotate::DriverTaskRotate(Driver *driver, const Vector3D &_axis, float _angle) :
     DriverTask(driver), axis(_axis), target_angle(_angle)
 {
-    if (target_angle < 0.0f)
-    {
-        axis = -axis;
-    }
 }
 
 
 void DriverTaskRotate::RunStep(float dT)
 {
-    Transform4D transform = unit->GetNodeTransform();
-    Point3D position = transform.GetTranslation();
-
-    transform.SetTranslation(Point3D::ZERO);
-
-    float angle = dT * controller->param.max.rotate.z;
-
-    Transform4D rotate;
-    rotate.SetRotationAboutAxis(angle, axis);
-
-    transform = rotate * transform;
-    transform.SetTranslation(position);
-
-    unit->SetNodeTransform(transform);
-    unit->Invalidate();
-
+    float angle = dT * controller->param.max.rotate.z * Fsgn(target_angle);
     rotated += angle;
+
+    Vector3D &direction = unit->GetUnitController()->param.direction;
+    Vector3D &up = unit->GetUnitController()->param.up;
+
+    direction.RotateAboutZ(angle);
+
+    unit->SetDirection(direction, up);
 
     if (Fabs(rotated) >= Fabs(target_angle))
     {
@@ -208,5 +196,4 @@ void DriverTaskRotate::RunStep(float dT)
 
 void DriverTaskRotate::ExecuteAfterCompletion()
 {
-
 }

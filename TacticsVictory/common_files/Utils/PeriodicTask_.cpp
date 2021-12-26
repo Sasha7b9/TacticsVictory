@@ -70,3 +70,9 @@ void ListPeriodicTask::Run()
         task = task->Next();
     }
 }
+
+
+void ListPeriodicTask::Purge()
+{
+    tasks.RemoveAll();
+}

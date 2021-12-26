@@ -30,3 +30,29 @@ void TaskTraffic::Step()
     prev_recv = recv;
     prev_send = send;
 }
+
+
+TaskProfiler *TaskProfiler::Self()
+{
+    static TaskProfiler task;
+    return &task;
+}
+
+
+void TaskProfiler::Step()
+{
+    PROFILER_LOG_FULL();
+}
+
+
+TaskProfilerLastFrame *TaskProfilerLastFrame::Self()
+{
+    static TaskProfilerLastFrame task;
+    return &task;
+}
+
+
+void TaskProfilerLastFrame::Step()
+{
+    PROFILER_LOG_LAST_FRAME();
+}

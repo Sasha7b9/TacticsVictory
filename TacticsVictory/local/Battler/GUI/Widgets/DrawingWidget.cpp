@@ -69,7 +69,7 @@ void DrawingWidget::SetColorBrush(const ColorRGBA &color)
 
 void DrawingWidget::DrawPoint(float x, float y)
 {
-    SetPoint(x, y, Mathem::ColorToUINT(colorBrush));
+    SetPoint(x, y, M::ColorToUINT(colorBrush));
 }
 
 bool DrawingWidget::SetPoint(float x, float y, uint colorUINT)
@@ -86,7 +86,7 @@ bool DrawingWidget::SetPoint(float x, float y, uint colorUINT)
 
 void DrawingWidget::Clear()
 {
-    uint colorUINT = Mathem::ColorToUINT(colorBackground);
+    uint colorUINT = M::ColorToUINT(colorBackground);
 
     int width = (int)GetWidgetSize().x;
     int height = (int)GetWidgetSize().y;
@@ -145,7 +145,7 @@ void DrawingWidget::FillCircle(float x, float y, float radius)
 
 void DrawingWidget::FillRegion(float x, float y, const ColorRGBA &color)
 {
-    uint colorUINT = Mathem::ColorToUINT(color);
+    uint colorUINT = M::ColorToUINT(color);
 
     FillFourPoints(x, y, colorUINT);
 }

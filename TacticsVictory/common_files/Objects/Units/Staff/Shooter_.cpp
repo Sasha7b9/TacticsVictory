@@ -29,7 +29,7 @@ Shooter *Shooter::New(UnitController *controller)
     {
         TypeAirUnit type = ((AirUnitController *)controller)->GetAirUnitObject()->typeAirUnit;
 
-        if (type == TypeAirUnit::Airplane)        return new ShooterAirplane(controller);
+        if (type == TypeAirUnit::Airplane)        return new Shooter(controller);
         else if (type == TypeAirUnit::Helicopter) return new ShooterHelicopter(controller);
     }
     else if (controller->BelongGround())

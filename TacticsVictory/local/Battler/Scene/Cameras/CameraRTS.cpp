@@ -16,6 +16,12 @@ namespace Pi
 }
 
 
+void CameraRTS::Create()
+{
+    new CameraRTS();
+}
+
+
 CameraRTS::CameraRTS()
     : FrustumCamera(2.0f, 1.0f), Singleton(self)
 {
@@ -111,21 +117,21 @@ void CameraRTS::Move()
 
     deltaFwd -= speed.y * dt;
 
-    if((movementFlags & (uint)E::MovekForward))
+    if((movementFlags & (uint)E::MoveForward))
     {
-        deltaFwd += 1.0f * dt;
+        deltaFwd += 3.0f * dt;
     }
     if((movementFlags & (uint)E::MoveBackward))
     {
-        deltaFwd -= 1.0f * dt;
+        deltaFwd -= 3.0f * dt;
     }
     if((movementFlags & (uint)E::MoveRight))
     {
-        deltaRight += 1.0f * dt;
+        deltaRight += 3.0f * dt;
     }
     if((movementFlags & (uint)E::MoveLeft))
     {
-        deltaRight -= 1.0f * dt;
+        deltaRight -= 3.0f * dt;
     }
     if((movementFlags & (uint)E::RotateLeft))
     {
@@ -160,8 +166,8 @@ void CameraRTS::Move()
         }
     }
 
-    distance = Mathem::LimitationFloat(distance, MIN_DISTANCE, MAX_DISTANCE);
-    angleTilt = Mathem::LimitationFloat(angleTilt, MIN_TILT_ANGLE, MAX_TILT_ANGLE);
+    distance = M::LimitationFloat(distance, MIN_DISTANCE, MAX_DISTANCE);
+    angleTilt = M::LimitationFloat(angleTilt, MIN_TILT_ANGLE, MAX_TILT_ANGLE);
 
     Vector3D vecMoveXY = GetVectorMoveXY(deltaRight, deltaFwd, azimuth); //-V764
     pointFocus += vecMoveXY;
@@ -192,12 +198,12 @@ void CameraRTS::MoveOn(const Vector3D &shift)
 
 void CameraRTS::SetTiltAngle(float tiltAngle)
 {
-    angleTilt = Mathem::LimitationFloat(tiltAngle, MIN_TILT_ANGLE, MAX_TILT_ANGLE);
+    angleTilt = M::LimitationFloat(tiltAngle, MIN_TILT_ANGLE, MAX_TILT_ANGLE);
 }
 
 void CameraRTS::SetDistance(float _distance)
 {
-    distance = Mathem::LimitationFloat(_distance, MIN_DISTANCE, MAX_DISTANCE);
+    distance = M::LimitationFloat(_distance, MIN_DISTANCE, MAX_DISTANCE);
 }
 
 Vector3D CameraRTS::GetVectorMoveXY(float deltaFwd, float deltaRight, float anglePlaneXY)

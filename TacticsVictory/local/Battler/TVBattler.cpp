@@ -33,14 +33,12 @@ Battler *Battler::self = nullptr;
 
 Battler::Battler() : Singleton<Battler>(self)
 {
-    Log::Construct(FlagLog::All, DirectionLog::EngineReport | DirectionLog::File);
-
     uint64 timeEnter = TheTimeMgr->GetMicrosecondCount();
 
     PoolTextures::Construct();
     PoolGeometry::Construct();
 
-    new CameraRTS();
+    CameraRTS::Create();
 
     TheWorldMgr->SetWorldCreator(&ConstructWorld);
 
@@ -48,7 +46,7 @@ Battler::Battler() : Singleton<Battler>(self)
 
     TheInterfaceMgr->SetInputManagementMode(InputManagementMode::Automatic);
 
-    new Mouse();
+    Mouse::Create();
 
     GUI::Create();
 
@@ -60,7 +58,7 @@ Battler::Battler() : Singleton<Battler>(self)
                                          (float)TheDisplayMgr->GetDisplayHeight() / 2.0f);
     CursorGUI::self->Invalidate();
 
-    new SoundPlayer();
+    SoundPlayer::Create();
 
     float timeConstructor = (float) (TheTimeMgr->GetMicrosecondCount() - timeEnter) * 1e-6f;
 
@@ -95,6 +93,8 @@ Battler::Battler() : Singleton<Battler>(self)
     }
 
     LOG_WRITE("Game constructor %f seconds", timeConstructor);
+
+    periodicTasks.Append(TaskProfilerLastFrame::Self(), 1000);
 }
 
 
@@ -110,14 +110,23 @@ Battler::~Battler()
     GameObject::Destruct();
     PoolGeometry::Destruct();
     PoolTextures::Destruct();
+    periodicTasks.Purge();
     Log::Destruct();
 }
 
 
 void Battler::ApplicationTask()
 {
-    periodicTasks.Run();
-    GameWorld::self->periodicTasks.Run();
+    uint time = TheTimeMgr->GetMillisecondCount();
+    static uint timeNext = time;
+
+    if(time >= timeNext)
+    {
+        timeNext += 100;
+
+        periodicTasks.Run();
+        GameWorld::self->periodicTasks.Run();
+    }
 }
 
 

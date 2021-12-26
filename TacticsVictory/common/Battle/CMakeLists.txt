@@ -17,6 +17,8 @@ if(MSVC)
     )
 
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:1000000000")
+
+    add_definitions(/wd4266)    # 'function' : no override available for virtual member function from base 'type'; function is hidden
 endif()
 
 
