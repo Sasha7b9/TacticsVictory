@@ -8,6 +8,36 @@
 using namespace Pi;
 
 
+void TaskConnecting::Step()
+{
+    TheMessageMgr->DisconnectAll();
+
+    TheNetworkMgr->SetProtocol(kGameProtocol);
+    TheNetworkMgr->SetPortNumber(0);
+    TheNetworkMgr->SetBroadcastPortNumber(PORT_NUMBER);
+    PiResultNetwork::B result = TheMessageMgr->BeginMultiplayerGame(false);
+
+    if (result != PiResultNetwork::Okay)
+    {
+        LOG_ERROR_TRACE("Can not begin mulitplayer game");
+    }
+
+    NetworkAddress address = MessageMgr::StringToAddress(REMOTE_ADDRESS);
+    address.SetPort(PORT_NUMBER);
+
+    if (TheMessageMgr->Connect(address) != PiResultNetwork::Okay)
+    {
+        LOG_ERROR_TRACE("Can not connect to %s:%d", REMOTE_ADDRESS, PORT_NUMBER);
+    }
+    else
+    {
+        LOG_WRITE("Attempt connection to %s:%d ...", REMOTE_ADDRESS, PORT_NUMBER);
+    }
+
+    complete = true;
+}
+
+
 void TaskPing::Step()
 {
     TheMessageMgr->SendMessage(PlayerType::Server, MessagePing());
@@ -32,23 +62,9 @@ void TaskTraffic::Step()
 }
 
 
-TaskProfiler *TaskProfiler::Self()
-{
-    static TaskProfiler task;
-    return &task;
-}
-
-
 void TaskProfiler::Step()
 {
     PROFILER_LOG_FULL();
-}
-
-
-TaskProfilerLastFrame *TaskProfilerLastFrame::Self()
-{
-    static TaskProfilerLastFrame task;
-    return &task;
 }
 
 

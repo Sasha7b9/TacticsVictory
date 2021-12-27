@@ -30,6 +30,11 @@ bool MessageCreateGameObject::HandleMessage(Player *sender) const
 {
     for(int i = 0; i < num_objects; i++)
     {
+        if (GameObject::objects.Find(id[i]))    // Из-за потери пакетов некоторые объекты могут присылаться повторно
+        {
+            continue;                           // Страхуемся от этого
+        }
+
         if (type[i][0] == (int)TypeGameObject::Unit)
         {
             if (type[i][1] == (int)TypeUnit::Air)

@@ -20,10 +20,8 @@ void Battler::HandleConnectionEvent(ConnectionEvent event, const NetworkAddress 
 
     case ConnectionEvent::AttemptFailed:
         {
-            LOG_ERROR_TRACE("ConnectionEvent::AttemptFailed");
-            NetworkAddress localAddress = MessageMgr::StringToAddress(REMOTE_ADDRESS);
-            localAddress.SetPort(PORT_NUMBER);
-            TheMessageMgr->Connect(localAddress);
+            LOG_WRITE("Attempt connection failed");
+            ListPeriodicTask::Self()->Append(TaskConnecting::Self(), 1000);
         }
         break;
 

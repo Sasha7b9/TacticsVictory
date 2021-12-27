@@ -7,14 +7,17 @@ namespace Pi
 {
     class PanelMain : public PanelGUI, public Singleton<PanelMain>
     {
-    public:
+        friend class PanelBottom;
+        friend class GUI;
+
+    private:
+
         PanelMain();
-        ~PanelMain();
+
+        virtual ~PanelMain();
 
         static PanelMain *self;
 
-        void HandleHideShow(Widget *widget, const WidgetEventData *eventData);
-
-    private:
+        void HandleHideShow(Widget *, const WidgetEventData *);
     };
 }

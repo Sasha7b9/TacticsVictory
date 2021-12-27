@@ -43,7 +43,7 @@ void UnitController::Preprocess()
     
     commander = Commander::New(this);
 
-    driver = Driver::New(this);
+    driver = Driver::Create(this);
 
     shooter = Shooter::New(this);
 

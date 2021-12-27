@@ -17,7 +17,7 @@ namespace Pi
     {
     public:
         Battler();
-        ~Battler();
+        virtual ~Battler();
 
         static Battler *self;
 
@@ -33,11 +33,6 @@ namespace Pi
     private:
 
         static World *ConstructWorld(pchar name, void *cookie);
-
-        // Отложенные задачи
-        ListPeriodicTask   periodicTasks;
-        TaskPing           taskPing;
-        TaskTraffic        taskTraffic;
 
         // Commands
         CommandObserver<Battler> gizmoCommandObserver      {this, &Battler::HandleGizmoCommand};

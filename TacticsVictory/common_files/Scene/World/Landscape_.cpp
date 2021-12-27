@@ -1075,7 +1075,7 @@ void LandscapeController::Move()
 
             if (landscape->taskAfter)
             {
-                GameWorld::self->periodicTasks.Append(landscape->taskAfter, 1, 1);
+                ListPeriodicTask::Self()->Append(landscape->taskAfter, 1, 1);
             }
         }
     }

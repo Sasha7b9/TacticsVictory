@@ -6,6 +6,9 @@
 using namespace Pi;
 
 
+uint MessagePing::time_prev = 0;
+
+
 void MessagePing::Compress(Compressor &data) const
 {
     data << timeSend;

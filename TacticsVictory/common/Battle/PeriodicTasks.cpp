@@ -13,18 +13,7 @@ using namespace Pi;
 
 void TaskAfterLoadingLandscape::Step()
 {
-    static const int NUM_OBJECTS = 99;
-
-    for (int i = 0; i < NUM_OBJECTS / 3; i++)
-    {
-        GameWorld::self->AppendObject(Tank::Create());
-
-        GameWorld::self->AppendObject(Airplane::Create());
-
-        GameWorld::self->AppendObject(Submarine::Create());
-    }
-
-//    Airplane::Create()->AppendInGame(20, 20);
+    CreateUnits();
 
     TheNetworkMgr->SetProtocol(kGameProtocol);
     TheNetworkMgr->SetPortNumber(PORT_NUMBER);
@@ -43,22 +32,38 @@ void TaskAfterLoadingLandscape::Step()
 }
 
 
-TaskMain *TaskMain::Self()
+void TaskAfterLoadingLandscape::CreateUnits()
 {
-    static TaskMain task;
-    return &task;
+//    for (int i = 0; i < 10; i++)
+//    {
+//        Airplane::Create()->AppendInGame(10 + i * 5, 30);
+//    }
+
+    static const int NUM_OBJECTS = 100;
+
+    for (int i = 0; i < NUM_OBJECTS; i++)
+    {
+        GameWorld::self->AppendObject(Airplane::Create());
+//        int index = rand() % 3;
+//
+//        if (index == 0)         GameWorld::self->AppendObject(Tank::Create());
+//        else if (index == 1)    GameWorld::self->AppendObject(Airplane::Create());
+//        else                    GameWorld::self->AppendObject(Submarine::Create());
+    }
 }
 
 
 void TaskMain::Step()
 {
-//    PROFILER_ENTER_FUNC();
-
     for (GameObject *object : GameObject::objects)
     {
-        object->controller->Move(40.0f);
+        object->controller->Move(0.040f);
     }
+}
 
+
+void TaskSendStateInNetwork::Step()
+{
     if (TheMessageMgr->GetPlayerCount() > 1)
     {
         MessageGameObjectState message;
@@ -79,22 +84,11 @@ void TaskMain::Step()
             TheMessageMgr->SendMessageClients(message);
         }
     }
-
-//    PROFILER_LEAVE();
-}
-
-
-TaskRotator *TaskRotator::Self()
-{
-    static TaskRotator task;
-    return &task;
 }
 
 
 void TaskRotator::Step()
 {
-//    PROFILER_ENTER_FUNC();
-
     for (Tank *tank : Tank::objects)
     {
         Vector3D &direction = tank->GetUnitController()->param.direction;
@@ -114,28 +108,12 @@ void TaskRotator::Step()
 
         airplane->SetDirection(direction, up);
     }
-
-//    PROFILER_LEAVE();
-}
-
-
-TaskProfilerFull *TaskProfilerFull::Self()
-{
-    static TaskProfilerFull task;
-    return &task;
 }
 
 
 void TaskProfilerFull::Step()
 {
     PROFILER_LOG_FULL();
-}
-
-
-TaskProfilerLastFrame *TaskProfilerLastFrame::Self()
-{
-    static TaskProfilerLastFrame task;
-    return &task;
 }
 
 

@@ -36,7 +36,7 @@ Driver::~Driver()
 }
 
 
-Driver *Driver::New(UnitController *controller)
+Driver *Driver::Create(UnitController *controller)
 {
     if (controller->BelongAir())
     {
@@ -79,6 +79,70 @@ void Driver::Update(float dT)
             tasks.RemoveElement(0);
         }
     }
+}
+
+
+void Driver::MoveForward(float dT)
+{
+    UnitParameters &param = controller->param;
+
+    Point3D position = unit->GetNodePosition() + param.direction * param.speed;
+
+    unit->SetNodePosition(position);
+
+    unit->Invalidate();
+}
+
+
+void Driver::Yaw(float dT)
+{
+    UnitParameters &param = controller->param;
+
+    param.direction.RotateAboutAxis(param.speedRotate.z * dT, param.up);
+}
+
+
+void Driver::YawCompensate(float dT)
+{
+    UnitParameters &param = controller->param;
+
+    param.direction.RotateAboutAxis(param.speedRotate.z * dT, param.upPitch);
+}
+
+
+void Driver::Roll(float dT)
+{
+    UnitParameters &param = controller->param;
+
+    param.up.RotateAboutAxis(-param.speedRotate.y * dT, param.direction);
+}
+
+
+void Driver::Pitch(float dT)
+{
+    UnitParameters &param = controller->param;
+
+    Vector3D axis = Cross(param.direction, param.up).Normalize();
+
+    float angle = controller->param.speedRotate.x * dT;
+
+    param.direction.RotateAboutAxis(angle, axis);
+    param.up.RotateAboutAxis(angle, axis);
+    param.upPitch.RotateAboutAxis(angle, axis);
+}
+
+
+void Driver::PitchCompensate(float dT)
+{
+    UnitParameters &param = controller->param;
+
+    Vector3D axis = Cross(param.direction, param.upPitch).Normalize();
+
+    float angle = controller->param.speedRotate.x * dT;
+
+    param.direction.RotateAboutAxis(angle, axis);
+    param.up.RotateAboutAxis(angle, axis);
+    param.upPitch.RotateAboutAxis(angle, axis);
 }
 
 

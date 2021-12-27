@@ -26,14 +26,15 @@ namespace Pi
         void DrawLine(int x1, int y1, int x2, int y2);
         void FillRegion(int x, int y, int width, int height);
         void DrawRectangle(int x1, int y1, int width, int height);
+        void SetColorBrush(const ColorRGBA &color);
+        uint *Pixel(int x, int y);
 
         Texture *GetTexture() const { return texture; };
     private:
         void SetColorBackground(const ColorRGBA &color);
-        void SetColorBrush(const ColorRGBA &color);
+
         void Clear();
 
-        uint *Pixel(int x, int y);
         TextureHeader *header;
         uint *data;
         Texture *texture;

@@ -41,8 +41,6 @@ namespace Pi
 
         static GameObject *empty;
 
-        int GetID() const { return id; }
-
         void SetDirection(const Vector3D &direction, const Vector3D &up = Vector3D::UP);
 
         Node *GetNodeGeometry() { return nodeGeometry; }
@@ -58,6 +56,8 @@ namespace Pi
 
         GameObjectController * const controller = nullptr;
 
+        const int id = 0;
+
     protected:
 
         GameObject(TypeGameObject, int, GameObjectController *);
@@ -69,7 +69,6 @@ namespace Pi
         Node *nodeGeometry = nullptr;           // На этом узле хранится геометрия
 
         static int createdObjects;              // Столько объектов уже создано
-        int id = 0;
     };
 
 

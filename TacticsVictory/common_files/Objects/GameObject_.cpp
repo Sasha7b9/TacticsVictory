@@ -42,18 +42,10 @@ void GameObject::Destruct()
 GameObject::GameObject(TypeGameObject type, int _id, GameObjectController *_controller) :
     Node(),
     typeGameObject(type),
-    controller(_controller)
+    controller(_controller),
+    id(_id == -1 ? ++createdObjects : _id)
 {
     SetController(controller);
-
-    if(_id == -1)
-    {
-        id = ++createdObjects;
-    }
-    else
-    {
-        id = _id;
-    }
 
     AddProperty(new GameObjectProperty(*this));
 

@@ -26,8 +26,6 @@ namespace Pi
         // Преобразует мировые координаты точки в экранные
         Point3D TransformWorldCoordToDisplay(const Point3D &worldPosition);
 
-        ListPeriodicTask periodicTasks;
-
     private:
 
         void CreateObjects();

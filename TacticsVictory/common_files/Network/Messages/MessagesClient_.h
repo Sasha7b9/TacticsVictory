@@ -14,6 +14,8 @@ namespace Pi
         virtual void Compress(Compressor &) const override;
         virtual bool Decompress(Decompressor &) override;
         virtual bool HandleMessage(Player *) const override;
+        static uint time_prev;      // Время предыдущего приёма сообщения пинга. Если оно равно нулю
+                                    // либо прошло более 10 секунд после предыщего приёма, сервер потерян
     };
 
 

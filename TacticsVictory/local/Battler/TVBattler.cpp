@@ -64,37 +64,11 @@ Battler::Battler() : Singleton<Battler>(self)
 
     CreateCommands();
 
-    TheMessageMgr->EndGame();
-
-    TheNetworkMgr->NetworkTask();
-
-    TheNetworkMgr->SetProtocol(kGameProtocol);
-    TheNetworkMgr->SetPortNumber(0);
-    TheNetworkMgr->SetBroadcastPortNumber(PORT_NUMBER);
-    PiResultNetwork::B result = TheMessageMgr->BeginMultiplayerGame(false);
-
-    if (result != PiResultNetwork::Okay)
-    {
-        LOG_ERROR_TRACE("Can not begin mulitplayer game");
-    }
-
-    NetworkAddress address = MessageMgr::StringToAddress(REMOTE_ADDRESS);
-    address.SetPort(PORT_NUMBER);
-
-    result = TheMessageMgr->Connect(address);
-
-    if (result != PiResultNetwork::Okay)
-    {
-        LOG_ERROR_TRACE("Can not connect to %s:%d", REMOTE_ADDRESS, PORT_NUMBER);
-    }
-    else
-    {
-        LOG_WRITE("Attempt connection to %s:%d ...", REMOTE_ADDRESS, PORT_NUMBER);
-    }
+    ListPeriodicTask::Self()->Append(TaskConnecting::Self(), 1000);
+    ListPeriodicTask::Self()->Append(TaskProfilerLastFrame::Self(), 1000);
+    ListPeriodicTask::Self()->Append(TaskPing::Self(), 1000);
 
     LOG_WRITE("Game constructor %f seconds", timeConstructor);
-
-    periodicTasks.Append(TaskProfilerLastFrame::Self(), 1000);
 }
 
 
@@ -110,7 +84,7 @@ Battler::~Battler()
     GameObject::Destruct();
     PoolGeometry::Destruct();
     PoolTextures::Destruct();
-    periodicTasks.Purge();
+    ListPeriodicTask::Self()->Purge();
     Log::Destruct();
 }
 
@@ -124,8 +98,7 @@ void Battler::ApplicationTask()
     {
         timeNext += 100;
 
-        periodicTasks.Run();
-        GameWorld::self->periodicTasks.Run();
+        ListPeriodicTask::Self()->Run();
     }
 }
 

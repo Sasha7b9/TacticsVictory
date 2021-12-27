@@ -41,14 +41,40 @@ Airplane::Airplane(int id) : AirUnitObject(TypeAirUnit::Airplane, id, new Airpla
 }
 
 
+DriverAirplane::DriverAirplane(UnitController *controller) :
+    Driver(controller)
+{
+/*
+#ifdef PiSERVER
+    controller->param.speed = Math::RandomFloat(0.01f, 1.0f);
+    controller->param.direction.RotateAboutZ((float)rand() / 1e3f);
+#endif
+*/
+}
+
+
 void DriverAirplane::Update(float dT)
 {
     UnitParameters &param = controller->param;
 
-    param.speed = M::LimitationAbove(param.speed += param.max.accelerateSpeed * dT, param.max.speed.y);
+    if(param.speed == 0.0f)
+    {
+        param.direction.RotateAboutZ(K::pi / 2.0f / 1000.0f * (float)rand());
 
-    Point3D position = unit->GetNodePosition() + param.direction * param.speed;
+        param.speed = Math::RandomFloat(0.25f, 1.0f);
+        param.speedRotate.x = Math::RandomFloat(0.5f, 1.5f);
+        param.speedRotate.y = Math::RandomFloat(0.5f, 1.5f);
+        param.speedRotate.z = Math::RandomFloat(0.5f, 1.5f);
+    }
 
-    unit->SetNodePosition(position);
+    MoveForward(dT);
+
+    YawCompensate(dT);
+
+    Roll(dT);
+
+    PitchCompensate(dT);
+
+    unit->SetDirection(param.direction, param.up);
     unit->Invalidate();
 }

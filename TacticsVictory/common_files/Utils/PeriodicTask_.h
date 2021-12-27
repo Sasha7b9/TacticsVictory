@@ -27,6 +27,11 @@ namespace Pi
     class ListPeriodicTask
     {
     public:
+        static ListPeriodicTask *Self()
+        {
+            static ListPeriodicTask tasks;
+            return &tasks;
+        }
         void Append(PeriodicTask *task, uint period, int times = -1);
         void Remove(PeriodicTask *task);
         bool Consist(PeriodicTask *task);

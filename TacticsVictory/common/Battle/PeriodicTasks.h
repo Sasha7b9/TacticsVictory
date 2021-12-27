@@ -10,6 +10,8 @@ namespace Pi
     {
     protected:
         virtual void Step() override;
+    private:
+        virtual void CreateUnits();
     };
 
 
@@ -17,7 +19,15 @@ namespace Pi
     class TaskMain : public PeriodicTask
     {
     public:
-        static TaskMain *Self();
+        static TaskMain *Self() { static TaskMain task; return &task; }
+        virtual void Step() override;
+    };
+
+
+    class TaskSendStateInNetwork : public PeriodicTask
+    {
+    public:
+        static TaskSendStateInNetwork *Self() { static TaskSendStateInNetwork task; return &task; }
         virtual void Step() override;
     };
 
@@ -26,7 +36,7 @@ namespace Pi
     class TaskRotator : public PeriodicTask
     {
     public:
-        static TaskRotator *Self();
+        static TaskRotator *Self() { static TaskRotator task; return &task; }
         virtual void Step() override;
     };
 
@@ -34,7 +44,7 @@ namespace Pi
     class TaskProfilerFull : public PeriodicTask
     {
     public:
-        static TaskProfilerFull *Self();
+        static TaskProfilerFull *Self() { static TaskProfilerFull task; return &task; }
     protected:
         virtual void Step() override;
     };
@@ -43,7 +53,7 @@ namespace Pi
     class TaskProfilerLastFrame : public PeriodicTask
     {
     public:
-        static TaskProfilerLastFrame *Self();
+        static TaskProfilerLastFrame *Self() { static TaskProfilerLastFrame task; return &task; }
         virtual void Step() override;
     };
 }

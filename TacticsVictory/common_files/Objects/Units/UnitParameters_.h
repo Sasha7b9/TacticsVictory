@@ -19,5 +19,8 @@ namespace Pi
         float speed           = 0.0f;
         Vector3D direction    = Vector3D::FORWARD;
         Vector3D up           = Vector3D::UP;
+        Vector3D upPitch      = up;                 // Этот вектор нужен для расчёта сбалансированного тангажа.
+                                                    // Он не поворачивается при крене
+        Vector3D speedRotate  = Vector3D::ZERO;     // y - крен (вдоль оси y), z - рыскание
     };
 }

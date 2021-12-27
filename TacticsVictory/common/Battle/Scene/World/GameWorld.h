@@ -19,8 +19,6 @@ namespace Pi
 
         void AppendObject(GameObject *);
 
-        ListPeriodicTask periodicTasks;
-
     private:
         virtual WorldResult::B Preprocess() override;
 

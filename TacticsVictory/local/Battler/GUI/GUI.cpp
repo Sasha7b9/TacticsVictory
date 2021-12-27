@@ -39,6 +39,9 @@ GUI::GUI() :
 
     new CursorGUI();
     TheInterfaceMgr->AddWidget(CursorGUI::self);
+
+    PanelMain::self->Hide();
+    PanelMap::self->Hide();
 }
 
 

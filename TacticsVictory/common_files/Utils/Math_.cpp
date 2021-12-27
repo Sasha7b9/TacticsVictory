@@ -27,6 +27,18 @@ uint M::ColorToUINT(const ColorRGBA &color) {
     return red | (green << 8) | (blue << 16) | (alpha << 24);
 }
 
+
+ColorRGBA M::UINTtoColor(uint color)
+{
+    float red = (float)(color & 0xff) / 255.0f;
+    float green = (float)((color >> 8) & 0xff) / 255.0f;
+    float blue = (float)((color >> 16) & 0xff) / 255.0f;
+    float alpha = (float)((color >> 24) & 0xff) / 255.0f;
+
+    return ColorRGBA(red, green, blue, alpha);
+}
+
+
 ColorRGBA M::SetColorBrightness(const ColorRGBA &color, float brightness) {
     float maxComponent = color.red;
     if(color.green > maxComponent) {

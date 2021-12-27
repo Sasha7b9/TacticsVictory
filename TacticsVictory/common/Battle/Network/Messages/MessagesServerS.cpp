@@ -57,7 +57,7 @@ void MessageCreateGameObject::AppendObject(GameObject *object)
         return;
     }
 
-    id[num_objects] = object->GetID();
+    id[num_objects] = object->id;
     transform[num_objects] = object->GetNodeTransform();
     type[num_objects][0] = (int)object->typeGameObject;
 
@@ -88,7 +88,7 @@ void MessageCreateGameObject::FillUnit(UnitObject *unit)
 
 void MessageGameObjectState::AddObject(GameObject *object)
 {
-    id[num_objects] = object->GetID();
+    id[num_objects] = object->id;
 
     position[num_objects] = object->GetNodePosition();
 

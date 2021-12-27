@@ -32,29 +32,34 @@ void Battler::HandleFogDensityCommand(Command *, pchar text)
 
 void Battler::HandlePingCommand(Command *, pchar)
 {
-    if (periodicTasks.Consist(&taskPing))
+    TaskPing &task = *TaskPing::Self();
+
+    task.ToggleLogging();
+
+    if (task.EnabledLogging())
     {
-        periodicTasks.Remove(&taskPing);
-        LOG_WRITE("ping off");
+        LOG_WRITE("ping on");
     }
     else
     {
-        periodicTasks.Append(&taskPing, 1000);
-        LOG_WRITE("ping on");
+        LOG_WRITE("ping off");
     }
 }
 
 
 void Battler::HandleTrafficCommand(Command *, pchar)
 {
-    if (periodicTasks.Consist(&taskTraffic))
+    ListPeriodicTask &tasks = *ListPeriodicTask::Self();
+    TaskTraffic *task = TaskTraffic::Self();
+
+    if (tasks.Consist(task))
     {
-        periodicTasks.Remove(&taskTraffic);
+        tasks.Remove(task);
         LOG_WRITE("traffic off");
     }
     else
     {
-        periodicTasks.Append(&taskTraffic, 1000);
+        tasks.Append(task, 1000);
         LOG_WRITE("traffic on");
     }
 }

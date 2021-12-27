@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Utils/PeriodicTask_.h"
 
@@ -19,18 +19,22 @@ namespace Pi
 
         static Battle *self;
 
-        // ���������� ���� � �������� � ������� ���� (Data/TacticsVictory)
+        // Возвращает путь к каталогу с данными игры (Data/TacticsVictory)
         std::string DataPath() const;
 
         ListPeriodicTask periodicTasks;
 
     private:
 
-        LocatorRegistration    locatorReg{PiTypeLocator::Spectator, "Spectator Camera"};
-
         static World *ConstructWorld(pchar name, void *cookie);
 
         virtual void ApplicationTask() override;
+
+        // Эти задачи выполняются с периодичностью 40 мс
+        void RunTasksAcross40ms();
+
+        // Эти задачи выполняются с периодичностью 1000 мс
+        void RunTasksAcross1000ms();
 
         // Network
         virtual void HandleConnectionEvent(ConnectionEvent, const NetworkAddress &, const void *) override;

@@ -30,7 +30,7 @@ namespace Pi
     {
         friend class Driver;
     private:
-        DriverAirplane(UnitController *controller) : Driver(controller) { }
+        DriverAirplane(UnitController *);
         virtual ~DriverAirplane() {}
         virtual void Update(float dT) override;
     };

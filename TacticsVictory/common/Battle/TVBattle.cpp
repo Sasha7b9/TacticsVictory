@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "TVBattle.h"
 #include "Scene/World/GameWorld.h"
@@ -38,25 +38,39 @@ void Battle::ApplicationTask()
 {
     uint time = TheTimeMgr->GetMillisecondCount();
 
-    static uint timeNext = time;
+    static uint timeNext40ms = time;
 
-    if (time >= timeNext)
+    if (time >= timeNext40ms)
     {
-        timeNext += 40;
+        timeNext40ms += 40;
 
-        TaskRotator::Self()->Step();
-        TaskMain::Self()->Step();
+        RunTasksAcross40ms();
 
-        static uint timeNextLog = time;
+        static uint timeNext1000ms = time;
 
-        if (time >= timeNextLog)
+        if (time >= timeNext1000ms)
         {
-            timeNextLog += 1000;
-            TaskProfilerLastFrame::Self()->Step();
+            timeNext1000ms += 1000;
+
+            RunTasksAcross1000ms();
         }
     }
+}
 
-    GameWorld::self->periodicTasks.Run();
+
+void Battle::RunTasksAcross40ms()
+{
+    TaskMain::Self()->Step();
+
+    TaskSendStateInNetwork::Self()->Step();
+
+    ListPeriodicTask::Self()->Run();
+}
+
+
+void Battle::RunTasksAcross1000ms()
+{
+    TaskProfilerLastFrame::Self()->Step();
 }
 
 

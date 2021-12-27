@@ -9,6 +9,7 @@ namespace Pi
         uint         RandomLargeUINT(uint range);
         ColorRGBA    RandomColor(bool alpha = false);
         uint         ColorToUINT(const ColorRGBA &color);
+        ColorRGBA    UINTtoColor(uint);
         ColorRGBA    SetColorBrightness(const ColorRGBA &color, float bightness);       // brightness = 0.0f ... 1.0F;
         bool         PointInRect(const Point2D *point, float xRect, float yRect, float widthRect, float heightRect);
         Point2D      InvertPoint2D(Point2D &point);
