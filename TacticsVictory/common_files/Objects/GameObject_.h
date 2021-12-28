@@ -58,6 +58,8 @@ namespace Pi
 
         const int id = 0;
 
+        const int numberThread = 0;            // Номер потока, который будет обрабатывать этот объект
+
     protected:
 
         GameObject(TypeGameObject, int, GameObjectController *);

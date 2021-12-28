@@ -26,6 +26,7 @@ add_definitions(-DPiCLIENT)
 file(GLOB SRC                                               *.h *.*c*
                                          ../../common_files/*.*)
 file(GLOB GRAPHICS                                          Graphics/*.*)
+file(GLOB GRAPHICS_EFFECST                                  Graphics/Effects/*.*)
 file(GLOB GRAPHICS_GEOMETRY                                 Graphics/Geometry/*.*)
 file(GLOB GRAPHICS_MESHES                                   Graphics/Meshes/*.*)
 file(GLOB GRAPHICS_TEXTURES                                 Graphics/Textures/*.*)
@@ -63,6 +64,7 @@ file(GLOB UTILS                          ../../common_files/Utils/*.*)
 
 source_group(src                               FILES ${SRC})
 source_group(Graphics                          FILES ${GRAPHICS})
+source_group(Graphics\\Effects                 FILES ${GRAPHICS_EFFECST})
 source_group(Graphics\\Geometry                FILES ${GRAPHICS_GEOMETRY})
 source_group(Graphics\\Meshes                  FILES ${GRAPHICS_MESHES})
 source_group(Graphics\\Textures                FILES ${GRAPHICS_TEXTURES})
@@ -97,7 +99,9 @@ set_source_files_properties(${OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER} PROPER
 
 #set_source_files_properties(Utils/Array2D.cpp PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 
-add_executable(${PROJECT_NAME} ${SRC} ${GRAPHICS} ${GRAPHICS_GEOMETRY} ${GRAPHICS_MESHES}
+add_executable(${PROJECT_NAME} ${SRC} ${GRAPHICS}
+                               ${GRAPHICS_EFFECST}
+                               ${GRAPHICS_GEOMETRY} ${GRAPHICS_MESHES}
                                ${GRAPHICS_TEXTURES} ${GUI} ${GUI_MUTATORS} ${GUI_PANELS} ${GUI_WIDGETS}
                                ${INPUT}
                                ${NETWORK}
@@ -126,7 +130,7 @@ copy_to_dir_exe($(OutputPath)${PROJECT_NAME} ${_INSTALL_DIR_})
 
 set_work_directory()
 
-message("CMAKE_BINARY_DIR:         ${CMAKE_BINARY_DIR}")
+#message("CMAKE_BINARY_DIR:         ${CMAKE_BINARY_DIR}")
 #message("CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
 #message("CMAKE_SOURCE_DIR:         ${CMAKE_SOURCE_DIR}")
 #message("CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")

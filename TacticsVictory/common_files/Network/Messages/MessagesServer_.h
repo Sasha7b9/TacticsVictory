@@ -63,7 +63,7 @@ namespace Pi
     class MessageGameObjectState : public Message
     {
     public:
-        MessageGameObjectState() :
+        MessageGameObjectState() : //-V730
             Message(PiTypeMessage::SendGameObjectState, PiFlagMessage::Unordered | PiFlagMessage::Unreliable) {}
 
         void AddObject(GameObject *);

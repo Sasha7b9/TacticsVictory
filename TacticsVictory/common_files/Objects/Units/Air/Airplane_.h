@@ -5,11 +5,15 @@
 
 namespace Pi
 {
+    class SmokeTrailParticleSystem;
+
+
     class Airplane : public AirUnitObject, public MapElement<Airplane>
     {
     public:
         static Airplane *Create(int id = -1);
         static Map<Airplane> objects;
+        static SmokeTrailParticleSystem *smokeTrail;
     private:
         Airplane(int id = -1);
         virtual ~Airplane() {}
@@ -23,15 +27,5 @@ namespace Pi
         AirplaneController(Airplane *airplane) : AirUnitController(airplane, parameters) { }
         virtual ~AirplaneController() {};
         const static UnitParameters parameters;
-    };
-
-
-    class DriverAirplane : public Driver
-    {
-        friend class Driver;
-    private:
-        DriverAirplane(UnitController *);
-        virtual ~DriverAirplane() {}
-        virtual void Update(float dT) override;
     };
 }

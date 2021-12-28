@@ -34,6 +34,9 @@ namespace Pi
 
         static World *ConstructWorld(pchar name, void *cookie);
 
+//        Creator<ParticleSystem>     particleSystemCreator {&CreateParticleSystem};
+//        static ParticleSystem *CreateParticleSystem()
+
         // Commands
         CommandObserver<Battler> gizmoCommandObserver      {this, &Battler::HandleGizmoCommand};
         CommandObserver<Battler> fogDensityCommandObserver {this, &Battler::HandleFogDensityCommand};

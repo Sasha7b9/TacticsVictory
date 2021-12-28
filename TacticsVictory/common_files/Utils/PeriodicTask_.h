@@ -20,7 +20,7 @@ namespace Pi
         uint period = 1000;
         int times = -1;             // Сколько раз выполнить. Если -1 - бесконечно
 
-        virtual void Step() = 0;
+        virtual void RunOnce() = 0;
     };
 
 

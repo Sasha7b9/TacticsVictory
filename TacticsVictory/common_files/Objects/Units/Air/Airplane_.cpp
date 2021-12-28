@@ -4,11 +4,19 @@
 #include "Objects/Units/UnitParameters_.h"
 #include "Utils/Math_.h"
 
+#ifdef PiCLIENT
+    #include "Scene/World/GameWorld.h"
+    #include "Graphics/Effects/SmokeTrail.h"
+#endif
+
 
 using namespace Pi;
 
 
 Map<Airplane> Airplane::objects;
+
+
+SmokeTrailParticleSystem *Airplane::smokeTrail = nullptr;
 
 
 Airplane *Airplane::Create(int id)
@@ -38,43 +46,14 @@ Airplane::Airplane(int id) : AirUnitObject(TypeAirUnit::Airplane, id, new Airpla
     GetNodeGeometry()->AppendNewSubnode(bodyNode);
 
     objects.Insert(this);
-}
 
+#ifdef PiCLIENT
 
-DriverAirplane::DriverAirplane(UnitController *controller) :
-    Driver(controller)
-{
-/*
-#ifdef PiSERVER
-    controller->param.speed = Math::RandomFloat(0.01f, 1.0f);
-    controller->param.direction.RotateAboutZ((float)rand() / 1e3f);
-#endif
-*/
-}
-
-
-void DriverAirplane::Update(float dT)
-{
-    UnitParameters &param = controller->param;
-
-    if(param.speed == 0.0f)
+    if (smokeTrail == nullptr)
     {
-        param.direction.RotateAboutZ(K::pi / 2.0f / 1000.0f * (float)rand());
-
-        param.speed = Math::RandomFloat(0.25f, 1.0f);
-        param.speedRotate.x = Math::RandomFloat(0.5f, 1.5f);
-        param.speedRotate.y = Math::RandomFloat(0.5f, 1.5f);
-        param.speedRotate.z = Math::RandomFloat(0.5f, 1.5f);
+        smokeTrail = new SmokeTrailParticleSystem({0.5f, 0.5f, 1.0f, 1.0f});
+        GameWorld::self->AddNewNode(smokeTrail);
     }
 
-    MoveForward(dT);
-
-    YawCompensate(dT);
-
-    Roll(dT);
-
-    PitchCompensate(dT);
-
-    unit->SetDirection(param.direction, param.up);
-    unit->Invalidate();
+#endif
 }

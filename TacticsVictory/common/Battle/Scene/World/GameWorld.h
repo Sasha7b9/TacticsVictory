@@ -21,7 +21,5 @@ namespace Pi
 
     private:
         virtual WorldResult::B Preprocess() override;
-
-        int numTick = 0;                // Порядковый номер расчитывемого тика
     };
 }

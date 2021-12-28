@@ -44,22 +44,22 @@ Texture *PoolTextures::Get(CanvasTexture::Type type)
 
 CanvasTexture *PoolTextures::CreateLandscape()
 {
-    CanvasTexture *canvas = new CanvasTexture(32, 32);
+    CanvasTexture canvas(32, 32);
 
-    canvas->BeginPaint({{0.0f, 0.3f, 0.0f}, 1.0f}, {0.0f, 0.0f, 0.3f});
+    canvas.BeginPaint({{0.0f, 0.3f, 0.0f}, 1.0f}, {0.0f, 0.0f, 0.3f});
     for (int i = 0; i < 32; i++)
     {
         for (int j = 0; j < 32; j++)
         {
-            canvas->SetColorBrush({{Math::RandomFloat(0.0f, 0.15f),
+            canvas.SetColorBrush({{Math::RandomFloat(0.0f, 0.15f),
                                     Math::RandomFloat(0.3f, 0.45f),
                                     Math::RandomFloat(0.0f, 0.15f)},  1.0f});
-            canvas->SetPixel(i, j);
+            canvas.SetPixel(i, j);
         }
     }
-    canvas->SetColorBrush({0.0f, 0.3f, 0.1f});
-    canvas->DrawRectangle(2, 2, 28, 28);
-    canvas->EndPaint();
+    canvas.SetColorBrush({0.0f, 0.3f, 0.1f});
+    canvas.DrawRectangle(2, 2, 28, 28);
+    canvas.EndPaint();
 
     CanvasTexture *result = new CanvasTexture(32, 32);
 
@@ -72,13 +72,13 @@ CanvasTexture *PoolTextures::CreateLandscape()
             int ix[4] = {0, 1, 0, -1};
             int iy[4] = {-1, 0, 1, 0};
 
-            ColorRGBA full = M::UINTtoColor(*canvas->Pixel(i, j));
+            ColorRGBA full = M::UINTtoColor(*canvas.Pixel(i, j));
 
             if(i != 0 && i != 31 && j != 0 && j != 31)
             {
                 for (int ii = 0; ii < 4; ii++)
                 {
-                    uint colorPixel = *canvas->Pixel(i + ix[ii], j + iy[ii]);
+                    uint colorPixel = *canvas.Pixel(i + ix[ii], j + iy[ii]);
                     ColorRGBA color = M::UINTtoColor(colorPixel);
                     full += color;
                 }
@@ -92,8 +92,6 @@ CanvasTexture *PoolTextures::CreateLandscape()
     }
 
     result->EndPaint();
-
-    delete canvas;
 
     return result;
 }

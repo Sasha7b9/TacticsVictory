@@ -11,6 +11,10 @@
 #include "Objects/Units/Unit_.h"
 #include "Network/Messages/MessagesClient_.h"
 
+#ifdef PiCLIENT
+    #include "Graphics/Effects/SmokeTrail.h"
+#endif
+
 
 using namespace Pi;
 
@@ -112,6 +116,9 @@ bool MessageGameObjectState::HandleMessage(Player *) const
             object->SetNodePosition(position[i]);
             object->SetDirection(param.direction, param.up);
             object->Invalidate();
+
+            Airplane::smokeTrail->CreateSmoke(object->GetNodePosition(), 10000000, 0.1f);
+
         }
         else
         {

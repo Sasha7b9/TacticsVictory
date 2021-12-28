@@ -6,7 +6,7 @@ namespace Pi
 {
     namespace GameState
     {
-        extern bool landscapeCreated;           // Когда создан ландшафт, устанавливается в true
-        extern bool sendingRequestForObject;    // Послан запрос на получение объектов
+        extern volatile bool landscapeCreated;           // Когда создан ландшафт, устанавливается в true
+        extern volatile bool sendingRequestForObject;    // Послан запрос на получение объектов
     }
 }

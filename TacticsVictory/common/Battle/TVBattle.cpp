@@ -60,9 +60,9 @@ void Battle::ApplicationTask()
 
 void Battle::RunTasksAcross40ms()
 {
-    TaskMain::Self()->Step();
+    TaskMain::Self()->RunOnce();
 
-    TaskSendStateInNetwork::Self()->Step();
+    TaskSendStateInNetwork::Self()->RunOnce();
 
     ListPeriodicTask::Self()->Run();
 }
@@ -70,7 +70,7 @@ void Battle::RunTasksAcross40ms()
 
 void Battle::RunTasksAcross1000ms()
 {
-    TaskProfilerLastFrame::Self()->Step();
+    TaskProfilerLastFrame::Self()->RunOnce();
 }
 
 

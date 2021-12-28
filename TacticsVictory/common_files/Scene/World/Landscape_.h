@@ -112,7 +112,6 @@ namespace Pi
     public:
 
         LandscapeController();
-        ~LandscapeController();
 
         virtual void Preprocess() override;
         virtual void Move() override;

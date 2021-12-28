@@ -46,33 +46,27 @@ namespace Pi
 
         virtual ~UnitController();
 
+        UnitParameters param;
+
+        UnitObject *const object = nullptr;
+
         // Добавить задание в конец очереди (оно выполнится после всех заданий)
         UnitController *AppendTask(const CommanderTask *task);
 
-        // Относится к воздушным юнитам
-        bool BelongAir() const { return object->typeUnit == TypeUnit::Air; }
-
-        // Относится к земельным юнитам
-        bool BelongGround() const { return object->typeUnit == TypeUnit::Ground; };
-
-        // Относится к водным юнитам
-        bool BelongWater() const { return object->typeUnit == TypeUnit::Water; };
-
-        // Возвращает указатель на AirUnitObject, если контроллер управляет таким объектом
-        AirUnitObject *GetAirUnitObject() const { return BelongAir() ? (AirUnitObject *)object : nullptr; };
-
-        // Возвращает указатель на GroundUnitObject, если контроллер управляет таким объектом
-        GroundUnitObject *GetGroundUnitObject() const { return BelongGround() ? (GroundUnitObject *)object : nullptr; };
-
-        // Возвращает указатель на WaterUnitObject, если контроллер управляет таким объектом
-        WaterUnitObject *GetWaterUnitObject() const { return BelongWater() ? (WaterUnitObject *)object : nullptr; };
+        Driver *GetDriver() { return driver; }
 
         // Может ли обрабатывать задания типа type
         bool CanExecute(CommanderTask::Type type) const;
 
-        UnitParameters param;
+        // Функции определяют принадлежность юнита к определённому типу
+        bool BelongAir() const { return object->typeUnit == TypeUnit::Air; }
+        bool BelongGround() const { return object->typeUnit == TypeUnit::Ground; };
+        bool BelongWater() const { return object->typeUnit == TypeUnit::Water; };
 
-        UnitObject * const object = nullptr;
+        // Возвращает указатель на юнит соответствующего типа, если тип соответсвует
+        AirUnitObject *GetAirUnitObject() const { return BelongAir() ? (AirUnitObject *)object : nullptr; };
+        GroundUnitObject *GetGroundUnitObject() const { return BelongGround() ? (GroundUnitObject *)object : nullptr; };
+        WaterUnitObject *GetWaterUnitObject() const { return BelongWater() ? (WaterUnitObject *)object : nullptr; };
 
     protected:
 
@@ -82,7 +76,7 @@ namespace Pi
         virtual void Move(float dT) override;
 
         Commander *commander = nullptr;     // Это командир
-        Driver *driver = nullptr;           // Это водитель
-        Shooter *shooter = nullptr;         // Это стрелок
+        Driver    *driver    = nullptr;     // Это водитель
+        Shooter   *shooter   = nullptr;     // Это стрелок
     };
 }

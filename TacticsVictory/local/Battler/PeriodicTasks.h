@@ -10,7 +10,7 @@ namespace Pi
     public:
         static TaskConnecting *Self() { static TaskConnecting task; return &task; }
     protected:
-        virtual void Step() override;
+        virtual void RunOnce() override;
     };
 
 
@@ -21,7 +21,7 @@ namespace Pi
         void ToggleLogging() { enabledLogging = !enabledLogging; }
         bool EnabledLogging() const { return enabledLogging; }
     protected:
-        virtual void Step() override;
+        virtual void RunOnce() override;
         bool enabledLogging = false;
     };
 
@@ -31,7 +31,7 @@ namespace Pi
     public:
         static TaskTraffic *Self() { static TaskTraffic task; return &task; }
     protected:
-        virtual void Step() override;
+        virtual void RunOnce() override;
     };
 
 
@@ -40,7 +40,7 @@ namespace Pi
     public:
         static TaskProfiler *Self() { static TaskProfiler task; return &task; }
     protected:
-        virtual void Step() override;
+        virtual void RunOnce() override;
     };
 
 
@@ -49,6 +49,18 @@ namespace Pi
     public:
         static TaskProfilerLastFrame *Self() { static TaskProfilerLastFrame task; return &task; }
     protected:
-        virtual void Step() override;
+        virtual void RunOnce() override;
+    };
+
+
+    // Это основная задача - выполняется каждый кадр
+    class TaskMain : public PeriodicTask
+    {
+    public:
+        static TaskMain *Self() { static TaskMain task; return &task; }
+        // Число потоков, используемых для обработки объектов
+        static int NumberThreads();
+        virtual void RunOnce() override;
+        int numFrame = 0;
     };
 }

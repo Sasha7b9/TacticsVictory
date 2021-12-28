@@ -12,26 +12,25 @@ namespace Pi
     // Цельное задание для юнита, которое должно быть разбито на более мелкие конкретные задания StepUnitTask
     struct CommanderTask
     {
+        enum class Type
+        {
+            Move,           // Двигаться в точку
+            Dive,           // Погружение на глубину
+            Rotate,         // Вращение
+            FreeFlight,     // Режим "свободного полёта"
+            Count
+        };
+
         enum class Mode
         {
             Absolute,
             Relative
         };
 
-        enum class Type
-        {
-            Move,       // Двигаться в точку
-            Dive,       // Погружение на глубину
-            Rotate,     // Вращение
-            Count
-        };
-
         Type  type;
         Mode  mode;
 
         Point3D destination;    // Точка целевого назначения - для перемещения координаты, для вращения - угол
-
-    protected:
 
         CommanderTask(Type _type, Mode _mode) : type(_type), mode(_mode) { };
     };

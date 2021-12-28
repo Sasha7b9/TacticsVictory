@@ -3,12 +3,13 @@
 #include "PeriodicTasks.h"
 #include "Network/Messages/MessagesClient_.h"
 #include "Objects/GameObject_.h"
+#include "Utils/Math_.h"
 
 
 using namespace Pi;
 
 
-void TaskConnecting::Step()
+void TaskConnecting::RunOnce()
 {
     TheMessageMgr->DisconnectAll();
 
@@ -38,13 +39,13 @@ void TaskConnecting::Step()
 }
 
 
-void TaskPing::Step()
+void TaskPing::RunOnce()
 {
     TheMessageMgr->SendMessage(PlayerType::Server, MessagePing());
 }
 
 
-void TaskTraffic::Step()
+void TaskTraffic::RunOnce()
 {
     static uint prev_recv = 0;
     static uint prev_send = 0;
@@ -62,13 +63,19 @@ void TaskTraffic::Step()
 }
 
 
-void TaskProfiler::Step()
+void TaskProfiler::RunOnce()
 {
     PROFILER_LOG_FULL();
 }
 
 
-void TaskProfilerLastFrame::Step()
+void TaskProfilerLastFrame::RunOnce()
 {
     PROFILER_LOG_LAST_FRAME();
+}
+
+
+int TaskMain::NumberThreads()
+{
+    return M::LimitationAbove(TheEngine->GetProcessorCount(), 32);
 }

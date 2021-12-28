@@ -169,7 +169,7 @@ void PathFinder::FindPath(Job *job)
         CalculateNextWave(waves);
 
     } while(waves[waves.GetElementCount() - 1].GetElementCount() &&     // В волне есть хотя бы одна клетка
-            !waves[waves.GetElementCount() - 1].Contain(finish));         // И волна не содержит целевую клетку
+            !waves[waves.GetElementCount() - 1].Contain(finish));       // И волна не содержит целевую клетку
 
     if(waves[waves.GetElementCount() - 1].Contain(finish))
     {

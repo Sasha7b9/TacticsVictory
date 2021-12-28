@@ -73,15 +73,15 @@ void MessageCreateGameObject::FillUnit(UnitObject *unit)
 
     if (type[num_objects][1] == (int)TypeUnit::Air)
     {
-        type[num_objects][2] = (int)unit->GetAirUnit()->typeAirUnit;
+        type[num_objects][2] = (int)unit->GetAirUnit()->typeAirUnit; //-V522
     }
     else if (type[num_objects][1] == (int)TypeUnit::Ground)
     {
-        type[num_objects][2] = (int)unit->GetGroundUnit()->typeGroundUnit;
+        type[num_objects][2] = (int)unit->GetGroundUnit()->typeGroundUnit; //-V522
     }
     else if (type[num_objects][1] == (int)TypeUnit::Water)
     {
-        type[num_objects][2] = (int)unit->GetWaterUnit()->typeWaterUnit;
+        type[num_objects][2] = (int)unit->GetWaterUnit()->typeWaterUnit; //-V522
     }
 }
 
@@ -92,7 +92,7 @@ void MessageGameObjectState::AddObject(GameObject *object)
 
     position[num_objects] = object->GetNodePosition();
 
-    UnitParameters &param = object->GetUnitObject()->GetUnitController()->param;
+    UnitParameters &param = object->GetUnitObject()->GetUnitController()->param; //-V522
 
     direction[num_objects] = param.direction;
 

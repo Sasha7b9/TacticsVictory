@@ -21,7 +21,7 @@ void PeriodicTask::Update()
 
     if (time >= nextTime)
     {
-        Step();
+        RunOnce();
 
         nextTime += period;
 

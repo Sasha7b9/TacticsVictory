@@ -14,6 +14,7 @@
 #include "Objects/Units/Water/Submarine_.h"
 #include "Scene/World/Landscape_.h"
 #include "Scene/World/GameWorld.h"
+#include "Objects/Units/Staff/DriverTasks_.h"
 
 
 using namespace Pi;
@@ -29,14 +30,14 @@ Commander *Commander::New(UnitController *controller)
 {
     if (controller->BelongAir())
     {
-        TypeAirUnit type = controller->GetAirUnitObject()->typeAirUnit;
+        TypeAirUnit type = controller->GetAirUnitObject()->typeAirUnit; //-V522
 
         if (type == TypeAirUnit::Airplane)         return new Commander(controller);
         else if (type == TypeAirUnit::Helicopter)  return new CommanderHelicopter(controller);
     }
     else if (controller->BelongGround())
     {
-        TypeGroundUnit type = controller->GetGroundUnitObject()->typeGroundUnit;
+        TypeGroundUnit type = controller->GetGroundUnitObject()->typeGroundUnit; //-V522
 
         if (type == TypeGroundUnit::Robot)     return new CommanderRobot(controller);
         else if (type == TypeGroundUnit::Tank) return new CommanderTank(controller);
@@ -44,7 +45,7 @@ Commander *Commander::New(UnitController *controller)
     }
     else if (controller->BelongWater())
     {
-        TypeWaterUnit type = controller->GetWaterUnitObject()->typeWaterUnit;
+        TypeWaterUnit type = controller->GetWaterUnitObject()->typeWaterUnit; //-V522
 
         if (type == TypeWaterUnit::Boat)           return new CommanderBoat(controller);
         else if (type == TypeWaterUnit::Submarine) return new CommanderSubmarine(controller);
@@ -110,7 +111,7 @@ void Commander::BreakIntoSteps(const CommanderTask *task) const
 {
     if (!controller->CanExecute(task->type))
     {
-//        LOG_ERROR("Can not process task %d", task->type);
+        LOG_ERROR("Can not process task type %d", task->type);
         return;
     }
 
@@ -125,6 +126,10 @@ void Commander::BreakIntoSteps(const CommanderTask *task) const
     else if (task->type == CommanderTask::Type::Rotate)
     {
         ParseRotate(task);
+    }
+    else if (task->type == CommanderTask::Type::FreeFlight)
+    {
+        driver->AppendTask(new DriverAirplaneTaskFreeFlight(driver));
     }
     else
     {

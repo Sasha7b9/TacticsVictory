@@ -10,7 +10,7 @@ namespace Pi
 {
     namespace GameState
     {
-        bool landscapeCreated = false;
-        bool sendingRequestForObject = false;
+        bool volatile landscapeCreated = false;
+        bool volatile sendingRequestForObject = false;
     }
 }

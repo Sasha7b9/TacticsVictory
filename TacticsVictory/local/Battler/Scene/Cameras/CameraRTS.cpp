@@ -5,6 +5,7 @@
 #include "Utils/Math_.h"
 #include "Input/Mouse.h"
 #include "Scene/World/GameWorld.h"
+#include "Scene/World/Landscape_.h"
 
 
 using namespace Pi;
@@ -117,53 +118,19 @@ void CameraRTS::Move()
 
     deltaFwd -= speed.y * dt;
 
-    if((movementFlags & (uint)E::MoveForward))
-    {
-        deltaFwd += 3.0f * dt;
-    }
-    if((movementFlags & (uint)E::MoveBackward))
-    {
-        deltaFwd -= 3.0f * dt;
-    }
-    if((movementFlags & (uint)E::MoveRight))
-    {
-        deltaRight += 3.0f * dt;
-    }
-    if((movementFlags & (uint)E::MoveLeft))
-    {
-        deltaRight -= 3.0f * dt;
-    }
-    if((movementFlags & (uint)E::RotateLeft))
-    {
-        azimuth -= 1.0f * dt / 3;
-    }
-    if((movementFlags & (uint)E::RotateRight))
-    {
-        azimuth += 1.0f * dt / 3;
-    }
-    if((movementFlags & (uint)E::RotateTop))
-    {
-        angleTilt -= 1.0f * dt / 3;
-    }
-    if((movementFlags & (uint)E::RotateDown))
-    {
-        angleTilt += 1.0f * dt / 3;
-    }
-    if((movementFlags & (uint)E::ZoomIn))
-    {
-        distance += 5.0f * dt;
-    }
-    if((movementFlags & (uint)E::ZoomOut))
-    {
-        distance -= 5.0f * dt;
-    }
+    if((movementFlags & (uint)E::MoveForward))  { deltaFwd   += 3.0f * dt;     }
+    if((movementFlags & (uint)E::MoveBackward)) { deltaFwd   -= 3.0f * dt;     }
+    if((movementFlags & (uint)E::MoveRight))    { deltaRight += 3.0f * dt;     }
+    if((movementFlags & (uint)E::MoveLeft))     { deltaRight -= 3.0f * dt;     }
+    if((movementFlags & (uint)E::RotateLeft))   { azimuth    -= 1.0f * dt / 3; }
+    if((movementFlags & (uint)E::RotateRight))  { azimuth    += 1.0f * dt / 3; }
+    if((movementFlags & (uint)E::RotateTop))    { angleTilt  -= 1.0f * dt / 3; }
+    if((movementFlags & (uint)E::RotateDown))   { angleTilt  += 1.0f * dt / 3; }
+    if((movementFlags & (uint)E::ZoomIn))       { distance   += 5.0f * dt;     }
+    if((movementFlags & (uint)E::ZoomOut))      { distance   -= 5.0f * dt;     }
     if (movementFlags & (uint)E::MoveCenter)
     {
-        pointFocus = Point3D::ZERO;
-        if (distance > 50.0f)
-        {
-            distance = 50.0f;
-        }
+        pointFocus = Point3D( (float)Landscape::self->GetSizeX_Columns() / 2.0f, (float)Landscape::self->GetSizeY_Rows() / 2.0f, 0.0f );
     }
 
     distance = M::LimitationFloat(distance, MIN_DISTANCE, MAX_DISTANCE);

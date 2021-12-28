@@ -7,6 +7,7 @@
 #include "Objects/Units/Logic/PathFinder/PathMapping.h"
 #include "Objects/Units/Unit_.h"
 #include "Objects/Ammo/Ammo_.h"
+#include "PeriodicTasks.h"
 
 
 using namespace Pi;
@@ -43,7 +44,8 @@ GameObject::GameObject(TypeGameObject type, int _id, GameObjectController *_cont
     Node(),
     typeGameObject(type),
     controller(_controller),
-    id(_id == -1 ? ++createdObjects : _id)
+    id(_id == -1 ? ++createdObjects : _id),
+    numberThread(id % TaskMain::NumberThreads())
 {
     SetController(controller);
 

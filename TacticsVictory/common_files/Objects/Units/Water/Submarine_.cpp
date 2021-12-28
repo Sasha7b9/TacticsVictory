@@ -3,6 +3,7 @@
 #include "Objects/Units/Water/Submarine_.h"
 #include "Scene/World/Landscape_.h"
 #include "Utils/Math_.h"
+#include "Objects/Units/Staff/DriverTasks_.h"
 
 
 using namespace Pi;

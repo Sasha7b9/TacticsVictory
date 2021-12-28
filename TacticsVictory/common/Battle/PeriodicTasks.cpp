@@ -1,4 +1,4 @@
-// 2021/12/25 19:37:20 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+﻿// 2021/12/25 19:37:20 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "PeriodicTasks.h"
 #include "Scene/World/GameWorld.h"
@@ -6,12 +6,13 @@
 #include "Objects/Units/Ground/Tank_.h"
 #include "Objects/Units/Water/Submarine_.h"
 #include "Network/Messages/MessagesServer_.h"
+#include "Utils/Math_.h"
 
 
 using namespace Pi;
 
 
-void TaskAfterLoadingLandscape::Step()
+void TaskAfterLoadingLandscape::RunOnce()
 {
     CreateUnits();
 
@@ -34,35 +35,106 @@ void TaskAfterLoadingLandscape::Step()
 
 void TaskAfterLoadingLandscape::CreateUnits()
 {
-//    for (int i = 0; i < 10; i++)
-//    {
-//        Airplane::Create()->AppendInGame(10 + i * 5, 30);
-//    }
-
-    static const int NUM_OBJECTS = 100;
-
-    for (int i = 0; i < NUM_OBJECTS; i++)
+    for (int i = 0; i < 10; i++)
     {
-        GameWorld::self->AppendObject(Airplane::Create());
+        Airplane *airplane = Airplane::Create();
+
+        airplane->AppendInGame(rand() % 50, 30);
+
+        airplane->GetUnitController()->AppendTask(new CommanderTask(CommanderTask::Type::FreeFlight, CommanderTask::Mode::Absolute));
+    }
+
+//    static const int NUM_OBJECTS = 10;
+//
+//    for (int i = 0; i < NUM_OBJECTS; i++)
+//    {
+//        GameWorld::self->AppendObject(Airplane::Create());
 //        int index = rand() % 3;
 //
 //        if (index == 0)         GameWorld::self->AppendObject(Tank::Create());
 //        else if (index == 1)    GameWorld::self->AppendObject(Airplane::Create());
 //        else                    GameWorld::self->AppendObject(Submarine::Create());
+//  }
+}
+
+
+TaskMain::TaskMain() : PeriodicTask()
+{
+    for (int i = 0; i < NumberThreads(); i++)
+    {
+        jobs[i] = new MoveGameObjectsJob(i);
     }
 }
 
 
-void TaskMain::Step()
+TaskMain::~TaskMain()
 {
+    for (int i = 0; i < NumberThreads(); i++)
+    {
+        delete jobs[i];
+    }
+}
+
+
+void TaskMain::MoveGameObjectsJob::JobCompute(Job *_job, void *)
+{
+    MoveGameObjectsJob *job = (MoveGameObjectsJob *)_job;
+
     for (GameObject *object : GameObject::objects)
     {
-        object->controller->Move(0.040f);
+        if (object->numberThread == job->numThread)
+        {
+            object->controller->Move(0.040f);
+        }
     }
 }
 
 
-void TaskSendStateInNetwork::Step()
+int TaskMain::NumberThreads()
+{
+    static int number = M::LimitationAbove(TheEngine->GetProcessorCount() - 1, 32);
+
+    return number;
+}
+
+
+void TaskMain::RunOnce()
+{
+    TaskFPS::Self()->BeginFrame();
+
+    numFrame++;
+
+    Batch batch;
+
+    for (int i = 0; i < NumberThreads(); i++)
+    {
+        TheJobMgr->SubmitJob(jobs[i], &batch);
+    }
+
+    TheJobMgr->FinishBatch(&batch);
+
+    TaskFPS::Self()->EndFrame();
+}
+
+
+void TaskFPS::RunOnce()
+{
+    uint64 time = end - start;
+    LOG_WRITE("time frame %llu ms (%llu us)", time / 1000, time);
+}
+
+
+void TaskTraceGameObject::RunOnce()
+{
+    GameObject *object = GameObject::objects.Find(5);
+    if (object)
+    {
+        LOG_WRITE("distance %f", object->GetUnitObject()->GetUnitController()->param.stat.distance);
+    }
+}
+
+
+void TaskSendStateInNetwork::RunOnce()
 {
     if (TheMessageMgr->GetPlayerCount() > 1)
     {
@@ -87,7 +159,7 @@ void TaskSendStateInNetwork::Step()
 }
 
 
-void TaskRotator::Step()
+void TaskRotator::RunOnce()
 {
     for (Tank *tank : Tank::objects)
     {
@@ -111,13 +183,13 @@ void TaskRotator::Step()
 }
 
 
-void TaskProfilerFull::Step()
+void TaskProfilerFull::RunOnce()
 {
     PROFILER_LOG_FULL();
 }
 
 
-void TaskProfilerLastFrame::Step()
+void TaskProfilerLastFrame::RunOnce()
 {
     PROFILER_LOG_LAST_FRAME();
 }

@@ -3,6 +3,8 @@
 #include "Objects/Units/Ground/Tank_.h"
 #include "Objects/Units/UnitParameters_.h"
 #include "Scene/World/Landscape_.h"
+#include "Objects/Units/Staff/Driver_.h"
+#include "Objects/Units/Staff/DriverTasks_.h"
 
 
 using namespace Pi;

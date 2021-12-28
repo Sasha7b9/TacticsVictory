@@ -36,9 +36,7 @@ WorldResult::B GameWorld::Preprocess()
         return result;
     }
 
-    static TaskAfterLoadingLandscape taskAfterLoad;
-
-    new Landscape((Battle::self->DataPath() + "levels/level2.lvl").c_str(), &taskAfterLoad);
+    new Landscape((Battle::self->DataPath() + "levels/level2.lvl").c_str(), TaskAfterLoadingLandscape::Self());
 
     GetRootNode()->AppendNewSubnode(Landscape::self);
 

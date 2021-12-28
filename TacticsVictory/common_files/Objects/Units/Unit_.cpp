@@ -5,6 +5,7 @@
 #include "Objects/Units/Logic/PathFinder/PathMapping.h"
 #include "Objects/Units/Logic/Selector.h"
 #include "Objects/Units/Water/WaterUnit_.h"
+#include "Objects/Units/Air/AirUnit_.h"
 
 
 using namespace Pi;
@@ -65,25 +66,41 @@ void UnitController::Move(float dT)
 
 bool UnitController::CanExecute(CommanderTask::Type task) const
 {
-    if (task == CommanderTask::Type::Move)
+    switch (task)
     {
+    case CommanderTask::Type::Move:
+    case CommanderTask::Type::Rotate:
         return true;
-    }
-    else if (task == CommanderTask::Type::Dive)
-    {
-        WaterUnitObject *unit = GetWaterUnitObject();
+        break;
 
-        if (unit)
+    case CommanderTask::Type::Dive:
         {
-            if (unit->typeWaterUnit == TypeWaterUnit::Submarine)
+            WaterUnitObject *unit = GetWaterUnitObject();
+            if (unit)
             {
-                return true;
+                if (unit->typeWaterUnit == TypeWaterUnit::Submarine)
+                {
+                    return true;
+                }
             }
         }
-    }
-    else if (task == CommanderTask::Type::Rotate)
-    {
-        return true;
+        break;
+
+    case CommanderTask::Type::FreeFlight:
+        {
+            AirUnitObject *unit = GetAirUnitObject();
+            if (unit)
+            {
+                if (unit->typeAirUnit == TypeAirUnit::Airplane)
+                {
+                    return true;
+                }
+            }
+        }
+        break;
+
+    case CommanderTask::Type::Count:
+        break;
     }
 
     return false;
