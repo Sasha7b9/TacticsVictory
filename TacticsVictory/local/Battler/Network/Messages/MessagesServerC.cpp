@@ -34,32 +34,39 @@ bool MessageCreateGameObject::HandleMessage(Player *sender) const
 {
     for(int i = 0; i < num_objects; i++)
     {
-        if (GameObject::objects.Find(id[i]))    // Из-за потери пакетов некоторые объекты могут присылаться повторно
+        const StateObject &state = states[i];
+
+        if (GameObject::objects.Find(state.id))    // Из-за потери пакетов некоторые объекты могут присылаться повторно
         {
             continue;                           // Страхуемся от этого
         }
 
-        if (type[i][0] == (int)TypeGameObject::Unit)
+        if (state.type[0] == (int)TypeGameObject::Unit)
         {
-            if (type[i][1] == (int)TypeUnit::Air)
+            if (state.type[1] == (int)TypeUnit::Air)
             {
-                if (type[i][2] == (int)TypeAirUnit::Airplane)
+                if (state.type[2] == (int)TypeAirUnit::Airplane)
                 {
-                    GameObject *airplane = Airplane::Create(id[i]);
-                    airplane->SetNodeTransform(transform[i]);
-                    GameWorld::self->GetRootNode()->AppendNewSubnode(airplane);
+                    UnitObject *airplane = Airplane::Create(state.id);
+
+                    UnitParameters &param = *airplane->GetUnitController()->param;
+                    param.position = state.position;
+                    param.direction = state.direction;
+                    param.up = state.up;
+                    airplane->AppendInGame((int)param.position.x, (int)param.position.y);
+//                    GameWorld::self->GetRootNode()->AppendNewSubnode(airplane);
                 }
                 else
                 {
                     LOG_ERROR_TRACE("Unknown type air unit");
                 }
             }
-            else if (type[i][1] == (int)TypeUnit::Ground)
+            else if (state.type[1] == (int)TypeUnit::Ground)
             {
-                if (type[i][2] == (int)TypeGroundUnit::Tank)
+                if (state.type[2] == (int)TypeGroundUnit::Tank)
                 {
-                    GameObject *tank = Tank::Create(id[i]);
-                    tank->SetNodeTransform(transform[i]);
+                    GameObject *tank = Tank::Create(state.id);
+//                    tank->SetNodeTransform(transform[i]);
                     GameWorld::self->GetRootNode()->AppendNewSubnode(tank);
                 }
                 else
@@ -67,12 +74,12 @@ bool MessageCreateGameObject::HandleMessage(Player *sender) const
                     LOG_ERROR_TRACE("Unknown type ground unit");
                 }
             }
-            else if (type[i][1] == (int)TypeUnit::Water)
+            else if (state.type[1] == (int)TypeUnit::Water)
             {
-                if (type[i][2] == (int)TypeWaterUnit::Submarine)
+                if (state.type[2] == (int)TypeWaterUnit::Submarine)
                 {
-                    GameObject *submarine = Submarine::Create(id[i]);
-                    submarine->SetNodeTransform(transform[i]);
+                    GameObject *submarine = Submarine::Create(state.id);
+//                    submarine->SetNodeTransform(transform[i]);
                     GameWorld::self->GetRootNode()->AppendNewSubnode(submarine);
                 }
                 else
@@ -104,21 +111,37 @@ bool MessageGameObjectState::HandleMessage(Player *) const
 
     for (int i = 0; i < num_objects; i++)
     {
-        int _id = id[i];
+        const StateObject &state = states[i];
+
+        int _id = state.id;
+
         GameObject *object = GameObject::objects.Find(_id);
 
         if (object)
         {
-            UnitParameters &param = object->GetUnitObject()->GetUnitController()->param;
-            param.direction = direction[i];
-            param.up = up[i];
+            UnitParameters &param = *object->GetUnitObject()->GetUnitController()->param;
+            param.position = state.position;
+            param.direction = state.direction;
+            param.up = state.up;
 
-            object->SetNodePosition(position[i]);
+            Node *node = object;
+
+            node->SetNodePosition(param.position);
             object->SetDirection(param.direction, param.up);
             object->Invalidate();
 
-            Airplane::smokeTrail->CreateSmoke(object->GetNodePosition(), 10000000, 0.1f);
-
+            if(object->IsUnit())
+            {
+                UnitObject *unit = object->GetUnitObject();
+                if (unit->typeUnit == TypeUnit::Air)
+                {
+                    AirUnitObject *air = unit->GetAirUnit();
+                    if (air->typeAirUnit == TypeAirUnit::Airplane)
+                    {
+                        Airplane::smokeTrail->CreateSmoke(object->GetNodePosition(), 10000, 0.1f);
+                    }
+                }
+            }
         }
         else
         {

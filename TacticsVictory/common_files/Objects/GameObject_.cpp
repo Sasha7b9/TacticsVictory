@@ -8,6 +8,8 @@
 #include "Objects/Units/Unit_.h"
 #include "Objects/Ammo/Ammo_.h"
 #include "PeriodicTasks.h"
+#include "GameState.h"
+#include "Objects/PoolObjects_.h"
 
 
 using namespace Pi;
@@ -20,15 +22,23 @@ Map<GameObject> GameObject::objects;
 
 void GameObject::Construct()
 {
+    PoolObjects::Consruct();
+
+#ifdef PiCLIENT
+
     empty = new GameObject(TypeGameObject::Empty, 0, new GameObjectController(nullptr));
 
     AmmoObject::Construct();
     UnitObject::Construct();
+
+#endif
 }
 
 
 void GameObject::Destruct()
 {
+#ifdef PiCLIENT
+
     AmmoObject::Destruct();
     UnitObject::Destruct();
 
@@ -37,6 +47,10 @@ void GameObject::Destruct()
     delete property;
 
     delete empty;
+
+#endif
+
+    PoolObjects::Destruct();
 }
 
 
@@ -69,6 +83,11 @@ GameObject::~GameObject()
 
 bool GameObject::AppendInGame(int _x, int _y)
 {
+    if (!GameState::landscapeCreated)
+    {
+        return false;
+    }
+
     float x = (float)_x;
     float y = (float)_y;
 
@@ -80,8 +99,13 @@ bool GameObject::AppendInGame(int _x, int _y)
 
         if (unit->typeUnit == TypeUnit::Air) //-V522
         {
-            float height = Landscape::self->UnderWater(_x, _y) ? 0 : Landscape::self->GetHeightAccurately(x, y);
-            unit->SetNodePosition({x, y, height + 5.0f});
+            float height = 5.0f;
+
+            if (Landscape::self->AboveSurface(_x, _y) && !Landscape::self->UnderWater(_x, _y))
+            {
+                height += Landscape::self->GetHeightAccurately(x, y);
+            }
+            unit->GetUnitController()->param->position = Point3D(x, y, height);
             append = true;
         }
         else if (unit->typeUnit == TypeUnit::Ground)
@@ -89,7 +113,7 @@ bool GameObject::AppendInGame(int _x, int _y)
             if (!Landscape::self->UnderWater(_x, _y))
             {
                 float height = Landscape::self->GetHeightAccurately(x, y);
-                unit->SetNodePosition({x, y, height});
+                unit->GetUnitController()->param->position = Point3D(x, y, height);
                 append = true;
             }
         }
@@ -97,7 +121,7 @@ bool GameObject::AppendInGame(int _x, int _y)
         {
             if (Landscape::self->UnderWater(_x, _y))
             {
-                unit->SetNodePosition({x, y, Water::Level()});
+                unit->GetUnitController()->param->position = Point3D(x, y, Water::Level());
                 append = true;
             }
         }
@@ -110,6 +134,12 @@ bool GameObject::AppendInGame(int _x, int _y)
     }
 
     return false;
+}
+
+
+void GameObject::SetNodePosition(const Point3D &position)
+{
+    Node::SetNodePosition(position);
 }
 
 

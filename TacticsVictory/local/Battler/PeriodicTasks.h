@@ -26,15 +26,6 @@ namespace Pi
     };
 
 
-    class TaskTraffic : public PeriodicTask
-    {
-    public:
-        static TaskTraffic *Self() { static TaskTraffic task; return &task; }
-    protected:
-        virtual void RunOnce() override;
-    };
-
-
     class TaskProfiler : public PeriodicTask
     {
     public:

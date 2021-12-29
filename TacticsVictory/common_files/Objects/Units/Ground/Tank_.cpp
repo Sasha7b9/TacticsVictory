@@ -140,7 +140,7 @@ Node *Tank::CreateBarrel()
 }
 
 
-TankController::TankController(Tank *tank) : GroundUnitController(tank, parameters)
+TankController::TankController(Tank *tank) : GroundUnitController(tank)
 {
 }
 

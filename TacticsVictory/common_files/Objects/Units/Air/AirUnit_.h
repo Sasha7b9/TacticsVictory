@@ -29,7 +29,7 @@ namespace Pi
 
     protected:
 
-        AirUnitController(AirUnitObject *, const UnitParameters &);
+        AirUnitController(AirUnitObject *);
     };
 }
 

@@ -19,7 +19,7 @@ Worm::Worm(int id) : GroundUnitObject(TypeGroundUnit::Worm, id, new WormControll
 
 
 
-WormController::WormController(Worm *worm) : GroundUnitController(worm, parameters)
+WormController::WormController(Worm *worm) : GroundUnitController(worm)
 {
 }
 

@@ -28,10 +28,8 @@ namespace Pi
 
         virtual ~WaterUnitController() {};
 
-//        WaterUnitObject *GetWaterUnitObject() const { return (WaterUnitObject *)gameObject; }
-
     protected:
 
-        WaterUnitController(WaterUnitObject *, const UnitParameters &);
+        WaterUnitController(WaterUnitObject *);
     };
 }

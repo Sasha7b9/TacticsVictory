@@ -46,7 +46,7 @@ namespace Pi
 
         virtual ~UnitController();
 
-        UnitParameters param;
+        UnitParameters *param = nullptr;
 
         UnitObject *const object = nullptr;
 
@@ -70,7 +70,7 @@ namespace Pi
 
     protected:
 
-        UnitController(UnitObject *, const UnitParameters &);
+        UnitController(UnitObject *);
 
         virtual void Preprocess() override;
         virtual void Move(float dT) override;

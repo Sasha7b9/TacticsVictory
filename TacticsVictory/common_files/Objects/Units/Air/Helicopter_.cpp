@@ -15,21 +15,18 @@ GameObject *Helicopter::Create()
 
 
 HelicopterController::HelicopterController(Helicopter *helicopter) :
-    AirUnitController(helicopter, parameters)
+    AirUnitController(helicopter)
 {
-
 }
 
 
 HelicopterController::HelicopterController(const HelicopterController &controller) : AirUnitController(controller)
 {
-
 }
 
 
 HelicopterController::~HelicopterController()
 {
-
 }
 
 
@@ -41,17 +38,14 @@ void HelicopterController::Preprocess()
 
 CommanderHelicopter::CommanderHelicopter(UnitController *controller) : Commander(controller)
 {
-
 }
 
 
 DriverHelicopter::DriverHelicopter(UnitController *controller) : Driver(controller)
 {
-
 }
 
 
 ShooterHelicopter::ShooterHelicopter(UnitController *controller) : Shooter(controller)
 {
-
 }

@@ -59,6 +59,6 @@ void CommanderSubmarine::ParseRotate(const CommanderTask *task) const
 }
 
 
-SubmarineController::SubmarineController(Submarine *submarine) : WaterUnitController(submarine, parameters)
+SubmarineController::SubmarineController(Submarine *submarine) : WaterUnitController(submarine)
 {
 }

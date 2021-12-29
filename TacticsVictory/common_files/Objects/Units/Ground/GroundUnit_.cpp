@@ -18,7 +18,7 @@ GroundUnitObject::GroundUnitObject(TypeGroundUnit type, int id, GroundUnitContro
 
 
 
-GroundUnitController::GroundUnitController(GroundUnitObject *groundUnit, const UnitParameters &parameters) :
-    UnitController(groundUnit, parameters)
+GroundUnitController::GroundUnitController(GroundUnitObject *groundUnit) :
+    UnitController(groundUnit)
 {
 }

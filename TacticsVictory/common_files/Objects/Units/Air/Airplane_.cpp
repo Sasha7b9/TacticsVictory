@@ -3,6 +3,8 @@
 #include "Objects/Units/Air/Airplane_.h"
 #include "Objects/Units/UnitParameters_.h"
 #include "Utils/Math_.h"
+#include "Objects/PoolObjects_.h"
+
 
 #ifdef PiCLIENT
     #include "Scene/World/GameWorld.h"
@@ -25,8 +27,11 @@ Airplane *Airplane::Create(int id)
 }
 
 
-Airplane::Airplane(int id) : AirUnitObject(TypeAirUnit::Airplane, id, new AirplaneController(this))
+Airplane::Airplane(int _id) : AirUnitObject(TypeAirUnit::Airplane, _id, new AirplaneController(this))
 {
+    GetUnitController()->param = PoolObjects::AllocateParameters(id);
+    *GetUnitController()->param = AirplaneController::parameters;
+
     PrimitiveGeometry *geometry = new PyramidGeometry({1.0f, 1.0f}, 1.0f);
     geometry->GetObject()->Build(geometry);
 

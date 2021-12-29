@@ -42,17 +42,3 @@ WorldResult::B GameWorld::Preprocess()
 
     return WorldResult::Okay;
 }
-
-
-void GameWorld::AppendObject(GameObject *object)
-{
-    int sizeX = Landscape::self->GetSizeX_Columns();
-    int sizeY = Landscape::self->GetSizeY_Rows();
-
-    bool added = false;
-
-    while (!added)
-    {
-        added = object->AppendInGame(std::rand() % sizeX, std::rand() % sizeY);
-    }
-}

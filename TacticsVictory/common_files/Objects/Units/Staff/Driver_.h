@@ -46,7 +46,7 @@ namespace Pi
 
         UnitObject *const unit = nullptr;
 
-        UnitParameters &param;
+        UnitParameters *const param = nullptr;
 
     private:
 

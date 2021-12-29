@@ -18,7 +18,7 @@ AirUnitObject::AirUnitObject(TypeAirUnit type, int id, AirUnitController *contro
 
 
 
-AirUnitController::AirUnitController(AirUnitObject *object, const UnitParameters &param) :
-    UnitController(object, param)
+AirUnitController::AirUnitController(AirUnitObject *object) :
+    UnitController(object)
 {
 }

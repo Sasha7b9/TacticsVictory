@@ -17,7 +17,9 @@ DriverTask::DriverTask(Driver *driver) : controller(driver->controller), unit(co
 DriverTaskDive::DriverTaskDive(Driver *driver, float z) : DriverTask(driver), destination_z(z)
 {
     position_z = unit->GetNodePosition().z;
-    speed = Fsgn(destination_z - position_z) > 0 ? controller->param.max.speed.z : -controller->param.max.speed.z;
+
+    UnitParameters &param = *controller->param;
+    speed = Fsgn(destination_z - position_z) > 0 ? param.max.speed.z : -param.max.speed.z;
 }
 
 
@@ -40,9 +42,6 @@ void DriverTaskDive::RunStep(float dT)
     }
 
     position.z = position_z;
-
-    unit->SetNodePosition(position);
-    unit->Invalidate();
 }
 
 
@@ -58,7 +57,7 @@ DriverTaskMove::DriverTaskMove(Driver *driver, const Point3D &pointTo) : DriverT
 
     Vector3D direction = (destination - unitPosition).Normalize();
 
-    speed = direction * controller->param.max.speed.y;
+    speed = direction * controller->param->max.speed.y;
 }
 
 
@@ -77,15 +76,12 @@ void DriverTaskMove::RunStep(float dT)
         completed = true;
         ExecuteAfterCompletion();
     }
-
-    unit->SetNodePosition(position);
-    unit->Invalidate();
 }
 
 
 DriverAirplaneTaskFreeFlight::DriverAirplaneTaskFreeFlight(Driver *driver) : DriverTask(driver)
 {
-    UnitParameters &param = controller->param;
+    UnitParameters &param = *controller->param;
 
     param.direction.RotateAboutZ(K::pi / 2.0f / 1000.0f * (float)rand());
 
@@ -124,11 +120,13 @@ DriverTaskRotate::DriverTaskRotate(Driver *driver, const Vector3D &_axis, float 
 
 void DriverTaskRotate::RunStep(float dT)
 {
-    float angle = dT * controller->param.max.rotate.z * Fsgn(target_angle);
+    float angle = dT * controller->param->max.rotate.z * Fsgn(target_angle);
     rotated += angle;
 
-    Vector3D &direction = unit->GetUnitController()->param.direction;
-    Vector3D &up = unit->GetUnitController()->param.up;
+    UnitParameters &param = *unit->GetUnitController()->param;
+
+    Vector3D &direction = param.direction;
+    Vector3D &up = param.up;
 
     direction.RotateAboutZ(angle);
 

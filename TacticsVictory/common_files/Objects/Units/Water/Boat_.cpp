@@ -18,7 +18,7 @@ Boat::Boat(int id) : WaterUnitObject(TypeWaterUnit::Boat, id, new BoatController
 }
 
 
-BoatController::BoatController(Boat *boat) : WaterUnitController(boat, parameters)
+BoatController::BoatController(Boat *boat) : WaterUnitController(boat)
 {
 }
 

@@ -6,6 +6,7 @@
 #include "Objects/Units/Logic/Selector.h"
 #include "Objects/Units/Water/WaterUnit_.h"
 #include "Objects/Units/Air/AirUnit_.h"
+#include "Objects/PoolObjects_.h"
 
 
 using namespace Pi;
@@ -14,9 +15,8 @@ using namespace Pi;
 Map<UnitObject> UnitObject::objects;
 
 
-UnitController::UnitController(UnitObject *_object, const UnitParameters &_param) :
+UnitController::UnitController(UnitObject *_object) :
     GameObjectController(_object),
-    param(_param),
     object(_object)
 {
 }
@@ -54,6 +54,11 @@ void UnitController::Preprocess()
 
 void UnitController::Move(float dT)
 {
+    if (param == nullptr)
+    {
+        return;
+    }
+
     GameObjectController::Move(dT);
 
     commander->Update(dT);

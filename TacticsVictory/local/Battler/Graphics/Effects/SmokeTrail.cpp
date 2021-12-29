@@ -56,8 +56,6 @@ void SmokeTrailParticleSystem::AnimateParticles()
 
         particle = next;
     }
-
-    LOG_WRITE("in scene %d particles", counter);
 }
 
 

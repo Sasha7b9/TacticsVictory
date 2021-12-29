@@ -86,102 +86,110 @@ void Driver::Update(float dT)
 
 void Driver::ApplyTransform()
 {
-    if (param.applyRotate)
+    if (param->applyRotate)
     {
-        param.applyRotate = false;
+        param->applyRotate = false;
 
-        unit->SetDirection(param.direction, param.up);
+#ifdef PiCLIENT
+
+        unit->SetDirection(param->direction, param->up);
 
         unit->Invalidate();
+#endif
     }
 
-    if (param.applyTranslation)
+    if (param->applyTranslation)
     {
-        param.applyTranslation = false;
+        param->applyTranslation = false;
 
-        param.stat.distance += Magnitude(unit->GetNodePosition() - param.coord);
+#ifdef PiCLIENT
 
-        unit->SetNodePosition(param.coord);
+        param->stat.distance += Magnitude(unit->GetNodePosition() - param->position);
 
-        unit->Invalidate();
+        Node *node = unit;
+
+        node->SetNodePosition(param->position);
+
+        node->Invalidate();
+#endif
     }
 }
 
 
 void Driver::MoveForward(float dT)
 {
-    if(param.speed != 0.0f)
+    if(param->speed != 0.0f)
     {
-        param.coord += param.direction * param.speed * dT;
+        param->position += param->direction * param->speed * dT;
 
-        param.applyTranslation = true;
+        param->applyTranslation = true;
     }
 }
 
 
 void Driver::RotateYaw(float dT)
 {
-    if(param.speedRotate.z != 0.0f)
+    if(param->speedRotate.z != 0.0f)
     {
-        param.direction.RotateAboutAxis(param.speedRotate.z * dT, param.up);
+        param->direction.RotateAboutAxis(param->speedRotate.z * dT, param->up);
 
-        param.applyRotate = true;
+        param->applyRotate = true;
     }
 }
 
 
 void Driver::RotateYawCompensate(float dT)
 {
-    if(param.speedRotate.z != 0.0f)
+    if(param->speedRotate.z != 0.0f)
     {
-        param.direction.RotateAboutAxis(param.speedRotate.z * dT, param.upPitch);
+        param->direction.RotateAboutAxis(param->speedRotate.z * dT, param->upPitch);
 
-        param.applyRotate = true;
+        param->applyRotate = true;
     }
 }
 
 
 void Driver::RotateRoll(float dT)
 {
-    if(param.speedRotate.y != 0.0f)
+    if(param->speedRotate.y != 0.0f)
     {
-        param.up.RotateAboutAxis(-param.speedRotate.y * dT, param.direction);
+        param->up.RotateAboutAxis(-param->speedRotate.y * dT, param->direction);
 
-        param.applyRotate = true;
+        param->applyRotate = true;
     }
 }
 
 
 void Driver::RotatePitch(float dT)
 {
-    if(param.speedRotate.x != 0.0f)
+    if(param->speedRotate.x != 0.0f)
     {
-        float angle = param.speedRotate.x * dT;
+        float angle = param->speedRotate.x * dT;
 
-        Vector3D axis = Cross(param.direction, param.up).Normalize();
+        Vector3D axis = Cross(param->direction, param->up).Normalize();
 
-        param.direction.RotateAboutAxis(angle, axis);
-        param.up.RotateAboutAxis(angle, axis);
-        param.upPitch.RotateAboutAxis(angle, axis);
+        param->direction.RotateAboutAxis(angle, axis);
+        param->up.RotateAboutAxis(angle, axis);
+        param->upPitch.RotateAboutAxis(angle, axis);
 
-        param.applyRotate = true;
+        param->applyRotate = true;
     }
 }
 
 
 void Driver::RotatePitchCompensate(float dT)
 {
-    if(param.speedRotate.x != 0.0f)
+    if(param->speedRotate.x != 0.0f)
     {
-        float angle = param.speedRotate.x * dT;
+        float angle = param->speedRotate.x * dT;
 
-        Vector3D axis = Cross(param.direction, param.upPitch).Normalize();
+        Vector3D axis = Cross(param->direction, param->upPitch).Normalize();
 
-        param.direction.RotateAboutAxis(angle, axis);
-        param.up.RotateAboutAxis(angle, axis);
-        param.upPitch.RotateAboutAxis(angle, axis);
+        param->direction.RotateAboutAxis(angle, axis);
+        param->up.RotateAboutAxis(angle, axis);
+        param->upPitch.RotateAboutAxis(angle, axis);
 
-        param.applyRotate = true;
+        param->applyRotate = true;
     }
 }
 

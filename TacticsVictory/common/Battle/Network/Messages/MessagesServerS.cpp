@@ -57,9 +57,17 @@ void MessageCreateGameObject::AppendObject(GameObject *object)
         return;
     }
 
-    id[num_objects] = object->id;
-    transform[num_objects] = object->GetNodeTransform();
-    type[num_objects][0] = (int)object->typeGameObject;
+    StateObject &state = states[num_objects];
+
+    state.id = object->id;
+
+    UnitObject *unit = object->GetUnitObject();
+    UnitParameters &param = *unit->GetUnitController()->param;
+
+    state.position = param.position;
+    state.direction = param.direction;
+    state.up = param.up;
+    state.type[0] = (int)object->typeGameObject;
 
     FillUnit(object->GetUnitObject());
 
@@ -69,34 +77,36 @@ void MessageCreateGameObject::AppendObject(GameObject *object)
 
 void MessageCreateGameObject::FillUnit(UnitObject *unit)
 {
-    type[num_objects][1] = (int)unit->typeUnit;
+    StateObject &state = states[num_objects];
 
-    if (type[num_objects][1] == (int)TypeUnit::Air)
+    state.type[1] = (int)unit->typeUnit;
+
+    if (state.type[1] == (int)TypeUnit::Air)
     {
-        type[num_objects][2] = (int)unit->GetAirUnit()->typeAirUnit; //-V522
+        state.type[2] = (int)unit->GetAirUnit()->typeAirUnit; //-V522
     }
-    else if (type[num_objects][1] == (int)TypeUnit::Ground)
+    else if (state.type[1] == (int)TypeUnit::Ground)
     {
-        type[num_objects][2] = (int)unit->GetGroundUnit()->typeGroundUnit; //-V522
+        state.type[2] = (int)unit->GetGroundUnit()->typeGroundUnit; //-V522
     }
-    else if (type[num_objects][1] == (int)TypeUnit::Water)
+    else if (state.type[1] == (int)TypeUnit::Water)
     {
-        type[num_objects][2] = (int)unit->GetWaterUnit()->typeWaterUnit; //-V522
+        state.type[2] = (int)unit->GetWaterUnit()->typeWaterUnit; //-V522
     }
 }
 
 
 void MessageGameObjectState::AddObject(GameObject *object)
 {
-    id[num_objects] = object->id;
+    StateObject &state = states[num_objects];
 
-    position[num_objects] = object->GetNodePosition();
+    state.id = object->id;
 
-    UnitParameters &param = object->GetUnitObject()->GetUnitController()->param; //-V522
+    UnitParameters &param = *object->GetUnitObject()->GetUnitController()->param; //-V522
 
-    direction[num_objects] = param.direction;
-
-    up[num_objects] = param.up;
+    state.position = param.position;
+    state.direction = param.direction;
+    state.up = param.up;
 
     num_objects++;
 }

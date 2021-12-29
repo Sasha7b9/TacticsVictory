@@ -17,7 +17,7 @@ WaterUnitObject::WaterUnitObject(TypeWaterUnit type, int id, WaterUnitController
 }
 
 
-WaterUnitController::WaterUnitController(WaterUnitObject *object, const UnitParameters &param) :
-    UnitController(object, param)
+WaterUnitController::WaterUnitController(WaterUnitObject *object) :
+    UnitController(object)
 {
 }

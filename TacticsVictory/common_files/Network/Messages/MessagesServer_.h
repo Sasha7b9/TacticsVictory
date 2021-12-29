@@ -38,19 +38,26 @@ namespace Pi
 #endif
         };
 
-        static const int MAX_NUM_OBJECTS = 3;
         void AppendObject(GameObject *);
-        int NumObjects() const { return num_objects; }
-        void Clear() { num_objects = 0; }
 
     private:
 
+        struct StateObject
+        {
+            int      id;
+            int      type[3];     // [0] - TypeGameObject
+                                  // [1] - TypeUnit, TypeStructure, TypeWeapon, TypeAmmo
+                                  // [2] - TypeAirUnit, TypeGroundUnit, TypeWaterUnit
+            Point3D  position;
+            Vector3D direction;
+            Vector3D up;
+        };
+
         int num_objects = 0;
-        int id[MAX_NUM_OBJECTS];
-        int type[MAX_NUM_OBJECTS][3];   // [0] - TypeGameObject
-                                        // [1] - TypeUnit, TypeStructure, TypeWeapon, TypeAmmo
-                                        // [2] - TypeAirUnit, TypeGroundUnit, TypeWaterUnit
-        Transform4D transform[MAX_NUM_OBJECTS];
+
+        static const int MAX_NUM_OBJECTS = (kMaxMessageSize - sizeof(num_objects)) / sizeof(StateObject);
+
+        StateObject states[MAX_NUM_OBJECTS];
 
         virtual void Compress(Compressor &) const override;
         virtual bool Decompress(Decompressor &) override;
@@ -67,19 +74,25 @@ namespace Pi
             Message(PiTypeMessage::SendGameObjectState, PiFlagMessage::Unordered | PiFlagMessage::Unreliable) {}
 
         void AddObject(GameObject *);
-        int  NumObjects() const { return num_objects; }
-        int  MaxNumObjects() const { return MAX_OBJECTS; }
-        void ResetCounter() { num_objects = 0; }
+        bool Full() const  { return num_objects == MAX_NUM_OBJECTS; }
+        void Clear()       { num_objects = 0; }
+        bool Empty() const { return num_objects == 0; }
 
     private:
 
-        static const int MAX_OBJECTS = 10;
+        struct StateObject
+        {
+            int      id;
+            Point3D  position;
+            Vector3D direction;
+            Vector3D up;
+        };
 
-        int      num_objects = 0;
-        int      id[MAX_OBJECTS];
-        Point3D  position[MAX_OBJECTS];
-        Vector3D direction[MAX_OBJECTS];
-        Vector3D up[MAX_OBJECTS];
+        int num_objects = 0;
+
+        static const int MAX_NUM_OBJECTS = (kMaxMessageSize - sizeof(num_objects)) / sizeof(StateObject);
+
+        StateObject states[MAX_NUM_OBJECTS];
 
         virtual void Compress(Compressor &) const override;
         virtual bool Decompress(Decompressor &) override;

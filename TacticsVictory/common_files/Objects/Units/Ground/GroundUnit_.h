@@ -32,6 +32,6 @@ namespace Pi
 
     protected:
 
-        GroundUnitController(GroundUnitObject *, const UnitParameters &);
+        GroundUnitController(GroundUnitObject *);
     };
 }

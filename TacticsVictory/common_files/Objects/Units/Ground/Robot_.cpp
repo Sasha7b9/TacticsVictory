@@ -18,7 +18,7 @@ Robot::Robot(int id) : GroundUnitObject(TypeGroundUnit::Robot, id, new RobotCont
 }
 
 
-RobotController::RobotController(Robot *robot) : GroundUnitController(robot, parameters)
+RobotController::RobotController(Robot *robot) : GroundUnitController(robot)
 {
 }
 

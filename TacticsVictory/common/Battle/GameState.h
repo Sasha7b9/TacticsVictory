@@ -6,6 +6,6 @@ namespace Pi
 {
     namespace GameState
     {
-        extern bool landscapeCreated;           // Когда создан ландшафт, устанавливается в true
+        extern volatile bool landscapeCreated;           // Когда создан ландшафт, устанавливается в true
     }
 }

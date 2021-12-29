@@ -1122,6 +1122,12 @@ bool Landscape::UnderWater(int x, int y)
 }
 
 
+bool Landscape::AboveSurface(int x, int y)
+{
+    return (x >= 0 && x < heightMap.GetNumberColumns() && y >= 0 && y < heightMap.GetNumberRows());
+}
+
+
 void Water::Create()
 {
     CreateLake(7, 66, 88, 31);

@@ -40,4 +40,13 @@ namespace Pi
     private:
         List<PeriodicTask> tasks;
     };
+
+
+    class TaskTraffic : public PeriodicTask
+    {
+    public:
+        static TaskTraffic *Self() { static TaskTraffic task; return &task; }
+    protected:
+        virtual void RunOnce() override;
+    };
 }

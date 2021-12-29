@@ -17,8 +17,6 @@ namespace Pi
 
         static GameWorld *self;
 
-        void AppendObject(GameObject *);
-
     private:
         virtual WorldResult::B Preprocess() override;
     };

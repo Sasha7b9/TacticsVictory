@@ -24,7 +24,7 @@ namespace Pi
     {
         friend class Airplane;
     private:
-        AirplaneController(Airplane *airplane) : AirUnitController(airplane, parameters) { }
+        AirplaneController(Airplane *airplane) : AirUnitController(airplane) { }
         virtual ~AirplaneController() {};
         const static UnitParameters parameters;
     };

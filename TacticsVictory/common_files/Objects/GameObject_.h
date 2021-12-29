@@ -71,6 +71,10 @@ namespace Pi
         Node *nodeGeometry = nullptr;           // На этом узле хранится геометрия
 
         static int createdObjects;              // Столько объектов уже создано
+
+        // Прячем эту функцию, чтобы непосредственно нельзя было установить позицию. Позиция устанавливается
+        // через члены UnitParameters
+        void SetNodePosition(const Point3D &position);
     };
 
 

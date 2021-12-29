@@ -3,6 +3,7 @@
 #include "TVBattle.h"
 #include "Scene/World/GameWorld.h"
 #include "PeriodicTasks.h"
+#include "Objects/GameObject_.h"
 
 
 using namespace Pi;
@@ -21,6 +22,11 @@ Battle::Battle()
     TheWorldMgr->SetWorldCreator(&ConstructWorld);
 
     TheWorldMgr->LoadWorld("world/Empty");
+
+    GameObject::Construct();
+
+//    ListPeriodicTask::Self()->Append(TaskFPS::Self(), 5000);
+    ListPeriodicTask::Self()->Append(TaskTraffic::Self(), 1000);
 }
 
 
@@ -31,6 +37,8 @@ Battle::~Battle()
     TheMessageMgr->EndGame();
 
     Log::Destruct();
+
+    GameObject::Destruct();
 }
 
 

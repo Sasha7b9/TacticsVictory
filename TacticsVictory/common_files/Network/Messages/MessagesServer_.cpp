@@ -33,18 +33,14 @@ bool MessageCreateLandscape::Decompress(Decompressor &data)
 void MessageCreateGameObject::Compress(Compressor &data) const
 {
     data << num_objects;
-    data.Write(id,        (uint)sizeof(id[0]) * num_objects);
-    data.Write(type,      (uint)sizeof(type[0][0]) * num_objects * 3);
-    data.Write(transform, (uint)sizeof(transform[0]) * num_objects);
+    data.Write(states,  (uint)sizeof(states[0]) * num_objects);
 }
 
 
 bool MessageCreateGameObject::Decompress(Decompressor &data)
 {
     data >> num_objects;
-    data.Read(id,        (uint)sizeof(id[0]) * num_objects);
-    data.Read(type,      (uint)sizeof(type[0][0]) * num_objects * 3);
-    data.Read(transform, (uint)sizeof(transform[0]) * num_objects);
+    data.Read(states,   (uint)sizeof(states[0]) * num_objects);
 
     return true;
 }
@@ -53,22 +49,14 @@ bool MessageCreateGameObject::Decompress(Decompressor &data)
 void MessageGameObjectState::Compress(Compressor &data) const
 {
     data << num_objects;
-
-    data.Write(id,        (uint)sizeof(id[0]) * num_objects);
-    data.Write(position,  (uint)sizeof(position[0]) * num_objects);
-    data.Write(direction, (uint)sizeof(direction[0]) * num_objects);
-    data.Write(up,        (uint)sizeof(up[0]) * num_objects);
+    data.Write(states, (uint)sizeof(states[0]) * num_objects);
 }
 
 
 bool MessageGameObjectState::Decompress(Decompressor &data)
 {
     data >> num_objects;
-
-    data.Read(id,        (uint)sizeof(id[0]) * num_objects);
-    data.Read(position,  (uint)sizeof(position[0]) * num_objects);
-    data.Read(direction, (uint)sizeof(direction[0]) * num_objects);
-    data.Read(up,        (uint)sizeof(up[0]) * num_objects);
+    data.Read(states, (uint)sizeof(states[0]) * num_objects);
 
     return true;
 }
