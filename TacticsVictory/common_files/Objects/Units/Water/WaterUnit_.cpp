@@ -9,15 +9,9 @@ using namespace Pi;
 Map<WaterUnitObject> WaterUnitObject::objects;
 
 
-WaterUnitObject::WaterUnitObject(TypeWaterUnit type, int id, WaterUnitController *controller) :
-    UnitObject(TypeUnit::Water, id, controller),
+WaterUnitObject::WaterUnitObject(TypeWaterUnit type, const GameObjectParameters *param, int id) :
+    UnitObject(TypeUnit::Water, param, id),
     typeWaterUnit(type)
 {
     objects.Insert(this);
-}
-
-
-WaterUnitController::WaterUnitController(WaterUnitObject *object) :
-    UnitController(object)
-{
 }

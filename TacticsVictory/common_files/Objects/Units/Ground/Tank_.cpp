@@ -1,10 +1,10 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Objects/Units/Ground/Tank_.h"
-#include "Objects/Units/UnitParameters_.h"
+#include "Objects/GameObjectParameters_.h"
 #include "Scene/World/Landscape_.h"
-#include "Objects/Units/Staff/Driver_.h"
-#include "Objects/Units/Staff/DriverTasks_.h"
+#include "Objects/Staff/Driver_.h"
+#include "Objects/Staff/DriverTasks_.h"
 
 
 using namespace Pi;
@@ -20,13 +20,17 @@ Tank *Tank::Create(int id)
 }
 
 
-Tank::Tank(int id) : GroundUnitObject(TypeGroundUnit::Tank, id, new TankController(this))
+Tank::Tank(int id) : GroundUnitObject(TypeGroundUnit::Tank, &parameters, id)
 {
     GetNodeGeometry()->AppendNewSubnode(CreateBody());
     GetNodeGeometry()->AppendNewSubnode(CreateTrack(true));
     GetNodeGeometry()->AppendNewSubnode(CreateTrack(false));
     GetNodeGeometry()->AppendNewSubnode(CreateTower());
     GetNodeGeometry()->AppendNewSubnode(CreateBarrel());
+
+    driver = Driver::Create(this);
+
+    commander = new Commander(this);
 
     objects.Insert(this);
 }
@@ -140,55 +144,6 @@ Node *Tank::CreateBarrel()
 }
 
 
-TankController::TankController(Tank *tank) : GroundUnitController(tank)
-{
-}
-
-
-TankController::~TankController()
-{
-}
-
-
-void TankController::Preprocess()
-{
-    GroundUnitController::Preprocess();
-}
-
-
-CommanderTank::CommanderTank(UnitController *controller) : Commander(controller)
-{
-}
-
-
-void CommanderTank::ParseMove(const CommanderTask *task) const
-{
-    float dest_x = task->destination.x;
-    float dest_y = task->destination.y;
-    float dest_z = Landscape::self->GetHeightCenter(task->destination);
-
-    if (dest_x < 0.0f || dest_x >= (float)Landscape::self->GetSizeX_Columns() ||
-        dest_y < 0.0f || dest_y >= (float)Landscape::self->GetSizeY_Rows())
-    {
-        return;
-    }
-
-    float z = Landscape::self->GetHeightCenter(unit->GetNodePosition());
-
-    if (dest_z != z)
-    {
-        return;
-    }
-
-    driver->AppendTask(new DriverTaskMove(driver, {dest_x, dest_y, dest_z}));
-}
-
-
-DriverTank::DriverTank(UnitController *controller) : Driver(controller)
-{
-}
-
-
-ShooterTank::ShooterTank(UnitController *controller) : Shooter(controller)
+CommanderTank::CommanderTank(GameObject *object) : Commander(object)
 {
 }

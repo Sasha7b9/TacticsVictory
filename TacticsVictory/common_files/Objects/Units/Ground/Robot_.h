@@ -16,63 +16,7 @@ namespace Pi
         Robot(int id = -1);
 
         virtual ~Robot() {};
-    };
 
-
-    class RobotController : public GroundUnitController
-    {
-    public:
-
-        RobotController(Robot *);
-
-        virtual ~RobotController();
-
-        virtual void Preprocess() override;
-
-    private:
-
-        static const UnitParameters parameters;
-    };
-
-
-    class CommanderRobot : public Commander
-    {
-        friend class Commander;
-
-    public:
-
-        virtual ~CommanderRobot() {}
-
-    protected:
-
-        CommanderRobot(UnitController *);
-    };
-
-
-    class DriverRobot : public Driver
-    {
-        friend class Driver;
-
-    public:
-
-        virtual ~DriverRobot() {}
-
-    protected:
-
-        DriverRobot(UnitController *);
-    };
-
-
-    class ShooterRobot : public Shooter
-    {
-        friend class Shooter;
-
-    public:
-
-        virtual ~ShooterRobot() {}
-
-    protected:
-
-        ShooterRobot(UnitController *);
+        static const GameObjectParameters parameters;
     };
 }

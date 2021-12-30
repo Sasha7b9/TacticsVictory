@@ -16,66 +16,7 @@ namespace Pi
         Helicopter(int id);
 
         virtual ~Helicopter() {};
-    };
 
-
-    class HelicopterController final : public AirUnitController
-    {
-    public:
-
-        HelicopterController(Helicopter *);
-        ~HelicopterController();
-
-        virtual void Preprocess() override;
-
-    private:
-
-        static const UnitParameters parameters;
-
-        HelicopterController(const HelicopterController &);
-
-        HelicopterController &operator=(const HelicopterController &) { return *this; }
-    };
-
-
-    class CommanderHelicopter : public Commander
-    {
-        friend class Commander;
-
-    public:
-
-        virtual ~CommanderHelicopter() {}
-
-    protected:
-
-        CommanderHelicopter(UnitController *);
-    };
-
-
-    class DriverHelicopter : public Driver
-    {
-        friend class Driver;
-
-    public:
-
-        virtual ~DriverHelicopter() {}
-
-    protected:
-
-        DriverHelicopter(UnitController *);
-    };
-
-
-    class ShooterHelicopter : public Shooter
-    {
-        friend class Shooter;
-
-    public:
-
-        virtual ~ShooterHelicopter() {}
-
-    protected:
-
-        ShooterHelicopter(UnitController *);
+        static const GameObjectParameters parameters;
     };
 }

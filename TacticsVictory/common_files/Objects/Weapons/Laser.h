@@ -16,17 +16,8 @@ namespace Pi
         Laser(int id = -1);
 
         virtual ~Laser() {};
-    };
 
-
-    class LaserController : public WeaponController
-    {
-    public:
-
-        LaserController(Laser *);
-        virtual ~LaserController();
-
-        virtual void Preprocess() override;
+        static const GameObjectParameters parameters;
     };
 }
 

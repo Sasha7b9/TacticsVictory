@@ -16,18 +16,7 @@ namespace Pi
         Rocket(int id = -1);
 
         virtual ~Rocket() {};
-    };
 
-
-    class RocketController : public AmmoController
-    {
-        friend class Rocket;
-
-    private:
-
-        RocketController(Rocket *);
-        virtual ~RocketController();
-
-        virtual void Preprocess() override;
+        static const GameObjectParameters parameters;
     };
 }

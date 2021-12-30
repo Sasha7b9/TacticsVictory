@@ -12,22 +12,6 @@ GameObject *Laser::Create()
 }
 
 
-Laser::Laser(int id) : WeaponObject(TypeWeapon::Laser, id, new LaserController(this))
+Laser::Laser(int id) : WeaponObject(TypeWeapon::Laser, &parameters, id)
 {
-}
-
-
-LaserController::LaserController(Laser *laser) : WeaponController(laser)
-{
-}
-
-
-LaserController::~LaserController()
-{
-}
-
-
-void LaserController::Preprocess()
-{
-    WeaponController::Preprocess();
 }

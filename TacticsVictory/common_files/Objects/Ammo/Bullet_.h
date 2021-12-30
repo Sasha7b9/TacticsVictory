@@ -15,21 +15,7 @@ namespace Pi
 
         Bullet(int id = -1);
         virtual ~Bullet() {};
-    };
 
-
-    class BulletController : public AmmoController
-    {
-    public:
-
-        BulletController(Bullet *);
-
-        virtual ~BulletController();
-
-        virtual void Preprocess() override;
-
-    private:
-
-        BulletController(const BulletController &);
+        static const GameObjectParameters parameters;
     };
 }

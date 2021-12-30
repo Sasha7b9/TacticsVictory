@@ -16,63 +16,7 @@ namespace Pi
         Worm(int id = -1);
 
         virtual ~Worm() {};
-    };
 
-
-    class WormController : public GroundUnitController
-    {
-    public:
-
-        WormController(Worm *);
-
-        virtual ~WormController();
-
-        virtual void Preprocess() override;
-
-    private:
-
-        static const UnitParameters parameters;
-    };
-
-
-    class CommanderWorm : public Commander
-    {
-        friend class Commander;
-
-    public:
-
-        virtual ~CommanderWorm() {}
-
-    protected:
-
-        CommanderWorm(UnitController *);
-    };
-
-
-    class DriverWorm : public Driver
-    {
-        friend class Driver;
-
-    public:
-
-        virtual ~DriverWorm() {}
-
-    protected:
-
-        DriverWorm(UnitController *);
-    };
-
-
-    class ShooterWorm : public Shooter
-    {
-        friend class Shooter;
-
-    public:
-
-        virtual ~ShooterWorm() {}
-
-    protected:
-
-        ShooterWorm(UnitController *);
+        static const GameObjectParameters parameters;
     };
 }

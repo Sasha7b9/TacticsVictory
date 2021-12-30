@@ -4,7 +4,7 @@
 
 namespace Pi
 {
-    class UnitController;
+    class GameObject;
 
     // Выбирает цели и производит стрельбу на основании поступающих заданий и окружающей обстановки
     class Shooter
@@ -13,14 +13,14 @@ namespace Pi
 
         virtual ~Shooter() {}
 
-        static Shooter *New(UnitController *);
+        static Shooter *New(GameObject *);
 
         void Update(float dT);
 
     protected:
 
-        Shooter(UnitController *);
+        Shooter(GameObject *);
 
-        UnitController * const controller = nullptr;
+        GameObject * const object = nullptr;
     };
 }

@@ -11,21 +11,6 @@
 using namespace Pi;
 
 
-void GameObjectController::Move(float dT)
-{
-    if (property->Selected())
-    {
-        Point3D coord = GameWorld::self->TransformWorldCoordToDisplay(gameObject->GetWorldPosition());
-        coord.x -= property->infoWindow->GetWidgetSize().x / 2;
-        coord.y -= property->infoWindow->GetWidgetSize().y / 2;
-        coord.x = (float)((int)coord.x);
-        coord.y = (float)((int)coord.y);
-        property->infoWindow->SetWidgetPosition(coord);
-        property->infoWindow->Invalidate();
-    }
-}
-
-
 GameObjectProperty::GameObjectProperty(GameObject &_gameObject) :
     Property(PiTypeProperty::GameObject),
     gameObject(_gameObject),

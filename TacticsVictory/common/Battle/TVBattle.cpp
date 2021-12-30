@@ -25,8 +25,8 @@ Battle::Battle()
 
     GameObject::Construct();
 
-//    ListPeriodicTask::Self()->Append(TaskFPS::Self(), 5000);
-    ListPeriodicTask::Self()->Append(TaskTraffic::Self(), 1000);
+//    ListPeriodicTask::Self()->Append(TaskFPS::Self(), 1000);
+//    ListPeriodicTask::Self()->Append(TaskTraffic::Self(), 1000);
 }
 
 

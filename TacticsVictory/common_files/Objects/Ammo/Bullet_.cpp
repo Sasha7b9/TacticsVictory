@@ -12,30 +12,6 @@ GameObject *Bullet::Create()
 }
 
 
-Bullet::Bullet(int id) : AmmoObject(TypeAmmo::Bullet, id, new BulletController(this))
+Bullet::Bullet(int id) : AmmoObject(TypeAmmo::Bullet, &parameters, id)
 {
-}
-
-
-BulletController::BulletController(Bullet *bullet) : AmmoController(bullet)
-{
-
-}
-
-
-BulletController::BulletController(const BulletController &controller) : AmmoController(controller)
-{
-
-}
-
-
-BulletController::~BulletController()
-{
-
-}
-
-
-void BulletController::Preprocess()
-{
-    AmmoController::Preprocess();
 }

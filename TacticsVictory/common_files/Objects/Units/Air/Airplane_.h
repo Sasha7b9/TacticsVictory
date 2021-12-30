@@ -17,15 +17,6 @@ namespace Pi
     private:
         Airplane(int id = -1);
         virtual ~Airplane() {}
-    };
-
-
-    class AirplaneController final : public AirUnitController
-    {
-        friend class Airplane;
-    private:
-        AirplaneController(Airplane *airplane) : AirUnitController(airplane) { }
-        virtual ~AirplaneController() {};
-        const static UnitParameters parameters;
+        static const GameObjectParameters parameters;
     };
 }

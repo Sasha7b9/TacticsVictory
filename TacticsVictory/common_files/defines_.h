@@ -23,4 +23,4 @@ typedef unsigned long  ulong;
 #define LOCAL_ADDRESS "192.168.100.34"
 
 #define REMOTE_ADDRESS "62.109.4.198"
-//#define REMOTE_ADDRESS "192.168.100.110"
+//#define REMOTE_ADDRESS "192.168.100.34"

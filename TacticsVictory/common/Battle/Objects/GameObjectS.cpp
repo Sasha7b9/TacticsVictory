@@ -6,12 +6,6 @@
 using namespace Pi;
 
 
-void GameObjectController::Move(float dT)
-{
-
-}
-
-
 GameObjectProperty::GameObjectProperty(GameObject &_gameObject) :
     Property(PiTypeProperty::GameObject),
     gameObject(_gameObject)

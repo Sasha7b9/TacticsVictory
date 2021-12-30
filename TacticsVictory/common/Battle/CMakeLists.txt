@@ -28,18 +28,17 @@ add_definitions(-DPiSERVER)
 file(GLOB SRC                                          *.h *.*c*
                                     ../../common_files/*.*)
 file(GLOB NETWORK                                      Network/*.*)
-file(GLOB NETWORK_MESSAGES          ../../common_files/Network/Messages/*.*
-                                                       Network/Messages/*.*)
+file(GLOB NETWORK_MESSAGES          ../../common_files/Network/Messages/*.*)
 file(GLOB OBJECTS                   ../../common_files/Objects/*.*
                                                        Objects/*.*)
 file(GLOB OBJECTS_AMMO              ../../common_files/Objects/Ammo/*.*
                                                        Objects/Ammo/*.*)
+file(GLOB OBJECTS_STAFF             ../../common_files/Objects/Staff/*.*)
 file(GLOB OBJECTS_STRUCTURES        ../../common_files/Objects/Structures/*.*)
 file(GLOB OBJECTS_UNITS             ../../common_files/Objects/Units/*.*
                                                        Objects/Units/*.*)
 file(GLOB OBJECTS_UNITS_AIR         ../../common_files/Objects/Units/Air/*.*)
 file(GLOB OBJECTS_UNITS_GROUND      ../../common_files/Objects/Units/Ground/*.*)
-file(GLOB OBJECTS_UNITS_STAFF       ../../common_files/Objects/Units/Staff/*.*)
 file(GLOB OBJECTS_UNITS_WATER       ../../common_files/Objects/Units/Water/*.*)
 file(GLOB OBJECTS_WEAPONS           ../../common_files/Objects/Weapons/*.*)
 file(GLOB SCENE_WORLD               ../../common_files/Scene/World/Landscape_.*
@@ -55,11 +54,11 @@ source_group(Network                FILES ${NETWORK})
 source_group(Network\\Messages      FILES ${NETWORK_MESSAGES})
 source_group(Objects                FILES ${OBJECTS})
 source_group(Objects\\Ammo          FILES ${OBJECTS_AMMO})
+source_group(Objects\\Staff         FILES ${OBJECTS_STAFF})
 source_group(Objects\\Structures    FILES ${OBJECTS_STRUCTURES})
 source_group(Objects\\Units         FILES ${OBJECTS_UNITS})
 source_group(Objects\\Units\\Air    FILES ${OBJECTS_UNITS_AIR})
 source_group(Objects\\Units\\Ground FILES ${OBJECTS_UNITS_GROUND})
-source_group(Objects\\Units\\Staff  FILES ${OBJECTS_UNITS_STAFF})
 source_group(Objects\\Units\\Water  FILES ${OBJECTS_UNITS_WATER})
 source_group(Objects\\Weapons       FILES ${OBJECTS_WEAPONS})
 source_group(Scene\\World           FILES ${SCENE_WORLD})
@@ -72,11 +71,11 @@ add_executable(${PROJECT_NAME} ${SRC}
                                ${NETWORK_MESSAGES}
                                ${OBJECTS}
                                ${OBJECTS_AMMO}
+                               ${OBJECTS_STAFF}
                                ${OBJECTS_STRUCTURES}
                                ${OBJECTS_UNITS}
                                ${OBJECTS_UNITS_AIR}
                                ${OBJECTS_UNITS_GROUND}
-                               ${OBJECTS_UNITS_STAFF}
                                ${OBJECTS_UNITS_WATER}
                                ${OBJECTS_WEAPONS}
                                ${SCENE_WORLD}
@@ -93,8 +92,8 @@ copy_to_dir_exe($(OutputPath)${PROJECT_NAME} ${_INSTALL_DIR_})
 
 set_work_directory()
 
-message("CMAKE_BINARY_DIR:         ${CMAKE_BINARY_DIR}")
-message("CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
+#message("CMAKE_BINARY_DIR:         ${CMAKE_BINARY_DIR}")
+#message("CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
 #message("CMAKE_SOURCE_DIR:         ${CMAKE_SOURCE_DIR}")
 #message("CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
 #message("PROJECT_BINARY_DIR:       ${PROJECT_BINARY_DIR}")

@@ -2,14 +2,19 @@
 #pragma once
 #include "System/Events.h"
 #include "Objects/GameObjectTypes_.h"
+#include "Objects/GameObjectParameters_.h"
+#include "Objects/Staff/CommanderTasks_.h"
 
 
 namespace Pi
 {
-    class GameObjectController;
     class GameObjectProperty;
     class InfoWindow;
     class UnitObject;
+    class Commander;
+    class Driver;
+    class Shooter;
+    struct CommanderTask;
 
 
     class GameObject : public Node, public MapElement<GameObject>
@@ -18,91 +23,71 @@ namespace Pi
 
         typedef int KeyType;
 
-        KeyType GetKey() const { return id; }
+        static Map<GameObject> objects;
+
+        static GameObject *empty;
 
         static void Construct();
-
         static void Destruct();
 
-        GameObjectProperty &GetGameObjectProperty() { return *(GameObjectProperty *)GetProperty(PiTypeProperty::GameObject); }
+        GameObjectParameters *params = nullptr;
+
+        const TypeGameObject typeGameObject;
+
+        Driver *driver = nullptr;      // Это водитель
+
+        KeyType GetKey() const { return params->id; }
+
+        bool IsUnit() const { return typeGameObject == TypeGameObject::Unit; }
+
+        Node *GetNodeGeometry() { return nodeGeometry; }
+
+        void SetDirection(const Vector3D &direction, const Vector3D &up = Vector3D::UP);
+
+        // Преобразует к указателю на UnitObject, если возможно, и возвращает nullptr в ином случае
+        UnitObject *GetUnitObject() { return IsUnit() ? (UnitObject *)this : nullptr; }
+        UnitObject *GetUnitObject() const { return IsUnit() ? (UnitObject *)this : nullptr; }
+
+        // Добавить задание в конец очереди (оно выполнится после всех заданий)
+        void AppendTask(CommanderTask *task);
 
         // Добавить объект в игру
         bool AppendInGame(int x, int y);
 
-        template<typename T> T *GetController() { return (T *)Node::GetController(); }
+        virtual void Move(float dT);
 
         // Возвращает указатель на объект, кторый находится в экранных координатах coord
         static GameObject &GetFromScreen(const Point2D &coord);
 
-        // Преобразует к указателю на UnitObject, если возможно, и возвращает nullptr в ином случае
-        UnitObject *GetUnitObject() { return IsUnit() ? (UnitObject *)this : nullptr; }
+        GameObjectProperty &GetGameObjectProperty() { return *(GameObjectProperty *)GetProperty(PiTypeProperty::GameObject); }
 
-        bool IsUnit() const { return typeGameObject == TypeGameObject::Unit; }
+    protected:
 
-        static GameObject *empty;
+        GameObject(TypeGameObject, const GameObjectParameters *, int);
 
-        void SetDirection(const Vector3D &direction, const Vector3D &up = Vector3D::UP);
+        virtual ~GameObject();
 
-        Node *GetNodeGeometry() { return nodeGeometry; }
-
-        Node *GetMainNode() { return this; }
+        Commander *commander = nullptr;     // Это командир
 
         // Создаёт узел с именем name и подвешивает к нему узел с геометрией
         Node *CreateNodeForGeometry(pchar name, Node *nodeGeometry);
 
-        const TypeGameObject typeGameObject;
-
-        static Map<GameObject> objects;
-
-        GameObjectController * const controller = nullptr;
-
-        const int id = 0;
-
-        const int numberThread = 0;            // Номер потока, который будет обрабатывать этот объект
-
-    protected:
-
-        GameObject(TypeGameObject, int, GameObjectController *);
-
-        virtual ~GameObject();
-
     private:
+
+        GameObjectProperty *property        = nullptr;
+
+        // Может ли обрабатывать задания типа type
+        bool CanExecute(CommanderTask::Type type) const;
+
+        virtual void Preprocess() override;
 
         Node *nodeGeometry = nullptr;           // На этом узле хранится геометрия
 
         static int createdObjects;              // Столько объектов уже создано
 
         // Прячем эту функцию, чтобы непосредственно нельзя было установить позицию. Позиция устанавливается
-        // через члены UnitParameters
+        // через члены GameObjectParameters
         void SetNodePosition(const Point3D &position);
-    };
-
-
-    class GameObjectController : public Controller
-    {
-        friend class GameObject;
-
-    public:
-    
-        virtual ~GameObjectController() {};
-    
-        virtual void Preprocess() override;
-
-        virtual void Move(float dT);
-        virtual void Move() override {};
-    
-    protected:
-    
-        GameObjectController(GameObject *);
-
-        GameObject * const gameObject = nullptr;
-    
-    private:
-
-        float scaleDefault = 1.0F;
-        Vector3D rotateDefault {Vector3D::ZERO};
-        Point3D coordGame;
-        GameObjectProperty *property = nullptr;
     };
 
 
@@ -133,8 +118,6 @@ namespace Pi
         static GameObjectProperty *GetFromScreen(const Point2D &coord);
 
         GameObject &gameObject;
-
-    private:
 
         bool        selected = false;
         InfoWindow *infoWindow = nullptr;

@@ -6,14 +6,8 @@
 using namespace Pi;
 
 
-StructureObject::StructureObject(TypeStructure type, int id, StructureController *controller) :
-    GameObject(TypeGameObject::Structure, id, controller),
+StructureObject::StructureObject(TypeStructure type, const GameObjectParameters *params, int id) :
+    GameObject(TypeGameObject::Structure, params, id),
     typeStructure(type)
-{
-}
-
-
-
-StructureController::StructureController(StructureObject *structure) : GameObjectController(structure)
 {
 }

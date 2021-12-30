@@ -9,16 +9,9 @@ using namespace Pi;
 Map<GroundUnitObject> GroundUnitObject::objects;
 
 
-GroundUnitObject::GroundUnitObject(TypeGroundUnit type, int id, GroundUnitController *controller) :
-    UnitObject(TypeUnit::Ground, id, controller),
+GroundUnitObject::GroundUnitObject(TypeGroundUnit type, const GameObjectParameters *params, int id) :
+    UnitObject(TypeUnit::Ground, params, id),
     typeGroundUnit(type)
 {
     objects.Insert(this);
-}
-
-
-
-GroundUnitController::GroundUnitController(GroundUnitObject *groundUnit) :
-    UnitController(groundUnit)
-{
 }

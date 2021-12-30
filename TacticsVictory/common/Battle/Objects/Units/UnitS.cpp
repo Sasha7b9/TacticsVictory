@@ -16,7 +16,8 @@ void UnitObject::Destruct()
 }
 
 
-UnitObject::UnitObject(TypeUnit type, int id, UnitController *controller) : GameObject(TypeGameObject::Unit, id, controller), typeUnit(type)
+UnitObject::UnitObject(TypeUnit type, const GameObjectParameters *params, int id) :
+    GameObject(TypeGameObject::Unit, params, id), typeUnit(type)
 {
     objects.Insert(this);
 }

@@ -16,62 +16,7 @@ namespace Pi
         Boat(int id = -1);
 
         virtual ~Boat() {};
-    };
 
-
-    class BoatController : public WaterUnitController
-    {
-    public:
-
-        BoatController(Boat *);
-        virtual ~BoatController();
-
-        virtual void Preprocess() override;
-
-    private:
-
-        static const UnitParameters parameters;
-    };
-
-
-    class CommanderBoat : public Commander
-    {
-        friend class Commander;
-
-    public:
-
-        virtual ~CommanderBoat() {}
-
-    protected:
-
-        CommanderBoat(UnitController *);
-    };
-
-
-    class DriverBoat : public Driver
-    {
-        friend class Driver;
-
-    public:
-
-        virtual ~DriverBoat() {}
-
-    protected:
-
-        DriverBoat(UnitController *);
-    };
-
-
-    class ShooterBoat : public Shooter
-    {
-        friend class Shooter;
-
-    public:
-
-        virtual ~ShooterBoat() {}
-
-    protected:
-
-        ShooterBoat(UnitController *);
+        static const GameObjectParameters parameters;
     };
 }

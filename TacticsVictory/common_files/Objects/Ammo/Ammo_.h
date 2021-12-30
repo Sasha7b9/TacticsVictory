@@ -5,9 +5,6 @@
 
 namespace Pi
 {
-    class AmmoController;
-
-
     class AmmoObject : public GameObject
     {
     public:
@@ -17,22 +14,8 @@ namespace Pi
 
     protected:
 
-        AmmoObject(TypeAmmo, int, AmmoController *);
+        AmmoObject(TypeAmmo, const GameObjectParameters *, int);
 
         TypeAmmo typeAmmo;
-    };
-
-
-    class AmmoController : public GameObjectController
-    {
-        friend class AmmoObject;
-
-    public:
-
-        virtual ~AmmoController() {};
-
-    protected:
-
-        AmmoController(AmmoObject *);
     };
 }

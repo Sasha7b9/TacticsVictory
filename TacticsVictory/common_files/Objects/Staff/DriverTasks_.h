@@ -19,7 +19,6 @@ namespace Pi
         // Возвращает true, если задавние завершено
         bool Completed() const { return completed; }
     protected:
-        UnitController *const controller = nullptr;
         UnitObject     *const unit       = nullptr;
         bool                  completed  = false;
         // Эта функция вызывается, когда задание завершено
@@ -77,4 +76,5 @@ namespace Pi
     private:
         virtual void ExecuteAfterCompletion() override {}
     };
+
 }

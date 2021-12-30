@@ -18,18 +18,6 @@ namespace Pi
 
     protected:
 
-        WaterUnitObject(TypeWaterUnit, int, WaterUnitController *);
-    };
-
-
-    class WaterUnitController : public UnitController
-    {
-    public:
-
-        virtual ~WaterUnitController() {};
-
-    protected:
-
-        WaterUnitController(WaterUnitObject *);
+        WaterUnitObject(TypeWaterUnit, const GameObjectParameters *, int);
     };
 }

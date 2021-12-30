@@ -12,23 +12,6 @@ GameObject *RocketLauncher::Create()
 }
 
 
-RocketLauncher::RocketLauncher(int id) : WeaponObject(TypeWeapon::RocketLauncher, id, new RocketLauncherController(this))
+RocketLauncher::RocketLauncher(int id) : WeaponObject(TypeWeapon::RocketLauncher, &parameters, id)
 {
-}
-
-
-RocketLauncherController::RocketLauncherController(RocketLauncher *rocketLauncher) :
-    WeaponController(rocketLauncher)
-{
-}
-
-
-RocketLauncherController::~RocketLauncherController()
-{
-}
-
-
-void RocketLauncherController::Preprocess()
-{
-    WeaponController::Preprocess();
 }

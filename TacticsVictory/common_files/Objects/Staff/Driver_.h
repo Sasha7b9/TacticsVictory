@@ -6,7 +6,7 @@
 namespace Pi
 {
     class DriverTask;
-    struct UnitParameters;
+    struct GameObjectParameters;
 
 
     // Класс для управления передвижением юнита по маршрутам, проложенным штурманом (Navigator)
@@ -16,9 +16,13 @@ namespace Pi
         friend class DriverTask;
         friend class UnitController;
     public:
-        Driver(UnitController *);
+        Driver(GameObject *);
+
+        virtual ~Driver();
 
         void AppendTask(DriverTask *);
+
+        virtual void Update(float dT);
 
         // Двинуть юнита вперёд
         void MoveForward(float dT);
@@ -38,23 +42,17 @@ namespace Pi
         // "Скомпенсированный" тангаж. После него азимут не сбивается
         void RotatePitchCompensate(float dT);
 
+        static Driver *Create(GameObject *);
+
     protected:
 
-        virtual ~Driver();
+        GameObject *const object = nullptr;
 
-        UnitController *const controller = nullptr;
-
-        UnitObject *const unit = nullptr;
-
-        UnitParameters *const param = nullptr;
+        GameObjectParameters *const params = nullptr;
 
     private:
 
         Array<DriverTask *>  tasks;
-
-        static Driver *Create(UnitController *);
-
-        virtual void Update(float dT);
 
         // Собрать статистику по завершении Update()
         void ApplyTransform();

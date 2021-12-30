@@ -13,25 +13,6 @@ GameObject *CivilianPlant::Create()
 
 
 CivilianPlant::CivilianPlant(int id) :
-    StructureObject(TypeStructure::CivilianPlant, id, new CivilianPlantController(this))
+    StructureObject(TypeStructure::CivilianPlant, &parameters, id)
 {
-}
-
-
-
-CivilianPlantController::CivilianPlantController(CivilianPlant *plant) : StructureController(plant)
-{
-
-}
-
-
-CivilianPlantController::~CivilianPlantController()
-{
-
-}
-
-
-void CivilianPlantController::Preprocess()
-{
-    StructureController::Preprocess();
 }

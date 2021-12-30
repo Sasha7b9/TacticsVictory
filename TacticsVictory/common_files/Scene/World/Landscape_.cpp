@@ -1024,6 +1024,18 @@ LandscapeController::LandscapeController() : Controller(PiTypeController::Landsc
 }
 
 
+LandscapeController::~LandscapeController()
+{
+    for (int i = 0; i < numThreads; i++)
+    {
+        if(threads[i])
+        {
+            delete threads[i];
+        }
+    }
+}
+
+
 void LandscapeController::Preprocess()
 {
     Controller::Preprocess();
@@ -1095,8 +1107,6 @@ void LandscapeController::CreateGeometeryZones(const Thread *thread, void *)
             landscape->CreateGeometryForZone(TZone::Get(x, y));
         }
     }
-
-    delete thread;
 }
 
 

@@ -9,16 +9,9 @@ using namespace Pi;
 Map<AirUnitObject> AirUnitObject::objects;
 
 
-AirUnitObject::AirUnitObject(TypeAirUnit type, int id, AirUnitController *controller) :
-    UnitObject(TypeUnit::Air, id, controller),
+AirUnitObject::AirUnitObject(TypeAirUnit type, const GameObjectParameters *param, int id) :
+    UnitObject(TypeUnit::Air, param, id),
     typeAirUnit(type)
 {
     objects.Insert(this);
-}
-
-
-
-AirUnitController::AirUnitController(AirUnitObject *object) :
-    UnitController(object)
-{
 }

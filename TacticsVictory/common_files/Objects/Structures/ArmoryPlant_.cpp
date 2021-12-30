@@ -12,22 +12,6 @@ ArmoryPlant *ArmoryPlant::Create()
 }
 
 
-ArmoryPlant::ArmoryPlant(int id) : StructureObject(TypeStructure::ArmoryPlant, id, new ArmoryPlantController(this))
+ArmoryPlant::ArmoryPlant(int id) : StructureObject(TypeStructure::ArmoryPlant, &parameters, id)
 {
-}
-
-
-ArmoryPlantController::ArmoryPlantController(ArmoryPlant *plant) : StructureController(plant)
-{
-}
-
-
-ArmoryPlantController::~ArmoryPlantController()
-{
-}
-
-
-void ArmoryPlantController::Preprocess()
-{
-    StructureController::Preprocess();
 }

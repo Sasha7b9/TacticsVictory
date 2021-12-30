@@ -5,8 +5,6 @@
 
 namespace Pi
 {
-    class AirUnitController;
-
     class AirUnitObject : public UnitObject, public MapElement<AirUnitObject>
     {
     public:
@@ -17,19 +15,7 @@ namespace Pi
 
     protected:
 
-        AirUnitObject(TypeAirUnit, int, AirUnitController *);
-    };
-
-
-    class AirUnitController : public UnitController
-    {
-    public:
-
-        virtual ~AirUnitController() {};
-
-    protected:
-
-        AirUnitController(AirUnitObject *);
+        AirUnitObject(TypeAirUnit, const GameObjectParameters *, int);
     };
 }
 

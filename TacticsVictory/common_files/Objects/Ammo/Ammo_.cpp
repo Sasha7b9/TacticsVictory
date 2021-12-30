@@ -16,14 +16,8 @@ void AmmoObject::Destruct()
 }
 
 
-AmmoObject::AmmoObject(TypeAmmo type, int id, AmmoController *controller) :
-    GameObject(TypeGameObject::Ammo, id, controller),
+AmmoObject::AmmoObject(TypeAmmo type, const GameObjectParameters *params, int id) :
+    GameObject(TypeGameObject::Ammo, params, id),
     typeAmmo(type)
-{
-}
-
-
-
-AmmoController::AmmoController(AmmoObject *object) : GameObjectController(object)
 {
 }

@@ -16,16 +16,7 @@ namespace Pi
         RocketLauncher(int id = -1);
 
         virtual ~RocketLauncher() {}
-    };
 
-
-    class RocketLauncherController : public WeaponController
-    {
-    public:
-
-        RocketLauncherController(RocketLauncher *);
-        virtual ~RocketLauncherController();
-
-        virtual void Preprocess() override;
+        static const GameObjectParameters parameters;
     };
 }

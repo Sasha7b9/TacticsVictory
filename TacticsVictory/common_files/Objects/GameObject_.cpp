@@ -10,6 +10,13 @@
 #include "PeriodicTasks.h"
 #include "GameState.h"
 #include "Objects/PoolObjects_.h"
+#include "Objects/Units/Water/WaterUnit_.h"
+#include "Objects/Units/Air/AirUnit_.h"
+#include "Objects/Staff/Commander_.h"
+
+#ifdef PiCLIENT
+    #include "Objects/InfoWindow.h"
+#endif
 
 
 using namespace Pi;
@@ -20,13 +27,21 @@ int             GameObject::createdObjects = 0;
 Map<GameObject> GameObject::objects;
 
 
+static const GameObjectParameters parametersEmpty
+{
+    {},
+    true,
+    0
+};
+
+
 void GameObject::Construct()
 {
     PoolObjects::Consruct();
 
 #ifdef PiCLIENT
 
-    empty = new GameObject(TypeGameObject::Empty, 0, new GameObjectController(nullptr));
+    empty = new GameObject(TypeGameObject::Empty, &parametersEmpty, 0);
 
     AmmoObject::Construct();
     UnitObject::Construct();
@@ -54,14 +69,19 @@ void GameObject::Destruct()
 }
 
 
-GameObject::GameObject(TypeGameObject type, int _id, GameObjectController *_controller) :
+GameObject::GameObject(TypeGameObject type, const GameObjectParameters *_param, int _id) :
     Node(),
-    typeGameObject(type),
-    controller(_controller),
-    id(_id == -1 ? ++createdObjects : _id),
-    numberThread(id % TaskMain::NumberThreads())
+    typeGameObject(type)
 {
-    SetController(controller);
+    int id = _id == -1 ? ++createdObjects : _id;
+
+    params = PoolObjects::AllocateParameters(id);
+
+    *params = *_param;
+
+    params->isDead = false;
+    params->id = id;
+    params->numberThread = params->id %TaskMain::NumberThreads();
 
     AddProperty(new GameObjectProperty(*this));
 
@@ -77,8 +97,17 @@ GameObject::GameObject(TypeGameObject type, int _id, GameObjectController *_cont
 
 GameObject::~GameObject()
 {
-    delete controller;
+    delete commander;
+    delete driver;
 }
+
+
+void GameObject::AppendTask(CommanderTask *task)
+{
+    task->SetGameObject(this);
+    commander->AppendTask(task);
+}
+
 
 
 bool GameObject::AppendInGame(int _x, int _y)
@@ -105,7 +134,7 @@ bool GameObject::AppendInGame(int _x, int _y)
             {
                 height += Landscape::self->GetHeightAccurately(x, y);
             }
-            unit->GetUnitController()->param->position = Point3D(x, y, height);
+            unit->params->position = Point3D(x, y, height);
             append = true;
         }
         else if (unit->typeUnit == TypeUnit::Ground)
@@ -113,7 +142,7 @@ bool GameObject::AppendInGame(int _x, int _y)
             if (!Landscape::self->UnderWater(_x, _y))
             {
                 float height = Landscape::self->GetHeightAccurately(x, y);
-                unit->GetUnitController()->param->position = Point3D(x, y, height);
+                unit->params->position = Point3D(x, y, height);
                 append = true;
             }
         }
@@ -121,7 +150,7 @@ bool GameObject::AppendInGame(int _x, int _y)
         {
             if (Landscape::self->UnderWater(_x, _y))
             {
-                unit->GetUnitController()->param->position = Point3D(x, y, Water::Level());
+                unit->params->position = Point3D(x, y, Water::Level());
                 append = true;
             }
         }
@@ -143,9 +172,77 @@ void GameObject::SetNodePosition(const Point3D &position)
 }
 
 
-GameObjectController::GameObjectController(GameObject *_object) : gameObject(_object)
+void GameObject::Move(float dT)
 {
+#ifdef PiCLIENT
 
+    if (property->Selected())
+    {
+        Point3D coord = GameWorld::self->TransformWorldCoordToDisplay(GetWorldPosition());
+        coord.x -= property->infoWindow->GetWidgetSize().x / 2;
+        coord.y -= property->infoWindow->GetWidgetSize().y / 2;
+        coord.x = (float)((int)coord.x);
+        coord.y = (float)((int)coord.y);
+        property->infoWindow->SetWidgetPosition(coord);
+        property->infoWindow->Invalidate();
+    }
+
+#endif
+}
+
+
+void GameObject::Preprocess()
+{
+    property = (GameObjectProperty *)GetProperty(PiTypeProperty::GameObject);
+}
+
+
+bool GameObject::CanExecute(CommanderTask::Type task) const
+{
+    switch (task)
+    {
+    case CommanderTask::Type::Move:
+    case CommanderTask::Type::Rotate:
+    case CommanderTask::Type::Test:
+        return true;
+        break;
+
+    case CommanderTask::Type::Dive:
+    {
+        UnitObject *unit = GetUnitObject();
+        if (unit)
+        {
+            WaterUnitObject *water = unit->GetWaterUnit();
+            if (water)
+            {
+                if (water->typeWaterUnit == TypeWaterUnit::Submarine)
+                {
+                    return true;
+                }
+            }
+        }
+    }
+    break;
+
+    case CommanderTask::Type::FreeFlight:
+    {
+        UnitObject *unit = GetUnitObject();
+        if (unit)
+        {
+            AirUnitObject *air = unit->GetAirUnit();
+            if (air->typeAirUnit == TypeAirUnit::Airplane)
+            {
+                return true;
+            }
+        }
+    }
+    break;
+
+    case CommanderTask::Type::Count:
+        break;
+    }
+
+    return false;
 }
 
 
@@ -159,11 +256,9 @@ GameObject &GameObject::GetFromScreen(const Point2D &coord)
 
 void GameObject::SetDirection(const Vector3D &direction, const Vector3D &up)
 {
-    Vector3D front = direction;
-    Vector3D right = Cross(front, up).Normalize();
-    Vector3D top = Cross(right, front).Normalize();
+    Vector3D right = Cross(direction, up).Normalize();
 
-    GetNodeGeometry()->SetNodeMatrix3D({right, front, top});
+    GetNodeGeometry()->SetNodeMatrix3D({right, direction, up});
 }
 
 
@@ -173,12 +268,6 @@ Node *GameObject::CreateNodeForGeometry(pchar name, Node *_nodeGeometry)
     node->SetNodeName(name);
     node->AppendNewSubnode(_nodeGeometry);
     return node;
-}
-
-
-void GameObjectController::Preprocess()
-{
-    property = (GameObjectProperty *)gameObject->GetProperty(PiTypeProperty::GameObject);
 }
 
 

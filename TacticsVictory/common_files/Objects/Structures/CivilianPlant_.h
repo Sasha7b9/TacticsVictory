@@ -16,19 +16,7 @@ namespace Pi
         CivilianPlant(int id = -1);
 
         virtual ~CivilianPlant() {};
-    };
 
-
-    class CivilianPlantController : public StructureController
-    {
-        friend class CivilianPlant;
-
-    private:
-
-        CivilianPlantController(CivilianPlant *);
-
-        virtual ~CivilianPlantController();
-
-        virtual void Preprocess() override;
+        static const GameObjectParameters parameters;
     };
 }

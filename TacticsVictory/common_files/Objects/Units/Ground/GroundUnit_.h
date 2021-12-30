@@ -6,7 +6,7 @@
 namespace Pi
 {
     class Tank;
-    class GroundUnitController;
+
 
     class GroundUnitObject : public UnitObject, public MapElement<GroundUnitObject>
     {
@@ -20,18 +20,6 @@ namespace Pi
 
     protected:
 
-        GroundUnitObject(TypeGroundUnit, int, GroundUnitController *);
-    };
-
-
-    class GroundUnitController : public UnitController
-    {
-    public:
-
-        virtual ~GroundUnitController() {}
-
-    protected:
-
-        GroundUnitController(GroundUnitObject *);
+        GroundUnitObject(TypeGroundUnit, const GameObjectParameters *, int);
     };
 }

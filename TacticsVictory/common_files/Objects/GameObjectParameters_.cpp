@@ -1,6 +1,6 @@
 ﻿// 2021/12/17 17:13:23 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Objects/Units/UnitParameters_.h"
+#include "Objects/GameObjectParameters_.h"
 #include "Objects/Units/Air/Airplane_.h"
 #include "Objects/Units/Air/Helicopter_.h"
 #include "Objects/Units/Ground/Robot_.h"
@@ -8,12 +8,18 @@
 #include "Objects/Units/Ground/Worm.h"
 #include "Objects/Units/Water/Boat_.h"
 #include "Objects/Units/Water/Submarine_.h"
+#include "Objects/Weapons/Laser.h"
+#include "Objects/Weapons/RocketLauncher.h"
+#include "Objects/Structures/CivilianPlant_.h"
+#include "Objects/Ammo/Bullet_.h"
+#include "Objects/Ammo/Rocket_.h"
+#include "Objects/Structures/ArmoryPlant_.h"
 
 
 using namespace Pi;
 
 
-const UnitParameters BoatController::parameters = UnitParameters
+const GameObjectParameters Boat::parameters =
 {
     {
         {0.0f, 50.0f, 0.0f},        // speed
@@ -22,7 +28,7 @@ const UnitParameters BoatController::parameters = UnitParameters
 };
 
 
-const UnitParameters AirplaneController::parameters =
+const GameObjectParameters Airplane::parameters =
 {
     {
         {0.00f, 500.0f,  0.00f},      // speed
@@ -32,7 +38,7 @@ const UnitParameters AirplaneController::parameters =
 };
 
 
-const UnitParameters HelicopterController::parameters =
+const GameObjectParameters Helicopter::parameters =
 {
     {
         {0.25f, 0.25f, 0.25f},
@@ -41,7 +47,7 @@ const UnitParameters HelicopterController::parameters =
 };
 
 
-const UnitParameters RobotController::parameters =
+const GameObjectParameters Robot::parameters =
 {
     {
         {0.0f, 0.2f, 0.0f},
@@ -50,7 +56,7 @@ const UnitParameters RobotController::parameters =
 };
 
 
-const UnitParameters SubmarineController::parameters =
+const GameObjectParameters Submarine::parameters =
 {
     {
         {0.0f, 0.3f, 0.005f},
@@ -59,7 +65,7 @@ const UnitParameters SubmarineController::parameters =
 };
 
 
-const UnitParameters TankController::parameters =
+const GameObjectParameters Tank::parameters =
 {
     {
         {0.0f, 3.0f, 0.0f}        // speed
@@ -67,9 +73,45 @@ const UnitParameters TankController::parameters =
 };
 
 
-const UnitParameters WormController::parameters =
+const GameObjectParameters Worm::parameters =
 {
     {
         {0.0f, 0.1f, 0.0f}
     }
+};
+
+
+const GameObjectParameters Laser::parameters =
+{
+
+};
+
+
+const GameObjectParameters RocketLauncher::parameters =
+{
+
+};
+
+
+const GameObjectParameters CivilianPlant::parameters =
+{
+
+};
+
+
+const GameObjectParameters Bullet::parameters =
+{
+
+};
+
+
+const GameObjectParameters Rocket::parameters =
+{
+
+};
+
+
+const GameObjectParameters ArmoryPlant::parameters =
+{
+
 };

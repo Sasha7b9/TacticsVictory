@@ -8,6 +8,7 @@
 #include "Network/Messages/MessagesServer_.h"
 #include "Utils/Math_.h"
 #include "Objects/PoolObjects_.h"
+#include "Scene/World/Landscape_.h"
 
 
 using namespace Pi;
@@ -36,17 +37,31 @@ void TaskAfterLoadingLandscape::RunOnce()
 
 void TaskAfterLoadingLandscape::CreateUnits()
 {
-    for (int i = 0; i < PoolObjects::MAX_NUM_OBJECTS; i++)
+    for (int i = 0; i < 20; i++)
     {
         Airplane *airplane = Airplane::Create();
 
-        airplane->AppendInGame(rand() % 100, 30);
+        airplane->AppendTask(new CommanderTaskTest());
 
-        airplane->GetUnitController()->AppendTask(new CommanderTask(CommanderTask::Type::FreeFlight, CommanderTask::Mode::Absolute));
+        airplane->AppendInGame(i * 5, 0);
 
-        if (i % 50000 == 0)
+        Tank *tank = Tank::Create();
+
+        tank->params->direction.RotateAboutZ(-K::pi / 2.0f);
+
+        tank->AppendInGame(0, i * 5);
+    }
+
+    for (int x = 0; x < 100; x += 2)
+    {
+        for (int y = 0; y < Landscape::self->GetSizeY_Rows(); y++)
         {
-            LOG_WRITE("Created %d game objects", i);
+            if (Landscape::self->UnderWater(x, y))
+            {
+                Submarine *submarine = Submarine::Create();
+                submarine->AppendInGame(x, y);
+                break;
+            }
         }
     }
 }
@@ -76,9 +91,9 @@ void TaskMain::MoveGameObjectsJob::JobCompute(Job *_job, void *)
 
     for (GameObject *object : GameObject::objects)
     {
-        if (object->numberThread == job->numThread)
+        if (object->params->numberThread == job->numThread)
         {
-            object->controller->Move(0.040f);
+            object->Move(0.040f);
         }
     }
 }
@@ -94,18 +109,6 @@ int TaskMain::NumberThreads()
 
 void TaskMain::RunOnce()
 {
-/*
-    TaskFPS::Self()->BeginFrame();
-
-    for (GameObject *object : GameObject::objects)
-    {
-        object->controller->Move(0.040f);
-    }
-
-    TaskFPS::Self()->EndFrame();
-*/
-
-
     TaskFPS::Self()->BeginFrame();
 
     numFrame++;
@@ -126,7 +129,7 @@ void TaskMain::RunOnce()
 void TaskFPS::RunOnce()
 {
     uint64 time = end - start;
-    LOG_WRITE("time frame %llu ms (%llu us), %f us/unit", time / 1000, time, (float)time / (float)PoolObjects::MAX_NUM_OBJECTS);
+    LOG_WRITE("time frame %llu ms (%llu us), %f us/unit", time / 1000, time, (float)time / (float)GameObject::objects.GetElementCount());
 }
 
 
@@ -135,7 +138,7 @@ void TaskTraceGameObject::RunOnce()
     GameObject *object = GameObject::objects.Find(5);
     if (object)
     {
-        LOG_WRITE("distance %f", object->GetUnitObject()->GetUnitController()->param->stat.distance);
+        LOG_WRITE("distance %f", object->GetUnitObject()->params->stat.distance);
     }
 }
 
@@ -169,7 +172,7 @@ void TaskRotator::RunOnce()
 {
     for (Tank *tank : Tank::objects)
     {
-        UnitParameters &param = *tank->GetUnitController()->param;
+        GameObjectParameters &param = *tank->params;
 
         param.direction.RotateAboutZ(0.2f);
         tank->SetDirection(param.direction, param.up);
@@ -177,7 +180,7 @@ void TaskRotator::RunOnce()
 
     for (Airplane *airplane : Airplane::objects)
     {
-        UnitParameters &param = *airplane->GetUnitController()->param;
+        GameObjectParameters &param = *airplane->params;
 
         param.up.RotateAboutY(0.1f);
 

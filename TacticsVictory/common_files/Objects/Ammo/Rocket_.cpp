@@ -12,25 +12,6 @@ GameObject *Rocket::Create()
 }
 
 
-Rocket::Rocket(int id) : AmmoObject(TypeAmmo::Rocket, id, new RocketController(this))
+Rocket::Rocket(int id) : AmmoObject(TypeAmmo::Rocket, &parameters, id)
 {
-}
-
-
-
-RocketController::RocketController(Rocket *rocket) : AmmoController(rocket)
-{
-
-}
-
-
-RocketController::~RocketController()
-{
-
-}
-
-
-void RocketController::Preprocess()
-{
-    AmmoController::Preprocess();
 }

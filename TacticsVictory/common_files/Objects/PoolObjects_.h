@@ -4,16 +4,16 @@
 
 namespace Pi
 {
-    struct UnitParameters;
+    struct GameObjectParameters;
 
     namespace PoolObjects
     {
         extern const int MAX_NUM_OBJECTS;
 
-        static void Consruct();
+        void Consruct();
 
-        static void Destruct();
+        void Destruct();
 
-        UnitParameters *AllocateParameters(int id);
+        GameObjectParameters *AllocateParameters(int id);
     }
 }

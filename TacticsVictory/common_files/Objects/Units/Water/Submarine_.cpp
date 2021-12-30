@@ -3,7 +3,7 @@
 #include "Objects/Units/Water/Submarine_.h"
 #include "Scene/World/Landscape_.h"
 #include "Utils/Math_.h"
-#include "Objects/Units/Staff/DriverTasks_.h"
+#include "Objects/Staff/DriverTasks_.h"
 
 
 using namespace Pi;
@@ -18,7 +18,7 @@ Submarine *Submarine::Create(int id)
 }
 
 
-Submarine::Submarine(int id) : WaterUnitObject(TypeWaterUnit::Submarine, id, new SubmarineController(this))
+Submarine::Submarine(int id) : WaterUnitObject(TypeWaterUnit::Submarine, &parameters, id)
 {
     const float size = 1.0f;
 
@@ -40,25 +40,9 @@ Submarine::Submarine(int id) : WaterUnitObject(TypeWaterUnit::Submarine, id, new
 
     GetNodeGeometry()->AppendNewSubnode(node);
 
+    driver = Driver::Create(this);
+
+    commander = new Commander(this);
+
     objects.Insert(this);
-}
-
-
-void CommanderSubmarine::ParseDive(const CommanderTask *task) const
-{
-    if (task->destination.z != unit->GetNodePosition().z)
-    {
-        driver->AppendTask(new DriverTaskDive(driver, task->destination.z));
-    }
-}
-
-
-void CommanderSubmarine::ParseRotate(const CommanderTask *task) const
-{
-    driver->AppendTask(new DriverTaskRotate(driver, Vector3D::UP, task->destination.z));
-}
-
-
-SubmarineController::SubmarineController(Submarine *submarine) : WaterUnitController(submarine)
-{
 }

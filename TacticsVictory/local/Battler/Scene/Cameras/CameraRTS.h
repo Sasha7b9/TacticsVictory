@@ -79,7 +79,7 @@ namespace Pi
         void SetTiltAngle(float tiltAngle);
     
         const float MIN_DISTANCE = 2.0F;
-        const float MAX_DISTANCE = 2.5e2F;
+        const float MAX_DISTANCE = 2.5e3F;
         const float MIN_TILT_ANGLE = -0.499F * K::pi;
         const float MAX_TILT_ANGLE = -0.00001F * K::pi;
         const float STEP_TILT_ANGLE = 0.05F;

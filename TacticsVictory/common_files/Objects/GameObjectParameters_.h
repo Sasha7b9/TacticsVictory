@@ -5,9 +5,9 @@
 namespace Pi
 {
     // Параметры описывают физические свойства юнита
-    struct UnitParameters
+    struct GameObjectParameters
     {
-        struct Max
+         struct Max
         {
             Vector3D speed           = Vector3D::ZERO;
             Vector3D rotate          = Vector3D::ZERO;
@@ -20,6 +20,10 @@ namespace Pi
         };
 
         Max max;
+
+        bool isDead = true;
+        int id = 0;
+        int numberThread = 0;
 
         float    speed        = 0.0f;
         Vector3D direction    = Vector3D::FORWARD;

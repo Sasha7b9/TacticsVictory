@@ -6,14 +6,8 @@
 using namespace Pi;
 
 
-WeaponObject::WeaponObject(TypeWeapon type, int id, WeaponController *controller) :
-    GameObject(TypeGameObject::Weapon, id, controller),
+WeaponObject::WeaponObject(TypeWeapon type, const GameObjectParameters *params, int id) :
+    GameObject(TypeGameObject::Weapon, params, id),
     typeWeapon(type)
-{
-}
-
-
-
-WeaponController::WeaponController(WeaponObject *weapon) : GameObjectController(weapon)
 {
 }

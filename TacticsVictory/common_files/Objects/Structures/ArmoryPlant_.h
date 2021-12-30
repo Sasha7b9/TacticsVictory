@@ -16,18 +16,7 @@ namespace Pi
         ArmoryPlant(int id = -1);
 
         virtual ~ArmoryPlant() {}
-    };
 
-
-    class ArmoryPlantController : public StructureController
-    {
-        friend class ArmoryPlant;
-
-    private:
-
-        ArmoryPlantController(ArmoryPlant *);
-        virtual ~ArmoryPlantController();
-
-        virtual void Preprocess() override;
+        static const GameObjectParameters parameters;
     };
 }

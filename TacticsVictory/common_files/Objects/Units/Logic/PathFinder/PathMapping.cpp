@@ -51,7 +51,7 @@ PathMapping *PathMapping::FromScene(const GameObject &object)
 
 String<> PathMapping::NameForObject(const GameObject &object)
 {
-    return String<>("PathMapping:") + Text::Format("%d", object.id);
+    return String<>("PathMapping:") + Text::Format("%d", object.params->id);
 }
 
 
