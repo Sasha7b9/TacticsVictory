@@ -8,7 +8,6 @@ namespace Pi
     class DriverTask;
     struct GameObjectParameters;
 
-
     // Класс для управления передвижением юнита по маршрутам, проложенным штурманом (Navigator)
     class Driver
     {
@@ -16,13 +15,23 @@ namespace Pi
         friend class DriverTask;
         friend class UnitController;
     public:
+
         Driver(GameObject *);
 
         virtual ~Driver();
 
         void AppendTask(DriverTask *);
 
+        // Удалить все задания
+        void RemoveTasks();
+
+        // Возвращает true, если нет текущих заданий
+        bool NoCurrentTasks() const { return tasks.GetElementCount() == 0; };
+
         virtual void Update(float dT);
+
+        // Возвращает true, если есть возможность двигаться вперёд
+        bool CanMoveForward() const;
 
         // Двинуть юнита вперёд
         void MoveForward(float dT);
@@ -46,9 +55,9 @@ namespace Pi
 
     protected:
 
-        GameObject *const object = nullptr;
+        GameObject           &object;
 
-        GameObjectParameters *const params = nullptr;
+        GameObjectParameters &params;
 
     private:
 
@@ -58,5 +67,6 @@ namespace Pi
         void ApplyTransform();
 
         bool EmptyTaskList() const { return tasks.GetElementCount() == 0; };
+
     };
 }

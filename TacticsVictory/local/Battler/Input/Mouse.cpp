@@ -4,7 +4,6 @@
 #include "GUI/Widgets/Button.h"
 #include "GUI/Widgets/CursorGUI.h"
 #include "Objects/GameObject_.h"
-#include "Scene/World/GameWorld.h"
 
 
 using namespace Pi;

@@ -12,20 +12,15 @@
 #include "Objects/Units/Ground/Tank_.h"
 #include "Objects/Units/Ground/Worm.h"
 #include "Objects/Units/Water/Submarine_.h"
-#include "Scene/World/Landscape_.h"
-#include "Scene/World/GameWorld.h"
 #include "Objects/Staff/DriverTasks_.h"
+#include "Objects/World/Landscape_.h"
 
 
 using namespace Pi;
 
 
-Commander::Commander(GameObject *_object) : object(_object), driver(_object->driver)
+Commander::Commander(GameObject *_object) : object(*_object), driver(*_object->driver)
 {
-    if(driver == nullptr)
-    {
-        LOG_ERROR_TRACE("Not installed driver");
-    }
 }
 
 
@@ -57,23 +52,23 @@ void Commander::AppendRandomTask()
 
     if ((rand() % value) == 0)
     {
-        Point3D position = object->GetNodePosition();
+        Point3D position = object.GetNodePosition();
 
-        AppendTask(new CommanderTaskDive(Math::RandomFloat(Landscape::self->GetHeightCenter(position.x, position.y), Water::Level())));
+        AppendTask(new CommanderTaskDive(&object, Math::RandomFloat(Landscape::self->GetHeightCenter(position.x, position.y), Water::Level())));
     }
     else if ((rand() % value) == 0)
     {
-        AppendTask(new CommanderTaskRotate({0.0f, 0.0f, Math::RandomFloat(-K::pi, K::pi)}));
+        AppendTask(new CommanderTaskRotate(&object, {0.0f, 0.0f, Math::RandomFloat(-K::pi, K::pi)}));
     }
     else if ((rand() % value) == 0)
     {
-        Point3D position = object->GetNodePosition();
+        Point3D position = object.GetNodePosition();
 
         int dX[4] = {0, 0,  1, -1};
         int dY[4] = {1, -1, 0, 0};
 
         int index = rand() % 4;
 
-        AppendTask(new CommanderTaskMove(position.x + (float)dX[index], position.y + (float)dY[index]));
+        AppendTask(new CommanderTaskMove(&object, position.x + (float)dX[index], position.y + (float)dY[index]));
     }
 }

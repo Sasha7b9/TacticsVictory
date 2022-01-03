@@ -1,11 +1,15 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "CameraRTS.h"
-#include "GUI/Widgets/CursorGUI.h"
 #include "Utils/Math_.h"
-#include "Input/Mouse.h"
-#include "Scene/World/GameWorld.h"
-#include "Scene/World/Landscape_.h"
+#include "GameWorld.h"
+#include "Objects/World/CameraRTS.h"
+#include "Objects/World/Landscape_.h"
+
+
+#ifdef PiCLIENT
+    #include "GUI/Widgets/CursorGUI.h"
+    #include "Input/Mouse.h"
+#endif
 
 
 using namespace Pi;

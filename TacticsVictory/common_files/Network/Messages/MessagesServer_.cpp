@@ -6,10 +6,12 @@
 #include "Objects/Units/Air/AirUnit_.h"
 #include "Objects/Units/Ground/GroundUnit_.h"
 #include "Objects/Units/Water/WaterUnit_.h"
+#include "Objects/World/WorldObject.h"
+#include "Objects/World/Sun_.h"
 
 #ifdef PiCLIENT
-    #include "Scene/World/Landscape_.h"
-    #include "Scene/World/GameWorld.h"
+    #include "Objects/World/Landscape_.h"
+    #include "GameWorld.h"
     #include "TVBattler.h"
     #include "Objects/Units/Air/Airplane_.h"
     #include "Objects/Units/Ground/Tank_.h"
@@ -87,17 +89,25 @@ void MessageCreateGameObject::AppendObject(GameObject *object)
 
     StateObject &state = states[num_objects];
 
-    state.id = object->params->id;
+    state.id = object->params.id;
 
-    UnitObject *unit = object->GetUnitObject();
-    GameObjectParameters &param = *unit->params;
+    GameObjectParameters &param = object->params;
 
-    state.position = param.position;
-    state.direction = param.direction;
-    state.up = param.up;
+    state.position = param.cur.position;
+    state.direction = param.cur.direction;
+    state.up = param.cur.up;
     state.type[0] = (int)object->typeGameObject;
 
-    FillUnit(object->GetUnitObject());
+    switch(state.type[0])
+    {
+    case (int)TypeGameObject::Unit:
+        FillUnit(object->GetUnitObject());
+        break;
+
+    case (int)TypeGameObject::World:
+        FillWorldObject(object->GetWorldObject());
+        break;
+    }
 
     num_objects++;
 }
@@ -121,6 +131,14 @@ void MessageCreateGameObject::FillUnit(UnitObject *unit)
     {
         state.type[2] = (int)unit->GetWaterUnit()->typeWaterUnit; //-V522
     }
+}
+
+
+void MessageCreateGameObject::FillWorldObject(WorldObject *object)
+{
+    StateObject &state = states[num_objects];
+
+    state.type[1] = (int)object->typeWorldObject;
 }
 
 
@@ -161,12 +179,11 @@ bool MessageCreateGameObject::HandleMessage(Player *sender) const
                 {
                     UnitObject *airplane = Airplane::Create(state.id);
 
-                    GameObjectParameters &param = *airplane->params;
-                    param.position = state.position;
-                    param.direction = state.direction;
-                    param.up = state.up;
-                    airplane->AppendInGame((int)param.position.x, (int)param.position.y);
-                    //                    GameWorld::self->GetRootNode()->AppendNewSubnode(airplane);
+                    GameObjectParameters &param = airplane->params;
+                    param.cur.position = state.position;
+                    param.cur.direction = state.direction;
+                    param.cur.up = state.up;
+                    airplane->AppendInGame((int)param.cur.position.x, (int)param.cur.position.y);
                 }
                 else
                 {
@@ -204,6 +221,15 @@ bool MessageCreateGameObject::HandleMessage(Player *sender) const
                 LOG_ERROR_TRACE("Unknows type unit");
             }
         }
+        else if (state.type[0] == (int)TypeGameObject::World)
+        {
+            if (state.type[1] == (int)TypeWorldObject::Sun)
+            {
+                Sun *sun = new Sun(state.id);
+
+                GameWorld::self->GetRootNode()->AppendNewSubnode(sun);
+            }
+        }
         else
         {
             LOG_ERROR_TRACE("Unknown type game object");
@@ -220,13 +246,13 @@ void MessageGameObjectState::AddObject(GameObject *object)
 {
     StateObject &state = states[num_objects];
 
-    state.id = object->params->id;
+    state.id = object->params.id;
 
-    GameObjectParameters &param = *object->params; //-V522
+    GameObjectParameters &param = object->params; //-V522
 
-    state.position = param.position;
-    state.direction = param.direction;
-    state.up = param.up;
+    state.position = param.cur.position;
+    state.direction = param.cur.direction;
+    state.up = param.cur.up;
 
     num_objects++;
 }
@@ -267,21 +293,21 @@ bool MessageGameObjectState::HandleMessage(Player *) const
 
         if (object)
         {
-            GameObjectParameters &param = *object->GetUnitObject()->params;
-            param.position = state.position;
-            param.direction = state.direction;
-            param.up = state.up;
+            GameObjectParameters &param = object->params;
+            param.cur.position = state.position;
+            param.cur.direction = state.direction;
+            param.cur.up = state.up;
 
             Node *node = object;
 
-            node->SetNodePosition(param.position);
-            object->SetDirection(param.direction, param.up);
+            node->SetNodePosition(param.cur.position);
+            object->SetDirection(param.cur.direction, param.cur.up);
             object->Invalidate();
 
             if (object->IsUnit())
             {
                 UnitObject *unit = object->GetUnitObject();
-                if (unit->params->speed != 0.0f)
+                if (unit->params.cur.velocity != 0.0f)
                 {
                     if (unit->typeUnit == TypeUnit::Air)
                     {

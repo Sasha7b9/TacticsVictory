@@ -1,11 +1,10 @@
 // 2021/12/4 22:36:23 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "TVBattler.h"
-#include "Scene/World/GameWorld.h"
-#include "Scene/World/Landscape_.h"
 #include "Network/Messages/MessagesClient_.h"
 #include "GameState.h"
 #include "Objects/GameObject_.h"
+#include "Objects/World/Landscape_.h"
 
 
 using namespace Pi;

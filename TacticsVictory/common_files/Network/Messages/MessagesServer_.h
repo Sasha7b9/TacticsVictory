@@ -11,6 +11,7 @@ namespace Pi
     class GroundUnitObject;
     class WaterUnitObject;
     class UnitObject;
+    class WorldObject;
 
 
     class MessageCreateLandscape : public Message
@@ -64,6 +65,7 @@ namespace Pi
         virtual bool HandleMessage(Player *sender) const override;
 
         void FillUnit(UnitObject *);
+        void FillWorldObject(WorldObject *);
     };
 
 

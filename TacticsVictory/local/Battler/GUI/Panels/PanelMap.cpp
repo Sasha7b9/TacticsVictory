@@ -3,11 +3,10 @@
 #include "PanelMap.h"
 #include "Settings.h"
 #include "GUI/Widgets/Button.h"
-#include "Scene/World/Landscape_.h"
 #include "Utils/Math_.h"
 #include "GUI/Widgets/CursorGUI.h"
-#include "Scene/Cameras/CameraRTS.h"
-#include "Scene/World/GameWorld.h"
+#include "Objects/World/CameraRTS.h"
+#include "Objects/World/Landscape_.h"
 
 
 using namespace Pi;

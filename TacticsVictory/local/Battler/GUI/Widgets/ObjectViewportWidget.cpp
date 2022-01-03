@@ -1,13 +1,12 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "ObjectViewportWidget.h"
-#include "Scene/World/Sun.h"
+#include "GUI/Widgets/ObjectViewportWidget.h"
+#include "Objects/World/Sun_.h"
 
 
 using namespace Pi;
 
-extern Sun *sun;
-extern Sun *sunViewport;
+static Sun *sunViewport = nullptr;
 
 
 ObjectViewportWidget::ObjectViewportWidget(const Vector2D& size, float focalLength) : DrawingWidget(size)

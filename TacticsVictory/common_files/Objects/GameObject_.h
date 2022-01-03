@@ -1,9 +1,9 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "System/Events.h"
 #include "Objects/GameObjectTypes_.h"
 #include "Objects/GameObjectParameters_.h"
 #include "Objects/Staff/CommanderTasks_.h"
+#include "System/Events_.h"
 
 
 namespace Pi
@@ -11,6 +11,7 @@ namespace Pi
     class GameObjectProperty;
     class InfoWindow;
     class UnitObject;
+    class WorldObject;
     class Commander;
     class Driver;
     class Shooter;
@@ -30,15 +31,18 @@ namespace Pi
         static void Construct();
         static void Destruct();
 
-        GameObjectParameters *params = nullptr;
+        const int id = 0;
+
+        GameObjectParameters &params;
 
         const TypeGameObject typeGameObject;
 
         Driver *driver = nullptr;      // Это водитель
 
-        KeyType GetKey() const { return params->id; }
+        KeyType GetKey() const { return params.id; }
 
         bool IsUnit() const { return typeGameObject == TypeGameObject::Unit; }
+        bool IsWorldObject() const { return typeGameObject == TypeGameObject::World; }
 
         Node *GetNodeGeometry() { return nodeGeometry; }
 
@@ -47,6 +51,7 @@ namespace Pi
         // Преобразует к указателю на UnitObject, если возможно, и возвращает nullptr в ином случае
         UnitObject *GetUnitObject() { return IsUnit() ? (UnitObject *)this : nullptr; }
         UnitObject *GetUnitObject() const { return IsUnit() ? (UnitObject *)this : nullptr; }
+        WorldObject *GetWorldObject() { return IsWorldObject() ? (WorldObject *)this : nullptr; }
 
         // Добавить задание в конец очереди (оно выполнится после всех заданий)
         void AppendTask(CommanderTask *task);

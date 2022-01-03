@@ -29,21 +29,16 @@ file(GLOB SRC                                          *.h *.*c*
                                     ../../common_files/*.*)
 file(GLOB NETWORK                                      Network/*.*)
 file(GLOB NETWORK_MESSAGES          ../../common_files/Network/Messages/*.*)
-file(GLOB OBJECTS                   ../../common_files/Objects/*.*
-                                                       Objects/*.*)
-file(GLOB OBJECTS_AMMO              ../../common_files/Objects/Ammo/*.*
-                                                       Objects/Ammo/*.*)
+file(GLOB OBJECTS                   ../../common_files/Objects/*.*)
+file(GLOB OBJECTS_AMMO              ../../common_files/Objects/Ammo/*.*)
 file(GLOB OBJECTS_STAFF             ../../common_files/Objects/Staff/*.*)
 file(GLOB OBJECTS_STRUCTURES        ../../common_files/Objects/Structures/*.*)
-file(GLOB OBJECTS_UNITS             ../../common_files/Objects/Units/*.*
-                                                       Objects/Units/*.*)
+file(GLOB OBJECTS_UNITS             ../../common_files/Objects/Units/*.*)
 file(GLOB OBJECTS_UNITS_AIR         ../../common_files/Objects/Units/Air/*.*)
 file(GLOB OBJECTS_UNITS_GROUND      ../../common_files/Objects/Units/Ground/*.*)
 file(GLOB OBJECTS_UNITS_WATER       ../../common_files/Objects/Units/Water/*.*)
 file(GLOB OBJECTS_WEAPONS           ../../common_files/Objects/Weapons/*.*)
-file(GLOB SCENE_WORLD               ../../common_files/Scene/World/Landscape_.*
-                                    ../../common_files/Scene/World/GameWorld_.h
-                                                       Scene/World/*.*)
+file(GLOB OBJECTS_WORLD             ../../common_files/Objects/World/*.*)
 file(GLOB UTILS                     ../../common_files/Utils/Array2D_.*
                                     ../../common_files/Utils/Log_.*
                                     ../../common_files/Utils/PeriodicTask_.*)
@@ -61,7 +56,7 @@ source_group(Objects\\Units\\Air    FILES ${OBJECTS_UNITS_AIR})
 source_group(Objects\\Units\\Ground FILES ${OBJECTS_UNITS_GROUND})
 source_group(Objects\\Units\\Water  FILES ${OBJECTS_UNITS_WATER})
 source_group(Objects\\Weapons       FILES ${OBJECTS_WEAPONS})
-source_group(Scene\\World           FILES ${SCENE_WORLD})
+source_group(Objects\\World         FILES ${OBJECTS_WORLD})
 source_group(Utils                  FILES ${UTILS})
 
 set_source_files_properties(${OBJECTS_UNITS_PATHFINDER_NAVMESHCONTROLLER} PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -78,7 +73,7 @@ add_executable(${PROJECT_NAME} ${SRC}
                                ${OBJECTS_UNITS_GROUND}
                                ${OBJECTS_UNITS_WATER}
                                ${OBJECTS_WEAPONS}
-                               ${SCENE_WORLD}
+                               ${OBJECTS_WORLD}
                                ${UTILS}
                                )
 
@@ -92,7 +87,7 @@ copy_to_dir_exe($(OutputPath)${PROJECT_NAME} ${_INSTALL_DIR_})
 
 set_work_directory()
 
-#message("CMAKE_BINARY_DIR:         ${CMAKE_BINARY_DIR}")
+message("CMAKE_BINARY_DIR:         ${CMAKE_BINARY_DIR}")
 #message("CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
 #message("CMAKE_SOURCE_DIR:         ${CMAKE_SOURCE_DIR}")
 #message("CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")

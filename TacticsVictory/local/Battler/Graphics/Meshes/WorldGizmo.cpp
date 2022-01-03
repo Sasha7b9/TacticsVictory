@@ -1,7 +1,7 @@
 // 2021/12/3 13:54:05 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Graphics/Meshes/WorldGizmo.h"
-#include "Scene/World/Landscape_.h"
+#include "Objects/World/Landscape_.h"
 
 
 using namespace Pi;

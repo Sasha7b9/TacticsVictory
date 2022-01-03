@@ -1,6 +1,6 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Shaders/SparkParticleSystem.h"
+#include "Graphics/Effects/SparkParticleSystem.h"
 
 
 using namespace Pi;

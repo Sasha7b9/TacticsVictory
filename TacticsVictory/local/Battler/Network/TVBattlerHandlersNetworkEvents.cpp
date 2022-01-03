@@ -2,8 +2,6 @@
 #include "stdafx.h"
 #include "TVBattler.h"
 #include "Network/Messages/MessagesServer_.h"
-#include "Scene/World/GameWorld.h"
-#include "Scene/World/Landscape_.h"
 #include "Network/Messages/MessagesClient_.h"
 
 

@@ -1,14 +1,13 @@
 ﻿// 2021/12/25 19:37:20 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "PeriodicTasks.h"
-#include "Scene/World/GameWorld.h"
 #include "Objects/Units/Air/Airplane_.h"
 #include "Objects/Units/Ground/Tank_.h"
 #include "Objects/Units/Water/Submarine_.h"
 #include "Network/Messages/MessagesServer_.h"
 #include "Utils/Math_.h"
 #include "Objects/PoolObjects_.h"
-#include "Scene/World/Landscape_.h"
+#include "Objects/World/Sun_.h"
 
 
 using namespace Pi;
@@ -16,6 +15,8 @@ using namespace Pi;
 
 void TaskAfterLoadingLandscape::RunOnce()
 {
+    (new Sun())->AppendInGame(0, 0);
+
     CreateUnits();
 
     TheNetworkMgr->SetProtocol(kGameProtocol);
@@ -39,31 +40,33 @@ void TaskAfterLoadingLandscape::CreateUnits()
 {
     for (int i = 0; i < 20; i++)
     {
-        Airplane *airplane = Airplane::Create();
-
-        airplane->AppendTask(new CommanderTaskTest());
-
-        airplane->AppendInGame(i * 5, 0);
+//        Airplane *airplane = Airplane::Create();
+//
+//        airplane->AppendTask(new CommanderTaskTest(airplane));
+//
+//        airplane->AppendInGame(i * 5, 0);
 
         Tank *tank = Tank::Create();
 
-        tank->params->direction.RotateAboutZ(-K::pi / 2.0f);
+        tank->params.cur.direction.RotateAboutZ(-K::pi / 2.0f);
+
+        tank->AppendTask(new CommanderTaskTest(tank));
 
         tank->AppendInGame(0, i * 5);
     }
 
-    for (int x = 0; x < 100; x += 2)
-    {
-        for (int y = 0; y < Landscape::self->GetSizeY_Rows(); y++)
-        {
-            if (Landscape::self->UnderWater(x, y))
-            {
-                Submarine *submarine = Submarine::Create();
-                submarine->AppendInGame(x, y);
-                break;
-            }
-        }
-    }
+//    for (int x = 0; x < 100; x += 2)
+//    {
+//        for (int y = 0; y < Landscape::self->GetSizeY_Rows(); y++)
+//        {
+//            if (Landscape::self->UnderWater(x, y))
+//            {
+//                Submarine *submarine = Submarine::Create();
+//                submarine->AppendInGame(x, y);
+//                break;
+//            }
+//        }
+//    }
 }
 
 
@@ -91,7 +94,7 @@ void TaskMain::MoveGameObjectsJob::JobCompute(Job *_job, void *)
 
     for (GameObject *object : GameObject::objects)
     {
-        if (object->params->numberThread == job->numThread)
+        if (object->params.number_thread == job->numThread)
         {
             object->Move(0.040f);
         }
@@ -138,7 +141,7 @@ void TaskTraceGameObject::RunOnce()
     GameObject *object = GameObject::objects.Find(5);
     if (object)
     {
-        LOG_WRITE("distance %f", object->GetUnitObject()->params->stat.distance);
+        LOG_WRITE("distance %f", object->GetUnitObject()->params.stat.distance);
     }
 }
 
@@ -172,19 +175,19 @@ void TaskRotator::RunOnce()
 {
     for (Tank *tank : Tank::objects)
     {
-        GameObjectParameters &param = *tank->params;
+        GameObjectParameters &param = tank->params;
 
-        param.direction.RotateAboutZ(0.2f);
-        tank->SetDirection(param.direction, param.up);
+        param.cur.direction.RotateAboutZ(0.2f);
+        tank->SetDirection(param.cur.direction, param.cur.up);
     }
 
     for (Airplane *airplane : Airplane::objects)
     {
-        GameObjectParameters &param = *airplane->params;
+        GameObjectParameters &param = airplane->params;
 
-        param.up.RotateAboutY(0.1f);
+        param.cur.up.RotateAboutY(0.1f);
 
-        airplane->SetDirection(param.direction, param.up);
+        airplane->SetDirection(param.cur.direction, param.cur.up);
     }
 }
 

@@ -42,18 +42,15 @@ file(GLOB OBJECTS                        ../../common_files/Objects/*.*
 file(GLOB OBJECTS_AMMO                   ../../common_files/Objects/Ammo/*.*)
 file(GLOB OBJECTS_STAFF                  ../../common_files/Objects/Staff/*.*)
 file(GLOB OBJECTS_STRUCTURES             ../../common_files/Objects/Structures/*.*)
-file(GLOB OBJECTS_UNITS                  ../../common_files/Objects/Units/*.*
-                                                            Objects/Units/*.*)
+file(GLOB OBJECTS_UNITS                  ../../common_files/Objects/Units/*.*)
 file(GLOB OBJECTS_UNITS_AIR              ../../common_files/Objects/Units/Air/*.*)
 file(GLOB OBJECTS_UNITS_GROUND           ../../common_files/Objects/Units/Ground/*.*)
 file(GLOB OBJECTS_UNITS_LOGIC            ../../common_files/Objects/Units/Logic/*.*)
 file(GLOB OBJECTS_UNITS_LOGIC_PATHFINDER ../../common_files/Objects/Units/Logic/PathFinder/*.*)
 file(GLOB OBJECTS_UNITS_WATER            ../../common_files/Objects/Units/Water/*.*)
 file(GLOB OBJECTS_WEAPONS                ../../common_files/Objects/Weapons/*.*)
-file(GLOB SCENE                          ../../common_files/Scene/*.*)
-file(GLOB SCENE_CAMERAS                                     Scene/Cameras/*.*)
-file(GLOB SCENE_WORLD                    ../../common_files/Scene/World/*.*
-                                                            Scene/World/*.*)
+file(GLOB OBJECTS_WORLD                  ../../common_files/Objects/World/*.*
+                                                            Objects/World/*.*)
 file(GLOB SHADERS                                           Shaders/*.*)
 file(GLOB SOUNDS                                            Sounds/*.*)
 file(GLOB SYSTEM                                            System/*.*)
@@ -85,9 +82,7 @@ source_group(Objects\\Units\\Logic             FILES ${OBJECTS_UNITS_LOGIC})
 source_group(Objects\\Units\\Logic\\PathFinder FILES ${OBJECTS_UNITS_LOGIC_PATHFINDER})
 source_group(Objects\\Units\\Water             FILES ${OBJECTS_UNITS_WATER})
 source_group(Objects\\Weapons                  FILES ${OBJECTS_WEAPONS})
-source_group(Scene                             FILES ${SCENE})
-source_group(Scene\\Cameras                    FILES ${SCENE_CAMERAS})
-source_group(Scene\\World                      FILES ${SCENE_WORLD})
+source_group(Objects\\World                    FILES ${OBJECTS_WORLD})
 source_group(Shaders                           FILES ${SHADERS})
 source_group(Sounds                            FILES ${SOUNDS})
 source_group(System                            FILES ${SYSTEM})
@@ -105,7 +100,7 @@ add_executable(${PROJECT_NAME} ${SRC} ${GRAPHICS}
                                ${INPUT}
                                ${NETWORK}
                                ${NETWORK_MESSAGES}
-                               ${SCENE} ${SCENE_CAMERAS} ${OBJECTS}
+                               ${OBJECTS}
                                ${OBJECTS_AMMO}
                                ${OBJECTS_STAFF}
                                ${OBJECTS_STRUCTURES}
@@ -116,6 +111,7 @@ add_executable(${PROJECT_NAME} ${SRC} ${GRAPHICS}
                                ${OBJECTS_UNITS_LOGIC_PATHFINDER}
                                ${OBJECTS_UNITS_WATER}
                                ${OBJECTS_WEAPONS}
+                               ${OBJECTS_WORLD}
                                ${SCENE_WORLD} ${SHADERS} ${SOUNDS} ${SYSTEM} ${UTILS}
 #                               ${EXPERIMENTS}
                                )
@@ -130,7 +126,7 @@ copy_to_dir_exe($(OutputPath)${PROJECT_NAME} ${_INSTALL_DIR_})
 
 set_work_directory()
 
-#message("CMAKE_BINARY_DIR:         ${CMAKE_BINARY_DIR}")
+message("CMAKE_BINARY_DIR:         ${CMAKE_BINARY_DIR}")
 #message("CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
 #message("CMAKE_SOURCE_DIR:         ${CMAKE_SOURCE_DIR}")
 #message("CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")

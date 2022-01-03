@@ -14,12 +14,13 @@
 #include "Objects/Units/Water/Submarine_.h"
 #include "Utils/Math_.h"
 #include "Objects/Staff/DriverTasks_.h"
+#include "Objects/World/Landscape_.h"
 
 
 using namespace Pi;
 
 
-Driver::Driver(GameObject *_object) : object(_object), params(object->params)
+Driver::Driver(GameObject *_object) : object(*_object), params(object.params)
 {
 }
 
@@ -68,7 +69,7 @@ Driver *Driver::Create(GameObject *object)
         }
     }
 
-    return nullptr;
+    return new Driver(object);
 }
 
 
@@ -93,31 +94,31 @@ void Driver::Update(float dT)
 
 void Driver::ApplyTransform()
 {
-    if (params->applyRotate)
+    if (params.apply_rotate)
     {
-        params->applyRotate = false;
+        params.apply_rotate = false;
 
 #ifdef PiCLIENT
 
-        object->SetDirection(params->direction, params->up);
+        object.SetDirection(params.cur.direction, params.cur.up);
 
-        object->Invalidate();
+        object.Invalidate();
 #endif
     }
 
-    if (params->applyTranslation)
+    if (params.apply_translation)
     {
-        params->applyTranslation = false;
+        params.apply_translation = false;
 
 #ifdef PiCLIENT
 
-        params->stat.distance += Magnitude(object->GetNodePosition() - params->position);
+        params.stat.distance += Magnitude(object.GetNodePosition() - params.cur.position);
 
-        Node *node = object;
+        Node &node = object;
 
-        node->SetNodePosition(params->position);
+        node.SetNodePosition(params.cur.position);
 
-        node->Invalidate();
+        node.Invalidate();
 #endif
     }
 }
@@ -125,78 +126,78 @@ void Driver::ApplyTransform()
 
 void Driver::MoveForward(float dT)
 {
-    if(params->speed != 0.0f)
+    if(params.cur.velocity != 0.0f)
     {
-        params->position += params->direction * params->speed * dT;
+        params.cur.position += params.cur.direction * params.cur.velocity * dT;
 
-        params->applyTranslation = true;
+        params.apply_translation = true;
     }
 }
 
 
 void Driver::RotateYaw(float dT)
 {
-    if(params->speedRotate.z != 0.0f)
+    if(params.cur.speed_rotate.z != 0.0f)
     {
-        params->direction.RotateAboutAxis(params->speedRotate.z * dT, params->up);
+        params.cur.direction.RotateAboutAxis(params.cur.speed_rotate.z * dT, params.cur.up);
 
-        params->applyRotate = true;
+        params.apply_rotate = true;
     }
 }
 
 
 void Driver::RotateYawCompensate(float dT)
 {
-    if(params->speedRotate.z != 0.0f)
+    if(params.cur.speed_rotate.z != 0.0f)
     {
-        params->direction.RotateAboutAxis(params->speedRotate.z * dT, params->upPitch);
+        params.cur.direction.RotateAboutAxis(params.cur.speed_rotate.z * dT, params.cur.up_ortho);
 
-        params->applyRotate = true;
+        params.apply_rotate = true;
     }
 }
 
 
 void Driver::RotateRoll(float dT)
 {
-    if(params->speedRotate.y != 0.0f)
+    if(params.cur.speed_rotate.y != 0.0f)
     {
-        params->up.RotateAboutAxis(-params->speedRotate.y * dT, params->direction);
+        params.cur.up.RotateAboutAxis(-params.cur.speed_rotate.y * dT, params.cur.direction);
 
-        params->applyRotate = true;
+        params.apply_rotate = true;
     }
 }
 
 
 void Driver::RotatePitch(float dT)
 {
-    if(params->speedRotate.x != 0.0f)
+    if(params.cur.speed_rotate.x != 0.0f)
     {
-        float angle = params->speedRotate.x * dT;
+        float angle = params.cur.speed_rotate.x * dT;
 
-        Vector3D axis = Cross(params->direction, params->up).Normalize();
+        Vector3D axis = Cross(params.cur.direction, params.cur.up).Normalize();
 
-        params->direction.RotateAboutAxis(angle, axis);
-        params->up.RotateAboutAxis(angle, axis);
-        params->upPitch.RotateAboutAxis(angle, axis);
+        params.cur.direction.RotateAboutAxis(angle, axis);
+        params.cur.up.RotateAboutAxis(angle, axis);
+        params.cur.up_ortho.RotateAboutAxis(angle, axis);
 
-        params->applyRotate = true;
+        params.apply_rotate = true;
     }
 }
 
 
 void Driver::RotatePitchCompensate(float dT)
 {
-    if(params->speedRotate.x != 0.0f)
+    if(params.cur.speed_rotate.x != 0.0f)
     {
-        float angle = params->speedRotate.x * dT;
+        float angle = params.cur.speed_rotate.x * dT;
 
-        Vector3D axis = Cross(params->direction, params->upPitch).Normalize();
+        Vector3D axis = Cross(params.cur.direction, params.cur.up_ortho).Normalize();
 
-        params->direction.RotateAboutAxis(angle, axis);
-        params->up.RotateAboutAxis(angle, axis);
-        params->upPitch.RotateAboutAxis(angle, axis);
+        params.cur.direction.RotateAboutAxis(angle, axis);
+        params.cur.up.RotateAboutAxis(angle, axis);
+        params.cur.up_ortho.RotateAboutAxis(angle, axis);
 
-        params->applyRotate = true;
+        params.apply_rotate = true;
     }
 }
 
@@ -206,3 +207,30 @@ void Driver::AppendTask(DriverTask *task)
     tasks.AddElement(task);
 }
 
+
+void Driver::RemoveTasks()
+{
+    tasks.Purge();
+}
+
+
+bool Driver::CanMoveForward() const
+{
+    Point3D position = params.cur.position + params.cur.direction;      // В эту точку мы перемещаемся виртуально
+
+    if (position.x < 0.0f || position.y < 0.0f ||                   // Вышли за пределы ландшафта
+        position.x >= (float)Landscape::self->GetSizeX_Columns() ||
+        position.y >= (float)Landscape::self->GetSizeY_Rows())
+    {
+        return false;
+    }
+
+    float height = Landscape::self->GetHeightCenter(params.cur.position.x + 0.5f, params.cur.position.y + 0.5f);
+
+    if (height != Landscape::self->GetHeightCenter(position.x + 0.5f, position.y + 0.5f))
+    {
+        return false;
+    }
+
+    return true;
+}

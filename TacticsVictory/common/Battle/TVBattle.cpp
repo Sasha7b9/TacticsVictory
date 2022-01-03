@@ -1,9 +1,9 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "TVBattle.h"
-#include "Scene/World/GameWorld.h"
 #include "PeriodicTasks.h"
 #include "Objects/GameObject_.h"
+#include "GameWorld.h"
 
 
 using namespace Pi;

@@ -8,7 +8,7 @@
 
 
 #ifdef PiCLIENT
-    #include "Scene/World/GameWorld.h"
+    #include "GameWorld.h"
     #include "Graphics/Effects/SmokeTrail.h"
 #endif
 

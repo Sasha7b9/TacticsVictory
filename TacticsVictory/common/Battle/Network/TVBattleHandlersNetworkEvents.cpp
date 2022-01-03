@@ -3,7 +3,7 @@
 #include "TVBattle.h"
 #include "Network/Messages/MessagesServer_.h"
 #include "Network/Messages/MessagesClient_.h"
-#include "Scene/World/Landscape_.h"
+#include "Objects/World/Landscape_.h"
 
 
 using namespace Pi;

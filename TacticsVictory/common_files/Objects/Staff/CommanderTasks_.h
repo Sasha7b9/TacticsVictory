@@ -6,6 +6,8 @@ namespace Pi
 {
     class Commander;
     class GameObject;
+    class Driver;
+    struct GameObjectParameters;
 
 
     // Цельное задание для юнита, которое должно быть разбито на более мелкие конкретные задания StepUnitTask
@@ -34,19 +36,19 @@ namespace Pi
 
         virtual ~CommanderTask() { }
 
-        void SetGameObject(GameObject *_object) { object = _object; }
-
         virtual void RunStep(float dT) = 0;
 
         bool Complete() const { return complete; }
 
     protected:
 
-        CommanderTask(Type _type, Mode _mode) : type(_type), mode(_mode) { }
+        CommanderTask(GameObject *, Type, Mode);
 
         bool complete = false;
 
-        GameObject *object = nullptr;
+        GameObject           &object;
+        GameObjectParameters &params;
+        Driver               &driver;
     };
 
 
@@ -58,15 +60,47 @@ namespace Pi
         *  3. При появлении в радиусе действия оружия противника стреляет
         *  4. Преследование цели не ведётся
         */ 
-        CommanderTaskTest() : CommanderTask(Type::Test, Mode::Absolute) { }
+        CommanderTaskTest(GameObject *object) : CommanderTask(object, Type::Test, Mode::Absolute) { }
 
         virtual void RunStep(float dT) override;
     };
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     struct CommanderTaskDive : public CommanderTask
     {
-        CommanderTaskDive(float depth) : CommanderTask(Type::Dive, Mode::Absolute)
+        CommanderTaskDive(GameObject *object, float depth) : CommanderTask(object, Type::Dive, Mode::Absolute)
         {
             destination.z = depth;
         }
@@ -77,7 +111,7 @@ namespace Pi
 
     struct CommanderTaskRotate : public CommanderTask
     {
-        CommanderTaskRotate(const Point3D &_angle) : CommanderTask(Type::Rotate, Mode::Relative)
+        CommanderTaskRotate(GameObject *object, const Point3D &_angle) : CommanderTask(object, Type::Rotate, Mode::Relative)
         {
             destination = _angle;
         }
@@ -88,7 +122,7 @@ namespace Pi
 
     struct CommanderTaskMove : public CommanderTask
     {
-        CommanderTaskMove(float x, float y) : CommanderTask(Type::Move, Mode::Absolute)
+        CommanderTaskMove(GameObject *object, float x, float y) : CommanderTask(object, Type::Move, Mode::Absolute)
         {
             destination.x = x;
             destination.y = y;

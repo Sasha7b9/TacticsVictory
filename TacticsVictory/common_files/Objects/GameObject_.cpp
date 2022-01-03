@@ -1,10 +1,7 @@
 ﻿// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
 #include "Objects/GameObject_.h"
-#include "Scene/World/Landscape_.h"
-#include "Scene/World/GameWorld.h"
-#include "Objects/Units/Logic/PathFinder/PathFinder.h"
-#include "Objects/Units/Logic/PathFinder/PathMapping.h"
+#include "Objects/Units/Logic/PathFinder/PathMapping_.h"
 #include "Objects/Units/Unit_.h"
 #include "Objects/Ammo/Ammo_.h"
 #include "PeriodicTasks.h"
@@ -13,9 +10,13 @@
 #include "Objects/Units/Water/WaterUnit_.h"
 #include "Objects/Units/Air/AirUnit_.h"
 #include "Objects/Staff/Commander_.h"
+#include "GameWorld.h"
+#include "Objects/World/Landscape_.h"
 
 #ifdef PiCLIENT
     #include "Objects/InfoWindow.h"
+    #include "Objects/Units/Logic/PathFinder/PathFinder_.h"
+    #include "Objects/World/CameraRTS.h"
 #endif
 
 
@@ -30,7 +31,9 @@ Map<GameObject> GameObject::objects;
 static const GameObjectParameters parametersEmpty
 {
     {},
+    {},
     true,
+    0,
     0
 };
 
@@ -71,17 +74,14 @@ void GameObject::Destruct()
 
 GameObject::GameObject(TypeGameObject type, const GameObjectParameters *_param, int _id) :
     Node(),
+    id(_id == -1 ? ++createdObjects : _id),
+    params(*PoolObjects::AllocateParameters(id)),
     typeGameObject(type)
 {
-    int id = _id == -1 ? ++createdObjects : _id;
-
-    params = PoolObjects::AllocateParameters(id);
-
-    *params = *_param;
-
-    params->isDead = false;
-    params->id = id;
-    params->numberThread = params->id %TaskMain::NumberThreads();
+    params = *_param;
+    params.exist = true;
+    params.id = id;
+    params.number_thread = id %TaskMain::NumberThreads();
 
     AddProperty(new GameObjectProperty(*this));
 
@@ -104,7 +104,6 @@ GameObject::~GameObject()
 
 void GameObject::AppendTask(CommanderTask *task)
 {
-    task->SetGameObject(this);
     commander->AppendTask(task);
 }
 
@@ -134,7 +133,7 @@ bool GameObject::AppendInGame(int _x, int _y)
             {
                 height += Landscape::self->GetHeightAccurately(x, y);
             }
-            unit->params->position = Point3D(x, y, height);
+            unit->params.cur.position = Point3D(x, y, height);
             append = true;
         }
         else if (unit->typeUnit == TypeUnit::Ground)
@@ -142,7 +141,7 @@ bool GameObject::AppendInGame(int _x, int _y)
             if (!Landscape::self->UnderWater(_x, _y))
             {
                 float height = Landscape::self->GetHeightAccurately(x, y);
-                unit->params->position = Point3D(x, y, height);
+                unit->params.cur.position = Point3D(x, y, height);
                 append = true;
             }
         }
@@ -150,7 +149,7 @@ bool GameObject::AppendInGame(int _x, int _y)
         {
             if (Landscape::self->UnderWater(_x, _y))
             {
-                unit->params->position = Point3D(x, y, Water::Level());
+                unit->params.cur.position = Point3D(x, y, Water::Level());
                 append = true;
             }
         }
@@ -280,4 +279,89 @@ void GameObjectProperty::MouseEvent(uint state)
             Selected() ? RemoveSelection() : SetSelection();
         }
     }
+}
+
+
+GameObjectProperty::GameObjectProperty(GameObject &_gameObject) :
+    Property(PiTypeProperty::GameObject),
+    gameObject(_gameObject)
+#ifdef PiCLIENT
+    , infoWindow(new InfoWindow())
+#endif
+{
+}
+
+
+GameObjectProperty::~GameObjectProperty()
+{
+#ifdef PiCLIENT
+    delete infoWindow;
+#endif
+}
+
+
+void GameObjectProperty::SetSelection()
+{
+    selected = true;
+
+#ifdef PiCLIENT
+
+    TheInterfaceMgr->AddWidget(infoWindow);
+
+    PathFinder *finder = new PathFinder(gameObject.GetWorldPosition().GetPoint2D(), {50.0f, 50.0f});
+    gameObject.AppendNewSubnode(finder);
+    finder->Find([this](const Array<Integer2D> &_path)
+    {
+        GameWorld::self->GetRootNode()->AppendNewSubnode(new PathMapping(gameObject, _path));
+    });
+
+#endif
+}
+
+
+void GameObjectProperty::RemoveSelection()
+{
+    selected = false;
+
+#ifdef PiCLIENT
+
+    TheInterfaceMgr->RemoveWidget(infoWindow);
+
+    delete PathMapping::FromScene(gameObject);
+
+#endif
+}
+
+
+GameObjectProperty *GameObjectProperty::GetFromScreen(const Point2D &coord)
+{
+#ifdef PiCLIENT
+
+    Ray ray = CameraRTS::self->GetWorldRayFromPoint(coord);
+
+    CollisionData data;
+
+    Point3D p1 = ray.origin;
+    Point3D p2 = p1 + ray.direction * ray.tmax;
+
+    if (GameWorld::self->DetectCollision(p1, p2, 0.0f, PiKindCollision::RigidBody, &data))
+    {
+        Node *node = data.geometry->GetSuperNode();
+
+        while (node)
+        {
+            GameObjectProperty *property = (GameObjectProperty *)node->GetProperty(PiTypeProperty::GameObject);
+
+            if (property)
+            {
+                return property;
+            }
+
+            node = node->GetSuperNode();
+        }
+    }
+
+#endif
+
+    return nullptr;
 }

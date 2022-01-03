@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Scene/Cameras/CameraRTS.h"
+#include "Objects/World/CameraRTS.h"
 
 
 namespace Pi

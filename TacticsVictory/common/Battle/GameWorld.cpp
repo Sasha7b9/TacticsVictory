@@ -1,13 +1,13 @@
 ﻿// 2021/12/20 14:19:15 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Scene/World/GameWorld.h"
-#include "Scene/World/Landscape_.h"
 #include "TVBattle.h"
 #include "Objects/GameObject_.h"
 #include "Network/Messages/MessagesServer_.h"
 #include "Objects/Units/Ground/Tank_.h"
 #include "Objects/Units/Air/Airplane_.h"
 #include "PeriodicTasks.h"
+#include "GameWorld.h"
+#include "Objects/World/Landscape_.h"
 
 
 using namespace Pi;

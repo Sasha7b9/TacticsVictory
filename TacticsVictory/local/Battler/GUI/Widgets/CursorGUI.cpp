@@ -6,8 +6,6 @@
 #include "Button.h"
 #include "DrawingWidget.h"
 #include "Utils/Math_.h"
-#include "Scene/Cameras/CameraRTS.h"
-#include "Scene/World/GameWorld.h"
 #include "Objects/GameObject_.h"
 
 

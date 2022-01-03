@@ -1,8 +1,8 @@
 // 2021/12/12 21:37:18 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Objects/Units/Logic/PathFinder/PathMapping.h"
-#include "Scene/World/GameWorld.h"
-#include "Scene/World/Landscape_.h"
+#include "Objects/Units/Logic/PathFinder/PathMapping_.h"
+#include "GameWorld.h"
+#include "Objects/World/Landscape_.h"
 
 
 using namespace Pi;
@@ -51,7 +51,7 @@ PathMapping *PathMapping::FromScene(const GameObject &object)
 
 String<> PathMapping::NameForObject(const GameObject &object)
 {
-    return String<>("PathMapping:") + Text::Format("%d", object.params->id);
+    return String<>("PathMapping:") + Text::Format("%d", object.params.id);
 }
 
 

@@ -8,12 +8,13 @@
 #include "Objects/Units/Ground/Worm.h"
 #include "Objects/Units/Water/Boat_.h"
 #include "Objects/Units/Water/Submarine_.h"
-#include "Objects/Weapons/Laser.h"
-#include "Objects/Weapons/RocketLauncher.h"
+#include "Objects/Weapons/Laser_.h"
+#include "Objects/Weapons/RocketLauncher_.h"
 #include "Objects/Structures/CivilianPlant_.h"
 #include "Objects/Ammo/Bullet_.h"
 #include "Objects/Ammo/Rocket_.h"
 #include "Objects/Structures/ArmoryPlant_.h"
+#include "Objects/World/Sun_.h"
 
 
 using namespace Pi;
@@ -32,8 +33,7 @@ const GameObjectParameters Airplane::parameters =
 {
     {
         {0.00f, 500.0f,  0.00f},      // speed
-        {10.0f, 10.00f,  50.0f},      // rotate
-        0.01f                         // accelerateSpeed
+        {10.0f, 10.00f,  50.0f}       // rotate
     }
 };
 
@@ -68,7 +68,8 @@ const GameObjectParameters Submarine::parameters =
 const GameObjectParameters Tank::parameters =
 {
     {
-        {0.0f, 3.0f, 0.0f}        // speed
+        {0.0f, 3.0f, 0.0f},         // velocity
+        {0.0f, 0.0f, 0.5f}          // speed_rotate
     }
 };
 
@@ -114,4 +115,12 @@ const GameObjectParameters Rocket::parameters =
 const GameObjectParameters ArmoryPlant::parameters =
 {
 
+};
+
+
+const GameObjectParameters Sun::parameters =
+{
+    {
+        {0.0f, 3.0f, 0.0f}        // speed
+    }
 };

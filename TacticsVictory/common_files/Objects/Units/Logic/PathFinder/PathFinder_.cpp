@@ -1,10 +1,9 @@
 ﻿// 2021/12/4 11:09:03 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "stdafx.h"
-#include "Scene/World/Landscape_.h"
-#include "Scene/World/GameWorld.h"
 #include "Objects/Units/Unit_.h"
-#include "Objects/Units/Logic/PathFinder/PathFinder.h"
+#include "Objects/Units/Logic/PathFinder/PathFinder_.h"
 #include "GameState.h"
+#include "Objects/World/Landscape_.h"
 
 
 using namespace Pi;

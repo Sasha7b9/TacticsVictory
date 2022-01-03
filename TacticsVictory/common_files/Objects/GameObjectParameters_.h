@@ -7,35 +7,43 @@ namespace Pi
     // Параметры описывают физические свойства юнита
     struct GameObjectParameters
     {
-         struct Max
+        struct Max
         {
-            Vector3D speed           = Vector3D::ZERO;
-            Vector3D rotate          = Vector3D::ZERO;
-            float    accelerateSpeed = 0.0f;
+            Vector3D velocity     = Vector3D::ZERO;
+            Vector3D speed_rotate = Vector3D::ZERO;
         };
 
         struct Statistics
         {
-            float distance = 0.0f;              // Пройденная дистанция
+            float distance = 0.0f;                  // Пройденная дистанция
+        };
+
+        struct Physics
+        {
+            float    velocity     = 0.0f;
+            Point3D  position     = Point3D::ZERO;
+            Vector3D direction    = Vector3D::FORWARD;
+            Vector3D up           = Vector3D::UP;
+            Vector3D up_ortho     = up;                  // Этот вектор нужен для расчёта сбалансированного тангажа.
+                                                         // Он не поворачивается при крене
+            Vector3D speed_rotate = Vector3D::ZERO;      // y - крен (вдоль оси y), z - рыскание
         };
 
         Max max;
 
-        bool isDead = true;
-        int id = 0;
-        int numberThread = 0;
+        int  id            = 0;
+        int  number_thread = 0;
+        bool exist         = false;     // Если true, то структура существует в сцене, если false - свободна, и может
+                                        // быть использована для GameObject
 
-        float    speed        = 0.0f;
-        Vector3D direction    = Vector3D::FORWARD;
-        Vector3D up           = Vector3D::UP;
-        Vector3D upPitch      = up;                 // Этот вектор нужен для расчёта сбалансированного тангажа.
-                                                    // Он не поворачивается при крене
-        Vector3D speedRotate  = Vector3D::ZERO;     // y - крен (вдоль оси y), z - рыскание
-        Point3D  position     = Point3D::ZERO;
+        bool apply_rotate      = true;  // Если true, поворот изменился и нужно его применить
+        bool apply_translation = true;  // Если true, изменилась позиция в пространстве, и нужно её применить
 
         Statistics stat;
 
-        bool applyRotate      = true;               // Если true, поворот изменился и нужно его применить
-        bool applyTranslation = true;               // Если true, изменилась позиция в пространстве, и нужно её применить
+        Physics cur;                    // Действующие в текущем кадре параметры
+        Physics next;                   // Эти параметры расчитаны в текущем кадре и должны быть применены
+                                        // (переписаны в cur и применены к узлам сцены) после окончания расчёта
+                                        // всех объектов сцены
     };
 }

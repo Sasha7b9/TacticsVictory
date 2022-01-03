@@ -4,23 +4,19 @@
 #include "GUI/Widgets/CursorGUI.h"
 #include "Input/Mouse.h"
 #include "Objects/GameObject_.h"
-#include "Scene/World/GameWorld.h"
-#include "Scene/World/Landscape_.h"
-#include "Scene/World/Sun.h"
 #include "Graphics/Meshes/WorldGizmo.h"
 #include "Objects/Units/Ground/Tank_.h"
 #include "Graphics/Textures/PoolTextures.h"
-#include "Objects/Units/Logic/Selector.h"
+#include "Objects/Units/Logic/Selector_.h"
 #include "Objects/Units/Air/Airplane_.h"
 #include "Objects/Units/Water/Submarine_.h"
 #include "TVBattler.h"
+#include "Objects/World/Sun_.h"
+#include "GameWorld.h"
+#include "Objects/World/Landscape_.h"
 
 
 using namespace Pi;
-
-
-Sun *sun = nullptr;
-Sun *sunViewport = nullptr;
 
 
 namespace Pi
@@ -38,7 +34,6 @@ GameWorld::GameWorld(pchar name) : World(name)
 GameWorld::~GameWorld()
 {
     SAFE_DELETE(CursorGUI::self);
-    SAFE_DELETE(sun);
 }
 
 
@@ -54,13 +49,6 @@ WorldResult::B GameWorld::Preprocess()
     SetCamera(CameraRTS::self);
     CameraRTS::self->Invalidate();
     CameraRTS::self->Update();
-
-    sun = new Sun();
-
-    static_cast<SunController*>(sun->GetController())
-        ->SetParameters({ (float)Landscape::self->GetSizeX_Columns() / 2.0f, (float)Landscape::self->GetSizeY_Rows() / 2.0f, 30.0f });
-
-    GetRootNode()->AppendNewSubnode(sun);
 
     GetRootNode()->AppendNewSubnode(new WorldGizmo());
 

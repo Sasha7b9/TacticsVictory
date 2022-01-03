@@ -15,7 +15,8 @@ namespace Pi
         Ammo,
         Structure,
         Unit,
-        Weapon
+        Weapon,
+        World
     };
 
     enum class TypeAmmo
@@ -64,5 +65,11 @@ namespace Pi
         Empty,
         Boat,
         Submarine
+    };
+
+    enum class TypeWorldObject
+    {
+        Empty,
+        Sun
     };
 }

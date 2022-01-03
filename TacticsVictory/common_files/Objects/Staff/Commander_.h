@@ -22,13 +22,10 @@ namespace Pi
 
         void AppendTask(CommanderTask *task) { tasks.AddElement(task); }
 
-        void SetDriver(Driver *_driver) { driver = _driver; }
-
         Commander(GameObject *);
 
-        GameObject *object = nullptr;
-
-        Driver *driver = nullptr;
+        GameObject &object;
+        Driver     &driver;
 
     private:
 

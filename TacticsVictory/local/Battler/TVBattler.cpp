@@ -5,18 +5,17 @@
 #include "GUI/Widgets/DrawingWidget.h"
 #include "GUI/Widgets/CursorGUI.h"
 #include "GUI/Widgets/Console.h"
-#include "Scene/Cameras/CameraRTS.h"
 #include "Objects/Units/Ground/Tank_.h"
-#include "Scene/World/GameWorld.h"
 #include "Input/Input.h"
 #include "Input/Mouse.h"
 #include "GUI/Mutators/MovementMutator.h"
 #include "Sounds/SoundPlayer.h"
-#include "Scene/World/Landscape_.h"
 #include "GUI/Widgets/ObjectViewportWidget.h"
-#include "Objects/Units/Logic/PathFinder/PathFinder.h"
+#include "Objects/Units/Logic/PathFinder/PathFinder_.h"
 #include "Graphics/Textures/PoolTextures.h"
 #include "Graphics/Geometry/PoolGeometry.h"
+#include "GameWorld.h"
+#include "Objects/World/Landscape_.h"
 
 
 using namespace std;
